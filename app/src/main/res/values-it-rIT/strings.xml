@@ -36,7 +36,7 @@
         <item quantity="other">%d giorni fa</item>
     </plurals>
     <string name="action_about">Informazioni</string>
-    <string name="action_discover">Esplora</string>
+    <string name="action_discover">Scopri</string>
     <string name="contribute">Come contribuire</string>
     <string name="action_find">Trova</string>
     <string name="product_incomplete_message">L\'elenco degli ingredienti di questo prodotto non è completo. Non abbiamo quindi potuto controllare gli allergeni.</string>
@@ -123,7 +123,7 @@
         <item>Acido Mead (20:3 n-9)</item>
         <item>Acido melissico (30:0)</item>
         <item>Molibdeno</item>
-        <item>Grassi monoinsaturi</item>
+        <item>Grasso monoinsaturo</item>
         <item>Acido montanico (28:0)</item>
         <item>Acido miristico (14:0)</item>
         <item>Acido nervonico (24:1 n-9)</item>
@@ -137,7 +137,7 @@
         <item>pH</item>
         <item>Fosforo</item>
         <item>Polialcoli (polioli)</item>
-        <item>Grassi polinsaturi</item>
+        <item>Grasso polinsaturo</item>
         <item>Potassio</item>
         <item>Selenio</item>
         <item>Proteine plasmatiche</item>
@@ -181,16 +181,16 @@
     <string name="txtServingSize">Porzione:</string>
     <string name="txtNutrientLevel100g">Livelli dei nutrienti per 100g:</string>
     <string name="txtNutrientLevel100ml">Livelli dei nutrienti per 100 ml:</string>
-    <string name="txtNutritionLevelLow">in piccola quantità</string>
-    <string name="txtNutritionLevelModerate">in moderata quantità</string>
-    <string name="txtNutritionLevelHigh">in elevata quantità</string>
+    <string name="txtNutritionLevelLow">in basse quantità</string>
+    <string name="txtNutritionLevelModerate">in moderate quantità</string>
+    <string name="txtNutritionLevelHigh">in grandi quantità</string>
     <string name="txtSave">Salva</string>
     <string name="txtSignIn">Accedi</string>
     <string name="txtToastSaved">Utente salvato</string>
     <string name="txtSalt">Sale</string>
     <string name="txtFat">Grassi</string>
     <string name="txtSugars">Zuccheri</string>
-    <string name="hintBarcode">Codice a barre</string>
+    <string name="hintBarcode">Codice a Barre</string>
     <string name="txtNutriScoreInfo">Ulteriori informazioni sui livelli nutrizionali</string>
     <string name="txtloginHelper">Se hai un profilo di Open Food Facts, puoi accedere qui</string>
     <string name="hintLogin">Nome utente</string>
@@ -207,7 +207,7 @@
     <string name="txtSendAll">Carica tutto</string>
     <string name="txtPictureNeededDialogNo">Annulla</string>
     <string name="toastSending">Caricamento…</string>
-    <string name="txtLoading">Caricamento…</string>
+    <string name="txtLoading">Caricamento in corso…</string>
     <string name="txtDialogsContentDelete">Sicuro di voler rimuovere questa bozza?</string>
     <string name="txtDialogsContentInfoSave">Il prodotto è salvato localmente, lo puoi modificare nel menu Modifica Offline</string>
     <string name="productSavedToast">Prodotto salvato, grazie!</string>
@@ -234,7 +234,7 @@
     <string name="your_lists">Le tue liste</string>
     <string name="title_dialog_alert">Aggiungi allarme</string>
     <string name="select_camera">Seleziona una fotocamera</string>
-    <string name="ok_button">OK</string>
+    <string name="ok_button">Ok</string>
     <string name="cancel_button">Annulla</string>
     <string name="login_button">Nome utente</string>
     <string name="create_account_button">Crea account</string>
@@ -277,7 +277,7 @@
     <string name="please_enter_weight">Inserisci il peso del prodotto</string>
     <string name="enter_weight">Inserisci il peso del prodotto</string>
     <string name="calculate_nutrition_facts">Calcola i valori nutrizionali</string>
-    <string name="nutrition_carbohydrate">Carboidrati</string>
+    <string name="nutrition_carbohydrate">Carboidrato</string>
     <string name="nutrition_cholesterol">Colesterolo</string>
     <string name="nutrition_energy">Energia</string>
     <string name="nutrition_energy_kcal">Energia in calorie (kcal)</string>
@@ -384,7 +384,7 @@
     <string name="take_more_pictures">Fai ulteriori foto</string>
     <string name="take_extra_packaging_pictures">Scatta altre foto della confezione</string>
     <string name="txtSaturatedFat">Grassi saturi</string>
-    <string name="nutriscore_info_msg">Ulteriori informazioni sul Nutri-Score</string>
+    <string name="nutriscore_info_msg">Ulteriori informazioni su Punteggio-Nutri</string>
     <string name="nova_info_msg">Ulteriori informazioni sui gruppi NOVA</string>
     <string name="nova_grp1_msg">Gruppo 1 - Alimenti non trasformati o minimamente trasformati</string>
     <string name="nova_grp2_msg">Gruppo 2 - Ingredienti culinari elaborati</string>
@@ -392,7 +392,7 @@
     <string name="nova_grp4_msg">Gruppo 4 - Prodotti alimentari e bevande ultra-elaborati</string>
     <!-- String related to App Shortcuts -->
     <string name="disabled_message">Scorciatoia non disponibile</string>
-    <string name="scan_shortcut_short_label">Scansiona</string>
+    <string name="scan_shortcut_short_label">Analizza</string>
     <string name="scan_shortcut_long_label">Scansione del prodotto</string>
     <string name="barcode_shortcut_short_label">Cerca</string>
     <string name="barcode_shortcut_long_label">Cerca per codice a barre</string>
@@ -431,7 +431,7 @@
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
     <string name="faq_url">https://it.openfoodfacts.org/faq</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
-    <string name="hunger_game_url">https://hunger.openfoodfacts.org</string>
+    <string name="hunger_game_url">https://hunger.openfoodfacts.org/</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate the end of the url -->
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://it.openfoodfacts.org/nutriscore</string>
@@ -477,7 +477,7 @@
     <string name="by_barcode">Codice a Barre</string>
     <string name="by_time">Visualizzato di recente</string>
     <string name="sort">Ordine</string>
-    <string name="by_nutrition_grade">Grado-nutrizione</string>
+    <string name="by_nutrition_grade">Nutri-Score</string>
     <string name="sort_by">Ordina per</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">Le immagini senza codice a barre non possono ancora essere aggiunte con l\'applicazione. Per favore prova la versione mobile del sito web.</string>
@@ -527,7 +527,7 @@
     <string name="autofocus">Autofocus</string>
     <string name="initial_loading">Caricamento iniziale</string>
     <string name="preferences">Impostazioni</string>
-    <string name="OFFlogo">Logo Open Food Facts</string>
+    <string name="OFFlogo">Logo di Open Food Facts</string>
     <string name="loading_product">Caricamento del prodotto %s</string>
     <string name="image_not_defined_for_language">Nessuna immagine per la lingua selezionata. Puoi aggiungerne uno nuovo</string>
     <string name="error_adding_ingredients">Qualcosa è andato storto durante il tentativo di aggiunta degli ingredienti del prodotto</string>
@@ -562,7 +562,7 @@
     <string name="no_internet_connection">Sembra che tu non sia connesso, le immagini verranno caricate quando la rete sarà disponibile</string>
     <string name="no_internet_unable_to_extract_ingredients">Nessuna connessione internet. Impossibile estrarre gli ingredienti</string>
     <string name="percent">%1$d%%</string>
-    <string name="overview">Panoramica</string>
+    <string name="overview">Sommario</string>
     <string name="ingredients">Ingredienti</string>
     <string name="nutrition_facts">Informazioni nutrizionali</string>
     <string name="your_version">Tuoi</string>
@@ -679,7 +679,7 @@
     <string name="txt_products_to_buy">Prodotti da acquistare</string>
     <string name="txt_exporting_your_listed_products">Esportazione dei tuoi prodotti…</string>
     <string name="txt_your_listed_products_exported">I tuoi prodotti sono stati esportati</string>
-    <string name="txt_discard">Scarta</string>
+    <string name="txt_discard">Annulla</string>
     <string name="txt_info_eaten_products">Sarete in grado di aggiungere prodotti a questa lista scansionando i prodotti, trascinando la scheda prodotto e toccando su \"Prodotti da comprare\".
         Sarai anche in grado di aggiungere prodotti a questa lista cercando e cliccando sul pulsante + in alto a destra della pagina del prodotto.</string>
     <string name="txt_info_your_listed_products">Potrai aggiungere prodotti a questo elenco cercandoli e facendo clic sul pulsante \"+\" in alto a destra nella pagina del prodotto.</string>
@@ -688,9 +688,9 @@
     <string name="swipe_delete_tip">Puoi eliminare un elenco facendolo scorrere a sinistra.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
-    <string name="add_product">Aggiungi</string>
+    <string name="add_product">Inserisci prodotti</string>
     <string name="add_another_product">Aggiungi un altro prodotto</string>
-    <string name="add_nutrition_facts_for_nutriscore">Aggiungi i valori nutrizionali per calcolare il Nutri-Score</string>
+    <string name="add_nutrition_facts_for_nutriscore">Aggiungi i valori nutrizionali per calcolare i livelli nutrizionali</string>
     <string name="product_summary_action_compare_button_label">Confronta</string>
     <string name="product_summary_action_add_to_list_button_label">Aggiungi alla lista</string>
     <string name="product_summary_action_edit_button_label">Modifica</string>
@@ -715,7 +715,7 @@
     <string name="cant_edit_image_not_yet_uploaded">La nuova immagine non è ancora stata caricata. Per favore, attendi prima di modificarla</string>
     <string name="unselect_image">Deseleziona immagine</string>
     <string name="choose_default_language">Seleziona la lingua del prodotto</string>
-    <string name="barcode">Codice a barre</string>
+    <string name="barcode">Codice a Barre</string>
     <string name="productAdditivesNone">Nessun additivo</string>
     <string name="error_uploading_photo">Qualcosa è andato storto durante il caricamento di una nuova foto</string>
     <string name="import_csv_to_list">Importa un file CSV di Open Food Facts list</string>
@@ -776,7 +776,7 @@
     <string name="icon_categories">Icona categorie</string>
     <string name="icon_emb">Icona codice di tracciabilità</string>
     <string name="product_front_image">Immagine frontale prodotto</string>
-    <string name="brand_hint">Esempi: Nike, Apple, ecc…</string>
+    <string name="brand_hint">Esempi: Coca Cola, Nestlé, etc…</string>
     <string name="sign_in_or_register">Accedi o registrati</string>
     <string name="hunger_game_call_to_action">Aiuta a classificarne di più %1$s</string>
     <string name="txtHomeOnline">Open Food Facts è un database aperto di più di %1$s prodotti (più quelli con cui contribuirai).</string>
@@ -788,4 +788,7 @@
     <string name="required_for_ecoscore">(Necessario per calcolare l\'Eco-Score)</string>
     <string name="hint_origin">Esempi: USA, Francia, Italia</string>
     <string name="report_email_chooser_title">Invia un\'email di segnalazione</string>
+    <!-- Changelog String -->
+    <string name="changelog_translation_help">Want to see this changelog in %s?\nJoin the translation team!</string>
+    <string name="whats_new">What\'s new with Open Food Facts?</string>
 </resources>

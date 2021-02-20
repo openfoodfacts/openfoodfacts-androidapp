@@ -431,7 +431,7 @@
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
     <string name="faq_url">https://se.openfoodfacts.org/faq</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
-    <string name="hunger_game_url">https://hunger.openfoodfacts.org</string>
+    <string name="hunger_game_url">https://hunger.openfoodfacts.org/</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate the end of the url -->
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
@@ -477,7 +477,7 @@
     <string name="by_barcode">Streckkod</string>
     <string name="by_time">Nyligen visade</string>
     <string name="sort">Sortera</string>
-    <string name="by_nutrition_grade">Näringsvärde</string>
+    <string name="by_nutrition_grade">Nutri-Score</string>
     <string name="sort_by">Sortera efter</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">Bilder utan streckkod kan inte läggas till med appen. Vänligen prova den mobila webbversionen.</string>
@@ -527,7 +527,7 @@
     <string name="autofocus">Autofokus</string>
     <string name="initial_loading">Inledande laddning</string>
     <string name="preferences">Inställningar</string>
-    <string name="OFFlogo">Open Food Facts logo</string>
+    <string name="OFFlogo">Open Food Facts logotyp</string>
     <string name="loading_product">Loading product %s</string>
     <string name="image_not_defined_for_language">Ingen bild för valt språk. Du kan lägga till en ny</string>
     <string name="error_adding_ingredients">Något gick fel när vi försökte lägga till produktingredienser</string>
@@ -690,7 +690,7 @@
     <string name="empty"></string>
     <string name="add_product">Lägg till produkter</string>
     <string name="add_another_product">Lägg till en annan produkt</string>
-    <string name="add_nutrition_facts_for_nutriscore">Lägg till näringsfakta för att beräkna Nutri-Score</string>
+    <string name="add_nutrition_facts_for_nutriscore">Lägg till näringsfakta för att beräkna näringsnivåer</string>
     <string name="product_summary_action_compare_button_label">Jämföra</string>
     <string name="product_summary_action_add_to_list_button_label">Lägg till i lista</string>
     <string name="product_summary_action_edit_button_label">Redigera</string>
@@ -776,7 +776,7 @@
     <string name="icon_categories">Kategori-ikon</string>
     <string name="icon_emb">Spårbarhetskod-ikon</string>
     <string name="product_front_image">Produktens framsidebild</string>
-    <string name="brand_hint">Exempel: Nike, Apple, etc…</string>
+    <string name="brand_hint">Exempel: Coca-Cola, Nestle, etc…</string>
     <string name="sign_in_or_register">Logga in eller registrera dig</string>
     <string name="hunger_game_call_to_action">Help classify more %1$s</string>
     <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s products (plus the ones you will contribute).</string>
@@ -788,4 +788,7 @@
     <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
     <string name="hint_origin">Examples: USA, France, Italy</string>
     <string name="report_email_chooser_title">Send a report email</string>
+    <!-- Changelog String -->
+    <string name="changelog_translation_help">Want to see this changelog in %s?\nJoin the translation team!</string>
+    <string name="whats_new">What\'s new with Open Food Facts?</string>
 </resources>

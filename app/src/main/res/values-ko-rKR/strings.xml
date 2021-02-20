@@ -31,7 +31,7 @@
         <item quantity="other">%d 일 전</item>
     </plurals>
     <string name="action_about">정보</string>
-    <string name="action_discover">발견</string>
+    <string name="action_discover">둘러보기</string>
     <string name="contribute">기여 방법</string>
     <string name="action_find">찾기</string>
     <string name="product_incomplete_message">이 제품의 정보는 완벽하지 않습니다, 이로인해 알레르기 검사를 진행할수 없습니다.</string>
@@ -60,8 +60,8 @@
     <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
+        <item>g</item>
         <item>mg</item>
-        <item>kg</item>
         <item>µg</item>
         <item>% DV</item>
         <item>IU</item>
@@ -188,7 +188,7 @@
     <string name="hintBarcode">바코드</string>
     <string name="txtNutriScoreInfo">영양 수치에 대해 더 알아보기</string>
     <string name="txtloginHelper">If you have an Open Food Facts account, you can login here with it</string>
-    <string name="hintLogin">로그인</string>
+    <string name="hintLogin">Username</string>
     <string name="hintPass">암호</string>
     <string name="errorLogin">계정 또는 비밀번호 오류</string>
     <string name="errorWeb">인터넷에 연결할수 없습니다. 연결문제가 있습니까?</string>
@@ -224,14 +224,14 @@
     <string name="offline_edit_drawer">오프라인 편집</string>
     <string name="txt_anonymous">익명</string>
     <string name="delete_txt">삭제</string>
-    <string name="sign_in_drawer">로그인에</string>
+    <string name="sign_in_drawer">로그인하기</string>
     <string name="alert_drawer">알레르기 항원 경보</string>
     <string name="your_lists">내 목록</string>
     <string name="title_dialog_alert">경보 추가하기</string>
     <string name="select_camera">카메라 선택</string>
     <string name="ok_button">확인</string>
     <string name="cancel_button">취소</string>
-    <string name="login_button">로그인</string>
+    <string name="login_button">Username</string>
     <string name="create_account_button">계정 만들기</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">귀하의 알레르기 정보는 Open Food Facts 서버로 전송되지 않습니다. 또한 제품 데이터가 정확하지 않을 수 있으며 감지가 100 % 정확하지 않을 수 있으므로 조심하여 직접 확인하십시오! </string>
     <string name="title_info_dialog">이용 방법</string>
@@ -297,7 +297,7 @@
     <string name="textCarbonFootprint">탄소 발자국 / CO2 배출량: </string>
     <string name="packaging_environmentTab">Packaging:</string>
     <string name="action_search">수색</string>
-    <string name="search_hint">제품 검색</string>
+    <string name="search_hint">제품 검색하기</string>
     <string name="number_of_results">제품 수: </string>
     <string name="number_of_products">제품 수: </string>
     <string name="txt_no_matching__category_products">이런, 이 카테고리에 상품이 없군요. 추가해 주실 수 있나요?</string>
@@ -362,7 +362,7 @@
     <string name="selenium">셀레늄</string>
     <string name="chromium">크로뮴(크롬)</string>
     <string name="molybdenum">몰리브데넘</string>
-    <string name="iodine">아이오딘 (요오드)</string>
+    <string name="iodine">아이오딘(요오드)</string>
     <string name="caffeine">카페인</string>
     <string name="taurine">타우린</string>
     <string name="ph">pH</string>
@@ -381,10 +381,10 @@
     <string name="txtSaturatedFat">포화 지방</string>
     <string name="nutriscore_info_msg">Nutri-Score에 대해 더 알아보기</string>
     <string name="nova_info_msg">Learn more about NOVA groups</string>
-    <string name="nova_grp1_msg">그룹 1 - 미가공 식품 또는 최소 가공 식품</string>
-    <string name="nova_grp2_msg">그룹 2 - 가공 식품 재료</string>
-    <string name="nova_grp3_msg">그룹 3 - 가공 식품</string>
-    <string name="nova_grp4_msg">그룹 4 - 초가공 식품 및 음료 제품</string>
+    <string name="nova_grp1_msg">그룹 1-미가공 식품 또는 최소 가공 식품</string>
+    <string name="nova_grp2_msg">그룹 2-가공된 요리 재료</string>
+    <string name="nova_grp3_msg">그룹 3-가공 식품</string>
+    <string name="nova_grp4_msg">그룹 4-초 가공 식품 및 음료 제품</string>
     <!-- String related to App Shortcuts -->
     <string name="disabled_message">Shortcut Not Available</string>
     <string name="scan_shortcut_short_label">스캔</string>
@@ -417,7 +417,7 @@
     <string name="preference_choose_language_dialog_title">언어 선택</string>
     <string name="please_check_your_connection">네트워크 연결을 확인하십시오.</string>
     <string name="advanced_search_title">고급 검색 &amp; 차트</string>
-    <string name="compare_products">상품 비교</string>
+    <string name="compare_products">제품 비교</string>
     <string name="connectivity_check">인터넷 연결을 확인하십시오.</string>
     <string name="dismiss">무시</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
@@ -426,7 +426,7 @@
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
     <string name="faq_url">https://world.openfoodfacts.org/faq</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
-    <string name="hunger_game_url">https://hunger.openfoodfacts.org</string>
+    <string name="hunger_game_url">https://hunger.openfoodfacts.org/</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate the end of the url -->
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
@@ -438,7 +438,7 @@
     <string name="url_nutrient_values">https://world-ko.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">일반</string>
     <string name="scan_first_string">본 제품 내역이 여기에 표시됩니다.\n이 내역은 나만 볼 수 있으며 로컬로 저장됩니다.</string>
-    <string name="log_in">로그인</string>
+    <string name="log_in">Username</string>
     <string name="login_true">이미 로그인했습니다!</string>
     <string name="confirm_logout">로그아웃 확인</string>
     <string name="logout_dialog_content">로그아웃 하겠습니까?</string>
@@ -472,7 +472,7 @@
     <string name="by_barcode">바코드</string>
     <string name="by_time">최근 본 항목</string>
     <string name="sort">분류</string>
-    <string name="by_nutrition_grade">영양 등급</string>
+    <string name="by_nutrition_grade">Nutri-Score</string>
     <string name="sort_by">정렬 기준</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">바코드가없는 사진은 아직 앱에 추가 할 수 없습니다. 모바일 웹 버전을 사용해보세요.</string>
@@ -483,7 +483,7 @@
     <string name="do_you_want_to">이 바코드에 사진을 추가 하시겠어요?</string>
     <string name="bottomNav_history">최근 기록</string>
     <string name="products_added">추가 또는 편집한 제품</string>
-    <string name="products_incomplete">완성돼야하는 추가된 제품</string>
+    <string name="products_incomplete">끝마쳐야 하는 추가된 제품</string>
     <string name="product_pictures_contributed">사진을 찍은 제품</string>
     <string name="picture_contributed_incomplete">완성되어야 하는 사진 찍은 제품</string>
     <string name="product_info_added">정보를 추가한 제품</string>
@@ -521,7 +521,7 @@
     <string name="autofocus">자동 초점</string>
     <string name="initial_loading">초기 로딩</string>
     <string name="preferences">환경 설정</string>
-    <string name="OFFlogo">Open Food Facts logo</string>
+    <string name="OFFlogo">Open Food Facts 로고</string>
     <string name="loading_product">상품 불러오는 중… %s</string>
     <string name="image_not_defined_for_language">선택한 언어에 대한 이미지가 없습니다. 새로운 것을 추가 할 수 있습니다.</string>
     <string name="error_adding_ingredients">제품 성분을 추가하는 중에 문제가 발생했습니다.</string>
@@ -684,11 +684,11 @@
     <string name="empty"></string>
     <string name="add_product">제품 추가</string>
     <string name="add_another_product">다른 제품 추가</string>
-    <string name="add_nutrition_facts_for_nutriscore">영양 성분을 추가하여 영양 점수 계산</string>
+    <string name="add_nutrition_facts_for_nutriscore">영양 수준을 계산하기 위해 영양 사실을 추가</string>
     <string name="product_summary_action_compare_button_label">비교하기</string>
     <string name="product_summary_action_add_to_list_button_label">목록에 추가</string>
     <string name="product_summary_action_edit_button_label">수정</string>
-    <string name="product_summary_action_share_button_label">공유</string>
+    <string name="product_summary_action_share_button_label">공유하기</string>
     <string name="product_question_prompt">여기를 눌러 대답하세요</string>
     <string name="product_question_positive_response">예</string>
     <string name="product_question_negative_response">아니요</string>
@@ -782,4 +782,7 @@
     <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
     <string name="hint_origin">Examples: USA, France, Italy</string>
     <string name="report_email_chooser_title">Send a report email</string>
+    <!-- Changelog String -->
+    <string name="changelog_translation_help">Want to see this changelog in %s?\nJoin the translation team!</string>
+    <string name="whats_new">What\'s new with Open Food Facts?</string>
 </resources>

@@ -229,7 +229,7 @@
     <string name="offline_edit_drawer">Çevrimdışı düzenle</string>
     <string name="txt_anonymous">Anonim</string>
     <string name="delete_txt">Sil</string>
-    <string name="sign_in_drawer">Giriş yap</string>
+    <string name="sign_in_drawer">Giriş</string>
     <string name="alert_drawer">Alerjen uyarısı</string>
     <string name="your_lists">Listeleriniz</string>
     <string name="title_dialog_alert">Uyarı ekle</string>
@@ -285,7 +285,7 @@
     <string name="nutrition_energy_short_name">Enerji</string>
     <string name="nutrition_fat">Yağ</string>
     <string name="nutrition_fiber">Diyet lifi</string>
-    <string name="nutrition_header">Besin değerleri</string>
+    <string name="nutrition_header">Beslenme gerçekleri</string>
     <string name="nutrition_proteins">Proteinler</string>
     <string name="nutrition_salt">Tuz</string>
     <string name="nutrition_satured_fat">Doymuş yağ</string>
@@ -431,7 +431,7 @@
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
     <string name="faq_url">https://world.openfoodfacts.org/faq</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
-    <string name="hunger_game_url">https://tr.openfoodfacts.org/hunger-game</string>
+    <string name="hunger_game_url">https://hunger.openfoodfacts.org/</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate the end of the url -->
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://tr.openfoodfacts.org/nutriscore</string>
@@ -477,7 +477,7 @@
     <string name="by_barcode">Barkod</string>
     <string name="by_time">Son Görüntülenenler</string>
     <string name="sort">Sırala</string>
-    <string name="by_nutrition_grade">Besin Derecesi</string>
+    <string name="by_nutrition_grade">Nutri-Score</string>
     <string name="sort_by">Sırala</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">Barkodsuz resimler henüz uygulamaya eklenemez. Lütfen mobil web sürümünü deneyin.</string>
@@ -527,7 +527,7 @@
     <string name="autofocus">Otomatik odaklama</string>
     <string name="initial_loading">Açılış yükleniyor</string>
     <string name="preferences">Tercihler</string>
-    <string name="OFFlogo">Open Pet Food Facts amblemi</string>
+    <string name="OFFlogo">Open Food Facts logosu</string>
     <string name="loading_product">Ürün yükleniyor %s</string>
     <string name="image_not_defined_for_language">Seçilen dil için resim yok. Yeni bir tane ekleyebilirsiniz</string>
     <string name="error_adding_ingredients">Ürün içeriğini eklemeye çalışırken bir hata oluştu</string>
@@ -586,7 +586,7 @@
     <string name="per_serving">Porsiyon başına</string>
     <string name="serving_size">Porsiyon ölçüsü</string>
     <string name="alcohol_unit" formatted="false">% hacim / °</string>
-    <string name="add_a_nutrient">Bir besin ekle</string>
+    <string name="add_a_nutrient">Besin ögesi ekle</string>
     <string name="add_this_product">Bu ürünü ekle</string>
     <string name="product_picture">Ürün Resmi</string>
     <string name="one_photo_compulsory">(yeni bir ürün eklemek için bir fotoğraf zorunludur)</string>
@@ -690,7 +690,7 @@ Aynı zamanda bu listeye ürünleri arayarak ve ürün sayfasının sağ üstün
     <string name="empty"></string>
     <string name="add_product">Ürün ekle</string>
     <string name="add_another_product">Başka bir ürün ekle</string>
-    <string name="add_nutrition_facts_for_nutriscore">Nutri-Score hesaplamak için besin değerlerini ekleyin</string>
+    <string name="add_nutrition_facts_for_nutriscore">Besin ögesi seviyelerini hesaplamak için besin değerlerini ekleyin</string>
     <string name="product_summary_action_compare_button_label">Karşılaştır</string>
     <string name="product_summary_action_add_to_list_button_label">Listeye ekle</string>
     <string name="product_summary_action_edit_button_label">Düzenle</string>
@@ -776,7 +776,7 @@ Aynı zamanda bu listeye ürünleri arayarak ve ürün sayfasının sağ üstün
     <string name="icon_categories">Katagori simgeleri</string>
     <string name="icon_emb">İzlenebilirlik kodu simgesi</string>
     <string name="product_front_image">Ürünün ön taraf resmi</string>
-    <string name="brand_hint">Örnekler: Nike, Apple vb.</string>
+    <string name="brand_hint">Örnekler: Coca-Cola, Nestle vb…</string>
     <string name="sign_in_or_register">Oturum aç / Kayıt ol</string>
     <string name="hunger_game_call_to_action">Daha fazla sınıflandırmaya yardımcı olun %1$s</string>
     <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s products (plus the ones you will contribute).</string>
@@ -788,4 +788,7 @@ Aynı zamanda bu listeye ürünleri arayarak ve ürün sayfasının sağ üstün
     <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
     <string name="hint_origin">Examples: USA, France, Italy</string>
     <string name="report_email_chooser_title">Send a report email</string>
+    <!-- Changelog String -->
+    <string name="changelog_translation_help">Want to see this changelog in %s?\nJoin the translation team!</string>
+    <string name="whats_new">What\'s new with Open Food Facts?</string>
 </resources>

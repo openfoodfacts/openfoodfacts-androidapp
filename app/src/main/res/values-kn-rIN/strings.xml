@@ -65,9 +65,9 @@
     <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
-        <item>ಗ್ರಾಂ</item>
+        <item>g</item>
         <item>mg</item>
-        <item>μg</item>
+        <item>µg</item>
         <item>% DV</item>
         <item>IU</item>
     </string-array>
@@ -431,7 +431,7 @@
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
     <string name="faq_url">https://world.openfoodfacts.org/faq</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
-    <string name="hunger_game_url">https://hunger.openfoodfacts.org</string>
+    <string name="hunger_game_url">https://hunger.openfoodfacts.org/</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate the end of the url -->
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
@@ -477,7 +477,7 @@
     <string name="by_barcode">ಬಾರ್‌ ಕೋಡ್</string>
     <string name="by_time">ಇತ್ತೀಚೆಗೆ ನೋಡಲಾಗಿದೆ</string>
     <string name="sort">ವಿಂಗಡಿಸಿ</string>
-    <string name="by_nutrition_grade">ನ್ಯೂಟ್ರಿಷನ್ ಟೇಬಲ್</string>
+    <string name="by_nutrition_grade">Nutri-Score</string>
     <string name="sort_by">Sort by</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">ಬಾರ್ಕೋಡ್ ಇಲ್ಲದೆ ಚಿತ್ರಗಳನ್ನು ಇನ್ನೂ ಅಪ್ಲಿಕೇಶನ್ನೊಂದಿಗೆ ಸೇರಿಸಲಾಗುವುದಿಲ್ಲ. ದಯವಿಟ್ಟು ಮೊಬೈಲ್ ವೆಬ್ ಆವೃತ್ತಿಯನ್ನು ಪ್ರಯತ್ನಿಸಿ.</string>
@@ -527,7 +527,7 @@
     <string name="autofocus">ಆಟೋಫೋಕಸ್</string>
     <string name="initial_loading">ಆರಂಭಿಕ ಲೋಡ್</string>
     <string name="preferences">ಆದ್ಯತೆಗಳು</string>
-    <string name="OFFlogo">Open Food Facts logo</string>
+    <string name="OFFlogo">ಆಹಾರ ಸಂಗತಿಗಳು ತೆರೆಯಿರಿ</string>
     <string name="loading_product">Loading product %s</string>
     <string name="image_not_defined_for_language">No image for selected language. You can add a new one</string>
     <string name="error_adding_ingredients">ಉತ್ಪನ್ನ ಪದಾರ್ಥಗಳನ್ನು ಸೇರಿಸಲು ಪ್ರಯತ್ನಿಸುವಾಗ ಯಾವುದೋ ತಪ್ಪು ಸಂಭವಿಸಿದೆ</string>
@@ -690,7 +690,7 @@
     <string name="empty"></string>
     <string name="add_product">Add products</string>
     <string name="add_another_product">Add another product</string>
-    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
+    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute nutrient levels</string>
     <string name="product_summary_action_compare_button_label">Compare</string>
     <string name="product_summary_action_add_to_list_button_label">Add to list</string>
     <string name="product_summary_action_edit_button_label">ತಿದ್ದು</string>
@@ -788,4 +788,7 @@
     <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
     <string name="hint_origin">Examples: USA, France, Italy</string>
     <string name="report_email_chooser_title">Send a report email</string>
+    <!-- Changelog String -->
+    <string name="changelog_translation_help">Want to see this changelog in %s?\nJoin the translation team!</string>
+    <string name="whats_new">What\'s new with Open Food Facts?</string>
 </resources>

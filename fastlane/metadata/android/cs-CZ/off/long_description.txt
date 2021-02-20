@@ -13,25 +13,25 @@ To discover the volunteer-run Open Food Facts project, visit https://world.openf
 - You can easily compare as many products as you want, side by side by simply scanning them. 
 
 ▶ And good for the planet!
-- The carbon impact of your food
-- Get a sense of how much of your daily carbon quota you're using for food
+- Uhlíková stopa vašeho jídla
+- Získejte představu o tom, kolik z vaší denní kvóty uhlíku používáte na jídlo
 - Based on the footprints computed for France by ADEME.
 - Join us and help us to bring the Carbon Impact to your country!
 - To display a Carbon Impact, a product must have a complete ingredient list with % of meat or fish and a quantity
 
 
-▶ Contribute to Food Transparency
-- Open Food Facts is a food products database made by everyone, for everyone.
-- You can use it to make better food choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Food Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways.
+▶ Přispějte k transparentnosti potravin
+- Open Food Facts je databáze potravin tvořená všemi a pro všechny.
+- Můžete ji použít k lepšímu výběru potravin a vzhledem k tomu, že jde o otevřená data, může ji kdokoliv využít i pro jakýkoliv jiný účel.
+- Open Food Facts je neziskový projekt, který vytvořily tisíce dobrovolníků z celého světa. Máme spoustu zajímavých projektů, můžete přispět mnoha různými způsoby.
 - You can start contributing today by adding a product from your fridge.
 
-▶ Create lists
-Create shopping lists, track what you've eaten and easily share and export your lists.
+▶ Vytvářejte seznamy
+Vytvářejte nákupní seznamy, sledujte, co jste jedli, a snadno je sdílejte a exportujte.
 
-▶ Get the Facts
-- Open Food Facts helps you to make sense of the fine print on products labels. You will be able to find:
-- carbon footprint (CO2 emissions) and packaging (as well as recycling instructions),
+▶ Získejte fakta
+- Open Food Facts helps you to make sense of the fine print on products labels. Budete moci najít:
+- uhlíková stopa (emise CO2) a balení (také pokyny k recyklaci),
 - Nutriscore (nutritional score), nutrients, fat / fat content, saturated fatty acids, carbohydrates, sugars, fiber, protein and salt and sodium.
 - brands, allergens, labels (bio, gluten free, vegan, vegetarian, halal, kosher ...), traceability information (packaging codes, origins of ingredients)
 - On wines and beers, you will find the alcohol content.
@@ -46,20 +46,20 @@ Create shopping lists, track what you've eaten and easily share and export your 
 - The Open Food Facts community is collaborating with research teams across the planet to improve nutrition research that benefits all.
 
 
-▶ Offline Scan: Scan in ANY condition! (coming soon)
+▶ Offline Scan: Scan in ANY condition! (již brzy)
 Scan at the speed of light (even if you’re on a plane, submarine or supermarket)
 
 - The whole planet, in your pocket !
 - You can add new products, even if you don't have an Internet connection right now.
 - The app loads only the strict necessary to reduce data and battery consumption.
 
-▶ Your food, your data
-- Your data is yours, and is never sent online
+▶ Vaše jídlo, vaše data
+- Vaše data jsou Vaše a nikdy nejsou odesílána online
 - Aplikaci můžete používat anonymně
 - Můžete exportovat vlastní historii skenování
 
 ▶ Set up allergen alerts on products
-- Milk, Gluten, Eggs, Soybeans, Nuts, Fish, Celery, Mustard, Sulphur dioxide and sulphites, Peanuts, Sesame seeds, Crustaceans, Molluscs or Lupin allergy ?
+- Mléko, lepek, vejce, sójové boby, ořechy, ryby, celer, hořčice, oxid siřičitý a siřičitany, arašídy, sezamová semínka, korýši, měkkýši nebo alergie na lupiny?
 - Speed up your shopping by doing an initial screening of your food with Open Food Facts.
 - Be careful that the information may not be 100% accurate, and detection may not be 100% accurate. So always double check by yourself, with the packaging.
 
@@ -67,7 +67,7 @@ Scan at the speed of light (even if you’re on a plane, submarine or supermarke
 ▶ Say hello and/or join us!
 
 
-Open Food Facts is also available on the web at https://world.openfoodfacts.org
+Open Food Facts je také k dispozici na webu na adrese https://world.openfoodfacts.org
 
 
 Questions, feedback : contact@openfoodfacts.org

@@ -75,9 +75,9 @@
     <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
-        <item>мг</item>
-        <item>кг</item>
-        <item>мкг</item>
+        <item>g</item>
+        <item>mg</item>
+        <item>µg</item>
         <item>% DV</item>
         <item>МЕ</item>
     </string-array>
@@ -441,7 +441,7 @@
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
     <string name="faq_url">https://world.openfoodfacts.org/faq</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
-    <string name="hunger_game_url">https://hunger.openfoodfacts.org</string>
+    <string name="hunger_game_url">https://hunger.openfoodfacts.org/</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate the end of the url -->
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
@@ -487,7 +487,7 @@
     <string name="by_barcode">Штрих-код</string>
     <string name="by_time">Недавно просмотренные</string>
     <string name="sort">Сортировка</string>
-    <string name="by_nutrition_grade">Уровень питательных веществ</string>
+    <string name="by_nutrition_grade">Nutri-Score</string>
     <string name="sort_by">Сортировать по</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">Фотографии без штрих-кода невозможно добавить в приложении. Попробуйте мобильную веб-версию.</string>
@@ -539,7 +539,7 @@
     <string name="autofocus">Автофокус</string>
     <string name="initial_loading">Начальная загрузка</string>
     <string name="preferences">Настройки</string>
-    <string name="OFFlogo">Open Food Facts logo</string>
+    <string name="OFFlogo">Логотип Open Food Facts</string>
     <string name="loading_product">Loading product %s</string>
     <string name="image_not_defined_for_language">Нет изображения для выбранного языка. Вы можете добавить новое</string>
     <string name="error_adding_ingredients">Что-то пошло не так при попытке добавления ингредиентов продукта</string>
@@ -702,7 +702,7 @@
     <string name="empty"></string>
     <string name="add_product">Добавьте продукты</string>
     <string name="add_another_product">Добавить другой продукт</string>
-    <string name="add_nutrition_facts_for_nutriscore">Добавьте факты о питании, чтобы вычислить Nutri-Score</string>
+    <string name="add_nutrition_facts_for_nutriscore">Добавьте пищевую ценность для расчета уровня питательных веществ</string>
     <string name="product_summary_action_compare_button_label">Сравнить</string>
     <string name="product_summary_action_add_to_list_button_label">Добавить в список</string>
     <string name="product_summary_action_edit_button_label">Изменить</string>
@@ -788,7 +788,7 @@
     <string name="icon_categories">Значок категорий</string>
     <string name="icon_emb">Значок кода упаковщика</string>
     <string name="product_front_image">Изображение передней части товара</string>
-    <string name="brand_hint">Examples: Coca-Cola, Nestle, etc…</string>
+    <string name="brand_hint">Примеры: Coca-Cola, Nestle, и т.д.…</string>
     <string name="sign_in_or_register">Войдите или зарегистрируйтесь</string>
     <string name="hunger_game_call_to_action">Help classify more %1$s</string>
     <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s products (plus the ones you will contribute).</string>
@@ -800,4 +800,7 @@
     <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
     <string name="hint_origin">Examples: USA, France, Italy</string>
     <string name="report_email_chooser_title">Отправить отчет по электронной почте</string>
+    <!-- Changelog String -->
+    <string name="changelog_translation_help">Want to see this changelog in %s?\nJoin the translation team!</string>
+    <string name="whats_new">What\'s new with Open Food Facts?</string>
 </resources>

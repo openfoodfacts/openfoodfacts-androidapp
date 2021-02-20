@@ -75,9 +75,9 @@
     <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
-        <item>מ״ג</item>
-        <item>ק״ג</item>
-        <item>מיקרוגרם</item>
+        <item>g</item>
+        <item>mg</item>
+        <item>µg</item>
         <item>% מהערך היומי</item>
         <item>יחידה בינלאומית</item>
     </string-array>
@@ -240,7 +240,7 @@
     <string name="txt_anonymous">אלמוני</string>
     <string name="delete_txt">מחיקה</string>
     <string name="sign_in_drawer">כניסה</string>
-    <string name="alert_drawer">אזהרת אלרגן</string>
+    <string name="alert_drawer">התראת אלרגנים</string>
     <string name="your_lists">הרשימות שלך</string>
     <string name="title_dialog_alert">הוספת התרעה</string>
     <string name="select_camera">בחירת מצלמה</string>
@@ -337,8 +337,8 @@
     <string name="for_100g">ל־100 ג׳</string>
     <string name="for_100ml">ל100 מ\"ל</string>
     <string name="serving">להגשה</string>
-    <string name="nutrition_monounsaturatedFat">חד־שומן בלתי רווי</string>
-    <string name="nutrition_polyunsaturatedFat">רב־שומן בלתי רווי</string>
+    <string name="nutrition_monounsaturatedFat">שומן חד בלתי רווי</string>
+    <string name="nutrition_polyunsaturatedFat">שומן רב בלתי רווי</string>
     <string name="nutrition_omega3">אומגה 3</string>
     <string name="nutrition_omega6">אומגה 6</string>
     <string name="nutrition_omega9">אומגה 9</string>
@@ -423,7 +423,7 @@
     <string name="device_offline_dialog_message">לשם ביצוע פעולה זו נדרש חיבור לרשת, לשנות זאת בהגדרות?</string>
     <string name="device_offline_dialog_negative">התעלמות</string>
     <string name="device_offline_dialog_positive">הגדרות</string>
-    <string name="scan_first_product">סריקת המוצר הראשון</string>
+    <string name="scan_first_product">סריקת המוצר הראשון שלך</string>
     <string name="device_on_mobile_data_warning_title">פרטים</string>
     <string name="device_on_mobile_data_warning_message">השבתת העלאה דרך רשת סלולרית, נא להתחבר לרשת אלחוטית או לשנות זאת בהעדפות</string>
     <string name="device_on_mobile_data_warning_positive">העדפות</string>
@@ -437,11 +437,11 @@
     <string name="dismiss">התעלמות</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <!--Just replace "world" by "fr", "de"… translate the "terms-of-use" with the hyphens -->
-    <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
+    <string name="terms_url">https://world.openproductsfacts.org/terms-of-use</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
     <string name="faq_url">https://il.openfoodfacts.org/faq</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
-    <string name="hunger_game_url">https://il.openfoodfacts.org/hunger-game</string>
+    <string name="hunger_game_url">https://hunger.openfoodfacts.org/</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate the end of the url -->
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://il.openfoodfacts.org/nutriscore</string>
@@ -487,7 +487,7 @@
     <string name="by_barcode">ברקוד</string>
     <string name="by_time">נצפו לאחרונה</string>
     <string name="sort">מיון</string>
-    <string name="by_nutrition_grade">ציון תזונתי</string>
+    <string name="by_nutrition_grade">Nutri-Score</string>
     <string name="sort_by">סידור לפי</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">לא ניתן עדיין להוסיף תמונות ללא בר קוד ליישומון. נא לנסות את גרסת האתר לניידים.</string>
@@ -574,7 +574,7 @@
     <string name="no_internet_connection">נראה כי אין לך חיבור לאינטרנט, התמונות תועלינה כשהרשת תשוב להיות זמינה</string>
     <string name="no_internet_unable_to_extract_ingredients">אין חיבור לאינטרנט. לא ניתן לחלץ רכיבים</string>
     <string name="percent">%1$d%%</string>
-    <string name="overview">סקירה</string>
+    <string name="overview">תקציר</string>
     <string name="ingredients">רכיבים</string>
     <string name="nutrition_facts">מפרט תזונתי</string>
     <string name="your_version">שלך</string>
@@ -702,7 +702,7 @@
     <string name="empty"></string>
     <string name="add_product">הוספת מוצרים</string>
     <string name="add_another_product">הוספת מוצר נוסף</string>
-    <string name="add_nutrition_facts_for_nutriscore">יש להוסיף מפרט תזונתי כדי לחשב Nutri-Score</string>
+    <string name="add_nutrition_facts_for_nutriscore">ניתן להוסיף עובדות תזונתיות כדי לחשב רמות הזנה</string>
     <string name="product_summary_action_compare_button_label">השוואה</string>
     <string name="product_summary_action_add_to_list_button_label">הוספה לרשימה</string>
     <string name="product_summary_action_edit_button_label">עריכה</string>
@@ -750,7 +750,7 @@
     <string name="ingredients_in_this_product">הרכיבים במוצר הזה שהם %1$s:</string>
     <string name="display_analysis_tag_status">הצגת מצב %1$s</string>
     <string name="unknown_status_no_translation">לא הצלחנו להעריך את מצב המוצר עקב רכיבים בלתי מזוהים.</string>
-    <string name="help_translate_ingredients">נשמח לקבל את עזרתך בתרגום הרכיבים לשפה שלך</string>
+    <string name="help_translate_ingredients">סיוע בתרגום הרכיבים לשפתך</string>
     <string name="unknown_status_missing_ingredients">לא הצלחנו להעריך את מצב המוצר עקב רכיבים חסרים.</string>
     <string name="unknown_status_ambiguous_ingredients">לא הצלחנו להעריך את מצב המוצר עקב רכיבים שנויים במחלוקת: <![CDATA[<b>%1$s</b>]]></string>
     <string name="help_extract_ingredients">סיוע בחילוץ הרכיבים לקבלת מצב %1$s.</string>
@@ -788,7 +788,7 @@
     <string name="icon_categories">סמל קטגוריות</string>
     <string name="icon_emb">סמל קוד מעקב</string>
     <string name="product_front_image">תמונת חזית המוצר</string>
-    <string name="brand_hint">דוגמאות: Nike,‏ Apple וכו׳…</string>
+    <string name="brand_hint">למשל: קוקה קולה, תנובה וכו׳…</string>
     <string name="sign_in_or_register">כניסה או הרשמה</string>
     <string name="hunger_game_call_to_action">סיוג בסיווג של עוד %1$s</string>
     <string name="txtHomeOnline">מסד הנתונים הפתוח Open Food Facts מכיל למעלה מ־%1$s מוצרים (בלי אלו שעוד יתווספו על ידיך).</string>
@@ -800,4 +800,7 @@
     <string name="required_for_ecoscore">(נדרש לטובת חישוב Eco-Score)</string>
     <string name="hint_origin">דוגמאות: ארה״ב, צרפת, ישראל</string>
     <string name="report_email_chooser_title">שליחת דוח בדוא״ל</string>
+    <!-- Changelog String -->
+    <string name="changelog_translation_help">מעניין אותך לראות את יומן השינויים ב%s?\n מזמינים אותך להצטרף לצוות התרגום!</string>
+    <string name="whats_new">מה חדש ב־Open Food Facts?</string>
 </resources>

@@ -16,11 +16,11 @@
   -->
 <resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
-        <item quantity="one">Sie verfügen über ein Offline-Produkt, das darauf wartet, zu Open Food Facts hinzugefügt zu werden.</item>
-        <item quantity="other">Sie verfügen über %d Offline-Produkte, die darauf warten, zu Open Food Facts hinzugefügt zu werden.</item>
+        <item quantity="one">Sie verfügen über ein Offline-Produkt, das darauf wartet, zu Open Food Facts hinzugefügt zu werden</item>
+        <item quantity="other">Sie verfügen über %d Offline-Produkte, die darauf warten, zu Open Food Facts hinzugefügt zu werden</item>
     </plurals>
     <plurals name="seconds">
-        <item quantity="one">vor 1 Sekunde</item>
+        <item quantity="one">vor %d Sekunden</item>
         <item quantity="other">vor %d Sekunden</item>
     </plurals>
     <plurals name="minutes">
@@ -47,8 +47,8 @@
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
         <item>Zusammenfassung</item>
-        <item>Inhaltsstoffe</item>
-        <item>Nährwertangaben</item>
+        <item>Zutaten</item>
+        <item>Ernährung</item>
         <item>Nährwerttabelle</item>
         <item>Umweltauswirkungen</item>
     </string-array>
@@ -67,7 +67,7 @@
     <string-array name="weight_all_units">
         <item>g</item>
         <item>mg</item>
-        <item>μg</item>
+        <item>µg</item>
         <item>% Dgesmenge</item>
         <item>IE</item>
     </string-array>
@@ -75,8 +75,8 @@
     <!-- Application theme settings -->
     <string-array name="application_theme_entries">
         <item>@string/follow_system</item>
-        <item>@string/day</item>
-        <item>@string/night</item>
+        <item>@string/Tag</item>
+        <item>@string/Nacht</item>
     </string-array>
     <!-- nutrients list
     do not change the order of the array as the items are paired with the String array
@@ -272,7 +272,7 @@
     <!-- Nutrition info tab -->
     <string name="display_fact">Nährwerttabelle für %1$s dieses Produktes</string>
     <string name="check_facts">Prüfen</string>
-    <string name="nutrition">Nährwertangaben</string>
+    <string name="nutrition">Ernährung</string>
     <string name="calculated_nutrition">Berechnete Nährwerte</string>
     <string name="please_enter_weight">Bitte geben Sie das Produktgewicht ein</string>
     <string name="enter_weight">Produktgewicht eingeben</string>
@@ -326,7 +326,7 @@
     <string name="nutrition_nucleotides">Nukleotide</string>
     <string name="for_100g">je 100 g</string>
     <string name="for_100ml">je 100ml</string>
-    <string name="serving">je Portion</string>
+    <string name="serving">Pro Portion</string>
     <string name="nutrition_monounsaturatedFat">Einfach ungesättigte Fettsäuren</string>
     <string name="nutrition_polyunsaturatedFat">Mehrfach ungesättigte Fettsäuren</string>
     <string name="nutrition_omega3">Omega-3</string>
@@ -378,7 +378,7 @@
     <string name="take_picture">Foto aufnehmen</string>
     <string name="choose_picture_from_gallery">Aus Galerie</string>
     <string name="take_picture_ingredients">Foto der Inhaltsstoffe aufnehmen</string>
-    <string name="take_picture_recycling">Nehmen Sie ein Foto der Recycling-Anweisungen auf</string>
+    <string name="take_picture_recycling">Nehmen Sie ein Foto der Recyclinganweisung auf</string>
     <string name="take_picture_front">Machen Sie ein Foto von der Vorderseite</string>
     <string name="take_picture_nutrition_table">Foto der Nährwerttabelle aufnehmen</string>
     <string name="take_more_pictures">Weitere Fotos aufnehmen</string>
@@ -413,7 +413,7 @@
     <string name="device_offline_dialog_message">Dazu wird eine Netzwerkverbindung benötigt. Möchten Sie dies in den Einstellungen ändern?</string>
     <string name="device_offline_dialog_negative">Verwerfen</string>
     <string name="device_offline_dialog_positive">Einstellungen</string>
-    <string name="scan_first_product">Erstes Produkt erfassen</string>
+    <string name="scan_first_product">Erfassen Sie Ihr erstes Produkt</string>
     <string name="device_on_mobile_data_warning_title">Informationen</string>
     <string name="device_on_mobile_data_warning_message">Hochladen über Mobilfunkverbindung ist deaktiviert. Bitte verbinden Sie sich mit WLAN oder ändern Sie dies in den Einstellungen</string>
     <string name="device_on_mobile_data_warning_positive">Einstellungen</string>
@@ -427,11 +427,11 @@
     <string name="dismiss">Verwerfen</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <!--Just replace "world" by "fr", "de"… translate the "terms-of-use" with the hyphens -->
-    <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
+    <string name="terms_url">https://world.openproductsfacts.org/terms-of-use</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
     <string name="faq_url">https://world.openfoodfacts.org/faq</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
-    <string name="hunger_game_url">https://world-de.openfoodfacts.org/hunger-game</string>
+    <string name="hunger_game_url">https://hunger.openfoodfacts.org/</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate the end of the url -->
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://de.openfoodfacts.org/nutriscore</string>
@@ -459,8 +459,8 @@
     <string name="search_string">Suchen</string>
     <string name="country_string">Vertriebsländer</string>
     <string name="store_subtitle">Laden</string>
-    <string name="packaging_subtitle">Verpackungsart</string>
-    <string name="packaging_string">Verpackungsart</string>
+    <string name="packaging_subtitle">Art der Verpackung</string>
+    <string name="packaging_string">Art der Verpackung</string>
     <string name="label_string">Kennzeichnung</string>
     <string name="category_string">Kategorie</string>
     <string name="connection">Verbunden</string>
@@ -477,7 +477,7 @@
     <string name="by_barcode">Strichcode</string>
     <string name="by_time">Zuletzt angesehen</string>
     <string name="sort">Sortieren</string>
-    <string name="by_nutrition_grade">Nährwertqualität</string>
+    <string name="by_nutrition_grade">Nutri-Score</string>
     <string name="sort_by">Sortieren nach</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">Fotos ohne Strichcode können noch nicht mit der App hinzugefügt werden. Bitte probieren Sie die mobile Web-Version aus.</string>
@@ -562,8 +562,8 @@
     <string name="no_internet_connection">Sie scheinen keine Internetverbindung zu haben, Bilder werden hochgeladen, wenn das Netzwerk verfügbar wird</string>
     <string name="no_internet_unable_to_extract_ingredients">Keine Internetverbindung. Kann Zutaten nicht extrahieren</string>
     <string name="percent">%1$d%%</string>
-    <string name="overview">Übersicht</string>
-    <string name="ingredients">Inhaltsstoffe</string>
+    <string name="overview">Zusammenfassung</string>
+    <string name="ingredients">Zutaten</string>
     <string name="nutrition_facts">Nährwertangaben</string>
     <string name="your_version">Ihre</string>
     <string name="ingredients_picture">Zutatenfoto</string>
@@ -583,7 +583,7 @@
     <string name="front_short_picture">Vorderseite</string>
     <string name="other_picture">Weitere Fotos</string>
     <string name="for_100g_100ml">Für 100g / 100ml</string>
-    <string name="per_serving">je Portion</string>
+    <string name="per_serving">Pro Portion</string>
     <string name="serving_size">Portionsgröße</string>
     <string name="alcohol_unit" formatted="false">% vol / °</string>
     <string name="add_a_nutrient">Nährstoff hinzufügen</string>
@@ -593,7 +593,7 @@
     <string name="product_details">Produktdetails</string>
     <string name="product_name">Produktname</string>
     <string name="quantity">Mengenangabe</string>
-    <string name="labels">Etiketten</string>
+    <string name="labels">Labels</string>
     <string name="period_of_time_after_opening">Nach dem Öffnen zu verbrauchen bis</string>
     <string name="manufacturing_details">Herstellungsdetails</string>
     <string name="origin_of_ingredients">Herkunft der Inhaltsstoffe</string>
@@ -688,9 +688,9 @@ Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchs
     <string name="swipe_delete_tip">Sie können eine Liste löschen, indem Sie sie nach links wischen.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
-    <string name="add_product">Produkt hinzufügen</string>
+    <string name="add_product">Produkte hinzufügen</string>
     <string name="add_another_product">Weiteres Produkt hinzufügen</string>
-    <string name="add_nutrition_facts_for_nutriscore">Nährwertangaben hinzufügen, um den Nutri-Wert zu berechnen</string>
+    <string name="add_nutrition_facts_for_nutriscore">Fügen Sie Nährwertangaben hinzu, um den Nährstoffgehalt berechnen zu können.</string>
     <string name="product_summary_action_compare_button_label">Vergleiche</string>
     <string name="product_summary_action_add_to_list_button_label">Zur Liste hinzufügen</string>
     <string name="product_summary_action_edit_button_label">Bearbeiten</string>
@@ -726,7 +726,7 @@ Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchs
     <string name="history_network_error">Das Produkt konnte nicht geladen werden. Bitte versuchen Sie es erneut, wenn Sie wieder online sind.</string>
     <string name="cant_modify_if_refreshing">Bitte warten bis das Hochladen abgeschlossen ist</string>
     <string name="closeZoom">Hier klicken, um die Vergrößerung zu schließen</string>
-    <string name="imageFullscreen">Vergrößern</string>
+    <string name="imageFullscreen">Zoom</string>
     <!-- Used for product ingredients analysis tags -->
     <string name="close_button">Schließen</string>
     <string name="tip_message">TIPP: %1$s </string>
@@ -776,7 +776,7 @@ Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchs
     <string name="icon_categories">Kategoriesymbol</string>
     <string name="icon_emb">Symbol des Produzentenschlüssel</string>
     <string name="product_front_image">Produktfoto (Front)</string>
-    <string name="brand_hint">Beispiele: Adidas, Apple usw. …</string>
+    <string name="brand_hint">Beispiele: Coca-Cola, Nestle usw. …</string>
     <string name="sign_in_or_register">Anmelden oder registrieren</string>
     <string name="hunger_game_call_to_action">Mithelfen beim Klassifizieren weiterer %1$s</string>
     <string name="txtHomeOnline">Open Food Facts ist eine offene Datenbank mit mehr als %1$s Produkten (und denjenigen, die Sie beitragen werden).</string>
@@ -788,4 +788,7 @@ Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchs
     <string name="required_for_ecoscore">(Wird benötigt um den Eco-Score zu berechnen)</string>
     <string name="hint_origin">Beispiele: USA, Frankreich, Italien</string>
     <string name="report_email_chooser_title">Bericht als E-Mail senden</string>
+    <!-- Changelog String -->
+    <string name="changelog_translation_help">Möchten Sie dieses Changelog in %ssehen?\nTreten Sie dem Übersetzungsteam bei!</string>
+    <string name="whats_new">Was gibt es Neues bei Open Food Facts?</string>
 </resources>

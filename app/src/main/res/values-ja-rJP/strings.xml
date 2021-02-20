@@ -188,7 +188,7 @@
     <string name="hintBarcode">バーコード</string>
     <string name="txtNutriScoreInfo">栄養成分の詳細</string>
     <string name="txtloginHelper">If you have an Open Food Facts account, you can login here with it</string>
-    <string name="hintLogin">ログイン</string>
+    <string name="hintLogin">ユーザー名</string>
     <string name="hintPass">パスワード</string>
     <string name="errorLogin">ログインまたはパスワードエラー</string>
     <string name="errorWeb">インターネットにアクセスできませんでした。接続に問題がありませんか?</string>
@@ -231,7 +231,7 @@
     <string name="select_camera">カメラを選択</string>
     <string name="ok_button">OK</string>
     <string name="cancel_button">取消</string>
-    <string name="login_button">ログイン</string>
+    <string name="login_button">ユーザー名</string>
     <string name="create_account_button">アカウントを作成する</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
     <string name="title_info_dialog">どのような仕組みですか?</string>
@@ -426,7 +426,7 @@
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
     <string name="faq_url">https://world.openfoodfacts.org/faq</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
-    <string name="hunger_game_url">https://hunger.openfoodfacts.org</string>
+    <string name="hunger_game_url">https://hunger.openfoodfacts.org/</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate the end of the url -->
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
@@ -438,7 +438,7 @@
     <string name="url_nutrient_values">https://world-ja.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">全般</string>
     <string name="scan_first_string">表示した製品の履歴がここに一覧表示されます。\nこの履歴はあなたにだけ表示され、ローカルに格納されます。</string>
-    <string name="log_in">ログイン</string>
+    <string name="log_in">ユーザー名</string>
     <string name="login_true">既にログインしています!</string>
     <string name="confirm_logout">ログアウトの確認</string>
     <string name="logout_dialog_content">ログアウトしてもよろしいですか?</string>
@@ -472,7 +472,7 @@
     <string name="by_barcode">バーコード</string>
     <string name="by_time">最近表示した</string>
     <string name="sort">並べ替え</string>
-    <string name="by_nutrition_grade">栄養グレード</string>
+    <string name="by_nutrition_grade">Nutri-Score</string>
     <string name="sort_by">並び替え</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">アプリ版ではまだバーコードの付いていない写真は追加できません。モバイルウェブ版でお試しください。</string>
@@ -483,7 +483,7 @@
     <string name="do_you_want_to">このバーコードに写真を追加しますか?</string>
     <string name="bottomNav_history">履歴</string>
     <string name="products_added">あなたが追加または編集した製品</string>
-    <string name="products_incomplete">あなたが追加して、完成させる必要がある製品</string>
+    <string name="products_incomplete">あなたが追加して、完了が必要な製品</string>
     <string name="product_pictures_contributed">あなたが写真を撮った製品</string>
     <string name="picture_contributed_incomplete">あなたが写真を撮って、完成させる必要がある製品</string>
     <string name="product_info_added">あなたが情報を追加した製品</string>
@@ -521,7 +521,7 @@
     <string name="autofocus">オートフォーカス</string>
     <string name="initial_loading">ロードしています…</string>
     <string name="preferences">プリファレンス</string>
-    <string name="OFFlogo">Open Food Facts logo</string>
+    <string name="OFFlogo">Open Food Facts ロゴ</string>
     <string name="loading_product">製品「%s」を読み込み中</string>
     <string name="image_not_defined_for_language">No image for selected language. You can add a new one</string>
     <string name="error_adding_ingredients">製品の原材料を追加中に問題が発生しました</string>
@@ -556,7 +556,7 @@
     <string name="no_internet_connection">インターネットに接続していないようです、ネットワークが利用可能なときに画像がアップロードされます</string>
     <string name="no_internet_unable_to_extract_ingredients">インターネットに接続できません。原材料を抽出できません</string>
     <string name="percent">%1$d%%</string>
-    <string name="overview">概要</string>
+    <string name="overview">サマリー</string>
     <string name="ingredients">原材料</string>
     <string name="nutrition_facts">栄養成分表</string>
     <string name="your_version">あなたのもの</string>
@@ -684,7 +684,7 @@
     <string name="empty"></string>
     <string name="add_product">Add products</string>
     <string name="add_another_product">Add another product</string>
-    <string name="add_nutrition_facts_for_nutriscore">栄養成分を追加してニュートリスコア(栄養スコア) を計算する</string>
+    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute nutrient levels</string>
     <string name="product_summary_action_compare_button_label">Compare</string>
     <string name="product_summary_action_add_to_list_button_label">Add to list</string>
     <string name="product_summary_action_edit_button_label">編集</string>
@@ -782,4 +782,7 @@
     <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
     <string name="hint_origin">Examples: USA, France, Italy</string>
     <string name="report_email_chooser_title">Send a report email</string>
+    <!-- Changelog String -->
+    <string name="changelog_translation_help">Want to see this changelog in %s?\nJoin the translation team!</string>
+    <string name="whats_new">What\'s new with Open Food Facts?</string>
 </resources>

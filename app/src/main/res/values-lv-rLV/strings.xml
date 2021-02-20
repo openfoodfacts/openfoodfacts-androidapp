@@ -70,9 +70,9 @@
     <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
+        <item>g</item>
         <item>mg</item>
-        <item>kg</item>
-        <item>μg</item>
+        <item>µg</item>
         <item>% DV</item>
         <item>IU</item>
     </string-array>
@@ -240,7 +240,7 @@
     <string name="title_dialog_alert">Pievienot brīdinājumu</string>
     <string name="select_camera">Atlasiet kameru</string>
     <string name="ok_button">Labi</string>
-    <string name="cancel_button">Atcelt</string>
+    <string name="cancel_button">Cancel</string>
     <string name="login_button">Username</string>
     <string name="create_account_button">Izveidot profilu</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
@@ -391,10 +391,10 @@
     <string name="txtSaturatedFat">Piesātinātie tauki</string>
     <string name="nutriscore_info_msg">Uzziniet vairāk par Nutri-Score</string>
     <string name="nova_info_msg">Uzziniet vairāk par NOVA grupām</string>
-    <string name="nova_grp1_msg">1. grupa - neapstrādāti vai minimāli apstrādāti pārtikas produkti</string>
-    <string name="nova_grp2_msg">2. grupa - pārstrādātas kulinārijas sastāvdaļas</string>
-    <string name="nova_grp3_msg">3. grupa - pārstrādāti pārtikas produkti</string>
-    <string name="nova_grp4_msg">4. grupa - īpaši apstrādāti pārtikas un dzērienu produkti</string>
+    <string name="nova_grp1_msg">Group 1 - Unprocessed or minimally processed foods</string>
+    <string name="nova_grp2_msg">Group 2 - Processed culinary ingredients</string>
+    <string name="nova_grp3_msg">Group 3 - Processed foods</string>
+    <string name="nova_grp4_msg">Group 4 - Ultra-processed food and drink products</string>
     <!-- String related to App Shortcuts -->
     <string name="disabled_message">Saīsne nav pieejama</string>
     <string name="scan_shortcut_short_label">Skenēt</string>
@@ -436,7 +436,7 @@
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
     <string name="faq_url">https://world.openfoodfacts.org/faq</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
-    <string name="hunger_game_url">https://world.openfoodfacts.org/hunger-game</string>
+    <string name="hunger_game_url">https://hunger.openfoodfacts.org/</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate the end of the url -->
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
@@ -448,11 +448,11 @@
     <string name="url_nutrient_values">https://world-lv.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">Vispārīgs</string>
     <string name="scan_first_string">Šeit tiks parādīta jūsu skatīto produktu vēsture. Šī vēsture ir paredzēta tikai jūsu apskatei un tiek saglabāta lokāli.</string>
-    <string name="log_in">Pieslēgties</string>
+    <string name="log_in">Username</string>
     <string name="login_true">Jau esat ielogojies!</string>
     <string name="confirm_logout">Apstipriniet izlogošanos</string>
     <string name="logout_dialog_content">Vai tiešām vēlaties izrakstīties?</string>
-    <string name="dialog_cancel">Atcelt</string>
+    <string name="dialog_cancel">Cancel</string>
     <string name="dialog_create">Izveidot</string>
     <string name="wikidata_information">Ejot tālāk</string>
     <string name="wikidata_unavailable">Jūsu valodā vēl nav nevienas Vikipēdijas lapas.</string>
@@ -460,7 +460,7 @@
     <string name="Browse_Products">Pārlūkot produktus</string>
     <string name="brand_string">Zīmols</string>
     <string name="additive_string">Piedeva</string>
-    <string name="allergen_string">Alerģēns</string>
+    <string name="allergen_string">Allergen</string>
     <string name="search_string">Meklēt</string>
     <string name="country_string">Country</string>
     <string name="store_subtitle">Veikals</string>
@@ -482,7 +482,7 @@
     <string name="by_barcode">Svītrkods</string>
     <string name="by_time">Nesen skatīts</string>
     <string name="sort">Kārtot</string>
-    <string name="by_nutrition_grade">Uztura pakāpe</string>
+    <string name="by_nutrition_grade">Nutri-Score</string>
     <string name="sort_by">Kārtot pēc</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">Attēlus bez svītrkoda vēl nevar pievienot lietotnei. Lūdzu, izmēģiniet mobilo tīmekļa versiju.</string>
@@ -533,7 +533,7 @@
     <string name="autofocus">Autofokuss</string>
     <string name="initial_loading">Sākotnējā ielāde</string>
     <string name="preferences">Iestatījumi</string>
-    <string name="OFFlogo">Open Food Facts logo</string>
+    <string name="OFFlogo">Open Food Facts logotips</string>
     <string name="loading_product">Notiek produkta ielāde %s</string>
     <string name="image_not_defined_for_language">Atlasītajai valodai nav attēla. Jūs varat pievienot jaunu</string>
     <string name="error_adding_ingredients">Mēģinot pievienot produkta sastāvdaļas, radās kļūda</string>
@@ -573,7 +573,7 @@
     <string name="nutrition_facts">Uztura fakti</string>
     <string name="your_version">Jūsu</string>
     <string name="ingredients_picture">Sastāvdaļas attēls</string>
-    <string name="packaging">Recycling</string>
+    <string name="packaging">Otrreizējā pārstrāde</string>
     <string name="recycling_picture">Recycling Picture</string>
     <string name="take_ingredients_picture_to_extract">(Lūdzu, nofotografējiet sastāvdaļas, lai tās automātiski izvilktu)</string>
     <string name="ingredients_list">Sastāvdaļu saraksts</string>
@@ -582,7 +582,7 @@
     <string name="extracting_ingredients">Sastāvdaļu iegūšana</string>
     <string name="looksGood">Izskatās labi</string>
     <string name="skip_ingredients">Pārāk slikti \n izlaist sastāvdaļas</string>
-    <string name="traces">Pēdas</string>
+    <string name="traces">Traces</string>
     <string name="traces_hint">Norādiet sastāvdaļas no tādiem pieminējumiem kā \"var saturēt pēdas\", \"izgatavots rūpnīcā, kas arī izmanto\" utt. \npiemēri: piens, lipeklis, rieksti</string>
     <string name="nutrition_facts_not_specified">Uz produkta nav norādīti uztura fakti.</string>
     <string name="nutrition_facts_picture">Uztura faktu foto</string>
@@ -607,7 +607,7 @@
     <string name="emb_code">Izsekojamības kods</string>
     <string name="purchasing_details">Informācija par pirkumu</string>
     <string name="country_where_purchased">Country where purchased</string>
-    <string name="stores">Veikali</string>
+    <string name="stores">Stores</string>
     <string name="additional_pictures">Papildu attēli</string>
     <string name="hint_product_pictures">(Pievienojiet vairāk produkta attēlu. Piemēram, pārstrādes instrukcijas, etiķetes utt.)</string>
     <string name="uploading_image">Nosūta fotoattēlu</string>
@@ -696,7 +696,7 @@
     <string name="empty"></string>
     <string name="add_product">Pievienot produktu</string>
     <string name="add_another_product">Pievienojiet citu produktu</string>
-    <string name="add_nutrition_facts_for_nutriscore">Lai aprēķinātu Nutri-Score, pievienojiet faktus par uzturvērtību</string>
+    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute nutrient levels</string>
     <string name="product_summary_action_compare_button_label">Salīdzināt</string>
     <string name="product_summary_action_add_to_list_button_label">Pievienot sarakstam</string>
     <string name="product_summary_action_edit_button_label">Rediģēt</string>
@@ -782,7 +782,7 @@
     <string name="icon_categories">Kategoriju ikona</string>
     <string name="icon_emb">Izsekojamības koda ikona</string>
     <string name="product_front_image">Produkta priekšējais attēls</string>
-    <string name="brand_hint">Examples: Nike, Apple, etc…</string>
+    <string name="brand_hint">Piemēri: Coca-Cola, Nestle utt…</string>
     <string name="sign_in_or_register">Pierakstieties vai reģistrējieties</string>
     <string name="hunger_game_call_to_action">Palīdziet klasificēt vairāk %1$s</string>
     <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s products (plus the ones you will contribute).</string>
@@ -794,4 +794,7 @@
     <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
     <string name="hint_origin">Examples: USA, French, Italy</string>
     <string name="report_email_chooser_title">Send a report email</string>
+    <!-- Changelog String -->
+    <string name="changelog_translation_help">Want to see this changelog in %s?\nJoin the translation team!</string>
+    <string name="whats_new">What\'s new with Open Food Facts?</string>
 </resources>

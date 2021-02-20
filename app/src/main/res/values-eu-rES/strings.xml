@@ -65,8 +65,8 @@
     <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
-        <item>gg</item>
-        <item>mgmg</item>
+        <item>g</item>
+        <item>mg</item>
         <item>µg</item>
         <item>% DV</item>
         <item>IU</item>
@@ -431,7 +431,7 @@
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
     <string name="faq_url">https://es-eu.openfoodfacts.org/faq</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
-    <string name="hunger_game_url">https://hunger.openfoodfacts.org</string>
+    <string name="hunger_game_url">https://hunger.openfoodfacts.org/</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate the end of the url -->
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
@@ -459,8 +459,8 @@
     <string name="search_string">Bilatu</string>
     <string name="country_string">Saltzen diren herrialdeak</string>
     <string name="store_subtitle">Denda</string>
-    <string name="packaging_subtitle">Packaging</string>
-    <string name="packaging_string">Packaging</string>
+    <string name="packaging_subtitle">Ontziratzea</string>
+    <string name="packaging_string">Ontziratzea</string>
     <string name="label_string">Etiketa</string>
     <string name="category_string">Kategoria</string>
     <string name="connection">Konektatuta</string>
@@ -690,7 +690,7 @@
     <string name="empty"></string>
     <string name="add_product">Add products</string>
     <string name="add_another_product">Add another product</string>
-    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
+    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute nutrient levels</string>
     <string name="product_summary_action_compare_button_label">Compare</string>
     <string name="product_summary_action_add_to_list_button_label">Add to list</string>
     <string name="product_summary_action_edit_button_label">Editatu</string>
@@ -788,4 +788,7 @@
     <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
     <string name="hint_origin">Examples: USA, France, Italy</string>
     <string name="report_email_chooser_title">Send a report email</string>
+    <!-- Changelog String -->
+    <string name="changelog_translation_help">Want to see this changelog in %s?\nJoin the translation team!</string>
+    <string name="whats_new">What\'s new with Open Food Facts?</string>
 </resources>

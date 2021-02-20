@@ -204,7 +204,7 @@
     <string name="txtToastSaved">User saved</string>
     <string name="txtSalt">Holen</string>
     <string name="txtFat">Fat</string>
-    <string name="txtSugars">Sukroù</string>
+    <string name="txtSugars">Sugars</string>
     <string name="hintBarcode">Kod barrennoù</string>
     <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
     <string name="txtloginHelper">If you have an Open Food Facts account, you can login here with it</string>
@@ -305,7 +305,7 @@
     <string name="nutrition_salt">Holen</string>
     <string name="nutrition_satured_fat">Saturated fat</string>
     <string name="nutrition_sodium">Sodium</string>
-    <string name="nutrition_sugars">Sukroù</string>
+    <string name="nutrition_sugars">Sugars</string>
     <string name="nutrition_trans_fat">Trans fat</string>
     <string name="nutriment_serving_size">Per portion : </string>
     <string name="action_manage_account">Manage account</string>
@@ -446,7 +446,7 @@
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
     <string name="faq_url">https://world.openfoodfacts.org/faq</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
-    <string name="hunger_game_url">https://hunger.openfoodfacts.org</string>
+    <string name="hunger_game_url">https://hunger.openfoodfacts.org/</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate the end of the url -->
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
@@ -708,7 +708,7 @@
     <string name="empty"></string>
     <string name="add_product">Ouzhpennañ produioù</string>
     <string name="add_another_product">Ouzhpennañ ur produ all</string>
-    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
+    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute nutrient levels</string>
     <string name="product_summary_action_compare_button_label">Compare</string>
     <string name="product_summary_action_add_to_list_button_label">Ouzhpennañ d\'ar roll</string>
     <string name="product_summary_action_edit_button_label">Aozañ</string>
@@ -765,7 +765,7 @@
     <string name="compare_brands">Merkoù :</string>
     <string name="compare_additives">Danvezioù-ouzhpenn:</string>
     <string name="compare_salt">Holen</string>
-    <string name="compare_sugars">Sukroù</string>
+    <string name="compare_sugars">Sugars</string>
     <string name="compare_saturated_fat">Saturated fat</string>
     <string name="compare_fat">Fat</string>
     <string name="compare_quantity">Kementad :</string>
@@ -806,4 +806,7 @@
     <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
     <string name="hint_origin">Examples: USA, France, Italy</string>
     <string name="report_email_chooser_title">Send a report email</string>
+    <!-- Changelog String -->
+    <string name="changelog_translation_help">Want to see this changelog in %s?\nJoin the translation team!</string>
+    <string name="whats_new">What\'s new with Open Food Facts?</string>
 </resources>
