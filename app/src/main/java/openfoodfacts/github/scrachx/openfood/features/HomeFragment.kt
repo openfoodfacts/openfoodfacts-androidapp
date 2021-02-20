@@ -215,7 +215,6 @@ class HomeFragment : NavigationBaseFragment() {
 
     companion object {
         private val LOG_TAG = HomeFragment::class.simpleName!!
-        const val TAG = "fragment_home"
         private const val PRODUCT_COUNT_KEY = "productCount"
         fun newInstance() = HomeFragment().apply { arguments = Bundle() }
     }

@@ -377,7 +377,6 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
     }
 
     companion object {
-        const val TAG = "fragment_preferences"
         const val LOGIN_PREF = "login"
         fun newInstance() = PreferencesFragment().apply { arguments = Bundle() }
     }

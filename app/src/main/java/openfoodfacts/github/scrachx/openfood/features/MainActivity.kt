@@ -168,7 +168,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
         setLanguageInPrefs(this, getLanguage(this))
         setSupportActionBar(binding.toolbarInclude.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(false)
-        swapToFragment(HomeFragment.newInstance(), HomeFragment.TAG)
+        swapToFragment(HomeFragment.newInstance())
 
         // chrome custom tab init
         customTabActivityHelper = CustomTabActivityHelper()
@@ -265,11 +265,11 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
                 )
                 .withOnDrawerItemClickListener(object : Drawer.OnDrawerItemClickListener {
                     override fun onItemClick(view: View?, position: Int, drawerItem: IDrawerItem<*>): Boolean {
-                        var newFragment: Pair<Fragment, String>? = null
+                        var newFragment: Fragment? = null
                         when (drawerItem.identifier.toInt()) {
-                            ITEM_HOME -> newFragment = HomeFragment.newInstance() to HomeFragment.TAG
+                            ITEM_HOME -> newFragment = HomeFragment.newInstance()
                             ITEM_SEARCH_BY_CODE -> {
-                                newFragment = SearchByCodeFragment() to SearchByCodeFragment.TAG
+                                newFragment = SearchByCodeFragment.newInstance()
                                 binding.bottomNavigationInclude.bottomNavigation.selectNavigationItem(0)
                             }
                             ITEM_CATEGORIES -> CategoryActivity.start(this@MainActivity)
@@ -278,8 +278,8 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
                             ITEM_HISTORY -> ScanHistoryActivity.start(this@MainActivity)
                             ITEM_SCAN -> openScan()
                             ITEM_LOGIN -> loginThenUpdate.launch(Unit)
-                            ITEM_ALERT -> newFragment = AllergensAlertFragment.newInstance() to AllergensAlertFragment.TAG
-                            ITEM_PREFERENCES -> newFragment = PreferencesFragment.newInstance() to PreferencesFragment.TAG
+                            ITEM_ALERT -> newFragment = AllergensAlertFragment.newInstance()
+                            ITEM_PREFERENCES -> newFragment = PreferencesFragment.newInstance()
                             ITEM_ABOUT -> CustomTabActivityHelper.openCustomTab(this@MainActivity, customTabsIntent, discoverUri, WebViewFallback())
                             ITEM_CONTRIBUTE -> CustomTabActivityHelper.openCustomTab(this@MainActivity, customTabsIntent, contributeUri, WebViewFallback())
                             ITEM_INCOMPLETE_PRODUCTS -> start(this@MainActivity, SearchType.INCOMPLETE_PRODUCT, "") // Search and display the products to be completed by moving to ProductBrowsingListActivity
@@ -332,9 +332,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
                             }
 
                         }
-                        newFragment?.let { (fragment, tag) ->
-                            swapToFragment(fragment, tag)
-                        }
+                        newFragment?.let(::swapToFragment)
                         return false
                     }
                 })
@@ -419,12 +417,12 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
         handleIntent(intent)
     }
 
-    private fun swapToFragment(fragment: Fragment, tag: String) {
+    private fun swapToFragment(fragment: Fragment) {
         with(supportFragmentManager) {
-            val currentFragment = findFragmentByTag(HomeFragment.TAG)
-            if (currentFragment == null || currentFragment.isVisible.not()) {
+            val currentFragment = fragments.lastOrNull()
+            if (currentFragment == null || currentFragment::class.java != fragment::class.java) {
                 commit {
-                    replace(R.id.fragment_container, fragment, tag)
+                    replace(R.id.fragment_container, fragment)
                     addToBackStack(null)
                 }
             }
@@ -711,8 +709,11 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
     /**
      * This moves the main activity to the barcode entry fragment.
      */
-    private fun swapToSearchByCode() =
-            changeFragment(SearchByCodeFragment(), ITEM_SEARCH_BY_CODE.toLong(), resources.getString(R.string.search_by_barcode_drawer))
+    private fun swapToSearchByCode() {
+        swapToFragment(SearchByCodeFragment.newInstance())
+        drawerResult.setSelection(ITEM_SEARCH_BY_CODE.toLong())
+        supportActionBar?.title = resources.getString(R.string.search_by_barcode_drawer)
+    }
 
     override fun setItemSelected(@NavigationDrawerType type: Int) = drawerResult.setSelection(type.toLong(), false)
 
@@ -847,47 +848,6 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
             show()
         }
 
-    }
-
-    /**
-     * Used to navigate Fragments which are children of `MainActivity`.
-     * Use this method when the `Fragment` APPEARS in the `Drawer`.
-     *
-     * @param fragment The fragment class to display.
-     * @param title The title that should be displayed on the top toolbar.
-     * @param drawerName The fragment as it appears in the drawer. See [NavigationDrawerListener] for the value.
-     * @author ross-holloway94
-     * @see [Related Stack Overflow article](https://stackoverflow.com/questions/45138446/calling-fragment-from-recyclerview-adapter)
-     *
-     * @since 06/16/18
-     */
-    private fun changeFragment(fragment: Fragment, drawerName: Long, title: String? = null) {
-        changeFragment(fragment, title)
-        drawerResult.setSelection(drawerName)
-    }
-
-    /**
-     * Used to navigate Fragments which are children of `MainActivity`.
-     * Use this method when the `Fragment` DOES NOT APPEAR in the `Drawer`.
-     *
-     * @param fragment The fragment class to display.
-     * @param title The title that should be displayed on the top toolbar.
-     * @author ross-holloway94
-     * @see [Related Stack Overflow article](https://stackoverflow.com/questions/45138446/calling-fragment-from-recyclerview-adapter)
-     *
-     * @since 06/16/18
-     */
-    @JvmOverloads
-    fun changeFragment(fragment: Fragment, title: String? = null) {
-        val backStateName = fragment::class.simpleName
-        val fragmentPopped = supportFragmentManager.popBackStackImmediate(backStateName, 0)
-        if (!fragmentPopped && supportFragmentManager.findFragmentByTag(backStateName) == null) {
-            supportFragmentManager.commit {
-                replace(R.id.fragment_container, fragment, backStateName)
-                addToBackStack(backStateName)
-            }
-        }
-        title?.let { supportActionBar?.title = it }
     }
 
     companion object {
