@@ -36,10 +36,10 @@ desc "Build debug and test APK for screenshots"
       build_type: 'Debug',
       flavor: "off"
     )
-    build_android_app(
-      task: 'assemble',
-      build_type: 'AndroidTest',
-    )
+   // build_android_app(
+    //      task: 'assemble',
+      //    build_type: 'AndroidTest',
+    //    )
     build_android_app(
       task: 'assemble',
       build_type: 'Screenshots',
