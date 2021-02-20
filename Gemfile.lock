@@ -87,7 +87,7 @@ GEM
     fastlane-plugin-get_version_code (0.2.0)
     fastlane-plugin-get_version_name (0.2.2)
     fastlane-plugin-increment_version_code (0.4.3)
-    fastlane-plugin-sentry (1.7.0)
+    fastlane-plugin-sentry (1.8.0)
     fastlane-plugin-versioning_android (0.1.0)
     gh_inspector (1.1.3)
     google-api-client (0.38.0)
