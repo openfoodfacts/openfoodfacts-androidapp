@@ -22,8 +22,10 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
+          
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
+        
       - name: Workaround for Android Gradle plugin issue
         run: "echo \"ndk.dir=${ANDROID_HOME}/ndk-bundle\" > local.properties"
 
@@ -32,18 +34,18 @@ jobs:
         with:
           ruby-version: 2.6.x
 
-      - name: Screenshots AssembleAndroidTest
-        run: pwd && ./gradlew assembleDebug assembleAndroidTest
-      - name: Screenshots android tests
-        uses: eskatos/gradle-command-action@v1
-        with:
-          arguments: compileOffScreenshotsAndroidTestSources --stacktrace --info -PtestBuildType=screenshots
+#      - name: Screenshots AssembleAndroidTest
+#        run: pwd && ./gradlew assembleDebug assembleAndroidTest
+#      - name: Screenshots android tests
+#        uses: eskatos/gradle-command-action@v1
+#        with:
+#          arguments: compileOffScreenshotsAndroidTestSources --stacktrace --info -PtestBuildType=screenshots
 
       - name: Install Dependencies
         run: gem install bundler && bundle install
 
       - name: Run Fastlane Screenshots
-        run: pwd && bundle exec fastlane build_for_screengrab
+        run: pwd && cd ../app/ && bundle exec fastlane build_for_screengrab && echo "screengrab!" && fastlane screengrab
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
           CI_RELEASE: true
