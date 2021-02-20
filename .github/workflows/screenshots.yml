@@ -8,7 +8,7 @@ on:
 jobs:
   screenshots:
     name: Generate screenshots
-    runs-on: ubuntu-20.04
+    runs-on: macos-latest
     steps:
       - name: Checkout sources
         uses: actions/checkout@v2
@@ -45,7 +45,7 @@ jobs:
         run: gem install bundler && bundle install
 
       - name: Run Fastlane Screenshots
-        run: pwd && cd ./app/ && bundle exec fastlane build_for_screengrab && echo "screengrab!" && pwd && bundle exec fastlane screengrab
+        run: pwd && cd ./app/ && bundle exec fastlane build_for_screengrab
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
           CI_RELEASE: true
@@ -53,6 +53,12 @@ jobs:
           SIGN_STORE_PASSWORD: ${{ secrets.SIGN_STORE_PASSWORD }}
           SIGN_KEY_ALIAS: ${{ secrets.SIGN_KEY_ALIAS }}
           SIGN_KEY_PASSWORD: ${{ secrets.SIGN_KEY_PASSWORD }}
+
+      - name: run emulator
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 29
+          script: bundle exec fastlane screengrab
 
       - name: Upload screenshots
         uses: actions/upload-artifact@v2
