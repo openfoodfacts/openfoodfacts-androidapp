@@ -31,16 +31,18 @@ desc "Build debug and test APK for screenshots"
     gradle(
       task: 'clean'
     )
-    build_android_app(
-      task: 'assemble',
-      build_type: 'Debug',
-      flavor: "off",
-      project_dir: './'
-    )
     #build_android_app(
-    #      task: 'assemble',
-    #    build_type: 'AndroidTest',
-    #   )
+     # task: 'assemble',
+     # build_type: 'Debug',
+     # flavor: "off",
+     # project_dir: './'
+   # )
+    build_android_app(
+          task: 'assemble',
+      flavor: "off",
+        build_type: 'AndroidTest',
+      project_dir: './'
+       )
     build_android_app(
       task: 'assemble',
       build_type: 'Screenshots',
