@@ -1,6 +1,6 @@
 locales ['en-US']
 clear_previous_screenshots true
 app_apk_path 'app/build/outputs/apk/off/screenshots/app-off-screenshots.apk'
-tests_apk_path 'app/build/outputs/apk/off/screenshots/debug/app-off-screenshots-androidTest.apk'
+tests_apk_path 'app/build/outputs/apk/off/debug/app-off-debug.apk'
 test_instrumentation_runner 'androidx.test.runner.AndroidJUnitRunner'
 app_package_name 'openfoodfacts.github.scrachx.openfood.screenshots'
