@@ -45,7 +45,7 @@ jobs:
         run: gem install bundler && bundle install
 
       - name: Build Screenshots APK
-        run: pwd && bundle exec fastlane build_for_screengrab
+        run: pwd && bundle exec fastlane build_for_screengrab && find . -type f -name '*.apk'
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
           CI_RELEASE: true
