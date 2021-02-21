@@ -26,6 +26,7 @@ lane :capture_screen do
   screengrab
 end
 
+
 desc "Build debug and test APK for screenshots"
   lane :build_for_screengrab do
     gradle(
@@ -40,7 +41,7 @@ desc "Build debug and test APK for screenshots"
     build_android_app(
           task: 'assemble',
       flavor: "off",
-        build_type: 'AndroidTestScreenshots',
+        build_type: 'ScreenshotsAndroidTest',
       project_dir: './'
        )
     build_android_app(
@@ -50,6 +51,9 @@ desc "Build debug and test APK for screenshots"
       project_dir: './'
     )
   end
+
+#gradlew connectedOffScreenshotsAndroidTest --stacktrace --info -PtestBuildType=screenshots
+
 
 desc 'Create a release and upload to internal channel of playstore'
 lane :release do
