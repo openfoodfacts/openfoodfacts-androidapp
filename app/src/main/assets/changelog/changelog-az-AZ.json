@@ -1,0 +1,12 @@
+{
+  "changelog": [
+    {
+      "date": "10/02/2021",
+      "code": 350,
+      "name": "3.5.0",
+      "items": [
+        "Added changelog screen"
+      ]
+    }
+  ]
+}
