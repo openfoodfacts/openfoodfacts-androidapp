@@ -38,12 +38,10 @@ class ChangelogService(private val context: Context) {
                 .use(BufferedReader::readText)
     }
 
+    @Throws(IOException::class)
     private fun translationExists(fileName: String): Boolean {
-        return try {
-            val versions = context.assets.list(FOLDER)
-            versions?.toList()?.contains(fileName) ?: false
-        } catch (ex: IOException) {
-            false
-        }
+        val versions = context.assets.list(FOLDER)
+        return versions?.toList()?.contains(fileName) ?: false
+
     }
 }
