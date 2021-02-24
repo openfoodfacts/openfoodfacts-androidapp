@@ -1002,6 +1002,7 @@ class ContinuousScanActivity : AppCompatActivity() {
     }
 
     companion object {
+        val showSelectScannerPref = true
         private const val LOGIN_ACTIVITY_REQUEST_CODE = 2
         val BARCODE_FORMATS = listOf(
                 BarcodeFormat.UPC_A,

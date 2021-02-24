@@ -55,6 +55,7 @@ import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback
+import openfoodfacts.github.scrachx.openfood.features.scan.ContinuousScanActivity
 import openfoodfacts.github.scrachx.openfood.jobs.LoadTaxonomiesWorker
 import openfoodfacts.github.scrachx.openfood.jobs.OfflineProductWorker.Companion.scheduleSync
 import openfoodfacts.github.scrachx.openfood.models.DaoSession
@@ -151,6 +152,7 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
         }
 
         requirePreference<SwitchPreference>(getString(R.string.pref_scanner_type_key)).let {
+            it.isVisible = ContinuousScanActivity.showSelectScannerPref
             it.onPreferenceChangeListener = Preference.OnPreferenceChangeListener { _, newValue ->
                 if(newValue == true){
                     MaterialDialog.Builder(requireActivity()).run {
