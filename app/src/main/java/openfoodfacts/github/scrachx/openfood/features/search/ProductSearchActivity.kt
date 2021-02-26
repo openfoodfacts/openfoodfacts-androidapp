@@ -26,7 +26,6 @@ import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
-import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductBrowsingListBinding
@@ -246,7 +245,7 @@ class ProductSearchActivity : BaseActivity() {
             }
             else -> error("No match case found for ${mSearchInfo.searchType}")
         }
-        client = OpenFoodAPIClient(this@ProductSearchActivity, BuildConfig.OFWEBSITE)
+        client = OpenFoodAPIClient(this@ProductSearchActivity)
         binding.progressBar.visibility = View.VISIBLE
         reloadSearch()
     }
