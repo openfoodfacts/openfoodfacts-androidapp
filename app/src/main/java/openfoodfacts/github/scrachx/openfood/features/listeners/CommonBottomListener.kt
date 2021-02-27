@@ -34,15 +34,7 @@ class CommonBottomListener internal constructor(private val currentActivity: Act
             }
             R.id.home_page, R.id.home -> {
                 if (isCurrentActivity(WelcomeActivity::class.java) || isCurrentActivity(MainActivity::class.java)) {
-                    with((currentActivity as FragmentActivity).supportFragmentManager) {
-                        val fragment = fragments.lastOrNull()
-                        if (fragment == null || fragment !is HomeFragment) {
-                            commit {
-                                replace(R.id.fragment_container, HomeFragment.newInstance())
-                                addToBackStack(null)
-                            }
-                        }
-                    }
+                    openHomeFragment()
                     return true
                 }
                 currentActivity.startActivity(createIntent(MainActivity::class.java))
@@ -62,6 +54,18 @@ class CommonBottomListener internal constructor(private val currentActivity: Act
             else -> return true
         }
         return true
+    }
+
+    private fun openHomeFragment() {
+        (currentActivity as FragmentActivity).supportFragmentManager.let {
+            val fragment = it.fragments.lastOrNull()
+            if (fragment == null || fragment !is HomeFragment) {
+                it.commit {
+                    replace(R.id.fragment_container, HomeFragment.newInstance())
+                    addToBackStack(null)
+                }
+            }
+        }
     }
 
     private fun openScanActivity() {

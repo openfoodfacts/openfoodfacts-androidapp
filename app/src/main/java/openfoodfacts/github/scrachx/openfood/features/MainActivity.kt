@@ -418,15 +418,12 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
     }
 
     private fun swapToFragment(fragment: Fragment) {
-        with(supportFragmentManager) {
-            val currentFragment = fragments.lastOrNull()
-            if (currentFragment == null || currentFragment::class.java != fragment::class.java) {
-                commit {
-                    replace(R.id.fragment_container, fragment)
-                    addToBackStack(null)
-                }
+        val currentFragment = supportFragmentManager.fragments.lastOrNull()
+        if (currentFragment == null || currentFragment::class.java != fragment::class.java) {
+            supportFragmentManager.commit {
+                replace(R.id.fragment_container, fragment)
+                addToBackStack(null)
             }
-
         }
         binding.toolbarInclude.toolbar.title = BuildConfig.APP_NAME
     }
