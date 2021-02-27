@@ -8,7 +8,6 @@ import android.widget.Toast
 import androidx.core.content.edit
 import com.afollestad.materialdialogs.MaterialDialog
 import com.fasterxml.jackson.databind.JsonNode
-import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import io.reactivex.Completable
 import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable
@@ -34,15 +33,9 @@ import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct
 import openfoodfacts.github.scrachx.openfood.models.entities.ToUploadProduct
 import openfoodfacts.github.scrachx.openfood.models.entities.ToUploadProductDao
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager.productsApi
-import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
 import openfoodfacts.github.scrachx.openfood.utils.Utils.daoSession
-import openfoodfacts.github.scrachx.openfood.utils.Utils.defaultHttpClient
-import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
-import retrofit2.converter.jackson.JacksonConverterFactory
-import retrofit2.converter.scalars.ScalarsConverterFactory
 import java.io.File
 import java.io.IOException
 import java.util.*
@@ -60,14 +53,14 @@ class OpenFoodAPIClient(private val context: Context) {
     }
 
     private fun getAllFields(): String {
-        val allFields = context.resources.getStringArray(R.array.product_all_fields_array)
-        val fieldsToLocalize = context.resources.getStringArray(R.array.fields_array)
-        val langCode = getLanguage(context)
+        val allFields = ApiFields.Keys.PRODUCT_COMMON_FIELDS
+        val fieldsToLocalize = ApiFields.Keys.PRODUCT_LOCAL_FIELDS
 
+        val langCode = getLanguage(context)
         val fieldsSet = allFields.toMutableSet()
-        fieldsToLocalize.forEach { fieldToLocalize ->
-            fieldsSet.add("${fieldToLocalize}_$langCode")
-            fieldsSet.add("${fieldToLocalize}_en")
+        fieldsToLocalize.forEach { (field, shouldAddEn) ->
+            fieldsSet.add("${field}_$langCode")
+            if (shouldAddEn) fieldsSet.add("${field}_en")
         }
         return fieldsSet.joinToString(",")
     }
@@ -95,10 +88,9 @@ class OpenFoodAPIClient(private val context: Context) {
      * @param barcode product barcode
      */
     fun getProductImages(barcode: String): Single<ProductState> {
-        val fields = setOf(
-                *context.resources.getStringArray(R.array.product_images_fields_array),
-                "product_name_${getLanguage(context)}"
-        ).joinToString(",")
+        val fields = ApiFields.Keys.PRODUCT_IMAGES_FIELDS.toMutableSet().also {
+            it += ApiFields.Keys.lcProductNameKey(getLanguage(context))
+        }.joinToString(",")
         return productsApi.getProductByBarcode(
                 barcode,
                 fields,
