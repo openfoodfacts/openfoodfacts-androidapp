@@ -57,6 +57,7 @@ import openfoodfacts.github.scrachx.openfood.features.FullScreenActivityOpener
 import openfoodfacts.github.scrachx.openfood.features.ImagesManageActivity
 import openfoodfacts.github.scrachx.openfood.features.adapters.NutrimentsGridAdapter
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity
+import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_STATE
 import openfoodfacts.github.scrachx.openfood.features.product.view.CalculateDetailsActivity
 import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewActivity
 import openfoodfacts.github.scrachx.openfood.features.product.view.summary.SummaryProductFragment.Companion.EDIT_PRODUCT_AFTER_LOGIN
@@ -132,6 +133,15 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
         binding.newAdd.setOnClickListener { newNutritionImage() }
 
         refreshView(requireProductState())
+    }
+
+
+    companion object {
+        fun newInstance(productState: ProductState) = NutritionProductFragment().apply {
+            arguments = Bundle().apply {
+                putSerializable(KEY_STATE, productState)
+            }
+        }
     }
 
     override fun onDestroyView() {
@@ -569,5 +579,6 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
                 putExtra(ProductEditActivity.KEY_MODIFY_NUTRITION_PROMPT, showNutritionPrompt)
             },
     )
+
 
 }

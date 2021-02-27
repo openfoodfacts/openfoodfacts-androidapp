@@ -1,0 +1,803 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright 2016-2020 Open Food Facts
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ https://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <plurals name="offline_notification_count">
+        <item quantity="one">You have 1 offline product waiting to be contributed to Open Food Facts</item>
+        <item quantity="few">You have %d offline products waiting to be contributed to Open Food Facts</item>
+        <item quantity="many">You have %d offline products waiting to be contributed to Open Food Facts</item>
+        <item quantity="other">You have %d offline products waiting to be contributed to Open Food Facts</item>
+    </plurals>
+    <plurals name="seconds">
+        <item quantity="one">%d секунд назад</item>
+        <item quantity="few">%d seconds ago</item>
+        <item quantity="many">%d seconds ago</item>
+        <item quantity="other">%d seconds ago</item>
+    </plurals>
+    <plurals name="minutes">
+        <item quantity="one">%d минут назад</item>
+        <item quantity="few">%d minutes ago</item>
+        <item quantity="many">%d minutes ago</item>
+        <item quantity="other">%d minutes ago</item>
+    </plurals>
+    <plurals name="hours">
+        <item quantity="one">%d hour ago</item>
+        <item quantity="few">%d hours ago</item>
+        <item quantity="many">%d hours ago</item>
+        <item quantity="other">%d hours ago</item>
+    </plurals>
+    <plurals name="days">
+        <item quantity="one">%d day ago</item>
+        <item quantity="few">%d days ago</item>
+        <item quantity="many">%d days ago</item>
+        <item quantity="other">%d days ago</item>
+    </plurals>
+    <string name="action_about">О приложении</string>
+    <string name="action_discover">О проекте</string>
+    <string name="contribute">Как принять участие</string>
+    <string name="action_find">Найти</string>
+    <string name="product_incomplete_message">Этот продукт не является полным. В результате мы не смогли выполнить проверку аллергена.</string>
+    <string name="product_allergen_prompt">Этот продукт содержит:</string>
+    <string name="no_offline_data">Всё готово</string>
+    <string name="first_offline">Продукты, добавленные в автономном режиме, появятся здесь</string>
+    <!-- Image Upload -->
+    <!-- Nav Drawer Product Menu Items -->
+    <string-array name="nav_drawer_items_product">
+        <item>Резюме</item>
+        <item>Ингредиенты</item>
+        <item>Пищевая ценность</item>
+        <item>Состав</item>
+        <item>Окружающая среда</item>
+    </string-array>
+    <!-- New Nav Drawer Product Menu Items -->
+    <string-array name="nav_drawer_new_items_product">
+        <item>Фотографии продукта</item>
+        <item>Анализ ингредиентов</item>
+    </string-array>
+    <!-- Text units -->
+    <!-- weight units -->
+    <!-- nutrition energy units -->
+    <!-- volume units -->
+    <!-- nutrition weight units -->
+    <!-- nutrition weight units -->
+    <!-- all weight units -->
+    <string-array name="weight_all_units">
+        <item>мг</item>
+        <item>кг</item>
+        <item>мкг</item>
+        <item>% DV</item>
+        <item>МЕ</item>
+    </string-array>
+    <!-- nutrition comparison units -->
+    <!-- Application theme settings -->
+    <string-array name="application_theme_entries">
+        <item>@string/follow_system</item>
+        <item>@string/day</item>
+        <item>@string/night</item>
+    </string-array>
+    <!-- nutrients list
+    do not change the order of the array as the items are paired with the String array
+    PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
+    <string-array name="nutrients_array">
+        <item>Альфа-линоленовая кислота / ALA (18: 3 н-3)</item>
+        <item>Арахиновая кислота (20:0)</item>
+        <item>Арахидоновая кислота / АА / АРА (20: 4 н-6)</item>
+        <item>Бегеновая кислота (22:0)</item>
+        <item>Гидрокарбонаты</item>
+        <item>Биотин</item>
+        <item>Масляная кислота (4:0)</item>
+        <item>Кофеин</item>
+        <item>Кальций</item>
+        <item>Каприновая кислота (10:0)</item>
+        <item>Капроновая кислота (6:0)</item>
+        <item>Каприловая кислота (8:0)</item>
+        <item>Казеин</item>
+        <item>Церотиновая кислота (26:0)</item>
+        <item>Хлориды</item>
+        <item>Холестерин</item>
+        <item>Хром</item>
+        <item>Медь</item>
+        <item>Дигомо-гамма-линоленовая кислота / DGLA (20: 3 н-6)</item>
+        <item>Докозагексаеновая кислота / DHA (22:6 н-3)</item>
+        <item>Эйкозапентаеновая кислота (20:5 n-3)</item>
+        <item>Элаидиновая кислота (18:1 n-9)</item>
+        <item>Эруковая кислота (22:1 n-9)</item>
+        <item>Фториды</item>
+        <item>Фруктоза</item>
+        <item>Гамма-линоленовая кислота (18: 3 n-6)</item>
+        <item>Глюкоза</item>
+        <item>Гондоиновая кислота (20:1 n-9)</item>
+        <item>Иод</item>
+        <item>Железо</item>
+        <item>Лактоза</item>
+        <item>Лауриновая кислота (12:0)</item>
+        <item>Лигноцериновая кислота (24:0)</item>
+        <item>Линолевая кислота (18:2 n-6)</item>
+        <item>Магний</item>
+        <item>Мальтодекстрин</item>
+        <item>Мальтоза</item>
+        <item>Марганец</item>
+        <item>Мидовая кислота (20:3 n-9)</item>
+        <item>Мелиссовая кислота (30:0)</item>
+        <item>Молибден</item>
+        <item>Мононенасыщенные жирные кислоты</item>
+        <item>Монтановая кислота (28:0)</item>
+        <item>Миристиновая кислота (14:0)</item>
+        <item>Нервоновая кислота (24:1 n-9)</item>
+        <item>Нуклеотиды</item>
+        <item>Олеиновая кислота (18:1 n-9)</item>
+        <item>Омега-3 жирные кислоты</item>
+        <item>Омега-6 жирные кислоты</item>
+        <item>Омега-9 жирные кислоты</item>
+        <item>Пальмитиновая кислота (16:0)</item>
+        <item>Пантотеновая кислота / Пантотенат (Витамин B5)</item>
+        <item>pH</item>
+        <item>Фосфор</item>
+        <item>Многоатомные спирты (полиолы)</item>
+        <item>Полиненасыщенные жирные кислоты</item>
+        <item>Калий</item>
+        <item>Селен</item>
+        <item>Сывороточные белки</item>
+        <item>Диоксид кремния</item>
+        <item>Крахмал</item>
+        <item>Стеариновая кислота (18:0)</item>
+        <item>Сахароза</item>
+        <item>Таурин</item>
+        <item>Трансжиры</item>
+        <item>Витамин А</item>
+        <item>Витамин B1 (тиамин)</item>
+        <item>Витамин B12 (кобаламин)</item>
+        <item>Витамин B2 (рибофлавин)</item>
+        <item>Витамин B3 / витамин РР (никотиновая кислота)</item>
+        <item>Витамин B6 (пиридоксин)</item>
+        <item>Витамин B9 (Фолиевая кислота)</item>
+        <item>Витамин C (аскорбиновая кислота)</item>
+        <item>Витамин D</item>
+        <item>Витамин E</item>
+        <item>Витамин K</item>
+        <item>Цинк</item>
+    </string-array>
+    <!-- Text units -->
+    <!-- Content Description -->
+    <string name="search_button">Поиск</string>
+    <string name="alert_dialog_warning_title">Предупреждение</string>
+    <string name="alert_dialog_warning_msg_user">Пользователь/пароль изменены, обновите информацию</string>
+    <string name="toast_retrieving">Загрузка…</string>
+    <string name="txtBarcode">Штрих-код:</string>
+    <string name="txtCategories">Категории:</string>
+    <string name="txtLabels">Марки, сертификаты, награды:</string>
+    <string name="txtEMB">Коды упаковщика:</string>
+    <string name="txtIngredients">Список ингредиентов:</string>
+    <string name="Donate">Поддержать</string>
+    <string name="Donation">Нажмите здесь, чтобы поддержать Open Food Facts</string>
+    <string name="txtSubstances">Вещества или продукты, вызывающие аллергию или непереносимость:</string>
+    <string name="txtAdditives">Добавки:</string>
+    <string name="txtTraces">Может содержать:</string>
+    <string name="txtMayBeFromPalmOilProduct">Ингредиенты, возможно из пальмового масла:</string>
+    <string name="txtPalmOilProduct">Ингредиенты из пальмового масла:</string>
+    <string name="txtServingSize">Размер порции:</string>
+    <string name="txtNutrientLevel100g">Пищевая ценность на 100 г:</string>
+    <string name="txtNutrientLevel100ml">Пищевая ценность на 100 мл:</string>
+    <string name="txtNutritionLevelLow">в малом количестве</string>
+    <string name="txtNutritionLevelModerate">в умеренном количестве</string>
+    <string name="txtNutritionLevelHigh">в большом количестве</string>
+    <string name="txtSave">Сохранить</string>
+    <string name="txtSignIn">Войти</string>
+    <string name="txtToastSaved">Пользователь сохранён</string>
+    <string name="txtSalt">Соль</string>
+    <string name="txtFat">Жир</string>
+    <string name="txtSugars">Сахара</string>
+    <string name="hintBarcode">Штрих-код</string>
+    <string name="txtNutriScoreInfo">Узнайте больше об уровнях питательных веществ</string>
+    <string name="txtloginHelper">If you have an Open Food Facts account, you can login here with it</string>
+    <string name="hintLogin">Имя пользователя</string>
+    <string name="hintPass">Пароль</string>
+    <string name="errorLogin">Неверные имя или пароль</string>
+    <string name="errorWeb">Мы не смогли получить доступ к Интернету. Есть ли у вас проблемы с подключением?</string>
+    <string name="uploadLater">Изображение будет загружено, когда сеть будет доступна</string>
+    <string name="txtInfoLoginOk">Пользователь сохранён</string>
+    <string name="txtInfoLoginNo">Пользователь не сохранён</string>
+    <string name="txtDialogsContent">Отсканированного продукта ещё нет в базе Open Food Facts. Добавьте его, пожалуйста.</string>
+    <string name="txtYes">Да</string>
+    <string name="txtNo">Нет</string>
+    <string name="hintBrand">Марка</string>
+    <string name="txtSendAll">Отправить все</string>
+    <string name="txtPictureNeededDialogNo">Отменить</string>
+    <string name="toastSending">Передача…</string>
+    <string name="txtLoading">Загрузка…</string>
+    <string name="txtDialogsContentDelete">Вы уверены, что хотите удалить этот черновик?</string>
+    <string name="txtDialogsContentInfoSave">Продукт сохранён локально, вы можете редактировать его в меню Автономное редактирование</string>
+    <string name="productSavedToast">Товар сохранен, спасибо!</string>
+    <string name="txtBarcodeRequire">Требуется штрих-код</string>
+    <string name="txtOk">OK</string>
+    <string name="txtBarcodeNotValid">Недействительный штрих-код</string>
+    <string name="msg_share">Посмотрите на этот продукт на Open Food Facts:</string>
+    <string name="create_account">Регистрация</string>
+    <string name="home_drawer">Главная</string>
+    <string name="install">Установить</string>
+    <string name="open_beauty_drawer">Open Beauty Facts</string>
+    <string name="open_food_drawer">Open Food Facts</string>
+    <string name="search_drawer">Поиск</string>
+    <string name="search_by_barcode_drawer">Поиск по штрих-коду</string>
+    <string name="category_drawer">Категории</string>
+    <string name="search_by_category">Категория</string>
+    <string name="scan_search">Сканировать</string>
+    <string name="user_drawer">Пользователь</string>
+    <string name="offline_edit_drawer">Автономное редактирование</string>
+    <string name="txt_anonymous">Анонимный</string>
+    <string name="delete_txt">Удалить</string>
+    <string name="sign_in_drawer">Войти</string>
+    <string name="alert_drawer">Предупреждение об аллергенах</string>
+    <string name="your_lists">Ваши списки</string>
+    <string name="title_dialog_alert">Добавить предупреждение</string>
+    <string name="select_camera">Выберите камеру</string>
+    <string name="ok_button">OK</string>
+    <string name="cancel_button">Отмена</string>
+    <string name="login_button">Имя пользователя</string>
+    <string name="create_account_button">Создать учетную запись</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+    <string name="title_info_dialog">Как это работает?</string>
+    <string name="text_offline_info_dialog">Сканируйте продукты, когда вы не подключены к сети, чтобы добавить их в Open Food Facts позже. Все продукты, которые вы отсканируете, будут отображаться здесь, и вы сможете отправить их, используя кнопку ниже.</string>
+    <string name="permission_camera">Разрешение на доступ к камере требуется для сканирования штрих-кодов и получения фото.</string>
+    <string name="no_camera_dialog_title">Камера не обнаружена</string>
+    <string name="no_camera_dialog_content">На вашем устройстве нет камеры. Вы не сможете сканировать штрих-код.</string>
+    <string name="permission_title">Информация о разрешениях</string>
+    <string name="permission_denied">Пожалуйста, включите разрешение в настройках.</string>
+    <string name="info_download_data_connection">Для работы этой функциональности требуется скачать некоторые данные. Пожалуйста, включите интернет-соединение.</string>
+    <!-- Strings related to login -->
+    <string name="error_invalid_password">Длина пароля должна быть не менее 6 символов.</string>
+    <string name="user">пользователь</string>
+    <string name="error_field_required">Это поле обязательно.</string>
+    <!-- Strings related to feedback dialog -->
+    <string name="user_enjoying_app">Нравится работать с приложением Open Food Facts?</string>
+    <string name="user_ask_show_feedback_form">Очень жаль это слышать! Расскажите нам, что случилось?</string>
+    <string name="user_ask_rate_app">Замечательно! Поделитесь с друзьями своим мнением о приложении!</string>
+    <string name="rate_app">Оцените приложение</string>
+    <string name="no_thx">Нет, спасибо</string>
+    <string name="feedback_form_url">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
+    <!-- Scan history -->
+    <string name="scan_history_drawer">История</string>
+    <string name="clear_history">Очистить историю</string>
+    <string name="title_clear_history_dialog">Очистить</string>
+    <string name="text_clear_history_dialog">Вы хотите очистить всю свою историю поиска?</string>
+    <string name="export_csv_history">Экспорт в CSV</string>
+    <string name="txt_exporting_history">Экспорт истории…</string>
+    <string name="txt_history_exported">История экспортирована</string>
+    <string name="permision_write_external_storage">Разрешение записи на SD карту требуется для экспорта истории.</string>
+    <string name="no_brand">Нет бренда</string>
+    <string name="no_title">Нет названия</string>
+    <!-- Nutrition info tab -->
+    <string name="display_fact">Nutrition facts table for %1$s of this product</string>
+    <string name="check_facts">Проверить</string>
+    <string name="nutrition">Пищевая ценность</string>
+    <string name="calculated_nutrition">Расчитанная пищевая ценность</string>
+    <string name="please_enter_weight">Пожалуйста, введите вес продукта</string>
+    <string name="enter_weight">Введите вес продукта</string>
+    <string name="calculate_nutrition_facts">Расчитать пищевую ценность</string>
+    <string name="nutrition_carbohydrate">Углеводы</string>
+    <string name="nutrition_cholesterol">Холестерин</string>
+    <string name="nutrition_energy">Энергетическая ценность</string>
+    <string name="nutrition_energy_kcal">Энергия в калориях (ккал)</string>
+    <string name="nutrition_energy_kj">Энергия в Джоулях (кДж)</string>
+    <string name="nutrition_energy_short_name">Энергетическая ценность</string>
+    <string name="nutrition_fat">Жир</string>
+    <string name="nutrition_fiber">Пищевые волокна</string>
+    <string name="nutrition_header">Пищевая и энергетическая ценность</string>
+    <string name="nutrition_proteins">Белки</string>
+    <string name="nutrition_salt">Соль</string>
+    <string name="nutrition_satured_fat">Насыщенные жиры</string>
+    <string name="nutrition_sodium">Натрий</string>
+    <string name="nutrition_sugars">Сахара</string>
+    <string name="nutrition_trans_fat">Трансжиры</string>
+    <string name="nutriment_serving_size">На порцию:</string>
+    <string name="action_manage_account">Управление учётной записью</string>
+    <string name="action_contributes">Ваш вклад</string>
+    <string name="choose_energy_unit">Выберите предпочитаемые единицы энергии для таблицы питания</string>
+    <string name="choose_volume_unit">Выберите предпочитаемые единицы объема для таблицы питания</string>
+    <string name="logout_drawer">Выйти</string>
+    <string name="contribution_without_account">Вы можете войти или создать учётную запись, чтобы сохранить ваш вклад</string>
+    <string name="textCarbonFootprint">Углеродный след / выбросы CO2: </string>
+    <string name="packaging_environmentTab">Упаковка:</string>
+    <string name="action_search">Поиск</string>
+    <string name="search_hint">Поиск продукта</string>
+    <string name="number_of_results">Количество результатов: </string>
+    <string name="number_of_products">Количество продуктов: </string>
+    <string name="txt_no_matching__category_products">У нас нет каких-либо продуктов в этой категории, добавить новый?</string>
+    <string name="txt_no_matching_allergen_products">У нас нет каких-либо продуктов с этим аллергеном, добавить новый?</string>
+    <string name="txt_no_matching_label_products">У нас нет каких-либо продуктов с таким названием, добавить новый?</string>
+    <string name="txt_no_matching_additive_products">У нас нет каких-либо продуктов с этой добавкой, добавить новый?</string>
+    <string name="txt_no_matching_country_products">У нас нет каких-либо продуктов из этой страны, добавить новый?</string>
+    <string name="txt_no_matching_store_products">У нас нет каких-либо продуктов из этого магазина, добавить новый?</string>
+    <string name="txt_no_matching_packaging_products">У нас нет каких-либо продуктов с такой упаковкой, добавить новый?</string>
+    <string name="txt_no_matching_brand_products">У нас нет каких-либо продуктов с таким брендом, добавить новый?</string>
+    <string name="txt_no_matching_incomplete_products">У нас нет каких-либо незаполненных продуктов! Добавить новый продукт?</string>
+    <string name="txt_no_matching_contributor_products">У нас нет каких-либо продуктов от этого участника, добавить новый?</string>
+    <string name="txt_no_matching_products">Мы не нашли подходящих продуктов.\nВы можете попробовать:</string>
+    <string name="txt_broaden_search">- расширение вашего поиска \n- отсканируйте и добавьте его в Open Food Facts</string>
+    <string name="something_went_wrong">Извините, что-то пошло не так…</string>
+    <string name="txt_try_again">Попробуйте еще раз</string>
+    <string name="nutrition_lactose">Лактоза</string>
+    <string name="nutrition_casein">Казеин</string>
+    <string name="nutrition_maltodextrins">Мальтодекстрин</string>
+    <string name="nutrition_serum_proteins">Сывороточный протеин</string>
+    <string name="nutrition_nucleotides">Нуклеотиды</string>
+    <string name="for_100g">На 100 г</string>
+    <string name="for_100ml">На 100 мл</string>
+    <string name="serving">На порцию</string>
+    <string name="nutrition_monounsaturatedFat">Мононенасыщенные жирные кислоты</string>
+    <string name="nutrition_polyunsaturatedFat">Полиненасыщенные жирные кислоты</string>
+    <string name="nutrition_omega3">Омега-3</string>
+    <string name="nutrition_omega6">Омега-6</string>
+    <string name="nutrition_omega9">Омега-9</string>
+    <string name="nutrition_sucrose">Сахароза</string>
+    <string name="nutrition_glucose">Глюкоза</string>
+    <string name="nutrition_fructose">Фруктоза</string>
+    <string name="nutrition_maltose">Мальтоза</string>
+    <string name="nutrition_alcohol">Алкоголь</string>
+    <string name="nutrition_vitamins">Витамины</string>
+    <string name="vitamin_a">Витамин А</string>
+    <string name="vitamin_d">Витамин D</string>
+    <string name="vitamin_e">Витамин E</string>
+    <string name="vitamin_k">Витамин K</string>
+    <string name="vitamin_c">Витамин C</string>
+    <string name="vitamin_b1">Тиамин</string>
+    <string name="vitamin_b2">Рибофлавин</string>
+    <string name="vitamin_pp">Витамин PP</string>
+    <string name="vitamin_b6">Витамин B6</string>
+    <string name="vitamin_b9">Витамин B9</string>
+    <string name="vitamin_b12">Витамин B12</string>
+    <string name="biotin">Биотин</string>
+    <string name="pantothenic_acid">Пантотеновая кислота</string>
+    <string name="nutrition_minerals">Минералы</string>
+    <string name="silica">Диоксид кремния</string>
+    <string name="bicarbonate">Гидрокарбонаты</string>
+    <string name="potassium">Калий</string>
+    <string name="chloride">Хлориды</string>
+    <string name="calcium">Кальций</string>
+    <string name="phosphorus">Фосфор</string>
+    <string name="iron">Железо</string>
+    <string name="magnesium">Магний</string>
+    <string name="zinc">Цинк</string>
+    <string name="copper">Медь</string>
+    <string name="manganese">Марганец</string>
+    <string name="fluoride">Фториды</string>
+    <string name="selenium">Селен</string>
+    <string name="chromium">Хром</string>
+    <string name="molybdenum">Молибден</string>
+    <string name="iodine">Иод</string>
+    <string name="caffeine">Кофеин</string>
+    <string name="taurine">Таурин</string>
+    <string name="ph">pH</string>
+    <string name="fruits_vegetables_nuts">Фрукты, овощи, орехи</string>
+    <string name="collagen_meat_protein_ratio">Доля коллагена в мясном белке</string>
+    <string name="cocoa">Какао</string>
+    <string name="chlorophyl">Хлорофилл</string>
+    <string name="take_picture">Сфотографируйте</string>
+    <string name="choose_picture_from_gallery">Из галереи</string>
+    <string name="take_picture_ingredients">Сделайте фото состава</string>
+    <string name="take_picture_recycling">Сфотографируйте инструкции по переработке</string>
+    <string name="take_picture_front">Сделайте общее фото</string>
+    <string name="take_picture_nutrition_table">Сделайте фото энерг. ценности</string>
+    <string name="take_more_pictures">Сделайте дополнительные фото</string>
+    <string name="take_extra_packaging_pictures">Сделайте дополнительные фотографии упаковки</string>
+    <string name="txtSaturatedFat">Насыщенные жиры</string>
+    <string name="nutriscore_info_msg">Узнайте больше о Nutri-Score</string>
+    <string name="nova_info_msg">Подробнее о группах NOVA</string>
+    <string name="nova_grp1_msg">Группа 1 - Необработанные или минимально обработанные пищевые продукты</string>
+    <string name="nova_grp2_msg">Группа 2 - Обработанные кулинарные ингредиенты</string>
+    <string name="nova_grp3_msg">Группа 3 - Переработанные продукты</string>
+    <string name="nova_grp4_msg">Группа 4 - Ультра-трансформированные продукты питания и напитки</string>
+    <!-- String related to App Shortcuts -->
+    <string name="disabled_message">Ярлык недоступен</string>
+    <string name="scan_shortcut_short_label">Сканировать</string>
+    <string name="scan_shortcut_long_label">Сканировать продукт</string>
+    <string name="barcode_shortcut_short_label">Поиск</string>
+    <string name="barcode_shortcut_long_label">Поиск по штрих-коду</string>
+    <string name="history_shortcut_short_label">История</string>
+    <string name="history_shortcut_long_label">История</string>
+    <string name="contributions_shortcut_short_label">Вклад</string>
+    <string name="contributions_shortcut_long_label">Мой вклад</string>
+    <string name="forgot_password">Забыли пароль?</string>
+    <string name="next">ДАЛЕЕ</string>
+    <string name="skip">ПРОПУСТИТЬ</string>
+    <string name="start">ПОНЯТНО</string>
+    <string name="email_not_found">Не найдено приложений электронной почты</string>
+    <string name="airplane_mode_active_dialog_title">Включен режим полета</string>
+    <string name="airplane_mode_active_dialog_message">Включен режим полета, пожалуйста, отключите его, чтобы продолжить.</string>
+    <string name="airplane_mode_active_dialog_negative">Отменить</string>
+    <string name="airplane_mode_active_dialog_positive">Настройки</string>
+    <string name="device_offline_dialog_title">Сеть недоступна</string>
+    <string name="device_offline_dialog_message">Для этого требуется сетевое подключение, хотите ли вы изменить настройки?</string>
+    <string name="device_offline_dialog_negative">Отменить</string>
+    <string name="device_offline_dialog_positive">Настройки</string>
+    <string name="scan_first_product">Сканировать первый продукт</string>
+    <string name="device_on_mobile_data_warning_title">Информация</string>
+    <string name="device_on_mobile_data_warning_message">Вы отключили передачу мобильных данных , пожалуйста, подключитесь к WiFi или измените настройки</string>
+    <string name="device_on_mobile_data_warning_positive">Настройки</string>
+    <string name="device_on_mobile_data_warning_negative">Загрузить в любом случае</string>
+    <string name="changes_saved">Изменения успешно сохранены</string>
+    <string name="preference_choose_language_dialog_title">Выберите язык</string>
+    <string name="please_check_your_connection">Проверьте подключение к интернету.</string>
+    <string name="advanced_search_title">Расширенный поиск и графики</string>
+    <string name="compare_products">Сравнить продукты</string>
+    <string name="connectivity_check">Пожалуйста, проверьте подключение к интернету</string>
+    <string name="dismiss">Отменить</string>
+    <string name="donation_url">https://donate.openfoodfacts.org</string>
+    <!--Just replace "world" by "fr", "de"… translate the "terms-of-use" with the hyphens -->
+    <string name="terms_url">https://world-ru.openfoodfacts.org/terms-of-use</string>
+    <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
+    <string name="faq_url">https://world.openfoodfacts.org/faq</string>
+    <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
+    <string name="hunger_game_url">https://hunger.openfoodfacts.org</string>
+    <!--Just replace "world" by "world-fr", "world-de"… do not translate the end of the url -->
+    <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
+    <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
+    <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
+    <string name="url_nova_groups">https://world.openfoodfacts.org/nova</string>
+    <!--Just replace "world" by "fr", "de"… translate the end of the url -->
+    <string name="ecoscore_url">https://world.openfoodfacts.org/eco-score-the-environmental-impact-of-food-products</string>
+    <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
+    <string name="url_nutrient_values">https://world-ru.openfoodfacts.org/nutrition-traffic-lights</string>
+    <string name="preference_header_general">Основныe</string>
+    <string name="scan_first_string">Просмотренные вами продукты будут перечислены здесь.\nЭта история предназначена только для ваших глаз и хранится локально.</string>
+    <string name="log_in">Имя пользователя</string>
+    <string name="login_true">Уже вошли!</string>
+    <string name="confirm_logout">Подтвердить выход</string>
+    <string name="logout_dialog_content">Вы уверены, что хотите выйти?</string>
+    <string name="dialog_cancel">Отмена</string>
+    <string name="dialog_create">Создать</string>
+    <string name="wikidata_information">Идем дальше</string>
+    <string name="wikidata_unavailable">На вашем языке еще нет страницы в Википедии.</string>
+    <string name="Wikipedia">Посмотреть в Википедии</string>
+    <string name="Browse_Products">Просмотр продуктов</string>
+    <string name="brand_string">Марка</string>
+    <string name="additive_string">Добавка</string>
+    <string name="allergen_string">Аллерген</string>
+    <string name="search_string">Поиск</string>
+    <string name="country_string">Страны продажи</string>
+    <string name="store_subtitle">Магазин</string>
+    <string name="packaging_subtitle">Упаковка</string>
+    <string name="packaging_string">Упаковка</string>
+    <string name="label_string">Маркировка</string>
+    <string name="category_string">Категория</string>
+    <string name="connection">Подключено</string>
+    <string name="contributor_string">Участник</string>
+    <string name="app_disabled_text">Приложение отключено</string>
+    <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
+    <string name="vitamin_tags_text">Витамины:</string>
+    <string name="amino_acid_tags_text">Аминокислоты:</string>
+    <string name="mineral_tags_text">Минералы:</string>
+    <string name="other_tags_text">Другие вещества:</string>
+    <!--shared element transition key-->
+    <string name="by_title">Название</string>
+    <string name="by_brand">Марка</string>
+    <string name="by_barcode">Штрих-код</string>
+    <string name="by_time">Недавно просмотренные</string>
+    <string name="sort">Сортировка</string>
+    <string name="by_nutrition_grade">Уровень питательных веществ</string>
+    <string name="sort_by">Сортировать по</string>
+    <!-- strings related to share images -->
+    <string name="sorry_msg">Фотографии без штрих-кода невозможно добавить в приложении. Попробуйте мобильную веб-версию.</string>
+    <string name="no_barcode">Не найден штрих-код</string>
+    <string name="enter_barcode">Введите штрих-код ниже</string>
+    <string name="format_error">Неверный формат штрих-кода/​​QR-кода</string>
+    <string name="code_detected">Не найден штрих-код</string>
+    <string name="do_you_want_to">Вы хотите добавить фотографии к этому штрих-коду?</string>
+    <string name="bottomNav_history">История</string>
+    <string name="products_added">Продукты, которые вы добавили или редактировали</string>
+    <string name="products_incomplete">Добавленные вами незавершенные продукты</string>
+    <string name="product_pictures_contributed">Продукты, которые вы снимали</string>
+    <string name="picture_contributed_incomplete">Сфотографированные вами незавершенные продукты</string>
+    <string name="product_info_added">Продукты, для которых вы добавили информацию</string>
+    <string name="product_info_tocomplete">Незавершенные продукты, для которых вы добавляли информацию</string>
+    <string name="show_by">Показать</string>
+    <string name="notify_title">Экспорт завершен</string>
+    <string name="notify_content">Нажмите, чтобы просмотреть экспортированные продукты</string>
+    <string name="notification_channel_name">Экспорт уведомлений</string>
+    <string name="notify_channel_description">Уведомление о местоположении экспортируемого файла</string>
+    <string name="products_to_be_completed">Незавершенные продукты</string>
+    <string name="offline_notification_title">Оффлайн-вклады, которые необходимо отправить</string>
+    <string name="creator_history">Product added on %1$s at %2$s CET by %3$s</string>
+    <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by %3$s </string>
+    <string name="other_editors">Страницу продукта также редактировали </string>
+    <string name="product_states">Состояния товара</string>
+    <string name="incomplete_states">Incomplete States</string>
+    <string name="complete_states">Complete States</string>
+    <string name="contribution_tab">Вклад</string>
+    <string name="synthesis_tab">Synthesis</string>
+    <string name="txtDialogsTitle">Информация</string>
+    <string name="offline_product_addition_title">Добавить новый продукт</string>
+    <string name="productNameNull">Название неизвестно</string>
+    <string name="productAdditivesUnknown"></string>
+    <string name="productAdditivesTemplate">%1$d additives</string>
+    <plurals name="productAdditives">
+        <item quantity="one">%d additive</item>
+        <item quantity="few">%d additives</item>
+        <item quantity="many">%d additives</item>
+        <item quantity="other">%d additives</item>
+    </plurals>
+    <string name="product_not_complete">Этот продукт еще не завершен. \nМожете вы добавить некоторые детали?</string>
+    <string name="addProductOffline">You seem offline. Add the product %s using the offline mode ?</string>
+    <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
+    <string name="scan_sound">Звук сканировния</string>
+    <string name="trouble_scanning">Не можете отсканировать?</string>
+    <string name="barcode_hint">Не можете отсканировать? Введите штрих-код</string>
+    <string name="switch_camera">Переключить камеру</string>
+    <string name="autofocus">Автофокус</string>
+    <string name="initial_loading">Начальная загрузка</string>
+    <string name="preferences">Настройки</string>
+    <string name="OFFlogo">Open Food Facts logo</string>
+    <string name="loading_product">Loading product %s</string>
+    <string name="image_not_defined_for_language">Нет изображения для выбранного языка. Вы можете добавить новое</string>
+    <string name="error_adding_ingredients">Что-то пошло не так при попытке добавления ингредиентов продукта</string>
+    <string name="unable_to_extract_ingredients">Не удалось извлечь ингредиенты из изображения</string>
+    <string name="error_adding_nutrition_facts">Что-то пошло не так при попытке добавить пищевую ценность продукта</string>
+    <string name="error_in_carbohydrate_value">Углеводы не могут быть меньше суммы сахара и крахмала</string>
+    <string name="choose_nutrient">Выберите питательное вещество</string>
+    <string name="error_adding_product_details">Что-то пошло не так, когда вы пытались добавить сведения о продукте</string>
+    <string name="hint_product_URL">Ссылка на официальную страницу продукта</string>
+    <string name="extract_url">Извлечь URL из QR-кода</string>
+    <string name="search_url">Поиск URL официальной страницы</string>
+    <string name="product_language">Язык продукта: </string>
+    <string name="hint_emb_codes">Примеры: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522, FSSL 10013011001409</string>
+    <string name="official_website">Официальный сайт</string>
+    <string name="scan_QR_code">Сканировать QR-код для веб-сайта продукта</string>
+    <string name="add_at_least_one_picture">Пожалуйста, добавьте по крайней мере одну фотографию этого продукта, прежде чем продолжить</string>
+    <string name="image_uploaded_successfully">Изображение успешно загружено</string>
+    <string name="error_adding_product_photos">Что-то пошло не так, при попытке добавить фотографии продукта</string>
+    <string name="ingredients_overwrite">Перезапись состава</string>
+    <string name="choose_mine">Выбрать мой</string>
+    <string name="keep_previous_version">Сохранить предыдущую версию</string>
+    <string name="product_name_overwrite">Перезапись названия</string>
+    <string name="yours">Ваши: </string>
+    <string name="currently_on">Currently on %s: </string>
+    <string name="quantity_overwrite">Перезапись количества</string>
+    <string name="link_overwrite">Перезапись ссылки</string>
+    <string name="save_product">Вы хотите сохранить продукт?</string>
+    <string name="error_adding_product">Что-то пошло не так при добавлении продукта</string>
+    <string name="photos">Фотографии</string>
+    <string name="please_wait">Подождите</string>
+    <string name="product_uploaded_successfully">Продукт успешно загружен</string>
+    <string name="no_internet_connection">Отсутствует подключение к Интернету, изображения будут загружены, когда сеть будет доступна</string>
+    <string name="no_internet_unable_to_extract_ingredients">Нет подключение к Интернету. Не удалось извлечь ингредиенты</string>
+    <string name="percent">%1$d%%</string>
+    <string name="overview">Резюме</string>
+    <string name="ingredients">Ингредиенты</string>
+    <string name="nutrition_facts">Пищевая ценность</string>
+    <string name="your_version">Ваши</string>
+    <string name="ingredients_picture">Изображение ингредиентов</string>
+    <string name="packaging">Переработка</string>
+    <string name="recycling_picture">Изображение сведений о переработке</string>
+    <string name="take_ingredients_picture_to_extract">(Сделайте снимок ингредиентов, чтобы извлечь их автоматически)</string>
+    <string name="ingredients_list">Список ингредиентов</string>
+    <string name="ingredients_hint">Сохраняйте порядок, указывайте %, там где они указаны, разделяйте запятыми или -, используйте () для состава ингредиентов, окружайте аллергены _ например, _молоко_</string>
+    <string name="extract_ingredients">Распознать ингредиенты</string>
+    <string name="extracting_ingredients">Распознавание ингредиентов</string>
+    <string name="looksGood">Выглядит хорошо</string>
+    <string name="skip_ingredients">Слишком плохо \n Пропустить ингредиенты</string>
+    <string name="traces">Следы</string>
+    <string name="traces_hint">Укажите ингредиенты, упоминаемые как \"Может содержать следы…\", \"Сделано на фабрике, которая также использует…\" и т. д. \nПримеры: молоко, глютен, орехи</string>
+    <string name="nutrition_facts_not_specified">Пищевая ценность не указана на продукте.</string>
+    <string name="nutrition_facts_picture">Фото пищевой ценности</string>
+    <string name="front_short_picture">Лицевая сторона</string>
+    <string name="other_picture">Другое изображение</string>
+    <string name="for_100g_100ml">В 100 г/100 мл</string>
+    <string name="per_serving">На порцию</string>
+    <string name="serving_size">Размер порции</string>
+    <string name="alcohol_unit" formatted="false">% об. / °</string>
+    <string name="add_a_nutrient">Добавить питательное вещество</string>
+    <string name="add_this_product">Добавить этот продукт</string>
+    <string name="product_picture">Фото продукта</string>
+    <string name="one_photo_compulsory">(одна фотография обязательна для добавления нового продукта)</string>
+    <string name="product_details">Информация о товаре</string>
+    <string name="product_name">Название продукта</string>
+    <string name="quantity">Количество</string>
+    <string name="labels">Маркировки</string>
+    <string name="period_of_time_after_opening">Период времени после открытия</string>
+    <string name="manufacturing_details">Информация о производстве</string>
+    <string name="origin_of_ingredients">Происхождение ингредиентов</string>
+    <string name="manufacturing_place">Место производства</string>
+    <string name="emb_code">Код упаковщика</string>
+    <string name="purchasing_details">Подробности покупки</string>
+    <string name="country_where_purchased">Страна приобретения</string>
+    <string name="stores">Магазины</string>
+    <string name="additional_pictures">Дополнительные фотографии</string>
+    <string name="hint_product_pictures">(Добавьте дополнительные фото продукта, например, инструкции по утилизации, этикетки и т. д.)</string>
+    <string name="uploading_image">Отправка фото</string>
+    <string name="uploading_nutrition_image">Загрузка изображения пищевой ценности</string>
+    <string name="uploading_ingredients_image">Загрузка изображения состава</string>
+    <string name="uploading_front_image">Загрузка изображения лицевой стороны</string>
+    <string name="edit_front_image">Редактировать фото лицевой стороны</string>
+    <string name="edit_nutrition_image">Редактировать лицевое фото</string>
+    <string name="edit_packaging_image">Отредактируйте фотографию сведений о переработке</string>
+    <string name="edit_ingredients_image">Редактировать фото ингредиентов</string>
+    <string name="edit_other_image">Редактировать фото</string>
+    <string name="sign_in_to_edit">Войдите, чтобы отредактировать продукт.</string>
+    <string name="sign_in_to_answer">Пожалуйста, войдите или зарегистрируйтесь, чтобы ответить на вопрос.</string>
+    <string name="hint_quantity">Например: 2 л, 250 г, 1 кг, 250 мл, 1 фунт</string>
+    <string name="edit_product_title">Редактировать продукт</string>
+    <string name="nutrient_already_added">%s is already present in the nutrition facts</string>
+    <string name="save_edits">Сохранить изменения</string>
+    <string name="contribution_by">Вклад от</string>
+    <string name="title_activity_product">Название</string>
+    <string name="description_activity_product">описание</string>
+    <string name="intent_filter_share_label">Add to Open Food Facts</string>
+    <!-- Used for additive exposure evaluation table -->
+    <string name="overexposure_high">Высокий риск чрезмерного воздействия</string>
+    <string name="overexposure_moderate">Умеренный риск чрезмерного воздействия</string>
+    <string name="infants">Младенцы</string>
+    <string name="infants_age">&lt; 1</string>
+    <string name="toddlers">Малыши</string>
+    <string name="toddlers_age">От 1 до 2</string>
+    <string name="children">Дети</string>
+    <string name="children_age">От 3 до 9</string>
+    <string name="adolescents">Подростки</string>
+    <string name="adolescents_age">От 10 до 17</string>
+    <string name="adults">Взрослые</string>
+    <string name="adults_age">От 18 до 64</string>
+    <string name="elderly">Пожилые</string>
+    <string name="elderly_age">65+</string>
+    <string name="most_people">Большинство людей\n(более 50%)</string>
+    <string name="some_people">Некоторые люди\n(более 5%)</string>
+    <string name="safety_and_exposure_assessment">Оценка безопасности и воздействия</string>
+    <string name="risk_of_exposure">Риск воздействия</string>
+    <string name="efsa_warning_high_risk">The European Food Safety Authority (EFSA) has determined that some population groups have a high risk of consuming too much %1$s.</string>
+    <string name="legend_noael">выше дозы с наблюдаемым неблагоприятным эффектом (NOAEL)</string>
+    <string name="legend_adi">выше допустимой дневной нормы (ADI)</string>
+    <string name="max_energy_val_msg">Это значение выше 2000 ккал на 100 г. Вы можете его исправить?</string>
+    <string name="max_nutrient_val_msg">Введенное значение больше указанного на порцию</string>
+    <string name="update_image">Отправить обновленное изображение</string>
+    <!-- Used for additive exposure evaluation table -->
+    <string name="extract_ingredients_prompt">Распознать ингредиенты</string>
+    <string name="extract_recycling_prompt">Извлечь инструкции по переработке</string>
+    <string name="add_nutrient_prompt_text">Добавьте пищевую ценность для расчета уровня питательных веществ</string>
+    <string name="add_category_prompt_text">Добавить категорию, чтобы помочь завершить продукт</string>
+    <string name="add_nutrient_category_prompt_text">Добавьте категорию и пищевую ценность, чтобы помочь завершить продукт</string>
+    <string name="couldnot_compute_ecoscore_prompt_text">Мы не смогли вычислить Eco-Score для этого продукта. Возможно, категория недостаточно конкретна или у нас нет подтверждающих данных для этой категории. Если вы считаете, что это ошибка, вы можете написать нам, нажав ниже.</string>
+    <string name="add_labels_origins_prompt_text">Eco-Score учитывает экологические маркировки и происхождение ингредиентов. Сфотографируйте их или отредактируйте продукт, чтобы их можно было учесть</string>
+    <string name="add_labels_prompt_text">Eco-Score учитывает экологические маркировки. Сфотографируйте их или отредактируйте продукт, чтобы их можно было учесть</string>
+    <string name="add_origins_prompt_text">Eco-Score учитывает происхождение ингредиентов. Сфотографируйте их (список ингредиентов и / или любое географическое указание) или отредактируйте продукт, чтобы их можно было учесть</string>
+    <string name="category_game_btn">Помогите классифицировать продукты</string>
+    <string name="version_string">Open Food Facts Android App</string>
+    <string name="set_ingredient_img">Set as ingredients image</string>
+    <string name="set_img_nutrients">Set as nutrition image</string>
+    <string name="set_img_front">Set as front image</string>
+    <string name="set_img_recycling">Установить как изображение о переработке</string>
+    <string name="report_img">Сообщить об изображении</string>
+    <string name="detected_ingredients">Обнаруженные ингредиенты</string>
+    <string name="txtConnectionError">Не удалось загрузить некоторые данные. Это может быть вызвано ошибкой соединения.</string>
+    <string name="set_image_name">Изображение установлено как</string>
+    <string name="addtive_search">Поиск добавки</string>
+    <string name="additives">Добавки</string>
+    <!--used for product_lists implementation-->
+    <string name="add_to_product_lists">Добавить в ваши списки</string>
+    <string name="txt_create_new_list">Создать новый список</string>
+    <string name="txt_add_to_new_list">Добавить в новый список</string>
+    <string name="create_new_list_list_name">Список Имен</string>
+    <string name="txt_eaten_products">У меня есть товары</string>
+    <string name="txt_products_to_buy">Продукты для покупки</string>
+    <string name="txt_exporting_your_listed_products">Экспорт ваших продуктов…</string>
+    <string name="txt_your_listed_products_exported">Ваши продукты были экспортированы</string>
+    <string name="txt_discard">Отменить</string>
+    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
+        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
+    <string name="txt_info_your_listed_products">Вы сможете добавлять товары в этот список, выполнив их поиск и кликнув кнопку \"+\" в правом верхнем углу страницы товара.</string>
+    <string name="txt_no_nutrition_data">Этот продукт не имеет никакой информации о питании на упаковке. Если это изменилось, вы можете отредактировать продукт.</string>
+    <string name="image_prompt_language">Сделайте фото состава в</string>
+    <string name="swipe_delete_tip">Вы можете удалить список, проведя по нему влево.</string>
+    <!-- Used for diets AddOn -->
+    <string name="empty"></string>
+    <string name="add_product">Добавьте продукты</string>
+    <string name="add_another_product">Добавить другой продукт</string>
+    <string name="add_nutrition_facts_for_nutriscore">Добавьте факты о питании, чтобы вычислить Nutri-Score</string>
+    <string name="product_summary_action_compare_button_label">Сравнить</string>
+    <string name="product_summary_action_add_to_list_button_label">Добавить в список</string>
+    <string name="product_summary_action_edit_button_label">Изменить</string>
+    <string name="product_summary_action_share_button_label">Поделиться</string>
+    <string name="product_question_prompt">Нажмите здесь, чтобы ответить</string>
+    <string name="product_question_positive_response">Да</string>
+    <string name="product_question_negative_response">Нет</string>
+    <string name="product_question_ambiguous_response">Не уверен</string>
+    <string name="product_question_submit_message">Спасибо за Ваш вклад!</string>
+    <string name="error_nutrient_entry">Значение должно быть цифровым. Пример: &quot;1.5&quot;, &quot;2,0&quot;</string>
+    <string name="error_nutrient_serving_data">Размер порции должен быть положительным</string>
+    <string name="error_in_nutrient_data">Некоторые значения питательных веществ не допустимы. Исправьте поля выше с маркером ошибки</string>
+    <string name="go_to_full_product_page">Перейти к продукту</string>
+    <string name="no_additive_data_available_for_this_product">Дополнительных данные не доступны для этого продукта</string>
+    <string name="no_nutrient_information_available_for_this_product">Нет информации о питательной ценности для этого продукта</string>
+    <string name="error_duplicate_listname">У вас уже есть список с таким именем</string>
+    <string name="required_to_compute_nutriscore">(Требуется для вычисления Nutri-Score)</string>
+    <string name="scan_tooltip">Вы можете сдвинуть карточку для подробностей</string>
+    <string name="add_an_allergen">Добавить аллерген</string>
+    <string name="add_a_list">Добавить список</string>
+    <string name="edit_image">Редактировать изображение</string>
+    <string name="cant_edit_image_not_yet_uploaded">Новое изображение еще не загружено. Пожалуйста, подождите, прежде чем его редактировать</string>
+    <string name="unselect_image">Снять выбор с изображения</string>
+    <string name="choose_default_language">Выберите язык продукта</string>
+    <string name="barcode">Штрих-код</string>
+    <string name="productAdditivesNone">Без добавок</string>
+    <string name="error_uploading_photo">Произошла ошибка во время загрузки нового фото</string>
+    <string name="import_csv_to_list">Импорт CSV-файла со списком Open Food Facts (БД со списком продуктов питания со всего мира)</string>
+    <string name="toast_import_csv_error">Ошибка при импорте CSV файла</string>
+    <string name="toast_import_csv">CSV успешно импортирован!</string>
+    <string name="open_csv">Открыть CSV</string>
+    <!-- Used for diets AddOn -->
+    <string name="history_network_error">Продукт не может быть загружен. Пожалуйста, попробуйте снова, когда вы вернетесь в онлайн.</string>
+    <string name="cant_modify_if_refreshing">Пожалуйста, дождитесь окончания загрузки</string>
+    <string name="closeZoom">Нажмите, чтобы закрыть масштабирование</string>
+    <string name="imageFullscreen">Увеличить</string>
+    <!-- Used for product ingredients analysis tags -->
+    <string name="close_button">Закрыть</string>
+    <string name="tip_message">TIP: %1$s </string>
+    <string name="ingredient_analysis_tip">Нажмите на иконки ниже, чтобы узнать больше о продукте и выбрать интересующую вас информацию.</string>
+    <string name="got_it">Понятно!</string>
+    <string name="onboarding_hint_msg">Hint: %s </string>
+    <string name="image_edit_tip">Нажмите на изображение, чтобы увеличить его, изменить, обрезать, повернуть и т.д…</string>
+    <string name="ingredients_in_this_product_are">Ingredients in this product are %1$s.</string>
+    <string name="ingredients_in_this_product">Ingredients in this product that are %1$s:</string>
+    <string name="display_analysis_tag_status">Display %1$s status</string>
+    <string name="unknown_status_no_translation">Мы не смогли оценить состояние продукта из-за неизвестных ингредиентов.</string>
+    <string name="help_translate_ingredients">Помогите перевести ингредиенты на ваш язык</string>
+    <string name="unknown_status_missing_ingredients">Мы не смогли оценить состояние продукта из-за отсутствия ингредиентов.</string>
+    <string name="unknown_status_ambiguous_ingredients">We couldn\'t assess the status of the product because of ambiguous ingredients : <![CDATA[<b>%1$s</b>]]></string>
+    <string name="help_extract_ingredients">Help extract the ingredients to get the %1$s status</string>
+    <string name="add_photo_to_extract_ingredients">Добавить фотографию, чтобы начать извлечение ингредиентов</string>
+    <string name="product_already_exists_in_comparison">Продукт уже существует в списке сравнения</string>
+    <string name="compare_brands">Бренды :</string>
+    <string name="compare_additives">Добавки:</string>
+    <string name="compare_salt">Соль</string>
+    <string name="compare_sugars">Сахара</string>
+    <string name="compare_saturated_fat">Насыщенные жиры</string>
+    <string name="compare_fat">Жир</string>
+    <string name="compare_quantity">Количество :</string>
+    <string name="load_ingredient_detection_data">Загрузить данные об обнаружении ингредиента</string>
+    <string name="load_ingredient_detection_data_summary">Данные о обнаружении ингредиентов не найдены, попробуйте загрузить их с сервера</string>
+    <string name="white_check_image_descr">Белая галочка</string>
+    <string name="hint_packaging">Примеры: пластик, бумага, стекло</string>
+    <string name="hint_trace_code">Примеры: EMB 23456, FR 23.345.34 CE</string>
+    <string name="risk_alcohol_consumption">Чрезмерное потребление алкоголя (которое должно потребляться умеренно) вредно для здоровья</string>
+    <!--ShowcaseView Strings-->
+    <string name="title_image_type">Выберите тип изображения</string>
+    <string name="content_image_type">Выбрать фото для работы</string>
+    <string name="title_choose_language">Выберите язык</string>
+    <string name="content_choose_language">Выберите язык фото</string>
+    <string name="title_add_photo">Добавить фото</string>
+    <string name="content_add_photo">Нажмите здесь, чтобы сделать новое фото</string>
+    <string name="title_choose_photo">Выбрать фото</string>
+    <string name="content_choose_photo">Выбрать из существующих фотографий</string>
+    <string name="title_edit_photo">Редактировать фото</string>
+    <string name="content_edit_photo">Редактировать, обрезать и повернуть фото</string>
+    <string name="title_unselect_photo">Отменить выбор фото</string>
+    <string name="content_unselect_photo">Нажмите здесь, чтобы отменить выбор текущей фотографии</string>
+    <string name="title_exit">Выход</string>
+    <string name="content_exit">Нажмите здесь, чтобы вернуться к продукту</string>
+    <string name="icon_label">Значок ярлыков</string>
+    <string name="icon_categories">Значок категорий</string>
+    <string name="icon_emb">Значок кода упаковщика</string>
+    <string name="product_front_image">Изображение передней части товара</string>
+    <string name="brand_hint">Examples: Coca-Cola, Nestle, etc…</string>
+    <string name="sign_in_or_register">Войдите или зарегистрируйтесь</string>
+    <string name="hunger_game_call_to_action">Help classify more %1$s</string>
+    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s products (plus the ones you will contribute).</string>
+    <string name="enabled">Включить</string>
+    <!-- Application theme settings -->
+    <string name="follow_system">Follow system</string>
+    <string name="day">Day</string>
+    <string name="night">Night</string>
+    <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
+    <string name="hint_origin">Examples: USA, France, Italy</string>
+    <string name="report_email_chooser_title">Отправить отчет по электронной почте</string>
+</resources>

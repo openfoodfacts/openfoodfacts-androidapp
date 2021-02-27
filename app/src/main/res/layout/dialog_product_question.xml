@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright 2016-2020 Open Food Facts
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -45,7 +44,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/semi_trans"
-                android:background="@color/colorPrimaryDark">
+                android:background="@drawable/rounded_corners_top">
 
                 <LinearLayout
                     android:id="@+id/feedback_body_layout"
@@ -73,7 +72,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:gravity="center"
-                        android:textColor="#FFF"
                         android:textSize="18sp"
                         tools:text="Value" />
 
@@ -89,8 +87,8 @@
                 android:layout_gravity="center"
                 android:layout_marginBottom="-20dp"
                 android:adjustViewBounds="true"
-                android:elevation="5dp"
-                android:src="@drawable/reviewdialog_round_icon" />
+                android:src="@drawable/reviewdialog_round_icon"
+                app:elevation="5dp" />
 
         </RelativeLayout>
 
@@ -98,7 +96,7 @@
             android:id="@+id/dialog_action"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:background="#FFF"
+            android:background="@drawable/bottom_rounded_corner_productques"
             android:baselineAligned="false"
             android:orientation="horizontal"
             android:weightSum="3">
@@ -119,8 +117,9 @@
                     android:layout_width="32dp"
                     android:layout_height="32dp"
                     android:layout_gravity="center_horizontal"
-                    android:tint="@color/brand_green"
-                    app:srcCompat="@drawable/ic_baseline_check_circle_24" />
+                    android:contentDescription="@null"
+                    app:srcCompat="@drawable/ic_baseline_check_circle_24"
+                    app:tint="@color/brand_green" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/positive_feedback_text"
@@ -131,7 +130,6 @@
                     android:gravity="center"
                     android:singleLine="true"
                     android:textAllCaps="true"
-                    android:textColor="#000"
                     tools:text="YES" />
             </LinearLayout>
 
@@ -163,7 +161,6 @@
                     android:gravity="center"
                     android:singleLine="true"
                     android:textAllCaps="true"
-                    android:textColor="#000"
                     tools:text="NOT SURE"
 
                     />
@@ -185,8 +182,8 @@
                     android:layout_width="32dp"
                     android:layout_height="32dp"
                     android:layout_gravity="center_horizontal"
-                    app:srcCompat="@drawable/ic_baseline_cancel_24"
-                    android:tint="@color/brand_red" />
+                    android:tint="@color/brand_red"
+                    app:srcCompat="@drawable/ic_baseline_cancel_24" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/negative_feedback_text"
@@ -197,7 +194,6 @@
                     android:gravity="center"
                     android:singleLine="true"
                     android:textAllCaps="true"
-                    android:textColor="#000"
                     tools:text="NO" />
             </LinearLayout>
         </LinearLayout>

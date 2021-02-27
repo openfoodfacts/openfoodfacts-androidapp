@@ -138,3 +138,6 @@ files:
     
   - source: /fastlane/metadata/android/en-US/off/feedback-form.txt
     translation: /fastlane/metadata/android/%locale%/off/feedback-form.txt
+    
+  - source: app/src/main/assets/changelog/changelog.json
+    translation: app/src/main/assets/changelog/changelog-%locale%.json

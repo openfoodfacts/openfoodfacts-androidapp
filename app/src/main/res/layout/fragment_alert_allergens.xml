@@ -17,6 +17,7 @@
   -->
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:fab="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -42,8 +43,6 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:clickable="true"
-            android:drawableStart="@drawable/ic_plus_blue_24"
-            android:drawableLeft="@drawable/ic_plus_blue_24"
             android:drawablePadding="-20dp"
             android:focusable="true"
             android:paddingStart="20dp"
@@ -51,6 +50,7 @@
             android:text="@string/add_an_allergen"
             android:textAllCaps="false"
             android:textSize="18sp"
+            app:drawableLeftCompat="@drawable/ic_plus_blue_24"
             fab:layout_constraintEnd_toEndOf="parent"
             fab:layout_constraintStart_toStartOf="parent"
             fab:layout_constraintTop_toTopOf="parent" />
