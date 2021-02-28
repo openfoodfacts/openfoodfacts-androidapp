@@ -891,7 +891,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         override fun afterTextChanged(s: Editable) = editTextView.checkValueAndRelated()
         override fun onNothingSelected(parent: AdapterView<*>?) = editTextView.checkValueAndRelated()
 
-        override fun onItemSelected(parent: AdapterView<*>?, view: View, position: Int, id: Long) {
+        override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
             editTextView.checkValueAndRelated()
             if (binding.salt.entryName == editTextView.entryName) {
                 binding.sodium.unitSpinner!!.setSelection(binding.salt.unitSpinner!!.selectedItemPosition)
