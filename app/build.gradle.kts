@@ -71,7 +71,7 @@ dependencies {
     // ML Kit barcode Scanner
     implementation ("com.google.mlkit:barcode-scanning:16.1.1")
 
-    implementation ("android.arch.lifecycle:extensions:1.1.1")
+    implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
 
     kapt("com.google.dagger:dagger-compiler:2.30.1")
     implementation("com.google.dagger:dagger:2.30.1")
