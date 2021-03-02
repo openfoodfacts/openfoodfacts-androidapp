@@ -13,6 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+@file:Suppress("MemberVisibilityCanBePrivate")
+
 package openfoodfacts.github.scrachx.openfood.network
 
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
@@ -163,6 +165,9 @@ object ApiFields {
                 ProductImageField.NUTRITION,
                 ProductImageField.PACKAGING
         )
+        const val LANGUAGES_CODES = "languages_codes"
+        const val URL = "url"
+        const val ALLERGENS = "allergens"
 
         @JvmStatic
         @Contract(pure = true)
@@ -171,5 +176,101 @@ object ApiFields {
         @JvmStatic
         @Contract(pure = true)
         fun lcIngredientsKey(lang: String) = "${Prefix.INGREDIENTS_TEXT}$lang"
+
+        const val NUTRITION_GRADES_TAGS = "nutrition_grades_tags"
+
+        const val OTHER = "other"
+
+        val PRODUCT_COMMON_FIELDS = setOf(
+                PRODUCT_NAME,
+                GENERIC_NAME,
+                IMAGE_SMALL_URL,
+                IMAGE_FRONT_URL,
+                IMAGE_INGREDIENTS_URL,
+                IMAGE_NUTRITION_URL,
+                IMAGE_PACKAGING_URL,
+                IMAGE_URL,
+                SELECTED_IMAGES,
+                LANGUAGES_CODES,
+                VITAMINS_TAGS,
+                MINERALS_TAGS,
+                AMINO_ACIDS_TAGS,
+                OTHER_NUTRITIONAL_SUBSTANCES_TAGS,
+                URL,
+                BARCODE,
+                TRACES_TAGS,
+                INGREDIENTS_MAY_PALM_OIL_TAGS,
+                BRANDS_TAGS,
+                TRACES,
+                CATEGORIES_TAGS,
+                INGREDIENTS_TEXT,
+                INGREDIENTS_FROM_PALM_OIL_TAGS,
+                SERVING_SIZE,
+                ALLERGENS_TAGS,
+                ALLERGENS,
+                ORIGINS,
+                STORES,
+                NUTRITION_GRADE_FR,
+                NUTRITION_GRADES_TAGS,
+                NUTRIENT_LEVELS,
+                ECOSCORE,
+                COUNTRIES,
+                COUNTRIES_TAGS,
+                BRANDS,
+                PACKAGING,
+                LABELS_TAGS,
+                LABELS_HIERARCHY,
+                CITIES_TAGS,
+                QUANTITY,
+                INGREDIENTS_PALM_OIL_N,
+                LINK,
+                EMB_CODES_TAGS,
+                STATES_TAGS,
+                CREATOR,
+                CREATED_DATE_TIME,
+                LAST_MODIFIED_TIME,
+                LAST_MODIFIED_BY,
+                EDITORS_TAGS,
+                NOVA_GROUPS,
+                LANG,
+                PURCHASE_PLACES,
+                NUTRITION_DATA_PER,
+                NO_NUTRITION_DATA,
+                OTHER,
+                OTHER_INFORMATION,
+                CONSERVATION_CONDITIONS,
+                RECYCLING_INSTRUCTIONS_TO_DISCARD,
+                RECYCLING_INSTRUCTIONS_TO_RECYCLE,
+                WARNING,
+                CUSTOMER_SERVICE,
+                ENVIRONMENT_INFOCARD,
+                ENVIRONMENT_IMPACT_LEVEL_TAGS,
+                INGREDIENTS_ANALYSIS_TAGS,
+                INGREDIENTS,
+                STATES_TAGS
+        )
+
+        val PRODUCT_LOCAL_FIELDS = setOf(
+                PRODUCT_NAME to true,
+                GENERIC_NAME to true,
+                INGREDIENTS_TEXT to true,
+                OTHER_INFORMATION to true,
+                CONSERVATION_CONDITIONS to true,
+                RECYCLING_INSTRUCTIONS_TO_DISCARD to true,
+                RECYCLING_INSTRUCTIONS_TO_RECYCLE to true,
+                WARNING to true,
+                ATTRIBUTE_GROUPS to false,
+                CUSTOMER_SERVICE to true,
+                IMAGE_FRONT_URL to true,
+                IMAGE_INGREDIENTS_URL to true,
+                IMAGE_NUTRITION_URL to true,
+                IMAGE_PACKAGING_URL to true
+        )
+
+        val PRODUCT_IMAGES_FIELDS = setOf(
+                PRODUCT_NAME, GENERIC_NAME, BARCODE, LANG, IMAGE_SMALL_URL, IMAGES,
+                IMAGE_FRONT_URL, IMAGE_INGREDIENTS_URL, IMAGE_NUTRITION_URL,
+                IMAGE_PACKAGING_URL, IMAGE_URL, SELECTED_IMAGES
+        )
     }
 }

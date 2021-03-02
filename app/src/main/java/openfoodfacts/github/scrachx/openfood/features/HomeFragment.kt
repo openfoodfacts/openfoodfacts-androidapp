@@ -35,6 +35,7 @@ import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentHomeBinding
 import openfoodfacts.github.scrachx.openfood.features.LoginActivity.Companion.LoginContract
 import openfoodfacts.github.scrachx.openfood.features.shared.NavigationBaseFragment
+import openfoodfacts.github.scrachx.openfood.network.CommonApiManager
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener
@@ -53,7 +54,7 @@ class HomeFragment : NavigationBaseFragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
-    private val api by lazy { OpenFoodAPIClient(requireActivity()).rawAPI }
+    private val api by lazy { CommonApiManager.productsApi }
     private val sharedPrefs by lazy { PreferenceManager.getDefaultSharedPreferences(requireActivity()) }
 
     private var taglineURL: String? = null

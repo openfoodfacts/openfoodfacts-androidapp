@@ -15,6 +15,7 @@ import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditAc
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
 import openfoodfacts.github.scrachx.openfood.images.ImageNameJsonParser
 import openfoodfacts.github.scrachx.openfood.models.ProductState
+import openfoodfacts.github.scrachx.openfood.network.CommonApiManager
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.requireProductState
 
@@ -41,7 +42,7 @@ class ProductPhotosFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val product = requireProductState().product!!
-        openFoodAPIClient.rawAPI
+        CommonApiManager.productsApi
                 .getProductImages(product.code)
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnError { Log.e(LOG_TAG, "Cannot download images from server", it) }
