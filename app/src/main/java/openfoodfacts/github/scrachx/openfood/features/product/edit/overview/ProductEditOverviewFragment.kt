@@ -199,7 +199,9 @@ class ProductEditOverviewFragment : ProductEditFragment() {
 
         initializeChips()
 
-        setupAutoSuggestion()
+        if (isAdded) {
+            setupAutoSuggestion()
+        }
 
         if (activity is ProductEditActivity && (activity as ProductEditActivity).initialValues != null) {
             addAllFieldsToMap((activity as ProductEditActivity).initialValues!!)
