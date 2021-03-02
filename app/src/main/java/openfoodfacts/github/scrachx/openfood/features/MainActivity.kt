@@ -169,7 +169,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
         setLanguageInPrefs(this, getLanguage(this))
         setSupportActionBar(binding.toolbarInclude.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(false)
-        swapToHomeFragment()
+        swapToFragment(HomeFragment.newInstance())
 
         // chrome custom tab init
         customTabActivityHelper = CustomTabActivityHelper()
@@ -270,7 +270,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
                         when (drawerItem.identifier.toInt()) {
                             ITEM_HOME -> newFragment = HomeFragment.newInstance()
                             ITEM_SEARCH_BY_CODE -> {
-                                newFragment = SearchByCodeFragment()
+                                newFragment = SearchByCodeFragment.newInstance()
                                 binding.bottomNavigationInclude.bottomNavigation.selectNavigationItem(0)
                             }
                             ITEM_CATEGORIES -> CategoryActivity.start(this@MainActivity)
@@ -333,12 +333,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
                             }
 
                         }
-                        newFragment?.let {
-                            supportFragmentManager.commit {
-                                replace(R.id.fragment_container, it)
-                                addToBackStack(null)
-                            }
-                        }
+                        newFragment?.let(::swapToFragment)
                         return false
                     }
                 })
@@ -427,9 +422,14 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
         }
     }
 
-    private fun swapToHomeFragment() {
-        supportFragmentManager.addOnBackStackChangedListener {}
-        supportFragmentManager.commit { replace(R.id.fragment_container, HomeFragment()) }
+    private fun swapToFragment(fragment: Fragment) {
+        val currentFragment = supportFragmentManager.fragments.lastOrNull()
+        if (currentFragment == null || currentFragment::class.java != fragment::class.java) {
+            supportFragmentManager.commit {
+                replace(R.id.fragment_container, fragment)
+                addToBackStack(null)
+            }
+        }
         binding.toolbarInclude.toolbar.title = BuildConfig.APP_NAME
     }
 
@@ -711,8 +711,11 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
     /**
      * This moves the main activity to the barcode entry fragment.
      */
-    private fun swapToSearchByCode() =
-            changeFragment(SearchByCodeFragment(), ITEM_SEARCH_BY_CODE.toLong(), resources.getString(R.string.search_by_barcode_drawer))
+    private fun swapToSearchByCode() {
+        swapToFragment(SearchByCodeFragment.newInstance())
+        drawerResult.setSelection(ITEM_SEARCH_BY_CODE.toLong())
+        supportActionBar?.title = resources.getString(R.string.search_by_barcode_drawer)
+    }
 
     override fun setItemSelected(@NavigationDrawerType type: Int) = drawerResult.setSelection(type.toLong(), false)
 
@@ -847,47 +850,6 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
             show()
         }
 
-    }
-
-    /**
-     * Used to navigate Fragments which are children of `MainActivity`.
-     * Use this method when the `Fragment` APPEARS in the `Drawer`.
-     *
-     * @param fragment The fragment class to display.
-     * @param title The title that should be displayed on the top toolbar.
-     * @param drawerName The fragment as it appears in the drawer. See [NavigationDrawerListener] for the value.
-     * @author ross-holloway94
-     * @see [Related Stack Overflow article](https://stackoverflow.com/questions/45138446/calling-fragment-from-recyclerview-adapter)
-     *
-     * @since 06/16/18
-     */
-    private fun changeFragment(fragment: Fragment, drawerName: Long, title: String? = null) {
-        changeFragment(fragment, title)
-        drawerResult.setSelection(drawerName)
-    }
-
-    /**
-     * Used to navigate Fragments which are children of `MainActivity`.
-     * Use this method when the `Fragment` DOES NOT APPEAR in the `Drawer`.
-     *
-     * @param fragment The fragment class to display.
-     * @param title The title that should be displayed on the top toolbar.
-     * @author ross-holloway94
-     * @see [Related Stack Overflow article](https://stackoverflow.com/questions/45138446/calling-fragment-from-recyclerview-adapter)
-     *
-     * @since 06/16/18
-     */
-    @JvmOverloads
-    fun changeFragment(fragment: Fragment, title: String? = null) {
-        val backStateName = fragment::class.simpleName
-        val fragmentPopped = supportFragmentManager.popBackStackImmediate(backStateName, 0)
-        if (!fragmentPopped && supportFragmentManager.findFragmentByTag(backStateName) == null) {
-            supportFragmentManager.commit {
-                replace(R.id.fragment_container, fragment, backStateName)
-                addToBackStack(backStateName)
-            }
-        }
-        title?.let { supportActionBar?.title = it }
     }
 
     companion object {
