@@ -23,6 +23,7 @@ import static openfoodfacts.github.scrachx.openfood.utils.Utils.firstNotEmpty;
 @Entity
 public class OfflineSavedProduct implements Serializable {
     private static final long serialVersionUID = 1L;
+    @SuppressWarnings("NotNullFieldNotInitialized")
     @Index(unique = true)
     @NonNull
     private String barcode;
@@ -30,6 +31,7 @@ public class OfflineSavedProduct implements Serializable {
     private Long id;
     @Index
     private boolean isDataUploaded;
+    @SuppressWarnings("NotNullFieldNotInitialized")
     @NonNull
     @Convert(converter = MapOfStringsToStringConverter.class, columnType = String.class)
     private Map<String, String> productDetails;
@@ -70,16 +72,20 @@ public class OfflineSavedProduct implements Serializable {
 
     @Nullable
     public String getName() {
-        final Map<String, String> map = productDetails;
-        final String language = firstNotEmpty(map.get(ApiFields.Keys.LANG), "en");
-        return firstNotEmpty(map.get(ApiFields.Keys.lcProductNameKey(language)), map.get(ApiFields.Keys.lcProductNameKey("en")));
+        final String language = firstNotEmpty(productDetails.get(ApiFields.Keys.LANG), "en");
+        return firstNotEmpty(
+            productDetails.get(ApiFields.Keys.lcProductNameKey(language)),
+            productDetails.get(ApiFields.Keys.lcProductNameKey("en"))
+        );
     }
 
     @Nullable
     public String getIngredients() {
-        final Map<String, String> map = productDetails;
-        final String language = firstNotEmpty(map.get(ApiFields.Keys.LANG), "en");
-        return firstNotEmpty(map.get(ApiFields.Keys.lcIngredientsKey(language)), map.get(ApiFields.Keys.lcIngredientsKey("en")));
+        final String language = firstNotEmpty(productDetails.get(ApiFields.Keys.LANG), "en");
+        return firstNotEmpty(
+            productDetails.get(ApiFields.Keys.lcIngredientsKey(language)),
+            productDetails.get(ApiFields.Keys.lcIngredientsKey("en"))
+        );
     }
 
     @Nullable
