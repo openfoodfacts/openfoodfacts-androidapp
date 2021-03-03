@@ -9,6 +9,7 @@ import android.view.WindowManager
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.pm.PackageInfoCompat
+import androidx.core.view.isVisible
 import androidx.fragment.app.DialogFragment
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -21,6 +22,7 @@ import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabsHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLocaleFromContext
+import java.util.Locale
 
 class ChangelogDialog : DialogFragment(R.layout.fragment_changelog) {
 
@@ -86,9 +88,14 @@ class ChangelogDialog : DialogFragment(R.layout.fragment_changelog) {
     }
 
     private fun setupTranslationHelpLabel() {
-        val language = getLocaleFromContext(context).displayLanguage
-        translationHelpLabel.text = getString(R.string.changelog_translation_help, language)
-        translationHelpLabel.setOnClickListener { openDailyFoodFacts() }
+        val locale = getLocaleFromContext(context)
+        if (locale.language.startsWith(Locale.ENGLISH.language)) {
+            translationHelpLabel.isVisible = false
+        } else {
+            translationHelpLabel.text = getString(R.string.changelog_translation_help, locale.displayLanguage)
+            translationHelpLabel.isVisible = true
+            translationHelpLabel.setOnClickListener { openDailyFoodFacts() }
+        }
     }
 
     private fun applyWindowTweaks() {
