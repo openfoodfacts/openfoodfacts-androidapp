@@ -36,6 +36,8 @@ import com.squareup.picasso.Picasso
 import io.reactivex.rxkotlin.addTo
 import openfoodfacts.github.scrachx.openfood.AppFlavors
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OBF
+import openfoodfacts.github.scrachx.openfood.AppFlavors.OPF
+import openfoodfacts.github.scrachx.openfood.AppFlavors.OPFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper
@@ -349,9 +351,9 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
             }
         }
         when {
-            isFlavors(AppFlavors.OPFF) -> viewPager.currentItem = 4
-            isFlavors(AppFlavors.OBF) -> viewPager.currentItem = 1
-            isFlavors(AppFlavors.OPF) -> viewPager.currentItem = 0
+            isFlavors(OPFF) -> viewPager.currentItem = 4
+            isFlavors(OBF) -> viewPager.currentItem = 1
+            isFlavors(OPF) -> viewPager.currentItem = 0
         }
     }
 

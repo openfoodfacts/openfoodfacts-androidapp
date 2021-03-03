@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
 
     <TextView
@@ -32,10 +32,12 @@
         android:clickable="true"
         android:focusable="true"
         android:gravity="center"
-        tools:text="@string/changelog_translation_help"
         android:textColor="?android:textColorLink"
         android:textSize="@dimen/font_normal"
-        android:textStyle="normal" />
+        android:textStyle="normal"
+        android:visibility="gone"
+        tools:text="@string/changelog_translation_help"
+        tools:visibility="visible" />
 
     <Button
         android:id="@+id/changelog_button_close"

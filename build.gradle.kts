@@ -17,8 +17,8 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    val kotlinVersion by extra("1.4.21")
-    val jacksonVersion by extra("2.12.0")
+    val kotlinVersion by extra("1.4.31")
+    val jacksonVersion by extra("2.12.1")
     val greendaoVersion by extra("3.3.0")
     repositories {
         google()

@@ -811,7 +811,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
                 productBarcode,
                 productName.orEmpty(),
                 productDetails,
-                imageUrl!!
+                imageUrl.orEmpty()
         )
         addToListRecyclerView.layoutManager = LinearLayoutManager(activity)
         addToListRecyclerView.adapter = addToListAdapter
