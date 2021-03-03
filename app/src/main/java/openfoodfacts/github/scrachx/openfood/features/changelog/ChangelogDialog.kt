@@ -92,8 +92,8 @@ class ChangelogDialog : DialogFragment(R.layout.fragment_changelog) {
         if (locale.language.startsWith(Locale.ENGLISH.language)) {
             translationHelpLabel.isVisible = false
         } else {
-            translationHelpLabel.isVisible = true
             translationHelpLabel.text = getString(R.string.changelog_translation_help, locale.displayLanguage)
+            translationHelpLabel.isVisible = true
             translationHelpLabel.setOnClickListener { openDailyFoodFacts() }
         }
     }
