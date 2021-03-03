@@ -53,7 +53,6 @@ object OfflineProductService {
      * Performs network call and uploads the product to the server.
      * Before doing that strip images data from the product map.
      *
-     * @param this@uploadProductIfNeededSync The offline product to be uploaded to the server.
      */
     private fun OfflineSavedProduct.uploadProductIfNeededSync(): Boolean {
         if (isDataUploaded) return true

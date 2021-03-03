@@ -55,7 +55,6 @@ import openfoodfacts.github.scrachx.openfood.models.ProductState
 import openfoodfacts.github.scrachx.openfood.models.eventbus.ProductNeedsRefreshEvent
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.Utils
-import openfoodfacts.github.scrachx.openfood.utils.applyBundle
 import openfoodfacts.github.scrachx.openfood.utils.requireProductState
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
@@ -240,8 +239,6 @@ class ProductViewActivity : BaseActivity(), OnRefreshListener {
             val titles = activity.resources.getStringArray(R.array.nav_drawer_items_product)
             val newTitles = activity.resources.getStringArray(R.array.nav_drawer_new_items_product)
 
-            val fBundle = Bundle().apply { putSerializable(KEY_STATE, productState) }
-
             adapter.add(SummaryProductFragment.newInstance(productState), titles[0])
             val preferences = PreferenceManager.getDefaultSharedPreferences(activity)
 
@@ -250,7 +247,7 @@ class ProductViewActivity : BaseActivity(), OnRefreshListener {
 
             if (isFlavors(OFF, OPFF)) adapter.add(NutritionProductFragment.newInstance(productState), titles[2])
 
-            if (isFlavors(OFF)) adapter.add(EnvironmentProductFragment().applyBundle(fBundle), titles[4])
+            if (isFlavors(OFF)) adapter.add(EnvironmentProductFragment.newInstance(productState), titles[4])
 
             if (isFlavors(OFF, OPFF, OBF) && isPhotoMode(activity) || isFlavors(OPF)) {
                 adapter.add(ProductPhotosFragment.newInstance(productState), newTitles[0])
@@ -260,7 +257,7 @@ class ProductViewActivity : BaseActivity(), OnRefreshListener {
                 adapter.add(ServerAttributesFragment.newInstance(productState), activity.getString(R.string.synthesis_tab))
             }
 
-            if (isFlavors(OBF)) adapter.add(IngredientsAnalysisProductFragment().applyBundle(fBundle), newTitles[1])
+            if (isFlavors(OBF)) adapter.add(IngredientsAnalysisProductFragment.newInstance(productState), newTitles[1])
 
             if (preferences.getBoolean(activity.getString(R.string.pref_contribution_tab_key), false)) {
                 adapter.add(ContributorsFragment.newInstance(productState), activity.getString(R.string.contribution_tab))

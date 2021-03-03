@@ -45,8 +45,7 @@ class AdditivesWrapperDeserializer : StdDeserializer<AdditivesWrapper>(Additives
                         exposure95ThGreaterThanNoael = subNode.value[EFSA_EVALUATION_EXPOSURE_95TH_GREATER_THAN_NOAEL][DeserializerHelper.EN_KEY].textValue()
                     }
                 }
-                var additiveResponse: AdditiveResponse
-                additiveResponse = if (subNode.value.has(DeserializerHelper.WIKIDATA_KEY)) {
+                var additiveResponse = if (subNode.value.has(DeserializerHelper.WIKIDATA_KEY)) {
                     AdditiveResponse(subNode.key, names, overexposureRisk, subNode.value[DeserializerHelper.WIKIDATA_KEY].toString())
                 } else {
                     AdditiveResponse(subNode.key, names, overexposureRisk)
