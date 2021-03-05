@@ -97,7 +97,7 @@ class ImagesManageActivity : BaseActivity() {
         binding.btnEditImage.setOnClickListener { onStartEditExistingImage() }
 
         binding.comboLanguages.onItemSelectedListener = object : OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View, position: Int, id: Long) =
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) =
                     onLanguageChanged()
 
             override fun onNothingSelected(parent: AdapterView<*>?) = Unit // Do nothing
