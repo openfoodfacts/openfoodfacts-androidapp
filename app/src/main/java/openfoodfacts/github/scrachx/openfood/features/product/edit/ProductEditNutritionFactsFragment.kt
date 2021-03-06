@@ -394,7 +394,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         }
     }
 
-    private fun newNutritionFactsImage() = doChooseOrTakePhotos(getString(R.string.nutrition_facts_picture))
+    private fun newNutritionFactsImage() = doChooseOrTakePhotos()
 
     override fun doOnPhotosPermissionGranted() = newNutritionFactsImage()
 

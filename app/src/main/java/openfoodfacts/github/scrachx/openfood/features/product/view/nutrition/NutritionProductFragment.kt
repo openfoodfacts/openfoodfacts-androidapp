@@ -552,7 +552,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
         }
     }
 
-    private fun newNutritionImage() = doChooseOrTakePhotos(getString(R.string.nutrition_facts_picture))
+    private fun newNutritionImage() = doChooseOrTakePhotos()
 
     override fun doOnPhotosPermissionGranted() = newNutritionImage()
 

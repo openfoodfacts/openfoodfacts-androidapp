@@ -422,7 +422,7 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
     }
 
     private fun newIngredientImage() {
-        doChooseOrTakePhotos(getString(R.string.ingredients_picture))
+        doChooseOrTakePhotos()
     }
 
     override fun doOnPhotosPermissionGranted() {
