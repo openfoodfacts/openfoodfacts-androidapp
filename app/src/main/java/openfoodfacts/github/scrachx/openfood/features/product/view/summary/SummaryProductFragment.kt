@@ -829,7 +829,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
 
     private fun takeMorePicture() {
         sendOther = true
-        doChooseOrTakePhotos(getString(R.string.take_more_pictures))
+        doChooseOrTakePhotos()
     }
 
     private fun openFrontImageFullscreen() {
@@ -850,7 +850,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     private fun newFrontImage() {
         // add front image.
         sendOther = false
-        doChooseOrTakePhotos(getString(R.string.set_img_front))
+        doChooseOrTakePhotos()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

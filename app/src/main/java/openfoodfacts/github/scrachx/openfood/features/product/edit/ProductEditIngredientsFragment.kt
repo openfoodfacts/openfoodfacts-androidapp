@@ -310,7 +310,7 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
         }
     }
 
-    private fun editIngredientsImage() = doChooseOrTakePhotos(getString(R.string.ingredients_picture))
+    private fun editIngredientsImage() = doChooseOrTakePhotos()
 
     private fun verifyIngredients() {
         binding.ingredientsListVerified.visibility = View.VISIBLE

@@ -96,7 +96,7 @@ abstract class BaseFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener, 
         swipeRefreshLayout?.isRefreshing = false
     }
 
-    protected fun doChooseOrTakePhotos(title: String?) {
+    protected fun doChooseOrTakePhotos() {
         if (canTakePhotos()) {
             EasyImage.openCamera(this, 0)
             return

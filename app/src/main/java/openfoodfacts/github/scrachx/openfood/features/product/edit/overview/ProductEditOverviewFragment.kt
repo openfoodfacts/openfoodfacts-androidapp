@@ -630,12 +630,12 @@ class ProductEditOverviewFragment : ProductEditFragment() {
     private fun chooseOrTakeFrontImage() {
         // add front image.
         isFrontImagePresent = true
-        doChooseOrTakePhotos(getString(R.string.set_img_front))
+        doChooseOrTakePhotos()
     }
 
     private fun chooseOrTakeOtherImage() {
         isFrontImagePresent = false
-        doChooseOrTakePhotos(getString(R.string.take_more_pictures))
+        doChooseOrTakePhotos()
     }
 
     override fun doOnPhotosPermissionGranted() =

@@ -158,7 +158,9 @@ class EnvironmentProductFragment : BaseFragment() {
         }
     }
 
-    private fun newPackagingImage() = doChooseOrTakePhotos(getString(R.string.recycling_picture))
+    private fun newPackagingImage() {
+        doChooseOrTakePhotos()
+    }
 
     private fun loadPackagingPhoto(photoFile: File) {
         // Create a new instance of ProductImage so we can load to server
