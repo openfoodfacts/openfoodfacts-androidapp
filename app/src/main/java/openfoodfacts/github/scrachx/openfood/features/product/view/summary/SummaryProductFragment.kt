@@ -303,10 +303,8 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
                 if (i > 0) binding.textBrandProduct.append(", ")
                 binding.textBrandProduct.append(Utils.getClickableText(
                         brand.trim { it <= ' ' },
-                        "",
                         SearchType.BRAND,
-                        requireActivity(),
-                        customTabsIntent
+                        requireActivity()
                 ))
             }
         } else {
@@ -327,10 +325,8 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
 
                 binding.embText.append(Utils.getClickableText(
                         getEmbCode(embTag).trim { it <= ' ' },
-                        getEmbUrl(embTag) ?: "",
                         SearchType.EMB,
-                        requireActivity(),
-                        customTabsIntent
+                        requireActivity()
                 ))
             }
         } else {

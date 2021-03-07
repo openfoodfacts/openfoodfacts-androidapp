@@ -216,10 +216,8 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
                 if (i > 0) binding.textTraceProduct.append(", ")
                 binding.textTraceProduct.append(Utils.getClickableText(
                         getTracesName(language, trace),
-                        trace,
                         SearchType.TRACE,
-                        requireActivity(),
-                        customTabsIntent
+                        requireActivity()
                 ))
             }
         } else {
