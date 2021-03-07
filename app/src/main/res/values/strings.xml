@@ -984,8 +984,8 @@
 
     <!-- Application theme settings -->
     <string name="follow_system">Follow system</string>
-    <string name="day">Day</string>
-    <string name="night">Night</string>
+    <string name="day" translatable="false">Day</string>
+    <string name="night" translatable="false">Night</string>
     <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
     <string name="hint_origin">Examples: USA, France, Italy</string>
     <string name="report_email_chooser_title">Send a report email</string>
