@@ -1,4 +1,3 @@
-
 package openfoodfacts.github.scrachx.openfood.scanner
 
 import android.graphics.Canvas
@@ -15,7 +14,7 @@ import openfoodfacts.github.scrachx.openfood.camera.GraphicOverlay
  * not detected a barcode yet.
  */
 internal class BarcodeReticleGraphic(overlay: GraphicOverlay, private val animator: CameraReticleAnimator) :
-    BarcodeGraphicBase(overlay) {
+        BarcodeGraphicBase(overlay) {
 
     private val ripplePaint: Paint
     private val rippleSizeOffset: Int

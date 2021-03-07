@@ -1,4 +1,3 @@
-
 package openfoodfacts.github.scrachx.openfood.scanner
 
 import android.util.Log
@@ -14,7 +13,6 @@ import openfoodfacts.github.scrachx.openfood.camera.GraphicOverlay
 import openfoodfacts.github.scrachx.openfood.camera.WorkflowModel
 import openfoodfacts.github.scrachx.openfood.camera.WorkflowModel.WorkflowState
 import openfoodfacts.github.scrachx.openfood.utils.CameraUtils
-import openfoodfacts.github.scrachx.openfood.utils.InputInfo
 import java.io.IOException
 
 /**
@@ -42,14 +40,13 @@ class BarcodeProcessor(graphicOverlay: GraphicOverlay, private val workflowModel
 
     @MainThread
     override fun onSuccess(
-            inputInfo: InputInfo,
             results: List<Barcode>,
             graphicOverlay: GraphicOverlay
     ) {
 
         if (!workflowModel.isCameraLive) return
 
-        Log.d(TAG, "Barcode result size: ${results.size}")
+        Log.d(LOG_TAG, "Barcode result size: ${results.size}")
 
         // Picks the barcode, if exists, that covers the center of graphic overlay.
 
@@ -81,7 +78,7 @@ class BarcodeProcessor(graphicOverlay: GraphicOverlay, private val workflowModel
     }
 
     override fun onFailure(e: Exception) {
-        Log.e(TAG, "Barcode detection failed!", e)
+        Log.e(LOG_TAG, "Barcode detection failed!", e)
     }
 
     override fun stop() {
@@ -89,12 +86,12 @@ class BarcodeProcessor(graphicOverlay: GraphicOverlay, private val workflowModel
         try {
             scanner.close()
         } catch (e: IOException) {
-            Log.e(TAG, "Failed to close barcode detector!", e)
+            Log.e(LOG_TAG, "Failed to close barcode detector!", e)
         }
     }
 
     companion object {
-        private const val TAG = "BarcodeProcessor"
+        private const val LOG_TAG = "BarcodeProcessor"
     }
 
 }

@@ -153,10 +153,10 @@ class CameraSource(private val graphicOverlay: GraphicOverlay) {
 
     fun updateFlashMode(flashActive: Boolean) {
         val parameters = camera?.parameters
-        if(flashActive && requestedCameraId == CAMERA_FACING_BACK) {
+        if (flashActive && requestedCameraId == CAMERA_FACING_BACK) {
             requestedFlashState = true
             parameters?.flashMode = Parameters.FLASH_MODE_TORCH
-        } else{
+        } else {
             requestedFlashState = false
             parameters?.flashMode = Parameters.FLASH_MODE_OFF
         }
@@ -165,10 +165,10 @@ class CameraSource(private val graphicOverlay: GraphicOverlay) {
 
     fun setFocusMode(autoFocusActive: Boolean) {
         val parameters = camera?.parameters
-        if(autoFocusActive) {
+        if (autoFocusActive) {
             requestedFocusState = true
-            Log.i(TAG,"Supported focus mode = " + parameters?.supportedFocusModes)
-            if(parameters?.supportedFocusModes?.contains(Parameters.FOCUS_MODE_CONTINUOUS_VIDEO) == true) {
+            Log.i(TAG, "Supported focus mode = " + parameters?.supportedFocusModes)
+            if (parameters?.supportedFocusModes?.contains(Parameters.FOCUS_MODE_CONTINUOUS_VIDEO) == true) {
                 parameters.focusMode = Parameters.FOCUS_MODE_CONTINUOUS_VIDEO
             } else {
                 Log.i(TAG, "Camera continuous mode is not supported on this device.")
@@ -180,12 +180,12 @@ class CameraSource(private val graphicOverlay: GraphicOverlay) {
         camera?.parameters = parameters
     }
 
-    fun switchCamera() : Camera {
+    fun switchCamera(): Camera {
         camera?.release()
         requestedCameraId =
-                if(requestedCameraId == CAMERA_FACING_BACK){
+                if (requestedCameraId == CAMERA_FACING_BACK) {
                     CAMERA_FACING_FRONT
-                } else{
+                } else {
                     CAMERA_FACING_BACK
                 }
         return createCamera()
@@ -205,20 +205,20 @@ class CameraSource(private val graphicOverlay: GraphicOverlay) {
         setRotation(camera, parameters)
 
         val previewFpsRange = selectPreviewFpsRange(camera)
-            ?: throw IOException("Could not find suitable preview frames per second range.")
+                ?: throw IOException("Could not find suitable preview frames per second range.")
         parameters.setPreviewFpsRange(
-            previewFpsRange[Parameters.PREVIEW_FPS_MIN_INDEX],
-            previewFpsRange[Parameters.PREVIEW_FPS_MAX_INDEX]
+                previewFpsRange[Parameters.PREVIEW_FPS_MIN_INDEX],
+                previewFpsRange[Parameters.PREVIEW_FPS_MAX_INDEX]
         )
 
         parameters.previewFormat = IMAGE_FORMAT
 
-        if(requestedFlashState && requestedCameraId == CAMERA_FACING_BACK){
+        if (requestedFlashState && requestedCameraId == CAMERA_FACING_BACK) {
             parameters.flashMode = Parameters.FLASH_MODE_TORCH
         }
 
-        if(requestedFocusState){
-            if(parameters.supportedFocusModes.contains(Parameters.FOCUS_MODE_CONTINUOUS_VIDEO)) {
+        if (requestedFocusState) {
+            if (parameters.supportedFocusModes.contains(Parameters.FOCUS_MODE_CONTINUOUS_VIDEO)) {
                 parameters.focusMode = Parameters.FOCUS_MODE_CONTINUOUS_VIDEO
             } else {
                 Log.i(TAG, "Camera continuous mode is not supported on this device.")
@@ -255,12 +255,12 @@ class CameraSource(private val graphicOverlay: GraphicOverlay) {
 
         // Camera preview size is based on the landscape mode, so we need to also use the aspect
         // ration of display in the same mode for comparison.
-         val displayAspectRatioInLandscape: Float =
-            if (isPortraitMode(graphicOverlay.context)) {
-                graphicOverlay.height.toFloat() / graphicOverlay.width
-            } else {
-                graphicOverlay.width.toFloat() / graphicOverlay.height
-            }
+        val displayAspectRatioInLandscape: Float =
+                if (isPortraitMode(graphicOverlay.context)) {
+                    graphicOverlay.height.toFloat() / graphicOverlay.width
+                } else {
+                    graphicOverlay.width.toFloat() / graphicOverlay.height
+                }
 
         val sizePair: CameraSizePair = selectSizePair(camera, displayAspectRatioInLandscape)
                 ?: throw IOException("Could not find suitable preview size.")
@@ -445,8 +445,6 @@ class CameraSource(private val graphicOverlay: GraphicOverlay) {
     }
 
 
-
-
     companion object {
 
         const val CAMERA_FACING_BACK = CameraInfo.CAMERA_FACING_BACK
@@ -515,8 +513,8 @@ class CameraSource(private val graphicOverlay: GraphicOverlay) {
                 for (sizePair in validPreviewSizes) {
                     val size = sizePair.preview
                     val diff =
-                        abs(size.width - DEFAULT_REQUESTED_CAMERA_PREVIEW_WIDTH) +
-                                abs(size.height - DEFAULT_REQUESTED_CAMERA_PREVIEW_HEIGHT)
+                            abs(size.width - DEFAULT_REQUESTED_CAMERA_PREVIEW_WIDTH) +
+                                    abs(size.height - DEFAULT_REQUESTED_CAMERA_PREVIEW_HEIGHT)
                     if (diff < minDiff) {
                         selectedPair = sizePair
                         minDiff = diff

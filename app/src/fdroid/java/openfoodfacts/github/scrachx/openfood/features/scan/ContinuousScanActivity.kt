@@ -651,7 +651,7 @@ class ContinuousScanActivity : AppCompatActivity() {
                     }
                     R.id.troubleScanning -> {
                         hideAllViews()
-                        hintBarcodeDisp!!.dispose()
+                        hintBarcodeDisp?.dispose()
                         binding.quickView.setOnClickListener(null)
                         binding.quickViewSearchByBarcode.text = null
                         binding.quickViewSearchByBarcode.visibility = View.VISIBLE

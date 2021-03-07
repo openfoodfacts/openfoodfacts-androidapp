@@ -1,4 +1,3 @@
-
 package openfoodfacts.github.scrachx.openfood.camera
 
 import android.content.Context
@@ -62,6 +61,20 @@ class CameraSourcePreview(context: Context, attrs: AttributeSet) : FrameLayout(c
         }
     }
 
+    /**
+     * Called from layout when this view should
+     * assign a size and position to each of its children.
+     *
+     * Derived classes with children should override
+     * this method and call layout on each of
+     * their children.
+     *
+     * @param changed This is a new size or position for this view
+     * @param left Left position, relative to parent
+     * @param top Top position, relative to parent
+     * @param right Right position, relative to parent
+     * @param bottom Bottom position, relative to parent
+     */
     override fun onLayout(changed: Boolean, left: Int, top: Int, right: Int, bottom: Int) {
         val layoutWidth = right - left
         val layoutHeight = bottom - top
@@ -81,7 +94,7 @@ class CameraSourcePreview(context: Context, attrs: AttributeSet) : FrameLayout(c
         }
 
         // Match the width of the child view to its parent.
-        if (layoutWidth*previewHeight <= layoutHeight*previewWidth) {
+        if (layoutWidth * previewHeight <= layoutHeight * previewWidth) {
             val scaledChildWidth = previewWidth * layoutHeight / previewHeight
 
             for (i in 0 until childCount) {
@@ -100,7 +113,7 @@ class CameraSourcePreview(context: Context, attrs: AttributeSet) : FrameLayout(c
         try {
             startIfReady()
         } catch (e: IOException) {
-            Log.e(TAG, "Could not start camera source.", e)
+            Log.e(LOG_TAG, "Could not start camera source.", e)
         }
     }
 
@@ -110,7 +123,7 @@ class CameraSourcePreview(context: Context, attrs: AttributeSet) : FrameLayout(c
             try {
                 startIfReady()
             } catch (e: IOException) {
-                Log.e(TAG, "Could not start camera source.", e)
+                Log.e(LOG_TAG, "Could not start camera source.", e)
             }
         }
 
@@ -118,11 +131,10 @@ class CameraSourcePreview(context: Context, attrs: AttributeSet) : FrameLayout(c
             surfaceAvailable = false
         }
 
-        override fun surfaceChanged(holder: SurfaceHolder, format: Int, width: Int, height: Int) {
-        }
+        override fun surfaceChanged(holder: SurfaceHolder, format: Int, width: Int, height: Int) = Unit
     }
 
     companion object {
-        private const val TAG = "CameraSourcePreview"
+        private const val LOG_TAG = "CameraSourcePreview"
     }
 }

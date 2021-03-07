@@ -1,14 +1,7 @@
-
 package openfoodfacts.github.scrachx.openfood.scanner
 
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.CornerPathEffect
-import android.graphics.Paint
+import android.graphics.*
 import android.graphics.Paint.Style
-import android.graphics.PorterDuff
-import android.graphics.PorterDuffXfermode
-import android.graphics.RectF
 import androidx.core.content.ContextCompat
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.camera.GraphicOverlay

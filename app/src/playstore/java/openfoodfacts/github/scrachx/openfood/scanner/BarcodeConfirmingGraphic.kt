@@ -1,4 +1,3 @@
-
 package openfoodfacts.github.scrachx.openfood.scanner
 
 import android.graphics.Canvas

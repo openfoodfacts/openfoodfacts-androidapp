@@ -20,6 +20,8 @@ import kotlin.math.abs
 
 object CameraUtils {
 
+    private const val LOG_TAG = "CameraUtils"
+
     /**
      * If the absolute difference between aspect ratios is less than this tolerance, they are
      * considered to be the same aspect ratio.
@@ -67,10 +69,10 @@ object CameraUtils {
         // the preview sizes and hope that the camera can handle it.  Probably unlikely, but we still
         // account for it.
         if (validPreviewSizes.isEmpty()) {
-            Log.w("Utils", "No preview sizes have a corresponding same-aspect-ratio picture size.")
-            for (previewSize in supportedPreviewSizes) {
+            Log.w(LOG_TAG, "No preview sizes have a corresponding same-aspect-ratio picture size.")
+            supportedPreviewSizes.forEach { previewSize ->
                 // The null picture size will let us know that we shouldn't set a picture size.
-                validPreviewSizes.add(CameraSizePair(previewSize, null))
+                validPreviewSizes += CameraSizePair(previewSize, null)
             }
         }
 
@@ -96,8 +98,8 @@ object CameraUtils {
             val matrix = Matrix()
             matrix.postRotate(rotationDegrees.toFloat())
             return Bitmap.createBitmap(bmp, 0, 0, bmp.width, bmp.height, matrix, true)
-        } catch (e: java.lang.Exception) {
-            Log.e("Camera Utils", "Error: " + e.message)
+        } catch (e: Exception) {
+            Log.e(LOG_TAG, "Error: " + e.message)
         }
         return null
     }

@@ -1,4 +1,3 @@
-
 package openfoodfacts.github.scrachx.openfood.camera
 
 import java.nio.ByteBuffer

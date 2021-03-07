@@ -1,4 +1,3 @@
-
 package openfoodfacts.github.scrachx.openfood.camera
 
 import android.content.Context
@@ -7,8 +6,11 @@ import android.graphics.Rect
 import android.graphics.RectF
 import android.util.AttributeSet
 import android.view.View
+import openfoodfacts.github.scrachx.openfood.camera.GraphicOverlay.Graphic
 import openfoodfacts.github.scrachx.openfood.utils.CameraUtils.isPortraitMode
-import java.util.ArrayList
+import java.util.*
+import java.util.concurrent.locks.ReentrantLock
+import kotlin.concurrent.withLock
 
 /**
  * A view which renders custom graphics overlaid on top of an associated preview
@@ -22,7 +24,7 @@ import java.util.ArrayList
  * Associated [Graphic] items should use [.translateX] and [ ][.translateY] to convert to view coordinate from the preview's coordinate.
  */
 class GraphicOverlay(context: Context, attrs: AttributeSet) : View(context, attrs) {
-    private val lock = Any()
+    private val lock = ReentrantLock()
 
     private var previewWidth: Int = 0
     private var widthScaleFactor = 1.0f
@@ -46,7 +48,7 @@ class GraphicOverlay(context: Context, attrs: AttributeSet) : View(context, attr
      * Removes all graphics from the overlay.
      */
     fun clear() {
-        synchronized(lock) {
+        lock.withLock {
             graphics.clear()
         }
         postInvalidate()
@@ -56,7 +58,7 @@ class GraphicOverlay(context: Context, attrs: AttributeSet) : View(context, attr
      * Adds a graphic to the overlay.
      */
     fun add(graphic: Graphic) {
-        synchronized(lock) {
+        lock.withLock {
             graphics.add(graphic)
         }
     }
@@ -102,7 +104,7 @@ class GraphicOverlay(context: Context, attrs: AttributeSet) : View(context, attr
             heightScaleFactor = height.toFloat() / previewHeight
         }
 
-        synchronized(lock) {
+        lock.withLock {
             graphics.forEach { it.draw(canvas) }
         }
     }

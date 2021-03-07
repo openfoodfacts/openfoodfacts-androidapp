@@ -1,4 +1,3 @@
-
 package openfoodfacts.github.scrachx.openfood.camera
 
 import android.animation.AnimatorSet
@@ -25,46 +24,53 @@ class CameraReticleAnimator(graphicOverlay: GraphicOverlay) {
     private val animatorSet: AnimatorSet
 
     init {
-        val rippleFadeInAnimator = ValueAnimator.ofFloat(0f, 1f).setDuration(DURATION_RIPPLE_FADE_IN_MS)
-        rippleFadeInAnimator.addUpdateListener { animation ->
-            rippleAlphaScale = animation.animatedValue as Float
-            graphicOverlay.postInvalidate()
+        val rippleFadeInAnimator = ValueAnimator.ofFloat(0f, 1f).setDuration(DURATION_RIPPLE_FADE_IN_MS).apply {
+            addUpdateListener { animation ->
+                rippleAlphaScale = animation.animatedValue as Float
+                graphicOverlay.postInvalidate()
+            }
         }
 
-        val rippleFadeOutAnimator = ValueAnimator.ofFloat(1f, 0f).setDuration(DURATION_RIPPLE_FADE_OUT_MS)
-        rippleFadeOutAnimator.startDelay = START_DELAY_RIPPLE_FADE_OUT_MS
-        rippleFadeOutAnimator.addUpdateListener { animation ->
-            rippleAlphaScale = animation.animatedValue as Float
-            graphicOverlay.postInvalidate()
+        val rippleFadeOutAnimator = ValueAnimator.ofFloat(1f, 0f).setDuration(DURATION_RIPPLE_FADE_OUT_MS).apply {
+            startDelay = START_DELAY_RIPPLE_FADE_OUT_MS
+            addUpdateListener { animation ->
+                rippleAlphaScale = animation.animatedValue as Float
+                graphicOverlay.postInvalidate()
+            }
         }
 
-        val rippleExpandAnimator = ValueAnimator.ofFloat(0f, 1f).setDuration(DURATION_RIPPLE_EXPAND_MS)
-        rippleExpandAnimator.startDelay = START_DELAY_RIPPLE_EXPAND_MS
-        rippleExpandAnimator.interpolator = FastOutSlowInInterpolator()
-        rippleExpandAnimator.addUpdateListener { animation ->
-            rippleSizeScale = animation.animatedValue as Float
-            graphicOverlay.postInvalidate()
+        val rippleExpandAnimator = ValueAnimator.ofFloat(0f, 1f).setDuration(DURATION_RIPPLE_EXPAND_MS).apply {
+            startDelay = START_DELAY_RIPPLE_EXPAND_MS
+            interpolator = FastOutSlowInInterpolator()
+            addUpdateListener { animation ->
+                rippleSizeScale = animation.animatedValue as Float
+                graphicOverlay.postInvalidate()
+            }
         }
 
-        val rippleStrokeWidthShrinkAnimator =
-            ValueAnimator.ofFloat(1f, 0.5f).setDuration(DURATION_RIPPLE_STROKE_WIDTH_SHRINK_MS)
-        rippleStrokeWidthShrinkAnimator.startDelay = START_DELAY_RIPPLE_STROKE_WIDTH_SHRINK_MS
-        rippleStrokeWidthShrinkAnimator.interpolator = FastOutSlowInInterpolator()
-        rippleStrokeWidthShrinkAnimator.addUpdateListener { animation ->
-            rippleStrokeWidthScale = animation.animatedValue as Float
-            graphicOverlay.postInvalidate()
+        val rippleStrokeWidthShrinkAnimator = ValueAnimator.ofFloat(1f, 0.5f).setDuration(DURATION_RIPPLE_STROKE_WIDTH_SHRINK_MS).apply {
+            startDelay = START_DELAY_RIPPLE_STROKE_WIDTH_SHRINK_MS
+            interpolator = FastOutSlowInInterpolator()
+            addUpdateListener { animation ->
+                rippleStrokeWidthScale = animation.animatedValue as Float
+                graphicOverlay.postInvalidate()
+            }
         }
 
-        val fakeAnimatorForRestartDelay = ValueAnimator.ofInt(0, 0).setDuration(DURATION_RESTART_DORMANCY_MS)
-        fakeAnimatorForRestartDelay.startDelay = START_DELAY_RESTART_DORMANCY_MS
-        animatorSet = AnimatorSet()
-        animatorSet.playTogether(
-            rippleFadeInAnimator,
-            rippleFadeOutAnimator,
-            rippleExpandAnimator,
-            rippleStrokeWidthShrinkAnimator,
-            fakeAnimatorForRestartDelay
-        )
+        val fakeAnimatorForRestartDelay = ValueAnimator.ofInt(0, 0).setDuration(DURATION_RESTART_DORMANCY_MS).apply {
+            startDelay = START_DELAY_RESTART_DORMANCY_MS
+        }
+
+        animatorSet = AnimatorSet().apply {
+            playTogether(
+                    rippleFadeInAnimator,
+                    rippleFadeOutAnimator,
+                    rippleExpandAnimator,
+                    rippleStrokeWidthShrinkAnimator,
+                    fakeAnimatorForRestartDelay
+            )
+        }
+
     }
 
     fun start() {
