@@ -26,7 +26,9 @@ import android.graphics.BitmapFactory
 import android.graphics.Canvas
 import android.graphics.Typeface
 import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import android.net.Uri
+import android.os.Build
 import android.os.Environment
 import android.text.Spannable
 import android.text.SpannableString
@@ -74,10 +76,6 @@ object Utils {
     const val HEADER_USER_AGENT_SEARCH = "Search"
     const val NO_DRAWABLE_RESOURCE = 0
     const val FORCE_REFRESH_TAXONOMIES = "force_refresh_taxonomies"
-
-    fun italic(vararg content: CharSequence) = apply(content, StyleSpan(Typeface.ITALIC))
-
-    fun boldItalic(vararg content: CharSequence) = apply(content, StyleSpan(Typeface.BOLD_ITALIC))
 
     fun hideKeyboard(activity: Activity) {
         val view = activity.currentFocus ?: return
@@ -204,7 +202,7 @@ object Utils {
 
     val defaultHttpClient: OkHttpClient by lazy { defaultHttpBuilder().build() }
 
-    fun buildCachedHttpClient(context: Context): OkHttpClient {
+    private fun buildCachedHttpClient(context: Context): OkHttpClient {
         val cacheSize: Long = 50 * 1024 * 1024
         val cacheDir = File(context.cacheDir, "http-cache")
         return defaultHttpBuilder()
@@ -222,10 +220,15 @@ object Utils {
      * @param context of the application.
      * @return true if connected or connecting. False otherwise.
      */
+    @Suppress("DEPRECATION")
     fun isNetworkConnected(context: Context): Boolean {
         val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        val activeNetwork = cm.activeNetworkInfo ?: return false
-        return activeNetwork.isConnectedOrConnecting
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            val capability = cm.getNetworkCapabilities(cm.activeNetwork)
+            capability?.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET) ?: false
+        } else {
+            cm.activeNetworkInfo?.isConnectedOrConnecting ?: false
+        }
     }
 
     fun makeOrGetPictureDirectory(context: Context): File {

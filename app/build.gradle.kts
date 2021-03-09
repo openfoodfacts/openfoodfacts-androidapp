@@ -71,6 +71,10 @@ dependencies {
 
     implementation("androidx.startup:startup-runtime:1.0.0")
 
+    // ML Kit barcode Scanner
+    implementation ("com.google.mlkit:barcode-scanning:16.1.1")
+
+    implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
 
     kapt("com.google.dagger:dagger-compiler:2.33")
     implementation("com.google.dagger:dagger:2.33")
@@ -202,7 +206,7 @@ android {
         dataBinding = true
     }
 
-    flavorDimensions("versionCode")
+    flavorDimensions("versionCode", "platform")
 
 
     defaultConfig {
@@ -275,6 +279,7 @@ android {
             buildConfigField("String", "OFWEBSITE", "\"https://world.openfoodfacts.org/\"")
             buildConfigField("String", "WIKIDATA", "\"https://www.wikidata.org/wiki/Special:EntityData/\"")
             buildConfigField("String", "STATICURL", "\"https://static.openfoodfacts.org\"")
+            dimension = "versionCode"
         }
         create("obf") {
             applicationId = "openfoodfacts.github.scrachx.openbeauty"
@@ -285,6 +290,7 @@ android {
             buildConfigField("String", "OFWEBSITE", "\"https://world.openbeautyfacts.org/\"")
             buildConfigField("String", "WIKIDATA", "\"https://www.wikidata.org/wiki/Special:EntityData/\"")
             buildConfigField("String", "STATICURL", "\"https://static.openbeautyfacts.org\"")
+            dimension = "versionCode"
         }
         create("opff") {
             applicationId = "org.openpetfoodfacts.scanner"
@@ -295,6 +301,7 @@ android {
             buildConfigField("String", "OFWEBSITE", "\"https://world.openpetfoodfacts.org/\"")
             buildConfigField("String", "WIKIDATA", "\"https://www.wikidata.org/wiki/Special:EntityData/\"")
             buildConfigField("String", "STATICURL", "\"https://static.openpetfoodfacts.org\"")
+            dimension = "versionCode"
         }
         create("opf") {
             applicationId = "org.openproductsfacts.scanner"
@@ -305,6 +312,13 @@ android {
             buildConfigField("String", "OFWEBSITE", "\"https://world.openproductsfacts.org/\"")
             buildConfigField("String", "WIKIDATA", "\"https://www.wikidata.org/wiki/Special:EntityData/\"")
             buildConfigField("String", "STATICURL", "\"https://static.openproductsfacts.org\"")
+            dimension = "versionCode"
+        }
+        create("playstore") {
+            dimension = "platform"
+        }
+        create("fdroid") {
+            dimension = "platform"
         }
     }
 
