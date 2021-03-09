@@ -26,12 +26,12 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.addTo
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentIngredientsAnalysisProductBinding
+import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_STATE
 import openfoodfacts.github.scrachx.openfood.features.product.view.ingredients_analysis.adapter.IngredientAnalysisRecyclerAdapter
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductState
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
-import openfoodfacts.github.scrachx.openfood.utils.getProductState
 import openfoodfacts.github.scrachx.openfood.utils.requireProductState
 
 class IngredientsAnalysisProductFragment : BaseFragment() {
@@ -65,7 +65,7 @@ class IngredientsAnalysisProductFragment : BaseFragment() {
                     binding.ingredientAnalysisRecyclerView.adapter = adapter
                 }.addTo(disp)
 
-        getProductState()?.let { refreshView(it) }
+        refreshView(requireProductState())
     }
 
     override fun onDestroyView() {
@@ -77,5 +77,13 @@ class IngredientsAnalysisProductFragment : BaseFragment() {
         super.refreshView(productState)
         product = productState.product!!
         adapter?.notifyDataSetChanged()
+    }
+
+    companion object {
+        fun newInstance(productState: ProductState) = IngredientsAnalysisProductFragment().apply {
+            arguments = Bundle().apply {
+                putSerializable(KEY_STATE, productState)
+            }
+        }
     }
 }

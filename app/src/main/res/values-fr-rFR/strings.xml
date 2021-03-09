@@ -788,4 +788,7 @@
     <string name="required_for_ecoscore">(Requis pour calculer l\'Eco-Score)</string>
     <string name="hint_origin">Exemples: USA, France, Italie</string>
     <string name="report_email_chooser_title">Envoyer un signalement par email</string>
+    <!-- Changelog String -->
+    <string name="changelog_translation_help">Vous voulez voir ce journal des modifications en %s?\nRejoignez l\'équipe de traduction !</string>
+    <string name="whats_new">Quoi de neuf avec Open Food Facts ?</string>
 </resources>

@@ -398,7 +398,6 @@ class ContinuousScanActivity : AppCompatActivity() {
         binding.quickViewSlideUpIndicator.visibility = View.VISIBLE
         binding.quickViewName.visibility = View.VISIBLE
         binding.frameLayout.visibility = View.VISIBLE
-        binding.quickViewAdditives.visibility = View.VISIBLE
         if (!analysisTagsEmpty) {
             binding.quickViewTags.visibility = View.VISIBLE
         } else {

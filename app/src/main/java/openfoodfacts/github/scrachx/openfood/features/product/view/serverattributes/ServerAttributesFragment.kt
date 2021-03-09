@@ -1,7 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.features.product.view.serverattributes
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,8 +28,6 @@ class ServerAttributesFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val attributeGroups = productState.product!!.getLocalAttributeGroups(requireContext())
-        Log.i("ServerAttributes", attributeGroups.toString())
-
         binding.attrsList.setAdapter(AttributeGroupsAdapter(attributeGroups, requireActivity()))
     }
 

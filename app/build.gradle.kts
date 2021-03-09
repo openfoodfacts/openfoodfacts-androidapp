@@ -46,10 +46,10 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib:${rootProject.extra["kotlinVersion"]}")
 
     // Android KTX
-    implementation("androidx.fragment:fragment-ktx:1.3.0-rc01")
-    implementation("androidx.activity:activity-ktx:1.2.0-rc01")
+    implementation("androidx.fragment:fragment-ktx:1.3.0")
+    implementation("androidx.activity:activity-ktx:1.2.0")
     implementation("androidx.preference:preference-ktx:1.1.1")
-    implementation("androidx.core:core-ktx:1.5.0-alpha05")
+    implementation("androidx.core:core-ktx:1.5.0-beta02")
 
 
     // AndroidX
@@ -64,8 +64,11 @@ dependencies {
     implementation("androidx.multidex:multidex:2.0.1")
     implementation("androidx.viewpager2:viewpager2:1.0.0")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
-    implementation("androidx.work:work-runtime:2.4.0")
-    implementation("androidx.work:work-rxjava2:2.4.0")
+
+    val workVersion = "2.5.0"
+    implementation("androidx.work:work-runtime:$workVersion")
+    implementation("androidx.work:work-rxjava2:$workVersion")
+
     implementation("androidx.startup:startup-runtime:1.0.0")
 
     // ML Kit barcode Scanner
@@ -73,8 +76,8 @@ dependencies {
 
     implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
 
-    kapt("com.google.dagger:dagger-compiler:2.30.1")
-    implementation("com.google.dagger:dagger:2.30.1")
+    kapt("com.google.dagger:dagger-compiler:2.33")
+    implementation("com.google.dagger:dagger:2.33")
     compileOnly("javax.annotation:javax.annotation-api:1.3.2")
 
     //Rx
@@ -85,13 +88,13 @@ dependencies {
     //Networking
     implementation("com.squareup.retrofit2:retrofit:2.6.4")
     implementation("com.squareup.retrofit2:converter-jackson:2.6.4")
-    implementation("com.squareup.retrofit2:converter-scalars:2.1.0")
     implementation("com.squareup.retrofit2:adapter-rxjava2:2.6.4")
+    implementation("com.squareup.retrofit2:converter-scalars:2.1.0")
     implementation("com.squareup.okhttp3:logging-interceptor:3.12.11")
 
 
     // Apache commons
-    implementation("org.apache.commons:commons-lang3:3.11")
+    implementation("org.apache.commons:commons-lang3:3.12.0")
     implementation("org.apache.commons:commons-text:1.9")
     implementation("org.apache.commons:commons-csv:1.8")
     implementation("commons-validator:commons-validator:1.7")
@@ -111,7 +114,7 @@ dependencies {
     implementation("org.greenrobot:eventbus:$eventBusVersion")
     kapt("org.greenrobot:eventbus-annotation-processor:$eventBusVersion")
 
-    implementation("com.google.android.material:material:1.2.1")
+    implementation("com.google.android.material:material:1.3.0")
 
     //Image Loading
     implementation("com.squareup.picasso:picasso:2.71828")
@@ -151,14 +154,14 @@ dependencies {
     implementation("com.hootsuite.android:nachos:1.2.0")
 
     // Crash analytics
-    implementation("io.sentry:sentry-android:3.2.0")
+    implementation("io.sentry:sentry-android:4.3.0")
 
     // Unit Testing
-    testImplementation("junit:junit:4.13.1")
-    testImplementation("org.mockito:mockito-core:3.6.28")
-    testImplementation("net.javacrumbs.json-unit:json-unit-fluent:2.22.0")
-    testImplementation("com.google.truth:truth:1.1")
-    testImplementation("com.google.truth.extensions:truth-java8-extension:1.1")
+    testImplementation("junit:junit:4.13.2")
+    testImplementation("org.mockito:mockito-core:3.8.0")
+    testImplementation("net.javacrumbs.json-unit:json-unit-fluent:2.24.0")
+    testImplementation("com.google.truth:truth:1.1.2")
+    testImplementation("com.google.truth.extensions:truth-java8-extension:1.1.2")
 
     // Instrumented tests
     androidTestUtil("androidx.test:orchestrator:1.3.0")
