@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
+import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.addTo
 import openfoodfacts.github.scrachx.openfood.BuildConfig
@@ -18,21 +19,19 @@ import openfoodfacts.github.scrachx.openfood.models.ProductState
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.requireProductState
+import javax.inject.Inject
 
 /**
  * @author prajwalm
  * @see R.layout.fragment_product_photos
  */
+@AndroidEntryPoint
 class ProductPhotosFragment : BaseFragment() {
     private var _binding: FragmentProductPhotosBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var openFoodAPIClient: OpenFoodAPIClient
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        openFoodAPIClient = OpenFoodAPIClient(requireActivity())
-    }
+    @Inject
+    lateinit var client: OpenFoodAPIClient
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentProductPhotosBinding.inflate(inflater, container, false)
@@ -51,7 +50,7 @@ class ProductPhotosFragment : BaseFragment() {
                     val imageNames = ImageNameJsonParser.extractImagesNameSortedByUploadTimeDesc(node!!)
 
                     //Check if user is logged in
-                    val adapter = ProductPhotosAdapter(requireContext(), product, imageNames, binding.root)
+                    val adapter = ProductPhotosAdapter(requireContext(), client, product, imageNames, binding.root)
                     { position ->
                         // Retrieves url of the image clicked to open FullScreenActivity
                         var barcodePattern = product.code

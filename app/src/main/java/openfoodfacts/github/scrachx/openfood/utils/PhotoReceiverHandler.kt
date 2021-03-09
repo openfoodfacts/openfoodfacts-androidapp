@@ -31,9 +31,9 @@ class PhotoReceiverHandler(private val photoReceiver: (File) -> Unit) {
 
         val fragmentActivity = fragment?.activity
         val mainActivity = activity ?: fragmentActivity
-        val fragmentContext = fragment?.requireContext() ?: OFFApplication.instance
+        val fragmentContext = fragment?.requireContext() ?: OFFApplication._instance
         val mainContext = activity ?: fragmentContext
-        val preferences = PreferenceManager.getDefaultSharedPreferences(OFFApplication.instance)
+        val preferences = PreferenceManager.getDefaultSharedPreferences(OFFApplication._instance)
         val cropActionEnabled = preferences == null || preferences.getBoolean("cropNewImage", true)
 
 

@@ -56,10 +56,12 @@ import java.io.File
 
 class ProductCompareAdapter(
         private val productsToCompare: List<Product>,
-        internal val activity: Activity
+        internal val activity: Activity,
+        private val api: OpenFoodAPIClient,
+        private val productRepository: ProductRepository
 ) : RecyclerView.Adapter<ProductComparisonViewHolder>() {
     private val addProductButton = activity.findViewById<Button>(R.id.product_comparison_button)
-    private val api by lazy { OpenFoodAPIClient(activity) }
+
     private val disp = CompositeDisposable()
     private val viewHolders = mutableListOf<ProductComparisonViewHolder>()
 
@@ -219,10 +221,10 @@ class ProductCompareAdapter(
 
         product.additivesTags.toObservable()
                 .flatMapSingle { tag ->
-                    ProductRepository.getAdditiveByTagAndLanguageCode(tag, LocaleHelper.getLanguage(activity))
+                    productRepository.getAdditiveByTagAndLanguageCode(tag, LocaleHelper.getLanguage(activity))
                             .flatMap { categoryName: AdditiveName ->
                                 if (categoryName.isNull) {
-                                    ProductRepository.getAdditiveByTagAndDefaultLanguageCode(tag)
+                                    productRepository.getAdditiveByTagAndDefaultLanguageCode(tag)
                                 } else {
                                     Single.just(categoryName)
                                 }

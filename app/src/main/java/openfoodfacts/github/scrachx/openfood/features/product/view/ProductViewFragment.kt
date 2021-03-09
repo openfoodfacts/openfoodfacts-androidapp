@@ -12,6 +12,7 @@ import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
+import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
@@ -33,14 +34,18 @@ import openfoodfacts.github.scrachx.openfood.features.product.view.summary.Summa
 import openfoodfacts.github.scrachx.openfood.models.ProductState
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.requireProductState
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class ProductViewFragment : Fragment(), OnRefreshListener {
     private var _binding: ActivityProductBinding? = null
     private val binding get() = _binding!!
 
     private val disp = CompositeDisposable()
 
-    private lateinit var client: OpenFoodAPIClient
+    @Inject
+    lateinit var client: OpenFoodAPIClient
+
     private lateinit var adapterResult: ProductFragmentPagerAdapter
     private lateinit var productState: ProductState
 
@@ -54,7 +59,6 @@ class ProductViewFragment : Fragment(), OnRefreshListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        client = OpenFoodAPIClient(requireActivity())
         productState = requireProductState()
 
         binding.toolbar.visibility = View.GONE

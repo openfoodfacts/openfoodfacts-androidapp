@@ -44,6 +44,7 @@ import com.afollestad.materialdialogs.MaterialDialog
 import com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_SHORT
 import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
+import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.rxkotlin.addTo
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OBF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
@@ -78,14 +79,17 @@ import openfoodfacts.github.scrachx.openfood.utils.*
 import pl.aprilapps.easyphotopicker.EasyImage
 import java.io.File
 import java.util.*
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.ConnectionCallback {
     private var _binding: FragmentNutritionProductBinding? = null
     private val binding get() = _binding!!
 
     private var photoReceiverHandler = PhotoReceiverHandler { loadNutritionPhoto(it) }
 
-    private lateinit var api: OpenFoodAPIClient
+    @Inject
+    lateinit var client: OpenFoodAPIClient
     private lateinit var product: Product
 
     /**
@@ -112,7 +116,6 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
     private var showCategoryPrompt = false
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        api = OpenFoodAPIClient(requireActivity())
         _binding = FragmentNutritionProductBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -476,7 +479,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
 
     private fun openFullScreen() {
         if (nutrientsImageUrl != null) {
-            FullScreenActivityOpener.openForUrl(this, product, ProductImageField.NUTRITION, nutrientsImageUrl, binding.imageViewNutrition)
+            FullScreenActivityOpener.openForUrl(this, client, product, ProductImageField.NUTRITION, nutrientsImageUrl, binding.imageViewNutrition)
         } else {
             // take a picture
             if (ContextCompat.checkSelfPermission(requireActivity(), permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
@@ -528,7 +531,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
         }
 
         // Load to server
-        api.postImg(image).subscribe().addTo(disp)
+        client.postImg(image).subscribe().addTo(disp)
 
         // Load into view
         binding.addPhotoLabel.visibility = GONE

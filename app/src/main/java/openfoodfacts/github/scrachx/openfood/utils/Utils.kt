@@ -157,7 +157,7 @@ object Utils {
     fun getRoundNumber(value: Float, locale: Locale = Locale.getDefault()) = getRoundNumber(value.toString(), locale)
     fun getRoundNumber(value: Double, locale: Locale = Locale.getDefault()) = getRoundNumber(value.toString(), locale)
 
-    val daoSession get() = OFFApplication.daoSession
+    val daoSession get() = OFFApplication._daoSession
 
     /**
      * Schedules job to download when network is available

@@ -31,14 +31,13 @@ import org.json.JSONException
  */
 class ProductPhotosAdapter(
         private val context: Context,
+        private val client: OpenFoodAPIClient,
         private val product: Product,
         private val images: List<String>,
         private val snackView: View? = null,
-        private val onImageClick: (Int) -> Unit,
-
-        ) : RecyclerView.Adapter<ProductPhotoViewHolder>(), Disposable {
+        private val onImageClick: (Int) -> Unit
+) : RecyclerView.Adapter<ProductPhotoViewHolder>(), Disposable {
     private val isLoggedIn = context.isUserSet()
-    private val openFoodAPIClient = OpenFoodAPIClient(context)
     private val disp = CompositeDisposable()
 
 
@@ -111,7 +110,7 @@ class ProductPhotosAdapter(
             if (snackView == null) Toast.makeText(context, context.getString(R.string.changes_saved), Toast.LENGTH_SHORT).show()
             else Snackbar.make(snackView, R.string.changes_saved, Snackbar.LENGTH_SHORT).show()
 
-            openFoodAPIClient.editImage(product.code, imgMap)
+            client.editImage(product.code, imgMap)
                     .subscribe { response -> displaySetImageName(response) }
                     .addTo(disp)
             return true

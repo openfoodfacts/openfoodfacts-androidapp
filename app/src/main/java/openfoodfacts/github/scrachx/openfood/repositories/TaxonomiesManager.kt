@@ -61,7 +61,7 @@ object TaxonomiesManager {
             dao: AbstractDao<T, *>
     ): Single<List<T>> {
         // WARNING: Before "return" all code is executed on MAIN THREAD
-        val mSettings = OFFApplication.instance.getSharedPreferences("prefs", 0)
+        val mSettings = OFFApplication._instance.getSharedPreferences("prefs", 0)
 
         // First check if this taxonomy is to be loaded for this flavor, else return empty list
         val isTaxonomyActivated = mSettings.getBoolean(taxonomy.downloadActivatePreferencesId, false)

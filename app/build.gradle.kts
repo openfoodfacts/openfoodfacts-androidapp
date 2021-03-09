@@ -30,6 +30,7 @@ plugins {
     id("kotlin-android")
     id("kotlin-parcelize")
     id("kotlin-kapt")
+    id("dagger.hilt.android.plugin")
 }
 
 fun obtainTestBuildType(): String {
@@ -68,6 +69,9 @@ dependencies {
     val workVersion = "2.5.0"
     implementation("androidx.work:work-runtime:$workVersion")
     implementation("androidx.work:work-rxjava2:$workVersion")
+    implementation("androidx.hilt:hilt-work:1.0.0-alpha03")
+    kapt("androidx.hilt:hilt-compiler:1.0.0-alpha03")
+
 
     implementation("androidx.startup:startup-runtime:1.0.0")
 
@@ -78,6 +82,10 @@ dependencies {
 
     kapt("com.google.dagger:dagger-compiler:2.33")
     implementation("com.google.dagger:dagger:2.33")
+    implementation("com.google.dagger:hilt-android:${rootProject.extra["hiltVersion"]}")
+
+    kapt("com.google.dagger:hilt-compiler:${rootProject.extra["hiltVersion"]}")
+
     compileOnly("javax.annotation:javax.annotation-api:1.3.2")
 
     //Rx

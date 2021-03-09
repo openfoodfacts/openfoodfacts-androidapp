@@ -16,7 +16,6 @@ import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import openfoodfacts.github.scrachx.openfood.R
-import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabsHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback
@@ -178,7 +177,7 @@ class ProductAttributeFragment : BottomSheetDialogFragment() {
     private fun getDescription(map: JsonNode): String? {
         var descriptionString: String? = null
 
-        val languageCode = LocaleHelper.getLanguage(OFFApplication.instance)
+        val languageCode = LocaleHelper.getLanguage(requireContext())
         if (map[languageCode] != null) {
             descriptionString = map[languageCode]["value"].asText()
         }

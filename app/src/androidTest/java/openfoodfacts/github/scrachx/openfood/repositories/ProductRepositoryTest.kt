@@ -2,8 +2,8 @@ package openfoodfacts.github.scrachx.openfood.repositories
 
 import android.util.Log
 import androidx.test.filters.SmallTest
-import openfoodfacts.github.scrachx.openfood.app.OFFApplication.Companion.daoSession
-import openfoodfacts.github.scrachx.openfood.app.OFFApplication.Companion.instance
+import openfoodfacts.github.scrachx.openfood.app.OFFApplication.Companion._daoSession
+import openfoodfacts.github.scrachx.openfood.app.OFFApplication.Companion._instance
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.Allergen
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenName
 import org.junit.AfterClass
@@ -20,7 +20,7 @@ import java.util.*
 class ProductRepositoryTest {
     @Test
     fun testGetAllergens() {
-        val mSettings = instance.getSharedPreferences("prefs", 0)
+        val mSettings = _instance.getSharedPreferences("prefs", 0)
         val isDownloadActivated = mSettings.getBoolean(Taxonomy.ALLERGEN.downloadActivatePreferencesId, false)
         val allergens = ProductRepository.reloadAllergensFromServer().blockingGet()
         assertNotNull(allergens)
@@ -81,7 +81,7 @@ class ProductRepositoryTest {
         fun close() = clearDatabase()
 
         private fun clearDatabase() {
-            val daoSession = daoSession
+            val daoSession = _daoSession
             val db = daoSession.database
             db.beginTransaction()
             try {

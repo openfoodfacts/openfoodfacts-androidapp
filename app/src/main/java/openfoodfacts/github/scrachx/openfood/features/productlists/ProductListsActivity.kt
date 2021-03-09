@@ -36,7 +36,6 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 import openfoodfacts.github.scrachx.openfood.R
-import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductListsBinding
 import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.selectNavigationItem
@@ -46,6 +45,7 @@ import openfoodfacts.github.scrachx.openfood.features.productlist.ProductListAct
 import openfoodfacts.github.scrachx.openfood.features.productlist.ProductListActivity.Companion.KEY_LIST_NAME
 import openfoodfacts.github.scrachx.openfood.features.productlist.ProductListActivity.Companion.KEY_PRODUCT_TO_ADD
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
+import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.entities.ProductLists
 import openfoodfacts.github.scrachx.openfood.models.entities.ProductListsDao
@@ -58,10 +58,14 @@ import org.apache.commons.csv.CSVParser
 import java.io.InputStream
 import java.io.InputStreamReader
 import java.util.*
+import javax.inject.Inject
 
 class ProductListsActivity : BaseActivity(), SwipeController.Actions {
     private var _binding: ActivityProductListsBinding? = null
     private val binding get() = _binding!!
+
+    @Inject
+    lateinit var daoSession: DaoSession
 
     private lateinit var adapter: ProductListsAdapter
     private lateinit var productListsDao: ProductListsDao
@@ -183,10 +187,10 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
             val productToRemove = adapter.lists[position]
 
             // delete the product from YOUR_LISTED_PRODUCT_TABLE
-            val deleteQuery = OFFApplication.daoSession.yourListedProductDao.queryBuilder()
+            val deleteQuery = daoSession.yourListedProductDao.queryBuilder()
                     .where(YourListedProductDao.Properties.ListId.eq(productToRemove.id)).buildDelete()
             deleteQuery.executeDeleteWithoutDetachingEntities()
-            OFFApplication.daoSession.clear()
+            daoSession.clear()
 
             productListsDao.delete(productToRemove)
             adapter.remove(productToRemove)

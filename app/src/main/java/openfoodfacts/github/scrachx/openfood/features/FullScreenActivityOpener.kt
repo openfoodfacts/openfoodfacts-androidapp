@@ -27,6 +27,7 @@ import org.jetbrains.annotations.Contract
 object FullScreenActivityOpener {
     fun openForUrl(
             fragment: Fragment,
+            client: OpenFoodAPIClient,
             product: Product,
             imageType: ProductImageField,
             mUrlImage: String?,
@@ -34,7 +35,7 @@ object FullScreenActivityOpener {
     ) {
         // A new file added just now
         if (isAbsoluteUrl(mUrlImage)) {
-            loadImageServerUrl(fragment, product, imageType, mImageFront)
+            loadImageServerUrl(fragment, client, product, imageType, mImageFront)
             return
         }
         startActivity(fragment, mImageFront, createIntent(fragment.context, product, imageType, mUrlImage))
@@ -91,18 +92,18 @@ object FullScreenActivityOpener {
     @CheckResult
     private fun loadImageServerUrl(
             fragment: Fragment,
+            client: OpenFoodAPIClient,
             product: Product,
             imageType: ProductImageField,
             mImageFront: View
     ): Disposable {
-        val client = OpenFoodAPIClient(fragment.requireContext())
         return client.getProductImages(product.code).subscribe { newState ->
             val newStateProduct = newState.product
             if (newStateProduct != null) {
                 val language = getLanguage(fragment.context)
                 val imageUrl = newStateProduct.getSelectedImage(language, imageType, ImageSize.DISPLAY)
                 if (!imageUrl.isNullOrBlank()) {
-                    openForUrl(fragment, newStateProduct, imageType, imageUrl, mImageFront)
+                    openForUrl(fragment, client, newStateProduct, imageType, imageUrl, mImageFront)
                 } else {
                     Toast.makeText(fragment.context, R.string.cant_edit_image_not_yet_uploaded, Toast.LENGTH_LONG).show()
                 }

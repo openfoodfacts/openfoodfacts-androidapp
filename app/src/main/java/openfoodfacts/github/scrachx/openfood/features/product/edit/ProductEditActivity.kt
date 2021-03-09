@@ -31,6 +31,7 @@ import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.afollestad.materialdialogs.MaterialDialog
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
+import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
@@ -43,7 +44,6 @@ import openfoodfacts.github.scrachx.openfood.AppFlavors.OPFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.app.OFFApplication
-import openfoodfacts.github.scrachx.openfood.app.OFFApplication.Companion.appComponent
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityEditProductBinding
 import openfoodfacts.github.scrachx.openfood.features.product.ProductFragmentPagerAdapter
 import openfoodfacts.github.scrachx.openfood.features.product.edit.overview.ProductEditOverviewFragment
@@ -58,7 +58,7 @@ import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager.productsApi
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient.Companion.addToHistorySync
-import openfoodfacts.github.scrachx.openfood.utils.OfflineProductService.getOfflineProductByBarcode
+import openfoodfacts.github.scrachx.openfood.utils.OfflineProductService
 import openfoodfacts.github.scrachx.openfood.utils.Utils.daoSession
 import openfoodfacts.github.scrachx.openfood.utils.Utils.hideKeyboard
 import openfoodfacts.github.scrachx.openfood.utils.Utils.isExternalStorageWritable
@@ -67,13 +67,18 @@ import openfoodfacts.github.scrachx.openfood.utils.getProductState
 import java.io.File
 import java.io.IOException
 import java.util.*
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class ProductEditActivity : AppCompatActivity() {
     private var _binding: ActivityEditProductBinding? = null
     private val binding get() = _binding!!
 
     private val disp = CompositeDisposable()
     private val fragmentsBundle = Bundle()
+
+    @Inject
+    lateinit var offlineService: OfflineProductService
 
     private val addProductPhotosFragment = ProductEditPhotosFragment()
     private val nutritionFactsFragment = ProductEditNutritionFactsFragment()
@@ -148,7 +153,6 @@ class ProductEditActivity : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        appComponent.inject(this)
         super.onCreate(savedInstanceState)
 
         // Setup view binding
@@ -180,7 +184,7 @@ class ProductEditActivity : AppCompatActivity() {
             mProduct = productState.product
 
             // Search if the barcode already exists in the OfflineSavedProducts db
-            offlineSavedProduct = getOfflineProductByBarcode(productState.product!!.code)
+            offlineSavedProduct = offlineService.getOfflineProductByBarcode(productState.product!!.code)
         }
         if (mEditProduct != null) {
             setTitle(R.string.edit_product_title)
@@ -297,7 +301,7 @@ class ProductEditActivity : AppCompatActivity() {
         )
         daoSession.offlineSavedProductDao!!.insertOrReplace(toSaveOfflineProduct)
 
-        scheduleSync()
+        scheduleSync(this)
         daoSession.historyProductDao.addToHistorySync(toSaveOfflineProduct)
 
         Toast.makeText(this, R.string.productSavedToast, Toast.LENGTH_SHORT).show()
@@ -388,7 +392,7 @@ class ProductEditActivity : AppCompatActivity() {
                     } else {
                         hideImageProgress(position, true, it.message ?: "Empty error.")
                         Log.i(this::class.simpleName, it.message ?: "Empty error.")
-                        Toast.makeText(OFFApplication.instance, it.message, Toast.LENGTH_SHORT).show()
+                        Toast.makeText(OFFApplication._instance, it.message, Toast.LENGTH_SHORT).show()
                     }
                 }
                 .subscribe { jsonNode ->

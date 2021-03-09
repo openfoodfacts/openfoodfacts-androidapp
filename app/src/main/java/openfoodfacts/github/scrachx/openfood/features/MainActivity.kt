@@ -60,6 +60,7 @@ import com.mikepenz.materialdrawer.holder.StringHolder
 import com.mikepenz.materialdrawer.model.*
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem
 import com.mikepenz.materialdrawer.model.interfaces.IProfile
+import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.Maybe
 import io.reactivex.Observable
 import io.reactivex.Single
@@ -75,12 +76,12 @@ import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabsHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityMainBinding
-import openfoodfacts.github.scrachx.openfood.features.changelog.ChangelogDialog
 import openfoodfacts.github.scrachx.openfood.features.LoginActivity.Companion.LoginContract
 import openfoodfacts.github.scrachx.openfood.features.adapters.PhotosAdapter
 import openfoodfacts.github.scrachx.openfood.features.additives.AdditiveListActivity
 import openfoodfacts.github.scrachx.openfood.features.allergensalert.AllergensAlertFragment
 import openfoodfacts.github.scrachx.openfood.features.categories.activity.CategoryActivity
+import openfoodfacts.github.scrachx.openfood.features.changelog.ChangelogDialog
 import openfoodfacts.github.scrachx.openfood.features.compare.ProductCompareActivity
 import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.selectNavigationItem
@@ -129,10 +130,15 @@ import java.io.File
 import java.io.FileNotFoundException
 import java.io.IOException
 import java.util.*
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : BaseActivity(), NavigationDrawerListener {
     private var _binding: ActivityMainBinding? = null
     private val binding get() = _binding!!
+
+    @Inject
+    lateinit var apiClient: OpenFoodAPIClient
 
     private val disp = CompositeDisposable()
 
@@ -405,13 +411,13 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
 
         //Scheduling background image upload job
         scheduleProductUploadJob(this)
-        scheduleSync()
+        scheduleSync(this)
 
         //Adds nutriscore and quantity values in old history for schema 5 update
         val mSharedPref = applicationContext.getSharedPreferences("prefs", 0)
         val isOldHistoryDataSynced = mSharedPref.getBoolean("is_old_history_data_synced", false)
         if (!isOldHistoryDataSynced && isNetworkConnected(this)) {
-            OpenFoodAPIClient(this).syncOldHistory()
+            apiClient.syncOldHistory()
         }
         binding.bottomNavigationInclude.bottomNavigation.selectNavigationItem(0)
         binding.bottomNavigationInclude.bottomNavigation.installBottomNavigation(this)
@@ -825,7 +831,6 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
         alertDialogBuilder.run {
             setCancelable(false)
             setPositiveButton(R.string.txtYes) { dialog, _ ->
-                val api = OpenFoodAPIClient(this@MainActivity)
                 imgUris.forEach { selected ->
                     val cm = getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager
                     val activeNetwork = cm.activeNetworkInfo
@@ -835,7 +840,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
                         if (activeNetwork != null && activeNetwork.isConnectedOrConnecting) {
                             val imageFile = File(RealPathUtil.getRealPath(this@MainActivity, selected))
                             val image = ProductImage(tempBarcode, ProductImageField.OTHER, imageFile)
-                            api.postImg(image).subscribe().addTo(disp)
+                            apiClient.postImg(image).subscribe().addTo(disp)
                         } else {
                             val product = Product().apply { code = tempBarcode }
                             ProductEditActivity.start(this@MainActivity, product)

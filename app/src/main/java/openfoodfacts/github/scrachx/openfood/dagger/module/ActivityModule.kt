@@ -1,15 +1,9 @@
 package openfoodfacts.github.scrachx.openfood.dagger.module
 
-import androidx.appcompat.app.AppCompatActivity
 import dagger.Module
-import dagger.Provides
-import openfoodfacts.github.scrachx.openfood.dagger.ActivityScope
-import openfoodfacts.github.scrachx.openfood.dagger.Qualifiers.ForActivity
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ActivityComponent
 
 @Module
-class ActivityModule(private val activity: AppCompatActivity) {
-    @Provides
-    @ForActivity
-    @ActivityScope
-    fun provideActivityContext() = activity
-}
+@InstallIn(ActivityComponent::class)
+class ActivityModule

@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import dagger.hilt.android.AndroidEntryPoint
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentFindProductBinding
 import openfoodfacts.github.scrachx.openfood.features.shared.NavigationBaseFragment
@@ -14,14 +15,18 @@ import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType
 import openfoodfacts.github.scrachx.openfood.utils.Utils
 import openfoodfacts.github.scrachx.openfood.utils.isBarcodeValid
+import javax.inject.Inject
 
 /**
  * @see R.layout.fragment_find_product
  */
+@AndroidEntryPoint
 class SearchByCodeFragment : NavigationBaseFragment() {
     private var _binding: FragmentFindProductBinding? = null
     private val binding get() = _binding!!
-    private val api by lazy { OpenFoodAPIClient(requireActivity()) }
+
+    @Inject
+    lateinit var client: OpenFoodAPIClient
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentFindProductBinding.inflate(inflater)
@@ -62,7 +67,7 @@ class SearchByCodeFragment : NavigationBaseFragment() {
         } else if (!isBarcodeValid(barCodeTxt)) {
             binding.editTextBarcode.error = resources.getString(R.string.txtBarcodeNotValid)
         } else {
-            api.openProduct(barCodeTxt, requireActivity())
+            client.openProduct(barCodeTxt, requireActivity())
         }
     }
 

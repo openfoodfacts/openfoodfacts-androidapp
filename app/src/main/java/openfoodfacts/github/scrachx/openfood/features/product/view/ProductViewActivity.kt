@@ -26,6 +26,7 @@ import androidx.preference.PreferenceManager
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
@@ -58,14 +59,17 @@ import openfoodfacts.github.scrachx.openfood.utils.Utils
 import openfoodfacts.github.scrachx.openfood.utils.requireProductState
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class ProductViewActivity : BaseActivity(), OnRefreshListener {
     private var _binding: ActivityProductBinding? = null
     private val binding get() = _binding!!
 
     private val disp = CompositeDisposable()
 
-    private lateinit var client: OpenFoodAPIClient
+    @Inject
+    lateinit var client: OpenFoodAPIClient
 
     private var productState: ProductState? = null
     private var adapterResult: ProductFragmentPagerAdapter? = null
@@ -81,8 +85,6 @@ class ProductViewActivity : BaseActivity(), OnRefreshListener {
         title = getString(R.string.app_name_long)
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
-        client = OpenFoodAPIClient(this)
 
         if (!checkIntentAction()) {
             productState = requireProductState()
