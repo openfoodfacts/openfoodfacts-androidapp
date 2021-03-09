@@ -222,7 +222,7 @@ class ContinuousScanActivity : AppCompatActivity() {
                                 if (productsToCompare.contains(product)) {
                                     putExtra(ProductCompareActivity.KEY_PRODUCT_ALREADY_EXISTS, true)
                                 } else {
-                                    productsToCompare.add(product)
+                                    productsToCompare += product
                                 }
                                 putExtra(ProductCompareActivity.KEY_PRODUCTS_TO_COMPARE, productsToCompare)
                                 addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
@@ -249,7 +249,7 @@ class ContinuousScanActivity : AppCompatActivity() {
                         // Set product name, prefer offline
                         if (offlineSavedProduct != null && !offlineSavedProduct?.name.isNullOrEmpty()) {
                             binding.quickViewName.text = offlineSavedProduct!!.name
-                        } else if (product.productName == null || product.productName == "") {
+                        } else if (product.productName.isNullOrEmpty()) {
                             binding.quickViewName.setText(R.string.productNameNull)
                         } else {
                             binding.quickViewName.text = product.productName
@@ -273,12 +273,13 @@ class ContinuousScanActivity : AppCompatActivity() {
                         quickViewCheckEcoScore(product)
 
                         // Create the product view fragment and add it to the layout
-                        val newProductViewFragment = ProductViewFragment.newInstance(productState)
-                        supportFragmentManager.commit {
-                            replace(R.id.frame_layout, newProductViewFragment)
-                            setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                        ProductViewFragment.newInstance(productState).let {
+                            supportFragmentManager.commit {
+                                replace(R.id.frame_layout, it)
+                                setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                            }
+                            productViewFragment = it
                         }
-                        productViewFragment = newProductViewFragment
                     }
                 }
     }

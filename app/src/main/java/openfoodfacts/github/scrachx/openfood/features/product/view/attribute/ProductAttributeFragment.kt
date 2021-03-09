@@ -140,8 +140,9 @@ class ProductAttributeFragment : BottomSheetDialogFragment() {
     }
 
     private fun updateAdditiveExposureTable(row: Int, exposure: String?, drawableResId: Int) {
-        if (exposure != null) {
-            if (row == 0) {
+        if (exposure == null) return
+        when (row) {
+            0 -> {
                 if (exposure.contains("infants")) {
                     mpInfantsImage!!.setImageResource(drawableResId)
                 }
@@ -160,7 +161,8 @@ class ProductAttributeFragment : BottomSheetDialogFragment() {
                 if (exposure.contains("elderly")) {
                     mpElderlyImage!!.setImageResource(drawableResId)
                 }
-            } else if (row == 1) {
+            }
+            1 -> {
                 if (exposure.contains("infants")) {
                     spInfantsImage!!.setImageResource(drawableResId)
                 }

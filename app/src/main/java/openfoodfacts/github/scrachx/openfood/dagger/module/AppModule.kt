@@ -10,8 +10,6 @@ import io.reactivex.schedulers.Schedulers
 import okhttp3.OkHttpClient
 import openfoodfacts.github.scrachx.openfood.AppFlavors
 import openfoodfacts.github.scrachx.openfood.BuildConfig
-import openfoodfacts.github.scrachx.openfood.category.CategoryRepository
-import openfoodfacts.github.scrachx.openfood.category.mapper.CategoryMapper
 import openfoodfacts.github.scrachx.openfood.category.network.CategoryNetworkService
 import openfoodfacts.github.scrachx.openfood.models.DaoMaster
 import openfoodfacts.github.scrachx.openfood.models.DaoSession
@@ -55,12 +53,6 @@ class AppModule {
     @Provides
     fun provideCategoryNetworkService(retrofit: Retrofit): CategoryNetworkService =
             retrofit.create(CategoryNetworkService::class.java)
-
-    @Provides
-    @Singleton
-    fun provideCategoryRepository(networkService: CategoryNetworkService,
-                                  mapper: CategoryMapper): CategoryRepository =
-            CategoryRepository(networkService, mapper)
 
 
     @Provides

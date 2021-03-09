@@ -57,7 +57,7 @@ class ProductListAdapter(
             holder.imgProgressBar.visibility = View.INVISIBLE
         }
         holder.itemView.setOnClickListener {
-            client.openProduct(products[position].barcode, (it.context as Activity))
+            client.openProduct(products[position].barcode, it.context as Activity)
         }
     }
 
