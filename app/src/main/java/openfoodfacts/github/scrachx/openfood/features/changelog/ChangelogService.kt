@@ -4,6 +4,7 @@ import android.content.Context
 import com.fasterxml.jackson.databind.ObjectMapper
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
+import openfoodfacts.github.scrachx.openfood.models.Changelog
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
 import java.io.BufferedReader
 import java.io.IOException
