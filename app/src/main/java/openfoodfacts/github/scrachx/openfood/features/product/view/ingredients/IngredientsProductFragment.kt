@@ -56,6 +56,7 @@ import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditAc
 import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivity.Companion.start
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
+import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.models.ProductState
 import openfoodfacts.github.scrachx.openfood.models.entities.SendProduct
@@ -83,7 +84,11 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
     @Inject
     lateinit var productRepository: ProductRepository
 
-    private val wikidataClient by lazy { WikiDataApiClient() }
+    @Inject
+    lateinit var daoSession: DaoSession
+
+    @Inject
+    lateinit var wikidataClient: WikiDataApiClient
 
     private val performOCRLauncher = registerForActivityResult(PerformOCRContract())
     { result -> if (result) onRefresh() }
@@ -249,7 +254,7 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
     }
 
     private fun getTracesName(languageCode: String, tag: String): String {
-        val allergenName = Utils.daoSession.allergenNameDao.queryBuilder()
+        val allergenName = daoSession.allergenNameDao.queryBuilder()
                 .where(AllergenNameDao.Properties.AllergenTag.eq(tag), AllergenNameDao.Properties.LanguageCode.eq(languageCode))
                 .unique()
         return if (allergenName != null) allergenName.name else tag

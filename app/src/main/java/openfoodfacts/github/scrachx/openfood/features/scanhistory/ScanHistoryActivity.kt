@@ -39,12 +39,12 @@ import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomList
 import openfoodfacts.github.scrachx.openfood.features.productlist.CreateCSVContract
 import openfoodfacts.github.scrachx.openfood.features.scan.ContinuousScanActivity
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
+import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import openfoodfacts.github.scrachx.openfood.models.HistoryProduct
 import openfoodfacts.github.scrachx.openfood.models.HistoryProductDao
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.SortType.*
-import openfoodfacts.github.scrachx.openfood.utils.Utils.daoSession
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
@@ -62,6 +62,9 @@ class ScanHistoryActivity : BaseActivity(), SwipeController.Actions {
 
     @Inject
     lateinit var client: OpenFoodAPIClient
+
+    @Inject
+    lateinit var daoSession: DaoSession
 
     /**
      * boolean to determine if menu buttons should be visible or not

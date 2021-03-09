@@ -164,7 +164,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mTagDao = Utils.daoSession.tagDao
+        mTagDao = daoSession.tagDao
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -799,7 +799,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
 
     private fun onBookmarkProductButtonClick() {
         val activity: Activity = requireActivity()
-        val productLists = getProductListsDaoWithDefaultList(activity).loadAll()
+        val productLists = daoSession.getProductListsDaoWithDefaultList(activity).loadAll()
         val productBarcode = product.code
         val productName = product.productName
         val imageUrl = product.getImageSmallUrl(LocaleHelper.getLanguage(activity))

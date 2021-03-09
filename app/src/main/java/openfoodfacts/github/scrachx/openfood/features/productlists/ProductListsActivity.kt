@@ -28,6 +28,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.afollestad.materialdialogs.DialogAction
 import com.afollestad.materialdialogs.MaterialDialog
+import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.Observable
 import io.reactivex.ObservableEmitter
 import io.reactivex.Single
@@ -60,6 +61,7 @@ import java.io.InputStreamReader
 import java.util.*
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class ProductListsActivity : BaseActivity(), SwipeController.Actions {
     private var _binding: ActivityProductListsBinding? = null
     private val binding get() = _binding!!
@@ -88,7 +90,7 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
         binding.bottomNavigation.bottomNavigation.installBottomNavigation(this)
         binding.fabAdd.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_plus_blue_24, 0, 0, 0)
 
-        productListsDao = getProductListsDaoWithDefaultList(this)
+        productListsDao = daoSession.getProductListsDaoWithDefaultList(this)
         val productLists = productListsDao.loadAll().toMutableList()
 
         adapter = ProductListsAdapter(this, productLists)
@@ -175,10 +177,12 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
 
     private val chooseFileContract = registerForActivityResult(ActivityResultContracts.OpenDocument())
     { uri ->
-        try {
-            parseCSV(contentResolver.openInputStream(uri))
-        } catch (e: Exception) {
-            Log.e(ProductListsActivity::class.simpleName, "Error importing CSV.", e)
+        if (uri != null) {
+            try {
+                parseCSV(contentResolver.openInputStream(uri))
+            } catch (e: Exception) {
+                Log.e(ProductListsActivity::class.simpleName, "Error importing CSV.", e)
+            }
         }
     }
 
@@ -285,9 +289,8 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
         @JvmStatic
         fun start(context: Context) = context.startActivity(Intent(context, ProductListsActivity::class.java))
 
-        @JvmStatic
-        fun getProductListsDaoWithDefaultList(context: Context): ProductListsDao {
-            val productListsDao = Utils.daoSession.productListsDao
+        fun DaoSession.getProductListsDaoWithDefaultList(context: Context): ProductListsDao {
+            val productListsDao = productListsDao
             if (productListsDao.loadAll().isEmpty()) {
                 productListsDao.insert(ProductLists(context.getString(R.string.txt_eaten_products), 0))
                 productListsDao.insert(ProductLists(context.getString(R.string.txt_products_to_buy), 0))
