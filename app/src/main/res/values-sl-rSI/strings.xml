@@ -710,7 +710,7 @@
     <string name="empty"></string>
     <string name="add_product">Dodajte izdelke</string>
     <string name="add_another_product">Dodajte še en izdelek</string>
-    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>>
+    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
     <string name="product_summary_action_compare_button_label">Primerjaj</string>
     <string name="product_summary_action_add_to_list_button_label">Dodaj na seznam</string>
     <string name="product_summary_action_edit_button_label">Uredi</string>
