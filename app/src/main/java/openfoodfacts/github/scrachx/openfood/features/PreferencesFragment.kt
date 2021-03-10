@@ -54,6 +54,9 @@ import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OPFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.R
+import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
+import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
+import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback
 import openfoodfacts.github.scrachx.openfood.features.scan.ContinuousScanActivity
@@ -272,7 +275,9 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
 
 
         // Disable photo mode for OpenProductFacts
-        if (isFlavors(AppFlavors.OPF)) requirePreference<Preference>(getString(R.string.pref_show_product_photos_key)).isVisible = false
+        if (isFlavors(AppFlavors.OPF)) {
+            requirePreference<Preference>(getString(R.string.pref_show_product_photos_key)).isVisible = false
+        }
 
         // Preference to show version name
         requirePreference<Preference>(getString(R.string.pref_version_key)).let {
@@ -289,6 +294,13 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
                 getAnalysisTagConfigs(daoSession)
             } else {
                 preferenceScreen.removePreference(preferenceScreen.requirePreference(getString(R.string.pref_key_display)))
+            }
+        }
+
+        requirePreference<SwitchPreference>(getString(R.string.pref_analytics_reporting_key)).let {
+            it.setOnPreferenceChangeListener { _, newValue ->
+                MatomoAnalytics.onAnalyticsEnabledToggled(newValue == true)
+                true
             }
         }
     }
@@ -310,6 +322,15 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
                     summaryOn = null
                     summaryOff = null
                     title = getString(R.string.display_analysis_tag_status, config.typeName.toLowerCase(Locale.getDefault()))
+                    setOnPreferenceChangeListener { _, newValue ->
+                        val event = if (newValue == true) {
+                            AnalyticsEvent.IngredientAnalysisEnabled(config.type)
+                        } else {
+                            AnalyticsEvent.IngredientAnalysisDisabled(config.type)
+                        }
+                        MatomoAnalytics.trackEvent(event)
+                        true
+                    }
                 })
             }
         } else {

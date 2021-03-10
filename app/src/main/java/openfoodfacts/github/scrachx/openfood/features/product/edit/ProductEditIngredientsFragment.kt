@@ -32,6 +32,10 @@ import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.addTo
 import openfoodfacts.github.scrachx.openfood.R
+import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
+import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsView
+import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
+import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentAddProductIngredientsBinding
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_PERFORM_OCR
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_SEND_UPDATED
@@ -96,7 +100,7 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
                 filePath = uri.path
             }
             (activity as? ProductEditActivity)?.addToPhotoMap(image, 1)
-            AnalyticsService.getInstance().trackEvent(AnalyticsEvent.ProductIngredientsPictureEdited(code))
+            MatomoAnalytics.trackEvent(AnalyticsEvent.ProductIngredientsPictureEdited(code))
             hideImageProgress(false, getString(R.string.image_uploaded_successfully))
         }
         val intent = if (activity == null) null else requireActivity().intent
@@ -158,7 +162,7 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
 
     override fun onResume() {
         super.onResume()
-        AnalyticsService.getInstance().trackView(AnalyticsView.PRODUCT_EDIT_INGREDIENTS)
+        MatomoAnalytics.trackView(AnalyticsView.ProductEditIngredients)
     }
 
     private fun getImageIngredients() = productDetails[ApiFields.Keys.IMAGE_INGREDIENTS]

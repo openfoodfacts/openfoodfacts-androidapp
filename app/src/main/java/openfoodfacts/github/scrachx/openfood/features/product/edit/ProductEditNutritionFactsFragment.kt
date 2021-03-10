@@ -35,8 +35,9 @@ import com.squareup.picasso.Callback
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.addTo
 import openfoodfacts.github.scrachx.openfood.R
-import openfoodfacts.github.scrachx.openfood.app.AnalyticsService
-import openfoodfacts.github.scrachx.openfood.utils.AnalyticsService as MatomoAnalytics
+import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsView
+import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
+import openfoodfacts.github.scrachx.openfood.analytics.SentryAnalytics
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentAddProductNutritionFactsBinding
 import openfoodfacts.github.scrachx.openfood.features.shared.views.CustomValidatingEditTextView
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
@@ -162,7 +163,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
 
     override fun onResume() {
         super.onResume()
-        MatomoAnalytics.getInstance().trackView(AnalyticsView.PRODUCT_EDIT_NUTRITION_FACTS)
+        MatomoAnalytics.trackView(AnalyticsView.ProductEditNutritionFacts)
     }
 
     override fun onDestroyView() {
@@ -722,7 +723,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
                 modSpinner.setSelection(modSelectedIndex)
             }
         } catch (t: Throwable) {
-            AnalyticsService.record(IllegalStateException("Can't find weight units for nutriment: $nutrientShortName", t))
+            SentryAnalytics.record(IllegalStateException("Can't find weight units for nutriment: $nutrientShortName", t))
             closeScreenWithAlert()
         }
 

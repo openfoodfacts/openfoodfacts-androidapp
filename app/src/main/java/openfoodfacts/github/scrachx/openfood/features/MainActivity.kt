@@ -72,6 +72,8 @@ import openfoodfacts.github.scrachx.openfood.AppFlavors
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.R
+import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
+import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabsHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback
@@ -519,7 +521,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
     private fun logout() {
         getSharedPreferences(PreferencesFragment.LOGIN_PREF, MODE_PRIVATE).edit { clear() }
         updateConnectedState()
-        AnalyticsEvent.UserLogout().track()
+        MatomoAnalytics.trackEvent(AnalyticsEvent.UserLogout)
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -729,7 +731,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
     public override fun onResume() {
         super.onResume()
         binding.bottomNavigationInclude.bottomNavigation.selectNavigationItem(R.id.home_page)
-        AnalyticsService.getInstance().showAnalyticsBottomSheetIfNeeded(supportFragmentManager)
+        MatomoAnalytics.showAnalyticsBottomSheetIfNeeded(supportFragmentManager)
 
         // change drawer menu item from "install" to "open" when navigating back from play store.
         if (isApplicationInstalled(this@MainActivity, BuildConfig.OFOTHERLINKAPP)) {

@@ -38,13 +38,14 @@ import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.R
+import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
+import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabsHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityLoginBinding
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager.productsApi
-import openfoodfacts.github.scrachx.openfood.utils.AnalyticsEvent
 import openfoodfacts.github.scrachx.openfood.utils.Utils
 import openfoodfacts.github.scrachx.openfood.utils.getLoginPreferences
 import retrofit2.Response
@@ -149,7 +150,7 @@ class LoginActivity : BaseActivity() {
                         binding.txtInfoLogin.setTextColor(ContextCompat.getColor(this, R.color.green_500))
                         binding.txtInfoLogin.setText(R.string.txtInfoLoginOk)
 
-                        AnalyticsEvent.UserLogin().track()
+                        MatomoAnalytics.trackEvent(AnalyticsEvent.UserLogin)
 
                         setResult(RESULT_OK)
                         finish()

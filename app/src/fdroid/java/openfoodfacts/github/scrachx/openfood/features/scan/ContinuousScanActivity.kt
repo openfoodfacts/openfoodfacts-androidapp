@@ -58,6 +58,10 @@ import io.reactivex.schedulers.Schedulers
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.R
+import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
+import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsView
+import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
+import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityContinuousScanBinding
 import openfoodfacts.github.scrachx.openfood.features.ImagesManageActivity
 import openfoodfacts.github.scrachx.openfood.features.compare.ProductCompareActivity
@@ -111,6 +115,9 @@ class ContinuousScanActivity : AppCompatActivity() {
 
     @Inject
     lateinit var daoSession: DaoSession
+
+    @Inject
+    lateinit var productRepository: ProductRepository
 
     private val cameraPref by lazy { getSharedPreferences("camera", 0) }
 
@@ -226,7 +233,7 @@ class ContinuousScanActivity : AppCompatActivity() {
                                     putExtra(ProductCompareActivity.KEY_PRODUCT_ALREADY_EXISTS, true)
                                 } else {
                                     productsToCompare += product
-                                    AnalyticsEvent.AddProductToComparison(product.code).track()
+                                    MatomoAnalytics.trackEvent(AnalyticsEvent.AddProductToComparison(product.code))
                                 }
                                 putExtra(ProductCompareActivity.KEY_PRODUCTS_TO_COMPARE, productsToCompare)
                                 addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
@@ -362,9 +369,6 @@ class ContinuousScanActivity : AppCompatActivity() {
             it.loadAnalysisTags()
         }
     }
-
-    @Inject
-    lateinit var productRepository: ProductRepository
 
     private fun showProductNotFound(text: String) {
         hideAllViews()
@@ -520,7 +524,7 @@ class ContinuousScanActivity : AppCompatActivity() {
         if (quickViewBehavior.state != BottomSheetBehavior.STATE_EXPANDED) {
             binding.barcodeScanner.resume()
         }
-        AnalyticsService.getInstance().trackView(AnalyticsView.SCANNER)
+        MatomoAnalytics.trackView(AnalyticsView.Scanner)
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -715,7 +719,7 @@ class ContinuousScanActivity : AppCompatActivity() {
                 }
                 BottomSheetBehavior.STATE_EXPANDED -> {
                     binding.barcodeScanner.pause()
-                    AnalyticsService.getInstance().trackEvent(AnalyticsEvent.ScannedBarcodeResultExpanded(lastBarcode))
+                    MatomoAnalytics.trackEvent(AnalyticsEvent.ScannedBarcodeResultExpanded(lastBarcode))
                 }
                 else -> binding.barcodeScanner.pause()
             }
@@ -803,7 +807,7 @@ class ContinuousScanActivity : AppCompatActivity() {
             lastBarcode = result.text
             if (!isFinishing) {
                 setShownProduct(result.text)
-                AnalyticsService.getInstance().trackEvent(AnalyticsEvent.ScannedBarcode(result.text))
+                MatomoAnalytics.trackEvent(AnalyticsEvent.ScannedBarcode(result.text))
             }
 
         }

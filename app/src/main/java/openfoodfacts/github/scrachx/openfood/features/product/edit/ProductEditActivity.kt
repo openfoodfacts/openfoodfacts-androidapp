@@ -43,6 +43,8 @@ import openfoodfacts.github.scrachx.openfood.AppFlavors.OPF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OPFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.R
+import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
+import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityEditProductBinding
 import openfoodfacts.github.scrachx.openfood.features.product.ProductFragmentPagerAdapter
 import openfoodfacts.github.scrachx.openfood.images.IMG_ID
@@ -58,10 +60,6 @@ import openfoodfacts.github.scrachx.openfood.network.CommonApiManager.productsAp
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient.Companion.addToHistorySync
 import openfoodfacts.github.scrachx.openfood.utils.OfflineProductService
-import openfoodfacts.github.scrachx.openfood.utils.AnalyticsEvent
-import openfoodfacts.github.scrachx.openfood.utils.AnalyticsService
-import openfoodfacts.github.scrachx.openfood.utils.OfflineProductService.getOfflineProductByBarcode
-import openfoodfacts.github.scrachx.openfood.utils.Utils.daoSession
 import openfoodfacts.github.scrachx.openfood.utils.Utils.hideKeyboard
 import openfoodfacts.github.scrachx.openfood.utils.Utils.isExternalStorageWritable
 import openfoodfacts.github.scrachx.openfood.utils.getLoginPreferences
@@ -316,9 +314,9 @@ class ProductEditActivity : AppCompatActivity() {
         hideKeyboard(this)
 
         if (editingMode) {
-            AnalyticsService.getInstance().trackEvent(AnalyticsEvent.ProductEdited(productDetails["code"]))
+            MatomoAnalytics.trackEvent(AnalyticsEvent.ProductEdited(productDetails["code"]))
         } else {
-            AnalyticsService.getInstance().trackEvent(AnalyticsEvent.ProductCreated(productDetails["code"]))
+            MatomoAnalytics.trackEvent(AnalyticsEvent.ProductCreated(productDetails["code"]))
         }
 
         setResult(RESULT_OK)

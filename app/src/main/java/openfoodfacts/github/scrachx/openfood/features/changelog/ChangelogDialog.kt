@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import openfoodfacts.github.scrachx.openfood.R
-import openfoodfacts.github.scrachx.openfood.app.AnalyticsService
+import openfoodfacts.github.scrachx.openfood.analytics.SentryAnalytics
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabsHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback
@@ -80,7 +80,7 @@ class ChangelogDialog : DialogFragment(R.layout.fragment_changelog) {
                         saveVersionCode(activity, currentVersionCode)
                     }
                 } catch (ex: NameNotFoundException) {
-                    AnalyticsService.record(ex)
+                    SentryAnalytics.record(ex)
                     Unit
                 }
             }
@@ -128,7 +128,7 @@ class ChangelogDialog : DialogFragment(R.layout.fragment_changelog) {
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(
                                 { items -> recyclerView.adapter = ChangelogAdapter(items) },
-                                { throwable -> AnalyticsService.record(throwable) }
+                                { throwable -> SentryAnalytics.record(throwable) }
                         )
         )
     }

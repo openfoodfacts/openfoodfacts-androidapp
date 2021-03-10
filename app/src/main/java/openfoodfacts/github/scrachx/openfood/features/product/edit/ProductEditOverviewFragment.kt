@@ -44,6 +44,9 @@ import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OPF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.R
+import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsView
+import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
+import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabsHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback
@@ -215,7 +218,7 @@ class ProductEditOverviewFragment : ProductEditFragment() {
 
     override fun onResume() {
         super.onResume()
-        AnalyticsService.getInstance().trackView(AnalyticsView.PRODUCT_EDIT_OVERVIEW)
+        MatomoAnalytics.trackView(AnalyticsView.ProductEditOverview)
     }
 
     override fun onDestroyView() {
