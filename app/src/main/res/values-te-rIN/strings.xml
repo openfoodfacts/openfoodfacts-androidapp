@@ -65,8 +65,8 @@
     <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
-        <item>గ్రా</item>
-        <item>మిగ్రా</item>
+        <item>g</item>
+        <item>mg</item>
         <item>µg</item>
         <item>% DV</item>
         <item>IU</item>
@@ -419,7 +419,16 @@
     <string name="device_on_mobile_data_warning_positive">ప్రాధాన్యతలు</string>
     <string name="device_on_mobile_data_warning_negative">అయినా అప్లోడ్ చేయండి</string>
     <string name="changes_saved">Changes saved successfully</string>
+    <string name="proceed">Proceed</string>
     <string name="preference_choose_language_dialog_title">భాషని ఎంచుకోండి</string>
+    <string name="preference_choose_scanner_dialog_title"><b>New: Enhanced “MLKit” scanner</b></string>
+    <string name="preference_choose_scanner_dialog_body">We have included a new option to more reliably scan barcodes. While this scanner works on your device, using machine learning,
+            please be aware that it is a proprietary component provided by Google, governed by this privacy policy, and that some limited telemetry might be sent back to Google’s servers
+            to improve their software. As noted in the MLKit terms, this won’t include any information about the products you scan and the telemetry is anonymized. Choosing MLKit scanner
+            implies that you accept those terms\n<b>Note: You can switch back at any time between the 2 scanners in the Settings.</b>
+    </string>
+    <string name="prompt_point_at_a_barcode">Point your camera at a barcode</string>
+    <string name="prompt_move_camera_closer">Move closer to detect</string>
     <string name="please_check_your_connection">దయచేసి మీ కనెక్షన్ను తనిఖీ చేయండి.</string>
     <string name="advanced_search_title">ఆధునిక శోధన &amp; చార్ట్స్</string>
     <string name="compare_products">Compare products</string>
@@ -431,7 +440,7 @@
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
     <string name="faq_url">https://world.openfoodfacts.org/faq</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
-    <string name="hunger_game_url">https://hunger.openfoodfacts.org</string>
+    <string name="hunger_game_url">https://hunger.openfoodfacts.org/</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate the end of the url -->
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
@@ -443,7 +452,7 @@
     <string name="url_nutrient_values">https://world-te.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">సాధారణం</string>
     <string name="scan_first_string">మీ చూచుటకు ఉత్పత్తి చరిత్ర ఇక్కడ ఇవ్వబడుతుంది.\nఈ చరిత్ర మీ కళ్ళు మాత్రమే మరియు స్థానికంగా నిల్వ చేయబడుతుంది.</string>
-    <string name="log_in">Login</string>
+    <string name="log_in">Username</string>
     <string name="login_true">ఇప్పటికే లాగిన్ అయ్యింది!</string>
     <string name="confirm_logout">లాగ్ అవుట్ను నిర్ధారించండి</string>
     <string name="logout_dialog_content">మీరు ఖచ్చితంగా లాగ్ అవుట్ అవ్వాలా?</string>
@@ -477,7 +486,7 @@
     <string name="by_barcode">Barcode</string>
     <string name="by_time">ఇటీవల వీక్షించినవి</string>
     <string name="sort">క్రమీకరించు</string>
-    <string name="by_nutrition_grade">న్యూట్రిషన్ గ్రేడ్</string>
+    <string name="by_nutrition_grade">Nutri-Score</string>
     <string name="sort_by">Sort by</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">బార్కోడ్ లేకుండా చిత్రాలు ఇంకా అనువర్తనంతో జోడించబడవు. దయచేసి మొబైల్ వెబ్ సంస్కరణను ప్రయత్నించండి.</string>
@@ -527,7 +536,7 @@
     <string name="autofocus">Autofocus</string>
     <string name="initial_loading">Initial loading</string>
     <string name="preferences">ప్రాధాన్యతలు</string>
-    <string name="OFFlogo">Open Food Facts logo</string>
+    <string name="OFFlogo">ఓపెన్ ఫుడ్ ఫ్యాక్ట్స్ లోగో</string>
     <string name="loading_product">Loading product %s</string>
     <string name="image_not_defined_for_language">No image for selected language. You can add a new one</string>
     <string name="error_adding_ingredients">ఉత్పత్తి పదార్ధాలను జోడించడానికి ప్రయత్నిస్తున్నప్పుడు ఏదో తప్పు జరిగింది</string>
@@ -568,7 +577,6 @@
     <string name="your_version">Yours</string>
     <string name="ingredients_picture">Ingredients Picture</string>
     <string name="packaging">Recycling</string>
-    <string name="recycling_picture">Recycling Picture</string>
     <string name="take_ingredients_picture_to_extract">(Please take a picture of the ingredients to automatically extract them)</string>
     <string name="ingredients_list">కావలసినవి జాబితా</string>
     <string name="ingredients_hint">Keep the order, indicate the % when specified, separate with a comma or use -, use () for ingredients of an ingredient, surround allergens with _</string>
@@ -690,7 +698,7 @@
     <string name="empty"></string>
     <string name="add_product">Add products</string>
     <string name="add_another_product">Add another product</string>
-    <string name="add_nutrition_facts_for_nutriscore">Nutri- స్కోరును లెక్కించడానికి పోషకాహార వాస్తవాలను జోడించండి</string>
+    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute nutrient levels</string>
     <string name="product_summary_action_compare_button_label">Compare</string>
     <string name="product_summary_action_add_to_list_button_label">Add to list</string>
     <string name="product_summary_action_edit_button_label">మార్చు</string>
@@ -788,4 +796,7 @@
     <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
     <string name="hint_origin">Examples: USA, France, Italy</string>
     <string name="report_email_chooser_title">Send a report email</string>
+    <!-- Changelog String -->
+    <string name="changelog_translation_help">Want to see this changelog in %s?\nJoin the translation team!</string>
+    <string name="whats_new">What\'s new with Open Food Facts?</string>
 </resources>

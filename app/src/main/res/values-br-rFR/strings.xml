@@ -204,7 +204,7 @@
     <string name="txtToastSaved">User saved</string>
     <string name="txtSalt">Holen</string>
     <string name="txtFat">Fat</string>
-    <string name="txtSugars">Sukroù</string>
+    <string name="txtSugars">Sugars</string>
     <string name="hintBarcode">Kod barrennoù</string>
     <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
     <string name="txtloginHelper">If you have an Open Food Facts account, you can login here with it</string>
@@ -305,7 +305,7 @@
     <string name="nutrition_salt">Holen</string>
     <string name="nutrition_satured_fat">Saturated fat</string>
     <string name="nutrition_sodium">Sodium</string>
-    <string name="nutrition_sugars">Sukroù</string>
+    <string name="nutrition_sugars">Sugars</string>
     <string name="nutrition_trans_fat">Trans fat</string>
     <string name="nutriment_serving_size">Per portion : </string>
     <string name="action_manage_account">Manage account</string>
@@ -434,7 +434,16 @@
     <string name="device_on_mobile_data_warning_positive">Gwellvezioù</string>
     <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
     <string name="changes_saved">Changes saved successfully</string>
+    <string name="proceed">Proceed</string>
     <string name="preference_choose_language_dialog_title">Dibab ur yezh</string>
+    <string name="preference_choose_scanner_dialog_title"><b>New: Enhanced “MLKit” scanner</b></string>
+    <string name="preference_choose_scanner_dialog_body">We have included a new option to more reliably scan barcodes. While this scanner works on your device, using machine learning,
+            please be aware that it is a proprietary component provided by Google, governed by this privacy policy, and that some limited telemetry might be sent back to Google’s servers
+            to improve their software. As noted in the MLKit terms, this won’t include any information about the products you scan and the telemetry is anonymized. Choosing MLKit scanner
+            implies that you accept those terms\n<b>Note: You can switch back at any time between the 2 scanners in the Settings.</b>
+    </string>
+    <string name="prompt_point_at_a_barcode">Point your camera at a barcode</string>
+    <string name="prompt_move_camera_closer">Move closer to detect</string>
     <string name="please_check_your_connection">Please check your connection.</string>
     <string name="advanced_search_title">Advanced Search &amp; Charts</string>
     <string name="compare_products">Compare products</string>
@@ -446,7 +455,7 @@
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
     <string name="faq_url">https://world.openfoodfacts.org/faq</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
-    <string name="hunger_game_url">https://hunger.openfoodfacts.org</string>
+    <string name="hunger_game_url">https://hunger.openfoodfacts.org/</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate the end of the url -->
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
@@ -586,7 +595,6 @@
     <string name="your_version">Deoc\'h-c\'hwi</string>
     <string name="ingredients_picture">Skeudenn an aozennoù</string>
     <string name="packaging">Recycling</string>
-    <string name="recycling_picture">Recycling Picture</string>
     <string name="take_ingredients_picture_to_extract">(Please take a picture of the ingredients to automatically extract them)</string>
     <string name="ingredients_list">Roll an aozennoù</string>
     <string name="ingredients_hint">Keep the order, indicate the % when specified, separate with a comma or use -, use () for ingredients of an ingredient, surround allergens with _</string>
@@ -708,7 +716,7 @@
     <string name="empty"></string>
     <string name="add_product">Ouzhpennañ produioù</string>
     <string name="add_another_product">Ouzhpennañ ur produ all</string>
-    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
+    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute nutrient levels</string>
     <string name="product_summary_action_compare_button_label">Compare</string>
     <string name="product_summary_action_add_to_list_button_label">Ouzhpennañ d\'ar roll</string>
     <string name="product_summary_action_edit_button_label">Aozañ</string>
@@ -765,7 +773,7 @@
     <string name="compare_brands">Merkoù :</string>
     <string name="compare_additives">Danvezioù-ouzhpenn:</string>
     <string name="compare_salt">Holen</string>
-    <string name="compare_sugars">Sukroù</string>
+    <string name="compare_sugars">Sugars</string>
     <string name="compare_saturated_fat">Saturated fat</string>
     <string name="compare_fat">Fat</string>
     <string name="compare_quantity">Kementad :</string>
@@ -806,4 +814,7 @@
     <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
     <string name="hint_origin">Examples: USA, France, Italy</string>
     <string name="report_email_chooser_title">Send a report email</string>
+    <!-- Changelog String -->
+    <string name="changelog_translation_help">Want to see this changelog in %s?\nJoin the translation team!</string>
+    <string name="whats_new">What\'s new with Open Food Facts?</string>
 </resources>

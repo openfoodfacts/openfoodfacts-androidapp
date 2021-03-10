@@ -10,7 +10,7 @@ Tutustu vapaaehtoisten ylläpitämään Open Food Facts -hankkeeseen osoitteessa
 ▶ Valitse tuotteet, jotka ovat sinulle hyväksi
 - Nutri-Score-arvosana, "A" - "E" >> Ravinnollinen laatu
 - NOVA-ryhmä, "1" - "4" >> Löydä ultrajalostettu ruoka
-- Voit helposti verrata niin monta tuotetta kuin haluat vierekkäin yksinkertaisesti lukemalla ne. 
+- Voit helposti verrata vierekkäin niin monta tuotetta kuin haluat yksinkertaisesti lukemalla ne. 
 
 ▶ Ja hyväksi planeetalle!
 - Ruokasi hiilivaikutus
@@ -58,13 +58,13 @@ Lue valon nopeudella (vaikka olisit lentokoneessa, sukellusveneessä tai superma
 - Voit käyttää sovellusta nimettömästi
 - Voit viedä lukuhistoriasi
 
-▶ Aseta allergeenivaroitukset tuotteille
-- Maito-, gluteeni-, muna-, soijapapu-, pähkinä-, kala-, selleri-, sinappi-, rikkidioksidi ja sulfiitit -, maapähkinä-, seesaminsiemen-, äyriäis-, nilviäis- tai lupiiniallergia?
-- Nopeuta ostoksiasi tekemällä ensin seulonta Open Food Factsilla.
-- Ole varovainen, sillä tiedot eivät välttämättä ole 100% tarkkoja, ja havaitseminen ei välttämättä ole 100% tarkkaa. Joten varmista aina tiedot pakkauksesta.
+▶ Määritä tuotteille allergeenivaroituksia
+- Maito-, gluteeni-, muna-, soijapapu-, pähkinä-, kala-, selleri-, sinappi-, rikkidioksidi ja sulfiitti -, maapähkinä-, seesaminsiemen-, äyriäis-, nilviäis- tai lupiiniallergia?
+- Nopeuta ostoksiasi tekemällä ruokasi alustava seulonta Open Food Factsin avulla.
+- Ole varovainen, sillä tiedot eivät välttämättä ole 100% tarkkoja ja tunnistaminen ei välttämättä ole 100% tarkkaa. Joten tarkista aina itse pakkauksesta.
 
 
-▶ Sano hei ja/tai liity joukkoon!
+▶ Tervehdi ja/tai liity mukaan!
 
 
 Open Food Facts on saatavilla myös verkossa osoitteessa https://world-fi.openfoodfacts.org

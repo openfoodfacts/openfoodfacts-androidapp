@@ -35,7 +35,7 @@
         <item quantity="one">%d ᱫᱤᱱ ᱢᱟᱲᱟᱝ</item>
         <item quantity="other">%d ᱫᱤᱱᱠᱚ ᱢᱟᱲᱟᱝ</item>
     </plurals>
-    <string name="action_about">ᱵᱟᱵᱚᱛ</string>
+    <string name="action_about">About</string>
     <string name="action_discover">Discover</string>
     <string name="contribute">ᱚᱠᱟᱞᱠᱟᱛᱮ ᱮᱱᱮᱢᱟ</string>
     <string name="action_find">ᱯᱟᱱᱛᱮ</string>
@@ -187,7 +187,7 @@
     <string name="txtSave">ᱥᱟᱸᱪᱟᱣ</string>
     <string name="txtSignIn">Sign in</string>
     <string name="txtToastSaved">ᱵᱮᱵᱦᱟᱨᱤᱭᱟᱹ ᱥᱟᱸᱪᱟᱣ</string>
-    <string name="txtSalt">ᱵᱩᱞᱩᱢ</string>
+    <string name="txtSalt">Salt</string>
     <string name="txtFat">Fat</string>
     <string name="txtSugars">Sugars</string>
     <string name="hintBarcode">ᱵᱟᱨᱠᱳᱰ</string>
@@ -222,7 +222,7 @@
     <string name="open_food_drawer">Open Food Facts</string>
     <string name="search_drawer">ᱥᱮᱸᱫᱽᱨᱟ</string>
     <string name="search_by_barcode_drawer">ᱵᱟᱨᱠᱳᱰ ᱴᱟᱭᱤᱯ ᱢᱮ</string>
-    <string name="category_drawer">ᱦᱟᱹᱴᱤᱧᱠᱚ</string>
+    <string name="category_drawer">Categories</string>
     <string name="search_by_category">ᱦᱟᱹᱴᱤᱧ</string>
     <string name="scan_search">ᱵᱟᱨᱠᱳᱰ ᱥᱠᱟᱱ ᱢᱮ</string>
     <string name="user_drawer">ᱵᱮᱵᱷᱟᱨᱤᱭᱟᱹ</string>
@@ -235,7 +235,7 @@
     <string name="title_dialog_alert">Add alert</string>
     <string name="select_camera">Select a Camera</string>
     <string name="ok_button">ᱴᱷᱤᱠ</string>
-    <string name="cancel_button">Cancel</string>
+    <string name="cancel_button">ᱵᱟᱫᱽ</string>
     <string name="login_button">Username</string>
     <string name="create_account_button">Create Account</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
@@ -259,7 +259,7 @@
     <string name="no_thx">No thanks</string>
     <string name="feedback_form_url">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
     <!-- Scan history -->
-    <string name="scan_history_drawer">History</string>
+    <string name="scan_history_drawer">ᱱᱟᱜᱟᱢ</string>
     <string name="clear_history">Clear history</string>
     <string name="title_clear_history_dialog">Clear</string>
     <string name="text_clear_history_dialog">Do you want to clear all your scan history?</string>
@@ -396,8 +396,8 @@
     <string name="scan_shortcut_long_label">Scan Product</string>
     <string name="barcode_shortcut_short_label">ᱥᱮᱸᱫᱽᱨᱟ</string>
     <string name="barcode_shortcut_long_label">Search By Barcode</string>
-    <string name="history_shortcut_short_label">History</string>
-    <string name="history_shortcut_long_label">History</string>
+    <string name="history_shortcut_short_label">ᱱᱟᱜᱟᱢ</string>
+    <string name="history_shortcut_long_label">ᱱᱟᱜᱟᱢ</string>
     <string name="contributions_shortcut_short_label">Contributions</string>
     <string name="contributions_shortcut_long_label">My contributions</string>
     <string name="forgot_password">Forgot Password</string>
@@ -419,7 +419,16 @@
     <string name="device_on_mobile_data_warning_positive">Preferences</string>
     <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
     <string name="changes_saved">Changes saved successfully</string>
+    <string name="proceed">Proceed</string>
     <string name="preference_choose_language_dialog_title">Choose language</string>
+    <string name="preference_choose_scanner_dialog_title"><b>New: Enhanced “MLKit” scanner</b></string>
+    <string name="preference_choose_scanner_dialog_body">We have included a new option to more reliably scan barcodes. While this scanner works on your device, using machine learning,
+            please be aware that it is a proprietary component provided by Google, governed by this privacy policy, and that some limited telemetry might be sent back to Google’s servers
+            to improve their software. As noted in the MLKit terms, this won’t include any information about the products you scan and the telemetry is anonymized. Choosing MLKit scanner
+            implies that you accept those terms\n<b>Note: You can switch back at any time between the 2 scanners in the Settings.</b>
+    </string>
+    <string name="prompt_point_at_a_barcode">Point your camera at a barcode</string>
+    <string name="prompt_move_camera_closer">Move closer to detect</string>
     <string name="please_check_your_connection">Please check your connection.</string>
     <string name="advanced_search_title">Advanced Search &amp; Charts</string>
     <string name="compare_products">Compare products</string>
@@ -431,7 +440,7 @@
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
     <string name="faq_url">https://world.openfoodfacts.org/faq</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
-    <string name="hunger_game_url">https://hunger.openfoodfacts.org</string>
+    <string name="hunger_game_url">https://hunger.openfoodfacts.org/</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate the end of the url -->
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
@@ -447,13 +456,13 @@
     <string name="login_true">You are already logged in.</string>
     <string name="confirm_logout">Confirm Logout</string>
     <string name="logout_dialog_content">Are you sure to log out ?</string>
-    <string name="dialog_cancel">Cancel</string>
+    <string name="dialog_cancel">ᱵᱟᱫᱽ</string>
     <string name="dialog_create">Create</string>
     <string name="wikidata_information">Going further</string>
     <string name="wikidata_unavailable">There is no Wikipedia page in your language yet.</string>
     <string name="Wikipedia">View on Wikipedia</string>
     <string name="Browse_Products">Browse Products</string>
-    <string name="brand_string">Brand</string>
+    <string name="brand_string">ᱪᱷᱟᱯ</string>
     <string name="additive_string">Additive</string>
     <string name="allergen_string">Allergen</string>
     <string name="search_string">ᱥᱮᱸᱫᱽᱨᱟ</string>
@@ -462,7 +471,7 @@
     <string name="packaging_subtitle">Packaging</string>
     <string name="packaging_string">Packaging</string>
     <string name="label_string">Label</string>
-    <string name="category_string">Category</string>
+    <string name="category_string">ᱦᱟᱹᱴᱤᱧ</string>
     <string name="connection">Connected</string>
     <string name="contributor_string">Contributor</string>
     <string name="app_disabled_text">Application is disabled</string>
@@ -473,8 +482,8 @@
     <string name="other_tags_text">Other Substances:</string>
     <!--shared element transition key-->
     <string name="by_title">Title</string>
-    <string name="by_brand">Brand</string>
-    <string name="by_barcode">Barcode</string>
+    <string name="by_brand">ᱪᱷᱟᱯ</string>
+    <string name="by_barcode">ᱵᱟᱨᱠᱳᱰ</string>
     <string name="by_time">Recently Viewed</string>
     <string name="sort">Sort</string>
     <string name="by_nutrition_grade">Nutri-Score</string>
@@ -486,7 +495,7 @@
     <string name="format_error">Wrong Barcode/QR format</string>
     <string name="code_detected">We have detected the barcode</string>
     <string name="do_you_want_to">Do you want to add photos to this barcode?</string>
-    <string name="bottomNav_history">History</string>
+    <string name="bottomNav_history">ᱱᱟᱜᱟᱢ</string>
     <string name="products_added">Products you added or edited</string>
     <string name="products_incomplete">Products you added that need to be completed</string>
     <string name="product_pictures_contributed">Products you took pictures for</string>
@@ -568,7 +577,6 @@
     <string name="your_version">Yours</string>
     <string name="ingredients_picture">Ingredients Picture</string>
     <string name="packaging">Recycling</string>
-    <string name="recycling_picture">Recycling Picture</string>
     <string name="take_ingredients_picture_to_extract">(Please take a picture of the ingredients to automatically extract them)</string>
     <string name="ingredients_list">Ingredients List</string>
     <string name="ingredients_hint">Keep the order, indicate the % when specified, separate with a comma or use -, use () for ingredients of an ingredient, surround allergens with _</string>
@@ -690,14 +698,14 @@
     <string name="empty"></string>
     <string name="add_product">Add products</string>
     <string name="add_another_product">Add another product</string>
-    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
+    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute nutrient levels</string>
     <string name="product_summary_action_compare_button_label">Compare</string>
     <string name="product_summary_action_add_to_list_button_label">Add to list</string>
     <string name="product_summary_action_edit_button_label">Edit</string>
     <string name="product_summary_action_share_button_label">Share</string>
     <string name="product_question_prompt">Tap here to answer</string>
-    <string name="product_question_positive_response">Yes</string>
-    <string name="product_question_negative_response">No</string>
+    <string name="product_question_positive_response">ᱴᱷᱤᱠ</string>
+    <string name="product_question_negative_response">ᱵᱟᱝ</string>
     <string name="product_question_ambiguous_response">Not sure</string>
     <string name="product_question_submit_message">Thank you for your contribution!</string>
     <string name="error_nutrient_entry">The value should be numeric. Example: &quot;1.5&quot;, &quot;2,0&quot;</string>
@@ -715,7 +723,7 @@
     <string name="cant_edit_image_not_yet_uploaded">The new image is not yet uploaded. Please, wait before editing it</string>
     <string name="unselect_image">Unselect Image</string>
     <string name="choose_default_language">Select product language</string>
-    <string name="barcode">Barcode</string>
+    <string name="barcode">ᱵᱟᱨᱠᱳᱰ</string>
     <string name="productAdditivesNone">No additives</string>
     <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
     <string name="import_csv_to_list">Import an Open Food Facts list CSV file</string>
@@ -788,4 +796,7 @@
     <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
     <string name="hint_origin">Examples: USA, France, Italy</string>
     <string name="report_email_chooser_title">ᱨᱤᱯᱚᱨ ᱤᱼᱢᱮᱞ ᱵᱷᱮᱡᱟᱭ ᱢᱮ</string>
+    <!-- Changelog String -->
+    <string name="changelog_translation_help">Want to see this changelog in %s?\nJoin the translation team!</string>
+    <string name="whats_new">What\'s new with Open Food Facts?</string>
 </resources>
