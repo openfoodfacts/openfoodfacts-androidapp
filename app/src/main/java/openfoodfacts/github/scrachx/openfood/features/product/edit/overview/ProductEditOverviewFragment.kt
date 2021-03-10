@@ -58,6 +58,8 @@ import openfoodfacts.github.scrachx.openfood.images.ProductImage
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct
+import openfoodfacts.github.scrachx.openfood.models.entities.brand.BrandName
+import openfoodfacts.github.scrachx.openfood.models.entities.brand.BrandNameDao
 import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoryName
 import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoryNameDao
 import openfoodfacts.github.scrachx.openfood.models.entities.country.CountryName
@@ -96,6 +98,7 @@ class ProductEditOverviewFragment : ProductEditFragment() {
     private val countries = mutableListOf<String>()
     private val labels = mutableListOf<String>()
     private val stores = mutableListOf<String>()
+    private val brands = mutableListOf<String>()
 
     private var barcode: String? = null
     private var editionMode = false
@@ -480,6 +483,7 @@ class ProductEditOverviewFragment : ProductEditFragment() {
         val asyncSessionLabels = OFFApplication.daoSession.startAsyncSession()
         val asyncSessionCategories = OFFApplication.daoSession.startAsyncSession()
         val asyncSessionStores = OFFApplication.daoSession.startAsyncSession()
+        val asyncSessionBrands = OFFApplication.daoSession.startAsyncSession()
 
         asyncSessionCountries.queryList(OFFApplication.daoSession.countryNameDao.queryBuilder()
                 .where(CountryNameDao.Properties.LanguageCode.eq(appLanguageCode))
@@ -496,6 +500,10 @@ class ProductEditOverviewFragment : ProductEditFragment() {
         asyncSessionStores.queryList(OFFApplication.daoSession.storeNameDao.queryBuilder()
                 .where(StoreNameDao.Properties.LanguageCode.eq(appLanguageCode))
                 .orderDesc(StoreNameDao.Properties.Name).build())
+
+        asyncSessionBrands.queryList(OFFApplication.daoSession.brandNameDao.queryBuilder()
+                .where(BrandNameDao.Properties.LanguageCode.eq(appLanguageCode))
+                .orderDesc(BrandNameDao.Properties.Name).build())
 
         asyncSessionCountries.listenerMainThread = AsyncOperationListener { operation ->
             countries.clear()
@@ -534,6 +542,15 @@ class ProductEditOverviewFragment : ProductEditFragment() {
                     requireContext(),
                     android.R.layout.simple_dropdown_item_1line,
                     stores
+            ))
+        }
+        asyncSessionBrands.listenerMainThread = AsyncOperationListener { operation ->
+            brands.clear()
+            (operation.result as List<BrandName>).mapTo(brands) { it.name }
+            binding.brand.setAdapter(ArrayAdapter(
+                    requireContext(),
+                    android.R.layout.simple_dropdown_item_1line,
+                    brands
             ))
         }
 
