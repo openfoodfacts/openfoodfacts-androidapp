@@ -54,7 +54,7 @@ lane :release do
         project_dir: './',
         task: 'clean bundle',
         build_type: 'OffRelease',
-        platform: 'playstore'
+        #platform: 'playstore'
    
     )
 
