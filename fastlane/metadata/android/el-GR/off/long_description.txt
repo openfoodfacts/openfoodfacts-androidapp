@@ -1,6 +1,6 @@
-Scan food products or their barcode to obtain data on ingredients, additives and nutrition facts.
+Σάρωση των προϊόντων διατροφής ή του γραμμικού τους κώδικα για τη συλλογή στοιχείων σχετικά με τα συστατικά, τα πρόσθετα και τα στοιχεία διατροφής.
 
-▶ Find & Compare more than 800.000 products
+▶ Βρείτε & συγκρίνετε περισσότερα από 800.000 προϊόντα
 
 The app allows to view the 800.000 products (including 175.000 in the US) already contained in the free and open database Open Food Facts, and also to add pictures and data for new products.
 

@@ -422,7 +422,7 @@
     <string name="device_offline_dialog_message">Бул үчүн тармак туташуусу керек, муну жөндөөлөрдөн өзгөрткүңүз келеби?</string>
     <string name="device_offline_dialog_negative">Жокко чыгаруу</string>
     <string name="device_offline_dialog_positive">Орнотуулар</string>
-    <string name="scan_first_product">Scan First Product</string>
+    <string name="scan_first_product">Scan your first product</string>
     <string name="pref_delete_history">Ийгиликтүү жок кылынды</string>
     <string name="pref_enable_mobile_data_title">Мобилдик дайындарга жүктөп бериңиз</string>
     <string name="pref_enable_mobile_data_summary_on">Мобилдик &amp; WiFi дайындарын колдонуп жаңы өнүмдөрдү жүктөп бериңиз</string>

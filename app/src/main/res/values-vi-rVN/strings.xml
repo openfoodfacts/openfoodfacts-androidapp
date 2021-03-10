@@ -414,7 +414,16 @@
     <string name="device_on_mobile_data_warning_positive">Tuỳ chỉnh</string>
     <string name="device_on_mobile_data_warning_negative">Vẫn tải lên</string>
     <string name="changes_saved">Thay đổi được lưu thành công</string>
+    <string name="proceed">Proceed</string>
     <string name="preference_choose_language_dialog_title">Chọn ngôn ngữ</string>
+    <string name="preference_choose_scanner_dialog_title"><b>New: Enhanced “MLKit” scanner</b></string>
+    <string name="preference_choose_scanner_dialog_body">We have included a new option to more reliably scan barcodes. While this scanner works on your device, using machine learning,
+            please be aware that it is a proprietary component provided by Google, governed by this privacy policy, and that some limited telemetry might be sent back to Google’s servers
+            to improve their software. As noted in the MLKit terms, this won’t include any information about the products you scan and the telemetry is anonymized. Choosing MLKit scanner
+            implies that you accept those terms\n<b>Note: You can switch back at any time between the 2 scanners in the Settings.</b>
+    </string>
+    <string name="prompt_point_at_a_barcode">Point your camera at a barcode</string>
+    <string name="prompt_move_camera_closer">Move closer to detect</string>
     <string name="please_check_your_connection">Vui lòng kiểm tra kết nối của bạn.</string>
     <string name="advanced_search_title">Tìm kiếm nâng cao &amp; Biểu đồ</string>
     <string name="compare_products">Compare products</string>
@@ -426,7 +435,7 @@
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
     <string name="faq_url">https://vn.openfoodfacts.org/faq</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
-    <string name="hunger_game_url">https://hunger.openfoodfacts.org</string>
+    <string name="hunger_game_url">https://hunger.openfoodfacts.org/</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate the end of the url -->
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
@@ -472,7 +481,7 @@
     <string name="by_barcode">Mã vạch</string>
     <string name="by_time">Đã xem gần đây</string>
     <string name="sort">Sort</string>
-    <string name="by_nutrition_grade">Lớp dinh dưỡng</string>
+    <string name="by_nutrition_grade">Nutri-Score</string>
     <string name="sort_by">Xếp theo</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">Không thể thêm hình ảnh không có mã vạch bằng ứng dụng. Vui lòng thử phiên bản web di động.</string>
@@ -562,7 +571,6 @@
     <string name="your_version">Yours</string>
     <string name="ingredients_picture">Ảnh của các thành phần</string>
     <string name="packaging">Recycling</string>
-    <string name="recycling_picture">Recycling Picture</string>
     <string name="take_ingredients_picture_to_extract">(Vui lòng chụp ảnh các thành phần để tự động trích xuất chúng)</string>
     <string name="ingredients_list">Danh sách thành phần</string>
     <string name="ingredients_hint">Giữ thứ tự, cho biết% khi được chỉ định, phân tách bằng dấu phẩy hoặc sử dụng -, use () cho các thành phần của một thành phần, bao quanh chất gây dị ứng bằng _</string>
@@ -782,4 +790,7 @@
     <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
     <string name="hint_origin">Examples: USA, France, Italy</string>
     <string name="report_email_chooser_title">Send a report email</string>
+    <!-- Changelog String -->
+    <string name="changelog_translation_help">Want to see this changelog in %s?\nJoin the translation team!</string>
+    <string name="whats_new">What\'s new with Open Food Facts?</string>
 </resources>
