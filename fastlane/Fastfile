@@ -1,31 +1,6 @@
 require_relative 'utils'
 fastlane_require "spaceship"
 
-lane :screenshots do
-  capture_android_screenshots
-end
-
-desc "Build debug and test APK for screenshots"
-  lane :build_for_screengrab do
-    gradle(
-      task: 'clean'
-    )
-    build_android_app(
-      task: 'assemble',
-      build_type: 'DebugPlaystore'
-    )
-    build_android_app(
-      task: 'assemble',
-      build_type: 'AndroidTestPlaystore'
-    )
-  end
-
-desc "Capture Screen"
-lane :capture_screen do
-  gradle(task: "clean assembleScreenshots assembleAndroidTest")
-  screengrab
-end
-
 desc 'Create a release and upload to internal channel of playstore'
 lane :release do
     PACKAGE_NAME = CredentialsManager::AppfileConfig.try_fetch_value(:package_name)
@@ -53,7 +28,7 @@ lane :release do
     gradle(
         project_dir: './',
         task: 'clean bundle',
-        build_type: 'offRelease',
+        build_type: 'offPlaystoreRelease',
         #platform: 'playstore'
    
     )
@@ -97,4 +72,29 @@ lane :finalize_sentry do
         project_slug: 'openfoodfacts-android',
         version: PACKAGE_NAME + '@' + versionName.to_s + '+' + versionCode.to_s,
     )
+end
+
+lane :screenshots do
+  capture_android_screenshots
+end
+
+desc "Build debug and test APK for screenshots"
+  lane :build_for_screengrab do
+    gradle(
+      task: 'clean'
+    )
+    build_android_app(
+      task: 'assemble',
+      build_type: 'DebugPlaystore'
+    )
+    build_android_app(
+      task: 'assemble',
+      build_type: 'AndroidTestPlaystore'
+    )
+  end
+
+desc "Capture Screen"
+lane :capture_screen do
+  gradle(task: "clean assembleScreenshots assembleAndroidTest")
+  screengrab
 end
