@@ -53,7 +53,7 @@ lane :release do
     gradle(
         project_dir: './',
         task: 'clean bundle',
-        build_type: 'OffRelease',
+        build_type: 'offRelease',
         #platform: 'playstore'
    
     )
