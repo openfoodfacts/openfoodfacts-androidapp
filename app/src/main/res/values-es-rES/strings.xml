@@ -123,7 +123,7 @@
         <item>Ácido de Mead (20:3 n-9)</item>
         <item>Ácido melísico (30:0)</item>
         <item>Molibdeno</item>
-        <item>Grasas monoinsaturadas</item>
+        <item>Grasas mono insaturadas</item>
         <item>Acido montánico (28:0)</item>
         <item>Ácido mirístico (14:0)</item>
         <item>Ácido nervónico (24:1 n-9)</item>
@@ -137,16 +137,16 @@
         <item>pH</item>
         <item>Fósforo</item>
         <item>Alcoholes de azúcar (Polioles)</item>
-        <item>Grasas poliinsaturadas</item>
+        <item>Grasas polisaturadas</item>
         <item>Potasio</item>
         <item>Selenio</item>
         <item>Proteinas séricas</item>
-        <item>Sílice</item>
+        <item>Sílica</item>
         <item>Almidón</item>
         <item>Ácido esteárico (18: 0)</item>
         <item>Sacarosa</item>
         <item>Taurina</item>
-        <item>Grasas trans</item>
+        <item>Grasa trans</item>
         <item>Vitamina A</item>
         <item>Vitamina B1 (tiamina)</item>
         <item>Vitamina B12 (cobalamina)</item>
@@ -193,7 +193,7 @@
     <string name="hintBarcode">Código de barras</string>
     <string name="txtNutriScoreInfo">Aprende más sobre los niveles de nutrientes</string>
     <string name="txtloginHelper">Si tienes una cuenta de Open Food Facts, puedes iniciar sesión aquí con ella</string>
-    <string name="hintLogin">Iniciar sesión</string>
+    <string name="hintLogin">Usuario</string>
     <string name="hintPass">Contraseña</string>
     <string name="errorLogin">Usuario o contraseña incorrecto</string>
     <string name="errorWeb">No hemos podido conectarnos a Internet. ¿Tienes problemas de conexión?</string>
@@ -236,7 +236,7 @@
     <string name="select_camera">Selecciona una cámara</string>
     <string name="ok_button">Aceptar</string>
     <string name="cancel_button">Cancelar</string>
-    <string name="login_button">Iniciar sesión</string>
+    <string name="login_button">Usuario</string>
     <string name="create_account_button">Crear cuenta</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">La información de tus alergias no se enviará al servidor de open products Facts. así que debes ser cuidadoso ya que la información del producto no puede ser fidedigna, y la detección puede que no sea 100% arecisa, ¡así que chequea más de una vez por ti mismo! </string>
     <string name="title_info_dialog">¿Cómo funciona?</string>
@@ -261,7 +261,7 @@
     <!-- Scan history -->
     <string name="scan_history_drawer">Historial</string>
     <string name="clear_history">Eliminar historial</string>
-    <string name="title_clear_history_dialog">Eliminar</string>
+    <string name="title_clear_history_dialog">Limpiar</string>
     <string name="text_clear_history_dialog">¿Desea eliminar todo el historial del escáner?</string>
     <string name="export_csv_history">Exportar CSV</string>
     <string name="txt_exporting_history">Exportando historial…</string>
@@ -288,10 +288,10 @@
     <string name="nutrition_header">Información nutricional</string>
     <string name="nutrition_proteins">Proteínas</string>
     <string name="nutrition_salt">Sal</string>
-    <string name="nutrition_satured_fat">Grasas saturada</string>
+    <string name="nutrition_satured_fat">Grasa saturada</string>
     <string name="nutrition_sodium">Sodio</string>
     <string name="nutrition_sugars">Azúcares</string>
-    <string name="nutrition_trans_fat">Grasas trans</string>
+    <string name="nutrition_trans_fat">Grasa trans</string>
     <string name="nutriment_serving_size">Por porción: </string>
     <string name="action_manage_account">Gestionar cuenta</string>
     <string name="action_contributes">Tus contribuciones</string>
@@ -302,7 +302,7 @@
     <string name="textCarbonFootprint">Huella de carbón / Emisiones de CO2: </string>
     <string name="packaging_environmentTab">Embalaje:</string>
     <string name="action_search">Buscar</string>
-    <string name="search_hint">Buscar artículo</string>
+    <string name="search_hint">Buscar un producto</string>
     <string name="number_of_results">Número de resultados: </string>
     <string name="number_of_products">Número de productos: </string>
     <string name="txt_no_matching__category_products">Oh no, no tenemos ningún producto en esta categoría, ¿puedes añadir uno?</string>
@@ -327,8 +327,8 @@
     <string name="for_100g">Por cada 100 g</string>
     <string name="for_100ml">Por cada 100 ml</string>
     <string name="serving">Por porción</string>
-    <string name="nutrition_monounsaturatedFat">Grasas monoinsaturadas</string>
-    <string name="nutrition_polyunsaturatedFat">Grasas poliinsaturadas</string>
+    <string name="nutrition_monounsaturatedFat">Grasas mono insaturadas</string>
+    <string name="nutrition_polyunsaturatedFat">Grasas polisaturadas</string>
     <string name="nutrition_omega3">Omega-3</string>
     <string name="nutrition_omega6">Omega-6</string>
     <string name="nutrition_omega9">Omega-9</string>
@@ -371,7 +371,7 @@
     <string name="caffeine">Cafeína</string>
     <string name="taurine">Taurina</string>
     <string name="ph">pH</string>
-    <string name="fruits_vegetables_nuts">Frutas, vegetales, frutos secos</string>
+    <string name="fruits_vegetables_nuts">Frutas, vegetales, nueces</string>
     <string name="collagen_meat_protein_ratio">Relación colágeno/proteínas de carne</string>
     <string name="cocoa">Cacao</string>
     <string name="chlorophyl">Clorofila</string>
@@ -379,17 +379,17 @@
     <string name="choose_picture_from_gallery">De la galería</string>
     <string name="take_picture_ingredients">Haz una foto de los ingredientes</string>
     <string name="take_picture_recycling">Haz una foto de las instrucciones de reciclaje</string>
-    <string name="take_picture_front">Haz una foto de la parte frontal</string>
+    <string name="take_picture_front">Toma una foto de la parte frontal</string>
     <string name="take_picture_nutrition_table">Haz una foto de la tabla nutricional</string>
     <string name="take_more_pictures">Haz más fotos</string>
     <string name="take_extra_packaging_pictures">Haz más fotos del embalaje</string>
-    <string name="txtSaturatedFat">Grasas saturadas</string>
+    <string name="txtSaturatedFat">Grasa saturada</string>
     <string name="nutriscore_info_msg">Aprende más sobre el Nutri-Score</string>
     <string name="nova_info_msg">Más información sobre los grupos NOVA</string>
     <string name="nova_grp1_msg">Grupo 1 - Alimentos no procesados o mínimamente procesados</string>
     <string name="nova_grp2_msg">Grupo 2 - Ingredientes culinarios procesados</string>
     <string name="nova_grp3_msg">Grupo 3 - Alimentos procesados</string>
-    <string name="nova_grp4_msg">Grupo 4 - Alimentos y bebidas ultraprocesadas</string>
+    <string name="nova_grp4_msg">Grupo 4 - Alimentos y bebidas ultraprocesados</string>
     <!-- String related to App Shortcuts -->
     <string name="disabled_message">Acceso directo no disponible</string>
     <string name="scan_shortcut_short_label">Escanear</string>
@@ -419,7 +419,16 @@
     <string name="device_on_mobile_data_warning_positive">Preferencias</string>
     <string name="device_on_mobile_data_warning_negative">Enviar de todas formas</string>
     <string name="changes_saved">Cambios guardados correctamente</string>
+    <string name="proceed">Proceed</string>
     <string name="preference_choose_language_dialog_title">Elegir idioma</string>
+    <string name="preference_choose_scanner_dialog_title"><b>New: Enhanced “MLKit” scanner</b></string>
+    <string name="preference_choose_scanner_dialog_body">We have included a new option to more reliably scan barcodes. While this scanner works on your device, using machine learning,
+            please be aware that it is a proprietary component provided by Google, governed by this privacy policy, and that some limited telemetry might be sent back to Google’s servers
+            to improve their software. As noted in the MLKit terms, this won’t include any information about the products you scan and the telemetry is anonymized. Choosing MLKit scanner
+            implies that you accept those terms\n<b>Note: You can switch back at any time between the 2 scanners in the Settings.</b>
+    </string>
+    <string name="prompt_point_at_a_barcode">Point your camera at a barcode</string>
+    <string name="prompt_move_camera_closer">Move closer to detect</string>
     <string name="please_check_your_connection">Por favor, comprueba tu conexión.</string>
     <string name="advanced_search_title">Búsqueda avanzada &amp; Gráficos</string>
     <string name="compare_products">Comparar productos</string>
@@ -431,7 +440,7 @@
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
     <string name="faq_url">https://world.openfoodfacts.org/faq</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
-    <string name="hunger_game_url">https://hunger.openfoodfacts.org</string>
+    <string name="hunger_game_url">https://hunger.openfoodfacts.org/</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate the end of the url -->
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://es.openfoodfacts.org/nutriscore</string>
@@ -443,7 +452,7 @@
     <string name="url_nutrient_values">https://world-es.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">General</string>
     <string name="scan_first_string">El historial de productos vistos se mostrará aquí.\nEste historial solo lo puedes ver tú y se guarda localmente.</string>
-    <string name="log_in">Iniciar sesión</string>
+    <string name="log_in">Usuario</string>
     <string name="login_true">Ya has iniciado sesión.</string>
     <string name="confirm_logout">Confirmar el cierre de sesión</string>
     <string name="logout_dialog_content">¿Estás seguro de cerrar la sesión?</string>
@@ -477,7 +486,7 @@
     <string name="by_barcode">Código de barras</string>
     <string name="by_time">Vistos recientemente</string>
     <string name="sort">Ordenar</string>
-    <string name="by_nutrition_grade">Grado nutricional</string>
+    <string name="by_nutrition_grade">Nutri-Score</string>
     <string name="sort_by">Ordenar por</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">Las imágenes sin código de barras no pueden ser añadidas con la aplicación. Por favor, inténtalo con la versión móvil del sitio web.</string>
@@ -568,7 +577,6 @@
     <string name="your_version">Tu versión</string>
     <string name="ingredients_picture">Imagen con los ingredientes del producto</string>
     <string name="packaging">Reciclaje</string>
-    <string name="recycling_picture">Imagen de reciclaje</string>
     <string name="take_ingredients_picture_to_extract">(Por favor, toma una foto de los ingredientes para extraerlos automáticamente)</string>
     <string name="ingredients_list">Lista de ingredientes</string>
     <string name="ingredients_hint">Mantén el orden, indica el % cuando se especifique, separa con una coma o usa -, utiliza () para ingredientes de otro ingrediente, utiliza _ al principio y al final de los alérgenos</string>
@@ -688,9 +696,9 @@
     <string name="swipe_delete_tip">Puedes borrar una lista deslizándola hacia la izquierda.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
-    <string name="add_product">Añadir productos</string>
+    <string name="add_product">Agrega productos</string>
     <string name="add_another_product">Añadir otro producto</string>
-    <string name="add_nutrition_facts_for_nutriscore">Añadir información nutricional para calcular la puntuación de Nutri-Score</string>
+    <string name="add_nutrition_facts_for_nutriscore">Añadir datos nutricionales para calcular los niveles nutricionales</string>
     <string name="product_summary_action_compare_button_label">Comparar</string>
     <string name="product_summary_action_add_to_list_button_label">Añadir a la lista</string>
     <string name="product_summary_action_edit_button_label">Editar</string>
@@ -776,7 +784,7 @@
     <string name="icon_categories">Icono de categorías</string>
     <string name="icon_emb">Icono de código EMB</string>
     <string name="product_front_image">Imagen frontal del producto</string>
-    <string name="brand_hint">Ejemplos: Nike, Apple, etc…</string>
+    <string name="brand_hint">Ejemplos: Coca-Cola, Nestlé, etc…</string>
     <string name="sign_in_or_register">Inicia sesión o regístrate</string>
     <string name="hunger_game_call_to_action">Ayuda a clasificar más %1$s</string>
     <string name="txtHomeOnline">Open Food Facts es una base de datos abierta de más de %1$s productos (más los que tú contribuyas).</string>
@@ -788,4 +796,7 @@
     <string name="required_for_ecoscore">(Necesario para calcular el Eco-Score)</string>
     <string name="hint_origin">Ejemplos: Estados Unidos, Francia, Italia</string>
     <string name="report_email_chooser_title">Enviar correo de reporte</string>
+    <!-- Changelog String -->
+    <string name="changelog_translation_help">¿Quieres ver este registro de cambios en %s?\n¡Únete al equipo de traducción!</string>
+    <string name="whats_new">¿Qué hay de nuevo en Open Food Facts?</string>
 </resources>

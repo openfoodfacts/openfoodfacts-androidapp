@@ -5,7 +5,7 @@ https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=ca
 V2 screenshots
 =====================
 
-Escanegeu productes
+Escanejar productes
 
 Obteniu la Puntuació Nutricional
 

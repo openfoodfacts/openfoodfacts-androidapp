@@ -417,7 +417,7 @@
     <string name="device_offline_dialog_message">네트워크 연결이 필요합니다. 설정에서 변경하시겠습니까?</string>
     <string name="device_offline_dialog_negative">무시</string>
     <string name="device_offline_dialog_positive">설정</string>
-    <string name="scan_first_product">Scan First Product</string>
+    <string name="scan_first_product">Scan your first product</string>
     <string name="pref_delete_history">기록을 성공적으로 삭제</string>
     <string name="pref_enable_mobile_data_title">모바일 테이터를 사용하여 업로드하기</string>
     <string name="pref_enable_mobile_data_summary_on">모바일 데이터 &amp; WiFi를 사용하여 새 제품 업로드하기</string>

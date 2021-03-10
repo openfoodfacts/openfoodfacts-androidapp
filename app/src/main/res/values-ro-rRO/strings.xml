@@ -70,8 +70,8 @@
     <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
+        <item>g</item>
         <item>mg</item>
-        <item>kg</item>
         <item>µg</item>
         <item>% VNR</item>
         <item>UI</item>
@@ -128,7 +128,7 @@
         <item>Acid de mied (20:3 n.9)</item>
         <item>Acid melastic (30:3)</item>
         <item>Molibden</item>
-        <item>Grasimi mononesaturate</item>
+        <item>Grăsimi monosaturate</item>
         <item>Acid montanic (28: 0)</item>
         <item>Acidul myristic (14: 0)</item>
         <item>Acidul nervonic (24: 1 n-9)</item>
@@ -198,7 +198,7 @@
     <string name="hintBarcode">Cod de bare</string>
     <string name="txtNutriScoreInfo">Află mai multe despre valorile nutriționale</string>
     <string name="txtloginHelper">If you have an Open Food Facts account, you can login here with it</string>
-    <string name="hintLogin">Conectați-vă</string>
+    <string name="hintLogin">Nume de utilizator</string>
     <string name="hintPass">Parolă</string>
     <string name="errorLogin">Numele de utilizator sau parola sunt incorecte</string>
     <string name="errorWeb">Conectarea la internet nu e posibilă. Aveți probleme cu conexiunea la internet?</string>
@@ -241,7 +241,7 @@
     <string name="select_camera">Alege camera</string>
     <string name="ok_button">OK</string>
     <string name="cancel_button">Anulare</string>
-    <string name="login_button">Conectați-vă</string>
+    <string name="login_button">Nume de utilizator</string>
     <string name="create_account_button">Creează cont</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Informațiile despre alergiile tale nu vor fi trimise niciodată serverului Open Food Facts. Totodată, fi atent pentru că datele despre anumite produse pot fi incorecte, și detecția s-ar putea să nu fie 100% aorectă, așa că te rog să verifici și tu personal acele produse! </string>
     <string name="title_info_dialog">Cum funcționează?</string>
@@ -424,10 +424,19 @@
     <string name="device_on_mobile_data_warning_positive">Preferințe</string>
     <string name="device_on_mobile_data_warning_negative">Încărcați oricum</string>
     <string name="changes_saved">Schimbați salvate cu succes</string>
+    <string name="proceed">Proceed</string>
     <string name="preference_choose_language_dialog_title">Alegeți limba</string>
+    <string name="preference_choose_scanner_dialog_title"><b>New: Enhanced “MLKit” scanner</b></string>
+    <string name="preference_choose_scanner_dialog_body">We have included a new option to more reliably scan barcodes. While this scanner works on your device, using machine learning,
+            please be aware that it is a proprietary component provided by Google, governed by this privacy policy, and that some limited telemetry might be sent back to Google’s servers
+            to improve their software. As noted in the MLKit terms, this won’t include any information about the products you scan and the telemetry is anonymized. Choosing MLKit scanner
+            implies that you accept those terms\n<b>Note: You can switch back at any time between the 2 scanners in the Settings.</b>
+    </string>
+    <string name="prompt_point_at_a_barcode">Point your camera at a barcode</string>
+    <string name="prompt_move_camera_closer">Move closer to detect</string>
     <string name="please_check_your_connection">Te rog verifică conexiunea ta.</string>
     <string name="advanced_search_title">Cautare avansată &amp; Grafice</string>
-    <string name="compare_products">Compară produse</string>
+    <string name="compare_products">Compare products</string>
     <string name="connectivity_check">Te rog verifică conexiunea ta la internet</string>
     <string name="dismiss">Renunță</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
@@ -436,7 +445,7 @@
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
     <string name="faq_url">https://world.openfoodfacts.org/faq</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
-    <string name="hunger_game_url">https://hunger.openfoodfacts.org</string>
+    <string name="hunger_game_url">https://hunger.openfoodfacts.org/</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate the end of the url -->
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
@@ -448,7 +457,7 @@
     <string name="url_nutrient_values">https://world-ro.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">General</string>
     <string name="scan_first_string">Istoricul produselor vizualizate va fi afișat aici.\nAcest istoric este doar pentru tine și este stocat doar local.</string>
-    <string name="log_in">Conectați-vă</string>
+    <string name="log_in">Nume de utilizator</string>
     <string name="login_true">Ești deja conectat!</string>
     <string name="confirm_logout">Confirmă Deconectarea</string>
     <string name="logout_dialog_content">Ești sigur că vrei să te deconectezi?</string>
@@ -482,7 +491,7 @@
     <string name="by_barcode">Cod de bare</string>
     <string name="by_time">Vizualizat recent</string>
     <string name="sort">Sortează</string>
-    <string name="by_nutrition_grade">Notă nutrițională</string>
+    <string name="by_nutrition_grade">Nutri-Score</string>
     <string name="sort_by">Ordonează după</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">Imaginile fără cod de bare nu pot fi încă adăugate prin aplicație. Încercați versiunea web mobilă.</string>
@@ -533,7 +542,7 @@
     <string name="autofocus">Autofocalizare</string>
     <string name="initial_loading">Încărcare inițială</string>
     <string name="preferences">Preferințe</string>
-    <string name="OFFlogo">Open Food Facts logo</string>
+    <string name="OFFlogo">Sigla Open Food Facts</string>
     <string name="loading_product">Se încarcă produse%s</string>
     <string name="image_not_defined_for_language">Nicio imagine pentru limba selectată. Poți adăuga tu una</string>
     <string name="error_adding_ingredients">Au apărut probleme în timp ce încercaţi să adăugaţi ingredientele produsului</string>
@@ -568,13 +577,12 @@
     <string name="no_internet_connection">Se pare că nu aveți conexiune la internet, imaginile vor fi încărcate atunci când este disponibilă o rețea</string>
     <string name="no_internet_unable_to_extract_ingredients">Fără conexiune la internet. Nu se pot extrage ingredientele</string>
     <string name="percent">%1$d%%</string>
-    <string name="overview">Prezentare generală</string>
+    <string name="overview">Continut</string>
     <string name="ingredients">Ingrediente</string>
     <string name="nutrition_facts">Valori nutriționale</string>
     <string name="your_version">Al tău</string>
     <string name="ingredients_picture">Imaginea cu ingredientele</string>
     <string name="packaging">Reciclabil</string>
-    <string name="recycling_picture">Fotografia cu indicații pentru reciclare</string>
     <string name="take_ingredients_picture_to_extract">(Te rog fă o fotografie a ingredientelor pentru a le extrage automat)</string>
     <string name="ingredients_list">Lista de ingrediente</string>
     <string name="ingredients_hint">Păstrați ordinea, indicați procentul atunci când este specificat, separați cu virgulă sau folosiți -, utilizați () pentru ingredientele unui ingredient, înconjurați alergenii cu _</string>
@@ -694,7 +702,7 @@
     <string name="swipe_delete_tip">You can delete a list by swiping it left.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
-    <string name="add_product">Adaugă produse</string>
+    <string name="add_product">Add products</string>
     <string name="add_another_product">Adaugă un alt produs</string>
     <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
     <string name="product_summary_action_compare_button_label">Compară</string>
@@ -782,7 +790,7 @@
     <string name="icon_categories">Categories icon</string>
     <string name="icon_emb">EMB code icon</string>
     <string name="product_front_image">Product front image</string>
-    <string name="brand_hint">Examples: Coca-Cola, Nestle, etc…</string>
+    <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
     <string name="sign_in_or_register">Sign in or register</string>
     <string name="hunger_game_call_to_action">Help classify more %1$s</string>
     <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s products (plus the ones you will contribute) in the world.</string>
@@ -794,4 +802,7 @@
     <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
     <string name="hint_origin">Examples: USA, France, Italy</string>
     <string name="report_email_chooser_title">Send a report email</string>
+    <!-- Changelog String -->
+    <string name="changelog_translation_help">Want to see this changelog in %s?\nJoin the translation team!</string>
+    <string name="whats_new">What\'s new with Open Food Facts?</string>
 </resources>

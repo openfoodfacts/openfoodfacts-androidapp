@@ -36,7 +36,7 @@
         <item quantity="other">%d நாட்களுக்கு முன்பு</item>
     </plurals>
     <string name="action_about">இதைப் பற்றி</string>
-    <string name="action_discover">கண்டுபிடி</string>
+    <string name="action_discover">Discover</string>
     <string name="contribute">எவ்வாறு பங்களிப்பது</string>
     <string name="action_find">கண்டுபிடி</string>
     <string name="product_incomplete_message">இத்தயாரிப்பு முழுமை பெறவில்லை. இதன் விளைவாக, நாங்கள் ஒவ்வாமை பரிசோதனையைச் செய்ய முடியவில்லை.</string>
@@ -65,8 +65,8 @@
     <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
-        <item>கி</item>
-        <item>மி. கி</item>
+        <item>g</item>
+        <item>mg</item>
         <item>µg</item>
         <item>% DV</item>
         <item>IU</item>
@@ -123,7 +123,7 @@
         <item>Mead acid (20:3 n-9)</item>
         <item>Melissic acid (30:0)</item>
         <item>மாலிப்டினம்</item>
-        <item>Mono unsaturated fat</item>
+        <item>Monounsaturated fat</item>
         <item>Montanic acid (28:0)</item>
         <item>Myristic acid (14:0)</item>
         <item>Nervonic acid (24:1 n-9)</item>
@@ -137,7 +137,7 @@
         <item>pH</item>
         <item>பாசுபரசு</item>
         <item>Sugar alcohols (Polyols)</item>
-        <item>Poly unsaturated fat</item>
+        <item>Polyunsaturated fat</item>
         <item>பொட்டாசியம்</item>
         <item>செலினியம்</item>
         <item>சீரம் புரதங்கள்</item>
@@ -163,7 +163,7 @@
     <!-- Text units -->
     <!-- Content Description -->
     <string name="search_button">தேடுக</string>
-    <string name="alert_dialog_warning_title">எச்சரிக்கை</string>
+    <string name="alert_dialog_warning_title">Warning</string>
     <string name="alert_dialog_warning_msg_user">User/password has changed, please update information</string>
     <string name="toast_retrieving">ஏற்றுகிறது…</string>
     <string name="txtBarcode">பார்கோடு :</string>
@@ -187,13 +187,13 @@
     <string name="txtSave">சேமி</string>
     <string name="txtSignIn">உள்நுழை</string>
     <string name="txtToastSaved">User saved</string>
-    <string name="txtSalt">உப்பு</string>
-    <string name="txtFat">கொழுப்பு</string>
-    <string name="txtSugars">சர்க்கரைகள்</string>
+    <string name="txtSalt">Salt</string>
+    <string name="txtFat">Fat</string>
+    <string name="txtSugars">Sugars</string>
     <string name="hintBarcode">பார்கோடு</string>
     <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
     <string name="txtloginHelper">If you have an Open Food Facts account, you can login here with it</string>
-    <string name="hintLogin">புகுபதிகை</string>
+    <string name="hintLogin">Username</string>
     <string name="hintPass">கடவுச்சொல்</string>
     <string name="errorLogin">புகுபதிகை அல்லது கடவுச்சொல்லில் பிழை</string>
     <string name="errorWeb">We were not able to access the internet. Do you have connectivity issues?</string>
@@ -222,7 +222,7 @@
     <string name="open_food_drawer">Open Food Facts</string>
     <string name="search_drawer">தேடுக</string>
     <string name="search_by_barcode_drawer">பார்கோடினை தட்டச்சிடு</string>
-    <string name="category_drawer">வகைகள்</string>
+    <string name="category_drawer">Categories</string>
     <string name="search_by_category">வகை</string>
     <string name="scan_search">பார்கோடினை படமெடு</string>
     <string name="user_drawer">பயனர்</string>
@@ -235,8 +235,8 @@
     <string name="title_dialog_alert">Add alert</string>
     <string name="select_camera">Select a Camera</string>
     <string name="ok_button">சரி</string>
-    <string name="cancel_button">ரத்துசெய்</string>
-    <string name="login_button">புகுபதிகை</string>
+    <string name="cancel_button">Cancel</string>
+    <string name="login_button">Username</string>
     <string name="create_account_button">கணக்கை உருவாக்கு</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
     <string name="title_info_dialog">இது எப்படி வேலை செய்கிறது?</string>
@@ -279,19 +279,19 @@
     <string name="calculate_nutrition_facts">Calculate Nutrition Facts</string>
     <string name="nutrition_carbohydrate">Carbohydrate</string>
     <string name="nutrition_cholesterol">இரத்தக்கொழுப்பு</string>
-    <string name="nutrition_energy">ஆற்றல்</string>
+    <string name="nutrition_energy">Energy</string>
     <string name="nutrition_energy_kcal">கலோரிகளில் ஆற்றல் (கிலோகலோரி)</string>
     <string name="nutrition_energy_kj">ஜூல்களில் ஆற்றல் (கிலோஜூல்)</string>
     <string name="nutrition_energy_short_name">Energy</string>
-    <string name="nutrition_fat">கொழுப்பு</string>
-    <string name="nutrition_fiber">உணவுவகை நார்ச்சத்து</string>
-    <string name="nutrition_header">ஊட்டச்சத்து தகவல்கள்</string>
-    <string name="nutrition_proteins">புரதங்கள்</string>
-    <string name="nutrition_salt">உப்பு</string>
+    <string name="nutrition_fat">Fat</string>
+    <string name="nutrition_fiber">Dietary fiber</string>
+    <string name="nutrition_header">Nutrition facts</string>
+    <string name="nutrition_proteins">Proteins</string>
+    <string name="nutrition_salt">Salt</string>
     <string name="nutrition_satured_fat">Saturated fat</string>
-    <string name="nutrition_sodium">சோடியம்</string>
-    <string name="nutrition_sugars">சர்க்கரைகள்</string>
-    <string name="nutrition_trans_fat">Trans fat</string>
+    <string name="nutrition_sodium">Sodium</string>
+    <string name="nutrition_sugars">Sugars</string>
+    <string name="nutrition_trans_fat">டிரான்ஸ் கொழுப்பு</string>
     <string name="nutriment_serving_size">Per portion : </string>
     <string name="action_manage_account">Manage account</string>
     <string name="action_contributes">Your contributions</string>
@@ -319,23 +319,23 @@
     <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
     <string name="something_went_wrong">Sorry, something went wrong…</string>
     <string name="txt_try_again">மீண்டும் முயற்சிக்கவும்</string>
-    <string name="nutrition_lactose">லாக்டோசு</string>
+    <string name="nutrition_lactose">Lactose</string>
     <string name="nutrition_casein">கேசீன்</string>
-    <string name="nutrition_maltodextrins">Maltodextrins</string>
+    <string name="nutrition_maltodextrins">மால்டோடெக்ஸ்ட்ரின்கள்</string>
     <string name="nutrition_serum_proteins">Serum Proteins</string>
-    <string name="nutrition_nucleotides">Nucleotides</string>
+    <string name="nutrition_nucleotides">நியூக்ளியோடைடுகள்</string>
     <string name="for_100g">For 100 g</string>
     <string name="for_100ml">For 100 ml</string>
     <string name="serving">ஒவ்வொரு பரிமாறலிற்கும்</string>
-    <string name="nutrition_monounsaturatedFat">Mono unsaturated fat</string>
+    <string name="nutrition_monounsaturatedFat">Monounsaturated fat</string>
     <string name="nutrition_polyunsaturatedFat">Poly unsaturated fat</string>
     <string name="nutrition_omega3">ஒமேகா 3</string>
     <string name="nutrition_omega6">ஒமேகா 6</string>
     <string name="nutrition_omega9">ஒமேகா 9</string>
-    <string name="nutrition_sucrose">Sucrose</string>
+    <string name="nutrition_sucrose">சுக்ரோசு</string>
     <string name="nutrition_glucose">குளுக்கோஸ்</string>
     <string name="nutrition_fructose">ஃப்ரூக்டோஸ்</string>
-    <string name="nutrition_maltose">Maltose</string>
+    <string name="nutrition_maltose">மால்டோசு</string>
     <string name="nutrition_alcohol">Alcohol</string>
     <string name="nutrition_vitamins">Vitamins</string>
     <string name="vitamin_a">வைட்டமின் ஏ</string>
@@ -352,21 +352,21 @@
     <string name="biotin">பயோட்டின்</string>
     <string name="pantothenic_acid">Pantothenic acid</string>
     <string name="nutrition_minerals">Minerals</string>
-    <string name="silica">Silica</string>
+    <string name="silica">சிலிக்கா</string>
     <string name="bicarbonate">பைகார்பனேட்</string>
-    <string name="potassium">Potassium</string>
+    <string name="potassium">பொட்டாசியம்</string>
     <string name="chloride">குளோரைடு</string>
     <string name="calcium">கால்சியம்</string>
-    <string name="phosphorus">Phosphorus</string>
-    <string name="iron">Iron</string>
-    <string name="magnesium">Magnesium</string>
-    <string name="zinc">Zinc</string>
+    <string name="phosphorus">பாசுபரசு</string>
+    <string name="iron">இரும்பு</string>
+    <string name="magnesium">மக்னீசியம்</string>
+    <string name="zinc">துத்தநாகம்</string>
     <string name="copper">செம்பு</string>
-    <string name="manganese">Manganese</string>
+    <string name="manganese">மாங்கனீசு</string>
     <string name="fluoride">புளூரைடு</string>
-    <string name="selenium">Selenium</string>
+    <string name="selenium">செலினியம்</string>
     <string name="chromium">குரோமியம்</string>
-    <string name="molybdenum">Molybdenum</string>
+    <string name="molybdenum">மாலிப்டினம்</string>
     <string name="iodine">கருமயிலம்</string>
     <string name="caffeine">காஃபின்</string>
     <string name="taurine">டவுரின்</string>
@@ -413,13 +413,22 @@
     <string name="device_offline_dialog_message">A network connection is needed to do this, would you like to change this in settings?</string>
     <string name="device_offline_dialog_negative">விலக்கு</string>
     <string name="device_offline_dialog_positive">அமைப்புகள்</string>
-    <string name="scan_first_product">Scan First Product</string>
+    <string name="scan_first_product">Scan your first product</string>
     <string name="device_on_mobile_data_warning_title">தகவல்</string>
     <string name="device_on_mobile_data_warning_message">You have disabled upload on mobile data , please connect to WiFi or change this in preferences</string>
     <string name="device_on_mobile_data_warning_positive">விருப்பத்தேர்வுகள்</string>
     <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
     <string name="changes_saved">Changes saved successfully</string>
+    <string name="proceed">Proceed</string>
     <string name="preference_choose_language_dialog_title">மொழியினைத் தேர்ந்தெடு</string>
+    <string name="preference_choose_scanner_dialog_title"><b>New: Enhanced “MLKit” scanner</b></string>
+    <string name="preference_choose_scanner_dialog_body">We have included a new option to more reliably scan barcodes. While this scanner works on your device, using machine learning,
+            please be aware that it is a proprietary component provided by Google, governed by this privacy policy, and that some limited telemetry might be sent back to Google’s servers
+            to improve their software. As noted in the MLKit terms, this won’t include any information about the products you scan and the telemetry is anonymized. Choosing MLKit scanner
+            implies that you accept those terms\n<b>Note: You can switch back at any time between the 2 scanners in the Settings.</b>
+    </string>
+    <string name="prompt_point_at_a_barcode">Point your camera at a barcode</string>
+    <string name="prompt_move_camera_closer">Move closer to detect</string>
     <string name="please_check_your_connection">Please check your connection.</string>
     <string name="advanced_search_title">Advanced Search &amp; Charts</string>
     <string name="compare_products">Compare products</string>
@@ -431,7 +440,7 @@
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
     <string name="faq_url">https://world.openfoodfacts.org/faq</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
-    <string name="hunger_game_url">https://hunger.openfoodfacts.org</string>
+    <string name="hunger_game_url">https://hunger.openfoodfacts.org/</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate the end of the url -->
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
@@ -443,17 +452,17 @@
     <string name="url_nutrient_values">https://world-ta.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">பொது</string>
     <string name="scan_first_string">Your viewed product history will be listed here.\nThis history is for your eyes only and is stored locally.</string>
-    <string name="log_in">புகுபதிகை</string>
+    <string name="log_in">Username</string>
     <string name="login_true">நீங்கள் ஏற்கனவே புகுபதிகை செய்துவிட்டீர்கள்.</string>
     <string name="confirm_logout">Confirm Logout</string>
     <string name="logout_dialog_content">Are you sure to log out ?</string>
-    <string name="dialog_cancel">ரத்துசெய்</string>
+    <string name="dialog_cancel">Cancel</string>
     <string name="dialog_create">உருவாக்கு</string>
     <string name="wikidata_information">மேலும்</string>
     <string name="wikidata_unavailable">There is no Wikipedia page in your language yet.</string>
     <string name="Wikipedia">View on Wikipedia</string>
     <string name="Browse_Products">Browse Products</string>
-    <string name="brand_string">Brand</string>
+    <string name="brand_string">தர அடையாளம்</string>
     <string name="additive_string">Additive</string>
     <string name="allergen_string">Allergen</string>
     <string name="search_string">தேடுக</string>
@@ -462,7 +471,7 @@
     <string name="packaging_subtitle">Packaging</string>
     <string name="packaging_string">Packaging</string>
     <string name="label_string">Label</string>
-    <string name="category_string">Category</string>
+    <string name="category_string">வகை</string>
     <string name="connection">Connected</string>
     <string name="contributor_string">Contributor</string>
     <string name="app_disabled_text">Application is disabled</string>
@@ -473,8 +482,8 @@
     <string name="other_tags_text">Other Substances:</string>
     <!--shared element transition key-->
     <string name="by_title">Title</string>
-    <string name="by_brand">Brand</string>
-    <string name="by_barcode">Barcode</string>
+    <string name="by_brand">தர அடையாளம்</string>
+    <string name="by_barcode">பார்கோடு</string>
     <string name="by_time">Recently Viewed</string>
     <string name="sort">Sort</string>
     <string name="by_nutrition_grade">Nutri-Score</string>
@@ -508,7 +517,7 @@
     <string name="complete_states">Complete States</string>
     <string name="contribution_tab">Contributions</string>
     <string name="synthesis_tab">Synthesis</string>
-    <string name="txtDialogsTitle">Information</string>
+    <string name="txtDialogsTitle">தகவல்</string>
     <string name="offline_product_addition_title">Add a new product</string>
     <string name="productNameNull">Name unknown</string>
     <string name="productAdditivesUnknown"></string>
@@ -562,13 +571,12 @@
     <string name="no_internet_connection">You appear to have no internet connection, images will be uploaded when network is available</string>
     <string name="no_internet_unable_to_extract_ingredients">No internet connection. Unable to extract ingredients</string>
     <string name="percent">%1$d%%</string>
-    <string name="overview">மேற்பார்வை</string>
-    <string name="ingredients">தேவையான பொருட்கள்</string>
+    <string name="overview">சுருக்கம்</string>
+    <string name="ingredients">Ingredients</string>
     <string name="nutrition_facts">ஊட்டச்சத்து தகவல்கள்</string>
     <string name="your_version">உங்களுடையது</string>
     <string name="ingredients_picture">Ingredients Picture</string>
     <string name="packaging">Recycling</string>
-    <string name="recycling_picture">Recycling Picture</string>
     <string name="take_ingredients_picture_to_extract">(Please take a picture of the ingredients to automatically extract them)</string>
     <string name="ingredients_list">Ingredients List</string>
     <string name="ingredients_hint">Keep the order, indicate the % when specified, separate with a comma or use -, use () for ingredients of an ingredient, surround allergens with _</string>
@@ -584,7 +592,7 @@
     <string name="other_picture">Other Picture</string>
     <string name="for_100g_100ml">For 100g / 100ml</string>
     <string name="per_serving">ஒவ்வொரு பரிமாறலிற்கும்</string>
-    <string name="serving_size">பரிமாறல் அளவு</string>
+    <string name="serving_size">Serving size</string>
     <string name="alcohol_unit" formatted="false">% vol / °</string>
     <string name="add_a_nutrient">Add a nutrient</string>
     <string name="add_this_product">Add this product</string>
@@ -592,7 +600,7 @@
     <string name="one_photo_compulsory">(one photo is compulsory to add a new product)</string>
     <string name="product_details">Product Details</string>
     <string name="product_name">Product name</string>
-    <string name="quantity">எண்ணிக்கை</string>
+    <string name="quantity">Quantity</string>
     <string name="labels">Labels</string>
     <string name="period_of_time_after_opening">Period of time after opening</string>
     <string name="manufacturing_details">Manufacturing Details</string>
@@ -601,7 +609,7 @@
     <string name="emb_code">Traceability Code</string>
     <string name="purchasing_details">Purchasing Details</string>
     <string name="country_where_purchased">Country where purchased</string>
-    <string name="stores">கடைகள்</string>
+    <string name="stores">Stores</string>
     <string name="additional_pictures">Additional Pictures</string>
     <string name="hint_product_pictures">(Add more pictures of the product. eg: recycling instructions, labels etc.)</string>
     <string name="uploading_image">Sending the photo</string>
@@ -620,7 +628,7 @@
     <string name="nutrient_already_added">%s is already present in the nutrition facts</string>
     <string name="save_edits">Save edits</string>
     <string name="contribution_by">Contribution by</string>
-    <string name="title_activity_product">தலைப்பு</string>
+    <string name="title_activity_product">Title</string>
     <string name="description_activity_product">description</string>
     <string name="intent_filter_share_label">Add to Open Food Facts</string>
     <!-- Used for additive exposure evaluation table -->
@@ -693,7 +701,7 @@
     <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
     <string name="product_summary_action_compare_button_label">Compare</string>
     <string name="product_summary_action_add_to_list_button_label">Add to list</string>
-    <string name="product_summary_action_edit_button_label">தொகு</string>
+    <string name="product_summary_action_edit_button_label">திருத்து</string>
     <string name="product_summary_action_share_button_label">பகிர்க</string>
     <string name="product_question_prompt">Tap here to answer</string>
     <string name="product_question_positive_response">ஆம்</string>
@@ -715,7 +723,7 @@
     <string name="cant_edit_image_not_yet_uploaded">The new image is not yet uploaded. Please, wait before editing it</string>
     <string name="unselect_image">Unselect Image</string>
     <string name="choose_default_language">Select product language</string>
-    <string name="barcode">Barcode</string>
+    <string name="barcode">பார்கோடு</string>
     <string name="productAdditivesNone">No additives</string>
     <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
     <string name="import_csv_to_list">Import an Open Food Facts list CSV file</string>
@@ -746,10 +754,10 @@
     <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
     <string name="compare_brands">Brands :</string>
     <string name="compare_additives">Additives :</string>
-    <string name="compare_salt">உப்பு</string>
-    <string name="compare_sugars">சர்க்கரைகள்</string>
-    <string name="compare_saturated_fat">நிறைவுற்ற கொழுப்புகள்</string>
-    <string name="compare_fat">கொழுப்புகள்</string>
+    <string name="compare_salt">Salt</string>
+    <string name="compare_sugars">Sugars</string>
+    <string name="compare_saturated_fat">Saturated fat</string>
+    <string name="compare_fat">Fat</string>
     <string name="compare_quantity">எண்ணிக்கை :</string>
     <string name="load_ingredient_detection_data">Load ingredient detection data</string>
     <string name="load_ingredient_detection_data_summary">No ingredient detection data has been found, try to load it from server</string>
@@ -788,4 +796,7 @@
     <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
     <string name="hint_origin">Examples: USA, France, Italy</string>
     <string name="report_email_chooser_title">Send a report email</string>
+    <!-- Changelog String -->
+    <string name="changelog_translation_help">Want to see this changelog in %s?\nJoin the translation team!</string>
+    <string name="whats_new">What\'s new with Open Food Facts?</string>
 </resources>
