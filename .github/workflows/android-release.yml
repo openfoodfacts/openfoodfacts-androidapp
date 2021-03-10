@@ -21,7 +21,7 @@ jobs:
       - name: Unit tests
         uses: eskatos/gradle-command-action@v1
         with:
-          arguments: testObfDebugUnitTest --stacktrace
+          arguments: testObfPlaystoreDebugUnitTest --stacktrace
 
   testOff:
     name: OFF testing
@@ -38,7 +38,7 @@ jobs:
       - name: Unit tests
         uses: eskatos/gradle-command-action@v1
         with:
-          arguments: testOffDebugUnitTest --stacktrace
+          arguments: testOffPlaystoreDebugUnitTest --stacktrace
 
   testOpf:
     name: OPF testing
@@ -55,7 +55,7 @@ jobs:
       - name: Unit tests
         uses: eskatos/gradle-command-action@v1
         with:
-          arguments: testOpfDebugUnitTest --stacktrace
+          arguments: testOpfPlaystoreDebugUnitTest --stacktrace
 
   testOpff:
     name: OPFF testing
@@ -72,7 +72,7 @@ jobs:
       - name: Unit tests
         uses: eskatos/gradle-command-action@v1
         with:
-          arguments: testOpffDebugUnitTest --stacktrace
+          arguments: testOpffPlaystoreDebugUnitTest --stacktrace
 
   google-play-internal:
     needs:
