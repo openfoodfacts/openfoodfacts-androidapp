@@ -53,7 +53,7 @@ lane :release do
     gradle(
         project_dir: './',
         task: 'clean bundle',
-        build_type: 'offReleasePlaystore'
+        build_type: 'PlaystoreOffRelease'
     )
 
     #upload the bundle to internal track of play store
