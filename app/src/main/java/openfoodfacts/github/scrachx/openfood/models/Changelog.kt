@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.features.changelog
+package openfoodfacts.github.scrachx.openfood.models
 
 import com.fasterxml.jackson.annotation.JsonProperty
 import java.io.Serializable
