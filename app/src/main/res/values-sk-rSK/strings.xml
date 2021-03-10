@@ -147,7 +147,7 @@
         <item>pH</item>
         <item>Fosfor</item>
         <item>Cukrové alkoholy (polyoly)</item>
-        <item>Poly unsaturated fat</item>
+        <item>Polyunsaturated fat</item>
         <item>Draslík</item>
         <item>Selén</item>
         <item>Sérové ​​proteíny</item>
@@ -423,7 +423,7 @@
     <string name="device_offline_dialog_message">Na to je potrebné sieťové pripojenie, chcete to zmeniť v nastaveniach?</string>
     <string name="device_offline_dialog_negative">Zamietnuť</string>
     <string name="device_offline_dialog_positive">Nastavenia</string>
-    <string name="scan_first_product">Scan First Product</string>
+    <string name="scan_first_product">Scan your first product</string>
     <string name="device_on_mobile_data_warning_title">Informácia</string>
     <string name="device_on_mobile_data_warning_message">You have disabled upload on mobile data , please connect to WiFi or change this in preferences</string>
     <string name="device_on_mobile_data_warning_positive">Predvoľby</string>

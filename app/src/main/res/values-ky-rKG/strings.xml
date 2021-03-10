@@ -137,7 +137,7 @@
         <item>pH</item>
         <item>Phosphorus</item>
         <item>Sugar alcohols (Polyols)</item>
-        <item>Poly unsaturated fat</item>
+        <item>Polyunsaturated fat</item>
         <item>Potassium</item>
         <item>Selenium</item>
         <item>Serum proteins</item>
@@ -413,7 +413,7 @@
     <string name="device_offline_dialog_message">Бул үчүн тармак туташуусу керек, муну жөндөөлөрдөн өзгөрткүңүз келеби?</string>
     <string name="device_offline_dialog_negative">Жокко чыгаруу</string>
     <string name="device_offline_dialog_positive">Settings</string>
-    <string name="scan_first_product">Scan First Product</string>
+    <string name="scan_first_product">Scan your first product</string>
     <string name="device_on_mobile_data_warning_title">Маалымат</string>
     <string name="device_on_mobile_data_warning_message">Сиз мобилдик дайындарды жүктөп берүүнү өчүрүп койдуңуз, WiFi\'га туташыңыз же муну жөндөөлөрдөн өзгөртүңүз</string>
     <string name="device_on_mobile_data_warning_positive">Түзөтүүлөр</string>
