@@ -30,7 +30,6 @@ lane :release do
         task: 'clean bundle',
         build_type: 'offPlaystoreRelease',
         #platform: 'playstore'
-   
     )
 
     #upload the bundle to internal track of play store

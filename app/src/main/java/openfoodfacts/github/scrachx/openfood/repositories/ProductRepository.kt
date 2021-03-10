@@ -30,6 +30,7 @@ import openfoodfacts.github.scrachx.openfood.models.entities.analysistag.Analysi
 import openfoodfacts.github.scrachx.openfood.models.entities.analysistag.AnalysisTagNameDao
 import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.AnalysisTagConfig
 import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.AnalysisTagConfigDao
+import openfoodfacts.github.scrachx.openfood.models.entities.brand.Brand
 import openfoodfacts.github.scrachx.openfood.models.entities.category.*
 import openfoodfacts.github.scrachx.openfood.models.entities.country.Country
 import openfoodfacts.github.scrachx.openfood.models.entities.ingredient.*
@@ -218,6 +219,16 @@ object ProductRepository {
             .doOnSuccess {
                 saveStores(it)
                 updateLastDownloadDateInSettings(Taxonomy.STORES, lastModifiedDate)
+            }
+
+    fun reloadBrandsFromServer(): Single<List<Brand>> =
+            getTaxonomyData(Taxonomy.BRANDS, this, true, OFFApplication.daoSession.brandDao)
+
+    fun loadBrands(lastModifiedDate: Long): Single<List<Brand>> = analysisDataApi.getBrands()
+            .map { it.map() }
+            .doOnSuccess{
+                saveBrands(it)
+                updateLastDownloadDateInSettings(Taxonomy.BRANDS,lastModifiedDate)
             }
 
     /**
@@ -458,6 +469,29 @@ object ProductRepository {
             OFFApplication.daoSession.database.setTransactionSuccessful()
         } catch (e: Exception) {
             Log.e(LOG_TAG, "saveStores", e)
+        } finally {
+            OFFApplication.daoSession.database.endTransaction()
+        }
+    }
+
+    /**
+     * Save Brands to local Database
+     *
+     * @param brands The list of brands to be stored
+     *
+     */
+    private fun saveBrands(brands: List<Brand>) {
+        OFFApplication.daoSession.database.beginTransaction()
+        try {
+            brands.forEach { brand ->
+                OFFApplication.daoSession.brandDao.insertOrReplace(brand)
+                brand.names.forEach {
+                    OFFApplication.daoSession.brandNameDao.insertOrReplace(it)
+                }
+            }
+            OFFApplication.daoSession.database.setTransactionSuccessful()
+        } catch (e: Exception) {
+            Log.e(LOG_TAG, "saveBrands", e)
         } finally {
             OFFApplication.daoSession.database.endTransaction()
         }
