@@ -19,6 +19,8 @@ import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenNa
 import openfoodfacts.github.scrachx.openfood.models.entities.analysistag.AnalysisTagDao
 import openfoodfacts.github.scrachx.openfood.models.entities.analysistag.AnalysisTagNameDao
 import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.AnalysisTagConfigDao
+import openfoodfacts.github.scrachx.openfood.models.entities.brand.BrandDao
+import openfoodfacts.github.scrachx.openfood.models.entities.brand.BrandNameDao
 import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoryDao
 import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoryNameDao
 import openfoodfacts.github.scrachx.openfood.models.entities.country.CountryDao
@@ -150,6 +152,10 @@ class OFFDatabaseHelper @JvmOverloads constructor(
             21 -> {
                 StoreDao.createTable(db, true)
                 StoreNameDao.createTable(db, true)
+            }
+            22 -> {
+                BrandDao.createTable(db, true)
+                BrandNameDao.createTable(db, true)
             }
         }
     }

@@ -464,6 +464,13 @@ object ProductRepository {
     }
 
     /**
+     * Save Brands to local Database
+     *
+     * @param brands The list of brands to be stored
+     *
+     */
+
+    /**
      * Ingredient saving to local database
      *
      * @param ingredient The ingredient to be saved.
