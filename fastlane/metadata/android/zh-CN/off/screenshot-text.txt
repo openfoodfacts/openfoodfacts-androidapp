@@ -5,7 +5,7 @@ https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=zh-cn
 V2 screenshots
 =====================
 
-Scan products
+扫描产品
 
 获取营养评分
 

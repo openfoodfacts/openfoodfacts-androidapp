@@ -419,7 +419,12 @@
     <string name="device_on_mobile_data_warning_positive">crwdns176776:0crwdne176776:0</string>
     <string name="device_on_mobile_data_warning_negative">crwdns176778:0crwdne176778:0</string>
     <string name="changes_saved">crwdns176780:0crwdne176780:0</string>
+    <string name="proceed">crwdns177760:0crwdne177760:0</string>
     <string name="preference_choose_language_dialog_title">crwdns176782:0crwdne176782:0</string>
+    <string name="preference_choose_scanner_dialog_title">crwdns177762:0crwdne177762:0</string>
+    <string name="preference_choose_scanner_dialog_body">crwdns177764:0crwdne177764:0</string>
+    <string name="prompt_point_at_a_barcode">crwdns177766:0crwdne177766:0</string>
+    <string name="prompt_move_camera_closer">crwdns177768:0crwdne177768:0</string>
     <string name="please_check_your_connection">crwdns176784:0crwdne176784:0</string>
     <string name="advanced_search_title">crwdns176786:0crwdne176786:0</string>
     <string name="compare_products">crwdns176788:0crwdne176788:0</string>
@@ -568,7 +573,6 @@
     <string name="your_version">crwdns177050:0crwdne177050:0</string>
     <string name="ingredients_picture">crwdns177052:0crwdne177052:0</string>
     <string name="packaging">crwdns177054:0crwdne177054:0</string>
-    <string name="recycling_picture">crwdns177056:0crwdne177056:0</string>
     <string name="take_ingredients_picture_to_extract">crwdns177058:0crwdne177058:0</string>
     <string name="ingredients_list">crwdns177060:0crwdne177060:0</string>
     <string name="ingredients_hint">crwdns177062:0crwdne177062:0</string>

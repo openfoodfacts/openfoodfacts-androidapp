@@ -419,7 +419,16 @@
     <string name="device_on_mobile_data_warning_positive">Einstellungen</string>
     <string name="device_on_mobile_data_warning_negative">Trotzdem hochladen</string>
     <string name="changes_saved">Änderungen erfolgreich gespeichert</string>
+    <string name="proceed">Proceed</string>
     <string name="preference_choose_language_dialog_title">Sprache auswählen</string>
+    <string name="preference_choose_scanner_dialog_title"><b>New: Enhanced “MLKit” scanner</b></string>
+    <string name="preference_choose_scanner_dialog_body">We have included a new option to more reliably scan barcodes. While this scanner works on your device, using machine learning,
+            please be aware that it is a proprietary component provided by Google, governed by this privacy policy, and that some limited telemetry might be sent back to Google’s servers
+            to improve their software. As noted in the MLKit terms, this won’t include any information about the products you scan and the telemetry is anonymized. Choosing MLKit scanner
+            implies that you accept those terms\n<b>Note: You can switch back at any time between the 2 scanners in the Settings.</b>
+    </string>
+    <string name="prompt_point_at_a_barcode">Point your camera at a barcode</string>
+    <string name="prompt_move_camera_closer">Move closer to detect</string>
     <string name="please_check_your_connection">Bitte überprüfen Sie Ihre Internetverbindung.</string>
     <string name="advanced_search_title">Erweiterte Suche &amp; Diagramme</string>
     <string name="compare_products">Produkte vergleichen</string>
@@ -568,7 +577,6 @@
     <string name="your_version">Ihre</string>
     <string name="ingredients_picture">Zutatenfoto</string>
     <string name="packaging">Wiederverwertung</string>
-    <string name="recycling_picture">Recycling-Abbildung</string>
     <string name="take_ingredients_picture_to_extract">(Bitte machen Sie ein Bild von den Zutaten, um sie automatisch zu extrahieren)</string>
     <string name="ingredients_list">Zutatenliste</string>
     <string name="ingredients_hint">Behalten Sie die Reihenfolge bei, geben Sie \"%\" an, wenn angegeben, trennen Sie mit einem Komma \",\" oder einem Bindestrich \"-\", verwenden Sie \"()\" für Zutaten einer Zutat, umgeben Sie Allergene mit \"_\"</string>
@@ -789,6 +797,6 @@ Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchs
     <string name="hint_origin">Beispiele: USA, Frankreich, Italien</string>
     <string name="report_email_chooser_title">Bericht als E-Mail senden</string>
     <!-- Changelog String -->
-    <string name="changelog_translation_help">Möchten Sie dieses Changelog in %ssehen?\nTreten Sie dem Übersetzungsteam bei!</string>
+    <string name="changelog_translation_help">Möchten Sie dieses Änderungsprotokoll in %s anzeigen?\nSchließen Sie sich dem Übersetzungsteam an!</string>
     <string name="whats_new">Was gibt es Neues bei Open Food Facts?</string>
 </resources>

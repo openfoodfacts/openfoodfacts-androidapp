@@ -55,6 +55,7 @@ import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback
+import openfoodfacts.github.scrachx.openfood.features.scan.ContinuousScanActivity
 import openfoodfacts.github.scrachx.openfood.jobs.LoadTaxonomiesWorker
 import openfoodfacts.github.scrachx.openfood.jobs.OfflineProductWorker.Companion.scheduleSync
 import openfoodfacts.github.scrachx.openfood.models.DaoSession
@@ -148,6 +149,37 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
                 show()
             }
             true
+        }
+
+        requirePreference<SwitchPreference>(getString(R.string.pref_scanner_type_key)).let {
+            it.isVisible = ContinuousScanActivity.showSelectScannerPref
+            it.onPreferenceChangeListener = Preference.OnPreferenceChangeListener { _, newValue ->
+                if(newValue == true){
+                    MaterialDialog.Builder(requireActivity()).run {
+                        title(R.string.preference_choose_scanner_dialog_title)
+                        content(R.string.preference_choose_scanner_dialog_body)
+                        positiveText(R.string.proceed)
+                        onPositive { _, _ ->
+                            it.isChecked = true
+                            settings.edit { putBoolean(getString(R.string.pref_scanner_type_key), newValue as Boolean) }
+                            Toast.makeText(requireActivity(), getString(R.string.changes_saved), Toast.LENGTH_SHORT).show()
+                        }
+                        negativeText(R.string.dialog_cancel)
+                        onNegative {
+                            dialog, _ -> dialog.dismiss()
+                            it.isChecked = false
+                            settings.edit { putBoolean(getString(R.string.pref_scanner_type_key), false) }
+                        }
+                        show()
+                    }
+                }
+                else{
+                    it.isChecked = false
+                    settings.edit { putBoolean(getString(R.string.pref_scanner_type_key), newValue as Boolean) }
+                    Toast.makeText(requireActivity(), getString(R.string.changes_saved), Toast.LENGTH_SHORT).show()
+                }
+                true
+            }
         }
 
         val countryLabels = mutableListOf<String>()

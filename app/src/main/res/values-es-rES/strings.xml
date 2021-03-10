@@ -419,7 +419,16 @@
     <string name="device_on_mobile_data_warning_positive">Preferencias</string>
     <string name="device_on_mobile_data_warning_negative">Enviar de todas formas</string>
     <string name="changes_saved">Cambios guardados correctamente</string>
+    <string name="proceed">Proceed</string>
     <string name="preference_choose_language_dialog_title">Elegir idioma</string>
+    <string name="preference_choose_scanner_dialog_title"><b>New: Enhanced “MLKit” scanner</b></string>
+    <string name="preference_choose_scanner_dialog_body">We have included a new option to more reliably scan barcodes. While this scanner works on your device, using machine learning,
+            please be aware that it is a proprietary component provided by Google, governed by this privacy policy, and that some limited telemetry might be sent back to Google’s servers
+            to improve their software. As noted in the MLKit terms, this won’t include any information about the products you scan and the telemetry is anonymized. Choosing MLKit scanner
+            implies that you accept those terms\n<b>Note: You can switch back at any time between the 2 scanners in the Settings.</b>
+    </string>
+    <string name="prompt_point_at_a_barcode">Point your camera at a barcode</string>
+    <string name="prompt_move_camera_closer">Move closer to detect</string>
     <string name="please_check_your_connection">Por favor, comprueba tu conexión.</string>
     <string name="advanced_search_title">Búsqueda avanzada &amp; Gráficos</string>
     <string name="compare_products">Comparar productos</string>
@@ -568,7 +577,6 @@
     <string name="your_version">Tu versión</string>
     <string name="ingredients_picture">Imagen con los ingredientes del producto</string>
     <string name="packaging">Reciclaje</string>
-    <string name="recycling_picture">Imagen de reciclaje</string>
     <string name="take_ingredients_picture_to_extract">(Por favor, toma una foto de los ingredientes para extraerlos automáticamente)</string>
     <string name="ingredients_list">Lista de ingredientes</string>
     <string name="ingredients_hint">Mantén el orden, indica el % cuando se especifique, separa con una coma o usa -, utiliza () para ingredientes de otro ingrediente, utiliza _ al principio y al final de los alérgenos</string>
@@ -789,6 +797,6 @@
     <string name="hint_origin">Ejemplos: Estados Unidos, Francia, Italia</string>
     <string name="report_email_chooser_title">Enviar correo de reporte</string>
     <!-- Changelog String -->
-    <string name="changelog_translation_help">Want to see this changelog in %s?\nJoin the translation team!</string>
-    <string name="whats_new">What\'s new with Open Food Facts?</string>
+    <string name="changelog_translation_help">¿Quieres ver este registro de cambios en %s?\n¡Únete al equipo de traducción!</string>
+    <string name="whats_new">¿Qué hay de nuevo en Open Food Facts?</string>
 </resources>

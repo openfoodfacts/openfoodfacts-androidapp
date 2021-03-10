@@ -419,7 +419,16 @@
     <string name="device_on_mobile_data_warning_positive">Præferencer</string>
     <string name="device_on_mobile_data_warning_negative">Upload alligevel</string>
     <string name="changes_saved">Ændring er gemt</string>
+    <string name="proceed">Fortsæt</string>
     <string name="preference_choose_language_dialog_title">Vælg sprog</string>
+    <string name="preference_choose_scanner_dialog_title"><b>Nyt: Forbedret “MLKit”-skanner</b></string>
+    <string name="preference_choose_scanner_dialog_body">Der er inkluderet en ny mulighed for mere pålideligt at skanne stregkoder. Mens denne skanner fungerer på din enhed vha. maskinindlæring,
+            så vær opmærksom på, at det er en proprietær komponent, der leveres af Google, styret af deres fortrolighedspolitik, og at der muligvis sendes en begrænset telemetri til Googles servere
+            mhp. at forbedre deres software. Som angivet i MLKit-vilkårene inkluderer dette ikke nogen oplysninger om de produkter, du skanner, og telemetri er anonymiseret. Valg af MLKit-skanner
+            indikerer, at du accepterer disse betingelser\n<b>Bemærk: Du kan til enhver tid skifte tilbage mellem de 2 skannere via Indstillinger.</b>
+    </string>
+    <string name="prompt_point_at_a_barcode">Ret dit kamera mod stregkoden</string>
+    <string name="prompt_move_camera_closer">Gå nærmere for at detektere</string>
     <string name="please_check_your_connection">Tjek Internetforbindelsen.</string>
     <string name="advanced_search_title">Avanceret søgning og Diagrammer</string>
     <string name="compare_products">Sammenlign produkter</string>
@@ -568,7 +577,6 @@
     <string name="your_version">Dine</string>
     <string name="ingredients_picture">Ingrediensfoto</string>
     <string name="packaging">Genbrug</string>
-    <string name="recycling_picture">Genbrugsfoto</string>
     <string name="take_ingredients_picture_to_extract">(Tag venligst et foto af ingredienserne for automatisk at udtrække dem)</string>
     <string name="ingredients_list">Ingrediensoversigt</string>
     <string name="ingredients_hint">Behold rækkefølgen, angiv %, når det angives, adskilt med komma eller brug -, brug () til ingredienser i en ingrediens, omgiv allergener med _</string>
@@ -789,6 +797,6 @@
     <string name="hint_origin">Eks.: USA, Frankrig, Italien</string>
     <string name="report_email_chooser_title">Indsend en rapport e-mail</string>
     <!-- Changelog String -->
-    <string name="changelog_translation_help">Want to see this changelog in %s?\nJoin the translation team!</string>
-    <string name="whats_new">What\'s new with Open Food Facts?</string>
+    <string name="changelog_translation_help">Ønsker at se denne ændringslog i %s?\nDeltag i oversættelsesteamet!</string>
+    <string name="whats_new">Nyt i Open Food Facts?</string>
 </resources>

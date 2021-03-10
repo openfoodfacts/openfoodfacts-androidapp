@@ -12,11 +12,11 @@ desc "Build debug and test APK for screenshots"
     )
     build_android_app(
       task: 'assemble',
-      build_type: 'Debug'
+      build_type: 'DebugPlaystore'
     )
     build_android_app(
       task: 'assemble',
-      build_type: 'AndroidTest'
+      build_type: 'AndroidTestPlaystore'
     )
   end
 
@@ -53,7 +53,8 @@ lane :release do
     gradle(
         project_dir: './',
         task: 'clean bundle',
-        build_type: 'offRelease'
+        build_type: 'offRelease',
+        platform: 'playstore'
     )
 
     #upload the bundle to internal track of play store

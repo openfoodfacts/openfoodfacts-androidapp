@@ -17,7 +17,6 @@ package openfoodfacts.github.scrachx.openfood.features.compare
 
 import android.Manifest.permission
 import android.app.Activity
-import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
 import android.util.Log
@@ -25,7 +24,6 @@ import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -143,14 +141,14 @@ class ProductCompareAdapter(
         if (!product.productName.isNullOrBlank()) {
             holder.binding.productComparisonName.text = product.productName
         } else {
-            //TODO: product name placeholder text goes here
+            holder.binding.productComparisonName.visibility = View.INVISIBLE
         }
 
         // Quantity
         if (!product.quantity.isNullOrBlank()) {
             holder.binding.productComparisonQuantity.text = "${bold(activity.getString(R.string.compare_quantity))} ${product.quantity}"
         } else {
-            //TODO: product quantity placeholder goes here
+            holder.binding.productComparisonQuantity.visibility = View.INVISIBLE
         }
 
         // Brands
@@ -196,14 +194,8 @@ class ProductCompareAdapter(
         holder.binding.fullProductButton.setOnClickListener {
             val barcode = product.code
             if (Utils.isNetworkConnected(activity)) {
+                Utils.hideKeyboard(activity)
                 api.openProduct(barcode, activity)
-                try {
-                    val view1 = activity.currentFocus
-                    val imm = activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                    imm.hideSoftInputFromWindow(view1!!.windowToken, 0)
-                } catch (e: NullPointerException) {
-                    Log.e(ProductCompareAdapter::class.simpleName, "setOnClickListener", e)
-                }
             } else {
                 MaterialDialog.Builder(activity).apply {
                     title(R.string.device_offline_dialog_title)
@@ -211,10 +203,10 @@ class ProductCompareAdapter(
                     positiveText(R.string.txt_try_again)
                     negativeText(R.string.dismiss)
                     onPositive { _, _ ->
-                        if (Utils.isNetworkConnected(context)) {
-                            api.openProduct(barcode, context as Activity)
+                        if (Utils.isNetworkConnected(activity)) {
+                            api.openProduct(barcode, activity)
                         } else {
-                            Toast.makeText(context, R.string.device_offline_dialog_title, Toast.LENGTH_SHORT).show()
+                            Toast.makeText(activity, R.string.device_offline_dialog_title, Toast.LENGTH_SHORT).show()
                         }
                     }
                 }.show()
@@ -222,8 +214,9 @@ class ProductCompareAdapter(
         }
     }
 
-    private fun loadAdditives(product: Product, v: View) {
+    private fun loadAdditives(product: Product, view: TextView) {
         if (product.additivesTags.isEmpty()) return
+
         product.additivesTags.toObservable()
                 .flatMapSingle { tag ->
                     ProductRepository.getAdditiveByTagAndLanguageCode(tag, LocaleHelper.getLanguage(activity))
@@ -242,16 +235,13 @@ class ProductCompareAdapter(
                 .doOnError { Log.e(ProductCompareAdapter::class.simpleName, "loadAdditives", it) }
                 .subscribe { additives ->
                     if (additives.isNotEmpty()) {
-                        val additivesBuilder = StringBuilder()
-                        additivesBuilder.append(bold(activity.getString(R.string.compare_additives)))
-                        additivesBuilder.append(" ")
-                        additivesBuilder.append("\n")
+                        val additivesBuilder = StringBuilder(bold(activity.getString(R.string.compare_additives)))
+                                .append(" ").append("\n")
                         additives.dropLast(1).forEach { additive ->
-                            additivesBuilder.append(additive.name)
-                            additivesBuilder.append("\n")
+                            additivesBuilder.append(additive.name).append("\n")
                         }
                         additivesBuilder.append(additives.last().name)
-                        (v as TextView).text = additivesBuilder.toString()
+                        view.text = additivesBuilder.toString()
                         setMaxCardHeight()
                     }
                 }.addTo(disp)

@@ -192,7 +192,7 @@
     <string name="txtSugars">Şeker</string>
     <string name="hintBarcode">Barkod</string>
     <string name="txtNutriScoreInfo">Besin seviyeleri hakkında daha fazla bilgi edinin</string>
-    <string name="txtloginHelper">If you have an Open Food Facts account, you can login here with it</string>
+    <string name="txtloginHelper">Open Food Facts hesabınız varsa, buradan giriş yapabilirsiniz</string>
     <string name="hintLogin">Kullanıcı adı</string>
     <string name="hintPass">Şifre</string>
     <string name="errorLogin">Giriş veya parola hatası</string>
@@ -300,7 +300,7 @@
     <string name="logout_drawer">Çıkış Yap</string>
     <string name="contribution_without_account">Katkılarınızı devam ettirmek için giriş yapabilir veya hesap oluşturabilirsiniz</string>
     <string name="textCarbonFootprint">Karbon ayak izi / CO2 emisyonu: </string>
-    <string name="packaging_environmentTab">Packaging:</string>
+    <string name="packaging_environmentTab">Paketleme:</string>
     <string name="action_search">Ara</string>
     <string name="search_hint">Ürün ara</string>
     <string name="number_of_results">Sonuç sayısı: </string>
@@ -419,7 +419,16 @@
     <string name="device_on_mobile_data_warning_positive">Tercihler</string>
     <string name="device_on_mobile_data_warning_negative">Yine de yükle</string>
     <string name="changes_saved">Değişiklikler başarıyla kaydedildi</string>
+    <string name="proceed">Proceed</string>
     <string name="preference_choose_language_dialog_title">Dil seçin</string>
+    <string name="preference_choose_scanner_dialog_title"><b>New: Enhanced “MLKit” scanner</b></string>
+    <string name="preference_choose_scanner_dialog_body">We have included a new option to more reliably scan barcodes. While this scanner works on your device, using machine learning,
+            please be aware that it is a proprietary component provided by Google, governed by this privacy policy, and that some limited telemetry might be sent back to Google’s servers
+            to improve their software. As noted in the MLKit terms, this won’t include any information about the products you scan and the telemetry is anonymized. Choosing MLKit scanner
+            implies that you accept those terms\n<b>Note: You can switch back at any time between the 2 scanners in the Settings.</b>
+    </string>
+    <string name="prompt_point_at_a_barcode">Point your camera at a barcode</string>
+    <string name="prompt_move_camera_closer">Move closer to detect</string>
     <string name="please_check_your_connection">Bağlantınızı kontrol ediniz.</string>
     <string name="advanced_search_title">Gelişmiş Arama &amp; Grafikler</string>
     <string name="compare_products">Ürünleri karşılaştırın</string>
@@ -503,11 +512,11 @@
     <string name="creator_history">Ürün %1$s %2$s CET\'te %3$s tarafından eklendi</string>
     <string name="last_editor_history">Ürün sayfası en son %1$s %2$s CEST\'te %3$s tarafından düzenlendi </string>
     <string name="other_editors">Ürün sayfası ayrıca … tarafından düzenlendi</string>
-    <string name="product_states">Product States</string>
-    <string name="incomplete_states">Incomplete States</string>
-    <string name="complete_states">Complete States</string>
+    <string name="product_states">Ürün Durumları</string>
+    <string name="incomplete_states">Eksik Durumlar</string>
+    <string name="complete_states">Tamamlanmış Durumlar</string>
     <string name="contribution_tab">Katkıda Bulunulanlar</string>
-    <string name="synthesis_tab">Synthesis</string>
+    <string name="synthesis_tab">Sentez</string>
     <string name="txtDialogsTitle">Bilgi</string>
     <string name="offline_product_addition_title">Yeni bir ürün ekle</string>
     <string name="productNameNull">İsim bilinmiyor</string>
@@ -537,8 +546,8 @@
     <string name="choose_nutrient">Bir besin ögesi seçin</string>
     <string name="error_adding_product_details">Ürünün ayrıntılarını eklemeye çalışırken bir hata oluştu</string>
     <string name="hint_product_URL">Ürünün resmi sayfasının adresi</string>
-    <string name="extract_url">Extract URL from QR-code</string>
-    <string name="search_url">Search for official page URL</string>
+    <string name="extract_url">QR kodunu URL\'ye çevirin</string>
+    <string name="search_url">Resmi sayfa URL\'sini arayın</string>
     <string name="product_language">Ürün dili : </string>
     <string name="hint_emb_codes">Örnekler: EMB 53062, FR 62.448.034 CE, 84 R20, 33 RECOLTANT 522, FSSL 10013011001409</string>
     <string name="official_website">Resmi web sitesi</string>
@@ -568,7 +577,6 @@
     <string name="your_version">Seninki</string>
     <string name="ingredients_picture">İçindekiler Resmi</string>
     <string name="packaging">Geri Dönüşüm</string>
-    <string name="recycling_picture">Geri Dönüşüm Resmi</string>
     <string name="take_ingredients_picture_to_extract">(Lütfen otomatik olarak almak için içindekilerin bir fotoğrafını çekin)</string>
     <string name="ingredients_list">İçindekiler Listesi</string>
     <string name="ingredients_hint">Sırasını koruyun, varsa %\'sini belirtin, virgül ile ayırın ya da - kullanın, bir malzemenin içindekileri belirtmek için () kullanın, alerjenlerin etrafını _ ile çevirin</string>
@@ -650,20 +658,20 @@
     <string name="update_image">Güncellenmiş Bir Resim Gönder</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">İçindekileri çıkartın</string>
-    <string name="extract_recycling_prompt">Extract recycling instructions</string>
+    <string name="extract_recycling_prompt">Geri dönüşüm talimatlarını çıkarın</string>
     <string name="add_nutrient_prompt_text">Besin ögesi seviyelerini hesaplamak için besin değerlerini ekleyin</string>
     <string name="add_category_prompt_text">Ürünü tamamlamaya yardım etmek için bir kategori ekleyin</string>
     <string name="add_nutrient_category_prompt_text">Ürünü tamamlamaya yardım etmek için bir kategori ve besin değerlerini ekleyin</string>
-    <string name="couldnot_compute_ecoscore_prompt_text">We could not compute an Eco-Score for this product. It might be that the category is not specific enough or that we don\'t have supporting data for this category. If you believe this is an error, you can mail us by clicking below.</string>
-    <string name="add_labels_origins_prompt_text">The Eco-Score takes into account environmental labels and origins of the ingredients. Please take them into photo or edit the product so that they can be taken into account</string>
-    <string name="add_labels_prompt_text">The Eco-Score takes into account environmental labels. Please take them into photo or edit the product so that they can be taken into account</string>
-    <string name="add_origins_prompt_text">The Eco-Score takes into account the origins of the ingredients. Please take them into photo (ingredient list and/or any geographic claim) or edit the product so that they can be taken into account</string>
+    <string name="couldnot_compute_ecoscore_prompt_text">Bu ürün için Eko-Puan hesaplayamadık. Kategori yeterince açıklayıcı olmayabilir veya bu kategori için destekleyici verilerimiz olmayabilir. Bunun bir hata olduğuna inanıyorsanız, aşağıya tıklayarak bize mail atabilirsiniz.</string>
+    <string name="add_labels_origins_prompt_text">Eco-Score, çevre etiketlerini ve içindekilerin kökenlerini hesaba katar. Hesaba alınabilmesi için lütfen bunları fotoğraflayın veya ürünü düzenleyin</string>
+    <string name="add_labels_prompt_text">Eco-Score, çevre etiketlerini hesaba katar. Hesaba katılabilmesi için lütfen bunları fotoğraflayın veya ürünü düzenleyin</string>
+    <string name="add_origins_prompt_text">Eco-Score, içindeki maddelerin kökenlerini hesaba katar. Hesaba katılabilmesi için lütfen bunları fotoğraflayın (içindekiler listesi ve/veya herhangi bir coğrafi iddia) veya ürünü düzenleyin</string>
     <string name="category_game_btn">Ürünleri kategorize etmeye yardım edin</string>
     <string name="version_string">Open Food Facts Android Uygulaması</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
     <string name="set_img_nutrients">Set as nutrition image</string>
     <string name="set_img_front">Set as front image</string>
-    <string name="set_img_recycling">Set Image as Recycling</string>
+    <string name="set_img_recycling">Görüntüyü Geri Dönüştürme olarak Ayarla</string>
     <string name="report_img">Resmi Şikayet Et</string>
     <string name="detected_ingredients">Tespit Edilen Malzemeler</string>
     <string name="txtConnectionError">Bazı verileri indiremedik. Bu bir bağlantı hatasından dolayı olabilir.</string>
@@ -685,7 +693,7 @@ Aynı zamanda bu listeye ürünleri arayarak ve ürün sayfasının sağ üstün
     <string name="txt_info_your_listed_products">Ürünleri arayarak ve ürün sayfasının sağ üst kısmındaki + düğmesine tıklayarak onları bu listeye ekleyebilirsiniz.</string>
     <string name="txt_no_nutrition_data">Bu ürün ambalaj üzerinde herhangi bir beslenme bilgisine sahip değildir. Bu durum değiştiyse, ürünü düzenleyebilirsiniz.</string>
     <string name="image_prompt_language">Malzemelerin fotoğrafını çekin</string>
-    <string name="swipe_delete_tip">You can delete a list by swiping it left.</string>
+    <string name="swipe_delete_tip">Bir listeyi sola kaydırarak silebilirsiniz.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Ürün ekle</string>
@@ -755,7 +763,7 @@ Aynı zamanda bu listeye ürünleri arayarak ve ürün sayfasının sağ üstün
     <string name="load_ingredient_detection_data_summary">İçindekiler algılama verisi bulunamadı, sunucudan yüklemeyi deneyin</string>
     <string name="white_check_image_descr">Beyaz tik işareti</string>
     <string name="hint_packaging">Örnekler: plastik, kağıt, cam</string>
-    <string name="hint_trace_code">Examples: EMB 23456, FR 23.345.34 CE</string>
+    <string name="hint_trace_code">Örnekler: EMB 23456, FR 23.345.34 CE</string>
     <string name="risk_alcohol_consumption">Aşırı miktarda alkol tüketimi sağlığa zararlıdır, ölçülü olarak tüketilmelidir</string>
     <!--ShowcaseView Strings-->
     <string name="title_image_type">Resim Tipi Seçin</string>
@@ -782,13 +790,13 @@ Aynı zamanda bu listeye ürünleri arayarak ve ürün sayfasının sağ üstün
     <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s products (plus the ones you will contribute).</string>
     <string name="enabled">Etkin</string>
     <!-- Application theme settings -->
-    <string name="follow_system">Follow system</string>
-    <string name="day">Day</string>
-    <string name="night">Night</string>
-    <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
-    <string name="hint_origin">Examples: USA, France, Italy</string>
-    <string name="report_email_chooser_title">Send a report email</string>
+    <string name="follow_system">Sistemi izleyin</string>
+    <string name="day">Gündüz</string>
+    <string name="night">Gece</string>
+    <string name="required_for_ecoscore">(Eco-Score\'u hesaplamak için gereklidir)</string>
+    <string name="hint_origin">Örnekler: ABD, Fransa, İtalya</string>
+    <string name="report_email_chooser_title">Rapor e-postası gönder</string>
     <!-- Changelog String -->
-    <string name="changelog_translation_help">Want to see this changelog in %s?\nJoin the translation team!</string>
-    <string name="whats_new">What\'s new with Open Food Facts?</string>
+    <string name="changelog_translation_help">Bu değişim kaydını %s\'da görmek ister misiniz?\nÇeviri Ekibine Katılın!</string>
+    <string name="whats_new">Open Food Facts\'teki yenilikler neler?</string>
 </resources>

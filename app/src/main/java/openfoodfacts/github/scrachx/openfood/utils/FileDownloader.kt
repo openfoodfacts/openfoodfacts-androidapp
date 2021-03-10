@@ -1,8 +1,8 @@
 package openfoodfacts.github.scrachx.openfood.utils
 
 import android.content.Context
-import android.net.Uri
 import android.util.Log
+import androidx.core.net.toUri
 import io.reactivex.Maybe
 import io.reactivex.schedulers.Schedulers
 import okhttp3.ResponseBody
@@ -31,7 +31,6 @@ object FileDownloader {
      * @param fileUrl provides the URL of the file to download.
      * @return [Maybe]
      */
-    @JvmStatic
     fun download(context: Context, fileUrl: String) = CommonApiManager.productsApi
             .downloadFile(fileUrl)
             .flatMapMaybe { responseBody ->
@@ -52,30 +51,22 @@ object FileDownloader {
      *
      * @param context: [Context] of the class.
      * @param body: [ResponseBody] from the call.
-     * @param url: url of the downloaded file.
+     * @param request: url of the downloaded file.
      * @return [File] that has been written to the disk.
      */
-    private fun writeResponseBodyToDiskSync(context: Context, body: ResponseBody, url: String): File? {
-        val decode = Uri.parse(url)
-        val res = File(makeOrGetPictureDirectory(context), System.currentTimeMillis().toString() + "-" + decode.lastPathSegment)
-
+    private fun writeResponseBodyToDiskSync(context: Context, body: ResponseBody, request: String): File? {
+        val requestUri = request.toUri()
+        val writtenFile = File(makeOrGetPictureDirectory(context), "${System.currentTimeMillis()}-${requestUri.lastPathSegment}")
         try {
-            FileOutputStream(res).use { outputStream ->
-                body.byteStream().use { inputStream ->
-                    val fileReader = ByteArray(4096)
-                    while (true) {
-                        val read = inputStream.read(fileReader)
-                        if (read == -1) {
-                            break
-                        }
-                        outputStream.write(fileReader, 0, read)
-                    }
+            body.byteStream().use { inputStream ->
+                FileOutputStream(writtenFile).use { outputStream ->
+                    inputStream.copyTo(outputStream, 4 * 1024)
                     outputStream.flush()
-                    return res
+                    return writtenFile
                 }
             }
         } catch (e: IOException) {
-            Log.w(LOG_TAG, "writeResponseBodyToDisk", e)
+            Log.w(LOG_TAG, "Could not write file $writtenFile to disk.", e)
             return null
         }
     }

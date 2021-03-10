@@ -9,6 +9,7 @@ import android.view.WindowManager
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.pm.PackageInfoCompat
+import androidx.core.view.isVisible
 import androidx.fragment.app.DialogFragment
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,10 +17,12 @@ import androidx.recyclerview.widget.RecyclerView
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import openfoodfacts.github.scrachx.openfood.R
+import openfoodfacts.github.scrachx.openfood.app.AnalyticsService
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabsHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLocaleFromContext
+import java.util.Locale
 
 class ChangelogDialog : DialogFragment(R.layout.fragment_changelog) {
 
@@ -76,17 +79,23 @@ class ChangelogDialog : DialogFragment(R.layout.fragment_changelog) {
                         show(activity.supportFragmentManager, TAG)
                         saveVersionCode(activity, currentVersionCode)
                     }
-                } catch (e: NameNotFoundException) {
-                    e.printStackTrace()
+                } catch (ex: NameNotFoundException) {
+                    AnalyticsService.record(ex)
+                    Unit
                 }
             }
         }
     }
 
     private fun setupTranslationHelpLabel() {
-        val language = getLocaleFromContext(context).displayLanguage
-        translationHelpLabel.text = getString(R.string.changelog_translation_help, language)
-        translationHelpLabel.setOnClickListener { openDailyFoodFacts() }
+        val locale = getLocaleFromContext(context)
+        if (locale.language.startsWith(Locale.ENGLISH.language)) {
+            translationHelpLabel.isVisible = false
+        } else {
+            translationHelpLabel.text = getString(R.string.changelog_translation_help, locale.displayLanguage)
+            translationHelpLabel.isVisible = true
+            translationHelpLabel.setOnClickListener { openDailyFoodFacts() }
+        }
     }
 
     private fun applyWindowTweaks() {
@@ -119,7 +128,7 @@ class ChangelogDialog : DialogFragment(R.layout.fragment_changelog) {
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(
                                 { items -> recyclerView.adapter = ChangelogAdapter(items) },
-                                { throwable -> throwable.printStackTrace() }
+                                { throwable -> AnalyticsService.record(throwable) }
                         )
         )
     }

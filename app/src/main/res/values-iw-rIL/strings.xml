@@ -429,7 +429,16 @@
     <string name="device_on_mobile_data_warning_positive">העדפות</string>
     <string name="device_on_mobile_data_warning_negative">להעלות בכל זאת</string>
     <string name="changes_saved">השינויים נשמרו בהצלחה</string>
+    <string name="proceed">להמשיך</string>
     <string name="preference_choose_language_dialog_title">בחירת שפה</string>
+    <string name="preference_choose_scanner_dialog_title"><b>חדש: סורק „MLKit” משופר</b></string>
+    <string name="preference_choose_scanner_dialog_body">We have included a new option to more reliably scan barcodes. While this scanner works on your device, using machine learning,
+            please be aware that it is a proprietary component provided by Google, governed by this privacy policy, and that some limited telemetry might be sent back to Google’s servers
+            to improve their software. As noted in the MLKit terms, this won’t include any information about the products you scan and the telemetry is anonymized. Choosing MLKit scanner
+            implies that you accept those terms\n<b>Note: You can switch back at any time between the 2 scanners in the Settings.</b>
+    </string>
+    <string name="prompt_point_at_a_barcode">Point your camera at a barcode</string>
+    <string name="prompt_move_camera_closer">Move closer to detect</string>
     <string name="please_check_your_connection">נא לבדוק את החיבור שלך.</string>
     <string name="advanced_search_title">חיפוש ותרשימים ומתקדמים</string>
     <string name="compare_products">השוואת מוצרים</string>
@@ -580,7 +589,6 @@
     <string name="your_version">שלך</string>
     <string name="ingredients_picture">תמונת הרכיבים</string>
     <string name="packaging">מיחזור</string>
-    <string name="recycling_picture">תמונת מיחזור</string>
     <string name="take_ingredients_picture_to_extract">(נא לצלם את רשימת הרכיבים כדי לחלץ אותם אוטומטית)</string>
     <string name="ingredients_list">רשימת רכיבים</string>
     <string name="ingredients_hint">יש לשמור על הסדר, לציין את ה־% איפה שצוין, להפריד בפסיק או להשתמש ב־-, להשתמש ב־() לציון רכיבים של רכיבים ולתחום אלרגנים ב־_</string>

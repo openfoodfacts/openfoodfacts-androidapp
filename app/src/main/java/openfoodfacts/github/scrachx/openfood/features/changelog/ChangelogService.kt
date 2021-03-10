@@ -4,6 +4,7 @@ import android.content.Context
 import com.fasterxml.jackson.databind.ObjectMapper
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
+import openfoodfacts.github.scrachx.openfood.models.Changelog
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
 import java.io.BufferedReader
 import java.io.IOException
@@ -38,12 +39,10 @@ class ChangelogService(private val context: Context) {
                 .use(BufferedReader::readText)
     }
 
+    @Throws(IOException::class)
     private fun translationExists(fileName: String): Boolean {
-        return try {
-            val versions = context.assets.list(FOLDER)
-            versions?.toList()?.contains(fileName) ?: false
-        } catch (ex: IOException) {
-            false
-        }
+        val versions = context.assets.list(FOLDER)
+        return versions?.toList()?.contains(fileName) ?: false
+
     }
 }

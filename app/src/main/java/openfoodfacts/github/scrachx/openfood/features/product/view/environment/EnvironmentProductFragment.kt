@@ -9,11 +9,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.text.HtmlCompat
 import com.squareup.picasso.Picasso
+import io.reactivex.rxkotlin.addTo
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentEnvironmentProductBinding
 import openfoodfacts.github.scrachx.openfood.features.FullScreenActivityOpener
 import openfoodfacts.github.scrachx.openfood.features.ImagesManageActivity
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity
+import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_STATE
 import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewActivity
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
@@ -53,9 +55,9 @@ class EnvironmentProductFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        photoReceiverHandler = PhotoReceiverHandler(this::loadPackagingPhoto)
+        photoReceiverHandler = PhotoReceiverHandler { loadPackagingPhoto(it) }
         val langCode = LocaleHelper.getLanguage(context)
-        productState = this.requireProductState()
+        productState = requireProductState()
         binding.imageViewPackaging.setOnClickListener { openFullScreen() }
 
         // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
@@ -92,9 +94,9 @@ class EnvironmentProductFragment : BaseFragment() {
             binding.carbonFootprintCv.visibility = View.GONE
         }
 
-        val environmentInfocard = product.environmentInfoCard
-        if (!environmentInfocard.isNullOrEmpty()) {
-            binding.environmentInfoText.append(HtmlCompat.fromHtml(environmentInfocard, HtmlCompat.FROM_HTML_MODE_COMPACT))
+        val environmentInfoCard = product.environmentInfoCard
+        if (!environmentInfoCard.isNullOrEmpty()) {
+            binding.environmentInfoText.append(HtmlCompat.fromHtml(environmentInfoCard, HtmlCompat.FROM_HTML_MODE_COMPACT))
             binding.environmentInfoText.movementMethod = LinkMovementMethod.getInstance()
         } else {
             binding.environmentInfoCv.visibility = View.GONE
@@ -111,6 +113,7 @@ class EnvironmentProductFragment : BaseFragment() {
 
         val recyclingInstructionsToDiscard = product.recyclingInstructionsToDiscard
         if (!recyclingInstructionsToDiscard.isNullOrEmpty()) {
+            // TODO: 02/03/2021 i18n
             binding.recyclingInstructionToDiscard.text = bold("Recycling instructions - To discard: ")
             binding.recyclingInstructionToDiscard.append(recyclingInstructionsToDiscard)
         } else {
@@ -119,7 +122,8 @@ class EnvironmentProductFragment : BaseFragment() {
 
         val recyclingInstructionsToRecycle = product.recyclingInstructionsToRecycle
         if (!recyclingInstructionsToRecycle.isNullOrEmpty()) {
-            binding.recyclingInstructionToRecycle.text = bold("Recycling instructions - To recycle:")
+            // TODO: 02/03/2021 i18n
+            binding.recyclingInstructionToRecycle.text = bold("Recycling instructions - To recycle: ")
             binding.recyclingInstructionToRecycle.append(recyclingInstructionsToRecycle)
         } else {
             binding.recyclingInstructionsRecycleCv.visibility = View.GONE
@@ -138,7 +142,6 @@ class EnvironmentProductFragment : BaseFragment() {
         this.productState = productState
 
         refreshTagsPrompt()
-
     }
 
     private fun openFullScreen() {
@@ -156,7 +159,7 @@ class EnvironmentProductFragment : BaseFragment() {
     }
 
     private fun newPackagingImage() {
-        doChooseOrTakePhotos(getString(R.string.recycling_picture))
+        doChooseOrTakePhotos()
     }
 
     private fun loadPackagingPhoto(photoFile: File) {
@@ -165,7 +168,7 @@ class EnvironmentProductFragment : BaseFragment() {
         image.filePath = photoFile.absolutePath
 
         // Load to server
-        disp.add(api.postImg(image).subscribe())
+        api.postImg(image).subscribe().addTo(disp)
 
         // Load into view
         binding.addPhotoLabel.visibility = View.GONE
@@ -215,11 +218,17 @@ class EnvironmentProductFragment : BaseFragment() {
 
     private fun startEditProduct() {
         startActivity(Intent(activity, ProductEditActivity::class.java).apply {
-            putExtra(ProductEditActivity.KEY_EDIT_PRODUCT, this@EnvironmentProductFragment.productState.product)
+            putExtra(ProductEditActivity.KEY_EDIT_PRODUCT, productState.product)
         })
     }
 
     companion object {
+        fun newInstance(productState: ProductState) = EnvironmentProductFragment().apply {
+            arguments = Bundle().apply {
+                putSerializable(KEY_STATE, productState)
+            }
+        }
+
         private const val EDIT_PRODUCT_AFTER_LOGIN_REQUEST_CODE = 1
     }
 }

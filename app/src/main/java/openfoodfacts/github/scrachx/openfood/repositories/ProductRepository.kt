@@ -200,9 +200,9 @@ object ProductRepository {
 
     fun loadStates(lastModifiedDate: Long): Single<List<States>> = analysisDataApi.getStates()
             .map { it.map() }
-            .doOnSuccess{
+            .doOnSuccess {
                 saveState(it)
-                updateLastDownloadDateInSettings(Taxonomy.STATES,lastModifiedDate)
+                updateLastDownloadDateInSettings(Taxonomy.STATES, lastModifiedDate)
             }
 
     /**
@@ -215,9 +215,9 @@ object ProductRepository {
 
     fun loadStores(lastModifiedDate: Long): Single<List<Store>> = analysisDataApi.getStores()
             .map { it.map() }
-            .doOnSuccess{
+            .doOnSuccess {
                 saveStores(it)
-                updateLastDownloadDateInSettings(Taxonomy.STORES,lastModifiedDate)
+                updateLastDownloadDateInSettings(Taxonomy.STORES, lastModifiedDate)
             }
 
     /**
@@ -539,8 +539,12 @@ object ProductRepository {
     fun getAdditiveByTagAndDefaultLanguageCode(additiveTag: String?) =
             getAdditiveByTagAndLanguageCode(additiveTag, ApiFields.Defaults.DEFAULT_LANGUAGE)
 
-    fun getCountries() =
-            getTaxonomyData(Taxonomy.COUNTRY, this, false, OFFApplication.daoSession.countryDao)
+    fun getCountries() = getTaxonomyData(
+            Taxonomy.COUNTRY,
+            this,
+            false,
+            OFFApplication.daoSession.countryDao
+    )
 
     fun getCountryByCC2OrWorld(cc2: String?) = getCountries().flatMapMaybe { countries ->
         countries.asSequence()

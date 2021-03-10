@@ -303,10 +303,8 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
                 if (i > 0) binding.textBrandProduct.append(", ")
                 binding.textBrandProduct.append(Utils.getClickableText(
                         brand.trim { it <= ' ' },
-                        "",
                         SearchType.BRAND,
-                        requireActivity(),
-                        customTabsIntent
+                        requireActivity()
                 ))
             }
         } else {
@@ -327,10 +325,8 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
 
                 binding.embText.append(Utils.getClickableText(
                         getEmbCode(embTag).trim { it <= ' ' },
-                        getEmbUrl(embTag) ?: "",
                         SearchType.EMB,
-                        requireActivity(),
-                        customTabsIntent
+                        requireActivity()
                 ))
             }
         } else {
@@ -440,12 +436,12 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     private fun refreshNutriScore() {
         val nutriScoreResource = product.getNutriScoreResource()
         binding.imageGrade.setImageResource(nutriScoreResource)
-        binding.imageGrade.setOnClickListener(nutritionScoreUri?.let { uri ->
-            {
+        binding.imageGrade.setOnClickListener {
+            nutritionScoreUri?.let { uri ->
                 val customTabsIntent = CustomTabsHelper.getCustomTabsIntent(requireContext(), customTabActivityHelper.session)
                 CustomTabActivityHelper.openCustomTab(requireActivity(), customTabsIntent, uri, WebViewFallback())
             }
-        })
+        }
     }
 
     private fun refreshNovaIcon() {
@@ -477,22 +473,22 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
 
         asyncSessionList.listenerMainThread = AsyncOperationListener { operation ->
             Log.i("inside", "blshh " + operation.result)
-            (operation.result as List<YourListedProduct>).forEach{ list->
+            (operation.result as List<YourListedProduct>).forEach { list ->
                 val chip = Chip(context)
                 chip.text = list.listName
 
                 // set a random color to the chip's background, we want a dark background as our text color is white so we will limit our rgb to 180
-                val chipColor: Int = Color.rgb(Random.nextInt(180),Random.nextInt(180),Random.nextInt(180) )
+                val chipColor: Int = Color.rgb(Random.nextInt(180), Random.nextInt(180), Random.nextInt(180))
                 chip.chipBackgroundColor = ColorStateList.valueOf(chipColor)
                 chip.setTextColor(Color.WHITE)
 
                 // open list when the user clicks on chip
                 chip.setOnClickListener {
-                    ProductListActivity.start(requireContext() ,list.listId,list.listName)
+                    ProductListActivity.start(requireContext(), list.listId, list.listName)
                 }
                 binding.listChips.addView(chip)
-                binding.actionAddToListButtonLayout.background = ResourcesCompat.getDrawable(resources,R.color.grey_300,null)
-                binding.actionButtonsLayout.updatePadding(bottom=0,top=0)
+                binding.actionAddToListButtonLayout.background = ResourcesCompat.getDrawable(resources, R.color.grey_300, null)
+                binding.actionButtonsLayout.updatePadding(bottom = 0, top = 0)
                 binding.listChips.visibility = View.VISIBLE
             }
         }
@@ -811,7 +807,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
                 productBarcode,
                 productName.orEmpty(),
                 productDetails,
-                imageUrl!!
+                imageUrl.orEmpty()
         )
         addToListRecyclerView.layoutManager = LinearLayoutManager(activity)
         addToListRecyclerView.adapter = addToListAdapter
@@ -829,7 +825,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
 
     private fun takeMorePicture() {
         sendOther = true
-        doChooseOrTakePhotos(getString(R.string.take_more_pictures))
+        doChooseOrTakePhotos()
     }
 
     private fun openFrontImageFullscreen() {
@@ -850,7 +846,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     private fun newFrontImage() {
         // add front image.
         sendOther = false
-        doChooseOrTakePhotos(getString(R.string.set_img_front))
+        doChooseOrTakePhotos()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

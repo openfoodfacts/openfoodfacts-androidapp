@@ -419,7 +419,16 @@
     <string name="device_on_mobile_data_warning_positive">ಆದ್ಯತೆಗಳು</string>
     <string name="device_on_mobile_data_warning_negative">ಹೇಗಾದರೂ ಅಪ್ಲೋಡ್ ಮಾಡಿ</string>
     <string name="changes_saved">Changes saved successfully</string>
+    <string name="proceed">Proceed</string>
     <string name="preference_choose_language_dialog_title">ಭಾಷೆ ಆಯ್ಕೆ</string>
+    <string name="preference_choose_scanner_dialog_title"><b>New: Enhanced “MLKit” scanner</b></string>
+    <string name="preference_choose_scanner_dialog_body">We have included a new option to more reliably scan barcodes. While this scanner works on your device, using machine learning,
+            please be aware that it is a proprietary component provided by Google, governed by this privacy policy, and that some limited telemetry might be sent back to Google’s servers
+            to improve their software. As noted in the MLKit terms, this won’t include any information about the products you scan and the telemetry is anonymized. Choosing MLKit scanner
+            implies that you accept those terms\n<b>Note: You can switch back at any time between the 2 scanners in the Settings.</b>
+    </string>
+    <string name="prompt_point_at_a_barcode">Point your camera at a barcode</string>
+    <string name="prompt_move_camera_closer">Move closer to detect</string>
     <string name="please_check_your_connection">ದಯವಿಟ್ಟು ನಿಮ್ಮ ಸಂಪರ್ಕವನ್ನು ಪರಿಶೀಲಿಸಿ.</string>
     <string name="advanced_search_title">ಸುಧಾರಿತ ಹುಡುಕಾಟ &amp; ಚಾರ್ಟ್ಗಳು</string>
     <string name="compare_products">Compare products</string>
@@ -568,7 +577,6 @@
     <string name="your_version">ನಿಮ್ಮದು</string>
     <string name="ingredients_picture">ಪದಾರ್ಥಗಳು ಚಿತ್ರ</string>
     <string name="packaging">Recycling</string>
-    <string name="recycling_picture">Recycling Picture</string>
     <string name="take_ingredients_picture_to_extract">(ದಯವಿಟ್ಟು ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಅವುಗಳನ್ನು ಹೊರತೆಗೆಯಲು ಪದಾರ್ಥಗಳ ಚಿತ್ರವನ್ನು ತೆಗೆದುಕೊಳ್ಳಿ)</string>
     <string name="ingredients_list">ಪದಾರ್ಥಗಳ ಪಟ್ಟಿ</string>
     <string name="ingredients_hint">ಆದೇಶವನ್ನು ಇರಿಸಿ, ನಿರ್ದಿಷ್ಟಪಡಿಸಿದಾಗ% ಸೂಚಿಸುತ್ತದೆ, ಒಂದು ಅಲ್ಪವಿರಾಮದಿಂದ ಅಥವಾ ಬಳಕೆಯನ್ನು ಪ್ರತ್ಯೇಕವಾಗಿ -, ಪದಾರ್ಥಗಳ ಪದಾರ್ಥಗಳಿಗಾಗಿ () ಬಳಸಿ, ಸರೌಂಡ್ ಅಲರ್ಜಿನ್ಗಳೊಂದಿಗೆ _</string>

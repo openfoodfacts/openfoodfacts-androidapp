@@ -75,8 +75,8 @@
     <!-- Application theme settings -->
     <string-array name="application_theme_entries">
         <item>@string/follow_system</item>
-        <item>@string/day</item>
-        <item>@string/night</item>
+        <item>@string/jour</item>
+        <item>@string/nuit</item>
     </string-array>
     <!-- nutrients list
     do not change the order of the array as the items are paired with the String array
@@ -190,7 +190,7 @@
     <string name="txtSalt">Sel</string>
     <string name="txtFat">Matières grasses</string>
     <string name="txtSugars">Sucres</string>
-    <string name="hintBarcode">Code barre</string>
+    <string name="hintBarcode">Code-barres</string>
     <string name="txtNutriScoreInfo">En savoir plus sur les niveaux de nutriments</string>
     <string name="txtloginHelper">Si vous possédez un compte Open Food Facts, vous pouvez vous connecter ici</string>
     <string name="hintLogin">Nom d\'utilisateur</string>
@@ -224,7 +224,7 @@
     <string name="search_by_barcode_drawer">Rechercher par code-barres</string>
     <string name="category_drawer">Catégories</string>
     <string name="search_by_category">Catégorie</string>
-    <string name="scan_search">Scanner</string>
+    <string name="scan_search">Scanner le code-barres</string>
     <string name="user_drawer">Utilisateur</string>
     <string name="offline_edit_drawer">Édition hors-ligne</string>
     <string name="txt_anonymous">Anonyme</string>
@@ -419,7 +419,12 @@
     <string name="device_on_mobile_data_warning_positive">Préférences</string>
     <string name="device_on_mobile_data_warning_negative">Envoyer quand même?</string>
     <string name="changes_saved">Les modifications ont été enregistrées avec succès</string>
+    <string name="proceed">Continuer</string>
     <string name="preference_choose_language_dialog_title">Choisir la langue</string>
+    <string name="preference_choose_scanner_dialog_title"><b>Nouveauté : scanner « MLKit » amélioré</b></string>
+    <string name="preference_choose_scanner_dialog_body">Nous avons ajouté une option pour scanner les codes-barres de manière plus fiable. Lorsque ce scanner fonctionne sur votre appareil, en utilisant l\'apprentissage automatique, veuillez noter qu\'il s\'agit d\'un composant propriétaire de Google, régi par leur politique de confidentialité, et certains relevés télémétriques peuvent être envoyés aux serveurs de Google afin d\'améliorer leur logiciel. Comme indiqué dans les conditions d\'utilisation de MLKit, la télémétrie est anonymisée et ne contient aucune information sur les produits que vous scannez. En choisissant le scanner MLKit, vous acceptez ces termes\n<b>Remarque : vous pouvez basculez entre les deux scanners à tout moment dans les paramètres.</b>    </string>
+    <string name="prompt_point_at_a_barcode">Pointez l\'appareil photo vers un code-barres</string>
+    <string name="prompt_move_camera_closer">Approchez-vous pour la détection</string>
     <string name="please_check_your_connection">Veuillez vérifier votre connexion Internet.</string>
     <string name="advanced_search_title">Recherche avancée &amp; Graphiques</string>
     <string name="compare_products">Comparer les articles</string>
@@ -474,7 +479,7 @@
     <!--shared element transition key-->
     <string name="by_title">Titre</string>
     <string name="by_brand">Marque</string>
-    <string name="by_barcode">Code barre</string>
+    <string name="by_barcode">Code-barres</string>
     <string name="by_time">Dernières consultations</string>
     <string name="sort">Trier</string>
     <string name="by_nutrition_grade">Nutri-Score</string>
@@ -484,7 +489,7 @@
     <string name="no_barcode">Nous n\'avons détecté aucun code-barres</string>
     <string name="enter_barcode">Veuillez saisir le code-barres ci-dessous</string>
     <string name="format_error">Mauvais format de code-barres ou code QR</string>
-    <string name="code_detected">Nous n\'avons détecté aucun code-barres</string>
+    <string name="code_detected">Nous avons détecté le code-barres</string>
     <string name="do_you_want_to">Voulez-vous ajouter des photos à ce code-barres ?</string>
     <string name="bottomNav_history">Historique</string>
     <string name="products_added">Les produits que vous avez ajoutés ou modifiés</string>
@@ -568,7 +573,6 @@
     <string name="your_version">Vous</string>
     <string name="ingredients_picture">Photo de la liste des ingrédients</string>
     <string name="packaging">Recyclage</string>
-    <string name="recycling_picture">Image du recyclage</string>
     <string name="take_ingredients_picture_to_extract">(Veuillez prendre une photo des ingrédients pour les extraire automatiquement)</string>
     <string name="ingredients_list">Liste des ingrédients</string>
     <string name="ingredients_hint">Conserver l\'ordre, indiquer le % lorsqu\'il est précisé, séparer par une virgule ou - , utiliser les ( ) pour les ingrédients d\'un ingrédient, indiquer les allergènes entre _</string>
@@ -715,7 +719,7 @@
     <string name="cant_edit_image_not_yet_uploaded">La nouvelle image n\'est pas encore téléchargée. Merci de patienter un instant avant de l\'éditer</string>
     <string name="unselect_image">Déselectionner l\'image</string>
     <string name="choose_default_language">Sélectionnez la langue du produit</string>
-    <string name="barcode">Code barre</string>
+    <string name="barcode">Code-barres</string>
     <string name="productAdditivesNone">Sans additifs</string>
     <string name="error_uploading_photo">Une erreur s\'est produite lors du téléchargement d\'une nouvelle photo</string>
     <string name="import_csv_to_list">Importer un fichier CSV de la liste Open Food Facts</string>
@@ -789,6 +793,6 @@
     <string name="hint_origin">Exemples: USA, France, Italie</string>
     <string name="report_email_chooser_title">Envoyer un signalement par email</string>
     <!-- Changelog String -->
-    <string name="changelog_translation_help">Vous voulez voir ce journal des modifications %s?\nRejoignez l\'équipe de traduction !</string>
+    <string name="changelog_translation_help">Vous voulez voir ce journal des modifications en %s?\nRejoignez l\'équipe de traduction !</string>
     <string name="whats_new">Quoi de neuf avec Open Food Facts ?</string>
 </resources>
