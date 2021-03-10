@@ -699,7 +699,7 @@
     <string name="empty"></string>
     <string name="add_product">Termékek hozzáadása</string>
     <string name="add_another_product">Újabb termék hozzáadása</string>
-    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute nutrient levels</string>
+    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>>
     <string name="product_summary_action_compare_button_label">Összehasonlít</string>
     <string name="product_summary_action_add_to_list_button_label">Listához adás</string>
     <string name="product_summary_action_edit_button_label">Szerkesztés</string>

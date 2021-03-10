@@ -698,7 +698,7 @@
     <string name="empty"></string>
     <string name="add_product">Afegiu productes</string>
     <string name="add_another_product">Afegiu un altre producte</string>
-    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute nutrient levels</string>
+    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>>
     <string name="product_summary_action_compare_button_label">Comparar</string>
     <string name="product_summary_action_add_to_list_button_label">Afegeix a la llista</string>
     <string name="product_summary_action_edit_button_label">Edita</string>
