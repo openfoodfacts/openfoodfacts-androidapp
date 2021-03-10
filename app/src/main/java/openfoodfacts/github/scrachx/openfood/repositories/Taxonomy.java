@@ -24,6 +24,7 @@ import openfoodfacts.github.scrachx.openfood.models.entities.additive.Additive;
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.Allergen;
 import openfoodfacts.github.scrachx.openfood.models.entities.analysistag.AnalysisTag;
 import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.AnalysisTagConfig;
+import openfoodfacts.github.scrachx.openfood.models.entities.brand.Brand;
 import openfoodfacts.github.scrachx.openfood.models.entities.category.Category;
 import openfoodfacts.github.scrachx.openfood.models.entities.country.Country;
 import openfoodfacts.github.scrachx.openfood.models.entities.ingredient.Ingredient;
@@ -105,6 +106,12 @@ public enum Taxonomy {
         @Override
         public Single<List<Store>> load(ProductRepository repository, long lastModifiedDate){
             return repository.loadStores(lastModifiedDate);
+        }
+    },
+    BRANDS(AnalysisDataAPI.BRANDS_JSON) {
+        @Override
+        public Single<List<Brand>> load(ProductRepository repository, long lastModifiedDate) {
+            return repository.loadBrands(lastModifiedDate);
         }
     };
 
