@@ -76,8 +76,8 @@ Other</item>
     <!-- Application theme settings -->
     <string-array name="application_theme_entries">
         <item>@string/follow_system</item>
-        <item>@string/dia</item>
-        <item>@string/noite</item>
+        <item>@string/day</item>
+        <item>@string/night</item>
     </string-array>
     <!-- nutrients list
     do not change the order of the array as the items are paired with the String array
