@@ -227,7 +227,7 @@ class ProductRepository @Inject constructor(
             }
 
     fun reloadBrandsFromServer(): Single<List<Brand>> =
-            getTaxonomyData(Taxonomy.BRANDS, this, true, OFFApplication.daoSession.brandDao)
+            getTaxonomyData(Taxonomy.BRANDS, this, true, daoSession.brandDao)
 
     fun loadBrands(lastModifiedDate: Long): Single<List<Brand>> = analysisDataApi.getBrands()
             .map { it.map() }
@@ -486,19 +486,19 @@ class ProductRepository @Inject constructor(
      *
      */
     private fun saveBrands(brands: List<Brand>) {
-        OFFApplication.daoSession.database.beginTransaction()
+        daoSession.database.beginTransaction()
         try {
             brands.forEach { brand ->
-                OFFApplication.daoSession.brandDao.insertOrReplace(brand)
+                daoSession.brandDao.insertOrReplace(brand)
                 brand.names.forEach {
-                    OFFApplication.daoSession.brandNameDao.insertOrReplace(it)
+                    daoSession.brandNameDao.insertOrReplace(it)
                 }
             }
-            OFFApplication.daoSession.database.setTransactionSuccessful()
+            daoSession.database.setTransactionSuccessful()
         } catch (e: Exception) {
             Log.e(LOG_TAG, "saveBrands", e)
         } finally {
-            OFFApplication.daoSession.database.endTransaction()
+            daoSession.database.endTransaction()
         }
     }
 

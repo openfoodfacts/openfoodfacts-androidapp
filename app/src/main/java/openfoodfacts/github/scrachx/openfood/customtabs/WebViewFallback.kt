@@ -11,9 +11,8 @@ import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper.
  */
 class WebViewFallback : CustomTabFallback {
     override fun openUri(activity: Activity, uri: Uri) {
-        val intent = Intent(Intent.ACTION_VIEW, uri)
         try {
-            activity.startActivity(intent)
+            activity.startActivity(Intent(Intent.ACTION_VIEW, uri))
         } catch (e: Exception) {
             Log.e(WebViewFallback::class.simpleName, "Can't start activity" + activity::class.simpleName, e)
         }
