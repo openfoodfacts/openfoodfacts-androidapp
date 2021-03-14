@@ -34,6 +34,7 @@ jobs:
         skip_untranslated_strings: false
         # Omit downloading not fully downloaded files
         skip_untranslated_files: false
+        preserve_hierarchy: true
         # Include approved translations only in exported files. If not combined with --skip-untranslated-strings option, strings without approval are fulfilled with the source language
         # export_only_approved: # default is false
         # Download translations with pushing to branch
