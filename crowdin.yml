@@ -22,6 +22,7 @@ files:
         yi: ji
 
   - source: /app/src/obf/res/values/strings.xml
+    dest: /app/src/obf/res/values/strings.xml
     translation: /app/src/obf/res/values-%two_letters_code%/%original_file_name%
     languages_mapping:
       two_letters_code:
@@ -41,6 +42,7 @@ files:
         yi: ji
 
   - source: /app/src/off/res/values/strings.xml
+    dest: /app/src/off/res/values/strings.xml
     translation: /app/src/off/res/values-%two_letters_code%/%original_file_name%
     languages_mapping:
       two_letters_code:
@@ -59,6 +61,7 @@ files:
         yi: ji
 
   - source: /app/src/opff/res/values/strings.xml
+    dest: /app/src/opff/res/values/strings.xml
     translation: /app/src/opff/res/values-%two_letters_code%/strings.xml
     languages_mapping:
       two_letters_code:
@@ -77,6 +80,7 @@ files:
         yi: ji
 
   - source: /app/src/opf/res/values/strings.xml
+    dest: /app/src/opf/res/values/strings.xml
     translation: /app/src/opf/res/values-%two_letters_code%/strings.xml
     languages_mapping:
       two_letters_code:
@@ -95,49 +99,66 @@ files:
         yi: ji
 
   - source: /fastlane/metadata/android/en-US/off/long_description.txt
+    dest: /fastlane/metadata/android/en-US/off/long_description.txt
     translation: /fastlane/metadata/android/%locale%/off/long_description.txt
 
   - source: /fastlane/metadata/android/en-US/obf/long_description.txt
+    dest: /fastlane/metadata/android/en-US/obf/long_description.txt
     translation: /fastlane/metadata/android/%locale%/obf/long_description.txt
 
   - source: /fastlane/metadata/android/en-US/opff/long_description.txt
     translation: /fastlane/metadata/android/%locale%/opff/long_description.txt
-
+    dest: /fastlane/metadata/android/en-US/opff/long_description.txt
+    
   - source: /fastlane/metadata/android/en-US/opf/long_description.txt
     translation: /fastlane/metadata/android/%locale%/opf/long_description.txt
-
+    dest: /fastlane/metadata/android/en-US/opf/long_description.txt
+    
   - source: /fastlane/metadata/android/en-US/off/short_description.txt
     translation: /fastlane/metadata/android/%locale%/off/short_description.txt
-
+    dest: /fastlane/metadata/android/en-US/off/short_description.txt
+    
   - source: /fastlane/metadata/android/en-US/obf/short_description.txt
     translation: /fastlane/metadata/android/%locale%/obf/short_description.txt
-
+    dest: /fastlane/metadata/android/en-US/obf/short_description.txt
+    
   - source: /fastlane/metadata/android/en-US/opff/short_description.txt
     translation: /fastlane/metadata/android/%locale%/opff/short_description.txt
-
+    dest: /fastlane/metadata/android/en-US/opff/short_description.txt
+    
   - source: /fastlane/metadata/android/en-US/opf/short_description.txt
     translation: /fastlane/metadata/android/%locale%/opf/short_description.txt
-        
+    dest: /fastlane/metadata/android/en-US/opf/short_description.txt
+    
   - source: /fastlane/metadata/android/en-US/off/title.txt
     translation: /fastlane/metadata/android/%locale%/off/title.txt
+    dest: /fastlane/metadata/android/en-US/off/title.txt
     
   - source: /fastlane/metadata/android/en-US/off/changelogs/342.txt
     translation: /fastlane/metadata/android/%locale%/off/changelogs/342.txt
+    dest: /fastlane/metadata/android/en-US/off/changelogs/342.txt
     
   - source: /fastlane/metadata/android/en-US/obf/title.txt
     translation: /fastlane/metadata/android/%locale%/obf/title.txt
-
+    dest: /fastlane/metadata/android/en-US/obf/title.txt
+    
   - source: /fastlane/metadata/android/en-US/opff/title.txt
     translation: /fastlane/metadata/android/%locale%/opff/title.txt
-        
+    dest: /fastlane/metadata/android/en-US/opff/title.txt
+    
   - source: /fastlane/metadata/android/en-US/opf/title.txt
     translation: /fastlane/metadata/android/%locale%/opf/title.txt
-
+    dest: /fastlane/metadata/android/en-US/opf/title.txt
+    
   - source: /fastlane/metadata/android/en-US/off/screenshot-text.txt
     translation: /fastlane/metadata/android/%locale%/off/screenshot-text.txt
+    dest: /fastlane/metadata/android/en-US/off/screenshot-text.txt
     
   - source: /fastlane/metadata/android/en-US/off/feedback-form.txt
     translation: /fastlane/metadata/android/%locale%/off/feedback-form.txt
+    dest: /fastlane/metadata/android/en-US/off/feedback-form.txt
     
   - source: app/src/main/assets/changelog/changelog.json
     translation: app/src/main/assets/changelog/changelog-%locale%.json
+    dest: app/src/main/assets/changelog/changelog.json
+    
