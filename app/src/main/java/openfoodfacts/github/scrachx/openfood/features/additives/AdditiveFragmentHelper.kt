@@ -13,6 +13,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
 import com.fasterxml.jackson.databind.JsonNode
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxkotlin.addTo
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivity
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
@@ -66,9 +67,9 @@ object AdditiveFragmentHelper {
         val clickableSpan = object : ClickableSpan() {
             override fun onClick(view: View) {
                 if (additive.isWikiDataIdPresent) {
-                    compositeDisposable.add(apiClientForWikiData.doSomeThing(additive.wikiDataId).subscribe { result ->
+                    apiClientForWikiData.doSomeThing(additive.wikiDataId).subscribe { result ->
                         getOnWikiResponse(activity, additive)(result)
-                    })
+                    }.addTo(compositeDisposable)
                 } else {
                     onWikiNoResponse(additive, activity)
                 }

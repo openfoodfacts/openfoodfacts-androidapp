@@ -23,6 +23,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.afollestad.materialdialogs.MaterialDialog
+import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.Completable
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -38,15 +39,18 @@ import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomList
 import openfoodfacts.github.scrachx.openfood.features.productlist.CreateCSVContract
 import openfoodfacts.github.scrachx.openfood.features.scan.ContinuousScanActivity
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
+import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import openfoodfacts.github.scrachx.openfood.models.HistoryProduct
 import openfoodfacts.github.scrachx.openfood.models.HistoryProductDao
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.SortType.*
-import openfoodfacts.github.scrachx.openfood.utils.Utils.daoSession
 import java.io.File
-import java.time.LocalDate
+import java.text.SimpleDateFormat
 import java.util.*
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class ScanHistoryActivity : BaseActivity(), SwipeController.Actions {
     private var _binding: ActivityHistoryScanBinding? = null
     private val binding get() = _binding!!
@@ -55,6 +59,12 @@ class ScanHistoryActivity : BaseActivity(), SwipeController.Actions {
      * boolean to determine if image should be loaded or not
      */
     private val isLowBatteryMode by lazy { this.isDisableImageLoad() && this.isBatteryLevelLow() }
+
+    @Inject
+    lateinit var client: OpenFoodAPIClient
+
+    @Inject
+    lateinit var daoSession: DaoSession
 
     /**
      * boolean to determine if menu buttons should be visible or not
@@ -110,7 +120,7 @@ class ScanHistoryActivity : BaseActivity(), SwipeController.Actions {
         title = getString(R.string.scan_history_drawer)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        adapter = ScanHistoryAdapter(this@ScanHistoryActivity, isLowBatteryMode, mutableListOf())
+        adapter = ScanHistoryAdapter(this@ScanHistoryActivity, client, isLowBatteryMode, mutableListOf())
         binding.listHistoryScan.adapter = adapter
         binding.listHistoryScan.layoutManager = LinearLayoutManager(this@ScanHistoryActivity)
         val swipeController = SwipeController(this@ScanHistoryActivity, this@ScanHistoryActivity)
@@ -252,7 +262,7 @@ class ScanHistoryActivity : BaseActivity(), SwipeController.Actions {
         Toast.makeText(this, R.string.txt_exporting_history, Toast.LENGTH_LONG).show()
 
         val flavor = BuildConfig.FLAVOR.toUpperCase(Locale.ROOT)
-        val date = LocalDate.now()
+        val date = SimpleDateFormat("yyyy-MM-dd", LocaleHelper.getLocaleFromContext(this)).format(Date())
         val fileName = "$flavor-history_$date.csv"
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {

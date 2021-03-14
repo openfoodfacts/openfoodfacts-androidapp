@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.text.HtmlCompat
 import com.squareup.picasso.Picasso
+import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.rxkotlin.addTo
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentEnvironmentProductBinding
@@ -26,10 +27,14 @@ import openfoodfacts.github.scrachx.openfood.models.ProductState
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.*
 import java.io.File
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class EnvironmentProductFragment : BaseFragment() {
     private lateinit var productState: ProductState
-    private val api: OpenFoodAPIClient by lazy { OpenFoodAPIClient(requireActivity()) }
+
+    @Inject
+    lateinit var client: OpenFoodAPIClient
     private var _binding: FragmentEnvironmentProductBinding? = null
     private val binding get() = _binding!!
 
@@ -148,6 +153,7 @@ class EnvironmentProductFragment : BaseFragment() {
         if (mUrlImage != null && productState.product != null) {
             FullScreenActivityOpener.openForUrl(
                     this,
+                    client,
                     productState.product!!,
                     ProductImageField.PACKAGING,
                     mUrlImage,
@@ -168,7 +174,7 @@ class EnvironmentProductFragment : BaseFragment() {
         image.filePath = photoFile.absolutePath
 
         // Load to server
-        api.postImg(image).subscribe().addTo(disp)
+        client.postImg(image).subscribe().addTo(disp)
 
         // Load into view
         binding.addPhotoLabel.visibility = View.GONE

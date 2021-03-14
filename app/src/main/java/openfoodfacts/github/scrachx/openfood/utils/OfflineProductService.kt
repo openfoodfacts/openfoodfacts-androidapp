@@ -4,8 +4,8 @@ import android.util.Log
 import io.reactivex.Single
 import okhttp3.MediaType
 import okhttp3.RequestBody
-import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
+import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField.*
 import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct
@@ -18,9 +18,13 @@ import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient.Companion
 import org.greenrobot.eventbus.EventBus
 import java.io.File
 import java.util.*
+import javax.inject.Inject
+import javax.inject.Singleton
 
-object OfflineProductService {
-
+@Singleton
+class OfflineProductService @Inject constructor(
+        val daoSession: DaoSession
+) {
     /**
      * @return true if there is still products to upload, false otherwise
      */
@@ -38,7 +42,7 @@ object OfflineProductService {
                 ok = ok && product.uploadImageIfNeededSync(INGREDIENTS)
                 ok = ok && product.uploadImageIfNeededSync(NUTRITION)
                 if (ok) {
-                    offlineProductDAO.deleteByKey(product.id)
+                    daoSession.offlineSavedProductDao.deleteByKey(product.id)
                 }
             }
 
@@ -77,7 +81,7 @@ object OfflineProductService {
                     .blockingGet()
             if (productState.status == 1L) {
                 isDataUploaded = true
-                offlineProductDAO.insertOrReplace(this)
+                daoSession.offlineSavedProductDao.insertOrReplace(this)
                 Log.i(LOG_TAG, "Product $barcode uploaded.")
 
                 // Refresh product if open
@@ -111,14 +115,14 @@ object OfflineProductService {
                 val error = jsonNode["error"].asText()
                 if (error == "This picture has already been sent.") {
                     productDetails["image_${imageType}_uploaded"] = "true"
-                    offlineProductDAO.insertOrReplace(this)
+                    daoSession.offlineSavedProductDao.insertOrReplace(this)
                     return true
                 }
                 Log.e(LOG_TAG, "Error uploading $imageType: $error")
                 return false
             }
             productDetails["image_${imageType}_uploaded"] = "true"
-            offlineProductDAO.insertOrReplace(this)
+            daoSession.offlineSavedProductDao.insertOrReplace(this)
             Log.d(LOG_TAG, "Uploaded image_$imageType for product $barcode")
             EventBus.getDefault().post(ProductNeedsRefreshEvent(barcode))
             true
@@ -128,18 +132,15 @@ object OfflineProductService {
         }
     }
 
-    private val LOG_TAG = OfflineProductService::class.simpleName!!
-    private val offlineProductDAO = OFFApplication.daoSession.offlineSavedProductDao
-
     fun getOfflineProductByBarcode(barcode: String): OfflineSavedProduct? =
-            offlineProductDAO.queryBuilder().where(OfflineSavedProductDao.Properties.Barcode.eq(barcode)).unique()
+            daoSession.offlineSavedProductDao.queryBuilder().where(OfflineSavedProductDao.Properties.Barcode.eq(barcode)).unique()
 
-    private fun getListOfflineProducts() = offlineProductDAO.queryBuilder()
+    private fun getListOfflineProducts() = daoSession.offlineSavedProductDao.queryBuilder()
             .where(OfflineSavedProductDao.Properties.Barcode.isNotNull)
             .where(OfflineSavedProductDao.Properties.Barcode.notEq(""))
             .list()
 
-    private fun getListOfflineProductsNotSynced() = offlineProductDAO.queryBuilder()
+    private fun getListOfflineProductsNotSynced() = daoSession.offlineSavedProductDao.queryBuilder()
             .where(OfflineSavedProductDao.Properties.Barcode.isNotNull)
             .where(OfflineSavedProductDao.Properties.Barcode.notEq(""))
             .where(OfflineSavedProductDao.Properties.IsDataUploaded.notEq(true))
@@ -166,5 +167,9 @@ object OfflineProductService {
         )
 
         return hashMapOf("code" to barcode, "imagefield" to imageField)
+    }
+
+    companion object {
+        private val LOG_TAG = OfflineProductService::class.simpleName!!
     }
 }

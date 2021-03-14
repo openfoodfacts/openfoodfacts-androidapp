@@ -58,7 +58,6 @@ import io.reactivex.schedulers.Schedulers
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.R
-import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityContinuousScanBinding
 import openfoodfacts.github.scrachx.openfood.features.ImagesManageActivity
 import openfoodfacts.github.scrachx.openfood.features.compare.ProductCompareActivity
@@ -81,6 +80,7 @@ import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.A
 import openfoodfacts.github.scrachx.openfood.models.eventbus.ProductNeedsRefreshEvent
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
+import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.Utils.daoSession
 import org.greenrobot.eventbus.EventBus
@@ -88,6 +88,7 @@ import org.greenrobot.eventbus.Subscribe
 import java.io.IOException
 import java.util.*
 import java.util.concurrent.TimeUnit
+import javax.inject.Inject
 
 class ContinuousScanActivity : AppCompatActivity() {
 
@@ -102,7 +103,12 @@ class ContinuousScanActivity : AppCompatActivity() {
     private val barcodeInputListener = BarcodeInputListener()
     private val barcodeScanCallback = BarcodeScannerCallback()
 
-    private val client by lazy { OpenFoodAPIClient(this@ContinuousScanActivity) }
+    @Inject
+    lateinit var client: OpenFoodAPIClient
+
+    @Inject
+    lateinit var offlineProductService: OfflineProductService
+
     private val cameraPref by lazy { getSharedPreferences("camera", 0) }
 
     private val commonDisp = CompositeDisposable()
@@ -157,7 +163,7 @@ class ContinuousScanActivity : AppCompatActivity() {
         summaryProductPresenter?.dispose()
 
         // First, try to show if we have an offline saved product in the db
-        offlineSavedProduct = OfflineProductService.getOfflineProductByBarcode(barcode).also { product ->
+        offlineSavedProduct = offlineProductService.getOfflineProductByBarcode(barcode).also { product ->
             product?.let { showOfflineSavedDetails(it) }
         }
 
@@ -216,7 +222,7 @@ class ContinuousScanActivity : AppCompatActivity() {
                                 if (productsToCompare.contains(product)) {
                                     putExtra(ProductCompareActivity.KEY_PRODUCT_ALREADY_EXISTS, true)
                                 } else {
-                                    productsToCompare.add(product)
+                                    productsToCompare += product
                                 }
                                 putExtra(ProductCompareActivity.KEY_PRODUCTS_TO_COMPARE, productsToCompare)
                                 addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
@@ -243,7 +249,7 @@ class ContinuousScanActivity : AppCompatActivity() {
                         // Set product name, prefer offline
                         if (offlineSavedProduct != null && !offlineSavedProduct?.name.isNullOrEmpty()) {
                             binding.quickViewName.text = offlineSavedProduct!!.name
-                        } else if (product.productName == null || product.productName == "") {
+                        } else if (product.productName.isNullOrEmpty()) {
                             binding.quickViewName.setText(R.string.productNameNull)
                         } else {
                             binding.quickViewName.text = product.productName
@@ -267,12 +273,13 @@ class ContinuousScanActivity : AppCompatActivity() {
                         quickViewCheckEcoScore(product)
 
                         // Create the product view fragment and add it to the layout
-                        val newProductViewFragment = ProductViewFragment.newInstance(productState)
-                        supportFragmentManager.commit {
-                            replace(R.id.frame_layout, newProductViewFragment)
-                            setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                        ProductViewFragment.newInstance(productState).let {
+                            supportFragmentManager.commit {
+                                replace(R.id.frame_layout, it)
+                                setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                            }
+                            productViewFragment = it
                         }
-                        productViewFragment = newProductViewFragment
                     }
                 }
     }
@@ -346,11 +353,14 @@ class ContinuousScanActivity : AppCompatActivity() {
 
                 binding.quickViewTags.adapter = adapter
             }
-        }).also {
+        }, productRepository).also {
             it.loadAllergens { binding.callToActionImageProgress.visibility = View.GONE }
             it.loadAnalysisTags()
         }
     }
+
+    @Inject
+    lateinit var productRepository: ProductRepository
 
     private fun showProductNotFound(text: String) {
         hideAllViews()
@@ -427,7 +437,6 @@ class ContinuousScanActivity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        OFFApplication.appComponent.inject(this)
         super.onCreate(savedInstanceState)
         _binding = ActivityContinuousScanBinding.inflate(layoutInflater)
         setContentView(binding.root)

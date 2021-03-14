@@ -30,6 +30,7 @@ plugins {
     id("kotlin-android")
     id("kotlin-parcelize")
     id("kotlin-kapt")
+    id("dagger.hilt.android.plugin")
 }
 
 fun obtainTestBuildType(): String {
@@ -68,16 +69,23 @@ dependencies {
     val workVersion = "2.5.0"
     implementation("androidx.work:work-runtime:$workVersion")
     implementation("androidx.work:work-rxjava2:$workVersion")
+    implementation("androidx.hilt:hilt-work:1.0.0-alpha03")
+    kapt("androidx.hilt:hilt-compiler:1.0.0-alpha03")
+
 
     implementation("androidx.startup:startup-runtime:1.0.0")
 
     // ML Kit barcode Scanner
-    implementation ("com.google.mlkit:barcode-scanning:16.1.1")
+    implementation("com.google.mlkit:barcode-scanning:16.1.1")
 
     implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
 
     kapt("com.google.dagger:dagger-compiler:2.33")
     implementation("com.google.dagger:dagger:2.33")
+    implementation("com.google.dagger:hilt-android:${rootProject.extra["hiltVersion"]}")
+
+    kapt("com.google.dagger:hilt-compiler:${rootProject.extra["hiltVersion"]}")
+
     compileOnly("javax.annotation:javax.annotation-api:1.3.2")
 
     //Rx
@@ -156,6 +164,9 @@ dependencies {
     // Crash analytics
     implementation("io.sentry:sentry-android:4.3.0")
 
+    // ShowCaseView dependency
+    implementation("com.github.mreram:showcaseview:1.0.5")
+
     // Unit Testing
     testImplementation("junit:junit:4.13.2")
     testImplementation("org.mockito:mockito-core:3.8.0")
@@ -166,14 +177,14 @@ dependencies {
     // Instrumented tests
     androidTestUtil("androidx.test:orchestrator:1.3.0")
 
-    androidTestImplementation("androidx.test:runner:1.3.0") {
-        exclude("junit")
-    }
+    // Hilt for Android Testing
+    androidTestImplementation("com.google.dagger:hilt-android-testing:2.33-beta")
+    kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.33-beta")
+
+    androidTestImplementation("androidx.test:runner:1.3.0") { exclude("junit") }
     androidTestImplementation("androidx.test:rules:1.3.0")
 
-    androidTestImplementation("androidx.test.ext:junit:1.1.2") {
-        exclude("junit")
-    }
+    androidTestImplementation("androidx.test.ext:junit:1.1.2") { exclude("junit") }
 
     androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
     androidTestImplementation("androidx.test.espresso:espresso-intents:3.3.0")
@@ -187,12 +198,8 @@ dependencies {
     androidTestImplementation("com.jraska:falcon:2.1.1")
     androidTestImplementation("tools.fastlane:screengrab:1.2.0")
 
-    resourcePlaceholders {
-        files = listOf("xml/shortcuts.xml")
-    }
+    resourcePlaceholders { files = listOf("xml/shortcuts.xml") }
 
-    // ShowCaseView dependency
-    implementation("com.github.mreram:showcaseview:1.0.5")
 }
 
 

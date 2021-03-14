@@ -35,7 +35,8 @@ import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState
  */
 class IngredientsProductPresenter(
         private val product: Product,
-        private val view: IIngredientsProductPresenter.View
+        private val view: IIngredientsProductPresenter.View,
+        private val productRepository: ProductRepository
 ) : IIngredientsProductPresenter.Actions {
     private val disp = CompositeDisposable()
 
@@ -45,12 +46,12 @@ class IngredientsProductPresenter(
             view.showAdditivesState(ProductInfoState.EMPTY)
             return
         }
-        val languageCode = LocaleHelper.getLanguage(OFFApplication.instance)
+        val languageCode = LocaleHelper.getLanguage(OFFApplication._instance)
         additivesTags.toObservable()
                 .flatMapSingle { tag: String? ->
-                    ProductRepository.getAdditiveByTagAndLanguageCode(tag, languageCode).flatMap { categoryName: AdditiveName ->
+                    productRepository.getAdditiveByTagAndLanguageCode(tag, languageCode).flatMap { categoryName: AdditiveName ->
                         if (categoryName.isNull) {
-                            ProductRepository.getAdditiveByTagAndDefaultLanguageCode(tag)
+                            productRepository.getAdditiveByTagAndDefaultLanguageCode(tag)
                         } else {
                             Single.just(categoryName)
                         }
@@ -81,12 +82,12 @@ class IngredientsProductPresenter(
             view.showAllergensState(ProductInfoState.EMPTY)
             return
         }
-        val languageCode = LocaleHelper.getLanguage(OFFApplication.instance)
+        val languageCode = LocaleHelper.getLanguage(OFFApplication._instance)
         allergenTags.toObservable()
                 .flatMapSingle { tag: String? ->
-                    ProductRepository.getAllergenByTagAndLanguageCode(tag, languageCode).flatMap { allergenName: AllergenName ->
+                    productRepository.getAllergenByTagAndLanguageCode(tag, languageCode).flatMap { allergenName: AllergenName ->
                         if (allergenName.isNull) {
-                            return@flatMap ProductRepository.getAllergenByTagAndDefaultLanguageCode(tag)
+                            return@flatMap productRepository.getAllergenByTagAndDefaultLanguageCode(tag)
                         } else {
                             return@flatMap Single.just(allergenName)
                         }

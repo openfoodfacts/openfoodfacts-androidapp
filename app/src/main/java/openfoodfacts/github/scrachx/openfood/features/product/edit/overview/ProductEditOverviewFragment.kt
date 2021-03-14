@@ -35,6 +35,7 @@ import com.hootsuite.nachos.validator.ChipifyingNachoValidator
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import com.theartofdev.edmodo.cropper.CropImage
+import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
@@ -43,7 +44,6 @@ import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OPF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.R
-import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabsHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback
@@ -55,6 +55,7 @@ import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditAc
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_SEND_UPDATED
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditFragment
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
+import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct
@@ -83,10 +84,12 @@ import org.greenrobot.greendao.async.AsyncOperationListener
 import org.jetbrains.annotations.Contract
 import java.io.File
 import java.util.*
+import javax.inject.Inject
 
 /**
  * Product Overview fragment of AddProductActivity
  */
+@AndroidEntryPoint
 class ProductEditOverviewFragment : ProductEditFragment() {
     private var _binding: FragmentAddProductOverviewBinding? = null
     private val binding get() = _binding!!
@@ -475,33 +478,36 @@ class ProductEditOverviewFragment : ProductEditFragment() {
         nachoTextView.enableEditChipOnTouch(false, true)
     }
 
+    @Inject
+    lateinit var daoSession: DaoSession
+
     /**
      * Auto load suggestions into various NachoTextViews
      */
     private fun setupAutoSuggestion() {
-        val asyncSessionCountries = OFFApplication.daoSession.startAsyncSession()
-        val asyncSessionLabels = OFFApplication.daoSession.startAsyncSession()
-        val asyncSessionCategories = OFFApplication.daoSession.startAsyncSession()
-        val asyncSessionStores = OFFApplication.daoSession.startAsyncSession()
-        val asyncSessionBrands = OFFApplication.daoSession.startAsyncSession()
+        val asyncSessionCountries = daoSession.startAsyncSession()
+        val asyncSessionLabels = daoSession.startAsyncSession()
+        val asyncSessionCategories = daoSession.startAsyncSession()
+        val asyncSessionStores = daoSession.startAsyncSession()
+        val asyncSessionBrands = daoSession.startAsyncSession()
 
-        asyncSessionCountries.queryList(OFFApplication.daoSession.countryNameDao.queryBuilder()
+        asyncSessionCountries.queryList(daoSession.countryNameDao.queryBuilder()
                 .where(CountryNameDao.Properties.LanguageCode.eq(appLanguageCode))
                 .orderDesc(CountryNameDao.Properties.Name).build())
 
-        asyncSessionLabels.queryList(OFFApplication.daoSession.labelNameDao.queryBuilder()
+        asyncSessionLabels.queryList(daoSession.labelNameDao.queryBuilder()
                 .where(LabelNameDao.Properties.LanguageCode.eq(appLanguageCode))
                 .orderDesc(LabelNameDao.Properties.Name).build())
 
-        asyncSessionCategories.queryList(OFFApplication.daoSession.categoryNameDao.queryBuilder()
+        asyncSessionCategories.queryList(daoSession.categoryNameDao.queryBuilder()
                 .where(CategoryNameDao.Properties.LanguageCode.eq(appLanguageCode))
                 .orderDesc(CategoryNameDao.Properties.Name).build())
 
-        asyncSessionStores.queryList(OFFApplication.daoSession.storeNameDao.queryBuilder()
+        asyncSessionStores.queryList(daoSession.storeNameDao.queryBuilder()
                 .where(StoreNameDao.Properties.LanguageCode.eq(appLanguageCode))
                 .orderDesc(StoreNameDao.Properties.Name).build())
 
-        asyncSessionBrands.queryList(OFFApplication.daoSession.brandNameDao.queryBuilder()
+        asyncSessionBrands.queryList(daoSession.brandNameDao.queryBuilder()
                 .where(BrandNameDao.Properties.LanguageCode.eq(appLanguageCode))
                 .orderDesc(BrandNameDao.Properties.Name).build())
 

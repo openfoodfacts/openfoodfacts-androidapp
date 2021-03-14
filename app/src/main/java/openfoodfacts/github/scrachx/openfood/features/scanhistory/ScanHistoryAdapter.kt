@@ -23,6 +23,7 @@ import java.util.concurrent.TimeUnit
 
 class ScanHistoryAdapter(
         private val activity: Activity,
+        private val client: OpenFoodAPIClient,
         private val isLowBatteryMode: Boolean,
         val products: MutableList<HistoryProduct>,
 ) : RecyclerView.Adapter<ScanHistoryHolder>() {
@@ -74,7 +75,7 @@ class ScanHistoryAdapter(
         }
 
         holder.binding.root.setOnClickListener {
-            OpenFoodAPIClient(activity).openProduct(hProduct.barcode, activity)
+            client.openProduct(hProduct.barcode, activity)
         }
     }
 

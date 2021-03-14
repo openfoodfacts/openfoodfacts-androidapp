@@ -21,6 +21,7 @@
         android:name="android.hardware.sensor.accelerometer"
         android:required="true" />
 
+
     <!-- Support for Amazon devices, and devices with no camera -->
     <uses-feature
         android:name="android.hardware.camera"
@@ -52,6 +53,12 @@
         <meta-data
             android:name="android.max_aspect"
             android:value="2.1" />
+
+        <provider
+            android:name="androidx.work.impl.WorkManagerInitializer"
+            android:authorities="${applicationId}.workmanager-init"
+            android:exported="false"
+            tools:node="remove" />
 
         <provider
             android:name=".utils.SearchSuggestionProvider"

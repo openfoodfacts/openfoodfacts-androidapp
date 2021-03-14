@@ -37,14 +37,14 @@ class FileWritingScreenshotCallback internal constructor(
             } finally {
                 screenshot.recycle()
             }
-            Log.d(LOG_TAG, """Captured screenshot "${screenshotFile.name}"""")
+            Log.d(LOG_TAG, "Captured screenshot at '${screenshotFile.name}'")
         } catch (exception: Exception) {
             throw RuntimeException("Unable to capture screenshot.", exception)
         }
     }
 
-    private fun getScreenshotFile(screenshotDirectory: File, screenshotName: String) =
-            File(screenshotDirectory, "${screenshotName}_${dateFormat.format(Date())}.png")
+    private fun getScreenshotFile(dir: File, name: String) =
+            File(dir, "${name}_${dateFormat.format(Date())}.png")
 
     @Throws(IOException::class)
     private fun getFilesDirectory(): File {
@@ -61,7 +61,7 @@ class FileWritingScreenshotCallback internal constructor(
         return if (directory == null) {
             throw IOException("Unable to get a screenshot storage directory")
         } else {
-            Log.d(LOG_TAG, "Using screenshot storage directory: " + directory.absolutePath)
+            Log.d(LOG_TAG, "Using screenshot storage directory: ${directory.absolutePath}")
             directory
         }
     }
@@ -74,7 +74,7 @@ class FileWritingScreenshotCallback internal constructor(
                 createPathTo(dir)
                 if (dir.isDirectory && dir.canWrite()) return dir
             } catch (exception: IOException) {
-                Log.e(LOG_TAG, "Failed to initialize directory: " + dir.absolutePath, exception)
+                Log.e(LOG_TAG, "Failed to initialize directory: ${dir.absolutePath}", exception)
             }
             return null
         }
@@ -85,10 +85,10 @@ class FileWritingScreenshotCallback internal constructor(
 
         @Throws(IOException::class)
         private fun createPathTo(dir: File) {
-            if (!dir.exists() && !dir.mkdirs()) {
-                throw IOException("Unable to create output dir: " + dir.absolutePath)
-            } else {
+            if (dir.exists() || dir.mkdirs()) {
                 Chmod.chmodPlusRWX(dir)
+            } else {
+                throw IOException("Unable to create output dir: ${dir.absolutePath}")
             }
         }
     }

@@ -14,13 +14,13 @@ jobs:
       uses: actions/checkout@v2
 
     - name: crowdin action
-      uses: crowdin/github-action@1.0.19
+      uses: crowdin/github-action@1.0.20
       with:
         upload_translations: true # default is false
         # Use this option to upload translations for a single specified language
         download_translations: true
         # Upload sources to Crowdin
-        # upload_sources: # default is true
+        upload_sources: true
         # Upload translations to Crowdin
         # upload_language: # optional
         # Automatically approves uploaded translations

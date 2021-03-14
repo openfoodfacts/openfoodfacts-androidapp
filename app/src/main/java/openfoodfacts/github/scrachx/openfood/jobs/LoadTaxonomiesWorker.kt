@@ -18,11 +18,13 @@ package openfoodfacts.github.scrachx.openfood.jobs
 import android.content.Context
 import android.util.Log
 import androidx.core.content.edit
+import androidx.hilt.work.HiltWorker
 import androidx.work.RxWorker
 import androidx.work.WorkerParameters
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedInject
 import io.reactivex.Completable
 import io.reactivex.Single
-import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.Utils
 
@@ -30,25 +32,30 @@ import openfoodfacts.github.scrachx.openfood.utils.Utils
  * @param appContext The application [Context]
  * @param workerParams Parameters to setup the internal state of this worker
  */
-class LoadTaxonomiesWorker(appContext: Context, workerParams: WorkerParameters) : RxWorker(appContext, workerParams) {
+@HiltWorker
+class LoadTaxonomiesWorker @AssistedInject constructor(
+        @Assisted appContext: Context,
+        @Assisted workerParams: WorkerParameters,
+        private val repo: ProductRepository
+) : RxWorker(appContext, workerParams) {
     override fun createWork(): Single<Result> {
-        val settings = OFFApplication.instance.getSharedPreferences("prefs", 0)
+        val settings = applicationContext.getSharedPreferences("prefs", 0)
 
         // We use completable because we only care about state (error or completed), not returned value
         val syncObservables = listOf<Completable>(
-                ProductRepository.reloadLabelsFromServer().ignoreElement(),
-                ProductRepository.reloadTagsFromServer().ignoreElement(),
-                ProductRepository.reloadInvalidBarcodesFromServer().ignoreElement(),
-                ProductRepository.reloadAllergensFromServer().ignoreElement(),
-                ProductRepository.reloadIngredientsFromServer().ignoreElement(),
-                ProductRepository.reloadAnalysisTagConfigsFromServer().ignoreElement(),
-                ProductRepository.reloadAnalysisTagsFromServer().ignoreElement(),
-                ProductRepository.reloadCountriesFromServer().ignoreElement(),
-                ProductRepository.reloadAdditivesFromServer().ignoreElement(),
-                ProductRepository.reloadCategoriesFromServer().ignoreElement(),
-                ProductRepository.reloadStatesFromServer().ignoreElement(),
-                ProductRepository.reloadStoresFromServer().ignoreElement(),
-                ProductRepository.reloadBrandsFromServer().ignoreElement()
+                repo.reloadLabelsFromServer().ignoreElement(),
+                repo.reloadTagsFromServer().ignoreElement(),
+                repo.reloadInvalidBarcodesFromServer().ignoreElement(),
+                repo.reloadAllergensFromServer().ignoreElement(),
+                repo.reloadIngredientsFromServer().ignoreElement(),
+                repo.reloadAnalysisTagConfigsFromServer().ignoreElement(),
+                repo.reloadAnalysisTagsFromServer().ignoreElement(),
+                repo.reloadCountriesFromServer().ignoreElement(),
+                repo.reloadAdditivesFromServer().ignoreElement(),
+                repo.reloadCategoriesFromServer().ignoreElement(),
+                repo.reloadStatesFromServer().ignoreElement(),
+                repo.reloadStoresFromServer().ignoreElement(),
+                repo.reloadBrandsFromServer().ignoreElement()
         )
         return Completable.merge(syncObservables)
                 .toSingle {

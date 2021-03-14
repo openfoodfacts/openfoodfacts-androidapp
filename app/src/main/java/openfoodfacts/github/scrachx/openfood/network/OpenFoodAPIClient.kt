@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.core.content.edit
 import com.afollestad.materialdialogs.MaterialDialog
 import com.fasterxml.jackson.databind.JsonNode
+import dagger.hilt.android.qualifiers.ApplicationContext
 import io.reactivex.Completable
 import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable
@@ -39,12 +40,17 @@ import openfoodfacts.github.scrachx.openfood.utils.Utils.daoSession
 import java.io.File
 import java.io.IOException
 import java.util.*
+import javax.inject.Inject
+import javax.inject.Singleton
 import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewActivity.Companion.start as startProductViewActivity
 
 /**
  * API Client for all API callbacks
  */
-class OpenFoodAPIClient(private val context: Context) {
+@Singleton
+class OpenFoodAPIClient @Inject constructor(
+        @ApplicationContext val context: Context
+) {
     private var historySyncDisp = CompositeDisposable()
 
     fun getProductStateFull(barcode: String, customHeader: String = Utils.HEADER_USER_AGENT_SEARCH): Single<ProductState> {
@@ -383,14 +389,14 @@ class OpenFoodAPIClient(private val context: Context) {
                 OFF -> StringBuilder("Official Open Food Facts Android app")
                 else -> StringBuilder("Official Open Food Facts Android app")
             }
-            comment.append(" ").append(getVersionName(OFFApplication.instance))
+            comment.append(" ").append(getVersionName(OFFApplication._instance))
             if (login.isNullOrEmpty()) {
-                comment.append(" (Added by ").append(InstallationUtils.id(OFFApplication.instance)).append(")")
+                comment.append(" (Added by ").append(InstallationUtils.id(OFFApplication._instance)).append(")")
             }
             return comment.toString()
         }
 
-        fun getLocaleProductNameField() = "product_name_${getLanguage(OFFApplication.instance)}"
+        fun getLocaleProductNameField() = "product_name_${getLanguage(OFFApplication._instance)}"
 
         /**
          * Add a product to ScanHistory synchronously
@@ -402,7 +408,7 @@ class OpenFoodAPIClient(private val context: Context) {
             val hp = HistoryProduct(
                     product.productName,
                     product.brands,
-                    product.getImageSmallUrl(getLanguage(OFFApplication.instance)),
+                    product.getImageSmallUrl(getLanguage(OFFApplication._instance)),
                     product.code,
                     product.quantity,
                     product.nutritionGradeFr,
@@ -436,7 +442,7 @@ class OpenFoodAPIClient(private val context: Context) {
          * @param imgMap The map to fill
          */
         fun addUserInfo(imgMap: MutableMap<String, String> = mutableMapOf()): Map<String, String> {
-            val settings = OFFApplication.instance.getLoginPreferences()
+            val settings = OFFApplication._instance.getLoginPreferences()
 
             settings.getString("user", null)?.let {
                 imgMap[ApiFields.Keys.USER_COMMENT] = getCommentToUpload(it)

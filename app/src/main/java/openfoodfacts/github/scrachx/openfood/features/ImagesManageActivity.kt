@@ -34,6 +34,7 @@ import com.github.chrisbanes.photoview.PhotoViewAttacher
 import com.squareup.picasso.Callback
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImageActivity
+import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
@@ -65,15 +66,18 @@ import pl.aprilapps.easyphotopicker.EasyImage
 import smartdevelop.ir.eram.showcaseviewlib.GuideView
 import java.io.File
 import java.util.*
+import javax.inject.Inject
 
 /**
  * Activity to display/edit product images
  */
+@AndroidEntryPoint
 class ImagesManageActivity : BaseActivity() {
     private var _binding: ActivityFullScreenImageBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var client: OpenFoodAPIClient
+    @Inject
+    lateinit var client: OpenFoodAPIClient
 
     private val disp = CompositeDisposable()
 
@@ -83,7 +87,6 @@ class ImagesManageActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        client = OpenFoodAPIClient(this)
         _binding = ActivityFullScreenImageBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar)

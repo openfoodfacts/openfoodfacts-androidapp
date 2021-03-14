@@ -127,7 +127,7 @@
     </string-array>
 
     <!-- Application theme settings -->
-    <string-array name="application_theme_entries">
+    <string-array name="application_theme_entries" translatable="false">
         <item>@string/follow_system</item>
         <item>@string/day</item>
         <item>@string/night</item>

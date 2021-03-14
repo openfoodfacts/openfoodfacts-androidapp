@@ -33,6 +33,7 @@ import androidx.browser.customtabs.CustomTabsIntent
 import androidx.viewpager2.widget.ViewPager2
 import com.afollestad.materialdialogs.MaterialDialog
 import com.squareup.picasso.Picasso
+import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.rxkotlin.addTo
 import openfoodfacts.github.scrachx.openfood.AppFlavors
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OBF
@@ -55,6 +56,7 @@ import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditAc
 import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivity.Companion.start
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
+import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.models.ProductState
 import openfoodfacts.github.scrachx.openfood.models.entities.SendProduct
@@ -63,17 +65,30 @@ import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenNa
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenNameDao
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.network.WikiDataApiClient
+import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.*
 import java.io.File
 import java.util.regex.Pattern
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.View {
     private var _binding: FragmentIngredientsProductBinding? = null
     private val binding get() = _binding!!
 
     private val loginPref by lazy { requireActivity().getLoginPreferences() }
-    private val client by lazy { OpenFoodAPIClient(requireContext()) }
-    private val wikidataClient by lazy { WikiDataApiClient() }
+
+    @Inject
+    lateinit var client: OpenFoodAPIClient
+
+    @Inject
+    lateinit var productRepository: ProductRepository
+
+    @Inject
+    lateinit var daoSession: DaoSession
+
+    @Inject
+    lateinit var wikidataClient: WikiDataApiClient
 
     private val performOCRLauncher = registerForActivityResult(PerformOCRContract())
     { result -> if (result) onRefresh() }
@@ -135,7 +150,7 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
         if (arguments != null) mSendProduct = getSendProduct()
 
         val product = this.productState.product!!
-        presenter = IngredientsProductPresenter(product, this).apply { addTo(disp) }
+        presenter = IngredientsProductPresenter(product, this, productRepository).apply { addTo(disp) }
         val vitaminTagsList = product.vitaminTags
         val aminoAcidTagsList = product.aminoAcidTags
         val mineralTags = product.mineralTags
@@ -239,7 +254,7 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
     }
 
     private fun getTracesName(languageCode: String, tag: String): String {
-        val allergenName = Utils.daoSession.allergenNameDao.queryBuilder()
+        val allergenName = daoSession.allergenNameDao.queryBuilder()
                 .where(AllergenNameDao.Properties.AllergenTag.eq(tag), AllergenNameDao.Properties.LanguageCode.eq(languageCode))
                 .unique()
         return if (allergenName != null) allergenName.name else tag
@@ -409,6 +424,7 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
         if (ingredients != null && productState.product != null) {
             FullScreenActivityOpener.openForUrl(
                     this,
+                    client,
                     productState.product!!,
                     ProductImageField.INGREDIENTS,
                     ingredients,

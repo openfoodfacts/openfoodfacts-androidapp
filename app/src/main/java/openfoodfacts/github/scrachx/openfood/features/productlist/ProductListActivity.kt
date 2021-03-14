@@ -22,6 +22,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.afollestad.materialdialogs.MaterialDialog
+import dagger.hilt.android.AndroidEntryPoint
 import openfoodfacts.github.scrachx.openfood.AppFlavors
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.BuildConfig
@@ -36,6 +37,7 @@ import openfoodfacts.github.scrachx.openfood.models.HistoryProductDao
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.entities.ProductLists
 import openfoodfacts.github.scrachx.openfood.models.entities.YourListedProduct
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
 import openfoodfacts.github.scrachx.openfood.utils.SortType.*
@@ -43,11 +45,16 @@ import openfoodfacts.github.scrachx.openfood.utils.Utils.daoSession
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
+import javax.inject.Inject
 import kotlin.properties.Delegates
 
+@AndroidEntryPoint
 class ProductListActivity : BaseActivity(), SwipeController.Actions {
     private var _binding: ActivityYourListedProductsBinding? = null
     private val binding get() = _binding!!
+
+    @Inject
+    lateinit var client: OpenFoodAPIClient
 
     private var listID by Delegates.notNull<Long>()
     private lateinit var productList: ProductLists
@@ -120,7 +127,7 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
             binding.scanFirstYourListedProduct.visibility = View.VISIBLE
             setInfo(binding.tvInfoYourListedProducts)
         }
-        adapter = ProductListAdapter(this, productList.products.toMutableList(), isLowBatteryMode)
+        adapter = ProductListAdapter(this, client, productList.products.toMutableList(), isLowBatteryMode)
         binding.rvYourListedProducts.adapter = adapter
 
         ItemTouchHelper(SwipeController(this, this@ProductListActivity))
