@@ -28,6 +28,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.afollestad.materialdialogs.DialogAction
 import com.afollestad.materialdialogs.MaterialDialog
+import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.Observable
 import io.reactivex.ObservableEmitter
 import io.reactivex.Single
@@ -36,7 +37,6 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 import openfoodfacts.github.scrachx.openfood.R
-import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductListsBinding
 import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.selectNavigationItem
@@ -46,6 +46,7 @@ import openfoodfacts.github.scrachx.openfood.features.productlist.ProductListAct
 import openfoodfacts.github.scrachx.openfood.features.productlist.ProductListActivity.Companion.KEY_LIST_NAME
 import openfoodfacts.github.scrachx.openfood.features.productlist.ProductListActivity.Companion.KEY_PRODUCT_TO_ADD
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
+import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.entities.ProductLists
 import openfoodfacts.github.scrachx.openfood.models.entities.ProductListsDao
@@ -58,10 +59,15 @@ import org.apache.commons.csv.CSVParser
 import java.io.InputStream
 import java.io.InputStreamReader
 import java.util.*
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class ProductListsActivity : BaseActivity(), SwipeController.Actions {
     private var _binding: ActivityProductListsBinding? = null
     private val binding get() = _binding!!
+
+    @Inject
+    lateinit var daoSession: DaoSession
 
     private lateinit var adapter: ProductListsAdapter
     private lateinit var productListsDao: ProductListsDao
@@ -84,7 +90,7 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
         binding.bottomNavigation.bottomNavigation.installBottomNavigation(this)
         binding.fabAdd.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_plus_blue_24, 0, 0, 0)
 
-        productListsDao = getProductListsDaoWithDefaultList(this)
+        productListsDao = daoSession.getProductListsDaoWithDefaultList(this)
         val productLists = productListsDao.loadAll().toMutableList()
 
         adapter = ProductListsAdapter(this, productLists)
@@ -171,10 +177,12 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
 
     private val chooseFileContract = registerForActivityResult(ActivityResultContracts.OpenDocument())
     { uri ->
-        try {
-            parseCSV(contentResolver.openInputStream(uri))
-        } catch (e: Exception) {
-            Log.e(ProductListsActivity::class.simpleName, "Error importing CSV.", e)
+        if (uri != null) {
+            try {
+                parseCSV(contentResolver.openInputStream(uri))
+            } catch (e: Exception) {
+                Log.e(ProductListsActivity::class.simpleName, "Error importing CSV.", e)
+            }
         }
     }
 
@@ -183,10 +191,10 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
             val productToRemove = adapter.lists[position]
 
             // delete the product from YOUR_LISTED_PRODUCT_TABLE
-            val deleteQuery = OFFApplication.daoSession.yourListedProductDao.queryBuilder()
+            val deleteQuery = daoSession.yourListedProductDao.queryBuilder()
                     .where(YourListedProductDao.Properties.ListId.eq(productToRemove.id)).buildDelete()
             deleteQuery.executeDeleteWithoutDetachingEntities()
-            OFFApplication.daoSession.clear()
+            daoSession.clear()
 
             productListsDao.delete(productToRemove)
             adapter.remove(productToRemove)
@@ -281,9 +289,8 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
         @JvmStatic
         fun start(context: Context) = context.startActivity(Intent(context, ProductListsActivity::class.java))
 
-        @JvmStatic
-        fun getProductListsDaoWithDefaultList(context: Context): ProductListsDao {
-            val productListsDao = Utils.daoSession.productListsDao
+        fun DaoSession.getProductListsDaoWithDefaultList(context: Context): ProductListsDao {
+            val productListsDao = productListsDao
             if (productListsDao.loadAll().isEmpty()) {
                 productListsDao.insert(ProductLists(context.getString(R.string.txt_eaten_products), 0))
                 productListsDao.insert(ProductLists(context.getString(R.string.txt_products_to_buy), 0))

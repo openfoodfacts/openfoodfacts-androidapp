@@ -6,23 +6,21 @@ import android.os.Bundle
 import android.provider.SearchRecentSuggestions
 import android.view.*
 import android.widget.SearchView
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import io.reactivex.disposables.CompositeDisposable
+import dagger.hilt.android.AndroidEntryPoint
 import openfoodfacts.github.scrachx.openfood.R
-import openfoodfacts.github.scrachx.openfood.dagger.component.FragmentComponent
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentCategoryListBinding
-import openfoodfacts.github.scrachx.openfood.features.MVVMFragment
-import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
+import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
 import openfoodfacts.github.scrachx.openfood.features.viewmodel.category.CategoryFragmentViewModel
 import openfoodfacts.github.scrachx.openfood.utils.SearchSuggestionProvider
 import java.util.*
-import javax.inject.Inject
 
-class CategoryListFragment : MVVMFragment<CategoryFragmentViewModel, FragmentComponent?>() {
+@AndroidEntryPoint
+class CategoryListFragment : BaseFragment() {
 
-    @Inject
-    override lateinit var viewModel: CategoryFragmentViewModel
+    val viewModel: CategoryFragmentViewModel by viewModels()
 
     private var _binding: FragmentCategoryListBinding? = null
     private val binding get() = _binding!!
@@ -94,11 +92,4 @@ class CategoryListFragment : MVVMFragment<CategoryFragmentViewModel, FragmentCom
             }
         })
     }
-
-    override fun createComponent() =
-            (requireActivity() as BaseActivity).activityComponent!!.plusFragmentComponent()!!
-
-    override fun inject() = component!!.inject(this)
-
-    override fun bindProperties(compositeDisposable: CompositeDisposable?) = Unit // Not used here
 }

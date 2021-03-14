@@ -42,6 +42,7 @@ import com.google.android.material.chip.Chip
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
+import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.addTo
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
@@ -82,17 +83,26 @@ import openfoodfacts.github.scrachx.openfood.models.entities.label.LabelName
 import openfoodfacts.github.scrachx.openfood.models.entities.tag.TagDao
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.network.WikiDataApiClient
+import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.*
 import org.greenrobot.greendao.async.AsyncOperationListener
 import java.io.File
+import javax.inject.Inject
 import kotlin.random.Random
 
+@AndroidEntryPoint
 class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     private var _binding: FragmentSummaryProductBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var client: OpenFoodAPIClient
-    private lateinit var wikidataClient: WikiDataApiClient
+    @Inject
+    lateinit var client: OpenFoodAPIClient
+
+    @Inject
+    lateinit var wikidataClient: WikiDataApiClient
+
+    @Inject
+    lateinit var daoSession: DaoSession
 
     private lateinit var presenter: ISummaryProductPresenter.Actions
     private lateinit var mTagDao: TagDao
@@ -141,17 +151,29 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     private var showEcoScorePrompt = false
 
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        customTabActivityHelper = CustomTabActivityHelper().apply {
+            setConnectionCallback(
+                    onConnected = { binding.imageGrade.isClickable = true },
+                    onDisconnected = { binding.imageGrade.isClickable = false }
+            )
+        }
+        customTabsIntent = CustomTabsHelper.getCustomTabsIntent(requireContext(), customTabActivityHelper.session)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        client = OpenFoodAPIClient(requireActivity())
-        wikidataClient = WikiDataApiClient()
-        mTagDao = Utils.daoSession.tagDao
+        mTagDao = daoSession.tagDao
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentSummaryProductBinding.inflate(inflater, container, false)
         return binding.root
     }
+
+    @Inject
+    lateinit var productRepository: ProductRepository
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -171,20 +193,10 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         productState = requireProductState()
         refreshView(productState)
 
-        presenter = SummaryProductPresenter(product, this)
+        presenter = SummaryProductPresenter(product, this, productRepository)
         presenter.addTo(disp)
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        customTabActivityHelper = CustomTabActivityHelper().apply {
-            setConnectionCallback(
-                    onConnected = { binding.imageGrade.isClickable = true },
-                    onDisconnected = { binding.imageGrade.isClickable = false }
-            )
-        }
-        customTabsIntent = CustomTabsHelper.getCustomTabsIntent(requireContext(), customTabActivityHelper.session)
-    }
 
     override fun onDestroyView() {
         super.onDestroyView()
@@ -196,7 +208,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         binding.uploadingImageProgressText.visibility = View.GONE
         var context = context
         if (context == null) {
-            context = OFFApplication.instance
+            context = OFFApplication._instance
         }
         Toast.makeText(context, error.message, Toast.LENGTH_SHORT).show()
     }
@@ -243,7 +255,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     override fun refreshView(productState: ProductState) {
         this.productState = productState
         product = productState.product!!
-        presenter = SummaryProductPresenter(product, this).apply { addTo(disp) }
+        presenter = SummaryProductPresenter(product, this, productRepository).apply { addTo(disp) }
         binding.categoriesText.text = bold(getString(R.string.txtCategories))
         binding.labelsText.text = bold(getString(R.string.txtLabels))
 
@@ -467,8 +479,8 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         // remove the existing childviews on chip group if any
         binding.listChips.removeAllViews()
 
-        val asyncSessionList = OFFApplication.daoSession.startAsyncSession()
-        asyncSessionList.queryList(OFFApplication.daoSession.yourListedProductDao.queryBuilder()
+        val asyncSessionList = daoSession.startAsyncSession()
+        asyncSessionList.queryList(daoSession.yourListedProductDao.queryBuilder()
                 .where(YourListedProductDao.Properties.Barcode.eq(product.code)).build())
 
         asyncSessionList.listenerMainThread = AsyncOperationListener { operation ->
@@ -787,7 +799,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
 
     private fun onBookmarkProductButtonClick() {
         val activity: Activity = requireActivity()
-        val productLists = getProductListsDaoWithDefaultList(activity).loadAll()
+        val productLists = daoSession.getProductListsDaoWithDefaultList(activity).loadAll()
         val productBarcode = product.code
         val productName = product.productName
         val imageUrl = product.getImageSmallUrl(LocaleHelper.getLanguage(activity))
@@ -832,6 +844,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         if (mUrlImage != null) {
             FullScreenActivityOpener.openForUrl(
                     this,
+                    client,
                     product,
                     ProductImageField.FRONT,
                     mUrlImage,

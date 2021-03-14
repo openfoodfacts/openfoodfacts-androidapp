@@ -28,14 +28,15 @@ import com.hootsuite.nachos.terminator.ChipTerminatorHandler
 import com.hootsuite.nachos.validator.ChipifyingNachoValidator
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
+import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.addTo
 import openfoodfacts.github.scrachx.openfood.R
-import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentAddProductIngredientsBinding
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_PERFORM_OCR
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_SEND_UPDATED
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
+import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct
@@ -50,12 +51,14 @@ import openfoodfacts.github.scrachx.openfood.utils.Utils.picassoBuilder
 import org.greenrobot.greendao.async.AsyncOperationListener
 import java.io.File
 import java.util.*
+import javax.inject.Inject
 
 /**
  * Fragment for Add Product Ingredients
  *
  * @see R.layout.fragment_add_product_ingredients
  */
+@AndroidEntryPoint
 class ProductEditIngredientsFragment : ProductEditFragment() {
     private var _binding: FragmentAddProductIngredientsBinding? = null
     private val binding get() = _binding!!
@@ -270,8 +273,9 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
     /**
      * Automatically load suggestions for allergen names
      */
+    @Inject
+    lateinit var daoSession: DaoSession
     private fun loadAutoSuggestions() {
-        val daoSession = OFFApplication.daoSession
         val asyncSessionAllergens = daoSession.startAsyncSession()
         val allergenNameDao = daoSession.allergenNameDao
         val appLanguageCode = getLanguage(activity)

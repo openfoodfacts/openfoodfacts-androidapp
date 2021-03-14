@@ -23,12 +23,12 @@ jobs:
       - name: Screenshots android tests
         uses: eskatos/gradle-command-action@v1
         with:
-          arguments: compileOffPlaystoreScreenshotsAndroidTestSources --stacktrace --info -PtestBuildType=screenshots
+          arguments: compileOffPlaystoreScreenshotsAndroidTestSources -PtestBuildType=screenshots
 
       - name: Unit tests
         uses: eskatos/gradle-command-action@v1
         with:
-          arguments: testObfPlaystoreDebugUnitTest testOffPlaystoreDebugUnitTest testOpfPlaystoreDebugUnitTest testOpffPlaystoreDebugUnitTest --stacktrace
+          arguments: testObfPlaystoreDebugUnitTest testOffPlaystoreDebugUnitTest testOpfPlaystoreDebugUnitTest testOpffPlaystoreDebugUnitTest
 
   apk:
     name: Generate APK

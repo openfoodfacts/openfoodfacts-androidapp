@@ -14,9 +14,9 @@ import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.Utils.NO_DRAWABLE_RESOURCE
 import java.util.*
 
-fun OfflineSavedProduct.toState(context: Context) = OpenFoodAPIClient(context).getProductStateFull(barcode)
+fun OfflineSavedProduct.toState(client: OpenFoodAPIClient) = client.getProductStateFull(barcode)
 
-fun OfflineSavedProduct.toOnlineProduct(context: Context) = toState(context).map { it.product }
+fun OfflineSavedProduct.toOnlineProduct(client: OpenFoodAPIClient) = toState(client).map { it.product }
 
 fun Product.isPerServingInLiter() = servingSize?.contains(Units.UNIT_LITER, true)
 

@@ -187,8 +187,8 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
 
         val countryPreference = requirePreference<ListPreference>(getString(R.string.pref_country_key))
 
-        val asyncSessionCountries = OFFApplication.daoSession.startAsyncSession()
-        val countryNameDao = OFFApplication.daoSession.countryNameDao
+        val asyncSessionCountries = OFFApplication._daoSession.startAsyncSession()
+        val countryNameDao = OFFApplication._daoSession.countryNameDao
 
         // Set query finish listener
         asyncSessionCountries.listenerMainThread = AsyncOperationListener { operation: AsyncOperation ->
@@ -287,7 +287,7 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
             }
 
             if (isFlavors(OFF, OBF, OPFF)) {
-                getAnalysisTagConfigs(OFFApplication.daoSession)
+                getAnalysisTagConfigs(OFFApplication._daoSession)
             } else {
                 preferenceScreen.removePreference(preferenceScreen.requirePreference(getString(R.string.pref_key_display)))
             }
@@ -321,7 +321,7 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
                             preference.summary = null
                             preference.widgetLayoutResource = R.layout.loading
                         } else if (workInfo.state == WorkInfo.State.SUCCEEDED) {
-                            getAnalysisTagConfigs(OFFApplication.daoSession)
+                            getAnalysisTagConfigs(OFFApplication._daoSession)
                         }
                     }
                 })
@@ -375,7 +375,7 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String) {
         when (key) {
-            getString(R.string.pref_enable_mobile_data_key) -> scheduleSync()
+            getString(R.string.pref_enable_mobile_data_key) -> scheduleSync(requireContext())
         }
     }
 

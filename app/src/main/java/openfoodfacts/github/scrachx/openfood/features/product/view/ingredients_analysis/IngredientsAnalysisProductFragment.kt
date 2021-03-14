@@ -22,6 +22,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.addTo
 import openfoodfacts.github.scrachx.openfood.R
@@ -33,12 +34,15 @@ import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductState
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.requireProductState
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class IngredientsAnalysisProductFragment : BaseFragment() {
     private var _binding: FragmentIngredientsAnalysisProductBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var api: OpenFoodAPIClient
+    @Inject
+    lateinit var api: OpenFoodAPIClient
     private lateinit var product: Product
 
     private var adapter: IngredientAnalysisRecyclerAdapter? = null
@@ -46,7 +50,6 @@ class IngredientsAnalysisProductFragment : BaseFragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         product = requireProductState().product!!
-        api = OpenFoodAPIClient(requireActivity())
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {

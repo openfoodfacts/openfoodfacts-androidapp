@@ -82,6 +82,7 @@ abstract class BaseFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener, 
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
+
         if (context is OnRefreshListener) {
             refreshListener = context
         }

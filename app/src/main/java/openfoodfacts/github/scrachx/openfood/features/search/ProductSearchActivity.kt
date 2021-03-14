@@ -22,6 +22,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.afollestad.materialdialogs.MaterialDialog
+import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -44,12 +45,19 @@ import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.*
 import java.text.NumberFormat
 import java.util.*
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class ProductSearchActivity : BaseActivity() {
     private var _binding: ActivityProductBrowsingListBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var client: OpenFoodAPIClient
+    @Inject
+    lateinit var client: OpenFoodAPIClient
+
+    @Inject
+    lateinit var productRepository: ProductRepository
+
     private lateinit var mSearchInfo: SearchInfo
     private lateinit var adapter: ProductsRecyclerViewAdapter
 
@@ -192,7 +200,7 @@ class ProductSearchActivity : BaseActivity() {
         val sharedPref = PreferenceManager.getDefaultSharedPreferences(this)
         val actualCountryTag = sharedPref.getString(getString(R.string.pref_country_key), "")
         if ("" == actualCountryTag) {
-            ProductRepository.getCountryByCC2OrWorld(LocaleHelper.getLocaleFromContext().country)
+            productRepository.getCountryByCC2OrWorld(LocaleHelper.getLocaleFromContext().country)
                     .observeOn(AndroidSchedulers.mainThread())
                     .map { it.tag }
                     .defaultIfEmpty("en:world")
@@ -243,9 +251,9 @@ class ProductSearchActivity : BaseActivity() {
                 // TODO: 26/07/2020 use resources
                 supportActionBar!!.subtitle = "State"
             }
+            SearchType.TRACE -> supportActionBar!!.setSubtitle(R.string.traces)
             else -> error("No match case found for ${mSearchInfo.searchType}")
         }
-        client = OpenFoodAPIClient(this@ProductSearchActivity)
         binding.progressBar.visibility = View.VISIBLE
         reloadSearch()
     }

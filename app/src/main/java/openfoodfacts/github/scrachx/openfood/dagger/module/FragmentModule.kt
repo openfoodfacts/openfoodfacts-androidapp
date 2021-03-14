@@ -1,13 +1,9 @@
 package openfoodfacts.github.scrachx.openfood.dagger.module
 
 import dagger.Module
-import dagger.Provides
-import openfoodfacts.github.scrachx.openfood.dagger.FragmentScope
-import openfoodfacts.github.scrachx.openfood.features.viewmodel.category.CategoryFragmentViewModel
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.FragmentComponent
 
 @Module
-class FragmentModule {
-    @FragmentScope
-    @Provides
-    fun provideCategoryFragmentViewModel(): CategoryFragmentViewModel = CategoryFragmentViewModel()
-}
+@InstallIn(FragmentComponent::class)
+class FragmentModule

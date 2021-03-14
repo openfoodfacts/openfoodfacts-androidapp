@@ -205,6 +205,7 @@ object ApiFields {
                 CATEGORIES_TAGS,
                 INGREDIENTS_TEXT,
                 INGREDIENTS_FROM_PALM_OIL_TAGS,
+                ADDITIVES_TAGS,
                 SERVING_SIZE,
                 ALLERGENS_TAGS,
                 ALLERGENS,

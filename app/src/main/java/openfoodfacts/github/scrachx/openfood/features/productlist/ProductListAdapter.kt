@@ -20,6 +20,7 @@ import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 
 class ProductListAdapter(
         private val context: Context,
+        private val client: OpenFoodAPIClient,
         val products: MutableList<YourListedProduct>,
         private val isLowBatteryMode: Boolean
 ) : RecyclerView.Adapter<YourListProductsViewHolder>() {
@@ -56,7 +57,7 @@ class ProductListAdapter(
             holder.imgProgressBar.visibility = View.INVISIBLE
         }
         holder.itemView.setOnClickListener {
-            OpenFoodAPIClient(it.context).openProduct(products[position].barcode, (it.context as Activity))
+            client.openProduct(products[position].barcode, it.context as Activity)
         }
     }
 

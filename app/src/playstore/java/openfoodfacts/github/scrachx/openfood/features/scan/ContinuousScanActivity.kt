@@ -52,6 +52,7 @@ import com.mikepenz.iconics.IconicsColor
 import com.mikepenz.iconics.IconicsDrawable
 import com.mikepenz.iconics.IconicsSize
 import com.mikepenz.iconics.typeface.library.googlematerial.GoogleMaterial
+import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.Completable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -60,7 +61,6 @@ import io.reactivex.schedulers.Schedulers
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.R
-import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.camera.CameraSource
 import openfoodfacts.github.scrachx.openfood.camera.CameraSourcePreview
 import openfoodfacts.github.scrachx.openfood.camera.GraphicOverlay
@@ -88,6 +88,7 @@ import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.A
 import openfoodfacts.github.scrachx.openfood.models.eventbus.ProductNeedsRefreshEvent
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
+import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.scanner.BarcodeProcessor
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.Utils.daoSession
@@ -96,7 +97,9 @@ import org.greenrobot.eventbus.Subscribe
 import java.io.IOException
 import java.util.*
 import java.util.concurrent.TimeUnit
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class ContinuousScanActivity : AppCompatActivity() {
     private var _binding: ActivityContinuousScanBinding? = null
     private val binding get() = _binding!!
@@ -109,7 +112,15 @@ class ContinuousScanActivity : AppCompatActivity() {
     private val barcodeInputListener = BarcodeInputListener()
     private val barcodeScanCallback = BarcodeScannerCallback()
 
-    private val client by lazy { OpenFoodAPIClient(this@ContinuousScanActivity) }
+    @Inject
+    lateinit var client: OpenFoodAPIClient
+
+    @Inject
+    lateinit var offlineProductService: OfflineProductService
+
+    @Inject
+    lateinit var productRepository: ProductRepository
+
     private val cameraPref by lazy { getSharedPreferences("camera", 0) }
 
     private val settings by lazy { getSharedPreferences("prefs", 0) }
@@ -134,6 +145,7 @@ class ContinuousScanActivity : AppCompatActivity() {
     private var analysisTagsEmpty = true
     private var productShowing = false
     private var beepActive = false
+
     /**
     boolean to determine if MLKit Scanner is to be used
      */
@@ -179,7 +191,7 @@ class ContinuousScanActivity : AppCompatActivity() {
         summaryProductPresenter?.dispose()
 
         // First, try to show if we have an offline saved product in the db
-        offlineSavedProduct = OfflineProductService.getOfflineProductByBarcode(barcode).also { product ->
+        offlineSavedProduct = offlineProductService.getOfflineProductByBarcode(barcode).also { product ->
             product?.let { showOfflineSavedDetails(it) }
         }
 
@@ -368,11 +380,12 @@ class ContinuousScanActivity : AppCompatActivity() {
 
                 binding.quickViewTags.adapter = adapter
             }
-        }).also {
+        }, productRepository).also {
             it.loadAllergens { binding.callToActionImageProgress.visibility = View.GONE }
             it.loadAnalysisTags()
         }
     }
+
 
     private fun showProductNotFound(text: String) {
         hideAllViews()
@@ -450,12 +463,11 @@ class ContinuousScanActivity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        OFFApplication.appComponent.inject(this)
         super.onCreate(savedInstanceState)
         _binding = ActivityContinuousScanBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        useMLScanner = settings.getBoolean(getString(R.string.pref_scanner_type_key),false)
+        useMLScanner = settings.getBoolean(getString(R.string.pref_scanner_type_key), false)
         binding.toggleFlash.setOnClickListener { toggleFlash() }
         binding.buttonMore.setOnClickListener { showMoreSettings() }
 
@@ -528,7 +540,7 @@ class ContinuousScanActivity : AppCompatActivity() {
                     requestedFlashState = flashActive
                     requestedFocusState = autoFocusActive
                 }
-                setOnClickListener{
+                setOnClickListener {
                     quickViewBehavior.state = BottomSheetBehavior.STATE_HIDDEN
                     workflowModel?.setWorkflowState(WorkflowState.DETECTING)
                     startCameraPreview()
@@ -552,8 +564,8 @@ class ContinuousScanActivity : AppCompatActivity() {
 
         // Observes the workflow state changes, if happens, update the overlay view indicators and
         // camera preview state.
-        workflowModel!!.workflowState.observe(this, androidx.lifecycle.Observer{ workflowState ->
-            if (workflowState == null ) {
+        workflowModel!!.workflowState.observe(this, androidx.lifecycle.Observer { workflowState ->
+            if (workflowState == null) {
                 return@Observer
             }
 
@@ -581,7 +593,7 @@ class ContinuousScanActivity : AppCompatActivity() {
         workflowModel?.detectedBarcode?.observe(this, { barcode ->
             if (barcode != null) {
                 mlBarcodeCallback(barcode.rawValue)
-                Log.i(LOG_TAG,"barcode ="+barcode.rawValue)
+                Log.i(LOG_TAG, "barcode =" + barcode.rawValue)
             }
         })
     }
@@ -612,7 +624,7 @@ class ContinuousScanActivity : AppCompatActivity() {
         }
     }
 
-    private fun mlBarcodeCallback(barcodeValue:String?){
+    private fun mlBarcodeCallback(barcodeValue: String?) {
         hintBarcodeDisp?.dispose()
 
         // Prevent duplicate scans
@@ -637,10 +649,9 @@ class ContinuousScanActivity : AppCompatActivity() {
         super.onResume()
         binding.bottomNavigation.bottomNavigation.selectNavigationItem(R.id.scan_bottom_nav)
 
-        if(!useMLScanner && quickViewBehavior.state != BottomSheetBehavior.STATE_EXPANDED) {
+        if (!useMLScanner && quickViewBehavior.state != BottomSheetBehavior.STATE_EXPANDED) {
             binding.barcodeScanner.resume()
-        }
-        else if(useMLScanner && quickViewBehavior.state != BottomSheetBehavior.STATE_EXPANDED) {
+        } else if (useMLScanner && quickViewBehavior.state != BottomSheetBehavior.STATE_EXPANDED) {
             workflowModel?.markCameraFrozen()
             currentWorkflowState = WorkflowState.NOT_STARTED
             cameraSource?.setFrameProcessor(BarcodeProcessor(graphicOverlay!!, workflowModel!!))
@@ -660,10 +671,9 @@ class ContinuousScanActivity : AppCompatActivity() {
     }
 
     override fun onPause() {
-        if(!useMLScanner ) {
+        if (!useMLScanner) {
             binding.barcodeScanner.pause()
-        }
-        else{
+        } else {
             currentWorkflowState = WorkflowState.NOT_STARTED
             stopCameraPreview()
         }
@@ -718,7 +728,7 @@ class ContinuousScanActivity : AppCompatActivity() {
             // turn flash on if flashActive true in pref
             if (flashActive) {
                 binding.toggleFlash.setImageResource(R.drawable.ic_flash_on_white_24dp)
-                if(!useMLScanner) {
+                if (!useMLScanner) {
                     binding.barcodeScanner.setTorchOn()
                 }
             }
@@ -756,7 +766,7 @@ class ContinuousScanActivity : AppCompatActivity() {
         }
         cameraPref.edit { putInt(SETTING_STATE, cameraState) }
 
-        if(!useMLScanner) {
+        if (!useMLScanner) {
             val settings = binding.barcodeScanner.barcodeView.cameraSettings
             if (binding.barcodeScanner.barcodeView.isPreviewActive) {
                 binding.barcodeScanner.pause()
@@ -779,7 +789,7 @@ class ContinuousScanActivity : AppCompatActivity() {
                 binding.toggleFlash.setImageResource(R.drawable.ic_flash_off_white_24dp)
                 putBoolean(SETTING_FLASH, false)
 
-                if(useMLScanner){
+                if (useMLScanner) {
                     cameraSource?.updateFlashMode(flashActive)
                 } else {
                     binding.barcodeScanner.setTorchOff()
@@ -789,10 +799,9 @@ class ContinuousScanActivity : AppCompatActivity() {
                 binding.toggleFlash.setImageResource(R.drawable.ic_flash_on_white_24dp)
                 putBoolean(SETTING_FLASH, true)
 
-                if(useMLScanner){
+                if (useMLScanner) {
                     cameraSource!!.updateFlashMode(flashActive)
-                }
-                else {
+                } else {
                     binding.barcodeScanner.setTorchOn()
                 }
             }
@@ -801,7 +810,7 @@ class ContinuousScanActivity : AppCompatActivity() {
 
     private fun showMoreSettings() {
         popupMenu?.let {
-            if(useMLScanner) {
+            if (useMLScanner) {
                 it.menu.findItem(R.id.toggleBeep).isEnabled = false
             }
             it.setOnMenuItemClickListener { item: MenuItem ->
@@ -819,7 +828,7 @@ class ContinuousScanActivity : AppCompatActivity() {
                         item.isChecked = autoFocusActive
                         cameraPref.edit { putBoolean(SETTING_FOCUS, autoFocusActive) }
 
-                        if(useMLScanner){
+                        if (useMLScanner) {
                             cameraSource?.setFocusMode(autoFocusActive)
                         } else {
                             if (binding.barcodeScanner.barcodeView.isPreviewActive) {
@@ -923,11 +932,10 @@ class ContinuousScanActivity : AppCompatActivity() {
                 if (slideOffset > 0.01f) {
                     binding.quickViewDetails.visibility = View.GONE
                     binding.quickViewTags.visibility = View.GONE
-                    if(useMLScanner){
+                    if (useMLScanner) {
                         workflowModel?.setWorkflowState(WorkflowState.DETECTED)
                         stopCameraPreview()
-                    }
-                    else {
+                    } else {
                         binding.barcodeScanner.pause()
                     }
                     if (slideDelta > 0 && productViewFragment != null) {
@@ -935,11 +943,10 @@ class ContinuousScanActivity : AppCompatActivity() {
                         binding.bottomNavigation.bottomNavigation.visibility = View.GONE
                     }
                 } else {
-                    if(useMLScanner){
+                    if (useMLScanner) {
                         workflowModel?.setWorkflowState(WorkflowState.DETECTING)
                         startCameraPreview()
-                    }
-                    else {
+                    } else {
                         binding.barcodeScanner.resume()
                     }
                     binding.quickViewDetails.visibility = View.VISIBLE

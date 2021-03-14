@@ -20,6 +20,7 @@ buildscript {
     val kotlinVersion by extra("1.4.31")
     val jacksonVersion by extra("2.12.1")
     val greendaoVersion by extra("3.3.0")
+    val hiltVersion by extra("2.33-beta")
     repositories {
         google()
         mavenCentral()
@@ -33,6 +34,9 @@ buildscript {
         // in the individual module build.gradle files
         classpath("org.greenrobot:greendao-gradle-plugin:$greendaoVersion")
         classpath("com.github.timfreiheit:ResourcePlaceholdersPlugin:0.2")
+
+        classpath("com.google.dagger:hilt-android-gradle-plugin:$hiltVersion")
+
 
         classpath("io.sentry:sentry-android-gradle-plugin:1.7.36")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
