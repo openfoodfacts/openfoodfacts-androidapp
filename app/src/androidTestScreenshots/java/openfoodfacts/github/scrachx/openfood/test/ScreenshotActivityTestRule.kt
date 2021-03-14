@@ -1,10 +1,10 @@
 package openfoodfacts.github.scrachx.openfood.test
 
 import android.app.Activity
+import android.content.Context
 import android.util.Log
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.rule.ActivityTestRule
-import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper
 import openfoodfacts.github.scrachx.openfood.utils.PrefManager
 import org.apache.commons.lang3.StringUtils
@@ -14,16 +14,18 @@ class ScreenshotActivityTestRule<T : Activity?>
 @JvmOverloads constructor(
         activityClass: Class<T>,
         var name: String = activityClass.simpleName,
+        val context: Context,
 ) : ActivityTestRule<T>(activityClass, false, false) {
-    var afterActivityLaunchedAction: ((ScreenshotActivityTestRule<T>)->Unit)? = null
+    var afterActivityLaunchedAction: ((ScreenshotActivityTestRule<T>) -> Unit)? = null
     var beforeActivityStartedAction: ((ScreenshotActivityTestRule<T>) -> Unit)? = null
     var firstTimeLaunched = false
     var screenshotParameter: ScreenshotParameter? = null
 
+
     override fun beforeActivityLaunched() {
         try {
             runOnUiThread {
-                PrefManager(OFFApplication.instance).isFirstTimeLaunch = firstTimeLaunched
+                PrefManager(context).isFirstTimeLaunch = firstTimeLaunched
                 LocaleHelper.setContextLanguage(
                         InstrumentationRegistry.getInstrumentation().targetContext,
                         screenshotParameter!!.locale

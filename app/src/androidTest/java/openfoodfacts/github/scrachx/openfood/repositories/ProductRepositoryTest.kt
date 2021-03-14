@@ -1,28 +1,55 @@
 package openfoodfacts.github.scrachx.openfood.repositories
 
+import android.content.Context
 import android.util.Log
 import androidx.test.filters.SmallTest
-import openfoodfacts.github.scrachx.openfood.app.OFFApplication.Companion._daoSession
-import openfoodfacts.github.scrachx.openfood.app.OFFApplication.Companion._instance
+import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.android.testing.HiltAndroidRule
+import dagger.hilt.android.testing.HiltAndroidTest
+import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.Allergen
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenName
-import org.junit.AfterClass
+import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
-import org.junit.BeforeClass
+import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 import java.util.*
+import javax.inject.Inject
 
 /**
  * Created by Lobster on 05.03.18.
  */
 @SmallTest
+@HiltAndroidTest
 class ProductRepositoryTest {
+    @get:Rule
+    var hiltRule = HiltAndroidRule(this)
+
+
+    @Inject
+    lateinit var productRepository: ProductRepository
+
+    @Inject
+    @ApplicationContext
+    lateinit var instance: Context
+
+    @Inject
+    lateinit var daoSession: DaoSession
+
+
+    @Before
+    fun cleanAllergens() {
+        clearDatabase(daoSession)
+        productRepository.saveAllergens(createAllergens())
+    }
+
     @Test
     fun testGetAllergens() {
-        val mSettings = _instance.getSharedPreferences("prefs", 0)
+        val mSettings = instance.getSharedPreferences("prefs", 0)
         val isDownloadActivated = mSettings.getBoolean(Taxonomy.ALLERGEN.downloadActivatePreferencesId, false)
-        val allergens = ProductRepository.reloadAllergensFromServer().blockingGet()
+        val allergens = productRepository.reloadAllergensFromServer().blockingGet()
         assertNotNull(allergens)
         if (!isDownloadActivated) {
             assertEquals(0, allergens.size.toLong())
@@ -41,7 +68,7 @@ class ProductRepositoryTest {
 
     @Test
     fun testGetEnabledAllergens() {
-        val allergens = ProductRepository.getEnabledAllergens()
+        val allergens = productRepository.getEnabledAllergens()
         assertNotNull(allergens)
         assertEquals(1, allergens.size.toLong())
         assertEquals(TEST_ALLERGEN_TAG, allergens[0].tag)
@@ -49,8 +76,8 @@ class ProductRepositoryTest {
 
     @Test
     fun testGetAllergensByEnabledAndLanguageCode() {
-        val enabledAllergenNames = ProductRepository.getAllergensByEnabledAndLanguageCode(true, TEST_LANGUAGE_CODE).blockingGet()
-        val notEnabledAllergenNames = ProductRepository.getAllergensByEnabledAndLanguageCode(false, TEST_LANGUAGE_CODE).blockingGet()
+        val enabledAllergenNames = productRepository.getAllergensByEnabledAndLanguageCode(true, TEST_LANGUAGE_CODE).blockingGet()
+        val notEnabledAllergenNames = productRepository.getAllergensByEnabledAndLanguageCode(false, TEST_LANGUAGE_CODE).blockingGet()
         assertNotNull(enabledAllergenNames)
         assertNotNull(notEnabledAllergenNames)
         assertEquals(1, enabledAllergenNames.size.toLong())
@@ -61,27 +88,21 @@ class ProductRepositoryTest {
 
     @Test
     fun testGetAllergensByLanguageCode() {
-        val allergenNames = ProductRepository.getAllergensByLanguageCode(TEST_LANGUAGE_CODE).blockingGet()
+        val allergenNames = productRepository.getAllergensByLanguageCode(TEST_LANGUAGE_CODE).blockingGet()
         assertNotNull(allergenNames)
         assertEquals(2, allergenNames.size.toLong())
     }
+
+
+    @After
+    fun close() = clearDatabase(daoSession)
 
     companion object {
         private const val TEST_ALLERGEN_TAG = "en:lupin"
         private const val TEST_LANGUAGE_CODE = "es"
         private const val TEST_ALLERGEN_NAME = "Altramuces"
 
-        @BeforeClass
-        fun cleanAllergens() {
-            clearDatabase()
-            ProductRepository.saveAllergens(createAllergens())
-        }
-
-        @AfterClass
-        fun close() = clearDatabase()
-
-        private fun clearDatabase() {
-            val daoSession = _daoSession
+        private fun clearDatabase(daoSession: DaoSession) {
             val db = daoSession.database
             db.beginTransaction()
             try {
@@ -97,14 +118,14 @@ class ProductRepositoryTest {
         private fun createAllergens(): List<Allergen> {
             val allergen1 = Allergen(TEST_ALLERGEN_TAG, ArrayList()).apply {
                 enabled = true
-                names.add(AllergenName(tag, TEST_LANGUAGE_CODE, TEST_ALLERGEN_NAME))
-                names.add(AllergenName(tag, "bg", "Лупина"))
-                names.add(AllergenName(tag, "fr", "Lupin"))
+                names += AllergenName(tag, TEST_LANGUAGE_CODE, TEST_ALLERGEN_NAME)
+                names += AllergenName(tag, "bg", "Лупина")
+                names += AllergenName(tag, "fr", "Lupin")
             }
 
             val allergen2 = Allergen("en:molluscs", ArrayList()).apply {
-                names.add(AllergenName(tag, TEST_LANGUAGE_CODE, "Molluschi"))
-                names.add(AllergenName(tag, "en", "Mollusques"))
+                names += AllergenName(tag, TEST_LANGUAGE_CODE, "Molluschi")
+                names += AllergenName(tag, "en", "Mollusques")
             }
 
             return listOf(allergen1, allergen2)

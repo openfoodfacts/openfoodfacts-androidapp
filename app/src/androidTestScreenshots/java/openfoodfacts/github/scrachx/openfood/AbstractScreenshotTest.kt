@@ -7,10 +7,10 @@ import android.content.Intent
 import android.util.Log
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.GrantPermissionRule
-import openfoodfacts.github.scrachx.openfood.app.OFFApplication
+import dagger.hilt.android.testing.HiltAndroidTest
 import openfoodfacts.github.scrachx.openfood.test.ScreenshotActivityTestRule
 import openfoodfacts.github.scrachx.openfood.test.ScreenshotParameter
-import openfoodfacts.github.scrachx.openfood.test.ScreenshotsLocaleProvider
+import openfoodfacts.github.scrachx.openfood.test.getFilteredParameters
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper
 import org.junit.AfterClass
 import org.junit.BeforeClass
@@ -22,7 +22,9 @@ import java.util.*
  * Take screenshots...buil
  */
 @RunWith(AndroidJUnit4::class)
+@HiltAndroidTest
 abstract class AbstractScreenshotTest {
+
 
     @Rule
     var permissionRule: GrantPermissionRule = GrantPermissionRule.grant(
@@ -34,9 +36,10 @@ abstract class AbstractScreenshotTest {
     private fun startScreenshotActivityTestRules(
             screenshotParameter: ScreenshotParameter,
             activityRules: List<ScreenshotActivityTestRule<out Activity?>>,
-            intents: List<Intent?>
+            intents: List<Intent?>,
+            context: Context
     ) {
-        changeLocale(screenshotParameter)
+        changeLocale(screenshotParameter, context)
         activityRules.forEach { activityRule ->
             intents.forEach { intent ->
                 activityRule.finishActivity()
@@ -48,17 +51,18 @@ abstract class AbstractScreenshotTest {
         }
     }
 
-    private fun changeLocale(parameter: ScreenshotParameter, context: Context = OFFApplication.instance) {
+    private fun changeLocale(parameter: ScreenshotParameter, context: Context) {
         Log.d(LOG_TAG, "Change parameters to $parameter")
         LocaleHelper.setContextLanguage(context, parameter.locale)
     }
 
     protected fun startForAllLocales(
             filter: (ScreenshotParameter) -> List<Intent?> = { listOf(null) },
-            rules: List<ScreenshotActivityTestRule<out Activity?>>
+            rules: List<ScreenshotActivityTestRule<out Activity?>>,
+            context: Context
     ) {
-        ScreenshotsLocaleProvider.getFilteredParameters().forEach {
-            startScreenshotActivityTestRules(it, rules, filter(it))
+        getFilteredParameters().forEach {
+            startScreenshotActivityTestRules(it, rules, filter(it), context)
         }
     }
 
