@@ -20,7 +20,7 @@ jobs:
         # Use this option to upload translations for a single specified language
         download_translations: true
         # Upload sources to Crowdin
-        # upload_sources: # default is true
+        upload_sources: true
         # Upload translations to Crowdin
         # upload_language: # optional
         # Automatically approves uploaded translations
