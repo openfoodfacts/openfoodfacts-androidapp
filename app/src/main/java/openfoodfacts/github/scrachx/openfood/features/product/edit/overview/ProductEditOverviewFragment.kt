@@ -363,7 +363,7 @@ class ProductEditOverviewFragment : ProductEditFragment() {
      * @return returns the name of the country if found in the db or else returns the tag itself.
      */
     private fun getCountryName(languageCode: String?, tag: String) =
-            Utils.daoSession.countryNameDao.queryBuilder()
+            daoSession.countryNameDao.queryBuilder()
                     .where(
                             CountryNameDao.Properties.CountyTag.eq(tag),
                             CountryNameDao.Properties.LanguageCode.eq(languageCode)
@@ -376,7 +376,7 @@ class ProductEditOverviewFragment : ProductEditFragment() {
      * @return returns the name of the label if found in the db or else returns the tag itself.
      */
     private fun getLabelName(languageCode: String?, tag: String) =
-            Utils.daoSession.labelNameDao.queryBuilder()
+            daoSession.labelNameDao.queryBuilder()
                     .where(
                             LabelNameDao.Properties.LabelTag.eq(tag),
                             LabelNameDao.Properties.LanguageCode.eq(languageCode)
@@ -389,7 +389,7 @@ class ProductEditOverviewFragment : ProductEditFragment() {
      * @return returns the name of the category (example Plant-based foods and beverages) if found in the db or else returns the tag itself.
      */
     private fun getCategoryName(languageCode: String?, tag: String): String {
-        return Utils.daoSession.categoryNameDao
+        return daoSession.categoryNameDao
                 .queryBuilder()
                 .where(
                         CategoryNameDao.Properties.CategoryTag.eq(tag),
@@ -399,7 +399,7 @@ class ProductEditOverviewFragment : ProductEditFragment() {
     }
 
     private fun getEmbCode(embTag: String) =
-            Utils.daoSession.tagDao.queryBuilder()
+            daoSession.tagDao.queryBuilder()
                     .where(TagDao.Properties.Id.eq(embTag))
                     .unique()
                     ?.name ?: embTag

@@ -63,6 +63,9 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
     private var _binding: FragmentAddProductIngredientsBinding? = null
     private val binding get() = _binding!!
 
+    @Inject
+    lateinit var daoSession: DaoSession
+
     private var photoReceiverHandler: PhotoReceiverHandler? = null
     private var mAllergenNameDao: AllergenNameDao? = null
     private var photoFile: File? = null
@@ -110,7 +113,7 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
 
         val bundle = arguments
         if (bundle != null) {
-            mAllergenNameDao = Utils.daoSession.allergenNameDao
+            mAllergenNameDao = daoSession.allergenNameDao
             product = getProductFromArgs()
             mOfflineSavedProduct = getEditOfflineProductFromArgs()
             if (product != null) {
@@ -273,8 +276,6 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
     /**
      * Automatically load suggestions for allergen names
      */
-    @Inject
-    lateinit var daoSession: DaoSession
     private fun loadAutoSuggestions() {
         val asyncSessionAllergens = daoSession.startAsyncSession()
         val allergenNameDao = daoSession.allergenNameDao

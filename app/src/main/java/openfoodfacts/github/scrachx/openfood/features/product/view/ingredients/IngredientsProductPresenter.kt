@@ -15,6 +15,7 @@
  */
 package openfoodfacts.github.scrachx.openfood.features.product.view.ingredients
 
+import android.content.Context
 import android.util.Log
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -22,7 +23,6 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.rxkotlin.toObservable
 import io.reactivex.schedulers.Schedulers
-import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveName
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenName
@@ -34,9 +34,10 @@ import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState
  * Created by Lobster on 17.03.18.
  */
 class IngredientsProductPresenter(
-        private val product: Product,
+        private val context: Context,
         private val view: IIngredientsProductPresenter.View,
-        private val productRepository: ProductRepository
+        private val productRepository: ProductRepository,
+        private val product: Product
 ) : IIngredientsProductPresenter.Actions {
     private val disp = CompositeDisposable()
 
@@ -46,7 +47,7 @@ class IngredientsProductPresenter(
             view.showAdditivesState(ProductInfoState.EMPTY)
             return
         }
-        val languageCode = LocaleHelper.getLanguage(OFFApplication._instance)
+        val languageCode = LocaleHelper.getLanguage(context)
         additivesTags.toObservable()
                 .flatMapSingle { tag: String? ->
                     productRepository.getAdditiveByTagAndLanguageCode(tag, languageCode).flatMap { categoryName: AdditiveName ->
@@ -82,7 +83,7 @@ class IngredientsProductPresenter(
             view.showAllergensState(ProductInfoState.EMPTY)
             return
         }
-        val languageCode = LocaleHelper.getLanguage(OFFApplication._instance)
+        val languageCode = LocaleHelper.getLanguage(context)
         allergenTags.toObservable()
                 .flatMapSingle { tag: String? ->
                     productRepository.getAllergenByTagAndLanguageCode(tag, languageCode).flatMap { allergenName: AllergenName ->

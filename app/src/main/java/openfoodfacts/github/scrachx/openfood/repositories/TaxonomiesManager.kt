@@ -1,9 +1,9 @@
 package openfoodfacts.github.scrachx.openfood.repositories
 
+import android.content.Context
 import android.util.Log
 import io.reactivex.Single
 import openfoodfacts.github.scrachx.openfood.BuildConfig
-import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.utils.Utils
 import openfoodfacts.github.scrachx.openfood.utils.isEmpty
 import openfoodfacts.github.scrachx.openfood.utils.logDownload
@@ -58,10 +58,11 @@ object TaxonomiesManager {
             taxonomy: Taxonomy,
             repository: ProductRepository,
             checkUpdate: Boolean,
-            dao: AbstractDao<T, *>
+            dao: AbstractDao<T, *>,
+            context: Context
     ): Single<List<T>> {
         // WARNING: Before "return" all code is executed on MAIN THREAD
-        val mSettings = OFFApplication._instance.getSharedPreferences("prefs", 0)
+        val mSettings = context.getSharedPreferences("prefs", 0)
 
         // First check if this taxonomy is to be loaded for this flavor, else return empty list
         val isTaxonomyActivated = mSettings.getBoolean(taxonomy.downloadActivatePreferencesId, false)

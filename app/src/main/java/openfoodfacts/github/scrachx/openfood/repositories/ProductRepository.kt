@@ -15,14 +15,15 @@
  */
 package openfoodfacts.github.scrachx.openfood.repositories
 
+import android.content.Context
 import android.util.Log
 import androidx.core.content.edit
 import com.squareup.picasso.Picasso
+import dagger.hilt.android.qualifiers.ApplicationContext
 import io.reactivex.Maybe
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
 import okhttp3.Credentials
-import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.models.*
 import openfoodfacts.github.scrachx.openfood.models.entities.additive.*
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.*
@@ -57,6 +58,7 @@ import javax.inject.Singleton
  */
 @Singleton
 class ProductRepository @Inject constructor(
+        @ApplicationContext private val context: Context,
         private val daoSession: DaoSession
 ) {
 
@@ -66,7 +68,7 @@ class ProductRepository @Inject constructor(
      * @return The list of Labels.
      */
     fun reloadLabelsFromServer() =
-            getTaxonomyData(Taxonomy.LABEL, this, true, daoSession.labelDao)
+            getTaxonomyData(Taxonomy.LABEL, this, true, daoSession.labelDao, context)
 
     fun loadLabels(lastModifiedDate: Long) = analysisDataApi.getLabels()
             .map { it.map() }
@@ -81,7 +83,7 @@ class ProductRepository @Inject constructor(
      * @return The list of Tags.
      */
     fun reloadTagsFromServer() =
-            getTaxonomyData(Taxonomy.TAGS, this, true, daoSession.tagDao)
+            getTaxonomyData(Taxonomy.TAGS, this, true, daoSession.tagDao, context)
 
     fun loadTags(lastModifiedDate: Long) = analysisDataApi.getTags()
             .map { it.tags }
@@ -91,7 +93,7 @@ class ProductRepository @Inject constructor(
             }
 
     fun reloadInvalidBarcodesFromServer() =
-            getTaxonomyData(Taxonomy.INVALID_BARCODES, this, true, daoSession.invalidBarcodeDao)
+            getTaxonomyData(Taxonomy.INVALID_BARCODES, this, true, daoSession.invalidBarcodeDao, context)
 
     fun loadInvalidBarcodes(lastModifiedDate: Long) = analysisDataApi.getInvalidBarcodes()
             .map { strings -> strings.map { InvalidBarcode(it) } }
@@ -107,10 +109,10 @@ class ProductRepository @Inject constructor(
      */
     fun reloadAllergensFromServer(): Single<List<Allergen>> =
             // FIXME: this returns 404
-            getTaxonomyData(Taxonomy.ALLERGEN, this, true, daoSession.allergenDao)
+            getTaxonomyData(Taxonomy.ALLERGEN, this, true, daoSession.allergenDao, context)
 
     fun getAllergens(): Single<List<Allergen>> =
-            getTaxonomyData(Taxonomy.ALLERGEN, this, false, daoSession.allergenDao)
+            getTaxonomyData(Taxonomy.ALLERGEN, this, false, daoSession.allergenDao, context)
 
     fun loadAllergens(lastModifiedDate: Long): Single<List<Allergen>> = analysisDataApi.getAllergens()
             .map { it.map() }
@@ -125,7 +127,7 @@ class ProductRepository @Inject constructor(
      * @return The list of countries.
      */
     fun reloadCountriesFromServer(): Single<List<Country>> =
-            getTaxonomyData(Taxonomy.COUNTRY, this, true, daoSession.countryDao)
+            getTaxonomyData(Taxonomy.COUNTRY, this, true, daoSession.countryDao, context)
 
     fun loadCountries(lastModifiedDate: Long): Single<List<Country>> = analysisDataApi.getCountries()
             .map { it.map() }
@@ -140,9 +142,9 @@ class ProductRepository @Inject constructor(
      * @return The list of categories.
      */
     fun reloadCategoriesFromServer() =
-            getTaxonomyData(Taxonomy.CATEGORY, this, true, daoSession.categoryDao)
+            getTaxonomyData(Taxonomy.CATEGORY, this, true, daoSession.categoryDao, context)
 
-    fun getCategories() = getTaxonomyData(Taxonomy.CATEGORY, this, false, daoSession.categoryDao)
+    fun getCategories() = getTaxonomyData(Taxonomy.CATEGORY, this, false, daoSession.categoryDao, context)
 
     fun loadCategories(lastModifiedDate: Long) = analysisDataApi.getCategories()
             .map { it.map() }
@@ -167,7 +169,7 @@ class ProductRepository @Inject constructor(
      * @return The list of additives.
      */
     fun reloadAdditivesFromServer() =
-            getTaxonomyData(Taxonomy.ADDITIVE, this, true, daoSession.additiveDao)
+            getTaxonomyData(Taxonomy.ADDITIVE, this, true, daoSession.additiveDao, context)
 
     fun loadAdditives(lastModifiedDate: Long) = analysisDataApi.getAdditives()
             .map { it.map() }
@@ -187,7 +189,7 @@ class ProductRepository @Inject constructor(
      * @return The ingredients in the product.
      */
     fun reloadIngredientsFromServer(): Single<List<Ingredient>> =
-            getTaxonomyData(Taxonomy.INGREDIENT, this, true, daoSession.ingredientDao)
+            getTaxonomyData(Taxonomy.INGREDIENT, this, true, daoSession.ingredientDao, context)
 
     fun loadIngredients(lastModifiedDate: Long): Single<List<Ingredient>> = analysisDataApi.getIngredients()
             .map { it.map() }
@@ -202,7 +204,7 @@ class ProductRepository @Inject constructor(
      * @return The list of states.
      */
     fun reloadStatesFromServer(): Single<List<States>> =
-            getTaxonomyData(Taxonomy.STATES, this, true, daoSession.statesDao)
+            getTaxonomyData(Taxonomy.STATES, this, true, daoSession.statesDao, context)
 
     fun loadStates(lastModifiedDate: Long): Single<List<States>> = analysisDataApi.getStates()
             .map { it.map() }
@@ -217,7 +219,7 @@ class ProductRepository @Inject constructor(
      * @return The list of stores.
      */
     fun reloadStoresFromServer(): Single<List<Store>> =
-            getTaxonomyData(Taxonomy.STORES, this, true, daoSession.storeDao)
+            getTaxonomyData(Taxonomy.STORES, this, true, daoSession.storeDao, context)
 
     fun loadStores(lastModifiedDate: Long): Single<List<Store>> = analysisDataApi.getStores()
             .map { it.map() }
@@ -227,13 +229,13 @@ class ProductRepository @Inject constructor(
             }
 
     fun reloadBrandsFromServer(): Single<List<Brand>> =
-            getTaxonomyData(Taxonomy.BRANDS, this, true, daoSession.brandDao)
+            getTaxonomyData(Taxonomy.BRANDS, this, true, daoSession.brandDao, context)
 
     fun loadBrands(lastModifiedDate: Long): Single<List<Brand>> = analysisDataApi.getBrands()
             .map { it.map() }
-            .doOnSuccess{
+            .doOnSuccess {
                 saveBrands(it)
-                updateLastDownloadDateInSettings(Taxonomy.BRANDS,lastModifiedDate)
+                updateLastDownloadDateInSettings(Taxonomy.BRANDS, lastModifiedDate)
             }
 
     /**
@@ -243,7 +245,7 @@ class ProductRepository @Inject constructor(
      * @param lastDownload Date of last update on Long format
      */
     private fun updateLastDownloadDateInSettings(taxonomy: Taxonomy, lastDownload: Long) {
-        OFFApplication._instance.getSharedPreferences("prefs", 0)
+        context.getSharedPreferences("prefs", 0)
                 .edit { putLong(taxonomy.lastDownloadTimeStampPreferenceId, lastDownload) }
         Log.i(LOG_TAG, "Set lastDownload of $taxonomy to $lastDownload")
     }
@@ -582,7 +584,8 @@ class ProductRepository @Inject constructor(
             Taxonomy.COUNTRY,
             this,
             false,
-            daoSession.countryDao
+            daoSession.countryDao,
+            context
     )
 
     fun getCountryByCC2OrWorld(cc2: String?) = getCountries().flatMapMaybe { countries ->
@@ -727,8 +730,8 @@ class ProductRepository @Inject constructor(
      */
     fun annotateInsight(insightId: String, annotation: AnnotationAnswer): Single<AnnotationResponse> {
         // if the user is logged in, send the auth, otherwise make it anonymous
-        val user = OFFApplication._instance.getLoginPreferences().getString("user", "")?.trim { it <= ' ' } ?: ""
-        val pass = OFFApplication._instance.getLoginPreferences().getString("pass", "")?.trim { it <= ' ' } ?: ""
+        val user = context.getLoginPreferences().getString("user", "")?.trim { it <= ' ' } ?: ""
+        val pass = context.getLoginPreferences().getString("pass", "")?.trim { it <= ' ' } ?: ""
 
         return if (user.isBlank() || pass.isBlank()) {
             robotoffApi.annotateInsight(insightId, annotation.result)
@@ -743,7 +746,7 @@ class ProductRepository @Inject constructor(
      * @return The analysis tags in the product.
      */
     fun reloadAnalysisTagsFromServer() =
-            getTaxonomyData(Taxonomy.ANALYSIS_TAGS, this, true, daoSession.analysisTagDao)
+            getTaxonomyData(Taxonomy.ANALYSIS_TAGS, this, true, daoSession.analysisTagDao, context)
 
     fun loadAnalysisTags(lastModifiedDate: Long) = analysisDataApi.getAnalysisTags()
             .map { it.map() }
@@ -778,7 +781,7 @@ class ProductRepository @Inject constructor(
     }
 
     fun reloadAnalysisTagConfigsFromServer(): Single<List<AnalysisTagConfig>> =
-            getTaxonomyData(Taxonomy.ANALYSIS_TAG_CONFIG, this, true, daoSession.analysisTagConfigDao)
+            getTaxonomyData(Taxonomy.ANALYSIS_TAG_CONFIG, this, true, daoSession.analysisTagConfigDao, context)
 
     fun loadAnalysisTagConfigs(lastModifiedDate: Long): Single<List<AnalysisTagConfig>> = analysisDataApi.getAnalysisTagConfigs()
             .map { it.map() }

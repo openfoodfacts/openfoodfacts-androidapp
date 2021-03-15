@@ -53,7 +53,6 @@ import openfoodfacts.github.scrachx.openfood.models.entities.ProductListsDao
 import openfoodfacts.github.scrachx.openfood.models.entities.YourListedProduct
 import openfoodfacts.github.scrachx.openfood.models.entities.YourListedProductDao
 import openfoodfacts.github.scrachx.openfood.utils.SwipeController
-import openfoodfacts.github.scrachx.openfood.utils.Utils
 import org.apache.commons.csv.CSVFormat
 import org.apache.commons.csv.CSVParser
 import java.io.InputStream
@@ -230,7 +229,7 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
         progressDialog.show()
         Observable.create { emitter: ObservableEmitter<Int?> ->
             Single.fromCallable {
-                val yourListedProductDao = Utils.daoSession.yourListedProductDao
+                val yourListedProductDao = daoSession.yourListedProductDao
                 val list = ArrayList<YourListedProduct>()
                 try {
                     CSVParser(InputStreamReader(inputStream), CSVFormat.DEFAULT.withFirstRecordAsHeader()).use { csvParser ->

@@ -8,25 +8,35 @@ import android.view.Menu
 import android.widget.SearchView
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import dagger.hilt.android.AndroidEntryPoint
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityAdditivesExplorerBinding
 import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.selectNavigationItem
 import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivity
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
+import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveName
 import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveNameDao
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper
 import openfoodfacts.github.scrachx.openfood.utils.SearchType
-import openfoodfacts.github.scrachx.openfood.utils.Utils
 import org.greenrobot.greendao.async.AsyncOperation
 import org.greenrobot.greendao.async.AsyncOperationListener
 import java.util.*
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class AdditiveListActivity : BaseActivity() {
     private var _binding: ActivityAdditivesExplorerBinding? = null
     private val binding get() = _binding!!
+
+    @Inject
+    lateinit var daoSession: DaoSession
+
+
     private var additives = mutableListOf<AdditiveName>()
+
+
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
@@ -39,7 +49,6 @@ class AdditiveListActivity : BaseActivity() {
         setSupportActionBar(binding.toolbarInclude.toolbar)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setTitle(R.string.additives)
-        val daoSession = Utils.daoSession
         val asyncSessionAdditives = daoSession.startAsyncSession()
         val additiveNameDao = daoSession.additiveNameDao
         val languageCode = LocaleHelper.getLanguage(this)

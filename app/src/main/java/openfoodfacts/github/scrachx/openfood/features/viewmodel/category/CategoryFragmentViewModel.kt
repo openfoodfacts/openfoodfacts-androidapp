@@ -27,7 +27,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
-import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.models.entities.category.Category
 import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoryName
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
@@ -64,7 +63,7 @@ class CategoryFragmentViewModel @Inject constructor(
      * Generates a network call for showing categories in CategoryFragment
      */
     fun refreshCategories() {
-        productRepository.getAllCategoriesByLanguageCode(getLanguage(OFFApplication._instance))
+        productRepository.getAllCategoriesByLanguageCode(getLanguage(app))
                 .doOnSubscribe {
                     showOffline.set(View.GONE)
                     showProgress.set(View.VISIBLE)

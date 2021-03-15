@@ -82,12 +82,6 @@ class OFFApplication : MultiDexApplication(), Configuration.Provider {
         private const val DEBUG = false
         val LOG_TAG = OFFApplication::class.simpleName!!
 
-        @JvmStatic
-        @Deprecated("Use hilt.")
-        lateinit var _daoSession: DaoSession
-            @Synchronized
-            private set
-
         @Deprecated("Use hilt.")
         lateinit var _instance: OFFApplication
             @Synchronized

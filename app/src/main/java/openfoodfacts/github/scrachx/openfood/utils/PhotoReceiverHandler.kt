@@ -19,7 +19,9 @@ import java.io.File
 /**
  * A class for handling photo receiver
  */
-class PhotoReceiverHandler(private val photoReceiver: (File) -> Unit) {
+class PhotoReceiverHandler(
+        private val photoReceiver: (File) -> Unit
+) {
     fun onActivityResult(fragment: Fragment?, requestCode: Int, resultCode: Int, data: Intent?) =
             onActivityResult(null, fragment, requestCode, resultCode, data)
 

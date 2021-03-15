@@ -11,16 +11,13 @@ import javax.inject.Singleton
  * @since 14.03.18
  */
 @Singleton
-class WikiDataApiClient @Inject constructor() {
-
-    @Inject
-    lateinit var wikidataAPI: WikidataAPI
-
+class WikiDataApiClient @Inject constructor(
+        private val wikidataAPI: WikidataAPI
+) {
     /**
      * Get json response of the WikiData for additive/ingredient/category/label using their WikiDataID
      *
      * @param code WikiData ID of additive/ingredient/category/label
      */
     fun doSomeThing(code: String) = wikidataAPI.getWikiCategory(code).map { it["entities"][code] }
-
 }
