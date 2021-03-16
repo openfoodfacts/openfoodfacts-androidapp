@@ -48,10 +48,6 @@ import androidx.core.net.toUri
 import androidx.core.view.children
 import androidx.work.*
 import com.afollestad.materialdialogs.MaterialDialog
-import com.squareup.picasso.OkHttp3Downloader
-import com.squareup.picasso.Picasso
-import okhttp3.*
-import okhttp3.logging.HttpLoggingInterceptor
 import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.features.LoginActivity
@@ -171,45 +167,6 @@ object Utils {
 
         isUploadJobInitialised = true
     }
-
-    private fun defaultHttpBuilder(): OkHttpClient.Builder {
-        // Our servers don't support TLS 1.3 therefore we need to create custom connectionSpec
-        // with the correct ciphers to support network requests successfully on Android 7
-        val connectionSpecModernTLS = ConnectionSpec.Builder(ConnectionSpec.MODERN_TLS)
-                .tlsVersions(TlsVersion.TLS_1_2)
-                .cipherSuites(
-                        CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,
-                        CipherSuite.TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,
-                        CipherSuite.TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,
-                        CipherSuite.TLS_DHE_RSA_WITH_AES_256_GCM_SHA384,
-                        CipherSuite.TLS_DHE_RSA_WITH_AES_128_GCM_SHA256)
-                .build()
-        val builder = OkHttpClient.Builder()
-                .connectTimeout(CONNECTION_TIMEOUT.toLong(), TimeUnit.MILLISECONDS)
-                .readTimeout(RW_TIMEOUT.toLong(), TimeUnit.MILLISECONDS)
-                .writeTimeout(RW_TIMEOUT.toLong(), TimeUnit.MILLISECONDS)
-                .connectionSpecs(listOf(connectionSpecModernTLS, ConnectionSpec.COMPATIBLE_TLS))
-        if (BuildConfig.DEBUG) {
-            builder.addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
-        } else {
-            builder.addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BASIC))
-        }
-        return builder
-    }
-
-    val defaultHttpClient: OkHttpClient by lazy { defaultHttpBuilder().build() }
-
-    private fun buildCachedHttpClient(context: Context): OkHttpClient {
-        val cacheSize: Long = 50 * 1024 * 1024
-        val cacheDir = File(context.cacheDir, "http-cache")
-        return defaultHttpBuilder()
-                .cache(Cache(cacheDir, cacheSize))
-                .build()
-    }
-
-    fun picassoBuilder(context: Context): Picasso = Picasso.Builder(context)
-            .downloader(OkHttp3Downloader(buildCachedHttpClient(context)))
-            .build()
 
     /**
      * Check if the user is connected to a network. This can be any network.
@@ -349,8 +306,6 @@ private fun decodeFile(f: File): Bitmap? {
 }
 
 private const val REQUIRED_SIZE = 1200
-private const val CONNECTION_TIMEOUT = 5000
-private const val RW_TIMEOUT = 30000
 const val SPACE = " "
 const val MY_PERMISSIONS_REQUEST_CAMERA = 1
 const val MY_PERMISSIONS_REQUEST_STORAGE = 2

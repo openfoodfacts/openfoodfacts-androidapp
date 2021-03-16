@@ -52,6 +52,7 @@ import com.mikepenz.iconics.IconicsColor
 import com.mikepenz.iconics.IconicsDrawable
 import com.mikepenz.iconics.IconicsSize
 import com.mikepenz.iconics.typeface.library.googlematerial.GoogleMaterial
+import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.Completable
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -123,6 +124,9 @@ class ContinuousScanActivity : AppCompatActivity() {
 
     @Inject
     lateinit var productRepository: ProductRepository
+
+    @Inject
+    lateinit var picasso: Picasso
 
     private val cameraPref by lazy { getSharedPreferences("camera", 0) }
 
@@ -372,7 +376,7 @@ class ContinuousScanActivity : AppCompatActivity() {
                 }
                 binding.quickViewTags.visibility = View.VISIBLE
                 analysisTagsEmpty = false
-                val adapter = IngredientAnalysisTagsAdapter(this@ContinuousScanActivity, analysisTags)
+                val adapter = IngredientAnalysisTagsAdapter(this@ContinuousScanActivity, analysisTags, picasso)
                 adapter.setOnItemClickListener { view: View?, _ ->
                     if (view == null) return@setOnItemClickListener
                     IngredientsWithTagDialogFragment.newInstance(product, view.getTag(R.id.analysis_tag_config) as AnalysisTagConfig).run {

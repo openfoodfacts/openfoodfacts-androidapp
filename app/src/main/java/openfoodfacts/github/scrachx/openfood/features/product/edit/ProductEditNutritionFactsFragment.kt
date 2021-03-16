@@ -32,6 +32,8 @@ import androidx.core.widget.doAfterTextChanged
 import com.afollestad.materialdialogs.MaterialDialog
 import com.google.android.material.textfield.TextInputLayout
 import com.squareup.picasso.Callback
+import com.squareup.picasso.Picasso
+import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.addTo
 import openfoodfacts.github.scrachx.openfood.R
@@ -52,18 +54,20 @@ import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.Defaults.NUTRITION_DATA_PER_100G
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.Defaults.NUTRITION_DATA_PER_SERVING
+import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.FileDownloader.download
 import openfoodfacts.github.scrachx.openfood.utils.UnitUtils.UNIT_IU
 import openfoodfacts.github.scrachx.openfood.utils.Utils.getRoundNumber
-import openfoodfacts.github.scrachx.openfood.utils.Utils.picassoBuilder
 import java.io.File
 import java.text.Collator
 import java.util.*
+import javax.inject.Inject
 
 /**
  * @see R.layout.fragment_add_product_nutrition_facts
  */
+@AndroidEntryPoint
 class ProductEditNutritionFactsFragment : ProductEditFragment() {
     private val keyListener = object : NumberKeyListener() {
         override fun getInputType() = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
@@ -86,6 +90,11 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
     private var starchEditText: CustomValidatingEditTextView? = null
     private var allEditViews = mutableSetOf<CustomValidatingEditTextView>()
 
+    @Inject
+    lateinit var picasso: Picasso
+
+    @Inject
+    lateinit var productsApi: ProductsAPI
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentAddProductNutritionFactsBinding.inflate(inflater, container, false)
@@ -353,7 +362,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
      * @param path path of the image
      */
     private fun loadNutritionImage(path: String) {
-        picassoBuilder(requireContext())
+        picasso
                 .load(path)
                 .resize(requireContext().dpsToPixel(50), requireContext().dpsToPixel(50))
                 .centerInside()
@@ -392,7 +401,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         if (photoFile != null) {
             cropRotateImage(photoFile, getString(R.string.nutrition_facts_picture))
         } else {
-            download(requireContext(), path)
+            download(requireContext(), path, productsApi)
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe {
                         photoFile = it
@@ -882,7 +891,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         binding.btnAddImageNutritionFacts.visibility = View.VISIBLE
         binding.btnEditImageNutritionFacts.visibility = View.VISIBLE
         if (!errorInUploading) {
-            picassoBuilder(requireContext())
+            picasso
                     .load(photoFile!!)
                     .resize(requireContext().dpsToPixel(50), requireContext().dpsToPixel(50))
                     .centerInside()

@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Callback
+import com.squareup.picasso.Picasso
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.R
@@ -14,7 +15,6 @@ import openfoodfacts.github.scrachx.openfood.databinding.HistoryListItemBinding
 import openfoodfacts.github.scrachx.openfood.features.productlist.ProductListActivity.Companion.getProductBrandsQuantityDetails
 import openfoodfacts.github.scrachx.openfood.models.HistoryProduct
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
-import openfoodfacts.github.scrachx.openfood.utils.Utils.picassoBuilder
 import openfoodfacts.github.scrachx.openfood.utils.getEcoscoreResource
 import openfoodfacts.github.scrachx.openfood.utils.getNovaGroupResource
 import openfoodfacts.github.scrachx.openfood.utils.getNutriScoreResource
@@ -26,6 +26,7 @@ class ScanHistoryAdapter(
         private val client: OpenFoodAPIClient,
         private val isLowBatteryMode: Boolean,
         val products: MutableList<HistoryProduct>,
+        private val picasso: Picasso
 ) : RecyclerView.Adapter<ScanHistoryHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ScanHistoryHolder {
         val view = HistoryListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -47,7 +48,7 @@ class ScanHistoryAdapter(
 
         // Load Image if isBatteryLoad is false
         if (!isLowBatteryMode) {
-            picassoBuilder(activity)
+            picasso
                     .load(hProduct.url)
                     .placeholder(R.drawable.placeholder_thumb)
                     .error(R.drawable.ic_no_red_24dp)

@@ -90,6 +90,9 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
     @Inject
     lateinit var wikidataClient: WikiDataApiClient
 
+    @Inject
+    lateinit var picasso: Picasso
+
     private val performOCRLauncher = registerForActivityResult(PerformOCRContract())
     { result -> if (result) onRefresh() }
     private val updateImagesLauncher = registerForActivityResult(SendUpdatedImgContract())
@@ -186,7 +189,7 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
 
             // Load Image if isLowBatteryMode is false
             if (!requireContext().isBatteryLevelLow()) {
-                Utils.picassoBuilder(requireContext())
+                picasso
                         .load(product.getImageIngredientsUrl(langCode))
                         .into(binding.imageViewIngredients)
             } else {

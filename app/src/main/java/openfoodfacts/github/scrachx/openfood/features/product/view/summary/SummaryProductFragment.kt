@@ -106,6 +106,9 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     @Inject
     lateinit var daoSession: DaoSession
 
+    @Inject
+    lateinit var picasso: Picasso
+
     private lateinit var presenter: ISummaryProductPresenter.Actions
     private lateinit var mTagDao: TagDao
     private lateinit var product: Product
@@ -290,9 +293,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
 
             // Load Image if isLowBatteryMode is false
             if (!isLowBatteryMode) {
-                Utils.picassoBuilder(requireContext())
-                        .load(imageUrl)
-                        .into(binding.imageViewFront)
+                picasso.load(imageUrl).into(binding.imageViewFront)
             } else {
                 binding.imageViewFront.visibility = View.GONE
             }
@@ -561,7 +562,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     override fun showAnalysisTags(analysisTags: List<AnalysisTagConfig>) {
         requireActivity().runOnUiThread {
             binding.analysisContainer.visibility = View.VISIBLE
-            val adapter = IngredientAnalysisTagsAdapter(requireContext(), analysisTags)
+            val adapter = IngredientAnalysisTagsAdapter(requireContext(), analysisTags, picasso)
             adapter.setOnItemClickListener { view, _ ->
                 val fragment = IngredientsWithTagDialogFragment
                         .newInstance(product, view.getTag(R.id.analysis_tag_config) as AnalysisTagConfig)

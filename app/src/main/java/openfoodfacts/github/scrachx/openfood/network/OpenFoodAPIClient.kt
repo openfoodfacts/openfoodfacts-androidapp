@@ -32,7 +32,7 @@ import openfoodfacts.github.scrachx.openfood.models.*
 import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct
 import openfoodfacts.github.scrachx.openfood.models.entities.ToUploadProduct
 import openfoodfacts.github.scrachx.openfood.models.entities.ToUploadProductDao
-import openfoodfacts.github.scrachx.openfood.network.CommonApiManager.productsApi
+import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
 import java.io.File
@@ -48,7 +48,8 @@ import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewAc
 @Singleton
 class OpenFoodAPIClient @Inject constructor(
         @ApplicationContext private val context: Context,
-        private val daoSession: DaoSession
+        private val daoSession: DaoSession,
+        private val productsApi: ProductsAPI
 ) {
     private var historySyncDisp = CompositeDisposable()
 

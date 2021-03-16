@@ -32,6 +32,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.edit
 import com.github.chrisbanes.photoview.PhotoViewAttacher
 import com.squareup.picasso.Callback
+import com.squareup.picasso.Picasso
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImageActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -51,6 +52,7 @@ import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
+import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.FileDownloader.download
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.LanguageData
@@ -60,7 +62,6 @@ import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguageData
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLocale
 import openfoodfacts.github.scrachx.openfood.utils.SwipeDetector.OnSwipeEventListener
 import openfoodfacts.github.scrachx.openfood.utils.SwipeDetector.SwipeTypeEnum
-import openfoodfacts.github.scrachx.openfood.utils.Utils.picassoBuilder
 import org.apache.commons.lang3.StringUtils
 import pl.aprilapps.easyphotopicker.EasyImage
 import smartdevelop.ir.eram.showcaseviewlib.GuideView
@@ -78,6 +79,12 @@ class ImagesManageActivity : BaseActivity() {
 
     @Inject
     lateinit var client: OpenFoodAPIClient
+
+    @Inject
+    lateinit var picasso: Picasso
+
+    @Inject
+    lateinit var productsApi: ProductsAPI
 
     private val disp = CompositeDisposable()
 
@@ -279,7 +286,7 @@ class ImagesManageActivity : BaseActivity() {
                 url = "file://$url"
             }
             startRefresh(getString(R.string.txtLoading))
-            picassoBuilder(this)
+            picasso
                     .load(url)
                     .into(binding.imageViewFullScreen, object : Callback {
                         override fun onSuccess() {
@@ -463,7 +470,7 @@ class ImagesManageActivity : BaseActivity() {
 
     private fun editPhoto(productImageField: ProductImageField?, transformation: ImageTransformationUtils) {
         if (transformation.isNotEmpty()) {
-            download(this, transformation.imageUrl!!)
+            download(this, transformation.imageUrl!!, productsApi)
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe { file: File? ->
                         //to delete the file after:

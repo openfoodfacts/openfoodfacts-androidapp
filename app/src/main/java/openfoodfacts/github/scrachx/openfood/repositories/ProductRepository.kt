@@ -42,8 +42,8 @@ import openfoodfacts.github.scrachx.openfood.models.entities.states.StatesNameDa
 import openfoodfacts.github.scrachx.openfood.models.entities.store.Store
 import openfoodfacts.github.scrachx.openfood.models.entities.tag.Tag
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
-import openfoodfacts.github.scrachx.openfood.network.CommonApiManager.analysisDataApi
-import openfoodfacts.github.scrachx.openfood.network.CommonApiManager.robotoffApi
+import openfoodfacts.github.scrachx.openfood.network.services.AnalysisDataAPI
+import openfoodfacts.github.scrachx.openfood.network.services.RobotoffAPI
 import openfoodfacts.github.scrachx.openfood.repositories.TaxonomiesManager.getTaxonomyData
 import openfoodfacts.github.scrachx.openfood.utils.getLoginPreferences
 import org.greenrobot.greendao.query.WhereCondition.StringCondition
@@ -59,7 +59,9 @@ import javax.inject.Singleton
 @Singleton
 class ProductRepository @Inject constructor(
         @ApplicationContext private val context: Context,
-        private val daoSession: DaoSession
+        private val daoSession: DaoSession,
+        private val analysisDataApi: AnalysisDataAPI,
+        private val robotoffApi: RobotoffAPI
 ) {
 
     /**
