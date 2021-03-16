@@ -62,7 +62,6 @@
                         android:layout_marginTop="30dp"
                         android:ellipsize="marquee"
                         android:gravity="center"
-                        android:singleLine="true"
                         android:textSize="14sp"
                         android:textStyle="bold"
                         tools:text="Question" />
