@@ -26,3 +26,4 @@ jobs:
 
       - name: Unit tests
         run: bash ./gradlew testObfDebugUnitTest testOffDebugUnitTest testOpfDebugUnitTest testOpffDebugUnitTest --stacktrace
+
