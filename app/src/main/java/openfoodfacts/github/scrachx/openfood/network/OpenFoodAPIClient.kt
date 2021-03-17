@@ -452,7 +452,7 @@ class OpenFoodAPIClient @Inject constructor(
         return comment.toString()
     }
 
-    private fun getLocaleProductNameField() = "product_name_${getLanguage(context)}"
+    fun getLocaleProductNameField() = "product_name_${getLanguage(context)}"
 
     private fun getFieldsToFetchFacets() = listOf(
             ApiFields.Keys.BRANDS,
