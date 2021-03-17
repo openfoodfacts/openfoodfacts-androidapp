@@ -390,7 +390,7 @@ class ProductSearchActivity : BaseActivity() {
                 products += null
             }
             if (setupDone) {
-                adapter = ProductsRecyclerViewAdapter(products, lowBatteryMode, this)
+                adapter = ProductsRecyclerViewAdapter(products, lowBatteryMode, this, client)
                 binding.productsRecyclerView.adapter = adapter
             }
             setUpRecyclerView(products)
@@ -478,7 +478,7 @@ class ProductSearchActivity : BaseActivity() {
             binding.productsRecyclerView.setHasFixedSize(true)
             val mLayoutManager = LinearLayoutManager(this@ProductSearchActivity, LinearLayoutManager.VERTICAL, false)
             binding.productsRecyclerView.layoutManager = mLayoutManager
-            adapter = ProductsRecyclerViewAdapter(mProducts, lowBatteryMode, this)
+            adapter = ProductsRecyclerViewAdapter(mProducts, lowBatteryMode, this, client)
             binding.productsRecyclerView.adapter = adapter
             val dividerItemDecoration = DividerItemDecoration(binding.productsRecyclerView.context, DividerItemDecoration.VERTICAL)
             binding.productsRecyclerView.addItemDecoration(dividerItemDecoration)

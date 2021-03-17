@@ -13,7 +13,7 @@ import com.squareup.picasso.Picasso
 import openfoodfacts.github.scrachx.openfood.AppFlavors
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.models.Product
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient.Companion.getLocaleProductNameField
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
 import openfoodfacts.github.scrachx.openfood.utils.Utils.picassoBuilder
 import openfoodfacts.github.scrachx.openfood.utils.getEcoscoreResource
@@ -27,7 +27,8 @@ import openfoodfacts.github.scrachx.openfood.utils.getProductBrandsQuantityDetai
 class ProductsRecyclerViewAdapter(
         val products: MutableList<Product?>,
         private val isLowBatteryMode: Boolean,
-        private val context: Context
+        private val context: Context,
+        private val openFoodAPIClient: OpenFoodAPIClient
 ) : RecyclerView.Adapter<ProductsRecyclerViewAdapter.ProductsListViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductsListViewHolder {
@@ -73,7 +74,7 @@ class ProductsRecyclerViewAdapter(
 
         // Set product name
         holder.productName.text = product?.productName ?: context.getString(R.string.productNameNull)
-        val productNameInLocale = product?.additionalProperties?.get(getLocaleProductNameField()) as String?
+        val productNameInLocale = product?.additionalProperties?.get(openFoodAPIClient.getLocaleProductNameField()) as String?
         if (!productNameInLocale.isNullOrBlank()) {
             holder.productName.text = productNameInLocale
         }
