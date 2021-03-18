@@ -23,7 +23,7 @@ import openfoodfacts.github.scrachx.openfood.AppFlavors.OPF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OPFF
 import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.R
-import openfoodfacts.github.scrachx.openfood.app.AnalyticsService
+import openfoodfacts.github.scrachx.openfood.analytics.SentryAnalytics
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_EDIT_PRODUCT
 import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewActivity
@@ -53,7 +53,7 @@ class OpenFoodAPIClient @Inject constructor(
     private var historySyncDisp = CompositeDisposable()
 
     fun getProductStateFull(barcode: String, customHeader: String = Utils.HEADER_USER_AGENT_SEARCH): Single<ProductState> {
-        AnalyticsService.setBarcode(barcode)
+        SentryAnalytics.setBarcode(barcode)
         return productsApi.getProductByBarcode(barcode, getAllFields(), getUserAgent(customHeader))
     }
 

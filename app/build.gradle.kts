@@ -163,6 +163,7 @@ dependencies {
 
     // Crash analytics
     implementation("io.sentry:sentry-android:4.3.0")
+    implementation("org.matomo.sdk:tracker:4.1.2")
 
     // ShowCaseView dependency
     implementation("com.github.mreram:showcaseview:1.0.5")
@@ -286,6 +287,7 @@ android {
             buildConfigField("String", "OFWEBSITE", "\"https://world.openfoodfacts.org/\"")
             buildConfigField("String", "WIKIDATA", "\"https://www.wikidata.org/wiki/Special:EntityData/\"")
             buildConfigField("String", "STATICURL", "\"https://static.openfoodfacts.org\"")
+            buildConfigField("String", "MATOMO_URL", "\"https://analytics.openfoodfacts.org/piwik.php\"")
             dimension = "versionCode"
         }
         create("obf") {
@@ -297,6 +299,7 @@ android {
             buildConfigField("String", "OFWEBSITE", "\"https://world.openbeautyfacts.org/\"")
             buildConfigField("String", "WIKIDATA", "\"https://www.wikidata.org/wiki/Special:EntityData/\"")
             buildConfigField("String", "STATICURL", "\"https://static.openbeautyfacts.org\"")
+            buildConfigField("String", "MATOMO_URL", "\"https://analytics.openfoodfacts.org/piwik.php\"")
             dimension = "versionCode"
         }
         create("opff") {
@@ -308,6 +311,7 @@ android {
             buildConfigField("String", "OFWEBSITE", "\"https://world.openpetfoodfacts.org/\"")
             buildConfigField("String", "WIKIDATA", "\"https://www.wikidata.org/wiki/Special:EntityData/\"")
             buildConfigField("String", "STATICURL", "\"https://static.openpetfoodfacts.org\"")
+            buildConfigField("String", "MATOMO_URL", "\"https://analytics.openfoodfacts.org/piwik.php\"")
             dimension = "versionCode"
         }
         create("opf") {
@@ -319,6 +323,7 @@ android {
             buildConfigField("String", "OFWEBSITE", "\"https://world.openproductsfacts.org/\"")
             buildConfigField("String", "WIKIDATA", "\"https://www.wikidata.org/wiki/Special:EntityData/\"")
             buildConfigField("String", "STATICURL", "\"https://static.openproductsfacts.org\"")
+            buildConfigField("String", "MATOMO_URL", "\"https://analytics.openfoodfacts.org/piwik.php\"")
             dimension = "versionCode"
         }
         create("playstore") {

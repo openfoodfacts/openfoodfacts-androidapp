@@ -149,6 +149,26 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+        android:summary=""
+        android:title="@string/preference_header_privacy">
+
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="@string/pref_crash_reporting_key"
+            android:summaryOn="@string/preference_crash_summary"
+            android:summaryOff="@string/preference_crash_summary"
+            android:title="@string/preference_crash_title" />
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="@string/pref_analytics_reporting_key"
+            android:summaryOn="@string/preference_analytics_summary"
+            android:summaryOff="@string/preference_analytics_summary"
+            android:title="@string/preference_analytics_title" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:layout_height="wrap_content"
         android:summary=""
         android:title="@string/pref_header_about">

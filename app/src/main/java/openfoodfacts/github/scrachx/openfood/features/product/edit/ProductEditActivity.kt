@@ -43,9 +43,10 @@ import openfoodfacts.github.scrachx.openfood.AppFlavors.OPF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OPFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.R
+import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
+import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityEditProductBinding
 import openfoodfacts.github.scrachx.openfood.features.product.ProductFragmentPagerAdapter
-import openfoodfacts.github.scrachx.openfood.features.product.edit.overview.ProductEditOverviewFragment
 import openfoodfacts.github.scrachx.openfood.images.IMG_ID
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
 import openfoodfacts.github.scrachx.openfood.jobs.OfflineProductWorker.Companion.scheduleSync
@@ -311,6 +312,13 @@ class ProductEditActivity : AppCompatActivity() {
 
         Toast.makeText(this, R.string.productSavedToast, Toast.LENGTH_SHORT).show()
         hideKeyboard(this)
+
+        if (editingMode) {
+            MatomoAnalytics.trackEvent(AnalyticsEvent.ProductEdited(productDetails["code"]))
+        } else {
+            MatomoAnalytics.trackEvent(AnalyticsEvent.ProductCreated(productDetails["code"]))
+        }
+
         setResult(RESULT_OK)
         finish()
     }
