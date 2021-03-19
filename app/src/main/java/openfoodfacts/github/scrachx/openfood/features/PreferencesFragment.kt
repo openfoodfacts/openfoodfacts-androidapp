@@ -35,12 +35,14 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.content.edit
 import androidx.core.content.pm.PackageInfoCompat
+import androidx.core.net.toUri
 import androidx.preference.*
 import androidx.preference.Preference.OnPreferenceClickListener
 import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkInfo
 import androidx.work.WorkManager
 import com.afollestad.materialdialogs.MaterialDialog
+import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -52,6 +54,8 @@ import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OPFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.R
+import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
+import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
 import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback
@@ -75,10 +79,14 @@ import org.greenrobot.greendao.async.AsyncOperation
 import org.greenrobot.greendao.async.AsyncOperationListener
 import org.greenrobot.greendao.query.WhereCondition.StringCondition
 import java.util.*
+import javax.inject.Inject
 
-
+@AndroidEntryPoint
 class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnSharedPreferenceChangeListener {
     private val disp = CompositeDisposable()
+
+    @Inject
+    lateinit var daoSession: DaoSession
 
     override val navigationDrawerListener: NavigationDrawerListener? by lazy {
         if (activity is NavigationDrawerListener) activity as NavigationDrawerListener
@@ -154,7 +162,7 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
         requirePreference<SwitchPreference>(getString(R.string.pref_scanner_type_key)).let {
             it.isVisible = ContinuousScanActivity.showSelectScannerPref
             it.onPreferenceChangeListener = Preference.OnPreferenceChangeListener { _, newValue ->
-                if(newValue == true){
+                if (newValue == true) {
                     MaterialDialog.Builder(requireActivity()).run {
                         title(R.string.preference_choose_scanner_dialog_title)
                         content(R.string.preference_choose_scanner_dialog_body)
@@ -165,15 +173,14 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
                             Toast.makeText(requireActivity(), getString(R.string.changes_saved), Toast.LENGTH_SHORT).show()
                         }
                         negativeText(R.string.dialog_cancel)
-                        onNegative {
-                            dialog, _ -> dialog.dismiss()
+                        onNegative { dialog, _ ->
+                            dialog.dismiss()
                             it.isChecked = false
                             settings.edit { putBoolean(getString(R.string.pref_scanner_type_key), false) }
                         }
                         show()
                     }
-                }
-                else{
+                } else {
                     it.isChecked = false
                     settings.edit { putBoolean(getString(R.string.pref_scanner_type_key), newValue as Boolean) }
                     Toast.makeText(requireActivity(), getString(R.string.changes_saved), Toast.LENGTH_SHORT).show()
@@ -182,23 +189,17 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
             }
         }
 
-        val countryLabels = mutableListOf<String>()
-        val countryTags = mutableListOf<String>()
 
         val countryPreference = requirePreference<ListPreference>(getString(R.string.pref_country_key))
 
-        val asyncSessionCountries = OFFApplication._daoSession.startAsyncSession()
-        val countryNameDao = OFFApplication._daoSession.countryNameDao
+        val asyncSessionCountries = daoSession.startAsyncSession()
+        val countryNameDao = daoSession.countryNameDao
 
         // Set query finish listener
         asyncSessionCountries.listenerMainThread = AsyncOperationListener { operation: AsyncOperation ->
             val countryNames = operation.result as List<CountryName>
-            countryNames.forEach {
-                countryLabels.add(it.name)
-                countryTags.add(it.countyTag)
-            }
-            countryPreference.entries = countryLabels.toTypedArray()
-            countryPreference.entryValues = countryTags.toTypedArray()
+            countryPreference.entries = countryNames.map { it.name }.toTypedArray()
+            countryPreference.entryValues = countryNames.map { it.countyTag }.toTypedArray()
         }
         // Execute query
         asyncSessionCountries.queryList(countryNameDao.queryBuilder()
@@ -213,11 +214,11 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
         }
 
         requirePreference<Preference>(getString(R.string.pref_contact_us_key)).setOnPreferenceChangeListener { _, _ ->
-            val contactIntent = Intent(Intent.ACTION_SENDTO)
-            contactIntent.data = Uri.parse(getString(R.string.off_mail))
-            contactIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             try {
-                startActivity(contactIntent)
+                startActivity(Intent(Intent.ACTION_SENDTO).apply {
+                    data = Uri.parse(getString(R.string.off_mail))
+                    flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                })
             } catch (e: ActivityNotFoundException) {
                 Toast.makeText(requireActivity(), R.string.email_not_found, Toast.LENGTH_SHORT).show()
             }
@@ -225,7 +226,8 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
         }
         requirePreference<Preference>(getString(R.string.pref_rate_us_key)).setOnPreferenceChangeListener { _, _ ->
             try {
-                startActivity(Intent(ACTION_VIEW, Uri.parse("market://details?id=${requireActivity().packageName}")))
+                startActivity(Intent(ACTION_VIEW,
+                        Uri.parse("market://details?id=${requireActivity().packageName}")))
             } catch (e: ActivityNotFoundException) {
                 startActivity(Intent(ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=${requireActivity().packageName}")))
             }
@@ -273,7 +275,9 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
 
 
         // Disable photo mode for OpenProductFacts
-        if (isFlavors(AppFlavors.OPF)) requirePreference<Preference>(getString(R.string.pref_show_product_photos_key)).isVisible = false
+        if (isFlavors(AppFlavors.OPF)) {
+            requirePreference<Preference>(getString(R.string.pref_show_product_photos_key)).isVisible = false
+        }
 
         // Preference to show version name
         requirePreference<Preference>(getString(R.string.pref_version_key)).let {
@@ -287,14 +291,21 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
             }
 
             if (isFlavors(OFF, OBF, OPFF)) {
-                getAnalysisTagConfigs(OFFApplication._daoSession)
+                getAnalysisTagConfigs(daoSession)
             } else {
                 preferenceScreen.removePreference(preferenceScreen.requirePreference(getString(R.string.pref_key_display)))
             }
         }
+
+        requirePreference<SwitchPreference>(getString(R.string.pref_analytics_reporting_key)).let {
+            it.setOnPreferenceChangeListener { _, newValue ->
+                MatomoAnalytics.onAnalyticsEnabledToggled(newValue == true)
+                true
+            }
+        }
     }
 
-    private fun buildDisplayCategory(configs: List<AnalysisTagConfig>?) {
+    private fun buildDisplayCategory(configs: List<AnalysisTagConfig>) {
         if (!isAdded) return
 
         val displayCategory = preferenceScreen.requirePreference<PreferenceCategory>(getString(R.string.pref_key_display))
@@ -302,33 +313,7 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
         preferenceScreen.addPreference(displayCategory)
 
         // If analysis tag is empty show "Load ingredient detection data" option in order to manually reload taxonomies
-        if (configs == null || configs.isEmpty()) {
-            val preference = Preference(preferenceScreen.context)
-            preference.setTitle(R.string.load_ingredient_detection_data)
-            preference.setSummary(R.string.load_ingredient_detection_data_summary)
-            preference.onPreferenceClickListener = OnPreferenceClickListener { pref: Preference ->
-                pref.onPreferenceClickListener = null
-                val manager = WorkManager.getInstance(requireContext())
-                val request = OneTimeWorkRequest.from(LoadTaxonomiesWorker::class.java)
-
-                // The service will load server resources only if newer than already downloaded...
-                manager.enqueue(request)
-                manager.getWorkInfoByIdLiveData(request.id).observe(this, { workInfo: WorkInfo? ->
-                    if (workInfo != null) {
-                        if (workInfo.state == WorkInfo.State.RUNNING) {
-                            preference.setTitle(R.string.please_wait)
-                            preference.setIcon(R.drawable.ic_cloud_download_black_24dp)
-                            preference.summary = null
-                            preference.widgetLayoutResource = R.layout.loading
-                        } else if (workInfo.state == WorkInfo.State.SUCCEEDED) {
-                            getAnalysisTagConfigs(OFFApplication._daoSession)
-                        }
-                    }
-                })
-                true
-            }
-            displayCategory.addPreference(preference)
-        } else {
+        if (configs.isNotEmpty()) {
             configs.forEach { config ->
                 displayCategory.addPreference(CheckBoxPreference(this.context).apply {
                     key = config.type
@@ -337,16 +322,54 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
                     summaryOn = null
                     summaryOff = null
                     title = getString(R.string.display_analysis_tag_status, config.typeName.toLowerCase(Locale.getDefault()))
+                    setOnPreferenceChangeListener { _, newValue ->
+                        val event = if (newValue == true) {
+                            AnalyticsEvent.IngredientAnalysisEnabled(config.type)
+                        } else {
+                            AnalyticsEvent.IngredientAnalysisDisabled(config.type)
+                        }
+                        MatomoAnalytics.trackEvent(event)
+                        true
+                    }
                 })
             }
+        } else {
+            val preference = Preference(preferenceScreen.context).apply {
+                setTitle(R.string.load_ingredient_detection_data)
+                setSummary(R.string.load_ingredient_detection_data_summary)
+                onPreferenceClickListener = OnPreferenceClickListener { pref ->
+                    pref.onPreferenceClickListener = null
+                    val request = OneTimeWorkRequest.from(LoadTaxonomiesWorker::class.java)
+
+                    // The service will load server resources only if newer than already downloaded...
+                    WorkManager.getInstance(requireContext()).let { manager ->
+                        manager.enqueue(request)
+                        manager.getWorkInfoByIdLiveData(request.id).observe(this@PreferencesFragment, { workInfo: WorkInfo? ->
+                            if (workInfo != null) {
+                                if (workInfo.state == WorkInfo.State.RUNNING) {
+                                    pref.setTitle(R.string.please_wait)
+                                    pref.setIcon(R.drawable.ic_cloud_download_black_24dp)
+                                    pref.summary = null
+                                    pref.widgetLayoutResource = R.layout.loading
+                                } else if (workInfo.state == WorkInfo.State.SUCCEEDED) {
+                                    getAnalysisTagConfigs(daoSession)
+                                }
+                            }
+                        })
+                    }
+                    true
+                }
+            }
+            displayCategory.addPreference(preference)
         }
         displayCategory.isVisible = true
     }
 
     private fun openWebCustomTab(@StringRes resId: Int): Boolean {
-        val customTabsIntent = CustomTabsIntent.Builder().build()
-        customTabsIntent.intent.putExtra("android.intent.extra.REFERRER", Uri.parse("android-app://${requireContext().packageName}"))
-        CustomTabActivityHelper.openCustomTab(requireActivity(), customTabsIntent, Uri.parse(getString(resId)), WebViewFallback())
+        val customTabsIntent = CustomTabsIntent.Builder().build().apply {
+            intent.putExtra("android.intent.extra.REFERRER", "android-app://${requireContext().packageName}".toUri())
+        }
+        CustomTabActivityHelper.openCustomTab(requireActivity(), customTabsIntent, getString(resId).toUri(), WebViewFallback())
         return true
     }
 
@@ -404,7 +427,7 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
             analysisTagConfigs
         }.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe { configs -> buildDisplayCategory(configs) }
+                .subscribe { configs: List<AnalysisTagConfig> -> buildDisplayCategory(configs) }
                 .addTo(disp)
     }
 

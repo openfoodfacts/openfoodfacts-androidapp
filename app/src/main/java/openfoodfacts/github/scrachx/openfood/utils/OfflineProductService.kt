@@ -14,7 +14,6 @@ import openfoodfacts.github.scrachx.openfood.models.eventbus.ProductNeedsRefresh
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager.productsApi
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient.Companion.getCommentToUpload
 import org.greenrobot.eventbus.EventBus
 import java.io.File
 import java.util.*
@@ -23,7 +22,8 @@ import javax.inject.Singleton
 
 @Singleton
 class OfflineProductService @Inject constructor(
-        val daoSession: DaoSession
+        private val daoSession: DaoSession,
+        private val openFoodAPIClient: OpenFoodAPIClient
 ) {
     /**
      * @return true if there is still products to upload, false otherwise
@@ -77,7 +77,7 @@ class OfflineProductService @Inject constructor(
         Log.d(LOG_TAG, "Uploading data for product $barcode: $productDetails")
         try {
             val productState = productsApi
-                    .saveProduct(barcode, productDetails, getCommentToUpload())
+                    .saveProduct(barcode, productDetails, openFoodAPIClient.getCommentToUpload())
                     .blockingGet()
             if (productState.status == 1L) {
                 isDataUploaded = true

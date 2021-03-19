@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package openfoodfacts.github.scrachx.openfood.features.product.edit.overview
+package openfoodfacts.github.scrachx.openfood.features.product.edit
 
 import android.content.Intent
 import android.net.Uri
@@ -44,16 +44,17 @@ import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OPF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.R
+import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsView
+import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
+import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabsHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentAddProductOverviewBinding
 import openfoodfacts.github.scrachx.openfood.features.adapters.autocomplete.EmbCodeAutoCompleteAdapter
 import openfoodfacts.github.scrachx.openfood.features.adapters.autocomplete.PeriodAfterOpeningAutoCompleteAdapter
-import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_PERFORM_OCR
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_SEND_UPDATED
-import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditFragment
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
 import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import openfoodfacts.github.scrachx.openfood.models.Product
@@ -215,6 +216,11 @@ class ProductEditOverviewFragment : ProductEditFragment() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        MatomoAnalytics.trackView(AnalyticsView.ProductEditOverview)
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
@@ -363,7 +369,7 @@ class ProductEditOverviewFragment : ProductEditFragment() {
      * @return returns the name of the country if found in the db or else returns the tag itself.
      */
     private fun getCountryName(languageCode: String?, tag: String) =
-            Utils.daoSession.countryNameDao.queryBuilder()
+            daoSession.countryNameDao.queryBuilder()
                     .where(
                             CountryNameDao.Properties.CountyTag.eq(tag),
                             CountryNameDao.Properties.LanguageCode.eq(languageCode)
@@ -376,7 +382,7 @@ class ProductEditOverviewFragment : ProductEditFragment() {
      * @return returns the name of the label if found in the db or else returns the tag itself.
      */
     private fun getLabelName(languageCode: String?, tag: String) =
-            Utils.daoSession.labelNameDao.queryBuilder()
+            daoSession.labelNameDao.queryBuilder()
                     .where(
                             LabelNameDao.Properties.LabelTag.eq(tag),
                             LabelNameDao.Properties.LanguageCode.eq(languageCode)
@@ -389,7 +395,7 @@ class ProductEditOverviewFragment : ProductEditFragment() {
      * @return returns the name of the category (example Plant-based foods and beverages) if found in the db or else returns the tag itself.
      */
     private fun getCategoryName(languageCode: String?, tag: String): String {
-        return Utils.daoSession.categoryNameDao
+        return daoSession.categoryNameDao
                 .queryBuilder()
                 .where(
                         CategoryNameDao.Properties.CategoryTag.eq(tag),
@@ -399,7 +405,7 @@ class ProductEditOverviewFragment : ProductEditFragment() {
     }
 
     private fun getEmbCode(embTag: String) =
-            Utils.daoSession.tagDao.queryBuilder()
+            daoSession.tagDao.queryBuilder()
                     .where(TagDao.Properties.Id.eq(embTag))
                     .unique()
                     ?.name ?: embTag

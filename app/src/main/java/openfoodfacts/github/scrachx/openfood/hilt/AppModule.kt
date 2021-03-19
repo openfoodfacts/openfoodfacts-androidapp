@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.dagger.module
+package openfoodfacts.github.scrachx.openfood.hilt
 
 import android.content.Context
 import dagger.Module

@@ -37,6 +37,9 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 import openfoodfacts.github.scrachx.openfood.R
+import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
+import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
+import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductListsBinding
 import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.selectNavigationItem
@@ -53,7 +56,6 @@ import openfoodfacts.github.scrachx.openfood.models.entities.ProductListsDao
 import openfoodfacts.github.scrachx.openfood.models.entities.YourListedProduct
 import openfoodfacts.github.scrachx.openfood.models.entities.YourListedProductDao
 import openfoodfacts.github.scrachx.openfood.utils.SwipeController
-import openfoodfacts.github.scrachx.openfood.utils.Utils
 import org.apache.commons.csv.CSVFormat
 import org.apache.commons.csv.CSVParser
 import java.io.InputStream
@@ -138,7 +140,7 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
                 .positiveText(R.string.dialog_create)
                 .negativeText(R.string.dialog_cancel)
                 .onPositive { dialog, _ ->  // this enable to avoid dismissing dialog if list name already exist
-                    Log.d("CreateListDialog", "Positive clicked")
+                    MatomoAnalytics.trackEvent(AnalyticsEvent.ShoppingListCreated)
                     val inputEditText = dialog.inputEditText!!
                     val listName = inputEditText.text.toString()
                     val productList = ProductLists(listName, if (productToAdd != null) 1 else 0)
@@ -230,7 +232,7 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
         progressDialog.show()
         Observable.create { emitter: ObservableEmitter<Int?> ->
             Single.fromCallable {
-                val yourListedProductDao = Utils.daoSession.yourListedProductDao
+                val yourListedProductDao = daoSession.yourListedProductDao
                 val list = ArrayList<YourListedProduct>()
                 try {
                     CSVParser(InputStreamReader(inputStream), CSVFormat.DEFAULT.withFirstRecordAsHeader()).use { csvParser ->

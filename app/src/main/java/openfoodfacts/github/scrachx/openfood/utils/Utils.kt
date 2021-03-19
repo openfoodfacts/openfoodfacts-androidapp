@@ -54,7 +54,6 @@ import okhttp3.*
 import okhttp3.logging.HttpLoggingInterceptor
 import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.R
-import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.features.LoginActivity
 import openfoodfacts.github.scrachx.openfood.features.scan.ContinuousScanActivity
 import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivity.Companion.start
@@ -156,9 +155,6 @@ object Utils {
      */
     fun getRoundNumber(value: Float, locale: Locale = Locale.getDefault()) = getRoundNumber(value.toString(), locale)
     fun getRoundNumber(value: Double, locale: Locale = Locale.getDefault()) = getRoundNumber(value.toString(), locale)
-
-    @Deprecated("Use hilt.")
-    val daoSession get() = OFFApplication._daoSession
 
     /**
      * Schedules job to download when network is available
@@ -409,12 +405,10 @@ fun getModifierNonDefault(modifier: String) = if (modifier != DEFAULT_MODIFIER) 
 private val LOG_TAG = Utils::class.simpleName!!
 
 /**
- * @param context The context
  * @return Returns the version name of the app
  */
-fun getVersionName(context: Context): String = try {
-    val pInfo = context.packageManager.getPackageInfo(context.packageName, 0)
-    pInfo.versionName
+fun Context.getVersionName(): String = try {
+    packageManager.getPackageInfo(packageName, 0).versionName
 } catch (e: PackageManager.NameNotFoundException) {
     Log.e(LOG_TAG, "getVersionName", e)
     "(version unknown)"
@@ -425,12 +419,12 @@ fun getVersionName(context: Context): String = try {
 
 fun <T : View?> ViewGroup.getViewsByType(typeClass: Class<T>): List<T> {
     val result = mutableListOf<T>()
-    children.forEach { child ->
-        if (child is ViewGroup) {
-            result.addAll(child.getViewsByType(typeClass))
+    children.forEach { view ->
+        if (view is ViewGroup) {
+            result += view.getViewsByType(typeClass)
         }
-        if (typeClass.isInstance(child)) {
-            result += typeClass.cast(child)
+        if (typeClass.isInstance(view)) {
+            result += typeClass.cast(view)
         }
     }
     return result

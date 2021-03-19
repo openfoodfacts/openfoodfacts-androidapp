@@ -23,8 +23,7 @@ import openfoodfacts.github.scrachx.openfood.AppFlavors.OPF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OPFF
 import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.R
-import openfoodfacts.github.scrachx.openfood.app.AnalyticsService
-import openfoodfacts.github.scrachx.openfood.app.OFFApplication
+import openfoodfacts.github.scrachx.openfood.analytics.SentryAnalytics
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_EDIT_PRODUCT
 import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewActivity
@@ -36,7 +35,6 @@ import openfoodfacts.github.scrachx.openfood.models.entities.ToUploadProductDao
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager.productsApi
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
-import openfoodfacts.github.scrachx.openfood.utils.Utils.daoSession
 import java.io.File
 import java.io.IOException
 import java.util.*
@@ -49,12 +47,13 @@ import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewAc
  */
 @Singleton
 class OpenFoodAPIClient @Inject constructor(
-        @ApplicationContext val context: Context
+        @ApplicationContext private val context: Context,
+        private val daoSession: DaoSession
 ) {
     private var historySyncDisp = CompositeDisposable()
 
     fun getProductStateFull(barcode: String, customHeader: String = Utils.HEADER_USER_AGENT_SEARCH): Single<ProductState> {
-        AnalyticsService.setBarcode(barcode)
+        SentryAnalytics.setBarcode(barcode)
         return productsApi.getProductByBarcode(barcode, getAllFields(), getUserAgent(customHeader))
     }
 
@@ -197,7 +196,7 @@ class OpenFoodAPIClient @Inject constructor(
     /**
      * Add a product to ScanHistory asynchronously
      */
-    fun addToHistory(product: Product) = Completable.fromAction { daoSession.historyProductDao.addToHistorySync(product) }
+    fun addToHistory(product: Product) = Completable.fromAction { daoSession.historyProductDao.addToHistorySync(product, this) }
 
     fun getProductsByContributor(contributor: String, page: Int) =
             productsApi.getProductsByContributor(contributor, page).subscribeOn(Schedulers.io())
@@ -374,51 +373,6 @@ class OpenFoodAPIClient @Inject constructor(
     companion object {
         const val MIME_TEXT = "text/plain"
         const val PNG_EXT = ".png\""
-
-
-        /**
-         * Uploads comment by users
-         *
-         * @param login the username
-         */
-        fun getCommentToUpload(login: String? = null): String {
-            val comment = when (BuildConfig.FLAVOR) {
-                OBF -> StringBuilder("Official Open Beauty Facts Android app")
-                OPFF -> StringBuilder("Official Open Pet Food Facts Android app")
-                OPF -> StringBuilder("Official Open Products Facts Android app")
-                OFF -> StringBuilder("Official Open Food Facts Android app")
-                else -> StringBuilder("Official Open Food Facts Android app")
-            }
-            comment.append(" ").append(getVersionName(OFFApplication._instance))
-            if (login.isNullOrEmpty()) {
-                comment.append(" (Added by ").append(InstallationUtils.id(OFFApplication._instance)).append(")")
-            }
-            return comment.toString()
-        }
-
-        fun getLocaleProductNameField() = "product_name_${getLanguage(OFFApplication._instance)}"
-
-        /**
-         * Add a product to ScanHistory synchronously
-         */
-        fun HistoryProductDao.addToHistorySync(product: Product) {
-            val historyProducts = queryBuilder()
-                    .where(HistoryProductDao.Properties.Barcode.eq(product.code))
-                    .list()
-            val hp = HistoryProduct(
-                    product.productName,
-                    product.brands,
-                    product.getImageSmallUrl(getLanguage(OFFApplication._instance)),
-                    product.code,
-                    product.quantity,
-                    product.nutritionGradeFr,
-                    product.ecoscore,
-                    product.novaGroups
-            )
-            if (historyProducts.isNotEmpty()) hp.id = historyProducts[0].id
-            insertOrReplace(hp)
-        }
-
         fun HistoryProductDao.addToHistorySync(product: OfflineSavedProduct) {
             val historyProducts = queryBuilder().where(HistoryProductDao.Properties.Barcode.eq(product.barcode)).list()
             val productDetails = product.productDetails
@@ -437,35 +391,78 @@ class OpenFoodAPIClient @Inject constructor(
         }
 
         /**
-         * Fill the given [Map] with user info (username, password, comment)
-         *
-         * @param imgMap The map to fill
+         * Add a product to ScanHistory synchronously
          */
-        fun addUserInfo(imgMap: MutableMap<String, String> = mutableMapOf()): Map<String, String> {
-            val settings = OFFApplication._instance.getLoginPreferences()
+        fun HistoryProductDao.addToHistorySync(product: Product, client: OpenFoodAPIClient) {
+            val historyProducts = queryBuilder()
+                    .where(HistoryProductDao.Properties.Barcode.eq(product.code))
+                    .list()
+            val hp = HistoryProduct(
+                    product.productName,
+                    product.brands,
+                    product.getImageSmallUrl(getLanguage(client.context)),
+                    product.code,
+                    product.quantity,
+                    product.nutritionGradeFr,
+                    product.ecoscore,
+                    product.novaGroups
+            )
+            if (historyProducts.isNotEmpty()) hp.id = historyProducts[0].id
+            insertOrReplace(hp)
+        }
+    }
 
-            settings.getString("user", null)?.let {
-                imgMap[ApiFields.Keys.USER_COMMENT] = getCommentToUpload(it)
-                if (it.isNotBlank()) imgMap[ApiFields.Keys.USER_ID] = it
-            }
+    /**
+     * Fill the given [Map] with user info (username, password, comment)
+     *
+     * @param imgMap The map to fill
+     */
+    private fun addUserInfo(imgMap: MutableMap<String, String> = mutableMapOf()): Map<String, String> {
+        val settings = context.getLoginPreferences()
 
-            settings.getString("pass", null)?.let {
-                if (it.isNotBlank()) imgMap[ApiFields.Keys.USER_PASS] = it
-            }
-
-            return imgMap
+        settings.getString("user", null)?.let {
+            imgMap[ApiFields.Keys.USER_COMMENT] = getCommentToUpload(it)
+            if (it.isNotBlank()) imgMap[ApiFields.Keys.USER_ID] = it
         }
 
-        private fun getFieldsToFetchFacets() = listOf(
-                ApiFields.Keys.BRANDS,
-                ApiFields.Keys.PRODUCT_NAME,
-                ApiFields.Keys.IMAGE_SMALL_URL,
-                ApiFields.Keys.QUANTITY,
-                ApiFields.Keys.NUTRITION_GRADE_FR,
-                ApiFields.Keys.BARCODE,
-                ApiFields.Keys.ECOSCORE,
-                ApiFields.Keys.NOVA_GROUPS,
-                getLocaleProductNameField()
-        ).joinToString(",")
+        settings.getString("pass", null)?.let {
+            if (it.isNotBlank()) imgMap[ApiFields.Keys.USER_PASS] = it
+        }
+
+        return imgMap
     }
+
+    /**
+     * Uploads comment by users
+     *
+     * @param login the username
+     */
+    fun getCommentToUpload(login: String? = null): String {
+        val comment = when (BuildConfig.FLAVOR) {
+            OBF -> StringBuilder("Official Open Beauty Facts Android app")
+            OPFF -> StringBuilder("Official Open Pet Food Facts Android app")
+            OPF -> StringBuilder("Official Open Products Facts Android app")
+            OFF -> StringBuilder("Official Open Food Facts Android app")
+            else -> StringBuilder("Official Open Food Facts Android app")
+        }
+        comment.append(" ").append(context.getVersionName())
+        if (login.isNullOrEmpty()) {
+            comment.append(" (Added by ").append(InstallationUtils.id(context)).append(")")
+        }
+        return comment.toString()
+    }
+
+    fun getLocaleProductNameField() = "product_name_${getLanguage(context)}"
+
+    private fun getFieldsToFetchFacets() = listOf(
+            ApiFields.Keys.BRANDS,
+            ApiFields.Keys.PRODUCT_NAME,
+            ApiFields.Keys.IMAGE_SMALL_URL,
+            ApiFields.Keys.QUANTITY,
+            ApiFields.Keys.NUTRITION_GRADE_FR,
+            ApiFields.Keys.BARCODE,
+            ApiFields.Keys.ECOSCORE,
+            ApiFields.Keys.NOVA_GROUPS,
+            getLocaleProductNameField()
+    ).joinToString(",")
 }

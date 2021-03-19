@@ -43,13 +43,14 @@ import openfoodfacts.github.scrachx.openfood.AppFlavors.OPF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OPFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.R
-import openfoodfacts.github.scrachx.openfood.app.OFFApplication
+import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
+import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityEditProductBinding
 import openfoodfacts.github.scrachx.openfood.features.product.ProductFragmentPagerAdapter
-import openfoodfacts.github.scrachx.openfood.features.product.edit.overview.ProductEditOverviewFragment
 import openfoodfacts.github.scrachx.openfood.images.IMG_ID
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
 import openfoodfacts.github.scrachx.openfood.jobs.OfflineProductWorker.Companion.scheduleSync
+import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct
@@ -59,7 +60,6 @@ import openfoodfacts.github.scrachx.openfood.network.CommonApiManager.productsAp
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient.Companion.addToHistorySync
 import openfoodfacts.github.scrachx.openfood.utils.OfflineProductService
-import openfoodfacts.github.scrachx.openfood.utils.Utils.daoSession
 import openfoodfacts.github.scrachx.openfood.utils.Utils.hideKeyboard
 import openfoodfacts.github.scrachx.openfood.utils.Utils.isExternalStorageWritable
 import openfoodfacts.github.scrachx.openfood.utils.getLoginPreferences
@@ -79,6 +79,12 @@ class ProductEditActivity : AppCompatActivity() {
 
     @Inject
     lateinit var offlineService: OfflineProductService
+
+    @Inject
+    lateinit var daoSession: DaoSession
+
+    @Inject
+    lateinit var client: OpenFoodAPIClient
 
     private val addProductPhotosFragment = ProductEditPhotosFragment()
     private val nutritionFactsFragment = ProductEditNutritionFactsFragment()
@@ -258,7 +264,7 @@ class ProductEditActivity : AppCompatActivity() {
             imgMap[ApiFields.Keys.USER_ID] = createTextPlain(login)
             imgMap[ApiFields.Keys.USER_PASS] = createTextPlain(password)
         }
-        imgMap[ApiFields.Keys.USER_COMMENT] = createTextPlain(OpenFoodAPIClient.getCommentToUpload(login))
+        imgMap[ApiFields.Keys.USER_COMMENT] = createTextPlain(client.getCommentToUpload(login))
     }
 
     private fun saveProduct() {
@@ -306,6 +312,13 @@ class ProductEditActivity : AppCompatActivity() {
 
         Toast.makeText(this, R.string.productSavedToast, Toast.LENGTH_SHORT).show()
         hideKeyboard(this)
+
+        if (editingMode) {
+            MatomoAnalytics.trackEvent(AnalyticsEvent.ProductEdited(productDetails["code"]))
+        } else {
+            MatomoAnalytics.trackEvent(AnalyticsEvent.ProductCreated(productDetails["code"]))
+        }
+
         setResult(RESULT_OK)
         finish()
     }
@@ -392,7 +405,7 @@ class ProductEditActivity : AppCompatActivity() {
                     } else {
                         hideImageProgress(position, true, it.message ?: "Empty error.")
                         Log.i(this::class.simpleName, it.message ?: "Empty error.")
-                        Toast.makeText(OFFApplication._instance, it.message, Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
                     }
                 }
                 .subscribe { jsonNode ->

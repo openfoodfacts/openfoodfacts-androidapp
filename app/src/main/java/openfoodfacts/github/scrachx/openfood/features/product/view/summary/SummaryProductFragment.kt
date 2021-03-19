@@ -48,6 +48,8 @@ import io.reactivex.rxkotlin.addTo
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.R
+import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
+import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
 import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabsHelper
@@ -135,8 +137,12 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     }
     private var productQuestion: Question? = null
 
-    private val loginThenProcessInsight = registerForActivityResult(LoginContract())
-    { isLogged -> if (isLogged) processInsight() }
+    private val loginThenProcessInsight = registerForActivityResult(LoginContract()) { isLogged ->
+        if (isLogged) {
+            MatomoAnalytics.trackEvent(AnalyticsEvent.RobotoffLoggedInAfterPrompt)
+            processInsight()
+        }
+    }
 
     private lateinit var productState: ProductState
     private var sendOther = false
@@ -206,11 +212,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     private fun onImageListenerError(error: Throwable) {
         binding.uploadingImageProgress.visibility = View.GONE
         binding.uploadingImageProgressText.visibility = View.GONE
-        var context = context
-        if (context == null) {
-            context = OFFApplication._instance
-        }
-        Toast.makeText(context, error.message, Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireContext(), error.message, Toast.LENGTH_SHORT).show()
     }
 
 
@@ -649,6 +651,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         if (requireActivity().isUserSet()) {
             processInsight()
         } else {
+            MatomoAnalytics.trackEvent(AnalyticsEvent.RobotoffLoginPrompt)
             MaterialDialog.Builder(requireActivity()).run {
                 title(getString(R.string.sign_in_to_answer))
                 positiveText(getString(R.string.sign_in_or_register))
@@ -819,7 +822,8 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
                 productBarcode,
                 productName.orEmpty(),
                 productDetails,
-                imageUrl.orEmpty()
+                imageUrl.orEmpty(),
+                daoSession
         )
         addToListRecyclerView.layoutManager = LinearLayoutManager(activity)
         addToListRecyclerView.adapter = addToListAdapter

@@ -171,8 +171,7 @@
                     android:id="@+id/listOfflineSave"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_margin="@dimen/spacing_normal"
-                    tools:listitem="@layout/save_list_item" />
+                    android:layout_margin="@dimen/spacing_normal" />
             </LinearLayout>
 
 

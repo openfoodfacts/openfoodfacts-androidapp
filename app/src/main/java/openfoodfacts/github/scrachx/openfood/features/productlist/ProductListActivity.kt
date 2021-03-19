@@ -27,11 +27,14 @@ import openfoodfacts.github.scrachx.openfood.AppFlavors
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.R
+import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
+import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityYourListedProductsBinding
 import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.selectNavigationItem
 import openfoodfacts.github.scrachx.openfood.features.scan.ContinuousScanActivity
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
+import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import openfoodfacts.github.scrachx.openfood.models.HistoryProduct
 import openfoodfacts.github.scrachx.openfood.models.HistoryProductDao
 import openfoodfacts.github.scrachx.openfood.models.Product
@@ -41,7 +44,6 @@ import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
 import openfoodfacts.github.scrachx.openfood.utils.SortType.*
-import openfoodfacts.github.scrachx.openfood.utils.Utils.daoSession
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
@@ -55,6 +57,9 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
 
     @Inject
     lateinit var client: OpenFoodAPIClient
+
+    @Inject
+    lateinit var daoSession: DaoSession
 
     private var listID by Delegates.notNull<Long>()
     private lateinit var productList: ProductLists
@@ -226,6 +231,7 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
                 }
             } else {
                 exportAsCSV()
+                MatomoAnalytics.trackEvent(AnalyticsEvent.ShoppingListExported)
             }
             true
         }
@@ -312,7 +318,7 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
 
     @RequiresApi(Build.VERSION_CODES.KITKAT)
     val fileWriterLauncher = registerForActivityResult(CreateCSVContract()) {
-        writeListToFile(this, productList, it,contentResolver.openOutputStream(it) ?: error("File path must not be null."))
+        writeListToFile(this, productList, it, contentResolver.openOutputStream(it) ?: error("File path must not be null."))
     }
 
     private fun exportAsCSV() {
@@ -330,7 +336,7 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
             val baseDir = File(Environment.getExternalStorageDirectory(), getCsvFolderName())
             if (!baseDir.exists()) baseDir.mkdirs()
             val file = File(baseDir, fileName)
-            writeListToFile(this, productList,Uri.fromFile(file), file.outputStream())
+            writeListToFile(this, productList, Uri.fromFile(file), file.outputStream())
         }
     }
 

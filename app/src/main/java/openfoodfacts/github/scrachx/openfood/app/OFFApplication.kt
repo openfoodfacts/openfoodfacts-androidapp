@@ -28,7 +28,7 @@ import org.greenrobot.eventbus.EventBus
 import org.greenrobot.greendao.query.QueryBuilder
 import java.io.IOException
 import javax.inject.Inject
-import openfoodfacts.github.scrachx.openfood.app.AnalyticsService.init as initAnalytics
+import openfoodfacts.github.scrachx.openfood.analytics.SentryAnalytics.init as initAnalytics
 
 @HiltAndroidApp
 class OFFApplication : MultiDexApplication(), Configuration.Provider {
@@ -81,12 +81,6 @@ class OFFApplication : MultiDexApplication(), Configuration.Provider {
     companion object {
         private const val DEBUG = false
         val LOG_TAG = OFFApplication::class.simpleName!!
-
-        @JvmStatic
-        @Deprecated("Use hilt.")
-        lateinit var _daoSession: DaoSession
-            @Synchronized
-            private set
 
         @Deprecated("Use hilt.")
         lateinit var _instance: OFFApplication

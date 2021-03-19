@@ -150,7 +150,7 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
         if (arguments != null) mSendProduct = getSendProduct()
 
         val product = this.productState.product!!
-        presenter = IngredientsProductPresenter(product, this, productRepository).apply { addTo(disp) }
+        presenter = IngredientsProductPresenter(requireContext(), this, productRepository, product).apply { addTo(disp) }
         val vitaminTagsList = product.vitaminTags
         val aminoAcidTagsList = product.aminoAcidTags
         val mineralTags = product.mineralTags

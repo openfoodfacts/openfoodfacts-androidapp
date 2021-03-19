@@ -13,12 +13,14 @@ import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
 import com.afollestad.materialdialogs.MaterialDialog
 import dagger.hilt.android.AndroidEntryPoint
 import openfoodfacts.github.scrachx.openfood.R
+import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductComparisonBinding
 import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.selectNavigationItem
 import openfoodfacts.github.scrachx.openfood.features.scan.ContinuousScanActivity
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.models.Product
+import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.MY_PERMISSIONS_REQUEST_CAMERA
@@ -55,6 +57,10 @@ class ProductCompareActivity : BaseActivity() {
             if (intent.getBooleanExtra(KEY_PRODUCT_ALREADY_EXISTS, false)) {
                 Toast.makeText(this, getString(R.string.product_already_exists_in_comparison), Toast.LENGTH_SHORT).show()
             }
+        }
+
+        if (productsToCompare.size > 1) {
+            MatomoAnalytics.trackEvent(AnalyticsEvent.CompareProducts(productsToCompare.size.toFloat()))
         }
 
         productComparisonAdapter = ProductCompareAdapter(productsToCompare, this, api, productRepository)
