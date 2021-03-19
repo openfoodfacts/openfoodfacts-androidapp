@@ -11,7 +11,7 @@ import openfoodfacts.github.scrachx.openfood.camera.CameraReticleAnimator
 import openfoodfacts.github.scrachx.openfood.camera.FrameProcessorBase
 import openfoodfacts.github.scrachx.openfood.camera.GraphicOverlay
 import openfoodfacts.github.scrachx.openfood.camera.WorkflowModel
-import openfoodfacts.github.scrachx.openfood.camera.WorkflowModel.WorkflowState
+import openfoodfacts.github.scrachx.openfood.features.scan.WorkflowState
 import openfoodfacts.github.scrachx.openfood.utils.CameraUtils
 import java.io.IOException
 
