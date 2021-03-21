@@ -48,10 +48,10 @@ import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenNa
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenNameDao
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.Keys.lcIngredientsKey
+import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.FileDownloader.download
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
-import openfoodfacts.github.scrachx.openfood.utils.Utils.picassoBuilder
 import org.greenrobot.greendao.async.AsyncOperationListener
 import java.io.File
 import java.util.*
@@ -69,6 +69,12 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
 
     @Inject
     lateinit var daoSession: DaoSession
+
+    @Inject
+    lateinit var picasso: Picasso
+
+    @Inject
+    lateinit var productsApi: ProductsAPI
 
     private var photoReceiverHandler: PhotoReceiverHandler? = null
     private var mAllergenNameDao: AllergenNameDao? = null
@@ -197,7 +203,7 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
         if (newImageIngredientsUrl != null && newImageIngredientsUrl.isNotEmpty()) {
             binding.imageProgress.visibility = View.VISIBLE
             imagePath = newImageIngredientsUrl
-            picassoBuilder(requireContext())
+            picasso
                     .load(newImageIngredientsUrl)
                     .resize(dps50ToPixels, dps50ToPixels)
                     .centerInside()
@@ -258,7 +264,7 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
         productDetails = mOfflineSavedProduct!!.productDetails.toMutableMap()
         if (getImageIngredients() != null) {
             binding.imageProgress.visibility = View.VISIBLE
-            picassoBuilder(requireContext())
+            picasso
                     .load(LOCALE_FILE_SCHEME + getImageIngredients())
                     .resize(dps50ToPixels, dps50ToPixels)
                     .centerInside()
@@ -315,7 +321,7 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
             imagePath == null -> editIngredientsImage()
             photoFile != null -> cropRotateImage(photoFile, getString(R.string.ingredients_picture))
             else -> {
-                download(requireContext(), imagePath!!)
+                download(requireContext(), imagePath!!, productsApi)
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe { file ->
                             photoFile = file

@@ -35,6 +35,10 @@ class EnvironmentProductFragment : BaseFragment() {
 
     @Inject
     lateinit var client: OpenFoodAPIClient
+
+    @Inject
+    lateinit var picasso: Picasso
+
     private var _binding: FragmentEnvironmentProductBinding? = null
     private val binding get() = _binding!!
 
@@ -81,9 +85,7 @@ class EnvironmentProductFragment : BaseFragment() {
 
             // Load Image if isLowBatteryMode is false
             if (!isLowBatteryMode) {
-                Utils.picassoBuilder(requireContext())
-                        .load(imagePackagingUrl)
-                        .into(binding.imageViewPackaging)
+                picasso.load(imagePackagingUrl).into(binding.imageViewPackaging)
             } else {
                 binding.imageViewPackaging.visibility = View.GONE
             }

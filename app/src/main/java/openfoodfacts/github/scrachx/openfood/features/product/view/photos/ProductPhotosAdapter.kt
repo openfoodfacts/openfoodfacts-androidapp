@@ -14,6 +14,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.google.android.material.snackbar.Snackbar
+import com.squareup.picasso.Picasso
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import io.reactivex.rxkotlin.addTo
@@ -31,6 +32,7 @@ import org.json.JSONException
  */
 class ProductPhotosAdapter(
         private val context: Context,
+        private val picasso: Picasso,
         private val client: OpenFoodAPIClient,
         private val product: Product,
         private val images: List<String>,
@@ -43,7 +45,7 @@ class ProductPhotosAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductPhotoViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.images_item, parent, false)
-        return ProductPhotoViewHolder(itemView)
+        return ProductPhotoViewHolder(itemView, picasso)
     }
 
     override fun onBindViewHolder(holder: ProductPhotoViewHolder, position: Int) = holder.run {

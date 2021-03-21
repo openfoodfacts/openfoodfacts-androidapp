@@ -12,8 +12,8 @@ import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct
 import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProductDao
 import openfoodfacts.github.scrachx.openfood.models.eventbus.ProductNeedsRefreshEvent
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
-import openfoodfacts.github.scrachx.openfood.network.CommonApiManager.productsApi
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
+import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
 import org.greenrobot.eventbus.EventBus
 import java.io.File
 import java.util.*
@@ -23,6 +23,7 @@ import javax.inject.Singleton
 @Singleton
 class OfflineProductService @Inject constructor(
         private val daoSession: DaoSession,
+        private val productsApi: ProductsAPI,
         private val openFoodAPIClient: OpenFoodAPIClient
 ) {
     /**

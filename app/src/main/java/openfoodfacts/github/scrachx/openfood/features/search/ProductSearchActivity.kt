@@ -22,6 +22,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.afollestad.materialdialogs.MaterialDialog
+import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -57,6 +58,9 @@ class ProductSearchActivity : BaseActivity() {
 
     @Inject
     lateinit var productRepository: ProductRepository
+
+    @Inject
+    lateinit var picasso: Picasso
 
     private lateinit var mSearchInfo: SearchInfo
     private lateinit var adapter: ProductsRecyclerViewAdapter
@@ -390,7 +394,7 @@ class ProductSearchActivity : BaseActivity() {
                 products += null
             }
             if (setupDone) {
-                adapter = ProductsRecyclerViewAdapter(products, lowBatteryMode, this, client)
+                adapter = ProductsRecyclerViewAdapter(products, lowBatteryMode, this, picasso, client)
                 binding.productsRecyclerView.adapter = adapter
             }
             setUpRecyclerView(products)
@@ -478,7 +482,7 @@ class ProductSearchActivity : BaseActivity() {
             binding.productsRecyclerView.setHasFixedSize(true)
             val mLayoutManager = LinearLayoutManager(this@ProductSearchActivity, LinearLayoutManager.VERTICAL, false)
             binding.productsRecyclerView.layoutManager = mLayoutManager
-            adapter = ProductsRecyclerViewAdapter(mProducts, lowBatteryMode, this, client)
+            adapter = ProductsRecyclerViewAdapter(mProducts, lowBatteryMode, this, picasso, client)
             binding.productsRecyclerView.adapter = adapter
             val dividerItemDecoration = DividerItemDecoration(binding.productsRecyclerView.context, DividerItemDecoration.VERTICAL)
             binding.productsRecyclerView.addItemDecoration(dividerItemDecoration)

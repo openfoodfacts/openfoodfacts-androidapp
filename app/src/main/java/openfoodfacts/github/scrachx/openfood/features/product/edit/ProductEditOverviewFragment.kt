@@ -73,13 +73,12 @@ import openfoodfacts.github.scrachx.openfood.models.entities.store.StoreNameDao
 import openfoodfacts.github.scrachx.openfood.models.entities.tag.TagDao
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.Keys.lcProductNameKey
-import openfoodfacts.github.scrachx.openfood.network.CommonApiManager.productsApi
+import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.FileDownloader.download
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLCOrDefault
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLocale
-import openfoodfacts.github.scrachx.openfood.utils.Utils.picassoBuilder
 import org.apache.commons.lang3.StringUtils
 import org.greenrobot.greendao.async.AsyncOperationListener
 import org.jetbrains.annotations.Contract
@@ -94,6 +93,12 @@ import javax.inject.Inject
 class ProductEditOverviewFragment : ProductEditFragment() {
     private var _binding: FragmentAddProductOverviewBinding? = null
     private val binding get() = _binding!!
+
+    @Inject
+    lateinit var picasso: Picasso
+
+    @Inject
+    lateinit var productsApi: ProductsAPI
 
     private lateinit var appLanguageCode: String
     private lateinit var photoReceiverHandler: PhotoReceiverHandler
@@ -351,7 +356,7 @@ class ProductEditOverviewFragment : ProductEditFragment() {
             frontImageUrl = imageFrontUrl
             binding.imageProgress.visibility = View.VISIBLE
             binding.btnEditImgFront.visibility = View.INVISIBLE
-            picassoBuilder(requireContext())
+            picasso
                     .load(imageFrontUrl)
                     .resize(requireContext().dpsToPixel(50), requireContext().dpsToPixel(50))
                     .centerInside()
@@ -522,7 +527,7 @@ class ProductEditOverviewFragment : ProductEditFragment() {
             (operation.result as List<CountryName>).mapTo(countries) { it.name }
 
             val adapter = ArrayAdapter(requireActivity(), android.R.layout.simple_dropdown_item_1line, countries)
-            val embAdapter = EmbCodeAutoCompleteAdapter(activity, android.R.layout.simple_dropdown_item_1line)
+            val embAdapter = EmbCodeAutoCompleteAdapter(activity, android.R.layout.simple_dropdown_item_1line, productsApi)
 
             binding.originOfIngredients.setAdapter(adapter)
             binding.countryWherePurchased.setAdapter(adapter)
@@ -569,7 +574,7 @@ class ProductEditOverviewFragment : ProductEditFragment() {
         if (isFlavors(OBF)) {
             binding.periodOfTimeAfterOpeningTil.visibility = View.VISIBLE
             val customAdapter = PeriodAfterOpeningAutoCompleteAdapter(activity,
-                    android.R.layout.simple_dropdown_item_1line)
+                    android.R.layout.simple_dropdown_item_1line, productsApi)
             binding.periodOfTimeAfterOpening.setAdapter(customAdapter)
         }
     }
@@ -644,7 +649,7 @@ class ProductEditOverviewFragment : ProductEditFragment() {
             // Image found, download it if necessary and edit it
             isFrontImagePresent = true
             if (photoFile == null) {
-                download(requireContext(), frontImageUrl!!)
+                download(requireContext(), frontImageUrl!!, productsApi)
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe { file: File? ->
                             photoFile = file

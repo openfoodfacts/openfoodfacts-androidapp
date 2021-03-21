@@ -32,6 +32,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.afollestad.materialdialogs.MaterialDialog
+import com.squareup.picasso.Picasso
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -58,7 +59,8 @@ class ProductCompareAdapter(
         private val productsToCompare: List<Product>,
         internal val activity: Activity,
         private val api: OpenFoodAPIClient,
-        private val productRepository: ProductRepository
+        private val productRepository: ProductRepository,
+        private val picasso: Picasso
 ) : RecyclerView.Adapter<ProductComparisonViewHolder>() {
     private val addProductButton = activity.findViewById<Button>(R.id.product_comparison_button)
 
@@ -131,9 +133,7 @@ class ProductCompareAdapter(
         if (!imageUrl.isNullOrBlank()) {
             holder.binding.productComparisonLabel.visibility = View.INVISIBLE
             if (!activity.isLowBatteryMode()) {
-                Utils.picassoBuilder(activity)
-                        .load(imageUrl)
-                        .into(holder.binding.productComparisonImage)
+                picasso.load(imageUrl).into(holder.binding.productComparisonImage)
             } else {
                 holder.binding.productComparisonImage.visibility = View.GONE
             }

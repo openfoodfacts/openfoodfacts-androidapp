@@ -23,6 +23,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.afollestad.materialdialogs.MaterialDialog
+import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.Completable
 import io.reactivex.Single
@@ -65,6 +66,9 @@ class ScanHistoryActivity : BaseActivity(), SwipeController.Actions {
 
     @Inject
     lateinit var daoSession: DaoSession
+
+    @Inject
+    lateinit var picasso: Picasso
 
     /**
      * boolean to determine if menu buttons should be visible or not
@@ -120,7 +124,7 @@ class ScanHistoryActivity : BaseActivity(), SwipeController.Actions {
         title = getString(R.string.scan_history_drawer)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        adapter = ScanHistoryAdapter(this@ScanHistoryActivity, client, isLowBatteryMode, mutableListOf())
+        adapter = ScanHistoryAdapter(this@ScanHistoryActivity, client, isLowBatteryMode, mutableListOf(), picasso)
         binding.listHistoryScan.adapter = adapter
         binding.listHistoryScan.layoutManager = LinearLayoutManager(this@ScanHistoryActivity)
         val swipeController = SwipeController(this@ScanHistoryActivity, this@ScanHistoryActivity)

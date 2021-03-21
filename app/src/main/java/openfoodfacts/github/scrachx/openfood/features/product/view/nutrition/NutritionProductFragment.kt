@@ -90,13 +90,16 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
 
     @Inject
     lateinit var client: OpenFoodAPIClient
+
+    @Inject
+    lateinit var picasso: Picasso
+
     private lateinit var product: Product
 
     /**
      * Boolean to determine if nutrition data should be shown
      */
     private var showNutritionData = true
-    private val picasso: Picasso by lazy { Utils.picassoBuilder(requireContext()) }
     private val sharedPreferences by lazy { requireActivity().getSharedPreferences("prefs", 0) }
 
     /**

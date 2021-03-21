@@ -11,6 +11,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
 import com.afollestad.materialdialogs.MaterialDialog
+import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
@@ -40,6 +41,9 @@ class ProductCompareActivity : BaseActivity() {
     @Inject
     lateinit var productRepository: ProductRepository
 
+    @Inject
+    lateinit var picasso: Picasso
+
     private lateinit var productComparisonAdapter: ProductCompareAdapter
     private lateinit var photoReceiverHandler: PhotoReceiverHandler
 
@@ -63,7 +67,7 @@ class ProductCompareActivity : BaseActivity() {
             MatomoAnalytics.trackEvent(AnalyticsEvent.CompareProducts(productsToCompare.size.toFloat()))
         }
 
-        productComparisonAdapter = ProductCompareAdapter(productsToCompare, this, api, productRepository)
+        productComparisonAdapter = ProductCompareAdapter(productsToCompare, this, api, productRepository, picasso)
         binding.productComparisonRv.layoutManager = LinearLayoutManager(this, HORIZONTAL, false)
         binding.productComparisonRv.adapter = productComparisonAdapter
 
