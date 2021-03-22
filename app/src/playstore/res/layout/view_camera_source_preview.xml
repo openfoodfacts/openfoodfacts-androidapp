@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<openfoodfacts.github.scrachx.openfood.camera.CameraSourcePreview xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/camera_preview"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <openfoodfacts.github.scrachx.openfood.camera.GraphicOverlay
         android:id="@+id/camera_preview_graphic_overlay"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 
     <FrameLayout
         android:id="@+id/static_overlay_container"
@@ -18,8 +21,8 @@
             style="@style/Widget.MaterialComponents.Chip.Entry"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="28dp"
             android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="28dp"
             android:checkable="false"
             android:clickable="false"
             android:fontFamily="sans-serif"
@@ -28,8 +31,8 @@
             android:visibility="gone"
             app:chipCornerRadius="8dp"
             app:chipSurfaceColor="@color/black"
-            app:closeIconVisible="false"/>
+            app:closeIconVisible="false" />
 
     </FrameLayout>
 
-</merge>
+</openfoodfacts.github.scrachx.openfood.camera.CameraSourcePreview>

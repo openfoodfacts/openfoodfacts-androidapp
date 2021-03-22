@@ -328,9 +328,11 @@ android {
         }
         create("playstore") {
             dimension = "platform"
+            buildConfigField("boolean", "USE_MLKIT", "true")
         }
         create("fdroid") {
             dimension = "platform"
+            buildConfigField("boolean", "USE_MLKIT", "false")
         }
     }
 
