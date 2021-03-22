@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
+import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.addTo
@@ -16,8 +17,8 @@ import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditAc
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
 import openfoodfacts.github.scrachx.openfood.images.ImageNameJsonParser
 import openfoodfacts.github.scrachx.openfood.models.ProductState
-import openfoodfacts.github.scrachx.openfood.network.CommonApiManager
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
+import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
 import openfoodfacts.github.scrachx.openfood.utils.requireProductState
 import javax.inject.Inject
 
@@ -33,6 +34,12 @@ class ProductPhotosFragment : BaseFragment() {
     @Inject
     lateinit var client: OpenFoodAPIClient
 
+    @Inject
+    lateinit var productsApi: ProductsAPI
+
+    @Inject
+    lateinit var picasso: Picasso
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentProductPhotosBinding.inflate(inflater, container, false)
         return binding.root
@@ -41,7 +48,7 @@ class ProductPhotosFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val product = requireProductState().product!!
-        CommonApiManager.productsApi
+        productsApi
                 .getProductImages(product.code)
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnError { Log.e(LOG_TAG, "Cannot download images from server", it) }
@@ -50,7 +57,7 @@ class ProductPhotosFragment : BaseFragment() {
                     val imageNames = ImageNameJsonParser.extractImagesNameSortedByUploadTimeDesc(node!!)
 
                     //Check if user is logged in
-                    val adapter = ProductPhotosAdapter(requireContext(), client, product, imageNames, binding.root)
+                    val adapter = ProductPhotosAdapter(requireContext(), picasso, client, product, imageNames, binding.root)
                     { position ->
                         // Retrieves url of the image clicked to open FullScreenActivity
                         var barcodePattern = product.code

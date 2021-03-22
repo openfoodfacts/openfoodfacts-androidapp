@@ -1,8 +1,11 @@
 package openfoodfacts.github.scrachx.openfood.network
 
+import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.google.common.truth.Truth.assertThat
+import io.reactivex.schedulers.Schedulers
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.models.ProductState
 import openfoodfacts.github.scrachx.openfood.models.Search
 import openfoodfacts.github.scrachx.openfood.models.entities.SendProduct
@@ -209,7 +212,13 @@ class ProductsAPITest {
                                 .method(origReq.method(), origReq.body()).build())
                     }
                     .build()
-            prodClient = CommonApiManager.productsApi
+            prodClient =  Retrofit.Builder()
+                    .baseUrl(BuildConfig.HOST)
+                    .client(httpClientWithAuth)
+                    .addConverterFactory(JacksonConverterFactory.create(jacksonObjectMapper()))
+                    .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
+                    .build()
+                    .create(ProductsAPI::class.java)
             devClientWithAuth = Retrofit.Builder()
                     .baseUrl(DEV_API)
                     .addConverterFactory(JacksonConverterFactory.create())

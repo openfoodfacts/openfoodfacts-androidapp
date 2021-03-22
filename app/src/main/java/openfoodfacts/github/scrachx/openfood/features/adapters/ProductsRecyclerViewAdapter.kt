@@ -15,7 +15,6 @@ import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
-import openfoodfacts.github.scrachx.openfood.utils.Utils.picassoBuilder
 import openfoodfacts.github.scrachx.openfood.utils.getEcoscoreResource
 import openfoodfacts.github.scrachx.openfood.utils.getNovaGroupResource
 import openfoodfacts.github.scrachx.openfood.utils.getNutriScoreResource
@@ -28,6 +27,7 @@ class ProductsRecyclerViewAdapter(
         val products: MutableList<Product?>,
         private val isLowBatteryMode: Boolean,
         private val context: Context,
+        private val picasso: Picasso,
         private val openFoodAPIClient: OpenFoodAPIClient
 ) : RecyclerView.Adapter<ProductsRecyclerViewAdapter.ProductsListViewHolder>() {
 
@@ -51,7 +51,7 @@ class ProductsRecyclerViewAdapter(
 
         // Load Image if isLowBatteryMode is false
         if (!isLowBatteryMode) {
-            picassoBuilder(context)
+            picasso
                     .load(imageSmallUrl)
                     .placeholder(R.drawable.placeholder_thumb)
                     .error(R.drawable.error_image)

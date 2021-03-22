@@ -30,6 +30,7 @@ import androidx.core.content.edit
 import com.afollestad.materialdialogs.MaterialDialog
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
+import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
@@ -45,20 +46,25 @@ import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabsHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityLoginBinding
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
-import openfoodfacts.github.scrachx.openfood.network.CommonApiManager.productsApi
+import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
 import openfoodfacts.github.scrachx.openfood.utils.Utils
 import openfoodfacts.github.scrachx.openfood.utils.getLoginPreferences
 import retrofit2.Response
 import java.io.IOException
 import java.net.HttpCookie
+import javax.inject.Inject
 
 /**
  * A login screen that offers login via login/password.
  * This Activity connect to the Chrome Custom Tabs Service on startup to prefetch the url.
  */
+@AndroidEntryPoint
 class LoginActivity : BaseActivity() {
     private var _binding: ActivityLoginBinding? = null
     private val binding get() = _binding!!
+
+    @Inject
+    lateinit var productsApi: ProductsAPI
 
     private lateinit var customTabActivityHelper: CustomTabActivityHelper
 

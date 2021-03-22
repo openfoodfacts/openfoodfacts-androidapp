@@ -7,16 +7,22 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.images.IMAGE_EDIT_SIZE_FILE
 import openfoodfacts.github.scrachx.openfood.images.getImageUrl
-import openfoodfacts.github.scrachx.openfood.utils.Utils.picassoBuilder
 import java.util.function.Consumer
 
 /**
  * Created by prajwalm on 10/09/18.
  */
-class ProductImagesSelectionAdapter(private val context: Context, private val images: List<String>, private val barcode: String, private val onImageClick: Consumer<Int>?) : RecyclerView.Adapter<ProductImagesSelectionAdapter.CustomViewHolder>() {
+class ProductImagesSelectionAdapter(
+        private val context: Context,
+        private val picasso: Picasso,
+        private val images: List<String>,
+        private val barcode: String,
+        private val onImageClick: Consumer<Int>?
+) : RecyclerView.Adapter<ProductImagesSelectionAdapter.CustomViewHolder>() {
     var selectedPosition = -1
     fun isSelectionDone() = selectedPosition >= 0
 
@@ -40,7 +46,7 @@ class ProductImagesSelectionAdapter(private val context: Context, private val im
         } else {
             viewGroup.setBackgroundColor(0)
         }
-        picassoBuilder(context).load(finalUrlString).resize(400, 400).centerInside().into(imageView)
+        picasso.load(finalUrlString).resize(400, 400).centerInside().into(imageView)
     }
 
     override fun getItemCount() = images.size

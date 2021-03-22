@@ -12,11 +12,16 @@ import androidx.core.graphics.BlendModeColorFilterCompat.createBlendModeColorFil
 import androidx.core.graphics.BlendModeCompat
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.AnalysisTagConfig
 import openfoodfacts.github.scrachx.openfood.utils.Utils
 
-class IngredientAnalysisTagsAdapter(private val context: Context, private val tags: List<AnalysisTagConfig>) : RecyclerView.Adapter<IngredientAnalysisTagsAdapter.IngredientAnalysisTagsViewHolder>() {
+class IngredientAnalysisTagsAdapter(
+        private val context: Context,
+        private val tags: List<AnalysisTagConfig>,
+        private val picasso: Picasso
+) : RecyclerView.Adapter<IngredientAnalysisTagsAdapter.IngredientAnalysisTagsViewHolder>() {
     private val prefs: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
     private val visibleTags = tags.toMutableList()
     private var onClickListener: ((View, Int) -> Unit)? = null
@@ -30,9 +35,7 @@ class IngredientAnalysisTagsAdapter(private val context: Context, private val ta
     // binds the data to the TextView in each row
     override fun onBindViewHolder(holder: IngredientAnalysisTagsViewHolder, position: Int) {
         val tag = visibleTags[position]
-        Utils.picassoBuilder(context)
-                .load(tag.iconUrl)
-                .into(holder.icon)
+        picasso.load(tag.iconUrl).into(holder.icon)
 
         holder.background.background = ResourcesCompat.getDrawable(
                 context.resources,

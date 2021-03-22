@@ -4,13 +4,14 @@ import android.content.Context
 import android.widget.ArrayAdapter
 import android.widget.Filter
 import android.widget.Filterable
-import openfoodfacts.github.scrachx.openfood.network.CommonApiManager.productsApi
+import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
 import org.apache.commons.lang3.StringUtils
 import java.util.*
 
 class EmbCodeAutoCompleteAdapter(
         context: Context?,
-        textViewResourceId: Int
+        textViewResourceId: Int,
+        private val productsApi: ProductsAPI
 ) : ArrayAdapter<String>(context!!, textViewResourceId), Filterable {
     private val codeList: MutableList<String> = arrayListOf()
 
