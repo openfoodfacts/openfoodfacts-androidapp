@@ -1,11 +1,12 @@
 {
   "changelog": [
     {
-      "date": "10/02/2021",
+      "date": "1002-2021",
       "code": 350,
       "name": "3.5.0",
       "items": [
-        "Tilføjet ændringslogskærm-"
+        "Maskinindlæringsforbedret stregkodeskanner. Du kan nu aktivere en ny skanningsmåde via valgmulighederne samt når som helst skifte stregkodeskannermotor via indstillingerne.",
+        "Hjælp OFF-frivillige med at forbedre appen. Du kan tillade indsendelse af anonyme analyser og nedbrudsrapporter. Dette kan når som helst aktiveres/deaktiveres via indstillingerne."
       ]
     }
   ]
