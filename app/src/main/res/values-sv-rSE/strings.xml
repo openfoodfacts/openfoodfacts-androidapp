@@ -16,7 +16,7 @@
   -->
 <resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
-        <item quantity="one">Du har 1 offline produkter som väntar på att bidra till till Open Food Facts</item>
+        <item quantity="one">You have 1 offline product waiting to be contributed to Open Food Facts</item>
         <item quantity="other">You have %d offline products waiting to be contributed to Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
@@ -73,11 +73,6 @@
     </string-array>
     <!-- nutrition comparison units -->
     <!-- Application theme settings -->
-    <string-array name="application_theme_entries">
-        <item>@string/follow_system</item>
-        <item>@string/day</item>
-        <item>@string/night</item>
-    </string-array>
     <!-- nutrients list
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
@@ -218,7 +213,7 @@
     <string name="create_account">Registrera</string>
     <string name="home_drawer">Hem</string>
     <string name="install">Installera</string>
-    <string name="open_beauty_drawer">Öppna fakta om skönhet</string>
+    <string name="open_beauty_drawer">Open Beauty Facts</string>
     <string name="open_food_drawer">Open Food Facts</string>
     <string name="search_drawer">Sök</string>
     <string name="search_by_barcode_drawer">Sök med streckkod</string>
@@ -451,6 +446,17 @@
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
     <string name="url_nutrient_values">https://world-sv.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">Allmänt</string>
+    <string name="preference_header_network">Network</string>
+    <string name="preference_header_contributing">Contributing</string>
+    <string name="preference_header_privacy">Privacy</string>
+    <string name="preference_crash_title">Crash reporting</string>
+    <string name="preference_crash_summary">When enabled, crash reports will be sent to the Open Food Facts server automatically, so that we can fix bugs and improve the app.</string>
+    <string name="preference_analytics_title">Send anonymous data</string>
+    <string name="preference_analytics_summary">When enabled, some anonymous information regarding app usage will be sent to the Open Food Facts servers, so that we can understand how and how much features are used in order to improve them.</string>
+    <string name="preference_analytics_bottom_sheet_title">Send anonymous data</string>
+    <string name="preference_analytics_bottom_sheet_description">Help improve Open Food Facts by letting us know how you use it. Data collected is anonymous. This option can be disabled at any time in the settings section.</string>
+    <string name="preference_analytics_bottom_sheet_grant_button">Grant</string>
+    <string name="preference_analytics_bottom_sheet_decline_button">Decline</string>
     <string name="scan_first_string">Din produkthistorik visas här.\nDen här historiken är ses bara av dig och lagras lokalt.</string>
     <string name="log_in">Användarnamn</string>
     <string name="login_true">Redan inloggad!</string>

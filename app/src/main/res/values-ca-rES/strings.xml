@@ -17,7 +17,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
         <item quantity="one">You have 1 offline product waiting to be contributed to Open Food Facts</item>
-        <item quantity="other"> Teniu %d productes fora de línia esperant la vostra aportació a Open Food Facts</item>
+        <item quantity="other">You have %d offline products waiting to be contributed to Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
         <item quantity="one">Fa %d segon</item>
@@ -73,11 +73,6 @@
     </string-array>
     <!-- nutrition comparison units -->
     <!-- Application theme settings -->
-    <string-array name="application_theme_entries">
-        <item>@string/follow_system</item>
-        <item>@string/day</item>
-        <item>@string/night</item>
-    </string-array>
     <!-- nutrients list
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
@@ -451,6 +446,17 @@
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
     <string name="url_nutrient_values">https://es-ca.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">General</string>
+    <string name="preference_header_network">Xarxa</string>
+    <string name="preference_header_contributing">Aportant</string>
+    <string name="preference_header_privacy">Privacitat</string>
+    <string name="preference_crash_title">Informes d\'errors</string>
+    <string name="preference_crash_summary">Quan estigui activat, els informes d’errors s’enviaran automàticament al servidor d’Open Food Facts, de manera que puguem corregir errors i millorar l’aplicació.</string>
+    <string name="preference_analytics_title">Enviament de dades anònimes</string>
+    <string name="preference_analytics_summary">Quan estigui activat, s\'enviarà informació anònima sobre l\'ús de l\'aplicació als servidors Open Food Facts, de manera que puguem entendre com i quantes funcions s\'utilitzen per millorar-les.</string>
+    <string name="preference_analytics_bottom_sheet_title">Enviament de dades anònimes</string>
+    <string name="preference_analytics_bottom_sheet_description">Ajudeu a millorar Open Food Facts informant-nos de com l’utilitzeu. Les dades recollides són anònimes. Aquesta opció es pot desactivar en qualsevol moment a la secció de configuració.</string>
+    <string name="preference_analytics_bottom_sheet_grant_button">Grant</string>
+    <string name="preference_analytics_bottom_sheet_decline_button">Decline</string>
     <string name="scan_first_string">L\'historial del producte vist es mostrarà aquí. \nAquest historial només és per a vosaltres i s\'emmagatzema localment.</string>
     <string name="log_in">Nom d\'usuari</string>
     <string name="login_true">Ja heu iniciat la sessió!</string>

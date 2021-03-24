@@ -73,11 +73,6 @@
     </string-array>
     <!-- nutrition comparison units -->
     <!-- Application theme settings -->
-    <string-array name="application_theme_entries">
-        <item>@string/follow_system</item>
-        <item>@string/day</item>
-        <item>@string/night</item>
-    </string-array>
     <!-- nutrients list
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
@@ -248,7 +243,7 @@
     <string name="permission_denied">Por favor active a permissão nas definições</string>
     <string name="info_download_data_connection">Você precisa baixar alguns dados para ativar esta funcionalidade. Por favor, ative sua conexão com a internet.</string>
     <!-- Strings related to login -->
-    <string name="error_invalid_password">A senha deve ter no mínimo 6 caracteres.</string>
+    <string name="error_invalid_password">A palavra-passe deve conter pelo menos 6 caracteres.</string>
     <string name="user">usuário</string>
     <string name="error_field_required">Este campo é necessário.</string>
     <!-- Strings related to feedback dialog -->
@@ -302,7 +297,7 @@
     <string name="textCarbonFootprint">Pegada ecológica / emissões CO2: </string>
     <string name="packaging_environmentTab">Packaging:</string>
     <string name="action_search">Procurar</string>
-    <string name="search_hint">Pesquisar um produto</string>
+    <string name="search_hint">Procurar um produto</string>
     <string name="number_of_results">Número de resultados: </string>
     <string name="number_of_products">Número de produtos: </string>
     <string name="txt_no_matching__category_products">Infelizmente não temos nenhum produto nesta categoria, você pode adicionar um?</string>
@@ -451,6 +446,17 @@
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
     <string name="url_nutrient_values">https://world-pt.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">Gerais</string>
+    <string name="preference_header_network">Network</string>
+    <string name="preference_header_contributing">Contributing</string>
+    <string name="preference_header_privacy">Privacy</string>
+    <string name="preference_crash_title">Crash reporting</string>
+    <string name="preference_crash_summary">When enabled, crash reports will be sent to the Open Food Facts server automatically, so that we can fix bugs and improve the app.</string>
+    <string name="preference_analytics_title">Send anonymous data</string>
+    <string name="preference_analytics_summary">When enabled, some anonymous information regarding app usage will be sent to the Open Food Facts servers, so that we can understand how and how much features are used in order to improve them.</string>
+    <string name="preference_analytics_bottom_sheet_title">Send anonymous data</string>
+    <string name="preference_analytics_bottom_sheet_description">Help improve Open Food Facts by letting us know how you use it. Data collected is anonymous. This option can be disabled at any time in the settings section.</string>
+    <string name="preference_analytics_bottom_sheet_grant_button">Grant</string>
+    <string name="preference_analytics_bottom_sheet_decline_button">Decline</string>
     <string name="scan_first_string">O seu histórico de produtos vistos será listado aqui.\nEsse histórico é apenas seu e é guardado localmente.</string>
     <string name="log_in">Nome de Utilizador</string>
     <string name="login_true">Já está logado!</string>
@@ -496,8 +502,8 @@
     <string name="code_detected">Detectamos o código de barras</string>
     <string name="do_you_want_to">Você quer adicionar fotos a este código de barras?</string>
     <string name="bottomNav_history">Histórico</string>
-    <string name="products_added">Produtos que você adicionou ou editou</string>
-    <string name="products_incomplete">Produtos que você adicionou que precisam ser completados</string>
+    <string name="products_added">Produtos que adicionou ou editou</string>
+    <string name="products_incomplete">Produtos adicionados por si que precisam de ser concluídos</string>
     <string name="product_pictures_contributed">Produtos que você fotografou</string>
     <string name="picture_contributed_incomplete">Produtos que você fotografou que precisam ser completados</string>
     <string name="product_info_added">Produtos para os quais você adicionou informações</string>
@@ -576,17 +582,17 @@
     <string name="nutrition_facts">Fatos Nutricionais</string>
     <string name="your_version">Sua</string>
     <string name="ingredients_picture">Imagen de ingredientes</string>
-    <string name="packaging">Reciclando</string>
+    <string name="packaging">Reciclar</string>
     <string name="take_ingredients_picture_to_extract">(Por favor tire uma foto dos ingredientes para extraí-los automaticamente)</string>
     <string name="ingredients_list">Lista de Ingredientes</string>
     <string name="ingredients_hint">Mantenha a ordem de listagem, indique os % quando especificado, separe com uma vírgula \",\" ou hífen \"-\", use parênteses \"()\" para ingredientes compostos de outros ingredientes, envolva os alergénios em dois \'underscore\' (traço inferior) \"_\"</string>
     <string name="extract_ingredients">Extrair ingredientes</string>
-    <string name="extracting_ingredients">Extraindo ingredientes</string>
+    <string name="extracting_ingredients">A extrair os ingredientes</string>
     <string name="looksGood">Parece bem</string>
     <string name="skip_ingredients">Demasiado mau \n Ignorar Ingredientes</string>
     <string name="traces">Vestígios</string>
     <string name="traces_hint">Indique ingredientes que sejam mencionados como \'Pode conter vestígios de\', \'Feito em uma fábrica que também usa\', etc. \nExemplos: Leite, Glúten, Nozes</string>
-    <string name="nutrition_facts_not_specified">Os fatores nutricionais não são especificados no produto.</string>
+    <string name="nutrition_facts_not_specified">Informação nutricional não especificada no produto.</string>
     <string name="nutrition_facts_picture">Imagem de fatos nutricionais</string>
     <string name="front_short_picture">Frente</string>
     <string name="other_picture">Outra imagem</string>
@@ -602,7 +608,7 @@
     <string name="product_name">Nome do produto</string>
     <string name="quantity">Quantidade</string>
     <string name="labels">Rótulos</string>
-    <string name="period_of_time_after_opening">Período de tempo após a abertura</string>
+    <string name="period_of_time_after_opening">Validade após a abertura</string>
     <string name="manufacturing_details">Detalhes de Fabricação</string>
     <string name="origin_of_ingredients">Origem dos ingredientes</string>
     <string name="manufacturing_place">Local de Fabricação</string>

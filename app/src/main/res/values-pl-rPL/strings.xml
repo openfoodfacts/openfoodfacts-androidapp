@@ -83,11 +83,6 @@
     </string-array>
     <!-- nutrition comparison units -->
     <!-- Application theme settings -->
-    <string-array name="application_theme_entries">
-        <item>@string/follow_system</item>
-        <item>@string/day</item>
-        <item>@string/night</item>
-    </string-array>
     <!-- nutrients list
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
@@ -461,6 +456,17 @@
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
     <string name="url_nutrient_values">https://world-pl.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">Ogólne</string>
+    <string name="preference_header_network">&amp;Sieć</string>
+    <string name="preference_header_contributing">Współpraca</string>
+    <string name="preference_header_privacy">Ochrona prywatności</string>
+    <string name="preference_crash_title">Raportowanie błędów</string>
+    <string name="preference_crash_summary">Po włączeniu raporty o awariach będą automatycznie wysyłane do serwera Open Food Facts, abyśmy mogli naprawić błędy i ulepszyć aplikację.</string>
+    <string name="preference_analytics_title">Wysyłaj anonimowe dane</string>
+    <string name="preference_analytics_summary">Po włączeniu niektóre anonimowe informacje dotyczące użytkowania aplikacji będą wysyłane na serwery Open Food Facts, abyśmy mogli zrozumieć, w jaki sposób i ile funkcji jest używanych w celu ich ulepszenia.</string>
+    <string name="preference_analytics_bottom_sheet_title">Wysyłaj anonimowe dane</string>
+    <string name="preference_analytics_bottom_sheet_description">Pomóż ulepszyć Open Food Facts, informując nas, jak z niej korzystasz. Gromadzone dane są anonimowe. Tę opcję można wyłączyć w dowolnym momencie w sekcji ustawień.</string>
+    <string name="preference_analytics_bottom_sheet_grant_button">Dotacja</string>
+    <string name="preference_analytics_bottom_sheet_decline_button">Odrzuć</string>
     <string name="scan_first_string">Historia produktów, które przeglądałeś zostanie podana tutaj.\n Jest przechowywana lokalnie, tylko dla ciebie.</string>
     <string name="log_in">Nazwa użytkownika</string>
     <string name="login_true">Jesteś już zalogowany.</string>
