@@ -73,11 +73,6 @@
     </string-array>
     <!-- nutrition comparison units -->
     <!-- Application theme settings -->
-    <string-array name="application_theme_entries">
-        <item>@string/follow_system</item>
-        <item>@string/day</item>
-        <item>@string/night</item>
-    </string-array>
     <!-- nutrients list
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
@@ -451,6 +446,17 @@
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
     <string name="url_nutrient_values">https://world.openfoodfacts.org/ernæringstraffiklys</string>
     <string name="preference_header_general">Generelt</string>
+    <string name="preference_header_network">Netværk</string>
+    <string name="preference_header_contributing">Bidrag</string>
+    <string name="preference_header_privacy">Fortrolighed</string>
+    <string name="preference_crash_title">Nedbrudsanmeldelse</string>
+    <string name="preference_crash_summary">Når aktiveret, indsendes nedbrudsrapporter automatisk til OFF-serveren, så vi kan fejlrette og forbedre appen.</string>
+    <string name="preference_analytics_title">Indsend anonyme data</string>
+    <string name="preference_analytics_summary">Når aktiveret, indsendes visse anonyme oplysninger om app-brug til OFF-serverne, så vi kan forstå, hvordan og i hvilket omfang funktioner bruges mhp.at forbedre disse.</string>
+    <string name="preference_analytics_bottom_sheet_title">Indsend anonyme data</string>
+    <string name="preference_analytics_bottom_sheet_description">Hjælp med at forbedre OFF ved at oplyse on brugen af dem. Indsamlede data er anonyme. Denne mulighed kan når som helst deaktiveres via Indstillinger.</string>
+    <string name="preference_analytics_bottom_sheet_grant_button">Tildel</string>
+    <string name="preference_analytics_bottom_sheet_decline_button">Afvis</string>
     <string name="scan_first_string">Historik for viste produkter vil fremgå her.\nDet er din private historik, og den lagres kun lokalt.</string>
     <string name="log_in">Brugernavn</string>
     <string name="login_true">Allerede logget ind!</string>
@@ -784,7 +790,7 @@
     <string name="icon_categories">Kategoriikon</string>
     <string name="icon_emb">EMB-kodeikon</string>
     <string name="product_front_image">Produktbillede front</string>
-    <string name="brand_hint">Eks.: Coca-Cola, Nestle, mv.…</string>
+    <string name="brand_hint">Eks.: Coca-Cola, Nestle,…</string>
     <string name="sign_in_or_register">Log ind eller tilmeld</string>
     <string name="hunger_game_call_to_action">Hjælp med at klassificere flere %1$s</string>
     <string name="txtHomeOnline">Open Food Facts er en åben database med flere end %1$s produkter (plus dem, du vil bidrage med).</string>

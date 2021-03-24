@@ -73,11 +73,6 @@
     </string-array>
     <!-- nutrition comparison units -->
     <!-- Application theme settings -->
-    <string-array name="application_theme_entries">
-        <item>@string/follow_system</item>
-        <item>@string/day</item>
-        <item>@string/night</item>
-    </string-array>
     <!-- nutrients list
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
@@ -238,7 +233,7 @@
     <string name="cancel_button">Annuler</string>
     <string name="login_button">Nom d\'utilisateur</string>
     <string name="create_account_button">Créer un Compte</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Les informations relatives à vos allergies ne seront jamais envoyées aux serveurs d\'Open Food Facts. Par ailleurs, soyez vigilant sur le fait que ces données ne sont pas fiables à 100% at que la détection peut ne pas être précise à 100%. Veuillez donc vérifier vous-même! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Les informations relatives à vos allergies ne seront jamais envoyées aux serveurs d\'Open Food Facts. Par ailleurs, soyez vigilant sur le fait que ces données ne sont pas fiables à 100 % at que la détection peut ne pas être précise à 100 %. Veuillez donc vérifier vous-même !</string>
     <string name="title_info_dialog">Comment cela fonctionne-t-il ?</string>
     <string name="text_offline_info_dialog">Vous pouvez scanner des produits lorsque vous êtes hors-ligne pour les ajouter plus tard à Open Pet Food Facts. Tous les produits que vous scannez apparaîtront ici et vous serez en mesure de les envoyer en utilisant le bouton ci-dessous.</string>
     <string name="permission_camera">L\'autorisation d\'utiliser l\'appareil photo est nécessaire pour scanner des codes-barres et prendre des photos.</string>
@@ -421,8 +416,8 @@
     <string name="changes_saved">Les modifications ont été enregistrées avec succès</string>
     <string name="proceed">Continuer</string>
     <string name="preference_choose_language_dialog_title">Choisir la langue</string>
-    <string name="preference_choose_scanner_dialog_title"><b>Nouveauté : scanner « MLKit » amélioré</b></string>
-    <string name="preference_choose_scanner_dialog_body">Nous avons ajouté une option pour scanner les codes-barres de manière plus fiable. Lorsque ce scanner fonctionne sur votre appareil, en utilisant l\'apprentissage automatique, veuillez noter qu\'il s\'agit d\'un composant propriétaire de Google, régi par leur politique de confidentialité, et certains relevés télémétriques peuvent être envoyés aux serveurs de Google afin d\'améliorer leur logiciel. Comme indiqué dans les conditions d\'utilisation de MLKit, la télémétrie est anonymisée et ne contient aucune information sur les produits que vous scannez. En choisissant le scanner MLKit, vous acceptez ces termes\n<b>Remarque : vous pouvez basculez entre les deux scanners à tout moment dans les paramètres.</b>    </string>
+    <string name="preference_choose_scanner_dialog_title"><b>Nouveauté : scanner \"MLKit\" amélioré</b></string>
+    <string name="preference_choose_scanner_dialog_body">Nous avons ajouté une option pour scanner les codes-barres de manière plus fiable. Bien que ce scanner fonctionne sur votre appareil, en utilisant l\'apprentissage automatique, veuillez noter qu\'il s\'agit d\'un composant propriétaire de Google, régi par leur politique de confidentialité, et certains relevés télémétriques peuvent être envoyés aux serveurs de Google afin d\'améliorer leur logiciel. Comme indiqué dans les conditions d\'utilisation de MLKit, la télémétrie est anonymisée et ne contient aucune information sur les produits que vous scannez. En choisissant le scanner MLKit, vous acceptez ces termes\n<b>Remarque : vous pouvez basculer entre les deux scanners à tout moment dans les paramètres.</b>    </string>
     <string name="prompt_point_at_a_barcode">Pointez l\'appareil photo vers un code-barres</string>
     <string name="prompt_move_camera_closer">Approchez-vous pour la détection</string>
     <string name="please_check_your_connection">Veuillez vérifier votre connexion Internet.</string>
@@ -447,6 +442,17 @@
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
     <string name="url_nutrient_values">https://fr.openfoodfacts.org/feux-tricolores-nutritionnels</string>
     <string name="preference_header_general">Général</string>
+    <string name="preference_header_network">Réseau</string>
+    <string name="preference_header_contributing">Contribuer</string>
+    <string name="preference_header_privacy">Vie privée</string>
+    <string name="preference_crash_title">Rapport de plantage</string>
+    <string name="preference_crash_summary">Lorsque cette option est activée, les rapports de plantage seront envoyés automatiquement au serveur Open Food Facts pour que nous puissions corriger les erreurs et améliorer l\'application.</string>
+    <string name="preference_analytics_title">Envoyer des données anonymes</string>
+    <string name="preference_analytics_summary">Lorsque cette option est activée, certaines informations anonymes concernant l\'utilisation de l\'application seront envoyées aux serveurs Open Food Facts pour que nous puissions comprendre comment et combien de fonctionnalités sont utilisées afin de les améliorer.</string>
+    <string name="preference_analytics_bottom_sheet_title">Envoyer des données anonymes</string>
+    <string name="preference_analytics_bottom_sheet_description">Aidez à améliorer Open Food Facts en nous faisant savoir comment vous l\'utilisez. Les données collectées sont anonymes. Cette option peut être désactivée à tout moment dans la section paramètres.</string>
+    <string name="preference_analytics_bottom_sheet_grant_button">Autoriser</string>
+    <string name="preference_analytics_bottom_sheet_decline_button">Refuser</string>
     <string name="scan_first_string">L\'historique des produits que vous avez consultés sera répertorié ici.\nCet historique est réservé à vos yeux et est stocké localement.</string>
     <string name="log_in">Nom d\'utilisateur</string>
     <string name="login_true">Vous êtes déjà connecté(e).</string>
@@ -597,7 +603,7 @@
     <string name="product_details">Détails du produit</string>
     <string name="product_name">Nom du produit</string>
     <string name="quantity">Quantité</string>
-    <string name="labels">Étiquettes</string>
+    <string name="labels">Labels</string>
     <string name="period_of_time_after_opening">Durée de conservation après ouverture</string>
     <string name="manufacturing_details">Détails de fabrication</string>
     <string name="origin_of_ingredients">Origine des ingrédients</string>
@@ -655,10 +661,10 @@
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">Extraire les ingrédients</string>
     <string name="extract_recycling_prompt">Extraire les instructions de recyclage</string>
-    <string name="add_nutrient_prompt_text">Ajoutez des informations nutritionnelles pour calculer les quantités de nutriments</string>
+    <string name="add_nutrient_prompt_text">Ajouter les informations nutritionnelles pour calculer le Nutri-Score</string>
     <string name="add_category_prompt_text">Ajoutez une catégorie pour aider à compléter le produit</string>
     <string name="add_nutrient_category_prompt_text">Ajoutez une catégorie et des informations nutritionnelles pour aider à compléter le produit</string>
-    <string name="couldnot_compute_ecoscore_prompt_text">Nous n\'avons pas pu calculer l\'Eco-Score de ce produit. Il se peut que la catégorie ne soit pas assez spécifique ou que nous n\'ayons pas les données nécessaires pour cette catégorie. Si vous pensez qu\'il s\'agit d\'une erreur, vous pouvez nous envoyer un e-mail en cliquant ci-dessous.</string>
+    <string name="couldnot_compute_ecoscore_prompt_text">Nous n\'avons pas pu calculer l\'Eco-Score de ce produit. Il se peut que la catégorie ne soit pas assez spécifique ou que nous n\'ayons pas les données nécessaires pour cette catégorie. Si vous pensez qu\'il s\'agit d\'une erreur, vous pouvez nous envoyer un courriel en cliquant ci-dessous.</string>
     <string name="add_labels_origins_prompt_text">L\'Eco-Score prend en compte les labels environnementaux et l\'origine des ingrédients. Veuillez les prendre en photo ou modifier le produit de sorte qu\'ils soient pris en compte</string>
     <string name="add_labels_prompt_text">L\'Eco-Score prend en compte les labels environnementaux. Veuillez les prendre en photo ou modifier le produit de sorte qu\'ils soient pris en compte</string>
     <string name="add_origins_prompt_text">L\'Eco-Score prend en compte l\'origine des ingrédients. Veuillez les prendre en photo (liste des ingrédients et/ou toute appellation géographique) ou modifier le produit de sorte qu\'ils soient pris en compte</string>
@@ -791,7 +797,7 @@
     <string name="night">Nuit</string>
     <string name="required_for_ecoscore">(Requis pour calculer l\'Eco-Score)</string>
     <string name="hint_origin">Exemples: USA, France, Italie</string>
-    <string name="report_email_chooser_title">Envoyer un signalement par email</string>
+    <string name="report_email_chooser_title">Envoyer un signalement par courriel</string>
     <!-- Changelog String -->
     <string name="changelog_translation_help">Vous voulez voir ce journal des modifications en %s?\nRejoignez l\'équipe de traduction !</string>
     <string name="whats_new">Quoi de neuf avec Open Food Facts ?</string>
