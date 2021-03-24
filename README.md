@@ -93,11 +93,6 @@ The project uses Fastlane to automate release and screenshots generation.
 * First time you checkout, run `bundle install` at the root of the project
 * Then launch lanes using `bundle exec fastlane release` (for example the release lane)
 
-## Generate screenshots for the Play Store
-To activate the `screenshots` buildType in IDE, uncomment `def result = "screenshots"` and comment the other line otherwise the folder androidTestScreenshots is not recognized as a test folder.
-To generate localized screenshots of the app on your local computer, launch the command `gradlew connectedOffScreenshotsAndroidTest --stacktrace --info -PtestBuildType=screenshots` with a physical device attached to your computer
-[Help is welcome to improve](https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/screenshot-generation)
-
 ### Who do I talk to?
 
 * Repo owner or admin
