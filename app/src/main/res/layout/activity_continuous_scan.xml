@@ -41,15 +41,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
 
-            <openfoodfacts.github.scrachx.openfood.camera.CameraSourcePreview
-                android:id="@+id/camera_preview"
+            <ViewStub
+                android:id="@+id/camera_preview_view_stub"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <include layout="@layout/camera_preview_overlay"/>
-
-            </openfoodfacts.github.scrachx.openfood.camera.CameraSourcePreview>
-
+                android:layout_height="match_parent" />
 
             <ImageView
                 android:id="@+id/button_more"

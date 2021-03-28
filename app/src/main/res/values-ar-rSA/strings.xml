@@ -24,28 +24,28 @@
         <item quantity="other"> لديك %d منتجات في وضع عدم الاتصال بإنتظار أن تُساهم به في Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
-        <item quantity="zero">منذ بضع ثوان%d</item>
-        <item quantity="one">منذ ثانية</item>
+        <item quantity="zero">%d seconds ago</item>
+        <item quantity="one">%d second ago</item>
         <item quantity="two">%d seconds ago</item>
         <item quantity="few">%d seconds ago</item>
         <item quantity="many">%d seconds ago</item>
         <item quantity="other">%d seconds ago</item>
     </plurals>
     <plurals name="minutes">
-        <item quantity="zero">%d قبل دقيقة</item>
-        <item quantity="one">قبل دقيقة</item>
-        <item quantity="two">منذ %d دقيقة</item>
-        <item quantity="few">قبل دقيقة</item>
-        <item quantity="many">قبل دقيقة</item>
+        <item quantity="zero">%d minutes ago</item>
+        <item quantity="one">%d minute ago</item>
+        <item quantity="two">%d minutes ago</item>
+        <item quantity="few">%d minutes ago</item>
+        <item quantity="many">%d minutes ago</item>
         <item quantity="other">%d minutes ago</item>
     </plurals>
     <plurals name="hours">
-        <item quantity="zero">قبل ساعة</item>
-        <item quantity="one">قبل ساعة</item>
-        <item quantity="two">%d منذ ساعات</item>
+        <item quantity="zero">%d hours ago</item>
+        <item quantity="one">%d hour ago</item>
+        <item quantity="two">%d hours ago</item>
         <item quantity="few">%d hours ago</item>
         <item quantity="many">%d hours ago</item>
-        <item quantity="other">%d منذ ساعات</item>
+        <item quantity="other">%d hours ago</item>
     </plurals>
     <plurals name="days">
         <item quantity="zero">منذ %d يوم</item>
@@ -93,11 +93,6 @@
     </string-array>
     <!-- nutrition comparison units -->
     <!-- Application theme settings -->
-    <string-array name="application_theme_entries">
-        <item>@string/follow_system</item>
-        <item>@string/day</item>
-        <item>@string/night</item>
-    </string-array>
     <!-- nutrients list
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
@@ -473,6 +468,17 @@
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
     <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">عام</string>
+    <string name="preference_header_network">Network</string>
+    <string name="preference_header_contributing">Contributing</string>
+    <string name="preference_header_privacy">Privacy</string>
+    <string name="preference_crash_title">Crash reporting</string>
+    <string name="preference_crash_summary">When enabled, crash reports will be sent to the Open Food Facts server automatically, so that we can fix bugs and improve the app.</string>
+    <string name="preference_analytics_title">Send anonymous data</string>
+    <string name="preference_analytics_summary">When enabled, some anonymous information regarding app usage will be sent to the Open Food Facts servers, so that we can understand how and how much features are used in order to improve them.</string>
+    <string name="preference_analytics_bottom_sheet_title">Send anonymous data</string>
+    <string name="preference_analytics_bottom_sheet_description">Help improve Open Food Facts by letting us know how you use it. Data collected is anonymous. This option can be disabled at any time in the settings section.</string>
+    <string name="preference_analytics_bottom_sheet_grant_button">Grant</string>
+    <string name="preference_analytics_bottom_sheet_decline_button">Decline</string>
     <string name="scan_first_string">سيتم سرد سجل المنتجات الذي تم عرضه سابقاً هنا. \n هذا السجل مخصص لك فقط ويتم تخزينه محليًا فى هاتفك الجوال.</string>
     <string name="log_in">اسم المستخدم</string>
     <string name="login_true">مسجل مسبقاً!</string>
@@ -545,9 +551,9 @@
     <string name="productAdditivesUnknown"></string>
     <string name="productAdditivesTemplate">%1$d إضافات</string>
     <plurals name="productAdditives">
-        <item quantity="zero">مواد الإضافية </item>
-        <item quantity="one">%d المواد المضافة</item>
-        <item quantity="two">%d مادة مضافة</item>
+        <item quantity="zero">%d additives</item>
+        <item quantity="one">%d additive</item>
+        <item quantity="two">%d additives</item>
         <item quantity="few">%d additives</item>
         <item quantity="many">%d additives</item>
         <item quantity="other">%d additives</item>

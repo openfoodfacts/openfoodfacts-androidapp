@@ -73,11 +73,6 @@
     </string-array>
     <!-- nutrition comparison units -->
     <!-- Application theme settings -->
-    <string-array name="application_theme_entries">
-        <item>@string/follow_system</item>
-        <item>@string/day</item>
-        <item>@string/night</item>
-    </string-array>
     <!-- nutrients list
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
@@ -419,16 +414,13 @@
     <string name="device_on_mobile_data_warning_positive">Impostazioni</string>
     <string name="device_on_mobile_data_warning_negative">Carica comunque</string>
     <string name="changes_saved">Modifiche salvate correttamente</string>
-    <string name="proceed">Proceed</string>
+    <string name="proceed">Continua</string>
     <string name="preference_choose_language_dialog_title">Scegli la lingua</string>
-    <string name="preference_choose_scanner_dialog_title"><b>New: Enhanced “MLKit” scanner</b></string>
-    <string name="preference_choose_scanner_dialog_body">We have included a new option to more reliably scan barcodes. While this scanner works on your device, using machine learning,
-            please be aware that it is a proprietary component provided by Google, governed by this privacy policy, and that some limited telemetry might be sent back to Google’s servers
-            to improve their software. As noted in the MLKit terms, this won’t include any information about the products you scan and the telemetry is anonymized. Choosing MLKit scanner
-            implies that you accept those terms\n<b>Note: You can switch back at any time between the 2 scanners in the Settings.</b>
-    </string>
-    <string name="prompt_point_at_a_barcode">Point your camera at a barcode</string>
-    <string name="prompt_move_camera_closer">Move closer to detect</string>
+    <string name="preference_choose_scanner_dialog_title"><b>Novità: scanner ML Kit migliorato</b></string>
+    <string name="preference_choose_scanner_dialog_body">Abbiamo introdotto una nuova opzione per poter scansionare i codici a barre in modo più affidabile. Mentre questo scanner lavora sul tuo dispositivo, usando la machine learning,
+             ti chiediamo di tenere in considerazione che si tratta di un componente di proprietà fornito da Google, attenente alla sua policy, e che alcuni parametri limitati possono essere rispediti ai server di Google            per migliorare il loro software. Come riportato nei termini di utilizzo di ML Kit, questo non include nessuna informazione riguardo ai prodotti che scannerizzi e la telemetria viene resa anonima. Scegliendo lo scanner ML Kit             accetti questi termini di utilizzo\n<b>Nota: puoi cambiare in ogni momento lo scanner andando su Impostazioni,</b>    </string>
+    <string name="prompt_point_at_a_barcode">Punta la fotocamera verso un codice a barre</string>
+    <string name="prompt_move_camera_closer">Avvicinati per rilevare</string>
     <string name="please_check_your_connection">Controlla la connessione.</string>
     <string name="advanced_search_title">Ricerca avanzata &amp; grafici</string>
     <string name="compare_products">Compara prodotti</string>
@@ -451,6 +443,17 @@
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
     <string name="url_nutrient_values">https://world-it.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">Generale</string>
+    <string name="preference_header_network">Network</string>
+    <string name="preference_header_contributing">Contributing</string>
+    <string name="preference_header_privacy">Privacy</string>
+    <string name="preference_crash_title">Crash reporting</string>
+    <string name="preference_crash_summary">When enabled, crash reports will be sent to the Open Food Facts server automatically, so that we can fix bugs and improve the app.</string>
+    <string name="preference_analytics_title">Send anonymous data</string>
+    <string name="preference_analytics_summary">When enabled, some anonymous information regarding app usage will be sent to the Open Food Facts servers, so that we can understand how and how much features are used in order to improve them.</string>
+    <string name="preference_analytics_bottom_sheet_title">Send anonymous data</string>
+    <string name="preference_analytics_bottom_sheet_description">Help improve Open Food Facts by letting us know how you use it. Data collected is anonymous. This option can be disabled at any time in the settings section.</string>
+    <string name="preference_analytics_bottom_sheet_grant_button">Grant</string>
+    <string name="preference_analytics_bottom_sheet_decline_button">Decline</string>
     <string name="scan_first_string">La cronologia dei prodotti visualizzati verrà elencata qui.\nQuesta cronologia è privata e viene archiviata localmente.</string>
     <string name="log_in">Nome utente</string>
     <string name="login_true">Ha già effettuato il login!</string>
@@ -512,9 +515,9 @@
     <string name="creator_history">Prodotto aggiunto su %1$s alle %2$s CET da %3$s</string>
     <string name="last_editor_history">Ultima modifica della pagina del prodotto il %1$s alle %2$s CEST da %3$s </string>
     <string name="other_editors">Pagina del prodotto modificata anche da </string>
-    <string name="product_states">Product States</string>
-    <string name="incomplete_states">Incomplete States</string>
-    <string name="complete_states">Complete States</string>
+    <string name="product_states">Stati del prodotto</string>
+    <string name="incomplete_states">Stati incompleti</string>
+    <string name="complete_states">Stati completati</string>
     <string name="contribution_tab">Contributi</string>
     <string name="synthesis_tab">Sintesi</string>
     <string name="txtDialogsTitle">Informazioni</string>
@@ -547,7 +550,7 @@
     <string name="error_adding_product_details">Qualcosa è andato storto durante il tentativo di aggiunta dei dettagli del prodotto</string>
     <string name="hint_product_URL">Collegamento alla pagina ufficiale del prodotto</string>
     <string name="extract_url">Estrai l\'URL dal codice QR</string>
-    <string name="search_url">Search for official page URL</string>
+    <string name="search_url">Cerca l\'URL della pagina ufficiale</string>
     <string name="product_language">Lingua del prodotto: </string>
     <string name="hint_emb_codes">Esempi: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522, FSSL 10013011001409</string>
     <string name="official_website">Sito ufficiale</string>
@@ -763,7 +766,7 @@
     <string name="load_ingredient_detection_data_summary">Non sono stati trovati dati di rilevamento degli ingredienti, prova a caricarli dal server</string>
     <string name="white_check_image_descr">Una spunta bianca</string>
     <string name="hint_packaging">Esempi: plastica, carta, vetro</string>
-    <string name="hint_trace_code">Examples: EMB 23456, FR 23.345.34 CE</string>
+    <string name="hint_trace_code">Esempi: EMB 23456, FR 23.345.34 CE</string>
     <string name="risk_alcohol_consumption">Il consumo eccessivo di alcol è nocivo per la salute, da consumare con moderazione</string>
     <!--ShowcaseView Strings-->
     <string name="title_image_type">Seleziona Tipo Immagine</string>

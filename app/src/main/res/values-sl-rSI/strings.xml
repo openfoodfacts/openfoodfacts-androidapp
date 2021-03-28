@@ -83,11 +83,6 @@
     </string-array>
     <!-- nutrition comparison units -->
     <!-- Application theme settings -->
-    <string-array name="application_theme_entries">
-        <item>@string/follow_system</item>
-        <item>@string/day</item>
-        <item>@string/night</item>
-    </string-array>
     <!-- nutrients list
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
@@ -429,15 +424,15 @@
     <string name="device_on_mobile_data_warning_positive">Nastavitve</string>
     <string name="device_on_mobile_data_warning_negative">Vseeno naloži</string>
     <string name="changes_saved">Spremembe so uspešno shranjene</string>
-    <string name="proceed">Proceed</string>
+    <string name="proceed">Nadaljuj</string>
     <string name="preference_choose_language_dialog_title">Izberi jezik</string>
-    <string name="preference_choose_scanner_dialog_title"><b>New: Enhanced “MLKit” scanner</b></string>
+    <string name="preference_choose_scanner_dialog_title"><b>Novo: Izboljšan optični bralnik »MLKit«</b></string>
     <string name="preference_choose_scanner_dialog_body">We have included a new option to more reliably scan barcodes. While this scanner works on your device, using machine learning,
             please be aware that it is a proprietary component provided by Google, governed by this privacy policy, and that some limited telemetry might be sent back to Google’s servers
             to improve their software. As noted in the MLKit terms, this won’t include any information about the products you scan and the telemetry is anonymized. Choosing MLKit scanner
             implies that you accept those terms\n<b>Note: You can switch back at any time between the 2 scanners in the Settings.</b>
     </string>
-    <string name="prompt_point_at_a_barcode">Point your camera at a barcode</string>
+    <string name="prompt_point_at_a_barcode">Usmerite fotoaparat na črtno kodo</string>
     <string name="prompt_move_camera_closer">Move closer to detect</string>
     <string name="please_check_your_connection">Prosim, preverite povezavo.</string>
     <string name="advanced_search_title">Napredno iskanje &amp; Grafikoni</string>
@@ -461,6 +456,17 @@
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
     <string name="url_nutrient_values">https://world-sl.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">Splošno</string>
+    <string name="preference_header_network">Omrežje</string>
+    <string name="preference_header_contributing">Prispevaj</string>
+    <string name="preference_header_privacy">Zasebnost</string>
+    <string name="preference_crash_title">Poročanje o sesutjih</string>
+    <string name="preference_crash_summary">Ko je omogočeno, se poročilo o sesutju samodejno pošlje na strežnik Open Food Facts, tako lahko odpravimo napake in izboljšamo aplikacijo.</string>
+    <string name="preference_analytics_title">Pošlji anonimne podatke</string>
+    <string name="preference_analytics_summary">Ko je omogočeno, bodo nekateri anonimni podatki o uporabi poslani strežnikom Open Food Facts, da bomo lahko lažje razumeli, kako in koliko funkcij se uporablja za njihovo izboljšanje.</string>
+    <string name="preference_analytics_bottom_sheet_title">Pošlji anonimne podatke</string>
+    <string name="preference_analytics_bottom_sheet_description">Pomagajte izboljšati Open Food Facts, tako, da nam sporočite, kako jo uporabljate. Zbrani podatki so anonimni. To možnost lahko kadar koli onemogočite v razdelku z nastavitvami.</string>
+    <string name="preference_analytics_bottom_sheet_grant_button">Omogoči</string>
+    <string name="preference_analytics_bottom_sheet_decline_button">Zavrni</string>
     <string name="scan_first_string">Vaša ogledana zgodovina izdelkov bo navedena tukaj.\nTa zgodovina je samo za vaše oči in je shranjena lokalno.</string>
     <string name="log_in">Uporabniško ime</string>
     <string name="login_true">Že prijavljen!</string>

@@ -53,6 +53,7 @@ import openfoodfacts.github.scrachx.openfood.AppFlavors.OBF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OPFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
+import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
 import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
@@ -160,7 +161,7 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
         }
 
         requirePreference<SwitchPreference>(getString(R.string.pref_scanner_type_key)).let {
-            it.isVisible = ContinuousScanActivity.showSelectScannerPref
+            it.isVisible = BuildConfig.USE_MLKIT
             it.onPreferenceChangeListener = Preference.OnPreferenceChangeListener { _, newValue ->
                 if (newValue == true) {
                     MaterialDialog.Builder(requireActivity()).run {
