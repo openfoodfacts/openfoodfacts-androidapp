@@ -56,6 +56,9 @@ class AllergensAlertFragment : NavigationBaseFragment() {
     @Inject
     lateinit var productRepository: ProductRepository
 
+    @Inject
+    lateinit var matomoAnalytics: MatomoAnalytics
+
     private var mAllergensEnabled: MutableList<AllergenName>? = null
     private var allergensFromDao: List<AllergenName>? = null
 
@@ -139,7 +142,7 @@ class AllergensAlertFragment : NavigationBaseFragment() {
                                 mAllergensEnabled!!.add(allergens[position])
                                 adapter.notifyItemInserted(mAllergensEnabled!!.size - 1)
                                 binding.allergensRecycle.scrollToPosition(adapter.itemCount - 1)
-                                MatomoAnalytics.trackEvent(AnalyticsEvent.AllergenAlertCreated(allergens[position].allergenTag))
+                                matomoAnalytics.trackEvent(AnalyticsEvent.AllergenAlertCreated(allergens[position].allergenTag))
                             }
                         }.show()
                     }.addTo(disp)

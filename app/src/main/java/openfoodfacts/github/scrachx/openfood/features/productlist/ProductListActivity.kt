@@ -61,6 +61,9 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
     @Inject
     lateinit var daoSession: DaoSession
 
+    @Inject
+    lateinit var matomoAnalytics: MatomoAnalytics
+
     private var listID by Delegates.notNull<Long>()
     private lateinit var productList: ProductLists
     private lateinit var adapter: ProductListAdapter
@@ -231,7 +234,7 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
                 }
             } else {
                 exportAsCSV()
-                MatomoAnalytics.trackEvent(AnalyticsEvent.ShoppingListExported)
+                matomoAnalytics.trackEvent(AnalyticsEvent.ShoppingListExported)
             }
             true
         }

@@ -66,6 +66,9 @@ class LoginActivity : BaseActivity() {
     @Inject
     lateinit var productsApi: ProductsAPI
 
+    @Inject
+    lateinit var matomoAnalytics: MatomoAnalytics
+
     private lateinit var customTabActivityHelper: CustomTabActivityHelper
 
     private val disp = CompositeDisposable()
@@ -156,7 +159,7 @@ class LoginActivity : BaseActivity() {
                         binding.txtInfoLogin.setTextColor(ContextCompat.getColor(this, R.color.green_500))
                         binding.txtInfoLogin.setText(R.string.txtInfoLoginOk)
 
-                        MatomoAnalytics.trackEvent(AnalyticsEvent.UserLogin)
+                        matomoAnalytics.trackEvent(AnalyticsEvent.UserLogin)
 
                         setResult(RESULT_OK)
                         finish()

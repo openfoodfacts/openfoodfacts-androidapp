@@ -1,24 +1,29 @@
 package openfoodfacts.github.scrachx.openfood.analytics
 
+import android.content.Context
 import androidx.preference.PreferenceManager
+import dagger.hilt.android.qualifiers.ApplicationContext
 import io.sentry.Sentry
 import io.sentry.android.core.SentryAndroid
 import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.R
-import openfoodfacts.github.scrachx.openfood.app.OFFApplication
+import javax.inject.Inject
+import javax.inject.Singleton
 
-
-object SentryAnalytics {
+@Singleton
+class SentryAnalytics @Inject constructor(
+        @ApplicationContext private val context: Context,
+) {
 
     // isCrashReportingEnabled is not dynamic, as sentry can not be enabled / disabled, so it takes the value at startup, and changes will only be taken into account after an app restart
     private val isCrashReportingEnabled by lazy {
-        PreferenceManager.getDefaultSharedPreferences(OFFApplication._instance)
-                .getBoolean(OFFApplication._instance.getString(R.string.pref_crash_reporting_key), true)
+        PreferenceManager.getDefaultSharedPreferences(context)
+                .getBoolean(context.getString(R.string.pref_crash_reporting_key), true)
     }
 
-    fun init() {
+    init {
         if (isCrashReportingEnabled) {
-            SentryAndroid.init(OFFApplication._instance)
+            SentryAndroid.init(context)
             Sentry.configureScope { scope ->
                 scope.setTag("flavor", BuildConfig.FLAVOR)
             }
