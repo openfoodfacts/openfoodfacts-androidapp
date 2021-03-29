@@ -1,7 +1,7 @@
     name: GitHub Pages Deploy Action
     on:
         # Branch name(s) which have the source file for site/documentation
-        push: [ <write-branch-here> ]
+        push: ["javadoc"]
     jobs:
         deploy-pages:
             name: Deploy to GitHub Pages
@@ -15,7 +15,7 @@
                     GITHUB_TOKEN: ${{ github.token }}
                     # For JavaDoc - "java"
                     # For python write python package and additional packages if any - "python3 python3-pip" 
-                    LANGUAGE: "<write-as-directed-above>"
+                    LANGUAGE: "java"
                     # Write make command to generate html e.g.- "make html"
                     MAKE_COMMAND: "make html"
                     # Write the branch name for storing github pages source 
