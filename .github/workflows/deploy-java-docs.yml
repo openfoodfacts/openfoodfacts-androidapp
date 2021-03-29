@@ -3,7 +3,8 @@
         # Branch name(s) which have the source file for site/documentation
         push:
             branches:
-                - "develop"
+                - "*"
+                #- "develop"
     jobs:
         deploy-pages:
             name: Deploy to GitHub Pages
