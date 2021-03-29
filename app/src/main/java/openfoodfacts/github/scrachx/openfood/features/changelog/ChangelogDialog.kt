@@ -1,5 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.features.changelog
 
+import android.content.SharedPreferences
 import android.content.pm.PackageManager.NameNotFoundException
 import android.net.Uri
 import android.os.Bundle
@@ -11,7 +12,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.pm.PackageInfoCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.DialogFragment
-import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import dagger.hilt.android.AndroidEntryPoint
@@ -48,6 +48,9 @@ class ChangelogDialog : DialogFragment(R.layout.fragment_changelog) {
     @Inject
     lateinit var sentryAnalytics: SentryAnalytics
 
+    @Inject
+    lateinit var sharedPreferences: SharedPreferences
+
     private lateinit var translationHelpLabel: TextView
     private lateinit var recyclerView: RecyclerView
     private val compositeDisposable = CompositeDisposable()
@@ -78,12 +81,12 @@ class ChangelogDialog : DialogFragment(R.layout.fragment_changelog) {
                 show(activity.supportFragmentManager, TAG)
             } else {
                 try {
-                    val lastVersionCode = getVersion(activity)
+                    val lastVersionCode = getVersion()
                     val packageInfo = activity.packageManager.getPackageInfo(activity.packageName, 0)
                     val currentVersionCode = PackageInfoCompat.getLongVersionCode(packageInfo)
                     if (currentVersionCode >= 0 && currentVersionCode > lastVersionCode) {
                         show(activity.supportFragmentManager, TAG)
-                        saveVersionCode(activity, currentVersionCode)
+                        saveVersionCode(currentVersionCode)
                     }
                 } catch (ex: NameNotFoundException) {
                     sentryAnalytics.record(ex)
@@ -116,7 +119,7 @@ class ChangelogDialog : DialogFragment(R.layout.fragment_changelog) {
     private fun setupRecyclerView() {
         val layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         recyclerView.layoutManager = layoutManager
-        val changelogService = ChangelogService(requireContext())
+        val changelogService = ChangelogService(requireContext(), sharedPreferences)
         compositeDisposable.add(
                 changelogService
                         .observeChangelog()
@@ -155,14 +158,12 @@ class ChangelogDialog : DialogFragment(R.layout.fragment_changelog) {
         )
     }
 
-    private fun saveVersionCode(activity: AppCompatActivity, versionCode: Long) {
-        PreferenceManager.getDefaultSharedPreferences(activity)
+    private fun saveVersionCode(versionCode: Long) {
+        sharedPreferences
                 .edit()
                 .putLong(LAST_VERSION_CODE, versionCode)
                 .apply()
     }
 
-    private fun getVersion(activity: AppCompatActivity): Long {
-        return PreferenceManager.getDefaultSharedPreferences(activity).getLong(LAST_VERSION_CODE, 0)
-    }
+    private fun getVersion(): Long = sharedPreferences.getLong(LAST_VERSION_CODE, 0)
 }

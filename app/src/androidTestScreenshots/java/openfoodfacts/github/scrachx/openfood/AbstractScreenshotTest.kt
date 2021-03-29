@@ -4,9 +4,13 @@ import android.Manifest
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.util.Log
+import androidx.preference.PreferenceManager
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.GrantPermissionRule
+import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import openfoodfacts.github.scrachx.openfood.test.ScreenshotActivityTestRule
 import openfoodfacts.github.scrachx.openfood.test.ScreenshotParameter
@@ -17,6 +21,7 @@ import org.junit.BeforeClass
 import org.junit.Rule
 import org.junit.runner.RunWith
 import java.util.*
+import javax.inject.Inject
 
 /**
  * Take screenshots...buil
@@ -25,12 +30,35 @@ import java.util.*
 @HiltAndroidTest
 abstract class AbstractScreenshotTest {
 
+    @Suppress("LeakingThis")
+    @get:Rule
+    var hiltRule = HiltAndroidRule(this)
 
     @Rule
     var permissionRule: GrantPermissionRule = GrantPermissionRule.grant(
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
             Manifest.permission.CHANGE_CONFIGURATION
     )
+
+    @Inject
+    @ApplicationContext
+    lateinit var context: Context
+
+    @Inject
+    lateinit var sharedPreferences: SharedPreferences
+
+    private lateinit var initLocale: Locale
+
+    @BeforeClass
+    fun setup() {
+        hiltRule.inject()
+        initLocale = LocaleHelper.getLocaleFromContext()
+    }
+
+    @AfterClass
+    fun release() {
+        LocaleHelper.setLanguageInPrefs(context, initLocale, sharedPreferences)
+    }
 
     @SafeVarargs
     private fun startScreenshotActivityTestRules(
@@ -53,7 +81,7 @@ abstract class AbstractScreenshotTest {
 
     private fun changeLocale(parameter: ScreenshotParameter, context: Context) {
         Log.d(LOG_TAG, "Change parameters to $parameter")
-        LocaleHelper.setContextLanguage(context, parameter.locale)
+        LocaleHelper.setContextLanguage(context, parameter.locale, PreferenceManager.getDefaultSharedPreferences(context))
     }
 
     protected fun startForAllLocales(
@@ -69,16 +97,5 @@ abstract class AbstractScreenshotTest {
     companion object {
         const val ACTION_NAME = "actionName"
         private val LOG_TAG = AbstractScreenshotTest::class.java.simpleName
-        private lateinit var initLocale: Locale
-
-        @BeforeClass
-        fun initLanguage() {
-            initLocale = LocaleHelper.getLocaleFromContext()
-        }
-
-        @AfterClass
-        fun resetLanguage() {
-            LocaleHelper.setLanguageInPrefs(initLocale)
-        }
     }
 }

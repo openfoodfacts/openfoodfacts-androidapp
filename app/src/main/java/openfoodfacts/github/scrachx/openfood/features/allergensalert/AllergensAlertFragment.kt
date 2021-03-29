@@ -58,6 +58,9 @@ class AllergensAlertFragment : NavigationBaseFragment() {
     @Inject
     lateinit var matomoAnalytics: MatomoAnalytics
 
+    @Inject
+    lateinit var sharedPreferences: SharedPreferences
+
     private var mAllergensEnabled: MutableList<AllergenName>? = null
     private var allergensFromDao: List<AllergenName>? = null
 
@@ -77,7 +80,7 @@ class AllergensAlertFragment : NavigationBaseFragment() {
         // OnClick
         binding.btnAdd.setOnClickListener { addAllergen() }
 
-        val language = LocaleHelper.getLanguage(requireActivity())
+        val language = LocaleHelper.getLanguage(sharedPreferences)
 
         productRepository.getAllergensByEnabledAndLanguageCode(true, language)
                 .observeOn(AndroidSchedulers.mainThread())
@@ -127,7 +130,7 @@ class AllergensAlertFragment : NavigationBaseFragment() {
      */
     private fun addAllergen() {
         if (mAllergensEnabled != null && !allergensFromDao.isNullOrEmpty()) {
-            productRepository.getAllergensByEnabledAndLanguageCode(false, LocaleHelper.getLanguage(requireActivity()))
+            productRepository.getAllergensByEnabledAndLanguageCode(false, LocaleHelper.getLanguage(sharedPreferences))
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .doOnError { it.printStackTrace() }
@@ -183,7 +186,7 @@ class AllergensAlertFragment : NavigationBaseFragment() {
      * Retrieve modified list of allergens from ProductRepository
      */
     private fun updateAllergenDao() {
-        val language = LocaleHelper.getLanguage(context)
+        val language = LocaleHelper.getLanguage(sharedPreferences)
         productRepository.getAllergensByEnabledAndLanguageCode(true, language)
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnError { Log.e(AllergensAlertFragment::class.simpleName, "getAllergensByEnabledAndLanguageCode", it) }

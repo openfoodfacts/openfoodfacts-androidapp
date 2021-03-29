@@ -17,6 +17,7 @@ package openfoodfacts.github.scrachx.openfood.features.product.view.ingredients
 
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.graphics.Typeface
 import android.net.Uri
@@ -78,8 +79,6 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
     private var _binding: FragmentIngredientsProductBinding? = null
     private val binding get() = _binding!!
 
-    private val loginPref by lazy { requireActivity().getLoginPreferences() }
-
     @Inject
     lateinit var client: OpenFoodAPIClient
 
@@ -94,6 +93,11 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
 
     @Inject
     lateinit var picasso: Picasso
+
+    @Inject
+    lateinit var sharedPreferences: SharedPreferences
+
+    private val loginPref by lazy { requireActivity().getLoginPreferences() }
 
     private val performOCRLauncher = registerForActivityResult(PerformOCRContract())
     { result ->
@@ -112,7 +116,7 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
     private lateinit var customTabsIntent: CustomTabsIntent
     private lateinit var presenter: IIngredientsProductPresenter.Actions
     private val photoReceiverHandler by lazy {
-        PhotoReceiverHandler(requireContext()) { onPhotoReturned(it) }
+        PhotoReceiverHandler(sharedPreferences) { onPhotoReturned(it) }
     }
 
     private var ingredientExtracted = false
@@ -157,12 +161,12 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
     override fun refreshView(productState: ProductState) {
         super.refreshView(productState)
         this.productState = productState
-        val langCode = LocaleHelper.getLanguage(context)
+        val langCode = LocaleHelper.getLanguage(sharedPreferences)
 
         if (arguments != null) mSendProduct = getSendProduct()
 
         val product = this.productState.product!!
-        presenter = IngredientsProductPresenter(requireContext(), this, productRepository, product).apply { addTo(disp) }
+        presenter = IngredientsProductPresenter(requireContext(), this, productRepository, product, sharedPreferences).apply { addTo(disp) }
         val vitaminTagsList = product.vitaminTags
         val aminoAcidTagsList = product.aminoAcidTags
         val mineralTags = product.mineralTags
@@ -236,7 +240,7 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
         }
         presenter.loadAllergens()
         if (!product.traces.isNullOrBlank()) {
-            val language = LocaleHelper.getLanguage(context)
+            val language = LocaleHelper.getLanguage(sharedPreferences)
             binding.cvTextTraceProduct.visibility = View.VISIBLE
             binding.textTraceProduct.movementMethod = LinkMovementMethod.getInstance()
             binding.textTraceProduct.text = SpannableStringBuilder()
@@ -433,6 +437,7 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
                     ProductImageField.INGREDIENTS,
                     ingredientsImgUrl!!,
                     binding.imageViewIngredients,
+                    LocaleHelper.getLanguage(sharedPreferences)
             )
         } else {
             newIngredientImage()
@@ -444,7 +449,7 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
     override fun doOnPhotosPermissionGranted() = newIngredientImage()
 
     private fun onPhotoReturned(newPhotoFile: File) {
-        val image = ProductImage(productState.code!!, ProductImageField.INGREDIENTS, newPhotoFile, LocaleHelper.getLanguage(context))
+        val image = ProductImage(productState.code!!, ProductImageField.INGREDIENTS, newPhotoFile, LocaleHelper.getLanguage(sharedPreferences))
         image.filePath = newPhotoFile.absolutePath
         client.postImg(image).subscribe().addTo(disp)
         binding.addPhotoLabel.visibility = View.GONE

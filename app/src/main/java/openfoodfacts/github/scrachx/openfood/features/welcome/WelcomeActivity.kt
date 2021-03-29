@@ -17,6 +17,7 @@ package openfoodfacts.github.scrachx.openfood.features.welcome
 
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.ActivityInfo
 import android.graphics.Color
 import android.os.Build
@@ -32,11 +33,13 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.viewpager.widget.ViewPager
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener
+import dagger.hilt.android.AndroidEntryPoint
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityWelcomeBinding
 import openfoodfacts.github.scrachx.openfood.features.MainActivity
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper
 import openfoodfacts.github.scrachx.openfood.utils.PrefManager
+import javax.inject.Inject
 
 /**
  * This is the on boarding activity shown on first-run.
@@ -47,9 +50,13 @@ import openfoodfacts.github.scrachx.openfood.utils.PrefManager
  * TODO: be honest about offline until we implement offline scan (nobody cares about offline edit)
  * TODO: perhaps highlight ingredient analysis
  */
+@AndroidEntryPoint
 class WelcomeActivity : AppCompatActivity() {
     private var _binding: ActivityWelcomeBinding? = null
     private val binding get() = _binding!!
+
+    @Inject
+    lateinit var sharedPreferences: SharedPreferences
 
     private val layouts = intArrayOf(
             R.layout.welcome_slide1,
@@ -157,7 +164,7 @@ class WelcomeActivity : AppCompatActivity() {
     }
 
     override fun attachBaseContext(newBase: Context) {
-        super.attachBaseContext(LocaleHelper.onCreate(newBase))
+        super.attachBaseContext(LocaleHelper.onCreate(newBase, sharedPreferences = sharedPreferences))
     }
 
     private val nextItem get() = binding.viewPager.currentItem + 1

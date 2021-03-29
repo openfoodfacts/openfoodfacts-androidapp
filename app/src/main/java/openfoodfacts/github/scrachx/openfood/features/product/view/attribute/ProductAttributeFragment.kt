@@ -1,5 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.features.product.view.attribute
 
+import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -47,6 +48,9 @@ class ProductAttributeFragment : BottomSheetDialogFragment() {
 
     @Inject
     lateinit var daoSession: DaoSession
+
+    @Inject
+    lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -188,7 +192,7 @@ class ProductAttributeFragment : BottomSheetDialogFragment() {
     private fun getDescription(map: JsonNode): String? {
         var descriptionString: String? = null
 
-        val languageCode = LocaleHelper.getLanguage(requireContext())
+        val languageCode = LocaleHelper.getLanguage(sharedPreferences)
         if (map[languageCode] != null) {
             descriptionString = map[languageCode]["value"].asText()
         }
@@ -204,7 +208,7 @@ class ProductAttributeFragment : BottomSheetDialogFragment() {
     }
 
     private fun getWikiLink(map: JsonNode): String? {
-        val languageCode = "${LocaleHelper.getLanguage(requireContext())}wiki"
+        val languageCode = "${LocaleHelper.getLanguage(sharedPreferences)}wiki"
         return when {
             map[languageCode] != null -> map[languageCode]["url"].asText()
             map["enwiki"] != null -> map["enwiki"]["url"].asText()

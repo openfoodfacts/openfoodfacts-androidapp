@@ -43,7 +43,6 @@ import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commit
-import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.afollestad.materialdialogs.MaterialDialog
@@ -99,8 +98,6 @@ import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.*
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.onCreate
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.setLanguageInPrefs
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.*
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_ABOUT
@@ -175,7 +172,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
         setContentView(binding.root)
 
         hideKeyboard(this)
-        setLanguageInPrefs(this, getLanguage(this))
+        setLanguageInPrefs(this, LocaleHelper.getLanguage(sharedPreferences), sharedPreferences)
         setSupportActionBar(binding.toolbarInclude.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(false)
         swapToFragment(HomeFragment.newInstance())
@@ -392,8 +389,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
             //set the active profile
             headerResult.activeProfile = profile
         }
-        val settings = PreferenceManager.getDefaultSharedPreferences(this)
-        if (settings.getBoolean("startScan", false)) {
+        if (sharedPreferences.getBoolean("startScan", false)) {
             startActivity(Intent(this@MainActivity, ContinuousScanActivity::class.java).apply {
                 addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             })
@@ -414,7 +410,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
 
         //Scheduling background image upload job
         scheduleProductUploadJob(this)
-        scheduleSync(this)
+        scheduleSync(this, sharedPreferences)
 
         //Adds nutriscore and quantity values in old history for schema 5 update
         val mSharedPref = applicationContext.getSharedPreferences("prefs", 0)
@@ -551,7 +547,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
     }
 
     override fun attachBaseContext(newBase: Context) {
-        super.attachBaseContext(onCreate(newBase))
+        super.attachBaseContext(LocaleHelper.onCreate(newBase, sharedPreferences = sharedPreferences))
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -846,7 +842,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
                                         tempBarcode,
                                         ProductImageField.OTHER,
                                         it.readBytes(),
-                                        getLanguage(this@MainActivity)
+                                        LocaleHelper.getLanguage(sharedPreferences)
                                 )
                                 apiClient.postImg(image).subscribe().addTo(disp)
                             }

@@ -1,5 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.features.product.view.contributors
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.SpannableStringBuilder
 import android.text.Spanned
@@ -45,6 +46,9 @@ class ContributorsFragment : BaseFragment() {
 
     @Inject
     lateinit var productRepository: ProductRepository
+
+    @Inject
+    lateinit var sharedPreferences: SharedPreferences
 
     private lateinit var productState: ProductState
 
@@ -152,7 +156,7 @@ class ContributorsFragment : BaseFragment() {
         val tags = product.statesTags
         if (tags.isEmpty()) return
 
-        val languageCode = LocaleHelper.getLanguage(requireContext())
+        val languageCode = LocaleHelper.getLanguage(sharedPreferences)
         tags.toObservable()
                 .flatMapSingle { tag: String ->
                     productRepository.getStatesByTagAndLanguageCode(tag, languageCode)

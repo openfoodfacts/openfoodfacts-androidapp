@@ -50,6 +50,7 @@ import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
+import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.FileDownloader.download
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.LanguageData
@@ -72,6 +73,9 @@ import javax.inject.Inject
 class ImagesManageActivity : BaseActivity() {
     private var _binding: ActivityFullScreenImageBinding? = null
     private val binding get() = _binding!!
+
+    @Inject
+    lateinit var productsApi: ProductsAPI
 
     @Inject
     lateinit var client: OpenFoodAPIClient
@@ -251,11 +255,11 @@ class ImagesManageActivity : BaseActivity() {
         return isLanguageSupported
     }
 
-    private fun getCurrentLanguage() = intent.getStringExtra(LANGUAGE) ?: getLanguage(baseContext)
+    private fun getCurrentLanguage(): String = intent.getStringExtra(LANGUAGE) ?: getLanguage(sharedPreferences)
 
     private fun updateToolbarTitle(product: Product?) {
         product?.let {
-            binding.toolbar.title = "${it.getLocalProductName(this).orEmpty()} / ${binding.comboImageType.selectedItem}"
+            binding.toolbar.title = "${it.getLocalProductName(sharedPreferences).orEmpty()} / ${binding.comboImageType.selectedItem}"
         }
     }
 
@@ -306,7 +310,7 @@ class ImagesManageActivity : BaseActivity() {
         if (isFinishing) return
 
         getProduct()?.let {
-            startRefresh(getString(R.string.loading_product, "${it.getLocalProductName(this)}..."))
+            startRefresh(getString(R.string.loading_product, "${it.getLocalProductName(sharedPreferences)}..."))
             client.getProductImages(it.code).observeOn(AndroidSchedulers.mainThread()).subscribe { newState ->
                 val newProduct = newState.product
                 var imageReloaded = false
@@ -461,7 +465,7 @@ class ImagesManageActivity : BaseActivity() {
     private fun editPhoto(field: ProductImageField, transformation: ImageTransformation) {
         if (transformation.isEmpty()) return
 
-        download(this, transformation.imageUrl!!, client)
+        download(this, transformation.imageUrl!!, productsApi)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe { file ->
                     //to delete the file after:
@@ -534,7 +538,7 @@ class ImagesManageActivity : BaseActivity() {
             REQUEST_ADD_IMAGE_AFTER_LOGIN -> if (isResultOk) addImage()
             REQUEST_CHOOSE_IMAGE_AFTER_LOGIN -> if (isResultOk) selectImage()
             REQUEST_UNSELECT_IMAGE_AFTER_LOGIN -> if (isResultOk) unSelectImage()
-            else -> PhotoReceiverHandler(this) { onPhotoReturned(it) }
+            else -> PhotoReceiverHandler(sharedPreferences) { onPhotoReturned(it) }
                     .onActivityResult(this, requestCode, resultCode, data)
         }
     }

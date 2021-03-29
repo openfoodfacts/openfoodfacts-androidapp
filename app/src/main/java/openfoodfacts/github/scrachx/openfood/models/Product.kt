@@ -1,6 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.models
 
 import android.content.Context
+import android.content.SharedPreferences
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
@@ -360,8 +361,7 @@ class Product : SearchProduct() {
     fun getProductName(languageCode: String) =
             getFieldForLanguage(ApiFields.Keys.PRODUCT_NAME, languageCode) ?: productName
 
-    fun getLocalProductName(context: Context?): String? = getProductName(getLanguage(context))
-
+    fun getLocalProductName(sharedPreferences: SharedPreferences): String? = getProductName(getLanguage(sharedPreferences))
 
     fun getImageUrl(languageCode: String?): String? {
         val url = getSelectedImage(languageCode, ProductImageField.FRONT, ImageSize.DISPLAY)
