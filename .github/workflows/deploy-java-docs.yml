@@ -1,7 +1,9 @@
     name: GitHub Pages Deploy Action
     on:
         # Branch name(s) which have the source file for site/documentation
-        push: ["develop"]
+        push:
+            branches:
+                - "develop"
     jobs:
         deploy-pages:
             name: Deploy to GitHub Pages
