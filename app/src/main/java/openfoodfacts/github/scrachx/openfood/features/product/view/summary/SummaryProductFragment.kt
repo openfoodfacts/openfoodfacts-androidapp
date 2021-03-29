@@ -116,6 +116,9 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     @Inject
     lateinit var sharedPreferences: SharedPreferences
 
+    @Inject
+    lateinit var localeManager: LocaleManager
+
     private lateinit var presenter: ISummaryProductPresenter.Actions
     private lateinit var mTagDao: TagDao
     private lateinit var product: Product
@@ -139,7 +142,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
             val resultUri = newPhotoFile.toURI()
             val photoFile = if (sendOther) newPhotoFile else File(resultUri.path)
             val field = if (sendOther) ProductImageField.OTHER else ProductImageField.FRONT
-            val image = ProductImage(product.code, field, photoFile, LocaleHelper.getLanguage(sharedPreferences))
+            val image = ProductImage(product.code, field, photoFile, localeManager.getLanguage())
             image.filePath = photoFile.absolutePath
             uploadImage(image)
             if (!sendOther) {
@@ -211,7 +214,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         productState = requireProductState()
         refreshView(productState)
 
-        presenter = SummaryProductPresenter(LocaleHelper.getLanguage(sharedPreferences), product, this, productRepository)
+        presenter = SummaryProductPresenter(localeManager.getLanguage(), product, this, productRepository)
         presenter.addTo(disp)
     }
 
@@ -269,7 +272,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     override fun refreshView(productState: ProductState) {
         this.productState = productState
         product = productState.product!!
-        presenter = SummaryProductPresenter(LocaleHelper.getLanguage(sharedPreferences), product, this, productRepository).apply { addTo(disp) }
+        presenter = SummaryProductPresenter(localeManager.getLanguage(), product, this, productRepository).apply { addTo(disp) }
 
         binding.categoriesText.text = SpannableStringBuilder()
                 .bold { append(getString(R.string.txtCategories)) }
@@ -301,7 +304,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         presenter.loadAdditives()
         presenter.loadAnalysisTags()
 
-        val langCode = LocaleHelper.getLanguage(sharedPreferences)
+        val langCode = localeManager.getLanguage()
         val imageUrl = product.getImageUrl(langCode)
         if (!imageUrl.isNullOrBlank()) {
             binding.addPhotoLabel.visibility = View.GONE
@@ -834,7 +837,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         val productLists = daoSession.getProductListsDaoWithDefaultList(activity).loadAll()
         val productBarcode = product.code
         val productName = product.productName
-        val imageUrl = product.getImageSmallUrl(LocaleHelper.getLanguage(sharedPreferences))
+        val imageUrl = product.getImageSmallUrl(localeManager.getLanguage())
         val productDetails = product.getProductBrandsQuantityDetails()
         val addToListDialog = MaterialDialog.Builder(activity)
                 .title(R.string.add_to_product_lists)
@@ -873,16 +876,19 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
 
     private fun openFrontImageFullscreen() {
         val url = mUrlImage
-        // take a picture
-        if (url != null) FullScreenActivityOpener.openForUrl(
-                this,
-                client,
-                product,
-                ProductImageField.FRONT,
-                url,
-                binding.imageViewFront,
-                LocaleHelper.getLanguage(sharedPreferences)
-        ) else newFrontImage() // Take a new picture
+        if (url != null) {
+            FullScreenActivityOpener.openForUrl(
+                    this,
+                    client,
+                    product,
+                    ProductImageField.FRONT,
+                    url,
+                    binding.imageViewFront,
+                    localeManager.getLanguage()
+            )
+        } else {
+            newFrontImage()
+        }
     }
 
     private fun newFrontImage() {

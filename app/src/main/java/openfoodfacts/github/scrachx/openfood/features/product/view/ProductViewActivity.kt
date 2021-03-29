@@ -69,6 +69,9 @@ class ProductViewActivity : BaseActivity(), OnRefreshListener {
     @Inject
     lateinit var client: OpenFoodAPIClient
 
+    @Inject
+    lateinit var sharedPreferences: SharedPreferences
+
     private val disp = CompositeDisposable()
 
     private var productState: ProductState? = null

@@ -1,7 +1,5 @@
 package openfoodfacts.github.scrachx.openfood.models
 
-import android.content.Context
-import android.content.SharedPreferences
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
@@ -12,8 +10,6 @@ import openfoodfacts.github.scrachx.openfood.images.ImageSize
 import openfoodfacts.github.scrachx.openfood.models.entities.attribute.AttributeGroup
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.Keys.lcProductNameKey
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLocaleFromContext
 import openfoodfacts.github.scrachx.openfood.utils.ProductStringConverter
 import org.apache.commons.lang3.builder.ToStringBuilder
 import org.apache.commons.lang3.builder.ToStringStyle
@@ -356,12 +352,9 @@ class Product : SearchProduct() {
      * @param languageCode The language code for the language we get the product in.
      * @return The product name for the specified language code.
      * If null returns default product name.
-     * @see [getLocalProductName]
      */
     fun getProductName(languageCode: String) =
             getFieldForLanguage(ApiFields.Keys.PRODUCT_NAME, languageCode) ?: productName
-
-    fun getLocalProductName(sharedPreferences: SharedPreferences): String? = getProductName(getLanguage(sharedPreferences))
 
     fun getImageUrl(languageCode: String?): String? {
         val url = getSelectedImage(languageCode, ProductImageField.FRONT, ImageSize.DISPLAY)
@@ -374,12 +367,10 @@ class Product : SearchProduct() {
         return if (nutritionGradeTags != null && nutritionGradeTags.isNotEmpty()) nutritionGradeTags[0] else null
     }
 
-    fun getAttributeGroups(locale: Locale): List<AttributeGroup> {
-        val attributeGroups = additionalProperties["${ApiFields.Keys.ATTRIBUTE_GROUPS}_${locale.language}"] as Any
+    fun getAttributeGroups(language: String): List<AttributeGroup> {
+        val attributeGroups = additionalProperties["${ApiFields.Keys.ATTRIBUTE_GROUPS}_${language}"] as Any
         return jacksonObjectMapper().convertValue(attributeGroups)
     }
-
-    fun getLocalAttributeGroups(context: Context) = getAttributeGroups(getLocaleFromContext(context))
 
     override fun toString() = ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
             .append("code", code)

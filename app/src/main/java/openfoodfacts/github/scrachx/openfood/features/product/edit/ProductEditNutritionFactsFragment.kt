@@ -88,6 +88,9 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
     @Inject
     lateinit var sharedPreferences: SharedPreferences
 
+    @Inject
+    lateinit var localeManager: LocaleManager
+
     private val keyListener = object : NumberKeyListener() {
         override fun getInputType() = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
 
@@ -99,7 +102,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
             val resultUri = it.toURI()
             imagePath = resultUri.path
             photoFile = it
-            val image = ProductImage(productCode!!, ProductImageField.NUTRITION, it, LocaleHelper.getLanguage(sharedPreferences)).apply {
+            val image = ProductImage(productCode!!, ProductImageField.NUTRITION, it, localeManager.getLanguage()).apply {
                 filePath = resultUri.path
             }
             (activity as? ProductEditActivity)?.addToPhotoMap(image, 2)

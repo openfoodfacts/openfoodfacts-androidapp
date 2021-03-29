@@ -75,9 +75,6 @@ import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.FileDownloader.download
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLCOrDefault
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLocale
 import org.apache.commons.lang3.StringUtils
 import org.greenrobot.greendao.async.AsyncOperationListener
 import org.jetbrains.annotations.Contract
@@ -108,6 +105,9 @@ class ProductEditOverviewFragment : ProductEditFragment() {
     @Inject
     lateinit var sharedPreferences: SharedPreferences
 
+    @Inject
+    lateinit var localeManager: LocaleManager
+
     private lateinit var appLanguageCode: String
     private val photoReceiverHandler by lazy {
         PhotoReceiverHandler(sharedPreferences) { newPhotoFile ->
@@ -115,11 +115,11 @@ class ProductEditOverviewFragment : ProductEditFragment() {
             val image: ProductImage
             val position: Int
             if (isFrontImagePresent) {
-                image = ProductImage(barcode!!, ProductImageField.FRONT, newPhotoFile, getLanguage(sharedPreferences))
+                image = ProductImage(barcode!!, ProductImageField.FRONT, newPhotoFile, localeManager.getLanguage())
                 frontImageUrl = newPhotoFile.absolutePath
                 position = 0
             } else {
-                image = ProductImage(barcode!!, ProductImageField.OTHER, newPhotoFile, getLanguage(sharedPreferences))
+                image = ProductImage(barcode!!, ProductImageField.OTHER, newPhotoFile, localeManager.getLanguage())
                 position = 3
             }
             image.filePath = newPhotoFile.toURI().path
@@ -169,7 +169,7 @@ class ProductEditOverviewFragment : ProductEditFragment() {
         } else if (requireActivity().intent.getBooleanExtra(ProductEditActivity.KEY_MODIFY_NUTRITION_PROMPT, false)) {
             (requireActivity() as ProductEditActivity).proceed()
         }
-        appLanguageCode = getLanguage(sharedPreferences)
+        appLanguageCode = localeManager.getLanguage()
         val args = arguments
         if (args == null) {
             Toast.makeText(activity, R.string.error_adding_product_details, Toast.LENGTH_SHORT).show()
@@ -597,7 +597,7 @@ class ProductEditOverviewFragment : ProductEditFragment() {
      */
     private fun setProductLanguage(lang: String) {
         languageCode = lang
-        val current = getLocale(lang)
+        val current = LocaleUtils.parseLocale(lang)
         binding.language.setText(R.string.product_language)
         binding.language.append(current.getDisplayName(current).capitalize(Locale.getDefault()))
 
@@ -868,7 +868,7 @@ class ProductEditOverviewFragment : ProductEditFragment() {
             if (localeCode == languageCode) {
                 selectedIndex = i
             }
-            val current = getLocale(localeCode)
+            val current = LocaleUtils.parseLocale(localeCode)
             localeLabels[i] = current.getDisplayName(current).capitalize(Locale.ROOT)
             finalLocalLabels.add(localeCode)
             finalLocalValues.add(localeCode)
@@ -943,6 +943,9 @@ class ProductEditOverviewFragment : ProductEditFragment() {
             binding.otherImageProgressText.setText(R.string.image_uploaded_successfully)
         }
     }
+
+    private fun getLCOrDefault(languageCode: String?) =
+            if (!languageCode.isNullOrEmpty()) languageCode else ApiFields.Defaults.DEFAULT_LANGUAGE
 
     companion object {
         private const val INTENT_INTEGRATOR_REQUEST_CODE = 1

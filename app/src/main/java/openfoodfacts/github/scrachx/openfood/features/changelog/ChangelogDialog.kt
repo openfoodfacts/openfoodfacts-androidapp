@@ -22,7 +22,7 @@ import openfoodfacts.github.scrachx.openfood.analytics.SentryAnalytics
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabsHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLocaleFromContext
+import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
 import java.util.*
 import javax.inject.Inject
 
@@ -47,6 +47,9 @@ class ChangelogDialog : DialogFragment(R.layout.fragment_changelog) {
 
     @Inject
     lateinit var sentryAnalytics: SentryAnalytics
+
+    @Inject
+    lateinit var localeManager: LocaleManager
 
     @Inject
     lateinit var sharedPreferences: SharedPreferences
@@ -96,7 +99,7 @@ class ChangelogDialog : DialogFragment(R.layout.fragment_changelog) {
     }
 
     private fun setupTranslationHelpLabel() {
-        val locale = getLocaleFromContext(context)
+        val locale = localeManager.getLocale()
         if (locale.language.startsWith(Locale.ENGLISH.language)) {
             translationHelpLabel.isVisible = false
         } else {
@@ -119,7 +122,7 @@ class ChangelogDialog : DialogFragment(R.layout.fragment_changelog) {
     private fun setupRecyclerView() {
         val layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         recyclerView.layoutManager = layoutManager
-        val changelogService = ChangelogService(requireContext(), sharedPreferences)
+        val changelogService = ChangelogService(requireContext(), localeManager)
         compositeDisposable.add(
                 changelogService
                         .observeChangelog()

@@ -15,44 +15,33 @@
  */
 package openfoodfacts.github.scrachx.openfood.features.shared
 
+import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.EntryPoints
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.features.scan.ContinuousScanActivity
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.onCreate
+import openfoodfacts.github.scrachx.openfood.hilt.AppEntryPoint
 import openfoodfacts.github.scrachx.openfood.utils.MY_PERMISSIONS_REQUEST_CAMERA
 import openfoodfacts.github.scrachx.openfood.utils.getLoginPreferences
-import javax.inject.Inject
 
-@AndroidEntryPoint
 abstract class BaseActivity : AppCompatActivity() {
 
-    companion object {
-        init {
-            AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
-        }
+    override fun attachBaseContext(newBase: Context) {
+        val lm = EntryPoints.get(newBase.applicationContext, AppEntryPoint::class.java).localeManager()
+        super.attachBaseContext(lm.restoreLocalizedContext(newBase))
     }
-
-    @Inject
-    lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (resources.getBoolean(R.bool.portrait_only)) {
             requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         }
-    }
-
-    override fun setContentView(view: View) {
-        super.setContentView(view)
-        onCreate(this, sharedPreferences = sharedPreferences)
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
     }
 
     fun getUserLogin() = getLoginPreferences().getString("user", null)

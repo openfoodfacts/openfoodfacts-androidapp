@@ -37,7 +37,7 @@ import openfoodfacts.github.scrachx.openfood.databinding.FragmentAlertAllergensB
 import openfoodfacts.github.scrachx.openfood.features.shared.NavigationBaseFragment
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenName
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper
+import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType
 import openfoodfacts.github.scrachx.openfood.utils.Utils
@@ -59,7 +59,7 @@ class AllergensAlertFragment : NavigationBaseFragment() {
     lateinit var matomoAnalytics: MatomoAnalytics
 
     @Inject
-    lateinit var sharedPreferences: SharedPreferences
+    lateinit var localeManager: LocaleManager
 
     private var mAllergensEnabled: MutableList<AllergenName>? = null
     private var allergensFromDao: List<AllergenName>? = null
@@ -80,7 +80,7 @@ class AllergensAlertFragment : NavigationBaseFragment() {
         // OnClick
         binding.btnAdd.setOnClickListener { addAllergen() }
 
-        val language = LocaleHelper.getLanguage(sharedPreferences)
+        val language = localeManager.getLanguage()
 
         productRepository.getAllergensByEnabledAndLanguageCode(true, language)
                 .observeOn(AndroidSchedulers.mainThread())
@@ -130,7 +130,7 @@ class AllergensAlertFragment : NavigationBaseFragment() {
      */
     private fun addAllergen() {
         if (mAllergensEnabled != null && !allergensFromDao.isNullOrEmpty()) {
-            productRepository.getAllergensByEnabledAndLanguageCode(false, LocaleHelper.getLanguage(sharedPreferences))
+            productRepository.getAllergensByEnabledAndLanguageCode(false, localeManager.getLanguage())
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .doOnError { it.printStackTrace() }
@@ -186,7 +186,7 @@ class AllergensAlertFragment : NavigationBaseFragment() {
      * Retrieve modified list of allergens from ProductRepository
      */
     private fun updateAllergenDao() {
-        val language = LocaleHelper.getLanguage(sharedPreferences)
+        val language = localeManager.getLanguage()
         productRepository.getAllergensByEnabledAndLanguageCode(true, language)
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnError { Log.e(AllergensAlertFragment::class.simpleName, "getAllergensByEnabledAndLanguageCode", it) }

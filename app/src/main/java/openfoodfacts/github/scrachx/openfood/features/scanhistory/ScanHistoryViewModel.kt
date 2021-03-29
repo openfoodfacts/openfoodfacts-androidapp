@@ -3,7 +3,6 @@ package openfoodfacts.github.scrachx.openfood.features.scanhistory
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
-import android.content.SharedPreferences
 import androidx.lifecycle.ViewModel
 import com.jakewharton.rxrelay2.BehaviorRelay
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -17,7 +16,7 @@ import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import openfoodfacts.github.scrachx.openfood.models.HistoryProduct
 import openfoodfacts.github.scrachx.openfood.models.HistoryProductDao
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper
+import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
 import openfoodfacts.github.scrachx.openfood.utils.SortType
 import javax.inject.Inject
 
@@ -27,7 +26,7 @@ class ScanHistoryViewModel @Inject constructor(
         @ApplicationContext private val context: Context,
         private val daoSession: DaoSession,
         private val client: OpenFoodAPIClient,
-        private val sharedPreferences: SharedPreferences
+        private val localeManager: LocaleManager
 ) : ViewModel() {
 
     private val compositeDisposable = CompositeDisposable()
@@ -62,7 +61,7 @@ class ScanHistoryViewModel @Inject constructor(
                             .unique()
                     product.productName?.let { historyProduct.title = it }
                     product.brands?.let { historyProduct.brands = it }
-                    product.getImageSmallUrl(LocaleHelper.getLanguage(sharedPreferences))?.let { historyProduct.url = it }
+                    product.getImageSmallUrl(localeManager.getLanguage())?.let { historyProduct.url = it }
                     product.quantity?.let { historyProduct.quantity = it }
                     product.nutritionGradeFr?.let { historyProduct.nutritionGrade = it }
                     product.ecoscore?.let { historyProduct.ecoscore = it }

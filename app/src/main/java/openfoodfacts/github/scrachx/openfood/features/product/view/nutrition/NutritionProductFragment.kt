@@ -96,6 +96,9 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
     @Inject
     lateinit var sharedPreferences: SharedPreferences
 
+    @Inject
+    lateinit var localeManager: LocaleManager
+
     private val photoReceiverHandler by lazy {
         PhotoReceiverHandler(sharedPreferences) { loadNutritionPhoto(it) }
     }
@@ -164,7 +167,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
 
     override fun refreshView(productState: ProductState) {
         super.refreshView(productState)
-        val langCode = LocaleHelper.getLanguage(sharedPreferences)
+        val langCode = localeManager.getLanguage()
         product = productState.product!!
 
         checkPrompts()
@@ -491,7 +494,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
 
     private fun openFullScreen() {
         if (nutrientsImageUrl != null) {
-            FullScreenActivityOpener.openForUrl(this, client, product, ProductImageField.NUTRITION, nutrientsImageUrl!!, binding.imageViewNutrition, LocaleHelper.getLanguage(sharedPreferences))
+            FullScreenActivityOpener.openForUrl(this, client, product, ProductImageField.NUTRITION, nutrientsImageUrl!!, binding.imageViewNutrition, localeManager.getLanguage())
         } else {
             // take a picture
             if (ContextCompat.checkSelfPermission(requireActivity(), permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
@@ -538,7 +541,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
 
     private fun loadNutritionPhoto(photoFile: File) {
         // Create a new instance of ProductImage so we can load to server
-        val image = ProductImage(product.code, ProductImageField.NUTRITION, photoFile, LocaleHelper.getLanguage(sharedPreferences)).apply {
+        val image = ProductImage(product.code, ProductImageField.NUTRITION, photoFile, localeManager.getLanguage()).apply {
             filePath = photoFile.absolutePath
         }
 

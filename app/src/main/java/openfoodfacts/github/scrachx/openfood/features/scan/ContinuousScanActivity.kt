@@ -29,7 +29,6 @@ import android.widget.TextView
 import android.widget.TextView.OnEditorActionListener
 import android.widget.Toast
 import androidx.annotation.StringRes
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.PopupMenu
 import androidx.core.content.ContextCompat
 import androidx.core.content.edit
@@ -78,6 +77,7 @@ import openfoodfacts.github.scrachx.openfood.features.product.view.ingredients_a
 import openfoodfacts.github.scrachx.openfood.features.product.view.summary.AbstractSummaryProductPresenter
 import openfoodfacts.github.scrachx.openfood.features.product.view.summary.IngredientAnalysisTagsAdapter
 import openfoodfacts.github.scrachx.openfood.features.product.view.summary.SummaryProductPresenter
+import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import openfoodfacts.github.scrachx.openfood.models.InvalidBarcodeDao
 import openfoodfacts.github.scrachx.openfood.models.Product
@@ -99,7 +99,7 @@ import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class ContinuousScanActivity : AppCompatActivity() {
+class ContinuousScanActivity : BaseActivity() {
     private var _binding: ActivityContinuousScanBinding? = null
     private val binding get() = _binding!!
 
@@ -123,6 +123,9 @@ class ContinuousScanActivity : AppCompatActivity() {
 
     @Inject
     lateinit var sharedPreferences: SharedPreferences
+
+    @Inject
+    lateinit var localeManager: LocaleManager
 
     private lateinit var beepManager: BeepManager
     private lateinit var quickViewBehavior: BottomSheetBehavior<LinearLayout>
@@ -351,7 +354,7 @@ class ContinuousScanActivity : AppCompatActivity() {
     private fun setupSummary(product: Product) {
         binding.callToActionImageProgress.visibility = View.VISIBLE
 
-        summaryProductPresenter = SummaryProductPresenter(LocaleHelper.getLanguage(sharedPreferences), product, object : AbstractSummaryProductPresenter() {
+        summaryProductPresenter = SummaryProductPresenter(localeManager.getLanguage(), product, object : AbstractSummaryProductPresenter() {
             override fun showAllergens(allergens: List<AllergenName>) {
                 val data = AllergenHelper.computeUserAllergen(product, allergens)
                 binding.callToActionImageProgress.visibility = View.GONE
@@ -429,7 +432,7 @@ class ContinuousScanActivity : AppCompatActivity() {
     private fun navigateToProductAddition(productBarcode: String) {
         navigateToProductAddition(Product().apply {
             code = productBarcode
-            lang = LocaleHelper.getLanguage(sharedPreferences)
+            lang = localeManager.getLanguage()
         })
     }
 
@@ -664,8 +667,6 @@ class ContinuousScanActivity : AppCompatActivity() {
             }
         }
     }
-
-    override fun attachBaseContext(newBase: Context) = super.attachBaseContext(LocaleHelper.onCreate(newBase, sharedPreferences = sharedPreferences))
 
     private fun isProductIncomplete() = if (product == null) {
         false
