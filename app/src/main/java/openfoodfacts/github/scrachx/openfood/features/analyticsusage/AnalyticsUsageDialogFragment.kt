@@ -7,16 +7,22 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.preference.PreferenceManager
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import dagger.hilt.android.AndroidEntryPoint
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
 import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentAnalyticsUsageBottomSheetBinding
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class AnalyticsUsageDialogFragment : BottomSheetDialogFragment() {
 
     companion object {
         const val TAG = "AnalyticsUsageDialogFragment"
     }
+
+    @Inject
+    lateinit var matomoAnalytics: MatomoAnalytics
 
     init {
         isCancelable = false
@@ -26,12 +32,12 @@ class AnalyticsUsageDialogFragment : BottomSheetDialogFragment() {
         val binding: FragmentAnalyticsUsageBottomSheetBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_analytics_usage_bottom_sheet, container, false)
         binding.grantButton.setOnClickListener {
             saveAnalyticsReportingPref(true)
-            MatomoAnalytics.onAnalyticsEnabledToggled(true)
+            matomoAnalytics.onAnalyticsEnabledToggled(true)
             dismiss()
         }
         binding.declineButton.setOnClickListener {
             saveAnalyticsReportingPref(false)
-            MatomoAnalytics.onAnalyticsEnabledToggled(false)
+            matomoAnalytics.onAnalyticsEnabledToggled(false)
             dismiss()
         }
         return binding.root

@@ -125,6 +125,9 @@ class ContinuousScanActivity : AppCompatActivity() {
     @Inject
     lateinit var picasso: Picasso
 
+    @Inject
+    lateinit var matomoAnalytics: MatomoAnalytics
+
     private val cameraPref by lazy { getSharedPreferences("camera", 0) }
 
     private val settings by lazy { getSharedPreferences("prefs", 0) }
@@ -251,7 +254,7 @@ class ContinuousScanActivity : AppCompatActivity() {
                                     putExtra(ProductCompareActivity.KEY_PRODUCT_ALREADY_EXISTS, true)
                                 } else {
                                     productsToCompare.add(product)
-                                    MatomoAnalytics.trackEvent(AnalyticsEvent.AddProductToComparison(product.code))
+                                    matomoAnalytics.trackEvent(AnalyticsEvent.AddProductToComparison(product.code))
                                 }
                                 putExtra(ProductCompareActivity.KEY_PRODUCTS_TO_COMPARE, productsToCompare)
                                 addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
@@ -576,7 +579,7 @@ class ContinuousScanActivity : AppCompatActivity() {
         } else if (useMLScanner && quickViewBehavior.state != BottomSheetBehavior.STATE_EXPANDED) {
             mlKitView.onResume()
         }
-        MatomoAnalytics.trackView(AnalyticsView.Scanner)
+        matomoAnalytics.trackView(AnalyticsView.Scanner)
     }
 
     override fun onPostResume() {
@@ -822,7 +825,7 @@ class ContinuousScanActivity : AppCompatActivity() {
                 }
                 BottomSheetBehavior.STATE_EXPANDED -> {
                     stopScanner()
-                    MatomoAnalytics.trackEvent(AnalyticsEvent.ScannedBarcodeResultExpanded(lastBarcode))
+                    matomoAnalytics.trackEvent(AnalyticsEvent.ScannedBarcodeResultExpanded(lastBarcode))
                 }
                 else -> {
                     stopScanner()
@@ -920,9 +923,8 @@ class ContinuousScanActivity : AppCompatActivity() {
             lastBarcode = result.text
             if (!isFinishing) {
                 setShownProduct(result.text)
-                MatomoAnalytics.trackEvent(AnalyticsEvent.ScannedBarcode(result.text))
+                matomoAnalytics.trackEvent(AnalyticsEvent.ScannedBarcode(result.text))
             }
-
         }
 
         // Here possible results are useless but we must implement this

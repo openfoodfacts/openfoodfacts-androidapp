@@ -89,6 +89,9 @@ class ProductEditActivity : AppCompatActivity() {
     @Inject
     lateinit var productsApi: ProductsAPI
 
+    @Inject
+    lateinit var matomoAnalytics: MatomoAnalytics
+
     private val addProductPhotosFragment = ProductEditPhotosFragment()
     private val nutritionFactsFragment = ProductEditNutritionFactsFragment()
     private val ingredientsFragment = ProductEditIngredientsFragment()
@@ -317,9 +320,9 @@ class ProductEditActivity : AppCompatActivity() {
         hideKeyboard(this)
 
         if (editingMode) {
-            MatomoAnalytics.trackEvent(AnalyticsEvent.ProductEdited(productDetails["code"]))
+            matomoAnalytics.trackEvent(AnalyticsEvent.ProductEdited(productDetails["code"]))
         } else {
-            MatomoAnalytics.trackEvent(AnalyticsEvent.ProductCreated(productDetails["code"]))
+            matomoAnalytics.trackEvent(AnalyticsEvent.ProductCreated(productDetails["code"]))
         }
 
         setResult(RESULT_OK)
@@ -562,11 +565,6 @@ class ProductEditActivity : AppCompatActivity() {
         override fun parseResult(resultCode: Int, intent: Intent?) = resultCode == RESULT_OK
     }
 
-    class AddProductContract : EditProductContract() {
-        override fun createIntent(context: Context, input: Product) =
-                super.createIntent(context, input).apply { putExtra(KEY_IS_NEW_PRODUCT, true) }
-    }
-
     companion object {
         private val LOGGER_TAG = ProductEditActivity::class.simpleName
 
@@ -577,8 +575,6 @@ class ProductEditActivity : AppCompatActivity() {
 
         const val KEY_EDIT_OFFLINE_PRODUCT = "edit_offline_product"
         const val KEY_EDIT_PRODUCT = "edit_product"
-
-        const val KEY_IS_NEW_PRODUCT = "is_new_product"
 
         const val KEY_IS_EDITING = "is_edition"
         const val KEY_STATE = "state"

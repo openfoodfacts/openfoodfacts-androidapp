@@ -44,6 +44,9 @@ class ProductCompareActivity : BaseActivity() {
     @Inject
     lateinit var picasso: Picasso
 
+    @Inject
+    lateinit var matomoAnalytics: MatomoAnalytics
+
     private lateinit var productComparisonAdapter: ProductCompareAdapter
     private lateinit var photoReceiverHandler: PhotoReceiverHandler
 
@@ -64,7 +67,7 @@ class ProductCompareActivity : BaseActivity() {
         }
 
         if (productsToCompare.size > 1) {
-            MatomoAnalytics.trackEvent(AnalyticsEvent.CompareProducts(productsToCompare.size.toFloat()))
+            matomoAnalytics.trackEvent(AnalyticsEvent.CompareProducts(productsToCompare.size.toFloat()))
         }
 
         productComparisonAdapter = ProductCompareAdapter(productsToCompare, this, api, productRepository, picasso)

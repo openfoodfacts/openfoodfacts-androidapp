@@ -49,12 +49,13 @@ import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewAc
 class OpenFoodAPIClient @Inject constructor(
         @ApplicationContext private val context: Context,
         private val daoSession: DaoSession,
-        private val productsApi: ProductsAPI
+        private val productsApi: ProductsAPI,
+        private val sentryAnalytics: SentryAnalytics
 ) {
     private var historySyncDisp = CompositeDisposable()
 
     fun getProductStateFull(barcode: String, customHeader: String = Utils.HEADER_USER_AGENT_SEARCH): Single<ProductState> {
-        SentryAnalytics.setBarcode(barcode)
+        sentryAnalytics.setBarcode(barcode)
         return productsApi.getProductByBarcode(barcode, getAllFields(), getUserAgent(customHeader))
     }
 

@@ -35,7 +35,6 @@ import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsView
 import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
-import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentAddProductIngredientsBinding
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_PERFORM_OCR
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_SEND_UPDATED
@@ -76,6 +75,9 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
     @Inject
     lateinit var productsApi: ProductsAPI
 
+    @Inject
+    lateinit var matomoAnalytics: MatomoAnalytics
+
     private var photoReceiverHandler: PhotoReceiverHandler? = null
     private var mAllergenNameDao: AllergenNameDao? = null
     private var photoFile: File? = null
@@ -106,7 +108,7 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
                 filePath = uri.path
             }
             (activity as? ProductEditActivity)?.addToPhotoMap(image, 1)
-            MatomoAnalytics.trackEvent(AnalyticsEvent.ProductIngredientsPictureEdited(code))
+            matomoAnalytics.trackEvent(AnalyticsEvent.ProductIngredientsPictureEdited(code))
             hideImageProgress(false, getString(R.string.image_uploaded_successfully))
         }
         val intent = if (activity == null) null else requireActivity().intent
@@ -168,7 +170,7 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
 
     override fun onResume() {
         super.onResume()
-        MatomoAnalytics.trackView(AnalyticsView.ProductEditIngredients)
+        matomoAnalytics.trackView(AnalyticsView.ProductEditIngredients)
     }
 
     private fun getImageIngredients() = productDetails[ApiFields.Keys.IMAGE_INGREDIENTS]
