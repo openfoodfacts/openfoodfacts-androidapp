@@ -36,6 +36,7 @@ import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomList
 import openfoodfacts.github.scrachx.openfood.features.productlist.CreateCSVContract
 import openfoodfacts.github.scrachx.openfood.features.scan.ContinuousScanActivity
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
+import openfoodfacts.github.scrachx.openfood.features.scanhistory.*
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLocaleFromContext
 import openfoodfacts.github.scrachx.openfood.utils.SortType.*
