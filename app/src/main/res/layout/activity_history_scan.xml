@@ -54,6 +54,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:padding="12dp"
+                android:text="@string/scan_first_string"
                 android:textAlignment="center"
                 android:textColor="@android:color/darker_gray"
                 android:visibility="invisible" />
