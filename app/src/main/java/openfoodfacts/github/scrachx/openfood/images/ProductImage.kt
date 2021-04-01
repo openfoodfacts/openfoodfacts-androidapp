@@ -4,11 +4,17 @@ import okhttp3.MediaType
 import okhttp3.RequestBody
 import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
+import openfoodfacts.github.scrachx.openfood.models.ProductImageField.*
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
 import java.io.File
 
-class ProductImage(code: String, field: ProductImageField, image: File, val language: String?) {
+class ProductImage(
+        code: String,
+        field: ProductImageField,
+        image: File,
+        val language: String?
+) {
     val code: RequestBody = RequestBody.create(MediaType.parse(OpenFoodAPIClient.MIME_TEXT), code)
     val field: RequestBody = RequestBody.create(MediaType.parse(OpenFoodAPIClient.MIME_TEXT), "${field}_$language")
     var imgFront: RequestBody? = null
@@ -28,41 +34,11 @@ class ProductImage(code: String, field: ProductImageField, image: File, val lang
 
     init {
         when (field) {
-            ProductImageField.FRONT -> {
-                imgFront = createImageRequest(image)
-                imgIngredients = null
-                imgNutrition = null
-                imgPackaging = null
-                imgOther = null
-            }
-            ProductImageField.INGREDIENTS -> {
-                imgIngredients = createImageRequest(image)
-                imgFront = null
-                imgNutrition = null
-                imgPackaging = null
-                imgOther = null
-            }
-            ProductImageField.NUTRITION -> {
-                imgNutrition = createImageRequest(image)
-                imgFront = null
-                imgIngredients = null
-                imgPackaging = null
-                imgOther = null
-            }
-            ProductImageField.PACKAGING -> {
-                imgNutrition = null
-                imgFront = null
-                imgIngredients = null
-                imgPackaging = createImageRequest(image)
-                imgOther = null
-            }
-            ProductImageField.OTHER -> {
-                imgOther = createImageRequest(image)
-                imgNutrition = null
-                imgFront = null
-                imgIngredients = null
-                imgPackaging = null
-            }
+            FRONT -> imgFront = createImageRequest(image)
+            INGREDIENTS -> imgIngredients = createImageRequest(image)
+            NUTRITION -> imgNutrition = createImageRequest(image)
+            PACKAGING -> imgPackaging = createImageRequest(image)
+            OTHER -> imgOther = createImageRequest(image)
         }
         barcode = code
         imageField = field

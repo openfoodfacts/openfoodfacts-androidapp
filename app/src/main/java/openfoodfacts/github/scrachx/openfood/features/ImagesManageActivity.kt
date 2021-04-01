@@ -44,10 +44,6 @@ import openfoodfacts.github.scrachx.openfood.databinding.ActivityFullScreenImage
 import openfoodfacts.github.scrachx.openfood.features.adapters.LanguageDataAdapter
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.images.*
-import openfoodfacts.github.scrachx.openfood.images.ImageTransformationUtils.Companion.addTransformToMap
-import openfoodfacts.github.scrachx.openfood.images.ImageTransformationUtils.Companion.getInitialServerTransformation
-import openfoodfacts.github.scrachx.openfood.images.ImageTransformationUtils.Companion.getScreenTransformation
-import openfoodfacts.github.scrachx.openfood.images.ImageTransformationUtils.Companion.toServerTransformation
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
@@ -468,7 +464,7 @@ class ImagesManageActivity : BaseActivity() {
         editPhoto(productImageField, transformation)
     }
 
-    private fun editPhoto(productImageField: ProductImageField?, transformation: ImageTransformationUtils) {
+    private fun editPhoto(productImageField: ProductImageField?, transformation: ImageTransformation) {
         if (transformation.isNotEmpty()) {
             download(this, transformation.imageUrl!!, productsApi)
                     .observeOn(AndroidSchedulers.mainThread())
@@ -512,7 +508,7 @@ class ImagesManageActivity : BaseActivity() {
         }
     }
 
-    private fun cropRotateExistingImageOnServer(image: File?, title: String, transformation: ImageTransformationUtils) {
+    private fun cropRotateExistingImageOnServer(image: File?, title: String, transformation: ImageTransformation) {
         val uri = Uri.fromFile(image)
         val activityBuilder = CropImage.activity(uri)
                 .setCropMenuCropButtonIcon(R.drawable.ic_check_white_24dp)
@@ -570,12 +566,12 @@ class ImagesManageActivity : BaseActivity() {
             val result = CropImage.getActivityResult(dataFromCropActivity)
             val product = getProduct()
             val currentServerTransformation = getInitialServerTransformation(product!!, getSelectedType(), getCurrentLanguage())
-            val newServerTransformation = toServerTransformation(ImageTransformationUtils(result.rotation, result.cropRect), product, getSelectedType(), getCurrentLanguage())
+            val newServerTransformation = toServerTransformation(ImageTransformation(result.rotation, result.cropRect), product, getSelectedType(), getCurrentLanguage())
             val isModified = currentServerTransformation != newServerTransformation
             if (isModified) {
                 startRefresh(getString(R.string.toastSending))
                 val imgMap = mutableMapOf(IMG_ID to newServerTransformation.imageId!!)
-                addTransformToMap(newServerTransformation, imgMap)
+                newServerTransformation.applyToMap(imgMap)
                 postEditImage(imgMap)
             } else {
                 stopRefresh()

@@ -36,8 +36,8 @@ import openfoodfacts.github.scrachx.openfood.features.adapters.ProductImagesSele
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.images.IMAGE_FILE
 import openfoodfacts.github.scrachx.openfood.images.IMG_ID
-import openfoodfacts.github.scrachx.openfood.images.ImageNameJsonParser.extractImagesNameSortedByUploadTimeDesc
 import openfoodfacts.github.scrachx.openfood.images.PRODUCT_BARCODE
+import openfoodfacts.github.scrachx.openfood.images.extractImagesNameSortedByUploadTimeDesc
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
 import openfoodfacts.github.scrachx.openfood.utils.MY_PERMISSIONS_REQUEST_STORAGE
 import openfoodfacts.github.scrachx.openfood.utils.PhotoReceiverHandler
