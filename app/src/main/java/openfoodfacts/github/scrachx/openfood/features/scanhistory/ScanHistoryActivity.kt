@@ -42,6 +42,7 @@ import openfoodfacts.github.scrachx.openfood.utils.SortType.*
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class ScanHistoryActivity : BaseActivity() {
@@ -58,7 +59,7 @@ class ScanHistoryActivity : BaseActivity() {
     private var menuButtonsEnabled = false
 
     private val adapter by lazy {
-        ScanHistoryAdapter(isLowBatteryMode = isDisableImageLoad() && isBatteryLevelLow()) {
+        ScanHistoryAdapter(isLowBatteryMode = isDisableImageLoad() && isBatteryLevelLow(), picasso) {
             openProductActivity(it.barcode)
         }
     }
