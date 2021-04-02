@@ -71,6 +71,9 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
     @Inject
     lateinit var daoSession: DaoSession
 
+    @Inject
+    lateinit var matomoAnalytics: MatomoAnalytics
+
     private lateinit var adapter: ProductListsAdapter
     private lateinit var productListsDao: ProductListsDao
 
@@ -140,7 +143,7 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
                 .positiveText(R.string.dialog_create)
                 .negativeText(R.string.dialog_cancel)
                 .onPositive { dialog, _ ->  // this enable to avoid dismissing dialog if list name already exist
-                    MatomoAnalytics.trackEvent(AnalyticsEvent.ShoppingListCreated)
+                    matomoAnalytics.trackEvent(AnalyticsEvent.ShoppingListCreated)
                     val inputEditText = dialog.inputEditText!!
                     val listName = inputEditText.text.toString()
                     val productList = ProductLists(listName, if (productToAdd != null) 1 else 0)
@@ -279,7 +282,6 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
     }
 
     companion object {
-        private const val ACTIVITY_CHOOSE_FILE = 123
         private const val KEY_PRODUCT = "product"
 
         @JvmStatic

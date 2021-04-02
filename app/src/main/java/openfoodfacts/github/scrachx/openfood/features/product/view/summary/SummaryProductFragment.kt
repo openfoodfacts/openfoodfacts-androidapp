@@ -109,6 +109,9 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     @Inject
     lateinit var picasso: Picasso
 
+    @Inject
+    lateinit var matomoAnalytics: MatomoAnalytics
+
     private lateinit var presenter: ISummaryProductPresenter.Actions
     private lateinit var mTagDao: TagDao
     private lateinit var product: Product
@@ -142,7 +145,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
 
     private val loginThenProcessInsight = registerForActivityResult(LoginContract()) { isLogged ->
         if (isLogged) {
-            MatomoAnalytics.trackEvent(AnalyticsEvent.RobotoffLoggedInAfterPrompt)
+            matomoAnalytics.trackEvent(AnalyticsEvent.RobotoffLoggedInAfterPrompt)
             processInsight()
         }
     }
@@ -652,7 +655,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         if (requireActivity().isUserSet()) {
             processInsight()
         } else {
-            MatomoAnalytics.trackEvent(AnalyticsEvent.RobotoffLoginPrompt)
+            matomoAnalytics.trackEvent(AnalyticsEvent.RobotoffLoginPrompt)
             MaterialDialog.Builder(requireActivity()).run {
                 title(getString(R.string.sign_in_to_answer))
                 positiveText(getString(R.string.sign_in_or_register))

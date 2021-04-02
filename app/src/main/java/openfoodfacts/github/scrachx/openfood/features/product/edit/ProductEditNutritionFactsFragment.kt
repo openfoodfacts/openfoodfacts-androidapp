@@ -96,6 +96,12 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
     @Inject
     lateinit var productsApi: ProductsAPI
 
+    @Inject
+    lateinit var matomoAnalytics: MatomoAnalytics
+
+    @Inject
+    lateinit var sentryAnalytics: SentryAnalytics
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentAddProductNutritionFactsBinding.inflate(inflater, container, false)
         return binding.root
@@ -172,7 +178,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
 
     override fun onResume() {
         super.onResume()
-        MatomoAnalytics.trackView(AnalyticsView.ProductEditNutritionFacts)
+        matomoAnalytics.trackView(AnalyticsView.ProductEditNutritionFacts)
     }
 
     override fun onDestroyView() {
@@ -732,7 +738,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
                 modSpinner.setSelection(modSelectedIndex)
             }
         } catch (t: Throwable) {
-            SentryAnalytics.record(IllegalStateException("Can't find weight units for nutriment: $nutrientShortName", t))
+            sentryAnalytics.record(IllegalStateException("Can't find weight units for nutriment: $nutrientShortName", t))
             closeScreenWithAlert()
         }
 

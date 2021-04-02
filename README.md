@@ -34,7 +34,6 @@ Data about food is of public interest and has to be open. The complete database 
 ## Impact Roadmap
 ### A brilliant scan experience 
 https://github.com/openfoodfacts/openfoodfacts-androidapp/projects/20
-- [ ] Add ML Kit scanning
 - [ ] Add offline scanning
 
 ### Help data refresh

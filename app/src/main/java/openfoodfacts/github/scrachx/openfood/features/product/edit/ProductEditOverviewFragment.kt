@@ -100,6 +100,9 @@ class ProductEditOverviewFragment : ProductEditFragment() {
     @Inject
     lateinit var productsApi: ProductsAPI
 
+    @Inject
+    lateinit var matomoAnalytics: MatomoAnalytics
+
     private lateinit var appLanguageCode: String
     private lateinit var photoReceiverHandler: PhotoReceiverHandler
 
@@ -223,7 +226,7 @@ class ProductEditOverviewFragment : ProductEditFragment() {
 
     override fun onResume() {
         super.onResume()
-        MatomoAnalytics.trackView(AnalyticsView.ProductEditOverview)
+        matomoAnalytics.trackView(AnalyticsView.ProductEditOverview)
     }
 
     override fun onDestroyView() {

@@ -142,6 +142,9 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
     @Inject
     lateinit var apiClient: OpenFoodAPIClient
 
+    @Inject
+    lateinit var matomoAnalytics: MatomoAnalytics
+
     private val disp = CompositeDisposable()
 
     private val contributeUri: Uri by lazy { Uri.parse(getString(R.string.website_contribute)) }
@@ -521,7 +524,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
     private fun logout() {
         getSharedPreferences(PreferencesFragment.LOGIN_PREF, MODE_PRIVATE).edit { clear() }
         updateConnectedState()
-        MatomoAnalytics.trackEvent(AnalyticsEvent.UserLogout)
+        matomoAnalytics.trackEvent(AnalyticsEvent.UserLogout)
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -731,7 +734,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
     public override fun onResume() {
         super.onResume()
         binding.bottomNavigationInclude.bottomNavigation.selectNavigationItem(R.id.home_page)
-        MatomoAnalytics.showAnalyticsBottomSheetIfNeeded(supportFragmentManager)
+        matomoAnalytics.showAnalyticsBottomSheetIfNeeded(supportFragmentManager)
 
         // change drawer menu item from "install" to "open" when navigating back from play store.
         if (isApplicationInstalled(this@MainActivity, BuildConfig.OFOTHERLINKAPP)) {

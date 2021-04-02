@@ -61,6 +61,9 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
     @Inject
     lateinit var daoSession: DaoSession
 
+    @Inject
+    lateinit var matomoAnalytics: MatomoAnalytics
+
     private var listID by Delegates.notNull<Long>()
     private lateinit var productList: ProductLists
     private lateinit var adapter: ProductListAdapter
@@ -231,7 +234,7 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
                 }
             } else {
                 exportAsCSV()
-                MatomoAnalytics.trackEvent(AnalyticsEvent.ShoppingListExported)
+                matomoAnalytics.trackEvent(AnalyticsEvent.ShoppingListExported)
             }
             true
         }
@@ -382,17 +385,6 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
                 notificationManager.createNotificationChannel(notificationChannel)
             }
             return notificationManager
-        }
-
-        fun getProductBrandsQuantityDetails(brands: String?, quantity: String?): String {
-            val builder = StringBuilder()
-            if (!brands.isNullOrEmpty()) {
-                builder.append(brands.split(",")[0].trim { it <= ' ' }.capitalize(Locale.ROOT))
-            }
-            if (!quantity.isNullOrEmpty()) {
-                builder.append(" - ").append(quantity)
-            }
-            return builder.toString()
         }
 
         const val KEY_LIST_ID = "listId"

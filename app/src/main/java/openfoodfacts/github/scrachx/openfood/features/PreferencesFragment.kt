@@ -89,6 +89,9 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
     @Inject
     lateinit var daoSession: DaoSession
 
+    @Inject
+    lateinit var matomoAnalytics: MatomoAnalytics
+
     override val navigationDrawerListener: NavigationDrawerListener? by lazy {
         if (activity is NavigationDrawerListener) activity as NavigationDrawerListener
         else null
@@ -274,7 +277,6 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
             }
         }
 
-
         // Disable photo mode for OpenProductFacts
         if (isFlavors(AppFlavors.OPF)) {
             requirePreference<Preference>(getString(R.string.pref_show_product_photos_key)).isVisible = false
@@ -300,7 +302,7 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
 
         requirePreference<SwitchPreference>(getString(R.string.pref_analytics_reporting_key)).let {
             it.setOnPreferenceChangeListener { _, newValue ->
-                MatomoAnalytics.onAnalyticsEnabledToggled(newValue == true)
+                matomoAnalytics.onAnalyticsEnabledToggled(newValue == true)
                 true
             }
         }
@@ -329,7 +331,7 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
                         } else {
                             AnalyticsEvent.IngredientAnalysisDisabled(config.type)
                         }
-                        MatomoAnalytics.trackEvent(event)
+                        matomoAnalytics.trackEvent(event)
                         true
                     }
                 })

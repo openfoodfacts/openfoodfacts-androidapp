@@ -14,6 +14,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import openfoodfacts.github.scrachx.openfood.R
@@ -22,8 +23,10 @@ import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabsHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLocaleFromContext
-import java.util.Locale
+import java.util.*
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class ChangelogDialog : DialogFragment(R.layout.fragment_changelog) {
 
     companion object {
@@ -41,6 +44,9 @@ class ChangelogDialog : DialogFragment(R.layout.fragment_changelog) {
             }
         }
     }
+
+    @Inject
+    lateinit var sentryAnalytics: SentryAnalytics
 
     private lateinit var translationHelpLabel: TextView
     private lateinit var recyclerView: RecyclerView
@@ -80,8 +86,7 @@ class ChangelogDialog : DialogFragment(R.layout.fragment_changelog) {
                         saveVersionCode(activity, currentVersionCode)
                     }
                 } catch (ex: NameNotFoundException) {
-                    SentryAnalytics.record(ex)
-                    Unit
+                    sentryAnalytics.record(ex)
                 }
             }
         }
@@ -128,7 +133,7 @@ class ChangelogDialog : DialogFragment(R.layout.fragment_changelog) {
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(
                                 { items -> recyclerView.adapter = ChangelogAdapter(items) },
-                                { throwable -> SentryAnalytics.record(throwable) }
+                                { throwable -> sentryAnalytics.record(throwable) }
                         )
         )
     }

@@ -28,7 +28,6 @@ import org.greenrobot.eventbus.EventBus
 import org.greenrobot.greendao.query.QueryBuilder
 import java.io.IOException
 import javax.inject.Inject
-import openfoodfacts.github.scrachx.openfood.analytics.SentryAnalytics.init as initAnalytics
 
 @HiltAndroidApp
 class OFFApplication : MultiDexApplication(), Configuration.Provider {
@@ -44,11 +43,11 @@ class OFFApplication : MultiDexApplication(), Configuration.Provider {
             .build()
 
 
+    @Suppress("DEPRECATION")
     override fun onCreate() {
         super.onCreate()
         _instance = this
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
-        initAnalytics()
 
         EventBus.builder().addIndex(OFFEventsIndex()).installDefaultEventBus()
 
