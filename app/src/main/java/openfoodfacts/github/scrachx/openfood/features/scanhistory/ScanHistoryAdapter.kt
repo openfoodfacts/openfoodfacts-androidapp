@@ -13,7 +13,6 @@ import openfoodfacts.github.scrachx.openfood.databinding.HistoryListItemBinding
 import openfoodfacts.github.scrachx.openfood.models.HistoryProduct
 import openfoodfacts.github.scrachx.openfood.models.getProductBrandsQuantityDetails
 import openfoodfacts.github.scrachx.openfood.utils.*
-import openfoodfacts.github.scrachx.openfood.utils.Utils.picassoBuilder
 import kotlin.properties.Delegates
 
 /**
@@ -21,8 +20,8 @@ import kotlin.properties.Delegates
  */
 class ScanHistoryAdapter(
         private val isLowBatteryMode: Boolean,
-        private val onItemClicked: (HistoryProduct) -> Unit,
-        private val picasso: Picasso
+        private val picasso: Picasso,
+        private val onItemClicked: (HistoryProduct) -> Unit
 ) : RecyclerView.Adapter<ScanHistoryAdapter.ViewHolder>(), AutoUpdatableAdapter {
 
     var products: List<HistoryProduct> by Delegates.observable(emptyList()) { _, oldList, newList ->
