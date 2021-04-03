@@ -852,7 +852,7 @@ class ProductEditOverviewFragment : ProductEditFragment() {
     }
 
     private fun selectProductLanguage() {
-        val localeValues = requireActivity().resources.getStringArray(R.array.languages_array)
+        val localeValues = SupportedLanguages.codes()
         val localeLabels = arrayOfNulls<String>(localeValues.size)
         val finalLocalValues = ArrayList<String>()
         val finalLocalLabels = ArrayList<String?>()
