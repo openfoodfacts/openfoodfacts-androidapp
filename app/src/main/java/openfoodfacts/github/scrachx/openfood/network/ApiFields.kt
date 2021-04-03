@@ -197,6 +197,7 @@ object ApiFields {
                 AMINO_ACIDS_TAGS,
                 OTHER_NUTRITIONAL_SUBSTANCES_TAGS,
                 URL,
+                NUTRIMENTS,
                 BARCODE,
                 TRACES_TAGS,
                 INGREDIENTS_MAY_PALM_OIL_TAGS,

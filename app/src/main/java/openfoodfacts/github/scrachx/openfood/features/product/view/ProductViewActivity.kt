@@ -86,7 +86,7 @@ class ProductViewActivity : BaseActivity(), OnRefreshListener {
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        if (!checkIntentAction()) {
+        if (!checkActionFromIntent()) {
             productState = requireProductState()
             initViews()
         }
@@ -100,7 +100,7 @@ class ProductViewActivity : BaseActivity(), OnRefreshListener {
     override fun onResume() {
         super.onResume()
         // To check if the activity is resumed and new product is opened through a deep link. If not, then only we can call requireProductState()
-        if (!checkIntentAction())
+        if (!checkActionFromIntent())
             productState = requireProductState().also { adapterResult!!.refresh(it) }
     }
 
@@ -119,24 +119,12 @@ class ProductViewActivity : BaseActivity(), OnRefreshListener {
      *
      * @param barcode from the URL.
      */
-    private fun loadProductDataFromUrl(barcode: String) {
-        client.getProductStateFull(barcode, Utils.HEADER_USER_AGENT_SCAN)
-                .observeOn(AndroidSchedulers.mainThread())
-                .doOnError {
-                    Log.w(this::class.simpleName, "Failed to load product data.", it)
-                    finish()
-                }
-                .subscribe { pState ->
-                    productState = pState
-                    intent.putExtra(KEY_STATE, pState)
-                    // Adding check on productState.getProduct() to avoid null pointer exception (happens in setViewPager()) when product not found
-                    if (productState != null && productState!!.product != null) {
-                        initViews()
-                    } else {
-                        finish()
-                    }
-                }.addTo(disp)
-    }
+    private fun fetchProduct(barcode: String) = client.getProductStateFull(barcode, Utils.HEADER_USER_AGENT_SCAN)
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnError {
+                Log.w(this::class.simpleName, "Failed to load product $barcode.", it)
+                finish()
+            }
 
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -206,18 +194,26 @@ class ProductViewActivity : BaseActivity(), OnRefreshListener {
         PERFORM_OCR, SEND_UPDATED
     }
 
-    // to check if an product is opened through a deep link (from browser)
-    private fun checkIntentAction(): Boolean {
-        return when (intent.action) {
-            Intent.ACTION_VIEW -> {
-                val data = intent.data
-                val paths = data.toString().split("/").toTypedArray() // paths[4]
-                productState = ProductState()
-                loadProductDataFromUrl(paths[4])
-                true
-            }
-            else -> false
+    /** To check if an product is opened through a deep link */
+    private fun checkActionFromIntent() = when (intent.action) {
+        Intent.ACTION_VIEW -> {
+            val data = intent.data
+            val barcode = data.toString().split("/")[4]
+
+            // Fetch product from server, then initialize views
+            fetchProduct(barcode).subscribe { pState ->
+                productState = pState
+                intent.putExtra(KEY_STATE, pState)
+                // Adding check on productState.getProduct() to avoid null pointer exception (happens in setViewPager()) when product not found
+                if (productState != null && productState!!.product != null) {
+                    initViews()
+                } else {
+                    finish()
+                }
+            }.addTo(disp)
+            true
         }
+        else -> false
     }
 
     companion object {
@@ -241,28 +237,36 @@ class ProductViewActivity : BaseActivity(), OnRefreshListener {
             val titles = activity.resources.getStringArray(R.array.nav_drawer_items_product)
             val newTitles = activity.resources.getStringArray(R.array.nav_drawer_new_items_product)
 
-            adapter.add(SummaryProductFragment.newInstance(productState), titles[0])
+            adapter += SummaryProductFragment.newInstance(productState) to titles[0]
             val preferences = PreferenceManager.getDefaultSharedPreferences(activity)
 
             // Add Ingredients fragment for off, obf and opff
-            if (isFlavors(OFF, OBF, OPFF)) adapter.add(IngredientsProductFragment.newInstance(productState), titles[1])
+            if (isFlavors(OFF, OBF, OPFF)) {
+                adapter += IngredientsProductFragment.newInstance(productState) to titles[1]
+            }
 
-            if (isFlavors(OFF, OPFF)) adapter.add(NutritionProductFragment.newInstance(productState), titles[2])
+            if (isFlavors(OFF, OPFF)) {
+                adapter += NutritionProductFragment.newInstance(productState) to titles[2]
+            }
 
-            if (isFlavors(OFF)) adapter.add(EnvironmentProductFragment.newInstance(productState), titles[4])
+            if (isFlavors(OFF)) {
+                adapter += EnvironmentProductFragment.newInstance(productState) to titles[4]
+            }
 
             if (isFlavors(OFF, OPFF, OBF) && isPhotoMode(activity) || isFlavors(OPF)) {
-                adapter.add(ProductPhotosFragment.newInstance(productState), newTitles[0])
+                adapter += ProductPhotosFragment.newInstance(productState) to newTitles[0]
             }
 
             if (isFlavors(OFF, OBF)) {
-                adapter.add(ServerAttributesFragment.newInstance(productState), activity.getString(R.string.synthesis_tab))
+                adapter += ServerAttributesFragment.newInstance(productState) to activity.getString(R.string.synthesis_tab)
             }
 
-            if (isFlavors(OBF)) adapter.add(IngredientsAnalysisProductFragment.newInstance(productState), newTitles[1])
+            if (isFlavors(OBF)) {
+                adapter += IngredientsAnalysisProductFragment.newInstance(productState) to newTitles[1]
+            }
 
             if (preferences.getBoolean(activity.getString(R.string.pref_contribution_tab_key), false)) {
-                adapter.add(ContributorsFragment.newInstance(productState), activity.getString(R.string.contribution_tab))
+                adapter += ContributorsFragment.newInstance(productState) to activity.getString(R.string.contribution_tab)
             }
 
             viewPager.adapter = adapter

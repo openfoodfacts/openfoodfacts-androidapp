@@ -66,8 +66,8 @@ class OpenFoodAPIClient @Inject constructor(
         val langCode = getLanguage(context)
         val fieldsSet = allFields.toMutableSet()
         fieldsToLocalize.forEach { (field, shouldAddEn) ->
-            fieldsSet.add("${field}_$langCode")
-            if (shouldAddEn) fieldsSet.add("${field}_en")
+            fieldsSet += "${field}_$langCode"
+            if (shouldAddEn) fieldsSet += "${field}_en"
         }
         return fieldsSet.joinToString(",")
     }

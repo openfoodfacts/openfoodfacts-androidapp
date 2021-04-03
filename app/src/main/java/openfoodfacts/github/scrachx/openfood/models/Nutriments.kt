@@ -310,7 +310,7 @@ class Nutriments : Serializable {
             return try {
                 val valueFor100g = strValue.toFloat()
                 val portionInGram = convertToGrams(portion, portionUnit)
-                getRoundNumber(valueFor100g / 100 * portionInGram)
+                getRoundNumber(valueFor100g / 100 * portionInGram).toString()
             } catch (e: NumberFormatException) {
                 Log.w(Nutriments::class.simpleName, "Can't parse value '$strValue'", e)
                 StringUtils.EMPTY
@@ -318,11 +318,11 @@ class Nutriments : Serializable {
         }
 
         companion object {
-            private fun getValueInUnits(valueInGramOrMl: String, unit: String) = when {
+            private fun getValueInUnits(valueInGramOrMl: String, unit: String): String = when {
                 valueInGramOrMl.isBlank() -> StringUtils.EMPTY
                 valueInGramOrMl.isEmpty() || unit == Units.UNIT_GRAM -> valueInGramOrMl
 
-                else -> getRoundNumber(convertFromGram(valueInGramOrMl.toFloat(), unit))
+                else -> getRoundNumber(convertFromGram(valueInGramOrMl.toFloat(), unit)).toString()
             }
 
             /**

@@ -276,22 +276,18 @@ class ScanHistoryActivity : BaseActivity() {
     }
 
     private fun showListSortingDialog() {
-        val sortTypes = if (BuildConfig.FLAVOR == "off") {
-            arrayOf(
-                    getString(R.string.by_title),
-                    getString(R.string.by_brand),
-                    getString(R.string.by_nutrition_grade),
-                    getString(R.string.by_barcode),
-                    getString(R.string.by_time)
-            )
-        } else {
-            arrayOf(
-                    getString(R.string.by_title),
-                    getString(R.string.by_brand),
-                    getString(R.string.by_time),
-                    getString(R.string.by_barcode)
-            )
-        }
+        val sortTypes = if (isFlavors(OFF)) arrayOf(
+                getString(R.string.by_title),
+                getString(R.string.by_brand),
+                getString(R.string.by_nutrition_grade),
+                getString(R.string.by_barcode),
+                getString(R.string.by_time)
+        ) else arrayOf(
+                getString(R.string.by_title),
+                getString(R.string.by_brand),
+                getString(R.string.by_time),
+                getString(R.string.by_barcode)
+        )
         MaterialDialog.Builder(this)
                 .title(R.string.sort_by)
                 .items(*sortTypes)
@@ -310,7 +306,6 @@ class ScanHistoryActivity : BaseActivity() {
 
     companion object {
         fun start(context: Context) = context.startActivity(Intent(context, ScanHistoryActivity::class.java))
-
         val LOG_TAG = ScanHistoryActivity::class.simpleName
     }
 

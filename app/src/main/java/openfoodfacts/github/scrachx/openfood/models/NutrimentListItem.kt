@@ -12,11 +12,11 @@ import openfoodfacts.github.scrachx.openfood.utils.Utils.getRoundNumber
  * @param modifier one of the following: "<", ">", or "~"
  */
 open class NutrimentListItem(
-        val title: String?,
-        value: String?,
-        servingValue: String?,
-        val unit: String?,
-        val modifier: String?,
+        internal val title: CharSequence?,
+        value: CharSequence?,
+        servingValue: CharSequence?,
+        val unit: CharSequence?,
+        val modifier: CharSequence?,
         val displayVolumeHeader: Boolean = false
 ) {
     val servingValue = if (servingValue.isNullOrBlank()) "" else getRoundNumber(servingValue)

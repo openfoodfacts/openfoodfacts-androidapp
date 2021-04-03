@@ -43,7 +43,7 @@ interface ProductsAPI {
         /**
          * The api prefix URL
          */
-        private const val API_P = "/api/$API_VER"
+        private const val API_P = "api/$API_VER"
     }
 
     @GET("$API_P/product/{barcode}.json")
@@ -181,9 +181,9 @@ interface ProductsAPI {
             @Path("page") page: Int
     ): Single<Search>
 
-    @GET("contributor/{Contributor}/{page}.json?nocache=1")
+    @GET("contributor/{contributor}/{page}.json?nocache=1")
     fun getProductsByContributor(
-            @Path("Contributor") contributor: String,
+            @Path("contributor") contributor: String,
             @Path("page") page: Int
     ): Single<Search>
 
@@ -220,51 +220,51 @@ interface ProductsAPI {
     @GET("trace/{trace}.json")
     fun getProductsByTrace(@Path("trace") trace: String): Single<Search>
 
-    @GET("packager-code/{PackagerCode}.json")
-    fun getProductsByPackagerCode(@Path("PackagerCode") packagerCode: String): Single<Search>
+    @GET("packager-code/{packager_code}.json")
+    fun getProductsByPackagerCode(@Path("packager_code") packagerCode: String): Single<Search>
 
-    @GET("city/{City}.json")
-    fun getProducsByCity(@Path("City") city: String): Single<Search>
+    @GET("city/{city}.json")
+    fun getProducsByCity(@Path("city") city: String): Single<Search>
 
     @GET("nutrition-grade/{nutriscore}.json")
     fun getProductsByNutriScore(@Path("nutriscore") nutritionGrade: String): Single<Search>
 
-    @GET("nutrient-level/{NutrientLevel}.json")
-    fun byNutrientLevel(@Path("NutrientLevel") nutrientLevel: String): Single<Search>
+    @GET("nutrient-level/{nutrient_level}.json")
+    fun byNutrientLevel(@Path("nutrient_level") nutrientLevel: String): Single<Search>
 
-    @GET("contributor/{Contributor}.json?nocache=1")
-    fun byContributor(@Path("Contributor") contributor: String): Single<Search>
+    @GET("contributor/{contributor}.json?nocache=1")
+    fun byContributor(@Path("contributor") contributor: String): Single<Search>
 
-    @GET("contributor/{Contributor}/state/to-be-completed/{page}.json?nocache=1")
+    @GET("contributor/{contributor}/state/to-be-completed/{page}.json?nocache=1")
     fun getToBeCompletedProductsByContributor(
-            @Path("Contributor") contributor: String,
+            @Path("contributor") contributor: String,
             @Path("page") page: Int
     ): Single<Search>
 
-    @GET("/photographer/{Contributor}/{page}.json?nocache=1")
+    @GET("/photographer/{contributor}/{page}.json?nocache=1")
     fun getPicturesContributedProducts(
-            @Path("Contributor") contributor: String,
+            @Path("contributor") contributor: String,
             @Path("page") page: Int
     ): Single<Search>
 
     @GET("photographer/{Photographer}.json?nocache=1")
     fun getProductsByPhotographer(@Path("Photographer") photographer: String): Single<Search>
 
-    @GET("photographer/{Contributor}/state/to-be-completed/{page}.json?nocache=1")
+    @GET("photographer/{contributor}/state/to-be-completed/{page}.json?nocache=1")
     fun getPicturesContributedIncompleteProducts(
-            @Path("Contributor") contributor: String?,
+            @Path("contributor") contributor: String?,
             @Path("page") page: Int
     ): Single<Search>
 
-    @GET("informer/{Informer}.json?nocache=1")
-    fun getProductsByInformer(@Path("Informer") informer: String?): Single<Search>
+    @GET("informer/{informer}.json?nocache=1")
+    fun getProductsByInformer(@Path("informer") informer: String?): Single<Search>
 
-    @GET("informer/{Contributor}/{page}.json?nocache=1")
-    fun getInfoAddedProducts(@Path("Contributor") contributor: String?, @Path("page") page: Int): Single<Search>
+    @GET("informer/{contributor}/{page}.json?nocache=1")
+    fun getInfoAddedProducts(@Path("contributor") contributor: String?, @Path("page") page: Int): Single<Search>
 
-    @GET("informer/{Contributor}/state/to-be-completed/{page}.json?nocache=1")
+    @GET("informer/{contributor}/state/to-be-completed/{page}.json?nocache=1")
     fun getInfoAddedIncompleteProductsSingle(
-            @Path("Contributor") contributor: String,
+            @Path("contributor") contributor: String,
             @Path("page") page: Int
     ): Single<Search>
 

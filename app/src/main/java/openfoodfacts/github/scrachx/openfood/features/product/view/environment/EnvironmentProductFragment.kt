@@ -3,11 +3,13 @@ package openfoodfacts.github.scrachx.openfood.features.product.view.environment
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.text.SpannableStringBuilder
 import android.text.method.LinkMovementMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.text.HtmlCompat
+import androidx.core.text.bold
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.rxkotlin.addTo
@@ -94,7 +96,8 @@ class EnvironmentProductFragment : BaseFragment() {
 
         val carbonFootprintNutriment = nutriments[Nutriments.CARBON_FOOTPRINT]
         if (carbonFootprintNutriment != null) {
-            binding.textCarbonFootprint.text = bold(getString(R.string.textCarbonFootprint))
+            binding.textCarbonFootprint.text = SpannableStringBuilder()
+                    .bold { append(getString(R.string.textCarbonFootprint)) }
             binding.textCarbonFootprint.append(carbonFootprintNutriment.for100gInUnits)
             binding.textCarbonFootprint.append(carbonFootprintNutriment.unit)
         } else {
@@ -111,7 +114,8 @@ class EnvironmentProductFragment : BaseFragment() {
 
         val packaging = product.packaging
         if (!packaging.isNullOrEmpty()) {
-            binding.packagingText.text = bold(getString(R.string.packaging_environmentTab))
+            binding.packagingText.text = SpannableStringBuilder()
+                    .bold { append(getString(R.string.packaging_environmentTab)) }
             binding.packagingText.append(" ")
             binding.packagingText.append(packaging.split(',').toString().removeSurrounding("[", "]"))
         } else {
@@ -121,7 +125,8 @@ class EnvironmentProductFragment : BaseFragment() {
         val recyclingInstructionsToDiscard = product.recyclingInstructionsToDiscard
         if (!recyclingInstructionsToDiscard.isNullOrEmpty()) {
             // TODO: 02/03/2021 i18n
-            binding.recyclingInstructionToDiscard.text = bold("Recycling instructions - To discard: ")
+            binding.recyclingInstructionToDiscard.text = SpannableStringBuilder()
+                    .bold { append("Recycling instructions - To discard: ") }
             binding.recyclingInstructionToDiscard.append(recyclingInstructionsToDiscard)
         } else {
             binding.recyclingInstructionsDiscardCv.visibility = View.GONE
@@ -130,7 +135,8 @@ class EnvironmentProductFragment : BaseFragment() {
         val recyclingInstructionsToRecycle = product.recyclingInstructionsToRecycle
         if (!recyclingInstructionsToRecycle.isNullOrEmpty()) {
             // TODO: 02/03/2021 i18n
-            binding.recyclingInstructionToRecycle.text = bold("Recycling instructions - To recycle: ")
+            binding.recyclingInstructionToRecycle.text = SpannableStringBuilder()
+                    .bold { append("Recycling instructions - To recycle: ") }
             binding.recyclingInstructionToRecycle.append(recyclingInstructionsToRecycle)
         } else {
             binding.recyclingInstructionsRecycleCv.visibility = View.GONE
