@@ -233,25 +233,26 @@ class ProductEditActivity : AppCompatActivity() {
 
     private fun setupViewPager(viewPager: ViewPager2) {
         // Initialize fragments
-        val adapterResult = ProductFragmentPagerAdapter(this)
         fragmentsBundle.putSerializable("product", mProduct)
 
         editOverviewFragment.arguments = fragmentsBundle
         ingredientsFragment.arguments = fragmentsBundle
 
-        adapterResult.add(editOverviewFragment, R.string.overview)
-        adapterResult.add(ingredientsFragment, R.string.ingredients)
+        val adapterResult = ProductFragmentPagerAdapter(this).apply {
+            this += editOverviewFragment to getString(R.string.overview)
+            this += ingredientsFragment to getString(R.string.ingredients)
+        }
 
         // If on off or opff, add Nutrition Facts fragment
         when {
             isFlavors(OFF, OPFF) -> {
                 nutritionFactsFragment.arguments = fragmentsBundle
-                adapterResult.add(nutritionFactsFragment, R.string.nutrition_facts)
+                adapterResult += nutritionFactsFragment to getString(R.string.nutrition_facts)
             }
             isFlavors(OBF, OPF) -> {
                 binding.textNutritionFactsIndicator.setText(R.string.photos)
                 addProductPhotosFragment.arguments = fragmentsBundle
-                adapterResult.add(addProductPhotosFragment, R.string.photos)
+                adapterResult += addProductPhotosFragment to getString(R.string.photos)
             }
         }
 

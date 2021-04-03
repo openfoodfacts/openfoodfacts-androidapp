@@ -38,6 +38,7 @@ import android.widget.Spinner
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.text.bold
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.afollestad.materialdialogs.MaterialDialog
@@ -210,9 +211,10 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
             } else if (servingSize.contains("oz", true) && sharedPreferences.getString("volumeUnitPreference", "l") == "l") {
                 servingSize = UnitUtils.getServingInL(servingSize)
             }
-            binding.textServingSize.text = bold(getString(R.string.txtServingSize))
-            binding.textServingSize.append(" ")
-            binding.textServingSize.append(servingSize)
+            binding.textServingSize.text = SpannableStringBuilder()
+                    .bold { append(getString(R.string.txtServingSize)) }
+                    .append(" ")
+                    .append(servingSize)
         }
 
         if (arguments != null) {

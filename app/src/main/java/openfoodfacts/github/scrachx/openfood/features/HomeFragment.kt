@@ -116,7 +116,6 @@ class HomeFragment : NavigationBaseFragment() {
         }
 
         productsApi.signIn(login, password, "Sign-in")
-                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnError { Log.e(LOG_TAG, "Cannot check user credentials.", it) }
                 .subscribe { response ->
@@ -126,8 +125,7 @@ class HomeFragment : NavigationBaseFragment() {
                         Log.e(LOG_TAG, "I/O Exception while checking user saved credentials.", e)
                         return@subscribe
                     }
-                    if (htmlBody.contains("Incorrect user name or password.")
-                            || htmlBody.contains("See you soon!")) {
+                    if (LoginActivity.isHtmlNotValid(htmlBody)) {
                         Log.w(LOG_TAG, "Cannot validate login, deleting saved credentials and asking the user to log back in.")
                         settings.edit {
                             putString("user", "")

@@ -34,6 +34,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.content.res.ResourcesCompat
+import androidx.core.text.bold
 import androidx.core.view.updatePadding
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -50,7 +51,6 @@ import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
 import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
-import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabsHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback
@@ -264,8 +264,15 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         this.productState = productState
         product = productState.product!!
         presenter = SummaryProductPresenter(product, this, productRepository).apply { addTo(disp) }
-        binding.categoriesText.text = bold(getString(R.string.txtCategories))
-        binding.labelsText.text = bold(getString(R.string.txtLabels))
+
+        binding.categoriesText.text = SpannableStringBuilder()
+                .bold { append(getString(R.string.txtCategories)) }
+
+        binding.labelsText.text = SpannableStringBuilder()
+                .bold { append(getString(R.string.txtLabels)) }
+
+        binding.textAdditiveProduct.text = SpannableStringBuilder()
+                .bold { append(getString(R.string.txtAdditives)) }
 
         // Refresh visibility of UI components
         binding.textBrandProduct.visibility = View.VISIBLE
@@ -285,7 +292,6 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         presenter.loadCategories()
         presenter.loadLabels()
         presenter.loadProductQuestion()
-        binding.textAdditiveProduct.text = bold(getString(R.string.txtAdditives))
         presenter.loadAdditives()
         presenter.loadAnalysisTags()
 
@@ -319,7 +325,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
             binding.textBrandProduct.text = ""
             pBrands.split(",").withIndex().forEach { (i, brand) ->
                 if (i > 0) binding.textBrandProduct.append(", ")
-                binding.textBrandProduct.append(Utils.getClickableText(
+                binding.textBrandProduct.append(getSearchLinkText(
                         brand.trim { it <= ' ' },
                         SearchType.BRAND,
                         requireActivity()
@@ -331,7 +337,8 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
 
         if (product.embTags.isNotEmpty() && product.embTags.toString().trim { it <= ' ' } != "[]") {
             binding.embText.movementMethod = LinkMovementMethod.getInstance()
-            binding.embText.text = bold(getString(R.string.txtEMB))
+            binding.embText.text = SpannableStringBuilder()
+                    .bold { append(getString(R.string.txtEMB)) }
             binding.embText.append(" ")
 
             val embTags = product.embTags.toString()
@@ -341,7 +348,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
             embTags.withIndex().forEach { (i, embTag) ->
                 if (i > 0) binding.embText.append(", ")
 
-                binding.embText.append(Utils.getClickableText(
+                binding.embText.append(getSearchLinkText(
                         getEmbCode(embTag).trim { it <= ' ' },
                         SearchType.EMB,
                         requireActivity()
@@ -689,7 +696,8 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     }
 
     override fun showLabels(labelNames: List<LabelName>) {
-        binding.labelsText.text = bold(getString(R.string.txtLabels))
+        binding.labelsText.text = SpannableStringBuilder()
+                .bold { append(getString(R.string.txtLabels)) }
         binding.labelsText.isClickable = true
         binding.labelsText.movementMethod = LinkMovementMethod.getInstance()
         binding.labelsText.append(" ")

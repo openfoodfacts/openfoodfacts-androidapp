@@ -19,6 +19,7 @@ import android.Manifest.permission
 import android.app.Activity
 import android.content.pm.PackageManager
 import android.os.Build
+import android.text.SpannableStringBuilder
 import android.util.Log
 import android.util.TypedValue
 import android.view.LayoutInflater
@@ -29,6 +30,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.text.bold
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.afollestad.materialdialogs.MaterialDialog
@@ -148,7 +150,10 @@ class ProductCompareAdapter(
 
         // Quantity
         if (!product.quantity.isNullOrBlank()) {
-            holder.binding.productComparisonQuantity.text = "${bold(activity.getString(R.string.compare_quantity))} ${product.quantity}"
+            holder.binding.productComparisonQuantity.text = "${
+                SpannableStringBuilder()
+                        .bold { append(activity.getString(R.string.compare_quantity)) }
+            } ${product.quantity}"
         } else {
             holder.binding.productComparisonQuantity.visibility = View.INVISIBLE
         }
@@ -156,7 +161,8 @@ class ProductCompareAdapter(
         // Brands
         val brands = product.brands
         if (!brands.isNullOrBlank()) {
-            holder.binding.productComparisonBrand.text = bold(activity.getString(R.string.compare_brands))
+            holder.binding.productComparisonBrand.text = SpannableStringBuilder()
+                    .bold { append(activity.getString(R.string.compare_brands)) }
             holder.binding.productComparisonBrand.append(" ")
             val brandsList = brands.split(",")
             brandsList.dropLast(1).forEach { brand ->
@@ -237,7 +243,8 @@ class ProductCompareAdapter(
                 .doOnError { Log.e(ProductCompareAdapter::class.simpleName, "loadAdditives", it) }
                 .subscribe { additives ->
                     if (additives.isNotEmpty()) {
-                        val additivesBuilder = StringBuilder(bold(activity.getString(R.string.compare_additives)))
+                        val additivesBuilder = StringBuilder(SpannableStringBuilder()
+                                .bold { append(activity.getString(R.string.compare_additives)) })
                                 .append(" ").append("\n")
                         additives.dropLast(1).forEach { additive ->
                             additivesBuilder.append(additive.name).append("\n")

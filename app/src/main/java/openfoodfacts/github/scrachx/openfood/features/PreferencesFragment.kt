@@ -57,10 +57,8 @@ import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
 import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
-import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback
-import openfoodfacts.github.scrachx.openfood.features.scan.ContinuousScanActivity
 import openfoodfacts.github.scrachx.openfood.jobs.LoadTaxonomiesWorker
 import openfoodfacts.github.scrachx.openfood.jobs.OfflineProductWorker.Companion.scheduleSync
 import openfoodfacts.github.scrachx.openfood.models.DaoSession
@@ -69,13 +67,9 @@ import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.A
 import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.AnalysisTagConfigDao
 import openfoodfacts.github.scrachx.openfood.models.entities.country.CountryName
 import openfoodfacts.github.scrachx.openfood.models.entities.country.CountryNameDao
-import openfoodfacts.github.scrachx.openfood.utils.INavigationItem
+import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLocale
-import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType
-import openfoodfacts.github.scrachx.openfood.utils.SearchSuggestionProvider
-import openfoodfacts.github.scrachx.openfood.utils.requirePreference
 import org.greenrobot.greendao.async.AsyncOperation
 import org.greenrobot.greendao.async.AsyncOperationListener
 import org.greenrobot.greendao.query.WhereCondition.StringCondition
@@ -107,33 +101,7 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
 
         val settings = requireActivity().getSharedPreferences("prefs", 0)
 
-        val finalLocalLangs = mutableListOf<String>()
-        val finalLocalLabels = mutableListOf<String?>()
-
-        val languages = requireActivity().resources.getStringArray(R.array.languages_array)
-        val localeLabels = arrayOfNulls<String>(languages.size)
-
-        languages.withIndex().forEach { (i, lang) ->
-            val current = getLocale(lang)
-            localeLabels[i] = current.getDisplayName(current).capitalize(Locale.getDefault())
-            finalLocalLabels += localeLabels[i]
-            finalLocalLangs += lang
-        }
-
-        requirePreference<ListPreference>(getString(R.string.pref_language_key)).let {
-            it.entries = finalLocalLabels.toTypedArray()
-            it.entryValues = finalLocalLangs.toTypedArray()
-            it.onPreferenceChangeListener = Preference.OnPreferenceChangeListener { _: Preference?, locale: Any? ->
-                val configuration = requireActivity().resources.configuration
-                Toast.makeText(context, getString(R.string.changes_saved), Toast.LENGTH_SHORT).show()
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-                    configuration.setLocale(getLocale(locale as String?))
-                    requireActivity().recreate()
-                }
-                true
-            }
-        }
-
+        initLanguageCell()
 
         requirePreference<ListPreference>(getString(R.string.pref_app_theme_key)).let {
             it.setEntries(R.array.application_theme_entries)
@@ -432,6 +400,28 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe { configs: List<AnalysisTagConfig> -> buildDisplayCategory(configs) }
                 .addTo(disp)
+    }
+
+    private fun initLanguageCell() {
+        val localesWithNames = SupportedLanguages.codes()
+                .map {
+                    val locale = LocaleHelper.getLocale(it)
+                    it to locale.getDisplayName(locale).capitalize(locale)
+                }
+
+        requirePreference<ListPreference>(getString(R.string.pref_language_key)).let { preference ->
+            preference.entries = localesWithNames.map { it.second }.toTypedArray()
+            preference.entryValues = localesWithNames.map { it.first }.toTypedArray()
+            preference.onPreferenceChangeListener = Preference.OnPreferenceChangeListener { _: Preference?, locale: Any? ->
+                val configuration = requireActivity().resources.configuration
+                Toast.makeText(context, getString(R.string.changes_saved), Toast.LENGTH_SHORT).show()
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                    configuration.setLocale(LocaleHelper.getLocale(locale as String?))
+                    requireActivity().recreate()
+                }
+                true
+            }
+        }
     }
 
     companion object {

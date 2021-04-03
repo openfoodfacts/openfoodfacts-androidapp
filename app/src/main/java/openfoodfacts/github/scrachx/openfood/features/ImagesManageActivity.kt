@@ -213,8 +213,8 @@ class ImagesManageActivity : BaseActivity() {
             addedLanguages.add(currentLanguage)
             languageForImage.add(getLanguageData(currentLanguage, false))
         }
-        val localeValues = resources.getStringArray(R.array.languages_array)
-        val otherNotSupportedCode = localeValues.filter { it !in addedLanguages }
+
+        val otherNotSupportedCode = SupportedLanguages.codes().filter { it !in addedLanguages }
 
         languageForImage.addAll(getLanguageData(otherNotSupportedCode, false))
         val adapter = LanguageDataAdapter(this, R.layout.simple_spinner_item_white, languageForImage)

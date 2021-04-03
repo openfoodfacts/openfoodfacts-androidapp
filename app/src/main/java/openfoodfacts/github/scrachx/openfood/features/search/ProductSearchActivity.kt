@@ -4,7 +4,6 @@ import android.Manifest
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -17,6 +16,7 @@ import androidx.annotation.StringRes
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.net.toUri
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -44,6 +44,7 @@ import openfoodfacts.github.scrachx.openfood.models.SearchInfo
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.*
+import openfoodfacts.github.scrachx.openfood.utils.SearchType.*
 import java.text.NumberFormat
 import java.util.*
 import javax.inject.Inject
@@ -107,11 +108,11 @@ class ProductSearchActivity : BaseActivity() {
                 if (paths[3] == "cgi" && paths[4].contains("search.pl")) {
                     mSearchInfo.searchTitle = data.getQueryParameter("search_terms") ?: ""
                     mSearchInfo.searchQuery = data.getQueryParameter("search_terms") ?: ""
-                    mSearchInfo.searchType = SearchType.SEARCH
+                    mSearchInfo.searchType = SEARCH
                 } else {
                     mSearchInfo.searchTitle = paths[4]
                     mSearchInfo.searchQuery = paths[4]
-                    mSearchInfo.searchType = SearchType.fromUrl(paths[3]) ?: SearchType.SEARCH
+                    mSearchInfo.searchType = SearchType.fromUrl(paths[3]) ?: SEARCH
                 }
 
             } else {
@@ -141,7 +142,7 @@ class ProductSearchActivity : BaseActivity() {
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
                 mSearchInfo.searchQuery = query
-                mSearchInfo.searchType = SearchType.SEARCH
+                mSearchInfo.searchType = SEARCH
                 newSearchQuery()
                 return true
             }
@@ -157,7 +158,7 @@ class ProductSearchActivity : BaseActivity() {
                 return true
             }
         })
-        if (SearchType.CONTRIBUTOR == mSearchInfo.searchType) {
+        if (CONTRIBUTOR == mSearchInfo.searchType) {
             menu.findItem(R.id.action_set_type).isVisible = true
         }
         return true
@@ -182,16 +183,11 @@ class ProductSearchActivity : BaseActivity() {
                     title(R.string.show_by)
                     items(*contributionTypes)
                     itemsCallback { _, _, position, _ ->
-                        when (position) {
-                            1, 2, 3, 4, 5 -> {
-                                contributionType = position
-                                newSearchQuery()
-                            }
-                            else -> {
-                                contributionType = 0
-                                newSearchQuery()
-                            }
+                        contributionType = when (position) {
+                            1, 2, 3, 4, 5 -> position
+                            else -> 0
                         }
+                        newSearchQuery()
                     }
                 }.show()
                 true
@@ -203,7 +199,7 @@ class ProductSearchActivity : BaseActivity() {
     private fun setupHungerGames() {
         val sharedPref = PreferenceManager.getDefaultSharedPreferences(this)
         val actualCountryTag = sharedPref.getString(getString(R.string.pref_country_key), "")
-        if ("" == actualCountryTag) {
+        if (actualCountryTag.isNullOrBlank()) {
             productRepository.getCountryByCC2OrWorld(LocaleHelper.getLocaleFromContext().country)
                     .observeOn(AndroidSchedulers.mainThread())
                     .map { it.tag }
@@ -216,7 +212,7 @@ class ProductSearchActivity : BaseActivity() {
     }
 
     private fun setupUrlHungerGames(countryTag: String?) {
-        val url = Uri.parse("https://hunger.openfoodfacts.org/questions?type=${mSearchInfo.searchType.url}&value_tag=${mSearchInfo.searchQuery}&country=$countryTag")
+        val url = "https://hunger.openfoodfacts.org/questions?type=${mSearchInfo.searchType.url}&value_tag=${mSearchInfo.searchQuery}&country=$countryTag".toUri()
         val builder = CustomTabsIntent.Builder()
         val customTabsIntent = builder.build()
         binding.btnHungerGames.visibility = View.VISIBLE
@@ -229,33 +225,33 @@ class ProductSearchActivity : BaseActivity() {
     private fun newSearchQuery() {
         supportActionBar?.title = mSearchInfo.searchTitle
         when (mSearchInfo.searchType) {
-            SearchType.BRAND -> {
+            BRAND -> {
                 supportActionBar!!.setSubtitle(R.string.brand_string)
                 setupHungerGames()
             }
-            SearchType.LABEL -> {
+            LABEL -> {
                 supportActionBar!!.subtitle = getString(R.string.label_string)
                 setupHungerGames()
             }
-            SearchType.CATEGORY -> {
+            CATEGORY -> {
                 supportActionBar!!.subtitle = getString(R.string.category_string)
                 setupHungerGames()
             }
-            SearchType.COUNTRY -> supportActionBar!!.setSubtitle(R.string.country_string)
-            SearchType.ORIGIN -> supportActionBar!!.setSubtitle(R.string.origin_of_ingredients)
-            SearchType.MANUFACTURING_PLACE -> supportActionBar!!.setSubtitle(R.string.manufacturing_place)
-            SearchType.ADDITIVE -> supportActionBar!!.setSubtitle(R.string.additive_string)
-            SearchType.SEARCH -> supportActionBar!!.setSubtitle(R.string.search_string)
-            SearchType.STORE -> supportActionBar!!.setSubtitle(R.string.store_subtitle)
-            SearchType.PACKAGING -> supportActionBar!!.setSubtitle(R.string.packaging_subtitle)
-            SearchType.CONTRIBUTOR -> supportActionBar!!.subtitle = getString(R.string.contributor_string)
-            SearchType.ALLERGEN -> supportActionBar!!.subtitle = getString(R.string.allergen_string)
-            SearchType.INCOMPLETE_PRODUCT -> supportActionBar!!.title = getString(R.string.products_to_be_completed)
-            SearchType.STATE -> {
+            COUNTRY -> supportActionBar!!.setSubtitle(R.string.country_string)
+            ORIGIN -> supportActionBar!!.setSubtitle(R.string.origin_of_ingredients)
+            MANUFACTURING_PLACE -> supportActionBar!!.setSubtitle(R.string.manufacturing_place)
+            ADDITIVE -> supportActionBar!!.setSubtitle(R.string.additive_string)
+            SEARCH -> supportActionBar!!.setSubtitle(R.string.search_string)
+            STORE -> supportActionBar!!.setSubtitle(R.string.store_subtitle)
+            PACKAGING -> supportActionBar!!.setSubtitle(R.string.packaging_subtitle)
+            CONTRIBUTOR -> supportActionBar!!.subtitle = getString(R.string.contributor_string)
+            ALLERGEN -> supportActionBar!!.subtitle = getString(R.string.allergen_string)
+            INCOMPLETE_PRODUCT -> supportActionBar!!.title = getString(R.string.products_to_be_completed)
+            STATE -> {
                 // TODO: 26/07/2020 use resources
                 supportActionBar!!.subtitle = "State"
             }
-            SearchType.TRACE -> supportActionBar!!.setSubtitle(R.string.traces)
+            TRACE -> supportActionBar!!.setSubtitle(R.string.traces)
             else -> error("No match case found for ${mSearchInfo.searchType}")
         }
         binding.progressBar.visibility = View.VISIBLE
@@ -296,28 +292,28 @@ class ProductSearchActivity : BaseActivity() {
     fun loadDataFromAPI() {
         val searchQuery = mSearchInfo.searchQuery
         when (mSearchInfo.searchType) {
-            SearchType.BRAND -> client.getProductsByBrand(searchQuery, pageAddress)
+            BRAND -> client.getProductsByBrand(searchQuery, pageAddress)
                     .startSearch(R.string.txt_no_matching_brand_products)
 
-            SearchType.COUNTRY -> client.getProductsByCountry(searchQuery, pageAddress)
+            COUNTRY -> client.getProductsByCountry(searchQuery, pageAddress)
                     .startSearch(R.string.txt_no_matching_country_products)
 
-            SearchType.ORIGIN -> client.getProductsByOrigin(searchQuery, pageAddress)
+            ORIGIN -> client.getProductsByOrigin(searchQuery, pageAddress)
                     .startSearch(R.string.txt_no_matching_country_products)
 
-            SearchType.MANUFACTURING_PLACE -> client.getProductsByManufacturingPlace(searchQuery, pageAddress)
+            MANUFACTURING_PLACE -> client.getProductsByManufacturingPlace(searchQuery, pageAddress)
                     .startSearch(R.string.txt_no_matching_country_products)
 
-            SearchType.ADDITIVE -> client.getProductsByAdditive(searchQuery, pageAddress)
+            ADDITIVE -> client.getProductsByAdditive(searchQuery, pageAddress)
                     .startSearch(R.string.txt_no_matching_additive_products)
 
-            SearchType.STORE -> client.getProductsByStore(searchQuery, pageAddress)
+            STORE -> client.getProductsByStore(searchQuery, pageAddress)
                     .startSearch(R.string.txt_no_matching_store_products)
 
-            SearchType.PACKAGING -> client.getProductsByPackaging(searchQuery, pageAddress)
+            PACKAGING -> client.getProductsByPackaging(searchQuery, pageAddress)
                     .startSearch(R.string.txt_no_matching_packaging_products)
 
-            SearchType.SEARCH -> {
+            SEARCH -> {
                 if (isBarcodeValid(searchQuery)) {
                     client.openProduct(searchQuery, this)
                 } else {
@@ -325,22 +321,22 @@ class ProductSearchActivity : BaseActivity() {
                             .startSearch(R.string.txt_no_matching_products, R.string.txt_broaden_search)
                 }
             }
-            SearchType.LABEL -> client.getProductsByLabel(searchQuery, pageAddress)
+            LABEL -> client.getProductsByLabel(searchQuery, pageAddress)
                     .startSearch(R.string.txt_no_matching_label_products)
 
-            SearchType.CATEGORY -> client.getProductsByCategory(searchQuery, pageAddress)
+            CATEGORY -> client.getProductsByCategory(searchQuery, pageAddress)
                     .startSearch(R.string.txt_no_matching__category_products)
 
-            SearchType.ALLERGEN -> client.getProductsByAllergen(searchQuery, pageAddress)
+            ALLERGEN -> client.getProductsByAllergen(searchQuery, pageAddress)
                     .startSearch(R.string.txt_no_matching_allergen_products)
 
-            SearchType.CONTRIBUTOR -> loadDataForContributor(searchQuery)
+            CONTRIBUTOR -> loadDataForContributor(searchQuery)
 
-            SearchType.STATE -> client.getProductsByStates(searchQuery, pageAddress)
+            STATE -> client.getProductsByStates(searchQuery, pageAddress)
                     .startSearch(R.string.txt_no_matching_allergen_products)
 
             // Get Products to be completed data and input it to loadData function
-            SearchType.INCOMPLETE_PRODUCT -> client.getIncompleteProducts(pageAddress)
+            INCOMPLETE_PRODUCT -> client.getIncompleteProducts(pageAddress)
                     .startSearch(R.string.txt_no_matching_incomplete_products)
 
             else -> Log.e("Products Browsing", "No match case found for " + mSearchInfo.searchType)
