@@ -22,7 +22,7 @@ open class NutrimentListItem(
     val servingValue = if (servingValue.isNullOrBlank()) "" else getRoundNumber(servingValue)
     val value = value?.let { getRoundNumber(it) } ?: ""
 
-    constructor(displayVolumeHeader: Boolean) :
-            this(null, null, null, null, null, displayVolumeHeader)
+    constructor(volumeHeader: Boolean) :
+            this(null, null, null, null, null, volumeHeader)
 
 }

@@ -2,7 +2,6 @@ package openfoodfacts.github.scrachx.openfood.utils
 
 import android.util.Log
 import io.reactivex.Single
-import okhttp3.MediaType
 import okhttp3.RequestBody
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
 import openfoodfacts.github.scrachx.openfood.models.DaoSession
@@ -161,9 +160,9 @@ class OfflineProductService @Inject constructor(
     }
 
     private fun createRequestBodyMap(code: String, productDetails: Map<String, String>, front: ProductImageField): MutableMap<String, RequestBody> {
-        val barcode = RequestBody.create(MediaType.parse(OpenFoodAPIClient.MIME_TEXT), code)
+        val barcode = RequestBody.create(OpenFoodAPIClient.MIME_TEXT, code)
         val imageField = RequestBody.create(
-                MediaType.parse(OpenFoodAPIClient.MIME_TEXT),
+                OpenFoodAPIClient.MIME_TEXT,
                 "${front}_${productDetails["lang"]}"
         )
 

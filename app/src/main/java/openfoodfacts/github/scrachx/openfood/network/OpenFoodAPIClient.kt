@@ -184,7 +184,7 @@ class OpenFoodAPIClient @Inject constructor(
 
         // Attribute the upload to the connected user
         addUserInfo().forEach { (key, value) ->
-            imgMap[key] = RequestBody.create(MediaType.parse(MIME_TEXT), value)
+            imgMap[key] = RequestBody.create(MIME_TEXT, value)
         }
         return imgMap
     }
@@ -373,7 +373,7 @@ class OpenFoodAPIClient @Inject constructor(
     fun getProductsByStates(state: String?, page: Int) = productsApi.getProductsByState(state, page, getFieldsToFetchFacets())
 
     companion object {
-        const val MIME_TEXT = "text/plain"
+        val MIME_TEXT: MediaType = MediaType.get("text/plain")
         const val PNG_EXT = ".png\""
         fun HistoryProductDao.addToHistorySync(product: OfflineSavedProduct) {
             val historyProducts = queryBuilder().where(HistoryProductDao.Properties.Barcode.eq(product.barcode)).list()
