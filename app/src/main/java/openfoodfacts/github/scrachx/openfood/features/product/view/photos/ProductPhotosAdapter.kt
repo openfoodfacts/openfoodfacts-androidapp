@@ -93,7 +93,7 @@ class ProductPhotosAdapter(
                 R.id.report_image -> {
                     context.startActivity(Intent.createChooser(Intent(Intent.ACTION_SEND).apply {
                         data = Uri.parse("mailto:")
-                        type = OpenFoodAPIClient.MIME_TEXT
+                        type = "text/plain"
                         putExtra(Intent.EXTRA_EMAIL, "Open Food Facts <contact@openfoodfacts.org>")
                         putExtra(Intent.EXTRA_SUBJECT, "Photo report for product ${product.code}")
                         putExtra(Intent.EXTRA_TEXT, "I've spotted a problematic photo for product ${product.code}")

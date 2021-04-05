@@ -1,9 +1,12 @@
 package openfoodfacts.github.scrachx.openfood.utils
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
 import android.util.Log
 import android.widget.Toast
 import androidx.annotation.CheckResult
@@ -38,8 +41,9 @@ fun getCsvFolderName() = when (BuildConfig.FLAVOR) {
     else -> "Open Food Facts"
 }
 
-fun writeListToFile(context: Context, productList: ProductLists, csvUri: Uri,outputStream: OutputStream) {
+fun writeListToFile(context: Context, productList: ProductLists, csvUri: Uri) {
     var success: Boolean
+    val outputStream = context.contentResolver.openOutputStream(csvUri) ?: error("File path must not be null.")
     try {
         CSVPrinter(
                 outputStream.bufferedWriter(),
@@ -58,7 +62,7 @@ fun writeListToFile(context: Context, productList: ProductLists, csvUri: Uri,out
     }
 
     val downloadIntent = Intent(Intent.ACTION_VIEW)
-    val notificationManager = ProductListActivity.createNotification(csvUri, downloadIntent, context)
+    val notificationManager = createNotification(csvUri, downloadIntent, context)
     if (success) {
         val builder = NotificationCompat.Builder(context, "export_channel")
                 .setContentTitle(context.getString(R.string.notify_title))
@@ -69,7 +73,7 @@ fun writeListToFile(context: Context, productList: ProductLists, csvUri: Uri,out
     }
 }
 
-fun writeHistoryToFile(context: Context, productList: List<HistoryProduct>, csvUri: Uri,outputStream: OutputStream) {
+fun writeHistoryToFile(context: Context, productList: List<HistoryProduct>, csvUri: Uri, outputStream: OutputStream) {
     var success = false
 
     try {
@@ -82,7 +86,7 @@ fun writeHistoryToFile(context: Context, productList: List<HistoryProduct>, csvU
         Log.e(ScanHistoryActivity.LOG_TAG, "Can't export to $csvUri.", e)
     }
     val downloadIntent = Intent(Intent.ACTION_VIEW)
-    val notificationManager = ProductListActivity.createNotification(csvUri, downloadIntent, context)
+    val notificationManager = createNotification(csvUri, downloadIntent, context)
     if (success) {
         val builder = NotificationCompat.Builder(context, "export_channel")
                 .setContentTitle(context.getString(R.string.notify_title))
@@ -94,3 +98,25 @@ fun writeHistoryToFile(context: Context, productList: List<HistoryProduct>, csvU
 }
 
 const val LOCALE_FILE_SCHEME = "file://"
+
+// TODO: Use constants and refactor
+fun createNotification(csvUri: Uri, downloadIntent: Intent, context: Context): NotificationManager {
+    downloadIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+    downloadIntent.setDataAndType(csvUri, "text/csv")
+    downloadIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+    val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        val importance = NotificationManager.IMPORTANCE_DEFAULT
+        val notificationChannel = NotificationChannel("downloadChannel", "ChannelCSV", importance)
+        notificationManager.createNotificationChannel(notificationChannel)
+    }
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        val channelId = "export_channel"
+        val channelName = context.getString(R.string.notification_channel_name)
+        val importance = NotificationManager.IMPORTANCE_DEFAULT
+        val notificationChannel = NotificationChannel(channelId, channelName, importance)
+        notificationChannel.description = context.getString(R.string.notify_channel_description)
+        notificationManager.createNotificationChannel(notificationChannel)
+    }
+    return notificationManager
+}

@@ -788,14 +788,11 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     private fun onShareProductButtonClick() {
         val shareUrl = "${getString(R.string.website_product)}${product.code}"
         val shareBody = "${getString(R.string.msg_share)} $shareUrl"
-        val shareSub = "\n\n"
-        val title = "Share using"
         startActivity(Intent.createChooser(Intent().apply {
             action = Intent.ACTION_SEND
-            type = OpenFoodAPIClient.MIME_TEXT
-            putExtra(Intent.EXTRA_SUBJECT, shareSub)
+            type = "text/plain"
             putExtra(Intent.EXTRA_TEXT, shareBody)
-        }, title))
+        }, null))
     }
 
     private fun onEditProductButtonClick() {
