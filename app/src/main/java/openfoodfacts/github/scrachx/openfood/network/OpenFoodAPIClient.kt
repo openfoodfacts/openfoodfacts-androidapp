@@ -225,7 +225,7 @@ class OpenFoodAPIClient @Inject constructor(
                         Log.e("OfflineUploadingTask", "doInBackground", e)
                         return@mapNotNull null
                     }
-                    val productImage = ProductImage(product.barcode, product.productField, imageFile)
+                    val productImage = ProductImage(product.barcode, product.productField, imageFile, getLanguage(context))
                     return@mapNotNull productsApi.saveImageSingle(getUploadableMap(productImage))
                             .flatMapCompletable { jsonNode: JsonNode? ->
                                 if (jsonNode != null) {

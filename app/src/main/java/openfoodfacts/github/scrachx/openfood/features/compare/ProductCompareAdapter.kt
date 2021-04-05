@@ -321,7 +321,7 @@ class ProductCompareAdapter(
 
     fun setImageOnPhotoReturn(file: File) {
         val product = productsToCompare[onPhotoReturnPosition!!]
-        val image = ProductImage(product.code, ProductImageField.FRONT, file).apply { filePath = file.absolutePath }
+        val image = ProductImage(product.code, ProductImageField.FRONT, file, LocaleHelper.getLanguage(activity)).apply { filePath = file.absolutePath }
 
         api.postImg(image).subscribe().addTo(disp)
         product.imageUrl = file.absolutePath

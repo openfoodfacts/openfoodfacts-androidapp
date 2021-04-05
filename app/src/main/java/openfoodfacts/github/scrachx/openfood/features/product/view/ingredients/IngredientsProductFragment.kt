@@ -444,7 +444,7 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
     override fun doOnPhotosPermissionGranted() = newIngredientImage()
 
     private fun onPhotoReturned(newPhotoFile: File) {
-        val image = ProductImage(productState.code!!, ProductImageField.INGREDIENTS, newPhotoFile)
+        val image = ProductImage(productState.code!!, ProductImageField.INGREDIENTS, newPhotoFile, LocaleHelper.getLanguage(context))
         image.filePath = newPhotoFile.absolutePath
         client.postImg(image).subscribe().addTo(disp)
         binding.addPhotoLabel.visibility = View.GONE

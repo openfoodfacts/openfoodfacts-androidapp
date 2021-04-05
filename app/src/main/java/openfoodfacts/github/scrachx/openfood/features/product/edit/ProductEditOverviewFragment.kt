@@ -109,11 +109,11 @@ class ProductEditOverviewFragment : ProductEditFragment() {
             val image: ProductImage
             val position: Int
             if (isFrontImagePresent) {
-                image = ProductImage(barcode!!, ProductImageField.FRONT, newPhotoFile)
+                image = ProductImage(barcode!!, ProductImageField.FRONT, newPhotoFile, getLanguage(requireContext()))
                 frontImageUrl = newPhotoFile.absolutePath
                 position = 0
             } else {
-                image = ProductImage(barcode!!, ProductImageField.OTHER, newPhotoFile)
+                image = ProductImage(barcode!!, ProductImageField.OTHER, newPhotoFile, getLanguage(requireContext()))
                 position = 3
             }
             image.filePath = newPhotoFile.toURI().path
