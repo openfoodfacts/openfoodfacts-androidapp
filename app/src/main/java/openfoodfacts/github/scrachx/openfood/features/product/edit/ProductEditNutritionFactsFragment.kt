@@ -76,7 +76,19 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
     }
     private var _binding: FragmentAddProductNutritionFactsBinding? = null
     private val binding get() = _binding!!
-    private var photoReceiverHandler: PhotoReceiverHandler? = null
+
+    private val photoReceiverHandler: PhotoReceiverHandler by lazy {
+        PhotoReceiverHandler(requireContext()) {
+            val resultUri = it.toURI()
+            imagePath = resultUri.path
+            photoFile = it
+            val image = ProductImage(productCode!!, ProductImageField.NUTRITION, it).apply {
+                filePath = resultUri.path
+            }
+            (activity as? ProductEditActivity)?.addToPhotoMap(image, 2)
+            hideImageProgress(false, "")
+        }
+    }
     private var photoFile: File? = null
     private var productCode: String? = null
     private var mOfflineSavedProduct: OfflineSavedProduct? = null
@@ -132,16 +144,6 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         }
         binding.checkboxNoNutritionData.setOnCheckedChangeListener { _, isChecked -> toggleNoNutritionData(isChecked) }
 
-        photoReceiverHandler = PhotoReceiverHandler {
-            val resultUri = it.toURI()
-            imagePath = resultUri.path
-            photoFile = it
-            val image = ProductImage(productCode!!, ProductImageField.NUTRITION, it).apply {
-                filePath = resultUri.path
-            }
-            (activity as? ProductEditActivity)?.addToPhotoMap(image, 2)
-            hideImageProgress(false, "")
-        }
         val bundle = arguments
         lastEditText = binding.alcohol
         if (bundle != null) {
@@ -887,7 +889,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        photoReceiverHandler!!.onActivityResult(this, requestCode, resultCode, data)
+        photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data)
     }
 
     override fun hideImageProgress(errorInUploading: Boolean, message: String) {

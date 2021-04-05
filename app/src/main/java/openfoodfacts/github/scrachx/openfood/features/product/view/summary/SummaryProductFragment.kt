@@ -129,16 +129,18 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     private var mUrlImage: String? = null
     private var nutritionScoreUri: Uri? = null
 
-    private var photoReceiverHandler = PhotoReceiverHandler { newPhotoFile: File ->
-        //the pictures are uploaded with the correct path
-        val resultUri = newPhotoFile.toURI()
-        val photoFile = if (sendOther) newPhotoFile else File(resultUri.path)
-        val field = if (sendOther) ProductImageField.OTHER else ProductImageField.FRONT
-        val image = ProductImage(product.code, field, photoFile)
-        image.filePath = photoFile.absolutePath
-        uploadImage(image)
-        if (!sendOther) {
-            loadPhoto(photoFile)
+    private val photoReceiverHandler by lazy {
+        PhotoReceiverHandler(requireContext()) { newPhotoFile: File ->
+            //the pictures are uploaded with the correct path
+            val resultUri = newPhotoFile.toURI()
+            val photoFile = if (sendOther) newPhotoFile else File(resultUri.path)
+            val field = if (sendOther) ProductImageField.OTHER else ProductImageField.FRONT
+            val image = ProductImage(product.code, field, photoFile)
+            image.filePath = photoFile.absolutePath
+            uploadImage(image)
+            if (!sendOther) {
+                loadPhoto(photoFile)
+            }
         }
     }
     private var productQuestion: Question? = null

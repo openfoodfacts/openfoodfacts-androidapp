@@ -74,7 +74,7 @@ class ProductCompareActivity : BaseActivity() {
         binding.productComparisonRv.layoutManager = LinearLayoutManager(this, HORIZONTAL, false)
         binding.productComparisonRv.adapter = productComparisonAdapter
 
-        photoReceiverHandler = PhotoReceiverHandler { productComparisonAdapter.setImageOnPhotoReturn(it) }
+        photoReceiverHandler = PhotoReceiverHandler(this) { productComparisonAdapter.setImageOnPhotoReturn(it) }
 
         val finalProductsToCompare = productsToCompare
         binding.productComparisonButton.setOnClickListener {

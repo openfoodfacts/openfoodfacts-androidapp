@@ -78,7 +78,20 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
     @Inject
     lateinit var matomoAnalytics: MatomoAnalytics
 
-    private var photoReceiverHandler: PhotoReceiverHandler? = null
+    private val photoReceiverHandler by lazy {
+        PhotoReceiverHandler(requireContext()) {
+            val uri = it.toURI()
+            imagePath = uri.path
+            newImageSelected = true
+            photoFile = it
+            val image = ProductImage(code!!, ProductImageField.INGREDIENTS, it).apply {
+                filePath = uri.path
+            }
+            (activity as? ProductEditActivity)?.addToPhotoMap(image, 1)
+            matomoAnalytics.trackEvent(AnalyticsEvent.ProductIngredientsPictureEdited(code))
+            hideImageProgress(false, getString(R.string.image_uploaded_successfully))
+        }
+    }
     private var mAllergenNameDao: AllergenNameDao? = null
     private var photoFile: File? = null
     private var code: String? = null
@@ -99,18 +112,6 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        photoReceiverHandler = PhotoReceiverHandler {
-            val uri = it.toURI()
-            imagePath = uri.path
-            newImageSelected = true
-            photoFile = it
-            val image = ProductImage(code!!, ProductImageField.INGREDIENTS, it).apply {
-                filePath = uri.path
-            }
-            (activity as? ProductEditActivity)?.addToPhotoMap(image, 1)
-            matomoAnalytics.trackEvent(AnalyticsEvent.ProductIngredientsPictureEdited(code))
-            hideImageProgress(false, getString(R.string.image_uploaded_successfully))
-        }
         val intent = if (activity == null) null else requireActivity().intent
         if (intent != null && intent.getBooleanExtra(ProductEditActivity.KEY_MODIFY_NUTRITION_PROMPT, false) && !intent
                         .getBooleanExtra(ProductEditActivity.KEY_MODIFY_CATEGORY_PROMPT, false)) {
@@ -403,7 +404,7 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        photoReceiverHandler!!.onActivityResult(this, requestCode, resultCode, data)
+        photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data)
     }
 
     /**

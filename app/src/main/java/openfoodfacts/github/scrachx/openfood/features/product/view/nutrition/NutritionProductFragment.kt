@@ -87,7 +87,9 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
     private var _binding: FragmentNutritionProductBinding? = null
     private val binding get() = _binding!!
 
-    private var photoReceiverHandler = PhotoReceiverHandler { loadNutritionPhoto(it) }
+    private val photoReceiverHandler by lazy {
+        PhotoReceiverHandler(requireContext()) { loadNutritionPhoto(it) }
+    }
 
     @Inject
     lateinit var client: OpenFoodAPIClient
