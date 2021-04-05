@@ -130,25 +130,21 @@ class AllergensAlertFragment : NavigationBaseFragment() {
             productRepository.getAllergensByEnabledAndLanguageCode(false, LocaleHelper.getLanguage(requireActivity()))
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
+                    .doOnError { it.printStackTrace() }
                     .map { allergens -> allergens.sortedBy { it.name } }
-                    .subscribe(
-                            { allergens ->
-                                MaterialDialog.Builder(requireContext())
-                                        .title(R.string.title_dialog_alert)
-                                        .items(allergens.map { it.name })
-                                        .itemsCallback { _, _, position, _ ->
-                                            productRepository.setAllergenEnabled(allergens[position].allergenTag, true)
-                                            mAllergensEnabled!!.add(allergens[position])
-                                            adapter.notifyItemInserted(mAllergensEnabled!!.size - 1)
-                                            binding.allergensRecycle.scrollToPosition(adapter.itemCount - 1)
-                                            matomoAnalytics.trackEvent(AnalyticsEvent.AllergenAlertCreated(allergens[position].allergenTag))
-                                        }
-                                        .show()
-                            },
-                            { throwable ->
-                                throwable.printStackTrace()
-                            }
-                    )
+                    .subscribe { allergens ->
+                        MaterialDialog.Builder(requireContext())
+                                .title(R.string.title_dialog_alert)
+                                .items(allergens.map { it.name })
+                                .itemsCallback { _, _, position, _ ->
+                                    productRepository.setAllergenEnabled(allergens[position].allergenTag, true)
+                                    mAllergensEnabled!!.add(allergens[position])
+                                    adapter.notifyItemInserted(mAllergensEnabled!!.size - 1)
+                                    binding.allergensRecycle.scrollToPosition(adapter.itemCount - 1)
+                                    matomoAnalytics.trackEvent(AnalyticsEvent.AllergenAlertCreated(allergens[position].allergenTag))
+                                }
+                                .show()
+                    }
                     .addTo(disp)
         } else {
             if (Utils.isNetworkConnected(requireContext())) {
@@ -160,27 +156,25 @@ class AllergensAlertFragment : NavigationBaseFragment() {
 
                 productRepository.getAllergens()
                         .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(
-                                {
-                                    mSettings.edit { putBoolean("errorAllergens", false) }
-                                    adapter.allergens = mAllergensEnabled!!
-                                    adapter.notifyDataSetChanged()
-                                    updateAllergenDao()
-                                    addAllergen()
-                                    lt.success()
-                                },
-                                {
-                                    mSettings.edit { putBoolean("errorAllergens", true) }
-                                    lt.error()
-                                }
-                        )
+                        .doOnError {
+                            mSettings.edit { putBoolean("errorAllergens", true) }
+                            lt.error()
+                        }
+                        .subscribe { _ ->
+                            mSettings.edit { putBoolean("errorAllergens", false) }
+                            adapter.allergens = mAllergensEnabled!!
+                            adapter.notifyDataSetChanged()
+                            updateAllergenDao()
+                            addAllergen()
+                            lt.success()
+                        }
                         .addTo(disp)
             } else {
-                MaterialDialog.Builder(requireContext()).apply {
-                    title(R.string.title_dialog_alert)
-                    content(R.string.info_download_data_connection)
-                    neutralText(R.string.txtOk)
-                }.show()
+                MaterialDialog.Builder(requireContext())
+                        .title(R.string.title_dialog_alert)
+                        .content(R.string.info_download_data_connection)
+                        .neutralText(R.string.txtOk)
+                        .show()
             }
         }
     }
