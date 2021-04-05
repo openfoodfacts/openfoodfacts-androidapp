@@ -6,8 +6,8 @@ import io.reactivex.schedulers.Schedulers
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import openfoodfacts.github.scrachx.openfood.BuildConfig
+import openfoodfacts.github.scrachx.openfood.models.AbstractProductSearch
 import openfoodfacts.github.scrachx.openfood.models.ProductState
-import openfoodfacts.github.scrachx.openfood.models.Search
 import openfoodfacts.github.scrachx.openfood.models.entities.SendProduct
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
 import openfoodfacts.github.scrachx.openfood.utils.Utils
@@ -23,21 +23,21 @@ import java.time.Duration
 class ProductsAPITest {
     @Test
     fun byLanguage() {
-        val search = prodClient.getProductsByLanguage("italian").blockingGet() as Search
+        val search = prodClient.getProductsByLanguage("italian").blockingGet() as AbstractProductSearch
         assertThat(search).isNotNull()
         assertThat(search.products).isNotNull()
     }
 
     @Test
     fun byLabel() {
-        val search = prodClient.getProductsByLabel("utz-certified").blockingGet() as Search
+        val search = prodClient.getProductsByLabel("utz-certified").blockingGet() as AbstractProductSearch
         assertThat(search).isNotNull()
         assertThat(search.products).isNotNull()
     }
 
     @Test
     fun byCategory() {
-        val search = prodClient.getProductsByCategory("baby-foods").blockingGet() as Search
+        val search = prodClient.getProductsByCategory("baby-foods").blockingGet() as AbstractProductSearch
         assertThat(search).isNotNull()
         assertThat(search.products).isNotNull()
     }
@@ -45,88 +45,88 @@ class ProductsAPITest {
     @Test
     fun byState() {
         val fieldsToFetchFacets = "brands,product_name,image_small_url,quantity,nutrition_grades_tags"
-        val search = prodClient.getProductsByState("complete", fieldsToFetchFacets).blockingGet() as Search
+        val search = prodClient.getProductsByState("complete", fieldsToFetchFacets).blockingGet() as AbstractProductSearch
         assertThat(search).isNotNull()
         assertThat(search.products).isNotNull()
     }
 
     @Test
     fun byPackaging() {
-        val search = prodClient.getProductsByPackaging("cardboard").blockingGet() as Search
+        val search = prodClient.getProductsByPackaging("cardboard").blockingGet() as AbstractProductSearch
         assertThat(search).isNotNull()
         assertThat(search.products).isNotNull()
     }
 
     @Test
     fun byBrand() {
-        val search = prodClient.getProductsByBrand("monoprix").blockingGet() as Search
+        val search = prodClient.getProductsByBrand("monoprix").blockingGet() as AbstractProductSearch
         assertThat(search).isNotNull()
         assertThat(search.products).isNotNull()
     }
 
     @Test
     fun byPurchasePlace() {
-        val search = prodClient.getProductsByPurchasePlace("marseille-5").blockingGet() as Search
+        val search = prodClient.getProductsByPurchasePlace("marseille-5").blockingGet() as AbstractProductSearch
         assertThat(search).isNotNull()
         assertThat(search.products).isNotNull()
     }
 
     @Test
     fun byStore() {
-        val search = prodClient.getProductsByStore("super-u").blockingGet() as Search
+        val search = prodClient.getProductsByStore("super-u").blockingGet() as AbstractProductSearch
         assertThat(search).isNotNull()
         assertThat(search.products).isNotNull()
     }
 
     @Test
     fun byCountry() {
-        val search = prodClient.byCountry("france").blockingGet() as Search
+        val search = prodClient.byCountry("france").blockingGet() as AbstractProductSearch
         assertThat(search).isNotNull()
         assertThat(search.products).isNotEmpty()
     }
 
     @Test
     fun byIngredient() {
-        val search = prodClient.getProductsByIngredient("sucre").blockingGet() as Search
+        val search = prodClient.getProductsByIngredient("sucre").blockingGet() as AbstractProductSearch
         assertThat(search).isNotNull()
         assertThat(search.products).isNotEmpty()
     }
 
     @Test
     fun byTrace() {
-        val search = prodClient.getProductsByTrace("eggs").blockingGet() as Search
+        val search = prodClient.getProductsByTrace("eggs").blockingGet() as AbstractProductSearch
         assertThat(search).isNotNull()
         assertThat(search.products).isNotNull()
     }
 
     @Test
     fun productByTrace_eggs_productsFound() {
-        val response = prodClient.getProductsByTrace("eggs").blockingGet() as Search
+        val response = prodClient.getProductsByTrace("eggs").blockingGet() as AbstractProductSearch
         response.assertProductsFound()
     }
 
     @Test
     fun productByPackagerCode_emb35069c_productsFound() {
-        val response = prodClient.getProductsByPackagerCode("emb-35069c").blockingGet() as Search
+        val response = prodClient.getProductsByPackagerCode("emb-35069c").blockingGet() as AbstractProductSearch
         response.assertProductsFound()
     }
 
     @Test
     fun productByNutritionGrade_a_productsFound() {
-        val res = prodClient.getProductsByNutriScore("a").blockingGet() as Search
+        val res = prodClient.getProductsByNutriScore("a").blockingGet() as AbstractProductSearch
         res.assertProductsFound()
     }
 
     @Test
     fun productByCity_Paris_noProductFound() {
-        val response = prodClient.getProducsByCity("paris").blockingGet() as Search
+        val response = prodClient.getProducsByCity("paris").blockingGet() as AbstractProductSearch
         response.assertNoProductsFound()
     }
 
     @Test
     fun productByAdditive_e301_productsFound() {
         val fieldsToFetchFacets = "brands,product_name,image_small_url,quantity,nutrition_grades_tags"
-        val response = prodClient.getProductsByAdditive("e301-sodium-ascorbate", fieldsToFetchFacets).blockingGet() as Search
+        val response = prodClient.getProductsByAdditive("e301-sodium-ascorbate", fieldsToFetchFacets).blockingGet() as AbstractProductSearch
         response.assertProductsFound()
     }
 
@@ -154,7 +154,7 @@ class ProductsAPITest {
             name = "ProductName"
             brands = "productbrand"
             weight = "123"
-            weight_unit = "g"
+            weightUnit = "g"
             lang = "en"
         }
 
@@ -185,7 +185,7 @@ class ProductsAPITest {
         assertThat(savedProduct.productName).isEqualTo(product.name)
         assertThat(savedProduct.brands).isEqualTo(product.brands)
         assertThat(savedProduct.brandsTags).contains(product.brands)
-        assertThat(savedProduct.quantity).isEqualTo("${product.weight} ${product.weight_unit}")
+        assertThat(savedProduct.quantity).isEqualTo("${product.weight} ${product.weightUnit}")
     }
 
     companion object {
@@ -228,12 +228,12 @@ class ProductsAPITest {
                     .create(ProductsAPI::class.java)
         }
 
-        private fun Search.assertProductsFound() {
+        private fun AbstractProductSearch.assertProductsFound() {
             assertThat(count.toInt()).isGreaterThan(0)
             assertThat(products).isNotEmpty()
         }
 
-        private fun Search.assertNoProductsFound() {
+        private fun AbstractProductSearch.assertNoProductsFound() {
             assertThat(count.toInt()).isEqualTo(0)
             assertThat(products).isEmpty()
         }

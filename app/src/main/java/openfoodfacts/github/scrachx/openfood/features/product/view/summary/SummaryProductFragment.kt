@@ -74,8 +74,8 @@ import openfoodfacts.github.scrachx.openfood.features.shared.adapters.NutrientLe
 import openfoodfacts.github.scrachx.openfood.features.shared.views.QuestionDialog
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
 import openfoodfacts.github.scrachx.openfood.models.*
-import openfoodfacts.github.scrachx.openfood.models.entities.YourListedProduct
-import openfoodfacts.github.scrachx.openfood.models.entities.YourListedProductDao
+import openfoodfacts.github.scrachx.openfood.models.entities.ListedProduct
+import openfoodfacts.github.scrachx.openfood.models.entities.ListedProductDao
 import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveName
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenHelper
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenName
@@ -493,12 +493,12 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         binding.listChips.removeAllViews()
 
         val asyncSessionList = daoSession.startAsyncSession()
-        asyncSessionList.queryList(daoSession.yourListedProductDao.queryBuilder()
-                .where(YourListedProductDao.Properties.Barcode.eq(product.code)).build())
+        asyncSessionList.queryList(daoSession.listedProductDao.queryBuilder()
+                .where(ListedProductDao.Properties.Barcode.eq(product.code)).build())
 
         asyncSessionList.listenerMainThread = AsyncOperationListener { operation ->
             Log.i("inside", "blshh " + operation.result)
-            (operation.result as List<YourListedProduct>).forEach { list ->
+            (operation.result as List<ListedProduct>).forEach { list ->
                 val chip = Chip(context)
                 chip.text = list.listName
 

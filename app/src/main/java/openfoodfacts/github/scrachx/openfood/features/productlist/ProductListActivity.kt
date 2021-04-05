@@ -37,8 +37,8 @@ import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import openfoodfacts.github.scrachx.openfood.models.HistoryProduct
 import openfoodfacts.github.scrachx.openfood.models.HistoryProductDao
 import openfoodfacts.github.scrachx.openfood.models.Product
+import openfoodfacts.github.scrachx.openfood.models.entities.ListedProduct
 import openfoodfacts.github.scrachx.openfood.models.entities.ProductLists
-import openfoodfacts.github.scrachx.openfood.models.entities.YourListedProduct
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
@@ -103,7 +103,7 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
                     val productDetails = prodToAdd.getProductBrandsQuantityDetails()
                     val imageUrl = prodToAdd.getImageSmallUrl(locale)
 
-                    val product = YourListedProduct().apply {
+                    val product = ListedProduct().apply {
                         this.barcode = barcode
                         this.listId = this@ProductListActivity.listID
                         this.listName = this@ProductListActivity.listName
@@ -112,7 +112,7 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
                         this.imageUrl = imageUrl
                     }
 
-                    daoSession.yourListedProductDao.insertOrReplace(product)
+                    daoSession.listedProductDao.insertOrReplace(product)
                 }
             }
         }
@@ -165,7 +165,7 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
         return true
     }
 
-    private fun MutableList<YourListedProduct>.customSortBy(sortType: SortType) = when (sortType) {
+    private fun MutableList<ListedProduct>.customSortBy(sortType: SortType) = when (sortType) {
         TITLE -> sortBy { it.productName }
         BRAND -> sortBy { it.productDetails }
         BARCODE -> sortBy { it.barcode }
@@ -202,7 +202,7 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
             val qbTime = daoSession.historyProductDao!!.queryBuilder()
             qbTime.whereOr(times[0], times[1], *times.copyOfRange(2, times.size))
             historyProductsTime = qbTime.list()
-            sortWith { p1: YourListedProduct, p2: YourListedProduct ->
+            sortWith { p1: ListedProduct, p2: ListedProduct ->
                 var d1 = Date(0)
                 var d2 = Date(0)
                 historyProductsTime.forEach {
@@ -381,7 +381,7 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
         if (adapter.products.isEmpty()) return
 
         val productToRemove = adapter.products[position]
-        daoSession.yourListedProductDao.delete(productToRemove)
+        daoSession.listedProductDao.delete(productToRemove)
         adapter.remove(productToRemove)
     }
 

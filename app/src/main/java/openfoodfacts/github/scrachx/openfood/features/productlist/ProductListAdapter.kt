@@ -15,13 +15,13 @@ import com.squareup.picasso.Picasso
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.features.productlist.ProductListAdapter.ProductViewHolder
 import openfoodfacts.github.scrachx.openfood.features.shared.views.CustomTextView
-import openfoodfacts.github.scrachx.openfood.models.entities.YourListedProduct
+import openfoodfacts.github.scrachx.openfood.models.entities.ListedProduct
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 
 class ProductListAdapter(
         private val context: Context,
         private val client: OpenFoodAPIClient,
-        val products: MutableList<YourListedProduct>,
+        val products: MutableList<ListedProduct>,
         private val isLowBatteryMode: Boolean
 ) : RecyclerView.Adapter<ProductViewHolder>() {
 
@@ -61,7 +61,7 @@ class ProductListAdapter(
         }
     }
 
-    fun remove(product: YourListedProduct) {
+    fun remove(product: ListedProduct) {
         val position = products.indexOf(product)
         products.remove(product)
         notifyItemRemoved(position)
