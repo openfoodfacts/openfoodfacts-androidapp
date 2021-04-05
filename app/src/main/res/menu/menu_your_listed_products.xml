@@ -13,4 +13,10 @@
         android:title="@string/sort"
         app:showAsAction="ifRoom" />
 
+    <item
+        android:id="@+id/action_share_list"
+        android:icon="@drawable/ic_baseline_share_24"
+        android:title="Share"
+        app:showAsAction="ifRoom" />
+
 </menu>

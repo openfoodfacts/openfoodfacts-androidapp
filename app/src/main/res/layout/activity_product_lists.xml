@@ -26,6 +26,7 @@
             android:contentDescription="@string/add_a_list"
             android:text="@string/add_a_list"
             app:elevation="10dp"
+            android:drawableLeft="@drawable/ic_plus_blue_24"
             app:layout_constraintBottom_toTopOf="@id/tipBox"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

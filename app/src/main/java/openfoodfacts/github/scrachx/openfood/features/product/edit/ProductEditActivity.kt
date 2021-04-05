@@ -35,7 +35,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
-import okhttp3.MediaType
 import okhttp3.RequestBody
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OBF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
@@ -261,7 +260,7 @@ class ProductEditActivity : AppCompatActivity() {
     }
 
     private fun createTextPlain(code: String) =
-            RequestBody.create(MediaType.parse(OpenFoodAPIClient.MIME_TEXT), code)
+            RequestBody.create(OpenFoodAPIClient.MIME_TEXT, code)
 
     private fun addLoginPasswordInfo(imgMap: MutableMap<String, RequestBody?>) {
         val settings = getLoginPreferences()
