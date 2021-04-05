@@ -499,7 +499,6 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
                 .where(ListedProductDao.Properties.Barcode.eq(product.code)).build())
 
         asyncSessionList.listenerMainThread = AsyncOperationListener { operation ->
-            Log.i("inside", "blshh " + operation.result)
             (operation.result as List<ListedProduct>).forEach { list ->
                 val chip = Chip(context)
                 chip.text = list.listName
