@@ -10,7 +10,6 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
-import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentAnalyticsUsageBottomSheetBinding
 import javax.inject.Inject
 
@@ -44,9 +43,9 @@ class AnalyticsUsageDialogFragment : BottomSheetDialogFragment() {
     }
 
     private fun saveAnalyticsReportingPref(value: Boolean) {
-        PreferenceManager.getDefaultSharedPreferences(OFFApplication._instance)
+        PreferenceManager.getDefaultSharedPreferences(requireContext())
                 .edit()
-                .putBoolean(OFFApplication._instance.getString(R.string.pref_analytics_reporting_key), value)
+                .putBoolean(getString(R.string.pref_analytics_reporting_key), value)
                 .apply()
     }
 }
