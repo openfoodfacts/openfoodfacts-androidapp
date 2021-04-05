@@ -205,7 +205,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         productState = requireProductState()
         refreshView(productState)
 
-        presenter = SummaryProductPresenter(product, this, productRepository)
+        presenter = SummaryProductPresenter(LocaleHelper.getLanguage(context), product, this, productRepository)
         presenter.addTo(disp)
     }
 
@@ -263,7 +263,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     override fun refreshView(productState: ProductState) {
         this.productState = productState
         product = productState.product!!
-        presenter = SummaryProductPresenter(product, this, productRepository).apply { addTo(disp) }
+        presenter = SummaryProductPresenter(LocaleHelper.getLanguage(context), product, this, productRepository).apply { addTo(disp) }
 
         binding.categoriesText.text = SpannableStringBuilder()
                 .bold { append(getString(R.string.txtCategories)) }

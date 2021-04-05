@@ -347,7 +347,7 @@ class ContinuousScanActivity : AppCompatActivity() {
     private fun setupSummary(product: Product) {
         binding.callToActionImageProgress.visibility = View.VISIBLE
 
-        summaryProductPresenter = SummaryProductPresenter(product, object : AbstractSummaryProductPresenter() {
+        summaryProductPresenter = SummaryProductPresenter(LocaleHelper.getLanguage(this), product, object : AbstractSummaryProductPresenter() {
             override fun showAllergens(allergens: List<AllergenName>) {
                 val data = AllergenHelper.computeUserAllergen(product, allergens)
                 binding.callToActionImageProgress.visibility = View.GONE
