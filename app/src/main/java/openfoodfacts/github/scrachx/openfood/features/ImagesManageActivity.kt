@@ -535,7 +535,7 @@ class ImagesManageActivity : BaseActivity() {
             REQUEST_ADD_IMAGE_AFTER_LOGIN -> if (resultCode == RESULT_OK) addImage()
             REQUEST_CHOOSE_IMAGE_AFTER_LOGIN -> if (resultCode == RESULT_OK) selectImage()
             REQUEST_UNSELECT_IMAGE_AFTER_LOGIN -> if (resultCode == RESULT_OK) unSelectImage()
-            else -> PhotoReceiverHandler { onPhotoReturned(it) }
+            else -> PhotoReceiverHandler(this) { onPhotoReturned(it) }
                     .onActivityResult(this, requestCode, resultCode, data)
         }
     }

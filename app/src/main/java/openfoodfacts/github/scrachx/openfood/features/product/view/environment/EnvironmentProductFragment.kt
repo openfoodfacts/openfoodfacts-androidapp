@@ -51,7 +51,9 @@ class EnvironmentProductFragment : BaseFragment() {
      */
     private var isLowBatteryMode = false
     private var mUrlImage: String? = null
-    private lateinit var photoReceiverHandler: PhotoReceiverHandler
+    private val photoReceiverHandler by lazy {
+        PhotoReceiverHandler(requireContext()) { loadPackagingPhoto(it) }
+    }
 
     /**boolean to determine if labels prompt should be shown*/
     private var showLabelsPrompt = false
@@ -66,7 +68,6 @@ class EnvironmentProductFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        photoReceiverHandler = PhotoReceiverHandler { loadPackagingPhoto(it) }
         val langCode = LocaleHelper.getLanguage(context)
         productState = requireProductState()
         binding.imageViewPackaging.setOnClickListener { openFullScreen() }

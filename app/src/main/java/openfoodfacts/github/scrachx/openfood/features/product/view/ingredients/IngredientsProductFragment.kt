@@ -111,7 +111,9 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
     private lateinit var customTabActivityHelper: CustomTabActivityHelper
     private lateinit var customTabsIntent: CustomTabsIntent
     private lateinit var presenter: IIngredientsProductPresenter.Actions
-    private val photoReceiverHandler: PhotoReceiverHandler = PhotoReceiverHandler { onPhotoReturned(it) }
+    private val photoReceiverHandler by lazy {
+        PhotoReceiverHandler(requireContext()) { onPhotoReturned(it) }
+    }
 
     private var ingredientExtracted = false
 

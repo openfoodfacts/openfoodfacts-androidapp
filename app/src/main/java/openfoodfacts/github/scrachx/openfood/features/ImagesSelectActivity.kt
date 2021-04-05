@@ -148,7 +148,7 @@ class ImagesSelectActivity : BaseActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        PhotoReceiverHandler { newPhotoFile ->
+        PhotoReceiverHandler(this) { newPhotoFile ->
             setResult(RESULT_OK, Intent().apply {
                 putExtra(IMAGE_FILE, newPhotoFile)
             })
