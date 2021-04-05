@@ -53,6 +53,16 @@ interface ProductsAPI {
             @Header("User-Agent") header: String
     ): Single<ProductState>
 
+    /**
+     * @param barcodes String of comma separated barcodes
+     */
+    @GET("$API_P/search")
+    fun getProductsByBarcode(
+            @Query("code") barcodes: String,
+            @Query("fields") fields: String,
+            @Header("User-Agent") header: String
+    ): Single<Search>
+
     @FormUrlEncoded
     @POST("cgi/product_jqm2.pl")
     fun saveProduct(

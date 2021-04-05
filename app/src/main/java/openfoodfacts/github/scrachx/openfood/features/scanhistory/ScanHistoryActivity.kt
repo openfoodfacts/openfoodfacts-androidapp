@@ -19,6 +19,7 @@ import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NavUtils
 import androidx.core.content.ContextCompat
+import androidx.core.net.toUri
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -92,7 +93,7 @@ class ScanHistoryActivity : BaseActivity() {
 
     @RequiresApi(Build.VERSION_CODES.KITKAT)
     val fileWriterLauncher = registerForActivityResult(CreateCSVContract()) {
-        writeHistoryToFile(this, adapter.products, it, contentResolver.openOutputStream(it) ?: error("File path must not be null."))
+        writeHistoryToFile(this, adapter.products, it)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -242,7 +243,7 @@ class ScanHistoryActivity : BaseActivity() {
             val baseDir = File(Environment.getExternalStorageDirectory(), getCsvFolderName())
             if (!baseDir.exists()) baseDir.mkdirs()
             val file = File(baseDir, fileName)
-            writeHistoryToFile(this, adapter.products, Uri.fromFile(file), file.outputStream())
+            writeHistoryToFile(this, adapter.products, file.toUri())
         }
     }
 

@@ -59,6 +59,11 @@ class OpenFoodAPIClient @Inject constructor(
         return productsApi.getProductByBarcode(barcode, getAllFields(), getUserAgent(customHeader))
     }
 
+    fun getProductsByBarcode(codes: List<String>, customHeader: String = Utils.HEADER_USER_AGENT_SEARCH): Single<List<Product>> {
+        return productsApi.getProductsByBarcode(codes.joinToString(","), getAllFields(), customHeader)
+                .map { it.products }
+    }
+
     private fun getAllFields(): String {
         val allFields = ApiFields.Keys.PRODUCT_COMMON_FIELDS
         val fieldsToLocalize = ApiFields.Keys.PRODUCT_LOCAL_FIELDS
