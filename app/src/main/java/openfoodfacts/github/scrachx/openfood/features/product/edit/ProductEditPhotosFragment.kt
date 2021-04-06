@@ -119,7 +119,7 @@ class ProductEditPhotosFragment : ProductEditFragment() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        photoReceiverHandler!!.onActivityResult(this, requestCode, resultCode, data)
+        photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data)
     }
 
     override fun showImageProgress() {
