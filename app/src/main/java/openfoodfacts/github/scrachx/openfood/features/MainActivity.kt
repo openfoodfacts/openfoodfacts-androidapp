@@ -843,7 +843,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
                         dialog.dismiss()
                         if (isNetworkConnected(this@MainActivity)) {
                             val imageFile = File(RealPathUtil.getRealPath(this@MainActivity, selected))
-                            val image = ProductImage(tempBarcode, ProductImageField.OTHER, imageFile)
+                            val image = ProductImage(tempBarcode, ProductImageField.OTHER, imageFile, LocaleHelper.getLanguage(this@MainActivity))
                             apiClient.postImg(image).subscribe().addTo(disp)
                         } else {
                             val product = Product().apply { code = tempBarcode }

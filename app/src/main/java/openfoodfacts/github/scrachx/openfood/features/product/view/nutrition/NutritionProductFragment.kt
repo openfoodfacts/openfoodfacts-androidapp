@@ -533,7 +533,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
 
     private fun loadNutritionPhoto(photoFile: File) {
         // Create a new instance of ProductImage so we can load to server
-        val image = ProductImage(product.code, ProductImageField.NUTRITION, photoFile).apply {
+        val image = ProductImage(product.code, ProductImageField.NUTRITION, photoFile, LocaleHelper.getLanguage(context)).apply {
             filePath = photoFile.absolutePath
         }
 

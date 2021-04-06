@@ -84,7 +84,7 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
             imagePath = uri.path
             newImageSelected = true
             photoFile = it
-            val image = ProductImage(code!!, ProductImageField.INGREDIENTS, it).apply {
+            val image = ProductImage(code!!, ProductImageField.INGREDIENTS, it, getLanguage(requireContext())).apply {
                 filePath = uri.path
             }
             (activity as? ProductEditActivity)?.addToPhotoMap(image, 1)
@@ -348,7 +348,7 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
             val imagePath = imagePath
             if (imagePath != null && (!isEditingFromArgs || newImageSelected)) {
                 photoFile = File(imagePath)
-                val image = ProductImage(code!!, ProductImageField.INGREDIENTS, photoFile!!)
+                val image = ProductImage(code!!, ProductImageField.INGREDIENTS, photoFile!!, getLanguage(context))
                 image.filePath = imagePath
                 (activity as ProductEditActivity).addToPhotoMap(image, 1)
             } else if (imagePath != null) {

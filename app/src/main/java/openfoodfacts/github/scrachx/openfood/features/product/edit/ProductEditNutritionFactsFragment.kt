@@ -82,7 +82,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
             val resultUri = it.toURI()
             imagePath = resultUri.path
             photoFile = it
-            val image = ProductImage(productCode!!, ProductImageField.NUTRITION, it).apply {
+            val image = ProductImage(productCode!!, ProductImageField.NUTRITION, it, LocaleHelper.getLanguage(requireContext())).apply {
                 filePath = resultUri.path
             }
             (activity as? ProductEditActivity)?.addToPhotoMap(image, 2)

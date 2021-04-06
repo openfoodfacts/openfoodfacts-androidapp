@@ -179,7 +179,7 @@ class EnvironmentProductFragment : BaseFragment() {
 
     private fun loadPackagingPhoto(photoFile: File) {
         // Create a new instance of ProductImage so we can load to server
-        val image = ProductImage(productState.product!!.code, ProductImageField.PACKAGING, photoFile)
+        val image = ProductImage(productState.product!!.code, ProductImageField.PACKAGING, photoFile, LocaleHelper.getLanguage(context))
         image.filePath = photoFile.absolutePath
 
         // Load to server
