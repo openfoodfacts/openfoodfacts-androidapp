@@ -12,7 +12,7 @@ import org.robolectric.RobolectricTestRunner
  */
 @RunWith(RobolectricTestRunner::class)
 class SendProductTest {
-    private var sendProduct: SendProduct? = null
+    private lateinit var sendProduct: SendProduct
 
     @Before
     fun setup() {
@@ -20,25 +20,25 @@ class SendProductTest {
     }
 
     @Test
-    fun getQuantityWithNullWeight_returnsNull() {
-        assertThat(sendProduct!!.quantity).isNull()
+    fun `getQuantity returns null with null weight`() {
+        assertThat(sendProduct.quantity).isNull()
     }
 
     @Test
-    fun getQuantityWithWeightStringZeroLength_returnsNull() {
-        sendProduct!!.weight = ""
-        assertThat(sendProduct!!.quantity).isNull()
+    fun `getQuantity returns null with zero lenght weight string`() {
+        sendProduct.weight = ""
+        assertThat(sendProduct.quantity).isNull()
     }
 
     @Test
-    fun getQuantity_returnsWeightAndWeightUnit() {
-        sendProduct!!.weight = WEIGHT
-        sendProduct!!.weightUnit = WEIGHT_UNIT
-        assertThat(sendProduct!!.quantity).isEqualTo("$WEIGHT $WEIGHT_UNIT")
+    fun `getQuantity returns correct string`() {
+        sendProduct.weight = WEIGHT
+        sendProduct.weightUnit = WEIGHT_UNIT
+        assertThat(sendProduct.quantity).isEqualTo("$WEIGHT $WEIGHT_UNIT")
     }
 
     @Test
-    fun copy_copiesFromAnotherSendProduct() {
+    fun `Copy from another SendProduct`() {
         val product1 = SendProduct(ID, BARCODE, LANG, NAME, BRANDS, WEIGHT, IMG_UPLOAD_FRONT, IMG_UPLOAD_INGREDIENTS,
                 IMG_UPLOAD_NUTRITION, IMG_UPLOAD_PACKAGING, WEIGHT_UNIT)
         val product2 = SendProduct(product1)
@@ -54,32 +54,36 @@ class SendProductTest {
     }
 
     @Test
-    fun isEqualWithEqualProducts_returnsTrue() {
+    fun `Equals another SendProduct`() {
         val product1 = SendProduct(ID, BARCODE, LANG, NAME, BRANDS, WEIGHT, WEIGHT_UNIT, IMG_UPLOAD_FRONT,
                 IMG_UPLOAD_INGREDIENTS, IMG_UPLOAD_NUTRITION, IMG_UPLOAD_PACKAGING)
         val product2 = SendProduct(ID, BARCODE, LANG, NAME, BRANDS, WEIGHT, WEIGHT_UNIT, IMG_UPLOAD_FRONT,
                 IMG_UPLOAD_INGREDIENTS, IMG_UPLOAD_NUTRITION, IMG_UPLOAD_PACKAGING)
-        assertThat(product1.isEqual(product2)).isTrue()
+
+        assertThat(product1).isEqualTo(product1)
+
+        assertThat(product1).isEqualTo(product2)
     }
 
     @Test
-    fun isEqualWithProductsDifferById_returnsTrue() {
+    fun `Equals another SendProduct with different id`() {
         val product1 = SendProduct(ID, BARCODE, LANG, NAME, BRANDS, WEIGHT, WEIGHT_UNIT, IMG_UPLOAD_FRONT,
                 IMG_UPLOAD_INGREDIENTS, IMG_UPLOAD_NUTRITION, IMG_UPLOAD_PACKAGING)
-        val id = 567L
-        val product2 = SendProduct(id, BARCODE, LANG, NAME, BRANDS, WEIGHT, WEIGHT_UNIT, IMG_UPLOAD_FRONT,
+        val product2 = SendProduct(567L, BARCODE, LANG, NAME, BRANDS, WEIGHT, WEIGHT_UNIT, IMG_UPLOAD_FRONT,
                 IMG_UPLOAD_INGREDIENTS, IMG_UPLOAD_NUTRITION, IMG_UPLOAD_PACKAGING)
-        assertThat(product1.isEqual(product2)).isTrue()
+        assertThat(product1).isEqualTo(product2)
     }
 
     @Test
-    fun isEqualWithDifferentProducts_returnsFalse(): Unit {
+    fun `Not equals different SendProduct or Object`() {
         val product1 = SendProduct(ID, BARCODE, LANG, NAME, BRANDS, WEIGHT, WEIGHT_UNIT, IMG_UPLOAD_FRONT,
                 IMG_UPLOAD_INGREDIENTS, IMG_UPLOAD_NUTRITION, IMG_UPLOAD_PACKAGING)
-        val differentBarcode = "different barcode"
-        val product2 = SendProduct(ID, differentBarcode, LANG, NAME, BRANDS, WEIGHT, WEIGHT_UNIT,
+
+        assertThat(product1).isNotEqualTo(Object())
+
+        val product2 = SendProduct(ID, "different barcode", LANG, NAME, BRANDS, WEIGHT, WEIGHT_UNIT,
                 IMG_UPLOAD_FRONT, IMG_UPLOAD_INGREDIENTS, IMG_UPLOAD_NUTRITION, IMG_UPLOAD_PACKAGING)
-        assertThat(product1.isEqual(product2)).isFalse()
+        assertThat(product1).isNotEqualTo(product2)
     }
 
     companion object {
