@@ -28,6 +28,8 @@ object ApiFields {
     object StateTags {
         const val CATEGORIES_TO_BE_COMPLETED = "en:categories-to-be-completed"
         const val NUTRITION_FACTS_TO_BE_COMPLETED = "en:nutrition-facts-to-be-completed"
+        const val LABELS_TO_BE_COMPLETED = "en:labels-to-be-completed"
+        const val ORIGINS_TO_BE_COMPLETED = "en:origins-to-be-completed"
 
         const val INGREDIENTS_COMPLETED = "en:ingredients-completed"
     }

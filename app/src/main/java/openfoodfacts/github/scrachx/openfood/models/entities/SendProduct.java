@@ -222,7 +222,16 @@ public class SendProduct implements Serializable {
         this.id = id;
     }
 
-    public boolean isEqual(@NonNull SendProduct sp) {
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        SendProduct sp = (SendProduct) o;
+
         return TextUtils.equals(this.barcode, sp.getBarcode())
             && TextUtils.equals(this.name, sp.getName())
             && TextUtils.equals(this.brands, sp.getBrands())

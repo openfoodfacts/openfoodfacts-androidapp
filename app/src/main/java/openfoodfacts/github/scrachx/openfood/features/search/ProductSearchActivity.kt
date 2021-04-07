@@ -38,7 +38,7 @@ import openfoodfacts.github.scrachx.openfood.features.listeners.EndlessRecyclerV
 import openfoodfacts.github.scrachx.openfood.features.listeners.RecyclerItemClickListener
 import openfoodfacts.github.scrachx.openfood.features.scan.ContinuousScanActivity
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
-import openfoodfacts.github.scrachx.openfood.models.AbstractProductSearch
+import openfoodfacts.github.scrachx.openfood.models.Search
 import openfoodfacts.github.scrachx.openfood.models.SearchInfo
 import openfoodfacts.github.scrachx.openfood.models.SearchProduct
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
@@ -344,7 +344,7 @@ class ProductSearchActivity : BaseActivity() {
     }
 
 
-    private fun Single<AbstractProductSearch>.startSearch(@StringRes noMatchMsg: Int, @StringRes extendedMsg: Int = -1) {
+    private fun Single<Search>.startSearch(@StringRes noMatchMsg: Int, @StringRes extendedMsg: Int = -1) {
         observeOn(AndroidSchedulers.mainThread()).subscribe { search, throwable ->
             displaySearch(throwable == null, search, noMatchMsg, extendedMsg)
         }.addTo(disp)
@@ -372,7 +372,7 @@ class ProductSearchActivity : BaseActivity() {
         }
     }
 
-    private fun showResponse(isResponseOk: Boolean, response: AbstractProductSearch?) {
+    private fun showResponse(isResponseOk: Boolean, response: Search?) {
         if (isResponseOk && response != null) {
             showSuccessfulResponse(response)
         } else {
@@ -380,7 +380,7 @@ class ProductSearchActivity : BaseActivity() {
         }
     }
 
-    private fun showSuccessfulResponse(response: AbstractProductSearch) {
+    private fun showSuccessfulResponse(response: Search) {
         mCountProducts = response.count.toInt()
         if (pageAddress == 1) {
             val number = NumberFormat.getInstance(Locale.getDefault()).format(response.count.toLong())
@@ -447,7 +447,7 @@ class ProductSearchActivity : BaseActivity() {
      */
     private fun displaySearch(
             isResponseSuccessful: Boolean,
-            response: AbstractProductSearch?,
+            response: Search?,
             @StringRes emptyMessage: Int,
             @StringRes extendedMessage: Int = -1
     ) = if (response == null) {

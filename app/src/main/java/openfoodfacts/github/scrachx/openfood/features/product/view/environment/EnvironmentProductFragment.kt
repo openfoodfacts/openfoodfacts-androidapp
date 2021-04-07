@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.text.HtmlCompat
+import androidx.core.text.HtmlCompat.FROM_HTML_MODE_COMPACT
 import androidx.core.text.bold
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
@@ -26,6 +27,7 @@ import openfoodfacts.github.scrachx.openfood.models.Nutriments
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.models.ProductState
+import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.*
 import java.io.File
@@ -99,15 +101,15 @@ class EnvironmentProductFragment : BaseFragment() {
         if (carbonFootprintNutriment != null) {
             binding.textCarbonFootprint.text = SpannableStringBuilder()
                     .bold { append(getString(R.string.textCarbonFootprint)) }
-            binding.textCarbonFootprint.append(carbonFootprintNutriment.for100gInUnits)
-            binding.textCarbonFootprint.append(carbonFootprintNutriment.unit)
+                    .append(carbonFootprintNutriment.for100gInUnits)
+                    .append(carbonFootprintNutriment.unit)
         } else {
             binding.carbonFootprintCv.visibility = View.GONE
         }
 
         val environmentInfoCard = product.environmentInfoCard
         if (!environmentInfoCard.isNullOrEmpty()) {
-            binding.environmentInfoText.append(HtmlCompat.fromHtml(environmentInfoCard, HtmlCompat.FROM_HTML_MODE_COMPACT))
+            binding.environmentInfoText.append(HtmlCompat.fromHtml(environmentInfoCard, FROM_HTML_MODE_COMPACT))
             binding.environmentInfoText.movementMethod = LinkMovementMethod.getInstance()
         } else {
             binding.environmentInfoCv.visibility = View.GONE
@@ -117,8 +119,8 @@ class EnvironmentProductFragment : BaseFragment() {
         if (!packaging.isNullOrEmpty()) {
             binding.packagingText.text = SpannableStringBuilder()
                     .bold { append(getString(R.string.packaging_environmentTab)) }
-            binding.packagingText.append(" ")
-            binding.packagingText.append(packaging.split(',').toString().removeSurrounding("[", "]"))
+                    .append(" ")
+                    .append(packaging.replace(",", ", "))
         } else {
             binding.packagingCv.visibility = View.GONE
         }
@@ -128,7 +130,7 @@ class EnvironmentProductFragment : BaseFragment() {
             // TODO: 02/03/2021 i18n
             binding.recyclingInstructionToDiscard.text = SpannableStringBuilder()
                     .bold { append("Recycling instructions - To discard: ") }
-            binding.recyclingInstructionToDiscard.append(recyclingInstructionsToDiscard)
+                    .append(recyclingInstructionsToDiscard)
         } else {
             binding.recyclingInstructionsDiscardCv.visibility = View.GONE
         }
@@ -138,7 +140,7 @@ class EnvironmentProductFragment : BaseFragment() {
             // TODO: 02/03/2021 i18n
             binding.recyclingInstructionToRecycle.text = SpannableStringBuilder()
                     .bold { append("Recycling instructions - To recycle: ") }
-            binding.recyclingInstructionToRecycle.append(recyclingInstructionsToRecycle)
+                    .append(recyclingInstructionsToRecycle)
         } else {
             binding.recyclingInstructionsRecycleCv.visibility = View.GONE
         }
@@ -179,7 +181,7 @@ class EnvironmentProductFragment : BaseFragment() {
 
     private fun loadPackagingPhoto(photoFile: File) {
         // Create a new instance of ProductImage so we can load to server
-        val image = ProductImage(productState.product!!.code, ProductImageField.PACKAGING, photoFile)
+        val image = ProductImage(productState.product!!.code, ProductImageField.PACKAGING, photoFile, LocaleHelper.getLanguage(context))
         image.filePath = photoFile.absolutePath
 
         // Load to server
@@ -188,7 +190,7 @@ class EnvironmentProductFragment : BaseFragment() {
         // Load into view
         binding.addPhotoLabel.visibility = View.GONE
         mUrlImage = photoFile.absolutePath
-        Picasso.get()
+        picasso
                 .load(photoFile)
                 .fit()
                 .into(binding.imageViewPackaging)
@@ -197,21 +199,18 @@ class EnvironmentProductFragment : BaseFragment() {
     //checks the product states_tags to determine which prompt to be shown
     private fun refreshTagsPrompt() {
         val statesTags = product.statesTags
-        showLabelsPrompt = statesTags.contains("en:labels-to-be-completed")
-        showOriginsPrompt = statesTags.contains("en:origins-to-be-completed")
+        showLabelsPrompt = ApiFields.StateTags.LABELS_TO_BE_COMPLETED in statesTags
+        showOriginsPrompt = ApiFields.StateTags.ORIGINS_TO_BE_COMPLETED in statesTags
 
         binding.addLabelOriginPrompt.visibility = View.VISIBLE
         when {
             showLabelsPrompt && showOriginsPrompt -> {
-                // showLabelsPrompt and showOriginsPrompt true
                 binding.addLabelOriginPrompt.text = getString(R.string.add_labels_origins_prompt_text)
             }
             showLabelsPrompt -> {
-                // showLabelsPrompt true
                 binding.addLabelOriginPrompt.text = getString(R.string.add_labels_prompt_text)
             }
             showOriginsPrompt -> {
-                // showOriginsPrompt true
                 binding.addLabelOriginPrompt.text = getString(R.string.add_origins_prompt_text)
             }
             else -> binding.addLabelOriginPrompt.visibility = View.GONE

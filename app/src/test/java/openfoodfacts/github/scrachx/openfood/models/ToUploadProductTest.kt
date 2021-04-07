@@ -20,7 +20,7 @@ class ToUploadProductTest {
     }
 
     @Test
-    fun getProductField_returnsCorrectProductImageField() {
+    fun `getProductField returns correct ProductImageField`() {
         toUploadProduct.field = "front"
         assertThat(toUploadProduct.productField).isEqualTo(ProductImageField.FRONT)
         toUploadProduct.field = "ingredients"
@@ -32,7 +32,7 @@ class ToUploadProductTest {
     }
 
     @Test
-    fun toUploadProductWithId_fillsCorrectly() {
+    fun `Fills correctly its fields`() {
         val id = 1L
         val barcode = "CSE370"
         val imageFilePath = "C:\\Images\\Example.pdf"

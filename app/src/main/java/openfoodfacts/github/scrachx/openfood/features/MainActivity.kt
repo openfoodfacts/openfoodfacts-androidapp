@@ -23,7 +23,6 @@ import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.drawable.ColorDrawable
-import android.net.ConnectivityManager
 import android.net.Uri
 import android.os.Bundle
 import android.provider.SearchRecentSuggestions
@@ -839,14 +838,12 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
             setCancelable(false)
             setPositiveButton(R.string.txtYes) { dialog, _ ->
                 imgUris.forEach { selected ->
-                    val cm = getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager
-                    val activeNetwork = cm.activeNetworkInfo
                     val tempBarcode = if (hasEditText) barcodeEditText.text.toString() else barcode
                     if (tempBarcode.isNotEmpty()) {
                         dialog.dismiss()
-                        if (activeNetwork != null && activeNetwork.isConnectedOrConnecting) {
+                        if (isNetworkConnected(this@MainActivity)) {
                             val imageFile = File(RealPathUtil.getRealPath(this@MainActivity, selected))
-                            val image = ProductImage(tempBarcode, ProductImageField.OTHER, imageFile)
+                            val image = ProductImage(tempBarcode, ProductImageField.OTHER, imageFile, LocaleHelper.getLanguage(this@MainActivity))
                             apiClient.postImg(image).subscribe().addTo(disp)
                         } else {
                             val product = Product().apply { code = tempBarcode }

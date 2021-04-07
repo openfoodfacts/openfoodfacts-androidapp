@@ -54,7 +54,7 @@ import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.Defaults.NUTRITION_DATA_PER_100G
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.Defaults.NUTRITION_DATA_PER_SERVING
-import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.FileDownloader.download
 import openfoodfacts.github.scrachx.openfood.utils.UnitUtils.UNIT_IU
@@ -82,7 +82,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
             val resultUri = it.toURI()
             imagePath = resultUri.path
             photoFile = it
-            val image = ProductImage(productCode!!, ProductImageField.NUTRITION, it).apply {
+            val image = ProductImage(productCode!!, ProductImageField.NUTRITION, it, LocaleHelper.getLanguage(requireContext())).apply {
                 filePath = resultUri.path
             }
             (activity as? ProductEditActivity)?.addToPhotoMap(image, 2)
@@ -106,7 +106,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
     lateinit var picasso: Picasso
 
     @Inject
-    lateinit var productsApi: ProductsAPI
+    lateinit var client: OpenFoodAPIClient
 
     @Inject
     lateinit var matomoAnalytics: MatomoAnalytics
@@ -409,7 +409,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         if (photoFile != null) {
             cropRotateImage(photoFile, getString(R.string.nutrition_facts_picture))
         } else {
-            download(requireContext(), path, productsApi)
+            download(requireContext(), path, client)
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe {
                         photoFile = it

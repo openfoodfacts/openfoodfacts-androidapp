@@ -21,8 +21,8 @@ import io.reactivex.Single
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
 import openfoodfacts.github.scrachx.openfood.BuildConfig.FLAVOR
-import openfoodfacts.github.scrachx.openfood.models.AbstractProductSearch
 import openfoodfacts.github.scrachx.openfood.models.ProductState
+import openfoodfacts.github.scrachx.openfood.models.Search
 import openfoodfacts.github.scrachx.openfood.models.TagLineLanguage
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import retrofit2.Call
@@ -50,6 +50,7 @@ interface ProductsAPI {
     fun getProductByBarcode(
             @Path("barcode") barcode: String,
             @Query("fields") fields: String,
+            @Query("lc") locale: String,
             @Header("User-Agent") header: String
     ): Single<ProductState>
 
@@ -61,7 +62,7 @@ interface ProductsAPI {
             @Query("code") barcodes: String,
             @Query("fields") fields: String,
             @Header("User-Agent") header: String
-    ): Single<AbstractProductSearch>
+    ): Single<Search>
 
     @FormUrlEncoded
     @POST("cgi/product_jqm2.pl")
@@ -76,7 +77,7 @@ interface ProductsAPI {
             @Query("search_terms") name: String,
             @Query("fields") fields: String,
             @Query("page") page: Int
-    ): Single<AbstractProductSearch>
+    ): Single<Search>
 
     @FormUrlEncoded
     @POST("/cgi/session.pl")
@@ -121,7 +122,7 @@ interface ProductsAPI {
             @Path("brand") brand: String,
             @Path("page") page: Int,
             @Query("fields") fields: String
-    ): Single<AbstractProductSearch>
+    ): Single<Search>
 
     /**
      * call API service to return products using Additives
@@ -134,186 +135,186 @@ interface ProductsAPI {
             @Path("additive") additive: String,
             @Path("page") page: Int,
             @Query("fields") fields: String
-    ): Single<AbstractProductSearch>
+    ): Single<Search>
 
     @GET("allergen/{allergen}/{page}.json")
     fun getProductsByAllergen(
             @Path("allergen") allergen: String,
             @Path("page") page: Int,
             @Query("fields") fields: String
-    ): Single<AbstractProductSearch>
+    ): Single<Search>
 
     @GET("country/{country}/{page}.json")
     fun getProductsByCountry(
             @Path("country") country: String,
             @Path("page") page: Int,
             @Query("fields") fields: String
-    ): Single<AbstractProductSearch>
+    ): Single<Search>
 
     @GET("origin/{origin}/{page}.json")
     fun getProductsByOrigin(
             @Path("origin") origin: String,
             @Path("page") page: Int,
             @Query("fields") fields: String
-    ): Single<AbstractProductSearch>
+    ): Single<Search>
 
     @GET("manufacturing-place/{manufacturing-place}/{page}.json")
     fun getProductsByManufacturingPlace(
             @Path("manufacturing-place") manufacturingPlace: String,
             @Path("page") page: Int,
             @Query("fields") fields: String
-    ): Single<AbstractProductSearch>
+    ): Single<Search>
 
     @GET("store/{store}/{page}.json")
     fun getProductByStores(
             @Path("store") store: String,
             @Path("page") page: Int,
             @Query("fields") fields: String
-    ): Single<AbstractProductSearch>
+    ): Single<Search>
 
     @GET("packaging/{packaging}/{page}.json")
     fun getProductsByPackaging(
             @Path("packaging") packaging: String,
             @Path("page") page: Int,
             @Query("fields") fields: String
-    ): Single<AbstractProductSearch>
+    ): Single<Search>
 
     @GET("label/{label}/{page}.json")
     fun getProductsByLabel(
             @Path("label") label: String,
             @Path("page") page: Int,
             @Query("fields") fields: String
-    ): Single<AbstractProductSearch>
+    ): Single<Search>
 
     @GET("category/{category}/{page}.json")
     fun getProductByCategory(
             @Path("category") category: String,
             @Path("page") page: Int,
             @Query("fields") fields: String
-    ): Single<AbstractProductSearch>
+    ): Single<Search>
 
     @GET("contributor/{contributor}/{page}.json?nocache=1")
     fun getProductsByContributor(
             @Path("contributor") contributor: String,
             @Path("page") page: Int,
             @Query("fields") fields: String
-    ): Single<AbstractProductSearch>
+    ): Single<Search>
 
     @GET("language/{language}.json")
-    fun getProductsByLanguage(@Path("language") language: String): Single<AbstractProductSearch>
+    fun getProductsByLanguage(@Path("language") language: String): Single<Search>
 
     @GET("label/{label}.json")
-    fun getProductsByLabel(@Path("label") label: String): Single<AbstractProductSearch>
+    fun getProductsByLabel(@Path("label") label: String): Single<Search>
 
     @GET("category/{category}.json")
-    fun getProductsByCategory(@Path("category") category: String): Single<AbstractProductSearch>
+    fun getProductsByCategory(@Path("category") category: String): Single<Search>
 
     @GET("state/{state}.json")
     fun getProductsByState(
             @Path("state") state: String,
             @Query("fields") fields: String
-    ): Single<AbstractProductSearch>
+    ): Single<Search>
 
     @GET("packaging/{packaging}.json")
-    fun getProductsByPackaging(@Path("packaging") packaging: String): Single<AbstractProductSearch>
+    fun getProductsByPackaging(@Path("packaging") packaging: String): Single<Search>
 
     @GET("brand/{brand}.json")
-    fun getProductsByBrand(@Path("brand") brand: String): Single<AbstractProductSearch>
+    fun getProductsByBrand(@Path("brand") brand: String): Single<Search>
 
     @GET("purchase-place/{purchasePlace}.json")
-    fun getProductsByPurchasePlace(@Path("purchasePlace") purchasePlace: String): Single<AbstractProductSearch>
+    fun getProductsByPurchasePlace(@Path("purchasePlace") purchasePlace: String): Single<Search>
 
     @GET("store/{store}.json")
-    fun getProductsByStore(@Path("store") store: String): Single<AbstractProductSearch>
+    fun getProductsByStore(@Path("store") store: String): Single<Search>
 
     @GET("country/{country}.json")
-    fun byCountry(@Path("country") country: String): Single<AbstractProductSearch>
+    fun byCountry(@Path("country") country: String): Single<Search>
 
     @GET("trace/{trace}.json")
-    fun getProductsByTrace(@Path("trace") trace: String): Single<AbstractProductSearch>
+    fun getProductsByTrace(@Path("trace") trace: String): Single<Search>
 
     @GET("packager-code/{packager_code}.json")
-    fun getProductsByPackagerCode(@Path("packager_code") packagerCode: String): Single<AbstractProductSearch>
+    fun getProductsByPackagerCode(@Path("packager_code") packagerCode: String): Single<Search>
 
     @GET("city/{city}.json")
-    fun getProducsByCity(@Path("city") city: String): Single<AbstractProductSearch>
+    fun getProducsByCity(@Path("city") city: String): Single<Search>
 
     @GET("nutrition-grade/{nutriscore}.json")
-    fun getProductsByNutriScore(@Path("nutriscore") nutritionGrade: String): Single<AbstractProductSearch>
+    fun getProductsByNutriScore(@Path("nutriscore") nutritionGrade: String): Single<Search>
 
     @GET("nutrient-level/{nutrient_level}.json")
-    fun byNutrientLevel(@Path("nutrient_level") nutrientLevel: String): Single<AbstractProductSearch>
+    fun byNutrientLevel(@Path("nutrient_level") nutrientLevel: String): Single<Search>
 
     @GET("contributor/{contributor}.json?nocache=1")
-    fun byContributor(@Path("contributor") contributor: String): Single<AbstractProductSearch>
+    fun byContributor(@Path("contributor") contributor: String): Single<Search>
 
     @GET("contributor/{contributor}/state/to-be-completed/{page}.json?nocache=1")
     fun getToBeCompletedProductsByContributor(
             @Path("contributor") contributor: String,
             @Path("page") page: Int
-    ): Single<AbstractProductSearch>
+    ): Single<Search>
 
     @GET("/photographer/{contributor}/{page}.json?nocache=1")
     fun getPicturesContributedProducts(
             @Path("contributor") contributor: String,
             @Path("page") page: Int
-    ): Single<AbstractProductSearch>
+    ): Single<Search>
 
     @GET("photographer/{Photographer}.json?nocache=1")
-    fun getProductsByPhotographer(@Path("Photographer") photographer: String): Single<AbstractProductSearch>
+    fun getProductsByPhotographer(@Path("Photographer") photographer: String): Single<Search>
 
     @GET("photographer/{contributor}/state/to-be-completed/{page}.json?nocache=1")
     fun getPicturesContributedIncompleteProducts(
             @Path("contributor") contributor: String?,
             @Path("page") page: Int
-    ): Single<AbstractProductSearch>
+    ): Single<Search>
 
     @GET("informer/{informer}.json?nocache=1")
-    fun getProductsByInformer(@Path("informer") informer: String?): Single<AbstractProductSearch>
+    fun getProductsByInformer(@Path("informer") informer: String?): Single<Search>
 
     @GET("informer/{contributor}/{page}.json?nocache=1")
-    fun getInfoAddedProducts(@Path("contributor") contributor: String?, @Path("page") page: Int): Single<AbstractProductSearch>
+    fun getInfoAddedProducts(@Path("contributor") contributor: String?, @Path("page") page: Int): Single<Search>
 
     @GET("informer/{contributor}/state/to-be-completed/{page}.json?nocache=1")
     fun getInfoAddedIncompleteProductsSingle(
             @Path("contributor") contributor: String,
             @Path("page") page: Int
-    ): Single<AbstractProductSearch>
+    ): Single<Search>
 
     @GET("last-edit-date/{LastEditDate}.json")
-    fun getProductsByLastEditDate(@Path("LastEditDate") lastEditDate: String): Single<AbstractProductSearch>
+    fun getProductsByLastEditDate(@Path("LastEditDate") lastEditDate: String): Single<Search>
 
     @GET("entry-dates/{EntryDates}.json")
-    fun getProductsByEntryDates(@Path("EntryDates") entryDates: String): Single<AbstractProductSearch>
+    fun getProductsByEntryDates(@Path("EntryDates") entryDates: String): Single<Search>
 
     @GET("unknown-nutrient/{UnknownNutrient}.json")
-    fun getProductsByUnknownNutrient(@Path("UnknownNutrient") unknownNutrient: String): Single<AbstractProductSearch>
+    fun getProductsByUnknownNutrient(@Path("UnknownNutrient") unknownNutrient: String): Single<Search>
 
     @GET("additive/{Additive}.json")
     fun getProductsByAdditive(
             @Path("Additive") additive: String?,
             @Query("fields") fields: String?
-    ): Single<AbstractProductSearch>
+    ): Single<Search>
 
     @GET("code/{Code}.json")
-    fun getProductsByBarcode(@Path("Code") code: String): Single<AbstractProductSearch>
+    fun getProductsByBarcode(@Path("Code") code: String): Single<Search>
 
     @GET("state/{State}/{page}.json")
     fun getProductsByState(
             @Path("State") state: String?,
             @Path("page") page: Int,
             @Query("fields") fields: String?
-    ): Single<AbstractProductSearch>
+    ): Single<Search>
 
     /*
      * Open Beauty Facts experimental and specific APIs
      */
     @Deprecated("")
     @GET("period-after-opening/{PeriodAfterOpening}.json")
-    fun getProductsByPeriodAfterOpening(@Path("PeriodAfterOpening") periodAfterOpening: String): Call<AbstractProductSearch>
+    fun getProductsByPeriodAfterOpening(@Path("PeriodAfterOpening") periodAfterOpening: String): Call<Search>
 
     @GET("ingredient/{ingredient}.json")
-    fun getProductsByIngredient(@Path("ingredient") ingredient: String): Single<AbstractProductSearch>
+    fun getProductsByIngredient(@Path("ingredient") ingredient: String): Single<Search>
 
     /**
      * This method gives a list of incomplete products
@@ -322,13 +323,13 @@ interface ProductsAPI {
     fun getIncompleteProducts(
             @Path("page") page: Int,
             @Query("fields") fields: String
-    ): Single<AbstractProductSearch>
+    ): Single<Search>
 
     /**
      * This method is used to get the number of products on Open X Facts
      */
     @GET("/1.json?fields=null")
-    fun getTotalProductCount(@Header("User-Agent") header: String): Single<AbstractProductSearch>
+    fun getTotalProductCount(@Header("User-Agent") header: String): Single<Search>
 
     /**
      * This method gives the news in all languages
