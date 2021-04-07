@@ -48,7 +48,6 @@ import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
-import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.FileDownloader.download
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.LanguageData
@@ -78,9 +77,6 @@ class ImagesManageActivity : BaseActivity() {
 
     @Inject
     lateinit var picasso: Picasso
-
-    @Inject
-    lateinit var productsApi: ProductsAPI
 
     private val disp = CompositeDisposable()
 
@@ -466,7 +462,7 @@ class ImagesManageActivity : BaseActivity() {
 
     private fun editPhoto(productImageField: ProductImageField?, transformation: ImageTransformation) {
         if (transformation.isNotEmpty()) {
-            download(this, transformation.imageUrl!!, productsApi)
+            download(this, transformation.imageUrl!!, client)
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe { file: File? ->
                         //to delete the file after:

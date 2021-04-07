@@ -38,7 +38,6 @@ import com.theartofdev.edmodo.cropper.CropImage
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.addTo
-import io.reactivex.schedulers.Schedulers
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OBF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OPF
@@ -72,7 +71,7 @@ import openfoodfacts.github.scrachx.openfood.models.entities.store.StoreNameDao
 import openfoodfacts.github.scrachx.openfood.models.entities.tag.TagDao
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.Keys.lcProductNameKey
-import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.FileDownloader.download
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLCOrDefault
@@ -97,7 +96,7 @@ class ProductEditOverviewFragment : ProductEditFragment() {
     lateinit var picasso: Picasso
 
     @Inject
-    lateinit var productsApi: ProductsAPI
+    lateinit var client: OpenFoodAPIClient
 
     @Inject
     lateinit var matomoAnalytics: MatomoAnalytics
@@ -530,7 +529,7 @@ class ProductEditOverviewFragment : ProductEditFragment() {
             (operation.result as List<CountryName>).mapTo(countries) { it.name }
 
             val adapter = ArrayAdapter(requireActivity(), android.R.layout.simple_dropdown_item_1line, countries)
-            val embAdapter = EmbCodeAutoCompleteAdapter(activity, android.R.layout.simple_dropdown_item_1line, productsApi)
+            val embAdapter = EmbCodeAutoCompleteAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, client)
 
             binding.originOfIngredients.setAdapter(adapter)
             binding.countryWherePurchased.setAdapter(adapter)
@@ -576,8 +575,11 @@ class ProductEditOverviewFragment : ProductEditFragment() {
 
         if (isFlavors(OBF)) {
             binding.periodOfTimeAfterOpeningTil.visibility = View.VISIBLE
-            val customAdapter = PeriodAfterOpeningAutoCompleteAdapter(activity,
-                    android.R.layout.simple_dropdown_item_1line, productsApi)
+            val customAdapter = PeriodAfterOpeningAutoCompleteAdapter(
+                    activity,
+                    android.R.layout.simple_dropdown_item_1line,
+                    client
+            )
             binding.periodOfTimeAfterOpening.setAdapter(customAdapter)
         }
     }
@@ -598,8 +600,7 @@ class ProductEditOverviewFragment : ProductEditFragment() {
         if (editionMode) {
             loadFrontImage(lang)
             val fields = "ingredients_text_$lang,product_name_$lang"
-            productsApi.getProductByBarcode(product!!.code, fields, getUserAgent(Utils.HEADER_USER_AGENT_SEARCH))
-                    .subscribeOn(Schedulers.io())
+            client.getProductStateFull(product!!.code, fields)
                     .observeOn(AndroidSchedulers.mainThread())
                     .doOnSubscribe {
                         binding.name.setText(getString(R.string.txtLoading))
@@ -652,7 +653,7 @@ class ProductEditOverviewFragment : ProductEditFragment() {
             // Image found, download it if necessary and edit it
             isFrontImagePresent = true
             if (photoFile == null) {
-                download(requireContext(), frontImageUrl!!, productsApi)
+                download(requireContext(), frontImageUrl!!, client)
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe { file: File? ->
                             photoFile = file

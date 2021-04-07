@@ -175,6 +175,7 @@ dependencies {
 
     // Unit Testing
     testImplementation("junit:junit:4.13.2")
+    testImplementation("org.robolectric:robolectric:4.4")
     testImplementation("org.mockito:mockito-core:3.8.0")
     testImplementation("net.javacrumbs.json-unit:json-unit-fluent:2.24.0")
     testImplementation("com.google.truth:truth:1.1.2")

@@ -47,7 +47,7 @@ import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenNa
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenNameDao
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.Keys.lcIngredientsKey
-import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.FileDownloader.download
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
@@ -73,7 +73,7 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
     lateinit var picasso: Picasso
 
     @Inject
-    lateinit var productsApi: ProductsAPI
+    lateinit var client: OpenFoodAPIClient
 
     @Inject
     lateinit var matomoAnalytics: MatomoAnalytics
@@ -324,7 +324,7 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
             imagePath == null -> editIngredientsImage()
             photoFile != null -> cropRotateImage(photoFile, getString(R.string.ingredients_picture))
             else -> {
-                download(requireContext(), imagePath!!, productsApi)
+                download(requireContext(), imagePath!!, client)
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe { file ->
                             photoFile = file

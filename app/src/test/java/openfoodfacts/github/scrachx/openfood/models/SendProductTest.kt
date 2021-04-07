@@ -4,10 +4,13 @@ import com.google.common.truth.Truth.assertThat
 import openfoodfacts.github.scrachx.openfood.models.entities.SendProduct
 import org.junit.Before
 import org.junit.Test
+import org.junit.runner.RunWith
+import org.robolectric.RobolectricTestRunner
 
 /**
  * Tests for [SendProduct]
  */
+@RunWith(RobolectricTestRunner::class)
 class SendProductTest {
     private var sendProduct: SendProduct? = null
 
@@ -36,8 +39,8 @@ class SendProductTest {
 
     @Test
     fun copy_copiesFromAnotherSendProduct() {
-        val product1 = SendProduct(ID, BARCODE, LANG, NAME, BRANDS, WEIGHT, WEIGHT_UNIT, IMG_UPLOAD_FRONT,
-                IMG_UPLOAD_INGREDIENTS, IMG_UPLOAD_NUTRITION, IMG_UPLOAD_PACKAGING)
+        val product1 = SendProduct(ID, BARCODE, LANG, NAME, BRANDS, WEIGHT, IMG_UPLOAD_FRONT, IMG_UPLOAD_INGREDIENTS,
+                IMG_UPLOAD_NUTRITION, IMG_UPLOAD_PACKAGING, WEIGHT_UNIT)
         val product2 = SendProduct(product1)
         assertThat(product2.barcode).isEqualTo(BARCODE)
         assertThat(product2.lang).isEqualTo(LANG)

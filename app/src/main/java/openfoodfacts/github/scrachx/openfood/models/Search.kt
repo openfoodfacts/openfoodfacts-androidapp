@@ -5,7 +5,7 @@ import java.io.Serializable
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder("page_size", "count", "skip", "page", "products")
-data class AbstractProductSearch(
+data class Search(
         @JsonProperty("page_size") val pageSize: String,
         @JsonProperty("count") val count: String,
         @JsonProperty("skip") val skip: Int,
