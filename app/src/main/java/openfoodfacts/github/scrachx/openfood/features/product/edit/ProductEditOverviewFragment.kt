@@ -46,7 +46,6 @@ import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsView
 import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
-import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabsHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback
@@ -104,7 +103,25 @@ class ProductEditOverviewFragment : ProductEditFragment() {
     lateinit var matomoAnalytics: MatomoAnalytics
 
     private lateinit var appLanguageCode: String
-    private lateinit var photoReceiverHandler: PhotoReceiverHandler
+    private val photoReceiverHandler by lazy {
+        PhotoReceiverHandler(requireContext()) { newPhotoFile ->
+            photoFile = newPhotoFile
+            val image: ProductImage
+            val position: Int
+            if (isFrontImagePresent) {
+                image = ProductImage(barcode!!, ProductImageField.FRONT, newPhotoFile)
+                frontImageUrl = newPhotoFile.absolutePath
+                position = 0
+            } else {
+                image = ProductImage(barcode!!, ProductImageField.OTHER, newPhotoFile)
+                position = 3
+            }
+            image.filePath = newPhotoFile.toURI().path
+            (activity as? ProductEditActivity)?.addToPhotoMap(image, position)
+
+            hideImageProgress(false, StringUtils.EMPTY)
+        }
+    }
 
     private val categories = mutableListOf<String?>()
     private val countries = mutableListOf<String>()
@@ -128,23 +145,6 @@ class ProductEditOverviewFragment : ProductEditFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        photoReceiverHandler = PhotoReceiverHandler { newPhotoFile ->
-            photoFile = newPhotoFile
-            val image: ProductImage
-            val position: Int
-            if (isFrontImagePresent) {
-                image = ProductImage(barcode!!, ProductImageField.FRONT, newPhotoFile)
-                frontImageUrl = newPhotoFile.absolutePath
-                position = 0
-            } else {
-                image = ProductImage(barcode!!, ProductImageField.OTHER, newPhotoFile)
-                position = 3
-            }
-            image.filePath = newPhotoFile.toURI().path
-            (activity as? ProductEditActivity)?.addToPhotoMap(image, position)
-
-            hideImageProgress(false, StringUtils.EMPTY)
-        }
         binding.btnOtherPictures.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_a_photo_blue_18dp, 0, 0, 0)
 
         binding.btnNext.setOnClickListener { next() }

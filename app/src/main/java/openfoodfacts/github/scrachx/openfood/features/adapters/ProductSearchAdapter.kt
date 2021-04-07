@@ -12,7 +12,7 @@ import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import openfoodfacts.github.scrachx.openfood.AppFlavors
 import openfoodfacts.github.scrachx.openfood.R
-import openfoodfacts.github.scrachx.openfood.models.Product
+import openfoodfacts.github.scrachx.openfood.models.SearchProduct
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
 import openfoodfacts.github.scrachx.openfood.utils.getEcoscoreResource
@@ -23,13 +23,13 @@ import openfoodfacts.github.scrachx.openfood.utils.getProductBrandsQuantityDetai
 /**
  * @author herau & itchix
  */
-class ProductsRecyclerViewAdapter(
-        val products: MutableList<Product?>,
+class ProductSearchAdapter(
+        val products: MutableList<SearchProduct?>,
         private val isLowBatteryMode: Boolean,
         private val context: Context,
         private val picasso: Picasso,
         private val openFoodAPIClient: OpenFoodAPIClient
-) : RecyclerView.Adapter<ProductsRecyclerViewAdapter.ProductsListViewHolder>() {
+) : RecyclerView.Adapter<ProductSearchAdapter.ProductsListViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductsListViewHolder {
         val layoutResourceId = if (viewType == VIEW_ITEM) R.layout.products_list_item else R.layout.progressbar_endless_list
@@ -40,11 +40,13 @@ class ProductsRecyclerViewAdapter(
     override fun getItemViewType(position: Int) = if (products[position] == null) VIEW_LOAD else VIEW_ITEM
 
     override fun onBindViewHolder(holder: ProductsListViewHolder, position: Int) {
+        if (holder !is ProductsListViewHolder.ProductViewHolder) return
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        if (holder !is ProductsListViewHolder.ProductViewHolder) return
+        val product = products[position]!!
+
         holder.imageProgress.visibility = View.VISIBLE
-        val imageSmallUrl = products[position]!!.getImageSmallUrl(getLanguage(context))
+        val imageSmallUrl = product.getImageSmallUrl(getLanguage(context))
         if (imageSmallUrl == null) {
             holder.imageProgress.visibility = View.GONE
         }
@@ -67,20 +69,20 @@ class ProductsRecyclerViewAdapter(
                         }
                     })
         } else {
-            Picasso.get().load(R.drawable.placeholder_thumb).into(holder.productFrontImg)
+            picasso.load(R.drawable.placeholder_thumb).into(holder.productFrontImg)
             holder.imageProgress.visibility = View.INVISIBLE
         }
-        val product = products[position]
+
 
         // Set product name
-        holder.productName.text = product?.productName ?: context.getString(R.string.productNameNull)
-        val productNameInLocale = product?.additionalProperties?.get(openFoodAPIClient.getLocaleProductNameField()) as String?
+        holder.productName.text = product.productName ?: context.getString(R.string.productNameNull)
+        val productNameInLocale = product.additionalProperties[openFoodAPIClient.localeProductNameField] as String?
         if (!productNameInLocale.isNullOrBlank()) {
             holder.productName.text = productNameInLocale
         }
 
         // Set product description
-        holder.productDetails.text = product?.getProductBrandsQuantityDetails()
+        holder.productDetails.text = product.getProductBrandsQuantityDetails()
 
         if (AppFlavors.isFlavors(AppFlavors.OFF)) {
             // Set nutriscore icon

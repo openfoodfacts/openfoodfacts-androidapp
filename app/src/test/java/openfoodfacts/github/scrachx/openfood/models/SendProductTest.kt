@@ -30,7 +30,7 @@ class SendProductTest {
     @Test
     fun getQuantity_returnsWeightAndWeightUnit() {
         sendProduct!!.weight = WEIGHT
-        sendProduct!!.weight_unit = WEIGHT_UNIT
+        sendProduct!!.weightUnit = WEIGHT_UNIT
         assertThat(sendProduct!!.quantity).isEqualTo("$WEIGHT $WEIGHT_UNIT")
     }
 
@@ -38,17 +38,16 @@ class SendProductTest {
     fun copy_copiesFromAnotherSendProduct() {
         val product1 = SendProduct(ID, BARCODE, LANG, NAME, BRANDS, WEIGHT, WEIGHT_UNIT, IMG_UPLOAD_FRONT,
                 IMG_UPLOAD_INGREDIENTS, IMG_UPLOAD_NUTRITION, IMG_UPLOAD_PACKAGING)
-        val product2 = SendProduct()
-        product2.copy(product1)
+        val product2 = SendProduct(product1)
         assertThat(product2.barcode).isEqualTo(BARCODE)
         assertThat(product2.lang).isEqualTo(LANG)
         assertThat(product2.name).isEqualTo(NAME)
         assertThat(product2.brands).isEqualTo(BRANDS)
         assertThat(product2.weight).isEqualTo(WEIGHT)
-        assertThat(product2.weight_unit).isEqualTo(WEIGHT_UNIT)
-        assertThat(product2.imgupload_front).isEqualTo(IMG_UPLOAD_FRONT)
-        assertThat(product2.imgupload_ingredients).isEqualTo(IMG_UPLOAD_INGREDIENTS)
-        assertThat(product2.imgupload_nutrition).isEqualTo(IMG_UPLOAD_NUTRITION)
+        assertThat(product2.weightUnit).isEqualTo(WEIGHT_UNIT)
+        assertThat(product2.imguploadFront).isEqualTo(IMG_UPLOAD_FRONT)
+        assertThat(product2.imguploadIngredients).isEqualTo(IMG_UPLOAD_INGREDIENTS)
+        assertThat(product2.imguploadNutrition).isEqualTo(IMG_UPLOAD_NUTRITION)
     }
 
     @Test

@@ -74,8 +74,8 @@ import openfoodfacts.github.scrachx.openfood.features.shared.adapters.NutrientLe
 import openfoodfacts.github.scrachx.openfood.features.shared.views.QuestionDialog
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
 import openfoodfacts.github.scrachx.openfood.models.*
-import openfoodfacts.github.scrachx.openfood.models.entities.YourListedProduct
-import openfoodfacts.github.scrachx.openfood.models.entities.YourListedProductDao
+import openfoodfacts.github.scrachx.openfood.models.entities.ListedProduct
+import openfoodfacts.github.scrachx.openfood.models.entities.ListedProductDao
 import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveName
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenHelper
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenName
@@ -129,16 +129,18 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     private var mUrlImage: String? = null
     private var nutritionScoreUri: Uri? = null
 
-    private var photoReceiverHandler = PhotoReceiverHandler { newPhotoFile: File ->
-        //the pictures are uploaded with the correct path
-        val resultUri = newPhotoFile.toURI()
-        val photoFile = if (sendOther) newPhotoFile else File(resultUri.path)
-        val field = if (sendOther) ProductImageField.OTHER else ProductImageField.FRONT
-        val image = ProductImage(product.code, field, photoFile)
-        image.filePath = photoFile.absolutePath
-        uploadImage(image)
-        if (!sendOther) {
-            loadPhoto(photoFile)
+    private val photoReceiverHandler by lazy {
+        PhotoReceiverHandler(requireContext()) { newPhotoFile: File ->
+            //the pictures are uploaded with the correct path
+            val resultUri = newPhotoFile.toURI()
+            val photoFile = if (sendOther) newPhotoFile else File(resultUri.path)
+            val field = if (sendOther) ProductImageField.OTHER else ProductImageField.FRONT
+            val image = ProductImage(product.code, field, photoFile)
+            image.filePath = photoFile.absolutePath
+            uploadImage(image)
+            if (!sendOther) {
+                loadPhoto(photoFile)
+            }
         }
     }
     private var productQuestion: Question? = null
@@ -205,7 +207,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         productState = requireProductState()
         refreshView(productState)
 
-        presenter = SummaryProductPresenter(product, this, productRepository)
+        presenter = SummaryProductPresenter(LocaleHelper.getLanguage(context), product, this, productRepository)
         presenter.addTo(disp)
     }
 
@@ -263,7 +265,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     override fun refreshView(productState: ProductState) {
         this.productState = productState
         product = productState.product!!
-        presenter = SummaryProductPresenter(product, this, productRepository).apply { addTo(disp) }
+        presenter = SummaryProductPresenter(LocaleHelper.getLanguage(context), product, this, productRepository).apply { addTo(disp) }
 
         binding.categoriesText.text = SpannableStringBuilder()
                 .bold { append(getString(R.string.txtCategories)) }
@@ -493,12 +495,11 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         binding.listChips.removeAllViews()
 
         val asyncSessionList = daoSession.startAsyncSession()
-        asyncSessionList.queryList(daoSession.yourListedProductDao.queryBuilder()
-                .where(YourListedProductDao.Properties.Barcode.eq(product.code)).build())
+        asyncSessionList.queryList(daoSession.listedProductDao.queryBuilder()
+                .where(ListedProductDao.Properties.Barcode.eq(product.code)).build())
 
         asyncSessionList.listenerMainThread = AsyncOperationListener { operation ->
-            Log.i("inside", "blshh " + operation.result)
-            (operation.result as List<YourListedProduct>).forEach { list ->
+            (operation.result as List<ListedProduct>).forEach { list ->
                 val chip = Chip(context)
                 chip.text = list.listName
 

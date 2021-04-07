@@ -50,10 +50,7 @@ import openfoodfacts.github.scrachx.openfood.features.productlist.ProductListAct
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import openfoodfacts.github.scrachx.openfood.models.Product
-import openfoodfacts.github.scrachx.openfood.models.entities.ProductLists
-import openfoodfacts.github.scrachx.openfood.models.entities.ProductListsDao
-import openfoodfacts.github.scrachx.openfood.models.entities.YourListedProduct
-import openfoodfacts.github.scrachx.openfood.models.entities.YourListedProductDao
+import openfoodfacts.github.scrachx.openfood.models.entities.*
 import openfoodfacts.github.scrachx.openfood.utils.SwipeController
 import openfoodfacts.github.scrachx.openfood.utils.isEmpty
 import org.apache.commons.csv.CSVFormat
@@ -197,8 +194,8 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
             val productToRemove = adapter.lists[position]
 
             // delete the product from YOUR_LISTED_PRODUCT_TABLE
-            val deleteQuery = daoSession.yourListedProductDao.queryBuilder()
-                    .where(YourListedProductDao.Properties.ListId.eq(productToRemove.id)).buildDelete()
+            val deleteQuery = daoSession.listedProductDao.queryBuilder()
+                    .where(ListedProductDao.Properties.ListId.eq(productToRemove.id)).buildDelete()
             deleteQuery.executeDeleteWithoutDetachingEntities()
             daoSession.clear()
 
@@ -232,14 +229,18 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
     private fun parseCSV(inputStream: InputStream?) {
         val progressDialog = ProgressDialog(this@ProductListsActivity)
         progressDialog.show()
-        Observable.create { emitter: ObservableEmitter<Int?> ->
+
+        Observable.create { emitter: ObservableEmitter<Int> ->
             Single.fromCallable {
-                val listProductDao = daoSession.yourListedProductDao
-                val list = mutableListOf<YourListedProduct>()
+                val listProductDao = daoSession.listedProductDao
+                val list = mutableListOf<ListedProduct>()
                 try {
-                    CSVParser(InputStreamReader(inputStream), CSVFormat.DEFAULT.withFirstRecordAsHeader()).use { csvParser ->
-                        val size = csvParser.records.size
-                        csvParser.records.withIndex().forEach { (index, record) ->
+                    CSVParser(
+                            InputStreamReader(inputStream),
+                            CSVFormat.DEFAULT.withFirstRecordAsHeader()
+                    ).use { parser ->
+                        val size = parser.records.size
+                        parser.records.withIndex().forEach { (index, record) ->
                             val listName = record[2]
                             var daoList = productListsDao.queryBuilder()
                                     .where(ProductListsDao.Properties.ListName.eq(listName)).unique()
@@ -251,14 +252,14 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
                                 daoList = productListsDao.queryBuilder()
                                         .where(ProductListsDao.Properties.ListName.eq(listName)).unique()
                             }
-                            val yourListedProduct = YourListedProduct().apply {
+                            val yourListedProduct = ListedProduct().apply {
                                 this.barcode = record[0]
                                 this.productName = record[1]
                                 this.listName = listName
                                 this.productDetails = record[3]
                                 this.listId = daoList.id
                             }
-                            list.add(yourListedProduct)
+                            list += yourListedProduct
                             emitter.onNext(index * 100 / size)
                         }
                         listProductDao.insertOrReplaceInTx(list)

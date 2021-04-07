@@ -6,8 +6,11 @@ import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Index;
 import org.greenrobot.greendao.annotation.Property;
 
-@Entity(indexes = {@Index(value = "listId, barcode", unique = true)})
-public class YourListedProduct {
+@Entity(
+    nameInDb = "YOUR_LISTED_PRODUCT",
+    indexes = {@Index(value = "listId, barcode", unique = true)}
+)
+public class ListedProduct {
     @Id(autoincrement = true)
     Long id;
     @Property(nameInDb = "barcode")
@@ -23,9 +26,9 @@ public class YourListedProduct {
     @Property(nameInDb = "imageUrl")
     String imageUrl;
 
-    @Generated(hash = 1267347860)
-    public YourListedProduct(Long id, String barcode, Long listId, String listName,
-                             String productName, String productDetails, String imageUrl) {
+    @Generated(hash = 932048190)
+    public ListedProduct(Long id, String barcode, Long listId, String listName,
+                         String productName, String productDetails, String imageUrl) {
         this.id = id;
         this.barcode = barcode;
         this.listId = listId;
@@ -35,8 +38,8 @@ public class YourListedProduct {
         this.imageUrl = imageUrl;
     }
 
-    @Generated(hash = 35341880)
-    public YourListedProduct() {
+    @Generated(hash = 85111474)
+    public ListedProduct() {
     }
 
     public String getBarcode() {

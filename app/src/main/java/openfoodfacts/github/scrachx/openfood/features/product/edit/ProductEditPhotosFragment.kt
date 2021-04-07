@@ -52,7 +52,16 @@ class ProductEditPhotosFragment : ProductEditFragment() {
     private var _binding: FragmentAddProductPhotosBinding? = null
     private val binding get() = _binding!!
 
-    private var photoReceiverHandler: PhotoReceiverHandler? = null
+    private val photoReceiverHandler by lazy {
+        PhotoReceiverHandler(requireContext()) { newPhotoFile ->
+            photoFile = newPhotoFile
+            val image = ProductImage(code!!, ProductImageField.OTHER, newPhotoFile)
+            image.filePath = photoFile!!.toURI().path
+            if (activity is ProductEditActivity) {
+                (activity as ProductEditActivity).addToPhotoMap(image, 4)
+            }
+        }
+    }
     private var code: String? = null
     private var photoFile: File? = null
 
@@ -75,14 +84,6 @@ class ProductEditPhotosFragment : ProductEditFragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.btnAddOtherImage.setOnClickListener { addOtherImage() }
         binding.btnAdd.setOnClickListener { next() }
-        photoReceiverHandler = PhotoReceiverHandler { newPhotoFile ->
-            photoFile = newPhotoFile
-            val image = ProductImage(code!!, ProductImageField.OTHER, newPhotoFile)
-            image.filePath = photoFile!!.toURI().path
-            if (activity is ProductEditActivity) {
-                (activity as ProductEditActivity).addToPhotoMap(image, 4)
-            }
-        }
         val bundle = arguments
         if (bundle != null) {
             val product = bundle.getSerializable("product") as Product?

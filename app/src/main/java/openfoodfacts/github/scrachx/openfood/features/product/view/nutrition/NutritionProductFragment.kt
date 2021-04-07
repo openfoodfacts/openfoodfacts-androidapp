@@ -87,7 +87,9 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
     private var _binding: FragmentNutritionProductBinding? = null
     private val binding get() = _binding!!
 
-    private var photoReceiverHandler = PhotoReceiverHandler { loadNutritionPhoto(it) }
+    private val photoReceiverHandler by lazy {
+        PhotoReceiverHandler(requireContext()) { loadNutritionPhoto(it) }
+    }
 
     @Inject
     lateinit var client: OpenFoodAPIClient
@@ -250,9 +252,9 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
         }
 
         //useful when this fragment is used in offline saving
-        if (mSendProduct != null && mSendProduct!!.imgupload_nutrition.isNotBlank()) {
+        if (mSendProduct != null && mSendProduct!!.imguploadNutrition.isNotBlank()) {
             binding.addPhotoLabel.visibility = GONE
-            nutrientsImageUrl = mSendProduct!!.imgupload_nutrition
+            nutrientsImageUrl = mSendProduct!!.imguploadNutrition
             picasso
                     .load(LOCALE_FILE_SCHEME + nutrientsImageUrl).config(Bitmap.Config.RGB_565).into(binding.imageViewNutrition)
         }

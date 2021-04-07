@@ -32,6 +32,7 @@ import openfoodfacts.github.scrachx.openfood.models.*
 import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct
 import openfoodfacts.github.scrachx.openfood.models.entities.ToUploadProduct
 import openfoodfacts.github.scrachx.openfood.models.entities.ToUploadProductDao
+import openfoodfacts.github.scrachx.openfood.network.ApiFields.Keys.PRODUCT_SEARCH_FIELDS
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
@@ -57,6 +58,11 @@ class OpenFoodAPIClient @Inject constructor(
     fun getProductStateFull(barcode: String, customHeader: String = Utils.HEADER_USER_AGENT_SEARCH): Single<ProductState> {
         sentryAnalytics.setBarcode(barcode)
         return productsApi.getProductByBarcode(barcode, getAllFields(), getUserAgent(customHeader))
+    }
+
+    fun getProductsByBarcode(codes: List<String>, customHeader: String = Utils.HEADER_USER_AGENT_SEARCH): Single<List<SearchProduct>> {
+        return productsApi.getProductsByBarcode(codes.joinToString(","), getAllFields(), customHeader)
+                .map { it.products }
     }
 
     private fun getAllFields(): String {
@@ -138,7 +144,7 @@ class OpenFoodAPIClient @Inject constructor(
 
 
     fun searchProductsByName(name: String, page: Int) =
-            productsApi.searchProductByName(name, getFieldsToFetchFacets(), page)
+            productsApi.searchProductByName(name, fieldsToFetchFacets, page)
 
     /**
      * @param barcode
@@ -156,7 +162,7 @@ class OpenFoodAPIClient @Inject constructor(
     }
 
     fun getProductsByCountry(country: String, page: Int) =
-            productsApi.getProductsByCountry(country, page, getFieldsToFetchFacets())
+            productsApi.getProductsByCountry(country, page, fieldsToFetchFacets)
 
     /**
      * Returns a map for images uploaded for product/ingredients/nutrition/other images
@@ -190,10 +196,10 @@ class OpenFoodAPIClient @Inject constructor(
     }
 
     fun getProductsByCategory(category: String, page: Int) =
-            productsApi.getProductByCategory(category, page)
+            productsApi.getProductByCategory(category, page, fieldsToFetchFacets)
 
     fun getProductsByLabel(label: String, page: Int) =
-            productsApi.getProductsByLabel(label, page, getFieldsToFetchFacets())
+            productsApi.getProductsByLabel(label, page, fieldsToFetchFacets)
 
     /**
      * Add a product to ScanHistory asynchronously
@@ -201,7 +207,7 @@ class OpenFoodAPIClient @Inject constructor(
     fun addToHistory(product: Product) = Completable.fromAction { daoSession.historyProductDao.addToHistorySync(product, this) }
 
     fun getProductsByContributor(contributor: String, page: Int) =
-            productsApi.getProductsByContributor(contributor, page).subscribeOn(Schedulers.io())
+            productsApi.getProductsByContributor(contributor, page, fieldsToFetchFacets).subscribeOn(Schedulers.io())
 
     /**
      * upload images in offline mode
@@ -240,11 +246,11 @@ class OpenFoodAPIClient @Inject constructor(
                 }
     }.flatMapCompletable { Completable.merge(it) }
 
-    fun getProductsByPackaging(packaging: String, page: Int): Single<Search> =
-            productsApi.getProductsByPackaging(packaging, page, getFieldsToFetchFacets())
+    fun getProductsByPackaging(packaging: String, page: Int): Single<AbstractProductSearch> =
+            productsApi.getProductsByPackaging(packaging, page, fieldsToFetchFacets)
 
-    fun getProductsByStore(store: String, page: Int): Single<Search> =
-            productsApi.getProductByStores(store, page, getFieldsToFetchFacets())
+    fun getProductsByStore(store: String, page: Int): Single<AbstractProductSearch> =
+            productsApi.getProductByStores(store, page, fieldsToFetchFacets)
 
     /**
      * Search for products using bran name
@@ -252,8 +258,8 @@ class OpenFoodAPIClient @Inject constructor(
      * @param brand search query for product
      * @param page page numbers
      */
-    fun getProductsByBrand(brand: String, page: Int): Single<Search> =
-            productsApi.getProductByBrands(brand, page, getFieldsToFetchFacets())
+    fun getProductsByBrand(brand: String, page: Int): Single<AbstractProductSearch> =
+            productsApi.getProductByBrands(brand, page, fieldsToFetchFacets)
 
     fun postImg(image: ProductImage, setAsDefault: Boolean = false): Completable {
         return productsApi.saveImageSingle(getUploadableMap(image))
@@ -308,7 +314,7 @@ class OpenFoodAPIClient @Inject constructor(
     }
 
     fun getProductsByOrigin(origin: String, page: Int) =
-            productsApi.getProductsByOrigin(origin, page, getFieldsToFetchFacets())
+            productsApi.getProductsByOrigin(origin, page, fieldsToFetchFacets)
 
     fun syncOldHistory() {
         val fields = "image_small_url,product_name,brands,quantity,image_url,nutrition_grade_fr,code"
@@ -343,7 +349,7 @@ class OpenFoodAPIClient @Inject constructor(
             productsApi.getInfoAddedIncompleteProductsSingle(contributor, page)
 
     fun getProductsByManufacturingPlace(manufacturingPlace: String, page: Int) =
-            productsApi.getProductsByManufacturingPlace(manufacturingPlace, page, getFieldsToFetchFacets())
+            productsApi.getProductsByManufacturingPlace(manufacturingPlace, page, fieldsToFetchFacets)
 
     /**
      * call API service to return products using Additives
@@ -352,10 +358,10 @@ class OpenFoodAPIClient @Inject constructor(
      * @param page number of pages
      */
     fun getProductsByAdditive(additive: String, page: Int) =
-            productsApi.getProductsByAdditive(additive, page, getFieldsToFetchFacets())
+            productsApi.getProductsByAdditive(additive, page, fieldsToFetchFacets)
 
     fun getProductsByAllergen(allergen: String, page: Int) =
-            productsApi.getProductsByAllergen(allergen, page, getFieldsToFetchFacets())
+            productsApi.getProductsByAllergen(allergen, page, fieldsToFetchFacets)
 
     fun getToBeCompletedProductsByContributor(contributor: String, page: Int) =
             productsApi.getToBeCompletedProductsByContributor(contributor, page)
@@ -368,9 +374,9 @@ class OpenFoodAPIClient @Inject constructor(
 
     fun getInfoAddedProducts(contributor: String?, page: Int) = productsApi.getInfoAddedProducts(contributor, page)
 
-    fun getIncompleteProducts(page: Int) = productsApi.getIncompleteProducts(page, getFieldsToFetchFacets())
+    fun getIncompleteProducts(page: Int) = productsApi.getIncompleteProducts(page, fieldsToFetchFacets)
 
-    fun getProductsByStates(state: String?, page: Int) = productsApi.getProductsByState(state, page, getFieldsToFetchFacets())
+    fun getProductsByStates(state: String?, page: Int) = productsApi.getProductsByState(state, page, fieldsToFetchFacets)
 
     companion object {
         val MIME_TEXT: MediaType = MediaType.get("text/plain")
@@ -454,17 +460,10 @@ class OpenFoodAPIClient @Inject constructor(
         return comment.toString()
     }
 
-    fun getLocaleProductNameField() = "product_name_${getLanguage(context)}"
+    val localeProductNameField get() = "product_name_${getLanguage(context)}"
 
-    private fun getFieldsToFetchFacets() = listOf(
-            ApiFields.Keys.BRANDS,
-            ApiFields.Keys.PRODUCT_NAME,
-            ApiFields.Keys.IMAGE_SMALL_URL,
-            ApiFields.Keys.QUANTITY,
-            ApiFields.Keys.NUTRITION_GRADE_FR,
-            ApiFields.Keys.BARCODE,
-            ApiFields.Keys.ECOSCORE,
-            ApiFields.Keys.NOVA_GROUPS,
-            getLocaleProductNameField()
-    ).joinToString(",")
+    private val fieldsToFetchFacets
+        get() = PRODUCT_SEARCH_FIELDS.toMutableList().apply {
+            add(localeProductNameField)
+        }.joinToString(",")
 }

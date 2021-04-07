@@ -1,6 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.utils
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.util.Log
 import androidx.core.net.toFile
@@ -9,7 +10,6 @@ import androidx.fragment.app.Fragment
 import androidx.preference.PreferenceManager
 import com.theartofdev.edmodo.cropper.CropImage
 import openfoodfacts.github.scrachx.openfood.R
-import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.utils.Utils.getOutputPicUri
 import pl.aprilapps.easyphotopicker.DefaultCallback
 import pl.aprilapps.easyphotopicker.EasyImage
@@ -20,6 +20,7 @@ import java.io.File
  * A class for handling photo receiver
  */
 class PhotoReceiverHandler(
+        private val context: Context,
         private val photoReceiver: (File) -> Unit
 ) {
     fun onActivityResult(fragment: Fragment?, requestCode: Int, resultCode: Int, data: Intent?) =
@@ -28,16 +29,15 @@ class PhotoReceiverHandler(
     fun onActivityResult(activity: Activity?, requestCode: Int, resultCode: Int, data: Intent?) =
             onActivityResult(activity, null, requestCode, resultCode, data)
 
-    fun onActivityResult(activity: Activity?, fragment: Fragment?, requestCode: Int, resultCode: Int, data: Intent?) {
+    private fun onActivityResult(activity: Activity?, fragment: Fragment?, requestCode: Int, resultCode: Int, data: Intent?) {
         if (onCropResult(requestCode, resultCode, data)) return
 
         val fragmentActivity = fragment?.activity
         val mainActivity = activity ?: fragmentActivity
-        val fragmentContext = fragment?.requireContext() ?: OFFApplication._instance
+        val fragmentContext = fragment?.context ?: context
         val mainContext = activity ?: fragmentContext
-        val preferences = PreferenceManager.getDefaultSharedPreferences(OFFApplication._instance)
-        val cropActionEnabled = preferences == null || preferences.getBoolean("cropNewImage", true)
 
+        val cropActionEnabled = PreferenceManager.getDefaultSharedPreferences(context).getBoolean("cropNewImage", true)
 
         EasyImage.handleActivityResult(requestCode, resultCode, data, mainActivity, object : DefaultCallback() {
 
@@ -51,7 +51,7 @@ class PhotoReceiverHandler(
                                 .setAllowCounterRotation(true)
                                 .setAutoZoomEnabled(false)
                                 .setInitialCropWindowPaddingRatio(0f)
-                                .setOutputUri(getOutputPicUri(mainContext))
+                                .setOutputUri(getOutputPicUri(context))
                                 .start(mainContext, fragment!!)
                     } else {
                         CropImage.activity(imageFiles[0].toUri())

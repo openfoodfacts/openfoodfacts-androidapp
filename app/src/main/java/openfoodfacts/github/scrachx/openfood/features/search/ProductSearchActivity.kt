@@ -31,16 +31,16 @@ import io.reactivex.rxkotlin.addTo
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductBrowsingListBinding
-import openfoodfacts.github.scrachx.openfood.features.adapters.ProductsRecyclerViewAdapter
+import openfoodfacts.github.scrachx.openfood.features.adapters.ProductSearchAdapter
 import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.selectNavigationItem
 import openfoodfacts.github.scrachx.openfood.features.listeners.EndlessRecyclerViewScrollListener
 import openfoodfacts.github.scrachx.openfood.features.listeners.RecyclerItemClickListener
 import openfoodfacts.github.scrachx.openfood.features.scan.ContinuousScanActivity
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
-import openfoodfacts.github.scrachx.openfood.models.Product
-import openfoodfacts.github.scrachx.openfood.models.Search
+import openfoodfacts.github.scrachx.openfood.models.AbstractProductSearch
 import openfoodfacts.github.scrachx.openfood.models.SearchInfo
+import openfoodfacts.github.scrachx.openfood.models.SearchProduct
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.*
@@ -64,7 +64,7 @@ class ProductSearchActivity : BaseActivity() {
     lateinit var picasso: Picasso
 
     private lateinit var mSearchInfo: SearchInfo
-    private lateinit var adapter: ProductsRecyclerViewAdapter
+    private lateinit var adapter: ProductSearchAdapter
 
     private var contributionType = 0
     private var disp = CompositeDisposable()
@@ -344,7 +344,7 @@ class ProductSearchActivity : BaseActivity() {
     }
 
 
-    private fun Single<Search>.startSearch(@StringRes noMatchMsg: Int, @StringRes extendedMsg: Int = -1) {
+    private fun Single<AbstractProductSearch>.startSearch(@StringRes noMatchMsg: Int, @StringRes extendedMsg: Int = -1) {
         observeOn(AndroidSchedulers.mainThread()).subscribe { search, throwable ->
             displaySearch(throwable == null, search, noMatchMsg, extendedMsg)
         }.addTo(disp)
@@ -372,7 +372,7 @@ class ProductSearchActivity : BaseActivity() {
         }
     }
 
-    private fun showResponse(isResponseOk: Boolean, response: Search?) {
+    private fun showResponse(isResponseOk: Boolean, response: AbstractProductSearch?) {
         if (isResponseOk && response != null) {
             showSuccessfulResponse(response)
         } else {
@@ -380,17 +380,17 @@ class ProductSearchActivity : BaseActivity() {
         }
     }
 
-    private fun showSuccessfulResponse(response: Search) {
+    private fun showSuccessfulResponse(response: AbstractProductSearch) {
         mCountProducts = response.count.toInt()
         if (pageAddress == 1) {
             val number = NumberFormat.getInstance(Locale.getDefault()).format(response.count.toLong())
             binding.textCountProduct.text = "${resources.getString(R.string.number_of_results)} $number"
-            val products: MutableList<Product?> = response.products.toMutableList()
+            val products: MutableList<SearchProduct?> = response.products.toMutableList()
             if (products.size < mCountProducts) {
                 products += null
             }
             if (setupDone) {
-                adapter = ProductsRecyclerViewAdapter(products, lowBatteryMode, this, picasso, client)
+                adapter = ProductSearchAdapter(products, lowBatteryMode, this, picasso, client)
                 binding.productsRecyclerView.adapter = adapter
             }
             setUpRecyclerView(products)
@@ -447,7 +447,7 @@ class ProductSearchActivity : BaseActivity() {
      */
     private fun displaySearch(
             isResponseSuccessful: Boolean,
-            response: Search?,
+            response: AbstractProductSearch?,
             @StringRes emptyMessage: Int,
             @StringRes extendedMessage: Int = -1
     ) = if (response == null) {
@@ -465,7 +465,7 @@ class ProductSearchActivity : BaseActivity() {
         }
     }
 
-    private fun setUpRecyclerView(mProducts: MutableList<Product?>) {
+    private fun setUpRecyclerView(mProducts: MutableList<SearchProduct?>) {
         binding.swipeRefresh.isRefreshing = false
 
         binding.progressBar.visibility = View.INVISIBLE
@@ -478,7 +478,7 @@ class ProductSearchActivity : BaseActivity() {
             binding.productsRecyclerView.setHasFixedSize(true)
             val mLayoutManager = LinearLayoutManager(this@ProductSearchActivity, LinearLayoutManager.VERTICAL, false)
             binding.productsRecyclerView.layoutManager = mLayoutManager
-            adapter = ProductsRecyclerViewAdapter(mProducts, lowBatteryMode, this, picasso, client)
+            adapter = ProductSearchAdapter(mProducts, lowBatteryMode, this, picasso, client)
             binding.productsRecyclerView.adapter = adapter
             val dividerItemDecoration = DividerItemDecoration(binding.productsRecyclerView.context, DividerItemDecoration.VERTICAL)
             binding.productsRecyclerView.addItemDecoration(dividerItemDecoration)

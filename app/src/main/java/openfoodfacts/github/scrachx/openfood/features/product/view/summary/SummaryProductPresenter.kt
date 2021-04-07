@@ -24,20 +24,16 @@ import io.reactivex.rxkotlin.toObservable
 import io.reactivex.schedulers.Schedulers
 import openfoodfacts.github.scrachx.openfood.AppFlavors
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
-import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.models.AnnotationAnswer
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveName
 import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoryName
 import openfoodfacts.github.scrachx.openfood.models.entities.label.LabelName
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper
 import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState
 
-/**
- * Created by Lobster on 17.03.18.
- */
 class SummaryProductPresenter(
+        private val languageCode: String,
         private val product: Product,
         private val view: ISummaryProductPresenter.View,
         private val productRepository: ProductRepository
@@ -51,7 +47,6 @@ class SummaryProductPresenter(
             return
         }
 
-        val languageCode = LocaleHelper.getLanguage(OFFApplication._instance)
         additivesTags.toObservable()
                 .flatMapSingle { tag: String? ->
                     productRepository.getAdditiveByTagAndLanguageCode(tag, languageCode)
@@ -82,7 +77,6 @@ class SummaryProductPresenter(
     }
 
     override fun loadAllergens(runIfError: (() -> Unit)?) {
-        val languageCode = LocaleHelper.getLanguage(OFFApplication._instance)
         productRepository.getAllergensByEnabledAndLanguageCode(true, languageCode)
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnError {
@@ -96,7 +90,6 @@ class SummaryProductPresenter(
     override fun loadCategories() {
         val categoriesTags = product.categoriesTags
         if (categoriesTags != null && categoriesTags.isNotEmpty()) {
-            val languageCode = LocaleHelper.getLanguage(OFFApplication._instance)
             categoriesTags.toObservable()
                     .flatMapSingle { tag: String? ->
                         productRepository.getCategoryByTagAndLanguageCode(tag, languageCode)
@@ -131,7 +124,6 @@ class SummaryProductPresenter(
     override fun loadLabels() {
         val labelsTags = product.labelsTags
         if (labelsTags != null && labelsTags.isNotEmpty()) {
-            val languageCode = LocaleHelper.getLanguage(OFFApplication._instance)
             labelsTags.toObservable()
                     .flatMapSingle { tag: String? ->
                         productRepository.getLabelByTagAndLanguageCode(tag, languageCode)
@@ -166,21 +158,18 @@ class SummaryProductPresenter(
     }
 
     override fun loadProductQuestion() {
-        val languageCode = LocaleHelper.getLanguage(OFFApplication._instance)
         productRepository.getProductQuestion(product.code, languageCode)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnError { Log.e(this@SummaryProductPresenter::class.simpleName, "loadProductQuestion", it) }
                 .subscribe { question -> view.showProductQuestion(question) }
                 .addTo(disp)
-
     }
 
     override fun loadAnalysisTags() {
         if (!isFlavors(AppFlavors.OFF, AppFlavors.OBF, AppFlavors.OPFF)) return
 
         val analysisTags = product.ingredientsAnalysisTags
-        val languageCode = LocaleHelper.getLanguage(OFFApplication._instance)
         if (analysisTags.isNotEmpty()) {
             analysisTags.toObservable()
                     .flatMapMaybe { productRepository.getAnalysisTagConfigByTagAndLanguageCode(it, languageCode) }

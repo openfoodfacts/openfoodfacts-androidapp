@@ -8,10 +8,10 @@ import androidx.core.content.edit
 import openfoodfacts.github.scrachx.openfood.models.DaoMaster
 import openfoodfacts.github.scrachx.openfood.models.DaoMaster.OpenHelper
 import openfoodfacts.github.scrachx.openfood.models.InvalidBarcodeDao
+import openfoodfacts.github.scrachx.openfood.models.entities.ListedProductDao
 import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProductDao
 import openfoodfacts.github.scrachx.openfood.models.entities.ProductListsDao
 import openfoodfacts.github.scrachx.openfood.models.entities.ToUploadProductDao
-import openfoodfacts.github.scrachx.openfood.models.entities.YourListedProductDao
 import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveDao
 import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveNameDao
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenDao
@@ -125,7 +125,7 @@ class OFFDatabaseHelper @JvmOverloads constructor(
             }
             11 -> {
                 ProductListsDao.createTable(db, true)
-                YourListedProductDao.createTable(db, true)
+                ListedProductDao.createTable(db, true)
             }
             15 -> {
                 IngredientDao.createTable(db, true)

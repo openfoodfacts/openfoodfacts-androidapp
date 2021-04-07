@@ -4,13 +4,10 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import androidx.lifecycle.ViewModel
-import com.gojuno.koptional.rxjava2.filterSome
-import com.gojuno.koptional.toOptional
 import com.jakewharton.rxrelay2.BehaviorRelay
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import io.reactivex.Observable
-import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
@@ -52,34 +49,27 @@ class ScanHistoryViewModel @Inject constructor(
                 .fromCallable {
                     daoSession.historyProductDao.queryBuilder().list()
                 }
-                .flatMapIterable { it }
-                .flatMap {
-                    client.getProductStateFull(it.barcode)
-                            .toObservable()
-                            .map { it.product.toOptional() }
+                .flatMap { prods ->
+                    client.getProductsByBarcode(prods.map { it.barcode }).toObservable()
                 }
-                .filterSome()
-                .flatMap { product ->
-                    Observable.fromCallable {
-                        val historyProduct = daoSession.historyProductDao.queryBuilder()
-                                .where(HistoryProductDao.Properties.Barcode.eq(product.code))
-                                .build()
-                                .unique()
-                        product.productName?.let { historyProduct.title = it }
-                        product.brands?.let { historyProduct.brands = it }
-                        product.getImageSmallUrl(LocaleHelper.getLanguage(context))?.let { historyProduct.url = it }
-                        product.quantity?.let { historyProduct.quantity = it }
-                        product.nutritionGradeFr?.let { historyProduct.nutritionGrade = it }
-                        product.ecoscore?.let { historyProduct.ecoscore = it }
-                        product.novaGroups?.let { historyProduct.novaGroup = it }
-                        daoSession.historyProductDao.update(historyProduct)
-                    }
+                .flatMapIterable { it }
+                .map { product ->
+                    val historyProduct = daoSession.historyProductDao.queryBuilder()
+                            .where(HistoryProductDao.Properties.Barcode.eq(product.code))
+                            .build()
+                            .unique()
+                    product.productName?.let { historyProduct.title = it }
+                    product.brands?.let { historyProduct.brands = it }
+                    product.getImageSmallUrl(LocaleHelper.getLanguage(context))?.let { historyProduct.url = it }
+                    product.quantity?.let { historyProduct.quantity = it }
+                    product.nutritionGradeFr?.let { historyProduct.nutritionGrade = it }
+                    product.ecoscore?.let { historyProduct.ecoscore = it }
+                    product.novaGroups?.let { historyProduct.novaGroup = it }
+                    daoSession.historyProductDao.update(historyProduct)
                 }
                 .toList()
-                .flatMap {
-                    Single.fromCallable {
-                        daoSession.historyProductDao.queryBuilder().list()
-                    }
+                .map {
+                    daoSession.historyProductDao.queryBuilder().list()
                 }
                 .map { it.customSort() }
                 .subscribeOn(Schedulers.io())
@@ -97,10 +87,8 @@ class ScanHistoryViewModel @Inject constructor(
                     daoSession.historyProductDao.deleteAll()
                 }
                 .subscribeOn(Schedulers.io())
-                .subscribe(
-                        { fetchProductsStateRelay.accept(FetchProductsState.Data(emptyList())) },
-                        { fetchProductsStateRelay.accept(FetchProductsState.Error) }
-                )
+                .doOnError { fetchProductsStateRelay.accept(FetchProductsState.Error) }
+                .subscribe { fetchProductsStateRelay.accept(FetchProductsState.Data(emptyList())) }
                 .addTo(compositeDisposable)
     }
 
@@ -112,10 +100,8 @@ class ScanHistoryViewModel @Inject constructor(
                 }
                 .map { it.customSort() }
                 .subscribeOn(Schedulers.io())
-                .subscribe(
-                        { products -> fetchProductsStateRelay.accept(FetchProductsState.Data(products)) },
-                        { fetchProductsStateRelay.accept(FetchProductsState.Error) }
-                )
+                .doOnError { fetchProductsStateRelay.accept(FetchProductsState.Error) }
+                .subscribe { products -> fetchProductsStateRelay.accept(FetchProductsState.Data(products)) }
                 .addTo(compositeDisposable)
 
     }
@@ -129,10 +115,8 @@ class ScanHistoryViewModel @Inject constructor(
                 }
                 .filter { it.isNotEmpty() }
                 .subscribeOn(Schedulers.io())
-                .subscribe(
-                        { products -> fetchProductsStateRelay.accept(FetchProductsState.Data(products)) },
-                        { fetchProductsStateRelay.accept(FetchProductsState.Error) }
-                )
+                .doOnError { fetchProductsStateRelay.accept(FetchProductsState.Error) }
+                .subscribe { products -> fetchProductsStateRelay.accept(FetchProductsState.Data(products)) }
                 .addTo(compositeDisposable)
     }
 

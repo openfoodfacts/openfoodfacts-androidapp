@@ -274,5 +274,16 @@ object ApiFields {
                 IMAGE_FRONT_URL, IMAGE_INGREDIENTS_URL, IMAGE_NUTRITION_URL,
                 IMAGE_PACKAGING_URL, IMAGE_URL, SELECTED_IMAGES
         )
+
+        val PRODUCT_SEARCH_FIELDS = setOf(
+                BRANDS,
+                PRODUCT_NAME,
+                IMAGE_SMALL_URL,
+                QUANTITY,
+                NUTRITION_GRADE_FR,
+                BARCODE,
+                ECOSCORE,
+                NOVA_GROUPS
+        )
     }
 }

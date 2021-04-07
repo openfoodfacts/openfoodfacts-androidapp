@@ -111,7 +111,9 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
     private lateinit var customTabActivityHelper: CustomTabActivityHelper
     private lateinit var customTabsIntent: CustomTabsIntent
     private lateinit var presenter: IIngredientsProductPresenter.Actions
-    private val photoReceiverHandler: PhotoReceiverHandler = PhotoReceiverHandler { onPhotoReturned(it) }
+    private val photoReceiverHandler by lazy {
+        PhotoReceiverHandler(requireContext()) { onPhotoReturned(it) }
+    }
 
     private var ingredientExtracted = false
 
@@ -209,9 +211,9 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
         }
 
         //useful when this fragment is used in offline saving
-        if (mSendProduct != null && !mSendProduct!!.imgupload_ingredients.isNullOrBlank()) {
+        if (mSendProduct != null && !mSendProduct!!.imguploadIngredients.isNullOrBlank()) {
             binding.addPhotoLabel.visibility = View.GONE
-            ingredients = mSendProduct!!.imgupload_ingredients
+            ingredients = mSendProduct!!.imguploadIngredients
             picasso.load(LOCALE_FILE_SCHEME + ingredients).config(Bitmap.Config.RGB_565).into(binding.imageViewIngredients)
         }
         val allergens = getAllergens()
