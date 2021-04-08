@@ -50,7 +50,6 @@ import openfoodfacts.github.scrachx.openfood.features.FullScreenActivityOpener
 import openfoodfacts.github.scrachx.openfood.features.shared.adapters.NutrientLevelListAdapter
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
 import openfoodfacts.github.scrachx.openfood.models.*
-import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveName
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.*
@@ -60,7 +59,7 @@ import java.io.File
 class ProductCompareAdapter(
         private val productsToCompare: List<Product>,
         internal val activity: Activity,
-        private val api: OpenFoodAPIClient,
+        private val client: OpenFoodAPIClient,
         private val productRepository: ProductRepository,
         private val picasso: Picasso
 ) : RecyclerView.Adapter<ProductComparisonViewHolder>() {
@@ -113,6 +112,7 @@ class ProductCompareAdapter(
             if (imageUrl != null) {
                 FullScreenActivityOpener.openForUrl(
                         activity,
+                        client,
                         product,
                         ProductImageField.FRONT,
                         imageUrl,
@@ -150,10 +150,10 @@ class ProductCompareAdapter(
 
         // Quantity
         if (!product.quantity.isNullOrBlank()) {
-            holder.binding.productComparisonQuantity.text = "${
-                SpannableStringBuilder()
-                        .bold { append(activity.getString(R.string.compare_quantity)) }
-            } ${product.quantity}"
+            holder.binding.productComparisonQuantity.text = SpannableStringBuilder()
+                    .bold { append(activity.getString(R.string.compare_quantity)) }
+                    .append(" ")
+                    .append(product.quantity)
         } else {
             holder.binding.productComparisonQuantity.visibility = View.INVISIBLE
         }
@@ -163,13 +163,8 @@ class ProductCompareAdapter(
         if (!brands.isNullOrBlank()) {
             holder.binding.productComparisonBrand.text = SpannableStringBuilder()
                     .bold { append(activity.getString(R.string.compare_brands)) }
-            holder.binding.productComparisonBrand.append(" ")
-            val brandsList = brands.split(",")
-            brandsList.dropLast(1).forEach { brand ->
-                holder.binding.productComparisonBrand.append(brand.trim { it <= ' ' })
-                holder.binding.productComparisonBrand.append(", ")
-            }
-            holder.binding.productComparisonBrand.append(brandsList.last().trim { it <= ' ' })
+                    .append(" ")
+                    .append(brands.split(",").joinToString(", ") { it.trim() })
         } else {
             //TODO: product brand placeholder goes here
         }
@@ -203,7 +198,7 @@ class ProductCompareAdapter(
             val barcode = product.code
             if (Utils.isNetworkConnected(activity)) {
                 Utils.hideKeyboard(activity)
-                api.openProduct(barcode, activity)
+                client.openProduct(barcode, activity)
             } else {
                 MaterialDialog.Builder(activity).apply {
                     title(R.string.device_offline_dialog_title)
@@ -212,7 +207,7 @@ class ProductCompareAdapter(
                     negativeText(R.string.dismiss)
                     onPositive { _, _ ->
                         if (Utils.isNetworkConnected(activity)) {
-                            api.openProduct(barcode, activity)
+                            client.openProduct(barcode, activity)
                         } else {
                             Toast.makeText(activity, R.string.device_offline_dialog_title, Toast.LENGTH_SHORT).show()
                         }
@@ -228,7 +223,7 @@ class ProductCompareAdapter(
         product.additivesTags.toObservable()
                 .flatMapSingle { tag ->
                     productRepository.getAdditiveByTagAndLanguageCode(tag, LocaleHelper.getLanguage(activity))
-                            .flatMap { categoryName: AdditiveName ->
+                            .flatMap { categoryName ->
                                 if (categoryName.isNull) {
                                     productRepository.getAdditiveByTagAndDefaultLanguageCode(tag)
                                 } else {
@@ -243,14 +238,10 @@ class ProductCompareAdapter(
                 .doOnError { Log.e(ProductCompareAdapter::class.simpleName, "loadAdditives", it) }
                 .subscribe { additives ->
                     if (additives.isNotEmpty()) {
-                        val additivesBuilder = StringBuilder(SpannableStringBuilder()
-                                .bold { append(activity.getString(R.string.compare_additives)) })
-                                .append(" ").append("\n")
-                        additives.dropLast(1).forEach { additive ->
-                            additivesBuilder.append(additive.name).append("\n")
-                        }
-                        additivesBuilder.append(additives.last().name)
-                        view.text = additivesBuilder.toString()
+                        view.text = SpannableStringBuilder()
+                                .bold { append(activity.getString(R.string.compare_additives)) }
+                                .append(" \n")
+                                .append(additives.joinToString("\n"))
                         setMaxCardHeight()
                     }
                 }.addTo(disp)
@@ -321,9 +312,15 @@ class ProductCompareAdapter(
 
     fun setImageOnPhotoReturn(file: File) {
         val product = productsToCompare[onPhotoReturnPosition!!]
-        val image = ProductImage(product.code, ProductImageField.FRONT, file, LocaleHelper.getLanguage(activity)).apply { filePath = file.absolutePath }
+        val image = ProductImage(
+                product.code,
+                ProductImageField.FRONT,
+                file,
+                LocaleHelper.getLanguage(activity)
+        ).apply { filePath = file.absolutePath }
 
-        api.postImg(image).subscribe().addTo(disp)
+        client.postImg(image).subscribe().addTo(disp)
+
         product.imageUrl = file.absolutePath
         onPhotoReturnPosition = null
         notifyDataSetChanged()
@@ -335,9 +332,9 @@ class ProductCompareAdapter(
         val productNutrientsHeight = arrayListOf<Int>()
         val productAdditivesHeight = arrayListOf<Int>()
         viewHolders.forEach {
-            productDetailsHeight.add(it.binding.productComparisonDetailsCv.height)
-            productNutrientsHeight.add(it.binding.productComparisonNutrientCv.height)
-            productAdditivesHeight.add(it.binding.productComparisonAdditiveText.height)
+            productDetailsHeight += it.binding.productComparisonDetailsCv.height
+            productNutrientsHeight += it.binding.productComparisonNutrientCv.height
+            productAdditivesHeight += it.binding.productComparisonAdditiveText.height
         }
 
         //setting all the heights to be the maximum

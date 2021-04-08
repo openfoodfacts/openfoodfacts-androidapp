@@ -486,7 +486,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
 
     private fun openFullScreen() {
         if (nutrientsImageUrl != null) {
-            FullScreenActivityOpener.openForUrl(this, client, product, ProductImageField.NUTRITION, nutrientsImageUrl, binding.imageViewNutrition)
+            FullScreenActivityOpener.openForUrl(this, client, product, ProductImageField.NUTRITION, nutrientsImageUrl!!, binding.imageViewNutrition)
         } else {
             // take a picture
             if (ContextCompat.checkSelfPermission(requireActivity(), permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {

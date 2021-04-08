@@ -23,10 +23,10 @@ class PhotoReceiverHandler(
         private val context: Context,
         private val photoReceiver: (File) -> Unit
 ) {
-    fun onActivityResult(fragment: Fragment?, requestCode: Int, resultCode: Int, data: Intent?) =
+    fun onActivityResult(fragment: Fragment, requestCode: Int, resultCode: Int, data: Intent?) =
             onActivityResult(null, fragment, requestCode, resultCode, data)
 
-    fun onActivityResult(activity: Activity?, requestCode: Int, resultCode: Int, data: Intent?) =
+    fun onActivityResult(activity: Activity, requestCode: Int, resultCode: Int, data: Intent?) =
             onActivityResult(activity, null, requestCode, resultCode, data)
 
     private fun onActivityResult(activity: Activity?, fragment: Fragment?, requestCode: Int, resultCode: Int, data: Intent?) {

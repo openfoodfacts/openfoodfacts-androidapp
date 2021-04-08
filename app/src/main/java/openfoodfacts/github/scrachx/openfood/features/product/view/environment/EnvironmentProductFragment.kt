@@ -161,13 +161,15 @@ class EnvironmentProductFragment : BaseFragment() {
     }
 
     private fun openFullScreen() {
-        if (mUrlImage != null && productState.product != null) {
+        val imageUrl = mUrlImage
+        val p = productState.product
+        if (imageUrl != null && p != null) {
             FullScreenActivityOpener.openForUrl(
                     this,
                     client,
-                    productState.product!!,
+                    p,
                     ProductImageField.PACKAGING,
-                    mUrlImage,
+                    imageUrl,
                     binding.imageViewPackaging,
             )
         } else {
@@ -175,9 +177,7 @@ class EnvironmentProductFragment : BaseFragment() {
         }
     }
 
-    private fun newPackagingImage() {
-        doChooseOrTakePhotos()
-    }
+    private fun newPackagingImage() = doChooseOrTakePhotos()
 
     private fun loadPackagingPhoto(photoFile: File) {
         // Create a new instance of ProductImage so we can load to server

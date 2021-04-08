@@ -820,8 +820,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         val addToListDialog = MaterialDialog.Builder(activity)
                 .title(R.string.add_to_product_lists)
                 .customView(R.layout.dialog_add_to_list, true)
-                .build()
-        addToListDialog.show()
+                .build().apply { show() }
         val dialogView = addToListDialog.customView ?: return
 
         // Set recycler view
@@ -843,7 +842,6 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         addToNewList.setOnClickListener {
             activity.startActivity(Intent(activity, ProductListsActivity::class.java).apply {
                 putExtra("product", product)
-
             })
         }
     }
@@ -855,19 +853,16 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     }
 
     private fun openFrontImageFullscreen() {
-        if (mUrlImage != null) {
-            FullScreenActivityOpener.openForUrl(
-                    this,
-                    client,
-                    product,
-                    ProductImageField.FRONT,
-                    mUrlImage,
-                    binding.imageViewFront,
-            )
-        } else {
-            // take a picture
-            newFrontImage()
-        }
+        val url = mUrlImage
+        // take a picture
+        if (url != null) FullScreenActivityOpener.openForUrl(
+                this,
+                client,
+                product,
+                ProductImageField.FRONT,
+                url,
+                binding.imageViewFront,
+        ) else newFrontImage() // Take a new picture
     }
 
     private fun newFrontImage() {
@@ -878,35 +873,34 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+
         photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data)
-        val shouldRefresh = (requestCode == EDIT_REQUEST_CODE && resultCode == Activity.RESULT_OK
+
+        val shouldRefresh = (requestCode == EDIT_REQUEST_CODE
+                && resultCode == Activity.RESULT_OK
                 || ImagesManageActivity.isImageModified(requestCode, resultCode))
+
         if (shouldRefresh && activity is ProductViewActivity) {
-            (activity as ProductViewActivity?)!!.onRefresh()
+            (activity as ProductViewActivity).onRefresh()
         }
-        if (resultCode == Activity.RESULT_OK) {
-            if (requestCode == EDIT_PRODUCT_AFTER_LOGIN && requireActivity().isUserSet()) {
-                editProduct()
-            }
-            if (requestCode == EDIT_PRODUCT_NUTRITION_AFTER_LOGIN && requireActivity().isUserSet()) {
-                editProductNutriscore()
+
+        if (resultCode == Activity.RESULT_OK && requireActivity().isUserSet()) {
+            when (requestCode) {
+                EDIT_PRODUCT_AFTER_LOGIN -> editProduct()
+                EDIT_PRODUCT_NUTRITION_AFTER_LOGIN -> editProductNutriscore()
             }
         }
     }
 
-    override fun doOnPhotosPermissionGranted() {
-        if (sendOther) {
-            takeMorePicture()
-        } else {
-            newFrontImage()
-        }
-    }
+    override fun doOnPhotosPermissionGranted() =
+            if (sendOther) takeMorePicture()
+            else newFrontImage()
 
 
     fun resetScroll() {
         binding.scrollView.scrollTo(0, 0)
-        if (binding.analysisTags.adapter != null) {
-            (binding.analysisTags.adapter as IngredientAnalysisTagsAdapter?)!!.filterVisibleTags()
+        binding.analysisTags.adapter?.let {
+            (it as IngredientAnalysisTagsAdapter).filterVisibleTags()
         }
     }
 

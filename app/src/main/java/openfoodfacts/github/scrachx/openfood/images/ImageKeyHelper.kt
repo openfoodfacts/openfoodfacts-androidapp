@@ -30,7 +30,7 @@ fun createImageBundle(
         imageType: ProductImageField?,
         product: Product?,
         language: String?,
-        imageUrl: String?
+        imageUrl: String
 ) = Bundle().apply {
     putString(IMAGE_URL, imageUrl)
     if (product != null) {
