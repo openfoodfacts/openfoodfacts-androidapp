@@ -28,7 +28,7 @@ end
 
 
 desc "Build debug and test APK for screenshots"
-  lane :build_for_screengrab do
+  lane :build_for_screengrab_2 do
     gradle(
       task: 'clean'
     )
