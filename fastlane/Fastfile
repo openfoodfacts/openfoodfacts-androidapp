@@ -6,7 +6,7 @@ lane :screenshots do
 end
 
 desc "Build debug and test APK for screenshots"
-  lane :build_for_screengrab do
+  lane :build_for_screengrab3 do
     gradle(
       task: 'clean'
     )
@@ -28,7 +28,7 @@ end
 
 
 desc "Build debug and test APK for screenshots"
-  lane :build_for_screengrab_2 do
+  lane :build_for_screengrab do
     gradle(
       task: 'clean'
     )
