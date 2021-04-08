@@ -15,10 +15,11 @@ jobs:
       - name: Checkout sources
         uses: actions/checkout@v2
 
-      - name: Set up JDK 1.8
-        uses: actions/setup-java@v1
+      - name: Set up JDK 11
+        uses: actions/setup-java@v2
         with:
-          java-version: 1.8
+          distribution: 'adopt'
+          java-version: '11'
 
       - name: Screenshots android tests
         uses: eskatos/gradle-command-action@v1
@@ -38,10 +39,11 @@ jobs:
       - name: Checkout sources
         uses: actions/checkout@v2
 
-      - name: Set up JDK 1.8
-        uses: actions/setup-java@v1
+      - name: Set up JDK 11
+        uses: actions/setup-java@v2
         with:
-          java-version: 1.8
+          distribution: 'adopt'
+          java-version: '11'
 
       - name: Workaround for Android Gradle plugin issue
         run: "echo \"ndk.dir=${ANDROID_HOME}/ndk-bundle\" > local.properties"
@@ -52,25 +54,25 @@ jobs:
           arguments: assembleDebug --stacktrace
 
       - name: Upload OBF APK
-        uses: actions/upload-artifact@v2.2.2
+        uses: actions/upload-artifact@v2.2.3
         with:
           name: obf
           path: app/build/outputs/apk/obf/debug/app-obf-debug.apk
 
       - name: Upload OFF APK
-        uses: actions/upload-artifact@v2.2.2
+        uses: actions/upload-artifact@v2.2.3
         with:
           name: off
           path: app/build/outputs/apk/off/debug/app-off-debug.apk
 
       - name: Upload OPF APK
-        uses: actions/upload-artifact@v2.2.2
+        uses: actions/upload-artifact@v2.2.3
         with:
           name: opf
           path: app/build/outputs/apk/opf/debug/app-opf-debug.apk
 
       - name: Upload OPFF APK
-        uses: actions/upload-artifact@v2.2.2
+        uses: actions/upload-artifact@v2.2.3
         with:
           name: opff
           path: app/build/outputs/apk/opff/debug/app-opff-debug.apk
@@ -84,7 +86,7 @@ jobs:
 #        uses: actions/checkout@v2
 #
 #      - name: Set up JDK 1.8
-#        uses: actions/setup-java@v1
+#        uses: actions/setup-java@v2
 #        with:
 #          java-version: 1.8
 #

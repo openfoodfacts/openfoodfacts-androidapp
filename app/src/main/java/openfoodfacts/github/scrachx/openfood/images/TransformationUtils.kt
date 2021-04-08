@@ -1,32 +1,14 @@
 package openfoodfacts.github.scrachx.openfood.images
 
 import android.graphics.Matrix
-import android.graphics.Rect
 import android.graphics.RectF
 import android.util.Log
+import androidx.core.graphics.toRect
+import androidx.core.graphics.toRectF
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.utils.getAsFloat
 import openfoodfacts.github.scrachx.openfood.utils.getAsInt
-import kotlin.math.roundToInt
-
-fun toRect(init: RectF?) =
-        if (init == null) null
-        else Rect(
-                init.left.roundToInt(),
-                init.top.roundToInt(),
-                init.right.roundToInt(),
-                init.bottom.roundToInt()
-        )
-
-fun toRectF(init: Rect?) =
-        if (init == null) null
-        else RectF(
-                init.left.toFloat(),
-                init.top.toFloat(),
-                init.right.toFloat(),
-                init.bottom.toFloat()
-        )
 
 /**
  * Get the specified key from the map of sizes
@@ -66,7 +48,7 @@ fun getInitialServerTransformation(
         imageUrl = getImageUrl(product.code, initImageId, IMAGE_EDIT_SIZE_FILE)
         rotationInDegree = getImageRotation(imageDetails)
 
-        getImageCropRect(imageDetails)?.let { cropRectangle = toRect(it) }
+        getImageCropRect(imageDetails)?.let { cropRectangle = it.toRect() }
     }
 }
 
@@ -98,7 +80,7 @@ private fun applyRotationOnCropRectangle(
     val imageDetailsInitImage = product.getImageDetails(initImageId) ?: return
     val sizesMap = imageDetailsInitImage["sizes"] as Map<String, Map<String, *>>?
     try {
-        val initCrop = toRectF(res.cropRectangle)
+        val initCrop = res.cropRectangle?.toRectF()
         val height = sizesMap!!.getDimension("h")
         val width = sizesMap.getDimension("w")
         if (height != NO_VALUE && width != NO_VALUE) {
@@ -122,7 +104,7 @@ private fun applyRotationOnCropRectangle(
             //we translate the crop rectangle to the origin
             m.setTranslate(-wholeImage.left, -wholeImage.top)
             m.mapRect(initCrop)
-            res.cropRectangle = toRect(initCrop)
+            res.cropRectangle = initCrop?.toRect()
         }
     } catch (e: Exception) {
         Log.e(LOG_TAG, "Can't process image for product ${product.code}", e)

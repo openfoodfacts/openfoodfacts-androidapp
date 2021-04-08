@@ -15,9 +15,7 @@
  */
 package openfoodfacts.github.scrachx.openfood.features.allergensalert
 
-import android.content.Context
 import android.content.SharedPreferences
-import android.net.ConnectivityManager
 import android.os.Bundle
 import android.util.Log
 import android.view.*
@@ -33,15 +31,16 @@ import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 import net.steamcrafted.loadtoast.LoadToast
 import openfoodfacts.github.scrachx.openfood.R
+import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
+import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentAlertAllergensBinding
 import openfoodfacts.github.scrachx.openfood.features.shared.NavigationBaseFragment
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenName
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
-import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
-import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType
+import openfoodfacts.github.scrachx.openfood.utils.Utils
 import javax.inject.Inject
 
 /**
@@ -134,28 +133,26 @@ class AllergensAlertFragment : NavigationBaseFragment() {
                     .doOnError { it.printStackTrace() }
                     .map { allergens -> allergens.sortedBy { it.name } }
                     .subscribe { allergens ->
-                        MaterialDialog.Builder(requireContext()).apply {
-                            title(R.string.title_dialog_alert)
-                            items(allergens.map { it.name })
-                            itemsCallback { _, _, position, _ ->
-                                productRepository.setAllergenEnabled(allergens[position].allergenTag, true)
-                                mAllergensEnabled!!.add(allergens[position])
-                                adapter.notifyItemInserted(mAllergensEnabled!!.size - 1)
-                                binding.allergensRecycle.scrollToPosition(adapter.itemCount - 1)
-                                matomoAnalytics.trackEvent(AnalyticsEvent.AllergenAlertCreated(allergens[position].allergenTag))
-                            }
-                        }.show()
-                    }.addTo(disp)
+                        MaterialDialog.Builder(requireContext())
+                                .title(R.string.title_dialog_alert)
+                                .items(allergens.map { it.name })
+                                .itemsCallback { _, _, position, _ ->
+                                    productRepository.setAllergenEnabled(allergens[position].allergenTag, true)
+                                    mAllergensEnabled!!.add(allergens[position])
+                                    adapter.notifyItemInserted(mAllergensEnabled!!.size - 1)
+                                    binding.allergensRecycle.scrollToPosition(adapter.itemCount - 1)
+                                    matomoAnalytics.trackEvent(AnalyticsEvent.AllergenAlertCreated(allergens[position].allergenTag))
+                                }
+                                .show()
+                    }
+                    .addTo(disp)
         } else {
-            val cm = requireActivity().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-            val activeNetwork = cm.activeNetworkInfo
-            val isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting
-            if (isConnected) {
-                val lt = LoadToast(context).apply {
-                    setText(requireActivity().getString(R.string.toast_retrieving))
-                    setBackgroundColor(ResourcesCompat.getColor(requireContext().resources, R.color.blue, requireContext().theme))
-                    setTextColor(ResourcesCompat.getColor(requireActivity().resources, R.color.white, requireContext().theme))
-                }.show()
+            if (Utils.isNetworkConnected(requireContext())) {
+                val lt = LoadToast(context)
+                        .setText(requireActivity().getString(R.string.toast_retrieving))
+                        .setBackgroundColor(ResourcesCompat.getColor(requireContext().resources, R.color.blue, requireContext().theme))
+                        .setTextColor(ResourcesCompat.getColor(requireActivity().resources, R.color.white, requireContext().theme))
+                        .show()
 
                 productRepository.getAllergens()
                         .observeOn(AndroidSchedulers.mainThread())
@@ -170,13 +167,14 @@ class AllergensAlertFragment : NavigationBaseFragment() {
                             updateAllergenDao()
                             addAllergen()
                             lt.success()
-                        }.addTo(disp)
+                        }
+                        .addTo(disp)
             } else {
-                MaterialDialog.Builder(requireContext()).apply {
-                    title(R.string.title_dialog_alert)
-                    content(R.string.info_download_data_connection)
-                    neutralText(R.string.txtOk)
-                }.show()
+                MaterialDialog.Builder(requireContext())
+                        .title(R.string.title_dialog_alert)
+                        .content(R.string.info_download_data_connection)
+                        .neutralText(R.string.txtOk)
+                        .show()
             }
         }
     }

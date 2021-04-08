@@ -464,7 +464,7 @@
                     android:layout_marginBottom="16dp"
                     android:visibility="gone"
                     app:cardElevation="@dimen/card_elevation"
-                    tools:visibility="gone">
+                    tools:visibility="visible">
 
                     <LinearLayout
                         android:layout_width="match_parent"

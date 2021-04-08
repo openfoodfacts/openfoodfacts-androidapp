@@ -37,19 +37,22 @@ class CategoryListFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         binding.recycler.setHasFixedSize(true)
         binding.recycler.layoutManager = LinearLayoutManager(context)
         binding.recycler.addItemDecoration(DividerItemDecoration(requireActivity(), DividerItemDecoration.VERTICAL))
+
         binding.viewModel = this.viewModel
+
         binding.fastScroller.setRecyclerView(binding.recycler)
         binding.recycler.viewTreeObserver.addOnGlobalLayoutListener {
-            if (this.viewModel.shownCategories.get()?.isEmpty() == true) {
+            if (this.viewModel.shownCategories.isEmpty()) {
                 binding.fastScroller.visibility = View.GONE
             } else {
                 binding.fastScroller.visibility = View.VISIBLE
                 // check for an empty item in the start of the list
-                if (viewModel.shownCategories.get()!![0].name!!.isEmpty()) {
-                    viewModel.shownCategories.get()!!.removeAt(0)
+                if (viewModel.shownCategories[0].name!!.isEmpty()) {
+                    viewModel.shownCategories.removeAt(0)
                     binding.recycler.adapter!!.notifyItemRemoved(0)
                     binding.recycler.adapter!!.notifyItemRangeChanged(0, binding.recycler.adapter!!.itemCount)
                 }

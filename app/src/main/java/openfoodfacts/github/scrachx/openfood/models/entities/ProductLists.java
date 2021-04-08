@@ -23,7 +23,7 @@ public class ProductLists {
     @Property(nameInDb = "numOfProducts")
     private long numOfProducts;
     @ToMany(referencedJoinProperty = "listId")
-    private List<YourListedProduct> products;
+    private List<ListedProduct> products;
     /**
      * Used to resolve relations
      */
@@ -79,16 +79,15 @@ public class ProductLists {
      * To-many relationship, resolved on first access (and after reset).
      * Changes to to-many relations are not persisted, make changes to the target entity.
      */
-    @Generated(hash = 372698848)
-    public List<YourListedProduct> getProducts() {
+    @Generated(hash = 1449374917)
+    public List<ListedProduct> getProducts() {
         if (products == null) {
             final DaoSession daoSession = this.daoSession;
             if (daoSession == null) {
                 throw new DaoException("Entity is detached from DAO context");
             }
-            YourListedProductDao targetDao = daoSession.getYourListedProductDao();
-            List<YourListedProduct> productsNew = targetDao
-                ._queryProductLists_Products(id);
+            ListedProductDao targetDao = daoSession.getListedProductDao();
+            List<ListedProduct> productsNew = targetDao._queryProductLists_Products(id);
             synchronized (this) {
                 if (products == null) {
                     products = productsNew;
@@ -98,13 +97,13 @@ public class ProductLists {
         return products;
     }
 
-    public void setProducts(List<YourListedProduct> yourListedProducts) {
+    public void setProducts(List<ListedProduct> yourListedProducts) {
         this.products = yourListedProducts;
     }
 
-    public void addProduct(YourListedProduct product) {
+    public void addProduct(ListedProduct product) {
 
-        List<YourListedProduct> products = getProducts();
+        List<ListedProduct> products = getProducts();
         products.add(product);
         setProducts(products);
     }

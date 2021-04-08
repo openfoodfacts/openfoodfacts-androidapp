@@ -4,26 +4,29 @@ import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 
 class FileUtilsTest {
-    private val absoluteURL = "/path"
-    private val localURL = "file://path"
 
     @Test
-    fun fileIsLocal_true() {
-        assertThat(isLocaleFile(localURL)).isTrue()
+    fun `isLocaleFile returns true when file is local`() {
+        assertThat(isLocaleFile(LOCAL_PATH)).isTrue()
     }
 
     @Test
-    fun fileIsLocal_false() {
-        assertThat(isLocaleFile(absoluteURL)).isFalse()
+    fun `isLocaleFile returns false when file is absolute`() {
+        assertThat(isLocaleFile(ABSOLUTE_PATH)).isFalse()
     }
 
     @Test
-    fun isAbsolute_true() {
-        assertThat(isAbsoluteUrl(absoluteURL)).isTrue()
+    fun `isAbsoluteUrl returns true when file is local`() {
+        assertThat(isAbsoluteUrl(LOCAL_PATH)).isFalse()
     }
 
     @Test
-    fun isAbsolute_false() {
-        assertThat(isAbsoluteUrl(localURL)).isFalse()
+    fun `isAbsoluteUrl returns true when file is absolute`() {
+        assertThat(isAbsoluteUrl(ABSOLUTE_PATH)).isTrue()
+    }
+
+    companion object {
+        private const val ABSOLUTE_PATH = "/path"
+        private const val LOCAL_PATH = "file://path"
     }
 }

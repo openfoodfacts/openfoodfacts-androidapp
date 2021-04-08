@@ -6,7 +6,7 @@ import androidx.core.net.toUri
 import io.reactivex.Maybe
 import io.reactivex.schedulers.Schedulers
 import okhttp3.ResponseBody
-import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.Utils.makeOrGetPictureDirectory
 import java.io.File
 import java.io.FileOutputStream
@@ -31,7 +31,7 @@ object FileDownloader {
      * @param fileUrl provides the URL of the file to download.
      * @return [Maybe]
      */
-    fun download(context: Context, fileUrl: String, productsApi: ProductsAPI) = productsApi
+    fun download(context: Context, fileUrl: String, client: OpenFoodAPIClient) = client.rawApi
             .downloadFile(fileUrl)
             .flatMapMaybe { responseBody ->
                 Log.d(LOG_TAG, "server contacted and has file")

@@ -47,7 +47,7 @@ import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenNa
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenNameDao
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.Keys.lcIngredientsKey
-import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.FileDownloader.download
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
@@ -73,12 +73,25 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
     lateinit var picasso: Picasso
 
     @Inject
-    lateinit var productsApi: ProductsAPI
+    lateinit var client: OpenFoodAPIClient
 
     @Inject
     lateinit var matomoAnalytics: MatomoAnalytics
 
-    private var photoReceiverHandler: PhotoReceiverHandler? = null
+    private val photoReceiverHandler by lazy {
+        PhotoReceiverHandler(requireContext()) {
+            val uri = it.toURI()
+            imagePath = uri.path
+            newImageSelected = true
+            photoFile = it
+            val image = ProductImage(code!!, ProductImageField.INGREDIENTS, it, getLanguage(requireContext())).apply {
+                filePath = uri.path
+            }
+            (activity as? ProductEditActivity)?.addToPhotoMap(image, 1)
+            matomoAnalytics.trackEvent(AnalyticsEvent.ProductIngredientsPictureEdited(code))
+            hideImageProgress(false, getString(R.string.image_uploaded_successfully))
+        }
+    }
     private var mAllergenNameDao: AllergenNameDao? = null
     private var photoFile: File? = null
     private var code: String? = null
@@ -99,18 +112,6 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        photoReceiverHandler = PhotoReceiverHandler {
-            val uri = it.toURI()
-            imagePath = uri.path
-            newImageSelected = true
-            photoFile = it
-            val image = ProductImage(code!!, ProductImageField.INGREDIENTS, it).apply {
-                filePath = uri.path
-            }
-            (activity as? ProductEditActivity)?.addToPhotoMap(image, 1)
-            matomoAnalytics.trackEvent(AnalyticsEvent.ProductIngredientsPictureEdited(code))
-            hideImageProgress(false, getString(R.string.image_uploaded_successfully))
-        }
         val intent = if (activity == null) null else requireActivity().intent
         if (intent != null && intent.getBooleanExtra(ProductEditActivity.KEY_MODIFY_NUTRITION_PROMPT, false) && !intent
                         .getBooleanExtra(ProductEditActivity.KEY_MODIFY_CATEGORY_PROMPT, false)) {
@@ -323,7 +324,7 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
             imagePath == null -> editIngredientsImage()
             photoFile != null -> cropRotateImage(photoFile, getString(R.string.ingredients_picture))
             else -> {
-                download(requireContext(), imagePath!!, productsApi)
+                download(requireContext(), imagePath!!, client)
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe { file ->
                             photoFile = file
@@ -347,7 +348,7 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
             val imagePath = imagePath
             if (imagePath != null && (!isEditingFromArgs || newImageSelected)) {
                 photoFile = File(imagePath)
-                val image = ProductImage(code!!, ProductImageField.INGREDIENTS, photoFile!!)
+                val image = ProductImage(code!!, ProductImageField.INGREDIENTS, photoFile!!, getLanguage(context))
                 image.filePath = imagePath
                 (activity as ProductEditActivity).addToPhotoMap(image, 1)
             } else if (imagePath != null) {
@@ -403,7 +404,7 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        photoReceiverHandler!!.onActivityResult(this, requestCode, resultCode, data)
+        photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data)
     }
 
     /**

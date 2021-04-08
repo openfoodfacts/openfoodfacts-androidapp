@@ -8,7 +8,7 @@ import org.junit.Test
  */
 class ProductStateTest {
     @Test
-    fun toString_returnsProperlyFormattedString() {
+    fun `toString returns properly formatted string`() {
         val productState = ProductState().apply {
             statusVerbose = STATUS_VERBOSE
             status = STATUS
@@ -21,7 +21,11 @@ class ProductStateTest {
                 PROPERTY_KEY_1 to PROPERTY_VALUE_1,
                 PROPERTY_KEY_2 to PROPERTY_VALUE_2
         )
-        val checkString = "ProductState[statusVerbose=$STATUS_VERBOSE,status=$STATUS,product=$PRODUCT,code=$CODE,additionalProperties=$additionalProperties]"
+        val checkString = "ProductState[" +
+                "statusVerbose=$STATUS_VERBOSE," +
+                "status=$STATUS,product=$PRODUCT," +
+                "code=$CODE,additionalProperties=$additionalProperties" +
+                "]"
 
         assertThat(productState.toString()).isEqualTo(checkString)
     }

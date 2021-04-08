@@ -38,7 +38,6 @@ import com.theartofdev.edmodo.cropper.CropImage
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.addTo
-import io.reactivex.schedulers.Schedulers
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OBF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OPF
@@ -46,7 +45,6 @@ import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsView
 import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
-import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabsHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback
@@ -73,7 +71,7 @@ import openfoodfacts.github.scrachx.openfood.models.entities.store.StoreNameDao
 import openfoodfacts.github.scrachx.openfood.models.entities.tag.TagDao
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.Keys.lcProductNameKey
-import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.FileDownloader.download
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLCOrDefault
@@ -98,13 +96,31 @@ class ProductEditOverviewFragment : ProductEditFragment() {
     lateinit var picasso: Picasso
 
     @Inject
-    lateinit var productsApi: ProductsAPI
+    lateinit var client: OpenFoodAPIClient
 
     @Inject
     lateinit var matomoAnalytics: MatomoAnalytics
 
     private lateinit var appLanguageCode: String
-    private lateinit var photoReceiverHandler: PhotoReceiverHandler
+    private val photoReceiverHandler by lazy {
+        PhotoReceiverHandler(requireContext()) { newPhotoFile ->
+            photoFile = newPhotoFile
+            val image: ProductImage
+            val position: Int
+            if (isFrontImagePresent) {
+                image = ProductImage(barcode!!, ProductImageField.FRONT, newPhotoFile, getLanguage(requireContext()))
+                frontImageUrl = newPhotoFile.absolutePath
+                position = 0
+            } else {
+                image = ProductImage(barcode!!, ProductImageField.OTHER, newPhotoFile, getLanguage(requireContext()))
+                position = 3
+            }
+            image.filePath = newPhotoFile.toURI().path
+            (activity as? ProductEditActivity)?.addToPhotoMap(image, position)
+
+            hideImageProgress(false, StringUtils.EMPTY)
+        }
+    }
 
     private val categories = mutableListOf<String?>()
     private val countries = mutableListOf<String>()
@@ -128,23 +144,6 @@ class ProductEditOverviewFragment : ProductEditFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        photoReceiverHandler = PhotoReceiverHandler { newPhotoFile ->
-            photoFile = newPhotoFile
-            val image: ProductImage
-            val position: Int
-            if (isFrontImagePresent) {
-                image = ProductImage(barcode!!, ProductImageField.FRONT, newPhotoFile)
-                frontImageUrl = newPhotoFile.absolutePath
-                position = 0
-            } else {
-                image = ProductImage(barcode!!, ProductImageField.OTHER, newPhotoFile)
-                position = 3
-            }
-            image.filePath = newPhotoFile.toURI().path
-            (activity as? ProductEditActivity)?.addToPhotoMap(image, position)
-
-            hideImageProgress(false, StringUtils.EMPTY)
-        }
         binding.btnOtherPictures.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_a_photo_blue_18dp, 0, 0, 0)
 
         binding.btnNext.setOnClickListener { next() }
@@ -530,7 +529,7 @@ class ProductEditOverviewFragment : ProductEditFragment() {
             (operation.result as List<CountryName>).mapTo(countries) { it.name }
 
             val adapter = ArrayAdapter(requireActivity(), android.R.layout.simple_dropdown_item_1line, countries)
-            val embAdapter = EmbCodeAutoCompleteAdapter(activity, android.R.layout.simple_dropdown_item_1line, productsApi)
+            val embAdapter = EmbCodeAutoCompleteAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, client)
 
             binding.originOfIngredients.setAdapter(adapter)
             binding.countryWherePurchased.setAdapter(adapter)
@@ -576,8 +575,11 @@ class ProductEditOverviewFragment : ProductEditFragment() {
 
         if (isFlavors(OBF)) {
             binding.periodOfTimeAfterOpeningTil.visibility = View.VISIBLE
-            val customAdapter = PeriodAfterOpeningAutoCompleteAdapter(activity,
-                    android.R.layout.simple_dropdown_item_1line, productsApi)
+            val customAdapter = PeriodAfterOpeningAutoCompleteAdapter(
+                    activity,
+                    android.R.layout.simple_dropdown_item_1line,
+                    client
+            )
             binding.periodOfTimeAfterOpening.setAdapter(customAdapter)
         }
     }
@@ -598,8 +600,7 @@ class ProductEditOverviewFragment : ProductEditFragment() {
         if (editionMode) {
             loadFrontImage(lang)
             val fields = "ingredients_text_$lang,product_name_$lang"
-            productsApi.getProductByBarcode(product!!.code, fields, getUserAgent(Utils.HEADER_USER_AGENT_SEARCH))
-                    .subscribeOn(Schedulers.io())
+            client.getProductStateFull(product!!.code, fields)
                     .observeOn(AndroidSchedulers.mainThread())
                     .doOnSubscribe {
                         binding.name.setText(getString(R.string.txtLoading))
@@ -652,7 +653,7 @@ class ProductEditOverviewFragment : ProductEditFragment() {
             // Image found, download it if necessary and edit it
             isFrontImagePresent = true
             if (photoFile == null) {
-                download(requireContext(), frontImageUrl!!, productsApi)
+                download(requireContext(), frontImageUrl!!, client)
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe { file: File? ->
                             photoFile = file
@@ -852,7 +853,7 @@ class ProductEditOverviewFragment : ProductEditFragment() {
     }
 
     private fun selectProductLanguage() {
-        val localeValues = requireActivity().resources.getStringArray(R.array.languages_array)
+        val localeValues = SupportedLanguages.codes()
         val localeLabels = arrayOfNulls<String>(localeValues.size)
         val finalLocalValues = ArrayList<String>()
         val finalLocalLabels = ArrayList<String?>()

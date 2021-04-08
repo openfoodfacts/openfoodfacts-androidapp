@@ -19,6 +19,7 @@ import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NavUtils
 import androidx.core.content.ContextCompat
+import androidx.core.net.toUri
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -92,7 +93,7 @@ class ScanHistoryActivity : BaseActivity() {
 
     @RequiresApi(Build.VERSION_CODES.KITKAT)
     val fileWriterLauncher = registerForActivityResult(CreateCSVContract()) {
-        writeHistoryToFile(this, adapter.products, it, contentResolver.openOutputStream(it) ?: error("File path must not be null."))
+        writeHistoryToFile(this, adapter.products, it)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -242,7 +243,7 @@ class ScanHistoryActivity : BaseActivity() {
             val baseDir = File(Environment.getExternalStorageDirectory(), getCsvFolderName())
             if (!baseDir.exists()) baseDir.mkdirs()
             val file = File(baseDir, fileName)
-            writeHistoryToFile(this, adapter.products, Uri.fromFile(file), file.outputStream())
+            writeHistoryToFile(this, adapter.products, file.toUri())
         }
     }
 
@@ -276,22 +277,18 @@ class ScanHistoryActivity : BaseActivity() {
     }
 
     private fun showListSortingDialog() {
-        val sortTypes = if (BuildConfig.FLAVOR == "off") {
-            arrayOf(
-                    getString(R.string.by_title),
-                    getString(R.string.by_brand),
-                    getString(R.string.by_nutrition_grade),
-                    getString(R.string.by_barcode),
-                    getString(R.string.by_time)
-            )
-        } else {
-            arrayOf(
-                    getString(R.string.by_title),
-                    getString(R.string.by_brand),
-                    getString(R.string.by_time),
-                    getString(R.string.by_barcode)
-            )
-        }
+        val sortTypes = if (isFlavors(OFF)) arrayOf(
+                getString(R.string.by_title),
+                getString(R.string.by_brand),
+                getString(R.string.by_nutrition_grade),
+                getString(R.string.by_barcode),
+                getString(R.string.by_time)
+        ) else arrayOf(
+                getString(R.string.by_title),
+                getString(R.string.by_brand),
+                getString(R.string.by_time),
+                getString(R.string.by_barcode)
+        )
         MaterialDialog.Builder(this)
                 .title(R.string.sort_by)
                 .items(*sortTypes)
@@ -310,7 +307,6 @@ class ScanHistoryActivity : BaseActivity() {
 
     companion object {
         fun start(context: Context) = context.startActivity(Intent(context, ScanHistoryActivity::class.java))
-
         val LOG_TAG = ScanHistoryActivity::class.simpleName
     }
 

@@ -23,7 +23,6 @@ import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.drawable.ColorDrawable
-import android.net.ConnectivityManager
 import android.net.Uri
 import android.os.Bundle
 import android.provider.SearchRecentSuggestions
@@ -40,6 +39,7 @@ import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.edit
+import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commit
@@ -63,7 +63,6 @@ import com.mikepenz.materialdrawer.model.interfaces.IProfile
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.Maybe
 import io.reactivex.Observable
-import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
@@ -128,7 +127,6 @@ import openfoodfacts.github.scrachx.openfood.utils.Utils.hideKeyboard
 import openfoodfacts.github.scrachx.openfood.utils.Utils.isApplicationInstalled
 import openfoodfacts.github.scrachx.openfood.utils.Utils.isNetworkConnected
 import openfoodfacts.github.scrachx.openfood.utils.Utils.scheduleProductUploadJob
-import java.io.File
 import java.io.FileNotFoundException
 import java.io.IOException
 import java.util.*
@@ -158,7 +156,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
     private lateinit var customTabActivityHelper: CustomTabActivityHelper
     private lateinit var drawerResult: Drawer
     private lateinit var headerResult: AccountHeader
-    private lateinit var prefManager: PrefManager
+    private val prefManager: PrefManager by lazy { PrefManager(this) }
 
     private var searchMenuItem: MenuItem? = null
     private var userSettingsURI: Uri? = null
@@ -494,7 +492,6 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
                 onNeutral { _, _ -> loginThenOpenContributions.launch(Unit) }
                 show()
             }
-
         }
     }
 
@@ -505,7 +502,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
     private fun getProfileSettingDrawerItem(): IProfile<ProfileSettingDrawerItem> {
         val userLogin = getUserLogin()
         val userSession = getUserSession()
-        userSettingsURI = Uri.parse("${getString(R.string.website)}cgi/user.pl?type=edit&userid=$userLogin&user_id=$userLogin&user_session=$userSession")
+        userSettingsURI = "${getString(R.string.website)}cgi/user.pl?type=edit&userid=$userLogin&user_id=$userLogin&user_session=$userSession".toUri()
         customTabActivityHelper.mayLaunchUrl(userSettingsURI, null, null)
         return ProfileSettingDrawerItem().apply {
             withName(getString(R.string.action_manage_account))
@@ -543,12 +540,13 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
             drawerResult.closeDrawer()
         } else {
             if (supportFragmentManager.backStackEntryCount > 0) {
-                supportFragmentManager.popBackStack(supportFragmentManager.getBackStackEntryAt(0).id, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+                supportFragmentManager.popBackStack(
+                        supportFragmentManager.getBackStackEntryAt(0).id,
+                        FragmentManager.POP_BACK_STACK_INCLUSIVE
+                )
                 // Recreate the activity onBackPressed
                 recreate()
-            } else {
-                super.onBackPressed()
-            }
+            } else super.onBackPressed()
         }
     }
 
@@ -607,16 +605,15 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
     override fun onStart() {
         super.onStart()
         customTabActivityHelper.bindCustomTabsService(this)
-        prefManager = PrefManager(this)
         if (isFlavors(AppFlavors.OFF)
                 && isUserSet()
                 && !prefManager.isFirstTimeLaunch
                 && !prefManager.userAskedToRate) {
             val firstTimeLaunchTime = prefManager.firstTimeLaunchTime
+
             // Check if it has been a week since first launch
-            if (System.currentTimeMillis() - firstTimeLaunchTime >= WEEK_IN_MS) {
+            if (System.currentTimeMillis() - firstTimeLaunchTime >= WEEK_IN_MS)
                 showFeedbackDialog()
-            }
         }
     }
 
@@ -649,7 +646,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
                 CustomTabActivityHelper.openCustomTab(
                         this@MainActivity,
                         customTabsIntent,
-                        Uri.parse(getString(R.string.feedback_form_url)),
+                        getString(R.string.feedback_form_url).toUri(),
                         WebViewFallback(),
                 )
                 dialog.dismiss()
@@ -700,6 +697,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
             intent.action == Intent.ACTION_SEARCH -> {
                 Log.e("INTENT", "start activity")
                 val query = intent.getStringExtra(SearchManager.QUERY) as String
+
                 // Saves the most recent queries and adds it to the list of suggestions
                 val suggestions = SearchRecentSuggestions(
                         this,
@@ -762,13 +760,10 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
         intent.getParcelableArrayListExtra<Uri>(Intent.EXTRA_STREAM)?.let { chooseDialog(it.filterNotNull()) }
     }
 
-    private fun chooseDialog(selectedImagesArray: List<Uri>) {
-        detectBarcodeInImages(selectedImagesArray).observeOn(AndroidSchedulers.mainThread()).subscribe { barcodes ->
-            if (barcodes.isNotEmpty()) {
-                createAlertDialog(false, barcodes.first(), selectedImagesArray)
-            } else {
-                createAlertDialog(true, "", selectedImagesArray)
-            }
+    private fun chooseDialog(selectedImages: List<Uri>) {
+        detectBarcodeInImages(selectedImages).observeOn(AndroidSchedulers.mainThread()).subscribe { barcodes ->
+            if (barcodes.isNotEmpty()) createAlertDialog(false, barcodes.first(), selectedImages)
+            else createAlertDialog(true, "", selectedImages)
         }.addTo(disp)
     }
 
@@ -777,41 +772,42 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
      *
      * @param selectedImages
      */
-    private fun detectBarcodeInImages(selectedImages: List<Uri>): Single<MutableList<String>> {
-        return Observable.fromIterable(selectedImages).flatMapMaybe { uri ->
-            var bMap: Bitmap? = null
-            try {
-                contentResolver.openInputStream(uri).use { bMap = BitmapFactory.decodeStream(it) }
-            } catch (e: FileNotFoundException) {
-                Log.e(MainActivity::class.java.simpleName, "Could not resolve file from Uri $uri", e)
-            } catch (e: IOException) {
-                Log.e(MainActivity::class.java.simpleName, "IO error during bitmap stream decoding: " + e.message, e)
-            }
-            // Decoding bitmap
-            if (bMap != null) {
-                val intArray = IntArray(bMap!!.width * bMap!!.height)
-                bMap!!.getPixels(intArray, 0, bMap!!.width, 0, 0, bMap!!.width, bMap!!.height)
-                val source: LuminanceSource = RGBLuminanceSource(bMap!!.width, bMap!!.height, intArray)
-                val bitmap = BinaryBitmap(HybridBinarizer(source))
-                val reader: Reader = MultiFormatReader()
+    private fun detectBarcodeInImages(selectedImages: List<Uri>) = Observable
+            .fromIterable(selectedImages)
+            .flatMapMaybe { uri ->
+                var bMap: Bitmap? = null
                 try {
-                    val decodeHints = EnumMap<DecodeHintType, Any?>(DecodeHintType::class.java)
-                    decodeHints[DecodeHintType.TRY_HARDER] = java.lang.Boolean.TRUE
-                    decodeHints[DecodeHintType.PURE_BARCODE] = java.lang.Boolean.TRUE
-                    val decodedResult = reader.decode(bitmap, decodeHints)
-                    if (decodedResult != null) {
-                        return@flatMapMaybe Maybe.just(decodedResult.text)
-                    }
+                    bMap = contentResolver.openInputStream(uri).use { BitmapFactory.decodeStream(it) }
+                } catch (e: FileNotFoundException) {
+                    Log.e(MainActivity::class.java.simpleName, "Could not resolve file from Uri $uri", e)
+                } catch (e: IOException) {
+                    Log.e(MainActivity::class.java.simpleName, "IO error during bitmap stream decoding: " + e.message, e)
+                }
+                // Decoding bitmap
+                if (bMap == null) return@flatMapMaybe Maybe.empty<String>()
+
+                val intArray = IntArray(bMap.width * bMap.height)
+                bMap.getPixels(intArray, 0, bMap.width, 0, 0, bMap.width, bMap.height)
+                val source = RGBLuminanceSource(bMap.width, bMap.height, intArray)
+                val bitmap = BinaryBitmap(HybridBinarizer(source))
+                val reader = MultiFormatReader()
+                return@flatMapMaybe try {
+                    val decodeHints = mapOf(
+                            DecodeHintType.TRY_HARDER to true,
+                            DecodeHintType.PURE_BARCODE to true
+                    )
+                    val decodedResult = reader.decode(bitmap, decodeHints)!!
+                    Maybe.just(decodedResult.text)
                 } catch (e: FormatException) {
                     Toast.makeText(this@MainActivity, getString(R.string.format_error), Toast.LENGTH_SHORT).show()
                     Log.e(MainActivity::class.simpleName, "Error decoding bitmap into barcode: ${e.message}")
+                    Maybe.empty()
                 } catch (e: Exception) {
                     Log.e(MainActivity::class.simpleName, "Error decoding bitmap into barcode: ${e.message}")
+                    Maybe.empty()
                 }
-            }
-            return@flatMapMaybe Maybe.empty()
-        }.toList().subscribeOn(Schedulers.computation())
-    }
+
+            }.toList().subscribeOn(Schedulers.computation())
 
     private fun createAlertDialog(hasEditText: Boolean, barcode: String, imgUris: List<Uri>) {
         val alertDialogBuilder = AlertDialog.Builder(this)
@@ -837,27 +833,32 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
         // set dialog message
         alertDialogBuilder.run {
             setCancelable(false)
+
             setPositiveButton(R.string.txtYes) { dialog, _ ->
                 imgUris.forEach { selected ->
-                    val cm = getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager
-                    val activeNetwork = cm.activeNetworkInfo
                     val tempBarcode = if (hasEditText) barcodeEditText.text.toString() else barcode
+
                     if (tempBarcode.isNotEmpty()) {
                         dialog.dismiss()
-                        if (activeNetwork != null && activeNetwork.isConnectedOrConnecting) {
-                            val imageFile = File(RealPathUtil.getRealPath(this@MainActivity, selected))
-                            val image = ProductImage(tempBarcode, ProductImageField.OTHER, imageFile)
-                            apiClient.postImg(image).subscribe().addTo(disp)
+                        if (isNetworkConnected(this@MainActivity)) {
+                            contentResolver.openInputStream(selected)!!.use {
+                                val image = ProductImage(
+                                        tempBarcode,
+                                        ProductImageField.OTHER,
+                                        it.readBytes(),
+                                        getLanguage(this@MainActivity)
+                                )
+                                apiClient.postImg(image).subscribe().addTo(disp)
+                            }
                         } else {
-                            val product = Product().apply { code = tempBarcode }
-                            ProductEditActivity.start(this@MainActivity, product)
+                            ProductEditActivity.start(this@MainActivity, Product().apply { code = tempBarcode })
                         }
                     } else {
                         Toast.makeText(this@MainActivity, getString(R.string.sorry_msg), Toast.LENGTH_LONG).show()
                     }
                 }
             }
-            setNegativeButton(R.string.txtNo) { dialog, _ -> dialog.cancel() }
+            setNegativeButton(R.string.txtNo) { d, _ -> d.cancel() }
             create()
             show()
         }
@@ -865,7 +866,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
     }
 
     companion object {
-        private const val USER_ID: Long = 500
+        private const val USER_ID = 500L
         private const val CONTRIBUTIONS_SHORTCUT = "CONTRIBUTIONS"
         private const val SCAN_SHORTCUT = "SCAN"
         private const val BARCODE_SHORTCUT = "BARCODE"

@@ -39,25 +39,25 @@ class NutrimentsTest {
     }
 
     @Test
-    fun getUnit_returnsUnit() {
+    fun `getUnit returns correct unit`() {
         nutriments.setAdditionalProperty(NUTRIMENT_UNIT_KEY, NUTRIMENT_UNIT)
         assertThat(nutriments[NUTRIMENT_NAME_KEY]?.unit).isEqualTo(NUTRIMENT_UNIT)
     }
 
     @Test
-    fun getServing_returnsServing() {
+    fun `getServing returns correct serving`() {
         nutriments.setAdditionalProperty(NUTRIMENT_SERVING_KEY, NUTRIMENT_SERVING)
         assertThat(nutriments[NUTRIMENT_NAME_KEY]?.forServing).isEqualTo(NUTRIMENT_SERVING)
     }
 
     @Test
-    fun get100g_returns100g() {
+    fun `get100g returns quantity for 100g`() {
         nutriments.setAdditionalProperty(NUTRIMENT_100G_KEY, NUTRIMENT_100G)
         assertThat(nutriments[NUTRIMENT_NAME_KEY]?.for100g).isEqualTo(NUTRIMENT_100G)
     }
 
     @Test
-    fun getNonExistentNutriment_returnsNull() {
+    fun `Returns null for non existent nutriment`() {
         assertThat(nutriments["not there"]).isNull()
     }
 
