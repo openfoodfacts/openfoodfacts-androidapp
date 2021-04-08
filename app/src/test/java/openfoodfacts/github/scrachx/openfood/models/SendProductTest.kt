@@ -48,9 +48,9 @@ class SendProductTest {
         assertThat(product2.brands).isEqualTo(BRANDS)
         assertThat(product2.weight).isEqualTo(WEIGHT)
         assertThat(product2.weightUnit).isEqualTo(WEIGHT_UNIT)
-        assertThat(product2.imguploadFront).isEqualTo(IMG_UPLOAD_FRONT)
-        assertThat(product2.imguploadIngredients).isEqualTo(IMG_UPLOAD_INGREDIENTS)
-        assertThat(product2.imguploadNutrition).isEqualTo(IMG_UPLOAD_NUTRITION)
+        assertThat(product2.imgUploadFront).isEqualTo(IMG_UPLOAD_FRONT)
+        assertThat(product2.imgUploadIngredients).isEqualTo(IMG_UPLOAD_INGREDIENTS)
+        assertThat(product2.imgUploadNutrition).isEqualTo(IMG_UPLOAD_NUTRITION)
     }
 
     @Test

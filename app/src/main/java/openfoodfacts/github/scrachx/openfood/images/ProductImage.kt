@@ -8,35 +8,39 @@ import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import java.io.File
 
 class ProductImage(
-        code: String,
-        field: ProductImageField,
-        image: File,
+        val barcode: String,
+        val imageField: ProductImageField,
+        imageBytes: ByteArray,
         val language: String?
 ) {
-    val code: RequestBody = RequestBody.create(OpenFoodAPIClient.MIME_TEXT, code)
-    val field: RequestBody = RequestBody.create(OpenFoodAPIClient.MIME_TEXT, "${field}_$language")
+
+    constructor(code: String, field: ProductImageField, image: File, language: String?) :
+            this(code, field, image.readBytes(), language)
+
+    val codeBody: RequestBody = RequestBody.create(OpenFoodAPIClient.MIME_TEXT, barcode)
+    val fieldBody: RequestBody = RequestBody.create(OpenFoodAPIClient.MIME_TEXT, "${imageField}_$language")
+
     var imgFront: RequestBody? = null
     var imgIngredients: RequestBody? = null
     var imgNutrition: RequestBody? = null
     var imgPackaging: RequestBody? = null
     var imgOther: RequestBody? = null
+
     var filePath: String? = null
-    val barcode: String?
-    val imageField: ProductImageField
+
+    init {
+        when (imageField) {
+            FRONT -> imgFront = createImageRequest(imageBytes)
+            INGREDIENTS -> imgIngredients = createImageRequest(imageBytes)
+            NUTRITION -> imgNutrition = createImageRequest(imageBytes)
+            PACKAGING -> imgPackaging = createImageRequest(imageBytes)
+            OTHER -> imgOther = createImageRequest(imageBytes)
+        }
+    }
 
     companion object {
         fun createImageRequest(image: File): RequestBody = RequestBody.create(MediaType.parse("image/*"), image)
+        fun createImageRequest(bytes: ByteArray): RequestBody = RequestBody.create(MediaType.parse("image/*"), bytes)
     }
 
-    init {
-        when (field) {
-            FRONT -> imgFront = createImageRequest(image)
-            INGREDIENTS -> imgIngredients = createImageRequest(image)
-            NUTRITION -> imgNutrition = createImageRequest(image)
-            PACKAGING -> imgPackaging = createImageRequest(image)
-            OTHER -> imgOther = createImageRequest(image)
-        }
-        barcode = code
-        imageField = field
-    }
 }

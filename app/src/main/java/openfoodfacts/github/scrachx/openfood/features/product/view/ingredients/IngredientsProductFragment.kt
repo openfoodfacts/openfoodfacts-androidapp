@@ -119,7 +119,7 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
 
     private var mSendProduct: SendProduct? = null
 
-    var ingredients: String? = null
+    var ingredientsImgUrl: String? = null
         private set
 
     private var sendUpdatedIngredientsImage = false
@@ -207,14 +207,14 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
             } else {
                 binding.imageViewIngredients.visibility = View.GONE
             }
-            ingredients = product.getImageIngredientsUrl(langCode)
+            ingredientsImgUrl = product.getImageIngredientsUrl(langCode)
         }
 
         //useful when this fragment is used in offline saving
-        if (mSendProduct != null && !mSendProduct!!.imguploadIngredients.isNullOrBlank()) {
+        if (mSendProduct != null && !mSendProduct!!.imgUploadIngredients.isNullOrBlank()) {
             binding.addPhotoLabel.visibility = View.GONE
-            ingredients = mSendProduct!!.imguploadIngredients
-            picasso.load(LOCALE_FILE_SCHEME + ingredients).config(Bitmap.Config.RGB_565).into(binding.imageViewIngredients)
+            ingredientsImgUrl = mSendProduct!!.imgUploadIngredients
+            picasso.load(LOCALE_FILE_SCHEME + ingredientsImgUrl).config(Bitmap.Config.RGB_565).into(binding.imageViewIngredients)
         }
         val allergens = getAllergens()
         if (!product.getIngredientsText(langCode).isNullOrEmpty()) {
@@ -425,13 +425,13 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
     }
 
     private fun openFullScreen() {
-        if (ingredients != null && productState.product != null) {
+        if (ingredientsImgUrl != null && productState.product != null) {
             FullScreenActivityOpener.openForUrl(
                     this,
                     client,
                     productState.product!!,
                     ProductImageField.INGREDIENTS,
-                    ingredients,
+                    ingredientsImgUrl!!,
                     binding.imageViewIngredients,
             )
         } else {
@@ -448,7 +448,7 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
         image.filePath = newPhotoFile.absolutePath
         client.postImg(image).subscribe().addTo(disp)
         binding.addPhotoLabel.visibility = View.GONE
-        ingredients = newPhotoFile.absolutePath
+        ingredientsImgUrl = newPhotoFile.absolutePath
         Picasso.get()
                 .load(newPhotoFile)
                 .fit()

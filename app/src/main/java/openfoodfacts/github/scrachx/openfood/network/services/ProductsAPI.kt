@@ -90,19 +90,16 @@ interface ProductsAPI {
     @GET("$API_P/product/{barcode}.json?fields=ingredients")
     fun getIngredientsByBarcode(@Path("barcode") barcode: String?): Single<JsonNode>
 
-    @Deprecated("")
     @Multipart
     @POST("/cgi/product_image_upload.pl")
-    fun saveImage(@PartMap fields: Map<String?, @JvmSuppressWildcards RequestBody?>?): Call<JsonNode>
-
-    @Multipart
-    @POST("/cgi/product_image_upload.pl")
-    fun saveImageSingle(@PartMap fields: Map<String, @JvmSuppressWildcards RequestBody?>?): Single<JsonNode>
+    fun saveImage(
+            @PartMap fields: Map<String, @JvmSuppressWildcards RequestBody?>
+    ): Single<JsonNode>
 
     @GET("/cgi/product_image_crop.pl")
-    fun editImageSingle(
-            @Query(ApiFields.Keys.BARCODE) code: String?,
-            @QueryMap fields: Map<String, @JvmSuppressWildcards String?>?
+    fun editImage(
+            @Query(ApiFields.Keys.BARCODE) code: String,
+            @QueryMap fields: Map<String, @JvmSuppressWildcards String?>
     ): Single<JsonNode>
 
     @GET("/cgi/ingredients.pl?process_image=1&ocr_engine=google_cloud_vision")

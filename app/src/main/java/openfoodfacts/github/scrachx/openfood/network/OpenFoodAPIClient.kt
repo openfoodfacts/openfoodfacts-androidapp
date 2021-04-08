@@ -182,7 +182,7 @@ class OpenFoodAPIClient @Inject constructor(
      */
     private fun getUploadableMap(image: ProductImage): Map<String, RequestBody?> {
         val lang = image.language
-        val imgMap = hashMapOf(PRODUCT_BARCODE to image.code, "imagefield" to image.field)
+        val imgMap = hashMapOf(PRODUCT_BARCODE to image.codeBody, "imagefield" to image.fieldBody)
         if (image.imgFront != null) {
             imgMap["""imgupload_front"; filename="front_$lang$PNG_EXT"""] = image.imgFront!!
         }
@@ -237,7 +237,7 @@ class OpenFoodAPIClient @Inject constructor(
                         return@mapNotNull null
                     }
                     val productImage = ProductImage(product.barcode, product.productField, imageFile, getLanguage(context))
-                    return@mapNotNull rawApi.saveImageSingle(getUploadableMap(productImage))
+                    return@mapNotNull rawApi.saveImage(getUploadableMap(productImage))
                             .flatMapCompletable { jsonNode: JsonNode? ->
                                 if (jsonNode != null) {
                                     Log.d("onResponse", jsonNode.toString())
@@ -273,7 +273,7 @@ class OpenFoodAPIClient @Inject constructor(
             rawApi.getProductByBrands(brand, page, fieldsToFetchFacets)
 
     fun postImg(image: ProductImage, setAsDefault: Boolean = false): Completable {
-        return rawApi.saveImageSingle(getUploadableMap(image))
+        return rawApi.saveImage(getUploadableMap(image))
                 .flatMapCompletable { body: JsonNode ->
                     if (!body.isObject) {
                         throw IOException("body is not an object")
@@ -302,7 +302,7 @@ class OpenFoodAPIClient @Inject constructor(
                 IMG_ID to body["image"][IMG_ID].asText(),
                 "id" to body["imagefield"].asText()
         )
-        return rawApi.editImageSingle(image.barcode, addUserInfo(queryMap))
+        return rawApi.editImage(image.barcode, addUserInfo(queryMap))
                 .flatMapCompletable { jsonNode: JsonNode ->
                     if ("status ok" == jsonNode[ApiFields.Keys.STATUS].asText()) {
                         return@flatMapCompletable Completable.complete()
@@ -395,7 +395,7 @@ class OpenFoodAPIClient @Inject constructor(
 
     companion object {
         val MIME_TEXT: MediaType = MediaType.get("text/plain")
-        const val PNG_EXT = ".png\""
+        const val PNG_EXT = ".png"
         fun HistoryProductDao.addToHistorySync(product: OfflineSavedProduct) {
             val historyProducts = queryBuilder().where(HistoryProductDao.Properties.Barcode.eq(product.barcode)).list()
             val productDetails = product.productDetails

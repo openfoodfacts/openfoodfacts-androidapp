@@ -38,12 +38,10 @@ import java.util.*
 object LocaleHelper {
     private val SELECTED_LANGUAGE by lazy { OFFApplication._instance.getString(R.string.pref_language_key) }
 
-    fun List<LanguageData>.find(language: String) = indexOfFirst { language == it.code }
-
     fun onCreate(context: Context, defaultLanguage: String = Locale.getDefault().language) =
             setLanguageInPrefs(context, getLanguageInPreferences(context, defaultLanguage))
 
-    fun getLanguageData(codes: Collection<String?>, supported: Boolean) =
+    fun getLanguageData(codes: Collection<String>, supported: Boolean) =
             codes.map { getLanguageData(it, supported) }.sorted().toMutableList()
 
     fun getLanguageData(code: String?, supported: Boolean) =

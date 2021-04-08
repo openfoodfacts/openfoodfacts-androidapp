@@ -37,13 +37,17 @@ public class SendProduct implements Serializable {
     @JsonIgnore
     private String weight;
     @JsonIgnore
-    private String imguploadFront;
+    @Property(nameInDb = "IMGUPLOAD_FRONT")
+    private String imgUploadFront;
     @JsonIgnore
-    private String imguploadIngredients;
+    @Property(nameInDb = "IMGUPLOAD_INGREDIENTS")
+    private String imgUploadIngredients;
     @JsonIgnore
-    private String imguploadNutrition;
+    @Property(nameInDb = "IMGUPLOAD_NUTRITION")
+    private String imgUploadNutrition;
     @JsonIgnore
-    private String imguploadPackaging;
+    @Property(nameInDb = "IMGUPLOAD_PACKAGING")
+    private String imgUploadPackaging;
     @JsonProperty(ApiFields.Keys.USER_ID)
     @Transient
     private String userID;
@@ -56,19 +60,19 @@ public class SendProduct implements Serializable {
     public SendProduct() {
     }
 
-    @Generated(hash = 1120947740)
-    public SendProduct(Long id, String barcode, String lang, String name, String brands, String weight, String imguploadFront, String imguploadIngredients,
-                       String imguploadNutrition, String imguploadPackaging, String weightUnit) {
+    @Generated(hash = 1316358111)
+    public SendProduct(Long id, String barcode, String lang, String name, String brands, String weight, String imgUploadFront, String imgUploadIngredients,
+                       String imgUploadNutrition, String imgUploadPackaging, String weightUnit) {
         this.id = id;
         this.barcode = barcode;
         this.lang = lang;
         this.name = name;
         this.brands = brands;
         this.weight = weight;
-        this.imguploadFront = imguploadFront;
-        this.imguploadIngredients = imguploadIngredients;
-        this.imguploadNutrition = imguploadNutrition;
-        this.imguploadPackaging = imguploadPackaging;
+        this.imgUploadFront = imgUploadFront;
+        this.imgUploadIngredients = imgUploadIngredients;
+        this.imgUploadNutrition = imgUploadNutrition;
+        this.imgUploadPackaging = imgUploadPackaging;
         this.weightUnit = weightUnit;
     }
 
@@ -79,10 +83,10 @@ public class SendProduct implements Serializable {
         this.brands = sp.getBrands();
         this.weight = sp.getWeight();
         this.weightUnit = sp.getWeightUnit();
-        this.imguploadFront = sp.getImguploadFront();
-        this.imguploadIngredients = sp.getImguploadIngredients();
-        this.imguploadNutrition = sp.getImguploadNutrition();
-        this.imguploadPackaging = sp.getImguploadPackaging();
+        this.imgUploadFront = sp.getImgUploadFront();
+        this.imgUploadIngredients = sp.getImgUploadIngredients();
+        this.imgUploadNutrition = sp.getImgUploadNutrition();
+        this.imgUploadPackaging = sp.getImgUploadPackaging();
         this.lang = sp.getLang();
     }
 
@@ -115,7 +119,7 @@ public class SendProduct implements Serializable {
             return null;
         }
 
-        return this.weight + " " + this.weightUnit;
+        return String.format("%s %s", this.weight, this.weightUnit);
     }
 
     public String getBarcode() {
@@ -142,12 +146,12 @@ public class SendProduct implements Serializable {
         this.weight = weight;
     }
 
-    public String getImguploadFront() {
-        return imguploadFront;
+    public String getImgUploadFront() {
+        return imgUploadFront;
     }
 
-    public void setImguploadFront(String imguploadFront) {
-        this.imguploadFront = imguploadFront;
+    public void setImgUploadFront(String imgUploadFront) {
+        this.imgUploadFront = imgUploadFront;
     }
 
     public String getBrands() {
@@ -158,28 +162,28 @@ public class SendProduct implements Serializable {
         this.brands = brands;
     }
 
-    public String getImguploadIngredients() {
-        return imguploadIngredients;
+    public String getImgUploadIngredients() {
+        return imgUploadIngredients;
     }
 
-    public void setImguploadIngredients(String imguploadIngredients) {
-        this.imguploadIngredients = imguploadIngredients;
+    public void setImgUploadIngredients(String imgUploadIngredients) {
+        this.imgUploadIngredients = imgUploadIngredients;
     }
 
-    public String getImguploadNutrition() {
-        return imguploadNutrition;
+    public String getImgUploadNutrition() {
+        return imgUploadNutrition;
     }
 
-    public void setImguploadNutrition(String imguploadNutrition) {
-        this.imguploadNutrition = imguploadNutrition;
+    public void setImgUploadNutrition(String imgUploadNutrition) {
+        this.imgUploadNutrition = imgUploadNutrition;
     }
 
-    public String getImguploadPackaging() {
-        return imguploadPackaging;
+    public String getImgUploadPackaging() {
+        return imgUploadPackaging;
     }
 
-    public void setImguploadPackaging(String imguploadPackaging) {
-        this.imguploadPackaging = imguploadPackaging;
+    public void setImgUploadPackaging(String imgUploadPackaging) {
+        this.imgUploadPackaging = imgUploadPackaging;
     }
 
     /**
@@ -189,16 +193,16 @@ public class SendProduct implements Serializable {
     public void compress(@NonNull ProductImageField field) {
         switch (field) {
             case NUTRITION:
-                this.imguploadNutrition = Utils.compressImage(this.imguploadNutrition);
+                this.imgUploadNutrition = Utils.compressImage(this.imgUploadNutrition);
                 break;
             case INGREDIENTS:
-                this.imguploadIngredients = Utils.compressImage(this.imguploadIngredients);
+                this.imgUploadIngredients = Utils.compressImage(this.imgUploadIngredients);
                 break;
             case PACKAGING:
-                this.imguploadPackaging = Utils.compressImage(this.imguploadPackaging);
+                this.imgUploadPackaging = Utils.compressImage(this.imgUploadPackaging);
                 break;
             case FRONT:
-                this.imguploadFront = Utils.compressImage(this.imguploadFront);
+                this.imgUploadFront = Utils.compressImage(this.imgUploadFront);
                 break;
             default:
                 //nothing to do
@@ -237,9 +241,9 @@ public class SendProduct implements Serializable {
             && TextUtils.equals(this.brands, sp.getBrands())
             && TextUtils.equals(this.weight, sp.getWeight())
             && TextUtils.equals(this.weightUnit, sp.getWeightUnit())
-            && TextUtils.equals(this.imguploadFront, sp.getImguploadFront())
-            && TextUtils.equals(this.imguploadNutrition, sp.getImguploadNutrition())
-            && TextUtils.equals(this.imguploadPackaging, sp.getImguploadPackaging())
-            && TextUtils.equals(this.imguploadIngredients, sp.getImguploadIngredients());
+            && TextUtils.equals(this.imgUploadFront, sp.getImgUploadFront())
+            && TextUtils.equals(this.imgUploadNutrition, sp.getImgUploadNutrition())
+            && TextUtils.equals(this.imgUploadPackaging, sp.getImgUploadPackaging())
+            && TextUtils.equals(this.imgUploadIngredients, sp.getImgUploadIngredients());
     }
 }
