@@ -762,13 +762,37 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         return spannableStringBuilder
     }
 
+
+    private val loginThenEditLauncher = registerForActivityResult(LoginContract())
+    { logged -> if (logged) editProduct() }
+
+    private val loginThenEditNutrition = registerForActivityResult(LoginContract())
+    { logged -> if (logged) editProductNutriscore() }
+
+    private fun onEditProductButtonClick() {
+        if (requireActivity().isUserSet()) {
+            editProduct()
+        } else {
+            buildSignInDialog(requireActivity())
+                    .onPositive { d, _ ->
+                        d.dismiss()
+                        loginThenEditLauncher.launch(null)
+                    }
+                    .onNegative { d, _ -> d.dismiss() }
+        }
+    }
+
     private fun onAddNutriScorePromptClick() {
-        if (isFlavors(OFF)) {
-            if (!requireActivity().isUserSet()) {
-                startLoginToEditAnd(EDIT_PRODUCT_NUTRITION_AFTER_LOGIN, requireActivity())
-            } else {
-                editProductNutriscore()
-            }
+        if (!isFlavors(OFF)) return
+        if (requireActivity().isUserSet()) {
+            editProductNutriscore()
+        } else {
+            buildSignInDialog(requireActivity())
+                    .onPositive { d, _ ->
+                        d.dismiss()
+                        loginThenEditNutrition.launch(null)
+                    }
+                    .onNegative { d, _ -> d.dismiss() }
         }
     }
 
@@ -796,19 +820,10 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         }, null))
     }
 
-    private fun onEditProductButtonClick() {
-        if (!requireActivity().isUserSet()) {
-            startLoginToEditAnd(EDIT_PRODUCT_AFTER_LOGIN, requireActivity())
-        } else {
-            editProduct()
-        }
-    }
+    private val editProductLauncher = registerForActivityResult(ProductEditActivity.EditProductContract())
+    { isOk -> if (isOk) (activity as ProductViewActivity).onRefresh() }
 
-    private fun editProduct() {
-        startActivityForResult(Intent(activity, ProductEditActivity::class.java).apply {
-            putExtra(ProductEditActivity.KEY_EDIT_PRODUCT, product)
-        }, EDIT_REQUEST_CODE)
-    }
+    private fun editProduct() = editProductLauncher.launch(product)
 
     private fun onBookmarkProductButtonClick() {
         val activity: Activity = requireActivity()
@@ -876,21 +891,13 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
 
         photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data)
 
-        val shouldRefresh = (requestCode == EDIT_REQUEST_CODE
-                && resultCode == Activity.RESULT_OK
-                || ImagesManageActivity.isImageModified(requestCode, resultCode))
+        val shouldRefresh = ImagesManageActivity.isImageModified(requestCode, resultCode)
 
         if (shouldRefresh && activity is ProductViewActivity) {
             (activity as ProductViewActivity).onRefresh()
         }
-
-        if (resultCode == Activity.RESULT_OK && requireActivity().isUserSet()) {
-            when (requestCode) {
-                EDIT_PRODUCT_AFTER_LOGIN -> editProduct()
-                EDIT_PRODUCT_NUTRITION_AFTER_LOGIN -> editProductNutriscore()
-            }
-        }
     }
+
 
     override fun doOnPhotosPermissionGranted() =
             if (sendOther) takeMorePicture()
@@ -905,10 +912,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     }
 
     companion object {
-        const val EDIT_PRODUCT_AFTER_LOGIN = 1
-        private const val EDIT_PRODUCT_NUTRITION_AFTER_LOGIN = 3
-        private const val EDIT_REQUEST_CODE = 2
-        private val LOG_TAG = this::class.simpleName!!
+        private val LOG_TAG = SummaryProductFragment::class.simpleName!!
 
         fun newInstance(productState: ProductState) = SummaryProductFragment().apply {
             arguments = Bundle().apply {

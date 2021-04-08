@@ -235,28 +235,18 @@ object Utils {
     fun firstNotEmpty(vararg args: String?) = args.firstOrNull { it != null && it.isNotEmpty() }
 }
 
-fun isAllGranted(grantResults: Map<String?, Boolean?>) = !grantResults.containsValue(false)
-
 fun isAllGranted(grantResults: IntArray) =
         grantResults.isNotEmpty() && grantResults.none { it != PERMISSION_GRANTED }
 
-/**
- * Ask to login before editing product
- */
-fun startLoginToEditAnd(requestCode: Int, activity: Activity?) {
-    if (activity == null) return
-    MaterialDialog.Builder(activity)
-            .title(R.string.sign_in_to_edit)
-            .positiveText(R.string.txtSignIn)
-            .negativeText(R.string.dialog_cancel)
-            .onPositive { dialog, _ ->
-                val intent = Intent(activity, LoginActivity::class.java)
-                activity.startActivityForResult(intent, requestCode)
-                dialog.dismiss()
-            }
-            .onNegative { dialog, _ -> dialog.dismiss() }
-            .build().show()
+fun buildSignInDialog(activity: Activity): MaterialDialog.Builder = MaterialDialog.Builder(activity)
+        .title(R.string.sign_in_to_edit)
+        .positiveText(R.string.txtSignIn)
+        .negativeText(R.string.dialog_cancel)
+
+private fun startActivityLoginWithRequestCode(activity: Activity, requestCode: Int) {
+    activity.startActivityForResult(Intent(activity, LoginActivity::class.java), requestCode)
 }
+
 
 /**
  * @param type Type of call (Search or Scan)

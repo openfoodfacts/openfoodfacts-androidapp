@@ -109,7 +109,7 @@ class OfflineProductService @Inject constructor(
         val image = ProductImage.createImageRequest(File(imageFilePath))
         imgMap["""imgupload_$imageType"; filename="${imageType}_$language.png""""] = image
         return try {
-            val jsonNode = productsApi.saveImageSingle(imgMap).blockingGet()
+            val jsonNode = productsApi.saveImage(imgMap).blockingGet()
             val status = jsonNode["status"].asText()
             if (status == "status not ok") {
                 val error = jsonNode["error"].asText()

@@ -211,9 +211,9 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
         }
 
         //useful when this fragment is used in offline saving
-        if (mSendProduct != null && !mSendProduct!!.imguploadIngredients.isNullOrBlank()) {
+        if (mSendProduct != null && !mSendProduct!!.imgUploadIngredients.isNullOrBlank()) {
             binding.addPhotoLabel.visibility = View.GONE
-            ingredientsImgUrl = mSendProduct!!.imguploadIngredients
+            ingredientsImgUrl = mSendProduct!!.imgUploadIngredients
             picasso.load(LOCALE_FILE_SCHEME + ingredientsImgUrl).config(Bitmap.Config.RGB_565).into(binding.imageViewIngredients)
         }
         val allergens = getAllergens()
