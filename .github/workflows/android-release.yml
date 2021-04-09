@@ -102,7 +102,7 @@ jobs:
           distribution: 'adopt'
           java-version: '11'
 
-      - name: Workaround for Android Gradle plugin issue
+      - name: Workaround for Android Gradle Plugin issue
         run: "echo \"ndk.dir=${ANDROID_HOME}/ndk-bundle\" > local.properties"
 
       - name: Set up Ruby 2.6

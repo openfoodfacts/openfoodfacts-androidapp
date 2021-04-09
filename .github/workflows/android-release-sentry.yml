@@ -8,6 +8,7 @@ jobs:
   finalize-sentry-release:
     name: Finalize Sentry release
     runs-on: ubuntu-20.04
+
     steps:
       - name: Checkout sources
         uses: actions/checkout@v2
@@ -24,12 +25,12 @@ jobs:
           ruby-version: 2.6.x
 
       - name: Install sentry-cli
-        run: curl -sL https://sentry.io/get-cli/ | bash
+        run: "curl -sL https://sentry.io/get-cli/ | bash"
 
-      - name: Install Dependencies
+      - name: Install dependencies via bundle
         run: gem install bundler && bundle install
 
-      - name: Run Fastlane finalize_sentry lane
+      - name: Run fastlane finalize_sentry lane
         run: bundle exec fastlane finalize_sentry
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
