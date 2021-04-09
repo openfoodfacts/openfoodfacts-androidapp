@@ -39,7 +39,7 @@ desc "Build debug and test APK for screenshots"
      # project_dir: './'
    # )
     build_android_app(
-      task: 'assemble app:connectedOffPlaystoreScreenshotsDebugAndroidTest',
+      task: 'assemble app:connectedOffPlaystoreScreenshotsAndroidTest',
       project_dir: './'
        )
     #build_android_app(
