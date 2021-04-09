@@ -37,8 +37,8 @@ fun obtainTestBuildType(): String {
     // To activate  screenshots buildType in IDE; uncomment next line and comment other
     // otherwise the folder androidTestScreenshots is not recognized as a test folder.
     // SWITCH SWITCH SWITCH
-    //val result = "screenshots"
-    val result = "debug"
+    val result = "screenshots"
+    //val result = "debug"
 
     return project.properties.getOrDefault("testBuildType", result) as String
 }
