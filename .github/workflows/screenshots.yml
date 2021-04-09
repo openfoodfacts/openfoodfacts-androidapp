@@ -45,7 +45,10 @@ jobs:
         run: gem install bundler && bundle install
 
       - name: Build Screenshots APK
-        run: pwd && bundle exec fastlane build_for_screengrab && find . -type f -name '*.apk'
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 29
+          script: pwd && bundle exec fastlane build_for_screengrab && find . -type f -name '*.apk' && bundle exec fastlane screengrab
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
           CI_RELEASE: true
