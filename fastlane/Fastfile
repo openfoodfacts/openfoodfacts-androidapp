@@ -39,15 +39,16 @@ desc "Build debug and test APK for screenshots"
      # project_dir: './'
    # )
     build_android_app(
-      task: 'app:connectedOffPlaystoreDebugAndroidTest',
+      task: 'assemble app:connectedOffPlaystoreScreenshotsDebugAndroidTest',
       project_dir: './'
        )
-    build_android_app(
-      task: 'assemble',
-      build_type: 'Screenshots',
-      flavor: "Off",
-      project_dir: './'
-    )
+    #build_android_app(
+    #  task: 'assemble',
+    #  build_type: 'Screenshots',
+    
+    #flavor: "Off",
+    #  project_dir: './'
+   # )
   end
 
 #gradlew connectedOffScreenshotsAndroidTest --stacktrace --info -PtestBuildType=screenshots
