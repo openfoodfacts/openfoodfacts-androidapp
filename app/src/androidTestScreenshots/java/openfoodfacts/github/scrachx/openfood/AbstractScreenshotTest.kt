@@ -5,7 +5,6 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.util.Log
-import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.GrantPermissionRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import openfoodfacts.github.scrachx.openfood.test.ScreenshotActivityTestRule
@@ -15,13 +14,12 @@ import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper
 import org.junit.AfterClass
 import org.junit.BeforeClass
 import org.junit.Rule
-import org.junit.runner.RunWith
 import java.util.*
 
 /**
  * Take screenshots...buil
  */
-@RunWith(AndroidJUnit4::class)
+//@RunWith(AndroidJUnit4::class)
 @HiltAndroidTest
 abstract class AbstractScreenshotTest {
 
