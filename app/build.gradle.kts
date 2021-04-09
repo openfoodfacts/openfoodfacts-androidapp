@@ -47,10 +47,10 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib:${rootProject.extra["kotlinVersion"]}")
 
     // Android KTX
-    implementation("androidx.fragment:fragment-ktx:1.3.0")
-    implementation("androidx.activity:activity-ktx:1.2.0")
+    implementation("androidx.fragment:fragment-ktx:1.3.2")
+    implementation("androidx.activity:activity-ktx:1.2.2")
     implementation("androidx.preference:preference-ktx:1.1.1")
-    implementation("androidx.core:core-ktx:1.5.0-beta02")
+    implementation("androidx.core:core-ktx:1.5.0-rc01")
 
 
     // AndroidX
@@ -60,7 +60,7 @@ dependencies {
     implementation("androidx.recyclerview:recyclerview:1.1.0")
     implementation("androidx.cardview:cardview:1.0.0")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
-    implementation("androidx.annotation:annotation:1.1.0")
+    implementation("androidx.annotation:annotation:1.2.0")
     implementation("androidx.constraintlayout:constraintlayout:2.0.4")
     implementation("androidx.multidex:multidex:2.0.1")
     implementation("androidx.viewpager2:viewpager2:1.0.0")
@@ -69,8 +69,9 @@ dependencies {
     val workVersion = "2.5.0"
     implementation("androidx.work:work-runtime:$workVersion")
     implementation("androidx.work:work-rxjava2:$workVersion")
-    implementation("androidx.hilt:hilt-work:1.0.0-alpha03")
-    kapt("androidx.hilt:hilt-compiler:1.0.0-alpha03")
+    val hiltVersion = "1.0.0-beta01"
+    implementation("androidx.hilt:hilt-work:$hiltVersion")
+    kapt("androidx.hilt:hilt-compiler:$hiltVersion")
 
 
     implementation("androidx.startup:startup-runtime:1.0.0")
@@ -90,7 +91,7 @@ dependencies {
 
     //Rx
     implementation("io.reactivex.rxjava2:rxkotlin:2.4.0")
-    implementation("io.reactivex.rxjava2:rxjava:2.2.20")
+    implementation("io.reactivex.rxjava2:rxjava:2.2.21")
     implementation("io.reactivex.rxjava2:rxandroid:2.1.1")
     implementation("com.jakewharton.rxrelay2:rxrelay:2.1.1")
 
@@ -175,7 +176,7 @@ dependencies {
 
     // Unit Testing
     testImplementation("junit:junit:4.13.2")
-    testImplementation("org.robolectric:robolectric:4.4")
+    testImplementation("org.robolectric:robolectric:4.5.1")
     testImplementation("org.mockito:mockito-core:3.8.0")
     testImplementation("net.javacrumbs.json-unit:json-unit-fluent:2.24.0")
     testImplementation("com.google.truth:truth:1.1.2")
