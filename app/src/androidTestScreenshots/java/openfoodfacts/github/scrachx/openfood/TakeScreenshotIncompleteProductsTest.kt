@@ -18,7 +18,7 @@ import javax.inject.Inject
 /**
  * Take screenshots...
  */
-@RunWith(AndroidJUnit4::class)
+//@RunWith(AndroidJUnit4::class)
 @HiltAndroidTest
 class TakeScreenshotIncompleteProductsTest : AbstractScreenshotTest() {
 
