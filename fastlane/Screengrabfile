@@ -1,6 +1,6 @@
 locales ['en-US']
 clear_previous_screenshots true
-app_apk_path 'app/build/outputs/apk/off/screenshots/app-off-screenshots.apk'
+app_apk_path 'app/build/outputs/apk/offPlayStore/screenshots/app-off-playstore-screenshots.apk'
 #tests_apk_path 'app/build/outputs/apk/off/debug/app-off-debug.apk'
 tests_apk_path 'app/build/outputs/apk/androidTest/offPlaystore/screenshots/app-off-playstore-screenshots.apk'
 test_instrumentation_runner 'androidx.test.runner.AndroidJUnitRunner'
