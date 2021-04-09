@@ -52,9 +52,8 @@ class ScreenshotActivityTestRule<T : Activity?>
         }
     }
 
-    @JvmOverloads
-    fun takeScreenshot(suffix: String? = StringUtils.EMPTY) {
-        ScreenshotTaker().takeScreenshot(screenshotParameter!!, suffix!!, this)
+    private fun takeScreenshot(suffix: String = StringUtils.EMPTY) {
+        ScreenshotTaker.takeScreenshot(screenshotParameter!!, suffix, this)
     }
 
     companion object {
