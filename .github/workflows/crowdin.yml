@@ -10,10 +10,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout
+    - name: Checkout sources
       uses: actions/checkout@v2
 
-    - name: crowdin action
+    - name: Sync translations with Crowdin
       uses: crowdin/github-action@1.1.0
       with:
         upload_translations: true # default is false

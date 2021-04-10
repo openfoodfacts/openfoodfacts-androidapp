@@ -12,6 +12,7 @@ jobs:
   test:
     name: Run Unit Tests
     runs-on: ubuntu-18.04
+
     steps:
       - name: Checkout sources
         uses: actions/checkout@v2
@@ -27,3 +28,14 @@ jobs:
 
       - name: Unit tests
         run: bash ./gradlew testObfPlaystoreDebugUnitTest testOffPlaystoreDebugUnitTest testOpfPlaystoreDebugUnitTest testOpffPlaystoreDebugUnitTest --stacktrace
+
+  validate_metadata:
+    name: Validate Fastlane Metadata
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v2
+
+      - name: Validate fastlane metadata
+        uses: ashutoshgngwr/validate-fastlane-supply-metadata@v1
