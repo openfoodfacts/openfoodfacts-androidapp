@@ -1,7 +1,5 @@
 package openfoodfacts.github.scrachx.openfood
 
-import android.content.Context
-import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import openfoodfacts.github.scrachx.openfood.features.MainActivity
@@ -10,7 +8,6 @@ import openfoodfacts.github.scrachx.openfood.test.ScreenshotActivityTestRule
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import javax.inject.Inject
 
 /**
  * Take screenshots...
@@ -28,20 +25,16 @@ class TakeScreenshotMainActivityTest : AbstractScreenshotTest() {
         hiltRule.inject()
     }
 
-    @Inject
-    @ApplicationContext
-    lateinit var context: Context
-
 
     @get:Rule(order = 1)
-    var activityRule = ScreenshotActivityTestRule(MainActivity::class.java, context = context)
+    var activityRule = ScreenshotActivityTestRule(MainActivity::class.java)
 
     @get:Rule(order = 1)
-    var welcomeActivityRule = ScreenshotActivityTestRule(WelcomeActivity::class.java, context = context)
+    var welcomeActivityRule = ScreenshotActivityTestRule(WelcomeActivity::class.java)
 
     @Test
     fun testTakeScreenshotMainActivity() {
         welcomeActivityRule.firstTimeLaunched = true
-        startForAllLocales(rules = listOf(welcomeActivityRule, activityRule), context = context)
+        startForAllLocales(rules = listOf(welcomeActivityRule, activityRule))
     }
 }

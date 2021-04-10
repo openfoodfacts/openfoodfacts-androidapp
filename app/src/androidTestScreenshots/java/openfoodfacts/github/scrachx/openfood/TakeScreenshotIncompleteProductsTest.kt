@@ -1,8 +1,7 @@
 package openfoodfacts.github.scrachx.openfood
 
-import android.content.Context
 import android.content.Intent
-import dagger.hilt.android.qualifiers.ApplicationContext
+import androidx.test.core.app.ApplicationProvider
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivity
@@ -12,7 +11,6 @@ import openfoodfacts.github.scrachx.openfood.test.ScreenshotParameter
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import javax.inject.Inject
 
 /**
  * Take screenshots...
@@ -24,10 +22,6 @@ class TakeScreenshotIncompleteProductsTest : AbstractScreenshotTest() {
     @get:Rule(order = 0)
     var hiltRule = HiltAndroidRule(this)
 
-    @Inject
-    @ApplicationContext
-    lateinit var context: Context
-
     @Before
     fun init() {
         hiltRule.inject()
@@ -36,15 +30,14 @@ class TakeScreenshotIncompleteProductsTest : AbstractScreenshotTest() {
     @get:Rule(order = 1)
     var incompleteRule = ScreenshotActivityTestRule(
             ProductSearchActivity::class.java,
-            "incompleteProducts",
-            context
+            "incompleteProducts"
     )
 
     @Test
-    fun testTakeScreenshot() = startForAllLocales(createSearchIntent, listOf(incompleteRule), context)
+    fun testTakeScreenshot() = startForAllLocales(createSearchIntent, listOf(incompleteRule))
 
     private val createSearchIntent: (ScreenshotParameter) -> List<Intent?> = {
-        listOf(Intent(context, ProductSearchActivity::class.java).apply {
+        listOf(Intent(ApplicationProvider.getApplicationContext(), ProductSearchActivity::class.java).apply {
             putExtra(ProductSearchActivity.SEARCH_INFO, SearchInfo.emptySearchInfo())
         })
     }

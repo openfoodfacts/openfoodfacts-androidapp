@@ -1,7 +1,5 @@
 package openfoodfacts.github.scrachx.openfood
 
-import android.content.Context
-import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import openfoodfacts.github.scrachx.openfood.features.scan.ContinuousScanActivity
@@ -9,7 +7,6 @@ import openfoodfacts.github.scrachx.openfood.test.ScreenshotActivityTestRule
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import javax.inject.Inject
 
 /**
  * Take screenshots...
@@ -26,28 +23,24 @@ class TakeScreenshotScanActivityTest : AbstractScreenshotTest() {
         hiltRule.inject()
     }
 
-    @Inject
-    @ApplicationContext
-    lateinit var context: Context
-
     @get:Rule(order = 1)
-    var activityRule = ScreenshotActivityTestRule(ContinuousScanActivity::class.java,
-            context = context)
+    var activityRule = ScreenshotActivityTestRule(ContinuousScanActivity::class.java
+    )
 
     @Test
     fun testTakeScreenshotScanActivity() {
-        activityRule.afterActivityLaunchedAction = { screenshotActivityTestRule ->
+        activityRule.afterActivityLaunchedAction = { testRule ->
             try {
-                screenshotActivityTestRule.runOnUiThread {
-                    val barcode = screenshotActivityTestRule.screenshotParameter!!.productCodes[0]
-                    screenshotActivityTestRule.activity!!.showProduct(barcode)
+                testRule.runOnUiThread {
+                    val barcode = testRule.screenshotParameter!!.productCodes[0]
+                    testRule.activity!!.showProduct(barcode)
                 }
                 Thread.sleep(MS_TO_WAIT_TO_DISPLAY_PRODUCT_IN_SCAN.toLong())
             } catch (throwable: Throwable) {
                 throwable.printStackTrace()
             }
         }
-        startForAllLocales(rules = listOf(activityRule), context = context)
+        startForAllLocales(rules = listOf(activityRule))
     }
 
     companion object {

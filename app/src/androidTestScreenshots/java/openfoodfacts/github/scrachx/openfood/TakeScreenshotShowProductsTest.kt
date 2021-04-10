@@ -1,8 +1,7 @@
 package openfoodfacts.github.scrachx.openfood
 
-import android.content.Context
 import android.content.Intent
-import dagger.hilt.android.qualifiers.ApplicationContext
+import androidx.test.core.app.ApplicationProvider
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_STATE
@@ -15,7 +14,6 @@ import openfoodfacts.github.scrachx.openfood.test.ScreenshotParameter
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import javax.inject.Inject
 
 /**
  * Take screenshots...
@@ -32,25 +30,21 @@ class TakeScreenshotShowProductsTest : AbstractScreenshotTest() {
         hiltRule.inject()
     }
 
-    @Inject
-    @ApplicationContext
-    lateinit var context: Context
+    @get:Rule(order = 1)
+    var activityHistoryRule = ScreenshotActivityTestRule(ScanHistoryActivity::class.java)
 
     @get:Rule(order = 1)
-    var activityHistoryRule = ScreenshotActivityTestRule(ScanHistoryActivity::class.java, context = context)
-
-    @get:Rule(order = 1)
-    var activityShowProductRule = ScreenshotActivityTestRule(ProductViewActivity::class.java, context = context)
+    var activityShowProductRule = ScreenshotActivityTestRule(ProductViewActivity::class.java)
 
     @Test
     fun testTakeScreenshot() {
-        startForAllLocales(createProductIntent, listOf(activityShowProductRule), context)
-        startForAllLocales(rules = listOf(activityHistoryRule), context = context)
+        startForAllLocales(createProductIntent, listOf(activityShowProductRule))
+        startForAllLocales(rules = listOf(activityHistoryRule))
     }
 
     private val createProductIntent: (ScreenshotParameter) -> List<Intent?> = { parameter ->
         parameter.productCodes.map { productCode ->
-            Intent(context, ProductViewActivity::class.java).apply {
+            Intent(ApplicationProvider.getApplicationContext(), ProductViewActivity::class.java).apply {
                 putExtra(KEY_STATE, ProductState().apply {
                     product = Product().apply { code = productCode }
                 })

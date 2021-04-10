@@ -2,9 +2,9 @@ package openfoodfacts.github.scrachx.openfood
 
 import android.Manifest
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.util.Log
+import androidx.test.core.app.ApplicationProvider
 import androidx.test.rule.GrantPermissionRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import openfoodfacts.github.scrachx.openfood.test.ScreenshotActivityTestRule
@@ -30,14 +30,12 @@ abstract class AbstractScreenshotTest {
             Manifest.permission.CHANGE_CONFIGURATION
     )
 
-    @SafeVarargs
     private fun startScreenshotActivityTestRules(
             screenshotParameter: ScreenshotParameter,
             activityRules: List<ScreenshotActivityTestRule<out Activity?>>,
-            intents: List<Intent?>,
-            context: Context
+            intents: List<Intent?>
     ) {
-        changeLocale(screenshotParameter, context)
+        changeLocale(screenshotParameter)
         activityRules.forEach { activityRule ->
             intents.forEach { intent ->
                 activityRule.finishActivity()
@@ -49,18 +47,17 @@ abstract class AbstractScreenshotTest {
         }
     }
 
-    private fun changeLocale(parameter: ScreenshotParameter, context: Context) {
+    private fun changeLocale(parameter: ScreenshotParameter) {
         Log.d(LOG_TAG, "Change parameters to $parameter")
-        LocaleHelper.setContextLanguage(context, parameter.locale)
+        LocaleHelper.setContextLanguage(ApplicationProvider.getApplicationContext(), parameter.locale)
     }
 
     protected fun startForAllLocales(
             filter: (ScreenshotParameter) -> List<Intent?> = { listOf(null) },
-            rules: List<ScreenshotActivityTestRule<out Activity?>>,
-            context: Context
+            rules: List<ScreenshotActivityTestRule<out Activity?>>
     ) {
         getFilteredParameters().forEach {
-            startScreenshotActivityTestRules(it, rules, filter(it), context)
+            startScreenshotActivityTestRules(it, rules, filter(it))
         }
     }
 
