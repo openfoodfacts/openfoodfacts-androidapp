@@ -32,10 +32,10 @@ class TakeScreenshotShowProductsTest : AbstractScreenshotTest() {
     @ApplicationContext
     lateinit var context: Context
 
-    @Rule @JvmField 
+    @Rule @JvmField
     var activityHistoryRule = ScreenshotActivityTestRule(ScanHistoryActivity::class.java, context = context)
 
-    @Rule @JvmField 
+    @Rule @JvmField
     var activityShowProductRule = ScreenshotActivityTestRule(ProductViewActivity::class.java, context = context)
 
     @Test

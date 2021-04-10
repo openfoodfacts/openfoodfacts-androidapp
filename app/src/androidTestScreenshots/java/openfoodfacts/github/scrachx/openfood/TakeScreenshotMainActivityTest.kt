@@ -29,10 +29,10 @@ class TakeScreenshotMainActivityTest : AbstractScreenshotTest() {
     lateinit var context: Context
 
 
-    @Rule @JvmField 
+    @Rule @JvmField
     var activityRule = ScreenshotActivityTestRule(MainActivity::class.java, context = context)
 
-    @Rule @JvmField 
+    @Rule @JvmField
     var welcomeActivityRule = ScreenshotActivityTestRule(WelcomeActivity::class.java, context = context)
 
     @Test
