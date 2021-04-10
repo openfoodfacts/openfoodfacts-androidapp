@@ -20,7 +20,7 @@ import javax.inject.Inject
 class TakeScreenshotMainActivityTest : AbstractScreenshotTest() {
 
 
-    @get:Rule
+    @get:Rule(order = 0)
     var hiltRule = HiltAndroidRule(this)
 
     @Before
@@ -33,10 +33,10 @@ class TakeScreenshotMainActivityTest : AbstractScreenshotTest() {
     lateinit var context: Context
 
 
-    @get:Rule
+    @get:Rule(order = 1)
     var activityRule = ScreenshotActivityTestRule(MainActivity::class.java, context = context)
 
-    @get:Rule
+    @get:Rule(order = 1)
     var welcomeActivityRule = ScreenshotActivityTestRule(WelcomeActivity::class.java, context = context)
 
     @Test

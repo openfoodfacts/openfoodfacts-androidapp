@@ -21,7 +21,7 @@ import javax.inject.Inject
 @HiltAndroidTest
 class TakeScreenshotIncompleteProductsTest : AbstractScreenshotTest() {
 
-    @get:Rule
+    @get:Rule(order = 0)
     var hiltRule = HiltAndroidRule(this)
 
     @Inject
@@ -33,7 +33,7 @@ class TakeScreenshotIncompleteProductsTest : AbstractScreenshotTest() {
         hiltRule.inject()
     }
 
-    @get:Rule
+    @get:Rule(order = 1)
     var incompleteRule = ScreenshotActivityTestRule(
             ProductSearchActivity::class.java,
             "incompleteProducts",
