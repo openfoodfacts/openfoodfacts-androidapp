@@ -33,8 +33,7 @@ class TakeScreenshotIncompleteProductsTest : AbstractScreenshotTest() {
         hiltRule.inject()
     }
 
-    @Rule
-    @JvmField
+    @get:Rule
     var incompleteRule = ScreenshotActivityTestRule(
             ProductSearchActivity::class.java,
             "incompleteProducts",
