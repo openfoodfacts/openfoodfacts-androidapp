@@ -18,7 +18,7 @@
 
 buildscript {
     val kotlinVersion by extra("1.4.31")
-    val jacksonVersion by extra("2.12.1")
+    val jacksonVersion by extra("2.12.2")
     val greendaoVersion by extra("3.3.0")
     val hiltVersion by extra("2.33-beta")
     repositories {

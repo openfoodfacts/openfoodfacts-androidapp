@@ -293,9 +293,9 @@ class ProductEditActivity : AppCompatActivity() {
      */
     private fun saveProductOffline() {
         // Add the images to the productDetails to display them in UI later.
-        imagesFilePath[0]?.also { productDetails[ApiFields.Keys.IMAGE_FRONT] = it }
-        imagesFilePath[1]?.also { productDetails[ApiFields.Keys.IMAGE_INGREDIENTS] = it }
-        imagesFilePath[2]?.also { productDetails[ApiFields.Keys.IMAGE_NUTRITION] = it }
+        imagesFilePath[0]?.let { productDetails[ApiFields.Keys.IMAGE_FRONT] = it }
+        imagesFilePath[1]?.let { productDetails[ApiFields.Keys.IMAGE_INGREDIENTS] = it }
+        imagesFilePath[2]?.let { productDetails[ApiFields.Keys.IMAGE_NUTRITION] = it }
 
         // Add the status of images to the productDetails, whether uploaded or not
         if (imageFrontUploaded) {

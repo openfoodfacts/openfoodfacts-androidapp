@@ -23,7 +23,7 @@ class MatomoAnalytics @Inject constructor(
             .createDefault(BuildConfig.MATOMO_URL, 1)
             .build(Matomo.getInstance(context))
             .apply {
-                isOptOut = PreferenceManager.getDefaultSharedPreferences(context)
+                isOptOut = !PreferenceManager.getDefaultSharedPreferences(context)
                         .getBoolean(context.getString(R.string.pref_analytics_reporting_key), false)
             }
             .also {
@@ -40,8 +40,9 @@ class MatomoAnalytics @Inject constructor(
         TrackHelper.track()
                 .event(event.category, event.action)
                 .name(event.name)
-                .value(event.value)
+                .apply { if (event.value != null) value(event.value) }
                 .with(tracker)
+
     }
 
     fun showAnalyticsBottomSheetIfNeeded(childFragmentManager: FragmentManager) {
