@@ -24,7 +24,7 @@ import java.util.*
 abstract class AbstractScreenshotTest {
 
 
-    @get:Rule var permissionRule
+    @get:Rule
     var permissionRule: GrantPermissionRule = GrantPermissionRule.grant(
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
             Manifest.permission.CHANGE_CONFIGURATION
