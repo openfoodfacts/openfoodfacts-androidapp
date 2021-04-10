@@ -26,7 +26,7 @@ class TakeScreenshotScanActivityTest : AbstractScreenshotTest() {
     @ApplicationContext
     lateinit var context: Context
 
-    @Rule
+    @Rule @JvmField
     var activityRule = ScreenshotActivityTestRule(ContinuousScanActivity::class.java, context = context)
 
     @Test
