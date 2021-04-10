@@ -2,7 +2,6 @@ package openfoodfacts.github.scrachx.openfood
 
 import android.content.Context
 import android.content.Intent
-import androidx.test.ext.junit.runners.AndroidJUnit4
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
@@ -10,9 +9,9 @@ import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivi
 import openfoodfacts.github.scrachx.openfood.models.SearchInfo
 import openfoodfacts.github.scrachx.openfood.test.ScreenshotActivityTestRule
 import openfoodfacts.github.scrachx.openfood.test.ScreenshotParameter
+import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import org.junit.runner.RunWith
 import javax.inject.Inject
 
 /**
@@ -29,7 +28,13 @@ class TakeScreenshotIncompleteProductsTest : AbstractScreenshotTest() {
     @ApplicationContext
     lateinit var context: Context
 
-    @Rule @JvmField
+    @Before
+    fun init() {
+        hiltRule.inject()
+    }
+
+    @Rule
+    @JvmField
     var incompleteRule = ScreenshotActivityTestRule(
             ProductSearchActivity::class.java,
             "incompleteProducts",
