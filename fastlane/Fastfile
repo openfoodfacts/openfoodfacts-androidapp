@@ -38,7 +38,7 @@ lane :build_for_screengrab do
   # )
 
   gradle(
-    task: "assemble app:connectedOffPlaystoreScreenshotsAndroidTest",
+    task: "app:connectedOffPlaystoreScreenshotsAndroidTest",
     project_dir: "./",
   )
 
