@@ -29,7 +29,7 @@ class TakeScreenshotIncompleteProductsTest : AbstractScreenshotTest() {
     @ApplicationContext
     lateinit var context: Context
 
-    @Rule
+    @Rule @JvmField
     var incompleteRule = ScreenshotActivityTestRule(
             ProductSearchActivity::class.java,
             "incompleteProducts",
