@@ -233,7 +233,8 @@ android {
         versionCode = 433
         versionName = "3.6.8"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "openfoodfacts.github.scrachx.openfood.CustomTestRunner"
+
         vectorDrawables.useSupportLibrary = true
         ndk.abiFilters("armeabi-v7a", "arm64-v8a", "x86", "x86_64")
 
