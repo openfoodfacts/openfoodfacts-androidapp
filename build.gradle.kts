@@ -17,9 +17,10 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    val kotlinVersion by extra("1.4.21")
-    val jacksonVersion by extra("2.12.0")
+    val kotlinVersion by extra("1.4.31")
+    val jacksonVersion by extra("2.12.2")
     val greendaoVersion by extra("3.3.0")
+    val hiltVersion by extra("2.33-beta")
     repositories {
         google()
         mavenCentral()
@@ -27,12 +28,15 @@ buildscript {
         maven("https://jitpack.io")
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:4.1.1")
+        classpath("com.android.tools.build:gradle:4.1.3")
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
         classpath("org.greenrobot:greendao-gradle-plugin:$greendaoVersion")
         classpath("com.github.timfreiheit:ResourcePlaceholdersPlugin:0.2")
+
+        classpath("com.google.dagger:hilt-android-gradle-plugin:$hiltVersion")
+
 
         classpath("io.sentry:sentry-android-gradle-plugin:1.7.36")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")

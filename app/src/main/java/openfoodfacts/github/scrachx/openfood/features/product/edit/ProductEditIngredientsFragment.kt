@@ -28,14 +28,18 @@ import com.hootsuite.nachos.terminator.ChipTerminatorHandler
 import com.hootsuite.nachos.validator.ChipifyingNachoValidator
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
+import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.addTo
 import openfoodfacts.github.scrachx.openfood.R
-import openfoodfacts.github.scrachx.openfood.app.OFFApplication
+import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
+import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsView
+import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentAddProductIngredientsBinding
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_PERFORM_OCR
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_SEND_UPDATED
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
+import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct
@@ -43,24 +47,51 @@ import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenNa
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenNameDao
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.Keys.lcIngredientsKey
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.FileDownloader.download
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
-import openfoodfacts.github.scrachx.openfood.utils.Utils.picassoBuilder
 import org.greenrobot.greendao.async.AsyncOperationListener
 import java.io.File
 import java.util.*
+import javax.inject.Inject
 
 /**
  * Fragment for Add Product Ingredients
  *
  * @see R.layout.fragment_add_product_ingredients
  */
+@AndroidEntryPoint
 class ProductEditIngredientsFragment : ProductEditFragment() {
     private var _binding: FragmentAddProductIngredientsBinding? = null
     private val binding get() = _binding!!
 
-    private var photoReceiverHandler: PhotoReceiverHandler? = null
+    @Inject
+    lateinit var daoSession: DaoSession
+
+    @Inject
+    lateinit var picasso: Picasso
+
+    @Inject
+    lateinit var client: OpenFoodAPIClient
+
+    @Inject
+    lateinit var matomoAnalytics: MatomoAnalytics
+
+    private val photoReceiverHandler by lazy {
+        PhotoReceiverHandler(requireContext()) {
+            val uri = it.toURI()
+            imagePath = uri.path
+            newImageSelected = true
+            photoFile = it
+            val image = ProductImage(code!!, ProductImageField.INGREDIENTS, it, getLanguage(requireContext())).apply {
+                filePath = uri.path
+            }
+            (activity as? ProductEditActivity)?.addToPhotoMap(image, 1)
+            matomoAnalytics.trackEvent(AnalyticsEvent.ProductIngredientsPictureEdited(code))
+            hideImageProgress(false, getString(R.string.image_uploaded_successfully))
+        }
+    }
     private var mAllergenNameDao: AllergenNameDao? = null
     private var photoFile: File? = null
     private var code: String? = null
@@ -81,18 +112,6 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        photoReceiverHandler = PhotoReceiverHandler {
-            val uri = it.toURI()
-            imagePath = uri.path
-            newImageSelected = true
-            photoFile = it
-            val image = ProductImage(code!!, ProductImageField.INGREDIENTS, it).apply {
-                filePath = uri.path
-            }
-            (activity as? ProductEditActivity)?.addToPhotoMap(image, 1)
-            hideImageProgress(false, getString(R.string.image_uploaded_successfully))
-        }
-        binding.btnExtractIngredients.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_compare_arrows_black_18dp, 0, 0, 0)
         val intent = if (activity == null) null else requireActivity().intent
         if (intent != null && intent.getBooleanExtra(ProductEditActivity.KEY_MODIFY_NUTRITION_PROMPT, false) && !intent
                         .getBooleanExtra(ProductEditActivity.KEY_MODIFY_CATEGORY_PROMPT, false)) {
@@ -108,7 +127,7 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
 
         val bundle = arguments
         if (bundle != null) {
-            mAllergenNameDao = Utils.daoSession.allergenNameDao
+            mAllergenNameDao = daoSession.allergenNameDao
             product = getProductFromArgs()
             mOfflineSavedProduct = getEditOfflineProductFromArgs()
             if (product != null) {
@@ -150,6 +169,11 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        matomoAnalytics.trackView(AnalyticsView.ProductEditIngredients)
+    }
+
     private fun getImageIngredients() = productDetails[ApiFields.Keys.IMAGE_INGREDIENTS]
 
     private fun getAddProductActivity() = activity as ProductEditActivity?
@@ -182,7 +206,7 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
         if (newImageIngredientsUrl != null && newImageIngredientsUrl.isNotEmpty()) {
             binding.imageProgress.visibility = View.VISIBLE
             imagePath = newImageIngredientsUrl
-            picassoBuilder(requireContext())
+            picasso
                     .load(newImageIngredientsUrl)
                     .resize(dps50ToPixels, dps50ToPixels)
                     .centerInside()
@@ -243,7 +267,7 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
         productDetails = mOfflineSavedProduct!!.productDetails.toMutableMap()
         if (getImageIngredients() != null) {
             binding.imageProgress.visibility = View.VISIBLE
-            picassoBuilder(requireContext())
+            picasso
                     .load(LOCALE_FILE_SCHEME + getImageIngredients())
                     .resize(dps50ToPixels, dps50ToPixels)
                     .centerInside()
@@ -272,7 +296,6 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
      * Automatically load suggestions for allergen names
      */
     private fun loadAutoSuggestions() {
-        val daoSession = OFFApplication.daoSession
         val asyncSessionAllergens = daoSession.startAsyncSession()
         val allergenNameDao = daoSession.allergenNameDao
         val appLanguageCode = getLanguage(activity)
@@ -301,7 +324,7 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
             imagePath == null -> editIngredientsImage()
             photoFile != null -> cropRotateImage(photoFile, getString(R.string.ingredients_picture))
             else -> {
-                download(requireContext(), imagePath!!)
+                download(requireContext(), imagePath!!, client)
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe { file ->
                             photoFile = file
@@ -311,7 +334,7 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
         }
     }
 
-    private fun editIngredientsImage() = doChooseOrTakePhotos(getString(R.string.ingredients_picture))
+    private fun editIngredientsImage() = doChooseOrTakePhotos()
 
     private fun verifyIngredients() {
         binding.ingredientsListVerified.visibility = View.VISIBLE
@@ -325,7 +348,7 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
             val imagePath = imagePath
             if (imagePath != null && (!isEditingFromArgs || newImageSelected)) {
                 photoFile = File(imagePath)
-                val image = ProductImage(code!!, ProductImageField.INGREDIENTS, photoFile!!)
+                val image = ProductImage(code!!, ProductImageField.INGREDIENTS, photoFile!!, getLanguage(context))
                 image.filePath = imagePath
                 (activity as ProductEditActivity).addToPhotoMap(image, 1)
             } else if (imagePath != null) {
@@ -381,7 +404,7 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        photoReceiverHandler!!.onActivityResult(this, requestCode, resultCode, data)
+        photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data)
     }
 
     /**
@@ -450,5 +473,5 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
         binding.ocrProgressText.visibility = View.GONE
     }
 
-    private val dps50ToPixels by lazy { dpsToPixel(50, requireContext()) }
+    private val dps50ToPixels by lazy { requireContext().dpsToPixel(50) }
 }

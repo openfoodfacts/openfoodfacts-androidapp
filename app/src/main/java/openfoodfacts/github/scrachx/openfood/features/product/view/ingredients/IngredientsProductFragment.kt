@@ -30,11 +30,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.browser.customtabs.CustomTabsIntent
+import androidx.core.text.bold
 import androidx.viewpager2.widget.ViewPager2
 import com.afollestad.materialdialogs.MaterialDialog
 import com.squareup.picasso.Picasso
+import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.rxkotlin.addTo
 import openfoodfacts.github.scrachx.openfood.AppFlavors
+import openfoodfacts.github.scrachx.openfood.AppFlavors.OBF
+import openfoodfacts.github.scrachx.openfood.AppFlavors.OPF
+import openfoodfacts.github.scrachx.openfood.AppFlavors.OPFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper
@@ -52,6 +57,7 @@ import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditAc
 import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivity.Companion.start
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
+import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.models.ProductState
 import openfoodfacts.github.scrachx.openfood.models.entities.SendProduct
@@ -60,20 +66,42 @@ import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenNa
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenNameDao
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.network.WikiDataApiClient
+import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.*
+import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.EMPTY
+import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.LOADING
 import java.io.File
-import java.util.regex.Pattern
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.View {
     private var _binding: FragmentIngredientsProductBinding? = null
     private val binding get() = _binding!!
 
     private val loginPref by lazy { requireActivity().getLoginPreferences() }
-    private val client by lazy { OpenFoodAPIClient(requireContext()) }
-    private val wikidataClient by lazy { WikiDataApiClient() }
+
+    @Inject
+    lateinit var client: OpenFoodAPIClient
+
+    @Inject
+    lateinit var productRepository: ProductRepository
+
+    @Inject
+    lateinit var daoSession: DaoSession
+
+    @Inject
+    lateinit var wikidataClient: WikiDataApiClient
+
+    @Inject
+    lateinit var picasso: Picasso
 
     private val performOCRLauncher = registerForActivityResult(PerformOCRContract())
-    { result -> if (result) onRefresh() }
+    { result ->
+        if (result) {
+            ingredientExtracted = true
+            onRefresh()
+        }
+    }
     private val updateImagesLauncher = registerForActivityResult(SendUpdatedImgContract())
     { result -> if (result) onRefresh() }
     private val loginLauncher = registerForActivityResult(LoginContract())
@@ -83,13 +111,15 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
     private lateinit var customTabActivityHelper: CustomTabActivityHelper
     private lateinit var customTabsIntent: CustomTabsIntent
     private lateinit var presenter: IIngredientsProductPresenter.Actions
-    private val photoReceiverHandler: PhotoReceiverHandler = PhotoReceiverHandler { onPhotoReturned(it) }
+    private val photoReceiverHandler by lazy {
+        PhotoReceiverHandler(requireContext()) { onPhotoReturned(it) }
+    }
 
     private var ingredientExtracted = false
 
     private var mSendProduct: SendProduct? = null
 
-    var ingredients: String? = null
+    var ingredientsImgUrl: String? = null
         private set
 
     private var sendUpdatedIngredientsImage = false
@@ -132,32 +162,37 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
         if (arguments != null) mSendProduct = getSendProduct()
 
         val product = this.productState.product!!
-        presenter = IngredientsProductPresenter(product, this).apply { addTo(disp) }
+        presenter = IngredientsProductPresenter(requireContext(), this, productRepository, product).apply { addTo(disp) }
         val vitaminTagsList = product.vitaminTags
         val aminoAcidTagsList = product.aminoAcidTags
         val mineralTags = product.mineralTags
         val otherNutritionTags = product.otherNutritionTags
         if (vitaminTagsList.isNotEmpty()) {
             binding.cvVitaminsTagsText.visibility = View.VISIBLE
-            binding.vitaminsTagsText.text = bold(getString(R.string.vitamin_tags_text))
-            binding.vitaminsTagsText.append(buildStringBuilder(vitaminTagsList, SPACE))
+            binding.vitaminsTagsText.text = SpannableStringBuilder()
+                    .bold { append(getString(R.string.vitamin_tags_text)) }
+                    .append(tagListToString(vitaminTagsList))
         }
         if (aminoAcidTagsList.isNotEmpty()) {
             binding.cvAminoAcidTagsText.visibility = View.VISIBLE
-            binding.aminoAcidTagsText.text = bold(getString(R.string.amino_acid_tags_text))
-            binding.aminoAcidTagsText.append(buildStringBuilder(aminoAcidTagsList, SPACE))
+            binding.aminoAcidTagsText.text = SpannableStringBuilder()
+                    .bold { append(getString(R.string.amino_acid_tags_text)) }
+                    .append(tagListToString(aminoAcidTagsList))
         }
         if (mineralTags.isNotEmpty()) {
             binding.cvMineralTagsText.visibility = View.VISIBLE
-            binding.mineralTagsText.text = bold(getString(R.string.mineral_tags_text))
-            binding.mineralTagsText.append(buildStringBuilder(mineralTags, SPACE))
+            binding.mineralTagsText.text = SpannableStringBuilder()
+                    .bold { append(getString(R.string.mineral_tags_text)) }
+                    .append(tagListToString(mineralTags))
         }
         if (otherNutritionTags.isNotEmpty()) {
             binding.otherNutritionTags.visibility = View.VISIBLE
-            binding.otherNutritionTags.text = bold(getString(R.string.other_tags_text))
-            binding.otherNutritionTags.append(buildStringBuilder(otherNutritionTags, SPACE))
+            binding.otherNutritionTags.text = SpannableStringBuilder()
+                    .bold { append(getString(R.string.other_tags_text)) }
+                    .append(tagListToString(otherNutritionTags))
         }
-        binding.textAdditiveProduct.text = bold(getString(R.string.txtAdditives))
+        binding.textAdditiveProduct.text = SpannableStringBuilder()
+                .bold { append(getString(R.string.txtAdditives)) }
         presenter.loadAdditives()
 
         if (!product.getImageIngredientsUrl(langCode).isNullOrBlank()) {
@@ -168,26 +203,24 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
 
             // Load Image if isLowBatteryMode is false
             if (!requireContext().isBatteryLevelLow()) {
-                Utils.picassoBuilder(requireContext())
-                        .load(product.getImageIngredientsUrl(langCode))
-                        .into(binding.imageViewIngredients)
+                picasso.load(product.getImageIngredientsUrl(langCode)).into(binding.imageViewIngredients)
             } else {
                 binding.imageViewIngredients.visibility = View.GONE
             }
-            ingredients = product.getImageIngredientsUrl(langCode)
+            ingredientsImgUrl = product.getImageIngredientsUrl(langCode)
         }
 
         //useful when this fragment is used in offline saving
-        if (mSendProduct != null && !mSendProduct!!.imgupload_ingredients.isNullOrBlank()) {
+        if (mSendProduct != null && !mSendProduct!!.imgUploadIngredients.isNullOrBlank()) {
             binding.addPhotoLabel.visibility = View.GONE
-            ingredients = mSendProduct!!.imgupload_ingredients
-            Picasso.get().load(LOCALE_FILE_SCHEME + ingredients).config(Bitmap.Config.RGB_565).into(binding.imageViewIngredients)
+            ingredientsImgUrl = mSendProduct!!.imgUploadIngredients
+            picasso.load(LOCALE_FILE_SCHEME + ingredientsImgUrl).config(Bitmap.Config.RGB_565).into(binding.imageViewIngredients)
         }
         val allergens = getAllergens()
         if (!product.getIngredientsText(langCode).isNullOrEmpty()) {
             binding.cvTextIngredientProduct.visibility = View.VISIBLE
             var txtIngredients = SpannableStringBuilder(product.getIngredientsText(langCode)!!.replace("_", ""))
-            txtIngredients = setSpanBoldBetweenTokens(txtIngredients, allergens)
+            txtIngredients = boldAllergens(txtIngredients, allergens)
             if (product.getIngredientsText(langCode).isNullOrEmpty()) {
                 binding.extractIngredientsPrompt.visibility = View.VISIBLE
             }
@@ -206,24 +239,23 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
             val language = LocaleHelper.getLanguage(context)
             binding.cvTextTraceProduct.visibility = View.VISIBLE
             binding.textTraceProduct.movementMethod = LinkMovementMethod.getInstance()
-            binding.textTraceProduct.text = bold(getString(R.string.txtTraces))
+            binding.textTraceProduct.text = SpannableStringBuilder()
+                    .bold { append(getString(R.string.txtTraces)) }
             binding.textTraceProduct.append(" ")
             val traces = product.traces.split(",")
-            traces.withIndex().forEach { (i, trace) ->
-                if (i > 0) binding.textTraceProduct.append(", ")
-                binding.textTraceProduct.append(Utils.getClickableText(
-                        getTracesName(language, trace),
-                        trace,
+
+            binding.textTraceProduct.append(traces.joinToString(", ") {
+                getSearchLinkText(
+                        getTracesName(language, it),
                         SearchType.TRACE,
-                        requireActivity(),
-                        customTabsIntent
-                ))
-            }
+                        requireActivity()
+                )
+            })
         } else {
             binding.cvTextTraceProduct.visibility = View.GONE
         }
         val novaGroups = product.novaGroups
-        if (novaGroups != null) {
+        if (novaGroups != null && !isFlavors(OBF)) {
             binding.novaLayout.visibility = View.VISIBLE
             binding.novaExplanation.text = Utils.getNovaGroupExplanation(novaGroups, requireContext()) ?: ""
             binding.novaGroup.setImageResource(product.getNovaGroupResource())
@@ -238,19 +270,15 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
     }
 
     private fun getTracesName(languageCode: String, tag: String): String {
-        val allergenName = Utils.daoSession.allergenNameDao.queryBuilder()
+        val allergenName = daoSession.allergenNameDao.queryBuilder()
                 .where(AllergenNameDao.Properties.AllergenTag.eq(tag), AllergenNameDao.Properties.LanguageCode.eq(languageCode))
                 .unique()
         return if (allergenName != null) allergenName.name else tag
     }
 
-    private fun buildStringBuilder(stringList: List<String>, prefix: String) = StringBuilder().apply {
-        append(prefix)
-        stringList.forEach { otherSubstance ->
-            append(trimLanguagePartFromString(otherSubstance))
-            append(", ")
-        }
-    }
+    private fun tagListToString(tagList: List<String>) =
+            tagList.joinToString(", ", " ") { it.substring(3) }
+
 
     private fun getAllergensTag(allergen: AllergenName): CharSequence {
         val ssb = SpannableStringBuilder()
@@ -280,32 +308,27 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
         return ssb
     }
 
-    /**
-     * @return the string after trimming the language code from the tags
-     * like it returns folic-acid for en:folic-acid
-     */
-    private fun trimLanguagePartFromString(string: String) = string.substring(3)
+    private fun boldAllergens(ingredientsText: CharSequence, allergenTags: List<String>): SpannableStringBuilder {
+        return SpannableStringBuilder(ingredientsText).also { ssb ->
+            INGREDIENT_REGEX.findAll(ingredientsText).forEach { match ->
 
-    private fun setSpanBoldBetweenTokens(text: CharSequence, allergens: List<String>): SpannableStringBuilder {
-        return SpannableStringBuilder(text).also {
-            val m = INGREDIENT_PATTERN.matcher(it)
-            while (m.find()) {
-                val tm = m.group()
-                val allergenValue = tm.replace("[(),.-]+".toRegex(), "")
-                for (allergen in allergens) {
-                    if (allergen.equals(allergenValue, ignoreCase = true)) {
-                        var start = m.start()
-                        var end = m.end()
-                        if (tm.contains("(")) {
-                            start += 1
-                        } else if (tm.contains(")")) {
-                            end -= 1
-                        }
-                        it.setSpan(StyleSpan(Typeface.BOLD), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+                val allergenTxt = match.value
+                        .replace("[()]+".toRegex(), "")
+                        .replace("[,.-]".toRegex(), " ")
+                allergenTags.find { tag -> tag.contains(allergenTxt, true) }?.let {
+                    var start = match.range.first
+                    var end = match.range.last + 1
+                    if ("(" in match.value) {
+                        start += 1
                     }
+                    if (")" in match.value) {
+                        end -= 1
+                    }
+                    ssb.setSpan(StyleSpan(Typeface.BOLD), start, end, Spanned.SPAN_INCLUSIVE_INCLUSIVE)
                 }
             }
-            it.insert(0, bold(getString(R.string.txtIngredients) + ' '))
+            ssb.insert(0, SpannableStringBuilder()
+                    .bold { append(getString(R.string.txtIngredients) + ' ') })
         }
     }
 
@@ -313,25 +336,22 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
         showAdditives(additives, binding.textAdditiveProduct, wikidataClient, this, disp)
     }
 
-    override fun showAdditivesState(state: ProductInfoState) {
+    override fun setAdditivesState(state: ProductInfoState) {
         when (state) {
-            ProductInfoState.LOADING -> {
+            LOADING -> {
                 binding.cvTextAdditiveProduct.visibility = View.VISIBLE
                 binding.textAdditiveProduct.append(getString(R.string.txtLoading))
             }
-            ProductInfoState.EMPTY -> binding.cvTextAdditiveProduct.visibility = View.GONE
+            EMPTY -> binding.cvTextAdditiveProduct.visibility = View.GONE
         }
     }
 
     override fun showAllergens(allergens: List<AllergenName>) {
         binding.textSubstanceProduct.movementMethod = LinkMovementMethod.getInstance()
-        binding.textSubstanceProduct.text = bold(getString(R.string.txtSubstances))
-        binding.textSubstanceProduct.append(" ")
-        allergens.withIndex().forEach { (i, allergen) ->
-            binding.textSubstanceProduct.append(getAllergensTag(allergen))
-            // Add comma if not the last item
-            if (i != allergens.lastIndex) binding.textSubstanceProduct.append(", ")
-        }
+        binding.textSubstanceProduct.text = SpannableStringBuilder()
+                .bold { append(getString(R.string.txtSubstances)) }
+                .append(" ")
+                .append(allergens.joinToString(", ") { getAllergensTag(it) })
     }
 
 
@@ -348,19 +368,19 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
             }
         }
         when {
-            isFlavors(AppFlavors.OPFF) -> viewPager.currentItem = 4
-            isFlavors(AppFlavors.OBF) -> viewPager.currentItem = 1
-            isFlavors(AppFlavors.OPF) -> viewPager.currentItem = 0
+            isFlavors(OPFF) -> viewPager.currentItem = 4
+            isFlavors(OBF) -> viewPager.currentItem = 1
+            isFlavors(OPF) -> viewPager.currentItem = 0
         }
     }
 
-    override fun showAllergensState(state: ProductInfoState) {
+    override fun setAllergensState(state: ProductInfoState) {
         when (state) {
-            ProductInfoState.LOADING -> {
+            LOADING -> {
                 binding.textSubstanceProduct.visibility = View.VISIBLE
                 binding.textSubstanceProduct.append(getString(R.string.txtLoading))
             }
-            ProductInfoState.EMPTY -> binding.textSubstanceProduct.visibility = View.GONE
+            EMPTY -> binding.textSubstanceProduct.visibility = View.GONE
         }
     }
 
@@ -378,7 +398,8 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
     }
 
     fun extractIngredients() {
-        ingredientExtracted = true
+        if (!isAdded) return
+
         val settings = requireContext().getLoginPreferences()
         if (settings.getString("user", "")!!.isEmpty()) {
             showSignInDialog()
@@ -404,12 +425,13 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
     }
 
     private fun openFullScreen() {
-        if (ingredients != null && productState.product != null) {
+        if (ingredientsImgUrl != null && productState.product != null) {
             FullScreenActivityOpener.openForUrl(
                     this,
+                    client,
                     productState.product!!,
                     ProductImageField.INGREDIENTS,
-                    ingredients,
+                    ingredientsImgUrl!!,
                     binding.imageViewIngredients,
             )
         } else {
@@ -417,20 +439,16 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
         }
     }
 
-    private fun newIngredientImage() {
-        doChooseOrTakePhotos(getString(R.string.ingredients_picture))
-    }
+    private fun newIngredientImage() = doChooseOrTakePhotos()
 
-    override fun doOnPhotosPermissionGranted() {
-        newIngredientImage()
-    }
+    override fun doOnPhotosPermissionGranted() = newIngredientImage()
 
     private fun onPhotoReturned(newPhotoFile: File) {
-        val image = ProductImage(productState.code!!, ProductImageField.INGREDIENTS, newPhotoFile)
+        val image = ProductImage(productState.code!!, ProductImageField.INGREDIENTS, newPhotoFile, LocaleHelper.getLanguage(context))
         image.filePath = newPhotoFile.absolutePath
         client.postImg(image).subscribe().addTo(disp)
         binding.addPhotoLabel.visibility = View.GONE
-        ingredients = newPhotoFile.absolutePath
+        ingredientsImgUrl = newPhotoFile.absolutePath
         Picasso.get()
                 .load(newPhotoFile)
                 .fit()
@@ -451,7 +469,7 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
     }
 
     companion object {
-        val INGREDIENT_PATTERN: Pattern = Pattern.compile("[\\p{L}\\p{Nd}(),.-]+")
+        val INGREDIENT_REGEX = Regex("[\\p{L}\\p{Nd}(),.-]+")
         fun newInstance(productState: ProductState) = IngredientsProductFragment().apply {
             arguments = Bundle().apply {
                 putSerializable(KEY_STATE, productState)

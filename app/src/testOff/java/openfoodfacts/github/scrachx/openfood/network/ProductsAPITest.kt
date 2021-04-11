@@ -1,8 +1,11 @@
 package openfoodfacts.github.scrachx.openfood.network
 
+import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.google.common.truth.Truth.assertThat
+import io.reactivex.schedulers.Schedulers
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.models.ProductState
 import openfoodfacts.github.scrachx.openfood.models.Search
 import openfoodfacts.github.scrachx.openfood.models.entities.SendProduct
@@ -133,8 +136,8 @@ class ProductsAPITest {
         prodClient.getProductByBarcode(
                 barcode,
                 "code",
-                getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)
-        ).subscribe({ productState ->
+                LC,
+                getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)).subscribe({ productState ->
             assertThat(productState.status).isEqualTo(0)
             assertThat(productState.statusVerbose).isEqualTo("product not found")
             assertThat(productState.code).isEqualTo(barcode)
@@ -146,13 +149,14 @@ class ProductsAPITest {
 
     @Test
     fun post_product() {
+
         val product = SendProduct().apply {
             barcode = "1234567890"
             name = "ProductName"
             brands = "productbrand"
             weight = "123"
-            weight_unit = "g"
-            lang = "en"
+            weightUnit = "g"
+            lang = LC
         }
 
         val productDetails = mapOf<String?, String?>(
@@ -174,18 +178,19 @@ class ProductsAPITest {
         val response = devClientWithAuth.getProductByBarcode(
                 product.barcode,
                 fields,
-                getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)
-        ).blockingGet() as ProductState
+                LC,
+                getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)).blockingGet() as ProductState
 
         assertThat(response.product).isNotNull()
         val savedProduct = response.product!!
         assertThat(savedProduct.productName).isEqualTo(product.name)
         assertThat(savedProduct.brands).isEqualTo(product.brands)
         assertThat(savedProduct.brandsTags).contains(product.brands)
-        assertThat(savedProduct.quantity).isEqualTo("${product.weight} ${product.weight_unit}")
+        assertThat(savedProduct.quantity).isEqualTo("${product.weight} ${product.weightUnit}")
     }
 
     companion object {
+        const val LC = "en"
         private const val DEV_API = "https://world.openfoodfacts.dev"
 
         /**
@@ -209,7 +214,13 @@ class ProductsAPITest {
                                 .method(origReq.method(), origReq.body()).build())
                     }
                     .build()
-            prodClient = CommonApiManager.productsApi
+            prodClient =  Retrofit.Builder()
+                    .baseUrl(BuildConfig.HOST)
+                    .client(httpClientWithAuth)
+                    .addConverterFactory(JacksonConverterFactory.create(jacksonObjectMapper()))
+                    .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
+                    .build()
+                    .create(ProductsAPI::class.java)
             devClientWithAuth = Retrofit.Builder()
                     .baseUrl(DEV_API)
                     .addConverterFactory(JacksonConverterFactory.create())

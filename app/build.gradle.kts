@@ -30,6 +30,7 @@ plugins {
     id("kotlin-android")
     id("kotlin-parcelize")
     id("kotlin-kapt")
+    id("dagger.hilt.android.plugin")
 }
 
 fun obtainTestBuildType(): String {
@@ -46,10 +47,10 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib:${rootProject.extra["kotlinVersion"]}")
 
     // Android KTX
-    implementation("androidx.fragment:fragment-ktx:1.3.0-rc01")
-    implementation("androidx.activity:activity-ktx:1.2.0-rc01")
+    implementation("androidx.fragment:fragment-ktx:1.3.2")
+    implementation("androidx.activity:activity-ktx:1.2.2")
     implementation("androidx.preference:preference-ktx:1.1.1")
-    implementation("androidx.core:core-ktx:1.5.0-alpha05")
+    implementation("androidx.core:core-ktx:1.5.0-rc01")
 
 
     // AndroidX
@@ -59,35 +60,55 @@ dependencies {
     implementation("androidx.recyclerview:recyclerview:1.1.0")
     implementation("androidx.cardview:cardview:1.0.0")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
-    implementation("androidx.annotation:annotation:1.1.0")
+    implementation("androidx.annotation:annotation:1.2.0")
     implementation("androidx.constraintlayout:constraintlayout:2.0.4")
     implementation("androidx.multidex:multidex:2.0.1")
     implementation("androidx.viewpager2:viewpager2:1.0.0")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
-    implementation("androidx.work:work-runtime:2.4.0")
-    implementation("androidx.work:work-rxjava2:2.4.0")
+
+    val workVersion = "2.5.0"
+    implementation("androidx.work:work-runtime:$workVersion")
+    implementation("androidx.work:work-rxjava2:$workVersion")
+    val hiltVersion = "1.0.0-beta01"
+    implementation("androidx.hilt:hilt-work:$hiltVersion")
+    kapt("androidx.hilt:hilt-compiler:$hiltVersion")
+
+
     implementation("androidx.startup:startup-runtime:1.0.0")
 
+    // ML Kit barcode Scanner
+    implementation("com.google.mlkit:barcode-scanning:16.1.1")
 
-    kapt("com.google.dagger:dagger-compiler:2.30.1")
-    implementation("com.google.dagger:dagger:2.30.1")
+    implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
+
+    kapt("com.google.dagger:dagger-compiler:2.33")
+    implementation("com.google.dagger:dagger:2.33")
+    implementation("com.google.dagger:hilt-android:${rootProject.extra["hiltVersion"]}")
+
+    kapt("com.google.dagger:hilt-compiler:${rootProject.extra["hiltVersion"]}")
+
     compileOnly("javax.annotation:javax.annotation-api:1.3.2")
 
     //Rx
     implementation("io.reactivex.rxjava2:rxkotlin:2.4.0")
-    implementation("io.reactivex.rxjava2:rxjava:2.2.20")
+    implementation("io.reactivex.rxjava2:rxjava:2.2.21")
     implementation("io.reactivex.rxjava2:rxandroid:2.1.1")
+    implementation("com.jakewharton.rxrelay2:rxrelay:2.1.1")
+
+    //Rx optional
+    implementation("com.gojuno.koptional:koptional:1.7.0")
+    implementation("com.gojuno.koptional:koptional-rxjava2-extensions:1.7.0")
 
     //Networking
     implementation("com.squareup.retrofit2:retrofit:2.6.4")
     implementation("com.squareup.retrofit2:converter-jackson:2.6.4")
-    implementation("com.squareup.retrofit2:converter-scalars:2.1.0")
     implementation("com.squareup.retrofit2:adapter-rxjava2:2.6.4")
+    implementation("com.squareup.retrofit2:converter-scalars:2.1.0")
     implementation("com.squareup.okhttp3:logging-interceptor:3.12.11")
 
 
     // Apache commons
-    implementation("org.apache.commons:commons-lang3:3.11")
+    implementation("org.apache.commons:commons-lang3:3.12.0")
     implementation("org.apache.commons:commons-text:1.9")
     implementation("org.apache.commons:commons-csv:1.8")
     implementation("commons-validator:commons-validator:1.7")
@@ -107,7 +128,7 @@ dependencies {
     implementation("org.greenrobot:eventbus:$eventBusVersion")
     kapt("org.greenrobot:eventbus-annotation-processor:$eventBusVersion")
 
-    implementation("com.google.android.material:material:1.2.1")
+    implementation("com.google.android.material:material:1.3.0")
 
     //Image Loading
     implementation("com.squareup.picasso:picasso:2.71828")
@@ -147,26 +168,31 @@ dependencies {
     implementation("com.hootsuite.android:nachos:1.2.0")
 
     // Crash analytics
-    implementation("io.sentry:sentry-android:3.2.0")
+    implementation("io.sentry:sentry-android:4.3.0")
+    implementation("org.matomo.sdk:tracker:4.1.2")
+
+    // ShowCaseView dependency
+    implementation("com.github.mreram:showcaseview:1.0.5")
 
     // Unit Testing
-    testImplementation("junit:junit:4.13.1")
-    testImplementation("org.mockito:mockito-core:3.6.28")
-    testImplementation("net.javacrumbs.json-unit:json-unit-fluent:2.22.0")
-    testImplementation("com.google.truth:truth:1.1")
-    testImplementation("com.google.truth.extensions:truth-java8-extension:1.1")
+    testImplementation("junit:junit:4.13.2")
+    testImplementation("org.robolectric:robolectric:4.5.1")
+    testImplementation("org.mockito:mockito-core:3.8.0")
+    testImplementation("net.javacrumbs.json-unit:json-unit-fluent:2.24.0")
+    testImplementation("com.google.truth:truth:1.1.2")
+    testImplementation("com.google.truth.extensions:truth-java8-extension:1.1.2")
 
     // Instrumented tests
     androidTestUtil("androidx.test:orchestrator:1.3.0")
 
-    androidTestImplementation("androidx.test:runner:1.3.0") {
-        exclude("junit")
-    }
+    // Hilt for Android Testing
+    androidTestImplementation("com.google.dagger:hilt-android-testing:2.33-beta")
+    kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.33-beta")
+
+    androidTestImplementation("androidx.test:runner:1.3.0") { exclude("junit") }
     androidTestImplementation("androidx.test:rules:1.3.0")
 
-    androidTestImplementation("androidx.test.ext:junit:1.1.2") {
-        exclude("junit")
-    }
+    androidTestImplementation("androidx.test.ext:junit:1.1.2") { exclude("junit") }
 
     androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
     androidTestImplementation("androidx.test.espresso:espresso-intents:3.3.0")
@@ -180,12 +206,8 @@ dependencies {
     androidTestImplementation("com.jraska:falcon:2.1.1")
     androidTestImplementation("tools.fastlane:screengrab:1.2.0")
 
-    resourcePlaceholders {
-        files = listOf("xml/shortcuts.xml")
-    }
+    resourcePlaceholders { files = listOf("xml/shortcuts.xml") }
 
-    // ShowCaseView dependency
-    implementation("com.github.mreram:showcaseview:1.0.5")
 }
 
 
@@ -199,7 +221,7 @@ android {
         dataBinding = true
     }
 
-    flavorDimensions("versionCode")
+    flavorDimensions("versionCode", "platform")
 
 
     defaultConfig {
@@ -208,8 +230,8 @@ android {
         minSdkVersion(16)
         targetSdkVersion(30)
 
-        versionCode = 431
-        versionName = "3.6.3"
+        versionCode = 433
+        versionName = "3.6.8"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
@@ -272,6 +294,8 @@ android {
             buildConfigField("String", "OFWEBSITE", "\"https://world.openfoodfacts.org/\"")
             buildConfigField("String", "WIKIDATA", "\"https://www.wikidata.org/wiki/Special:EntityData/\"")
             buildConfigField("String", "STATICURL", "\"https://static.openfoodfacts.org\"")
+            buildConfigField("String", "MATOMO_URL", "\"https://analytics.openfoodfacts.org/matomo.php\"")
+            dimension = "versionCode"
         }
         create("obf") {
             applicationId = "openfoodfacts.github.scrachx.openbeauty"
@@ -282,6 +306,8 @@ android {
             buildConfigField("String", "OFWEBSITE", "\"https://world.openbeautyfacts.org/\"")
             buildConfigField("String", "WIKIDATA", "\"https://www.wikidata.org/wiki/Special:EntityData/\"")
             buildConfigField("String", "STATICURL", "\"https://static.openbeautyfacts.org\"")
+            buildConfigField("String", "MATOMO_URL", "\"https://analytics.openfoodfacts.org/matomo.php\"")
+            dimension = "versionCode"
         }
         create("opff") {
             applicationId = "org.openpetfoodfacts.scanner"
@@ -292,6 +318,8 @@ android {
             buildConfigField("String", "OFWEBSITE", "\"https://world.openpetfoodfacts.org/\"")
             buildConfigField("String", "WIKIDATA", "\"https://www.wikidata.org/wiki/Special:EntityData/\"")
             buildConfigField("String", "STATICURL", "\"https://static.openpetfoodfacts.org\"")
+            buildConfigField("String", "MATOMO_URL", "\"https://analytics.openfoodfacts.org/matomo.php\"")
+            dimension = "versionCode"
         }
         create("opf") {
             applicationId = "org.openproductsfacts.scanner"
@@ -302,6 +330,16 @@ android {
             buildConfigField("String", "OFWEBSITE", "\"https://world.openproductsfacts.org/\"")
             buildConfigField("String", "WIKIDATA", "\"https://www.wikidata.org/wiki/Special:EntityData/\"")
             buildConfigField("String", "STATICURL", "\"https://static.openproductsfacts.org\"")
+            buildConfigField("String", "MATOMO_URL", "\"https://analytics.openfoodfacts.org/matomo.php\"")
+            dimension = "versionCode"
+        }
+        create("playstore") {
+            dimension = "platform"
+            buildConfigField("boolean", "USE_MLKIT", "true")
+        }
+        create("fdroid") {
+            dimension = "platform"
+            buildConfigField("boolean", "USE_MLKIT", "false")
         }
     }
 
@@ -353,7 +391,7 @@ kapt {
     }
 }
 
-greendao { schemaVersion(20) }
+greendao { schemaVersion(22) }
 
 
 

@@ -2,35 +2,35 @@ Pindai produk makanan atau kode batangnya untuk mendapatkan data tentang bahan, 
 
 ▶ Find & Compare more than 800.000 products
 
-The app allows to view the 800.000 products (including 175.000 in the US) already contained in the free and open database Open Food Facts, and also to add pictures and data for new products.
+Aplikasi ini memudahkan untuk melihat 800.000 produk (termasuk 175.000 di AS) yang termuat dalam database gratis dan terbuka Open Food Facts, dan dapat menambahkan gambar serta data produk baru.
 
 
-To discover the volunteer-run Open Food Facts project, visit https://world.openfoodfacts.org
+Untuk menemukan proyek Open Food Facts yang dikelola sukarela, kunjungi https://world.openfoodfacts.org
 
-▶ Choose the products that are good for you
-- The Nutri-Score grade, from "A" to "E" >> Nutritional quality
-- The NOVA group, from "1" to "4" >> Find the Ultra-Processed food
-- You can easily compare as many products as you want, side by side by simply scanning them. 
+Pilih produk yang baik untuk Anda
+Tingkat Nutri-Score, mulai dari "A" sampai "E">> kualitas Nutrisi
+Kelompok NOVA, mulai dari "1" sampai "4" >> Mencari makanan Pemprosesan Ultra
+Anda dapat mudah membandingkan banyak produk yang Anda mau, sisi per sisi dengan hanya memindai mereka.  
 
-▶ And good for the planet!
-- The carbon impact of your food
-- Get a sense of how much of your daily carbon quota you're using for food
-- Based on the footprints computed for France by ADEME.
-- Join us and help us to bring the Carbon Impact to your country!
-- To display a Carbon Impact, a product must have a complete ingredient list with % of meat or fish and a quantity
+Dan baik bagi planet!
+Karbon berdampak pada makanan anda
+Sadari berapa banyak kuota karbon harian yang anda gunakan pada makanan
+Berdasarkan jejak kaki yang dikomputerisasi oleh Perancis oleh ADEME.
+Bergabunglah dan bantu kami menyuarakan dampak karbon di negaramu!
+Untuk melihat dampak karbon, produk harus memiliki daftar bahan dengan % daging atau ikan dan jumlahnya
 
 
-▶ Contribute to Food Transparency
-Open food facts adalah basis data produk makanan yang dibuat oleh semua orang, untuk siapapun.
-Anda bisa menggunakannya untuk membuat pilihan makanan yang lebih baik, dan karena itu merupakan data terbuka, siapapun bisa menggunakannya kembali untuk kepentingan apapun.
-Open Food Facts adalah sebuah proyek nirlaba yang dikembangkan oleh ribuan relawan dari seluruh dunia. Ada banyak proyek menyenangkan yang bisa diikuti dengan berbagai cara.
-- You can start contributing today by adding a product from your fridge.
+Kontribusi pada Transparasi Pangan
+Open Food Facts adalah database produk makanan yang dibuat semua orang untuk semua.
+Anda dapat menggunakan untuk membuat pilihan makanan lebih baik, semua orang bisa menggunakan kembali untuk tujuan apapun.
+Open Food Facts adalah proyek nirlaba dikembangkan oleh ratusan relawan dari suruh dunia. Ada banyak proyek menyenangkan yang bisa diikuti dengan berbagai cara.
+Anda dapat berkontribusi hari ini dengan menambah produk dari kulkas Anda.
 
-▶ Create lists
-Create shopping lists, track what you've eaten and easily share and export your lists.
+Buat daftar
+Buat daftar belanja, lacak apa yang sudah dimakan dan bagikan dengan mudah serta ekspor daftar anda.
 
-▶ Get the Facts
-Open Food Facts membantu anda untuk memahami cetakan pada label produk. You will be able to find:
+Dapatkan fatktanya
+Open Food Facts membantu anda untuk memahami cetakan pada label produk. Anda akan menemukan:
 Jejak karbon (emisi CO2) dan kemasan (serta instruksi daur ulang),
 Nutriscore (skor nutirisi), nutrisi, lemak / kandungan lemak, asam lemak jenuh, karbohidrat, gula, serat, protein dan garam dan sodium.
 Merek, alergen, label (bio, bebas gluten, vegan, vegetarian, halal, kosher ...), informasi yang dapat ditelusuri (kode kemasan, asal bahan)

@@ -9,12 +9,12 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.rxkotlin.toObservable
 import io.reactivex.schedulers.Schedulers
 import openfoodfacts.github.scrachx.openfood.R
-import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentContributorsBinding
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_STATE
 import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivity.Companion.start
@@ -28,6 +28,7 @@ import openfoodfacts.github.scrachx.openfood.utils.SearchType
 import openfoodfacts.github.scrachx.openfood.utils.requireProductState
 import java.text.SimpleDateFormat
 import java.util.*
+import javax.inject.Inject
 
 /*
 * Created by prajwalm on 14/04/18.
@@ -35,9 +36,15 @@ import java.util.*
 /**
  * @see R.layout.fragment_contributors
  */
+
+@AndroidEntryPoint
 class ContributorsFragment : BaseFragment() {
+
     private var _binding: FragmentContributorsBinding? = null
     private val binding get() = _binding!!
+
+    @Inject
+    lateinit var productRepository: ProductRepository
 
     private lateinit var productState: ProductState
 
@@ -46,14 +53,21 @@ class ContributorsFragment : BaseFragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.incompleteStates.setOnClickListener { toggleIncompleteStatesVisibility() }
+        binding.completeStates.setOnClickListener { toggleCompleteStatesVisibility() }
+
+        binding.incompleteStates.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_down_grey_24dp, 0)
+        binding.completeStates.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_down_grey_24dp, 0)
+
+        refreshView(this.requireProductState())
+    }
+
     override fun onDestroyView() {
         disp.clear()
         super.onDestroyView()
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        refreshView(this.requireProductState())
     }
 
     override fun refreshView(productState: ProductState) {
@@ -94,7 +108,6 @@ class ContributorsFragment : BaseFragment() {
 
         // function to show states tags
         showStatesTags(product)
-
     }
 
     /**
@@ -135,37 +148,70 @@ class ContributorsFragment : BaseFragment() {
         }
     }
 
-    private fun showStatesTags(product:Product) {
-        val statesTags = product.statesTags
-        if (statesTags.isEmpty()) {
-            return
-        }
+    private fun showStatesTags(product: Product) {
+        val tags = product.statesTags
+        if (tags.isEmpty()) return
 
-        val languageCode = LocaleHelper.getLanguage(OFFApplication.instance)
-        statesTags.toObservable()
+        val languageCode = LocaleHelper.getLanguage(requireContext())
+        tags.toObservable()
                 .flatMapSingle { tag: String ->
-                    ProductRepository.getStatesByTagAndLanguageCode(tag, languageCode)
+                    productRepository.getStatesByTagAndLanguageCode(tag, languageCode)
                 }
                 .toList()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnError { e: Throwable? ->
                     Log.e(ContributorsFragment::class.simpleName, "loadStatesTags", e)
-                    binding.statesTxt.visibility = View.GONE
+                    binding.statesTagsCv.visibility = View.GONE
                 }
                 .subscribe { states: List<StatesName> ->
                     if (states.isEmpty()) {
-                        binding.statesTxt.visibility = View.GONE
+                        binding.statesTagsCv.visibility = View.GONE
                     } else {
-                        binding.statesTxt.movementMethod = LinkMovementMethod.getInstance()
-                        binding.statesTxt.text = ""
+                        binding.incompleteStatesTxt.movementMethod = LinkMovementMethod.getInstance()
+                        binding.incompleteStatesTxt.text = ""
+
+                        binding.completeStatesTxt.movementMethod = LinkMovementMethod.getInstance()
+                        binding.completeStatesTxt.text = ""
+
                         states.forEach { state ->
-                            binding.statesTxt.append(getStatesTag(state.name, state.statesTag.split(":").component2()))
-                            binding.statesTxt.append("\n")
+                            if (isIncompleteState(state.statesTag)) {
+                                binding.incompleteStatesTxt.append(getStatesTag(state.name, state.statesTag.split(":").component2()))
+                                binding.incompleteStatesTxt.append("\n")
+                            } else {
+                                binding.completeStatesTxt.append(getStatesTag(state.name, state.statesTag.split(":").component2()))
+                                binding.completeStatesTxt.append("\n")
+                            }
                         }
                     }
                 }.addTo(disp)
 
+    }
+
+    private fun isIncompleteState(stateTag: String): Boolean {
+
+        return stateTag.contains("to-be-completed") || stateTag.contains("to-be-uploaded") ||
+                stateTag.contains("to-be-checked") || stateTag.contains("to-be-validated") || stateTag.contains("to-be-selected")
+    }
+
+    private fun toggleIncompleteStatesVisibility() {
+        if (binding.incompleteStatesTxt.visibility != View.VISIBLE) {
+            binding.incompleteStatesTxt.visibility = View.VISIBLE
+            binding.incompleteStates.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_up_grey_24dp, 0)
+        } else {
+            binding.incompleteStatesTxt.visibility = View.GONE
+            binding.incompleteStates.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_down_grey_24dp, 0)
+        }
+    }
+
+    private fun toggleCompleteStatesVisibility() {
+        if (binding.completeStatesTxt.visibility != View.VISIBLE) {
+            binding.completeStatesTxt.visibility = View.VISIBLE
+            binding.completeStates.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_up_grey_24dp, 0)
+        } else {
+            binding.completeStatesTxt.visibility = View.GONE
+            binding.completeStates.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_down_grey_24dp, 0)
+        }
     }
 
     companion object {

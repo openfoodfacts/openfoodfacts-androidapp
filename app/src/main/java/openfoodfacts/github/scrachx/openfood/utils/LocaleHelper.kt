@@ -36,14 +36,12 @@ import java.util.*
  * Created by gunhansancar on 07/10/15.
  */
 object LocaleHelper {
-    private val SELECTED_LANGUAGE by lazy { OFFApplication.instance.getString(R.string.pref_language_key) }
-
-    fun List<LanguageData>.find(language: String) = indexOfFirst { language == it.code }
+    private val SELECTED_LANGUAGE by lazy { OFFApplication._instance.getString(R.string.pref_language_key) }
 
     fun onCreate(context: Context, defaultLanguage: String = Locale.getDefault().language) =
             setLanguageInPrefs(context, getLanguageInPreferences(context, defaultLanguage))
 
-    fun getLanguageData(codes: Collection<String?>, supported: Boolean) =
+    fun getLanguageData(codes: Collection<String>, supported: Boolean) =
             codes.map { getLanguageData(it, supported) }.sorted().toMutableList()
 
     fun getLanguageData(code: String?, supported: Boolean) =
@@ -52,7 +50,7 @@ object LocaleHelper {
     /**
      * Used by screenshots test
      */
-    internal fun setLanguageInPrefs(locale: Locale) = setContextLanguage(OFFApplication.instance, locale)
+    internal fun setLanguageInPrefs(locale: Locale) = setContextLanguage(OFFApplication._instance, locale)
 
     fun getLanguage(context: Context?): String {
         var lang = getLanguageInPreferences(context, Locale.getDefault().language)
@@ -65,7 +63,7 @@ object LocaleHelper {
     fun getLCOrDefault(languageCode: String?) =
             if (!languageCode.isNullOrEmpty()) languageCode else ApiFields.Defaults.DEFAULT_LANGUAGE
 
-    fun getLocaleFromContext(context: Context? = OFFApplication.instance): Locale {
+    fun getLocaleFromContext(context: Context? = OFFApplication._instance): Locale {
         var locale: Locale? = null
         if (context != null) {
             val resources = context.resources

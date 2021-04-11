@@ -15,6 +15,7 @@
  */
 package openfoodfacts.github.scrachx.openfood.features.product.view.ingredients
 
+import android.content.Context
 import android.util.Log
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -22,52 +23,51 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.rxkotlin.toObservable
 import io.reactivex.schedulers.Schedulers
-import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.models.Product
-import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveName
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenName
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper
-import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState
+import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.EMPTY
+import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.LOADING
 
 /**
  * Created by Lobster on 17.03.18.
  */
 class IngredientsProductPresenter(
-        private val product: Product,
-        private val view: IIngredientsProductPresenter.View
+        private val context: Context,
+        private val view: IIngredientsProductPresenter.View,
+        private val productRepository: ProductRepository,
+        private val product: Product
 ) : IIngredientsProductPresenter.Actions {
     private val disp = CompositeDisposable()
 
     override fun loadAdditives() {
         val additivesTags = product.additivesTags
         if (additivesTags.isEmpty()) {
-            view.showAdditivesState(ProductInfoState.EMPTY)
+            view.setAdditivesState(EMPTY)
             return
         }
-        val languageCode = LocaleHelper.getLanguage(OFFApplication.instance)
+        val languageCode = LocaleHelper.getLanguage(context)
         additivesTags.toObservable()
-                .flatMapSingle { tag: String? ->
-                    ProductRepository.getAdditiveByTagAndLanguageCode(tag, languageCode).flatMap { categoryName: AdditiveName ->
+                .flatMapSingle { tag ->
+                    productRepository.getAdditiveByTagAndLanguageCode(tag, languageCode).flatMap { categoryName ->
                         if (categoryName.isNull) {
-                            ProductRepository.getAdditiveByTagAndDefaultLanguageCode(tag)
-                        } else {
-                            Single.just(categoryName)
-                        }
+                            productRepository.getAdditiveByTagAndDefaultLanguageCode(tag)
+                        } else Single.just(categoryName)
                     }
                 }
                 .filter { it.isNotNull }
                 .toList()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doOnSubscribe { view.showAdditivesState(ProductInfoState.LOADING) }
+                .doOnSubscribe { view.setAdditivesState(LOADING) }
                 .doOnError {
                     Log.e(IngredientsProductPresenter::class.simpleName, "loadAdditives", it)
-                    view.showAdditivesState(ProductInfoState.EMPTY)
+                    view.setAdditivesState(EMPTY)
                 }
-                .subscribe { additives: List<AdditiveName> ->
+                .subscribe { additives ->
                     if (additives.isEmpty()) {
-                        view.showAdditivesState(ProductInfoState.EMPTY)
+                        view.setAdditivesState(EMPTY)
                     } else {
                         view.showAdditives(additives)
                     }
@@ -78,31 +78,29 @@ class IngredientsProductPresenter(
     override fun loadAllergens() {
         val allergenTags = product.allergensTags
         if (allergenTags.isEmpty()) {
-            view.showAllergensState(ProductInfoState.EMPTY)
+            view.setAllergensState(EMPTY)
             return
         }
-        val languageCode = LocaleHelper.getLanguage(OFFApplication.instance)
+        val languageCode = LocaleHelper.getLanguage(context)
         allergenTags.toObservable()
-                .flatMapSingle { tag: String? ->
-                    ProductRepository.getAllergenByTagAndLanguageCode(tag, languageCode).flatMap { allergenName: AllergenName ->
+                .flatMapSingle { tag ->
+                    productRepository.getAllergenByTagAndLanguageCode(tag, languageCode).flatMap { allergenName: AllergenName ->
                         if (allergenName.isNull) {
-                            return@flatMap ProductRepository.getAllergenByTagAndDefaultLanguageCode(tag)
-                        } else {
-                            return@flatMap Single.just(allergenName)
-                        }
+                            productRepository.getAllergenByTagAndDefaultLanguageCode(tag)
+                        } else Single.just(allergenName)
                     }
                 }
                 .toList()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doOnSubscribe { view.showAllergensState(ProductInfoState.LOADING) }
-                .doOnError { e: Throwable? ->
+                .doOnSubscribe { view.setAllergensState(LOADING) }
+                .doOnError { e ->
                     Log.e(IngredientsProductPresenter::class.simpleName, "loadAllergens", e)
-                    view.showAllergensState(ProductInfoState.EMPTY)
+                    view.setAllergensState(EMPTY)
                 }
-                .subscribe { allergens: List<AllergenName> ->
+                .subscribe { allergens ->
                     if (allergens.isEmpty()) {
-                        view.showAllergensState(ProductInfoState.EMPTY)
+                        view.setAllergensState(EMPTY)
                     } else {
                         view.showAllergens(allergens)
                     }

@@ -26,6 +26,8 @@ import androidx.activity.result.contract.ActivityResultContract
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
+import com.squareup.picasso.Picasso
+import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
@@ -34,22 +36,29 @@ import openfoodfacts.github.scrachx.openfood.features.adapters.ProductImagesSele
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.images.IMAGE_FILE
 import openfoodfacts.github.scrachx.openfood.images.IMG_ID
-import openfoodfacts.github.scrachx.openfood.images.ImageNameJsonParser.extractImagesNameSortedByUploadTimeDesc
 import openfoodfacts.github.scrachx.openfood.images.PRODUCT_BARCODE
-import openfoodfacts.github.scrachx.openfood.network.CommonApiManager.productsApi
+import openfoodfacts.github.scrachx.openfood.images.extractImagesNameSortedByUploadTimeDesc
+import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
 import openfoodfacts.github.scrachx.openfood.utils.MY_PERMISSIONS_REQUEST_STORAGE
 import openfoodfacts.github.scrachx.openfood.utils.PhotoReceiverHandler
-import openfoodfacts.github.scrachx.openfood.utils.Utils.picassoBuilder
 import openfoodfacts.github.scrachx.openfood.utils.isAllGranted
 import openfoodfacts.github.scrachx.openfood.utils.isUserSet
 import pl.aprilapps.easyphotopicker.EasyImage
 import java.io.File
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class ImagesSelectActivity : BaseActivity() {
     private var _binding: ActivityProductImagesListBinding? = null
     private val binding get() = _binding!!
 
-    private var adapter: ProductImagesSelectionAdapter? = null
+    @Inject
+    lateinit var picasso: Picasso
+
+    @Inject
+    lateinit var productsApi: ProductsAPI
+
+    private lateinit var adapter: ProductImagesSelectionAdapter
     private val disp = CompositeDisposable()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -72,15 +81,16 @@ class ImagesSelectActivity : BaseActivity() {
 
     private fun loadProductImages(code: String) {
         productsApi.getProductImages(code)
+                .map { extractImagesNameSortedByUploadTimeDesc(it) }
                 .observeOn(AndroidSchedulers.mainThread())
-                .doOnError { Log.e(LOG_TAG, "cannot download images from server", it) }
-                .subscribe { node ->
-                    val imageNames = extractImagesNameSortedByUploadTimeDesc(node)
+                .doOnError { Log.e(LOG_TAG, "Cannot download images from server", it) }
+                .subscribe { imageNames ->
                     supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-                    //Check if user is logged in
-                    adapter = ProductImagesSelectionAdapter(this, imageNames, code)
-                    { setSelectedImage(it) }
+                    // Check if user is logged in
+                    adapter = ProductImagesSelectionAdapter(this, picasso, imageNames, code) {
+                        setSelectedImage(it)
+                    }
 
                     binding.imagesRecycler.adapter = adapter
                     binding.imagesRecycler.layoutManager = GridLayoutManager(this, 3)
@@ -89,8 +99,8 @@ class ImagesSelectActivity : BaseActivity() {
 
     private fun setSelectedImage(selectedPosition: Int) {
         if (selectedPosition >= 0) {
-            val finalUrlString = adapter!!.getImageUrl(selectedPosition)
-            picassoBuilder(this).load(finalUrlString).resize(400, 400).centerInside().into(binding.expandedImage)
+            val finalUrlString = adapter.getImageUrl(selectedPosition)
+            picasso.load(finalUrlString).resize(400, 400).centerInside().into(binding.expandedImage)
             binding.zoomContainer.visibility = View.VISIBLE
             binding.imagesRecycler.visibility = View.INVISIBLE
         }
@@ -104,8 +114,7 @@ class ImagesSelectActivity : BaseActivity() {
 
     private fun acceptSelection() {
         setResult(RESULT_OK, Intent().apply {
-            putExtra(IMG_ID, adapter!!.getSelectedImageName())
-
+            putExtra(IMG_ID, adapter.getSelectedImageName())
         })
         finish()
     }
@@ -119,7 +128,7 @@ class ImagesSelectActivity : BaseActivity() {
     }
 
     private fun updateButtonAccept() {
-        val visible = isUserSet() && adapter!!.isSelectionDone()
+        val visible = isUserSet() && adapter.isSelectionDone()
         binding.btnAcceptSelection.visibility = if (visible) View.VISIBLE else View.INVISIBLE
         binding.txtInfo.visibility = binding.btnAcceptSelection.visibility
     }
@@ -138,7 +147,7 @@ class ImagesSelectActivity : BaseActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        PhotoReceiverHandler { newPhotoFile ->
+        PhotoReceiverHandler(this) { newPhotoFile ->
             setResult(RESULT_OK, Intent().apply {
                 putExtra(IMAGE_FILE, newPhotoFile)
             })

@@ -18,7 +18,6 @@ fun Context.getLoginPreferences(mode: Int = 0): SharedPreferences =
 /**
  * Function which returns true if the battery level is low
  *
- * @param this@isBatteryLevelLow the context
  * @return true if battery is low or false if battery in not low
  */
 fun Context.isBatteryLevelLow(): Boolean {
@@ -38,3 +37,5 @@ fun Context.isLowBatteryMode() = isDisableImageLoad() && isBatteryLevelLow()
 
 fun Context.isFastAdditionMode(defValue: Boolean = false) = PreferenceManager.getDefaultSharedPreferences(this)
         .getBoolean("fastAdditionMode", defValue)
+
+fun Context.dpsToPixel(dps: Int) = (dps * resources.displayMetrics.density + 0.5f).toInt()

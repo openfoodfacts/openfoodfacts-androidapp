@@ -19,21 +19,13 @@
 
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/round_background">
-        <shape android:shape="oval">
-            <solid
-                android:id="@+id/background_color"
-                android:color="#FFFFFF"/>
-            <size
-                android:width="120dp"
-                android:height="120dp"/>
-        </shape>
-    </item>
+        android:id="@+id/round_background"
+        android:drawable="@drawable/reviewdialog_round_icon_bg" />
     <item
+        android:id="@+id/drawable_image"
+        android:bottom="20dp"
+        android:drawable="@drawable/ic_feedback_black_24dp"
         android:left="20dp"
         android:right="20dp"
-        android:bottom="20dp"
-        android:top="20dp"
-        android:drawable="@drawable/ic_baseline_check_circle_24"
-        android:id="@+id/drawable_image" />
+        android:top="20dp" />
 </layer-list>

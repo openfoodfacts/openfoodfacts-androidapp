@@ -21,16 +21,11 @@ class AllergenResponse(
      */
     override fun map() = if (wikiDataCode != null) {
         Allergen(uniqueAllergenID, arrayListOf(), wikiDataCode).also {
-            names.forEach { (key, value) ->
-                it.names.add(AllergenName(it.tag, key, value, wikiDataCode))
-            }
+            names.forEach { (lc, name) -> it.names += AllergenName(it.tag, lc, name, wikiDataCode) }
         }
     } else {
         Allergen(uniqueAllergenID, arrayListOf()).also {
-            names.forEach { (key, value) ->
-                it.names.add(AllergenName(it.tag, key, value))
-            }
+            names.forEach { (lc, name) -> it.names += AllergenName(it.tag, lc, name) }
         }
-
     }
 }

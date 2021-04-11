@@ -10,19 +10,25 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.github.chrisbanes.photoview.PhotoViewAttacher
 import com.squareup.picasso.Callback
+import com.squareup.picasso.Picasso
+import dagger.hilt.android.AndroidEntryPoint
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityZoomImageBinding
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.images.IMAGE_URL
-import openfoodfacts.github.scrachx.openfood.utils.Utils.picassoBuilder
 import java.util.*
+import javax.inject.Inject
 
 /**
  * Activity to display/edit product images
  */
+@AndroidEntryPoint
 class ImageZoomActivity : BaseActivity() {
     private var _binding: ActivityZoomImageBinding? = null
     private val binding get() = _binding!!
+
+    @Inject
+    lateinit var picasso: Picasso
 
     private lateinit var attacher: PhotoViewAttacher
 
@@ -66,7 +72,7 @@ class ImageZoomActivity : BaseActivity() {
             stopRefresh()
         } else {
             startRefresh(getString(R.string.txtLoading))
-            picassoBuilder(this)
+            picasso
                     .load(imageUrl)
                     .into(binding.imageViewFullScreen, object : Callback {
                         override fun onSuccess() {

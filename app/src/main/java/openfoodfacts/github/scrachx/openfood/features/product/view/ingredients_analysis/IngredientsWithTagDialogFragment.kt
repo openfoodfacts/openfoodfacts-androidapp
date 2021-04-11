@@ -20,6 +20,8 @@ import androidx.core.graphics.BlendModeCompat
 import androidx.core.text.HtmlCompat
 import androidx.fragment.app.DialogFragment
 import androidx.preference.PreferenceManager
+import com.squareup.picasso.Picasso
+import dagger.hilt.android.AndroidEntryPoint
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper
 import openfoodfacts.github.scrachx.openfood.databinding.IngredientsWithTagBinding
@@ -29,10 +31,16 @@ import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.AnalysisTagConfig
 import openfoodfacts.github.scrachx.openfood.utils.Utils
 import java.util.*
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class IngredientsWithTagDialogFragment : DialogFragment() {
     private var _binding: IngredientsWithTagBinding? = null
     private val binding get() = _binding!!
+
+    @Inject
+    lateinit var picasso: Picasso
+
     var onDismissListener: ((DialogInterface) -> Unit)? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -57,7 +65,7 @@ class IngredientsWithTagDialogFragment : DialogFragment() {
         val ambiguousIngredient = arguments.getString(AMBIGUOUS_INGREDIENT_KEY)
         val ingredientsImageUrl = arguments.getString(INGREDIENTS_IMAGE_URL_KEY)
 
-        Utils.picassoBuilder(requireContext())
+        picasso
                 .load(iconUrl)
                 .into(binding.icon)
         binding.iconFrame.background = ResourcesCompat.getDrawable(requireActivity().resources, R.drawable.rounded_button, requireActivity().theme)?.apply {
@@ -84,9 +92,7 @@ class IngredientsWithTagDialogFragment : DialogFragment() {
             messageToBeShown = HtmlCompat.fromHtml(getString(R.string.unknown_status_ambiguous_ingredients, ambiguousIngredient), HtmlCompat.FROM_HTML_MODE_LEGACY)
             binding.helpNeeded.visibility = View.GONE
         } else if (showHelpTranslate && arguments.getBoolean(MISSING_INGREDIENTS_KEY, false)) {
-            Utils.picassoBuilder(requireContext())
-                    .load(ingredientsImageUrl)
-                    .into(binding.image)
+            picasso.load(ingredientsImageUrl).into(binding.image)
 
             binding.image.setOnClickListener { goToExtract() }
             messageToBeShown = HtmlCompat.fromHtml(getString(R.string.unknown_status_missing_ingredients), HtmlCompat.FROM_HTML_MODE_LEGACY)

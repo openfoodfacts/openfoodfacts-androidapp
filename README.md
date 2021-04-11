@@ -24,7 +24,7 @@ Open Food Facts is a database of food products with ingredients, allergens, nutr
 ### Made by everyone
 
 Open Food Facts is a non-profit association of volunteers.
-25000+ contributors like you have added 1,1M+ products from 150 countries using our Android, iPhone or Windows Phone app or their camera to scan barcodes and upload pictures of products and their labels.
+25000+ contributors like you have added 1,6M+ products from 150 countries using our Android, iPhone or Windows Phone app or their camera to scan barcodes and upload pictures of products and their labels.
 
 ### For everyone
 
@@ -32,9 +32,8 @@ Data about food is of public interest and has to be open. The complete database 
 
 
 ## Impact Roadmap
-### Scanning 
+### A brilliant scan experience 
 https://github.com/openfoodfacts/openfoodfacts-androidapp/projects/20
-- [ ] Add ML Kit scanning
 - [ ] Add offline scanning
 
 ### Help data refresh
@@ -44,7 +43,6 @@ https://github.com/openfoodfacts/openfoodfacts-androidapp/projects/20
 - [ ] https://github.com/openfoodfacts/openfoodfacts-androidapp/projects/8#card-39610510
 
 ### Editing papercut bugs
-Remove Packager code tooltip #2946
 Make category selection more intuitive for beginners #2951
 Improve suggestions by removing diacritics in the edit mode #2184
 
@@ -62,7 +60,7 @@ Have a bug or a feature request? Please search for existing and closed issues. I
 
 ### What can I work on ?
 
-Open Food Facts on Android has 0,5M users and 1M products. *Each contribution you make will have a large impact on food transparency worldwide.* Finding the right issue or feature will help you have even more more impact. Feel free to ask for feedback on the #android channel before you start work, and to document what you intend to code.
+Open Food Facts on Android has 0,5M users and 1,6M products. *Each contribution you make will have a large impact on food transparency worldwide.* Finding the right issue or feature will help you have even more more impact. Feel free to ask for feedback on the #android channel before you start work, and to document what you intend to code.
 
 Here are issues and feature requests you can work on:
 - [P1 issues](https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/p1)
@@ -93,11 +91,6 @@ https://translate.openfoodfacts.org
 The project uses Fastlane to automate release and screenshots generation.
 * First time you checkout, run `bundle install` at the root of the project
 * Then launch lanes using `bundle exec fastlane release` (for example the release lane)
-
-## Generate screenshots for the Play Store
-To activate the `screenshots` buildType in IDE, uncomment `def result = "screenshots"` and comment the other line otherwise the folder androidTestScreenshots is not recognized as a test folder.
-To generate localized screenshots of the app on your local computer, launch the command `gradlew connectedOffScreenshotsAndroidTest --stacktrace --info -PtestBuildType=screenshots` with a physical device attached to your computer
-[Help is welcome to improve](https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/screenshot-generation)
 
 ### Who do I talk to?
 

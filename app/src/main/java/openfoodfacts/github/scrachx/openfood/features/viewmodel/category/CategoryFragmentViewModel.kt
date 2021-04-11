@@ -15,75 +15,86 @@
  */
 package openfoodfacts.github.scrachx.openfood.features.viewmodel.category
 
+import android.app.Application
 import android.util.Log
 import android.view.View
-import androidx.databinding.ObservableField
+import androidx.databinding.ObservableArrayList
 import androidx.databinding.ObservableInt
+import androidx.lifecycle.AndroidViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
-import openfoodfacts.github.scrachx.openfood.app.OFFApplication
-import openfoodfacts.github.scrachx.openfood.features.viewmodel.BaseViewModel
 import openfoodfacts.github.scrachx.openfood.models.entities.category.Category
 import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoryName
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
-import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository.getAllCategoriesByDefaultLanguageCode
-import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository.getAllCategoriesByLanguageCode
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
 import java.net.UnknownHostException
 import java.util.*
+import javax.inject.Inject
 
 /**
  * Created by Abdelali Eramli on 27/12/2017.
  */
-class CategoryFragmentViewModel : BaseViewModel() {
+@HiltViewModel
+class CategoryFragmentViewModel @Inject constructor(
+        val app: Application,
+        private val productRepository: ProductRepository
+) : AndroidViewModel(app) {
     private val allCategories = mutableListOf<CategoryName>()
-    val shownCategories = ObservableField(mutableListOf<CategoryName>())
+    val shownCategories = ObservableArrayList<CategoryName>()
     val showProgress = ObservableInt(View.VISIBLE)
     val showOffline = ObservableInt(View.GONE)
 
+    private val disposable = CompositeDisposable()
 
-    override fun subscribe(subscriptions: CompositeDisposable) = refreshCategories()
+    init {
+        refreshCategories()
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        disposable.dispose()
+    }
 
     /**
      * Generates a network call for showing categories in CategoryFragment
      */
     fun refreshCategories() {
-        getAllCategoriesByLanguageCode(getLanguage(OFFApplication.instance))
+        productRepository.getAllCategoriesByLanguageCode(getLanguage(app))
                 .doOnSubscribe {
                     showOffline.set(View.GONE)
                     showProgress.set(View.VISIBLE)
                 }
                 .flatMap {
                     if (it.isEmpty()) {
-                        getAllCategoriesByDefaultLanguageCode()
-                    } else {
-                        Single.just(it)
-                    }
+                        productRepository.getAllCategoriesByDefaultLanguageCode()
+                    } else Single.just(it)
                 }
                 .flatMap {
                     if (it.isEmpty()) {
-                        ProductRepository.getCategories().map(this::extractCategoriesNames)
-                    } else {
-                        Single.just(it)
-                    }
+                        productRepository.getCategories().map(this::extractCategoriesNames)
+                    } else Single.just(it)
                 }
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnError {
-                    Log.e(CategoryFragmentViewModel::class.java.canonicalName, "Error loading categories", it)
+                    Log.e(CategoryFragmentViewModel::class.simpleName, "Error loading categories", it)
                     if (it is UnknownHostException) {
                         showOffline.set(View.VISIBLE)
                         showProgress.set(View.GONE)
                     }
                 }
                 .subscribe { categoryList ->
-                    allCategories.addAll(categoryList)
-                    shownCategories.set(categoryList.toMutableList())
+                    allCategories += categoryList
+
+                    shownCategories.clear()
+                    shownCategories += categoryList
+
                     showProgress.set(View.GONE)
-                }.addTo(subscriptions ?: error("Cannot refresh view while not binded."))
+                }.addTo(disposable)
     }
 
     /**
@@ -93,7 +104,7 @@ class CategoryFragmentViewModel : BaseViewModel() {
      */
     private fun extractCategoriesNames(categories: List<Category>) = categories
             .flatMap { it.names }
-            .filter { it.languageCode == getLanguage(OFFApplication.instance) }
+            .filter { it.languageCode == getLanguage(app) }
             .sortedWith { o1, o2 -> o1.name!!.compareTo(o2.name!!) }
 
     /**
@@ -101,9 +112,10 @@ class CategoryFragmentViewModel : BaseViewModel() {
      *
      * @param query string which is used to query for category names
      */
-    fun searchCategories(query: String) = shownCategories.set(
-            allCategories
-                    .filter { it.name?.toLowerCase(Locale.getDefault())?.startsWith(query) == true }
-                    .toMutableList()
-    )
+    fun searchCategories(query: String) {
+        shownCategories.clear()
+        shownCategories += allCategories.filter { it.name?.toLowerCase(Locale.getDefault())?.startsWith(query) == true }
+    }
+
 }
+

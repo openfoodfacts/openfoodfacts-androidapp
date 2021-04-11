@@ -127,7 +127,7 @@
     </string-array>
 
     <!-- Application theme settings -->
-    <string-array name="application_theme_entries">
+    <string-array name="application_theme_entries" translatable="false">
         <item>@string/follow_system</item>
         <item>@string/day</item>
         <item>@string/night</item>
@@ -214,206 +214,6 @@
         <item>Vitamin E</item>
         <item>Vitamin K</item>
         <item>Zinc</item>
-    </string-array>
-
-    <!-- Text units -->
-    <string-array name="languages_array" translatable="false">
-        <item>aa</item>
-        <item>ach</item>
-        <item>af</item>
-        <item>ak</item>
-        <item>am</item>
-        <item>ar</item>
-        <item>as</item>
-        <item>ast</item>
-        <item>az</item>
-        <item>b+sr+Cyrl</item>
-        <item>b+sr+Latn</item>
-        <item>be</item>
-        <item>bn</item>
-        <item>bg</item>
-        <item>ca</item>
-        <item>cs</item>
-        <item>da</item>
-        <item>de</item>
-        <item>el</item>
-        <item>en</item>
-        <item>eo</item>
-        <item>es</item>
-        <item>et</item>
-        <item>eu</item>
-        <item>fa</item>
-        <item>fi</item>
-        <item>fil</item>
-        <item>fr</item>
-        <item>ga</item>
-        <item>gl</item>
-        <item>gu</item>
-        <item>he</item>
-        <item>hi</item>
-        <item>hu</item>
-        <item>hr</item>
-        <item>hy</item>
-        <item>id</item>
-        <item>it</item>
-        <item>is</item>
-        <item>ja</item>
-        <item>kab</item>
-        <item>kk</item>
-        <item>km</item>
-        <item>ko</item>
-        <item>ku</item>
-        <item>lo</item>
-        <item>lt</item>
-        <item>lv</item>
-        <item>mg</item>
-        <item>ml</item>
-        <item>mn</item>
-        <item>ms</item>
-        <item>mt</item>
-        <item>my</item>
-        <item>ne</item>
-        <item>no</item>
-        <item>nb</item>
-        <item>nl-BE</item>
-        <item>nl</item>
-        <item>pl</item>
-        <item>pt-BR</item>
-        <item>pt</item>
-        <item>ro</item>
-        <item>ru</item>
-        <item>si</item>
-        <item>sl</item>
-        <item>sk</item>
-        <item>sv</item>
-        <item>ta</item>
-        <item>te</item>
-        <item>tg</item>
-        <item>th</item>
-        <item>ti</item>
-        <item>tl</item>
-        <item>tr</item>
-        <item>ug</item>
-        <item>uk</item>
-        <item>uz</item>
-        <item>vi</item>
-        <item>wa</item>
-        <item>wo</item>
-        <item>xh</item>
-        <item>yi</item>
-        <item>yo</item>
-        <item>zh-CN</item>
-        <item>zh-HK</item>
-        <item>zh-TW</item>
-        <item>zh</item>
-        <item>zu</item>
-    </string-array>
-
-
-    <string-array name="product_images_fields_array" translatable="false">
-        <item>product_name</item>
-        <item>generic_name</item>
-        <item>code</item>
-        <item>lang</item>
-        <item>image_small_url</item>
-        <item>images</item>
-        <item>image_front_url</item>
-        <item>image_ingredients_url</item>
-        <item>image_nutrition_url</item>
-        <item>image_packaging_url</item>
-        <item>image_url</item>
-        <item>selected_images</item>
-    </string-array>
-
-
-    <string-array name="product_all_fields_array" translatable="false">
-        <item>product_name</item>
-        <item>generic_name</item>
-        <item>image_small_url</item>
-        <item>image_front_url</item>
-        <item>image_ingredients_url</item>
-        <item>image_nutrition_url</item>
-        <item>image_packaging_url</item>
-        <item>image_url</item>
-        <item>selected_images</item>
-        <item>languages_codes</item>
-        <item>vitamins_tags</item>
-        <item>minerals_tags</item>
-        <item>amino_acids_tags</item>
-        <item>other_nutritional_substances_tags</item>
-        <item>url</item>
-        <item>code</item>
-        <item>traces_tags</item>
-        <item>ingredients_that_may_be_from_palm_oil_tags</item>
-        <item>additives_tags</item>
-        <item>allergens_hierarchy</item>
-        <item>manufacturing_places</item>
-        <item>nutriments</item>
-        <item>ingredients_from_palm_oil_tags</item>
-        <item>brands_tags</item>
-        <item>traces</item>
-        <item>categories_tags</item>
-        <item>ingredients_text</item>
-        <item>ingredients_from_or_that_may_be_from_palm_oil_n</item>
-        <item>serving_size</item>
-        <item>allergens_tags</item>
-        <item>allergens</item>
-        <item>origins</item>
-        <item>stores</item>
-        <item>nutrition_grade_fr</item>
-        <item>nutrition_grades_tags</item>
-        <item>nutrient_levels</item>
-        <item>ecoscore_grade</item>
-        <item>countries</item>
-        <item>countries_tags</item>
-        <item>brands</item>
-        <item>packaging</item>
-        <item>labels_tags</item>
-        <item>labels_hierarchy</item>
-        <item>cities_tags</item>
-        <item>quantity</item>
-        <item>ingredients_from_palm_oil_n</item>
-        <item>link</item>
-        <item>emb_codes_tags</item>
-        <item>states_tags</item>
-        <item>creator</item>
-        <item>created_t</item>
-        <item>last_modified_t</item>
-        <item>last_modified_by</item>
-        <item>editors_tags</item>
-        <item>nova_groups</item>
-        <item>lang</item>
-        <item>purchase_places</item>
-        <item>nutrition_data_per</item>
-        <item>no_nutrition_data</item>
-        <item>other</item>
-        <item>other_information</item>
-        <item>conservation_conditions</item>
-        <item>recycling_instructions_to_discard</item>
-        <item>recycling_instructions_to_recycle</item>
-        <item>warning</item>
-        <item>customer_service</item>
-        <item>environment_infocard</item>
-        <item>environment_impact_level_tags</item>
-        <item>ingredients_analysis_tags</item>
-        <item>ingredients</item>
-        <item>states_tags</item>
-    </string-array>
-    <string-array name="fields_array" translatable="false">
-        <item>product_name</item>
-        <item>generic_name</item>
-        <item>ingredients_text</item>
-        <item>other_information</item>
-        <item>conservation_conditions</item>
-        <item>recycling_instructions_to_discard</item>
-        <item>recycling_instructions_to_recycle</item>
-        <item>warning</item>
-        <item>attribute_groups</item>
-        <item>customer_service</item>
-        <item>image_front_url</item>
-        <item>image_ingredients_url</item>
-        <item>image_nutrition_url</item>
-        <item>image_packaging_url</item>
     </string-array>
 
     <string name="help_translate_ingredients_link" translatable="false">https://world-%1$s.openfoodfacts.org/ingredients?translate=1</string>
@@ -694,7 +494,16 @@
     <string name="device_on_mobile_data_warning_positive">Preferences</string>
     <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
     <string name="changes_saved">Changes saved successfully</string>
+    <string name="proceed">Proceed</string>
     <string name="preference_choose_language_dialog_title">Choose language</string>
+    <string name="preference_choose_scanner_dialog_title"><b>New: Enhanced “MLKit” scanner</b></string>
+    <string name="preference_choose_scanner_dialog_body">We have included a new option to more reliably scan barcodes. While this scanner works on your device, using machine learning,
+            please be aware that it is a proprietary component provided by Google, governed by this privacy policy, and that some limited telemetry might be sent back to Google’s servers
+            to improve their software. As noted in the MLKit terms, this won’t include any information about the products you scan and the telemetry is anonymized. Choosing MLKit scanner
+            implies that you accept those terms\n<b>Note: You can switch back at any time between the 2 scanners in the Settings.</b>
+    </string>
+    <string name="prompt_point_at_a_barcode">Point your camera at a barcode</string>
+    <string name="prompt_move_camera_closer">Move closer to detect</string>
 
 
     <string name="please_check_your_connection">Please check your connection.</string>
@@ -711,7 +520,7 @@
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
     <string name="faq_url">https://world.openfoodfacts.org/faq</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
-    <string name="hunger_game_url">https://world.openfoodfacts.org/hunger-game</string>
+    <string name="hunger_game_url">https://hunger.openfoodfacts.org/</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate the end of the url -->
     <string name="advanced_search_url" translatable="false">https://world.openfoodfacts.org/cgi/search.pl</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
@@ -723,7 +532,19 @@
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
     <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">General</string>
+    <string name="preference_header_network">Network</string>
+    <string name="preference_header_about" translatable="false">@string/action_about</string>
+    <string name="preference_header_contributing">Contributing</string>
+    <string name="preference_header_privacy">Privacy</string>
 
+    <string name="preference_crash_title">Crash reporting</string>
+    <string name="preference_crash_summary">When enabled, crash reports will be sent to the Open Food Facts server automatically, so that we can fix bugs and improve the app.</string>
+    <string name="preference_analytics_title">Send anonymous data</string>
+    <string name="preference_analytics_summary">When enabled, some anonymous information regarding app usage will be sent to the Open Food Facts servers, so that we can understand how and how much features are used in order to improve them.</string>
+    <string name="preference_analytics_bottom_sheet_title">Send anonymous data</string>
+    <string name="preference_analytics_bottom_sheet_description">Help improve Open Food Facts by letting us know how you use it. Data collected is anonymous. This option can be disabled at any time in the settings section.</string>
+    <string name="preference_analytics_bottom_sheet_grant_button">Grant</string>
+    <string name="preference_analytics_bottom_sheet_decline_button">Decline</string>
 
     <string name="scan_first_string">Your viewed product history will be listed here.\nThis history is for your eyes only and is stored locally.</string>
     <string name="log_in">Login</string>
@@ -769,7 +590,7 @@
     <string name="by_barcode">Barcode</string>
     <string name="by_time">Recently Viewed</string>
     <string name="sort">Sort</string>
-    <string name="by_nutrition_grade">Nutrition Grade</string>
+    <string name="by_nutrition_grade">Nutri-Score</string>
     <string name="sort_by">Sort by</string>
 
     <!-- strings related to share images -->
@@ -796,6 +617,9 @@
     <string name="creator_history">Product added on %1$s at %2$s CET by %3$s</string>
     <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by %3$s </string>
     <string name="other_editors">Product page also edited by </string>
+    <string name="product_states">Product States</string>
+    <string name="incomplete_states">Incomplete States</string>
+    <string name="complete_states">Complete States</string>
     <string name="contribution_tab">Contributions</string>
     <string name="synthesis_tab">Synthesis</string>
 
@@ -829,6 +653,8 @@
     <string name="choose_nutrient">Choose a nutrient</string>
     <string name="error_adding_product_details">Something went wrong while trying to add product details</string>
     <string name="hint_product_URL">Link of the official page of the product</string>
+    <string name="extract_url">Extract URL from QR-code</string>
+    <string name="search_url">Search for official page URL</string>
     <string name="product_language">Product language : </string>
     <string name="hint_emb_codes">Examples: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522, FSSL 10013011001409</string>
     <string name="official_website">Official website</string>
@@ -858,7 +684,6 @@
     <string name="your_version">Yours</string>
     <string name="ingredients_picture">Ingredients Picture</string>
     <string name="packaging">Recycling</string>
-    <string name="recycling_picture">Recycling Picture</string>
     <string name="take_ingredients_picture_to_extract">(Please take a picture of the ingredients to automatically extract them)</string>
     <string name="ingredients_list">Ingredients List</string>
     <string name="ingredients_hint">Keep the order, indicate the % when specified, separate with a comma or use -, use () for ingredients of an ingredient, surround allergens with _</string>
@@ -1054,6 +879,7 @@
     <string name="load_ingredient_detection_data_summary">No ingredient detection data has been found, try to load it from server</string>
     <string name="white_check_image_descr">A white check</string>
     <string name="hint_packaging">Examples: plastic, paper, glass</string>
+    <string name="hint_trace_code">Examples: EMB 23456, FR 23.345.34 CE</string>
     <string name="risk_alcohol_consumption">Excessive consumption of alcohol is harmful to health, to be consumed in moderation</string>
     <string name="check_first_time" translatable="false">check_first_time</string>
 
@@ -1087,6 +913,10 @@
     <string name="day">Day</string>
     <string name="night">Night</string>
     <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
-    <string name="hint_origin">Examples: USA, French, Italy</string>
+    <string name="hint_origin">Examples: USA, France, Italy</string>
     <string name="report_email_chooser_title">Send a report email</string>
+
+    <!-- Changelog String -->
+    <string name="changelog_translation_help">Want to see this changelog in %s?\nJoin the translation team!</string>
+    <string name="whats_new">What\'s new with Open Food Facts?</string>
 </resources>

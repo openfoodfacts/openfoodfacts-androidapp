@@ -23,17 +23,12 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import openfoodfacts.github.scrachx.openfood.R
-import openfoodfacts.github.scrachx.openfood.app.OFFApplication.Companion.appComponent
-import openfoodfacts.github.scrachx.openfood.dagger.component.ActivityComponent
-import openfoodfacts.github.scrachx.openfood.dagger.module.ActivityModule
 import openfoodfacts.github.scrachx.openfood.features.scan.ContinuousScanActivity
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.onCreate
 import openfoodfacts.github.scrachx.openfood.utils.MY_PERMISSIONS_REQUEST_CAMERA
 import openfoodfacts.github.scrachx.openfood.utils.getLoginPreferences
 
 abstract class BaseActivity : AppCompatActivity() {
-    var activityComponent: ActivityComponent? = null
-        private set
 
     companion object {
         init {
@@ -46,8 +41,6 @@ abstract class BaseActivity : AppCompatActivity() {
         if (resources.getBoolean(R.bool.portrait_only)) {
             requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         }
-        activityComponent = appComponent.plusActivityComponent(ActivityModule(this))
-        activityComponent!!.inject(this)
     }
 
     override fun setContentView(view: View) {

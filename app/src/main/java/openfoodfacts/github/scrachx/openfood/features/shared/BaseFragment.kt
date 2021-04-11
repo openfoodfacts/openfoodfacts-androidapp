@@ -15,15 +15,15 @@
  */
 package openfoodfacts.github.scrachx.openfood.features.shared
 
-import android.Manifest.permission
+import android.Manifest
 import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
+import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
 import android.view.View
-import androidx.activity.result.contract.ActivityResultContracts.RequestMultiplePermissions
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -34,15 +34,14 @@ import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.features.listeners.OnRefreshListener
 import openfoodfacts.github.scrachx.openfood.features.listeners.OnRefreshView
 import openfoodfacts.github.scrachx.openfood.models.ProductState
-import openfoodfacts.github.scrachx.openfood.utils.isAllGranted
 import pl.aprilapps.easyphotopicker.EasyImage
 import java.io.File
 
 abstract class BaseFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener, OnRefreshView {
 
-    private val cameraPermissionRequestLauncher = registerForActivityResult(RequestMultiplePermissions())
-    { results ->
-        if (isAllGranted(results)) {
+    private val cameraPermissionRequestLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission())
+    { isGranted ->
+        if (isGranted) {
             // Callback
             doOnPhotosPermissionGranted()
         } else {
@@ -82,6 +81,7 @@ abstract class BaseFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener, 
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
+
         if (context is OnRefreshListener) {
             refreshListener = context
         }
@@ -96,13 +96,13 @@ abstract class BaseFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener, 
         swipeRefreshLayout?.isRefreshing = false
     }
 
-    protected fun doChooseOrTakePhotos(title: String?) {
+    protected fun doChooseOrTakePhotos() {
         if (canTakePhotos()) {
             EasyImage.openCamera(this, 0)
             return
         }
         // Ask for permissions
-        cameraPermissionRequestLauncher.launch(arrayOf(permission.CAMERA))
+        cameraPermissionRequestLauncher.launch(Manifest.permission.CAMERA)
     }
 
     protected open fun doOnPhotosPermissionGranted() = Unit
@@ -121,7 +121,7 @@ abstract class BaseFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener, 
     }
 
     private fun canTakePhotos() =
-            ContextCompat.checkSelfPermission(requireContext(), permission.CAMERA) == PackageManager.PERMISSION_GRANTED
+            ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA) == PERMISSION_GRANTED
 
     companion object {
         /**

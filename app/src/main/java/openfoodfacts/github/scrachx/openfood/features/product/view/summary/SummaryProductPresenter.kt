@@ -24,22 +24,16 @@ import io.reactivex.rxkotlin.toObservable
 import io.reactivex.schedulers.Schedulers
 import openfoodfacts.github.scrachx.openfood.AppFlavors
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
-import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.models.AnnotationAnswer
 import openfoodfacts.github.scrachx.openfood.models.Product
-import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveName
-import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoryName
-import openfoodfacts.github.scrachx.openfood.models.entities.label.LabelName
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper
 import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState
 
-/**
- * Created by Lobster on 17.03.18.
- */
 class SummaryProductPresenter(
+        private val languageCode: String,
         private val product: Product,
-        private val view: ISummaryProductPresenter.View
+        private val view: ISummaryProductPresenter.View,
+        private val productRepository: ProductRepository
 ) : ISummaryProductPresenter.Actions {
     private val disp = CompositeDisposable()
 
@@ -50,17 +44,11 @@ class SummaryProductPresenter(
             return
         }
 
-        val languageCode = LocaleHelper.getLanguage(OFFApplication.instance)
         additivesTags.toObservable()
-                .flatMapSingle { tag: String? ->
-                    ProductRepository.getAdditiveByTagAndLanguageCode(tag, languageCode)
-                            .flatMap { categoryName: AdditiveName ->
-                                if (categoryName.isNull) {
-                                    return@flatMap ProductRepository.getAdditiveByTagAndDefaultLanguageCode(tag)
-                                } else {
-                                    return@flatMap Single.just(categoryName)
-                                }
-                            }
+                .flatMapSingle { tag ->
+                    productRepository.getAdditiveByTagAndLanguageCode(tag, languageCode).map { it to tag }
+                }.flatMapSingle { (categoryName, tag) ->
+                    if (categoryName.isNotNull) Single.just(categoryName) else productRepository.getAdditiveByTagAndDefaultLanguageCode(tag)
                 }
                 .filter { it.isNotNull }
                 .toList()
@@ -68,21 +56,16 @@ class SummaryProductPresenter(
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe { view.showAdditivesState(ProductInfoState.LOADING) }
                 .doOnError {
-                    Log.e(SummaryProductPresenter::class.java.simpleName, "loadAdditives", it)
+                    Log.e(SummaryProductPresenter::class.simpleName, "loadAdditives", it)
                     view.showAdditivesState(ProductInfoState.EMPTY)
                 }
                 .subscribe { additives ->
-                    if (additives.isEmpty()) {
-                        view.showAdditivesState(ProductInfoState.EMPTY)
-                    } else {
-                        view.showAdditives(additives)
-                    }
+                    if (additives.isEmpty()) view.showAdditivesState(ProductInfoState.EMPTY) else view.showAdditives(additives)
                 }.addTo(disp)
     }
 
     override fun loadAllergens(runIfError: (() -> Unit)?) {
-        val languageCode = LocaleHelper.getLanguage(OFFApplication.instance)
-        ProductRepository.getAllergensByEnabledAndLanguageCode(true, languageCode)
+        productRepository.getAllergensByEnabledAndLanguageCode(true, languageCode)
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnError {
                     runIfError?.invoke()
@@ -94,18 +77,13 @@ class SummaryProductPresenter(
 
     override fun loadCategories() {
         val categoriesTags = product.categoriesTags
-        if (categoriesTags != null && categoriesTags.isNotEmpty()) {
-            val languageCode = LocaleHelper.getLanguage(OFFApplication.instance)
+        if (!categoriesTags.isNullOrEmpty()) {
             categoriesTags.toObservable()
-                    .flatMapSingle { tag: String? ->
-                        ProductRepository.getCategoryByTagAndLanguageCode(tag, languageCode)
-                                .flatMap { categoryName: CategoryName ->
-                                    return@flatMap if (categoryName.isNull) {
-                                        ProductRepository.getCategoryByTagAndLanguageCode(tag)
-                                    } else {
-                                        Single.just(categoryName)
-                                    }
-                                }
+                    .flatMapSingle { tag ->
+                        productRepository.getCategoryByTagAndLanguageCode(tag, languageCode).map { it to tag }
+                    }
+                    .flatMapSingle { (categoryName, tag) ->
+                        if (categoryName.isNotNull) Single.just(categoryName) else productRepository.getCategoryByTagAndLanguageCode(tag)
                     }
                     .toList()
                     .subscribeOn(Schedulers.io())
@@ -130,33 +108,25 @@ class SummaryProductPresenter(
     override fun loadLabels() {
         val labelsTags = product.labelsTags
         if (labelsTags != null && labelsTags.isNotEmpty()) {
-            val languageCode = LocaleHelper.getLanguage(OFFApplication.instance)
             labelsTags.toObservable()
-                    .flatMapSingle { tag: String? ->
-                        ProductRepository.getLabelByTagAndLanguageCode(tag, languageCode)
-                                .flatMap { labelName: LabelName ->
-                                    if (labelName.isNull) {
-                                        return@flatMap ProductRepository.getLabelByTagAndDefaultLanguageCode(tag)
-                                    } else {
-                                        return@flatMap Single.just(labelName)
-                                    }
-                                }
+                    .flatMapSingle { tag ->
+                        productRepository.getLabelByTagAndLanguageCode(tag, languageCode).map { it to tag }
                     }
-                    .filter { obj: LabelName? -> obj != null && obj.isNotNull }
+                    .flatMapSingle { (labelName, tag) ->
+                        if (labelName.isNotNull) Single.just(labelName) else productRepository.getLabelByTagAndDefaultLanguageCode(tag)
+                    }
+                    .filter { it.isNotNull }
                     .toList()
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .doOnSubscribe { view.showLabelsState(ProductInfoState.LOADING) }
-                    .doOnError { e ->
-                        Log.e(SummaryProductPresenter::class.java.simpleName, "loadLabels", e)
+                    .doOnError {
+                        Log.e(SummaryProductPresenter::class.java.simpleName, "loadLabels", it)
                         view.showLabelsState(ProductInfoState.EMPTY)
                     }
                     .subscribe { labels ->
-                        if (labels.isEmpty()) {
-                            view.showLabelsState(ProductInfoState.EMPTY)
-                        } else {
-                            view.showLabels(labels)
-                        }
+                        if (labels.isEmpty()) view.showLabelsState(ProductInfoState.EMPTY)
+                        else view.showLabels(labels)
                     }.addTo(disp)
 
         } else {
@@ -165,24 +135,21 @@ class SummaryProductPresenter(
     }
 
     override fun loadProductQuestion() {
-        val languageCode = LocaleHelper.getLanguage(OFFApplication.instance)
-        ProductRepository.getProductQuestion(product.code, languageCode)
+        productRepository.getProductQuestion(product.code, languageCode)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnError { Log.e(this@SummaryProductPresenter::class.simpleName, "loadProductQuestion", it) }
                 .subscribe { question -> view.showProductQuestion(question) }
                 .addTo(disp)
-
     }
 
     override fun loadAnalysisTags() {
         if (!isFlavors(AppFlavors.OFF, AppFlavors.OBF, AppFlavors.OPFF)) return
 
         val analysisTags = product.ingredientsAnalysisTags
-        val languageCode = LocaleHelper.getLanguage(OFFApplication.instance)
         if (analysisTags.isNotEmpty()) {
             analysisTags.toObservable()
-                    .flatMapMaybe { ProductRepository.getAnalysisTagConfigByTagAndLanguageCode(it, languageCode) }
+                    .flatMapMaybe { productRepository.getAnalysisTagConfigByTagAndLanguageCode(it, languageCode) }
                     .toList()
                     .doOnSubscribe { view.showLabelsState(ProductInfoState.LOADING) }
                     .observeOn(AndroidSchedulers.mainThread())
@@ -198,7 +165,7 @@ class SummaryProductPresenter(
                         }
                     }.addTo(disp)
         } else {
-            ProductRepository.getUnknownAnalysisTagConfigsByLanguageCode(languageCode)
+            productRepository.getUnknownAnalysisTagConfigsByLanguageCode(languageCode)
                     .doOnSubscribe { view.showLabelsState(ProductInfoState.LOADING) }
                     .observeOn(AndroidSchedulers.mainThread())
                     .doOnError {
@@ -216,7 +183,7 @@ class SummaryProductPresenter(
     }
 
     override fun annotateInsight(insightId: String, annotation: AnnotationAnswer) {
-        ProductRepository.annotateInsight(insightId, annotation)
+        productRepository.annotateInsight(insightId, annotation)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnError { Log.e(this@SummaryProductPresenter::class.simpleName, "annotateInsight", it) }

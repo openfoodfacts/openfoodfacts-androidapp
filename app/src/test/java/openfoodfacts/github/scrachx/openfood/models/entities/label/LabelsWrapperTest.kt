@@ -20,7 +20,7 @@ class LabelsWrapperTest {
 
     @Before
     fun setUp() {
-        val namesMap1 = mapOf(
+        val namesMap1 = hashMapOf(
                 LANGUAGE_CODE_ENGLISH to LABEL_NAME_EN,
                 LANGUAGE_CODE_FRENCH to LABEL_NAME_FR
         )

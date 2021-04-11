@@ -13,7 +13,7 @@ import org.junit.Test
 class AdditivesWrapperTest {
     @Test
     fun map_returnsListOfCorrectlyMappedAdditives() {
-        val stringMap = hashMapOf(
+        val stringMap = mapOf(
                 LANGUAGE_CODE_ENGLISH to AdditiveResponseTestData.VINEGAR_EN,
                 LANGUAGE_CODE_FRENCH to AdditiveResponseTestData.VINEGAR_FR
         )

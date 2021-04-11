@@ -24,7 +24,7 @@ import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat
 import com.squareup.picasso.Picasso
 import openfoodfacts.github.scrachx.openfood.R
 
-class PhotosAdapter(private val mPhotos: List<Uri>) : RecyclerView.Adapter<PhotosAdapter.ViewHolder>() {
+class PhotosAdapter(private val photoUris: List<Uri>) : RecyclerView.Adapter<PhotosAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val imageView = LayoutInflater.from(parent.context)
                 .inflate(R.layout.dialog_photo_item, parent, false) as ImageView
@@ -37,16 +37,17 @@ class PhotosAdapter(private val mPhotos: List<Uri>) : RecyclerView.Adapter<Photo
                 holder.imageView.resources,
                 R.drawable.ic_product_silhouette,
                 null
-        )
+        )!!
 
+        // Todo: remove this direct call
         Picasso.get()
-                .load(mPhotos[position])
-                .placeholder(drawableCompat!!)
+                .load(photoUris[position])
+                .placeholder(drawableCompat)
                 .error(R.drawable.error_image)
                 .into(imageView)
     }
 
-    override fun getItemCount() = mPhotos.size
+    override fun getItemCount() = photoUris.size
 
     class ViewHolder(view: ImageView) : RecyclerView.ViewHolder(view) {
         val imageView = view

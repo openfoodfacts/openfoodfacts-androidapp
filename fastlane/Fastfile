@@ -5,6 +5,21 @@ lane :screenshots do
   capture_android_screenshots
 end
 
+desc "Build debug and test APK for screenshots"
+  lane :build_for_screengrab do
+    gradle(
+      task: 'clean'
+    )
+    build_android_app(
+      task: 'assemble',
+      build_type: 'DebugPlaystore'
+    )
+    build_android_app(
+      task: 'assemble',
+      build_type: 'AndroidTestPlaystore'
+    )
+  end
+
 desc "Capture Screen"
 lane :capture_screen do
   gradle(task: "clean assembleScreenshots assembleAndroidTest")
@@ -38,7 +53,8 @@ lane :release do
     gradle(
         project_dir: './',
         task: 'clean bundle',
-        build_type: 'offRelease'
+        build_type: 'offRelease',
+        platform: 'playstore'
     )
 
     #upload the bundle to internal track of play store

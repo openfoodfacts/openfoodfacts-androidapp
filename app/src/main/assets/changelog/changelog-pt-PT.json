@@ -1,0 +1,13 @@
+{
+  "changelog": [
+    {
+      "date": "10/02/2021",
+      "code": 350,
+      "name": "3.5.0",
+      "items": [
+        "Adicionado ecrã do relatório de alterações",
+        "Ajude os voluntários do Open Food Facts a melhorar a aplicação. Pode enviar opcionalmente relatórios anónimos de análise e bloqueios da aplicação. Esta opção pode ser ativada e desativada a qualquer momento nas configurações."
+      ]
+    }
+  ]
+}

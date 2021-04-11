@@ -25,6 +25,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
 import androidx.preference.PreferenceManager
 import com.afollestad.materialdialogs.MaterialDialog
+import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
@@ -35,7 +36,7 @@ import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentHomeBinding
 import openfoodfacts.github.scrachx.openfood.features.LoginActivity.Companion.LoginContract
 import openfoodfacts.github.scrachx.openfood.features.shared.NavigationBaseFragment
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
+import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType
@@ -44,16 +45,20 @@ import openfoodfacts.github.scrachx.openfood.utils.getUserAgent
 import java.io.IOException
 import java.text.NumberFormat
 import java.util.*
+import javax.inject.Inject
 
 /**
  * @see R.layout.fragment_home
  */
+@AndroidEntryPoint
 class HomeFragment : NavigationBaseFragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
-    private val api by lazy { OpenFoodAPIClient(requireActivity()).rawAPI }
+    @Inject
+    lateinit var productsApi: ProductsAPI
+
     private val sharedPrefs by lazy { PreferenceManager.getDefaultSharedPreferences(requireActivity()) }
 
     private var taglineURL: String? = null
@@ -110,8 +115,7 @@ class HomeFragment : NavigationBaseFragment() {
             return
         }
 
-        api.signIn(login, password, "Sign-in")
-                .subscribeOn(Schedulers.io())
+        productsApi.signIn(login, password, "Sign-in")
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnError { Log.e(LOG_TAG, "Cannot check user credentials.", it) }
                 .subscribe { response ->
@@ -121,8 +125,7 @@ class HomeFragment : NavigationBaseFragment() {
                         Log.e(LOG_TAG, "I/O Exception while checking user saved credentials.", e)
                         return@subscribe
                     }
-                    if (htmlBody.contains("Incorrect user name or password.")
-                            || htmlBody.contains("See you soon!")) {
+                    if (LoginActivity.isHtmlNotValid(htmlBody)) {
                         Log.w(LOG_TAG, "Cannot validate login, deleting saved credentials and asking the user to log back in.")
                         settings.edit {
                             putString("user", "")
@@ -153,7 +156,7 @@ class HomeFragment : NavigationBaseFragment() {
     private fun refreshProductCount(oldCount: Int) {
         Log.d(LOG_TAG, "Refreshing total product count...")
 
-        api.getTotalProductCount(getUserAgent())
+        productsApi.getTotalProductCount(getUserAgent())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe { setProductCount(oldCount) }
                 .doOnError {
@@ -188,7 +191,7 @@ class HomeFragment : NavigationBaseFragment() {
      * get tag line url from OpenFoodAPIService
      */
     private fun refreshTagLine() {
-        api.getTagline(getUserAgent())
+        productsApi.getTagline(getUserAgent())
                 .subscribeOn(Schedulers.io()) // io for network
                 .observeOn(AndroidSchedulers.mainThread()) // Move to main thread for UI changes
                 .doOnError { Log.e(LOG_TAG, "Could not retrieve tag-line from server.", it) }

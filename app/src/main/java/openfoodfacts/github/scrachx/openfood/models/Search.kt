@@ -10,7 +10,7 @@ data class Search(
         @JsonProperty("count") val count: String,
         @JsonProperty("skip") val skip: Int,
         @JsonProperty("page") val page: Int,
-        @JsonProperty("products") val products: List<Product> = arrayListOf()
+        @JsonProperty("products") val products: List<SearchProduct> = arrayListOf()
 ) : Serializable {
 
     @JsonIgnore

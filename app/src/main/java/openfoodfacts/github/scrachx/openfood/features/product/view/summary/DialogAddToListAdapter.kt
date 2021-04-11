@@ -9,9 +9,9 @@ import androidx.recyclerview.widget.RecyclerView
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.features.product.view.summary.DialogAddToListAdapter.ListViewHolder
 import openfoodfacts.github.scrachx.openfood.features.productlist.ProductListActivity
+import openfoodfacts.github.scrachx.openfood.models.DaoSession
+import openfoodfacts.github.scrachx.openfood.models.entities.ListedProduct
 import openfoodfacts.github.scrachx.openfood.models.entities.ProductLists
-import openfoodfacts.github.scrachx.openfood.models.entities.YourListedProduct
-import openfoodfacts.github.scrachx.openfood.utils.Utils.daoSession
 
 //recyclerview adapter to display product lists in a dialog
 class DialogAddToListAdapter(
@@ -20,7 +20,8 @@ class DialogAddToListAdapter(
         private val barcode: String,
         private val productName: String,
         private val productDetails: String,
-        private val imageUrl: String
+        private val imageUrl: String,
+        private val daoSession: DaoSession
 ) : RecyclerView.Adapter<ListViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.dialog_add_to_list_recycler_item, parent, false)
@@ -32,7 +33,7 @@ class DialogAddToListAdapter(
         val listId = productLists[position].id
         holder.tvListTitle.text = listName
         holder.itemView.setOnClickListener {
-            val product = YourListedProduct().also {
+            val product = ListedProduct().also {
                 it.barcode = barcode
                 it.listId = listId
                 it.listName = listName
@@ -40,7 +41,7 @@ class DialogAddToListAdapter(
                 it.productDetails = productDetails
                 it.imageUrl = imageUrl
             }
-            daoSession.yourListedProductDao.insertOrReplace(product)
+            daoSession.listedProductDao.insertOrReplace(product)
             ProductListActivity.start(context, listId, listName)
         }
     }

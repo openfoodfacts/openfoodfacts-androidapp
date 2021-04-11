@@ -843,13 +843,11 @@
                     app:layout_constraintStart_toStartOf="@+id/spinner_sodium_unit"
                     app:layout_constraintTop_toTopOf="@id/alcohol_til" />
 
-                <TableLayout
+                <LinearLayout
                     android:id="@+id/table_layout"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:shrinkColumns="0"
-                    android:stretchColumns="0"
+                    android:orientation="vertical"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/alcohol_til" />
@@ -862,7 +860,7 @@
                     android:layout_marginTop="@dimen/spacing_small"
                     android:drawablePadding="@dimen/spacing_tiny"
                     android:text="@string/add_a_nutrient"
-                    app:drawableStartCompat="@drawable/ic_add_box_blue_18dp"
+                    app:drawableLeftCompat="@drawable/ic_add_box_blue_18dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/table_layout" />

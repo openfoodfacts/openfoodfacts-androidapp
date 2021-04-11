@@ -35,7 +35,7 @@
         <item quantity="one">%d dag geleden</item>
         <item quantity="other">%d dagen geleden</item>
     </plurals>
-    <string name="action_about">Over</string>
+    <string name="action_about">Informatie</string>
     <string name="action_discover">Ontdek</string>
     <string name="contribute">Hoe kan je bijdragen?</string>
     <string name="action_find">Zoeken</string>
@@ -65,19 +65,14 @@
     <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
+        <item>g</item>
         <item>mg</item>
-        <item>kg</item>
-        <item>μg</item>
+        <item>µg</item>
         <item>% DH</item>
         <item>IE</item>
     </string-array>
     <!-- nutrition comparison units -->
     <!-- Application theme settings -->
-    <string-array name="application_theme_entries">
-        <item>@string/follow_system</item>
-        <item>@string/day</item>
-        <item>@string/night</item>
-    </string-array>
     <!-- nutrients list
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
@@ -162,7 +157,7 @@
     </string-array>
     <!-- Text units -->
     <!-- Content Description -->
-    <string name="search_button">Zoek</string>
+    <string name="search_button">Zoeken</string>
     <string name="alert_dialog_warning_title">Let op</string>
     <string name="alert_dialog_warning_msg_user">Gebruiker/wachtwoord is aangepast, informatie updaten alstublieft</string>
     <string name="toast_retrieving">Bezig met laden…</string>
@@ -172,7 +167,7 @@
     <string name="txtEMB">Traceerbaarheidscodes:</string>
     <string name="txtIngredients">Ingrediënten</string>
     <string name="Donate">Doneer</string>
-    <string name="Donation">Klik hier om te doneren aan Open Food Facts</string>
+    <string name="Donation">Klik hier om te doneren aan Open Products Facts</string>
     <string name="txtSubstances">Ingrediënten of producten die allergieën of intoleranties veroorzaken</string>
     <string name="txtAdditives">Additieven</string>
     <string name="txtTraces">Sporen</string>
@@ -192,6 +187,7 @@
     <string name="txtSugars">Suikers</string>
     <string name="hintBarcode">Streepjescode</string>
     <string name="txtNutriScoreInfo">Meer informatie over de voedingsstofniveaus</string>
+    <string name="txtloginHelper">If you have an Open Food Facts account, you can login here with it</string>
     <string name="hintLogin">Gebruikersnaam</string>
     <string name="hintPass">Wachtwoord</string>
     <string name="errorLogin">Verkeerde gebruikersnaam of wachtwoord</string>
@@ -199,7 +195,7 @@
     <string name="uploadLater">Afbeelding wordt geüpload wanneer netwerk beschikbaar is</string>
     <string name="txtInfoLoginOk">Gebruiker opgeslagen</string>
     <string name="txtInfoLoginNo">Gebruiker niet opgeslagen</string>
-    <string name="txtDialogsContent">Het gescande product bestaat nog niet in Open Food Facts. Voeg deze toe.</string>
+    <string name="txtDialogsContent">Het gescande product bestaat nog niet in Open Products Facts. Voeg deze toe.</string>
     <string name="txtYes">Ja</string>
     <string name="txtNo">Nee</string>
     <string name="hintBrand">Merk</string>
@@ -213,13 +209,13 @@
     <string name="txtBarcodeRequire">Streepjescode verplicht</string>
     <string name="txtOk">Ok</string>
     <string name="txtBarcodeNotValid">Streepjescode niet geldig</string>
-    <string name="msg_share">Bekijk dit product op Open Food Facts</string>
+    <string name="msg_share">Bekijk dit product op Open Products Facts:</string>
     <string name="create_account">Inschrijven</string>
     <string name="home_drawer">Hoofdmenu</string>
     <string name="install">Installeer</string>
     <string name="open_beauty_drawer">Open Beauty Facts</string>
     <string name="open_food_drawer">Open Food Facts</string>
-    <string name="search_drawer">Zoek</string>
+    <string name="search_drawer">Zoeken</string>
     <string name="search_by_barcode_drawer">Zoek met streepjescode</string>
     <string name="category_drawer">Categorieën</string>
     <string name="search_by_category">Categorie</string>
@@ -229,7 +225,7 @@
     <string name="txt_anonymous">Anoniem</string>
     <string name="delete_txt">Verwijder</string>
     <string name="sign_in_drawer">Aanmelden</string>
-    <string name="alert_drawer">Allergenen alert</string>
+    <string name="alert_drawer">Stel allergeenwaarschuwingen in</string>
     <string name="your_lists">Jouw lijsten</string>
     <string name="title_dialog_alert">Voeg melding toe</string>
     <string name="select_camera">Selecteer een camera</string>
@@ -237,9 +233,9 @@
     <string name="cancel_button">Annuleer</string>
     <string name="login_button">Gebruikersnaam</string>
     <string name="create_account_button">Account aanmaken</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Uw allergie-informatie zal nooit naar de Open FoodFacts server worden verzonden. Wees er ook attent op dat productgegevens mogelijk niet accuraat zijn en dat detectie mogelijk niet 100% a accuraat is, dus controleer de gegevens alsjeblieft zelf!</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Informatie over je allergieën wordt nooit naar de Open Products Facts-server verzonden. Let ook op dat productgegevens mogelijk niet accuraat zijn en detectie mogelijk niet 100% accuraat is, dus controleer dit aub zelf! </string>
     <string name="title_info_dialog">Hoe werkt het?</string>
-    <string name="text_offline_info_dialog">Je kunt de producten offline scannen en deze later verzenden naar Open Food Facts. Alle producten die je scant zullen hier verschijnen en zijn te verzenden met onderstaande button.</string>
+    <string name="text_offline_info_dialog">Scan producten ook als je offline bent, om ze later aan Open Products Facts toe te voegen. De gescande producten verschijnen hier en je kan ze verzenden via de onderstaande knop.</string>
     <string name="permission_camera">Om streepjescodes te scannen en foto\'s te nemen is cameratoestemming vereist.</string>
     <string name="no_camera_dialog_title">Camera niet gevonden</string>
     <string name="no_camera_dialog_content">Je apparaat heeft geen camera. Je kunt geen barcode scannen.</string>
@@ -247,16 +243,9 @@
     <string name="permission_denied">Activeer alstublieft de toegang bij Instellingen</string>
     <string name="info_download_data_connection">Er is een extra bestand nodig om deze functie te kunnen activeren. Activeer je netwerkverbinding alstublieft.</string>
     <!-- Strings related to login -->
-    <string name="error_invalid_password">Het wachtwoord moet minstens 6 karakters bevatten.</string>
+    <string name="error_invalid_password">Het wachtwoord moet minimaal 6 tekens lang zijn.</string>
     <string name="user">gebruiker</string>
     <string name="error_field_required">Dit veld is verplicht.</string>
-    <string name="action_preferences">Voorkeuren</string>
-    <string name="pref_scan_startup_title">Bij opstarten scannen</string>
-    <string name="pref_scan_startup_summary">Als deze optie geselecteerd is, zal het scannen worden gestart wanneer de app geopend wordt.</string>
-    <string name="pref_power_mode_title">Energiebesparend scannen</string>
-    <string name="pref_power_mode_summary">Scan snel producten in een supermarkt om te zien welke niet in de database staan.</string>
-    <string name="pref_language_title">Taal</string>
-    <string name="pref_language_summary">Een andere taal kiezen</string>
     <!-- Strings related to feedback dialog -->
     <string name="user_enjoying_app">Geniet je van je ervaring met Open Food Facts?</string>
     <string name="user_ask_show_feedback_form">We vinden het jammer om dat te horen! Kun je ons vertellen wat er is gebeurd?</string>
@@ -302,13 +291,12 @@
     <string name="action_manage_account">Account beheren</string>
     <string name="action_contributes">Uw bijdragen</string>
     <string name="choose_energy_unit">Kies je energie voorkeurseenheid voor de voedingswaardentabel</string>
-    <string name="pref_energy_unit_title">Voorkeurs-energie-eenheid</string>
     <string name="choose_volume_unit">Kies je energie voorkeurseenheid voor de voedingswaardentabel</string>
-    <string name="pref_volume_unit_title">Voorkeurvolume-eenheid</string>
     <string name="logout_drawer">Afmelden</string>
     <string name="contribution_without_account">U kunt zich aanmelden of een account aanmaken om uw bijdragen te bewaren</string>
     <string name="textCarbonFootprint">Carbon footprint / CO2-uitstoot: </string>
-    <string name="action_search">Zoek</string>
+    <string name="packaging_environmentTab">Packaging:</string>
+    <string name="action_search">Zoeken</string>
     <string name="search_hint">Zoek een product</string>
     <string name="number_of_results">Aantal resultaten: </string>
     <string name="number_of_products">Aantal producten: </string>
@@ -323,7 +311,7 @@
     <string name="txt_no_matching_incomplete_products">We hebben geen onvolledige producten! Voeg een nieuw product toe?</string>
     <string name="txt_no_matching_contributor_products">Oh nee, we hebben geen producten van deze bijdrager, kunt u er een toevoegen?</string>
     <string name="txt_no_matching_products">We hebben geen overeenkomende producten gevonden.\nJe kunt proberen:</string>
-    <string name="txt_broaden_search">- verbreding van uw zoekopdracht \n- scan en voeg het toe aan Open Food Facts</string>
+    <string name="txt_broaden_search">- zoekopdracht uitbreiden \n-scan een product en voeg het toe aan Open Products Facts</string>
     <string name="something_went_wrong">Sorry, er ging iets fout…</string>
     <string name="txt_try_again">Probeer het opnieuw</string>
     <string name="nutrition_lactose">Lactose</string>
@@ -393,15 +381,15 @@
     <string name="txtSaturatedFat">Verzadigd vet</string>
     <string name="nutriscore_info_msg">Meer informatie over de Nutri-Score</string>
     <string name="nova_info_msg">Meer informatie over NOVA groepen</string>
-    <string name="nova_grp1_msg">Groep 1 - Onverwerkte of minimaal verwerkte levensmiddelen</string>
-    <string name="nova_grp2_msg">Groep 2 - Bewerkte ingrediënten</string>
-    <string name="nova_grp3_msg">Groep 3 - Bewerkte levensmiddelen</string>
-    <string name="nova_grp4_msg">Groep 4 - Ultra-bewerkte levensmiddelen en dranken</string>
+    <string name="nova_grp1_msg">NOVA-Groep 1 - Onverwerkte of minimaal bewerkte levensmiddelen</string>
+    <string name="nova_grp2_msg">NOVA-Groep 2 - Levensmiddelen die bewerkte ingrediënten bevatten</string>
+    <string name="nova_grp3_msg">NOVA-Groep 3 - Bewerkte levensmiddelen</string>
+    <string name="nova_grp4_msg">NOVA-Groep 4 - Ultra-bewerkte levensmiddelen en dranken</string>
     <!-- String related to App Shortcuts -->
     <string name="disabled_message">Shortcut Not Available</string>
     <string name="scan_shortcut_short_label">Scan</string>
     <string name="scan_shortcut_long_label">Scan product</string>
-    <string name="barcode_shortcut_short_label">Zoek</string>
+    <string name="barcode_shortcut_short_label">Zoeken</string>
     <string name="barcode_shortcut_long_label">Zoeken op barcode</string>
     <string name="history_shortcut_short_label">Geschiedenis</string>
     <string name="history_shortcut_long_label">Geschiedenis</string>
@@ -411,8 +399,6 @@
     <string name="next">VOLGENDE</string>
     <string name="skip">OVERSLAAN</string>
     <string name="start">BEGREPEN</string>
-    <string name="pref_contact_us_title">Contactpersoon</string>
-    <string name="pref_contact_us_summary">Contact opnemen met het team</string>
     <string name="email_not_found">Geen e-mailtoepassingen gevonden</string>
     <string name="airplane_mode_active_dialog_title">Vliegtuigmodus ingeschakeld</string>
     <string name="airplane_mode_active_dialog_message">Vliegtuigmodus is ingeschakeld, schakel dit uit om door te gaan.</string>
@@ -423,44 +409,54 @@
     <string name="device_offline_dialog_negative">Afwijzen</string>
     <string name="device_offline_dialog_positive">Instellingen</string>
     <string name="scan_first_product">Scan je eerste product</string>
-    <string name="pref_delete_history">Geschiedenis succesvol verwijderd</string>
-    <string name="pref_enable_mobile_data_title">Upload via mobiele data</string>
-    <string name="pref_enable_mobile_data_summary_on">Upload nieuwe producten via mobiele data &amp; WiFi</string>
-    <string name="pref_enable_mobile_data_summary_off">Upload nieuwe producten alleen via WiFi</string>
     <string name="device_on_mobile_data_warning_title">Opmerking</string>
     <string name="device_on_mobile_data_warning_message">Je hebt het uploaden op mobiele data uitgeschakeld, maak verbinding met WiFi of wijzig dit in voorkeuren</string>
     <string name="device_on_mobile_data_warning_positive">Voorkeuren</string>
     <string name="device_on_mobile_data_warning_negative">Toch uploaden</string>
     <string name="changes_saved">Veranderingen succesvol opgeslagen</string>
+    <string name="proceed">Proceed</string>
     <string name="preference_choose_language_dialog_title">Kies taal</string>
-    <string name="pref_faq_title">Veelgestelde vragen (FAQ)</string>
-    <string name="pref_faq_summary">Veelgestelde Vragen</string>
-    <string name="pref_help_translate_title">Help met het vertalen van Open Food Facts</string>
-    <string name="pref_help_translate_summary">Breng de Open Food Fact database naar jouw taal - geen technische kennis vereist</string>
+    <string name="preference_choose_scanner_dialog_title"><b>New: Enhanced “MLKit” scanner</b></string>
+    <string name="preference_choose_scanner_dialog_body">We have included a new option to more reliably scan barcodes. While this scanner works on your device, using machine learning,
+            please be aware that it is a proprietary component provided by Google, governed by this privacy policy, and that some limited telemetry might be sent back to Google’s servers
+            to improve their software. As noted in the MLKit terms, this won’t include any information about the products you scan and the telemetry is anonymized. Choosing MLKit scanner
+            implies that you accept those terms\n<b>Note: You can switch back at any time between the 2 scanners in the Settings.</b>
+    </string>
+    <string name="prompt_point_at_a_barcode">Point your camera at a barcode</string>
+    <string name="prompt_move_camera_closer">Move closer to detect</string>
     <string name="please_check_your_connection">Controleer uw verbinding.</string>
     <string name="advanced_search_title">Geavanceerd zoeken &amp; Grafieken</string>
     <string name="compare_products">Vergelijk Producten</string>
     <string name="connectivity_check">Controleer je internetverbinding</string>
     <string name="dismiss">Afwijzen</string>
-    <string name="pref_terms_title">Voorwaarden</string>
-    <string name="pref_terms_summary">Voorwaarden en Privacy</string>
-    <string name="donation_url">https://donate.openfoodfacts.org&amp;hl=nl</string>
+    <string name="donation_url">https://donate.openfoodfacts.org</string>
     <!--Just replace "world" by "fr", "de"… translate the "terms-of-use" with the hyphens -->
-    <string name="terms_url">https://world-nl.openfoodfacts.org/terms-of-use</string>
+    <string name="terms_url">https://world.openproductsfacts.org/terms-of-use&amp;hl=nl</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
     <string name="faq_url">https://world.openfoodfacts.org/faq&amp;hl=nl</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
-    <string name="hunger_game_url">https://world-nl.openfoodfacts.org/hunger-game</string>
+    <string name="hunger_game_url">https://hunger.openfoodfacts.org/</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate the end of the url -->
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world-nl.openfoodfacts.org/nutriscore</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
     <string name="url_nova_groups">https://world-nl.openfoodfacts.org/nova</string>
+    <!--Just replace "world" by "fr", "de"… translate the end of the url -->
+    <string name="ecoscore_url">https://world.openfoodfacts.org/eco-score-the-environmental-impact-of-food-products</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
     <string name="url_nutrient_values">https://world-nl.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">Algemeen</string>
-    <string name="pref_header_network">Netwerk</string>
-    <string name="pref_header_contributing">Bijdragen</string>
+    <string name="preference_header_network">Network</string>
+    <string name="preference_header_contributing">Contributing</string>
+    <string name="preference_header_privacy">Privacy</string>
+    <string name="preference_crash_title">Crash reporting</string>
+    <string name="preference_crash_summary">When enabled, crash reports will be sent to the Open Food Facts server automatically, so that we can fix bugs and improve the app.</string>
+    <string name="preference_analytics_title">Send anonymous data</string>
+    <string name="preference_analytics_summary">When enabled, some anonymous information regarding app usage will be sent to the Open Food Facts servers, so that we can understand how and how much features are used in order to improve them.</string>
+    <string name="preference_analytics_bottom_sheet_title">Send anonymous data</string>
+    <string name="preference_analytics_bottom_sheet_description">Help improve Open Food Facts by letting us know how you use it. Data collected is anonymous. This option can be disabled at any time in the settings section.</string>
+    <string name="preference_analytics_bottom_sheet_grant_button">Grant</string>
+    <string name="preference_analytics_bottom_sheet_decline_button">Decline</string>
     <string name="scan_first_string">Uw bekeken productgeschiedenis wordt hier weergegeven.\nDeze geschiedenis is alleen voor uw ogen en wordt lokaal opgeslagen.</string>
     <string name="log_in">Gebruikersnaam</string>
     <string name="login_true">Already logged in!</string>
@@ -468,9 +464,6 @@
     <string name="logout_dialog_content">Weet u zeker dat u wilt uitloggen?</string>
     <string name="dialog_cancel">Annuleer</string>
     <string name="dialog_create">Maak aan</string>
-    <string name="pref_resolution_dialog_title">Kies resolutie</string>
-    <string name="pref_resolution_summary">Kies een resolutie voor het uploaden van afbeeldingen</string>
-    <string name="pref_resolution_title">Beeld upload resolutie</string>
     <string name="wikidata_information">Verder gaan</string>
     <string name="wikidata_unavailable">Er is nog geen Wikipedia-pagina in uw taal.</string>
     <string name="Wikipedia">Bekijk op Wikipedia</string>
@@ -478,7 +471,7 @@
     <string name="brand_string">Merk</string>
     <string name="additive_string">Additief</string>
     <string name="allergen_string">Allergeen</string>
-    <string name="search_string">Zoek</string>
+    <string name="search_string">Zoeken</string>
     <string name="country_string">Verkooplanden</string>
     <string name="store_subtitle">Winkel</string>
     <string name="packaging_subtitle">Verpakking</string>
@@ -487,8 +480,6 @@
     <string name="category_string">Categorie</string>
     <string name="connection">Verbonden</string>
     <string name="contributor_string">Gebruiker</string>
-    <string name="pref_rate_us_summary">Toon je steun</string>
-    <string name="pref_rate_us_title">Beoordeel onze app</string>
     <string name="app_disabled_text">Applicatie is uitgeschakeld</string>
     <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
     <string name="vitamin_tags_text">Vitaminen:</string>
@@ -496,14 +487,12 @@
     <string name="mineral_tags_text">Mineralen:</string>
     <string name="other_tags_text">Andere stoffen:</string>
     <!--shared element transition key-->
-    <string name="pref_low_battery_summary">Disable image loading when battery is low</string>
-    <string name="pref_low_battery_title">Disable image loading</string>
     <string name="by_title">Titel</string>
     <string name="by_brand">Merk</string>
     <string name="by_barcode">Streepjescode</string>
     <string name="by_time">Recent bekeken</string>
     <string name="sort">Sorteer</string>
-    <string name="by_nutrition_grade">Voeding Grade</string>
+    <string name="by_nutrition_grade">Nutri-Score</string>
     <string name="sort_by">Ordenen volgens</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">Foto\'s zonder streepjescode kunnen nog niet met de app worden toegevoegd. Probeer de mobiele webversie.</string>
@@ -513,8 +502,8 @@
     <string name="code_detected">We hebben de streepjescode gedetecteerd</string>
     <string name="do_you_want_to">Wil je foto\'s toevoegen aan deze streepjescode?</string>
     <string name="bottomNav_history">Geschiedenis</string>
-    <string name="products_added">De producten die u toegevoegd of aangepast heeft</string>
-    <string name="products_incomplete">Producten die u toegevoegd heeft en nog onvolledig zijn</string>
+    <string name="products_added">De producten die je toegevoegd of aangepast hebt</string>
+    <string name="products_incomplete">Producten die je toegevoegd hebt en nog onvolledig zijn</string>
     <string name="product_pictures_contributed">Producten waarvoor je foto\'s hebt gemaakt</string>
     <string name="picture_contributed_incomplete">Onvoltooide producten waarvoor je foto\'s hebt gemaakt</string>
     <string name="product_info_added">Producten waar je informatie aan hebt toegevoegd</string>
@@ -529,12 +518,12 @@
     <string name="creator_history">Product toegevoegd op %1$s om %2$s CET door</string>
     <string name="last_editor_history">Laatste bewerking van productpagina op %1$s om %2$s CET door </string>
     <string name="other_editors">Productpagina ook bewerkt door </string>
+    <string name="product_states">Product States</string>
+    <string name="incomplete_states">Incomplete States</string>
+    <string name="complete_states">Complete States</string>
     <string name="contribution_tab">Bijdragen</string>
-    <string name="pref_contribution_tab_summary">Bijdragen tonen bij producten</string>
-    <string name="pref_contribution_tab_title">Bijdrage tabblad weergeven</string>
+    <string name="synthesis_tab">Synthesis</string>
     <string name="txtDialogsTitle">Opmerking</string>
-    <string name="pref_show_product_photos_title">Weergeef alle productfoto\'s</string>
-    <string name="pref_show_product_photos_summary">Weergeef alle productfoto\'s in een apart tabblad</string>
     <string name="offline_product_addition_title">Voeg een nieuw product toe</string>
     <string name="productNameNull">Naam onbekend</string>
     <string name="productAdditivesUnknown"></string>
@@ -563,6 +552,8 @@
     <string name="choose_nutrient">Kies een voedingsstof</string>
     <string name="error_adding_product_details">Er is iets fout gegaan bij het toevoegen van details</string>
     <string name="hint_product_URL">Link van de officiële pagina van het product</string>
+    <string name="extract_url">Extract URL from QR-code</string>
+    <string name="search_url">Search for official page URL</string>
     <string name="product_language">Producttaal: </string>
     <string name="hint_emb_codes">Voorbeelden: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522, FSSL 10013011001409</string>
     <string name="official_website">Officiële website</string>
@@ -580,7 +571,7 @@
     <string name="link_overwrite">Link overschrijven</string>
     <string name="save_product">Wilt u het product opslaan?</string>
     <string name="error_adding_product">Er is iets misgegaan bij het toevoegen van het product</string>
-    <string name="photos">Foto’s</string>
+    <string name="photos">Foto\'s</string>
     <string name="please_wait">Een ogenblik geduld</string>
     <string name="product_uploaded_successfully">Product succesvol verzonden</string>
     <string name="no_internet_connection">Je lijkt geen internetverbinding te hebben, afbeelding zullen worden geüpload wanneer er een netwerk beschikbaar is</string>
@@ -592,7 +583,6 @@
     <string name="your_version">Jouw</string>
     <string name="ingredients_picture">Foto van de ingrediëntenlijst</string>
     <string name="packaging">Recyclen</string>
-    <string name="recycling_picture">Recycling afbeelding</string>
     <string name="take_ingredients_picture_to_extract">(Maak een foto van de ingrediënten om ze automatisch te herkennen)</string>
     <string name="ingredients_list">Ingrediëntenlijst</string>
     <string name="ingredients_hint">Behoud de volgorde, geef het percentage indien vermeld, gescheiden met komma\'s of \'-\', gebruik () voor de ingrediënten van een ingrediënt, vermeld allergenen tussen \'_\' zoals bijvoorbeeld _melk_</string>
@@ -602,7 +592,7 @@
     <string name="skip_ingredients">Te slecht \n Ingrediënten overslaan</string>
     <string name="traces">Sporen</string>
     <string name="traces_hint">Vermeld de ingrediënten met de vermelding \"Kan sporen bevatten van\", \"Geproduceerd in een fabriek waar ook X verwerkt wordt\", etc.</string>
-    <string name="nutrition_facts_not_specified">De nutritionele informatie wordt niet op het product vermeld</string>
+    <string name="nutrition_facts_not_specified">De voedingswaarden zijn niet op het product vermeld</string>
     <string name="nutrition_facts_picture">Foto van de voedingswaardetabel</string>
     <string name="front_short_picture">Voorkant</string>
     <string name="other_picture">Andere foto</string>
@@ -646,7 +636,7 @@
     <string name="contribution_by">Bijgedragen door</string>
     <string name="title_activity_product">Titel</string>
     <string name="description_activity_product">beschrijving</string>
-    <string name="intent_filter_share_label">Voeg toe aan Open Food Facts</string>
+    <string name="intent_filter_share_label">Voeg toe aan Open Products Facts</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="overexposure_high">Hoog risico van overmatig gebruik</string>
     <string name="overexposure_moderate">Matig risico van overmatig gebruik</string>
@@ -675,23 +665,23 @@
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">Extract ingrediënten</string>
     <string name="extract_recycling_prompt">Extraheer recyclinginstructies</string>
-    <string name="add_nutrient_prompt_text">Voeg voedingsfeiten toe om de Nutri-Score te berekenen</string>
-    <string name="add_category_prompt_text">Voeg een categorie toe om de Nutri-Score te berekenen</string>
-    <string name="add_nutrient_category_prompt_text">Voeg voedingsfeiten en een categorie toe om de Nutri-Score te berekenen</string>
-    <string name="category_game_btn">Help producten te categoriseren om de Nutri-Score te berekenen</string>
-    <string name="version_string">Open Food Facts Android-app</string>
-    <string name="pref_version_title">Versie</string>
+    <string name="add_nutrient_prompt_text">Voeg meer details toe om het product te helpen voltooien</string>
+    <string name="add_category_prompt_text">Voeg een categorie toe om het product te helpen voltooien</string>
+    <string name="add_nutrient_category_prompt_text">Voeg een categorie en meer details toe om het product te helpen voltooien</string>
+    <string name="couldnot_compute_ecoscore_prompt_text">We could not compute an Eco-Score for this product. It might be that the category is not specific enough or that we don\'t have supporting data for this category. If you believe this is an error, you can mail us by clicking below.</string>
+    <string name="add_labels_origins_prompt_text">The Eco-Score takes into account environmental labels and origins of the ingredients. Please take them into photo or edit the product so that they can be taken into account</string>
+    <string name="add_labels_prompt_text">The Eco-Score takes into account environmental labels. Please take them into photo or edit the product so that they can be taken into account</string>
+    <string name="add_origins_prompt_text">The Eco-Score takes into account the origins of the ingredients. Please take them into photo (ingredient list and/or any geographic claim) or edit the product so that they can be taken into account</string>
+    <string name="category_game_btn">Help producten te categoriseren</string>
+    <string name="version_string">Open Products Facts Android-app</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
     <string name="set_img_nutrients">Set as nutrition image</string>
     <string name="set_img_front">Set as front image</string>
+    <string name="set_img_recycling">Set Image as Recycling</string>
     <string name="report_img">Rapporteer afbeelding</string>
     <string name="detected_ingredients">Gedetecteerde ingrediënten</string>
     <string name="txtConnectionError">We konden bepaalde gegevens niet downloaden. Dit kan te wijten zijn aan een verbindingsfout.</string>
     <string name="set_image_name">Afbeelding succesvol ingesteld als</string>
-    <string name="pref_fast_addition_title">Snelle toevoegmodus</string>
-    <string name="pref_fast_addition_summary">Maakt snelle toevoeging van producten met minder kenmerken mogelijk</string>
-    <string name="pref_crop_new_images_title">Nieuwe afbeeldingen bijsnijden</string>
-    <string name="pref_crop_new_images_summary">Maak bijsnijden mogelijk voor nieuwe afbeeldingen</string>
     <string name="addtive_search">Zoek een additief</string>
     <string name="additives">Additieven</string>
     <!--used for product_lists implementation-->
@@ -699,20 +689,14 @@
     <string name="txt_create_new_list">Maak een nieuwe lijst aan</string>
     <string name="txt_add_to_new_list">Voeg toe aan een nieuwe lijst</string>
     <string name="create_new_list_list_name">Lijstnaam</string>
-    <string name="txt_eaten_products">Gegeten producten</string>
+    <string name="txt_eaten_products">Mijn Producten</string>
     <string name="txt_products_to_buy">Producten om te kopen</string>
     <string name="txt_exporting_your_listed_products">Exporteren van jouw producten…</string>
     <string name="txt_your_listed_products_exported">Jouw producten zijn geëxporteerd</string>
     <string name="txt_discard">Negeren</string>
-    <string name="txt_info_eaten_products">\"U kunt producten aan deze lijst toevoegen door producten te scannen, de productkaart omhoog te slepen en op \'Ik eet dit\' te tikken.
-        U kunt ook producten aan deze lijst toevoegen door ze te zoeken en te klikken op de knop + in de rechterbovenhoek van de productpagina.\"</string>
+    <string name="txt_info_eaten_products">U kan producten aan deze lijst toevoegen door producten te scannen, de productkaart omhoog te slepen en op \"Te kopen producten\" te tikken.
+        U kan ook producten aan deze lijst toevoegen door ze te zoeken en op de knop + rechtsboven op de productpagina te klikken.</string>
     <string name="txt_info_your_listed_products">U kunt producten aan deze lijst toevoegen door ze te zoeken en op de knop + te klikken in de rechterbovenhoek van de productpagina.</string>
-    <string name="pref_delete_history_title">Lokale zoekgeschiedenis verwijderen</string>
-    <string name="pref_delete_history_summary">Verwijder alle zoekopdrachten die je hebt uitgevoerd op dit apparaat</string>
-    <string name="pref_delete_history_dialog_content">Lokale zoekgeschiedenis verwijderen?</string>
-    <string name="pref_country_dialog_title">Kies je land</string>
-    <string name="pref_country_summary">Wijzig je geselecteerde land</string>
-    <string name="pref_country_title">Land</string>
     <string name="txt_no_nutrition_data">Dit product bevat geen voedingswaarde-informatie op de verpakking. Als dit is veranderd, kan je het product bewerken.</string>
     <string name="image_prompt_language">Maak een foto van de ingrediëntenlijst</string>
     <string name="swipe_delete_tip">Je kunt een lijst verwijderen door hem naar links te vegen.</string>
@@ -720,7 +704,7 @@
     <string name="empty"></string>
     <string name="add_product">Voeg producten toe</string>
     <string name="add_another_product">Voeg een nieuw product toe</string>
-    <string name="add_nutrition_facts_for_nutriscore">Voeg voedingsfeiten toe om de Nutri-Score te berekenen</string>
+    <string name="add_nutrition_facts_for_nutriscore">Voeg meer details toe om het product te helpen voltooien</string>
     <string name="product_summary_action_compare_button_label">Vergelijken</string>
     <string name="product_summary_action_add_to_list_button_label">Toevoegen aan lijst</string>
     <string name="product_summary_action_edit_button_label">Bewerken</string>
@@ -756,7 +740,7 @@
     <string name="history_network_error">Het product kan niet worden geladen. Probeer het opnieuw wanneer je weer online bent.</string>
     <string name="cant_modify_if_refreshing">Wacht tot het uploaden is voltooid</string>
     <string name="closeZoom">Klik om zoom te sluiten</string>
-    <string name="imageFullscreen">Inzoomen</string>
+    <string name="imageFullscreen">Vergroot</string>
     <!-- Used for product ingredients analysis tags -->
     <string name="close_button">Sluit</string>
     <string name="tip_message">TIP: %1$s </string>
@@ -767,7 +751,6 @@
     <string name="ingredients_in_this_product_are">Ingrediënten in dit product zijn %1$s.</string>
     <string name="ingredients_in_this_product">Ingrediënten in dit product die %1$s zijn:</string>
     <string name="display_analysis_tag_status">Status %1$s weergeven</string>
-    <string name="pref_header_display">Weergave</string>
     <string name="unknown_status_no_translation">We konden de status van het product niet beoordelen vanwege niet-herkende ingrediënten.</string>
     <string name="help_translate_ingredients">Help de ingrediënten in uw taal te vertalen</string>
     <string name="unknown_status_missing_ingredients">We konden de status van het product niet beoordelen vanwege ontbrekende ingrediënten.</string>
@@ -786,6 +769,7 @@
     <string name="load_ingredient_detection_data_summary">Er zijn geen gegevens voor de detectie van ingrediënten gevonden, probeer deze te laden van de server</string>
     <string name="white_check_image_descr">Een blanco cheque</string>
     <string name="hint_packaging">Voorbeelden: plastic, papier, glas</string>
+    <string name="hint_trace_code">Examples: EMB 23456, FR 23.345.34 CE</string>
     <string name="risk_alcohol_consumption">Overmatig alcoholgebruik is schadelijk voor de gezondheid en moet met mate worden geconsumeerd</string>
     <!--ShowcaseView Strings-->
     <string name="title_image_type">Selecteer Beeldtype</string>
@@ -806,9 +790,19 @@
     <string name="icon_categories">Categorieën pictogram</string>
     <string name="icon_emb">Traceerbaarheidscode pictogram</string>
     <string name="product_front_image">Afbeelding voorzijde van product</string>
-    <string name="brand_hint">Voorbeelden: Coca-Cola, Nestlé, enz…</string>
+    <string name="brand_hint">Bijvoorbeeld: Coca-Cola, Nestle, etc…</string>
     <string name="sign_in_or_register">Aanmelden of registreren</string>
     <string name="hunger_game_call_to_action">Help meer %1$s te classificeren</string>
-    <string name="txtHomeOnline">Open Food Facts is een open database met meer dan %1$s voedingsproducten (plus uw bijdragen).</string>
+    <string name="txtHomeOnline">Open Products Facts is an open database of more than %1$s products (plus the ones you will contribute) in the world.</string>
     <string name="enabled">Geactiveerd</string>
+    <!-- Application theme settings -->
+    <string name="follow_system">Follow system</string>
+    <string name="day">Day</string>
+    <string name="night">Night</string>
+    <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
+    <string name="hint_origin">Examples: USA, France, Italy</string>
+    <string name="report_email_chooser_title">Send a report email</string>
+    <!-- Changelog String -->
+    <string name="changelog_translation_help">Want to see this changelog in %s?\nJoin the translation team!</string>
+    <string name="whats_new">What\'s new with Open Food Facts?</string>
 </resources>

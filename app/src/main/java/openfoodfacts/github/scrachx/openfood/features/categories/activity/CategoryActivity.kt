@@ -7,6 +7,7 @@ import android.net.Uri
 import android.os.Bundle
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.fragment.app.commitNow
+import dagger.hilt.android.AndroidEntryPoint
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityCategoryBinding
 import openfoodfacts.github.scrachx.openfood.features.categories.fragment.CategoryListFragment
@@ -14,6 +15,7 @@ import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomList
 import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.selectNavigationItem
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 
+@AndroidEntryPoint
 class CategoryActivity : BaseActivity() {
     private var _binding: ActivityCategoryBinding? = null
     private val binding get() = _binding!!

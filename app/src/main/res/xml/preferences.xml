@@ -48,6 +48,13 @@
 
         <SwitchPreference
             android:defaultValue="false"
+            android:key="@string/pref_scanner_type_key"
+            android:title="@string/pref_scanner_startup_title"
+            app:summaryOff="@string/pref_scanner_startup_summaryOff"
+            android:summaryOn="@string/pref_scanner_startup_summaryOn"/>
+
+        <SwitchPreference
+            android:defaultValue="false"
             android:key="startScan"
             android:title="@string/pref_scan_startup_title"
             app:summary="@string/pref_scan_startup_summary" />
@@ -138,6 +145,26 @@
             android:title="@string/pref_show_product_photos_title"
             android:summaryOn="@string/pref_show_product_photos_summary" />
         android:summaryOff="@string/pref_show_product_photos_summary" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:summary=""
+        android:title="@string/preference_header_privacy">
+
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="@string/pref_crash_reporting_key"
+            android:summaryOn="@string/preference_crash_summary"
+            android:summaryOff="@string/preference_crash_summary"
+            android:title="@string/preference_crash_title" />
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="@string/pref_analytics_reporting_key"
+            android:summaryOn="@string/preference_analytics_summary"
+            android:summaryOff="@string/preference_analytics_summary"
+            android:title="@string/preference_analytics_title" />
 
     </PreferenceCategory>
 

@@ -24,11 +24,13 @@ import openfoodfacts.github.scrachx.openfood.models.entities.additive.Additive;
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.Allergen;
 import openfoodfacts.github.scrachx.openfood.models.entities.analysistag.AnalysisTag;
 import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.AnalysisTagConfig;
+import openfoodfacts.github.scrachx.openfood.models.entities.brand.Brand;
 import openfoodfacts.github.scrachx.openfood.models.entities.category.Category;
 import openfoodfacts.github.scrachx.openfood.models.entities.country.Country;
 import openfoodfacts.github.scrachx.openfood.models.entities.ingredient.Ingredient;
 import openfoodfacts.github.scrachx.openfood.models.entities.label.Label;
 import openfoodfacts.github.scrachx.openfood.models.entities.states.States;
+import openfoodfacts.github.scrachx.openfood.models.entities.store.Store;
 import openfoodfacts.github.scrachx.openfood.models.entities.tag.Tag;
 import openfoodfacts.github.scrachx.openfood.network.services.AnalysisDataAPI;
 
@@ -99,7 +101,20 @@ public enum Taxonomy {
         public Single<List<States>> load(ProductRepository repository, long lastModifiedDate){
             return repository.loadStates(lastModifiedDate);
         }
+    },
+    STORES(AnalysisDataAPI.STORES_JSON) {
+        @Override
+        public Single<List<Store>> load(ProductRepository repository, long lastModifiedDate){
+            return repository.loadStores(lastModifiedDate);
+        }
+    },
+    BRANDS(AnalysisDataAPI.BRANDS_JSON) {
+        @Override
+        public Single<List<Brand>> load(ProductRepository repository, long lastModifiedDate) {
+            return repository.loadBrands(lastModifiedDate);
+        }
     };
+
     private final String jsonUrl;
 
     Taxonomy(String jsonUrl) {

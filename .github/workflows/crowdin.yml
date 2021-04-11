@@ -10,17 +10,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout
+    - name: Checkout sources
       uses: actions/checkout@v2
 
-    - name: crowdin action
-      uses: crowdin/github-action@1.0.17
+    - name: Sync translations with Crowdin
+      uses: crowdin/github-action@1.1.0
       with:
         upload_translations: true # default is false
         # Use this option to upload translations for a single specified language
         download_translations: true
         # Upload sources to Crowdin
-        # upload_sources: # default is true
+        upload_sources: true
         # Upload translations to Crowdin
         # upload_language: # optional
         # Automatically approves uploaded translations

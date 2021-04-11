@@ -13,29 +13,30 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import openfoodfacts.github.scrachx.openfood.R
-import openfoodfacts.github.scrachx.openfood.features.productlist.ProductListAdapter.YourListProductsViewHolder
+import openfoodfacts.github.scrachx.openfood.features.productlist.ProductListAdapter.ProductViewHolder
 import openfoodfacts.github.scrachx.openfood.features.shared.views.CustomTextView
-import openfoodfacts.github.scrachx.openfood.models.entities.YourListedProduct
+import openfoodfacts.github.scrachx.openfood.models.entities.ListedProduct
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 
 class ProductListAdapter(
         private val context: Context,
-        val products: MutableList<YourListedProduct>,
+        private val client: OpenFoodAPIClient,
+        val products: MutableList<ListedProduct>,
         private val isLowBatteryMode: Boolean
-) : RecyclerView.Adapter<YourListProductsViewHolder>() {
+) : RecyclerView.Adapter<ProductViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-            YourListProductsViewHolder(LayoutInflater.from(context)
+            ProductViewHolder(LayoutInflater.from(context)
                     .inflate(R.layout.your_listed_products_item, parent, false))
 
-    override fun onBindViewHolder(holder: YourListProductsViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
         holder.imgProgressBar.visibility = View.VISIBLE
 
         holder.tvTitle.text = products[position].productName
         holder.tvDetails.text = products[position].productDetails
         holder.tvBarcode.text = products[position].barcode
 
-        if (!isLowBatteryMode) {
+        if (!isLowBatteryMode && products[position].imageUrl.isNotEmpty()) {
             Picasso.get()
                     .load(products[position].imageUrl)
                     .placeholder(R.drawable.placeholder_thumb)
@@ -56,11 +57,11 @@ class ProductListAdapter(
             holder.imgProgressBar.visibility = View.INVISIBLE
         }
         holder.itemView.setOnClickListener {
-            OpenFoodAPIClient(it.context).openProduct(products[position].barcode, (it.context as Activity))
+            client.openProduct(products[position].barcode, it.context as Activity)
         }
     }
 
-    fun remove(product: YourListedProduct) {
+    fun remove(product: ListedProduct) {
         val position = products.indexOf(product)
         products.remove(product)
         notifyItemRemoved(position)
@@ -68,7 +69,7 @@ class ProductListAdapter(
 
     override fun getItemCount() = products.size
 
-    class YourListProductsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class ProductViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imgProduct: AppCompatImageView = itemView.findViewById(R.id.imgProductYourListedProduct)
         val imgProgressBar: ProgressBar = itemView.findViewById(R.id.imageProgressbarYourListedProduct)
         val tvBarcode: CustomTextView = itemView.findViewById(R.id.barcodeYourListedProduct)

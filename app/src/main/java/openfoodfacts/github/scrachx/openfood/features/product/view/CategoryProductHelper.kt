@@ -8,6 +8,8 @@ import android.text.style.*
 import android.view.View
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import androidx.core.text.bold
+import androidx.core.text.inSpans
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import openfoodfacts.github.scrachx.openfood.R
@@ -16,7 +18,6 @@ import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
 import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoryName
 import openfoodfacts.github.scrachx.openfood.network.WikiDataApiClient
 import openfoodfacts.github.scrachx.openfood.utils.SearchType
-import openfoodfacts.github.scrachx.openfood.utils.bold
 import openfoodfacts.github.scrachx.openfood.utils.showBottomSheet
 
 class CategoryProductHelper(
@@ -30,33 +31,35 @@ class CategoryProductHelper(
         private set
 
     fun showCategories() = categoryText.let {
-        it.text = bold(fragment.getString(R.string.txtCategories))
         it.movementMethod = LinkMovementMethod.getInstance()
-        it.append(" ")
         it.isClickable = true
         it.movementMethod = LinkMovementMethod.getInstance()
+
+        val text = SpannableStringBuilder()
+                .bold { append(fragment.getString(R.string.txtCategories)) }
+                .append(" ")
+
         if (categories.isEmpty()) {
             it.visibility = View.GONE
         } else {
             it.visibility = View.VISIBLE
             // Add all the categories to text view and link them to wikidata is possible
-            for (category in categories) {
-                val categoryName = getCategoriesTag(category)
+            categories.forEach { category ->
                 // Add category name to text view
-                it.append(categoryName)
+                text.append(getCategoriesTag(category))
 
                 // Add a comma if not the last item
-                if (category != categories.last()) it.append(", ")
+                if (category != categories.last()) text.append(", ")
 
-                if (category.categoryTag != null && category.categoryTag == "en:alcoholic-beverages") {
+                if (category.categoryTag == "en:alcoholic-beverages") {
                     containsAlcohol = true
                 }
             }
         }
+        it.text = text
     }
 
     private fun getCategoriesTag(category: CategoryName): CharSequence {
-        val spannableStringBuilder = SpannableStringBuilder()
         val clickableSpan = object : ClickableSpan() {
             override fun onClick(view: View) {
                 if (category.isWikiDataIdPresent == true) {
@@ -75,11 +78,12 @@ class CategoryProductHelper(
                 }
             }
         }
-        spannableStringBuilder.append(category.name)
-        spannableStringBuilder.setSpan(clickableSpan, 0, spannableStringBuilder.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+
+        val spannableStringBuilder = SpannableStringBuilder()
+                .inSpans(clickableSpan) { append(category.name) }
         if (!category.isNotNull) {
-            val iss = StyleSpan(Typeface.ITALIC) //Span to make text italic
-            spannableStringBuilder.setSpan(iss, 0, spannableStringBuilder.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+            // Span to make text italic
+            spannableStringBuilder.setSpan(StyleSpan(Typeface.ITALIC), 0, spannableStringBuilder.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         }
         return spannableStringBuilder
     }
@@ -93,21 +97,12 @@ class CategoryProductHelper(
         }
         val riskAlcoholConsumption = fragment.getString(R.string.risk_alcohol_consumption)
         alcoholAlertText.visibility = View.VISIBLE
-        alcoholAlertText.text = SpannableStringBuilder().also {
-            it.append("- ")
-            it.setSpan(
-                    ImageSpan(alcoholAlertIcon, DynamicDrawableSpan.ALIGN_BOTTOM),
-                    0,
-                    1,
-                    Spanned.SPAN_INCLUSIVE_INCLUSIVE
-            )
-            it.append(riskAlcoholConsumption)
-            it.setSpan(
-                    ForegroundColorSpan(ContextCompat.getColor(fragment.requireContext(), R.color.red)),
-                    it.length - riskAlcoholConsumption.length,
-                    it.length,
-                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
-            )
+        alcoholAlertText.text = SpannableStringBuilder().apply {
+            inSpans(ImageSpan(alcoholAlertIcon, DynamicDrawableSpan.ALIGN_BOTTOM)) { append("-") }
+            append(" ")
+            inSpans(ForegroundColorSpan(ContextCompat.getColor(fragment.requireContext(), R.color.red)))
+            { append(riskAlcoholConsumption) }
+
         }
     }
 }

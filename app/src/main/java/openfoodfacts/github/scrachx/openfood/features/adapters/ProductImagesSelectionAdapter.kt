@@ -7,16 +7,21 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.images.IMAGE_EDIT_SIZE_FILE
 import openfoodfacts.github.scrachx.openfood.images.getImageUrl
-import openfoodfacts.github.scrachx.openfood.utils.Utils.picassoBuilder
-import java.util.function.Consumer
 
 /**
  * Created by prajwalm on 10/09/18.
  */
-class ProductImagesSelectionAdapter(private val context: Context, private val images: List<String>, private val barcode: String, private val onImageClick: Consumer<Int>?) : RecyclerView.Adapter<ProductImagesSelectionAdapter.CustomViewHolder>() {
+class ProductImagesSelectionAdapter(
+        private val context: Context,
+        private val picasso: Picasso,
+        private val images: List<String>,
+        private val barcode: String,
+        private val onImageClick: ((Int) -> Unit)?
+) : RecyclerView.Adapter<ProductImagesSelectionAdapter.CustomViewHolder>() {
     var selectedPosition = -1
     fun isSelectionDone() = selectedPosition >= 0
 
@@ -32,37 +37,34 @@ class ProductImagesSelectionAdapter(private val context: Context, private val im
     }
 
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
+        holder.itemView.setBackgroundColor(
+                if (position == selectedPosition) ContextCompat.getColor(context, R.color.blue)
+                else 0
+        )
         val finalUrlString = getImageUrl(position)
-        val imageView = holder.productImage
-        val viewGroup = holder.parent
-        if (position == selectedPosition) {
-            viewGroup.setBackgroundColor(ContextCompat.getColor(context, R.color.blue))
-        } else {
-            viewGroup.setBackgroundColor(0)
-        }
-        picassoBuilder(context).load(finalUrlString).resize(400, 400).centerInside().into(imageView)
+        picasso.load(finalUrlString)
+                .resize(400, 400)
+                .centerInside()
+                .into(holder.productImage)
     }
 
     override fun getItemCount() = images.size
 
     inner class CustomViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
-        val parent: ViewGroup = itemView.findViewById(R.id.parentGroup)
         val productImage: ImageView = itemView.findViewById(R.id.img)
 
         override fun onClick(v: View) {
             if (selectedPosition >= 0) {
                 notifyItemChanged(selectedPosition)
             }
-            var adapterPosition = adapterPosition
-            //if the user reclick on the same image -> deselect
-            if (adapterPosition == selectedPosition) {
-                adapterPosition = -1
-            }
-            selectedPosition = adapterPosition
+
+            // If the user reclick on the same image -> deselect
+            selectedPosition = if (adapterPosition != selectedPosition) adapterPosition else -1
+
             if (selectedPosition >= 0) {
                 notifyItemChanged(selectedPosition)
             }
-            onImageClick?.accept(selectedPosition)
+            onImageClick?.invoke(selectedPosition)
         }
 
         init {

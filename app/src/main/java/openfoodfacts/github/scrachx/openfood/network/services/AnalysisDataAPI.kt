@@ -5,11 +5,13 @@ import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditivesW
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergensWrapper
 import openfoodfacts.github.scrachx.openfood.models.entities.analysistag.AnalysisTagsWrapper
 import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.AnalysisTagConfigsWrapper
+import openfoodfacts.github.scrachx.openfood.models.entities.brand.BrandsWrapper
 import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoriesWrapper
 import openfoodfacts.github.scrachx.openfood.models.entities.country.CountriesWrapper
 import openfoodfacts.github.scrachx.openfood.models.entities.ingredient.IngredientsWrapper
 import openfoodfacts.github.scrachx.openfood.models.entities.label.LabelsWrapper
 import openfoodfacts.github.scrachx.openfood.models.entities.states.StatesWrapper
+import openfoodfacts.github.scrachx.openfood.models.entities.store.StoresWrapper
 import openfoodfacts.github.scrachx.openfood.models.entities.tag.TagsWrapper
 import retrofit2.http.GET
 
@@ -68,6 +70,12 @@ interface AnalysisDataAPI {
     @GET(STATES_JSON)
     fun getStates(): Single<StatesWrapper>
 
+    @GET(STORES_JSON)
+    fun getStores(): Single<StoresWrapper>
+
+    @GET(BRANDS_JSON)
+    fun getBrands(): Single<BrandsWrapper>
+
     @GET(ANALYSIS_TAG_JSON)
     fun getAnalysisTags(): Single<AnalysisTagsWrapper>
 
@@ -93,7 +101,8 @@ interface AnalysisDataAPI {
         const val STATES_JSON = "$PREFIX/states.json"
         const val MINERALS_JSON = "$PREFIX/minerals.json"
         const val NUTRIENTS_JSON = "$PREFIX/nutrients.json"
-
+        const val STORES_JSON = "$PREFIX/stores.json"
+        const val BRANDS_JSON = "$PREFIX/brands.json"
         const val INVALID_BARCODES_JSON = "data/invalid-barcodes.json"
         const val ANALYSIS_TAG_CONFIG_JSON = "files/app/ingredients-analysis.json"
     }

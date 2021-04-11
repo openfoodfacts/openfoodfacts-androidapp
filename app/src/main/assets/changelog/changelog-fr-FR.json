@@ -1,0 +1,13 @@
+{
+  "changelog": [
+    {
+      "date": "10/02/2021",
+      "code": 350,
+      "name": "3.5.0",
+      "items": [
+        "Ajout d'un journal des modifications",
+        "Aidez les bénévoles d'Open Food Facts à améliorer l'application. Vous avez la possibilité d'envoyer des analyses anonymes et des rapports de plantage. Cette option peut être activée et désactivée à tout moment à partir des paramètres."
+      ]
+    }
+  ]
+}

@@ -5,7 +5,7 @@ Oziq-ovqat yoki shtrixkodni skanerdan o'tkazing va tarkibiy qismlari, ozuqaviy q
 The app allows to view the 800.000 products (including 175.000 in the US) already contained in the free and open database Open Food Facts, and also to add pictures and data for new products.
 
 
-To discover the volunteer-run Open Food Facts project, visit https://world.openfoodfacts.org
+Ko'ngilillar tomonidan tashkil etilgan Open Food Facts loyhasini o'rganib chiqish uchun, https://world.openfoodfacts.org sahifasiga tashrif buyuring
 
 ▶ Choose the products that are good for you
 - The Nutri-Score grade, from "A" to "E" >> Nutritional quality

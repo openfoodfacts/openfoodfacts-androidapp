@@ -31,8 +31,9 @@ interface IIngredientsProductPresenter {
 
     interface View {
         fun showAdditives(additives: List<AdditiveName>)
-        fun showAdditivesState(state: ProductInfoState)
+        fun setAdditivesState(state: ProductInfoState)
+
         fun showAllergens(allergens: List<AllergenName>)
-        fun showAllergensState(state: ProductInfoState)
+        fun setAllergensState(state: ProductInfoState)
     }
 }
