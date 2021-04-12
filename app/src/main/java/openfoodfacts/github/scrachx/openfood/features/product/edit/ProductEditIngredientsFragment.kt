@@ -16,6 +16,7 @@
 package openfoodfacts.github.scrachx.openfood.features.product.edit
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -23,7 +24,6 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.core.widget.doAfterTextChanged
-import androidx.preference.PreferenceManager
 import com.hootsuite.nachos.terminator.ChipTerminatorHandler
 import com.hootsuite.nachos.validator.ChipifyingNachoValidator
 import com.squareup.picasso.Callback
@@ -47,7 +47,7 @@ import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenNa
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenNameDao
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.Keys.lcIngredientsKey
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
+import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.FileDownloader.download
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
@@ -73,18 +73,21 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
     lateinit var picasso: Picasso
 
     @Inject
-    lateinit var client: OpenFoodAPIClient
+    lateinit var productsApi: ProductsAPI
 
     @Inject
     lateinit var matomoAnalytics: MatomoAnalytics
 
+    @Inject
+    lateinit var sharedPreferences: SharedPreferences
+
     private val photoReceiverHandler by lazy {
-        PhotoReceiverHandler(requireContext()) {
+        PhotoReceiverHandler(sharedPreferences) {
             val uri = it.toURI()
             imagePath = uri.path
             newImageSelected = true
             photoFile = it
-            val image = ProductImage(code!!, ProductImageField.INGREDIENTS, it, getLanguage(requireContext())).apply {
+            val image = ProductImage(code!!, ProductImageField.INGREDIENTS, it, getLanguage(sharedPreferences)).apply {
                 filePath = uri.path
             }
             (activity as? ProductEditActivity)?.addToPhotoMap(image, 1)
@@ -141,7 +144,7 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
                 preFillValuesForOffline()
             } else {
                 // Fast addition
-                val enabled = PreferenceManager.getDefaultSharedPreferences(context).getBoolean("fastAdditionMode", false)
+                val enabled = sharedPreferences.getBoolean("fastAdditionMode", false)
                 enableFastAdditionMode(enabled)
             }
             if (bundle.getBoolean(KEY_PERFORM_OCR)) extractIngredients()
@@ -179,7 +182,7 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
     private fun getAddProductActivity() = activity as ProductEditActivity?
 
     private fun extractTracesChipValues(product: Product?): List<String> =
-            product?.tracesTags?.map { getTracesName(getLanguage(activity), it) } ?: emptyList()
+            product?.tracesTags?.map { getTracesName(getLanguage(sharedPreferences), it) } ?: emptyList()
 
     /**
      * Pre fill the fields of the product which are already present on the server.
@@ -298,7 +301,7 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
     private fun loadAutoSuggestions() {
         val asyncSessionAllergens = daoSession.startAsyncSession()
         val allergenNameDao = daoSession.allergenNameDao
-        val appLanguageCode = getLanguage(activity)
+        val appLanguageCode = getLanguage(sharedPreferences)
 
         asyncSessionAllergens.listenerMainThread = AsyncOperationListener { operation ->
             val allergenNames = operation.result as List<AllergenName>
@@ -324,7 +327,7 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
             imagePath == null -> editIngredientsImage()
             photoFile != null -> cropRotateImage(photoFile, getString(R.string.ingredients_picture))
             else -> {
-                download(requireContext(), imagePath!!, client)
+                download(requireContext(), imagePath!!, productsApi)
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe { file ->
                             photoFile = file
@@ -348,7 +351,7 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
             val imagePath = imagePath
             if (imagePath != null && (!isEditingFromArgs || newImageSelected)) {
                 photoFile = File(imagePath)
-                val image = ProductImage(code!!, ProductImageField.INGREDIENTS, photoFile!!, getLanguage(context))
+                val image = ProductImage(code!!, ProductImageField.INGREDIENTS, photoFile!!, getLanguage(sharedPreferences))
                 image.filePath = imagePath
                 (activity as ProductEditActivity).addToPhotoMap(image, 1)
             } else if (imagePath != null) {

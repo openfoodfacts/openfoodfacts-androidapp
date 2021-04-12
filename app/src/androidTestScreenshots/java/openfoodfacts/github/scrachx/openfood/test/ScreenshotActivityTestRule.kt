@@ -3,6 +3,7 @@ package openfoodfacts.github.scrachx.openfood.test
 import android.app.Activity
 import android.content.Context
 import android.util.Log
+import androidx.preference.PreferenceManager
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.rule.ActivityTestRule
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper
@@ -28,7 +29,8 @@ class ScreenshotActivityTestRule<T : Activity?>
                 PrefManager(context).isFirstTimeLaunch = firstTimeLaunched
                 LocaleHelper.setContextLanguage(
                         InstrumentationRegistry.getInstrumentation().targetContext,
-                        screenshotParameter!!.locale
+                        screenshotParameter!!.locale,
+                        PreferenceManager.getDefaultSharedPreferences(context)
                 )
             }
         } catch (throwable: Throwable) {

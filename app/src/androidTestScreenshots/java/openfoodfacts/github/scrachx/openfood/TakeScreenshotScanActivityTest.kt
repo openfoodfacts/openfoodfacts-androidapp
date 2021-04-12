@@ -1,16 +1,12 @@
 package openfoodfacts.github.scrachx.openfood
 
-import android.content.Context
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import dagger.hilt.android.qualifiers.ApplicationContext
-import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import openfoodfacts.github.scrachx.openfood.features.scan.ContinuousScanActivity
 import openfoodfacts.github.scrachx.openfood.test.ScreenshotActivityTestRule
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import javax.inject.Inject
 
 /**
  * Take screenshots...
@@ -18,13 +14,6 @@ import javax.inject.Inject
 @RunWith(AndroidJUnit4::class)
 @HiltAndroidTest
 class TakeScreenshotScanActivityTest : AbstractScreenshotTest() {
-
-    @get:Rule
-    var hiltRule = HiltAndroidRule(this)
-
-    @Inject
-    @ApplicationContext
-    lateinit var context: Context
 
     @Rule
     var activityRule = ScreenshotActivityTestRule(ContinuousScanActivity::class.java, context = context)

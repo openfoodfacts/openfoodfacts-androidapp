@@ -1,5 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.features
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
@@ -16,7 +17,6 @@ import openfoodfacts.github.scrachx.openfood.images.createImageBundle
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
 import openfoodfacts.github.scrachx.openfood.utils.isAbsoluteUrl
 import org.jetbrains.annotations.Contract
 
@@ -24,29 +24,33 @@ import org.jetbrains.annotations.Contract
  * Used to open fullscreen activity
  */
 object FullScreenActivityOpener {
+
     fun openForUrl(
             fragment: Fragment,
             client: OpenFoodAPIClient,
             product: Product,
             imageType: ProductImageField,
             mUrlImage: String,
-            mImageFront: View
-    ) = openForUrl(fragment.requireActivity(), client, product, imageType, mUrlImage, mImageFront)
+            mImageFront: View,
+            language: String
+    ) = openForUrl(fragment.requireActivity(), client, product, imageType, mUrlImage, mImageFront, language)
 
+    @SuppressLint("CheckResult")
     fun openForUrl(
             activity: Activity,
             client: OpenFoodAPIClient,
             product: Product,
             imageType: ProductImageField,
             mUrlImage: String,
-            mImageFront: View
+            mImageFront: View,
+            language: String
     ) {
         // A new file added just now
         if (isAbsoluteUrl(mUrlImage)) {
-            loadImageServerUrl(activity, client, product, imageType, mImageFront)
+            loadImageServerUrl(activity, client, product, imageType, mImageFront, language)
             return
         }
-        startActivity(activity, mImageFront, createIntent(activity, product, imageType, mUrlImage))
+        startActivity(activity, mImageFront, createIntent(activity, product, imageType, mUrlImage, language))
     }
 
     private fun startActivity(activity: Activity, mImageFront: View?, intent: Intent) {
@@ -70,13 +74,19 @@ object FullScreenActivityOpener {
 
     @CheckResult
     @Contract(pure = true)
-    private fun createIntent(context: Context, product: Product, imageType: ProductImageField, mUrlImage: String): Intent {
-        var language = getLanguage(context)
+    private fun createIntent(
+            context: Context,
+            product: Product,
+            imageType: ProductImageField,
+            mUrlImage: String,
+            language: String
+    ): Intent {
+        var productLanguage = language
         if (!product.isLanguageSupported(language) && product.lang.isNotBlank()) {
-            language = product.lang
+            productLanguage = product.lang
         }
         return Intent(context, ImagesManageActivity::class.java).apply {
-            putExtras(createImageBundle(imageType, product, language, mUrlImage))
+            putExtras(createImageBundle(imageType, product, productLanguage, mUrlImage))
         }
     }
 
@@ -86,15 +96,15 @@ object FullScreenActivityOpener {
             client: OpenFoodAPIClient,
             product: Product,
             imageType: ProductImageField,
-            mImageFront: View
+            mImageFront: View,
+            language: String
     ): Disposable {
         return client.getProductImages(product.code).subscribe { state ->
             val newProduct = state.product
             if (newProduct != null) {
-                val language = getLanguage(activity)
                 val imageUrl = newProduct.getSelectedImage(language, imageType, ImageSize.DISPLAY)
                 if (!imageUrl.isNullOrBlank()) {
-                    openForUrl(activity, client, newProduct, imageType, imageUrl, mImageFront)
+                    openForUrl(activity, client, newProduct, imageType, imageUrl, mImageFront, language)
                 } else {
                     Toast.makeText(activity, R.string.cant_edit_image_not_yet_uploaded, Toast.LENGTH_LONG).show()
                 }

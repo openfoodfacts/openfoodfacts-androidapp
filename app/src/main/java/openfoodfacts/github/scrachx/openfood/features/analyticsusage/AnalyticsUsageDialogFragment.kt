@@ -1,11 +1,11 @@
 package openfoodfacts.github.scrachx.openfood.features.analyticsusage
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.preference.PreferenceManager
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 import openfoodfacts.github.scrachx.openfood.R
@@ -22,6 +22,9 @@ class AnalyticsUsageDialogFragment : BottomSheetDialogFragment() {
 
     @Inject
     lateinit var matomoAnalytics: MatomoAnalytics
+
+    @Inject
+    lateinit var sharedPreferences: SharedPreferences
 
     init {
         isCancelable = false
@@ -43,7 +46,7 @@ class AnalyticsUsageDialogFragment : BottomSheetDialogFragment() {
     }
 
     private fun saveAnalyticsReportingPref(value: Boolean) {
-        PreferenceManager.getDefaultSharedPreferences(requireContext())
+        sharedPreferences
                 .edit()
                 .putBoolean(getString(R.string.pref_analytics_reporting_key), value)
                 .apply()

@@ -1,6 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.features.adapters
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,15 +21,13 @@ import openfoodfacts.github.scrachx.openfood.utils.getNovaGroupResource
 import openfoodfacts.github.scrachx.openfood.utils.getNutriScoreResource
 import openfoodfacts.github.scrachx.openfood.utils.getProductBrandsQuantityDetails
 
-/**
- * @author herau & itchix
- */
 class ProductSearchAdapter(
         val products: MutableList<SearchProduct?>,
         private val isLowBatteryMode: Boolean,
         private val context: Context,
         private val picasso: Picasso,
-        private val openFoodAPIClient: OpenFoodAPIClient
+        private val openFoodAPIClient: OpenFoodAPIClient,
+        private val sharedPreferences: SharedPreferences
 ) : RecyclerView.Adapter<ProductSearchAdapter.ProductsListViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductsListViewHolder {
@@ -46,7 +45,7 @@ class ProductSearchAdapter(
         val product = products[position]!!
 
         holder.imageProgress.visibility = View.VISIBLE
-        val imageSmallUrl = product.getImageSmallUrl(getLanguage(context))
+        val imageSmallUrl = product.getImageSmallUrl(getLanguage(sharedPreferences))
         if (imageSmallUrl == null) {
             holder.imageProgress.visibility = View.GONE
         }

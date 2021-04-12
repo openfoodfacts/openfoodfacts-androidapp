@@ -33,9 +33,7 @@ class AdditiveListActivity : BaseActivity() {
     @Inject
     lateinit var daoSession: DaoSession
 
-
     private var additives = mutableListOf<AdditiveName>()
-
 
     override fun onDestroy() {
         super.onDestroy()
@@ -51,7 +49,7 @@ class AdditiveListActivity : BaseActivity() {
         supportActionBar!!.setTitle(R.string.additives)
         val asyncSessionAdditives = daoSession.startAsyncSession()
         val additiveNameDao = daoSession.additiveNameDao
-        val languageCode = LocaleHelper.getLanguage(this)
+        val languageCode = LocaleHelper.getLanguage(sharedPreferences)
         asyncSessionAdditives.queryList(additiveNameDao.queryBuilder()
                 .where(AdditiveNameDao.Properties.LanguageCode.eq(languageCode))
                 .where(AdditiveNameDao.Properties.Name.like("E%")).build())

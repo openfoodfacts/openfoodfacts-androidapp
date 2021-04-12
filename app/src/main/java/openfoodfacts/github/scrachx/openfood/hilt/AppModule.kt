@@ -1,6 +1,8 @@
 package openfoodfacts.github.scrachx.openfood.hilt
 
 import android.content.Context
+import android.content.SharedPreferences
+import androidx.preference.PreferenceManager
 import com.squareup.picasso.OkHttp3Downloader
 import com.squareup.picasso.Picasso
 import dagger.Module
@@ -55,4 +57,9 @@ class AppModule {
                 .downloader(OkHttp3Downloader(httpClientWithCache))
                 .build()
     }
+
+    @Provides
+    @Singleton
+    fun provideSharedPreferences(@ApplicationContext context: Context): SharedPreferences =
+            PreferenceManager.getDefaultSharedPreferences(context)
 }

@@ -18,11 +18,11 @@ package openfoodfacts.github.scrachx.openfood.features.product.view
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
-import androidx.preference.PreferenceManager
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -66,10 +66,10 @@ class ProductViewActivity : BaseActivity(), OnRefreshListener {
     private var _binding: ActivityProductBinding? = null
     private val binding get() = _binding!!
 
-    private val disp = CompositeDisposable()
-
     @Inject
     lateinit var client: OpenFoodAPIClient
+
+    private val disp = CompositeDisposable()
 
     private var productState: ProductState? = null
     private var adapterResult: ProductFragmentPagerAdapter? = null
@@ -188,7 +188,7 @@ class ProductViewActivity : BaseActivity(), OnRefreshListener {
     }
 
     private fun setupViewPager(viewPager: ViewPager2) =
-            setupViewPager(viewPager, ProductFragmentPagerAdapter(this), productState!!, this)
+            setupViewPager(viewPager, ProductFragmentPagerAdapter(this), productState!!, this, sharedPreferences)
 
     enum class ShowIngredientsAction {
         PERFORM_OCR, SEND_UPDATED
@@ -232,13 +232,13 @@ class ProductViewActivity : BaseActivity(), OnRefreshListener {
                 viewPager: ViewPager2,
                 adapter: ProductFragmentPagerAdapter,
                 productState: ProductState,
-                activity: Activity
+                context: Context,
+                sharedPreferences: SharedPreferences
         ): ProductFragmentPagerAdapter {
-            val titles = activity.resources.getStringArray(R.array.nav_drawer_items_product)
-            val newTitles = activity.resources.getStringArray(R.array.nav_drawer_new_items_product)
+            val titles = context.resources.getStringArray(R.array.nav_drawer_items_product)
+            val newTitles = context.resources.getStringArray(R.array.nav_drawer_new_items_product)
 
             adapter += SummaryProductFragment.newInstance(productState) to titles[0]
-            val preferences = PreferenceManager.getDefaultSharedPreferences(activity)
 
             // Add Ingredients fragment for off, obf and opff
             if (isFlavors(OFF, OBF, OPFF)) {
@@ -253,28 +253,27 @@ class ProductViewActivity : BaseActivity(), OnRefreshListener {
                 adapter += EnvironmentProductFragment.newInstance(productState) to titles[4]
             }
 
-            if (isFlavors(OFF, OPFF, OBF) && isPhotoMode(activity) || isFlavors(OPF)) {
+            if (isFlavors(OFF, OPFF, OBF) && isPhotoMode(sharedPreferences, context) || isFlavors(OPF)) {
                 adapter += ProductPhotosFragment.newInstance(productState) to newTitles[0]
             }
 
             if (isFlavors(OFF, OBF)) {
-                adapter += ServerAttributesFragment.newInstance(productState) to activity.getString(R.string.synthesis_tab)
+                adapter += ServerAttributesFragment.newInstance(productState) to context.getString(R.string.synthesis_tab)
             }
 
             if (isFlavors(OBF)) {
                 adapter += IngredientsAnalysisProductFragment.newInstance(productState) to newTitles[1]
             }
 
-            if (preferences.getBoolean(activity.getString(R.string.pref_contribution_tab_key), false)) {
-                adapter += ContributorsFragment.newInstance(productState) to activity.getString(R.string.contribution_tab)
+            if (sharedPreferences.getBoolean(context.getString(R.string.pref_contribution_tab_key), false)) {
+                adapter += ContributorsFragment.newInstance(productState) to context.getString(R.string.contribution_tab)
             }
 
             viewPager.adapter = adapter
             return adapter
         }
 
-        private fun isPhotoMode(activity: Activity) =
-                PreferenceManager.getDefaultSharedPreferences(activity).getBoolean(activity.getString(R.string.pref_show_product_photos_key), false)
+        private fun isPhotoMode(sharedPreferences: SharedPreferences, context: Context) = sharedPreferences.getBoolean(context.getString(R.string.pref_show_product_photos_key), false)
 
         fun onOptionsItemSelected(activity: Activity, item: MenuItem) = when (item.itemId) {
             android.R.id.home -> {

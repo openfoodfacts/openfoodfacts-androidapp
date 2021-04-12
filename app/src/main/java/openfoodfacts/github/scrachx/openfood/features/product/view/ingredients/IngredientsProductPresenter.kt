@@ -16,6 +16,7 @@
 package openfoodfacts.github.scrachx.openfood.features.product.view.ingredients
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.util.Log
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -37,7 +38,8 @@ class IngredientsProductPresenter(
         private val context: Context,
         private val view: IIngredientsProductPresenter.View,
         private val productRepository: ProductRepository,
-        private val product: Product
+        private val product: Product,
+        private val sharedPreferences: SharedPreferences
 ) : IIngredientsProductPresenter.Actions {
     private val disp = CompositeDisposable()
 
@@ -47,7 +49,7 @@ class IngredientsProductPresenter(
             view.setAdditivesState(EMPTY)
             return
         }
-        val languageCode = LocaleHelper.getLanguage(context)
+        val languageCode = LocaleHelper.getLanguage(sharedPreferences)
         additivesTags.toObservable()
                 .flatMapSingle { tag ->
                     productRepository.getAdditiveByTagAndLanguageCode(tag, languageCode).flatMap { categoryName ->
@@ -81,7 +83,7 @@ class IngredientsProductPresenter(
             view.setAllergensState(EMPTY)
             return
         }
-        val languageCode = LocaleHelper.getLanguage(context)
+        val languageCode = LocaleHelper.getLanguage(sharedPreferences)
         allergenTags.toObservable()
                 .flatMapSingle { tag ->
                     productRepository.getAllergenByTagAndLanguageCode(tag, languageCode).flatMap { allergenName: AllergenName ->
