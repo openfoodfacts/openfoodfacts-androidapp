@@ -179,8 +179,14 @@ dependencies {
     testImplementation("org.robolectric:robolectric:4.4")
     testImplementation("org.mockito:mockito-core:3.8.0")
     testImplementation("net.javacrumbs.json-unit:json-unit-fluent:2.24.0")
-    testImplementation("com.google.truth:truth:1.1.2")
-    testImplementation("com.google.truth.extensions:truth-java8-extension:1.1.2")
+
+    val truthVersion = "1.1.2"
+    testImplementation("com.google.truth", "truth", truthVersion)
+    testImplementation("com.google.truth.extensions", "truth-java8-extension", truthVersion)
+
+    androidTestImplementation("com.google.truth", "truth", truthVersion)
+    androidTestImplementation("com.google.truth.extensions", "truth-java8-extension", truthVersion)
+
 
     // Instrumented tests
     androidTestUtil("androidx.test:orchestrator:1.3.0")
