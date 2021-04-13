@@ -20,7 +20,7 @@ class TakeScreenshotMainActivityTest : AbstractScreenshotTest() {
     var activityRule = ScreenshotActivityTestRule(MainActivity::class.java, context = context, localeManager = localeManager)
 
     @Rule
-    var welcomeActivityRule = ScreenshotActivityTestRule(WelcomeActivity::class.java, context = context, , localeManager = localeManager)
+    var welcomeActivityRule = ScreenshotActivityTestRule(WelcomeActivity::class.java, context = context, localeManager = localeManager)
 
     @Test
     fun testTakeScreenshotMainActivity() {
