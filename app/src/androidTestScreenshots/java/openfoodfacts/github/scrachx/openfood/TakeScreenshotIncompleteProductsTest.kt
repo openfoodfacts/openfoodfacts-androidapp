@@ -22,7 +22,8 @@ class TakeScreenshotIncompleteProductsTest : AbstractScreenshotTest() {
     var incompleteRule = ScreenshotActivityTestRule(
             ProductSearchActivity::class.java,
             "incompleteProducts",
-            context
+            context,
+            localeManager
     )
 
     @Test

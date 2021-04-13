@@ -16,7 +16,7 @@ import org.junit.runner.RunWith
 class TakeScreenshotScanActivityTest : AbstractScreenshotTest() {
 
     @Rule
-    var activityRule = ScreenshotActivityTestRule(ContinuousScanActivity::class.java, context = context)
+    var activityRule = ScreenshotActivityTestRule(ContinuousScanActivity::class.java, context = context, localeManager = localeManager)
 
     @Test
     fun testTakeScreenshotScanActivity() {
