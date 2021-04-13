@@ -74,7 +74,7 @@ class HomeFragment : NavigationBaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.tvDailyFoodFact.setOnClickListener { openDailyFoodFacts() }
+        binding.tvTagLine.setOnClickListener { openDailyFoodFacts() }
         checkUserCredentials()
     }
 
@@ -207,15 +207,15 @@ class HomeFragment : NavigationBaseFragment() {
                         if (!isExactLanguageFound && (tag.language == appLanguage || tag.language.contains(appLanguage))) {
                             isExactLanguageFound = tag.language == appLanguage
                             taglineURL = tag.tagLine.url
-                            binding.tvDailyFoodFact.text = tag.tagLine.message
+                            binding.tvTagLine.text = tag.tagLine.message
                             isLanguageFound = true
                         }
                     }
                     if (!isLanguageFound) {
                         taglineURL = tagLines.last().tagLine.url
-                        binding.tvDailyFoodFact.text = tagLines.last().tagLine.message
+                        binding.tvTagLine.text = tagLines.last().tagLine.message
                     }
-                    binding.tvDailyFoodFact.visibility = View.VISIBLE
+                    binding.tvTagLine.visibility = View.VISIBLE
                 }
                 .addTo(disp)
     }
