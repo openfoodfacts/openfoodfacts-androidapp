@@ -155,7 +155,6 @@
         <item>Vitamina K</item>
         <item>Zinco</item>
     </string-array>
-    <!-- Text units -->
     <!-- Content Description -->
     <string name="search_button">Procurar</string>
     <string name="alert_dialog_warning_title">Aviso</string>
@@ -582,7 +581,7 @@
     <string name="nutrition_facts">Fatos Nutricionais</string>
     <string name="your_version">Sua</string>
     <string name="ingredients_picture">Imagen de ingredientes</string>
-    <string name="packaging">Reciclar</string>
+    <string name="packaging">Reciclagem</string>
     <string name="take_ingredients_picture_to_extract">(Por favor tire uma foto dos ingredientes para extraí-los automaticamente)</string>
     <string name="ingredients_list">Lista de Ingredientes</string>
     <string name="ingredients_hint">Mantenha a ordem de listagem, indique os % quando especificado, separe com uma vírgula \",\" ou hífen \"-\", use parênteses \"()\" para ingredientes compostos de outros ingredientes, envolva os alergénios em dois \'underscore\' (traço inferior) \"_\"</string>
@@ -592,7 +591,7 @@
     <string name="skip_ingredients">Demasiado mau \n Ignorar Ingredientes</string>
     <string name="traces">Vestígios</string>
     <string name="traces_hint">Indique ingredientes que sejam mencionados como \'Pode conter vestígios de\', \'Feito em uma fábrica que também usa\', etc. \nExemplos: Leite, Glúten, Nozes</string>
-    <string name="nutrition_facts_not_specified">Informação nutricional não especificada no produto.</string>
+    <string name="nutrition_facts_not_specified">A informação nutricional não é está presente no produto.</string>
     <string name="nutrition_facts_picture">Imagem de fatos nutricionais</string>
     <string name="front_short_picture">Frente</string>
     <string name="other_picture">Outra imagem</string>
@@ -638,8 +637,8 @@
     <string name="description_activity_product">descrição</string>
     <string name="intent_filter_share_label">Adicionar ao Open Products Facts</string>
     <!-- Used for additive exposure evaluation table -->
-    <string name="overexposure_high">Alto risco de excesso de superexposição</string>
-    <string name="overexposure_moderate">Risco moderado de superexposição</string>
+    <string name="overexposure_high">Alto risco de sobre-exposição</string>
+    <string name="overexposure_moderate">Risco moderado de sobre-exposição</string>
     <string name="infants">Bebés</string>
     <string name="infants_age">&lt; 1</string>
     <string name="toddlers">Crianças pequenas</string>
@@ -665,7 +664,7 @@
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">Extrair ingredientes</string>
     <string name="extract_recycling_prompt">Extrair instruções de reciclagem</string>
-    <string name="add_nutrient_prompt_text">Adicione mais detalhes para ajudar a completar o produto</string>
+    <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
     <string name="add_category_prompt_text">Adicione uma categoria para ajudar a completar o produto</string>
     <string name="add_nutrient_category_prompt_text">Adicione uma categoria e mais detalhes para ajudar a completar o produto</string>
     <string name="couldnot_compute_ecoscore_prompt_text">We could not compute an Eco-Score for this product. It might be that the category is not specific enough or that we don\'t have supporting data for this category. If you believe this is an error, you can mail us by clicking below.</string>
@@ -704,7 +703,7 @@
     <string name="empty"></string>
     <string name="add_product">Adicionar produtos</string>
     <string name="add_another_product">Adicione outro produto</string>
-    <string name="add_nutrition_facts_for_nutriscore">Adicione mais detalhes para ajudar a completar o produto</string>
+    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
     <string name="product_summary_action_compare_button_label">Compare</string>
     <string name="product_summary_action_add_to_list_button_label">Adicionar à lista</string>
     <string name="product_summary_action_edit_button_label">Edite</string>
