@@ -118,7 +118,7 @@
         <item>Acido Mead (20:3 n-9)</item>
         <item>Acido melissico (30:0)</item>
         <item>Molibdeno</item>
-        <item>Grasso monoinsaturo</item>
+        <item>Grassi monoinsaturi</item>
         <item>Acido montanico (28:0)</item>
         <item>Acido miristico (14:0)</item>
         <item>Acido nervonico (24:1 n-9)</item>
@@ -141,7 +141,7 @@
         <item>Acido stearico (18:0)</item>
         <item>Saccarosio</item>
         <item>Taurina</item>
-        <item>Grassi</item>
+        <item>Grassi idrogenati</item>
         <item>Vitamina A</item>
         <item>Vitamina B1 (tiamina)</item>
         <item>Vitamina B12 (cobalamina)</item>
@@ -155,7 +155,6 @@
         <item>Vitamina K</item>
         <item>Zinco</item>
     </string-array>
-    <!-- Text units -->
     <!-- Content Description -->
     <string name="search_button">Cerca</string>
     <string name="alert_dialog_warning_title">Attenzione</string>
@@ -280,13 +279,13 @@
     <string name="nutrition_energy_short_name">Energia</string>
     <string name="nutrition_fat">Grassi</string>
     <string name="nutrition_fiber">Fibra dietetica</string>
-    <string name="nutrition_header">Informazioni nutrizionali</string>
+    <string name="nutrition_header">Valori nutrizionali</string>
     <string name="nutrition_proteins">Proteine</string>
     <string name="nutrition_salt">Sale</string>
     <string name="nutrition_satured_fat">Grassi saturi</string>
     <string name="nutrition_sodium">Sodio</string>
     <string name="nutrition_sugars">Zuccheri</string>
-    <string name="nutrition_trans_fat">Grassi</string>
+    <string name="nutrition_trans_fat">Grassi idrogenati</string>
     <string name="nutriment_serving_size">Per porzione :</string>
     <string name="action_manage_account">Gestisci account</string>
     <string name="action_contributes">I tuoi contributi</string>
@@ -322,7 +321,7 @@
     <string name="for_100g">Per 100g</string>
     <string name="for_100ml">Per 100 ml</string>
     <string name="serving">Per porzione</string>
-    <string name="nutrition_monounsaturatedFat">Grasso monoinsaturo</string>
+    <string name="nutrition_monounsaturatedFat">Grassi monoinsaturi</string>
     <string name="nutrition_polyunsaturatedFat">Grasso polinsaturo</string>
     <string name="nutrition_omega3">Omega 3</string>
     <string name="nutrition_omega6">Omega 6</string>
@@ -443,17 +442,17 @@
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
     <string name="url_nutrient_values">https://world-it.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">Generale</string>
-    <string name="preference_header_network">Network</string>
-    <string name="preference_header_contributing">Contributing</string>
+    <string name="preference_header_network">Rete</string>
+    <string name="preference_header_contributing">Contribuisci</string>
     <string name="preference_header_privacy">Privacy</string>
-    <string name="preference_crash_title">Crash reporting</string>
-    <string name="preference_crash_summary">When enabled, crash reports will be sent to the Open Food Facts server automatically, so that we can fix bugs and improve the app.</string>
-    <string name="preference_analytics_title">Send anonymous data</string>
-    <string name="preference_analytics_summary">When enabled, some anonymous information regarding app usage will be sent to the Open Food Facts servers, so that we can understand how and how much features are used in order to improve them.</string>
-    <string name="preference_analytics_bottom_sheet_title">Send anonymous data</string>
-    <string name="preference_analytics_bottom_sheet_description">Help improve Open Food Facts by letting us know how you use it. Data collected is anonymous. This option can be disabled at any time in the settings section.</string>
-    <string name="preference_analytics_bottom_sheet_grant_button">Grant</string>
-    <string name="preference_analytics_bottom_sheet_decline_button">Decline</string>
+    <string name="preference_crash_title">Segnala crash</string>
+    <string name="preference_crash_summary">Se abilitata, i crash reports verranno inviati automaticamente al server Open Food Facts in modo da poter correggere i bug e migliorare l\'app.</string>
+    <string name="preference_analytics_title">Invia dati anonimi</string>
+    <string name="preference_analytics_summary">Se abilitata, alcune informazioni anonime sull\'utilizzo delle app verranno inviate ai server di Open Food Facts, in modo da capire come e quante funzioni vengano utilizzate, per migliorarle.</string>
+    <string name="preference_analytics_bottom_sheet_title">Invia dati anonimi</string>
+    <string name="preference_analytics_bottom_sheet_description">Aiuta a migliorare Open Food Facts facendoci sapere come lo utilizzi. I dati raccolti sono anonimi. Questa opzione può essere disabilitata in qualsiasi momento nella sezione Impostazioni.</string>
+    <string name="preference_analytics_bottom_sheet_grant_button">Concedi</string>
+    <string name="preference_analytics_bottom_sheet_decline_button">Rifiuta</string>
     <string name="scan_first_string">La cronologia dei prodotti visualizzati verrà elencata qui.\nQuesta cronologia è privata e viene archiviata localmente.</string>
     <string name="log_in">Nome utente</string>
     <string name="login_true">Ha già effettuato il login!</string>
@@ -662,7 +661,7 @@
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">Estrai ingredienti</string>
     <string name="extract_recycling_prompt">Estrai istruzioni di riciclaggio</string>
-    <string name="add_nutrient_prompt_text">Aggiungi i valori nutrizionali per calcolare i livelli nutrizionali</string>
+    <string name="add_nutrient_prompt_text">Aggiungi valori nutrizionali per calcolare il Nutri-Score</string>
     <string name="add_category_prompt_text">Aggiungi una categoria per aiutare a completare il prodotto</string>
     <string name="add_nutrient_category_prompt_text">Aggiungi una categoria ed i valori nutrizionali per aiutare a completare il prodotto</string>
     <string name="couldnot_compute_ecoscore_prompt_text">Non è stato possibile calcolare un Eco-Score per questo prodotto. È possibile che la categoria non sia sufficientemente specifica o che non disponiamo di dati di supporto per questa categoria. Se ritieni che si tratti di un errore, puoi inviarci un\'e-mail facendo clic di seguito.</string>
@@ -699,9 +698,9 @@
     <string name="swipe_delete_tip">Puoi eliminare un elenco facendolo scorrere a sinistra.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
-    <string name="add_product">Inserisci prodotti</string>
+    <string name="add_product">Inserisci i prodotti</string>
     <string name="add_another_product">Aggiungi un altro prodotto</string>
-    <string name="add_nutrition_facts_for_nutriscore">Aggiungi i valori nutrizionali per calcolare i livelli nutrizionali</string>
+    <string name="add_nutrition_facts_for_nutriscore">Aggiungi valori nutrizionali per calcolare il Nutri-Score</string>
     <string name="product_summary_action_compare_button_label">Confronta</string>
     <string name="product_summary_action_add_to_list_button_label">Aggiungi alla lista</string>
     <string name="product_summary_action_edit_button_label">Modifica</string>
@@ -739,7 +738,7 @@
     <string name="closeZoom">Clicca per chiudere lo zoom</string>
     <string name="imageFullscreen">Zoom</string>
     <!-- Used for product ingredients analysis tags -->
-    <string name="close_button">Chiudi </string>
+    <string name="close_button">Chiudi</string>
     <string name="tip_message">SUGGERIMENTO: %1$s </string>
     <string name="ingredient_analysis_tip">Fai clic sulle icone sottostanti per ulteriori informazioni sul prodotto e per selezionare le informazioni che ti interessano.</string>
     <string name="got_it">Capito!</string>

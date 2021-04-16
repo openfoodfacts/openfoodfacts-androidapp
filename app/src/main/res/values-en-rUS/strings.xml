@@ -155,7 +155,6 @@
         <item>Vitamin K</item>
         <item>Zinc</item>
     </string-array>
-    <!-- Text units -->
     <!-- Content Description -->
     <string name="search_button">Search</string>
     <string name="alert_dialog_warning_title">Warning</string>
