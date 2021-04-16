@@ -3,6 +3,7 @@ package openfoodfacts.github.scrachx.openfood.features.search
 import android.Manifest
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
@@ -17,7 +18,6 @@ import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
-import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -77,7 +77,7 @@ class ProductSearchActivity : BaseActivity() {
     private var mCountProducts = 0
     private var pageAddress = 1
 
-    override fun attachBaseContext(newBase: Context) = super.attachBaseContext(LocaleHelper.onCreate(newBase))
+    override fun attachBaseContext(newBase: Context) = super.attachBaseContext(LocaleHelper.onCreate(newBase, sharedPreferences = sharedPreferences))
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -197,8 +197,7 @@ class ProductSearchActivity : BaseActivity() {
     }
 
     private fun setupHungerGames() {
-        val sharedPref = PreferenceManager.getDefaultSharedPreferences(this)
-        val actualCountryTag = sharedPref.getString(getString(R.string.pref_country_key), "")
+        val actualCountryTag = sharedPreferences.getString(getString(R.string.pref_country_key), "")
         if (actualCountryTag.isNullOrBlank()) {
             productRepository.getCountryByCC2OrWorld(LocaleHelper.getLocaleFromContext().country)
                     .observeOn(AndroidSchedulers.mainThread())
@@ -390,7 +389,7 @@ class ProductSearchActivity : BaseActivity() {
                 products += null
             }
             if (setupDone) {
-                adapter = ProductSearchAdapter(products, lowBatteryMode, this, picasso, client)
+                adapter = ProductSearchAdapter(products, lowBatteryMode, this, picasso, client, sharedPreferences)
                 binding.productsRecyclerView.adapter = adapter
             }
             setUpRecyclerView(products)
@@ -478,7 +477,7 @@ class ProductSearchActivity : BaseActivity() {
             binding.productsRecyclerView.setHasFixedSize(true)
             val mLayoutManager = LinearLayoutManager(this@ProductSearchActivity, LinearLayoutManager.VERTICAL, false)
             binding.productsRecyclerView.layoutManager = mLayoutManager
-            adapter = ProductSearchAdapter(mProducts, lowBatteryMode, this, picasso, client)
+            adapter = ProductSearchAdapter(mProducts, lowBatteryMode, this, picasso, client, sharedPreferences)
             binding.productsRecyclerView.adapter = adapter
             val dividerItemDecoration = DividerItemDecoration(binding.productsRecyclerView.context, DividerItemDecoration.VERTICAL)
             binding.productsRecyclerView.addItemDecoration(dividerItemDecoration)

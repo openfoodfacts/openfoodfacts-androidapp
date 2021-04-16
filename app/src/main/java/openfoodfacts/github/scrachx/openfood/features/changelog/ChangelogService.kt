@@ -1,6 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.features.changelog
 
 import android.content.Context
+import android.content.SharedPreferences
 import com.fasterxml.jackson.databind.ObjectMapper
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
@@ -9,7 +10,11 @@ import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
 import java.io.BufferedReader
 import java.io.IOException
 
-class ChangelogService(private val context: Context) {
+class ChangelogService(
+        private val context: Context,
+        private val sharedPreferences: SharedPreferences
+) {
+
     companion object {
         private const val FOLDER = "changelog/"
     }
@@ -22,7 +27,7 @@ class ChangelogService(private val context: Context) {
 
     @Throws(IOException::class)
     private fun parseJsonFile(): Changelog {
-        val language = getLanguage(context)
+        val language = getLanguage(sharedPreferences)
         val jsonString = if (translationExists("changelog-$language.json")) {
             getJsonStringFromAsset("changelog-$language.json")
         } else {

@@ -17,6 +17,7 @@ package openfoodfacts.github.scrachx.openfood.features.scan
 
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.hardware.Camera
 import android.os.Bundle
 import android.util.Log
@@ -102,14 +103,6 @@ class ContinuousScanActivity : AppCompatActivity() {
     private var _binding: ActivityContinuousScanBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var beepManager: BeepManager
-    private lateinit var quickViewBehavior: BottomSheetBehavior<LinearLayout>
-    private lateinit var bottomSheetCallback: BottomSheetCallback
-    private lateinit var errorDrawable: VectorDrawableCompat
-
-    private val barcodeInputListener = BarcodeInputListener()
-    private val barcodeScanCallback = BarcodeScannerCallback()
-
     @Inject
     lateinit var client: OpenFoodAPIClient
 
@@ -127,6 +120,17 @@ class ContinuousScanActivity : AppCompatActivity() {
 
     @Inject
     lateinit var matomoAnalytics: MatomoAnalytics
+
+    @Inject
+    lateinit var sharedPreferences: SharedPreferences
+
+    private lateinit var beepManager: BeepManager
+    private lateinit var quickViewBehavior: BottomSheetBehavior<LinearLayout>
+    private lateinit var bottomSheetCallback: BottomSheetCallback
+    private lateinit var errorDrawable: VectorDrawableCompat
+
+    private val barcodeInputListener = BarcodeInputListener()
+    private val barcodeScanCallback = BarcodeScannerCallback()
 
     private val cameraPref by lazy { getSharedPreferences("camera", 0) }
 
@@ -347,7 +351,7 @@ class ContinuousScanActivity : AppCompatActivity() {
     private fun setupSummary(product: Product) {
         binding.callToActionImageProgress.visibility = View.VISIBLE
 
-        summaryProductPresenter = SummaryProductPresenter(LocaleHelper.getLanguage(this), product, object : AbstractSummaryProductPresenter() {
+        summaryProductPresenter = SummaryProductPresenter(LocaleHelper.getLanguage(sharedPreferences), product, object : AbstractSummaryProductPresenter() {
             override fun showAllergens(allergens: List<AllergenName>) {
                 val data = AllergenHelper.computeUserAllergen(product, allergens)
                 binding.callToActionImageProgress.visibility = View.GONE
@@ -373,7 +377,7 @@ class ContinuousScanActivity : AppCompatActivity() {
                 }
                 binding.quickViewTags.visibility = View.VISIBLE
                 analysisTagsEmpty = false
-                val adapter = IngredientAnalysisTagsAdapter(this@ContinuousScanActivity, analysisTags, picasso)
+                val adapter = IngredientAnalysisTagsAdapter(this@ContinuousScanActivity, analysisTags, picasso, sharedPreferences)
                 adapter.setOnItemClickListener { view: View?, _ ->
                     if (view == null) return@setOnItemClickListener
                     IngredientsWithTagDialogFragment.newInstance(product, view.getTag(R.id.analysis_tag_config) as AnalysisTagConfig).run {
@@ -425,7 +429,7 @@ class ContinuousScanActivity : AppCompatActivity() {
     private fun navigateToProductAddition(productBarcode: String) {
         navigateToProductAddition(Product().apply {
             code = productBarcode
-            lang = LocaleHelper.getLanguage(this@ContinuousScanActivity)
+            lang = LocaleHelper.getLanguage(sharedPreferences)
         })
     }
 
@@ -661,7 +665,7 @@ class ContinuousScanActivity : AppCompatActivity() {
         }
     }
 
-    override fun attachBaseContext(newBase: Context) = super.attachBaseContext(LocaleHelper.onCreate(newBase))
+    override fun attachBaseContext(newBase: Context) = super.attachBaseContext(LocaleHelper.onCreate(newBase, sharedPreferences = sharedPreferences))
 
     private fun isProductIncomplete() = if (product == null) {
         false

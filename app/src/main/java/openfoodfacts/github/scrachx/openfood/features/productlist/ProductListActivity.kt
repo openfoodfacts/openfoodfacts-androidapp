@@ -96,7 +96,7 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
             title = listName
 
             (bundle[KEY_PRODUCT_TO_ADD] as? Product)?.let { prodToAdd ->
-                val locale = getLanguage(this)
+                val locale = getLanguage(sharedPreferences)
                 if (prodToAdd.productName != null && prodToAdd.getImageSmallUrl(locale) != null) {
                     val barcode = prodToAdd.code
                     val productName = prodToAdd.productName

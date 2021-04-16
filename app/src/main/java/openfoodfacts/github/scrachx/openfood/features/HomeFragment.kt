@@ -15,6 +15,7 @@
  */
 package openfoodfacts.github.scrachx.openfood.features
 
+import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -59,7 +60,8 @@ class HomeFragment : NavigationBaseFragment() {
     @Inject
     lateinit var productsApi: ProductsAPI
 
-    private val sharedPrefs by lazy { PreferenceManager.getDefaultSharedPreferences(requireActivity()) }
+    @Inject
+     lateinit var sharedPrefs: SharedPreferences
 
     private var taglineURL: String? = null
 

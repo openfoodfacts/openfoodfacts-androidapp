@@ -18,6 +18,7 @@ package openfoodfacts.github.scrachx.openfood.features.product.view.summary
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.net.Uri
@@ -112,6 +113,9 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     @Inject
     lateinit var matomoAnalytics: MatomoAnalytics
 
+    @Inject
+    lateinit var sharedPreferences: SharedPreferences
+
     private lateinit var presenter: ISummaryProductPresenter.Actions
     private lateinit var mTagDao: TagDao
     private lateinit var product: Product
@@ -130,12 +134,12 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     private var nutritionScoreUri: Uri? = null
 
     private val photoReceiverHandler by lazy {
-        PhotoReceiverHandler(requireContext()) { newPhotoFile: File ->
+        PhotoReceiverHandler(sharedPreferences) { newPhotoFile: File ->
             //the pictures are uploaded with the correct path
             val resultUri = newPhotoFile.toURI()
             val photoFile = if (sendOther) newPhotoFile else File(resultUri.path)
             val field = if (sendOther) ProductImageField.OTHER else ProductImageField.FRONT
-            val image = ProductImage(product.code, field, photoFile, LocaleHelper.getLanguage(requireContext()))
+            val image = ProductImage(product.code, field, photoFile, LocaleHelper.getLanguage(sharedPreferences))
             image.filePath = photoFile.absolutePath
             uploadImage(image)
             if (!sendOther) {
@@ -207,7 +211,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         productState = requireProductState()
         refreshView(productState)
 
-        presenter = SummaryProductPresenter(LocaleHelper.getLanguage(context), product, this, productRepository)
+        presenter = SummaryProductPresenter(LocaleHelper.getLanguage(sharedPreferences), product, this, productRepository)
         presenter.addTo(disp)
     }
 
@@ -256,7 +260,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     private fun loadPhoto(photoFile: File) {
         binding.addPhotoLabel.visibility = View.GONE
         mUrlImage = photoFile.absolutePath
-        Picasso.get()
+        picasso
                 .load(photoFile)
                 .fit()
                 .into(binding.imageViewFront)
@@ -265,7 +269,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     override fun refreshView(productState: ProductState) {
         this.productState = productState
         product = productState.product!!
-        presenter = SummaryProductPresenter(LocaleHelper.getLanguage(context), product, this, productRepository).apply { addTo(disp) }
+        presenter = SummaryProductPresenter(LocaleHelper.getLanguage(sharedPreferences), product, this, productRepository).apply { addTo(disp) }
 
         binding.categoriesText.text = SpannableStringBuilder()
                 .bold { append(getString(R.string.txtCategories)) }
@@ -297,7 +301,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         presenter.loadAdditives()
         presenter.loadAnalysisTags()
 
-        val langCode = LocaleHelper.getLanguage(context)
+        val langCode = LocaleHelper.getLanguage(sharedPreferences)
         val imageUrl = product.getImageUrl(langCode)
         if (!imageUrl.isNullOrBlank()) {
             binding.addPhotoLabel.visibility = View.GONE
@@ -573,7 +577,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     override fun showAnalysisTags(analysisTags: List<AnalysisTagConfig>) {
         requireActivity().runOnUiThread {
             binding.analysisContainer.visibility = View.VISIBLE
-            val adapter = IngredientAnalysisTagsAdapter(requireContext(), analysisTags, picasso)
+            val adapter = IngredientAnalysisTagsAdapter(requireContext(), analysisTags, picasso, sharedPreferences)
             adapter.setOnItemClickListener { view, _ ->
                 val fragment = IngredientsWithTagDialogFragment
                         .newInstance(product, view.getTag(R.id.analysis_tag_config) as AnalysisTagConfig)
@@ -830,7 +834,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         val productLists = daoSession.getProductListsDaoWithDefaultList(activity).loadAll()
         val productBarcode = product.code
         val productName = product.productName
-        val imageUrl = product.getImageSmallUrl(LocaleHelper.getLanguage(activity))
+        val imageUrl = product.getImageSmallUrl(LocaleHelper.getLanguage(sharedPreferences))
         val productDetails = product.getProductBrandsQuantityDetails()
         val addToListDialog = MaterialDialog.Builder(activity)
                 .title(R.string.add_to_product_lists)
@@ -877,6 +881,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
                 ProductImageField.FRONT,
                 url,
                 binding.imageViewFront,
+                LocaleHelper.getLanguage(sharedPreferences)
         ) else newFrontImage() // Take a new picture
     }
 

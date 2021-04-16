@@ -16,10 +16,10 @@
 package openfoodfacts.github.scrachx.openfood.utils
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.os.Build
 import androidx.core.content.edit
 import androidx.core.os.ConfigurationCompat
-import androidx.preference.PreferenceManager
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
@@ -35,11 +35,12 @@ import java.util.*
  *
  * Created by gunhansancar on 07/10/15.
  */
+//TODO: refactor to use it in hilt
 object LocaleHelper {
     private val SELECTED_LANGUAGE by lazy { OFFApplication._instance.getString(R.string.pref_language_key) }
 
-    fun onCreate(context: Context, defaultLanguage: String = Locale.getDefault().language) =
-            setLanguageInPrefs(context, getLanguageInPreferences(context, defaultLanguage))
+    fun onCreate(context: Context, defaultLanguage: String = Locale.getDefault().language, sharedPreferences: SharedPreferences) =
+            setLanguageInPrefs(context, getLanguageInPreferences(sharedPreferences, defaultLanguage), sharedPreferences)
 
     fun getLanguageData(codes: Collection<String>, supported: Boolean) =
             codes.map { getLanguageData(it, supported) }.sorted().toMutableList()
@@ -50,10 +51,10 @@ object LocaleHelper {
     /**
      * Used by screenshots test
      */
-    internal fun setLanguageInPrefs(locale: Locale) = setContextLanguage(OFFApplication._instance, locale)
+    internal fun setLanguageInPrefs(context: Context, locale: Locale, sharedPreferences: SharedPreferences) = setContextLanguage(context, locale, sharedPreferences)
 
-    fun getLanguage(context: Context?): String {
-        var lang = getLanguageInPreferences(context, Locale.getDefault().language)
+    fun getLanguage(sharedPreferences: SharedPreferences): String {
+        var lang = getLanguageInPreferences(sharedPreferences, Locale.getDefault().language)
         if (lang.contains("-")) {
             lang = lang.split("-")[0]
         }
@@ -83,9 +84,9 @@ object LocaleHelper {
      * @param context
      * @param locale
      */
-    fun setContextLanguage(context: Context, locale: Locale): Context {
+    fun setContextLanguage(context: Context, locale: Locale, sharedPreferences: SharedPreferences): Context {
         var newContext = context
-        PreferenceManager.getDefaultSharedPreferences(newContext).edit {
+        sharedPreferences.edit {
             putString(SELECTED_LANGUAGE, locale.language)
         }
         Locale.setDefault(locale)
@@ -101,12 +102,11 @@ object LocaleHelper {
         return newContext
     }
 
-    fun setLanguageInPrefs(context: Context, language: String?): Context {
-        PreferenceManager.getDefaultSharedPreferences(context).edit {
+    fun setLanguageInPrefs(context: Context, language: String?, sharedPreferences: SharedPreferences): Context {
+        sharedPreferences.edit {
             putString(SELECTED_LANGUAGE, language)
-            apply()
         }
-        return setContextLanguage(context, getLocale(language))
+        return setContextLanguage(context, getLocale(language), sharedPreferences)
     }
 
     /**
@@ -135,9 +135,8 @@ object LocaleHelper {
         }
     }
 
-    private fun getLanguageInPreferences(context: Context?, defaultLanguage: String) = context?.let {
-        PreferenceManager.getDefaultSharedPreferences(it).getString(SELECTED_LANGUAGE, defaultLanguage)
-    } ?: defaultLanguage
+    private fun getLanguageInPreferences(sharedPreferences: SharedPreferences, defaultLanguage: String) =
+            sharedPreferences.getString(SELECTED_LANGUAGE, defaultLanguage) ?: defaultLanguage
 
     class LanguageData internal constructor(
             val code: String,

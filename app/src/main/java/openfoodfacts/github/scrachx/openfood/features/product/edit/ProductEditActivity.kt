@@ -18,6 +18,7 @@ package openfoodfacts.github.scrachx.openfood.features.product.edit
 
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -91,6 +92,9 @@ class ProductEditActivity : AppCompatActivity() {
 
     @Inject
     lateinit var matomoAnalytics: MatomoAnalytics
+
+    @Inject
+    lateinit var sharedPreferences: SharedPreferences
 
     private val addProductPhotosFragment = ProductEditPhotosFragment()
     private val nutritionFactsFragment = ProductEditNutritionFactsFragment()
@@ -314,7 +318,7 @@ class ProductEditActivity : AppCompatActivity() {
         )
         daoSession.offlineSavedProductDao!!.insertOrReplace(toSaveOfflineProduct)
 
-        scheduleSync(this)
+        scheduleSync(this, sharedPreferences)
         daoSession.historyProductDao.addToHistorySync(toSaveOfflineProduct)
 
         Toast.makeText(this, R.string.productSavedToast, Toast.LENGTH_SHORT).show()

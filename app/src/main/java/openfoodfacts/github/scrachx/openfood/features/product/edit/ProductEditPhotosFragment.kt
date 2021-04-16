@@ -19,6 +19,7 @@ import android.Manifest.permission
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -31,6 +32,7 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.squareup.picasso.Picasso
+import dagger.hilt.android.AndroidEntryPoint
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentAddProductPhotosBinding
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
@@ -43,20 +45,25 @@ import openfoodfacts.github.scrachx.openfood.utils.PhotoReceiverHandler
 import openfoodfacts.github.scrachx.openfood.utils.dpsToPixel
 import pl.aprilapps.easyphotopicker.EasyImage
 import java.io.File
+import javax.inject.Inject
 
 /**
  * Fragment for adding photos of the product
  *
  * @see R.layout.fragment_add_product_photos
  */
+@AndroidEntryPoint
 class ProductEditPhotosFragment : ProductEditFragment() {
     private var _binding: FragmentAddProductPhotosBinding? = null
     private val binding get() = _binding!!
 
+    @Inject
+    lateinit var sharedPreferences: SharedPreferences
+
     private val photoReceiverHandler by lazy {
-        PhotoReceiverHandler(requireContext()) { newPhotoFile ->
+        PhotoReceiverHandler(sharedPreferences) { newPhotoFile ->
             photoFile = newPhotoFile
-            val image = ProductImage(code!!, ProductImageField.OTHER, newPhotoFile, LocaleHelper.getLanguage(requireContext()))
+            val image = ProductImage(code!!, ProductImageField.OTHER, newPhotoFile, LocaleHelper.getLanguage(sharedPreferences))
             image.filePath = photoFile!!.toURI().path
             if (activity is ProductEditActivity) {
                 (activity as ProductEditActivity).addToPhotoMap(image, 4)

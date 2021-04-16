@@ -16,6 +16,7 @@
 package openfoodfacts.github.scrachx.openfood.features.product.edit
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.Editable
 import android.text.Html
@@ -54,7 +55,7 @@ import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.Defaults.NUTRITION_DATA_PER_100G
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.Defaults.NUTRITION_DATA_PER_SERVING
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
+import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.FileDownloader.download
 import openfoodfacts.github.scrachx.openfood.utils.UnitUtils.UNIT_IU
@@ -69,20 +70,36 @@ import javax.inject.Inject
  */
 @AndroidEntryPoint
 class ProductEditNutritionFactsFragment : ProductEditFragment() {
+    private var _binding: FragmentAddProductNutritionFactsBinding? = null
+    private val binding get() = _binding!!
+
+    @Inject
+    lateinit var picasso: Picasso
+
+    @Inject
+    lateinit var productsApi: ProductsAPI
+
+    @Inject
+    lateinit var matomoAnalytics: MatomoAnalytics
+
+    @Inject
+    lateinit var sentryAnalytics: SentryAnalytics
+
+    @Inject
+    lateinit var sharedPreferences: SharedPreferences
+
     private val keyListener = object : NumberKeyListener() {
         override fun getInputType() = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
 
         override fun getAcceptedChars() = charArrayOf('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ',', '.')
     }
-    private var _binding: FragmentAddProductNutritionFactsBinding? = null
-    private val binding get() = _binding!!
 
     private val photoReceiverHandler: PhotoReceiverHandler by lazy {
-        PhotoReceiverHandler(requireContext()) {
+        PhotoReceiverHandler(sharedPreferences) {
             val resultUri = it.toURI()
             imagePath = resultUri.path
             photoFile = it
-            val image = ProductImage(productCode!!, ProductImageField.NUTRITION, it, LocaleHelper.getLanguage(requireContext())).apply {
+            val image = ProductImage(productCode!!, ProductImageField.NUTRITION, it, LocaleHelper.getLanguage(sharedPreferences)).apply {
                 filePath = resultUri.path
             }
             (activity as? ProductEditActivity)?.addToPhotoMap(image, 2)
@@ -101,18 +118,6 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
     private var lastEditText: EditText? = null
     private var starchEditText: CustomValidatingEditTextView? = null
     private var allEditViews = mutableSetOf<CustomValidatingEditTextView>()
-
-    @Inject
-    lateinit var picasso: Picasso
-
-    @Inject
-    lateinit var client: OpenFoodAPIClient
-
-    @Inject
-    lateinit var matomoAnalytics: MatomoAnalytics
-
-    @Inject
-    lateinit var sentryAnalytics: SentryAnalytics
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentAddProductNutritionFactsBinding.inflate(inflater, container, false)
@@ -409,7 +414,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         if (photoFile != null) {
             cropRotateImage(photoFile, getString(R.string.nutrition_facts_picture))
         } else {
-            download(requireContext(), path, client)
+            download(requireContext(), path, productsApi)
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe {
                         photoFile = it

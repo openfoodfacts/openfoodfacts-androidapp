@@ -16,6 +16,7 @@
 package openfoodfacts.github.scrachx.openfood.features.product.edit
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -24,7 +25,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Toast
-import androidx.preference.PreferenceManager
 import com.afollestad.materialdialogs.MaterialDialog
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
@@ -72,6 +72,7 @@ import openfoodfacts.github.scrachx.openfood.models.entities.tag.TagDao
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.Keys.lcProductNameKey
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
+import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.FileDownloader.download
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLCOrDefault
@@ -99,20 +100,26 @@ class ProductEditOverviewFragment : ProductEditFragment() {
     lateinit var client: OpenFoodAPIClient
 
     @Inject
+    lateinit var productsApi: ProductsAPI
+
+    @Inject
     lateinit var matomoAnalytics: MatomoAnalytics
+
+    @Inject
+    lateinit var sharedPreferences: SharedPreferences
 
     private lateinit var appLanguageCode: String
     private val photoReceiverHandler by lazy {
-        PhotoReceiverHandler(requireContext()) { newPhotoFile ->
+        PhotoReceiverHandler(sharedPreferences) { newPhotoFile ->
             photoFile = newPhotoFile
             val image: ProductImage
             val position: Int
             if (isFrontImagePresent) {
-                image = ProductImage(barcode!!, ProductImageField.FRONT, newPhotoFile, getLanguage(requireContext()))
+                image = ProductImage(barcode!!, ProductImageField.FRONT, newPhotoFile, getLanguage(sharedPreferences))
                 frontImageUrl = newPhotoFile.absolutePath
                 position = 0
             } else {
-                image = ProductImage(barcode!!, ProductImageField.OTHER, newPhotoFile, getLanguage(requireContext()))
+                image = ProductImage(barcode!!, ProductImageField.OTHER, newPhotoFile, getLanguage(sharedPreferences))
                 position = 3
             }
             image.filePath = newPhotoFile.toURI().path
@@ -162,7 +169,7 @@ class ProductEditOverviewFragment : ProductEditFragment() {
         } else if (requireActivity().intent.getBooleanExtra(ProductEditActivity.KEY_MODIFY_NUTRITION_PROMPT, false)) {
             (requireActivity() as ProductEditActivity).proceed()
         }
-        appLanguageCode = getLanguage(activity)
+        appLanguageCode = getLanguage(sharedPreferences)
         val args = arguments
         if (args == null) {
             Toast.makeText(activity, R.string.error_adding_product_details, Toast.LENGTH_SHORT).show()
@@ -298,8 +305,7 @@ class ProductEditOverviewFragment : ProductEditFragment() {
         if (!product!!.countriesTags.isNullOrEmpty()) {
             val chipValues = extractProductCountriesTagsChipValues(product).toMutableList()
             //Also add the country set by the user in preferences
-            val sharedPref = PreferenceManager.getDefaultSharedPreferences(requireContext())
-            val savedCountry = sharedPref.getString(getString(R.string.pref_country_key), "") ?: ""
+            val savedCountry = sharedPreferences.getString(getString(R.string.pref_country_key), "") ?: ""
 
             if (savedCountry.isNotEmpty()) chipValues.add(savedCountry)
 
@@ -529,7 +535,7 @@ class ProductEditOverviewFragment : ProductEditFragment() {
             (operation.result as List<CountryName>).mapTo(countries) { it.name }
 
             val adapter = ArrayAdapter(requireActivity(), android.R.layout.simple_dropdown_item_1line, countries)
-            val embAdapter = EmbCodeAutoCompleteAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, client)
+            val embAdapter = EmbCodeAutoCompleteAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, productsApi)
 
             binding.originOfIngredients.setAdapter(adapter)
             binding.countryWherePurchased.setAdapter(adapter)
@@ -578,7 +584,7 @@ class ProductEditOverviewFragment : ProductEditFragment() {
             val customAdapter = PeriodAfterOpeningAutoCompleteAdapter(
                     activity,
                     android.R.layout.simple_dropdown_item_1line,
-                    client
+                    productsApi
             )
             binding.periodOfTimeAfterOpening.setAdapter(customAdapter)
         }
@@ -653,7 +659,7 @@ class ProductEditOverviewFragment : ProductEditFragment() {
             // Image found, download it if necessary and edit it
             isFrontImagePresent = true
             if (photoFile == null) {
-                download(requireContext(), frontImageUrl!!, client)
+                download(requireContext(), frontImageUrl!!, productsApi)
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe { file: File? ->
                             photoFile = file

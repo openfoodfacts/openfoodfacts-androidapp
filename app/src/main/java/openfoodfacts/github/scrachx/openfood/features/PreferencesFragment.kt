@@ -86,6 +86,9 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
     @Inject
     lateinit var matomoAnalytics: MatomoAnalytics
 
+    @Inject
+    lateinit var sharedPreferences: SharedPreferences
+
     override val navigationDrawerListener: NavigationDrawerListener? by lazy {
         if (activity is NavigationDrawerListener) activity as NavigationDrawerListener
         else null
@@ -175,7 +178,7 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
         }
         // Execute query
         asyncSessionCountries.queryList(countryNameDao.queryBuilder()
-                .where(CountryNameDao.Properties.LanguageCode.eq(getLanguage(requireActivity())))
+                .where(CountryNameDao.Properties.LanguageCode.eq(getLanguage(sharedPreferences)))
                 .orderAsc(CountryNameDao.Properties.Name).build())
 
         countryPreference.setOnPreferenceChangeListener { preference, newValue ->
@@ -369,12 +372,12 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String) {
         when (key) {
-            getString(R.string.pref_enable_mobile_data_key) -> scheduleSync(requireContext())
+            getString(R.string.pref_enable_mobile_data_key) -> scheduleSync(requireContext(), sharedPreferences)
         }
     }
 
     private fun getAnalysisTagConfigs(daoSession: DaoSession) {
-        val language = getLanguage(requireContext())
+        val language = getLanguage(sharedPreferences)
         Single.fromCallable {
             val analysisTagConfigDao = daoSession.analysisTagConfigDao
             val analysisTagConfigs = analysisTagConfigDao.queryBuilder()

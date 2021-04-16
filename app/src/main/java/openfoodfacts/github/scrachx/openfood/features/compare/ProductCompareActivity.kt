@@ -15,15 +15,16 @@ import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
+import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductComparisonBinding
 import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.selectNavigationItem
 import openfoodfacts.github.scrachx.openfood.features.scan.ContinuousScanActivity
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.models.Product
-import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
+import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper
 import openfoodfacts.github.scrachx.openfood.utils.MY_PERMISSIONS_REQUEST_CAMERA
 import openfoodfacts.github.scrachx.openfood.utils.PhotoReceiverHandler
 import openfoodfacts.github.scrachx.openfood.utils.isHardwareCameraInstalled
@@ -70,11 +71,11 @@ class ProductCompareActivity : BaseActivity() {
             matomoAnalytics.trackEvent(AnalyticsEvent.CompareProducts(productsToCompare.size.toFloat()))
         }
 
-        productComparisonAdapter = ProductCompareAdapter(productsToCompare, this, api, productRepository, picasso)
+        productComparisonAdapter = ProductCompareAdapter(productsToCompare, this, api, productRepository, picasso, LocaleHelper.getLanguage(sharedPreferences))
         binding.productComparisonRv.layoutManager = LinearLayoutManager(this, HORIZONTAL, false)
         binding.productComparisonRv.adapter = productComparisonAdapter
 
-        photoReceiverHandler = PhotoReceiverHandler(this) { productComparisonAdapter.setImageOnPhotoReturn(it) }
+        photoReceiverHandler = PhotoReceiverHandler(sharedPreferences) { productComparisonAdapter.setImageOnPhotoReturn(it) }
 
         val finalProductsToCompare = productsToCompare
         binding.productComparisonButton.setOnClickListener {
