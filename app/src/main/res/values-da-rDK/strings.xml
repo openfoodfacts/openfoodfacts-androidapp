@@ -155,7 +155,6 @@
         <item>K-vitamin</item>
         <item>Zink</item>
     </string-array>
-    <!-- Text units -->
     <!-- Content Description -->
     <string name="search_button">Søg</string>
     <string name="alert_dialog_warning_title">Advarsel</string>
@@ -665,7 +664,7 @@
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">Udtræk ingredienser</string>
     <string name="extract_recycling_prompt">Udtræk genbrugsinstruktioner</string>
-    <string name="add_nutrient_prompt_text">Tilføj næringsfakta til beregning af næringsniveauer</string>
+    <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
     <string name="add_category_prompt_text">Tilføj en kategori som hjælp til produktfærdiggørelsen</string>
     <string name="add_nutrient_category_prompt_text">Tilføj en kategori og ernæringsfakta som hjælp til produktfærdiggørelsen</string>
     <string name="couldnot_compute_ecoscore_prompt_text">Det er ikke muligt at udtrække Øko-Score for dette produkt grundet f.eks. en kategori, der ikke er specifik nok eller mangler understøttende data. Mener du, at dette er en fejl, kan du e-maile OFF ved at klikke nedenfor.</string>
@@ -704,7 +703,7 @@
     <string name="empty"></string>
     <string name="add_product">Tilføj produkter</string>
     <string name="add_another_product">Tilføj et produkt mere</string>
-    <string name="add_nutrition_facts_for_nutriscore">Tilføj næringsfakta til beregning af næringsniveauer</string>
+    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
     <string name="product_summary_action_compare_button_label">Sammenlign</string>
     <string name="product_summary_action_add_to_list_button_label">Føj til liste</string>
     <string name="product_summary_action_edit_button_label">Redigér</string>
@@ -790,7 +789,7 @@
     <string name="icon_categories">Kategoriikon</string>
     <string name="icon_emb">EMB-kodeikon</string>
     <string name="product_front_image">Produktbillede front</string>
-    <string name="brand_hint">Eks.: Coca-Cola, Nestle,…</string>
+    <string name="brand_hint">Eks.: Coca-Cola, Nestle, mv.…</string>
     <string name="sign_in_or_register">Log ind eller tilmeld</string>
     <string name="hunger_game_call_to_action">Hjælp med at klassificere flere %1$s</string>
     <string name="txtHomeOnline">Open Food Facts er en åben database med flere end %1$s produkter (plus dem, du vil bidrage med).</string>

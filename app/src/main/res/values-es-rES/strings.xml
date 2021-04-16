@@ -155,7 +155,6 @@
         <item>Vitamina K</item>
         <item>Zinc</item>
     </string-array>
-    <!-- Text units -->
     <!-- Content Description -->
     <string name="search_button">Buscar</string>
     <string name="alert_dialog_warning_title">Aviso</string>
@@ -414,16 +413,16 @@
     <string name="device_on_mobile_data_warning_positive">Preferencias</string>
     <string name="device_on_mobile_data_warning_negative">Enviar de todas formas</string>
     <string name="changes_saved">Cambios guardados correctamente</string>
-    <string name="proceed">Proceed</string>
+    <string name="proceed">Continuar</string>
     <string name="preference_choose_language_dialog_title">Elegir idioma</string>
-    <string name="preference_choose_scanner_dialog_title"><b>New: Enhanced “MLKit” scanner</b></string>
-    <string name="preference_choose_scanner_dialog_body">We have included a new option to more reliably scan barcodes. While this scanner works on your device, using machine learning,
-            please be aware that it is a proprietary component provided by Google, governed by this privacy policy, and that some limited telemetry might be sent back to Google’s servers
-            to improve their software. As noted in the MLKit terms, this won’t include any information about the products you scan and the telemetry is anonymized. Choosing MLKit scanner
-            implies that you accept those terms\n<b>Note: You can switch back at any time between the 2 scanners in the Settings.</b>
+    <string name="preference_choose_scanner_dialog_title"><b>Nuevo: Escáner mejorado \"MLKit\"</b></string>
+    <string name="preference_choose_scanner_dialog_body">Hemos incluido una nueva opción para escanear los códigos de barras de una manera fácil y confiable. Aunque este escaner utiliza Inteligencia Artificial,
+            tenga en cuenta que es un componente propiedad de Google Inc. y su política de privacidad y manejo propio de los datos, por lo tanto es probable que algunos datos puedan ser utilizados por los servidores de Google
+             con el fin de implementar mejoras a su software. Como se indica dentro de los Términos y Condiciones de la herramienta MLKit, no se compartirá con Google ninguna información relacionada a los productos escaneados, así como tampoco se comparte información personal del usuario. La utilización del escáner
+            MLKit implica que el usuario ha aceptado los Términos y Condiciones \n<b>Nota: Puede volver en cualquier momento entre los 2 escáneres en la Configuración.</b>
     </string>
-    <string name="prompt_point_at_a_barcode">Point your camera at a barcode</string>
-    <string name="prompt_move_camera_closer">Move closer to detect</string>
+    <string name="prompt_point_at_a_barcode">Apunta la cámara de tu celular al código de barras del producto que deseas escanear</string>
+    <string name="prompt_move_camera_closer">Acércate para detectar</string>
     <string name="please_check_your_connection">Por favor, comprueba tu conexión.</string>
     <string name="advanced_search_title">Búsqueda avanzada &amp; Gráficos</string>
     <string name="compare_products">Comparar productos</string>
@@ -446,16 +445,16 @@
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
     <string name="url_nutrient_values">https://world-es.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">General</string>
-    <string name="preference_header_network">Network</string>
-    <string name="preference_header_contributing">Contributing</string>
-    <string name="preference_header_privacy">Privacy</string>
-    <string name="preference_crash_title">Crash reporting</string>
-    <string name="preference_crash_summary">When enabled, crash reports will be sent to the Open Food Facts server automatically, so that we can fix bugs and improve the app.</string>
-    <string name="preference_analytics_title">Send anonymous data</string>
-    <string name="preference_analytics_summary">When enabled, some anonymous information regarding app usage will be sent to the Open Food Facts servers, so that we can understand how and how much features are used in order to improve them.</string>
-    <string name="preference_analytics_bottom_sheet_title">Send anonymous data</string>
-    <string name="preference_analytics_bottom_sheet_description">Help improve Open Food Facts by letting us know how you use it. Data collected is anonymous. This option can be disabled at any time in the settings section.</string>
-    <string name="preference_analytics_bottom_sheet_grant_button">Grant</string>
+    <string name="preference_header_network">WiFi y redes de telefonía móvil</string>
+    <string name="preference_header_contributing">Contribuir</string>
+    <string name="preference_header_privacy">Privacy Policy</string>
+    <string name="preference_crash_title">Reporta un error o falla</string>
+    <string name="preference_crash_summary">Cuando está habilitado, los reportes de errores o fallas serán enviados automáticamente al servidor de Open Food Facts, para ser corregidos y mejorar la aplicación.</string>
+    <string name="preference_analytics_title">Comentarios anónimos</string>
+    <string name="preference_analytics_summary">Cuando lo desees, puedes contarnos tu experiencia como usuario de la aplicación, dicha información será enviada de forma completamente anónima a los servidores de Open Food Facts, para que podamos entender cómo y cuántas funciones se utilizan para mejorarlas.</string>
+    <string name="preference_analytics_bottom_sheet_title">Comentarios anónimos</string>
+    <string name="preference_analytics_bottom_sheet_description">Ayude a mejorar Open Food Facts haciéndonos saber cómo lo usa. Los datos recopilados son anónimos. Esta opción se puede desactivar en cualquier momento en la sección de configuración.</string>
+    <string name="preference_analytics_bottom_sheet_grant_button">Autorizar</string>
     <string name="preference_analytics_bottom_sheet_decline_button">Rechazar</string>
     <string name="scan_first_string">El historial de productos vistos se mostrará aquí.\nEste historial solo lo puedes ver tú y se guarda localmente.</string>
     <string name="log_in">Usuario</string>
@@ -665,7 +664,7 @@
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">Extraer ingredientes</string>
     <string name="extract_recycling_prompt">Extraer instrucciones de reciclado</string>
-    <string name="add_nutrient_prompt_text">Añadir datos nutricionales para calcular los niveles nutricionales</string>
+    <string name="add_nutrient_prompt_text">Agregue la información nutricional del producto para calcular su puntaje Nutri-Score</string>
     <string name="add_category_prompt_text">Agrega una categoría para ayudar a completar el producto</string>
     <string name="add_nutrient_category_prompt_text">Añade una categoría y datos nutricionales para ayudar a completar el producto</string>
     <string name="couldnot_compute_ecoscore_prompt_text">No pudimos calcular un Eco-Score para este producto. Puede ser que la categoría no sea lo suficientemente específica o que no tengamos datos de apoyo para esta categoría. Si crees que esto es un error, puedes enviarnos un correo haciendo clic a continuación.</string>
@@ -704,7 +703,7 @@
     <string name="empty"></string>
     <string name="add_product">Agrega productos</string>
     <string name="add_another_product">Añadir otro producto</string>
-    <string name="add_nutrition_facts_for_nutriscore">Añadir datos nutricionales para calcular los niveles nutricionales</string>
+    <string name="add_nutrition_facts_for_nutriscore">Agregue la información nutricional del producto para calcular su puntaje Nutri-Score</string>
     <string name="product_summary_action_compare_button_label">Comparar</string>
     <string name="product_summary_action_add_to_list_button_label">Añadir a la lista</string>
     <string name="product_summary_action_edit_button_label">Editar</string>
