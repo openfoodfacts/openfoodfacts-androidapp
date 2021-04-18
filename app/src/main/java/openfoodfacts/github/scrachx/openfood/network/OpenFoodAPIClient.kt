@@ -215,7 +215,9 @@ class OpenFoodAPIClient @Inject constructor(
     /**
      * Add a product to ScanHistory asynchronously
      */
-    fun addToHistory(product: Product) = Completable.fromAction { daoSession.historyProductDao.addToHistorySync(product, localeManager.getLanguage()) }
+    fun addToHistory(product: Product) = Completable.fromAction {
+        daoSession.historyProductDao.addToHistorySync(product, localeManager.getLanguage())
+    }
 
     fun getProductsByContributor(contributor: String, page: Int) =
             rawApi.getProductsByContributor(contributor, page, fieldsToFetchFacets).subscribeOn(Schedulers.io())
@@ -413,19 +415,24 @@ class OpenFoodAPIClient @Inject constructor(
     companion object {
         val MIME_TEXT: MediaType = MediaType.get("text/plain")
         const val PNG_EXT = ".png"
-        fun HistoryProductDao.addToHistorySync(product: OfflineSavedProduct) {
-            val savedProduct = queryBuilder().where(HistoryProductDao.Properties.Barcode.eq(product.barcode)).uniqueOrThrow()
-            val details = product.productDetails
+
+        fun HistoryProductDao.addToHistorySync(newProd: OfflineSavedProduct) {
+            val savedProduct: HistoryProduct? =
+                    queryBuilder().where(HistoryProductDao.Properties.Barcode.eq(newProd.barcode)).unique()
+            val details = newProd.productDetails
+
             val hp = HistoryProduct(
-                    product.name,
+                    newProd.name,
                     details[Keys.ADD_BRANDS],
-                    product.imageFrontLocalUrl,
-                    product.barcode,
+                    newProd.imageFrontLocalUrl,
+                    newProd.barcode,
                     details[Keys.QUANTITY],
-                    null,
-                    null,
-                    null
+                    details[Keys.NUTRITION_GRADE_FR],
+                    details[Keys.ECOSCORE],
+                    details[Keys.NOVA_GROUPS
+                    ]
             )
+
             if (savedProduct != null) hp.id = savedProduct.id
             insertOrReplace(hp)
         }

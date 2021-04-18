@@ -198,7 +198,7 @@ class HomeFragment : NavigationBaseFragment() {
         productsApi.getTagline(getUserAgent())
                 .subscribeOn(Schedulers.io()) // io for network
                 .observeOn(AndroidSchedulers.mainThread()) // Move to main thread for UI changes
-                .doOnError { Log.e(LOG_TAG, "Could not retrieve tag-line from server.", it) }
+                .doOnError { Log.w(LOG_TAG, "Could not retrieve tag-line from server.", it) }
                 .subscribe { tagLines ->
                     val appLanguage = localeManager.getLanguage()
                     var isLanguageFound = false

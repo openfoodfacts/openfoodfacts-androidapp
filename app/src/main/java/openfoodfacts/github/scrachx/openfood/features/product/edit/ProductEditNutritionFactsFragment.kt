@@ -623,7 +623,10 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
      * @param editTextView EditText with spinner for entering the nutrients
      * @param targetMap map to enter the nutrient value received from edit texts
      */
-    private fun addNutrientToMap(editTextView: CustomValidatingEditTextView, targetMap: MutableMap<String, String?>) {
+    private fun addNutrientToMap(
+            editTextView: CustomValidatingEditTextView,
+            targetMap: MutableMap<String, String?>
+    ) {
         // For impl reference, see https://wiki.openfoodfacts.org/Nutrients_handling_in_Open_Food_Facts#Data_display
         val fieldName = getCompleteEntryName(editTextView)
 
@@ -770,10 +773,9 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
      */
     private fun convertToGrams(value: Float, index: Int): Float {
         val unit = NUTRIENTS_UNITS[index]
-        //can't be converted to grams.
-        return if (UNIT_DV == unit || UNIT_IU == unit) {
-            0F
-        } else UnitUtils.convertToGrams(value, unit)
+        // Can't be converted to grams.
+        return if (UNIT_DV == unit || UNIT_IU == unit) 0F
+        else UnitUtils.convertToGrams(value, unit)
     }
 
     private fun isCarbohydrateRelated(editText: CustomValidatingEditTextView): Boolean {
@@ -794,17 +796,18 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
 
         var carbsValue = binding.carbohydrates.getFloatValueOr(0f)
         var sugarValue = binding.sugars.getFloatValueOr(0f)
-        // check that value of (sugar + starch) is not greater than value of carbohydrates
-        //convert all the values to grams
+
+        // Check that value of (sugar + starch) is not greater than value of carbohydrates
+        // Convert all the values to grams
         carbsValue = convertToGrams(carbsValue, binding.carbohydrates.unitSpinner!!.selectedItemPosition)
         sugarValue = convertToGrams(sugarValue, binding.sugars.unitSpinner!!.selectedItemPosition)
+
         val newStarch = convertToGrams(starchValue, starchUnitSelectedIndex).toDouble()
+
         return if (sugarValue + newStarch > carbsValue) {
             binding.carbohydrates.showError(getString(R.string.error_in_carbohydrate_value))
             ValueState.NOT_VALID
-        } else {
-            ValueState.VALID
-        }
+        } else ValueState.VALID
     }
 
     /**
