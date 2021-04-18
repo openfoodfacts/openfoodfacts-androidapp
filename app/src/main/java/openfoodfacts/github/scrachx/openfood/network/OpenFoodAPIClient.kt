@@ -58,11 +58,11 @@ class OpenFoodAPIClient @Inject constructor(
 
     fun getProductStateFull(
             barcode: String,
-            customFields: String = getAllFields(),
-            customHeader: String = Utils.HEADER_USER_AGENT_SEARCH
+            fields: String = getAllFields(),
+            userAgent: String = Utils.HEADER_USER_AGENT_SEARCH
     ): Single<ProductState> {
         sentryAnalytics.setBarcode(barcode)
-        return rawApi.getProductByBarcode(barcode, customFields, localeManager.getLanguage(), getUserAgent(customHeader))
+        return rawApi.getProductByBarcode(barcode, fields, localeManager.getLanguage(), getUserAgent(userAgent))
     }
 
     fun getProductsByBarcode(

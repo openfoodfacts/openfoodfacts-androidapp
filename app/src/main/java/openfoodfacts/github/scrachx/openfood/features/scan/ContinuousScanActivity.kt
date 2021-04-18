@@ -15,7 +15,6 @@
  */
 package openfoodfacts.github.scrachx.openfood.features.scan
 
-import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.hardware.Camera
@@ -206,7 +205,7 @@ class ContinuousScanActivity : BaseActivity() {
         }
 
         // Then query the online db
-        productDisp = client.getProductStateFull(barcode, Utils.HEADER_USER_AGENT_SCAN)
+        productDisp = client.getProductStateFull(barcode, userAgent = Utils.HEADER_USER_AGENT_SCAN)
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe {
                     hideAllViews()
