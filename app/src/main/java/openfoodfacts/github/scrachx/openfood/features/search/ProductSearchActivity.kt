@@ -63,6 +63,12 @@ class ProductSearchActivity : BaseActivity() {
     @Inject
     lateinit var picasso: Picasso
 
+    @Inject
+    lateinit var sharedPreferences: SharedPreferences
+
+    @Inject
+    lateinit var localeManager: LocaleManager
+
     private lateinit var mSearchInfo: SearchInfo
     private lateinit var adapter: ProductSearchAdapter
 
@@ -76,8 +82,6 @@ class ProductSearchActivity : BaseActivity() {
     private var setupDone = false
     private var mCountProducts = 0
     private var pageAddress = 1
-
-    override fun attachBaseContext(newBase: Context) = super.attachBaseContext(LocaleHelper.onCreate(newBase, sharedPreferences = sharedPreferences))
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -199,7 +203,7 @@ class ProductSearchActivity : BaseActivity() {
     private fun setupHungerGames() {
         val actualCountryTag = sharedPreferences.getString(getString(R.string.pref_country_key), "")
         if (actualCountryTag.isNullOrBlank()) {
-            productRepository.getCountryByCC2OrWorld(LocaleHelper.getLocaleFromContext().country)
+            productRepository.getCountryByCC2OrWorld(localeManager.getLocale().country)
                     .observeOn(AndroidSchedulers.mainThread())
                     .map { it.tag }
                     .defaultIfEmpty("en:world")
@@ -389,7 +393,7 @@ class ProductSearchActivity : BaseActivity() {
                 products += null
             }
             if (setupDone) {
-                adapter = ProductSearchAdapter(products, lowBatteryMode, this, picasso, client, sharedPreferences)
+                adapter = ProductSearchAdapter(products, lowBatteryMode, this, picasso, client, localeManager)
                 binding.productsRecyclerView.adapter = adapter
             }
             setUpRecyclerView(products)
@@ -477,7 +481,7 @@ class ProductSearchActivity : BaseActivity() {
             binding.productsRecyclerView.setHasFixedSize(true)
             val mLayoutManager = LinearLayoutManager(this@ProductSearchActivity, LinearLayoutManager.VERTICAL, false)
             binding.productsRecyclerView.layoutManager = mLayoutManager
-            adapter = ProductSearchAdapter(mProducts, lowBatteryMode, this, picasso, client, sharedPreferences)
+            adapter = ProductSearchAdapter(mProducts, lowBatteryMode, this, picasso, client, localeManager)
             binding.productsRecyclerView.adapter = adapter
             val dividerItemDecoration = DividerItemDecoration(binding.productsRecyclerView.context, DividerItemDecoration.VERTICAL)
             binding.productsRecyclerView.addItemDecoration(dividerItemDecoration)

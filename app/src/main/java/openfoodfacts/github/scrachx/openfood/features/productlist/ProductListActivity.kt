@@ -41,7 +41,6 @@ import openfoodfacts.github.scrachx.openfood.models.entities.ListedProduct
 import openfoodfacts.github.scrachx.openfood.models.entities.ProductLists
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.*
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
 import openfoodfacts.github.scrachx.openfood.utils.SortType.*
 import java.io.File
 import java.text.SimpleDateFormat
@@ -62,6 +61,9 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
 
     @Inject
     lateinit var matomoAnalytics: MatomoAnalytics
+
+    @Inject
+    lateinit var localeManager: LocaleManager
 
     private var listID by Delegates.notNull<Long>()
     private lateinit var productList: ProductLists
@@ -96,7 +98,7 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
             title = listName
 
             (bundle[KEY_PRODUCT_TO_ADD] as? Product)?.let { prodToAdd ->
-                val locale = getLanguage(sharedPreferences)
+                val locale = localeManager.getLanguage()
                 if (prodToAdd.productName != null && prodToAdd.getImageSmallUrl(locale) != null) {
                     val barcode = prodToAdd.code
                     val productName = prodToAdd.productName

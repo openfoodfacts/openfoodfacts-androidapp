@@ -10,6 +10,7 @@ import openfoodfacts.github.scrachx.openfood.databinding.FragmentServerAttribute
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_STATE
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
 import openfoodfacts.github.scrachx.openfood.models.ProductState
+import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
 import openfoodfacts.github.scrachx.openfood.utils.requireProductState
 import javax.inject.Inject
 
@@ -20,6 +21,9 @@ class ServerAttributesFragment : BaseFragment() {
 
     @Inject
     lateinit var picasso: Picasso
+
+    @Inject
+    lateinit var localeManager: LocaleManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +38,7 @@ class ServerAttributesFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val attributeGroups = productState.product!!.getLocalAttributeGroups(requireContext())
+        val attributeGroups = productState.product!!.getAttributeGroups(localeManager.getLanguage())
         binding.attrsList.setAdapter(AttributeGroupsAdapter(attributeGroups, requireActivity(), picasso))
     }
 

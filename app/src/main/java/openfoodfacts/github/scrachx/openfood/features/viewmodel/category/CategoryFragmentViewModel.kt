@@ -15,7 +15,6 @@
  */
 package openfoodfacts.github.scrachx.openfood.features.viewmodel.category
 
-import android.content.SharedPreferences
 import android.util.Log
 import android.view.View
 import androidx.databinding.ObservableArrayList
@@ -30,7 +29,7 @@ import io.reactivex.schedulers.Schedulers
 import openfoodfacts.github.scrachx.openfood.models.entities.category.Category
 import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoryName
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
+import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
 import java.net.UnknownHostException
 import java.util.*
 import javax.inject.Inject
@@ -38,7 +37,7 @@ import javax.inject.Inject
 @HiltViewModel
 class CategoryFragmentViewModel @Inject constructor(
         private val productRepository: ProductRepository,
-        private val sharedPreferences: SharedPreferences
+        private val localeManager: LocaleManager
 ) : ViewModel() {
     private val allCategories = mutableListOf<CategoryName>()
     val shownCategories = ObservableArrayList<CategoryName>()
@@ -60,7 +59,7 @@ class CategoryFragmentViewModel @Inject constructor(
      * Generates a network call for showing categories in CategoryFragment
      */
     fun refreshCategories() {
-        productRepository.getAllCategoriesByLanguageCode(getLanguage(sharedPreferences))
+        productRepository.getAllCategoriesByLanguageCode(localeManager.getLanguage())
                 .doOnSubscribe {
                     showOffline.set(View.GONE)
                     showProgress.set(View.VISIBLE)
@@ -101,7 +100,7 @@ class CategoryFragmentViewModel @Inject constructor(
      */
     private fun extractCategoriesNames(categories: List<Category>) = categories
             .flatMap { it.names }
-            .filter { it.languageCode == getLanguage(sharedPreferences) }
+            .filter { it.languageCode == localeManager.getLanguage() }
             .sortedWith { o1, o2 -> o1.name!!.compareTo(o2.name!!) }
 
     /**

@@ -68,7 +68,6 @@ import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.A
 import openfoodfacts.github.scrachx.openfood.models.entities.country.CountryName
 import openfoodfacts.github.scrachx.openfood.models.entities.country.CountryNameDao
 import openfoodfacts.github.scrachx.openfood.utils.*
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType
 import org.greenrobot.greendao.async.AsyncOperation
 import org.greenrobot.greendao.async.AsyncOperationListener
@@ -87,7 +86,7 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
     lateinit var matomoAnalytics: MatomoAnalytics
 
     @Inject
-    lateinit var sharedPreferences: SharedPreferences
+    lateinit var localeManager: LocaleManager
 
     override val navigationDrawerListener: NavigationDrawerListener? by lazy {
         if (activity is NavigationDrawerListener) activity as NavigationDrawerListener
@@ -178,7 +177,7 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
         }
         // Execute query
         asyncSessionCountries.queryList(countryNameDao.queryBuilder()
-                .where(CountryNameDao.Properties.LanguageCode.eq(getLanguage(sharedPreferences)))
+                .where(CountryNameDao.Properties.LanguageCode.eq(localeManager.getLanguage()))
                 .orderAsc(CountryNameDao.Properties.Name).build())
 
         countryPreference.setOnPreferenceChangeListener { preference, newValue ->
@@ -377,7 +376,7 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
     }
 
     private fun getAnalysisTagConfigs(daoSession: DaoSession) {
-        val language = getLanguage(sharedPreferences)
+        val language = localeManager.getLanguage()
         Single.fromCallable {
             val analysisTagConfigDao = daoSession.analysisTagConfigDao
             val analysisTagConfigs = analysisTagConfigDao.queryBuilder()
@@ -408,7 +407,7 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
     private fun initLanguageCell() {
         val localesWithNames = SupportedLanguages.codes()
                 .map {
-                    val locale = LocaleHelper.getLocale(it)
+                    val locale = LocaleUtils.parseLocale(it)
                     it to locale.getDisplayName(locale).capitalize(locale)
                 }
 
@@ -416,10 +415,10 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
             preference.entries = localesWithNames.map { it.second }.toTypedArray()
             preference.entryValues = localesWithNames.map { it.first }.toTypedArray()
             preference.onPreferenceChangeListener = Preference.OnPreferenceChangeListener { _: Preference?, locale: Any? ->
-                val configuration = requireActivity().resources.configuration
-                Toast.makeText(context, getString(R.string.changes_saved), Toast.LENGTH_SHORT).show()
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-                    configuration.setLocale(LocaleHelper.getLocale(locale as String?))
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1 && locale != null) {
+                    val configuration = requireActivity().resources.configuration
+                    configuration.setLocale(LocaleUtils.parseLocale(locale as String))
+                    Toast.makeText(context, getString(R.string.changes_saved), Toast.LENGTH_SHORT).show()
                     requireActivity().recreate()
                 }
                 true

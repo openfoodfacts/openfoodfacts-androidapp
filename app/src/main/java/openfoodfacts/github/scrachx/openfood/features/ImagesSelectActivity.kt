@@ -18,6 +18,7 @@ package openfoodfacts.github.scrachx.openfood.features
 import android.Manifest.permission
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
@@ -57,6 +58,9 @@ class ImagesSelectActivity : BaseActivity() {
 
     @Inject
     lateinit var productsApi: ProductsAPI
+
+    @Inject
+    lateinit var sharedPreferences: SharedPreferences
 
     private lateinit var adapter: ProductImagesSelectionAdapter
     private val disp = CompositeDisposable()

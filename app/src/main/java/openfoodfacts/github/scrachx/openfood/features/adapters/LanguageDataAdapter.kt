@@ -22,13 +22,13 @@ import android.widget.ArrayAdapter
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import openfoodfacts.github.scrachx.openfood.R
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.LanguageData
+import openfoodfacts.github.scrachx.openfood.models.LanguageData
 
 class LanguageDataAdapter(
         context: Context,
         resource: Int,
-        objects: List<LanguageData?>
-) : ArrayAdapter<LanguageData?>(context, resource, objects) {
+        objects: List<LanguageData>
+) : ArrayAdapter<LanguageData>(context, resource, objects) {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val view = super.getView(position, convertView, parent) as TextView

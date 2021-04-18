@@ -1,6 +1,5 @@
 package openfoodfacts.github.scrachx.openfood.features.product.view.contributors
 
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.SpannableStringBuilder
 import android.text.Spanned
@@ -24,16 +23,13 @@ import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductState
 import openfoodfacts.github.scrachx.openfood.models.entities.states.StatesName
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper
+import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
 import openfoodfacts.github.scrachx.openfood.utils.SearchType
 import openfoodfacts.github.scrachx.openfood.utils.requireProductState
 import java.text.SimpleDateFormat
 import java.util.*
 import javax.inject.Inject
 
-/*
-* Created by prajwalm on 14/04/18.
-*/
 /**
  * @see R.layout.fragment_contributors
  */
@@ -48,7 +44,7 @@ class ContributorsFragment : BaseFragment() {
     lateinit var productRepository: ProductRepository
 
     @Inject
-    lateinit var sharedPreferences: SharedPreferences
+    lateinit var localeManager: LocaleManager
 
     private lateinit var productState: ProductState
 
@@ -156,7 +152,7 @@ class ContributorsFragment : BaseFragment() {
         val tags = product.statesTags
         if (tags.isEmpty()) return
 
-        val languageCode = LocaleHelper.getLanguage(sharedPreferences)
+        val languageCode = localeManager.getLanguage()
         tags.toObservable()
                 .flatMapSingle { tag: String ->
                     productRepository.getStatesByTagAndLanguageCode(tag, languageCode)
