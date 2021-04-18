@@ -786,6 +786,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
                         loginThenEditLauncher.launch(null)
                     }
                     .onNegative { d, _ -> d.dismiss() }
+                    .show()
         }
     }
 
