@@ -47,6 +47,9 @@ class EnvironmentProductFragment : BaseFragment() {
     @Inject
     lateinit var sharedPreferences: SharedPreferences
 
+    @Inject
+    lateinit var localeManager: LocaleManager
+
     private var _binding: FragmentEnvironmentProductBinding? = null
     private val binding get() = _binding!!
 
@@ -74,7 +77,7 @@ class EnvironmentProductFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val langCode = LocaleHelper.getLanguage(sharedPreferences)
+        val langCode = localeManager.getLanguage()
         productState = requireProductState()
         binding.imageViewPackaging.setOnClickListener { openFullScreen() }
 
@@ -175,7 +178,7 @@ class EnvironmentProductFragment : BaseFragment() {
                     ProductImageField.PACKAGING,
                     imageUrl,
                     binding.imageViewPackaging,
-                    LocaleHelper.getLanguage(sharedPreferences),
+                    localeManager.getLanguage(),
             )
         } else {
             newPackagingImage()
@@ -186,7 +189,7 @@ class EnvironmentProductFragment : BaseFragment() {
 
     private fun loadPackagingPhoto(photoFile: File) {
         // Create a new instance of ProductImage so we can load to server
-        val image = ProductImage(productState.product!!.code, ProductImageField.PACKAGING, photoFile, LocaleHelper.getLanguage(sharedPreferences))
+        val image = ProductImage(productState.product!!.code, ProductImageField.PACKAGING, photoFile, localeManager.getLanguage())
         image.filePath = photoFile.absolutePath
 
         // Load to server

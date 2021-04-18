@@ -17,6 +17,7 @@ package openfoodfacts.github.scrachx.openfood.features
 
 import android.Manifest
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
@@ -46,17 +47,15 @@ import openfoodfacts.github.scrachx.openfood.databinding.ActivityFullScreenImage
 import openfoodfacts.github.scrachx.openfood.features.adapters.LanguageDataAdapter
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.images.*
+import openfoodfacts.github.scrachx.openfood.models.LanguageData
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
+import openfoodfacts.github.scrachx.openfood.models.findByCode
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.FileDownloader.download
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.LanguageData
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguageData
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLocale
 import openfoodfacts.github.scrachx.openfood.utils.SwipeDetector.OnSwipeEventListener
 import openfoodfacts.github.scrachx.openfood.utils.SwipeDetector.SwipeTypeEnum
 import org.apache.commons.lang3.StringUtils
@@ -82,6 +81,12 @@ class ImagesManageActivity : BaseActivity() {
 
     @Inject
     lateinit var picasso: Picasso
+
+    @Inject
+    lateinit var sharedPreferences: SharedPreferences
+
+    @Inject
+    lateinit var localeManager: LocaleManager
 
     private val disp = CompositeDisposable()
 
@@ -209,17 +214,16 @@ class ImagesManageActivity : BaseActivity() {
         val productImageField = getSelectedType()
 
         val addedLanguages = product.getAvailableLanguageForImage(productImageField, ImageSize.DISPLAY).toMutableSet()
-        val languageForImage = getLanguageData(addedLanguages, true)
-
-        val selectedIndex = languageForImage.find { it.code == currentLanguage }
-        if (selectedIndex == null) {
-            addedLanguages += currentLanguage
-            languageForImage += getLanguageData(currentLanguage, false)
+        val languageForImage = LocaleUtils.getLanguageData(addedLanguages, true).toMutableList()
+        val selectedIndex = languageForImage.findByCode(currentLanguage)
+        if (selectedIndex < 0) {
+            addedLanguages.add(currentLanguage)
+            languageForImage.add(LocaleUtils.getLanguageData(currentLanguage, false))
         }
 
         val otherNotSupportedCode = SupportedLanguages.codes().filter { it !in addedLanguages }
 
-        languageForImage.addAll(getLanguageData(otherNotSupportedCode, false))
+        languageForImage.addAll(LocaleUtils.getLanguageData(otherNotSupportedCode, false))
         val adapter = LanguageDataAdapter(this, R.layout.simple_spinner_item_white, languageForImage)
         adapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice)
         binding.comboLanguages.adapter = adapter
@@ -255,11 +259,11 @@ class ImagesManageActivity : BaseActivity() {
         return isLanguageSupported
     }
 
-    private fun getCurrentLanguage(): String = intent.getStringExtra(LANGUAGE) ?: getLanguage(sharedPreferences)
+    private fun getCurrentLanguage(): String = intent.getStringExtra(LANGUAGE) ?: localeManager.getLanguage()
 
     private fun updateToolbarTitle(product: Product?) {
         product?.let {
-            binding.toolbar.title = "${it.getLocalProductName(sharedPreferences).orEmpty()} / ${binding.comboImageType.selectedItem}"
+            binding.toolbar.title = "${it.getProductName(localeManager.getLanguage()).orEmpty()} / ${binding.comboImageType.selectedItem}"
         }
     }
 
@@ -310,7 +314,7 @@ class ImagesManageActivity : BaseActivity() {
         if (isFinishing) return
 
         getProduct()?.let {
-            startRefresh(getString(R.string.loading_product, "${it.getLocalProductName(sharedPreferences)}..."))
+            startRefresh(getString(R.string.loading_product, "${it.getProductName(localeManager.getLanguage())}..."))
             client.getProductImages(it.code).observeOn(AndroidSchedulers.mainThread()).subscribe { newState ->
                 val newProduct = newState.product
                 var imageReloaded = false
@@ -379,8 +383,7 @@ class ImagesManageActivity : BaseActivity() {
     }
 
     private fun selectDefaultLanguage() {
-        val lang = getLocale(getProduct()!!.lang).language
-        getLanguageData(lang, true)
+        val lang = LocaleUtils.parseLocale(getProduct()!!.lang).language
         val position = (binding.comboLanguages.adapter as LanguageDataAdapter).getPosition(lang)
         if (position >= 0) {
             binding.comboLanguages.setSelection(position, true)
@@ -441,7 +444,7 @@ class ImagesManageActivity : BaseActivity() {
     }
 
     private fun updateSelectDefaultLanguageAction() {
-        val isDefault = getProduct()?.lang != null && getCurrentLanguage() == getLocale(getProduct()!!.lang).language
+        val isDefault = getProduct()?.lang != null && getCurrentLanguage() == LocaleUtils.parseLocale(getProduct()!!.lang).language
         binding.btnChooseDefaultLanguage.visibility = if (isDefault) View.INVISIBLE else View.VISIBLE
     }
 

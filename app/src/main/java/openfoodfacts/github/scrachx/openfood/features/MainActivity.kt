@@ -98,7 +98,6 @@ import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.*
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.setLanguageInPrefs
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.*
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_ABOUT
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_ADDITIVES
@@ -140,6 +139,12 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
     @Inject
     lateinit var matomoAnalytics: MatomoAnalytics
 
+    @Inject
+    lateinit var sharedPreferences: SharedPreferences
+
+    @Inject
+    lateinit var localeManager: LocaleManager
+
     private val disp = CompositeDisposable()
 
     private val contributeUri: Uri by lazy { Uri.parse(getString(R.string.website_contribute)) }
@@ -172,7 +177,6 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
         setContentView(binding.root)
 
         hideKeyboard(this)
-        setLanguageInPrefs(this, LocaleHelper.getLanguage(sharedPreferences), sharedPreferences)
         setSupportActionBar(binding.toolbarInclude.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(false)
         swapToFragment(HomeFragment.newInstance())
@@ -546,10 +550,6 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
         }
     }
 
-    override fun attachBaseContext(newBase: Context) {
-        super.attachBaseContext(LocaleHelper.onCreate(newBase, sharedPreferences = sharedPreferences))
-    }
-
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         super.onCreateOptionsMenu(menu)
         menuInflater.inflate(R.menu.menu_main, menu)
@@ -842,7 +842,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
                                         tempBarcode,
                                         ProductImageField.OTHER,
                                         it.readBytes(),
-                                        LocaleHelper.getLanguage(sharedPreferences)
+                                        localeManager.getLanguage()
                                 )
                                 apiClient.postImg(image).subscribe().addTo(disp)
                             }

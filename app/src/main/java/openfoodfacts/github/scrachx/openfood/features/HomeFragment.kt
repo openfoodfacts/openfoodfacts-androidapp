@@ -24,7 +24,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
-import androidx.preference.PreferenceManager
 import com.afollestad.materialdialogs.MaterialDialog
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -38,7 +37,7 @@ import openfoodfacts.github.scrachx.openfood.databinding.FragmentHomeBinding
 import openfoodfacts.github.scrachx.openfood.features.LoginActivity.Companion.LoginContract
 import openfoodfacts.github.scrachx.openfood.features.shared.NavigationBaseFragment
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper
+import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType
 import openfoodfacts.github.scrachx.openfood.utils.getLoginPreferences
@@ -61,7 +60,10 @@ class HomeFragment : NavigationBaseFragment() {
     lateinit var productsApi: ProductsAPI
 
     @Inject
-     lateinit var sharedPrefs: SharedPreferences
+    lateinit var sharedPrefs: SharedPreferences
+
+    @Inject
+    lateinit var localeManager: LocaleManager
 
     private var taglineURL: String? = null
 
@@ -72,7 +74,7 @@ class HomeFragment : NavigationBaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.tvDailyFoodFact.setOnClickListener { openDailyFoodFacts() }
+        binding.tvTagLine.setOnClickListener { openDailyFoodFacts() }
         checkUserCredentials()
     }
 
@@ -196,26 +198,26 @@ class HomeFragment : NavigationBaseFragment() {
         productsApi.getTagline(getUserAgent())
                 .subscribeOn(Schedulers.io()) // io for network
                 .observeOn(AndroidSchedulers.mainThread()) // Move to main thread for UI changes
-                .doOnError { Log.e(LOG_TAG, "Could not retrieve tag-line from server.", it) }
-                .subscribe { languages ->
-                    val localAsString = LocaleHelper.getLocaleFromContext(context).toString()
+                .doOnError { Log.w(LOG_TAG, "Could not retrieve tag-line from server.", it) }
+                .subscribe { tagLines ->
+                    val appLanguage = localeManager.getLanguage()
                     var isLanguageFound = false
                     var isExactLanguageFound = false
-                    languages.forEach { tagLine ->
-                        val languageCountry = tagLine.language
-                        if (!isExactLanguageFound && (languageCountry == localAsString || languageCountry.contains(localAsString))) {
-                            isExactLanguageFound = languageCountry == localAsString
-                            taglineURL = tagLine.tagLine.url
-                            binding.tvDailyFoodFact.text = tagLine.tagLine.message
+                    tagLines.forEach { tag ->
+                        if (!isExactLanguageFound && (tag.language == appLanguage || tag.language.contains(appLanguage))) {
+                            isExactLanguageFound = tag.language == appLanguage
+                            taglineURL = tag.tagLine.url
+                            binding.tvTagLine.text = tag.tagLine.message
                             isLanguageFound = true
                         }
                     }
                     if (!isLanguageFound) {
-                        taglineURL = languages.last().tagLine.url
-                        binding.tvDailyFoodFact.text = languages.last().tagLine.message
+                        taglineURL = tagLines.last().tagLine.url
+                        binding.tvTagLine.text = tagLines.last().tagLine.message
                     }
-                    binding.tvDailyFoodFact.visibility = View.VISIBLE
-                }.addTo(disp)
+                    binding.tvTagLine.visibility = View.VISIBLE
+                }
+                .addTo(disp)
     }
 
     companion object {

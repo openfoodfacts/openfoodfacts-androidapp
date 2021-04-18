@@ -3,6 +3,7 @@ package openfoodfacts.github.scrachx.openfood.features.compare
 import android.Manifest
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.widget.Toast
@@ -24,7 +25,7 @@ import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper
+import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
 import openfoodfacts.github.scrachx.openfood.utils.MY_PERMISSIONS_REQUEST_CAMERA
 import openfoodfacts.github.scrachx.openfood.utils.PhotoReceiverHandler
 import openfoodfacts.github.scrachx.openfood.utils.isHardwareCameraInstalled
@@ -47,6 +48,12 @@ class ProductCompareActivity : BaseActivity() {
 
     @Inject
     lateinit var matomoAnalytics: MatomoAnalytics
+
+    @Inject
+    lateinit var sharedPreferences: SharedPreferences
+
+    @Inject
+    lateinit var localeManager: LocaleManager
 
     private lateinit var productComparisonAdapter: ProductCompareAdapter
     private lateinit var photoReceiverHandler: PhotoReceiverHandler
@@ -71,7 +78,7 @@ class ProductCompareActivity : BaseActivity() {
             matomoAnalytics.trackEvent(AnalyticsEvent.CompareProducts(productsToCompare.size.toFloat()))
         }
 
-        productComparisonAdapter = ProductCompareAdapter(productsToCompare, this, api, productRepository, picasso, LocaleHelper.getLanguage(sharedPreferences))
+        productComparisonAdapter = ProductCompareAdapter(productsToCompare, this, api, productRepository, picasso, localeManager.getLanguage())
         binding.productComparisonRv.layoutManager = LinearLayoutManager(this, HORIZONTAL, false)
         binding.productComparisonRv.adapter = productComparisonAdapter
 

@@ -38,7 +38,6 @@ import openfoodfacts.github.scrachx.openfood.features.productlist.CreateCSVContr
 import openfoodfacts.github.scrachx.openfood.features.scan.ContinuousScanActivity
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.utils.*
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLocaleFromContext
 import openfoodfacts.github.scrachx.openfood.utils.SortType.*
 import java.io.File
 import java.text.SimpleDateFormat
@@ -53,6 +52,9 @@ class ScanHistoryActivity : BaseActivity() {
 
     @Inject
     lateinit var picasso: Picasso
+
+    @Inject
+    lateinit var localeManager: LocaleManager
 
     /**
      * boolean to determine if menu buttons should be visible or not
@@ -234,7 +236,7 @@ class ScanHistoryActivity : BaseActivity() {
         Toast.makeText(this, R.string.txt_exporting_history, Toast.LENGTH_LONG).show()
 
         val flavor = BuildConfig.FLAVOR.toUpperCase(Locale.ROOT)
-        val date = SimpleDateFormat("yyyy-MM-dd", getLocaleFromContext(this)).format(Date())
+        val date = SimpleDateFormat("yyyy-MM-dd", localeManager.getLocale()).format(Date())
         val fileName = "$flavor-history_$date.csv"
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {

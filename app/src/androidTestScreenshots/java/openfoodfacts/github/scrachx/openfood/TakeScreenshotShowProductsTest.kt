@@ -22,10 +22,10 @@ import org.junit.runner.RunWith
 class TakeScreenshotShowProductsTest : AbstractScreenshotTest() {
 
     @Rule
-    var activityHistoryRule = ScreenshotActivityTestRule(ScanHistoryActivity::class.java, context = context)
+    var activityHistoryRule = ScreenshotActivityTestRule(ScanHistoryActivity::class.java, context = context, localeManager = localeManager)
 
     @Rule
-    var activityShowProductRule = ScreenshotActivityTestRule(ProductViewActivity::class.java, context = context)
+    var activityShowProductRule = ScreenshotActivityTestRule(ProductViewActivity::class.java, context = context, localeManager = localeManager)
 
     @Test
     fun testTakeScreenshot() {

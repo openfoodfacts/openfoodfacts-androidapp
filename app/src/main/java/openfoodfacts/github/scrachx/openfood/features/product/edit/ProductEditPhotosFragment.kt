@@ -39,7 +39,7 @@ import openfoodfacts.github.scrachx.openfood.images.ProductImage
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper
+import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
 import openfoodfacts.github.scrachx.openfood.utils.MY_PERMISSIONS_REQUEST_CAMERA
 import openfoodfacts.github.scrachx.openfood.utils.PhotoReceiverHandler
 import openfoodfacts.github.scrachx.openfood.utils.dpsToPixel
@@ -60,10 +60,13 @@ class ProductEditPhotosFragment : ProductEditFragment() {
     @Inject
     lateinit var sharedPreferences: SharedPreferences
 
+    @Inject
+    lateinit var localeManager: LocaleManager
+
     private val photoReceiverHandler by lazy {
         PhotoReceiverHandler(sharedPreferences) { newPhotoFile ->
             photoFile = newPhotoFile
-            val image = ProductImage(code!!, ProductImageField.OTHER, newPhotoFile, LocaleHelper.getLanguage(sharedPreferences))
+            val image = ProductImage(code!!, ProductImageField.OTHER, newPhotoFile, localeManager.getLanguage())
             image.filePath = photoFile!!.toURI().path
             if (activity is ProductEditActivity) {
                 (activity as ProductEditActivity).addToPhotoMap(image, 4)

@@ -240,8 +240,8 @@ class LoginActivity : BaseActivity() {
     }
 
     companion object {
-        class LoginContract : ActivityResultContract<Unit, Boolean>() {
-            override fun createIntent(context: Context, input: Unit) = Intent(context, LoginActivity::class.java)
+        class LoginContract : ActivityResultContract<Unit?, Boolean>() {
+            override fun createIntent(context: Context, input: Unit?) = Intent(context, LoginActivity::class.java)
 
             override fun parseResult(resultCode: Int, intent: Intent?) = resultCode == RESULT_OK
         }

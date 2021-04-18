@@ -20,7 +20,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode
 import io.reactivex.Single
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
-import openfoodfacts.github.scrachx.openfood.BuildConfig.FLAVOR
+import openfoodfacts.github.scrachx.openfood.BuildConfig.FLAVOR_versionCode
 import openfoodfacts.github.scrachx.openfood.models.ProductState
 import openfoodfacts.github.scrachx.openfood.models.Search
 import openfoodfacts.github.scrachx.openfood.models.TagLineLanguage
@@ -331,7 +331,7 @@ interface ProductsAPI {
     /**
      * This method gives the news in all languages
      */
-    @GET("/files/tagline/tagline-$FLAVOR.json")
+    @GET("/files/tagline/tagline-$FLAVOR_versionCode.json")
     fun getTagline(@Header("User-Agent") header: String): Single<ArrayList<TagLineLanguage>>
 
     /**

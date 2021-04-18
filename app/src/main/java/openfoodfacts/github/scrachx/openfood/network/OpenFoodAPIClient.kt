@@ -3,7 +3,6 @@ package openfoodfacts.github.scrachx.openfood.network
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.util.Log
 import android.widget.Toast
 import androidx.core.content.edit
@@ -37,7 +36,6 @@ import openfoodfacts.github.scrachx.openfood.models.entities.ToUploadProductDao
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.Keys
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
 import openfoodfacts.github.scrachx.openfood.utils.*
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
 import java.io.File
 import java.io.IOException
 import java.util.*
@@ -54,17 +52,17 @@ class OpenFoodAPIClient @Inject constructor(
         private val daoSession: DaoSession,
         private val rawApi: ProductsAPI,
         private val sentryAnalytics: SentryAnalytics,
-        private val sharedPreferences: SharedPreferences
+        private val localeManager: LocaleManager
 ) {
     private var historySyncDisp = CompositeDisposable()
 
     fun getProductStateFull(
             barcode: String,
-            customFields: String = getAllFields(),
-            customHeader: String = Utils.HEADER_USER_AGENT_SEARCH
+            fields: String = getAllFields(),
+            userAgent: String = Utils.HEADER_USER_AGENT_SEARCH
     ): Single<ProductState> {
         sentryAnalytics.setBarcode(barcode)
-        return rawApi.getProductByBarcode(barcode, customFields, getLanguage(sharedPreferences), getUserAgent(customHeader))
+        return rawApi.getProductByBarcode(barcode, fields, localeManager.getLanguage(), getUserAgent(userAgent))
     }
 
     fun getProductsByBarcode(
@@ -79,7 +77,7 @@ class OpenFoodAPIClient @Inject constructor(
         val allFields = Keys.PRODUCT_COMMON_FIELDS
         val fieldsToLocalize = Keys.PRODUCT_LOCAL_FIELDS
 
-        val langCode = getLanguage(sharedPreferences)
+        val langCode = localeManager.getLanguage()
         val fieldsSet = allFields.toMutableSet()
         fieldsToLocalize.forEach { (field, shouldAddEn) ->
             fieldsSet += "${field}_$langCode"
@@ -98,7 +96,7 @@ class OpenFoodAPIClient @Inject constructor(
                         activity.startActivity(Intent(activity, ProductEditActivity::class.java).apply {
                             putExtra(KEY_EDIT_PRODUCT, Product().apply {
                                 code = barcode
-                                lang = getLanguage(sharedPreferences)
+                                lang = localeManager.getLanguage()
                             })
                         })
                         activity.finish()
@@ -112,12 +110,12 @@ class OpenFoodAPIClient @Inject constructor(
      */
     fun getProductImages(barcode: String): Single<ProductState> {
         val fields = Keys.PRODUCT_IMAGES_FIELDS.toMutableSet().also {
-            it += Keys.lcProductNameKey(getLanguage(sharedPreferences))
+            it += Keys.lcProductNameKey(localeManager.getLanguage())
         }.joinToString(",")
         return rawApi.getProductByBarcode(
                 barcode,
                 fields,
-                getLanguage(sharedPreferences),
+                localeManager.getLanguage(),
                 getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)
         )
     }
@@ -134,7 +132,7 @@ class OpenFoodAPIClient @Inject constructor(
             rawApi.getProductByBarcode(
                     barcode,
                     getAllFields(),
-                    getLanguage(sharedPreferences),
+                    localeManager.getLanguage(),
                     getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)
             ).doOnError {
                 if (it is IOException) {
@@ -217,7 +215,9 @@ class OpenFoodAPIClient @Inject constructor(
     /**
      * Add a product to ScanHistory asynchronously
      */
-    fun addToHistory(product: Product) = Completable.fromAction { daoSession.historyProductDao.addToHistorySync(product, sharedPreferences) }
+    fun addToHistory(product: Product) = Completable.fromAction {
+        daoSession.historyProductDao.addToHistorySync(product, localeManager.getLanguage())
+    }
 
     fun getProductsByContributor(contributor: String, page: Int) =
             rawApi.getProductsByContributor(contributor, page, fieldsToFetchFacets).subscribeOn(Schedulers.io())
@@ -238,7 +238,7 @@ class OpenFoodAPIClient @Inject constructor(
                         Log.e("OfflineUploadingTask", "doInBackground", e)
                         return@mapNotNull null
                     }
-                    val productImage = ProductImage(product.barcode, product.productField, imageFile, getLanguage(sharedPreferences))
+                    val productImage = ProductImage(product.barcode, product.productField, imageFile, localeManager.getLanguage())
                     return@mapNotNull rawApi.saveImage(getUploadableMap(productImage))
                             .flatMapCompletable { jsonNode: JsonNode? ->
                                 if (jsonNode != null) {
@@ -347,7 +347,7 @@ class OpenFoodAPIClient @Inject constructor(
                     rawApi.getProductByBarcode(
                             historyProduct.barcode,
                             fields,
-                            getLanguage(sharedPreferences),
+                            localeManager.getLanguage(),
                             getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)
                     ).flatMapCompletable { state ->
                         if (state.status != 0L) {
@@ -355,7 +355,7 @@ class OpenFoodAPIClient @Inject constructor(
                             val hp = HistoryProduct(
                                     product.productName,
                                     product.brands,
-                                    product.getImageSmallUrl(getLanguage(sharedPreferences)),
+                                    product.getImageSmallUrl(localeManager.getLanguage()),
                                     product.code,
                                     product.quantity,
                                     product.nutritionGradeFr,
@@ -415,19 +415,24 @@ class OpenFoodAPIClient @Inject constructor(
     companion object {
         val MIME_TEXT: MediaType = MediaType.get("text/plain")
         const val PNG_EXT = ".png"
-        fun HistoryProductDao.addToHistorySync(product: OfflineSavedProduct) {
-            val savedProduct = queryBuilder().where(HistoryProductDao.Properties.Barcode.eq(product.barcode)).uniqueOrThrow()
-            val details = product.productDetails
+
+        fun HistoryProductDao.addToHistorySync(newProd: OfflineSavedProduct) {
+            val savedProduct: HistoryProduct? =
+                    queryBuilder().where(HistoryProductDao.Properties.Barcode.eq(newProd.barcode)).unique()
+            val details = newProd.productDetails
+
             val hp = HistoryProduct(
-                    product.name,
+                    newProd.name,
                     details[Keys.ADD_BRANDS],
-                    product.imageFrontLocalUrl,
-                    product.barcode,
+                    newProd.imageFrontLocalUrl,
+                    newProd.barcode,
                     details[Keys.QUANTITY],
-                    null,
-                    null,
-                    null
+                    details[Keys.NUTRITION_GRADE_FR],
+                    details[Keys.ECOSCORE],
+                    details[Keys.NOVA_GROUPS
+                    ]
             )
+
             if (savedProduct != null) hp.id = savedProduct.id
             insertOrReplace(hp)
         }
@@ -435,14 +440,14 @@ class OpenFoodAPIClient @Inject constructor(
         /**
          * Add a product to ScanHistory synchronously
          */
-        fun HistoryProductDao.addToHistorySync(product: Product, sharedPreferences: SharedPreferences) {
+        fun HistoryProductDao.addToHistorySync(product: Product, language: String) {
             val historyProducts = queryBuilder()
                     .where(HistoryProductDao.Properties.Barcode.eq(product.code))
                     .uniqueOrThrow()
             val hp = HistoryProduct(
                     product.productName,
                     product.brands,
-                    product.getImageSmallUrl(getLanguage(sharedPreferences)),
+                    product.getImageSmallUrl(language),
                     product.code,
                     product.quantity,
                     product.nutritionGradeFr,
@@ -494,7 +499,7 @@ class OpenFoodAPIClient @Inject constructor(
         return comment.toString()
     }
 
-    val localeProductNameField get() = "product_name_${getLanguage(sharedPreferences)}"
+    val localeProductNameField get() = "product_name_${localeManager.getLanguage()}"
 
     private val fieldsToFetchFacets
         get() = Keys.PRODUCT_SEARCH_FIELDS.toMutableList().apply {

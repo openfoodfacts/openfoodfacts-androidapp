@@ -50,7 +50,6 @@ import openfoodfacts.github.scrachx.openfood.network.ApiFields.Keys.lcIngredient
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.FileDownloader.download
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
 import org.greenrobot.greendao.async.AsyncOperationListener
 import java.io.File
 import java.util.*
@@ -81,13 +80,16 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
     @Inject
     lateinit var sharedPreferences: SharedPreferences
 
+    @Inject
+    lateinit var localeManager: LocaleManager
+
     private val photoReceiverHandler by lazy {
         PhotoReceiverHandler(sharedPreferences) {
             val uri = it.toURI()
             imagePath = uri.path
             newImageSelected = true
             photoFile = it
-            val image = ProductImage(code!!, ProductImageField.INGREDIENTS, it, getLanguage(sharedPreferences)).apply {
+            val image = ProductImage(code!!, ProductImageField.INGREDIENTS, it, localeManager.getLanguage()).apply {
                 filePath = uri.path
             }
             (activity as? ProductEditActivity)?.addToPhotoMap(image, 1)
@@ -182,7 +184,7 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
     private fun getAddProductActivity() = activity as ProductEditActivity?
 
     private fun extractTracesChipValues(product: Product?): List<String> =
-            product?.tracesTags?.map { getTracesName(getLanguage(sharedPreferences), it) } ?: emptyList()
+            product?.tracesTags?.map { getTracesName(localeManager.getLanguage(), it) } ?: emptyList()
 
     /**
      * Pre fill the fields of the product which are already present on the server.
@@ -301,7 +303,7 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
     private fun loadAutoSuggestions() {
         val asyncSessionAllergens = daoSession.startAsyncSession()
         val allergenNameDao = daoSession.allergenNameDao
-        val appLanguageCode = getLanguage(sharedPreferences)
+        val appLanguageCode = localeManager.getLanguage()
 
         asyncSessionAllergens.listenerMainThread = AsyncOperationListener { operation ->
             val allergenNames = operation.result as List<AllergenName>
@@ -351,7 +353,7 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
             val imagePath = imagePath
             if (imagePath != null && (!isEditingFromArgs || newImageSelected)) {
                 photoFile = File(imagePath)
-                val image = ProductImage(code!!, ProductImageField.INGREDIENTS, photoFile!!, getLanguage(sharedPreferences))
+                val image = ProductImage(code!!, ProductImageField.INGREDIENTS, photoFile!!, localeManager.getLanguage())
                 image.filePath = imagePath
                 (activity as ProductEditActivity).addToPhotoMap(image, 1)
             } else if (imagePath != null) {

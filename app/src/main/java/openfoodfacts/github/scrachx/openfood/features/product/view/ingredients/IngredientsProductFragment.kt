@@ -97,6 +97,9 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
     @Inject
     lateinit var sharedPreferences: SharedPreferences
 
+    @Inject
+    lateinit var localeManager: LocaleManager
+
     private val loginPref by lazy { requireActivity().getLoginPreferences() }
 
     private val performOCRLauncher = registerForActivityResult(PerformOCRContract())
@@ -161,12 +164,12 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
     override fun refreshView(productState: ProductState) {
         super.refreshView(productState)
         this.productState = productState
-        val langCode = LocaleHelper.getLanguage(sharedPreferences)
+        val langCode = localeManager.getLanguage()
 
         if (arguments != null) mSendProduct = getSendProduct()
 
         val product = this.productState.product!!
-        presenter = IngredientsProductPresenter(requireContext(), this, productRepository, product, sharedPreferences).apply { addTo(disp) }
+        presenter = IngredientsProductPresenter(this, productRepository, product, localeManager).apply { addTo(disp) }
         val vitaminTagsList = product.vitaminTags
         val aminoAcidTagsList = product.aminoAcidTags
         val mineralTags = product.mineralTags
@@ -240,7 +243,7 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
         }
         presenter.loadAllergens()
         if (!product.traces.isNullOrBlank()) {
-            val language = LocaleHelper.getLanguage(sharedPreferences)
+            val language = localeManager.getLanguage()
             binding.cvTextTraceProduct.visibility = View.VISIBLE
             binding.textTraceProduct.movementMethod = LinkMovementMethod.getInstance()
             binding.textTraceProduct.text = SpannableStringBuilder()
@@ -437,7 +440,7 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
                     ProductImageField.INGREDIENTS,
                     ingredientsImgUrl!!,
                     binding.imageViewIngredients,
-                    LocaleHelper.getLanguage(sharedPreferences)
+                    localeManager.getLanguage()
             )
         } else {
             newIngredientImage()
@@ -449,7 +452,7 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
     override fun doOnPhotosPermissionGranted() = newIngredientImage()
 
     private fun onPhotoReturned(newPhotoFile: File) {
-        val image = ProductImage(productState.code!!, ProductImageField.INGREDIENTS, newPhotoFile, LocaleHelper.getLanguage(sharedPreferences))
+        val image = ProductImage(productState.code!!, ProductImageField.INGREDIENTS, newPhotoFile, localeManager.getLanguage())
         image.filePath = newPhotoFile.absolutePath
         client.postImg(image).subscribe().addTo(disp)
         binding.addPhotoLabel.visibility = View.GONE

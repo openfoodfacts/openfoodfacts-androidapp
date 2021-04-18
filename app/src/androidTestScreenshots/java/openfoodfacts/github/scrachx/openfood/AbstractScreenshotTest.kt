@@ -4,9 +4,7 @@ import android.Manifest
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.util.Log
-import androidx.preference.PreferenceManager
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.GrantPermissionRule
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -15,7 +13,7 @@ import dagger.hilt.android.testing.HiltAndroidTest
 import openfoodfacts.github.scrachx.openfood.test.ScreenshotActivityTestRule
 import openfoodfacts.github.scrachx.openfood.test.ScreenshotParameter
 import openfoodfacts.github.scrachx.openfood.test.getFilteredParameters
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper
+import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
 import org.junit.AfterClass
 import org.junit.BeforeClass
 import org.junit.Rule
@@ -45,19 +43,21 @@ abstract class AbstractScreenshotTest {
     lateinit var context: Context
 
     @Inject
-    lateinit var sharedPreferences: SharedPreferences
+    lateinit var localeManager: LocaleManager
 
     private lateinit var initLocale: Locale
 
+    @Suppress("DEPRECATION")
     @BeforeClass
     fun setup() {
         hiltRule.inject()
-        initLocale = LocaleHelper.getLocaleFromContext()
+        initLocale = localeManager.getLocaleFromContext(context)
     }
 
+    @Suppress("DEPRECATION")
     @AfterClass
     fun release() {
-        LocaleHelper.setLanguageInPrefs(context, initLocale, sharedPreferences)
+        localeManager.saveLanguageToPrefs(context, initLocale)
     }
 
     @SafeVarargs
@@ -79,9 +79,10 @@ abstract class AbstractScreenshotTest {
         }
     }
 
+    @Suppress("DEPRECATION")
     private fun changeLocale(parameter: ScreenshotParameter, context: Context) {
         Log.d(LOG_TAG, "Change parameters to $parameter")
-        LocaleHelper.setContextLanguage(context, parameter.locale, PreferenceManager.getDefaultSharedPreferences(context))
+        localeManager.saveLanguageToPrefs(context, parameter.locale)
     }
 
     protected fun startForAllLocales(

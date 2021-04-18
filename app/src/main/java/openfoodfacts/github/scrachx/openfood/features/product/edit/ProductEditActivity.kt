@@ -26,7 +26,6 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContract
-import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.afollestad.materialdialogs.MaterialDialog
@@ -47,6 +46,7 @@ import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
 import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityEditProductBinding
 import openfoodfacts.github.scrachx.openfood.features.product.ProductFragmentPagerAdapter
+import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.images.IMG_ID
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
 import openfoodfacts.github.scrachx.openfood.jobs.OfflineProductWorker.Companion.scheduleSync
@@ -71,7 +71,7 @@ import java.util.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class ProductEditActivity : AppCompatActivity() {
+class ProductEditActivity : BaseActivity() {
     private var _binding: ActivityEditProductBinding? = null
     private val binding get() = _binding!!
 
@@ -312,14 +312,14 @@ class ProductEditActivity : AppCompatActivity() {
             productDetails[ApiFields.Keys.IMAGE_NUTRITION_UPLOADED] = true.toString()
         }
         val barcode = this@ProductEditActivity.productDetails[ApiFields.Keys.BARCODE]!!
-        val toSaveOfflineProduct = OfflineSavedProduct(
+        val toSaveOffline = OfflineSavedProduct(
                 barcode,
                 this@ProductEditActivity.productDetails
         )
-        daoSession.offlineSavedProductDao!!.insertOrReplace(toSaveOfflineProduct)
+        daoSession.offlineSavedProductDao!!.insertOrReplace(toSaveOffline)
 
         scheduleSync(this, sharedPreferences)
-        daoSession.historyProductDao.addToHistorySync(toSaveOfflineProduct)
+        daoSession.historyProductDao.addToHistorySync(toSaveOffline)
 
         Toast.makeText(this, R.string.productSavedToast, Toast.LENGTH_SHORT).show()
         hideKeyboard(this)

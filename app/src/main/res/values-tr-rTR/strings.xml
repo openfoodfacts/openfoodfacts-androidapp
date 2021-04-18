@@ -155,7 +155,6 @@
         <item>K vitamini</item>
         <item>Çinko</item>
     </string-array>
-    <!-- Text units -->
     <!-- Content Description -->
     <string name="search_button">Ara</string>
     <string name="alert_dialog_warning_title">Uyarı</string>
@@ -665,7 +664,7 @@
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">İçindekileri çıkartın</string>
     <string name="extract_recycling_prompt">Geri dönüşüm talimatlarını çıkarın</string>
-    <string name="add_nutrient_prompt_text">Besin ögesi seviyelerini hesaplamak için besin değerlerini ekleyin</string>
+    <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
     <string name="add_category_prompt_text">Ürünü tamamlamaya yardım etmek için bir kategori ekleyin</string>
     <string name="add_nutrient_category_prompt_text">Ürünü tamamlamaya yardım etmek için bir kategori ve besin değerlerini ekleyin</string>
     <string name="couldnot_compute_ecoscore_prompt_text">Bu ürün için Eko-Puan hesaplayamadık. Kategori yeterince açıklayıcı olmayabilir veya bu kategori için destekleyici verilerimiz olmayabilir. Bunun bir hata olduğuna inanıyorsanız, aşağıya tıklayarak bize mail atabilirsiniz.</string>
@@ -704,7 +703,7 @@ Aynı zamanda bu listeye ürünleri arayarak ve ürün sayfasının sağ üstün
     <string name="empty"></string>
     <string name="add_product">Ürün ekle</string>
     <string name="add_another_product">Başka bir ürün ekle</string>
-    <string name="add_nutrition_facts_for_nutriscore">Besin ögesi seviyelerini hesaplamak için besin değerlerini ekleyin</string>
+    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
     <string name="product_summary_action_compare_button_label">Karşılaştır</string>
     <string name="product_summary_action_add_to_list_button_label">Listeye ekle</string>
     <string name="product_summary_action_edit_button_label">Düzenle</string>
