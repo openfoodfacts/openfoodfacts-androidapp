@@ -15,18 +15,20 @@ import com.fasterxml.jackson.core.JsonProcessingException
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import dagger.hilt.android.AndroidEntryPoint
 import openfoodfacts.github.scrachx.openfood.R
-import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabsHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback
 import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivity.Companion.start
+import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveName
 import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveNameDao
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper
+import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
 import openfoodfacts.github.scrachx.openfood.utils.SearchType
-import openfoodfacts.github.scrachx.openfood.utils.Utils
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class ProductAttributeFragment : BottomSheetDialogFragment() {
     private var bottomSheetTitleIcon: AppCompatImageView? = null
     private var mpInfantsImage: AppCompatImageView? = null
@@ -43,13 +45,19 @@ class ProductAttributeFragment : BottomSheetDialogFragment() {
     private var spElderlyImage: AppCompatImageView? = null
     private var customTabsIntent: CustomTabsIntent? = null
 
+    @Inject
+    lateinit var daoSession: DaoSession
+
+    @Inject
+    lateinit var localeManager: LocaleManager
+
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_product_attribute_details, container,
-                false)
+    ): View = inflater.inflate(R.layout.fragment_product_attribute_details, container, false)
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val customTabActivityHelper = CustomTabActivityHelper()
         customTabsIntent = CustomTabsHelper.getCustomTabsIntent(requireContext(), customTabActivityHelper.session)
         val bottomSheetDescription = view.findViewById<TextView>(R.id.description)
@@ -61,42 +69,46 @@ class ProductAttributeFragment : BottomSheetDialogFragment() {
             val descriptionString: String?
             val wikiLink: String?
             val arguments = requireArguments()
-
             val result = jacksonObjectMapper().readTree(arguments.getString(ARG_OBJECT))
+
             val description = result?.get("descriptions")
-            val siteLinks = result?.get("sitelinks")
             descriptionString = description?.let { getDescription(it) } ?: ""
+
+            val siteLinks = result?.get("sitelinks")
             wikiLink = siteLinks?.let { getWikiLink(it) } ?: ""
+
             val title = arguments.getString(ARG_TITLE) as String
             bottomSheetTitle.text = title
-            val searchType = arguments.getSerializable(ARG_SEARCH_TYPE) as SearchType
+
             if (descriptionString.isNotEmpty()) {
                 bottomSheetDescription.text = descriptionString
                 bottomSheetDescription.visibility = View.VISIBLE
             } else {
                 bottomSheetDescription.visibility = View.GONE
             }
-            buttonToBrowseProducts.setOnClickListener { start(requireContext(), searchType, title) }
+
             if (wikiLink.isNotEmpty()) {
                 wikipediaButton.setOnClickListener { openInCustomTab(wikiLink) }
                 wikipediaButton.visibility = View.VISIBLE
             } else {
                 wikipediaButton.visibility = View.GONE
             }
+
+            val searchType = arguments.getSerializable(ARG_SEARCH_TYPE) as SearchType
+            buttonToBrowseProducts.setOnClickListener { start(requireContext(), searchType, title) }
             val id = arguments.getLong(ARG_ID)
-            if (SearchType.ADDITIVE == searchType) {
-                val dao = Utils.daoSession.additiveNameDao
-                val additiveName = dao.queryBuilder()
+            if (searchType == SearchType.ADDITIVE) {
+                daoSession.additiveNameDao.queryBuilder()
                         .where(AdditiveNameDao.Properties.Id.eq(id)).unique()
-                updateContent(view, additiveName)
+                        ?.let { updateContent(view, it) }
+
             }
         } catch (e: JsonProcessingException) {
-            Log.e(javaClass.simpleName, "onCreateView", e)
+            Log.e(LOG_TAG, "onCreateView", e)
         }
-        return view
     }
 
-    private fun updateContent(view: View, additive: AdditiveName?) {
+    private fun updateContent(view: View, additive: AdditiveName) {
         mpInfantsImage = view.findViewById(R.id.mpInfants)
         mpToddlersImage = view.findViewById(R.id.mpToddlers)
         mpChildrenImage = view.findViewById(R.id.mpChildren)
@@ -109,31 +121,31 @@ class ProductAttributeFragment : BottomSheetDialogFragment() {
         spAdolescentsImage = view.findViewById(R.id.spAdolescents)
         spAdultsImage = view.findViewById(R.id.spAdults)
         spElderlyImage = view.findViewById(R.id.spElderly)
-        if (additive != null && additive.hasOverexposureData()) {
-            val exposureEvalTable = view.findViewById<View>(R.id.exposureEvalTable)
-            val efsaWarning = view.findViewById<TextView>(R.id.efsaWarning)
-            val overexposureRisk = additive.overexposureRisk
-            val isHighRisk = "high".equals(overexposureRisk, ignoreCase = true)
-            if (isHighRisk) {
-                bottomSheetTitleIcon!!.setImageResource(R.drawable.ic_additive_high_risk)
-            } else {
-                bottomSheetTitleIcon!!.setImageResource(R.drawable.ic_additive_moderate_risk)
-            }
-            efsaWarning.text = getString(R.string.efsa_warning_high_risk, additive.name)
-            bottomSheetTitleIcon!!.visibility = View.VISIBLE
-
-            // noel will override adi evaluation if present
-            updateAdditiveExposureTable(0, additive.exposureMeanGreaterThanAdi, R.drawable.yellow_circle)
-            updateAdditiveExposureTable(0, additive.exposureMeanGreaterThanNoael, R.drawable.red_circle)
-            updateAdditiveExposureTable(1, additive.exposure95ThGreaterThanAdi, R.drawable.yellow_circle)
-            updateAdditiveExposureTable(1, additive.exposure95ThGreaterThanNoael, R.drawable.red_circle)
-            exposureEvalTable.visibility = View.VISIBLE
+        if (!additive.hasOverexposureData()) return
+        val exposureEvalTable = view.findViewById<View>(R.id.exposureEvalTable)
+        val efsaWarning = view.findViewById<TextView>(R.id.efsaWarning)
+        val overexposureRisk = additive.overexposureRisk
+        val isHighRisk = "high".equals(overexposureRisk, ignoreCase = true)
+        if (isHighRisk) {
+            bottomSheetTitleIcon!!.setImageResource(R.drawable.ic_additive_high_risk)
+        } else {
+            bottomSheetTitleIcon!!.setImageResource(R.drawable.ic_additive_moderate_risk)
         }
+        efsaWarning.text = getString(R.string.efsa_warning_high_risk, additive.name)
+        bottomSheetTitleIcon!!.visibility = View.VISIBLE
+
+        // noel will override adi evaluation if present
+        updateAdditiveExposureTable(0, additive.exposureMeanGreaterThanAdi, R.drawable.yellow_circle)
+        updateAdditiveExposureTable(0, additive.exposureMeanGreaterThanNoael, R.drawable.red_circle)
+        updateAdditiveExposureTable(1, additive.exposure95ThGreaterThanAdi, R.drawable.yellow_circle)
+        updateAdditiveExposureTable(1, additive.exposure95ThGreaterThanNoael, R.drawable.red_circle)
+        exposureEvalTable.visibility = View.VISIBLE
     }
 
     private fun updateAdditiveExposureTable(row: Int, exposure: String?, drawableResId: Int) {
-        if (exposure != null) {
-            if (row == 0) {
+        if (exposure == null) return
+        when (row) {
+            0 -> {
                 if (exposure.contains("infants")) {
                     mpInfantsImage!!.setImageResource(drawableResId)
                 }
@@ -152,7 +164,8 @@ class ProductAttributeFragment : BottomSheetDialogFragment() {
                 if (exposure.contains("elderly")) {
                     mpElderlyImage!!.setImageResource(drawableResId)
                 }
-            } else if (row == 1) {
+            }
+            1 -> {
                 if (exposure.contains("infants")) {
                     spInfantsImage!!.setImageResource(drawableResId)
                 }
@@ -178,7 +191,7 @@ class ProductAttributeFragment : BottomSheetDialogFragment() {
     private fun getDescription(map: JsonNode): String? {
         var descriptionString: String? = null
 
-        val languageCode = LocaleHelper.getLanguage(OFFApplication.instance)
+        val languageCode = localeManager.getLanguage()
         if (map[languageCode] != null) {
             descriptionString = map[languageCode]["value"].asText()
         }
@@ -188,18 +201,18 @@ class ProductAttributeFragment : BottomSheetDialogFragment() {
         }
 
         if (descriptionString.isNullOrEmpty()) {
-            Log.i("ProductActivity", "Result for description is not found in native or english language.")
+            Log.i(LOG_TAG, "Result for description is not found in native or english language.")
         }
         return descriptionString
     }
 
     private fun getWikiLink(map: JsonNode): String? {
-        val languageCode = "${LocaleHelper.getLanguage(requireContext())}wiki"
+        val languageCode = "${localeManager.getLanguage()}wiki"
         return when {
             map[languageCode] != null -> map[languageCode]["url"].asText()
             map["enwiki"] != null -> map["enwiki"]["url"].asText()
             else -> {
-                Log.i("ProductActivity", "Result for wikilink is not found in native or english language.")
+                Log.i(LOG_TAG, "Result for wikilink is not found in native or english language.")
                 null
             }
         }
@@ -216,6 +229,7 @@ class ProductAttributeFragment : BottomSheetDialogFragment() {
     }
 
     companion object {
+        private val LOG_TAG = this::class.simpleName
         private const val ARG_OBJECT = "result"
         private const val ARG_ID = "code"
         private const val ARG_SEARCH_TYPE = "search_type"

@@ -1,7 +1,8 @@
 package openfoodfacts.github.scrachx.openfood.models
 
-import android.content.Context
-import com.fasterxml.jackson.annotation.*
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties
+import com.fasterxml.jackson.annotation.JsonInclude
+import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize
 import com.fasterxml.jackson.module.kotlin.convertValue
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
@@ -9,28 +10,15 @@ import openfoodfacts.github.scrachx.openfood.images.ImageSize
 import openfoodfacts.github.scrachx.openfood.models.entities.attribute.AttributeGroup
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.Keys.lcProductNameKey
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLocaleFromContext
 import openfoodfacts.github.scrachx.openfood.utils.ProductStringConverter
 import org.apache.commons.lang3.builder.ToStringBuilder
 import org.apache.commons.lang3.builder.ToStringStyle
-import java.io.Serializable
 import java.util.*
 import kotlin.collections.ArrayList
-import kotlin.collections.HashMap
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
-class Product : Serializable {
-    @get:JsonAnyGetter
-    val additionalProperties = HashMap<String, Any?>()
-
-
-    @JsonAnySetter
-    fun setAdditionalProperty(name: String, value: Any?) {
-        additionalProperties[name] = value
-    }
-
+class Product : SearchProduct() {
     /**
      * @return The additivesTags
      */
@@ -59,11 +47,6 @@ class Product : Serializable {
 
 
     /**
-     * A string containing the brands, comma separated
-     */
-    var brands: String? = null
-
-    /**
      * @return The brandsTags
      */
     @JsonProperty(ApiFields.Keys.BRANDS_TAGS)
@@ -80,11 +63,6 @@ class Product : Serializable {
      */
     @JsonProperty(ApiFields.Keys.CITIES_TAGS)
     val citiesTags: ArrayList<Any> = arrayListOf()
-
-    /**
-     * @return The code
-     */
-    lateinit var code: String
 
     /**
      * @return Conservation conditions
@@ -109,9 +87,6 @@ class Product : Serializable {
 
     @JsonProperty(ApiFields.Keys.CUSTOMER_SERVICE)
     private val customerService: String? = null
-
-    @JsonProperty(ApiFields.Keys.ECOSCORE)
-    val ecoscore: String? = null
 
     @JsonProperty(ApiFields.Keys.EDITORS_TAGS)
     val editors = ArrayList<String>()
@@ -140,36 +115,6 @@ class Product : Serializable {
      */
     @JsonProperty(ApiFields.Keys.IMAGE_FRONT_URL)
     val imageFrontUrl: String? = null
-
-    /**
-     * @return The imageIngredientsUrl
-     */
-    @JsonProperty(ApiFields.Keys.IMAGE_INGREDIENTS_URL)
-    val imageIngredientsUrl: String? = null
-
-    /**
-     * @return The imagePackagingUrl
-     */
-    @JsonProperty(ApiFields.Keys.IMAGE_PACKAGING_URL)
-    val imagePackagingUrl: String? = null
-
-    /**
-     * @return The imageNutritionUrl
-     */
-    @JsonProperty(ApiFields.Keys.IMAGE_NUTRITION_URL)
-    val imageNutritionUrl: String? = null
-
-    /**
-     * @return The imageSmallUrl
-     */
-    @JsonProperty(ApiFields.Keys.IMAGE_SMALL_URL)
-    private val imageSmallUrl: String? = null
-
-    /**
-     * @return The imageUrl
-     */
-    @JsonProperty(ApiFields.Keys.IMAGE_URL)
-    var imageUrl: String? = null
 
     @JsonProperty(ApiFields.Keys.INGREDIENTS)
     val ingredients = arrayListOf<Map<String, Any>>()
@@ -244,9 +189,6 @@ class Product : Serializable {
     @JsonProperty(ApiFields.Keys.NO_NUTRITION_DATA)
     val noNutritionData: String? = null
 
-    @JsonProperty(ApiFields.Keys.NOVA_GROUPS)
-    val novaGroups: String? = null
-
     /**
      * The nutrientLevels
      */
@@ -261,13 +203,6 @@ class Product : Serializable {
 
     @JsonProperty(ApiFields.Keys.NUTRITION_DATA_PER)
     val nutritionDataPer: String? = null
-
-    /**
-     * @return The NutriScore as specified by the
-     * [ApiFields.Keys.NUTRITION_GRADE_FR] api field.
-     */
-    @JsonProperty(ApiFields.Keys.NUTRITION_GRADE_FR)
-    val nutritionGradeFr: String? = null
 
     /**
      * @return The origins
@@ -289,23 +224,9 @@ class Product : Serializable {
     val packaging: String? = null
         get() = field?.replace(",", ", ")
 
-    /**
-     * Get the default product name.
-     *
-     * @return The default product name
-     */
-    @JsonProperty(ApiFields.Keys.PRODUCT_NAME)
-    @JsonDeserialize(converter = ProductStringConverter::class)
-    val productName: String? = null
 
     @JsonProperty(ApiFields.Keys.PURCHASE_PLACES)
     val purchasePlaces: String? = null
-
-    /**
-     * @return The quantity
-     */
-    @JsonProperty(ApiFields.Keys.QUANTITY)
-    val quantity: String? = null
 
     /**
      * @return Recycling instructions to discard
@@ -397,33 +318,6 @@ class Product : Serializable {
                             ?.replace("&quot", "'")
 
 
-    fun getImageSmallUrl(languageCode: String?) =
-            getSelectedImage(languageCode, ProductImageField.FRONT, ImageSize.SMALL)
-                    ?.ifBlank { null } ?: imageSmallUrl
-
-    fun getSelectedImage(languageCode: String?, type: ProductImageField, size: ImageSize): String? {
-        var images = additionalProperties[ApiFields.Keys.SELECTED_IMAGES] as Map<String?, Map<*, *>>?
-        if (images != null) {
-            images = images[type.toString()] as Map<String?, Map<*, *>>?
-            if (images != null) {
-                val imagesByLocale = images[size.name.toLowerCase(Locale.ROOT)] as Map<String?, String>?
-                if (imagesByLocale != null) {
-                    val url = imagesByLocale[languageCode]
-                    if (!url.isNullOrBlank()) {
-                        return url
-                    }
-                }
-            }
-        }
-        return when (type) {
-            ProductImageField.FRONT -> imageUrl
-            ProductImageField.INGREDIENTS -> imageIngredientsUrl
-            ProductImageField.NUTRITION -> imageNutritionUrl
-            ProductImageField.PACKAGING -> imagePackagingUrl
-            ProductImageField.OTHER -> null
-        }
-    }
-
     fun getAvailableLanguageForImage(type: ProductImageField, size: ImageSize): List<String> {
         val images = additionalProperties[ApiFields.Keys.SELECTED_IMAGES] as Map<String, Map<String, Map<String, String>>>?
         if (images != null) {
@@ -458,13 +352,9 @@ class Product : Serializable {
      * @param languageCode The language code for the language we get the product in.
      * @return The product name for the specified language code.
      * If null returns default product name.
-     * @see [getLocalProductName]
      */
     fun getProductName(languageCode: String) =
             getFieldForLanguage(ApiFields.Keys.PRODUCT_NAME, languageCode) ?: productName
-
-    fun getLocalProductName(context: Context?): String? = getProductName(getLanguage(context))
-
 
     fun getImageUrl(languageCode: String?): String? {
         val url = getSelectedImage(languageCode, ProductImageField.FRONT, ImageSize.DISPLAY)
@@ -477,12 +367,10 @@ class Product : Serializable {
         return if (nutritionGradeTags != null && nutritionGradeTags.isNotEmpty()) nutritionGradeTags[0] else null
     }
 
-    fun getAttributeGroups(locale: Locale): List<AttributeGroup> {
-        val attributeGroups = additionalProperties["${ApiFields.Keys.ATTRIBUTE_GROUPS}_${locale.language}"] as Any
+    fun getAttributeGroups(language: String): List<AttributeGroup> {
+        val attributeGroups = additionalProperties["${ApiFields.Keys.ATTRIBUTE_GROUPS}_${language}"] as Any
         return jacksonObjectMapper().convertValue(attributeGroups)
     }
-
-    fun getLocalAttributeGroups(context: Context) = getAttributeGroups(getLocaleFromContext(context))
 
     override fun toString() = ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
             .append("code", code)

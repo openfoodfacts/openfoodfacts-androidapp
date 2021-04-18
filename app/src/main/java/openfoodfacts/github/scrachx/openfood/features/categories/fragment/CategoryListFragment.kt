@@ -6,23 +6,21 @@ import android.os.Bundle
 import android.provider.SearchRecentSuggestions
 import android.view.*
 import android.widget.SearchView
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import io.reactivex.disposables.CompositeDisposable
+import dagger.hilt.android.AndroidEntryPoint
 import openfoodfacts.github.scrachx.openfood.R
-import openfoodfacts.github.scrachx.openfood.dagger.component.FragmentComponent
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentCategoryListBinding
-import openfoodfacts.github.scrachx.openfood.features.MVVMFragment
-import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
+import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
 import openfoodfacts.github.scrachx.openfood.features.viewmodel.category.CategoryFragmentViewModel
 import openfoodfacts.github.scrachx.openfood.utils.SearchSuggestionProvider
 import java.util.*
-import javax.inject.Inject
 
-class CategoryListFragment : MVVMFragment<CategoryFragmentViewModel, FragmentComponent?>() {
+@AndroidEntryPoint
+class CategoryListFragment : BaseFragment() {
 
-    @Inject
-    override lateinit var viewModel: CategoryFragmentViewModel
+    val viewModel: CategoryFragmentViewModel by viewModels()
 
     private var _binding: FragmentCategoryListBinding? = null
     private val binding get() = _binding!!
@@ -39,19 +37,22 @@ class CategoryListFragment : MVVMFragment<CategoryFragmentViewModel, FragmentCom
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         binding.recycler.setHasFixedSize(true)
         binding.recycler.layoutManager = LinearLayoutManager(context)
         binding.recycler.addItemDecoration(DividerItemDecoration(requireActivity(), DividerItemDecoration.VERTICAL))
+
         binding.viewModel = this.viewModel
+
         binding.fastScroller.setRecyclerView(binding.recycler)
         binding.recycler.viewTreeObserver.addOnGlobalLayoutListener {
-            if (this.viewModel.shownCategories.get()?.isEmpty() == true) {
+            if (this.viewModel.shownCategories.isEmpty()) {
                 binding.fastScroller.visibility = View.GONE
             } else {
                 binding.fastScroller.visibility = View.VISIBLE
                 // check for an empty item in the start of the list
-                if (viewModel.shownCategories.get()!![0].name!!.isEmpty()) {
-                    viewModel.shownCategories.get()!!.removeAt(0)
+                if (viewModel.shownCategories[0].name!!.isEmpty()) {
+                    viewModel.shownCategories.removeAt(0)
                     binding.recycler.adapter!!.notifyItemRemoved(0)
                     binding.recycler.adapter!!.notifyItemRangeChanged(0, binding.recycler.adapter!!.itemCount)
                 }
@@ -94,11 +95,4 @@ class CategoryListFragment : MVVMFragment<CategoryFragmentViewModel, FragmentCom
             }
         })
     }
-
-    override fun createComponent() =
-            (requireActivity() as BaseActivity).activityComponent!!.plusFragmentComponent()!!
-
-    override fun inject() = component!!.inject(this)
-
-    override fun bindProperties(compositeDisposable: CompositeDisposable?) = Unit // Not used here
 }

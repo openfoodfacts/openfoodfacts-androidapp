@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="@dimen/padding_normal"
+        android:text="@string/whats_new"
+        android:textColor="?android:textColorPrimary"
+        android:textSize="@dimen/font_larger"
+        android:textStyle="bold" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/changelog_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <TextView
+        android:id="@+id/changelog_label_help"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="@dimen/padding_large"
+        android:layout_marginTop="@dimen/font_normal"
+        android:layout_marginEnd="@dimen/padding_large"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:textColor="?android:textColorLink"
+        android:textSize="@dimen/font_normal"
+        android:textStyle="normal"
+        android:visibility="gone"
+        tools:text="@string/changelog_translation_help"
+        tools:visibility="visible" />
+
+    <Button
+        android:id="@+id/changelog_button_close"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="@dimen/padding_normal"
+        android:background="@drawable/rounded_button"
+        android:text="@string/got_it" />
+</LinearLayout>

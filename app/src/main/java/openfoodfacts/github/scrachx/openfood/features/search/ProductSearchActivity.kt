@@ -3,8 +3,8 @@ package openfoodfacts.github.scrachx.openfood.features.search
 import android.Manifest
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
-import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -17,42 +17,60 @@ import androidx.annotation.StringRes
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.preference.PreferenceManager
+import androidx.core.net.toUri
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.afollestad.materialdialogs.MaterialDialog
+import com.squareup.picasso.Picasso
+import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
-import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductBrowsingListBinding
-import openfoodfacts.github.scrachx.openfood.features.adapters.ProductsRecyclerViewAdapter
+import openfoodfacts.github.scrachx.openfood.features.adapters.ProductSearchAdapter
 import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.selectNavigationItem
 import openfoodfacts.github.scrachx.openfood.features.listeners.EndlessRecyclerViewScrollListener
 import openfoodfacts.github.scrachx.openfood.features.listeners.RecyclerItemClickListener
 import openfoodfacts.github.scrachx.openfood.features.scan.ContinuousScanActivity
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
-import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.Search
 import openfoodfacts.github.scrachx.openfood.models.SearchInfo
+import openfoodfacts.github.scrachx.openfood.models.SearchProduct
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.*
+import openfoodfacts.github.scrachx.openfood.utils.SearchType.*
 import java.text.NumberFormat
 import java.util.*
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class ProductSearchActivity : BaseActivity() {
     private var _binding: ActivityProductBrowsingListBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var client: OpenFoodAPIClient
+    @Inject
+    lateinit var client: OpenFoodAPIClient
+
+    @Inject
+    lateinit var productRepository: ProductRepository
+
+    @Inject
+    lateinit var picasso: Picasso
+
+    @Inject
+    lateinit var sharedPreferences: SharedPreferences
+
+    @Inject
+    lateinit var localeManager: LocaleManager
+
     private lateinit var mSearchInfo: SearchInfo
-    private lateinit var adapter: ProductsRecyclerViewAdapter
+    private lateinit var adapter: ProductSearchAdapter
 
     private var contributionType = 0
     private var disp = CompositeDisposable()
@@ -64,8 +82,6 @@ class ProductSearchActivity : BaseActivity() {
     private var setupDone = false
     private var mCountProducts = 0
     private var pageAddress = 1
-
-    override fun attachBaseContext(newBase: Context) = super.attachBaseContext(LocaleHelper.onCreate(newBase))
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -96,11 +112,11 @@ class ProductSearchActivity : BaseActivity() {
                 if (paths[3] == "cgi" && paths[4].contains("search.pl")) {
                     mSearchInfo.searchTitle = data.getQueryParameter("search_terms") ?: ""
                     mSearchInfo.searchQuery = data.getQueryParameter("search_terms") ?: ""
-                    mSearchInfo.searchType = SearchType.SEARCH
+                    mSearchInfo.searchType = SEARCH
                 } else {
                     mSearchInfo.searchTitle = paths[4]
                     mSearchInfo.searchQuery = paths[4]
-                    mSearchInfo.searchType = SearchType.fromUrl(paths[3]) ?: SearchType.SEARCH
+                    mSearchInfo.searchType = SearchType.fromUrl(paths[3]) ?: SEARCH
                 }
 
             } else {
@@ -130,7 +146,7 @@ class ProductSearchActivity : BaseActivity() {
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
                 mSearchInfo.searchQuery = query
-                mSearchInfo.searchType = SearchType.SEARCH
+                mSearchInfo.searchType = SEARCH
                 newSearchQuery()
                 return true
             }
@@ -146,7 +162,7 @@ class ProductSearchActivity : BaseActivity() {
                 return true
             }
         })
-        if (SearchType.CONTRIBUTOR == mSearchInfo.searchType) {
+        if (CONTRIBUTOR == mSearchInfo.searchType) {
             menu.findItem(R.id.action_set_type).isVisible = true
         }
         return true
@@ -171,16 +187,11 @@ class ProductSearchActivity : BaseActivity() {
                     title(R.string.show_by)
                     items(*contributionTypes)
                     itemsCallback { _, _, position, _ ->
-                        when (position) {
-                            1, 2, 3, 4, 5 -> {
-                                contributionType = position
-                                newSearchQuery()
-                            }
-                            else -> {
-                                contributionType = 0
-                                newSearchQuery()
-                            }
+                        contributionType = when (position) {
+                            1, 2, 3, 4, 5 -> position
+                            else -> 0
                         }
+                        newSearchQuery()
                     }
                 }.show()
                 true
@@ -190,10 +201,9 @@ class ProductSearchActivity : BaseActivity() {
     }
 
     private fun setupHungerGames() {
-        val sharedPref = PreferenceManager.getDefaultSharedPreferences(this)
-        val actualCountryTag = sharedPref.getString(getString(R.string.pref_country_key), "")
-        if ("" == actualCountryTag) {
-            ProductRepository.getCountryByCC2OrWorld(LocaleHelper.getLocaleFromContext().country)
+        val actualCountryTag = sharedPreferences.getString(getString(R.string.pref_country_key), "")
+        if (actualCountryTag.isNullOrBlank()) {
+            productRepository.getCountryByCC2OrWorld(localeManager.getLocale().country)
                     .observeOn(AndroidSchedulers.mainThread())
                     .map { it.tag }
                     .defaultIfEmpty("en:world")
@@ -205,7 +215,7 @@ class ProductSearchActivity : BaseActivity() {
     }
 
     private fun setupUrlHungerGames(countryTag: String?) {
-        val url = Uri.parse("https://hunger.openfoodfacts.org/questions?type=${mSearchInfo.searchType.url}&value_tag=${mSearchInfo.searchQuery}&country=$countryTag")
+        val url = "https://hunger.openfoodfacts.org/questions?type=${mSearchInfo.searchType.url}&value_tag=${mSearchInfo.searchQuery}&country=$countryTag".toUri()
         val builder = CustomTabsIntent.Builder()
         val customTabsIntent = builder.build()
         binding.btnHungerGames.visibility = View.VISIBLE
@@ -218,35 +228,35 @@ class ProductSearchActivity : BaseActivity() {
     private fun newSearchQuery() {
         supportActionBar?.title = mSearchInfo.searchTitle
         when (mSearchInfo.searchType) {
-            SearchType.BRAND -> {
+            BRAND -> {
                 supportActionBar!!.setSubtitle(R.string.brand_string)
                 setupHungerGames()
             }
-            SearchType.LABEL -> {
+            LABEL -> {
                 supportActionBar!!.subtitle = getString(R.string.label_string)
                 setupHungerGames()
             }
-            SearchType.CATEGORY -> {
+            CATEGORY -> {
                 supportActionBar!!.subtitle = getString(R.string.category_string)
                 setupHungerGames()
             }
-            SearchType.COUNTRY -> supportActionBar!!.setSubtitle(R.string.country_string)
-            SearchType.ORIGIN -> supportActionBar!!.setSubtitle(R.string.origin_of_ingredients)
-            SearchType.MANUFACTURING_PLACE -> supportActionBar!!.setSubtitle(R.string.manufacturing_place)
-            SearchType.ADDITIVE -> supportActionBar!!.setSubtitle(R.string.additive_string)
-            SearchType.SEARCH -> supportActionBar!!.setSubtitle(R.string.search_string)
-            SearchType.STORE -> supportActionBar!!.setSubtitle(R.string.store_subtitle)
-            SearchType.PACKAGING -> supportActionBar!!.setSubtitle(R.string.packaging_subtitle)
-            SearchType.CONTRIBUTOR -> supportActionBar!!.subtitle = getString(R.string.contributor_string)
-            SearchType.ALLERGEN -> supportActionBar!!.subtitle = getString(R.string.allergen_string)
-            SearchType.INCOMPLETE_PRODUCT -> supportActionBar!!.title = getString(R.string.products_to_be_completed)
-            SearchType.STATE -> {
+            COUNTRY -> supportActionBar!!.setSubtitle(R.string.country_string)
+            ORIGIN -> supportActionBar!!.setSubtitle(R.string.origin_of_ingredients)
+            MANUFACTURING_PLACE -> supportActionBar!!.setSubtitle(R.string.manufacturing_place)
+            ADDITIVE -> supportActionBar!!.setSubtitle(R.string.additive_string)
+            SEARCH -> supportActionBar!!.setSubtitle(R.string.search_string)
+            STORE -> supportActionBar!!.setSubtitle(R.string.store_subtitle)
+            PACKAGING -> supportActionBar!!.setSubtitle(R.string.packaging_subtitle)
+            CONTRIBUTOR -> supportActionBar!!.subtitle = getString(R.string.contributor_string)
+            ALLERGEN -> supportActionBar!!.subtitle = getString(R.string.allergen_string)
+            INCOMPLETE_PRODUCT -> supportActionBar!!.title = getString(R.string.products_to_be_completed)
+            STATE -> {
                 // TODO: 26/07/2020 use resources
                 supportActionBar!!.subtitle = "State"
             }
+            TRACE -> supportActionBar!!.setSubtitle(R.string.traces)
             else -> error("No match case found for ${mSearchInfo.searchType}")
         }
-        client = OpenFoodAPIClient(this@ProductSearchActivity, BuildConfig.OFWEBSITE)
         binding.progressBar.visibility = View.VISIBLE
         reloadSearch()
     }
@@ -285,28 +295,28 @@ class ProductSearchActivity : BaseActivity() {
     fun loadDataFromAPI() {
         val searchQuery = mSearchInfo.searchQuery
         when (mSearchInfo.searchType) {
-            SearchType.BRAND -> client.getProductsByBrand(searchQuery, pageAddress)
+            BRAND -> client.getProductsByBrand(searchQuery, pageAddress)
                     .startSearch(R.string.txt_no_matching_brand_products)
 
-            SearchType.COUNTRY -> client.getProductsByCountry(searchQuery, pageAddress)
+            COUNTRY -> client.getProductsByCountry(searchQuery, pageAddress)
                     .startSearch(R.string.txt_no_matching_country_products)
 
-            SearchType.ORIGIN -> client.getProductsByOrigin(searchQuery, pageAddress)
+            ORIGIN -> client.getProductsByOrigin(searchQuery, pageAddress)
                     .startSearch(R.string.txt_no_matching_country_products)
 
-            SearchType.MANUFACTURING_PLACE -> client.getProductsByManufacturingPlace(searchQuery, pageAddress)
+            MANUFACTURING_PLACE -> client.getProductsByManufacturingPlace(searchQuery, pageAddress)
                     .startSearch(R.string.txt_no_matching_country_products)
 
-            SearchType.ADDITIVE -> client.getProductsByAdditive(searchQuery, pageAddress)
+            ADDITIVE -> client.getProductsByAdditive(searchQuery, pageAddress)
                     .startSearch(R.string.txt_no_matching_additive_products)
 
-            SearchType.STORE -> client.getProductsByStore(searchQuery, pageAddress)
+            STORE -> client.getProductsByStore(searchQuery, pageAddress)
                     .startSearch(R.string.txt_no_matching_store_products)
 
-            SearchType.PACKAGING -> client.getProductsByPackaging(searchQuery, pageAddress)
+            PACKAGING -> client.getProductsByPackaging(searchQuery, pageAddress)
                     .startSearch(R.string.txt_no_matching_packaging_products)
 
-            SearchType.SEARCH -> {
+            SEARCH -> {
                 if (isBarcodeValid(searchQuery)) {
                     client.openProduct(searchQuery, this)
                 } else {
@@ -314,22 +324,22 @@ class ProductSearchActivity : BaseActivity() {
                             .startSearch(R.string.txt_no_matching_products, R.string.txt_broaden_search)
                 }
             }
-            SearchType.LABEL -> client.getProductsByLabel(searchQuery, pageAddress)
+            LABEL -> client.getProductsByLabel(searchQuery, pageAddress)
                     .startSearch(R.string.txt_no_matching_label_products)
 
-            SearchType.CATEGORY -> client.getProductsByCategory(searchQuery, pageAddress)
+            CATEGORY -> client.getProductsByCategory(searchQuery, pageAddress)
                     .startSearch(R.string.txt_no_matching__category_products)
 
-            SearchType.ALLERGEN -> client.getProductsByAllergen(searchQuery, pageAddress)
+            ALLERGEN -> client.getProductsByAllergen(searchQuery, pageAddress)
                     .startSearch(R.string.txt_no_matching_allergen_products)
 
-            SearchType.CONTRIBUTOR -> loadDataForContributor(searchQuery)
+            CONTRIBUTOR -> loadDataForContributor(searchQuery)
 
-            SearchType.STATE -> client.getProductsByStates(searchQuery, pageAddress)
+            STATE -> client.getProductsByStates(searchQuery, pageAddress)
                     .startSearch(R.string.txt_no_matching_allergen_products)
 
             // Get Products to be completed data and input it to loadData function
-            SearchType.INCOMPLETE_PRODUCT -> client.getIncompleteProducts(pageAddress)
+            INCOMPLETE_PRODUCT -> client.getIncompleteProducts(pageAddress)
                     .startSearch(R.string.txt_no_matching_incomplete_products)
 
             else -> Log.e("Products Browsing", "No match case found for " + mSearchInfo.searchType)
@@ -378,12 +388,12 @@ class ProductSearchActivity : BaseActivity() {
         if (pageAddress == 1) {
             val number = NumberFormat.getInstance(Locale.getDefault()).format(response.count.toLong())
             binding.textCountProduct.text = "${resources.getString(R.string.number_of_results)} $number"
-            val products: MutableList<Product?> = response.products.toMutableList()
+            val products: MutableList<SearchProduct?> = response.products.toMutableList()
             if (products.size < mCountProducts) {
                 products += null
             }
             if (setupDone) {
-                adapter = ProductsRecyclerViewAdapter(products, lowBatteryMode, this)
+                adapter = ProductSearchAdapter(products, lowBatteryMode, this, picasso, client, localeManager)
                 binding.productsRecyclerView.adapter = adapter
             }
             setUpRecyclerView(products)
@@ -458,7 +468,7 @@ class ProductSearchActivity : BaseActivity() {
         }
     }
 
-    private fun setUpRecyclerView(mProducts: MutableList<Product?>) {
+    private fun setUpRecyclerView(mProducts: MutableList<SearchProduct?>) {
         binding.swipeRefresh.isRefreshing = false
 
         binding.progressBar.visibility = View.INVISIBLE
@@ -471,7 +481,7 @@ class ProductSearchActivity : BaseActivity() {
             binding.productsRecyclerView.setHasFixedSize(true)
             val mLayoutManager = LinearLayoutManager(this@ProductSearchActivity, LinearLayoutManager.VERTICAL, false)
             binding.productsRecyclerView.layoutManager = mLayoutManager
-            adapter = ProductsRecyclerViewAdapter(mProducts, lowBatteryMode, this)
+            adapter = ProductSearchAdapter(mProducts, lowBatteryMode, this, picasso, client, localeManager)
             binding.productsRecyclerView.adapter = adapter
             val dividerItemDecoration = DividerItemDecoration(binding.productsRecyclerView.context, DividerItemDecoration.VERTICAL)
             binding.productsRecyclerView.addItemDecoration(dividerItemDecoration)

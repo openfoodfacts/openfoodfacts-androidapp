@@ -1,19 +1,30 @@
 package openfoodfacts.github.scrachx.openfood.jobs
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.util.Log
-import androidx.preference.PreferenceManager
+import androidx.hilt.work.HiltWorker
 import androidx.work.*
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedInject
 import io.reactivex.Single
 import openfoodfacts.github.scrachx.openfood.R
-import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.utils.OfflineProductService
+import javax.inject.Inject
 
-class OfflineProductWorker(context: Context, workerParams: WorkerParameters) : RxWorker(context, workerParams) {
+@HiltWorker
+class OfflineProductWorker @AssistedInject constructor(
+        @Assisted context: Context,
+        @Assisted workerParams: WorkerParameters
+) : RxWorker(context, workerParams) {
+
+    @Inject
+    lateinit var offlineProductService: OfflineProductService
+
     override fun createWork(): Single<Result> {
         val includeImages = inputData.getBoolean(KEY_INCLUDE_IMAGES, false)
         Log.d(WORK_TAG, "[START] doWork with includeImages: $includeImages")
-        return OfflineProductService.uploadAll(includeImages).map { shouldRetry ->
+        return offlineProductService.uploadAll(includeImages).map { shouldRetry ->
             if (shouldRetry) {
                 Log.d(WORK_TAG, "[RETRY] doWork with includeImages: $includeImages")
                 Result.retry()
@@ -32,10 +43,9 @@ class OfflineProductWorker(context: Context, workerParams: WorkerParameters) : R
                 .build()
 
         @JvmStatic
-        fun scheduleSync() {
+        fun scheduleSync(context: Context, sharedPreferences: SharedPreferences) {
             val constPics = Constraints.Builder()
-            val context = OFFApplication.instance
-            if (PreferenceManager.getDefaultSharedPreferences(context).getBoolean(context.getString(R.string.pref_enable_mobile_data_key), true)) {
+            if (sharedPreferences.getBoolean(context.getString(R.string.pref_enable_mobile_data_key), true)) {
                 constPics.setRequiredNetworkType(NetworkType.CONNECTED)
             } else {
                 constPics.setRequiredNetworkType(NetworkType.UNMETERED)

@@ -417,7 +417,7 @@
     <string name="device_offline_dialog_message">네트워크 연결이 필요합니다. 설정에서 변경하시겠습니까?</string>
     <string name="device_offline_dialog_negative">무시</string>
     <string name="device_offline_dialog_positive">설정</string>
-    <string name="scan_first_product">Scan First Product</string>
+    <string name="scan_first_product">Scan your first product</string>
     <string name="pref_delete_history">기록을 성공적으로 삭제</string>
     <string name="pref_enable_mobile_data_title">모바일 테이터를 사용하여 업로드하기</string>
     <string name="pref_enable_mobile_data_summary_on">모바일 데이터 &amp; WiFi를 사용하여 새 제품 업로드하기</string>
@@ -445,7 +445,7 @@
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
     <string name="faq_url">https://world.openfoodfacts.org/faq</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
-    <string name="hunger_game_url">https://world.openfoodfacts.org/hunger-game</string>
+    <string name="hunger_game_url">https://hunger.openfoodfacts.org/</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate the end of the url -->
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
@@ -810,5 +810,5 @@
     <string name="day">Day</string>
     <string name="night">Night</string>
     <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
-    <string name="hint_origin">Examples: USA, French, Italy</string>
+    <string name="hint_origin">Examples: USA, France, Italy</string>
 </resources>

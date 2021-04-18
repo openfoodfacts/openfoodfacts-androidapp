@@ -8,10 +8,10 @@ import androidx.core.content.edit
 import openfoodfacts.github.scrachx.openfood.models.DaoMaster
 import openfoodfacts.github.scrachx.openfood.models.DaoMaster.OpenHelper
 import openfoodfacts.github.scrachx.openfood.models.InvalidBarcodeDao
+import openfoodfacts.github.scrachx.openfood.models.entities.ListedProductDao
 import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProductDao
 import openfoodfacts.github.scrachx.openfood.models.entities.ProductListsDao
 import openfoodfacts.github.scrachx.openfood.models.entities.ToUploadProductDao
-import openfoodfacts.github.scrachx.openfood.models.entities.YourListedProductDao
 import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveDao
 import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveNameDao
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenDao
@@ -19,6 +19,8 @@ import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenNa
 import openfoodfacts.github.scrachx.openfood.models.entities.analysistag.AnalysisTagDao
 import openfoodfacts.github.scrachx.openfood.models.entities.analysistag.AnalysisTagNameDao
 import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.AnalysisTagConfigDao
+import openfoodfacts.github.scrachx.openfood.models.entities.brand.BrandDao
+import openfoodfacts.github.scrachx.openfood.models.entities.brand.BrandNameDao
 import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoryDao
 import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoryNameDao
 import openfoodfacts.github.scrachx.openfood.models.entities.country.CountryDao
@@ -123,7 +125,7 @@ class OFFDatabaseHelper @JvmOverloads constructor(
             }
             11 -> {
                 ProductListsDao.createTable(db, true)
-                YourListedProductDao.createTable(db, true)
+                ListedProductDao.createTable(db, true)
             }
             15 -> {
                 IngredientDao.createTable(db, true)
@@ -150,6 +152,10 @@ class OFFDatabaseHelper @JvmOverloads constructor(
             21 -> {
                 StoreDao.createTable(db, true)
                 StoreNameDao.createTable(db, true)
+            }
+            22 -> {
+                BrandDao.createTable(db, true)
+                BrandNameDao.createTable(db, true)
             }
         }
     }

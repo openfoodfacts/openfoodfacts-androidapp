@@ -1,6 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.models
 
-import openfoodfacts.github.scrachx.openfood.utils.bold
+import android.text.SpannableStringBuilder
+import androidx.core.text.bold
 
 /**
  * Header with bold values
@@ -16,9 +17,9 @@ class BoldNutrimentListItem(
         unit: CharSequence = "",
         modifier: CharSequence = ""
 ) : NutrimentListItem(
-        bold(title),
-        bold(value),
-        bold(servingValue),
-        bold(unit),
-        bold(modifier)
+        SpannableStringBuilder().bold { append(title) },
+        SpannableStringBuilder().bold { append(value) },
+        SpannableStringBuilder().bold { append(servingValue) },
+        SpannableStringBuilder().bold { append(unit) },
+        SpannableStringBuilder().bold { append(modifier) }
 )

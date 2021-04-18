@@ -17,50 +17,43 @@ package openfoodfacts.github.scrachx.openfood.app
 
 import android.util.Log
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.hilt.work.HiltWorkerFactory
 import androidx.multidex.MultiDexApplication
+import androidx.work.Configuration
+import dagger.hilt.android.HiltAndroidApp
 import io.reactivex.exceptions.UndeliverableException
 import io.reactivex.plugins.RxJavaPlugins
-import openfoodfacts.github.scrachx.openfood.AppFlavors.OBF
-import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
-import openfoodfacts.github.scrachx.openfood.AppFlavors.OPF
-import openfoodfacts.github.scrachx.openfood.AppFlavors.OPFF
-import openfoodfacts.github.scrachx.openfood.BuildConfig
-import openfoodfacts.github.scrachx.openfood.dagger.component.AppComponent
-import openfoodfacts.github.scrachx.openfood.dagger.component.AppComponent.Initializer.init
-import openfoodfacts.github.scrachx.openfood.dagger.module.AppModule
-import openfoodfacts.github.scrachx.openfood.models.DaoMaster
 import openfoodfacts.github.scrachx.openfood.models.DaoSession
-import openfoodfacts.github.scrachx.openfood.utils.OFFDatabaseHelper
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.greendao.query.QueryBuilder
 import java.io.IOException
-import openfoodfacts.github.scrachx.openfood.app.AnalyticsService.init as initAnalytics
+import javax.inject.Inject
 
-class OFFApplication : MultiDexApplication() {
+@HiltAndroidApp
+class OFFApplication : MultiDexApplication(), Configuration.Provider {
+
+    @Inject
+    lateinit var workerFactory: HiltWorkerFactory
+
+    @Inject
+    lateinit var daoSession: DaoSession
+
+    override fun getWorkManagerConfiguration() = Configuration.Builder()
+            .setWorkerFactory(workerFactory)
+            .build()
+
+
+    @Suppress("DEPRECATION")
     override fun onCreate() {
         super.onCreate()
-        instance = this
+        _instance = this
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
-        initAnalytics()
 
         EventBus.builder().addIndex(OFFEventsIndex()).installDefaultEventBus()
-
-        // Use only during development: DaoMaster.DevOpenHelper (Drops all table on Upgrade!)
-        // Use only during production: OFFDatabaseHelper (see on Upgrade!)
-        val dbName = when (BuildConfig.FLAVOR) {
-            OPFF -> "open_pet_food_facts"
-            OBF -> "open_beauty_facts"
-            OPF -> "open_products_facts"
-            OFF -> "open_food_facts"
-            else -> "open_food_facts"
-        }
-        daoSession = DaoMaster(OFFDatabaseHelper(this, dbName).writableDb).newSession()
 
         // DEBUG
         QueryBuilder.LOG_VALUES = DEBUG
         QueryBuilder.LOG_SQL = DEBUG
-        appComponent = init(AppModule(this))
-        appComponent.inject(this)
         RxJavaPlugins.setErrorHandler {
             when (it) {
                 is UndeliverableException ->
@@ -88,18 +81,9 @@ class OFFApplication : MultiDexApplication() {
         private const val DEBUG = false
         val LOG_TAG = OFFApplication::class.simpleName!!
 
-        @JvmStatic
-        lateinit var daoSession: DaoSession
+        @Deprecated("Use hilt.")
+        lateinit var _instance: OFFApplication
             @Synchronized
             private set
-
-        lateinit var instance: OFFApplication
-            @Synchronized
-            private set
-        @JvmStatic
-        lateinit var appComponent: AppComponent
-            @Synchronized
-            private set
-
     }
 }

@@ -15,30 +15,25 @@
  */
 package openfoodfacts.github.scrachx.openfood.features.shared
 
+import android.content.Context
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import dagger.hilt.EntryPoints
 import openfoodfacts.github.scrachx.openfood.R
-import openfoodfacts.github.scrachx.openfood.app.OFFApplication.Companion.appComponent
-import openfoodfacts.github.scrachx.openfood.dagger.component.ActivityComponent
-import openfoodfacts.github.scrachx.openfood.dagger.module.ActivityModule
 import openfoodfacts.github.scrachx.openfood.features.scan.ContinuousScanActivity
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.onCreate
+import openfoodfacts.github.scrachx.openfood.hilt.AppEntryPoint
 import openfoodfacts.github.scrachx.openfood.utils.MY_PERMISSIONS_REQUEST_CAMERA
 import openfoodfacts.github.scrachx.openfood.utils.getLoginPreferences
 
 abstract class BaseActivity : AppCompatActivity() {
-    var activityComponent: ActivityComponent? = null
-        private set
 
-    companion object {
-        init {
-            AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
-        }
+    override fun attachBaseContext(newBase: Context) {
+        val lm = EntryPoints.get(newBase.applicationContext, AppEntryPoint::class.java).localeManager()
+        super.attachBaseContext(lm.restoreLocalizedContext(newBase))
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,13 +41,7 @@ abstract class BaseActivity : AppCompatActivity() {
         if (resources.getBoolean(R.bool.portrait_only)) {
             requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         }
-        activityComponent = appComponent.plusActivityComponent(ActivityModule(this))
-        activityComponent!!.inject(this)
-    }
-
-    override fun setContentView(view: View) {
-        super.setContentView(view)
-        onCreate(this)
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
     }
 
     fun getUserLogin() = getLoginPreferences().getString("user", null)

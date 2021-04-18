@@ -209,99 +209,6 @@
         <item>Zinc</item>
     </string-array>
 
-    <!-- Text units -->
-    <string-array name="languages_array" translatable="false">
-        <item>aa</item>
-        <item>ach</item>
-        <item>af</item>
-        <item>ak</item>
-        <item>am</item>
-        <item>ar</item>
-        <item>as</item>
-        <item>ast</item>
-        <item>az</item>
-        <item>b+sr+Cyrl</item>
-        <item>b+sr+Latn</item>
-        <item>be</item>
-        <item>bn</item>
-        <item>bg</item>
-        <item>ca</item>
-        <item>cs</item>
-        <item>da</item>
-        <item>de</item>
-        <item>el</item>
-        <item>en</item>
-        <item>eo</item>
-        <item>es</item>
-        <item>et</item>
-        <item>eu</item>
-        <item>fa</item>
-        <item>fi</item>
-        <item>fil</item>
-        <item>fr</item>
-        <item>ga</item>
-        <item>gl</item>
-        <item>gu</item>
-        <item>he</item>
-        <item>hi</item>
-        <item>hu</item>
-        <item>hr</item>
-        <item>hy</item>
-        <item>id</item>
-        <item>it</item>
-        <item>is</item>
-        <item>ja</item>
-        <item>kab</item>
-        <item>kk</item>
-        <item>km</item>
-        <item>ko</item>
-        <item>ku</item>
-        <item>lo</item>
-        <item>lt</item>
-        <item>lv</item>
-        <item>mg</item>
-        <item>ml</item>
-        <item>mn</item>
-        <item>ms</item>
-        <item>mt</item>
-        <item>my</item>
-        <item>ne</item>
-        <item>no</item>
-        <item>nb</item>
-        <item>nl-BE</item>
-        <item>nl</item>
-        <item>pl</item>
-        <item>pt-BR</item>
-        <item>pt</item>
-        <item>ro</item>
-        <item>ru</item>
-        <item>si</item>
-        <item>sl</item>
-        <item>sk</item>
-        <item>sv</item>
-        <item>ta</item>
-        <item>te</item>
-        <item>tg</item>
-        <item>th</item>
-        <item>ti</item>
-        <item>tl</item>
-        <item>tr</item>
-        <item>ug</item>
-        <item>uk</item>
-        <item>uz</item>
-        <item>vi</item>
-        <item>wa</item>
-        <item>wo</item>
-        <item>xh</item>
-        <item>yi</item>
-        <item>yo</item>
-        <item>zh-CN</item>
-        <item>zh-HK</item>
-        <item>zh-TW</item>
-        <item>zh</item>
-        <item>zu</item>
-    </string-array>
-
     <string name="help_translate_ingredients_link" translatable="false">https://world-%1$s.openfoodfacts.org/ingredients?translate=1</string>
 
     <!-- Content Description -->
@@ -613,7 +520,7 @@
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
     <string name="faq_url">https://world.openfoodfacts.org/faq</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
-    <string name="hunger_game_url">https://world.openfoodfacts.org/hunger-game</string>
+    <string name="hunger_game_url">https://hunger.openfoodfacts.org/</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate the end of the url -->
     <string name="advanced_search_url" translatable="false">https://world.openfoodfacts.org/cgi/search.pl</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
@@ -679,7 +586,7 @@
     <string name="by_barcode">Barcode</string>
     <string name="by_time">Recently Viewed</string>
     <string name="sort">Sort</string>
-    <string name="by_nutrition_grade">Nutrition Grade</string>
+    <string name="by_nutrition_grade">Nutri-Score</string>
     <string name="sort_by">Sort by</string>
 
     <!-- strings related to share images -->

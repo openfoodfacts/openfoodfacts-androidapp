@@ -14,6 +14,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.google.android.material.snackbar.Snackbar
+import com.squareup.picasso.Picasso
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import io.reactivex.rxkotlin.addTo
@@ -31,20 +32,20 @@ import org.json.JSONException
  */
 class ProductPhotosAdapter(
         private val context: Context,
+        private val picasso: Picasso,
+        private val client: OpenFoodAPIClient,
         private val product: Product,
         private val images: List<String>,
         private val snackView: View? = null,
-        private val onImageClick: (Int) -> Unit,
-
-        ) : RecyclerView.Adapter<ProductPhotoViewHolder>(), Disposable {
-    private val isLoggedIn = context.isUserSet()
-    private val openFoodAPIClient = OpenFoodAPIClient(context)
+        private val onImageClick: (Int) -> Unit
+) : RecyclerView.Adapter<ProductPhotoViewHolder>(), Disposable {
+    private val isLoggedIn by lazy { context.isUserSet() }
     private val disp = CompositeDisposable()
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductPhotoViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.images_item, parent, false)
-        return ProductPhotoViewHolder(itemView)
+        return ProductPhotoViewHolder(itemView, picasso)
     }
 
     override fun onBindViewHolder(holder: ProductPhotoViewHolder, position: Int) = holder.run {
@@ -54,12 +55,11 @@ class ProductPhotosAdapter(
             if (!isLoggedIn) {
                 context.startActivity(Intent(context, LoginActivity::class.java))
             } else {
-                PopupMenu(context, holder.itemView).let {
+                PopupMenu(context, holder.itemView).also {
                     it.inflate(R.menu.menu_image_edit)
                     it.setOnMenuItemClickListener(PopupItemClickListener(position))
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) it.setForceShowIcon(true)
-                    it.show()
-                }
+                }.show()
             }
         }
     }
@@ -91,14 +91,13 @@ class ProductPhotosAdapter(
             )
             imgMap[IMAGE_STRING_ID] = when (item.itemId) {
                 R.id.report_image -> {
-                    context.startActivity(Intent.createChooser(
-                            Intent(Intent.ACTION_SEND).apply {
-                                data = Uri.parse("mailto:")
-                                type = OpenFoodAPIClient.MIME_TEXT
-                                putExtra(Intent.EXTRA_EMAIL, "Open Food Facts <contact@openfoodfacts.org>")
-                                putExtra(Intent.EXTRA_SUBJECT, "Photo report for product ${product.code}")
-                                putExtra(Intent.EXTRA_TEXT, "I've spotted a problematic photo for product ${product.code}")
-                            }, context.getString(R.string.report_email_chooser_title)))
+                    context.startActivity(Intent.createChooser(Intent(Intent.ACTION_SEND).apply {
+                        data = Uri.parse("mailto:")
+                        type = "text/plain"
+                        putExtra(Intent.EXTRA_EMAIL, "Open Food Facts <contact@openfoodfacts.org>")
+                        putExtra(Intent.EXTRA_SUBJECT, "Photo report for product ${product.code}")
+                        putExtra(Intent.EXTRA_TEXT, "I've spotted a problematic photo for product ${product.code}")
+                    }, context.getString(R.string.report_email_chooser_title)))
                     return true
                 }
 
@@ -108,7 +107,10 @@ class ProductPhotosAdapter(
                 R.id.set_front_image -> product.getImageStringKey(ProductImageField.FRONT)
                 else -> product.getImageStringKey(ProductImageField.OTHER)
             }
-            openFoodAPIClient.editImage(product.code, imgMap)
+            if (snackView == null) Toast.makeText(context, context.getString(R.string.changes_saved), Toast.LENGTH_SHORT).show()
+            else Snackbar.make(snackView, R.string.changes_saved, Snackbar.LENGTH_SHORT).show()
+
+            client.editImage(product.code, imgMap)
                     .subscribe { response -> displaySetImageName(response) }
                     .addTo(disp)
             return true

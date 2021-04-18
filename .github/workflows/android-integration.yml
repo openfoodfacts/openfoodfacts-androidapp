@@ -7,95 +7,130 @@ on:
     branches: [develop]
 
 jobs:
+  compile_screenshots:
+    name: Compile Screenshot Tests
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v2
+
+      - name: Set up JDK 11
+        uses: actions/setup-java@v2
+        with:
+          distribution: "adopt"
+          java-version: "11"
+
+      - name: Compile screenshots android tests
+        uses: eskatos/gradle-command-action@v1
+        with:
+          arguments: >
+            compileOffPlaystoreScreenshotsAndroidTestSources 
+            -PtestBuildType=screenshots
+
   test:
-    name: Run Unit Tests
+    name: Unit Tests
     runs-on: ubuntu-20.04
 
     steps:
       - name: Checkout sources
         uses: actions/checkout@v2
 
-      - name: Set up JDK 1.8
-        uses: actions/setup-java@v1
+      - name: Set up JDK 11
+        uses: actions/setup-java@v2
         with:
-          java-version: 1.8
+          distribution: "adopt"
+          java-version: "11"
 
-      - name: Screenshots android tests
+      - name: Run unit tests
         uses: eskatos/gradle-command-action@v1
         with:
-          arguments: compileOffScreenshotsAndroidTestSources --stacktrace --info -PtestBuildType=screenshots
+          arguments: >
+            testObfPlaystoreDebugUnitTest
+            testOffPlaystoreDebugUnitTest
+            testOpfPlaystoreDebugUnitTest
+            testOpffPlaystoreDebugUnitTest
 
-      - name: Unit tests
-        uses: eskatos/gradle-command-action@v1
-        with:
-          arguments: testObfDebugUnitTest testOffDebugUnitTest testOpfDebugUnitTest testOpffDebugUnitTest --stacktrace
-
-  apk:
-    name: Generate APK
+  assemble_apk:
+    name: Assemble APKs
     runs-on: ubuntu-20.04
 
     steps:
       - name: Checkout sources
         uses: actions/checkout@v2
 
-      - name: Set up JDK 1.8
-        uses: actions/setup-java@v1
+      - name: Set up JDK 11
+        uses: actions/setup-java@v2
         with:
-          java-version: 1.8
+          distribution: "adopt"
+          java-version: "11"
 
-      - name: Workaround for Android Gradle plugin issue
-        run: "echo \"ndk.dir=${ANDROID_HOME}/ndk-bundle\" > local.properties"
+      - name: Workaround for Android Gradle Plugin issue
+        run: 'echo "ndk.dir=${ANDROID_HOME}/ndk-bundle" > local.properties'
 
-      - name: Build debug APKs
+      - name: Assemble debug APKs
         uses: eskatos/gradle-command-action@v1
         with:
-          arguments: assembleDebug --stacktrace
+          arguments: assembleDebug
 
-      - name: Upload OBF APK
-        uses: actions/upload-artifact@v2.2.2
+      - name: Upload OBF APKs
+        uses: actions/upload-artifact@v2.2.3
         with:
-          name: obf
-          path: app/build/outputs/apk/obf/debug/app-obf-debug.apk
+          name: OBF
+          path: |
+            ./app/build/outputs/apk/obfPlaystore/debug/app-obf-playstore-debug.apk
+            ./app/build/outputs/apk/obfFdroid/debug/app-obf-fdroid-debug.apk
 
       - name: Upload OFF APK
-        uses: actions/upload-artifact@v2.2.2
+        uses: actions/upload-artifact@v2.2.3
         with:
-          name: off
-          path: app/build/outputs/apk/off/debug/app-off-debug.apk
+          name: OFF
+          path: |
+            ./app/build/outputs/apk/offPlaystore/debug/app-off-playstore-debug.apk
+            ./app/build/outputs/apk/offFdroid/debug/app-off-fdroid-debug.apk
 
       - name: Upload OPF APK
-        uses: actions/upload-artifact@v2.2.2
+        uses: actions/upload-artifact@v2.2.3
         with:
-          name: opf
-          path: app/build/outputs/apk/opf/debug/app-opf-debug.apk
+          name: OPF
+          path: |
+            ./app/build/outputs/apk/opfPlaystore/debug/app-opf-playstore-debug.apk
+            ./app/build/outputs/apk/opfFdroid/debug/app-opf-fdroid-debug.apk
 
       - name: Upload OPFF APK
-        uses: actions/upload-artifact@v2.2.2
+        uses: actions/upload-artifact@v2.2.3
         with:
-          name: opff
-          path: app/build/outputs/apk/opff/debug/app-opff-debug.apk
+          name: OPFF
+          path: |
+            ./app/build/outputs/apk/opffPlaystore/debug/app-opf-playstore-debug.apk
+            ./app/build/outputs/apk/opffFdroid/debug/app-opff-fdroid-debug.apk
+
+
 
 #  lint:
-#    name: Android Lint
+#    name: Lint
 #    runs-on: ubuntu-20.04
 #
 #    steps:
 #      - name: Checkout sources
 #        uses: actions/checkout@v2
 #
-#      - name: Set up JDK 1.8
-#        uses: actions/setup-java@v1
+#      - name: Set up JDK 11
+#        uses: actions/setup-java@v2
 #        with:
-#          java-version: 1.8
+#          distribution: 'adopt'
+#          java-version: '11'
 #
-#      - name: Workaround for Android Gradle plugin issue
+#      - name: Workaround for Android Gradle Plugin issue
 #        run: "echo \"ndk.dir=${ANDROID_HOME}/ndk-bundle\" > local.properties"
 #
-#      - name: Increase memory limit for Gradle
-#        run: "export GRADLE_OPTS=\"-Xmx4G\""
+#      - name: Increase gradle daemon memory
+#        run: "echo \"org.gradle.jvmargs=-Xmx4096m\" > gradle.properties"
 #
-#      - name: Run gradle android lint
-#        run: ./gradlew lint
+#      - name: Lint sources
+#        uses: eskatos/gradle-command-action@v1
+#        with:
+#          arguments: lint --stacktrace
 #
 #      - name: Generate GitHub annotations
 #        uses: yutailang0119/action-android-lint@v1.0.2

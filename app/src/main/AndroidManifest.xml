@@ -44,9 +44,16 @@
         <meta-data
             android:name="io.sentry.session-tracking.enable"
             android:value="true" /> <!-- 18:9 aspect ratio support -->
+      <!--<meta-data android:name="io.sentry.auto-init" android:value="false" />-->
         <meta-data
             android:name="android.max_aspect"
             android:value="2.1" />
+
+        <provider
+            android:name="androidx.work.impl.WorkManagerInitializer"
+            android:authorities="${applicationId}.workmanager-init"
+            android:exported="false"
+            tools:node="remove" />
 
         <provider
             android:name=".utils.SearchSuggestionProvider"

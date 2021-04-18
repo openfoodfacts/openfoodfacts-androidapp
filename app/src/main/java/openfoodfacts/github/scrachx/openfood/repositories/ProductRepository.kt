@@ -15,14 +15,16 @@
  */
 package openfoodfacts.github.scrachx.openfood.repositories
 
+import android.content.Context
 import android.util.Log
 import androidx.core.content.edit
 import com.squareup.picasso.Picasso
+import dagger.hilt.android.qualifiers.ApplicationContext
+import io.reactivex.Completable
 import io.reactivex.Maybe
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
 import okhttp3.Credentials
-import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.models.*
 import openfoodfacts.github.scrachx.openfood.models.entities.additive.*
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.*
@@ -30,6 +32,7 @@ import openfoodfacts.github.scrachx.openfood.models.entities.analysistag.Analysi
 import openfoodfacts.github.scrachx.openfood.models.entities.analysistag.AnalysisTagNameDao
 import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.AnalysisTagConfig
 import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.AnalysisTagConfigDao
+import openfoodfacts.github.scrachx.openfood.models.entities.brand.Brand
 import openfoodfacts.github.scrachx.openfood.models.entities.category.*
 import openfoodfacts.github.scrachx.openfood.models.entities.country.Country
 import openfoodfacts.github.scrachx.openfood.models.entities.ingredient.*
@@ -40,11 +43,12 @@ import openfoodfacts.github.scrachx.openfood.models.entities.states.StatesNameDa
 import openfoodfacts.github.scrachx.openfood.models.entities.store.Store
 import openfoodfacts.github.scrachx.openfood.models.entities.tag.Tag
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
-import openfoodfacts.github.scrachx.openfood.network.CommonApiManager.analysisDataApi
-import openfoodfacts.github.scrachx.openfood.network.CommonApiManager.robotoffApi
-import openfoodfacts.github.scrachx.openfood.repositories.TaxonomiesManager.getTaxonomyData
+import openfoodfacts.github.scrachx.openfood.network.services.AnalysisDataAPI
+import openfoodfacts.github.scrachx.openfood.network.services.RobotoffAPI
 import openfoodfacts.github.scrachx.openfood.utils.getLoginPreferences
 import org.greenrobot.greendao.query.WhereCondition.StringCondition
+import javax.inject.Inject
+import javax.inject.Singleton
 
 /**
  * This is a repository class which implements repository interface.
@@ -52,7 +56,14 @@ import org.greenrobot.greendao.query.WhereCondition.StringCondition
  * @author Lobster
  * @since 03.03.18
  */
-object ProductRepository {
+@Singleton
+class ProductRepository @Inject constructor(
+        @ApplicationContext private val context: Context,
+        private val daoSession: DaoSession,
+        private val analysisDataApi: AnalysisDataAPI,
+        private val robotoffApi: RobotoffAPI,
+        private val taxonomiesManager: TaxonomiesManager
+) {
 
     /**
      * Load labels from the server or local database
@@ -60,7 +71,7 @@ object ProductRepository {
      * @return The list of Labels.
      */
     fun reloadLabelsFromServer() =
-            getTaxonomyData(Taxonomy.LABEL, this, true, OFFApplication.daoSession.labelDao)
+            taxonomiesManager.getTaxonomyData(Taxonomy.LABEL, true, daoSession.labelDao, this)
 
     fun loadLabels(lastModifiedDate: Long) = analysisDataApi.getLabels()
             .map { it.map() }
@@ -75,7 +86,7 @@ object ProductRepository {
      * @return The list of Tags.
      */
     fun reloadTagsFromServer() =
-            getTaxonomyData(Taxonomy.TAGS, this, true, OFFApplication.daoSession.tagDao)
+            taxonomiesManager.getTaxonomyData(Taxonomy.TAGS, true, daoSession.tagDao, this)
 
     fun loadTags(lastModifiedDate: Long) = analysisDataApi.getTags()
             .map { it.tags }
@@ -85,7 +96,7 @@ object ProductRepository {
             }
 
     fun reloadInvalidBarcodesFromServer() =
-            getTaxonomyData(Taxonomy.INVALID_BARCODES, this, true, OFFApplication.daoSession.invalidBarcodeDao)
+            taxonomiesManager.getTaxonomyData(Taxonomy.INVALID_BARCODES, true, daoSession.invalidBarcodeDao, this)
 
     fun loadInvalidBarcodes(lastModifiedDate: Long) = analysisDataApi.getInvalidBarcodes()
             .map { strings -> strings.map { InvalidBarcode(it) } }
@@ -101,10 +112,10 @@ object ProductRepository {
      */
     fun reloadAllergensFromServer(): Single<List<Allergen>> =
             // FIXME: this returns 404
-            getTaxonomyData(Taxonomy.ALLERGEN, this, true, OFFApplication.daoSession.allergenDao)
+            taxonomiesManager.getTaxonomyData(Taxonomy.ALLERGEN, true, daoSession.allergenDao, this)
 
     fun getAllergens(): Single<List<Allergen>> =
-            getTaxonomyData(Taxonomy.ALLERGEN, this, false, OFFApplication.daoSession.allergenDao)
+            taxonomiesManager.getTaxonomyData(Taxonomy.ALLERGEN, false, daoSession.allergenDao, this)
 
     fun loadAllergens(lastModifiedDate: Long): Single<List<Allergen>> = analysisDataApi.getAllergens()
             .map { it.map() }
@@ -119,7 +130,7 @@ object ProductRepository {
      * @return The list of countries.
      */
     fun reloadCountriesFromServer(): Single<List<Country>> =
-            getTaxonomyData(Taxonomy.COUNTRY, this, true, OFFApplication.daoSession.countryDao)
+            taxonomiesManager.getTaxonomyData(Taxonomy.COUNTRY, true, daoSession.countryDao, this)
 
     fun loadCountries(lastModifiedDate: Long): Single<List<Country>> = analysisDataApi.getCountries()
             .map { it.map() }
@@ -134,9 +145,9 @@ object ProductRepository {
      * @return The list of categories.
      */
     fun reloadCategoriesFromServer() =
-            getTaxonomyData(Taxonomy.CATEGORY, this, true, OFFApplication.daoSession.categoryDao)
+            taxonomiesManager.getTaxonomyData(Taxonomy.CATEGORY, true, daoSession.categoryDao, this)
 
-    fun getCategories() = getTaxonomyData(Taxonomy.CATEGORY, this, false, OFFApplication.daoSession.categoryDao)
+    fun getCategories() = taxonomiesManager.getTaxonomyData(Taxonomy.CATEGORY, false, daoSession.categoryDao, this)
 
     fun loadCategories(lastModifiedDate: Long) = analysisDataApi.getCategories()
             .map { it.map() }
@@ -151,7 +162,7 @@ object ProductRepository {
      * @return The list of allergens.
      */
     fun getEnabledAllergens(): List<Allergen> =
-            OFFApplication.daoSession.allergenDao.queryBuilder()
+            daoSession.allergenDao.queryBuilder()
                     .where(AllergenDao.Properties.Enabled.eq("true"))
                     .list()
 
@@ -161,7 +172,7 @@ object ProductRepository {
      * @return The list of additives.
      */
     fun reloadAdditivesFromServer() =
-            getTaxonomyData(Taxonomy.ADDITIVE, this, true, OFFApplication.daoSession.additiveDao)
+            taxonomiesManager.getTaxonomyData(Taxonomy.ADDITIVE, true, daoSession.additiveDao, this)
 
     fun loadAdditives(lastModifiedDate: Long) = analysisDataApi.getAdditives()
             .map { it.map() }
@@ -181,7 +192,7 @@ object ProductRepository {
      * @return The ingredients in the product.
      */
     fun reloadIngredientsFromServer(): Single<List<Ingredient>> =
-            getTaxonomyData(Taxonomy.INGREDIENT, this, true, OFFApplication.daoSession.ingredientDao)
+            taxonomiesManager.getTaxonomyData(Taxonomy.INGREDIENT, true, daoSession.ingredientDao, this)
 
     fun loadIngredients(lastModifiedDate: Long): Single<List<Ingredient>> = analysisDataApi.getIngredients()
             .map { it.map() }
@@ -196,13 +207,13 @@ object ProductRepository {
      * @return The list of states.
      */
     fun reloadStatesFromServer(): Single<List<States>> =
-            getTaxonomyData(Taxonomy.STATES, this, true, OFFApplication.daoSession.statesDao)
+            taxonomiesManager.getTaxonomyData(Taxonomy.STATES, true, daoSession.statesDao, this)
 
     fun loadStates(lastModifiedDate: Long): Single<List<States>> = analysisDataApi.getStates()
             .map { it.map() }
-            .doOnSuccess{
+            .doOnSuccess {
                 saveState(it)
-                updateLastDownloadDateInSettings(Taxonomy.STATES,lastModifiedDate)
+                updateLastDownloadDateInSettings(Taxonomy.STATES, lastModifiedDate)
             }
 
     /**
@@ -211,13 +222,23 @@ object ProductRepository {
      * @return The list of stores.
      */
     fun reloadStoresFromServer(): Single<List<Store>> =
-            getTaxonomyData(Taxonomy.STORES, this, true, OFFApplication.daoSession.storeDao)
+            taxonomiesManager.getTaxonomyData(Taxonomy.STORES, true, daoSession.storeDao, this)
 
     fun loadStores(lastModifiedDate: Long): Single<List<Store>> = analysisDataApi.getStores()
             .map { it.map() }
-            .doOnSuccess{
+            .doOnSuccess {
                 saveStores(it)
-                updateLastDownloadDateInSettings(Taxonomy.STORES,lastModifiedDate)
+                updateLastDownloadDateInSettings(Taxonomy.STORES, lastModifiedDate)
+            }
+
+    fun reloadBrandsFromServer(): Single<List<Brand>> =
+            taxonomiesManager.getTaxonomyData(Taxonomy.BRANDS, true, daoSession.brandDao, this)
+
+    fun loadBrands(lastModifiedDate: Long): Single<List<Brand>> = analysisDataApi.getBrands()
+            .map { it.map() }
+            .doOnSuccess {
+                saveBrands(it)
+                updateLastDownloadDateInSettings(Taxonomy.BRANDS, lastModifiedDate)
             }
 
     /**
@@ -227,7 +248,7 @@ object ProductRepository {
      * @param lastDownload Date of last update on Long format
      */
     private fun updateLastDownloadDateInSettings(taxonomy: Taxonomy, lastDownload: Long) {
-        OFFApplication.instance.getSharedPreferences("prefs", 0)
+        context.getSharedPreferences("prefs", 0)
                 .edit { putLong(taxonomy.lastDownloadTimeStampPreferenceId, lastDownload) }
         Log.i(LOG_TAG, "Set lastDownload of $taxonomy to $lastDownload")
     }
@@ -241,17 +262,17 @@ object ProductRepository {
      * Label and LabelName has One-To-Many relationship, therefore we need to save them separately.
      */
     private fun saveLabels(labels: List<Label>) {
-        OFFApplication.daoSession.database.beginTransaction()
+        daoSession.database.beginTransaction()
         try {
             labels.forEach { label ->
-                OFFApplication.daoSession.labelDao.insertOrReplace(label)
-                label.names.forEach { OFFApplication.daoSession.labelNameDao.insertOrReplace(it) }
+                daoSession.labelDao.insertOrReplace(label)
+                label.names.forEach { daoSession.labelNameDao.insertOrReplace(it) }
             }
-            OFFApplication.daoSession.database.setTransactionSuccessful()
+            daoSession.database.setTransactionSuccessful()
         } catch (e: Exception) {
             Log.e(LOG_TAG, "saveLabels", e)
         } finally {
-            OFFApplication.daoSession.database.endTransaction()
+            daoSession.database.endTransaction()
         }
     }
 
@@ -260,7 +281,7 @@ object ProductRepository {
      *
      * @param tags The list of tags to be saved.
      */
-    private fun saveTags(tags: List<Tag>) = OFFApplication.daoSession.tagDao.insertOrReplaceInTx(tags)
+    private fun saveTags(tags: List<Tag>) = daoSession.tagDao.insertOrReplaceInTx(tags)
 
     /**
      * Invalid Barcodess saving to local database. Will clear all previous invalid barcodes stored before.
@@ -268,8 +289,8 @@ object ProductRepository {
      * @param invalidBarcodes The list of invalidBarcodes to be saved.
      */
     private fun saveInvalidBarcodes(invalidBarcodes: List<InvalidBarcode>) {
-        OFFApplication.daoSession.invalidBarcodeDao.deleteAll()
-        OFFApplication.daoSession.invalidBarcodeDao.insertInTx(invalidBarcodes)
+        daoSession.invalidBarcodeDao.deleteAll()
+        daoSession.invalidBarcodeDao.insertInTx(invalidBarcodes)
     }
 
     /**
@@ -281,17 +302,17 @@ object ProductRepository {
      * Allergen and AllergenName has One-To-Many relationship, therefore we need to save them separately.
      */
     fun saveAllergens(allergens: List<Allergen>) {
-        OFFApplication.daoSession.database.beginTransaction()
+        daoSession.database.beginTransaction()
         try {
             allergens.forEach { allergen ->
-                OFFApplication.daoSession.allergenDao.insertOrReplace(allergen)
-                allergen.names.forEach { OFFApplication.daoSession.allergenNameDao.insertOrReplace(it) }
+                daoSession.allergenDao.insertOrReplace(allergen)
+                allergen.names.forEach { daoSession.allergenNameDao.insertOrReplace(it) }
             }
-            OFFApplication.daoSession.database.setTransactionSuccessful()
+            daoSession.database.setTransactionSuccessful()
         } catch (e: Exception) {
             Log.e(LOG_TAG, "saveAllergens", e)
         } finally {
-            OFFApplication.daoSession.database.endTransaction()
+            daoSession.database.endTransaction()
         }
     }
 
@@ -304,17 +325,17 @@ object ProductRepository {
      * Additive and AdditiveName has One-To-Many relationship, therefore we need to save them separately.
      */
     private fun saveAdditives(additives: List<Additive>) {
-        OFFApplication.daoSession.database.beginTransaction()
+        daoSession.database.beginTransaction()
         try {
             additives.forEach { additive ->
-                OFFApplication.daoSession.additiveDao.insertOrReplace(additive)
-                additive.names.forEach { OFFApplication.daoSession.additiveNameDao.insertOrReplace(it) }
+                daoSession.additiveDao.insertOrReplace(additive)
+                additive.names.forEach { daoSession.additiveNameDao.insertOrReplace(it) }
             }
-            OFFApplication.daoSession.database.setTransactionSuccessful()
+            daoSession.database.setTransactionSuccessful()
         } catch (e: Exception) {
             Log.e(LOG_TAG, "saveAdditives", e)
         } finally {
-            OFFApplication.daoSession.database.endTransaction()
+            daoSession.database.endTransaction()
         }
     }
 
@@ -327,17 +348,17 @@ object ProductRepository {
      * Country and CountryName has One-To-Many relationship, therefore we need to save them separately.
      */
     private fun saveCountries(countries: List<Country>) {
-        OFFApplication.daoSession.database.beginTransaction()
+        daoSession.database.beginTransaction()
         try {
             countries.forEach { country ->
-                OFFApplication.daoSession.countryDao.insertOrReplace(country)
-                country.names.forEach { OFFApplication.daoSession.countryNameDao.insertOrReplace(it) }
+                daoSession.countryDao.insertOrReplace(country)
+                country.names.forEach { daoSession.countryNameDao.insertOrReplace(it) }
             }
-            OFFApplication.daoSession.database.setTransactionSuccessful()
+            daoSession.database.setTransactionSuccessful()
         } catch (e: Exception) {
             Log.e(LOG_TAG, "saveCountries", e)
         } finally {
-            OFFApplication.daoSession.database.endTransaction()
+            daoSession.database.endTransaction()
         }
     }
 
@@ -350,19 +371,19 @@ object ProductRepository {
      * Category and CategoryName has One-To-Many relationship, therefore we need to save them separately.
      */
     private fun saveCategories(categories: List<Category>) {
-        OFFApplication.daoSession.database.beginTransaction()
+        daoSession.database.beginTransaction()
         try {
             categories.forEach { category ->
-                OFFApplication.daoSession.categoryDao.insertOrReplace(category)
+                daoSession.categoryDao.insertOrReplace(category)
                 category.names.forEach { name ->
-                    OFFApplication.daoSession.categoryNameDao.insertOrReplace(name)
+                    daoSession.categoryNameDao.insertOrReplace(name)
                 }
             }
-            OFFApplication.daoSession.database.setTransactionSuccessful()
+            daoSession.database.setTransactionSuccessful()
         } catch (e: Exception) {
             Log.e(LOG_TAG, "saveCategories", e)
         } finally {
-            OFFApplication.daoSession.database.endTransaction()
+            daoSession.database.endTransaction()
         }
     }
 
@@ -371,14 +392,14 @@ object ProductRepository {
      * set the autoincrement to 0
      */
     fun deleteIngredientCascade() {
-        OFFApplication.daoSession.ingredientDao.deleteAll()
-        OFFApplication.daoSession.ingredientNameDao.deleteAll()
-        OFFApplication.daoSession.ingredientsRelationDao.deleteAll()
-        val daoSession = OFFApplication.daoSession
+        daoSession.ingredientDao.deleteAll()
+        daoSession.ingredientNameDao.deleteAll()
+        daoSession.ingredientsRelationDao.deleteAll()
+        val daoSession = daoSession
         daoSession.database.execSQL("""update sqlite_sequence set seq=0 where name in 
-            |('${OFFApplication.daoSession.ingredientDao.tablename}', 
-            |'${OFFApplication.daoSession.ingredientNameDao.tablename}', 
-            |'${OFFApplication.daoSession.ingredientsRelationDao.tablename}')""".trimMargin())
+            |('${daoSession.ingredientDao.tablename}', 
+            |'${daoSession.ingredientNameDao.tablename}', 
+            |'${daoSession.ingredientsRelationDao.tablename}')""".trimMargin())
     }
 
     /**
@@ -391,25 +412,25 @@ object ProductRepository {
      * Ingredient and IngredientName has One-To-Many relationship, therefore we need to save them separately.
      */
     private fun saveIngredients(ingredients: List<Ingredient>) {
-        OFFApplication.daoSession.database.beginTransaction()
+        daoSession.database.beginTransaction()
         try {
             ingredients.forEach { ingredient ->
-                OFFApplication.daoSession.ingredientDao.insertOrReplace(ingredient)
+                daoSession.ingredientDao.insertOrReplace(ingredient)
                 ingredient.names.forEach {
-                    OFFApplication.daoSession.ingredientNameDao.insertOrReplace(it)
+                    daoSession.ingredientNameDao.insertOrReplace(it)
                 }
                 ingredient.parents.forEach {
-                    OFFApplication.daoSession.ingredientsRelationDao.insertOrReplace(it)
+                    daoSession.ingredientsRelationDao.insertOrReplace(it)
                 }
                 ingredient.children.forEach {
-                    OFFApplication.daoSession.ingredientsRelationDao.insertOrReplace(it)
+                    daoSession.ingredientsRelationDao.insertOrReplace(it)
                 }
             }
-            OFFApplication.daoSession.database.setTransactionSuccessful()
+            daoSession.database.setTransactionSuccessful()
         } catch (e: Exception) {
             Log.e(LOG_TAG, "saveIngredients", e)
         } finally {
-            OFFApplication.daoSession.database.endTransaction()
+            daoSession.database.endTransaction()
         }
     }
 
@@ -422,19 +443,19 @@ object ProductRepository {
      * states and statesName has One-To-Many relationship, therefore we need to save them separately.
      */
     private fun saveState(states: List<States>) {
-        OFFApplication.daoSession.database.beginTransaction()
+        daoSession.database.beginTransaction()
         try {
             states.forEach { state ->
-                OFFApplication.daoSession.statesDao.insertOrReplace(state)
+                daoSession.statesDao.insertOrReplace(state)
                 state.names.forEach {
-                    OFFApplication.daoSession.statesNameDao.insertOrReplace(it)
+                    daoSession.statesNameDao.insertOrReplace(it)
                 }
             }
-            OFFApplication.daoSession.database.setTransactionSuccessful()
+            daoSession.database.setTransactionSuccessful()
         } catch (e: Exception) {
             Log.e(LOG_TAG, "saveStates", e)
         } finally {
-            OFFApplication.daoSession.database.endTransaction()
+            daoSession.database.endTransaction()
         }
     }
 
@@ -447,28 +468,44 @@ object ProductRepository {
      * store and storeName has One-To-Many relationship, therefore we need to save them separately.
      */
     private fun saveStores(stores: List<Store>) {
-        OFFApplication.daoSession.database.beginTransaction()
+        daoSession.database.beginTransaction()
         try {
             stores.forEach { store ->
-                OFFApplication.daoSession.storeDao.insertOrReplace(store)
+                daoSession.storeDao.insertOrReplace(store)
                 store.names.forEach {
-                    OFFApplication.daoSession.storeNameDao.insertOrReplace(it)
+                    daoSession.storeNameDao.insertOrReplace(it)
                 }
             }
-            OFFApplication.daoSession.database.setTransactionSuccessful()
+            daoSession.database.setTransactionSuccessful()
         } catch (e: Exception) {
             Log.e(LOG_TAG, "saveStores", e)
         } finally {
-            OFFApplication.daoSession.database.endTransaction()
+            daoSession.database.endTransaction()
         }
     }
 
     /**
-     * Ingredient saving to local database
+     * Save Brands to local Database
      *
-     * @param ingredient The ingredient to be saved.
+     * @param brands The list of brands to be stored
+     *
      */
-    fun saveIngredient(ingredient: Ingredient) = saveIngredients(listOf(ingredient))
+    private fun saveBrands(brands: List<Brand>) {
+        daoSession.database.beginTransaction()
+        try {
+            brands.forEach { brand ->
+                daoSession.brandDao.insertOrReplace(brand)
+                brand.names.forEach {
+                    daoSession.brandNameDao.insertOrReplace(it)
+                }
+            }
+            daoSession.database.setTransactionSuccessful()
+        } catch (e: Exception) {
+            Log.e(LOG_TAG, "saveBrands", e)
+        } finally {
+            daoSession.database.endTransaction()
+        }
+    }
 
     /**
      * Changes enabled field of allergen and updates it.
@@ -476,15 +513,13 @@ object ProductRepository {
      * @param isEnabled depends on whether user selected or unselected the allergen
      * @param allergenTag is unique Id of allergen
      */
-    fun setAllergenEnabled(allergenTag: String, isEnabled: Boolean) {
-        val allergenDao = OFFApplication.daoSession.allergenDao
-        allergenDao.queryBuilder()
-                .where(AllergenDao.Properties.Tag.eq(allergenTag))
-                .unique()
-                ?.let {
-                    it.enabled = isEnabled
-                    allergenDao.update(it)
-                }
+    fun setAllergenEnabled(allergenTag: String, isEnabled: Boolean) = Completable.fromCallable {
+        daoSession.allergenDao.queryBuilder().where(
+                AllergenDao.Properties.Tag.eq(allergenTag)
+        ).unique()?.let {
+            it.enabled = isEnabled
+            daoSession.allergenDao.update(it)
+        }
     }
 
     /**
@@ -494,15 +529,11 @@ object ProductRepository {
      * @param languageCode is a 2-digit language code
      * @return The translated label
      */
-    fun getLabelByTagAndLanguageCode(labelTag: String?, languageCode: String?): Single<LabelName> {
-        return Single.fromCallable {
-            OFFApplication.daoSession.labelNameDao.queryBuilder()
-                    .where(
-                            LabelNameDao.Properties.LabelTag.eq(labelTag),
-                            LabelNameDao.Properties.LanguageCode.eq(languageCode)
-                    ).unique()
-                    ?: LabelName()
-        }
+    fun getLabelByTagAndLanguageCode(labelTag: String?, languageCode: String?) = Single.fromCallable {
+        daoSession.labelNameDao.queryBuilder().where(
+                LabelNameDao.Properties.LabelTag.eq(labelTag),
+                LabelNameDao.Properties.LanguageCode.eq(languageCode)
+        ).unique() ?: LabelName()
     }
 
     /**
@@ -522,12 +553,10 @@ object ProductRepository {
      * @return The translated additive name
      */
     fun getAdditiveByTagAndLanguageCode(additiveTag: String?, languageCode: String?) = Single.fromCallable {
-        OFFApplication.daoSession.additiveNameDao.queryBuilder()
-                .where(
-                        AdditiveNameDao.Properties.AdditiveTag.eq(additiveTag),
-                        AdditiveNameDao.Properties.LanguageCode.eq(languageCode)
-                ).unique()
-                ?: AdditiveName()
+        daoSession.additiveNameDao.queryBuilder().where(
+                AdditiveNameDao.Properties.AdditiveTag.eq(additiveTag),
+                AdditiveNameDao.Properties.LanguageCode.eq(languageCode)
+        ).unique() ?: AdditiveName()
     }
 
     /**
@@ -539,8 +568,12 @@ object ProductRepository {
     fun getAdditiveByTagAndDefaultLanguageCode(additiveTag: String?) =
             getAdditiveByTagAndLanguageCode(additiveTag, ApiFields.Defaults.DEFAULT_LANGUAGE)
 
-    fun getCountries() =
-            getTaxonomyData(Taxonomy.COUNTRY, this, false, OFFApplication.daoSession.countryDao)
+    fun getCountries() = taxonomiesManager.getTaxonomyData(
+            Taxonomy.COUNTRY,
+            false,
+            daoSession.countryDao,
+            this
+    )
 
     fun getCountryByCC2OrWorld(cc2: String?) = getCountries().flatMapMaybe { countries ->
         countries.asSequence()
@@ -557,10 +590,10 @@ object ProductRepository {
      * @return The translated category name
      */
     fun getCategoryByTagAndLanguageCode(
-            categoryTag: String?,
+            categoryTag: String,
             languageCode: String = ApiFields.Defaults.DEFAULT_LANGUAGE
     ) = Single.fromCallable {
-        OFFApplication.daoSession.categoryNameDao.queryBuilder().where(
+        daoSession.categoryNameDao.queryBuilder().where(
                 CategoryNameDao.Properties.CategoryTag.eq(categoryTag),
                 CategoryNameDao.Properties.LanguageCode.eq(languageCode)
         ).unique() ?: CategoryName().apply {
@@ -577,7 +610,7 @@ object ProductRepository {
      * @return The translated list of category name
      */
     fun getAllCategoriesByLanguageCode(languageCode: String?) = Single.fromCallable {
-        OFFApplication.daoSession.categoryNameDao.queryBuilder()
+        daoSession.categoryNameDao.queryBuilder()
                 .where(CategoryNameDao.Properties.LanguageCode.eq(languageCode))
                 .orderAsc(CategoryNameDao.Properties.Name)
                 .list()
@@ -598,10 +631,10 @@ object ProductRepository {
      * @return The list of allergen names
      */
     fun getAllergensByEnabledAndLanguageCode(isEnabled: Boolean?, languageCode: String?) = Single.fromCallable {
-        val allergens = OFFApplication.daoSession.allergenDao.queryBuilder().where(AllergenDao.Properties.Enabled.eq(isEnabled)).list()
+        val allergens = daoSession.allergenDao.queryBuilder().where(AllergenDao.Properties.Enabled.eq(isEnabled)).list()
                 ?: return@fromCallable emptyList()
         allergens.mapNotNull {
-            OFFApplication.daoSession.allergenNameDao.queryBuilder().where(
+            daoSession.allergenNameDao.queryBuilder().where(
                     AllergenNameDao.Properties.AllergenTag.eq(it.tag),
                     AllergenNameDao.Properties.LanguageCode.eq(languageCode)
             ).unique()
@@ -615,7 +648,7 @@ object ProductRepository {
      * @return The list of translated allergen names
      */
     fun getAllergensByLanguageCode(languageCode: String?) = Single.fromCallable {
-        OFFApplication.daoSession.allergenNameDao.queryBuilder()
+        daoSession.allergenNameDao.queryBuilder()
                 .where(AllergenNameDao.Properties.LanguageCode.eq(languageCode))
                 .list()
     }
@@ -628,7 +661,7 @@ object ProductRepository {
      * @return The translated allergen name
      */
     fun getAllergenByTagAndLanguageCode(allergenTag: String?, languageCode: String?) = Single.fromCallable {
-        OFFApplication.daoSession.allergenNameDao.queryBuilder()
+        daoSession.allergenNameDao.queryBuilder()
                 .where(AllergenNameDao.Properties.AllergenTag.eq(allergenTag),
                         AllergenNameDao.Properties.LanguageCode.eq(languageCode))
                 .unique()
@@ -656,7 +689,7 @@ object ProductRepository {
      * @return The translated states name
      */
     fun getStatesByTagAndLanguageCode(statesTag: String, languageCode: String?) = Single.fromCallable {
-        OFFApplication.daoSession.statesNameDao.queryBuilder()
+        daoSession.statesNameDao.queryBuilder()
                 .where(StatesNameDao.Properties.StatesTag.eq(statesTag),
                         StatesNameDao.Properties.LanguageCode.eq(languageCode))
                 .unique()
@@ -684,8 +717,8 @@ object ProductRepository {
      */
     fun annotateInsight(insightId: String, annotation: AnnotationAnswer): Single<AnnotationResponse> {
         // if the user is logged in, send the auth, otherwise make it anonymous
-        val user = OFFApplication.instance.getLoginPreferences().getString("user", "")?.trim { it <= ' ' } ?: ""
-        val pass = OFFApplication.instance.getLoginPreferences().getString("pass", "")?.trim { it <= ' ' } ?: ""
+        val user = context.getLoginPreferences().getString("user", "")?.trim { it <= ' ' } ?: ""
+        val pass = context.getLoginPreferences().getString("pass", "")?.trim { it <= ' ' } ?: ""
 
         return if (user.isBlank() || pass.isBlank()) {
             robotoffApi.annotateInsight(insightId, annotation.result)
@@ -700,7 +733,7 @@ object ProductRepository {
      * @return The analysis tags in the product.
      */
     fun reloadAnalysisTagsFromServer() =
-            getTaxonomyData(Taxonomy.ANALYSIS_TAGS, this, true, OFFApplication.daoSession.analysisTagDao)
+            taxonomiesManager.getTaxonomyData(Taxonomy.ANALYSIS_TAGS, true, daoSession.analysisTagDao, this)
 
     fun loadAnalysisTags(lastModifiedDate: Long) = analysisDataApi.getAnalysisTags()
             .map { it.map() }
@@ -718,24 +751,24 @@ object ProductRepository {
      * AnalysisTag and AnalysisTagName has One-To-Many relationship, therefore we need to save them separately.
      */
     private fun saveAnalysisTags(tags: List<AnalysisTag>) {
-        OFFApplication.daoSession.database.beginTransaction()
+        daoSession.database.beginTransaction()
         try {
             tags.forEach { tag ->
-                OFFApplication.daoSession.analysisTagDao.insertOrReplace(tag)
+                daoSession.analysisTagDao.insertOrReplace(tag)
                 tag.names.forEach {
-                    OFFApplication.daoSession.analysisTagNameDao.insertOrReplace(it)
+                    daoSession.analysisTagNameDao.insertOrReplace(it)
                 }
             }
-            OFFApplication.daoSession.database.setTransactionSuccessful()
+            daoSession.database.setTransactionSuccessful()
         } catch (e: Exception) {
             Log.e(LOG_TAG, "saveAnalysisTags", e)
         } finally {
-            OFFApplication.daoSession.database.endTransaction()
+            daoSession.database.endTransaction()
         }
     }
 
     fun reloadAnalysisTagConfigsFromServer(): Single<List<AnalysisTagConfig>> =
-            getTaxonomyData(Taxonomy.ANALYSIS_TAG_CONFIG, this, true, OFFApplication.daoSession.analysisTagConfigDao)
+            taxonomiesManager.getTaxonomyData(Taxonomy.ANALYSIS_TAG_CONFIG, true, daoSession.analysisTagConfigDao, this)
 
     fun loadAnalysisTagConfigs(lastModifiedDate: Long): Single<List<AnalysisTagConfig>> = analysisDataApi.getAnalysisTagConfigs()
             .map { it.map() }
@@ -745,40 +778,40 @@ object ProductRepository {
             }
 
     private fun saveAnalysisTagConfigs(analysisTagConfigs: List<AnalysisTagConfig>) {
-        OFFApplication.daoSession.database.beginTransaction()
+        daoSession.database.beginTransaction()
         try {
             analysisTagConfigs.forEach {
                 Picasso.get().load(it.iconUrl).fetch()
-                OFFApplication.daoSession.analysisTagConfigDao.insertOrReplace(it)
+                daoSession.analysisTagConfigDao.insertOrReplace(it)
             }
-            OFFApplication.daoSession.database.setTransactionSuccessful()
+            daoSession.database.setTransactionSuccessful()
         } catch (e: Exception) {
             Log.e(LOG_TAG, "saveAnalysisTagConfigs", e)
         } finally {
-            OFFApplication.daoSession.database.endTransaction()
+            daoSession.database.endTransaction()
         }
     }
 
     private fun updateAnalysisTagConfig(analysisTagConfig: AnalysisTagConfig?, languageCode: String) {
         if (analysisTagConfig != null) {
-            var analysisTagName = OFFApplication.daoSession.analysisTagNameDao.queryBuilder().where(
+            var analysisTagName = daoSession.analysisTagNameDao.queryBuilder().where(
                     AnalysisTagNameDao.Properties.AnalysisTag.eq(analysisTagConfig.analysisTag),
                     AnalysisTagNameDao.Properties.LanguageCode.eq(languageCode)
             ).unique()
             if (analysisTagName == null) {
-                analysisTagName = OFFApplication.daoSession.analysisTagNameDao.queryBuilder().where(
+                analysisTagName = daoSession.analysisTagNameDao.queryBuilder().where(
                         AnalysisTagNameDao.Properties.AnalysisTag.eq(analysisTagConfig.analysisTag),
                         AnalysisTagNameDao.Properties.LanguageCode.eq(ApiFields.Defaults.DEFAULT_LANGUAGE)
                 ).unique()
             }
             analysisTagConfig.name = analysisTagName
             val type = "en:${analysisTagConfig.type}"
-            var analysisTagTypeName = OFFApplication.daoSession.analysisTagNameDao.queryBuilder()
+            var analysisTagTypeName = daoSession.analysisTagNameDao.queryBuilder()
                     .where(AnalysisTagNameDao.Properties.AnalysisTag.eq(type),
                             AnalysisTagNameDao.Properties.LanguageCode.eq(languageCode))
                     .unique()
             if (analysisTagTypeName == null) {
-                analysisTagTypeName = OFFApplication.daoSession.analysisTagNameDao.queryBuilder()
+                analysisTagTypeName = daoSession.analysisTagNameDao.queryBuilder()
                         .where(AnalysisTagNameDao.Properties.AnalysisTag.eq(type),
                                 AnalysisTagNameDao.Properties.LanguageCode.eq(ApiFields.Defaults.DEFAULT_LANGUAGE))
                         .unique()
@@ -793,17 +826,19 @@ object ProductRepository {
      * @return [Maybe.empty] if no analysis tag found
      */
     fun getAnalysisTagConfigByTagAndLanguageCode(analysisTag: String?, languageCode: String) = Maybe.fromCallable {
-        OFFApplication.daoSession.analysisTagConfigDao.queryBuilder()
+        daoSession.analysisTagConfigDao.queryBuilder()
                 .where(AnalysisTagConfigDao.Properties.AnalysisTag.eq(analysisTag))
                 .unique().also { updateAnalysisTagConfig(it, languageCode) }
     }.subscribeOn(Schedulers.io())
 
     fun getUnknownAnalysisTagConfigsByLanguageCode(languageCode: String) = Single.fromCallable {
-        OFFApplication.daoSession.analysisTagConfigDao.queryBuilder()
+        daoSession.analysisTagConfigDao.queryBuilder()
                 .where(StringCondition("""${AnalysisTagConfigDao.Properties.AnalysisTag.columnName} LIKE "%unknown%""""))
                 .list().onEach { updateAnalysisTagConfig(it, languageCode) }
     }.subscribeOn(Schedulers.io())
 
 
-    private val LOG_TAG = ProductRepository::class.simpleName
+    companion object {
+        private val LOG_TAG = ProductRepository::class.simpleName
+    }
 }

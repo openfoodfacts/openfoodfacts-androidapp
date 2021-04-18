@@ -9,12 +9,12 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.rxkotlin.toObservable
 import io.reactivex.schedulers.Schedulers
 import openfoodfacts.github.scrachx.openfood.R
-import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentContributorsBinding
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_STATE
 import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivity.Companion.start
@@ -23,21 +23,28 @@ import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductState
 import openfoodfacts.github.scrachx.openfood.models.entities.states.StatesName
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper
+import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
 import openfoodfacts.github.scrachx.openfood.utils.SearchType
 import openfoodfacts.github.scrachx.openfood.utils.requireProductState
 import java.text.SimpleDateFormat
 import java.util.*
+import javax.inject.Inject
 
-/*
-* Created by prajwalm on 14/04/18.
-*/
 /**
  * @see R.layout.fragment_contributors
  */
+
+@AndroidEntryPoint
 class ContributorsFragment : BaseFragment() {
+
     private var _binding: FragmentContributorsBinding? = null
     private val binding get() = _binding!!
+
+    @Inject
+    lateinit var productRepository: ProductRepository
+
+    @Inject
+    lateinit var localeManager: LocaleManager
 
     private lateinit var productState: ProductState
 
@@ -101,7 +108,6 @@ class ContributorsFragment : BaseFragment() {
 
         // function to show states tags
         showStatesTags(product)
-
     }
 
     /**
@@ -142,16 +148,14 @@ class ContributorsFragment : BaseFragment() {
         }
     }
 
-    private fun showStatesTags(product:Product) {
-        val statesTags = product.statesTags
-        if (statesTags.isEmpty()) {
-            return
-        }
+    private fun showStatesTags(product: Product) {
+        val tags = product.statesTags
+        if (tags.isEmpty()) return
 
-        val languageCode = LocaleHelper.getLanguage(OFFApplication.instance)
-        statesTags.toObservable()
+        val languageCode = localeManager.getLanguage()
+        tags.toObservable()
                 .flatMapSingle { tag: String ->
-                    ProductRepository.getStatesByTagAndLanguageCode(tag, languageCode)
+                    productRepository.getStatesByTagAndLanguageCode(tag, languageCode)
                 }
                 .toList()
                 .subscribeOn(Schedulers.io())
@@ -171,11 +175,10 @@ class ContributorsFragment : BaseFragment() {
                         binding.completeStatesTxt.text = ""
 
                         states.forEach { state ->
-                            if(isIncompleteState(state.statesTag)){
+                            if (isIncompleteState(state.statesTag)) {
                                 binding.incompleteStatesTxt.append(getStatesTag(state.name, state.statesTag.split(":").component2()))
                                 binding.incompleteStatesTxt.append("\n")
-                            }
-                            else{
+                            } else {
                                 binding.completeStatesTxt.append(getStatesTag(state.name, state.statesTag.split(":").component2()))
                                 binding.completeStatesTxt.append("\n")
                             }
@@ -185,11 +188,11 @@ class ContributorsFragment : BaseFragment() {
 
     }
 
-    private fun isIncompleteState(stateTag: String) :Boolean{
+    private fun isIncompleteState(stateTag: String): Boolean {
 
         return stateTag.contains("to-be-completed") || stateTag.contains("to-be-uploaded") ||
-                                stateTag.contains("to-be-checked") || stateTag.contains("to-be-validated") || stateTag.contains("to-be-selected")
-        }
+                stateTag.contains("to-be-checked") || stateTag.contains("to-be-validated") || stateTag.contains("to-be-selected")
+    }
 
     private fun toggleIncompleteStatesVisibility() {
         if (binding.incompleteStatesTxt.visibility != View.VISIBLE) {
