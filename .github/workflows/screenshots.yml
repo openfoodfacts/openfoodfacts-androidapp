@@ -33,9 +33,10 @@ jobs:
         run: "echo \"ndk.dir=${ANDROID_HOME}/ndk-bundle\" > local.properties"
 
       - name: Set up Ruby 2.6
-        uses: actions/setup-ruby@v1.1.2
+        uses: uby/setup-ruby@v1
         with:
           ruby-version: 2.6.x
+          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
 
       #      - name: Screenshots AssembleAndroidTest
       #        run: pwd && ./gradlew assembleDebug assembleAndroidTest
