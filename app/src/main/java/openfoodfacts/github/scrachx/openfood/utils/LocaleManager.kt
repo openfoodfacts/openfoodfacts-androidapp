@@ -66,19 +66,20 @@ class LocaleManager @Inject constructor(
         } ?: currentLocale
     }
 
+    @Suppress("DEPRECATION")
     private fun changeAppLanguage(context: Context, locale: Locale): Context {
         var newContext = context
         Locale.setDefault(locale)
         currentLocale = locale
         val resources = newContext.resources
         val configuration = resources.configuration
-        if (Build.VERSION.SDK_INT >= 17) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
             configuration.setLocale(currentLocale)
             newContext = newContext.createConfigurationContext(configuration)
         } else {
             configuration.locale = currentLocale
+            resources.updateConfiguration(configuration, resources.displayMetrics)
         }
-        resources.updateConfiguration(configuration, resources.displayMetrics)
         return newContext
     }
 
