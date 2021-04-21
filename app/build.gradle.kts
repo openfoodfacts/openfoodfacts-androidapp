@@ -266,8 +266,9 @@ android {
             // Enables resource shrinking, which is performed by the
             // Android Gradle plugin.
             isShrinkResources = true
-
-            proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
+            // Let's try disabling Proguard- teolemon - 21/04/2020
+            useProguard false
+            // proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
             signingConfig = signingConfigs.getByName("release")
         }
         getByName("debug") {
