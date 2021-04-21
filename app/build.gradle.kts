@@ -267,7 +267,7 @@ android {
             // Android Gradle plugin.
             isShrinkResources = true
             // Let's try disabling Proguard- teolemon - 21/04/2020
-            useProguard false
+            useProguard = false
             // proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
             signingConfig = signingConfigs.getByName("release")
         }
