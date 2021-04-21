@@ -183,7 +183,7 @@ GEM
     uber (0.1.0)
     unf (0.1.4)
       unf_ext
-    unf_ext (0.0.7.7-x86_64-linux)
+    unf_ext (0.0.7.7-x64-mingw32)
     unicode-display_width (1.7.0)
     versionomy (0.5.0)
       blockenspiel (~> 0.5)
@@ -202,7 +202,6 @@ GEM
 
 PLATFORMS
   x64-mingw32
-  x86_64-linux
 
 DEPENDENCIES
   fastlane
