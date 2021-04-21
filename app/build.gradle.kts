@@ -266,7 +266,7 @@ android {
 
             // Enables resource shrinking, which is performed by the
             // Android Gradle plugin.
-            isShrinkResources = true
+            isShrinkResources = false
             // Let's try disabling Proguard- teolemon - 21/04/2020
             // useProguard = false
             // proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
@@ -394,9 +394,3 @@ kapt {
 }
 
 greendao { schemaVersion(22) }
-
-
-
-
-
-
