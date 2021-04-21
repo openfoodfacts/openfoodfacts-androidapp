@@ -261,7 +261,8 @@ android {
 
             // Enables code shrinking, obfuscation, and optimization for only
             // release build type.
-            isMinifyEnabled = true
+            isMinifyEnabled = false
+            
 
             // Enables resource shrinking, which is performed by the
             // Android Gradle plugin.
