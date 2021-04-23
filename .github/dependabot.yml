@@ -12,3 +12,9 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
+      
+  - package-ecosystem: "ruby:bundler"
+    directory: "/fastlane"
+    schedule:
+      interval: "daily"
+      bundler
