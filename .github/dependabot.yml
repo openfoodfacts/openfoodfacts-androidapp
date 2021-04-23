@@ -13,7 +13,7 @@ updates:
     schedule:
       interval: "daily"
       
-  - package-ecosystem: "ruby:bundler"
+  - package-ecosystem: "bundler"
     directory: "/"
     schedule:
       interval: "daily"
