@@ -148,11 +148,6 @@ files:
     dest: /fastlane/metadata/android/en-US/off/title.txt
     preserve_hierarchy: true
     
-  - source: /fastlane/metadata/android/en-US/off/changelogs/342.txt
-    translation: /fastlane/metadata/android/%locale%/off/changelogs/342.txt
-    dest: /fastlane/metadata/android/en-US/off/changelogs/342.txt
-    preserve_hierarchy: true
-    
   - source: /fastlane/metadata/android/en-US/obf/title.txt
     translation: /fastlane/metadata/android/%locale%/obf/title.txt
     dest: /fastlane/metadata/android/en-US/obf/title.txt
@@ -166,11 +161,6 @@ files:
   - source: /fastlane/metadata/android/en-US/opf/title.txt
     translation: /fastlane/metadata/android/%locale%/opf/title.txt
     dest: /fastlane/metadata/android/en-US/opf/title.txt
-    preserve_hierarchy: true
-    
-  - source: /fastlane/metadata/android/en-US/off/screenshot-text.txt
-    translation: /fastlane/metadata/android/%locale%/off/screenshot-text.txt
-    dest: /fastlane/metadata/android/en-US/off/screenshot-text.txt
     preserve_hierarchy: true
     
   - source: /fastlane/metadata/android/en-US/off/feedback-form.txt
