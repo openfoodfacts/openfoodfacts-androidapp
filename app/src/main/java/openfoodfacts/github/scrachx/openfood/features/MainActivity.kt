@@ -426,9 +426,9 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
         binding.bottomNavigationInclude.bottomNavigation.installBottomNavigation(this)
         handleIntent(intent)
 
-        if (isFlavors(AppFlavors.OFF)) {
-            ChangelogDialog.newInstance(BuildConfig.DEBUG).presentAutomatically(this)
-        }
+        //if (isFlavors(AppFlavors.OFF)) {
+        //ChangelogDialog.newInstance(BuildConfig.DEBUG).presentAutomatically(this)
+        //}
     }
 
     private fun swapToFragment(fragment: Fragment) {
