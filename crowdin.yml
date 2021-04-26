@@ -183,3 +183,22 @@ files:
     dest: app/src/main/assets/changelog/changelog.json
     preserve_hierarchy: true
     
+  - source: app/src/off/assets/changelog/changelog.json
+    translation: app/src/off/assets/changelog/changelog-%locale%.json
+    dest: app/src/main/assets/changelog/changelog.json
+    preserve_hierarchy: true
+    
+  - source: app/src/opff/assets/changelog/changelog.json
+    translation: app/src/opff/assets/changelog/changelog-%locale%.json
+    dest: app/src/main/assets/changelog/changelog.json
+    preserve_hierarchy: true
+    
+  - source: app/src/opf/assets/changelog/changelog.json
+    translation: app/src/opf/assets/changelog/changelog-%locale%.json
+    dest: app/src/main/assets/changelog/changelog.json
+    preserve_hierarchy: true
+    
+  - source: app/src/obf/assets/changelog/changelog.json
+    translation: app/src/obf/assets/changelog/changelog-%locale%.json
+    dest: app/src/main/assets/changelog/changelog.json
+    preserve_hierarchy: true
