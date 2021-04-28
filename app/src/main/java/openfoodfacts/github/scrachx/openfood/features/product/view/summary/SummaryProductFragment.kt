@@ -314,7 +314,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
 
                 binding.embText.append(Utils.getClickableText(
                         getEmbCode(embTag).trim { it <= ' ' },
-                        getEmbUrl(embTag) ?: "",
+                        embTag,
                         SearchType.EMB,
                         requireActivity(),
                         customTabsIntent
@@ -647,11 +647,6 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
                 }
             }
         }
-    }
-
-    private fun getEmbUrl(embTag: String): String? {
-        if (mTagDao.queryBuilder().where(TagDao.Properties.Id.eq(embTag)).list().isEmpty()) return null
-        return mTagDao.queryBuilder().where(TagDao.Properties.Id.eq(embTag)).unique().url
     }
 
     private fun getEmbCode(embTag: String) =
