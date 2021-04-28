@@ -9,9 +9,5 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize
  */
 @JsonDeserialize(using = AnalysisTagConfigsWrapperDeserializer::class)
 class AnalysisTagConfigsWrapper(var analysisTagConfigs: List<AnalysisTagConfig>) {
-
-    /**
-     * @return A list of AnalysisTagConfig objects
-     */
     fun map() = analysisTagConfigs.toList()
 }

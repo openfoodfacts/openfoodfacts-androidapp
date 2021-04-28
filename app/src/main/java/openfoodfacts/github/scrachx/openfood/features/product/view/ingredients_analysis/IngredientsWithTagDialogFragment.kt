@@ -181,10 +181,12 @@ class IngredientsWithTagDialogFragment : DialogFragment() {
                     val statesTags = product.statesTags
                     var ingredientsToBeCompleted = false
                     var photosToBeValidated = false
+
                     statesTags.forEach { stateTag ->
                         ingredientsToBeCompleted = stateTag == "en:ingredients-to-be-completed"
                         photosToBeValidated = stateTag == "en:photos-to-be-validated"
                     }
+
                     if (ingredientsToBeCompleted && photosToBeValidated) {
                         putBoolean(PHOTOS_TO_BE_VALIDATED_KEY, true)
                     } else {
@@ -193,12 +195,18 @@ class IngredientsWithTagDialogFragment : DialogFragment() {
                 } else {
                     val showIngredients = config.name.showIngredients
                     if (showIngredients != null) {
-                        putSerializable(INGREDIENTS_KEY, getMatchingIngredientsText(product, showIngredients.split(":").toTypedArray()))
+                        val ing = showIngredients.split(":")
+                        putSerializable(INGREDIENTS_KEY, getMatchingIngredientsText(product, ing[0], ing[1]))
                     }
                     val ambiguousIngredient = product.ingredients
-                            .filter { it.containsKey(config.type) && it.containsValue("maybe") }
-                            .filter { it.containsKey("text") }
-                            .mapNotNull { it["text"] }
+                            .filter {
+                                when (config.type) {
+                                    "vegan" -> it.vegan == "maybe"
+                                    "vegetarian" -> it.vegetarian == "maybe"
+                                    else -> it.palmOil == "maybe"
+                                }
+                            }
+                            .mapNotNull { it.text }
                     if (ambiguousIngredient.isNotEmpty()) {
                         putString(AMBIGUOUS_INGREDIENT_KEY, ambiguousIngredient.joinToString(","))
                     }
@@ -206,11 +214,18 @@ class IngredientsWithTagDialogFragment : DialogFragment() {
             }
         }
 
-        private fun getMatchingIngredientsText(product: Product, ingredients: Array<String>): String? {
+        private fun getMatchingIngredientsText(product: Product, type: String, value: String): String? {
             val matchingIngredients = product.ingredients
-                    .filter { ingredients[1] == it[ingredients[0]] }
-                    .mapNotNull { it["text"] }
-                    .map { it.toLowerCase(Locale.getDefault()).replace("_", "") }
+                    .filter {
+                        when (type) {
+                            "vegan" -> it.vegan
+                            "vegetarian" -> it.vegetarian
+                            "from_palm_oil" -> it.palmOil
+                            else -> false
+                        } == value
+                    }
+                    .mapNotNull { it.text?.toLowerCase(Locale.getDefault())?.replace("_", "") }
+
             return if (matchingIngredients.isEmpty()) null
             else StringBuilder().apply {
                 append(" <b>")

@@ -11,7 +11,6 @@ import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.Keys.lcProductNameKey
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLocaleFromContext
-import openfoodfacts.github.scrachx.openfood.utils.ProductStringConverter
 import org.apache.commons.lang3.builder.ToStringBuilder
 import org.apache.commons.lang3.builder.ToStringStyle
 import java.io.Serializable
@@ -172,7 +171,21 @@ class Product : Serializable {
     var imageUrl: String? = null
 
     @JsonProperty(ApiFields.Keys.INGREDIENTS)
-    val ingredients = arrayListOf<LinkedHashMap<String, String>>()
+    val ingredients = arrayListOf<Ingredient>()
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    data class Ingredient(
+            @JsonProperty("id") val id: String,
+            @JsonProperty("percent_estimate") val percentEstimate: Double? = null,
+            @JsonProperty("percent_max") val percentMax: Double? = null,
+            @JsonProperty("percent_min") val percentMin: Double? = null,
+            @JsonProperty("ingredients") val ingredients: List<Ingredient>? = null,
+            @JsonProperty("text") val text: String? = null,
+            @JsonProperty("vegan") val vegan: String? = null,
+            @JsonProperty("vegetarian") val vegetarian: String? = null,
+            @JsonProperty("from_palm_oil") val palmOil: String? = null
+    ) : Serializable
 
     @JsonProperty(ApiFields.Keys.INGREDIENTS_ANALYSIS_TAGS)
     val ingredientsAnalysisTags = arrayListOf<String>()
