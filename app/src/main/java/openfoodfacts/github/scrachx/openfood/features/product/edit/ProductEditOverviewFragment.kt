@@ -72,7 +72,6 @@ import openfoodfacts.github.scrachx.openfood.models.entities.tag.TagDao
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.Keys.lcProductNameKey
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
-import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.FileDownloader.download
 import org.apache.commons.lang3.StringUtils
@@ -95,9 +94,6 @@ class ProductEditOverviewFragment : ProductEditFragment() {
 
     @Inject
     lateinit var client: OpenFoodAPIClient
-
-    @Inject
-    lateinit var productsApi: ProductsAPI
 
     @Inject
     lateinit var matomoAnalytics: MatomoAnalytics
@@ -535,7 +531,7 @@ class ProductEditOverviewFragment : ProductEditFragment() {
             (operation.result as List<CountryName>).mapTo(countries) { it.name }
 
             val adapter = ArrayAdapter(requireActivity(), android.R.layout.simple_dropdown_item_1line, countries)
-            val embAdapter = EmbCodeAutoCompleteAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, productsApi)
+            val embAdapter = EmbCodeAutoCompleteAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, client)
 
             binding.originOfIngredients.setAdapter(adapter)
             binding.countryWherePurchased.setAdapter(adapter)
@@ -582,9 +578,9 @@ class ProductEditOverviewFragment : ProductEditFragment() {
         if (isFlavors(OBF)) {
             binding.periodOfTimeAfterOpeningTil.visibility = View.VISIBLE
             val customAdapter = PeriodAfterOpeningAutoCompleteAdapter(
-                    activity,
+                    requireContext(),
                     android.R.layout.simple_dropdown_item_1line,
-                    productsApi
+                    client
             )
             binding.periodOfTimeAfterOpening.setAdapter(customAdapter)
         }
@@ -659,7 +655,7 @@ class ProductEditOverviewFragment : ProductEditFragment() {
             // Image found, download it if necessary and edit it
             isFrontImagePresent = true
             if (photoFile == null) {
-                download(requireContext(), frontImageUrl!!, productsApi)
+                download(requireContext(), frontImageUrl!!, client)
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe { file: File? ->
                             photoFile = file

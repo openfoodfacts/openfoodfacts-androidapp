@@ -22,6 +22,7 @@ import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductState
 import openfoodfacts.github.scrachx.openfood.models.entities.states.StatesName
+import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
 import openfoodfacts.github.scrachx.openfood.utils.SearchType
@@ -65,11 +66,6 @@ class ContributorsFragment : BaseFragment() {
         refreshView(this.requireProductState())
     }
 
-    override fun onDestroyView() {
-        disp.clear()
-        super.onDestroyView()
-    }
-
     override fun refreshView(productState: ProductState) {
         super.refreshView(productState)
         this.productState = productState
@@ -77,31 +73,28 @@ class ContributorsFragment : BaseFragment() {
 
         if (!product.creator.isNullOrBlank()) {
             val createdDate = getDateTime(product.createdDateTime!!)
-            val creatorTxt = getString(R.string.creator_history, createdDate.first, createdDate.second, product.creator)
             binding.creatorTxt.movementMethod = LinkMovementMethod.getInstance()
-            binding.creatorTxt.text = creatorTxt
+            binding.creatorTxt.text = getString(R.string.creator_history, createdDate.first, createdDate.second, product.creator)
         } else {
             binding.creatorTxt.visibility = View.INVISIBLE
         }
 
         if (!product.lastModifiedBy.isNullOrBlank()) {
             val lastEditDate = getDateTime(product.lastModifiedTime!!)
-            val editorTxt = getString(R.string.last_editor_history, lastEditDate.first, lastEditDate.second, product.lastModifiedBy)
             binding.lastEditorTxt.movementMethod = LinkMovementMethod.getInstance()
-            binding.lastEditorTxt.text = editorTxt
+            binding.lastEditorTxt.text = getString(R.string.last_editor_history, lastEditDate.first, lastEditDate.second, product.lastModifiedBy)
         } else {
             binding.lastEditorTxt.visibility = View.INVISIBLE
         }
 
         if (product.editors.isNotEmpty()) {
-            val otherEditorsTxt = getString(R.string.other_editors)
             binding.otherEditorsTxt.movementMethod = LinkMovementMethod.getInstance()
-            binding.otherEditorsTxt.text = "$otherEditorsTxt "
-            product.editors.forEach { editor ->
-                binding.otherEditorsTxt.append(getContributorsTag(editor).subSequence(0, editor.length))
-                binding.otherEditorsTxt.append(", ")
-            }
-            binding.otherEditorsTxt.append(getContributorsTag(product.editors.last()))
+            binding.otherEditorsTxt.text = SpannableStringBuilder(getString(R.string.other_editors))
+                    .append(" ")
+                    .append(product.editors.joinToString(", ") { editor ->
+                        getContributorsTag(editor).subSequence(0, editor.length)
+                    })
+                    .append(getContributorsTag(product.editors.last()))
         } else {
             binding.otherEditorsTxt.visibility = View.INVISIBLE
         }
@@ -160,8 +153,8 @@ class ContributorsFragment : BaseFragment() {
                 .toList()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doOnError { e: Throwable? ->
-                    Log.e(ContributorsFragment::class.simpleName, "loadStatesTags", e)
+                .doOnError {
+                    Log.e(ContributorsFragment::class.simpleName, "Error in showing state tags.", it)
                     binding.statesTagsCv.visibility = View.GONE
                 }
                 .subscribe { states: List<StatesName> ->
@@ -188,29 +181,24 @@ class ContributorsFragment : BaseFragment() {
 
     }
 
-    private fun isIncompleteState(stateTag: String): Boolean {
-
-        return stateTag.contains("to-be-completed") || stateTag.contains("to-be-uploaded") ||
-                stateTag.contains("to-be-checked") || stateTag.contains("to-be-validated") || stateTag.contains("to-be-selected")
-    }
 
     private fun toggleIncompleteStatesVisibility() {
-        if (binding.incompleteStatesTxt.visibility != View.VISIBLE) {
-            binding.incompleteStatesTxt.visibility = View.VISIBLE
-            binding.incompleteStates.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_up_grey_24dp, 0)
-        } else {
+        if (binding.incompleteStatesTxt.visibility == View.VISIBLE) {
             binding.incompleteStatesTxt.visibility = View.GONE
             binding.incompleteStates.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_down_grey_24dp, 0)
+        } else {
+            binding.incompleteStatesTxt.visibility = View.VISIBLE
+            binding.incompleteStates.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_up_grey_24dp, 0)
         }
     }
 
     private fun toggleCompleteStatesVisibility() {
-        if (binding.completeStatesTxt.visibility != View.VISIBLE) {
-            binding.completeStatesTxt.visibility = View.VISIBLE
-            binding.completeStates.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_up_grey_24dp, 0)
-        } else {
+        if (binding.completeStatesTxt.visibility == View.VISIBLE) {
             binding.completeStatesTxt.visibility = View.GONE
             binding.completeStates.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_down_grey_24dp, 0)
+        } else {
+            binding.completeStatesTxt.visibility = View.VISIBLE
+            binding.completeStates.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_up_grey_24dp, 0)
         }
     }
 
@@ -220,5 +208,9 @@ class ContributorsFragment : BaseFragment() {
                 putSerializable(KEY_STATE, productState)
             }
         }
+
+        internal fun isIncompleteState(stateTag: String) = ApiFields.StateTags.INCOMPLETE_TAGS
+                .map { stateTag.contains(it) }
+                .any { it }
     }
 }

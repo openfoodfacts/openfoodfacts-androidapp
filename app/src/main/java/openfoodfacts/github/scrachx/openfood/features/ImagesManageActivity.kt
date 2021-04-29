@@ -19,6 +19,7 @@ import android.Manifest
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -32,7 +33,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.edit
-import androidx.core.net.toUri
+import androidx.core.net.toFile
 import com.github.chrisbanes.photoview.PhotoViewAttacher
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
@@ -468,18 +469,20 @@ class ImagesManageActivity : BaseActivity() {
     private fun editPhoto(field: ProductImageField, transformation: ImageTransformation) {
         if (transformation.isEmpty()) return
 
-        download(this, transformation.imageUrl!!, productsApi)
+        download(this, transformation.imageUrl!!, client)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe { file ->
+                .subscribe { fileUri ->
                     //to delete the file after:
-                    lastViewedImage = file
-                    cropRotateExistingImageOnServer(file, getString(getResourceIdForEditAction(field)), transformation)
+                    lastViewedImage = fileUri.toFile()
+                    cropRotateExistingImageOnServer(fileUri,
+                            getString(getResourceIdForEditAction(field)),
+                            transformation)
                 }.addTo(disp)
     }
 
     private fun getProduct() = intent.getSerializableExtra(PRODUCT) as Product?
 
-    private fun requireProduct() = getProduct() ?: error("Cannot start ${this::class} without product.")
+    private fun requireProduct() = getProduct() ?: error("Cannot start $LOG_TAG without product.")
 
     private fun onLanguageChanged() {
         val data = binding.comboLanguages.selectedItem as LanguageData
@@ -494,7 +497,7 @@ class ImagesManageActivity : BaseActivity() {
     }
 
     private fun getSelectedType(): ProductImageField = intent.getSerializableExtra(IMAGE_TYPE) as ProductImageField?
-            ?: error("Cannot initialize ${this::class.simpleName} without IMAGE_TYPE")
+            ?: error("Cannot initialize $LOG_TAG without IMAGE_TYPE")
 
     private fun onImageTypeChanged() {
         getProduct()?.let {
@@ -511,10 +514,9 @@ class ImagesManageActivity : BaseActivity() {
         }
     }
 
-    private fun cropRotateExistingImageOnServer(imageFile: File, title: String, transformation: ImageTransformation) {
-        val uri = imageFile.toUri()
+    private fun cropRotateExistingImageOnServer(fileUri: Uri, title: String, transformation: ImageTransformation) {
 
-        val activityBuilder = CropImage.activity(uri)
+        val activityBuilder = CropImage.activity(fileUri)
                 .setCropMenuCropButtonIcon(R.drawable.ic_check_white_24dp)
                 .setAllowFlipping(false) //we just want crop size/rotation
                 .setNoOutputImage(true)
@@ -655,5 +657,7 @@ class ImagesManageActivity : BaseActivity() {
 
         fun isImageModified(requestCode: Int, resultCode: Int) =
                 requestCode == REQUEST_EDIT_IMAGE && resultCode == RESULTCODE_MODIFIED
+
+        private val LOG_TAG = ImagesManageActivity::class.simpleName
     }
 }
