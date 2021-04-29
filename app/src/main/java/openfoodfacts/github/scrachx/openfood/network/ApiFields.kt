@@ -32,6 +32,15 @@ object ApiFields {
         const val ORIGINS_TO_BE_COMPLETED = "en:origins-to-be-completed"
 
         const val INGREDIENTS_COMPLETED = "en:ingredients-completed"
+
+        val INCOMPLETE_TAGS = listOf(
+                "to-be-completed",
+                "to-be-uploaded",
+                "to-be-checked",
+                "to-be-validated",
+                "to-be-selected",
+                "not-selected"
+        )
     }
 
     object Prefix {
