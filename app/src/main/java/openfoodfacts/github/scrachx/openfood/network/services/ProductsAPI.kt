@@ -74,7 +74,7 @@ interface ProductsAPI {
 
     @GET("cgi/search.pl?search_simple=1&json=1&action=process")
     fun searchProductByName(
-            @Query("search_terms") name: String,
+            @Query(ApiFields.Keys.SEARCH_TERMS) name: String,
             @Query("fields") fields: String,
             @Query("page") page: Int
     ): Single<Search>
@@ -108,11 +108,12 @@ interface ProductsAPI {
             @Query("id") imgId: String
     ): Single<JsonNode>
 
-    @GET("cgi/suggest.pl?tagtype=emb_codes")
-    fun getEMBCodeSuggestions(@Query("term") term: String?): Single<ArrayList<String>>
+    @GET("cgi/suggest.pl")
+    fun getSuggestions(
+            @Query("tagtype") tagType: String,
+            @Query("term") term: String
+    ): Single<List<String>>
 
-    @GET("/cgi/suggest.pl?tagtype=periods_after_opening")
-    fun getPeriodAfterOpeningSuggestions(@Query("term") term: String?): Single<ArrayList<String>>
 
     @GET("brand/{brand}/{page}.json")
     fun getProductByBrands(

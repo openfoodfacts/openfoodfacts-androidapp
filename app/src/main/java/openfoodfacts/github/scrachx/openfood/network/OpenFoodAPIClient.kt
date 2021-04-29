@@ -50,7 +50,7 @@ import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewAc
 class OpenFoodAPIClient @Inject constructor(
         @ApplicationContext private val context: Context,
         private val daoSession: DaoSession,
-        private val rawApi: ProductsAPI,
+        internal val rawApi: ProductsAPI,
         private val sentryAnalytics: SentryAnalytics,
         private val localeManager: LocaleManager
 ) {
@@ -505,4 +505,8 @@ class OpenFoodAPIClient @Inject constructor(
         get() = Keys.PRODUCT_SEARCH_FIELDS.toMutableList().apply {
             add(localeProductNameField)
         }.joinToString(",")
+
+    fun getEMBCodeSuggestions(term: String) = rawApi.getSuggestions("emb_codes", term)
+
+    fun getPeriodAfterOpeningSuggestions(term: String) = rawApi.getSuggestions("periods_after_opening", term)
 }

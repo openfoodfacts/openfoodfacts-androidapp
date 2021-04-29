@@ -161,6 +161,9 @@ object ApiFields {
         const val STORES = "stores"
         const val STATUS = "status"
         const val NUTRITION_GRADE = "nutrition_grades_tags"
+
+        const val SEARCH_TERMS = "search_terms"
+
         val TYPE_IMAGE = arrayOf(
                 ProductImageField.FRONT,
                 ProductImageField.INGREDIENTS,
