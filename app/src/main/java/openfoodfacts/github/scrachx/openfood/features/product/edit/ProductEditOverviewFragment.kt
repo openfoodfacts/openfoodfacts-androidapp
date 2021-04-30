@@ -25,6 +25,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.core.net.toFile
 import com.afollestad.materialdialogs.MaterialDialog
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
@@ -657,12 +658,12 @@ class ProductEditOverviewFragment : ProductEditFragment() {
             if (photoFile == null) {
                 download(requireContext(), frontImageUrl!!, client)
                         .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe { file: File? ->
-                            photoFile = file
-                            cropRotateImage(photoFile, getString(R.string.set_img_front))
+                        .subscribe { uri ->
+                            photoFile = uri.toFile()
+                            cropRotateImage(uri, getString(R.string.set_img_front))
                         }.addTo(disp)
             } else {
-                cropRotateImage(photoFile, getString(R.string.set_img_front))
+                cropRotateImage(photoFile!!, getString(R.string.set_img_front))
             }
         }
     }

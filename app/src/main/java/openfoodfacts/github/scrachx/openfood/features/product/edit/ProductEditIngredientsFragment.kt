@@ -23,6 +23,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.core.net.toFile
 import androidx.core.widget.doAfterTextChanged
 import com.hootsuite.nachos.terminator.ChipTerminatorHandler
 import com.hootsuite.nachos.validator.ChipifyingNachoValidator
@@ -30,6 +31,7 @@ import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.rxkotlin.addTo
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsView
@@ -46,7 +48,7 @@ import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenNa
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenNameDao
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.Keys.lcIngredientsKey
-import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.FileDownloader.download
 import org.greenrobot.greendao.async.AsyncOperationListener
@@ -71,7 +73,7 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
     lateinit var picasso: Picasso
 
     @Inject
-    lateinit var productsApi: ProductsAPI
+    lateinit var client: OpenFoodAPIClient
 
     @Inject
     lateinit var matomoAnalytics: MatomoAnalytics
@@ -326,13 +328,13 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
     private fun addIngredientsImage() {
         when {
             imagePath == null -> editIngredientsImage()
-            photoFile != null -> cropRotateImage(photoFile, getString(R.string.ingredients_picture))
+            photoFile != null -> cropRotateImage(photoFile!!, getString(R.string.ingredients_picture))
             else -> {
-                download(requireContext(), imagePath!!, productsApi)
+                download(requireContext(), imagePath!!, client)
                         .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe { file ->
-                            photoFile = file
-                            cropRotateImage(photoFile, getString(R.string.ingredients_picture))
+                        .subscribe { uri ->
+                            photoFile = uri.toFile()
+                            cropRotateImage(uri, getString(R.string.ingredients_picture))
                         }.addTo(disp)
             }
         }

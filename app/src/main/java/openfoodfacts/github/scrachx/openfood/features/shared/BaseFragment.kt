@@ -25,6 +25,7 @@ import android.provider.Settings
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
+import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.afollestad.materialdialogs.MaterialDialog
@@ -107,8 +108,11 @@ abstract class BaseFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener, 
 
     protected open fun doOnPhotosPermissionGranted() = Unit
 
-    protected fun cropRotateImage(image: File?, title: String?) {
-        val uri = Uri.fromFile(image)
+    protected fun cropRotateImage(image: File, title: String?) {
+        return cropRotateImage(image.toUri(), title)
+    }
+
+    protected fun cropRotateImage(uri: Uri, title: String?) {
         CropImage.activity(uri)
                 .setCropMenuCropButtonIcon(R.drawable.ic_check_white_24dp)
                 .setMinCropResultSize(MIN_CROP_RESULT_WIDTH_ACCEPTED_BY_OFF, MIN_CROP_RESULT_HEIGHT_ACCEPTED_BY_OFF)
