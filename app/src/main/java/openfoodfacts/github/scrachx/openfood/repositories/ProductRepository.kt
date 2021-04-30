@@ -85,8 +85,12 @@ class ProductRepository @Inject constructor(
      *
      * @return The list of Tags.
      */
-    fun reloadTagsFromServer() =
-            taxonomiesManager.getTaxonomyData(Taxonomy.TAGS, true, daoSession.tagDao, this)
+    fun reloadTagsFromServer() = taxonomiesManager.getTaxonomyData(
+            Taxonomy.TAGS,
+            true,
+            daoSession.tagDao,
+            this
+    )
 
     fun loadTags(lastModifiedDate: Long) = analysisDataApi.getTags()
             .map { it.tags }
@@ -95,8 +99,12 @@ class ProductRepository @Inject constructor(
                 updateLastDownloadDateInSettings(Taxonomy.TAGS, lastModifiedDate)
             }
 
-    fun reloadInvalidBarcodesFromServer() =
-            taxonomiesManager.getTaxonomyData(Taxonomy.INVALID_BARCODES, true, daoSession.invalidBarcodeDao, this)
+    fun reloadInvalidBarcodesFromServer() = taxonomiesManager.getTaxonomyData(
+            Taxonomy.INVALID_BARCODES,
+            true,
+            daoSession.invalidBarcodeDao,
+            this
+    )
 
     fun loadInvalidBarcodes(lastModifiedDate: Long) = analysisDataApi.getInvalidBarcodes()
             .map { strings -> strings.map { InvalidBarcode(it) } }

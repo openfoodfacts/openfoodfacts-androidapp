@@ -29,6 +29,7 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.*
 import android.widget.AdapterView.OnItemSelectedListener
+import androidx.core.net.toFile
 import androidx.core.widget.doAfterTextChanged
 import com.afollestad.materialdialogs.MaterialDialog
 import com.google.android.material.textfield.TextInputLayout
@@ -36,6 +37,7 @@ import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.rxkotlin.addTo
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsView
 import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
@@ -54,7 +56,7 @@ import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.Defaults.NUTRITION_DATA_PER_100G
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.Defaults.NUTRITION_DATA_PER_SERVING
-import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.FileDownloader.download
 import openfoodfacts.github.scrachx.openfood.utils.UnitUtils.UNIT_IU
@@ -76,7 +78,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
     lateinit var picasso: Picasso
 
     @Inject
-    lateinit var productsApi: ProductsAPI
+    lateinit var client: OpenFoodAPIClient
 
     @Inject
     lateinit var matomoAnalytics: MatomoAnalytics
@@ -414,13 +416,13 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
             return
         }
         if (photoFile != null) {
-            cropRotateImage(photoFile, getString(R.string.nutrition_facts_picture))
+            cropRotateImage(photoFile!!, getString(R.string.nutrition_facts_picture))
         } else {
-            download(requireContext(), path, productsApi)
+            download(requireContext(), path, client)
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe {
-                        photoFile = it
-                        cropRotateImage(photoFile, getString(R.string.nutrition_facts_picture))
+                        photoFile = it.toFile()
+                        cropRotateImage(it, getString(R.string.nutrition_facts_picture))
                     }.addTo(disp)
         }
     }
