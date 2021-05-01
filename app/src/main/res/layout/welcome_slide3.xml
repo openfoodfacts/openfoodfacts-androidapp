@@ -19,7 +19,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_screen3"
+    android:background="@color/brand_light_blue"
     android:gravity="center">
 
     <ImageView
@@ -27,7 +27,7 @@
         android:layout_width="@dimen/img_width_height"
         android:layout_height="@dimen/img_width_height"
         android:layout_centerHorizontal="true"
-        app:srcCompat="@drawable/ic_nutriscore_c" />
+        app:srcCompat="@drawable/ic_nova_group_4" />
 
     <TextView
         android:id="@+id/slide_3_title"
@@ -37,7 +37,7 @@
         android:layout_centerHorizontal="true"
         android:gravity="center_horizontal"
         android:padding="20dp"
-        android:text="@string/slide_3_title"
+        android:text="Avoid ultra-processed foods"
         android:textColor="@android:color/white"
         android:textSize="20sp"
         android:textStyle="bold" />
@@ -52,7 +52,7 @@
         android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:layout_marginTop="20dp"
         android:gravity="center_horizontal"
-        android:text="@string/slide_3_desc"
+        android:text="Reduce the amount of ultra-processed foods in your diet."
         android:textAlignment="center"
         android:textColor="@android:color/white"
         android:textSize="@dimen/slide_desc" />

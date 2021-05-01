@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_screen4"
+    android:background="@color/brand_green_dark"
     android:gravity="center">
 
     <ImageView
@@ -11,7 +11,8 @@
         android:layout_width="@dimen/img_width_height"
         android:layout_height="@dimen/img_width_height"
         android:layout_centerHorizontal="true"
-        app:srcCompat="@drawable/ic_aeroplane" />
+        app:srcCompat="@drawable/ic_ecoscore_b"
+        android:contentDescription="TODO" />
 
     <TextView
         android:id="@+id/slide_4_title"
@@ -21,7 +22,7 @@
         android:layout_centerHorizontal="true"
         android:gravity="center_horizontal"
         android:padding="20dp"
-        android:text="@string/slide_4_title"
+        android:text="Eco-Score"
         android:textColor="@android:color/white"
         android:textSize="20sp"
         android:textStyle="bold" />
@@ -35,7 +36,7 @@
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:gravity="center_horizontal"
-        android:text="@string/slide_4_desc"
+        android:text="A synthesis of the environmental impact of your food."
         android:textAlignment="center"
         android:textColor="@android:color/white"
         android:textSize="@dimen/slide_desc" />
