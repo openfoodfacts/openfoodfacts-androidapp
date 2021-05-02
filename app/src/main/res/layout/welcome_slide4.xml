@@ -22,7 +22,7 @@
         android:layout_centerHorizontal="true"
         android:gravity="center_horizontal"
         android:padding="20dp"
-        android:text="Eco-Score"
+        android:text="@string/eco_score_slide_4_title"
         android:textColor="@android:color/white"
         android:textSize="20sp"
         android:textStyle="bold" />
