@@ -13,20 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-buildscript {
-    repositories {
-        mavenCentral()
-        jcenter()
-        google()
-        maven("https://jitpack.io")
-    }
-}
 plugins {
     id("com.android.application")
     id("de.timfreiheit.resourceplaceholders.plugin")
     id("org.greenrobot.greendao")
-    id("io.sentry.android.gradle")
     id("kotlin-android")
     id("kotlin-parcelize")
     id("kotlin-kapt")
@@ -81,7 +71,7 @@ dependencies {
 
     implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
 
-    kapt("com.google.dagger:dagger-compiler:2.33")
+    kapt("com.google.dagger:dagger-compiler:2.35.1")
     implementation("com.google.dagger:dagger:2.33")
     implementation("com.google.dagger:hilt-android:${rootProject.extra["hiltVersion"]}")
 
@@ -207,22 +197,18 @@ dependencies {
     androidTestImplementation("tools.fastlane:screengrab:1.2.0")
 
     resourcePlaceholders { files = listOf("xml/shortcuts.xml") }
-
 }
-
 
 android {
     compileSdkVersion(30)
 
     testBuildType = obtainTestBuildType()
 
-
     buildFeatures {
         dataBinding = true
     }
 
     flavorDimensions("versionCode", "platform")
-
 
     defaultConfig {
         applicationId = "openfoodfacts.github.scrachx.openfood"
@@ -238,7 +224,6 @@ android {
         ndk.abiFilters("armeabi-v7a", "arm64-v8a", "x86", "x86_64")
 
         multiDexEnabled = true
-        // jackOptions.enabled = true
     }
 
     signingConfigs {
@@ -343,7 +328,6 @@ android {
         }
     }
 
-
     dexOptions {
         preDexLibraries = false
         javaMaxHeapSize = "4g"
@@ -381,7 +365,6 @@ android {
         // avoid "Method ... not mocked."
         unitTests.isReturnDefaultValues = true
         execution = "ANDROIDX_TEST_ORCHESTRATOR"
-
     }
 }
 
@@ -392,9 +375,3 @@ kapt {
 }
 
 greendao { schemaVersion(22) }
-
-
-
-
-
-
