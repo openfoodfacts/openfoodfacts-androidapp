@@ -430,7 +430,7 @@
     <string name="dismiss">Afwijzen</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <!--Just replace "world" by "fr", "de"… translate the "terms-of-use" with the hyphens -->
-    <string name="terms_url">https://world.openproductsfacts.org/terms-of-use&amp;hl=nl</string>
+    <string name="terms_url">https://world.openfoodfacts.org/terms-of-use&amp;hl=nl</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
     <string name="faq_url">https://world.openfoodfacts.org/faq&amp;hl=nl</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
