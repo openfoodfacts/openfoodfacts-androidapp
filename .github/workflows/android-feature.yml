@@ -20,19 +20,19 @@ jobs:
       - name: Validate fastlane metadata (OFF)
         uses: ashutoshgngwr/validate-fastlane-supply-metadata@v1
         with:
-          fastlaneDir: ./fastlane/off/
+          fastlaneDir: ./fastlane/metadata/android/off/
           
       - name: Validate fastlane metadata (OBF)
         uses: ashutoshgngwr/validate-fastlane-supply-metadata@v1
         with:
-          fastlaneDir: ./fastlane/obf/
+          fastlaneDir: ./fastlane/metadata/android/obf/
           
       - name: Validate fastlane metadata (OPFF)
         uses: ashutoshgngwr/validate-fastlane-supply-metadata@v1
         with:
-          fastlaneDir: ./fastlane/opff/
+          fastlaneDir: ./fastlane/metadata/android/opff/
           
       - name: Validate fastlane metadata (OPF)
         uses: ashutoshgngwr/validate-fastlane-supply-metadata@v1
         with:
-          fastlaneDir: ./fastlane/opf/
+          fastlaneDir: ./fastlane/metadata/android/opf/
