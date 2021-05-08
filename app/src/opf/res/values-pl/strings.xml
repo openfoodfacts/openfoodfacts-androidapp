@@ -37,7 +37,6 @@
     <string name="product_not_found">Zeskanowany produkt %1$s nie istnieje jeszcze w Open Beauty Facts. Czy możesz go dodać?</string>
     <string name="currently_on_version">Aktualnie na Otwartych faktach o Produktach</string>
     <string name="category_game_btn">Pomóż kategoryzować produkty</string>
-    <!-- TODO add true support instead of overriding strings -->
     <string name="add_nutrient_prompt_text">Dodaj więcej szczegółów, aby pomóc w dokończeniu produktu</string>
     <string name="add_category_prompt_text">Dodaj kategorię, aby pomóc w dokończeniu produktu</string>
     <string name="add_nutrient_category_prompt_text">Dodaj kategorię i więcej szczegółów, aby pomóc w dokończeniu produktu</string>
