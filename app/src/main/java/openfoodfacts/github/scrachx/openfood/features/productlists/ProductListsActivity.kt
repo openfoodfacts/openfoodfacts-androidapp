@@ -39,7 +39,6 @@ import io.reactivex.schedulers.Schedulers
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
 import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
-import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductListsBinding
 import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.selectNavigationItem
@@ -51,11 +50,9 @@ import openfoodfacts.github.scrachx.openfood.features.productlist.ProductListAct
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import openfoodfacts.github.scrachx.openfood.models.Product
-import openfoodfacts.github.scrachx.openfood.models.entities.ProductLists
-import openfoodfacts.github.scrachx.openfood.models.entities.ProductListsDao
-import openfoodfacts.github.scrachx.openfood.models.entities.YourListedProduct
-import openfoodfacts.github.scrachx.openfood.models.entities.YourListedProductDao
+import openfoodfacts.github.scrachx.openfood.models.entities.*
 import openfoodfacts.github.scrachx.openfood.utils.SwipeController
+import openfoodfacts.github.scrachx.openfood.utils.isEmpty
 import org.apache.commons.csv.CSVFormat
 import org.apache.commons.csv.CSVParser
 import java.io.InputStream
@@ -70,6 +67,9 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
 
     @Inject
     lateinit var daoSession: DaoSession
+
+    @Inject
+    lateinit var matomoAnalytics: MatomoAnalytics
 
     private lateinit var adapter: ProductListsAdapter
     private lateinit var productListsDao: ProductListsDao
@@ -90,6 +90,7 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
         binding.bottomNavigation.bottomNavigation.installBottomNavigation(this)
+
         binding.fabAdd.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_plus_blue_24, 0, 0, 0)
 
         productListsDao = daoSession.getProductListsDaoWithDefaultList(this)
@@ -140,7 +141,7 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
                 .positiveText(R.string.dialog_create)
                 .negativeText(R.string.dialog_cancel)
                 .onPositive { dialog, _ ->  // this enable to avoid dismissing dialog if list name already exist
-                    MatomoAnalytics.trackEvent(AnalyticsEvent.ShoppingListCreated)
+                    matomoAnalytics.trackEvent(AnalyticsEvent.ShoppingListCreated)
                     val inputEditText = dialog.inputEditText!!
                     val listName = inputEditText.text.toString()
                     val productList = ProductLists(listName, if (productToAdd != null) 1 else 0)
@@ -193,8 +194,8 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
             val productToRemove = adapter.lists[position]
 
             // delete the product from YOUR_LISTED_PRODUCT_TABLE
-            val deleteQuery = daoSession.yourListedProductDao.queryBuilder()
-                    .where(YourListedProductDao.Properties.ListId.eq(productToRemove.id)).buildDelete()
+            val deleteQuery = daoSession.listedProductDao.queryBuilder()
+                    .where(ListedProductDao.Properties.ListId.eq(productToRemove.id)).buildDelete()
             deleteQuery.executeDeleteWithoutDetachingEntities()
             daoSession.clear()
 
@@ -218,9 +219,7 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
         else -> super.onOptionsItemSelected(item)
     }
 
-    private fun openCSVToImport() {
-        chooseFileContract.launch(arrayOf("text/csv"))
-    }
+    private fun openCSVToImport() = chooseFileContract.launch(arrayOf("text/csv"))
 
     public override fun onResume() {
         super.onResume()
@@ -230,37 +229,40 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
     private fun parseCSV(inputStream: InputStream?) {
         val progressDialog = ProgressDialog(this@ProductListsActivity)
         progressDialog.show()
-        Observable.create { emitter: ObservableEmitter<Int?> ->
+
+        Observable.create { emitter: ObservableEmitter<Int> ->
             Single.fromCallable {
-                val yourListedProductDao = daoSession.yourListedProductDao
-                val list = ArrayList<YourListedProduct>()
+                val listProductDao = daoSession.listedProductDao
+                val list = mutableListOf<ListedProduct>()
                 try {
-                    CSVParser(InputStreamReader(inputStream), CSVFormat.DEFAULT.withFirstRecordAsHeader()).use { csvParser ->
-                        val size = csvParser.records.size
-                        var count = 0
-                        var id: Long
-                        csvParser.records.forEach { record ->
-                            var lists = productListsDao.queryBuilder().where(ProductListsDao.Properties.ListName.eq(record[2])).list()
-                            if (lists.isEmpty()) {
+                    CSVParser(
+                            InputStreamReader(inputStream),
+                            CSVFormat.DEFAULT.withFirstRecordAsHeader()
+                    ).use { parser ->
+                        val size = parser.records.size
+                        parser.records.withIndex().forEach { (index, record) ->
+                            val listName = record[2]
+                            var daoList = productListsDao.queryBuilder()
+                                    .where(ProductListsDao.Properties.ListName.eq(listName)).unique()
+                            if (daoList == null) {
                                 //create new list
-                                val productList = ProductLists(record[2], 0)
+                                val productList = ProductLists(listName, 0)
                                 adapter.lists.add(productList)
                                 productListsDao.insert(productList)
-                                lists = productListsDao.queryBuilder().where(ProductListsDao.Properties.ListName.eq(record[2])).list()
+                                daoList = productListsDao.queryBuilder()
+                                        .where(ProductListsDao.Properties.ListName.eq(listName)).unique()
                             }
-                            id = lists[0].id
-                            val yourListedProduct = YourListedProduct().apply {
-                                barcode = record[0]
-                                productName = record[1]
-                                listName = record[2]
-                                productDetails = record[3]
-                                listId = id
+                            val yourListedProduct = ListedProduct().apply {
+                                this.barcode = record[0]
+                                this.productName = record[1]
+                                this.listName = listName
+                                this.productDetails = record[3]
+                                this.listId = daoList.id
                             }
-                            list.add(yourListedProduct)
-                            count++
-                            emitter.onNext(count * 100 / size)
+                            list += yourListedProduct
+                            emitter.onNext(index * 100 / size)
                         }
-                        yourListedProductDao.insertOrReplaceInTx(list)
+                        listProductDao.insertOrReplaceInTx(list)
                         return@fromCallable true
                     }
                 } catch (e: Exception) {
@@ -279,11 +281,10 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
     }
 
     companion object {
-        private const val ACTIVITY_CHOOSE_FILE = 123
         private const val KEY_PRODUCT = "product"
 
         @JvmStatic
-        fun start(context: Context, productToAdd: Product?) = context.startActivity(
+        fun start(context: Context, productToAdd: Product) = context.startActivity(
                 Intent(context, ProductListsActivity::class.java).apply {
                     putExtra(KEY_PRODUCT, productToAdd)
                 })
@@ -293,9 +294,11 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
 
         fun DaoSession.getProductListsDaoWithDefaultList(context: Context): ProductListsDao {
             val productListsDao = productListsDao
-            if (productListsDao.loadAll().isEmpty()) {
-                productListsDao.insert(ProductLists(context.getString(R.string.txt_eaten_products), 0))
-                productListsDao.insert(ProductLists(context.getString(R.string.txt_products_to_buy), 0))
+            if (productListsDao.isEmpty()) {
+                productListsDao.insertInTx(
+                        ProductLists(context.getString(R.string.txt_eaten_products), 0),
+                        ProductLists(context.getString(R.string.txt_products_to_buy), 0)
+                )
             }
             return productListsDao
         }

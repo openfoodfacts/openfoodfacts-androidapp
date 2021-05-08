@@ -24,14 +24,12 @@ import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Canvas
-import android.graphics.Typeface
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.net.Uri
 import android.os.Build
 import android.os.Environment
 import android.text.Spannable
-import android.text.SpannableString
 import android.text.SpannableStringBuilder
 import android.text.Spanned
 import android.text.style.ClickableSpan
@@ -45,6 +43,7 @@ import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
+import androidx.core.text.inSpans
 import androidx.core.view.children
 import androidx.work.*
 import com.afollestad.materialdialogs.MaterialDialog
@@ -138,10 +137,10 @@ object Utils {
      * @param value float value
      * @return round value **with 2 decimals** or 0 if the value is empty or equals to 0
      */
-    fun getRoundNumber(value: String, locale: Locale = Locale.getDefault()) = when {
+    fun getRoundNumber(value: CharSequence, locale: Locale = Locale.getDefault()) = when {
         value.isEmpty() -> "?"
         value == "0" -> value
-        else -> value.toDoubleOrNull()
+        else -> value.toString().toDoubleOrNull()
                 ?.let { DecimalFormat("##.##", DecimalFormatSymbols(locale)).format(it) }
                 ?: "?"
     }
@@ -208,16 +207,6 @@ object Utils {
     fun getOutputPicUri(context: Context): Uri =
             File(makeOrGetPictureDirectory(context), "${System.currentTimeMillis()}.jpg").toUri()
 
-    fun getClickableText(
-            text: String,
-            type: SearchType,
-            activityToStart: Activity
-    ): CharSequence = SpannableString(text).apply {
-        setSpan(object : ClickableSpan() {
-            override fun onClick(view: View) = start(activityToStart, type, text)
-        }, 0, text.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-    }
-
     /**
      * Function to open ContinuousScanActivity to facilitate scanning
      *
@@ -246,28 +235,18 @@ object Utils {
     fun firstNotEmpty(vararg args: String?) = args.firstOrNull { it != null && it.isNotEmpty() }
 }
 
-fun isAllGranted(grantResults: Map<String?, Boolean?>) = !grantResults.containsValue(false)
-
 fun isAllGranted(grantResults: IntArray) =
         grantResults.isNotEmpty() && grantResults.none { it != PERMISSION_GRANTED }
 
-/**
- * Ask to login before editing product
- */
-fun startLoginToEditAnd(requestCode: Int, activity: Activity?) {
-    if (activity == null) return
-    MaterialDialog.Builder(activity)
-            .title(R.string.sign_in_to_edit)
-            .positiveText(R.string.txtSignIn)
-            .negativeText(R.string.dialog_cancel)
-            .onPositive { dialog, _ ->
-                val intent = Intent(activity, LoginActivity::class.java)
-                activity.startActivityForResult(intent, requestCode)
-                dialog.dismiss()
-            }
-            .onNegative { dialog, _ -> dialog.dismiss() }
-            .build().show()
+fun buildSignInDialog(activity: Activity): MaterialDialog.Builder = MaterialDialog.Builder(activity)
+        .title(R.string.sign_in_to_edit)
+        .positiveText(R.string.txtSignIn)
+        .negativeText(R.string.dialog_cancel)
+
+private fun startActivityLoginWithRequestCode(activity: Activity, requestCode: Int) {
+    activity.startActivityForResult(Intent(activity, LoginActivity::class.java), requestCode)
 }
+
 
 /**
  * @param type Type of call (Search or Scan)
@@ -349,12 +328,6 @@ private fun closeStyles(text: Spannable, tags: Array<out StyleSpan>) {
     }
 }
 
-/**
- * Returns a CharSequence that applies boldface to the concatenation
- * of the specified CharSequence objects.
- */
-fun bold(vararg content: CharSequence) = apply(content, StyleSpan(Typeface.BOLD))
-
 fun getModifierNonDefault(modifier: String) = if (modifier != DEFAULT_MODIFIER) modifier else ""
 
 private val LOG_TAG = Utils::class.simpleName!!
@@ -407,3 +380,10 @@ fun isBarcodeValid(barcode: String?): Boolean {
  * @return true if installed, false otherwise.
  */
 fun isHardwareCameraInstalled(context: Context) = context.packageManager.hasSystemFeature(PackageManager.FEATURE_CAMERA)
+fun getSearchLinkText(
+        text: String,
+        type: SearchType,
+        activityToStart: Activity
+): CharSequence = SpannableStringBuilder().inSpans(object : ClickableSpan() {
+    override fun onClick(view: View) = start(activityToStart, type, text)
+}) { append(text) }

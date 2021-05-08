@@ -18,6 +18,7 @@ package openfoodfacts.github.scrachx.openfood.features
 import android.Manifest.permission
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
@@ -36,8 +37,8 @@ import openfoodfacts.github.scrachx.openfood.features.adapters.ProductImagesSele
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.images.IMAGE_FILE
 import openfoodfacts.github.scrachx.openfood.images.IMG_ID
-import openfoodfacts.github.scrachx.openfood.images.ImageNameJsonParser.extractImagesNameSortedByUploadTimeDesc
 import openfoodfacts.github.scrachx.openfood.images.PRODUCT_BARCODE
+import openfoodfacts.github.scrachx.openfood.images.extractImagesNameSortedByUploadTimeDesc
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
 import openfoodfacts.github.scrachx.openfood.utils.MY_PERMISSIONS_REQUEST_STORAGE
 import openfoodfacts.github.scrachx.openfood.utils.PhotoReceiverHandler
@@ -58,7 +59,10 @@ class ImagesSelectActivity : BaseActivity() {
     @Inject
     lateinit var productsApi: ProductsAPI
 
-    private var adapter: ProductImagesSelectionAdapter? = null
+    @Inject
+    lateinit var sharedPreferences: SharedPreferences
+
+    private lateinit var adapter: ProductImagesSelectionAdapter
     private val disp = CompositeDisposable()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -81,13 +85,13 @@ class ImagesSelectActivity : BaseActivity() {
 
     private fun loadProductImages(code: String) {
         productsApi.getProductImages(code)
+                .map { extractImagesNameSortedByUploadTimeDesc(it) }
                 .observeOn(AndroidSchedulers.mainThread())
-                .doOnError { Log.e(LOG_TAG, "cannot download images from server", it) }
-                .subscribe { node ->
-                    val imageNames = extractImagesNameSortedByUploadTimeDesc(node)
+                .doOnError { Log.e(LOG_TAG, "Cannot download images from server", it) }
+                .subscribe { imageNames ->
                     supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-                    //Check if user is logged in
+                    // Check if user is logged in
                     adapter = ProductImagesSelectionAdapter(this, picasso, imageNames, code) {
                         setSelectedImage(it)
                     }
@@ -99,7 +103,7 @@ class ImagesSelectActivity : BaseActivity() {
 
     private fun setSelectedImage(selectedPosition: Int) {
         if (selectedPosition >= 0) {
-            val finalUrlString = adapter!!.getImageUrl(selectedPosition)
+            val finalUrlString = adapter.getImageUrl(selectedPosition)
             picasso.load(finalUrlString).resize(400, 400).centerInside().into(binding.expandedImage)
             binding.zoomContainer.visibility = View.VISIBLE
             binding.imagesRecycler.visibility = View.INVISIBLE
@@ -114,8 +118,7 @@ class ImagesSelectActivity : BaseActivity() {
 
     private fun acceptSelection() {
         setResult(RESULT_OK, Intent().apply {
-            putExtra(IMG_ID, adapter!!.getSelectedImageName())
-
+            putExtra(IMG_ID, adapter.getSelectedImageName())
         })
         finish()
     }
@@ -129,7 +132,7 @@ class ImagesSelectActivity : BaseActivity() {
     }
 
     private fun updateButtonAccept() {
-        val visible = isUserSet() && adapter!!.isSelectionDone()
+        val visible = isUserSet() && adapter.isSelectionDone()
         binding.btnAcceptSelection.visibility = if (visible) View.VISIBLE else View.INVISIBLE
         binding.txtInfo.visibility = binding.btnAcceptSelection.visibility
     }
@@ -148,7 +151,7 @@ class ImagesSelectActivity : BaseActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        PhotoReceiverHandler { newPhotoFile ->
+        PhotoReceiverHandler(sharedPreferences) { newPhotoFile ->
             setResult(RESULT_OK, Intent().apply {
                 putExtra(IMAGE_FILE, newPhotoFile)
             })

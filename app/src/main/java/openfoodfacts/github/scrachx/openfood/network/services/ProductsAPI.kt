@@ -20,7 +20,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode
 import io.reactivex.Single
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
-import openfoodfacts.github.scrachx.openfood.BuildConfig.FLAVOR
+import openfoodfacts.github.scrachx.openfood.BuildConfig.FLAVOR_versionCode
 import openfoodfacts.github.scrachx.openfood.models.ProductState
 import openfoodfacts.github.scrachx.openfood.models.Search
 import openfoodfacts.github.scrachx.openfood.models.TagLineLanguage
@@ -43,15 +43,26 @@ interface ProductsAPI {
         /**
          * The api prefix URL
          */
-        private const val API_P = "/api/$API_VER"
+        private const val API_P = "api/$API_VER"
     }
 
     @GET("$API_P/product/{barcode}.json")
     fun getProductByBarcode(
             @Path("barcode") barcode: String,
             @Query("fields") fields: String,
+            @Query("lc") locale: String,
             @Header("User-Agent") header: String
     ): Single<ProductState>
+
+    /**
+     * @param barcodes String of comma separated barcodes
+     */
+    @GET("$API_P/search")
+    fun getProductsByBarcode(
+            @Query("code") barcodes: String,
+            @Query("fields") fields: String,
+            @Header("User-Agent") header: String
+    ): Single<Search>
 
     @FormUrlEncoded
     @POST("cgi/product_jqm2.pl")
@@ -63,7 +74,7 @@ interface ProductsAPI {
 
     @GET("cgi/search.pl?search_simple=1&json=1&action=process")
     fun searchProductByName(
-            @Query("search_terms") name: String,
+            @Query(ApiFields.Keys.SEARCH_TERMS) name: String,
             @Query("fields") fields: String,
             @Query("page") page: Int
     ): Single<Search>
@@ -79,19 +90,16 @@ interface ProductsAPI {
     @GET("$API_P/product/{barcode}.json?fields=ingredients")
     fun getIngredientsByBarcode(@Path("barcode") barcode: String?): Single<JsonNode>
 
-    @Deprecated("")
     @Multipart
     @POST("/cgi/product_image_upload.pl")
-    fun saveImage(@PartMap fields: Map<String?, @JvmSuppressWildcards RequestBody?>?): Call<JsonNode>
-
-    @Multipart
-    @POST("/cgi/product_image_upload.pl")
-    fun saveImageSingle(@PartMap fields: Map<String, @JvmSuppressWildcards RequestBody?>?): Single<JsonNode>
+    fun saveImage(
+            @PartMap fields: Map<String, @JvmSuppressWildcards RequestBody?>
+    ): Single<JsonNode>
 
     @GET("/cgi/product_image_crop.pl")
-    fun editImageSingle(
-            @Query(ApiFields.Keys.BARCODE) code: String?,
-            @QueryMap fields: Map<String, @JvmSuppressWildcards String?>?
+    fun editImage(
+            @Query(ApiFields.Keys.BARCODE) code: String,
+            @QueryMap fields: Map<String, @JvmSuppressWildcards String?>
     ): Single<JsonNode>
 
     @GET("/cgi/ingredients.pl?process_image=1&ocr_engine=google_cloud_vision")
@@ -100,11 +108,12 @@ interface ProductsAPI {
             @Query("id") imgId: String
     ): Single<JsonNode>
 
-    @GET("cgi/suggest.pl?tagtype=emb_codes")
-    fun getEMBCodeSuggestions(@Query("term") term: String?): Single<ArrayList<String>>
+    @GET("cgi/suggest.pl")
+    fun getSuggestions(
+            @Query("tagtype") tagType: String,
+            @Query("term") term: String
+    ): Single<List<String>>
 
-    @GET("/cgi/suggest.pl?tagtype=periods_after_opening")
-    fun getPeriodAfterOpeningSuggestions(@Query("term") term: String?): Single<ArrayList<String>>
 
     @GET("brand/{brand}/{page}.json")
     fun getProductByBrands(
@@ -175,16 +184,18 @@ interface ProductsAPI {
             @Query("fields") fields: String
     ): Single<Search>
 
-    @GET("category/{category}/{page}.json?fields=product_name,brands,quantity,image_small_url,nutrition_grade_fr,code")
+    @GET("category/{category}/{page}.json")
     fun getProductByCategory(
             @Path("category") category: String,
-            @Path("page") page: Int
+            @Path("page") page: Int,
+            @Query("fields") fields: String
     ): Single<Search>
 
-    @GET("contributor/{Contributor}/{page}.json?nocache=1")
+    @GET("contributor/{contributor}/{page}.json?nocache=1")
     fun getProductsByContributor(
-            @Path("Contributor") contributor: String,
-            @Path("page") page: Int
+            @Path("contributor") contributor: String,
+            @Path("page") page: Int,
+            @Query("fields") fields: String
     ): Single<Search>
 
     @GET("language/{language}.json")
@@ -220,51 +231,51 @@ interface ProductsAPI {
     @GET("trace/{trace}.json")
     fun getProductsByTrace(@Path("trace") trace: String): Single<Search>
 
-    @GET("packager-code/{PackagerCode}.json")
-    fun getProductsByPackagerCode(@Path("PackagerCode") packagerCode: String): Single<Search>
+    @GET("packager-code/{packager_code}.json")
+    fun getProductsByPackagerCode(@Path("packager_code") packagerCode: String): Single<Search>
 
-    @GET("city/{City}.json")
-    fun getProducsByCity(@Path("City") city: String): Single<Search>
+    @GET("city/{city}.json")
+    fun getProducsByCity(@Path("city") city: String): Single<Search>
 
     @GET("nutrition-grade/{nutriscore}.json")
     fun getProductsByNutriScore(@Path("nutriscore") nutritionGrade: String): Single<Search>
 
-    @GET("nutrient-level/{NutrientLevel}.json")
-    fun byNutrientLevel(@Path("NutrientLevel") nutrientLevel: String): Single<Search>
+    @GET("nutrient-level/{nutrient_level}.json")
+    fun byNutrientLevel(@Path("nutrient_level") nutrientLevel: String): Single<Search>
 
-    @GET("contributor/{Contributor}.json?nocache=1")
-    fun byContributor(@Path("Contributor") contributor: String): Single<Search>
+    @GET("contributor/{contributor}.json?nocache=1")
+    fun byContributor(@Path("contributor") contributor: String): Single<Search>
 
-    @GET("contributor/{Contributor}/state/to-be-completed/{page}.json?nocache=1")
+    @GET("contributor/{contributor}/state/to-be-completed/{page}.json?nocache=1")
     fun getToBeCompletedProductsByContributor(
-            @Path("Contributor") contributor: String,
+            @Path("contributor") contributor: String,
             @Path("page") page: Int
     ): Single<Search>
 
-    @GET("/photographer/{Contributor}/{page}.json?nocache=1")
+    @GET("/photographer/{contributor}/{page}.json?nocache=1")
     fun getPicturesContributedProducts(
-            @Path("Contributor") contributor: String,
+            @Path("contributor") contributor: String,
             @Path("page") page: Int
     ): Single<Search>
 
     @GET("photographer/{Photographer}.json?nocache=1")
     fun getProductsByPhotographer(@Path("Photographer") photographer: String): Single<Search>
 
-    @GET("photographer/{Contributor}/state/to-be-completed/{page}.json?nocache=1")
+    @GET("photographer/{contributor}/state/to-be-completed/{page}.json?nocache=1")
     fun getPicturesContributedIncompleteProducts(
-            @Path("Contributor") contributor: String?,
+            @Path("contributor") contributor: String?,
             @Path("page") page: Int
     ): Single<Search>
 
-    @GET("informer/{Informer}.json?nocache=1")
-    fun getProductsByInformer(@Path("Informer") informer: String?): Single<Search>
+    @GET("informer/{informer}.json?nocache=1")
+    fun getProductsByInformer(@Path("informer") informer: String?): Single<Search>
 
-    @GET("informer/{Contributor}/{page}.json?nocache=1")
-    fun getInfoAddedProducts(@Path("Contributor") contributor: String?, @Path("page") page: Int): Single<Search>
+    @GET("informer/{contributor}/{page}.json?nocache=1")
+    fun getInfoAddedProducts(@Path("contributor") contributor: String?, @Path("page") page: Int): Single<Search>
 
-    @GET("informer/{Contributor}/state/to-be-completed/{page}.json?nocache=1")
+    @GET("informer/{contributor}/state/to-be-completed/{page}.json?nocache=1")
     fun getInfoAddedIncompleteProductsSingle(
-            @Path("Contributor") contributor: String,
+            @Path("contributor") contributor: String,
             @Path("page") page: Int
     ): Single<Search>
 
@@ -321,7 +332,7 @@ interface ProductsAPI {
     /**
      * This method gives the news in all languages
      */
-    @GET("/files/tagline/tagline-$FLAVOR.json")
+    @GET("/files/tagline/tagline-$FLAVOR_versionCode.json")
     fun getTagline(@Header("User-Agent") header: String): Single<ArrayList<TagLineLanguage>>
 
     /**

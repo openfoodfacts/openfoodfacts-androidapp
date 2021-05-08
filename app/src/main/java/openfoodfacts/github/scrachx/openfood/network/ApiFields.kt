@@ -28,8 +28,19 @@ object ApiFields {
     object StateTags {
         const val CATEGORIES_TO_BE_COMPLETED = "en:categories-to-be-completed"
         const val NUTRITION_FACTS_TO_BE_COMPLETED = "en:nutrition-facts-to-be-completed"
+        const val LABELS_TO_BE_COMPLETED = "en:labels-to-be-completed"
+        const val ORIGINS_TO_BE_COMPLETED = "en:origins-to-be-completed"
 
         const val INGREDIENTS_COMPLETED = "en:ingredients-completed"
+
+        val INCOMPLETE_TAGS = listOf(
+                "to-be-completed",
+                "to-be-uploaded",
+                "to-be-checked",
+                "to-be-validated",
+                "to-be-selected",
+                "not-selected"
+        )
     }
 
     object Prefix {
@@ -159,6 +170,9 @@ object ApiFields {
         const val STORES = "stores"
         const val STATUS = "status"
         const val NUTRITION_GRADE = "nutrition_grades_tags"
+
+        const val SEARCH_TERMS = "search_terms"
+
         val TYPE_IMAGE = arrayOf(
                 ProductImageField.FRONT,
                 ProductImageField.INGREDIENTS,
@@ -197,6 +211,7 @@ object ApiFields {
                 AMINO_ACIDS_TAGS,
                 OTHER_NUTRITIONAL_SUBSTANCES_TAGS,
                 URL,
+                NUTRIMENTS,
                 BARCODE,
                 TRACES_TAGS,
                 INGREDIENTS_MAY_PALM_OIL_TAGS,
@@ -272,6 +287,17 @@ object ApiFields {
                 PRODUCT_NAME, GENERIC_NAME, BARCODE, LANG, IMAGE_SMALL_URL, IMAGES,
                 IMAGE_FRONT_URL, IMAGE_INGREDIENTS_URL, IMAGE_NUTRITION_URL,
                 IMAGE_PACKAGING_URL, IMAGE_URL, SELECTED_IMAGES
+        )
+
+        val PRODUCT_SEARCH_FIELDS = setOf(
+                BRANDS,
+                PRODUCT_NAME,
+                IMAGE_SMALL_URL,
+                QUANTITY,
+                NUTRITION_GRADE_FR,
+                BARCODE,
+                ECOSCORE,
+                NOVA_GROUPS
         )
     }
 }

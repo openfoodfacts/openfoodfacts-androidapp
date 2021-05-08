@@ -8,7 +8,7 @@ import org.junit.Test
  */
 class ProductIngredientTest {
     @Test
-    fun toString_returnsCorrectFormat() {
+    fun `toString returns correct format`() {
         val text = "Mayonnaise"
         val id = "mayo_id"
         val rank = 400L
@@ -29,14 +29,14 @@ class ProductIngredientTest {
     }
 
     @Test
-    fun productIngredientWithAdditionalProperty() {
+    fun `Fills up additional property`() {
         val productIngredient = ProductIngredient("Ketchup", "ketchup_id", 300L, "20%")
                 .apply { setAdditionalProperty("Sweetness", "90") }
         assertThat(productIngredient.additionalProperties["Sweetness"]).isEqualTo("90")
     }
 
     @Test
-    fun productIngredientGetters() {
+    fun `Fills up fields`() {
         val productIngredient = ProductIngredient("Mustard", "mustard_id", 200L, "25%")
         assertThat(productIngredient.text).isEqualTo("Mustard")
         assertThat(productIngredient.id).isEqualTo("mustard_id")

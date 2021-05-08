@@ -1,9 +1,9 @@
 package openfoodfacts.github.scrachx.openfood.features
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.os.Build
 import android.view.View
 import android.widget.Toast
 import androidx.annotation.CheckResult
@@ -17,7 +17,6 @@ import openfoodfacts.github.scrachx.openfood.images.createImageBundle
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
 import openfoodfacts.github.scrachx.openfood.utils.isAbsoluteUrl
 import org.jetbrains.annotations.Contract
 
@@ -25,53 +24,49 @@ import org.jetbrains.annotations.Contract
  * Used to open fullscreen activity
  */
 object FullScreenActivityOpener {
+
     fun openForUrl(
             fragment: Fragment,
             client: OpenFoodAPIClient,
             product: Product,
             imageType: ProductImageField,
-            mUrlImage: String?,
-            mImageFront: View
+            mUrlImage: String,
+            mImageFront: View,
+            language: String
+    ) = openForUrl(fragment.requireActivity(), client, product, imageType, mUrlImage, mImageFront, language)
+
+    @SuppressLint("CheckResult")
+    fun openForUrl(
+            activity: Activity,
+            client: OpenFoodAPIClient,
+            product: Product,
+            imageType: ProductImageField,
+            mUrlImage: String,
+            mImageFront: View,
+            language: String
     ) {
         // A new file added just now
         if (isAbsoluteUrl(mUrlImage)) {
-            loadImageServerUrl(fragment, client, product, imageType, mImageFront)
+            loadImageServerUrl(activity, client, product, imageType, mImageFront, language)
             return
         }
-        startActivity(fragment, mImageFront, createIntent(fragment.context, product, imageType, mUrlImage))
+        startActivity(activity, mImageFront, createIntent(activity, product, imageType, mUrlImage, language))
     }
-
-    private fun startActivity(fragment: Fragment, mImageFront: View?, intent: Intent) {
-        if (mImageFront != null && fragment.activity != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            val options = ActivityOptionsCompat.makeSceneTransitionAnimation(fragment.requireActivity(), mImageFront, fragment.requireActivity().getString(R.string.product_transition))
-            fragment.startActivityForResult(intent, ImagesManageActivity.REQUEST_EDIT_IMAGE, options.toBundle())
-        } else {
-            fragment.startActivityForResult(intent, ImagesManageActivity.REQUEST_EDIT_IMAGE)
-        }
-    }
-
-    fun openForUrl(
-            activity: Activity,
-            product: Product,
-            imageType: ProductImageField,
-            mUrlImage: String?,
-            mImageFront: View?
-    ) = startActivity(activity, mImageFront, createIntent(activity, product, imageType, mUrlImage))
 
     private fun startActivity(activity: Activity, mImageFront: View?, intent: Intent) {
-        if (mImageFront != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            val bundle = ActivityOptionsCompat.makeSceneTransitionAnimation(
+        val bundle = mImageFront?.let {
+            ActivityOptionsCompat.makeSceneTransitionAnimation(
                     activity,
                     mImageFront,
                     activity.getString(R.string.product_transition)
             ).toBundle()
-            activity.startActivityForResult(intent, ImagesManageActivity.REQUEST_EDIT_IMAGE, bundle)
-        } else activity.startActivityForResult(intent, ImagesManageActivity.REQUEST_EDIT_IMAGE)
+        }
+        activity.startActivityForResult(intent, ImagesManageActivity.REQUEST_EDIT_IMAGE, bundle)
     }
 
     fun openZoom(
             activity: Activity,
-            mUrlImage: String?,
+            mUrlImage: String,
             mImageFront: View?
     ) = startActivity(activity, mImageFront, Intent(activity, ImageZoomActivity::class.java).apply {
         putExtra(IMAGE_URL, mUrlImage)
@@ -79,33 +74,39 @@ object FullScreenActivityOpener {
 
     @CheckResult
     @Contract(pure = true)
-    private fun createIntent(context: Context?, product: Product, imageType: ProductImageField, mUrlImage: String?): Intent {
-        var language = getLanguage(context)
+    private fun createIntent(
+            context: Context,
+            product: Product,
+            imageType: ProductImageField,
+            mUrlImage: String,
+            language: String
+    ): Intent {
+        var productLanguage = language
         if (!product.isLanguageSupported(language) && product.lang.isNotBlank()) {
-            language = product.lang
+            productLanguage = product.lang
         }
         return Intent(context, ImagesManageActivity::class.java).apply {
-            putExtras(createImageBundle(imageType, product, language, mUrlImage))
+            putExtras(createImageBundle(imageType, product, productLanguage, mUrlImage))
         }
     }
 
     @CheckResult
     private fun loadImageServerUrl(
-            fragment: Fragment,
+            activity: Activity,
             client: OpenFoodAPIClient,
             product: Product,
             imageType: ProductImageField,
-            mImageFront: View
+            mImageFront: View,
+            language: String
     ): Disposable {
-        return client.getProductImages(product.code).subscribe { newState ->
-            val newStateProduct = newState.product
-            if (newStateProduct != null) {
-                val language = getLanguage(fragment.context)
-                val imageUrl = newStateProduct.getSelectedImage(language, imageType, ImageSize.DISPLAY)
+        return client.getProductImages(product.code).subscribe { state ->
+            val newProduct = state.product
+            if (newProduct != null) {
+                val imageUrl = newProduct.getSelectedImage(language, imageType, ImageSize.DISPLAY)
                 if (!imageUrl.isNullOrBlank()) {
-                    openForUrl(fragment, client, newStateProduct, imageType, imageUrl, mImageFront)
+                    openForUrl(activity, client, newProduct, imageType, imageUrl, mImageFront, language)
                 } else {
-                    Toast.makeText(fragment.context, R.string.cant_edit_image_not_yet_uploaded, Toast.LENGTH_LONG).show()
+                    Toast.makeText(activity, R.string.cant_edit_image_not_yet_uploaded, Toast.LENGTH_LONG).show()
                 }
             }
         }

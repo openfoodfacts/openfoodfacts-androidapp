@@ -57,10 +57,8 @@ import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
 import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
-import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback
-import openfoodfacts.github.scrachx.openfood.features.scan.ContinuousScanActivity
 import openfoodfacts.github.scrachx.openfood.jobs.LoadTaxonomiesWorker
 import openfoodfacts.github.scrachx.openfood.jobs.OfflineProductWorker.Companion.scheduleSync
 import openfoodfacts.github.scrachx.openfood.models.DaoSession
@@ -69,13 +67,8 @@ import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.A
 import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.AnalysisTagConfigDao
 import openfoodfacts.github.scrachx.openfood.models.entities.country.CountryName
 import openfoodfacts.github.scrachx.openfood.models.entities.country.CountryNameDao
-import openfoodfacts.github.scrachx.openfood.utils.INavigationItem
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLocale
-import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener
+import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType
-import openfoodfacts.github.scrachx.openfood.utils.SearchSuggestionProvider
-import openfoodfacts.github.scrachx.openfood.utils.requirePreference
 import org.greenrobot.greendao.async.AsyncOperation
 import org.greenrobot.greendao.async.AsyncOperationListener
 import org.greenrobot.greendao.query.WhereCondition.StringCondition
@@ -88,6 +81,12 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
 
     @Inject
     lateinit var daoSession: DaoSession
+
+    @Inject
+    lateinit var matomoAnalytics: MatomoAnalytics
+
+    @Inject
+    lateinit var localeManager: LocaleManager
 
     override val navigationDrawerListener: NavigationDrawerListener? by lazy {
         if (activity is NavigationDrawerListener) activity as NavigationDrawerListener
@@ -104,33 +103,7 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
 
         val settings = requireActivity().getSharedPreferences("prefs", 0)
 
-        val finalLocalLangs = mutableListOf<String>()
-        val finalLocalLabels = mutableListOf<String?>()
-
-        val languages = requireActivity().resources.getStringArray(R.array.languages_array)
-        val localeLabels = arrayOfNulls<String>(languages.size)
-
-        languages.withIndex().forEach { (i, lang) ->
-            val current = getLocale(lang)
-            localeLabels[i] = current.getDisplayName(current).capitalize(Locale.getDefault())
-            finalLocalLabels += localeLabels[i]
-            finalLocalLangs += lang
-        }
-
-        requirePreference<ListPreference>(getString(R.string.pref_language_key)).let {
-            it.entries = finalLocalLabels.toTypedArray()
-            it.entryValues = finalLocalLangs.toTypedArray()
-            it.onPreferenceChangeListener = Preference.OnPreferenceChangeListener { _: Preference?, locale: Any? ->
-                val configuration = requireActivity().resources.configuration
-                Toast.makeText(context, getString(R.string.changes_saved), Toast.LENGTH_SHORT).show()
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-                    configuration.setLocale(getLocale(locale as String?))
-                    requireActivity().recreate()
-                }
-                true
-            }
-        }
-
+        initLanguageCell()
 
         requirePreference<ListPreference>(getString(R.string.pref_app_theme_key)).let {
             it.setEntries(R.array.application_theme_entries)
@@ -204,7 +177,7 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
         }
         // Execute query
         asyncSessionCountries.queryList(countryNameDao.queryBuilder()
-                .where(CountryNameDao.Properties.LanguageCode.eq(getLanguage(requireActivity())))
+                .where(CountryNameDao.Properties.LanguageCode.eq(localeManager.getLanguage()))
                 .orderAsc(CountryNameDao.Properties.Name).build())
 
         countryPreference.setOnPreferenceChangeListener { preference, newValue ->
@@ -274,7 +247,6 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
             }
         }
 
-
         // Disable photo mode for OpenProductFacts
         if (isFlavors(AppFlavors.OPF)) {
             requirePreference<Preference>(getString(R.string.pref_show_product_photos_key)).isVisible = false
@@ -300,7 +272,7 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
 
         requirePreference<SwitchPreference>(getString(R.string.pref_analytics_reporting_key)).let {
             it.setOnPreferenceChangeListener { _, newValue ->
-                MatomoAnalytics.onAnalyticsEnabledToggled(newValue == true)
+                matomoAnalytics.onAnalyticsEnabledToggled(newValue == true)
                 true
             }
         }
@@ -329,7 +301,7 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
                         } else {
                             AnalyticsEvent.IngredientAnalysisDisabled(config.type)
                         }
-                        MatomoAnalytics.trackEvent(event)
+                        matomoAnalytics.trackEvent(event)
                         true
                     }
                 })
@@ -399,12 +371,12 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String) {
         when (key) {
-            getString(R.string.pref_enable_mobile_data_key) -> scheduleSync(requireContext())
+            getString(R.string.pref_enable_mobile_data_key) -> scheduleSync(requireContext(), sharedPreferences)
         }
     }
 
     private fun getAnalysisTagConfigs(daoSession: DaoSession) {
-        val language = getLanguage(requireContext())
+        val language = localeManager.getLanguage()
         Single.fromCallable {
             val analysisTagConfigDao = daoSession.analysisTagConfigDao
             val analysisTagConfigs = analysisTagConfigDao.queryBuilder()
@@ -430,6 +402,28 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe { configs: List<AnalysisTagConfig> -> buildDisplayCategory(configs) }
                 .addTo(disp)
+    }
+
+    private fun initLanguageCell() {
+        val localesWithNames = SupportedLanguages.codes()
+                .map {
+                    val locale = LocaleUtils.parseLocale(it)
+                    it to locale.getDisplayName(locale).capitalize(locale)
+                }
+
+        requirePreference<ListPreference>(getString(R.string.pref_language_key)).let { preference ->
+            preference.entries = localesWithNames.map { it.second }.toTypedArray()
+            preference.entryValues = localesWithNames.map { it.first }.toTypedArray()
+            preference.onPreferenceChangeListener = Preference.OnPreferenceChangeListener { _: Preference?, locale: Any? ->
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1 && locale != null) {
+                    val configuration = requireActivity().resources.configuration
+                    configuration.setLocale(LocaleUtils.parseLocale(locale as String))
+                    Toast.makeText(context, getString(R.string.changes_saved), Toast.LENGTH_SHORT).show()
+                    requireActivity().recreate()
+                }
+                true
+            }
+        }
     }
 
     companion object {

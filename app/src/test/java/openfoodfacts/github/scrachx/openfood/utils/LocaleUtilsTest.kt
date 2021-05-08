@@ -1,12 +1,11 @@
 package openfoodfacts.github.scrachx.openfood.utils
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.content.res.Resources
 import com.google.common.truth.Truth.assertThat
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.LanguageData
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLocale
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLocaleFromContext
+import openfoodfacts.github.scrachx.openfood.models.LanguageData
 import org.junit.Test
 import org.mockito.Mockito.mock
 import java.util.*
@@ -15,28 +14,30 @@ import org.mockito.Mockito.`when` as mockitoWhen
 /**
  * Created by n27 on 4/4/17.
  */
-class LocaleHelperTest {
+class LocaleUtilsTest {
 
     @Test
     fun getLocale() {
-        assertThat(getLocale("fr")).isEqualTo(Locale.FRENCH)
-        assertThat(getLocale("en-US")).isEqualTo(Locale.US)
-        assertThat(getLocale("en")).isEqualTo(Locale.ENGLISH)
+        assertThat(LocaleUtils.parseLocale("fr")).isEqualTo(Locale.FRENCH)
+        assertThat(LocaleUtils.parseLocale("en-US")).isEqualTo(Locale.US)
+        assertThat(LocaleUtils.parseLocale("en")).isEqualTo(Locale.ENGLISH)
     }
 
     @Test
     fun getLocale_FromContext() {
         val context = mock(Context::class.java)
         val resources = mock(Resources::class.java)
+        val sharedPreferences = mock(SharedPreferences::class.java)
+        val localeManager = LocaleManager(context, sharedPreferences)
         mockitoWhen(context.resources).thenReturn(resources)
 
-        val locale = getLocale("en-US")
+        val locale = LocaleUtils.parseLocale("en-US")
         val configuration = mock(Configuration::class.java).apply {
             this.locale = locale
         }
         mockitoWhen(resources.configuration).thenReturn(configuration)
 
-        assertThat(getLocaleFromContext(context)).isEqualTo(locale)
+        assertThat(localeManager.getLocaleFromContext(context)).isEqualTo(locale)
     }
 
     @Test

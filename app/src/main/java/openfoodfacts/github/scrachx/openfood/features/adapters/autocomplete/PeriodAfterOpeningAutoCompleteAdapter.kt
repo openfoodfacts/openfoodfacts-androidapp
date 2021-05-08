@@ -4,15 +4,15 @@ import android.content.Context
 import android.widget.ArrayAdapter
 import android.widget.Filter
 import android.widget.Filterable
-import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import org.apache.commons.lang3.StringUtils
 import java.util.*
 
 class PeriodAfterOpeningAutoCompleteAdapter(
-        context: Context?,
+        context: Context,
         textViewResourceId: Int,
-        private val productsApi: ProductsAPI
-) : ArrayAdapter<String>(context!!, textViewResourceId), Filterable {
+        private val client: OpenFoodAPIClient
+) : ArrayAdapter<String>(context, textViewResourceId), Filterable {
     private val periodsList = mutableListOf<String>()
 
     override fun getCount() = periodsList.size
@@ -26,7 +26,7 @@ class PeriodAfterOpeningAutoCompleteAdapter(
             if (constraint == null) return FilterResults().apply { count = 0 }
 
             // Retrieve the autocomplete results from server.
-            val list = productsApi.getPeriodAfterOpeningSuggestions(constraint.toString()).blockingGet()
+            val list = client.getPeriodAfterOpeningSuggestions(constraint.toString()).blockingGet()
 
             // Assign the data to the FilterResults
             return FilterResults().apply {

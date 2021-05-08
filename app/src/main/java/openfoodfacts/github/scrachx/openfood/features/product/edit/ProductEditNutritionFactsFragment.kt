@@ -16,6 +16,7 @@
 package openfoodfacts.github.scrachx.openfood.features.product.edit
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.Editable
 import android.text.Html
@@ -28,6 +29,7 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.*
 import android.widget.AdapterView.OnItemSelectedListener
+import androidx.core.net.toFile
 import androidx.core.widget.doAfterTextChanged
 import com.afollestad.materialdialogs.MaterialDialog
 import com.google.android.material.textfield.TextInputLayout
@@ -54,7 +56,7 @@ import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.Defaults.NUTRITION_DATA_PER_100G
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.Defaults.NUTRITION_DATA_PER_SERVING
-import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.FileDownloader.download
 import openfoodfacts.github.scrachx.openfood.utils.UnitUtils.UNIT_IU
@@ -69,14 +71,45 @@ import javax.inject.Inject
  */
 @AndroidEntryPoint
 class ProductEditNutritionFactsFragment : ProductEditFragment() {
+    private var _binding: FragmentAddProductNutritionFactsBinding? = null
+    private val binding get() = _binding!!
+
+    @Inject
+    lateinit var picasso: Picasso
+
+    @Inject
+    lateinit var client: OpenFoodAPIClient
+
+    @Inject
+    lateinit var matomoAnalytics: MatomoAnalytics
+
+    @Inject
+    lateinit var sentryAnalytics: SentryAnalytics
+
+    @Inject
+    lateinit var sharedPreferences: SharedPreferences
+
+    @Inject
+    lateinit var localeManager: LocaleManager
+
     private val keyListener = object : NumberKeyListener() {
         override fun getInputType() = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
 
         override fun getAcceptedChars() = charArrayOf('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ',', '.')
     }
-    private var _binding: FragmentAddProductNutritionFactsBinding? = null
-    private val binding get() = _binding!!
-    private var photoReceiverHandler: PhotoReceiverHandler? = null
+
+    private val photoReceiverHandler: PhotoReceiverHandler by lazy {
+        PhotoReceiverHandler(sharedPreferences) {
+            val resultUri = it.toURI()
+            imagePath = resultUri.path
+            photoFile = it
+            val image = ProductImage(productCode!!, ProductImageField.NUTRITION, it, localeManager.getLanguage()).apply {
+                filePath = resultUri.path
+            }
+            (activity as? ProductEditActivity)?.addToPhotoMap(image, 2)
+            hideImageProgress(false, "")
+        }
+    }
     private var photoFile: File? = null
     private var productCode: String? = null
     private var mOfflineSavedProduct: OfflineSavedProduct? = null
@@ -89,12 +122,6 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
     private var lastEditText: EditText? = null
     private var starchEditText: CustomValidatingEditTextView? = null
     private var allEditViews = mutableSetOf<CustomValidatingEditTextView>()
-
-    @Inject
-    lateinit var picasso: Picasso
-
-    @Inject
-    lateinit var productsApi: ProductsAPI
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentAddProductNutritionFactsBinding.inflate(inflater, container, false)
@@ -126,16 +153,6 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         }
         binding.checkboxNoNutritionData.setOnCheckedChangeListener { _, isChecked -> toggleNoNutritionData(isChecked) }
 
-        photoReceiverHandler = PhotoReceiverHandler {
-            val resultUri = it.toURI()
-            imagePath = resultUri.path
-            photoFile = it
-            val image = ProductImage(productCode!!, ProductImageField.NUTRITION, it).apply {
-                filePath = resultUri.path
-            }
-            (activity as? ProductEditActivity)?.addToPhotoMap(image, 2)
-            hideImageProgress(false, "")
-        }
         val bundle = arguments
         lastEditText = binding.alcohol
         if (bundle != null) {
@@ -172,7 +189,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
 
     override fun onResume() {
         super.onResume()
-        MatomoAnalytics.trackView(AnalyticsView.ProductEditNutritionFacts)
+        matomoAnalytics.trackView(AnalyticsView.ProductEditNutritionFacts)
     }
 
     override fun onDestroyView() {
@@ -399,13 +416,13 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
             return
         }
         if (photoFile != null) {
-            cropRotateImage(photoFile, getString(R.string.nutrition_facts_picture))
+            cropRotateImage(photoFile!!, getString(R.string.nutrition_facts_picture))
         } else {
-            download(requireContext(), path, productsApi)
+            download(requireContext(), path, client)
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe {
-                        photoFile = it
-                        cropRotateImage(photoFile, getString(R.string.nutrition_facts_picture))
+                        photoFile = it.toFile()
+                        cropRotateImage(it, getString(R.string.nutrition_facts_picture))
                     }.addTo(disp)
         }
     }
@@ -607,7 +624,10 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
      * @param editTextView EditText with spinner for entering the nutrients
      * @param targetMap map to enter the nutrient value received from edit texts
      */
-    private fun addNutrientToMap(editTextView: CustomValidatingEditTextView, targetMap: MutableMap<String, String?>) {
+    private fun addNutrientToMap(
+            editTextView: CustomValidatingEditTextView,
+            targetMap: MutableMap<String, String?>
+    ) {
         // For impl reference, see https://wiki.openfoodfacts.org/Nutrients_handling_in_Open_Food_Facts#Data_display
         val fieldName = getCompleteEntryName(editTextView)
 
@@ -732,7 +752,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
                 modSpinner.setSelection(modSelectedIndex)
             }
         } catch (t: Throwable) {
-            SentryAnalytics.record(IllegalStateException("Can't find weight units for nutriment: $nutrientShortName", t))
+            sentryAnalytics.record(IllegalStateException("Can't find weight units for nutriment: $nutrientShortName", t))
             closeScreenWithAlert()
         }
 
@@ -754,10 +774,9 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
      */
     private fun convertToGrams(value: Float, index: Int): Float {
         val unit = NUTRIENTS_UNITS[index]
-        //can't be converted to grams.
-        return if (UNIT_DV == unit || UNIT_IU == unit) {
-            0F
-        } else UnitUtils.convertToGrams(value, unit)
+        // Can't be converted to grams.
+        return if (UNIT_DV == unit || UNIT_IU == unit) 0F
+        else UnitUtils.convertToGrams(value, unit)
     }
 
     private fun isCarbohydrateRelated(editText: CustomValidatingEditTextView): Boolean {
@@ -778,17 +797,18 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
 
         var carbsValue = binding.carbohydrates.getFloatValueOr(0f)
         var sugarValue = binding.sugars.getFloatValueOr(0f)
-        // check that value of (sugar + starch) is not greater than value of carbohydrates
-        //convert all the values to grams
+
+        // Check that value of (sugar + starch) is not greater than value of carbohydrates
+        // Convert all the values to grams
         carbsValue = convertToGrams(carbsValue, binding.carbohydrates.unitSpinner!!.selectedItemPosition)
         sugarValue = convertToGrams(sugarValue, binding.sugars.unitSpinner!!.selectedItemPosition)
+
         val newStarch = convertToGrams(starchValue, starchUnitSelectedIndex).toDouble()
+
         return if (sugarValue + newStarch > carbsValue) {
             binding.carbohydrates.showError(getString(R.string.error_in_carbohydrate_value))
             ValueState.NOT_VALID
-        } else {
-            ValueState.VALID
-        }
+        } else ValueState.VALID
     }
 
     /**
@@ -881,7 +901,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        photoReceiverHandler!!.onActivityResult(this, requestCode, resultCode, data)
+        photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data)
     }
 
     override fun hideImageProgress(errorInUploading: Boolean, message: String) {

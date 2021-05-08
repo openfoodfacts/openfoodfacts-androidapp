@@ -4,10 +4,11 @@ import android.content.Context
 import android.graphics.drawable.Drawable
 import androidx.annotation.DrawableRes
 import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat
+import io.reactivex.Single
 import openfoodfacts.github.scrachx.openfood.R
-import openfoodfacts.github.scrachx.openfood.features.productlist.ProductListActivity
 import openfoodfacts.github.scrachx.openfood.models.HistoryProduct
 import openfoodfacts.github.scrachx.openfood.models.Product
+import openfoodfacts.github.scrachx.openfood.models.SearchProduct
 import openfoodfacts.github.scrachx.openfood.models.Units
 import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
@@ -20,8 +21,18 @@ fun OfflineSavedProduct.toOnlineProduct(client: OpenFoodAPIClient) = toState(cli
 
 fun Product.isPerServingInLiter() = servingSize?.contains(Units.UNIT_LITER, true)
 
-fun Product.getProductBrandsQuantityDetails() = ProductListActivity.getProductBrandsQuantityDetails(brands, quantity)
+fun SearchProduct.getProductBrandsQuantityDetails() = StringBuilder().apply {
+    brands?.takeIf { it.isNotEmpty() }?.let { brandStr ->
+        append(brandStr.split(",").first().trim { it <= ' ' }.capitalize(Locale.ROOT))
+    }
+    if (!quantity.isNullOrEmpty()) {
+        append(" - ")
+        append(quantity)
+    }
+}.toString()
 
+fun SearchProduct.toProduct(client: OpenFoodAPIClient): Single<Product> =
+        client.getProductStateFull(this.code).map { it.product }
 
 @DrawableRes
 private fun getResourceFromEcoscore(ecoscore: String?) = when (ecoscore?.toLowerCase(Locale.ROOT)) {
@@ -34,7 +45,7 @@ private fun getResourceFromEcoscore(ecoscore: String?) = when (ecoscore?.toLower
 }
 
 @DrawableRes
-fun Product?.getEcoscoreResource() = getResourceFromEcoscore(this?.ecoscore)
+fun SearchProduct?.getEcoscoreResource() = getResourceFromEcoscore(this?.ecoscore)
 
 @DrawableRes
 fun HistoryProduct?.getEcoscoreResource() = getResourceFromEcoscore(this?.ecoscore)
@@ -54,7 +65,7 @@ private fun getResourceFromNutriScore(
 }
 
 @DrawableRes
-fun Product?.getNutriScoreResource(vertical: Boolean = false) = getResourceFromNutriScore(this?.nutritionGradeFr, vertical)
+fun SearchProduct?.getNutriScoreResource(vertical: Boolean = false) = getResourceFromNutriScore(this?.nutritionGradeFr, vertical)
 
 @DrawableRes
 fun HistoryProduct.getNutriScoreResource(vertical: Boolean = false) = getResourceFromNutriScore(nutritionGrade, vertical)
@@ -78,7 +89,7 @@ private fun getResourceFromNova(novaGroup: String?) = when (novaGroup) {
  * Returns the NOVA group graphic asset given the group
  */
 @DrawableRes
-fun Product?.getNovaGroupResource() = getResourceFromNova(this?.novaGroups)
+fun SearchProduct?.getNovaGroupResource() = getResourceFromNova(this?.novaGroups)
 
 @DrawableRes
 fun HistoryProduct?.getNovaGroupResource() = getResourceFromNova(this?.novaGroup)

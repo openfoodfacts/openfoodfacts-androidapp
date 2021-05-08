@@ -1,5 +1,8 @@
 package openfoodfacts.github.scrachx.openfood.models.entities;
 
+import android.text.TextUtils;
+
+import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -10,6 +13,7 @@ import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Index;
+import org.greenrobot.greendao.annotation.Property;
 import org.greenrobot.greendao.annotation.Transient;
 
 import java.io.Serializable;
@@ -33,46 +37,65 @@ public class SendProduct implements Serializable {
     @JsonIgnore
     private String weight;
     @JsonIgnore
-    private String weight_unit = "g";
+    @Property(nameInDb = "IMGUPLOAD_FRONT")
+    private String imgUploadFront;
     @JsonIgnore
-    private String imgupload_front;
+    @Property(nameInDb = "IMGUPLOAD_INGREDIENTS")
+    private String imgUploadIngredients;
     @JsonIgnore
-    private String imgupload_ingredients;
+    @Property(nameInDb = "IMGUPLOAD_NUTRITION")
+    private String imgUploadNutrition;
     @JsonIgnore
-    private String imgupload_nutrition;
-    @JsonIgnore
-    private String imgupload_packaging;
+    @Property(nameInDb = "IMGUPLOAD_PACKAGING")
+    private String imgUploadPackaging;
     @JsonProperty(ApiFields.Keys.USER_ID)
     @Transient
-    private String userId;
+    private String userID;
+    @JsonIgnore
+    @Property(nameInDb = "weight_unit")
+    private String weightUnit = "g";
     @Transient
     private String password;
 
     public SendProduct() {
     }
 
-    @Generated(hash = 88998839)
-    public SendProduct(Long id, String barcode, String lang, String name, String brands, String weight, String weight_unit, String imgupload_front, String imgupload_ingredients,
-                       String imgupload_nutrition, String imgupload_packaging) {
+    @Generated(hash = 1316358111)
+    public SendProduct(Long id, String barcode, String lang, String name, String brands, String weight, String imgUploadFront, String imgUploadIngredients,
+                       String imgUploadNutrition, String imgUploadPackaging, String weightUnit) {
         this.id = id;
         this.barcode = barcode;
         this.lang = lang;
         this.name = name;
         this.brands = brands;
         this.weight = weight;
-        this.weight_unit = weight_unit;
-        this.imgupload_front = imgupload_front;
-        this.imgupload_ingredients = imgupload_ingredients;
-        this.imgupload_nutrition = imgupload_nutrition;
-        this.imgupload_packaging = imgupload_packaging;
+        this.imgUploadFront = imgUploadFront;
+        this.imgUploadIngredients = imgUploadIngredients;
+        this.imgUploadNutrition = imgUploadNutrition;
+        this.imgUploadPackaging = imgUploadPackaging;
+        this.weightUnit = weightUnit;
     }
 
-    public String getUserId() {
-        return userId;
+    @Keep
+    public SendProduct(@NonNull SendProduct sp) {
+        this.barcode = sp.getBarcode();
+        this.name = sp.getName();
+        this.brands = sp.getBrands();
+        this.weight = sp.getWeight();
+        this.weightUnit = sp.getWeightUnit();
+        this.imgUploadFront = sp.getImgUploadFront();
+        this.imgUploadIngredients = sp.getImgUploadIngredients();
+        this.imgUploadNutrition = sp.getImgUploadNutrition();
+        this.imgUploadPackaging = sp.getImgUploadPackaging();
+        this.lang = sp.getLang();
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
     }
 
     public String getPassword() {
@@ -83,12 +106,12 @@ public class SendProduct implements Serializable {
         this.password = password;
     }
 
-    public String getWeight_unit() {
-        return weight_unit;
+    public String getWeightUnit() {
+        return weightUnit;
     }
 
-    public void setWeight_unit(String weight_unit) {
-        this.weight_unit = weight_unit;
+    public void setWeightUnit(String weightUnit) {
+        this.weightUnit = weightUnit;
     }
 
     public String getQuantity() {
@@ -96,7 +119,7 @@ public class SendProduct implements Serializable {
             return null;
         }
 
-        return this.weight + " " + this.weight_unit;
+        return String.format("%s %s", this.weight, this.weightUnit);
     }
 
     public String getBarcode() {
@@ -123,12 +146,12 @@ public class SendProduct implements Serializable {
         this.weight = weight;
     }
 
-    public String getImgupload_front() {
-        return imgupload_front;
+    public String getImgUploadFront() {
+        return imgUploadFront;
     }
 
-    public void setImgupload_front(String imgupload_front) {
-        this.imgupload_front = imgupload_front;
+    public void setImgUploadFront(String imgUploadFront) {
+        this.imgUploadFront = imgUploadFront;
     }
 
     public String getBrands() {
@@ -139,48 +162,47 @@ public class SendProduct implements Serializable {
         this.brands = brands;
     }
 
-    public String getImgupload_ingredients() {
-        return imgupload_ingredients;
+    public String getImgUploadIngredients() {
+        return imgUploadIngredients;
     }
 
-    public void setImgupload_ingredients(String imgupload_ingredients) {
-        this.imgupload_ingredients = imgupload_ingredients;
+    public void setImgUploadIngredients(String imgUploadIngredients) {
+        this.imgUploadIngredients = imgUploadIngredients;
     }
 
-    public String getImgupload_nutrition() {
-        return imgupload_nutrition;
+    public String getImgUploadNutrition() {
+        return imgUploadNutrition;
     }
 
-    public void setImgupload_nutrition(String imgupload_nutrition) {
-        this.imgupload_nutrition = imgupload_nutrition;
+    public void setImgUploadNutrition(String imgUploadNutrition) {
+        this.imgUploadNutrition = imgUploadNutrition;
     }
 
-    public String getImgupload_packaging() {
-        return imgupload_packaging;
+    public String getImgUploadPackaging() {
+        return imgUploadPackaging;
     }
 
-    public void setImgupload_packaging(String imgupload_packaging) {
-        this.imgupload_packaging = imgupload_packaging;
+    public void setImgUploadPackaging(String imgUploadPackaging) {
+        this.imgUploadPackaging = imgUploadPackaging;
     }
 
     /**
      * Compress the image according to the {@link ProductImageField}.
      * Add a "_small" prefix in the image name after the compression
-     *
      */
     public void compress(@NonNull ProductImageField field) {
         switch (field) {
             case NUTRITION:
-                this.imgupload_nutrition = Utils.compressImage(this.imgupload_nutrition);
+                this.imgUploadNutrition = Utils.compressImage(this.imgUploadNutrition);
                 break;
             case INGREDIENTS:
-                this.imgupload_ingredients = Utils.compressImage(this.imgupload_ingredients);
+                this.imgUploadIngredients = Utils.compressImage(this.imgUploadIngredients);
                 break;
             case PACKAGING:
-                this.imgupload_packaging = Utils.compressImage(this.imgupload_packaging);
+                this.imgUploadPackaging = Utils.compressImage(this.imgUploadPackaging);
                 break;
             case FRONT:
-                this.imgupload_front = Utils.compressImage(this.imgupload_front);
+                this.imgUploadFront = Utils.compressImage(this.imgUploadFront);
                 break;
             default:
                 //nothing to do
@@ -204,32 +226,24 @@ public class SendProduct implements Serializable {
         this.id = id;
     }
 
-    public void copy(@NonNull SendProduct sp) {
-        this.barcode = sp.getBarcode();
-        this.name = sp.getName();
-        this.brands = sp.getBrands();
-        this.weight = sp.getWeight();
-        this.weight_unit = sp.getWeight_unit();
-        this.imgupload_front = sp.getImgupload_front();
-        this.imgupload_ingredients = sp.getImgupload_ingredients();
-        this.imgupload_nutrition = sp.getImgupload_nutrition();
-        this.imgupload_packaging = sp.getImgupload_packaging();
-        this.lang = sp.getLang();
-    }
-
-    public boolean isEqual(@NonNull SendProduct sp) {
-        return (equalityOfString(this.barcode, sp.getBarcode()) && equalityOfString(this.name, sp.getName()) && equalityOfString(this.brands, sp
-            .getBrands()) && equalityOfString(this.weight, sp.getWeight()) && equalityOfString(this.weight_unit, sp.getWeight_unit()) &&
-            equalityOfString(this.imgupload_front, sp.getImgupload_front()) && equalityOfString(this.imgupload_nutrition, sp
-            .getImgupload_nutrition()) && equalityOfString(this.imgupload_packaging, sp.getImgupload_packaging()) &&
-            equalityOfString(this.imgupload_ingredients, sp.getImgupload_ingredients()));
-    }
-
-    private boolean equalityOfString(String a, String b) {
-        if (a != null) {
-            return a.equals(b);
-        } else {
-            return b == null;
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
         }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        SendProduct sp = (SendProduct) o;
+
+        return TextUtils.equals(this.barcode, sp.getBarcode())
+            && TextUtils.equals(this.name, sp.getName())
+            && TextUtils.equals(this.brands, sp.getBrands())
+            && TextUtils.equals(this.weight, sp.getWeight())
+            && TextUtils.equals(this.weightUnit, sp.getWeightUnit())
+            && TextUtils.equals(this.imgUploadFront, sp.getImgUploadFront())
+            && TextUtils.equals(this.imgUploadNutrition, sp.getImgUploadNutrition())
+            && TextUtils.equals(this.imgUploadPackaging, sp.getImgUploadPackaging())
+            && TextUtils.equals(this.imgUploadIngredients, sp.getImgUploadIngredients());
     }
 }

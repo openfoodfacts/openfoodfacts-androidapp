@@ -155,7 +155,6 @@
         <item>Vitamine K</item>
         <item>Zink</item>
     </string-array>
-    <!-- Text units -->
     <!-- Content Description -->
     <string name="search_button">Zoeken</string>
     <string name="alert_dialog_warning_title">Let op</string>
@@ -187,7 +186,7 @@
     <string name="txtSugars">Suikers</string>
     <string name="hintBarcode">Streepjescode</string>
     <string name="txtNutriScoreInfo">Meer informatie over de voedingsstofniveaus</string>
-    <string name="txtloginHelper">If you have an Open Food Facts account, you can login here with it</string>
+    <string name="txtloginHelper">Als je een Open Food Facts-account hebt, kun je hier inloggen</string>
     <string name="hintLogin">Gebruikersnaam</string>
     <string name="hintPass">Wachtwoord</string>
     <string name="errorLogin">Verkeerde gebruikersnaam of wachtwoord</string>
@@ -295,7 +294,7 @@
     <string name="logout_drawer">Afmelden</string>
     <string name="contribution_without_account">U kunt zich aanmelden of een account aanmaken om uw bijdragen te bewaren</string>
     <string name="textCarbonFootprint">Carbon footprint / CO2-uitstoot: </string>
-    <string name="packaging_environmentTab">Packaging:</string>
+    <string name="packaging_environmentTab">Verpakking:</string>
     <string name="action_search">Zoeken</string>
     <string name="search_hint">Zoek een product</string>
     <string name="number_of_results">Aantal resultaten: </string>
@@ -414,9 +413,9 @@
     <string name="device_on_mobile_data_warning_positive">Voorkeuren</string>
     <string name="device_on_mobile_data_warning_negative">Toch uploaden</string>
     <string name="changes_saved">Wijzigingen opgeslagen</string>
-    <string name="proceed">Proceed</string>
+    <string name="proceed">Doorgaan</string>
     <string name="preference_choose_language_dialog_title">Kies taal</string>
-    <string name="preference_choose_scanner_dialog_title"><b>New: Enhanced “MLKit” scanner</b></string>
+    <string name="preference_choose_scanner_dialog_title"><b>Nieuw: verbeterde \"MLKit\" -scanner</b></string>
     <string name="preference_choose_scanner_dialog_body">We have included a new option to more reliably scan barcodes. While this scanner works on your device, using machine learning,
             please be aware that it is a proprietary component provided by Google, governed by this privacy policy, and that some limited telemetry might be sent back to Google’s servers
             to improve their software. As noted in the MLKit terms, this won’t include any information about the products you scan and the telemetry is anonymized. Choosing MLKit scanner
@@ -665,7 +664,7 @@
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">Herken de ingrediënten</string>
     <string name="extract_recycling_prompt">Extraheer recyclinginstructies</string>
-    <string name="add_nutrient_prompt_text">Voeg voedingsinformatie toe om gehaltes van voedingsstoffen te berekenen</string>
+    <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
     <string name="add_category_prompt_text">Voeg een categorie toe om het product te helpen voltooien</string>
     <string name="add_nutrient_category_prompt_text">Voeg een categorie en meer details toe om het product te helpen voltooien</string>
     <string name="couldnot_compute_ecoscore_prompt_text">We could not compute an Eco-Score for this product. It might be that the category is not specific enough or that we don\'t have supporting data for this category. If you believe this is an error, you can mail us by clicking below.</string>
@@ -704,7 +703,7 @@
     <string name="empty"></string>
     <string name="add_product">Voeg producten toe</string>
     <string name="add_another_product">Nog een product toevoegen</string>
-    <string name="add_nutrition_facts_for_nutriscore">Voeg voedingsinformatie toe om gehaltes van voedingsstoffen te berekenen</string>
+    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
     <string name="product_summary_action_compare_button_label">Vergelijken</string>
     <string name="product_summary_action_add_to_list_button_label">Toevoegen aan lijst</string>
     <string name="product_summary_action_edit_button_label">Bewerken</string>
@@ -740,7 +739,7 @@
     <string name="history_network_error">Het product kan niet worden geladen. Probeer het opnieuw wanneer je weer online bent.</string>
     <string name="cant_modify_if_refreshing">Wacht tot het uploaden is voltooid</string>
     <string name="closeZoom">Klik om zoom te sluiten</string>
-    <string name="imageFullscreen">Vergroot</string>
+    <string name="imageFullscreen">Inzoomen</string>
     <!-- Used for product ingredients analysis tags -->
     <string name="close_button">Sluit</string>
     <string name="tip_message">TIP: %1$s </string>
@@ -805,4 +804,11 @@
     <!-- Changelog String -->
     <string name="changelog_translation_help">Want to see this changelog in %s?\nJoin the translation team!</string>
     <string name="whats_new">What\'s new with Open Food Facts?</string>
+    <string name="eco_score_slide_4_title">Eco-score</string>
+    <string name="join_the_food_revolution">Join the food revolution</string>
+    <string name="slide_1_text_revolution">Scan food, Take photos, Help transform the food system</string>
+    <string name="get_the_nutri_score">Krijg de Nutriscore</string>
+    <string name="synthesis_of_nutrition_slide_2_text">A simple synthesis of the nutritional quality of your food</string>
+    <string name="avoid_ultra_processed_foods">Avoid ultra-processed foods</string>
+    <string name="nova_slide_3_text">Reduce the amount of ultra-processed foods in your diet.</string>
 </resources>

@@ -155,7 +155,6 @@
         <item>Vitamin K</item>
         <item>Zink</item>
     </string-array>
-    <!-- Text units -->
     <!-- Content Description -->
     <string name="search_button">Suchen</string>
     <string name="alert_dialog_warning_title">Warnhinweis</string>
@@ -427,7 +426,7 @@
     <string name="dismiss">Verwerfen</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <!--Just replace "world" by "fr", "de"… translate the "terms-of-use" with the hyphens -->
-    <string name="terms_url">https://world.openproductsfacts.org/terms-of-use</string>
+    <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
     <string name="faq_url">https://world.openfoodfacts.org/faq</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
@@ -661,7 +660,7 @@
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">Zutaten extrahieren</string>
     <string name="extract_recycling_prompt">Recycling-Anweisungen auslesen</string>
-    <string name="add_nutrient_prompt_text">Fügen Sie Nährwertangaben hinzu, um den Nährstoffgehalt berechnen zu können.</string>
+    <string name="add_nutrient_prompt_text">Nährwertangaben hinzufügen, um den Nutri-Wert zu berechnen</string>
     <string name="add_category_prompt_text">Fügen Sie eine Kategorie hinzu, um das Produkt zu vervollständigen.</string>
     <string name="add_nutrient_category_prompt_text">Fügen Sie eine Kategorie und Nährwertangaben hinzu, um das Produkt zu vervollständigen.</string>
     <string name="couldnot_compute_ecoscore_prompt_text">Es konnte kein Eco-Score für dieses Produkt berechnet werden. Es könnte sein, dass die Kategorie nicht spezifisch genug ist oder dass dafür keine unterstützenden Daten für diese Kategorie vorliegen. Wenn Sie der Meinung sind, dass dies ein Fehler ist, können Sie uns eine E-Mail senden, indem Sie unten auf die Schaltfläche klicken.</string>
@@ -700,7 +699,7 @@ Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchs
     <string name="empty"></string>
     <string name="add_product">Produkte hinzufügen</string>
     <string name="add_another_product">Weiteres Produkt hinzufügen</string>
-    <string name="add_nutrition_facts_for_nutriscore">Fügen Sie Nährwertangaben hinzu, um den Nährstoffgehalt berechnen zu können.</string>
+    <string name="add_nutrition_facts_for_nutriscore">Nährwertangaben hinzufügen, um den Nutri-Wert zu berechnen</string>
     <string name="product_summary_action_compare_button_label">Vergleiche</string>
     <string name="product_summary_action_add_to_list_button_label">Zur Liste hinzufügen</string>
     <string name="product_summary_action_edit_button_label">Bearbeiten</string>
@@ -736,7 +735,7 @@ Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchs
     <string name="history_network_error">Das Produkt konnte nicht geladen werden. Bitte versuchen Sie es erneut, wenn Sie wieder online sind.</string>
     <string name="cant_modify_if_refreshing">Bitte warten bis das Hochladen abgeschlossen ist</string>
     <string name="closeZoom">Hier klicken, um die Vergrößerung zu schließen</string>
-    <string name="imageFullscreen">Zoom</string>
+    <string name="imageFullscreen">Vergrößern</string>
     <!-- Used for product ingredients analysis tags -->
     <string name="close_button">Schließen</string>
     <string name="tip_message">TIPP: %1$s </string>
@@ -801,4 +800,11 @@ Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchs
     <!-- Changelog String -->
     <string name="changelog_translation_help">Möchten Sie dieses Änderungsprotokoll in %s anzeigen?\nSchließen Sie sich dem Übersetzungsteam an!</string>
     <string name="whats_new">Was gibt es Neues bei Open Food Facts?</string>
+    <string name="eco_score_slide_4_title">Eco-Score</string>
+    <string name="join_the_food_revolution">Machen Sie mit, bei der Lebensmittel-Revolution</string>
+    <string name="slide_1_text_revolution">Erfassen Sie Lebensmittel, nehmen Sie Fotos auf, helfen Sie mit, das Lebensmittelsystem zu verändern</string>
+    <string name="get_the_nutri_score">„Nutri-Score” (franz. Nahrungsmittelampel) abrufen</string>
+    <string name="synthesis_of_nutrition_slide_2_text">Eine einfache Übersicht die Nährwertqualität Ihrer Lebensmittel</string>
+    <string name="avoid_ultra_processed_foods">Vermeiden Sie hochverarbeitete Lebensmittel</string>
+    <string name="nova_slide_3_text">Reduzieren Sie die Menge an hochverarbeiteten Lebensmitteln in Ihrer Ernährung.</string>
 </resources>

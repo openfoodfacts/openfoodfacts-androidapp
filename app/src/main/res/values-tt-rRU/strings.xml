@@ -30,10 +30,10 @@
     <plurals name="days">
         <item quantity="other">%d days ago</item>
     </plurals>
-    <string name="action_about">About</string>
+    <string name="action_about">Хакында</string>
     <string name="action_discover">Discover</string>
     <string name="contribute">How to contribute</string>
-    <string name="action_find">Find</string>
+    <string name="action_find">Биттә табу</string>
     <string name="product_incomplete_message">This product is not complete. As a result, we couldn\'t do the allergen check.</string>
     <string name="product_allergen_prompt">This product contains:</string>
     <string name="no_offline_data">You\'re all done</string>
@@ -45,7 +45,7 @@
         <item>Ingredients</item>
         <item>Nutrition</item>
         <item>Nutrition Table</item>
-        <item>Environment</item>
+        <item>Tirä-yaq</item>
     </string-array>
     <!-- New Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_new_items_product">
@@ -101,7 +101,7 @@
         <item>Glucose</item>
         <item>Gondoic acid (20:1 n-9)</item>
         <item>Iodine</item>
-        <item>Iron</item>
+        <item>Тимер</item>
         <item>Lactose</item>
         <item>Lauric acid (12:0)</item>
         <item>Lignoceric acid (24:0)</item>
@@ -137,7 +137,7 @@
         <item>Sucrose</item>
         <item>Taurine</item>
         <item>Trans fat</item>
-        <item>Vitamin A</item>
+        <item>Витамин A</item>
         <item>Vitamin B1 (Thiamin)</item>
         <item>Vitamin B12 (Cobalamin)</item>
         <item>Vitamin B2 (Riboflavin)</item>
@@ -145,17 +145,16 @@
         <item>Vitamin B6 (Pyridoxin)</item>
         <item>Vitamin B9 (Folic acid)</item>
         <item>Vitamin C (Ascorbic acid)</item>
-        <item>Vitamin D</item>
-        <item>Vitamin E</item>
-        <item>Vitamin K</item>
+        <item>Витамин D</item>
+        <item>Витамин E</item>
+        <item>Витамин K</item>
         <item>Zinc</item>
     </string-array>
-    <!-- Text units -->
     <!-- Content Description -->
-    <string name="search_button">Search</string>
-    <string name="alert_dialog_warning_title">Warning</string>
+    <string name="search_button">Эзлә</string>
+    <string name="alert_dialog_warning_title">Игътибар</string>
     <string name="alert_dialog_warning_msg_user">User/password has changed, please update information</string>
-    <string name="toast_retrieving">Loading…</string>
+    <string name="toast_retrieving">Йөкләү...</string>
     <string name="txtBarcode">Barcode :</string>
     <string name="txtCategories">Categories :</string>
     <string name="txtLabels">Labels, certifications, awards :</string>
@@ -174,8 +173,8 @@
     <string name="txtNutritionLevelLow">in low quantity</string>
     <string name="txtNutritionLevelModerate">in moderate quantity</string>
     <string name="txtNutritionLevelHigh">in high quantity</string>
-    <string name="txtSave">Save</string>
-    <string name="txtSignIn">Sign in</string>
+    <string name="txtSave">Сакла</string>
+    <string name="txtSignIn">Керү</string>
     <string name="txtToastSaved">User saved</string>
     <string name="txtSalt">Salt</string>
     <string name="txtFat">Fat</string>
@@ -183,53 +182,53 @@
     <string name="hintBarcode">Barcode</string>
     <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
     <string name="txtloginHelper">If you have an Open Food Facts account, you can login here with it</string>
-    <string name="hintLogin">Username</string>
-    <string name="hintPass">Password</string>
+    <string name="hintLogin">Логин</string>
+    <string name="hintPass">Парол</string>
     <string name="errorLogin">Login or password error</string>
     <string name="errorWeb">We were not able to access the internet. Do you have connectivity issues?</string>
     <string name="uploadLater">Image will be uploaded when network is available</string>
     <string name="txtInfoLoginOk">User saved</string>
     <string name="txtInfoLoginNo">User not saved</string>
     <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
-    <string name="txtYes">Yes</string>
-    <string name="txtNo">No</string>
-    <string name="hintBrand">Brand</string>
+    <string name="txtYes">Әе</string>
+    <string name="txtNo">Юк</string>
+    <string name="hintBrand">Сәүдә билгесе</string>
     <string name="txtSendAll">Upload all</string>
     <string name="txtPictureNeededDialogNo">Discard</string>
     <string name="toastSending">Uploading…</string>
-    <string name="txtLoading">Loading…</string>
+    <string name="txtLoading">Йөкләү...</string>
     <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
     <string name="txtDialogsContentInfoSave">The product is saved locally, you can edit it in the \"Offline Edit\" menu</string>
     <string name="productSavedToast">Product saved, thanks!</string>
     <string name="txtBarcodeRequire">Barcode required</string>
-    <string name="txtOk">OK</string>
+    <string name="txtOk">ОК</string>
     <string name="txtBarcodeNotValid">Barcode not valid</string>
     <string name="msg_share">Look at this product on Open Food Facts :</string>
-    <string name="create_account">Sign up</string>
-    <string name="home_drawer">Home</string>
+    <string name="create_account">Теркәлү</string>
+    <string name="home_drawer">Баш бит</string>
     <string name="install">Install</string>
     <string name="open_beauty_drawer">Open Beauty Facts</string>
     <string name="open_food_drawer">Open Food Facts</string>
-    <string name="search_drawer">Search</string>
+    <string name="search_drawer">Эзлә</string>
     <string name="search_by_barcode_drawer">Type barcode</string>
     <string name="category_drawer">Categories</string>
     <string name="search_by_category">Category</string>
     <string name="scan_search">Scan Barcode</string>
-    <string name="user_drawer">User</string>
+    <string name="user_drawer">Кулланучы</string>
     <string name="offline_edit_drawer">Offline edit</string>
     <string name="txt_anonymous">Anonymous</string>
-    <string name="delete_txt">Delete</string>
-    <string name="sign_in_drawer">Sign-in</string>
+    <string name="delete_txt">Бетерү</string>
+    <string name="sign_in_drawer">Керү</string>
     <string name="alert_drawer">Allergen alert</string>
     <string name="your_lists">Your lists</string>
     <string name="title_dialog_alert">Add alert</string>
     <string name="select_camera">Select a Camera</string>
-    <string name="ok_button">OK</string>
-    <string name="cancel_button">Cancel</string>
-    <string name="login_button">Username</string>
+    <string name="ok_button">ОК</string>
+    <string name="cancel_button">Баш тарту</string>
+    <string name="login_button">Логин</string>
     <string name="create_account_button">Create Account</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
-    <string name="title_info_dialog">How does it work?</string>
+    <string name="title_info_dialog">Ничек бу эшли?</string>
     <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
     <string name="permission_camera">Camera permission is needed to scan barcodes and take pictures.</string>
     <string name="no_camera_dialog_title">Camera not found</string>
@@ -239,19 +238,19 @@
     <string name="info_download_data_connection">You need to download some data to get this functionality working. Please activate internet connection.</string>
     <!-- Strings related to login -->
     <string name="error_invalid_password">The password needs to be at least 6 characters long.</string>
-    <string name="user">user</string>
+    <string name="user">кулланучы</string>
     <string name="error_field_required">This field is required.</string>
     <!-- Strings related to feedback dialog -->
     <string name="user_enjoying_app">Are you enjoying your experience with Open Food Facts?</string>
     <string name="user_ask_show_feedback_form">We\'re sorry to hear that! Could you tell us what happened?</string>
     <string name="user_ask_rate_app">Great! Let others know what you think of this app!</string>
     <string name="rate_app">Rate app</string>
-    <string name="no_thx">No thanks</string>
+    <string name="no_thx">Юк, рәхмәт</string>
     <string name="feedback_form_url">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
     <!-- Scan history -->
-    <string name="scan_history_drawer">History</string>
-    <string name="clear_history">Clear history</string>
-    <string name="title_clear_history_dialog">Clear</string>
+    <string name="scan_history_drawer">Тарих</string>
+    <string name="clear_history">Тарихны чистарту</string>
+    <string name="title_clear_history_dialog">Чистарту</string>
     <string name="text_clear_history_dialog">Do you want to clear all your scan history?</string>
     <string name="export_csv_history">Export CSV</string>
     <string name="txt_exporting_history">Exporting history…</string>
@@ -291,7 +290,7 @@
     <string name="contribution_without_account">You can sign-in or create an account to keep your contributions</string>
     <string name="textCarbonFootprint">Carbon footprint / CO2 emissions: </string>
     <string name="packaging_environmentTab">Packaging:</string>
-    <string name="action_search">Search</string>
+    <string name="action_search">Эзлә</string>
     <string name="search_hint">Search a product</string>
     <string name="number_of_results">Number of results: </string>
     <string name="number_of_products">Number of products: </string>
@@ -318,27 +317,27 @@
     <string name="for_100ml">For 100 ml</string>
     <string name="serving">Per serving</string>
     <string name="nutrition_monounsaturatedFat">Monounsaturated fat</string>
-    <string name="nutrition_polyunsaturatedFat">Poly unsaturated fat</string>
-    <string name="nutrition_omega3">Omega 3</string>
-    <string name="nutrition_omega6">Omega 6</string>
-    <string name="nutrition_omega9">Omega 9</string>
+    <string name="nutrition_polyunsaturatedFat">Polyunsaturated fat</string>
+    <string name="nutrition_omega3">Омега 3</string>
+    <string name="nutrition_omega6">Омега 6</string>
+    <string name="nutrition_omega9">Омега 9</string>
     <string name="nutrition_sucrose">Sucrose</string>
     <string name="nutrition_glucose">Glucose</string>
     <string name="nutrition_fructose">Fructose</string>
     <string name="nutrition_maltose">Maltose</string>
     <string name="nutrition_alcohol">Alcohol</string>
     <string name="nutrition_vitamins">Vitamins</string>
-    <string name="vitamin_a">Vitamin A</string>
-    <string name="vitamin_d">Vitamin D</string>
-    <string name="vitamin_e">Vitamin E</string>
-    <string name="vitamin_k">Vitamin K</string>
-    <string name="vitamin_c">Vitamin C</string>
-    <string name="vitamin_b1">Vitamin B1</string>
-    <string name="vitamin_b2">Vitamin B2</string>
+    <string name="vitamin_a">Витамин A</string>
+    <string name="vitamin_d">Витамин D</string>
+    <string name="vitamin_e">Витамин E</string>
+    <string name="vitamin_k">Витамин K</string>
+    <string name="vitamin_c">Витамин C</string>
+    <string name="vitamin_b1">Витамин B1</string>
+    <string name="vitamin_b2">Витамин B2</string>
     <string name="vitamin_pp">Vitamin PP</string>
-    <string name="vitamin_b6">Vitamin B6</string>
-    <string name="vitamin_b9">Vitamin B9</string>
-    <string name="vitamin_b12">Vitamin B12</string>
+    <string name="vitamin_b6">Витамин B6</string>
+    <string name="vitamin_b9">Витамин B9</string>
+    <string name="vitamin_b12">Витамин B12</string>
     <string name="biotin">Biotin</string>
     <string name="pantothenic_acid">Pantothenic acid</string>
     <string name="nutrition_minerals">Minerals</string>
@@ -348,7 +347,7 @@
     <string name="chloride">Chloride</string>
     <string name="calcium">Calcium</string>
     <string name="phosphorus">Phosphorus</string>
-    <string name="iron">Iron</string>
+    <string name="iron">Тимер</string>
     <string name="magnesium">Magnesium</string>
     <string name="zinc">Zinc</string>
     <string name="copper">Copper</string>
@@ -363,7 +362,7 @@
     <string name="ph">pH</string>
     <string name="fruits_vegetables_nuts">Fruits, vegetables, nuts</string>
     <string name="collagen_meat_protein_ratio">Collagen meat protein ratio</string>
-    <string name="cocoa">Cocoa</string>
+    <string name="cocoa">Какао</string>
     <string name="chlorophyl">Chlorophyl</string>
     <string name="take_picture">Take a photo</string>
     <string name="choose_picture_from_gallery">From gallery</string>
@@ -382,31 +381,31 @@
     <string name="nova_grp4_msg">Group 4 - Ultra-processed food and drink products</string>
     <!-- String related to App Shortcuts -->
     <string name="disabled_message">The shortcut is not available.</string>
-    <string name="scan_shortcut_short_label">Scan</string>
+    <string name="scan_shortcut_short_label">Тикшерү</string>
     <string name="scan_shortcut_long_label">Scan Product</string>
-    <string name="barcode_shortcut_short_label">Search</string>
+    <string name="barcode_shortcut_short_label">Эзлә</string>
     <string name="barcode_shortcut_long_label">Search By Barcode</string>
-    <string name="history_shortcut_short_label">History</string>
-    <string name="history_shortcut_long_label">History</string>
+    <string name="history_shortcut_short_label">Тарих</string>
+    <string name="history_shortcut_long_label">Тарих</string>
     <string name="contributions_shortcut_short_label">Contributions</string>
     <string name="contributions_shortcut_long_label">My contributions</string>
     <string name="forgot_password">Forgot Password</string>
     <string name="next">NEXT</string>
-    <string name="skip">SKIP</string>
-    <string name="start">GOT IT</string>
+    <string name="skip">ҮТКӘР</string>
+    <string name="start">АҢЛАДЫМ</string>
     <string name="email_not_found">No email applications found</string>
     <string name="airplane_mode_active_dialog_title">Airplane mode enabled</string>
     <string name="airplane_mode_active_dialog_message">Airplane mode is enabled, please disable this to continue.</string>
-    <string name="airplane_mode_active_dialog_negative">Dismiss</string>
-    <string name="airplane_mode_active_dialog_positive">Settings</string>
+    <string name="airplane_mode_active_dialog_negative">Ябу</string>
+    <string name="airplane_mode_active_dialog_positive">Көйләүләр</string>
     <string name="device_offline_dialog_title">Network unavailable</string>
     <string name="device_offline_dialog_message">A network connection is needed to do this, would you like to change this in settings?</string>
-    <string name="device_offline_dialog_negative">Dismiss</string>
-    <string name="device_offline_dialog_positive">Settings</string>
+    <string name="device_offline_dialog_negative">Ябу</string>
+    <string name="device_offline_dialog_positive">Көйләүләр</string>
     <string name="scan_first_product">Scan your first product</string>
-    <string name="device_on_mobile_data_warning_title">Information</string>
+    <string name="device_on_mobile_data_warning_title">Мәгълүмат</string>
     <string name="device_on_mobile_data_warning_message">You have disabled upload on mobile data , please connect to WiFi or change this in preferences</string>
-    <string name="device_on_mobile_data_warning_positive">Preferences</string>
+    <string name="device_on_mobile_data_warning_positive">Көйләүләр</string>
     <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
     <string name="changes_saved">Changes saved successfully</string>
     <string name="proceed">Proceed</string>
@@ -423,7 +422,7 @@
     <string name="advanced_search_title">Advanced Search &amp; Charts</string>
     <string name="compare_products">Compare products</string>
     <string name="connectivity_check">Please check your internet connection</string>
-    <string name="dismiss">Dismiss</string>
+    <string name="dismiss">Ябу</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <!--Just replace "world" by "fr", "de"… translate the "terms-of-use" with the hyphens -->
     <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
@@ -440,10 +439,10 @@
     <string name="ecoscore_url">https://world.openfoodfacts.org/eco-score-the-environmental-impact-of-food-products</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
     <string name="url_nutrient_values">https://world-tt.openfoodfacts.org/nutrition-traffic-lights</string>
-    <string name="preference_header_general">General</string>
+    <string name="preference_header_general">Töptän</string>
     <string name="preference_header_network">Network</string>
     <string name="preference_header_contributing">Contributing</string>
-    <string name="preference_header_privacy">Privacy</string>
+    <string name="preference_header_privacy">Хосусыйлык</string>
     <string name="preference_crash_title">Crash reporting</string>
     <string name="preference_crash_summary">When enabled, crash reports will be sent to the Open Food Facts server automatically, so that we can fix bugs and improve the app.</string>
     <string name="preference_analytics_title">Send anonymous data</string>
@@ -451,27 +450,27 @@
     <string name="preference_analytics_bottom_sheet_title">Send anonymous data</string>
     <string name="preference_analytics_bottom_sheet_description">Help improve Open Food Facts by letting us know how you use it. Data collected is anonymous. This option can be disabled at any time in the settings section.</string>
     <string name="preference_analytics_bottom_sheet_grant_button">Grant</string>
-    <string name="preference_analytics_bottom_sheet_decline_button">Decline</string>
+    <string name="preference_analytics_bottom_sheet_decline_button">Кире кагу</string>
     <string name="scan_first_string">Your viewed product history will be listed here.\nThis history is for your eyes only and is stored locally.</string>
-    <string name="log_in">Username</string>
+    <string name="log_in">Логин</string>
     <string name="login_true">You are already logged in.</string>
     <string name="confirm_logout">Confirm Logout</string>
     <string name="logout_dialog_content">Are you sure to log out ?</string>
-    <string name="dialog_cancel">Cancel</string>
-    <string name="dialog_create">Create</string>
+    <string name="dialog_cancel">Баш тарту</string>
+    <string name="dialog_create">Ясарга</string>
     <string name="wikidata_information">Going further</string>
     <string name="wikidata_unavailable">There is no Wikipedia page in your language yet.</string>
     <string name="Wikipedia">View on Wikipedia</string>
     <string name="Browse_Products">Browse Products</string>
-    <string name="brand_string">Brand</string>
+    <string name="brand_string">Сәүдә билгесе</string>
     <string name="additive_string">Additive</string>
     <string name="allergen_string">Allergen</string>
-    <string name="search_string">Search</string>
+    <string name="search_string">Эзлә</string>
     <string name="country_string">Countries where sold</string>
     <string name="store_subtitle">Store</string>
     <string name="packaging_subtitle">Packaging</string>
     <string name="packaging_string">Packaging</string>
-    <string name="label_string">Label</string>
+    <string name="label_string">Язма</string>
     <string name="category_string">Category</string>
     <string name="connection">Connected</string>
     <string name="contributor_string">Contributor</string>
@@ -482,13 +481,13 @@
     <string name="mineral_tags_text">Minerals:</string>
     <string name="other_tags_text">Other Substances:</string>
     <!--shared element transition key-->
-    <string name="by_title">Title</string>
-    <string name="by_brand">Brand</string>
+    <string name="by_title">Исем</string>
+    <string name="by_brand">Сәүдә билгесе</string>
     <string name="by_barcode">Barcode</string>
     <string name="by_time">Recently Viewed</string>
-    <string name="sort">Sort</string>
+    <string name="sort">Тәртипләү</string>
     <string name="by_nutrition_grade">Nutri-Score</string>
-    <string name="sort_by">Sort by</string>
+    <string name="sort_by">Тәртипләү</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
     <string name="no_barcode">We have not detected any barcode</string>
@@ -496,14 +495,14 @@
     <string name="format_error">Wrong Barcode/QR format</string>
     <string name="code_detected">We have detected the barcode</string>
     <string name="do_you_want_to">Do you want to add photos to this barcode?</string>
-    <string name="bottomNav_history">History</string>
+    <string name="bottomNav_history">Тарих</string>
     <string name="products_added">Products you added or edited</string>
     <string name="products_incomplete">Products you added that need to be completed</string>
     <string name="product_pictures_contributed">Products you took pictures for</string>
     <string name="picture_contributed_incomplete">Products you took pictures for that need to be completed</string>
     <string name="product_info_added">Products you added information for</string>
     <string name="product_info_tocomplete">Products you added information for that need to be completed</string>
-    <string name="show_by">Show</string>
+    <string name="show_by">Күрсәтү</string>
     <string name="notify_title">Export complete</string>
     <string name="notify_content">Click to view exported products</string>
     <string name="notification_channel_name">Export Notifications</string>
@@ -518,7 +517,7 @@
     <string name="complete_states">Complete States</string>
     <string name="contribution_tab">Contributions</string>
     <string name="synthesis_tab">Synthesis</string>
-    <string name="txtDialogsTitle">Information</string>
+    <string name="txtDialogsTitle">Мәгълүмат</string>
     <string name="offline_product_addition_title">Add a new product</string>
     <string name="productNameNull">Name unknown</string>
     <string name="productAdditivesUnknown"></string>
@@ -535,7 +534,7 @@
     <string name="switch_camera">Switch camera</string>
     <string name="autofocus">Autofocus</string>
     <string name="initial_loading">Initial loading</string>
-    <string name="preferences">Preferences</string>
+    <string name="preferences">Көйләүләр</string>
     <string name="OFFlogo">Open Food Facts logo</string>
     <string name="loading_product">Loading product %s</string>
     <string name="image_not_defined_for_language">No image for selected language. You can add a new one</string>
@@ -565,8 +564,8 @@
     <string name="link_overwrite">Link overwrite</string>
     <string name="save_product">Do you want to save the product?</string>
     <string name="error_adding_product">Something went wrong when adding the product</string>
-    <string name="photos">Photos</string>
-    <string name="please_wait">Please wait</string>
+    <string name="photos">Фотолар</string>
+    <string name="please_wait">Зинһар, көтеп торыгыз</string>
     <string name="product_uploaded_successfully">Product uploaded successfully</string>
     <string name="no_internet_connection">You appear to have no internet connection, images will be uploaded when network is available</string>
     <string name="no_internet_unable_to_extract_ingredients">No internet connection. Unable to extract ingredients</string>
@@ -588,7 +587,7 @@
     <string name="traces_hint">Indicate ingredients from mentions like \'May contain traces of\', \'Made in a factory that also uses\', etc. \nExamples: Milk, Gluten, Nuts</string>
     <string name="nutrition_facts_not_specified">Nutrition facts are not specified on the product.</string>
     <string name="nutrition_facts_picture">Nutrition Facts photo</string>
-    <string name="front_short_picture">Front</string>
+    <string name="front_short_picture">Алгы</string>
     <string name="other_picture">Other Picture</string>
     <string name="for_100g_100ml">For 100g / 100ml</string>
     <string name="per_serving">Per serving</string>
@@ -628,7 +627,7 @@
     <string name="nutrient_already_added">%s is already present in the nutrition facts</string>
     <string name="save_edits">Save edits</string>
     <string name="contribution_by">Contribution by</string>
-    <string name="title_activity_product">Title</string>
+    <string name="title_activity_product">Исем</string>
     <string name="description_activity_product">description</string>
     <string name="intent_filter_share_label">Add to Open Food Facts</string>
     <!-- Used for additive exposure evaluation table -->
@@ -637,13 +636,13 @@
     <string name="infants">Infants</string>
     <string name="infants_age">&lt; 1</string>
     <string name="toddlers">Toddlers</string>
-    <string name="toddlers_age">1 to 2</string>
+    <string name="toddlers_age">1 - 2</string>
     <string name="children">Children</string>
-    <string name="children_age">3 to 9</string>
+    <string name="children_age">3 - 9</string>
     <string name="adolescents">Adolescents</string>
-    <string name="adolescents_age">10 to 17</string>
+    <string name="adolescents_age">10 - 17</string>
     <string name="adults">Adults</string>
-    <string name="adults_age">18 to 64</string>
+    <string name="adults_age">18 - 64</string>
     <string name="elderly">Elderly</string>
     <string name="elderly_age">65+</string>
     <string name="most_people">Most people\n(over 50%)</string>
@@ -659,7 +658,7 @@
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">Extract ingredients</string>
     <string name="extract_recycling_prompt">Extract recycling instructions</string>
-    <string name="add_nutrient_prompt_text">Add nutrition facts to compute nutrient levels</string>
+    <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
     <string name="add_category_prompt_text">Add a category to help complete the product</string>
     <string name="add_nutrient_category_prompt_text">Add a category and nutrition facts to help complete the product</string>
     <string name="couldnot_compute_ecoscore_prompt_text">We could not compute an Eco-Score for this product. It might be that the category is not specific enough or that we don\'t have supporting data for this category. If you believe this is an error, you can mail us by clicking below.</string>
@@ -701,11 +700,11 @@
     <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
     <string name="product_summary_action_compare_button_label">Compare</string>
     <string name="product_summary_action_add_to_list_button_label">Add to list</string>
-    <string name="product_summary_action_edit_button_label">Edit</string>
-    <string name="product_summary_action_share_button_label">Share</string>
+    <string name="product_summary_action_edit_button_label">Үзгәртү</string>
+    <string name="product_summary_action_share_button_label">Бүлеш</string>
     <string name="product_question_prompt">Tap here to answer</string>
-    <string name="product_question_positive_response">Yes</string>
-    <string name="product_question_negative_response">No</string>
+    <string name="product_question_positive_response">Әе</string>
+    <string name="product_question_negative_response">Юк</string>
     <string name="product_question_ambiguous_response">Not sure</string>
     <string name="product_question_submit_message">Thank you for your contribution!</string>
     <string name="error_nutrient_entry">The value should be numeric. Example: &quot;1.5&quot;, &quot;2,0&quot;</string>
@@ -734,9 +733,9 @@
     <string name="history_network_error">The product couldn\'t be loaded. Please try again when you are back online.</string>
     <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
     <string name="closeZoom">Click to close zoom</string>
-    <string name="imageFullscreen">Zoom</string>
+    <string name="imageFullscreen">Зум</string>
     <!-- Used for product ingredients analysis tags -->
-    <string name="close_button">Close</string>
+    <string name="close_button">Ябу</string>
     <string name="tip_message">TIP: %1$s </string>
     <string name="ingredient_analysis_tip">Click on the icons below to learn more about the product and to select what information you are interested in.</string>
     <string name="got_it">Got it!</string>
@@ -778,7 +777,7 @@
     <string name="content_edit_photo">Edit, crop and rotate the photo</string>
     <string name="title_unselect_photo">Unselect Photo</string>
     <string name="content_unselect_photo">Press here to unselect current photo</string>
-    <string name="title_exit">Exit</string>
+    <string name="title_exit">Чыгу</string>
     <string name="content_exit">Press here to return to the product</string>
     <string name="icon_label">Labels icon</string>
     <string name="icon_categories">Categories icon</string>
@@ -791,12 +790,19 @@
     <string name="enabled">Enabled</string>
     <!-- Application theme settings -->
     <string name="follow_system">Follow system</string>
-    <string name="day">Day</string>
-    <string name="night">Night</string>
+    <string name="day">Көн</string>
+    <string name="night">Төн</string>
     <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
     <string name="hint_origin">Examples: USA, France, Italy</string>
     <string name="report_email_chooser_title">Send a report email</string>
     <!-- Changelog String -->
     <string name="changelog_translation_help">Want to see this changelog in %s?\nJoin the translation team!</string>
     <string name="whats_new">What\'s new with Open Food Facts?</string>
+    <string name="eco_score_slide_4_title">Eco-Score</string>
+    <string name="join_the_food_revolution">Join the food revolution</string>
+    <string name="slide_1_text_revolution">Scan food, Take photos, Help transform the food system</string>
+    <string name="get_the_nutri_score">Get the Nutriscore</string>
+    <string name="synthesis_of_nutrition_slide_2_text">A simple synthesis of the nutritional quality of your food</string>
+    <string name="avoid_ultra_processed_foods">Avoid ultra-processed foods</string>
+    <string name="nova_slide_3_text">Reduce the amount of ultra-processed foods in your diet.</string>
 </resources>

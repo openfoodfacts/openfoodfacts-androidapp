@@ -17,7 +17,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
         <item quantity="one">You have 1 offline product waiting to be contributed to Open Food Facts</item>
-        <item quantity="other">You have %d offline products waiting to be contributed to Open Food Facts</item>
+        <item quantity="other">Teniu %d productes fora de línia esperant la vostra aportació a Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
         <item quantity="one">Fa %d segon</item>
@@ -155,7 +155,6 @@
         <item>Vitamina K</item>
         <item>Zenc</item>
     </string-array>
-    <!-- Text units -->
     <!-- Content Description -->
     <string name="search_button">Cerca</string>
     <string name="alert_dialog_warning_title">Avís</string>
@@ -214,7 +213,7 @@
     <string name="home_drawer">Inici</string>
     <string name="install">Instal·la</string>
     <string name="open_beauty_drawer">Open Beauty Facts</string>
-    <string name="open_food_drawer">Open Food Facts (Dades Reals i Obertes dels Aliments)</string>
+    <string name="open_food_drawer">Open Food Facts</string>
     <string name="search_drawer">Cerca</string>
     <string name="search_by_barcode_drawer">Cerca per codi de barres</string>
     <string name="category_drawer">Categories</string>
@@ -230,7 +229,7 @@
     <string name="title_dialog_alert">Afegir Alerta</string>
     <string name="select_camera">Selecciona la càmera</string>
     <string name="ok_button">D\'acord</string>
-    <string name="cancel_button">Cancel·la</string>
+    <string name="cancel_button">Cancel·lar</string>
     <string name="login_button">Nom d\'usuari</string>
     <string name="create_account_button">Crea un compte</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">La informació de les al·lèrgies que patiu no s\'enviarà mai al servidor d\'Open Food Facts. A més, aneu amb compte: les dades del producte poden ser poc precises i és possible que la detecció no sigui 100% axacta, així que comproveu-ho bé! </string>
@@ -462,7 +461,7 @@
     <string name="login_true">Ja heu iniciat la sessió!</string>
     <string name="confirm_logout">Confirmeu que voleu sortir</string>
     <string name="logout_dialog_content">Segur que voleu tancar la sessió?</string>
-    <string name="dialog_cancel">Cancel·la</string>
+    <string name="dialog_cancel">Cancel·lar</string>
     <string name="dialog_create">Crea</string>
     <string name="wikidata_information">Ves més enllà</string>
     <string name="wikidata_unavailable">Encara no hi ha cap pàgina de Wikipedia en la vostra llengua.</string>
@@ -665,7 +664,7 @@
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">Extreu els ingredients</string>
     <string name="extract_recycling_prompt">Extreu les instruccions de reciclatge</string>
-    <string name="add_nutrient_prompt_text">Add nutrition facts to compute nutrient levels</string>
+    <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
     <string name="add_category_prompt_text">Add a category to help complete the product</string>
     <string name="add_nutrient_category_prompt_text">Add a category and nutrition facts to help complete the product</string>
     <string name="couldnot_compute_ecoscore_prompt_text">No hem pogut calcular una puntuació ecològica per a aquest producte. Pot ser que la categoria no sigui prou específica o que no tinguem dades de suport per a aquesta categoria. Si creieu que es tracta d’un error, podeu enviar-nos un correu fent clic a continuació.</string>
@@ -805,4 +804,11 @@
     <!-- Changelog String -->
     <string name="changelog_translation_help">Voleu veure aquest registre de canvis a %s?\nUniu-vos a l\'equip de traducció!</string>
     <string name="whats_new">Què hi ha de nou en Open Food Facts?</string>
+    <string name="eco_score_slide_4_title">Eco-Score</string>
+    <string name="join_the_food_revolution">Join the food revolution</string>
+    <string name="slide_1_text_revolution">Scan food, Take photos, Help transform the food system</string>
+    <string name="get_the_nutri_score">Obteniu el Nutri-Score</string>
+    <string name="synthesis_of_nutrition_slide_2_text">A simple synthesis of the nutritional quality of your food</string>
+    <string name="avoid_ultra_processed_foods">Avoid ultra-processed foods</string>
+    <string name="nova_slide_3_text">Reduce the amount of ultra-processed foods in your diet.</string>
 </resources>

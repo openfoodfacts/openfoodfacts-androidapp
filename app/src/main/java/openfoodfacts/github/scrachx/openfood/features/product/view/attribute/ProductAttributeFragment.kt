@@ -24,7 +24,7 @@ import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivi
 import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveName
 import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveNameDao
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper
+import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
 import openfoodfacts.github.scrachx.openfood.utils.SearchType
 import javax.inject.Inject
 
@@ -47,6 +47,9 @@ class ProductAttributeFragment : BottomSheetDialogFragment() {
 
     @Inject
     lateinit var daoSession: DaoSession
+
+    @Inject
+    lateinit var localeManager: LocaleManager
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -188,7 +191,7 @@ class ProductAttributeFragment : BottomSheetDialogFragment() {
     private fun getDescription(map: JsonNode): String? {
         var descriptionString: String? = null
 
-        val languageCode = LocaleHelper.getLanguage(requireContext())
+        val languageCode = localeManager.getLanguage()
         if (map[languageCode] != null) {
             descriptionString = map[languageCode]["value"].asText()
         }
@@ -204,7 +207,7 @@ class ProductAttributeFragment : BottomSheetDialogFragment() {
     }
 
     private fun getWikiLink(map: JsonNode): String? {
-        val languageCode = "${LocaleHelper.getLanguage(requireContext())}wiki"
+        val languageCode = "${localeManager.getLanguage()}wiki"
         return when {
             map[languageCode] != null -> map[languageCode]["url"].asText()
             map["enwiki"] != null -> map["enwiki"]["url"].asText()

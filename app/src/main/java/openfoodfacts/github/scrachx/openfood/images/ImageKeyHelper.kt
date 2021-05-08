@@ -5,14 +5,15 @@ import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
+import openfoodfacts.github.scrachx.openfood.models.ProductImageField.*
 import org.jetbrains.annotations.Contract
 
 @Contract(pure = true)
 fun getResourceId(field: ProductImageField) = when (field) {
-    ProductImageField.FRONT -> R.string.front_short_picture
-    ProductImageField.NUTRITION -> R.string.nutrition_facts
-    ProductImageField.INGREDIENTS -> R.string.ingredients
-    ProductImageField.PACKAGING -> R.string.packaging
+    FRONT -> R.string.front_short_picture
+    NUTRITION -> R.string.nutrition_facts
+    INGREDIENTS -> R.string.ingredients
+    PACKAGING -> R.string.packaging
     else -> R.string.other_picture
 }
 
@@ -29,7 +30,7 @@ fun createImageBundle(
         imageType: ProductImageField?,
         product: Product?,
         language: String?,
-        imageUrl: String?
+        imageUrl: String
 ) = Bundle().apply {
     putString(IMAGE_URL, imageUrl)
     if (product != null) {
@@ -41,10 +42,10 @@ fun createImageBundle(
 
 @Contract(pure = true)
 fun getResourceIdForEditAction(field: ProductImageField) = when (field) {
-    ProductImageField.FRONT -> R.string.edit_front_image
-    ProductImageField.NUTRITION -> R.string.edit_nutrition_image
-    ProductImageField.PACKAGING -> R.string.edit_packaging_image
-    ProductImageField.INGREDIENTS -> R.string.edit_ingredients_image
+    FRONT -> R.string.edit_front_image
+    NUTRITION -> R.string.edit_nutrition_image
+    PACKAGING -> R.string.edit_packaging_image
+    INGREDIENTS -> R.string.edit_ingredients_image
     else -> R.string.edit_other_image
 }
 

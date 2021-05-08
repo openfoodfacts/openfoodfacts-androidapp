@@ -1,25 +1,30 @@
 package openfoodfacts.github.scrachx.openfood.analytics
 
+import android.content.Context
+import android.content.SharedPreferences
 import androidx.fragment.app.FragmentManager
-import androidx.preference.PreferenceManager
+import dagger.hilt.android.qualifiers.ApplicationContext
 import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.R
-import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.features.analyticsusage.AnalyticsUsageDialogFragment
 import org.matomo.sdk.Matomo
 import org.matomo.sdk.TrackerBuilder
 import org.matomo.sdk.extra.TrackHelper
+import javax.inject.Inject
+import javax.inject.Singleton
 
-
-object MatomoAnalytics {
+@Singleton
+class MatomoAnalytics @Inject constructor(
+        @ApplicationContext private val context: Context,
+        private val sharedPreferences: SharedPreferences,
+) {
 
     //TODO: change matomo url and id from properties
     private val tracker = TrackerBuilder
             .createDefault(BuildConfig.MATOMO_URL, 1)
-            .build(Matomo.getInstance(OFFApplication._instance))
+            .build(Matomo.getInstance(context))
             .apply {
-                isOptOut = PreferenceManager.getDefaultSharedPreferences(OFFApplication._instance)
-                        .getBoolean(OFFApplication._instance.getString(R.string.pref_analytics_reporting_key), false)
+                isOptOut = !sharedPreferences.getBoolean(context.getString(R.string.pref_analytics_reporting_key), false)
             }
             .also {
                 TrackHelper.track().download().with(it)
@@ -35,12 +40,13 @@ object MatomoAnalytics {
         TrackHelper.track()
                 .event(event.category, event.action)
                 .name(event.name)
-                .value(event.value)
+                .apply { if (event.value != null) value(event.value) }
                 .with(tracker)
+
     }
 
     fun showAnalyticsBottomSheetIfNeeded(childFragmentManager: FragmentManager) {
-        if (PreferenceManager.getDefaultSharedPreferences(OFFApplication._instance).contains(OFFApplication._instance.getString(R.string.pref_analytics_reporting_key))) {
+        if (sharedPreferences.contains(context.getString(R.string.pref_analytics_reporting_key))) {
             //key already exists, do not show
             return
         }

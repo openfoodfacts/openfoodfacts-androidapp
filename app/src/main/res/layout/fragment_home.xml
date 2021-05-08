@@ -70,7 +70,7 @@
             android:textSize="@dimen/font_normal" />
 
         <TextView
-            android:id="@+id/tvDailyFoodFact"
+            android:id="@+id/tvTagLine"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"

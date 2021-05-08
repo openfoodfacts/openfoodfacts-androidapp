@@ -29,13 +29,12 @@
     <string name="translate_help_summary">Wprowadź bazę danych Open Beauty Facts do twojego języka - nie wymagamy wiedzy technicznej</string>
     <string name="text_offline_info_dialog">Skanuj nawet w trybie offline, dodasz je później do Open Food Facts. Zeskanowane produkty pojawią się tutaj i będziesz mogła wysłać je poniższym przyciskiem.</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Twoje informacje o alergiach nigdy nie zostaną wysłane na serwer Open Food Facts. Należy także uważać, że dane produktów mogą nie być dokładne, a wykrywanie może nie być 100% a, więc dokładnie sprawdź sam! </string>
-    <!-- OBF tagline in different languages -->
+    <!-- Open Beauty Facts tagline in different languages -->
     <string name="version_string">Otwórz aplikację Open Beauty Facts na Androida</string>
-    <string name="tagline">darmowa baza danych kosmetyków</string>
+    <string name="tagline">the free cosmetics database</string>
     <string name="product_not_found">Zeskanowany produkt %1$s nie istnieje jeszcze w Open Beauty Facts. Czy możesz go dodać?</string>
     <string name="currently_on_version">Aktualnie na Otwartych faktach o piękności</string>
     <string name="category_game_btn">Pomóż kategoryzować produkty</string>
-    <!-- TODO add true support instead of overriding strings -->
     <string name="add_nutrient_prompt_text">Dodaj więcej szczegółów, aby pomóc w dokończeniu produktu</string>
     <string name="add_category_prompt_text">Dodaj kategorię, aby pomóc w dokończeniu produktu</string>
     <string name="add_nutrient_category_prompt_text">Dodaj kategorię i więcej szczegółów, aby pomóc w dokończeniu produktu</string>
@@ -43,7 +42,7 @@
     <string name="txt_eaten_products">Produkty które posiadam</string>
     <string name="txt_products_to_buy">Produkty do kupienia</string>
     <string name="intent_filter_share_label">Dodaj do Open Beauty Facts</string>
-    <string name="brand_hint">Przykłady: Nivea, L\'Oreľal, itp…</string>
+    <string name="brand_hint">Przykłady: Nivea, L\'Oreal, itp…</string>
     <string name="txt_info_eaten_products">Będziesz mógł dodać produkt do tej listy skanując produkty, przeciągając kartę produktu i klikając \"Produkty do zakupu\".
         Możesz również dodać produkty do tej listy, przeszukując je i klikając przycisk + w prawym górnym rogu strony produktu.</string>
     <string name="OFFlogo">Otwórz logo Beauty Facts</string>

@@ -10,7 +10,7 @@
     <string name="website_product">https://world-he.openfoodfacts.org/product/</string>
     <!-- For fr, Replace by https://world-fr.openproductsfacts.org/contributeur/ -->
     <string name="website_contributor">https://world-he.openfoodfacts.org/contributor/</string>
-    <string name="terms_url">https://world.openproductsfacts.org/terms-of-use</string>
+    <string name="terms_url">https://il.openproductsfacts.org/terms-of-use</string>
     <string name="txtHomeOnline">מסד הנתונים הפתוח Open Products Facts מכיל למעלה מ־%1$s מוצרים (בלי אלו שעוד יתווספו על ידיך).</string>
     <string name="txtHome">Open Food Facts הוא מסד נתונים של מוצרי מזון עם רכיבים, מעוררי רגישות, עובדות תזונתיות וכל שביב מידע שניתן למצוא על תווית המוצר.</string>
     <string name="slide_1_title">תרומה לשקיפות המוצרים</string>
@@ -33,7 +33,7 @@
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">נתוני האלרגיות שלך לא יישלחו לשרת של Open Products Facts. כמו כן, מוטב להיזהר כי נתונים של מוצרים עשויים להיות חלקיים והזיהוי עשוי להיות בלתי מדויק, לכן, מוטב לנקוט במשנה זהירות ולבדוק בדרך נוספת באופן עצמאי! </string>
     <!-- OPF tagline in different languages -->
     <string name="version_string">יישומון ה־Android של Open Products Facts</string>
-    <string name="tagline">מסד נתוני המוצרים החופשי</string>
+    <string name="tagline">the free product database</string>
     <string name="product_not_found">המוצר %1$s שסרקת לא קיים עדיין ב־Open Products Facts. נוכל לבקש ממך להוסיף אותו?</string>
     <string name="currently_on_version">עכשיו ב־Open Products Facts</string>
     <string name="category_game_btn">סיוע בסיווג מוצרים</string>

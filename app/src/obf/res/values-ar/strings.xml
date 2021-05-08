@@ -29,13 +29,12 @@
     <string name="translate_help_summary">ترجم قاعدة بيانات حقائق الجمال المفتوحة إلى لغتك - لن تحتاج إلى معرفة تقنية</string>
     <string name="text_offline_info_dialog">يمكنك فحص المنتجات حتى عندما تكون في وضع عدم الاتصال لإضافتها إلى حقائق الجمال المفتوحة لاحقًا. ستظهر المنتجات الممسوحة ضوئيًا هنا وستتمكن من إرسالها باستخدام الزر أدناه.</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">لن يتم إرسال معلومات الحساسية الخاصة بك إلى حقائق الطعام المفتوح. أيضاً، احذر من أن فى بعض الاحيان بيانات المنتج قد لا تكون دقيقة، وقد لا يكون الكشف دقيقاً ٪١٠٠، لذا يرجى التحقق مرة أخرى بنفسك! </string>
-    <!-- OBF tagline in different languages -->
+    <!-- Open Beauty Facts tagline in different languages -->
     <string name="version_string">افتح تطبيق Beauty Facts على Android</string>
-    <string name="tagline">قاعدة بيانات مستحضرات التجميل المجانية</string>
+    <string name="tagline">the free cosmetics database</string>
     <string name="product_not_found">المنتج %1$s الذي تم مسحه غير موجود حتى الآن في \"حقائق الجمال المفتوحة\". الرجاء إضافته إن امكن.</string>
     <string name="currently_on_version">حاليا على Open Food Facts</string>
     <string name="category_game_btn">مساعدة في تصنيف المنتجات</string>
-    <!-- TODO add true support instead of overriding strings -->
     <string name="add_nutrient_prompt_text">أضف المزيد من التفاصيل للمساعدة في استكمال المنتج</string>
     <string name="add_category_prompt_text">أضف المزيد من التفاصيل للمساعدة في استكمال المنتج</string>
     <string name="add_nutrient_category_prompt_text">أضف فئة ومزيد من التفاصيل للمساعدة في إكمال المنتج</string>

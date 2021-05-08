@@ -18,6 +18,7 @@ package openfoodfacts.github.scrachx.openfood.features.product.edit
 
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -25,7 +26,6 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContract
-import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.afollestad.materialdialogs.MaterialDialog
@@ -35,7 +35,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
-import okhttp3.MediaType
 import okhttp3.RequestBody
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OBF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
@@ -47,6 +46,7 @@ import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
 import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityEditProductBinding
 import openfoodfacts.github.scrachx.openfood.features.product.ProductFragmentPagerAdapter
+import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.images.IMG_ID
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
 import openfoodfacts.github.scrachx.openfood.jobs.OfflineProductWorker.Companion.scheduleSync
@@ -57,6 +57,7 @@ import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct
 import openfoodfacts.github.scrachx.openfood.models.entities.ToUploadProduct
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient.Companion.PNG_EXT
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient.Companion.addToHistorySync
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
 import openfoodfacts.github.scrachx.openfood.utils.OfflineProductService
@@ -70,7 +71,7 @@ import java.util.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class ProductEditActivity : AppCompatActivity() {
+class ProductEditActivity : BaseActivity() {
     private var _binding: ActivityEditProductBinding? = null
     private val binding get() = _binding!!
 
@@ -88,6 +89,12 @@ class ProductEditActivity : AppCompatActivity() {
 
     @Inject
     lateinit var productsApi: ProductsAPI
+
+    @Inject
+    lateinit var matomoAnalytics: MatomoAnalytics
+
+    @Inject
+    lateinit var sharedPreferences: SharedPreferences
 
     private val addProductPhotosFragment = ProductEditPhotosFragment()
     private val nutritionFactsFragment = ProductEditNutritionFactsFragment()
@@ -230,25 +237,26 @@ class ProductEditActivity : AppCompatActivity() {
 
     private fun setupViewPager(viewPager: ViewPager2) {
         // Initialize fragments
-        val adapterResult = ProductFragmentPagerAdapter(this)
         fragmentsBundle.putSerializable("product", mProduct)
 
         editOverviewFragment.arguments = fragmentsBundle
         ingredientsFragment.arguments = fragmentsBundle
 
-        adapterResult.add(editOverviewFragment, R.string.overview)
-        adapterResult.add(ingredientsFragment, R.string.ingredients)
+        val adapterResult = ProductFragmentPagerAdapter(this).apply {
+            this += editOverviewFragment to getString(R.string.overview)
+            this += ingredientsFragment to getString(R.string.ingredients)
+        }
 
         // If on off or opff, add Nutrition Facts fragment
         when {
             isFlavors(OFF, OPFF) -> {
                 nutritionFactsFragment.arguments = fragmentsBundle
-                adapterResult.add(nutritionFactsFragment, R.string.nutrition_facts)
+                adapterResult += nutritionFactsFragment to getString(R.string.nutrition_facts)
             }
             isFlavors(OBF, OPF) -> {
                 binding.textNutritionFactsIndicator.setText(R.string.photos)
                 addProductPhotosFragment.arguments = fragmentsBundle
-                adapterResult.add(addProductPhotosFragment, R.string.photos)
+                adapterResult += addProductPhotosFragment to getString(R.string.photos)
             }
         }
 
@@ -257,7 +265,7 @@ class ProductEditActivity : AppCompatActivity() {
     }
 
     private fun createTextPlain(code: String) =
-            RequestBody.create(MediaType.parse(OpenFoodAPIClient.MIME_TEXT), code)
+            RequestBody.create(OpenFoodAPIClient.MIME_TEXT, code)
 
     private fun addLoginPasswordInfo(imgMap: MutableMap<String, RequestBody?>) {
         val settings = getLoginPreferences()
@@ -289,9 +297,9 @@ class ProductEditActivity : AppCompatActivity() {
      */
     private fun saveProductOffline() {
         // Add the images to the productDetails to display them in UI later.
-        imagesFilePath[0]?.also { productDetails[ApiFields.Keys.IMAGE_FRONT] = it }
-        imagesFilePath[1]?.also { productDetails[ApiFields.Keys.IMAGE_INGREDIENTS] = it }
-        imagesFilePath[2]?.also { productDetails[ApiFields.Keys.IMAGE_NUTRITION] = it }
+        imagesFilePath[0]?.let { productDetails[ApiFields.Keys.IMAGE_FRONT] = it }
+        imagesFilePath[1]?.let { productDetails[ApiFields.Keys.IMAGE_INGREDIENTS] = it }
+        imagesFilePath[2]?.let { productDetails[ApiFields.Keys.IMAGE_NUTRITION] = it }
 
         // Add the status of images to the productDetails, whether uploaded or not
         if (imageFrontUploaded) {
@@ -304,22 +312,22 @@ class ProductEditActivity : AppCompatActivity() {
             productDetails[ApiFields.Keys.IMAGE_NUTRITION_UPLOADED] = true.toString()
         }
         val barcode = this@ProductEditActivity.productDetails[ApiFields.Keys.BARCODE]!!
-        val toSaveOfflineProduct = OfflineSavedProduct(
+        val toSaveOffline = OfflineSavedProduct(
                 barcode,
                 this@ProductEditActivity.productDetails
         )
-        daoSession.offlineSavedProductDao!!.insertOrReplace(toSaveOfflineProduct)
+        daoSession.offlineSavedProductDao!!.insertOrReplace(toSaveOffline)
 
-        scheduleSync(this)
-        daoSession.historyProductDao.addToHistorySync(toSaveOfflineProduct)
+        scheduleSync(this, sharedPreferences)
+        daoSession.historyProductDao.addToHistorySync(toSaveOffline)
 
         Toast.makeText(this, R.string.productSavedToast, Toast.LENGTH_SHORT).show()
         hideKeyboard(this)
 
         if (editingMode) {
-            MatomoAnalytics.trackEvent(AnalyticsEvent.ProductEdited(productDetails["code"]))
+            matomoAnalytics.trackEvent(AnalyticsEvent.ProductEdited(productDetails[ApiFields.Keys.BARCODE]))
         } else {
-            MatomoAnalytics.trackEvent(AnalyticsEvent.ProductCreated(productDetails["code"]))
+            matomoAnalytics.trackEvent(AnalyticsEvent.ProductCreated(productDetails[ApiFields.Keys.BARCODE]))
         }
 
         setResult(RESULT_OK)
@@ -360,37 +368,38 @@ class ProductEditActivity : AppCompatActivity() {
     fun addToPhotoMap(image: ProductImage, position: Int) {
         val lang = getProductLanguageForEdition()
         var ocr = false
-        val imgMap = hashMapOf<String, RequestBody?>()
-        val imageField = createTextPlain("${image.imageField}_$lang")
-        imgMap[ApiFields.Keys.BARCODE] = image.code
-        imgMap["imagefield"] = imageField
+        val imgMap = hashMapOf<String, RequestBody?>(
+                ApiFields.Keys.BARCODE to image.codeBody,
+                "imagefield" to createTextPlain("${image.imageField}_$lang")
+        )
         if (image.imgFront != null) {
             imagesFilePath[0] = image.filePath
-            imgMap["""imgupload_front"; filename="front_$lang.png""""] = image.imgFront
+            imgMap["""imgupload_front"; filename="front_$lang$PNG_EXT"""] = image.imgFront
         }
         if (image.imgIngredients != null) {
-            imgMap["""imgupload_ingredients"; filename="ingredients_$lang.png""""] = image.imgIngredients
+            imgMap["""imgupload_ingredients"; filename="ingredients_$lang$PNG_EXT"""] = image.imgIngredients
             ocr = true
             imagesFilePath[1] = image.filePath
         }
         if (image.imgNutrition != null) {
-            imgMap["""imgupload_nutrition"; filename="nutrition_$lang.png""""] = image.imgNutrition
+            imgMap["""imgupload_nutrition"; filename="nutrition_$lang$PNG_EXT"""] = image.imgNutrition
             imagesFilePath[2] = image.filePath
         }
         if (image.imgPackaging != null) {
-            imgMap["""imgupload_packaging"; filename="packaging_$lang.png""""] = image.imgPackaging
+            imgMap["""imgupload_packaging"; filename="packaging_$lang$PNG_EXT"""] = image.imgPackaging
             imagesFilePath[3] = image.filePath
         }
         if (image.imgOther != null) {
-            imgMap["""imgupload_other"; filename="other_$lang.png""""] = image.imgOther
+            imgMap["""imgupload_other"; filename="other_$lang$PNG_EXT"""] = image.imgOther
         }
+
         // Attribute the upload to the connected user
         addLoginPasswordInfo(imgMap)
         savePhoto(imgMap, image, position, ocr)
     }
 
     private fun savePhoto(imgMap: Map<String, RequestBody?>, image: ProductImage, position: Int, performOCR: Boolean) {
-        productsApi.saveImageSingle(imgMap)
+        productsApi.saveImage(imgMap)
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe { showImageProgress(position) }
                 .doOnError {
@@ -399,7 +408,7 @@ class ProductEditActivity : AppCompatActivity() {
                         hideImageProgress(position, false, getString(R.string.no_internet_connection))
                         Log.e(LOGGER_TAG, it.message!!)
                         if (image.imageField === ProductImageField.OTHER) {
-                            daoSession.toUploadProductDao!!.insertOrReplace(ToUploadProduct(
+                            daoSession.toUploadProductDao.insertOrReplace(ToUploadProduct(
                                     image.barcode,
                                     image.filePath,
                                     image.imageField.toString()
@@ -418,7 +427,7 @@ class ProductEditActivity : AppCompatActivity() {
                         val alreadySent = error == "This picture has already been sent."
                         if (alreadySent && performOCR) {
                             hideImageProgress(position, false, getString(R.string.image_uploaded_successfully))
-                            performOCR(image.barcode!!, "ingredients_${getProductLanguageForEdition()}")
+                            performOCR(image.barcode, "ingredients_${getProductLanguageForEdition()}")
                         } else {
                             hideImageProgress(position, true, error)
                         }
@@ -448,7 +457,7 @@ class ProductEditActivity : AppCompatActivity() {
     private fun setPhoto(image: ProductImage, imageField: String, imgId: String, performOCR: Boolean) {
         val queryMap = mapOf(IMG_ID to imgId, "id" to imageField)
 
-        productsApi.editImageSingle(image.barcode, queryMap)
+        productsApi.editImage(image.barcode, queryMap)
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnError { e ->
                     if (e is IOException) {
@@ -465,7 +474,7 @@ class ProductEditActivity : AppCompatActivity() {
                 .subscribe { jsonNode ->
                     val status = jsonNode["status"].asText()
                     if (performOCR && status == "status ok") {
-                        performOCR(image.barcode!!, imageField)
+                        performOCR(image.barcode, imageField)
                     }
                 }.addTo(disp)
     }
@@ -562,11 +571,6 @@ class ProductEditActivity : AppCompatActivity() {
         override fun parseResult(resultCode: Int, intent: Intent?) = resultCode == RESULT_OK
     }
 
-    class AddProductContract : EditProductContract() {
-        override fun createIntent(context: Context, input: Product) =
-                super.createIntent(context, input).apply { putExtra(KEY_IS_NEW_PRODUCT, true) }
-    }
-
     companion object {
         private val LOGGER_TAG = ProductEditActivity::class.simpleName
 
@@ -577,8 +581,6 @@ class ProductEditActivity : AppCompatActivity() {
 
         const val KEY_EDIT_OFFLINE_PRODUCT = "edit_offline_product"
         const val KEY_EDIT_PRODUCT = "edit_product"
-
-        const val KEY_IS_NEW_PRODUCT = "is_new_product"
 
         const val KEY_IS_EDITING = "is_edition"
         const val KEY_STATE = "state"
@@ -611,20 +613,42 @@ class ProductEditActivity : AppCompatActivity() {
             }
         }
 
-        fun start(context: Context, product: Product, sendUpdated: Boolean = false, performOcr: Boolean = false) {
+        fun start(
+                context: Context,
+                product: Product,
+                sendUpdated: Boolean = false,
+                performOcr: Boolean = false,
+                showCategoryPrompt: Boolean = false,
+                showNutritionPrompt: Boolean = false
+        ) {
             Intent(context, ProductEditActivity::class.java).apply {
                 putExtra(KEY_EDIT_PRODUCT, product)
+
                 if (sendUpdated) putExtra(KEY_SEND_UPDATED, true)
                 if (performOcr) putExtra(KEY_PERFORM_OCR, true)
+                if (showCategoryPrompt) putExtra(KEY_MODIFY_CATEGORY_PROMPT, true)
+                if (showNutritionPrompt) putExtra(KEY_MODIFY_NUTRITION_PROMPT, true)
+
                 context.startActivity(this)
             }
         }
 
-        fun start(context: Context, offlineProduct: OfflineSavedProduct, sendUpdated: Boolean = false, performOcr: Boolean = false) {
+        fun start(
+                context: Context,
+                offlineProduct: OfflineSavedProduct,
+                sendUpdated: Boolean = false,
+                performOcr: Boolean = false,
+                showCategoryPrompt: Boolean = false,
+                showNutritionPrompt: Boolean = false
+        ) {
             Intent(context, ProductEditActivity::class.java).apply {
                 putExtra(KEY_EDIT_OFFLINE_PRODUCT, offlineProduct)
+
                 if (sendUpdated) putExtra(KEY_SEND_UPDATED, true)
                 if (performOcr) putExtra(KEY_PERFORM_OCR, true)
+                if (showCategoryPrompt) putExtra(KEY_MODIFY_CATEGORY_PROMPT, true)
+                if (showNutritionPrompt) putExtra(KEY_MODIFY_NUTRITION_PROMPT, true)
+
                 context.startActivity(this)
             }
         }

@@ -7,16 +7,19 @@ import android.content.Intent
 import android.util.Log
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.GrantPermissionRule
+import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import openfoodfacts.github.scrachx.openfood.test.ScreenshotActivityTestRule
 import openfoodfacts.github.scrachx.openfood.test.ScreenshotParameter
 import openfoodfacts.github.scrachx.openfood.test.getFilteredParameters
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper
+import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
 import org.junit.AfterClass
 import org.junit.BeforeClass
 import org.junit.Rule
 import org.junit.runner.RunWith
 import java.util.*
+import javax.inject.Inject
 
 /**
  * Take screenshots...buil
@@ -25,12 +28,37 @@ import java.util.*
 @HiltAndroidTest
 abstract class AbstractScreenshotTest {
 
+    @Suppress("LeakingThis")
+    @get:Rule
+    var hiltRule = HiltAndroidRule(this)
 
     @Rule
     var permissionRule: GrantPermissionRule = GrantPermissionRule.grant(
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
             Manifest.permission.CHANGE_CONFIGURATION
     )
+
+    @Inject
+    @ApplicationContext
+    lateinit var context: Context
+
+    @Inject
+    lateinit var localeManager: LocaleManager
+
+    private lateinit var initLocale: Locale
+
+    @Suppress("DEPRECATION")
+    @BeforeClass
+    fun setup() {
+        hiltRule.inject()
+        initLocale = localeManager.getLocaleFromContext(context)
+    }
+
+    @Suppress("DEPRECATION")
+    @AfterClass
+    fun release() {
+        localeManager.saveLanguageToPrefs(context, initLocale)
+    }
 
     @SafeVarargs
     private fun startScreenshotActivityTestRules(
@@ -51,9 +79,10 @@ abstract class AbstractScreenshotTest {
         }
     }
 
+    @Suppress("DEPRECATION")
     private fun changeLocale(parameter: ScreenshotParameter, context: Context) {
         Log.d(LOG_TAG, "Change parameters to $parameter")
-        LocaleHelper.setContextLanguage(context, parameter.locale)
+        localeManager.saveLanguageToPrefs(context, parameter.locale)
     }
 
     protected fun startForAllLocales(
@@ -69,16 +98,5 @@ abstract class AbstractScreenshotTest {
     companion object {
         const val ACTION_NAME = "actionName"
         private val LOG_TAG = AbstractScreenshotTest::class.java.simpleName
-        private lateinit var initLocale: Locale
-
-        @BeforeClass
-        fun initLanguage() {
-            initLocale = LocaleHelper.getLocaleFromContext()
-        }
-
-        @AfterClass
-        fun resetLanguage() {
-            LocaleHelper.setLanguageInPrefs(initLocale)
-        }
     }
 }

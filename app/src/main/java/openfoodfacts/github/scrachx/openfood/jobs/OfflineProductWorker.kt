@@ -1,9 +1,9 @@
 package openfoodfacts.github.scrachx.openfood.jobs
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.util.Log
 import androidx.hilt.work.HiltWorker
-import androidx.preference.PreferenceManager
 import androidx.work.*
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
@@ -17,6 +17,7 @@ class OfflineProductWorker @AssistedInject constructor(
         @Assisted context: Context,
         @Assisted workerParams: WorkerParameters
 ) : RxWorker(context, workerParams) {
+
     @Inject
     lateinit var offlineProductService: OfflineProductService
 
@@ -42,9 +43,9 @@ class OfflineProductWorker @AssistedInject constructor(
                 .build()
 
         @JvmStatic
-        fun scheduleSync(context: Context) {
+        fun scheduleSync(context: Context, sharedPreferences: SharedPreferences) {
             val constPics = Constraints.Builder()
-            if (PreferenceManager.getDefaultSharedPreferences(context).getBoolean(context.getString(R.string.pref_enable_mobile_data_key), true)) {
+            if (sharedPreferences.getBoolean(context.getString(R.string.pref_enable_mobile_data_key), true)) {
                 constPics.setRequiredNetworkType(NetworkType.CONNECTED)
             } else {
                 constPics.setRequiredNetworkType(NetworkType.UNMETERED)

@@ -1,12 +1,9 @@
 package openfoodfacts.github.scrachx.openfood.features.productlist
 
 import android.Manifest
-import android.app.NotificationChannel
-import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
@@ -16,14 +13,16 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
+import androidx.core.app.ActivityCompat.shouldShowRequestPermissionRationale
+import androidx.core.content.ContextCompat.checkSelfPermission
+import androidx.core.net.toUri
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.afollestad.materialdialogs.MaterialDialog
 import dagger.hilt.android.AndroidEntryPoint
-import openfoodfacts.github.scrachx.openfood.AppFlavors
+import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.R
@@ -38,11 +37,10 @@ import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import openfoodfacts.github.scrachx.openfood.models.HistoryProduct
 import openfoodfacts.github.scrachx.openfood.models.HistoryProductDao
 import openfoodfacts.github.scrachx.openfood.models.Product
+import openfoodfacts.github.scrachx.openfood.models.entities.ListedProduct
 import openfoodfacts.github.scrachx.openfood.models.entities.ProductLists
-import openfoodfacts.github.scrachx.openfood.models.entities.YourListedProduct
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.*
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
 import openfoodfacts.github.scrachx.openfood.utils.SortType.*
 import java.io.File
 import java.text.SimpleDateFormat
@@ -60,6 +58,12 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
 
     @Inject
     lateinit var daoSession: DaoSession
+
+    @Inject
+    lateinit var matomoAnalytics: MatomoAnalytics
+
+    @Inject
+    lateinit var localeManager: LocaleManager
 
     private var listID by Delegates.notNull<Long>()
     private lateinit var productList: ProductLists
@@ -83,33 +87,36 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
         if (this.isDisableImageLoad() && this.isBatteryLevelLow()) isLowBatteryMode = true
 
         // OnClick
-        binding.scanFirstYourListedProduct.setOnClickListener { onFirstScan() }
+        binding.scanFirstYourListedProduct.setOnClickListener { checkPermsStartScan() }
 
 
         // Get listid and add product to list if bundle is present
         val bundle = intent.extras
-        var prodToAdd: Product? = null
         if (bundle != null) {
             listID = bundle.getLong(KEY_LIST_ID)
             listName = bundle.getString(KEY_LIST_NAME)
             title = listName
-            prodToAdd = bundle[KEY_PRODUCT_TO_ADD] as Product?
-        }
 
-        val locale = getLanguage(this)
-        if (prodToAdd?.code != null && prodToAdd.productName != null && prodToAdd.getImageSmallUrl(locale) != null) {
-            val barcode = prodToAdd.code
-            val productName = prodToAdd.productName
-            val productDetails = prodToAdd.getProductBrandsQuantityDetails()
-            val imageUrl = prodToAdd.getImageSmallUrl(locale)
-            val product = YourListedProduct()
-            product.barcode = barcode
-            product.listId = listID
-            product.listName = listName
-            product.productName = productName
-            product.productDetails = productDetails
-            product.imageUrl = imageUrl
-            daoSession.yourListedProductDao.insertOrReplace(product)
+            (bundle[KEY_PRODUCT_TO_ADD] as? Product)?.let { prodToAdd ->
+                val locale = localeManager.getLanguage()
+                if (prodToAdd.productName != null && prodToAdd.getImageSmallUrl(locale) != null) {
+                    val barcode = prodToAdd.code
+                    val productName = prodToAdd.productName
+                    val productDetails = prodToAdd.getProductBrandsQuantityDetails()
+                    val imageUrl = prodToAdd.getImageSmallUrl(locale)
+
+                    val product = ListedProduct().apply {
+                        this.barcode = barcode
+                        this.listId = this@ProductListActivity.listID
+                        this.listName = this@ProductListActivity.listName
+                        this.productName = productName
+                        this.productDetails = productDetails
+                        this.imageUrl = imageUrl
+                    }
+
+                    daoSession.listedProductDao.insertOrReplace(product)
+                }
+            }
         }
 
         val productList = daoSession.productListsDao.load(listID)
@@ -150,12 +157,17 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_your_listed_products, menu)
-        menu.findItem(R.id.action_export_all_listed_products).isVisible = adapter.products.isNotEmpty()
-        menu.findItem(R.id.action_sort_listed_products).isVisible = adapter.products.isNotEmpty()
+        listOf(
+                R.id.action_export_all_listed_products,
+                R.id.action_sort_listed_products,
+                R.id.action_share_list
+        ).forEach {
+            menu.findItem(it).isVisible = adapter.products.isNotEmpty()
+        }
         return true
     }
 
-    private fun MutableList<YourListedProduct>.customSortBy(sortType: SortType) = when (sortType) {
+    private fun MutableList<ListedProduct>.customSortBy(sortType: SortType) = when (sortType) {
         TITLE -> sortBy { it.productName }
         BRAND -> sortBy { it.productDetails }
         BARCODE -> sortBy { it.barcode }
@@ -192,7 +204,7 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
             val qbTime = daoSession.historyProductDao!!.queryBuilder()
             qbTime.whereOr(times[0], times[1], *times.copyOfRange(2, times.size))
             historyProductsTime = qbTime.list()
-            sortWith { p1: YourListedProduct, p2: YourListedProduct ->
+            sortWith { p1: ListedProduct, p2: ListedProduct ->
                 var d1 = Date(0)
                 var d2 = Date(0)
                 historyProductsTime.forEach {
@@ -209,6 +221,8 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
         else -> sortWith { _, _ -> 0 }
     }
 
+    private val requestWriteLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission())
+    { if (it) exportAsCSV() }
 
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
         android.R.id.home -> {
@@ -219,26 +233,35 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
             true
         }
         R.id.action_export_all_listed_products -> {
-            if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+            val perm = Manifest.permission.WRITE_EXTERNAL_STORAGE
+            when {
+                checkSelfPermission(
+                        this, perm
+                ) == PackageManager.PERMISSION_GRANTED -> {
+                    exportAsCSV()
+                    matomoAnalytics.trackEvent(AnalyticsEvent.ShoppingListExported)
+                }
+                shouldShowRequestPermissionRationale(this, perm) -> {
                     MaterialDialog.Builder(this)
                             .title(R.string.action_about)
                             .content(R.string.permision_write_external_storage)
                             .neutralText(R.string.txtOk)
+                            .onNeutral { _, _ ->
+                                requestWriteLauncher.launch(perm)
+                            }
                             .show()
-                } else {
-                    ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), MY_PERMISSIONS_REQUEST_STORAGE)
                 }
-            } else {
-                exportAsCSV()
-                MatomoAnalytics.trackEvent(AnalyticsEvent.ShoppingListExported)
+                else -> {
+                    requestWriteLauncher.launch(perm)
+                }
             }
+
             true
         }
         R.id.action_sort_listed_products -> {
             MaterialDialog.Builder(this).run {
                 title(R.string.sort_by)
-                val sortTypes = if (isFlavors(AppFlavors.OFF)) {
+                val sortTypes = if (isFlavors(OFF)) {
                     listOf(
                             getString(R.string.by_title),
                             getString(R.string.by_brand),
@@ -260,7 +283,7 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
                     sortType = when (position) {
                         0 -> TITLE
                         1 -> BRAND
-                        2 -> if (isFlavors(AppFlavors.OFF)) GRADE else TIME
+                        2 -> if (isFlavors(OFF)) GRADE else TIME
                         3 -> BARCODE
                         else -> TIME
                     }
@@ -272,17 +295,11 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
             }
             true
         }
-        else -> super.onOptionsItemSelected(item)
-    }
-
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-
-        if (requestCode == MY_PERMISSIONS_REQUEST_STORAGE && grantResults.isNotEmpty()
-                && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            exportAsCSV()
+        R.id.action_share_list -> {
+            shareList()
+            true
         }
-
+        else -> super.onOptionsItemSelected(item)
     }
 
 
@@ -292,34 +309,46 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
         view.setText(R.string.txt_info_your_listed_products)
     }
 
-    private fun onFirstScan() {
+    private val requestCameraLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission())
+    { if (it) startScan() }
+
+    private fun checkPermsStartScan() {
         if (!isHardwareCameraInstalled(this)) {
             Log.e(this::class.simpleName, "Device has no camera installed.")
             return
         }
-        if (ContextCompat.checkSelfPermission(baseContext, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.CAMERA)) {
+        when {
+            checkSelfPermission(
+                    baseContext, Manifest.permission.CAMERA
+            ) == PackageManager.PERMISSION_GRANTED -> {
+                startScan()
+            }
+            shouldShowRequestPermissionRationale(this, Manifest.permission.CAMERA) -> {
                 MaterialDialog.Builder(this).run {
                     title(R.string.action_about)
                     content(R.string.permission_camera)
                     neutralText(R.string.txtOk)
-                    onNeutral { _, _ -> ActivityCompat.requestPermissions(this@ProductListActivity, arrayOf(Manifest.permission.CAMERA), MY_PERMISSIONS_REQUEST_CAMERA) }
+                    onNeutral { _, _ ->
+                        requestCameraLauncher.launch(Manifest.permission.CAMERA)
+                    }
                     show()
                 }
-            } else {
-                ActivityCompat.requestPermissions(this@ProductListActivity, arrayOf(Manifest.permission.CAMERA), MY_PERMISSIONS_REQUEST_CAMERA)
             }
-        } else {
-            val intent = Intent(this, ContinuousScanActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            startActivity(intent)
+            else -> {
+                requestCameraLauncher.launch(Manifest.permission.CAMERA)
+            }
         }
     }
 
-    @RequiresApi(Build.VERSION_CODES.KITKAT)
-    val fileWriterLauncher = registerForActivityResult(CreateCSVContract()) {
-        writeListToFile(this, productList, it, contentResolver.openOutputStream(it) ?: error("File path must not be null."))
+    private fun startScan() {
+        startActivity(Intent(this, ContinuousScanActivity::class.java).apply {
+            addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        })
     }
+
+    @RequiresApi(Build.VERSION_CODES.KITKAT)
+    val fileWriterLauncher = registerForActivityResult(CreateCSVContract())
+    { writeListToFile(this, productList, it) }
 
     private fun exportAsCSV() {
         Toast.makeText(this, R.string.txt_exporting_your_listed_products, Toast.LENGTH_LONG).show()
@@ -336,15 +365,25 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
             val baseDir = File(Environment.getExternalStorageDirectory(), getCsvFolderName())
             if (!baseDir.exists()) baseDir.mkdirs()
             val file = File(baseDir, fileName)
-            writeListToFile(this, productList, Uri.fromFile(file), file.outputStream())
+            writeListToFile(this, productList, file.toUri())
         }
+    }
+
+    private fun shareList() {
+        val shareUrl = "${BuildConfig.OFWEBSITE}search?code=${productList.products.joinToString(",") { it.barcode }}"
+
+        startActivity(Intent.createChooser(Intent().apply {
+            action = Intent.ACTION_SEND
+            putExtra(Intent.EXTRA_TEXT, shareUrl)
+            type = "text/plain"
+        }, null))
     }
 
     override fun onRightClicked(position: Int) {
         if (adapter.products.isEmpty()) return
-        val productToRemove = adapter.products[position]
 
-        daoSession.yourListedProductDao!!.delete(productToRemove)
+        val productToRemove = adapter.products[position]
+        daoSession.listedProductDao.delete(productToRemove)
         adapter.remove(productToRemove)
     }
 
@@ -363,40 +402,9 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
             })
         }
 
-        fun createNotification(csvUri: Uri, downloadIntent: Intent, context: Context): NotificationManager {
-            downloadIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
-            downloadIntent.setDataAndType(csvUri, "text/csv")
-            downloadIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-            val notificationManager = context.getSystemService(NOTIFICATION_SERVICE) as NotificationManager
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                val importance = NotificationManager.IMPORTANCE_DEFAULT
-                val notificationChannel = NotificationChannel("downloadChannel", "ChannelCSV", importance)
-                notificationManager.createNotificationChannel(notificationChannel)
-            }
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                val channelId = "export_channel"
-                val channelName = context.getString(R.string.notification_channel_name)
-                val importance = NotificationManager.IMPORTANCE_DEFAULT
-                val notificationChannel = NotificationChannel(channelId, channelName, importance)
-                notificationChannel.description = context.getString(R.string.notify_channel_description)
-                notificationManager.createNotificationChannel(notificationChannel)
-            }
-            return notificationManager
-        }
-
-        fun getProductBrandsQuantityDetails(brands: String?, quantity: String?): String {
-            val builder = StringBuilder()
-            if (!brands.isNullOrEmpty()) {
-                builder.append(brands.split(",")[0].trim { it <= ' ' }.capitalize(Locale.ROOT))
-            }
-            if (!quantity.isNullOrEmpty()) {
-                builder.append(" - ").append(quantity)
-            }
-            return builder.toString()
-        }
-
         const val KEY_LIST_ID = "listId"
         const val KEY_LIST_NAME = "listName"
         const val KEY_PRODUCT_TO_ADD = "product"
     }
 }
+

@@ -165,7 +165,6 @@
         <item>Witamina K</item>
         <item>Cynk</item>
     </string-array>
-    <!-- Text units -->
     <!-- Content Description -->
     <string name="search_button">Wyszukiwanie</string>
     <string name="alert_dialog_warning_title">Ostrzeżenie</string>
@@ -432,7 +431,7 @@
             to improve their software. As noted in the MLKit terms, this won’t include any information about the products you scan and the telemetry is anonymized. Choosing MLKit scanner
             implies that you accept those terms\n<b>Note: You can switch back at any time between the 2 scanners in the Settings.</b>
     </string>
-    <string name="prompt_point_at_a_barcode">Point your camera at a barcode</string>
+    <string name="prompt_point_at_a_barcode">Skieruj obiektyw aparatu na kod kreskowy</string>
     <string name="prompt_move_camera_closer">Move closer to detect</string>
     <string name="please_check_your_connection">Sprawdź połączenie.</string>
     <string name="advanced_search_title">Wyszukiwanie zaawansowane &amp; wykresy</string>
@@ -677,7 +676,7 @@
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">Wyodrębnij składniki</string>
     <string name="extract_recycling_prompt">Wyodrębnij instrukcje recyklingu</string>
-    <string name="add_nutrient_prompt_text">Dodaj wartości odżywcze do obliczenia poziomów składników odżywczych</string>
+    <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
     <string name="add_category_prompt_text">Dodaj kategorię, aby pomóc w dokończeniu produktu</string>
     <string name="add_nutrient_category_prompt_text">Dodaj kategorię i wartości odżywcze, aby pomóc w dokończeniu produktu</string>
     <string name="couldnot_compute_ecoscore_prompt_text">We could not compute an Eco-Score for this product. It might be that the category is not specific enough or that we don\'t have supporting data for this category. If you believe this is an error, you can mail us by clicking below.</string>
@@ -716,7 +715,7 @@
     <string name="empty"></string>
     <string name="add_product">Dodawaj produkty</string>
     <string name="add_another_product">Dodaj kolejny produkt</string>
-    <string name="add_nutrition_facts_for_nutriscore">Dodaj wartości odżywcze do obliczenia poziomów składników odżywczych</string>
+    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
     <string name="product_summary_action_compare_button_label">Porównaj</string>
     <string name="product_summary_action_add_to_list_button_label">Dodaj do listy</string>
     <string name="product_summary_action_edit_button_label">Edytuj</string>
@@ -808,13 +807,20 @@
     <string name="txtHomeOnline">Open Food Facts to otwarta baza danych więcej niż %1$s produktów (plus te, które pomogą Ci w działaniu).</string>
     <string name="enabled">Włączone</string>
     <!-- Application theme settings -->
-    <string name="follow_system">Follow system</string>
-    <string name="day">Day</string>
-    <string name="night">Night</string>
-    <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
-    <string name="hint_origin">Examples: USA, France, Italy</string>
+    <string name="follow_system">Motyw systemu</string>
+    <string name="day">Dzień</string>
+    <string name="night">Noc</string>
+    <string name="required_for_ecoscore">(Wymagane do obliczenia Eco-Score)</string>
+    <string name="hint_origin">Przykłady: USA, Francja, Włochy</string>
     <string name="report_email_chooser_title">Send a report email</string>
     <!-- Changelog String -->
     <string name="changelog_translation_help">Want to see this changelog in %s?\nJoin the translation team!</string>
-    <string name="whats_new">What\'s new with Open Food Facts?</string>
+    <string name="whats_new">Co nowego w Open Food Facts?</string>
+    <string name="eco_score_slide_4_title">Eco-Score</string>
+    <string name="join_the_food_revolution">Dołącz do rewolucji żywieniowej</string>
+    <string name="slide_1_text_revolution">Skanuj jedzenie, rób zdjęcia, pomóż przekształcić system żywnościowy</string>
+    <string name="get_the_nutri_score">Poznaj skalę Nutri_Score</string>
+    <string name="synthesis_of_nutrition_slide_2_text">Prosta synteza jakości odżywczej Twojego jedzenia</string>
+    <string name="avoid_ultra_processed_foods">Unikaj ultra przetworzonej żywności</string>
+    <string name="nova_slide_3_text">Zmniejsz ilość ultra przetworzonej żywności w swojej diecie.</string>
 </resources>

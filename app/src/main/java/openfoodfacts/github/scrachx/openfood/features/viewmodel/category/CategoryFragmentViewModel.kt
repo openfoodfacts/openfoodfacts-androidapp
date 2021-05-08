@@ -15,12 +15,11 @@
  */
 package openfoodfacts.github.scrachx.openfood.features.viewmodel.category
 
-import android.app.Application
 import android.util.Log
 import android.view.View
-import androidx.databinding.ObservableField
+import androidx.databinding.ObservableArrayList
 import androidx.databinding.ObservableInt
-import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -30,21 +29,18 @@ import io.reactivex.schedulers.Schedulers
 import openfoodfacts.github.scrachx.openfood.models.entities.category.Category
 import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoryName
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
+import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
 import java.net.UnknownHostException
 import java.util.*
 import javax.inject.Inject
 
-/**
- * Created by Abdelali Eramli on 27/12/2017.
- */
 @HiltViewModel
 class CategoryFragmentViewModel @Inject constructor(
-        val app: Application,
-        private val productRepository: ProductRepository
-) : AndroidViewModel(app) {
+        private val productRepository: ProductRepository,
+        private val localeManager: LocaleManager
+) : ViewModel() {
     private val allCategories = mutableListOf<CategoryName>()
-    val shownCategories = ObservableField(mutableListOf<CategoryName>())
+    val shownCategories = ObservableArrayList<CategoryName>()
     val showProgress = ObservableInt(View.VISIBLE)
     val showOffline = ObservableInt(View.GONE)
 
@@ -63,7 +59,7 @@ class CategoryFragmentViewModel @Inject constructor(
      * Generates a network call for showing categories in CategoryFragment
      */
     fun refreshCategories() {
-        productRepository.getAllCategoriesByLanguageCode(getLanguage(app))
+        productRepository.getAllCategoriesByLanguageCode(localeManager.getLanguage())
                 .doOnSubscribe {
                     showOffline.set(View.GONE)
                     showProgress.set(View.VISIBLE)
@@ -71,29 +67,28 @@ class CategoryFragmentViewModel @Inject constructor(
                 .flatMap {
                     if (it.isEmpty()) {
                         productRepository.getAllCategoriesByDefaultLanguageCode()
-                    } else {
-                        Single.just(it)
-                    }
+                    } else Single.just(it)
                 }
                 .flatMap {
                     if (it.isEmpty()) {
                         productRepository.getCategories().map(this::extractCategoriesNames)
-                    } else {
-                        Single.just(it)
-                    }
+                    } else Single.just(it)
                 }
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnError {
-                    Log.e(CategoryFragmentViewModel::class.java.canonicalName, "Error loading categories", it)
+                    Log.e(CategoryFragmentViewModel::class.simpleName, "Error loading categories", it)
                     if (it is UnknownHostException) {
                         showOffline.set(View.VISIBLE)
                         showProgress.set(View.GONE)
                     }
                 }
                 .subscribe { categoryList ->
-                    allCategories.addAll(categoryList)
-                    shownCategories.set(categoryList.toMutableList())
+                    allCategories += categoryList
+
+                    shownCategories.clear()
+                    shownCategories += categoryList
+
                     showProgress.set(View.GONE)
                 }.addTo(disposable)
     }
@@ -105,7 +100,7 @@ class CategoryFragmentViewModel @Inject constructor(
      */
     private fun extractCategoriesNames(categories: List<Category>) = categories
             .flatMap { it.names }
-            .filter { it.languageCode == getLanguage(app) }
+            .filter { it.languageCode == localeManager.getLanguage() }
             .sortedWith { o1, o2 -> o1.name!!.compareTo(o2.name!!) }
 
     /**
@@ -113,11 +108,10 @@ class CategoryFragmentViewModel @Inject constructor(
      *
      * @param query string which is used to query for category names
      */
-    fun searchCategories(query: String) = shownCategories.set(
-            allCategories
-                    .filter { it.name?.toLowerCase(Locale.getDefault())?.startsWith(query) == true }
-                    .toMutableList()
-    )
+    fun searchCategories(query: String) {
+        shownCategories.clear()
+        shownCategories += allCategories.filter { it.name?.toLowerCase(Locale.getDefault())?.startsWith(query) == true }
+    }
 
 }
 

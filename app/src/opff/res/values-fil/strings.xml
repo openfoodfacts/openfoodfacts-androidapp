@@ -23,10 +23,10 @@
     <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet connection right now</string>
     <string name="txtDialogsContent">The product you scanned does not exist yet in Open Pet Food Facts. Please add it.</string>
     <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Pet Food Facts.</string>
-    <string name="msg_share">Tingnan ang produktong ito sa Open Food Facts :</string>
+    <string name="msg_share">Look at this product on Open Food Facts :</string>
     <string name="not_support_books">Ang mga aklat ay kasalukuyang hindi suportado ng mga Buksan ang Mga Katotohanan sa Pagkain</string>
-    <string name="txt_broaden_search">-Pagpapalawak ng iyong paghahanap \n- suriin at idagdag ito sa Buksan ang Mga katotohanan ng Pagkain</string>
-    <string name="Donation">Mag-click dito upang maghandog sa Buksan ang mga katotohanan ng pagkain</string>
+    <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
+    <string name="Donation">Click here to donate to Open Food Facts</string>
     <string name="translate_help_title">Tulungang Isalin ang Mga Buksan na mga katotohanan sa pagkain</string>
     <string name="translate_help_summary">Dalhin ang database ng Buksan ang Mga Katotohanan sa Pagkain sa iyong wika - walang kinakailangang kaalaman sa teknikal</string>
     <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Pet Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>

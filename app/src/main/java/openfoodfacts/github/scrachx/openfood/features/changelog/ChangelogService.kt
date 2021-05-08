@@ -5,11 +5,15 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
 import openfoodfacts.github.scrachx.openfood.models.Changelog
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
+import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
 import java.io.BufferedReader
 import java.io.IOException
 
-class ChangelogService(private val context: Context) {
+class ChangelogService(
+        private val context: Context,
+        private val localeManager: LocaleManager
+) {
+
     companion object {
         private const val FOLDER = "changelog/"
     }
@@ -22,7 +26,7 @@ class ChangelogService(private val context: Context) {
 
     @Throws(IOException::class)
     private fun parseJsonFile(): Changelog {
-        val language = getLanguage(context)
+        val language = localeManager.getLanguage()
         val jsonString = if (translationExists("changelog-$language.json")) {
             getJsonStringFromAsset("changelog-$language.json")
         } else {

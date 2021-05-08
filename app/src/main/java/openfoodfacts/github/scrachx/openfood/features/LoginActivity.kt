@@ -28,7 +28,7 @@ import androidx.activity.result.contract.ActivityResultContract
 import androidx.core.content.ContextCompat
 import androidx.core.content.edit
 import com.afollestad.materialdialogs.MaterialDialog
-import com.google.android.material.snackbar.BaseTransientBottomBar
+import com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_LONG
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -66,6 +66,9 @@ class LoginActivity : BaseActivity() {
     @Inject
     lateinit var productsApi: ProductsAPI
 
+    @Inject
+    lateinit var matomoAnalytics: MatomoAnalytics
+
     private lateinit var customTabActivityHelper: CustomTabActivityHelper
 
     private val disp = CompositeDisposable()
@@ -96,15 +99,14 @@ class LoginActivity : BaseActivity() {
             binding.passInput.error = getString(R.string.error_field_required)
             binding.passInput.requestFocus()
             return
-        }
-        if (password.length < 6) {
+        } else if (password.length < 6) {
             binding.passInput.error = getText(R.string.error_invalid_password)
             binding.passInput.requestFocus()
             return
         }
         // End checks
 
-        val snackbar = Snackbar.make(binding.loginLinearlayout, R.string.toast_retrieving, BaseTransientBottomBar.LENGTH_LONG)
+        val snackbar = Snackbar.make(binding.loginLinearlayout, R.string.toast_retrieving, LENGTH_LONG)
                 .apply { show() }
         binding.btnLogin.isClickable = false
 
@@ -126,10 +128,8 @@ class LoginActivity : BaseActivity() {
                         return@subscribe
                     }
                     val pref = this@LoginActivity.getSharedPreferences("login", 0)
-                    if (htmlNoParsed == null
-                            || htmlNoParsed.contains("Incorrect user name or password.")
-                            || htmlNoParsed.contains("See you soon!")) {
-                        Snackbar.make(binding.loginLinearlayout, R.string.errorLogin, BaseTransientBottomBar.LENGTH_LONG).show()
+                    if (isHtmlNotValid(htmlNoParsed)) {
+                        Snackbar.make(binding.loginLinearlayout, R.string.errorLogin, LENGTH_LONG).show()
                         binding.passInput.setText("")
                         binding.txtInfoLogin.setTextColor(ContextCompat.getColor(this, R.color.red))
                         binding.txtInfoLogin.setText(R.string.txtInfoLoginNo)
@@ -148,7 +148,7 @@ class LoginActivity : BaseActivity() {
                                 break
                             }
                         }
-                        Snackbar.make(binding.loginLinearlayout, R.string.connection, BaseTransientBottomBar.LENGTH_LONG).show()
+                        Snackbar.make(binding.loginLinearlayout, R.string.connection, LENGTH_LONG).show()
                         pref.edit {
                             putString("user", login)
                             putString("pass", password)
@@ -156,7 +156,7 @@ class LoginActivity : BaseActivity() {
                         binding.txtInfoLogin.setTextColor(ContextCompat.getColor(this, R.color.green_500))
                         binding.txtInfoLogin.setText(R.string.txtInfoLoginOk)
 
-                        MatomoAnalytics.trackEvent(AnalyticsEvent.UserLogin)
+                        matomoAnalytics.trackEvent(AnalyticsEvent.UserLogin)
 
                         setResult(RESULT_OK)
                         finish()
@@ -240,10 +240,14 @@ class LoginActivity : BaseActivity() {
     }
 
     companion object {
-        class LoginContract : ActivityResultContract<Unit, Boolean>() {
-            override fun createIntent(context: Context, input: Unit) = Intent(context, LoginActivity::class.java)
+        class LoginContract : ActivityResultContract<Unit?, Boolean>() {
+            override fun createIntent(context: Context, input: Unit?) = Intent(context, LoginActivity::class.java)
 
             override fun parseResult(resultCode: Int, intent: Intent?) = resultCode == RESULT_OK
         }
+
+        internal fun isHtmlNotValid(html: String?) = (html == null
+                || html.contains("Incorrect user name or password.")
+                || html.contains("See you soon!"))
     }
 }

@@ -25,17 +25,17 @@ import android.view.View
 import android.view.Window
 import android.view.WindowManager
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.text.HtmlCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.viewpager.widget.ViewPager
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener
+import dagger.hilt.android.AndroidEntryPoint
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityWelcomeBinding
 import openfoodfacts.github.scrachx.openfood.features.MainActivity
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper
+import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.utils.PrefManager
 
 /**
@@ -47,7 +47,8 @@ import openfoodfacts.github.scrachx.openfood.utils.PrefManager
  * TODO: be honest about offline until we implement offline scan (nobody cares about offline edit)
  * TODO: perhaps highlight ingredient analysis
  */
-class WelcomeActivity : AppCompatActivity() {
+@AndroidEntryPoint
+class WelcomeActivity : BaseActivity() {
     private var _binding: ActivityWelcomeBinding? = null
     private val binding get() = _binding!!
 
@@ -154,10 +155,6 @@ class WelcomeActivity : AppCompatActivity() {
         prefManager.isFirstTimeLaunch = false
         startActivity(Intent(this@WelcomeActivity, MainActivity::class.java))
         finish()
-    }
-
-    override fun attachBaseContext(newBase: Context) {
-        super.attachBaseContext(LocaleHelper.onCreate(newBase))
     }
 
     private val nextItem get() = binding.viewPager.currentItem + 1

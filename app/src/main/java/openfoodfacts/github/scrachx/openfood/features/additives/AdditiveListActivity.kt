@@ -18,7 +18,7 @@ import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveName
 import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveNameDao
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper
+import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
 import openfoodfacts.github.scrachx.openfood.utils.SearchType
 import org.greenrobot.greendao.async.AsyncOperation
 import org.greenrobot.greendao.async.AsyncOperationListener
@@ -33,9 +33,10 @@ class AdditiveListActivity : BaseActivity() {
     @Inject
     lateinit var daoSession: DaoSession
 
+    @Inject
+    lateinit var localeManager: LocaleManager
 
     private var additives = mutableListOf<AdditiveName>()
-
 
     override fun onDestroy() {
         super.onDestroy()
@@ -51,7 +52,7 @@ class AdditiveListActivity : BaseActivity() {
         supportActionBar!!.setTitle(R.string.additives)
         val asyncSessionAdditives = daoSession.startAsyncSession()
         val additiveNameDao = daoSession.additiveNameDao
-        val languageCode = LocaleHelper.getLanguage(this)
+        val languageCode = localeManager.getLanguage()
         asyncSessionAdditives.queryList(additiveNameDao.queryBuilder()
                 .where(AdditiveNameDao.Properties.LanguageCode.eq(languageCode))
                 .where(AdditiveNameDao.Properties.Name.like("E%")).build())

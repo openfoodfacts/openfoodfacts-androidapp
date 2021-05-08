@@ -24,15 +24,15 @@
         <item quantity="other">преди %d секунди</item>
     </plurals>
     <plurals name="minutes">
-        <item quantity="one">%d minute ago</item>
+        <item quantity="one">преди 1 минута</item>
         <item quantity="other">%d minutes ago</item>
     </plurals>
     <plurals name="hours">
-        <item quantity="one">%d hour ago</item>
+        <item quantity="one">преди 1 час</item>
         <item quantity="other">%d hours ago</item>
     </plurals>
     <plurals name="days">
-        <item quantity="one">%d day ago</item>
+        <item quantity="one">вчера</item>
         <item quantity="other">%d days ago</item>
     </plurals>
     <string name="action_about">Относно</string>
@@ -155,7 +155,6 @@
         <item>Витамин К</item>
         <item>Цинк</item>
     </string-array>
-    <!-- Text units -->
     <!-- Content Description -->
     <string name="search_button">Търсене</string>
     <string name="alert_dialog_warning_title">Предупреждение</string>
@@ -529,7 +528,7 @@
     <string name="productAdditivesUnknown"></string>
     <string name="productAdditivesTemplate">%1$d добавки</string>
     <plurals name="productAdditives">
-        <item quantity="one">%d additive</item>
+        <item quantity="one">%d добавка</item>
         <item quantity="other">%d additives</item>
     </plurals>
     <string name="product_not_complete">This product is not yet complete. \nCan you add some details?</string>
@@ -667,7 +666,7 @@
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">Извлечете съставките</string>
     <string name="extract_recycling_prompt">Extract recycling instructions</string>
-    <string name="add_nutrient_prompt_text">Add nutrition facts to compute nutrient levels</string>
+    <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
     <string name="add_category_prompt_text">Add a category to help complete the product</string>
     <string name="add_nutrient_category_prompt_text">Add a category and nutrition facts to help complete the product</string>
     <string name="couldnot_compute_ecoscore_prompt_text">We could not compute an Eco-Score for this product. It might be that the category is not specific enough or that we don\'t have supporting data for this category. If you believe this is an error, you can mail us by clicking below.</string>
@@ -807,4 +806,11 @@
     <!-- Changelog String -->
     <string name="changelog_translation_help">Want to see this changelog in %s?\nJoin the translation team!</string>
     <string name="whats_new">What\'s new with Open Food Facts?</string>
+    <string name="eco_score_slide_4_title">Eco-Score</string>
+    <string name="join_the_food_revolution">Join the food revolution</string>
+    <string name="slide_1_text_revolution">Scan food, Take photos, Help transform the food system</string>
+    <string name="get_the_nutri_score">Вземете Nutri-Score</string>
+    <string name="synthesis_of_nutrition_slide_2_text">A simple synthesis of the nutritional quality of your food</string>
+    <string name="avoid_ultra_processed_foods">Avoid ultra-processed foods</string>
+    <string name="nova_slide_3_text">Reduce the amount of ultra-processed foods in your diet.</string>
 </resources>

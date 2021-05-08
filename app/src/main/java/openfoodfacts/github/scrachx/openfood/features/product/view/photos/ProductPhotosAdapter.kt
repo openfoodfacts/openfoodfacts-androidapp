@@ -39,7 +39,7 @@ class ProductPhotosAdapter(
         private val snackView: View? = null,
         private val onImageClick: (Int) -> Unit
 ) : RecyclerView.Adapter<ProductPhotoViewHolder>(), Disposable {
-    private val isLoggedIn = context.isUserSet()
+    private val isLoggedIn by lazy { context.isUserSet() }
     private val disp = CompositeDisposable()
 
 
@@ -55,12 +55,11 @@ class ProductPhotosAdapter(
             if (!isLoggedIn) {
                 context.startActivity(Intent(context, LoginActivity::class.java))
             } else {
-                PopupMenu(context, holder.itemView).let {
+                PopupMenu(context, holder.itemView).also {
                     it.inflate(R.menu.menu_image_edit)
                     it.setOnMenuItemClickListener(PopupItemClickListener(position))
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) it.setForceShowIcon(true)
-                    it.show()
-                }
+                }.show()
             }
         }
     }
@@ -92,14 +91,13 @@ class ProductPhotosAdapter(
             )
             imgMap[IMAGE_STRING_ID] = when (item.itemId) {
                 R.id.report_image -> {
-                    context.startActivity(Intent.createChooser(
-                            Intent(Intent.ACTION_SEND).apply {
-                                data = Uri.parse("mailto:")
-                                type = OpenFoodAPIClient.MIME_TEXT
-                                putExtra(Intent.EXTRA_EMAIL, "Open Food Facts <contact@openfoodfacts.org>")
-                                putExtra(Intent.EXTRA_SUBJECT, "Photo report for product ${product.code}")
-                                putExtra(Intent.EXTRA_TEXT, "I've spotted a problematic photo for product ${product.code}")
-                            }, context.getString(R.string.report_email_chooser_title)))
+                    context.startActivity(Intent.createChooser(Intent(Intent.ACTION_SEND).apply {
+                        data = Uri.parse("mailto:")
+                        type = "text/plain"
+                        putExtra(Intent.EXTRA_EMAIL, "Open Food Facts <contact@openfoodfacts.org>")
+                        putExtra(Intent.EXTRA_SUBJECT, "Photo report for product ${product.code}")
+                        putExtra(Intent.EXTRA_TEXT, "I've spotted a problematic photo for product ${product.code}")
+                    }, context.getString(R.string.report_email_chooser_title)))
                     return true
                 }
 

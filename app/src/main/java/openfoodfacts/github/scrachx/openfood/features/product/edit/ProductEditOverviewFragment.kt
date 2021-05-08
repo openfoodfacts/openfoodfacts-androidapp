@@ -16,6 +16,7 @@
 package openfoodfacts.github.scrachx.openfood.features.product.edit
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -24,7 +25,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Toast
-import androidx.preference.PreferenceManager
+import androidx.core.net.toFile
 import com.afollestad.materialdialogs.MaterialDialog
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
@@ -38,7 +39,6 @@ import com.theartofdev.edmodo.cropper.CropImage
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.addTo
-import io.reactivex.schedulers.Schedulers
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OBF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OPF
@@ -46,7 +46,6 @@ import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsView
 import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
-import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabsHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback
@@ -73,12 +72,9 @@ import openfoodfacts.github.scrachx.openfood.models.entities.store.StoreNameDao
 import openfoodfacts.github.scrachx.openfood.models.entities.tag.TagDao
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.Keys.lcProductNameKey
-import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.FileDownloader.download
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLCOrDefault
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLocale
 import org.apache.commons.lang3.StringUtils
 import org.greenrobot.greendao.async.AsyncOperationListener
 import org.jetbrains.annotations.Contract
@@ -98,10 +94,37 @@ class ProductEditOverviewFragment : ProductEditFragment() {
     lateinit var picasso: Picasso
 
     @Inject
-    lateinit var productsApi: ProductsAPI
+    lateinit var client: OpenFoodAPIClient
+
+    @Inject
+    lateinit var matomoAnalytics: MatomoAnalytics
+
+    @Inject
+    lateinit var sharedPreferences: SharedPreferences
+
+    @Inject
+    lateinit var localeManager: LocaleManager
 
     private lateinit var appLanguageCode: String
-    private lateinit var photoReceiverHandler: PhotoReceiverHandler
+    private val photoReceiverHandler by lazy {
+        PhotoReceiverHandler(sharedPreferences) { newPhotoFile ->
+            photoFile = newPhotoFile
+            val image: ProductImage
+            val position: Int
+            if (isFrontImagePresent) {
+                image = ProductImage(barcode!!, ProductImageField.FRONT, newPhotoFile, localeManager.getLanguage())
+                frontImageUrl = newPhotoFile.absolutePath
+                position = 0
+            } else {
+                image = ProductImage(barcode!!, ProductImageField.OTHER, newPhotoFile, localeManager.getLanguage())
+                position = 3
+            }
+            image.filePath = newPhotoFile.toURI().path
+            (activity as? ProductEditActivity)?.addToPhotoMap(image, position)
+
+            hideImageProgress(false, StringUtils.EMPTY)
+        }
+    }
 
     private val categories = mutableListOf<String?>()
     private val countries = mutableListOf<String>()
@@ -125,23 +148,6 @@ class ProductEditOverviewFragment : ProductEditFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        photoReceiverHandler = PhotoReceiverHandler { newPhotoFile ->
-            photoFile = newPhotoFile
-            val image: ProductImage
-            val position: Int
-            if (isFrontImagePresent) {
-                image = ProductImage(barcode!!, ProductImageField.FRONT, newPhotoFile)
-                frontImageUrl = newPhotoFile.absolutePath
-                position = 0
-            } else {
-                image = ProductImage(barcode!!, ProductImageField.OTHER, newPhotoFile)
-                position = 3
-            }
-            image.filePath = newPhotoFile.toURI().path
-            (activity as? ProductEditActivity)?.addToPhotoMap(image, position)
-
-            hideImageProgress(false, StringUtils.EMPTY)
-        }
         binding.btnOtherPictures.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_a_photo_blue_18dp, 0, 0, 0)
 
         binding.btnNext.setOnClickListener { next() }
@@ -160,7 +166,7 @@ class ProductEditOverviewFragment : ProductEditFragment() {
         } else if (requireActivity().intent.getBooleanExtra(ProductEditActivity.KEY_MODIFY_NUTRITION_PROMPT, false)) {
             (requireActivity() as ProductEditActivity).proceed()
         }
-        appLanguageCode = getLanguage(activity)
+        appLanguageCode = localeManager.getLanguage()
         val args = arguments
         if (args == null) {
             Toast.makeText(activity, R.string.error_adding_product_details, Toast.LENGTH_SHORT).show()
@@ -223,7 +229,7 @@ class ProductEditOverviewFragment : ProductEditFragment() {
 
     override fun onResume() {
         super.onResume()
-        MatomoAnalytics.trackView(AnalyticsView.ProductEditOverview)
+        matomoAnalytics.trackView(AnalyticsView.ProductEditOverview)
     }
 
     override fun onDestroyView() {
@@ -296,8 +302,7 @@ class ProductEditOverviewFragment : ProductEditFragment() {
         if (!product!!.countriesTags.isNullOrEmpty()) {
             val chipValues = extractProductCountriesTagsChipValues(product).toMutableList()
             //Also add the country set by the user in preferences
-            val sharedPref = PreferenceManager.getDefaultSharedPreferences(requireContext())
-            val savedCountry = sharedPref.getString(getString(R.string.pref_country_key), "") ?: ""
+            val savedCountry = sharedPreferences.getString(getString(R.string.pref_country_key), "") ?: ""
 
             if (savedCountry.isNotEmpty()) chipValues.add(savedCountry)
 
@@ -527,7 +532,7 @@ class ProductEditOverviewFragment : ProductEditFragment() {
             (operation.result as List<CountryName>).mapTo(countries) { it.name }
 
             val adapter = ArrayAdapter(requireActivity(), android.R.layout.simple_dropdown_item_1line, countries)
-            val embAdapter = EmbCodeAutoCompleteAdapter(activity, android.R.layout.simple_dropdown_item_1line, productsApi)
+            val embAdapter = EmbCodeAutoCompleteAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, client)
 
             binding.originOfIngredients.setAdapter(adapter)
             binding.countryWherePurchased.setAdapter(adapter)
@@ -573,8 +578,11 @@ class ProductEditOverviewFragment : ProductEditFragment() {
 
         if (isFlavors(OBF)) {
             binding.periodOfTimeAfterOpeningTil.visibility = View.VISIBLE
-            val customAdapter = PeriodAfterOpeningAutoCompleteAdapter(activity,
-                    android.R.layout.simple_dropdown_item_1line, productsApi)
+            val customAdapter = PeriodAfterOpeningAutoCompleteAdapter(
+                    requireContext(),
+                    android.R.layout.simple_dropdown_item_1line,
+                    client
+            )
             binding.periodOfTimeAfterOpening.setAdapter(customAdapter)
         }
     }
@@ -586,7 +594,7 @@ class ProductEditOverviewFragment : ProductEditFragment() {
      */
     private fun setProductLanguage(lang: String) {
         languageCode = lang
-        val current = getLocale(lang)
+        val current = LocaleUtils.parseLocale(lang)
         binding.language.setText(R.string.product_language)
         binding.language.append(current.getDisplayName(current).capitalize(Locale.getDefault()))
 
@@ -595,8 +603,7 @@ class ProductEditOverviewFragment : ProductEditFragment() {
         if (editionMode) {
             loadFrontImage(lang)
             val fields = "ingredients_text_$lang,product_name_$lang"
-            productsApi.getProductByBarcode(product!!.code, fields, getUserAgent(Utils.HEADER_USER_AGENT_SEARCH))
-                    .subscribeOn(Schedulers.io())
+            client.getProductStateFull(product!!.code, fields)
                     .observeOn(AndroidSchedulers.mainThread())
                     .doOnSubscribe {
                         binding.name.setText(getString(R.string.txtLoading))
@@ -649,14 +656,14 @@ class ProductEditOverviewFragment : ProductEditFragment() {
             // Image found, download it if necessary and edit it
             isFrontImagePresent = true
             if (photoFile == null) {
-                download(requireContext(), frontImageUrl!!, productsApi)
+                download(requireContext(), frontImageUrl!!, client)
                         .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe { file: File? ->
-                            photoFile = file
-                            cropRotateImage(photoFile, getString(R.string.set_img_front))
+                        .subscribe { uri ->
+                            photoFile = uri.toFile()
+                            cropRotateImage(uri, getString(R.string.set_img_front))
                         }.addTo(disp)
             } else {
-                cropRotateImage(photoFile, getString(R.string.set_img_front))
+                cropRotateImage(photoFile!!, getString(R.string.set_img_front))
             }
         }
     }
@@ -849,7 +856,7 @@ class ProductEditOverviewFragment : ProductEditFragment() {
     }
 
     private fun selectProductLanguage() {
-        val localeValues = requireActivity().resources.getStringArray(R.array.languages_array)
+        val localeValues = SupportedLanguages.codes()
         val localeLabels = arrayOfNulls<String>(localeValues.size)
         val finalLocalValues = ArrayList<String>()
         val finalLocalLabels = ArrayList<String?>()
@@ -858,7 +865,7 @@ class ProductEditOverviewFragment : ProductEditFragment() {
             if (localeCode == languageCode) {
                 selectedIndex = i
             }
-            val current = getLocale(localeCode)
+            val current = LocaleUtils.parseLocale(localeCode)
             localeLabels[i] = current.getDisplayName(current).capitalize(Locale.ROOT)
             finalLocalLabels.add(localeCode)
             finalLocalValues.add(localeCode)
@@ -933,6 +940,9 @@ class ProductEditOverviewFragment : ProductEditFragment() {
             binding.otherImageProgressText.setText(R.string.image_uploaded_successfully)
         }
     }
+
+    private fun getLCOrDefault(languageCode: String?) =
+            if (!languageCode.isNullOrEmpty()) languageCode else ApiFields.Defaults.DEFAULT_LANGUAGE
 
     companion object {
         private const val INTENT_INTEGRATOR_REQUEST_CODE = 1

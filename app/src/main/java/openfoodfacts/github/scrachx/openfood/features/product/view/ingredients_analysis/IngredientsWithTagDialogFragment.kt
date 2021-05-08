@@ -3,6 +3,7 @@ package openfoodfacts.github.scrachx.openfood.features.product.view.ingredients_
 import android.app.Activity
 import android.content.DialogInterface
 import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
@@ -19,7 +20,6 @@ import androidx.core.graphics.BlendModeColorFilterCompat
 import androidx.core.graphics.BlendModeCompat
 import androidx.core.text.HtmlCompat
 import androidx.fragment.app.DialogFragment
-import androidx.preference.PreferenceManager
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import openfoodfacts.github.scrachx.openfood.R
@@ -29,7 +29,6 @@ import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewAc
 import openfoodfacts.github.scrachx.openfood.features.scan.ContinuousScanActivity
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.AnalysisTagConfig
-import openfoodfacts.github.scrachx.openfood.utils.Utils
 import java.util.*
 import javax.inject.Inject
 
@@ -40,6 +39,9 @@ class IngredientsWithTagDialogFragment : DialogFragment() {
 
     @Inject
     lateinit var picasso: Picasso
+
+    @Inject
+    lateinit var sharedPreferences: SharedPreferences
 
     var onDismissListener: ((DialogInterface) -> Unit)? = null
 
@@ -53,7 +55,6 @@ class IngredientsWithTagDialogFragment : DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val prefs = PreferenceManager.getDefaultSharedPreferences(requireActivity())
         val arguments = requireArguments()
         val tag = arguments.getString(TAG_KEY)
         val type = arguments.getString(TYPE_KEY)
@@ -74,9 +75,9 @@ class IngredientsWithTagDialogFragment : DialogFragment() {
         binding.title.text = name
         binding.cb.let {
             it.text = getString(R.string.display_analysis_tag_status, typeName.toLowerCase(Locale.getDefault()))
-            it.isChecked = prefs.getBoolean(type, true)
+            it.isChecked = sharedPreferences.getBoolean(type, true)
             it.setOnCheckedChangeListener { _, isChecked ->
-                prefs.edit { putBoolean(type, isChecked) }
+                sharedPreferences.edit { putBoolean(type, isChecked) }
             }
         }
         var messageToBeShown = HtmlCompat.fromHtml(getString(R.string.ingredients_in_this_product_are, name!!.toLowerCase()), HtmlCompat.FROM_HTML_MODE_LEGACY)

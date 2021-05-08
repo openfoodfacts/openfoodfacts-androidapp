@@ -1,76 +1,55 @@
-İçerikler, katkı maddeleri ve beslenme gerçekleriyle ilgili bilgi almak için gıda ürünlerini veya barkodlarını okutun.
-
 ▶ 800.000'den fazla ürünü Bul & Karşılaştır
 
 Uygulama, özgür ve açık veritabanı Open Food Facts'te bulunan 800.000 ürünü (ABD'deki 175.000 ürün dahil) görüntülemenize ve ayrıca yeni ürünler için resim ve veri eklemenize olanak tanır.
+The app is collaborative. If we don't have the product, you can add pictures and data to get the Nutri-Score and NOVA score on food processing.
 
+In short, we're kind of "the Wikipedia of food", as many have nicknamed the project. Open Food Facts has enabled the creation of over 100 apps like Date Limite, Yuka or FoodVisor.
 
 Yiyecekler için Open Food Facts, evcil hayvan mamaları için Open Pet Food Facts, ve geri kalan her şey için Open Products Facts'i yükleyebilirsiniz.
 
 ▶ Sizin için iyi olan ürünleri seçin
+
 - Nutri-Score derecesi, "A" den "E" ye kadar >> Beslenme kalitesi
 - NOVA grubu, "1" den "4" e kadar >> Aşırı işlenmiş yiyecekleri bulun
-- İstediğiniz kadar ürünü kolayca tarayarak yan yana kolayca karşılaştırabilirsiniz. 
-
-▶ Ve gezegen için iyi!
-- Yiyeceğinizin karbon etkisi
-- Günlük karbon kotanızın ne kadarını yiyecekler için kullandığınıza dair bir fikir edinin
-- Fransa için ADEME tarafından hesaplanan ayak izlerine dayanarak.
-- Bize katılın ve Karbon Etkisini ülkenize getirmemize yardım edin!
-- Karbon Etkisini gösterebilmek için, bir ürünün miktarı ile birlikte et veya balık yüzdesini içeren tam bir içindekiler listesine sahip olması gerekir
-
 
 ▶ Gıda Şeffaflığına Katkıda Bulunun
+
 -Open Products Facts, herkes tarafından herkes için oluşturulan bir ürün veritabanıdır.
 - Daha iyi kozmetik tercihleri yapmak için kullanılabileceği gibi, açık bir kaynak olduğu için herhangi biri istediği bir amaç için yeniden kullanabilir.
-- Open Products Facts dünyanın dört bir yanından binlerce gönüllü tarafından geliştirilen ve kar amacı gütmeyen bir projedir. -Birçok farklı şekilde katkı sağlayabileceğiniz çok sayıda heyecan verici projelerimiz bulunmakta.
 - İlk ürününüzü ekleyerek bugün katkıda bulunmaya başlayabilirsiniz.
+- Open Products Facts dünyanın dört bir yanından binlerce gönüllü tarafından geliştirilen ve kar amacı gütmeyen bir projedir. -Birçok farklı şekilde katkı sağlayabileceğiniz çok sayıda heyecan verici projelerimiz bulunmakta.
 
-▶ Listeler oluştur
-Alışveriş listeleri oluşturun, ne yediğinizi takip edin ve listelerinizi kolayca paylaşın ve dışa aktarın.
+<h1>▶ Decipher food labels</h1>
 
-▶ Gerçekleri Öğrenin
 - Open Products Facts, ürün etiketlerindeki ince ayrıntıları anlamanıza yardımcı olur. You will also be able to find (according to the indications present on the products):
 -karbon ayakizi (CO2 salınımı) ve paketleme (geri dönüşüm talimatları vb.),
 -Nutriscore (besleyicilik değeri), besinler, yağ/yağ içeriği, doymuş yağ asitleri, karbonhidratlar, şekerler, lif, protein ve tuz ve sodyum.
 - brands, allergens, labels (organic, vegan...)
 -Şaraplarda ve biralarda alkol içeriğini bulacaksınız.
 
-
 ▶ Bilime dayanarak, karşılığında Bilime yardımcı olarak!
-
 - Hiçbir şeyi uydurmuyoruz. Biz hakemli bilime dayanıyoruz.
 - Nutri-Score, Profesör Hercberg liderliğindeki bağımsız Fransız ekibi tarafından oluşturuldu.
 - Gıda işleme konusundaki NOVA grupları, Profesör Monteiro'nun uluslararası ekibi tarafından tasarlandı.
 - Gıda katkı maddeleri üzerindeki EFSA maruz kalma seviyelerinin bir bileşimini alabilirsiniz.
 - Open Food Facts topluluğu, herkese fayda sağlayan beslenme araştırmalarını geliştirmek için gezegen üzerindeki araştırma ekipleriyle işbirliği yapıyor.
 
-
-▶ Çevrimdışı Tarama: HERHANGİ bir koşulda tarayın! (çok yakında)
-Işık hızında tarayın (uçakta, denizaltıda veya süpermarkette olsanız bile)
-
-- Bütün gezegen, cebinizde!
+<h1>▶ Works well in any condition</h1>
 - Şu an İnternet bağlantınız olmasa bile yeni ürünler ekleyebilirsiniz.
 - Uygulama veri ve pil kullanımını azaltmak için sadece gerekli olanları yükler.
+➜ You don't need a camera to look up a product. Kameranız yoksa veya bununla ilgili bir sorununuz varsa da barkodu yazabilirsiniz.
 
-▶ Sizin yiyecekleriniz, sizin verileriniz
+▶ Sizin yiyecekleriniz, sizin verileriniz Privacy-friendly app.</h1>
 - Kişisel verileriniz size aittir ve asla çevrimiçi gönderilmez
 - Uygulamayı anonim olarak kullanabilirsiniz
 - Tarama geçmişinizi dışa aktarabilirsiniz
 
 ▶ Ürünlere alerjen uyarıları ayarlayın
 - Süt, Gluten, Yumurta, Soya fasulyesi, Kuruyemişler, Balık, Kereviz, Hardal, Kükürt dioksit ve sülfitler, Yerfıstığı, Susam, Kabuklu deniz canlıları, Yumuşakçalar veya Acı bakla alerjisi?
-- Open Miniature Food Facts - Minyatür yiyecek ürünlerinin en büyük açık veritabanı
+➜ Speed up your shopping by doing an initial screening of your food with Open Food Facts.
 - Bilgilerin %100 doğru olmayabileceğine ve tespitin %100 kesin olmama ihtimaline dikkat edin. Bu nedenle, ambalajı her zaman tekrardan kontrol edin.
 
-
-▶ Merhaba deyin ve/veya bize katılın!
-
+<h1>▶ More</h1>
 
 Open Products Facts aynı zamanda https://world-tr.openproductsfacts.org internet adresinde mevcuttur
-
-
 Sorular, geri bildirim : contact@openfoodfacts.org
-
-
-Not: Open Beauty Facts sitesi ve uygulaması, kozmetik ürünlere göre gerekli değişiklikler yapılmak suretiyle Open Food Facts temel alınarak inşa edilmektedir.
