@@ -95,7 +95,8 @@ lane :release_opf do
     gradle(
         project_dir: './',
         task: 'clean bundle',
-        build_type: 'opfRelease',
+        build_type: 'Release',
+        flavor: 'opf'
         # TODO: reenable, disabled for first initial build
         #platform: 'playstore'
     )
