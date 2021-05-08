@@ -35,7 +35,6 @@
     <string name="product_not_found">您扫描的产品 %1$s 尚不存在于 Open Beauty Facts中。您要添加它吗？</string>
     <string name="currently_on_version">Open Beauty Facts的当前状况</string>
     <string name="category_game_btn">帮助分类产品</string>
-    
     <string name="add_nutrient_prompt_text">添加更多详细信息以帮助完成产品</string>
     <string name="add_category_prompt_text">添加类别以帮助完成产品</string>
     <string name="add_nutrient_category_prompt_text">添加类别以及更多详细信息以完成产品</string>

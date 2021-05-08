@@ -37,7 +37,6 @@
     <string name="product_not_found">Luettua tuotetta %1$s ei vielä ole Open Products Factsissa. Voitko lisätä sen?</string>
     <string name="currently_on_version">Tällä hetkellä Open Products Factsissa</string>
     <string name="category_game_btn">Auta luokittelemaan tuotteita</string>
-    
     <string name="add_nutrient_prompt_text">Lisää yksityiskohtia auttaaksesi täydentämään tuotteen</string>
     <string name="add_category_prompt_text">Lisää luokka auttaaksesi täydentämään tuotteen</string>
     <string name="add_nutrient_category_prompt_text">Lisää luokka ja yksityiskohtia auttaaksesi täydentämään tuotteen</string>

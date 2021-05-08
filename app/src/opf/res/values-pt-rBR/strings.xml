@@ -37,7 +37,6 @@
     <string name="product_not_found">O produto %1$s que digitalizou ainda não existe no Open Products Facts. Você pode adicioná-lo?</string>
     <string name="currently_on_version">Atualmente no Open Products Facts</string>
     <string name="category_game_btn">Ajude a categorizar produtos</string>
-    
     <string name="add_nutrient_prompt_text">Adicione mais detalhes para ajudar a completar o produto</string>
     <string name="add_category_prompt_text">Adicione uma categoria para ajudar a completar o produto</string>
     <string name="add_nutrient_category_prompt_text">Adicione uma categoria e mais detalhes para ajudar a completar o produto</string>

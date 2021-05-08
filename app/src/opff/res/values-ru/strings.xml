@@ -37,7 +37,6 @@
     <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Pet Food Facts. Can you add it?</string>
     <string name="currently_on_version">В настоящее время на Open Pet Food Facts</string>
     <string name="category_game_btn">Помогите классифицировать продукты</string>
-    
     <string name="add_nutrient_prompt_text">Добавьте пищевую ценность для расчета уровня питательных веществ</string>
     <string name="add_category_prompt_text">Добавить категорию, чтобы помочь завершить продукт</string>
     <string name="add_nutrient_category_prompt_text">Добавьте категорию и пищевую ценность, чтобы помочь завершить продукт</string>
