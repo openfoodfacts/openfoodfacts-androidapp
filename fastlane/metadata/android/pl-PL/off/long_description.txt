@@ -1,76 +1,55 @@
-Open Food Facts jest otwartą bazą danych o produktach spożywczych, ze składnikami, alergenami, wartościami odżywczymi i wszystkimi informacjami które możemy znaleźć na etykietach produktów.
-
 ▶ Znajdź i porównaj ponad 800 000 produktów
 
 Aplikacja pozwala przeglądać ponad 800.000 produktów (w tym 175.000 w USA) już znajdujących się w bazie wolnego i otwartego Open Food Facts jak i również dodać zdjęcia oraz dane dla nowych produktów.
+The app is collaborative. If we don't have the product, you can add pictures and data to get the Nutri-Score and NOVA score on food processing.
 
+In short, we're kind of "the Wikipedia of food", as many have nicknamed the project. Open Food Facts has enabled the creation of over 100 apps like Date Limite, Yuka or FoodVisor.
 
 Open Food Facts to projekt non-profit tworzony przez tysiące wolontariuszy z całego świata.
 
 ▶ Wybierz produkty, które są dla Ciebie dobre
+
 - Klasa Nutri-Score, od "A" do "E" >> Jakość wartości odżywczej
 - Grupa NOVA, od „1” do „4” >> Znajdź wysoko przetworzoną żywność
-- Możesz łatwo porównać dowolną liczbę produktów obok siebie, po prostu je skanując. 
 
-▶ I dobre dla naszej planety!
-- Wpływ żywności na emisję CO₂
-- Dowiedz się, ile z kwoty emisji CO₂ każdego dnia przeznaczamy na jedzenie
-- Na podstawie śladów ekologicznego obliczonych dla Francji przez ADEME.
-- Dołącz do nas i pomóż nam określić wpływ CO₂ na środowisko naturalne w twoim kraju!
-- Aby wyświetlić wpływ CO₂, dany produkt musi mieć kompletną listę składników z podaniem procentowej zawartości mięsa oraz ryb oraz wielkość porcji
+▶ Twoje jedzenie, twoje dane
 
-
-***Przyczyń się do przejrzystości Pet Food***
 - Open Products Facts to baza danych produktów tworzona przez wszystkich dla każdego.
 Ponieważ to są otwarte dane, możesz je wykorzystać w dowolnym celu.
-- Open Products Facts to projekt non-profit opracowany przez tysiące wolontariuszy z całego świata. Jest dużo ciekawych projektków do których możesz dołączyć.
 - Możesz zacząć wnosić swój wkład już dziś, dodając swój pierwszy produkt.
+- Open Products Facts to projekt non-profit opracowany przez tysiące wolontariuszy z całego świata. Jest dużo ciekawych projektków do których możesz dołączyć.
 
-▶ Tworzenie list
-Twórz listy zakupów, śledź to, co zjadłeś oraz łatwo udostępniaj i eksportuj swoje listy.
+<h1>▶ Decipher food labels</h1>
 
-***Poznaj fakty***
-Open Beauty Facts pomagają zrozumieć drobny tekst na etykietach. Będziesz mógł również znaleźć (zgodnie ze wskazówkami umieszczonymi na produktach):
+Open Food Facts jest otwartą bazą danych o produktach spożywczych, ze składnikami, alergenami, wartościami odżywczymi i wszystkimi informacjami które możemy znaleźć na etykietach produktów. Będziesz mógł również znaleźć (zgodnie ze wskazówkami umieszczonymi na produktach):
 - emisję dwutlenku węgla (CO2) i typ opakowania (oraz instrukcje dotyczące recycklingu),
 - Wynik Nutriscore (ocena wartośći odżywczej), składniki odżywcze, zawartość tłuszczu, nasycone kwasy tłuszczowe, węglowodany, cukry, błonnik, białko i sól oraz sód.
-- marki, alergeny, etykiety (organiczne, wegańskie...)
+➜ brands, allergens, labels (bio, gluten free, vegan, vegetarian, halal, kosher ...), traceability information (packaging codes, origins of ingredients)
 - Na winach i piwach znajdziesz zawartość alkoholu.
 
-
 ▶Według nauki i dla nauki!
-
 - Nie tworzymy nowych pojęć. Opieramy się na wynikach badań naukowych.
 - Nutri-Score został stworzony przez niezależny francuski zespół kierowany przez profesora Hercberga.
 - Skala NOVA opisująca stopień przetwarzania żywności została zaprojektowana przez międzynarodowy zespół pod kierunkiem profesora Monteiro.
 - W przypadku dodatków do żywności możesz uzyskać syntezę poziomów narażenia według EFSA.
 - Społeczność Open Food Facts współpracuje z zespołami badawczymi na całej planecie w celu ulepszenia badań żywieniowych, które przynoszą korzyści wszystkim.
 
-
-▶ Skanowanie offline: Skanuj w DOWOLNYCH warunkach! (wkrótce)
-Skanuj z prędkością światła (nawet jeśli jesteś w samolocie, łodzi podwodnej lub supermarkecie)
-
-- Cała planeta w twojej kieszeni!
+<h1>▶ Works well in any condition</h1>
 - Możesz dodać nowe produkty, nawet nie mając teraz połączenia.
 - W celu ograniczenia zużycia danych, jak i lepszego zarządzania energią aplikacja ładuje tylko absolutnie niezbędne elementy.
+➜ You don't need a camera to look up a product. Możesz również wpisać kod kreskowy, jeśli nie masz aparatu lub masz z nim problem.
 
-▶ Twoje jedzenie, twoje dane
+<h1>▶ Your food, your data. Privacy-friendly app.</h1>
 - Twoje dane należą do Ciebie i nigdy nie będą przesyłane online
 Możesz korzystać anonimowo z aplikacji
 Możesz eksportować historię skanowania
 
 ▶ Zdefiniuj ostrzeżenia dotyczące produktów mogących powodować alergie
 - Alergia na mleko, gluten, jaja, soja, orzechy, ryby, seler, gorczyca, dwutlenek siarki i siarczyny, orzeszki ziemne, nasiona sezamu, skorupiaki, mięczaki lub łubin?
-- Open Miniature Food Facts - Największa otwarta baza danych miniaturowych produktów spożywczych
+➜ Speed up your shopping by doing an initial screening of your food with Open Food Facts.
 - Bądź ostrożny, informacje o produkcie mogą, nie były w 100% dokładne, natomiast sam proces rozpoznawania może nie być w 100% skuteczny. Dlatego zawsze sprawdzaj podwójnie, porównując dane w aplikacji z informacją na opakowaniu.
 
-
-▶ Przywitaj się i dołącz do nas!
-
+<h1>▶ More</h1>
 
 Open Products Facts jest również dostępny w Internecie pod adresem https://world.openproductsfacts.org
-
-
 Pytania, opinie: contact@openfoodfacts.org
-
-
-Open Beauty Facts to baza produktów kosmetycznych tworzona przez każdego dla wszystkich.

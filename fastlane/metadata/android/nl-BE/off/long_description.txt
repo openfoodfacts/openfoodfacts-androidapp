@@ -1,76 +1,55 @@
-Open Food Facts is een open database van voedingsproducten met ingrediënten, allergenen, voedingsinformatie en alle informatie die we kunnen vinden op de etiketten van de producten.
-
 ▶ Zoek en vergelijk meer dan 800.000 producten
 
 De app maakt het mogelijk om de 800.000 producten (inclusief 175.000 uit de VS) in de gratis en open database Open Food Facts te bekijken, en om foto's en gegevens toe te voegen voor nieuwe producten.
+The app is collaborative. If we don't have the product, you can add pictures and data to get the Nutri-Score and NOVA score on food processing.
 
+In short, we're kind of "the Wikipedia of food", as many have nicknamed the project. Open Food Facts has enabled the creation of over 100 apps like Date Limite, Yuka or FoodVisor.
 
 Om het vrijwillige Open Food Facts project te ontdekken, bezoek https://world.openfoodfacts.org
 
 ▶ Kies de producten die goed voor je zijn
+
 - Nutri-Score, van "A" tot "E", voor de voedingskwaliteit
 - NOVA-groep, van "1" tot "4", voor het vinden van ultra-verwerkt voedsel
-- Je kan gemakkelijk naast elkaar producten vergelijken, door ze simpelweg te scannen. 
-
-▶ En goed voor de planeet!
-- De koolstofimpact van je voedsel
-- Krijg een gevoel hoeveel je van je dagelijkse koolstofquota gebruikt voor voedsel
-- Op basis van de voetafdrukken die door ADEME voor Frankrijk zijn berekend.
-- Doe mee en help ons de Carbon Impact naar jouw land te brengen!
-- Om een Carbon Impact weer te geven, moet een product een volledige ingrediëntenlijst hebben met het percentage vlees of vis en een portiegrootte
-
 
 ▶ Draag bij aan de inzichtelijkheid van de voedselketen
+
 - Open Products Facts is een productendatabase die door iedereen is gemaakt, voor iedereen.
 - Je kunt het gebruiken om betere keuzes te maken, en omdat het open data is, kan iedereen het voor elk doel hergebruiken.
-- Open Products Facts is een non-profit-project ontwikkeld door duizenden vrijwilligers wereldwijd. We hebben veel spannende projecten waar je op veel verschillende manieren aan kunt bijdragen.
 - Je kunt vandaag beginnen met een bijdrage te leveren door je eerste product toe te voegen.
+- Open Products Facts is een non-profit-project ontwikkeld door duizenden vrijwilligers wereldwijd. We hebben veel spannende projecten waar je op veel verschillende manieren aan kunt bijdragen.
 
-Maak lijsten
-Maak lijsten Maak boodschappenlijstjes, houd bij wat je hebt gegeten en deel je lijsten eenvoudig en exporteer ze.
+<h1>▶ Decipher food labels</h1>
 
-▶ Ken de feiten
-Open Beauty Facts helpt je om de kleine lettertjes op etiketten te begrijpen. Je zal ook kunnen vinden (volgens de aanwijzingen op de producten):
+Open Food Facts is een open database van voedingsproducten met ingrediënten, allergenen, voedingsinformatie en alle informatie die we kunnen vinden op de etiketten van de producten. Je zal ook kunnen vinden (volgens de aanwijzingen op de producten):
 - de koolstofvoetafdruk (CO2-emissies) en verpakking (evenals recyclinginstructies),
 - Nutri-Score (voedingswaarde), voedingsstoffen, vetgehalte, verzadigde vetzuren, koolhydraten, suikers, vezels, eiwitten en zout,
 - merken, allergenen, labels (biologisch, veganistisch...)
 - en op wijnen en bieren vindt u het alcoholpercentage.
 
-
 Gebaseerd op wetenschap, helpen wij de wetenschap!
-
 - We verzinnen dingen niet. We vertrouwen op peer-reviewed wetenschap.
 - De Nutri-Score is gecreëerd door het onafhankelijke Franse team onder leiding van professor Hercberg.
 - De NOVA-groepen voor voedselverwerking zijn ontworpen door het internationale team van professor Monteiro.
 - Je kunt een samenvatting krijgen van de EFSA-blootstellingsniveaus op additieven.
 - De Open Food Facts gemeenschap werkt samen met onderzoeksteams over de hele wereld om het voedingsonderzoek te verbeteren voor iedereen.
 
-
-▶ Offline scannen: scannen in ELKE situatie! (binnenkort beschikbaar)
-Scan met de snelheid van het licht (zelfs als u in een vliegtuig, onderzeeër of supermarkt bent)
-
-- De hele planeet, in je zak!
+<h1>▶ Works well in any condition</h1>
 - Je kan nieuwe producten toevoegen, zelfs als je even geen internetverbinding hebt.
 - De app laadt alleen de strikt noodzakelijke gegevens om het batterijverbruik te verkleinen.
+➜ You don't need a camera to look up a product. Je kan ook de streepjescode intypen als je geen camera hebt of er een probleem mee hebt.
 
-*** Jouw dierenvoeding, jouw gegevens ***
+*** Jouw dierenvoeding, jouw gegevens *** Privacy-friendly app.</h1>
 - Je persoonlijke gegevens zijn van jou en worden nooit online verzonden
 - Je kunt de app anoniem gebruiken
 - Je kunt jouw scangeschiedenis exporteren
 
-Stel allergeenwaarschuwingen in
+<h1>▶ Set up allergen alerts on products</h1>
 - Voor een melk, gluten, eieren, sojabonen, noten, vis, selderij, mosterd, zwaveldioxide en sulfieten, pinda's, sesamzaad, schaaldieren, weekdieren of lupine-allergie
-- Open Miniature Food Facts - De grootste open database van miniatuurvoedingsmiddelen
+➜ Speed up your shopping by doing an initial screening of your food with Open Food Facts.
 - Wees voorzichtig: de gegevens kunnen niet 100% accuraat zijn en de detectie is wellicht niet 100% accuraat. Dus controleer altijd zelf de verpakking.
 
-
-▶ Zeg hallo en/of word lid!
-
+<h1>▶ More</h1>
 
 Open Products Facts is ook beschikbaar op internet op https://world.openproductsfacts.org
-
-
 Vragen, feedback: contact@openfoodfacts.org
-
-
-Voor levensmiddelen kan je Open Food Facts installeren, voor cosmetica Open Beauty Facts en voor alle andere producten Open Products Facts.

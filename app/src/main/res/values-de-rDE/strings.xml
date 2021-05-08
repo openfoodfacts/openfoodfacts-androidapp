@@ -800,4 +800,11 @@ Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchs
     <!-- Changelog String -->
     <string name="changelog_translation_help">Möchten Sie dieses Änderungsprotokoll in %s anzeigen?\nSchließen Sie sich dem Übersetzungsteam an!</string>
     <string name="whats_new">Was gibt es Neues bei Open Food Facts?</string>
+    <string name="eco_score_slide_4_title">Eco-Score</string>
+    <string name="join_the_food_revolution">Machen Sie mit, bei der Lebensmittel-Revolution</string>
+    <string name="slide_1_text_revolution">Erfassen Sie Lebensmittel, nehmen Sie Fotos auf, helfen Sie mit, das Lebensmittelsystem zu verändern</string>
+    <string name="get_the_nutri_score">„Nutri-Score” (franz. Nahrungsmittelampel) abrufen</string>
+    <string name="synthesis_of_nutrition_slide_2_text">Eine einfache Übersicht die Nährwertqualität Ihrer Lebensmittel</string>
+    <string name="avoid_ultra_processed_foods">Vermeiden Sie hochverarbeitete Lebensmittel</string>
+    <string name="nova_slide_3_text">Reduzieren Sie die Menge an hochverarbeiteten Lebensmitteln in Ihrer Ernährung.</string>
 </resources>

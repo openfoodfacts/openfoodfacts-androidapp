@@ -1,1 +1,1 @@
-De open product-database
+Scan food and to get ingredients, additives and nutrition facts

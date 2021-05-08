@@ -804,4 +804,11 @@
     <!-- Changelog String -->
     <string name="changelog_translation_help">Want to see this changelog in %s?\nJoin the translation team!</string>
     <string name="whats_new">What\'s new with Open Food Facts?</string>
+    <string name="eco_score_slide_4_title">Eco-Pontuação</string>
+    <string name="join_the_food_revolution">Junte-se à revolução dos alimentos</string>
+    <string name="slide_1_text_revolution">Escaneie comida, Tire fotos, Ajude a transformar o sistema alimentar</string>
+    <string name="get_the_nutri_score">Obtenha o Nutri-Score</string>
+    <string name="synthesis_of_nutrition_slide_2_text">Uma síntese simples da qualidade nutricional da sua comida</string>
+    <string name="avoid_ultra_processed_foods">Evite alimentos ultraprocessados</string>
+    <string name="nova_slide_3_text">Reduza a quantidade de alimentos ultraprocessados em sua dieta.</string>
 </resources>

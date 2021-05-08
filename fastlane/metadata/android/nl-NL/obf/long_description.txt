@@ -5,18 +5,11 @@
 - Open Beauty Facts is een non-profitproject ontwikkeld door duizenden vrijwilligers uit de hele wereld. We hebben veel spannende projecten waar je op veel verschillende manieren aan kunt bijdragen. 
 - Je kunt vandaag beginnen met een bijdrage te leveren door een product uit je badkamerkast toe te voegen. 
 
-*** Ken de feiten ***
-
-- Cosmetica-additieven, FIL. codes, CI-nummers, INCI (International Nomenclature of Cosmetic Ingredients), ingrediëntenlijst, allergenen, verpakkingscodes... 
+*** Understand the labels ***
 Open Beauty Facts helpt je om de kleine lettertjes op etiketten te begrijpen.
-- Je hoeft geen drogist meer te zijn en latijn te leren om een ingrediëntenlijst te decoderen :-)
+codes, CI-nummers, INCI (International Nomenclature of Cosmetic Ingredients), ingrediëntenlijst, allergenen, verpakkingscodes... 
 - Je kunt scannen: aftershaves, bodylotions, crèmes, deodorant, eyeliner, foundation, geur, lippenstift, make-up, masker, parfum, shampoo, zeep, douchegel, nagellak en nog veel meer…
 - We denken dat het voor mensen met huidaandoeningen zoals acne, psoriasis en eczeem… nuttig kan zijn om betere cosmetische keuzes te maken.
-
-*** Werkt in alle omstandigheden goed ***
-- Je kan nieuwe producten toevoegen, zelfs als je even geen internetverbinding hebt.
-- De app laadt alleen de strikt noodzakelijke gegevens om het batterijverbruik te verkleinen
-- Je hebt geen camera nodig om een product op te zoeken. Je kan ook de streepjescode intypen als je geen camera hebt of er een probleem mee hebt.
 
 *** Jouw cosmetica, jouw gegevens ***
 - Jouw gegevens zijn van jou en worden nooit online verzonden

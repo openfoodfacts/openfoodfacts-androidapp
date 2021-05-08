@@ -1,76 +1,55 @@
-A bincika samfuran abinci ko lambar lambar su don samun bayanai akan sinadaran, abubuwan ƙarawa da gaskiyar abubuwan abinci.
+<h1>▶ Scan, find & compare more than 1,3 million food products</h1>
 
-▶ Nemo kumada Kwatanta sama da kayayyakin 800,000
+The app allows to scan the 1,3 million products already contained in the free and open database Open Food Facts.
+The app is collaborative. If we don't have the product, you can add pictures and data to get the Nutri-Score and NOVA score on food processing.
 
-Wannan app din tabada damar duba 800.000 kayayyakin (ciki har da 175.000 a Amurka) ta riga ta kunshe damar shiga kyauta da kuma bude database Bude Abinci Abin da ke ciki, da kuma don ƙara hotuna da bayanai don sabon samfurori.
+In short, we're kind of "the Wikipedia of food", as many have nicknamed the project. Open Food Facts has enabled the creation of over 100 apps like Date Limite, Yuka or FoodVisor.
 
+To discover the volunteer-run Open Food Facts project, visit https://world.openfoodfacts.org/discover
 
-Don gano kaddamar da taimako dan buɗe bangare na Abinci, ziyarci https://world.openfoodfacts.org
+<h1>▶ Choose the products that are good for you</h1>
 
-Zaɓi samfuran da suke muku kyau
-- Matsayi na Nutri-Score, daga "A" zuwa "E" >> ingancin abinci mai gina jiki
-- Kungiyar NOVA, daga "1" zuwa "4" >> Nemi abincin da aka sarrafa
-- Kuna iya sauƙaƙe kwatanta samfuran da kuke so, a gefe ɗaya ta hanyar bincika su. 
+➜ The Nutri-Score grade, from A to E :  Nutritional quality
+➜ The NOVA group, from 1 to 4 : Avoid ultra-processed foods (Group 4)
 
-Kuma yayi kyau ga duniyar!
--Carbon na tasirin abincin ku
-- Nemi yadda ake amfani dashi a abinci na yau da kullun
-- Ya danganta ne da sawun ƙafafun Faransa da aka ƙaddamar da ADEME.
-- Kasance tare damu kuma taimaka mana wajen kawo Tasirin Carbon zuwa ƙasarku!
-- Don nuna tasirin Carbon, dole ne samfurin ya kasance da jerin abubuwan sarrafawa tare da% na nama ko kifi da adadi mai yawa
+<h1>▶ Contribute to Food Transparency</h1>
 
+➜ Open Food Facts is a food products database made by everyone, for everyone.
+➜ You can use it to make better food choices, and as it is open data, anyone can re-use it for any purpose.
+➜ You can start contributing today by adding a product from your fridge.
+➜ Open Food Facts is a non-profit project developed by thousands of volunteers from around the world. Muna da ayyuka masu ban sha'awa da yawa waɗanda zaku iya ba da gudummawarsu ta hanyoyi daban-daban.
 
-Ba da gudummawa ga Isar da Abinci
-- Bude Abubuwan Abinci shine tsarin samar da abinci wanda kowa yake yi, don kowa.
-- Kuna iya amfani da shi don yin zaɓin abinci mafi kyau, kuma kamar yadda yake buɗe bayanan, kowa na iya sake amfani dashi don kowane dalili.
-- Batun Abinci na Abinci wani shiri ne na riba wanda dubunnan masu ba da agaji suka kirkira daga sassan duniya. Muna da ayyuka masu ban sha'awa da yawa waɗanda zaku iya ba da gudummawarsu ta hanyoyi daban-daban.
-- Kuna iya fara ba da gudummawa a yau ta ƙara samfurin daga firinjin ku.
+<h1>▶ Decipher food labels</h1>
 
-▶ Kirkiro jerin abubuwa
-Kakirƙiri jerin abubuwan siyayya, bibiya abin da kuka ci da sauƙi ka yada da kuma sauƙaƙe jerin abubuwanku.
+➜ Open Food Facts helps you decipher products labels. You will be able to find:
+➜ carbon footprint (CO2 emissions) and packaging (as well as recycling instructions),
+➜ Nutriscore (nutritional score), nutrients, fat / fat content, saturated fatty acids, carbohydrates, sugars, fiber, protein and salt and sodium.
+➜ brands, allergens, labels (bio, gluten free, vegan, vegetarian, halal, kosher ...), traceability information (packaging codes, origins of ingredients)
+➜ On wines and beers, you will find the alcohol content.
 
-Samu Labaran
-- Bude abun Abinci dan zai taimaka muku wajen hankali da ingantaccen bugawa akan tasirin samfuran. Za ku iya samun:
-- ƙafafun carbon (ƙirar CO2) da marufi (tare da umarnin sake yin amfani da su),
-- Nutriscore (ci abinci mai gina jiki), abinci mai gina jiki,/ mai sa jiki, carbohydrates, sugars, fiber, furotin da gishiri da kuma sodium.
-- nau'ikan kaya, kayan ƙira, abubuwan alamomi (bio, gluten free, vegan, mai cin ganyayyaki, halal, kosher ...), bayanan ganowa (lambobin shirya kayan, asalin abubuwan da ake amfani da su)
-- A kan ruwan inabi da giya, zaku sami abun ciki na barasa.
+<h1>▶ Our grades are science-based, and the project is helping science back!</h1>
+➜ We don't make up things. Mun dogara da ilimin kimiya na mutane.
+➜ The Nutri-Score has been created by the independent French team led by Professor Hercberg.
+➜ The NOVA groups on food processing have been designed by the international team of Professor Monteiro.
+➜ The additives synthesis is based on reviews by EFSA on exposure levels on food additives.
+➜ The Open Food Facts community is collaborating with research teams across the planet to improve nutrition research that benefits all.
 
+<h1>▶ Works well in any condition</h1>
+➜ You can add new products, even with bad or no Internet connection
+➜ The app loads only the minimum to reduce data and battery consumption
+➜ You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
 
-▶ An kafa shine kan Kimiyya, taimakawa dan dawo da Kimiyya!
+<h1>▶ Your food, your data. Privacy-friendly app.</h1>
+➜ Your data is yours, and is never sent online
+➜ You can use the app anonymously
+➜ You can export your scan history
 
-- Ba mu yin komai. Mun dogara da ilimin kimiya na mutane.
-- Kungiyar Faransa mai zaman kanta wacce Farfesa Hercberg ya kirkira ya haifar da Nutri-Score.
-- Kungiyoyin NOVA akan sarrafa abinci an tsara su ta ƙungiyar Farfesa Monteiro ta duniya.
-- Kuna iya samun sahun matakan yada EFSA akan matakan kayan abinci.
-- Kungiyar Abinci na Batun Abinci yana haɗin gwiwa tare da ƙungiyoyin bincike a duk faɗin duniya don inganta binciken abinci wanda ke amfana da duka.
+<h1>▶ Set up allergen alerts on products</h1>
+➜ Milk, Gluten, Eggs, Soybeans, Nuts, Fish, Celery, Mustard, Sulphur dioxide and sulphites, Peanuts, Sesame seeds, Crustaceans, Molluscs or Lupin allergy ?
+➜ Speed up your shopping by doing an initial screening of your food with Open Food Facts.
+➜ Be careful that the information may not be 100% accurate, and detection may not be 100% accurate. Don haka koyaushe ku rinka bincike da kanku, tare da marufin.
 
+<h1>▶ More</h1>
 
-Binciken kan layi: Binciko cikin kowane yanayi! (zuwa nan kusa)
-Sake kallon saurin hasken (koda kuwa kuna kan jirgin sama ne, jirgin ruwa ko kuma babban kanti)
-
-- Duk duniya, na cikin aljihunka!
-- Kuna iya ƙara sabbin samfura, koda kuwa ba ku da haɗin Intanet a yanzu.
-- Shi app din na lodi kawai tsananin dole don rage bayanai da batir amfani.
-
-Abincin ku, bayananku
-- Bayananka naka ne, kuma ba a taɓa aika shi ta yanar gizo ba
-- Kuna iya amfani da app ba tare da sani ba
-- Kuna iya fitarwa da tarihin bincikenku
-
-▶ Saita faɗakarwar mai ƙwayar cuta a samfuran
-- Milk, Gluten, Qwai, waken soya, Abinci, Kifi, Selery, mustard, Sulfur dioxide da sulphites, Gyada, Tsaba ridi, Crustaceans, Molluscs ko rashin lafiyan Lupine?
-- Haɓaka cinikin ka ta hanyar yin gwajin abinci na farko tare da Bayyanannun Abinci.
-- Yi hankali da cewa bayanan bazai zama 100% daidai ba, kuma gano ba zai zama 100% daidai ba. Don haka koyaushe ku rinka bincike da kanku, tare da marufin.
-
-
-▶ Fadi maraba da / ko shiga tare damu!
-
-
-Bude Abinda Abinci ke ciki kuma ana samunsa ta yanar gizo akan https://world.openfoodfacts.org
-
-
-Tambayoyi, amsawa: kakira@openfoodfacts.org
-
-
-Don kayan kwaskwarima, zaku iya shigar da Batun Kyawawan Kwarewa, don abincin dabbobi, Buɗe Abincin Abinci, da na sauran samfurori, Bude samfuran Fasa.
+Open Food Facts is also available on the web at <a href="https://world.openfoodfacts.org">https://world.openfoodfacts.org</a>
+Questions, feedback : <a href="mailto:contact@openfoodfacts.org">contact@openfoodfacts.org</a>

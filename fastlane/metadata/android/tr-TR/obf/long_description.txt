@@ -6,17 +6,10 @@
 - Bugün kozmetik dolabınızdan bir ürün ekleyerek katkıda bulunmaya başlayabilirsiniz. 
 
 ***Gerçekleri Öğrenin***
-
-- Kozmetik katkı maddeleri, F.I.L. kodları, CI-numaraları, INCI (Uluslararası Kozmetik İçerikleri Terminolojisi), içerik listesi, alerjenler, paketleme kodları... 
-- Open Beauty Facts, ürün etiketlerindeki ince ayrıntıları anlamanıza yardımcı olur.
 - Artık bir içindekiler listesini anlayabilmek için kimyager olmanıza ve latince öğrenmenize gerek yok :-)
+kodları, CI-numaraları, INCI (Uluslararası Kozmetik İçerikleri Terminolojisi), içerik listesi, alerjenler, paketleme kodları... 
 - Tarama yapabilirsiniz: tıraş sonrası ürünleri, vücut losyonları, kremler, deodorant, göz kalemi, fondöten, koku, ruj, makyaj, maske, parfüm, şampuan, sabun, duş jeli, oje ve çok daha fazlası…
 - Akne, sedef hastalığı, egzama… gibi cilt rahatsızlıkları olan kişiler için daha iyi kozmetik seçimler yapmanın faydalı olabileceğini düşünüyoruz.
-
-*** Her koşulda iyi çalışıyor ***
-- Şu an İnternet bağlantınız olmasa bile yeni ürünler ekleyebilirsiniz.
-- Uygulama veri ve pil kullanımını azaltmak için sadece gerekli olanları yükler
-- Bir ürünü aramak için kameraya ihtiyacınız yok. Kameranız yoksa veya bununla ilgili bir sorununuz varsa da barkodu yazabilirsiniz.
 
 *** Sizin kozmetikleriniz, sizin verileriniz ***
 - Verileriniz sizindir ve asla çevrimiçi gönderilmez
