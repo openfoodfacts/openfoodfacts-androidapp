@@ -3,7 +3,8 @@ name: Google Play internal release
 on:
   push:
     branches:
-      - 'toto/*'
+      #- 'release/*'
+      - 'fastlane-for-flavors'
 
 jobs:
   testObf:
