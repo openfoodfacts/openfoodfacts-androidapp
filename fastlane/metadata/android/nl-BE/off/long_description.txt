@@ -39,7 +39,7 @@ Gebaseerd op wetenschap, helpen wij de wetenschap!
 - De app laadt alleen de strikt noodzakelijke gegevens om het batterijverbruik te verkleinen.
 ➜ You don't need a camera to look up a product. Je kan ook de streepjescode intypen als je geen camera hebt of er een probleem mee hebt.
 
-*** Jouw dierenvoeding, jouw gegevens *** Privacy-friendly app.</h1>
+*** Jouw dierenvoeding, jouw gegevens *** Privacy-friendly app.</h1> Privacy-friendly app.</h1>
 - Je persoonlijke gegevens zijn van jou en worden nooit online verzonden
 - Je kunt de app anoniem gebruiken
 - Je kunt jouw scangeschiedenis exporteren

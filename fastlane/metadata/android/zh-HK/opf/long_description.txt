@@ -14,8 +14,8 @@ But what about other products ? Open Food Facts 是一個食品的開發資料�
 Facts - The largest open database of ???
 Facts - Create your own open database :-)
 
-*** Your products, your data ***
-- 您的個人數據是您的，永遠不會上載網上
+*** 您的寵物食品，您的數據 ***
+- 您的數據是您的，永遠不會上載網上
 - 您可以匿名使用應用程式
 
 Open Beauty Facts is also available on the web at https://world.openbeautyfacts.org

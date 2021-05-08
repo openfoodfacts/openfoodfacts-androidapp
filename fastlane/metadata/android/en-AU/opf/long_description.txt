@@ -15,7 +15,7 @@ Facts - The largest open database of ???
 Facts - Create your own open database :-)
 
 *** Your pet food, your data ***
-- Your personal data is yours, and is never put online
+- Your data is yours, and is never sent online
 - You can export your scan history
 
 Open Beauty Facts is also available on the web at https://world.openbeautyfacts.org

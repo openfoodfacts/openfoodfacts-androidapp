@@ -13,7 +13,7 @@ To discover the volunteer-run Open Food Facts project, visit https://world.openf
 
 ▶ Get the Facts
 
-You will be able to find:
+You will also be able to find (according to the indications present on the products):
 - list of ingredients (including ash content)
 - nutritional info, nutrition traffic lights…
 - brands, allergens, labels (bio, gluten free, vegan, vegetarian, halal, kosher ...), traceability information (packaging codes, origins of ingredients)
@@ -25,7 +25,7 @@ You will be able to find:
 - You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
 
 *** Your pet food, your data ***
-- Your personal data is yours, and is never put online
+- Your data is yours, and is never sent online
 - You can use the app anonymously
 - You can export your scan history
 

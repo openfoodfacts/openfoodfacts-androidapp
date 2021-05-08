@@ -1,10 +1,10 @@
-Para comida você pode baixar Open Food Facts, para cosméticos, Open Beauty Facts, e para pets, Open Pet Food Facts.
+Para alimentos de humanos, você pode instalar Open Food Facts, para cosméticos, Open Beauty Facts e, para todos os outros produtos, Open Products Facts.
 But what about other products ? O Open Products Facts é um banco de dados aberto de todos os produtos do mundo.
 
 ***Contribua para Transparência de Alimentos para Animais***
 
-O Open Products Facts é um banco de dados aberto de todos os produtos do mundo.
-- Você pode usá-lo para fazer melhores escolhas e, como se trata de dados abertos, qualquer pessoa pode reutilizá-lo para qualquer finalidade.
+- Open Pet Food Facts é um banco de dados com produtos alimentícios para animais, feito por todo mundo, para todo mundo.
+- Você pode utilizá-lo para fazer melhores escolhas de alimentos para animais e, por ser dados abertos, qualquer um pode reutilizar para qualquer proposta.
 - Open Pet Food Facts é um projeto sem fins lucrativos desenvolvido por milhares de voluntários em todo o mundo. Temos muitos projetos interessantes para os quais você pode contribuir de diversas maneiras. 
 - Você pode começar a contribuir hoje, adicionando informações de um produto do seu pet que esteja no armário. 
 
@@ -14,8 +14,8 @@ Open Crayons Facts - O maior banco de dados aberto de lápis de cor
 - Open Crayons Facts - O maior banco de dados abertos de giz de cera
 Fatos - Crie seu próprio banco de dados :-)
 
-*** Seus Produtos, seus dados ***
-- Seus dados pessoais são seus e nunca serão enviados online
+***Seus alimentos de animais, seus dados***
+- Seus dados são seus e nunca é enviado online
 - Você pode usar o aplicativo anonimamente
 
 O Open Beauty Facts também está disponível na web em https://pt.openbeautyfacts.org

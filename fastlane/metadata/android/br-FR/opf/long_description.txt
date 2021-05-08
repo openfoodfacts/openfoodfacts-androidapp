@@ -8,13 +8,13 @@ But what about other products ? Open Food Facts is an open database of food prod
 - Open Pet Food Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways. 
 - You can start contributing today by adding a product from your pet's cupboard. 
 
-*** Works well in any condition ***
+*** Collect AAAALL the things ***
 - Do you have a collection of products with barcodes ? - You can add all the items from your collections
 - Open Crayons Facts - The largest open database of coloring crayons
 Facts - The largest open database of ???
 Facts - Create your own open database :-)
 
-*** Collect AAAALL the things ***
+*** Your pet food, your data ***
 - Your data is yours, and is never sent online
 - You can export your scan history
 

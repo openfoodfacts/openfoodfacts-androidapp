@@ -1,20 +1,20 @@
-Per il cibo, è possibile installare Open Food Facts, per i cosmetici, Open Beauty Facts e per alimenti per animali domestici, Open Pet Food Facts.
+Per il cibo puoi installare Open Food Facts, per i cosmetici Open Beauty Facts e per tutti gli altri prodotti Open Products Facts.
 Ma per quanto riguarda gli altri prodotti? Open Products Facts è un database aperto di tutti i prodotti nel mondo.
 
 ***Contribuire alla trasparenza del cibo per animali***
 
 - Open Pet Food Facts è un database di alimenti per animali realizzato da tutti, per tutti.
 - Puoi usarlo per scegliere meglio tra gli alimenti per animali e, dato che sono dati aperti, chiunque può riutilizzarlo per qualsiasi scopo.
-- Open Beauty Facts è un progetto senza scopo di lucro sviluppato da migliaia di volontari provenienti da tutto il mondo. Abbiamo molti progetti interessanti a cui puoi contribuire in molti modi diversi. 
+- Open Pet Food Facts è un progetto senza scopo di lucro sviluppato da migliaia di volontari provenienti da tutto il mondo. Abbiamo molti progetti interessanti a cui puoi contribuire in molti modi diversi. 
 - Puoi iniziare a contribuire oggi aggiungendo un prodotto dei tuoi alimenti per animali. 
 
 *** Raccogli TUUUUTTE le cose ***
-- Hai una collezione di prodotti con codici a barre? - Puoi aggiungere tutti gli articoli dalle tue raccolte
+- Hai una collezione di prodotti con codici a barre? Open Products Facts è un database aperto di tutti i prodotti nel mondo.
 - Open Crayons Facts - Il più grande database aperto di pastelli colorati
 - Open Miniature Facts - Il più grande database aperto di miniature di prodotti alimentari
 Facts - Crea il tuo database aperto :-)
 
-*** I tuoi prodotti, i tuoi dati ***
+*** Il tuo cibo per animali, i tuoi dati ***
 - I tuoi dati personali sono tuoi e non vengono mai inviati online
 - Puoi esportare la cronologia di scansione
 

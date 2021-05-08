@@ -6,19 +6,19 @@ But what about other products ? Open Products Facts는 전 세계 모든 제품�
 - Open Pet Food Facts는 모두에 의한, 모두를 위해 만들어진 사료 데이터베이스입니다.
 - 당신은 이 앱을 사용해 더 좋은 사료를 선택할 수 있고,  공개데이터이므로 누구든지 어떤 목적에 상관없이 자유롭게 재사용이 가능합니다.
 - Open Pet Food Facts는 전 세계 수천 명의 자원봉사자가 개발한 비영리 프로젝트입니다. 이곳에는 여러분들이 다양한 방식으로 참여할 수 있는 흥미로운 프로젝트가 많이 있습니다. 
--오늘부터 첫 번째 제품을 추가하면 기여를 시작할 수 있습니다. 
+- 오늘부터 애완동물 사료 저장고에 있는 제품을 추가해서 프로젝트에 기여해 보세요. 
 
 *** 모오오든 물건을 수집하세요 ***
-- Do you have a collection of products with barcodes ? Open Products Facts는 매우 야심찬 프로젝트가 될 것입니다.
+- Do you have a collection of products with barcodes ? Open Products Facts는 전 세계 모든 제품의 공개 데이터베이스입니다.
 - Open Crayons Facts -  크레파스에 관한 가장 큰 오픈 데이터베이스
 Facts - ???의 가장 큰 오픈 데이터베이스
 Facts - 오픈 데이터베이스를 직접 만들어보세요 :-)
 
-*** 당신의 음식, 당신의 데이터 ***
+*** 나의 애완동물 사료, 나의 데이터 ***
 - 데이터는 사용자의 것으로 온라인으로 전송되지 않습니다
 - 앱을 익명으로 사용할 수 있습니다.
 
-Open Products Facts는 매우 야심찬 프로젝트가 될 것입니다.
+Open Beauty Facts는 웹 https://world.openbeautyfacts.org 에서도 볼 수 있습니다.
 질문 및 피드백 : contact@openfoodfacts.org
 
 따라서 티셔츠, 요리책, 종이접기, 스노우 글로브를 좋아한다면 Google Play의 Open Products Factions 안드로이드 앱을 사용하여 스캔하세요.

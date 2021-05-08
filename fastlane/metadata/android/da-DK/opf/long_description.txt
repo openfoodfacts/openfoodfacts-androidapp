@@ -1,12 +1,12 @@
-For fødevarer kan du installere Open Food Facts, for kosmetik, Open Beauty Facts og for kæledyrsfødevarer Open Pet Food Facts.
+For fødevarer kan du installere Open Food Facts, for kosmetik Open Beauty Facts og for alle andre produkter Open Products Facts.
 Men, hvad med andre produkter? Open Products Facts er en åben database over alle verdena produkter.
 
-*** Bidrag til Produkttransparens ***
+***Contribute to Pet Food Transparency***
 
-- Open Products Facts er en produktdatabase lavet af alle, for alle.
-- Du kan bruge den til at træffe bedre valg, og da det er åbne data, kan alle genbruge den til ethvert formål.
-- Open Products Facts er et nonprofit-projekt udviklet af tusindvis af frivillige fra hele verden. Vi har mange spændende projekter, du kan bidrage til på mange forskellige måder. 
-- Du kan begynde at bidrage i dag ved at tilføje dit første produkt. 
+- Open Pet Food Facts er en dyrefoderproduktdatabase kreeret af alle, for alle.
+- Du kan bruge den til at træffe bedre dyrefodervalg, og da det er åbne data, kan alle genbruge dem til ethvert formål.
+- Open Pet Food Facts er et nonprofit-projekt udviklet af tusindvis af frivillige fra hele verden. Vi har mange spændende projekter, du kan bidrage til på mange forskellige måder. 
+- Du kan begynde at bidrage i dag ved at tilføje et af dine dyrefoderprodukter. 
 
 *** Indsaml alt ***
 - Har en samling produkter med stregkoder? Så kan de alle tilføjes i Open Products Facts
@@ -14,11 +14,11 @@ Open Crayon Facts - Den største, åbne database over farvekridt
 Open Phone Facts - den største, åbne database over mobiler
 Opret egen, åben database
 
-*** Dine produkter, dine data ***
-- Dine personlige data er dine, og de lægges aldrig online
+*** Dit dyrefoder, dine data ***
+- Dine data er dine, og de lægges aldrig online
 - Appen kan bruges anonymt og skanningshistorik kan eksporteres
 
-Open Products Facts er også tilgængelig på nettet via https://world.openproductsfacts.org
+Open Beauty Facts er tilgængelig på nettet via https://world.openproductsfacts.org
 Spørgsmål, feedback: contact@openfoodfacts.org
 
 Så, kan man lide t-shirts, kogebøger, mobiler, taletidskort origamipapir eller snebolde, så begynd at skanne vha. Open Products Facts' Android-app fra Google Play

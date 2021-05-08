@@ -5,7 +5,7 @@ But what about other products ? Open Products Facts est une base de données ouv
 
 - Open Pet Food Facts est une base de données de produits alimentaires pour animaux de compagnie faite par tout le monde, pour tout le monde.
 - Vous pouvez l'utiliser pour faire de meilleurs choix d'aliments pour animaux de compagnie, et comme ce sont des données ouvertes, n'importe qui peut le réutiliser pour n'importe quel but.
-- Open Beauty Facts est un projet à but non lucratif développé par des milliers de volontaires du monde entier. Nous avons beaucoup de projets passionnants auxquels vous pouvez contribuer de différentes façons. 
+- Open Pet Food Facts est un projet à but non lucratif développé par des milliers de volontaires du monde entier. Nous avons beaucoup de projets passionnants auxquels vous pouvez contribuer de différentes façons. 
 - Vous pouvez commencer à contribuer aujourd'hui en ajoutant un produit de l'armoire de votre animal de compagnie. 
 
 *** Rassemblez TOUUUTES les choses ***
@@ -14,8 +14,8 @@ But what about other products ? Open Products Facts est une base de données ouv
 Facts - La plus grande base de données ouverte de ???
 Facts - Créez votre propre base de données ouverte :-)
 
-*** Vos produits, vos données ***
-- Vos données personnelles vous appartiennent et ne sont jamais envoyées en ligne
+*** Votre nourriture pour animaux de compagnie, vos données ***
+- Vos données vous appartiennent et ne sont jamais envoyées en ligne
 - Vous pouvez exporter votre historique de scans
 
 Open Beauty Facts est également disponible sur le Web à l'adresse https://world-fr.openbeautyfacts.org

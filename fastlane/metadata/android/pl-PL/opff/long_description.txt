@@ -1,6 +1,6 @@
 Zeskanuj kod kreskowy z produktu dla zwierząt, aby uzyskać dane o jego: składzie, dodatkach i wartości odżywczej.
 
-Dla jedzenia możesz zainstalować Open Food Facts, dla kosmetyków, Open Beauty Facts, a dla karmy dla zwierząt domowych, Open Pet Food Facts.
+W przypadku żywności dla ludzi możesz zainstalować Open Food Facts, w kwestii karmy dla zwierząt Open Pet Food Facts, a dla wszystkich pozostałych produktów, Open Products Facts.
 
 Aby poznać projekt Open Pet Food Facts, odwiedź https://world.openpetfoodfacts.org
 
@@ -25,7 +25,7 @@ Będziesz mógł również znaleźć (zgodnie ze wskazówkami umieszczonymi na p
 -Nie potrzebujesz aparatu, aby wyszukać produkt. Możesz również wpisać kod kreskowy, jeśli nie masz aparatu lub masz z nim problem.
 
 ***Twoje jedzenie, twoje dane***
-- Twoje dane należą do Ciebie i nigdy nie będą przesyłane online
+Twoje dany nigdy nie są wysyłane online
 Możesz korzystać anonimowo z aplikacji
 Możesz eksportować historię skanowania
 

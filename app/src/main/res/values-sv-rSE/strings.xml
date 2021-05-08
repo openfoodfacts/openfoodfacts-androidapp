@@ -445,7 +445,7 @@
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
     <string name="url_nutrient_values">https://world-sv.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">Allmänt</string>
-    <string name="preference_header_network">Network</string>
+    <string name="preference_header_network">Nätverk</string>
     <string name="preference_header_contributing">Contributing</string>
     <string name="preference_header_privacy">Privacy</string>
     <string name="preference_crash_title">Crash reporting</string>
@@ -542,7 +542,7 @@
     <string name="initial_loading">Inledande laddning</string>
     <string name="preferences">Inställningar</string>
     <string name="OFFlogo">Open Food Facts logotyp</string>
-    <string name="loading_product">Loading product %s</string>
+    <string name="loading_product">Laddar produkt %s</string>
     <string name="image_not_defined_for_language">Ingen bild för valt språk. Du kan lägga till en ny</string>
     <string name="error_adding_ingredients">Något gick fel när vi försökte lägga till produktingredienser</string>
     <string name="unable_to_extract_ingredients">Det gick inte att utläsa ingredienser från bilden</string>
@@ -797,7 +797,7 @@
     <!-- Application theme settings -->
     <string name="follow_system">Follow system</string>
     <string name="day">Dag</string>
-    <string name="night">Night</string>
+    <string name="night">Natt</string>
     <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
     <string name="hint_origin">Examples: USA, France, Italy</string>
     <string name="report_email_chooser_title">Send a report email</string>

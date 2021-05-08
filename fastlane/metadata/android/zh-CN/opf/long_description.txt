@@ -1,12 +1,12 @@
-Collecting the world's food, cosmetic and pet food was so passé.
+对于食品，您可以安装Open Food Facts；对于化妆品，您可以安装Open Beauty Facts；对于其他任何产品，您可以安装Open Products Facts.
 But what about other products ? 打开“Open Food Facts”是一个化妆品数据库，我们可以在产品标签上找到该商品的成分，过敏原等所有信息。
 
-***您的产品，您的数据***
+***您的宠物食物，您的数据***
 
--Open Products Facts是集人人之力并为人人之利而建立的产品数据库。
-- 您可以使用它来做出更好的食物选择，并且由于它是公开数据，任何人都可以为了任何目的而重复利用。
-- Open Pet Food Facts是一个由来自全世界数以千计的志愿者开发的非盈利项目。 我们也有很多激动人心的项目，让你有可以通过多种方式参与其中 - 食品成分鉴定是一个由全球数以千计的志愿者者开发的非盈利性项目。 We have lots of exciting projects you can contribute to in many different ways. 
--您可以从今天添加您的第一个产品开始来做出贡献。 
+- Open Pet Food Facts 是一个由大家共同建立，同时服务于大家的宠物食品数据库。
+你可以用它来做更好的宠物食品，由于它是开放数据，任何人都可以重复使用。
+- Open Pet Food Facts是一个由来自全世界数以千计的志愿者开发的非盈利项目。 我们也有很多激动人心的项目，让你有可以通过多种方式参与其中 - 食品成分鉴定是一个由全球数以千计的志愿者者开发的非盈利性项目。 We have lots of exciting projects you can contribute to in many different ways. - 食品成分鉴定是一个由全球数以千计的志愿者者开发的非盈利性项目。 We have lots of exciting projects you can contribute to in many different ways. 
+从今天起你可以通过购买我们的宠物产品为这个项目出份力。 
 
 收集所有信息
 - Do you have a collection of products with barcodes ? Open Products Facts 一个包含世界上所有产品的开放数据库。
@@ -15,10 +15,10 @@ Facts - The largest open database of ???
 Open Food Facts——创建你自己的开放数据库
 
 ***您的宠物食物，您的数据***
-- 您的个人数据只属于您，永远不会被上传。
+- 你的数据只属于你，并永远不会被上传。
 - 您可以导出历史记录
 
-Open Products Facts is also available on the web at https://world.openproductsfacts.org
+还可在以下网站上找到Open Food Facts：https://world.openbeautyfacts.org
 提问，反馈： contact@openfoodfacts.org
 
 So if you like t-shirts, cooking books, origami paper or snow globes, start scanning using the Open Products Facts Android app on Google Play

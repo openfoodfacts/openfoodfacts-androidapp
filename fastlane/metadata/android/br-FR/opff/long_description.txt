@@ -11,9 +11,9 @@ To discover the volunteer-run Open Food Facts project, visit https://world.openf
 - Open Pet Food Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways. 
 - You can start contributing today by adding a product from your pet's cupboard.
 
-***Contribute to Pet Food Transparency***
+▶ Get the Facts
 
-You will be able to find:
+You will also be able to find (according to the indications present on the products):
 - list of ingredients (including ash content)
 - nutritional info, nutrition traffic lights…
 - brands, allergens, labels (bio, gluten free, vegan, vegetarian, halal, kosher ...), traceability information (packaging codes, origins of ingredients)

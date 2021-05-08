@@ -1,4 +1,4 @@
-Für Lebensmittel können Sie „Open Food Facts”, für Kosmetika „Open Beauty Facts” und für Tiernahrung „Open Pet Food Facts” installieren.
+Für Lebensmittel können Sie „Open Food Facts”, für Kosmetik „Open Beauty Facts” und für alle anderen Produkte „Open Products Facts” installieren.
 Aber was ist mit anderen Produkten ? „Open Food Facts” ist eine offene Datenbank von Lebensmitteln mit Inhaltsstoffen, Allergenen, Nährwertangaben und all den Kleinigkeiten, die wir auf den Produktetiketten finden können.
 
 ★★★ Beitrag zur Transparenz von Produkten ★★★
@@ -9,16 +9,16 @@ Aber was ist mit anderen Produkten ? „Open Food Facts” ist eine offene Daten
 • Sie können noch heute einen Beitrag leisten, indem Sie ein Produkt aus Ihrem Haustierschrank hinzufügen. 
 
 ★★★ Sammeln Sie ALLE diese Dinge ★★★
-- Haben Sie eine Sammlung von Produkten mit Barcodes ? Open Products Facts ist eine offene Datenbank aller Produkte weltweit.
+- Haben Sie eine Sammlung von Produkten mit Barcodes ? Open Products Facts ist auch im Internet verfügbar unter https://world.openproductsfacts.org
 Open Crayons Facts - Die größte offene Datenbank von Farbstiften
 Open … Facts - Die größte offene Datenbank für …
 • Open … Facts - Erstellen Sie Ihre eigene offene Datenbank 🙂
 
-★★★ Ihre Produkte — Ihre Daten ★★★
+★★★ Ihr Tierfutter — Ihre Daten ★★★
 • Ihre Daten gehören Ihnen und werden niemals online gesendet
 • Sie können Ihren Erfassungsverlauf exportieren
 
-Open Products Facts ist auch im Internet verfügbar unter https://world.openproductsfacts.org
+Open Beauty Facts ist auch im Internet verfügbar unter https://world.openbeautyfacts.org
 Fragen und Rückmeldungen: contact@openfoodfacts.org
 
 Wenn Sie also T-Shirts, Kochbücher, Origami-Papier oder Schneekugeln mögen, können Sie diese mit der Android App „Open Products Facts” auf Google Play einlesen.

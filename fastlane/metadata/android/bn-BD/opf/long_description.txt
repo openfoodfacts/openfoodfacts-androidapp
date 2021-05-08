@@ -1,12 +1,12 @@
-For food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for pet food, Open Pet Food Facts.
+For human food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for all other products, Open Products Facts.
 But what about other products ? Open Food Facts এ উপাদানের উপাদান, এলার্জি, পুষ্টি সংক্রান্ত তথ্য এবং পণ্য লেবেলগুলিতে আমরা খুঁজে পেতে পারি এমন সব তথ্যগুলির সাথে খাদ্যের একটি খোলা ডাটাবেস।
 
-*** Contribute to Product Transparency ***
+***Contribute to Pet Food Transparency***
 
-- Open Products Facts is a products database made by everyone, for everyone.
-- You can use it to make better choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Products Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways. 
-- You can start contributing today by adding your first product. 
+- Open Pet Food Facts is a pet food products database made by everyone, for everyone.
+- You can use it to make better pet food choices, and as it is open data, anyone can re-use it for any purpose.
+- Open Pet Food Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways. 
+- You can start contributing today by adding a product from your pet's cupboard. 
 
 *** Collect everything ***
 - Do you have a collection of products with barcodes ? You can add all of it to Open Products Facts
@@ -14,11 +14,11 @@ But what about other products ? Open Food Facts এ উপাদানের উ
 - Open Phone Facts - The largest open database of mobile phones
 - Create your own open database
 
-*** Your products, your data ***
-- Your personal data is yours, and is never sent online
+*** Your pet food, your data ***
+- Your data is yours, and is never sent online
 - You can use the app anonymously and export your scan history
 
-Open Products Facts is also available on the web at https://world.openproductsfacts.org
+Open Beauty Facts is also available on the web at https://world.openbeautyfacts.org
 Questions, feedback : contact@openfoodfacts.org
 
 So if you like t-shirts, cooking books, mobile phones,télécartes, origami paper or snow globes, start scanning using the Open Products Facts Android app on Google Play

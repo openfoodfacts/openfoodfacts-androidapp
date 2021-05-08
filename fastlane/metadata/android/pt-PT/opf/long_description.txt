@@ -1,24 +1,24 @@
-Para comida, pode instalar Open Food Facts, para cosméticos, Open Beauty Facts, e para comida de animais, Open Pet Food Facts.
+Para alimentação humana, pode instalar o Open Food Facts, para cosméticos, o Open Beauty Facts e para todos os outros produtos, o Open Products Facts.
 Mas e os outros produtos? O Open Food Facts é uma base de dados de produtos alimentares com ingredientes, alergénios, tabela nutricional e todos os pedaços de informação que se encontram nos rótulos dos produtos.
 
 ***Contribuir para a transparência dos alimentos para animais ***
 
-- Open Product Facts é um projeto não lucrativo desenvolvido por milhares de voluntários em todo o mundo.
+- O Open Pet Food Facts é uma base de dados de produtos alimentares para animais feito por todos, para todos.
 - Pode usá-lo para fazer melhores escolhas alimentares para animais e como são dados abertos, qualquer um pode reutilizá-lo para qualquer finalidade.
-- Open Pet Food Facts é um projeto sem fins lucrativos desenvolvido por milhares de voluntários em todo o mundo. Temos muitos projetos interessantes para os quais pode contribuir de diversas maneiras. 
+- O Open Pet Food Facts é um projeto sem fins lucrativos desenvolvido por milhares de voluntários em todo o mundo. Temos muitos projetos interessantes para os quais pode contribuir de diversas maneiras. 
 - Pode começar a contribuir hoje, adicionando um produto do seu armário de alimentos para animais. 
 
 *** Colecione TODAAAAS as coisas ***
-- Tem uma coleção de produtos com códigos de barras? - Pode adicionar todos os itens das suas coleções
+- Tem uma coleção de produtos com códigos de barras? O Open Products Facts também está disponível na web em https://pt.openproductsfacts.org
 - Open Crayons Facts - A maior base de dados aberta de lápis de cor
 - Open Miniature Food Facts - O maior banco de dados aberto de produtos alimentícios em miniatura
 -- Crie a sua própria database :-)
 
-*** Os seus produtos, os seus dados ***
-- os seus dados são seus e nunca são enviados on-line
+*** A sua comida para animais, os seus dados ***
+- Os seus dados são seus e nunca são enviados para a Internet
 - Pode exportar seu histórico de digitalizações
 
-O Open Products Facts também está disponível na web em https://pt.openproductsfacts.org
+O Open Beauty Facts também está disponível na Internet em https://pt.openbeautyfacts.org
 Perguntas, feedback: contact@openfoodfacts.org
 
 Por isso, se se gostas de t-shirts, livros de culinária, papel de origami ou globos de neve, comece a digitalizar usando o aplicativo Open Products Facts Android no Google Play

@@ -1,10 +1,10 @@
-Dla jedzenia możesz zainstalować Open Food Facts, dla kosmetyków, Open Beauty Facts, a dla karmy dla zwierząt domowych, Open Pet Food Facts.
+W przypadku żywności dla ludzi możesz zainstalować Open Food Facts, dla kosmetyków, Open Beauty Facts, a także dla wszystkich innych produktów, Open Products Facts.
 But what about other products ? Open Products Facts to otwarta baza danych wszystkich produktów na świecie.
 
 *** Przyczyń się do przejrzystości produktów ***
 
 - Open Pet Food Facts to baza danych produktów dla zwierząt domowych tworzona przez wszystkich dla każdego.
-- Możesz go używać, aby dokonywać lepszych wyborów, a ponieważ są to otwarte dane, każdy może je ponownie wykorzystać w dowolnym celu.
+- Możesz go wykorzystać do dokonywania lepszych wyborów dotyczących karmy dla zwierząt domowych, a ponieważ są to otwarte dane, każdy może je ponownie wykorzystać w dowolnym celu.
 - Open Pet Food Facts to projekt nienastawiony na zysk opracowany przez tysiące wolontariuszy z całego świata. Jest dużo ciekawych projektków do których możesz dołączyć. 
 - Możesz zacząć pomagać już dziś, dodając produkt z szafki Twojego zwierzaka. 
 
@@ -14,8 +14,8 @@ But what about other products ? Open Products Facts to otwarta baza danych wszys
 Fakty - największa otwarta baza danych ???
 Fakts - Stwórz własną otwartą bazę danych :-)
 
-*** Twoje produkty, Twoje dane ***
-- Twoje dane należą do Ciebie i nigdy nie będą przesyłane online
+***Twoje jedzenie, twoje dane***
+Twoje dany nigdy nie są wysyłane online
 Możesz eksportować historię skanowania
 
 Open Beauty Facts jest również dostępny w sieci: https://world.openbeautyfacts.org

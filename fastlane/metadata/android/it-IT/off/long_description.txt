@@ -1,4 +1,4 @@
-▶ Trova e confronta più di 800.000 prodotti
+<h1>▶ Decifrare le etichette degli alimenti</h1>
 
 L'app consente di vedere gli oltre 600 alimenti per animali già contenuti nel database libero e aperto di Open Pet Food Facts e di aggiungere foto e dati per i prodotti mancanti.
 L'app è collaborativa. Se non abbiamo il prodotto, puoi aggiungere immagini e dati per ottenere il punteggio Nutri-Score e NOVA sull'elaborazione degli alimenti.
@@ -12,14 +12,14 @@ Per scoprire il progetto Open Pet Food Facts, visitare https://it.openpetfoodfac
 -Il grado del punteggio nutrizionale, da "A" a "E" >> Qualità nutrizionale
 - Il gruppo NOVA, da "1" a "4" >> Trova il cibo Ultra-processato
 
-*** Contribuire alla trasparenza dei prodotti ***
+<h1>▶ Altro</h1>
 
 - Open Products Facts è un database di prodotti fatto da tutti per tutti.
 - Puoi usarlo per fare migliori scelte e dato che sono dati aperti, chiunque può riutilizzarli per ogni scopo.
 - Puoi iniziare a contribuire oggi aggiungendo il tuo primo prodotto.
 - Open Products Facts è un progetto no-profit sviluppato da migliaia di volontari da tutto il mondo. Abbiamo molti progetti interessanti a cui puoi contribuire in molti modi diversi.
 
-<h1>▶ Decifrare le etichette degli alimenti</h1>
+<h1>▶ Funziona bene in qualsiasi condizione</h1>
 
 - Open Products Facts ti aiuta a dare un senso alle piccole scritte sulle etichette dei prodotti. Sarai anche in grado di trovare (secondo le indicazioni presenti sui prodotti):
 - l'impronta di carbonio (emissioni di CO2) e l'imballaggio (comprese le istruzioni per il riciclo),
@@ -39,7 +39,7 @@ Per scoprire il progetto Open Pet Food Facts, visitare https://it.openpetfoodfac
 - L'app carica solo il minimo indispensabile per ridurre i dati e il consumo della batteria
 - Non hai bisogno di una fotocamera per cercare un prodotto. Puoi anche digitare il codice a barre se non hai una fotocamera o non funziona.
 
-*** Il tuo cibo per animali, i tuoi dati *** App rispettosa della privacy.</h1>
+*** Il tuo cibo per animali, i tuoi dati *** App rispettosa della privacy.</h1> App rispettosa della privacy.</h1>
 - I tuoi dati personali sono tuoi e non vengono mai inviati online
 - Puoi usare l'app in modo anonimo
 - Puoi esportare la cronologia di scansione

@@ -39,7 +39,7 @@ Pegadas de carbono (emissões de CO2) e embalagens (assim como instruções para
 - O aplicativo carrega apenas o estrito necessário para reduzir o consumo de dados e bateria.
 ➜ You don't need a camera to look up a product. Você pode digitar o código de barras se não tiver uma câmera ou caso esteja com problemas.
 
-***Seus alimentos de animais, seus dados*** Privacy-friendly app.</h1>
+***Seus alimentos de animais, seus dados*** Privacy-friendly app.</h1> Privacy-friendly app.</h1>
 - Seus dados pessoais são seus e nunca serão enviados online
 - Você pode usar o aplicativo anonimamente
 - Você pode exportar seu histórico

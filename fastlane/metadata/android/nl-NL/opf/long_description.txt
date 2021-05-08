@@ -1,4 +1,4 @@
-Opmerking: Open Beauty Facts wordt momenteel gebouwd, de site en de applicatie zijn gebaseerd op Open Food Facts en er zullen wijzigingen worden aangebracht om rekening te houden met de specifieke kenmerken van cosmetica.
+Voor levensmiddelen kan je Open Food Facts installeren, voor cosmetica Open Beauty Facts en voor alle andere producten Open Products Facts.
 But what about other products ? Open Food Facts is een open database van voedingsproducten met ingrediënten, allergenen, voedingsinformatie en alle informatie die we kunnen vinden op de etiketten van de producten.
 
 *** Draag bij aan producttransparantie ***
@@ -14,7 +14,7 @@ But what about other products ? Open Food Facts is een open database van voeding
 Facts - De grootste open database van ???
 Facts - Maak je eigen open database :-)
 
-*** Jouw producten, jouw gegevens ***
+*** Jouw dierenvoeding, jouw gegevens ***
 - Jouw gegevens zijn van jou en worden nooit online verzonden
 - Je kunt jouw scangeschiedenis exporteren
 

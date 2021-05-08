@@ -39,7 +39,7 @@ Yiyecekler için Open Food Facts, evcil hayvan mamaları için Open Pet Food Fac
 - Uygulama veri ve pil kullanımını azaltmak için sadece gerekli olanları yükler.
 ➜ You don't need a camera to look up a product. Kameranız yoksa veya bununla ilgili bir sorununuz varsa da barkodu yazabilirsiniz.
 
-▶ Sizin yiyecekleriniz, sizin verileriniz Privacy-friendly app.</h1>
+▶ Sizin yiyecekleriniz, sizin verileriniz Privacy-friendly app.</h1> Privacy-friendly app.</h1>
 - Kişisel verileriniz size aittir ve asla çevrimiçi gönderilmez
 - Uygulamayı anonim olarak kullanabilirsiniz
 - Tarama geçmişinizi dışa aktarabilirsiniz

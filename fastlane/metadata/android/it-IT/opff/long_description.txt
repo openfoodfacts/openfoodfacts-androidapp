@@ -1,8 +1,8 @@
 Scansiona prodotti alimentari per animali o i loro codici a barre per ottenere dati su ingredienti, additivi e valori nutrizionali.
 
-Per il cibo, è possibile installare Open Food Facts, per i cosmetici, Open Beauty Facts e per alimenti per animali domestici, Open Pet Food Facts.
+Per il cibo è possibile installare Open Food Facts, per alimenti per animali domestici Open Pet Food Facts e per tutti gli altri prodotti Open Products Facts.
 
-Open Produts Facts è anche disponibile sul web ad https://world.openproductsfacts.org
+To discover the volunteer-run Open Food Facts project, visit https://world.openfoodfacts.org
 
 ***Contribuire alla trasparenza del cibo per animali***
 
@@ -11,7 +11,7 @@ Open Produts Facts è anche disponibile sul web ad https://world.openproductsfac
 - Open Pet Food Facts è un progetto senza scopo di lucro sviluppato da migliaia di volontari provenienti da tutto il mondo. Abbiamo molti progetti interessanti a cui puoi contribuire in molti modi diversi. 
 - Puoi iniziare a contribuire oggi aggiungendo un prodotto dei tuoi alimenti per animali.
 
-*** Ottieni i fatti ***
+▶ Get the Facts
 
 Sarai anche in grado di trovare (secondo le indicazioni presenti sui prodotti):
 - l'elenco degli ingredienti (compreso il contenuto di ceneri)

@@ -39,7 +39,7 @@ Para descubrir el proyecto Open Food Facts, dirigido por voluntarios, visite htt
 - La aplicación solo carga lo estrictamente necesario para reducir el consumo de datos y batería.
 ➜ You don't need a camera to look up a product. También puede escribir el código de barras si le falta una cámara o si esta tiene algún problema.
 
-▶ Obten la información Privacy-friendly app.</h1>
+▶ Obten la información Privacy-friendly app.</h1> Privacy-friendly app.</h1>
 - Tus datos son tuyos y nunca se envían en línea
 - Puedes usar la aplicación de forma anónima
 - Puedes exportar tu historial de escaneo

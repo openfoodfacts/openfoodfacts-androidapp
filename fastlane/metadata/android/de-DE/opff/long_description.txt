@@ -1,6 +1,6 @@
 Tierfutter erfassen oder deren Strichcode einlesen, um Daten über Inhaltsstoffe, Zusatzstoffe und Nährwertangaben zu erhalten.
 
-Für Lebensmittel können Sie „Open Food Facts”, für Kosmetika „Open Beauty Facts” und für Tiernahrung „Open Pet Food Facts” installieren.
+Für Lebensmittel können Sie „Open Food Facts”, für Tierfutter „Open Pet Food Facts” und für alle anderen Produkte „Open Products Facts” installieren.
 
 Um das Projekt „Open Pet Food Facts” zu entdecken, besuchen Sie bitte https://world.openpetfoodfacts.org
 
@@ -13,7 +13,7 @@ Um das Projekt „Open Pet Food Facts” zu entdecken, besuchen Sie bitte https:
 
 ★★★ Fakten abrufen ★★★
 
-Was Sie ebenfalls finden können (entsprechend den Angaben auf den Produkten):
+Sie können finden:
 • Liste der Inhaltsstoffe (einschließlich Aschegehalt)
 • Nährwertangaben, Nährwertampeln …
 • Marken, Allergene, Etiketten (Bio, Vegan …)

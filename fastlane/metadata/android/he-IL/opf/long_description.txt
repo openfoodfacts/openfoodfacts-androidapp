@@ -1,12 +1,12 @@
-למזון, ניתן להתקין את Open Food Facts, למוצרי טיפוח, Open Beauty Facts, ולמזון של חיות מחמד, Open Pet Food Facts.
+למזון אנושי, ניתן להתקין את Open Food Facts, למוצרי טיפוח את Open Beauty Facts ולכל שאר המוצרים את Open Products Facts.
 But what about other products ? Open Food Facts הוא מסד נתונים של מוצרי מזון עם רכיבים, מעוררי רגישות, עובדות תזונתיות וכל שביב מידע שניתן למצוא על תווית המוצר.
 
-◀ תרומה לשקיפות המוצרים
+***Contribute to Pet Food Transparency***
 
-- Open Products Facts הוא מסד נתוני מוצרים שנוצר על ידי כולם, למען כולם.
-- ניתן להשתמש בו כדי לבחור טוב יותר וכיוון שהנתונים שלו פתוחים, כולם יכולים לגזור ממנו לכל מטרה.
-- Open Products Facts הוא מיזם ללא מטרות רווח אותו מפתחים אלפי מתנדבים מכל רחבי העולם. יש לנו המון מיזמים מלהיבים שניתן לתרום להם במגוון דרכים שונות. 
-- ניתן להתחיל לתרום כבר היום על ידי הוספת המוצר הראשון שלך. 
+- Open Pet Food Facts הוא מסד נתוני מזון לחיות מחמד שנוצר על ידי כולם, למען כולם.
+- ניתן להשתמש בו כדי לבחור מזון טוב יותר לחיות מחמד וכיוון שהנתונים שלו פתוחים, כולם יכולים לגזור ממנו לכל מטרה.
+- Open Pet Food Facts הוא מיזם ללא מטרות רווח אותו מפתחים אלפי מתנדבים מכל רחבי העולם. יש לנו המון מיזמים מלהיבים שניתן לתרום להם במגוון דרכים שונות. 
+- ניתן להתחיל לתרום כבר היום על ידי הוספת מוצרים מהארון של חיית המחמד שלך. 
 
 *** Collect everything ***
 - Do you have a collection of products with barcodes ? You can add all of it to Open Products Facts
@@ -14,11 +14,11 @@ Open Crayons Facts - מס הנתונים הפתוח הגדול ביותר לעפ
 - Open Phone Facts - The largest open database of mobile phones
 - Create your own open database
 
-*** המוצרים שלך, הנתונים שלך ***
-- הנתונים האישיים שלך הם שלך והם אף פעם לא נשלחים לאינטרנט
+*** המזון של חיות המחמד שלך, הנתונים שלך ***
+- הנתונים שלך הם שלך והם אף פעם לא נשלחים לאינטרנט
 - You can use the app anonymously and export your scan history
 
-מיזם Open Products Facts זמין גם דרך אתר האינטרנט https://world.openproductsfacts.org
+מיזם Open Beauty Facts זמין גם דרך אתר האינטרנט https://il.openbeautyfacts.org
 שאלות, משוב: contact@openfoodfacts.org
 
 So if you like t-shirts, cooking books, mobile phones,télécartes, origami paper or snow globes, start scanning using the Open Products Facts Android app on Google Play

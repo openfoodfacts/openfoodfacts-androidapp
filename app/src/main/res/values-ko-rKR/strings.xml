@@ -402,7 +402,7 @@
     <string name="device_offline_dialog_message">네트워크 연결이 필요합니다. 설정에서 변경하시겠습니까?</string>
     <string name="device_offline_dialog_negative">무시</string>
     <string name="device_offline_dialog_positive">설정</string>
-    <string name="scan_first_product">Scan your first product</string>
+    <string name="scan_first_product">Scan First Product</string>
     <string name="device_on_mobile_data_warning_title">정보</string>
     <string name="device_on_mobile_data_warning_message">You have disabled upload on mobile data , please connect to WiFi or change this in preferences</string>
     <string name="device_on_mobile_data_warning_positive">환경설정</string>
