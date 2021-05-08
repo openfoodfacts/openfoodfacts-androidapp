@@ -121,9 +121,8 @@ lane :release_opf do
         project_dir: './',
         task: 'clean bundle',
         build_type: 'Release',
-        flavor: 'opf'
-        # TODO: reenable, disabled for first initial build
-        #platform: 'playstore'
+        flavor: 'opf',
+        platform: 'playstore'
     )
 
     #upload the bundle to internal track of play store
