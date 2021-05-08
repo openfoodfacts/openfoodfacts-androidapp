@@ -128,7 +128,7 @@
         <item>Meado rūgštis (20: 3 n-9)</item>
         <item>Meliso rūgštis (30: 0)</item>
         <item>Molybdenum</item>
-        <item>Mono unsaturated fat</item>
+        <item>Monounsaturated fat</item>
         <item>Montano rūgštis (28: 0)</item>
         <item>Miristinė rūgštis (14: 0)</item>
         <item>Nervoninė rūgštis (24: 1 n-9)</item>
@@ -142,7 +142,7 @@
         <item>pH</item>
         <item>Phosphorus</item>
         <item>Cukraus alkoholiai (polioliai)</item>
-        <item>Poly unsaturated fat</item>
+        <item>Polyunsaturated fat</item>
         <item>Potassium</item>
         <item>Selenium</item>
         <item>Serumo baltymai</item>
@@ -331,8 +331,8 @@
     <string name="for_100g">Už 100 g</string>
     <string name="for_100ml">100 ml</string>
     <string name="serving">Per serving</string>
-    <string name="nutrition_monounsaturatedFat">Mono unsaturated fat</string>
-    <string name="nutrition_polyunsaturatedFat">Poly unsaturated fat</string>
+    <string name="nutrition_monounsaturatedFat">Monounsaturated fat</string>
+    <string name="nutrition_polyunsaturatedFat">Polyunsaturated fat</string>
     <string name="nutrition_omega3">Omega 3</string>
     <string name="nutrition_omega6">Omega 6</string>
     <string name="nutrition_omega9">Omega 9</string>
@@ -417,7 +417,7 @@
     <string name="device_offline_dialog_message">Norint tai padaryti, reikalingas tinklo ryšys. Ar norėtumėte tai pakeisti nustatymuose?</string>
     <string name="device_offline_dialog_negative">Atšaukti</string>
     <string name="device_offline_dialog_positive">Settings</string>
-    <string name="scan_first_product">Scan First Product</string>
+    <string name="scan_first_product">Scan your first product</string>
     <string name="device_on_mobile_data_warning_title">Information</string>
     <string name="device_on_mobile_data_warning_message">Išjungėte mobiliųjų duomenų įkėlimą. Prisijunkite prie „WiFi“ arba pakeiskite tai nuostatose</string>
     <string name="device_on_mobile_data_warning_positive">Nuostatos</string>

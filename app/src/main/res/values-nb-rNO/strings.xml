@@ -407,7 +407,7 @@
     <string name="device_offline_dialog_message">A network connection is needed to do this, would you like to change this in settings?</string>
     <string name="device_offline_dialog_negative">Avslå</string>
     <string name="device_offline_dialog_positive">Innstillinger</string>
-    <string name="scan_first_product">Scan First Product</string>
+    <string name="scan_first_product">Scan your first product</string>
     <string name="device_on_mobile_data_warning_title">Informasjon</string>
     <string name="device_on_mobile_data_warning_message">Du har deaktivert opplasting ved bruk av mobildata. Koble til WiFi eller endre dette i innstillingene</string>
     <string name="device_on_mobile_data_warning_positive">Brukervalg</string>

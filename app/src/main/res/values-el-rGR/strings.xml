@@ -407,7 +407,7 @@
     <string name="device_offline_dialog_message">A network connection is needed to do this, would you like to change this in settings?</string>
     <string name="device_offline_dialog_negative">Απόρριψη</string>
     <string name="device_offline_dialog_positive">Ρυθμίσεις</string>
-    <string name="scan_first_product">Scan First Product</string>
+    <string name="scan_first_product">Scan your first product</string>
     <string name="device_on_mobile_data_warning_title">Πληροφορίες</string>
     <string name="device_on_mobile_data_warning_message">Upload on mobile data is disabled, please connect to WiFi or change this in preferences</string>
     <string name="device_on_mobile_data_warning_positive">Προτιμήσεις</string>
