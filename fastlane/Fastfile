@@ -48,7 +48,7 @@ lane :release do
     sentry_upload_proguard(
       org_slug: 'openfoodfacts',
       project_slug: 'openfoodfacts-android',
-      android_manifest_path: './app/build/intermediates/merged_manifests/' + FLAVOR + '/out/AndroidManifest.xml'
+      android_manifest_path: './app/build/intermediates/merged_manifests/' + FLAVOR + '/out/AndroidManifest.xml',
       mapping_path: './app/build/outputs/mapping/' + FLAVOR + '/mapping.txt',
     )
 
