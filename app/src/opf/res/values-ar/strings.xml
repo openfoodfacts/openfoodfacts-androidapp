@@ -33,10 +33,10 @@
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">لن يتم إرسال معلوماتك الشخصية إلى خادم Open Products Facts. أيضاً كن حذراً بأن بيانات المنتج قد تكون غير دقيقة، و الكشف قد لا يكون دقيقاً بنسبة 100٪ ، لذا نرجو منك إعادة التحقق منها بنفسك! </string>
     <!-- OPF tagline in different languages -->
     <string name="version_string">افتح تطبيق Open Products Facts على Android</string>
-    <string name="tagline">قاعدة بيانات مجانية </string>
+    <string name="tagline">the free product database</string>
     <string name="product_not_found">المنتج %1$s الذي مسحته غير موجود حتى الآن في Open Products Facts. هل يمكنك إضافته؟</string>
     <string name="currently_on_version">حاليًا في Open Products Facts</string>
-    <string name="category_game_btn">المساعدة في تصنيف المنتجات</string>
+    <string name="category_game_btn">مساعدة في تصنيف المنتجات</string>
     <!-- TODO add true support instead of overriding strings -->
     <string name="add_nutrient_prompt_text">أضف المزيد من التفاصيل للمساعدة في استكمال المنتج</string>
     <string name="add_category_prompt_text">أضف المزيد من التفاصيل للمساعدة في استكمال المنتج</string>

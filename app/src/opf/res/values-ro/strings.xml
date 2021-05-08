@@ -33,7 +33,7 @@
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Informațiile despre alergiile tale nu vor fi trimise niciodată serverului Open Products Facts. Totodată, fi atent pentru că datele despre anumite produse pot fi incorecte, și detecția s-ar putea să nu fie 100% aorectă, așa că te rog să verifici și tu personal acele produse! </string>
     <!-- OPF tagline in different languages -->
     <string name="version_string">Open Products Facts Android App</string>
-    <string name="tagline">baza de date gratuită a produselor</string>
+    <string name="tagline">the free product database</string>
     <string name="product_not_found">Produsul %1$s pe care l-ai scanat nu există încă în Open Products Facts. Îl poți adăuga tu?</string>
     <string name="currently_on_version">Acum pe Open Products Facts</string>
     <string name="category_game_btn">Ajutați la catalogarea produselor</string>

@@ -23,10 +23,10 @@
     <string name="slide_4_desc">आप नए उत्पादों को ऐड कर सकते हैं, भले ही आपके पास अभी कोई इंटरनेट कनेक्शन न हो</string>
     <string name="txtDialogsContent">The product you scanned does not exist yet in Open Pet Food Facts. Please add it.</string>
     <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Pet Food Facts.</string>
-    <string name="msg_share">Open Food Facts  पर इस उत्पाद को देखो:</string>
+    <string name="msg_share">Look at this product on Open Food Facts :</string>
     <string name="not_support_books">ओपन फ़ूड फैक्ट्स पर पुस्तकें उपलब्ध नहीं है</string>
-    <string name="txt_broaden_search">- अपनी खोज को विस्तृत करना \n- स्कैन करें और इसे ओपन फ़ूड फैक्ट्स में ऐड करें</string>
-    <string name="Donation">ओपन फ़ूड फैक्ट्स को दान करने के लिए यहाँ क्लिक करें</string>
+    <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
+    <string name="Donation">Click here to donate to Open Food Facts</string>
     <string name="translate_help_title">ओपन फ़ूड फैक्ट्स का अनुवाद करने में मदद करें</string>
     <string name="translate_help_summary">ओपन फ़ूड फैक्ट्स डेटाबेस को अपनी भाषा में लाएं - कोई तकनीकी की आवश्यकता नहीं है</string>
     <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Pet Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>

@@ -804,4 +804,11 @@
     <!-- Changelog String -->
     <string name="changelog_translation_help">Ønsker at se denne ændringslog i %s?\nDeltag i oversættelsesteamet!</string>
     <string name="whats_new">Nyt i Open Food Facts?</string>
+    <string name="eco_score_slide_4_title">Øko-Score</string>
+    <string name="join_the_food_revolution">Tilslut dig fødevarerevolutionen</string>
+    <string name="slide_1_text_revolution">Skan fødevarer, tag fotos, hjælp med at traneformere fødevaresystemet</string>
+    <string name="get_the_nutri_score">Få ernæringsinformation</string>
+    <string name="synthesis_of_nutrition_slide_2_text">En simpel syntese af dine fødevarers ernæringskvalitet</string>
+    <string name="avoid_ultra_processed_foods">Undgå ultraforarbejdede fødevarer</string>
+    <string name="nova_slide_3_text">Reducér mængden af ultraforarbejdede fødevarer i din kost.</string>
 </resources>
