@@ -68,14 +68,14 @@ lane :release do
         skip_upload_images: true,
         skip_upload_screenshots: true
     )
-
-    FLAVOR = SharedValues::GRADLE_FLAVOR + SharedValues::GRADLE_BUILD_TYPE
-    sentry_upload_proguard(
-      org_slug: 'openfoodfacts',
-      project_slug: 'openfoodfacts-android',
-      android_manifest_path: './app/build/intermediates/merged_manifests/' + FLAVOR + '/out/AndroidManifest.xml',
-      mapping_path: './app/build/outputs/mapping/' + FLAVOR + '/mapping.txt',
-    )
+# Disabled on May 8th to try to debug the build
+    #FLAVOR = SharedValues::GRADLE_FLAVOR + SharedValues::GRADLE_BUILD_TYPE
+    #sentry_upload_proguard(
+    #  org_slug: 'openfoodfacts',
+    #  project_slug: 'openfoodfacts-android',
+    #  android_manifest_path: './app/build/intermediates/merged_manifests/' + FLAVOR + '/out/AndroidManifest.xml',
+    #  mapping_path: './app/build/outputs/mapping/' + FLAVOR + '/mapping.txt',
+    #)
 
     sentry_create_release(
         org_slug: 'openfoodfacts',
