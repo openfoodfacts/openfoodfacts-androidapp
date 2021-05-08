@@ -592,7 +592,6 @@
     <string name="your_version">Yours</string>
     <string name="ingredients_picture">Изображение на съставките</string>
     <string name="packaging">Recycling</string>
-    <string name="recycling_picture">Recycling Picture</string>
     <string name="take_ingredients_picture_to_extract">(Моля, направете снимка на съставките, за да ги извлечете автоматично)</string>
     <string name="ingredients_list">Списък на съставките</string>
     <string name="ingredients_hint">Запазете поръчката, посочете % (процент), когато е нужно, отделете със , (запетая) или използвайте - (тире), използвайте () (скоби) за подсъставките на дадена съставка, оградете алергените с _ (долна черта)</string>
