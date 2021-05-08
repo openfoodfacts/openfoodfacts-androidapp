@@ -37,8 +37,6 @@ buildscript {
 
         classpath("com.google.dagger:hilt-android-gradle-plugin:$hiltVersion")
 
-
-        classpath("io.sentry:sentry-android-gradle-plugin:1.7.36")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
     }
 }

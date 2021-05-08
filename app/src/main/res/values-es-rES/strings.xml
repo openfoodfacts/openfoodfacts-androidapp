@@ -232,7 +232,7 @@
     <string name="cancel_button">Cancelar</string>
     <string name="login_button">Usuario</string>
     <string name="create_account_button">Crear cuenta</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">La información de tus alergias no se enviará al servidor de open products Facts. así que debes ser cuidadoso ya que la información del producto no puede ser fidedigna, y la detección puede que no sea 100% arecisa, ¡así que chequea más de una vez por ti mismo! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">La información de tus alergias no se enviará al servidor de Open Food Facts. así que debes ser cuidadoso ya que la información del producto no puede ser fidedigna, y la detección puede que no sea 100% arecisa, ¡así que chequea más de una vez por ti mismo! </string>
     <string name="title_info_dialog">¿Cómo funciona?</string>
     <string name="text_offline_info_dialog">Escanea tus productos incluso cuando no hay Internet, para añadirlos luego a Open Food Facts. Los productos escaneados aparecerán aquí y podrás enviarlos usando el botón de abajo.</string>
     <string name="permission_camera">Se requiere el permiso para usar la cámara para poder escanear códigos de barras y tomar fotografías.</string>
