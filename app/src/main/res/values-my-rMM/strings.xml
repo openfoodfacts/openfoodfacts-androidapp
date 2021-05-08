@@ -150,7 +150,6 @@
         <item>Vitamin K</item>
         <item>Zinc</item>
     </string-array>
-    <!-- Text units -->
     <!-- Content Description -->
     <string name="search_button">ရွာေဖြမည္</string>
     <string name="alert_dialog_warning_title">သတိေပးခ်က္</string>
@@ -318,7 +317,7 @@
     <string name="for_100ml">For 100 ml</string>
     <string name="serving">Per serving</string>
     <string name="nutrition_monounsaturatedFat">Monounsaturated fat</string>
-    <string name="nutrition_polyunsaturatedFat">Poly unsaturated fat</string>
+    <string name="nutrition_polyunsaturatedFat">Polyunsaturated fat</string>
     <string name="nutrition_omega3">Omega 3</string>
     <string name="nutrition_omega6">Omega 6</string>
     <string name="nutrition_omega9">Omega 9</string>
@@ -799,4 +798,11 @@
     <!-- Changelog String -->
     <string name="changelog_translation_help">Want to see this changelog in %s?\nJoin the translation team!</string>
     <string name="whats_new">What\'s new with Open Food Facts?</string>
+    <string name="eco_score_slide_4_title">Eco-Score</string>
+    <string name="join_the_food_revolution">Join the food revolution</string>
+    <string name="slide_1_text_revolution">Scan food, Take photos, Help transform the food system</string>
+    <string name="get_the_nutri_score">Get the Nutriscore</string>
+    <string name="synthesis_of_nutrition_slide_2_text">A simple synthesis of the nutritional quality of your food</string>
+    <string name="avoid_ultra_processed_foods">Avoid ultra-processed foods</string>
+    <string name="nova_slide_3_text">Reduce the amount of ultra-processed foods in your diet.</string>
 </resources>

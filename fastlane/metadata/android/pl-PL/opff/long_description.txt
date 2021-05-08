@@ -1,6 +1,6 @@
 Zeskanuj kod kreskowy z produktu dla zwierząt, aby uzyskać dane o jego: składzie, dodatkach i wartości odżywczej.
 
-Aplikacja umożliwia przeglądanie ponad 600 produktów karmy dla zwierząt domowych zawartych w bezpłatnej i otwartej bazie danych Open Pet Food Facts, a także na dodawanie zdjęć i danych dotyczących brakujących produktów.
+Dla jedzenia możesz zainstalować Open Food Facts, dla kosmetyków, Open Beauty Facts, a dla karmy dla zwierząt domowych, Open Pet Food Facts.
 
 Aby poznać projekt Open Pet Food Facts, odwiedź https://world.openpetfoodfacts.org
 
@@ -9,8 +9,7 @@ Aby poznać projekt Open Pet Food Facts, odwiedź https://world.openpetfoodfacts
 - Open Pet Food Facts to baza danych produktów dla zwierząt domowych tworzona przez wszystkich dla każdego.
 - Możesz go wykorzystać do dokonywania lepszych wyborów dotyczących karmy dla zwierząt domowych, a ponieważ są to otwarte dane, każdy może je ponownie wykorzystać w dowolnym celu.
 - Open Pet Food Facts to projekt nienastawiony na zysk opracowany przez tysiące wolontariuszy z całego świata. Jest dużo ciekawych projektków do których możesz dołączyć. 
-- Możesz zacząć pomagać już dziś, dodając produkt z szafki Twojego zwierzaka. 
-
+- Możesz zacząć pomagać już dziś, dodając produkt z szafki Twojego zwierzaka.
 
 ***Poznaj fakty***
 

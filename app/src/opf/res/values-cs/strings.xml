@@ -15,7 +15,7 @@
     <string name="txtHome">Open Food Facts je otevřená databáze potravinářských produktů s přísadami, alergeny, nutričními fakty a všemi informacemi, které můžeme nalézt na etiketách produktů.</string>
     <string name="slide_1_title">Contribute to product transparency</string>
     <string name="slide_1_desc">Nasnímejte zboží, vyfoťte ho, zajistěte transparentnost</string>
-    <string name="slide_2_title">Get the facts</string>
+    <string name="slide_2_title">Získejte fakta</string>
     <string name="slide_2_desc">Extensive information about the products you\'ve scanned, deciphered for you</string>
     <string name="slide_3_title">Keep track of the product you use</string>
     <string name="slide_3_desc">All the products you scanned, in one handy list you can export</string>
@@ -38,10 +38,10 @@
     <string name="currently_on_version">Currently on Open Products Facts</string>
     <string name="category_game_btn">Pomozte roztřídit produkty</string>
     <!-- TODO add true support instead of overriding strings -->
-    <string name="add_nutrient_prompt_text">Add more details to help complete the product</string>
-    <string name="add_category_prompt_text">Add a category to help complete the product</string>
-    <string name="add_nutrient_category_prompt_text">Add a category and more details to help complete the product</string>
-    <string name="txt_eaten_products">Products I have</string>
+    <string name="add_nutrient_prompt_text">Přidejte další podrobnosti pro dokončení produktu</string>
+    <string name="add_category_prompt_text">Přidejte kategorii, která pomůže produkt dokončit</string>
+    <string name="add_nutrient_category_prompt_text">Přidejte kategorii a další podrobnosti pro dokončení produktu</string>
+    <string name="txt_eaten_products">Produkty, které mám</string>
     <string name="txt_products_to_buy">Nákupní seznam</string>
     <string name="intent_filter_share_label">Add to Open Products Facts</string>
     <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".

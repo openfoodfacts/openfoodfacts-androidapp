@@ -107,13 +107,13 @@ We use the following libraries, and we're not closed to changes where relevant :
 If you spot any libraries we added or we don't use anymore, feel free to update this list using a Pull Request.
 
 - [Dagger 2](https://github.com/google/dagger) - A fast dependency injector for Android and Java
-- [Retrofit](http://square.github.io/retrofit/) - Retrofit turns your REST API into a Java interface
+- [Retrofit](https://square.github.io/retrofit/) - Retrofit turns your REST API into a Java interface
 - [OkHttp](https://github.com/square/okhttp) - An HTTP+SPDY client for Android and Java applications
 - [Mockito](https://github.com/mockito/mockito) - Most popular Mocking framework for unit tests written in Java
 - [Apache](https://github.com/apache/commons-io) - The Apache Commons IO library contains utility classes, stream implementations, file filters, file comparators, endian transformation classes, and much more.
 - [RxJava](https://github.com/ReactiveX/RxJava) - Reactive Extensions for the JVM – a library for composing asynchronous and event-based programs using observable sequences for the Java VM.
 - [android-async-http](https://loopj.com/android-async-http/) - A Callback-Based Http Client Library for Android
-- [Jackson](http://jackson.codehaus.org) - Core part of Jackson that defines Streaming API as well as basic shared abstractions
+- [Jackson](https://github.com/FasterXML/jackson) - Core part of Jackson that defines Streaming API as well as basic shared abstractions
 - [code-mc/loadtoast](https://github.com/code-mc/loadtoast) - Pretty material design toasts with feedback animations
 - [journeyapps/zxing-android-embedded](https://github.com/journeyapps/zxing-android-embedded) - Barcode scanner library for Android, based on the ZXing decoder
 - [koush/ion](https://github.com/koush/ion) - Android Asynchronous Networking and Image Loading

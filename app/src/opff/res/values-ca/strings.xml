@@ -25,7 +25,7 @@
     <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Pet Food Facts.</string>
     <string name="msg_share">Mireu aquest producte a Open Food Facts:</string>
     <string name="not_support_books">Actualment, els llibres no són compatibles amb Open Food Facts</string>
-    <string name="txt_broaden_search">- amplieu la cerca \n- escanegeu-lo i afegiu-lo a Open Food Facts</string>
+    <string name="txt_broaden_search">- amplieu la cerca \n- escanegeu-ho i afegiu-ho a Open Food Facts</string>
     <string name="Donation">Cliqueu aquí per a fer un donatiu a Open Food Facts</string>
     <string name="translate_help_title">Ajudeu a traduir Open Food Facts</string>
     <string name="translate_help_summary">Porteu la base de dades Open Food Facts al vostre idioma - no es requereix cap coneixement tècnic</string>
@@ -44,8 +44,8 @@
     <string name="txt_eaten_products">Productes que tinc</string>
     <string name="txt_products_to_buy">Productes per comprar</string>
     <string name="intent_filter_share_label">Add to Open Pet Food Facts</string>
-    <string name="txt_info_eaten_products">Podreu afegir producte a aquesta llista escanejant productes, arrossegant la targeta de producte cap amunt i tocant a \"Productes per comprar\".
-        També podreu afegir productes a aquesta llista buscant-los i fent clic al botó + a la part superior dreta de la pàgina del producte.</string>
+    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
+        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
     <string name="OFFlogo">Logo d\'Open Pet Food Facts</string>
     <string name="brand_hint">Exemples: Purina, Whiskas, etc…</string>
 </resources>

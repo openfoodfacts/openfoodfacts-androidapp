@@ -16,16 +16,16 @@
     <string name="slide_1_title">المساهمة في شفافية طعام الحيوانات الأليفة</string>
     <string name="slide_1_desc">قم بمسح المنتجات ضوئيًا والتقاطها في صورة وجعل شفافية طعام الحيوانات الأليفة تحدث</string>
     <string name="slide_2_title">احصل على الحقائق</string>
-    <string name="slide_2_desc">معلومات شاملة حول المنتج الذي تم مسحه ضوئيًا وفك شفرته لك</string>
+    <string name="slide_2_desc">معلومات شاملة حول المنتج الذي تم مسحه ضوئياً وفك شفرته لك</string>
     <string name="slide_3_title">تتبع المنتج الذي تستخدمه</string>
     <string name="slide_3_desc">جميع أغذية الحيوانات الأليفة التي تمسحها ضوئيًا ، في قائمة واحدة سهلة الاستخدام يمكنك تصديرها</string>
     <string name="slide_4_title">يعمل بدون اتصال</string>
     <string name="slide_4_desc">يمكنك إضافة منتجات جديدة ، حتى إذا لم يكن لديك اتصال بالإنترنت في الوقت الحالي</string>
     <string name="txtDialogsContent">المنتج [[%1$s]] الذي مسحته غير موجود حتى الآن في Open Products Facts. هل يمكنك إضافته؟</string>
     <string name="txtDialogsContentPowerMode">المنتج الذي مسحته موجودًا بالفعل في Open Pet Food Facts.</string>
-    <string name="msg_share">انظر لهذا المنتج على Open Food Facts:</string>
+    <string name="msg_share">انظر إلى هذا المنتج على Open Food Facts :</string>
     <string name="not_support_books">الكتب ليست مدعومة في الوقت الحالي من قبل \"حقائق الغذاء المفتوحة\"</string>
-    <string name="txt_broaden_search">-توسيع نطاق \n-البحث الخاص بك امسح و إضفه إلى Open Food Facts</string>
+    <string name="txt_broaden_search">- توسيع نطاق البحث \n- مسح ضوئي وإضافته إلى Open Food Facts</string>
     <string name="Donation">انقر هنا للتبرع لـ Open Food Facts</string>
     <string name="translate_help_title">المساعدة في ترجمة Open Food Facts</string>
     <string name="translate_help_summary">قم تحويل قاعدة بيانات Open Food Facts إلى لغتك - دون الحاجة إلى معرفة فنية</string>
@@ -33,7 +33,7 @@
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">لن يتم إرسال معلومات الحساسية الخاصة بك إلى Open Food Facts. أيضاً، احذر من أن بيانات المنتج قد لا تكون دقيقة، وقد لا يكون الكشف دقيقاً 100%، لذا يرجى التحقق مرة أخرى بنفسك! </string>
     <!-- OPFF tagline in different languages -->
     <string name="version_string">افتح تطبيق Beauty Facts على Android</string>
-    <string name="tagline">قاعدة بيانات مجانية لمنتجات أغذية الحيوانات الأليفة</string>
+    <string name="tagline">free pet food products database</string>
     <string name="product_not_found">المنتج %1$s الذي مسحته غير موجود حتى الآن في Open Products Facts. هل يمكنك إضافته؟</string>
     <string name="currently_on_version">حاليًا في Open Pet Food Facts</string>
     <string name="category_game_btn">مساعدة في تصنيف المنتجات</string>

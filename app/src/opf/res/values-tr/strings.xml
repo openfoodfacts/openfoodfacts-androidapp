@@ -33,7 +33,7 @@
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Alerji Bilgileriniz asla Open Products Facts sunucusuna gönderilmeyecektir. Aynı zamanda ürün verilerinin kesin olmayabileceği ve algılamanın %100 hassas olmayabileceği konusunda dikkatli olun, bu yüzden lüften kendiniz iki kere kontrol edin!</string>
     <!-- OPF tagline in different languages -->
     <string name="version_string">Open Products Facts Android Uygulaması</string>
-    <string name="tagline">ücretsiz ürün veritabanı</string>
+    <string name="tagline">the free product database</string>
     <string name="product_not_found">Taradığın ürün henüz Open Beauty Facts\'de bulunmamaktadır. Onu sen ekleyebilir misin?</string>
     <string name="currently_on_version">Open Products Facts\'te mevcut olan</string>
     <string name="category_game_btn">Ürünleri kategorize etmeye yardım edin</string>
