@@ -137,7 +137,7 @@ dependencies {
     implementation("com.github.chrisbanes:PhotoView:2.3.0")
 
     // UI Component : Material Dialog
-    implementation("com.afollestad.material-dialogs:core:0.9.6.0") {
+    implementation("com.afollestad.material-dialogs:core:3.3.0") {
         isTransitive = true
     }
 
