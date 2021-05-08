@@ -11,4 +11,11 @@
 /fastlane/.env
 
 # Unsupported locales
-/app/src/main/res/values-kab-rKAB/*
+/app/src/main/res/values-kab-rKAB/strings.xml
+/app/src/main/res/values-sr-rCyrl-rME/strings.xml
+/app/src/main/res/values-kab/strings.xml
+/app/src/main/res/values-tzl-rTZL/strings.xml
+/app/src/main/res/values-val-rES/strings.xml
+/app/src/main/res/values-vec-rIT/strings.xml
+/app/src/main/res/values-zea-rZEA/strings.xml
+
