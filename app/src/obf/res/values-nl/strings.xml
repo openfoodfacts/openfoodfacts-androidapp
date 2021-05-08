@@ -35,7 +35,7 @@
     <string name="product_not_found">Het gescande product %1$s bestaat nog niet in Open Beauty Facts. Voeg deze toe?</string>
     <string name="currently_on_version">Momenteel op Open Beauty Facts</string>
     <string name="category_game_btn">Help producten te categoriseren</string>
-    <!-- TODO add true support instead of overriding strings -->
+    
     <string name="add_nutrient_prompt_text">Voeg meer details toe om het product te helpen voltooien</string>
     <string name="add_category_prompt_text">Voeg een categorie toe om het product te helpen voltooien</string>
     <string name="add_nutrient_category_prompt_text">Voeg een categorie en meer details toe om het product te helpen voltooien</string>

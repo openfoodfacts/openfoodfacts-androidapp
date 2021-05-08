@@ -37,7 +37,7 @@
     <string name="product_not_found">Výrobek %1$s, který jste naskenovali, ještě neexistuje v Open Pet Food Facts. Můžete ho přidat?</string>
     <string name="currently_on_version">Aktuálně na Open Pet Food Facts</string>
     <string name="category_game_btn">Pomozte roztřídit produkty</string>
-    <!-- TODO add true support instead of overriding strings -->
+    
     <string name="add_nutrient_prompt_text">Přidat výživové údaje pro výpočet živin</string>
     <string name="add_category_prompt_text">Přidejte kategorii, která pomůže produkt dokončit</string>
     <string name="add_nutrient_category_prompt_text">Add a category and nutrition facts to help complete the product</string>

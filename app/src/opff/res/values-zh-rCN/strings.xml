@@ -37,7 +37,7 @@
     <string name="product_not_found">您扫描的产品 %1$s 尚不存在于 Open Pet Food Fact。您可以将其添加进去吗？</string>
     <string name="currently_on_version">Open Pet Food Facts的当前状况</string>
     <string name="category_game_btn">帮助分类产品</string>
-    <!-- TODO add true support instead of overriding strings -->
+    
     <string name="add_nutrient_prompt_text">添加营养成分以计算营养水平</string>
     <string name="add_category_prompt_text">添加类别以帮助完成产品</string>
     <string name="add_nutrient_category_prompt_text">添加类别和营养成分以帮助完善产品信息</string>
