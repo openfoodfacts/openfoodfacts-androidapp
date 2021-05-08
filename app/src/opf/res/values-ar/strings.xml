@@ -37,7 +37,6 @@
     <string name="product_not_found">المنتج %1$s الذي مسحته غير موجود حتى الآن في Open Products Facts. هل يمكنك إضافته؟</string>
     <string name="currently_on_version">حاليًا في Open Products Facts</string>
     <string name="category_game_btn">مساعدة في تصنيف المنتجات</string>
-    <!-- TODO add true support instead of overriding strings -->
     <string name="add_nutrient_prompt_text">أضف المزيد من التفاصيل للمساعدة في استكمال المنتج</string>
     <string name="add_category_prompt_text">أضف المزيد من التفاصيل للمساعدة في استكمال المنتج</string>
     <string name="add_nutrient_category_prompt_text">أضف فئة ومزيد من التفاصيل للمساعدة في إكمال المنتج</string>
