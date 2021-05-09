@@ -7,13 +7,21 @@ updates:
     directory: "/app"
     schedule:
       interval: "daily"
+    labels:
+      - "dependencies"
 
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "daily"
-      
+      labels:
+        - "dependencies"
+          labels:
+            - "dependencies"
+
   - package-ecosystem: "bundler"
     directory: "/"
     schedule:
       interval: "daily"
+      labels:
+        - "dependencies"
