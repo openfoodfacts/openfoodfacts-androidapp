@@ -441,17 +441,17 @@ class OpenFoodAPIClient @Inject constructor(
          * Add a product to ScanHistory synchronously
          */
         fun HistoryProductDao.addToHistorySync(product: Product, language: String) {
-            val historyProducts = queryBuilder()
-                    .where(HistoryProductDao.Properties.Barcode.eq(product.code))
-                    .uniqueOrThrow()
+            val historyProducts: HistoryProduct? = queryBuilder()
+                .where(HistoryProductDao.Properties.Barcode.eq(product.code))
+                .unique()
             val hp = HistoryProduct(
-                    product.productName,
-                    product.brands,
-                    product.getImageSmallUrl(language),
-                    product.code,
-                    product.quantity,
-                    product.nutritionGradeFr,
-                    product.ecoscore,
+                product.productName,
+                product.brands,
+                product.getImageSmallUrl(language),
+                product.code,
+                product.quantity,
+                product.nutritionGradeFr,
+                product.ecoscore,
                     product.novaGroups
             )
             if (historyProducts != null) hp.id = historyProducts.id
