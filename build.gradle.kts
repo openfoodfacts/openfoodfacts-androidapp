@@ -24,7 +24,6 @@ buildscript {
     repositories {
         google()
         mavenCentral()
-        jcenter()
         maven("https://jitpack.io")
     }
     dependencies {
@@ -49,7 +48,7 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-        jcenter()
+        jcenter() // We need this for matomo!!
         maven("https://jitpack.io")
     }
 
