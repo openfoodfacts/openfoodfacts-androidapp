@@ -124,8 +124,8 @@ jobs:
       - name: Workaround for Android Gradle Plugin issue
         run: "echo \"ndk.dir=${ANDROID_HOME}/ndk-bundle\" > local.properties"
 
-      - name: Increase gradle daemon memory
-        run: "echo \"org.gradle.jvmargs=-Xmx4096m\" > gradle.properties"
+      #- name: Increase gradle daemon memory
+      #  run: "echo \"org.gradle.jvmargs=-Xmx4096m\" > gradle.properties"
 
       - name: Lint sources
         uses: eskatos/gradle-command-action@v1
