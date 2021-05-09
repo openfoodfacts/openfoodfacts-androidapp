@@ -1,76 +1,55 @@
-ניתן לסרוק מוצרי מזון או את הברקוד שלהם כדי לקבל נתונים על מוצרים, תוספים ועובדות תזונתיות.
+<h1>▶ Scan, find & compare more than 1,3 million food products</h1>
 
-◀ איתור והשוואה של למעלה מ־800,000 מוצרים
+The app allows to scan the 1,3 million products already contained in the free and open database Open Food Facts.
+היישומון הוא שיתופי. אם אין אצלנו את המוצר, ניתן להוסיף תמונות ונתונים כדי לקבל Nutri-Score וציון NOVA על עיבוד המזון.
 
-היישומון מאפשר לצפות ב־800,000 מוצרים (לרבות 175,000 בארה״ב) שכבר מהווים חלק ממסד הנתונים החופשי והפתוח Open Food Facts, וגם להוסיף תמונות ונתונים על מוצרים חדשים.
+In short, we're kind of "the Wikipedia of food", as many have nicknamed the project. Open Food Facts has enabled the creation of over 100 apps like Date Limite, Yuka or FoodVisor.
 
+To discover the volunteer-run Open Food Facts project, visit https://world.openfoodfacts.org/discover
 
-כדי להיחשף למיזם Open Food Facts שמופעל על ידי מתנדבים ניתן לבקר ב־https://world.openfoodfacts.org
+<h1>▶ Choose the products that are good for you</h1>
 
-◀ לבחור את המוצרים שעושים טוב לך
-- ציון ה־Nutri-Score, מ־„A” עד „E” >> איכות תזונתית
-- קבוצת ה־NOVA, מ־„1” עד „4” >> זיהוי מזון מעובד במיוחד
-- ניתן להשוות כמה מוצרים שבא לך, זה לצד זה פשוט על ידי סריקתם. 
+➜ The Nutri-Score grade, from A to E :  Nutritional quality
+➜ The NOVA group, from 1 to 4 : Avoid ultra-processed foods (Group 4)
 
-◀ ולכדור הארץ!
-- ההשפעה הפחמנית של המזון שלך
-- קבלת תחושה על המיכסה הפחמנית היומית שנפלטת עקב המזון שצרכת
-- בהתאם לטביעות הרגל שמחושבות עבור צרפת על ידי ADEME.
-- אפשר להצטרף אלינו ולסייע לנו לקדם את ההשפעה הפחמנית במדינה שלך!
-- כדי להציג טביעת רגל פחמנית, למוצר חייבת להיות רשימת רכיבים מלאה עם אחוזי בשר או דג לצד כמות
+<h1>▶ Contribute to Food Transparency</h1>
 
+➜ Open Food Facts is a food products database made by everyone, for everyone.
+➜ You can use it to make better food choices, and as it is open data, anyone can re-use it for any purpose.
+➜ You can start contributing today by adding a product from your fridge.
+➜ Open Food Facts is a non-profit project developed by thousands of volunteers from around the world. יש לנו המון מיזמים מלהיבים שניתן לתרום להם במגוון דרכים שונות.
 
-◀ תרומה לשקיפות המזון
-- Open Food Facts הוא מסד נתוני מזון שנוצר על ידי כולם, למען כולם.
-- ניתן להשתמש בו כדי לבחור מזון טוב יותר וכיוון שהנתונים שלו פתוחים, כולם יכולים לגזור ממנו לכל מטרה.
-- Open Food Facts הוא מיזם ללא מטרות רווח אותו מפתחים אלפי מתנדבים מכל רחבי העולם. יש לנו המון מיזמים מלהיבים שניתן לתרום להם במגוון דרכים שונות.
-- ניתן להתחיל לתרום כבר היום על ידי הוספת מוצרים מהמקרר שלך.
+<h1>◀ פענוח תוויות מזון</h1>
 
-◀ יצירת רשימות
-ליצור רשימות קניות, לעקוב אחר מה שאכלת ולשתף ולייצר את הרשימות שלך בקלות.
+➜ Open Food Facts helps you decipher products labels. You will be able to find:
+➜ carbon footprint (CO2 emissions) and packaging (as well as recycling instructions),
+➜ Nutriscore (nutritional score), nutrients, fat / fat content, saturated fatty acids, carbohydrates, sugars, fiber, protein and salt and sodium.
+➜ brands, allergens, labels (bio, gluten free, vegan, vegetarian, halal, kosher ...), traceability information (packaging codes, origins of ingredients)
+➜ On wines and beers, you will find the alcohol content.
 
-◀ להכיר את העובדות
-- מיזם Open Food Facts מסייע לך להבין את האותיות הקטנות שעל תוויות מוצרי המזון. ניתן למצוא:
-- טביעת רגל פחמנית (פליטת CO2) ואריזה (לרבות הוראות מיחזור),
-- Nutriscore (ציון תזונתי), חומרי הזנה, שומן / תוכן שומן, חומצות שומן רווי, פחמימות, סוכרים, סיבים, חלבון, מלח ונתרן.
-- מותגים, מעוררי רגישות/אלרגנים, תוויות (ביו, נטול גלוטן, טבעוני, צמחוני, חלאל, כשרות…), פרטי מעקב (קוד אריזה, מקורות רכיבים)
-- על יינות ובירות ניתן למצוא את תכולת האלכוהול.
+<h1>▶ Our grades are science-based, and the project is helping science back!</h1>
+➜ We don't make up things. אנו נסמכים על מדע שנסקר על ידי עמיתינו.
+➜ The Nutri-Score has been created by the independent French team led by Professor Hercberg.
+➜ The NOVA groups on food processing have been designed by the international team of Professor Monteiro.
+➜ The additives synthesis is based on reviews by EFSA on exposure levels on food additives.
+➜ The Open Food Facts community is collaborating with research teams across the planet to improve nutrition research that benefits all.
 
+<h1>▶ Works well in any condition</h1>
+➜ You can add new products, even with bad or no Internet connection
+➜ The app loads only the minimum to reduce data and battery consumption
+➜ You don't need a camera to look up a product. ניתן גם להקליד את הברקוד אם אין לך מצלמה או אם נתקלת בתקלה כלשהי.
 
-◀ מבוסס על מדע, מסייע למדע בחזרה!
+<h1>▶ Your food, your data. Privacy-friendly app.</h1>
+➜ Your data is yours, and is never sent online
+➜ You can use the app anonymously
+➜ You can export your scan history
 
-- אנחנו לא ממציאים דברים. אנו נסמכים על מדע שנסקר על ידי עמיתינו.
-- Nutri-Score נוצר על ידי הקבוצה הצרפתית העצמאית בראשית פרופסור הרכברג.
-- קבוצות ה־NOVA על עיבוד מזון תוכננו על ידי הצוות הבינלאומי של פרופסור מונטניירו.
-- ניתן לקבל סינתזה של רמות חשיפה מבית EFSA על תוספי מזון.
-- קהילת Open Food Facts משתפת פעולה עם קבוצות מחקר בכל רחבי העולם כדי לשפר את המחקר התזונתי למען כולם.
+<h1>▶ Set up allergen alerts on products</h1>
+➜ Milk, Gluten, Eggs, Soybeans, Nuts, Fish, Celery, Mustard, Sulphur dioxide and sulphites, Peanuts, Sesame seeds, Crustaceans, Molluscs or Lupin allergy ?
+➜ Speed up your shopping by doing an initial screening of your food with Open Food Facts.
+➜ Be careful that the information may not be 100% accurate, and detection may not be 100% accurate. תמיד חשוב לבדוק פעמיים, מול האריזה עצמה.
 
+<h1>▶ More</h1>
 
-◀ סריקה בלתי מקוונת: להמשיך לסרוק בכל מצב! (בקרוב)
-סריקה במהירות האור (אפילו במטוס, בצוללת או בסופר)
-
-- כל העולם, אצלך בכיס!
-- ניתן להוסיף מוצרים חדשים, אפילו אם אין לך חיבור לאינטרנט כרגע.
-- היישומון טוען רק את מה שנחוץ לו כדי לצמצם את צריכת תקשורת הנתונים והסוללה.
-
-◀ המזון שלך, הנתונים שלך
-- הנתונים שלך הם שלך והם אף פעם לא נשלחים לאינטרנט
-- ניתן להשתמש ביישומון בצורה אלמונית
-- יש לך אפשרות לייצא את היסטוריית הסריקה שלך
-
-◀ הגדרת אזהרות אלרגנים על מוצרים
-- יש לך אלרגיה לחלב, גלוטן, ביצים, פולי סויה, אגוזים, דגים, סלרי, חרדל, גופרית דו-חמצנית וסולפיטים, בוטנים, זרעי שומשום, סרטנים, רכיכות או לתורמוס?
-- ניתן לערוך קניות בזריזות על ידי שיקוף ראשוני של המזון שלך עם Open Food Facts.
-- מומלץ לנקוט במשנה זהירות כיוון שיכול להיות שהמידע אינו מדויק ב־100% והזיהוי עשוי לא להיות מדויק ב־100%. תמיד חשוב לבדוק פעמיים, מול האריזה עצמה.
-
-
-◀ נשמח להכיר אותך ו/או לצרף אותך אלינו!
-
-
-מיזם Open Food Facts זמין גם דרך אתר האינטרנט https://world.openfoodfacts.org
-
-
-שאלות, משוב: contact@openfoodfacts.org
-
-
-למוצרי טיפוח, ניתן להתקין את Open Beauty Facts, למזון לחיות מחמד את Open Pet Food Facts ולכל שאר המוצרים את Open Products Facts.
+Open Food Facts is also available on the web at <a href="https://world.openfoodfacts.org">https://world.openfoodfacts.org</a>
+Questions, feedback : <a href="mailto:contact@openfoodfacts.org">contact@openfoodfacts.org</a>

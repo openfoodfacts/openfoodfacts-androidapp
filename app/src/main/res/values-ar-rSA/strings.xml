@@ -24,28 +24,28 @@
         <item quantity="other"> لديك %d منتجات في وضع عدم الاتصال بإنتظار أن تُساهم به في Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
-        <item quantity="zero">%d seconds ago</item>
-        <item quantity="one">%d second ago</item>
+        <item quantity="zero">منذ بضع ثوان%d</item>
+        <item quantity="one">منذ ثانية</item>
         <item quantity="two">%d seconds ago</item>
         <item quantity="few">%d seconds ago</item>
         <item quantity="many">%d seconds ago</item>
         <item quantity="other">%d seconds ago</item>
     </plurals>
     <plurals name="minutes">
-        <item quantity="zero">%d minutes ago</item>
-        <item quantity="one">%d minute ago</item>
-        <item quantity="two">%d minutes ago</item>
-        <item quantity="few">%d minutes ago</item>
-        <item quantity="many">%d minutes ago</item>
+        <item quantity="zero">%d قبل دقيقة</item>
+        <item quantity="one">قبل دقيقة</item>
+        <item quantity="two">منذ %d دقيقة</item>
+        <item quantity="few">قبل دقيقة</item>
+        <item quantity="many">قبل دقيقة</item>
         <item quantity="other">%d minutes ago</item>
     </plurals>
     <plurals name="hours">
-        <item quantity="zero">%d hours ago</item>
-        <item quantity="one">%d hour ago</item>
-        <item quantity="two">%d hours ago</item>
+        <item quantity="zero">قبل ساعة</item>
+        <item quantity="one">قبل ساعة</item>
+        <item quantity="two">%d منذ ساعات</item>
         <item quantity="few">%d hours ago</item>
         <item quantity="many">%d hours ago</item>
-        <item quantity="other">%d hours ago</item>
+        <item quantity="other">%d منذ ساعات</item>
     </plurals>
     <plurals name="days">
         <item quantity="zero">منذ %d يوم</item>
@@ -239,7 +239,7 @@
     <string name="search_drawer">بحث</string>
     <string name="search_by_barcode_drawer">البحث عن طريق الرمز الشريطي</string>
     <string name="category_drawer">التصنيفات</string>
-    <string name="search_by_category">Atassnifate</string>
+    <string name="search_by_category">Category</string>
     <string name="scan_search">امسح</string>
     <string name="user_drawer">المستخدم</string>
     <string name="offline_edit_drawer">تعديل دون اتصال</string>
@@ -498,7 +498,7 @@
     <string name="packaging_subtitle">التعبئة والتغليف</string>
     <string name="packaging_string">التعبئة والتغليف</string>
     <string name="label_string">al3alama</string>
-    <string name="category_string">Atassnifate</string>
+    <string name="category_string">Category</string>
     <string name="connection">متصل</string>
     <string name="contributor_string">Almousstakhdimoun</string>
     <string name="app_disabled_text">التطبيق معطل</string>
@@ -550,9 +550,9 @@
     <string name="productAdditivesUnknown"></string>
     <string name="productAdditivesTemplate">%1$d إضافات</string>
     <plurals name="productAdditives">
-        <item quantity="zero">%d additives</item>
-        <item quantity="one">%d additive</item>
-        <item quantity="two">%d additives</item>
+        <item quantity="zero">مواد الإضافية </item>
+        <item quantity="one">%d المواد المضافة</item>
+        <item quantity="two">%d مادة مضافة</item>
         <item quantity="few">%d additives</item>
         <item quantity="many">%d additives</item>
         <item quantity="other">%d additives</item>
@@ -830,4 +830,11 @@
     <!-- Changelog String -->
     <string name="changelog_translation_help">Want to see this changelog in %s?\nJoin the translation team!</string>
     <string name="whats_new">What\'s new with Open Food Facts?</string>
+    <string name="eco_score_slide_4_title">Eco-Score</string>
+    <string name="join_the_food_revolution">Join the food revolution</string>
+    <string name="slide_1_text_revolution">Scan food, Take photos, Help transform the food system</string>
+    <string name="get_the_nutri_score">الحصول على Nutriscore (مجموع نقاط التغذية)</string>
+    <string name="synthesis_of_nutrition_slide_2_text">A simple synthesis of the nutritional quality of your food</string>
+    <string name="avoid_ultra_processed_foods">Avoid ultra-processed foods</string>
+    <string name="nova_slide_3_text">Reduce the amount of ultra-processed foods in your diet.</string>
 </resources>

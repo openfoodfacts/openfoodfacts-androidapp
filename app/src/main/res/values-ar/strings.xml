@@ -618,7 +618,6 @@
     <string name="your_version">خاصة بك</string>
     <string name="ingredients_picture">صورة لقائمة المكونات</string>
     <string name="packaging">Recycling</string>
-    <string name="recycling_picture">Recycling Picture</string>
     <string name="take_ingredients_picture_to_extract">(يرجى التقاط صورة للمكونات ليتم إستخراجها تلقائيًا)</string>
     <string name="ingredients_list">قائمة المكونات</string>
     <string name="ingredients_hint">حافظ على الترتيب ، أو حدد النسبة المئوية عند تحديدها ، أو افصلها باستخدام فاصلة أو استخدام \"-\" أو استخدم \"()\" لمكون أحد المكونات ، أو احاطة المواد المسببة للحساسية مع _</string>

@@ -118,7 +118,7 @@
         <item>Ácido mead (20:3 n-9)</item>
         <item>Ácido melissico (30:0)</item>
         <item>Molibdénio</item>
-        <item>Lípidos monoinsaturados</item>
+        <item>Gordura monoinsaturada</item>
         <item>Ácido montânico (28:0)</item>
         <item>Ácido mirístico (14:0)</item>
         <item>Ácido nervônico (24:1 n-9)</item>
@@ -132,7 +132,7 @@
         <item>pH</item>
         <item>Fósforo</item>
         <item>Álcoois de açúcar (polióis)</item>
-        <item>Lípidos poli-insaturados</item>
+        <item>Gordura poliinsaturada</item>
         <item>Potássio</item>
         <item>Selénio</item>
         <item>Proteínas séricas</item>
@@ -155,7 +155,6 @@
         <item>Vitamina K</item>
         <item>Zinco</item>
     </string-array>
-    <!-- Text units -->
     <!-- Content Description -->
     <string name="search_button">Procurar</string>
     <string name="alert_dialog_warning_title">Aviso</string>
@@ -322,8 +321,8 @@
     <string name="for_100g">Por 100 g</string>
     <string name="for_100ml">Por 100 ml</string>
     <string name="serving">Por porção</string>
-    <string name="nutrition_monounsaturatedFat">Lípidos monoinsaturados</string>
-    <string name="nutrition_polyunsaturatedFat">Lípidos poli-insaturados</string>
+    <string name="nutrition_monounsaturatedFat">Gordura monoinsaturada</string>
+    <string name="nutrition_polyunsaturatedFat">Gordura poliinsaturada</string>
     <string name="nutrition_omega3">Ómega 3</string>
     <string name="nutrition_omega6">Ómega 6</string>
     <string name="nutrition_omega9">Ómega 9</string>
@@ -805,4 +804,11 @@
     <!-- Changelog String -->
     <string name="changelog_translation_help">Quer ver este relatório de alterações em %s?\nJunte-se à equipa de tradução!</string>
     <string name="whats_new">O que há de novo no Open Food Facts?</string>
+    <string name="eco_score_slide_4_title">Eco-Score</string>
+    <string name="join_the_food_revolution">Junte-se à revolução alimentar</string>
+    <string name="slide_1_text_revolution">Digitalize alimentos, tire fotografias, ajude a transformar o sistema alimentar</string>
+    <string name="get_the_nutri_score">Obtenha o Nutri-Score</string>
+    <string name="synthesis_of_nutrition_slide_2_text">Uma síntese simples da qualidade nutricional da sua comida</string>
+    <string name="avoid_ultra_processed_foods">Evite alimentos ultraprocessados</string>
+    <string name="nova_slide_3_text">Reduza a quantidade de alimentos ultraprocessados na sua dieta.</string>
 </resources>

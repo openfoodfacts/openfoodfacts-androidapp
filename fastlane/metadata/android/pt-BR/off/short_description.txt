@@ -1,1 +1,1 @@
-A base de dados de produtos aberta
+Scan food and to get ingredients, additives and nutrition facts

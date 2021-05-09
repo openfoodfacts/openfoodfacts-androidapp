@@ -151,7 +151,7 @@
         <item>아연</item>
     </string-array>
     <!-- Content Description -->
-    <string name="search_button">수색</string>
+    <string name="search_button">검색</string>
     <string name="alert_dialog_warning_title">경고</string>
     <string name="alert_dialog_warning_msg_user">사용자/비밀번호가 변경되었습니다, 정보를 새로고침 해주세요</string>
     <string name="toast_retrieving">로딩중…</string>
@@ -209,8 +209,8 @@
     <string name="install">설치</string>
     <string name="open_beauty_drawer">Open Beauty Facts</string>
     <string name="open_food_drawer">Open Food Facts</string>
-    <string name="search_drawer">수색</string>
-    <string name="search_by_barcode_drawer">바코드를 입력해주세요.</string>
+    <string name="search_drawer">검색</string>
+    <string name="search_by_barcode_drawer">바코드 입력</string>
     <string name="category_drawer">카테고리</string>
     <string name="search_by_category">카테고리</string>
     <string name="scan_search">바코드 스캔</string>
@@ -218,7 +218,7 @@
     <string name="offline_edit_drawer">오프라인 편집</string>
     <string name="txt_anonymous">익명</string>
     <string name="delete_txt">삭제</string>
-    <string name="sign_in_drawer">로그인하기</string>
+    <string name="sign_in_drawer">로그인</string>
     <string name="alert_drawer">알레르기 항원 경보</string>
     <string name="your_lists">내 목록</string>
     <string name="title_dialog_alert">경보 추가하기</string>
@@ -290,7 +290,7 @@
     <string name="contribution_without_account">로그인하거나 계정을 만들어서 기부를 유지할 수 있습니다.</string>
     <string name="textCarbonFootprint">탄소 발자국 / CO2 배출량: </string>
     <string name="packaging_environmentTab">Packaging:</string>
-    <string name="action_search">수색</string>
+    <string name="action_search">검색</string>
     <string name="search_hint">제품 검색하기</string>
     <string name="number_of_results">제품 수: </string>
     <string name="number_of_products">제품 수: </string>
@@ -367,7 +367,7 @@
     <string name="take_picture">사진 촬영</string>
     <string name="choose_picture_from_gallery">갤러리에서 선택</string>
     <string name="take_picture_ingredients">Take a picture of the ingredients</string>
-    <string name="take_picture_recycling">Take a photo of the recycling instructions</string>
+    <string name="take_picture_recycling">재활용 지침 사진 촬영</string>
     <string name="take_picture_front">정면 사진 찍기</string>
     <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
     <string name="take_more_pictures">Take more pictures</string>
@@ -383,7 +383,7 @@
     <string name="disabled_message">Shortcut Not Available</string>
     <string name="scan_shortcut_short_label">스캔</string>
     <string name="scan_shortcut_long_label">제품 스캔</string>
-    <string name="barcode_shortcut_short_label">수색</string>
+    <string name="barcode_shortcut_short_label">검색</string>
     <string name="barcode_shortcut_long_label">바코드로 검색</string>
     <string name="history_shortcut_short_label">최근 기록</string>
     <string name="history_shortcut_long_label">최근 기록</string>
@@ -405,7 +405,7 @@
     <string name="scan_first_product">Scan your first product</string>
     <string name="device_on_mobile_data_warning_title">정보</string>
     <string name="device_on_mobile_data_warning_message">You have disabled upload on mobile data , please connect to WiFi or change this in preferences</string>
-    <string name="device_on_mobile_data_warning_positive">환경 설정</string>
+    <string name="device_on_mobile_data_warning_positive">환경설정</string>
     <string name="device_on_mobile_data_warning_negative">강제 업로드</string>
     <string name="changes_saved">변경 사항이 성공적으로 저장되었습니다</string>
     <string name="proceed">Proceed</string>
@@ -465,7 +465,7 @@
     <string name="brand_string">브랜드</string>
     <string name="additive_string">첨가물</string>
     <string name="allergen_string">알레르기 유발 성분</string>
-    <string name="search_string">수색</string>
+    <string name="search_string">검색</string>
     <string name="country_string">판매의 나라</string>
     <string name="store_subtitle">상점</string>
     <string name="packaging_subtitle">포장</string>
@@ -534,7 +534,7 @@
     <string name="switch_camera">카메라 전환</string>
     <string name="autofocus">자동 초점</string>
     <string name="initial_loading">초기 로딩</string>
-    <string name="preferences">환경 설정</string>
+    <string name="preferences">환경설정</string>
     <string name="OFFlogo">Open Food Facts 로고</string>
     <string name="loading_product">상품 불러오는 중… %s</string>
     <string name="image_not_defined_for_language">선택한 언어에 대한 이미지가 없습니다. 새로운 것을 추가 할 수 있습니다.</string>
@@ -698,7 +698,7 @@
     <string name="add_product">제품 추가</string>
     <string name="add_another_product">다른 제품 추가</string>
     <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
-    <string name="product_summary_action_compare_button_label">비교하기</string>
+    <string name="product_summary_action_compare_button_label">비교</string>
     <string name="product_summary_action_add_to_list_button_label">목록에 추가</string>
     <string name="product_summary_action_edit_button_label">수정</string>
     <string name="product_summary_action_share_button_label">공유하기</string>
@@ -783,7 +783,7 @@
     <string name="icon_categories">카테고리 아이콘</string>
     <string name="icon_emb">Traceability code icon</string>
     <string name="product_front_image">제품 전면 이미지</string>
-    <string name="brand_hint">Examples: Coca-Cola, Nestle, etc…</string>
+    <string name="brand_hint">예시: 코카콜라, 네슬레 등</string>
     <string name="sign_in_or_register">Sign in or register</string>
     <string name="hunger_game_call_to_action">Help classify more %1$s</string>
     <string name="txtHomeOnline">Open Food Facts는 %1$s개 이상의 제품(및 기여할 제품)을 포함한 공개 데이터베이스입니다.</string>
@@ -798,4 +798,11 @@
     <!-- Changelog String -->
     <string name="changelog_translation_help">Want to see this changelog in %s?\nJoin the translation team!</string>
     <string name="whats_new">What\'s new with Open Food Facts?</string>
+    <string name="eco_score_slide_4_title">Eco-Score</string>
+    <string name="join_the_food_revolution">Join the food revolution</string>
+    <string name="slide_1_text_revolution">Scan food, Take photos, Help transform the food system</string>
+    <string name="get_the_nutri_score">뉴트리 스코 (Nutri-score) 얻기</string>
+    <string name="synthesis_of_nutrition_slide_2_text">A simple synthesis of the nutritional quality of your food</string>
+    <string name="avoid_ultra_processed_foods">Avoid ultra-processed foods</string>
+    <string name="nova_slide_3_text">Reduce the amount of ultra-processed foods in your diet.</string>
 </resources>

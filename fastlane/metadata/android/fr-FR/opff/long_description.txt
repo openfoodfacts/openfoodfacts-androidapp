@@ -9,15 +9,14 @@ Pour découvrir le projet Open Pet Food Facts, rendez-vous sur https://world-fr.
 - Open Pet Food Facts est une base de données de produits alimentaires pour animaux de compagnie faite par tout le monde, pour tout le monde.
 - Vous pouvez l'utiliser pour faire de meilleurs choix d'aliments pour animaux de compagnie, et comme ce sont des données ouvertes, n'importe qui peut le réutiliser pour n'importe quel but.
 - Open Pet Food Facts est un projet à but non lucratif développé par des milliers de volontaires du monde entier. Nous avons beaucoup de projets passionnants auxquels vous pouvez contribuer de différentes façons. 
-- Vous pouvez commencer à contribuer aujourd'hui en ajoutant un produit de l'armoire de votre animal de compagnie. 
-
+- Vous pouvez commencer à contribuer aujourd'hui en ajoutant un produit de l'armoire de votre animal de compagnie.
 
 *** Obtenez les faits ***
 
 Vous pourrez également trouver (selon les indications présentes sur les produits):
 - liste des ingrédients (y compris la teneur en cendres)
 - infos nutritionnelles, feux nutritionnels …
-- marques, allergènes, labels (bio, végétaliens ...)
+- marques, allergènes, labels (bio, végétaliens…)
 - Open Pet Food Facts fonctionne avec de la nourriture pour chien (nourriture sèche pour chien et nourriture pour chien humide), nourriture pour chat, nourriture pour lapins, nourriture pour serpent, nourriture pour poissons, nourriture pour oiseaux, nourriture pour chevaux ou toute nourriture pour votre animal préféré.
 
 *** Fonctionne bien dans toutes les conditions ***

@@ -9,8 +9,7 @@ Om het Open Pet Food Facts project te ontdekken, bezoek https://world.openpetfoo
 - Open Pet Food Facts is een database met huisdiervoedingsproducten gemaakt door iedereen, voor iedereen.
 - Je kunt de database gebruiken om betere keuzes voor huisdiervoeding te maken, en omdat het open data is, kan iedereen het voor elk doel hergebruiken.
 - Open Pet Food Facts is een non-profit-project ontwikkeld door duizenden vrijwilligers wereldwijd. We hebben veel spannende projecten waar je op veel verschillende manieren aan kunt bijdragen. 
-- Je kunt vandaag beginnen met een bijdrage te leveren door een product uit de voorraad van je huisdier toe te voegen. 
-
+- Je kunt vandaag beginnen met een bijdrage te leveren door een product uit de voorraad van je huisdier toe te voegen.
 
 *** Ken de feiten ***
 

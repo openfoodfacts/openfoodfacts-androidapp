@@ -1,1 +1,1 @@
-Открытая база данных продуктов
+Scan food and to get ingredients, additives and nutrition facts
