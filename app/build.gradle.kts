@@ -85,9 +85,6 @@ dependencies {
     implementation("io.reactivex.rxjava2:rxandroid:2.1.1")
     implementation("com.jakewharton.rxrelay2:rxrelay:2.1.1")
 
-    //Rx optional
-    implementation("com.gojuno.koptional:koptional:1.7.0")
-    implementation("com.gojuno.koptional:koptional-rxjava2-extensions:1.7.0")
 
     //Networking
     implementation("com.squareup.retrofit2:retrofit:2.6.4")
