@@ -37,17 +37,17 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib:${rootProject.extra["kotlinVersion"]}")
 
     // Android KTX
-    implementation("androidx.fragment:fragment-ktx:1.3.2")
-    implementation("androidx.activity:activity-ktx:1.2.2")
+    implementation("androidx.fragment:fragment-ktx:1.3.3")
+    implementation("androidx.activity:activity-ktx:1.2.3")
     implementation("androidx.preference:preference-ktx:1.1.1")
-    implementation("androidx.core:core-ktx:1.5.0-rc01")
+    implementation("androidx.core:core-ktx:1.6.0-alpha03")
 
 
     // AndroidX
     implementation("androidx.appcompat:appcompat:1.2.0")
     implementation("androidx.browser:browser:1.3.0")
     implementation("androidx.concurrent:concurrent-futures:1.1.0")
-    implementation("androidx.recyclerview:recyclerview:1.1.0")
+    implementation("androidx.recyclerview:recyclerview:1.2.0")
     implementation("androidx.cardview:cardview:1.0.0")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
     implementation("androidx.annotation:annotation:1.2.0")
