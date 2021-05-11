@@ -24,7 +24,6 @@ import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import androidx.viewpager2.widget.ViewPager2
-import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -147,7 +146,7 @@ class ProductViewActivity : BaseActivity(), OnRefreshListener {
      */
     private fun initViews() {
         adapterResult = setupViewPager(binding.pager)
-        TabLayoutMediator(binding.tabs, binding.pager) { tab: TabLayout.Tab, position: Int ->
+        TabLayoutMediator(binding.tabs, binding.pager) { tab, position ->
             tab.text = adapterResult!!.getPageTitle(position)
         }.attach()
         binding.navigationBottomInclude.bottomNavigation.selectNavigationItem(0)
