@@ -1,49 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/ -->
-    <string name="website">crwdns128784:0crwdne128784:0</string>
+    <string name="website">crwdns179474:0crwdne179474:0</string>
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/contribuer -->
-    <string name="website_contribute">crwdns128786:0crwdne128786:0</string>
+    <string name="website_contribute">crwdns179476:0crwdne179476:0</string>
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/decouvrir -->
-    <string name="website_discover">crwdns128788:0crwdne128788:0</string>
+    <string name="website_discover">crwdns179478:0crwdne179478:0</string>
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/produit/ -->
-    <string name="website_product">crwdns128790:0crwdne128790:0</string>
+    <string name="website_product">crwdns179480:0crwdne179480:0</string>
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/contributeur/ -->
-    <string name="website_contributor">crwdns128794:0crwdne128794:0</string>
-    <string name="terms_url">crwdns128796:0crwdne128796:0</string>
-    <string name="txtHomeOnline">crwdns151854:0%1$scrwdne151854:0</string>
-    <string name="txtHome">crwdns153026:0crwdne153026:0</string>
-    <string name="slide_1_title">crwdns128806:0crwdne128806:0</string>
-    <string name="slide_1_desc">crwdns128808:0crwdne128808:0</string>
-    <string name="slide_2_title">crwdns128810:0crwdne128810:0</string>
-    <string name="slide_2_desc">crwdns128812:0crwdne128812:0</string>
-    <string name="slide_3_title">crwdns128814:0crwdne128814:0</string>
-    <string name="slide_3_desc">crwdns128816:0crwdne128816:0</string>
-    <string name="slide_4_title">crwdns128818:0crwdne128818:0</string>
-    <string name="slide_4_desc">crwdns128820:0crwdne128820:0</string>
-    <string name="txtDialogsContent">crwdns128822:0crwdne128822:0</string>
-    <string name="msg_share">crwdns128824:0crwdne128824:0</string>
-    <string name="txt_broaden_search">crwdns128826:0crwdne128826:0</string>
-    <string name="Donation">crwdns128828:0crwdne128828:0</string>
-    <string name="translate_help_title">crwdns128830:0crwdne128830:0</string>
-    <string name="translate_help_summary">crwdns128832:0crwdne128832:0</string>
-    <string name="text_offline_info_dialog">crwdns128834:0crwdne128834:0</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">crwdns128836:0% acrwdne128836:0</string>
-    <!-- OBF tagline in different languages -->
-    <string name="version_string">crwdns128850:0crwdne128850:0</string>
-    <string name="tagline">crwdns128852:0crwdne128852:0</string>
-    <string name="product_not_found">crwdns128856:0%1$scrwdne128856:0</string>
-    <string name="currently_on_version">crwdns128858:0crwdne128858:0</string>
-    <string name="category_game_btn">crwdns128860:0crwdne128860:0</string>
-    <!-- TODO add true support instead of overriding strings -->
-    <string name="add_nutrient_prompt_text">crwdns128864:0crwdne128864:0</string>
-    <string name="add_category_prompt_text">crwdns128866:0crwdne128866:0</string>
-    <string name="add_nutrient_category_prompt_text">crwdns128868:0crwdne128868:0</string>
+    <string name="website_contributor">crwdns179484:0crwdne179484:0</string>
+    <string name="terms_url">crwdns179486:0crwdne179486:0</string>
+    <string name="txtHomeOnline">crwdns179492:0%1$scrwdne179492:0</string>
+    <string name="txtHome">crwdns179494:0crwdne179494:0</string>
+    <string name="slide_1_title">crwdns179496:0crwdne179496:0</string>
+    <string name="slide_1_desc">crwdns179498:0crwdne179498:0</string>
+    <string name="slide_2_title">crwdns179500:0crwdne179500:0</string>
+    <string name="slide_2_desc">crwdns179502:0crwdne179502:0</string>
+    <string name="slide_3_title">crwdns179504:0crwdne179504:0</string>
+    <string name="slide_3_desc">crwdns179506:0crwdne179506:0</string>
+    <string name="slide_4_title">crwdns179508:0crwdne179508:0</string>
+    <string name="slide_4_desc">crwdns179510:0crwdne179510:0</string>
+    <string name="txtDialogsContent">crwdns179512:0crwdne179512:0</string>
+    <string name="msg_share">crwdns179514:0crwdne179514:0</string>
+    <string name="txt_broaden_search">crwdns179516:0crwdne179516:0</string>
+    <string name="Donation">crwdns179518:0crwdne179518:0</string>
+    <string name="translate_help_title">crwdns179520:0crwdne179520:0</string>
+    <string name="translate_help_summary">crwdns179522:0crwdne179522:0</string>
+    <string name="text_offline_info_dialog">crwdns179524:0crwdne179524:0</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">crwdns179526:0crwdne179526:0</string>
+    <!-- Open Beauty Facts tagline in different languages -->
+    <string name="version_string">crwdns179540:0crwdne179540:0</string>
+    <string name="tagline">crwdns179542:0crwdne179542:0</string>
+    <string name="product_not_found">crwdns179546:0%1$scrwdne179546:0</string>
+    <string name="currently_on_version">crwdns179548:0crwdne179548:0</string>
+    <string name="category_game_btn">crwdns179550:0crwdne179550:0</string>
+    <string name="add_nutrient_prompt_text">crwdns179554:0crwdne179554:0</string>
+    <string name="add_category_prompt_text">crwdns179556:0crwdne179556:0</string>
+    <string name="add_nutrient_category_prompt_text">crwdns179558:0crwdne179558:0</string>
     <string name="required_to_compute_nutriscore"></string>
-    <string name="txt_eaten_products">crwdns128870:0crwdne128870:0</string>
-    <string name="txt_products_to_buy">crwdns128872:0crwdne128872:0</string>
-    <string name="intent_filter_share_label">crwdns128874:0crwdne128874:0</string>
-    <string name="brand_hint">crwdns128876:0crwdne128876:0</string>
-    <string name="txt_info_eaten_products">crwdns128878:0crwdne128878:0</string>
-    <string name="OFFlogo">crwdns128880:0crwdne128880:0</string>
+    <string name="txt_eaten_products">crwdns179560:0crwdne179560:0</string>
+    <string name="txt_products_to_buy">crwdns179562:0crwdne179562:0</string>
+    <string name="intent_filter_share_label">crwdns179564:0crwdne179564:0</string>
+    <string name="brand_hint">crwdns179566:0crwdne179566:0</string>
+    <string name="txt_info_eaten_products">crwdns179568:0crwdne179568:0</string>
+    <string name="OFFlogo">crwdns179570:0crwdne179570:0</string>
 </resources>

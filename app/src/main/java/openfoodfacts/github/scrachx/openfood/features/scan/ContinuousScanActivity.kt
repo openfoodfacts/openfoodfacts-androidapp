@@ -244,11 +244,15 @@ class ContinuousScanActivity : BaseActivity() {
                     binding.quickViewTags.adapter = null
                     binding.quickViewProgress.visibility = View.GONE
                     binding.quickViewProgressText.visibility = View.GONE
+
                     if (productState.status == 0L) {
                         tryDisplayOffline(offlineSavedProduct, barcode, R.string.product_not_found)
                     } else {
                         val product = productState.product!!
                         this.product = product
+
+                        // Add product to scan history
+                        productDisp = client.addToHistory(product).subscribeOn(Schedulers.io()).subscribe()
 
                         // If we're here from comparison -> add product, return to comparison activity
                         if (intent.getBooleanExtra(ProductCompareActivity.KEY_COMPARE_PRODUCT, false)) {
@@ -256,10 +260,10 @@ class ContinuousScanActivity : BaseActivity() {
                                 putExtra(ProductCompareActivity.KEY_PRODUCT_FOUND, true)
 
                                 val productsToCompare = intent.extras!!.getSerializable(ProductCompareActivity.KEY_PRODUCTS_TO_COMPARE) as ArrayList<Product>
-                                if (productsToCompare.contains(product)) {
+                                if (product in productsToCompare) {
                                     putExtra(ProductCompareActivity.KEY_PRODUCT_ALREADY_EXISTS, true)
                                 } else {
-                                    productsToCompare.add(product)
+                                    productsToCompare += product
                                     matomoAnalytics.trackEvent(AnalyticsEvent.AddProductToComparison(product.code))
                                 }
                                 putExtra(ProductCompareActivity.KEY_PRODUCTS_TO_COMPARE, productsToCompare)
@@ -267,8 +271,6 @@ class ContinuousScanActivity : BaseActivity() {
                             })
                         }
 
-                        // Add product to scan history
-                        productDisp = client.addToHistory(product).subscribeOn(Schedulers.io()).subscribe()
                         showAllViews()
                         binding.txtProductCallToAction.let {
                             it.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0)

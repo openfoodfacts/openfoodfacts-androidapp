@@ -23,10 +23,10 @@
     <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet connection right now</string>
     <string name="txtDialogsContent">The product you scanned does not exist yet in Open Pet Food Facts. Please add it.</string>
     <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Pet Food Facts.</string>
-    <string name="msg_share">Погледнете този продукт в Open Food Facts:</string>
+    <string name="msg_share">Look at this product on Open Food Facts :</string>
     <string name="not_support_books">Книгите понастоящем не се поддържат от Open Food Facts</string>
-    <string name="txt_broaden_search">- разширяване на търсенето ви \n- сканиране и добавяне към Open Food Facts</string>
-    <string name="Donation">Щракнете тук, за да направите дарение на Open Food Facts</string>
+    <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
+    <string name="Donation">Click here to donate to Open Food Facts</string>
     <string name="translate_help_title">Помогнете за превода на Open Food Facts</string>
     <string name="translate_help_summary">Въведете Open Food Facts база данни във вашия език без изискване за техничекси познания</string>
     <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Pet Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
@@ -37,7 +37,6 @@
     <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Pet Food Facts. Can you add it?</string>
     <string name="currently_on_version">Currently on Open Pet Food Facts</string>
     <string name="category_game_btn">Помогнете с категоризирането на продуктите</string>
-    <!-- TODO add true support instead of overriding strings -->
     <string name="add_nutrient_prompt_text">Add nutrition facts to compute nutrient levels</string>
     <string name="add_category_prompt_text">Add a category to help complete the product</string>
     <string name="add_nutrient_category_prompt_text">Add a category and nutrition facts to help complete the product</string>

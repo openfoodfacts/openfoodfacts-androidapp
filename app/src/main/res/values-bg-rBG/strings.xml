@@ -24,15 +24,15 @@
         <item quantity="other">преди %d секунди</item>
     </plurals>
     <plurals name="minutes">
-        <item quantity="one">%d minute ago</item>
+        <item quantity="one">преди 1 минута</item>
         <item quantity="other">%d minutes ago</item>
     </plurals>
     <plurals name="hours">
-        <item quantity="one">%d hour ago</item>
+        <item quantity="one">преди 1 час</item>
         <item quantity="other">%d hours ago</item>
     </plurals>
     <plurals name="days">
-        <item quantity="one">%d day ago</item>
+        <item quantity="one">вчера</item>
         <item quantity="other">%d days ago</item>
     </plurals>
     <string name="action_about">Относно</string>
@@ -528,7 +528,7 @@
     <string name="productAdditivesUnknown"></string>
     <string name="productAdditivesTemplate">%1$d добавки</string>
     <plurals name="productAdditives">
-        <item quantity="one">%d additive</item>
+        <item quantity="one">%d добавка</item>
         <item quantity="other">%d additives</item>
     </plurals>
     <string name="product_not_complete">This product is not yet complete. \nCan you add some details?</string>
@@ -806,4 +806,11 @@
     <!-- Changelog String -->
     <string name="changelog_translation_help">Want to see this changelog in %s?\nJoin the translation team!</string>
     <string name="whats_new">What\'s new with Open Food Facts?</string>
+    <string name="eco_score_slide_4_title">Eco-Score</string>
+    <string name="join_the_food_revolution">Join the food revolution</string>
+    <string name="slide_1_text_revolution">Scan food, Take photos, Help transform the food system</string>
+    <string name="get_the_nutri_score">Вземете Nutri-Score</string>
+    <string name="synthesis_of_nutrition_slide_2_text">A simple synthesis of the nutritional quality of your food</string>
+    <string name="avoid_ultra_processed_foods">Avoid ultra-processed foods</string>
+    <string name="nova_slide_3_text">Reduce the amount of ultra-processed foods in your diet.</string>
 </resources>

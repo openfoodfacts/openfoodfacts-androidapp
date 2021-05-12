@@ -28,7 +28,7 @@
         <item quantity="other">prieš %d sekundes</item>
     </plurals>
     <plurals name="minutes">
-        <item quantity="one">%d minute ago</item>
+        <item quantity="one">prieš %d minutę</item>
         <item quantity="few">%d minutes ago</item>
         <item quantity="many">%d minutes ago</item>
         <item quantity="other">%d minutes ago</item>
@@ -40,10 +40,10 @@
         <item quantity="other">prieš %d valandų</item>
     </plurals>
     <plurals name="days">
-        <item quantity="one">%d day ago</item>
+        <item quantity="one">Prieš %d dieną</item>
         <item quantity="few">%d days ago</item>
         <item quantity="many">%d days ago</item>
-        <item quantity="other">%d days ago</item>
+        <item quantity="other">prieš %d dienų</item>
     </plurals>
     <string name="action_about">About</string>
     <string name="action_discover">Atrasti</string>
@@ -197,7 +197,7 @@
     <string name="hintBarcode">Barkodas</string>
     <string name="txtNutriScoreInfo">Sužinokite daugiau apie maistinių medžiagų kiekį</string>
     <string name="txtloginHelper">Jei turite Open Food Facts paskyrą, galite čia prisijungti</string>
-    <string name="hintLogin">Username</string>
+    <string name="hintLogin">Login</string>
     <string name="hintPass">Slaptažodis</string>
     <string name="errorLogin">Prisijungimo vardo ar slaptažodžio klaida</string>
     <string name="errorWeb">Mums nepavyko prisijungti prie interneto. Ar turite ryšio problemų?</string>
@@ -240,7 +240,7 @@
     <string name="select_camera">Pasirinkite fotoaparatą</string>
     <string name="ok_button">Gerai</string>
     <string name="cancel_button">Cancel</string>
-    <string name="login_button">Username</string>
+    <string name="login_button">Login</string>
     <string name="create_account_button">Sukurti paskyrą</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
     <string name="title_info_dialog">Kaip tai veikia?</string>
@@ -467,7 +467,7 @@
     <string name="preference_analytics_bottom_sheet_grant_button">Grant</string>
     <string name="preference_analytics_bottom_sheet_decline_button">Decline</string>
     <string name="scan_first_string">Jūsų peržiūrėta produkto istorija bus pateikta čia.\nŠi istorija skirta tik jūsų akims ir yra saugoma lokaliai.</string>
-    <string name="log_in">Username</string>
+    <string name="log_in">Login</string>
     <string name="login_true">Already logged in!</string>
     <string name="confirm_logout">Confirm Logout</string>
     <string name="logout_dialog_content">Are you sure to log out ?</string>
@@ -538,10 +538,10 @@
     <string name="productAdditivesUnknown"></string>
     <string name="productAdditivesTemplate">%1$d priedų</string>
     <plurals name="productAdditives">
-        <item quantity="one">%d additive</item>
+        <item quantity="one">%d priedas</item>
         <item quantity="few">%d additives</item>
         <item quantity="many">%d additives</item>
-        <item quantity="other">%d additives</item>
+        <item quantity="other">%d priedų</item>
     </plurals>
     <string name="product_not_complete">Šis produktas dar nėra pabaigtas. \nAr galite pridėti šiek tiek informacijos?</string>
     <string name="addProductOffline">Esi neprisijungęs. Pridėti produktą %s naudojant neprisijungusį režimą?</string>
@@ -816,4 +816,11 @@
     <!-- Changelog String -->
     <string name="changelog_translation_help">Norite pamatyti šį keitimo žurnalą %s?\nPrisijunkite prie vertimo komandos!</string>
     <string name="whats_new">Kas naujo su „Open Food Facts“?</string>
+    <string name="eco_score_slide_4_title">Eco-Score</string>
+    <string name="join_the_food_revolution">Join the food revolution</string>
+    <string name="slide_1_text_revolution">Scan food, Take photos, Help transform the food system</string>
+    <string name="get_the_nutri_score">Gaukite „Nutri-Score“</string>
+    <string name="synthesis_of_nutrition_slide_2_text">A simple synthesis of the nutritional quality of your food</string>
+    <string name="avoid_ultra_processed_foods">Avoid ultra-processed foods</string>
+    <string name="nova_slide_3_text">Reduce the amount of ultra-processed foods in your diet.</string>
 </resources>
