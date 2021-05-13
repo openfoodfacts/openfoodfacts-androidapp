@@ -14,15 +14,15 @@ import javax.inject.Inject
  * @param workerParams Parameters to setup the internal state of this worker
  */
 @HiltWorker
-class SavedProductUploadWorker @AssistedInject constructor(
-        @Assisted appContext: Context,
-        @Assisted workerParams: WorkerParameters
+class ImagesUploaderWorker @AssistedInject constructor(
+    @Assisted appContext: Context,
+    @Assisted workerParams: WorkerParameters
 ) : RxWorker(appContext, workerParams) {
     @Inject
     lateinit var client: OpenFoodAPIClient
 
     override fun createWork() = client
-            .uploadOfflineImages()
-            .toSingleDefault(Result.success())
-            .onErrorReturnItem(Result.failure())
+        .uploadOfflineImages()
+        .toSingleDefault(Result.success())
+        .onErrorReturnItem(Result.failure())
 }

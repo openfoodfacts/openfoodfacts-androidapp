@@ -49,7 +49,7 @@ import openfoodfacts.github.scrachx.openfood.features.product.ProductFragmentPag
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.images.IMG_ID
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
-import openfoodfacts.github.scrachx.openfood.jobs.OfflineProductWorker.Companion.scheduleSync
+import openfoodfacts.github.scrachx.openfood.jobs.ProductUploaderWorker.Companion.scheduleProductUpload
 import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
@@ -318,7 +318,7 @@ class ProductEditActivity : BaseActivity() {
         )
         daoSession.offlineSavedProductDao!!.insertOrReplace(toSaveOffline)
 
-        scheduleSync(this, sharedPreferences)
+        scheduleProductUpload(this, sharedPreferences)
         daoSession.historyProductDao.addToHistorySync(toSaveOffline)
 
         Toast.makeText(this, R.string.productSavedToast, Toast.LENGTH_SHORT).show()

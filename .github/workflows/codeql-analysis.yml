@@ -15,7 +15,7 @@ jobs:
 
     steps:
       - name: Checkout sources
-        uses: actions/checkout@v2
+        uses: actions/checkout@v2.3.4
 
         # Initializes the CodeQL tools for scanning.
       - name: Initialize CodeQL
@@ -33,7 +33,7 @@ jobs:
         run: "echo \"ndk.dir=${ANDROID_HOME}/ndk-bundle\" > local.properties"
 
       - name: Build debug APKs
-        uses: eskatos/gradle-command-action@v1
+        uses: eskatos/gradle-command-action@v1.3.3
         with:
           arguments: assembleDebug --stacktrace
 

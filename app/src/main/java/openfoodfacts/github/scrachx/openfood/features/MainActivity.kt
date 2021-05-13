@@ -93,7 +93,7 @@ import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivi
 import openfoodfacts.github.scrachx.openfood.features.searchbycode.SearchByCodeFragment
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
-import openfoodfacts.github.scrachx.openfood.jobs.OfflineProductWorker.Companion.scheduleSync
+import openfoodfacts.github.scrachx.openfood.jobs.ProductUploaderWorker.Companion.scheduleProductUpload
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
@@ -414,7 +414,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
 
         //Scheduling background image upload job
         scheduleProductUploadJob(this)
-        scheduleSync(this, sharedPreferences)
+        scheduleProductUpload(this, sharedPreferences)
 
         //Adds nutriscore and quantity values in old history for schema 5 update
         val mSharedPref = applicationContext.getSharedPreferences("prefs", 0)

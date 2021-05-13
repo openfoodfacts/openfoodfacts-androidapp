@@ -257,6 +257,11 @@ android {
         getByName("debug") {
             applicationIdSuffix = ".debug"
             isDebuggable = true
+
+            // Uncomment to use dev server
+//            buildConfigField("String", "HOST", "\"https://ssl-api.openfoodfacts.net\"")
+//            buildConfigField("String", "OFWEBSITE", "\"https://www.openfoodfacts.net/\"")
+//            buildConfigField("String", "STATICURL", "\"https://static.openfoodfacts.net\"")
         }
 
         create("screenshots") {

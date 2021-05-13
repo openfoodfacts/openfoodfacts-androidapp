@@ -52,7 +52,7 @@ import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.features.LoginActivity
 import openfoodfacts.github.scrachx.openfood.features.scan.ContinuousScanActivity
 import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivity.Companion.start
-import openfoodfacts.github.scrachx.openfood.jobs.SavedProductUploadWorker
+import openfoodfacts.github.scrachx.openfood.jobs.ImagesUploaderWorker
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import org.apache.commons.validator.routines.checkdigit.EAN13CheckDigit
 import java.io.*
@@ -159,9 +159,9 @@ object Utils {
         if (isUploadJobInitialised) return
 
         val periodicity = TimeUnit.MINUTES.toSeconds(30).toInt()
-        val uploadWorkRequest = OneTimeWorkRequest.Builder(SavedProductUploadWorker::class.java)
-                .setConstraints(Constraints.Builder().setRequiredNetworkType(NetworkType.UNMETERED).build())
-                .setInitialDelay(periodicity.toLong(), TimeUnit.SECONDS).build()
+        val uploadWorkRequest = OneTimeWorkRequest.Builder(ImagesUploaderWorker::class.java)
+            .setConstraints(Constraints.Builder().setRequiredNetworkType(NetworkType.UNMETERED).build())
+            .setInitialDelay(periodicity.toLong(), TimeUnit.SECONDS).build()
         WorkManager.getInstance(context).enqueueUniqueWork(UPLOAD_JOB_TAG, ExistingWorkPolicy.KEEP, uploadWorkRequest)
 
         isUploadJobInitialised = true
