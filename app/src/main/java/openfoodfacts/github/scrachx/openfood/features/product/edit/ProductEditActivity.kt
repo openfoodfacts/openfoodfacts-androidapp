@@ -46,6 +46,7 @@ import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
 import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityEditProductBinding
 import openfoodfacts.github.scrachx.openfood.features.product.ProductFragmentPagerAdapter
+import openfoodfacts.github.scrachx.openfood.features.product.edit.overview.ProductEditOverviewFragment
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.images.IMG_ID
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
