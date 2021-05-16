@@ -32,6 +32,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.text.bold
+import androidx.fragment.app.viewModels
 import androidx.viewpager2.widget.ViewPager2
 import com.afollestad.materialdialogs.MaterialDialog
 import com.squareup.picasso.Picasso
@@ -75,7 +76,7 @@ import java.io.File
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.View {
+class IngredientsProductFragment : BaseFragment() {
     private var _binding: FragmentIngredientsProductBinding? = null
     private val binding get() = _binding!!
 
@@ -100,6 +101,8 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
     @Inject
     lateinit var localeManager: LocaleManager
 
+    private val viewModel: ProductIngredientsViewModel by viewModels()
+
     private val loginPref by lazy { requireActivity().getLoginPreferences() }
 
     private val performOCRLauncher = registerForActivityResult(PerformOCRContract())
@@ -117,7 +120,6 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
     private lateinit var productState: ProductState
     private lateinit var customTabActivityHelper: CustomTabActivityHelper
     private lateinit var customTabsIntent: CustomTabsIntent
-    private lateinit var presenter: IIngredientsProductPresenter.Actions
     private val photoReceiverHandler by lazy {
         PhotoReceiverHandler(sharedPreferences) { onPhotoReturned(it) }
     }
@@ -169,7 +171,8 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
         if (arguments != null) mSendProduct = getSendProduct()
 
         val product = this.productState.product!!
-        presenter = IngredientsProductPresenter(this, productRepository, product, localeManager).apply { addTo(disp) }
+        viewModel.product.value = product
+
         val vitaminTagsList = product.vitaminTags
         val aminoAcidTagsList = product.aminoAcidTags
         val mineralTags = product.mineralTags
@@ -177,8 +180,8 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
         if (vitaminTagsList.isNotEmpty()) {
             binding.cvVitaminsTagsText.visibility = View.VISIBLE
             binding.vitaminsTagsText.text = SpannableStringBuilder()
-                    .bold { append(getString(R.string.vitamin_tags_text)) }
-                    .append(tagListToString(vitaminTagsList))
+                .bold { append(getString(R.string.vitamin_tags_text)) }
+                .append(tagListToString(vitaminTagsList))
         }
         if (aminoAcidTagsList.isNotEmpty()) {
             binding.cvAminoAcidTagsText.visibility = View.VISIBLE
@@ -190,17 +193,23 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
             binding.cvMineralTagsText.visibility = View.VISIBLE
             binding.mineralTagsText.text = SpannableStringBuilder()
                     .bold { append(getString(R.string.mineral_tags_text)) }
-                    .append(tagListToString(mineralTags))
+                .append(tagListToString(mineralTags))
         }
         if (otherNutritionTags.isNotEmpty()) {
             binding.otherNutritionTags.visibility = View.VISIBLE
             binding.otherNutritionTags.text = SpannableStringBuilder()
-                    .bold { append(getString(R.string.other_tags_text)) }
-                    .append(tagListToString(otherNutritionTags))
+                .bold { append(getString(R.string.other_tags_text)) }
+                .append(tagListToString(otherNutritionTags))
         }
         binding.textAdditiveProduct.text = SpannableStringBuilder()
-                .bold { append(getString(R.string.txtAdditives)) }
-        presenter.loadAdditives()
+            .bold { append(getString(R.string.txtAdditives)) }
+
+        setAdditivesState(LOADING)
+        viewModel.additives.observe(viewLifecycleOwner) { additives ->
+            if (additives.isEmpty()) setAdditivesState(EMPTY)
+            else showAdditives(additives)
+        }
+
 
         if (!product.getImageIngredientsUrl(langCode).isNullOrBlank()) {
             binding.ingredientImagetipBox.setTipMessage(getString(R.string.onboarding_hint_msg, getString(R.string.image_edit_tip)))
@@ -241,13 +250,19 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
                 binding.extractIngredientsPrompt.visibility = View.VISIBLE
             }
         }
-        presenter.loadAllergens()
+
+        setAllergensState(LOADING)
+        viewModel.allergens.observe(viewLifecycleOwner) {
+            if (it.isEmpty()) setAllergensState(EMPTY)
+            else showAllergens(it)
+        }
+
         if (!product.traces.isNullOrBlank()) {
             val language = localeManager.getLanguage()
             binding.cvTextTraceProduct.visibility = View.VISIBLE
             binding.textTraceProduct.movementMethod = LinkMovementMethod.getInstance()
             binding.textTraceProduct.text = SpannableStringBuilder()
-                    .bold { append(getString(R.string.txtTraces)) }
+                .bold { append(getString(R.string.txtTraces)) }
             binding.textTraceProduct.append(" ")
             val traces = product.traces.split(",")
 
@@ -339,11 +354,11 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
         }
     }
 
-    override fun showAdditives(additives: List<AdditiveName>) {
+    fun showAdditives(additives: List<AdditiveName>) {
         showAdditives(additives, binding.textAdditiveProduct, wikidataClient, this, disp)
     }
 
-    override fun setAdditivesState(state: ProductInfoState) {
+    private fun setAdditivesState(state: ProductInfoState) {
         when (state) {
             LOADING -> {
                 binding.cvTextAdditiveProduct.visibility = View.VISIBLE
@@ -353,12 +368,12 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
         }
     }
 
-    override fun showAllergens(allergens: List<AllergenName>) {
+    fun showAllergens(allergens: List<AllergenName>) {
         binding.textSubstanceProduct.movementMethod = LinkMovementMethod.getInstance()
         binding.textSubstanceProduct.text = SpannableStringBuilder()
-                .bold { append(getString(R.string.txtSubstances)) }
-                .append(" ")
-                .append(allergens.joinToString(", ") { getAllergensTag(it) })
+            .bold { append(getString(R.string.txtSubstances)) }
+            .append(" ")
+            .append(allergens.joinToString(", ") { getAllergensTag(it) })
     }
 
 
@@ -381,7 +396,7 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
         }
     }
 
-    override fun setAllergensState(state: ProductInfoState) {
+    private fun setAllergensState(state: ProductInfoState) {
         when (state) {
             LOADING -> {
                 binding.textSubstanceProduct.visibility = View.VISIBLE
