@@ -922,7 +922,10 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         else newFrontImage()
 
 
+
     fun resetScroll() {
+        // TODO: should not check for binding, this should be done in another way
+        if (!isAdded) return
         binding.scrollView.scrollTo(0, 0)
         binding.analysisTags.adapter?.let {
             (it as IngredientAnalysisTagsAdapter).filterVisibleTags()
