@@ -1,8 +1,8 @@
-Scan food products or their barcode to obtain data on ingredients, additives and nutrition facts.
+Scan pet food products or their barcode to obtain data on ingredients, additives and nutrition facts.
 
 For human food, you can install Open Food Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.
 
-To discover the volunteer-run Open Food Facts project, visit https://world.openfoodfacts.org
+To discover the Open Pet Food Facts project, please visit https://world.openpetfoodfacts.org
 
 *** Contribute to Pet Food Transparency ***
 
