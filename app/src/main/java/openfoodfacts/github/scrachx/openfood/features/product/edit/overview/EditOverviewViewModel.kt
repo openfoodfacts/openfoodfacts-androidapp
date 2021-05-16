@@ -13,7 +13,7 @@ import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
 import javax.inject.Inject
 
 @HiltViewModel
-class OverviewViewModel @Inject constructor(
+class EditOverviewViewModel @Inject constructor(
     private val daoSession: DaoSession,
     private val localeManager: LocaleManager
 ) : ViewModel() {

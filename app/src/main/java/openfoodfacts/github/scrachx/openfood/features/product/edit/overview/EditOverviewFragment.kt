@@ -81,7 +81,7 @@ import javax.inject.Inject
  * Product Overview fragment of AddProductActivity
  */
 @AndroidEntryPoint
-class ProductEditOverviewFragment : ProductEditFragment() {
+class EditOverviewFragment : ProductEditFragment() {
     private var _binding: FragmentAddProductOverviewBinding? = null
     private val binding get() = _binding!!
 
@@ -485,7 +485,7 @@ class ProductEditOverviewFragment : ProductEditFragment() {
     @Inject
     lateinit var daoSession: DaoSession
 
-    private val viewModel: OverviewViewModel by viewModels()
+    private val viewModel: EditOverviewViewModel by viewModels()
 
     /**
      * Auto load suggestions into various NachoTextViews
@@ -583,14 +583,14 @@ class ProductEditOverviewFragment : ProductEditFragment() {
                     binding.name.isActivated = false
                 }
                 .doOnError {
-                    Log.e(ProductEditOverviewFragment::class.java.simpleName, "Error retrieving product state from server api.", it)
+                    Log.e(EditOverviewFragment::class.java.simpleName, "Error retrieving product state from server api.", it)
                     binding.name.setText(StringUtils.EMPTY)
                     binding.name.isActivated = true
                 }
                 .subscribe { productState ->
                     if (productState.status != 1L) {
                         Log.e(
-                            ProductEditOverviewFragment::class.simpleName,
+                            EditOverviewFragment::class.simpleName,
                             "Retrieved product with code ${productState.code}, but status was not successful."
                         )
                         binding.name.setText(StringUtils.EMPTY)
