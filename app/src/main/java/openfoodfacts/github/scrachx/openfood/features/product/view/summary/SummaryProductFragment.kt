@@ -607,8 +607,9 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
             binding.productAllergenAlertLayout.visibility = View.VISIBLE
             return
         }
-        binding.productAllergenAlertText.text =
-            "${resources.getString(R.string.product_allergen_prompt)}\n${data.allergens.joinToString(", ")}"
+        binding.productAllergenAlertText.text = StringBuilder(resources.getString(R.string.product_allergen_prompt))
+            .append("\n").append(data.allergens.joinToString(", "))
+
         binding.productAllergenAlertLayout.visibility = View.VISIBLE
     }
 

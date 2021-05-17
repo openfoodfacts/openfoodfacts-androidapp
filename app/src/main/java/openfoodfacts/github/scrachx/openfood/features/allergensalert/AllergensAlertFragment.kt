@@ -22,6 +22,7 @@ import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
 import androidx.core.content.res.ResourcesCompat
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView.AdapterDataObserver
 import com.afollestad.materialdialogs.MaterialDialog
@@ -29,6 +30,8 @@ import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.rx2.await
 import net.steamcrafted.loadtoast.LoadToast
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
@@ -102,6 +105,7 @@ class AllergensAlertFragment : NavigationBaseFragment() {
                 .doOnError { Log.e(LOG_TAG, "getAllergensByLanguageCode", it) }
                 .subscribe { allergens -> allergensFromDao = allergens }
                 .addTo(disp)
+
         mSettings = requireActivity().getSharedPreferences("prefs", 0)
     }
 
@@ -140,7 +144,9 @@ class AllergensAlertFragment : NavigationBaseFragment() {
                                 .title(R.string.title_dialog_alert)
                                 .items(allergens.map { it.name })
                                 .itemsCallback { _, _, position, _ ->
-                                    productRepository.setAllergenEnabled(allergens[position].allergenTag, true)
+                                    viewLifecycleOwner.lifecycleScope.launch {
+                                        productRepository.setAllergenEnabled(allergens[position].allergenTag, true).await()
+                                    }
                                     mAllergensEnabled!!.add(allergens[position])
                                     adapter.notifyItemInserted(mAllergensEnabled!!.size - 1)
                                     binding.allergensRecycle.scrollToPosition(adapter.itemCount - 1)
