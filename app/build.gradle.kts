@@ -21,6 +21,7 @@ plugins {
     id("kotlin-parcelize")
     id("kotlin-kapt")
     id("dagger.hilt.android.plugin")
+    id("org.jetbrains.dokka") version "1.4.32"
 }
 
 fun obtainTestBuildType(): String {
@@ -35,12 +36,22 @@ fun obtainTestBuildType(): String {
 dependencies {
     // Kotlin
     implementation("org.jetbrains.kotlin:kotlin-stdlib:${rootProject.extra["kotlinVersion"]}")
+    val coroutinesVersion = "1.5.0"
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-rx2:$coroutinesVersion")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion-RC")
+
 
     // Android KTX
     implementation("androidx.fragment:fragment-ktx:1.3.3")
     implementation("androidx.activity:activity-ktx:1.2.3")
     implementation("androidx.preference:preference-ktx:1.1.1")
     implementation("androidx.core:core-ktx:1.6.0-alpha03")
+
+    val viewModelKtxVer = "2.3.1"
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$viewModelKtxVer")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$viewModelKtxVer")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$viewModelKtxVer")
 
 
     // AndroidX
@@ -55,6 +66,7 @@ dependencies {
     implementation("androidx.multidex:multidex:2.0.1")
     implementation("androidx.viewpager2:viewpager2:1.0.0")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
+
 
     val workVersion = "2.5.0"
     implementation("androidx.work:work-runtime:$workVersion")

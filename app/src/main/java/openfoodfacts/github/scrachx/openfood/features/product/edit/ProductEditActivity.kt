@@ -46,6 +46,8 @@ import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
 import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityEditProductBinding
 import openfoodfacts.github.scrachx.openfood.features.product.ProductFragmentPagerAdapter
+import openfoodfacts.github.scrachx.openfood.features.product.edit.ingredients.EditIngredientsFragment
+import openfoodfacts.github.scrachx.openfood.features.product.edit.overview.EditOverviewFragment
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.images.IMG_ID
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
@@ -98,8 +100,8 @@ class ProductEditActivity : BaseActivity() {
 
     private val addProductPhotosFragment = ProductEditPhotosFragment()
     private val nutritionFactsFragment = ProductEditNutritionFactsFragment()
-    private val ingredientsFragment = ProductEditIngredientsFragment()
-    private val editOverviewFragment = ProductEditOverviewFragment()
+    private val ingredientsFragment = EditIngredientsFragment()
+    private val editOverviewFragment = EditOverviewFragment()
 
     private val imagesFilePath = arrayOfNulls<String>(3)
 

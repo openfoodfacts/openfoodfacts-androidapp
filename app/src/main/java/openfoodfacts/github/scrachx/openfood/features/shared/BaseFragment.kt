@@ -24,6 +24,7 @@ import android.os.Bundle
 import android.provider.Settings
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.CallSuper
 import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
@@ -93,6 +94,7 @@ abstract class BaseFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener, 
     }
 
 
+    @CallSuper
     override fun refreshView(productState: ProductState) {
         swipeRefreshLayout?.isRefreshing = false
     }

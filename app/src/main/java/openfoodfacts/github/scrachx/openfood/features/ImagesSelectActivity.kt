@@ -85,7 +85,7 @@ class ImagesSelectActivity : BaseActivity() {
 
     private fun loadProductImages(code: String) {
         productsApi.getProductImages(code)
-                .map { extractImagesNameSortedByUploadTimeDesc(it) }
+            .map { it.extractImagesNameSortedByUploadTimeDesc() }
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnError { Log.e(LOG_TAG, "Cannot download images from server", it) }
                 .subscribe { imageNames ->

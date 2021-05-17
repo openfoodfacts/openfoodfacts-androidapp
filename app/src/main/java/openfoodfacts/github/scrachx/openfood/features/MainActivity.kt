@@ -170,6 +170,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // TODO: Are we sure we want to keep this?
         if (resources.getBoolean(R.bool.portrait_only)) {
             requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         }
@@ -236,7 +237,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
         // Add Manage Account profile if the user is connected
         if (isUserSet() && getUserSession() != null) updateProfileForCurrentUser()
 
-        //Create the drawer
+        // Create the drawer
         drawerResult = DrawerBuilder()
                 .withActivity(this)
                 .withToolbar(binding.toolbarInclude.toolbar)
@@ -295,6 +296,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
                             ITEM_CONTRIBUTE -> CustomTabActivityHelper.openCustomTab(this@MainActivity, customTabsIntent, contributeUri, WebViewFallback())
                             ITEM_INCOMPLETE_PRODUCTS -> start(this@MainActivity, SearchType.INCOMPLETE_PRODUCT, "") // Search and display the products to be completed by moving to ProductBrowsingListActivity
                             ITEM_OBF -> {
+
                                 val otherOFAppInstalled = isApplicationInstalled(this@MainActivity, BuildConfig.OFOTHERLINKAPP)
                                 if (otherOFAppInstalled) {
                                     val launchIntent = packageManager.getLaunchIntentForPackage(BuildConfig.OFOTHERLINKAPP)
@@ -305,16 +307,15 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
                                         startActivity(Intent().apply {
                                             action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
                                             data = Uri.fromParts("package", BuildConfig.OFOTHERLINKAPP, null)
-
                                         })
                                     }
                                 } else {
                                     try {
-                                        startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + BuildConfig.OFOTHERLINKAPP)))
+                                        startActivity(Intent(Intent.ACTION_VIEW, "market://details?id=${BuildConfig.OFOTHERLINKAPP}".toUri()))
                                     } catch (anfe: ActivityNotFoundException) {
                                         startActivity(Intent(
                                                 Intent.ACTION_VIEW,
-                                                Uri.parse("https://play.google.com/store/apps/details?id=${BuildConfig.OFOTHERLINKAPP}")
+                                            "https://play.google.com/store/apps/details?id=${BuildConfig.OFOTHERLINKAPP}".toUri()
                                         ))
                                     }
                                 }
@@ -336,7 +337,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
                                 negativeText(R.string.dialog_cancel)
                                 onPositive { _, _ -> logout() }
                                 onNegative { dialog, _ ->
-                                    Snackbar.make(binding.root, "Cancelled", BaseTransientBottomBar.LENGTH_SHORT).show()
+                                    Snackbar.make(binding.root, "Cancelled", BaseTransientBottomBar.LENGTH_SHORT).show()  // TODO: Is this useful?
                                     dialog.dismiss()
                                 }
                                 show()
@@ -393,6 +394,8 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
             //set the active profile
             headerResult.activeProfile = profile
         }
+
+        // FIXME: When set we cannot go to home fragment from bottom bar
         if (sharedPreferences.getBoolean("startScan", false)) {
             startActivity(Intent(this@MainActivity, ContinuousScanActivity::class.java).apply {
                 addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
