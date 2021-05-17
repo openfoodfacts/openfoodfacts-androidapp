@@ -110,6 +110,7 @@ class ProductPhotosAdapter(
             if (snackView == null) Toast.makeText(context, context.getString(R.string.changes_saved), Toast.LENGTH_SHORT).show()
             else Snackbar.make(snackView, R.string.changes_saved, Snackbar.LENGTH_SHORT).show()
 
+
             client.editImage(product.code, imgMap)
                     .subscribe { response -> displaySetImageName(response) }
                     .addTo(disp)

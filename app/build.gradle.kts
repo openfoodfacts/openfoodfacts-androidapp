@@ -21,6 +21,7 @@ plugins {
     id("kotlin-parcelize")
     id("kotlin-kapt")
     id("dagger.hilt.android.plugin")
+    id("org.jetbrains.dokka") version "1.4.32"
 }
 
 fun obtainTestBuildType(): String {
@@ -35,19 +36,29 @@ fun obtainTestBuildType(): String {
 dependencies {
     // Kotlin
     implementation("org.jetbrains.kotlin:kotlin-stdlib:${rootProject.extra["kotlinVersion"]}")
+    val coroutinesVersion = "1.5.0"
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-rx2:$coroutinesVersion")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion-RC")
+
 
     // Android KTX
-    implementation("androidx.fragment:fragment-ktx:1.3.2")
-    implementation("androidx.activity:activity-ktx:1.2.2")
+    implementation("androidx.fragment:fragment-ktx:1.3.3")
+    implementation("androidx.activity:activity-ktx:1.2.3")
     implementation("androidx.preference:preference-ktx:1.1.1")
-    implementation("androidx.core:core-ktx:1.5.0-rc01")
+    implementation("androidx.core:core-ktx:1.6.0-alpha03")
+
+    val viewModelKtxVer = "2.3.1"
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$viewModelKtxVer")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$viewModelKtxVer")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$viewModelKtxVer")
 
 
     // AndroidX
     implementation("androidx.appcompat:appcompat:1.2.0")
     implementation("androidx.browser:browser:1.3.0")
     implementation("androidx.concurrent:concurrent-futures:1.1.0")
-    implementation("androidx.recyclerview:recyclerview:1.1.0")
+    implementation("androidx.recyclerview:recyclerview:1.2.0")
     implementation("androidx.cardview:cardview:1.0.0")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
     implementation("androidx.annotation:annotation:1.2.0")
@@ -55,6 +66,7 @@ dependencies {
     implementation("androidx.multidex:multidex:2.0.1")
     implementation("androidx.viewpager2:viewpager2:1.0.0")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
+
 
     val workVersion = "2.5.0"
     implementation("androidx.work:work-runtime:$workVersion")
@@ -71,8 +83,8 @@ dependencies {
 
     implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
 
-    kapt("com.google.dagger:dagger-compiler:2.33")
-    implementation("com.google.dagger:dagger:2.33")
+    kapt("com.google.dagger:dagger-compiler:2.35.1")
+    implementation("com.google.dagger:dagger:2.35.1")
     implementation("com.google.dagger:hilt-android:${rootProject.extra["hiltVersion"]}")
 
     kapt("com.google.dagger:hilt-compiler:${rootProject.extra["hiltVersion"]}")
@@ -85,9 +97,6 @@ dependencies {
     implementation("io.reactivex.rxjava2:rxandroid:2.1.1")
     implementation("com.jakewharton.rxrelay2:rxrelay:2.1.1")
 
-    //Rx optional
-    implementation("com.gojuno.koptional:koptional:1.7.0")
-    implementation("com.gojuno.koptional:koptional-rxjava2-extensions:1.7.0")
 
     //Networking
     implementation("com.squareup.retrofit2:retrofit:2.6.4")
@@ -167,8 +176,8 @@ dependencies {
     // Unit Testing
     testImplementation("junit:junit:4.13.2")
     testImplementation("org.robolectric:robolectric:4.5.1")
-    testImplementation("org.mockito:mockito-core:3.8.0")
-    testImplementation("net.javacrumbs.json-unit:json-unit-fluent:2.24.0")
+    testImplementation("org.mockito:mockito-core:3.9.0")
+    testImplementation("net.javacrumbs.json-unit:json-unit-fluent:2.25.0")
     testImplementation("com.google.truth:truth:1.1.2")
     testImplementation("com.google.truth.extensions:truth-java8-extension:1.1.2")
 
@@ -176,8 +185,8 @@ dependencies {
     androidTestUtil("androidx.test:orchestrator:1.3.0")
 
     // Hilt for Android Testing
-    androidTestImplementation("com.google.dagger:hilt-android-testing:2.33-beta")
-    kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.33-beta")
+    androidTestImplementation("com.google.dagger:hilt-android-testing:2.35.1")
+    kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.35.1")
 
     androidTestImplementation("androidx.test:runner:1.3.0") { exclude("junit") }
     androidTestImplementation("androidx.test:rules:1.3.0")
@@ -258,6 +267,11 @@ android {
         getByName("debug") {
             applicationIdSuffix = ".debug"
             isDebuggable = true
+
+            // Uncomment to use dev server
+//            buildConfigField("String", "HOST", "\"https://ssl-api.openfoodfacts.net\"")
+//            buildConfigField("String", "OFWEBSITE", "\"https://www.openfoodfacts.net/\"")
+//            buildConfigField("String", "STATICURL", "\"https://static.openfoodfacts.net\"")
         }
 
         create("screenshots") {
