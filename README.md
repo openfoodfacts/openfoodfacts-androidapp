@@ -30,6 +30,9 @@ Open Food Facts is a non-profit association of volunteers.
 
 Data about food is of public interest and has to be open. The complete database is published as open data and can be reused by anyone and for any use. Check-out the cool reuses or make your own!
 
+## Documentation of the source code
+https://static.openfoodfacts.org/android/dokka/index.html
+
 
 ## Impact Roadmap
 ### A brilliant scan experience 
