@@ -21,14 +21,14 @@ To discover the volunteer-run Open Food Facts project, visit https://world.openf
 
 <h1>▶ Decipher food labels</h1>
 
-➜ Open Food Facts helps you decipher products labels. You will be able to find:
+➜ Open Food Facts helps you decipher products labels. Du kommer att kunna hitta:
 ➜ carbon footprint (CO2 emissions) and packaging (as well as recycling instructions),
 ➜ Nutriscore (nutritional score), nutrients, fat / fat content, saturated fatty acids, carbohydrates, sugars, fiber, protein and salt and sodium.
 ➜ brands, allergens, labels (bio, gluten free, vegan, vegetarian, halal, kosher ...), traceability information (packaging codes, origins of ingredients)
 ➜ On wines and beers, you will find the alcohol content.
 
 <h1>▶ Our grades are science-based, and the project is helping science back!</h1>
-➜ We don't make up things. We rely on peer-reviewed science.
+➜ Vi hittar inte på saker. We rely on peer-reviewed science.
 ➜ The Nutri-Score has been created by the independent French team led by Professor Hercberg.
 ➜ The NOVA groups on food processing have been designed by the international team of Professor Monteiro.
 ➜ The additives synthesis is based on reviews by EFSA on exposure levels on food additives.
@@ -41,7 +41,7 @@ To discover the volunteer-run Open Food Facts project, visit https://world.openf
 
 <h1>▶ Your food, your data. Privacy-friendly app.</h1>
 ➜ Your data is yours, and is never sent online
-➜ You can use the app anonymously
+➜ Du kan använda appen anonymt
 ➜ You can export your scan history
 
 <h1>▶ Set up allergen alerts on products</h1>

@@ -1,5 +1,7 @@
 Digitalize produtos alimentares para animais para obter dados sobre ingredientes, aditivos e informação nutricional.
 
+Para comida humana, pode instalar o Open Food Facts, para animais de estimação, o Open Pet Food Facts, e para todos os outros produtos, o Open Products Facts.
+
 A aplicação permite visualizar os mais de 600 produtos alimentares para animais já contidos na base de dados aberta e gratuita Open Pet Food Facts e também para adicionar fotos e dados de produtos em falta.
 
 Para descobrir o projeto Open Pet Food Facts, visite https://world-pt.openpetfoodfacts.org
@@ -25,7 +27,7 @@ Poderá encontrar também (de acordo com as indicações presentes nos produtos)
 - Não precisa da câmara para procurar um produto. Também pode digitar o código de barras se não tiver uma câmara ou tiver algum problema com ela.
 
 *** A sua comida para animais, os seus dados ***
-- os seus dados são seus e nunca são enviados on-line
+- Os seus dados são seus e nunca são enviados para a Internet
 - Pode usar o aplicativo anonimamente
 - Pode exportar seu histórico de digitalizações
 

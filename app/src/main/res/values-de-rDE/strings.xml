@@ -426,7 +426,7 @@
     <string name="dismiss">Verwerfen</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <!--Just replace "world" by "fr", "de"… translate the "terms-of-use" with the hyphens -->
-    <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
+    <string name="terms_url">https://world.openproductsfacts.org/terms-of-use</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
     <string name="faq_url">https://world.openfoodfacts.org/faq</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
@@ -692,6 +692,10 @@
     <string name="txt_info_eaten_products">Sie können ein Produkt zu dieser Liste hinzufügen, indem Sie Produkte erfassen, die Produktkarte nach oben ziehen und auf „Zu erwerbende Produkte” tippen.
 Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchsuchen und auf die Schaltfläche ➕ oben rechts auf der Produktseite klicken.</string>
     <string name="txt_info_your_listed_products">Sie können dieser Liste Produkte hinzufügen, indem Sie sie durchsuchen und auf die Schaltfläche ➕ oben rechts auf der Produktseite klicken.</string>
+    <string name="import_csv_to_list">Importiert eine Open Food Facts Liste als CSV-Datei</string>
+    <string name="toast_import_csv_error">Fehler beim Importieren der CSV-Datei</string>
+    <string name="toast_import_csv">CSV-Datei erfolgreich importiert!</string>
+    <string name="open_csv">CSV-Datei öffnen</string>
     <string name="txt_no_nutrition_data">Von diesem Produkt  sind keine Nährwertangaben auf der Verpackung angegeben. Wenn sich dieses geändert hat, können Sie das Produkt bearbeiten.</string>
     <string name="image_prompt_language">Foto der Inhaltsstoffe aufnehmen in</string>
     <string name="swipe_delete_tip">Sie können eine Liste löschen, indem Sie sie nach links wischen.</string>
@@ -727,10 +731,8 @@ Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchs
     <string name="barcode">Strichcode</string>
     <string name="productAdditivesNone">Keine Zusatzstoffe</string>
     <string name="error_uploading_photo">Fehler beim Hochladen des neuen Fotos</string>
-    <string name="import_csv_to_list">Importiert eine Open Food Facts Liste als CSV-Datei</string>
-    <string name="toast_import_csv_error">Fehler beim Importieren der CSV-Datei</string>
-    <string name="toast_import_csv">CSV-Datei erfolgreich importiert!</string>
-    <string name="open_csv">CSV-Datei öffnen</string>
+    <string name="required_for_ecoscore">(Wird benötigt um den Eco-Score zu berechnen)</string>
+    <string name="hint_origin">Beispiele: USA, Frankreich, Italien</string>
     <!-- Used for diets AddOn -->
     <string name="history_network_error">Das Produkt konnte nicht geladen werden. Bitte versuchen Sie es erneut, wenn Sie wieder online sind.</string>
     <string name="cant_modify_if_refreshing">Bitte warten bis das Hochladen abgeschlossen ist</string>
@@ -794,12 +796,11 @@ Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchs
     <string name="follow_system">Vom System übernehmen</string>
     <string name="day">Tag</string>
     <string name="night">Nacht</string>
-    <string name="required_for_ecoscore">(Wird benötigt um den Eco-Score zu berechnen)</string>
-    <string name="hint_origin">Beispiele: USA, Frankreich, Italien</string>
     <string name="report_email_chooser_title">Bericht als E-Mail senden</string>
     <!-- Changelog String -->
     <string name="changelog_translation_help">Möchten Sie dieses Änderungsprotokoll in %s anzeigen?\nSchließen Sie sich dem Übersetzungsteam an!</string>
     <string name="whats_new">Was gibt es Neues bei Open Food Facts?</string>
+    <!-- New onboarding slides -->
     <string name="eco_score_slide_4_title">Eco-Score</string>
     <string name="join_the_food_revolution">Machen Sie mit, bei der Lebensmittel-Revolution</string>
     <string name="slide_1_text_revolution">Erfassen Sie Lebensmittel, nehmen Sie Fotos auf, helfen Sie mit, das Lebensmittelsystem zu verändern</string>

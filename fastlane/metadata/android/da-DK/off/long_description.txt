@@ -37,7 +37,7 @@ For at finde det frivilligtdrevne OFF-projekt, så besøg https://world.openfood
 <h1>▶ Fungerer godt i alle sammenhænge</h1>
 ➜ Der kan tilføjes nye produkter, selv med dårlig/ingen Internetforbindelse
 ➜ Appen indlæser kun det strengt nødvendige for at reducere data- og strømforbrug
-➜ Der kræves ikke kamera for at slå et produkt op. You can also type the barcode if you lack a camera or have an issue with it.
+➜ Der kræves ikke kamera for at slå et produkt op. I stedet for brug af kamera, kan stregkoden blot angives.
 
 <h1>▶ Din mad, dine data. Fortrolighedsvenlig app.</h1>
 ➜ Dine data er dine, og de lægges aldrig online

@@ -1,5 +1,7 @@
 Scan barcodes van diervoedingsproducten om gegevens te krijgen over ingrediënten, additieven en voedingswaarden.
 
+Voor cosmetica kan je Open Beauty Facts installeren, voor dierenvoeding, Open Pet Food Facts en voor alle andere producten, Open Products Facts.
+
 De app maakt het mogelijk om meer dan 600 huisdiervoedingsproducten in de gratis en open database Open Pet Food Facts te bekijken, en om foto's en gegevens toe te voegen voor nieuwe producten.
 
 Om het Open Pet Food Facts project te ontdekken, bezoek https://world.openpetfoodfacts.org
@@ -11,7 +13,7 @@ Om het Open Pet Food Facts project te ontdekken, bezoek https://world.openpetfoo
 - Open Pet Food Facts is een non-profit-project ontwikkeld door duizenden vrijwilligers wereldwijd. We hebben veel spannende projecten waar je op veel verschillende manieren aan kunt bijdragen. 
 - Je kunt vandaag beginnen met een bijdrage te leveren door een product uit de voorraad van je huisdier toe te voegen.
 
-*** Ken de feiten ***
+▶ Get the Facts
 
 Je zal ook kunnen vinden (volgens de aanwijzingen op de producten):
 - ingrediëntenlijst (inclusief asgehalte)

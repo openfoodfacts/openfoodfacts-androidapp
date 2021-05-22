@@ -1,18 +1,18 @@
 For food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for pet food, Open Pet Food Facts.
-But what about other products ? Open Food Facts is an open database of food products with ingredients, allergens, nutrition facts and all the tidbits of information we can find on product labels.
+Men hur är det med andra produkter ? Open Food Facts is an open database of food products with ingredients, allergens, nutrition facts and all the tidbits of information we can find on product labels.
 
-*** Bidra till produkt-transparens ***
+*** Contribute to Product Transparency ***
 
-- Open Products Facts är en produktdatabas gjord av alla, för alla.
+- Open Products Facts is a products database made by everyone, for everyone.
 - You can use it to make better choices, and as it is open data, anyone can re-use it for any purpose.
 - Open Products Facts is a non-profit project developed by thousands of volunteers from around the world. Vi har massor av spännande projekt som du kan bidra till på många olika sätt. 
 - You can start contributing today by adding your first product. 
 
-*** Collect everything ***
+*** Samla allt ***
 - Do you have a collection of products with barcodes ? You can add all of it to Open Products Facts
 - Open Crayons Facts - The largest open database of coloring crayons
 - Open Phone Facts - The largest open database of mobile phones
-- Create your own open database
+- Skapa din egen öppna databas
 
 *** Your products, your data ***
 - Your personal data is yours, and is never sent online

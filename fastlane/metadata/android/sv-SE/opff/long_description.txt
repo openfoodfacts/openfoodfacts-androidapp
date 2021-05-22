@@ -1,8 +1,10 @@
-Skanna sällskapsdjursprodukter eller deras streckkod för att få information om ingredienser, tillsatser och näringsfakta.
+Scan pet food products or their barcode to obtain data on ingredients, additives and nutrition facts.
 
-Appen gör det möjligt att visa de över 600 djurmatprodukter som redan finns i den fria och öppna databasen Open Pet Food Facts, och även lägga till bilder och data för saknade produkter.
+For human food, you can install Open Food Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.
 
-För att upptäcka Open Pet Food Facts-projektet, besök https://world.openpetfoodfacts.org
+The app allows to view the over 3300 pet food products already contained in the free and open database Open Pet Food Facts, and also to add pictures and data for missing products.
+
+To discover the Open Pet Food Facts project, please visit https://world.openpetfoodfacts.org
 
 *** Contribute to Pet Food Transparency ***
 
@@ -11,21 +13,21 @@ För att upptäcka Open Pet Food Facts-projektet, besök https://world.openpetfo
 - Open Pet Food Facts is a non-profit project developed by thousands of volunteers from around the world. Vi har massor av spännande projekt som du kan bidra till på många olika sätt. 
 - You can start contributing today by adding a product from your pet's cupboard.
 
-*** Get the Facts ***
+▶ Get the Facts
 
-You will also be able to find (according to the indications present on the products):
+Du kommer att kunna hitta:
 - list of ingredients (including ash content)
 - nutritional info, nutrition traffic lights…
-- brands, allergens, labels (organic, vegan...)
+- brands, allergens, labels (bio, gluten free, vegan, vegetarian, halal, kosher ...), traceability information (packaging codes, origins of ingredients)
 - It works with dog food (dry dog food & wet dog food), cat food, rabbit food, snake food, fish food, bird food, horse food or any food for your favorite animal.
 
 *** Works well in any condition ***
 - You can add new products, even if you don't have an Internet connection right now.
-- The app loads only the strict necessary to reduce data and battery consumption
+- The app loads only the strict necessary to reduce data and battery consumption.
 - You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
 
 *** Your pet food, your data ***
-- Your personal data is yours, and is never sent online
+- Your data is yours, and is never sent online
 - Du kan använda appen anonymt
 - Du kan exportera din skanningshistorik
 

@@ -5,8 +5,8 @@
 - Open Beauty Facts is a non-profit project developed by thousands of volunteers from around the world. Imamo veliko zanimivih projektov, pri katerih lahko sodelujete na več različnih načinov. 
 - You can start contributing today by adding a product from your cosmetic cupboard. 
 
-*** Understand the labels ***
-- You don't need to be a chemist and learn latin anymore to decypher a cosmetic ingredient list: Open Beauty Facts helps you to make sense of the fine print on products labels.
+*** Razumevanje nalepk ***
+- Za dešifriranje seznama kozmetičnih sestavin vam ni več treba biti kemik in se učiti latinščine: Open Beauty Facts vam pomaga razumeti drobni tisk na etiketah izdelkov.
 - Cosmetics additives, FIL codes, CI-numbers, INCI (International Nomenclature of Cosmetic Ingredients), ingredient list, allergens, traceability codes... 
 - You can scan: aftershaves, body lotions, creams, deodorant, eyeliner, foundation, fragrance, lipstick, makeup, mask, perfume, shampoo, soap, shower gel, nail polish and much more…
 - We think it can be useful for people with skin conditions like acne, psoriasis, eczema… to make better cosmetic choices.

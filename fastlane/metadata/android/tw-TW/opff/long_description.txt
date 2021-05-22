@@ -2,6 +2,8 @@ Scan pet food products or their barcode to obtain data on ingredients, additives
 
 For human food, you can install Open Food Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.
 
+The app allows to view the over 3300 pet food products already contained in the free and open database Open Pet Food Facts, and also to add pictures and data for missing products.
+
 To discover the Open Pet Food Facts project, please visit https://world.openpetfoodfacts.org
 
 ***Contribute to Pet Food Transparency***

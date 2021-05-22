@@ -9,7 +9,7 @@ Mas e os outros produtos? O Open Food Facts é uma base de dados de produtos ali
 - Pode começar a contribuir hoje, adicionando um produto do seu armário de alimentos para animais. 
 
 *** Colecione TODAAAAS as coisas ***
-- Tem uma coleção de produtos com códigos de barras? - Pode adicionar todos os itens das suas coleções
+- Tem uma coleção de produtos com códigos de barras? O Open Products Facts também está disponível na web em https://pt.openproductsfacts.org
 - Open Crayons Facts - A maior base de dados aberta de lápis de cor
 - Open Miniature Food Facts - O maior banco de dados aberto de produtos alimentícios em miniatura
 -- Crie a sua própria database :-)

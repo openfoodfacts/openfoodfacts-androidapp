@@ -1,5 +1,7 @@
 Scannez les produits alimentaires ou leur code-barres pour obtenir des données sur les ingrédients, les additifs et les données nutritionnelles.
 
+Pour la nourriture humaine, vous pouvez installer Open Food Facts, pour les aliments pour animaux de compagnie, Open Pet Food Facts, et pour tous les autres produits, Open Products Facts.
+
 L'application permet de voir plus de 600 produits alimentaires pour animaux de compagnie déjà contenus dans la base de données libre et gratuite Open Pet Food Facts, et aussi d'ajouter des images et des données pour les produits manquants.
 
 Pour découvrir le projet Open Pet Food Facts, rendez-vous sur https://world-fr.openpetfoodfacts.org
@@ -25,7 +27,7 @@ Vous pourrez également trouver (selon les indications présentes sur les produi
 - Vous n'avez pas besoin d'une caméra pour rechercher un produit. Vous pouvez également taper le code à barres si vous n'avez pas d'appareil photo ou si vous avez un problème avec celui-ci.
 
 *** Votre nourriture pour animaux de compagnie, vos données ***
-- Vos données personnelles vous appartiennent et ne sont jamais envoyées en ligne
+- Vos données vous appartiennent et ne sont jamais envoyées en ligne
 - Vous pouvez utiliser l'application anonymement
 - Vous pouvez exporter votre historique de scans
 

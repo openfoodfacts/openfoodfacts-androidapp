@@ -39,7 +39,7 @@ Gestern Morgen erwachte das Open Food Facts Team zu einer erstaunlichen Enthüll
 • Die App lädt nur das Notwendigste, um den Daten- und Batterieverbrauch zu reduzieren.
 Sie benötigen keine Kamera, um ein Produkt nachzuschlagen. Sie können auch den Barcode eingeben, wenn Sie keine Kamera haben oder ein Problem damit haben.
 
-★★★ Ihr Tierfutter — Ihre Daten ★★★ Datenschutzfreundliche App</h1>
+★★★ Ihr Tierfutter — Ihre Daten ★★★ Datenschutzfreundliche App</h1> Datenschutzfreundliche App</h1>
 • Ihre persönlichen Daten gehören Ihnen und werden niemals online gesendet
 • Sie können die Anwendung auch anonym verwenden
 • Sie können Ihren Erfassungsverlauf exportieren

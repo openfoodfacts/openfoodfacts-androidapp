@@ -1,31 +1,33 @@
 Scan pet food products or their barcode to obtain data on ingredients, additives and nutrition facts.
 
-The app allows to view the over 600 pet food products already contained in the free and open database Open Pet Food Facts, and also to add pictures and data for missing products.
+For human food, you can install Open Food Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.
+
+The app allows to view the over 3300 pet food products already contained in the free and open database Open Pet Food Facts, and also to add pictures and data for missing products.
 
 To discover the Open Pet Food Facts project, please visit https://world.openpetfoodfacts.org
 
-*** Contribute to Pet Food Transparency ***
+*** Prispevajte k preglednosti hrane za hišne ljubljenčke ***
 
 - Open Pet Food Facts is a pet food products database made by everyone, for everyone.
 - You can use it to make better pet food choices, and as it is open data, anyone can re-use it for any purpose.
 - Open Pet Food Facts is a non-profit project developed by thousands of volunteers from around the world. Imamo veliko zanimivih projektov, pri katerih lahko sodelujete na več različnih načinov. 
 - You can start contributing today by adding a product from your pet's cupboard.
 
-*** Pridobite dejstva ***
+▶ Pridobi dejstva
 
-You will also be able to find (according to the indications present on the products):
+You will be able to find:
 - list of ingredients (including ash content)
 - nutritional info, nutrition traffic lights…
-- brands, allergens, labels (organic, vegan...)
+- blagovne znamke, alergeni, nalepke (bio, brez glutena, veganski, vegetarijanski, halal, košer ...), podatki o sledljivosti (kode embalaže, poreklo sestavin)
 - It works with dog food (dry dog food & wet dog food), cat food, rabbit food, snake food, fish food, bird food, horse food or any food for your favorite animal.
 
 *** Works well in any condition ***
 - lahko dodate nove izdelke, tudi če trenutno nimate internetne povezave.
-- The app loads only the strict necessary to reduce data and battery consumption
+- Aplikacija naloži le strogo potrebno za zmanjšanje porabe podatkov in baterije.
 - You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
 
 *** Your pet food, your data ***
-- Your personal data is yours, and is never sent online
+- Your data is yours, and is never sent online
 - Aplikacijo lahko uporabljate anonimno
 - Zgodovino optičnega branja lahko izvozite
 

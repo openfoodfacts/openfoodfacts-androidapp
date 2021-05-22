@@ -1,5 +1,7 @@
 Escanee los productos alimenticios para mascotas o sus códigos de barras para obtener información sobre los ingredientes, los aditivos y la información nutricional.
 
+Para alimentos humanos, puedes instalar Open Food Facts, para comida para mascotas, Open Pet Food Facts, y para todos los demás productos, Open Products Facts.
+
 Para alimentos, puede instalar Open Food Facts, para cosméticos, Open Beauty Facts, y para alimentos para mascotas, Open Pet Food Facts.
 
 Para saber más sobre el proyecto Open Pet Food Facts, por favor, visite https://world.openpetfoodfacts.org
@@ -11,9 +13,9 @@ Puedes utilizarla para tomar mejores decisiones a la hora de comprar productos a
 - Open Pet Food Facts es un proyecto sin fines de lucro desarrollado por miles de voluntarios de todo el mundo. Tenemos muchos proyectos interesantes a los que puedes contribuir de diferentes maneras. 
 - Puedes comenzar a contribuir hoy agregando un producto de comida para mascotas.
 
-*** Obtener los datos ***
+▶ Obtén los hechos
 
-También podrá encontrar (de acuerdo con las indicaciones presentes en los productos):
+Podrás encontrar:
 - Lista de ingredientes (incluido el contenido de cenizas)
 - Información nutricional, semáforos de nutrición…
 - marcas, alérgenos, etiquetas (orgánicas, veganas...)

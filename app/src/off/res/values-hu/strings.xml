@@ -11,6 +11,7 @@
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
     <string name="website_contributor">https://world-hu.openfoodfacts.org/contributor/</string>
     <string name="txtHome">Az Open Food Facts élelmiszerek nyílt adatbázisa.</string>
+    <!-- Old onboarding slides -->
     <string name="slide_1_title">Hozzájárulás az Élelmiszer átláthatósághoz</string>
     <string name="slide_1_desc">Olvasson be termékeket, készítsen képet, tegye lehetővé az élelmiszer átláthatóságot</string>
     <string name="slide_2_title">Kapja meg a Tényeket</string>
@@ -19,6 +20,15 @@
     <string name="slide_3_desc">A kedvenc élelmiszereinek táplálkozási tulajdonságai összefoglaló nézetben</string>
     <string name="slide_4_title">Kapcsolat nélküli módban is működik</string>
     <string name="slide_4_desc">Hozzáadhat új termékeket még akkor is, ha jelenleg nincs internet kapcsolata</string>
+    <!-- New onboarding-->
+    <string name="join_the_food_revolution">Join the food revolution</string>
+    <string name="slide_1_text_revolution">Scan food, Take photos, Help transform the food system</string>
+    <string name="get_the_nutri_score">Ismerje meg a Nutri-Score-t</string>
+    <string name="synthesis_of_nutrition_slide_2_text">A simple synthesis of the nutritional quality of your food</string>
+    <string name="avoid_ultra_processed_foods">Avoid ultra-processed foods</string>
+    <string name="nova_slide_3_text">Reduce the amount of ultra-processed foods in your diet.</string>
+    <string name="eco_score_slide_4_title">Eco-Score</string>
+    <!-- Scan card -->
     <string name="txtDialogsContent">A beolvasott termék nem található az Open Food Facts adatbázisában. Kérjük, adja hozzá.</string>
     <string name="txtDialogsContentPowerMode">A beolvasott termék megtalálható az Open Food Facts adatbázisában.</string>
     <string name="msg_share">Nézze meg a terméket az Open Food Facts adatbázisában:</string>

@@ -9,7 +9,7 @@ But what about other products ? Open Products Facts는 전 세계 모든 제품�
 -오늘부터 첫 번째 제품을 추가하면 기여를 시작할 수 있습니다. 
 
 *** 모오오든 물건을 수집하세요 ***
-- Do you have a collection of products with barcodes ? Open Products Facts는 매우 야심찬 프로젝트가 될 것입니다.
+- Do you have a collection of products with barcodes ? Open Products Facts는 전 세계 모든 제품의 공개 데이터베이스입니다.
 - Open Crayons Facts -  크레파스에 관한 가장 큰 오픈 데이터베이스
 Facts - ???의 가장 큰 오픈 데이터베이스
 Facts - 오픈 데이터베이스를 직접 만들어보세요 :-)

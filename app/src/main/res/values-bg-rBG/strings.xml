@@ -279,7 +279,7 @@
     <string name="nutrition_energy_short_name">Енергия</string>
     <string name="nutrition_fat">Мазнини</string>
     <string name="nutrition_fiber">Хранителните влакнини</string>
-    <string name="nutrition_header">Хранителна информация</string>
+    <string name="nutrition_header">Хранителни факти</string>
     <string name="nutrition_proteins">Протеини</string>
     <string name="nutrition_salt">Сол</string>
     <string name="nutrition_satured_fat">Наситени мазнини</string>
@@ -473,8 +473,8 @@
     <string name="search_string">Търсене</string>
     <string name="country_string">Държави, където се продават</string>
     <string name="store_subtitle">Магазин</string>
-    <string name="packaging_subtitle">Packaging</string>
-    <string name="packaging_string">Packaging</string>
+    <string name="packaging_subtitle">Опаковка</string>
+    <string name="packaging_string">Опаковка</string>
     <string name="label_string">Етикет</string>
     <string name="category_string">Категория</string>
     <string name="connection">Свързан</string>
@@ -590,7 +590,7 @@
     <string name="looksGood">Изглежда добре</string>
     <string name="skip_ingredients">\"Не изглежда добре
 Пропускане на съставките\"</string>
-    <string name="traces">Traces</string>
+    <string name="traces">Следи</string>
     <string name="traces_hint">\"Посочете съставки от коментари като \"Може да съдържат следи от\", \"Произведени в завод, който също използва\" и т.н. 
 Приложения: Мляко, глутен, ядки\"</string>
     <string name="nutrition_facts_not_specified">Хранителните факти не са посочени върху продукта.</string>
@@ -599,24 +599,24 @@
     <string name="other_picture">Other Picture</string>
     <string name="for_100g_100ml">За 100 г / 100 мл</string>
     <string name="per_serving">На порция</string>
-    <string name="serving_size">Serving size</string>
+    <string name="serving_size">Размер на порция</string>
     <string name="alcohol_unit" formatted="false">% vol / °</string>
-    <string name="add_a_nutrient">Add a nutrient</string>
+    <string name="add_a_nutrient">Добавете хранително вещество</string>
     <string name="add_this_product">Добавете продукта</string>
     <string name="product_picture">Снимка на продукта</string>
     <string name="one_photo_compulsory">(one photo is compulsory to add a new product)</string>
     <string name="product_details">Product Details</string>
     <string name="product_name">Име на продукта</string>
-    <string name="quantity">Quantity</string>
-    <string name="labels">Labels</string>
+    <string name="quantity">Количество</string>
+    <string name="labels">Надписи</string>
     <string name="period_of_time_after_opening">Period of time after opening</string>
     <string name="manufacturing_details">Manufacturing Details</string>
-    <string name="origin_of_ingredients">Origin of ingredients</string>
+    <string name="origin_of_ingredients">Произход на съставките</string>
     <string name="manufacturing_place">Manufacturing place</string>
     <string name="emb_code">EMB код</string>
     <string name="purchasing_details">Purchasing Details</string>
     <string name="country_where_purchased">Country where purchased</string>
-    <string name="stores">Stores</string>
+    <string name="stores">Магазини</string>
     <string name="additional_pictures">Additional Pictures</string>
     <string name="hint_product_pictures">(Add more pictures of the product. eg: recycling instructions, labels etc.)</string>
     <string name="uploading_image">Sending the photo</string>
@@ -698,6 +698,10 @@
     <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
         You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
     <string name="txt_info_your_listed_products">You\'ll be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
+    <string name="import_csv_to_list">Import an Open Food Facts list CSV file</string>
+    <string name="toast_import_csv_error">Error in importing CSV file</string>
+    <string name="toast_import_csv">CSV imported successfully!</string>
+    <string name="open_csv">Open CSV</string>
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
     <string name="image_prompt_language">Take a photo of the ingredients in</string>
     <string name="swipe_delete_tip">You can delete a list by swiping it left.</string>
@@ -733,10 +737,8 @@
     <string name="barcode">Баркод</string>
     <string name="productAdditivesNone">No additives</string>
     <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
-    <string name="import_csv_to_list">Import an Open Food Facts list CSV file</string>
-    <string name="toast_import_csv_error">Error in importing CSV file</string>
-    <string name="toast_import_csv">CSV imported successfully!</string>
-    <string name="open_csv">Open CSV</string>
+    <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
+    <string name="hint_origin">Examples: USA, France, Italy</string>
     <!-- Used for diets AddOn -->
     <string name="history_network_error">The product couldn\'t be loaded. Please try again when you are back online.</string>
     <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
@@ -791,7 +793,7 @@
     <string name="icon_categories">Categories icon</string>
     <string name="icon_emb">EMB code icon</string>
     <string name="product_front_image">Product front image</string>
-    <string name="brand_hint">Examples: Coca-Cola, Nestle, etc…</string>
+    <string name="brand_hint">Примери: Кока-Кола, Нестле и т.н.</string>
     <string name="sign_in_or_register">Sign in or register</string>
     <string name="hunger_game_call_to_action">Help classify more %1$s</string>
     <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s products (plus the ones you will contribute) in the world.</string>
@@ -800,12 +802,11 @@
     <string name="follow_system">Follow system</string>
     <string name="day">Day</string>
     <string name="night">Night</string>
-    <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
-    <string name="hint_origin">Examples: USA, France, Italy</string>
     <string name="report_email_chooser_title">Send a report email</string>
     <!-- Changelog String -->
     <string name="changelog_translation_help">Want to see this changelog in %s?\nJoin the translation team!</string>
     <string name="whats_new">What\'s new with Open Food Facts?</string>
+    <!-- New onboarding slides -->
     <string name="eco_score_slide_4_title">Eco-Score</string>
     <string name="join_the_food_revolution">Join the food revolution</string>
     <string name="slide_1_text_revolution">Scan food, Take photos, Help transform the food system</string>

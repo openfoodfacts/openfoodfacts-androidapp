@@ -9,7 +9,7 @@ But what about other products ? Open Products Facts dünya üzerindeki tüm ür�
 - You can start contributing today by adding a product from your pet's cupboard. 
 
 *** HEEEERR şeyi toplayın ***
-- Do you have a collection of products with barcodes ? Open Product Facts dünya üzerindeki tüm ürünleri içeren açık bir veritabanıdır.
+- Do you have a collection of products with barcodes ? Open Products Facts dünya üzerindeki tüm ürünleri içeren açık bir veritabanıdır.
 - Open Crayons Facts - Boya kalemlerinin en büyük açık veritabanı
 - Open Miniature Food Facts - Minyatür yiyecek ürünlerinin en büyük açık veritabanı
 Gerçekler - Kendi açık veritabanınızı oluşturun :-)

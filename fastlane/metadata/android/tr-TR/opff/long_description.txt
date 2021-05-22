@@ -1,5 +1,7 @@
 Yiyecekler için Open Food Facts, evcil hayvan mamaları için Open Pet Food Facts, ve geri kalan her şey için Open Products Facts'i yükleyebilirsiniz.
 
+Yiyecekler için Open Food Facts, evcil hayvan mamaları için Open Pet Food Facts, ve geri kalan her şey için Open Products Facts'i yükleyebilirsiniz.
+
 Yiyecekler için Open Food Facts'i, kozmetik ürünleri için Open Beauty Facts'i, ve evcil hayvan besinleri için Open Pet Food Facts'i yükleyebilirsin.
 
 Yiyecekler için Open Food Facts, evcil hayvan mamaları için Open Pet Food Facts, ve geri kalan her şey için Open Products Facts'i yükleyebilirsiniz.
@@ -11,9 +13,9 @@ Yiyecekler için Open Food Facts, evcil hayvan mamaları için Open Pet Food Fac
 - Open Pet Food Facts is a non-profit project developed by thousands of volunteers from around the world. -Birçok farklı şekilde katkı sağlayabileceğiniz çok sayıda heyecan verici projelerimiz bulunmakta. 
 - You can start contributing today by adding a product from your pet's cupboard.
 
-***Gerçekleri Öğrenin***
+▶ Get the Facts
 
-Ayrıca şunları da bulabileceksiniz:
+You will also be able to find (according to the indications present on the products):
 - list of ingredients (including ash content)
 - nutritional info, nutrition traffic lights…
 Markalar alerjenler etiketler (organik, vegan)

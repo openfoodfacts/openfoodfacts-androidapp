@@ -1,1 +1,1 @@
-Scan food and to get ingredients, additives and nutrition facts
+Scanner les aliments et obtenir des ingrédients, des additifs et des informations nutritionnelles

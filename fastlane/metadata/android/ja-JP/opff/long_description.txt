@@ -2,6 +2,8 @@
 
 For human food, you can install Open Food Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.
 
+The app allows to view the over 3300 pet food products already contained in the free and open database Open Pet Food Facts, and also to add pictures and data for missing products.
+
 Open Food Facts は、食品の原材料、アレルゲン、栄養成分表、および製品ラベルで見ることができるすべての情報のオープンデータベースです。
 
 ***Contribute to Pet Food Transparency***

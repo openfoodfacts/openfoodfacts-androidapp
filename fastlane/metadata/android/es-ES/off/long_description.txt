@@ -1,9 +1,9 @@
 ▶ Encontrar y comparar más de 800.000 productos
 
 La aplicación permite ver los 800.000 productos (incluyendo 175.000 en los EE.UU.) ya contenidos en la base de datos abierta y gratuita Open Food Facts, y también añadir imágenes y datos para nuevos productos.
-The app is collaborative. If we don't have the product, you can add pictures and data to get the Nutri-Score and NOVA score on food processing.
+La aplicación se basa en la colaboración del usuario. Si no encuentras el producto, puedes agregar fotografías e información para obtener el Nutri-Score y la clasificación NOVA sobre el procesamiento de los alimentos.
 
-In short, we're kind of "the Wikipedia of food", as many have nicknamed the project. Open Food Facts has enabled the creation of over 100 apps like Date Limite, Yuka or FoodVisor.
+En resumen, somos una especie de "Wikipedia de los alimentos", como muchos han apodado el proyecto. Open Food Facts ha permitido la creación de más de 100 aplicaciones como Data Limite, Yuka y FoodVisor.
 
 Para descubrir el proyecto Open Food Facts, dirigido por voluntarios, visite https://world.openfoodfacts.org
 
@@ -16,10 +16,10 @@ Para descubrir el proyecto Open Food Facts, dirigido por voluntarios, visite htt
 
 - Open Products Facts es una base de datos de productos hecha por todos, para todos.
 - Puedes usarlo para tomar mejores decisiones, y como son datos abiertos, cualquiera puede volver a usarlos para cualquier propósito.
-➜ You can start contributing today by adding a product from your fridge.
+Puedes comenzar a contribuir desde hoy. Solo agrega algún producto de tu refrigerador.
 - Open Products Facts es un proyecto sin fines de lucro desarrollado por miles de voluntarios de todo el mundo. Tenemos muchos proyectos interesantes a los que puedes contribuir de diferentes maneras.
 
-<h1>▶ Decipher food labels</h1>
+<h1>▶ Descifrar las etiquetas de los alimentos</h1>
 
 - Open Products Facts te ayuda a comprender la letra pequeña de las etiquetas de los productos. Podrás encontrar:
 - huella de carbono (emisiones de CO2) y embalaje (así como instrucciones de reciclaje),
@@ -34,20 +34,20 @@ Para descubrir el proyecto Open Food Facts, dirigido por voluntarios, visite htt
 - Puedes obtener una síntesis de los niveles de exposición EFSA en aditivos alimentarios.
 - La comunidad de Open Food Facts está colaborando con equipos de investigación de todo el planeta para mejorar la investigación sobre nutrición que beneficie a todos.
 
-<h1>▶ Works well in any condition</h1>
+<h1>▶ Funciona bien cualquier condición</h1>
 - Puedes agregar nuevos productos, incluso si no tienes una conexión a Internet en este momento.
 - La aplicación solo carga lo estrictamente necesario para reducir el consumo de datos y batería.
-➜ You don't need a camera to look up a product. También puede escribir el código de barras si le falta una cámara o si esta tiene algún problema.
+➜ No requieres una cámara para buscar un producto. También puede escribir el código de barras si le falta una cámara o si esta tiene algún problema.
 
-▶ Obten la información Privacy-friendly app.</h1>
+▶ Obten la información Privacy-friendly app.</h1> La aplicación protege tu privacidad.</h1>
 - Tus datos son tuyos y nunca se envían en línea
 - Puedes usar la aplicación de forma anónima
 - Puedes exportar tu historial de escaneo
 
 ▶ Configura alertas de alérgenos en productos
 - ¿Alergia a la leche, gluten, huevos, soja, nueces, pescado, apio, mostaza, dióxido de azufre y sulfitos, cacahuetes, semillas de sésamo, crustáceos, moluscos o lupino?
-➜ Speed up your shopping by doing an initial screening of your food with Open Food Facts.
-- Tenga cuidado la información puede no ser fiable al 100% y la detección no puede ser fiable al 100%. Así que siempre comprueba dos veces y con el embalaje.
+➜ Haciendo una revisión inicial de tus alimentos con Open Food Facts, harás tu compra más rápida.
+- Ten cuidado, pues la información y la detección pueden no ser 100% exactas. Siempre revisa tú mismo el empaque.
 
 <h1>▶ Más</h1>
 

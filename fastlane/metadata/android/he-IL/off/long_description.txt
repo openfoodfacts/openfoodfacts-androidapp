@@ -1,13 +1,13 @@
 <h1>▶ Scan, find & compare more than 1,3 million food products</h1>
 
-The app allows to scan the 1,3 million products already contained in the free and open database Open Food Facts.
+היישומון מאפשר לך לסרוק את 1.3 מיליון המוצרים שכבר נמצאים במסד הנתונים החופשי והפתוח Open Food Facts.
 היישומון הוא שיתופי. אם אין אצלנו את המוצר, ניתן להוסיף תמונות ונתונים כדי לקבל Nutri-Score וציון NOVA על עיבוד המזון.
 
-In short, we're kind of "the Wikipedia of food", as many have nicknamed the project. Open Food Facts has enabled the creation of over 100 apps like Date Limite, Yuka or FoodVisor.
+בקצרה, אנחנו סוג של „הוויקיפדיה של המזון”, כפי שרבים נוהגים לכנות אותנו. על Open Food Facts נשענים למעלה מ־100 יישומונים כגון Date Limite,‏ Yuka או FoodVisor.
 
-To discover the volunteer-run Open Food Facts project, visit https://world.openfoodfacts.org/discover
+כדי להיחשף למיזם Open Food Facts שמופעל על ידי מתנדבים ניתן לבקר ב־https://world.openfoodfacts.org/discover
 
-<h1>▶ Choose the products that are good for you</h1>
+<h1>◀ לבחור את המוצרים שעושים טוב לך</h1>
 
 ➜ The Nutri-Score grade, from A to E :  Nutritional quality
 ➜ The NOVA group, from 1 to 4 : Avoid ultra-processed foods (Group 4)

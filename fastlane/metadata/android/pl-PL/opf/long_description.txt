@@ -3,7 +3,7 @@ But what about other products ? Open Products Facts to otwarta baza danych wszys
 
 *** Przyczyń się do przejrzystości produktów ***
 
-- Open Pet Food Facts to baza danych produktów dla zwierząt domowych tworzona przez wszystkich dla każdego.
+Open Products Facts to otwarta baza danych wszystkich produktów na świecie.
 - Możesz go używać, aby dokonywać lepszych wyborów, a ponieważ są to otwarte dane, każdy może je ponownie wykorzystać w dowolnym celu.
 - Open Pet Food Facts to projekt nienastawiony na zysk opracowany przez tysiące wolontariuszy z całego świata. Jest dużo ciekawych projektków do których możesz dołączyć. 
 - Możesz zacząć pomagać już dziś, dodając produkt z szafki Twojego zwierzaka. 

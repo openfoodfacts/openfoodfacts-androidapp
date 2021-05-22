@@ -1,15 +1,15 @@
 Para alimentos, puede instalar Open Food Facts, para cosméticos, Open Beauty Facts, y para alimentos para mascotas, Open Pet Food Facts.
-But what about other products ? Open Products Facts es una base de datos abierta de todos los productos en el mundo.
+Pero, ¿qué pasa con otros productos? Open Products Facts es una base de datos abierta de todos los productos en el mundo.
 
 *** Contribuye a la Transparencia del Producto ***
 
-Open Pet Food Facts es una base de datos sobre productos alimenticios para mascotas hecha por todos y para todos.
+Open Products Facts es una base de datos abierta de todos los productos en el mundo.
 Puedes usarla para hacer mejores elecciones de cosméticos, posee datos abiertos, y cualquiera puede volver a usarla para cualquier propósito.
 - Open Beauty Facts es un proyecto sin animo de lucro desarrollado por miles de voluntarios de todas partes del mundo. Tenemos muchos proyectos interesantes a los que puedes contribuir de diferentes maneras. 
 -Puedes empezar a contribuir hoy agregando tu primer producto. 
 
 *** Recoge TOOODAS las cosas ***
-- Do you have a collection of products with barcodes ? Open Products Facts es una base de datos abierta de todos los productos en el mundo.
+- ¿Tienes una colección de productos con códigos de barras ? Open Products Facts es una base de datos abierta de todos los productos en el mundo
 - Open Crayons Facts - La base de datos abierta más grande de lápices de colores
 - Datos de alimentos en miniatura abiertos - La base de datos abierta más grande de productos alimenticios en miniatura
 Hechos - Crea tu propia base de datos abierta :-)

@@ -1,12 +1,12 @@
-For fødevarer kan du installere Open Food Facts, for kosmetik, Open Beauty Facts og for kæledyrsfødevarer Open Pet Food Facts.
+For fødevarer kan Open Food Facts installeres, for kosmetik Open Beauty Facts og for kæledyrsfødevarer Open Pet Food Facts.
 Men, hvad med andre produkter? Open Products Facts er en åben database over alle verdena produkter.
 
-*** Bidrag til Produkttransparens ***
+*** Bidrag til produkttransparens ***
 
-- Open Products Facts er en produktdatabase lavet af alle, for alle.
-- Du kan bruge den til at træffe bedre valg, og da det er åbne data, kan alle genbruge den til ethvert formål.
-- Open Products Facts er et nonprofit-projekt udviklet af tusindvis af frivillige fra hele verden. Vi har mange spændende projekter, du kan bidrage til på mange forskellige måder. 
-- Du kan begynde at bidrage i dag ved at tilføje dit første produkt. 
+- Open Products Facts er en produktdatabase kreeret af alle, for alle.
+- Den kan bruges til at træffe bedre valg, og da data er åbne, kan alle genbruge disse til ethvert formål.
+- Open Products Facts er et nonprofit-projekt udviklet af tusindvis af frivillige verden over. Vi har mange spændende projekter, du kan bidrage til på mange forskellige måder. 
+- Man kan begynde at bidrage i dag ved at tilføje sit første produkt. 
 
 *** Indsaml alt ***
 - Har en samling produkter med stregkoder? Så kan de alle tilføjes i Open Products Facts

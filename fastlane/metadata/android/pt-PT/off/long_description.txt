@@ -12,14 +12,14 @@ Para descobrir o projeto Open Food Facts realizado por voluntários, visite http
 - A classificação Nutri-Score, de "A" a "E" >> Qualidade nutricional
 - O grupo NOVA, de "1" a "4" >> Encontre o alimento ultraprocessado
 
-***Contribua para a Transparência Alimentar***
+<h1>▶ Decifrar rótulos de alimentos</h1>
 
 - Open Food Facts é um banco de dados de produtos alimentícios feito por todos, para todos.
 - Pode usá-lo para fazer melhores escolhas alimentares, e como são dados abertos, qualquer um pode reutilizá-lo para qualquer finalidade.
 - Pode começar a contribuir hoje ao adicionar um produto do seu frigorífico.
 - Open Product Facts é um projeto não lucrativo desenvolvido por milhares de voluntários em todo o mundo. Temos muitos projetos interessantes para os quais pode contribuir de diversas maneiras.
 
-<h1>▶ Decifrar rótulos de alimentos</h1>
+<h1>▶ A sua comida, os seus dados.
 
 - Open Food Facts ajuda-o a entender as letras miúdas dos rótulos dos produtos. Poderá encontrar também (de acordo com as indicações presentes nos produtos):
 - pegada de carbono (emissões de CO2) e embalagem (assim como instruções de reciclagem),
