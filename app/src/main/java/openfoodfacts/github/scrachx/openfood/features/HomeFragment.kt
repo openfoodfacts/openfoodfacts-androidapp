@@ -42,7 +42,6 @@ import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType
 import openfoodfacts.github.scrachx.openfood.utils.getLoginPreferences
 import openfoodfacts.github.scrachx.openfood.utils.getUserAgent
-import java.io.IOException
 import java.text.NumberFormat
 import java.util.*
 import javax.inject.Inject
@@ -91,14 +90,14 @@ class HomeFragment : NavigationBaseFragment() {
             mayLaunchUrl(dailyFoodFactUri, null, null)
         }
         val customTabsIntent = CustomTabsHelper.getCustomTabsIntent(
-                requireActivity(),
-                customTabActivityHelper.session,
+            requireActivity(),
+            customTabActivityHelper.session,
         )
         CustomTabActivityHelper.openCustomTab(
-                requireActivity(),
-                customTabsIntent,
-                dailyFoodFactUri,
-                WebViewFallback()
+            requireActivity(),
+            customTabsIntent,
+            dailyFoodFactUri,
+            WebViewFallback()
         )
     }
 
@@ -119,17 +118,14 @@ class HomeFragment : NavigationBaseFragment() {
             return
         }
 
-        productsApi.signIn(login, password, "Sign-in")
-                .observeOn(AndroidSchedulers.mainThread())
-                .doOnError { Log.e(LOG_TAG, "Cannot check user credentials.", it) }
-                .subscribe { response ->
-                    val htmlBody: String = try {
-                        response.body()!!.string()
-                    } catch (e: IOException) {
-                        Log.e(LOG_TAG, "I/O Exception while checking user saved credentials.", e)
-                        return@subscribe
-                    }
-                    if (LoginActivity.isHtmlNotValid(htmlBody)) {
+        productsApi.signIn(login, password)
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnError { Log.e(LOG_TAG, "IO error while checking user credentials.", it) }
+            .subscribe { response ->
+
+                when {
+                    response.isSuccessful -> return@subscribe
+                    response.code() == 403 -> {
                         Log.w(LOG_TAG, "Cannot validate login, deleting saved credentials and asking the user to log back in.")
                         settings.edit {
                             putString("user", "")
@@ -142,9 +138,12 @@ class HomeFragment : NavigationBaseFragment() {
                             it.onPositive { _, _ -> loginLauncher.launch(Unit) }
                             it.show()
                         }
-
                     }
-                }.addTo(disp)
+                    else -> {
+                        Log.e(LOG_TAG, "Could not check user saved credentials: ${response.errorBody()}")
+                    }
+                }
+            }.addTo(disp)
     }
 
     override fun onResume() {
@@ -161,21 +160,21 @@ class HomeFragment : NavigationBaseFragment() {
         Log.d(LOG_TAG, "Refreshing total product count...")
 
         productsApi.getTotalProductCount(getUserAgent())
-                .observeOn(AndroidSchedulers.mainThread())
-                .doOnSubscribe { setProductCount(oldCount) }
-                .doOnError {
-                    setProductCount(oldCount)
-                    Log.e(LOG_TAG, "Could not retrieve product count from server.", it)
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnSubscribe { setProductCount(oldCount) }
+            .doOnError {
+                setProductCount(oldCount)
+                Log.e(LOG_TAG, "Could not retrieve product count from server.", it)
+            }
+            .subscribe { resp ->
+                val totalProductCount = resp.count.toInt()
+                Log.d(LOG_TAG, "Refreshed total product count. There are $totalProductCount products on the database.")
+                setProductCount(totalProductCount)
+                sharedPrefs.edit {
+                    putInt(PRODUCT_COUNT_KEY, totalProductCount)
+                    apply()
                 }
-                .subscribe { resp ->
-                    val totalProductCount = resp.count.toInt()
-                    Log.d(LOG_TAG, "Refreshed total product count. There are $totalProductCount products on the database.")
-                    setProductCount(totalProductCount)
-                    sharedPrefs.edit {
-                        putInt(PRODUCT_COUNT_KEY, totalProductCount)
-                        apply()
-                    }
-                }.addTo(disp)
+            }.addTo(disp)
     }
 
     /**
@@ -196,28 +195,28 @@ class HomeFragment : NavigationBaseFragment() {
      */
     private fun refreshTagLine() {
         productsApi.getTagline(getUserAgent())
-                .subscribeOn(Schedulers.io()) // io for network
-                .observeOn(AndroidSchedulers.mainThread()) // Move to main thread for UI changes
-                .doOnError { Log.w(LOG_TAG, "Could not retrieve tag-line from server.", it) }
-                .subscribe { tagLines ->
-                    val appLanguage = localeManager.getLanguage()
-                    var isLanguageFound = false
-                    var isExactLanguageFound = false
-                    tagLines.forEach { tag ->
-                        if (!isExactLanguageFound && (tag.language == appLanguage || tag.language.contains(appLanguage))) {
-                            isExactLanguageFound = tag.language == appLanguage
-                            taglineURL = tag.tagLine.url
-                            binding.tvTagLine.text = tag.tagLine.message
-                            isLanguageFound = true
-                        }
+            .subscribeOn(Schedulers.io()) // io for network
+            .observeOn(AndroidSchedulers.mainThread()) // Move to main thread for UI changes
+            .doOnError { Log.w(LOG_TAG, "Could not retrieve tag-line from server.", it) }
+            .subscribe { tagLines ->
+                val appLanguage = localeManager.getLanguage()
+                var isLanguageFound = false
+                var isExactLanguageFound = false
+                tagLines.forEach { tag ->
+                    if (!isExactLanguageFound && (tag.language == appLanguage || tag.language.contains(appLanguage))) {
+                        isExactLanguageFound = tag.language == appLanguage
+                        taglineURL = tag.tagLine.url
+                        binding.tvTagLine.text = tag.tagLine.message
+                        isLanguageFound = true
                     }
-                    if (!isLanguageFound) {
-                        taglineURL = tagLines.last().tagLine.url
-                        binding.tvTagLine.text = tagLines.last().tagLine.message
-                    }
-                    binding.tvTagLine.visibility = View.VISIBLE
                 }
-                .addTo(disp)
+                if (!isLanguageFound) {
+                    taglineURL = tagLines.last().tagLine.url
+                    binding.tvTagLine.text = tagLines.last().tagLine.message
+                }
+                binding.tvTagLine.visibility = View.VISIBLE
+            }
+            .addTo(disp)
     }
 
     companion object {

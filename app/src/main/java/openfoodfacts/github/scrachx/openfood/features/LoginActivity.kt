@@ -50,7 +50,6 @@ import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
 import openfoodfacts.github.scrachx.openfood.utils.Utils
 import openfoodfacts.github.scrachx.openfood.utils.getLoginPreferences
 import retrofit2.Response
-import java.io.IOException
 import java.net.HttpCookie
 import javax.inject.Inject
 
@@ -110,57 +109,54 @@ class LoginActivity : BaseActivity() {
                 .apply { show() }
         binding.btnLogin.isClickable = false
 
-        productsApi.signIn(login, password, "Sign-in")
+        productsApi.signIn(login, password)
                 .observeOn(AndroidSchedulers.mainThread()) // We need to modify view
+
                 .doOnError {
                     Toast.makeText(this, this.getString(R.string.errorWeb), Toast.LENGTH_LONG).show()
                     Log.e(this::class.simpleName, "onFailure", it)
                 }
                 .subscribe { response: Response<ResponseBody> ->
-                    if (!response.isSuccessful) {
-                        Toast.makeText(this@LoginActivity, R.string.errorWeb, Toast.LENGTH_LONG).show()
-                        return@subscribe
-                    }
-                    val htmlNoParsed = try {
-                        response.body()?.string()
-                    } catch (e: IOException) {
-                        Log.e("LOGIN", "Unable to parse the login response page", e)
-                        return@subscribe
-                    }
                     val pref = this@LoginActivity.getSharedPreferences("login", 0)
-                    if (isHtmlNotValid(htmlNoParsed)) {
-                        Snackbar.make(binding.loginLinearlayout, R.string.errorLogin, LENGTH_LONG).show()
-                        binding.passInput.setText("")
-                        binding.txtInfoLogin.setTextColor(ContextCompat.getColor(this, R.color.red))
-                        binding.txtInfoLogin.setText(R.string.txtInfoLoginNo)
-                        snackbar.dismiss()
-                    } else {
-                        // store the user session id (user_session and user_id)
-                        for (httpCookie in HttpCookie.parse(response.headers()["set-cookie"])) {
-                            // Example format of set-cookie: session=user_session&S0MeR@nD0MSECRETk3Y&user_id&testuser; domain=.openfoodfacts.org; path=/
-                            if (BuildConfig.HOST.contains(httpCookie.domain) && httpCookie.path == "/") {
+                    when {
+                        response.isSuccessful -> {
+                            // store the user session id (user_session and user_id)
+                            for (httpCookie in HttpCookie.parse(response.headers()["set-cookie"])) {
+                                // Example format of set-cookie: session=user_session&S0MeR@nD0MSECRETk3Y&user_id&testuser; domain=.openfoodfacts.org; path=/
+                                if (!BuildConfig.HOST.contains(httpCookie.domain) || httpCookie.path != "/") continue
+
                                 val cookieValues = httpCookie.value.split("&")
                                 var i = 0
+
                                 while (i < cookieValues.size) {
                                     pref.edit { putString(cookieValues[i], cookieValues[++i]) }
                                     i++
                                 }
                                 break
                             }
-                        }
-                        Snackbar.make(binding.loginLinearlayout, R.string.connection, LENGTH_LONG).show()
-                        pref.edit {
-                            putString("user", login)
-                            putString("pass", password)
-                        }
-                        binding.txtInfoLogin.setTextColor(ContextCompat.getColor(this, R.color.green_500))
-                        binding.txtInfoLogin.setText(R.string.txtInfoLoginOk)
+                            Snackbar.make(binding.loginLinearlayout, R.string.connection, LENGTH_LONG).show()
+                            pref.edit {
+                                putString("user", login)
+                                putString("pass", password)
+                            }
+                            binding.txtInfoLogin.setTextColor(ContextCompat.getColor(this, R.color.green_500))
+                            binding.txtInfoLogin.setText(R.string.txtInfoLoginOk)
 
-                        matomoAnalytics.trackEvent(AnalyticsEvent.UserLogin)
+                            matomoAnalytics.trackEvent(AnalyticsEvent.UserLogin)
 
-                        setResult(RESULT_OK)
-                        finish()
+                            setResult(RESULT_OK)
+                            finish()
+                        }
+                        response.code() == 403 -> {
+                            Snackbar.make(binding.loginLinearlayout, R.string.errorLogin, LENGTH_LONG).show()
+                            binding.passInput.setText("")
+                            binding.txtInfoLogin.setTextColor(ContextCompat.getColor(this, R.color.red))
+                            binding.txtInfoLogin.setText(R.string.txtInfoLoginNo)
+                            snackbar.dismiss()
+                        }
+                        else -> Toast.makeText(this@LoginActivity, R.string.errorWeb, Toast.LENGTH_LONG).show()
                     }
+
                 }.addTo(disp)
         binding.btnLogin.isClickable = true
     }
@@ -245,9 +241,5 @@ class LoginActivity : BaseActivity() {
 
             override fun parseResult(resultCode: Int, intent: Intent?) = resultCode == RESULT_OK
         }
-
-        internal fun isHtmlNotValid(html: String?) = (html == null
-                || html.contains("Incorrect user name or password.")
-                || html.contains("See you soon!"))
     }
 }
