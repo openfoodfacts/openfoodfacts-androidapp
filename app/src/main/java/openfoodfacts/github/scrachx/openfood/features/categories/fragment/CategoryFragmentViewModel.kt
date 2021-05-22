@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package openfoodfacts.github.scrachx.openfood.features.viewmodel.category
+package openfoodfacts.github.scrachx.openfood.features.categories.fragment
 
 import android.util.Log
 import android.view.View
@@ -110,7 +110,7 @@ class CategoryFragmentViewModel @Inject constructor(
      */
     fun searchCategories(query: String) {
         shownCategories.clear()
-        shownCategories += allCategories.filter { it.name?.toLowerCase(Locale.getDefault())?.startsWith(query) == true }
+        shownCategories += allCategories.filter { it.name?.lowercase(Locale.getDefault())?.startsWith(query) == true }
     }
 
 }
