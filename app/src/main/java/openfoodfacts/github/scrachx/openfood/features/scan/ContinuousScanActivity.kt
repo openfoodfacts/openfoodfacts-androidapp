@@ -155,16 +155,14 @@ class ContinuousScanActivity : BaseActivity() {
      */
     private var useMLScanner = false
 
-    private val mlKitView by lazy {
-        MlKitCameraView(this)
-    }
+    private val mlKitView by lazy { MlKitCameraView(this) }
 
     private var offlineSavedProduct: OfflineSavedProduct? = null
     private var product: Product? = null
     private var lastBarcode: String? = null
     private var productViewFragment: ProductViewFragment? = null
 
-    private var popupMenu: PopupMenu? = null
+    private lateinit var cameraSettingMenu: PopupMenu
     private var summaryProductPresenter: SummaryProductPresenter? = null
 
     private val productActivityResultLauncher = registerForActivityResult(ProductEditActivity.EditProductContract())
@@ -270,10 +268,11 @@ class ContinuousScanActivity : BaseActivity() {
                     }
 
                     showAllViews()
+
                     binding.txtProductCallToAction.let {
                         it.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0)
                         it.background = ContextCompat.getDrawable(this, R.drawable.rounded_quick_view_text)
-                        it.setText(if (isProductIncomplete()) R.string.product_not_complete else R.string.scan_tooltip)
+                        it.setText(if (product.isProductIncomplete()) R.string.product_not_complete else R.string.scan_tooltip)
                         it.visibility = View.VISIBLE
                     }
 
@@ -312,6 +311,7 @@ class ContinuousScanActivity : BaseActivity() {
 
                     // Create the product view fragment and add it to the layout
                     val newProductViewFragment = ProductViewFragment.newInstance(productState)
+
                     supportFragmentManager.commit {
                         replace(R.id.frame_layout, newProductViewFragment)
                         setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
@@ -644,7 +644,7 @@ class ContinuousScanActivity : BaseActivity() {
 
 
     private fun setupPopupMenu() {
-        popupMenu = PopupMenu(this, binding.buttonMore).also {
+        cameraSettingMenu = PopupMenu(this, binding.buttonMore).also {
             it.menuInflater.inflate(R.menu.popup_menu, it.menu)
             // turn flash on if flashActive true in pref
             if (flashActive) {
@@ -661,19 +661,6 @@ class ContinuousScanActivity : BaseActivity() {
             }
         }
     }
-
-    private fun isProductIncomplete() = product?.let {
-        it.imageFrontUrl == null
-                || it.imageFrontUrl == ""
-                || it.quantity == null
-                || it.quantity == ""
-                || it.productName == null
-                || it.productName == ""
-                || it.brands == null
-                || it.brands == ""
-                || it.ingredientsText == null
-                || it.ingredientsText == ""
-    } ?: false
 
     @Suppress("deprecation")
     private fun toggleCamera() {
@@ -726,53 +713,51 @@ class ContinuousScanActivity : BaseActivity() {
     }
 
     private fun showMoreSettings() {
-        popupMenu?.let { menu ->
-            if (useMLScanner) {
-                menu.menu.findItem(R.id.toggleBeep).isEnabled = false
-            }
-            menu.setOnMenuItemClickListener { item: MenuItem ->
-                when (item.itemId) {
-                    R.id.toggleBeep -> {
-                        beepActive = !beepActive
-                        item.isChecked = beepActive
-                        cameraPref.edit {
-                            putBoolean(SETTING_RING, beepActive)
-                            apply()
-                        }
-                    }
-                    R.id.toggleAutofocus -> {
-                        autoFocusActive = !autoFocusActive
-                        item.isChecked = autoFocusActive
-                        cameraPref.edit { putBoolean(SETTING_FOCUS, autoFocusActive) }
-
-                        if (useMLScanner) {
-                            mlKitView.updateFocusModeSetting(autoFocusActive)
-                        } else {
-                            if (binding.barcodeScanner.barcodeView.isPreviewActive) {
-                                binding.barcodeScanner.pause()
-                            }
-                            val settings = binding.barcodeScanner.barcodeView.cameraSettings
-                            settings.isAutoFocusEnabled = autoFocusActive
-                            binding.barcodeScanner.resume()
-                            binding.barcodeScanner.barcodeView.cameraSettings = settings
-
-                        }
-                    }
-                    R.id.troubleScanning -> {
-                        hideAllViews()
-                        hintBarcodeDisp?.dispose()
-                        binding.quickView.setOnClickListener(null)
-                        binding.quickViewSearchByBarcode.text = null
-                        binding.quickViewSearchByBarcode.visibility = View.VISIBLE
-                        quickViewBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
-                        binding.quickViewSearchByBarcode.requestFocus()
-                    }
-                    R.id.toggleCamera -> toggleCamera()
-                }
-                true
-            }
-            menu.show()
+        if (useMLScanner) {
+            cameraSettingMenu.menu.findItem(R.id.toggleBeep).isEnabled = false
         }
+        cameraSettingMenu.setOnMenuItemClickListener { item: MenuItem ->
+            when (item.itemId) {
+                R.id.toggleBeep -> {
+                    beepActive = !beepActive
+                    item.isChecked = beepActive
+                    cameraPref.edit {
+                        putBoolean(SETTING_RING, beepActive)
+                        apply()
+                    }
+                }
+                R.id.toggleAutofocus -> {
+                    autoFocusActive = !autoFocusActive
+                    item.isChecked = autoFocusActive
+                    cameraPref.edit { putBoolean(SETTING_FOCUS, autoFocusActive) }
+
+                    if (useMLScanner) {
+                        mlKitView.updateFocusModeSetting(autoFocusActive)
+                    } else {
+                        if (binding.barcodeScanner.barcodeView.isPreviewActive) {
+                            binding.barcodeScanner.pause()
+                        }
+                        val settings = binding.barcodeScanner.barcodeView.cameraSettings
+                        settings.isAutoFocusEnabled = autoFocusActive
+                        binding.barcodeScanner.resume()
+                        binding.barcodeScanner.barcodeView.cameraSettings = settings
+
+                    }
+                }
+                R.id.troubleScanning -> {
+                    hideAllViews()
+                    hintBarcodeDisp?.dispose()
+                    binding.quickView.setOnClickListener(null)
+                    binding.quickViewSearchByBarcode.text = null
+                    binding.quickViewSearchByBarcode.visibility = View.VISIBLE
+                    quickViewBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+                    binding.quickViewSearchByBarcode.requestFocus()
+                }
+                R.id.toggleCamera -> toggleCamera()
+            }
+            true
+        }
+        cameraSettingMenu.show()
     }
 
     /**
@@ -948,5 +933,7 @@ class ContinuousScanActivity : BaseActivity() {
         private const val SETTING_FOCUS = "focus"
         private const val SETTING_STATE = "cameraState"
         private val LOG_TAG = this::class.simpleName!!
+
+
     }
 }

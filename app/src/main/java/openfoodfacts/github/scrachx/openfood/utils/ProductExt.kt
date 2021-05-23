@@ -23,7 +23,7 @@ fun Product.isPerServingInLiter() = servingSize?.contains(Units.UNIT_LITER, true
 
 fun SearchProduct.getProductBrandsQuantityDetails() = StringBuilder().apply {
     brands?.takeIf { it.isNotEmpty() }?.let { brandStr ->
-        append(brandStr.split(",").first().trim { it <= ' ' }.capitalize(Locale.ROOT))
+        append(brandStr.split(",").first().trim { it <= ' ' }.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.ROOT) else it.toString() })
     }
     if (!quantity.isNullOrEmpty()) {
         append(" - ")
@@ -32,10 +32,10 @@ fun SearchProduct.getProductBrandsQuantityDetails() = StringBuilder().apply {
 }.toString()
 
 fun SearchProduct.toProduct(client: OpenFoodAPIClient): Single<Product> =
-        client.getProductStateFull(this.code).map { it.product }
+    client.getProductStateFull(this.code).map { it.product }
 
 @DrawableRes
-private fun getResourceFromEcoscore(ecoscore: String?) = when (ecoscore?.toLowerCase(Locale.ROOT)) {
+private fun getResourceFromEcoscore(ecoscore: String?) = when (ecoscore?.lowercase(Locale.ROOT)) {
     "a" -> R.drawable.ic_ecoscore_a
     "b" -> R.drawable.ic_ecoscore_b
     "c" -> R.drawable.ic_ecoscore_c
@@ -53,9 +53,9 @@ fun HistoryProduct?.getEcoscoreResource() = getResourceFromEcoscore(this?.ecosco
 
 @DrawableRes
 private fun getResourceFromNutriScore(
-        nutriscore: String?,
-        vertical: Boolean,
-) = when (nutriscore?.toLowerCase(Locale.ROOT)) {
+    nutriscore: String?,
+    vertical: Boolean,
+) = when (nutriscore?.lowercase(Locale.ROOT)) {
     "a" -> if (vertical) R.drawable.ic_nutriscore_vertical_border_a else R.drawable.ic_nutriscore_a
     "b" -> if (vertical) R.drawable.ic_nutriscore_vertical_border_b else R.drawable.ic_nutriscore_b
     "c" -> if (vertical) R.drawable.ic_nutriscore_vertical_border_c else R.drawable.ic_nutriscore_c
@@ -94,4 +94,16 @@ fun SearchProduct?.getNovaGroupResource() = getResourceFromNova(this?.novaGroups
 @DrawableRes
 fun HistoryProduct?.getNovaGroupResource() = getResourceFromNova(this?.novaGroup)
 
+internal fun Product.isProductIncomplete() = this.let {
+    it.imageFrontUrl == null
+            || it.imageFrontUrl == ""
+            || it.quantity == null
+            || it.quantity == ""
+            || it.productName == null
+            || it.productName == ""
+            || it.brands == null
+            || it.brands == ""
+            || it.ingredientsText == null
+            || it.ingredientsText == ""
+}
 
