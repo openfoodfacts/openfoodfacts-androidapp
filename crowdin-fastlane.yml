@@ -1,0 +1,64 @@
+  - source: /fastlane/metadata/android/en-US/off/long_description.txt
+    dest: /fastlane/metadata/android/en-US/off/long_description.txt
+    translation: /fastlane/metadata/android/%locale%/off/long_description.txt
+    preserve_hierarchy: true
+
+  - source: /fastlane/metadata/android/en-US/obf/long_description.txt
+    dest: /fastlane/metadata/android/en-US/obf/long_description.txt
+    translation: /fastlane/metadata/android/%locale%/obf/long_description.txt
+    preserve_hierarchy: true
+
+  - source: /fastlane/metadata/android/en-US/opff/long_description.txt
+    translation: /fastlane/metadata/android/%locale%/opff/long_description.txt
+    dest: /fastlane/metadata/android/en-US/opff/long_description.txt
+    preserve_hierarchy: true
+    
+  - source: /fastlane/metadata/android/en-US/opf/long_description.txt
+    translation: /fastlane/metadata/android/%locale%/opf/long_description.txt
+    dest: /fastlane/metadata/android/en-US/opf/long_description.txt
+    preserve_hierarchy: true
+    
+  - source: /fastlane/metadata/android/en-US/off/short_description.txt
+    translation: /fastlane/metadata/android/%locale%/off/short_description.txt
+    dest: /fastlane/metadata/android/en-US/off/short_description.txt
+    preserve_hierarchy: true
+    
+  - source: /fastlane/metadata/android/en-US/obf/short_description.txt
+    translation: /fastlane/metadata/android/%locale%/obf/short_description.txt
+    dest: /fastlane/metadata/android/en-US/obf/short_description.txt
+    preserve_hierarchy: true
+    
+  - source: /fastlane/metadata/android/en-US/opff/short_description.txt
+    translation: /fastlane/metadata/android/%locale%/opff/short_description.txt
+    dest: /fastlane/metadata/android/en-US/opff/short_description.txt
+    preserve_hierarchy: true
+    
+  - source: /fastlane/metadata/android/en-US/opf/short_description.txt
+    translation: /fastlane/metadata/android/%locale%/opf/short_description.txt
+    dest: /fastlane/metadata/android/en-US/opf/short_description.txt
+    preserve_hierarchy: true
+    
+  - source: /fastlane/metadata/android/en-US/off/title.txt
+    translation: /fastlane/metadata/android/%locale%/off/title.txt
+    dest: /fastlane/metadata/android/en-US/off/title.txt
+    preserve_hierarchy: true
+    
+  - source: /fastlane/metadata/android/en-US/obf/title.txt
+    translation: /fastlane/metadata/android/%locale%/obf/title.txt
+    dest: /fastlane/metadata/android/en-US/obf/title.txt
+    preserve_hierarchy: true
+    
+  - source: /fastlane/metadata/android/en-US/opff/title.txt
+    translation: /fastlane/metadata/android/%locale%/opff/title.txt
+    dest: /fastlane/metadata/android/en-US/opff/title.txt
+    preserve_hierarchy: true
+    
+  - source: /fastlane/metadata/android/en-US/opf/title.txt
+    translation: /fastlane/metadata/android/%locale%/opf/title.txt
+    dest: /fastlane/metadata/android/en-US/opf/title.txt
+    preserve_hierarchy: true
+    
+  - source: /fastlane/metadata/android/en-US/off/feedback-form.txt
+    translation: /fastlane/metadata/android/%locale%/off/feedback-form.txt
+    dest: /fastlane/metadata/android/en-US/off/feedback-form.txt
+    preserve_hierarchy: true
