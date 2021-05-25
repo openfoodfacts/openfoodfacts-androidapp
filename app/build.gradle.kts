@@ -202,7 +202,7 @@ dependencies {
         exclude(group = "com.android.support", module = "design")
         exclude(module = "recyclerview-v7")
     }
-    androidTestImplementation("com.jraska:falcon:2.1.1")
+    androidTestImplementation("com.jraska:falcon:2.2.0")
     androidTestImplementation("tools.fastlane:screengrab:1.2.0")
 
     resourcePlaceholders { files = listOf("xml/shortcuts.xml") }
