@@ -83,7 +83,7 @@ dependencies {
 
     implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
 
-    kapt("com.google.dagger:dagger-compiler:2.35.1")
+    kapt("com.google.dagger:dagger-compiler:2.36")
     implementation("com.google.dagger:dagger:2.35.1")
     implementation("com.google.dagger:hilt-android:${rootProject.extra["hiltVersion"]}")
 
@@ -179,7 +179,7 @@ dependencies {
     testImplementation("org.mockito:mockito-core:3.9.0")
     testImplementation("net.javacrumbs.json-unit:json-unit-fluent:2.26.0")
     testImplementation("com.google.truth:truth:1.1.2")
-    testImplementation("com.google.truth.extensions:truth-java8-extension:1.1.2")
+    testImplementation("com.google.truth.extensions:truth-java8-extension:1.1.3")
 
     // Instrumented tests
     androidTestUtil("androidx.test:orchestrator:1.3.0")
