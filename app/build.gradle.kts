@@ -83,7 +83,7 @@ dependencies {
 
     implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
 
-    kapt("com.google.dagger:dagger-compiler:2.35.1")
+    kapt("com.google.dagger:dagger-compiler:2.36")
     implementation("com.google.dagger:dagger:2.35.1")
     implementation("com.google.dagger:hilt-android:${rootProject.extra["hiltVersion"]}")
 
