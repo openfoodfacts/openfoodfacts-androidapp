@@ -402,7 +402,7 @@
     <string name="device_offline_dialog_message">네트워크 연결이 필요합니다. 설정에서 변경하시겠습니까?</string>
     <string name="device_offline_dialog_negative">무시</string>
     <string name="device_offline_dialog_positive">설정</string>
-    <string name="scan_first_product">Scan your first product</string>
+    <string name="scan_first_product">Scan First Product</string>
     <string name="device_on_mobile_data_warning_title">정보</string>
     <string name="device_on_mobile_data_warning_message">You have disabled upload on mobile data , please connect to WiFi or change this in preferences</string>
     <string name="device_on_mobile_data_warning_positive">환경설정</string>
@@ -690,6 +690,10 @@
     <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
         You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
     <string name="txt_info_your_listed_products">제품을 검색하고 제품 페이지 오른쪽 상단의 + 버튼을 클릭하여 이 목록에 제품을 추가 할 수 있습니다.</string>
+    <string name="import_csv_to_list"> Open Food Facts 목록 CSV 파일 가져 오기</string>
+    <string name="toast_import_csv_error">CSV 파일을 가져 오는 중 오류가 발생했습니다</string>
+    <string name="toast_import_csv">CSV 가져오기 성공!</string>
+    <string name="open_csv">CSV 열기</string>
     <string name="txt_no_nutrition_data">이 제품 포장에는 영양 정보가 없습니다. 변경된 경우 제품을 편집할 수 있습니다.</string>
     <string name="image_prompt_language">성분의 사진을 촬영</string>
     <string name="swipe_delete_tip">You can delete a list by swiping it left.</string>
@@ -725,10 +729,8 @@
     <string name="barcode">바코드</string>
     <string name="productAdditivesNone">첨가물 없음</string>
     <string name="error_uploading_photo">새 사진을 업로드하는 중에 문제가 발생했습니다</string>
-    <string name="import_csv_to_list"> Open Food Facts 목록 CSV 파일 가져 오기</string>
-    <string name="toast_import_csv_error">CSV 파일을 가져 오는 중 오류가 발생했습니다</string>
-    <string name="toast_import_csv">CSV 가져오기 성공!</string>
-    <string name="open_csv">CSV 열기</string>
+    <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
+    <string name="hint_origin">Examples: USA, France, Italy</string>
     <!-- Used for diets AddOn -->
     <string name="history_network_error">제품을 불러올 수 없습니다. 온라인 상태가 되면 다시 시도하십시오.</string>
     <string name="cant_modify_if_refreshing">업로드가 완료될 때까지 기다리십시오</string>
@@ -792,12 +794,11 @@
     <string name="follow_system">Follow system</string>
     <string name="day">Day</string>
     <string name="night">Night</string>
-    <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
-    <string name="hint_origin">Examples: USA, France, Italy</string>
     <string name="report_email_chooser_title">Send a report email</string>
     <!-- Changelog String -->
     <string name="changelog_translation_help">Want to see this changelog in %s?\nJoin the translation team!</string>
     <string name="whats_new">What\'s new with Open Food Facts?</string>
+    <!-- New onboarding slides -->
     <string name="eco_score_slide_4_title">Eco-Score</string>
     <string name="join_the_food_revolution">Join the food revolution</string>
     <string name="slide_1_text_revolution">Scan food, Take photos, Help transform the food system</string>

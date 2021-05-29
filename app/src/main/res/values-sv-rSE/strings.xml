@@ -166,7 +166,7 @@
     <string name="txtEMB">Spårbarhetskoder:</string>
     <string name="txtIngredients">Ingredienslista :</string>
     <string name="Donate">Donera</string>
-    <string name="Donation">Click here to donate to Open Food Facts</string>
+    <string name="Donation">Klicka här för att donera till Open Food Facts</string>
     <string name="txtSubstances">Substanser eller produkter som orsaker allergier eller intolerans :</string>
     <string name="txtAdditives">Tillsatser :</string>
     <string name="txtTraces">Spår :</string>
@@ -208,7 +208,7 @@
     <string name="txtBarcodeRequire">Streckkod krävs</string>
     <string name="txtOk">OK</string>
     <string name="txtBarcodeNotValid">Streckkoden är inte giltig</string>
-    <string name="msg_share">Look at this product on Open Food Facts :</string>
+    <string name="msg_share">Titta på denna produkt på Open Food Facts :</string>
     <string name="create_account">Registrera</string>
     <string name="home_drawer">Hem</string>
     <string name="install">Installera</string>
@@ -294,7 +294,7 @@
     <string name="logout_drawer">Logga ut</string>
     <string name="contribution_without_account">Du kan logga in eller skapa ett konto för att behålla dina bidrag</string>
     <string name="textCarbonFootprint">Koldioxidutsläpp: </string>
-    <string name="packaging_environmentTab">Packaging:</string>
+    <string name="packaging_environmentTab">Förpackning:</string>
     <string name="action_search">Sök</string>
     <string name="search_hint">Sök en produkt</string>
     <string name="number_of_results">Antal resultat: </string>
@@ -421,8 +421,8 @@
             to improve their software. As noted in the MLKit terms, this won’t include any information about the products you scan and the telemetry is anonymized. Choosing MLKit scanner
             implies that you accept those terms\n<b>Note: You can switch back at any time between the 2 scanners in the Settings.</b>
     </string>
-    <string name="prompt_point_at_a_barcode">Point your camera at a barcode</string>
-    <string name="prompt_move_camera_closer">Move closer to detect</string>
+    <string name="prompt_point_at_a_barcode">Rikta kameran mot streckkoden</string>
+    <string name="prompt_move_camera_closer">Gå närmare för att upptäcka</string>
     <string name="please_check_your_connection">Kontrollera din anslutning.</string>
     <string name="advanced_search_title">Avancerad sökning &amp; Diagram</string>
     <string name="compare_products">Jämför produkter</string>
@@ -445,14 +445,14 @@
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
     <string name="url_nutrient_values">https://world-sv.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">Allmänt</string>
-    <string name="preference_header_network">Network</string>
+    <string name="preference_header_network">Nätverk</string>
     <string name="preference_header_contributing">Contributing</string>
     <string name="preference_header_privacy">Privacy</string>
     <string name="preference_crash_title">Crash reporting</string>
     <string name="preference_crash_summary">When enabled, crash reports will be sent to the Open Food Facts server automatically, so that we can fix bugs and improve the app.</string>
-    <string name="preference_analytics_title">Send anonymous data</string>
+    <string name="preference_analytics_title">Skicka anonym data</string>
     <string name="preference_analytics_summary">When enabled, some anonymous information regarding app usage will be sent to the Open Food Facts servers, so that we can understand how and how much features are used in order to improve them.</string>
-    <string name="preference_analytics_bottom_sheet_title">Send anonymous data</string>
+    <string name="preference_analytics_bottom_sheet_title">Skicka anonym data</string>
     <string name="preference_analytics_bottom_sheet_description">Help improve Open Food Facts by letting us know how you use it. Data collected is anonymous. This option can be disabled at any time in the settings section.</string>
     <string name="preference_analytics_bottom_sheet_grant_button">Grant</string>
     <string name="preference_analytics_bottom_sheet_decline_button">Decline</string>
@@ -542,7 +542,7 @@
     <string name="initial_loading">Inledande laddning</string>
     <string name="preferences">Inställningar</string>
     <string name="OFFlogo">Open Food Facts logotyp</string>
-    <string name="loading_product">Loading product %s</string>
+    <string name="loading_product">Laddar produkt %s</string>
     <string name="image_not_defined_for_language">Ingen bild för valt språk. Du kan lägga till en ny</string>
     <string name="error_adding_ingredients">Något gick fel när vi försökte lägga till produktingredienser</string>
     <string name="unable_to_extract_ingredients">Det gick inte att utläsa ingredienser från bilden</string>
@@ -551,7 +551,7 @@
     <string name="choose_nutrient">Välj ett näringsämne</string>
     <string name="error_adding_product_details">Något gick fel när vi försökte lägga till produktinformation</string>
     <string name="hint_product_URL">Länk till produktens officiella sida</string>
-    <string name="extract_url">Extract URL from QR-code</string>
+    <string name="extract_url">Extrahera URL från QR-kod</string>
     <string name="search_url">Search for official page URL</string>
     <string name="product_language">Produktspråk: </string>
     <string name="hint_emb_codes">Exempel: EMB 53062, FR 62.448.034 CE, 84R20, 33 RECOLTANT 522, FSSL 10013011001409</string>
@@ -635,7 +635,7 @@
     <string name="contribution_by">Bidrag från</string>
     <string name="title_activity_product">Titel</string>
     <string name="description_activity_product">beskrivning</string>
-    <string name="intent_filter_share_label">Add to Open Food Facts</string>
+    <string name="intent_filter_share_label">Lägg till i Open Food Facts</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="overexposure_high">Hög risk för överexponering</string>
     <string name="overexposure_moderate">Måttlig risk för överexponering</string>
@@ -696,6 +696,10 @@
     <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
         You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
     <string name="txt_info_your_listed_products">Du kan lägga till produkter i listan genom att söka i dem och klicka på + -knappen längst upp till höger på produktsidan.</string>
+    <string name="import_csv_to_list">Importera en CSV-fil med Open Food Facts-lista</string>
+    <string name="toast_import_csv_error">Fel vid import av CSV-fil</string>
+    <string name="toast_import_csv">CSV importerades framgångsrikt!</string>
+    <string name="open_csv">Öppna CSV</string>
     <string name="txt_no_nutrition_data">Denna produkt har ingen näringsinformation på förpackningen. Om detta har ändrats kan du redigera produkten.</string>
     <string name="image_prompt_language">Ta ett foto av innehållande ingredienser</string>
     <string name="swipe_delete_tip">Du kan ta bort en lista genom att dra den till vänster.</string>
@@ -731,10 +735,8 @@
     <string name="barcode">Streckkod</string>
     <string name="productAdditivesNone">Inga tillsatser</string>
     <string name="error_uploading_photo">Något gick fel när du laddade upp ett nytt foto</string>
-    <string name="import_csv_to_list">Importera en CSV-fil med Open Food Facts-lista</string>
-    <string name="toast_import_csv_error">Fel vid import av CSV-fil</string>
-    <string name="toast_import_csv">CSV importerades framgångsrikt!</string>
-    <string name="open_csv">Öppna CSV</string>
+    <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
+    <string name="hint_origin">Exempel: USA, Frankrike, Italien</string>
     <!-- Used for diets AddOn -->
     <string name="history_network_error">Produkten kunde inte laddas. Försök igen när du är online igen.</string>
     <string name="cant_modify_if_refreshing">Vänta tills uppladdningen är klar</string>
@@ -768,7 +770,7 @@
     <string name="load_ingredient_detection_data_summary">Inga detektionsdata av ingrediens har hittats, försök ladda den från servern</string>
     <string name="white_check_image_descr">En vit bock</string>
     <string name="hint_packaging">Exempel: plast, papper, glas</string>
-    <string name="hint_trace_code">Examples: EMB 23456, FR 23.345.34 CE</string>
+    <string name="hint_trace_code">Exempel: EMB 23456, FR 23.345.34 CE</string>
     <string name="risk_alcohol_consumption">Överdriven konsumtion av alkohol är skadlig för hälsan, ska konsumeras med måtta</string>
     <!--ShowcaseView Strings-->
     <string name="title_image_type">Välj bildtyp</string>
@@ -797,13 +799,12 @@
     <!-- Application theme settings -->
     <string name="follow_system">Follow system</string>
     <string name="day">Dag</string>
-    <string name="night">Night</string>
-    <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
-    <string name="hint_origin">Examples: USA, France, Italy</string>
+    <string name="night">Natt</string>
     <string name="report_email_chooser_title">Send a report email</string>
     <!-- Changelog String -->
     <string name="changelog_translation_help">Want to see this changelog in %s?\nJoin the translation team!</string>
     <string name="whats_new">What\'s new with Open Food Facts?</string>
+    <!-- New onboarding slides -->
     <string name="eco_score_slide_4_title">Eco-Score</string>
     <string name="join_the_food_revolution">Join the food revolution</string>
     <string name="slide_1_text_revolution">Scan food, Take photos, Help transform the food system</string>

@@ -11,6 +11,7 @@
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
     <string name="website_contributor">https://world.openfoodfacts.org/contributor/</string>
     <string name="txtHome">Dejstva o odprtih živilih je odprta zbirka živilskih izdelkov s sestavinami, alergeni, podatki o hranilni vrednosti in vsemi informacijami, ki jih najdemo na nalepkah izdelkov.</string>
+    <!-- Old onboarding slides -->
     <string name="slide_1_title">Prispevajte k preglednosti hrane</string>
     <string name="slide_1_desc">Skenirajte izdelke, posnamite sliko izdelka, naredite preglednost hrane</string>
     <string name="slide_2_title">Pridobi dejstva</string>
@@ -19,6 +20,15 @@
     <string name="slide_3_desc">Sintetični pogled na prehranske lastnosti vaših najljubših prehrambenih izdelkov</string>
     <string name="slide_4_title">Deluje brez povezave</string>
     <string name="slide_4_desc">Dodate lahko nove izdelke, tudi če trenutno nimate internetne povezave</string>
+    <!-- New onboarding-->
+    <string name="join_the_food_revolution">Join the food revolution</string>
+    <string name="slide_1_text_revolution">Scan food, Take photos, Help transform the food system</string>
+    <string name="get_the_nutri_score">Get the Nutriscore</string>
+    <string name="synthesis_of_nutrition_slide_2_text">A simple synthesis of the nutritional quality of your food</string>
+    <string name="avoid_ultra_processed_foods">Avoid ultra-processed foods</string>
+    <string name="nova_slide_3_text">Reduce the amount of ultra-processed foods in your diet.</string>
+    <string name="eco_score_slide_4_title">Eco-Score</string>
+    <!-- Scan card -->
     <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
     <string name="txtDialogsContentPowerMode">Izdelek, ki ste ga optično prebrali, že obstaja v podatkih o odprtih živilih.</string>
     <string name="msg_share">Look at this product on Open Food Facts :</string>

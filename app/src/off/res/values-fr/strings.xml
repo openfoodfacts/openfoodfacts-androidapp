@@ -11,6 +11,7 @@
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
     <string name="website_contributor">https://world-fr.openfoodfacts.org/contributeur/</string>
     <string name="txtHome">Open Food Facts est une base de données ouverte de produits alimentaires.</string>
+    <!-- Old onboarding slides -->
     <string name="slide_1_title">Contribuez à la transparence alimentaire</string>
     <string name="slide_1_desc">Scannez les produits, prenez-les en photo, devenez acteur de la transparence alimentaire</string>
     <string name="slide_2_title">Obtenez les faits</string>
@@ -19,6 +20,15 @@
     <string name="slide_3_desc">Une vue synthétique des propriétés nutritionnelles de vos produits alimentaires préférés</string>
     <string name="slide_4_title">Fonctionne hors connexion</string>
     <string name="slide_4_desc">Vous pouvez ajouter de nouveaux produits, même si vous ne disposez pas d\'une connexion Internet pour le moment</string>
+    <!-- New onboarding-->
+    <string name="join_the_food_revolution">Join the food revolution</string>
+    <string name="slide_1_text_revolution">Scan food, Take photos, Help transform the food system</string>
+    <string name="get_the_nutri_score">Obtenez le Nutri-Score</string>
+    <string name="synthesis_of_nutrition_slide_2_text">A simple synthesis of the nutritional quality of your food</string>
+    <string name="avoid_ultra_processed_foods">Avoid ultra-processed foods</string>
+    <string name="nova_slide_3_text">Reduce the amount of ultra-processed foods in your diet.</string>
+    <string name="eco_score_slide_4_title">Éco-Score</string>
+    <!-- Scan card -->
     <string name="txtDialogsContent">Le produit que vous avez scanné n\'existe pas encore dans Open Food Facts. Voulez-vous l\'ajouter ?</string>
     <string name="txtDialogsContentPowerMode">Le produit que vous avez scanné existe déjà dans Open Food Facts.</string>
     <string name="msg_share">Regarde ce produit sur Open Food Facts:</string>

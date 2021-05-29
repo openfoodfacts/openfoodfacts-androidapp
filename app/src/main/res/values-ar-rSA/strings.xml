@@ -722,6 +722,10 @@
     <string name="txt_info_eaten_products">ستتمكن من إضافة منتج إلى هذه القائمة عن طريق مسح المنتجات وسحب بطاقة المنتج لأعلى والنقر على \"المنتجات المراد شراؤها\".
         ستتمكن أيضًا من إضافة منتجات إلى هذه القائمة من خلال البحث عنها والنقر فوق الزر + في أعلى يمين صفحة المنتج.</string>
     <string name="txt_info_your_listed_products">ستتمكن من إضافة منتجات إلى هذه القائمة من خلال البحث عنها والنقر فوق الزر + في أعلى يمين صفحة المنتج.</string>
+    <string name="import_csv_to_list">استيراد ملف CSV بقائمة حقائق الأطعمة المفتوحة</string>
+    <string name="toast_import_csv_error">خطأ في استيراد ملف CSV</string>
+    <string name="toast_import_csv">تم استيراد ملف CSV بنجاح!</string>
+    <string name="open_csv">افتح CSV</string>
     <string name="txt_no_nutrition_data">لا يحتوي هذا المنتج على أي معلومات غذائية على العبوة. إذا طراء أيي تغير ، يمكنك تحرير المنتج.</string>
     <string name="image_prompt_language">التقط صورة للمكونات الموجودة في</string>
     <string name="swipe_delete_tip">You can delete a list by swiping it left.</string>
@@ -757,10 +761,8 @@
     <string name="barcode">الرمز الشريطي</string>
     <string name="productAdditivesNone">بدون إضافات</string>
     <string name="error_uploading_photo">حدث خطأ ما اثناء تحميل صورة جديدة</string>
-    <string name="import_csv_to_list">استيراد ملف CSV بقائمة حقائق الأطعمة المفتوحة</string>
-    <string name="toast_import_csv_error">خطأ في استيراد ملف CSV</string>
-    <string name="toast_import_csv">تم استيراد ملف CSV بنجاح!</string>
-    <string name="open_csv">افتح CSV</string>
+    <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
+    <string name="hint_origin">Examples: USA, France, Italy</string>
     <!-- Used for diets AddOn -->
     <string name="history_network_error">لا يمكن تحميل المنتج. يرجى المحاولة مرة أخرى عند الاتصال بالإنترنت مرة أخرى.</string>
     <string name="cant_modify_if_refreshing">الرجاء الانتظار حتى انتهاء التحميل</string>
@@ -824,12 +826,11 @@
     <string name="follow_system">Follow system</string>
     <string name="day">Day</string>
     <string name="night">Night</string>
-    <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
-    <string name="hint_origin">Examples: USA, France, Italy</string>
     <string name="report_email_chooser_title">Send a report email</string>
     <!-- Changelog String -->
     <string name="changelog_translation_help">Want to see this changelog in %s?\nJoin the translation team!</string>
     <string name="whats_new">What\'s new with Open Food Facts?</string>
+    <!-- New onboarding slides -->
     <string name="eco_score_slide_4_title">Eco-Score</string>
     <string name="join_the_food_revolution">Join the food revolution</string>
     <string name="slide_1_text_revolution">Scan food, Take photos, Help transform the food system</string>
