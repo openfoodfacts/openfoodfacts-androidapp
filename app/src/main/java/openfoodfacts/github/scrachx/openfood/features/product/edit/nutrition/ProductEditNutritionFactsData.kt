@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.features.product.edit
+package openfoodfacts.github.scrachx.openfood.features.product.edit.nutrition
 
 import openfoodfacts.github.scrachx.openfood.features.shared.views.CustomValidatingEditTextView
 

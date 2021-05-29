@@ -4,16 +4,19 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.content.SharedPreferences
+import android.content.pm.PackageManager
 import android.os.BatteryManager
 import android.util.Log
 import androidx.preference.PreferenceManager
 import openfoodfacts.github.scrachx.openfood.features.PreferencesFragment
 import kotlin.math.ceil
 
+private const val LOG_TAG = "ContextExt"
+
 fun Context.isUserSet() = !getLoginPreferences().getString("user", null).isNullOrBlank()
 
 fun Context.getLoginPreferences(mode: Int = 0): SharedPreferences =
-        getSharedPreferences(PreferencesFragment.LOGIN_PREF, mode)
+    getSharedPreferences(PreferencesFragment.LOGIN_PREF, mode)
 
 /**
  * Function which returns true if the battery level is low
@@ -31,11 +34,24 @@ fun Context.isBatteryLevelLow(): Boolean {
 }
 
 fun Context.isDisableImageLoad(defValue: Boolean = false) = PreferenceManager.getDefaultSharedPreferences(this)
-        .getBoolean("disableImageLoad", defValue)
+    .getBoolean("disableImageLoad", defValue)
 
 fun Context.isLowBatteryMode() = isDisableImageLoad() && isBatteryLevelLow()
 
 fun Context.isFastAdditionMode(defValue: Boolean = false) = PreferenceManager.getDefaultSharedPreferences(this)
-        .getBoolean("fastAdditionMode", defValue)
+    .getBoolean("fastAdditionMode", defValue)
 
 fun Context.dpsToPixel(dps: Int) = (dps * resources.displayMetrics.density + 0.5f).toInt()
+
+/**
+ * @return Returns the version name of the app
+ */
+fun Context.getVersionName(): String = try {
+    packageManager.getPackageInfo(packageName, 0).versionName
+} catch (e: PackageManager.NameNotFoundException) {
+    Log.e(LOG_TAG, "getVersionName", e)
+    "(version unknown)"
+} catch (e: NullPointerException) {
+    Log.e(LOG_TAG, "getVersionName", e)
+    "(version unknown)"
+}
