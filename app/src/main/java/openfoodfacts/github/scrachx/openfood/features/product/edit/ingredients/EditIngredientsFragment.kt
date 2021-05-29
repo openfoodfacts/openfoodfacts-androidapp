@@ -153,14 +153,14 @@ class EditIngredientsFragment : ProductEditFragment() {
 
         if (isEditingFromArgs && product != null) {
             code = product!!.code
-            preFillProductValues()
+            preFillProductValues(product!!)
         } else if (mOfflineSavedProduct != null) {
             code = mOfflineSavedProduct!!.barcode
-            preFillValuesForOffline()
+            preFillValuesForOffline(mOfflineSavedProduct!!)
         } else {
             // Fast addition
             val enabled = requireContext().isFastAdditionMode()
-            enableFastAdditionMode(enabled)
+            setFastAdditionMode(enabled)
         }
 
         if (bundle.getBoolean(KEY_PERFORM_OCR)) extractIngredients()
@@ -171,7 +171,8 @@ class EditIngredientsFragment : ProductEditFragment() {
         if (binding.ingredientsList.isEmpty() && !ingredientsImg.isNullOrEmpty()) {
             binding.btnExtractIngredients.visibility = View.VISIBLE
             imagePath = ingredientsImg
-        } else if (isEditingFromArgs
+        } else if (
+            isEditingFromArgs
             && binding.ingredientsList.isEmpty()
             && !product!!.imageIngredientsUrl.isNullOrEmpty()
         ) {
@@ -180,9 +181,7 @@ class EditIngredientsFragment : ProductEditFragment() {
 
         viewModel.allergens.observe(viewLifecycleOwner) { loadAutoSuggestions(it) }
 
-        if (activity is ProductEditActivity && (activity as ProductEditActivity).initialValues != null) {
-            getAllDetails((activity as ProductEditActivity).initialValues!!)
-        }
+        (activity as? ProductEditActivity)?.let { getAllDetails(it) }
     }
 
     override fun onResume() {
@@ -200,15 +199,18 @@ class EditIngredientsFragment : ProductEditFragment() {
     /**
      * Pre fill the fields of the product which are already present on the server.
      */
-    private fun preFillProductValues() {
+    private fun preFillProductValues(product: Product) {
         loadIngredientsImage()
-        if (!product!!.ingredientsText.isNullOrEmpty()) {
-            binding.ingredientsList.setText(product!!.ingredientsText)
-        }
-        if (product!!.tracesTags.isNotEmpty()) {
-            val chipValues = extractTracesChipValues(product)
-            binding.traces.setText(chipValues)
-        }
+
+        product.ingredientsText
+            ?.takeUnless { it.isEmpty() }
+            ?.let { binding.ingredientsList.setText(it) }
+
+        product.takeUnless { it.tracesTags.isEmpty() }
+            ?.let {
+                val chipValues = extractTracesChipValues(it)
+                binding.traces.setText(chipValues)
+            }
     }
 
     /**
@@ -242,7 +244,7 @@ class EditIngredientsFragment : ProductEditFragment() {
     }
 
     /**
-     * returns alergen name from tag
+     * Returns allergen name or `tag` if nothing found.
      *
      * @param languageCode language in which additive name and tag are written
      * @param tag Tag associated with the allergen
@@ -261,8 +263,8 @@ class EditIngredientsFragment : ProductEditFragment() {
     /**
      * To enable fast addition mode
      */
-    private fun enableFastAdditionMode(isEnabled: Boolean) {
-        if (isEnabled) {
+    private fun setFastAdditionMode(enabled: Boolean) {
+        if (enabled) {
             binding.traces.visibility = View.GONE
             binding.sectionTraces.visibility = View.GONE
             binding.hintTraces.visibility = View.GONE
@@ -278,9 +280,7 @@ class EditIngredientsFragment : ProductEditFragment() {
     /**
      * Pre fill the fields if the product is already present in SavedProductOffline db.
      */
-    private fun preFillValuesForOffline() {
-        val prod = mOfflineSavedProduct!!
-
+    private fun preFillValuesForOffline(prod: OfflineSavedProduct) {
         productDetails = prod.productDetails.toMutableMap()
 
         getImageIngredients()?.let {
@@ -300,14 +300,13 @@ class EditIngredientsFragment : ProductEditFragment() {
                 })
         }
 
-        prod.ingredients.let {
-            if (!it.isNullOrEmpty()) binding.ingredientsList.setText(it)
-        }
+        prod.ingredients
+            ?.takeUnless { it.isEmpty() }
+            ?.let { binding.ingredientsList.setText(it) }
 
 
         productDetails[ApiFields.Keys.ADD_TRACES]?.let {
-            val chipValues = it.split(Regex("\\s*,\\s*"))
-            binding.traces.setText(chipValues)
+            binding.traces.setText(it.split(Regex("\\s*,\\s*")))
         }
     }
 
@@ -386,9 +385,9 @@ class EditIngredientsFragment : ProductEditFragment() {
     /**
      * adds all the fields to the query map even those which are null or empty.
      */
-    private fun getAllDetails(targetMap: MutableMap<String, String?>) {
-        binding.traces.chipifyAllUnterminatedTokens()
-        (activity as? ProductEditActivity)?.let { activity ->
+    private fun getAllDetails(activity: ProductEditActivity) {
+        activity.initialValues?.let { targetMap ->
+            binding.traces.chipifyAllUnterminatedTokens()
 
             val lc = activity.getProductLanguageForEdition()
                 ?.takeUnless { it.isEmpty() } ?: ApiFields.Defaults.DEFAULT_LANGUAGE
@@ -397,7 +396,6 @@ class EditIngredientsFragment : ProductEditFragment() {
             val string = binding.traces.chipValues.joinToString(",")
             targetMap[ApiFields.Keys.ADD_TRACES.substring(4)] = string
         }
-
     }
 
     /**
@@ -451,8 +449,7 @@ class EditIngredientsFragment : ProductEditFragment() {
         binding.btnEditImageIngredients.visibility = View.VISIBLE
 
         if (!errorInUploading) {
-            picasso
-                .load(photoFile!!)
+            picasso.load(photoFile!!)
                 .resize(dps50ToPixels, dps50ToPixels)
                 .centerInside()
                 .into(binding.btnAddImageIngredients)

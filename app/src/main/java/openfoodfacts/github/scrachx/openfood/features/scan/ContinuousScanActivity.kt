@@ -37,8 +37,6 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.commit
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.bottomsheet.BottomSheetBehavior.BottomSheetCallback
-import com.google.android.material.bottomsheet.BottomSheetBehavior.from
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.ResultPoint
 import com.google.zxing.client.android.BeepManager
@@ -85,7 +83,7 @@ import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenHe
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenName
 import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.AnalysisTagConfig
 import openfoodfacts.github.scrachx.openfood.models.eventbus.ProductNeedsRefreshEvent
-import openfoodfacts.github.scrachx.openfood.network.ApiFields
+import openfoodfacts.github.scrachx.openfood.network.ApiFields.StateTags
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.*
@@ -99,7 +97,7 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class ContinuousScanActivity : BaseActivity() {
     private var _binding: ActivityContinuousScanBinding? = null
-    private val binding get() = _binding!!
+    internal val binding get() = _binding!!
 
     @Inject
     lateinit var client: OpenFoodAPIClient
@@ -126,11 +124,12 @@ class ContinuousScanActivity : BaseActivity() {
     lateinit var localeManager: LocaleManager
 
     private lateinit var beepManager: BeepManager
-    private lateinit var quickViewBehavior: BottomSheetBehavior<LinearLayout>
-    private lateinit var bottomSheetCallback: BottomSheetCallback
-
+    internal lateinit var quickViewBehavior: BottomSheetBehavior<LinearLayout>
     private val barcodeInputListener = BarcodeInputListener()
+
     private val barcodeScanCallback = BarcodeScannerCallback()
+
+    private val bottomSheetCallback by lazy { QuickViewCallback(this) }
 
     private val cameraPref by lazy { getSharedPreferences("camera", 0) }
 
@@ -140,27 +139,25 @@ class ContinuousScanActivity : BaseActivity() {
     private var productDisp: Disposable? = null
     private var hintBarcodeDisp: Disposable? = null
 
-    private val peekLarge by lazy { resources.getDimensionPixelSize(R.dimen.scan_summary_peek_large) }
-    private val peekSmall by lazy { resources.getDimensionPixelSize(R.dimen.scan_summary_peek_small) }
 
     private var cameraState = 0
     private var autoFocusActive = false
     private var flashActive = false
-    private var analysisTagsEmpty = true
+    internal var analysisTagsEmpty = true
     private var productShowing = false
     private var beepActive = false
 
     /**
     boolean to determine if MLKit Scanner is to be used
      */
-    private var useMLScanner = false
+    internal var useMLScanner = false
 
-    private val mlKitView by lazy { MlKitCameraView(this) }
+    internal val mlKitView by lazy { MlKitCameraView(this) }
 
     private var offlineSavedProduct: OfflineSavedProduct? = null
     private var product: Product? = null
-    private var lastBarcode: String? = null
-    private var productViewFragment: ProductViewFragment? = null
+    internal var lastBarcode: String? = null
+    internal var productViewFragment: ProductViewFragment? = null
 
     private lateinit var cameraSettingMenu: PopupMenu
     private var summaryProductPresenter: SummaryProductPresenter? = null
@@ -296,7 +293,7 @@ class ContinuousScanActivity : BaseActivity() {
                     val addTags = product.additivesTags
                     binding.quickViewAdditives.text = when {
                         addTags.isNotEmpty() -> resources.getQuantityString(R.plurals.productAdditives, addTags.size, addTags.size)
-                        product.statesTags.contains(ApiFields.StateTags.INGREDIENTS_COMPLETED) -> getString(R.string.productAdditivesNone)
+                        StateTags.INGREDIENTS_COMPLETED in product.statesTags -> getString(R.string.productAdditivesNone)
                         else -> getString(R.string.productAdditivesUnknown)
                     }
 
@@ -408,7 +405,7 @@ class ContinuousScanActivity : BaseActivity() {
     }
 
     private fun showProductFullScreen() {
-        quickViewBehavior.peekHeight = peekLarge
+        quickViewBehavior.peekHeight = bottomSheetCallback.peekLarge
         binding.quickView.let {
             it.layoutParams.height = ViewGroup.LayoutParams.MATCH_PARENT
             it.requestLayout()
@@ -416,10 +413,9 @@ class ContinuousScanActivity : BaseActivity() {
         }
     }
 
-    private fun showOfflineSavedDetails(offlineSavedProduct: OfflineSavedProduct) {
+    private fun showOfflineSavedDetails(savedProduct: OfflineSavedProduct) {
         showAllViews()
-        val pName = offlineSavedProduct.name
-        binding.quickViewName.text = if (!pName.isNullOrEmpty()) pName else getString(R.string.productNameNull)
+        binding.quickViewName.text = savedProduct.name?.takeUnless { it.isEmpty() } ?: getString(R.string.productNameNull)
         binding.txtProductCallToAction.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0)
         binding.txtProductCallToAction.background = ContextCompat.getDrawable(this@ContinuousScanActivity, R.drawable.rounded_quick_view_text)
         binding.txtProductCallToAction.setText(R.string.product_not_complete)
@@ -478,6 +474,7 @@ class ContinuousScanActivity : BaseActivity() {
         setContentView(binding.root)
 
         useMLScanner = BuildConfig.USE_MLKIT && settings.getBoolean(getString(R.string.pref_scanner_type_key), false)
+
         binding.toggleFlash.setOnClickListener { toggleFlash() }
         binding.buttonMore.setOnClickListener { showMoreSettings() }
 
@@ -500,12 +497,11 @@ class ContinuousScanActivity : BaseActivity() {
                 binding.quickViewSearchByBarcode.requestFocus()
             }.subscribe()
 
-        quickViewBehavior = from(binding.quickView)
+        quickViewBehavior = BottomSheetBehavior.from(binding.quickView)
 
         // Initial state
         quickViewBehavior.state = BottomSheetBehavior.STATE_HIDDEN
 
-        bottomSheetCallback = QuickViewCallback()
         quickViewBehavior.addBottomSheetCallback(bottomSheetCallback)
         cameraPref.let {
             beepActive = it.getBoolean(SETTING_RING, false)
@@ -786,85 +782,6 @@ class ContinuousScanActivity : BaseActivity() {
         productViewFragment?.showIngredientsTab(action)
     }
 
-    private inner class QuickViewCallback : BottomSheetCallback() {
-        private var previousSlideOffset = 0f
-
-        override fun onStateChanged(bottomSheet: View, newState: Int) {
-            fun stopScanner() {
-                if (useMLScanner) {
-                    mlKitView.updateWorkflowState(WorkflowState.DETECTED)
-                    mlKitView.stopCameraPreview()
-                } else {
-                    binding.barcodeScanner.pause()
-                }
-            }
-
-            when (newState) {
-                BottomSheetBehavior.STATE_HIDDEN -> {
-                    lastBarcode = null
-                    binding.txtProductCallToAction.visibility = View.GONE
-                }
-                BottomSheetBehavior.STATE_COLLAPSED -> {
-                    stopScanner()
-                }
-                BottomSheetBehavior.STATE_EXPANDED -> {
-                    stopScanner()
-                    matomoAnalytics.trackEvent(AnalyticsEvent.ScannedBarcodeResultExpanded(lastBarcode))
-                }
-                else -> {
-                    stopScanner()
-                }
-            }
-            if (binding.quickViewSearchByBarcode.visibility == View.VISIBLE) {
-                quickViewBehavior.peekHeight = peekSmall
-                bottomSheet.layoutParams.height = quickViewBehavior.peekHeight
-            } else {
-                quickViewBehavior.peekHeight = peekLarge
-                bottomSheet.layoutParams.height = ViewGroup.LayoutParams.MATCH_PARENT
-            }
-            bottomSheet.requestLayout()
-        }
-
-        override fun onSlide(bottomSheet: View, slideOffset: Float) {
-            val slideDelta = slideOffset - previousSlideOffset
-            if (binding.quickViewSearchByBarcode.visibility != View.VISIBLE && binding.quickViewProgress.visibility != View.VISIBLE) {
-                if (slideOffset > 0.01f || slideOffset < -0.01f) {
-                    binding.txtProductCallToAction.visibility = View.GONE
-                } else if (binding.quickViewProductNotFound.visibility != View.VISIBLE) {
-                    binding.txtProductCallToAction.visibility = View.VISIBLE
-                }
-                if (slideOffset > 0.01f) {
-                    binding.quickViewDetails.visibility = View.GONE
-                    binding.quickViewTags.visibility = View.GONE
-                    if (useMLScanner) {
-                        mlKitView.updateWorkflowState(WorkflowState.DETECTED)
-                        mlKitView.stopCameraPreview()
-                    } else {
-                        binding.barcodeScanner.pause()
-                    }
-                    if (slideDelta > 0 && productViewFragment != null) {
-                        productViewFragment!!.bottomSheetWillGrow()
-                        binding.bottomNavigation.bottomNavigation.visibility = View.GONE
-                    }
-                } else {
-                    if (useMLScanner) {
-                        mlKitView.updateWorkflowState(WorkflowState.DETECTING)
-                        mlKitView.startCameraPreview()
-                    } else {
-                        binding.barcodeScanner.resume()
-                    }
-                    binding.quickViewDetails.visibility = View.VISIBLE
-                    binding.quickViewTags.visibility = if (analysisTagsEmpty) View.GONE else View.VISIBLE
-                    binding.bottomNavigation.bottomNavigation.visibility = View.VISIBLE
-                    if (binding.quickViewProductNotFound.visibility != View.VISIBLE) {
-                        binding.txtProductCallToAction.visibility = View.VISIBLE
-                    }
-                }
-            }
-            previousSlideOffset = slideOffset
-        }
-    }
-
     private inner class BarcodeInputListener : OnEditorActionListener {
         override fun onEditorAction(textView: TextView, actionId: Int, event: KeyEvent?): Boolean {
             // When user search from "having trouble" edit text
@@ -934,6 +851,6 @@ class ContinuousScanActivity : BaseActivity() {
         private const val SETTING_STATE = "cameraState"
         private val LOG_TAG = this::class.simpleName!!
 
-
     }
+
 }
