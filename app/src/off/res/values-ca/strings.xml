@@ -11,6 +11,7 @@
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
     <string name="website_contributor">https://world-ca.openfoodfacts.org/contributor/</string>
     <string name="txtHome">Open Food Facts és una base de dades oberta de més de productes alimentaris amb ingredients, al·lèrgens, dades nutricionals i tots els detalls de la informació que podem trobar a les etiquetes dels productes.</string>
+    <!-- Old onboarding slides -->
     <string name="slide_1_title">Contribuïu a la Transparència alimentària</string>
     <string name="slide_1_desc">Escanegeu els productes, feu-los fotos, feu més transparent l\'alimentació</string>
     <string name="slide_2_title">Obteniu les Dades</string>
@@ -19,6 +20,15 @@
     <string name="slide_3_desc">Una visió sintètica de les propietats nutritives dels vostres productes alimentaris preferits</string>
     <string name="slide_4_title">Treballeu fora de línia</string>
     <string name="slide_4_desc">Podeu afegir nous productes, fins i tot si ara mateix no teniu una connexió a Internet</string>
+    <!-- New onboarding-->
+    <string name="join_the_food_revolution">Join the food revolution</string>
+    <string name="slide_1_text_revolution">Scan food, Take photos, Help transform the food system</string>
+    <string name="get_the_nutri_score">Obteniu el Nutri-Score</string>
+    <string name="synthesis_of_nutrition_slide_2_text">A simple synthesis of the nutritional quality of your food</string>
+    <string name="avoid_ultra_processed_foods">Avoid ultra-processed foods</string>
+    <string name="nova_slide_3_text">Reduce the amount of ultra-processed foods in your diet.</string>
+    <string name="eco_score_slide_4_title">Eco-Score</string>
+    <!-- Scan card -->
     <string name="txtDialogsContent">El producte que heu escanejat encara no existeix a Open Food Facts. Afegiu-lo.</string>
     <string name="txtDialogsContentPowerMode">El producte que heu escanejat ja existeix a Open Food Facts.</string>
     <string name="msg_share">Mireu aquest producte a Open Food Facts:</string>
