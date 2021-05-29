@@ -836,7 +836,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     }
 
     private val editProductLauncher = registerForActivityResult(ProductEditActivity.EditProductContract())
-    { isOk -> if (isOk) (activity as ProductViewActivity).onRefresh() }
+    { isOk -> if (isOk) (activity as? ProductViewActivity)?.onRefresh() }
 
     private fun editProduct() = editProductLauncher.launch(product)
 

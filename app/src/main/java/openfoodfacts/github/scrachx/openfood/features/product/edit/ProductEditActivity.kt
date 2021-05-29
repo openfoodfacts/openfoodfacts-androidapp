@@ -226,6 +226,7 @@ class ProductEditActivity : BaseActivity() {
         if (productState == null && offlineSavedProduct == null && mEditProduct == null) {
             Toast.makeText(this, R.string.error_adding_product, Toast.LENGTH_SHORT).show()
             finish()
+            return
         }
         setupViewPager(binding.viewpager)
     }
