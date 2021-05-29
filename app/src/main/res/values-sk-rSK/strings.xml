@@ -128,7 +128,7 @@
         <item>Kyselina meďnatá (20: 3 n-9)</item>
         <item>Kyselina melíssová (30: 0)</item>
         <item>Molybdén</item>
-        <item>Mono unsaturated fat</item>
+        <item>Monounsaturated fat</item>
         <item>Kyselina montánová (28: 0)</item>
         <item>Kyselina myristová (14: 0)</item>
         <item>Kyselina nervónová (24: 1 n-9)</item>
@@ -142,7 +142,7 @@
         <item>pH</item>
         <item>Fosfor</item>
         <item>Cukrové alkoholy (polyoly)</item>
-        <item>Poly unsaturated fat</item>
+        <item>Polyunsaturated fat</item>
         <item>Draslík</item>
         <item>Selén</item>
         <item>Sérové ​​proteíny</item>
@@ -331,8 +331,8 @@
     <string name="for_100g">Na 100 g</string>
     <string name="for_100ml">Na 100 ml</string>
     <string name="serving">Na jednu porciu</string>
-    <string name="nutrition_monounsaturatedFat">Mono unsaturated fat</string>
-    <string name="nutrition_polyunsaturatedFat">Poly unsaturated fat</string>
+    <string name="nutrition_monounsaturatedFat">Monounsaturated fat</string>
+    <string name="nutrition_polyunsaturatedFat">Polyunsaturated fat</string>
     <string name="nutrition_omega3">Omega 3</string>
     <string name="nutrition_omega6">Omega 6</string>
     <string name="nutrition_omega9">Omega 9</string>
