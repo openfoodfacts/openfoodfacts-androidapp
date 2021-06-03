@@ -15,7 +15,4 @@ jobs:
 
     steps:
       - name: Checkout source
-        uses: actions/checkout@v2
-
-      - name: Validate fastlane metadata
-        uses: ashutoshgngwr/validate-fastlane-supply-metadata@v1
+        uses: actions/checkout@v2.3.4

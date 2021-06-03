@@ -696,6 +696,10 @@
     <string name="txt_info_eaten_products">Bu listeye ürün eklemeniz ürünleri tarayarak, ürün kartını yukarıya sürükleyip \"Satın alınacak ürünler\"e tıklayarak mümkün olacaktır.
 Aynı zamanda bu listeye ürünleri arayarak ve ürün sayfasının sağ üstündeki + butonuna tıklayarak ürünleri ekleyebilirsiniz.</string>
     <string name="txt_info_your_listed_products">Ürünleri arayarak ve ürün sayfasının sağ üst kısmındaki + düğmesine tıklayarak onları bu listeye ekleyebilirsiniz.</string>
+    <string name="import_csv_to_list">Open Food Facts listesi CSV dosyasını içe aktarma</string>
+    <string name="toast_import_csv_error">CSV dosyasını içe aktarma hatası</string>
+    <string name="toast_import_csv">CSV başarıyla içe aktarıldı!</string>
+    <string name="open_csv">CSV\'yi aç</string>
     <string name="txt_no_nutrition_data">Bu ürün ambalaj üzerinde herhangi bir beslenme bilgisine sahip değildir. Bu durum değiştiyse, ürünü düzenleyebilirsiniz.</string>
     <string name="image_prompt_language">Malzemelerin fotoğrafını çekin</string>
     <string name="swipe_delete_tip">Bir listeyi sola kaydırarak silebilirsiniz.</string>
@@ -731,10 +735,8 @@ Aynı zamanda bu listeye ürünleri arayarak ve ürün sayfasının sağ üstün
     <string name="barcode">Barkod</string>
     <string name="productAdditivesNone">Katkı maddesi yok</string>
     <string name="error_uploading_photo">Yeni bir fotoğraf yüklenirken bir şeyler ters gitti</string>
-    <string name="import_csv_to_list">Open Food Facts listesi CSV dosyasını içe aktarma</string>
-    <string name="toast_import_csv_error">CSV dosyasını içe aktarma hatası</string>
-    <string name="toast_import_csv">CSV başarıyla içe aktarıldı!</string>
-    <string name="open_csv">CSV\'yi aç</string>
+    <string name="required_for_ecoscore">(Eco-Score\'u hesaplamak için gereklidir)</string>
+    <string name="hint_origin">Örnekler: ABD, Fransa, İtalya</string>
     <!-- Used for diets AddOn -->
     <string name="history_network_error">Ürün yüklenemedi. Lütfen tekrar çevrimiçi olduğunuzda yeniden deneyin.</string>
     <string name="cant_modify_if_refreshing">Lütfen yükleme tamamlanana kadar bekleyin</string>
@@ -798,10 +800,16 @@ Aynı zamanda bu listeye ürünleri arayarak ve ürün sayfasının sağ üstün
     <string name="follow_system">Sistemi izleyin</string>
     <string name="day">Gündüz</string>
     <string name="night">Gece</string>
-    <string name="required_for_ecoscore">(Eco-Score\'u hesaplamak için gereklidir)</string>
-    <string name="hint_origin">Örnekler: ABD, Fransa, İtalya</string>
     <string name="report_email_chooser_title">Rapor e-postası gönder</string>
     <!-- Changelog String -->
     <string name="changelog_translation_help">Bu değişim kaydını %s\'da görmek ister misiniz?\nÇeviri Ekibine Katılın!</string>
     <string name="whats_new">Open Food Facts\'teki yenilikler neler?</string>
+    <!-- New onboarding slides -->
+    <string name="eco_score_slide_4_title">Eco-Score</string>
+    <string name="join_the_food_revolution">Join the food revolution</string>
+    <string name="slide_1_text_revolution">Scan food, Take photos, Help transform the food system</string>
+    <string name="get_the_nutri_score">Nutri-Score\'u öğren</string>
+    <string name="synthesis_of_nutrition_slide_2_text">A simple synthesis of the nutritional quality of your food</string>
+    <string name="avoid_ultra_processed_foods">Avoid ultra-processed foods</string>
+    <string name="nova_slide_3_text">Reduce the amount of ultra-processed foods in your diet.</string>
 </resources>

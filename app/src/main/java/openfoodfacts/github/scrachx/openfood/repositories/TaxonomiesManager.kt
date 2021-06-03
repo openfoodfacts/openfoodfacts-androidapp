@@ -71,16 +71,19 @@ class TaxonomiesManager @Inject constructor(
         val forceUpdate = mSettings.getBoolean(Utils.FORCE_REFRESH_TAXONOMIES, false)
 
         // If database is empty or we have to force update, download it
-        if (dao.isEmpty() || forceUpdate) {
-            // Table is empty, no need check for update, just load taxonomy
-            return download(taxonomy, productRepository)
-        } else if (checkUpdate) {
-            // Get local last downloaded time
-            val localDownloadTime = mSettings.getLong(taxonomy.lastDownloadTimeStampPreferenceId, 0L)
-            // We need to check for update. Test if file on server is more recent than last download.
-            return checkAndDownloadIfNewer(taxonomy, localDownloadTime, productRepository)
+        return Single.fromCallable { dao.isEmpty() }.flatMap { empty ->
+            if (empty || forceUpdate) {
+                // Table is empty, no need check for update, just load taxonomy
+                download(taxonomy, productRepository)
+
+            } else if (checkUpdate) {
+                // Get local last downloaded time
+                val localDownloadTime = mSettings.getLong(taxonomy.lastDownloadTimeStampPreferenceId, 0L)
+
+                // We need to check for update. Test if file on server is more recent than last download.
+                checkAndDownloadIfNewer(taxonomy, localDownloadTime, productRepository)
+            } else Single.just(emptyList())
         }
-        return Single.just(emptyList())
     }
 
     private fun <T> download(

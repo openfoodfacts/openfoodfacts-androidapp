@@ -49,10 +49,9 @@ import androidx.work.*
 import com.afollestad.materialdialogs.MaterialDialog
 import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.R
-import openfoodfacts.github.scrachx.openfood.features.LoginActivity
 import openfoodfacts.github.scrachx.openfood.features.scan.ContinuousScanActivity
 import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivity.Companion.start
-import openfoodfacts.github.scrachx.openfood.jobs.SavedProductUploadWorker
+import openfoodfacts.github.scrachx.openfood.jobs.ImagesUploaderWorker
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import org.apache.commons.validator.routines.checkdigit.EAN13CheckDigit
 import java.io.*
@@ -159,9 +158,9 @@ object Utils {
         if (isUploadJobInitialised) return
 
         val periodicity = TimeUnit.MINUTES.toSeconds(30).toInt()
-        val uploadWorkRequest = OneTimeWorkRequest.Builder(SavedProductUploadWorker::class.java)
-                .setConstraints(Constraints.Builder().setRequiredNetworkType(NetworkType.UNMETERED).build())
-                .setInitialDelay(periodicity.toLong(), TimeUnit.SECONDS).build()
+        val uploadWorkRequest = OneTimeWorkRequest.Builder(ImagesUploaderWorker::class.java)
+            .setConstraints(Constraints.Builder().setRequiredNetworkType(NetworkType.UNMETERED).build())
+            .setInitialDelay(periodicity.toLong(), TimeUnit.SECONDS).build()
         WorkManager.getInstance(context).enqueueUniqueWork(UPLOAD_JOB_TAG, ExistingWorkPolicy.KEEP, uploadWorkRequest)
 
         isUploadJobInitialised = true
@@ -242,10 +241,6 @@ fun buildSignInDialog(activity: Activity): MaterialDialog.Builder = MaterialDial
         .title(R.string.sign_in_to_edit)
         .positiveText(R.string.txtSignIn)
         .negativeText(R.string.dialog_cancel)
-
-private fun startActivityLoginWithRequestCode(activity: Activity, requestCode: Int) {
-    activity.startActivityForResult(Intent(activity, LoginActivity::class.java), requestCode)
-}
 
 
 /**
@@ -331,19 +326,6 @@ private fun closeStyles(text: Spannable, tags: Array<out StyleSpan>) {
 fun getModifierNonDefault(modifier: String) = if (modifier != DEFAULT_MODIFIER) modifier else ""
 
 private val LOG_TAG = Utils::class.simpleName!!
-
-/**
- * @return Returns the version name of the app
- */
-fun Context.getVersionName(): String = try {
-    packageManager.getPackageInfo(packageName, 0).versionName
-} catch (e: PackageManager.NameNotFoundException) {
-    Log.e(LOG_TAG, "getVersionName", e)
-    "(version unknown)"
-} catch (e: NullPointerException) {
-    Log.e(LOG_TAG, "getVersionName", e)
-    "(version unknown)"
-}
 
 fun <T : View?> ViewGroup.getViewsByType(typeClass: Class<T>): List<T> {
     val result = mutableListOf<T>()

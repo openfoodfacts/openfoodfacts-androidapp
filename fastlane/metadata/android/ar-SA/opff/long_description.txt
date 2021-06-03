@@ -9,8 +9,7 @@
 - Open Pet Food Facts is a pet food products database made by everyone, for everyone.
 - يمكنك استخدامه لاتخاذ خيارات أفضل لأغذية الحيوانات الأليفة ، ولأنها بيانات مفتوحة ، يمكن لأي شخص إعادة استخدامها لأي غرض من الأغراض.
 - Open pet Food Facts هو مشروع غير ربحي تم تطويره بواسطه الآلاف من المتطوعين من جميع أنحاء العالم. لدينا الكثير من المشاريع المثيرة التي يمكنك المساهمة فيها بطرق عديدة ومختلفة. 
-- يمكنك البدء في المساهمة اليوم بإضافة منتج من خزانة حيوانك الأليف. 
-
+- يمكنك البدء في المساهمة اليوم بإضافة منتج من خزانة حيوانك الأليف.
 
 *** احصل على الحقائق ***
 
@@ -22,7 +21,7 @@
 
 *** Works well in any condition ***
 - You can add new products, even if you don't have an Internet connection right now.
-- The app loads only the strict necessary to reduce data and battery consumption
+- The app loads only the strict necessary to reduce data and battery consumption.
 - You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
 
 *** طعام حيوانك الأليف، بياناتك ***

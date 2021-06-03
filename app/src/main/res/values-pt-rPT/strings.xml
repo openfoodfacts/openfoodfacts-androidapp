@@ -118,7 +118,7 @@
         <item>Ácido mead (20:3 n-9)</item>
         <item>Ácido melissico (30:0)</item>
         <item>Molibdénio</item>
-        <item>Lípidos monoinsaturados</item>
+        <item>Gordura monoinsaturada</item>
         <item>Ácido montânico (28:0)</item>
         <item>Ácido mirístico (14:0)</item>
         <item>Ácido nervônico (24:1 n-9)</item>
@@ -132,7 +132,7 @@
         <item>pH</item>
         <item>Fósforo</item>
         <item>Álcoois de açúcar (polióis)</item>
-        <item>Lípidos poli-insaturados</item>
+        <item>Gordura poliinsaturada</item>
         <item>Potássio</item>
         <item>Selénio</item>
         <item>Proteínas séricas</item>
@@ -155,7 +155,6 @@
         <item>Vitamina K</item>
         <item>Zinco</item>
     </string-array>
-    <!-- Text units -->
     <!-- Content Description -->
     <string name="search_button">Procurar</string>
     <string name="alert_dialog_warning_title">Aviso</string>
@@ -322,8 +321,8 @@
     <string name="for_100g">Por 100 g</string>
     <string name="for_100ml">Por 100 ml</string>
     <string name="serving">Por porção</string>
-    <string name="nutrition_monounsaturatedFat">Lípidos monoinsaturados</string>
-    <string name="nutrition_polyunsaturatedFat">Lípidos poli-insaturados</string>
+    <string name="nutrition_monounsaturatedFat">Gordura monoinsaturada</string>
+    <string name="nutrition_polyunsaturatedFat">Gordura poliinsaturada</string>
     <string name="nutrition_omega3">Ómega 3</string>
     <string name="nutrition_omega6">Ómega 6</string>
     <string name="nutrition_omega9">Ómega 9</string>
@@ -697,6 +696,10 @@
     <string name="txt_info_eaten_products">Poderá adicionar produtos a esta lista, digitalizando produtos, arrastando o dedo no ecrã do produto para cima e tocando em \"Estou a comer isto\".
         Também poderá adicionar produtos a esta lista procurando-os e tocando no botão + no canto superior direito da página do produto.</string>
     <string name="txt_info_your_listed_products">Poderá adicionar produtos a essa lista procurando-os e pressionar o botão + no canto superior direito da página do produto.</string>
+    <string name="import_csv_to_list">Importar um ficherio CSV da lista de Open Food Facts</string>
+    <string name="toast_import_csv_error">Erro ao importar o ficheiro CSV</string>
+    <string name="toast_import_csv">CSV importado com sucesso!</string>
+    <string name="open_csv">Abrir CSV</string>
     <string name="txt_no_nutrition_data">Este produto não tem nenhuma informação nutricional na embalagem. Se isso mudou, pode editar o produto.</string>
     <string name="image_prompt_language">Tire uma foto dos ingredientes em</string>
     <string name="swipe_delete_tip">Pode eliminar uma lista deslizando com o dedo para a esquerda.</string>
@@ -732,10 +735,8 @@
     <string name="barcode">Código de barras</string>
     <string name="productAdditivesNone">Sem aditivos</string>
     <string name="error_uploading_photo">Surgiu um erro ao enviar uma foto nova</string>
-    <string name="import_csv_to_list">Importar um ficherio CSV da lista de Open Food Facts</string>
-    <string name="toast_import_csv_error">Erro ao importar o ficheiro CSV</string>
-    <string name="toast_import_csv">CSV importado com sucesso!</string>
-    <string name="open_csv">Abrir CSV</string>
+    <string name="required_for_ecoscore">(necessário para calcular o Eco-Score)</string>
+    <string name="hint_origin">Exemplo: Ribeira Grande, São Miguel, Açores, Portugal</string>
     <!-- Used for diets AddOn -->
     <string name="history_network_error">Não foi possível carregar o produto. Por favor, tente novamente quando estiver ligado à Internet.</string>
     <string name="cant_modify_if_refreshing">Por favor, aguarde até que o envio termine</string>
@@ -799,10 +800,16 @@
     <string name="follow_system">Usar o mesmo do sistema</string>
     <string name="day">Dia</string>
     <string name="night">Noite</string>
-    <string name="required_for_ecoscore">(necessário para calcular o Eco-Score)</string>
-    <string name="hint_origin">Exemplo: Ribeira Grande, São Miguel, Açores, Portugal</string>
     <string name="report_email_chooser_title">Enviar relatório por email</string>
     <!-- Changelog String -->
     <string name="changelog_translation_help">Quer ver este relatório de alterações em %s?\nJunte-se à equipa de tradução!</string>
     <string name="whats_new">O que há de novo no Open Food Facts?</string>
+    <!-- New onboarding slides -->
+    <string name="eco_score_slide_4_title">Eco-Score</string>
+    <string name="join_the_food_revolution">Junte-se à revolução alimentar</string>
+    <string name="slide_1_text_revolution">Digitalize alimentos, tire fotografias, ajude a transformar o sistema alimentar</string>
+    <string name="get_the_nutri_score">Obtenha o Nutri-Score</string>
+    <string name="synthesis_of_nutrition_slide_2_text">Uma síntese simples da qualidade nutricional da sua comida</string>
+    <string name="avoid_ultra_processed_foods">Evite alimentos ultraprocessados</string>
+    <string name="nova_slide_3_text">Reduza a quantidade de alimentos ultraprocessados na sua dieta.</string>
 </resources>

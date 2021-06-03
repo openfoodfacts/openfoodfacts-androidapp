@@ -33,11 +33,10 @@
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Allergiatietojasi ei koskaan lähetetä Open Products Facts -palvelimelle. Huomaa myös, että tuotetiedot eivät välttämättä ole tarkkoja tai täydellisiä, ja allergiatarkistus ei ehkä ole 100%:n tarkka, joten tarkista itse! </string>
     <!-- OPF tagline in different languages -->
     <string name="version_string">Open Products Facts Android-sovellus</string>
-    <string name="tagline">vapaa tuotetietokanta</string>
+    <string name="tagline">the free product database</string>
     <string name="product_not_found">Luettua tuotetta %1$s ei vielä ole Open Products Factsissa. Voitko lisätä sen?</string>
     <string name="currently_on_version">Tällä hetkellä Open Products Factsissa</string>
     <string name="category_game_btn">Auta luokittelemaan tuotteita</string>
-    <!-- TODO add true support instead of overriding strings -->
     <string name="add_nutrient_prompt_text">Lisää yksityiskohtia auttaaksesi täydentämään tuotteen</string>
     <string name="add_category_prompt_text">Lisää luokka auttaaksesi täydentämään tuotteen</string>
     <string name="add_nutrient_category_prompt_text">Lisää luokka ja yksityiskohtia auttaaksesi täydentämään tuotteen</string>

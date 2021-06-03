@@ -3,19 +3,19 @@ package openfoodfacts.github.scrachx.openfood.images
 import com.fasterxml.jackson.databind.JsonNode
 
 /**
- * @param rootNode json representing images entries given by api/v0/product/XXXX.json?fields=images
+ * @param this@extractImagesNameSortedByUploadTimeDesc json representing images entries given by api/v0/product/XXXX.json?fields=images
  */
-internal fun extractImagesNameSortedByUploadTimeDesc(rootNode: JsonNode): List<String> {
+internal fun JsonNode.extractImagesNameSortedByUploadTimeDesc(): List<String> {
     // a json object referring to images
-    return rootNode["product"]["images"]?.fields()
-            ?.asSequence()
-            ?.toList().orEmpty()
-            .mapNotNull { (imageName, value) ->
-                // do not include images with contain nutrients, ingredients or other in their names
-                // as they are duplicate and do not load as well
-                if (!isNameOk(imageName)) null
-                else NameTimestampKey(imageName, value["uploaded_t"].asLong())
-            }.sorted().map { it.name }
+    return this["product"]["images"]?.fields()
+        ?.asSequence()
+        ?.toList().orEmpty()
+        .mapNotNull { (imageName, value) ->
+            // do not include images with contain nutrients, ingredients or other in their names
+            // as they are duplicate and do not load as well
+            if (!isNameOk(imageName)) null
+            else NameTimestampKey(imageName, value["uploaded_t"].asLong())
+        }.sorted().map { it.name }
 }
 
 internal fun isNameOk(name: String) =

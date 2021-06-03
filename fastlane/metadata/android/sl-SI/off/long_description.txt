@@ -1,76 +1,55 @@
-Skenirajte prehrambene izdelke ali črtno kodo, da pridobite podatke o sestavinah, dodatkih in podatkih o hranilni vrednosti.
+<h1>▶ Scan, find & compare more than 1,3 million food products</h1>
 
-▶ Poiščite in primerjajte več kot 800.000 izdelkov
+The app allows to scan the 1,3 million products already contained in the free and open database Open Food Facts.
+The app is collaborative. If we don't have the product, you can add pictures and data to get the Nutri-Score and NOVA score on food processing.
 
-Aplikacija omogoča ogled 800.000 izdelkov (vključno s 175.000 v ZDA), ki so že vsebovane v brezplačni in odprti zbirki podatkov Open Food Facts, lahko pa tudi dodate slike in podatke za manjkajoče izdelke.
+In short, we're kind of "the Wikipedia of food", as many have nicknamed the project. Open Food Facts has enabled the creation of over 100 apps like Date Limite, Yuka or FoodVisor.
 
+To discover the volunteer-run Open Food Facts project, visit https://world.openfoodfacts.org/discover
 
-Če želite raziskati projekt Open Food Facts, obiščite https://world.openfoodfacts.org
+<h1>▶ Choose the products that are good for you</h1>
 
-▶ Izberite izdelke, ki so primerni za vas
-- Ocena Nutri-Score, od "A" do "E" >> Kakovost hranilne vrednosti
-- Skupina NOVA, od "1" do "4" >> Poiščite ultra obdelano hrano
-- Z lahkoto lahko primerjate izdelke, ki jih želite, eneg ob drugem, tako da jih preprosto skenirate. 
+➜ The Nutri-Score grade, from A to E :  Nutritional quality
+➜ The NOVA group, from 1 to 4 : Avoid ultra-processed foods (Group 4)
 
-▶Dobro za naš planet!
-- Vpliv ogljika na hrano
-- Spoznajte, koliko vaše dnevne kvote za ogljik uporabljate za hrano
-- Na podlagi odtisov, ki jih je za Francijo izračunal ADEME.
-- Pridružite se nam in nam pomagajte, da vplivamo na ogljik v vaši državi!
-- Za prikaz ogljikovega učinka mora imeti izdelek popoln seznam sestavin z% mesa ali rib in količino
+<h1>▶ Contribute to Food Transparency</h1>
 
+➜ Open Food Facts is a food products database made by everyone, for everyone.
+➜ You can use it to make better food choices, and as it is open data, anyone can re-use it for any purpose.
+➜ You can start contributing today by adding a product from your fridge.
+➜ Open Food Facts is a non-profit project developed by thousands of volunteers from around the world. Imamo veliko zanimivih projektov, pri katerih lahko sodelujete na več različnih načinov.
 
-▶ Prispevajte k preglednosti hrane
-- Open Food Facts je zbirka podatkov o živilskih izdelkih, ki so jo pripravili vsi, za vse.
--Uporabite jo lahko za boljšo izbiro hrane in ker je to odprta zbirka podatkov, jo lahko kdorkoli ponovno uporabiti za kateri koli namen.
-- Open Food Facts is a non-profit project developed by thousands of volunteers from around the world. Imamo veliko zanimivih projektov, pri katerih lahko sodelujete na več različnih načinov.
-- Sodelujete lahko že danes, tako da dodate izdeleke iz vašega hladilnika.
+<h1>▶ Decipher food labels</h1>
 
-▶ Ustvarite sezname
-Ustvarite nakupovalne sezname, spremljajte, kaj ste pojedli in preprosto delite in izvozite svoje sezname.
+➜ Open Food Facts helps you decipher products labels. You will be able to find:
+➜ carbon footprint (CO2 emissions) and packaging (as well as recycling instructions),
+➜ Nutriscore (nutritional score), nutrients, fat / fat content, saturated fatty acids, carbohydrates, sugars, fiber, protein and salt and sodium.
+➜ brands, allergens, labels (bio, gluten free, vegan, vegetarian, halal, kosher ...), traceability information (packaging codes, origins of ingredients)
+➜ On wines and beers, you will find the alcohol content.
 
-▶ Pridobite dejstva
-- Open Food Facts helps you to make sense of the fine print on products labels. Našli boste lahko:
-- ogljični odtis (emisije CO2) in embalažo (kot tudi navodila za recikliranje),
-- Nutriscore (hranilna vrednost), hranila, vsebnost maščobe, nasičene maščobne kisline, ogljikovi hidrati, sladkorji, vlaknine, beljakovine in sol in natrij.
-- blagovne znamke, alergene, nalepke (bio, brez glutena, veganska, vegetarijanska, halal, kosher ...), informacije o sledljivosti (oznake embalaže, izvor sestavin)
-- na vinih in pivih boste našli vsebnost alkohola.
+<h1>▶ Our grades are science-based, and the project is helping science back!</h1>
+➜ We don't make up things. Zanašamo se na strokovno pregledane znanosti.
+➜ The Nutri-Score has been created by the independent French team led by Professor Hercberg.
+➜ The NOVA groups on food processing have been designed by the international team of Professor Monteiro.
+➜ The additives synthesis is based on reviews by EFSA on exposure levels on food additives.
+➜ The Open Food Facts community is collaborating with research teams across the planet to improve nutrition research that benefits all.
 
+<h1>▶ Works well in any condition</h1>
+➜ You can add new products, even with bad or no Internet connection
+➜ The app loads only the minimum to reduce data and battery consumption
+➜ You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
 
-▶ Temeljijo na znanosti, pomaga znanosti nazaj!
+<h1>▶ Your food, your data. Privacy-friendly app.</h1>
+➜ Your data is yours, and is never sent online
+➜ You can use the app anonymously
+➜ You can export your scan history
 
-- Ne izmišljamo stvari. Zanašamo se na strokovno pregledane znanosti.
-- Nutri-Score je ustvarila neodvisna francoska ekipa pod vodstvom profesorja Hercberga.
-- Skupine NOVA o predelavi hrane so oblikovale mednarodne ekipe profesorice Monteiro.
-- Lahko dobite sintezo ravni izpostavljenosti EFSA na aditivih za živila.
-- Skupnost Open Food Facts sodeluje z raziskovalnimi skupinami po vsem svetu, da bi izboljšala raziskave o prehrani, ki koristijo vsem.
+<h1>▶ Set up allergen alerts on products</h1>
+➜ Milk, Gluten, Eggs, Soybeans, Nuts, Fish, Celery, Mustard, Sulphur dioxide and sulphites, Peanuts, Sesame seeds, Crustaceans, Molluscs or Lupin allergy ?
+➜ Speed up your shopping by doing an initial screening of your food with Open Food Facts.
+➜ Be careful that the information may not be 100% accurate, and detection may not be 100% accurate. Zato vedno preverite sami z embalažo.
 
+<h1>▶ More</h1>
 
-▶ Offline Scan: skeniranje v vseh pogojih! (prihaja kmalu)
-Skenirajte s hitrostjo svetlobe (tudi če ste na letalu, podmornici ali v supermarketu)
-
-- Cel planet, v tvojem žepu!
-- lahko dodate nove izdelke, tudi če trenutno nimate internetne povezave.
-- Aplikacija naloži le nujno potrebne inf. za zmanjšanje porabe podatkov in baterije.
-
-▶ Vaša hrana, vaši podatki
-- Vaši podatki so vaši in se nikoli ne pošljejo na splet
-- Aplikacijo lahko uporabljate anonimno
-- Zgodovino optičnega branja lahko izvozite
-
-▶ Nastavite opozorila o alergenih za izdelke
-- mleko, gluten, jajca, soja, oreški, ribe, zelena, gorčica, žveplov dioksid in sulfiti, arašidi, sezamovo seme, raki, mehkužci ali alergija na lupino?
-- Pospešite nakupovanje z začetnim pregledom hrane z Open Food Facts.
-- Bodite previdni, da informacije niso 100% točne, in odkrivanje morda ne bo 100% natančno. Zato vedno preverite sami z embalažo.
-
-
-▶ Pozdravite in / ali se nam pridružite!
-
-
-Informacije o odprtih dejstvih o hrani, so na voljo tudi na spletnem mestu https://world.openfoodfacts.org
-
-
-Vprašanja, povratne informacije: contact@openfoodfacts.org
-
-
-Za kozmetiko lahko namestite Open Beauty Facts, za hrano za hišne ljubljenčke, Open Pet Food Facts in za vse ostale izdelke, Open Products Facts.
+Open Food Facts is also available on the web at <a href="https://world.openfoodfacts.org">https://world.openfoodfacts.org</a>
+Questions, feedback : <a href="mailto:contact@openfoodfacts.org">contact@openfoodfacts.org</a>

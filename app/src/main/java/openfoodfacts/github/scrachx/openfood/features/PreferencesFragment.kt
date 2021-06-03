@@ -60,7 +60,7 @@ import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback
 import openfoodfacts.github.scrachx.openfood.jobs.LoadTaxonomiesWorker
-import openfoodfacts.github.scrachx.openfood.jobs.OfflineProductWorker.Companion.scheduleSync
+import openfoodfacts.github.scrachx.openfood.jobs.ProductUploaderWorker.Companion.scheduleProductUpload
 import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import openfoodfacts.github.scrachx.openfood.models.entities.analysistag.AnalysisTagNameDao
 import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.AnalysisTagConfig
@@ -371,7 +371,7 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String) {
         when (key) {
-            getString(R.string.pref_enable_mobile_data_key) -> scheduleSync(requireContext(), sharedPreferences)
+            getString(R.string.pref_enable_mobile_data_key) -> scheduleProductUpload(requireContext(), sharedPreferences)
         }
     }
 

@@ -123,7 +123,7 @@
         <item>Mead acid (20:3 n-9)</item>
         <item>Melissic acid (30:0)</item>
         <item>Molybdenum</item>
-        <item>Monounsaturated fat</item>
+        <item>Mononezasićene masti</item>
         <item>Montanic acid (28:0)</item>
         <item>Myristic acid (14:0)</item>
         <item>Nervonic acid (24:1 n-9)</item>
@@ -137,7 +137,7 @@
         <item>pH</item>
         <item>Phosphorus</item>
         <item>Sugar alcohols (Polyols)</item>
-        <item>Polyunsaturated fat</item>
+        <item>Polinezasićene masti</item>
         <item>Potassium</item>
         <item>Selenium</item>
         <item>Serum proteins</item>
@@ -287,7 +287,7 @@
     <string name="nutrition_header">Nutritivne vrijednosti</string>
     <string name="nutrition_proteins">Bjelančevine</string>
     <string name="nutrition_salt">Sol</string>
-    <string name="nutrition_satured_fat">Saturated fat</string>
+    <string name="nutrition_satured_fat">Zasićene masti</string>
     <string name="nutrition_sodium">Natrij</string>
     <string name="nutrition_sugars">Sugars</string>
     <string name="nutrition_trans_fat">Trans fat</string>
@@ -326,8 +326,8 @@
     <string name="for_100g">For 100 g</string>
     <string name="for_100ml">For 100 ml</string>
     <string name="serving">Per serving</string>
-    <string name="nutrition_monounsaturatedFat">Monounsaturated fat</string>
-    <string name="nutrition_polyunsaturatedFat">Poly unsaturated fat</string>
+    <string name="nutrition_monounsaturatedFat">Mononezasićene masti</string>
+    <string name="nutrition_polyunsaturatedFat">Polinezasićene masti</string>
     <string name="nutrition_omega3">Omega 3</string>
     <string name="nutrition_omega6">Omega 6</string>
     <string name="nutrition_omega9">Omega 9</string>
@@ -382,7 +382,7 @@
     <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
     <string name="take_more_pictures">Take more pictures</string>
     <string name="take_extra_packaging_pictures">Take extra photos of packaging</string>
-    <string name="txtSaturatedFat">Saturated fat</string>
+    <string name="txtSaturatedFat">Zasićene masti</string>
     <string name="nutriscore_info_msg">Learn more about the Nutri-Score</string>
     <string name="nova_info_msg">Learn more about NOVA groups</string>
     <string name="nova_grp1_msg">Group 1 - Unprocessed or minimally processed foods</string>
@@ -702,6 +702,10 @@
     <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
         You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
     <string name="txt_info_your_listed_products">You\'ll be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
+    <string name="import_csv_to_list">Import an Open Food Facts list CSV file</string>
+    <string name="toast_import_csv_error">Error in importing CSV file</string>
+    <string name="toast_import_csv">CSV imported successfully!</string>
+    <string name="open_csv">Open CSV</string>
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
     <string name="image_prompt_language">Take a photo of the ingredients in</string>
     <string name="swipe_delete_tip">You can delete a list by swiping it left.</string>
@@ -737,10 +741,8 @@
     <string name="barcode">Bar kod</string>
     <string name="productAdditivesNone">No additives</string>
     <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
-    <string name="import_csv_to_list">Import an Open Food Facts list CSV file</string>
-    <string name="toast_import_csv_error">Error in importing CSV file</string>
-    <string name="toast_import_csv">CSV imported successfully!</string>
-    <string name="open_csv">Open CSV</string>
+    <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
+    <string name="hint_origin">Examples: USA, France, Italy</string>
     <!-- Used for diets AddOn -->
     <string name="history_network_error">The product couldn\'t be loaded. Please try again when you are back online.</string>
     <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
@@ -767,7 +769,7 @@
     <string name="compare_additives">Additives :</string>
     <string name="compare_salt">Sol</string>
     <string name="compare_sugars">Sugars</string>
-    <string name="compare_saturated_fat">Saturated fat</string>
+    <string name="compare_saturated_fat">Zasićene masti</string>
     <string name="compare_fat">Masnoće</string>
     <string name="compare_quantity">Quantity :</string>
     <string name="load_ingredient_detection_data">Load ingredient detection data</string>
@@ -804,10 +806,16 @@
     <string name="follow_system">Follow system</string>
     <string name="day">Day</string>
     <string name="night">Night</string>
-    <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
-    <string name="hint_origin">Examples: USA, France, Italy</string>
     <string name="report_email_chooser_title">Send a report email</string>
     <!-- Changelog String -->
     <string name="changelog_translation_help">Want to see this changelog in %s?\nJoin the translation team!</string>
     <string name="whats_new">What\'s new with Open Food Facts?</string>
+    <!-- New onboarding slides -->
+    <string name="eco_score_slide_4_title">Eco-Score</string>
+    <string name="join_the_food_revolution">Join the food revolution</string>
+    <string name="slide_1_text_revolution">Scan food, Take photos, Help transform the food system</string>
+    <string name="get_the_nutri_score">Get the Nutriscore</string>
+    <string name="synthesis_of_nutrition_slide_2_text">A simple synthesis of the nutritional quality of your food</string>
+    <string name="avoid_ultra_processed_foods">Avoid ultra-processed foods</string>
+    <string name="nova_slide_3_text">Reduce the amount of ultra-processed foods in your diet.</string>
 </resources>

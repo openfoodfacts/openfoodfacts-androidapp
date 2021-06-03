@@ -525,7 +525,7 @@
     <string name="products_to_be_completed">Izdelki, ki jih je potrebno dokončati</string>
     <string name="offline_notification_title">Prispevki brez povezave, ki jih morate poslati</string>
     <string name="creator_history">Product added on %1$s at %2$s CET by %3$s</string>
-    <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by %3$s </string>
+    <string name="last_editor_history">Zadnja sprememba strani izdelka %1$s na %2$s CEST z %3$s </string>
     <string name="other_editors">Stran izdelka, je urejal tudi </string>
     <string name="product_states">Product States</string>
     <string name="incomplete_states">Incomplete States</string>
@@ -708,6 +708,10 @@
     <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
         You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
     <string name="txt_info_your_listed_products">Na ta seznam lahko dodajate izdelke tako, da jih iščete in kliknete gumb + v zgornjem desnem kotu strani izdelka.</string>
+    <string name="import_csv_to_list">Uvoz datoteke CSV s seznama Open Food Facts</string>
+    <string name="toast_import_csv_error">Napaka pri uvozu datoteke CSV</string>
+    <string name="toast_import_csv">CSV je bil uspešno uvožen!</string>
+    <string name="open_csv">Odprite CSV</string>
     <string name="txt_no_nutrition_data">Na embalaži ni nobenih informacij o hranilni vrednosti. Če se je to spremenilo, lahko izdelek uredite.</string>
     <string name="image_prompt_language">Fotografirajte sestavine</string>
     <string name="swipe_delete_tip">You can delete a list by swiping it left.</string>
@@ -743,10 +747,8 @@
     <string name="barcode">Črtna koda</string>
     <string name="productAdditivesNone">Brez dodatkov</string>
     <string name="error_uploading_photo">Med nalaganjem nove fotografije je šlo nekaj narobe</string>
-    <string name="import_csv_to_list">Uvoz datoteke CSV s seznama Open Food Facts</string>
-    <string name="toast_import_csv_error">Napaka pri uvozu datoteke CSV</string>
-    <string name="toast_import_csv">CSV je bil uspešno uvožen!</string>
-    <string name="open_csv">Odprite CSV</string>
+    <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
+    <string name="hint_origin">Examples: USA, France, Italy</string>
     <!-- Used for diets AddOn -->
     <string name="history_network_error">Izdelka ni bilo mogoče naložiti. Poskusite znova, ko boste imeli povezavo na splet.</string>
     <string name="cant_modify_if_refreshing">Počakajte, da se prenos konča</string>
@@ -801,7 +803,7 @@
     <string name="icon_categories">Categories icon</string>
     <string name="icon_emb">Traceability code icon</string>
     <string name="product_front_image">Sprednja slika izdelka</string>
-    <string name="brand_hint">Examples: Coca-Cola, Nestle, etc…</string>
+    <string name="brand_hint">Primeri: Coca-Cola, Nestle itd…</string>
     <string name="sign_in_or_register">Sign in or register</string>
     <string name="hunger_game_call_to_action">Help classify more %1$s</string>
     <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s products (plus the ones you will contribute).</string>
@@ -810,10 +812,16 @@
     <string name="follow_system">Follow system</string>
     <string name="day">Day</string>
     <string name="night">Night</string>
-    <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
-    <string name="hint_origin">Examples: USA, France, Italy</string>
     <string name="report_email_chooser_title">Send a report email</string>
     <!-- Changelog String -->
     <string name="changelog_translation_help">Want to see this changelog in %s?\nJoin the translation team!</string>
     <string name="whats_new">What\'s new with Open Food Facts?</string>
+    <!-- New onboarding slides -->
+    <string name="eco_score_slide_4_title">Eco-Score</string>
+    <string name="join_the_food_revolution">Join the food revolution</string>
+    <string name="slide_1_text_revolution">Scan food, Take photos, Help transform the food system</string>
+    <string name="get_the_nutri_score">Get the Nutriscore</string>
+    <string name="synthesis_of_nutrition_slide_2_text">A simple synthesis of the nutritional quality of your food</string>
+    <string name="avoid_ultra_processed_foods">Avoid ultra-processed foods</string>
+    <string name="nova_slide_3_text">Reduce the amount of ultra-processed foods in your diet.</string>
 </resources>

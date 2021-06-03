@@ -29,13 +29,12 @@
     <string name="translate_help_summary">Bring the Open Beauty Facts database to your language - no technical knowledge required</string>
     <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Beauty Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Beauty Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
-    <!-- OBF tagline in different languages -->
+    <!-- Open Beauty Facts tagline in different languages -->
     <string name="version_string">Open Beauty Facts Android App</string>
     <string name="tagline">the free cosmetics database</string>
     <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Beauty Facts. Can you add it?</string>
     <string name="currently_on_version">Currently on Open Beauty Facts</string>
     <string name="category_game_btn">協助分類產品</string>
-    <!-- TODO add true support instead of overriding strings -->
     <string name="add_nutrient_prompt_text">Add more details to help complete the product</string>
     <string name="add_category_prompt_text">Add a category to help complete the product</string>
     <string name="add_nutrient_category_prompt_text">Add a category and more details to help complete the product</string>

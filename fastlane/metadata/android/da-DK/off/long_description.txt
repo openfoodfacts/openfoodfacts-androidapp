@@ -1,76 +1,55 @@
-Skan fødevareprodukter eller deres stregkode for at få data om ingredienser, tilsætningsstoffer og ernæringsfakta.
+<h1>▶ Skan, find og sammenlign flere end 1,3 millioner fødevarer</h1>
 
-▶ Find og sammenlign flere end 800.000 produkter
+Appen muliggør at skanne de 1,3 millioner produkter, som allerede findes i den gratis og åbne OFF-database.
+Appen er et kollaborationsprodukt. Findes produktet ikke i databasen, kan fotos og data tilføjes for at få Nutri-Score og NOVA-score ift. fødevareforarbejdning.
 
-Appen giver mulighed for at se de 800.000 produkter (inkl. 175.000 i USA), som allerede findes i den gratis og åbne database Open Food Facts samt tilføje fotos og data til nye produkter.
+Kort sagt, OFF er en slags "Wikipedia over mad", som mange har kaldt projektet. OFF har muliggjort tilblivelsen af flere end 100 apps såsom Date Limite, Yuka eller FoodVisor.
 
+For at finde det frivilligtdrevne OFF-projekt, så besøg https://world.openfoodfacts.org
 
-For at finde det frivilligtdrevne Open Food Facts-projekt, besøg https://world.openfoodfacts.org
+<h1>▶ Vælg de produkter, som er gode for dig</h1>
 
-▶ Vælg de produkter, som er gode for dig
-- Nutri-Score-karakteren, fra "A" til "E" >> Ernæringskvalitet
-- NOVA-gruppen, fra "1" til "4" >> Find den ultraforarbejdede fødevare
-- Du kan nemt sammenligne så mange produkter, du ønsker, side om side ved blot at skanne dem. 
+➜ Nutri-Score-karakteren ("A" - "E"): Ernæringskvalitet
+➜ NOVA-gruppen (1 - 4): Undgå ultraforarbejdede fødevarer (Gruppe 4)
 
-▶ Og godt for planeten!
-- Kulstofpåvirkningen af din mad
-- Få en fornemmelse af, hvor meget af din daglige kulstofkvote, du bruger til mad
-- Baseret på aftrykkene beregnet for Frankrig af ADEME.
-- Deltag og hjælp med at bringe kulstofpåvirkningen til dit land!
-- For at få vist en kulstofpåvirkning skal et produkt have en komplet ingrediensliste med % kød/fisk og en mængdeangivelse
+<h1>▶ Bidrag til fødevaretransparens</h1>
 
+➜ OFF er en fødevareproduktdatabase kreeret af alle, for alle.
+➜ Den kan bruges til at træffe bedre fødevarevalg, og da det er åbne data, kan alle genbruge dem til ethvert formål.
+➜ Man kan begynde at bidrage i dag ved at tilføje et produkt fra sit køleskab.
+➜ OFF er et nonprofit-projekt udviklet af tusindvis af frivillige fra hele verden. Vi har mange spændende projekter, du kan bidrage til på mange forskellige måder.
 
-▶ Bidrag til fødevaretransparens
-- Open Food Facts er en fødevareproduktdatabase udarbejdet af alle, for alle.
-- Du kan benytte den til at foretage bedre fødevarevalg, og da det er åbne data, kan alle genbruge dem til ethvert formål.
-- Open Food Facts er et nonprofit-projekt, der er udviklet af tusindvis af frivillige fra hele verden. Vi har mange spændende projekter, du kan bidrage til på mange forskellige måder.
-- Du kan begynde at bidrage i dag ved at tilføje et produkt fra dit køleskab.
+<h1>▶ Afkod madetiketter</h1>
 
-▶ Opret lister
-Opret indkøbslister, hold øje med, hvad du har spist, og del og eksporter nemt dine lister.
+➜ OFF hjælper brugere med at dechiffrere produktetiketter. Man vil kunne finde:
+➜ CO2-fodaftryk (CO2-emissioner) og emballage (samt instruktioner til genbrug)
+➜ Nutriscore (ernæringsmæssig score), næringsstoffer, fedt/-indhold, mættede fedtsyrer, kulhydrater, sukkertyper, fibre, proteiner, salte og natrium.
+➜ varemærker, allergener, etiketter (bio, glutenfri, veganer, vegetar, halal, kosher...), sporbarhedsinformation (emballagekoder, ingrediensoprindelser)
+➜ På vin og øl fremgår alkoholindholdet.
 
-▶ Få faktaene
-- Open Food Facts hjælper dig med at forstå det med småt på produktetiketterne. Du vil være i stand til at finde:
-- CO2-udslip (CO2-emissioner) og emballage (samt genbrugsanvisninger)
-- Nutriscore (næringsværdi), næringsstoffer, fedt/fedtindhold, mættede fedtsyrer, kulhydrater, sukkerarter, fiber, protein samt salt og natrium.
-- mærker, allergener, etiketter (bio, glutenfri, veganer, vegetarisk, halal, kosher ...), sporbarhedsoplysninger (emballeringskoder, ingrediensers oprindelse)
-- På vin og øl finder du alkoholindholdet.
+<h1>▶ Karaktererne er videnskabeligt baserede, og projektet hjælper videnskaben tilbage!</h1>
+➜ Der findes ikke på ting. Vi stoler på ligeværdigt vurderet videnskab.
+➜ Nutri-Score er skabt af et uafhængigt franske team ledet af professor Hercberg.
+➜ NOVA-grupperne for fødevareforarbejdning er designet af professor Monteiros internationale team.
+➜ Tilsætningsstofsynteser baserer sig på analyser fra EFSA vedr. eksponeringsniveauer for fødevaretilsætningsstoffer.
+➜ OFF-fællesskabet samarbejder med forskerteams kloden over for at forbedre ernæringsforskning til gavn for alle.
 
+<h1>▶ Fungerer godt i alle sammenhænge</h1>
+➜ Der kan tilføjes nye produkter, selv med dårlig/ingen Internetforbindelse
+➜ Appen indlæser kun det strengt nødvendige for at reducere data- og strømforbrug
+➜ Der kræves ikke kamera for at slå et produkt op. You can also type the barcode if you lack a camera or have an issue with it.
 
-▶ Baseret på videnskab, hjælpe videnskab til gengæld!
+<h1>▶ Din mad, dine data. Fortrolighedsvenlig app.</h1>
+➜ Dine data er dine, og de lægges aldrig online
+➜ Appen kan benytte anonymt
+➜ Skanhistorik kan eksporteres
 
-- Vi finder ikke på tingene. Vi stoler på ligeværdigt vurderet videnskab.
-- Nutri-Score er skabt af et uafhængigt franske team ledet af professor Hercberg.
-- NOVA-grupperne om fødevareforarbejdning er designet af professor Monteiros internationale team.
-- Du kan få en syntese af EFSA-eksponeringsniveauer for fødevaretilsætningsstoffer.
-- Open Food Facts-fællesskabet samarbejder med forskerteams kloden over for at forbedre ernæringsforskning til gavn for alle.
+<h1>▶ Opsæt produktallergenadvarsler</h1>
+➜ Mælk, gluten, æg, sojabønner, nødder, fisk, selleri, sennep, svovldioxid og sulfitter, jordnødder, sesamfrø, krebsdyr, bløddyr eller lupinallergi?
+➜ Gør shopping hurtigere ved at foretage en indledende screening af din mad med OFF.
+➜ Vær dog årvågen, da oplysninger og detektering muligvis ikke er 100% nøjagtige/pålidelig. Dobbelttjek derfor altid selv ift. emballagen.
 
+<h1>▶ More</h1>
 
-▶ Offlineskanning: Skan under ALLE forhold! (kommer snart)
-Skan med lysets hastighed (selvom du befinder dig i et fly, en ubåd eller et supermarked)
-
-- Hele planeten, i din lommen!
-- Du kan tilføje nye produkter, selv hvis du ikke har en tilgængelig Internetforbindelse.
-- Appen indlæser kun det strengt nødvendige for at reducere data- og batteriforbrug.
-
-▶ Din mad, dine data
-- Dine data er dine, og de sendes aldrig online
-- Du kan benytte app'en anonymt
-- Du kan eksportere din skanningshistorik
-
-▶ Opsæt allergenadvarsler på produkter
-- Mælk, gluten, æg, sojabønner, nødder, fisk, selleri, sennep, svovldioxid og sulfitter, jordnødder, sesamfrø, krebsdyr, bløddyr eller lupinallergi?
-- Gør din shopping hurtigere ved at foretage en indledende screening af din mad med Open Food Facts.
-- Vær dog opmærksom, da oplysninger og detektering muligvis ikke er 100% nøjagtige. Dobbelttjek derfor altid selv ift. emballagen.
-
-
-▶ Sig hej og/eller vær med!
-
-
-Open Food Facts er også tilgængelig på Internet via https://world.openfoodfacts.org
-
-
-Spørgsmål, feedback: contact@openfoodfacts.org
-
-
-Til kosmetik kan du installere Open Beauty Facts, til dyrefoder Open Pet Food Facts og for alle øvrige produkter Open Product Facts.
+OFF er også tilgængelig på nettet via <a href="https://world.openfoodfacts.org">https://world.openfoodfacts.org</a>
+Ved spørgsmål/feedback: <a href="mailto:contact@openfoodfacts.org">contact@openfoodfacts.org</a>

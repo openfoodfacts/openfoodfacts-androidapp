@@ -1,6 +1,6 @@
 Digitalize produtos alimentares para animais para obter dados sobre ingredientes, aditivos e informação nutricional.
 
-O aplicativo permite ver mais de 600 alimentos para animais que já estão inseridos no banco de dados aberto e gratuito, Open Pet Food Facts, além de adicionar imagens e dados para produtos não catalogados.
+Para comida você pode baixar Open Food Facts, para cosméticos, Open Beauty Facts, e para pets, Open Pet Food Facts.
 
 Para conhecer o projeto Open Pet Food Facts, visite https://world.openpetfoodfacts.org
 
@@ -9,8 +9,7 @@ Para conhecer o projeto Open Pet Food Facts, visite https://world.openpetfoodfac
 - Open Pet Food Facts é um banco de dados com produtos alimentícios para animais, feito por todo mundo, para todo mundo.
 - Você pode utilizá-lo para fazer melhores escolhas de alimentos para animais e, por ser dados abertos, qualquer um pode reutilizar para qualquer proposta.
 - Open Pet Food Facts é um projeto sem fins lucrativos desenvolvido por milhares de voluntários em todo o mundo. Temos muitos projetos interessantes para os quais você pode contribuir de diversas maneiras. 
-- Você pode começar a contribuir hoje, adicionando informações de um produto do seu pet que esteja no armário. 
-
+- Você pode começar a contribuir hoje, adicionando informações de um produto do seu pet que esteja no armário.
 
 *** Conheça os Fatos ***
 

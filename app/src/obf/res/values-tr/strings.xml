@@ -29,13 +29,12 @@
     <string name="translate_help_summary">Open Beauty Facts veritabanını kendi dilinize kazandırın - teknik bilgi gerektirmez</string>
     <string name="text_offline_info_dialog">Ürünleri Open Beauty Facts\'e daha sonra ekleyebilmek için çevrimdışı olduğunuzda dahi tarayın. Taranan ürünler burada görünecek ve aşağıdaki butonu kullanarak gönderebileceksiniz.</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Alerji bilgileriniz asla Open Beauty Facts sunucusuna gönderilmez. Aynı zamanda ürün verilerinin kesin olmayabileceği ve algılamanın % a100 hassas olmayabileceği konusunda dikkatli olun, bu yüzden lüften kendiniz iki kere kontrol edin!</string>
-    <!-- OBF tagline in different languages -->
+    <!-- Open Beauty Facts tagline in different languages -->
     <string name="version_string">Open Beauty Facts Android Uygulaması</string>
-    <string name="tagline">ücretsiz kozmetik veritabanı</string>
+    <string name="tagline">the free cosmetics database</string>
     <string name="product_not_found">İncelediğin ürün henüz Open Beauty Facts\'de bulunmamaktadır. Onu sen ekleyebilir misin?</string>
     <string name="currently_on_version">Open Beauty Facts\'te mevcut olan</string>
     <string name="category_game_btn">Ürünleri kategorize etmeye yardım edin</string>
-    <!-- TODO add true support instead of overriding strings -->
     <string name="add_nutrient_prompt_text">Ürünü tamamlamaya yardım etmek için daha fazla ayrıntı ekleyin</string>
     <string name="add_category_prompt_text">Ürünü tamamlamaya yardım etmek için bir kategori ekleyin</string>
     <string name="add_nutrient_category_prompt_text">Ürünü tamamlamaya yardım etmek için bir kategori ve daha fazla ayrıntı ekleyin</string>

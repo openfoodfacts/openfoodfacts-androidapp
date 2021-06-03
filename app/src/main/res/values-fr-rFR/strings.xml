@@ -155,7 +155,6 @@
         <item>Vitamine K</item>
         <item>Zinc</item>
     </string-array>
-    <!-- Text units -->
     <!-- Content Description -->
     <string name="search_button">Rechercher</string>
     <string name="alert_dialog_warning_title">Avertissement</string>
@@ -603,7 +602,7 @@
     <string name="product_details">Détails du produit</string>
     <string name="product_name">Nom du produit</string>
     <string name="quantity">Quantité</string>
-    <string name="labels">Labels</string>
+    <string name="labels">Étiquettes</string>
     <string name="period_of_time_after_opening">Durée de conservation après ouverture</string>
     <string name="manufacturing_details">Détails de fabrication</string>
     <string name="origin_of_ingredients">Origine des ingrédients</string>
@@ -693,6 +692,10 @@
     <string name="txt_info_eaten_products">Vous pourrez ajouter des produits à cette liste en les scannant, en faisant glisser la fiche produit vers le haut et en appuyant sur \"Produits à acheter\".
         Vous pourrez également ajouter des produits à cette liste en les recherchant et en cliquant sur le bouton + en haut à droite de la page du produit.</string>
     <string name="txt_info_your_listed_products">Vous pourrez ajouter des produits à cette liste en les recherchant et en cliquant sur le bouton + en haut à droite de la page du produit.</string>
+    <string name="import_csv_to_list">Importer un fichier CSV de la liste Open Food Facts</string>
+    <string name="toast_import_csv_error">Erreur lors de l\'importation du fichier CSV</string>
+    <string name="toast_import_csv">CSV importé avec succès !</string>
+    <string name="open_csv">Ouvrir CSV</string>
     <string name="txt_no_nutrition_data">Ce produit ne contient aucune information nutritionnelle sur l\'emballage. Si cela a changé, vous pouvez modifier le produit.</string>
     <string name="image_prompt_language">Prendre une photo des ingrédients en</string>
     <string name="swipe_delete_tip">Vous pouvez supprimer une liste en la faisant glisser vers la gauche.</string>
@@ -728,10 +731,8 @@
     <string name="barcode">Code-barres</string>
     <string name="productAdditivesNone">Sans additifs</string>
     <string name="error_uploading_photo">Une erreur s\'est produite lors du téléchargement d\'une nouvelle photo</string>
-    <string name="import_csv_to_list">Importer un fichier CSV de la liste Open Food Facts</string>
-    <string name="toast_import_csv_error">Erreur lors de l\'importation du fichier CSV</string>
-    <string name="toast_import_csv">CSV importé avec succès !</string>
-    <string name="open_csv">Ouvrir CSV</string>
+    <string name="required_for_ecoscore">(Requis pour calculer l\'Eco-Score)</string>
+    <string name="hint_origin">Exemples: USA, France, Italie</string>
     <!-- Used for diets AddOn -->
     <string name="history_network_error">Le produit n\'a pas pu être chargé. Veuillez réessayer lorsque vous êtes de nouveau en ligne.</string>
     <string name="cant_modify_if_refreshing">Veuillez patienter jusqu\'à la fin du téléchargement</string>
@@ -795,10 +796,16 @@
     <string name="follow_system">Suivre le système</string>
     <string name="day">Jour</string>
     <string name="night">Nuit</string>
-    <string name="required_for_ecoscore">(Requis pour calculer l\'Eco-Score)</string>
-    <string name="hint_origin">Exemples: USA, France, Italie</string>
     <string name="report_email_chooser_title">Envoyer un signalement par courriel</string>
     <!-- Changelog String -->
     <string name="changelog_translation_help">Vous voulez voir ce journal des modifications en %s?\nRejoignez l\'équipe de traduction !</string>
     <string name="whats_new">Quoi de neuf avec Open Food Facts ?</string>
+    <!-- New onboarding slides -->
+    <string name="eco_score_slide_4_title">Éco-Score</string>
+    <string name="join_the_food_revolution">Join the food revolution</string>
+    <string name="slide_1_text_revolution">Scan food, Take photos, Help transform the food system</string>
+    <string name="get_the_nutri_score">Obtenez le Nutri-Score</string>
+    <string name="synthesis_of_nutrition_slide_2_text">A simple synthesis of the nutritional quality of your food</string>
+    <string name="avoid_ultra_processed_foods">Avoid ultra-processed foods</string>
+    <string name="nova_slide_3_text">Reduce the amount of ultra-processed foods in your diet.</string>
 </resources>

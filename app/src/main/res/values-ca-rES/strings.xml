@@ -17,7 +17,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
         <item quantity="one">You have 1 offline product waiting to be contributed to Open Food Facts</item>
-        <item quantity="other">You have %d offline products waiting to be contributed to Open Food Facts</item>
+        <item quantity="other">Teniu %d productes fora de línia esperant la vostra aportació a Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
         <item quantity="one">Fa %d segon</item>
@@ -213,7 +213,7 @@
     <string name="home_drawer">Inici</string>
     <string name="install">Instal·la</string>
     <string name="open_beauty_drawer">Open Beauty Facts</string>
-    <string name="open_food_drawer">Open Food Facts (Dades Reals i Obertes dels Aliments)</string>
+    <string name="open_food_drawer">Open Food Facts</string>
     <string name="search_drawer">Cerca</string>
     <string name="search_by_barcode_drawer">Cerca per codi de barres</string>
     <string name="category_drawer">Categories</string>
@@ -696,6 +696,10 @@
     <string name="txt_info_eaten_products">Podreu afegir producte a aquesta llista escanejant productes, arrossegant la targeta de producte cap amunt i tocant a \"Productes per comprar\".
         També podreu afegir productes a aquesta llista buscant-los i fent clic al botó + a la part superior dreta de la pàgina del producte.</string>
     <string name="txt_info_your_listed_products">Podreu afegir productes a aquesta llista cercant-los i fent clic al botó + a la part superior dreta de la pàgina del producte.</string>
+    <string name="import_csv_to_list">Importeu una llista CSV d\'Open Food Facts</string>
+    <string name="toast_import_csv_error">Error en importar el fitxer CSV</string>
+    <string name="toast_import_csv">CSV importat correctament!</string>
+    <string name="open_csv">Obre CSV</string>
     <string name="txt_no_nutrition_data">Aquest producte no conté informació nutricional a l’envàs. Si això ha canviat, podeu editar el producte.</string>
     <string name="image_prompt_language">Feu una foto dels ingredients a</string>
     <string name="swipe_delete_tip">Podeu suprimir una llista arrossegant-la cap a l\'esquerra.</string>
@@ -731,10 +735,8 @@
     <string name="barcode">Codi de barres</string>
     <string name="productAdditivesNone">Sense additius</string>
     <string name="error_uploading_photo">S\'ha produït un error en penjar una foto nova</string>
-    <string name="import_csv_to_list">Importeu una llista CSV d\'Open Food Facts</string>
-    <string name="toast_import_csv_error">Error en importar el fitxer CSV</string>
-    <string name="toast_import_csv">CSV importat correctament!</string>
-    <string name="open_csv">Obre CSV</string>
+    <string name="required_for_ecoscore">(Obligatori per calcular el Nutri-Score)</string>
+    <string name="hint_origin">Exemples: EUA, França, Itàlia</string>
     <!-- Used for diets AddOn -->
     <string name="history_network_error">No s\'ha pogut carregar el producte. Torneu-ho a provar quan torneu a estar en línia.</string>
     <string name="cant_modify_if_refreshing">Espereu fins que s\'acabi la càrrega</string>
@@ -798,10 +800,16 @@
     <string name="follow_system">Follow system</string>
     <string name="day">Dia</string>
     <string name="night">Nit</string>
-    <string name="required_for_ecoscore">(Obligatori per calcular el Nutri-Score)</string>
-    <string name="hint_origin">Exemples: EUA, França, Itàlia</string>
     <string name="report_email_chooser_title">Send a report email</string>
     <!-- Changelog String -->
     <string name="changelog_translation_help">Voleu veure aquest registre de canvis a %s?\nUniu-vos a l\'equip de traducció!</string>
     <string name="whats_new">Què hi ha de nou en Open Food Facts?</string>
+    <!-- New onboarding slides -->
+    <string name="eco_score_slide_4_title">Eco-Score</string>
+    <string name="join_the_food_revolution">Join the food revolution</string>
+    <string name="slide_1_text_revolution">Scan food, Take photos, Help transform the food system</string>
+    <string name="get_the_nutri_score">Obteniu el Nutri-Score</string>
+    <string name="synthesis_of_nutrition_slide_2_text">A simple synthesis of the nutritional quality of your food</string>
+    <string name="avoid_ultra_processed_foods">Avoid ultra-processed foods</string>
+    <string name="nova_slide_3_text">Reduce the amount of ultra-processed foods in your diet.</string>
 </resources>

@@ -1,1 +1,1 @@
-공개 제품 데이터베이스
+Scan food and to get ingredients, additives and nutrition facts

@@ -33,11 +33,10 @@
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">A informação das suas alergias nunca será enviada ao servidor do Open Products Facts. Também, tenha cuidado com que os dados do produto podem não ser precisos e a detecção pode não ter 100% aquadros, então por favor verifique você mesmo! </string>
     <!-- OPF tagline in different languages -->
     <string name="version_string">Abrir o applicativo Products Facts para android</string>
-    <string name="tagline">base de dados de produtos grátis</string>
+    <string name="tagline">the free product database</string>
     <string name="product_not_found">O produto %1$s que digitalizou ainda não existe no Open Products Facts. Você pode adicioná-lo?</string>
     <string name="currently_on_version">Atualmente no Open Products Facts</string>
     <string name="category_game_btn">Ajude a categorizar produtos</string>
-    <!-- TODO add true support instead of overriding strings -->
     <string name="add_nutrient_prompt_text">Adicione mais detalhes para ajudar a completar o produto</string>
     <string name="add_category_prompt_text">Adicione uma categoria para ajudar a completar o produto</string>
     <string name="add_nutrient_category_prompt_text">Adicione uma categoria e mais detalhes para ajudar a completar o produto</string>

@@ -232,7 +232,7 @@
     <string name="cancel_button">Cancelar</string>
     <string name="login_button">Usuario</string>
     <string name="create_account_button">Crear cuenta</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">La información de tus alergias no se enviará al servidor de open products Facts. así que debes ser cuidadoso ya que la información del producto no puede ser fidedigna, y la detección puede que no sea 100% arecisa, ¡así que chequea más de una vez por ti mismo! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">La información de tus alergias no se enviará al servidor de Open Food Facts. así que debes ser cuidadoso ya que la información del producto no puede ser fidedigna, y la detección puede que no sea 100% arecisa, ¡así que chequea más de una vez por ti mismo! </string>
     <string name="title_info_dialog">¿Cómo funciona?</string>
     <string name="text_offline_info_dialog">Escanea tus productos incluso cuando no hay Internet, para añadirlos luego a Open Food Facts. Los productos escaneados aparecerán aquí y podrás enviarlos usando el botón de abajo.</string>
     <string name="permission_camera">Se requiere el permiso para usar la cámara para poder escanear códigos de barras y tomar fotografías.</string>
@@ -696,6 +696,10 @@
     <string name="txt_info_eaten_products">Podrás añadir productos a esta lista escaneando productos, arrastrando la tarjeta del producto y pulsando \"Productos a comprar\".
         También podrás añadir productos a esta lista buscando y haciendo clic en el botón + en la parte superior derecha de la página del producto.</string>
     <string name="txt_info_your_listed_products">Podrá agregar productos a esta lista buscándolos y haciendo clic en el botón + en la parte superior derecha de la página del producto.</string>
+    <string name="import_csv_to_list">Importar un archivo CSV de Open Food Facts</string>
+    <string name="toast_import_csv_error">Error al importar archivo CSV</string>
+    <string name="toast_import_csv">¡CSV importado con éxito!</string>
+    <string name="open_csv">Abrir CSV</string>
     <string name="txt_no_nutrition_data">Este producto no tiene ninguna información nutricional en el envase. Si esto ha cambiado, puede editar el producto.</string>
     <string name="image_prompt_language">Toma una foto de los ingredientes en</string>
     <string name="swipe_delete_tip">Puedes borrar una lista deslizándola hacia la izquierda.</string>
@@ -731,10 +735,8 @@
     <string name="barcode">Código de barras</string>
     <string name="productAdditivesNone">Sin aditivos</string>
     <string name="error_uploading_photo">Algo salió mal al subir una nueva foto</string>
-    <string name="import_csv_to_list">Importar un archivo CSV de Open Food Facts</string>
-    <string name="toast_import_csv_error">Error al importar archivo CSV</string>
-    <string name="toast_import_csv">¡CSV importado con éxito!</string>
-    <string name="open_csv">Abrir CSV</string>
+    <string name="required_for_ecoscore">(Necesario para calcular el Eco-Score)</string>
+    <string name="hint_origin">Ejemplos: Estados Unidos, Francia, Italia</string>
     <!-- Used for diets AddOn -->
     <string name="history_network_error">El producto no se pudo cargar. Por favor, inténtalo de nuevo cuando estés de nuevo en línea.</string>
     <string name="cant_modify_if_refreshing">Por favor, espera hasta que finalice la carga</string>
@@ -798,10 +800,16 @@
     <string name="follow_system">Igual que el sistema</string>
     <string name="day">Dia</string>
     <string name="night">Noche</string>
-    <string name="required_for_ecoscore">(Necesario para calcular el Eco-Score)</string>
-    <string name="hint_origin">Ejemplos: Estados Unidos, Francia, Italia</string>
     <string name="report_email_chooser_title">Enviar correo de reporte</string>
     <!-- Changelog String -->
     <string name="changelog_translation_help">¿Quieres ver este registro de cambios en %s?\n¡Únete al equipo de traducción!</string>
     <string name="whats_new">¿Qué hay de nuevo en Open Food Facts?</string>
+    <!-- New onboarding slides -->
+    <string name="eco_score_slide_4_title">Eco-Score</string>
+    <string name="join_the_food_revolution">Únete a la revolución alimentaria</string>
+    <string name="slide_1_text_revolution">Escanea alimentos, toma fotos, ayuda a transformar el sistema alimentario</string>
+    <string name="get_the_nutri_score">Obtener el Nutriscore</string>
+    <string name="synthesis_of_nutrition_slide_2_text">Una síntesis simple de la calidad nutricional de tu comida</string>
+    <string name="avoid_ultra_processed_foods">Evitar alimentos ultra procesados</string>
+    <string name="nova_slide_3_text">Reducir la cantidad de alimentos ultra procesados en tu dieta.</string>
 </resources>

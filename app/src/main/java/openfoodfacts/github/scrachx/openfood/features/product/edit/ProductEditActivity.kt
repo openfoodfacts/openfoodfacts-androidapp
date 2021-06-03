@@ -26,7 +26,6 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContract
-import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.afollestad.materialdialogs.MaterialDialog
@@ -47,10 +46,13 @@ import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
 import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityEditProductBinding
 import openfoodfacts.github.scrachx.openfood.features.product.ProductFragmentPagerAdapter
+import openfoodfacts.github.scrachx.openfood.features.product.edit.ingredients.EditIngredientsFragment
+import openfoodfacts.github.scrachx.openfood.features.product.edit.nutrition.ProductEditNutritionFactsFragment
+import openfoodfacts.github.scrachx.openfood.features.product.edit.overview.EditOverviewFragment
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.images.IMG_ID
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
-import openfoodfacts.github.scrachx.openfood.jobs.OfflineProductWorker.Companion.scheduleSync
+import openfoodfacts.github.scrachx.openfood.jobs.ProductUploaderWorker.Companion.scheduleProductUpload
 import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
@@ -63,10 +65,9 @@ import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient.Companion
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
 import openfoodfacts.github.scrachx.openfood.utils.OfflineProductService
 import openfoodfacts.github.scrachx.openfood.utils.Utils.hideKeyboard
-import openfoodfacts.github.scrachx.openfood.utils.Utils.isExternalStorageWritable
+import openfoodfacts.github.scrachx.openfood.utils.clearCameraCache
 import openfoodfacts.github.scrachx.openfood.utils.getLoginPreferences
 import openfoodfacts.github.scrachx.openfood.utils.getProductState
-import java.io.File
 import java.io.IOException
 import java.util.*
 import javax.inject.Inject
@@ -99,8 +100,8 @@ class ProductEditActivity : BaseActivity() {
 
     private val addProductPhotosFragment = ProductEditPhotosFragment()
     private val nutritionFactsFragment = ProductEditNutritionFactsFragment()
-    private val ingredientsFragment = ProductEditIngredientsFragment()
-    private val editOverviewFragment = ProductEditOverviewFragment()
+    private val ingredientsFragment = EditIngredientsFragment()
+    private val editOverviewFragment = EditOverviewFragment()
 
     private val imagesFilePath = arrayOfNulls<String>(3)
 
@@ -129,30 +130,30 @@ class ProductEditActivity : BaseActivity() {
      * @param nutritionFactsStage change the state of nutrition facts indicator
      */
     private fun updateTimelineIndicator(overviewStage: Int, ingredientsStage: Int, nutritionFactsStage: Int) {
-        updateTimeLine(binding.overviewIndicator, overviewStage)
-        updateTimeLine(binding.ingredientsIndicator, ingredientsStage)
-        updateTimeLine(binding.nutritionFactsIndicator, nutritionFactsStage)
+        binding.overviewIndicator.updateTimeLine(overviewStage)
+        binding.ingredientsIndicator.updateTimeLine(ingredientsStage)
+        binding.nutritionFactsIndicator.updateTimeLine(nutritionFactsStage)
     }
 
     override fun onBackPressed() {
         MaterialDialog.Builder(this)
-                .content(R.string.save_product)
-                .positiveText(R.string.txtSave)
-                .negativeText(R.string.txtPictureNeededDialogNo)
-                .onPositive { _, _ -> checkFieldsThenSave() }
-                .onNegative { _, _ -> super.onBackPressed() }
-                .show()
+            .content(R.string.save_product)
+            .positiveText(R.string.txtSave)
+            .negativeText(R.string.txtPictureNeededDialogNo)
+            .onPositive { _, _ -> checkFieldsThenSave() }
+            .onNegative { _, _ -> super.onBackPressed() }
+            .show()
     }
 
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
         android.R.id.home -> {
             MaterialDialog.Builder(this)
-                    .content(R.string.save_product)
-                    .positiveText(R.string.txtSave)
-                    .negativeText(R.string.txt_discard)
-                    .onPositive { _, _ -> checkFieldsThenSave() }
-                    .onNegative { _, _ -> finish() }
-                    .show()
+                .content(R.string.save_product)
+                .positiveText(R.string.txtSave)
+                .negativeText(R.string.txt_discard)
+                .onPositive { _, _ -> checkFieldsThenSave() }
+                .onNegative { _, _ -> finish() }
+                .show()
             true
         }
         R.id.save_product -> {
@@ -225,6 +226,7 @@ class ProductEditActivity : BaseActivity() {
         if (productState == null && offlineSavedProduct == null && mEditProduct == null) {
             Toast.makeText(this, R.string.error_adding_product, Toast.LENGTH_SHORT).show()
             finish()
+            return
         }
         setupViewPager(binding.viewpager)
     }
@@ -232,7 +234,7 @@ class ProductEditActivity : BaseActivity() {
     public override fun onDestroy() {
         super.onDestroy()
         disp.dispose()
-        clearCameraCachedPics(this)
+        clearCameraCache()
         _binding = null
     }
 
@@ -266,7 +268,7 @@ class ProductEditActivity : BaseActivity() {
     }
 
     private fun createTextPlain(code: String) =
-            RequestBody.create(OpenFoodAPIClient.MIME_TEXT, code)
+        RequestBody.create(OpenFoodAPIClient.MIME_TEXT, code)
 
     private fun addLoginPasswordInfo(imgMap: MutableMap<String, RequestBody?>) {
         val settings = getLoginPreferences()
@@ -313,14 +315,14 @@ class ProductEditActivity : BaseActivity() {
             productDetails[ApiFields.Keys.IMAGE_NUTRITION_UPLOADED] = true.toString()
         }
         val barcode = this@ProductEditActivity.productDetails[ApiFields.Keys.BARCODE]!!
-        val toSaveOfflineProduct = OfflineSavedProduct(
-                barcode,
-                this@ProductEditActivity.productDetails
+        val toSaveOffline = OfflineSavedProduct(
+            barcode,
+            this@ProductEditActivity.productDetails
         )
-        daoSession.offlineSavedProductDao!!.insertOrReplace(toSaveOfflineProduct)
+        daoSession.offlineSavedProductDao.insertOrReplace(toSaveOffline)
 
-        scheduleSync(this, sharedPreferences)
-        daoSession.historyProductDao.addToHistorySync(toSaveOfflineProduct)
+        scheduleProductUpload(this, sharedPreferences)
+        daoSession.historyProductDao.addToHistorySync(toSaveOffline)
 
         Toast.makeText(this, R.string.productSavedToast, Toast.LENGTH_SHORT).show()
         hideKeyboard(this)
@@ -370,8 +372,8 @@ class ProductEditActivity : BaseActivity() {
         val lang = getProductLanguageForEdition()
         var ocr = false
         val imgMap = hashMapOf<String, RequestBody?>(
-                ApiFields.Keys.BARCODE to image.codeBody,
-                "imagefield" to createTextPlain("${image.imageField}_$lang")
+            ApiFields.Keys.BARCODE to image.codeBody,
+            "imagefield" to createTextPlain("${image.imageField}_$lang")
         )
         if (image.imgFront != null) {
             imagesFilePath[0] = image.filePath
@@ -401,112 +403,115 @@ class ProductEditActivity : BaseActivity() {
 
     private fun savePhoto(imgMap: Map<String, RequestBody?>, image: ProductImage, position: Int, performOCR: Boolean) {
         productsApi.saveImage(imgMap)
-                .observeOn(AndroidSchedulers.mainThread())
-                .doOnSubscribe { showImageProgress(position) }
-                .doOnError {
-                    // A network error happened
-                    if (it is IOException) {
-                        hideImageProgress(position, false, getString(R.string.no_internet_connection))
-                        Log.e(LOGGER_TAG, it.message!!)
-                        if (image.imageField === ProductImageField.OTHER) {
-                            daoSession.toUploadProductDao.insertOrReplace(ToUploadProduct(
-                                    image.barcode,
-                                    image.filePath,
-                                    image.imageField.toString()
-                            ))
-                        }
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnSubscribe { showImageProgress(position) }
+            .doOnError {
+                // A network error happened
+                if (it is IOException) {
+                    hideImageProgress(position, false, getString(R.string.no_internet_connection))
+                    Log.e(LOGGER_TAG, it.message!!)
+                    if (image.imageField === ProductImageField.OTHER) {
+                        daoSession.toUploadProductDao.insertOrReplace(
+                            ToUploadProduct(
+                                image.barcode,
+                                image.filePath,
+                                image.imageField.toString()
+                            )
+                        )
+                    }
+                } else {
+                    hideImageProgress(position, true, it.message ?: "Empty error.")
+                    Log.i(this::class.simpleName, it.message ?: "Empty error.")
+                    Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
+                }
+            }
+            .subscribe { jsonNode ->
+                val status = jsonNode["status"].asText()
+                if (status == "status not ok") {
+                    val error = jsonNode["error"].asText()
+                    val alreadySent = error == "This picture has already been sent."
+                    if (alreadySent && performOCR) {
+                        hideImageProgress(position, false, getString(R.string.image_uploaded_successfully))
+                        performOCR(image.barcode, "ingredients_${getProductLanguageForEdition()}")
                     } else {
-                        hideImageProgress(position, true, it.message ?: "Empty error.")
-                        Log.i(this::class.simpleName, it.message ?: "Empty error.")
-                        Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
+                        hideImageProgress(position, true, error)
+                    }
+                } else {
+                    when {
+                        image.imageField === ProductImageField.FRONT -> {
+                            imageFrontUploaded = true
+                        }
+                        image.imageField === ProductImageField.INGREDIENTS -> {
+                            imageIngredientsUploaded = true
+                        }
+                        image.imageField === ProductImageField.NUTRITION -> {
+                            imageNutritionFactsUploaded = true
+                        }
+                    }
+                    hideImageProgress(position, false, getString(R.string.image_uploaded_successfully))
+                    val imageField = jsonNode["imagefield"].asText()
+                    val imgId = jsonNode["image"]["imgid"].asText()
+                    if (position != 3 && position != 4) {
+                        // Not OTHER image
+                        setPhoto(image, imageField, imgId, performOCR)
                     }
                 }
-                .subscribe { jsonNode ->
-                    val status = jsonNode["status"].asText()
-                    if (status == "status not ok") {
-                        val error = jsonNode["error"].asText()
-                        val alreadySent = error == "This picture has already been sent."
-                        if (alreadySent && performOCR) {
-                            hideImageProgress(position, false, getString(R.string.image_uploaded_successfully))
-                            performOCR(image.barcode, "ingredients_${getProductLanguageForEdition()}")
-                        } else {
-                            hideImageProgress(position, true, error)
-                        }
-                    } else {
-                        when {
-                            image.imageField === ProductImageField.FRONT -> {
-                                imageFrontUploaded = true
-                            }
-                            image.imageField === ProductImageField.INGREDIENTS -> {
-                                imageIngredientsUploaded = true
-                            }
-                            image.imageField === ProductImageField.NUTRITION -> {
-                                imageNutritionFactsUploaded = true
-                            }
-                        }
-                        hideImageProgress(position, false, getString(R.string.image_uploaded_successfully))
-                        val imageField = jsonNode["imagefield"].asText()
-                        val imgId = jsonNode["image"]["imgid"].asText()
-                        if (position != 3 && position != 4) {
-                            // Not OTHER image
-                            setPhoto(image, imageField, imgId, performOCR)
-                        }
-                    }
-                }.addTo(disp)
+            }.addTo(disp)
     }
 
     private fun setPhoto(image: ProductImage, imageField: String, imgId: String, performOCR: Boolean) {
         val queryMap = mapOf(IMG_ID to imgId, "id" to imageField)
 
         productsApi.editImage(image.barcode, queryMap)
-                .observeOn(AndroidSchedulers.mainThread())
-                .doOnError { e ->
-                    if (e is IOException) {
-                        if (performOCR) {
-                            val view = findViewById<View>(R.id.coordinator_layout)
-                            Snackbar.make(view, R.string.no_internet_unable_to_extract_ingredients, Snackbar.LENGTH_INDEFINITE)
-                                    .setAction(R.string.txt_try_again) { setPhoto(image, imageField, imgId, true) }.show()
-                        }
-                    } else {
-                        Log.i(this::class.simpleName, e.message!!)
-                        Toast.makeText(this@ProductEditActivity, e.message, Toast.LENGTH_SHORT).show()
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnError {
+                if (it is IOException) {
+                    if (performOCR) {
+                        val view = findViewById<View>(R.id.coordinator_layout)
+                        Snackbar.make(view, R.string.no_internet_unable_to_extract_ingredients, Snackbar.LENGTH_INDEFINITE)
+                            .setAction(R.string.txt_try_again) { setPhoto(image, imageField, imgId, true) }
+                            .show()
                     }
+                } else {
+                    Log.w(this::class.simpleName, it.message!!)
+                    Toast.makeText(this@ProductEditActivity, it.message, Toast.LENGTH_SHORT).show()
                 }
-                .subscribe { jsonNode ->
-                    val status = jsonNode["status"].asText()
-                    if (performOCR && status == "status ok") {
-                        performOCR(image.barcode, imageField)
-                    }
-                }.addTo(disp)
+            }
+            .subscribe { jsonNode ->
+                val status = jsonNode["status"].asText()
+                if (performOCR && status == "status ok") {
+                    performOCR(image.barcode, imageField)
+                }
+            }.addTo(disp)
     }
 
     fun performOCR(code: String, imageField: String) {
         productsApi.performOCR(code, imageField)
-                .observeOn(AndroidSchedulers.mainThread())
-                .doOnSubscribe { ingredientsFragment.showOCRProgress() }
-                .doOnError {
-                    ingredientsFragment.hideOCRProgress()
-                    if (it is IOException) {
-                        val view = findViewById<View>(R.id.coordinator_layout)
-                        Snackbar.make(view, R.string.no_internet_unable_to_extract_ingredients, BaseTransientBottomBar.LENGTH_INDEFINITE)
-                                .setAction(R.string.txt_try_again) { performOCR(code, imageField) }
-                                .show()
-                    } else {
-                        Log.e(this::class.simpleName, it.message, it)
-                        Toast.makeText(this@ProductEditActivity, it.message, Toast.LENGTH_SHORT).show()
-                    }
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnSubscribe { ingredientsFragment.showOCRProgress() }
+            .doOnError {
+                ingredientsFragment.hideOCRProgress()
+                if (it is IOException) {
+                    val view = findViewById<View>(R.id.coordinator_layout)
+                    Snackbar.make(view, R.string.no_internet_unable_to_extract_ingredients, BaseTransientBottomBar.LENGTH_INDEFINITE)
+                        .setAction(R.string.txt_try_again) { performOCR(code, imageField) }
+                        .show()
+                } else {
+                    Log.e(this::class.simpleName, it.message, it)
+                    Toast.makeText(this@ProductEditActivity, it.message, Toast.LENGTH_SHORT).show()
                 }
-                .subscribe { node ->
-                    ingredientsFragment.hideOCRProgress()
-                    val status = node["status"].toString()
-                    if (status == "0") {
-                        val ocrResult = node["ingredients_text_from_image"].asText()
-                        ingredientsFragment.setIngredients(status, ocrResult)
-                    } else {
-                        ingredientsFragment.setIngredients(status, null)
-                    }
+            }
+            .subscribe { node ->
+                ingredientsFragment.hideOCRProgress()
+                val status = node["status"].toString()
+                if (status == "0") {
+                    val ocrResult = node["ingredients_text_from_image"].asText()
+                    ingredientsFragment.setIngredients(status, ocrResult)
+                } else {
+                    ingredientsFragment.setIngredients(status, null)
                 }
-                .addTo(disp)
+            }
+            .addTo(disp)
     }
 
     private fun hideImageProgress(position: Int, errorUploading: Boolean, message: String) {
@@ -541,33 +546,33 @@ class ProductEditActivity : BaseActivity() {
     }
 
     fun setIngredients(status: String?, ingredients: String?) =
-            ingredientsFragment.setIngredients(status, ingredients)
+        ingredientsFragment.setIngredients(status, ingredients)
 
     class PerformOCRContract : ActivityResultContract<Product?, Boolean>() {
         override fun createIntent(context: Context, product: Product?) =
-                Intent(context, ProductEditActivity::class.java).apply {
-                    putExtra(KEY_EDIT_PRODUCT, product)
-                    putExtra(KEY_PERFORM_OCR, true)
-                }
+            Intent(context, ProductEditActivity::class.java).apply {
+                putExtra(KEY_EDIT_PRODUCT, product)
+                putExtra(KEY_PERFORM_OCR, true)
+            }
 
         override fun parseResult(resultCode: Int, intent: Intent?) = resultCode == RESULT_OK
     }
 
     class SendUpdatedImgContract : ActivityResultContract<Product?, Boolean>() {
         override fun createIntent(context: Context, product: Product?) =
-                Intent(context, ProductEditActivity::class.java).apply {
-                    putExtra(KEY_EDIT_PRODUCT, product)
-                    putExtra(KEY_SEND_UPDATED, true)
-                }
+            Intent(context, ProductEditActivity::class.java).apply {
+                putExtra(KEY_EDIT_PRODUCT, product)
+                putExtra(KEY_SEND_UPDATED, true)
+            }
 
         override fun parseResult(resultCode: Int, intent: Intent?) = resultCode == RESULT_OK
     }
 
     open class EditProductContract : ActivityResultContract<Product, Boolean>() {
         override fun createIntent(context: Context, input: Product) =
-                Intent(context, ProductEditActivity::class.java).apply {
-                    putExtra(KEY_EDIT_PRODUCT, input)
-                }
+            Intent(context, ProductEditActivity::class.java).apply {
+                putExtra(KEY_EDIT_PRODUCT, input)
+            }
 
         override fun parseResult(resultCode: Int, intent: Intent?) = resultCode == RESULT_OK
     }
@@ -586,41 +591,22 @@ class ProductEditActivity : BaseActivity() {
         const val KEY_IS_EDITING = "is_edition"
         const val KEY_STATE = "state"
 
-        private fun getCameraPicLocation(context: Context): File {
-            var cacheDir = context.cacheDir
-            if (isExternalStorageWritable()) {
-                cacheDir = context.externalCacheDir
-            }
-            val picDir = File(cacheDir, "EasyImage")
-            if (!picDir.exists()) {
-                if (picDir.mkdirs()) Log.i(LOGGER_TAG, "Directory '${picDir.absolutePath}' created.")
-                else Log.i(LOGGER_TAG, "Couldn't create directory '${picDir.absolutePath}'.")
-            }
-            return picDir
-        }
 
-        private fun clearCameraCachedPics(context: Context) {
-            (getCameraPicLocation(context).listFiles() ?: return).forEach {
-                if (it.delete()) Log.i(LOGGER_TAG, "Deleted cached photo '${it.absolutePath}'.")
-                else Log.i(LOGGER_TAG, "Couldn't delete cached photo '${it.absolutePath}'.")
-            }
-        }
-
-        private fun updateTimeLine(view: View, stage: Int) {
+        private fun View.updateTimeLine(stage: Int) {
             when (stage) {
-                0 -> view.setBackgroundResource(R.drawable.stage_inactive)
-                1 -> view.setBackgroundResource(R.drawable.stage_active)
-                2 -> view.setBackgroundResource(R.drawable.stage_complete)
+                0 -> setBackgroundResource(R.drawable.stage_inactive)
+                1 -> setBackgroundResource(R.drawable.stage_active)
+                2 -> setBackgroundResource(R.drawable.stage_complete)
             }
         }
 
         fun start(
-                context: Context,
-                product: Product,
-                sendUpdated: Boolean = false,
-                performOcr: Boolean = false,
-                showCategoryPrompt: Boolean = false,
-                showNutritionPrompt: Boolean = false
+            context: Context,
+            product: Product,
+            sendUpdated: Boolean = false,
+            performOcr: Boolean = false,
+            showCategoryPrompt: Boolean = false,
+            showNutritionPrompt: Boolean = false
         ) {
             Intent(context, ProductEditActivity::class.java).apply {
                 putExtra(KEY_EDIT_PRODUCT, product)
@@ -635,12 +621,12 @@ class ProductEditActivity : BaseActivity() {
         }
 
         fun start(
-                context: Context,
-                offlineProduct: OfflineSavedProduct,
-                sendUpdated: Boolean = false,
-                performOcr: Boolean = false,
-                showCategoryPrompt: Boolean = false,
-                showNutritionPrompt: Boolean = false
+            context: Context,
+            offlineProduct: OfflineSavedProduct,
+            sendUpdated: Boolean = false,
+            performOcr: Boolean = false,
+            showCategoryPrompt: Boolean = false,
+            showNutritionPrompt: Boolean = false
         ) {
             Intent(context, ProductEditActivity::class.java).apply {
                 putExtra(KEY_EDIT_OFFLINE_PRODUCT, offlineProduct)

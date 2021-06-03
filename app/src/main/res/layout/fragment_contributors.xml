@@ -144,13 +144,14 @@
                             android:layout_marginLeft="@dimen/spacing_normal"
                             android:layout_marginTop="@dimen/spacing_tiny"
                             android:layout_marginRight="@dimen/spacing_normal"
-                            android:visibility="gone"
                             android:background="@drawable/textview_full"
                             android:clickable="true"
                             android:focusable="true"
-                            android:gravity="center"
                             android:padding="@dimen/spacing_small"
-                            android:textColorLink="@color/light_blue_A700" />
+                            android:textColorLink="@color/light_blue_A700"
+                            android:visibility="gone"
+                            tools:text="Test1"
+                            tools:visibility="visible" />
 
                         <View
                             android:layout_width="match_parent"
@@ -182,12 +183,11 @@
                             android:layout_marginTop="@dimen/spacing_tiny"
                             android:layout_marginRight="@dimen/spacing_normal"
                             android:background="@drawable/textview_full"
-                            android:visibility="gone"
                             android:clickable="true"
                             android:focusable="true"
-                            android:gravity="center"
                             android:padding="@dimen/spacing_small"
-                            android:textColorLink="@color/light_blue_A700" />
+                            android:textColorLink="@color/light_blue_A700"
+                            android:visibility="gone" />
 
                         <View
                             android:layout_width="match_parent"

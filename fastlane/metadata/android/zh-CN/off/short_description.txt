@@ -1,1 +1,1 @@
-开放的产品数据库
+Scan food and to get ingredients, additives and nutrition facts

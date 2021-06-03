@@ -16,45 +16,45 @@
   -->
 <resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
-        <item quantity="one"> Du har 1 offlineprodukt, som venter på at blive et bidrag til Open Food Facts</item>
-        <item quantity="other"> Du har %d offlineprodukter, som venter på at blive bidrag til Open Food Facts</item>
+        <item quantity="one">Der er 1 offlineprodukt, der afventer at blive tilføjet OFF</item>
+        <item quantity="other">Der er %d offlineprodukter, som afventer at blive tilføjet OFF</item>
     </plurals>
     <plurals name="seconds">
-        <item quantity="one">1 sekund siden</item>
+        <item quantity="one">%d sekund siden</item>
         <item quantity="other">%d sekunder siden</item>
     </plurals>
     <plurals name="minutes">
-        <item quantity="one">1 minut siden</item>
+        <item quantity="one">%d minut siden</item>
         <item quantity="other">%d minutter siden</item>
     </plurals>
     <plurals name="hours">
-        <item quantity="one">1 time siden</item>
+        <item quantity="one">%d time siden</item>
         <item quantity="other">%d timer siden</item>
     </plurals>
     <plurals name="days">
-        <item quantity="one">1 dag siden</item>
+        <item quantity="one">%d dag siden</item>
         <item quantity="other">%d dage siden</item>
     </plurals>
     <string name="action_about">Om</string>
     <string name="action_discover">Opdag</string>
-    <string name="contribute">Sådan bidrager du</string>
+    <string name="contribute">Sådan bidrager man</string>
     <string name="action_find">Find</string>
-    <string name="product_incomplete_message">Dette produkt er ikke komplet. Der kan derforikke foretages et allergentjek.</string>
+    <string name="product_incomplete_message">Dette produkt er ikke komplet, hvorfor der ikke foretages et allergentjek.</string>
     <string name="product_allergen_prompt">Dette produkt indeholder:</string>
     <string name="no_offline_data">Du er helt færdig</string>
-    <string name="first_offline">Produkter tilføjet offline vil fremgå her</string>
+    <string name="first_offline">Produkter tilføjet offline vil fremgå hér</string>
     <!-- Image Upload -->
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
         <item>Oversigt</item>
         <item>Ingredienser</item>
         <item>Ernæring</item>
-        <item>Ernæringstabel</item>
+        <item>Ernæringsoversigt</item>
         <item>Miljø</item>
     </string-array>
     <!-- New Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_new_items_product">
-        <item>Produktbilleder</item>
+        <item>Produktfotos</item>
         <item>Ingrediensanalyse</item>
     </string-array>
     <!-- Text units -->
@@ -286,7 +286,7 @@
     <string name="nutrition_sodium">Natrium</string>
     <string name="nutrition_sugars">Sukkerarter</string>
     <string name="nutrition_trans_fat">Transfedt</string>
-    <string name="nutriment_serving_size">Per portion : </string>
+    <string name="nutriment_serving_size">Pr. portion : </string>
     <string name="action_manage_account">Administrer konto</string>
     <string name="action_contributes">Dine bidrag</string>
     <string name="choose_energy_unit">Vælg din foretrukne energienhed til ernæringstabellen</string>
@@ -339,7 +339,7 @@
     <string name="vitamin_c">C-vitamin</string>
     <string name="vitamin_b1">B1-vitamin</string>
     <string name="vitamin_b2">B2-vitamin</string>
-    <string name="vitamin_pp">Vitamin PP</string>
+    <string name="vitamin_pp">Vitamin B3 (niacin)</string>
     <string name="vitamin_b6">B6-vitamin</string>
     <string name="vitamin_b9">B9-vitamin</string>
     <string name="vitamin_b12">B12-vitamin</string>
@@ -486,7 +486,7 @@
     <string name="mineral_tags_text">Mineraler:</string>
     <string name="other_tags_text">Øvrige stoffer:</string>
     <!--shared element transition key-->
-    <string name="by_title">Title</string>
+    <string name="by_title">Titel</string>
     <string name="by_brand">Mærke</string>
     <string name="by_barcode">Stregkode</string>
     <string name="by_time">Nyligt viste</string>
@@ -633,7 +633,7 @@
     <string name="nutrient_already_added">%s er allerede til stede i næringsfakta</string>
     <string name="save_edits">Gem ændringer</string>
     <string name="contribution_by">Bidrag fra</string>
-    <string name="title_activity_product">Title</string>
+    <string name="title_activity_product">Titel</string>
     <string name="description_activity_product">beskrivelse</string>
     <string name="intent_filter_share_label">Føj til Open Prodcts Facts</string>
     <!-- Used for additive exposure evaluation table -->
@@ -664,7 +664,7 @@
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">Udtræk ingredienser</string>
     <string name="extract_recycling_prompt">Udtræk genbrugsinstruktioner</string>
-    <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
+    <string name="add_nutrient_prompt_text">Tilføj ernæringsfakta for at beregne Nutri-Score</string>
     <string name="add_category_prompt_text">Tilføj en kategori som hjælp til produktfærdiggørelsen</string>
     <string name="add_nutrient_category_prompt_text">Tilføj en kategori og ernæringsfakta som hjælp til produktfærdiggørelsen</string>
     <string name="couldnot_compute_ecoscore_prompt_text">Det er ikke muligt at udtrække Øko-Score for dette produkt grundet f.eks. en kategori, der ikke er specifik nok eller mangler understøttende data. Mener du, at dette er en fejl, kan du e-maile OFF ved at klikke nedenfor.</string>
@@ -696,6 +696,10 @@
     <string name="txt_info_eaten_products">Du vil kunne føje produkter til denne liste ved at skanne produkter, trække produktkortet op og trykke på \"Produkter, som skal købes\".
         Du vl også kunne føje produkter til denne liste ved at søge efter dem og trykke på knappen + øverst til højre på produktsiden.</string>
     <string name="txt_info_your_listed_products">Du kan tilføje produkter til denne liste ved at søge efter dem og trykke på knappen + øverst til højre på produktsiden.</string>
+    <string name="import_csv_to_list">Importér en Open Food Facts-liste som CSV-fil</string>
+    <string name="toast_import_csv_error">Fejl ved import af CSV-fil</string>
+    <string name="toast_import_csv">CSV importeret!</string>
+    <string name="open_csv">Åbn CSV</string>
     <string name="txt_no_nutrition_data">Dette produkt har ingen næringsoplysninger på emballagen. Hvis dette er ændret, kan du redigere produktet.</string>
     <string name="image_prompt_language">Tag et foto af ingredienserne i</string>
     <string name="swipe_delete_tip">En liste kan slettes ved at stryge den til venstre.</string>
@@ -703,7 +707,7 @@
     <string name="empty"></string>
     <string name="add_product">Tilføj produkter</string>
     <string name="add_another_product">Tilføj et produkt mere</string>
-    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
+    <string name="add_nutrition_facts_for_nutriscore">Tilføj ernæringsfakta for at beregne Nutri-Score</string>
     <string name="product_summary_action_compare_button_label">Sammenlign</string>
     <string name="product_summary_action_add_to_list_button_label">Føj til liste</string>
     <string name="product_summary_action_edit_button_label">Redigér</string>
@@ -731,10 +735,8 @@
     <string name="barcode">Stregkode</string>
     <string name="productAdditivesNone">Ingen tilsætningsstoffer</string>
     <string name="error_uploading_photo">Noget gik galt under upload af et nyt foto</string>
-    <string name="import_csv_to_list">Importér en Open Food Facts-liste som CSV-fil</string>
-    <string name="toast_import_csv_error">Fejl ved import af CSV-fil</string>
-    <string name="toast_import_csv">CSV importeret!</string>
-    <string name="open_csv">Åbn CSV</string>
+    <string name="required_for_ecoscore">(Nødvendig til beregning af Nutri-Score)</string>
+    <string name="hint_origin">Eks.: USA, Frankrig, Italien</string>
     <!-- Used for diets AddOn -->
     <string name="history_network_error">Produktet kunne ikke indlæses. Forsøg igen, når du atter er online.</string>
     <string name="cant_modify_if_refreshing">Afvent færdiggørelse af upload</string>
@@ -798,10 +800,16 @@
     <string name="follow_system">Følg system</string>
     <string name="day">Dag</string>
     <string name="night">Nat</string>
-    <string name="required_for_ecoscore">(Nødvendig til beregning af Nutri-Score)</string>
-    <string name="hint_origin">Eks.: USA, Frankrig, Italien</string>
     <string name="report_email_chooser_title">Indsend en rapport e-mail</string>
     <!-- Changelog String -->
     <string name="changelog_translation_help">Ønsker at se denne ændringslog i %s?\nDeltag i oversættelsesteamet!</string>
     <string name="whats_new">Nyt i Open Food Facts?</string>
+    <!-- New onboarding slides -->
+    <string name="eco_score_slide_4_title">Øko-Score</string>
+    <string name="join_the_food_revolution">Tilslut dig fødevarerevolutionen</string>
+    <string name="slide_1_text_revolution">Skan fødevarer, tag fotos, hjælp med at traneformere fødevaresystemet</string>
+    <string name="get_the_nutri_score">Få ernæringsinformation</string>
+    <string name="synthesis_of_nutrition_slide_2_text">En simpel syntese af dine fødevarers ernæringskvalitet</string>
+    <string name="avoid_ultra_processed_foods">Undgå ultraforarbejdede fødevarer</string>
+    <string name="nova_slide_3_text">Reducér mængden af ultraforarbejdede fødevarer i din kost.</string>
 </resources>

@@ -11,6 +11,7 @@ fun EditText?.getContent() = this?.text?.toString()
  * @return true if the edit text string value is not empty
  */
 fun EditText?.isNotEmpty() = !isEmpty()
+
 fun EditText.isContentDifferent(toCompare: String?): Boolean {
     val fieldValue = getContent()
     return !(fieldValue.isNullOrEmpty() && toCompare.isNullOrEmpty()

@@ -94,10 +94,8 @@ class ProductViewFragment : Fragment(), OnRefreshListener {
 
     private fun setupViewPager(viewPager: ViewPager2) = setupViewPager(
             viewPager,
-            ProductFragmentPagerAdapter(requireActivity()),
             productState,
-            requireActivity(),
-            sharedPreferences
+            requireActivity()
     )
 
     override fun onOptionsItemSelected(item: MenuItem) = onOptionsItemSelected(requireActivity(), item)

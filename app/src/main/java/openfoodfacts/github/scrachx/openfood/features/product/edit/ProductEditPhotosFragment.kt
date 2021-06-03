@@ -63,6 +63,9 @@ class ProductEditPhotosFragment : ProductEditFragment() {
     @Inject
     lateinit var localeManager: LocaleManager
 
+    @Inject
+    lateinit var picasso: Picasso
+
     private val photoReceiverHandler by lazy {
         PhotoReceiverHandler(sharedPreferences) { newPhotoFile ->
             photoFile = newPhotoFile
@@ -93,24 +96,26 @@ class ProductEditPhotosFragment : ProductEditFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         binding.btnAddOtherImage.setOnClickListener { addOtherImage() }
         binding.btnAdd.setOnClickListener { next() }
+
         val bundle = arguments
-        if (bundle != null) {
-            val product = bundle.getSerializable("product") as Product?
-            val offlineSavedProduct = bundle.getSerializable("edit_offline_product") as OfflineSavedProduct?
-            val editionMode = bundle.getBoolean(ProductEditActivity.KEY_IS_EDITING)
-            if (product != null) {
-                code = product.code
-            }
-            if (editionMode && product != null) {
-                binding.btnAdd.setText(R.string.save_edits)
-            } else if (offlineSavedProduct != null) {
-                code = offlineSavedProduct.barcode
-            }
-        } else {
+        if (bundle == null) {
             Toast.makeText(activity, R.string.error_adding_product_photos, Toast.LENGTH_SHORT).show()
-            requireActivity().finish()
+            error("Cannot start fragment without arguments.")
+        }
+
+        val product = bundle.getSerializable("product") as Product?
+        val offlineSavedProduct = bundle.getSerializable("edit_offline_product") as OfflineSavedProduct?
+        val editing = bundle.getBoolean(ProductEditActivity.KEY_IS_EDITING)
+        if (product != null) {
+            code = product.code
+        }
+        if (editing && product != null) {
+            binding.btnAdd.setText(R.string.save_edits)
+        } else if (offlineSavedProduct != null) {
+            code = offlineSavedProduct.barcode
         }
     }
 
@@ -162,8 +167,7 @@ class ProductEditPhotosFragment : ProductEditFragment() {
             scaleType = ImageView.ScaleType.FIT_CENTER
             layoutParams = lp
         }
-        Picasso.get()
-                .load(photoFile!!)
+        picasso.load(photoFile!!)
                 .resize(requireContext().dpsToPixel(100), requireContext().dpsToPixel(100))
                 .centerInside()
                 .into(imageView)

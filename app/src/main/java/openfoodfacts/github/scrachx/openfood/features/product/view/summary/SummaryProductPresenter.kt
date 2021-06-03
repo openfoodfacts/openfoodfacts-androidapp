@@ -30,10 +30,10 @@ import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState
 
 class SummaryProductPresenter(
-        private val languageCode: String,
-        private val product: Product,
-        private val view: ISummaryProductPresenter.View,
-        private val productRepository: ProductRepository
+    private val languageCode: String,
+    private val product: Product,
+    private val view: ISummaryProductPresenter.View,
+    private val productRepository: ProductRepository
 ) : ISummaryProductPresenter.Actions {
     private val disp = CompositeDisposable()
 

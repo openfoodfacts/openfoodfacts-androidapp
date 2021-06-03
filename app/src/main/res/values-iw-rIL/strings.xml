@@ -440,7 +440,7 @@
     <string name="dismiss">התעלמות</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <!--Just replace "world" by "fr", "de"… translate the "terms-of-use" with the hyphens -->
-    <string name="terms_url">https://world.openproductsfacts.org/terms-of-use</string>
+    <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
     <string name="faq_url">https://il.openfoodfacts.org/faq</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
@@ -708,6 +708,10 @@
     <string name="txt_info_eaten_products">יתאפשר לך להוסיף מוצרים לרשימה זו על ידי סריקת מוצרים, גרירת הכרטיס למעלה ונגיעה ב־„מוצרים לרכישה”.
         כמו כן, יתאפשר לך להוסיף מוצרים לרשימה זו על ידי חיפוש אחריהם ולחיצה על כפתור ה־+ הפינה השמאלית העליונה של עמוד המוצר.</string>
     <string name="txt_info_your_listed_products">יתאפשר לך להוסיף מוצרים לרשימה זו על ידי חיפוש אחריהם ולחיצה על הכפתור + בפינה השמאלית העליונה של עמוד המוצר.</string>
+    <string name="import_csv_to_list">ייבוא קובץ רשימה בתצורת CSV של Open Food Facts</string>
+    <string name="toast_import_csv_error">שגיאה בייבוא קובץ CSV</string>
+    <string name="toast_import_csv">ה־CSV ייובא בהצלחה!</string>
+    <string name="open_csv">פתיחת CSV</string>
     <string name="txt_no_nutrition_data">למוצר זה אינו פירוט תזונתי על האריזה. אם מצב זה השתנה, ניתן לערוך את המוצר.</string>
     <string name="image_prompt_language">צילום הרכיבים של</string>
     <string name="swipe_delete_tip">ניתן למחוק רשימה על ידי גרירתה לימין.</string>
@@ -743,10 +747,8 @@
     <string name="barcode">ברקוד</string>
     <string name="productAdditivesNone">ללא תוספים</string>
     <string name="error_uploading_photo">העלאת התמונה נכשלה</string>
-    <string name="import_csv_to_list">ייבוא קובץ רשימה בתצורת CSV של Open Food Facts</string>
-    <string name="toast_import_csv_error">שגיאה בייבוא קובץ CSV</string>
-    <string name="toast_import_csv">ה־CSV ייובא בהצלחה!</string>
-    <string name="open_csv">פתיחת CSV</string>
+    <string name="required_for_ecoscore">(נדרש לטובת חישוב Eco-Score)</string>
+    <string name="hint_origin">דוגמאות: ארה״ב, צרפת, ישראל</string>
     <!-- Used for diets AddOn -->
     <string name="history_network_error">לא ניתן לטעון את המוצר. נא לנסות שוב עם חידוש החיבור לאינטרנט.</string>
     <string name="cant_modify_if_refreshing">נא להמתין עד לסיום ההעלאה</string>
@@ -810,10 +812,16 @@
     <string name="follow_system">כמו המערכת</string>
     <string name="day">יום</string>
     <string name="night">לילה</string>
-    <string name="required_for_ecoscore">(נדרש לטובת חישוב Eco-Score)</string>
-    <string name="hint_origin">דוגמאות: ארה״ב, צרפת, ישראל</string>
     <string name="report_email_chooser_title">שליחת דוח בדוא״ל</string>
     <!-- Changelog String -->
     <string name="changelog_translation_help">מעניין אותך לראות את יומן השינויים ב%s?\n מזמינים אותך להצטרף לצוות התרגום!</string>
     <string name="whats_new">מה חדש ב־Open Food Facts?</string>
+    <!-- New onboarding slides -->
+    <string name="eco_score_slide_4_title">Eco-Score</string>
+    <string name="join_the_food_revolution">מזמינים אותך להצטרף למהפכת המזון</string>
+    <string name="slide_1_text_revolution">Scan food, Take photos, Help transform the food system</string>
+    <string name="get_the_nutri_score">מה ה־Nutri-Score</string>
+    <string name="synthesis_of_nutrition_slide_2_text">A simple synthesis of the nutritional quality of your food</string>
+    <string name="avoid_ultra_processed_foods">הימנעות ממזון מעובד מאוד</string>
+    <string name="nova_slide_3_text">Reduce the amount of ultra-processed foods in your diet.</string>
 </resources>

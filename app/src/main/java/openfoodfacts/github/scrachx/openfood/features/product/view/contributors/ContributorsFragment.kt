@@ -5,23 +5,19 @@ import android.text.SpannableStringBuilder
 import android.text.Spanned
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.rxkotlin.addTo
-import io.reactivex.rxkotlin.toObservable
-import io.reactivex.schedulers.Schedulers
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentContributorsBinding
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_STATE
 import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivity.Companion.start
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
-import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductState
 import openfoodfacts.github.scrachx.openfood.models.entities.states.StatesName
+import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
 import openfoodfacts.github.scrachx.openfood.utils.SearchType
@@ -39,6 +35,8 @@ class ContributorsFragment : BaseFragment() {
 
     private var _binding: FragmentContributorsBinding? = null
     private val binding get() = _binding!!
+
+    private val viewModel: ContributorsViewModel by viewModels()
 
     @Inject
     lateinit var productRepository: ProductRepository
@@ -65,11 +63,6 @@ class ContributorsFragment : BaseFragment() {
         refreshView(this.requireProductState())
     }
 
-    override fun onDestroyView() {
-        disp.clear()
-        super.onDestroyView()
-    }
-
     override fun refreshView(productState: ProductState) {
         super.refreshView(productState)
         this.productState = productState
@@ -77,37 +70,35 @@ class ContributorsFragment : BaseFragment() {
 
         if (!product.creator.isNullOrBlank()) {
             val createdDate = getDateTime(product.createdDateTime!!)
-            val creatorTxt = getString(R.string.creator_history, createdDate.first, createdDate.second, product.creator)
             binding.creatorTxt.movementMethod = LinkMovementMethod.getInstance()
-            binding.creatorTxt.text = creatorTxt
+            binding.creatorTxt.text = getString(R.string.creator_history, createdDate.first, createdDate.second, product.creator)
         } else {
             binding.creatorTxt.visibility = View.INVISIBLE
         }
 
         if (!product.lastModifiedBy.isNullOrBlank()) {
             val lastEditDate = getDateTime(product.lastModifiedTime!!)
-            val editorTxt = getString(R.string.last_editor_history, lastEditDate.first, lastEditDate.second, product.lastModifiedBy)
             binding.lastEditorTxt.movementMethod = LinkMovementMethod.getInstance()
-            binding.lastEditorTxt.text = editorTxt
+            binding.lastEditorTxt.text = getString(R.string.last_editor_history, lastEditDate.first, lastEditDate.second, product.lastModifiedBy)
         } else {
             binding.lastEditorTxt.visibility = View.INVISIBLE
         }
 
         if (product.editors.isNotEmpty()) {
-            val otherEditorsTxt = getString(R.string.other_editors)
             binding.otherEditorsTxt.movementMethod = LinkMovementMethod.getInstance()
-            binding.otherEditorsTxt.text = "$otherEditorsTxt "
-            product.editors.forEach { editor ->
-                binding.otherEditorsTxt.append(getContributorsTag(editor).subSequence(0, editor.length))
-                binding.otherEditorsTxt.append(", ")
-            }
-            binding.otherEditorsTxt.append(getContributorsTag(product.editors.last()))
+            binding.otherEditorsTxt.text = SpannableStringBuilder(getString(R.string.other_editors))
+                .append(" ")
+                .append(product.editors.joinToString(", ") { editor ->
+                    getContributorsTag(editor).subSequence(0, editor.length)
+                })
+                .append(getContributorsTag(product.editors.last()))
         } else {
             binding.otherEditorsTxt.visibility = View.INVISIBLE
         }
 
         // function to show states tags
-        showStatesTags(product)
+        viewModel.product.value = product
+        viewModel.states.observe(viewLifecycleOwner) { showStatesTags(it) }
     }
 
     /**
@@ -131,8 +122,7 @@ class ContributorsFragment : BaseFragment() {
         val clickableSpan = object : ClickableSpan() {
             override fun onClick(view: View) = start(requireContext(), SearchType.CONTRIBUTOR, contributor)
         }
-        return SpannableStringBuilder().apply {
-            append(contributor)
+        return SpannableStringBuilder(contributor).apply {
             setSpan(clickableSpan, 0, length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
             append(" ")
         }
@@ -142,75 +132,52 @@ class ContributorsFragment : BaseFragment() {
         val clickableSpan = object : ClickableSpan() {
             override fun onClick(view: View) = start(requireContext(), SearchType.STATE, stateTag)
         }
-        return SpannableStringBuilder().apply {
-            append(stateName)
+        return SpannableStringBuilder(stateName).apply {
             setSpan(clickableSpan, 0, length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         }
     }
 
-    private fun showStatesTags(product: Product) {
-        val tags = product.statesTags
-        if (tags.isEmpty()) return
+    private fun showStatesTags(states: List<StatesName>?) {
+        if (states.isNullOrEmpty()) {
+            binding.statesTagsCv.visibility = View.GONE
+        } else {
+            binding.incompleteStatesTxt.movementMethod = LinkMovementMethod.getInstance()
+            binding.incompleteStatesTxt.text = ""
 
-        val languageCode = localeManager.getLanguage()
-        tags.toObservable()
-                .flatMapSingle { tag: String ->
-                    productRepository.getStatesByTagAndLanguageCode(tag, languageCode)
+            binding.completeStatesTxt.movementMethod = LinkMovementMethod.getInstance()
+            binding.completeStatesTxt.text = ""
+
+            states.forEach { state ->
+                if (isIncompleteState(state.statesTag)) {
+                    binding.incompleteStatesTxt.append(getStatesTag(state.name, state.statesTag.split(":").component2()))
+                    binding.incompleteStatesTxt.append("\n")
+                } else {
+                    binding.completeStatesTxt.append(getStatesTag(state.name, state.statesTag.split(":").component2()))
+                    binding.completeStatesTxt.append("\n")
                 }
-                .toList()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .doOnError { e: Throwable? ->
-                    Log.e(ContributorsFragment::class.simpleName, "loadStatesTags", e)
-                    binding.statesTagsCv.visibility = View.GONE
-                }
-                .subscribe { states: List<StatesName> ->
-                    if (states.isEmpty()) {
-                        binding.statesTagsCv.visibility = View.GONE
-                    } else {
-                        binding.incompleteStatesTxt.movementMethod = LinkMovementMethod.getInstance()
-                        binding.incompleteStatesTxt.text = ""
-
-                        binding.completeStatesTxt.movementMethod = LinkMovementMethod.getInstance()
-                        binding.completeStatesTxt.text = ""
-
-                        states.forEach { state ->
-                            if (isIncompleteState(state.statesTag)) {
-                                binding.incompleteStatesTxt.append(getStatesTag(state.name, state.statesTag.split(":").component2()))
-                                binding.incompleteStatesTxt.append("\n")
-                            } else {
-                                binding.completeStatesTxt.append(getStatesTag(state.name, state.statesTag.split(":").component2()))
-                                binding.completeStatesTxt.append("\n")
-                            }
-                        }
-                    }
-                }.addTo(disp)
+            }
+        }
 
     }
 
-    private fun isIncompleteState(stateTag: String): Boolean {
-
-        return stateTag.contains("to-be-completed") || stateTag.contains("to-be-uploaded") ||
-                stateTag.contains("to-be-checked") || stateTag.contains("to-be-validated") || stateTag.contains("to-be-selected")
-    }
 
     private fun toggleIncompleteStatesVisibility() {
-        if (binding.incompleteStatesTxt.visibility != View.VISIBLE) {
-            binding.incompleteStatesTxt.visibility = View.VISIBLE
-            binding.incompleteStates.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_up_grey_24dp, 0)
-        } else {
+        if (binding.incompleteStatesTxt.visibility == View.VISIBLE) {
             binding.incompleteStatesTxt.visibility = View.GONE
             binding.incompleteStates.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_down_grey_24dp, 0)
+        } else {
+            binding.incompleteStatesTxt.visibility = View.VISIBLE
+            binding.incompleteStates.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_up_grey_24dp, 0)
         }
     }
 
     private fun toggleCompleteStatesVisibility() {
-        if (binding.completeStatesTxt.visibility != View.VISIBLE) {
-            binding.completeStatesTxt.visibility = View.VISIBLE
-            binding.completeStates.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_up_grey_24dp, 0)
-        } else {
+        if (binding.completeStatesTxt.visibility == View.VISIBLE) {
             binding.completeStatesTxt.visibility = View.GONE
             binding.completeStates.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_down_grey_24dp, 0)
+        } else {
+            binding.completeStatesTxt.visibility = View.VISIBLE
+            binding.completeStates.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_up_grey_24dp, 0)
         }
     }
 
@@ -220,5 +187,9 @@ class ContributorsFragment : BaseFragment() {
                 putSerializable(KEY_STATE, productState)
             }
         }
+
+        internal fun isIncompleteState(stateTag: String) = ApiFields.StateTags.INCOMPLETE_TAGS
+            .map { stateTag.contains(it) }
+            .any { it }
     }
 }

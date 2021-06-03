@@ -1,1 +1,1 @@
-La base de datos de productos abiertos
+Escanea los alimentos para obtener ingredientes, aditivos y datos nutricionales

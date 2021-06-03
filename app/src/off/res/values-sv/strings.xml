@@ -11,6 +11,7 @@
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
     <string name="website_contributor">https://world.openfoodfacts.org/contributor/</string>
     <string name="txtHome">Open Food Facts är en öppen databas över livsmedelsprodukter med ingredienser, allergener, näringsfakta och alla godbitar av information som vi hittar på produktetiketter.</string>
+    <!-- Old onboarding slides -->
     <string name="slide_1_title">Bidra till insyn i livsmedel</string>
     <string name="slide_1_desc">Skanna produkter, ta en bild, skapa livsmedelstransparens</string>
     <string name="slide_2_title">Få fakta</string>
@@ -19,16 +20,23 @@
     <string name="slide_3_desc">En syntetisk bild av dina favoritprodukters näringsegenskaper</string>
     <string name="slide_4_title">Fungerar offline</string>
     <string name="slide_4_desc">Du kan lägga till nya produkter även om du inte har en internetanslutning just nu</string>
-    <string name="txtDialogsContent">Den skannade produkten finns inte i Open Food Facts. Vänligen lägg till den.</string>
+    <!-- New onboarding-->
+    <string name="join_the_food_revolution">Join the food revolution</string>
+    <string name="slide_1_text_revolution">Scan food, Take photos, Help transform the food system</string>
+    <string name="get_the_nutri_score">Få Nutri-Score</string>
+    <string name="synthesis_of_nutrition_slide_2_text">A simple synthesis of the nutritional quality of your food</string>
+    <string name="avoid_ultra_processed_foods">Avoid ultra-processed foods</string>
+    <string name="nova_slide_3_text">Reduce the amount of ultra-processed foods in your diet.</string>
+    <string name="eco_score_slide_4_title">Eco-Score</string>
+    <!-- Scan card -->
+    <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
     <string name="txtDialogsContentPowerMode">Den produkt du skannat finns redan i Open Food Facts.</string>
-    <string name="msg_share">Titta på denna produkt på Open Food Facts:</string>
+    <string name="msg_share">Titta på denna produkt på Open Food Facts :</string>
     <string name="not_support_books">Böcker stöds inte för tillfället av Open Food Facts</string>
-    <string name="txt_broaden_search">- att bredda din sökning \n- att skanna och lägga till den i Open Food Facts</string>
+    <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
     <string name="Donation">Klicka här för att donera till Open Food Facts</string>
-    <string name="pref_help_translate_title">Hjälp översätta Open Food Facts</string>
-    <string name="pref_help_translate_summary">Ta Open Food Facts-databasen till ditt språk - ingen teknisk kunskap krävs</string>
     <string name="text_offline_info_dialog">Skanna produkterna även när du är offline för att lägga till dem i Open Food Facts senare. De skannade produkterna visas här och du kommer att kunna skicka dem med hjälp av knappen nedan.</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
     <!-- OFF tagline in different languages -->
     <string name="tagline">den öppna databasen för livsmedelsprodukter</string>
     <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>

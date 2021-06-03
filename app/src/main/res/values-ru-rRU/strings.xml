@@ -22,13 +22,13 @@
         <item quantity="other">You have %d offline products waiting to be contributed to Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
-        <item quantity="one">%d second ago</item>
+        <item quantity="one">%d секунд назад</item>
         <item quantity="few">%d seconds ago</item>
         <item quantity="many">%d seconds ago</item>
         <item quantity="other">%d seconds ago</item>
     </plurals>
     <plurals name="minutes">
-        <item quantity="one">%d minute ago</item>
+        <item quantity="one">%d минут назад</item>
         <item quantity="few">%d minutes ago</item>
         <item quantity="many">%d minutes ago</item>
         <item quantity="other">%d minutes ago</item>
@@ -708,6 +708,10 @@
     <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
         You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
     <string name="txt_info_your_listed_products">Вы сможете добавлять товары в этот список, выполнив их поиск и кликнув кнопку \"+\" в правом верхнем углу страницы товара.</string>
+    <string name="import_csv_to_list">Импорт CSV-файла со списком Open Food Facts (БД со списком продуктов питания со всего мира)</string>
+    <string name="toast_import_csv_error">Ошибка при импорте CSV файла</string>
+    <string name="toast_import_csv">CSV успешно импортирован!</string>
+    <string name="open_csv">Открыть CSV</string>
     <string name="txt_no_nutrition_data">Этот продукт не имеет никакой информации о питании на упаковке. Если это изменилось, вы можете отредактировать продукт.</string>
     <string name="image_prompt_language">Сделайте фото состава в</string>
     <string name="swipe_delete_tip">Вы можете удалить список, проведя по нему влево.</string>
@@ -743,10 +747,8 @@
     <string name="barcode">Штрих-код</string>
     <string name="productAdditivesNone">Без добавок</string>
     <string name="error_uploading_photo">Произошла ошибка во время загрузки нового фото</string>
-    <string name="import_csv_to_list">Импорт CSV-файла со списком Open Food Facts (БД со списком продуктов питания со всего мира)</string>
-    <string name="toast_import_csv_error">Ошибка при импорте CSV файла</string>
-    <string name="toast_import_csv">CSV успешно импортирован!</string>
-    <string name="open_csv">Открыть CSV</string>
+    <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
+    <string name="hint_origin">Examples: USA, France, Italy</string>
     <!-- Used for diets AddOn -->
     <string name="history_network_error">Продукт не может быть загружен. Пожалуйста, попробуйте снова, когда вы вернетесь в онлайн.</string>
     <string name="cant_modify_if_refreshing">Пожалуйста, дождитесь окончания загрузки</string>
@@ -810,10 +812,16 @@
     <string name="follow_system">Follow system</string>
     <string name="day">Day</string>
     <string name="night">Night</string>
-    <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
-    <string name="hint_origin">Examples: USA, France, Italy</string>
     <string name="report_email_chooser_title">Отправить отчет по электронной почте</string>
     <!-- Changelog String -->
     <string name="changelog_translation_help">Want to see this changelog in %s?\nJoin the translation team!</string>
     <string name="whats_new">What\'s new with Open Food Facts?</string>
+    <!-- New onboarding slides -->
+    <string name="eco_score_slide_4_title">Eco-Score</string>
+    <string name="join_the_food_revolution">Join the food revolution</string>
+    <string name="slide_1_text_revolution">Scan food, Take photos, Help transform the food system</string>
+    <string name="get_the_nutri_score">Получить Nutriscore</string>
+    <string name="synthesis_of_nutrition_slide_2_text">A simple synthesis of the nutritional quality of your food</string>
+    <string name="avoid_ultra_processed_foods">Avoid ultra-processed foods</string>
+    <string name="nova_slide_3_text">Reduce the amount of ultra-processed foods in your diet.</string>
 </resources>
