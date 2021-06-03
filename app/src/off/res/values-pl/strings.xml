@@ -11,6 +11,7 @@
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
     <string name="website_contributor">https://world-pl.openfoodfacts.org/contributor/</string>
     <string name="txtHome">Open Food Facts jest otwartą bazą danych o produktach spożywczych, ze składnikami, alergenami, wartościami odżywczymi i wszystkimi informacjami które możemy znaleźć na etykietach produktów.</string>
+    <!-- Old onboarding slides -->
     <string name="slide_1_title">Przyczyń się do przejrzystości Żywność</string>
     <string name="slide_1_desc">Skanuj produkty, fotografuj je, niech się dzieje transparentność jedzenia</string>
     <string name="slide_2_title">Poznaj fakty</string>
@@ -19,6 +20,15 @@
     <string name="slide_3_desc">Wirtualny podgląd właściwości odżywczych twoich ulubionych produktów</string>
     <string name="slide_4_title">Działa offline</string>
     <string name="slide_4_desc">Możesz dodać nowe produkty, nawet nie mając teraz połączenia</string>
+    <!-- New onboarding-->
+    <string name="join_the_food_revolution">Dołącz do rewolucji żywieniowej</string>
+    <string name="slide_1_text_revolution">Skanuj jedzenie, rób zdjęcia, pomóż przekształcić system żywnościowy</string>
+    <string name="get_the_nutri_score">Poznaj skalę Nutri_Score</string>
+    <string name="synthesis_of_nutrition_slide_2_text">Prosta synteza jakości odżywczej Twojego jedzenia</string>
+    <string name="avoid_ultra_processed_foods">Unikaj ultra przetworzonej żywności</string>
+    <string name="nova_slide_3_text">Zmniejsz ilość ultra przetworzonej żywności w swojej diecie.</string>
+    <string name="eco_score_slide_4_title">Eco-Score</string>
+    <!-- Scan card -->
     <string name="txtDialogsContent">Zeskanowany produkt jeszcze nie figuruje w Open Food Facts. Dodaj go.</string>
     <string name="txtDialogsContentPowerMode">Zeskanowany produkt już widnieje w Open Food Facts.</string>
     <string name="msg_share">Zobacz produkt na Open Food Facts:</string>

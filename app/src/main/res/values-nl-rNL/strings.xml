@@ -696,6 +696,10 @@
     <string name="txt_info_eaten_products">U kan producten aan deze lijst toevoegen door producten te scannen, de productkaart omhoog te slepen en op \"Te kopen producten\" te tikken.
         U kan ook producten aan deze lijst toevoegen door ze te zoeken en op de knop + rechtsboven op de productpagina te klikken.</string>
     <string name="txt_info_your_listed_products">Je kunt producten aan deze lijst toevoegen door ze te zoeken en op de knop + te klikken in de rechterbovenhoek van de productpagina.</string>
+    <string name="import_csv_to_list">Importeer een CSV-bestand van de Open Food Facts-lijst</string>
+    <string name="toast_import_csv_error">Fout bij het importeren van CSV-bestand</string>
+    <string name="toast_import_csv">CSV succesvol geïmporteerd!</string>
+    <string name="open_csv">Open CSV</string>
     <string name="txt_no_nutrition_data">Dit product biedt geen voedingsinformatie op de verpakking. Als dit veranderd is, kunt je het product bewerken.</string>
     <string name="image_prompt_language">Maak een foto van de ingrediëntenlijst</string>
     <string name="swipe_delete_tip">Je kunt een lijst verwijderen door hem naar links te vegen.</string>
@@ -731,10 +735,8 @@
     <string name="barcode">Streepjescode</string>
     <string name="productAdditivesNone">Geen additieven</string>
     <string name="error_uploading_photo">Er ging iets mis tijdens het uploaden van een nieuwe foto</string>
-    <string name="import_csv_to_list">Importeer een CSV-bestand van de Open Food Facts-lijst</string>
-    <string name="toast_import_csv_error">Fout bij het importeren van CSV-bestand</string>
-    <string name="toast_import_csv">CSV succesvol geïmporteerd!</string>
-    <string name="open_csv">Open CSV</string>
+    <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
+    <string name="hint_origin">Examples: USA, France, Italy</string>
     <!-- Used for diets AddOn -->
     <string name="history_network_error">Het product kan niet worden geladen. Probeer het opnieuw wanneer je weer online bent.</string>
     <string name="cant_modify_if_refreshing">Wacht tot het uploaden is voltooid</string>
@@ -798,12 +800,11 @@
     <string name="follow_system">Follow system</string>
     <string name="day">Day</string>
     <string name="night">Night</string>
-    <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
-    <string name="hint_origin">Examples: USA, France, Italy</string>
     <string name="report_email_chooser_title">Send a report email</string>
     <!-- Changelog String -->
     <string name="changelog_translation_help">Want to see this changelog in %s?\nJoin the translation team!</string>
     <string name="whats_new">What\'s new with Open Food Facts?</string>
+    <!-- New onboarding slides -->
     <string name="eco_score_slide_4_title">Eco-score</string>
     <string name="join_the_food_revolution">Join the food revolution</string>
     <string name="slide_1_text_revolution">Scan food, Take photos, Help transform the food system</string>

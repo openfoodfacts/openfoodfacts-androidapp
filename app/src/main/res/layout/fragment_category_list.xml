@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="openfoodfacts.github.scrachx.openfood.features.viewmodel.category.CategoryFragmentViewModel" />
+            type="openfoodfacts.github.scrachx.openfood.features.categories.fragment.CategoryFragmentViewModel" />
     </data>
 
     <FrameLayout

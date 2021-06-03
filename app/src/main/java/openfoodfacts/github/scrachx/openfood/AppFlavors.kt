@@ -20,6 +20,8 @@ object AppFlavors {
     const val OPFF = "opff"
     const val OPF = "opf"
     const val OBF = "obf"
+
     @JvmStatic
     fun isFlavors(vararg flavors: String) = flavors.contains(BuildConfig.FLAVOR_versionCode)
+
 }

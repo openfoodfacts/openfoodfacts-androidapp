@@ -13,7 +13,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentCategoryListBinding
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
-import openfoodfacts.github.scrachx.openfood.features.viewmodel.category.CategoryFragmentViewModel
 import openfoodfacts.github.scrachx.openfood.utils.SearchSuggestionProvider
 import java.util.*
 
@@ -90,7 +89,7 @@ class CategoryListFragment : BaseFragment() {
             }
 
             override fun onQueryTextChange(newText: String): Boolean {
-                viewModel.searchCategories(newText.toLowerCase(Locale.getDefault()))
+                viewModel.searchCategories(newText.lowercase(Locale.getDefault()))
                 return false
             }
         })

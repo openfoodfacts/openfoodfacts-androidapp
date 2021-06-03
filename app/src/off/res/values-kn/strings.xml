@@ -11,6 +11,7 @@
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
     <string name="website_contributor">https://world.openfoodfacts.org/contributor/</string>
     <string name="txtHome">ಓಪನ್ ಬ್ಯೂಟಿ ಫ್ಯಾಕ್ಟ್ಸ್ ಎನ್ನುವುದು ಪದಾರ್ಥಗಳು, ಅಲರ್ಜಿನ್ಗಳು, ಸೂಚಕಗಳು ಮತ್ತು ಉತ್ಪನ್ನದ ಲೇಬಲ್ಗಳಲ್ಲಿ ನಾವು ಪಡೆಯಬಹುದಾದ ಮಾಹಿತಿಯ ಎಲ್ಲಾ ಸುಳಿವುಗಳೊಂದಿಗೆ ಕಾಸ್ಮೆಟಿಕ್ ಉತ್ಪನ್ನಗಳ ಡೇಟಾಬೇಸ್ ಆಗಿದೆ.</string>
+    <!-- Old onboarding slides -->
     <string name="slide_1_title">ಆಹಾರ ಪಾರದರ್ಶಕತೆಗೆ ಕೊಡುಗೆ ನೀಡಿ</string>
     <string name="slide_1_desc">ಸ್ಕ್ಯಾನ್ ಉತ್ಪನ್ನಗಳು, ಅವುಗಳನ್ನು ಚಿತ್ರದಲ್ಲಿ ತೆಗೆದುಕೊಳ್ಳಿ, ಆಹಾರದ ಪಾರದರ್ಶಕತೆ ಸಂಭವಿಸಿ</string>
     <string name="slide_2_title">ಸತ್ಯಗಳನ್ನು ಪಡೆಯಿರಿ</string>
@@ -19,6 +20,15 @@
     <string name="slide_3_desc">ನಿಮ್ಮ ನೆಚ್ಚಿನ ಆಹಾರ ಉತ್ಪನ್ನಗಳ ಪೌಷ್ಟಿಕಾಂಶ ಗುಣಲಕ್ಷಣಗಳ ಸಂಶ್ಲೇಷಿತ ನೋಟ</string>
     <string name="slide_4_title">ಆಫ್ಲೈನ್ನಲ್ಲಿ ಕಾರ್ಯನಿರ್ವಹಿಸುತ್ತದೆ</string>
     <string name="slide_4_desc">ನೀವು ಇದೀಗ ಇಂಟರ್ನೆಟ್ ಸಂಪರ್ಕವನ್ನು ಹೊಂದಿಲ್ಲದಿದ್ದರೂ ಸಹ ನೀವು ಹೊಸ ಉತ್ಪನ್ನಗಳನ್ನು ಸೇರಿಸಬಹುದು</string>
+    <!-- New onboarding-->
+    <string name="join_the_food_revolution">Join the food revolution</string>
+    <string name="slide_1_text_revolution">Scan food, Take photos, Help transform the food system</string>
+    <string name="get_the_nutri_score">ನ್ಯೂಟ್ರಿಕೋರ್ ಪಡೆಯಿರಿ</string>
+    <string name="synthesis_of_nutrition_slide_2_text">A simple synthesis of the nutritional quality of your food</string>
+    <string name="avoid_ultra_processed_foods">Avoid ultra-processed foods</string>
+    <string name="nova_slide_3_text">Reduce the amount of ultra-processed foods in your diet.</string>
+    <string name="eco_score_slide_4_title">Eco-Score</string>
+    <!-- Scan card -->
     <string name="txtDialogsContent">ನೀವು ಸ್ಕ್ಯಾನ್ ಮಾಡಿದ ಉತ್ಪನ್ನವು ಓಪನ್ ಪ್ರಾಡಕ್ಟ್ಸ್ ಫ್ಯಾಕ್ಟ್ಸ್ನಲ್ಲಿ ಇನ್ನೂ ಅಸ್ತಿತ್ವದಲ್ಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಅದನ್ನು ಸೇರಿಸಿ.</string>
     <string name="txtDialogsContentPowerMode">ನೀವು ಸ್ಕ್ಯಾನ್ ಮಾಡಿದ ಉತ್ಪನ್ನವು ಈಗಾಗಲೇ ಓಪನ್ ಫುಡ್ ಫ್ಯಾಕ್ಟ್ಸ್ನಲ್ಲಿ ಅಸ್ತಿತ್ವದಲ್ಲಿದೆ.</string>
     <string name="msg_share">ಓಪನ್ ಉತ್ಪನ್ನಗಳು ಫ್ಯಾಕ್ಟ್ಸ್ನಲ್ಲಿ ಈ ಉತ್ಪನ್ನವನ್ನು ನೋಡಿ:</string>

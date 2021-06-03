@@ -11,6 +11,7 @@
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
     <string name="website_contributor">https://world.openfoodfacts.org/contributor/</string>
     <string name="txtHome">Open Food Facts is een open database met voedingsproducten.</string>
+    <!-- Old onboarding slides -->
     <string name="slide_1_title">Draag bij aan transparantie in de voedselketen</string>
     <string name="slide_1_desc">Scan producten, neem foto\'s, creëer transparantie in de voedselketen</string>
     <string name="slide_2_title">Ken de feiten</string>
@@ -19,6 +20,15 @@
     <string name="slide_3_desc">Een synthetisch beeld van de nutritionele eigenschappen van uw favoriete voedingsproducten</string>
     <string name="slide_4_title">Werkt offline</string>
     <string name="slide_4_desc">Je kan nieuwe producten toevoegen, zelfs als je nu geen internetverbinding hebt</string>
+    <!-- New onboarding-->
+    <string name="join_the_food_revolution">Join the food revolution</string>
+    <string name="slide_1_text_revolution">Scan food, Take photos, Help transform the food system</string>
+    <string name="get_the_nutri_score">Krijg de Nutriscore</string>
+    <string name="synthesis_of_nutrition_slide_2_text">A simple synthesis of the nutritional quality of your food</string>
+    <string name="avoid_ultra_processed_foods">Avoid ultra-processed foods</string>
+    <string name="nova_slide_3_text">Reduce the amount of ultra-processed foods in your diet.</string>
+    <string name="eco_score_slide_4_title">Eco-score</string>
+    <!-- Scan card -->
     <string name="txtDialogsContent">Het gescande product bestaat nog niet in Open Products Facts. Voeg deze toe.</string>
     <string name="txtDialogsContentPowerMode">Het gescannede product bestaat al in Open Food Facts</string>
     <string name="msg_share">Bekijk dit product op Open Products Facts:</string>

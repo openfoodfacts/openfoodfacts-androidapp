@@ -49,7 +49,6 @@ import androidx.work.*
 import com.afollestad.materialdialogs.MaterialDialog
 import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.R
-import openfoodfacts.github.scrachx.openfood.features.LoginActivity
 import openfoodfacts.github.scrachx.openfood.features.scan.ContinuousScanActivity
 import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivity.Companion.start
 import openfoodfacts.github.scrachx.openfood.jobs.ImagesUploaderWorker
@@ -243,10 +242,6 @@ fun buildSignInDialog(activity: Activity): MaterialDialog.Builder = MaterialDial
         .positiveText(R.string.txtSignIn)
         .negativeText(R.string.dialog_cancel)
 
-private fun startActivityLoginWithRequestCode(activity: Activity, requestCode: Int) {
-    activity.startActivityForResult(Intent(activity, LoginActivity::class.java), requestCode)
-}
-
 
 /**
  * @param type Type of call (Search or Scan)
@@ -331,19 +326,6 @@ private fun closeStyles(text: Spannable, tags: Array<out StyleSpan>) {
 fun getModifierNonDefault(modifier: String) = if (modifier != DEFAULT_MODIFIER) modifier else ""
 
 private val LOG_TAG = Utils::class.simpleName!!
-
-/**
- * @return Returns the version name of the app
- */
-fun Context.getVersionName(): String = try {
-    packageManager.getPackageInfo(packageName, 0).versionName
-} catch (e: PackageManager.NameNotFoundException) {
-    Log.e(LOG_TAG, "getVersionName", e)
-    "(version unknown)"
-} catch (e: NullPointerException) {
-    Log.e(LOG_TAG, "getVersionName", e)
-    "(version unknown)"
-}
 
 fun <T : View?> ViewGroup.getViewsByType(typeClass: Class<T>): List<T> {
     val result = mutableListOf<T>()
