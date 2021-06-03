@@ -167,7 +167,7 @@ dependencies {
     implementation("com.hootsuite.android:nachos:1.2.0")
 
     // Crash analytics
-    implementation("io.sentry:sentry-android:4.3.0")
+    implementation("io.sentry:sentry-android:5.0.0")
     implementation("org.matomo.sdk:tracker:4.1.2")
 
     // ShowCaseView dependency
