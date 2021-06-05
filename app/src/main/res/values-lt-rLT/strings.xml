@@ -708,6 +708,10 @@
     <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
         You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
     <string name="txt_info_your_listed_products">Produktus prie šio sąrašo galėsite pridėti ieškodami jų ir spustelėdami mygtuką + viršutiniame dešiniajame produkto puslapio kampe.</string>
+    <string name="import_csv_to_list">Importuokite Open Food Facts sąrašo CSV failą</string>
+    <string name="toast_import_csv_error">Importuojant CSV failą įvyko klaida</string>
+    <string name="toast_import_csv">CSV sėkmingai importuotas!</string>
+    <string name="open_csv">Atidarykite CSV</string>
     <string name="txt_no_nutrition_data">Šio produkto pakuotėje nėra jokios informacijos apie maistingumą. Jei tai pasikeitė, galite redaguoti produktą.</string>
     <string name="image_prompt_language">Nufotografuokite ingredientus</string>
     <string name="swipe_delete_tip">Sąrašą galite ištrinti perbraukdami kairėn.</string>
@@ -743,10 +747,8 @@
     <string name="barcode">Barkodas</string>
     <string name="productAdditivesNone">Be priedų</string>
     <string name="error_uploading_photo">Kažkas nepavyko įkeliant naują nuotrauką</string>
-    <string name="import_csv_to_list">Importuokite Open Food Facts sąrašo CSV failą</string>
-    <string name="toast_import_csv_error">Importuojant CSV failą įvyko klaida</string>
-    <string name="toast_import_csv">CSV sėkmingai importuotas!</string>
-    <string name="open_csv">Atidarykite CSV</string>
+    <string name="required_for_ecoscore">(Reikalingas norint apskaičiuoti Eco-Score)</string>
+    <string name="hint_origin">Pavyzdžiai: JAV, Prancūzija, Italija</string>
     <!-- Used for diets AddOn -->
     <string name="history_network_error">Nepavyko įkelti produkto. Bandykite dar kartą, kai būsite prisijungę.</string>
     <string name="cant_modify_if_refreshing">Palaukite, kol baigsis įkėlimas</string>
@@ -810,12 +812,11 @@
     <string name="follow_system">Sekite sistemą</string>
     <string name="day">Diena</string>
     <string name="night">Naktis</string>
-    <string name="required_for_ecoscore">(Reikalingas norint apskaičiuoti Eco-Score)</string>
-    <string name="hint_origin">Pavyzdžiai: JAV, Prancūzija, Italija</string>
     <string name="report_email_chooser_title">Siųsti ataskaitos el. Laišką</string>
     <!-- Changelog String -->
     <string name="changelog_translation_help">Norite pamatyti šį keitimo žurnalą %s?\nPrisijunkite prie vertimo komandos!</string>
     <string name="whats_new">Kas naujo su „Open Food Facts“?</string>
+    <!-- New onboarding slides -->
     <string name="eco_score_slide_4_title">Eco-Score</string>
     <string name="join_the_food_revolution">Join the food revolution</string>
     <string name="slide_1_text_revolution">Scan food, Take photos, Help transform the food system</string>
