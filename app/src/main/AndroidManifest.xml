@@ -133,7 +133,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".features.LoginActivity"
+            android:name=".features.login.LoginActivity"
             android:parentActivityName=".features.MainActivity"
             android:screenOrientation="portrait">
             <meta-data

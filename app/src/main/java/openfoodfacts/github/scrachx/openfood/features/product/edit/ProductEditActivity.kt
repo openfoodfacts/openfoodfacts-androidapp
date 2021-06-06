@@ -26,6 +26,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContract
+import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.widget.ViewPager2
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.afollestad.materialdialogs.MaterialDialog
@@ -35,6 +36,10 @@ import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.rx2.await
+import kotlinx.coroutines.withContext
 import okhttp3.RequestBody
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OBF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
@@ -398,65 +403,75 @@ class ProductEditActivity : BaseActivity() {
 
         // Attribute the upload to the connected user
         addLoginPasswordInfo(imgMap)
-        savePhoto(imgMap, image, position, ocr)
+
+        lifecycleScope.launch { savePhoto(imgMap, image, position, ocr) }
+
     }
 
-    private fun savePhoto(imgMap: Map<String, RequestBody?>, image: ProductImage, position: Int, performOCR: Boolean) {
-        productsApi.saveImage(imgMap)
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnSubscribe { showImageProgress(position) }
-            .doOnError {
-                // A network error happened
-                if (it is IOException) {
-                    hideImageProgress(position, false, getString(R.string.no_internet_connection))
-                    Log.e(LOGGER_TAG, it.message!!)
-                    if (image.imageField === ProductImageField.OTHER) {
-                        daoSession.toUploadProductDao.insertOrReplace(
-                            ToUploadProduct(
-                                image.barcode,
-                                image.filePath,
-                                image.imageField.toString()
-                            )
+    private suspend fun savePhoto(
+        imgMap: Map<String, RequestBody?>,
+        image: ProductImage,
+        position: Int,
+        performOCR: Boolean
+    ) = withContext(Dispatchers.IO) {
+        showImageProgress(position)
+        val jsonNode = try {
+            productsApi.saveImage(imgMap).await()
+        } catch (err: Throwable) {
+            // A network error happened
+            if (err is IOException) {
+
+                hideImageProgress(position, getString(R.string.no_internet_connection))
+
+                Log.e(LOGGER_TAG, err.message!!)
+                if (image.imageField === ProductImageField.OTHER) {
+                    daoSession.toUploadProductDao.insertOrReplace(
+                        ToUploadProduct(
+                            image.barcode,
+                            image.filePath,
+                            image.imageField.toString()
                         )
-                    }
-                } else {
-                    hideImageProgress(position, true, it.message ?: "Empty error.")
-                    Log.i(this::class.simpleName, it.message ?: "Empty error.")
-                    Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
+                    )
+                }
+            } else {
+                Log.i(this::class.simpleName, err.message ?: "Empty error.")
+                withContext(Dispatchers.Main) {
+                    hideImageProgress(position, err.message ?: "Empty error.", true)
+                    Toast.makeText(this@ProductEditActivity, err.message, Toast.LENGTH_SHORT).show()
                 }
             }
-            .subscribe { jsonNode ->
-                val status = jsonNode["status"].asText()
-                if (status == "status not ok") {
-                    val error = jsonNode["error"].asText()
-                    val alreadySent = error == "This picture has already been sent."
-                    if (alreadySent && performOCR) {
-                        hideImageProgress(position, false, getString(R.string.image_uploaded_successfully))
-                        performOCR(image.barcode, "ingredients_${getProductLanguageForEdition()}")
-                    } else {
-                        hideImageProgress(position, true, error)
-                    }
-                } else {
-                    when {
-                        image.imageField === ProductImageField.FRONT -> {
-                            imageFrontUploaded = true
-                        }
-                        image.imageField === ProductImageField.INGREDIENTS -> {
-                            imageIngredientsUploaded = true
-                        }
-                        image.imageField === ProductImageField.NUTRITION -> {
-                            imageNutritionFactsUploaded = true
-                        }
-                    }
-                    hideImageProgress(position, false, getString(R.string.image_uploaded_successfully))
-                    val imageField = jsonNode["imagefield"].asText()
-                    val imgId = jsonNode["image"]["imgid"].asText()
-                    if (position != 3 && position != 4) {
-                        // Not OTHER image
-                        setPhoto(image, imageField, imgId, performOCR)
-                    }
+            return@withContext
+        }
+        val status = jsonNode["status"].asText()
+        if (status == "status not ok") {
+            val error = jsonNode["error"].asText()
+            val alreadySent = error == "This picture has already been sent."
+            if (alreadySent && performOCR) {
+                hideImageProgress(position, getString(R.string.image_uploaded_successfully))
+                performOCR(image.barcode, "ingredients_${getProductLanguageForEdition()}")
+            } else {
+                hideImageProgress(position, error, true)
+            }
+        } else {
+            when {
+                image.imageField === ProductImageField.FRONT -> {
+                    imageFrontUploaded = true
                 }
-            }.addTo(disp)
+                image.imageField === ProductImageField.INGREDIENTS -> {
+                    imageIngredientsUploaded = true
+                }
+                image.imageField === ProductImageField.NUTRITION -> {
+                    imageNutritionFactsUploaded = true
+                }
+            }
+            hideImageProgress(position, getString(R.string.image_uploaded_successfully))
+            val imageField = jsonNode["imagefield"].asText()
+            val imgId = jsonNode["image"]["imgid"].asText()
+            if (position != 3 && position != 4) {
+                // Not OTHER image
+                setPhoto(image, imageField, imgId, performOCR)
+            }
+        }
     }
 
     private fun setPhoto(image: ProductImage, imageField: String, imgId: String, performOCR: Boolean) {
@@ -514,17 +529,21 @@ class ProductEditActivity : BaseActivity() {
             .addTo(disp)
     }
 
-    private fun hideImageProgress(position: Int, errorUploading: Boolean, message: String) {
+    private suspend fun hideImageProgress(
+        position: Int,
+        msg: String,
+        error: Boolean = false
+    ) = withContext(Dispatchers.Main) {
         when (position) {
-            0 -> editOverviewFragment.hideImageProgress(errorUploading, message)
-            1 -> ingredientsFragment.hideImageProgress(errorUploading, message)
-            2 -> nutritionFactsFragment.hideImageProgress(errorUploading, message)
-            3 -> editOverviewFragment.hideOtherImageProgress(errorUploading, message)
-            4 -> addProductPhotosFragment.hideImageProgress(errorUploading, message)
+            0 -> editOverviewFragment.hideImageProgress(error, msg)
+            1 -> ingredientsFragment.hideImageProgress(error, msg)
+            2 -> nutritionFactsFragment.hideImageProgress(error, msg)
+            3 -> editOverviewFragment.hideOtherImageProgress(error, msg)
+            4 -> addProductPhotosFragment.hideImageProgress(error, msg)
         }
     }
 
-    private fun showImageProgress(position: Int) {
+    private suspend fun showImageProgress(position: Int) = withContext(Dispatchers.Main) {
         when (position) {
             0 -> editOverviewFragment.showImageProgress()
             1 -> ingredientsFragment.showImageProgress()

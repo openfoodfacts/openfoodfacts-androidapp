@@ -81,11 +81,11 @@ interface ProductsAPI {
 
     @FormUrlEncoded
     @POST("/cgi/session.pl")
-    fun signIn(
-            @Field(ApiFields.Keys.USER_ID) login: String?,
-            @Field(ApiFields.Keys.USER_PASS) password: String?,
-            @Field(".submit") submit: String?
-    ): Single<Response<ResponseBody>>
+    suspend fun signIn(
+        @Field(ApiFields.Keys.USER_ID) login: String?,
+        @Field(ApiFields.Keys.USER_PASS) password: String?,
+        @Field(".submit") submit: String?
+    ): Response<ResponseBody>
 
     @GET("$API_P/product/{barcode}.json?fields=ingredients")
     fun getIngredientsByBarcode(@Path("barcode") barcode: String?): Single<JsonNode>
