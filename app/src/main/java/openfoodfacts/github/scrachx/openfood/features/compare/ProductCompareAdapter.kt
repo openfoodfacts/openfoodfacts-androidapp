@@ -228,9 +228,7 @@ class ProductCompareAdapter(
                             .flatMap { categoryName ->
                                 if (categoryName.isNull) {
                                     productRepository.getAdditiveByTagAndDefaultLanguageCode(tag)
-                                } else {
-                                    Single.just(categoryName)
-                                }
+                                } else Single.just(categoryName)
                             }
                 }
                 .filter { it.isNotNull }

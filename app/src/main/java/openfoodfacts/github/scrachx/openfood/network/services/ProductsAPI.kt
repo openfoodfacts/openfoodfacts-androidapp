@@ -349,9 +349,9 @@ interface ProductsAPI {
      */
     @GET("/cgi/product_image_crop.pl")
     fun editImages(
-            @Query(ApiFields.Keys.BARCODE) code: String,
-            @QueryMap fields: Map<String, @JvmSuppressWildcards String?>?
-    ): Single<String>
+        @Query(ApiFields.Keys.BARCODE) code: String,
+        @QueryMap fields: Map<String, @JvmSuppressWildcards String?>?
+    ): Single<ObjectNode>
 
     /**
      * This method is to crop images server side

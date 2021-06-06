@@ -20,12 +20,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import androidx.lifecycle.switchMap
 import dagger.hilt.android.lifecycle.HiltViewModel
-import io.reactivex.Single
-import io.reactivex.disposables.CompositeDisposable
 import kotlinx.coroutines.rx2.await
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveName
-import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenName
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
 import javax.inject.Inject
@@ -38,24 +35,21 @@ class ProductIngredientsViewModel @Inject constructor(
     private val productRepository: ProductRepository,
     private val localeManager: LocaleManager
 ) : ViewModel() {
-    private val disp = CompositeDisposable()
 
     val product = MutableLiveData<Product>()
 
     val additives = product.switchMap { product ->
-        liveData {
+        liveData<List<AdditiveName>> {
             val additivesTags = product.additivesTags
             if (additivesTags.isEmpty()) {
-                emit(emptyList<AdditiveName>())
+                emit(emptyList())
             } else {
                 val languageCode = localeManager.getLanguage()
 
                 additivesTags.map { tag ->
-                    productRepository.getAdditiveByTagAndLanguageCode(tag, languageCode).flatMap { categoryName ->
-                        if (categoryName.isNull) {
-                            productRepository.getAdditiveByTagAndDefaultLanguageCode(tag)
-                        } else Single.just(categoryName)
-                    }.await()
+                    productRepository.getAdditiveByTagAndLanguageCode(tag, languageCode).await()
+                        .takeUnless { it.isNull }
+                        ?: productRepository.getAdditiveByTagAndDefaultLanguageCode(tag).await()
                 }.filter { it.isNotNull }.let { emit(it) }
             }
         }
@@ -65,17 +59,16 @@ class ProductIngredientsViewModel @Inject constructor(
         liveData {
             val allergenTags = product.allergensTags
             if (allergenTags.isEmpty()) {
-                emit(emptyList<AllergenName>())
-            } else {
-                val languageCode = localeManager.getLanguage()
-                allergenTags.map { tag ->
-                    productRepository.getAllergenByTagAndLanguageCode(tag, languageCode).flatMap { allergenName: AllergenName ->
-                        if (allergenName.isNull) {
-                            productRepository.getAllergenByTagAndDefaultLanguageCode(tag)
-                        } else Single.just(allergenName)
-                    }.await()
-                }.let { emit(it) }
+                emit(emptyList())
+                return@liveData
             }
+
+            val languageCode = localeManager.getLanguage()
+            allergenTags.map { tag ->
+                productRepository.getAllergenByTagAndLanguageCode(tag, languageCode)
+                    .takeUnless { it.isNull }
+                    ?: productRepository.getAllergenByTagAndDefaultLanguageCode(tag)
+            }.filter { it.isNotNull }.let { emit(it) }
         }
     }
 

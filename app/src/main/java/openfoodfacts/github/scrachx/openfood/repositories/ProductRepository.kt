@@ -24,19 +24,33 @@ import io.reactivex.Completable
 import io.reactivex.Maybe
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import okhttp3.Credentials
-import openfoodfacts.github.scrachx.openfood.models.*
-import openfoodfacts.github.scrachx.openfood.models.entities.additive.*
-import openfoodfacts.github.scrachx.openfood.models.entities.allergen.*
+import openfoodfacts.github.scrachx.openfood.models.AnnotationAnswer
+import openfoodfacts.github.scrachx.openfood.models.AnnotationResponse
+import openfoodfacts.github.scrachx.openfood.models.DaoSession
+import openfoodfacts.github.scrachx.openfood.models.InvalidBarcode
+import openfoodfacts.github.scrachx.openfood.models.entities.additive.Additive
+import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveName
+import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveNameDao
+import openfoodfacts.github.scrachx.openfood.models.entities.allergen.Allergen
+import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenDao
+import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenName
+import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenNameDao
 import openfoodfacts.github.scrachx.openfood.models.entities.analysistag.AnalysisTag
 import openfoodfacts.github.scrachx.openfood.models.entities.analysistag.AnalysisTagNameDao
 import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.AnalysisTagConfig
 import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.AnalysisTagConfigDao
 import openfoodfacts.github.scrachx.openfood.models.entities.brand.Brand
-import openfoodfacts.github.scrachx.openfood.models.entities.category.*
+import openfoodfacts.github.scrachx.openfood.models.entities.category.Category
+import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoryName
+import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoryNameDao
 import openfoodfacts.github.scrachx.openfood.models.entities.country.Country
-import openfoodfacts.github.scrachx.openfood.models.entities.ingredient.*
-import openfoodfacts.github.scrachx.openfood.models.entities.label.*
+import openfoodfacts.github.scrachx.openfood.models.entities.ingredient.Ingredient
+import openfoodfacts.github.scrachx.openfood.models.entities.label.Label
+import openfoodfacts.github.scrachx.openfood.models.entities.label.LabelName
+import openfoodfacts.github.scrachx.openfood.models.entities.label.LabelNameDao
 import openfoodfacts.github.scrachx.openfood.models.entities.states.States
 import openfoodfacts.github.scrachx.openfood.models.entities.states.StatesName
 import openfoodfacts.github.scrachx.openfood.models.entities.states.StatesNameDao
@@ -671,19 +685,18 @@ class ProductRepository @Inject constructor(
      * @param languageCode is a 2-digit language code
      * @return The translated allergen name
      */
-    fun getAllergenByTagAndLanguageCode(allergenTag: String?, languageCode: String?) = Single.fromCallable {
-        daoSession.allergenNameDao.queryBuilder()
-            .where(
+    suspend fun getAllergenByTagAndLanguageCode(allergenTag: String?, languageCode: String?): AllergenName {
+        return withContext(Dispatchers.IO) {
+            daoSession.allergenNameDao.queryBuilder().where(
                 AllergenNameDao.Properties.AllergenTag.eq(allergenTag),
                 AllergenNameDao.Properties.LanguageCode.eq(languageCode)
-            )
-            .unique()
-            ?: AllergenName().apply {
+            ).unique() ?: AllergenName().apply {
                 this.name = allergenTag
                 this.allergenTag = allergenTag
                 this.isWikiDataIdPresent = false
             }
-    }.subscribeOn(Schedulers.io())
+        }
+    }
 
     /**
      * Loads translated allergen from the local database by unique tag of allergen and default language code
@@ -691,7 +704,7 @@ class ProductRepository @Inject constructor(
      * @param allergenTag is a unique Id of allergen
      * @return The translated allergen name
      */
-    fun getAllergenByTagAndDefaultLanguageCode(allergenTag: String?) =
+    suspend fun getAllergenByTagAndDefaultLanguageCode(allergenTag: String?): AllergenName =
         getAllergenByTagAndLanguageCode(allergenTag, ApiFields.Defaults.DEFAULT_LANGUAGE)
 
     /**
@@ -701,15 +714,18 @@ class ProductRepository @Inject constructor(
      * @param languageCode is a 2-digit language code
      * @return The translated states name
      */
-    fun getStatesByTagAndLanguageCode(statesTag: String, languageCode: String?) = Single.fromCallable {
-        daoSession.statesNameDao.queryBuilder()
-            .where(
+    suspend fun getStatesByTagAndLanguageCode(statesTag: String, languageCode: String?): StatesName {
+        return withContext(Dispatchers.IO) {
+            daoSession.statesNameDao.queryBuilder().where(
                 StatesNameDao.Properties.StatesTag.eq(statesTag),
                 StatesNameDao.Properties.LanguageCode.eq(languageCode)
+            ).unique() ?: StatesName(
+                statesTag,
+                statesTag.split(":").component1(),
+                statesTag.split(":").component2()
             )
-            .unique()
-            ?: StatesName(statesTag, statesTag.split(":").component1(), statesTag.split(":").component2())
-    }.subscribeOn(Schedulers.io())
+        }
+    }
 
 
     /**
@@ -748,7 +764,12 @@ class ProductRepository @Inject constructor(
      * @return The analysis tags in the product.
      */
     fun reloadAnalysisTagsFromServer() =
-        taxonomiesManager.getTaxonomyData(Taxonomy.ANALYSIS_TAGS, true, daoSession.analysisTagDao, this)
+        taxonomiesManager.getTaxonomyData(
+            Taxonomy.ANALYSIS_TAGS,
+            true,
+            daoSession.analysisTagDao,
+            this
+        )
 
     fun loadAnalysisTags(lastModifiedDate: Long) = analysisDataApi.getAnalysisTags()
         .map { it.map() }
@@ -783,7 +804,12 @@ class ProductRepository @Inject constructor(
     }
 
     fun reloadAnalysisTagConfigsFromServer(): Single<List<AnalysisTagConfig>> =
-        taxonomiesManager.getTaxonomyData(Taxonomy.ANALYSIS_TAG_CONFIG, true, daoSession.analysisTagConfigDao, this)
+        taxonomiesManager.getTaxonomyData(
+            Taxonomy.ANALYSIS_TAG_CONFIG,
+            true,
+            daoSession.analysisTagConfigDao,
+            this
+        )
 
     fun loadAnalysisTagConfigs(lastModifiedDate: Long): Single<List<AnalysisTagConfig>> = analysisDataApi.getAnalysisTagConfigs()
         .map { it.map() }
