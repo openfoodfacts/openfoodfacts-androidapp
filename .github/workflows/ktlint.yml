@@ -3,7 +3,7 @@ name: ktlint
 on:
   pull_request:
     paths:
-      - "**/*.kt"
+      - "**/*.kt",
       - ".github/workflows/ktlint.yml"
  jobs:
    ktlint:
