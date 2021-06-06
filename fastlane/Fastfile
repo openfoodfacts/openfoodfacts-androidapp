@@ -120,8 +120,7 @@ lane :release_opf do
     gradle(
         project_dir: './',
         task: 'clean bundle',
-        build_type: 'Release',
-        flavor: 'opf',
+        build_type: 'opfRelease',
         platform: 'playstore'
     )
 
