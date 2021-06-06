@@ -95,7 +95,7 @@ lane :release_opf do
     gradle(
         project_dir: './',
         task: 'clean bundle',
-        build_type: 'opfPlaystoreRelease',
+        build_type: 'opfPlaystoreRelease'
         #platform: 'playstore'
     )
 
