@@ -894,8 +894,7 @@ class EditOverviewFragment : ProductEditFragment() {
         binding.imgFront.visibility = View.VISIBLE
         binding.btnEditImgFront.visibility = View.VISIBLE
         if (!errorInUploading) {
-            Picasso.get()
-                .load(photoFile!!)
+            picasso.load(photoFile!!)
                 .resize(requireContext().dpsToPixel(50), requireContext().dpsToPixel(50))
                 .centerInside()
                 .into(binding.imgFront)

@@ -81,11 +81,11 @@ interface ProductsAPI {
 
     @FormUrlEncoded
     @POST("/cgi/session.pl")
-    fun signIn(
-            @Field(ApiFields.Keys.USER_ID) login: String?,
-            @Field(ApiFields.Keys.USER_PASS) password: String?,
-            @Field(".submit") submit: String?
-    ): Single<Response<ResponseBody>>
+    suspend fun signIn(
+        @Field(ApiFields.Keys.USER_ID) login: String?,
+        @Field(ApiFields.Keys.USER_PASS) password: String?,
+        @Field(".submit") submit: String?
+    ): Response<ResponseBody>
 
     @GET("$API_P/product/{barcode}.json?fields=ingredients")
     fun getIngredientsByBarcode(@Path("barcode") barcode: String?): Single<JsonNode>
@@ -349,9 +349,9 @@ interface ProductsAPI {
      */
     @GET("/cgi/product_image_crop.pl")
     fun editImages(
-            @Query(ApiFields.Keys.BARCODE) code: String,
-            @QueryMap fields: Map<String, @JvmSuppressWildcards String?>?
-    ): Single<String>
+        @Query(ApiFields.Keys.BARCODE) code: String,
+        @QueryMap fields: Map<String, @JvmSuppressWildcards String?>?
+    ): Single<ObjectNode>
 
     /**
      * This method is to crop images server side

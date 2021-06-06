@@ -46,6 +46,7 @@ import io.reactivex.rxkotlin.addTo
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityFullScreenImageBinding
 import openfoodfacts.github.scrachx.openfood.features.adapters.LanguageDataAdapter
+import openfoodfacts.github.scrachx.openfood.features.login.LoginActivity
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.images.*
 import openfoodfacts.github.scrachx.openfood.models.LanguageData
