@@ -5,7 +5,6 @@ on:
     paths:
       - "**/*.kt"
       - ".github/workflows/ktlint.yml"
-
  jobs:
    ktlint:
      runs-on: ubuntu-latest
