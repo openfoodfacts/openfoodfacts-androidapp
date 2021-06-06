@@ -1,14 +1,8 @@
     name: GitHub Pages Deploy Action
     on:
-        # Branch name(s) which have the source file for site/documentation
         push:
             branches:
-                - "*"
-                #- "develop"
-        pull_request:
-            branches: 
-                - "*"
-    
+                - "develop"
     jobs:
         deploy-pages:
             name: Deploy to GitHub Pages
@@ -24,10 +18,8 @@
             #- name: Build and run tests
             #  run: ./gradlew build
             - name: Generate API documentation
-              if: ${{github.event_name == 'push'}}
               run: ./gradlew dokkaHtml
             - name: Deploy API documentation to Github Pages
-              if: ${{github.event_name == 'push'}}
               uses: JamesIves/github-pages-deploy-action@3.7.1
               with:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
