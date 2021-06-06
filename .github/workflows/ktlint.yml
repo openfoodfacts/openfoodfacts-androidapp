@@ -2,9 +2,7 @@ name: ktlint
 
 on:
   pull_request:
-    paths:
-      - "**/*.kt"
-      - ".github/workflows/ktlint.yml"
+    branches: [ "*" ]
  jobs:
    ktlint:
      runs-on: ubuntu-latest
@@ -12,4 +10,4 @@ on:
        - name: "checkout"
          uses: "actions/checkout@v2"
        - name: "ktlint"
-         uses: "vroy/gha-kotlin-linter@v2"
+         uses: "vroy/gha-kotlin-linter@v1"
