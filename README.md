@@ -37,7 +37,7 @@ https://openfoodfacts.github.io/openfoodfacts-androidapp/
 ## Helping stabilize our next release
 Here are issues and feature requests you can work on:
 - [3.6.6 milestone](https://github.com/openfoodfacts/openfoodfacts-androidapp/milestone/36)
-
+Here's a summary explanation of improvements and regressions that are blocking the release: https://github.com/openfoodfacts/openfoodfacts-androidapp/wiki#pros-and-cons-of-releasing-before-the-15th
 
 ## Impact Roadmap
 ### A brilliant scan experience 
