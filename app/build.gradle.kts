@@ -83,7 +83,7 @@ dependencies {
 
     implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
 
-    kapt("com.google.dagger:dagger-compiler:2.36")
+    kapt("com.google.dagger:dagger-compiler:2.37")
     implementation("com.google.dagger:dagger:2.36")
     implementation("com.google.dagger:hilt-android:${rootProject.extra["hiltVersion"]}")
 
@@ -167,7 +167,7 @@ dependencies {
     implementation("com.hootsuite.android:nachos:1.2.0")
 
     // Crash analytics
-    implementation("io.sentry:sentry-android:5.0.0")
+    implementation("io.sentry:sentry-android:5.0.1")
     implementation("org.matomo.sdk:tracker:4.1.2")
 
     // ShowCaseView dependency
@@ -185,8 +185,8 @@ dependencies {
     androidTestUtil("androidx.test:orchestrator:1.3.0")
 
     // Hilt for Android Testing
-    androidTestImplementation("com.google.dagger:hilt-android-testing:2.36")
-    kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.36")
+    androidTestImplementation("com.google.dagger:hilt-android-testing:2.37")
+    kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.37")
 
     androidTestImplementation("androidx.test:runner:1.3.0") { exclude("junit") }
     androidTestImplementation("androidx.test:rules:1.3.0")
