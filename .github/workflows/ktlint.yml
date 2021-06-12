@@ -1,0 +1,13 @@
+name: ktlint
+
+on:
+  pull_request:
+    branches: 'ktlint'
+jobs:
+  ktlint:
+    runs-on: ubuntu-latest
+    steps:
+       - name: "checkout"
+         uses: "actions/checkout@v2"
+       - name: "ktlint"
+         uses: "vroy/gha-kotlin-linter@v1"
