@@ -18,6 +18,7 @@ package openfoodfacts.github.scrachx.openfood.features
 import android.Manifest
 import android.app.SearchManager
 import android.content.*
+import android.content.SharedPreferences
 import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
