@@ -15,6 +15,8 @@
  */
 package openfoodfacts.github.scrachx.openfood.features
 
+
+import android.content.SharedPreferences
 import android.Manifest
 import android.app.SearchManager
 import android.content.*
