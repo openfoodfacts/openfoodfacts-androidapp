@@ -43,7 +43,7 @@ dependencies {
 
 
     // Android KTX
-    implementation("androidx.fragment:fragment-ktx:1.3.3")
+    implementation("androidx.fragment:fragment-ktx:1.3.4")
     implementation("androidx.activity:activity-ktx:1.2.3")
     implementation("androidx.preference:preference-ktx:1.1.1")
     implementation("androidx.core:core-ktx:1.6.0-alpha03")
