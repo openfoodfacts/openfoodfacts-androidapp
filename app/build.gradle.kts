@@ -69,8 +69,7 @@ dependencies {
 
 
     val workVersion = "2.5.0"
-    implementation("androidx.work:work-runtime:$workVersion")
-    implementation("androidx.work:work-rxjava2:$workVersion")
+    implementation("androidx.work:work-runtime-ktx:$workVersion")
     val hiltVersion = "1.0.0-beta01"
     implementation("androidx.hilt:hilt-work:$hiltVersion")
     kapt("androidx.hilt:hilt-compiler:$hiltVersion")

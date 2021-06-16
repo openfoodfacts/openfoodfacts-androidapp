@@ -2,7 +2,7 @@ package openfoodfacts.github.scrachx.openfood.jobs
 
 import android.content.Context
 import androidx.hilt.work.HiltWorker
-import androidx.work.RxWorker
+import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
@@ -17,12 +17,14 @@ import javax.inject.Inject
 class ImagesUploaderWorker @AssistedInject constructor(
     @Assisted appContext: Context,
     @Assisted workerParams: WorkerParameters
-) : RxWorker(appContext, workerParams) {
+) : CoroutineWorker(appContext, workerParams) {
     @Inject
     lateinit var client: OpenFoodAPIClient
 
-    override fun createWork() = client
-        .uploadOfflineImages()
-        .toSingleDefault(Result.success())
-        .onErrorReturnItem(Result.failure())
+    override suspend fun doWork() = try {
+        client.uploadOfflineImages()
+        Result.success()
+    } catch (err: Throwable) {
+        Result.failure()
+    }
 }
