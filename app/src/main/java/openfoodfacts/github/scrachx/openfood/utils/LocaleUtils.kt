@@ -39,6 +39,8 @@ object LocaleUtils {
 
     fun getLanguageData(code: String, supported: Boolean): LanguageData {
         val locale = parseLocale(code)
-        return LanguageData(locale.language, locale.getDisplayName(locale).capitalize(Locale.ROOT), supported)
+        return LanguageData(locale.language,
+            locale.getDisplayName(locale).replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.ROOT) else it.toString() }, supported
+        )
     }
 }

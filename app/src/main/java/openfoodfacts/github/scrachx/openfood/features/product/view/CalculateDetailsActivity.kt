@@ -88,11 +88,11 @@ class CalculateDetailsActivity : BaseActivity() {
         val energyKj = nutriments[Nutriments.ENERGY_KJ]
         if (energyKj != null) {
             nutrimentListItems += NutrimentListItem(
-                    getString(R.string.nutrition_energy_short_name),
-                    calculateKj(weight, spinnerValue).toString(),
-                    energyKj.forServingInUnits,
-                    Units.ENERGY_KJ.toLowerCase(Locale.getDefault()),
-                    energyKj.getModifierIfNotDefault(),
+                getString(R.string.nutrition_energy_short_name),
+                calculateKj(weight, spinnerValue).toString(),
+                energyKj.forServingInUnits,
+                Units.ENERGY_KJ.lowercase(Locale.getDefault()),
+                energyKj.getModifierIfNotDefault(),
             )
         }
 

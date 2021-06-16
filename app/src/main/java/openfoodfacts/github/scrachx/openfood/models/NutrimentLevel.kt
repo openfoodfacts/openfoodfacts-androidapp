@@ -15,7 +15,7 @@ enum class NutrimentLevel {
     LOW, MODERATE, HIGH;
 
     @JsonValue
-    override fun toString() = name.toLowerCase(Locale.ROOT)
+    override fun toString() = name.lowercase(Locale.ROOT)
 
     @StringRes
     fun getDescRes() = when (this) {
@@ -33,7 +33,7 @@ enum class NutrimentLevel {
 
     companion object {
         @JsonCreator
-        fun fromJson(level: String) = if (level.isNotBlank()) valueOf(level.toUpperCase(Locale.getDefault())) else null
+        fun fromJson(level: String) = if (level.isNotBlank()) valueOf(level.uppercase(Locale.getDefault())) else null
     }
 }
 
