@@ -130,7 +130,7 @@ dependencies {
     implementation("com.google.android.material:material:1.3.0")
 
     //Image Loading
-    implementation("com.squareup.picasso:picasso:2.71828")
+    implementation("com.squareup.picasso:picasso:2.8")
 
     //Image from gallery or camera
     implementation("com.github.jkwiecien:EasyImage:1.4.0")
