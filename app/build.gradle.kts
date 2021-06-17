@@ -43,10 +43,10 @@ dependencies {
 
 
     // Android KTX
-    implementation("androidx.fragment:fragment-ktx:1.3.3")
+    implementation("androidx.fragment:fragment-ktx:1.3.4")
     implementation("androidx.activity:activity-ktx:1.2.3")
     implementation("androidx.preference:preference-ktx:1.1.1")
-    implementation("androidx.core:core-ktx:1.6.0-alpha03")
+    implementation("androidx.core:core-ktx:1.6.0-beta02")
 
     val viewModelKtxVer = "2.3.1"
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$viewModelKtxVer")
@@ -55,10 +55,10 @@ dependencies {
 
 
     // AndroidX
-    implementation("androidx.appcompat:appcompat:1.2.0")
+    implementation("androidx.appcompat:appcompat:1.3.0")
     implementation("androidx.browser:browser:1.3.0")
     implementation("androidx.concurrent:concurrent-futures:1.1.0")
-    implementation("androidx.recyclerview:recyclerview:1.2.0")
+    implementation("androidx.recyclerview:recyclerview:1.2.1")
     implementation("androidx.cardview:cardview:1.0.0")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
     implementation("androidx.annotation:annotation:1.2.0")
@@ -69,8 +69,7 @@ dependencies {
 
 
     val workVersion = "2.5.0"
-    implementation("androidx.work:work-runtime:$workVersion")
-    implementation("androidx.work:work-rxjava2:$workVersion")
+    implementation("androidx.work:work-runtime-ktx:$workVersion")
     val hiltVersion = "1.0.0-beta01"
     implementation("androidx.hilt:hilt-work:$hiltVersion")
     kapt("androidx.hilt:hilt-compiler:$hiltVersion")
@@ -79,7 +78,7 @@ dependencies {
     implementation("androidx.startup:startup-runtime:1.0.0")
 
     // ML Kit barcode Scanner
-    implementation("com.google.mlkit:barcode-scanning:16.1.1")
+    implementation("com.google.mlkit:barcode-scanning:16.1.2")
 
     implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
 
@@ -130,7 +129,7 @@ dependencies {
     implementation("com.google.android.material:material:1.3.0")
 
     //Image Loading
-    implementation("com.squareup.picasso:picasso:2.71828")
+    implementation("com.squareup.picasso:picasso:2.8")
 
     //Image from gallery or camera
     implementation("com.github.jkwiecien:EasyImage:1.4.0")

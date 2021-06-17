@@ -7,7 +7,7 @@ import androidx.hilt.work.HiltWorker
 import androidx.work.*
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
-import io.reactivex.Single
+import kotlinx.coroutines.rx2.await
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.utils.OfflineProductService
 import javax.inject.Inject
@@ -16,23 +16,25 @@ import javax.inject.Inject
 class ProductUploaderWorker @AssistedInject constructor(
     @Assisted context: Context,
     @Assisted workerParams: WorkerParameters
-) : RxWorker(context, workerParams) {
+) : CoroutineWorker(context, workerParams) {
 
     @Inject
     lateinit var offlineProductService: OfflineProductService
 
-    override fun createWork() = Single.fromCallable { inputData.getBoolean(KEY_INCLUDE_IMAGES, false) }
-        .doOnSuccess { Log.d(WORK_TAG, "[START] (includeImages=$it)") }
-        .flatMap { includeImages -> offlineProductService.uploadAll(includeImages) }
-        .map { shouldRetry ->
-            if (shouldRetry) {
-                Log.d(WORK_TAG, "[RETRY]")
-                Result.retry()
-            } else {
-                Log.d(WORK_TAG, "[SUCCESS]")
-                Result.success()
-            }
+    override suspend fun doWork(): Result {
+        val includeImages = inputData.getBoolean(KEY_INCLUDE_IMAGES, false)
+        Log.d(WORK_TAG, "[START] (includeImages=$includeImages)")
+
+        val shouldRetry = offlineProductService.uploadAll(includeImages).await()
+
+        return if (shouldRetry) {
+            Log.d(WORK_TAG, "[RETRY]")
+            Result.retry()
+        } else {
+            Log.d(WORK_TAG, "[SUCCESS]")
+            Result.success()
         }
+    }
 
     companion object {
         private const val WORK_TAG = "OFFLINE_WORKER_TAG"
