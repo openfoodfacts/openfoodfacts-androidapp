@@ -74,7 +74,7 @@ jobs:
           arguments: assembleDebug
 
       - name: Upload OBF APKs
-        uses: actions/upload-artifact@v2.2.3
+        uses: actions/upload-artifact@v2.2.4
         with:
           name: OBF
           path: |
@@ -82,7 +82,7 @@ jobs:
             ./app/build/outputs/apk/obfFdroid/debug/app-obf-fdroid-debug.apk
 
       - name: Upload OFF APK
-        uses: actions/upload-artifact@v2.2.3
+        uses: actions/upload-artifact@v2.2.4
         with:
           name: OFF
           path: |
@@ -90,7 +90,7 @@ jobs:
             ./app/build/outputs/apk/offFdroid/debug/app-off-fdroid-debug.apk
 
       - name: Upload OPF APK
-        uses: actions/upload-artifact@v2.2.3
+        uses: actions/upload-artifact@v2.2.4
         with:
           name: OPF
           path: |
@@ -98,7 +98,7 @@ jobs:
             ./app/build/outputs/apk/opfFdroid/debug/app-opf-fdroid-debug.apk
 
       - name: Upload OPFF APK
-        uses: actions/upload-artifact@v2.2.3
+        uses: actions/upload-artifact@v2.2.4
         with:
           name: OPFF
           path: |
