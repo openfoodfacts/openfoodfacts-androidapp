@@ -4,6 +4,15 @@
     package="openfoodfacts.github.scrachx.openfood"
     android:installLocation="auto">
 
+    <!-- Add permission to query apps for CustomTabs -->
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="https" />
+        </intent>
+    </queries>
+
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />

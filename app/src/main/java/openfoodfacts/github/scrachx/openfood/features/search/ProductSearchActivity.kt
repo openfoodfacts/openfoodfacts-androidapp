@@ -18,6 +18,7 @@ import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -28,6 +29,10 @@ import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.rx2.awaitSingleOrNull
+import kotlinx.coroutines.withContext
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductBrowsingListBinding
@@ -176,12 +181,12 @@ class ProductSearchActivity : BaseActivity() {
             }
             R.id.action_set_type -> {
                 val contributionTypes = arrayOf(
-                        getString(R.string.products_added),
-                        getString(R.string.products_incomplete),
-                        getString(R.string.product_pictures_contributed),
-                        getString(R.string.picture_contributed_incomplete),
-                        getString(R.string.product_info_added),
-                        getString(R.string.product_info_tocomplete)
+                    getString(R.string.products_added),
+                    getString(R.string.products_incomplete),
+                    getString(R.string.product_pictures_contributed),
+                    getString(R.string.picture_contributed_incomplete),
+                    getString(R.string.product_info_added),
+                    getString(R.string.product_info_tocomplete)
                 )
                 MaterialDialog.Builder(this).apply {
                     title(R.string.show_by)
@@ -203,19 +208,18 @@ class ProductSearchActivity : BaseActivity() {
     private fun setupHungerGames() {
         val actualCountryTag = sharedPreferences.getString(getString(R.string.pref_country_key), "")
         if (actualCountryTag.isNullOrBlank()) {
-            productRepository.getCountryByCC2OrWorld(localeManager.getLocale().country)
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .map { it.tag }
-                    .defaultIfEmpty("en:world")
-                    .subscribe { setupUrlHungerGames(it) }
-                    .addTo(disp)
+            lifecycleScope.launch {
+                val url = productRepository.getCountryByCC2OrWorld(localeManager.getLocale().country).awaitSingleOrNull()?.tag ?: "en:world"
+                withContext(Dispatchers.Main) { setupUrlHungerGames(url) }
+            }
         } else {
             setupUrlHungerGames(actualCountryTag)
         }
     }
 
     private fun setupUrlHungerGames(countryTag: String?) {
-        val url = "https://hunger.openfoodfacts.org/questions?type=${mSearchInfo.searchType.url}&value_tag=${mSearchInfo.searchQuery}&country=$countryTag".toUri()
+        val url =
+            "https://hunger.openfoodfacts.org/questions?type=${mSearchInfo.searchType.url}&value_tag=${mSearchInfo.searchQuery}&country=$countryTag".toUri()
         val builder = CustomTabsIntent.Builder()
         val customTabsIntent = builder.build()
         binding.btnHungerGames.visibility = View.VISIBLE
@@ -278,11 +282,11 @@ class ProductSearchActivity : BaseActivity() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.CAMERA)) {
                 MaterialDialog.Builder(this)
-                        .title(R.string.action_about)
-                        .content(R.string.permission_camera)
-                        .neutralText(R.string.txtOk)
-                        .onNeutral { _, _ -> ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA), MY_PERMISSIONS_REQUEST_CAMERA) }
-                        .show()
+                    .title(R.string.action_about)
+                    .content(R.string.permission_camera)
+                    .neutralText(R.string.txtOk)
+                    .onNeutral { _, _ -> ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA), MY_PERMISSIONS_REQUEST_CAMERA) }
+                    .show()
             } else {
                 ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA), MY_PERMISSIONS_REQUEST_CAMERA)
             }
@@ -296,51 +300,51 @@ class ProductSearchActivity : BaseActivity() {
         val searchQuery = mSearchInfo.searchQuery
         when (mSearchInfo.searchType) {
             BRAND -> client.getProductsByBrand(searchQuery, pageAddress)
-                    .startSearch(R.string.txt_no_matching_brand_products)
+                .startSearch(R.string.txt_no_matching_brand_products)
 
             COUNTRY -> client.getProductsByCountry(searchQuery, pageAddress)
-                    .startSearch(R.string.txt_no_matching_country_products)
+                .startSearch(R.string.txt_no_matching_country_products)
 
             ORIGIN -> client.getProductsByOrigin(searchQuery, pageAddress)
-                    .startSearch(R.string.txt_no_matching_country_products)
+                .startSearch(R.string.txt_no_matching_country_products)
 
             MANUFACTURING_PLACE -> client.getProductsByManufacturingPlace(searchQuery, pageAddress)
-                    .startSearch(R.string.txt_no_matching_country_products)
+                .startSearch(R.string.txt_no_matching_country_products)
 
             ADDITIVE -> client.getProductsByAdditive(searchQuery, pageAddress)
-                    .startSearch(R.string.txt_no_matching_additive_products)
+                .startSearch(R.string.txt_no_matching_additive_products)
 
             STORE -> client.getProductsByStore(searchQuery, pageAddress)
-                    .startSearch(R.string.txt_no_matching_store_products)
+                .startSearch(R.string.txt_no_matching_store_products)
 
             PACKAGING -> client.getProductsByPackaging(searchQuery, pageAddress)
-                    .startSearch(R.string.txt_no_matching_packaging_products)
+                .startSearch(R.string.txt_no_matching_packaging_products)
 
             SEARCH -> {
                 if (isBarcodeValid(searchQuery)) {
                     client.openProduct(searchQuery, this)
                 } else {
                     client.searchProductsByName(searchQuery, pageAddress)
-                            .startSearch(R.string.txt_no_matching_products, R.string.txt_broaden_search)
+                        .startSearch(R.string.txt_no_matching_products, R.string.txt_broaden_search)
                 }
             }
             LABEL -> client.getProductsByLabel(searchQuery, pageAddress)
-                    .startSearch(R.string.txt_no_matching_label_products)
+                .startSearch(R.string.txt_no_matching_label_products)
 
             CATEGORY -> client.getProductsByCategory(searchQuery, pageAddress)
-                    .startSearch(R.string.txt_no_matching__category_products)
+                .startSearch(R.string.txt_no_matching__category_products)
 
             ALLERGEN -> client.getProductsByAllergen(searchQuery, pageAddress)
-                    .startSearch(R.string.txt_no_matching_allergen_products)
+                .startSearch(R.string.txt_no_matching_allergen_products)
 
             CONTRIBUTOR -> loadDataForContributor(searchQuery)
 
             STATE -> client.getProductsByStates(searchQuery, pageAddress)
-                    .startSearch(R.string.txt_no_matching_allergen_products)
+                .startSearch(R.string.txt_no_matching_allergen_products)
 
             // Get Products to be completed data and input it to loadData function
             INCOMPLETE_PRODUCT -> client.getIncompleteProducts(pageAddress)
-                    .startSearch(R.string.txt_no_matching_incomplete_products)
+                .startSearch(R.string.txt_no_matching_incomplete_products)
 
             else -> Log.e("Products Browsing", "No match case found for " + mSearchInfo.searchType)
         }
@@ -356,22 +360,22 @@ class ProductSearchActivity : BaseActivity() {
     private fun loadDataForContributor(searchQuery: String) {
         when (contributionType) {
             1 -> client.getToBeCompletedProductsByContributor(searchQuery, pageAddress)
-                    .startSearch(R.string.txt_no_matching_contributor_products)
+                .startSearch(R.string.txt_no_matching_contributor_products)
 
             2 -> client.getPicturesContributedProducts(searchQuery, pageAddress)
-                    .startSearch(R.string.txt_no_matching_contributor_products)
+                .startSearch(R.string.txt_no_matching_contributor_products)
 
             3 -> client.getPicturesContributedIncompleteProducts(searchQuery, pageAddress)
-                    .startSearch(R.string.txt_no_matching_contributor_products)
+                .startSearch(R.string.txt_no_matching_contributor_products)
 
             4 -> client.getInfoAddedProducts(searchQuery, pageAddress)
-                    .startSearch(R.string.txt_no_matching_contributor_products)
+                .startSearch(R.string.txt_no_matching_contributor_products)
 
             5 -> client.getInfoAddedIncompleteProductsSingle(searchQuery, pageAddress)
-                    .startSearch(R.string.txt_no_matching_contributor_products)
+                .startSearch(R.string.txt_no_matching_contributor_products)
 
             else -> client.getProductsByContributor(searchQuery, pageAddress)
-                    .startSearch(R.string.txt_no_matching_contributor_products)
+                .startSearch(R.string.txt_no_matching_contributor_products)
         }
     }
 
@@ -449,10 +453,10 @@ class ProductSearchActivity : BaseActivity() {
      * @param extendedMessage extended message to display if there are no results
      */
     private fun displaySearch(
-            isResponseSuccessful: Boolean,
-            response: Search?,
-            @StringRes emptyMessage: Int,
-            @StringRes extendedMessage: Int = -1
+        isResponseSuccessful: Boolean,
+        response: Search?,
+        @StringRes emptyMessage: Int,
+        @StringRes extendedMessage: Int = -1
     ) = if (response == null) {
         showResponse(isResponseSuccessful, null)
     } else {

@@ -26,6 +26,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.rx2.rxSingle
 import openfoodfacts.github.scrachx.openfood.models.entities.category.Category
 import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoryName
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
@@ -36,8 +37,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CategoryFragmentViewModel @Inject constructor(
-        private val productRepository: ProductRepository,
-        private val localeManager: LocaleManager
+    private val productRepository: ProductRepository,
+    private val localeManager: LocaleManager
 ) : ViewModel() {
     private val allCategories = mutableListOf<CategoryName>()
     val shownCategories = ObservableArrayList<CategoryName>()
@@ -60,37 +61,37 @@ class CategoryFragmentViewModel @Inject constructor(
      */
     fun refreshCategories() {
         productRepository.getAllCategoriesByLanguageCode(localeManager.getLanguage())
-                .doOnSubscribe {
-                    showOffline.set(View.GONE)
-                    showProgress.set(View.VISIBLE)
-                }
-                .flatMap {
-                    if (it.isEmpty()) {
-                        productRepository.getAllCategoriesByDefaultLanguageCode()
-                    } else Single.just(it)
-                }
-                .flatMap {
-                    if (it.isEmpty()) {
-                        productRepository.getCategories().map(this::extractCategoriesNames)
-                    } else Single.just(it)
-                }
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .doOnError {
-                    Log.e(CategoryFragmentViewModel::class.simpleName, "Error loading categories", it)
-                    if (it is UnknownHostException) {
-                        showOffline.set(View.VISIBLE)
-                        showProgress.set(View.GONE)
-                    }
-                }
-                .subscribe { categoryList ->
-                    allCategories += categoryList
-
-                    shownCategories.clear()
-                    shownCategories += categoryList
-
+            .doOnSubscribe {
+                showOffline.set(View.GONE)
+                showProgress.set(View.VISIBLE)
+            }
+            .flatMap {
+                if (it.isEmpty()) {
+                    productRepository.getAllCategoriesByDefaultLanguageCode()
+                } else Single.just(it)
+            }
+            .flatMap {
+                if (it.isEmpty()) {
+                    rxSingle { extractCategoriesNames(productRepository.getCategories()) }
+                } else Single.just(it)
+            }
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnError {
+                Log.e(CategoryFragmentViewModel::class.simpleName, "Error loading categories", it)
+                if (it is UnknownHostException) {
+                    showOffline.set(View.VISIBLE)
                     showProgress.set(View.GONE)
-                }.addTo(disposable)
+                }
+            }
+            .subscribe { categoryList ->
+                allCategories += categoryList
+
+                shownCategories.clear()
+                shownCategories += categoryList
+
+                showProgress.set(View.GONE)
+            }.addTo(disposable)
     }
 
     /**
@@ -99,9 +100,9 @@ class CategoryFragmentViewModel @Inject constructor(
      * @param categories list of all the categories loaded using API
      */
     private fun extractCategoriesNames(categories: List<Category>) = categories
-            .flatMap { it.names }
-            .filter { it.languageCode == localeManager.getLanguage() }
-            .sortedWith { o1, o2 -> o1.name!!.compareTo(o2.name!!) }
+        .flatMap { it.names }
+        .filter { it.languageCode == localeManager.getLanguage() }
+        .sortedWith { o1, o2 -> o1.name!!.compareTo(o2.name!!) }
 
     /**
      * Search for all the category names that or equal to/start with a given string
