@@ -1,5 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.features.changelog
 
+import android.app.Activity
 import android.content.SharedPreferences
 import android.content.pm.PackageManager.NameNotFoundException
 import android.net.Uri
@@ -13,6 +14,8 @@ import androidx.core.content.edit
 import androidx.core.content.pm.PackageInfoCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.DialogFragment
+import androidx.lifecycle.lifecycleScope
+import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import dagger.hilt.android.AndroidEntryPoint
@@ -44,6 +47,9 @@ class ChangelogDialog : DialogFragment(R.layout.fragment_changelog) {
                 }
             }
         }
+
+        private fun getSavedVersionCode(activity: Activity) =
+            PreferenceManager.getDefaultSharedPreferences(activity).getLong(LAST_VERSION_CODE, 0)
     }
 
     @Inject
@@ -83,20 +89,22 @@ class ChangelogDialog : DialogFragment(R.layout.fragment_changelog) {
 
     @Suppress("DEPRECATION")
     fun presentAutomatically(activity: AppCompatActivity) {
-        arguments?.let {
-            if (it.getBoolean(FORCE_SHOW_KEY, false)) {
-                show(activity.supportFragmentManager, TAG)
-            } else {
-                try {
-                    val lastVersionCode = getSavedVersionCode()
-                    val packageInfo = activity.packageManager.getPackageInfo(activity.packageName, 0)
-                    val currentVersionCode = PackageInfoCompat.getLongVersionCode(packageInfo)
-                    if (currentVersionCode >= 0 && currentVersionCode > lastVersionCode) {
-                        show(activity.supportFragmentManager, TAG)
-                        saveVersionCode(currentVersionCode)
+        lifecycleScope.launchWhenResumed {
+            arguments?.let {
+                if (it.getBoolean(FORCE_SHOW_KEY, false)) {
+                    show(activity.supportFragmentManager, TAG)
+                } else {
+                    try {
+                        val lastVersionCode = getSavedVersionCode(activity)
+                        val packageInfo = activity.packageManager.getPackageInfo(activity.packageName, 0)
+                        val currentVersionCode = PackageInfoCompat.getLongVersionCode(packageInfo)
+                        if (currentVersionCode >= 0 && currentVersionCode > lastVersionCode) {
+                            show(activity.supportFragmentManager, TAG)
+                            saveVersionCode(currentVersionCode)
+                        }
+                    } catch (ex: NameNotFoundException) {
+                        sentryAnalytics.record(ex)
                     }
-                } catch (ex: NameNotFoundException) {
-                    sentryAnalytics.record(ex)
                 }
             }
         }
@@ -168,5 +176,4 @@ class ChangelogDialog : DialogFragment(R.layout.fragment_changelog) {
 
     }
 
-    private fun getSavedVersionCode() = sharedPreferences.getLong(LAST_VERSION_CODE, 0)
 }
