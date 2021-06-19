@@ -15,10 +15,7 @@
  */
 package openfoodfacts.github.scrachx.openfood.features.product.view.ingredients
 
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.liveData
-import androidx.lifecycle.switchMap
+import androidx.lifecycle.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.rx2.await
 import openfoodfacts.github.scrachx.openfood.models.Product
@@ -71,5 +68,11 @@ class ProductIngredientsViewModel @Inject constructor(
             }.filter { it.isNotNull }.let { emit(it) }
         }
     }
+
+
+    val vitaminsTags = product.map(Product::vitaminTags)
+    val mineralTags = product.map(Product::mineralTags)
+    val otherNutritionTags = product.map(Product::otherNutritionTags)
+    val aminoAcidTagsList = product.map(Product::aminoAcidTags)
 
 }

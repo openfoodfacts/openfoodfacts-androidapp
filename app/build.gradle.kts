@@ -39,7 +39,7 @@ dependencies {
     val coroutinesVersion = "1.5.0"
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-rx2:$coroutinesVersion")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion-RC")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion")
 
 
     // Android KTX
@@ -179,6 +179,7 @@ dependencies {
     testImplementation("net.javacrumbs.json-unit:json-unit-fluent:2.26.0")
     testImplementation("com.google.truth:truth:1.1.3")
     testImplementation("com.google.truth.extensions:truth-java8-extension:1.1.3")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:${coroutinesVersion}")
 
     // Instrumented tests
     androidTestUtil("androidx.test:orchestrator:1.3.0")
@@ -203,6 +204,8 @@ dependencies {
     }
     androidTestImplementation("com.jraska:falcon:2.2.0")
     androidTestImplementation("tools.fastlane:screengrab:1.2.0")
+    androidTestImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:${coroutinesVersion}")
+
 
     resourcePlaceholders { files = listOf("xml/shortcuts.xml") }
 }

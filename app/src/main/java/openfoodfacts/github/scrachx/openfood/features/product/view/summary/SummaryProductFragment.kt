@@ -47,6 +47,7 @@ import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.addTo
+import kotlinx.coroutines.runBlocking
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.R
@@ -842,7 +843,8 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
 
     private fun onBookmarkProductButtonClick() {
         val activity: Activity = requireActivity()
-        val productLists = daoSession.getProductListsDaoWithDefaultList(activity).loadAll()
+        // TODO: 19/06/2021 remove runBlocking
+        val productLists = runBlocking { daoSession.getProductListsDaoWithDefaultList(activity).loadAll() }
         val productBarcode = product.code
         val productName = product.productName
         val imageUrl = product.getImageSmallUrl(localeManager.getLanguage())

@@ -36,6 +36,9 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
 import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
@@ -93,10 +96,12 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
 
         binding.fabAdd.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_plus_blue_24, 0, 0, 0)
 
-        productListsDao = daoSession.getProductListsDaoWithDefaultList(this)
+        // FIXME: remove runBlocking
+        productListsDao = runBlocking { daoSession.getProductListsDaoWithDefaultList(this@ProductListsActivity) }
         val productLists = productListsDao.loadAll().toMutableList()
 
-        adapter = ProductListsAdapter(this, productLists)
+        adapter = ProductListsAdapter(this@ProductListsActivity, productLists)
+
 
         binding.productListsRecyclerView.layoutManager = LinearLayoutManager(this)
         binding.productListsRecyclerView.adapter = adapter
@@ -110,15 +115,15 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
         }
 
         binding.productListsRecyclerView.addOnItemTouchListener(
-                RecyclerItemClickListener(this) { _, position ->
-                    val id = productLists[position].id
-                    val listName = productLists[position].listName
-                    Intent(this, ProductListActivity::class.java).apply {
-                        putExtra(KEY_LIST_ID, id)
-                        putExtra(KEY_LIST_NAME, listName)
-                        startActivityForResult(this, 1)
-                    }
+            RecyclerItemClickListener(this) { _, position ->
+                val id = productLists[position].id
+                val listName = productLists[position].listName
+                Intent(this, ProductListActivity::class.java).apply {
+                    putExtra(KEY_LIST_ID, id)
+                    putExtra(KEY_LIST_NAME, listName)
+                    startActivityForResult(this, 1)
                 }
+            }
         )
         val swipeController = SwipeController(this, this)
         val itemTouchHelper = ItemTouchHelper(swipeController)
@@ -129,47 +134,47 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
 
     private fun showCreateListDialog(productToAdd: Product? = null) {
         MaterialDialog.Builder(this)
-                .title(R.string.txt_create_new_list)
-                .alwaysCallInputCallback()
-                .input(R.string.create_new_list_list_name, R.string.empty, false) { dialog, listName ->
-                    // validate if there is another list with the same name
-                    val cannotAdd = checkListNameExist(listName.toString())
+            .title(R.string.txt_create_new_list)
+            .alwaysCallInputCallback()
+            .input(R.string.create_new_list_list_name, R.string.empty, false) { dialog, listName ->
+                // validate if there is another list with the same name
+                val cannotAdd = checkListNameExist(listName.toString())
 
-                    dialog.inputEditText?.error = if (cannotAdd) resources.getString(R.string.error_duplicate_listname) else null
-                    dialog.getActionButton(DialogAction.POSITIVE).isEnabled = !cannotAdd
-                }
-                .positiveText(R.string.dialog_create)
-                .negativeText(R.string.dialog_cancel)
-                .onPositive { dialog, _ ->  // this enable to avoid dismissing dialog if list name already exist
-                    matomoAnalytics.trackEvent(AnalyticsEvent.ShoppingListCreated)
-                    val inputEditText = dialog.inputEditText!!
-                    val listName = inputEditText.text.toString()
-                    val productList = ProductLists(listName, if (productToAdd != null) 1 else 0)
+                dialog.inputEditText?.error = if (cannotAdd) resources.getString(R.string.error_duplicate_listname) else null
+                dialog.getActionButton(DialogAction.POSITIVE).isEnabled = !cannotAdd
+            }
+            .positiveText(R.string.dialog_create)
+            .negativeText(R.string.dialog_cancel)
+            .onPositive { dialog, _ ->  // this enable to avoid dismissing dialog if list name already exist
+                matomoAnalytics.trackEvent(AnalyticsEvent.ShoppingListCreated)
+                val inputEditText = dialog.inputEditText!!
+                val listName = inputEditText.text.toString()
+                val productList = ProductLists(listName, if (productToAdd != null) 1 else 0)
 
-                    adapter.lists.add(productList)
-                    productListsDao.insert(productList)
+                adapter.lists.add(productList)
+                productListsDao.insert(productList)
 
-                    adapter.notifyDataSetChanged()
+                adapter.notifyDataSetChanged()
 
-                    if (productToAdd != null) {
-                        val id = productList.id
-                        Intent(this@ProductListsActivity, ProductListActivity::class.java).apply {
-                            putExtra(KEY_LIST_ID, id)
-                            putExtra(KEY_LIST_NAME, listName)
-                            putExtra(KEY_PRODUCT_TO_ADD, productToAdd)
-                            startActivityForResult(this, 1)
-                        }
-                    } else {
-                        dialog.dismiss()
+                if (productToAdd != null) {
+                    val id = productList.id
+                    Intent(this@ProductListsActivity, ProductListActivity::class.java).apply {
+                        putExtra(KEY_LIST_ID, id)
+                        putExtra(KEY_LIST_NAME, listName)
+                        putExtra(KEY_PRODUCT_TO_ADD, productToAdd)
+                        startActivityForResult(this, 1)
                     }
-                }.show()
+                } else {
+                    dialog.dismiss()
+                }
+            }.show()
     }
 
     /**
      * Check if listname already in products lists.
      */
     private fun checkListNameExist(listName: String) =
-            adapter.lists.firstOrNull { it.listName == listName } != null
+        adapter.lists.firstOrNull { it.listName == listName } != null
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -195,7 +200,7 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
 
             // delete the product from YOUR_LISTED_PRODUCT_TABLE
             val deleteQuery = daoSession.listedProductDao.queryBuilder()
-                    .where(ListedProductDao.Properties.ListId.eq(productToRemove.id)).buildDelete()
+                .where(ListedProductDao.Properties.ListId.eq(productToRemove.id)).buildDelete()
             deleteQuery.executeDeleteWithoutDetachingEntities()
             daoSession.clear()
 
@@ -236,21 +241,21 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
                 val list = mutableListOf<ListedProduct>()
                 try {
                     CSVParser(
-                            InputStreamReader(inputStream),
-                            CSVFormat.DEFAULT.withFirstRecordAsHeader()
+                        InputStreamReader(inputStream),
+                        CSVFormat.DEFAULT.withFirstRecordAsHeader()
                     ).use { parser ->
                         val size = parser.records.size
                         parser.records.withIndex().forEach { (index, record) ->
                             val listName = record[2]
                             var daoList = productListsDao.queryBuilder()
-                                    .where(ProductListsDao.Properties.ListName.eq(listName)).unique()
+                                .where(ProductListsDao.Properties.ListName.eq(listName)).unique()
                             if (daoList == null) {
                                 //create new list
                                 val productList = ProductLists(listName, 0)
                                 adapter.lists.add(productList)
                                 productListsDao.insert(productList)
                                 daoList = productListsDao.queryBuilder()
-                                        .where(ProductListsDao.Properties.ListName.eq(listName)).unique()
+                                    .where(ProductListsDao.Properties.ListName.eq(listName)).unique()
                             }
                             val yourListedProduct = ListedProduct().apply {
                                 this.barcode = record[0]
@@ -285,22 +290,21 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
 
         @JvmStatic
         fun start(context: Context, productToAdd: Product) = context.startActivity(
-                Intent(context, ProductListsActivity::class.java).apply {
-                    putExtra(KEY_PRODUCT, productToAdd)
-                })
+            Intent(context, ProductListsActivity::class.java).apply {
+                putExtra(KEY_PRODUCT, productToAdd)
+            })
 
         @JvmStatic
         fun start(context: Context) = context.startActivity(Intent(context, ProductListsActivity::class.java))
 
-        fun DaoSession.getProductListsDaoWithDefaultList(context: Context): ProductListsDao {
-            val productListsDao = productListsDao
-            if (productListsDao.isEmpty()) {
-                productListsDao.insertInTx(
-                        ProductLists(context.getString(R.string.txt_eaten_products), 0),
-                        ProductLists(context.getString(R.string.txt_products_to_buy), 0)
+        suspend fun DaoSession.getProductListsDaoWithDefaultList(context: Context): ProductListsDao = withContext(Dispatchers.IO) {
+            if (this@getProductListsDaoWithDefaultList.productListsDao.isEmpty()) {
+                this@getProductListsDaoWithDefaultList.productListsDao.insertInTx(
+                    ProductLists(context.getString(R.string.txt_eaten_products), 0),
+                    ProductLists(context.getString(R.string.txt_products_to_buy), 0)
                 )
             }
-            return productListsDao
+            return@withContext this@getProductListsDaoWithDefaultList.productListsDao
         }
     }
 }

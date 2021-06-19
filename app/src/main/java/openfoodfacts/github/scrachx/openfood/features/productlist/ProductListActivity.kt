@@ -354,7 +354,7 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
         Toast.makeText(this, R.string.txt_exporting_your_listed_products, Toast.LENGTH_LONG).show()
 
         val listName = productList.listName
-        val flavor = BuildConfig.FLAVOR.toUpperCase(Locale.ROOT)
+        val flavor = BuildConfig.FLAVOR.uppercase(Locale.ROOT)
         val date = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
         val fileName = "$flavor-${listName}_$date.csv"
 

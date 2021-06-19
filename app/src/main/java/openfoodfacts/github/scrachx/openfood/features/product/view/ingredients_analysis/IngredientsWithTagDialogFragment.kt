@@ -74,13 +74,14 @@ class IngredientsWithTagDialogFragment : DialogFragment() {
         }
         binding.title.text = name
         binding.cb.let {
-            it.text = getString(R.string.display_analysis_tag_status, typeName.toLowerCase(Locale.getDefault()))
+            it.text = getString(R.string.display_analysis_tag_status, typeName.lowercase(Locale.getDefault()))
             it.isChecked = sharedPreferences.getBoolean(type, true)
             it.setOnCheckedChangeListener { _, isChecked ->
                 sharedPreferences.edit { putBoolean(type, isChecked) }
             }
         }
-        var messageToBeShown = HtmlCompat.fromHtml(getString(R.string.ingredients_in_this_product_are, name!!.toLowerCase()), HtmlCompat.FROM_HTML_MODE_LEGACY)
+        var messageToBeShown =
+            HtmlCompat.fromHtml(getString(R.string.ingredients_in_this_product_are, name!!.lowercase(Locale.getDefault())), HtmlCompat.FROM_HTML_MODE_LEGACY)
         val showHelpTranslate = tag != null && tag.contains("unknown")
 
         if (arguments.getBoolean(PHOTOS_TO_BE_VALIDATED_KEY, false)) {
@@ -98,7 +99,8 @@ class IngredientsWithTagDialogFragment : DialogFragment() {
             binding.image.setOnClickListener { goToExtract() }
             messageToBeShown = HtmlCompat.fromHtml(getString(R.string.unknown_status_missing_ingredients), HtmlCompat.FROM_HTML_MODE_LEGACY)
 
-            binding.helpNeeded.text = HtmlCompat.fromHtml(getString(R.string.help_extract_ingredients, typeName.toLowerCase(Locale.getDefault())), HtmlCompat.FROM_HTML_MODE_LEGACY)
+            binding.helpNeeded.text =
+                HtmlCompat.fromHtml(getString(R.string.help_extract_ingredients, typeName.lowercase(Locale.getDefault())), HtmlCompat.FROM_HTML_MODE_LEGACY)
             binding.helpNeeded.setOnClickListener { goToExtract() }
             binding.helpNeeded.visibility = View.VISIBLE
 
@@ -121,7 +123,10 @@ class IngredientsWithTagDialogFragment : DialogFragment() {
         } else {
             binding.image.visibility = View.GONE
             if (!TextUtils.isEmpty(ingredients)) {
-                messageToBeShown = HtmlCompat.fromHtml("${getString(R.string.ingredients_in_this_product, name.toLowerCase(Locale.getDefault()))}$ingredients", HtmlCompat.FROM_HTML_MODE_LEGACY)
+                messageToBeShown = HtmlCompat.fromHtml(
+                    "${getString(R.string.ingredients_in_this_product, name.lowercase(Locale.getDefault()))}$ingredients",
+                    HtmlCompat.FROM_HTML_MODE_LEGACY
+                )
             }
             binding.helpNeeded.visibility = View.GONE
         }
@@ -218,9 +223,9 @@ class IngredientsWithTagDialogFragment : DialogFragment() {
 
         private fun getMatchingIngredientsText(product: Product, ingredients: Array<String>): String? {
             val matchingIngredients = product.ingredients
-                    .filter { ingredients[1] == it[ingredients[0]] }
-                    .mapNotNull { it["text"] as String? }
-                    .map { it.toLowerCase(Locale.getDefault()).replace("_", "") }
+                .filter { ingredients[1] == it[ingredients[0]] }
+                .mapNotNull { it["text"] as String? }
+                .map { it.lowercase(Locale.getDefault()).replace("_", "") }
             return if (matchingIngredients.isEmpty()) null
             else StringBuilder().apply {
                 append(" <b>")

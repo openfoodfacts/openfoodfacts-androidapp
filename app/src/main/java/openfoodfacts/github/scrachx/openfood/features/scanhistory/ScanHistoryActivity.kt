@@ -235,7 +235,7 @@ class ScanHistoryActivity : BaseActivity() {
     private fun exportAsCSV() {
         Toast.makeText(this, R.string.txt_exporting_history, Toast.LENGTH_LONG).show()
 
-        val flavor = BuildConfig.FLAVOR.toUpperCase(Locale.ROOT)
+        val flavor = BuildConfig.FLAVOR.uppercase(Locale.ROOT)
         val date = SimpleDateFormat("yyyy-MM-dd", localeManager.getLocale()).format(Date())
         val fileName = "$flavor-history_$date.csv"
 

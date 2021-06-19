@@ -18,11 +18,11 @@ package openfoodfacts.github.scrachx.openfood.customtabs
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.net.Uri
 import android.util.Log
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.browser.customtabs.CustomTabsSession
+import androidx.core.net.toUri
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.utils.Utils.getBitmapFromDrawable
 
@@ -77,8 +77,9 @@ object CustomTabsHelper {
         if (sPackageNameToUse != null) return sPackageNameToUse
 
         val pm = context.packageManager
+
         // Get default VIEW intent handler.
-        val activityIntent = Intent(Intent.ACTION_VIEW, Uri.parse("http://www.example.com"))
+        val activityIntent = Intent(Intent.ACTION_VIEW, "https://www.example.com".toUri())
         val defaultViewHandlerInfo = pm.resolveActivity(activityIntent, 0)
         var defaultViewHandlerPackageName: String? = null
         if (defaultViewHandlerInfo != null) {
@@ -87,12 +88,13 @@ object CustomTabsHelper {
 
         // Get all apps that can handle VIEW intents.
         val resolvedActivityList = pm.queryIntentActivities(activityIntent, 0)
-        val packagesSupportingCustomTabs: List<String?> = resolvedActivityList.mapNotNull { info ->
+        val packagesSupportingCustomTabs = resolvedActivityList.mapNotNull { info ->
             val serviceIntent = Intent().apply {
                 action = ACTION_CUSTOM_TABS_CONNECTION
                 setPackage(info.activityInfo.packageName)
             }
-            return if (pm.resolveService(serviceIntent, 0) != null) info.activityInfo.packageName else null
+            return@mapNotNull if (pm.resolveService(serviceIntent, 0) != null) info.activityInfo.packageName
+            else null
         }
 
         // Now packagesSupportingCustomTabs contains all apps that can handle both VIEW intents

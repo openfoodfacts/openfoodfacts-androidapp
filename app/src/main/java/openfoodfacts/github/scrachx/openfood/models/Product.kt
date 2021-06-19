@@ -321,9 +321,9 @@ class Product : SearchProduct() {
     fun getAvailableLanguageForImage(type: ProductImageField, size: ImageSize): List<String> {
         val images = additionalProperties[ApiFields.Keys.SELECTED_IMAGES] as Map<String, Map<String, Map<String, String>>>?
         if (images != null) {
-            val imagesType = images[type.name.toLowerCase(Locale.ROOT)]
+            val imagesType = images[type.name.lowercase(Locale.ROOT)]
             if (imagesType != null) {
-                val imagesByLocale = imagesType[size.name.toLowerCase(Locale.ROOT)] ?: error("")
+                val imagesByLocale = imagesType[size.name.lowercase(Locale.ROOT)] ?: error("")
                 return ArrayList(imagesByLocale.keys)
             }
         }
@@ -338,7 +338,7 @@ class Product : SearchProduct() {
         val languagesCodes = additionalProperties["languages_codes"] as Map<String, Map<*, *>>?
         return languageCode != null
                 && languagesCodes != null
-                && languagesCodes.containsKey(languageCode.toLowerCase(Locale.ROOT))
+                && languagesCodes.containsKey(languageCode.lowercase(Locale.ROOT))
     }
 
     fun getImageFrontUrl(languageCode: String?): String? {

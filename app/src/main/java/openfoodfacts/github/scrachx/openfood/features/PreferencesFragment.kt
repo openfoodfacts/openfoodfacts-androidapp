@@ -294,7 +294,7 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
                     summary = null
                     summaryOn = null
                     summaryOff = null
-                    title = getString(R.string.display_analysis_tag_status, config.typeName.toLowerCase(Locale.getDefault()))
+                    title = getString(R.string.display_analysis_tag_status, config.typeName.lowercase(Locale.getDefault()))
                     setOnPreferenceChangeListener { _, newValue ->
                         val event = if (newValue == true) {
                             AnalyticsEvent.IngredientAnalysisEnabled(config.type)
@@ -406,10 +406,10 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
 
     private fun initLanguageCell() {
         val localesWithNames = SupportedLanguages.codes()
-                .map {
-                    val locale = LocaleUtils.parseLocale(it)
-                    it to locale.getDisplayName(locale).capitalize(locale)
-                }
+            .map { lc ->
+                val locale = LocaleUtils.parseLocale(lc)
+                lc to locale.getDisplayName(locale).replaceFirstChar { if (it.isLowerCase()) it.titlecase(locale) else it.toString() }
+            }
 
         requirePreference<ListPreference>(getString(R.string.pref_language_key)).let { preference ->
             preference.entries = localesWithNames.map { it.second }.toTypedArray()

@@ -95,7 +95,7 @@ open class SearchProduct : Serializable {
         if (images != null) {
             images = images[type.toString()] as Map<String?, Map<*, *>>?
             if (images != null) {
-                val imagesByLocale = images[size.name.toLowerCase(Locale.ROOT)] as Map<String?, String>?
+                val imagesByLocale = images[size.name.lowercase(Locale.ROOT)] as Map<String?, String>?
                 if (imagesByLocale != null) {
                     val url = imagesByLocale[languageCode]
                     if (!url.isNullOrBlank()) {

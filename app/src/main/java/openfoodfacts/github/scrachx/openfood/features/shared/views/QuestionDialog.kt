@@ -24,7 +24,7 @@ import androidx.core.content.res.ResourcesCompat
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.DialogProductQuestionBinding
 
-class QuestionDialog(private val mContext: Context) {
+class QuestionDialog(mContext: Context) {
     private val binding = DialogProductQuestionBinding.inflate(LayoutInflater.from(mContext))
     private val mDialog = Dialog(mContext, R.style.QuestionDialog).apply {
         requestWindowFeature(android.view.Window.FEATURE_NO_TITLE)
