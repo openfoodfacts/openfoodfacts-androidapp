@@ -30,12 +30,10 @@ import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.widget.ViewPager2
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.afollestad.materialdialogs.MaterialDialog
-import com.google.android.material.snackbar.BaseTransientBottomBar
+import com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_INDEFINITE
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.rxkotlin.addTo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.rx2.await
@@ -474,59 +472,73 @@ class ProductEditActivity : BaseActivity() {
         }
     }
 
-    private fun setPhoto(image: ProductImage, imageField: String, imgId: String, performOCR: Boolean) {
+    private suspend fun setPhoto(image: ProductImage, imageField: String, imgId: String, performOCR: Boolean) {
         val queryMap = mapOf(IMG_ID to imgId, "id" to imageField)
 
-        productsApi.editImage(image.barcode, queryMap)
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnError {
-                if (it is IOException) {
+        val jsonNode = withContext(Dispatchers.IO) {
+            try {
+                productsApi.editImage(image.barcode, queryMap).await()
+            } catch (err: Exception) {
+                if (err is IOException) {
                     if (performOCR) {
                         val view = findViewById<View>(R.id.coordinator_layout)
                         Snackbar.make(view, R.string.no_internet_unable_to_extract_ingredients, Snackbar.LENGTH_INDEFINITE)
-                            .setAction(R.string.txt_try_again) { setPhoto(image, imageField, imgId, true) }
+                            .setAction(R.string.txt_try_again) {
+                                lifecycleScope.launch { setPhoto(image, imageField, imgId, true) }
+                            }
                             .show()
                     }
                 } else {
-                    Log.w(this::class.simpleName, it.message!!)
-                    Toast.makeText(this@ProductEditActivity, it.message, Toast.LENGTH_SHORT).show()
+                    Log.w(this::class.simpleName, err.message!!)
+                    Toast.makeText(this@ProductEditActivity, err.message, Toast.LENGTH_SHORT).show()
                 }
+                return@withContext null
             }
-            .subscribe { jsonNode ->
-                val status = jsonNode["status"].asText()
-                if (performOCR && status == "status ok") {
-                    performOCR(image.barcode, imageField)
-                }
-            }.addTo(disp)
+        } ?: return
+
+        withContext(Dispatchers.Main) {
+            val status = jsonNode["status"].asText()
+            if (performOCR && status == "status ok") {
+                performOCR(image.barcode, imageField)
+            }
+        }
+
     }
 
-    fun performOCR(code: String, imageField: String) {
-        productsApi.performOCR(code, imageField)
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnSubscribe { ingredientsFragment.showOCRProgress() }
-            .doOnError {
+
+    suspend fun performOCR(code: String, imageField: String) {
+        withContext(Dispatchers.Main) { ingredientsFragment.showOCRProgress() }
+
+        val node = withContext(Dispatchers.IO) {
+            try {
+                productsApi.performOCR(code, imageField).await()
+            } catch (err: Exception) {
                 ingredientsFragment.hideOCRProgress()
-                if (it is IOException) {
+                if (err is IOException) {
                     val view = findViewById<View>(R.id.coordinator_layout)
-                    Snackbar.make(view, R.string.no_internet_unable_to_extract_ingredients, BaseTransientBottomBar.LENGTH_INDEFINITE)
-                        .setAction(R.string.txt_try_again) { performOCR(code, imageField) }
+                    Snackbar.make(view, R.string.no_internet_unable_to_extract_ingredients, LENGTH_INDEFINITE)
+                        .setAction(R.string.txt_try_again) {
+                            lifecycleScope.launch { performOCR(code, imageField) }
+                        }
                         .show()
                 } else {
-                    Log.e(this::class.simpleName, it.message, it)
-                    Toast.makeText(this@ProductEditActivity, it.message, Toast.LENGTH_SHORT).show()
+                    Log.e(this::class.simpleName, err.message, err)
+                    Toast.makeText(this@ProductEditActivity, err.message, Toast.LENGTH_SHORT).show()
                 }
+                null
             }
-            .subscribe { node ->
-                ingredientsFragment.hideOCRProgress()
-                val status = node["status"].toString()
-                if (status == "0") {
-                    val ocrResult = node["ingredients_text_from_image"].asText()
-                    ingredientsFragment.setIngredients(status, ocrResult)
-                } else {
-                    ingredientsFragment.setIngredients(status, null)
-                }
+        } ?: return
+
+        withContext(Dispatchers.Main) {
+            ingredientsFragment.hideOCRProgress()
+            val status = node["status"].toString()
+            if (status == "0") {
+                val ocrResult = node["ingredients_text_from_image"].asText()
+                ingredientsFragment.setIngredients(status, ocrResult)
+            } else {
+                ingredientsFragment.setIngredients(status, null)
             }
-            .addTo(disp)
+        }
     }
 
     private suspend fun hideImageProgress(
