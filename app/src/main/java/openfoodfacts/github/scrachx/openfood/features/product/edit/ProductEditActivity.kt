@@ -448,7 +448,7 @@ class ProductEditActivity : BaseActivity() {
             val alreadySent = error == "This picture has already been sent."
             if (alreadySent && performOCR) {
                 hideImageProgress(position, getString(R.string.image_uploaded_successfully))
-                performOCR(image.barcode, "ingredients_${getProductLanguageForEdition()}")
+                withContext(Dispatchers.Main) { performOCR(image.barcode, "ingredients_${getProductLanguageForEdition()}") }
             } else {
                 hideImageProgress(position, error, true)
             }
