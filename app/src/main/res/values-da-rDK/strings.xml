@@ -514,8 +514,8 @@
     <string name="notify_channel_description">Notifikation for at vise eksporterede fils placering</string>
     <string name="products_to_be_completed">Produkter, som skal færdiggøres</string>
     <string name="offline_notification_title">Offline-bidrag, du skal sende</string>
-    <string name="creator_history">Produkt tilføjetd. %1$s kl. %2$s CET af</string>
-    <string name="last_editor_history">Seneste redigering af produktside d. %1$s kl. %2$s CEST by </string>
+    <string name="creator_history">Produkt tilføjetd. %1$s kl. %2$s CET af %3$s</string>
+    <string name="last_editor_history">Seneste redigering af produktside d. %1$s kl. %2$s CEST by %3$s</string>
     <string name="other_editors">Produktside også redigeret af </string>
     <string name="product_states">Product States</string>
     <string name="incomplete_states">Incomplete States</string>
