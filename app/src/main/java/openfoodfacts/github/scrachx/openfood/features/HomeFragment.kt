@@ -25,7 +25,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
 import androidx.lifecycle.lifecycleScope
-import com.afollestad.materialdialogs.MaterialDialog
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.addTo
@@ -145,13 +145,11 @@ class HomeFragment : NavigationBaseFragment() {
                     putString("pass", "")
                 }
                 withContext(Dispatchers.Main) {
-                    MaterialDialog.Builder(requireActivity()).let {
-                        it.title(R.string.alert_dialog_warning_title)
-                        it.content(R.string.alert_dialog_warning_msg_user)
-                        it.positiveText(R.string.txtOk)
-                        it.onPositive { _, _ -> loginLauncher.launch(Unit) }
-                        it.show()
-                    }
+                    MaterialAlertDialogBuilder(requireActivity())
+                        .setTitle(R.string.alert_dialog_warning_title)
+                        .setMessage(R.string.alert_dialog_warning_msg_user)
+                        .setPositiveButton(android.R.string.ok) { _, _ -> loginLauncher.launch(Unit) }
+                        .show()
                 }
             }
         }

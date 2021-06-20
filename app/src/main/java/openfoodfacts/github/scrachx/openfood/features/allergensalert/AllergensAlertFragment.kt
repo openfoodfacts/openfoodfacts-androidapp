@@ -26,6 +26,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView.AdapterDataObserver
 import com.afollestad.materialdialogs.MaterialDialog
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.addTo
@@ -180,10 +181,10 @@ class AllergensAlertFragment : NavigationBaseFragment() {
                     }
                     .addTo(disp)
             } else {
-                MaterialDialog.Builder(requireContext())
-                    .title(R.string.title_dialog_alert)
-                    .content(R.string.info_download_data_connection)
-                    .neutralText(R.string.txtOk)
+                MaterialAlertDialogBuilder(requireContext())
+                    .setTitle(R.string.title_dialog_alert)
+                    .setMessage(R.string.info_download_data_connection)
+                    .setNeutralButton(android.R.string.ok) { d, _ -> d.dismiss() }
                     .show()
             }
         }

@@ -79,7 +79,7 @@ class CommonBottomListener internal constructor(private val currentActivity: Act
             MaterialDialog.Builder(currentActivity).run {
                 title(R.string.no_camera_dialog_title)
                 content(R.string.no_camera_dialog_content)
-                neutralText(R.string.txtOk)
+                neutralText(android.R.string.ok)
                 show()
             }
 
@@ -89,9 +89,9 @@ class CommonBottomListener internal constructor(private val currentActivity: Act
         if (ContextCompat.checkSelfPermission(currentActivity, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             if (currentActivity.hasWindowFocus() && ActivityCompat.shouldShowRequestPermissionRationale(currentActivity, Manifest.permission.CAMERA)) {
                 MaterialDialog.Builder(currentActivity)
-                        .title(R.string.action_about)
-                        .content(R.string.permission_camera)
-                        .neutralText(R.string.txtOk)
+                    .title(R.string.action_about)
+                    .content(R.string.permission_camera)
+                    .neutralText(android.R.string.ok)
                         .onNeutral { _, _ ->
                             ActivityCompat.requestPermissions(
                                     currentActivity,

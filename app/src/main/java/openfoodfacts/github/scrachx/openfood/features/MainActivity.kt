@@ -354,7 +354,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
                         ITEM_LOGOUT -> MaterialDialog.Builder(this@MainActivity).run {
                             title(R.string.confirm_logout)
                             content(R.string.logout_dialog_content)
-                            positiveText(R.string.txtOk)
+                            positiveText(android.R.string.ok)
                             negativeText(R.string.dialog_cancel)
                             onPositive { _, _ -> logout() }
                             onNegative { dialog, _ ->
@@ -477,7 +477,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
                 MaterialDialog.Builder(this@MainActivity).run {
                     title(R.string.action_about)
                     content(R.string.permission_camera)
-                    neutralText(R.string.txtOk)
+                    neutralText(android.R.string.ok)
                     show().setOnDismissListener {
                         ActivityCompat.requestPermissions(
                             this@MainActivity,
@@ -674,7 +674,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
         val feedbackDialog = MaterialDialog.Builder(this).apply {
             title(R.string.app_name)
             content(R.string.user_ask_show_feedback_form)
-            positiveText(R.string.txtOk)
+            positiveText(android.R.string.ok)
             negativeText(R.string.txtNo)
             onPositive { dialog, _ ->
                 //show feedback form
