@@ -678,10 +678,10 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
     }
 
     private val isDataPerServing: Boolean
-        get() = binding.radioGroup.checkedRadioButtonId == R.id.per_serving
+        get() = viewModel.isDataPerServing.value!!
 
     private val isDataPer100g: Boolean
-        get() = binding.radioGroup.checkedRadioButtonId == R.id.for100g_100ml
+        get() = viewModel.isDataPer100g.value!!
 
     private val referenceValueInGram: Float
         get() {
