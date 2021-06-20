@@ -6,6 +6,10 @@ import android.util.Log
 import androidx.core.net.toUri
 import io.reactivex.Maybe
 import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.rx2.await
+import kotlinx.coroutines.rx2.rxMaybe
+import kotlinx.coroutines.withContext
 import okhttp3.ResponseBody
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.Utils.makeOrGetPictureDirectory
@@ -31,18 +35,19 @@ object FileDownloader {
      * @param fileUrl provides the URL of the file to download.
      * @return [Maybe]
      */
-    fun download(context: Context, fileUrl: String, client: OpenFoodAPIClient) = client.rawApi
-            .downloadFile(fileUrl)
-            .flatMapMaybe { body ->
-                Log.d(LOG_TAG, "Server contacted and has file")
-                val writtenToDisk = writeResponseBodyToDiskSync(context, body, fileUrl)
-                if (writtenToDisk != null) {
-                    Log.d(LOG_TAG, "Downloaded file $writtenToDisk")
-                    Maybe.just(writtenToDisk)
-                } else Maybe.empty()
-            }
-            .doOnError { Log.e(LOG_TAG, "error", it) }
-            .subscribeOn(Schedulers.io()) // IO operation -> Schedulers.io()
+    fun download(context: Context, fileUrl: String, client: OpenFoodAPIClient): Maybe<Uri> = rxMaybe(Dispatchers.IO) {
+        val body = try {
+            client.rawApi.downloadFile(fileUrl).await()
+        } catch (err: Exception) {
+            Log.e(LOG_TAG, "error", err)
+            return@rxMaybe null
+        }
+        Log.d(LOG_TAG, "Server contacted and has file")
+
+        writeResponseBodyToDiskSync(context, body, fileUrl).also {
+            Log.d(LOG_TAG, "Downloaded file $it")
+        }
+    }
 
     /**
      * A method to write the response body to disk.
@@ -52,20 +57,21 @@ object FileDownloader {
      * @param request: url of the downloaded file.
      * @return [File] that has been written to the disk.
      */
-    private fun writeResponseBodyToDiskSync(context: Context, body: ResponseBody, request: String): Uri? {
-        val requestUri = request.toUri()
-        val writtenFile = File(makeOrGetPictureDirectory(context), "${System.currentTimeMillis()}-${requestUri.lastPathSegment}")
-        return try {
-            body.byteStream().use { stream ->
-                writtenFile.outputStream().use { out ->
-                    stream.copyTo(out)
-                    out.flush()
+    private suspend fun writeResponseBodyToDiskSync(context: Context, body: ResponseBody, request: String): Uri? =
+        withContext(Dispatchers.IO) {
+            val requestUri = request.toUri()
+            val writtenFile = File(makeOrGetPictureDirectory(context), "${System.currentTimeMillis()}-${requestUri.lastPathSegment}")
+            try {
+                body.byteStream().use { stream ->
+                    writtenFile.outputStream().use { out ->
+                        stream.copyTo(out)
+                        out.flush()
+                    }
                 }
+                writtenFile.toUri()
+            } catch (e: IOException) {
+                Log.w(LOG_TAG, "Could not write file $writtenFile to disk.", e)
+                null
             }
-            writtenFile.toUri()
-        } catch (e: IOException) {
-            Log.w(LOG_TAG, "Could not write file $writtenFile to disk.", e)
-            null
         }
-    }
 }
