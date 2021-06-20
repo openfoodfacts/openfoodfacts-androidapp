@@ -3,10 +3,9 @@ package openfoodfacts.github.scrachx.openfood.models.entities.additive
 import com.google.common.truth.Truth.assertThat
 import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import org.greenrobot.greendao.DaoException
-import org.junit.Assert
+import org.junit.Assert.assertThrows
 import org.junit.Before
 import org.junit.Test
-import org.junit.function.ThrowingRunnable
 import org.junit.runner.RunWith
 import org.mockito.ArgumentMatchers
 import org.mockito.Mock
@@ -40,7 +39,7 @@ class AdditiveTest {
 
     @Test
     fun getNamesWithNullNamesAndNullDaoSession_throwsDaoException() {
-        Assert.assertThrows<DaoException>(DaoException::class.java, ThrowingRunnable { mAdditive.names })
+        assertThrows(DaoException::class.java) { mAdditive.names }
     }
 
     @Test
@@ -54,7 +53,7 @@ class AdditiveTest {
 
     @Test
     fun deleteWithNullDao_throwsDaoException() {
-        Assert.assertThrows<DaoException>(DaoException::class.java, ThrowingRunnable { mAdditive.delete() })
+        assertThrows(DaoException::class.java) { mAdditive.delete() }
     }
 
     @Test
@@ -66,7 +65,7 @@ class AdditiveTest {
 
     @Test
     fun refreshWithNullDao_throwsDaoException() {
-        Assert.assertThrows<DaoException>(DaoException::class.java, ThrowingRunnable { mAdditive.refresh() })
+        assertThrows(DaoException::class.java) { mAdditive.refresh() }
     }
 
     @Test
@@ -78,7 +77,7 @@ class AdditiveTest {
 
     @Test
     fun updateWithNullDao_throwsDaoException() {
-        Assert.assertThrows<DaoException>(DaoException::class.java, ThrowingRunnable { mAdditive.update() })
+        assertThrows(DaoException::class.java) { mAdditive.update() }
     }
 
     @Test

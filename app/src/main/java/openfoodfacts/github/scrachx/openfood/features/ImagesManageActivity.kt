@@ -34,6 +34,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.edit
 import androidx.core.net.toFile
+import androidx.lifecycle.lifecycleScope
 import com.github.chrisbanes.photoview.PhotoViewAttacher
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
@@ -43,9 +44,14 @@ import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.rx2.await
+import kotlinx.coroutines.withContext
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityFullScreenImageBinding
 import openfoodfacts.github.scrachx.openfood.features.adapters.LanguageDataAdapter
+import openfoodfacts.github.scrachx.openfood.features.login.LoginActivity
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.images.*
 import openfoodfacts.github.scrachx.openfood.models.LanguageData
@@ -111,14 +117,14 @@ class ImagesManageActivity : BaseActivity() {
 
         binding.comboLanguages.onItemSelectedListener = object : OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) =
-                    onLanguageChanged()
+                onLanguageChanged()
 
             override fun onNothingSelected(parent: AdapterView<*>?) = Unit // Do nothing
         }
 
         binding.comboImageType.onItemSelectedListener = object : OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View, position: Int, id: Long) =
-                    onImageTypeChanged()
+                onImageTypeChanged()
 
             override fun onNothingSelected(parent: AdapterView<*>?) = Unit // Do nothing
         }
@@ -145,9 +151,9 @@ class ImagesManageActivity : BaseActivity() {
             }
         })
         binding.comboImageType.adapter = ArrayAdapter(
-                this,
-                R.layout.simple_spinner_item_white,
-                generateImageTypeNames()
+            this,
+            R.layout.simple_spinner_item_white,
+            generateImageTypeNames()
         ).apply {
             setDropDownViewResource(android.R.layout.simple_list_item_single_choice)
         }
@@ -168,29 +174,29 @@ class ImagesManageActivity : BaseActivity() {
 
     private fun startShowCase(title: String, content: String, viewId: Int, type: Int) {
         GuideView.Builder(this)
-                .setTitle(title)
-                .setContentText(content)
-                .setTargetView(findViewById(viewId))
-                .setContentTextSize(12)
-                .setTitleTextSize(16)
-                .setDismissType(GuideView.DismissType.outside)
-                .setGuideListener {
-                    when (type) {
-                        1 -> startShowCase(getString(R.string.title_choose_language), getString(R.string.content_choose_language), R.id.comboLanguages, 2)
-                        2 -> startShowCase(getString(R.string.title_add_photo), getString(R.string.content_add_photo), R.id.btnAddImage, 3)
-                        3 -> startShowCase(getString(R.string.title_choose_photo), getString(R.string.content_choose_photo), R.id.btnChooseImage, 4)
-                        4 -> startShowCase(getString(R.string.title_edit_photo), getString(R.string.content_edit_photo), R.id.btnEditImage, 5)
-                        5 -> startShowCase(getString(R.string.title_unselect_photo), getString(R.string.content_unselect_photo), R.id.btnUnselectImage, 6)
-                        6 -> startShowCase(getString(R.string.title_exit), getString(R.string.content_exit), R.id.btn_done, 7)
-                        7 -> settings!!.edit { putBoolean(getString(R.string.check_first_time), false) }
-                    }
+            .setTitle(title)
+            .setContentText(content)
+            .setTargetView(findViewById(viewId))
+            .setContentTextSize(12)
+            .setTitleTextSize(16)
+            .setDismissType(GuideView.DismissType.outside)
+            .setGuideListener {
+                when (type) {
+                    1 -> startShowCase(getString(R.string.title_choose_language), getString(R.string.content_choose_language), R.id.comboLanguages, 2)
+                    2 -> startShowCase(getString(R.string.title_add_photo), getString(R.string.content_add_photo), R.id.btnAddImage, 3)
+                    3 -> startShowCase(getString(R.string.title_choose_photo), getString(R.string.content_choose_photo), R.id.btnChooseImage, 4)
+                    4 -> startShowCase(getString(R.string.title_edit_photo), getString(R.string.content_edit_photo), R.id.btnEditImage, 5)
+                    5 -> startShowCase(getString(R.string.title_unselect_photo), getString(R.string.content_unselect_photo), R.id.btnUnselectImage, 6)
+                    6 -> startShowCase(getString(R.string.title_exit), getString(R.string.content_exit), R.id.btn_done, 7)
+                    7 -> settings!!.edit { putBoolean(getString(R.string.check_first_time), false) }
                 }
-                .build()
-                .show()
+            }
+            .build()
+            .show()
     }
 
     private fun generateImageTypeNames() =
-            ApiFields.Keys.TYPE_IMAGE.map { resources.getString(getResourceId(it)) }
+        ApiFields.Keys.TYPE_IMAGE.map { resources.getString(getResourceId(it)) }
 
     override fun onSupportNavigateUp(): Boolean {
         finish()
@@ -290,21 +296,21 @@ class ImagesManageActivity : BaseActivity() {
             }
             startRefresh(getString(R.string.txtLoading))
             picasso
-                    .load(url)
-                    .into(binding.imageViewFullScreen, object : Callback {
-                        override fun onSuccess() {
-                            attacher.update()
-                            scheduleStartPostponedTransition(binding.imageViewFullScreen)
-                            binding.imageViewFullScreen.visibility = View.VISIBLE
-                            stopRefresh()
-                        }
+                .load(url)
+                .into(binding.imageViewFullScreen, object : Callback {
+                    override fun onSuccess() {
+                        attacher.update()
+                        scheduleStartPostponedTransition(binding.imageViewFullScreen)
+                        binding.imageViewFullScreen.visibility = View.VISIBLE
+                        stopRefresh()
+                    }
 
-                        override fun onError(ex: Exception) {
-                            binding.imageViewFullScreen.visibility = View.VISIBLE
-                            Toast.makeText(this@ImagesManageActivity, resources.getString(R.string.txtConnectionError), Toast.LENGTH_LONG).show()
-                            stopRefresh()
-                        }
-                    })
+                    override fun onError(ex: Exception) {
+                        binding.imageViewFullScreen.visibility = View.VISIBLE
+                        Toast.makeText(this@ImagesManageActivity, resources.getString(R.string.txtConnectionError), Toast.LENGTH_LONG).show()
+                        stopRefresh()
+                    }
+                })
         }
     }
 
@@ -357,7 +363,7 @@ class ImagesManageActivity : BaseActivity() {
     }
 
     private fun getImageUrlToDisplay(product: Product) =
-            product.getSelectedImage(getCurrentLanguage(), getSelectedType(), ImageSize.DISPLAY)
+        product.getSelectedImage(getCurrentLanguage(), getSelectedType(), ImageSize.DISPLAY)
 
     private fun getCurrentImageUrl() = intent.getStringExtra(IMAGE_URL)
 
@@ -400,11 +406,11 @@ class ImagesManageActivity : BaseActivity() {
         if (cannotEdit(REQUEST_UNSELECT_IMAGE_AFTER_LOGIN)) return
         startRefresh(getString(R.string.unselect_image))
         client.unSelectImage(getProduct()!!.code, getSelectedType(), getCurrentLanguage())
-                .doOnError { reloadProduct() }
-                .subscribe { _ ->
-                    setResult(RESULTCODE_MODIFIED)
-                    reloadProduct()
-                }.addTo(disp)
+            .doOnError { reloadProduct() }
+            .subscribe { _ ->
+                setResult(RESULTCODE_MODIFIED)
+                reloadProduct()
+            }.addTo(disp)
     }
 
     private fun selectImage() {
@@ -470,14 +476,16 @@ class ImagesManageActivity : BaseActivity() {
         if (transformation.isEmpty()) return
 
         download(this, transformation.imageUrl!!, client)
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe { fileUri ->
-                    //to delete the file after:
-                    lastViewedImage = fileUri.toFile()
-                    cropRotateExistingImageOnServer(fileUri,
-                            getString(getResourceIdForEditAction(field)),
-                            transformation)
-                }.addTo(disp)
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe { fileUri ->
+                //to delete the file after:
+                lastViewedImage = fileUri.toFile()
+                cropRotateExistingImageOnServer(
+                    fileUri,
+                    getString(getResourceIdForEditAction(field)),
+                    transformation
+                )
+            }.addTo(disp)
     }
 
     private fun getProduct() = intent.getSerializableExtra(PRODUCT) as Product?
@@ -497,7 +505,7 @@ class ImagesManageActivity : BaseActivity() {
     }
 
     private fun getSelectedType(): ProductImageField = intent.getSerializableExtra(IMAGE_TYPE) as ProductImageField?
-            ?: error("Cannot initialize $LOG_TAG without IMAGE_TYPE")
+        ?: error("Cannot initialize $LOG_TAG without IMAGE_TYPE")
 
     private fun onImageTypeChanged() {
         getProduct()?.let {
@@ -517,14 +525,14 @@ class ImagesManageActivity : BaseActivity() {
     private fun cropRotateExistingImageOnServer(fileUri: Uri, title: String, transformation: ImageTransformation) {
 
         val activityBuilder = CropImage.activity(fileUri)
-                .setCropMenuCropButtonIcon(R.drawable.ic_check_white_24dp)
-                .setAllowFlipping(false) //we just want crop size/rotation
-                .setNoOutputImage(true)
-                .setAllowRotation(true)
-                .setAllowCounterRotation(true)
-                .setAutoZoomEnabled(false)
-                .setInitialRotation(transformation.rotationInDegree)
-                .setActivityTitle(title)
+            .setCropMenuCropButtonIcon(R.drawable.ic_check_white_24dp)
+            .setAllowFlipping(false) //we just want crop size/rotation
+            .setNoOutputImage(true)
+            .setAllowRotation(true)
+            .setAllowCounterRotation(true)
+            .setAutoZoomEnabled(false)
+            .setInitialRotation(transformation.rotationInDegree)
+            .setActivityTitle(title)
 
         if (transformation.cropRectangle != null) {
             activityBuilder.setInitialCropWindowRectangle(transformation.cropRectangle)
@@ -544,7 +552,7 @@ class ImagesManageActivity : BaseActivity() {
             REQUEST_CHOOSE_IMAGE_AFTER_LOGIN -> if (isResultOk) selectImage()
             REQUEST_UNSELECT_IMAGE_AFTER_LOGIN -> if (isResultOk) unSelectImage()
             else -> PhotoReceiverHandler(sharedPreferences) { onPhotoReturned(it) }
-                    .onActivityResult(this, requestCode, resultCode, data)
+                .onActivityResult(this, requestCode, resultCode, data)
         }
     }
 
@@ -574,7 +582,8 @@ class ImagesManageActivity : BaseActivity() {
             val result = CropImage.getActivityResult(dataFromCropActivity)
             val product = requireProduct()
             val currentServerTransformation = getInitialServerTransformation(product, getSelectedType(), getCurrentLanguage())
-            val newServerTransformation = toServerTransformation(ImageTransformation(result.rotation, result.cropRect), product, getSelectedType(), getCurrentLanguage())
+            val newServerTransformation =
+                toServerTransformation(ImageTransformation(result.rotation, result.cropRect), product, getSelectedType(), getCurrentLanguage())
             val isModified = currentServerTransformation != newServerTransformation
             if (isModified) {
                 startRefresh(getString(R.string.toastSending))
@@ -594,12 +603,15 @@ class ImagesManageActivity : BaseActivity() {
             put(IMAGE_STRING_ID, getImageStringKey(getSelectedType(), getCurrentLanguage()))
         }
         binding.imageViewFullScreen.visibility = View.INVISIBLE
-        client.editImage(code, map).subscribe { value ->
+
+        lifecycleScope.launch(Dispatchers.IO) {
+            val value = client.editImage(code, map).await()
             if (value != null) {
                 setResult(RESULTCODE_MODIFIED)
             }
-            reloadProduct()
-        }.addTo(disp)
+
+            withContext(Dispatchers.Main) { reloadProduct() }
+        }
     }
 
     private fun deleteLocalFiles() {
@@ -635,16 +647,16 @@ class ImagesManageActivity : BaseActivity() {
             filePath = newPhotoFile.absolutePath
         }
         client.postImg(image, true)
-                .observeOn(AndroidSchedulers.mainThread())
-                .doOnError {
-                    Toast.makeText(this@ImagesManageActivity, it.message, Toast.LENGTH_LONG).show()
-                    Log.e(ImagesManageActivity::class.java.simpleName, it.message, it)
-                    stopRefresh()
-                }
-                .subscribe {
-                    reloadProduct()
-                    setResult(RESULTCODE_MODIFIED)
-                }.addTo(disp)
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnError {
+                Toast.makeText(this@ImagesManageActivity, it.message, Toast.LENGTH_LONG).show()
+                Log.e(ImagesManageActivity::class.java.simpleName, it.message, it)
+                stopRefresh()
+            }
+            .subscribe {
+                reloadProduct()
+                setResult(RESULTCODE_MODIFIED)
+            }.addTo(disp)
     }
 
     companion object {
@@ -656,7 +668,7 @@ class ImagesManageActivity : BaseActivity() {
         const val REQUEST_EDIT_IMAGE = 1000
 
         fun isImageModified(requestCode: Int, resultCode: Int) =
-                requestCode == REQUEST_EDIT_IMAGE && resultCode == RESULTCODE_MODIFIED
+            requestCode == REQUEST_EDIT_IMAGE && resultCode == RESULTCODE_MODIFIED
 
         private val LOG_TAG = ImagesManageActivity::class.simpleName
     }

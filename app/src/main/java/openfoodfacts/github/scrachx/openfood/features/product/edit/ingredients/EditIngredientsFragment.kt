@@ -26,6 +26,7 @@ import android.widget.Toast
 import androidx.core.net.toFile
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.hootsuite.nachos.terminator.ChipTerminatorHandler
 import com.hootsuite.nachos.validator.ChipifyingNachoValidator
 import com.squareup.picasso.Callback
@@ -33,6 +34,7 @@ import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.addTo
+import kotlinx.coroutines.launch
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsView
@@ -358,10 +360,12 @@ class EditIngredientsFragment : ProductEditFragment() {
                     image.filePath = imagePath
                     activity.addToPhotoMap(image, 1)
                 } else {
-                    activity.performOCR(
-                        code!!,
-                        "ingredients_" + activity.getProductLanguageForEdition()
-                    )
+                    activity.lifecycleScope.launch {
+                        activity.performOCR(
+                            code!!,
+                            "ingredients_" + activity.getProductLanguageForEdition()
+                        )
+                    }
                 }
             }
 

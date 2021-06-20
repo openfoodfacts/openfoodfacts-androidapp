@@ -90,9 +90,9 @@ class ProductCompareActivity : BaseActivity() {
                 if (ContextCompat.checkSelfPermission(this@ProductCompareActivity, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
                     if (ActivityCompat.shouldShowRequestPermissionRationale(this@ProductCompareActivity, Manifest.permission.CAMERA)) {
                         MaterialDialog.Builder(this@ProductCompareActivity)
-                                .title(R.string.action_about)
-                                .content(R.string.permission_camera)
-                                .neutralText(R.string.txtOk)
+                            .title(R.string.action_about)
+                            .content(R.string.permission_camera)
+                            .neutralText(android.R.string.ok)
                                 .onNeutral { _, _ ->
                                     ActivityCompat.requestPermissions(this@ProductCompareActivity, arrayOf(Manifest.permission.CAMERA), MY_PERMISSIONS_REQUEST_CAMERA)
                                 }

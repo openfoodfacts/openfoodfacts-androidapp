@@ -6,6 +6,9 @@ import androidx.test.filters.SmallTest
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.rx2.await
+import kotlinx.coroutines.test.runBlockingTest
 import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.Allergen
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenName
@@ -21,6 +24,7 @@ import javax.inject.Inject
 /**
  * Created by Lobster on 05.03.18.
  */
+@ExperimentalCoroutinesApi
 @SmallTest
 @HiltAndroidTest
 class ProductRepositoryTest {
@@ -67,7 +71,7 @@ class ProductRepositoryTest {
     }
 
     @Test
-    fun testGetEnabledAllergens() {
+    fun testGetEnabledAllergens() = runBlockingTest {
         val allergens = productRepository.getEnabledAllergens()
         assertNotNull(allergens)
         assertEquals(1, allergens.size.toLong())
@@ -87,8 +91,8 @@ class ProductRepositoryTest {
     }
 
     @Test
-    fun testGetAllergensByLanguageCode() {
-        val allergenNames = productRepository.getAllergensByLanguageCode(TEST_LANGUAGE_CODE).blockingGet()
+    fun testGetAllergensByLanguageCode() = runBlockingTest {
+        val allergenNames = productRepository.getAllergensByLanguageCode(TEST_LANGUAGE_CODE).await()
         assertNotNull(allergenNames)
         assertEquals(2, allergenNames.size.toLong())
     }

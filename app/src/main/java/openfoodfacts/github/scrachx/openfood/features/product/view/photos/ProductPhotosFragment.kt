@@ -4,22 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.lifecycleScope
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.rxkotlin.addTo
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.rx2.await
-import kotlinx.coroutines.withContext
 import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentProductPhotosBinding
 import openfoodfacts.github.scrachx.openfood.features.FullScreenActivityOpener
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_STATE
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
-import openfoodfacts.github.scrachx.openfood.images.extractImagesNameSortedByUploadTimeDesc
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductState
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
@@ -35,6 +28,8 @@ import javax.inject.Inject
 class ProductPhotosFragment : BaseFragment() {
     private var _binding: FragmentProductPhotosBinding? = null
     private val binding get() = _binding!!
+
+    private val viewModel: ProductPhotosViewModel by viewModels()
 
     @Inject
     lateinit var client: OpenFoodAPIClient
@@ -54,41 +49,38 @@ class ProductPhotosFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         val product = requireProductState().product!!
 
-        viewLifecycleOwner.lifecycleScope.launch { loadImages(product) }
+        viewModel.product.value = product
+        viewModel.imageNames.observe(viewLifecycleOwner) { loadImages(product, it) }
     }
 
-    private suspend fun loadImages(product: Product) {
-        val adapter = withContext(Dispatchers.IO) {
-            val node = productsApi.getProductImages(product.code)
-                .observeOn(AndroidSchedulers.mainThread()).await()
+    private fun loadImages(product: Product, imageNames: List<String>) {
+        val adapter = ProductPhotosAdapter(
+            requireContext(),
+            this,
+            picasso,
+            client,
+            product,
+            imageNames,
+            binding.root
+        ) { position ->
+            // Retrieves url of the image clicked to open FullScreenActivity
+            val barcode = getBarcodeUrl(product)
+            val image = imageNames[position]
+            openFullScreen("${BuildConfig.STATICURL}/images/products/$barcode/$image.jpg")
+        }
 
-            val imageNames = node.extractImagesNameSortedByUploadTimeDesc()
-            return@withContext ProductPhotosAdapter(
-                requireContext(),
-                picasso,
-                client,
-                product,
-                imageNames,
-                binding.root
-            ) { position ->
-                // Retrieves url of the image clicked to open FullScreenActivity
-                val barcode = if (product.code.length <= 8) product.code
-                else StringBuilder(product.code)
-                    .insert(3, "/")
-                    .insert(6 + 1, "/")
-                    .insert(9 + 2, "/")
-                    .toString()
-                val image = imageNames[position]
-                openFullScreen("${BuildConfig.STATICURL}/images/products/$barcode/$image.jpg")
-            }.apply { addTo(disp) }
-        }
-        withContext(Dispatchers.Main) {
-            binding.progress.hide()
-            // Check if user is logged in
-            binding.imagesRecycler.adapter = adapter
-            binding.imagesRecycler.layoutManager = GridLayoutManager(context, 3)
-        }
+        binding.progress.hide()
+        // Check if user is logged in
+        binding.imagesRecycler.adapter = adapter
+        binding.imagesRecycler.layoutManager = GridLayoutManager(context, 3)
     }
+
+    private fun getBarcodeUrl(product: Product) = if (product.code.length <= 8) product.code
+    else StringBuilder(product.code)
+        .insert(3, "/")
+        .insert(6 + 1, "/")
+        .insert(9 + 2, "/")
+        .toString()
 
 
     override fun onDestroyView() {

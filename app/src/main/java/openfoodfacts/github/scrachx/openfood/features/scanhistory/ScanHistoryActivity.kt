@@ -190,7 +190,7 @@ class ScanHistoryActivity : BaseActivity() {
                     MaterialDialog.Builder(this).run {
                         title(R.string.action_about)
                         content(R.string.permision_write_external_storage)
-                        positiveText(R.string.txtOk)
+                        positiveText(android.R.string.ok)
                         onPositive { _, _ ->
                             storagePermLauncher.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
                         }
@@ -235,7 +235,7 @@ class ScanHistoryActivity : BaseActivity() {
     private fun exportAsCSV() {
         Toast.makeText(this, R.string.txt_exporting_history, Toast.LENGTH_LONG).show()
 
-        val flavor = BuildConfig.FLAVOR.toUpperCase(Locale.ROOT)
+        val flavor = BuildConfig.FLAVOR.uppercase(Locale.ROOT)
         val date = SimpleDateFormat("yyyy-MM-dd", localeManager.getLocale()).format(Date())
         val fileName = "$flavor-history_$date.csv"
 
@@ -255,9 +255,9 @@ class ScanHistoryActivity : BaseActivity() {
         if (ContextCompat.checkSelfPermission(baseContext, perm) != PackageManager.PERMISSION_GRANTED) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(this, perm)) {
                 MaterialDialog.Builder(this)
-                        .title(R.string.action_about)
-                        .content(R.string.permission_camera)
-                        .positiveText(R.string.txtOk)
+                    .title(R.string.action_about)
+                    .content(R.string.permission_camera)
+                    .positiveText(android.R.string.ok)
                         .onPositive { _, _ -> cameraPermLauncher.launch(perm) }
                         .show()
             } else {

@@ -31,19 +31,24 @@ import android.widget.*
 import android.widget.AdapterView.OnItemSelectedListener
 import androidx.core.net.toFile
 import androidx.core.widget.doAfterTextChanged
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.afollestad.materialdialogs.MaterialDialog
 import com.google.android.material.textfield.TextInputLayout
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.rxkotlin.addTo
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.rx2.awaitSingleOrNull
+import kotlinx.coroutines.withContext
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsView
 import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
 import openfoodfacts.github.scrachx.openfood.analytics.SentryAnalytics
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentAddProductNutritionFactsBinding
 import openfoodfacts.github.scrachx.openfood.features.product.edit.*
+import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_EDIT_OFFLINE_PRODUCT
 import openfoodfacts.github.scrachx.openfood.features.shared.views.CustomValidatingEditTextView
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
 import openfoodfacts.github.scrachx.openfood.models.*
@@ -74,6 +79,8 @@ import javax.inject.Inject
 class ProductEditNutritionFactsFragment : ProductEditFragment() {
     private var _binding: FragmentAddProductNutritionFactsBinding? = null
     private val binding get() = _binding!!
+
+    val viewModel: ProductEditNutritionViewModel by viewModels()
 
     @Inject
     lateinit var picasso: Picasso
@@ -129,8 +136,22 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         return binding.root
     }
 
+
+    fun Spinner.setOnItemSelectedListener(block: (parent: AdapterView<*>?, view: View, position: Int, id: Long) -> Unit) {
+        this.onItemSelectedListener = object : OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View, position: Int, id: Long) =
+                block(parent, view, position, id)
+
+            override fun onNothingSelected(parent: AdapterView<*>?) = Unit // This is not possible
+        }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = this
+
         binding.btnAddImageNutritionFacts.setOnClickListener { addNutritionFactsImage() }
         binding.btnEditImageNutritionFacts.setOnClickListener { newNutritionFactsImage() }
         binding.btnAdd.setOnClickListener { next() }
@@ -138,21 +159,15 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         binding.btnAddANutrient.setOnClickListener { displayAddNutrientDialog() }
 
         binding.salt.doAfterTextChanged { updateSodiumValue() }
-        binding.spinnerSaltComp.onItemSelectedListener = object : OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View, position: Int, id: Long) =
-                updateSodiumMod()
-
-            override fun onNothingSelected(parent: AdapterView<*>?) = Unit // This is not possible
+        binding.spinnerSaltComp.setOnItemSelectedListener { _, _, _, _ ->
+            binding.spinnerSodiumComp.setSelection(binding.spinnerSaltComp.selectedItemPosition)
         }
+
         binding.sodium.doAfterTextChanged { updateSaltValue() }
-
-        binding.spinnerSodiumComp.onItemSelectedListener = object : OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View, position: Int, id: Long) =
-                updateSaltMod()
-
-            override fun onNothingSelected(parent: AdapterView<*>?) = Unit // This is not possible
+        binding.spinnerSodiumComp.setOnItemSelectedListener { _, _, _, _ ->
+            binding.spinnerSaltComp.setSelection(binding.spinnerSodiumComp.selectedItemPosition)
         }
-        binding.checkboxNoNutritionData.setOnCheckedChangeListener { _, isChecked -> toggleNoNutritionData(isChecked) }
+
 
         val bundle = arguments
         lastEditText = binding.alcohol
@@ -163,10 +178,11 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         }
 
         product = bundle.getSerializable("product") as Product?
-        mOfflineSavedProduct = bundle.getSerializable("edit_offline_product") as OfflineSavedProduct?
+        mOfflineSavedProduct = bundle.getSerializable(KEY_EDIT_OFFLINE_PRODUCT) as OfflineSavedProduct?
         val productEdited = bundle.getBoolean(ProductEditActivity.KEY_IS_EDITING)
         if (product != null) {
             productCode = product!!.code
+            viewModel.product.value = product
         }
         if (productEdited && product != null) {
             productCode = product!!.code
@@ -199,9 +215,6 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         super.onDestroyView()
         _binding = null
     }
-
-    private fun updateSodiumMod() = binding.spinnerSodiumComp.setSelection(binding.spinnerSaltComp.selectedItemPosition)
-    private fun updateSaltMod() = binding.spinnerSaltComp.setSelection(binding.spinnerSodiumComp.selectedItemPosition)
 
     private fun checkAllValues() = allEditViews.forEach { it.checkValue() }
 
@@ -423,12 +436,14 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         if (photoFile != null) {
             cropRotateImage(photoFile!!, getString(R.string.nutrition_facts_picture))
         } else {
-            download(requireContext(), path, client)
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe {
-                    photoFile = it.toFile()
-                    cropRotateImage(it, getString(R.string.nutrition_facts_picture))
-                }.addTo(disp)
+            lifecycleScope.launch(Dispatchers.IO) {
+                val uri = download(requireContext(), path, client).awaitSingleOrNull() ?: return@launch
+                withContext(Dispatchers.Main) {
+                    photoFile = uri.toFile()
+                    cropRotateImage(uri, getString(R.string.nutrition_facts_picture))
+                }
+            }
+
         }
     }
 
@@ -451,7 +466,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
     ).firstOrNull { it != ValueState.NOT_TESTED } ?: this.checkAsGram(value)
 
     private fun CustomValidatingEditTextView.checkAsGram(value: Float): ValueState {
-        val valid = convertToGrams(value, unitSpinner!!.selectedItemPosition) <= referenceValueInGram
+        val valid = Companion.convertToGrams(value, unitSpinner!!.selectedItemPosition) <= referenceValueInGram
         return if (!valid) {
             this.showError(getString(R.string.max_nutrient_val_msg))
             ValueState.NOT_VALID
@@ -515,10 +530,6 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
                 binding.salt.setText(getRoundNumber(saltValue))
             }
         }
-    }
-
-    private fun toggleNoNutritionData(isChecked: Boolean) {
-        binding.nutritionFactsLayout.visibility = if (isChecked) View.GONE else View.VISIBLE
     }
 
     /**
@@ -585,7 +596,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         editTextView: CustomValidatingEditTextView,
         targetMap: MutableMap<String, String?>
     ) {
-        val productNutriments = if (product != null) product!!.nutriments else Nutriments()
+        val productNutriments = product?.nutriments ?: Nutriments()
 
         val shortName = editTextView.entryName
         val oldProductNutriment = productNutriments[shortName]
@@ -602,23 +613,26 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
             else
                 oldProductNutriment.forServingInUnits
         }
-        val valueHasBeenUpdated = editTextView.isContentDifferent(oldValue)
+        val valueChanged = editTextView.isContentDifferent(oldValue)
 
+        // Check unit and modifier for changes
         var newUnit: String? = null
         var newMod: String? = null
 
-        editTextView.unitSpinner?.let {
-            if (editTextView.hasUnit()) {
+        if (editTextView.hasUnit()) {
+            editTextView.unitSpinner?.let {
                 newUnit = getSelectedUnit(it.selectedItemPosition)
             }
         }
+
         editTextView.modSpinner?.let {
             newMod = it.selectedItem.toString()
         }
 
-        val unitHasBeenUpdated = oldUnit == null || oldUnit != newUnit
-        val modHasBeenUpdated = oldMod == null || oldMod != newMod
-        if (valueHasBeenUpdated || unitHasBeenUpdated || modHasBeenUpdated) {
+        val unitChanged = oldUnit == null || oldUnit != newUnit
+        val modChanged = oldMod == null || oldMod != newMod
+
+        if (valueChanged || unitChanged || modChanged) {
             addNutrientToMap(editTextView, targetMap)
         }
     }
@@ -692,6 +706,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
             .itemsCallback { _, _, _, text ->
                 usedNutrientsIndexes.add(nutrients.indexOf(text))
                 val textView = addNutrientRow(nutrients.indexOf(text), text.toString())
+
                 allEditViews.add(textView)
                 textView.addValidListener()
             }
@@ -716,25 +731,31 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         modSelectedIndex: Int = 0
     ): CustomValidatingEditTextView {
         val nutrientCompleteName = PARAMS_OTHER_NUTRIENTS[index]
+
         val rowView = layoutInflater.inflate(R.layout.nutrition_facts_table_row, binding.tableLayout, false) as TableRow
-        val editText: CustomValidatingEditTextView = rowView.findViewById(R.id.value)
-        val til: TextInputLayout = rowView.findViewById(R.id.value_til)
-        til.hint = hint
+
+        // Set hint
+        rowView.findViewById<TextInputLayout>(R.id.value_til).hint = hint
+
         val nutrientShortName = getShortName(nutrientCompleteName)
+
+        val editText = rowView.findViewById<CustomValidatingEditTextView>(R.id.value)
         editText.entryName = nutrientShortName
         editText.keyListener = keyListener
+
         lastEditText!!.nextFocusDownId = editText.id
         lastEditText!!.imeOptions = EditorInfo.IME_ACTION_NEXT
         lastEditText = editText
+
         editText.imeOptions = EditorInfo.IME_ACTION_DONE
         editText.requestFocus()
-        if (preFillValues) {
-            editText.setText(value)
-        }
+
+        if (preFillValues) editText.setText(value)
 
         // Setup unit spinner
         val unitSpinner = rowView.findViewById<Spinner>(R.id.spinner_unit)
         val modSpinner = rowView.findViewById<Spinner>(R.id.spinner_mod)
+
         when (nutrientShortName) {
             Nutriments.PH -> {
                 unitSpinner.visibility = View.INVISIBLE
@@ -747,10 +768,13 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
                 starchEditText = editText
             }
             Nutriments.VITAMIN_A, Nutriments.VITAMIN_D, Nutriments.VITAMIN_E -> {
-                val arrayAdapter =
-                    ArrayAdapter(requireActivity(), android.R.layout.simple_spinner_item, requireActivity().resources.getStringArray(R.array.weight_all_units))
-                arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                unitSpinner.adapter = arrayAdapter
+                val adapter = ArrayAdapter(
+                    requireActivity(),
+                    android.R.layout.simple_spinner_item,
+                    requireActivity().resources.getStringArray(R.array.weight_all_units)
+                )
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                unitSpinner.adapter = adapter
             }
         }
         try {
@@ -758,7 +782,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
                 unitSpinner.setSelection(unitSelectedIndex)
                 modSpinner.setSelection(modSelectedIndex)
             }
-        } catch (t: Throwable) {
+        } catch (t: Exception) {
             sentryAnalytics.record(IllegalStateException("Can't find weight units for nutriment: $nutrientShortName", t))
             closeScreenWithAlert()
         }
@@ -770,20 +794,6 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
     private fun closeScreenWithAlert() {
         Toast.makeText(requireContext(), R.string.error_adding_nutrition_facts, Toast.LENGTH_SHORT).show()
         requireActivity().finish()
-    }
-
-    /**
-     * Converts a given quantity's unit to grams.
-     *
-     * @param value The value to be converted
-     * @param index 1 represents milligrams, 2 represents micrograms
-     * @return return the converted value
-     */
-    private fun convertToGrams(value: Float, index: Int): Float {
-        val unit = NUTRIENTS_UNITS[index]
-        // Can't be converted to grams.
-        return if (UNIT_DV == unit || UNIT_IU == unit) 0F
-        else UnitUtils.convertToGrams(value, unit)
     }
 
     private fun isCarbohydrateRelated(editText: CustomValidatingEditTextView): Boolean {
@@ -807,10 +817,10 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
 
         // Check that value of (sugar + starch) is not greater than value of carbohydrates
         // Convert all the values to grams
-        carbsValue = convertToGrams(carbsValue, binding.carbohydrates.unitSpinner!!.selectedItemPosition)
-        sugarValue = convertToGrams(sugarValue, binding.sugars.unitSpinner!!.selectedItemPosition)
+        carbsValue = Companion.convertToGrams(carbsValue, binding.carbohydrates.unitSpinner!!.selectedItemPosition)
+        sugarValue = Companion.convertToGrams(sugarValue, binding.sugars.unitSpinner!!.selectedItemPosition)
 
-        val newStarch = convertToGrams(starchValue, starchUnitSelectedIndex).toDouble()
+        val newStarch = Companion.convertToGrams(starchValue, starchUnitSelectedIndex).toDouble()
 
         return if (sugarValue + newStarch > carbsValue) {
             binding.carbohydrates.showError(getString(R.string.error_in_carbohydrate_value))
@@ -918,8 +928,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         binding.btnAddImageNutritionFacts.visibility = View.VISIBLE
         binding.btnEditImageNutritionFacts.visibility = View.VISIBLE
         if (!errorInUploading) {
-            picasso
-                .load(photoFile!!)
+            picasso.load(photoFile!!)
                 .resize(requireContext().dpsToPixel(50), requireContext().dpsToPixel(50))
                 .centerInside()
                 .into(binding.btnAddImageNutritionFacts)
@@ -948,5 +957,19 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
     companion object {
         private val NUTRIENTS_UNITS = listOf(UNIT_GRAM, UNIT_MILLIGRAM, UNIT_MICROGRAM, UNIT_DV, UNIT_IU)
         private val SERVING_UNITS = listOf(UNIT_GRAM, UNIT_MILLIGRAM, UNIT_MICROGRAM, UNIT_LITER, UNIT_MILLILITRE)
+
+        /**
+         * Converts a given quantity's unit to grams.
+         *
+         * @param value The value to be converted
+         * @param index 1 represents milligrams, 2 represents micrograms
+         * @return return the converted value
+         */
+        private fun convertToGrams(value: Float, index: Int): Float {
+            val unit = NUTRIENTS_UNITS[index]
+            // Can't be converted to grams.
+            return if (UNIT_DV == unit || UNIT_IU == unit) 0F
+            else UnitUtils.convertToGrams(value, unit)
+        }
     }
 }

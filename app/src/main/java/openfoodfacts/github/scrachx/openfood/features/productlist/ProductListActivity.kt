@@ -243,9 +243,9 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
                 }
                 shouldShowRequestPermissionRationale(this, perm) -> {
                     MaterialDialog.Builder(this)
-                            .title(R.string.action_about)
-                            .content(R.string.permision_write_external_storage)
-                            .neutralText(R.string.txtOk)
+                        .title(R.string.action_about)
+                        .content(R.string.permision_write_external_storage)
+                        .neutralText(android.R.string.ok)
                             .onNeutral { _, _ ->
                                 requestWriteLauncher.launch(perm)
                             }
@@ -327,7 +327,7 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
                 MaterialDialog.Builder(this).run {
                     title(R.string.action_about)
                     content(R.string.permission_camera)
-                    neutralText(R.string.txtOk)
+                    neutralText(android.R.string.ok)
                     onNeutral { _, _ ->
                         requestCameraLauncher.launch(Manifest.permission.CAMERA)
                     }
@@ -354,7 +354,7 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
         Toast.makeText(this, R.string.txt_exporting_your_listed_products, Toast.LENGTH_LONG).show()
 
         val listName = productList.listName
-        val flavor = BuildConfig.FLAVOR.toUpperCase(Locale.ROOT)
+        val flavor = BuildConfig.FLAVOR.uppercase(Locale.ROOT)
         val date = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
         val fileName = "$flavor-${listName}_$date.csv"
 

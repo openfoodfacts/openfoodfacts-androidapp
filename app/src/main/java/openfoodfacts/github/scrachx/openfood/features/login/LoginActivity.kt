@@ -13,12 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package openfoodfacts.github.scrachx.openfood.features
+package openfoodfacts.github.scrachx.openfood.features.login
 
 import android.content.Context
 import android.content.Intent
 import android.content.pm.ActivityInfo
-import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
@@ -27,14 +26,15 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContract
 import androidx.core.content.ContextCompat
 import androidx.core.content.edit
-import com.afollestad.materialdialogs.MaterialDialog
+import androidx.core.net.toUri
+import androidx.lifecycle.lifecycleScope
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_LONG
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.rxkotlin.addTo
-import okhttp3.ResponseBody
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.BuildConfig
@@ -49,7 +49,6 @@ import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
 import openfoodfacts.github.scrachx.openfood.utils.Utils
 import openfoodfacts.github.scrachx.openfood.utils.getLoginPreferences
-import retrofit2.Response
 import java.io.IOException
 import java.net.HttpCookie
 import javax.inject.Inject
@@ -69,12 +68,9 @@ class LoginActivity : BaseActivity() {
     @Inject
     lateinit var matomoAnalytics: MatomoAnalytics
 
-    private lateinit var customTabActivityHelper: CustomTabActivityHelper
-
-    private val disp = CompositeDisposable()
-
-    private var userLoginUri: Uri? = null
-    private var resetPasswordUri: Uri? = null
+    private val customTabActivityHelper: CustomTabActivityHelper by lazy { CustomTabActivityHelper() }
+    private val userLoginUri by lazy { "${getString(R.string.website)}cgi/user.pl".toUri() }
+    private val resetPasswordUri by lazy { "${getString(R.string.website)}cgi/reset_password.pl".toUri() }
 
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
         android.R.id.home -> {
@@ -107,61 +103,68 @@ class LoginActivity : BaseActivity() {
         // End checks
 
         val snackbar = Snackbar.make(binding.loginLinearlayout, R.string.toast_retrieving, LENGTH_LONG)
-                .apply { show() }
+            .apply { show() }
         binding.btnLogin.isClickable = false
 
-        productsApi.signIn(login, password, "Sign-in")
-                .observeOn(AndroidSchedulers.mainThread()) // We need to modify view
-                .doOnError {
-                    Toast.makeText(this, this.getString(R.string.errorWeb), Toast.LENGTH_LONG).show()
-                    Log.e(this::class.simpleName, "onFailure", it)
+        lifecycleScope.launch(Dispatchers.Main) {
+            val response = withContext(Dispatchers.IO) {
+                try {
+                    productsApi.signIn(login, password, "Sign-in")
+
+                } catch (err: Throwable) {
+                    Toast.makeText(this@LoginActivity, this@LoginActivity.getString(R.string.errorWeb), Toast.LENGTH_LONG).show()
+                    Log.e(this::class.simpleName, "onFailure", err)
+                    null
                 }
-                .subscribe { response: Response<ResponseBody> ->
-                    if (!response.isSuccessful) {
-                        Toast.makeText(this@LoginActivity, R.string.errorWeb, Toast.LENGTH_LONG).show()
-                        return@subscribe
-                    }
-                    val htmlNoParsed = try {
-                        response.body()?.string()
-                    } catch (e: IOException) {
-                        Log.e("LOGIN", "Unable to parse the login response page", e)
-                        return@subscribe
-                    }
-                    val pref = this@LoginActivity.getSharedPreferences("login", 0)
-                    if (isHtmlNotValid(htmlNoParsed)) {
-                        Snackbar.make(binding.loginLinearlayout, R.string.errorLogin, LENGTH_LONG).show()
-                        binding.passInput.setText("")
-                        binding.txtInfoLogin.setTextColor(ContextCompat.getColor(this, R.color.red))
-                        binding.txtInfoLogin.setText(R.string.txtInfoLoginNo)
-                        snackbar.dismiss()
-                    } else {
-                        // store the user session id (user_session and user_id)
-                        for (httpCookie in HttpCookie.parse(response.headers()["set-cookie"])) {
-                            // Example format of set-cookie: session=user_session&S0MeR@nD0MSECRETk3Y&user_id&testuser; domain=.openfoodfacts.org; path=/
-                            if (BuildConfig.HOST.contains(httpCookie.domain) && httpCookie.path == "/") {
-                                val cookieValues = httpCookie.value.split("&")
-                                var i = 0
-                                while (i < cookieValues.size) {
-                                    pref.edit { putString(cookieValues[i], cookieValues[++i]) }
-                                    i++
-                                }
-                                break
-                            }
-                        }
-                        Snackbar.make(binding.loginLinearlayout, R.string.connection, LENGTH_LONG).show()
-                        pref.edit {
-                            putString("user", login)
-                            putString("pass", password)
-                        }
-                        binding.txtInfoLogin.setTextColor(ContextCompat.getColor(this, R.color.green_500))
-                        binding.txtInfoLogin.setText(R.string.txtInfoLoginOk)
+            } ?: return@launch
 
-                        matomoAnalytics.trackEvent(AnalyticsEvent.UserLogin)
-
-                        setResult(RESULT_OK)
-                        finish()
+            if (!response.isSuccessful) {
+                Toast.makeText(this@LoginActivity, R.string.errorWeb, Toast.LENGTH_LONG).show()
+                return@launch
+            }
+            val htmlNoParsed = withContext(Dispatchers.IO) {
+                try {
+                    response.body()?.string()
+                } catch (e: IOException) {
+                    Log.e("LOGIN", "Unable to parse the login response page", e)
+                    null
+                }
+            } ?: return@launch
+            val pref = this@LoginActivity.getSharedPreferences("login", 0)
+            if (isHtmlNotValid(htmlNoParsed)) {
+                Snackbar.make(binding.loginLinearlayout, R.string.errorLogin, LENGTH_LONG).show()
+                binding.passInput.setText("")
+                binding.txtInfoLogin.setTextColor(ContextCompat.getColor(this@LoginActivity, R.color.red))
+                binding.txtInfoLogin.setText(R.string.txtInfoLoginNo)
+                snackbar.dismiss()
+            } else {
+                // store the user session id (user_session and user_id)
+                for (httpCookie in HttpCookie.parse(response.headers()["set-cookie"])) {
+                    // Example format of set-cookie: session=user_session&S0MeR@nD0MSECRETk3Y&user_id&testuser; domain=.openfoodfacts.org; path=/
+                    if (BuildConfig.HOST.contains(httpCookie.domain) && httpCookie.path == "/") {
+                        val cookieValues = httpCookie.value.split("&")
+                        var i = 0
+                        while (i < cookieValues.size) {
+                            pref.edit { putString(cookieValues[i], cookieValues[++i]) }
+                            i++
+                        }
+                        break
                     }
-                }.addTo(disp)
+                }
+                Snackbar.make(binding.loginLinearlayout, R.string.connection, LENGTH_LONG).show()
+                pref.edit {
+                    putString("user", login)
+                    putString("pass", password)
+                }
+                binding.txtInfoLogin.setTextColor(ContextCompat.getColor(this@LoginActivity, R.color.green_500))
+                binding.txtInfoLogin.setText(R.string.txtInfoLoginOk)
+
+                matomoAnalytics.trackEvent(AnalyticsEvent.UserLogin)
+
+                setResult(RESULT_OK)
+                finish()
+            }
+        }
         binding.btnLogin.isClickable = true
     }
 
@@ -187,43 +190,37 @@ class LoginActivity : BaseActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = getString(R.string.txtSignIn)
 
-        userLoginUri = Uri.parse(getString(R.string.website) + "cgi/user.pl")
-        resetPasswordUri = Uri.parse(getString(R.string.website) + "cgi/reset_password.pl")
-
-        // prefetch the uri
-        customTabActivityHelper = CustomTabActivityHelper()
+        // Prefetch the uri
         customTabActivityHelper.setConnectionCallback(
-                onConnected = { binding.btnCreateAccount.isEnabled = true },
-                onDisconnected = { binding.btnCreateAccount.isEnabled = false }
+            onConnected = { binding.btnCreateAccount.isEnabled = true },
+            onDisconnected = { binding.btnCreateAccount.isEnabled = false }
         )
         customTabActivityHelper.mayLaunchUrl(userLoginUri, null, null)
         binding.btnCreateAccount.isEnabled = true
 
         val loginS = getLoginPreferences().getString(resources.getString(R.string.user), resources.getString(R.string.txt_anonymous))
         if (loginS == resources.getString(R.string.user)) {
-            MaterialDialog.Builder(this).apply {
-                title(R.string.log_in)
-                content(R.string.login_true)
-                neutralText(R.string.ok_button)
-                onNeutral { _, _ -> finish() }
-                show()
-            }
+            MaterialAlertDialogBuilder(this).apply {
+                setTitle(R.string.log_in)
+                setMessage(R.string.login_true)
+                setNeutralButton(R.string.ok_button) { _, _ -> finish() }
+            }.show()
         }
     }
 
     private fun doRegister() {
         // uncomment the below lines for native sign-up activity
-//        startActivity(Intent(this,SignUpActivity::class.java))
-//        finish()
+        // startActivity(Intent(this,SignUpActivity::class.java))
+        // finish()
 
         // comment the below lines if using native sign-up activity
-        val customTabsIntent = CustomTabsHelper.getCustomTabsIntent(baseContext, customTabActivityHelper.session)
-        CustomTabActivityHelper.openCustomTab(this, customTabsIntent, userLoginUri!!, WebViewFallback())
+        val customTabsIntent = CustomTabsHelper.getCustomTabsIntent(this, customTabActivityHelper.session)
+        CustomTabActivityHelper.openCustomTab(this, customTabsIntent, userLoginUri, WebViewFallback())
     }
 
     private fun doForgotPassword() {
-        val customTabsIntent = CustomTabsHelper.getCustomTabsIntent(baseContext, customTabActivityHelper.session)
-        CustomTabActivityHelper.openCustomTab(this, customTabsIntent, resetPasswordUri!!, WebViewFallback())
+        val customTabsIntent = CustomTabsHelper.getCustomTabsIntent(this, customTabActivityHelper.session)
+        CustomTabActivityHelper.openCustomTab(this, customTabsIntent, resetPasswordUri, WebViewFallback())
     }
 
     override fun onStart() {
@@ -238,7 +235,6 @@ class LoginActivity : BaseActivity() {
     }
 
     override fun onDestroy() {
-        disp.dispose()
         customTabActivityHelper.connectionCallback = null
         _binding = null
         super.onDestroy()

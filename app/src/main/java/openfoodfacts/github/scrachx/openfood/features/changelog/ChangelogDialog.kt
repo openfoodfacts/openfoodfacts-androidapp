@@ -1,5 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.features.changelog
 
+import android.app.Activity
 import android.content.SharedPreferences
 import android.content.pm.PackageManager.NameNotFoundException
 import android.net.Uri
@@ -9,14 +10,18 @@ import android.view.View
 import android.view.WindowManager
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.edit
 import androidx.core.content.pm.PackageInfoCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.DialogFragment
+import androidx.lifecycle.lifecycleScope
+import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxkotlin.addTo
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.analytics.SentryAnalytics
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper
@@ -36,13 +41,15 @@ class ChangelogDialog : DialogFragment(R.layout.fragment_changelog) {
         private const val URL_CROWDIN = "https://crowdin.com/project/openfoodfacts"
 
         fun newInstance(forceShow: Boolean): ChangelogDialog {
-            val args = Bundle().apply {
-                putBoolean(FORCE_SHOW_KEY, forceShow)
-            }
             return ChangelogDialog().apply {
-                arguments = args
+                arguments = Bundle().apply {
+                    putBoolean(FORCE_SHOW_KEY, forceShow)
+                }
             }
         }
+
+        private fun getSavedVersionCode(activity: Activity) =
+            PreferenceManager.getDefaultSharedPreferences(activity).getLong(LAST_VERSION_CODE, 0)
     }
 
     @Inject
@@ -54,9 +61,12 @@ class ChangelogDialog : DialogFragment(R.layout.fragment_changelog) {
     @Inject
     lateinit var sharedPreferences: SharedPreferences
 
+    @Inject
+    lateinit var changelogService: ChangelogService
+
     private lateinit var translationHelpLabel: TextView
     private lateinit var recyclerView: RecyclerView
-    private val compositeDisposable = CompositeDisposable()
+    private val disp = CompositeDisposable()
 
     override fun getTheme(): Int = R.style.OFFTheme_NoActionBar
 
@@ -73,26 +83,28 @@ class ChangelogDialog : DialogFragment(R.layout.fragment_changelog) {
     }
 
     override fun onDestroyView() {
-        compositeDisposable.clear()
+        disp.clear()
         super.onDestroyView()
     }
 
     @Suppress("DEPRECATION")
     fun presentAutomatically(activity: AppCompatActivity) {
-        arguments?.let {
-            if (it.getBoolean(FORCE_SHOW_KEY, false)) {
-                show(activity.supportFragmentManager, TAG)
-            } else {
-                try {
-                    val lastVersionCode = getVersion()
-                    val packageInfo = activity.packageManager.getPackageInfo(activity.packageName, 0)
-                    val currentVersionCode = PackageInfoCompat.getLongVersionCode(packageInfo)
-                    if (currentVersionCode >= 0 && currentVersionCode > lastVersionCode) {
-                        show(activity.supportFragmentManager, TAG)
-                        saveVersionCode(currentVersionCode)
+        lifecycleScope.launchWhenResumed {
+            arguments?.let {
+                if (it.getBoolean(FORCE_SHOW_KEY, false)) {
+                    show(activity.supportFragmentManager, TAG)
+                } else {
+                    try {
+                        val lastVersionCode = getSavedVersionCode(activity)
+                        val packageInfo = activity.packageManager.getPackageInfo(activity.packageName, 0)
+                        val currentVersionCode = PackageInfoCompat.getLongVersionCode(packageInfo)
+                        if (currentVersionCode >= 0 && currentVersionCode > lastVersionCode) {
+                            show(activity.supportFragmentManager, TAG)
+                            saveVersionCode(currentVersionCode)
+                        }
+                    } catch (ex: NameNotFoundException) {
+                        sentryAnalytics.record(ex)
                     }
-                } catch (ex: NameNotFoundException) {
-                    sentryAnalytics.record(ex)
                 }
             }
         }
@@ -122,26 +134,24 @@ class ChangelogDialog : DialogFragment(R.layout.fragment_changelog) {
     private fun setupRecyclerView() {
         val layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         recyclerView.layoutManager = layoutManager
-        val changelogService = ChangelogService(requireContext(), localeManager)
-        compositeDisposable.add(
-                changelogService
-                        .observeChangelog()
-                        .map { changelog ->
-                            val itemList = mutableListOf<ChangelogListItem>()
-                            changelog.versions.forEach { version ->
-                                itemList.add(ChangelogListItem.Header(version.name, version.date))
-                                version.items.forEach { item ->
-                                    itemList.add(ChangelogListItem.Item("- $item"))
-                                }
-                            }
-                            itemList
-                        }
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(
-                                { items -> recyclerView.adapter = ChangelogAdapter(items) },
-                                { throwable -> sentryAnalytics.record(throwable) }
-                        )
-        )
+
+        changelogService
+            .observeChangelog()
+            .map { changelog ->
+                val itemList = mutableListOf<ChangelogListItem>()
+                changelog.versions.forEach { version ->
+                    itemList.add(ChangelogListItem.Header(version.name, version.date))
+                    version.items.forEach { item ->
+                        itemList.add(ChangelogListItem.Item("- $item"))
+                    }
+                }
+                itemList
+            }
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                { items -> recyclerView.adapter = ChangelogAdapter(items) },
+                { throwable -> sentryAnalytics.record(throwable) }
+            ).addTo(disp)
     }
 
     private fun openDailyFoodFacts() {
@@ -150,23 +160,20 @@ class ChangelogDialog : DialogFragment(R.layout.fragment_changelog) {
             mayLaunchUrl(dailyFoodFactUri, null, null)
         }
         val customTabsIntent = CustomTabsHelper.getCustomTabsIntent(
-                requireActivity(),
-                customTabActivityHelper.session,
+            requireActivity(),
+            customTabActivityHelper.session,
         )
         CustomTabActivityHelper.openCustomTab(
-                requireActivity(),
-                customTabsIntent,
-                dailyFoodFactUri,
-                WebViewFallback()
+            requireActivity(),
+            customTabsIntent,
+            dailyFoodFactUri,
+            WebViewFallback()
         )
     }
 
     private fun saveVersionCode(versionCode: Long) {
-        sharedPreferences
-                .edit()
-                .putLong(LAST_VERSION_CODE, versionCode)
-                .apply()
+        sharedPreferences.edit { putLong(LAST_VERSION_CODE, versionCode) }
+
     }
 
-    private fun getVersion(): Long = sharedPreferences.getLong(LAST_VERSION_CODE, 0)
 }

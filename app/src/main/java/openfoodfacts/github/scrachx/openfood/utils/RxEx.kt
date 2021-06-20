@@ -8,6 +8,7 @@ fun <T> Observable<T>.subscribeLifecycle(lifecycleOwner: LifecycleOwner, observe
     RxLifecycleHandler(lifecycleOwner, this, observer)
 }
 
+
 /**
  *  Logs all lifecycle events of the [io.reactivex.Observable].
  *  Should NOT be used in code at all, only for temporary debugging purposes.

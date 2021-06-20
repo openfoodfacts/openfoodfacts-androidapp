@@ -1,6 +1,5 @@
 package openfoodfacts.github.scrachx.openfood.features.product.view.photos
 
-import android.content.Context
 import android.util.Log
 import android.view.View
 import android.widget.Button
@@ -13,23 +12,24 @@ import openfoodfacts.github.scrachx.openfood.images.getImageUrl
 
 class ProductPhotoViewHolder(itemView: View, private val picasso: Picasso) : RecyclerView.ViewHolder(itemView) {
     private val editBtn: Button = itemView.findViewById(R.id.buttonOptions)
-    private val image: ImageView = itemView.findViewById(R.id.img)
+    private val imageView: ImageView = itemView.findViewById(R.id.img)
 
-    fun setImage(imageName: String, barcode: String, context: Context) {
+    fun setImage(barcode: String, imageName: String) {
         val finalUrlString = getImageUrl(barcode, imageName, IMAGE_EDIT_SIZE_FILE)
         Log.d(LOG_TAG, "Loading image $finalUrlString...")
-        picasso
-                .load(finalUrlString)
-                .resize(400, 400)
-                .centerInside()
-                .into(image)
+        picasso.load(finalUrlString)
+            .resize(400, 400)
+            .centerInside()
+            .into(imageView)
     }
 
-    fun setOnImageListener(listener: (Int) -> Unit) = image.setOnClickListener { listener(adapterPosition) }
+    fun setOnImageClickListener(listener: (Int) -> Unit) =
+        imageView.setOnClickListener { listener(bindingAdapterPosition) }
 
-    fun setOnEditListener(listener: (Int) -> Unit) = editBtn.setOnClickListener { listener(adapterPosition) }
+    fun setOnEditClickListener(listener: (Int) -> Unit) =
+        editBtn.setOnClickListener { listener(bindingAdapterPosition) }
 
     companion object {
-        private val LOG_TAG = this::class.simpleName!!
+        private val LOG_TAG = ProductPhotoViewHolder::class.simpleName!!
     }
 }

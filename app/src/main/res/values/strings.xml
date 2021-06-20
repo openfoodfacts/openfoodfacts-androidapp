@@ -944,4 +944,5 @@
     <string name="synthesis_of_nutrition_slide_2_text">A simple synthesis of the nutritional quality of your food</string>
     <string name="avoid_ultra_processed_foods">Avoid ultra-processed foods</string>
     <string name="nova_slide_3_text">Reduce the amount of ultra-processed foods in your diet.</string>
+    <string name="welcome_slide_ecoscore_desc">A synthesis of the environmental impact of your food.</string>
 </resources>

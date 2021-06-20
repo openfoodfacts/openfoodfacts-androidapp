@@ -524,8 +524,8 @@
     <string name="notify_channel_description">התרעה להצגת מיקום הקובץ שייוצא</string>
     <string name="products_to_be_completed">מוצרים שדורשים השלמה</string>
     <string name="offline_notification_title">תרומות בלתי מקוונות שעליך לשלוח</string>
-    <string name="creator_history">המוצר נערך ב־%1$s בשעה %2$s לפי מרכז אירופה על ידי</string>
-    <string name="last_editor_history">עריכת המוצר האחרונה נערכה ב־%1$s בשעה %2$s לפי שעון קיץ מרכז אירופה על ידי </string>
+    <string name="creator_history">המוצר נערך ב־%1$s בשעה %2$s לפי מרכז אירופה על ידי %3$s</string>
+    <string name="last_editor_history">עריכת המוצר האחרונה נערכה ב־%1$s בשעה %2$s לפי שעון קיץ מרכז אירופה על ידי %3$s</string>
     <string name="other_editors">עמוד המוצר נערך גם על ידי </string>
     <string name="product_states">מצבי המוצרים</string>
     <string name="incomplete_states">מצבים חלקיים</string>

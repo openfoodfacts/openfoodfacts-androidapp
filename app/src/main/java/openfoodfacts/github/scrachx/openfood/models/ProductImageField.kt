@@ -12,5 +12,5 @@ enum class ProductImageField {
 
 
     @JsonValue
-    override fun toString() = name.toLowerCase(ROOT)
+    override fun toString() = name.lowercase(ROOT)
 }

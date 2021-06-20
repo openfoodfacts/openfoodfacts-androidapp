@@ -175,8 +175,8 @@
                 android:layout_height="90dp"
                 android:layout_marginTop="25dp"
                 android:scaleType="fitCenter"
-                android:tint="@color/button_link"
-                app:srcCompat="@drawable/ic_add_a_photo_dark_48dp" />
+                app:srcCompat="@drawable/ic_add_a_photo_dark_48dp"
+                app:tint="@color/button_link" />
 
         </LinearLayout>
 

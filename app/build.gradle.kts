@@ -39,14 +39,14 @@ dependencies {
     val coroutinesVersion = "1.5.0"
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-rx2:$coroutinesVersion")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion-RC")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion")
 
 
     // Android KTX
-    implementation("androidx.fragment:fragment-ktx:1.3.3")
+    implementation("androidx.fragment:fragment-ktx:1.3.4")
     implementation("androidx.activity:activity-ktx:1.2.3")
     implementation("androidx.preference:preference-ktx:1.1.1")
-    implementation("androidx.core:core-ktx:1.6.0-alpha03")
+    implementation("androidx.core:core-ktx:1.6.0-beta02")
 
     val viewModelKtxVer = "2.3.1"
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$viewModelKtxVer")
@@ -55,10 +55,10 @@ dependencies {
 
 
     // AndroidX
-    implementation("androidx.appcompat:appcompat:1.2.0")
+    implementation("androidx.appcompat:appcompat:1.3.0")
     implementation("androidx.browser:browser:1.3.0")
     implementation("androidx.concurrent:concurrent-futures:1.1.0")
-    implementation("androidx.recyclerview:recyclerview:1.2.0")
+    implementation("androidx.recyclerview:recyclerview:1.2.1")
     implementation("androidx.cardview:cardview:1.0.0")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
     implementation("androidx.annotation:annotation:1.2.0")
@@ -69,8 +69,7 @@ dependencies {
 
 
     val workVersion = "2.5.0"
-    implementation("androidx.work:work-runtime:$workVersion")
-    implementation("androidx.work:work-rxjava2:$workVersion")
+    implementation("androidx.work:work-runtime-ktx:$workVersion")
     val hiltVersion = "1.0.0-beta01"
     implementation("androidx.hilt:hilt-work:$hiltVersion")
     kapt("androidx.hilt:hilt-compiler:$hiltVersion")
@@ -79,12 +78,12 @@ dependencies {
     implementation("androidx.startup:startup-runtime:1.0.0")
 
     // ML Kit barcode Scanner
-    implementation("com.google.mlkit:barcode-scanning:16.1.1")
+    implementation("com.google.mlkit:barcode-scanning:16.1.2")
 
     implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
 
-    kapt("com.google.dagger:dagger-compiler:2.36")
-    implementation("com.google.dagger:dagger:2.36")
+    kapt("com.google.dagger:dagger-compiler:2.37")
+    implementation("com.google.dagger:dagger:2.37")
     implementation("com.google.dagger:hilt-android:${rootProject.extra["hiltVersion"]}")
 
     kapt("com.google.dagger:hilt-compiler:${rootProject.extra["hiltVersion"]}")
@@ -130,7 +129,7 @@ dependencies {
     implementation("com.google.android.material:material:1.3.0")
 
     //Image Loading
-    implementation("com.squareup.picasso:picasso:2.71828")
+    implementation("com.squareup.picasso:picasso:2.8")
 
     //Image from gallery or camera
     implementation("com.github.jkwiecien:EasyImage:1.4.0")
@@ -167,7 +166,7 @@ dependencies {
     implementation("com.hootsuite.android:nachos:1.2.0")
 
     // Crash analytics
-    implementation("io.sentry:sentry-android:4.3.0")
+    implementation("io.sentry:sentry-android:5.0.1")
     implementation("org.matomo.sdk:tracker:4.1.2")
 
     // ShowCaseView dependency
@@ -176,17 +175,18 @@ dependencies {
     // Unit Testing
     testImplementation("junit:junit:4.13.2")
     testImplementation("org.robolectric:robolectric:4.5.1")
-    testImplementation("org.mockito:mockito-core:3.10.0")
+    testImplementation("org.mockito:mockito-core:3.11.1")
     testImplementation("net.javacrumbs.json-unit:json-unit-fluent:2.26.0")
     testImplementation("com.google.truth:truth:1.1.3")
     testImplementation("com.google.truth.extensions:truth-java8-extension:1.1.3")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:${coroutinesVersion}")
 
     // Instrumented tests
     androidTestUtil("androidx.test:orchestrator:1.3.0")
 
     // Hilt for Android Testing
-    androidTestImplementation("com.google.dagger:hilt-android-testing:2.36")
-    kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.36")
+    androidTestImplementation("com.google.dagger:hilt-android-testing:2.37")
+    kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.37")
 
     androidTestImplementation("androidx.test:runner:1.3.0") { exclude("junit") }
     androidTestImplementation("androidx.test:rules:1.3.0")
@@ -204,6 +204,8 @@ dependencies {
     }
     androidTestImplementation("com.jraska:falcon:2.2.0")
     androidTestImplementation("tools.fastlane:screengrab:1.2.0")
+    androidTestImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:${coroutinesVersion}")
+
 
     resourcePlaceholders { files = listOf("xml/shortcuts.xml") }
 }

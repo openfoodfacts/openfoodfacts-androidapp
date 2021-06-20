@@ -50,8 +50,8 @@ import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentIngredientsProductBinding
 import openfoodfacts.github.scrachx.openfood.features.FullScreenActivityOpener
 import openfoodfacts.github.scrachx.openfood.features.ImagesManageActivity
-import openfoodfacts.github.scrachx.openfood.features.LoginActivity.Companion.LoginContract
 import openfoodfacts.github.scrachx.openfood.features.additives.AdditiveFragmentHelper.showAdditives
+import openfoodfacts.github.scrachx.openfood.features.login.LoginActivity.Companion.LoginContract
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_STATE
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.PerformOCRContract
@@ -153,6 +153,43 @@ class IngredientsProductFragment : BaseFragment() {
         binding.extractIngredientsPrompt.setOnClickListener { extractIngredients() }
         binding.imageViewIngredients.setOnClickListener { openFullScreen() }
 
+        binding.viewModel = viewModel
+
+        viewModel.vitaminsTags.observe(viewLifecycleOwner) {
+            if (it.isNotEmpty()) {
+                binding.cvVitaminsTagsText.visibility = View.VISIBLE
+                binding.vitaminsTagsText.text = SpannableStringBuilder()
+                    .bold { append(getString(R.string.vitamin_tags_text)) }
+                    .append(tagListToString(it))
+            } else binding.cvVitaminsTagsText.visibility = View.GONE
+        }
+        viewModel.aminoAcidTagsList.observe(viewLifecycleOwner) {
+            if (it.isNotEmpty()) {
+                binding.cvAminoAcidTagsText.visibility = View.VISIBLE
+                binding.aminoAcidTagsText.text = SpannableStringBuilder()
+                    .bold { append(getString(R.string.amino_acid_tags_text)) }
+                    .append(tagListToString(it))
+            } else binding.cvAminoAcidTagsText.visibility = View.GONE
+        }
+
+        viewModel.mineralTags.observe(viewLifecycleOwner) {
+            if (it.isNotEmpty()) {
+                binding.cvMineralTagsText.visibility = View.VISIBLE
+                binding.mineralTagsText.text = SpannableStringBuilder()
+                    .bold { append(getString(R.string.mineral_tags_text)) }
+                    .append(tagListToString(it))
+            } else binding.cvMineralTagsText.visibility = View.GONE
+        }
+
+        viewModel.mineralTags.observe(viewLifecycleOwner) {
+            if (it.isNotEmpty()) {
+                binding.otherNutritionTags.visibility = View.VISIBLE
+                binding.otherNutritionTags.text = SpannableStringBuilder()
+                    .bold { append(getString(R.string.other_tags_text)) }
+                    .append(tagListToString(it))
+            }
+        }
+
         refreshView(productState)
     }
 
@@ -173,34 +210,7 @@ class IngredientsProductFragment : BaseFragment() {
         val product = this.productState.product!!
         viewModel.product.value = product
 
-        val vitaminTagsList = product.vitaminTags
-        val aminoAcidTagsList = product.aminoAcidTags
-        val mineralTags = product.mineralTags
-        val otherNutritionTags = product.otherNutritionTags
-        if (vitaminTagsList.isNotEmpty()) {
-            binding.cvVitaminsTagsText.visibility = View.VISIBLE
-            binding.vitaminsTagsText.text = SpannableStringBuilder()
-                .bold { append(getString(R.string.vitamin_tags_text)) }
-                .append(tagListToString(vitaminTagsList))
-        }
-        if (aminoAcidTagsList.isNotEmpty()) {
-            binding.cvAminoAcidTagsText.visibility = View.VISIBLE
-            binding.aminoAcidTagsText.text = SpannableStringBuilder()
-                    .bold { append(getString(R.string.amino_acid_tags_text)) }
-                    .append(tagListToString(aminoAcidTagsList))
-        }
-        if (mineralTags.isNotEmpty()) {
-            binding.cvMineralTagsText.visibility = View.VISIBLE
-            binding.mineralTagsText.text = SpannableStringBuilder()
-                    .bold { append(getString(R.string.mineral_tags_text)) }
-                .append(tagListToString(mineralTags))
-        }
-        if (otherNutritionTags.isNotEmpty()) {
-            binding.otherNutritionTags.visibility = View.VISIBLE
-            binding.otherNutritionTags.text = SpannableStringBuilder()
-                .bold { append(getString(R.string.other_tags_text)) }
-                .append(tagListToString(otherNutritionTags))
-        }
+
         binding.textAdditiveProduct.text = SpannableStringBuilder()
             .bold { append(getString(R.string.txtAdditives)) }
 
@@ -268,9 +278,9 @@ class IngredientsProductFragment : BaseFragment() {
 
             binding.textTraceProduct.append(traces.joinToString(", ") {
                 getSearchLinkText(
-                        getTracesName(language, it),
-                        SearchType.TRACE,
-                        requireActivity()
+                    getTracesName(language, it),
+                    SearchType.TRACE,
+                    requireActivity()
                 )
             })
         } else {
@@ -293,13 +303,13 @@ class IngredientsProductFragment : BaseFragment() {
 
     private fun getTracesName(languageCode: String, tag: String): String {
         val allergenName = daoSession.allergenNameDao.queryBuilder()
-                .where(AllergenNameDao.Properties.AllergenTag.eq(tag), AllergenNameDao.Properties.LanguageCode.eq(languageCode))
-                .unique()
+            .where(AllergenNameDao.Properties.AllergenTag.eq(tag), AllergenNameDao.Properties.LanguageCode.eq(languageCode))
+            .unique()
         return if (allergenName != null) allergenName.name else tag
     }
 
     private fun tagListToString(tagList: List<String>) =
-            tagList.joinToString(", ", " ") { it.substring(3) }
+        tagList.joinToString(", ", " ") { it.substring(3) }
 
 
     private fun getAllergensTag(allergen: AllergenName): CharSequence {
@@ -308,7 +318,7 @@ class IngredientsProductFragment : BaseFragment() {
             override fun onClick(view: View) {
                 if (allergen.isWikiDataIdPresent) {
                     wikidataClient.doSomeThing(
-                            allergen.wikiDataId
+                        allergen.wikiDataId
                     ).subscribe { result ->
                         val activity = activity
                         if (activity?.isFinishing == false) {
@@ -335,8 +345,8 @@ class IngredientsProductFragment : BaseFragment() {
             INGREDIENT_REGEX.findAll(ingredientsText).forEach { match ->
 
                 val allergenTxt = match.value
-                        .replace("[()]+".toRegex(), "")
-                        .replace("[,.-]".toRegex(), " ")
+                    .replace("[()]+".toRegex(), "")
+                    .replace("[,.-]".toRegex(), " ")
                 allergenTags.find { tag -> tag.contains(allergenTxt, true) }?.let {
                     var start = match.range.first
                     var end = match.range.last + 1
@@ -350,13 +360,12 @@ class IngredientsProductFragment : BaseFragment() {
                 }
             }
             ssb.insert(0, SpannableStringBuilder()
-                    .bold { append(getString(R.string.txtIngredients) + ' ') })
+                .bold { append(getString(R.string.txtIngredients) + ' ') })
         }
     }
 
-    fun showAdditives(additives: List<AdditiveName>) {
+    fun showAdditives(additives: List<AdditiveName>) =
         showAdditives(additives, binding.textAdditiveProduct, wikidataClient, this, disp)
-    }
 
     private fun setAdditivesState(state: ProductInfoState) {
         when (state) {
@@ -449,13 +458,13 @@ class IngredientsProductFragment : BaseFragment() {
     private fun openFullScreen() {
         if (ingredientsImgUrl != null && productState.product != null) {
             FullScreenActivityOpener.openForUrl(
-                    this,
-                    client,
-                    productState.product!!,
-                    ProductImageField.INGREDIENTS,
-                    ingredientsImgUrl!!,
-                    binding.imageViewIngredients,
-                    localeManager.getLanguage()
+                this,
+                client,
+                productState.product!!,
+                ProductImageField.INGREDIENTS,
+                ingredientsImgUrl!!,
+                binding.imageViewIngredients,
+                localeManager.getLanguage()
             )
         } else {
             newIngredientImage()
@@ -473,9 +482,9 @@ class IngredientsProductFragment : BaseFragment() {
         binding.addPhotoLabel.visibility = View.GONE
         ingredientsImgUrl = newPhotoFile.absolutePath
         Picasso.get()
-                .load(newPhotoFile)
-                .fit()
-                .into(binding.imageViewIngredients)
+            .load(newPhotoFile)
+            .fit()
+            .into(binding.imageViewIngredients)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
