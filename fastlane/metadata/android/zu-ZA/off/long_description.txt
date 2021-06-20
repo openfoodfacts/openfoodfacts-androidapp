@@ -1,76 +1,55 @@
-Skena imikhiqizo yokudla noma ibhakhodi yabo ukuthola idatha kumazitha, izithasiselo namaqiniso okudla.
+<h1>▶ Scan, find & compare more than 1,3 million food products</h1>
 
-▶ Find & Compare more than 800.000 products
+The app allows to scan the 1,3 million products already contained in the free and open database Open Food Facts.
+The app is collaborative. If we don't have the product, you can add pictures and data to get the Nutri-Score and NOVA score on food processing.
 
-The app allows to view the 800.000 products (including 175.000 in the US) already contained in the free and open database Open Food Facts, and also to add pictures and data for new products.
+In short, we're kind of "the Wikipedia of food", as many have nicknamed the project. Open Food Facts has enabled the creation of over 100 apps like Date Limite, Yuka or FoodVisor.
 
+To discover the volunteer-run Open Food Facts project, visit https://world.openfoodfacts.org/discover
 
-To discover the volunteer-run Open Food Facts project, visit https://world.openfoodfacts.org
+<h1>▶ Choose the products that are good for you</h1>
 
-▶ Choose the products that are good for you
-- The Nutri-Score grade, from "A" to "E" >> Nutritional quality
-- The NOVA group, from "1" to "4" >> Find the Ultra-Processed food
-- You can easily compare as many products as you want, side by side by simply scanning them. 
+➜ The Nutri-Score grade, from A to E :  Nutritional quality
+➜ The NOVA group, from 1 to 4 : Avoid ultra-processed foods (Group 4)
 
-▶ And good for the planet!
-- The carbon impact of your food
-- Get a sense of how much of your daily carbon quota you're using for food
-- Based on the footprints computed for France by ADEME.
-- Join us and help us to bring the Carbon Impact to your country!
-- To display a Carbon Impact, a product must have a complete ingredient list with % of meat or fish and a quantity
+<h1>▶ Contribute to Food Transparency</h1>
 
+➜ Open Food Facts is a food products database made by everyone, for everyone.
+➜ You can use it to make better food choices, and as it is open data, anyone can re-use it for any purpose.
+➜ You can start contributing today by adding a product from your fridge.
+➜ Open Food Facts is a non-profit project developed by thousands of volunteers from around the world. Sinezinhlelo eziningi ezithakazelisayo ongazifaka ngezindlela eziningi ezahlukene.
 
-▶ Contribute to Food Transparency
-- I-Open Food Facts iyinhlangano yemininingwane yokudla eyenziwe yilowo nalowo, wonke umuntu.
-- Ungayisebenzisa ukwenza ukukhetha okungcono kokudla, futhi njengoba kuvuliwe idatha, noma ubani angayisebenzisa kabusha nganoma iyiphi injongo.
-- I-Open Food Facts yinqubo engeyona inzuzo eyenziwe yizinkulungwane zamavolontiya avela emhlabeni jikelele. Sinezinhlelo eziningi ezithakazelisayo ongazifaka ngezindlela eziningi ezahlukene.
-- You can start contributing today by adding a product from your fridge.
+<h1>▶ Decipher food labels</h1>
 
-▶ Create lists
-Create shopping lists, track what you've eaten and easily share and export your lists.
+➜ Open Food Facts helps you decipher products labels. You will be able to find:
+➜ carbon footprint (CO2 emissions) and packaging (as well as recycling instructions),
+➜ Nutriscore (nutritional score), nutrients, fat / fat content, saturated fatty acids, carbohydrates, sugars, fiber, protein and salt and sodium.
+➜ brands, allergens, labels (bio, gluten free, vegan, vegetarian, halal, kosher ...), traceability information (packaging codes, origins of ingredients)
+➜ On wines and beers, you will find the alcohol content.
 
-▶ Get the Facts
-- I-Open Food Facts ikusiza ukuba wenze umqondo wokuphrinta okuhle kumalebula womkhiqizo. You will be able to find:
-- isikhuthazo se-carbon (ukukhishwa kwe-CO2) nokupakisha (kanye nemiyalelo yokuvuselela),
-- I-Nutriscore (amaphuzu okunomsoco), izakhi, amanothi / amanoni, amafutha amaningi agcwele, ama-carbohydrate, ushukela, i-fibre, amaprotheni nosawoti kanye ne-sodium.
-- ama-brand, ama-allergen, amalebula (i-bio, i-gluten yamahhala, i-vegan, i-vegetarian, i-halal, i-kosher ...), ulwazi lwe-traceability (amakhodi wokupakisha, umsuka wezithako)
-- Ngewayini newayini, uzothola okuqukethwe kotshwala.
+<h1>▶ Our grades are science-based, and the project is helping science back!</h1>
+➜ We don't make up things. We rely on peer-reviewed science.
+➜ The Nutri-Score has been created by the independent French team led by Professor Hercberg.
+➜ The NOVA groups on food processing have been designed by the international team of Professor Monteiro.
+➜ The additives synthesis is based on reviews by EFSA on exposure levels on food additives.
+➜ The Open Food Facts community is collaborating with research teams across the planet to improve nutrition research that benefits all.
 
+<h1>▶ Works well in any condition</h1>
+➜ You can add new products, even with bad or no Internet connection
+➜ The app loads only the minimum to reduce data and battery consumption
+➜ You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
 
-▶ Based on Science, helping back Science!
+<h1>▶ Your food, your data. Privacy-friendly app.</h1>
+➜ Your data is yours, and is never sent online
+➜ You can use the app anonymously
+➜ You can export your scan history
 
-- We don't make up things. We rely on peer-reviewed science.
-- The Nutri-Score has been created by the independent French team led by Professor Hercberg.
-- The NOVA groups on food processing have been designed by the international team of Professor Monteiro.
-- You can get a synthesis of EFSA exposure levels on food additives.
-- The Open Food Facts community is collaborating with research teams across the planet to improve nutrition research that benefits all.
+<h1>▶ Set up allergen alerts on products</h1>
+➜ Milk, Gluten, Eggs, Soybeans, Nuts, Fish, Celery, Mustard, Sulphur dioxide and sulphites, Peanuts, Sesame seeds, Crustaceans, Molluscs or Lupin allergy ?
+➜ Speed up your shopping by doing an initial screening of your food with Open Food Facts.
+➜ Be careful that the information may not be 100% accurate, and detection may not be 100% accurate. So always double check by yourself, with the packaging.
 
+<h1>▶ More</h1>
 
-▶ Offline Scan: Scan in ANY condition! (coming soon)
-Scan at the speed of light (even if you’re on a plane, submarine or supermarket)
-
-- The whole planet, in your pocket !
-- Ungangeza imikhiqizo emisha, noma ngabe awunawo uxhumano lwe-inthanethi okwamanje.
-- The app loads only the strict necessary to reduce data and battery consumption.
-
-▶ Your food, your data
-- Idatha yakho ingeyakho, futhi ayithunyelwanga ku-intanethi
-- Ungasebenzisa uhlelo lokusebenza ngokungaziwa
-- Ungathumela umlando wakho wokuskena
-
-▶ Set up allergen alerts on products
-- Milk, Gluten, Eggs, Soybeans, Nuts, Fish, Celery, Mustard, Sulphur dioxide and sulphites, Peanuts, Sesame seeds, Crustaceans, Molluscs or Lupin allergy ?
-- Speed up your shopping by doing an initial screening of your food with Open Food Facts.
-- Be careful that the information may not be 100% accurate, and detection may not be 100% accurate. So always double check by yourself, with the packaging.
-
-
-▶ Say hello and/or join us!
-
-
-I-Open Food Facts iyatholakala futhi kuwebhu ku-https: //world.openfoodfacts.org
-
-
-Imibuzo, impendulo: contact@openfoodfacts.org
-
-
-Ukuze uthole izimonyo, ungafaka ama-Open Beauty Facts, ukuze uthole ukudla kwezilwane, amaqiniso avulekile wokudla okufakiwe, kanye nayo yonke eminye imikhiqizo, i-Open Products Facts.
+Open Food Facts is also available on the web at <a href="https://world.openfoodfacts.org">https://world.openfoodfacts.org</a>
+Questions, feedback : <a href="mailto:contact@openfoodfacts.org">contact@openfoodfacts.org</a>

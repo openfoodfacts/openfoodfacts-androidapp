@@ -18,13 +18,14 @@ package openfoodfacts.github.scrachx.openfood.features.product.view
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
+import androidx.fragment.app.FragmentActivity
 import androidx.preference.PreferenceManager
 import androidx.viewpager2.widget.ViewPager2
-import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -66,10 +67,13 @@ class ProductViewActivity : BaseActivity(), OnRefreshListener {
     private var _binding: ActivityProductBinding? = null
     private val binding get() = _binding!!
 
-    private val disp = CompositeDisposable()
-
     @Inject
     lateinit var client: OpenFoodAPIClient
+
+    @Inject
+    lateinit var sharedPreferences: SharedPreferences
+
+    private val disp = CompositeDisposable()
 
     private var productState: ProductState? = null
     private var adapterResult: ProductFragmentPagerAdapter? = null
@@ -120,11 +124,11 @@ class ProductViewActivity : BaseActivity(), OnRefreshListener {
      * @param barcode from the URL.
      */
     private fun fetchProduct(barcode: String) = client.getProductStateFull(barcode, Utils.HEADER_USER_AGENT_SCAN)
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnError {
-                Log.w(this::class.simpleName, "Failed to load product $barcode.", it)
-                finish()
-            }
+        .observeOn(AndroidSchedulers.mainThread())
+        .doOnError {
+            Log.w(this::class.simpleName, "Failed to load product $barcode.", it)
+            finish()
+        }
 
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -144,7 +148,7 @@ class ProductViewActivity : BaseActivity(), OnRefreshListener {
      */
     private fun initViews() {
         adapterResult = setupViewPager(binding.pager)
-        TabLayoutMediator(binding.tabs, binding.pager) { tab: TabLayout.Tab, position: Int ->
+        TabLayoutMediator(binding.tabs, binding.pager) { tab, position ->
             tab.text = adapterResult!!.getPageTitle(position)
         }.attach()
         binding.navigationBottomInclude.bottomNavigation.selectNavigationItem(0)
@@ -187,8 +191,11 @@ class ProductViewActivity : BaseActivity(), OnRefreshListener {
         }
     }
 
-    private fun setupViewPager(viewPager: ViewPager2) =
-            setupViewPager(viewPager, ProductFragmentPagerAdapter(this), productState!!, this)
+    private fun setupViewPager(viewPager: ViewPager2) = setupViewPager(
+        viewPager,
+        productState!!,
+        this
+    )
 
     enum class ShowIngredientsAction {
         PERFORM_OCR, SEND_UPDATED
@@ -229,16 +236,17 @@ class ProductViewActivity : BaseActivity(), OnRefreshListener {
          * CAREFUL ! YOU MUST INSTANTIATE YOUR OWN ADAPTERRESULT BEFORE CALLING THIS METHOD
          */
         fun setupViewPager(
-                viewPager: ViewPager2,
-                adapter: ProductFragmentPagerAdapter,
-                productState: ProductState,
-                activity: Activity
+            viewPager: ViewPager2,
+            productState: ProductState,
+            activity: FragmentActivity
         ): ProductFragmentPagerAdapter {
+            val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity)
+            val adapter = ProductFragmentPagerAdapter(activity)
+
             val titles = activity.resources.getStringArray(R.array.nav_drawer_items_product)
             val newTitles = activity.resources.getStringArray(R.array.nav_drawer_new_items_product)
 
             adapter += SummaryProductFragment.newInstance(productState) to titles[0]
-            val preferences = PreferenceManager.getDefaultSharedPreferences(activity)
 
             // Add Ingredients fragment for off, obf and opff
             if (isFlavors(OFF, OBF, OPFF)) {
@@ -253,7 +261,7 @@ class ProductViewActivity : BaseActivity(), OnRefreshListener {
                 adapter += EnvironmentProductFragment.newInstance(productState) to titles[4]
             }
 
-            if (isFlavors(OFF, OPFF, OBF) && isPhotoMode(activity) || isFlavors(OPF)) {
+            if (isFlavors(OPF) || isFlavors(OFF, OPFF, OBF) && isPhotoMode(sharedPreferences, activity)) {
                 adapter += ProductPhotosFragment.newInstance(productState) to newTitles[0]
             }
 
@@ -265,7 +273,7 @@ class ProductViewActivity : BaseActivity(), OnRefreshListener {
                 adapter += IngredientsAnalysisProductFragment.newInstance(productState) to newTitles[1]
             }
 
-            if (preferences.getBoolean(activity.getString(R.string.pref_contribution_tab_key), false)) {
+            if (sharedPreferences.getBoolean(activity.getString(R.string.pref_contribution_tab_key), false)) {
                 adapter += ContributorsFragment.newInstance(productState) to activity.getString(R.string.contribution_tab)
             }
 
@@ -273,8 +281,8 @@ class ProductViewActivity : BaseActivity(), OnRefreshListener {
             return adapter
         }
 
-        private fun isPhotoMode(activity: Activity) =
-                PreferenceManager.getDefaultSharedPreferences(activity).getBoolean(activity.getString(R.string.pref_show_product_photos_key), false)
+        private fun isPhotoMode(sharedPreferences: SharedPreferences, context: Context) =
+            sharedPreferences.getBoolean(context.getString(R.string.pref_show_product_photos_key), false)
 
         fun onOptionsItemSelected(activity: Activity, item: MenuItem) = when (item.itemId) {
             android.R.id.home -> {

@@ -4,6 +4,9 @@ import android.content.Context
 import android.util.Log
 import dagger.hilt.android.qualifiers.ApplicationContext
 import io.reactivex.Single
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.rx2.await
+import kotlinx.coroutines.withContext
 import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.utils.Utils
 import openfoodfacts.github.scrachx.openfood.utils.isEmpty
@@ -17,7 +20,7 @@ import javax.inject.Singleton
 
 @Singleton
 class TaxonomiesManager @Inject constructor(
-        @ApplicationContext private val context: Context
+    @ApplicationContext private val context: Context
 ) {
 
     /**
@@ -52,40 +55,38 @@ class TaxonomiesManager @Inject constructor(
      *
      * @param dao used to check if locale data is empty
      */
-    fun <T> getTaxonomyData(
-            taxonomy: Taxonomy,
-            checkUpdate: Boolean,
-            dao: AbstractDao<T, *>,
-            productRepository: ProductRepository
-    ): Single<List<T>> {
-        // WARNING: Before "return" all code is executed on MAIN THREAD
+    suspend fun <T> getTaxonomyData(
+        taxonomy: Taxonomy,
+        checkUpdate: Boolean,
+        dao: AbstractDao<T, *>,
+        productRepository: ProductRepository
+    ): List<T> = withContext(Dispatchers.Default) {
         val mSettings = context.getSharedPreferences("prefs", 0)
 
         // First check if this taxonomy is to be loaded for this flavor, else return empty list
         val isTaxonomyActivated = mSettings.getBoolean(taxonomy.downloadActivatePreferencesId, false)
-        if (!isTaxonomyActivated) {
-            return Single.just(emptyList())
-        }
+        if (!isTaxonomyActivated) return@withContext emptyList()
 
         // If the database scheme changed, this settings should be true
         val forceUpdate = mSettings.getBoolean(Utils.FORCE_REFRESH_TAXONOMIES, false)
 
         // If database is empty or we have to force update, download it
-        if (dao.isEmpty() || forceUpdate) {
+        val empty = dao.isEmpty()
+        if (empty || forceUpdate) {
             // Table is empty, no need check for update, just load taxonomy
-            return download(taxonomy, productRepository)
+            download<T>(taxonomy, productRepository).await()
         } else if (checkUpdate) {
             // Get local last downloaded time
             val localDownloadTime = mSettings.getLong(taxonomy.lastDownloadTimeStampPreferenceId, 0L)
+
             // We need to check for update. Test if file on server is more recent than last download.
-            return checkAndDownloadIfNewer(taxonomy, localDownloadTime, productRepository)
-        }
-        return Single.just(emptyList())
+            checkAndDownloadIfNewer<T>(taxonomy, localDownloadTime, productRepository).await()
+        } else emptyList()
     }
 
     private fun <T> download(
-            taxonomy: Taxonomy,
-            productRepository: ProductRepository
+        taxonomy: Taxonomy,
+        productRepository: ProductRepository
     ): Single<List<T>> = getLastModifiedDateFromServer(taxonomy).flatMap { lastMod ->
         if (lastMod != TAXONOMY_NO_INTERNET)
             logDownload(taxonomy.load(productRepository, lastMod), taxonomy)
@@ -93,9 +94,9 @@ class TaxonomiesManager @Inject constructor(
     }
 
     private fun <T> checkAndDownloadIfNewer(
-            taxonomy: Taxonomy,
-            localDownloadTime: Long,
-            productRepository: ProductRepository
+        taxonomy: Taxonomy,
+        localDownloadTime: Long,
+        productRepository: ProductRepository
     ): Single<List<T>> = getLastModifiedDateFromServer(taxonomy).flatMap { lastModRemote ->
         if (lastModRemote == 0L || lastModRemote > localDownloadTime)
             logDownload(taxonomy.load(productRepository, lastModRemote), taxonomy)

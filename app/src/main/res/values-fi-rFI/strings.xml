@@ -155,7 +155,6 @@
         <item>K-vitamiini</item>
         <item>Sinkki</item>
     </string-array>
-    <!-- Text units -->
     <!-- Content Description -->
     <string name="search_button">Etsi</string>
     <string name="alert_dialog_warning_title">Varoitus</string>
@@ -665,7 +664,7 @@
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">Poimi ainesosat</string>
     <string name="extract_recycling_prompt">Poimi kierrätysohjeet</string>
-    <string name="add_nutrient_prompt_text">Lisää ravintosisältö ravintoainetasojen laskemiseksi</string>
+    <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
     <string name="add_category_prompt_text">Lisää luokka auttaaksesi täydentämään tuotteen</string>
     <string name="add_nutrient_category_prompt_text">Lisää luokka ja ravintosisältö auttaaksesi täydentämään tuotteen</string>
     <string name="couldnot_compute_ecoscore_prompt_text">We could not compute an Eco-Score for this product. It might be that the category is not specific enough or that we don\'t have supporting data for this category. If you believe this is an error, you can mail us by clicking below.</string>
@@ -697,6 +696,10 @@
     <string name="txt_info_eaten_products">Voit lisätä tuotteita tähän luetteloon liu\'uttamalla luetun tuotteen tuotekortin ylöspäin, ja napauttamalla \"Ostettavat tuotteet\".
         Voit lisätä tuotteita tähän luetteloon etsimällä niitä, ja napsauttamalla + -painiketta tuotesivun oikeassa yläkulmassa.</string>
     <string name="txt_info_your_listed_products">Voit lisätä tuotteita tähän luetteloon etsimällä niitä ja napsauttamalla + -painiketta tuotesivun oikeassa yläkulmassa.</string>
+    <string name="import_csv_to_list">Tuo Open Food Facts -luettelo CSV-tiedostosta</string>
+    <string name="toast_import_csv_error">CSV-tiedoston tuonnissa tapahtui virhe</string>
+    <string name="toast_import_csv">CSV-tiedoston tuonti onnistui!</string>
+    <string name="open_csv">Avaa CSV-tiedosto</string>
     <string name="txt_no_nutrition_data">Tuotteen pakkauksessa ei ole ravintosisältöä. Jos tämä on muuttunut, voit muokata tuotetta.</string>
     <string name="image_prompt_language">Ota valokuva ainesosista kielellä</string>
     <string name="swipe_delete_tip">Voit poistaa luettelon pyyhkäisemällä sitä vasemmalle.</string>
@@ -704,7 +707,7 @@
     <string name="empty"></string>
     <string name="add_product">Lisää tuotteita</string>
     <string name="add_another_product">Lisää toinen tuote</string>
-    <string name="add_nutrition_facts_for_nutriscore">Lisää ravintosisältö ravintoainetasojen laskemiseksi</string>
+    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
     <string name="product_summary_action_compare_button_label">Vertaile</string>
     <string name="product_summary_action_add_to_list_button_label">Lisää luetteloon</string>
     <string name="product_summary_action_edit_button_label">Muokkaa</string>
@@ -732,10 +735,8 @@
     <string name="barcode">Viivakoodi</string>
     <string name="productAdditivesNone">Ei lisäaineita</string>
     <string name="error_uploading_photo">Jokin meni vikaan uuden kuvan lähetyksessä</string>
-    <string name="import_csv_to_list">Tuo Open Food Facts -luettelo CSV-tiedostosta</string>
-    <string name="toast_import_csv_error">CSV-tiedoston tuonnissa tapahtui virhe</string>
-    <string name="toast_import_csv">CSV-tiedoston tuonti onnistui!</string>
-    <string name="open_csv">Avaa CSV-tiedosto</string>
+    <string name="required_for_ecoscore">(Vaaditaan Eco-Scoren laskemiseksi)</string>
+    <string name="hint_origin">Esimerkkejä: Yhdysvallat, Ranska, Italia</string>
     <!-- Used for diets AddOn -->
     <string name="history_network_error">Tuotetta ei voitu ladata. Yritä uudelleen, kun olet taas online-tilassa.</string>
     <string name="cant_modify_if_refreshing">Odota, kunnes lähetys on valmis</string>
@@ -799,10 +800,16 @@
     <string name="follow_system">Järjestelmän teema</string>
     <string name="day">Päivä</string>
     <string name="night">Yö</string>
-    <string name="required_for_ecoscore">(Vaaditaan Eco-Scoren laskemiseksi)</string>
-    <string name="hint_origin">Esimerkkejä: Yhdysvallat, Ranska, Italia</string>
     <string name="report_email_chooser_title">Send a report email</string>
     <!-- Changelog String -->
     <string name="changelog_translation_help">Want to see this changelog in %s?\nJoin the translation team!</string>
     <string name="whats_new">What\'s new with Open Food Facts?</string>
+    <!-- New onboarding slides -->
+    <string name="eco_score_slide_4_title">Eco-Score</string>
+    <string name="join_the_food_revolution">Join the food revolution</string>
+    <string name="slide_1_text_revolution">Scan food, Take photos, Help transform the food system</string>
+    <string name="get_the_nutri_score">Saa Nutri-Score</string>
+    <string name="synthesis_of_nutrition_slide_2_text">A simple synthesis of the nutritional quality of your food</string>
+    <string name="avoid_ultra_processed_foods">Avoid ultra-processed foods</string>
+    <string name="nova_slide_3_text">Reduce the amount of ultra-processed foods in your diet.</string>
 </resources>

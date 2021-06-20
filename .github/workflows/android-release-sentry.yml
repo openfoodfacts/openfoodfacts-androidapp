@@ -8,9 +8,10 @@ jobs:
   finalize-sentry-release:
     name: Finalize Sentry release
     runs-on: ubuntu-20.04
+
     steps:
       - name: Checkout sources
-        uses: actions/checkout@v2
+        uses: actions/checkout@v2.3.4
 
       - name: Decrypt api json file
         run: cd ./fastlane/envfiles && ./decrypt_secrets.sh
@@ -19,17 +20,18 @@ jobs:
           STORE_JKS_DECRYPTKEY: ${{ secrets.STORE_JKS_DECRYPTKEY }}
 
       - name: Set up Ruby 2.6
-        uses: actions/setup-ruby@v1.1.3
+        uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.6.x
+          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
 
       - name: Install sentry-cli
-        run: curl -sL https://sentry.io/get-cli/ | bash
+        run: "curl -sL https://sentry.io/get-cli/ | bash"
 
-      - name: Install Dependencies
+      - name: Install dependencies via bundle
         run: gem install bundler && bundle install
 
-      - name: Run Fastlane finalize_sentry lane
+      - name: Run fastlane finalize_sentry lane
         run: bundle exec fastlane finalize_sentry
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}

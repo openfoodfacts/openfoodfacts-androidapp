@@ -18,7 +18,7 @@ import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveName
 import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveNameDao
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper
+import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
 import openfoodfacts.github.scrachx.openfood.utils.SearchType
 import org.greenrobot.greendao.async.AsyncOperation
 import org.greenrobot.greendao.async.AsyncOperationListener
@@ -33,9 +33,10 @@ class AdditiveListActivity : BaseActivity() {
     @Inject
     lateinit var daoSession: DaoSession
 
+    @Inject
+    lateinit var localeManager: LocaleManager
 
     private var additives = mutableListOf<AdditiveName>()
-
 
     override fun onDestroy() {
         super.onDestroy()
@@ -51,15 +52,15 @@ class AdditiveListActivity : BaseActivity() {
         supportActionBar!!.setTitle(R.string.additives)
         val asyncSessionAdditives = daoSession.startAsyncSession()
         val additiveNameDao = daoSession.additiveNameDao
-        val languageCode = LocaleHelper.getLanguage(this)
+        val languageCode = localeManager.getLanguage()
         asyncSessionAdditives.queryList(additiveNameDao.queryBuilder()
                 .where(AdditiveNameDao.Properties.LanguageCode.eq(languageCode))
                 .where(AdditiveNameDao.Properties.Name.like("E%")).build())
         asyncSessionAdditives.listenerMainThread = AsyncOperationListener { operation: AsyncOperation ->
             additives = operation.result as MutableList<AdditiveName>
             additives.sortWith { additive1: AdditiveName, additive2: AdditiveName ->
-                val s1 = additive1.name.toLowerCase(Locale.ROOT).replace('x', '0').split(Regex("(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)")).toTypedArray()[1]
-                val s2 = additive2.name.toLowerCase(Locale.ROOT).replace('x', '0').split(Regex("(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)")).toTypedArray()[1]
+                val s1 = additive1.name.lowercase(Locale.ROOT).replace('x', '0').split(Regex("(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)")).toTypedArray()[1]
+                val s2 = additive2.name.lowercase(Locale.ROOT).replace('x', '0').split(Regex("(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)")).toTypedArray()[1]
                 Integer.valueOf(s1).compareTo(Integer.valueOf(s2))
             }
             if (isFinishing) {
@@ -89,12 +90,13 @@ class AdditiveListActivity : BaseActivity() {
                 override fun onQueryTextChange(query: String): Boolean {
                     val suggestedAdditives = mutableListOf<AdditiveName>()
                     for (additive in additives) {
-                        if (additive.name.toLowerCase(Locale.getDefault()).split(" - ").size > 1) {
-                            val additiveContent = additive.name.toLowerCase(Locale.getDefault()).split(" - ").toTypedArray()
-                            val trimmedQuery = query.trim { it <= ' ' }.toLowerCase(Locale.getDefault())
+                        if (additive.name.lowercase(Locale.getDefault()).split(" - ").size > 1) {
+                            val additiveContent = additive.name.lowercase(Locale.getDefault()).split(" - ").toTypedArray()
+                            val trimmedQuery = query.trim { it <= ' ' }.lowercase(Locale.getDefault())
                             if (additiveContent[0].trim { it <= ' ' }.contains(trimmedQuery)
-                                    || additiveContent[1].trim { it <= ' ' }.contains(trimmedQuery)
-                                    || "${additiveContent[0]}-${additiveContent[1]}".contains(trimmedQuery)) {
+                                || additiveContent[1].trim { it <= ' ' }.contains(trimmedQuery)
+                                || "${additiveContent[0]}-${additiveContent[1]}".contains(trimmedQuery)
+                            ) {
                                 suggestedAdditives.add(additive)
                             }
                         }

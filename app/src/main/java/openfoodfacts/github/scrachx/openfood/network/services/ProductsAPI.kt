@@ -20,7 +20,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode
 import io.reactivex.Single
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
-import openfoodfacts.github.scrachx.openfood.BuildConfig.FLAVOR
+import openfoodfacts.github.scrachx.openfood.BuildConfig.FLAVOR_versionCode
 import openfoodfacts.github.scrachx.openfood.models.ProductState
 import openfoodfacts.github.scrachx.openfood.models.Search
 import openfoodfacts.github.scrachx.openfood.models.TagLineLanguage
@@ -74,18 +74,18 @@ interface ProductsAPI {
 
     @GET("cgi/search.pl?search_simple=1&json=1&action=process")
     fun searchProductByName(
-            @Query("search_terms") name: String,
+            @Query(ApiFields.Keys.SEARCH_TERMS) name: String,
             @Query("fields") fields: String,
             @Query("page") page: Int
     ): Single<Search>
 
     @FormUrlEncoded
     @POST("/cgi/session.pl")
-    fun signIn(
-            @Field(ApiFields.Keys.USER_ID) login: String?,
-            @Field(ApiFields.Keys.USER_PASS) password: String?,
-            @Field(".submit") submit: String?
-    ): Single<Response<ResponseBody>>
+    suspend fun signIn(
+        @Field(ApiFields.Keys.USER_ID) login: String?,
+        @Field(ApiFields.Keys.USER_PASS) password: String?,
+        @Field(".submit") submit: String?
+    ): Response<ResponseBody>
 
     @GET("$API_P/product/{barcode}.json?fields=ingredients")
     fun getIngredientsByBarcode(@Path("barcode") barcode: String?): Single<JsonNode>
@@ -108,11 +108,12 @@ interface ProductsAPI {
             @Query("id") imgId: String
     ): Single<JsonNode>
 
-    @GET("cgi/suggest.pl?tagtype=emb_codes")
-    fun getEMBCodeSuggestions(@Query("term") term: String?): Single<ArrayList<String>>
+    @GET("cgi/suggest.pl")
+    fun getSuggestions(
+            @Query("tagtype") tagType: String,
+            @Query("term") term: String
+    ): Single<List<String>>
 
-    @GET("/cgi/suggest.pl?tagtype=periods_after_opening")
-    fun getPeriodAfterOpeningSuggestions(@Query("term") term: String?): Single<ArrayList<String>>
 
     @GET("brand/{brand}/{page}.json")
     fun getProductByBrands(
@@ -331,7 +332,7 @@ interface ProductsAPI {
     /**
      * This method gives the news in all languages
      */
-    @GET("/files/tagline/tagline-$FLAVOR.json")
+    @GET("/files/tagline/tagline-$FLAVOR_versionCode.json")
     fun getTagline(@Header("User-Agent") header: String): Single<ArrayList<TagLineLanguage>>
 
     /**
@@ -348,9 +349,9 @@ interface ProductsAPI {
      */
     @GET("/cgi/product_image_crop.pl")
     fun editImages(
-            @Query(ApiFields.Keys.BARCODE) code: String,
-            @QueryMap fields: Map<String, @JvmSuppressWildcards String?>?
-    ): Single<String>
+        @Query(ApiFields.Keys.BARCODE) code: String,
+        @QueryMap fields: Map<String, @JvmSuppressWildcards String?>?
+    ): Single<ObjectNode>
 
     /**
      * This method is to crop images server side

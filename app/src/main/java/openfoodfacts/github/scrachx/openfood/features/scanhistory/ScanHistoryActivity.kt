@@ -38,7 +38,6 @@ import openfoodfacts.github.scrachx.openfood.features.productlist.CreateCSVContr
 import openfoodfacts.github.scrachx.openfood.features.scan.ContinuousScanActivity
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.utils.*
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLocaleFromContext
 import openfoodfacts.github.scrachx.openfood.utils.SortType.*
 import java.io.File
 import java.text.SimpleDateFormat
@@ -53,6 +52,9 @@ class ScanHistoryActivity : BaseActivity() {
 
     @Inject
     lateinit var picasso: Picasso
+
+    @Inject
+    lateinit var localeManager: LocaleManager
 
     /**
      * boolean to determine if menu buttons should be visible or not
@@ -188,7 +190,7 @@ class ScanHistoryActivity : BaseActivity() {
                     MaterialDialog.Builder(this).run {
                         title(R.string.action_about)
                         content(R.string.permision_write_external_storage)
-                        positiveText(R.string.txtOk)
+                        positiveText(android.R.string.ok)
                         onPositive { _, _ ->
                             storagePermLauncher.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
                         }
@@ -233,8 +235,8 @@ class ScanHistoryActivity : BaseActivity() {
     private fun exportAsCSV() {
         Toast.makeText(this, R.string.txt_exporting_history, Toast.LENGTH_LONG).show()
 
-        val flavor = BuildConfig.FLAVOR.toUpperCase(Locale.ROOT)
-        val date = SimpleDateFormat("yyyy-MM-dd", getLocaleFromContext(this)).format(Date())
+        val flavor = BuildConfig.FLAVOR.uppercase(Locale.ROOT)
+        val date = SimpleDateFormat("yyyy-MM-dd", localeManager.getLocale()).format(Date())
         val fileName = "$flavor-history_$date.csv"
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
@@ -253,9 +255,9 @@ class ScanHistoryActivity : BaseActivity() {
         if (ContextCompat.checkSelfPermission(baseContext, perm) != PackageManager.PERMISSION_GRANTED) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(this, perm)) {
                 MaterialDialog.Builder(this)
-                        .title(R.string.action_about)
-                        .content(R.string.permission_camera)
-                        .positiveText(R.string.txtOk)
+                    .title(R.string.action_about)
+                    .content(R.string.permission_camera)
+                    .positiveText(android.R.string.ok)
                         .onPositive { _, _ -> cameraPermLauncher.launch(perm) }
                         .show()
             } else {

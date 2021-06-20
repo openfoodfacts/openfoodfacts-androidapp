@@ -1,22 +1,19 @@
 package openfoodfacts.github.scrachx.openfood.features.product.view.photos
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
-import com.fasterxml.jackson.databind.node.ObjectNode
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.rxkotlin.addTo
 import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentProductPhotosBinding
 import openfoodfacts.github.scrachx.openfood.features.FullScreenActivityOpener
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_STATE
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
-import openfoodfacts.github.scrachx.openfood.images.extractImagesNameSortedByUploadTimeDesc
+import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductState
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
@@ -31,6 +28,8 @@ import javax.inject.Inject
 class ProductPhotosFragment : BaseFragment() {
     private var _binding: FragmentProductPhotosBinding? = null
     private val binding get() = _binding!!
+
+    private val viewModel: ProductPhotosViewModel by viewModels()
 
     @Inject
     lateinit var client: OpenFoodAPIClient
@@ -50,30 +49,39 @@ class ProductPhotosFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         val product = requireProductState().product!!
 
-        productsApi.getProductImages(product.code)
-                .observeOn(AndroidSchedulers.mainThread())
-                .doOnError { Log.e(LOG_TAG, "Cannot download images from server", it) }
-                .subscribe { node: ObjectNode ->
-                    binding.progress.hide()
-                    val imageNames = extractImagesNameSortedByUploadTimeDesc(node)
-
-                    //Check if user is logged in
-                    val adapter = ProductPhotosAdapter(requireContext(), picasso, client, product, imageNames, binding.root)
-                    { position ->
-                        // Retrieves url of the image clicked to open FullScreenActivity
-                        val barcode = if (product.code.length <= 8) product.code
-                        else StringBuilder(product.code)
-                                .insert(3, "/")
-                                .insert(6 + 1, "/")
-                                .insert(9 + 2, "/")
-                                .toString()
-                        val image = imageNames[position]
-                        openFullScreen("${BuildConfig.STATICURL}/images/products/$barcode/$image.jpg")
-                    }.apply { addTo(disp) }
-                    binding.imagesRecycler.adapter = adapter
-                    binding.imagesRecycler.layoutManager = GridLayoutManager(context, 3)
-                }.addTo(disp)
+        viewModel.product.value = product
+        viewModel.imageNames.observe(viewLifecycleOwner) { loadImages(product, it) }
     }
+
+    private fun loadImages(product: Product, imageNames: List<String>) {
+        val adapter = ProductPhotosAdapter(
+            requireContext(),
+            this,
+            picasso,
+            client,
+            product,
+            imageNames,
+            binding.root
+        ) { position ->
+            // Retrieves url of the image clicked to open FullScreenActivity
+            val barcode = getBarcodeUrl(product)
+            val image = imageNames[position]
+            openFullScreen("${BuildConfig.STATICURL}/images/products/$barcode/$image.jpg")
+        }
+
+        binding.progress.hide()
+        // Check if user is logged in
+        binding.imagesRecycler.adapter = adapter
+        binding.imagesRecycler.layoutManager = GridLayoutManager(context, 3)
+    }
+
+    private fun getBarcodeUrl(product: Product) = if (product.code.length <= 8) product.code
+    else StringBuilder(product.code)
+        .insert(3, "/")
+        .insert(6 + 1, "/")
+        .insert(9 + 2, "/")
+        .toString()
+
 
     override fun onDestroyView() {
         super.onDestroyView()
@@ -87,9 +95,9 @@ class ProductPhotosFragment : BaseFragment() {
      */
     private fun openFullScreen(mUrlImage: String?) {
         FullScreenActivityOpener.openZoom(
-                requireActivity(),
-                mUrlImage ?: return,
-                null
+            requireActivity(),
+            mUrlImage ?: return,
+            null
         )
     }
 

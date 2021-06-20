@@ -14,21 +14,15 @@ import openfoodfacts.github.scrachx.openfood.AppFlavors
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.models.SearchProduct
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
-import openfoodfacts.github.scrachx.openfood.utils.getEcoscoreResource
-import openfoodfacts.github.scrachx.openfood.utils.getNovaGroupResource
-import openfoodfacts.github.scrachx.openfood.utils.getNutriScoreResource
-import openfoodfacts.github.scrachx.openfood.utils.getProductBrandsQuantityDetails
+import openfoodfacts.github.scrachx.openfood.utils.*
 
-/**
- * @author herau & itchix
- */
 class ProductSearchAdapter(
         val products: MutableList<SearchProduct?>,
         private val isLowBatteryMode: Boolean,
         private val context: Context,
         private val picasso: Picasso,
-        private val openFoodAPIClient: OpenFoodAPIClient
+        private val openFoodAPIClient: OpenFoodAPIClient,
+        private val localeManager: LocaleManager
 ) : RecyclerView.Adapter<ProductSearchAdapter.ProductsListViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductsListViewHolder {
@@ -46,7 +40,7 @@ class ProductSearchAdapter(
         val product = products[position]!!
 
         holder.imageProgress.visibility = View.VISIBLE
-        val imageSmallUrl = product.getImageSmallUrl(getLanguage(context))
+        val imageSmallUrl = product.getImageSmallUrl(localeManager.getLanguage())
         if (imageSmallUrl == null) {
             holder.imageProgress.visibility = View.GONE
         }

@@ -28,10 +28,8 @@ object InstallationUtils {
 
     @Throws(IOException::class)
     private fun writeInstallationFile(installation: File) {
-        var id = UUID.randomUUID().toString()
-        id += Random().apply { setSeed(1000) }.nextInt()
-        id = getHashedString(id)
-        installation.writeText(id)
+        val id = UUID.randomUUID().toString() + Random().apply { setSeed(1000) }.nextInt()
+        installation.writeText(getHashedString(id))
     }
 
     private fun getHashedString(str: String) = try {

@@ -8,7 +8,7 @@ fun HistoryProduct.getProductBrandsQuantityDetails(): String {
     return StringBuilder()
             .apply {
                 if (!brands.isNullOrEmpty()) {
-                    append(brands.split(",").first().trim { it <= ' ' }.capitalize(Locale.ROOT))
+                    append(brands.split(",").first().trim { it <= ' ' }.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.ROOT) else it.toString() })
                 }
                 if (!quantity.isNullOrEmpty()) {
                     append(" - ")

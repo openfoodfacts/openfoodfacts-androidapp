@@ -155,7 +155,6 @@
         <item>crwdns178074:0crwdne178074:0</item>
         <item>crwdns178076:0crwdne178076:0</item>
     </string-array>
-    <!-- Text units -->
     <!-- Content Description -->
     <string name="search_button">crwdns178258:0crwdne178258:0</string>
     <string name="alert_dialog_warning_title">crwdns178260:0crwdne178260:0</string>
@@ -512,7 +511,7 @@
     <string name="products_to_be_completed">crwdns178916:0crwdne178916:0</string>
     <string name="offline_notification_title">crwdns178918:0crwdne178918:0</string>
     <string name="creator_history">crwdns178920:0%1$scrwdnd178920:0%2$scrwdnd178920:0%3$scrwdne178920:0</string>
-    <string name="last_editor_history">crwdns178922:0%1$scrwdnd178922:0%2$scrwdnd178922:0%3$scrwdne178922:0</string>
+    <string name="last_editor_history">crwdns181774:0%1$scrwdnd181774:0%2$scrwdnd181774:0%3$scrwdne181774:0</string>
     <string name="other_editors">crwdns178924:0crwdne178924:0</string>
     <string name="product_states">crwdns178926:0crwdne178926:0</string>
     <string name="incomplete_states">crwdns178928:0crwdne178928:0</string>
@@ -692,6 +691,10 @@
     <string name="txt_discard">crwdns179262:0crwdne179262:0</string>
     <string name="txt_info_eaten_products">crwdns179264:0crwdne179264:0</string>
     <string name="txt_info_your_listed_products">crwdns179266:0crwdne179266:0</string>
+    <string name="import_csv_to_list">crwdns179334:0crwdne179334:0</string>
+    <string name="toast_import_csv_error">crwdns179336:0crwdne179336:0</string>
+    <string name="toast_import_csv">crwdns179338:0crwdne179338:0</string>
+    <string name="open_csv">crwdns179340:0crwdne179340:0</string>
     <string name="txt_no_nutrition_data">crwdns179268:0crwdne179268:0</string>
     <string name="image_prompt_language">crwdns179270:0crwdne179270:0</string>
     <string name="swipe_delete_tip">crwdns179272:0crwdne179272:0</string>
@@ -727,10 +730,8 @@
     <string name="barcode">crwdns179328:0crwdne179328:0</string>
     <string name="productAdditivesNone">crwdns179330:0crwdne179330:0</string>
     <string name="error_uploading_photo">crwdns179332:0crwdne179332:0</string>
-    <string name="import_csv_to_list">crwdns179334:0crwdne179334:0</string>
-    <string name="toast_import_csv_error">crwdns179336:0crwdne179336:0</string>
-    <string name="toast_import_csv">crwdns179338:0crwdne179338:0</string>
-    <string name="open_csv">crwdns179340:0crwdne179340:0</string>
+    <string name="required_for_ecoscore">crwdns179464:0crwdne179464:0</string>
+    <string name="hint_origin">crwdns179466:0crwdne179466:0</string>
     <!-- Used for diets AddOn -->
     <string name="history_network_error">crwdns179342:0crwdne179342:0</string>
     <string name="cant_modify_if_refreshing">crwdns179344:0crwdne179344:0</string>
@@ -794,10 +795,16 @@
     <string name="follow_system">crwdns179458:0crwdne179458:0</string>
     <string name="day">crwdns179460:0crwdne179460:0</string>
     <string name="night">crwdns179462:0crwdne179462:0</string>
-    <string name="required_for_ecoscore">crwdns179464:0crwdne179464:0</string>
-    <string name="hint_origin">crwdns179466:0crwdne179466:0</string>
     <string name="report_email_chooser_title">crwdns179468:0crwdne179468:0</string>
     <!-- Changelog String -->
     <string name="changelog_translation_help">crwdns179470:0%scrwdne179470:0</string>
     <string name="whats_new">crwdns179472:0crwdne179472:0</string>
+    <!-- New onboarding slides -->
+    <string name="eco_score_slide_4_title">crwdns181760:0crwdne181760:0</string>
+    <string name="join_the_food_revolution">crwdns181762:0crwdne181762:0</string>
+    <string name="slide_1_text_revolution">crwdns181764:0crwdne181764:0</string>
+    <string name="get_the_nutri_score">crwdns181766:0crwdne181766:0</string>
+    <string name="synthesis_of_nutrition_slide_2_text">crwdns181768:0crwdne181768:0</string>
+    <string name="avoid_ultra_processed_foods">crwdns181770:0crwdne181770:0</string>
+    <string name="nova_slide_3_text">crwdns181772:0crwdne181772:0</string>
 </resources>

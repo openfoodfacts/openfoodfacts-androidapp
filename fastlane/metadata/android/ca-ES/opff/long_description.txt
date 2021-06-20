@@ -4,15 +4,14 @@ The app allows to view the over 600 pet food products already contained in the f
 
 To discover the Open Pet Food Facts project, please visit https://world.openpetfoodfacts.org
 
-***Contribute to Pet Food Transparency***
+*** Contribute to Pet Food Transparency ***
 
 - Open Pet Food Facts is a pet food products database made by everyone, for everyone.
 - You can use it to make better pet food choices, and as it is open data, anyone can re-use it for any purpose.
 - Open Pet Food Facts is a non-profit project developed by thousands of volunteers from around the world. Tenim molts projectes interessants en els que hi podeu contribuir de moltes maneres diferents. 
-- You can start contributing today by adding a product from your pet's cupboard. 
+- You can start contributing today by adding a product from your pet's cupboard.
 
-
-*** Obteniu les Dades ***
+*** Get the Facts ***
 
 You will also be able to find (according to the indications present on the products):
 - list of ingredients (including ash content)
@@ -20,10 +19,10 @@ You will also be able to find (according to the indications present on the produ
 - brands, allergens, labels (organic, vegan...)
 - It works with dog food (dry dog food & wet dog food), cat food, rabbit food, snake food, fish food, bird food, horse food or any food for your favorite animal.
 
-*** Funciona bé en qualsevol condició ***
+*** Works well in any condition ***
 - Podeu afegir nous productes, fins i tot si ara mateix no teniu una connexió a Internet.
-- L'aplicació només carrega l'estrictament necessari per a reduir les dades i el consum de la bateria
-- No necessiteu una càmera per buscar un producte. També podeu escriure el codi de barres si no teniu cap càmera o no us funciona.
+- The app loads only the strict necessary to reduce data and battery consumption
+- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
 
 *** Your pet food, your data ***
 - Your personal data is yours, and is never sent online

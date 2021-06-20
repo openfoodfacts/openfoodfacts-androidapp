@@ -47,12 +47,12 @@ import androidx.core.text.inSpans
 import androidx.core.view.children
 import androidx.work.*
 import com.afollestad.materialdialogs.MaterialDialog
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.R
-import openfoodfacts.github.scrachx.openfood.features.LoginActivity
 import openfoodfacts.github.scrachx.openfood.features.scan.ContinuousScanActivity
 import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivity.Companion.start
-import openfoodfacts.github.scrachx.openfood.jobs.SavedProductUploadWorker
+import openfoodfacts.github.scrachx.openfood.jobs.ImagesUploaderWorker
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import org.apache.commons.validator.routines.checkdigit.EAN13CheckDigit
 import java.io.*
@@ -74,7 +74,7 @@ object Utils {
     fun hideKeyboard(activity: Activity) {
         val view = activity.currentFocus ?: return
         (activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager)
-                .hideSoftInputFromWindow(view.windowToken, 0)
+            .hideSoftInputFromWindow(view.windowToken, 0)
     }
 
     @JvmStatic
@@ -141,8 +141,8 @@ object Utils {
         value.isEmpty() -> "?"
         value == "0" -> value
         else -> value.toString().toDoubleOrNull()
-                ?.let { DecimalFormat("##.##", DecimalFormatSymbols(locale)).format(it) }
-                ?: "?"
+            ?.let { DecimalFormat("##.##", DecimalFormatSymbols(locale)).format(it) }
+            ?: "?"
     }
 
     /**
@@ -159,9 +159,9 @@ object Utils {
         if (isUploadJobInitialised) return
 
         val periodicity = TimeUnit.MINUTES.toSeconds(30).toInt()
-        val uploadWorkRequest = OneTimeWorkRequest.Builder(SavedProductUploadWorker::class.java)
-                .setConstraints(Constraints.Builder().setRequiredNetworkType(NetworkType.UNMETERED).build())
-                .setInitialDelay(periodicity.toLong(), TimeUnit.SECONDS).build()
+        val uploadWorkRequest = OneTimeWorkRequest.Builder(ImagesUploaderWorker::class.java)
+            .setConstraints(Constraints.Builder().setRequiredNetworkType(NetworkType.UNMETERED).build())
+            .setInitialDelay(periodicity.toLong(), TimeUnit.SECONDS).build()
         WorkManager.getInstance(context).enqueueUniqueWork(UPLOAD_JOB_TAG, ExistingWorkPolicy.KEEP, uploadWorkRequest)
 
         isUploadJobInitialised = true
@@ -205,7 +205,7 @@ object Utils {
     fun isExternalStorageWritable() = Environment.MEDIA_MOUNTED == Environment.getExternalStorageState()
 
     fun getOutputPicUri(context: Context): Uri =
-            File(makeOrGetPictureDirectory(context), "${System.currentTimeMillis()}.jpg").toUri()
+        File(makeOrGetPictureDirectory(context), "${System.currentTimeMillis()}.jpg").toUri()
 
     /**
      * Function to open ContinuousScanActivity to facilitate scanning
@@ -215,14 +215,18 @@ object Utils {
     fun scan(activity: Activity) {
         if (ContextCompat.checkSelfPermission(activity, Manifest.permission.CAMERA) != PERMISSION_GRANTED) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(activity, Manifest.permission.CAMERA)) {
-                MaterialDialog.Builder(activity)
-                        .title(R.string.action_about)
-                        .content(R.string.permission_camera)
-                        .neutralText(R.string.txtOk)
-                        .show().setOnDismissListener {
-                            ActivityCompat.requestPermissions(activity, arrayOf(Manifest.permission.CAMERA),
-                                    MY_PERMISSIONS_REQUEST_CAMERA)
-                        }
+                MaterialAlertDialogBuilder(activity)
+                    .setTitle(R.string.action_about)
+                    .setMessage(R.string.permission_camera)
+                    .setPositiveButton(android.R.string.ok) { d, _ ->
+                        ActivityCompat.requestPermissions(
+                            activity, arrayOf(Manifest.permission.CAMERA),
+                            MY_PERMISSIONS_REQUEST_CAMERA
+                        )
+                        d.dismiss()
+                    }
+                    .setNegativeButton(android.R.string.cancel) { d, _ -> d.dismiss() }
+                    .show()
             } else {
                 ActivityCompat.requestPermissions(activity, arrayOf(Manifest.permission.CAMERA), MY_PERMISSIONS_REQUEST_CAMERA)
             }
@@ -236,16 +240,12 @@ object Utils {
 }
 
 fun isAllGranted(grantResults: IntArray) =
-        grantResults.isNotEmpty() && grantResults.none { it != PERMISSION_GRANTED }
+    grantResults.isNotEmpty() && grantResults.none { it != PERMISSION_GRANTED }
 
 fun buildSignInDialog(activity: Activity): MaterialDialog.Builder = MaterialDialog.Builder(activity)
-        .title(R.string.sign_in_to_edit)
-        .positiveText(R.string.txtSignIn)
-        .negativeText(R.string.dialog_cancel)
-
-private fun startActivityLoginWithRequestCode(activity: Activity, requestCode: Int) {
-    activity.startActivityForResult(Intent(activity, LoginActivity::class.java), requestCode)
-}
+    .title(R.string.sign_in_to_edit)
+    .positiveText(R.string.txtSignIn)
+    .negativeText(R.string.dialog_cancel)
 
 
 /**
@@ -269,7 +269,8 @@ private fun decodeFile(f: File): Bitmap? {
         // Find the correct scale value. It should be the power of 2.
         var scale = 1
         while (o.outWidth / scale / 2 >= REQUIRED_SIZE &&
-                o.outHeight / scale / 2 >= REQUIRED_SIZE) {
+            o.outHeight / scale / 2 >= REQUIRED_SIZE
+        ) {
             scale *= 2
         }
 
@@ -332,19 +333,6 @@ fun getModifierNonDefault(modifier: String) = if (modifier != DEFAULT_MODIFIER) 
 
 private val LOG_TAG = Utils::class.simpleName!!
 
-/**
- * @return Returns the version name of the app
- */
-fun Context.getVersionName(): String = try {
-    packageManager.getPackageInfo(packageName, 0).versionName
-} catch (e: PackageManager.NameNotFoundException) {
-    Log.e(LOG_TAG, "getVersionName", e)
-    "(version unknown)"
-} catch (e: NullPointerException) {
-    Log.e(LOG_TAG, "getVersionName", e)
-    "(version unknown)"
-}
-
 fun <T : View?> ViewGroup.getViewsByType(typeClass: Class<T>): List<T> {
     val result = mutableListOf<T>()
     children.forEach { view ->
@@ -381,9 +369,9 @@ fun isBarcodeValid(barcode: String?): Boolean {
  */
 fun isHardwareCameraInstalled(context: Context) = context.packageManager.hasSystemFeature(PackageManager.FEATURE_CAMERA)
 fun getSearchLinkText(
-        text: String,
-        type: SearchType,
-        activityToStart: Activity
+    text: String,
+    type: SearchType,
+    activityToStart: Activity
 ): CharSequence = SpannableStringBuilder().inSpans(object : ClickableSpan() {
     override fun onClick(view: View) = start(activityToStart, type, text)
 }) { append(text) }

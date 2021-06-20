@@ -7,25 +7,29 @@ import androidx.lifecycle.ViewModel
 import com.jakewharton.rxrelay2.BehaviorRelay
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
+import io.reactivex.Completable
 import io.reactivex.Observable
+import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
+import io.reactivex.rxkotlin.flatMapIterable
 import io.reactivex.schedulers.Schedulers
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import openfoodfacts.github.scrachx.openfood.models.HistoryProduct
 import openfoodfacts.github.scrachx.openfood.models.HistoryProductDao
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper
+import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
 import openfoodfacts.github.scrachx.openfood.utils.SortType
 import javax.inject.Inject
 
 @HiltViewModel
 @SuppressLint("StaticFieldLeak")
 class ScanHistoryViewModel @Inject constructor(
-        @ApplicationContext private val context: Context,
-        private val daoSession: DaoSession,
-        private val client: OpenFoodAPIClient
+    @ApplicationContext private val context: Context,
+    private val daoSession: DaoSession,
+    private val client: OpenFoodAPIClient,
+    private val localeManager: LocaleManager
 ) : ViewModel() {
 
     private val compositeDisposable = CompositeDisposable()
@@ -41,83 +45,74 @@ class ScanHistoryViewModel @Inject constructor(
         super.onCleared()
     }
 
-    fun observeFetchProductState(): Observable<FetchProductsState> = fetchProductsStateRelay
+    fun observeFetchProductState() = fetchProductsStateRelay
 
     fun refreshItems() {
         fetchProductsStateRelay.accept(FetchProductsState.Loading)
-        Observable
-                .fromCallable {
-                    daoSession.historyProductDao.queryBuilder().list()
-                }
-                .flatMap { prods ->
-                    client.getProductsByBarcode(prods.map { it.barcode }).toObservable()
-                }
-                .flatMapIterable { it }
-                .map { product ->
-                    val historyProduct = daoSession.historyProductDao.queryBuilder()
-                            .where(HistoryProductDao.Properties.Barcode.eq(product.code))
-                            .build()
-                            .unique()
-                    product.productName?.let { historyProduct.title = it }
-                    product.brands?.let { historyProduct.brands = it }
-                    product.getImageSmallUrl(LocaleHelper.getLanguage(context))?.let { historyProduct.url = it }
-                    product.quantity?.let { historyProduct.quantity = it }
-                    product.nutritionGradeFr?.let { historyProduct.nutritionGrade = it }
-                    product.ecoscore?.let { historyProduct.ecoscore = it }
-                    product.novaGroups?.let { historyProduct.novaGroup = it }
-                    daoSession.historyProductDao.update(historyProduct)
-                }
-                .toList()
-                .map {
-                    daoSession.historyProductDao.queryBuilder().list()
-                }
-                .map { it.customSort() }
-                .subscribeOn(Schedulers.io())
-                .subscribe(
-                        { items -> fetchProductsStateRelay.accept(FetchProductsState.Data(items)) },
-                        { fetchProductsStateRelay.accept(FetchProductsState.Error) }
-                )
-                .addTo(compositeDisposable)
+        Single.fromCallable { daoSession.historyProductDao.queryBuilder().list() }
+            .flatMap { products ->
+                client.getProductsByBarcode(products.map { it.barcode })
+            }
+            .toObservable()
+            .flatMapIterable()
+            .map { product ->
+                val historyProduct = daoSession.historyProductDao.queryBuilder()
+                    .where(HistoryProductDao.Properties.Barcode.eq(product.code))
+                    .build()
+                    .unique()
+
+                product.productName?.let { historyProduct.title = it }
+                product.brands?.let { historyProduct.brands = it }
+                product.getImageSmallUrl(localeManager.getLanguage())?.let { historyProduct.url = it }
+                product.quantity?.let { historyProduct.quantity = it }
+                product.nutritionGradeFr?.let { historyProduct.nutritionGrade = it }
+                product.ecoscore?.let { historyProduct.ecoscore = it }
+                product.novaGroups?.let { historyProduct.novaGroup = it }
+                daoSession.historyProductDao.update(historyProduct)
+            }.toList()
+
+            .map { daoSession.historyProductDao.queryBuilder().list() }
+            .map { it.customSort() }
+            .subscribeOn(Schedulers.io())
+            .doOnError { fetchProductsStateRelay.accept(FetchProductsState.Error) }
+            .subscribe { items -> fetchProductsStateRelay.accept(FetchProductsState.Data(items)) }
+            .addTo(compositeDisposable)
     }
 
     fun clearHistory() {
         fetchProductsStateRelay.accept(FetchProductsState.Loading)
-        Observable
-                .fromCallable {
-                    daoSession.historyProductDao.deleteAll()
-                }
-                .subscribeOn(Schedulers.io())
-                .doOnError { fetchProductsStateRelay.accept(FetchProductsState.Error) }
-                .subscribe { fetchProductsStateRelay.accept(FetchProductsState.Data(emptyList())) }
-                .addTo(compositeDisposable)
+        Completable.fromCallable { daoSession.historyProductDao.deleteAll() }
+            .subscribeOn(Schedulers.io())
+            .doOnError { fetchProductsStateRelay.accept(FetchProductsState.Error) }
+            .subscribe { fetchProductsStateRelay.accept(FetchProductsState.Data(emptyList())) }
+            .addTo(compositeDisposable)
     }
 
     fun removeProductFromHistory(product: HistoryProduct) {
-        Observable
-                .fromCallable {
-                    daoSession.historyProductDao.delete(product)
-                    daoSession.historyProductDao.queryBuilder().list()
-                }
-                .map { it.customSort() }
-                .subscribeOn(Schedulers.io())
-                .doOnError { fetchProductsStateRelay.accept(FetchProductsState.Error) }
-                .subscribe { products -> fetchProductsStateRelay.accept(FetchProductsState.Data(products)) }
-                .addTo(compositeDisposable)
+        Observable.fromCallable {
+            daoSession.historyProductDao.delete(product)
+            daoSession.historyProductDao.queryBuilder().list()
+        }
+            .map { it.customSort() }
+            .subscribeOn(Schedulers.io())
+            .doOnError { fetchProductsStateRelay.accept(FetchProductsState.Error) }
+            .subscribe { products -> fetchProductsStateRelay.accept(FetchProductsState.Data(products)) }
+            .addTo(compositeDisposable)
 
     }
 
     fun updateSortType(type: SortType) {
         sortType = type
         fetchProductsStateRelay
-                .take(1)
-                .map {
-                    (it as? FetchProductsState.Data)?.items?.customSort() ?: emptyList()
-                }
-                .filter { it.isNotEmpty() }
-                .subscribeOn(Schedulers.io())
-                .doOnError { fetchProductsStateRelay.accept(FetchProductsState.Error) }
-                .subscribe { products -> fetchProductsStateRelay.accept(FetchProductsState.Data(products)) }
-                .addTo(compositeDisposable)
+            .take(1)
+            .map {
+                (it as? FetchProductsState.Data)?.items?.customSort() ?: emptyList()
+            }
+            .filter { it.isNotEmpty() }
+            .subscribeOn(Schedulers.io())
+            .doOnError { fetchProductsStateRelay.accept(FetchProductsState.Error) }
+            .subscribe { products -> fetchProductsStateRelay.accept(FetchProductsState.Data(products)) }
+            .addTo(compositeDisposable)
     }
 
     fun openProduct(barcode: String, activity: Activity) {

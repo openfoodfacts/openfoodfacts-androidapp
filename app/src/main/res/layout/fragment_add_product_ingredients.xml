@@ -14,7 +14,7 @@
         android:clipToPadding="false"
         android:isScrollContainer="false"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:context=".features.product.edit.ProductEditIngredientsFragment">
+        tools:context=".features.product.edit.ingredients.EditIngredientsFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -212,11 +212,12 @@
                 android:id="@+id/btn_looks_good"
                 style="@style/ButtonFlat.Green"
                 android:layout_width="0dp"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:layout_margin="@dimen/spacing_small"
                 android:text="@string/looksGood"
                 android:textColor="@color/white"
                 android:visibility="gone"
+                app:layout_constraintBottom_toTopOf="@id/btn_barrier"
                 app:layout_constraintEnd_toStartOf="@id/btn_skip_ingredients"
                 app:layout_constraintStart_toStartOf="@id/ingredients_list"
                 app:layout_constraintTop_toBottomOf="@id/ingredients_list"
@@ -226,15 +227,26 @@
                 android:id="@+id/btn_skip_ingredients"
                 style="@style/ButtonFlat.Red"
                 android:layout_width="0dp"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:layout_margin="@dimen/spacing_small"
                 android:text="@string/skip_ingredients"
                 android:textColor="@color/white"
                 android:visibility="gone"
+                app:layout_constraintBottom_toTopOf="@id/btn_barrier"
                 app:layout_constraintEnd_toEndOf="@id/ingredients_list"
                 app:layout_constraintStart_toEndOf="@+id/btn_looks_good"
                 app:layout_constraintTop_toBottomOf="@id/ingredients_list"
+                tools:text="Really really long text coming from Narnia"
                 tools:visibility="visible" />
+
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/btn_barrier"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:barrierDirection="bottom"
+                app:constraint_referenced_ids="btn_looks_good,btn_skip_ingredients"
+                tools:layout_editor_absoluteX="165dp"
+                tools:layout_editor_absoluteY="421dp" />
 
             <View
                 android:id="@+id/grey_line2"
@@ -242,10 +254,9 @@
                 android:layout_height="1dp"
                 android:layout_marginLeft="@dimen/spacing_small"
                 android:layout_marginTop="@dimen/spacing_small"
-                android:layout_marginRight="@dimen/spacing_small"
                 android:background="@color/grey_400"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/btn_looks_good" />
+                app:layout_constraintTop_toBottomOf="@id/btn_barrier" />
 
             <TextView
                 android:id="@+id/section_traces"

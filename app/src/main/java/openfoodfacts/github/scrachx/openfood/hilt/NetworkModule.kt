@@ -6,10 +6,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import io.reactivex.schedulers.Schedulers
-import okhttp3.CipherSuite
-import okhttp3.ConnectionSpec
-import okhttp3.OkHttpClient
-import okhttp3.TlsVersion
+import okhttp3.*
 import okhttp3.logging.HttpLoggingInterceptor
 import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.hilt.qualifiers.MainRetrofit
@@ -34,56 +31,61 @@ object NetworkModule {
         // Our servers don't support TLS 1.3 therefore we need to create custom connectionSpec
         // with the correct ciphers to support network requests successfully on Android 7
         val connectionSpecModernTLS = ConnectionSpec.Builder(ConnectionSpec.MODERN_TLS)
-                .tlsVersions(TlsVersion.TLS_1_2)
-                .cipherSuites(
-                        CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,
-                        CipherSuite.TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,
-                        CipherSuite.TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,
-                        CipherSuite.TLS_DHE_RSA_WITH_AES_256_GCM_SHA384,
-                        CipherSuite.TLS_DHE_RSA_WITH_AES_128_GCM_SHA256)
-                .build()
-        return OkHttpClient.Builder()
-                .connectTimeout(CONNECTION_TIMEOUT, TimeUnit.SECONDS)
-                .readTimeout(READ_WRITE_TIMEOUT, TimeUnit.SECONDS)
-                .writeTimeout(READ_WRITE_TIMEOUT, TimeUnit.SECONDS)
-                .connectionSpecs(listOf(connectionSpecModernTLS, ConnectionSpec.COMPATIBLE_TLS))
-                .apply {
-                    if (BuildConfig.DEBUG) {
-                        addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
-                    } else {
-                        addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BASIC))
-                    }
+            .tlsVersions(TlsVersion.TLS_1_2)
+            .cipherSuites(
+                CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,
+                CipherSuite.TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,
+                CipherSuite.TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,
+                CipherSuite.TLS_DHE_RSA_WITH_AES_256_GCM_SHA384,
+                CipherSuite.TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
+            )
+            .build()
+        return OkHttpClient.Builder().apply {
+            connectTimeout(CONNECTION_TIMEOUT, TimeUnit.SECONDS)
+            readTimeout(READ_WRITE_TIMEOUT, TimeUnit.SECONDS)
+            writeTimeout(READ_WRITE_TIMEOUT, TimeUnit.SECONDS)
+            connectionSpecs(listOf(connectionSpecModernTLS, ConnectionSpec.COMPATIBLE_TLS))
+
+            if (BuildConfig.DEBUG) {
+                addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+                authenticator { _, response ->
+                    response.request()
+                        .newBuilder()
+                        .header("Authorization", Credentials.basic("off", "off"))
+                        .build()
                 }
-                .build()
+            } else {
+                addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BASIC))
+            }
+        }.build()
     }
 
     @MainRetrofit
     @Provides
     @Singleton
-    fun provideMainRetrofit(httpClient: OkHttpClient): Retrofit = Retrofit.Builder()
+    fun provideMainRetrofit(httpClient: OkHttpClient): Retrofit =
+        createDefaultRetrofit(httpClient)
             .baseUrl(BuildConfig.HOST)
-            .client(httpClient)
-            .addConverterFactory(JacksonConverterFactory.create(jacksonObjectMapper()))
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
             .build()
 
     @WikiRetrofit
     @Provides
     @Singleton
-    fun provideWikiRetrofit(httpClient: OkHttpClient): Retrofit = Retrofit.Builder()
+    fun provideWikiRetrofit(httpClient: OkHttpClient): Retrofit =
+        createDefaultRetrofit(httpClient)
             .baseUrl(BuildConfig.WIKIDATA)
-            .client(httpClient)
-            .addConverterFactory(JacksonConverterFactory.create(jacksonObjectMapper()))
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
             .build()
 
     @RobotoffRetrofit
     @Provides
     @Singleton
-    fun provideRobotoffRetrofit(httpClient: OkHttpClient): Retrofit = Retrofit.Builder()
+    fun provideRobotoffRetrofit(httpClient: OkHttpClient): Retrofit =
+        createDefaultRetrofit(httpClient)
             .baseUrl("https://robotoff.openfoodfacts.org")
-            .client(httpClient)
-            .addConverterFactory(JacksonConverterFactory.create(jacksonObjectMapper()))
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
             .build()
+
+    private fun createDefaultRetrofit(httpClient: OkHttpClient) = Retrofit.Builder()
+        .client(httpClient)
+        .addConverterFactory(JacksonConverterFactory.create(jacksonObjectMapper()))
+        .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
 }

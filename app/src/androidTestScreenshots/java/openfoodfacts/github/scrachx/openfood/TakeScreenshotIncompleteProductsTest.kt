@@ -3,6 +3,7 @@ package openfoodfacts.github.scrachx.openfood
 import android.content.Intent
 import androidx.test.core.app.ApplicationProvider
 import dagger.hilt.android.testing.HiltAndroidRule
+import androidx.test.ext.junit.runners.AndroidJUnit4
 import dagger.hilt.android.testing.HiltAndroidTest
 import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivity
 import openfoodfacts.github.scrachx.openfood.models.SearchInfo
@@ -11,6 +12,7 @@ import openfoodfacts.github.scrachx.openfood.test.ScreenshotParameter
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
+import org.junit.runner.RunWith
 
 /**
  * Take screenshots...

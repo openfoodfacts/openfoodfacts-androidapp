@@ -17,6 +17,7 @@ package openfoodfacts.github.scrachx.openfood.features.product.view.nutrition
 
 import android.Manifest.permission
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.net.Uri
@@ -56,8 +57,8 @@ import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentNutritionProductBinding
 import openfoodfacts.github.scrachx.openfood.features.FullScreenActivityOpener
 import openfoodfacts.github.scrachx.openfood.features.ImagesManageActivity
-import openfoodfacts.github.scrachx.openfood.features.LoginActivity
 import openfoodfacts.github.scrachx.openfood.features.adapters.NutrimentsGridAdapter
+import openfoodfacts.github.scrachx.openfood.features.login.LoginActivity
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_STATE
 import openfoodfacts.github.scrachx.openfood.features.product.view.CalculateDetailsActivity
@@ -86,15 +87,21 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
     private var _binding: FragmentNutritionProductBinding? = null
     private val binding get() = _binding!!
 
-    private val photoReceiverHandler by lazy {
-        PhotoReceiverHandler(requireContext()) { loadNutritionPhoto(it) }
-    }
-
     @Inject
     lateinit var client: OpenFoodAPIClient
 
     @Inject
     lateinit var picasso: Picasso
+
+    @Inject
+    lateinit var sharedPreferences: SharedPreferences
+
+    @Inject
+    lateinit var localeManager: LocaleManager
+
+    private val photoReceiverHandler by lazy {
+        PhotoReceiverHandler(sharedPreferences) { loadNutritionPhoto(it) }
+    }
 
     private lateinit var product: Product
 
@@ -102,7 +109,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
      * Boolean to determine if nutrition data should be shown
      */
     private var showNutritionData = true
-    private val sharedPreferences by lazy { requireActivity().getSharedPreferences("prefs", 0) }
+    private val customSharedPreferences by lazy { requireActivity().getSharedPreferences("prefs", 0) }
 
     /**
      * Boolean to determine if image should be loaded or not
@@ -160,7 +167,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
 
     override fun refreshView(productState: ProductState) {
         super.refreshView(productState)
-        val langCode = LocaleHelper.getLanguage(requireActivity())
+        val langCode = localeManager.getLanguage()
         product = productState.product!!
 
         checkPrompts()
@@ -487,7 +494,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
 
     private fun openFullScreen() {
         if (nutrientsImageUrl != null) {
-            FullScreenActivityOpener.openForUrl(this, client, product, ProductImageField.NUTRITION, nutrientsImageUrl!!, binding.imageViewNutrition)
+            FullScreenActivityOpener.openForUrl(this, client, product, ProductImageField.NUTRITION, nutrientsImageUrl!!, binding.imageViewNutrition, localeManager.getLanguage())
         } else {
             // take a picture
             if (ContextCompat.checkSelfPermission(requireActivity(), permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
@@ -534,7 +541,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
 
     private fun loadNutritionPhoto(photoFile: File) {
         // Create a new instance of ProductImage so we can load to server
-        val image = ProductImage(product.code, ProductImageField.NUTRITION, photoFile, LocaleHelper.getLanguage(context)).apply {
+        val image = ProductImage(product.code, ProductImageField.NUTRITION, photoFile, localeManager.getLanguage()).apply {
             filePath = photoFile.absolutePath
         }
 

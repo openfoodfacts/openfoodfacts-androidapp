@@ -2,6 +2,7 @@ package openfoodfacts.github.scrachx.openfood.features.product.view
 
 import android.app.Activity
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -45,6 +46,9 @@ class ProductViewFragment : Fragment(), OnRefreshListener {
 
     @Inject
     lateinit var client: OpenFoodAPIClient
+
+    @Inject
+    lateinit var sharedPreferences: SharedPreferences
 
     private lateinit var adapterResult: ProductFragmentPagerAdapter
     private lateinit var productState: ProductState
@@ -90,9 +94,8 @@ class ProductViewFragment : Fragment(), OnRefreshListener {
 
     private fun setupViewPager(viewPager: ViewPager2) = setupViewPager(
             viewPager,
-            ProductFragmentPagerAdapter(requireActivity()),
             productState,
-            requireActivity(),
+            requireActivity()
     )
 
     override fun onOptionsItemSelected(item: MenuItem) = onOptionsItemSelected(requireActivity(), item)

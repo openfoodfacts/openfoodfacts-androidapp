@@ -61,7 +61,8 @@ class ProductCompareAdapter(
         internal val activity: Activity,
         private val client: OpenFoodAPIClient,
         private val productRepository: ProductRepository,
-        private val picasso: Picasso
+        private val picasso: Picasso,
+        private val language: String,
 ) : RecyclerView.Adapter<ProductComparisonViewHolder>() {
     private val addProductButton = activity.findViewById<Button>(R.id.product_comparison_button)
 
@@ -107,7 +108,7 @@ class ProductCompareAdapter(
         addProductButton?.setText(R.string.add_another_product)
 
         // Image
-        val imageUrl = product.getImageUrl(LocaleHelper.getLanguage(activity))
+        val imageUrl = product.getImageUrl(language)
         holder.binding.productComparisonImage.setOnClickListener {
             if (imageUrl != null) {
                 FullScreenActivityOpener.openForUrl(
@@ -116,7 +117,8 @@ class ProductCompareAdapter(
                         product,
                         ProductImageField.FRONT,
                         imageUrl,
-                        holder.binding.productComparisonImage
+                        holder.binding.productComparisonImage,
+                        language
                 )
             } else {
                 // take a picture
@@ -222,13 +224,11 @@ class ProductCompareAdapter(
 
         product.additivesTags.toObservable()
                 .flatMapSingle { tag ->
-                    productRepository.getAdditiveByTagAndLanguageCode(tag, LocaleHelper.getLanguage(activity))
+                    productRepository.getAdditiveByTagAndLanguageCode(tag, language)
                             .flatMap { categoryName ->
                                 if (categoryName.isNull) {
                                     productRepository.getAdditiveByTagAndDefaultLanguageCode(tag)
-                                } else {
-                                    Single.just(categoryName)
-                                }
+                                } else Single.just(categoryName)
                             }
                 }
                 .filter { it.isNotNull }
@@ -316,7 +316,7 @@ class ProductCompareAdapter(
                 product.code,
                 ProductImageField.FRONT,
                 file,
-                LocaleHelper.getLanguage(activity)
+                language
         ).apply { filePath = file.absolutePath }
 
         client.postImg(image).subscribe().addTo(disp)

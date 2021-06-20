@@ -10,19 +10,18 @@ import android.widget.ImageView
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.BlendModeColorFilterCompat.createBlendModeColorFilterCompat
 import androidx.core.graphics.BlendModeCompat
-import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.AnalysisTagConfig
-import openfoodfacts.github.scrachx.openfood.utils.Utils
 
 class IngredientAnalysisTagsAdapter(
         private val context: Context,
         private val tags: List<AnalysisTagConfig>,
-        private val picasso: Picasso
+        private val picasso: Picasso,
+        private val sharedPreferences: SharedPreferences,
 ) : RecyclerView.Adapter<IngredientAnalysisTagsAdapter.IngredientAnalysisTagsViewHolder>() {
-    private val prefs: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
+
     private val visibleTags = tags.toMutableList()
     private var onClickListener: ((View, Int) -> Unit)? = null
 
@@ -67,7 +66,9 @@ class IngredientAnalysisTagsAdapter(
 
     fun filterVisibleTags() {
         visibleTags.clear()
-        tags.filterTo(visibleTags) { prefs.getBoolean(it.type, true) }
+        tags.filterTo(visibleTags) {
+            sharedPreferences.getBoolean(it.type, true)
+        }
         notifyDataSetChanged()
     }
 

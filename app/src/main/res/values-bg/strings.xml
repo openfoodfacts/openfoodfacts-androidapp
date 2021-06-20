@@ -526,8 +526,8 @@
     <string name="notify_channel_description">Уведомление за показване на местоположението на изнесения файл</string>
     <string name="products_to_be_completed">Продукти, които трябва да бъдат завършени</string>
     <string name="offline_notification_title">Офлайн приноси, които трябва да изпратите</string>
-    <string name="creator_history">Продукт добавен в %1$s на %2$s CET от</string>
-    <string name="last_editor_history">Последна редакция на страницата на продукта в %1$s на %2$s CEST от </string>
+    <string name="creator_history">Продукт добавен в %1$s на %2$s CET от %3$s</string>
+    <string name="last_editor_history">Последна редакция на страницата на продукта в %1$s на %2$s CEST от %3$s</string>
     <string name="other_editors">Страницата на продукта е редактирана също от </string>
     <string name="contribution_tab">Приноси</string>
     <string name="pref_contribution_tab_summary">Показване на раздела с потребителски приноси с продукти</string>
@@ -592,7 +592,6 @@
     <string name="your_version">Yours</string>
     <string name="ingredients_picture">Изображение на съставките</string>
     <string name="packaging">Recycling</string>
-    <string name="recycling_picture">Recycling Picture</string>
     <string name="take_ingredients_picture_to_extract">(Моля, направете снимка на съставките, за да ги извлечете автоматично)</string>
     <string name="ingredients_list">Списък на съставките</string>
     <string name="ingredients_hint">Запазете поръчката, посочете % (процент), когато е нужно, отделете със , (запетая) или използвайте - (тире), използвайте () (скоби) за подсъставките на дадена съставка, оградете алергените с _ (долна черта)</string>

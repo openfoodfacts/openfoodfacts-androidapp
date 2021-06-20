@@ -20,7 +20,6 @@ import openfoodfacts.github.scrachx.openfood.utils.UnitUtils.saltToSodium
 import openfoodfacts.github.scrachx.openfood.utils.UnitUtils.sodiumToSalt
 import org.junit.Assert
 import org.junit.Test
-import org.junit.function.ThrowingRunnable
 import java.util.*
 
 /**
@@ -86,7 +85,7 @@ class UnitUtilsTest {
     fun testConvertToKiloCalories() {
         assertThat(convertToKiloCalories(100, ENERGY_KJ)).isEqualTo(23)
         assertThat(convertToKiloCalories(100, ENERGY_KCAL)).isEqualTo(100)
-        Assert.assertThrows<IllegalArgumentException>(IllegalArgumentException::class.java, ThrowingRunnable { convertToKiloCalories(1, UNIT_GRAM) })
+        Assert.assertThrows(IllegalArgumentException::class.java) { convertToKiloCalories(1, UNIT_GRAM) }
     }
 
     @Test

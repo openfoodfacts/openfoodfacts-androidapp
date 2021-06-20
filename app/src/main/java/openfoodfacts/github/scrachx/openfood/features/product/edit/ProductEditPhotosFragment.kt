@@ -19,6 +19,7 @@ import android.Manifest.permission
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -31,32 +32,44 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.squareup.picasso.Picasso
+import dagger.hilt.android.AndroidEntryPoint
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentAddProductPhotosBinding
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper
+import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
 import openfoodfacts.github.scrachx.openfood.utils.MY_PERMISSIONS_REQUEST_CAMERA
 import openfoodfacts.github.scrachx.openfood.utils.PhotoReceiverHandler
 import openfoodfacts.github.scrachx.openfood.utils.dpsToPixel
 import pl.aprilapps.easyphotopicker.EasyImage
 import java.io.File
+import javax.inject.Inject
 
 /**
  * Fragment for adding photos of the product
  *
  * @see R.layout.fragment_add_product_photos
  */
+@AndroidEntryPoint
 class ProductEditPhotosFragment : ProductEditFragment() {
     private var _binding: FragmentAddProductPhotosBinding? = null
     private val binding get() = _binding!!
 
+    @Inject
+    lateinit var sharedPreferences: SharedPreferences
+
+    @Inject
+    lateinit var localeManager: LocaleManager
+
+    @Inject
+    lateinit var picasso: Picasso
+
     private val photoReceiverHandler by lazy {
-        PhotoReceiverHandler(requireContext()) { newPhotoFile ->
+        PhotoReceiverHandler(sharedPreferences) { newPhotoFile ->
             photoFile = newPhotoFile
-            val image = ProductImage(code!!, ProductImageField.OTHER, newPhotoFile, LocaleHelper.getLanguage(requireContext()))
+            val image = ProductImage(code!!, ProductImageField.OTHER, newPhotoFile, localeManager.getLanguage())
             image.filePath = photoFile!!.toURI().path
             if (activity is ProductEditActivity) {
                 (activity as ProductEditActivity).addToPhotoMap(image, 4)
@@ -83,24 +96,26 @@ class ProductEditPhotosFragment : ProductEditFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         binding.btnAddOtherImage.setOnClickListener { addOtherImage() }
         binding.btnAdd.setOnClickListener { next() }
+
         val bundle = arguments
-        if (bundle != null) {
-            val product = bundle.getSerializable("product") as Product?
-            val offlineSavedProduct = bundle.getSerializable("edit_offline_product") as OfflineSavedProduct?
-            val editionMode = bundle.getBoolean(ProductEditActivity.KEY_IS_EDITING)
-            if (product != null) {
-                code = product.code
-            }
-            if (editionMode && product != null) {
-                binding.btnAdd.setText(R.string.save_edits)
-            } else if (offlineSavedProduct != null) {
-                code = offlineSavedProduct.barcode
-            }
-        } else {
+        if (bundle == null) {
             Toast.makeText(activity, R.string.error_adding_product_photos, Toast.LENGTH_SHORT).show()
-            requireActivity().finish()
+            error("Cannot start fragment without arguments.")
+        }
+
+        val product = bundle.getSerializable("product") as Product?
+        val offlineSavedProduct = bundle.getSerializable("edit_offline_product") as OfflineSavedProduct?
+        val editing = bundle.getBoolean(ProductEditActivity.KEY_IS_EDITING)
+        if (product != null) {
+            code = product.code
+        }
+        if (editing && product != null) {
+            binding.btnAdd.setText(R.string.save_edits)
+        } else if (offlineSavedProduct != null) {
+            code = offlineSavedProduct.barcode
         }
     }
 
@@ -152,8 +167,7 @@ class ProductEditPhotosFragment : ProductEditFragment() {
             scaleType = ImageView.ScaleType.FIT_CENTER
             layoutParams = lp
         }
-        Picasso.get()
-                .load(photoFile!!)
+        picasso.load(photoFile!!)
                 .resize(requireContext().dpsToPixel(100), requireContext().dpsToPixel(100))
                 .centerInside()
                 .into(imageView)

@@ -11,6 +11,7 @@
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
     <string name="website_contributor">https://vn.openfoodfacts.org/contributor/</string>
     <string name="txtHome">Open Food Facts là một cơ sở dữ liệu về thực phẩm cùng nguyên liệu, chất gây dị ứng, thành phần dinh dưỡng và những mẩu thông tin khác trên bao bì của sản phẩm.</string>
+    <!-- Old onboarding slides -->
     <string name="slide_1_title">Đóng góp cho sự minh bạch của thực phẩm</string>
     <string name="slide_1_desc">Scan sản phẩm, chụp chúng, tạo dựng sự minh bạch cho sản phẩm</string>
     <string name="slide_2_title">Get the facts</string>
@@ -19,16 +20,23 @@
     <string name="slide_3_desc">Một cái nhìn tổng quan về đặc tính dinh dưỡng của sản phẩm mà bạn yêu thích</string>
     <string name="slide_4_title">Works offline</string>
     <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet connection right now</string>
-    <string name="txtDialogsContent">Sản phẩm bạn đã quét không tồn tại trong Sự Open Food Facts. Vui lòng thêm nó.</string>
+    <!-- New onboarding-->
+    <string name="join_the_food_revolution">Join the food revolution</string>
+    <string name="slide_1_text_revolution">Scan food, Take photos, Help transform the food system</string>
+    <string name="get_the_nutri_score">Lấy điểm Nutri-Score</string>
+    <string name="synthesis_of_nutrition_slide_2_text">A simple synthesis of the nutritional quality of your food</string>
+    <string name="avoid_ultra_processed_foods">Avoid ultra-processed foods</string>
+    <string name="nova_slide_3_text">Reduce the amount of ultra-processed foods in your diet.</string>
+    <string name="eco_score_slide_4_title">Eco-Score</string>
+    <!-- Scan card -->
+    <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
     <string name="txtDialogsContentPowerMode">Sản phẩm bạn scan đã có trên Open Food Facts.</string>
-    <string name="msg_share">Xem sản phẩm này trên Open Food Facts:</string>
+    <string name="msg_share">Look at this product on Open Food Facts :</string>
     <string name="not_support_books">Sách hiện không được hỗ trợ bởi Sự kiện Open Food Facts</string>
-    <string name="txt_broaden_search">- mở rộng tìm kiếm của bạn \ n- quét và thêm nó vào Open Food Facts</string>
-    <string name="Donation">Nhấn đây để quyên góp cho Open Food Facts</string>
-    <string name="pref_help_translate_title">Giúp dịch Open Food Facts</string>
-    <string name="pref_help_translate_summary">Mang cơ sở dữ liệu Sự Open Food Facts sang ngôn ngữ của bạn - không yêu cầu kiến ​​thức kỹ thuật</string>
+    <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
+    <string name="Donation">Click here to donate to Open Food Facts</string>
     <string name="text_offline_info_dialog">Scan sản phẩm ngay cả khi offline để thêm vào Open Food Fact sau. Sản phẩm đã scan sẽ xuất hiện ở đây và bạn có thể gửi chúng bằng nút ở bên dưới.</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
     <!-- OFF tagline in different languages -->
     <string name="tagline">the free food products database</string>
     <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>

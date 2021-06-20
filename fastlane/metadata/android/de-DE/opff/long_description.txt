@@ -1,6 +1,6 @@
 Tierfutter erfassen oder deren Strichcode einlesen, um Daten über Inhaltsstoffe, Zusatzstoffe und Nährwertangaben zu erhalten.
 
-Die App erlaubt es, die über 600 bereits in der kostenlosen und offenen Datenbank „Open Pet Food Facts” enthaltenen Tiernahrungsprodukte einzusehen und auch Bilder und Daten für fehlende Produkte hinzuzufügen.
+Für Lebensmittel können Sie „Open Food Facts”, für Kosmetika „Open Beauty Facts” und für Tiernahrung „Open Pet Food Facts” installieren.
 
 Um das Projekt „Open Pet Food Facts” zu entdecken, besuchen Sie bitte https://world.openpetfoodfacts.org
 
@@ -9,8 +9,7 @@ Um das Projekt „Open Pet Food Facts” zu entdecken, besuchen Sie bitte https:
 • Open Pet Food Facts ist eine Tiernahrungsdatenbank, die von jedermann für alle erstellt wurde.
 • Sie können sie verwenden, um bessere Tierfutterauswahlen zu treffen, und da es sich um offene Daten handelt, kann jeder sie für jeden Zweck weiterverwenden.
 • Open Pet Food Facts ist ein gemeinnütziges Projekt, das von Tausenden von Freiwilligen aus der ganzen Welt entwickelt wurde. Wir haben viele spannende Projekte, zu denen Sie auf vielfältige Weise beitragen können. 
-• Sie können noch heute einen Beitrag leisten, indem Sie ein Produkt aus Ihrem Haustierschrank hinzufügen. 
-
+• Sie können noch heute einen Beitrag leisten, indem Sie ein Produkt aus Ihrem Haustierschrank hinzufügen.
 
 ★★★ Fakten abrufen ★★★
 
@@ -23,10 +22,10 @@ Was Sie ebenfalls finden können (entsprechend den Angaben auf den Produkten):
 ★★★ Funktioniert gut in jedem Umfeld ★★★
 • Sie können neue Produkte hinzufügen, auch wenn gerade keine Internetverbindung besteht.
 • Die App lädt nur das absolut Notwendige, um den Daten- und Batterieverbrauch zu reduzieren
-• Sie benötigen keine Kamera, um ein Produkt nachzuschlagen Sie können den Strichcode auch manuell eingeben, wenn Ihnen eine Kamera fehlt oder Sie ein Problem damit haben.
+• Sie benötigen keine Kamera, um ein Produkt nachzuschlagen Sie können den Strichcode auch manuell eingeben, wenn Ihnen eine Kamera fehlt oder Sie ein Problem damit haben. Sie können auch den Barcode eingeben, wenn Sie keine Kamera haben oder ein Problem damit haben.
 
 ★★★ Ihr Tierfutter — Ihre Daten ★★★
-• Ihre persönlichen Daten gehören Ihnen und werden niemals online gesendet
+• Ihre Daten gehören Ihnen und werden niemals online gesendet
 • Sie können die Anwendung auch anonym verwenden
 • Sie können Ihren Erfassungsverlauf exportieren
 

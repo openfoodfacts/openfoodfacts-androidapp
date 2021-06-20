@@ -604,7 +604,6 @@
     <string name="your_version">Ваши</string>
     <string name="ingredients_picture">Изображение ингредиентов</string>
     <string name="packaging">Recycling</string>
-    <string name="recycling_picture">Recycling Picture</string>
     <string name="take_ingredients_picture_to_extract">(Сделайте снимок ингредиентов, чтобы извлечь их автоматически)</string>
     <string name="ingredients_list">Список ингредиентов</string>
     <string name="ingredients_hint">Сохраняйте порядок, указывайте %, там где они указаны, разделяйте запятыми или -, используйте () для состава ингредиентов, окружайте аллергены _ например, _молоко_</string>

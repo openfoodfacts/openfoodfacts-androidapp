@@ -2,6 +2,7 @@ package openfoodfacts.github.scrachx.openfood.features.product.view.environment
 
 import android.app.Activity
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.SpannableStringBuilder
 import android.text.method.LinkMovementMethod
@@ -43,6 +44,12 @@ class EnvironmentProductFragment : BaseFragment() {
     @Inject
     lateinit var picasso: Picasso
 
+    @Inject
+    lateinit var sharedPreferences: SharedPreferences
+
+    @Inject
+    lateinit var localeManager: LocaleManager
+
     private var _binding: FragmentEnvironmentProductBinding? = null
     private val binding get() = _binding!!
 
@@ -54,7 +61,7 @@ class EnvironmentProductFragment : BaseFragment() {
     private var isLowBatteryMode = false
     private var mUrlImage: String? = null
     private val photoReceiverHandler by lazy {
-        PhotoReceiverHandler(requireContext()) { loadPackagingPhoto(it) }
+        PhotoReceiverHandler(sharedPreferences) { loadPackagingPhoto(it) }
     }
 
     /**boolean to determine if labels prompt should be shown*/
@@ -70,7 +77,7 @@ class EnvironmentProductFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val langCode = LocaleHelper.getLanguage(context)
+        val langCode = localeManager.getLanguage()
         productState = requireProductState()
         binding.imageViewPackaging.setOnClickListener { openFullScreen() }
 
@@ -171,6 +178,7 @@ class EnvironmentProductFragment : BaseFragment() {
                     ProductImageField.PACKAGING,
                     imageUrl,
                     binding.imageViewPackaging,
+                    localeManager.getLanguage(),
             )
         } else {
             newPackagingImage()
@@ -181,7 +189,7 @@ class EnvironmentProductFragment : BaseFragment() {
 
     private fun loadPackagingPhoto(photoFile: File) {
         // Create a new instance of ProductImage so we can load to server
-        val image = ProductImage(productState.product!!.code, ProductImageField.PACKAGING, photoFile, LocaleHelper.getLanguage(context))
+        val image = ProductImage(productState.product!!.code, ProductImageField.PACKAGING, photoFile, localeManager.getLanguage())
         image.filePath = photoFile.absolutePath
 
         // Load to server

@@ -11,15 +11,19 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
 import android.widget.Toast
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.coroutineScope
 import androidx.recyclerview.widget.RecyclerView
-import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
+import com.fasterxml.jackson.databind.node.ObjectNode
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposable
-import io.reactivex.rxkotlin.addTo
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.rx2.await
+import kotlinx.coroutines.withContext
 import openfoodfacts.github.scrachx.openfood.R
-import openfoodfacts.github.scrachx.openfood.features.LoginActivity
+import openfoodfacts.github.scrachx.openfood.features.login.LoginActivity
 import openfoodfacts.github.scrachx.openfood.images.*
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
@@ -31,16 +35,16 @@ import org.json.JSONException
  * Created by prajwalm on 10/09/18.
  */
 class ProductPhotosAdapter(
-        private val context: Context,
-        private val picasso: Picasso,
-        private val client: OpenFoodAPIClient,
-        private val product: Product,
-        private val images: List<String>,
-        private val snackView: View? = null,
-        private val onImageClick: (Int) -> Unit
-) : RecyclerView.Adapter<ProductPhotoViewHolder>(), Disposable {
-    private val isLoggedIn by lazy { context.isUserSet() }
-    private val disp = CompositeDisposable()
+    private val context: Context,
+    private val lifecycleOwner: LifecycleOwner,
+    private val picasso: Picasso,
+    private val client: OpenFoodAPIClient,
+    private val product: Product,
+    private val images: List<String>,
+    private val snackView: View? = null,
+    private val onImageClick: (Int) -> Unit
+) : RecyclerView.Adapter<ProductPhotoViewHolder>() {
+    private val isLoggedIn = context.isUserSet()
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductPhotoViewHolder {
@@ -48,12 +52,21 @@ class ProductPhotosAdapter(
         return ProductPhotoViewHolder(itemView, picasso)
     }
 
+
     override fun onBindViewHolder(holder: ProductPhotoViewHolder, position: Int) = holder.run {
-        setImage(this@ProductPhotosAdapter.images[position], product.code, context)
-        setOnImageListener { onImageClick(it) }
-        setOnEditListener {
+        setImage(product.code, this@ProductPhotosAdapter.images[position])
+        setOnImageClickListener(onImageClick)
+        setOnEditClickListener {
             if (!isLoggedIn) {
-                context.startActivity(Intent(context, LoginActivity::class.java))
+                // FIXME: After login the user needs to refresh the fragment to edit images
+                MaterialAlertDialogBuilder(context).apply {
+                    setMessage(R.string.sign_in_to_edit)
+                    setPositiveButton(R.string.txtSignIn) { d, _ ->
+                        context.startActivity(Intent(context, LoginActivity::class.java))
+                        d.dismiss()
+                    }
+                }.show()
+
             } else {
                 PopupMenu(context, holder.itemView).also {
                     it.inflate(R.menu.menu_image_edit)
@@ -65,18 +78,20 @@ class ProductPhotosAdapter(
     }
 
 
-    fun displaySetImageName(response: String?) {
+    fun displaySetImageName(response: ObjectNode) {
+        // TODO: 06/06/2021 i18n
         val imageName = try {
-            jacksonObjectMapper().readTree(response)!!["imagefield"].asText()
+            response["imagefield"].asText()
         } catch (e: JSONException) {
             Log.e(LOG_TAG, "displaySetImageName", e)
             Toast.makeText(context, "Error while setting image from response $response", Toast.LENGTH_LONG).show()
-            return
+            null
         } catch (e: NullPointerException) {
             Log.e(LOG_TAG, "displaySetImageName", e)
             Toast.makeText(context, "Error while setting image from response $response", Toast.LENGTH_LONG).show()
-            return
-        }
+            null
+        } ?: return
+
         val txt = "${context.getString(R.string.set_image_name)} $imageName"
         if (snackView == null) Toast.makeText(context, txt, Toast.LENGTH_LONG).show()
         else Snackbar.make(snackView, txt, Snackbar.LENGTH_LONG).show()
@@ -86,8 +101,8 @@ class ProductPhotosAdapter(
     private inner class PopupItemClickListener(private val position: Int) : PopupMenu.OnMenuItemClickListener {
         override fun onMenuItemClick(item: MenuItem): Boolean {
             val imgMap = mutableMapOf(
-                    IMG_ID to images[position],
-                    PRODUCT_BARCODE to product.code
+                IMG_ID to images[position],
+                PRODUCT_BARCODE to product.code
             )
             imgMap[IMAGE_STRING_ID] = when (item.itemId) {
                 R.id.report_image -> {
@@ -107,12 +122,16 @@ class ProductPhotosAdapter(
                 R.id.set_front_image -> product.getImageStringKey(ProductImageField.FRONT)
                 else -> product.getImageStringKey(ProductImageField.OTHER)
             }
+
             if (snackView == null) Toast.makeText(context, context.getString(R.string.changes_saved), Toast.LENGTH_SHORT).show()
             else Snackbar.make(snackView, R.string.changes_saved, Snackbar.LENGTH_SHORT).show()
 
-            client.editImage(product.code, imgMap)
-                    .subscribe { response -> displaySetImageName(response) }
-                    .addTo(disp)
+            // Edit photo async
+            lifecycleOwner.lifecycle.coroutineScope.launch(Dispatchers.IO) {
+                val response = client.editImage(product.code, imgMap).await()
+                withContext(Dispatchers.Main) { displaySetImageName(response) }
+            }
+
             return true
         }
     }
@@ -122,6 +141,4 @@ class ProductPhotosAdapter(
     }
 
     override fun getItemCount() = images.count()
-    override fun dispose() = disp.dispose()
-    override fun isDisposed() = disp.isDisposed
 }

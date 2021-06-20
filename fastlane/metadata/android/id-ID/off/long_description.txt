@@ -1,76 +1,55 @@
-Pindai produk makanan atau kode batangnya untuk mendapatkan data tentang bahan, aditif, dan fakta nutrisi.
+<h1>▶ Scan, find & compare more than 1,3 million food products</h1>
 
-▶ Find & Compare more than 800.000 products
+The app allows to scan the 1,3 million products already contained in the free and open database Open Food Facts.
+The app is collaborative. If we don't have the product, you can add pictures and data to get the Nutri-Score and NOVA score on food processing.
 
-Aplikasi ini memudahkan untuk melihat 800.000 produk (termasuk 175.000 di AS) yang termuat dalam database gratis dan terbuka Open Food Facts, dan dapat menambahkan gambar serta data produk baru.
+In short, we're kind of "the Wikipedia of food", as many have nicknamed the project. Open Food Facts has enabled the creation of over 100 apps like Date Limite, Yuka or FoodVisor.
 
+To discover the volunteer-run Open Food Facts project, visit https://world.openfoodfacts.org/discover
 
-Untuk menemukan proyek Open Food Facts yang dikelola sukarela, kunjungi https://world.openfoodfacts.org
+<h1>▶ Choose the products that are good for you</h1>
 
-Pilih produk yang baik untuk Anda
-Tingkat Nutri-Score, mulai dari "A" sampai "E">> kualitas Nutrisi
-Kelompok NOVA, mulai dari "1" sampai "4" >> Mencari makanan Pemprosesan Ultra
-Anda dapat mudah membandingkan banyak produk yang Anda mau, sisi per sisi dengan hanya memindai mereka.  
+➜ The Nutri-Score grade, from A to E :  Nutritional quality
+➜ The NOVA group, from 1 to 4 : Avoid ultra-processed foods (Group 4)
 
-Dan baik bagi planet!
-Karbon berdampak pada makanan anda
-Sadari berapa banyak kuota karbon harian yang anda gunakan pada makanan
-Berdasarkan jejak kaki yang dikomputerisasi oleh Perancis oleh ADEME.
-Bergabunglah dan bantu kami menyuarakan dampak karbon di negaramu!
-Untuk melihat dampak karbon, produk harus memiliki daftar bahan dengan % daging atau ikan dan jumlahnya
+<h1>▶ Contribute to Food Transparency</h1>
 
+➜ Open Food Facts is a food products database made by everyone, for everyone.
+➜ You can use it to make better food choices, and as it is open data, anyone can re-use it for any purpose.
+➜ You can start contributing today by adding a product from your fridge.
+➜ Open Food Facts is a non-profit project developed by thousands of volunteers from around the world. Ada banyak proyek menyenangkan yang bisa diikuti dengan berbagai cara.
 
-Kontribusi pada Transparasi Pangan
-Open Food Facts adalah database produk makanan yang dibuat semua orang untuk semua.
-Anda dapat menggunakan untuk membuat pilihan makanan lebih baik, semua orang bisa menggunakan kembali untuk tujuan apapun.
-Open Food Facts adalah proyek nirlaba dikembangkan oleh ratusan relawan dari suruh dunia. Ada banyak proyek menyenangkan yang bisa diikuti dengan berbagai cara.
-Anda dapat berkontribusi hari ini dengan menambah produk dari kulkas Anda.
+<h1>▶ Decipher food labels</h1>
 
-Buat daftar
-Buat daftar belanja, lacak apa yang sudah dimakan dan bagikan dengan mudah serta ekspor daftar anda.
+➜ Open Food Facts helps you decipher products labels. You will be able to find:
+➜ carbon footprint (CO2 emissions) and packaging (as well as recycling instructions),
+➜ Nutriscore (nutritional score), nutrients, fat / fat content, saturated fatty acids, carbohydrates, sugars, fiber, protein and salt and sodium.
+➜ brands, allergens, labels (bio, gluten free, vegan, vegetarian, halal, kosher ...), traceability information (packaging codes, origins of ingredients)
+➜ On wines and beers, you will find the alcohol content.
 
-Dapatkan fatktanya
-Open Food Facts membantu anda untuk memahami cetakan pada label produk. Anda akan menemukan:
-Jejak karbon (emisi CO2) dan kemasan (serta instruksi daur ulang),
-Nutriscore (skor nutirisi), nutrisi, lemak / kandungan lemak, asam lemak jenuh, karbohidrat, gula, serat, protein dan garam dan sodium.
-Merek, alergen, label (bio, bebas gluten, vegan, vegetarian, halal, kosher ...), informasi yang dapat ditelusuri (kode kemasan, asal bahan)
-Pada minuman anggur dan bir, anda akan menemukan kandungan alkoholnya.
+<h1>▶ Our grades are science-based, and the project is helping science back!</h1>
+➜ We don't make up things. We rely on peer-reviewed science.
+➜ The Nutri-Score has been created by the independent French team led by Professor Hercberg.
+➜ The NOVA groups on food processing have been designed by the international team of Professor Monteiro.
+➜ The additives synthesis is based on reviews by EFSA on exposure levels on food additives.
+➜ The Open Food Facts community is collaborating with research teams across the planet to improve nutrition research that benefits all.
 
+<h1>▶ Works well in any condition</h1>
+➜ You can add new products, even with bad or no Internet connection
+➜ The app loads only the minimum to reduce data and battery consumption
+➜ You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
 
-▶ Based on Science, helping back Science!
+<h1>▶ Your food, your data. Privacy-friendly app.</h1>
+➜ Your data is yours, and is never sent online
+➜ You can use the app anonymously
+➜ You can export your scan history
 
-- We don't make up things. We rely on peer-reviewed science.
-- The Nutri-Score has been created by the independent French team led by Professor Hercberg.
-- The NOVA groups on food processing have been designed by the international team of Professor Monteiro.
-- You can get a synthesis of EFSA exposure levels on food additives.
-- The Open Food Facts community is collaborating with research teams across the planet to improve nutrition research that benefits all.
+<h1>▶ Set up allergen alerts on products</h1>
+➜ Milk, Gluten, Eggs, Soybeans, Nuts, Fish, Celery, Mustard, Sulphur dioxide and sulphites, Peanuts, Sesame seeds, Crustaceans, Molluscs or Lupin allergy ?
+➜ Speed up your shopping by doing an initial screening of your food with Open Food Facts.
+➜ Be careful that the information may not be 100% accurate, and detection may not be 100% accurate. So always double check by yourself, with the packaging.
 
+<h1>▶ More</h1>
 
-▶ Offline Scan: Scan in ANY condition! (coming soon)
-Scan at the speed of light (even if you’re on a plane, submarine or supermarket)
-
-- The whole planet, in your pocket !
-- Bisa menambahkan produk, bahkan tanpa koneksi internet.
-- The app loads only the strict necessary to reduce data and battery consumption.
-
-▶ Your food, your data
-- Datamu adalah milikmu, tidak akan diunggah
-- Bisa menggunakan aplikasi secara anonim
-- Bisa mengekspor riwayat pemindaian
-
-▶ Set up allergen alerts on products
-- Milk, Gluten, Eggs, Soybeans, Nuts, Fish, Celery, Mustard, Sulphur dioxide and sulphites, Peanuts, Sesame seeds, Crustaceans, Molluscs or Lupin allergy ?
-- Speed up your shopping by doing an initial screening of your food with Open Food Facts.
-- Be careful that the information may not be 100% accurate, and detection may not be 100% accurate. So always double check by yourself, with the packaging.
-
-
-▶ Say hello and/or join us!
-
-
-Open Food Facts juga tersedia pada web di https://world.openfoodfacts.org
-
-
-Pertanyaan, umpan balik: contact@openfoodfacts.org
-
-
-Untuk kosmetik, anda dapat menginstal Open Beauty Facts, untuk makanan hewan peliharaan, Open Pet Food Facts, dan untuk produk lainnya, Open Products Facts.
+Open Food Facts is also available on the web at <a href="https://world.openfoodfacts.org">https://world.openfoodfacts.org</a>
+Questions, feedback : <a href="mailto:contact@openfoodfacts.org">contact@openfoodfacts.org</a>

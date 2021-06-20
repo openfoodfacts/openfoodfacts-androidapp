@@ -3,6 +3,7 @@ package openfoodfacts.github.scrachx.openfood.features.compare
 import android.Manifest
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.widget.Toast
@@ -15,15 +16,16 @@ import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
+import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductComparisonBinding
 import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.selectNavigationItem
 import openfoodfacts.github.scrachx.openfood.features.scan.ContinuousScanActivity
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.models.Product
-import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
+import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
 import openfoodfacts.github.scrachx.openfood.utils.MY_PERMISSIONS_REQUEST_CAMERA
 import openfoodfacts.github.scrachx.openfood.utils.PhotoReceiverHandler
 import openfoodfacts.github.scrachx.openfood.utils.isHardwareCameraInstalled
@@ -46,6 +48,12 @@ class ProductCompareActivity : BaseActivity() {
 
     @Inject
     lateinit var matomoAnalytics: MatomoAnalytics
+
+    @Inject
+    lateinit var sharedPreferences: SharedPreferences
+
+    @Inject
+    lateinit var localeManager: LocaleManager
 
     private lateinit var productComparisonAdapter: ProductCompareAdapter
     private lateinit var photoReceiverHandler: PhotoReceiverHandler
@@ -70,11 +78,11 @@ class ProductCompareActivity : BaseActivity() {
             matomoAnalytics.trackEvent(AnalyticsEvent.CompareProducts(productsToCompare.size.toFloat()))
         }
 
-        productComparisonAdapter = ProductCompareAdapter(productsToCompare, this, api, productRepository, picasso)
+        productComparisonAdapter = ProductCompareAdapter(productsToCompare, this, api, productRepository, picasso, localeManager.getLanguage())
         binding.productComparisonRv.layoutManager = LinearLayoutManager(this, HORIZONTAL, false)
         binding.productComparisonRv.adapter = productComparisonAdapter
 
-        photoReceiverHandler = PhotoReceiverHandler(this) { productComparisonAdapter.setImageOnPhotoReturn(it) }
+        photoReceiverHandler = PhotoReceiverHandler(sharedPreferences) { productComparisonAdapter.setImageOnPhotoReturn(it) }
 
         val finalProductsToCompare = productsToCompare
         binding.productComparisonButton.setOnClickListener {
@@ -82,9 +90,9 @@ class ProductCompareActivity : BaseActivity() {
                 if (ContextCompat.checkSelfPermission(this@ProductCompareActivity, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
                     if (ActivityCompat.shouldShowRequestPermissionRationale(this@ProductCompareActivity, Manifest.permission.CAMERA)) {
                         MaterialDialog.Builder(this@ProductCompareActivity)
-                                .title(R.string.action_about)
-                                .content(R.string.permission_camera)
-                                .neutralText(R.string.txtOk)
+                            .title(R.string.action_about)
+                            .content(R.string.permission_camera)
+                            .neutralText(android.R.string.ok)
                                 .onNeutral { _, _ ->
                                     ActivityCompat.requestPermissions(this@ProductCompareActivity, arrayOf(Manifest.permission.CAMERA), MY_PERMISSIONS_REQUEST_CAMERA)
                                 }

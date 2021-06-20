@@ -18,6 +18,7 @@ package openfoodfacts.github.scrachx.openfood.features
 import android.Manifest.permission
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
@@ -58,6 +59,9 @@ class ImagesSelectActivity : BaseActivity() {
     @Inject
     lateinit var productsApi: ProductsAPI
 
+    @Inject
+    lateinit var sharedPreferences: SharedPreferences
+
     private lateinit var adapter: ProductImagesSelectionAdapter
     private val disp = CompositeDisposable()
 
@@ -81,7 +85,7 @@ class ImagesSelectActivity : BaseActivity() {
 
     private fun loadProductImages(code: String) {
         productsApi.getProductImages(code)
-                .map { extractImagesNameSortedByUploadTimeDesc(it) }
+            .map { it.extractImagesNameSortedByUploadTimeDesc() }
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnError { Log.e(LOG_TAG, "Cannot download images from server", it) }
                 .subscribe { imageNames ->
@@ -147,7 +151,7 @@ class ImagesSelectActivity : BaseActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        PhotoReceiverHandler(this) { newPhotoFile ->
+        PhotoReceiverHandler(sharedPreferences) { newPhotoFile ->
             setResult(RESULT_OK, Intent().apply {
                 putExtra(IMAGE_FILE, newPhotoFile)
             })

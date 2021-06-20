@@ -10,7 +10,7 @@
     <string name="website_product">https://world-he.openbeautyfacts.org/product/</string>
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/contributeur/ -->
     <string name="website_contributor">https://world-he.openbeautyfacts.org/contributor/</string>
-    <string name="terms_url">https://world.openbeautyfacts.org/terms-of-use</string>
+    <string name="terms_url">https://il.openbeautyfacts.org/terms-of-use</string>
     <string name="txtHomeOnline">מסד הנתונים הפתוח Open Beauty Facts מכיל למעלה מ־%1$s מוצרי טיפוח (בלי אלו שעוד יתווספו על ידיך).</string>
     <string name="txtHome">Open Beauty Facts הוא מסד נתונים של מוצרי קוסמטיקה עם רכיבים, אלרגנים, תסמינים וכל שביב מידע שניתן למצוא על תווית המוצר.</string>
     <string name="slide_1_title">תרומה לשקיפות קוסמטית</string>
@@ -29,13 +29,12 @@
     <string name="translate_help_summary">הנגשת מסד הנתונים של Open Beauty Facts לאנשים שדוברים את אותה השפה כמוך - לא נדרש ידע טכני</string>
     <string name="text_offline_info_dialog">ניתן לסרוק מוצרים אפילו ללא חיבור לאינטרנט כדי להוסיף אותם ל־Open Beauty Facts בשלב מאוחר יותר. המוצרים שנסרקו יופיעו כאן ותהיה לך אפשרות לשלוח אותם בעזרת הכפתור שלהלן.</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">נתוני האלרגיות שלך לא יישלחו לשרת של Open Beauty Facts. כמו כן, מוטב להיזהר כי נתונים של מוצרים עשויים להיות חלקיים והזיהוי עשוי להיות בלתי מדויק, לכן, מוטב לנקוט במשנה זהירות ולבדוק בדרך נוספת באופן עצמאי! </string>
-    <!-- OBF tagline in different languages -->
+    <!-- Open Beauty Facts tagline in different languages -->
     <string name="version_string">יישומון ה־Android של Open Beauty Facts</string>
-    <string name="tagline">מסד נתוני הקוסמטיקה החופשי</string>
+    <string name="tagline">the free cosmetics database</string>
     <string name="product_not_found">המוצר %1$s שסרקת לא קיים עדיין ב־Open Beauty Facts. נוכל לבקש ממך להוסיף אותו?</string>
     <string name="currently_on_version">כרגע ב־Open Beauty Facts</string>
     <string name="category_game_btn">סיוע בסיווג מוצרים</string>
-    <!-- TODO add true support instead of overriding strings -->
     <string name="add_nutrient_prompt_text">ניתן להמשיך ולפרט כדי לסייע בהשלמת תיעוד המוצר</string>
     <string name="add_category_prompt_text">ניתן להוסיף קטגוריה כדי לסייע בהשלמת תיעוד המוצר</string>
     <string name="add_nutrient_category_prompt_text">ניתן להוסיף קטגוריה ולפרט כדי לסייע בהשלמת תיעוד המוצר</string>

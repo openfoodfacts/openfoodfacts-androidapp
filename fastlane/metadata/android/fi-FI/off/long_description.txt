@@ -1,76 +1,55 @@
-Lue elintarvikkeita tai niiden viivakoodit saadaksesi tietoa ainesosista, lisäaineista ja ravintosisällöistä.
+<h1>▶ Scan, find & compare more than 1,3 million food products</h1>
 
-▶ Löydä ja vertaa yli 800 000 tuotetta
+The app allows to scan the 1,3 million products already contained in the free and open database Open Food Facts.
+The app is collaborative. If we don't have the product, you can add pictures and data to get the Nutri-Score and NOVA score on food processing.
 
-Sovelluksen avulla voi tarkastella 800 000 tuotetta (mukaan lukien 175 000 Yhdysvalloissa), jotka ovat jo vapaassa ja avoimessa Open Food Facts -tietokannassa, sekä lisätä kuvia ja tietoja uusille tuotteille.
+In short, we're kind of "the Wikipedia of food", as many have nicknamed the project. Open Food Facts has enabled the creation of over 100 apps like Date Limite, Yuka or FoodVisor.
 
+To discover the volunteer-run Open Food Facts project, visit https://world.openfoodfacts.org/discover
 
-Tutustu vapaaehtoisten ylläpitämään Open Food Facts -hankkeeseen osoitteessa https://world-fi.openfoodfacts.org
+<h1>▶ Choose the products that are good for you</h1>
 
-▶ Valitse tuotteet, jotka ovat sinulle hyväksi
-- Nutri-Score-arvosana, "A" - "E" >> Ravinnollinen laatu
-- NOVA-ryhmä, "1" - "4" >> Löydä ultrajalostettu ruoka
-- Voit helposti verrata vierekkäin niin monta tuotetta kuin haluat yksinkertaisesti lukemalla ne. 
+➜ The Nutri-Score grade, from A to E :  Nutritional quality
+➜ The NOVA group, from 1 to 4 : Avoid ultra-processed foods (Group 4)
 
-▶ Ja hyväksi planeetalle!
-- Ruokasi hiilivaikutus
-- Saa käsitys siitä, kuinka paljon päivittäisestä hiilikiintiöstäsi käytät ruokaan
-- Perustuu ADEME:n Ranskalle laskemiin jalanjälkiin.
-- Liity mukaan ja auta meitä tuomaan hiilivaikutus maahasi!
-- Hiilivaikutuksen ilmaisemiseksi tuotteella on oltava määrä ja täydellinen ainesosaluettelo, jossa on % lihaa tai kalaa
+<h1>▶ Contribute to Food Transparency</h1>
 
+➜ Open Food Facts is a food products database made by everyone, for everyone.
+➜ You can use it to make better food choices, and as it is open data, anyone can re-use it for any purpose.
+➜ You can start contributing today by adding a product from your fridge.
+➜ Open Food Facts is a non-profit project developed by thousands of volunteers from around the world. Meillä on paljon jännittäviä hankkeita, joihin voit osallistua monin eri tavoin.
 
-▶ Edistä ruoan läpinäkyvyyttä
-- Open Food Facts on kaikkien tekemä elintarviketietokanta kaikille.
-- Voit käyttää sitä parempiin ruokavalintoihin, ja koska se on avointa dataa, kuka tahansa voi käyttää sitä uudelleen mihin tahansa tarkoitukseen.
-- Open Food Facts on voittoa tavoittelematon hanke, jonka ovat kehittäneet tuhannet vapaaehtoiset ympäri maailmaa. Meillä on paljon jännittäviä hankkeita, joihin voit osallistua monin eri tavoin.
-- Voit aloittaa osallistumisen tänään lisäämällä tuotteen jääkaapistasi.
+<h1>▶ Decipher food labels</h1>
 
-▶ Luo luetteloita
-Luo ostoslistoja, seuraa mitä olet syönyt, ja jaa ja vie luettelosi helposti.
+➜ Open Food Facts helps you decipher products labels. You will be able to find:
+➜ carbon footprint (CO2 emissions) and packaging (as well as recycling instructions),
+➜ Nutriscore (nutritional score), nutrients, fat / fat content, saturated fatty acids, carbohydrates, sugars, fiber, protein and salt and sodium.
+➜ brands, allergens, labels (bio, gluten free, vegan, vegetarian, halal, kosher ...), traceability information (packaging codes, origins of ingredients)
+➜ On wines and beers, you will find the alcohol content.
 
-▶ Näe faktat
-- Open Food Facts auttaa sinua ymmärtämään tuotteiden etiketeissä olevan pikkupräntin. Löydät:
-- hiilijalanjäljen (CO2-päästöt) ja pakkaukset (sekä kierrätysohjeet),
-- Nutriscoren (ravintopisteet), ravintoaineet, rasvan / rasvapitoisuuden, tyydyttyneet rasvahapot, hiilihydraatit, sokerit, kuidut, proteiinin sekä suolan ja natriumin.
-- tuotemerkit, allergeenit, merkit (luomu, gluteeniton, vegaani, vegetaari, halal, kosher ...), jäljitettävyystiedot (pakkauskoodit, ainesosien alkuperät)
-- Viineistä ja oluista löydät alkoholipitoisuuden.
+<h1>▶ Our grades are science-based, and the project is helping science back!</h1>
+➜ We don't make up things. Luotamme vertaisarvioituun tieteeseen.
+➜ The Nutri-Score has been created by the independent French team led by Professor Hercberg.
+➜ The NOVA groups on food processing have been designed by the international team of Professor Monteiro.
+➜ The additives synthesis is based on reviews by EFSA on exposure levels on food additives.
+➜ The Open Food Facts community is collaborating with research teams across the planet to improve nutrition research that benefits all.
 
+<h1>▶ Works well in any condition</h1>
+➜ You can add new products, even with bad or no Internet connection
+➜ The app loads only the minimum to reduce data and battery consumption
+➜ You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
 
-▶ Perustuu tieteeseen ja auttaa tiedettä!
+<h1>▶ Your food, your data. Privacy-friendly app.</h1>
+➜ Your data is yours, and is never sent online
+➜ You can use the app anonymously
+➜ You can export your scan history
 
-- Emme keksi asioita. Luotamme vertaisarvioituun tieteeseen.
-- Nutri-Scoren on luonut professori Hercbergin johtama riippumaton ranskalainen ryhmä.
-- Ruoan jalostuksen NOVA-ryhmät on suunnitellut professori Monteiron kansainvälinen ryhmä.
-- Saat yhteenvedon elintarvikelisäaineiden EFSA-altistustasoista.
-- Open Food Facts -yhteisö tekee yhteistyötä ympäri planeettaa toimivien tutkimusryhmien kanssa parantaakseen ravintotutkimusta, joka hyödyttää kaikkia.
+<h1>▶ Set up allergen alerts on products</h1>
+➜ Milk, Gluten, Eggs, Soybeans, Nuts, Fish, Celery, Mustard, Sulphur dioxide and sulphites, Peanuts, Sesame seeds, Crustaceans, Molluscs or Lupin allergy ?
+➜ Speed up your shopping by doing an initial screening of your food with Open Food Facts.
+➜ Be careful that the information may not be 100% accurate, and detection may not be 100% accurate. Joten tarkista aina itse pakkauksesta.
 
+<h1>▶ More</h1>
 
-▶ Yhteydetön lukeminen: Lue MISSÄ TAHANSA olosuhteissa! (tulossa pian)
-Lue valon nopeudella (vaikka olisit lentokoneessa, sukellusveneessä tai supermarketissa)
-
-- Koko planeetta, taskussasi!
-- Voit lisätä uusia tuotteita, vaikka sinulla ei olisi Internet-yhteyttä juuri nyt.
-- Sovellus lataa vain ehdottoman välttämättömät datasiirron ja akun kulutuksen vähentämiseksi.
-
-▶ Sinun ruokasi, sinun tietosi
-- Tietosi ovat sinun, eikä niitä koskaan lähetetä verkossa
-- Voit käyttää sovellusta nimettömästi
-- Voit viedä lukuhistoriasi
-
-▶ Määritä tuotteille allergeenivaroituksia
-- Maito-, gluteeni-, muna-, soijapapu-, pähkinä-, kala-, selleri-, sinappi-, rikkidioksidi ja sulfiitti -, maapähkinä-, seesaminsiemen-, äyriäis-, nilviäis- tai lupiiniallergia?
-- Nopeuta ostoksiasi tekemällä ruokasi alustava seulonta Open Food Factsin avulla.
-- Ole varovainen, sillä tiedot eivät välttämättä ole 100% tarkkoja ja tunnistaminen ei välttämättä ole 100% tarkkaa. Joten tarkista aina itse pakkauksesta.
-
-
-▶ Tervehdi ja/tai liity mukaan!
-
-
-Open Food Facts on saatavilla myös verkossa osoitteessa https://world-fi.openfoodfacts.org
-
-
-Kysymykset, palaute: contact@openfoodfacts.org
-
-
-Kosmetiikalle voit asentaa Open Beauty Factsin, lemmikkieläinten ruoalle Open Pet Food Factsin ja kaikille muille tuotteille Open Products Factsin.
+Open Food Facts is also available on the web at <a href="https://world.openfoodfacts.org">https://world.openfoodfacts.org</a>
+Questions, feedback : <a href="mailto:contact@openfoodfacts.org">contact@openfoodfacts.org</a>

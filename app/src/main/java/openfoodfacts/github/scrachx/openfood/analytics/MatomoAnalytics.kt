@@ -1,8 +1,8 @@
 package openfoodfacts.github.scrachx.openfood.analytics
 
 import android.content.Context
+import android.content.SharedPreferences
 import androidx.fragment.app.FragmentManager
-import androidx.preference.PreferenceManager
 import dagger.hilt.android.qualifiers.ApplicationContext
 import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.R
@@ -16,6 +16,7 @@ import javax.inject.Singleton
 @Singleton
 class MatomoAnalytics @Inject constructor(
         @ApplicationContext private val context: Context,
+        private val sharedPreferences: SharedPreferences,
 ) {
 
     //TODO: change matomo url and id from properties
@@ -23,8 +24,7 @@ class MatomoAnalytics @Inject constructor(
             .createDefault(BuildConfig.MATOMO_URL, 1)
             .build(Matomo.getInstance(context))
             .apply {
-                isOptOut = PreferenceManager.getDefaultSharedPreferences(context)
-                        .getBoolean(context.getString(R.string.pref_analytics_reporting_key), false)
+                isOptOut = !sharedPreferences.getBoolean(context.getString(R.string.pref_analytics_reporting_key), false)
             }
             .also {
                 TrackHelper.track().download().with(it)
@@ -40,12 +40,13 @@ class MatomoAnalytics @Inject constructor(
         TrackHelper.track()
                 .event(event.category, event.action)
                 .name(event.name)
-                .value(event.value)
+                .apply { if (event.value != null) value(event.value) }
                 .with(tracker)
+
     }
 
     fun showAnalyticsBottomSheetIfNeeded(childFragmentManager: FragmentManager) {
-        if (PreferenceManager.getDefaultSharedPreferences(context).contains(context.getString(R.string.pref_analytics_reporting_key))) {
+        if (sharedPreferences.contains(context.getString(R.string.pref_analytics_reporting_key))) {
             //key already exists, do not show
             return
         }

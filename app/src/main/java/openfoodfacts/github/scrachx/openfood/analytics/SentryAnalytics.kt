@@ -1,7 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.analytics
 
 import android.content.Context
-import androidx.preference.PreferenceManager
+import android.content.SharedPreferences
 import dagger.hilt.android.qualifiers.ApplicationContext
 import io.sentry.Sentry
 import io.sentry.android.core.SentryAndroid
@@ -13,12 +13,12 @@ import javax.inject.Singleton
 @Singleton
 class SentryAnalytics @Inject constructor(
         @ApplicationContext private val context: Context,
+        private val sharedPreferences: SharedPreferences,
 ) {
 
     // isCrashReportingEnabled is not dynamic, as sentry can not be enabled / disabled, so it takes the value at startup, and changes will only be taken into account after an app restart
     private val isCrashReportingEnabled by lazy {
-        PreferenceManager.getDefaultSharedPreferences(context)
-                .getBoolean(context.getString(R.string.pref_crash_reporting_key), true)
+        sharedPreferences.getBoolean(context.getString(R.string.pref_crash_reporting_key), true)
     }
 
     init {

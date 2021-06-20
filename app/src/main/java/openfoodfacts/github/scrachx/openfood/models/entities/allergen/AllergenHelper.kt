@@ -7,17 +7,21 @@ import java.util.*
 
 object AllergenHelper {
     @Contract(" -> new")
-    private fun createEmpty() = Data(false, emptyList<String>())
+    private fun createEmpty() = Data(false, emptyList())
 
     fun computeUserAllergen(product: Product, userAllergens: List<AllergenName>): Data {
         if (userAllergens.isEmpty()) return createEmpty()
 
-        if (!product.statesTags.contains(ApiFields.StateTags.INGREDIENTS_COMPLETED))
-            return Data(true, emptyList<String>())
+        if (ApiFields.StateTags.INGREDIENTS_COMPLETED !in product.statesTags)
+            return Data(true, emptyList())
 
-        val productAllergens = HashSet(product.allergensHierarchy).also { it += product.tracesTags }
+        val productAllergens = HashSet(product.allergensHierarchy)
+            .also { it += product.tracesTags }
+
         val allergenMatch = TreeSet<String?>()
-        userAllergens.filter { productAllergens.contains(it.allergenTag) }.mapTo(allergenMatch) { it.name }
+        userAllergens.filter { productAllergens.contains(it.allergenTag) }
+            .mapTo(allergenMatch) { it.name }
+
         return Data(false, allergenMatch.toList())
     }
 

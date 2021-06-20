@@ -526,8 +526,8 @@
     <string name="notify_channel_description">Notificació per mostrar la ubicació de l\'arxiu exportat</string>
     <string name="products_to_be_completed">Productes que s\'han de completar</string>
     <string name="offline_notification_title">Aportacions fora de línia que cal enviar</string>
-    <string name="creator_history">Producte afegit el %1$s a les %2$s CET per</string>
-    <string name="last_editor_history">Darrera edició de la pàgina del producte el %1$s a %2$s CEST per </string>
+    <string name="creator_history">Producte afegit el %1$s a les %2$s CET per %3$s</string>
+    <string name="last_editor_history">Darrera edició de la pàgina del producte el %1$s a %2$s CEST per %3$s</string>
     <string name="other_editors">La pàgina del producte també ha estat editada per </string>
     <string name="contribution_tab">Aportacions</string>
     <string name="pref_contribution_tab_summary">Mostra la pestanya d\'aportacions dels usuaris amb productes</string>
@@ -592,7 +592,6 @@
     <string name="your_version">Les vostres</string>
     <string name="ingredients_picture">Imatge dels ingredients</string>
     <string name="packaging">Recycling</string>
-    <string name="recycling_picture">Recycling Picture</string>
     <string name="take_ingredients_picture_to_extract">(feu una fotografia dels ingredients per extreure\'ls automàticament)</string>
     <string name="ingredients_list">Llista d\'ingredients</string>
     <string name="ingredients_hint">Manteniu l\'ordre, indiqueu el % quan s\'especifica, separat per una coma o -, utilitzeu () pels ingredients d\'un ingredient, els al·lèrgens envoltats amb _</string>

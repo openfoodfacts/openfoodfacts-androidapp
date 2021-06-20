@@ -11,7 +11,7 @@ import java.util.*
 class EmbCodeAutoCompleteAdapter(
         context: Context,
         textViewResourceId: Int,
-        private val productsApi: OpenFoodAPIClient
+        private val client: OpenFoodAPIClient
 ) : ArrayAdapter<String>(context, textViewResourceId), Filterable {
     private val codeList: MutableList<String> = arrayListOf()
 
@@ -28,7 +28,7 @@ class EmbCodeAutoCompleteAdapter(
             if (constraint == null) return FilterResults().apply { count = 0 }
 
             // Retrieve the autocomplete results from server.
-            val list = productsApi.rawApi.getEMBCodeSuggestions(constraint.toString()).blockingGet()
+            val list = client.getEMBCodeSuggestions(constraint.toString()).blockingGet()
 
             // Assign the data to the FilterResults
             return FilterResults().apply {
