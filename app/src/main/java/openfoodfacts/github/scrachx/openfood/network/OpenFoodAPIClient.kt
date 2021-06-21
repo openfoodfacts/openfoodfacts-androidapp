@@ -17,6 +17,8 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.rxkotlin.toObservable
 import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import okhttp3.MediaType
 import okhttp3.RequestBody
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OBF
@@ -420,6 +422,8 @@ class OpenFoodAPIClient @Inject constructor(
     companion object {
         val MIME_TEXT: MediaType = MediaType.get("text/plain")
         const val PNG_EXT = ".png"
+
+        suspend fun HistoryProductDao.addToHistory(newProd: OfflineSavedProduct) = withContext(Dispatchers.IO) { addToHistorySync(newProd) }
 
         fun HistoryProductDao.addToHistorySync(newProd: OfflineSavedProduct) {
             val savedProduct: HistoryProduct? =
