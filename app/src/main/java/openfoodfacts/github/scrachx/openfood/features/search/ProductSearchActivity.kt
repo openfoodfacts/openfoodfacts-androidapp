@@ -284,7 +284,7 @@ class ProductSearchActivity : BaseActivity() {
                 MaterialDialog.Builder(this)
                     .title(R.string.action_about)
                     .content(R.string.permission_camera)
-                    .neutralText(R.string.txtOk)
+                    .neutralText(android.R.string.ok)
                     .onNeutral { _, _ -> ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA), MY_PERMISSIONS_REQUEST_CAMERA) }
                     .show()
             } else {

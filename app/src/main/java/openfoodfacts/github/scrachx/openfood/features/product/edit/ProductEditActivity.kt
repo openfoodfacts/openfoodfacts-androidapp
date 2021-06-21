@@ -64,7 +64,7 @@ import openfoodfacts.github.scrachx.openfood.models.entities.ToUploadProduct
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient.Companion.PNG_EXT
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient.Companion.addToHistorySync
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient.Companion.addToHistory
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
 import openfoodfacts.github.scrachx.openfood.utils.OfflineProductService
 import openfoodfacts.github.scrachx.openfood.utils.Utils.hideKeyboard
@@ -248,9 +248,9 @@ class ProductEditActivity : BaseActivity() {
         editOverviewFragment.arguments = fragmentsBundle
         ingredientsFragment.arguments = fragmentsBundle
 
-        val adapterResult = ProductFragmentPagerAdapter(this).apply {
-            this += editOverviewFragment to getString(R.string.overview)
-            this += ingredientsFragment to getString(R.string.ingredients)
+        val adapterResult = ProductFragmentPagerAdapter(this).also {
+            it += editOverviewFragment to getString(R.string.overview)
+            it += ingredientsFragment to getString(R.string.ingredients)
         }
 
         // If on off or opff, add Nutrition Facts fragment
@@ -284,7 +284,7 @@ class ProductEditActivity : BaseActivity() {
         imgMap[ApiFields.Keys.USER_COMMENT] = createTextPlain(client.getCommentToUpload(login))
     }
 
-    private fun saveProduct() {
+    private suspend fun saveProduct() {
         editOverviewFragment.addUpdatedFieldsToMap(productDetails)
         ingredientsFragment.addUpdatedFieldsToMap(productDetails)
         if (isFlavors(OFF, OPFF)) {
@@ -301,7 +301,7 @@ class ProductEditActivity : BaseActivity() {
     /**
      * Save the current product in the offline db
      */
-    private fun saveProductOffline() {
+    private suspend fun saveProductOffline() {
         // Add the images to the productDetails to display them in UI later.
         imagesFilePath[0]?.let { productDetails[ApiFields.Keys.IMAGE_FRONT] = it }
         imagesFilePath[1]?.let { productDetails[ApiFields.Keys.IMAGE_INGREDIENTS] = it }
@@ -317,19 +317,22 @@ class ProductEditActivity : BaseActivity() {
         if (imageNutritionFactsUploaded) {
             productDetails[ApiFields.Keys.IMAGE_NUTRITION_UPLOADED] = true.toString()
         }
-        val barcode = this@ProductEditActivity.productDetails[ApiFields.Keys.BARCODE]!!
-        val toSaveOffline = OfflineSavedProduct(
-            barcode,
-            this@ProductEditActivity.productDetails
-        )
-        daoSession.offlineSavedProductDao.insertOrReplace(toSaveOffline)
+        val barcode = productDetails[ApiFields.Keys.BARCODE]!!
+
+
+        // Save product to local database
+        val toSaveOffline = OfflineSavedProduct(barcode, productDetails)
+        withContext(Dispatchers.IO) { daoSession.offlineSavedProductDao.insertOrReplace(toSaveOffline) }
+
+        // Add to history db
+        daoSession.historyProductDao.addToHistory(toSaveOffline)
 
         scheduleProductUpload(this, sharedPreferences)
-        daoSession.historyProductDao.addToHistorySync(toSaveOffline)
 
         Toast.makeText(this, R.string.productSavedToast, Toast.LENGTH_SHORT).show()
         hideKeyboard(this)
 
+        // Report analytics
         if (editingMode) {
             matomoAnalytics.trackEvent(AnalyticsEvent.ProductEdited(productDetails[ApiFields.Keys.BARCODE]))
         } else {
@@ -340,25 +343,34 @@ class ProductEditActivity : BaseActivity() {
         finish()
     }
 
-    private fun checkFieldsThenSave() = if (editingMode) {
-        // edit mode, therefore do not check whether front image is empty or not however do check the nutrition facts values.
-        if (isFlavors(OFF, OPFF) && nutritionFactsFragment.anyInvalid()) {
-            // If there are any invalid field and there is nutrition data, scroll to the nutrition fragment
-            binding.viewpager.setCurrentItem(2, true)
-        } else saveProduct()
-    } else {
-        // add mode, check if we have required fields
-        if (editOverviewFragment.anyInvalid()) {
-            binding.viewpager.setCurrentItem(0, true)
-        } else if (isFlavors(OFF, OPFF) && nutritionFactsFragment.anyInvalid()) {
-            binding.viewpager.setCurrentItem(2, true)
-        } else saveProduct()
+    private fun checkFieldsThenSave() {
+        if (editingMode) {
+            // edit mode, therefore do not check whether front image is empty or not however do check the nutrition facts values.
+            if (isFlavors(OFF, OPFF) && nutritionFactsFragment.anyInvalid()) {
+                // If there are any invalid field and there is nutrition data, scroll to the nutrition fragment
+                binding.viewpager.setCurrentItem(2, true)
+                return
+            }
+        } else {
+            // add mode, check if we have required fields
+            if (editOverviewFragment.anyInvalid()) {
+                binding.viewpager.setCurrentItem(0, true)
+                return
+            } else if (isFlavors(OFF, OPFF) && nutritionFactsFragment.anyInvalid()) {
+                binding.viewpager.setCurrentItem(2, true)
+                return
+            }
+        }
+        // If all is correct, save the product
+        lifecycleScope.launch { saveProduct() }
     }
 
     private fun addLoginInfoToProductDetails(targetMap: MutableMap<String, String?>) {
         val settings = getLoginPreferences()
-        val login = settings.getString("user", "") ?: ""
-        val password = settings.getString("pass", "") ?: ""
+
+        val login = settings.getString("user", "")!!
+        val password = settings.getString("pass", "")!!
+
         if (login.isNotEmpty() && password.isNotEmpty()) {
             targetMap[ApiFields.Keys.USER_ID] = login
             targetMap[ApiFields.Keys.USER_PASS] = password
@@ -412,7 +424,9 @@ class ProductEditActivity : BaseActivity() {
         position: Int,
         performOCR: Boolean
     ) = withContext(Dispatchers.IO) {
+
         showImageProgress(position)
+
         val jsonNode = try {
             productsApi.saveImage(imgMap).await()
         } catch (err: Throwable) {
@@ -440,9 +454,11 @@ class ProductEditActivity : BaseActivity() {
             }
             return@withContext
         }
+
         val status = jsonNode["status"].asText()
         if (status == "status not ok") {
             val error = jsonNode["error"].asText()
+
             val alreadySent = error == "This picture has already been sent."
             if (alreadySent && performOCR) {
                 hideImageProgress(position, getString(R.string.image_uploaded_successfully))
@@ -531,6 +547,7 @@ class ProductEditActivity : BaseActivity() {
 
         withContext(Dispatchers.Main) {
             ingredientsFragment.hideOCRProgress()
+
             val status = node["status"].toString()
             if (status == "0") {
                 val ocrResult = node["ingredients_text_from_image"].asText()
