@@ -50,10 +50,10 @@ class ProductRepositoryTest {
     }
 
     @Test
-    fun testGetAllergens() {
+    fun testGetAllergens() = runBlockingTest {
         val mSettings = instance.getSharedPreferences("prefs", 0)
-        val isDownloadActivated = mSettings.getBoolean(Taxonomy.ALLERGEN.downloadActivatePreferencesId, false)
-        val allergens = productRepository.reloadAllergensFromServer().blockingGet()
+        val isDownloadActivated = mSettings.getBoolean(Taxonomy.Allergens.getDownloadActivatePreferencesId(), false)
+        val allergens = productRepository.reloadAllergensFromServer()
         assertNotNull(allergens)
         if (!isDownloadActivated) {
             assertEquals(0, allergens.size.toLong())

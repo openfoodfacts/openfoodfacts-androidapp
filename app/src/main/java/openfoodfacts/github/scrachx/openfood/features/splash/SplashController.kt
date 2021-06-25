@@ -37,35 +37,32 @@ import java.util.concurrent.TimeUnit
  * Created by Lobster on 03.03.18.
  */
 class SplashController internal constructor(
-        private val settings: SharedPreferences,
-        private val view: ISplashActivity.View,
-        private val activity: SplashActivity
+    private val settings: SharedPreferences,
+    private val view: ISplashActivity.View,
+    private val activity: SplashActivity
 ) : Controller {
     private val disp = CompositeDisposable()
 
-    private fun activateDownload(taxonomy: Taxonomy) {
-        settings.edit { putBoolean(taxonomy.downloadActivatePreferencesId, true) }
-    }
 
-    private fun activateDownload(taxonomy: Taxonomy, vararg flavors: String) {
-        if (isFlavors(*flavors)) {
-            activateDownload(taxonomy)
+    private fun <T> Taxonomy<T>.activateDownload(vararg flavors: String) {
+        if (flavors.isEmpty() || isFlavors(*flavors)) {
+            settings.edit { putBoolean(getDownloadActivatePreferencesId(), true) }
         }
     }
 
     override fun refreshData() {
-        activateDownload(CATEGORY)
-        activateDownload(TAGS)
-        activateDownload(INVALID_BARCODES)
-        activateDownload(ADDITIVE, OFF, OBF)
-        activateDownload(COUNTRY, OFF, OBF)
-        activateDownload(LABEL, OFF, OBF)
-        activateDownload(ALLERGEN, OFF, OBF, OPFF)
-        activateDownload(ANALYSIS_TAGS, OFF, OBF, OPFF)
-        activateDownload(ANALYSIS_TAG_CONFIG, OFF, OBF, OPFF)
-        activateDownload(STATES, OFF, OBF, OPFF)
-        activateDownload(STORES, OFF, OBF, OPFF)
-        activateDownload(BRANDS, OFF, OBF)
+        Categories.activateDownload()
+        Tags.activateDownload()
+        InvalidBarcodes.activateDownload()
+        Additives.activateDownload(OFF, OBF)
+        Countries.activateDownload(OFF, OBF)
+        Labels.activateDownload(OFF, OBF)
+        Allergens.activateDownload(OFF, OBF, OPFF)
+        AnalysisTags.activateDownload(OFF, OBF, OPFF)
+        AnalysisTagConfigs.activateDownload(OFF, OBF, OPFF)
+        ProductStates.activateDownload(OFF, OBF, OPFF)
+        Stores.activateDownload(OFF, OBF, OPFF)
+        Brands.activateDownload(OFF, OBF)
 
         //first run ever off this application, whatever the version
         val firstRun = settings.getBoolean("firstRun", true)

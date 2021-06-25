@@ -13,125 +13,92 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package openfoodfacts.github.scrachx.openfood.repositories
 
-package openfoodfacts.github.scrachx.openfood.repositories;
+import kotlinx.coroutines.rx2.await
+import openfoodfacts.github.scrachx.openfood.models.InvalidBarcode
+import openfoodfacts.github.scrachx.openfood.models.entities.additive.Additive
+import openfoodfacts.github.scrachx.openfood.models.entities.allergen.Allergen
+import openfoodfacts.github.scrachx.openfood.models.entities.analysistag.AnalysisTag
+import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.AnalysisTagConfig
+import openfoodfacts.github.scrachx.openfood.models.entities.brand.Brand
+import openfoodfacts.github.scrachx.openfood.models.entities.category.Category
+import openfoodfacts.github.scrachx.openfood.models.entities.country.Country
+import openfoodfacts.github.scrachx.openfood.models.entities.ingredient.Ingredient
+import openfoodfacts.github.scrachx.openfood.models.entities.label.Label
+import openfoodfacts.github.scrachx.openfood.models.entities.states.States
+import openfoodfacts.github.scrachx.openfood.models.entities.store.Store
+import openfoodfacts.github.scrachx.openfood.models.entities.tag.Tag
+import openfoodfacts.github.scrachx.openfood.network.services.AnalysisDataAPI
 
-import java.util.List;
-
-import io.reactivex.Single;
-import openfoodfacts.github.scrachx.openfood.models.InvalidBarcode;
-import openfoodfacts.github.scrachx.openfood.models.entities.additive.Additive;
-import openfoodfacts.github.scrachx.openfood.models.entities.allergen.Allergen;
-import openfoodfacts.github.scrachx.openfood.models.entities.analysistag.AnalysisTag;
-import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.AnalysisTagConfig;
-import openfoodfacts.github.scrachx.openfood.models.entities.brand.Brand;
-import openfoodfacts.github.scrachx.openfood.models.entities.category.Category;
-import openfoodfacts.github.scrachx.openfood.models.entities.country.Country;
-import openfoodfacts.github.scrachx.openfood.models.entities.ingredient.Ingredient;
-import openfoodfacts.github.scrachx.openfood.models.entities.label.Label;
-import openfoodfacts.github.scrachx.openfood.models.entities.states.States;
-import openfoodfacts.github.scrachx.openfood.models.entities.store.Store;
-import openfoodfacts.github.scrachx.openfood.models.entities.tag.Tag;
-import openfoodfacts.github.scrachx.openfood.network.services.AnalysisDataAPI;
-
-@SuppressWarnings("unchecked")
-public enum Taxonomy {
-    LABEL(AnalysisDataAPI.LABELS_JSON) {
-        @Override
-        public Single<List<Label>> load(ProductRepository repository, long lastModifiedDate) {
-            return repository.loadLabels(lastModifiedDate);
-        }
-    },
-    COUNTRY(AnalysisDataAPI.COUNTRIES_JSON) {
-        @Override
-        public Single<List<Country>> load(ProductRepository repository, long lastModifiedDate) {
-            return repository.loadCountries(lastModifiedDate);
-        }
-    },
-    CATEGORY(AnalysisDataAPI.CATEGORIES_JSON) {
-        @Override
-        public Single<List<Category>> load(ProductRepository repository, long lastModifiedDate) {
-            return repository.loadCategories(lastModifiedDate);
-        }
-    },
-    ADDITIVE(AnalysisDataAPI.ADDITIVES_JSON) {
-        @Override
-        public Single<List<Additive>> load(ProductRepository repository, long lastModifiedDate) {
-            return repository.loadAdditives(lastModifiedDate);
-        }
-    },
-    INGREDIENT(AnalysisDataAPI.INGREDIENTS_JSON) {
-        @Override
-        public Single<List<Ingredient>> load(ProductRepository repository, long lastModifiedDate) {
-            return repository.loadIngredients(lastModifiedDate);
-        }
-    },
-    ALLERGEN(AnalysisDataAPI.ALLERGENS_JSON) {
-        @Override
-        public Single<List<Allergen>> load(ProductRepository repository, long lastModifiedDate) {
-            return repository.loadAllergens(lastModifiedDate);
-        }
-    },
-    ANALYSIS_TAGS(AnalysisDataAPI.ANALYSIS_TAG_JSON) {
-        @Override
-        public Single<List<AnalysisTag>> load(ProductRepository repository, long lastModifiedDate) {
-            return repository.loadAnalysisTags(lastModifiedDate);
-        }
-    },
-    ANALYSIS_TAG_CONFIG(AnalysisDataAPI.ANALYSIS_TAG_CONFIG_JSON) {
-        @Override
-        public Single<List<AnalysisTagConfig>> load(ProductRepository repository, long lastModifiedDate) {
-            return repository.loadAnalysisTagConfigs(lastModifiedDate);
-        }
-    },
-    TAGS(AnalysisDataAPI.TAGS_JSON) {
-        @Override
-        public Single<List<Tag>> load(ProductRepository repository, long lastModifiedDate) {
-            return repository.loadTags(lastModifiedDate);
-        }
-    },
-    INVALID_BARCODES(AnalysisDataAPI.INVALID_BARCODES_JSON) {
-        @Override
-        public Single<List<InvalidBarcode>> load(ProductRepository repository, long lastModifiedDate) {
-            return repository.loadInvalidBarcodes(lastModifiedDate);
-        }
-    },
-    STATES(AnalysisDataAPI.STATES_JSON) {
-        @Override
-        public Single<List<States>> load(ProductRepository repository, long lastModifiedDate){
-            return repository.loadStates(lastModifiedDate);
-        }
-    },
-    STORES(AnalysisDataAPI.STORES_JSON) {
-        @Override
-        public Single<List<Store>> load(ProductRepository repository, long lastModifiedDate){
-            return repository.loadStores(lastModifiedDate);
-        }
-    },
-    BRANDS(AnalysisDataAPI.BRANDS_JSON) {
-        @Override
-        public Single<List<Brand>> load(ProductRepository repository, long lastModifiedDate) {
-            return repository.loadBrands(lastModifiedDate);
-        }
-    };
-
-    private final String jsonUrl;
-
-    Taxonomy(String jsonUrl) {
-        this.jsonUrl = jsonUrl;
+sealed class Taxonomy<T>(val jsonUrl: String) {
+    object Labels : Taxonomy<Label>(AnalysisDataAPI.LABELS_JSON) {
+        override suspend fun load(repository: ProductRepository, lastModifiedDate: Long): List<Label> =
+            repository.loadLabels(lastModifiedDate).await()
     }
 
-    public String getJsonUrl() {
-        return jsonUrl;
+    object Countries : Taxonomy<Country>(AnalysisDataAPI.COUNTRIES_JSON) {
+        override suspend fun load(repository: ProductRepository, lastModifiedDate: Long): List<Country> =
+            repository.loadCountries(lastModifiedDate).await()
     }
 
-    public String getLastDownloadTimeStampPreferenceId() {
-        return "taxonomy_lastDownloadTimeStamp_" + name();
+    object Categories : Taxonomy<Category>(AnalysisDataAPI.CATEGORIES_JSON) {
+        override suspend fun load(repository: ProductRepository, lastModifiedDate: Long): List<Category> =
+            repository.loadCategories(lastModifiedDate).await()
     }
 
-    public String getDownloadActivatePreferencesId() {
-        return "taxonomy_download_" + name();
+    object Additives : Taxonomy<Additive>(AnalysisDataAPI.ADDITIVES_JSON) {
+        override suspend fun load(repository: ProductRepository, lastModifiedDate: Long): List<Additive> =
+            repository.loadAdditives(lastModifiedDate).await()
     }
 
-    public abstract <T> Single<List<T>> load(ProductRepository repository, long lastModifiedDate);
+    object Ingredients : Taxonomy<Ingredient>(AnalysisDataAPI.INGREDIENTS_JSON) {
+        override suspend fun load(repository: ProductRepository, lastModifiedDate: Long): List<Ingredient> =
+            repository.loadIngredients(lastModifiedDate).await()
+    }
+
+    object Allergens : Taxonomy<Allergen>(AnalysisDataAPI.ALLERGENS_JSON) {
+        override suspend fun load(repository: ProductRepository, lastModifiedDate: Long): List<Allergen> =
+            repository.loadAllergens(lastModifiedDate).await()
+    }
+
+    object AnalysisTags : Taxonomy<AnalysisTag>(AnalysisDataAPI.ANALYSIS_TAG_JSON) {
+        override suspend fun load(repository: ProductRepository, lastModifiedDate: Long): List<AnalysisTag> =
+            repository.loadAnalysisTags(lastModifiedDate).await()
+    }
+
+    object AnalysisTagConfigs : Taxonomy<AnalysisTagConfig>(AnalysisDataAPI.ANALYSIS_TAG_CONFIG_JSON) {
+        override suspend fun load(repository: ProductRepository, lastModifiedDate: Long): List<AnalysisTagConfig> =
+            repository.loadAnalysisTagConfigs(lastModifiedDate).await()
+    }
+
+    object Tags : Taxonomy<Tag>(AnalysisDataAPI.TAGS_JSON) {
+        override suspend fun load(repository: ProductRepository, lastModifiedDate: Long): List<Tag> =
+            repository.loadTags(lastModifiedDate).await()
+    }
+
+    object InvalidBarcodes : Taxonomy<InvalidBarcode>(AnalysisDataAPI.INVALID_BARCODES_JSON) {
+        override suspend fun load(repository: ProductRepository, lastModifiedDate: Long): List<InvalidBarcode> =
+            repository.loadInvalidBarcodes(lastModifiedDate).await()
+    }
+
+    object ProductStates : Taxonomy<States>(AnalysisDataAPI.STATES_JSON) {
+        override suspend fun load(repository: ProductRepository, lastModifiedDate: Long): List<States> =
+            repository.loadStates(lastModifiedDate).await()
+    }
+
+    object Stores : Taxonomy<Store>(AnalysisDataAPI.STORES_JSON) {
+        override suspend fun load(repository: ProductRepository, lastModifiedDate: Long): List<Store> =
+            repository.loadStores(lastModifiedDate).await()
+    }
+
+    object Brands : Taxonomy<Brand>(AnalysisDataAPI.BRANDS_JSON) {
+        override suspend fun load(repository: ProductRepository, lastModifiedDate: Long): List<Brand> =
+            repository.loadBrands(lastModifiedDate).await()
+    }
+
+    fun getLastDownloadTimeStampPreferenceId() = "taxonomy_lastDownloadTimeStamp_${this::class.simpleName}"
+    fun getDownloadActivatePreferencesId() = "taxonomy_download_${this::class.simpleName}"
+
+    abstract suspend fun load(repository: ProductRepository, lastModifiedDate: Long): List<T>
 }
