@@ -48,3 +48,6 @@ public static java.lang.String TABLENAME;
 -keep class **$Properties { *; }
 # GreenDAO entities
 -keep class openfoodfacts.github.scrachx.openfood.models.** { *; }
+
+# https://github.com/CanHub/Android-Image-Cropper#step-4-add-this-line-to-your-proguard-config-file
+-keep class androidx.appcompat.widget.** { *; }

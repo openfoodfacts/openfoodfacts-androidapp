@@ -139,7 +139,7 @@ dependencies {
     implementation("com.journeyapps:zxing-android-embedded:3.6.0") { isTransitive = false }
 
     // UI Component : Custom Toast
-    implementation("net.steamcrafted:load-toast:1.0.12")
+    implementation("com.github.code-mc:loadtoast:1.0.12")
 
     // UI Component : ImageView with Zooming
     implementation("com.github.chrisbanes:PhotoView:2.3.0")
@@ -158,12 +158,10 @@ dependencies {
     // UI Component : Font Icons
     implementation("com.mikepenz:iconics-core:4.0.2@aar")
     implementation("com.mikepenz:google-material-typeface:3.0.1.6.original-kotlin@aar")
-    implementation("com.theartofdev.edmodo:android-image-cropper:2.8.0") {
-        exclude("com.android.support", "appcompat-v7")
-    }
+    implementation("com.github.CanHub:Android-Image-Cropper:3.1.3")
 
     // UI Component : Chips Input
-    implementation("com.hootsuite.android:nachos:1.2.0")
+    implementation("com.github.hootsuite:nachos:1.2.0")
 
     // Crash analytics
     implementation("io.sentry:sentry-android:5.0.1")
