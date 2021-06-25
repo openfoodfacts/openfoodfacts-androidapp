@@ -43,10 +43,10 @@ dependencies {
 
 
     // Android KTX
-    implementation("androidx.fragment:fragment-ktx:1.3.4")
+    implementation("androidx.fragment:fragment-ktx:1.3.5")
     implementation("androidx.activity:activity-ktx:1.2.3")
     implementation("androidx.preference:preference-ktx:1.1.1")
-    implementation("androidx.core:core-ktx:1.6.0-beta02")
+    implementation("androidx.core:core-ktx:1.6.0-rc01")
 
     val viewModelKtxVer = "2.3.1"
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$viewModelKtxVer")
@@ -70,7 +70,7 @@ dependencies {
 
     val workVersion = "2.5.0"
     implementation("androidx.work:work-runtime-ktx:$workVersion")
-    val hiltVersion = "1.0.0-beta01"
+    val hiltVersion = "1.0.0"
     implementation("androidx.hilt:hilt-work:$hiltVersion")
     kapt("androidx.hilt:hilt-compiler:$hiltVersion")
 
@@ -167,7 +167,7 @@ dependencies {
 
     // Crash analytics
     implementation("io.sentry:sentry-android:5.0.1")
-    implementation("org.matomo.sdk:tracker:4.1.2")
+    implementation("com.github.matomo-org:matomo-sdk-android:v4.1.2")
 
     // ShowCaseView dependency
     implementation("com.github.mreram:showcaseview:1.0.5")
