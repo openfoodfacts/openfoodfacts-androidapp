@@ -678,10 +678,10 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
     }
 
     private val isDataPerServing: Boolean
-        get() = viewModel.isDataPerServing.value!!
+        get() = viewModel.dataFormat.value == R.id.per_serving
 
     private val isDataPer100g: Boolean
-        get() = viewModel.isDataPer100g.value!!
+        get() = viewModel.dataFormat.value == R.id.for100g_100ml
 
     private val referenceValueInGram: Float
         get() {

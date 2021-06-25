@@ -6,6 +6,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import io.reactivex.Single
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.rx2.await
+import kotlinx.coroutines.rx2.rxSingle
 import kotlinx.coroutines.withContext
 import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.utils.Utils
@@ -30,7 +31,7 @@ class TaxonomiesManager @Inject constructor(
      * @return The timestamp of the last changes date of the taxonomy.json on the server
      * or [TAXONOMY_NO_INTERNET] if there is no connection to the server.
      */
-    private fun getLastModifiedDateFromServer(taxonomy: Taxonomy): Single<Long> = Single.fromCallable {
+    private fun getLastModifiedDateFromServer(taxonomy: Taxonomy): Single<Long> = rxSingle(Dispatchers.IO) {
         var lastModifiedDate: Long
         val taxoUrl = URL(BuildConfig.OFWEBSITE + taxonomy.jsonUrl)
         try {
@@ -43,7 +44,7 @@ class TaxonomiesManager @Inject constructor(
             lastModifiedDate = TAXONOMY_NO_INTERNET
         }
         Log.i(LOG_TAG, "Last modified date for taxonomy \"$taxonomy\" is $lastModifiedDate")
-        return@fromCallable lastModifiedDate
+        return@rxSingle lastModifiedDate
     }
 
     /**
