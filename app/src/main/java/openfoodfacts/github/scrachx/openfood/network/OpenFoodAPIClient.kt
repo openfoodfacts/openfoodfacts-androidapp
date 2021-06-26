@@ -187,7 +187,7 @@ class OpenFoodAPIClient @Inject constructor(
      */
     private fun getUploadableMap(image: ProductImage): Map<String, RequestBody?> {
         val lang = image.language
-        val imgMap = hashMapOf(PRODUCT_BARCODE to image.codeBody, "imagefield" to image.fieldBody)
+        val imgMap = hashMapOf(PRODUCT_BARCODE to image.barcodeBody, "imagefield" to image.fieldBody)
         if (image.imgFront != null) {
             imgMap["""imgupload_front"; filename="front_$lang$PNG_EXT"""] = image.imgFront!!
         }

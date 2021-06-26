@@ -7,7 +7,6 @@ import androidx.hilt.work.HiltWorker
 import androidx.work.*
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
-import kotlinx.coroutines.rx2.await
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.utils.OfflineProductService
 import javax.inject.Inject
@@ -25,7 +24,7 @@ class ProductUploaderWorker @AssistedInject constructor(
         val includeImages = inputData.getBoolean(KEY_INCLUDE_IMAGES, false)
         Log.d(WORK_TAG, "[START] (includeImages=$includeImages)")
 
-        val shouldRetry = offlineProductService.uploadAll(includeImages).await()
+        val shouldRetry = offlineProductService.uploadAll(includeImages)
 
         return if (shouldRetry) {
             Log.d(WORK_TAG, "[RETRY]")

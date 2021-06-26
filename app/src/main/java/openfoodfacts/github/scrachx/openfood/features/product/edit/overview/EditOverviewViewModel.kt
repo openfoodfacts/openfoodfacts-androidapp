@@ -1,9 +1,11 @@
 package openfoodfacts.github.scrachx.openfood.features.product.edit.overview
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import dagger.hilt.android.lifecycle.HiltViewModel
 import openfoodfacts.github.scrachx.openfood.models.DaoSession
+import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.entities.brand.BrandNameDao
 import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoryNameDao
 import openfoodfacts.github.scrachx.openfood.models.entities.country.CountryNameDao
@@ -26,7 +28,6 @@ class EditOverviewViewModel @Inject constructor(
             .mapNotNull { it.name }
             .let { emit(it) }
     }
-
 
     internal val suggestCountries = liveData {
         daoSession.countryNameDao.queryBuilder()
@@ -54,7 +55,6 @@ class EditOverviewViewModel @Inject constructor(
 
     }
 
-
     internal val suggestBrands = liveData {
         daoSession.brandNameDao.queryBuilder()
             .where(BrandNameDao.Properties.LanguageCode.eq(appLang))
@@ -62,5 +62,7 @@ class EditOverviewViewModel @Inject constructor(
             .mapNotNull { it.name }
             .let { emit(it) }
     }
+
+    internal val product = MutableLiveData<Product>()
 
 }

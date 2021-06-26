@@ -387,7 +387,7 @@ class ProductEditActivity : BaseActivity() {
         val lang = getProductLanguageForEdition()
         var ocr = false
         val imgMap = hashMapOf<String, RequestBody?>(
-            ApiFields.Keys.BARCODE to image.codeBody,
+            ApiFields.Keys.BARCODE to image.barcodeBody,
             "imagefield" to createTextPlain("${image.imageField}_$lang")
         )
         if (image.imgFront != null) {
