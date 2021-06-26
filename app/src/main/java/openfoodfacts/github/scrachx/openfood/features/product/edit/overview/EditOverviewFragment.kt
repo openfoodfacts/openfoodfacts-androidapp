@@ -28,6 +28,7 @@ import android.widget.Toast
 import androidx.core.net.toFile
 import androidx.fragment.app.viewModels
 import com.afollestad.materialdialogs.MaterialDialog
+import com.canhub.cropper.CropImage
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 import com.google.zxing.integration.android.IntentIntegrator
@@ -36,7 +37,6 @@ import com.hootsuite.nachos.terminator.ChipTerminatorHandler
 import com.hootsuite.nachos.validator.ChipifyingNachoValidator
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
-import com.theartofdev.edmodo.cropper.CropImage
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.addTo

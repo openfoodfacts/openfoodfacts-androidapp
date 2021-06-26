@@ -7,7 +7,7 @@ import android.util.Log
 import androidx.core.net.toFile
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
-import com.theartofdev.edmodo.cropper.CropImage
+import com.canhub.cropper.CropImage
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.utils.Utils.getOutputPicUri
 import pl.aprilapps.easyphotopicker.DefaultCallback
@@ -81,9 +81,9 @@ class PhotoReceiverHandler(
     private fun onCropResult(requestCode: Int, resultCode: Int, data: Intent?): Boolean {
         if (requestCode != CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) return false
 
-        val result = CropImage.getActivityResult(data)
-        if (resultCode == Activity.RESULT_OK && result.uri != null) {
-            photoReceiver(result.uri.toFile())
+        val result = CropImage.getActivityResult(data)!!
+        if (resultCode == Activity.RESULT_OK && result.uriContent != null) {
+            photoReceiver(result.uriContent!!.toFile())
         } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
             Log.w(LOG_TAG, "Can't process photo", result.error)
         }

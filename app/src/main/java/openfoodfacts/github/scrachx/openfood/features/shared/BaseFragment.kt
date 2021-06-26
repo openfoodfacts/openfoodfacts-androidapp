@@ -30,7 +30,7 @@ import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.afollestad.materialdialogs.MaterialDialog
-import com.theartofdev.edmodo.cropper.CropImage
+import com.canhub.cropper.CropImage
 import io.reactivex.disposables.CompositeDisposable
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.features.listeners.OnRefreshListener

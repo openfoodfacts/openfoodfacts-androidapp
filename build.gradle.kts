@@ -17,10 +17,10 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    val kotlinVersion by extra("1.5.0")
-    val jacksonVersion by extra("2.12.2")
+    val kotlinVersion by extra("1.5.20")
+    val jacksonVersion by extra("2.12.3")
     val greendaoVersion by extra("3.3.0")
-    val hiltVersion by extra("2.33-beta")
+    val hiltVersion by extra("2.37")
     repositories {
         google()
         mavenCentral()
@@ -48,7 +48,6 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-        jcenter() // We need this for matomo!!
         maven("https://jitpack.io")
     }
 

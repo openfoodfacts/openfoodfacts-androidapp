@@ -35,11 +35,11 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.edit
 import androidx.core.net.toFile
 import androidx.lifecycle.lifecycleScope
+import com.canhub.cropper.CropImage
+import com.canhub.cropper.CropImageActivity
 import com.github.chrisbanes.photoview.PhotoViewAttacher
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
-import com.theartofdev.edmodo.cropper.CropImage
-import com.theartofdev.edmodo.cropper.CropImageActivity
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -579,7 +579,7 @@ class ImagesManageActivity : BaseActivity() {
 
         if (isResultOk) {
             startRefresh(StringUtils.EMPTY)
-            val result = CropImage.getActivityResult(dataFromCropActivity)
+            val result = CropImage.getActivityResult(dataFromCropActivity)!!
             val product = requireProduct()
             val currentServerTransformation = getInitialServerTransformation(product, getSelectedType(), getCurrentLanguage())
             val newServerTransformation =

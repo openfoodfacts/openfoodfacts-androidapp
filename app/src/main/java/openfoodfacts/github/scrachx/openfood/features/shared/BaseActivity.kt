@@ -51,12 +51,17 @@ abstract class BaseActivity : AppCompatActivity() {
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == MY_PERMISSIONS_REQUEST_CAMERA
-                && grantResults.isNotEmpty()
-                && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            startActivity(Intent(this@BaseActivity, ContinuousScanActivity::class.java).apply {
-                addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            })
+            && grantResults.isNotEmpty()
+            && grantResults.all { it == PackageManager.PERMISSION_GRANTED }
+        ) {
+            startScanActivity()
         }
+    }
+
+    protected fun startScanActivity() {
+        startActivity(Intent(this, ContinuousScanActivity::class.java).apply {
+            addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        })
     }
 }
 

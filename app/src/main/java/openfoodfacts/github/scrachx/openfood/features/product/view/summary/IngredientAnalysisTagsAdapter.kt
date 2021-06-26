@@ -56,7 +56,7 @@ class IngredientAnalysisTagsAdapter(
         val icon: ImageView = itemView.findViewById(R.id.icon)
 
         override fun onClick(view: View) {
-            onClickListener?.let { it(view, adapterPosition) }
+            onClickListener?.let { it(view, bindingAdapterPosition) }
         }
 
         init {

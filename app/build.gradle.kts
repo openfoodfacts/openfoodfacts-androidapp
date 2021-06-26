@@ -43,10 +43,10 @@ dependencies {
 
 
     // Android KTX
-    implementation("androidx.fragment:fragment-ktx:1.3.4")
+    implementation("androidx.fragment:fragment-ktx:1.3.5")
     implementation("androidx.activity:activity-ktx:1.2.3")
     implementation("androidx.preference:preference-ktx:1.1.1")
-    implementation("androidx.core:core-ktx:1.6.0-beta02")
+    implementation("androidx.core:core-ktx:1.6.0-rc01")
 
     val viewModelKtxVer = "2.3.1"
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$viewModelKtxVer")
@@ -70,7 +70,7 @@ dependencies {
 
     val workVersion = "2.5.0"
     implementation("androidx.work:work-runtime-ktx:$workVersion")
-    val hiltVersion = "1.0.0-beta01"
+    val hiltVersion = "1.0.0"
     implementation("androidx.hilt:hilt-work:$hiltVersion")
     kapt("androidx.hilt:hilt-compiler:$hiltVersion")
 
@@ -139,7 +139,7 @@ dependencies {
     implementation("com.journeyapps:zxing-android-embedded:3.6.0") { isTransitive = false }
 
     // UI Component : Custom Toast
-    implementation("net.steamcrafted:load-toast:1.0.12")
+    implementation("com.github.code-mc:loadtoast:1.0.12")
 
     // UI Component : ImageView with Zooming
     implementation("com.github.chrisbanes:PhotoView:2.3.0")
@@ -158,16 +158,14 @@ dependencies {
     // UI Component : Font Icons
     implementation("com.mikepenz:iconics-core:4.0.2@aar")
     implementation("com.mikepenz:google-material-typeface:3.0.1.6.original-kotlin@aar")
-    implementation("com.theartofdev.edmodo:android-image-cropper:2.8.0") {
-        exclude("com.android.support", "appcompat-v7")
-    }
+    implementation("com.github.CanHub:Android-Image-Cropper:3.1.3")
 
     // UI Component : Chips Input
-    implementation("com.hootsuite.android:nachos:1.2.0")
+    implementation("com.github.hootsuite:nachos:1.2.0")
 
     // Crash analytics
     implementation("io.sentry:sentry-android:5.0.1")
-    implementation("org.matomo.sdk:tracker:4.1.2")
+    implementation("com.github.matomo-org:matomo-sdk-android:v4.1.2")
 
     // ShowCaseView dependency
     implementation("com.github.mreram:showcaseview:1.0.5")
@@ -175,8 +173,8 @@ dependencies {
     // Unit Testing
     testImplementation("junit:junit:4.13.2")
     testImplementation("org.robolectric:robolectric:4.5.1")
-    testImplementation("org.mockito:mockito-core:3.11.1")
-    testImplementation("net.javacrumbs.json-unit:json-unit-fluent:2.26.0")
+    testImplementation("org.mockito:mockito-core:3.11.2")
+    testImplementation("net.javacrumbs.json-unit:json-unit-fluent:2.27.0")
     testImplementation("com.google.truth:truth:1.1.3")
     testImplementation("com.google.truth.extensions:truth-java8-extension:1.1.3")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:${coroutinesVersion}")
