@@ -221,8 +221,6 @@ class ProductCompareAdapter(
     }
 
     private fun loadAdditives(product: Product, view: TextView) {
-        if (product.additivesTags.isEmpty()) return
-
         product.additivesTags.toObservable()
                 .flatMapSingle { tag ->
                     productRepository.getAdditiveByTagAndLanguageCode(tag, language)
@@ -240,9 +238,9 @@ class ProductCompareAdapter(
                 .subscribe { additives ->
                     if (additives.isNotEmpty()) {
                         view.text = SpannableStringBuilder()
-                                .bold { append(activity.getString(R.string.compare_additives)) }
-                                .append(" \n")
-                                .append(additives.joinToString("\n"))
+                            .bold { append(activity.getString(R.string.compare_additives)) }
+                            .append("\n")
+                            .append(additives.joinToString("\n") { it.name })
                         setMaxCardHeight()
                     }
                 }.addTo(disp)
