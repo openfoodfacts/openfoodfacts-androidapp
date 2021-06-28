@@ -24,6 +24,7 @@ import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Canvas
+import android.graphics.Color
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.net.Uri
@@ -36,10 +37,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
+import androidx.annotation.ColorInt
 import androidx.annotation.DrawableRes
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.ColorUtils
 import androidx.core.net.toUri
 import androidx.core.text.inSpans
 import androidx.core.view.children
@@ -344,3 +347,7 @@ internal fun RequestCreator.into(target: ImageView, onSuccess: () -> Unit) {
         override fun onError(e: Exception) = throw e
     })
 }
+
+
+fun @receiver:ColorInt Int.darken(ratio: Float) = ColorUtils.blendARGB(this, Color.BLACK, ratio)
+fun @receiver:ColorInt Int.lighten(ratio: Float) = ColorUtils.blendARGB(this, Color.WHITE, ratio)

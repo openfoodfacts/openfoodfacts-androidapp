@@ -11,24 +11,18 @@ class PrefManager(context: Context) {
     var isFirstTimeLaunch: Boolean
         get() {
             val actualTime = System.currentTimeMillis()
+            // First time launch
             if (pref.getLong(FIRST_TIME_LAUNCH_TIME, actualTime) == actualTime) {
-                // First time launch
-
                 // Save first launch time
                 pref.edit { putLong(FIRST_TIME_LAUNCH_TIME, actualTime) }
             }
             return pref.getBoolean(IS_FIRST_TIME_LAUNCH, true)
         }
-        // Save first launch time
-        set(isFirstTime) {
-            pref.edit { putBoolean(IS_FIRST_TIME_LAUNCH, isFirstTime) }
-        }
+        set(isFirstTime) = pref.edit { putBoolean(IS_FIRST_TIME_LAUNCH, isFirstTime) }
 
     var userAskedToRate: Boolean
         get() = pref.getBoolean(USER_ASKED_TO_RATE, false)
-        set(userAskedToRate) {
-            pref.edit { putBoolean(USER_ASKED_TO_RATE, userAskedToRate) }
-        }
+        set(userAskedToRate) = pref.edit { putBoolean(USER_ASKED_TO_RATE, userAskedToRate) }
 
     val firstTimeLaunchTime: Long
         get() = pref.getLong(FIRST_TIME_LAUNCH_TIME, System.currentTimeMillis())

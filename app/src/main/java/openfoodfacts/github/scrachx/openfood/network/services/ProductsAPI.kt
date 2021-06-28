@@ -111,7 +111,7 @@ interface ProductsAPI {
     suspend fun getSuggestions(
         @Query("tagtype") tagType: String,
         @Query("term") term: String
-    ): List<String>
+    ): ArrayList<String>
 
 
     @GET("brand/{brand}/{page}.json")
@@ -332,7 +332,7 @@ interface ProductsAPI {
      * This method gives the news in all languages
      */
     @GET("/files/tagline/tagline-$FLAVOR_versionCode.json")
-    fun getTagline(@Header("User-Agent") header: String): List<TagLineLanguage>
+    fun getTagline(@Header("User-Agent") header: String): ArrayList<TagLineLanguage>
 
     /**
      * Returns images for the current product
