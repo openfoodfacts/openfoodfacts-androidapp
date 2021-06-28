@@ -569,7 +569,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     }
 
     override fun showAdditives(additives: List<AdditiveName>) {
-        showAdditives(additives, binding.textAdditiveProduct, wikidataClient, this, disp)
+        showAdditives(additives, binding.textAdditiveProduct, wikidataClient, this)
     }
 
     override fun showAdditivesState(state: ProductInfoState) {

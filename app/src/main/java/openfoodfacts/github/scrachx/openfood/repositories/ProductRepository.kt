@@ -676,7 +676,7 @@ class ProductRepository @Inject constructor(
      * @param languageCode is a 2-digit language code
      * @return The list of translated allergen names
      */
-    fun getAllergensByLanguageCode(languageCode: String?) = Single.fromCallable {
+    suspend fun getAllergensByLanguageCode(languageCode: String?): List<AllergenName> = withContext(Dispatchers.IO) {
         daoSession.allergenNameDao.queryBuilder()
             .where(AllergenNameDao.Properties.LanguageCode.eq(languageCode))
             .list()
@@ -689,16 +689,14 @@ class ProductRepository @Inject constructor(
      * @param languageCode is a 2-digit language code
      * @return The translated allergen name
      */
-    suspend fun getAllergenByTagAndLanguageCode(allergenTag: String?, languageCode: String?): AllergenName {
-        return withContext(Dispatchers.IO) {
-            daoSession.allergenNameDao.queryBuilder().where(
-                AllergenNameDao.Properties.AllergenTag.eq(allergenTag),
-                AllergenNameDao.Properties.LanguageCode.eq(languageCode)
-            ).unique() ?: AllergenName().apply {
-                this.name = allergenTag
-                this.allergenTag = allergenTag
-                this.isWikiDataIdPresent = false
-            }
+    suspend fun getAllergenByTagAndLanguageCode(allergenTag: String?, languageCode: String?): AllergenName = withContext(Dispatchers.IO) {
+        daoSession.allergenNameDao.queryBuilder().where(
+            AllergenNameDao.Properties.AllergenTag.eq(allergenTag),
+            AllergenNameDao.Properties.LanguageCode.eq(languageCode)
+        ).unique() ?: AllergenName().apply {
+            this.name = allergenTag
+            this.allergenTag = allergenTag
+            this.isWikiDataIdPresent = false
         }
     }
 

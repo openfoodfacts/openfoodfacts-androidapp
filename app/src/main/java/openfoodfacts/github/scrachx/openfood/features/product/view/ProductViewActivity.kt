@@ -24,13 +24,15 @@ import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import androidx.fragment.app.FragmentActivity
+import androidx.lifecycle.lifecycleScope
 import androidx.preference.PreferenceManager
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.rxkotlin.addTo
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.rx2.await
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OBF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OPF
@@ -208,16 +210,17 @@ class ProductViewActivity : BaseActivity(), OnRefreshListener {
             val barcode = data.toString().split("/")[4]
 
             // Fetch product from server, then initialize views
-            fetchProduct(barcode).subscribe { pState ->
+            lifecycleScope.launch {
+                val pState = fetchProduct(barcode).await()
+
                 productState = pState
                 intent.putExtra(KEY_STATE, pState)
-                // Adding check on productState.getProduct() to avoid null pointer exception (happens in setViewPager()) when product not found
-                if (productState != null && productState!!.product != null) {
-                    initViews()
-                } else {
-                    finish()
-                }
-            }.addTo(disp)
+                // Adding check on productState.getProduct() to avoid NPE
+                // (happens in setViewPager()) when product not found
+                if (productState != null && productState!!.product != null) initViews()
+                else finish()
+            }
+
             true
         }
         else -> false

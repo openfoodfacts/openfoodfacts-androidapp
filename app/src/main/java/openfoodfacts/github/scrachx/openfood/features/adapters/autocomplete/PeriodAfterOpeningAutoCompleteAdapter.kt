@@ -4,6 +4,7 @@ import android.content.Context
 import android.widget.ArrayAdapter
 import android.widget.Filter
 import android.widget.Filterable
+import kotlinx.coroutines.runBlocking
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import org.apache.commons.lang3.StringUtils
 import java.util.*
@@ -26,7 +27,7 @@ class PeriodAfterOpeningAutoCompleteAdapter(
             if (constraint == null) return FilterResults().apply { count = 0 }
 
             // Retrieve the autocomplete results from server.
-            val list = client.getPeriodAfterOpeningSuggestions(constraint.toString()).blockingGet()
+            val list = runBlocking { client.getPeriodAfterOpeningSuggestions(constraint.toString()) }
 
             // Assign the data to the FilterResults
             return FilterResults().apply {

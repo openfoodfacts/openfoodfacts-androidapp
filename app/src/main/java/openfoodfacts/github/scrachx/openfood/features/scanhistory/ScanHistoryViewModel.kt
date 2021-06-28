@@ -9,7 +9,6 @@ import androidx.lifecycle.switchMap
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.rx2.await
 import kotlinx.coroutines.withContext
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.models.DaoSession
@@ -51,7 +50,7 @@ class ScanHistoryViewModel @Inject constructor(
             try {
                 val barcodes = daoSession.historyProductDao.queryBuilder().list().map { it.barcode }
 
-                client.getProductsByBarcode(barcodes).await()
+                client.getProductsByBarcode(barcodes)
                     .forEach { product ->
                         val historyProduct = daoSession.historyProductDao.queryBuilder()
                             .where(HistoryProductDao.Properties.Barcode.eq(product.code))

@@ -322,7 +322,9 @@ class ImagesManageActivity : BaseActivity() {
 
         getProduct()?.let {
             startRefresh(getString(R.string.loading_product, "${it.getProductName(localeManager.getLanguage())}..."))
-            client.getProductImages(it.code).observeOn(AndroidSchedulers.mainThread()).subscribe { newState ->
+
+            lifecycleScope.launch {
+                val newState = client.getProductImages(it.code).observeOn(AndroidSchedulers.mainThread()).await()
                 val newProduct = newState.product
                 var imageReloaded = false
 
@@ -344,7 +346,8 @@ class ImagesManageActivity : BaseActivity() {
                 }
 
                 if (!imageReloaded) stopRefresh()
-            }.addTo(disp)
+            }
+
         }
     }
 
@@ -405,12 +408,15 @@ class ImagesManageActivity : BaseActivity() {
     private fun unSelectImage() {
         if (cannotEdit(REQUEST_UNSELECT_IMAGE_AFTER_LOGIN)) return
         startRefresh(getString(R.string.unselect_image))
-        client.unSelectImage(getProduct()!!.code, getSelectedType(), getCurrentLanguage())
-            .doOnError { reloadProduct() }
-            .subscribe { _ ->
-                setResult(RESULTCODE_MODIFIED)
+        lifecycleScope.launch {
+            try {
+                client.unSelectImage(getProduct()!!.code, getSelectedType(), getCurrentLanguage())
+            } catch (err: Exception) {
                 reloadProduct()
-            }.addTo(disp)
+            }
+            setResult(RESULTCODE_MODIFIED)
+            reloadProduct()
+        }
     }
 
     private fun selectImage() {
@@ -605,11 +611,8 @@ class ImagesManageActivity : BaseActivity() {
         binding.imageViewFullScreen.visibility = View.INVISIBLE
 
         lifecycleScope.launch(Dispatchers.IO) {
-            val value = client.editImage(code, map).await()
-            if (value != null) {
-                setResult(RESULTCODE_MODIFIED)
-            }
-
+            client.editImage(code, map)
+            setResult(RESULTCODE_MODIFIED)
             withContext(Dispatchers.Main) { reloadProduct() }
         }
     }

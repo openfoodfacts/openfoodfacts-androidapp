@@ -200,6 +200,7 @@ class ProductCompareAdapter(
             val barcode = product.code
             if (Utils.isNetworkConnected(activity)) {
                 Utils.hideKeyboard(activity)
+
                 client.openProduct(barcode, activity)
             } else {
                 MaterialDialog.Builder(activity).apply {
