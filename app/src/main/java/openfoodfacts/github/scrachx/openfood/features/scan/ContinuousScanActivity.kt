@@ -36,6 +36,7 @@ import androidx.core.view.WindowInsetsControllerCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.commit
+import androidx.lifecycle.lifecycleScope
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.ResultPoint
@@ -53,7 +54,8 @@ import io.reactivex.Completable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
-import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.*
+import kotlinx.coroutines.rx2.await
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.BuildConfig
@@ -136,7 +138,7 @@ class ContinuousScanActivity : BaseActivity() {
     private val settings by lazy { getSharedPreferences("prefs", 0) }
 
     private val commonDisp = CompositeDisposable()
-    private var productDisp: Disposable? = null
+    private var productDisp: Job? = null
     private var hintBarcodeDisp: Disposable? = null
 
 
@@ -189,7 +191,7 @@ class ContinuousScanActivity : BaseActivity() {
         if (isFinishing) return
 
         // Dispose the previous call if not ended.
-        productDisp?.dispose()
+        productDisp?.cancel()
         summaryProductPresenter?.dispose()
 
         // First, try to show if we have an offline saved product in the db
@@ -198,124 +200,126 @@ class ContinuousScanActivity : BaseActivity() {
         }
 
         // Then query the online db
-        productDisp = client.getProductStateFull(barcode, userAgent = Utils.HEADER_USER_AGENT_SCAN)
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnSubscribe {
-                hideAllViews()
-                quickViewBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
-                binding.quickView.setOnClickListener(null)
-                binding.quickViewProgress.visibility = View.VISIBLE
-                binding.quickViewProgressText.visibility = View.VISIBLE
-                binding.quickViewProgressText.text = getString(R.string.loading_product, barcode)
-            }
-            .doOnError {
-                try {
-                    // A network error happened
-                    if (it is IOException) {
-                        hideAllViews()
-                        val offlineSavedProduct = daoSession.offlineSavedProductDao!!.queryBuilder()
-                            .where(OfflineSavedProductDao.Properties.Barcode.eq(barcode))
-                            .unique()
-                        tryDisplayOffline(offlineSavedProduct, barcode, R.string.addProductOffline)
-                        binding.quickView.setOnClickListener { navigateToProductAddition(barcode) }
-                    } else {
-                        binding.quickViewProgress.visibility = View.GONE
-                        binding.quickViewProgressText.visibility = View.GONE
-                        Toast.makeText(this, R.string.txtConnectionError, Toast.LENGTH_LONG).run {
-                            setGravity(CENTER, 0, 0)
-                            show()
-                        }
-                        Log.i(LOG_TAG, it.message, it)
+        productDisp = lifecycleScope.launch(Dispatchers.Main) {
+
+            hideAllViews()
+            quickViewBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+            binding.quickView.setOnClickListener(null)
+            binding.quickViewProgress.visibility = View.VISIBLE
+            binding.quickViewProgressText.visibility = View.VISIBLE
+            binding.quickViewProgressText.text = getString(R.string.loading_product, barcode)
+
+            val productState = try {
+                withContext(Dispatchers.IO) {
+                    client.getProductStateFull(barcode, userAgent = Utils.HEADER_USER_AGENT_SCAN).await()
+                }
+            } catch (err: Exception) {
+                // A network error happened
+                if (err is IOException) {
+                    hideAllViews()
+                    val offlineSavedProduct = daoSession.offlineSavedProductDao!!.queryBuilder()
+                        .where(OfflineSavedProductDao.Properties.Barcode.eq(barcode))
+                        .unique()
+                    tryDisplayOffline(offlineSavedProduct, barcode, R.string.addProductOffline)
+                    binding.quickView.setOnClickListener { navigateToProductAddition(barcode) }
+                } else {
+                    binding.quickViewProgress.visibility = View.GONE
+                    binding.quickViewProgressText.visibility = View.GONE
+
+                    Toast.makeText(this@ContinuousScanActivity, R.string.txtConnectionError, Toast.LENGTH_LONG).run {
+                        setGravity(CENTER, 0, 0)
+                        show()
                     }
-                } catch (err: Exception) {
                     Log.w(LOG_TAG, err.message, err)
                 }
+                return@launch
             }
-            .subscribe { productState ->
-                //clear product tags
-                analysisTagsEmpty = true
-                binding.quickViewTags.adapter = null
-                binding.quickViewProgress.visibility = View.GONE
-                binding.quickViewProgressText.visibility = View.GONE
 
-                if (productState.status == 0L) {
-                    tryDisplayOffline(offlineSavedProduct, barcode, R.string.product_not_found)
-                } else {
-                    val product = productState.product!!
-                    this.product = product
 
-                    // Add product to scan history
-                    productDisp = client.addToHistory(product).subscribeOn(Schedulers.io()).subscribe()
+            //clear product tags
+            analysisTagsEmpty = true
+            binding.quickViewTags.adapter = null
+            binding.quickViewProgress.visibility = View.GONE
+            binding.quickViewProgressText.visibility = View.GONE
 
-                    // If we're here from comparison -> add product, return to comparison activity
-                    if (intent.getBooleanExtra(ProductCompareActivity.KEY_COMPARE_PRODUCT, false)) {
-                        startActivity(Intent(this@ContinuousScanActivity, ProductCompareActivity::class.java).apply {
-                            putExtra(ProductCompareActivity.KEY_PRODUCT_FOUND, true)
+            if (productState.status == 0L) {
+                tryDisplayOffline(offlineSavedProduct, barcode, R.string.product_not_found)
+            } else {
+                val product = productState.product!!
+                this@ContinuousScanActivity.product = product
 
-                            val productsToCompare = intent.extras!!.getSerializable(ProductCompareActivity.KEY_PRODUCTS_TO_COMPARE) as ArrayList<Product>
-                            if (product in productsToCompare) {
-                                putExtra(ProductCompareActivity.KEY_PRODUCT_ALREADY_EXISTS, true)
-                            } else {
-                                productsToCompare += product
-                                matomoAnalytics.trackEvent(AnalyticsEvent.AddProductToComparison(product.code))
-                            }
-                            putExtra(ProductCompareActivity.KEY_PRODUCTS_TO_COMPARE, productsToCompare)
-                            addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                        })
-                    }
+                // Add product to scan history
+                productDisp = lifecycleScope.launch { client.addToHistory(product).await() }
 
-                    showAllViews()
+                // If we're here from comparison -> add product, return to comparison activity
+                if (intent.getBooleanExtra(ProductCompareActivity.KEY_COMPARE_PRODUCT, false)) {
+                    startActivity(Intent(this@ContinuousScanActivity, ProductCompareActivity::class.java).apply {
+                        putExtra(ProductCompareActivity.KEY_PRODUCT_FOUND, true)
 
-                    binding.txtProductCallToAction.let {
-                        it.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0)
-                        it.background = ContextCompat.getDrawable(this, R.drawable.rounded_quick_view_text)
-                        it.setText(if (product.isProductIncomplete()) R.string.product_not_complete else R.string.scan_tooltip)
-                        it.visibility = View.VISIBLE
-                    }
-
-                    setupSummary(product)
-                    quickViewBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
-
-                    showProductFullScreen()
-                    binding.quickViewProductNotFound.visibility = View.GONE
-                    binding.quickViewProductNotFoundButton.visibility = View.GONE
-
-                    // Set product name, prefer offline
-                    if (offlineSavedProduct != null && !offlineSavedProduct?.name.isNullOrEmpty()) {
-                        binding.quickViewName.text = offlineSavedProduct!!.name
-                    } else if (product.productName == null || product.productName == "") {
-                        binding.quickViewName.setText(R.string.productNameNull)
-                    } else {
-                        binding.quickViewName.text = product.productName
-                    }
-
-                    // Set product additives
-                    val addTags = product.additivesTags
-                    binding.quickViewAdditives.text = when {
-                        addTags.isNotEmpty() -> resources.getQuantityString(R.plurals.productAdditives, addTags.size, addTags.size)
-                        StateTags.INGREDIENTS_COMPLETED in product.statesTags -> getString(R.string.productAdditivesNone)
-                        else -> getString(R.string.productAdditivesUnknown)
-                    }
-
-                    // Show nutriscore in quickView only if app flavour is OFF and the product has one
-                    quickViewCheckNutriScore(product)
-
-                    // Show nova group in quickView only if app flavour is OFF and the product has one
-                    quickViewCheckNova(product)
-
-                    // If the product has an ecoscore, show it instead of the CO2 icon
-                    quickViewCheckEcoScore(product)
-
-                    // Create the product view fragment and add it to the layout
-                    val newProductViewFragment = ProductViewFragment.newInstance(productState)
-
-                    supportFragmentManager.commit {
-                        replace(R.id.frame_layout, newProductViewFragment)
-                        setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                    }
-                    productViewFragment = newProductViewFragment
+                        val productsToCompare = intent.extras!!.getSerializable(ProductCompareActivity.KEY_PRODUCTS_TO_COMPARE) as ArrayList<Product>
+                        if (product in productsToCompare) {
+                            putExtra(ProductCompareActivity.KEY_PRODUCT_ALREADY_EXISTS, true)
+                        } else {
+                            productsToCompare += product
+                            matomoAnalytics.trackEvent(AnalyticsEvent.AddProductToComparison(product.code))
+                        }
+                        putExtra(ProductCompareActivity.KEY_PRODUCTS_TO_COMPARE, productsToCompare)
+                        addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                    })
                 }
+
+                showAllViews()
+
+                binding.txtProductCallToAction.let {
+                    it.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0)
+                    it.background = ContextCompat.getDrawable(this@ContinuousScanActivity, R.drawable.rounded_quick_view_text)
+                    it.setText(if (product.isProductIncomplete()) R.string.product_not_complete else R.string.scan_tooltip)
+                    it.visibility = View.VISIBLE
+                }
+
+                setupSummary(product)
+                quickViewBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+
+                showProductFullScreen()
+                binding.quickViewProductNotFound.visibility = View.GONE
+                binding.quickViewProductNotFoundButton.visibility = View.GONE
+
+                // Set product name, prefer offline
+                if (offlineSavedProduct != null && !offlineSavedProduct?.name.isNullOrEmpty()) {
+                    binding.quickViewName.text = offlineSavedProduct!!.name
+                } else if (product.productName == null || product.productName == "") {
+                    binding.quickViewName.setText(R.string.productNameNull)
+                } else {
+                    binding.quickViewName.text = product.productName
+                }
+
+                // Set product additives
+                val addTags = product.additivesTags
+                binding.quickViewAdditives.text = when {
+                    addTags.isNotEmpty() -> resources.getQuantityString(R.plurals.productAdditives, addTags.size, addTags.size)
+                    StateTags.INGREDIENTS_COMPLETED in product.statesTags -> getString(R.string.productAdditivesNone)
+                    else -> getString(R.string.productAdditivesUnknown)
+                }
+
+                // Show nutriscore in quickView only if app flavour is OFF and the product has one
+                quickViewCheckNutriScore(product)
+
+                // Show nova group in quickView only if app flavour is OFF and the product has one
+                quickViewCheckNova(product)
+
+                // If the product has an ecoscore, show it instead of the CO2 icon
+                quickViewCheckEcoScore(product)
+
+                // Create the product view fragment and add it to the layout
+                val newProductViewFragment = ProductViewFragment.newInstance(productState)
+
+                supportFragmentManager.commit {
+                    replace(R.id.frame_layout, newProductViewFragment)
+                    setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                }
+                productViewFragment = newProductViewFragment
             }
+        }
     }
 
     private fun quickViewCheckNutriScore(product: Product) = if (isFlavors(OFF)) {
@@ -586,7 +590,7 @@ class ContinuousScanActivity : BaseActivity() {
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
-        productDisp?.dispose()
+        productDisp?.cancel()
         super.onSaveInstanceState(outState)
     }
 

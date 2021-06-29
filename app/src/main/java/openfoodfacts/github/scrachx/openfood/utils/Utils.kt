@@ -24,30 +24,33 @@ import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Canvas
+import android.graphics.Color
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.net.Uri
 import android.os.Build
 import android.os.Environment
-import android.text.Spannable
 import android.text.SpannableStringBuilder
-import android.text.Spanned
 import android.text.style.ClickableSpan
-import android.text.style.StyleSpan
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import android.widget.ImageView
+import androidx.annotation.ColorInt
 import androidx.annotation.DrawableRes
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.ColorUtils
 import androidx.core.net.toUri
 import androidx.core.text.inSpans
 import androidx.core.view.children
 import androidx.work.*
 import com.afollestad.materialdialogs.MaterialDialog
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.squareup.picasso.Callback
+import com.squareup.picasso.RequestCreator
 import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.features.scan.ContinuousScanActivity
@@ -290,45 +293,6 @@ const val SPACE = " "
 const val MY_PERMISSIONS_REQUEST_CAMERA = 1
 const val MY_PERMISSIONS_REQUEST_STORAGE = 2
 
-/**
- * Returns a CharSequence that concatenates the specified array of CharSequence
- * objects and then applies a list of zero or more tags to the entire range.
- *
- * @param content an array of character sequences to apply a style to
- * @param styles the styled span objects to apply to the content
- * such as android.text.style.StyleSpan
- */
-private fun apply(content: Array<out CharSequence>, vararg styles: StyleSpan) = SpannableStringBuilder().let {
-    openStyles(it, styles)
-    content.forEach { item -> it.append(item) }
-    closeStyles(it, styles)
-    it.toString()
-}
-
-/**
- * Iterates over an array of tags and applies them to the beginning of the specified
- * Spannable object so that future text appended to the text will have the styling
- * applied to it. Do not call this method directly.
- */
-private fun openStyles(text: Spannable, tags: Array<out StyleSpan>) {
-    tags.forEach { text.setSpan(it, 0, 0, Spanned.SPAN_MARK_MARK) }
-}
-
-/**
- * "Closes" the specified tags on a Spannable by updating the spans to be
- * endpoint-exclusive so that future text appended to the end will not take
- * on the same styling. Do not call this method directly.
- */
-private fun closeStyles(text: Spannable, tags: Array<out StyleSpan>) {
-    tags.forEach {
-        if (text.isNotEmpty()) {
-            text.setSpan(it, 0, text.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-        } else {
-            text.removeSpan(it)
-        }
-    }
-}
-
 fun getModifierNonDefault(modifier: String) = if (modifier != DEFAULT_MODIFIER) modifier else ""
 
 private val LOG_TAG = Utils::class.simpleName!!
@@ -375,3 +339,15 @@ fun getSearchLinkText(
 ): CharSequence = SpannableStringBuilder().inSpans(object : ClickableSpan() {
     override fun onClick(view: View) = start(activityToStart, type, text)
 }) { append(text) }
+
+
+internal fun RequestCreator.into(target: ImageView, onSuccess: () -> Unit) {
+    return into(target, object : Callback {
+        override fun onSuccess() = onSuccess()
+        override fun onError(e: Exception) = throw e
+    })
+}
+
+
+fun @receiver:ColorInt Int.darken(ratio: Float) = ColorUtils.blendARGB(this, Color.BLACK, ratio)
+fun @receiver:ColorInt Int.lighten(ratio: Float) = ColorUtils.blendARGB(this, Color.WHITE, ratio)

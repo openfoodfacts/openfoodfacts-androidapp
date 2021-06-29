@@ -800,11 +800,11 @@
     <string name="changelog_translation_help">crwdns179470:0%scrwdne179470:0</string>
     <string name="whats_new">crwdns179472:0crwdne179472:0</string>
     <!-- New onboarding slides -->
-    <string name="eco_score_slide_4_title">crwdns181760:0crwdne181760:0</string>
-    <string name="join_the_food_revolution">crwdns181762:0crwdne181762:0</string>
-    <string name="slide_1_text_revolution">crwdns181764:0crwdne181764:0</string>
-    <string name="get_the_nutri_score">crwdns181766:0crwdne181766:0</string>
-    <string name="synthesis_of_nutrition_slide_2_text">crwdns181768:0crwdne181768:0</string>
-    <string name="avoid_ultra_processed_foods">crwdns181770:0crwdne181770:0</string>
-    <string name="nova_slide_3_text">crwdns181772:0crwdne181772:0</string>
+    <string name="title_welcome_ecoscore">crwdns181760:0crwdne181760:0</string>
+    <string name="title_welcome_intro">crwdns181762:0crwdne181762:0</string>
+    <string name="msg_welcome_intro">crwdns181764:0crwdne181764:0</string>
+    <string name="title_welcome_nutriscore">crwdns181766:0crwdne181766:0</string>
+    <string name="msg_welcome_nutriscore">crwdns181768:0crwdne181768:0</string>
+    <string name="title_welcome_nova">crwdns181770:0crwdne181770:0</string>
+    <string name="msg_welcome_nova">crwdns181772:0crwdne181772:0</string>
 </resources>

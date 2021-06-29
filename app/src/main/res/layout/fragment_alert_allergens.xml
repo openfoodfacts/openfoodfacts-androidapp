@@ -33,6 +33,7 @@
 
 
         <Button
+            android:enabled="false"
             android:id="@+id/btn_add"
             style="@style/ButtonBorder"
             android:layout_width="0dp"

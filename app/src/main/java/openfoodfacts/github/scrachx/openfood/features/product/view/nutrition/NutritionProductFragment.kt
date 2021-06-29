@@ -41,6 +41,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
 import androidx.core.text.bold
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.afollestad.materialdialogs.MaterialDialog
@@ -48,7 +49,8 @@ import com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_SHORT
 import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
-import io.reactivex.rxkotlin.addTo
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.rx2.await
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OBF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
@@ -591,7 +593,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
         }
 
         // Load to server
-        client.postImg(image).subscribe().addTo(disp)
+        lifecycleScope.launch { client.postImg(image).await() }
 
         // Load into view
         binding.addPhotoLabel.visibility = GONE

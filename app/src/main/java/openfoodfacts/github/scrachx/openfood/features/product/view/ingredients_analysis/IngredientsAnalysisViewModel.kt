@@ -6,7 +6,6 @@ import androidx.lifecycle.liveData
 import androidx.lifecycle.switchMap
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.rx2.await
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import javax.inject.Inject
@@ -21,7 +20,7 @@ class IngredientsAnalysisViewModel @Inject constructor(
     val ingredients = product.switchMap { product ->
         liveData(Dispatchers.IO) {
             try {
-                api.getIngredients(product).await().let { emit(it) }
+                emit(api.getIngredients(product))
             } catch (err: Exception) {
                 emit(null)
             }
