@@ -802,11 +802,11 @@
     <string name="changelog_translation_help">Vuoi vedere questo log delle modifiche in %s?\nUnisciti al team di traduzione!</string>
     <string name="whats_new">Cosa c\'è di nuovo con Open Food Facts?</string>
     <!-- New onboarding slides -->
-    <string name="eco_score_slide_4_title">Eco-Score</string>
-    <string name="join_the_food_revolution">Unisciti alla rivoluzione alimentare</string>
-    <string name="slide_1_text_revolution">Scansiona gli alimenti, scatta foto, aiuta a trasformare il sistema alimentare</string>
-    <string name="get_the_nutri_score">Ottieni il Nutri-Score</string>
-    <string name="synthesis_of_nutrition_slide_2_text">Una semplice sintesi delle qualità nutrizionali dei tuoi alimenti</string>
-    <string name="avoid_ultra_processed_foods">Evita gli alimenti ultra-processati</string>
-    <string name="nova_slide_3_text">Riduci la quantità di alimenti ultra-processati nella tua dieta.</string>
+    <string name="title_welcome_ecoscore">Eco-Score</string>
+    <string name="title_welcome_intro">Unisciti alla rivoluzione alimentare</string>
+    <string name="msg_welcome_intro">Scansiona gli alimenti, scatta foto, aiuta a trasformare il sistema alimentare</string>
+    <string name="title_welcome_nutriscore">Ottieni il Nutri-Score</string>
+    <string name="msg_welcome_nutriscore">Una semplice sintesi delle qualità nutrizionali dei tuoi alimenti</string>
+    <string name="title_welcome_nova">Evita gli alimenti ultra-processati</string>
+    <string name="msg_welcome_nova">Riduci la quantità di alimenti ultra-processati nella tua dieta.</string>
 </resources>

@@ -22,7 +22,7 @@
         android:layout_centerHorizontal="true"
         android:gravity="center_horizontal"
         android:padding="20dp"
-        android:text="@string/eco_score_slide_4_title"
+        android:text="@string/title_welcome_ecoscore"
         android:textColor="@android:color/white"
         android:textSize="20sp"
         android:textStyle="bold" />
@@ -36,7 +36,7 @@
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:gravity="center_horizontal"
-        android:text="@string/welcome_slide_ecoscore_desc"
+        android:text="@string/msg_welcome_ecoscore"
         android:textAlignment="center"
         android:textColor="@android:color/white"
         android:textSize="@dimen/slide_desc" />

@@ -27,7 +27,6 @@ import android.view.WindowManager
 import android.widget.TextView
 import androidx.core.content.edit
 import androidx.core.content.res.ResourcesCompat
-import androidx.core.text.HtmlCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
@@ -60,7 +59,6 @@ class WelcomeActivity : BaseActivity() {
     private lateinit var prefManager: PrefManager
 
     private val screens = WelcomeScreen.values()
-
 
     @Inject
     lateinit var matomoAnalytics: MatomoAnalytics
@@ -160,7 +158,7 @@ class WelcomeActivity : BaseActivity() {
         binding.layoutDots.removeAllViews()
         val dots = (0..screens.lastIndex).map {
             TextView(this).apply {
-                text = HtmlCompat.fromHtml("&#8226;", HtmlCompat.FROM_HTML_MODE_COMPACT)
+                text = "\u2022"
                 textSize = 35f
                 setTextColor(WelcomeScreen[currentPage].color.lighten(0.85f))
                 binding.layoutDots.addView(this)
