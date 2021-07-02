@@ -17,7 +17,7 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.rxkotlin.toObservable
 import io.reactivex.schedulers.Schedulers
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.rx2.await
 import kotlinx.coroutines.rx2.rxCompletable
 import kotlinx.coroutines.rx2.rxSingle
@@ -62,13 +62,15 @@ class OpenFoodAPIClient @Inject constructor(
 ) {
     private var historySyncDisp = CompositeDisposable()
 
-    fun getProductStateFull(
+    suspend fun getProductStateFull(
         barcode: String,
         fields: String = getAllFields(),
         userAgent: String = Utils.HEADER_USER_AGENT_SEARCH
-    ): Single<ProductState> {
+    ): ProductState {
         sentryAnalytics.setBarcode(barcode)
-        return rawApi.getProductByBarcode(barcode, fields, localeManager.getLanguage(), getUserAgent(userAgent))
+        return withContext(IO) {
+            rawApi.getProductByBarcode(barcode, fields, localeManager.getLanguage(), getUserAgent(userAgent)).await()
+        }
     }
 
     suspend fun getProductsByBarcode(
@@ -115,7 +117,7 @@ class OpenFoodAPIClient @Inject constructor(
      *
      * @param barcode product barcode
      */
-    fun getProductImages(barcode: String): Single<ProductState> = rxSingle(Dispatchers.IO) {
+    fun getProductImages(barcode: String): Single<ProductState> = rxSingle(IO) {
         val fields = Keys.PRODUCT_IMAGES_FIELDS.toMutableSet().also {
             it += Keys.lcProductNameKey(localeManager.getLanguage())
         }.joinToString(",")
@@ -164,7 +166,7 @@ class OpenFoodAPIClient @Inject constructor(
      * @param barcode
      * @return a list of product ingredients (can be empty)
      */
-    suspend fun getIngredients(product: Product) = withContext(Dispatchers.IO) {
+    suspend fun getIngredients(product: Product) = withContext(IO) {
         // TODO: This or the field inside Product.kt?
         val productState = rawApi.getIngredientsByBarcode(product.code)
 
@@ -225,7 +227,7 @@ class OpenFoodAPIClient @Inject constructor(
     /**
      * Add a product to ScanHistory asynchronously
      */
-    fun addToHistory(product: Product) = rxCompletable(Dispatchers.IO) {
+    fun addToHistory(product: Product) = rxCompletable(IO) {
         daoSession.historyProductDao.addToHistorySync(product, localeManager.getLanguage())
     }
 
@@ -238,7 +240,7 @@ class OpenFoodAPIClient @Inject constructor(
      *
      * @return ListenableFuture
      */
-    suspend fun uploadOfflineImages() = withContext(Dispatchers.IO) {
+    suspend fun uploadOfflineImages() = withContext(IO) {
         daoSession.toUploadProductDao.queryBuilder()
             .where(ToUploadProductDao.Properties.Uploaded.eq(false))
             .list()
@@ -327,7 +329,7 @@ class OpenFoodAPIClient @Inject constructor(
             }
     }
 
-    suspend fun editImage(code: String, imgMap: MutableMap<String, String>) = withContext(Dispatchers.IO) {
+    suspend fun editImage(code: String, imgMap: MutableMap<String, String>) = withContext(IO) {
         rawApi.editImages(code, addUserInfo(imgMap))
     }
 
@@ -336,7 +338,7 @@ class OpenFoodAPIClient @Inject constructor(
      *
      * @param code code of the product
      */
-    suspend fun unSelectImage(code: String, field: ProductImageField, language: String) = withContext(Dispatchers.IO) {
+    suspend fun unSelectImage(code: String, field: ProductImageField, language: String) = withContext(IO) {
         val imgMap = hashMapOf(IMAGE_STRING_ID to getImageStringKey(field, language))
         return@withContext rawApi.unSelectImage(code, addUserInfo(imgMap))
     }
@@ -431,7 +433,7 @@ class OpenFoodAPIClient @Inject constructor(
         val MIME_TEXT: MediaType = MediaType.get("text/plain")
         const val PNG_EXT = ".png"
 
-        suspend fun HistoryProductDao.addToHistory(newProd: OfflineSavedProduct): Unit = withContext(Dispatchers.IO) {
+        suspend fun HistoryProductDao.addToHistory(newProd: OfflineSavedProduct): Unit = withContext(IO) {
             val savedProduct: HistoryProduct? =
                 queryBuilder().where(HistoryProductDao.Properties.Barcode.eq(newProd.barcode)).unique()
             val details = newProd.productDetails
@@ -455,7 +457,7 @@ class OpenFoodAPIClient @Inject constructor(
          * Add a product to ScanHistory synchronously
          */
         suspend fun HistoryProductDao.addToHistorySync(product: Product, language: String): Unit =
-            withContext(Dispatchers.IO) {
+            withContext(IO) {
 
                 val historyProducts: HistoryProduct? = queryBuilder()
                     .where(HistoryProductDao.Properties.Barcode.eq(product.code))

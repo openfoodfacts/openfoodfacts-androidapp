@@ -69,6 +69,7 @@ import openfoodfacts.github.scrachx.openfood.features.compare.ProductCompareActi
 import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.selectNavigationItem
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity
+import openfoodfacts.github.scrachx.openfood.features.product.view.IProductView
 import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewActivity.ShowIngredientsAction
 import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewFragment
 import openfoodfacts.github.scrachx.openfood.features.product.view.ingredients_analysis.IngredientsWithTagDialogFragment
@@ -97,7 +98,7 @@ import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class ContinuousScanActivity : BaseActivity() {
+class ContinuousScanActivity : BaseActivity(), IProductView {
     private var _binding: ActivityContinuousScanBinding? = null
     internal val binding get() = _binding!!
 
@@ -210,9 +211,7 @@ class ContinuousScanActivity : BaseActivity() {
             binding.quickViewProgressText.text = getString(R.string.loading_product, barcode)
 
             val productState = try {
-                withContext(Dispatchers.IO) {
-                    client.getProductStateFull(barcode, userAgent = Utils.HEADER_USER_AGENT_SCAN).await()
-                }
+                client.getProductStateFull(barcode, userAgent = Utils.HEADER_USER_AGENT_SCAN)
             } catch (err: Exception) {
                 // A network error happened
                 if (err is IOException) {
@@ -781,7 +780,7 @@ class ContinuousScanActivity : BaseActivity() {
         quickViewBehavior.state = BottomSheetBehavior.STATE_HIDDEN
     }
 
-    fun showIngredientsTab(action: ShowIngredientsAction) {
+    override fun showIngredientsTab(action: ShowIngredientsAction) {
         quickViewBehavior.state = BottomSheetBehavior.STATE_EXPANDED
         productViewFragment?.showIngredientsTab(action)
     }
@@ -803,6 +802,7 @@ class ContinuousScanActivity : BaseActivity() {
                 return true
             }
             lastBarcode = barcodeText
+
             textView.visibility = View.GONE
             setShownProduct(barcodeText)
             return true

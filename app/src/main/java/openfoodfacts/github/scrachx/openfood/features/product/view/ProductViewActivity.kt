@@ -29,10 +29,7 @@ import androidx.preference.PreferenceManager
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.rx2.await
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OBF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OPF
@@ -46,6 +43,8 @@ import openfoodfacts.github.scrachx.openfood.features.listeners.OnRefreshListene
 import openfoodfacts.github.scrachx.openfood.features.product.ProductFragmentPagerAdapter
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_STATE
+import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewActivity.ShowIngredientsAction.PERFORM_OCR
+import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewActivity.ShowIngredientsAction.SEND_UPDATED
 import openfoodfacts.github.scrachx.openfood.features.product.view.contributors.ContributorsFragment
 import openfoodfacts.github.scrachx.openfood.features.product.view.environment.EnvironmentProductFragment
 import openfoodfacts.github.scrachx.openfood.features.product.view.ingredients.IngredientsProductFragment
@@ -65,7 +64,7 @@ import org.greenrobot.eventbus.Subscribe
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class ProductViewActivity : BaseActivity(), OnRefreshListener {
+class ProductViewActivity : BaseActivity(), IProductView, OnRefreshListener {
     private var _binding: ActivityProductBinding? = null
     private val binding get() = _binding!!
 
@@ -74,8 +73,6 @@ class ProductViewActivity : BaseActivity(), OnRefreshListener {
 
     @Inject
     lateinit var sharedPreferences: SharedPreferences
-
-    private val disp = CompositeDisposable()
 
     private var productState: ProductState? = null
     private var adapterResult: ProductFragmentPagerAdapter? = null
@@ -115,33 +112,26 @@ class ProductViewActivity : BaseActivity(), OnRefreshListener {
         super.onStop()
     }
 
-    override fun onDestroy() {
-        disp.dispose()
-        super.onDestroy()
-    }
-
     /**
      * Get the product data from the barcode. This takes the barcode and retrieves the information.
      *
      * @param barcode from the URL.
      */
-    private fun fetchProduct(barcode: String) = client.getProductStateFull(barcode, Utils.HEADER_USER_AGENT_SCAN)
-        .observeOn(AndroidSchedulers.mainThread())
-        .doOnError {
-            Log.w(this::class.simpleName, "Failed to load product $barcode.", it)
-            finish()
-        }
+    private suspend fun fetchProduct(barcode: String) = try {
+        client.getProductStateFull(barcode, Utils.HEADER_USER_AGENT_SCAN)
+    } catch (err: Exception) {
+        Log.w(this::class.simpleName, "Failed to load product $barcode.", err)
+        finish()
+        null
+    }
 
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == LOGIN_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
-            // Open product editing after successful login
-            Intent(this@ProductViewActivity, ProductEditActivity::class.java).apply {
-                putExtra(ProductEditActivity.KEY_EDIT_PRODUCT, productState!!.product)
-                startActivity(this)
-            }
 
+        // Open product editing after successful login
+        if (requestCode == LOGIN_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
+            ProductEditActivity.start(this, productState!!.product!!)
         }
     }
 
@@ -176,17 +166,17 @@ class ProductViewActivity : BaseActivity(), OnRefreshListener {
     }
 
 
-    fun showIngredientsTab(action: ShowIngredientsAction) {
+    override fun showIngredientsTab(action: ShowIngredientsAction) {
         if (adapterResult == null || adapterResult!!.itemCount == 0) return
 
         for (i in 0 until adapterResult!!.itemCount) {
             val fragment = adapterResult!!.createFragment(i)
+
             if (fragment is IngredientsProductFragment) {
                 binding.pager.currentItem = i
-                if (action == ShowIngredientsAction.PERFORM_OCR) {
-                    fragment.extractIngredients()
-                } else if (action == ShowIngredientsAction.SEND_UPDATED) {
-                    fragment.changeIngImage()
+                when (action) {
+                    PERFORM_OCR -> fragment.extractIngredients()
+                    SEND_UPDATED -> fragment.changeIngImage()
                 }
                 return
             }
@@ -211,7 +201,7 @@ class ProductViewActivity : BaseActivity(), OnRefreshListener {
 
             // Fetch product from server, then initialize views
             lifecycleScope.launch {
-                val pState = fetchProduct(barcode).await()
+                val pState = fetchProduct(barcode) ?: return@launch
 
                 productState = pState
                 intent.putExtra(KEY_STATE, pState)
