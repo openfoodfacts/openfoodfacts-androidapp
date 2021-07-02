@@ -15,6 +15,7 @@ import openfoodfacts.github.scrachx.openfood.databinding.ActivitySplashBinding
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.features.welcome.WelcomeActivity
 import pl.aprilapps.easyphotopicker.EasyImage
+import kotlin.time.ExperimentalTime
 
 class SplashActivity : BaseActivity() {
     private val binding by lazy { ActivitySplashBinding.inflate(layoutInflater) }
@@ -25,6 +26,7 @@ class SplashActivity : BaseActivity() {
         SplashController(getSharedPreferences("prefs", 0), this, this)
     }
 
+    @ExperimentalTime
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
