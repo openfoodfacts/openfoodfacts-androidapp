@@ -33,7 +33,6 @@ import android.view.View
 import android.widget.EditText
 import android.widget.SearchView
 import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.app.ActivityCompat
@@ -456,10 +455,6 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
         }
         binding.toolbarInclude.toolbar.title = BuildConfig.APP_NAME
     }
-
-
-    val requestCameraThenOpenScan = registerForActivityResult(ActivityResultContracts.RequestPermission())
-    { granted -> if (granted) startScanActivity() }
 
     private fun checkThenStartScanActivity() {
         if (ContextCompat.checkSelfPermission(this@MainActivity, Manifest.permission.CAMERA) !=
