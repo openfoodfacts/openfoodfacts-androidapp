@@ -39,11 +39,8 @@ import com.hootsuite.nachos.validator.ChipifyingNachoValidator
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.rx2.await
 import kotlinx.coroutines.rx2.awaitSingleOrNull
-import kotlinx.coroutines.withContext
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OBF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OPF
@@ -364,7 +361,7 @@ class EditOverviewFragment : ProductEditFragment() {
             binding.btnEditImgFront.visibility = View.INVISIBLE
             picasso
                 .load(imageFrontUrl)
-                .resize(requireContext().dpsToPixel(50), requireContext().dpsToPixel(50))
+                .resize(requireContext().dpsToPixel(50).toInt(), requireContext().dpsToPixel(50).toInt())
                 .centerInside()
                 .into(binding.imgFront, object : Callback {
                     override fun onSuccess() = frontImageLoaded()
@@ -591,9 +588,7 @@ class EditOverviewFragment : ProductEditFragment() {
                 binding.name.isActivated = false
 
                 val productState = try {
-                    withContext(Dispatchers.IO) {
-                        client.getProductStateFull(product!!.code, fields).await()
-                    }
+                    client.getProductStateFull(product!!.code, fields)
                 } catch (err: Exception) {
                     Log.e(EditOverviewFragment::class.simpleName, "Error retrieving product state from server api.", err)
                     binding.name.setText(StringUtils.EMPTY)

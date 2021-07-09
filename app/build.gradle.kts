@@ -21,7 +21,7 @@ plugins {
     id("kotlin-parcelize")
     id("kotlin-kapt")
     id("dagger.hilt.android.plugin")
-    id("org.jetbrains.dokka") version "1.4.32"
+    id("org.jetbrains.dokka") version "1.5.0"
 }
 
 fun obtainTestBuildType(): String {
@@ -172,7 +172,7 @@ dependencies {
 
     // Unit Testing
     testImplementation("junit:junit:4.13.2")
-    testImplementation("org.robolectric:robolectric:4.5.1")
+    testImplementation("org.robolectric:robolectric:4.6.1")
     testImplementation("org.mockito:mockito-core:3.11.2")
     testImplementation("net.javacrumbs.json-unit:json-unit-fluent:2.27.0")
     testImplementation("com.google.truth:truth:1.1.3")

@@ -20,6 +20,7 @@ import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
 import android.os.Bundle
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import dagger.hilt.EntryPoints
@@ -30,6 +31,9 @@ import openfoodfacts.github.scrachx.openfood.utils.MY_PERMISSIONS_REQUEST_CAMERA
 import openfoodfacts.github.scrachx.openfood.utils.getLoginPreferences
 
 abstract class BaseActivity : AppCompatActivity() {
+
+    protected val requestCameraThenOpenScan = registerForActivityResult(ActivityResultContracts.RequestPermission())
+    { if (it) startScanActivity() }
 
     override fun attachBaseContext(newBase: Context) {
         val lm = EntryPoints.get(newBase.applicationContext, AppEntryPoint::class.java).localeManager()
@@ -58,7 +62,8 @@ abstract class BaseActivity : AppCompatActivity() {
         }
     }
 
-    protected fun startScanActivity() {
+
+    protected open fun startScanActivity() {
         startActivity(Intent(this, ContinuousScanActivity::class.java).apply {
             addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         })

@@ -21,7 +21,6 @@ import android.content.pm.PackageManager
 import android.os.Build
 import android.text.SpannableStringBuilder
 import android.util.Log
-import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -57,29 +56,33 @@ import pl.aprilapps.easyphotopicker.EasyImage
 import java.io.File
 
 class ProductCompareAdapter(
-        private val productsToCompare: List<Product>,
-        internal val activity: Activity,
-        private val client: OpenFoodAPIClient,
-        private val productRepository: ProductRepository,
-        private val picasso: Picasso,
-        private val language: String,
-) : RecyclerView.Adapter<ProductComparisonViewHolder>() {
+    private val productsToCompare: List<Product>,
+    internal val activity: Activity,
+    private val client: OpenFoodAPIClient,
+    private val productRepository: ProductRepository,
+    private val picasso: Picasso,
+    private val language: String,
+) : RecyclerView.Adapter<ProductCompareAdapter.ViewHolder>() {
     private val addProductButton = activity.findViewById<Button>(R.id.product_comparison_button)
 
     private val disp = CompositeDisposable()
-    private val viewHolders = mutableListOf<ProductComparisonViewHolder>()
+    private val viewHolders = mutableListOf<ViewHolder>()
 
     private var onPhotoReturnPosition: Int? = null
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductComparisonViewHolder {
-        val binding = ProductComparisonListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        val viewHolder = ProductComparisonViewHolder(binding)
-        viewHolders.add(viewHolder)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val binding = ProductComparisonListItemBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        )
+        val viewHolder = ViewHolder(binding)
+        viewHolders += viewHolder
 
         return viewHolder
     }
 
-    override fun onBindViewHolder(holder: ProductComparisonViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         if (productsToCompare.isEmpty()) {
             holder.binding.productComparisonListItemLayout.visibility = View.GONE
             return
@@ -112,13 +115,13 @@ class ProductCompareAdapter(
         holder.binding.productComparisonImage.setOnClickListener {
             if (imageUrl != null) {
                 FullScreenActivityOpener.openForUrl(
-                        activity,
-                        client,
-                        product,
-                        ProductImageField.FRONT,
-                        imageUrl,
-                        holder.binding.productComparisonImage,
-                        language
+                    activity,
+                    client,
+                    product,
+                    ProductImageField.FRONT,
+                    imageUrl,
+                    holder.binding.productComparisonImage,
+                    language
                 )
             } else {
                 // take a picture
@@ -153,9 +156,9 @@ class ProductCompareAdapter(
         // Quantity
         if (!product.quantity.isNullOrBlank()) {
             holder.binding.productComparisonQuantity.text = SpannableStringBuilder()
-                    .bold { append(activity.getString(R.string.compare_quantity)) }
-                    .append(" ")
-                    .append(product.quantity)
+                .bold { append(activity.getString(R.string.compare_quantity)) }
+                .append(" ")
+                .append(product.quantity)
         } else {
             holder.binding.productComparisonQuantity.visibility = View.INVISIBLE
         }
@@ -164,9 +167,9 @@ class ProductCompareAdapter(
         val brands = product.brands
         if (!brands.isNullOrBlank()) {
             holder.binding.productComparisonBrand.text = SpannableStringBuilder()
-                    .bold { append(activity.getString(R.string.compare_brands)) }
-                    .append(" ")
-                    .append(brands.split(",").joinToString(", ") { it.trim() })
+                .bold { append(activity.getString(R.string.compare_brands)) }
+                .append(" ")
+                .append(brands.split(",").joinToString(", ") { it.trim() })
         } else {
             //TODO: product brand placeholder goes here
         }
@@ -186,7 +189,7 @@ class ProductCompareAdapter(
             holder.binding.productComparisonTextNutrientTxt.text = activity.getString(R.string.txtNutrientLevel100g)
             holder.binding.productComparisonListNutrientLevels.visibility = View.VISIBLE
             holder.binding.productComparisonListNutrientLevels.layoutManager = LinearLayoutManager(activity)
-            holder.binding.productComparisonListNutrientLevels.adapter = NutrientLevelListAdapter(activity, loadLevelItems(product))
+            holder.binding.productComparisonListNutrientLevels.adapter = NutrientLevelListAdapter(activity, getLevelItems(product))
         } else {
             holder.binding.productComparisonScoresLayout.visibility = View.GONE
             holder.binding.productComparisonNutrientCv.visibility = View.GONE
@@ -220,35 +223,35 @@ class ProductCompareAdapter(
         }
     }
 
-    private fun loadAdditives(product: Product, view: TextView) {
-        product.additivesTags.toObservable()
-                .flatMapSingle { tag ->
-                    productRepository.getAdditiveByTagAndLanguageCode(tag, language)
-                            .flatMap { categoryName ->
-                                if (categoryName.isNull) {
-                                    productRepository.getAdditiveByTagAndDefaultLanguageCode(tag)
-                                } else Single.just(categoryName)
-                            }
-                }
-                .filter { it.isNotNull }
-                .toList()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .doOnError { Log.e(ProductCompareAdapter::class.simpleName, "loadAdditives", it) }
-                .subscribe { additives ->
-                    if (additives.isNotEmpty()) {
-                        view.text = SpannableStringBuilder()
-                            .bold { append(activity.getString(R.string.compare_additives)) }
-                            .append("\n")
-                            .append(additives.joinToString("\n") { it.name })
-                        setMaxCardHeight()
-                    }
-                }.addTo(disp)
-    }
-
     override fun getItemCount() = productsToCompare.count()
 
-    private fun loadLevelItems(product: Product): List<NutrientLevelItem> {
+    private fun loadAdditives(product: Product, view: TextView) {
+        product.additivesTags.toObservable()
+            .flatMapSingle { tag ->
+                productRepository.getAdditiveByTagAndLanguageCode(tag, language)
+                    .flatMap { categoryName ->
+                        if (categoryName.isNull) {
+                            productRepository.getAdditiveByTagAndDefaultLanguageCode(tag)
+                        } else Single.just(categoryName)
+                    }
+            }
+            .filter { it.isNotNull }
+            .toList()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnError { Log.e(ProductCompareAdapter::class.simpleName, "loadAdditives", it) }
+            .subscribe { additives ->
+                if (additives.isNotEmpty()) {
+                    view.text = SpannableStringBuilder()
+                        .bold { append(activity.getString(R.string.compare_additives)) }
+                        .append("\n")
+                        .append(additives.joinToString("\n") { it.name })
+                    setMaxCardHeight()
+                }
+            }.addTo(disp)
+    }
+
+    private fun getLevelItems(product: Product): List<NutrientLevelItem> {
         val levelItems = mutableListOf<NutrientLevelItem>()
 
         val nutriments = product.nutriments
@@ -258,51 +261,53 @@ class ProductCompareAdapter(
         var saturatedFat: NutrimentLevel? = null
         var sugars: NutrimentLevel? = null
         var salt: NutrimentLevel? = null
+
         if (nutrientLevels != null) {
             fat = nutrientLevels.fat
             saturatedFat = nutrientLevels.saturatedFat
             sugars = nutrientLevels.sugars
             salt = nutrientLevels.salt
         }
+
         if (fat != null || salt != null || saturatedFat != null || sugars != null) {
             val fatNutriment = nutriments[Nutriments.FAT]
             if (fat != null && fatNutriment != null) {
                 val fatNutrimentLevel = fat.getLocalize(activity)
                 levelItems += NutrientLevelItem(
-                        activity.getString(R.string.compare_fat),
-                        fatNutriment.displayStringFor100g,
-                        fatNutrimentLevel,
-                        fat.getImgRes()
+                    activity.getString(R.string.compare_fat),
+                    fatNutriment.displayStringFor100g,
+                    fatNutrimentLevel,
+                    fat.getImgRes()
                 )
             }
             val saturatedFatNutriment = nutriments[Nutriments.SATURATED_FAT]
             if (saturatedFat != null && saturatedFatNutriment != null) {
                 val saturatedFatLocalize = saturatedFat.getLocalize(activity)
                 levelItems += NutrientLevelItem(
-                        activity.getString(R.string.compare_saturated_fat),
-                        saturatedFatNutriment.displayStringFor100g,
-                        saturatedFatLocalize,
-                        saturatedFat.getImgRes()
+                    activity.getString(R.string.compare_saturated_fat),
+                    saturatedFatNutriment.displayStringFor100g,
+                    saturatedFatLocalize,
+                    saturatedFat.getImgRes()
                 )
             }
             val sugarsNutriment = nutriments[Nutriments.SUGARS]
             if (sugars != null && sugarsNutriment != null) {
                 val sugarsLocalize = sugars.getLocalize(activity)
                 levelItems += NutrientLevelItem(
-                        activity.getString(R.string.compare_sugars),
-                        sugarsNutriment.displayStringFor100g,
-                        sugarsLocalize,
-                        sugars.getImgRes()
+                    activity.getString(R.string.compare_sugars),
+                    sugarsNutriment.displayStringFor100g,
+                    sugarsLocalize,
+                    sugars.getImgRes()
                 )
             }
             val saltNutriment = nutriments[Nutriments.SALT]
             if (salt != null && saltNutriment != null) {
                 val saltLocalize = salt.getLocalize(activity)
                 levelItems += NutrientLevelItem(
-                        activity.getString(R.string.compare_salt),
-                        saltNutriment.displayStringFor100g,
-                        saltLocalize,
-                        salt.getImgRes()
+                    activity.getString(R.string.compare_salt),
+                    saltNutriment.displayStringFor100g,
+                    saltLocalize,
+                    salt.getImgRes()
                 )
             }
         }
@@ -312,10 +317,10 @@ class ProductCompareAdapter(
     fun setImageOnPhotoReturn(file: File) {
         val product = productsToCompare[onPhotoReturnPosition!!]
         val image = ProductImage(
-                product.code,
-                ProductImageField.FRONT,
-                file,
-                language
+            product.code,
+            ProductImageField.FRONT,
+            file,
+            language
         ).apply { filePath = file.absolutePath }
 
         client.postImg(image).subscribe().addTo(disp)
@@ -327,38 +332,33 @@ class ProductCompareAdapter(
 
     private fun setMaxCardHeight() {
         //getting all the heights of CardViews
-        val productDetailsHeight = arrayListOf<Int>()
-        val productNutrientsHeight = arrayListOf<Int>()
-        val productAdditivesHeight = arrayListOf<Int>()
+        val detailsHeights = arrayListOf<Int>()
+        val nutrientsHeights = arrayListOf<Int>()
+        val additivesHeights = arrayListOf<Int>()
         viewHolders.forEach {
-            productDetailsHeight += it.binding.productComparisonDetailsCv.height
-            productNutrientsHeight += it.binding.productComparisonNutrientCv.height
-            productAdditivesHeight += it.binding.productComparisonAdditiveText.height
+            detailsHeights += it.binding.productComparisonDetailsCv.height
+            nutrientsHeights += it.binding.productComparisonNutrientCv.height
+            additivesHeights += it.binding.productComparisonAdditiveText.height
         }
 
         //setting all the heights to be the maximum
-        viewHolders.forEach {
-            it.binding.productComparisonDetailsCv.minimumHeight = productDetailsHeight.maxOrNull()!!
-            it.binding.productComparisonNutrientCv.minimumHeight = productNutrientsHeight.maxOrNull()!!
-            it.binding.productComparisonAdditiveText.height = dpsToPixel(productAdditivesHeight.maxOrNull()!!)
+        viewHolders.forEach { vh ->
+            detailsHeights.maxOrNull()
+                ?.let { vh.binding.productComparisonDetailsCv.minimumHeight = it }
+            nutrientsHeights.maxOrNull()
+                ?.let { vh.binding.productComparisonNutrientCv.minimumHeight = it }
+            additivesHeights.maxOrNull()?.toPx(activity)
+                ?.let { vh.binding.productComparisonAdditiveText.height = it }
         }
     }
 
-    /**
-     * helper method
-     */
-    private fun dpsToPixel(dps: Int) = TypedValue.applyDimension(
-            TypedValue.COMPLEX_UNIT_DIP,
-            dps + 100f,
-            activity.resources.displayMetrics
-    ).toInt()
 
-}
-
-class ProductComparisonViewHolder(
+    class ViewHolder(
         val binding: ProductComparisonListItemBinding
-) : RecyclerView.ViewHolder(binding.root) {
-    init {
-        binding.fullProductButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_fullscreen_blue_18dp, 0, 0, 0)
+    ) : RecyclerView.ViewHolder(binding.root) {
+        init {
+            binding.fullProductButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_fullscreen_blue_18dp, 0, 0, 0)
+        }
     }
 }
+

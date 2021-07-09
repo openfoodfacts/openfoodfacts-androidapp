@@ -7,6 +7,7 @@ import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.os.BatteryManager
 import android.util.Log
+import android.util.TypedValue
 import androidx.preference.PreferenceManager
 import openfoodfacts.github.scrachx.openfood.features.PreferencesFragment
 import kotlin.math.ceil
@@ -41,7 +42,13 @@ fun Context.isLowBatteryMode() = isDisableImageLoad() && isBatteryLevelLow()
 fun Context.isFastAdditionMode(defValue: Boolean = false) = PreferenceManager.getDefaultSharedPreferences(this)
     .getBoolean("fastAdditionMode", defValue)
 
-fun Context.dpsToPixel(dps: Int) = (dps * resources.displayMetrics.density + 0.5f).toInt()
+fun Context.dpsToPixel(dps: Int) = dps.toPx(this)
+
+fun Number.toPx(context: Context) = TypedValue.applyDimension(
+    TypedValue.COMPLEX_UNIT_DIP,
+    this.toFloat(),
+    context.resources.displayMetrics
+).toInt()
 
 /**
  * @return Returns the version name of the app
