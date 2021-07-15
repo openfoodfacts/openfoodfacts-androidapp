@@ -78,7 +78,7 @@ dependencies {
     implementation("androidx.startup:startup-runtime:1.0.0")
 
     // ML Kit barcode Scanner
-    implementation("com.google.mlkit:barcode-scanning:16.1.2")
+    implementation("com.google.mlkit:barcode-scanning:16.2.0")
 
     implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
 
