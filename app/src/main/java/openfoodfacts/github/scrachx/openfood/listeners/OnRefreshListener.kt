@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.features.listeners
+package openfoodfacts.github.scrachx.openfood.listeners
 
 /**
  * Created by Lobster on 19.04.18.

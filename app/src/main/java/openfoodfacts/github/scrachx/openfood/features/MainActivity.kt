@@ -80,8 +80,6 @@ import openfoodfacts.github.scrachx.openfood.features.allergensalert.AllergensAl
 import openfoodfacts.github.scrachx.openfood.features.categories.activity.CategoryActivity
 import openfoodfacts.github.scrachx.openfood.features.changelog.ChangelogDialog
 import openfoodfacts.github.scrachx.openfood.features.compare.ProductCompareActivity
-import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.installBottomNavigation
-import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.selectNavigationItem
 import openfoodfacts.github.scrachx.openfood.features.login.LoginActivity
 import openfoodfacts.github.scrachx.openfood.features.login.LoginActivity.Companion.LoginContract
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity
@@ -92,6 +90,8 @@ import openfoodfacts.github.scrachx.openfood.features.searchbycode.SearchByCodeF
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
 import openfoodfacts.github.scrachx.openfood.jobs.ProductUploaderWorker.Companion.scheduleProductUpload
+import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.installBottomNavigation
+import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.selectNavigationItem
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
