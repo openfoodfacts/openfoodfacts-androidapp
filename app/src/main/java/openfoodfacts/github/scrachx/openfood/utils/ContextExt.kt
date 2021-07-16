@@ -62,3 +62,5 @@ fun Context.getVersionName(): String = try {
     Log.e(LOG_TAG, "getVersionName", e)
     "(version unknown)"
 }
+
+fun Context.isHardwareCameraInstalled() = isHardwareCameraInstalled(this)

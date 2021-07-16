@@ -17,29 +17,20 @@ package openfoodfacts.github.scrachx.openfood.features.compare
 
 import android.Manifest.permission
 import android.app.Activity
-import android.content.pm.PackageManager
+import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.os.Build
 import android.text.SpannableStringBuilder
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.checkSelfPermission
 import androidx.core.text.bold
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.afollestad.materialdialogs.MaterialDialog
 import com.squareup.picasso.Picasso
-import io.reactivex.Single
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.rxkotlin.addTo
-import io.reactivex.rxkotlin.toObservable
-import io.reactivex.schedulers.Schedulers
 import openfoodfacts.github.scrachx.openfood.AppFlavors
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OPF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
@@ -47,28 +38,27 @@ import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.ProductComparisonListItemBinding
 import openfoodfacts.github.scrachx.openfood.features.FullScreenActivityOpener
 import openfoodfacts.github.scrachx.openfood.features.shared.adapters.NutrientLevelListAdapter
-import openfoodfacts.github.scrachx.openfood.images.ProductImage
 import openfoodfacts.github.scrachx.openfood.models.*
+import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveName
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
-import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.*
 import pl.aprilapps.easyphotopicker.EasyImage
 import java.io.File
 
 class ProductCompareAdapter(
-    private val productsToCompare: List<Product>,
+    private val compareProducts: List<ProductCompareViewModel.CompareProduct>,
     internal val activity: Activity,
     private val client: OpenFoodAPIClient,
-    private val productRepository: ProductRepository,
     private val picasso: Picasso,
-    private val language: String,
+    private val language: String
+
 ) : RecyclerView.Adapter<ProductCompareAdapter.ViewHolder>() {
+    var imageReturnedListener: ((Product, File) -> Unit)? = null
+    var fullProductClickListener: ((Product) -> Unit)? = null
+
     private val addProductButton = activity.findViewById<Button>(R.id.product_comparison_button)
-
-    private val disp = CompositeDisposable()
     private val viewHolders = mutableListOf<ViewHolder>()
-
-    private var onPhotoReturnPosition: Int? = null
+    private var imageReturnedPosition: Int? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ProductComparisonListItemBinding.inflate(
@@ -83,7 +73,7 @@ class ProductCompareAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        if (productsToCompare.isEmpty()) {
+        if (compareProducts.isEmpty()) {
             holder.binding.productComparisonListItemLayout.visibility = View.GONE
             return
         }
@@ -95,7 +85,8 @@ class ProductCompareAdapter(
             }
         }
 
-        val product = productsToCompare[position]
+        val compareProduct = compareProducts[position]
+        val product = compareProduct.product
 
         // Set the visibility of UI components
         holder.binding.productComparisonName.visibility = View.VISIBLE
@@ -125,14 +116,17 @@ class ProductCompareAdapter(
                 )
             } else {
                 // take a picture
-                if (ContextCompat.checkSelfPermission(activity, permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-                    ActivityCompat.requestPermissions(activity, arrayOf(permission.CAMERA), MY_PERMISSIONS_REQUEST_CAMERA)
-                } else {
-                    onPhotoReturnPosition = position
-                    if (isHardwareCameraInstalled(activity)) {
-                        EasyImage.openCamera(activity, 0)
-                    } else {
-                        EasyImage.openGallery(activity, 0, false)
+                when {
+                    checkSelfPermission(activity, permission.CAMERA) != PERMISSION_GRANTED -> {
+                        ActivityCompat.requestPermissions(activity, arrayOf(permission.CAMERA), MY_PERMISSIONS_REQUEST_CAMERA)
+                    }
+                    else -> {
+                        imageReturnedPosition = position
+                        if (isHardwareCameraInstalled(activity)) {
+                            EasyImage.openCamera(activity, 0)
+                        } else {
+                            EasyImage.openGallery(activity, 0, false)
+                        }
                     }
                 }
             }
@@ -189,66 +183,31 @@ class ProductCompareAdapter(
             holder.binding.productComparisonTextNutrientTxt.text = activity.getString(R.string.txtNutrientLevel100g)
             holder.binding.productComparisonListNutrientLevels.visibility = View.VISIBLE
             holder.binding.productComparisonListNutrientLevels.layoutManager = LinearLayoutManager(activity)
-            holder.binding.productComparisonListNutrientLevels.adapter = NutrientLevelListAdapter(activity, getLevelItems(product))
+            holder.binding.productComparisonListNutrientLevels.adapter =
+                NutrientLevelListAdapter(activity, getLevelItems(product))
         } else {
             holder.binding.productComparisonScoresLayout.visibility = View.GONE
             holder.binding.productComparisonNutrientCv.visibility = View.GONE
         }
 
         // Additives
-        if (product.additivesTags.isNotEmpty()) loadAdditives(product, holder.binding.productComparisonAdditiveText)
+        if (product.additivesTags.isNotEmpty()) loadAdditives(compareProduct.additiveNames, holder.binding.productComparisonAdditiveText)
 
         // Full product button
-        holder.binding.fullProductButton.setOnClickListener {
-            val barcode = product.code
-            if (Utils.isNetworkConnected(activity)) {
-                Utils.hideKeyboard(activity)
-
-                client.openProduct(barcode, activity)
-            } else {
-                MaterialDialog.Builder(activity).apply {
-                    title(R.string.device_offline_dialog_title)
-                    content(R.string.connectivity_check)
-                    positiveText(R.string.txt_try_again)
-                    negativeText(R.string.dismiss)
-                    onPositive { _, _ ->
-                        if (Utils.isNetworkConnected(activity)) {
-                            client.openProduct(barcode, activity)
-                        } else {
-                            Toast.makeText(activity, R.string.device_offline_dialog_title, Toast.LENGTH_SHORT).show()
-                        }
-                    }
-                }.show()
-            }
-        }
+        holder.binding.fullProductButton.setOnClickListener { fullProductClickListener?.invoke(product) }
     }
 
-    override fun getItemCount() = productsToCompare.count()
+    override fun getItemCount() = compareProducts.count()
 
-    private fun loadAdditives(product: Product, view: TextView) {
-        product.additivesTags.toObservable()
-            .flatMapSingle { tag ->
-                productRepository.getAdditiveByTagAndLanguageCode(tag, language)
-                    .flatMap { categoryName ->
-                        if (categoryName.isNull) {
-                            productRepository.getAdditiveByTagAndDefaultLanguageCode(tag)
-                        } else Single.just(categoryName)
-                    }
-            }
-            .filter { it.isNotNull }
-            .toList()
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnError { Log.e(ProductCompareAdapter::class.simpleName, "loadAdditives", it) }
-            .subscribe { additives ->
-                if (additives.isNotEmpty()) {
-                    view.text = SpannableStringBuilder()
-                        .bold { append(activity.getString(R.string.compare_additives)) }
-                        .append("\n")
-                        .append(additives.joinToString("\n") { it.name })
-                    setMaxCardHeight()
-                }
-            }.addTo(disp)
+    private fun loadAdditives(additiveNames: List<AdditiveName>, view: TextView) {
+        if (additiveNames.isEmpty()) return
+
+        view.text = SpannableStringBuilder()
+            .bold { append(activity.getString(R.string.compare_additives)) }
+            .append("\n")
+            .append(additiveNames.joinToString("\n") { it.name })
+
+        updateCardsHeight()
     }
 
     private fun getLevelItems(product: Product): List<NutrientLevelItem> {
@@ -314,34 +273,28 @@ class ProductCompareAdapter(
         return levelItems
     }
 
-    fun setImageOnPhotoReturn(file: File) {
-        val product = productsToCompare[onPhotoReturnPosition!!]
-        val image = ProductImage(
-            product.code,
-            ProductImageField.FRONT,
-            file,
-            language
-        ).apply { filePath = file.absolutePath }
+    fun onImageReturned(file: File) {
+        val pos = imageReturnedPosition
+        checkNotNull(pos) { "Position null." }
 
-        client.postImg(image).subscribe().addTo(disp)
-
-        product.imageUrl = file.absolutePath
-        onPhotoReturnPosition = null
+        imageReturnedListener?.invoke(compareProducts[pos].product, file)
+        imageReturnedPosition = null
         notifyDataSetChanged()
     }
 
-    private fun setMaxCardHeight() {
-        //getting all the heights of CardViews
+    private fun updateCardsHeight() {
+        // Get all the heights of CardViews
         val detailsHeights = arrayListOf<Int>()
         val nutrientsHeights = arrayListOf<Int>()
         val additivesHeights = arrayListOf<Int>()
+
         viewHolders.forEach {
             detailsHeights += it.binding.productComparisonDetailsCv.height
             nutrientsHeights += it.binding.productComparisonNutrientCv.height
             additivesHeights += it.binding.productComparisonAdditiveText.height
         }
 
-        //setting all the heights to be the maximum
+        // Set all the heights to be the maximum
         viewHolders.forEach { vh ->
             detailsHeights.maxOrNull()
                 ?.let { vh.binding.productComparisonDetailsCv.minimumHeight = it }

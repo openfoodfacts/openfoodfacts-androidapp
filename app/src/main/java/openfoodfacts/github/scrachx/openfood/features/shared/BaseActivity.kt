@@ -21,6 +21,7 @@ import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
 import android.os.Bundle
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.CallSuper
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import dagger.hilt.EntryPoints
@@ -40,6 +41,7 @@ abstract class BaseActivity : AppCompatActivity() {
         super.attachBaseContext(lm.restoreLocalizedContext(newBase))
     }
 
+    @CallSuper
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (resources.getBoolean(R.bool.portrait_only)) {

@@ -5,5 +5,4 @@ import androidx.lifecycle.ViewModel
 
 class LoginActivityViewModel : ViewModel() {
     val canLogIn = MutableLiveData(true)
-
 }

@@ -34,12 +34,12 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import io.reactivex.disposables.CompositeDisposable
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.features.listeners.OnRefreshListener
-import openfoodfacts.github.scrachx.openfood.features.listeners.OnRefreshView
+import openfoodfacts.github.scrachx.openfood.features.listeners.OnRefreshViewListener
 import openfoodfacts.github.scrachx.openfood.models.ProductState
 import pl.aprilapps.easyphotopicker.EasyImage
 import java.io.File
 
-abstract class BaseFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener, OnRefreshView {
+abstract class BaseFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener, OnRefreshViewListener {
 
     private val cameraPermissionRequestLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission())
     { isGranted ->
