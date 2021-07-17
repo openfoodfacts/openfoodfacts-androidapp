@@ -235,7 +235,7 @@
     <string name="select_camera">Камераны тандаңыз</string>
     <string name="ok_button">Макул</string>
     <string name="cancel_button">Жокко чыгаруу</string>
-    <string name="login_button">Username</string>
+    <string name="login_button">Login</string>
     <string name="create_account_button">Катталуу</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Сиздин аллергия жөнүндө маалыматыңыз эч качан Open Food Facts серверине жөнөтүлбөйт. Ошондой эле, өнүмдүн маалыматтары так болбошу жана 100% accurate болбошу үчүн сак болуңуз, андыктан эки жолу текшерип көрүңүз!</string>
     <string name="title_info_dialog">Бул кантип иштейт?</string>
