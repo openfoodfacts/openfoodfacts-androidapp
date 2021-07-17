@@ -24,13 +24,13 @@
     <string name="txtDialogsContent">The product you scanned does not exist yet in Open Pet Food Facts. Please add it.</string>
     <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Pet Food Facts.</string>
     <string name="msg_share">Look at this product on Open Products Facts :</string>
-    <string name="not_support_books">Open Food Facts現不支持書籍</string>
+    <string name="not_support_books">Open Pet Food Facts現不支持書籍</string>
     <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Products Facts</string>
     <string name="Donation">Click here to donate to Open Products Facts</string>
-    <string name="translate_help_title">翻譯Open Food Facts</string>
-    <string name="translate_help_summary">您不須懂得編程，也可以將Open Food Facts翻釋成其他語言</string>
+    <string name="translate_help_title">翻譯Open Pet Food Facts</string>
+    <string name="translate_help_summary">您不須懂得編程，也可以將Open Pet Food Facts翻釋成其他語言</string>
     <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Pet Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Pet Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
     <!-- OPFF tagline in different languages -->
     <string name="version_string">Open Pet Food Facts Android App</string>
     <string name="tagline">free pet food products database</string>

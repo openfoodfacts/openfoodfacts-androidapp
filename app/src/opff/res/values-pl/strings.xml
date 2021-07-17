@@ -23,18 +23,18 @@
     <string name="slide_4_desc">Możesz dodać nowe produkty, nawet nie mając teraz połączenia</string>
     <string name="txtDialogsContent">Zeskanowany produkt jeszcze nie nie został wprowadzony do bazy Open Pet Food Facts. Dodaj go.</string>
     <string name="txtDialogsContentPowerMode">Zeskanowany produkt już jest w Open Pet Food Facts.</string>
-    <string name="msg_share">Zobacz produkt na Open Food Facts:</string>
-    <string name="not_support_books">Open Food Facts obecnie nie obsługuje książek</string>
-    <string name="txt_broaden_search">poszerz zakres wyszukiwania \in- zeskanuj i dodaj do Open Food Facts</string>
+    <string name="msg_share">Zobacz produkt na Open Pet Food Facts:</string>
+    <string name="not_support_books">Open Pet Food Facts obecnie nie obsługuje książek</string>
+    <string name="txt_broaden_search">poszerz zakres wyszukiwania \in- zeskanuj i dodaj do Open Pet Food Facts</string>
     <string name="Donation">Naciśnij, by przekazać darowiznę</string>
-    <string name="translate_help_title">Wspomóż tłumaczenie Open Food Facts</string>
-    <string name="translate_help_summary">Otwórz bazę danych Open Food Facts na swój język - wiedza techniczna nie jest wymagana</string>
+    <string name="translate_help_title">Wspomóż tłumaczenie Open Pet Food Facts</string>
+    <string name="translate_help_summary">Otwórz bazę danych Open Pet Food Facts na swój język - wiedza techniczna nie jest wymagana</string>
     <string name="text_offline_info_dialog">Skanuj produkty nawet w trybie offline, aby później dodać je do Open Pet Food Facts. Zeskanowane produkty pojawią się tutaj i będziesz mógł je wysłać za pomocą przycisku poniżej.</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Twoje informacje o alergiach nigdy nie zostaną wysłane na serwer Open Food Facts. Należy także uważać, że dane produktów mogą nie być dokładne, a wykrywanie może nie być 100% a, więc dokładnie sprawdź sam! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Twoje informacje o alergiach nigdy nie zostaną wysłane na serwer Open Pet Food Facts. Należy także uważać, że dane produktów mogą nie być dokładne, a wykrywanie może nie być 100% a, więc dokładnie sprawdź sam! </string>
     <!-- OPFF tagline in different languages -->
     <string name="version_string">Otwórz Pet Food Facts na Androida</string>
     <string name="tagline">free pet food products database</string>
-    <string name="product_not_found">Zeskanowany produkt %1$s nie istnieje jeszcze w Open Food Facts. Czy możesz go dodać?</string>
+    <string name="product_not_found">Zeskanowany produkt %1$s nie istnieje jeszcze w Open Pet Food Facts. Czy możesz go dodać?</string>
     <string name="currently_on_version">Aktualnie na Open Pet Food Facts</string>
     <string name="category_game_btn">Pomóż kategoryzować produkty</string>
     <string name="add_nutrient_prompt_text">Dodaj wartości odżywcze do obliczenia poziomów składników odżywczych</string>

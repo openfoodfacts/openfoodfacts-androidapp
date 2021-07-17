@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.features.listeners
+package openfoodfacts.github.scrachx.openfood.listeners
 
 import android.Manifest
 import android.app.Activity

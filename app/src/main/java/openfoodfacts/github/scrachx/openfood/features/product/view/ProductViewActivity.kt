@@ -37,9 +37,6 @@ import openfoodfacts.github.scrachx.openfood.AppFlavors.OPFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductBinding
-import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.installBottomNavigation
-import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.selectNavigationItem
-import openfoodfacts.github.scrachx.openfood.features.listeners.OnRefreshListener
 import openfoodfacts.github.scrachx.openfood.features.product.ProductFragmentPagerAdapter
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_STATE
@@ -54,6 +51,9 @@ import openfoodfacts.github.scrachx.openfood.features.product.view.photos.Produc
 import openfoodfacts.github.scrachx.openfood.features.product.view.serverattributes.ServerAttributesFragment
 import openfoodfacts.github.scrachx.openfood.features.product.view.summary.SummaryProductFragment
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
+import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.installBottomNavigation
+import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.selectNavigationItem
+import openfoodfacts.github.scrachx.openfood.listeners.OnRefreshListener
 import openfoodfacts.github.scrachx.openfood.models.ProductState
 import openfoodfacts.github.scrachx.openfood.models.eventbus.ProductNeedsRefreshEvent
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient

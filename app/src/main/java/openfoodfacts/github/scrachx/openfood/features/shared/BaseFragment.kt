@@ -33,8 +33,8 @@ import com.canhub.cropper.CropImage
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import io.reactivex.disposables.CompositeDisposable
 import openfoodfacts.github.scrachx.openfood.R
-import openfoodfacts.github.scrachx.openfood.features.listeners.OnRefreshListener
-import openfoodfacts.github.scrachx.openfood.features.listeners.OnRefreshViewListener
+import openfoodfacts.github.scrachx.openfood.listeners.OnRefreshListener
+import openfoodfacts.github.scrachx.openfood.listeners.OnRefreshViewListener
 import openfoodfacts.github.scrachx.openfood.models.ProductState
 import pl.aprilapps.easyphotopicker.EasyImage
 import java.io.File

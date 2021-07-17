@@ -21,16 +21,16 @@
     <string name="slide_3_desc">Visi kosmētikas izmantojat vienu parocīgiem sarakstu var eksportēt</string>
     <string name="slide_4_title">Darbojas bezsaistē</string>
     <string name="slide_4_desc">Jūs varat pievienot jaunus produktus, pat ja jums pašlaik nav interneta savienojuma</string>
-    <string name="txtDialogsContent">Skenētais produkts vēl nav pieejams Open Food Facts sarakstā. Lūdzu, pievienojiet to.</string>
-    <string name="txtDialogsContentPowerMode">Jūsu skenētais produkts jau pastāvOpen Food Facts.</string>
-    <string name="msg_share">Apskatiet šo produktu, izmantojot Open Food Facts:</string>
-    <string name="not_support_books">Open Food Facts pašlaik neatbalsta grāmatas</string>
-    <string name="txt_broaden_search">- paplašināt meklēšanu \ n- skenēt un pievienot to Open Food Facts</string>
-    <string name="Donation">Noklikšķiniet šeit, lai ziedotu Open Food Facts</string>
+    <string name="txtDialogsContent">Skenētais produkts vēl nav pieejams Open Pet Food Facts sarakstā. Lūdzu, pievienojiet to.</string>
+    <string name="txtDialogsContentPowerMode">Jūsu skenētais produkts jau pastāvOpen Pet Food Facts.</string>
+    <string name="msg_share">Apskatiet šo produktu, izmantojot Open Pet Food Facts:</string>
+    <string name="not_support_books">Open Pet Food Facts pašlaik neatbalsta grāmatas</string>
+    <string name="txt_broaden_search">- paplašināt meklēšanu \ n- skenēt un pievienot to Open Pet Food Facts</string>
+    <string name="Donation">Noklikšķiniet šeit, lai ziedotu Open Pet Food Facts</string>
     <string name="translate_help_title">Palīdziet tulkot \"open Food Facts\"</string>
-    <string name="translate_help_summary">Iegūstiet Open Food Facts savā valodāaaaaaa a- tehniskās zināšanas nav nepieciešamas</string>
+    <string name="translate_help_summary">Iegūstiet Open Pet Food Facts savā valodāaaaaaa a- tehniskās zināšanas nav nepieciešamas</string>
     <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Pet Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Pet Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
     <!-- OPFF tagline in different languages -->
     <string name="version_string">Open Pet Food Facts Android App</string>
     <string name="tagline">free pet food products database</string>

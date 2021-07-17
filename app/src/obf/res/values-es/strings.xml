@@ -22,7 +22,7 @@
     <string name="slide_4_title">Funciona sin conexión</string>
     <string name="slide_4_desc">Puedes agregar nuevos productos, incluso si no tienes una conexión de Internet al momento</string>
     <string name="txtDialogsContent">El producto que escaneó aún no existe en Open Beauty Facts. Por favor agrégalo.</string>
-    <string name="msg_share">Mira este producto en Open Food Facts :</string>
+    <string name="msg_share">Mira este producto en Open Beauty Facts :</string>
     <string name="txt_broaden_search">- ampliando tu búsqueda \n- escanea y añádelo a Open Beauty Facts</string>
     <string name="Donation">Haz clic aquí para donar a Open Beauty Facts</string>
     <string name="translate_help_title">Ayuda a traducir Open Beauty Facts</string>
@@ -41,9 +41,9 @@
     <string name="required_to_compute_nutriscore"></string>
     <string name="txt_eaten_products">Productos que poseo</string>
     <string name="txt_products_to_buy">Productos para comprar</string>
-    <string name="intent_filter_share_label">Añadir a Open Food Facts</string>
+    <string name="intent_filter_share_label">Añadir a Open Beauty Facts</string>
     <string name="brand_hint">Ejemplos: Nivea, L\'Oréal, etc…</string>
     <string name="txt_info_eaten_products">Podrás añadir productos a esta lista escaneando productos, arrastrando la tarjeta del producto y pulsando \"Productos a comprar\".
         También podrás añadir productos a esta lista buscando y haciendo clic en el botón + en la parte superior derecha de la página del producto.</string>
-    <string name="OFFlogo">Logotipo de Open Food Facts</string>
+    <string name="OFFlogo">Logotipo de Open Beauty Facts</string>
 </resources>

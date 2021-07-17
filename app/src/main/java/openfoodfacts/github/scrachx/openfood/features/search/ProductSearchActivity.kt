@@ -37,12 +37,12 @@ import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductBrowsingListBinding
 import openfoodfacts.github.scrachx.openfood.features.adapters.ProductSearchAdapter
-import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.installBottomNavigation
-import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.selectNavigationItem
-import openfoodfacts.github.scrachx.openfood.features.listeners.EndlessRecyclerViewScrollListener
-import openfoodfacts.github.scrachx.openfood.features.listeners.RecyclerItemClickListener
 import openfoodfacts.github.scrachx.openfood.features.scan.ContinuousScanActivity
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
+import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.installBottomNavigation
+import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.selectNavigationItem
+import openfoodfacts.github.scrachx.openfood.listeners.EndlessRecyclerViewScrollListener
+import openfoodfacts.github.scrachx.openfood.listeners.RecyclerItemClickListener
 import openfoodfacts.github.scrachx.openfood.models.Search
 import openfoodfacts.github.scrachx.openfood.models.SearchInfo
 import openfoodfacts.github.scrachx.openfood.models.SearchProduct
