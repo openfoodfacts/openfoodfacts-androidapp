@@ -192,7 +192,7 @@
     <string name="txtSugars">Azucres</string>
     <string name="hintBarcode">Código de barras</string>
     <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
-    <string name="hintLogin">Username</string>
+    <string name="hintLogin">Login</string>
     <string name="hintPass">Contrasinal</string>
     <string name="errorLogin">Erro de acceso ou do contrasinal</string>
     <string name="errorWeb">Non fomos quen de acceder a internet. Ten problemas de conexión?</string>

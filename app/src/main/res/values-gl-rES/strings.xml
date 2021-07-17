@@ -187,7 +187,7 @@
     <string name="hintBarcode">Código de barras</string>
     <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
     <string name="txtloginHelper">If you have an Open Food Facts account, you can login here with it</string>
-    <string name="hintLogin">Username</string>
+    <string name="hintLogin">Login</string>
     <string name="hintPass">Contrasinal</string>
     <string name="errorLogin">Erro de acceso ou do contrasinal</string>
     <string name="errorWeb">Non fomos quen de acceder a internet. Ten problemas de conexión?</string>

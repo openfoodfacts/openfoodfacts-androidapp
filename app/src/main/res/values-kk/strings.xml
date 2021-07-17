@@ -192,7 +192,7 @@
     <string name="txtSugars">Sugars</string>
     <string name="hintBarcode">Штрих-код</string>
     <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
-    <string name="hintLogin">Username</string>
+    <string name="hintLogin">Login</string>
     <string name="hintPass">Құпиясөз</string>
     <string name="errorLogin">Аты немесе құпиясөзі қате</string>
     <string name="errorWeb">Біз Ғаламторға қол жеткізе алдмадық. Сізде қосылу жағынан қиындық бар ма?</string>

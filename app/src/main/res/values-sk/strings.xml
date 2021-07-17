@@ -202,7 +202,7 @@
     <string name="txtSugars">Cukry</string>
     <string name="hintBarcode">Čiarový kód</string>
     <string name="txtNutriScoreInfo">Získajte viac informácií o množstvách živín</string>
-    <string name="hintLogin">Username</string>
+    <string name="hintLogin">Login</string>
     <string name="hintPass">Heslo</string>
     <string name="errorLogin">Chyba prihlasovacieho mena alebo hesla</string>
     <string name="errorWeb">Nebolo možné pripojiť sa k internetu. Skontrolujte, prosím, pripojenie k sieti.</string>

@@ -192,7 +192,7 @@
     <string name="txtSugars">Şəkər</string>
     <string name="hintBarcode">Barkod</string>
     <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
-    <string name="hintLogin">Username</string>
+    <string name="hintLogin">Login</string>
     <string name="hintPass">Şifrə</string>
     <string name="errorLogin">Login or password error</string>
     <string name="errorWeb">We were not able to access the internet. Do you have connectivity issues?</string>
@@ -479,7 +479,7 @@
     <string name="additive_string">Additive</string>
     <string name="allergen_string">Allergen</string>
     <string name="search_string">Axtarış</string>
-    <string name="country_string">Countries where sold</string>
+    <string name="country_string">Country</string>
     <string name="store_subtitle">Mağaza</string>
     <string name="packaging_subtitle">Packaging</string>
     <string name="packaging_string">Packaging</string>

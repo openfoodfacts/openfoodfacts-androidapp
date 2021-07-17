@@ -182,7 +182,7 @@
     <string name="hintBarcode">바코드</string>
     <string name="txtNutriScoreInfo">영양 수치에 대해 더 알아보기</string>
     <string name="txtloginHelper">If you have an Open Food Facts account, you can login here with it</string>
-    <string name="hintLogin">Username</string>
+    <string name="hintLogin">Login</string>
     <string name="hintPass">암호</string>
     <string name="errorLogin">계정 또는 비밀번호 오류</string>
     <string name="errorWeb">인터넷에 연결할수 없습니다. 연결문제가 있습니까?</string>
@@ -402,7 +402,7 @@
     <string name="device_offline_dialog_message">네트워크 연결이 필요합니다. 설정에서 변경하시겠습니까?</string>
     <string name="device_offline_dialog_negative">무시</string>
     <string name="device_offline_dialog_positive">설정</string>
-    <string name="scan_first_product">Scan First Product</string>
+    <string name="scan_first_product">Scan your first product</string>
     <string name="device_on_mobile_data_warning_title">정보</string>
     <string name="device_on_mobile_data_warning_message">You have disabled upload on mobile data , please connect to WiFi or change this in preferences</string>
     <string name="device_on_mobile_data_warning_positive">환경설정</string>

@@ -192,7 +192,7 @@
     <string name="txtSugars">চিনি</string>
     <string name="hintBarcode">বারকোড</string>
     <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
-    <string name="hintLogin">Username</string>
+    <string name="hintLogin">Login</string>
     <string name="hintPass">পাসওয়ার্ড</string>
     <string name="errorLogin">লগইন বা পাসওয়ার্ড ত্রুটি</string>
     <string name="errorWeb">আমরা ইন্টারনেট সংযোগ করতে পারিনি। আপনার সংযোগে কি কোন সমস্যা আছে?</string>

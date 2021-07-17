@@ -192,7 +192,7 @@
     <string name="txtSugars">Xùcaro</string>
     <string name="hintBarcode">Còdexe a bare</string>
     <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
-    <string name="hintLogin">Username</string>
+    <string name="hintLogin">Login</string>
     <string name="hintPass">Password</string>
     <string name="errorLogin">Erore pa \'l aceso o pa ła password</string>
     <string name="errorWeb">No semo riusesti a rivar so internet. Gatu problemi de conesion?</string>
@@ -479,7 +479,7 @@
     <string name="additive_string">Additive</string>
     <string name="allergen_string">Allergen</string>
     <string name="search_string">Search</string>
-    <string name="country_string">Countries where sold</string>
+    <string name="country_string">Country</string>
     <string name="store_subtitle">Negosio</string>
     <string name="packaging_subtitle">Packaging</string>
     <string name="packaging_string">Packaging</string>

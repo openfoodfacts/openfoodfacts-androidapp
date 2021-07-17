@@ -197,7 +197,7 @@
     <string name="txtSugars">Cukurs</string>
     <string name="hintBarcode">Svītrkods</string>
     <string name="txtNutriScoreInfo">Uzziniet vairāk par uzturvielu līmeni</string>
-    <string name="hintLogin">Username</string>
+    <string name="hintLogin">Login</string>
     <string name="hintPass">Parole</string>
     <string name="errorLogin">Lietotāja vai paroles kļūda</string>
     <string name="errorWeb">Mēs nevarējām piekļūt internetam. Vai jums ir savienojuma problēmas?</string>
