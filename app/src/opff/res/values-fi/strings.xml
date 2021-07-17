@@ -23,14 +23,14 @@
     <string name="slide_4_desc">Voit lisätä uusia tuotteita, vaikka sinulla ei olisi Internet-yhteyttä tällä hetkellä</string>
     <string name="txtDialogsContent">Lukemaasi tuotetta ei vielä ole Open Pet Food Factsissa. Lisääthän sen.</string>
     <string name="txtDialogsContentPowerMode">Lukemasi tuote on jo olemassa Open Pet Food Factsissa.</string>
-    <string name="msg_share">Katso tätä tuotetta Open Food Factsissa:</string>
-    <string name="not_support_books">Open Food Facts ei tue kirjoja tällä hetkellä</string>
-    <string name="txt_broaden_search">- laajenna hakuasi \n- lue ja lisää se Open Food Factsiin</string>
-    <string name="Donation">Napsauta tästä lahjoittaaksesi Open Food Factsille</string>
-    <string name="translate_help_title">Auta kääntämään Open Food Factsia</string>
-    <string name="translate_help_summary">Tuo Open Food Facts -tietokanta kielellesi - teknistä tietoa ei vaadita</string>
+    <string name="msg_share">Katso tätä tuotetta Open Pet Food Factsissa:</string>
+    <string name="not_support_books">Open Pet Food Facts ei tue kirjoja tällä hetkellä</string>
+    <string name="txt_broaden_search">- laajenna hakuasi \n- lue ja lisää se Open Pet Food Factsiin</string>
+    <string name="Donation">Napsauta tästä lahjoittaaksesi Open Pet Food Factsille</string>
+    <string name="translate_help_title">Auta kääntämään Open Pet Food Factsia</string>
+    <string name="translate_help_summary">Tuo Open Pet Food Facts -tietokanta kielellesi - teknistä tietoa ei vaadita</string>
     <string name="text_offline_info_dialog">Voit lukea tuotteita offline-tilassa lisätäksesi niitä myöhemmin Open Pet Food Factsiin. Kaikki lukemasi tuotteet näkyvät täällä, ja voit lähettää ne alla olevan painikkeen avulla.</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Allergiatietojasi ei koskaan lähetetä Open Food Facts -palvelimelle. Huomaa myös, että tuotetiedot eivät välttämättä ole tarkkoja tai täydellisiä, ja allergiatarkistus ei ehkä ole 100%:n tarkka, joten tarkista itse! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Allergiatietojasi ei koskaan lähetetä Open Pet Food Facts -palvelimelle. Huomaa myös, että tuotetiedot eivät välttämättä ole tarkkoja tai täydellisiä, ja allergiatarkistus ei ehkä ole 100%:n tarkka, joten tarkista itse! </string>
     <!-- OPFF tagline in different languages -->
     <string name="version_string">Avaa Open Pet Food Facts -Android-sovellus</string>
     <string name="tagline">free pet food products database</string>
@@ -45,6 +45,6 @@
     <string name="intent_filter_share_label">Lisää Open Pet Food Factsiin</string>
     <string name="txt_info_eaten_products">Voit lisätä tuotteita tähän luetteloon liu\'uttamalla luetun tuotteen tuotekortin ylöspäin, ja napauttamalla \"Ostettavat tuotteet\".
         Voit lisätä tuotteita tähän luetteloon myös etsimällä niitä, ja napsauttamalla + -painiketta tuotesivun oikeassa yläkulmassa.</string>
-    <string name="OFFlogo">Avaa Open Food Facts -logo</string>
+    <string name="OFFlogo">Avaa Open Pet Food Facts -logo</string>
     <string name="brand_hint">Esim,: Purina, Whiskas jne…</string>
 </resources>
