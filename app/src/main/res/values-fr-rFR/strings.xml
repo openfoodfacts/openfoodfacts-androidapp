@@ -572,9 +572,9 @@
     <string name="no_internet_connection">Vous semblez n\'avoir aucune connexion Internet, les images seront envoyées lorsque le réseau sera disponible</string>
     <string name="no_internet_unable_to_extract_ingredients">Pas de connexion Internet. Impossible d\'extraire les ingrédients</string>
     <string name="percent">%1$d%%</string>
-    <string name="overview">Résumé</string>
+    <string name="overview">Général</string>
     <string name="ingredients">Ingrédients</string>
-    <string name="nutrition_facts">Composition nutritionnelle</string>
+    <string name="nutrition_facts">Nutrition</string>
     <string name="your_version">Vous</string>
     <string name="ingredients_picture">Photo de la liste des ingrédients</string>
     <string name="packaging">Recyclage</string>
