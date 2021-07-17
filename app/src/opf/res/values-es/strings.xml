@@ -45,6 +45,6 @@
     <string name="intent_filter_share_label">Añadir a Open Products Facts</string>
     <string name="txt_info_eaten_products">Podrás añadir productos a esta lista escaneando productos, arrastrando la tarjeta del producto y pulsando \"Productos a comprar\".
         También podrás añadir productos a esta lista buscando y haciendo clic en el botón + en la parte superior derecha de la página del producto.</string>
-    <string name="OFFlogo">Logotipo de Open Food Facts</string>
+    <string name="OFFlogo">Logotipo de Open Products Facts</string>
     <string name="brand_hint">Ejemplos: Nike, Apple, etc…</string>
 </resources>

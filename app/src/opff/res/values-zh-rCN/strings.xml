@@ -23,14 +23,14 @@
     <string name="slide_4_desc">即使您目前没有互联网连接，也可以添加新的产品。</string>
     <string name="txtDialogsContent">您扫描的产品还不存在于Open Pet Food Facts。请添加它。</string>
     <string name="txtDialogsContentPowerMode">您扫描的产品已经存在于Open Pet Food Facts。</string>
-    <string name="msg_share">在 Open Food Facts 中查看这个产品：</string>
-    <string name="not_support_books">图书目前未被 Open Food Facts 支持</string>
-    <string name="txt_broaden_search">- 扩大您的搜索 \n- 扫描并将其添加到 Open Food Facts</string>
-    <string name="Donation">点击此处捐助给 Open Food Facts</string>
-    <string name="translate_help_title">帮助翻译 Open Food Facts</string>
-    <string name="translate_help_summary">将 Open Food Facts 数据库带到您的语言 - 没有技术性的知识要求</string>
+    <string name="msg_share">在 Open Pet Food Facts 中查看这个产品：</string>
+    <string name="not_support_books">图书目前未被 Open Pet Food Facts 支持</string>
+    <string name="txt_broaden_search">- 扩大您的搜索 \n- 扫描并将其添加到 Open Pet Food Facts</string>
+    <string name="Donation">点击此处捐助给 Open Pet Food Facts</string>
+    <string name="translate_help_title">帮助翻译 Open Pet Food Facts</string>
+    <string name="translate_help_summary">将 Open Pet Food Facts 数据库带到您的语言 - 没有技术性的知识要求</string>
     <string name="text_offline_info_dialog">即使您处于离线状态，也要扫描产品，以便稍后将其添加到Open Pet Food Facts中。扫描的产品将显示在此处，您可以使用下面的按钮发送它们。</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">您的过敏信息将永远不会发送到Open Food Facts服务器。另外，请注意，产品数据可能不准确，并且检测结果可能不是100% a准确，因此请您自己仔细检查！ </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">您的过敏信息将永远不会发送到Open Pet Food Facts服务器。另外，请注意，产品数据可能不准确，并且检测结果可能不是100% a准确，因此请您自己仔细检查！ </string>
     <!-- OPFF tagline in different languages -->
     <string name="version_string">Open Pet Food Facts安卓应用</string>
     <string name="tagline">免费宠物食品数据库</string>
