@@ -27,8 +27,8 @@
     <string name="Donation">Kliknij by wpłacić darowiznę na rzecz Open Beauty Facts</string>
     <string name="translate_help_title">Wspomóż tłumaczenie Open Beauty Facts</string>
     <string name="translate_help_summary">Wprowadź bazę danych Open Beauty Facts do twojego języka - nie wymagamy wiedzy technicznej</string>
-    <string name="text_offline_info_dialog">Skanuj nawet w trybie offline, dodasz je później do Open Food Facts. Zeskanowane produkty pojawią się tutaj i będziesz mogła wysłać je poniższym przyciskiem.</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Twoje informacje o alergiach nigdy nie zostaną wysłane na serwer Open Food Facts. Należy także uważać, że dane produktów mogą nie być dokładne, a wykrywanie może nie być 100% a, więc dokładnie sprawdź sam! </string>
+    <string name="text_offline_info_dialog">Skanuj nawet w trybie offline, dodasz je później do Open Beauty Facts. Zeskanowane produkty pojawią się tutaj i będziesz mogła wysłać je poniższym przyciskiem.</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Twoje informacje o alergiach nigdy nie zostaną wysłane na serwer Open Beauty Facts. Należy także uważać, że dane produktów mogą nie być dokładne, a wykrywanie może nie być 100% a, więc dokładnie sprawdź sam! </string>
     <!-- Open Beauty Facts tagline in different languages -->
     <string name="version_string">Otwórz aplikację Open Beauty Facts na Androida</string>
     <string name="tagline">the free cosmetics database</string>

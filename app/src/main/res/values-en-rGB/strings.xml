@@ -371,11 +371,11 @@
     <string name="chlorophyl">Chlorophyll</string>
     <string name="take_picture">Take a photo</string>
     <string name="choose_picture_from_gallery">From gallery</string>
-    <string name="take_picture_ingredients">Take a picture of the ingredients</string>
+    <string name="take_picture_ingredients">Take a photo of the ingredients</string>
     <string name="take_picture_recycling">Take a photo of the recycling instructions</string>
     <string name="take_picture_front">Take a photo of the front</string>
     <string name="take_picture_nutrition_table">Take a picture of the nutrition facts</string>
-    <string name="take_more_pictures">Take more pictures</string>
+    <string name="take_more_pictures">Take more photos</string>
     <string name="take_extra_packaging_pictures">Take extra photos of packaging</string>
     <string name="txtSaturatedFat">Saturated fat</string>
     <string name="nutriscore_info_msg">Learn more about the Nutri-Score</string>

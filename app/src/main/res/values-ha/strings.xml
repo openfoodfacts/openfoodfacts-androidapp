@@ -384,11 +384,11 @@
     <string name="chlorophyl">Chlorophyl</string>
     <string name="take_picture">Take a photo</string>
     <string name="choose_picture_from_gallery">From gallery</string>
-    <string name="take_picture_ingredients">Take a picture of the ingredients</string>
+    <string name="take_picture_ingredients">Take a photo of the ingredients</string>
     <string name="take_picture_recycling">Take a photo of the recycling instructions</string>
     <string name="take_picture_front">Take a photo of the front</string>
-    <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
-    <string name="take_more_pictures">Take more pictures</string>
+    <string name="take_picture_nutrition_table">Take a photo of the nutrition table</string>
+    <string name="take_more_pictures">Take more photos</string>
     <string name="take_extra_packaging_pictures">Take extra photos of packaging</string>
     <string name="txtSaturatedFat">Saturated fat</string>
     <string name="nutriscore_info_msg">Learn more about the Nutri-Score</string>
@@ -450,7 +450,7 @@
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
     <string name="faq_url">https://world-ha.openfoodfacts.org/faq</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
-    <string name="hunger_game_url">https://world-ha.openfoodfacts.org/hunger-game</string>
+    <string name="hunger_game_url">https://hunger.openfoodfacts.org/</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate the end of the url -->
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world-ha.openfoodfacts.org/nutriscore</string>
