@@ -457,7 +457,7 @@
     <string name="preference_analytics_bottom_sheet_grant_button">Grant</string>
     <string name="preference_analytics_bottom_sheet_decline_button">Decline</string>
     <string name="scan_first_string">మీ చూచుటకు ఉత్పత్తి చరిత్ర ఇక్కడ ఇవ్వబడుతుంది.\nఈ చరిత్ర మీ కళ్ళు మాత్రమే మరియు స్థానికంగా నిల్వ చేయబడుతుంది.</string>
-    <string name="log_in">Username</string>
+    <string name="log_in">Login</string>
     <string name="login_true">ఇప్పటికే లాగిన్ అయ్యింది!</string>
     <string name="confirm_logout">లాగ్ అవుట్ను నిర్ధారించండి</string>
     <string name="logout_dialog_content">మీరు ఖచ్చితంగా లాగ్ అవుట్ అవ్వాలా?</string>

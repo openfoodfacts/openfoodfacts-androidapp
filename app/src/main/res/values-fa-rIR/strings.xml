@@ -457,7 +457,7 @@
     <string name="preference_analytics_bottom_sheet_grant_button">Grant</string>
     <string name="preference_analytics_bottom_sheet_decline_button">Decline</string>
     <string name="scan_first_string">Your viewed product history will be listed here.\nThis history is for your eyes only and is stored locally.</string>
-    <string name="log_in">Username</string>
+    <string name="log_in">Login</string>
     <string name="login_true">Already logged in!</string>
     <string name="confirm_logout">Confirm Logout</string>
     <string name="logout_dialog_content">Are you sure to log out ?</string>

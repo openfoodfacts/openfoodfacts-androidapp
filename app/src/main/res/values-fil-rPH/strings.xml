@@ -457,7 +457,7 @@
     <string name="preference_analytics_bottom_sheet_grant_button">Grant</string>
     <string name="preference_analytics_bottom_sheet_decline_button">Decline</string>
     <string name="scan_first_string">Makikita ang iyong kasaysayan ng produkto na tiningnan ng produkto. \n Nang kasaysayan na ito ay para lamang sa iyong mga mata at nakaimbak nang lokal.</string>
-    <string name="log_in">Username</string>
+    <string name="log_in">Login</string>
     <string name="login_true">Nakapasok na!</string>
     <string name="confirm_logout">Kumpirmahin ang pag-logout</string>
     <string name="logout_dialog_content">Sigurado ka bang mag-log out?</string>

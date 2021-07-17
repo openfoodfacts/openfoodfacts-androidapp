@@ -452,7 +452,7 @@
     <string name="preference_analytics_bottom_sheet_grant_button">Grant</string>
     <string name="preference_analytics_bottom_sheet_decline_button">Decline</string>
     <string name="scan_first_string">본 제품 내역이 여기에 표시됩니다.\n이 내역은 나만 볼 수 있으며 로컬로 저장됩니다.</string>
-    <string name="log_in">Username</string>
+    <string name="log_in">Login</string>
     <string name="login_true">이미 로그인했습니다!</string>
     <string name="confirm_logout">로그아웃 확인</string>
     <string name="logout_dialog_content">로그아웃 하겠습니까?</string>
