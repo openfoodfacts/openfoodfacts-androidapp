@@ -15,6 +15,7 @@
  */
 package openfoodfacts.github.scrachx.openfood.features.scan
 
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.hardware.Camera
@@ -855,6 +856,17 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
         private const val SETTING_STATE = "cameraState"
         private val LOG_TAG = this::class.simpleName!!
 
+
+        @JvmStatic
+        fun start(context: Context, productsToCompare: ArrayList<Product>) {
+            Intent(context, ContinuousScanActivity::class.java).apply {
+                putExtra(ProductCompareActivity.KEY_COMPARE_PRODUCT, true)
+                putExtra(ProductCompareActivity.KEY_PRODUCTS_TO_COMPARE, productsToCompare)
+                context.startActivity(this)
+            }
+        }
+
     }
+
 
 }

@@ -198,6 +198,7 @@ class LoginActivity : BaseActivity() {
         binding.btnLogin.setOnClickListener { doAttemptLogin() }
         binding.btnCreateAccount.setOnClickListener { doRegister() }
         binding.btnForgotPass.setOnClickListener { doForgotPassword() }
+
         setSupportActionBar(binding.toolbarLayout.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = getString(R.string.txtSignIn)
@@ -210,13 +211,13 @@ class LoginActivity : BaseActivity() {
         customTabActivityHelper.mayLaunchUrl(userLoginUri, null, null)
         binding.btnCreateAccount.isEnabled = true
 
-        val loginS = getLoginPreferences().getString(resources.getString(R.string.user), resources.getString(R.string.txt_anonymous))
-        if (loginS == resources.getString(R.string.user)) {
-            MaterialAlertDialogBuilder(this).apply {
-                setTitle(R.string.log_in)
-                setMessage(R.string.login_true)
-                setNeutralButton(R.string.ok_button) { _, _ -> finish() }
-            }.show()
+        val loginS = getLoginPreferences().getString(resources.getString(R.string.user), null)
+        if (loginS != null) {
+            MaterialAlertDialogBuilder(this)
+                .setTitle(R.string.log_in)
+                .setMessage(R.string.login_true)
+                .setNeutralButton(R.string.ok_button) { _, _ -> finish() }
+                .show()
         }
     }
 
@@ -250,7 +251,6 @@ class LoginActivity : BaseActivity() {
     companion object {
         class LoginContract : ActivityResultContract<Unit?, Boolean>() {
             override fun createIntent(context: Context, input: Unit?) = Intent(context, LoginActivity::class.java)
-
             override fun parseResult(resultCode: Int, intent: Intent?) = resultCode == RESULT_OK
         }
 

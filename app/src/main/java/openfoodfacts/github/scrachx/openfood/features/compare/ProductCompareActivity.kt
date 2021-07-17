@@ -4,17 +4,20 @@ import android.Manifest
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.content.pm.PackageManager
+import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.os.Bundle
 import android.widget.Toast
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
-import androidx.lifecycle.MutableLiveData
+import androidx.activity.viewModels
+import androidx.core.app.ActivityCompat.shouldShowRequestPermissionRationale
+import androidx.core.content.ContextCompat.checkSelfPermission
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.rx2.await
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
 import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
@@ -23,11 +26,14 @@ import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomList
 import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.selectNavigationItem
 import openfoodfacts.github.scrachx.openfood.features.scan.ContinuousScanActivity
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
+import openfoodfacts.github.scrachx.openfood.images.ProductImage
 import openfoodfacts.github.scrachx.openfood.models.Product
+import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
 import openfoodfacts.github.scrachx.openfood.utils.PhotoReceiverHandler
+import openfoodfacts.github.scrachx.openfood.utils.Utils
 import openfoodfacts.github.scrachx.openfood.utils.isHardwareCameraInstalled
 import java.util.*
 import javax.inject.Inject
@@ -38,8 +44,10 @@ class ProductCompareActivity : BaseActivity() {
     private var _binding: ActivityProductComparisonBinding? = null
     private val binding get() = _binding!!
 
+    private val viewModel: ProductCompareViewModel by viewModels()
+
     @Inject
-    lateinit var api: OpenFoodAPIClient
+    lateinit var client: OpenFoodAPIClient
 
     @Inject
     lateinit var productRepository: ProductRepository
@@ -56,84 +64,121 @@ class ProductCompareActivity : BaseActivity() {
     @Inject
     lateinit var localeManager: LocaleManager
 
-    private lateinit var productComparisonAdapter: ProductCompareAdapter
     private lateinit var photoReceiverHandler: PhotoReceiverHandler
 
-    private val productsToCompare = MutableLiveData<ArrayList<Product>>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         _binding = ActivityProductComparisonBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         title = getString(R.string.compare_products)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        var productsToCompare = ArrayList<Product>()
+        // Use activity results if present
+        var returnedProducts = ArrayList<Product>()
         if (intent.extras != null && intent.getBooleanExtra(KEY_PRODUCT_FOUND, false)) {
-            productsToCompare = intent.extras?.getSerializable(KEY_PRODUCTS_TO_COMPARE) as ArrayList<Product>
+            returnedProducts = intent.extras?.getSerializable(KEY_PRODUCTS_TO_COMPARE) as ArrayList<Product>
             if (intent.getBooleanExtra(KEY_PRODUCT_ALREADY_EXISTS, false)) {
                 Toast.makeText(this, getString(R.string.product_already_exists_in_comparison), Toast.LENGTH_SHORT).show()
             }
         }
 
-        if (productsToCompare.size > 1) {
-            matomoAnalytics.trackEvent(AnalyticsEvent.CompareProducts(productsToCompare.size.toFloat()))
-        }
+        viewModel.productsToCompare.value = returnedProducts
 
-        this.productsToCompare.value = productsToCompare
-
-        productComparisonAdapter = ProductCompareAdapter(
-            productsToCompare,
-            this,
-            api,
-            productRepository,
-            picasso,
-            localeManager.getLanguage()
-        )
-        binding.productComparisonRv.layoutManager = LinearLayoutManager(this, HORIZONTAL, false)
-        binding.productComparisonRv.adapter = productComparisonAdapter
-
-        photoReceiverHandler = PhotoReceiverHandler(sharedPreferences) {
-            productComparisonAdapter.setImageOnPhotoReturn(it)
-        }
-
-        val finalProductsToCompare = productsToCompare
-
-        binding.productComparisonButton.setOnClickListener {
-            if (!isHardwareCameraInstalled(this@ProductCompareActivity)) {
-                return@setOnClickListener
-            }
-            when {
-                ContextCompat.checkSelfPermission(this@ProductCompareActivity, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED -> {
-                    startActivity(Intent(this@ProductCompareActivity, ContinuousScanActivity::class.java).apply {
-                        putExtra(KEY_COMPARE_PRODUCT, true)
-                        putExtra(KEY_PRODUCTS_TO_COMPARE, finalProductsToCompare)
-                    })
-                }
-                ActivityCompat.shouldShowRequestPermissionRationale(this@ProductCompareActivity, Manifest.permission.CAMERA) -> {
-                    MaterialAlertDialogBuilder(this@ProductCompareActivity)
-                        .setTitle(R.string.action_about)
-                        .setMessage(R.string.permission_camera)
-                        .setPositiveButton(android.R.string.ok) { _, _ ->
-                            requestCameraThenOpenScan.launch(Manifest.permission.CAMERA)
-                        }
-                        .show()
-                }
-                else -> {
-                    requestCameraThenOpenScan.launch(Manifest.permission.CAMERA)
-                }
-            }
-
-        }
         binding.navigationBottomInclude.bottomNavigation.installBottomNavigation(this)
+
+        viewModel.products.observe(this) { products ->
+            // Track compare event
+            if (products.size > 1) {
+                matomoAnalytics.trackEvent(AnalyticsEvent.CompareProducts(products.size.toFloat()))
+            }
+
+            // Create adapter
+            val productComparisonAdapter = ProductCompareAdapter(
+                products,
+                this,
+                client,
+                picasso,
+                localeManager.getLanguage()
+            ).apply {
+                imageReturnedListener = { product, file ->
+
+                    val image = ProductImage(
+                        product.code,
+                        ProductImageField.FRONT,
+                        file,
+                        localeManager.getLanguage()
+                    ).apply { filePath = file.absolutePath }
+
+                    lifecycleScope.launch { client.postImg(image).await() }
+                    product.imageUrl = file.absolutePath
+                }
+
+                fullProductClickListener = {
+                    val barcode = it.code
+                    if (Utils.isNetworkConnected(activity)) {
+                        Utils.hideKeyboard(activity)
+
+                        client.openProduct(barcode, activity)
+                    } else {
+                        MaterialAlertDialogBuilder(activity)
+                            .setTitle(R.string.device_offline_dialog_title)
+                            .setMessage(R.string.connectivity_check)
+                            .setPositiveButton(R.string.txt_try_again) { _, _ ->
+                                if (Utils.isNetworkConnected(activity)) {
+                                    client.openProduct(barcode, activity)
+                                } else {
+                                    Toast.makeText(activity, R.string.device_offline_dialog_title, Toast.LENGTH_SHORT).show()
+                                }
+                            }
+                            .setNegativeButton(R.string.dismiss) { d, _ -> d.dismiss() }
+                            .show()
+                    }
+                }
+            }
+
+            // Update product comparison recyclerview
+            binding.productComparisonRv.layoutManager = LinearLayoutManager(this, HORIZONTAL, false)
+            binding.productComparisonRv.adapter = productComparisonAdapter
+
+            // Set activity result handler
+            photoReceiverHandler = PhotoReceiverHandler(sharedPreferences) {
+                productComparisonAdapter.onImageReturned(it)
+            }
+
+            // Set "add product" on click listener
+            binding.productComparisonButton.setOnClickListener {
+                if (!isHardwareCameraInstalled()) return@setOnClickListener
+
+                when {
+                    checkSelfPermission(this, Manifest.permission.CAMERA) == PERMISSION_GRANTED -> {
+                        startScanActivity()
+                    }
+                    shouldShowRequestPermissionRationale(this@ProductCompareActivity, Manifest.permission.CAMERA) -> {
+                        MaterialAlertDialogBuilder(this@ProductCompareActivity)
+                            .setTitle(R.string.action_about)
+                            .setMessage(R.string.permission_camera)
+                            .setPositiveButton(android.R.string.ok) { _, _ ->
+                                requestCameraThenOpenScan.launch(Manifest.permission.CAMERA)
+                            }
+                            .show()
+                    }
+                    else -> {
+                        requestCameraThenOpenScan.launch(Manifest.permission.CAMERA)
+                    }
+                }
+
+            }
+        }
+
     }
 
     override fun startScanActivity() {
-        startActivity(Intent(this@ProductCompareActivity, ContinuousScanActivity::class.java).apply {
-            putExtra(KEY_COMPARE_PRODUCT, true)
-            putExtra(KEY_PRODUCTS_TO_COMPARE, productsToCompare.value)
-        })
+        viewModel.productsToCompare.value
+            ?.let { ContinuousScanActivity.start(this, it) }
+            ?: error("Products still not set.")
     }
 
 
