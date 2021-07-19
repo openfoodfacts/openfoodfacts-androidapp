@@ -4,7 +4,7 @@ import android.Manifest
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.content.pm.PackageManager
+import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -15,14 +15,15 @@ import android.widget.SearchView
 import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.browser.customtabs.CustomTabsIntent
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
+import androidx.core.app.ActivityCompat.shouldShowRequestPermissionRationale
+import androidx.core.content.ContextCompat.checkSelfPermission
 import androidx.core.net.toUri
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.afollestad.materialdialogs.MaterialDialog
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.Single
@@ -230,37 +231,37 @@ class ProductSearchActivity : BaseActivity() {
     }
 
     private fun newSearchQuery() {
-        supportActionBar?.title = mSearchInfo.searchTitle
+        val bar = supportActionBar ?: error("Support action bar not set.")
+
+        bar.title = mSearchInfo.searchTitle
         when (mSearchInfo.searchType) {
             BRAND -> {
-                supportActionBar!!.setSubtitle(R.string.brand_string)
+                bar.setSubtitle(R.string.brand_string)
                 setupHungerGames()
             }
             LABEL -> {
-                supportActionBar!!.subtitle = getString(R.string.label_string)
+                bar.subtitle = getString(R.string.label_string)
                 setupHungerGames()
             }
             CATEGORY -> {
-                supportActionBar!!.subtitle = getString(R.string.category_string)
+                bar.subtitle = getString(R.string.category_string)
                 setupHungerGames()
             }
-            COUNTRY -> supportActionBar!!.setSubtitle(R.string.country_string)
-            ORIGIN -> supportActionBar!!.setSubtitle(R.string.origin_of_ingredients)
-            MANUFACTURING_PLACE -> supportActionBar!!.setSubtitle(R.string.manufacturing_place)
-            ADDITIVE -> supportActionBar!!.setSubtitle(R.string.additive_string)
-            SEARCH -> supportActionBar!!.setSubtitle(R.string.search_string)
-            STORE -> supportActionBar!!.setSubtitle(R.string.store_subtitle)
-            PACKAGING -> supportActionBar!!.setSubtitle(R.string.packaging_subtitle)
-            CONTRIBUTOR -> supportActionBar!!.subtitle = getString(R.string.contributor_string)
-            ALLERGEN -> supportActionBar!!.subtitle = getString(R.string.allergen_string)
-            INCOMPLETE_PRODUCT -> supportActionBar!!.title = getString(R.string.products_to_be_completed)
-            STATE -> {
-                // TODO: 26/07/2020 use resources
-                supportActionBar!!.subtitle = "State"
-            }
-            TRACE -> supportActionBar!!.setSubtitle(R.string.traces)
-            else -> error("No match case found for ${mSearchInfo.searchType}")
+            COUNTRY -> bar.setSubtitle(R.string.country_string)
+            ORIGIN -> bar.setSubtitle(R.string.origin_of_ingredients)
+            MANUFACTURING_PLACE -> bar.setSubtitle(R.string.manufacturing_place)
+            ADDITIVE -> bar.setSubtitle(R.string.additive_string)
+            SEARCH -> bar.setSubtitle(R.string.search_string)
+            STORE -> bar.setSubtitle(R.string.store_subtitle)
+            PACKAGING -> bar.setSubtitle(R.string.packaging_subtitle)
+            CONTRIBUTOR -> bar.subtitle = getString(R.string.contributor_string)
+            ALLERGEN -> bar.subtitle = getString(R.string.allergen_string)
+            INCOMPLETE_PRODUCT -> bar.title = getString(R.string.products_to_be_completed)
+            STATE -> bar.setSubtitle(R.string.state_subtitle)
+            TRACE -> bar.setSubtitle(R.string.traces)
+            EMB -> bar.setSubtitle(R.string.emb_code)
         }
+
         binding.progressBar.visibility = View.VISIBLE
         reloadSearch()
     }
@@ -279,22 +280,22 @@ class ProductSearchActivity : BaseActivity() {
      * This method is called when the user clicks on the add photo button in the noResultsLayout.
      */
     private fun addProduct() {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.CAMERA)) {
-                MaterialDialog.Builder(this)
-                    .title(R.string.action_about)
-                    .content(R.string.permission_camera)
-                    .neutralText(android.R.string.ok)
-                    .onNeutral { _, _ -> ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA), MY_PERMISSIONS_REQUEST_CAMERA) }
-                    .show()
-            } else {
-                ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA), MY_PERMISSIONS_REQUEST_CAMERA)
+        when {
+            checkSelfPermission(this, Manifest.permission.CAMERA) == PERMISSION_GRANTED -> {
+                startActivity(Intent(this, ContinuousScanActivity::class.java))
             }
-        } else {
-            val intent = Intent(this, ContinuousScanActivity::class.java)
-            startActivity(intent)
+            shouldShowRequestPermissionRationale(this, Manifest.permission.CAMERA) -> {
+                MaterialAlertDialogBuilder(this)
+                    .setTitle(R.string.action_about)
+                    .setMessage(R.string.permission_camera)
+                    .setNeutralButton(android.R.string.ok) { _, _ ->
+                        requestCameraThenOpenScan.launch(Manifest.permission.CAMERA)
+                    }.show()
+            }
+            else -> requestCameraThenOpenScan.launch(Manifest.permission.CAMERA)
         }
     }
+
 
     fun loadDataFromAPI() {
         val searchQuery = mSearchInfo.searchQuery
@@ -346,7 +347,7 @@ class ProductSearchActivity : BaseActivity() {
             INCOMPLETE_PRODUCT -> client.getIncompleteProducts(pageAddress)
                 .startSearch(R.string.txt_no_matching_incomplete_products)
 
-            else -> Log.e("Products Browsing", "No match case found for " + mSearchInfo.searchType)
+            else -> Log.e("Products Browsing", "No match case found for ${mSearchInfo.searchType}")
         }
     }
 
@@ -392,22 +393,31 @@ class ProductSearchActivity : BaseActivity() {
         if (pageAddress == 1) {
             val number = NumberFormat.getInstance(Locale.getDefault()).format(response.count.toLong())
             binding.textCountProduct.text = "${resources.getString(R.string.number_of_results)} $number"
+
+            // Hacky thing to make sure the count is right
             val products: MutableList<SearchProduct?> = response.products.toMutableList()
             if (products.size < mCountProducts) {
                 products += null
             }
+
             if (setupDone) {
                 adapter = ProductSearchAdapter(products, lowBatteryMode, this, picasso, client, localeManager)
                 binding.productsRecyclerView.adapter = adapter
             }
+
             setUpRecyclerView(products)
+
         } else if (adapter.products.size - 1 < mCountProducts + 1) {
             val posStart = adapter.itemCount
-            adapter.products.removeAt(adapter.itemCount - 1)
+
+            adapter.products.removeAt(posStart - 1)
             adapter.products += response.products
+
+            // Hacky thing to make sure the count is right
             if (adapter.products.size < mCountProducts) {
                 adapter.products += null
             }
+
             adapter.notifyItemRangeChanged(posStart - 1, adapter.products.size - 1)
         }
     }
@@ -503,6 +513,7 @@ class ProductSearchActivity : BaseActivity() {
             binding.productsRecyclerView.addOnItemTouchListener(RecyclerItemClickListener(this) { _, position ->
                 val product = adapter.getProduct(position) ?: return@RecyclerItemClickListener
                 val barcode = product.code
+
                 if (Utils.isNetworkConnected(this)) {
                     client.openProduct(barcode, this)
                     try {
@@ -515,23 +526,22 @@ class ProductSearchActivity : BaseActivity() {
                         Log.e(LOG_TAG, "addOnItemTouchListener", e)
                     }
                 } else {
-                    MaterialDialog.Builder(this@ProductSearchActivity).apply {
-                        title(R.string.device_offline_dialog_title)
-                        content(R.string.connectivity_check)
-                        positiveText(R.string.txt_try_again)
-                        onPositive { _, _ ->
-                            if (Utils.isNetworkConnected(this@ProductSearchActivity)) {
-                                client.openProduct(barcode, this@ProductSearchActivity)
+                    MaterialAlertDialogBuilder(this)
+                        .setTitle(R.string.device_offline_dialog_title)
+                        .setMessage(R.string.connectivity_check)
+                        .setPositiveButton(R.string.txt_try_again) { _, _ ->
+                            if (Utils.isNetworkConnected(this)) {
+                                client.openProduct(barcode, this)
                             } else {
                                 Toast.makeText(this@ProductSearchActivity, R.string.device_offline_dialog_title, Toast.LENGTH_SHORT).show()
                             }
                         }
-                        negativeText(R.string.dismiss)
-                        onNegative { dialog, _ -> dialog.dismiss() }
-                    }.show()
+                        .setNegativeButton(R.string.dismiss) { d, _ -> d.dismiss() }
+                        .show()
                 }
                 return@RecyclerItemClickListener
             })
+
             binding.swipeRefresh.setOnRefreshListener {
                 mProducts.clear()
                 adapter.notifyDataSetChanged()
@@ -543,6 +553,7 @@ class ProductSearchActivity : BaseActivity() {
                 }
             }
         }
+
         setupDone = true
         binding.swipeRefresh.setOnRefreshListener {
             binding.swipeRefresh.isRefreshing = true
@@ -566,9 +577,8 @@ class ProductSearchActivity : BaseActivity() {
          * @param type the type of search
          */
         @JvmStatic
-        fun start(context: Context, type: SearchType, searchQuery: String, searchTitle: String = searchQuery) {
+        fun start(context: Context, type: SearchType, searchQuery: String, searchTitle: String = searchQuery) =
             start(context, SearchInfo(type, searchQuery, searchTitle))
-        }
 
         /**
          * @see [start]
