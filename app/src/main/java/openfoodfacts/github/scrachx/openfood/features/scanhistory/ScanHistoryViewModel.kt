@@ -47,28 +47,29 @@ class ScanHistoryViewModel @Inject constructor(
         unorderedProductState.postValue(FetchProductsState.Loading)
 
         withContext(Dispatchers.IO) {
-            try {
-                val barcodes = daoSession.historyProductDao.queryBuilder().list().map { it.barcode }
+            val barcodes = daoSession.historyProductDao.queryBuilder().list().map { it.barcode }
+            if (barcodes.isNotEmpty()) {
+                try {
+                    client.getProductsByBarcode(barcodes)
+                        .forEach { product ->
+                            val historyProduct = daoSession.historyProductDao.queryBuilder()
+                                .where(HistoryProductDao.Properties.Barcode.eq(product.code))
+                                .build()
+                                .unique()
 
-                client.getProductsByBarcode(barcodes)
-                    .forEach { product ->
-                        val historyProduct = daoSession.historyProductDao.queryBuilder()
-                            .where(HistoryProductDao.Properties.Barcode.eq(product.code))
-                            .build()
-                            .unique()
+                            product.productName?.let { historyProduct.title = it }
+                            product.brands?.let { historyProduct.brands = it }
+                            product.getImageSmallUrl(localeManager.getLanguage())?.let { historyProduct.url = it }
+                            product.quantity?.let { historyProduct.quantity = it }
+                            product.nutritionGradeFr?.let { historyProduct.nutritionGrade = it }
+                            product.ecoscore?.let { historyProduct.ecoscore = it }
+                            product.novaGroups?.let { historyProduct.novaGroup = it }
 
-                        product.productName?.let { historyProduct.title = it }
-                        product.brands?.let { historyProduct.brands = it }
-                        product.getImageSmallUrl(localeManager.getLanguage())?.let { historyProduct.url = it }
-                        product.quantity?.let { historyProduct.quantity = it }
-                        product.nutritionGradeFr?.let { historyProduct.nutritionGrade = it }
-                        product.ecoscore?.let { historyProduct.ecoscore = it }
-                        product.novaGroups?.let { historyProduct.novaGroup = it }
-
-                        daoSession.historyProductDao.update(historyProduct)
-                    }
-            } catch (err: Exception) {
-                unorderedProductState.postValue(FetchProductsState.Error)
+                            daoSession.historyProductDao.update(historyProduct)
+                        }
+                } catch (err: Exception) {
+                    unorderedProductState.postValue(FetchProductsState.Error)
+                }
             }
 
             val updatedProducts = daoSession.historyProductDao.queryBuilder().list()
