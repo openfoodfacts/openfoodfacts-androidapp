@@ -66,9 +66,9 @@ abstract class BaseActivity : AppCompatActivity() {
 
 
     protected open fun startScanActivity() {
-        startActivity(Intent(this, ContinuousScanActivity::class.java).apply {
-            addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-        })
+        Intent(this, ContinuousScanActivity::class.java)
+            .apply { addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP) }
+            .let { startActivity(it) }
     }
 }
 
