@@ -37,7 +37,6 @@ import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.analytics.SentryAnalytics
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityHistoryScanBinding
 import openfoodfacts.github.scrachx.openfood.features.productlist.CreateCSVContract
-import openfoodfacts.github.scrachx.openfood.features.scan.ContinuousScanActivity
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.selectNavigationItem
@@ -95,7 +94,7 @@ class ScanHistoryActivity : BaseActivity() {
 
     private val cameraPermLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
         if (isGranted) {
-            openContinuousScanActivity()
+            startScanActivity()
         }
     }
 
@@ -246,12 +245,6 @@ class ScanHistoryActivity : BaseActivity() {
     }
 
 
-    private fun openContinuousScanActivity() {
-        Intent(this, ContinuousScanActivity::class.java)
-            .apply { addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP) }
-            .also { startActivity(it) }
-    }
-
     private fun exportAsCSV() {
         Toast.makeText(this, R.string.txt_exporting_history, Toast.LENGTH_LONG).show()
 
@@ -285,7 +278,7 @@ class ScanHistoryActivity : BaseActivity() {
                 cameraPermLauncher.launch(perm)
             }
         } else {
-            openContinuousScanActivity()
+            startScanActivity()
         }
     }
 
