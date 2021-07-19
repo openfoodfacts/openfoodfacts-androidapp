@@ -31,12 +31,17 @@ class ScanHistoryViewModel @Inject constructor(
     private val unorderedProductState = MutableLiveData<FetchProductsState>(FetchProductsState.Loading)
     val productsState = unorderedProductState.switchMap { products ->
         liveData {
-            try {
-                (products as? FetchProductsState.Data)?.items
-                    ?.customSort(sortType.value)
-                    ?.let { emit(FetchProductsState.Data(it)) }
-            } catch (err: Exception) {
-                emit(FetchProductsState.Error)
+            when (products) {
+                is FetchProductsState.Loading, is FetchProductsState.Error -> emit(products)
+                is FetchProductsState.Data -> {
+                    try {
+                        (products as? FetchProductsState.Data)?.items
+                            ?.customSort(sortType.value)
+                            ?.let { emit(FetchProductsState.Data(it)) }
+                    } catch (err: Exception) {
+                        emit(FetchProductsState.Error)
+                    }
+                }
             }
         }
     }

@@ -22,23 +22,21 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.afollestad.materialdialogs.MaterialDialog
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.Single
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.rxkotlin.addTo
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.rx2.await
 import kotlinx.coroutines.rx2.awaitSingleOrNull
 import kotlinx.coroutines.withContext
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductBrowsingListBinding
 import openfoodfacts.github.scrachx.openfood.features.adapters.ProductSearchAdapter
-import openfoodfacts.github.scrachx.openfood.features.scan.ContinuousScanActivity
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.selectNavigationItem
@@ -133,7 +131,7 @@ class ProductSearchActivity : BaseActivity() {
             Log.e(LOG_TAG, "No data passed to the activity. Exiting.")
             finish()
         }
-        newSearchQuery()
+        newSearch()
 
         binding.navigationBottom.bottomNavigation.selectNavigationItem(0)
         binding.navigationBottom.bottomNavigation.installBottomNavigation(this)
@@ -153,7 +151,7 @@ class ProductSearchActivity : BaseActivity() {
             override fun onQueryTextSubmit(query: String): Boolean {
                 mSearchInfo.searchQuery = query
                 mSearchInfo.searchType = SEARCH
-                newSearchQuery()
+                newSearch()
                 return true
             }
 
@@ -189,17 +187,15 @@ class ProductSearchActivity : BaseActivity() {
                     getString(R.string.product_info_added),
                     getString(R.string.product_info_tocomplete)
                 )
-                MaterialDialog.Builder(this).apply {
-                    title(R.string.show_by)
-                    items(*contributionTypes)
-                    itemsCallback { _, _, position, _ ->
+                MaterialAlertDialogBuilder(this)
+                    .setTitle(R.string.show_by)
+                    .setItems(contributionTypes) { _, position ->
                         contributionType = when (position) {
-                            1, 2, 3, 4, 5 -> position
+                            in 1..5 -> position
                             else -> 0
                         }
-                        newSearchQuery()
-                    }
-                }.show()
+                        newSearch()
+                    }.show()
                 true
             }
             else -> super.onOptionsItemSelected(item)
@@ -210,8 +206,11 @@ class ProductSearchActivity : BaseActivity() {
         val actualCountryTag = sharedPreferences.getString(getString(R.string.pref_country_key), "")
         if (actualCountryTag.isNullOrBlank()) {
             lifecycleScope.launch {
-                val url = productRepository.getCountryByCC2OrWorld(localeManager.getLocale().country).awaitSingleOrNull()?.tag ?: "en:world"
-                withContext(Dispatchers.Main) { setupUrlHungerGames(url) }
+                val url = productRepository
+                    .getCountryByCC2OrWorld(localeManager.getLocale().country)
+                    .awaitSingleOrNull()
+                    ?.tag ?: "en:world"
+                withContext(Main) { setupUrlHungerGames(url) }
             }
         } else {
             setupUrlHungerGames(actualCountryTag)
@@ -219,8 +218,10 @@ class ProductSearchActivity : BaseActivity() {
     }
 
     private fun setupUrlHungerGames(countryTag: String?) {
-        val url =
-            "https://hunger.openfoodfacts.org/questions?type=${mSearchInfo.searchType.url}&value_tag=${mSearchInfo.searchQuery}&country=$countryTag".toUri()
+        val url = ("https://hunger.openfoodfacts.org/questions?" +
+                "type=${mSearchInfo.searchType.url}" +
+                "&value_tag=${mSearchInfo.searchQuery}" +
+                "&country=$countryTag").toUri()
         val builder = CustomTabsIntent.Builder()
         val customTabsIntent = builder.build()
         binding.btnHungerGames.visibility = View.VISIBLE
@@ -230,7 +231,7 @@ class ProductSearchActivity : BaseActivity() {
         }
     }
 
-    private fun newSearchQuery() {
+    private fun newSearch() {
         val bar = supportActionBar ?: error("Support action bar not set.")
 
         bar.title = mSearchInfo.searchTitle
@@ -281,9 +282,7 @@ class ProductSearchActivity : BaseActivity() {
      */
     private fun addProduct() {
         when {
-            checkSelfPermission(this, Manifest.permission.CAMERA) == PERMISSION_GRANTED -> {
-                startActivity(Intent(this, ContinuousScanActivity::class.java))
-            }
+            checkSelfPermission(this, Manifest.permission.CAMERA) == PERMISSION_GRANTED -> startScanActivity()
             shouldShowRequestPermissionRationale(this, Manifest.permission.CAMERA) -> {
                 MaterialAlertDialogBuilder(this)
                     .setTitle(R.string.action_about)
@@ -353,9 +352,17 @@ class ProductSearchActivity : BaseActivity() {
 
 
     private fun Single<Search>.startSearch(@StringRes noMatchMsg: Int, @StringRes extendedMsg: Int = -1) {
-        observeOn(AndroidSchedulers.mainThread()).subscribe { search, throwable ->
+        lifecycleScope.launch(Main) {
+            var throwable: Throwable? = null
+            val search = try {
+                withContext(IO) { this@startSearch.await() }
+            } catch (err: Exception) {
+                throwable = err
+                null
+            }
+
             displaySearch(throwable == null, search, noMatchMsg, extendedMsg)
-        }.addTo(disp)
+        }
     }
 
     private fun loadDataForContributor(searchQuery: String) {
@@ -380,22 +387,14 @@ class ProductSearchActivity : BaseActivity() {
         }
     }
 
-    private fun showResponse(isResponseOk: Boolean, response: Search?) {
-        if (isResponseOk && response != null) {
-            showSuccessfulResponse(response)
-        } else {
-            showOfflineCloud()
-        }
-    }
-
-    private fun showSuccessfulResponse(response: Search) {
-        mCountProducts = response.count.toInt()
+    private fun showSuccessfulSearch(search: Search) {
+        mCountProducts = search.count.toInt()
         if (pageAddress == 1) {
-            val number = NumberFormat.getInstance(Locale.getDefault()).format(response.count.toLong())
+            val number = NumberFormat.getInstance(Locale.getDefault()).format(search.count.toLong())
             binding.textCountProduct.text = "${resources.getString(R.string.number_of_results)} $number"
 
             // Hacky thing to make sure the count is right
-            val products: MutableList<SearchProduct?> = response.products.toMutableList()
+            val products: MutableList<SearchProduct?> = search.products.toMutableList()
             if (products.size < mCountProducts) {
                 products += null
             }
@@ -411,7 +410,7 @@ class ProductSearchActivity : BaseActivity() {
             val posStart = adapter.itemCount
 
             adapter.products.removeAt(posStart - 1)
-            adapter.products += response.products
+            adapter.products += search.products
 
             // Hacky thing to make sure the count is right
             if (adapter.products.size < mCountProducts) {
@@ -467,18 +466,22 @@ class ProductSearchActivity : BaseActivity() {
         response: Search?,
         @StringRes emptyMessage: Int,
         @StringRes extendedMessage: Int = -1
-    ) = if (response == null) {
-        showResponse(isResponseSuccessful, null)
-    } else {
+    ) {
+        if (response == null || !isResponseSuccessful) {
+            showOfflineCloud()
+            return
+        }
+
         val count = try {
             response.count.toInt()
         } catch (e: NumberFormatException) {
             throw NumberFormatException("Cannot parse ${response.count}.")
         }
-        if (!isResponseSuccessful || count != 0) {
-            showResponse(isResponseSuccessful, response)
-        } else {
+
+        if (count == 0) {
             showEmptyResponse(emptyMessage, extendedMessage)
+        } else {
+            showSuccessfulSearch(response)
         }
     }
 
@@ -590,6 +593,6 @@ class ProductSearchActivity : BaseActivity() {
             })
         }
 
-        private val LOG_TAG: String = this::class.simpleName!!
+        private val LOG_TAG: String = ProductSearchActivity::class.simpleName!!
     }
 }

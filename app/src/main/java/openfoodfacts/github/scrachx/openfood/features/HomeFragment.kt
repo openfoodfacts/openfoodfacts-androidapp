@@ -191,7 +191,7 @@ class HomeFragment : NavigationBaseFragment() {
         if (count == 0) {
             binding.textHome.text = getString(R.string.txtHome)
         } else {
-            binding.textHome.text = resources.getString(R.string.txtHomeOnline, NumberFormat.getInstance().format(count))
+            binding.textHome.text = getString(R.string.txtHomeOnline, NumberFormat.getInstance().format(count))
         }
     }
 
