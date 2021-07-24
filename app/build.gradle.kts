@@ -82,8 +82,8 @@ dependencies {
 
     implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
 
-    kapt("com.google.dagger:dagger-compiler:2.37")
-    implementation("com.google.dagger:dagger:2.37")
+    kapt("com.google.dagger:dagger-compiler:2.38")
+    implementation("com.google.dagger:dagger:2.38")
     implementation("com.google.dagger:hilt-android:${rootProject.extra["hiltVersion"]}")
 
     kapt("com.google.dagger:hilt-compiler:${rootProject.extra["hiltVersion"]}")
@@ -184,7 +184,7 @@ dependencies {
 
     // Hilt for Android Testing
     androidTestImplementation("com.google.dagger:hilt-android-testing:2.37")
-    kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.37")
+    kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.38")
 
     androidTestImplementation("androidx.test:runner:1.3.0") { exclude("junit") }
     androidTestImplementation("androidx.test:rules:1.4.0")
