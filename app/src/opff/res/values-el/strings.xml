@@ -23,11 +23,11 @@
     <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet connection right now</string>
     <string name="txtDialogsContent">Το προϊόν που σαρώσατε δεν υπάρχει ακόμα στο Open Pet Food Facts. Παρακαλούμε προσθέστε το.</string>
     <string name="txtDialogsContentPowerMode">Το προϊόν που σαρώσατε υπάρχει ήδη στο Open Pet Food Facts.</string>
-    <string name="msg_share">Look at this product on Open Food Facts :</string>
+    <string name="msg_share">Look at this product on Open Pet Food Facts :</string>
     <string name="not_support_books">Δεν υποστηρίζονται βιβλία</string>
-    <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
-    <string name="Donation">Click here to donate to Open Food Facts</string>
-    <string name="translate_help_title">Βοηθήστε να μεταφραστεί το Open Food Facts</string>
+    <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Pet Food Facts</string>
+    <string name="Donation">Click here to donate to Open Pet Food Facts</string>
+    <string name="translate_help_title">Βοηθήστε να μεταφραστεί το Open Pet Food Facts</string>
     <string name="translate_help_summary">Βοηθήστε στην μετάφραση της εφαρμογής χωρίς να απαιτούνται τεχνολογικές γνώσεις</string>
     <string name="text_offline_info_dialog">Μπορείτε να σαρώσετε προϊόντα όταν είστε εκτός σύνδεσης για να τα προσθέσετε αργότερα στο Open Pet Food Facts. Όλα τα προϊόντα που σαρώνετε θα εμφανίζονται εδώ και θα μπορείτε να τα στείλετε χρησιμοποιώντας το παρακάτω κουμπί.</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Η αλλεργίες που εισάγετε είναι προσωπικές και δεν στέλνονται σε εμάς. Να είστε προσεχτικοί καθώς οι πληροφορίες προϊόντων δεν είναι τελείως ακριβής και προτείνεται να ελέγχετε τι παίρνετε. </string>

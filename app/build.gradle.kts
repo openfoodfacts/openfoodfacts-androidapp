@@ -21,7 +21,7 @@ plugins {
     id("kotlin-parcelize")
     id("kotlin-kapt")
     id("dagger.hilt.android.plugin")
-    id("org.jetbrains.dokka") version "1.4.32"
+    id("org.jetbrains.dokka") version "1.5.0"
 }
 
 fun obtainTestBuildType(): String {
@@ -36,17 +36,17 @@ fun obtainTestBuildType(): String {
 dependencies {
     // Kotlin
     implementation("org.jetbrains.kotlin:kotlin-stdlib:${rootProject.extra["kotlinVersion"]}")
-    val coroutinesVersion = "1.5.0"
+    val coroutinesVersion = "1.5.1"
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-rx2:$coroutinesVersion")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion")
 
 
     // Android KTX
-    implementation("androidx.fragment:fragment-ktx:1.3.4")
+    implementation("androidx.fragment:fragment-ktx:1.3.5")
     implementation("androidx.activity:activity-ktx:1.2.3")
     implementation("androidx.preference:preference-ktx:1.1.1")
-    implementation("androidx.core:core-ktx:1.6.0-beta02")
+    implementation("androidx.core:core-ktx:1.6.0")
 
     val viewModelKtxVer = "2.3.1"
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$viewModelKtxVer")
@@ -70,7 +70,7 @@ dependencies {
 
     val workVersion = "2.5.0"
     implementation("androidx.work:work-runtime-ktx:$workVersion")
-    val hiltVersion = "1.0.0-beta01"
+    val hiltVersion = "1.0.0"
     implementation("androidx.hilt:hilt-work:$hiltVersion")
     kapt("androidx.hilt:hilt-compiler:$hiltVersion")
 
@@ -78,12 +78,12 @@ dependencies {
     implementation("androidx.startup:startup-runtime:1.0.0")
 
     // ML Kit barcode Scanner
-    implementation("com.google.mlkit:barcode-scanning:16.1.2")
+    implementation("com.google.mlkit:barcode-scanning:16.2.0")
 
     implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
 
-    kapt("com.google.dagger:dagger-compiler:2.37")
-    implementation("com.google.dagger:dagger:2.37")
+    kapt("com.google.dagger:dagger-compiler:2.38")
+    implementation("com.google.dagger:dagger:2.38")
     implementation("com.google.dagger:hilt-android:${rootProject.extra["hiltVersion"]}")
 
     kapt("com.google.dagger:hilt-compiler:${rootProject.extra["hiltVersion"]}")
@@ -126,7 +126,7 @@ dependencies {
     implementation("org.greenrobot:eventbus:$eventBusVersion")
     kapt("org.greenrobot:eventbus-annotation-processor:$eventBusVersion")
 
-    implementation("com.google.android.material:material:1.3.0")
+    implementation("com.google.android.material:material:1.4.0")
 
     //Image Loading
     implementation("com.squareup.picasso:picasso:2.8")
@@ -139,7 +139,7 @@ dependencies {
     implementation("com.journeyapps:zxing-android-embedded:3.6.0") { isTransitive = false }
 
     // UI Component : Custom Toast
-    implementation("net.steamcrafted:load-toast:1.0.12")
+    implementation("com.github.code-mc:loadtoast:1.0.12")
 
     // UI Component : ImageView with Zooming
     implementation("com.github.chrisbanes:PhotoView:2.3.0")
@@ -158,44 +158,42 @@ dependencies {
     // UI Component : Font Icons
     implementation("com.mikepenz:iconics-core:4.0.2@aar")
     implementation("com.mikepenz:google-material-typeface:3.0.1.6.original-kotlin@aar")
-    implementation("com.theartofdev.edmodo:android-image-cropper:2.8.0") {
-        exclude("com.android.support", "appcompat-v7")
-    }
+    implementation("com.github.CanHub:Android-Image-Cropper:3.1.3")
 
     // UI Component : Chips Input
-    implementation("com.hootsuite.android:nachos:1.2.0")
+    implementation("com.github.hootsuite:nachos:1.2.0")
 
     // Crash analytics
     implementation("io.sentry:sentry-android:5.0.1")
-    implementation("org.matomo.sdk:tracker:4.1.2")
+    implementation("com.github.matomo-org:matomo-sdk-android:v4.1.2")
 
     // ShowCaseView dependency
     implementation("com.github.mreram:showcaseview:1.0.5")
 
     // Unit Testing
     testImplementation("junit:junit:4.13.2")
-    testImplementation("org.robolectric:robolectric:4.5.1")
-    testImplementation("org.mockito:mockito-core:3.11.1")
-    testImplementation("net.javacrumbs.json-unit:json-unit-fluent:2.26.0")
+    testImplementation("org.robolectric:robolectric:4.6.1")
+    testImplementation("org.mockito:mockito-core:3.11.2")
+    testImplementation("net.javacrumbs.json-unit:json-unit-fluent:2.27.0")
     testImplementation("com.google.truth:truth:1.1.3")
     testImplementation("com.google.truth.extensions:truth-java8-extension:1.1.3")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:${coroutinesVersion}")
 
     // Instrumented tests
-    androidTestUtil("androidx.test:orchestrator:1.3.0")
+    androidTestUtil("androidx.test:orchestrator:1.4.0")
 
     // Hilt for Android Testing
     androidTestImplementation("com.google.dagger:hilt-android-testing:2.37")
-    kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.37")
+    kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.38")
 
     androidTestImplementation("androidx.test:runner:1.3.0") { exclude("junit") }
-    androidTestImplementation("androidx.test:rules:1.3.0")
+    androidTestImplementation("androidx.test:rules:1.4.0")
 
     androidTestImplementation("androidx.test.ext:junit:1.1.2") { exclude("junit") }
 
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
-    androidTestImplementation("androidx.test.espresso:espresso-intents:3.3.0")
-    androidTestImplementation("androidx.test.espresso:espresso-web:3.3.0")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
+    androidTestImplementation("androidx.test.espresso:espresso-intents:3.4.0")
+    androidTestImplementation("androidx.test.espresso:espresso-web:3.4.0")
     androidTestImplementation("androidx.test.espresso:espresso-contrib:3.3.0") {
         exclude(group = "com.android.support", module = "appcompat-v7")
         exclude(group = "com.android.support", module = "support-v4")

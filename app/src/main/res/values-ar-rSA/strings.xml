@@ -239,7 +239,7 @@
     <string name="search_drawer">بحث</string>
     <string name="search_by_barcode_drawer">البحث عن طريق الرمز الشريطي</string>
     <string name="category_drawer">التصنيفات</string>
-    <string name="search_by_category">Category</string>
+    <string name="search_by_category">Atassnifate</string>
     <string name="scan_search">امسح</string>
     <string name="user_drawer">المستخدم</string>
     <string name="offline_edit_drawer">تعديل دون اتصال</string>
@@ -498,7 +498,7 @@
     <string name="packaging_subtitle">التعبئة والتغليف</string>
     <string name="packaging_string">التعبئة والتغليف</string>
     <string name="label_string">al3alama</string>
-    <string name="category_string">Category</string>
+    <string name="category_string">Atassnifate</string>
     <string name="connection">متصل</string>
     <string name="contributor_string">Almousstakhdimoun</string>
     <string name="app_disabled_text">التطبيق معطل</string>
@@ -831,11 +831,14 @@
     <string name="changelog_translation_help">Want to see this changelog in %s?\nJoin the translation team!</string>
     <string name="whats_new">What\'s new with Open Food Facts?</string>
     <!-- New onboarding slides -->
-    <string name="eco_score_slide_4_title">Eco-Score</string>
-    <string name="join_the_food_revolution">Join the food revolution</string>
-    <string name="slide_1_text_revolution">Scan food, Take photos, Help transform the food system</string>
-    <string name="get_the_nutri_score">الحصول على Nutriscore (مجموع نقاط التغذية)</string>
-    <string name="synthesis_of_nutrition_slide_2_text">A simple synthesis of the nutritional quality of your food</string>
-    <string name="avoid_ultra_processed_foods">Avoid ultra-processed foods</string>
-    <string name="nova_slide_3_text">Reduce the amount of ultra-processed foods in your diet.</string>
+    <string name="title_welcome_intro">Join the food revolution</string>
+    <string name="msg_welcome_intro">Scan food, Take photos, Help transform the food system</string>
+    <string name="title_welcome_nutriscore">الحصول على Nutriscore (مجموع نقاط التغذية)</string>
+    <string name="msg_welcome_nutriscore">A simple synthesis of the nutritional quality of your food</string>
+    <string name="title_welcome_nova">Avoid ultra-processed foods</string>
+    <string name="msg_welcome_nova">Reduce the amount of ultra-processed foods in your diet.</string>
+    <string name="title_welcome_ecoscore">Eco-Score</string>
+    <string name="msg_welcome_ecoscore">تركيبة من الأثر البيئي لطعامك.</string>
+    <string name="title_welcome_matomo">إرسال تحليلات مجهولة</string>
+    <string name="msg_welcome_matomo">ساعد متطوعين Open Food Facts لتطوير التطبيق. لديك قرار في إرسال تحليلات مجهولة. إذا غيرت رأيك، هذا الخيار يمكن تمكينه وتعطيله في أي وقت من الإعدادات.</string>
 </resources>

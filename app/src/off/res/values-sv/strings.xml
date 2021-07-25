@@ -21,13 +21,13 @@
     <string name="slide_4_title">Fungerar offline</string>
     <string name="slide_4_desc">Du kan lägga till nya produkter även om du inte har en internetanslutning just nu</string>
     <!-- New onboarding-->
-    <string name="join_the_food_revolution">Join the food revolution</string>
-    <string name="slide_1_text_revolution">Scan food, Take photos, Help transform the food system</string>
-    <string name="get_the_nutri_score">Få Nutri-Score</string>
-    <string name="synthesis_of_nutrition_slide_2_text">A simple synthesis of the nutritional quality of your food</string>
-    <string name="avoid_ultra_processed_foods">Avoid ultra-processed foods</string>
-    <string name="nova_slide_3_text">Reduce the amount of ultra-processed foods in your diet.</string>
-    <string name="eco_score_slide_4_title">Eco-Score</string>
+    <string name="title_welcome_intro">Join the food revolution</string>
+    <string name="msg_welcome_intro">Scan food, Take photos, Help transform the food system</string>
+    <string name="title_welcome_nutriscore">Få Nutri-Score</string>
+    <string name="msg_welcome_nutriscore">A simple synthesis of the nutritional quality of your food</string>
+    <string name="title_welcome_nova">Avoid ultra-processed foods</string>
+    <string name="msg_welcome_nova">Reduce the amount of ultra-processed foods in your diet.</string>
+    <string name="title_welcome_ecoscore">Eco-Score</string>
     <!-- Scan card -->
     <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
     <string name="txtDialogsContentPowerMode">Den produkt du skannat finns redan i Open Food Facts.</string>

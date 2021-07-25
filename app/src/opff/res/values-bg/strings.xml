@@ -23,14 +23,14 @@
     <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet connection right now</string>
     <string name="txtDialogsContent">The product you scanned does not exist yet in Open Pet Food Facts. Please add it.</string>
     <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Pet Food Facts.</string>
-    <string name="msg_share">Look at this product on Open Food Facts :</string>
-    <string name="not_support_books">Книгите понастоящем не се поддържат от Open Food Facts</string>
-    <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
-    <string name="Donation">Click here to donate to Open Food Facts</string>
-    <string name="translate_help_title">Помогнете за превода на Open Food Facts</string>
-    <string name="translate_help_summary">Въведете Open Food Facts база данни във вашия език без изискване за техничекси познания</string>
+    <string name="msg_share">Look at this product on Open Pet Food Facts :</string>
+    <string name="not_support_books">Книгите понастоящем не се поддържат от Open Pet Food Facts</string>
+    <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Pet Food Facts</string>
+    <string name="Donation">Click here to donate to Open Pet Food Facts</string>
+    <string name="translate_help_title">Помогнете за превода на Open Pet Food Facts</string>
+    <string name="translate_help_summary">Въведете Open Pet Food Facts база данни във вашия език без изискване за техничекси познания</string>
     <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Pet Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Вашата информация за алергиите никога няма да бъде изпратена на сървъра на Open Food Facts. Също така бъдете внимателни с това, че данните за продукта може да не са точни и откриването може да не е 100% точно, затова моля, проверете повторно сами! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Вашата информация за алергиите никога няма да бъде изпратена на сървъра на Open Pet Food Facts. Също така бъдете внимателни с това, че данните за продукта може да не са точни и откриването може да не е 100% точно, затова моля, проверете повторно сами! </string>
     <!-- OPFF tagline in different languages -->
     <string name="version_string">Open Pet Food Facts Android App</string>
     <string name="tagline">free pet food products database</string>

@@ -20,6 +20,8 @@ import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
 import android.os.Bundle
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.CallSuper
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import dagger.hilt.EntryPoints
@@ -31,11 +33,15 @@ import openfoodfacts.github.scrachx.openfood.utils.getLoginPreferences
 
 abstract class BaseActivity : AppCompatActivity() {
 
+    protected val requestCameraThenOpenScan = registerForActivityResult(ActivityResultContracts.RequestPermission())
+    { if (it) startScanActivity() }
+
     override fun attachBaseContext(newBase: Context) {
         val lm = EntryPoints.get(newBase.applicationContext, AppEntryPoint::class.java).localeManager()
         super.attachBaseContext(lm.restoreLocalizedContext(newBase))
     }
 
+    @CallSuper
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (resources.getBoolean(R.bool.portrait_only)) {
@@ -51,12 +57,18 @@ abstract class BaseActivity : AppCompatActivity() {
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == MY_PERMISSIONS_REQUEST_CAMERA
-                && grantResults.isNotEmpty()
-                && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            startActivity(Intent(this@BaseActivity, ContinuousScanActivity::class.java).apply {
-                addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            })
+            && grantResults.isNotEmpty()
+            && grantResults.all { it == PackageManager.PERMISSION_GRANTED }
+        ) {
+            startScanActivity()
         }
+    }
+
+
+    protected open fun startScanActivity() {
+        Intent(this, ContinuousScanActivity::class.java)
+            .apply { addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP) }
+            .let { startActivity(it) }
     }
 }
 

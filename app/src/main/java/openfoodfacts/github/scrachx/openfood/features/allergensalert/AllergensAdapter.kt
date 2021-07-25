@@ -39,8 +39,9 @@ class AllergensAdapter(
         val allergen = allergens[position]
         holder.nameTextView.text = allergen.name
         holder.messageButton.setOnClickListener {
-            allergens.removeAt(holder.adapterPosition)
-            notifyItemRemoved(holder.adapterPosition)
+            val pos = holder.bindingAdapterPosition
+            allergens.removeAt(pos)
+            notifyItemRemoved(pos)
             repository.setAllergenEnabled(allergen.allergenTag, false)
         }
     }

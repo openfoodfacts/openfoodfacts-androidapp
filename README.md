@@ -10,6 +10,7 @@ Open Food Facts is a food products database made by everyone, for everyone. Open
 [![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=openfoodfacts_openfoodfacts-androidapp&metric=alert_status)](https://sonarcloud.io/dashboard/index/openfoodfacts_openfoodfacts-androidapp)
 [![Crowdin](https://d322cqt584bo4o.cloudfront.net/openfoodfacts/localized.svg)](https://crowdin.com/project/openfoodfacts)
 ![Android Master & PR](https://github.com/openfoodfacts/openfoodfacts-androidapp/workflows/Android%20Master%20&%20PR/badge.svg)
+![Build](https://github.com/openfoodfacts/openfoodfacts-androidapp/workflows/Android%20Integration/badge.svg)
 [![Average time to resolve an issue](https://isitmaintained.com/badge/resolution/openfoodfacts/openfoodfacts-androidapp.svg)](https://isitmaintained.com/project/openfoodfacts/openfoodfacts-androidapp "Average time to resolve an issue")
 [![Percentage of issues still open](https://isitmaintained.com/badge/open/openfoodfacts/openfoodfacts-androidapp.svg)](https://isitmaintained.com/project/openfoodfacts/openfoodfacts-androidapp "Percentage of issues still open")
 [![Open Source Helpers](https://www.codetriage.com/openfoodfacts/openfoodfacts-androidapp/badges/users.svg)](https://www.codetriage.com/openfoodfacts/openfoodfacts-androidapp)
@@ -29,6 +30,9 @@ Open Food Facts is a non-profit association of volunteers.
 ### For everyone
 
 Data about food is of public interest and has to be open. The complete database is published as open data and can be reused by anyone and for any use. Check-out the cool reuses or make your own!
+
+## Ongoing documentation of user flows
+https://www.figma.com/file/BQ7CSyFvl7D9ljcXT0ay0u/Navigation-within-the-app
 
 ## Documentation of the source code
 The documentation is generated automatically from the source code and your improvements to code documentation are published automatically.

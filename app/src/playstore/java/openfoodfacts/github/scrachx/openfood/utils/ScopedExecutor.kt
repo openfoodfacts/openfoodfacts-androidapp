@@ -11,15 +11,10 @@ class ScopedExecutor(private val executor: Executor) : Executor {
     private val shutdown = AtomicBoolean()
     override fun execute(command: Runnable) {
         // Return early if this object has been shut down.
-        if (shutdown.get()) {
-            return
-        }
-        executor.execute {
-
+        if (shutdown.get()) return
+        executor.execute executor@{
             // Check again in case it has been shut down in the mean time.
-            if (shutdown.get()) {
-                return@execute
-            }
+            if (shutdown.get()) return@executor
             command.run()
         }
     }
@@ -31,7 +26,5 @@ class ScopedExecutor(private val executor: Executor) : Executor {
      *
      * Runnables that have already started to execute will continue.
      */
-    fun shutdown() {
-        shutdown.set(true)
-    }
+    fun shutdown() = shutdown.set(true)
 }

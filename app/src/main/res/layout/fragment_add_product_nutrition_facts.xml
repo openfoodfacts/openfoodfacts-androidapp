@@ -134,6 +134,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="@dimen/activity_horizontal_margin"
                     android:orientation="horizontal"
+                    android:checkedButton="@={viewModel.dataFormat}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@id/section_nutrition_facts"
                     app:layout_constraintTop_toBottomOf="@id/section_nutrition_facts">
@@ -142,7 +143,6 @@
                         android:id="@+id/for100g_100ml"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:checked="true"
                         android:text="@string/for_100g_100ml" />
 
                     <RadioButton

@@ -17,6 +17,11 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.rxkotlin.toObservable
 import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.rx2.await
+import kotlinx.coroutines.rx2.rxCompletable
+import kotlinx.coroutines.rx2.rxSingle
+import kotlinx.coroutines.withContext
 import okhttp3.MediaType
 import okhttp3.RequestBody
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OBF
@@ -57,22 +62,25 @@ class OpenFoodAPIClient @Inject constructor(
 ) {
     private var historySyncDisp = CompositeDisposable()
 
-    fun getProductStateFull(
+    suspend fun getProductStateFull(
         barcode: String,
         fields: String = getAllFields(),
         userAgent: String = Utils.HEADER_USER_AGENT_SEARCH
-    ): Single<ProductState> {
+    ): ProductState {
         sentryAnalytics.setBarcode(barcode)
-        return rawApi.getProductByBarcode(barcode, fields, localeManager.getLanguage(), getUserAgent(userAgent))
+        return withContext(IO) {
+            rawApi.getProductByBarcode(barcode, fields, localeManager.getLanguage(), getUserAgent(userAgent)).await()
+        }
     }
 
-    fun getProductsByBarcode(
+    suspend fun getProductsByBarcode(
         codes: List<String>,
         customHeader: String = Utils.HEADER_USER_AGENT_SEARCH
-    ): Single<List<SearchProduct>> {
-        return rawApi.getProductsByBarcode(codes.joinToString(","), getAllFields(), customHeader)
-            .map { it.products }
-    }
+    ) = rawApi.getProductsByBarcode(
+        codes.joinToString(","),
+        getAllFields(),
+        customHeader
+    ).products
 
     private fun getAllFields(): String {
         val allFields = Keys.PRODUCT_COMMON_FIELDS
@@ -109,16 +117,16 @@ class OpenFoodAPIClient @Inject constructor(
      *
      * @param barcode product barcode
      */
-    fun getProductImages(barcode: String): Single<ProductState> {
+    fun getProductImages(barcode: String): Single<ProductState> = rxSingle(IO) {
         val fields = Keys.PRODUCT_IMAGES_FIELDS.toMutableSet().also {
             it += Keys.lcProductNameKey(localeManager.getLanguage())
         }.joinToString(",")
-        return rawApi.getProductByBarcode(
+        return@rxSingle rawApi.getProductByBarcode(
             barcode,
             fields,
             localeManager.getLanguage(),
             getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)
-        )
+        ).await()
     }
 
     // TODO: This is not part of the client, move it to another class (preferably a utility class)
@@ -154,18 +162,14 @@ class OpenFoodAPIClient @Inject constructor(
                 }
             }
 
-    fun getIngredients(product: Product) = getIngredients(product.code)
-
-
-    fun searchProductsByName(name: String, page: Int) =
-        rawApi.searchProductByName(name, fieldsToFetchFacets, page)
-
     /**
      * @param barcode
-     * @return a single containing a list of product ingredients (can be empty)
+     * @return a list of product ingredients (can be empty)
      */
-    // TODO: This or the field inside Product.kt?
-    fun getIngredients(barcode: String?) = rawApi.getIngredientsByBarcode(barcode).map { productState ->
+    suspend fun getIngredients(product: Product) = withContext(IO) {
+        // TODO: This or the field inside Product.kt?
+        val productState = rawApi.getIngredientsByBarcode(product.code)
+
         productState["product"][Keys.INGREDIENTS]?.map {
             ProductIngredient(
                 it["id"].asText(),
@@ -173,6 +177,11 @@ class OpenFoodAPIClient @Inject constructor(
                 it["rank"]?.asLong(-1)!!
             )
         } ?: emptyList()
+    }
+
+
+    fun searchProductsByName(name: String, page: Int) = rxSingle {
+        rawApi.searchProductByName(name, fieldsToFetchFacets, page)
     }
 
     fun getProductsByCountry(country: String, page: Int) =
@@ -185,7 +194,7 @@ class OpenFoodAPIClient @Inject constructor(
      */
     private fun getUploadableMap(image: ProductImage): Map<String, RequestBody?> {
         val lang = image.language
-        val imgMap = hashMapOf(PRODUCT_BARCODE to image.codeBody, "imagefield" to image.fieldBody)
+        val imgMap = hashMapOf(PRODUCT_BARCODE to image.barcodeBody, "imagefield" to image.fieldBody)
         if (image.imgFront != null) {
             imgMap["""imgupload_front"; filename="front_$lang$PNG_EXT"""] = image.imgFront!!
         }
@@ -218,49 +227,50 @@ class OpenFoodAPIClient @Inject constructor(
     /**
      * Add a product to ScanHistory asynchronously
      */
-    fun addToHistory(product: Product) = Completable.fromAction {
+    fun addToHistory(product: Product) = rxCompletable(IO) {
         daoSession.historyProductDao.addToHistorySync(product, localeManager.getLanguage())
     }
 
     fun getProductsByContributor(contributor: String, page: Int) =
-        rawApi.getProductsByContributor(contributor, page, fieldsToFetchFacets).subscribeOn(Schedulers.io())
+        rawApi.getProductsByContributor(contributor, page, fieldsToFetchFacets)
+            .subscribeOn(Schedulers.io())
 
     /**
      * upload images in offline mode
      *
      * @return ListenableFuture
      */
-    fun uploadOfflineImages() = Single.fromCallable {
+    suspend fun uploadOfflineImages() = withContext(IO) {
         daoSession.toUploadProductDao.queryBuilder()
             .where(ToUploadProductDao.Properties.Uploaded.eq(false))
             .list()
-            .mapNotNull { product ->
+            .forEach { product ->
                 val imageFile = try {
                     File(product.imageFilePath)
                 } catch (e: Exception) {
                     Log.e("OfflineUploadingTask", "doInBackground", e)
-                    return@mapNotNull null
+                    return@forEach
                 }
-                val productImage = ProductImage(product.barcode, product.productField, imageFile, localeManager.getLanguage())
-                return@mapNotNull rawApi.saveImage(getUploadableMap(productImage))
-                    .flatMapCompletable { jsonNode: JsonNode? ->
-                        if (jsonNode != null) {
-                            Log.d("onResponse", jsonNode.toString())
-                            if (!jsonNode.isObject) {
-                                return@flatMapCompletable Completable.error(IOException("jsonNode is not an object"))
-                            } else if (jsonNode[Keys.STATUS].asText().contains(ApiFields.Defaults.STATUS_NOT_OK)) {
-                                daoSession.toUploadProductDao.delete(product)
-                                return@flatMapCompletable Completable.error(IOException(ApiFields.Defaults.STATUS_NOT_OK))
-                            } else {
-                                daoSession.toUploadProductDao.delete(product)
-                                return@flatMapCompletable Completable.complete()
-                            }
-                        } else {
-                            return@flatMapCompletable Completable.error(IOException("jsonNode is null"))
-                        }
-                    }
+                val productImage = ProductImage(
+                    product.barcode,
+                    product.productField,
+                    imageFile,
+                    localeManager.getLanguage()
+                )
+                val jsonNode = rawApi.saveImage(getUploadableMap(productImage)).await()
+                    ?: throw IOException("jsonNode is null")
+
+                Log.d("onResponse", jsonNode.toString())
+                if (!jsonNode.isObject) {
+                    throw IOException("jsonNode is not an object")
+                } else if (jsonNode[Keys.STATUS].asText().contains(ApiFields.Defaults.STATUS_NOT_OK)) {
+                    daoSession.toUploadProductDao.delete(product)
+                    throw IOException(ApiFields.Defaults.STATUS_NOT_OK)
+                } else {
+                    daoSession.toUploadProductDao.delete(product)
+                }
             }
-    }.flatMapCompletable { Completable.merge(it) }
+    }
 
     fun getProductsByPackaging(packaging: String, page: Int): Single<Search> =
         rawApi.getProductsByPackaging(packaging, page, fieldsToFetchFacets)
@@ -319,16 +329,18 @@ class OpenFoodAPIClient @Inject constructor(
             }
     }
 
-    fun editImage(code: String, imgMap: MutableMap<String, String>) = rawApi.editImages(code, addUserInfo(imgMap))
+    suspend fun editImage(code: String, imgMap: MutableMap<String, String>) = withContext(IO) {
+        rawApi.editImages(code, addUserInfo(imgMap))
+    }
 
     /**
      * Unselect the image from the product code.
      *
      * @param code code of the product
      */
-    fun unSelectImage(code: String, field: ProductImageField, language: String): Single<String> {
+    suspend fun unSelectImage(code: String, field: ProductImageField, language: String) = withContext(IO) {
         val imgMap = hashMapOf(IMAGE_STRING_ID to getImageStringKey(field, language))
-        return rawApi.unSelectImage(code, addUserInfo(imgMap))
+        return@withContext rawApi.unSelectImage(code, addUserInfo(imgMap))
     }
 
     fun getProductsByOrigin(origin: String, page: Int) =
@@ -421,11 +433,10 @@ class OpenFoodAPIClient @Inject constructor(
         val MIME_TEXT: MediaType = MediaType.get("text/plain")
         const val PNG_EXT = ".png"
 
-        fun HistoryProductDao.addToHistorySync(newProd: OfflineSavedProduct) {
+        suspend fun HistoryProductDao.addToHistory(newProd: OfflineSavedProduct): Unit = withContext(IO) {
             val savedProduct: HistoryProduct? =
                 queryBuilder().where(HistoryProductDao.Properties.Barcode.eq(newProd.barcode)).unique()
             val details = newProd.productDetails
-
             val hp = HistoryProduct(
                 newProd.name,
                 details[Keys.ADD_BRANDS],
@@ -437,31 +448,37 @@ class OpenFoodAPIClient @Inject constructor(
                 details[Keys.NOVA_GROUPS
                 ]
             )
-
             if (savedProduct != null) hp.id = savedProduct.id
             insertOrReplace(hp)
+            return@withContext
         }
 
         /**
          * Add a product to ScanHistory synchronously
          */
-        fun HistoryProductDao.addToHistorySync(product: Product, language: String) {
-            val historyProducts: HistoryProduct? = queryBuilder()
-                .where(HistoryProductDao.Properties.Barcode.eq(product.code))
-                .unique()
-            val hp = HistoryProduct(
-                product.productName,
-                product.brands,
-                product.getImageSmallUrl(language),
-                product.code,
-                product.quantity,
-                product.nutritionGradeFr,
-                product.ecoscore,
-                product.novaGroups
-            )
-            if (historyProducts != null) hp.id = historyProducts.id
-            insertOrReplace(hp)
-        }
+        suspend fun HistoryProductDao.addToHistorySync(product: Product, language: String): Unit =
+            withContext(IO) {
+
+                val historyProducts: HistoryProduct? = queryBuilder()
+                    .where(HistoryProductDao.Properties.Barcode.eq(product.code))
+                    .unique()
+
+                val hp = HistoryProduct(
+                    product.productName,
+                    product.brands,
+                    product.getImageSmallUrl(language),
+                    product.code,
+                    product.quantity,
+                    product.nutritionGradeFr,
+                    product.ecoscore,
+                    product.novaGroups
+                )
+
+                if (historyProducts != null) hp.id = historyProducts.id
+                insertOrReplace(hp)
+
+                return@withContext
+            }
     }
 
     /**
@@ -511,7 +528,6 @@ class OpenFoodAPIClient @Inject constructor(
             add(localeProductNameField)
         }.joinToString(",")
 
-    fun getEMBCodeSuggestions(term: String) = rawApi.getSuggestions("emb_codes", term)
-
-    fun getPeriodAfterOpeningSuggestions(term: String) = rawApi.getSuggestions("periods_after_opening", term)
+    suspend fun getEMBCodeSuggestions(term: String) = rawApi.getSuggestions("emb_codes", term)
+    suspend fun getPeriodAfterOpeningSuggestions(term: String) = rawApi.getSuggestions("periods_after_opening", term)
 }

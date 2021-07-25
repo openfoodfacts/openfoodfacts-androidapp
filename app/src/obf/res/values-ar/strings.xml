@@ -33,7 +33,7 @@
     <string name="version_string">افتح تطبيق Beauty Facts على Android</string>
     <string name="tagline">the free cosmetics database</string>
     <string name="product_not_found">المنتج %1$s الذي تم مسحه غير موجود حتى الآن في \"حقائق الجمال المفتوحة\". الرجاء إضافته إن امكن.</string>
-    <string name="currently_on_version">حاليا على Open Food Facts</string>
+    <string name="currently_on_version">حاليا على Open Beauty Facts</string>
     <string name="category_game_btn">مساعدة في تصنيف المنتجات</string>
     <string name="add_nutrient_prompt_text">أضف المزيد من التفاصيل للمساعدة في استكمال المنتج</string>
     <string name="add_category_prompt_text">أضف المزيد من التفاصيل للمساعدة في استكمال المنتج</string>

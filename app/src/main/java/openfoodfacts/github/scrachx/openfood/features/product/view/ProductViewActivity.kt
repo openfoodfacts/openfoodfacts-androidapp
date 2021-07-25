@@ -24,13 +24,12 @@ import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import androidx.fragment.app.FragmentActivity
+import androidx.lifecycle.lifecycleScope
 import androidx.preference.PreferenceManager
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.rxkotlin.addTo
+import kotlinx.coroutines.launch
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OBF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OPF
@@ -38,12 +37,11 @@ import openfoodfacts.github.scrachx.openfood.AppFlavors.OPFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductBinding
-import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.installBottomNavigation
-import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.selectNavigationItem
-import openfoodfacts.github.scrachx.openfood.features.listeners.OnRefreshListener
 import openfoodfacts.github.scrachx.openfood.features.product.ProductFragmentPagerAdapter
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_STATE
+import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewActivity.ShowIngredientsAction.PERFORM_OCR
+import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewActivity.ShowIngredientsAction.SEND_UPDATED
 import openfoodfacts.github.scrachx.openfood.features.product.view.contributors.ContributorsFragment
 import openfoodfacts.github.scrachx.openfood.features.product.view.environment.EnvironmentProductFragment
 import openfoodfacts.github.scrachx.openfood.features.product.view.ingredients.IngredientsProductFragment
@@ -53,6 +51,9 @@ import openfoodfacts.github.scrachx.openfood.features.product.view.photos.Produc
 import openfoodfacts.github.scrachx.openfood.features.product.view.serverattributes.ServerAttributesFragment
 import openfoodfacts.github.scrachx.openfood.features.product.view.summary.SummaryProductFragment
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
+import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.installBottomNavigation
+import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.selectNavigationItem
+import openfoodfacts.github.scrachx.openfood.listeners.OnRefreshListener
 import openfoodfacts.github.scrachx.openfood.models.ProductState
 import openfoodfacts.github.scrachx.openfood.models.eventbus.ProductNeedsRefreshEvent
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
@@ -63,7 +64,7 @@ import org.greenrobot.eventbus.Subscribe
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class ProductViewActivity : BaseActivity(), OnRefreshListener {
+class ProductViewActivity : BaseActivity(), IProductView, OnRefreshListener {
     private var _binding: ActivityProductBinding? = null
     private val binding get() = _binding!!
 
@@ -72,8 +73,6 @@ class ProductViewActivity : BaseActivity(), OnRefreshListener {
 
     @Inject
     lateinit var sharedPreferences: SharedPreferences
-
-    private val disp = CompositeDisposable()
 
     private var productState: ProductState? = null
     private var adapterResult: ProductFragmentPagerAdapter? = null
@@ -113,33 +112,26 @@ class ProductViewActivity : BaseActivity(), OnRefreshListener {
         super.onStop()
     }
 
-    override fun onDestroy() {
-        disp.dispose()
-        super.onDestroy()
-    }
-
     /**
      * Get the product data from the barcode. This takes the barcode and retrieves the information.
      *
      * @param barcode from the URL.
      */
-    private fun fetchProduct(barcode: String) = client.getProductStateFull(barcode, Utils.HEADER_USER_AGENT_SCAN)
-        .observeOn(AndroidSchedulers.mainThread())
-        .doOnError {
-            Log.w(this::class.simpleName, "Failed to load product $barcode.", it)
-            finish()
-        }
+    private suspend fun fetchProduct(barcode: String) = try {
+        client.getProductStateFull(barcode, Utils.HEADER_USER_AGENT_SCAN)
+    } catch (err: Exception) {
+        Log.w(this::class.simpleName, "Failed to load product $barcode.", err)
+        finish()
+        null
+    }
 
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == LOGIN_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
-            // Open product editing after successful login
-            Intent(this@ProductViewActivity, ProductEditActivity::class.java).apply {
-                putExtra(ProductEditActivity.KEY_EDIT_PRODUCT, productState!!.product)
-                startActivity(this)
-            }
 
+        // Open product editing after successful login
+        if (requestCode == LOGIN_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
+            ProductEditActivity.start(this, productState!!.product!!)
         }
     }
 
@@ -174,17 +166,17 @@ class ProductViewActivity : BaseActivity(), OnRefreshListener {
     }
 
 
-    fun showIngredientsTab(action: ShowIngredientsAction) {
+    override fun showIngredientsTab(action: ShowIngredientsAction) {
         if (adapterResult == null || adapterResult!!.itemCount == 0) return
 
         for (i in 0 until adapterResult!!.itemCount) {
             val fragment = adapterResult!!.createFragment(i)
+
             if (fragment is IngredientsProductFragment) {
                 binding.pager.currentItem = i
-                if (action == ShowIngredientsAction.PERFORM_OCR) {
-                    fragment.extractIngredients()
-                } else if (action == ShowIngredientsAction.SEND_UPDATED) {
-                    fragment.changeIngImage()
+                when (action) {
+                    PERFORM_OCR -> fragment.extractIngredients()
+                    SEND_UPDATED -> fragment.changeIngImage()
                 }
                 return
             }
@@ -208,16 +200,17 @@ class ProductViewActivity : BaseActivity(), OnRefreshListener {
             val barcode = data.toString().split("/")[4]
 
             // Fetch product from server, then initialize views
-            fetchProduct(barcode).subscribe { pState ->
+            lifecycleScope.launch {
+                val pState = fetchProduct(barcode) ?: return@launch
+
                 productState = pState
                 intent.putExtra(KEY_STATE, pState)
-                // Adding check on productState.getProduct() to avoid null pointer exception (happens in setViewPager()) when product not found
-                if (productState != null && productState!!.product != null) {
-                    initViews()
-                } else {
-                    finish()
-                }
-            }.addTo(disp)
+                // Adding check on productState.getProduct() to avoid NPE
+                // (happens in setViewPager()) when product not found
+                if (productState != null && productState!!.product != null) initViews()
+                else finish()
+            }
+
             true
         }
         else -> false
