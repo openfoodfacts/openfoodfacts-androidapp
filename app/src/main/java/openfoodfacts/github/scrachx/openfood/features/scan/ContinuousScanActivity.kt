@@ -210,6 +210,7 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
             val productState = try {
                 client.getProductStateFull(barcode, userAgent = Utils.HEADER_USER_AGENT_SCAN)
             } catch (err: Exception) {
+                if (!isActive) return@launch
                 // A network error happened
                 if (err is IOException) {
                     hideAllViews()
@@ -222,10 +223,10 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
                     binding.quickViewProgress.visibility = View.GONE
                     binding.quickViewProgressText.visibility = View.GONE
 
-                    Toast.makeText(this@ContinuousScanActivity, R.string.txtConnectionError, Toast.LENGTH_LONG).run {
-                        setGravity(CENTER, 0, 0)
-                        show()
-                    }
+                    Toast.makeText(this@ContinuousScanActivity, R.string.txtConnectionError, Toast.LENGTH_LONG)
+                        .apply { setGravity(CENTER, 0, 0) }
+                        .show()
+
                     Log.w(LOG_TAG, err.message, err)
                 }
                 return@launch
