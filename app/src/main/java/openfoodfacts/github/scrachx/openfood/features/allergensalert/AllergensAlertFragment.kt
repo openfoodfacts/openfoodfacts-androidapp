@@ -39,7 +39,7 @@ import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType
-import openfoodfacts.github.scrachx.openfood.utils.Utils
+import openfoodfacts.github.scrachx.openfood.utils.isNetworkConnected
 import javax.inject.Inject
 
 /**
@@ -146,7 +146,7 @@ class AllergensAlertFragment : NavigationBaseFragment() {
                     }.show()
             }
 
-        } else if (Utils.isNetworkConnected(requireContext())) {
+        } else if (requireContext().isNetworkConnected()) {
             val lt = LoadToast(context)
                 .setText(requireActivity().getString(R.string.toast_retrieving))
                 .setBackgroundColor(ResourcesCompat.getColor(requireContext().resources, R.color.blue, requireContext().theme))

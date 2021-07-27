@@ -40,7 +40,6 @@ import openfoodfacts.github.scrachx.openfood.features.productlist.CreateCSVContr
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.selectNavigationItem
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.SortType.*
 import java.io.File
@@ -56,9 +55,6 @@ class ScanHistoryActivity : BaseActivity() {
     private val viewModel: ScanHistoryViewModel by viewModels()
 
     @Inject
-    lateinit var client: OpenFoodAPIClient
-
-    @Inject
     lateinit var picasso: Picasso
 
     @Inject
@@ -71,7 +67,7 @@ class ScanHistoryActivity : BaseActivity() {
 
     private val adapter by lazy {
         ScanHistoryAdapter(isLowBatteryMode = isDisableImageLoad() && isBatteryLevelLow(), picasso) {
-            openProductActivity(it.barcode)
+            openProduct(it.barcode)
         }
     }
 
@@ -238,10 +234,6 @@ class ScanHistoryActivity : BaseActivity() {
     private fun setMenuEnabled(enabled: Boolean) {
         menuButtonsEnabled = enabled
         invalidateOptionsMenu()
-    }
-
-    private fun openProductActivity(barcode: String) {
-        client.openProduct(barcode, this)
     }
 
 

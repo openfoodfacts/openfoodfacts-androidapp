@@ -11,13 +11,9 @@ import com.fasterxml.jackson.databind.JsonNode
 import dagger.hilt.android.qualifiers.ApplicationContext
 import io.reactivex.Completable
 import io.reactivex.Single
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposable
-import io.reactivex.rxkotlin.addTo
-import io.reactivex.rxkotlin.toObservable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.rx2.await
 import kotlinx.coroutines.rx2.rxCompletable
 import kotlinx.coroutines.rx2.rxSingle
@@ -60,7 +56,6 @@ class OpenFoodAPIClient @Inject constructor(
     private val sentryAnalytics: SentryAnalytics,
     private val localeManager: LocaleManager
 ) {
-    private var historySyncDisp = CompositeDisposable()
 
     suspend fun getProductStateFull(
         barcode: String,
@@ -137,30 +132,32 @@ class OpenFoodAPIClient @Inject constructor(
      * @param barcode product barcode
      * @param activity
      */
-    fun openProduct(barcode: String, activity: Activity): Disposable =
-        rawApi.getProductByBarcode(
-            barcode,
-            getAllFields(),
-            localeManager.getLanguage(),
-            getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)
-        )
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnError {
-                if (it is IOException) {
-                    Toast.makeText(activity, R.string.something_went_wrong, Toast.LENGTH_LONG).show()
-                } else {
-                    productNotFoundDialogBuilder(activity, barcode).show()
-                }
-            }.subscribe { state ->
-                if (state.status == 0L) {
-                    productNotFoundDialogBuilder(activity, barcode)
-                        .onNegative { _, _ -> activity.onBackPressed() }
-                        .show()
-                } else {
-                    addToHistory(state.product!!).subscribe()
-                    startProductViewActivity(activity, state)
-                }
+    suspend fun openProduct(barcode: String, activity: Activity) {
+        val state = try {
+            rawApi.getProductByBarcode(
+                barcode,
+                getAllFields(),
+                localeManager.getLanguage(),
+                getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)
+            ).await()
+        } catch (err: Exception) {
+            when (err) {
+                is IOException -> Toast.makeText(activity, R.string.something_went_wrong, Toast.LENGTH_LONG).show()
+                else -> productNotFoundDialogBuilder(activity, barcode).show()
             }
+            return
+        }
+        withContext(Main) {
+            if (state.status == 0L) {
+                productNotFoundDialogBuilder(activity, barcode)
+                    .onNegative { _, _ -> activity.onBackPressed() }
+                    .show()
+            } else {
+                addToHistory(state.product!!).subscribe()
+                startProductViewActivity(activity, state)
+            }
+        }
+    }
 
     /**
      * @param barcode
@@ -194,6 +191,7 @@ class OpenFoodAPIClient @Inject constructor(
      */
     private fun getUploadableMap(image: ProductImage): Map<String, RequestBody?> {
         val lang = image.language
+
         val imgMap = hashMapOf(PRODUCT_BARCODE to image.barcodeBody, "imagefield" to image.fieldBody)
         if (image.imgFront != null) {
             imgMap["""imgupload_front"; filename="front_$lang$PNG_EXT"""] = image.imgFront!!
@@ -212,7 +210,7 @@ class OpenFoodAPIClient @Inject constructor(
         }
 
         // Attribute the upload to the connected user
-        addUserInfo().forEach { (key, value) ->
+        getUserInfo().forEach { (key, value) ->
             imgMap[key] = RequestBody.create(MIME_TEXT, value)
         }
         return imgMap
@@ -228,7 +226,7 @@ class OpenFoodAPIClient @Inject constructor(
      * Add a product to ScanHistory asynchronously
      */
     fun addToHistory(product: Product) = rxCompletable(IO) {
-        daoSession.historyProductDao.addToHistorySync(product, localeManager.getLanguage())
+        daoSession.historyProductDao.addToHistory(product, localeManager.getLanguage())
     }
 
     fun getProductsByContributor(contributor: String, page: Int) =
@@ -284,53 +282,48 @@ class OpenFoodAPIClient @Inject constructor(
      * @param brand search query for product
      * @param page page numbers
      */
-    fun getProductsByBrand(brand: String, page: Int): Single<Search> =
+    fun getProductsByBrand(brand: String, page: Int): Single<Search> = rxSingle(IO) {
         rawApi.getProductByBrands(brand, page, fieldsToFetchFacets)
+    }
 
-    fun postImg(image: ProductImage, setAsDefault: Boolean = false): Completable {
-        return rawApi.saveImage(getUploadableMap(image))
-            .flatMapCompletable { body: JsonNode ->
-                if (!body.isObject) {
+    fun postImg(image: ProductImage, setAsDefault: Boolean = false) = rxCompletable {
+        try {
+            val body = rawApi.saveImage(getUploadableMap(image)).await()
+
+            when {
+                !body.isObject -> {
                     throw IOException("body is not an object")
-                } else {
-                    if (body[Keys.STATUS].asText().contains(ApiFields.Defaults.STATUS_NOT_OK)) {
-                        throw IOException(body["error"].asText())
-                    } else {
-                        if (setAsDefault) {
-                            setDefaultImageFromServerResponse(body, image)
-                        } else {
-                            Completable.complete()
-                        }
-                    }
                 }
-            }.doOnError {
-                daoSession.toUploadProductDao.insertOrReplace(
-                    ToUploadProduct(
-                        image.barcode,
-                        image.filePath,
-                        image.imageField.toString()
-                    )
-                )
+                ApiFields.Defaults.STATUS_NOT_OK in body[Keys.STATUS].asText() -> {
+                    throw IOException(body["error"].asText())
+                }
+                setAsDefault -> setDefaultImageFromServerResponse(body, image)
             }
+        } catch (err: Exception) {
+            daoSession.toUploadProductDao.insertOrReplace(
+                ToUploadProduct(
+                    image.barcode,
+                    image.filePath,
+                    image.imageField.toString()
+                )
+            )
+        }
     }
 
     private fun setDefaultImageFromServerResponse(body: JsonNode, image: ProductImage): Completable {
-        val queryMap = hashMapOf(
+        val queryMap = getUserInfo() + listOf(
             IMG_ID to body["image"][IMG_ID].asText(),
             "id" to body["imagefield"].asText()
         )
-        return rawApi.editImage(image.barcode, addUserInfo(queryMap))
-            .flatMapCompletable { jsonNode: JsonNode ->
-                if ("status ok" == jsonNode[Keys.STATUS].asText()) {
-                    return@flatMapCompletable Completable.complete()
-                } else {
-                    throw IOException(jsonNode["error"].asText())
-                }
-            }
+
+        return rawApi.editImage(image.barcode, queryMap).flatMapCompletable { node ->
+            if (node[Keys.STATUS].asText() != "status ok") throw IOException(node["error"].asText())
+            else Completable.complete()
+        }
     }
 
     suspend fun editImage(code: String, imgMap: MutableMap<String, String>) = withContext(IO) {
-        rawApi.editImages(code, addUserInfo(imgMap))
+        rawApi.editImages(code, imgMap + getUserInfo())
     }
 
     /**
@@ -339,14 +332,14 @@ class OpenFoodAPIClient @Inject constructor(
      * @param code code of the product
      */
     suspend fun unSelectImage(code: String, field: ProductImageField, language: String) = withContext(IO) {
-        val imgMap = hashMapOf(IMAGE_STRING_ID to getImageStringKey(field, language))
-        return@withContext rawApi.unSelectImage(code, addUserInfo(imgMap))
+        val imgMap = getUserInfo() + (IMAGE_STRING_ID to getImageStringKey(field, language))
+        return@withContext rawApi.unSelectImage(code, imgMap)
     }
 
     fun getProductsByOrigin(origin: String, page: Int) =
         rawApi.getProductsByOrigin(origin, page, fieldsToFetchFacets)
 
-    fun syncOldHistory() {
+    suspend fun syncOldHistory() = withContext(IO) {
         val fields = listOf(
             Keys.IMAGE_SMALL_URL,
             Keys.PRODUCT_NAME,
@@ -356,41 +349,38 @@ class OpenFoodAPIClient @Inject constructor(
             Keys.NUTRITION_GRADE_FR,
             Keys.BARCODE
         ).joinToString(",")
-        historySyncDisp.clear()
 
-        Single.fromCallable { daoSession.historyProductDao.loadAll() }
-            .flatMapObservable { it.toObservable() }
-            .flatMapCompletable { historyProduct ->
-                rawApi.getProductByBarcode(
-                    historyProduct.barcode,
-                    fields,
-                    localeManager.getLanguage(),
-                    getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)
-                ).flatMapCompletable { state ->
-                    if (state.status != 0L) {
-                        val product = state.product!!
-                        val hp = HistoryProduct(
-                            product.productName,
-                            product.brands,
-                            product.getImageSmallUrl(localeManager.getLanguage()),
-                            product.code,
-                            product.quantity,
-                            product.nutritionGradeFr,
-                            product.ecoscore,
-                            product.novaGroups
-                        )
-                        Log.d("syncOldHistory", hp.toString())
-                        hp.lastSeen = historyProduct.lastSeen
-                        daoSession.historyProductDao.insertOrReplace(hp)
-                        Completable.complete()
-                    } else Completable.error(IOException("Could not sync history. Error with product ${state.code} "))
+        daoSession.historyProductDao.loadAll().forEach { historyProduct ->
+            val state = rawApi.getProductByBarcode(
+                historyProduct.barcode,
+                fields,
+                localeManager.getLanguage(),
+                getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)
+            ).await()
 
-                }
-            }.subscribe {
-                context.getSharedPreferences("prefs", 0).edit {
-                    putBoolean("is_old_history_data_synced", true)
-                }
-            }.addTo(historySyncDisp)
+            if (state.status == 0L) throw IOException("Could not sync history. Error with product ${state.code} ")
+            else {
+                val product = state.product!!
+                val hp = HistoryProduct(
+                    product.productName,
+                    product.brands,
+                    product.getImageSmallUrl(localeManager.getLanguage()),
+                    product.code,
+                    product.quantity,
+                    product.nutritionGradeFr,
+                    product.ecoscore,
+                    product.novaGroups
+                )
+                Log.d("syncOldHistory", hp.toString())
+                hp.lastSeen = historyProduct.lastSeen
+                daoSession.historyProductDao.insertOrReplace(hp)
+            }
+        }
+
+
+        context.getSharedPreferences("prefs", 0).edit {
+            putBoolean("is_old_history_data_synced", true)
+        }
     }
 
     fun getInfoAddedIncompleteProductsSingle(contributor: String, page: Int) =
@@ -434,8 +424,10 @@ class OpenFoodAPIClient @Inject constructor(
         const val PNG_EXT = ".png"
 
         suspend fun HistoryProductDao.addToHistory(newProd: OfflineSavedProduct): Unit = withContext(IO) {
-            val savedProduct: HistoryProduct? =
-                queryBuilder().where(HistoryProductDao.Properties.Barcode.eq(newProd.barcode)).unique()
+            val savedProduct: HistoryProduct? = queryBuilder()
+                .where(HistoryProductDao.Properties.Barcode.eq(newProd.barcode))
+                .unique()
+
             val details = newProd.productDetails
             val hp = HistoryProduct(
                 newProd.name,
@@ -450,16 +442,17 @@ class OpenFoodAPIClient @Inject constructor(
             )
             if (savedProduct != null) hp.id = savedProduct.id
             insertOrReplace(hp)
+
             return@withContext
         }
 
         /**
          * Add a product to ScanHistory synchronously
          */
-        suspend fun HistoryProductDao.addToHistorySync(product: Product, language: String): Unit =
+        suspend fun HistoryProductDao.addToHistory(product: Product, language: String): Unit =
             withContext(IO) {
 
-                val historyProducts: HistoryProduct? = queryBuilder()
+                val savedProduct: HistoryProduct? = queryBuilder()
                     .where(HistoryProductDao.Properties.Barcode.eq(product.code))
                     .unique()
 
@@ -474,7 +467,7 @@ class OpenFoodAPIClient @Inject constructor(
                     product.novaGroups
                 )
 
-                if (historyProducts != null) hp.id = historyProducts.id
+                if (savedProduct != null) hp.id = savedProduct.id
                 insertOrReplace(hp)
 
                 return@withContext
@@ -485,7 +478,9 @@ class OpenFoodAPIClient @Inject constructor(
      * Fill the given [Map] with user info (username, password, comment)
      *
      * @param imgMap The map to fill
+     *
      */
+    @Deprecated("Use the += operator with getUserInfo()")
     private fun addUserInfo(imgMap: MutableMap<String, String> = mutableMapOf()): Map<String, String> {
         val settings = context.getLoginPreferences()
 
@@ -500,6 +495,8 @@ class OpenFoodAPIClient @Inject constructor(
 
         return imgMap
     }
+
+    private fun getUserInfo() = addUserInfo()
 
     /**
      * Uploads comment by users

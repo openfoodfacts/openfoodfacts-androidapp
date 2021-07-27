@@ -32,6 +32,7 @@ import android.widget.AdapterView.OnItemSelectedListener
 import androidx.core.net.toFile
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import com.afollestad.materialdialogs.MaterialDialog
 import com.google.android.material.textfield.TextInputLayout
@@ -402,8 +403,15 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
             .resize(requireContext().dpsToPixel(50), requireContext().dpsToPixel(50))
             .centerInside()
             .into(binding.btnAddImageNutritionFacts, object : Callback {
-                override fun onSuccess() = afterNutritionImgLoaded()
-                override fun onError(ex: Exception) = afterNutritionImgLoaded()
+                override fun onSuccess() {
+                    if (!lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED)) return
+                    afterNutritionImgLoaded()
+                }
+
+                override fun onError(ex: Exception) {
+                    if (!lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED)) return
+                    afterNutritionImgLoaded()
+                }
             })
     }
 

@@ -6,14 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentFindProductBinding
 import openfoodfacts.github.scrachx.openfood.features.shared.NavigationBaseFragment
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType
-import openfoodfacts.github.scrachx.openfood.utils.Utils
+import openfoodfacts.github.scrachx.openfood.utils.hideKeyboard
 import openfoodfacts.github.scrachx.openfood.utils.isBarcodeValid
 import javax.inject.Inject
 
@@ -60,14 +62,14 @@ class SearchByCodeFragment : NavigationBaseFragment() {
     }
 
     private fun checkBarcodeThenSearch() {
-        Utils.hideKeyboard(requireActivity())
+        requireActivity().hideKeyboard()
         val barCodeTxt = binding.editTextBarcode.text.toString()
         if (barCodeTxt.isEmpty()) {
             binding.editTextBarcode.error = resources.getString(R.string.txtBarcodeRequire)
         } else if (!isBarcodeValid(barCodeTxt)) {
             binding.editTextBarcode.error = resources.getString(R.string.txtBarcodeNotValid)
         } else {
-            client.openProduct(barCodeTxt, requireActivity())
+            lifecycleScope.launch { client.openProduct(barCodeTxt, requireActivity()) }
         }
     }
 

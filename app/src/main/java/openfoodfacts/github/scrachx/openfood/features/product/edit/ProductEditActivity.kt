@@ -66,11 +66,7 @@ import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient.Companion.PNG_EXT
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient.Companion.addToHistory
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
-import openfoodfacts.github.scrachx.openfood.utils.OfflineProductService
-import openfoodfacts.github.scrachx.openfood.utils.Utils.hideKeyboard
-import openfoodfacts.github.scrachx.openfood.utils.clearCameraCache
-import openfoodfacts.github.scrachx.openfood.utils.getLoginPreferences
-import openfoodfacts.github.scrachx.openfood.utils.getProductState
+import openfoodfacts.github.scrachx.openfood.utils.*
 import java.io.IOException
 import java.util.*
 import javax.inject.Inject
@@ -88,9 +84,6 @@ class ProductEditActivity : BaseActivity() {
 
     @Inject
     lateinit var daoSession: DaoSession
-
-    @Inject
-    lateinit var client: OpenFoodAPIClient
 
     @Inject
     lateinit var productsApi: ProductsAPI
@@ -330,7 +323,7 @@ class ProductEditActivity : BaseActivity() {
         scheduleProductUpload(this, sharedPreferences)
 
         Toast.makeText(this, R.string.productSavedToast, Toast.LENGTH_SHORT).show()
-        hideKeyboard(this)
+        hideKeyboard()
 
         // Report analytics
         if (editingMode) {

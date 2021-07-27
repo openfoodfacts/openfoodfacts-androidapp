@@ -548,7 +548,9 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
         val dialog = MaterialDialog.Builder(requireActivity()).run {
             title(R.string.calculate_nutrition_facts)
             customView(R.layout.dialog_calculate_calories, false)
-            dismissListener { Utils.hideKeyboard(requireActivity()) }
+            dismissListener {
+                requireActivity().hideKeyboard()
+            }
             build()
         }.apply { show() }
 

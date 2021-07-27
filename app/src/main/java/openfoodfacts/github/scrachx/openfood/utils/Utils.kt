@@ -35,7 +35,6 @@ import android.text.style.ClickableSpan
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
 import androidx.annotation.ColorInt
 import androidx.annotation.DrawableRes
@@ -74,11 +73,6 @@ object Utils {
     const val NO_DRAWABLE_RESOURCE = 0
     const val FORCE_REFRESH_TAXONOMIES = "force_refresh_taxonomies"
 
-    fun hideKeyboard(activity: Activity) {
-        val view = activity.currentFocus ?: return
-        (activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager)
-            .hideSoftInputFromWindow(view.windowToken, 0)
-    }
 
     @JvmStatic
     fun compressImage(fileUrl: String): String? {
@@ -168,23 +162,6 @@ object Utils {
         WorkManager.getInstance(context).enqueueUniqueWork(UPLOAD_JOB_TAG, ExistingWorkPolicy.KEEP, uploadWorkRequest)
 
         isUploadJobInitialised = true
-    }
-
-    /**
-     * Check if the user is connected to a network. This can be any network.
-     *
-     * @param context of the application.
-     * @return true if connected or connecting. False otherwise.
-     */
-    @Suppress("DEPRECATION")
-    fun isNetworkConnected(context: Context): Boolean {
-        val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            val capability = cm.getNetworkCapabilities(cm.activeNetwork)
-            capability?.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET) ?: false
-        } else {
-            cm.activeNetworkInfo?.isConnectedOrConnecting ?: false
-        }
     }
 
     fun makeOrGetPictureDirectory(context: Context): File {
@@ -353,3 +330,22 @@ internal fun RequestCreator.into(target: ImageView, onSuccess: () -> Unit) {
 
 fun @receiver:ColorInt Int.darken(ratio: Float) = ColorUtils.blendARGB(this, Color.BLACK, ratio)
 fun @receiver:ColorInt Int.lighten(ratio: Float) = ColorUtils.blendARGB(this, Color.WHITE, ratio)
+
+/**
+ * Check if the user is connected to a network. This can be any network.
+ *
+ * @return `true` if connected or connecting;
+ *
+ * `false` otherwise.
+ *
+ */
+@Suppress("DEPRECATION")
+fun Context.isNetworkConnected(): Boolean {
+    val cm = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        val capability = cm.getNetworkCapabilities(cm.activeNetwork)
+        capability?.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET) ?: false
+    } else {
+        cm.activeNetworkInfo?.isConnectedOrConnecting ?: false
+    }
+}

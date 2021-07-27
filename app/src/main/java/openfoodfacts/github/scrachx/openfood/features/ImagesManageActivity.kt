@@ -59,7 +59,6 @@ import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.models.findByCode
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.FileDownloader.download
@@ -83,8 +82,6 @@ class ImagesManageActivity : BaseActivity() {
     @Inject
     lateinit var productsApi: ProductsAPI
 
-    @Inject
-    lateinit var client: OpenFoodAPIClient
 
     @Inject
     lateinit var picasso: Picasso

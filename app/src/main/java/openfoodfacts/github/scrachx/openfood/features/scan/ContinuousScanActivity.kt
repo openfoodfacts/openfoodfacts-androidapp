@@ -88,7 +88,6 @@ import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenNa
 import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.AnalysisTagConfig
 import openfoodfacts.github.scrachx.openfood.models.eventbus.ProductNeedsRefreshEvent
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.StateTags
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.*
 import org.greenrobot.eventbus.EventBus
@@ -102,9 +101,6 @@ import javax.inject.Inject
 class ContinuousScanActivity : BaseActivity(), IProductView {
     private var _binding: ActivityContinuousScanBinding? = null
     internal val binding get() = _binding!!
-
-    @Inject
-    lateinit var client: OpenFoodAPIClient
 
     @Inject
     lateinit var daoSession: DaoSession
@@ -214,6 +210,7 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
             val productState = try {
                 client.getProductStateFull(barcode, userAgent = Utils.HEADER_USER_AGENT_SCAN)
             } catch (err: Exception) {
+                if (!isActive) return@launch
                 // A network error happened
                 if (err is IOException) {
                     hideAllViews()
@@ -226,10 +223,10 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
                     binding.quickViewProgress.visibility = View.GONE
                     binding.quickViewProgressText.visibility = View.GONE
 
-                    Toast.makeText(this@ContinuousScanActivity, R.string.txtConnectionError, Toast.LENGTH_LONG).run {
-                        setGravity(CENTER, 0, 0)
-                        show()
-                    }
+                    Toast.makeText(this@ContinuousScanActivity, R.string.txtConnectionError, Toast.LENGTH_LONG)
+                        .apply { setGravity(CENTER, 0, 0) }
+                        .show()
+
                     Log.w(LOG_TAG, err.message, err)
                 }
                 return@launch
@@ -791,7 +788,7 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
             // When user search from "having trouble" edit text
             if (actionId != EditorInfo.IME_ACTION_SEARCH) return false
 
-            Utils.hideKeyboard(this@ContinuousScanActivity)
+            hideKeyboard()
             hideSystemUI()
 
             // Check for barcode validity
