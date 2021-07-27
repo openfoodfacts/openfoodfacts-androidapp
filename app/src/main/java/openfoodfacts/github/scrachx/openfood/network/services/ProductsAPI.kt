@@ -91,9 +91,9 @@ interface ProductsAPI {
 
     @Multipart
     @POST("/cgi/product_image_upload.pl")
-    fun saveImage(
-            @PartMap fields: Map<String, @JvmSuppressWildcards RequestBody?>
-    ): Single<JsonNode>
+    suspend fun saveImage(
+        @PartMap fields: Map<String, @JvmSuppressWildcards RequestBody?>
+    ): JsonNode
 
     @GET("/cgi/product_image_crop.pl")
     fun editImage(

@@ -255,8 +255,7 @@ class OpenFoodAPIClient @Inject constructor(
                     imageFile,
                     localeManager.getLanguage()
                 )
-                val jsonNode = rawApi.saveImage(getUploadableMap(productImage)).await()
-                    ?: throw IOException("jsonNode is null")
+                val jsonNode = rawApi.saveImage(getUploadableMap(productImage))
 
                 Log.d("onResponse", jsonNode.toString())
                 if (!jsonNode.isObject) {
@@ -288,7 +287,7 @@ class OpenFoodAPIClient @Inject constructor(
 
     fun postImg(image: ProductImage, setAsDefault: Boolean = false) = rxCompletable {
         try {
-            val body = rawApi.saveImage(getUploadableMap(image)).await()
+            val body = rawApi.saveImage(getUploadableMap(image))
 
             when {
                 !body.isObject -> {

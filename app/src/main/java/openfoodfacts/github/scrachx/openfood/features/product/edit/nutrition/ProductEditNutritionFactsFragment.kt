@@ -115,7 +115,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
             val image = ProductImage(productCode!!, ProductImageField.NUTRITION, it, localeManager.getLanguage()).apply {
                 filePath = resultUri.path
             }
-            (activity as? ProductEditActivity)?.addToPhotoMap(image, 2)
+            (activity as? ProductEditActivity)?.savePhoto(image, 2)
             hideImageProgress(false, "")
         }
     }
