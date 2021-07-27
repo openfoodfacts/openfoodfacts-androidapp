@@ -35,8 +35,9 @@ import android.widget.SearchView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.browser.customtabs.CustomTabsIntent
-import androidx.core.app.ActivityCompat
+import androidx.core.app.ActivityCompat.shouldShowRequestPermissionRationale
 import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.checkSelfPermission
 import androidx.core.content.edit
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
@@ -60,6 +61,7 @@ import com.mikepenz.materialdrawer.model.interfaces.IProfile
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.rx2.await
 import kotlinx.coroutines.withContext
@@ -117,9 +119,7 @@ import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Comp
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_SEARCH_BY_CODE
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_USER
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_YOUR_LISTS
-import openfoodfacts.github.scrachx.openfood.utils.Utils.hideKeyboard
 import openfoodfacts.github.scrachx.openfood.utils.Utils.isApplicationInstalled
-import openfoodfacts.github.scrachx.openfood.utils.Utils.isNetworkConnected
 import openfoodfacts.github.scrachx.openfood.utils.Utils.scheduleProductUploadJob
 import java.io.FileNotFoundException
 import java.io.IOException
@@ -163,6 +163,9 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
     private var searchMenuItem: MenuItem? = null
     private var userSettingsURI: Uri? = null
 
+    private var historySyncJob: Job? = null
+
+
     private val loginThenUpdate = registerForActivityResult(LoginContract())
     { isLoggedIn -> if (isLoggedIn) updateConnectedState() }
     private val loginThenOpenContributions = registerForActivityResult(LoginContract())
@@ -177,7 +180,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        hideKeyboard(this)
+        hideKeyboard()
         setSupportActionBar(binding.toolbarInclude.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(false)
         swapToFragment(HomeFragment.newInstance())
@@ -244,8 +247,8 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
             .withHasStableIds(true)
             .withAccountHeader(headerResult) //set the AccountHeader we created earlier for the header
             .withOnDrawerListener(object : Drawer.OnDrawerListener {
-                override fun onDrawerSlide(drawerView: View, slideOffset: Float) = hideKeyboard(this@MainActivity)
-                override fun onDrawerOpened(drawerView: View) = hideKeyboard(this@MainActivity)
+                override fun onDrawerSlide(drawerView: View, slideOffset: Float) = hideKeyboard()
+                override fun onDrawerOpened(drawerView: View) = hideKeyboard()
                 override fun onDrawerClosed(drawerView: View) = Unit
             })
             .addDrawerItems(
@@ -432,12 +435,16 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
 
         // Adds nutriscore and quantity values in old history for schema 5 update
         val mSharedPref = getSharedPreferences("prefs", 0)
+
         val isOldHistoryDataSynced = mSharedPref.getBoolean("is_old_history_data_synced", false)
-        if (!isOldHistoryDataSynced && isNetworkConnected(this)) {
-            apiClient.syncOldHistory()
+        if (!isOldHistoryDataSynced && this.isNetworkConnected()) {
+            historySyncJob?.cancel()
+            historySyncJob = lifecycleScope.launch { apiClient.syncOldHistory() }
         }
+
         binding.bottomNavigationInclude.bottomNavigation.selectNavigationItem(0)
         binding.bottomNavigationInclude.bottomNavigation.installBottomNavigation(this)
+
         handleIntent(intent)
 
         if (isFlavors(OFF)) {
@@ -457,24 +464,24 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
     }
 
     private fun checkThenStartScanActivity() {
-        if (ContextCompat.checkSelfPermission(this@MainActivity, Manifest.permission.CAMERA) !=
-            PackageManager.PERMISSION_GRANTED
-        ) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this@MainActivity, Manifest.permission.CAMERA)) {
-                MaterialAlertDialogBuilder(this@MainActivity)
+        when {
+            checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED -> {
+                startScanActivity()
+            }
+            shouldShowRequestPermissionRationale(this, Manifest.permission.CAMERA) -> {
+                MaterialAlertDialogBuilder(this)
                     .setTitle(R.string.action_about)
                     .setMessage(R.string.permission_camera)
                     .setPositiveButton(android.R.string.ok) { _, _ ->
                         requestCameraThenOpenScan.launch(Manifest.permission.CAMERA)
                     }
                     .show()
-
-            } else {
+            }
+            else -> {
                 requestCameraThenOpenScan.launch(Manifest.permission.CAMERA)
             }
-        } else {
-            startScanActivity()
         }
+
     }
 
     private fun updateProfileForCurrentUser() {
@@ -848,7 +855,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
 
                     if (tempBarcode.isNotEmpty()) {
                         dialog.dismiss()
-                        if (isNetworkConnected(this@MainActivity)) {
+                        if (this@MainActivity.isNetworkConnected()) {
                             contentResolver.openInputStream(selected)!!.use {
                                 val image = ProductImage(
                                     tempBarcode,

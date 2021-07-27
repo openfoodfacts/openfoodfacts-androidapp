@@ -56,7 +56,6 @@ import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInsta
 import openfoodfacts.github.scrachx.openfood.listeners.OnRefreshListener
 import openfoodfacts.github.scrachx.openfood.models.ProductState
 import openfoodfacts.github.scrachx.openfood.models.eventbus.ProductNeedsRefreshEvent
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.Utils
 import openfoodfacts.github.scrachx.openfood.utils.requireProductState
 import org.greenrobot.eventbus.EventBus
@@ -67,9 +66,6 @@ import javax.inject.Inject
 class ProductViewActivity : BaseActivity(), IProductView, OnRefreshListener {
     private var _binding: ActivityProductBinding? = null
     private val binding get() = _binding!!
-
-    @Inject
-    lateinit var client: OpenFoodAPIClient
 
     @Inject
     lateinit var sharedPreferences: SharedPreferences
@@ -157,7 +153,7 @@ class ProductViewActivity : BaseActivity(), IProductView, OnRefreshListener {
     }
 
     override fun onRefresh() {
-        client.openProduct(productState!!.product!!.code, this)
+        openProduct(productState!!.product!!.code)
     }
 
     override fun onNewIntent(intent: Intent) {

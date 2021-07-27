@@ -1,5 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.utils
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
@@ -8,6 +9,7 @@ import android.content.pm.PackageManager
 import android.os.BatteryManager
 import android.util.Log
 import android.util.TypedValue
+import android.view.inputmethod.InputMethodManager
 import androidx.preference.PreferenceManager
 import openfoodfacts.github.scrachx.openfood.features.PreferencesFragment
 import kotlin.math.ceil
@@ -64,3 +66,9 @@ fun Context.getVersionName(): String = try {
 }
 
 fun Context.isHardwareCameraInstalled() = isHardwareCameraInstalled(this)
+
+fun Activity.hideKeyboard() {
+    val view = currentFocus ?: return
+    (getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager)
+        .hideSoftInputFromWindow(view.windowToken, 0)
+}

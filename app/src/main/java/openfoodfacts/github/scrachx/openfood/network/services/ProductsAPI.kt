@@ -115,11 +115,11 @@ interface ProductsAPI {
 
 
     @GET("brand/{brand}/{page}.json")
-    fun getProductByBrands(
-            @Path("brand") brand: String,
-            @Path("page") page: Int,
-            @Query("fields") fields: String
-    ): Single<Search>
+    suspend fun getProductByBrands(
+        @Path("brand") brand: String,
+        @Path("page") page: Int,
+        @Query("fields") fields: String
+    ): Search
 
     /**
      * call API service to return products using Additives
