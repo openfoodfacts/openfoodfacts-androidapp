@@ -12,12 +12,9 @@
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
         android:adjustViewBounds="true"
-        app:layout_constraintBottom_toTopOf="@+id/separator"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
         tools:src="@drawable/ic_nova_group_4" />
 
     <TextView
@@ -48,21 +45,11 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/separator"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/logo_view"
         app:layout_constraintTop_toBottomOf="@+id/title_text"
-        app:layout_constraintVertical_bias="0.0"
         tools:text="Good for your health" />
-
-    <TextView
-        android:id="@+id/separator"
-        style="@style/HorizontalLineSeparator"
-        android:layout_width="0dp"
-        android:layout_height="1.5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
