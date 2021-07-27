@@ -17,12 +17,12 @@ import openfoodfacts.github.scrachx.openfood.models.DaoSession;
 public class AnalysisTag {
     @Id(autoincrement = true)
     private Long id;
+    @Index
+    private String tag;
     /**
      * If the analysis tag is being checked for by the user.
      */
     private Boolean enabled = true;
-    @Index
-    private String tag;
     @ToMany(joinProperties = {
         @JoinProperty(name = "tag", referencedName = "analysisTag")
     })
