@@ -81,8 +81,8 @@ class PhotoReceiverHandler(
      */
     private fun onCropResult(requestCode: Int, resultCode: Int, data: Intent?): Boolean {
         if (requestCode != CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) return false
+        val result = CropImage.getActivityResult(data) ?: return true
 
-        val result = CropImage.getActivityResult(data)!!
         when (resultCode) {
             RESULT_OK -> {
                 if (result.uriContent != null) {
