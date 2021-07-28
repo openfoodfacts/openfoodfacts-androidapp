@@ -396,7 +396,7 @@ class IngredientsProductFragment : BaseFragment() {
                 showSignInDialog()
             } else {
                 productState = requireProductState()
-                updateImagesLauncher.launch(productState.product)
+                updateImagesLauncher.launch(productState.product!!)
             }
         }
         when {

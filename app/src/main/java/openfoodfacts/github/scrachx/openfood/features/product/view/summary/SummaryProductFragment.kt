@@ -15,7 +15,6 @@
  */
 package openfoodfacts.github.scrachx.openfood.features.product.view.summary
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -35,18 +34,22 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.content.res.ResourcesCompat
+import androidx.core.net.toUri
 import androidx.core.text.bold
 import androidx.core.view.updatePadding
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.afollestad.materialdialogs.MaterialDialog
 import com.google.android.material.chip.Chip
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.addTo
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
@@ -89,7 +92,6 @@ import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.network.WikiDataApiClient
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.*
-import org.greenrobot.greendao.async.AsyncOperationListener
 import java.io.File
 import javax.inject.Inject
 import kotlin.random.Random
@@ -233,6 +235,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
 
 
     override fun onRefresh() {
+        super.onRefresh()
         refreshView(productState)
     }
 
@@ -495,7 +498,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     private fun refreshCO2OrEcoscoreIcon() {
         binding.ecoscoreIcon.setImageResource(product.getEcoscoreResource())
         binding.ecoscoreIcon.setOnClickListener {
-            val uri = Uri.parse(getString(R.string.ecoscore_url))
+            val uri = getString(R.string.ecoscore_url).toUri()
             val customTabsIntent = CustomTabsHelper.getCustomTabsIntent(requireContext(), customTabActivityHelper.session)
             CustomTabActivityHelper.openCustomTab(requireActivity(), customTabsIntent, uri, WebViewFallback())
         }
@@ -506,30 +509,29 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         // remove the existing childviews on chip group if any
         binding.listChips.removeAllViews()
 
-        val asyncSessionList = daoSession.startAsyncSession()
-        asyncSessionList.queryList(
-            daoSession.listedProductDao.queryBuilder()
-                .where(ListedProductDao.Properties.Barcode.eq(product.code)).build()
-        )
+        lifecycleScope.launch {
+            val lists = daoSession.listedProductDao.queryBuilder()
+                .where(ListedProductDao.Properties.Barcode.eq(product.code))
+                .list()
 
-        asyncSessionList.listenerMainThread = AsyncOperationListener { operation ->
-            (operation.result as List<ListedProduct>).forEach { list ->
+            if (lists.isNotEmpty()) {
+                binding.actionAddToListButtonLayout.background = ResourcesCompat.getDrawable(resources, R.color.grey_300, null)
+                binding.actionButtonsLayout.updatePadding(bottom = 0, top = 0)
+                binding.listChips.visibility = View.VISIBLE
+            }
+            lists.forEach { list ->
                 val chip = Chip(context)
                 chip.text = list.listName
 
                 // set a random color to the chip's background, we want a dark background as our text color is white so we will limit our rgb to 180
-                val chipColor: Int = Color.rgb(Random.nextInt(180), Random.nextInt(180), Random.nextInt(180))
+                val chipColor = Color.rgb(Random.nextInt(180), Random.nextInt(180), Random.nextInt(180))
                 chip.chipBackgroundColor = ColorStateList.valueOf(chipColor)
                 chip.setTextColor(Color.WHITE)
 
                 // open list when the user clicks on chip
-                chip.setOnClickListener {
-                    ProductListActivity.start(requireContext(), list.listId, list.listName)
-                }
+                chip.setOnClickListener { ProductListActivity.start(requireContext(), list.listId, list.listName) }
+
                 binding.listChips.addView(chip)
-                binding.actionAddToListButtonLayout.background = ResourcesCompat.getDrawable(resources, R.color.grey_300, null)
-                binding.actionButtonsLayout.updatePadding(bottom = 0, top = 0)
-                binding.listChips.visibility = View.VISIBLE
             }
         }
     }
@@ -842,37 +844,41 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     private fun editProduct() = editProductLauncher.launch(product)
 
     private fun onBookmarkProductButtonClick() {
-        val activity: Activity = requireActivity()
+        val context = requireContext()
+
         // TODO: 19/06/2021 remove runBlocking
-        val productLists = runBlocking { daoSession.getProductListsDaoWithDefaultList(activity).loadAll() }
-        val productBarcode = product.code
-        val productName = product.productName
-        val imageUrl = product.getImageSmallUrl(localeManager.getLanguage())
-        val productDetails = product.getProductBrandsQuantityDetails()
-        val addToListDialog = MaterialDialog.Builder(activity)
-            .title(R.string.add_to_product_lists)
-            .customView(R.layout.dialog_add_to_list, true)
-            .build().apply { show() }
-        val dialogView = addToListDialog.customView ?: return
+        val productLists = runBlocking { daoSession.getProductListsDaoWithDefaultList(context).loadAll() }
+
+        val dialog = MaterialAlertDialogBuilder(context)
+            .setTitle(R.string.add_to_product_lists)
+            .setView(R.layout.dialog_add_to_list)
+            .show()
 
         // Set recycler view
-        val addToListRecyclerView: RecyclerView = dialogView.findViewById(R.id.rv_dialogAddToList)
-        val addToListAdapter = DialogAddToListAdapter(
-            activity,
-            productLists,
-            productBarcode,
-            productName.orEmpty(),
-            productDetails,
-            imageUrl.orEmpty(),
-            daoSession
-        )
-        addToListRecyclerView.layoutManager = LinearLayoutManager(activity)
-        addToListRecyclerView.adapter = addToListAdapter
+        val addToListRecyclerView = dialog.findViewById<RecyclerView>(R.id.rv_dialogAddToList)!!
+        addToListRecyclerView.layoutManager = LinearLayoutManager(context)
+
+        addToListRecyclerView.adapter = DialogAddToListAdapter(
+            context,
+            productLists.filter { list -> product.code !in list.products.map { it.barcode } }
+        ) { list ->
+            val product = ListedProduct().also {
+                it.barcode = product.code
+                it.listId = list.id
+                it.listName = list.listName
+                it.productName = product.productName
+                it.productDetails = product.getProductBrandsQuantityDetails()
+                it.imageUrl = product.getImageSmallUrl(localeManager.getLanguage())
+            }
+            daoSession.listedProductDao.insertOrReplace(product)
+            dialog.dismiss()
+            onRefresh()
+        }
 
         // Add listener to text view
-        val addToNewList = dialogView.findViewById<TextView>(R.id.tvAddToNewList)
+        val addToNewList = dialog.findViewById<TextView>(R.id.tvAddToNewList)!!
         addToNewList.setOnClickListener {
-            activity.startActivity(Intent(activity, ProductListsActivity::class.java).apply {
+            context.startActivity(Intent(context, ProductListsActivity::class.java).apply {
                 putExtra("product", product)
             })
         }
@@ -885,19 +891,19 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     }
 
     private fun openFrontImageFullscreen() {
-        val url = mUrlImage
-        if (url != null) {
-            FullScreenActivityOpener.openForUrl(
-                this,
-                client,
-                product,
-                ProductImageField.FRONT,
-                url,
-                binding.imageViewFront,
-                localeManager.getLanguage()
-            )
-        } else {
-            newFrontImage()
+        when (val url = mUrlImage) {
+            null -> newFrontImage()
+            else -> {
+                FullScreenActivityOpener.openForUrl(
+                    this,
+                    client,
+                    product,
+                    ProductImageField.FRONT,
+                    url,
+                    binding.imageViewFront,
+                    localeManager.getLanguage()
+                )
+            }
         }
     }
 
@@ -923,7 +929,6 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     override fun doOnPhotosPermissionGranted() =
         if (sendOther) takeMorePicture()
         else newFrontImage()
-
 
 
     fun resetScroll() {

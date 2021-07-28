@@ -2,7 +2,6 @@ package openfoodfacts.github.scrachx.openfood.utils
 
 import android.util.Log
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.rx2.await
 import kotlinx.coroutines.withContext
 import okhttp3.RequestBody
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
@@ -118,7 +117,7 @@ class OfflineProductService @Inject constructor(
             imgMap["""imgupload_$imageType"; filename="${imageType}_$language.png""""] = image
 
             return@withContext try {
-                val jsonNode = productsApi.saveImage(imgMap).await()
+                val jsonNode = productsApi.saveImage(imgMap)
                 val status = jsonNode["status"].asText()
                 if (status == "status not ok") {
                     val error = jsonNode["error"].asText()
