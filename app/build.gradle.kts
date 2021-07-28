@@ -230,7 +230,7 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
-        ndk.abiFilters("armeabi-v7a", "arm64-v8a", "x86", "x86_64")
+        ndk.abiFilters += listOf("armeabi-v7a", "arm64-v8a", "x86", "x86_64")
 
         multiDexEnabled = true
     }
@@ -340,11 +340,6 @@ android {
             dimension = "platform"
             buildConfigField("boolean", "USE_MLKIT", "false")
         }
-    }
-
-    dexOptions {
-        preDexLibraries = false
-        javaMaxHeapSize = "4g"
     }
 
     compileOptions {
