@@ -20,16 +20,16 @@ Open Food Facts is a food products database made by everyone, for everyone. Open
 
 ### A food products database
 
-Open Food Facts is a database of food products with ingredients, allergens, nutrition facts and all the tidbits of information we can find on product labels.
+Open Food Facts is a database of food products with ingredients, allergens, nutrition facts… which allow us to compute scores like Nutri-Score, NOVA groups and Eco-Score.
 
 ### Made by everyone
 
 Open Food Facts is a non-profit association of volunteers.
-25000+ contributors like you have added 1,7M+ products from 150 countries using our Android, iPhone or Windows Phone app or their camera to scan barcodes and upload pictures of products and their labels.
+25000+ contributors like you have added 1,7M+ products from 150 countries using our Android or iPhone apps to scan barcodes and upload pictures of products and their labels.
 
 ### For everyone
 
-Data about food is of public interest and has to be open. The complete database is published as open data and can be reused by anyone and for any use. Check-out the cool reuses or make your own!
+Data about food is of public interest and has to be open. The complete database is published as open data and can be reused by anyone.
 
 ## Ongoing documentation of user flows
 https://www.figma.com/file/BQ7CSyFvl7D9ljcXT0ay0u/Navigation-within-the-app
