@@ -32,32 +32,33 @@ Open Food Facts is a non-profit association of volunteers.
 Data about food is of public interest and has to be open. The complete database is published as open data and can be reused by anyone.
 
 ## Ongoing documentation of user flows
-https://www.figma.com/file/BQ7CSyFvl7D9ljcXT0ay0u/Navigation-within-the-app
+[Visual documentation of the App on Figma](https://www.figma.com/file/BQ7CSyFvl7D9ljcXT0ay0u/Navigation-within-the-app)
 
 ## Documentation of the source code
 The documentation is generated automatically from the source code and your improvements to code documentation are published automatically.
-https://openfoodfacts.github.io/openfoodfacts-androidapp/
+[Code documentation on GitHub pages](https://openfoodfacts.github.io/openfoodfacts-androidapp/)
 
 ## Helping stabilize our next release
 Here are issues and feature requests you can work on:
-- [3.6.6 milestone](https://github.com/openfoodfacts/openfoodfacts-androidapp/milestone/36)
-Here's a summary explanation of improvements and regressions that are blocking the release: https://github.com/openfoodfacts/openfoodfacts-androidapp/wiki#pros-and-cons-of-releasing-before-the-15th
+- [ ] [3.6.6 milestone](https://github.com/openfoodfacts/openfoodfacts-androidapp/milestone/36)
+- [ ] [Summary explanation of improvements and regressions that are blocking the release](https://github.com/openfoodfacts/openfoodfacts-androidapp/wiki#pros-and-cons-of-releasing-before-the-15th)
 
 ## Impact Roadmap
 ### A brilliant scan experience 
-https://github.com/openfoodfacts/openfoodfacts-androidapp/projects/20
+- [ ] ["A brilliant scan experience" project](https://github.com/openfoodfacts/openfoodfacts-androidapp/projects/20)
 - [ ] Add offline scanning
 
 ### Help data refresh
-- [ ] Create a "Help with images" button in the scan screen https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/3543
+- [ ] [Create a "Help with images" button in the scan screen](https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/3543)
 
 ### Open Beauty Facts
-- [ ] https://github.com/openfoodfacts/openfoodfacts-androidapp/projects/8#card-39610510
+- [ ] [Open Beauty Facts project](https://github.com/openfoodfacts/openfoodfacts-androidapp/projects/8)
 
 ### Editing papercut bugs
-Make category selection more intuitive for beginners #2951
-Improve suggestions by removing diacritics in the edit mode #2184
 
+
+- [ ] [Make category selection more intuitive for beginners #2951](https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/2951)
+- [ ] [Improve suggestions by removing diacritics in the edit mode #2184](https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/2184)
 
 ## Test it on your phone or tablet
 
