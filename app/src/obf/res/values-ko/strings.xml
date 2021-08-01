@@ -32,7 +32,7 @@
     <!-- Open Beauty Facts tagline in different languages -->
     <string name="version_string">Open Beauty Facts Android App</string>
     <string name="tagline">the free cosmetics database</string>
-    <string name="product_not_found">스캔한 상품%1$s가 Open Food Facts에 존재하지 않습니다. 추가할 수 있습니까?</string>
+    <string name="product_not_found">스캔한 상품%1$s가 Open Beauty Facts에 존재하지 않습니다. 추가할 수 있습니까?</string>
     <string name="currently_on_version">요즘 Open Beauty Facts</string>
     <string name="category_game_btn">제품 분류 도움말</string>
     <string name="add_nutrient_prompt_text">아직 완성되지 않은 제품의 정보를 추가하기</string>

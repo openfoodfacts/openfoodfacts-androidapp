@@ -17,17 +17,17 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    val kotlinVersion by extra("1.5.0")
-    val jacksonVersion by extra("2.12.2")
+    val kotlinVersion by extra("1.5.20")
+    val jacksonVersion by extra("2.12.3")
     val greendaoVersion by extra("3.3.0")
-    val hiltVersion by extra("2.33-beta")
+    val hiltVersion by extra("2.38.1")
     repositories {
         google()
         mavenCentral()
         maven("https://jitpack.io")
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:4.2.1")
+        classpath("com.android.tools.build:gradle:7.0.0")
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -48,7 +48,6 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-        jcenter() // We need this for matomo!!
         maven("https://jitpack.io")
     }
 

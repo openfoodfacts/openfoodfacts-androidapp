@@ -29,17 +29,15 @@ import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
 import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityYourListedProductsBinding
-import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.installBottomNavigation
-import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.selectNavigationItem
-import openfoodfacts.github.scrachx.openfood.features.scan.ContinuousScanActivity
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
+import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.installBottomNavigation
+import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.selectNavigationItem
 import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import openfoodfacts.github.scrachx.openfood.models.HistoryProduct
 import openfoodfacts.github.scrachx.openfood.models.HistoryProductDao
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.entities.ListedProduct
 import openfoodfacts.github.scrachx.openfood.models.entities.ProductLists
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.SortType.*
 import java.io.File
@@ -52,9 +50,6 @@ import kotlin.properties.Delegates
 class ProductListActivity : BaseActivity(), SwipeController.Actions {
     private var _binding: ActivityYourListedProductsBinding? = null
     private val binding get() = _binding!!
-
-    @Inject
-    lateinit var client: OpenFoodAPIClient
 
     @Inject
     lateinit var daoSession: DaoSession
@@ -309,9 +304,6 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
         view.setText(R.string.txt_info_your_listed_products)
     }
 
-    private val requestCameraLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission())
-    { if (it) startScan() }
-
     private fun checkPermsStartScan() {
         if (!isHardwareCameraInstalled(this)) {
             Log.e(this::class.simpleName, "Device has no camera installed.")
@@ -319,9 +311,9 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
         }
         when {
             checkSelfPermission(
-                    baseContext, Manifest.permission.CAMERA
+                baseContext, Manifest.permission.CAMERA
             ) == PackageManager.PERMISSION_GRANTED -> {
-                startScan()
+                startScanActivity()
             }
             shouldShowRequestPermissionRationale(this, Manifest.permission.CAMERA) -> {
                 MaterialDialog.Builder(this).run {
@@ -329,21 +321,15 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
                     content(R.string.permission_camera)
                     neutralText(android.R.string.ok)
                     onNeutral { _, _ ->
-                        requestCameraLauncher.launch(Manifest.permission.CAMERA)
+                        requestCameraThenOpenScan.launch(Manifest.permission.CAMERA)
                     }
                     show()
                 }
             }
             else -> {
-                requestCameraLauncher.launch(Manifest.permission.CAMERA)
+                requestCameraThenOpenScan.launch(Manifest.permission.CAMERA)
             }
         }
-    }
-
-    private fun startScan() {
-        startActivity(Intent(this, ContinuousScanActivity::class.java).apply {
-            addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-        })
     }
 
     @RequiresApi(Build.VERSION_CODES.KITKAT)

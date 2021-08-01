@@ -28,7 +28,6 @@ import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.*
-import java.util.*
 
 
 /**
@@ -58,11 +57,11 @@ interface ProductsAPI {
      * @param barcodes String of comma separated barcodes
      */
     @GET("$API_P/search")
-    fun getProductsByBarcode(
-            @Query("code") barcodes: String,
-            @Query("fields") fields: String,
-            @Header("User-Agent") header: String
-    ): Single<Search>
+    suspend fun getProductsByBarcode(
+        @Query("code") barcodes: String,
+        @Query("fields") fields: String,
+        @Header("User-Agent") header: String
+    ): Search
 
     @FormUrlEncoded
     @POST("cgi/product_jqm2.pl")
@@ -73,11 +72,11 @@ interface ProductsAPI {
     ): Single<ProductState>
 
     @GET("cgi/search.pl?search_simple=1&json=1&action=process")
-    fun searchProductByName(
-            @Query(ApiFields.Keys.SEARCH_TERMS) name: String,
-            @Query("fields") fields: String,
-            @Query("page") page: Int
-    ): Single<Search>
+    suspend fun searchProductByName(
+        @Query(ApiFields.Keys.SEARCH_TERMS) name: String,
+        @Query("fields") fields: String,
+        @Query("page") page: Int
+    ): Search
 
     @FormUrlEncoded
     @POST("/cgi/session.pl")
@@ -88,13 +87,13 @@ interface ProductsAPI {
     ): Response<ResponseBody>
 
     @GET("$API_P/product/{barcode}.json?fields=ingredients")
-    fun getIngredientsByBarcode(@Path("barcode") barcode: String?): Single<JsonNode>
+    suspend fun getIngredientsByBarcode(@Path("barcode") barcode: String?): JsonNode
 
     @Multipart
     @POST("/cgi/product_image_upload.pl")
-    fun saveImage(
-            @PartMap fields: Map<String, @JvmSuppressWildcards RequestBody?>
-    ): Single<JsonNode>
+    suspend fun saveImage(
+        @PartMap fields: Map<String, @JvmSuppressWildcards RequestBody?>
+    ): JsonNode
 
     @GET("/cgi/product_image_crop.pl")
     fun editImage(
@@ -109,18 +108,18 @@ interface ProductsAPI {
     ): Single<JsonNode>
 
     @GET("cgi/suggest.pl")
-    fun getSuggestions(
-            @Query("tagtype") tagType: String,
-            @Query("term") term: String
-    ): Single<List<String>>
+    suspend fun getSuggestions(
+        @Query("tagtype") tagType: String,
+        @Query("term") term: String
+    ): ArrayList<String>
 
 
     @GET("brand/{brand}/{page}.json")
-    fun getProductByBrands(
-            @Path("brand") brand: String,
-            @Path("page") page: Int,
-            @Query("fields") fields: String
-    ): Single<Search>
+    suspend fun getProductByBrands(
+        @Path("brand") brand: String,
+        @Path("page") page: Int,
+        @Query("fields") fields: String
+    ): Search
 
     /**
      * call API service to return products using Additives
@@ -327,13 +326,13 @@ interface ProductsAPI {
      * This method is used to get the number of products on Open X Facts
      */
     @GET("/1.json?fields=null")
-    fun getTotalProductCount(@Header("User-Agent") header: String): Single<Search>
+    suspend fun getTotalProductCount(@Header("User-Agent") header: String): Search
 
     /**
      * This method gives the news in all languages
      */
     @GET("/files/tagline/tagline-$FLAVOR_versionCode.json")
-    fun getTagline(@Header("User-Agent") header: String): Single<ArrayList<TagLineLanguage>>
+    suspend fun getTagline(@Header("User-Agent") header: String): ArrayList<TagLineLanguage>
 
     /**
      * Returns images for the current product
@@ -348,10 +347,10 @@ interface ProductsAPI {
      *
      */
     @GET("/cgi/product_image_crop.pl")
-    fun editImages(
+    suspend fun editImages(
         @Query(ApiFields.Keys.BARCODE) code: String,
         @QueryMap fields: Map<String, @JvmSuppressWildcards String?>?
-    ): Single<ObjectNode>
+    ): ObjectNode
 
     /**
      * This method is to crop images server side
@@ -368,10 +367,10 @@ interface ProductsAPI {
      * @param fields
      */
     @GET("/cgi/product_image_unselect.pl")
-    fun unSelectImage(
-            @Query(ApiFields.Keys.BARCODE) code: String,
-            @QueryMap fields: Map<String, @JvmSuppressWildcards String?>?
-    ): Single<String>
+    suspend fun unSelectImage(
+        @Query(ApiFields.Keys.BARCODE) code: String,
+        @QueryMap fields: Map<String, @JvmSuppressWildcards String?>?
+    ): String
 
     @GET
     fun downloadFile(@Url fileUrl: String): Single<ResponseBody>

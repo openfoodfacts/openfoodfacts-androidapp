@@ -22,7 +22,7 @@
     <string name="slide_4_title">Pracuje offline</string>
     <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet connection right now</string>
     <string name="txtDialogsContent">Produkt, který jste naskenovali, ještě neexistuje v databázi Open Beauty Facts. Přidejte jej prosím.</string>
-    <string name="msg_share">Podívejte se na tento produkt v Open Food Facts :</string>
+    <string name="msg_share">Podívejte se na tento produkt v Open Beauty Facts :</string>
     <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Beauty Facts</string>
     <string name="Donation">Kliknutím můžete přispět na Open Beauty Facts</string>
     <string name="translate_help_title">Pomozte přeložit Open Beauty Facts</string>

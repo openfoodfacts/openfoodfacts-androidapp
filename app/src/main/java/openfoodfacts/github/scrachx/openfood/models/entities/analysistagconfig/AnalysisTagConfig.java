@@ -9,12 +9,11 @@ import org.greenrobot.greendao.annotation.Transient;
 
 import openfoodfacts.github.scrachx.openfood.models.entities.analysistag.AnalysisTagName;
 
-@Entity(indexes = {
-    @Index(value = "analysisTag", unique = true)
-})
+@Entity
 public class AnalysisTagConfig {
     @Id(autoincrement = true)
     private Long id;
+    @Index
     private String analysisTag;
     private String type;
     @Transient

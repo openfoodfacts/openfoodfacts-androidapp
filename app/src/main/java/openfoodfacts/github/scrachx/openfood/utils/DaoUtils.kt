@@ -2,7 +2,6 @@ package openfoodfacts.github.scrachx.openfood.utils
 
 import android.util.Log
 import androidx.annotation.CheckResult
-import io.reactivex.Single
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import openfoodfacts.github.scrachx.openfood.repositories.Taxonomy
@@ -17,7 +16,9 @@ import org.jetbrains.annotations.Contract
 suspend fun AbstractDao<*, *>.isEmpty() = withContext(Dispatchers.IO) { this@isEmpty.count() == 0L }
 
 @Contract(pure = true)
-@CheckResult
-fun <T> logDownload(single: Single<List<T>?>, taxonomy: Taxonomy) = single.doOnSuccess {
-    Log.i(Taxonomy::class.simpleName + "getTaxonomyData", "refreshed taxonomy '$taxonomy' from server")
+fun <T> logDownload(taxonomy: Taxonomy<T>) {
+    Log.i(
+        "${Taxonomy::class.simpleName}",
+        "Refreshed taxonomy '${taxonomy::class.simpleName}' from server"
+    )
 }

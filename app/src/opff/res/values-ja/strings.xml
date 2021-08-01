@@ -23,14 +23,14 @@
     <string name="slide_4_desc">今インターネットに接続していなくても、新製品を追加できます</string>
     <string name="txtDialogsContent">The product you scanned does not exist yet in Open Pet Food Facts. Please add it.</string>
     <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Pet Food Facts.</string>
-    <string name="msg_share">Look at this product on Open Food Facts :</string>
-    <string name="not_support_books">現在、書籍は Open Food Facts でサポートされていません</string>
-    <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
-    <string name="Donation">Click here to donate to Open Food Facts</string>
-    <string name="translate_help_title">Open Food Factsの翻訳を手伝う</string>
-    <string name="translate_help_summary">Open Food Factsデータベースをあなたの言語に対応させます - 技術的な知識は必要ありません</string>
+    <string name="msg_share">Look at this product on Open Pet Food Facts :</string>
+    <string name="not_support_books">現在、書籍は Open Pet Food Facts でサポートされていません</string>
+    <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Pet Food Facts</string>
+    <string name="Donation">Click here to donate to Open Pet Food Facts</string>
+    <string name="translate_help_title">Open Pet Food Factsの翻訳を手伝う</string>
+    <string name="translate_help_summary">Open Pet Food Factsデータベースをあなたの言語に対応させます - 技術的な知識は必要ありません</string>
     <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Pet Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">あなたのアレルギー情報は、Open Food Factsサーバーに送信されることはありません。また、製品データが正確でない可能性、検出が100％正確でない可能性があるので、ご自分でもう一度ご確認ください! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">あなたのアレルギー情報は、Open Pet Food Factsサーバーに送信されることはありません。また、製品データが正確でない可能性、検出が100％正確でない可能性があるので、ご自分でもう一度ご確認ください! </string>
     <!-- OPFF tagline in different languages -->
     <string name="version_string">Open Pet Food Facts Android App</string>
     <string name="tagline">free pet food products database</string>

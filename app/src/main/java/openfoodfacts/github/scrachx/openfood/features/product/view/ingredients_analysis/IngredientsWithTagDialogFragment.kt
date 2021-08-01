@@ -25,8 +25,8 @@ import dagger.hilt.android.AndroidEntryPoint
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper
 import openfoodfacts.github.scrachx.openfood.databinding.IngredientsWithTagBinding
+import openfoodfacts.github.scrachx.openfood.features.product.view.IProductView
 import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewActivity
-import openfoodfacts.github.scrachx.openfood.features.scan.ContinuousScanActivity
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.AnalysisTagConfig
 import java.util.*
@@ -67,8 +67,8 @@ class IngredientsWithTagDialogFragment : DialogFragment() {
         val ingredientsImageUrl = arguments.getString(INGREDIENTS_IMAGE_URL_KEY)
 
         picasso
-                .load(iconUrl)
-                .into(binding.icon)
+            .load(iconUrl)
+            .into(binding.icon)
         binding.iconFrame.background = ResourcesCompat.getDrawable(requireActivity().resources, R.drawable.rounded_button, requireActivity().theme)?.apply {
             colorFilter = BlendModeColorFilterCompat.createBlendModeColorFilterCompat(Color.parseColor(color), BlendModeCompat.SRC_IN)
         }
@@ -91,7 +91,8 @@ class IngredientsWithTagDialogFragment : DialogFragment() {
             binding.helpNeeded.text = HtmlCompat.fromHtml(getString(R.string.add_photo_to_extract_ingredients), HtmlCompat.FROM_HTML_MODE_LEGACY)
             binding.helpNeeded.setOnClickListener { goToAddPhoto() }
         } else if (tag != null && ambiguousIngredient != null) {
-            messageToBeShown = HtmlCompat.fromHtml(getString(R.string.unknown_status_ambiguous_ingredients, ambiguousIngredient), HtmlCompat.FROM_HTML_MODE_LEGACY)
+            messageToBeShown =
+                HtmlCompat.fromHtml(getString(R.string.unknown_status_ambiguous_ingredients, ambiguousIngredient), HtmlCompat.FROM_HTML_MODE_LEGACY)
             binding.helpNeeded.visibility = View.GONE
         } else if (showHelpTranslate && arguments.getBoolean(MISSING_INGREDIENTS_KEY, false)) {
             picasso.load(ingredientsImageUrl).into(binding.image)
@@ -110,9 +111,9 @@ class IngredientsWithTagDialogFragment : DialogFragment() {
             binding.helpNeeded.setOnClickListener {
                 val customTabsIntent = CustomTabsIntent.Builder().build()
                 CustomTabActivityHelper.openCustomTab(
-                        requireActivity(),  // activity
-                        customTabsIntent,
-                        Uri.parse(getString(R.string.help_translate_ingredients_link, Locale.getDefault().language))
+                    requireActivity(),  // activity
+                    customTabsIntent,
+                    Uri.parse(getString(R.string.help_translate_ingredients_link, Locale.getDefault().language))
                 ) { activity: Activity, uri: Uri ->
                     val i = Intent(Intent.ACTION_VIEW)
                     i.data = uri
@@ -142,24 +143,12 @@ class IngredientsWithTagDialogFragment : DialogFragment() {
 
     private fun goToAddPhoto() {
         dismiss()
-        when (requireActivity()) {
-            is ContinuousScanActivity -> {
-                (activity as ContinuousScanActivity).showIngredientsTab(ProductViewActivity.ShowIngredientsAction.SEND_UPDATED)
-            }
-            is ProductViewActivity -> {
-                (activity as ProductViewActivity).showIngredientsTab(ProductViewActivity.ShowIngredientsAction.SEND_UPDATED)
-            }
-        }
+        (activity as? IProductView)?.showIngredientsTab(ProductViewActivity.ShowIngredientsAction.SEND_UPDATED)
     }
 
     private fun goToExtract() {
         dismiss()
-        when (requireActivity()) {
-            is ContinuousScanActivity -> (activity as ContinuousScanActivity)
-                    .showIngredientsTab(ProductViewActivity.ShowIngredientsAction.PERFORM_OCR)
-            is ProductViewActivity -> (activity as ProductViewActivity)
-                    .showIngredientsTab(ProductViewActivity.ShowIngredientsAction.PERFORM_OCR)
-        }
+        (activity as? IProductView)?.showIngredientsTab(ProductViewActivity.ShowIngredientsAction.PERFORM_OCR)
     }
 
     override fun onDismiss(dialog: DialogInterface) {
@@ -211,9 +200,9 @@ class IngredientsWithTagDialogFragment : DialogFragment() {
                         putSerializable(INGREDIENTS_KEY, getMatchingIngredientsText(product, showIngredients.split(":").toTypedArray()))
                     }
                     val ambiguousIngredient = product.ingredients
-                            .filter { it.containsKey(config.type) && it.containsValue("maybe") }
-                            .filter { it.containsKey("text") }
-                            .mapNotNull { it["text"] }
+                        .filter { it.containsKey(config.type) && it.containsValue("maybe") }
+                        .filter { it.containsKey("text") }
+                        .mapNotNull { it["text"] }
                     if (ambiguousIngredient.isNotEmpty()) {
                         putString(AMBIGUOUS_INGREDIENT_KEY, ambiguousIngredient.joinToString(","))
                     }

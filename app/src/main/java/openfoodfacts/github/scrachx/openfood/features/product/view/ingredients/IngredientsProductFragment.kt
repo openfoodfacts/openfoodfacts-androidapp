@@ -163,6 +163,7 @@ class IngredientsProductFragment : BaseFragment() {
                     .append(tagListToString(it))
             } else binding.cvVitaminsTagsText.visibility = View.GONE
         }
+
         viewModel.aminoAcidTagsList.observe(viewLifecycleOwner) {
             if (it.isNotEmpty()) {
                 binding.cvAminoAcidTagsText.visibility = View.VISIBLE
@@ -365,7 +366,7 @@ class IngredientsProductFragment : BaseFragment() {
     }
 
     fun showAdditives(additives: List<AdditiveName>) =
-        showAdditives(additives, binding.textAdditiveProduct, wikidataClient, this, disp)
+        showAdditives(additives, binding.textAdditiveProduct, wikidataClient, this)
 
     private fun setAdditivesState(state: ProductInfoState) {
         when (state) {
@@ -395,7 +396,7 @@ class IngredientsProductFragment : BaseFragment() {
                 showSignInDialog()
             } else {
                 productState = requireProductState()
-                updateImagesLauncher.launch(productState.product)
+                updateImagesLauncher.launch(productState.product!!)
             }
         }
         when {

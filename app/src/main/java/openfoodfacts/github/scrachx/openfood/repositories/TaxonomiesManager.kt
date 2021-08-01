@@ -3,9 +3,7 @@ package openfoodfacts.github.scrachx.openfood.repositories
 import android.content.Context
 import android.util.Log
 import dagger.hilt.android.qualifiers.ApplicationContext
-import io.reactivex.Single
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.rx2.await
 import kotlinx.coroutines.withContext
 import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.utils.Utils
@@ -30,7 +28,7 @@ class TaxonomiesManager @Inject constructor(
      * @return The timestamp of the last changes date of the taxonomy.json on the server
      * or [TAXONOMY_NO_INTERNET] if there is no connection to the server.
      */
-    private fun getLastModifiedDateFromServer(taxonomy: Taxonomy): Single<Long> = Single.fromCallable {
+    private suspend fun <T> getLastModifiedDateFromServer(taxonomy: Taxonomy<T>) = withContext(Dispatchers.IO) {
         var lastModifiedDate: Long
         val taxoUrl = URL(BuildConfig.OFWEBSITE + taxonomy.jsonUrl)
         try {
@@ -39,11 +37,11 @@ class TaxonomiesManager @Inject constructor(
             httpCon.disconnect()
         } catch (e: IOException) {
             // Problem
-            Log.e(LOG_TAG, "Could not get last modified date from server for taxonomy ${taxonomy.name}.", e)
+            Log.e(LOG_TAG, "Could not get last modified date from server for taxonomy ${taxonomy::class.simpleName}.", e)
             lastModifiedDate = TAXONOMY_NO_INTERNET
         }
         Log.i(LOG_TAG, "Last modified date for taxonomy \"$taxonomy\" is $lastModifiedDate")
-        return@fromCallable lastModifiedDate
+        return@withContext lastModifiedDate
     }
 
     /**
@@ -56,7 +54,7 @@ class TaxonomiesManager @Inject constructor(
      * @param dao used to check if locale data is empty
      */
     suspend fun <T> getTaxonomyData(
-        taxonomy: Taxonomy,
+        taxonomy: Taxonomy<T>,
         checkUpdate: Boolean,
         dao: AbstractDao<T, *>,
         productRepository: ProductRepository
@@ -64,7 +62,7 @@ class TaxonomiesManager @Inject constructor(
         val mSettings = context.getSharedPreferences("prefs", 0)
 
         // First check if this taxonomy is to be loaded for this flavor, else return empty list
-        val isTaxonomyActivated = mSettings.getBoolean(taxonomy.downloadActivatePreferencesId, false)
+        val isTaxonomyActivated = mSettings.getBoolean(taxonomy.getDownloadActivatePreferencesId(), false)
         if (!isTaxonomyActivated) return@withContext emptyList()
 
         // If the database scheme changed, this settings should be true
@@ -74,33 +72,37 @@ class TaxonomiesManager @Inject constructor(
         val empty = dao.isEmpty()
         if (empty || forceUpdate) {
             // Table is empty, no need check for update, just load taxonomy
-            download<T>(taxonomy, productRepository).await()
+            download(taxonomy, productRepository)
         } else if (checkUpdate) {
             // Get local last downloaded time
-            val localDownloadTime = mSettings.getLong(taxonomy.lastDownloadTimeStampPreferenceId, 0L)
+            val localDownloadTime = mSettings.getLong(taxonomy.getLastDownloadTimeStampPreferenceId(), 0L)
 
             // We need to check for update. Test if file on server is more recent than last download.
-            checkAndDownloadIfNewer<T>(taxonomy, localDownloadTime, productRepository).await()
+            checkAndDownloadIfNewer(taxonomy, localDownloadTime, productRepository)
         } else emptyList()
     }
 
-    private fun <T> download(
-        taxonomy: Taxonomy,
+    private suspend fun <T> download(
+        taxonomy: Taxonomy<T>,
         productRepository: ProductRepository
-    ): Single<List<T>> = getLastModifiedDateFromServer(taxonomy).flatMap { lastMod ->
-        if (lastMod != TAXONOMY_NO_INTERNET)
-            logDownload(taxonomy.load(productRepository, lastMod), taxonomy)
-        else Single.just(emptyList())
+    ) = withContext(Dispatchers.IO) {
+        val lastMod = getLastModifiedDateFromServer(taxonomy)
+
+        return@withContext if (lastMod != TAXONOMY_NO_INTERNET)
+            taxonomy.load(productRepository, lastMod).also { logDownload(taxonomy) }
+        else emptyList()
     }
 
-    private fun <T> checkAndDownloadIfNewer(
-        taxonomy: Taxonomy,
+    private suspend fun <T> checkAndDownloadIfNewer(
+        taxonomy: Taxonomy<T>,
         localDownloadTime: Long,
         productRepository: ProductRepository
-    ): Single<List<T>> = getLastModifiedDateFromServer(taxonomy).flatMap { lastModRemote ->
+    ) = withContext(Dispatchers.IO) {
+        val lastModRemote = getLastModifiedDateFromServer(taxonomy)
+
         if (lastModRemote == 0L || lastModRemote > localDownloadTime)
-            logDownload(taxonomy.load(productRepository, lastModRemote), taxonomy)
-        else Single.just(emptyList())
+            taxonomy.load(productRepository, lastModRemote).also { logDownload(taxonomy) }
+        else emptyList()
     }
 
     companion object {

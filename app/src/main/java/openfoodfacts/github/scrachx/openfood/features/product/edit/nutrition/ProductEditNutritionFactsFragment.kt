@@ -32,6 +32,7 @@ import android.widget.AdapterView.OnItemSelectedListener
 import androidx.core.net.toFile
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import com.afollestad.materialdialogs.MaterialDialog
 import com.google.android.material.textfield.TextInputLayout
@@ -114,7 +115,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
             val image = ProductImage(productCode!!, ProductImageField.NUTRITION, it, localeManager.getLanguage()).apply {
                 filePath = resultUri.path
             }
-            (activity as? ProductEditActivity)?.addToPhotoMap(image, 2)
+            (activity as? ProductEditActivity)?.savePhoto(image, 2)
             hideImageProgress(false, "")
         }
     }
@@ -402,8 +403,15 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
             .resize(requireContext().dpsToPixel(50), requireContext().dpsToPixel(50))
             .centerInside()
             .into(binding.btnAddImageNutritionFacts, object : Callback {
-                override fun onSuccess() = afterNutritionImgLoaded()
-                override fun onError(ex: Exception) = afterNutritionImgLoaded()
+                override fun onSuccess() {
+                    if (!lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED)) return
+                    afterNutritionImgLoaded()
+                }
+
+                override fun onError(ex: Exception) {
+                    if (!lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED)) return
+                    afterNutritionImgLoaded()
+                }
             })
     }
 
@@ -678,10 +686,10 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
     }
 
     private val isDataPerServing: Boolean
-        get() = binding.radioGroup.checkedRadioButtonId == R.id.per_serving
+        get() = viewModel.dataFormat.value == R.id.per_serving
 
     private val isDataPer100g: Boolean
-        get() = binding.radioGroup.checkedRadioButtonId == R.id.for100g_100ml
+        get() = viewModel.dataFormat.value == R.id.for100g_100ml
 
     private val referenceValueInGram: Float
         get() {

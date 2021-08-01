@@ -10,6 +10,7 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.provider.Settings
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -21,33 +22,36 @@ import androidx.core.app.NavUtils
 import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
 import androidx.core.view.isVisible
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.afollestad.materialdialogs.MaterialDialog
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
-import io.reactivex.android.schedulers.AndroidSchedulers
+import kotlinx.coroutines.launch
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.R
+import openfoodfacts.github.scrachx.openfood.analytics.SentryAnalytics
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityHistoryScanBinding
-import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.installBottomNavigation
-import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.selectNavigationItem
 import openfoodfacts.github.scrachx.openfood.features.productlist.CreateCSVContract
-import openfoodfacts.github.scrachx.openfood.features.scan.ContinuousScanActivity
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
+import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.installBottomNavigation
+import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.selectNavigationItem
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.SortType.*
 import java.io.File
+import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class ScanHistoryActivity : BaseActivity() {
-    private lateinit var binding: ActivityHistoryScanBinding
 
+    private lateinit var binding: ActivityHistoryScanBinding
     private val viewModel: ScanHistoryViewModel by viewModels()
 
     @Inject
@@ -63,7 +67,7 @@ class ScanHistoryActivity : BaseActivity() {
 
     private val adapter by lazy {
         ScanHistoryAdapter(isLowBatteryMode = isDisableImageLoad() && isBatteryLevelLow(), picasso) {
-            openProductActivity(it.barcode)
+            openProduct(it.barcode)
         }
     }
 
@@ -71,31 +75,36 @@ class ScanHistoryActivity : BaseActivity() {
         if (isGranted) {
             exportAsCSV()
         } else {
-            MaterialDialog.Builder(this)
-                    .title(R.string.permission_title)
-                    .content(R.string.permission_denied)
-                    .negativeText(R.string.txtNo)
-                    .positiveText(R.string.txtYes)
-                    .onPositive { _, _ ->
-                        startActivity(Intent().apply {
-                            action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
-                            data = Uri.fromParts("package", this@ScanHistoryActivity.packageName, null)
-                        })
-                    }
-                    .onNegative { dialog, _ -> dialog.dismiss() }
-                    .show()
+            MaterialAlertDialogBuilder(this)
+                .setTitle(R.string.permission_title)
+                .setMessage(R.string.permission_denied)
+                .setNegativeButton(R.string.txtNo) { dialog, _ -> dialog.dismiss() }
+                .setPositiveButton(R.string.txtYes) { _, _ ->
+                    startActivity(Intent().apply {
+                        action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
+                        data = Uri.fromParts("package", this@ScanHistoryActivity.packageName, null)
+                    })
+                }.show()
         }
     }
 
     private val cameraPermLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
         if (isGranted) {
-            openContinuousScanActivity()
+            startScanActivity()
         }
     }
 
+    @Inject
+    lateinit var sentryAnalytics: SentryAnalytics
+
     @RequiresApi(Build.VERSION_CODES.KITKAT)
     val fileWriterLauncher = registerForActivityResult(CreateCSVContract()) {
-        writeHistoryToFile(this, adapter.products, it)
+        if (it == null) {
+            Log.w(LOG_TAG, "Could not write to file.")
+            sentryAnalytics.record(IOException("Could not write to file."))
+        } else {
+            writeHistoryToFile(this, adapter.products, it)
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -113,50 +122,56 @@ class ScanHistoryActivity : BaseActivity() {
         binding.listHistoryScan.adapter = adapter
         val swipeController = SwipeController(this) { position ->
             adapter.products.getOrNull(position)?.let {
-                viewModel.removeProductFromHistory(it)
+                lifecycleScope.launch {
+                    viewModel.removeProductFromHistory(it)
+                }
             }
         }
         ItemTouchHelper(swipeController).attachToRecyclerView(binding.listHistoryScan)
 
         binding.scanFirst.setOnClickListener { startScan() }
-        binding.srRefreshHistoryScanList.setOnRefreshListener { viewModel.refreshItems() }
+        binding.srRefreshHistoryScanList.setOnRefreshListener { refreshViewModel() }
         binding.navigationBottom.bottomNavigation.installBottomNavigation(this)
 
-        viewModel.observeFetchProductState()
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeLifecycle(this) { state ->
-                    when (state) {
-                        is ScanHistoryViewModel.FetchProductsState.Data -> {
-                            binding.srRefreshHistoryScanList.isRefreshing = false
-                            binding.historyProgressbar.isVisible = false
+        viewModel.productsState.observe(this) { state ->
+            when (state) {
+                is ScanHistoryViewModel.FetchProductsState.Data -> {
+                    binding.srRefreshHistoryScanList.isRefreshing = false
+                    binding.historyProgressbar.isVisible = false
 
-                            adapter.products = state.items
+                    adapter.products = state.items
 
-                            if (state.items.isEmpty()) {
-                                setMenuEnabled(false)
-                                binding.emptyHistoryInfo.isVisible = true
-                                binding.scanFirst.isVisible = true
-                            } else {
-                                setMenuEnabled(true)
-                            }
+                    if (state.items.isEmpty()) {
+                        setMenuEnabled(false)
+                        binding.emptyHistoryInfo.isVisible = true
+                        binding.scanFirst.isVisible = true
+                    } else {
+                        setMenuEnabled(true)
+                    }
 
-                            adapter.notifyDataSetChanged()
-                        }
-                        ScanHistoryViewModel.FetchProductsState.Error -> {
-                            setMenuEnabled(false)
-                            binding.srRefreshHistoryScanList.isRefreshing = false
-                            binding.historyProgressbar.isVisible = false
-                            binding.emptyHistoryInfo.isVisible = true
-                            binding.scanFirst.isVisible = true
-                        }
-                        ScanHistoryViewModel.FetchProductsState.Loading -> {
-                            setMenuEnabled(false)
-                            if (binding.srRefreshHistoryScanList.isRefreshing.not()) {
-                                binding.historyProgressbar.isVisible = true
-                            }
-                        }
+                    adapter.notifyDataSetChanged()
+                }
+                ScanHistoryViewModel.FetchProductsState.Error -> {
+                    setMenuEnabled(false)
+                    binding.srRefreshHistoryScanList.isRefreshing = false
+                    binding.historyProgressbar.isVisible = false
+                    binding.emptyHistoryInfo.isVisible = true
+                    binding.scanFirst.isVisible = true
+                }
+                ScanHistoryViewModel.FetchProductsState.Loading -> {
+                    setMenuEnabled(false)
+                    if (binding.srRefreshHistoryScanList.isRefreshing.not()) {
+                        binding.historyProgressbar.isVisible = true
                     }
                 }
+            }
+        }
+
+        refreshViewModel()
+    }
+
+    private fun refreshViewModel() {
+        lifecycleScope.launchWhenCreated { viewModel.refreshItems() }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -187,15 +202,14 @@ class ScanHistoryActivity : BaseActivity() {
         R.id.action_export_all_history -> {
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                 if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-                    MaterialDialog.Builder(this).run {
-                        title(R.string.action_about)
-                        content(R.string.permision_write_external_storage)
-                        positiveText(android.R.string.ok)
-                        onPositive { _, _ ->
+                    MaterialAlertDialogBuilder(this)
+                        .setTitle(R.string.action_about)
+                        .setMessage(R.string.permision_write_external_storage)
+                        .setPositiveButton(android.R.string.ok) { _, _ ->
                             storagePermLauncher.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
                         }
-                        show()
-                    }
+                        .show()
+
                 } else {
                     storagePermLauncher.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 }
@@ -222,15 +236,6 @@ class ScanHistoryActivity : BaseActivity() {
         invalidateOptionsMenu()
     }
 
-    private fun openProductActivity(barcode: String) {
-        viewModel.openProduct(barcode, this)
-    }
-
-    private fun openContinuousScanActivity() {
-        Intent(this, ContinuousScanActivity::class.java)
-                .apply { addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP) }
-                .also { startActivity(it) }
-    }
 
     private fun exportAsCSV() {
         Toast.makeText(this, R.string.txt_exporting_history, Toast.LENGTH_LONG).show()
@@ -250,7 +255,8 @@ class ScanHistoryActivity : BaseActivity() {
     }
 
     private fun startScan() {
-        if (!isHardwareCameraInstalled(baseContext)) return
+        if (!isHardwareCameraInstalled(this)) return
+        // TODO: 21/06/2021 add dialog to explain why we can't
         val perm = Manifest.permission.CAMERA
         if (ContextCompat.checkSelfPermission(baseContext, perm) != PackageManager.PERMISSION_GRANTED) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(this, perm)) {
@@ -258,53 +264,51 @@ class ScanHistoryActivity : BaseActivity() {
                     .title(R.string.action_about)
                     .content(R.string.permission_camera)
                     .positiveText(android.R.string.ok)
-                        .onPositive { _, _ -> cameraPermLauncher.launch(perm) }
-                        .show()
+                    .onPositive { _, _ -> cameraPermLauncher.launch(perm) }
+                    .show()
             } else {
                 cameraPermLauncher.launch(perm)
             }
         } else {
-            openContinuousScanActivity()
+            startScanActivity()
         }
     }
 
     private fun showDeleteConfirmationDialog() {
-        MaterialDialog.Builder(this)
-                .title(R.string.title_clear_history_dialog)
-                .content(R.string.text_clear_history_dialog)
-                .onPositive { _, _ -> viewModel.clearHistory() }
-                .positiveText(R.string.txtYes)
-                .negativeText(R.string.txtNo)
-                .show()
+        MaterialAlertDialogBuilder(this)
+            .setTitle(R.string.title_clear_history_dialog)
+            .setMessage(R.string.text_clear_history_dialog)
+            .setPositiveButton(android.R.string.ok) { _, _ -> lifecycleScope.launch { viewModel.clearHistory() } }
+            .setNegativeButton(android.R.string.cancel) { d, _ -> d.dismiss() }
+            .show()
     }
 
     private fun showListSortingDialog() {
         val sortTypes = if (isFlavors(OFF)) arrayOf(
-                getString(R.string.by_title),
-                getString(R.string.by_brand),
-                getString(R.string.by_nutrition_grade),
-                getString(R.string.by_barcode),
-                getString(R.string.by_time)
+            getString(R.string.by_title),
+            getString(R.string.by_brand),
+            getString(R.string.by_nutrition_grade),
+            getString(R.string.by_barcode),
+            getString(R.string.by_time)
         ) else arrayOf(
-                getString(R.string.by_title),
-                getString(R.string.by_brand),
-                getString(R.string.by_time),
-                getString(R.string.by_barcode)
+            getString(R.string.by_title),
+            getString(R.string.by_brand),
+            getString(R.string.by_time),
+            getString(R.string.by_barcode)
         )
-        MaterialDialog.Builder(this)
-                .title(R.string.sort_by)
-                .items(*sortTypes)
-                .itemsCallback { _, _, position, _ ->
-                    val newType = when (position) {
-                        0 -> TITLE
-                        1 -> BRAND
-                        2 -> if (isFlavors(OFF)) GRADE else TIME
-                        3 -> BARCODE
-                        else -> TIME
-                    }
-                    viewModel.updateSortType(newType)
+        MaterialAlertDialogBuilder(this)
+            .setTitle(R.string.sort_by)
+            .setItems(sortTypes) { _, which ->
+                val newType = when (which) {
+                    0 -> TITLE
+                    1 -> BRAND
+                    2 -> if (isFlavors(OFF)) GRADE else TIME
+                    3 -> BARCODE
+                    else -> TIME
                 }
-                .show()
+                viewModel.updateSortType(newType)
+            }
+            .show()
     }
 
     companion object {

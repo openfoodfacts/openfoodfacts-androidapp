@@ -23,14 +23,14 @@
     <string name="slide_4_desc">Şu anda internet bağlantınız olmasa dahi yeni ürünler ekleyebilirsiniz</string>
     <string name="txtDialogsContent">Aradığınız ürün henüz Open Pet Food Facts\'te mevcut değil. Lütfen ekleyin.</string>
     <string name="txtDialogsContentPowerMode">Aradığınız ürün Open Pet Food Facts\'te zaten mevcut.</string>
-    <string name="msg_share">Bu ürüne Open Food Facts\'te bak :</string>
-    <string name="not_support_books">Kitaplar şu anda Open Food Facts tarafından desteklenmemektedir</string>
-    <string name="txt_broaden_search">- aramanız genişletiliyor \n- tara ve Open Food Facts\'e ekle</string>
-    <string name="Donation">Open Food Facts\'e bağışta bulunmak için buraya tıklayınız</string>
-    <string name="translate_help_title">Open Food Facts\'i tercüme etmeye yardımcı olun</string>
-    <string name="translate_help_summary">Open Food Facts veritabanını kendi dilinize kazandırın - teknik bilgi gerektirmez</string>
+    <string name="msg_share">Bu ürüne Open Pet Food Facts\'te bak :</string>
+    <string name="not_support_books">Kitaplar şu anda Open Pet Food Facts tarafından desteklenmemektedir</string>
+    <string name="txt_broaden_search">- aramanız genişletiliyor \n- tara ve Open Pet Food Facts\'e ekle</string>
+    <string name="Donation">Open Pet Food Facts\'e bağışta bulunmak için buraya tıklayınız</string>
+    <string name="translate_help_title">Open Pet Food Facts\'i tercüme etmeye yardımcı olun</string>
+    <string name="translate_help_summary">Open Pet Food Facts veritabanını kendi dilinize kazandırın - teknik bilgi gerektirmez</string>
     <string name="text_offline_info_dialog">Ürünleri Open Pet Food Facts\'e daha sonra ekleyebilmek için çevrimdışı olduğunuzda dahi tarayın. Taranan ürünler burada görünecek ve aşağıdaki butonu kullanarak gönderebileceksiniz.</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Alerji Bilgileriniz asla Open Food Facts sunucusuna gönderilmeyecektir. Aynı zamanda ürün verilerinin kesin olmayabileceği ve algılamanın %100 hassas olmayabileceği konusunda dikkatli olun, bu yüzden lüften kendiniz iki kere kontrol edin!</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Alerji Bilgileriniz asla Open Pet Food Facts sunucusuna gönderilmeyecektir. Aynı zamanda ürün verilerinin kesin olmayabileceği ve algılamanın %100 hassas olmayabileceği konusunda dikkatli olun, bu yüzden lüften kendiniz iki kere kontrol edin!</string>
     <!-- OPFF tagline in different languages -->
     <string name="version_string">Open Pet Food Facts Android Uygulaması</string>
     <string name="tagline">free pet food products database</string>
