@@ -23,7 +23,6 @@ import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.text.SpannableStringBuilder
-import android.text.Spanned
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.util.Log
@@ -36,21 +35,21 @@ import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.net.toUri
 import androidx.core.text.bold
+import androidx.core.text.inSpans
 import androidx.core.view.updatePadding
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.afollestad.materialdialogs.MaterialDialog
 import com.google.android.material.chip.Chip
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.android.material.snackbar.BaseTransientBottomBar
+import com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_SHORT
 import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.rxkotlin.addTo
+import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.R
@@ -122,14 +121,18 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     @Inject
     lateinit var localeManager: LocaleManager
 
+    @Inject
+    lateinit var productRepository: ProductRepository
+
     private lateinit var presenter: ISummaryProductPresenter.Actions
     private lateinit var mTagDao: TagDao
+
     private lateinit var product: Product
-
     private lateinit var customTabActivityHelper: CustomTabActivityHelper
-    private lateinit var customTabsIntent: CustomTabsIntent
 
+    private lateinit var customTabsIntent: CustomTabsIntent
     private var annotation: AnnotationAnswer? = null
+
     private var hasCategoryInsightQuestion = false
 
     private var insightId: String? = null
@@ -137,8 +140,8 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     //boolean to determine if image should be loaded or not
     private val isLowBatteryMode by lazy { requireContext().isDisableImageLoad() && requireContext().isBatteryLevelLow() }
     private var mUrlImage: String? = null
-    private var nutritionScoreUri: Uri? = null
 
+    private var nutritionScoreUri: Uri? = null
     private val photoReceiverHandler by lazy {
         PhotoReceiverHandler(sharedPreferences) { newPhotoFile: File ->
             //the pictures are uploaded with the correct path
@@ -153,6 +156,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
             }
         }
     }
+
     private var productQuestion: Question? = null
 
     private val loginThenProcessInsight = registerForActivityResult(LoginContract()) { isLogged ->
@@ -161,8 +165,8 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
             processInsight()
         }
     }
-
     private lateinit var productState: ProductState
+
     private var sendOther = false
 
     /**boolean to determine if category prompt should be shown*/
@@ -171,9 +175,9 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     /**boolean to determine if nutrient prompt should be shown*/
     private var showNutrientPrompt = false
 
+
     /**boolean to determine if eco score prompt should be shown*/
     private var showEcoScorePrompt = false
-
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -196,9 +200,6 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         return binding.root
     }
 
-    @Inject
-    lateinit var productRepository: ProductRepository
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -213,12 +214,11 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         binding.productQuestionDismiss.setOnClickListener {
             binding.productQuestionLayout.visibility = View.GONE
         }
-        binding.productQuestionLayout.setOnClickListener { onProductQuestionClick() }
+        binding.productQuestionLayout.setOnClickListener { productQuestion?.let { onProductQuestionClick(it) } }
         productState = requireProductState()
         refreshView(productState)
 
         presenter = SummaryProductPresenter(localeManager.getLanguage(), product, this, productRepository)
-        presenter.addTo(disp)
     }
 
 
@@ -227,21 +227,10 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         _binding = null
     }
 
-    private fun onImageListenerError(error: Throwable) {
-        binding.uploadingImageProgress.visibility = View.GONE
-        binding.uploadingImageProgressText.visibility = View.GONE
-        Toast.makeText(requireContext(), error.message, Toast.LENGTH_SHORT).show()
-    }
-
 
     override fun onRefresh() {
         super.onRefresh()
         refreshView(productState)
-    }
-
-    private fun onImageListenerComplete() {
-        binding.uploadingImageProgress.visibility = View.GONE
-        binding.uploadingImageProgressText.setText(R.string.image_uploaded_successfully)
     }
 
     /**
@@ -253,10 +242,18 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         binding.uploadingImageProgress.visibility = View.VISIBLE
         binding.uploadingImageProgressText.visibility = View.VISIBLE
         binding.uploadingImageProgressText.setText(R.string.toastSending)
-        client.postImg(image).observeOn(AndroidSchedulers.mainThread())
-            .doOnError { onImageListenerError(it) }
-            .subscribe { onImageListenerComplete() }
-            .addTo(disp)
+
+        lifecycleScope.launch {
+            try {
+                withContext(IO) { client.postImg(image) }
+            } catch (err: Exception) {
+                binding.uploadingImageProgress.visibility = View.GONE
+                binding.uploadingImageProgressText.visibility = View.GONE
+                Toast.makeText(requireContext(), err.message, Toast.LENGTH_SHORT).show()
+            }
+            binding.uploadingImageProgress.visibility = View.GONE
+            binding.uploadingImageProgressText.setText(R.string.image_uploaded_successfully)
+        }
     }
 
     /**
@@ -275,7 +272,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     override fun refreshView(productState: ProductState) {
         this.productState = productState
         product = productState.product!!
-        presenter = SummaryProductPresenter(localeManager.getLanguage(), product, this, productRepository).apply { addTo(disp) }
+        presenter = SummaryProductPresenter(localeManager.getLanguage(), product, this, productRepository)
 
         binding.categoriesText.text = SpannableStringBuilder()
             .bold { append(getString(R.string.txtCategories)) }
@@ -300,12 +297,14 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
 
         // Checks the product states_tags to determine which prompt to be shown
         refreshStatesTagsPrompt()
-        presenter.loadAllergens(null)
-        presenter.loadCategories()
-        presenter.loadLabels()
-        presenter.loadProductQuestion()
-        presenter.loadAdditives()
-        presenter.loadAnalysisTags()
+        lifecycleScope.launch {
+            presenter.loadAllergens()
+            presenter.loadCategories()
+            presenter.loadLabels()
+            presenter.loadProductQuestion()
+            presenter.loadAdditives()
+            presenter.loadAnalysisTags()
+        }
 
         val langCode = localeManager.getLanguage()
         val imageUrl = product.getImageUrl(langCode)
@@ -570,18 +569,18 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
 
     }
 
-    override fun showAdditives(additives: List<AdditiveName>) {
-        showAdditives(additives, binding.textAdditiveProduct, wikidataClient, this)
-    }
 
-    override fun showAdditivesState(state: ProductInfoState) {
+    override fun showAdditivesState(state: ProductInfoState<List<AdditiveName>>) {
         requireActivity().runOnUiThread {
             when (state) {
-                ProductInfoState.LOADING -> {
+                is ProductInfoState.Loading -> {
                     binding.textAdditiveProduct.append(getString(R.string.txtLoading))
                     binding.textAdditiveProduct.visibility = View.VISIBLE
                 }
-                ProductInfoState.EMPTY -> binding.textAdditiveProduct.visibility = View.GONE
+                is ProductInfoState.Empty -> binding.textAdditiveProduct.visibility = View.GONE
+                is ProductInfoState.Data -> {
+                    showAdditives(state.data, binding.textAdditiveProduct, wikidataClient, this)
+                }
             }
         }
     }
@@ -611,28 +610,21 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
             return
         }
         binding.productAllergenAlertText.text = StringBuilder(resources.getString(R.string.product_allergen_prompt))
-            .append("\n").append(data.allergens.joinToString(", "))
+            .append("\n")
+            .append(data.allergens.joinToString(", "))
 
         binding.productAllergenAlertLayout.visibility = View.VISIBLE
     }
 
-    override fun showCategories(categories: List<CategoryName>) {
-        if (categories.isEmpty()) {
-            binding.categoriesLayout.visibility = View.GONE
-        }
-        val categoryProductHelper = CategoryProductHelper(binding.categoriesText, categories, this, wikidataClient, disp)
-        categoryProductHelper.showCategories()
-        if (categoryProductHelper.containsAlcohol) {
-            categoryProductHelper.showAlcoholAlert(binding.textCategoryAlcoholAlert)
-        }
-    }
 
     override fun showProductQuestion(question: Question) {
         if (isRemoving) return
 
         if (!question.isEmpty()) {
             productQuestion = question
-            binding.productQuestionText.text = "${question.questionText}\n${question.value}"
+            binding.productQuestionText.text = SpannableStringBuilder(question.questionText)
+                .append("\n")
+                .append(question.value)
             binding.productQuestionLayout.visibility = View.VISIBLE
             hasCategoryInsightQuestion = question.insightType == "category"
         } else {
@@ -646,53 +638,51 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         }
     }
 
-    private fun onProductQuestionClick() {
-        productQuestion?.let {
-            QuestionDialog(requireActivity()).run {
-                backgroundColor = R.color.colorPrimaryDark
-                question = productQuestion!!.questionText
-                value = productQuestion!!.value
-                onPositiveFeedback = {
-                    //init POST request
-                    sendProductInsights(productQuestion!!.insightId, AnnotationAnswer.POSITIVE)
-                    it.dismiss()
-                }
+    private fun onProductQuestionClick(productQuestion: Question) {
+        QuestionDialog(requireContext()).apply {
+            backgroundColor = R.color.colorPrimaryDark
+            question = productQuestion.questionText
+            value = productQuestion.value
 
-                onNegativeFeedback = {
-                    sendProductInsights(productQuestion!!.insightId, AnnotationAnswer.NEGATIVE)
-                    it.dismiss()
-                }
 
-                onAmbiguityFeedback = {
-                    sendProductInsights(productQuestion!!.insightId, AnnotationAnswer.AMBIGUITY)
-                    it.dismiss()
-                }
-
-                onCancelListener = { it.dismiss() }
-                show()
+            onPositiveFeedback = {
+                sendProductInsights(productQuestion.insightId, AnnotationAnswer.POSITIVE)
+                it.dismiss()
             }
-        }
+
+            onNegativeFeedback = {
+                sendProductInsights(productQuestion.insightId, AnnotationAnswer.NEGATIVE)
+                it.dismiss()
+            }
+
+            onAmbiguityFeedback = {
+                sendProductInsights(productQuestion.insightId, AnnotationAnswer.AMBIGUITY)
+                it.dismiss()
+            }
+
+            onCancelListener = { it.dismiss() }
+
+        }.show()
+
     }
 
     private fun sendProductInsights(insightId: String?, annotation: AnnotationAnswer?) {
         this.insightId = insightId
         this.annotation = annotation
+
         if (requireActivity().isUserSet()) {
             processInsight()
         } else {
             matomoAnalytics.trackEvent(AnalyticsEvent.RobotoffLoginPrompt)
-            MaterialDialog.Builder(requireActivity()).run {
-                title(getString(R.string.sign_in_to_answer))
-                positiveText(getString(R.string.sign_in_or_register))
-                onPositive { dialog, _ ->
+
+            MaterialAlertDialogBuilder(requireActivity())
+                .setTitle(getString(R.string.sign_in_to_answer))
+                .setPositiveButton(getString(R.string.sign_in_or_register)) { dialog, _ ->
                     loginThenProcessInsight.launch(Unit)
                     dialog.dismiss()
                 }
-                neutralText(R.string.dialog_cancel)
-                onNeutral { dialog, _ -> dialog.dismiss() }
-                show()
-            }
-
+                .setNegativeButton(R.string.dialog_cancel) { d, _ -> d.dismiss() }
+                .show()
         }
     }
 
@@ -700,7 +690,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         val insightId = this.insightId ?: error("Property 'insightId' not set.")
         val annotation = this.annotation ?: error("Property 'annotation' not set.")
 
-        presenter.annotateInsight(insightId, annotation)
+        lifecycleScope.launch { presenter.annotateInsight(insightId, annotation) }
 
         Log.d(LOG_TAG, "Annotation $annotation received for insight $insightId")
         binding.productQuestionLayout.visibility = View.GONE
@@ -709,74 +699,81 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
 
     override fun showAnnotatedInsightToast(annotationResponse: AnnotationResponse) {
         if (annotationResponse.status == "updated" && activity != null) {
-            Snackbar.make(binding.root, R.string.product_question_submit_message, BaseTransientBottomBar.LENGTH_SHORT).show()
+            Snackbar.make(binding.root, R.string.product_question_submit_message, LENGTH_SHORT).show()
         }
     }
 
-    override fun showLabels(labelNames: List<LabelName>) {
-        binding.labelsText.text = SpannableStringBuilder()
-            .bold { append(getString(R.string.txtLabels)) }
-        binding.labelsText.isClickable = true
-        binding.labelsText.movementMethod = LinkMovementMethod.getInstance()
-        binding.labelsText.append(" ")
-        labelNames.dropLast(1).forEach {
-            binding.labelsText.append(getLabelTag(it))
-            binding.labelsText.append(", ")
-        }
-        binding.labelsText.append(getLabelTag(labelNames.last()))
-    }
-
-    override fun showCategoriesState(state: ProductInfoState) = requireActivity().runOnUiThread {
-        when (state) {
-            ProductInfoState.LOADING -> if (context != null) {
-                binding.categoriesText.append(getString(R.string.txtLoading))
-            }
-            ProductInfoState.EMPTY -> {
-                binding.categoriesText.visibility = View.GONE
-                binding.categoriesIcon.visibility = View.GONE
-            }
-        }
-    }
-
-    override fun showLabelsState(state: ProductInfoState) {
+    override fun showLabelsState(state: ProductInfoState<List<LabelName>>) {
         requireActivity().runOnUiThread {
             when (state) {
-                ProductInfoState.LOADING -> binding.labelsText.append(getString(R.string.txtLoading))
-                ProductInfoState.EMPTY -> {
+                is ProductInfoState.Loading -> binding.labelsText.append(getString(R.string.txtLoading))
+                is ProductInfoState.Empty -> {
                     binding.labelsText.visibility = View.GONE
                     binding.labelsIcon.visibility = View.GONE
+                }
+                is ProductInfoState.Data -> {
+                    binding.labelsText.isClickable = true
+                    binding.labelsText.movementMethod = LinkMovementMethod.getInstance()
+                    binding.labelsText.text = SpannableStringBuilder()
+                        .bold { append(getString(R.string.txtLabels)) }
+                        .append(" ")
+                        .append(state.data.joinToString { getLabelTag(it) })
                 }
             }
         }
     }
 
-    private fun getEmbUrl(embTag: String): String? {
-        if (mTagDao.queryBuilder().where(TagDao.Properties.Id.eq(embTag)).list().isEmpty()) return null
-        return mTagDao.queryBuilder().where(TagDao.Properties.Id.eq(embTag)).unique().url
+    override fun showCategoriesState(state: ProductInfoState<List<CategoryName>>) = requireActivity().runOnUiThread {
+        when (state) {
+            is ProductInfoState.Loading -> if (context != null) {
+                binding.categoriesText.append(getString(R.string.txtLoading))
+            }
+            is ProductInfoState.Empty -> {
+                binding.categoriesText.visibility = View.GONE
+                binding.categoriesIcon.visibility = View.GONE
+            }
+            is ProductInfoState.Data -> {
+                val categories = state.data
+                if (categories.isEmpty()) {
+                    binding.categoriesLayout.visibility = View.GONE
+                    return@runOnUiThread
+                }
+                CategoryProductHelper.showCategories(
+                    this,
+                    binding.categoriesText,
+                    binding.textCategoryAlcoholAlert,
+                    categories,
+                    wikidataClient,
+                )
+            }
+        }
+    }
+
+    private suspend fun getEmbUrl(embTag: String): String? = withContext(IO) {
+        if (mTagDao.queryBuilder().where(TagDao.Properties.Id.eq(embTag)).list().isEmpty()) null
+        else mTagDao.queryBuilder().where(TagDao.Properties.Id.eq(embTag)).unique().url
     }
 
     private fun getEmbCode(embTag: String) =
         mTagDao.queryBuilder().where(TagDao.Properties.Id.eq(embTag)).unique()?.name ?: embTag
 
     private fun getLabelTag(label: LabelName): CharSequence {
-        val spannableStringBuilder = SpannableStringBuilder()
         val clickableSpan = object : ClickableSpan() {
             override fun onClick(view: View) {
                 if (label.isWikiDataIdPresent) {
-                    wikidataClient.doSomeThing(label.wikiDataId).subscribe { result ->
+                    lifecycleScope.launch {
+                        val result = wikidataClient.doSomeThing(label.wikiDataId)
                         val activity = activity
                         if (activity?.isFinishing == false) {
                             showBottomSheet(result, label, activity.supportFragmentManager)
                         }
-                    }.addTo(disp)
+                    }
                 } else {
                     ProductSearchActivity.start(requireContext(), SearchType.LABEL, label.labelTag, label.name)
                 }
             }
         }
-        spannableStringBuilder.append(label.name)
-        spannableStringBuilder.setSpan(clickableSpan, 0, spannableStringBuilder.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-        return spannableStringBuilder
+        return SpannableStringBuilder().inSpans(clickableSpan) { append(label.name) }
     }
 
 
@@ -790,13 +787,13 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         if (requireActivity().isUserSet()) {
             editProduct()
         } else {
-            buildSignInDialog(requireActivity())
-                .onPositive { d, _ ->
+            buildSignInDialog(requireActivity(),
+                onPositive = { d, _ ->
                     d.dismiss()
                     loginThenEditLauncher.launch(null)
-                }
-                .onNegative { d, _ -> d.dismiss() }
-                .show()
+                },
+                onNegative = { d, _ -> d.dismiss() }
+            ).show()
         }
     }
 
@@ -805,12 +802,14 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         if (requireActivity().isUserSet()) {
             editProductNutriscore()
         } else {
-            buildSignInDialog(requireActivity())
-                .onPositive { d, _ ->
+            buildSignInDialog(
+                requireActivity(),
+                onPositive = { d, _ ->
                     d.dismiss()
                     loginThenEditNutrition.launch(null)
-                }
-                .onNegative { d, _ -> d.dismiss() }
+                },
+                onNegative = { d, _ -> d.dismiss() }
+            ).show()
         }
     }
 

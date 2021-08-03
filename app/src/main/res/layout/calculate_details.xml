@@ -45,7 +45,7 @@
                 android:textSize="15sp" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/nutriments_recycler_view_calc"
+                android:id="@+id/nutriments"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:paddingBottom="60dp"

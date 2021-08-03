@@ -213,10 +213,9 @@ class HomeFragment : NavigationBaseFragment() {
             for (tag in tagLines) {
                 if (appLanguage !in tag.language) continue
                 isLanguageFound = true
-                if (tag.language == appLanguage) break
-
                 taglineURL = tag.tagLine.url
                 binding.tvTagLine.text = tag.tagLine.message
+                if (tag.language == appLanguage) break
             }
 
             if (!isLanguageFound) {
