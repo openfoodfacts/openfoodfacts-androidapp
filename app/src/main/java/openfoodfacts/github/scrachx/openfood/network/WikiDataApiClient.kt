@@ -1,5 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.network
 
+import com.fasterxml.jackson.databind.JsonNode
 import openfoodfacts.github.scrachx.openfood.network.services.WikidataAPI
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -19,5 +20,5 @@ class WikiDataApiClient @Inject constructor(
      *
      * @param code WikiData ID of additive/ingredient/category/label
      */
-    fun doSomeThing(code: String) = wikidataAPI.getWikiCategory(code).map { it["entities"][code] }
+    suspend fun doSomeThing(code: String): JsonNode = wikidataAPI.getWikiCategory(code)["entities"][code]
 }

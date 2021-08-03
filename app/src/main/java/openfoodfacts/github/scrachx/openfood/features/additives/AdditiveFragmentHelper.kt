@@ -16,7 +16,6 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import com.fasterxml.jackson.databind.JsonNode
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.rx2.await
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivity
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
@@ -73,7 +72,7 @@ object AdditiveFragmentHelper {
             override fun onClick(view: View) {
                 if (additive.isWikiDataIdPresent) {
                     lifecycleOwner.lifecycleScope.launch {
-                        val result = apiClientForWikiData.doSomeThing(additive.wikiDataId).await()
+                        val result = apiClientForWikiData.doSomeThing(additive.wikiDataId)
                         getOnWikiResponse(activity, additive)(result)
                     }
                 } else {

@@ -53,7 +53,6 @@ import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.Completable
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import kotlinx.coroutines.*
 import kotlinx.coroutines.rx2.await
@@ -132,10 +131,8 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
     private val bottomSheetCallback by lazy { QuickViewCallback(this) }
 
     private val cameraPref by lazy { getSharedPreferences("camera", 0) }
-
     private val settings by lazy { getSharedPreferences("prefs", 0) }
 
-    private val commonDisp = CompositeDisposable()
     private var productDisp: Job? = null
     private var hintBarcodeDisp: Disposable? = null
 
@@ -190,7 +187,6 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
 
         // Dispose the previous call if not ended.
         productDisp?.cancel()
-        summaryProductPresenter?.dispose()
 
         // First, try to show if we have an offline saved product in the db
         offlineSavedProduct = offlineProductService.getOfflineProductByBarcode(barcode).also { product ->
@@ -284,7 +280,7 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
                 // Set product name, prefer offline
                 if (offlineSavedProduct != null && !offlineSavedProduct?.name.isNullOrEmpty()) {
                     binding.quickViewName.text = offlineSavedProduct!!.name
-                } else if (product.productName == null || product.productName == "") {
+                } else if (product.productName == null || product.productName.isEmpty()) {
                     binding.quickViewName.setText(R.string.productNameNull)
                 } else {
                     binding.quickViewName.text = product.productName
@@ -389,8 +385,14 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
                 binding.quickViewTags.adapter = adapter
             }
         }, productRepository).also {
-            it.loadAllergens { binding.callToActionImageProgress.visibility = View.GONE }
-            it.loadAnalysisTags()
+            lifecycleScope.launch {
+                try {
+                    it.loadAllergens()
+                } catch (err: Exception) {
+                    binding.callToActionImageProgress.visibility = View.GONE
+                }
+            }
+            lifecycleScope.launch { it.loadAnalysisTags() }
         }
     }
 
@@ -606,12 +608,10 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
     }
 
     override fun onDestroy() {
-        summaryProductPresenter?.dispose()
         mlKitView.detach()
 
         // Dispose all RxJava disposable
         hintBarcodeDisp?.dispose()
-        commonDisp.dispose()
 
         // Remove bottom sheet callback as it uses binding
         quickViewBehavior.removeBottomSheetCallback(bottomSheetCallback)

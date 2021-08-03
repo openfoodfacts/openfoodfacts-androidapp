@@ -18,6 +18,7 @@ package openfoodfacts.github.scrachx.openfood.utils
 import android.Manifest
 import android.app.Activity
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.pm.PackageManager.PERMISSION_GRANTED
@@ -46,7 +47,6 @@ import androidx.core.net.toUri
 import androidx.core.text.inSpans
 import androidx.core.view.children
 import androidx.work.*
-import com.afollestad.materialdialogs.MaterialDialog
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.squareup.picasso.Callback
 import com.squareup.picasso.RequestCreator
@@ -222,10 +222,14 @@ object Utils {
 fun isAllGranted(grantResults: IntArray) =
     grantResults.isNotEmpty() && grantResults.none { it != PERMISSION_GRANTED }
 
-fun buildSignInDialog(activity: Activity): MaterialDialog.Builder = MaterialDialog.Builder(activity)
-    .title(R.string.sign_in_to_edit)
-    .positiveText(R.string.txtSignIn)
-    .negativeText(R.string.dialog_cancel)
+fun buildSignInDialog(
+    context: Context,
+    onPositive: (DialogInterface, Int) -> Unit = { _, _ -> },
+    onNegative: (DialogInterface, Int) -> Unit = { _, _ -> }
+): MaterialAlertDialogBuilder = MaterialAlertDialogBuilder(context)
+    .setTitle(R.string.sign_in_to_edit)
+    .setPositiveButton(R.string.txtSignIn) { d, i -> onPositive(d, i) }
+    .setNegativeButton(R.string.dialog_cancel) { d, i -> onNegative(d, i) }
 
 
 /**

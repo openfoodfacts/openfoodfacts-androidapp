@@ -6,14 +6,13 @@ import android.content.Intent
 import android.util.Log
 import android.widget.Toast
 import androidx.core.content.edit
-import com.afollestad.materialdialogs.MaterialDialog
 import com.fasterxml.jackson.databind.JsonNode
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.qualifiers.ApplicationContext
-import io.reactivex.Completable
 import io.reactivex.Single
-import io.reactivex.schedulers.Schedulers
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.rx2.await
 import kotlinx.coroutines.rx2.rxCompletable
 import kotlinx.coroutines.rx2.rxSingle
@@ -90,13 +89,11 @@ class OpenFoodAPIClient @Inject constructor(
         return fieldsSet.joinToString(",")
     }
 
-    private fun productNotFoundDialogBuilder(activity: Activity, barcode: String): MaterialDialog.Builder =
-        MaterialDialog.Builder(activity)
-            .title(R.string.txtDialogsTitle)
-            .content(R.string.txtDialogsContent)
-            .positiveText(R.string.txtYes)
-            .negativeText(R.string.txtNo)
-            .onPositive { _, _ ->
+    private fun productNotFoundDialogBuilder(activity: Activity, barcode: String): MaterialAlertDialogBuilder =
+        MaterialAlertDialogBuilder(activity)
+            .setTitle(R.string.txtDialogsTitle)
+            .setMessage(R.string.txtDialogsContent)
+            .setPositiveButton(R.string.txtYes) { _, _ ->
                 activity.startActivity(Intent(activity, ProductEditActivity::class.java).apply {
                     putExtra(KEY_EDIT_PRODUCT, Product().apply {
                         code = barcode
@@ -105,6 +102,7 @@ class OpenFoodAPIClient @Inject constructor(
                 })
                 activity.finish()
             }
+            .setNegativeButton(R.string.txtNo) { _, _ -> }
 
     /**
      * Open the product activity if the barcode exist.
@@ -116,7 +114,8 @@ class OpenFoodAPIClient @Inject constructor(
         val fields = Keys.PRODUCT_IMAGES_FIELDS.toMutableSet().also {
             it += Keys.lcProductNameKey(localeManager.getLanguage())
         }.joinToString(",")
-        return@rxSingle rawApi.getProductByBarcode(
+
+        rawApi.getProductByBarcode(
             barcode,
             fields,
             localeManager.getLanguage(),
@@ -150,10 +149,10 @@ class OpenFoodAPIClient @Inject constructor(
         withContext(Main) {
             if (state.status == 0L) {
                 productNotFoundDialogBuilder(activity, barcode)
-                    .onNegative { _, _ -> activity.onBackPressed() }
+                    .setNegativeButton(R.string.txtNo) { _, _ -> activity.onBackPressed() }
                     .show()
             } else {
-                addToHistory(state.product!!).subscribe()
+                launch { addToHistory(state.product!!) }
                 startProductViewActivity(activity, state)
             }
         }
@@ -177,12 +176,13 @@ class OpenFoodAPIClient @Inject constructor(
     }
 
 
-    fun searchProductsByName(name: String, page: Int) = rxSingle {
+    fun searchProductsByName(name: String, page: Int) = rxSingle(IO) {
         rawApi.searchProductByName(name, fieldsToFetchFacets, page)
     }
 
-    fun getProductsByCountry(country: String, page: Int) =
+    fun getProductsByCountry(country: String, page: Int) = rxSingle(IO) {
         rawApi.getProductsByCountry(country, page, fieldsToFetchFacets)
+    }
 
     /**
      * Returns a map for images uploaded for product/ingredients/nutrition/other images
@@ -216,11 +216,13 @@ class OpenFoodAPIClient @Inject constructor(
         return imgMap
     }
 
-    fun getProductsByCategory(category: String, page: Int) =
+    fun getProductsByCategory(category: String, page: Int) = rxSingle {
         rawApi.getProductByCategory(category, page, fieldsToFetchFacets)
+    }
 
-    fun getProductsByLabel(label: String, page: Int) =
+    fun getProductsByLabel(label: String, page: Int) = rxSingle {
         rawApi.getProductsByLabel(label, page, fieldsToFetchFacets)
+    }
 
     /**
      * Add a product to ScanHistory asynchronously
@@ -229,9 +231,9 @@ class OpenFoodAPIClient @Inject constructor(
         daoSession.historyProductDao.addToHistory(product, localeManager.getLanguage())
     }
 
-    fun getProductsByContributor(contributor: String, page: Int) =
+    fun getProductsByContributor(contributor: String, page: Int) = rxSingle(IO) {
         rawApi.getProductsByContributor(contributor, page, fieldsToFetchFacets)
-            .subscribeOn(Schedulers.io())
+    }
 
     /**
      * upload images in offline mode
@@ -269,11 +271,13 @@ class OpenFoodAPIClient @Inject constructor(
             }
     }
 
-    fun getProductsByPackaging(packaging: String, page: Int): Single<Search> =
+    fun getProductsByPackaging(packaging: String, page: Int): Single<Search> = rxSingle {
         rawApi.getProductsByPackaging(packaging, page, fieldsToFetchFacets)
+    }
 
-    fun getProductsByStore(store: String, page: Int): Single<Search> =
+    fun getProductsByStore(store: String, page: Int): Single<Search> = rxSingle(IO) {
         rawApi.getProductByStores(store, page, fieldsToFetchFacets)
+    }
 
     /**
      * Search for products using bran name
@@ -281,7 +285,7 @@ class OpenFoodAPIClient @Inject constructor(
      * @param brand search query for product
      * @param page page numbers
      */
-    fun getProductsByBrand(brand: String, page: Int): Single<Search> = rxSingle(IO) {
+    fun getProductsByBrand(brand: String, page: Int) = rxSingle(IO) {
         rawApi.getProductByBrands(brand, page, fieldsToFetchFacets)
     }
 
@@ -309,16 +313,15 @@ class OpenFoodAPIClient @Inject constructor(
         }
     }
 
-    private fun setDefaultImageFromServerResponse(body: JsonNode, image: ProductImage): Completable {
+    private suspend fun setDefaultImageFromServerResponse(body: JsonNode, image: ProductImage) {
         val queryMap = getUserInfo() + listOf(
             IMG_ID to body["image"][IMG_ID].asText(),
             "id" to body["imagefield"].asText()
         )
 
-        return rawApi.editImage(image.barcode, queryMap).flatMapCompletable { node ->
-            if (node[Keys.STATUS].asText() != "status ok") throw IOException(node["error"].asText())
-            else Completable.complete()
-        }
+        val node = rawApi.editImage(image.barcode, queryMap).await()
+
+        if (node[Keys.STATUS].asText() != "status ok") throw IOException(node["error"].asText())
     }
 
     suspend fun editImage(code: String, imgMap: MutableMap<String, String>) = withContext(IO) {
@@ -332,11 +335,12 @@ class OpenFoodAPIClient @Inject constructor(
      */
     suspend fun unSelectImage(code: String, field: ProductImageField, language: String) = withContext(IO) {
         val imgMap = getUserInfo() + (IMAGE_STRING_ID to getImageStringKey(field, language))
-        return@withContext rawApi.unSelectImage(code, imgMap)
+        rawApi.unSelectImage(code, imgMap)
     }
 
-    fun getProductsByOrigin(origin: String, page: Int) =
+    fun getProductsByOrigin(origin: String, page: Int) = rxSingle(IO) {
         rawApi.getProductsByOrigin(origin, page, fieldsToFetchFacets)
+    }
 
     suspend fun syncOldHistory() = withContext(IO) {
         val fields = listOf(
@@ -382,11 +386,13 @@ class OpenFoodAPIClient @Inject constructor(
         }
     }
 
-    fun getInfoAddedIncompleteProductsSingle(contributor: String, page: Int) =
+    fun getInfoAddedIncompleteProductsSingle(contributor: String, page: Int) = rxSingle(IO) {
         rawApi.getInfoAddedIncompleteProductsSingle(contributor, page)
+    }
 
-    fun getProductsByManufacturingPlace(manufacturingPlace: String, page: Int) =
+    fun getProductsByManufacturingPlace(manufacturingPlace: String, page: Int) = rxSingle(IO) {
         rawApi.getProductsByManufacturingPlace(manufacturingPlace, page, fieldsToFetchFacets)
+    }
 
     /**
      * call API service to return products using Additives
@@ -394,29 +400,38 @@ class OpenFoodAPIClient @Inject constructor(
      * @param additive search query for products
      * @param page number of pages
      */
-    fun getProductsByAdditive(additive: String, page: Int) =
+    fun getProductsByAdditive(additive: String, page: Int) = rxSingle(IO) {
         rawApi.getProductsByAdditive(additive, page, fieldsToFetchFacets)
+    }
 
-    fun getProductsByAllergen(allergen: String, page: Int) =
+    fun getProductsByAllergen(allergen: String, page: Int) = rxSingle(IO) {
         rawApi.getProductsByAllergen(allergen, page, fieldsToFetchFacets)
+    }
 
-    fun getToBeCompletedProductsByContributor(contributor: String, page: Int) =
+    fun getToBeCompletedProductsByContributor(contributor: String, page: Int) = rxSingle(IO) {
         rawApi.getToBeCompletedProductsByContributor(contributor, page)
+    }
 
-    fun getPicturesContributedProducts(contributor: String, page: Int) =
+    fun getPicturesContributedProducts(contributor: String, page: Int) = rxSingle(IO) {
         rawApi.getPicturesContributedProducts(contributor, page)
+    }
 
-    fun getPicturesContributedIncompleteProducts(contributor: String?, page: Int) =
+    fun getPicturesContributedIncompleteProducts(contributor: String?, page: Int) = rxSingle(IO) {
         rawApi.getPicturesContributedIncompleteProducts(contributor, page)
+    }
 
-    fun getInfoAddedProducts(contributor: String?, page: Int) =
+    fun getInfoAddedProducts(contributor: String?, page: Int) = rxSingle(IO) {
         rawApi.getInfoAddedProducts(contributor, page)
+    }
 
-    fun getIncompleteProducts(page: Int) =
+
+    fun getIncompleteProducts(page: Int) = rxSingle(IO) {
         rawApi.getIncompleteProducts(page, fieldsToFetchFacets)
+    }
 
-    fun getProductsByStates(state: String?, page: Int) =
+    fun getProductsByStates(state: String?, page: Int) = rxSingle(IO) {
         rawApi.getProductsByState(state, page, fieldsToFetchFacets)
+    }
 
     companion object {
         val MIME_TEXT: MediaType = MediaType.get("text/plain")
@@ -474,28 +489,22 @@ class OpenFoodAPIClient @Inject constructor(
     }
 
     /**
-     * Fill the given [Map] with user info (username, password, comment)
-     *
-     * @param imgMap The map to fill
-     *
+     * Return a [Map] with user info (username, password, comment)
      */
-    @Deprecated("Use the += operator with getUserInfo()")
-    private fun addUserInfo(imgMap: MutableMap<String, String> = mutableMapOf()): Map<String, String> {
-        val settings = context.getLoginPreferences()
+    private fun getUserInfo(): Map<String, String> {
+        val imgMap = mutableMapOf<String, String>()
 
+
+        val settings = context.getLoginPreferences()
         settings.getString("user", null)?.let {
             imgMap[Keys.USER_COMMENT] = getCommentToUpload(it)
             if (it.isNotBlank()) imgMap[Keys.USER_ID] = it
         }
-
         settings.getString("pass", null)?.let {
             if (it.isNotBlank()) imgMap[Keys.USER_PASS] = it
         }
-
         return imgMap
     }
-
-    private fun getUserInfo() = addUserInfo()
 
     /**
      * Uploads comment by users
@@ -527,3 +536,4 @@ class OpenFoodAPIClient @Inject constructor(
     suspend fun getEMBCodeSuggestions(term: String) = rawApi.getSuggestions("emb_codes", term)
     suspend fun getPeriodAfterOpeningSuggestions(term: String) = rawApi.getSuggestions("periods_after_opening", term)
 }
+
