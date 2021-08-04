@@ -63,7 +63,7 @@ class OpenFoodAPIClient @Inject constructor(
     ): ProductState {
         sentryAnalytics.setBarcode(barcode)
         return withContext(IO) {
-            rawApi.getProductByBarcode(barcode, fields, localeManager.getLanguage(), getUserAgent(userAgent)).await()
+            rawApi.getProductByBarcode(barcode, fields, localeManager.getLanguage(), getUserAgent(userAgent))
         }
     }
 
@@ -120,7 +120,7 @@ class OpenFoodAPIClient @Inject constructor(
             fields,
             localeManager.getLanguage(),
             getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)
-        ).await()
+        )
     }
 
     // TODO: This is not part of the client, move it to another class (preferably a utility class)
@@ -138,7 +138,7 @@ class OpenFoodAPIClient @Inject constructor(
                 getAllFields(),
                 localeManager.getLanguage(),
                 getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)
-            ).await()
+            )
         } catch (err: Exception) {
             when (err) {
                 is IOException -> Toast.makeText(activity, R.string.something_went_wrong, Toast.LENGTH_LONG).show()
@@ -159,7 +159,6 @@ class OpenFoodAPIClient @Inject constructor(
     }
 
     /**
-     * @param barcode
      * @return a list of product ingredients (can be empty)
      */
     suspend fun getIngredients(product: Product) = withContext(IO) {
@@ -359,7 +358,7 @@ class OpenFoodAPIClient @Inject constructor(
                 fields,
                 localeManager.getLanguage(),
                 getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)
-            ).await()
+            )
 
             if (state.status == 0L) throw IOException("Could not sync history. Error with product ${state.code} ")
             else {

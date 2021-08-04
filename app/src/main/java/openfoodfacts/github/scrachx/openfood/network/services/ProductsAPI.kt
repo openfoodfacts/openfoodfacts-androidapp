@@ -46,12 +46,12 @@ interface ProductsAPI {
     }
 
     @GET("$API_P/product/{barcode}.json")
-    fun getProductByBarcode(
+    suspend fun getProductByBarcode(
         @Path("barcode") barcode: String,
         @Query("fields") fields: String,
         @Query("lc") locale: String,
         @Header("User-Agent") header: String
-    ): Single<ProductState>
+    ): ProductState
 
     /**
      * @param barcodes String of comma separated barcodes
@@ -198,46 +198,46 @@ interface ProductsAPI {
     ): Search
 
     @GET("language/{language}.json")
-    fun getProductsByLanguage(@Path("language") language: String): Single<Search>
+    suspend fun getProductsByLanguage(@Path("language") language: String): Search
 
     @GET("label/{label}.json")
-    fun getProductsByLabel(@Path("label") label: String): Single<Search>
+    suspend fun getProductsByLabel(@Path("label") label: String): Search
 
     @GET("category/{category}.json")
-    fun getProductsByCategory(@Path("category") category: String): Single<Search>
+    suspend fun getProductsByCategory(@Path("category") category: String): Search
 
     @GET("state/{state}.json")
-    fun getProductsByState(
+    suspend fun getProductsByState(
         @Path("state") state: String,
         @Query("fields") fields: String
-    ): Single<Search>
+    ): Search
 
     @GET("packaging/{packaging}.json")
-    fun getProductsByPackaging(@Path("packaging") packaging: String): Single<Search>
+    suspend fun getProductsByPackaging(@Path("packaging") packaging: String): Search
 
     @GET("brand/{brand}.json")
-    fun getProductsByBrand(@Path("brand") brand: String): Single<Search>
+    suspend fun getProductsByBrand(@Path("brand") brand: String): Search
 
     @GET("purchase-place/{purchasePlace}.json")
-    fun getProductsByPurchasePlace(@Path("purchasePlace") purchasePlace: String): Single<Search>
+    suspend fun getProductsByPurchasePlace(@Path("purchasePlace") purchasePlace: String): Search
 
     @GET("store/{store}.json")
-    fun getProductsByStore(@Path("store") store: String): Single<Search>
+    suspend fun getProductsByStore(@Path("store") store: String): Search
 
     @GET("country/{country}.json")
-    fun byCountry(@Path("country") country: String): Single<Search>
+    suspend fun byCountry(@Path("country") country: String): Search
 
     @GET("trace/{trace}.json")
-    fun getProductsByTrace(@Path("trace") trace: String): Single<Search>
+    suspend fun getProductsByTrace(@Path("trace") trace: String): Search
 
     @GET("packager-code/{packager_code}.json")
-    fun getProductsByPackagerCode(@Path("packager_code") packagerCode: String): Single<Search>
+    suspend fun getProductsByPackagerCode(@Path("packager_code") packagerCode: String): Search
 
     @GET("city/{city}.json")
-    fun getProducsByCity(@Path("city") city: String): Single<Search>
+    suspend fun getProductsByCity(@Path("city") city: String): Search
 
     @GET("nutrition-grade/{nutriscore}.json")
-    fun getProductsByNutriScore(@Path("nutriscore") nutritionGrade: String): Single<Search>
+    suspend fun getProductsByNutriScore(@Path("nutriscore") nutritionGrade: String): Search
 
     @GET("nutrient-level/{nutrient_level}.json")
     fun byNutrientLevel(@Path("nutrient_level") nutrientLevel: String): Single<Search>
@@ -314,7 +314,7 @@ interface ProductsAPI {
     fun getProductsByPeriodAfterOpening(@Path("PeriodAfterOpening") periodAfterOpening: String): Call<Search>
 
     @GET("ingredient/{ingredient}.json")
-    fun getProductsByIngredient(@Path("ingredient") ingredient: String): Single<Search>
+    suspend fun getProductsByIngredient(@Path("ingredient") ingredient: String): Search
 
     /**
      * This method gives a list of incomplete products
