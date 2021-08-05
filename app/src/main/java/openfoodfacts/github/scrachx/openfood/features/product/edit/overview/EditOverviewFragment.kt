@@ -363,7 +363,7 @@ class EditOverviewFragment : ProductEditFragment() {
             binding.btnEditImgFront.visibility = View.INVISIBLE
             picasso
                 .load(imageFrontUrl)
-                .resize(requireContext().dpsToPixel(50).toInt(), requireContext().dpsToPixel(50).toInt())
+                .resize(requireContext().dpsToPixel(50), requireContext().dpsToPixel(50))
                 .centerInside()
                 .into(binding.imgFront, object : Callback {
                     override fun onSuccess() = frontImageLoaded()

@@ -3,7 +3,7 @@ package openfoodfacts.github.scrachx.openfood.images
 import com.fasterxml.jackson.databind.JsonNode
 
 /**
- * @param this@extractImagesNameSortedByUploadTimeDesc json representing images entries given by api/v0/product/XXXX.json?fields=images
+ * @receiver json representing images entries given by api/v0/product/XXXX.json?fields=images
  */
 internal fun JsonNode.extractImagesNameSortedByUploadTimeDesc(): List<String> {
     // a json object referring to images

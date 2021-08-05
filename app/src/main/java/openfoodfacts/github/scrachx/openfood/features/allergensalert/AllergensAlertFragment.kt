@@ -219,7 +219,7 @@ class AllergensAlertFragment : NavigationBaseFragment() {
     }
 
     companion object {
-        private val LOG_TAG = this::class.simpleName
+        private val LOG_TAG = AllergensAlertFragment::class.simpleName
 
         @JvmStatic
         fun newInstance() = AllergensAlertFragment().apply { arguments = Bundle() }

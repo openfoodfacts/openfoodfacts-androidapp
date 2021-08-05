@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.Log
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.withContext
 import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.utils.Utils
@@ -28,7 +29,7 @@ class TaxonomiesManager @Inject constructor(
      * @return The timestamp of the last changes date of the taxonomy.json on the server
      * or [TAXONOMY_NO_INTERNET] if there is no connection to the server.
      */
-    private suspend fun <T> getLastModifiedDateFromServer(taxonomy: Taxonomy<T>) = withContext(Dispatchers.IO) {
+    private suspend fun <T> getLastModifiedDateFromServer(taxonomy: Taxonomy<T>) = withContext(IO) {
         var lastModifiedDate: Long
         val taxoUrl = URL(BuildConfig.OFWEBSITE + taxonomy.jsonUrl)
         try {
@@ -85,7 +86,7 @@ class TaxonomiesManager @Inject constructor(
     private suspend fun <T> download(
         taxonomy: Taxonomy<T>,
         productRepository: ProductRepository
-    ) = withContext(Dispatchers.IO) {
+    ) = withContext(IO) {
         val lastMod = getLastModifiedDateFromServer(taxonomy)
 
         return@withContext if (lastMod != TAXONOMY_NO_INTERNET)
@@ -97,7 +98,7 @@ class TaxonomiesManager @Inject constructor(
         taxonomy: Taxonomy<T>,
         localDownloadTime: Long,
         productRepository: ProductRepository
-    ) = withContext(Dispatchers.IO) {
+    ) = withContext(IO) {
         val lastModRemote = getLastModifiedDateFromServer(taxonomy)
 
         if (lastModRemote == 0L || lastModRemote > localDownloadTime)
