@@ -42,13 +42,13 @@ object CategoryProductHelper {
             .bold { append(fragment.getString(R.string.txtCategories)) }
             .append(" ")
             .apply {
-                // Add all the categories to text view and link them to wikidata is possible
+                // Add all the categories to text view and link them to wikidata if possible
                 categories.map { getCategoriesTag(it, fragment, apiClient) }.forEachIndexed { i, el ->
                     append(el)
                     if (i != categories.size) append(", ")
                 }
             }
-
+        // Show alcohol health warning
         if (categories.any { it.categoryTag == "en:alcoholic-beverages" }) {
             showAlcoholAlert(alcoholAlertText, fragment)
         }
