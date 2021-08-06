@@ -42,11 +42,13 @@ object CategoryProductHelper {
             .bold { append(fragment.getString(R.string.txtCategories)) }
             .append(" ")
             .apply {
-                // Add all the categories to text view and link them to wikidata is possible
-                append(categories.joinToString { getCategoriesTag(it, fragment, apiClient) })
-
+                // Add all the categories to text view and link them to wikidata if possible
+                categories.map { getCategoriesTag(it, fragment, apiClient) }.forEachIndexed { i, el ->
+                    append(el)
+                    if (i != categories.size) append(", ")
+                }
             }
-
+        // Show alcohol health warning
         if (categories.any { it.categoryTag == "en:alcoholic-beverages" }) {
             showAlcoholAlert(alcoholAlertText, fragment)
         }
@@ -56,7 +58,7 @@ object CategoryProductHelper {
         category: CategoryName,
         fragment: BaseFragment,
         apiClient: WikiDataApiClient
-    ): CharSequence {
+    ): SpannableStringBuilder {
         val clickableSpan = object : ClickableSpan() {
             override fun onClick(view: View) {
                 if (category.isWikiDataIdPresent == true) {
