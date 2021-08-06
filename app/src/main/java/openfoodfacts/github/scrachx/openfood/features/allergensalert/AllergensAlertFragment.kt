@@ -66,14 +66,13 @@ class AllergensAlertFragment : NavigationBaseFragment() {
     private lateinit var adapter: AllergensAdapter
     private val mSettings by lazy { requireActivity().getSharedPreferences("prefs", 0) }
     private val dataObserver by lazy { AllergensObserver() }
+    private val appLang: String by lazy { localeManager.getLanguage() }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         setHasOptionsMenu(true)
         _binding = FragmentAlertAllergensBinding.inflate(inflater)
         return binding.root
     }
-
-    private val appLang: String by lazy { localeManager.getLanguage() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -112,7 +111,9 @@ class AllergensAlertFragment : NavigationBaseFragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        adapter.unregisterAdapterDataObserver(dataObserver)
+        if (this::adapter.isInitialized) {
+            adapter.unregisterAdapterDataObserver(dataObserver)
+        }
         _binding = null
     }
 
@@ -219,7 +220,6 @@ class AllergensAlertFragment : NavigationBaseFragment() {
     }
 
     companion object {
-        private val LOG_TAG = AllergensAlertFragment::class.simpleName
 
         @JvmStatic
         fun newInstance() = AllergensAlertFragment().apply { arguments = Bundle() }
