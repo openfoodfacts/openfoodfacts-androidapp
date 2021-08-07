@@ -58,12 +58,12 @@ object AdditiveFragmentHelper {
      * Returns additive tag from additive name using WikidataApiClient
      *
      * @param additive name of the additive
-     * @param apiClientForWikiData object of WikidataApiClient
+     * @param wikidataClient object of WikidataApiClient
      * @param fragment holds a reference to the calling fragment
      */
     private fun getAdditiveTag(
         additive: AdditiveName,
-        apiClientForWikiData: WikiDataApiClient,
+        wikidataClient: WikiDataApiClient,
         fragment: BaseFragment,
         lifecycleOwner: LifecycleOwner
     ): CharSequence {
@@ -72,7 +72,7 @@ object AdditiveFragmentHelper {
             override fun onClick(view: View) {
                 if (additive.isWikiDataIdPresent) {
                     lifecycleOwner.lifecycleScope.launch {
-                        val result = apiClientForWikiData.doSomeThing(additive.wikiDataId)
+                        val result = wikidataClient.getEntityData(additive.wikiDataId)
                         getOnWikiResponse(activity, additive)(result)
                     }
                 } else {

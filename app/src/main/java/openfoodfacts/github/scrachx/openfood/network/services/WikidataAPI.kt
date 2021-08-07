@@ -9,6 +9,6 @@ import retrofit2.http.Path
  * Get method to get json response from wikidata server.
  */
 interface WikidataAPI {
-    @GET("{code}.json")
-    suspend fun getWikiCategory(@Path("code") code: String): ObjectNode
+    @GET("{id}.json")
+    suspend fun getEntity(@Path("id") entityId: String): ObjectNode
 }
