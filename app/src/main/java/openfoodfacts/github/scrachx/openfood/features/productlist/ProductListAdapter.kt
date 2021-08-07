@@ -1,6 +1,5 @@
 package openfoodfacts.github.scrachx.openfood.features.productlist
 
-import android.app.Activity
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -12,18 +11,17 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
-import kotlinx.coroutines.runBlocking
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.features.productlist.ProductListAdapter.ProductViewHolder
 import openfoodfacts.github.scrachx.openfood.features.shared.views.CustomTextView
 import openfoodfacts.github.scrachx.openfood.models.entities.ListedProduct
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 
 class ProductListAdapter(
     private val context: Context,
-    private val client: OpenFoodAPIClient,
     val products: MutableList<ListedProduct>,
-    private val isLowBatteryMode: Boolean
+    private val isLowBatteryMode: Boolean,
+    private val picasso: Picasso,
+    private val onItemClickListener: (ListedProduct) -> Unit = { }
 ) : RecyclerView.Adapter<ProductViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
@@ -40,7 +38,7 @@ class ProductListAdapter(
         holder.tvBarcode.text = products[position].barcode
 
         if (!isLowBatteryMode && products[position].imageUrl.isNotEmpty()) {
-            Picasso.get()
+            picasso
                 .load(products[position].imageUrl)
                 .placeholder(R.drawable.placeholder_thumb)
                 .error(R.drawable.ic_no_red_24dp)
@@ -59,11 +57,9 @@ class ProductListAdapter(
             holder.imgProduct.background = ResourcesCompat.getDrawable(context.resources, R.drawable.placeholder_thumb, context.theme)
             holder.imgProgressBar.visibility = View.INVISIBLE
         }
-        holder.itemView.setOnClickListener {
-            val activity = it.context as Activity
-            runBlocking { client.openProduct(products[position].barcode, activity) }
 
-        }
+        // Set on click listener
+        holder.itemView.setOnClickListener { onItemClickListener(products[position]) }
     }
 
     fun remove(product: ListedProduct) {

@@ -15,7 +15,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
-import io.reactivex.disposables.CompositeDisposable
 import kotlinx.coroutines.launch
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductBinding
@@ -41,8 +40,6 @@ import javax.inject.Inject
 class ProductViewFragment : Fragment(), IProductView, OnRefreshListener {
     private var _binding: ActivityProductBinding? = null
     private val binding get() = _binding!!
-
-    private val disp = CompositeDisposable()
 
     @Inject
     lateinit var client: OpenFoodAPIClient
@@ -76,11 +73,6 @@ class ProductViewFragment : Fragment(), IProductView, OnRefreshListener {
 
         binding.navigationBottomInclude.bottomNavigation.selectNavigationItem(0)
         binding.navigationBottomInclude.bottomNavigation.installBottomNavigation(requireActivity())
-    }
-
-    override fun onDestroyView() {
-        disp.dispose()
-        super.onDestroyView()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

@@ -32,39 +32,40 @@ Open Food Facts is a non-profit association of volunteers.
 Data about food is of public interest and has to be open. The complete database is published as open data and can be reused by anyone.
 
 ## Ongoing documentation of user flows
-https://www.figma.com/file/BQ7CSyFvl7D9ljcXT0ay0u/Navigation-within-the-app
+[Visual documentation of the App on Figma](https://www.figma.com/file/BQ7CSyFvl7D9ljcXT0ay0u/Navigation-within-the-app)
 
 ## Documentation of the source code
 The documentation is generated automatically from the source code and your improvements to code documentation are published automatically.
-https://openfoodfacts.github.io/openfoodfacts-androidapp/
+[Code documentation on GitHub pages](https://openfoodfacts.github.io/openfoodfacts-androidapp/)
 
 ## Helping stabilize our next release
 Here are issues and feature requests you can work on:
-- [3.6.6 milestone](https://github.com/openfoodfacts/openfoodfacts-androidapp/milestone/36)
-Here's a summary explanation of improvements and regressions that are blocking the release: https://github.com/openfoodfacts/openfoodfacts-androidapp/wiki#pros-and-cons-of-releasing-before-the-15th
+- [ ] [3.6.6 milestone](https://github.com/openfoodfacts/openfoodfacts-androidapp/milestone/36)
+- [ ] [Summary explanation of improvements and regressions that are blocking the release](https://github.com/openfoodfacts/openfoodfacts-androidapp/wiki#pros-and-cons-of-releasing-before-the-15th)
 
 ## Impact Roadmap
 ### A brilliant scan experience 
-https://github.com/openfoodfacts/openfoodfacts-androidapp/projects/20
+- [ ] ["A brilliant scan experience" project](https://github.com/openfoodfacts/openfoodfacts-androidapp/projects/20)
 - [ ] Add offline scanning
 
 ### Help data refresh
-- [ ] Create a "Help with images" button in the scan screen https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/3543
+- [ ] [Create a "Help with images" button in the scan screen](https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/3543)
 
 ### Open Beauty Facts
-- [ ] https://github.com/openfoodfacts/openfoodfacts-androidapp/projects/8#card-39610510
+- [ ] [Open Beauty Facts project](https://github.com/openfoodfacts/openfoodfacts-androidapp/projects/8)
 
 ### Editing papercut bugs
-Make category selection more intuitive for beginners #2951
-Improve suggestions by removing diacritics in the edit mode #2184
 
+
+- [ ] [Make category selection more intuitive for beginners #2951](https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/2951)
+- [ ] [Improve suggestions by removing diacritics in the edit mode #2184](https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/2184)
 
 ## Test it on your phone or tablet
 
 | Open Food Facts on [Google Play](https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner)  | Open Food Facts on [F-Droid](https://f-droid.org/packages/openfoodfacts.github.scrachx.openfood/) | Open Food Facts on the [Web](https://world.openfoodfacts.org/) |Open Food Facts is also available on [iOS](https://ios.openfoodfacts.org)|
 | ------------- | ------------- | ------------- | ------------- |
 | <a href="https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner" alt="Get it on Google Play" target="_blank"><img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" height="80"></a>  | <a href="https://f-droid.org/packages/openfoodfacts.github.scrachx.openfood/" alt="Get it on F-Droid" target="_blank"><img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" height="80"></a>  | [https://world.openfoodfacts.org/](https://world.openfoodfacts.org/) |<a href="https://apps.apple.com/app/open-food-facts/id588797948"><img height="75" src="https://user-images.githubusercontent.com/7317008/43209852-4ca39622-904b-11e8-8ce1-cdc3aee76ae9.png" align="left" hspace="1" vspace="1"></a> [iOS repository](https://github.com/openfoodfacts/openfoodfacts-ios) |
-|<a href="https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner" alt="Get it on Google Play" target="_blank"><img src="https://lh3.googleusercontent.com/5QxkJkxPmoVxj_H_BidOPHJwFZSvLx9hx3ls-p9FetMORGMf2-7e9J4Jsg9EN8NjBpYq=w1260-h646" width="212" height="400" /></a>|<a href="https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner" alt="Get it on Google Play" target="_blank"><img src="https://lh3.googleusercontent.com/8Oab6oXw8Z8z_a5BO2stLRAkCVVR3cW4R-NfQ4BdYSdWM24I0cG0F2HHvXYRDWslcg=w1260-h646" width="212" height="400" /></a>|<a href="https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner" alt="Get it on Google Play" target="_blank"><img src="https://lh3.googleusercontent.com/9DRWlQwnz1NTKP7VJucWg1i_bzwInSUiUsflKprCSKR_f5aG11MLoYk5BvtVYPI1zg=w1260-h646" width="212" height="400" /></a>|<a href="https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner" alt="Get it on Google Play" target="_blank"><img src="https://lh3.googleusercontent.com/627r30FFxVbodLMApJavAhwLym1kSOxSJScXy7DacfAiBPNxjkC6Rsd8Lhjj7yEb_A=w1260-h646" width="212" height="400" /></a>|
+|<a href="https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner" alt="Get it on Google Play" target="_blank"><img src="https://lh3.googleusercontent.com/5QxkJkxPmoVxj_H_BidOPHJwFZSvLx9hx3ls-p9FetMORGMf2-7e9J4Jsg9EN8NjBpYq=w630-h323" /></a>|<a href="https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner" alt="Get it on Google Play" target="_blank"><img src="https://lh3.googleusercontent.com/8Oab6oXw8Z8z_a5BO2stLRAkCVVR3cW4R-NfQ4BdYSdWM24I0cG0F2HHvXYRDWslcg=w630-h323" /></a>|<a href="https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner" alt="Get it on Google Play" target="_blank"><img src="https://lh3.googleusercontent.com/9DRWlQwnz1NTKP7VJucWg1i_bzwInSUiUsflKprCSKR_f5aG11MLoYk5BvtVYPI1zg=w630-h323" /></a>|<a href="https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner" alt="Get it on Google Play" target="_blank"><img src="https://lh3.googleusercontent.com/627r30FFxVbodLMApJavAhwLym1kSOxSJScXy7DacfAiBPNxjkC6Rsd8Lhjj7yEb_A=w630-h323" /></a>|
 
 ## Bugs and feature requests
 
