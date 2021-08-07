@@ -501,8 +501,10 @@ class ProductEditActivity : BaseActivity() {
                         }.show()
                     }
                 } else {
-                    Log.w(this::class.simpleName, err.message!!)
-                    Toast.makeText(this@ProductEditActivity, err.message, Toast.LENGTH_SHORT).show()
+                    withContext(Main) {
+                        Log.w(this::class.simpleName, err.message!!)
+                        Toast.makeText(this@ProductEditActivity, err.message, Toast.LENGTH_SHORT).show()
+                    }
                 }
                 return@withContext null
             }
