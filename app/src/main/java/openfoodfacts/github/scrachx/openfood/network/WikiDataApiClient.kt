@@ -13,12 +13,15 @@ import javax.inject.Singleton
  */
 @Singleton
 class WikiDataApiClient @Inject constructor(
-        private val wikidataAPI: WikidataAPI
+    private val wikidataAPI: WikidataAPI
 ) {
     /**
      * Get json response of the WikiData for additive/ingredient/category/label using their WikiDataID
      *
-     * @param code WikiData ID of additive/ingredient/category/label
+     * @param entityId WikiData ID of additive/ingredient/category/label
      */
-    suspend fun doSomeThing(code: String): JsonNode = wikidataAPI.getWikiCategory(code)["entities"][code]
+    suspend fun getEntityData(entityId: String): JsonNode {
+        require(entityId[0] == 'Q') { "Entity ID should start with 'Q'. Got: $entityId" }
+        return wikidataAPI.getEntity(entityId)["entities"][entityId]
+    }
 }

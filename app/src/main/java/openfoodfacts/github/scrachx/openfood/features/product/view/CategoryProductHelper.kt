@@ -63,7 +63,7 @@ object CategoryProductHelper {
             override fun onClick(view: View) {
                 if (category.isWikiDataIdPresent == true) {
                     fragment.lifecycleScope.launch {
-                        val result = category.wikiDataId?.let { apiClient.doSomeThing(it) }
+                        val result = category.wikiDataId?.let { apiClient.getEntityData(it) }
                         if (result != null) {
                             val activity = fragment.activity
                             if (activity != null && !activity.isFinishing) {

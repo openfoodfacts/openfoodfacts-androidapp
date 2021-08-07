@@ -327,7 +327,7 @@ class IngredientsProductFragment : BaseFragment() {
             override fun onClick(view: View) {
                 if (allergen.isWikiDataIdPresent) {
                     lifecycleScope.launch {
-                        val result = wikidataClient.doSomeThing(
+                        val result = wikidataClient.getEntityData(
                             allergen.wikiDataId
                         )
                         val activity = activity

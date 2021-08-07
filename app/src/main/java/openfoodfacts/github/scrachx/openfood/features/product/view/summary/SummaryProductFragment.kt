@@ -762,7 +762,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
             override fun onClick(view: View) {
                 if (label.isWikiDataIdPresent) {
                     lifecycleScope.launch {
-                        val result = wikidataClient.doSomeThing(label.wikiDataId)
+                        val result = wikidataClient.getEntityData(label.wikiDataId)
                         val activity = activity
                         if (activity?.isFinishing == false) {
                             showBottomSheet(result, label, activity.supportFragmentManager)
