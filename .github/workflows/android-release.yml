@@ -141,3 +141,25 @@ jobs:
           SIGN_KEY_ALIAS: ${{ secrets.SIGN_KEY_ALIAS }}
           SIGN_KEY_PASSWORD: ${{ secrets.SIGN_KEY_PASSWORD }}
           PACKAGE_NAME: "org.openproductsfacts.scanner"
+
+      - name: Run Fastlane release lane for Open Pet Food Facts
+        run: bundle exec fastlane release_opff
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          CI_RELEASE: true
+          SIGN_STORE_PATH: ../fastlane/envfiles/keystore.jks
+          SIGN_STORE_PASSWORD: ${{ secrets.SIGN_STORE_PASSWORD }}
+          SIGN_KEY_ALIAS: ${{ secrets.SIGN_KEY_ALIAS }}
+          SIGN_KEY_PASSWORD: ${{ secrets.SIGN_KEY_PASSWORD }}
+          PACKAGE_NAME: "org.openpetfoodfacts.scanner"
+          
+      - name: Run Fastlane release lane for Open Beauty Facts
+        run: bundle exec fastlane release_obf
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          CI_RELEASE: true
+          SIGN_STORE_PATH: ../fastlane/envfiles/keystore.jks
+          SIGN_STORE_PASSWORD: ${{ secrets.SIGN_STORE_PASSWORD }}
+          SIGN_KEY_ALIAS: ${{ secrets.SIGN_KEY_ALIAS }}
+          SIGN_KEY_PASSWORD: ${{ secrets.SIGN_KEY_PASSWORD }}
+          PACKAGE_NAME: "org.openbeautyfacts.scanner"
