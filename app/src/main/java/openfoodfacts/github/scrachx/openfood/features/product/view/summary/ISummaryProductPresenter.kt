@@ -40,7 +40,7 @@ interface ISummaryProductPresenter {
     }
 
     interface View {
-        fun showProductQuestion(question: Question)
+        suspend fun showProductQuestion(question: Question)
         fun showAnnotatedInsightToast(annotationResponse: AnnotationResponse)
 
         fun showAllergens(allergens: List<AllergenName>)
@@ -49,6 +49,6 @@ interface ISummaryProductPresenter {
         fun showLabelsState(state: ProductInfoState<List<LabelName>>)
         fun showAdditivesState(state: ProductInfoState<List<AdditiveName>>)
 
-        fun showAnalysisTags(analysisTags: List<AnalysisTagConfig>)
+        suspend fun showAnalysisTags(state: ProductInfoState<List<AnalysisTagConfig>>)
     }
 }

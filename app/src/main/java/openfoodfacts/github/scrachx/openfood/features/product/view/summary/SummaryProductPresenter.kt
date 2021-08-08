@@ -123,39 +123,35 @@ class SummaryProductPresenter(
     override suspend fun loadAnalysisTags() {
         if (!isFlavors(OFF, OBF, OPFF)) return
 
-        val analysisTags = product.ingredientsAnalysisTags
+        val knownTags = product.ingredientsAnalysisTags
 
-        if (analysisTags.isNotEmpty()) {
-            view.showLabelsState(ProductInfoState.Loading)
-            val analysisTagConfigs = try {
-                analysisTags.mapNotNull {
-                    productRepository.getAnalysisTagConfigByTagAndLanguageCode(it, languageCode).awaitSingleOrNull()
+        view.showAnalysisTags(ProductInfoState.Loading)
+
+        if (knownTags.isNotEmpty()) {
+            val configs = try {
+                knownTags.mapNotNull {
+                    productRepository.getAnalysisTagConfigByTagAndLanguageCode(it, languageCode)
                 }
             } catch (err: Exception) {
-                Log.e(SummaryProductPresenter::class.java.simpleName, "loadAnalysisTags", err)
-                view.showLabelsState(ProductInfoState.Empty)
+                Log.e(SummaryProductPresenter::class.simpleName, "loadAnalysisTags", err)
+                view.showAnalysisTags(ProductInfoState.Empty)
                 return
-            }
-            if (analysisTagConfigs.isEmpty()) {
-                view.showLabelsState(ProductInfoState.Empty)
-            } else {
-                view.showAnalysisTags(analysisTagConfigs)
             }
 
+            if (configs.isEmpty()) view.showAnalysisTags(ProductInfoState.Empty)
+            else view.showAnalysisTags(ProductInfoState.Data(configs))
+
         } else {
-            view.showLabelsState(ProductInfoState.Loading)
-            val analysisTagConfigs = try {
+            val configs = try {
                 productRepository.getUnknownAnalysisTagConfigsByLanguageCode(languageCode).await()
             } catch (err: Exception) {
-                Log.e(SummaryProductPresenter::class.java.simpleName, "loadAnalysisTags", err)
+                Log.e(SummaryProductPresenter::class.simpleName, "loadAnalysisTags", err)
                 view.showLabelsState(ProductInfoState.Empty)
                 return
             }
-            if (analysisTagConfigs.isEmpty()) {
-                view.showLabelsState(ProductInfoState.Empty)
-            } else {
-                view.showAnalysisTags(analysisTagConfigs)
-            }
+
+            if (configs.isEmpty()) view.showAnalysisTags(ProductInfoState.Empty)
+            else view.showAnalysisTags(ProductInfoState.Data(configs))
 
         }
     }
