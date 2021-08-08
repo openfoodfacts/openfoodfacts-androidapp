@@ -26,10 +26,10 @@ import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState
 
 open class AbstractSummaryProductPresenter : ISummaryProductPresenter.View {
     override fun showAllergens(allergens: List<AllergenName>) = Unit
-    override fun showProductQuestion(question: Question) = Unit
+    override suspend fun showProductQuestion(question: Question) = Unit
     override fun showAnnotatedInsightToast(annotationResponse: AnnotationResponse) = Unit
     override fun showCategoriesState(state: ProductInfoState<List<CategoryName>>) = Unit
     override fun showLabelsState(state: ProductInfoState<List<LabelName>>) = Unit
     override fun showAdditivesState(state: ProductInfoState<List<AdditiveName>>) = Unit
-    override fun showAnalysisTags(analysisTags: List<AnalysisTagConfig>) = Unit
+    override suspend fun showAnalysisTags(state: ProductInfoState<List<AnalysisTagConfig>>) = Unit
 }
