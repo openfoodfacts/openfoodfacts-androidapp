@@ -124,32 +124,29 @@ class ProductCompareActivity : BaseActivity() {
             photoReceiverHandler = PhotoReceiverHandler(sharedPreferences) {
                 productComparisonAdapter.onImageReturned(it)
             }
-
-            // Set "add product" on click listener
-            binding.productComparisonButton.setOnClickListener {
-                if (!isHardwareCameraInstalled()) return@setOnClickListener
-
-                when {
-                    checkSelfPermission(this, Manifest.permission.CAMERA) == PERMISSION_GRANTED -> {
-                        startScanActivity()
-                    }
-                    shouldShowRequestPermissionRationale(this@ProductCompareActivity, Manifest.permission.CAMERA) -> {
-                        MaterialAlertDialogBuilder(this@ProductCompareActivity)
-                            .setTitle(R.string.action_about)
-                            .setMessage(R.string.permission_camera)
-                            .setPositiveButton(android.R.string.ok) { _, _ ->
-                                requestCameraThenOpenScan.launch(Manifest.permission.CAMERA)
-                            }
-                            .show()
-                    }
-                    else -> {
-                        requestCameraThenOpenScan.launch(Manifest.permission.CAMERA)
-                    }
-                }
-
-            }
         }
 
+        binding.productComparisonButton.setOnClickListener {
+            if (!isHardwareCameraInstalled()) return@setOnClickListener
+
+            when {
+                checkSelfPermission(this, Manifest.permission.CAMERA) == PERMISSION_GRANTED -> {
+                    startScanActivity()
+                }
+                shouldShowRequestPermissionRationale(this@ProductCompareActivity, Manifest.permission.CAMERA) -> {
+                    MaterialAlertDialogBuilder(this@ProductCompareActivity)
+                        .setTitle(R.string.action_about)
+                        .setMessage(R.string.permission_camera)
+                        .setPositiveButton(android.R.string.ok) { _, _ ->
+                            requestCameraThenOpenScan.launch(Manifest.permission.CAMERA)
+                        }
+                        .show()
+                }
+                else -> {
+                    requestCameraThenOpenScan.launch(Manifest.permission.CAMERA)
+                }
+            }
+        }
     }
 
     override fun startScanActivity() {

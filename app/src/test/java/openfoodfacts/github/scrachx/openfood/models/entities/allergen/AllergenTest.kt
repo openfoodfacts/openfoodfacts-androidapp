@@ -66,8 +66,8 @@ class AllergenTest {
         val allergen = allergens[0]
         val allergenName = allergen.names[0]
         assertThat(allergenName.allergenTag).isEqualTo(allergen.tag)
-        assertThat(allergenName.languageCode).isEqualTo("de")
-        assertThat(allergenName.name).isEqualTo("Lupinen")
+        assertThat(allergenName.languageCode).isEqualTo("es")
+        assertThat(allergenName.name).isEqualTo("Altramuces")
     }
 
 }
