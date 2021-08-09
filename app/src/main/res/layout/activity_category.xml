@@ -1,42 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context="openfoodfacts.github.scrachx.openfood.features.categories.activity.CategoryActivity">
 
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    <include
+        android:id="@+id/toolbar_include"
+        layout="@layout/toolbar" />
 
-    <data>
-
-    </data>
-
-    <LinearLayout
+    <Button
+        android:id="@+id/game_button"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fitsSystemWindows="true"
-        android:orientation="vertical"
-        tools:context="openfoodfacts.github.scrachx.openfood.features.categories.activity.CategoryActivity">
+        android:layout_height="wrap_content"
+        android:background="@color/brand_yellow"
+        android:text="@string/category_game_btn"
+        android:textColor="@color/md_black_1000"
+        android:textSize="@dimen/font_small" />
 
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="100" />
 
-        <include
-            android:id="@+id/toolbar_include"
-            layout="@layout/toolbar" />
-
-        <Button
-            android:id="@+id/game_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/brand_yellow"
-            android:text="@string/category_game_btn"
-            android:textColor="@color/md_black_1000"
-            android:textSize="@dimen/font_small" />
-
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/fragment"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="100" />
-
-        <include
-            android:id="@+id/bottom_navigation_include"
-            layout="@layout/navigation_bottom" />
-    </LinearLayout>
-</layout>
+    <include
+        android:id="@+id/bottom_navigation_include"
+        layout="@layout/navigation_bottom" />
+</LinearLayout>
 

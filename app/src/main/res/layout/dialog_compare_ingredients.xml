@@ -61,7 +61,8 @@
         app:layout_constraintEnd_toEndOf="@id/title_local"
         app:layout_constraintStart_toStartOf="@id/title_local"
         app:layout_constraintTop_toBottomOf="@id/line2"
-        tools:src="@drawable/ic_crowdsourcing_icon" />
+        tools:src="@drawable/ic_crowdsourcing_icon"
+        tools:ignore="ContentDescription" />
 
     <ProgressBar
         android:id="@+id/image_progress_local"
@@ -108,7 +109,8 @@
         app:layout_constraintEnd_toEndOf="@id/title_server"
         app:layout_constraintStart_toStartOf="@id/title_server"
         app:layout_constraintTop_toBottomOf="@id/line2"
-        tools:src="@drawable/img_home" />
+        tools:src="@drawable/img_home"
+        tools:ignore="ContentDescription" />
 
     <ProgressBar
         android:id="@+id/image_progress_server"

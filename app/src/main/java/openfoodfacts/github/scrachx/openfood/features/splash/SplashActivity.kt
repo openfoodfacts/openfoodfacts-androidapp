@@ -2,11 +2,11 @@ package openfoodfacts.github.scrachx.openfood.features.splash
 
 import android.content.pm.ActivityInfo
 import android.os.Bundle
-import android.view.View
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -17,11 +17,12 @@ import openfoodfacts.github.scrachx.openfood.features.welcome.WelcomeActivity
 import openfoodfacts.github.scrachx.openfood.utils.getAppPreferences
 import pl.aprilapps.easyphotopicker.EasyImage
 import kotlin.time.ExperimentalTime
+import androidx.core.view.isVisible
 
+@AndroidEntryPoint
 class SplashActivity : BaseActivity() {
-    private val binding by lazy { ActivitySplashBinding.inflate(layoutInflater) }
+    private lateinit var binding: ActivitySplashBinding
     private val viewModel: SplashViewModel by viewModels()
-
 
     private val controller by lazy {
         SplashController(getAppPreferences(), this, this)
@@ -30,10 +31,9 @@ class SplashActivity : BaseActivity() {
     @ExperimentalTime
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.viewModel = viewModel
-        binding.lifecycleOwner = this
         viewModel.tagLines.postValue(resources.getStringArray(R.array.taglines_array))
 
         if (resources.getBoolean(R.bool.portrait_only)) {
@@ -54,11 +54,13 @@ class SplashActivity : BaseActivity() {
     }
 
     suspend fun showLoading() = withContext(Dispatchers.Main) {
-        binding.loading = View.VISIBLE
+        binding.loadingTxt.isVisible = true
+        binding.loadingProgress.isVisible = true
     }
 
     suspend fun hideLoading(isError: Boolean) = withContext(Dispatchers.Main) {
-        binding.loading = View.GONE
+        binding.loadingTxt.isVisible = false
+        binding.loadingProgress.isVisible = false
         if (isError) {
             Snackbar.make(
                 binding.root,

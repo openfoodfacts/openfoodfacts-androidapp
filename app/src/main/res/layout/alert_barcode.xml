@@ -4,15 +4,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/product_image"
         android:layout_width="@dimen/product_width"
         android:layout_height="@dimen/product_height"
         android:layout_gravity="center_horizontal"
-        android:scrollbars="horizontal"
         android:layout_marginTop="@dimen/spacing_small"
-        android:layout_marginBottom="@dimen/spacing_small"/>
+        android:layout_marginBottom="@dimen/spacing_small"
+        android:scrollbars="horizontal" />
 
     <EditText
         android:id="@+id/barcode"

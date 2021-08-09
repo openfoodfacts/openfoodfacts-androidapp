@@ -42,6 +42,7 @@ import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import androidx.core.view.isVisible
 import kotlinx.coroutines.rx2.awaitSingleOrNull
 import kotlinx.coroutines.withContext
 import openfoodfacts.github.scrachx.openfood.R
@@ -135,9 +136,6 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.viewModel = viewModel
-        binding.lifecycleOwner = this
-
         binding.btnAddImageNutritionFacts.setOnClickListener { addNutritionFactsImage() }
         binding.btnEditImageNutritionFacts.setOnClickListener { newNutritionFactsImage() }
         binding.btnAdd.setOnClickListener { next() }
@@ -189,6 +187,13 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         }
         (activity as? ProductEditActivity)?.initialValues?.let { values ->
             addAllFieldsToMap(values)
+        }
+        viewModel.noNutritionFactsChecked.observe(this) {
+            binding.checkboxNoNutritionData.isChecked = it
+            binding.nutritionFactsLayout.isVisible = !it
+        }
+        viewModel.dataFormat.observe(this) {
+            binding.radioGroup.check(it)
         }
     }
 

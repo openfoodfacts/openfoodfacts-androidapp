@@ -519,7 +519,7 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
         // Setup barcode scanner
         if (!useMLScanner) {
             binding.barcodeScanner.visibility = View.VISIBLE
-            binding.cameraPreviewViewStub.viewStub?.isVisible = false
+            binding.cameraPreviewViewStub.isVisible = false
             binding.barcodeScanner.barcodeView.decoderFactory = DefaultDecoderFactory(BARCODE_FORMATS)
             binding.barcodeScanner.setStatusText(null)
             binding.barcodeScanner.setOnClickListener {
