@@ -30,7 +30,6 @@ import androidx.core.net.toFile
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.canhub.cropper.CropImage
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 import com.google.zxing.integration.android.IntentIntegrator
@@ -847,30 +846,11 @@ class EditOverviewFragment : ProductEditFragment() {
     }
 
     private fun selectProductLanguage() {
-        val localeValues = SupportedLanguages.codes()
-        val localeLabels = arrayOfNulls<String>(localeValues.size)
-        val finalLocalValues = mutableListOf<String>()
-        val finalLocalLabels = mutableListOf<String?>()
-        var selectedIndex = 0
-        localeValues.forEachIndexed { i, localeCode ->
-            if (localeCode == languageCode) {
-                selectedIndex = i
-            }
-            val current = LocaleUtils.parseLocale(localeCode)
-            localeLabels[i] = current.getDisplayName(current).replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.ROOT) else it.toString() }
-            finalLocalLabels += localeCode
-            finalLocalValues += localeCode
+        ProductLanguagePicker.showPicker(requireContext(), languageCode) { code ->
+            binding.name.text = null
+            (activity as? ProductEditActivity)?.setIngredients("set", null)
+            setProductLanguage(code)
         }
-        MaterialAlertDialogBuilder(requireContext())
-            .setTitle(R.string.preference_choose_language_dialog_title)
-            .setSingleChoiceItems(finalLocalLabels.toTypedArray(), selectedIndex) { _, which ->
-                binding.name.text = null
-
-                (activity as? ProductEditActivity)?.setIngredients("set", null)
-
-                setProductLanguage(finalLocalValues[which])
-            }
-            .show()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
