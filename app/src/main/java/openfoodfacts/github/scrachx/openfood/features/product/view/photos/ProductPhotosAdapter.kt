@@ -17,13 +17,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.fasterxml.jackson.databind.node.ObjectNode
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
-import com.squareup.picasso.Picasso
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.features.login.LoginActivity
-import openfoodfacts.github.scrachx.openfood.images.*
+import openfoodfacts.github.scrachx.openfood.images.IMAGE_STRING_ID
+import openfoodfacts.github.scrachx.openfood.images.IMG_ID
+import openfoodfacts.github.scrachx.openfood.images.PRODUCT_BARCODE
+import openfoodfacts.github.scrachx.openfood.images.getImageStringKey
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
@@ -36,7 +38,6 @@ import org.json.JSONException
 class ProductPhotosAdapter(
     private val context: Context,
     private val lifecycleOwner: LifecycleOwner,
-    private val picasso: Picasso,
     private val client: OpenFoodAPIClient,
     private val product: Product,
     private val images: List<String>,
@@ -48,12 +49,12 @@ class ProductPhotosAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductPhotoViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.images_item, parent, false)
-        return ProductPhotoViewHolder(itemView, picasso)
+        return ProductPhotoViewHolder(itemView)
     }
 
 
     override fun onBindViewHolder(holder: ProductPhotoViewHolder, position: Int) = holder.run {
-        setImage(product.code, this@ProductPhotosAdapter.images[position])
+        setImage(product.code, images[position])
         setOnImageClickListener(onImageClick)
         setOnEditClickListener {
             if (!isLoggedIn) {

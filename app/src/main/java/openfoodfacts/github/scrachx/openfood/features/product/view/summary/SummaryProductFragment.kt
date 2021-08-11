@@ -40,11 +40,11 @@ import androidx.core.view.updatePadding
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.google.android.material.chip.Chip
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_SHORT
 import com.google.android.material.snackbar.Snackbar
-import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
@@ -109,9 +109,6 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
 
     @Inject
     lateinit var daoSession: DaoSession
-
-    @Inject
-    lateinit var picasso: Picasso
 
     @Inject
     lateinit var matomoAnalytics: MatomoAnalytics
@@ -265,9 +262,8 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     private fun loadPhoto(photoFile: File) {
         binding.addPhotoLabel.visibility = View.GONE
         mUrlImage = photoFile.absolutePath
-        picasso.load(photoFile)
-            .fit()
-            .into(binding.imageViewFront)
+
+        binding.imageViewFront.load(photoFile)
     }
 
     override fun refreshView(productState: ProductState) {
@@ -314,7 +310,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
 
             // Load Image if isLowBatteryMode is false
             if (!isLowBatteryMode) {
-                picasso.load(imageUrl).into(binding.imageViewFront)
+                binding.imageViewFront.load(imageUrl)
             } else {
                 binding.imageViewFront.visibility = View.GONE
             }
@@ -597,7 +593,6 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
                     binding.analysisTags.adapter = IngredientAnalysisTagsAdapter(
                         requireContext(),
                         analysisTags,
-                        picasso,
                         sharedPreferences
                     ).apply adapter@{
                         setOnItemClickListener { view, _ ->

@@ -14,7 +14,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.rx2.await
@@ -46,8 +45,6 @@ class ProductCompareActivity : BaseActivity() {
     @Inject
     lateinit var productRepository: ProductRepository
 
-    @Inject
-    lateinit var picasso: Picasso
 
     @Inject
     lateinit var matomoAnalytics: MatomoAnalytics
@@ -94,7 +91,6 @@ class ProductCompareActivity : BaseActivity() {
                 products,
                 this,
                 client,
-                picasso,
                 localeManager.getLanguage()
             ).apply {
                 imageReturnedListener = { product, file ->

@@ -11,14 +11,13 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.BlendModeColorFilterCompat.createBlendModeColorFilterCompat
 import androidx.core.graphics.BlendModeCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.Picasso
+import coil.load
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.AnalysisTagConfig
 
 class IngredientAnalysisTagsAdapter(
     private val context: Context,
     private val tags: List<AnalysisTagConfig>,
-    private val picasso: Picasso,
     private val sharedPreferences: SharedPreferences,
 ) : RecyclerView.Adapter<IngredientAnalysisTagsAdapter.IngredientAnalysisTagsViewHolder>() {
 
@@ -34,7 +33,7 @@ class IngredientAnalysisTagsAdapter(
     // binds the data to the TextView in each row
     override fun onBindViewHolder(holder: IngredientAnalysisTagsViewHolder, position: Int) {
         val tag = visibleTags[position]
-        picasso.load(tag.iconUrl).into(holder.icon)
+        holder.icon.load(tag.iconUrl)
 
         holder.background.background = ResourcesCompat.getDrawable(
             context.resources,

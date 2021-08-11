@@ -8,16 +8,14 @@ import android.view.ViewTreeObserver
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import coil.load
 import com.github.chrisbanes.photoview.PhotoViewAttacher
-import com.squareup.picasso.Callback
-import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityZoomImageBinding
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.images.IMAGE_URL
 import java.util.*
-import javax.inject.Inject
 
 /**
  * Activity to display/edit product images
@@ -27,8 +25,6 @@ class ImageZoomActivity : BaseActivity() {
     private var _binding: ActivityZoomImageBinding? = null
     private val binding get() = _binding!!
 
-    @Inject
-    lateinit var picasso: Picasso
 
     private lateinit var attacher: PhotoViewAttacher
 
@@ -72,26 +68,21 @@ class ImageZoomActivity : BaseActivity() {
             stopRefresh()
         } else {
             startRefresh(getString(R.string.txtLoading))
-            picasso
-                    .load(imageUrl)
-                    .into(binding.imageViewFullScreen, object : Callback {
-                        override fun onSuccess() {
-                            // Activity could have been destroyed while we load the image
-                            if (isFinishing) return
-                            attacher.update()
-                            scheduleStartPostponedTransition(binding.imageViewFullScreen)
-                            binding.imageViewFullScreen.visibility = View.VISIBLE
-                            stopRefresh()
-                        }
 
-                        override fun onError(ex: Exception) {
-                            // Activity could have been destroyed while we load the image
-                            if (isFinishing) return
-                            binding.imageViewFullScreen.visibility = View.VISIBLE
-                            Toast.makeText(this@ImageZoomActivity, resources.getString(R.string.txtConnectionError), Toast.LENGTH_LONG).show()
-                            stopRefresh()
-                        }
-                    })
+            try {
+                binding.imageViewFullScreen.load(imageUrl)
+                binding.imageViewFullScreen.attacher.update()
+
+                scheduleStartPostponedTransition(binding.imageViewFullScreen)
+                binding.imageViewFullScreen.visibility = View.VISIBLE
+                stopRefresh()
+            } catch (err: Exception) {
+                // Activity could have been destroyed while we load the image
+                if (isFinishing) return
+                binding.imageViewFullScreen.visibility = View.VISIBLE
+                Toast.makeText(this@ImageZoomActivity, resources.getString(R.string.txtConnectionError), Toast.LENGTH_LONG).show()
+                stopRefresh()
+            }
         }
     }
 
@@ -123,8 +114,8 @@ class ImageZoomActivity : BaseActivity() {
 
     companion object {
         fun start(
-                context: Context,
-                imageUrl: String
+            context: Context,
+            imageUrl: String
         ) = context.startActivity(Intent(context, ImageZoomActivity::class.java).apply {
             putExtra(IMAGE_URL, imageUrl)
         })

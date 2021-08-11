@@ -31,7 +31,7 @@ import android.widget.TableRow
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.squareup.picasso.Picasso
+import coil.load
 import dagger.hilt.android.AndroidEntryPoint
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentAddProductPhotosBinding
@@ -62,9 +62,6 @@ class ProductEditPhotosFragment : ProductEditFragment() {
 
     @Inject
     lateinit var localeManager: LocaleManager
-
-    @Inject
-    lateinit var picasso: Picasso
 
     private val photoReceiverHandler by lazy {
         PhotoReceiverHandler(sharedPreferences) { newPhotoFile ->
@@ -167,10 +164,9 @@ class ProductEditPhotosFragment : ProductEditFragment() {
             scaleType = ImageView.ScaleType.FIT_CENTER
             layoutParams = lp
         }
-        picasso.load(photoFile!!)
-                .resize(requireContext().dpsToPixel(100), requireContext().dpsToPixel(100))
-                .centerInside()
-                .into(imageView)
+        imageView.load(photoFile) {
+            size(requireContext().dpsToPixel(100))
+        }
         row.addView(imageView)
         binding.tableLayout.addView(row)
     }

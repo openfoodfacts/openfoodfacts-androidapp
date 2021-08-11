@@ -19,7 +19,6 @@ import android.Manifest.permission
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
-import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import android.text.SpannableStringBuilder
@@ -44,10 +43,10 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import coil.load
 import com.afollestad.materialdialogs.MaterialDialog
 import com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_SHORT
 import com.google.android.material.snackbar.Snackbar
-import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.rx2.await
@@ -95,9 +94,6 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
 
     @Inject
     lateinit var client: OpenFoodAPIClient
-
-    @Inject
-    lateinit var picasso: Picasso
 
     @Inject
     lateinit var sharedPreferences: SharedPreferences
@@ -266,14 +262,11 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
 
             // Load Image if isLowBatteryMode is false
             if (!isLowBatteryMode) {
-                picasso
-                    .load(product.getImageNutritionUrl(langCode))
-                    .into(binding.imageViewNutrition)
+                binding.imageViewNutrition.load(product.getImageNutritionUrl(langCode))
             } else {
                 binding.imageViewNutrition.visibility = GONE
             }
-            picasso.load(product.getImageNutritionUrl(langCode))
-                .into(binding.imageViewNutrition)
+            binding.imageViewNutrition.load(product.getImageNutritionUrl(langCode))
             nutrientsImageUrl = product.getImageNutritionUrl(langCode)
         }
 
@@ -281,9 +274,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
         if (mSendProduct != null && mSendProduct!!.imgUploadNutrition.isNotBlank()) {
             binding.addPhotoLabel.visibility = GONE
             nutrientsImageUrl = mSendProduct!!.imgUploadNutrition
-            picasso.load(LOCALE_FILE_SCHEME + nutrientsImageUrl)
-                .config(Bitmap.Config.RGB_565)
-                .into(binding.imageViewNutrition)
+            binding.imageViewNutrition.load(LOCALE_FILE_SCHEME + nutrientsImageUrl)
         }
 
         // use this setting to improve performance if you know that changes
@@ -600,10 +591,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
         // Load into view
         binding.addPhotoLabel.visibility = GONE
         nutrientsImageUrl = photoFile.absolutePath
-        picasso
-            .load(photoFile)
-            .fit()
-            .into(binding.imageViewNutrition)
+        binding.imageViewNutrition.load(photoFile)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

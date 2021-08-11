@@ -29,6 +29,7 @@ import android.widget.Toast
 import androidx.core.net.toFile
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import coil.load
 import com.canhub.cropper.CropImage
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.BaseTransientBottomBar
@@ -37,8 +38,6 @@ import com.google.zxing.integration.android.IntentIntegrator
 import com.hootsuite.nachos.NachoTextView
 import com.hootsuite.nachos.terminator.ChipTerminatorHandler
 import com.hootsuite.nachos.validator.ChipifyingNachoValidator
-import com.squareup.picasso.Callback
-import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.rx2.awaitSingleOrNull
@@ -92,8 +91,6 @@ class EditOverviewFragment : ProductEditFragment() {
     @Inject
     lateinit var daoSession: DaoSession
 
-    @Inject
-    lateinit var picasso: Picasso
 
     @Inject
     lateinit var client: OpenFoodAPIClient
@@ -361,15 +358,10 @@ class EditOverviewFragment : ProductEditFragment() {
             frontImageUrl = imageFrontUrl
             binding.imageProgress.visibility = View.VISIBLE
             binding.btnEditImgFront.visibility = View.INVISIBLE
-            picasso
-                .load(imageFrontUrl)
-                .resize(requireContext().dpsToPixel(50), requireContext().dpsToPixel(50))
-                .centerInside()
-                .into(binding.imgFront, object : Callback {
-                    override fun onSuccess() = frontImageLoaded()
-
-                    override fun onError(ex: Exception) = frontImageLoaded()
-                })
+            binding.imgFront.load(imageFrontUrl) {
+                size(requireContext().dpsToPixel(50))
+            }
+            frontImageLoaded()
         }
     }
 
@@ -434,11 +426,10 @@ class EditOverviewFragment : ProductEditFragment() {
             binding.btnEditImgFront.visibility = View.INVISIBLE
             frontImageUrl = savedProduct.imageFrontLocalUrl
 
-            picasso
-                .load(frontImageUrl)
-                .resize(requireContext().dpsToPixel(50), requireContext().dpsToPixel(50))
-                .centerInside()
-                .into(binding.imgFront) { frontImageLoaded() }
+            binding.imgFront.load(frontImageUrl) {
+                size(requireContext().dpsToPixel(50))
+            }
+            frontImageLoaded()
         }
 
         savedProduct.language?.takeUnless { it.isEmpty() }?.let { setProductLanguage(it) }
@@ -905,10 +896,9 @@ class EditOverviewFragment : ProductEditFragment() {
         binding.imgFront.visibility = View.VISIBLE
         binding.btnEditImgFront.visibility = View.VISIBLE
         if (!errorInUploading) {
-            picasso.load(photoFile!!)
-                .resize(requireContext().dpsToPixel(50), requireContext().dpsToPixel(50))
-                .centerInside()
-                .into(binding.imgFront)
+            binding.imgFront.load(photoFile!!) {
+                size(requireContext().dpsToPixel(50))
+            }
         }
     }
 

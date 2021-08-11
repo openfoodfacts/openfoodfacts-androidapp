@@ -27,7 +27,6 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.afollestad.materialdialogs.MaterialDialog
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
@@ -55,9 +54,6 @@ class ScanHistoryActivity : BaseActivity() {
     private val viewModel: ScanHistoryViewModel by viewModels()
 
     @Inject
-    lateinit var picasso: Picasso
-
-    @Inject
     lateinit var localeManager: LocaleManager
 
     /**
@@ -66,7 +62,7 @@ class ScanHistoryActivity : BaseActivity() {
     private var menuButtonsEnabled = false
 
     private val adapter by lazy {
-        ScanHistoryAdapter(isLowBatteryMode = isDisableImageLoad() && isBatteryLevelLow(), picasso) {
+        ScanHistoryAdapter(isLowBatteryMode = isDisableImageLoad() && isBatteryLevelLow()) {
             openProduct(it.barcode)
         }
     }

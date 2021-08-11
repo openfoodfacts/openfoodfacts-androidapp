@@ -18,7 +18,6 @@ package openfoodfacts.github.scrachx.openfood.repositories
 import android.content.Context
 import android.util.Log
 import androidx.core.content.edit
-import com.squareup.picasso.Picasso
 import dagger.hilt.android.qualifiers.ApplicationContext
 import io.reactivex.Completable
 import io.reactivex.Maybe
@@ -823,7 +822,6 @@ class ProductRepository @Inject constructor(
         daoSession.database.beginTransaction()
         try {
             analysisTagConfigs.forEach {
-                Picasso.get().load(it.iconUrl).fetch()
                 daoSession.analysisTagConfigDao.insertOrReplace(it)
             }
             daoSession.database.setTransactionSuccessful()

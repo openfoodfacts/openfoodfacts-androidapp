@@ -20,7 +20,7 @@ import androidx.core.graphics.BlendModeColorFilterCompat
 import androidx.core.graphics.BlendModeCompat
 import androidx.core.text.HtmlCompat
 import androidx.fragment.app.DialogFragment
-import com.squareup.picasso.Picasso
+import coil.load
 import dagger.hilt.android.AndroidEntryPoint
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper
@@ -37,8 +37,6 @@ class IngredientsWithTagDialogFragment : DialogFragment() {
     private var _binding: IngredientsWithTagBinding? = null
     private val binding get() = _binding!!
 
-    @Inject
-    lateinit var picasso: Picasso
 
     @Inject
     lateinit var sharedPreferences: SharedPreferences
@@ -66,9 +64,9 @@ class IngredientsWithTagDialogFragment : DialogFragment() {
         val ambiguousIngredient = arguments.getString(AMBIGUOUS_INGREDIENT_KEY)
         val ingredientsImageUrl = arguments.getString(INGREDIENTS_IMAGE_URL_KEY)
 
-        picasso
-            .load(iconUrl)
-            .into(binding.icon)
+
+        binding.icon.load(iconUrl)
+
         binding.iconFrame.background = ResourcesCompat.getDrawable(requireActivity().resources, R.drawable.rounded_button, requireActivity().theme)?.apply {
             colorFilter = BlendModeColorFilterCompat.createBlendModeColorFilterCompat(Color.parseColor(color), BlendModeCompat.SRC_IN)
         }
@@ -80,9 +78,12 @@ class IngredientsWithTagDialogFragment : DialogFragment() {
                 sharedPreferences.edit { putBoolean(type, isChecked) }
             }
         }
-        var messageToBeShown =
-            HtmlCompat.fromHtml(getString(R.string.ingredients_in_this_product_are, name!!.lowercase(Locale.getDefault())), HtmlCompat.FROM_HTML_MODE_LEGACY)
-        val showHelpTranslate = tag != null && tag.contains("unknown")
+        var messageToBeShown = HtmlCompat.fromHtml(
+            getString(R.string.ingredients_in_this_product_are, name!!.lowercase(Locale.getDefault())),
+            HtmlCompat.FROM_HTML_MODE_LEGACY
+        )
+
+        val showHelpTranslate = tag != null && "unknown" in tag
 
         if (arguments.getBoolean(PHOTOS_TO_BE_VALIDATED_KEY, false)) {
             messageToBeShown = HtmlCompat.fromHtml(getString(R.string.unknown_status_missing_ingredients), HtmlCompat.FROM_HTML_MODE_LEGACY)
@@ -95,7 +96,7 @@ class IngredientsWithTagDialogFragment : DialogFragment() {
                 HtmlCompat.fromHtml(getString(R.string.unknown_status_ambiguous_ingredients, ambiguousIngredient), HtmlCompat.FROM_HTML_MODE_LEGACY)
             binding.helpNeeded.visibility = View.GONE
         } else if (showHelpTranslate && arguments.getBoolean(MISSING_INGREDIENTS_KEY, false)) {
-            picasso.load(ingredientsImageUrl).into(binding.image)
+            binding.image.load(ingredientsImageUrl)
 
             binding.image.setOnClickListener { goToExtract() }
             messageToBeShown = HtmlCompat.fromHtml(getString(R.string.unknown_status_missing_ingredients), HtmlCompat.FROM_HTML_MODE_LEGACY)

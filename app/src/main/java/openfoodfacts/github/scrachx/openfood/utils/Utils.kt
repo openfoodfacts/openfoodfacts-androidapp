@@ -36,7 +36,6 @@ import android.text.style.ClickableSpan
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.annotation.ColorInt
 import androidx.annotation.DrawableRes
 import androidx.appcompat.content.res.AppCompatResources
@@ -48,8 +47,6 @@ import androidx.core.text.inSpans
 import androidx.core.view.children
 import androidx.work.*
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.squareup.picasso.Callback
-import com.squareup.picasso.RequestCreator
 import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.features.scan.ContinuousScanActivity
@@ -77,13 +74,17 @@ object Utils {
     @JvmStatic
     fun compressImage(fileUrl: String): String? {
         val decodedBitmap = decodeFile(File(fileUrl))
+
         if (decodedBitmap == null) {
             Log.e(LOG_TAG_COMPRESS, "$fileUrl not found")
             return null
         }
+
         val smallFileFront = File(fileUrl.replace(".png", "_small.png"))
         try {
-            FileOutputStream(smallFileFront).use { stream -> decodedBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream) }
+            FileOutputStream(smallFileFront).use { stream ->
+                decodedBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream)
+            }
         } catch (e: IOException) {
             Log.e(LOG_TAG_COMPRESS, e.message, e)
         }
@@ -324,12 +325,6 @@ fun getSearchLinkText(
 }) { append(text) }
 
 
-internal fun RequestCreator.into(target: ImageView, onSuccess: () -> Unit) {
-    return into(target, object : Callback {
-        override fun onSuccess() = onSuccess()
-        override fun onError(e: Exception) = throw e
-    })
-}
 
 
 fun @receiver:ColorInt Int.darken(ratio: Float) = ColorUtils.blendARGB(this, Color.BLACK, ratio)

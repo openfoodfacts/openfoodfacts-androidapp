@@ -4,8 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.Callback
-import com.squareup.picasso.Picasso
+import coil.load
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.R
@@ -19,9 +18,8 @@ import kotlin.properties.Delegates
  * @param isLowBatteryMode determine if image should be loaded or not
  */
 class ScanHistoryAdapter(
-        private val isLowBatteryMode: Boolean,
-        private val picasso: Picasso,
-        private val onItemClicked: (HistoryProduct) -> Unit
+    private val isLowBatteryMode: Boolean,
+    private val onItemClicked: (HistoryProduct) -> Unit
 ) : RecyclerView.Adapter<ScanHistoryAdapter.ViewHolder>(), AutoUpdatableAdapter {
 
     var products: List<HistoryProduct> by Delegates.observable(emptyList()) { _, oldList, newList ->
@@ -30,7 +28,7 @@ class ScanHistoryAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = HistoryListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ViewHolder(view, isLowBatteryMode, picasso)
+        return ViewHolder(view, isLowBatteryMode)
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
@@ -48,9 +46,8 @@ class ScanHistoryAdapter(
     }
 
     class ViewHolder(
-            val binding: HistoryListItemBinding,
-            val isLowBatteryMode: Boolean,
-            private val picasso: Picasso
+        val binding: HistoryListItemBinding,
+        val isLowBatteryMode: Boolean,
     ) : RecyclerView.ViewHolder(binding.root) {
 
         private val context = binding.root.context
@@ -63,21 +60,10 @@ class ScanHistoryAdapter(
             // Load Image if isBatteryLoad is false
             if (!isLowBatteryMode && product.url != null) {
                 binding.imgProgress.isVisible = true
-                picasso
-                        .load(product.url)
-                        .placeholder(R.drawable.placeholder_thumb)
-                        .error(R.drawable.ic_no_red_24dp)
-                        .fit()
-                        .centerCrop()
-                        .into(binding.productImage, object : Callback {
-                            override fun onSuccess() {
-                                binding.imgProgress.isVisible = false
-                            }
-
-                            override fun onError(ex: Exception) {
-                                binding.imgProgress.isVisible = false
-                            }
-                        })
+                binding.productImage.load(product.url) {
+                    placeholder(R.drawable.placeholder_thumb)
+                    error(R.drawable.ic_no_red_24dp)
+                }
             } else {
                 binding.productImage.setImageResource(R.drawable.placeholder_thumb)
                 binding.imgProgress.isVisible = false

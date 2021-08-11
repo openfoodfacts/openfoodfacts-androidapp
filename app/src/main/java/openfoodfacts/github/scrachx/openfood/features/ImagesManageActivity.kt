@@ -35,11 +35,10 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.edit
 import androidx.core.net.toFile
 import androidx.lifecycle.lifecycleScope
+import coil.load
 import com.canhub.cropper.CropImage
 import com.canhub.cropper.CropImageActivity
 import com.github.chrisbanes.photoview.PhotoViewAttacher
-import com.squareup.picasso.Callback
-import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -82,9 +81,6 @@ class ImagesManageActivity : BaseActivity() {
     @Inject
     lateinit var productsApi: ProductsAPI
 
-
-    @Inject
-    lateinit var picasso: Picasso
 
     @Inject
     lateinit var sharedPreferences: SharedPreferences
@@ -292,22 +288,17 @@ class ImagesManageActivity : BaseActivity() {
                 url = "file://$url"
             }
             startRefresh(getString(R.string.txtLoading))
-            picasso
-                .load(url)
-                .into(binding.imageViewFullScreen, object : Callback {
-                    override fun onSuccess() {
-                        attacher.update()
-                        scheduleStartPostponedTransition(binding.imageViewFullScreen)
-                        binding.imageViewFullScreen.visibility = View.VISIBLE
-                        stopRefresh()
-                    }
-
-                    override fun onError(ex: Exception) {
-                        binding.imageViewFullScreen.visibility = View.VISIBLE
-                        Toast.makeText(this@ImagesManageActivity, resources.getString(R.string.txtConnectionError), Toast.LENGTH_LONG).show()
-                        stopRefresh()
-                    }
-                })
+            try {
+                binding.imageViewFullScreen.load(url)
+                attacher.update()
+                scheduleStartPostponedTransition(binding.imageViewFullScreen)
+                binding.imageViewFullScreen.visibility = View.VISIBLE
+                stopRefresh()
+            } catch (err: Exception) {
+                binding.imageViewFullScreen.visibility = View.VISIBLE
+                Toast.makeText(this@ImagesManageActivity, resources.getString(R.string.txtConnectionError), Toast.LENGTH_LONG).show()
+                stopRefresh()
+            }
         }
     }
 

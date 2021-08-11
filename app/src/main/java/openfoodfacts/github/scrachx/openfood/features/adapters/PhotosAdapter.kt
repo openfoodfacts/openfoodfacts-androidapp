@@ -21,7 +21,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat
-import com.squareup.picasso.Picasso
+import coil.load
 import openfoodfacts.github.scrachx.openfood.R
 
 class PhotosAdapter(private val photoUris: List<Uri>) : RecyclerView.Adapter<PhotosAdapter.ViewHolder>() {
@@ -34,17 +34,15 @@ class PhotosAdapter(private val photoUris: List<Uri>) : RecyclerView.Adapter<Pho
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val imageView = holder.imageView
         val drawableCompat = VectorDrawableCompat.create(
-                holder.imageView.resources,
-                R.drawable.ic_product_silhouette,
-                null
+            holder.imageView.resources,
+            R.drawable.ic_product_silhouette,
+            null
         )!!
 
-        // Todo: remove this direct call
-        Picasso.get()
-                .load(photoUris[position])
-                .placeholder(drawableCompat)
-                .error(R.drawable.error_image)
-                .into(imageView)
+        imageView.load(photoUris[position]) {
+            placeholder(drawableCompat)
+            error(R.drawable.error_image)
+        }
     }
 
     override fun getItemCount() = photoUris.size

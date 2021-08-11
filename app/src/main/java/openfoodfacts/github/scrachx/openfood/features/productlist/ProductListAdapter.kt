@@ -9,8 +9,7 @@ import android.widget.TextView
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.Callback
-import com.squareup.picasso.Picasso
+import coil.load
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.features.productlist.ProductListAdapter.ProductViewHolder
 import openfoodfacts.github.scrachx.openfood.features.shared.views.CustomTextView
@@ -20,7 +19,6 @@ class ProductListAdapter(
     private val context: Context,
     val products: MutableList<ListedProduct>,
     private val isLowBatteryMode: Boolean,
-    private val picasso: Picasso,
     private val onItemClickListener: (ListedProduct) -> Unit = { }
 ) : RecyclerView.Adapter<ProductViewHolder>() {
 
@@ -38,21 +36,14 @@ class ProductListAdapter(
         holder.tvBarcode.text = products[position].barcode
 
         if (!isLowBatteryMode && products[position].imageUrl.isNotEmpty()) {
-            picasso
-                .load(products[position].imageUrl)
-                .placeholder(R.drawable.placeholder_thumb)
-                .error(R.drawable.ic_no_red_24dp)
-                .fit()
-                .centerCrop()
-                .into(holder.imgProduct, object : Callback {
-                    override fun onSuccess() {
-                        holder.imgProgressBar.visibility = View.GONE
-                    }
 
-                    override fun onError(ex: Exception) {
-                        holder.imgProgressBar.visibility = View.GONE
-                    }
-                })
+            holder.imgProgressBar.visibility = View.GONE
+            holder.imgProduct.load(products[position].imageUrl) {
+                placeholder(R.drawable.placeholder_thumb)
+                error(R.drawable.ic_no_red_24dp)
+            }
+
+
         } else {
             holder.imgProduct.background = ResourcesCompat.getDrawable(context.resources, R.drawable.placeholder_thumb, context.theme)
             holder.imgProgressBar.visibility = View.INVISIBLE

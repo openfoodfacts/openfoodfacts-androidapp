@@ -49,7 +49,6 @@ import com.mikepenz.iconics.IconicsColor
 import com.mikepenz.iconics.IconicsDrawable
 import com.mikepenz.iconics.IconicsSize
 import com.mikepenz.iconics.typeface.library.googlematerial.GoogleMaterial
-import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.Completable
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -109,8 +108,6 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
     @Inject
     lateinit var productRepository: ProductRepository
 
-    @Inject
-    lateinit var picasso: Picasso
 
     @Inject
     lateinit var matomoAnalytics: MatomoAnalytics
@@ -371,7 +368,6 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
                         val adapter = IngredientAnalysisTagsAdapter(
                             this@ContinuousScanActivity,
                             state.data,
-                            picasso,
                             sharedPreferences
                         ).apply adapter@{
                             setOnItemClickListener { view: View, _ ->

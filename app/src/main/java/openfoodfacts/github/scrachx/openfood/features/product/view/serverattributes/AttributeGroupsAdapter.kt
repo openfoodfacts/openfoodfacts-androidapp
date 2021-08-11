@@ -7,14 +7,13 @@ import android.view.ViewGroup
 import android.widget.BaseExpandableListAdapter
 import android.widget.ImageView
 import android.widget.TextView
-import com.squareup.picasso.Picasso
+import coil.load
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.models.entities.attribute.AttributeGroup
 
 class AttributeGroupsAdapter(
     private val attributeGroups: List<AttributeGroup>,
     private val activity: Activity,
-    private val picasso: Picasso
 ) : BaseExpandableListAdapter() {
     override fun getGroupCount() = attributeGroups.count()
 
@@ -62,8 +61,7 @@ class AttributeGroupsAdapter(
         val iconView = childView.findViewById<ImageView>(R.id.logo_view)
         attribute.iconUrl.let { iconUrl ->
             if (!iconUrl.isNullOrEmpty()) {
-                picasso.load(iconUrl.replaceAfterLast(".", "png"))
-                    .into(iconView)
+                iconView.load(iconUrl.replaceAfterLast(".", "png"))
             } else {
                 iconView.visibility = GONE
             }

@@ -27,7 +27,7 @@ import androidx.activity.result.contract.ActivityResultContract
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
-import com.squareup.picasso.Picasso
+import coil.load
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -53,8 +53,6 @@ class ImagesSelectActivity : BaseActivity() {
     private var _binding: ActivityProductImagesListBinding? = null
     private val binding get() = _binding!!
 
-    @Inject
-    lateinit var picasso: Picasso
 
     @Inject
     lateinit var productsApi: ProductsAPI
@@ -86,25 +84,25 @@ class ImagesSelectActivity : BaseActivity() {
     private fun loadProductImages(code: String) {
         productsApi.getProductImages(code)
             .map { it.extractImagesNameSortedByUploadTimeDesc() }
-                .observeOn(AndroidSchedulers.mainThread())
-                .doOnError { Log.e(LOG_TAG, "Cannot download images from server", it) }
-                .subscribe { imageNames ->
-                    supportActionBar?.setDisplayHomeAsUpEnabled(true)
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnError { Log.e(LOG_TAG, "Cannot download images from server", it) }
+            .subscribe { imageNames ->
+                supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-                    // Check if user is logged in
-                    adapter = ProductImagesSelectionAdapter(this, picasso, imageNames, code) {
-                        setSelectedImage(it)
-                    }
+                // Check if user is logged in
+                adapter = ProductImagesSelectionAdapter(this, imageNames, code) {
+                    setSelectedImage(it)
+                }
 
-                    binding.imagesRecycler.adapter = adapter
-                    binding.imagesRecycler.layoutManager = GridLayoutManager(this, 3)
-                }.addTo(disp)
+                binding.imagesRecycler.adapter = adapter
+                binding.imagesRecycler.layoutManager = GridLayoutManager(this, 3)
+            }.addTo(disp)
     }
 
     private fun setSelectedImage(selectedPosition: Int) {
         if (selectedPosition >= 0) {
             val finalUrlString = adapter.getImageUrl(selectedPosition)
-            picasso.load(finalUrlString).resize(400, 400).centerInside().into(binding.expandedImage)
+            binding.expandedImage.load(finalUrlString) { size(400) }
             binding.zoomContainer.visibility = View.VISIBLE
             binding.imagesRecycler.visibility = View.INVISIBLE
         }
@@ -178,7 +176,7 @@ class ImagesSelectActivity : BaseActivity() {
         })
 
         class SelectImageContract(
-                private val toolbarTitle: String
+            private val toolbarTitle: String
         ) : ActivityResultContract<String, Pair<String?, File?>>() {
             override fun createIntent(context: Context, barcode: String) = Intent(context, ImagesSelectActivity::class.java).apply {
                 putExtra(TOOLBAR_TITLE, toolbarTitle)
@@ -186,8 +184,8 @@ class ImagesSelectActivity : BaseActivity() {
             }
 
             override fun parseResult(resultCode: Int, intent: Intent?) =
-                    if (resultCode != RESULT_OK) null to null
-                    else intent?.getStringExtra(IMG_ID) to intent?.getSerializableExtra(IMAGE_FILE) as File?
+                if (resultCode != RESULT_OK) null to null
+                else intent?.getStringExtra(IMG_ID) to intent?.getSerializableExtra(IMAGE_FILE) as File?
 
         }
     }

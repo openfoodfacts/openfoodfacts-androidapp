@@ -27,10 +27,9 @@ import androidx.core.net.toFile
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import coil.load
 import com.hootsuite.nachos.terminator.ChipTerminatorHandler
 import com.hootsuite.nachos.validator.ChipifyingNachoValidator
-import com.squareup.picasso.Callback
-import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.addTo
@@ -73,8 +72,6 @@ class EditIngredientsFragment : ProductEditFragment() {
     @Inject
     lateinit var daoSession: DaoSession
 
-    @Inject
-    lateinit var picasso: Picasso
 
     @Inject
     lateinit var client: OpenFoodAPIClient
@@ -226,23 +223,13 @@ class EditIngredientsFragment : ProductEditFragment() {
         if (newImageIngredientsUrl != null && newImageIngredientsUrl.isNotEmpty()) {
             binding.imageProgress.visibility = View.VISIBLE
             imagePath = newImageIngredientsUrl
-            picasso
-                .load(newImageIngredientsUrl)
-                .resize(dps50ToPixels, dps50ToPixels)
-                .centerInside()
-                .into(binding.btnAddImageIngredients, object : Callback {
-                    override fun onSuccess() = imageLoaded()
-                    override fun onError(ex: Exception) = imageLoaded()
-                })
-        }
-    }
 
-    /**
-     * Set visibility parameters when image is loaded
-     */
-    private fun imageLoaded() {
-        binding.btnEditImageIngredients.visibility = View.VISIBLE
-        binding.imageProgress.visibility = View.GONE
+            binding.btnAddImageIngredients.load(newImageIngredientsUrl) {
+                size(dps50ToPixels, dps50ToPixels)
+            }
+            binding.btnEditImageIngredients.visibility = View.VISIBLE
+            binding.imageProgress.visibility = View.GONE
+        }
     }
 
     /**
@@ -287,19 +274,10 @@ class EditIngredientsFragment : ProductEditFragment() {
 
         getImageIngredients()?.let {
             binding.imageProgress.visibility = View.VISIBLE
-            picasso
-                .load(LOCALE_FILE_SCHEME + it)
-                .resize(dps50ToPixels, dps50ToPixels)
-                .centerInside()
-                .into(binding.btnAddImageIngredients, object : Callback {
-                    override fun onSuccess() {
-                        binding.imageProgress.visibility = View.GONE
-                    }
-
-                    override fun onError(ex: Exception) {
-                        binding.imageProgress.visibility = View.GONE
-                    }
-                })
+            binding.btnAddImageIngredients.load(LOCALE_FILE_SCHEME + it) {
+                size(dps50ToPixels)
+            }
+            binding.imageProgress.visibility = View.GONE
         }
 
         prod.ingredients
@@ -453,10 +431,9 @@ class EditIngredientsFragment : ProductEditFragment() {
         binding.btnEditImageIngredients.visibility = View.VISIBLE
 
         if (!errorInUploading) {
-            picasso.load(photoFile!!)
-                .resize(dps50ToPixels, dps50ToPixels)
-                .centerInside()
-                .into(binding.btnAddImageIngredients)
+            binding.btnAddImageIngredients.load(photoFile!!) {
+                size(dps50ToPixels, dps50ToPixels)
+            }
         }
     }
 

@@ -8,8 +8,7 @@ import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.Callback
-import com.squareup.picasso.Picasso
+import coil.load
 import openfoodfacts.github.scrachx.openfood.AppFlavors
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.models.SearchProduct
@@ -20,7 +19,6 @@ class ProductSearchAdapter(
         val products: MutableList<SearchProduct?>,
         private val isLowBatteryMode: Boolean,
         private val context: Context,
-        private val picasso: Picasso,
         private val openFoodAPIClient: OpenFoodAPIClient,
         private val localeManager: LocaleManager
 ) : RecyclerView.Adapter<ProductSearchAdapter.ProductsListViewHolder>() {
@@ -46,25 +44,16 @@ class ProductSearchAdapter(
         }
 
         // Load Image if isLowBatteryMode is false
-        if (!isLowBatteryMode) {
-            picasso
-                    .load(imageSmallUrl)
-                    .placeholder(R.drawable.placeholder_thumb)
-                    .error(R.drawable.error_image)
-                    .fit()
-                    .centerCrop()
-                    .into(holder.productFrontImg, object : Callback {
-                        override fun onSuccess() {
-                            holder.imageProgress.visibility = View.GONE
-                        }
-
-                        override fun onError(ex: Exception) {
-                            holder.imageProgress.visibility = View.GONE
-                        }
-                    })
+        if (isLowBatteryMode) {
+            holder.productFrontImg.load(R.drawable.placeholder_thumb)
+            holder.imageProgress.visibility = View.GONE
         } else {
-            picasso.load(R.drawable.placeholder_thumb).into(holder.productFrontImg)
-            holder.imageProgress.visibility = View.INVISIBLE
+            holder.productFrontImg.load(imageSmallUrl) {
+                placeholder(R.drawable.placeholder_thumb)
+                error(R.drawable.error_image)
+            }
+            holder.imageProgress.visibility = View.GONE
+
         }
 
 

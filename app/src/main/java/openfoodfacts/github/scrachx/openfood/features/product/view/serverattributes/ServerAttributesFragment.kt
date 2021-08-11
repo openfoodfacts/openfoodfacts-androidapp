@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentServerAttributesBinding
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_STATE
@@ -19,8 +18,6 @@ class ServerAttributesFragment : BaseFragment() {
     private lateinit var productState: ProductState
     private lateinit var binding: FragmentServerAttributesBinding
 
-    @Inject
-    lateinit var picasso: Picasso
 
     @Inject
     lateinit var localeManager: LocaleManager
@@ -39,7 +36,7 @@ class ServerAttributesFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val attributeGroups = productState.product!!.getAttributeGroups(localeManager.getLanguage())
-        binding.attrsList.setAdapter(AttributeGroupsAdapter(attributeGroups, requireActivity(), picasso))
+        binding.attrsList.setAdapter(AttributeGroupsAdapter(attributeGroups, requireActivity()))
     }
 
     companion object {

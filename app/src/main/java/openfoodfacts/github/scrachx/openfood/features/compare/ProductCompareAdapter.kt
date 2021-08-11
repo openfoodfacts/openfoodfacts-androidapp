@@ -30,7 +30,7 @@ import androidx.core.content.ContextCompat.checkSelfPermission
 import androidx.core.text.bold
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.Picasso
+import coil.load
 import openfoodfacts.github.scrachx.openfood.AppFlavors
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OPF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
@@ -49,7 +49,6 @@ class ProductCompareAdapter(
     private val compareProducts: List<ProductCompareViewModel.CompareProduct>,
     internal val activity: Activity,
     private val client: OpenFoodAPIClient,
-    private val picasso: Picasso,
     private val language: String
 
 ) : RecyclerView.Adapter<ProductCompareAdapter.ViewHolder>() {
@@ -133,10 +132,10 @@ class ProductCompareAdapter(
         }
         if (!imageUrl.isNullOrBlank()) {
             holder.binding.productComparisonLabel.visibility = View.INVISIBLE
-            if (!activity.isLowBatteryMode()) {
-                picasso.load(imageUrl).into(holder.binding.productComparisonImage)
-            } else {
+            if (activity.isLowBatteryMode()) {
                 holder.binding.productComparisonImage.visibility = View.GONE
+            } else {
+                holder.binding.productComparisonImage.load(imageUrl)
             }
         }
 

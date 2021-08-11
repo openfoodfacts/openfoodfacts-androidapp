@@ -32,12 +32,10 @@ import android.widget.AdapterView.OnItemSelectedListener
 import androidx.core.net.toFile
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import coil.load
 import com.afollestad.materialdialogs.MaterialDialog
 import com.google.android.material.textfield.TextInputLayout
-import com.squareup.picasso.Callback
-import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -82,9 +80,6 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
     private val binding get() = _binding!!
 
     val viewModel: ProductEditNutritionViewModel by viewModels()
-
-    @Inject
-    lateinit var picasso: Picasso
 
     @Inject
     lateinit var client: OpenFoodAPIClient
@@ -391,23 +386,9 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
      * @param path path of the image
      */
     private fun loadNutritionImage(path: String) {
-        picasso.load(path)
-            .resize(requireContext().dpsToPixel(50), requireContext().dpsToPixel(50))
-            .centerInside()
-            .into(binding.btnAddImageNutritionFacts, object : Callback {
-                override fun onSuccess() {
-                    if (!lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED)) return
-                    afterNutritionImgLoaded()
-                }
-
-                override fun onError(ex: Exception) {
-                    if (!lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED)) return
-                    afterNutritionImgLoaded()
-                }
-            })
-    }
-
-    private fun afterNutritionImgLoaded() {
+        binding.btnAddImageNutritionFacts.load(path) {
+            size(requireContext().dpsToPixel(50))
+        }
         binding.imageProgress.visibility = View.GONE
         binding.btnEditImageNutritionFacts.visibility = View.VISIBLE
     }
@@ -928,10 +909,9 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         binding.btnAddImageNutritionFacts.visibility = View.VISIBLE
         binding.btnEditImageNutritionFacts.visibility = View.VISIBLE
         if (!errorInUploading) {
-            picasso.load(photoFile!!)
-                .resize(requireContext().dpsToPixel(50), requireContext().dpsToPixel(50))
-                .centerInside()
-                .into(binding.btnAddImageNutritionFacts)
+            binding.btnAddImageNutritionFacts.load(photoFile!!) {
+                size(requireContext().dpsToPixel(50))
+            }
         }
     }
 

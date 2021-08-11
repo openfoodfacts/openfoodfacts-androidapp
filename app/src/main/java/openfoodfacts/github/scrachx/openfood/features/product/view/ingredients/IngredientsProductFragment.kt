@@ -18,7 +18,6 @@ package openfoodfacts.github.scrachx.openfood.features.product.view.ingredients
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.graphics.Bitmap
 import android.graphics.Typeface
 import android.net.Uri
 import android.os.Bundle
@@ -35,8 +34,8 @@ import androidx.core.text.bold
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.widget.ViewPager2
+import coil.load
 import com.afollestad.materialdialogs.MaterialDialog
-import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.rx2.await
@@ -92,9 +91,6 @@ class IngredientsProductFragment : BaseFragment() {
 
     @Inject
     lateinit var wikidataClient: WikiDataApiClient
-
-    @Inject
-    lateinit var picasso: Picasso
 
     @Inject
     lateinit var sharedPreferences: SharedPreferences
@@ -238,7 +234,7 @@ class IngredientsProductFragment : BaseFragment() {
 
             // Load Image if isLowBatteryMode is false
             if (!requireContext().isBatteryLevelLow()) {
-                picasso.load(product.getImageIngredientsUrl(langCode)).into(binding.imageViewIngredients)
+                binding.imageViewIngredients.load(product.getImageIngredientsUrl(langCode))
             } else {
                 binding.imageViewIngredients.visibility = View.GONE
             }
@@ -249,7 +245,7 @@ class IngredientsProductFragment : BaseFragment() {
         if (mSendProduct != null && !mSendProduct!!.imgUploadIngredients.isNullOrBlank()) {
             binding.addPhotoLabel.visibility = View.GONE
             ingredientsImgUrl = mSendProduct!!.imgUploadIngredients
-            picasso.load(LOCALE_FILE_SCHEME + ingredientsImgUrl).config(Bitmap.Config.RGB_565).into(binding.imageViewIngredients)
+            binding.imageViewIngredients.load(LOCALE_FILE_SCHEME + ingredientsImgUrl)
         }
         val allergens = getAllergens()
         if (!product.getIngredientsText(langCode).isNullOrEmpty()) {
@@ -498,9 +494,7 @@ class IngredientsProductFragment : BaseFragment() {
         binding.addPhotoLabel.visibility = View.GONE
         ingredientsImgUrl = newPhotoFile.absolutePath
 
-        picasso.load(newPhotoFile)
-            .fit()
-            .into(binding.imageViewIngredients)
+        binding.imageViewIngredients.load(newPhotoFile)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

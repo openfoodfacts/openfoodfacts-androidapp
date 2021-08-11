@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
-import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentProductPhotosBinding
@@ -36,8 +35,6 @@ class ProductPhotosFragment : BaseFragment() {
     @Inject
     lateinit var productsApi: ProductsAPI
 
-    @Inject
-    lateinit var picasso: Picasso
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentProductPhotosBinding.inflate(inflater, container, false)
@@ -56,7 +53,6 @@ class ProductPhotosFragment : BaseFragment() {
         val adapter = ProductPhotosAdapter(
             requireContext(),
             this,
-            picasso,
             client,
             product,
             imageNames,

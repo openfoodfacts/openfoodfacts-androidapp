@@ -21,10 +21,8 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.Single
-import io.reactivex.disposables.CompositeDisposable
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
@@ -59,9 +57,6 @@ class ProductSearchActivity : BaseActivity() {
     lateinit var productRepository: ProductRepository
 
     @Inject
-    lateinit var picasso: Picasso
-
-    @Inject
     lateinit var sharedPreferences: SharedPreferences
 
     @Inject
@@ -71,7 +66,6 @@ class ProductSearchActivity : BaseActivity() {
     private lateinit var adapter: ProductSearchAdapter
 
     private var contributionType = 0
-    private var disp = CompositeDisposable()
     private val lowBatteryMode by lazy { isDisableImageLoad() && isBatteryLevelLow() }
 
     /**
@@ -132,7 +126,6 @@ class ProductSearchActivity : BaseActivity() {
     }
 
     override fun onDestroy() {
-        disp.dispose()
         _binding = null
         super.onDestroy()
     }
@@ -394,7 +387,7 @@ class ProductSearchActivity : BaseActivity() {
             }
 
             if (setupDone) {
-                adapter = ProductSearchAdapter(products, lowBatteryMode, this, picasso, client, localeManager)
+                adapter = ProductSearchAdapter(products, lowBatteryMode, this, client, localeManager)
                 binding.productsRecyclerView.adapter = adapter
             }
 
@@ -492,7 +485,7 @@ class ProductSearchActivity : BaseActivity() {
             binding.productsRecyclerView.setHasFixedSize(true)
             val mLayoutManager = LinearLayoutManager(this@ProductSearchActivity, LinearLayoutManager.VERTICAL, false)
             binding.productsRecyclerView.layoutManager = mLayoutManager
-            adapter = ProductSearchAdapter(mProducts, lowBatteryMode, this, picasso, client, localeManager)
+            adapter = ProductSearchAdapter(mProducts, lowBatteryMode, this, client, localeManager)
             binding.productsRecyclerView.adapter = adapter
             val dividerItemDecoration = DividerItemDecoration(binding.productsRecyclerView.context, DividerItemDecoration.VERTICAL)
             binding.productsRecyclerView.addItemDecoration(dividerItemDecoration)

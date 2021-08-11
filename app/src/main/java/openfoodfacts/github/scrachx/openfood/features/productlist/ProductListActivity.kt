@@ -22,7 +22,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.afollestad.materialdialogs.MaterialDialog
-import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
@@ -62,9 +61,6 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
 
     @Inject
     lateinit var localeManager: LocaleManager
-
-    @Inject
-    lateinit var picasso: Picasso
 
     private var listID by Delegates.notNull<Long>()
     private lateinit var productList: ProductLists
@@ -142,7 +138,6 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
             this,
             productList.products.toMutableList(),
             isLowBatteryMode,
-            picasso,
             onItemClickListener = {
                 lifecycleScope.launch { client.openProduct(it.barcode, this@ProductListActivity) }
             }
