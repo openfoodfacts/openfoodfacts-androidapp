@@ -31,6 +31,7 @@ import android.widget.*
 import android.widget.AdapterView.OnItemSelectedListener
 import androidx.annotation.StringRes
 import androidx.core.net.toFile
+import androidx.core.view.isVisible
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -42,7 +43,6 @@ import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import androidx.core.view.isVisible
 import kotlinx.coroutines.rx2.awaitSingleOrNull
 import kotlinx.coroutines.withContext
 import openfoodfacts.github.scrachx.openfood.R
@@ -188,13 +188,11 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         (activity as? ProductEditActivity)?.initialValues?.let { values ->
             addAllFieldsToMap(values)
         }
-        viewModel.noNutritionFactsChecked.observe(this) {
+        viewModel.noNutritionFactsChecked.observe(viewLifecycleOwner) {
             binding.checkboxNoNutritionData.isChecked = it
             binding.nutritionFactsLayout.isVisible = !it
         }
-        viewModel.dataFormat.observe(this) {
-            binding.radioGroup.check(it)
-        }
+        viewModel.dataFormat.observe(viewLifecycleOwner, binding.radioGroup::check)
     }
 
     override fun onResume() {
