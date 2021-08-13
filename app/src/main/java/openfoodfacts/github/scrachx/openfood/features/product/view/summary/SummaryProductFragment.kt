@@ -733,11 +733,10 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
 
                     binding.labelsText.text = SpannableStringBuilder()
                         .bold { append(getString(R.string.txtLabels)) }
-                        .append(" ")
                         .apply {
                             state.data.map(::getLabelTag).forEachIndexed { i, el ->
                                 append(el)
-                                if (i == state.data.size) append(", ")
+                                if (i != state.data.size) append(", ")
                             }
                         }
                 }
