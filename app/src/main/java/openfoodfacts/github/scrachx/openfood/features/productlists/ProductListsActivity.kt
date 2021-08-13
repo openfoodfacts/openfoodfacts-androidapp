@@ -18,12 +18,14 @@ package openfoodfacts.github.scrachx.openfood.features.productlists
 import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.afollestad.materialdialogs.DialogAction
@@ -183,6 +185,7 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.KITKAT)
     private val chooseFileContract = registerForActivityResult(ActivityResultContracts.OpenDocument())
     { uri ->
         if (uri != null) {
@@ -223,7 +226,13 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
         else -> super.onOptionsItemSelected(item)
     }
 
-    private fun openCSVToImport() = chooseFileContract.launch(arrayOf("text/csv"))
+    private fun openCSVToImport() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            chooseFileContract.launch(arrayOf("text/csv"))
+        } else {
+            Toast.makeText(this, "Feature disabled for your android version.", Toast.LENGTH_LONG).show()
+        }
+    }
 
     public override fun onResume() {
         super.onResume()
