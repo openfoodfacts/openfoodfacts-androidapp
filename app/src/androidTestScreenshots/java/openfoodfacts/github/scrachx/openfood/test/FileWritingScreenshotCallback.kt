@@ -6,7 +6,7 @@ import android.os.Environment
 import android.util.Log
 import openfoodfacts.github.scrachx.openfood.BuildConfig
 import tools.fastlane.screengrab.ScreenshotCallback
-import tools.fastlane.screengrab.file.Chmod
+//import tools.fastlane.screengrab.file.Chmod
 import java.io.BufferedOutputStream
 import java.io.File
 import java.io.FileOutputStream
@@ -32,7 +32,7 @@ class FileWritingScreenshotCallback internal constructor(
             try {
                 BufferedOutputStream(FileOutputStream(screenshotFile)).use { fos ->
                     screenshot.compress(CompressFormat.PNG, 100, fos)
-                    Chmod.chmodPlusR(screenshotFile)
+                   // Chmod.chmodPlusR(screenshotFile)
                 }
             } finally {
                 screenshot.recycle()
@@ -86,7 +86,7 @@ class FileWritingScreenshotCallback internal constructor(
         @Throws(IOException::class)
         private fun createPathTo(dir: File) {
             if (dir.exists() || dir.mkdirs()) {
-                Chmod.chmodPlusRWX(dir)
+                //Chmod.chmodPlusRWX(dir)
             } else {
                 throw IOException("Unable to create output dir: ${dir.absolutePath}")
             }
