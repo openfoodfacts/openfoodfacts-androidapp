@@ -36,7 +36,7 @@ abstract class AbstractScreenshotTest {
             Manifest.permission.CHANGE_CONFIGURATION
     )
 
-#Start Unsure (merge conflict)
+//Start Unsure (merge conflict)
     @Inject
     @ApplicationContext
     lateinit var context: Context
@@ -60,7 +60,7 @@ abstract class AbstractScreenshotTest {
     }
 
     @SafeVarargs
-#End Unsure
+//End Unsure
     private fun startScreenshotActivityTestRules(
             screenshotParameter: ScreenshotParameter,
             activityRules: List<ScreenshotActivityTestRule<out Activity?>>,
