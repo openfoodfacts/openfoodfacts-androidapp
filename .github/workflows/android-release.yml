@@ -3,9 +3,7 @@ name: Google Play internal release
 on:
   push:
     branches:
-      #- 'release/*'
-      - '*'
-#     - 'fastlane-for-flavors'
+      - 'release/*'
 
 jobs:
 
