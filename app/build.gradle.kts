@@ -305,6 +305,9 @@ android {
         }
         create("obf") {
             applicationId = "openfoodfacts.github.scrachx.openbeauty"
+            if ("true" == System.getenv("CI_RELEASE")) { // CI=true is exported by github action
+                applicationId = "org.openbeautyfacts.scanner"
+            }
             resValue("string", "app_name", "OpenBeautyFacts")
             buildConfigField("String", "APP_NAME", "\"Open Beauty Facts\"")
             buildConfigField("String", "HOST", "\"https://ssl-api.openbeautyfacts.org\"")
