@@ -47,6 +47,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
@@ -585,31 +586,52 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         }
     }
 
-    override fun showAnalysisTags(analysisTags: List<AnalysisTagConfig>) {
-        requireActivity().runOnUiThread {
-            binding.analysisContainer.visibility = View.VISIBLE
-            val adapter = IngredientAnalysisTagsAdapter(requireContext(), analysisTags, picasso, sharedPreferences)
-            adapter.setOnItemClickListener { view, _ ->
-                val fragment = IngredientsWithTagDialogFragment
-                    .newInstance(product, view.getTag(R.id.analysis_tag_config) as AnalysisTagConfig)
-                fragment.show(childFragmentManager, "fragment_ingredients_with_tag")
-                fragment.onDismissListener = { adapter.filterVisibleTags() }
+    override suspend fun showAnalysisTags(state: ProductInfoState<List<AnalysisTagConfig>>) {
+        withContext(Main) {
+            when (state) {
+                is ProductInfoState.Data -> {
+                    val analysisTags = state.data
+
+                    binding.analysisContainer.visibility = View.VISIBLE
+
+                    binding.analysisTags.adapter = IngredientAnalysisTagsAdapter(
+                        requireContext(),
+                        analysisTags,
+                        picasso,
+                        sharedPreferences
+                    ).apply adapter@{
+                        setOnItemClickListener { view, _ ->
+                            IngredientsWithTagDialogFragment.newInstance(
+                                product,
+                                view.getTag(R.id.analysis_tag_config) as AnalysisTagConfig
+                            ).run {
+                                onDismissListener = { filterVisibleTags() }
+                                show(childFragmentManager, "fragment_ingredients_with_tag")
+                            }
+                        }
+                    }
+                }
+                ProductInfoState.Empty -> {
+                    // TODO:
+                }
+                ProductInfoState.Loading -> {
+                    // TODO:
+                }
             }
-            binding.analysisTags.adapter = adapter
+
         }
     }
 
     override fun showAllergens(allergens: List<AllergenName>) {
         val data = AllergenHelper.computeUserAllergen(product, allergens)
-        if (data.isEmpty()) {
-            return
-        }
+        if (data.isEmpty()) return
+
         if (data.incomplete) {
             binding.productAllergenAlertText.setText(R.string.product_incomplete_message)
             binding.productAllergenAlertLayout.visibility = View.VISIBLE
             return
         }
-        binding.productAllergenAlertText.text = StringBuilder(resources.getString(R.string.product_allergen_prompt))
+        binding.productAllergenAlertText.text = SpannableStringBuilder(getString(R.string.product_allergen_prompt))
             .append("\n")
             .append(data.allergens.joinToString(", "))
 
@@ -617,8 +639,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     }
 
 
-    override fun showProductQuestion(question: Question) {
-        if (isRemoving) return
+    override suspend fun showProductQuestion(question: Question) = withContext(Main) {
 
         if (!question.isEmpty()) {
             productQuestion = question
@@ -706,45 +727,59 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     override fun showLabelsState(state: ProductInfoState<List<LabelName>>) {
         requireActivity().runOnUiThread {
             when (state) {
-                is ProductInfoState.Loading -> binding.labelsText.append(getString(R.string.txtLoading))
-                is ProductInfoState.Empty -> {
-                    binding.labelsText.visibility = View.GONE
-                    binding.labelsIcon.visibility = View.GONE
-                }
                 is ProductInfoState.Data -> {
                     binding.labelsText.isClickable = true
                     binding.labelsText.movementMethod = LinkMovementMethod.getInstance()
+
                     binding.labelsText.text = SpannableStringBuilder()
                         .bold { append(getString(R.string.txtLabels)) }
-                        .append(" ")
-                        .append(state.data.joinToString { getLabelTag(it) })
+                        .apply {
+                            state.data.map(::getLabelTag).forEachIndexed { i, el ->
+                                append(el)
+                                if (i != state.data.size) append(", ")
+                            }
+                        }
+                }
+                is ProductInfoState.Loading -> {
+                    binding.labelsText.text = SpannableStringBuilder()
+                        .bold { append(getString(R.string.txtLabels)) }
+                        .append(getString(R.string.txtLoading))
+                }
+
+                is ProductInfoState.Empty -> {
+                    binding.labelsText.visibility = View.GONE
+                    binding.labelsIcon.visibility = View.GONE
                 }
             }
         }
     }
 
-    override fun showCategoriesState(state: ProductInfoState<List<CategoryName>>) = requireActivity().runOnUiThread {
-        when (state) {
-            is ProductInfoState.Loading -> if (context != null) {
-                binding.categoriesText.append(getString(R.string.txtLoading))
-            }
-            is ProductInfoState.Empty -> {
-                binding.categoriesText.visibility = View.GONE
-                binding.categoriesIcon.visibility = View.GONE
-            }
-            is ProductInfoState.Data -> {
-                val categories = state.data
-                if (categories.isEmpty()) {
-                    binding.categoriesLayout.visibility = View.GONE
-                    return@runOnUiThread
+    override fun showCategoriesState(state: ProductInfoState<List<CategoryName>>) {
+        requireActivity().runOnUiThread {
+            when (state) {
+                is ProductInfoState.Loading -> {
+                    binding.categoriesText.text = SpannableStringBuilder()
+                        .bold { append(getString(R.string.txtCategories)) }
+                        .append(getString(R.string.txtLoading))
                 }
-                CategoryProductHelper.showCategories(
-                    this,
-                    binding.categoriesText,
-                    binding.textCategoryAlcoholAlert,
-                    categories,
-                    wikidataClient,
-                )
+                is ProductInfoState.Empty -> {
+                    binding.categoriesText.visibility = View.GONE
+                    binding.categoriesIcon.visibility = View.GONE
+                }
+                is ProductInfoState.Data -> {
+                    val categories = state.data
+                    if (categories.isEmpty()) {
+                        binding.categoriesLayout.visibility = View.GONE
+                        return@runOnUiThread
+                    }
+                    CategoryProductHelper.showCategories(
+                        this,
+                        binding.categoriesText,
+                        binding.textCategoryAlcoholAlert,
+                        categories,
+                        wikidataClient,
+                    )
+                }
             }
         }
     }

@@ -138,22 +138,6 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
     }
 
 
-    private fun Spinner.setOnItemSelectedListener(
-        block: (
-            parent: AdapterView<*>?,
-            view: View?,
-            position: Int,
-            id: Long
-        ) -> Unit
-    ) {
-        this.onItemSelectedListener = object : OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) =
-                block(parent, view, position, id)
-
-            override fun onNothingSelected(parent: AdapterView<*>?) = Unit // This is not possible
-        }
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -986,6 +970,22 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
             // Can't be converted to grams.
             return if (UNIT_DV == unit || UNIT_IU == unit) 0F
             else UnitUtils.convertToGrams(value, unit)
+        }
+
+        private fun Spinner.setOnItemSelectedListener(
+            block: (
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) -> Unit
+        ) {
+            this.onItemSelectedListener = object : OnItemSelectedListener {
+                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) =
+                    block(parent, view, position, id)
+
+                override fun onNothingSelected(parent: AdapterView<*>?) = Unit // This is not possible
+            }
         }
     }
 }

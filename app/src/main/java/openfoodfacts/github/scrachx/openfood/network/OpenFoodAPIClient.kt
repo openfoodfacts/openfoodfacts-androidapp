@@ -12,7 +12,6 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import io.reactivex.Single
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.rx2.await
 import kotlinx.coroutines.rx2.rxCompletable
 import kotlinx.coroutines.rx2.rxSingle
@@ -152,7 +151,9 @@ class OpenFoodAPIClient @Inject constructor(
                     .setNegativeButton(R.string.txtNo) { _, _ -> activity.onBackPressed() }
                     .show()
             } else {
-                launch { addToHistory(state.product!!) }
+                addToHistory(state.product!!)
+
+                // After this the lifecycleScope is cleared because we're switching activities
                 startProductViewActivity(activity, state)
             }
         }
@@ -226,7 +227,7 @@ class OpenFoodAPIClient @Inject constructor(
     /**
      * Add a product to ScanHistory asynchronously
      */
-    fun addToHistory(product: Product) = rxCompletable(IO) {
+    suspend fun addToHistory(product: Product) = withContext(IO) {
         daoSession.historyProductDao.addToHistory(product, localeManager.getLanguage())
     }
 

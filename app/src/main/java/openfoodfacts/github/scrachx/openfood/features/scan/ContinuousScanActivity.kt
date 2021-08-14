@@ -55,7 +55,6 @@ import io.reactivex.Completable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import kotlinx.coroutines.*
-import kotlinx.coroutines.rx2.await
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.BuildConfig
@@ -242,7 +241,7 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
                 this@ContinuousScanActivity.product = product
 
                 // Add product to scan history
-                productDisp = lifecycleScope.launch { client.addToHistory(product).await() }
+                productDisp = lifecycleScope.launch { client.addToHistory(product) }
 
                 // If we're here from comparison -> add product, return to comparison activity
                 if (intent.getBooleanExtra(ProductCompareActivity.KEY_COMPARE_PRODUCT, false)) {
@@ -364,25 +363,39 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
                 }
             }
 
-            override fun showAnalysisTags(analysisTags: List<AnalysisTagConfig>) {
-                super.showAnalysisTags(analysisTags)
-                if (analysisTags.isEmpty()) {
-                    binding.quickViewTags.visibility = View.GONE
-                    analysisTagsEmpty = true
-                    return
-                }
-                binding.quickViewTags.visibility = View.VISIBLE
-                analysisTagsEmpty = false
-                val adapter = IngredientAnalysisTagsAdapter(this@ContinuousScanActivity, analysisTags, picasso, sharedPreferences)
-                adapter.setOnItemClickListener { view: View?, _ ->
-                    if (view == null) return@setOnItemClickListener
-                    IngredientsWithTagDialogFragment.newInstance(product, view.getTag(R.id.analysis_tag_config) as AnalysisTagConfig).run {
-                        show(supportFragmentManager, "fragment_ingredients_with_tag")
-                        onDismissListener = { adapter.filterVisibleTags() }
+            override suspend fun showAnalysisTags(state: ProductInfoState<List<AnalysisTagConfig>>) = withContext(Dispatchers.Main) {
+                when (state) {
+                    is ProductInfoState.Data -> {
+                        binding.quickViewTags.visibility = View.VISIBLE
+                        analysisTagsEmpty = false
+                        val adapter = IngredientAnalysisTagsAdapter(
+                            this@ContinuousScanActivity,
+                            state.data,
+                            picasso,
+                            sharedPreferences
+                        ).apply adapter@{
+                            setOnItemClickListener { view: View, _ ->
+                                IngredientsWithTagDialogFragment.newInstance(
+                                    product,
+                                    view.getTag(R.id.analysis_tag_config) as AnalysisTagConfig
+                                ).run {
+                                    onDismissListener = { this@adapter.filterVisibleTags() }
+                                    show(supportFragmentManager, "fragment_ingredients_with_tag")
+                                }
+                            }
+                        }
+
+                        binding.quickViewTags.adapter = adapter
+                    }
+                    is ProductInfoState.Empty -> {
+                        binding.quickViewTags.visibility = View.GONE
+                        analysisTagsEmpty = true
+                    }
+                    ProductInfoState.Loading -> {
+                        // TODO
                     }
                 }
 
-                binding.quickViewTags.adapter = adapter
             }
         }, productRepository).also {
             lifecycleScope.launch {
