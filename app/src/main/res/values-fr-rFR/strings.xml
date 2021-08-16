@@ -437,7 +437,7 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
     <string name="url_nova_groups">https://fr.openfoodfacts.org/classification-nova-pour-la-transformation-des-aliments</string>
     <!--Just replace "world" by "fr", "de"… translate the end of the url -->
-    <string name="ecoscore_url">https://fr.openfoodfacts.org/eco-score-impact-environnemental-de-la-nourriture</string>
+    <string name="ecoscore_url">https://fr.openfoodfacts.org/eco-score-l-impact-environnemental-des-produits-alimentaires</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
     <string name="url_nutrient_values">https://fr.openfoodfacts.org/feux-tricolores-nutritionnels</string>
     <string name="preference_header_general">Général</string>

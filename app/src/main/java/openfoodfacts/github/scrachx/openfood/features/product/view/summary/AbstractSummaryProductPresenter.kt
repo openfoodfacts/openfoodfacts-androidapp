@@ -25,43 +25,11 @@ import openfoodfacts.github.scrachx.openfood.models.entities.label.LabelName
 import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState
 
 open class AbstractSummaryProductPresenter : ISummaryProductPresenter.View {
-    override fun showAllergens(allergens: List<AllergenName>) {
-        //empty impl
-    }
-
-    override fun showProductQuestion(question: Question) {
-        //empty impl
-    }
-
-    override fun showAnnotatedInsightToast(annotationResponse: AnnotationResponse) {
-        //empty impl
-    }
-
-    override fun showCategories(categories: List<CategoryName>) {
-        //empty impl
-    }
-
-    override fun showLabels(labelNames: List<LabelName>) {
-        //empty impl
-    }
-
-    override fun showCategoriesState(state: ProductInfoState) {
-        //empty impl
-    }
-
-    override fun showLabelsState(state: ProductInfoState) {
-        //empty impl
-    }
-
-    override fun showAdditives(additives: List<AdditiveName>) {
-        //empty impl
-    }
-
-    override fun showAdditivesState(state: ProductInfoState) {
-        //empty impl
-    }
-
-    override fun showAnalysisTags(analysisTags: List<AnalysisTagConfig>) {
-        //empty impl
-    }
+    override fun showAllergens(allergens: List<AllergenName>) = Unit
+    override suspend fun showProductQuestion(question: Question) = Unit
+    override fun showAnnotatedInsightToast(annotationResponse: AnnotationResponse) = Unit
+    override fun showCategoriesState(state: ProductInfoState<List<CategoryName>>) = Unit
+    override fun showLabelsState(state: ProductInfoState<List<LabelName>>) = Unit
+    override fun showAdditivesState(state: ProductInfoState<List<AdditiveName>>) = Unit
+    override suspend fun showAnalysisTags(state: ProductInfoState<List<AnalysisTagConfig>>) = Unit
 }

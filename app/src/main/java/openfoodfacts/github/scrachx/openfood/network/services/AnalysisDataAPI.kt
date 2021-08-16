@@ -15,11 +15,11 @@ import openfoodfacts.github.scrachx.openfood.models.entities.store.StoresWrapper
 import openfoodfacts.github.scrachx.openfood.models.entities.tag.TagsWrapper
 import retrofit2.http.GET
 
-/*
- Created by Lobster on 03.03.18.
-*/ /**
+/**
  * API calls for loading static multilingual data
  * This calls should be used as rare as possible, because they load Big Data
+ *
+ * @author Lobster
  */
 interface AnalysisDataAPI {
     @GET(LABELS_JSON)

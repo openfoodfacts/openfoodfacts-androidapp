@@ -18,6 +18,7 @@ package openfoodfacts.github.scrachx.openfood.utils
 import android.Manifest
 import android.app.Activity
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.pm.PackageManager.PERMISSION_GRANTED
@@ -35,7 +36,6 @@ import android.text.style.ClickableSpan
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
 import androidx.annotation.ColorInt
 import androidx.annotation.DrawableRes
@@ -47,7 +47,6 @@ import androidx.core.net.toUri
 import androidx.core.text.inSpans
 import androidx.core.view.children
 import androidx.work.*
-import com.afollestad.materialdialogs.MaterialDialog
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.squareup.picasso.Callback
 import com.squareup.picasso.RequestCreator
@@ -74,11 +73,6 @@ object Utils {
     const val NO_DRAWABLE_RESOURCE = 0
     const val FORCE_REFRESH_TAXONOMIES = "force_refresh_taxonomies"
 
-    fun hideKeyboard(activity: Activity) {
-        val view = activity.currentFocus ?: return
-        (activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager)
-            .hideSoftInputFromWindow(view.windowToken, 0)
-    }
 
     @JvmStatic
     fun compressImage(fileUrl: String): String? {
@@ -170,23 +164,6 @@ object Utils {
         isUploadJobInitialised = true
     }
 
-    /**
-     * Check if the user is connected to a network. This can be any network.
-     *
-     * @param context of the application.
-     * @return true if connected or connecting. False otherwise.
-     */
-    @Suppress("DEPRECATION")
-    fun isNetworkConnected(context: Context): Boolean {
-        val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            val capability = cm.getNetworkCapabilities(cm.activeNetwork)
-            capability?.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET) ?: false
-        } else {
-            cm.activeNetworkInfo?.isConnectedOrConnecting ?: false
-        }
-    }
-
     fun makeOrGetPictureDirectory(context: Context): File {
         // determine the profile directory
         var dir = context.filesDir
@@ -245,10 +222,14 @@ object Utils {
 fun isAllGranted(grantResults: IntArray) =
     grantResults.isNotEmpty() && grantResults.none { it != PERMISSION_GRANTED }
 
-fun buildSignInDialog(activity: Activity): MaterialDialog.Builder = MaterialDialog.Builder(activity)
-    .title(R.string.sign_in_to_edit)
-    .positiveText(R.string.txtSignIn)
-    .negativeText(R.string.dialog_cancel)
+fun buildSignInDialog(
+    context: Context,
+    onPositive: (DialogInterface, Int) -> Unit = { _, _ -> },
+    onNegative: (DialogInterface, Int) -> Unit = { _, _ -> }
+): MaterialAlertDialogBuilder = MaterialAlertDialogBuilder(context)
+    .setTitle(R.string.sign_in_to_edit)
+    .setPositiveButton(R.string.txtSignIn) { d, i -> onPositive(d, i) }
+    .setNegativeButton(R.string.dialog_cancel) { d, i -> onNegative(d, i) }
 
 
 /**
@@ -353,3 +334,22 @@ internal fun RequestCreator.into(target: ImageView, onSuccess: () -> Unit) {
 
 fun @receiver:ColorInt Int.darken(ratio: Float) = ColorUtils.blendARGB(this, Color.BLACK, ratio)
 fun @receiver:ColorInt Int.lighten(ratio: Float) = ColorUtils.blendARGB(this, Color.WHITE, ratio)
+
+/**
+ * Check if the user is connected to a network. This can be any network.
+ *
+ * @return `true` if connected or connecting;
+ *
+ * `false` otherwise.
+ *
+ */
+@Suppress("DEPRECATION")
+fun Context.isNetworkConnected(): Boolean {
+    val cm = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        val capability = cm.getNetworkCapabilities(cm.activeNetwork)
+        capability?.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET) ?: false
+    } else {
+        cm.activeNetworkInfo?.isConnectedOrConnecting ?: false
+    }
+}

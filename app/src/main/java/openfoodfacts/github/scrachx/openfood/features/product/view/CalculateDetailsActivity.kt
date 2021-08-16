@@ -2,9 +2,7 @@ package openfoodfacts.github.scrachx.openfood.features.product.view
 
 import android.content.Context
 import android.content.Intent
-import android.content.pm.ActivityInfo
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -21,9 +19,9 @@ import kotlin.properties.Delegates
 class CalculateDetailsActivity : BaseActivity() {
     private val nutrimentListItems = mutableListOf<NutrimentListItem>()
     private val nutriMap = hashMapOf(
-            Nutriments.SALT to R.string.nutrition_salt,
-            Nutriments.SODIUM to R.string.nutrition_sodium,
-            Nutriments.ALCOHOL to R.string.nutrition_alcohol
+        Nutriments.SALT to R.string.nutrition_salt,
+        Nutriments.SODIUM to R.string.nutrition_sodium,
+        Nutriments.ALCOHOL to R.string.nutrition_alcohol
     )
     private lateinit var nutriments: Nutriments
     private lateinit var product: Product
@@ -33,26 +31,22 @@ class CalculateDetailsActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if (resources.getBoolean(R.bool.portrait_only)) {
-            requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
-        }
-        val binding = CalculateDetailsBinding.inflate(layoutInflater)
 
+        val binding = CalculateDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         title = getString(R.string.app_name_long)
+
         setSupportActionBar(binding.toolbar)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
-        val intent = intent
         val product = intent.getSerializableExtra(KEY_PRODUCT) as Product?
         val spinnerValue = intent.getStringExtra(KEY_SPINNER_VALUE)
         val weight = intent.getFloatExtra(KEY_WEIGHT, -1f)
 
-        if (product == null || spinnerValue == null || weight == -1f) {
-            Log.e(CalculateDetailsActivity::class.simpleName, "Activity instantiated with wrong intent extras.")
-            finish()
-            return
-        }
+        requireNotNull(product) { "${this::class.simpleName} created without product intent extra." }
+        requireNotNull(spinnerValue) { "${this::class.simpleName} created without spinner value intent extra." }
+        require(weight != -1f) { "${this::class.simpleName} created with weight = -1" }
 
         this.product = product
         this.spinnerValue = spinnerValue
@@ -60,29 +54,29 @@ class CalculateDetailsActivity : BaseActivity() {
         this.nutriments = product.nutriments
 
         binding.resultTextView.text = getString(R.string.display_fact, "$weight $spinnerValue")
-        binding.nutrimentsRecyclerViewCalc.setHasFixedSize(true)
+        binding.nutriments.setHasFixedSize(true)
 
         // use a linear layout manager
         val mLayoutManager = LinearLayoutManager(this)
-        binding.nutrimentsRecyclerViewCalc.layoutManager = mLayoutManager
-        binding.nutrimentsRecyclerViewCalc.isNestedScrollingEnabled = false
+        binding.nutriments.layoutManager = mLayoutManager
+        binding.nutriments.isNestedScrollingEnabled = false
 
         // use VERTICAL divider
         val dividerItemDecoration = DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
-        binding.nutrimentsRecyclerViewCalc.addItemDecoration(dividerItemDecoration)
+        binding.nutriments.addItemDecoration(dividerItemDecoration)
 
         // Header hack
-        nutrimentListItems.add(NutrimentListItem(product.isPerServingInLiter() ?: false))
+        nutrimentListItems += NutrimentListItem(product.isPerServingInLiter() ?: false)
 
         // Energy
         val energyKcal = nutriments[Nutriments.ENERGY_KCAL]
         if (energyKcal != null) {
             nutrimentListItems += NutrimentListItem(
-                    getString(R.string.nutrition_energy_short_name),
-                    calculateCalories(weight, spinnerValue).toString(),
-                    energyKcal.forServingInUnits,
-                    Units.ENERGY_KCAL,
-                    energyKcal.getModifierIfNotDefault(),
+                getString(R.string.nutrition_energy_short_name),
+                calculateCalories(weight, spinnerValue).toString(),
+                energyKcal.forServingInUnits,
+                Units.ENERGY_KCAL,
+                energyKcal.getModifierIfNotDefault(),
             )
         }
         val energyKj = nutriments[Nutriments.ENERGY_KJ]
@@ -100,11 +94,11 @@ class CalculateDetailsActivity : BaseActivity() {
         val fat = nutriments[Nutriments.FAT]
         if (fat != null) {
             nutrimentListItems += BoldNutrimentListItem(
-                    getString(R.string.nutrition_fat),
-                    fat.getForPortion(weight, spinnerValue),
-                    fat.forServingInUnits,
-                    fat.unit,
-                    fat.getModifierIfNotDefault()
+                getString(R.string.nutrition_fat),
+                fat.getForPortion(weight, spinnerValue),
+                fat.forServingInUnits,
+                fat.unit,
+                fat.getModifierIfNotDefault()
             )
             nutrimentListItems.addAll(getNutrimentItems(nutriments, Nutriments.FAT_MAP))
         }
@@ -113,33 +107,33 @@ class CalculateDetailsActivity : BaseActivity() {
         val carbohydrates = nutriments[Nutriments.CARBOHYDRATES]
         if (carbohydrates != null) {
             nutrimentListItems += BoldNutrimentListItem(
-                    getString(R.string.nutrition_carbohydrate),
-                    carbohydrates.getForPortion(weight, spinnerValue),
-                    carbohydrates.forServingInUnits,
-                    carbohydrates.unit,
-                    carbohydrates.getModifierIfNotDefault()
+                getString(R.string.nutrition_carbohydrate),
+                carbohydrates.getForPortion(weight, spinnerValue),
+                carbohydrates.forServingInUnits,
+                carbohydrates.unit,
+                carbohydrates.getModifierIfNotDefault()
             )
-            nutrimentListItems.addAll(getNutrimentItems(nutriments, Nutriments.CARBO_MAP))
+            nutrimentListItems += getNutrimentItems(nutriments, Nutriments.CARBO_MAP)
         }
 
         // fiber
-        nutrimentListItems.addAll(getNutrimentItems(nutriments, Collections.singletonMap(Nutriments.FIBER, R.string.nutrition_fiber)))
+        nutrimentListItems += getNutrimentItems(nutriments, Collections.singletonMap(Nutriments.FIBER, R.string.nutrition_fiber))
 
         // Proteins
         val proteins = nutriments[Nutriments.PROTEINS]
         if (proteins != null) {
             nutrimentListItems += BoldNutrimentListItem(
-                    getString(R.string.nutrition_proteins),
-                    proteins.getForPortion(weight, spinnerValue),
-                    proteins.forServingInUnits,
-                    proteins.unit,
-                    proteins.getModifierIfNotDefault()
+                getString(R.string.nutrition_proteins),
+                proteins.getForPortion(weight, spinnerValue),
+                proteins.forServingInUnits,
+                proteins.unit,
+                proteins.getModifierIfNotDefault()
             )
-            nutrimentListItems.addAll(getNutrimentItems(nutriments, Nutriments.PROT_MAP))
+            nutrimentListItems += getNutrimentItems(nutriments, Nutriments.PROT_MAP)
         }
 
         // salt and alcohol
-        nutrimentListItems.addAll(getNutrimentItems(nutriments, nutriMap))
+        nutrimentListItems += getNutrimentItems(nutriments, nutriMap)
 
         // Vitamins
         if (nutriments.hasVitamins) {
@@ -152,34 +146,34 @@ class CalculateDetailsActivity : BaseActivity() {
             nutrimentListItems += BoldNutrimentListItem(getString(R.string.nutrition_minerals))
             nutrimentListItems += getNutrimentItems(nutriments, Nutriments.MINERALS_MAP)
         }
-        binding.nutrimentsRecyclerViewCalc.adapter = CalculatedNutrimentsGridAdapter(nutrimentListItems)
+        binding.nutriments.adapter = CalculatedNutrimentsGridAdapter(nutrimentListItems)
     }
 
     private fun getNutrimentItems(nutriments: Nutriments, nutrimentMap: Map<String, Int>): List<NutrimentListItem> {
-        return nutrimentMap.mapNotNull { (key, value) ->
-            val nutriment = nutriments[key]
+        return nutrimentMap.mapNotNull { (name, stringRes) ->
+            val nutriment = nutriments[name]
             if (nutriment != null) {
                 NutrimentListItem(
-                        getString(value),
-                        nutriment.getForPortion(weight, spinnerValue),
-                        nutriment.forServingInUnits,
-                        nutriment.unit,
-                        nutriment.getModifierIfNotDefault()
+                    getString(stringRes),
+                    nutriment.getForPortion(weight, spinnerValue),
+                    nutriment.forServingInUnits,
+                    nutriment.unit,
+                    nutriment.getModifierIfNotDefault()
                 )
             } else null
         }
     }
 
     private fun calculateCalories(weight: Float, unit: String?): Float {
-        val caloriePer100g = product.nutriments[Nutriments.ENERGY_KCAL]!!.for100gInUnits.toFloat()
-        val weightInG = convertToGrams(weight, unit)
-        return caloriePer100g / 100 * weightInG
+        val energy100gCal = product.nutriments[Nutriments.ENERGY_KCAL]!!.for100gInUnits.toFloat()
+        val weightGrams = convertToGrams(weight, unit)
+        return energy100gCal / 100 * weightGrams
     }
 
     private fun calculateKj(weight: Float, unit: String?): Float {
-        val caloriePer100g = product.nutriments[Nutriments.ENERGY_KJ]!!.for100gInUnits.toFloat()
-        val weightInG = convertToGrams(weight, unit)
-        return caloriePer100g / 100 * weightInG
+        val energy100gKj = product.nutriments[Nutriments.ENERGY_KJ]!!.for100gInUnits.toFloat()
+        val weightGrams = convertToGrams(weight, unit)
+        return energy100gKj / 100 * weightGrams
     }
 
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
@@ -196,7 +190,13 @@ class CalculateDetailsActivity : BaseActivity() {
         private const val KEY_SPINNER_VALUE = "spinnerValue"
         private const val KEY_WEIGHT = "weight"
 
-        @Deprecated("Use {@link #start(Context, Product, String, float)}", ReplaceWith("start(context, product, spinnerValue, weight.toFloat())", "openfoodfacts.github.scrachx.openfood.features.product.view.CalculateDetailsActivity.Companion.start"))
+        @Deprecated(
+            "Use {@link #start(Context, Product, String, float)}",
+            ReplaceWith(
+                "start(context, product, spinnerValue, weight.toFloat())",
+                "openfoodfacts.github.scrachx.openfood.features.product.view.CalculateDetailsActivity.Companion.start"
+            )
+        )
         fun start(context: Context, product: Product, spinnerValue: String, weight: String) {
             start(context, product, spinnerValue, weight.toFloat())
         }

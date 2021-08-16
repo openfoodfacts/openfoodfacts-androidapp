@@ -53,10 +53,8 @@ import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.Completable
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import kotlinx.coroutines.*
-import kotlinx.coroutines.rx2.await
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.BuildConfig
@@ -88,7 +86,6 @@ import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenNa
 import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.AnalysisTagConfig
 import openfoodfacts.github.scrachx.openfood.models.eventbus.ProductNeedsRefreshEvent
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.StateTags
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.*
 import org.greenrobot.eventbus.EventBus
@@ -102,9 +99,6 @@ import javax.inject.Inject
 class ContinuousScanActivity : BaseActivity(), IProductView {
     private var _binding: ActivityContinuousScanBinding? = null
     internal val binding get() = _binding!!
-
-    @Inject
-    lateinit var client: OpenFoodAPIClient
 
     @Inject
     lateinit var daoSession: DaoSession
@@ -136,10 +130,8 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
     private val bottomSheetCallback by lazy { QuickViewCallback(this) }
 
     private val cameraPref by lazy { getSharedPreferences("camera", 0) }
-
     private val settings by lazy { getSharedPreferences("prefs", 0) }
 
-    private val commonDisp = CompositeDisposable()
     private var productDisp: Job? = null
     private var hintBarcodeDisp: Disposable? = null
 
@@ -194,7 +186,6 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
 
         // Dispose the previous call if not ended.
         productDisp?.cancel()
-        summaryProductPresenter?.dispose()
 
         // First, try to show if we have an offline saved product in the db
         offlineSavedProduct = offlineProductService.getOfflineProductByBarcode(barcode).also { product ->
@@ -214,6 +205,7 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
             val productState = try {
                 client.getProductStateFull(barcode, userAgent = Utils.HEADER_USER_AGENT_SCAN)
             } catch (err: Exception) {
+                if (!isActive) return@launch
                 // A network error happened
                 if (err is IOException) {
                     hideAllViews()
@@ -226,10 +218,10 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
                     binding.quickViewProgress.visibility = View.GONE
                     binding.quickViewProgressText.visibility = View.GONE
 
-                    Toast.makeText(this@ContinuousScanActivity, R.string.txtConnectionError, Toast.LENGTH_LONG).run {
-                        setGravity(CENTER, 0, 0)
-                        show()
-                    }
+                    Toast.makeText(this@ContinuousScanActivity, R.string.txtConnectionError, Toast.LENGTH_LONG)
+                        .apply { setGravity(CENTER, 0, 0) }
+                        .show()
+
                     Log.w(LOG_TAG, err.message, err)
                 }
                 return@launch
@@ -249,7 +241,7 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
                 this@ContinuousScanActivity.product = product
 
                 // Add product to scan history
-                productDisp = lifecycleScope.launch { client.addToHistory(product).await() }
+                productDisp = lifecycleScope.launch { client.addToHistory(product) }
 
                 // If we're here from comparison -> add product, return to comparison activity
                 if (intent.getBooleanExtra(ProductCompareActivity.KEY_COMPARE_PRODUCT, false)) {
@@ -287,7 +279,7 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
                 // Set product name, prefer offline
                 if (offlineSavedProduct != null && !offlineSavedProduct?.name.isNullOrEmpty()) {
                     binding.quickViewName.text = offlineSavedProduct!!.name
-                } else if (product.productName == null || product.productName == "") {
+                } else if (product.productName == null || product.productName.isEmpty()) {
                     binding.quickViewName.setText(R.string.productNameNull)
                 } else {
                     binding.quickViewName.text = product.productName
@@ -371,29 +363,49 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
                 }
             }
 
-            override fun showAnalysisTags(analysisTags: List<AnalysisTagConfig>) {
-                super.showAnalysisTags(analysisTags)
-                if (analysisTags.isEmpty()) {
-                    binding.quickViewTags.visibility = View.GONE
-                    analysisTagsEmpty = true
-                    return
-                }
-                binding.quickViewTags.visibility = View.VISIBLE
-                analysisTagsEmpty = false
-                val adapter = IngredientAnalysisTagsAdapter(this@ContinuousScanActivity, analysisTags, picasso, sharedPreferences)
-                adapter.setOnItemClickListener { view: View?, _ ->
-                    if (view == null) return@setOnItemClickListener
-                    IngredientsWithTagDialogFragment.newInstance(product, view.getTag(R.id.analysis_tag_config) as AnalysisTagConfig).run {
-                        show(supportFragmentManager, "fragment_ingredients_with_tag")
-                        onDismissListener = { adapter.filterVisibleTags() }
+            override suspend fun showAnalysisTags(state: ProductInfoState<List<AnalysisTagConfig>>) = withContext(Dispatchers.Main) {
+                when (state) {
+                    is ProductInfoState.Data -> {
+                        binding.quickViewTags.visibility = View.VISIBLE
+                        analysisTagsEmpty = false
+                        val adapter = IngredientAnalysisTagsAdapter(
+                            this@ContinuousScanActivity,
+                            state.data,
+                            picasso,
+                            sharedPreferences
+                        ).apply adapter@{
+                            setOnItemClickListener { view: View, _ ->
+                                IngredientsWithTagDialogFragment.newInstance(
+                                    product,
+                                    view.getTag(R.id.analysis_tag_config) as AnalysisTagConfig
+                                ).run {
+                                    onDismissListener = { this@adapter.filterVisibleTags() }
+                                    show(supportFragmentManager, "fragment_ingredients_with_tag")
+                                }
+                            }
+                        }
+
+                        binding.quickViewTags.adapter = adapter
+                    }
+                    is ProductInfoState.Empty -> {
+                        binding.quickViewTags.visibility = View.GONE
+                        analysisTagsEmpty = true
+                    }
+                    ProductInfoState.Loading -> {
+                        // TODO
                     }
                 }
 
-                binding.quickViewTags.adapter = adapter
             }
         }, productRepository).also {
-            it.loadAllergens { binding.callToActionImageProgress.visibility = View.GONE }
-            it.loadAnalysisTags()
+            lifecycleScope.launch {
+                try {
+                    it.loadAllergens()
+                } catch (err: Exception) {
+                    binding.callToActionImageProgress.visibility = View.GONE
+                }
+            }
+            lifecycleScope.launch { it.loadAnalysisTags() }
         }
     }
 
@@ -609,12 +621,10 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
     }
 
     override fun onDestroy() {
-        summaryProductPresenter?.dispose()
         mlKitView.detach()
 
         // Dispose all RxJava disposable
         hintBarcodeDisp?.dispose()
-        commonDisp.dispose()
 
         // Remove bottom sheet callback as it uses binding
         quickViewBehavior.removeBottomSheetCallback(bottomSheetCallback)
@@ -791,7 +801,7 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
             // When user search from "having trouble" edit text
             if (actionId != EditorInfo.IME_ACTION_SEARCH) return false
 
-            Utils.hideKeyboard(this@ContinuousScanActivity)
+            hideKeyboard()
             hideSystemUI()
 
             // Check for barcode validity

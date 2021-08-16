@@ -7,3 +7,7 @@ gpg --quiet --batch --yes --decrypt --passphrase="$API_JSON_FILE_DECRYPTKEY" \
 
 gpg --quiet --batch --yes --decrypt --passphrase="$STORE_JKS_DECRYPTKEY" \
 --output ./keystore.jks keystore.jks.gpg
+
+
+gpg --quiet --batch --yes --decrypt --passphrase="$OBF_STORE_JKS_DECRYPTKEY" \
+--output ./OpenBeautyFactsProd.key OpenBeautyFactsProd.key.gpg

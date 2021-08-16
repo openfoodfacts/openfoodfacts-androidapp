@@ -48,8 +48,8 @@ import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityLoginBinding
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
-import openfoodfacts.github.scrachx.openfood.utils.Utils
 import openfoodfacts.github.scrachx.openfood.utils.getLoginPreferences
+import openfoodfacts.github.scrachx.openfood.utils.hideKeyboard
 import java.io.IOException
 import java.net.HttpCookie
 import javax.inject.Inject
@@ -87,7 +87,7 @@ class LoginActivity : BaseActivity() {
         // Disable login button
         viewModel.canLogIn.postValue(false)
 
-        Utils.hideKeyboard(this)
+        hideKeyboard()
 
         // Start checks
         val login = binding.loginInput.text.toString()

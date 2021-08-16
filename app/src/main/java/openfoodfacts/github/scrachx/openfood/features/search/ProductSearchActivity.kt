@@ -10,9 +10,7 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.view.inputmethod.InputMethodManager
 import android.widget.SearchView
-import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.app.ActivityCompat.shouldShowRequestPermissionRationale
@@ -45,7 +43,6 @@ import openfoodfacts.github.scrachx.openfood.listeners.RecyclerItemClickListener
 import openfoodfacts.github.scrachx.openfood.models.Search
 import openfoodfacts.github.scrachx.openfood.models.SearchInfo
 import openfoodfacts.github.scrachx.openfood.models.SearchProduct
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.SearchType.*
@@ -57,9 +54,6 @@ import javax.inject.Inject
 class ProductSearchActivity : BaseActivity() {
     private var _binding: ActivityProductBrowsingListBinding? = null
     private val binding get() = _binding!!
-
-    @Inject
-    lateinit var client: OpenFoodAPIClient
 
     @Inject
     lateinit var productRepository: ProductRepository
@@ -322,7 +316,7 @@ class ProductSearchActivity : BaseActivity() {
 
             SEARCH -> {
                 if (isBarcodeValid(searchQuery)) {
-                    client.openProduct(searchQuery, this)
+                    lifecycleScope.launch { openProduct(searchQuery) }
                 } else {
                     client.searchProductsByName(searchQuery, pageAddress)
                         .startSearch(R.string.txt_no_matching_products, R.string.txt_broaden_search)
@@ -513,35 +507,10 @@ class ProductSearchActivity : BaseActivity() {
                     }
                 }
             })
+
             binding.productsRecyclerView.addOnItemTouchListener(RecyclerItemClickListener(this) { _, position ->
                 val product = adapter.getProduct(position) ?: return@RecyclerItemClickListener
-                val barcode = product.code
-
-                if (Utils.isNetworkConnected(this)) {
-                    client.openProduct(barcode, this)
-                    try {
-                        val viewWithFocus = currentFocus
-                        if (viewWithFocus != null) {
-                            val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
-                            imm.hideSoftInputFromWindow(viewWithFocus.windowToken, 0)
-                        }
-                    } catch (e: NullPointerException) {
-                        Log.e(LOG_TAG, "addOnItemTouchListener", e)
-                    }
-                } else {
-                    MaterialAlertDialogBuilder(this)
-                        .setTitle(R.string.device_offline_dialog_title)
-                        .setMessage(R.string.connectivity_check)
-                        .setPositiveButton(R.string.txt_try_again) { _, _ ->
-                            if (Utils.isNetworkConnected(this)) {
-                                client.openProduct(barcode, this)
-                            } else {
-                                Toast.makeText(this@ProductSearchActivity, R.string.device_offline_dialog_title, Toast.LENGTH_SHORT).show()
-                            }
-                        }
-                        .setNegativeButton(R.string.dismiss) { d, _ -> d.dismiss() }
-                        .show()
-                }
+                openProduct(product.code)
                 return@RecyclerItemClickListener
             })
 

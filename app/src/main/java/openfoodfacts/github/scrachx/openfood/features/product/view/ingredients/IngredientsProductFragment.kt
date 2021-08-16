@@ -33,11 +33,13 @@ import android.view.ViewGroup
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.text.bold
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.widget.ViewPager2
 import com.afollestad.materialdialogs.MaterialDialog
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
-import io.reactivex.rxkotlin.addTo
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.rx2.await
 import openfoodfacts.github.scrachx.openfood.AppFlavors
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OBF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OPF
@@ -70,8 +72,7 @@ import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.network.WikiDataApiClient
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.*
-import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.EMPTY
-import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.LOADING
+import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.*
 import java.io.File
 import javax.inject.Inject
 
@@ -114,8 +115,16 @@ class IngredientsProductFragment : BaseFragment() {
     }
     private val updateImagesLauncher = registerForActivityResult(SendUpdatedImgContract())
     { result -> if (result) onRefresh() }
+
     private val loginLauncher = registerForActivityResult(LoginContract())
-    { ProductEditActivity.start(requireContext(), productState.product!!, sendUpdatedIngredientsImage, ingredientExtracted) }
+    {
+        ProductEditActivity.start(
+            requireContext(),
+            productState.product!!,
+            sendUpdatedIngredientsImage,
+            ingredientExtracted
+        )
+    }
 
     private lateinit var productState: ProductState
     private lateinit var customTabActivityHelper: CustomTabActivityHelper
@@ -128,8 +137,7 @@ class IngredientsProductFragment : BaseFragment() {
 
     private var mSendProduct: SendProduct? = null
 
-    var ingredientsImgUrl: String? = null
-        private set
+    private var ingredientsImgUrl: String? = null
 
     private var sendUpdatedIngredientsImage = false
 
@@ -215,10 +223,10 @@ class IngredientsProductFragment : BaseFragment() {
         binding.textAdditiveProduct.text = SpannableStringBuilder()
             .bold { append(getString(R.string.txtAdditives)) }
 
-        setAdditivesState(LOADING)
+        setAdditivesState(Loading)
         viewModel.additives.observe(viewLifecycleOwner) { additives ->
-            if (additives.isEmpty()) setAdditivesState(EMPTY)
-            else showAdditives(additives)
+            if (additives.isEmpty()) setAdditivesState(Empty)
+            else setAdditivesState(Data(additives))
         }
 
 
@@ -262,10 +270,10 @@ class IngredientsProductFragment : BaseFragment() {
             }
         }
 
-        setAllergensState(LOADING)
+        setAllergensState(Loading)
         viewModel.allergens.observe(viewLifecycleOwner) {
-            if (it.isEmpty()) setAllergensState(EMPTY)
-            else showAllergens(it)
+            if (it.isEmpty()) setAllergensState(Empty)
+            else setAllergensState(Data(it))
         }
 
         if (!product.traces.isNullOrBlank()) {
@@ -318,14 +326,15 @@ class IngredientsProductFragment : BaseFragment() {
         val clickableSpan: ClickableSpan = object : ClickableSpan() {
             override fun onClick(view: View) {
                 if (allergen.isWikiDataIdPresent) {
-                    wikidataClient.doSomeThing(
-                        allergen.wikiDataId
-                    ).subscribe { result ->
+                    lifecycleScope.launch {
+                        val result = wikidataClient.getEntityData(
+                            allergen.wikiDataId
+                        )
                         val activity = activity
                         if (activity?.isFinishing == false) {
                             showBottomSheet(result, allergen, activity.supportFragmentManager)
                         }
-                    }.addTo(disp)
+                    }
                 } else {
                     start(requireContext(), SearchType.ALLERGEN, allergen.allergenTag, allergen.name)
                 }
@@ -365,25 +374,18 @@ class IngredientsProductFragment : BaseFragment() {
         }
     }
 
-    fun showAdditives(additives: List<AdditiveName>) =
-        showAdditives(additives, binding.textAdditiveProduct, wikidataClient, this)
 
-    private fun setAdditivesState(state: ProductInfoState) {
+    private fun setAdditivesState(state: ProductInfoState<List<AdditiveName>>) {
         when (state) {
-            LOADING -> {
+            is Loading -> {
                 binding.cvTextAdditiveProduct.visibility = View.VISIBLE
                 binding.textAdditiveProduct.append(getString(R.string.txtLoading))
             }
-            EMPTY -> binding.cvTextAdditiveProduct.visibility = View.GONE
+            is Empty -> binding.cvTextAdditiveProduct.visibility = View.GONE
+            is Data -> {
+                showAdditives(state.data, binding.textAdditiveProduct, wikidataClient, this)
+            }
         }
-    }
-
-    fun showAllergens(allergens: List<AllergenName>) {
-        binding.textSubstanceProduct.movementMethod = LinkMovementMethod.getInstance()
-        binding.textSubstanceProduct.text = SpannableStringBuilder()
-            .bold { append(getString(R.string.txtSubstances)) }
-            .append(" ")
-            .append(allergens.joinToString(", ") { getAllergensTag(it) })
     }
 
 
@@ -396,7 +398,7 @@ class IngredientsProductFragment : BaseFragment() {
                 showSignInDialog()
             } else {
                 productState = requireProductState()
-                updateImagesLauncher.launch(productState.product)
+                updateImagesLauncher.launch(productState.product!!)
             }
         }
         when {
@@ -406,13 +408,20 @@ class IngredientsProductFragment : BaseFragment() {
         }
     }
 
-    private fun setAllergensState(state: ProductInfoState) {
+    private fun setAllergensState(state: ProductInfoState<List<AllergenName>>) {
         when (state) {
-            LOADING -> {
+            is Loading -> {
                 binding.textSubstanceProduct.visibility = View.VISIBLE
                 binding.textSubstanceProduct.append(getString(R.string.txtLoading))
             }
-            EMPTY -> binding.textSubstanceProduct.visibility = View.GONE
+            is Empty -> binding.textSubstanceProduct.visibility = View.GONE
+            is Data -> {
+                binding.textSubstanceProduct.movementMethod = LinkMovementMethod.getInstance()
+                binding.textSubstanceProduct.text = SpannableStringBuilder()
+                    .bold { append(getString(R.string.txtSubstances)) }
+                    .append(" ")
+                    .append(state.data.joinToString(", ") { getAllergensTag(it) })
+            }
         }
     }
 
@@ -477,13 +486,19 @@ class IngredientsProductFragment : BaseFragment() {
     override fun doOnPhotosPermissionGranted() = newIngredientImage()
 
     private fun onPhotoReturned(newPhotoFile: File) {
-        val image = ProductImage(productState.code!!, ProductImageField.INGREDIENTS, newPhotoFile, localeManager.getLanguage())
-        image.filePath = newPhotoFile.absolutePath
-        client.postImg(image).subscribe().addTo(disp)
+        val image = ProductImage(
+            productState.code!!,
+            ProductImageField.INGREDIENTS,
+            newPhotoFile,
+            localeManager.getLanguage()
+        ).apply { filePath = newPhotoFile.absolutePath }
+
+        lifecycleScope.launch { client.postImg(image).await() }
+
         binding.addPhotoLabel.visibility = View.GONE
         ingredientsImgUrl = newPhotoFile.absolutePath
-        Picasso.get()
-            .load(newPhotoFile)
+
+        picasso.load(newPhotoFile)
             .fit()
             .into(binding.imageViewIngredients)
     }

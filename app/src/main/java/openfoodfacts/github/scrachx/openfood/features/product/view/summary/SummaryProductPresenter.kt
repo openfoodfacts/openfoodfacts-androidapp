@@ -16,13 +16,14 @@
 package openfoodfacts.github.scrachx.openfood.features.product.view.summary
 
 import android.util.Log
-import io.reactivex.Single
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.rxkotlin.addTo
-import io.reactivex.rxkotlin.toObservable
-import io.reactivex.schedulers.Schedulers
-import openfoodfacts.github.scrachx.openfood.AppFlavors
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.Dispatchers.Main
+import kotlinx.coroutines.rx2.await
+import kotlinx.coroutines.rx2.awaitSingleOrNull
+import kotlinx.coroutines.withContext
+import openfoodfacts.github.scrachx.openfood.AppFlavors.OBF
+import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
+import openfoodfacts.github.scrachx.openfood.AppFlavors.OPFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.models.AnnotationAnswer
 import openfoodfacts.github.scrachx.openfood.models.Product
@@ -35,163 +36,128 @@ class SummaryProductPresenter(
     private val view: ISummaryProductPresenter.View,
     private val productRepository: ProductRepository
 ) : ISummaryProductPresenter.Actions {
-    private val disp = CompositeDisposable()
 
-    override fun loadAdditives() {
+    override suspend fun loadAdditives() {
         val additivesTags = product.additivesTags
         if (additivesTags.isEmpty()) {
-            view.showAdditivesState(ProductInfoState.EMPTY)
+            view.showAdditivesState(ProductInfoState.Empty)
             return
         }
-
-        additivesTags.toObservable()
-                .flatMapSingle { tag ->
-                    productRepository.getAdditiveByTagAndLanguageCode(tag, languageCode).map { it to tag }
-                }.flatMapSingle { (categoryName, tag) ->
-                    if (categoryName.isNotNull) Single.just(categoryName) else productRepository.getAdditiveByTagAndDefaultLanguageCode(tag)
-                }
-                .filter { it.isNotNull }
-                .toList()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .doOnSubscribe { view.showAdditivesState(ProductInfoState.LOADING) }
-                .doOnError {
-                    Log.e(SummaryProductPresenter::class.simpleName, "loadAdditives", it)
-                    view.showAdditivesState(ProductInfoState.EMPTY)
-                }
-                .subscribe { additives ->
-                    if (additives.isEmpty()) view.showAdditivesState(ProductInfoState.EMPTY) else view.showAdditives(additives)
-                }.addTo(disp)
+        view.showAdditivesState(ProductInfoState.Loading)
+        val additives = try {
+            additivesTags.map { tag ->
+                val categoryName = productRepository.getAdditiveByTagAndLanguageCode(tag, languageCode).await()
+                if (categoryName.isNotNull) categoryName
+                else productRepository.getAdditiveByTagAndDefaultLanguageCode(tag).await()
+            }.filter { it.isNotNull }
+        } catch (err: Exception) {
+            Log.e(SummaryProductPresenter::class.simpleName, "loadAdditives", err)
+            view.showAdditivesState(ProductInfoState.Empty)
+            return
+        }
+        if (additives.isEmpty()) view.showAdditivesState(ProductInfoState.Empty)
+        else view.showAdditivesState(ProductInfoState.Data(additives))
     }
 
-    override fun loadAllergens(runIfError: (() -> Unit)?) {
-        productRepository.getAllergensByEnabledAndLanguageCode(true, languageCode)
-                .observeOn(AndroidSchedulers.mainThread())
-                .doOnError {
-                    runIfError?.invoke()
-                    Log.e(SummaryProductPresenter::class.simpleName, "LoadAllergens", it)
-                }
-                .subscribe { allergens -> view.showAllergens(allergens) }
-                .addTo(disp)
+    override suspend fun loadAllergens() {
+        val allergens = productRepository.getAllergensByEnabledAndLanguageCode(true, languageCode).await()
+        withContext(Main) { view.showAllergens(allergens) }
     }
 
-    override fun loadCategories() {
+    override suspend fun loadCategories() {
         val categoriesTags = product.categoriesTags
         if (!categoriesTags.isNullOrEmpty()) {
-            categoriesTags.toObservable()
-                    .flatMapSingle { tag ->
-                        productRepository.getCategoryByTagAndLanguageCode(tag, languageCode).map { it to tag }
-                    }
-                    .flatMapSingle { (categoryName, tag) ->
-                        if (categoryName.isNotNull) Single.just(categoryName) else productRepository.getCategoryByTagAndLanguageCode(tag)
-                    }
-                    .toList()
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .doOnSubscribe { view.showCategoriesState(ProductInfoState.LOADING) }
-                    .doOnError {
-                        Log.e(SummaryProductPresenter::class.java.simpleName, "loadCategories", it)
-                        view.showCategoriesState(ProductInfoState.EMPTY)
-                    }
-                    .subscribe { categories ->
-                        if (categories.isEmpty()) {
-                            view.showCategoriesState(ProductInfoState.EMPTY)
-                        } else {
-                            view.showCategories(categories)
-                        }
-                    }.addTo(disp)
+            view.showCategoriesState(ProductInfoState.Loading)
+            val categories = try {
+                categoriesTags.map { tag ->
+                    val categoryName = productRepository.getCategoryByTagAndLanguageCode(tag, languageCode).await()
+                    if (categoryName.isNotNull) categoryName
+                    else productRepository.getCategoryByTagAndLanguageCode(tag).await()
+                }
+            } catch (err: Exception) {
+                Log.e(SummaryProductPresenter::class.java.simpleName, "loadCategories", err)
+                view.showCategoriesState(ProductInfoState.Empty)
+                return
+            }
+            if (categories.isEmpty()) {
+                view.showCategoriesState(ProductInfoState.Empty)
+            } else {
+                view.showCategoriesState(ProductInfoState.Data(categories))
+            }
+
         } else {
-            view.showCategoriesState(ProductInfoState.EMPTY)
+            view.showCategoriesState(ProductInfoState.Empty)
         }
     }
 
-    override fun loadLabels() {
+    override suspend fun loadLabels() {
         val labelsTags = product.labelsTags
         if (labelsTags != null && labelsTags.isNotEmpty()) {
-            labelsTags.toObservable()
-                    .flatMapSingle { tag ->
-                        productRepository.getLabelByTagAndLanguageCode(tag, languageCode).map { it to tag }
-                    }
-                    .flatMapSingle { (labelName, tag) ->
-                        if (labelName.isNotNull) Single.just(labelName) else productRepository.getLabelByTagAndDefaultLanguageCode(tag)
-                    }
-                    .filter { it.isNotNull }
-                    .toList()
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .doOnSubscribe { view.showLabelsState(ProductInfoState.LOADING) }
-                    .doOnError {
-                        Log.e(SummaryProductPresenter::class.java.simpleName, "loadLabels", it)
-                        view.showLabelsState(ProductInfoState.EMPTY)
-                    }
-                    .subscribe { labels ->
-                        if (labels.isEmpty()) view.showLabelsState(ProductInfoState.EMPTY)
-                        else view.showLabels(labels)
-                    }.addTo(disp)
+            view.showLabelsState(ProductInfoState.Loading)
+            val labels = try {
+                labelsTags.map { tag ->
+                    val labelName = productRepository.getLabelByTagAndLanguageCode(tag, languageCode).await()
+                    if (labelName.isNotNull) labelName
+                    else productRepository.getLabelByTagAndDefaultLanguageCode(tag).await()
+                }.filter { it.isNotNull }
+            } catch (err: Exception) {
+                Log.e(SummaryProductPresenter::class.java.simpleName, "loadLabels", err)
+                view.showLabelsState(ProductInfoState.Empty)
+                return
+            }
+
+            if (labels.isEmpty()) view.showLabelsState(ProductInfoState.Empty)
+            else view.showLabelsState(ProductInfoState.Data(labels))
 
         } else {
-            view.showLabelsState(ProductInfoState.EMPTY)
+            view.showLabelsState(ProductInfoState.Empty)
         }
     }
 
-    override fun loadProductQuestion() {
-        productRepository.getProductQuestion(product.code, languageCode)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .doOnError { Log.e(this@SummaryProductPresenter::class.simpleName, "loadProductQuestion", it) }
-                .subscribe { question -> view.showProductQuestion(question) }
-                .addTo(disp)
+    override suspend fun loadProductQuestion() {
+        val question = withContext(IO) { productRepository.getProductQuestion(product.code, languageCode) }
+            .awaitSingleOrNull() ?: return
+        withContext(Main) { view.showProductQuestion(question) }
     }
 
-    override fun loadAnalysisTags() {
-        if (!isFlavors(AppFlavors.OFF, AppFlavors.OBF, AppFlavors.OPFF)) return
+    override suspend fun loadAnalysisTags() {
+        if (!isFlavors(OFF, OBF, OPFF)) return
 
-        val analysisTags = product.ingredientsAnalysisTags
-        if (analysisTags.isNotEmpty()) {
-            analysisTags.toObservable()
-                    .flatMapMaybe { productRepository.getAnalysisTagConfigByTagAndLanguageCode(it, languageCode) }
-                    .toList()
-                    .doOnSubscribe { view.showLabelsState(ProductInfoState.LOADING) }
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .doOnError {
-                        Log.e(SummaryProductPresenter::class.java.simpleName, "loadAnalysisTags", it)
-                        view.showLabelsState(ProductInfoState.EMPTY)
-                    }
-                    .subscribe { analysisTagConfigs ->
-                        if (analysisTagConfigs.isEmpty()) {
-                            view.showLabelsState(ProductInfoState.EMPTY)
-                        } else {
-                            view.showAnalysisTags(analysisTagConfigs)
-                        }
-                    }.addTo(disp)
+        val knownTags = product.ingredientsAnalysisTags
+
+        view.showAnalysisTags(ProductInfoState.Loading)
+
+        if (knownTags.isNotEmpty()) {
+            val configs = try {
+                knownTags.mapNotNull {
+                    productRepository.getAnalysisTagConfigByTagAndLanguageCode(it, languageCode)
+                }
+            } catch (err: Exception) {
+                Log.e(SummaryProductPresenter::class.simpleName, "loadAnalysisTags", err)
+                view.showAnalysisTags(ProductInfoState.Empty)
+                return
+            }
+
+            if (configs.isEmpty()) view.showAnalysisTags(ProductInfoState.Empty)
+            else view.showAnalysisTags(ProductInfoState.Data(configs))
+
         } else {
-            productRepository.getUnknownAnalysisTagConfigsByLanguageCode(languageCode)
-                    .doOnSubscribe { view.showLabelsState(ProductInfoState.LOADING) }
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .doOnError {
-                        Log.e(SummaryProductPresenter::class.java.simpleName, "loadAnalysisTags", it)
-                        view.showLabelsState(ProductInfoState.EMPTY)
-                    }
-                    .subscribe { analysisTagConfigs ->
-                        if (analysisTagConfigs.isEmpty()) {
-                            view.showLabelsState(ProductInfoState.EMPTY)
-                        } else {
-                            view.showAnalysisTags(analysisTagConfigs)
-                        }
-                    }.addTo(disp)
+            val configs = try {
+                productRepository.getUnknownAnalysisTagConfigsByLanguageCode(languageCode).await()
+            } catch (err: Exception) {
+                Log.e(SummaryProductPresenter::class.simpleName, "loadAnalysisTags", err)
+                view.showLabelsState(ProductInfoState.Empty)
+                return
+            }
+
+            if (configs.isEmpty()) view.showAnalysisTags(ProductInfoState.Empty)
+            else view.showAnalysisTags(ProductInfoState.Data(configs))
+
         }
     }
 
-    override fun annotateInsight(insightId: String, annotation: AnnotationAnswer) {
-        productRepository.annotateInsight(insightId, annotation)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .doOnError { Log.e(this@SummaryProductPresenter::class.simpleName, "annotateInsight", it) }
-                .subscribe { response -> view.showAnnotatedInsightToast(response) }
-                .addTo(disp)
+    override suspend fun annotateInsight(insightId: String, annotation: AnnotationAnswer) {
+        val response = withContext(IO) { productRepository.annotateInsight(insightId, annotation).await() }
+        withContext(Main) { view.showAnnotatedInsightToast(response) }
     }
-
-    override fun dispose() = disp.dispose()
-
-    override fun isDisposed() = disp.isDisposed
 }

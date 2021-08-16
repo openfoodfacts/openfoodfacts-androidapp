@@ -29,12 +29,8 @@ import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInsta
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.selectNavigationItem
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
-import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
-import openfoodfacts.github.scrachx.openfood.utils.PhotoReceiverHandler
-import openfoodfacts.github.scrachx.openfood.utils.Utils
-import openfoodfacts.github.scrachx.openfood.utils.isHardwareCameraInstalled
+import openfoodfacts.github.scrachx.openfood.utils.*
 import java.util.*
 import javax.inject.Inject
 import kotlin.collections.ArrayList
@@ -46,8 +42,6 @@ class ProductCompareActivity : BaseActivity() {
 
     private val viewModel: ProductCompareViewModel by viewModels()
 
-    @Inject
-    lateinit var client: OpenFoodAPIClient
 
     @Inject
     lateinit var productRepository: ProductRepository
@@ -118,24 +112,7 @@ class ProductCompareActivity : BaseActivity() {
 
                 fullProductClickListener = {
                     val barcode = it.code
-                    if (Utils.isNetworkConnected(activity)) {
-                        Utils.hideKeyboard(activity)
-
-                        client.openProduct(barcode, activity)
-                    } else {
-                        MaterialAlertDialogBuilder(activity)
-                            .setTitle(R.string.device_offline_dialog_title)
-                            .setMessage(R.string.connectivity_check)
-                            .setPositiveButton(R.string.txt_try_again) { _, _ ->
-                                if (Utils.isNetworkConnected(activity)) {
-                                    client.openProduct(barcode, activity)
-                                } else {
-                                    Toast.makeText(activity, R.string.device_offline_dialog_title, Toast.LENGTH_SHORT).show()
-                                }
-                            }
-                            .setNegativeButton(R.string.dismiss) { d, _ -> d.dismiss() }
-                            .show()
-                    }
+                    openProduct(barcode)
                 }
             }
 
@@ -147,32 +124,29 @@ class ProductCompareActivity : BaseActivity() {
             photoReceiverHandler = PhotoReceiverHandler(sharedPreferences) {
                 productComparisonAdapter.onImageReturned(it)
             }
-
-            // Set "add product" on click listener
-            binding.productComparisonButton.setOnClickListener {
-                if (!isHardwareCameraInstalled()) return@setOnClickListener
-
-                when {
-                    checkSelfPermission(this, Manifest.permission.CAMERA) == PERMISSION_GRANTED -> {
-                        startScanActivity()
-                    }
-                    shouldShowRequestPermissionRationale(this@ProductCompareActivity, Manifest.permission.CAMERA) -> {
-                        MaterialAlertDialogBuilder(this@ProductCompareActivity)
-                            .setTitle(R.string.action_about)
-                            .setMessage(R.string.permission_camera)
-                            .setPositiveButton(android.R.string.ok) { _, _ ->
-                                requestCameraThenOpenScan.launch(Manifest.permission.CAMERA)
-                            }
-                            .show()
-                    }
-                    else -> {
-                        requestCameraThenOpenScan.launch(Manifest.permission.CAMERA)
-                    }
-                }
-
-            }
         }
 
+        binding.productComparisonButton.setOnClickListener {
+            if (!isHardwareCameraInstalled()) return@setOnClickListener
+
+            when {
+                checkSelfPermission(this, Manifest.permission.CAMERA) == PERMISSION_GRANTED -> {
+                    startScanActivity()
+                }
+                shouldShowRequestPermissionRationale(this@ProductCompareActivity, Manifest.permission.CAMERA) -> {
+                    MaterialAlertDialogBuilder(this@ProductCompareActivity)
+                        .setTitle(R.string.action_about)
+                        .setMessage(R.string.permission_camera)
+                        .setPositiveButton(android.R.string.ok) { _, _ ->
+                            requestCameraThenOpenScan.launch(Manifest.permission.CAMERA)
+                        }
+                        .show()
+                }
+                else -> {
+                    requestCameraThenOpenScan.launch(Manifest.permission.CAMERA)
+                }
+            }
+        }
     }
 
     override fun startScanActivity() {

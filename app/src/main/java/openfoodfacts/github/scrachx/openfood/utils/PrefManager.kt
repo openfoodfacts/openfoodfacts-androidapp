@@ -1,11 +1,12 @@
 package openfoodfacts.github.scrachx.openfood.utils
 
 import android.content.Context
+import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
 import androidx.core.content.edit
 
 class PrefManager(context: Context) {
-    private val pref: SharedPreferences = context.getSharedPreferences(PREF_NAME, PRIVATE_MODE)
+    private val pref: SharedPreferences = context.getSharedPreferences(PREF_NAME, MODE_PRIVATE)
 
     // First time launch
     var isFirstTimeLaunch: Boolean
@@ -28,7 +29,6 @@ class PrefManager(context: Context) {
         get() = pref.getLong(FIRST_TIME_LAUNCH_TIME, System.currentTimeMillis())
 
     companion object {
-        private const val PRIVATE_MODE = 0
         private const val PREF_NAME = "open-facts-welcome"
         private const val IS_FIRST_TIME_LAUNCH = "IsFirstTimeLaunch"
         private const val FIRST_TIME_LAUNCH_TIME = "FirstTimeLaunchTime"

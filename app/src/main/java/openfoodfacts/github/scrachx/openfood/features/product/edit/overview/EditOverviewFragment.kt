@@ -19,6 +19,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
+import android.text.SpannableStringBuilder
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -29,7 +30,6 @@ import androidx.core.net.toFile
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.canhub.cropper.CropImage
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 import com.google.zxing.integration.android.IntentIntegrator
@@ -106,7 +106,8 @@ class EditOverviewFragment : ProductEditFragment() {
     @Inject
     lateinit var localeManager: LocaleManager
 
-    private val appLang by lazy { localeManager.getLanguage() }
+    private val appLocale by lazy { localeManager.getLocale() }
+    private val appLang by lazy { appLocale.language }
 
     private val photoReceiverHandler by lazy {
         PhotoReceiverHandler(sharedPreferences) { newPhotoFile ->
@@ -114,15 +115,15 @@ class EditOverviewFragment : ProductEditFragment() {
             val image: ProductImage
             val position: Int
             if (isFrontImagePresent) {
-                image = ProductImage(barcode!!, ProductImageField.FRONT, newPhotoFile, localeManager.getLanguage())
+                image = ProductImage(barcode!!, ProductImageField.FRONT, newPhotoFile, appLang)
                 frontImageUrl = newPhotoFile.absolutePath
                 position = 0
             } else {
-                image = ProductImage(barcode!!, ProductImageField.OTHER, newPhotoFile, localeManager.getLanguage())
+                image = ProductImage(barcode!!, ProductImageField.OTHER, newPhotoFile, appLang)
                 position = 3
             }
             image.filePath = newPhotoFile.toURI().path
-            (activity as? ProductEditActivity)?.addToPhotoMap(image, position)
+            (activity as? ProductEditActivity)?.savePhoto(image, position)
 
             hideImageProgress(false, StringUtils.EMPTY)
         }
@@ -361,7 +362,7 @@ class EditOverviewFragment : ProductEditFragment() {
             binding.btnEditImgFront.visibility = View.INVISIBLE
             picasso
                 .load(imageFrontUrl)
-                .resize(requireContext().dpsToPixel(50).toInt(), requireContext().dpsToPixel(50).toInt())
+                .resize(requireContext().dpsToPixel(50), requireContext().dpsToPixel(50))
                 .centerInside()
                 .into(binding.imgFront, object : Callback {
                     override fun onSuccess() = frontImageLoaded()
@@ -562,23 +563,25 @@ class EditOverviewFragment : ProductEditFragment() {
     }
 
     /**
-     * Set language of the product to the language entered
+     * Set the language code of the product.
      *
-     * @param lang language code
+     *
+     *
+     * @param languageCode the selected product language code.
      */
-    private fun setProductLanguage(lang: String) {
-        languageCode = lang
+    private fun setProductLanguage(languageCode: String) {
+        this.languageCode = languageCode
 
-        val current = LocaleUtils.parseLocale(lang)
-        binding.language.setText(R.string.product_language)
-        binding.language.append(current.getDisplayName(current).replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() })
+        val productLocale = LocaleUtils.parseLocale(languageCode)
+        binding.language.text = SpannableStringBuilder(getString(R.string.product_language))
+            .append(productLocale.getDisplayName(appLocale).replaceFirstChar { it.titlecase(appLocale) })
 
         val activity = activity
-        (activity as? ProductEditActivity)?.setProductLanguage(lang)
+        (activity as? ProductEditActivity)?.setProductLanguageCode(languageCode)
 
         if (editingMode) {
-            loadFrontImage(lang)
-            val fields = "ingredients_text_$lang,product_name_$lang"
+            loadFrontImage(languageCode)
+            val fields = "ingredients_text_$languageCode,product_name_$languageCode"
 
             lifecycleScope.launch {
                 binding.name.setText(getString(R.string.txtLoading))
@@ -606,12 +609,12 @@ class EditOverviewFragment : ProductEditFragment() {
                     return@launch
                 }
                 val product = productState.product!!
-                if (product.getProductName(lang) != null) {
-                    if (languageCode == lang) {
-                        binding.name.setText(product.getProductName(lang))
+                if (product.getProductName(languageCode) != null) {
+                    if (this@EditOverviewFragment.languageCode == languageCode) {
+                        binding.name.setText(product.getProductName(languageCode))
                         binding.name.isActivated = true
                         if (activity is ProductEditActivity) {
-                            activity.setIngredients("set", product.getIngredientsText(lang))
+                            activity.setIngredients("set", product.getIngredientsText(languageCode))
                             activity.updateLanguage()
                         }
                     }
@@ -843,30 +846,11 @@ class EditOverviewFragment : ProductEditFragment() {
     }
 
     private fun selectProductLanguage() {
-        val localeValues = SupportedLanguages.codes()
-        val localeLabels = arrayOfNulls<String>(localeValues.size)
-        val finalLocalValues = mutableListOf<String>()
-        val finalLocalLabels = mutableListOf<String?>()
-        var selectedIndex = 0
-        localeValues.forEachIndexed { i, localeCode ->
-            if (localeCode == languageCode) {
-                selectedIndex = i
-            }
-            val current = LocaleUtils.parseLocale(localeCode)
-            localeLabels[i] = current.getDisplayName(current).replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.ROOT) else it.toString() }
-            finalLocalLabels += localeCode
-            finalLocalValues += localeCode
+        ProductLanguagePicker.showPicker(requireContext(), languageCode) { code ->
+            binding.name.text = null
+            (activity as? ProductEditActivity)?.setIngredients("set", null)
+            setProductLanguage(code)
         }
-        MaterialAlertDialogBuilder(requireContext())
-            .setTitle(R.string.preference_choose_language_dialog_title)
-            .setSingleChoiceItems(finalLocalLabels.toTypedArray(), selectedIndex) { _, which ->
-                binding.name.text = null
-
-                (activity as? ProductEditActivity)?.setIngredients("set", null)
-
-                setProductLanguage(finalLocalValues[which])
-            }
-            .show()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

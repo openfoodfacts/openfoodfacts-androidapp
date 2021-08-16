@@ -36,6 +36,8 @@ fun obtainTestBuildType(): String {
 dependencies {
     // Kotlin
     implementation("org.jetbrains.kotlin:kotlin-stdlib:${rootProject.extra["kotlinVersion"]}")
+
+    // Kotlin coroutines
     val coroutinesVersion = "1.5.1"
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-rx2:$coroutinesVersion")
@@ -43,8 +45,8 @@ dependencies {
 
 
     // Android KTX
-    implementation("androidx.fragment:fragment-ktx:1.3.5")
-    implementation("androidx.activity:activity-ktx:1.2.3")
+    implementation("androidx.fragment:fragment-ktx:1.3.6")
+    implementation("androidx.activity:activity-ktx:1.3.0")
     implementation("androidx.preference:preference-ktx:1.1.1")
     implementation("androidx.core:core-ktx:1.6.0")
 
@@ -55,7 +57,7 @@ dependencies {
 
 
     // AndroidX
-    implementation("androidx.appcompat:appcompat:1.3.0")
+    implementation("androidx.appcompat:appcompat:1.3.1")
     implementation("androidx.browser:browser:1.3.0")
     implementation("androidx.concurrent:concurrent-futures:1.1.0")
     implementation("androidx.recyclerview:recyclerview:1.2.1")
@@ -66,38 +68,37 @@ dependencies {
     implementation("androidx.multidex:multidex:2.0.1")
     implementation("androidx.viewpager2:viewpager2:1.0.0")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
-
-
-    val workVersion = "2.5.0"
-    implementation("androidx.work:work-runtime-ktx:$workVersion")
-    val hiltVersion = "1.0.0"
-    implementation("androidx.hilt:hilt-work:$hiltVersion")
-    kapt("androidx.hilt:hilt-compiler:$hiltVersion")
-
-
+    implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
     implementation("androidx.startup:startup-runtime:1.0.0")
+    implementation("androidx.work:work-runtime-ktx:2.5.0")
+
 
     // ML Kit barcode Scanner
     implementation("com.google.mlkit:barcode-scanning:16.2.0")
 
-    implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
-
-    kapt("com.google.dagger:dagger-compiler:2.38")
-    implementation("com.google.dagger:dagger:2.38")
-    implementation("com.google.dagger:hilt-android:${rootProject.extra["hiltVersion"]}")
-
-    kapt("com.google.dagger:hilt-compiler:${rootProject.extra["hiltVersion"]}")
 
     compileOnly("javax.annotation:javax.annotation-api:1.3.2")
 
-    //Rx
+    // Dagger & hilt
+    implementation("com.google.dagger:dagger:${rootProject.extra["hiltVersion"]}")
+    implementation("com.google.dagger:hilt-android:${rootProject.extra["hiltVersion"]}")
+    kapt("com.google.dagger:dagger-compiler:${rootProject.extra["hiltVersion"]}")
+    kapt("com.google.dagger:hilt-compiler:${rootProject.extra["hiltVersion"]}")
+
+    // AndroidX hilt work
+    val androidxHiltVersion = "1.0.0"
+    implementation("androidx.hilt:hilt-work:$androidxHiltVersion")
+    kapt("androidx.hilt:hilt-compiler:$androidxHiltVersion")
+
+
+    // Reactive Streams
     implementation("io.reactivex.rxjava2:rxkotlin:2.4.0")
     implementation("io.reactivex.rxjava2:rxjava:2.2.21")
     implementation("io.reactivex.rxjava2:rxandroid:2.1.1")
     implementation("com.jakewharton.rxrelay2:rxrelay:2.1.1")
 
 
-    //Networking
+    // Networking
     implementation("com.squareup.retrofit2:retrofit:2.6.4")
     implementation("com.squareup.retrofit2:converter-jackson:2.6.4")
     implementation("com.squareup.retrofit2:adapter-rxjava2:2.6.4")
@@ -108,7 +109,7 @@ dependencies {
     // Apache commons
     implementation("org.apache.commons:commons-lang3:3.12.0")
     implementation("org.apache.commons:commons-text:1.9")
-    implementation("org.apache.commons:commons-csv:1.8")
+    implementation("org.apache.commons:commons-csv:1.9.0")
     implementation("commons-validator:commons-validator:1.7")
 
     // Serialization/Deserialization
@@ -126,16 +127,19 @@ dependencies {
     implementation("org.greenrobot:eventbus:$eventBusVersion")
     kapt("org.greenrobot:eventbus-annotation-processor:$eventBusVersion")
 
+    // Material design
     implementation("com.google.android.material:material:1.4.0")
 
-    //Image Loading
+    // Image Loading
     implementation("com.squareup.picasso:picasso:2.8")
 
-    //Image from gallery or camera
+    // Image from gallery or camera
     implementation("com.github.jkwiecien:EasyImage:1.4.0")
 
-    //Barcode and QR Scanner
+    // Barcode and QR Scanner
+    // Cannot upgrade: Requires API 24 or higher
     implementation("com.google.zxing:core:3.3.0")
+
     implementation("com.journeyapps:zxing-android-embedded:3.6.0") { isTransitive = false }
 
     // UI Component : Custom Toast
@@ -170,6 +174,7 @@ dependencies {
     // ShowCaseView dependency
     implementation("com.github.mreram:showcaseview:1.0.5")
 
+
     // Unit Testing
     testImplementation("junit:junit:4.13.2")
     testImplementation("org.robolectric:robolectric:4.6.1")
@@ -183,8 +188,8 @@ dependencies {
     androidTestUtil("androidx.test:orchestrator:1.4.0")
 
     // Hilt for Android Testing
-    androidTestImplementation("com.google.dagger:hilt-android-testing:2.37")
-    kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.38")
+    androidTestImplementation("com.google.dagger:hilt-android-testing:2.38.1")
+    kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.38.1")
 
     androidTestImplementation("androidx.test:runner:1.3.0") { exclude("junit") }
     androidTestImplementation("androidx.test:rules:1.4.0")
@@ -209,7 +214,7 @@ dependencies {
 }
 
 android {
-    compileSdkVersion(30)
+    compileSdk = 30
 
     testBuildType = obtainTestBuildType()
 
@@ -217,20 +222,20 @@ android {
         dataBinding = true
     }
 
-    flavorDimensions("versionCode", "platform")
+    flavorDimensions += listOf("versionCode", "platform")
 
     defaultConfig {
         applicationId = "openfoodfacts.github.scrachx.openfood"
 
-        minSdkVersion(16)
-        targetSdkVersion(30)
+        minSdk = 16
+        targetSdk = 30
 
         versionCode = 433
         versionName = "3.6.8"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
-        ndk.abiFilters("armeabi-v7a", "arm64-v8a", "x86", "x86_64")
+        ndk.abiFilters += listOf("armeabi-v7a", "arm64-v8a", "x86", "x86_64")
 
         multiDexEnabled = true
     }
@@ -298,6 +303,9 @@ android {
         }
         create("obf") {
             applicationId = "openfoodfacts.github.scrachx.openbeauty"
+            if ("true" == System.getenv("CI_RELEASE")) { // CI=true is exported by github action
+                applicationId = "org.openbeautyfacts.scanner"
+            }
             resValue("string", "app_name", "OpenBeautyFacts")
             buildConfigField("String", "APP_NAME", "\"Open Beauty Facts\"")
             buildConfigField("String", "HOST", "\"https://ssl-api.openbeautyfacts.org\"")
@@ -342,11 +350,6 @@ android {
         }
     }
 
-    dexOptions {
-        preDexLibraries = false
-        javaMaxHeapSize = "4g"
-    }
-
     compileOptions {
         // Sets Java compatibility to Java 8
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -357,22 +360,24 @@ android {
         jvmTarget = "1.8"
     }
 
-    lintOptions {
+    lint {
         isAbortOnError = false
         disable("MissingTranslation")
     }
 
     packagingOptions {
-        exclude("META-INF/DEPENDENCIES.txt")
-        exclude("META-INF/LICENSE.txt")
-        exclude("META-INF/NOTICE.txt")
-        exclude("META-INF/NOTICE")
-        exclude("META-INF/LICENSE")
-        exclude("META-INF/DEPENDENCIES")
-        exclude("META-INF/notice.txt")
-        exclude("META-INF/license.txt")
-        exclude("META-INF/dependencies.txt")
-        exclude("META-INF/LGPL2.1")
+        resources.excludes += listOf(
+            "META-INF/DEPENDENCIES.txt",
+            "META-INF/LICENSE.txt",
+            "META-INF/NOTICE.txt",
+            "META-INF/NOTICE",
+            "META-INF/LICENSE",
+            "META-INF/DEPENDENCIES",
+            "META-INF/notice.txt",
+            "META-INF/license.txt",
+            "META-INF/dependencies.txt",
+            "META-INF/LGPL2.1"
+        )
     }
 
     testOptions {
