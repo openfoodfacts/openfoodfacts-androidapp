@@ -36,6 +36,18 @@ body:
         - 3.6.6 (Beta)
     validations:
       required: true
+  - type: dropdown
+    id: flavor
+    attributes:
+      label: Flavor
+      description: Were you running Open Food Facts, Open Beauty Facts, Open Pet Food Facts or Open Products Facts?
+      options:
+        - Open Food Facts
+        - Open Beauty Facts
+        - Open Pet Food Facts
+        - Open Products Facts
+    validations:
+      required: true
   - type: textarea
     id: logs
     attributes:
