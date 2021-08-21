@@ -26,6 +26,99 @@ body:
       value: "A bug happened!"
     validations:
       required: true
+  - type: input
+    id: barcodes
+    attributes:
+      label: Barcode(s) of the product(s)
+      description: If relevant, please indicate the barcode(s) of products you manage to make this issue happen on. If systematic, put "All"
+      placeholder: ex. 4740098091547
+    validations:
+      required: false
+  - type: dropdown
+    id: language
+    attributes:
+      label: Language your app was in
+      description:
+      options:
+        - Afrikaans
+        - Albanian
+        - Amharic
+        - Arabic
+        - Armenian
+        - Basque
+        - Bengali
+        - Byelorussian
+        - Burmese
+        - Bulgarian
+        - Catalan
+        - Czech
+        - Chinese
+        - Croatian
+        - Danish
+        - Dari
+        - Dzongkha
+        - Dutch
+        - English
+        - Esperanto
+        - Estonian
+        - Faroese
+        - Farsi
+        - Finnish
+        - French
+        - Gaelic
+        - Galician
+        - German
+        - Greek
+        - Hebrew
+        - Hindi
+        - Hungarian
+        - Icelandic
+        - Indonesian
+        - Inuktitut (Eskimo)
+        - Italian
+        - Japanese
+        - Khmer
+        - Korean
+        - Kurdish
+        - Laotian
+        - Latvian
+        - Lappish
+        - Lithuanian
+        - Macedonian
+        - Malay
+        - Maltese
+        - Nepali
+        - Norwegian
+        - Pashto
+        - Polish
+        - Portuguese
+        - Romanian
+        - Russian
+        - Scots
+        - Serbian
+        - Slovak
+        - Slovenian
+        - Somali
+        - Spanish
+        - Swedish
+        - Swahili
+        - Tagalog-Filipino
+        - Tajik
+        - Tamil
+        - Thai
+        - Tibetan
+        - Tigrinya
+        - Tongan
+        - Turkish
+        - Turkmen
+        - Ucrainian
+        - Urdu
+        - Uzbek
+        - Vietnamese
+        - Welsh
+      placeholder: ex. French
+    validations:
+      required: false
   - type: dropdown
     id: version
     attributes:
