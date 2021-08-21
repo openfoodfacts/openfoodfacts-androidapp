@@ -27,6 +27,15 @@ body:
     validations:
       required: true
   - type: textarea
+    id: reproduction-steps
+    attributes:
+      label: Steps to reproduce the behavior
+      description: Can you tell step by step how to recreate the problem ?
+      placeholder: Tell us what you see!
+      value: "1. Go to '...'<br>2. Click on '....'<br>3. Scroll down to '....'<br>4. See error"
+    validations:
+      required: true 
+  - type: textarea
     id: device-name
     attributes:
       label: What device were you using ?
