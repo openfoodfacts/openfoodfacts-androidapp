@@ -48,6 +48,19 @@ body:
         - Open Products Facts
     validations:
       required: true
+  - type: dropdown
+    id: distribution
+    attributes:
+      label: install-channel
+      description: Where did you install the app from ?
+      options:
+        - Google PlayStore
+        - F-Droid
+        - APK
+        - Amazon AppStore
+        - Other
+    validations:
+      required: true
   - type: textarea
     id: logs
     attributes:
