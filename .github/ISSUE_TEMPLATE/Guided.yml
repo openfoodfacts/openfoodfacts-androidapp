@@ -116,7 +116,6 @@ body:
         - Uzbek
         - Vietnamese
         - Welsh
-      placeholder: ex. French
     validations:
       required: false
   - type: dropdown
