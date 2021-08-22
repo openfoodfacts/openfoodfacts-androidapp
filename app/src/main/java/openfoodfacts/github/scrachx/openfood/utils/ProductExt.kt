@@ -15,7 +15,7 @@ suspend fun OfflineSavedProduct.toState(client: OpenFoodAPIClient): ProductState
 
 suspend fun OfflineSavedProduct.toOnlineProduct(client: OpenFoodAPIClient) = toState(client).product
 
-fun Product.isPerServingInLiter() = servingSize?.contains(Units.UNIT_LITER, true)
+fun Product.isPerServingInLiter() = servingSize?.contains(MeasurementUnit.UNIT_LITER.sym, true)
 
 fun SearchProduct.getProductBrandsQuantityDetails() = StringBuilder().apply {
     brands?.takeIf { it.isNotEmpty() }?.let { brandStr ->
@@ -27,8 +27,7 @@ fun SearchProduct.getProductBrandsQuantityDetails() = StringBuilder().apply {
     }
 }.toString()
 
-suspend fun SearchProduct.toProduct(client: OpenFoodAPIClient): Product? =
-    client.getProductStateFull(this.code).product
+suspend fun SearchProduct.toProduct(client: OpenFoodAPIClient): Product? = client.getProductStateFull(this.code).product
 
 @DrawableRes
 private fun getResourceFromEcoscore(ecoscore: String?) = when (ecoscore?.lowercase(Locale.ROOT)) {

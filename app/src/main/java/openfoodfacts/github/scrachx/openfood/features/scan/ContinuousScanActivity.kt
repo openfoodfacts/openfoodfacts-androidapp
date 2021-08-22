@@ -209,9 +209,9 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
                 // A network error happened
                 if (err is IOException) {
                     hideAllViews()
-                    val offlineSavedProduct = daoSession.offlineSavedProductDao!!.queryBuilder()
-                        .where(OfflineSavedProductDao.Properties.Barcode.eq(barcode))
-                        .unique()
+                    val offlineSavedProduct = daoSession.offlineSavedProductDao.unique {
+                        where(OfflineSavedProductDao.Properties.Barcode.eq(barcode))
+                    }
                     tryDisplayOffline(offlineSavedProduct, barcode, R.string.addProductOffline)
                     binding.quickView.setOnClickListener { navigateToProductAddition(barcode) }
                 } else {
@@ -568,9 +568,9 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
         // Prevent duplicate scans
         if (barcodeValue.isEmpty() || barcodeValue == lastBarcode) return
 
-        val invalidBarcode = daoSession.invalidBarcodeDao.queryBuilder()
-            .where(InvalidBarcodeDao.Properties.Barcode.eq(barcodeValue))
-            .unique()
+        val invalidBarcode = daoSession.invalidBarcodeDao.unique {
+            where(InvalidBarcodeDao.Properties.Barcode.eq(barcodeValue))
+        }
 
         // Scanned barcode is in the list of invalid barcodes, do nothing
         if (invalidBarcode != null) return
@@ -827,9 +827,9 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
             // Prevent duplicate scans
             if (result.text == null || result.text.isEmpty() || result.text == lastBarcode) return
 
-            val invalidBarcode = daoSession.invalidBarcodeDao.queryBuilder()
-                .where(InvalidBarcodeDao.Properties.Barcode.eq(result.text))
-                .unique()
+            val invalidBarcode = daoSession.invalidBarcodeDao.unique {
+                where(InvalidBarcodeDao.Properties.Barcode.eq(result.text))
+            }
             // Scanned barcode is in the list of invalid barcodes, do nothing
             if (invalidBarcode != null) return
 

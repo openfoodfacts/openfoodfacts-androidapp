@@ -1,14 +1,15 @@
 package openfoodfacts.github.scrachx.openfood.features.product.view
 
 import android.graphics.Typeface
-import android.text.SpannableStringBuilder
 import android.text.Spanned
+import android.text.SpannedString
 import android.text.method.LinkMovementMethod
 import android.text.style.*
 import android.view.View
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.text.bold
+import androidx.core.text.buildSpannedString
 import androidx.core.text.color
 import androidx.core.text.inSpans
 import androidx.lifecycle.lifecycleScope
@@ -38,16 +39,15 @@ object CategoryProductHelper {
         view.visibility = View.VISIBLE
         view.movementMethod = LinkMovementMethod.getInstance()
         view.isClickable = true
-        view.text = SpannableStringBuilder()
-            .bold { append(fragment.getString(R.string.txtCategories)) }
-            .append(" ")
-            .apply {
-                // Add all the categories to text view and link them to wikidata if possible
-                categories.map { getCategoriesTag(it, fragment, apiClient) }.forEachIndexed { i, el ->
-                    append(el)
-                    if (i != categories.size) append(", ")
-                }
+        view.text = buildSpannedString {
+            bold { append(fragment.getString(R.string.txtCategories)) }
+            append(" ")
+            // Add all the categories to text view and link them to wikidata if possible
+            categories.map { getCategoriesTag(it, fragment, apiClient) }.forEachIndexed { i, el ->
+                append(el)
+                if (i != categories.size) append(", ")
             }
+        }
         // Show alcohol health warning
         if (categories.any { it.categoryTag == "en:alcoholic-beverages" }) {
             showAlcoholAlert(alcoholAlertText, fragment)
@@ -58,7 +58,7 @@ object CategoryProductHelper {
         category: CategoryName,
         fragment: BaseFragment,
         apiClient: WikiDataApiClient
-    ): SpannableStringBuilder {
+    ): SpannedString {
         val clickableSpan = object : ClickableSpan() {
             override fun onClick(view: View) {
                 if (category.isWikiDataIdPresent == true) {
@@ -87,18 +87,13 @@ object CategoryProductHelper {
             }
         }
 
-        val span = SpannableStringBuilder()
-            .inSpans(clickableSpan) { append(category.name) }
-        if (category.isNull) {
-            // Span to make text italic
-            span.setSpan(
-                StyleSpan(Typeface.ITALIC),
-                0,
-                span.length,
-                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
-            )
+        return buildSpannedString {
+            inSpans(clickableSpan) { append(category.name) }
+            if (category.isNull) {
+                // Span to make text italic
+                setSpan(StyleSpan(Typeface.ITALIC), 0, length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+            }
         }
-        return span
     }
 
     private fun showAlcoholAlert(alcoholAlertText: TextView, fragment: BaseFragment) {
@@ -111,11 +106,13 @@ object CategoryProductHelper {
         }
         val riskAlcoholConsumption = fragment.getString(R.string.risk_alcohol_consumption)
         alcoholAlertText.visibility = View.VISIBLE
-        alcoholAlertText.text = SpannableStringBuilder()
-            .inSpans(ImageSpan(alcoholAlertIcon, DynamicDrawableSpan.ALIGN_BOTTOM)) { append("-") }
-            .append(" ")
-            .color(ContextCompat.getColor(context, R.color.red)) {
+
+        alcoholAlertText.text = buildSpannedString {
+            inSpans(ImageSpan(alcoholAlertIcon, DynamicDrawableSpan.ALIGN_BOTTOM)) { append("-") }
+            append(" ")
+            color(ContextCompat.getColor(context, R.color.red)) {
                 append(riskAlcoholConsumption)
             }
+        }
     }
 }

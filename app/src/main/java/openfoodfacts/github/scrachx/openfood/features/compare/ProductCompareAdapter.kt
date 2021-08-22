@@ -19,7 +19,6 @@ import android.Manifest.permission
 import android.app.Activity
 import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.os.Build
-import android.text.SpannableStringBuilder
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,6 +27,7 @@ import android.widget.TextView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat.checkSelfPermission
 import androidx.core.text.bold
+import androidx.core.text.buildSpannedString
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
@@ -149,10 +149,11 @@ class ProductCompareAdapter(
 
         // Quantity
         if (!product.quantity.isNullOrBlank()) {
-            holder.binding.productComparisonQuantity.text = SpannableStringBuilder()
-                .bold { append(activity.getString(R.string.compare_quantity)) }
-                .append(" ")
-                .append(product.quantity)
+            holder.binding.productComparisonQuantity.text = buildSpannedString {
+                bold { append(activity.getString(R.string.compare_quantity)) }
+                append(" ")
+                append(product.quantity)
+            }
         } else {
             holder.binding.productComparisonQuantity.visibility = View.INVISIBLE
         }
@@ -160,10 +161,11 @@ class ProductCompareAdapter(
         // Brands
         val brands = product.brands
         if (!brands.isNullOrBlank()) {
-            holder.binding.productComparisonBrand.text = SpannableStringBuilder()
-                .bold { append(activity.getString(R.string.compare_brands)) }
-                .append(" ")
-                .append(brands.split(",").joinToString(", ") { it.trim() })
+            holder.binding.productComparisonBrand.text = buildSpannedString {
+                bold { append(activity.getString(R.string.compare_brands)) }
+                append(" ")
+                append(brands.split(",").joinToString(", ") { it.trim() })
+            }
         } else {
             //TODO: product brand placeholder goes here
         }
@@ -202,10 +204,11 @@ class ProductCompareAdapter(
     private fun loadAdditives(additiveNames: List<AdditiveName>, view: TextView) {
         if (additiveNames.isEmpty()) return
 
-        view.text = SpannableStringBuilder()
-            .bold { append(activity.getString(R.string.compare_additives)) }
-            .append("\n")
-            .append(additiveNames.joinToString("\n") { it.name })
+        view.text = buildSpannedString {
+            bold { append(activity.getString(R.string.compare_additives)) }
+            append("\n")
+            append(additiveNames.joinToString("\n") { it.name })
+        }
 
         updateCardsHeight()
     }
@@ -229,42 +232,42 @@ class ProductCompareAdapter(
         }
 
         if (fat != null || salt != null || saturatedFat != null || sugars != null) {
-            val fatNutriment = nutriments[Nutriments.FAT]
+            val fatNutriment = nutriments[Nutriment.FAT]
             if (fat != null && fatNutriment != null) {
                 val fatNutrimentLevel = fat.getLocalize(activity)
                 levelItems += NutrientLevelItem(
                     activity.getString(R.string.compare_fat),
-                    fatNutriment.displayStringFor100g,
+                    fatNutriment.getPer100gDisplayString(),
                     fatNutrimentLevel,
                     fat.getImgRes()
                 )
             }
-            val saturatedFatNutriment = nutriments[Nutriments.SATURATED_FAT]
+            val saturatedFatNutriment = nutriments[Nutriment.SATURATED_FAT]
             if (saturatedFat != null && saturatedFatNutriment != null) {
                 val saturatedFatLocalize = saturatedFat.getLocalize(activity)
                 levelItems += NutrientLevelItem(
                     activity.getString(R.string.compare_saturated_fat),
-                    saturatedFatNutriment.displayStringFor100g,
+                    saturatedFatNutriment.getPer100gDisplayString(),
                     saturatedFatLocalize,
                     saturatedFat.getImgRes()
                 )
             }
-            val sugarsNutriment = nutriments[Nutriments.SUGARS]
+            val sugarsNutriment = nutriments[Nutriment.SUGARS]
             if (sugars != null && sugarsNutriment != null) {
                 val sugarsLocalize = sugars.getLocalize(activity)
                 levelItems += NutrientLevelItem(
                     activity.getString(R.string.compare_sugars),
-                    sugarsNutriment.displayStringFor100g,
+                    sugarsNutriment.getPer100gDisplayString(),
                     sugarsLocalize,
                     sugars.getImgRes()
                 )
             }
-            val saltNutriment = nutriments[Nutriments.SALT]
+            val saltNutriment = nutriments[Nutriment.SALT]
             if (salt != null && saltNutriment != null) {
                 val saltLocalize = salt.getLocalize(activity)
                 levelItems += NutrientLevelItem(
                     activity.getString(R.string.compare_salt),
-                    saltNutriment.displayStringFor100g,
+                    saltNutriment.getPer100gDisplayString(),
                     saltLocalize,
                     salt.getImgRes()
                 )

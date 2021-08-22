@@ -19,7 +19,6 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
-import android.text.SpannableStringBuilder
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -27,6 +26,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.core.net.toFile
+import androidx.core.text.buildSpannedString
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.canhub.cropper.CropImage
@@ -378,12 +378,10 @@ class EditOverviewFragment : ProductEditFragment() {
      * @return returns the name of the country if found in the db or else returns the tag itself.
      */
     private fun getCountryName(languageCode: String?, tag: String) =
-        daoSession.countryNameDao.queryBuilder()
-            .where(
-                CountryNameDao.Properties.CountyTag.eq(tag),
-                CountryNameDao.Properties.LanguageCode.eq(languageCode)
-            )
-            .unique()?.name ?: tag
+        daoSession.countryNameDao.unique {
+            where(CountryNameDao.Properties.CountyTag.eq(tag))
+            where(CountryNameDao.Properties.LanguageCode.eq(languageCode))
+        }?.name ?: tag
 
     /**
      * @param languageCode 2 letter language code. example de, en etc.
@@ -391,12 +389,10 @@ class EditOverviewFragment : ProductEditFragment() {
      * @return returns the name of the label if found in the db or else returns the tag itself.
      */
     private fun getLabelName(languageCode: String?, tag: String) =
-        daoSession.labelNameDao.queryBuilder()
-            .where(
-                LabelNameDao.Properties.LabelTag.eq(tag),
-                LabelNameDao.Properties.LanguageCode.eq(languageCode)
-            ).unique()
-            ?.name ?: tag
+        daoSession.labelNameDao.unique {
+            where(LabelNameDao.Properties.LabelTag.eq(tag))
+            where(LabelNameDao.Properties.LanguageCode.eq(languageCode))
+        }?.name ?: tag
 
     /**
      * @param languageCode 2 letter language code. example en, fr etc.
@@ -404,20 +400,16 @@ class EditOverviewFragment : ProductEditFragment() {
      * @return returns the name of the category (example Plant-based foods and beverages) if found in the db or else returns the tag itself.
      */
     private fun getCategoryName(languageCode: String?, tag: String): String {
-        return daoSession.categoryNameDao
-            .queryBuilder()
-            .where(
-                CategoryNameDao.Properties.CategoryTag.eq(tag),
-                CategoryNameDao.Properties.LanguageCode.eq(languageCode)
-            ).unique()
-            ?.name ?: tag
+        return daoSession.categoryNameDao.unique {
+            where(CategoryNameDao.Properties.CategoryTag.eq(tag))
+            where(CategoryNameDao.Properties.LanguageCode.eq(languageCode))
+        }?.name ?: tag
     }
 
     private fun getEmbCode(embTag: String) =
-        daoSession.tagDao.queryBuilder()
-            .where(TagDao.Properties.Id.eq(embTag))
-            .unique()
-            ?.name ?: embTag
+        daoSession.tagDao.unique {
+            where(TagDao.Properties.Id.eq(embTag))
+        }?.name ?: embTag
 
 
     /**
@@ -573,8 +565,10 @@ class EditOverviewFragment : ProductEditFragment() {
         this.languageCode = languageCode
 
         val productLocale = LocaleUtils.parseLocale(languageCode)
-        binding.language.text = SpannableStringBuilder(getString(R.string.product_language))
-            .append(productLocale.getDisplayName(appLocale).replaceFirstChar { it.titlecase(appLocale) })
+        binding.language.text = buildSpannedString {
+            append(getString(R.string.product_language))
+            append(productLocale.getDisplayName(appLocale).replaceFirstChar { it.titlecase(appLocale) })
+        }
 
         val activity = activity
         (activity as? ProductEditActivity)?.setProductLanguageCode(languageCode)
