@@ -155,7 +155,7 @@
     <string name="alert_dialog_warning_title">Warning</string>
     <string name="alert_dialog_warning_msg_user">ผู้ใช้/รหัสผ่านมีการเปลี่ยนแปลง โปรดอัปเดตข้อมูล</string>
     <string name="toast_retrieving">Loading…</string>
-    <string name="txtBarcode">บาร์โค้ด :</string>
+    <string name="txtBarcode">Barcode:</string>
     <string name="txtCategories">หมวดหมู่</string>
     <string name="txtLabels">ป้าย, ใบรับรอง, รางวัลต่างๆที่ได้รับ :</string>
     <string name="txtEMB">Traceability codes:</string>
@@ -466,9 +466,10 @@
     <string name="additive_string">Additive</string>
     <string name="allergen_string">สารก่อภูมิแพ้</string>
     <string name="search_string">ค้นหา</string>
-    <string name="country_string">ประเทศที่ขาย</string>
+    <string name="country_string">Country</string>
     <string name="store_subtitle">เก็บ</string>
     <string name="packaging_subtitle">บรรจุภัณฑ์</string>
+    <string name="state_subtitle">State</string>
     <string name="packaging_string">บรรจุภัณฑ์</string>
     <string name="label_string">Label</string>
     <string name="category_string">หมวดหมู่:</string>
@@ -801,7 +802,7 @@
     <!-- New onboarding slides -->
     <string name="title_welcome_intro">Join the food revolution</string>
     <string name="msg_welcome_intro">Scan food, Take photos, Help transform the food system</string>
-    <string name="title_welcome_nutriscore">Get the Nutri-Score</string>
+    <string name="title_welcome_nutriscore">Get the Nutriscore</string>
     <string name="msg_welcome_nutriscore">A simple synthesis of the nutritional quality of your food</string>
     <string name="title_welcome_nova">Avoid ultra-processed foods</string>
     <string name="msg_welcome_nova">Reduce the amount of ultra-processed foods in your diet.</string>

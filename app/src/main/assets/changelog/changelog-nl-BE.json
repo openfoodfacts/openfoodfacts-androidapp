@@ -5,7 +5,7 @@
       "code": 518,
       "name": "3.5.0",
       "items": [
-        "Machine-Learning enhanced barcode scanner. You can now enable a new way to scan from the options. You can switch the barcode scanner engine at any time from the settings.",
+        "Barcodescanner op basis van Machine-Learning. Je kunt nu een nieuwe manier inschakelen om barcodes te scannen. Je kunt op elk moment wisselen van scan-engine via de instellingen.",
         "Help de vrijwilligers van Open Food Facts om de app te verbeteren. Je hebt de mogelijkheid om anonieme analyses en crashrapporten te verzenden. Dit kan op elk moment worden in- en uitgeschakeld via de instellingen."
       ]
     }

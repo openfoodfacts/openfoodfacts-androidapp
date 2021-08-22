@@ -165,7 +165,7 @@
     <string name="alert_dialog_warning_title">Upozorenje</string>
     <string name="alert_dialog_warning_msg_user">Korisničko ime/lozinka je promenjena, molimo vas da ažurirate infromacije.</string>
     <string name="toast_retrieving">Učitavam</string>
-    <string name="txtBarcode">Barkod :</string>
+    <string name="txtBarcode">Barcode:</string>
     <string name="txtCategories">Katergorije :</string>
     <string name="txtLabels">Oznaka, sertifikat, nagrade :</string>
     <string name="txtEMB">Traceability codes:</string>
@@ -476,9 +476,10 @@
     <string name="additive_string">Адитив</string>
     <string name="allergen_string">Allergen</string>
     <string name="search_string">Pretraživanje</string>
-    <string name="country_string">Државе у којима се продаје</string>
+    <string name="country_string">Country</string>
     <string name="store_subtitle">Prodavnica</string>
     <string name="packaging_subtitle">Ambalaža</string>
+    <string name="state_subtitle">Status</string>
     <string name="packaging_string">Ambalaža</string>
     <string name="label_string">Oznaka</string>
     <string name="category_string">Kategorija</string>

@@ -160,7 +160,7 @@
     <string name="alert_dialog_warning_title">Uyarı</string>
     <string name="alert_dialog_warning_msg_user">Kullanıcı/şifre değişti, lütfen bilgileri güncelleyin</string>
     <string name="toast_retrieving">Yükleniyor…</string>
-    <string name="txtBarcode">Barkod :</string>
+    <string name="txtBarcode">Barkod:</string>
     <string name="txtCategories">Kategoriler :</string>
     <string name="txtLabels">Etiketler, sertifikalar, ödüller :</string>
     <string name="txtEMB">İzlenebilirlik kodları:</string>
@@ -471,9 +471,10 @@
     <string name="additive_string">Katkı maddesi</string>
     <string name="allergen_string">Alerjen</string>
     <string name="search_string">Ara</string>
-    <string name="country_string">Satılan ülkeler</string>
+    <string name="country_string">Country</string>
     <string name="store_subtitle">Mağaza</string>
     <string name="packaging_subtitle">Ambalaj</string>
+    <string name="state_subtitle">Eyalet</string>
     <string name="packaging_string">Ambalaj</string>
     <string name="label_string">Etiket</string>
     <string name="category_string">Kategori</string>

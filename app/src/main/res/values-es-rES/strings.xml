@@ -160,7 +160,7 @@
     <string name="alert_dialog_warning_title">Aviso</string>
     <string name="alert_dialog_warning_msg_user">El usuario/contraseña ha cambiado. Por favor, actualiza la información</string>
     <string name="toast_retrieving">Cargando…</string>
-    <string name="txtBarcode">Código de barras :</string>
+    <string name="txtBarcode">Código de barras:</string>
     <string name="txtCategories">Categorías :</string>
     <string name="txtLabels">Etiquetas, certificaciones, premios :</string>
     <string name="txtEMB">Códigos de trazabilidad:</string>
@@ -471,9 +471,10 @@
     <string name="additive_string">Aditivo</string>
     <string name="allergen_string">Alérgenos</string>
     <string name="search_string">Buscar</string>
-    <string name="country_string">Países de venta</string>
+    <string name="country_string">País</string>
     <string name="store_subtitle">Tienda</string>
     <string name="packaging_subtitle">Envases</string>
+    <string name="state_subtitle">Estado</string>
     <string name="packaging_string">Envases</string>
     <string name="label_string">Etiqueta</string>
     <string name="category_string">Categoría</string>
@@ -812,7 +813,7 @@
     <string name="title_welcome_nova">Evita alimentos ultra procesados</string>
     <string name="msg_welcome_nova">Reduce la cantidad de alimentos ultra procesados en tu dieta.</string>
     <string name="title_welcome_ecoscore">Eco-Score</string>
-    <string name="msg_welcome_ecoscore">A synthesis of the environmental impact of your food.</string>
-    <string name="title_welcome_matomo">Send anonymous analytics</string>
-    <string name="msg_welcome_matomo">Help the Open Food Facts volunteers to improve the app. You decide if you send anonymous analytics.\n\nIf you change your mind this option can be enabled and disabled at any time from the settings.</string>
+    <string name="msg_welcome_ecoscore">Una síntesis del impacto medioambiental de tus alimentos.</string>
+    <string name="title_welcome_matomo">Enviar análisis anónimos</string>
+    <string name="msg_welcome_matomo">Ayuda a los voluntarios de Open Food Facts a mejorar la aplicación. Tú decides si envías análisis anónimos.\n\nSi cambias de opinión, esta opción se puede activar y desactivar en cualquier momento desde los ajustes.</string>
 </resources>

@@ -23,14 +23,14 @@
     <string name="slide_4_desc">crwdns179674:0crwdne179674:0</string>
     <string name="txtDialogsContent">crwdns179676:0crwdne179676:0</string>
     <string name="txtDialogsContentPowerMode">crwdns179678:0crwdne179678:0</string>
-    <string name="msg_share">crwdns179680:0crwdne179680:0</string>
-    <string name="not_support_books">crwdns179682:0crwdne179682:0</string>
-    <string name="txt_broaden_search">crwdns179684:0crwdne179684:0</string>
-    <string name="Donation">crwdns179686:0crwdne179686:0</string>
-    <string name="translate_help_title">crwdns179688:0crwdne179688:0</string>
-    <string name="translate_help_summary">crwdns179690:0crwdne179690:0</string>
+    <string name="msg_share">crwdns187500:0crwdne187500:0</string>
+    <string name="not_support_books">crwdns187502:0crwdne187502:0</string>
+    <string name="txt_broaden_search">crwdns187504:0crwdne187504:0</string>
+    <string name="Donation">crwdns187506:0crwdne187506:0</string>
+    <string name="translate_help_title">crwdns187508:0crwdne187508:0</string>
+    <string name="translate_help_summary">crwdns187510:0crwdne187510:0</string>
     <string name="text_offline_info_dialog">crwdns179692:0crwdne179692:0</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">crwdns179694:0crwdne179694:0</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">crwdns187512:0crwdne187512:0</string>
     <!-- OPFF tagline in different languages -->
     <string name="version_string">crwdns179706:0crwdne179706:0</string>
     <string name="tagline">crwdns179708:0crwdne179708:0</string>

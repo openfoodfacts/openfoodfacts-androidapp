@@ -160,7 +160,7 @@
     <string name="alert_dialog_warning_title">Advarsel</string>
     <string name="alert_dialog_warning_msg_user">Brugernavn/adgangskode er blevet ændret. Opdatér venligst information</string>
     <string name="toast_retrieving">Indlæser…</string>
-    <string name="txtBarcode">Stregkode :</string>
+    <string name="txtBarcode">Stregkode:</string>
     <string name="txtCategories">Kategorier:</string>
     <string name="txtLabels">Mærkning, certificering, priser :</string>
     <string name="txtEMB">EMB-kode:</string>
@@ -168,9 +168,9 @@
     <string name="Donate">Donér</string>
     <string name="Donation">Tryk her for at donere til Open Food Facts</string>
     <string name="txtSubstances">Stoffer eller produkter, som forårsager allergier eller intolerance :</string>
-    <string name="txtAdditives">Tilsætningsstoffer:</string>
-    <string name="txtTraces">Sporstoffer:</string>
-    <string name="txtMayBeFromPalmOilProduct">Ingrediænser, som kan være fremstillet af palmeolie:</string>
+    <string name="txtAdditives">Tilsætningsstoffer: </string>
+    <string name="txtTraces">Sporstoffer: </string>
+    <string name="txtMayBeFromPalmOilProduct">Ingrediænser, som kan være fremstillet af palmeolie: </string>
     <string name="txtPalmOilProduct">Ingrediænser fra palmeolie:</string>
     <string name="txtServingSize">Portionsstørrelse :</string>
     <string name="txtNutrientLevel100g">Næringsstoffer pr. 100 g :</string>
@@ -471,9 +471,10 @@
     <string name="additive_string">Tilsætningsstof</string>
     <string name="allergen_string">Allergen</string>
     <string name="search_string">Søg</string>
-    <string name="country_string">Lande, hvorfra der sælges</string>
+    <string name="country_string">Country</string>
     <string name="store_subtitle">Butik</string>
     <string name="packaging_subtitle">Emballage</string>
+    <string name="state_subtitle">Stat</string>
     <string name="packaging_string">Emballage</string>
     <string name="label_string">Etiket</string>
     <string name="category_string">Kategori</string>

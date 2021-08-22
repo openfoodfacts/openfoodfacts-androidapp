@@ -160,7 +160,7 @@
     <string name="alert_dialog_warning_title">चेतावनी</string>
     <string name="alert_dialog_warning_msg_user">उपयोगकर्ता/ पासवर्ड बदल गया है,  कृप्या  जानकारी अपडेट करें</string>
     <string name="toast_retrieving">लोड किया जा रहा है…</string>
-    <string name="txtBarcode">बारकोड:</string>
+    <string name="txtBarcode">Barcode:</string>
     <string name="txtCategories">श्रेणी:</string>
     <string name="txtLabels">लेबल, प्रमाणपत्र, पुरस्कार:</string>
     <string name="txtEMB">Traceability codes:</string>
@@ -471,9 +471,10 @@
     <string name="additive_string">योज्य</string>
     <string name="allergen_string">Allergen</string>
     <string name="search_string">ढूंढें</string>
-    <string name="country_string">जिन देशों में बिकता है</string>
+    <string name="country_string">Country</string>
     <string name="store_subtitle">दुकान</string>
     <string name="packaging_subtitle">पैकेजिंग</string>
+    <string name="state_subtitle">State</string>
     <string name="packaging_string">पैकेजिंग</string>
     <string name="label_string">लेबल</string>
     <string name="category_string">श्रेणी</string>

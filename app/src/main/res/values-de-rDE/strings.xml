@@ -467,9 +467,10 @@
     <string name="additive_string">Zusatzstoff</string>
     <string name="allergen_string">Allergen</string>
     <string name="search_string">Suchen</string>
-    <string name="country_string">Vertriebsländer</string>
+    <string name="country_string">Land</string>
     <string name="store_subtitle">Laden</string>
     <string name="packaging_subtitle">Art der Verpackung</string>
+    <string name="state_subtitle">Stand</string>
     <string name="packaging_string">Art der Verpackung</string>
     <string name="label_string">Kennzeichnung</string>
     <string name="category_string">Kategorie</string>

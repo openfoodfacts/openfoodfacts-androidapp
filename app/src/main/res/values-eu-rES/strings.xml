@@ -160,7 +160,7 @@
     <string name="alert_dialog_warning_title">Abisua</string>
     <string name="alert_dialog_warning_msg_user">Erabiltzailea/pasahitza aldatu egin da, eguneratu informazioa mesedez</string>
     <string name="toast_retrieving">Loading…</string>
-    <string name="txtBarcode">Barra kodea :</string>
+    <string name="txtBarcode">Barcode:</string>
     <string name="txtCategories">Kategoriak :</string>
     <string name="txtLabels">Etiketa, ziurtagiriak, sariak:</string>
     <string name="txtEMB">EMB kodea:</string>
@@ -471,9 +471,10 @@
     <string name="additive_string">Additive</string>
     <string name="allergen_string">Alergenoak</string>
     <string name="search_string">Bilatu</string>
-    <string name="country_string">Saltzen diren herrialdeak</string>
+    <string name="country_string">Country</string>
     <string name="store_subtitle">Denda</string>
     <string name="packaging_subtitle">Ontziratzea</string>
+    <string name="state_subtitle">Herrialdea</string>
     <string name="packaging_string">Ontziratzea</string>
     <string name="label_string">Etiketa</string>
     <string name="category_string">Kategoria</string>
@@ -807,7 +808,7 @@
     <!-- New onboarding slides -->
     <string name="title_welcome_intro">Join the food revolution</string>
     <string name="msg_welcome_intro">Scan food, Take photos, Help transform the food system</string>
-    <string name="title_welcome_nutriscore">Get the Nutri-Score</string>
+    <string name="title_welcome_nutriscore">Get the Nutriscore</string>
     <string name="msg_welcome_nutriscore">A simple synthesis of the nutritional quality of your food</string>
     <string name="title_welcome_nova">Avoid ultra-processed foods</string>
     <string name="msg_welcome_nova">Reduce the amount of ultra-processed foods in your diet.</string>

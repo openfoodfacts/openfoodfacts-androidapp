@@ -170,7 +170,7 @@
     <string name="alert_dialog_warning_title">Ostrzeżenie</string>
     <string name="alert_dialog_warning_msg_user">Zmieniono nazwę użytkownika/hasło. Proszę zaktualizuj informacje</string>
     <string name="toast_retrieving">Ładowanie…</string>
-    <string name="txtBarcode">Kod kreskowy :</string>
+    <string name="txtBarcode">Kod kreskowy:</string>
     <string name="txtCategories">Kategorie :</string>
     <string name="txtLabels">Etykiety, certyfikaty, nagrody :</string>
     <string name="txtEMB">Kody identyfikacyjne:</string>
@@ -481,9 +481,10 @@
     <string name="additive_string">Dodatek</string>
     <string name="allergen_string">Alergeny</string>
     <string name="search_string">Wyszukiwanie</string>
-    <string name="country_string">Kraje sprzedaży</string>
+    <string name="country_string">Country</string>
     <string name="store_subtitle">Sklep</string>
     <string name="packaging_subtitle">Opakowania</string>
+    <string name="state_subtitle">Stan</string>
     <string name="packaging_string">Opakowania</string>
     <string name="label_string">Etykieta</string>
     <string name="category_string">Kategoria</string>
