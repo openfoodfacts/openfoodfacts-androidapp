@@ -46,7 +46,7 @@ jobs:
       - name: Setup detekt
         uses: peter-murray/setup-detekt@v1
         with:
-          detekt_version: $DETEKT_RELEASE_TAG
+          detekt_version: ${{ env.DETEKT_RELEASE_TAG }}
 
       # Performs static analysis using Detekt
       - name: Run Detekt
