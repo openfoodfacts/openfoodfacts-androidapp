@@ -34,12 +34,12 @@ class AnalyticsUsageDialogFragment : BottomSheetDialogFragment() {
         val binding: FragmentAnalyticsUsageBottomSheetBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_analytics_usage_bottom_sheet, container, false)
         binding.grantButton.setOnClickListener {
             saveAnalyticsReportingPref(true)
-            matomoAnalytics.onAnalyticsEnabledToggled(true)
+            matomoAnalytics.setEnabled(true)
             dismiss()
         }
         binding.declineButton.setOnClickListener {
             saveAnalyticsReportingPref(false)
-            matomoAnalytics.onAnalyticsEnabledToggled(false)
+            matomoAnalytics.setEnabled(false)
             dismiss()
         }
         return binding.root
