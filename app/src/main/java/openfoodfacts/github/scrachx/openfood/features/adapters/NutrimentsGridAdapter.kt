@@ -80,6 +80,7 @@ open class NutrimentsGridAdapter(
                 if (value == null) {
                     vNutrimentValue.visibility = View.INVISIBLE
                 } else {
+                    vNutrimentValue.visibility = View.VISIBLE
                     vNutrimentValue.text = "${item.modifierStr} $value ${item.unitStr}"
                 }
             }
@@ -89,6 +90,7 @@ open class NutrimentsGridAdapter(
                 if (servingValue == null) {
                     vNutrimentServingValue.visibility = View.GONE
                 } else {
+                    vNutrimentServingValue.visibility = View.VISIBLE
                     vNutrimentServingValue.text = "${item.modifierStr} $servingValue ${item.unitStr}"
                 }
             }

@@ -12,7 +12,6 @@ import androidx.core.text.buildSpannedString
 import androidx.core.text.color
 import androidx.core.text.inSpans
 import androidx.fragment.app.FragmentActivity
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import com.fasterxml.jackson.databind.JsonNode
 import kotlinx.coroutines.launch
@@ -49,7 +48,7 @@ object AdditiveFragmentHelper {
 
             additives.forEach {
                 append("\n")
-                append(getAdditiveTag(it, apiClientForWikiData, fragment, fragment))
+                append(getAdditiveTag(it, apiClientForWikiData, fragment))
             }
         }
     }
@@ -64,14 +63,13 @@ object AdditiveFragmentHelper {
     private fun getAdditiveTag(
         additive: AdditiveName,
         wikidataClient: WikiDataApiClient,
-        fragment: BaseFragment,
-        lifecycleOwner: LifecycleOwner
+        fragment: BaseFragment
     ): CharSequence {
         val activity = fragment.requireActivity()
         val clickableSpan = object : ClickableSpan() {
             override fun onClick(view: View) {
                 if (additive.isWikiDataIdPresent) {
-                    lifecycleOwner.lifecycleScope.launch {
+                    fragment.lifecycleScope.launch {
                         val result = wikidataClient.getEntityData(additive.wikiDataId)
                         getOnWikiResponse(activity, additive)(result)
                     }
