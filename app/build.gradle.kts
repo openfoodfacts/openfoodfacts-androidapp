@@ -137,7 +137,7 @@ dependencies {
     implementation("com.github.jkwiecien:EasyImage:1.4.0")
 
     // Barcode and QR Scanner
-    // Cannot upgrade: Requires API 24 or higher
+    // TODO: cannot upgrade, requires API 24 or higher
     implementation("com.google.zxing:core:3.3.0")
 
     implementation("com.journeyapps:zxing-android-embedded:3.6.0") { isTransitive = false }
@@ -255,7 +255,7 @@ android {
     }
 
     buildTypes {
-        getByName("release") {
+        release {
             isCrunchPngs = true
 
             // Enables code shrinking, obfuscation, and optimization for only
@@ -269,7 +269,8 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
             signingConfig = signingConfigs.getByName("release")
         }
-        getByName("debug") {
+
+        debug {
             applicationIdSuffix = ".debug"
             isDebuggable = true
 
@@ -340,12 +341,17 @@ android {
             buildConfigField("String", "MATOMO_URL", "\"https://analytics.openfoodfacts.org/matomo.php\"")
             dimension = "versionCode"
         }
+
+
         create("playstore") {
             dimension = "platform"
+
             buildConfigField("boolean", "USE_MLKIT", "true")
         }
+
         create("fdroid") {
             dimension = "platform"
+
             buildConfigField("boolean", "USE_MLKIT", "false")
         }
     }
