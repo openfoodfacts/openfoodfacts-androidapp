@@ -137,7 +137,7 @@ class WelcomeActivity : BaseActivity() {
 
     private fun saveThenLaunchHome(grant: Boolean) {
         saveAnalyticsReportingPref(grant)
-        matomoAnalytics.onAnalyticsEnabledToggled(grant)
+        matomoAnalytics.setEnabled(grant)
         launchHome()
     }
 
@@ -149,7 +149,7 @@ class WelcomeActivity : BaseActivity() {
 
     private fun launchHome() {
         prefManager.isFirstTimeLaunch = false
-        startActivity(Intent(this@WelcomeActivity, MainActivity::class.java))
+        MainActivity.start(this)
         finish()
     }
 

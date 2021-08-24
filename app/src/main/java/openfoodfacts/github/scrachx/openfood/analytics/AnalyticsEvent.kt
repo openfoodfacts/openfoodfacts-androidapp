@@ -2,6 +2,10 @@ package openfoodfacts.github.scrachx.openfood.analytics
 
 sealed class AnalyticsEvent(val category: String, val action: String, val name: String?, val value: Float?) {
 
+    object ProductSearch : AnalyticsEvent("search", "completed", null, null)
+
+    object ProductSearchStart : AnalyticsEvent("search", "started", null, null)
+
     data class ScannedBarcode(val barcode: String) : AnalyticsEvent("scanner", "scanned", barcode, null)
 
     data class ScannedBarcodeResultExpanded(val barcode: String?) : AnalyticsEvent("scanner", "result-expanded", barcode, null)

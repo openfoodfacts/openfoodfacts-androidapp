@@ -32,6 +32,8 @@ import kotlinx.coroutines.rx2.await
 import kotlinx.coroutines.rx2.awaitSingleOrNull
 import kotlinx.coroutines.withContext
 import openfoodfacts.github.scrachx.openfood.R
+import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
+import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductBrowsingListBinding
 import openfoodfacts.github.scrachx.openfood.features.adapters.ProductSearchAdapter
@@ -54,6 +56,9 @@ import javax.inject.Inject
 class ProductSearchActivity : BaseActivity() {
     private var _binding: ActivityProductBrowsingListBinding? = null
     private val binding get() = _binding!!
+
+    @Inject
+    lateinit var analytics: MatomoAnalytics
 
     @Inject
     lateinit var productRepository: ProductRepository
@@ -88,6 +93,9 @@ class ProductSearchActivity : BaseActivity() {
 
         setSupportActionBar(binding.toolbarInclude.toolbar)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+
+        // Track search without details
+        analytics.trackEvent(AnalyticsEvent.ProductSearch)
 
         // OnClick
         binding.buttonTryAgain.setOnClickListener { reloadSearch() }
@@ -548,14 +556,12 @@ class ProductSearchActivity : BaseActivity() {
          * @param searchTitle the title used in the activity for this search query
          * @param type the type of search
          */
-        @JvmStatic
         fun start(context: Context, type: SearchType, searchQuery: String, searchTitle: String = searchQuery) =
             start(context, SearchInfo(type, searchQuery, searchTitle))
 
         /**
          * @see [start]
          */
-        @JvmStatic
         private fun start(context: Context, searchInfo: SearchInfo) {
             context.startActivity(Intent(context, ProductSearchActivity::class.java).apply {
                 putExtra(SEARCH_INFO, searchInfo)

@@ -46,15 +46,13 @@ class MatomoAnalytics @Inject constructor(
     }
 
     fun showAnalyticsBottomSheetIfNeeded(childFragmentManager: FragmentManager) {
-        if (sharedPreferences.contains(context.getString(R.string.pref_analytics_reporting_key))) {
-            //key already exists, do not show
-            return
-        }
-        val bottomSheet = AnalyticsUsageDialogFragment()
-        bottomSheet.show(childFragmentManager, AnalyticsUsageDialogFragment.TAG)
+        //key already exists, do not show
+        if (context.getString(R.string.pref_analytics_reporting_key) in sharedPreferences) return
+
+        AnalyticsUsageDialogFragment().show(childFragmentManager, AnalyticsUsageDialogFragment.TAG)
     }
 
-    fun onAnalyticsEnabledToggled(enabled: Boolean) {
+    fun setEnabled(enabled: Boolean) {
         tracker.isOptOut = !enabled
     }
 }

@@ -437,27 +437,24 @@ class OpenFoodAPIClient @Inject constructor(
         val MIME_TEXT: MediaType = MediaType.get("text/plain")
         const val PNG_EXT = ".png"
 
-        suspend fun HistoryProductDao.addToHistory(newProd: OfflineSavedProduct): Unit = withContext(IO) {
-            val savedProduct: HistoryProduct? = queryBuilder()
-                .where(HistoryProductDao.Properties.Barcode.eq(newProd.barcode))
-                .unique()
+        suspend fun HistoryProductDao.addToHistory(prod: OfflineSavedProduct): Unit = withContext(IO) {
+            val savedProduct = unique {
+                where(HistoryProductDao.Properties.Barcode.eq(prod.barcode))
+            }
 
-            val details = newProd.productDetails
+            val details = prod.productDetails
             val hp = HistoryProduct(
-                newProd.name,
+                prod.name,
                 details[Keys.ADD_BRANDS],
-                newProd.imageFrontLocalUrl,
-                newProd.barcode,
+                prod.imageFrontLocalUrl,
+                prod.barcode,
                 details[Keys.QUANTITY],
                 details[Keys.NUTRITION_GRADE_FR],
                 details[Keys.ECOSCORE],
-                details[Keys.NOVA_GROUPS
-                ]
+                details[Keys.NOVA_GROUPS]
             )
             if (savedProduct != null) hp.id = savedProduct.id
             insertOrReplace(hp)
-
-            return@withContext
         }
 
         /**
@@ -466,9 +463,9 @@ class OpenFoodAPIClient @Inject constructor(
         suspend fun HistoryProductDao.addToHistory(product: Product, language: String): Unit =
             withContext(IO) {
 
-                val savedProduct: HistoryProduct? = queryBuilder()
-                    .where(HistoryProductDao.Properties.Barcode.eq(product.code))
-                    .unique()
+                val savedProduct: HistoryProduct? = unique {
+                    where(HistoryProductDao.Properties.Barcode.eq(product.code))
+                }
 
                 val hp = HistoryProduct(
                     product.productName,
@@ -494,15 +491,12 @@ class OpenFoodAPIClient @Inject constructor(
     private fun getUserInfo(): Map<String, String> {
         val imgMap = mutableMapOf<String, String>()
 
-
         val settings = context.getLoginPreferences()
         settings.getString("user", null)?.let {
             imgMap[Keys.USER_COMMENT] = getCommentToUpload(it)
             if (it.isNotBlank()) imgMap[Keys.USER_ID] = it
         }
-        settings.getString("pass", null)?.let {
-            if (it.isNotBlank()) imgMap[Keys.USER_PASS] = it
-        }
+
         return imgMap
     }
 
@@ -511,27 +505,27 @@ class OpenFoodAPIClient @Inject constructor(
      *
      * @param login the username
      */
-    fun getCommentToUpload(login: String? = null): String {
-        val comment = when (BuildConfig.FLAVOR) {
-            OBF -> StringBuilder("Official Open Beauty Facts Android app")
-            OPFF -> StringBuilder("Official Open Pet Food Facts Android app")
-            OPF -> StringBuilder("Official Open Products Facts Android app")
-            OFF -> StringBuilder("Official Open Food Facts Android app")
-            else -> StringBuilder("Official Open Food Facts Android app")
-        }
-        comment.append(" ").append(context.getVersionName())
+    fun getCommentToUpload(login: String? = null) = buildString {
+        append(
+            when (BuildConfig.FLAVOR) {
+                OBF -> StringBuilder("Official Open Beauty Facts Android app")
+                OPFF -> StringBuilder("Official Open Pet Food Facts Android app")
+                OPF -> StringBuilder("Official Open Products Facts Android app")
+                OFF -> StringBuilder("Official Open Food Facts Android app")
+                else -> StringBuilder("Official Open Food Facts Android app")
+            }
+        )
+        append(" ")
+        append(context.getVersionName())
         if (login.isNullOrEmpty()) {
-            comment.append(" (Added by ").append(InstallationUtils.id(context)).append(")")
+            append(" (Added by ").append(InstallationUtils.id(context)).append(")")
         }
-        return comment.toString()
     }
 
     val localeProductNameField get() = "product_name_${localeManager.getLanguage()}"
 
     private val fieldsToFetchFacets
-        get() = Keys.PRODUCT_SEARCH_FIELDS.toMutableList().apply {
-            add(localeProductNameField)
-        }.joinToString(",")
+        get() = (Keys.PRODUCT_SEARCH_FIELDS + localeProductNameField).joinToString(",")
 
     suspend fun getEMBCodeSuggestions(term: String) = rawApi.getSuggestions("emb_codes", term)
     suspend fun getPeriodAfterOpeningSuggestions(term: String) = rawApi.getSuggestions("periods_after_opening", term)

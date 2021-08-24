@@ -116,7 +116,8 @@ class ProductAttributeFragment : BottomSheetDialogFragment() {
             val id = arguments.getLong(ARG_ID)
             if (searchType == SearchType.ADDITIVE) {
                 daoSession.additiveNameDao.queryBuilder()
-                    .where(AdditiveNameDao.Properties.Id.eq(id)).unique()
+                    .where(AdditiveNameDao.Properties.Id.eq(id))
+                    .unique()
                     ?.let { updateContent(view, it) }
 
             }

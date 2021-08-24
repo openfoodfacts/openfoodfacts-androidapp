@@ -9,14 +9,13 @@ class CalculatedNutrimentsGridAdapter(private val nutrimentListItems: List<Nutri
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NutrimentViewHolder {
         val isViewTypeHeader = viewType == TYPE_HEADER
         val layoutResourceId = if (isViewTypeHeader) R.layout.nutrition_fact_header_calc else R.layout.nutriment_item_list
-        val v = LayoutInflater.from(parent.context).inflate(layoutResourceId, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(layoutResourceId, parent, false)
+
         return if (isViewTypeHeader) {
-            val displayServing = nutrimentListItems
-                    .map { it.servingValue }
-                    .any { it.isNotBlank() }
-            NutrimentViewHolder.NutrimentHeaderViewHolder(v, displayServing)
+            val displayServing = nutrimentListItems.any { !it.servingValueStr.isNullOrBlank() }
+            NutrimentViewHolder.NutrimentHeaderViewHolder(view, displayServing)
         } else {
-            NutrimentViewHolder.NutrimentListViewHolder(v)
+            NutrimentViewHolder.NutrimentListViewHolder(view)
         }
     }
 
@@ -24,8 +23,7 @@ class CalculatedNutrimentsGridAdapter(private val nutrimentListItems: List<Nutri
         if (holder !is NutrimentViewHolder.NutrimentListViewHolder) return
 
         val item = nutrimentListItems[position]
-        holder.fillNutrimentValue(item)
-        holder.fillServingValue(item)
+        holder.fillNutriment(item)
         holder.setIsRecyclable(false)
     }
 
