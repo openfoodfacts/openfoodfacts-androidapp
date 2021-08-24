@@ -31,7 +31,7 @@ on:
 env:
   # Release tag associated with version of Detekt to be installed
   # SARIF support (required for this workflow) was introduced in Detekt v1.15.0
-  DETEKT_RELEASE_TAG: 1.18.0
+  DETEKT_RELEASE_TAG: v1.18.0
 
 jobs:
   detekt:
