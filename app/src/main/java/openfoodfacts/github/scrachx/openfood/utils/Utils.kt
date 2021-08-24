@@ -39,8 +39,9 @@ import android.widget.ImageView
 import androidx.annotation.ColorInt
 import androidx.annotation.DrawableRes
 import androidx.appcompat.content.res.AppCompatResources
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
+import androidx.core.app.ActivityCompat.requestPermissions
+import androidx.core.app.ActivityCompat.shouldShowRequestPermissionRationale
+import androidx.core.content.ContextCompat.checkSelfPermission
 import androidx.core.graphics.ColorUtils
 import androidx.core.net.toUri
 import androidx.core.text.buildSpannedString
@@ -83,73 +84,12 @@ object Utils {
         }
         val smallFileFront = File(fileUrl.replace(".png", "_small.png"))
         try {
-            FileOutputStream(smallFileFront).use { stream -> decodedBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream) }
+            FileOutputStream(smallFileFront).use { decodedBitmap.compress(Bitmap.CompressFormat.PNG, 100, it) }
         } catch (e: IOException) {
             Log.e(LOG_TAG_COMPRESS, e.message, e)
         }
         return smallFileFront.toString()
     }
-
-    /**
-     * Check if a certain application is installed on a device.
-     *
-     * @param context the applications context.
-     * @param packageName the package name that you want to check.
-     * @return true if the application is installed, false otherwise.
-     */
-    fun isApplicationInstalled(context: Context, packageName: String) = try {
-        // Check if the package name exists, if exception is thrown, package name does not
-        // exist.
-        context.packageManager.getPackageInfo(packageName, PackageManager.GET_ACTIVITIES)
-        true
-    } catch (e: PackageManager.NameNotFoundException) {
-        false
-    }
-
-    /**
-     * Returns the NOVA group explanation given the group
-     */
-    fun getNovaGroupExplanation(novaGroup: String, context: Context) = when (novaGroup) {
-        "1" -> context.resources.getString(R.string.nova_grp1_msg)
-        "2" -> context.resources.getString(R.string.nova_grp2_msg)
-        "3" -> context.resources.getString(R.string.nova_grp3_msg)
-        "4" -> context.resources.getString(R.string.nova_grp4_msg)
-        else -> null
-    }
-
-    fun Context.getBitmapFromDrawable(@DrawableRes drawableId: Int): Bitmap? {
-        val drawable = AppCompatResources.getDrawable(this, drawableId) ?: return null
-        val bitmap = Bitmap.createBitmap(drawable.intrinsicWidth, drawable.intrinsicHeight, Bitmap.Config.ARGB_8888)
-        val canvas = Canvas(bitmap)
-        drawable.setBounds(0, 0, canvas.width, canvas.height)
-        drawable.draw(canvas)
-        return bitmap
-    }
-
-    /**
-     * Return a round float value **with 2 decimals**
-     *
-     * **BE CAREFUL:** THE METHOD DOESN'T CHECK THE NUMBER AS A NUMBER.
-     *
-     * @param value float value
-     * @return round value **with 2 decimals** or 0 if the value is empty or equals to 0
-     */
-    fun getRoundNumber(value: CharSequence, locale: Locale = Locale.getDefault()) = when {
-        value.isEmpty() -> "?"
-        value == "0" -> value
-        else -> value.toString().toDoubleOrNull()
-            ?.let { DecimalFormat("##.##", DecimalFormatSymbols(locale)).format(it) }
-            ?: "?"
-    }
-
-    fun getRoundNumber(value: Float, locale: Locale = Locale.getDefault()) =
-        getRoundNumber(value.toString(), locale)
-
-    fun getRoundNumber(value: Double, locale: Locale = Locale.getDefault()) =
-        getRoundNumber(value.toString(), locale)
-
-    fun getRoundNumber(measurement: Measurement, locale: Locale = Locale.getDefault()) =
-        getRoundNumber(measurement.value, locale)
 
     /**
      * Schedules job to download when network is available
@@ -185,7 +125,7 @@ object Utils {
         return picDir
     }
 
-    fun isExternalStorageWritable() = Environment.MEDIA_MOUNTED == Environment.getExternalStorageState()
+    fun isExternalStorageWritable() = Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED
 
     fun getOutputPicUri(context: Context): Uri =
         File(makeOrGetPictureDirectory(context), "${System.currentTimeMillis()}.jpg").toUri()
@@ -196,26 +136,30 @@ object Utils {
      * @param activity
      */
     fun scan(activity: Activity) {
-        if (ContextCompat.checkSelfPermission(activity, Manifest.permission.CAMERA) != PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(activity, Manifest.permission.CAMERA)) {
+        when {
+            checkSelfPermission(activity, Manifest.permission.CAMERA) == PERMISSION_GRANTED -> {
+                activity.startActivity(Intent(activity, ContinuousScanActivity::class.java))
+            }
+            shouldShowRequestPermissionRationale(activity, Manifest.permission.CAMERA) -> {
                 MaterialAlertDialogBuilder(activity)
                     .setTitle(R.string.action_about)
                     .setMessage(R.string.permission_camera)
                     .setPositiveButton(android.R.string.ok) { d, _ ->
-                        ActivityCompat.requestPermissions(
-                            activity, arrayOf(Manifest.permission.CAMERA),
+                        requestPermissions(
+                            activity,
+                            arrayOf(Manifest.permission.CAMERA),
                             MY_PERMISSIONS_REQUEST_CAMERA
                         )
                         d.dismiss()
                     }
                     .setNegativeButton(android.R.string.cancel) { d, _ -> d.dismiss() }
                     .show()
-            } else {
-                ActivityCompat.requestPermissions(activity, arrayOf(Manifest.permission.CAMERA), MY_PERMISSIONS_REQUEST_CAMERA)
             }
-        } else {
-            activity.startActivity(Intent(activity, ContinuousScanActivity::class.java))
+            else -> {
+                requestPermissions(activity, arrayOf(Manifest.permission.CAMERA), MY_PERMISSIONS_REQUEST_CAMERA)
+            }
         }
+
     }
 
     @JvmStatic
@@ -359,4 +303,65 @@ fun Context.isNetworkConnected(): Boolean {
     } else {
         cm.activeNetworkInfo?.isConnectedOrConnecting ?: false
     }
+}
+
+/**
+ * Check if a certain application is installed on a device.
+ *
+ * @param context the applications context.
+ * @param packageName the package name that you want to check.
+ * @return true if the application is installed, false otherwise.
+ */
+fun isApplicationInstalled(context: Context, packageName: String) = try {
+    // Check if the package name exists, if exception is thrown, package name does not
+    // exist.
+    context.packageManager.getPackageInfo(packageName, PackageManager.GET_ACTIVITIES)
+    true
+} catch (e: PackageManager.NameNotFoundException) {
+    false
+}
+
+/**
+ * Returns the NOVA group explanation given the group
+ */
+fun getNovaGroupExplanation(novaGroup: String, context: Context) = when (novaGroup) {
+    "1" -> context.resources.getString(R.string.nova_grp1_msg)
+    "2" -> context.resources.getString(R.string.nova_grp2_msg)
+    "3" -> context.resources.getString(R.string.nova_grp3_msg)
+    "4" -> context.resources.getString(R.string.nova_grp4_msg)
+    else -> null
+}
+
+fun Context.getBitmapFromDrawable(@DrawableRes drawableId: Int): Bitmap? {
+    val drawable = AppCompatResources.getDrawable(this, drawableId) ?: return null
+    val bitmap = Bitmap.createBitmap(drawable.intrinsicWidth, drawable.intrinsicHeight, Bitmap.Config.ARGB_8888)
+    val canvas = Canvas(bitmap)
+    drawable.setBounds(0, 0, canvas.width, canvas.height)
+    drawable.draw(canvas)
+    return bitmap
+}
+
+fun getRoundNumber(measurement: Measurement, locale: Locale = Locale.getDefault()) =
+    getRoundNumber(measurement.value, locale)
+
+fun getRoundNumber(value: Double, locale: Locale = Locale.getDefault()) =
+    getRoundNumber(value.toString(), locale)
+
+fun getRoundNumber(value: Float, locale: Locale = Locale.getDefault()) =
+    getRoundNumber(value.toString(), locale)
+
+/**
+ * Return a round float value **with 2 decimals**
+ *
+ * **BE CAREFUL:** THE METHOD DOESN'T CHECK THE NUMBER AS A NUMBER.
+ *
+ * @param value float value
+ * @return round value **with 2 decimals** or 0 if the value is empty or equals to 0
+ */
+fun getRoundNumber(value: CharSequence, locale: Locale = Locale.getDefault()) = when {
+    value.isEmpty() -> "?"
+    value == "0" -> value
+    else -> value.toString().toDoubleOrNull()
+        ?.let { DecimalFormat("##.##", DecimalFormatSymbols(locale)).format(it) }
+        ?: "?"
 }

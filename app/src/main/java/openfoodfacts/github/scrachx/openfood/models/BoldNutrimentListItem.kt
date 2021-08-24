@@ -2,7 +2,7 @@ package openfoodfacts.github.scrachx.openfood.models
 
 import androidx.core.text.bold
 import androidx.core.text.buildSpannedString
-import openfoodfacts.github.scrachx.openfood.utils.Utils.getRoundNumber
+import openfoodfacts.github.scrachx.openfood.utils.getRoundNumber
 
 /**
  * Header with bold values

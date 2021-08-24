@@ -118,7 +118,6 @@ import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Comp
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_SEARCH_BY_CODE
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_USER
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_YOUR_LISTS
-import openfoodfacts.github.scrachx.openfood.utils.Utils.isApplicationInstalled
 import openfoodfacts.github.scrachx.openfood.utils.Utils.scheduleProductUploadJob
 import java.io.FileNotFoundException
 import java.io.IOException
