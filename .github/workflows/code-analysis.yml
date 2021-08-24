@@ -43,16 +43,11 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - name: Setup detekt
-        uses: peter-murray/setup-detekt@v1
-        with:
-          detekt_version: ${{ env.DETEKT_RELEASE_TAG }}
-
       # Performs static analysis using Detekt
-      - name: Run Detekt
-        continue-on-error: true
-        run: |
-          detekt --input ${{ github.workspace }} --report sarif:${{ github.workspace }}/detekt.sarif.json
+      - name: Run detekt
+        uses: natiginfo/action-detekt-all@1.18.0
+        with:
+          args: --report sarif:/github/workspace/detekt.sarif.json
 
       # Uploads results to GitHub repository using the upload-sarif action
       - uses: github/codeql-action/upload-sarif@v1
