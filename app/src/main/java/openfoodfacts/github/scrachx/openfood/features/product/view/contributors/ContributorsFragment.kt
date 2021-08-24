@@ -1,13 +1,13 @@
 package openfoodfacts.github.scrachx.openfood.features.product.view.contributors
 
 import android.os.Bundle
-import android.text.SpannableStringBuilder
 import android.text.Spanned
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.text.buildSpannedString
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import openfoodfacts.github.scrachx.openfood.R
@@ -86,12 +86,16 @@ class ContributorsFragment : BaseFragment() {
 
         if (product.editors.isNotEmpty()) {
             binding.otherEditorsTxt.movementMethod = LinkMovementMethod.getInstance()
-            binding.otherEditorsTxt.text = SpannableStringBuilder(getString(R.string.other_editors))
-                .append(" ")
-                .append(product.editors.joinToString(", ") { editor ->
-                    getContributorsTag(editor).subSequence(0, editor.length)
-                })
-                .append(getContributorsTag(product.editors.last()))
+            binding.otherEditorsTxt.text = buildSpannedString {
+                append(getString(R.string.other_editors))
+                append(" ")
+                product.editors.map { getContributorsTag(it).subSequence(0, it.length) }
+                    .forEachIndexed { i, el ->
+                        if (i > 0) append(", ")
+                        append(el)
+                    }
+                append(getContributorsTag(product.editors.last()))
+            }
         } else {
             binding.otherEditorsTxt.visibility = View.INVISIBLE
         }
@@ -122,7 +126,8 @@ class ContributorsFragment : BaseFragment() {
         val clickableSpan = object : ClickableSpan() {
             override fun onClick(view: View) = start(requireContext(), SearchType.CONTRIBUTOR, contributor)
         }
-        return SpannableStringBuilder(contributor).apply {
+        return buildSpannedString {
+            append(contributor)
             setSpan(clickableSpan, 0, length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
             append(" ")
         }
@@ -132,7 +137,8 @@ class ContributorsFragment : BaseFragment() {
         val clickableSpan = object : ClickableSpan() {
             override fun onClick(view: View) = start(requireContext(), SearchType.STATE, stateTag)
         }
-        return SpannableStringBuilder(stateName).apply {
+        return buildSpannedString {
+            append(stateName)
             setSpan(clickableSpan, 0, length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         }
     }

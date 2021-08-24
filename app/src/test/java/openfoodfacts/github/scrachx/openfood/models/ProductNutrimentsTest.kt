@@ -1,41 +1,38 @@
 package openfoodfacts.github.scrachx.openfood.models
 
 import com.google.common.truth.Truth.assertThat
-import openfoodfacts.github.scrachx.openfood.models.Nutriments.Companion.SILICA
-import openfoodfacts.github.scrachx.openfood.models.Nutriments.Companion.VITAMIN_A
-import openfoodfacts.github.scrachx.openfood.models.Nutriments.Companion.VITAMIN_B1
-import openfoodfacts.github.scrachx.openfood.models.Nutriments.Nutriment
-import openfoodfacts.github.scrachx.openfood.models.Units.UNIT_GRAM
-import openfoodfacts.github.scrachx.openfood.models.Units.UNIT_KILOGRAM
-import openfoodfacts.github.scrachx.openfood.models.Units.UNIT_MILLIGRAM
-import openfoodfacts.github.scrachx.openfood.utils.UnitUtils.convertFromGram
+import openfoodfacts.github.scrachx.openfood.models.MeasurementUnit.*
+import openfoodfacts.github.scrachx.openfood.models.ProductNutriments.Companion.SILICA
+import openfoodfacts.github.scrachx.openfood.models.ProductNutriments.Companion.VITAMIN_A
+import openfoodfacts.github.scrachx.openfood.models.ProductNutriments.Companion.VITAMIN_B1
+import openfoodfacts.github.scrachx.openfood.models.ProductNutriments.ProductNutriment
 import openfoodfacts.github.scrachx.openfood.utils.Utils.getRoundNumber
 import org.junit.Before
 import org.junit.Test
 
-class NutrimentsTest {
-    private lateinit var nutriments: Nutriments
+class ProductNutrimentsTest {
+    private lateinit var nutriments: ProductNutriments
 
     @Before
     fun setup() {
-        nutriments = Nutriments().apply { setAdditionalProperty(NUTRIMENT_NAME_KEY, NUTRIMENT_NAME) }
+        nutriments = ProductNutriments().apply { setAdditionalProperty(NUTRIMENT_NAME_KEY, NUTRIMENT_NAME) }
     }
 
     @Test
     fun getForAnyValue() {
-        val valueFor100g = 30.0
-        val valueForServing = 60.0
-        val nutriment = Nutriment(
-                "test",
-                "test",
-                valueFor100g.toString(),
-                valueForServing.toString(),
-                UNIT_MILLIGRAM,
-                ""
+        val valueFor100g = 30.0f
+        val valueForServing = 60.0f
+        val nutriment = ProductNutriment(
+            "test",
+            "test",
+            valueFor100g.toString(),
+            valueForServing.toString(),
+            UNIT_MILLIGRAM,
+            ""
         )
-        assertThat(nutriment.displayStringFor100g).isEqualTo("${getRoundNumber((30 * 1000).toFloat())} mg")
-        assertThat(nutriment.getForPortion(1f, UNIT_KILOGRAM)).isEqualTo(getRoundNumber(convertFromGram(valueFor100g * 10, nutriment.unit)))
-        assertThat(nutriment.getForPortion(1f, UNIT_GRAM)).isEqualTo(getRoundNumber(convertFromGram(valueFor100g / 100, nutriment.unit)))
+        assertThat(nutriment.getPer100gDisplayString()).isEqualTo("${getRoundNumber((30 * 1000).toFloat())} mg")
+        assertThat(nutriment.getForPortion(1f, UNIT_KILOGRAM)).isEqualTo(getRoundNumber((valueFor100g * 10f).convertFromGOrMl(nutriment.unit)))
+        assertThat(nutriment.getForPortion(1f, UNIT_GRAM)).isEqualTo(getRoundNumber((valueFor100g / 100f).convertFromGOrMl(nutriment.unit)))
     }
 
     @Test
@@ -47,13 +44,13 @@ class NutrimentsTest {
     @Test
     fun `getServing returns correct serving`() {
         nutriments.setAdditionalProperty(NUTRIMENT_SERVING_KEY, NUTRIMENT_SERVING)
-        assertThat(nutriments[NUTRIMENT_NAME_KEY]?.forServing).isEqualTo(NUTRIMENT_SERVING)
+        assertThat(nutriments[NUTRIMENT_NAME_KEY]?.perServingInG).isEqualTo(NUTRIMENT_SERVING)
     }
 
     @Test
     fun `get100g returns quantity for 100g`() {
         nutriments.setAdditionalProperty(NUTRIMENT_100G_KEY, NUTRIMENT_100G)
-        assertThat(nutriments[NUTRIMENT_NAME_KEY]?.for100g).isEqualTo(NUTRIMENT_100G)
+        assertThat(nutriments[NUTRIMENT_NAME_KEY]?.per100gInG).isEqualTo(NUTRIMENT_100G)
     }
 
     @Test

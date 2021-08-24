@@ -1,6 +1,5 @@
 package openfoodfacts.github.scrachx.openfood.features.additives
 
-import android.text.SpannableStringBuilder
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.text.style.DynamicDrawableSpan
@@ -9,10 +8,10 @@ import android.view.View
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.text.bold
+import androidx.core.text.buildSpannedString
 import androidx.core.text.color
 import androidx.core.text.inSpans
 import androidx.fragment.app.FragmentActivity
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import com.fasterxml.jackson.databind.JsonNode
 import kotlinx.coroutines.launch
@@ -44,14 +43,14 @@ object AdditiveFragmentHelper {
     ) = additivesView.run {
         movementMethod = LinkMovementMethod.getInstance()
         isClickable = true
-        text = SpannableStringBuilder()
-            .bold { append(fragment.getString(R.string.txtAdditives)) }
-            .apply {
-                additives.forEach {
-                    append("\n")
-                    append(getAdditiveTag(it, apiClientForWikiData, fragment, fragment))
-                }
+        text = buildSpannedString {
+            bold { append(fragment.getString(R.string.txtAdditives)) }
+
+            additives.forEach {
+                append("\n")
+                append(getAdditiveTag(it, apiClientForWikiData, fragment))
             }
+        }
     }
 
     /**
@@ -64,14 +63,13 @@ object AdditiveFragmentHelper {
     private fun getAdditiveTag(
         additive: AdditiveName,
         wikidataClient: WikiDataApiClient,
-        fragment: BaseFragment,
-        lifecycleOwner: LifecycleOwner
+        fragment: BaseFragment
     ): CharSequence {
         val activity = fragment.requireActivity()
         val clickableSpan = object : ClickableSpan() {
             override fun onClick(view: View) {
                 if (additive.isWikiDataIdPresent) {
-                    lifecycleOwner.lifecycleScope.launch {
+                    fragment.lifecycleScope.launch {
                         val result = wikidataClient.getEntityData(additive.wikiDataId)
                         getOnWikiResponse(activity, additive)(result)
                     }
@@ -81,30 +79,31 @@ object AdditiveFragmentHelper {
             }
         }
 
-        return SpannableStringBuilder().also {
-            it.inSpans(clickableSpan) { append(additive.name) }
+        return buildSpannedString {
+            inSpans(clickableSpan) { append(additive.name) }
 
             // if the additive has an overexposure risk ("high" or "moderate") then append the warning message to it
             if (additive.hasOverexposureData()) {
                 val isHighRisk = additive.overexposureRisk.equals("high", true)
 
-                val riskIcon = (
-                        if (isHighRisk) ContextCompat.getDrawable(activity, R.drawable.ic_additive_high_risk)
-                        else ContextCompat.getDrawable(activity, R.drawable.ic_additive_moderate_risk)
-                        )?.apply {
-                        setBounds(0, 0, this.intrinsicWidth, this.intrinsicHeight)
-                    }!!
+                val riskIcon = if (isHighRisk)
+                    ContextCompat.getDrawable(activity, R.drawable.ic_additive_high_risk)!!
+                else
+                    ContextCompat.getDrawable(activity, R.drawable.ic_additive_moderate_risk)!!
+                riskIcon.setBounds(0, 0, riskIcon.intrinsicWidth, riskIcon.intrinsicHeight)
+
                 val riskWarningStr =
                     if (isHighRisk) fragment.getString(R.string.overexposure_high)
                     else fragment.getString(R.string.overexposure_moderate)
+
                 val riskWarningColor =
                     if (isHighRisk) ContextCompat.getColor(activity, R.color.overexposure_high)
                     else ContextCompat.getColor(activity, R.color.overexposure_moderate)
 
-                it.append(" ")
-                it.inSpans(ImageSpan(riskIcon, DynamicDrawableSpan.ALIGN_BOTTOM)) { it.append("-") }
-                it.append(" ")
-                it.color(riskWarningColor) { append(riskWarningStr) }
+                append(" ")
+                inSpans(ImageSpan(riskIcon, DynamicDrawableSpan.ALIGN_BOTTOM)) { append("-") }
+                append(" ")
+                color(riskWarningColor) { append(riskWarningStr) }
             }
         }
     }

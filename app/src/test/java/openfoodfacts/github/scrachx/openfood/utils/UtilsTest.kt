@@ -74,19 +74,19 @@ class UtilsTest {
 
     @Test
     fun getServingInOz_from_ml() {
-        assertThat(getServingInOz("100 ml", Locale.getDefault()))
+        assertThat(getServingInOz("100 ml"))
                 .isEqualTo(String.format(Locale.getDefault(), "%.2f", 3.38) + " oz")
     }
 
     @Test
     fun getServingInOz_from_cl() {
-        assertThat(getServingInOz("250 cl", Locale.getDefault()))
+        assertThat(getServingInOz("250 cl"))
                 .isEqualTo(String.format(Locale.getDefault(), "%.2f", 84.53) + " oz")
     }
 
     @Test
     fun getServingInOz_from_l() {
-        assertThat(getServingInOz("3 l", Locale.getDefault()))
+        assertThat(getServingInOz("3 l"))
                 .isEqualTo(String.format(Locale.getDefault(), "%.2f", 101.44) + " oz")
     }
 }

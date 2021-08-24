@@ -31,7 +31,6 @@ import android.net.NetworkCapabilities
 import android.net.Uri
 import android.os.Build
 import android.os.Environment
-import android.text.SpannableStringBuilder
 import android.text.style.ClickableSpan
 import android.util.Log
 import android.view.View
@@ -44,6 +43,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.ColorUtils
 import androidx.core.net.toUri
+import androidx.core.text.buildSpannedString
 import androidx.core.text.inSpans
 import androidx.core.view.children
 import androidx.work.*
@@ -53,7 +53,6 @@ import com.squareup.picasso.RequestCreator
 import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.features.scan.ContinuousScanActivity
-import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivity.Companion.start
 import openfoodfacts.github.scrachx.openfood.jobs.ImagesUploaderWorker
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import org.apache.commons.validator.routines.checkdigit.EAN13CheckDigit
@@ -62,6 +61,7 @@ import java.text.DecimalFormat
 import java.text.DecimalFormatSymbols
 import java.util.*
 import java.util.concurrent.TimeUnit
+import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivity.Companion.start as startSearch
 
 private const val LOG_TAG_COMPRESS = "COMPRESS_IMAGE"
 
@@ -142,11 +142,14 @@ object Utils {
             ?: "?"
     }
 
-    /**
-     * @see Utils.getRoundNumber
-     */
-    fun getRoundNumber(value: Float, locale: Locale = Locale.getDefault()) = getRoundNumber(value.toString(), locale)
-    fun getRoundNumber(value: Double, locale: Locale = Locale.getDefault()) = getRoundNumber(value.toString(), locale)
+    fun getRoundNumber(value: Float, locale: Locale = Locale.getDefault()) =
+        getRoundNumber(value.toString(), locale)
+
+    fun getRoundNumber(value: Double, locale: Locale = Locale.getDefault()) =
+        getRoundNumber(value.toString(), locale)
+
+    fun getRoundNumber(measurement: Measurement, locale: Locale = Locale.getDefault()) =
+        getRoundNumber(measurement.value, locale)
 
     /**
      * Schedules job to download when network is available
@@ -224,8 +227,8 @@ fun isAllGranted(grantResults: IntArray) =
 
 fun buildSignInDialog(
     context: Context,
-    onPositive: (DialogInterface, Int) -> Unit = { _, _ -> },
-    onNegative: (DialogInterface, Int) -> Unit = { _, _ -> }
+    onPositive: (DialogInterface, Int) -> Unit = { d, _ -> d.dismiss() },
+    onNegative: (DialogInterface, Int) -> Unit = { d, _ -> d.dismiss() }
 ): MaterialAlertDialogBuilder = MaterialAlertDialogBuilder(context)
     .setTitle(R.string.sign_in_to_edit)
     .setPositiveButton(R.string.txtSignIn) { d, i -> onPositive(d, i) }
@@ -274,7 +277,6 @@ const val SPACE = " "
 const val MY_PERMISSIONS_REQUEST_CAMERA = 1
 const val MY_PERMISSIONS_REQUEST_STORAGE = 2
 
-fun getModifierNonDefault(modifier: String) = if (modifier != DEFAULT_MODIFIER) modifier else ""
 
 private val LOG_TAG = Utils::class.simpleName!!
 
@@ -319,9 +321,14 @@ fun getSearchLinkText(
     text: String,
     type: SearchType,
     activityToStart: Activity
-): CharSequence = SpannableStringBuilder().inSpans(object : ClickableSpan() {
-    override fun onClick(view: View) = start(activityToStart, type, text)
-}) { append(text) }
+): CharSequence {
+    val clickable = object : ClickableSpan() {
+        override fun onClick(view: View) = startSearch(activityToStart, type, text)
+    }
+    return buildSpannedString {
+        inSpans(clickable) { append(text) }
+    }
+}
 
 
 internal fun RequestCreator.into(target: ImageView, onSuccess: () -> Unit) {

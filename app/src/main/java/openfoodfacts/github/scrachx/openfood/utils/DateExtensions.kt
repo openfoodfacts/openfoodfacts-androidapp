@@ -1,5 +1,3 @@
-@file:JvmName("DateExtensions")
-
 package openfoodfacts.github.scrachx.openfood.utils
 
 import android.content.Context

@@ -6,6 +6,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenNameDao
 import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
+import openfoodfacts.github.scrachx.openfood.utils.list
 import javax.inject.Inject
 
 @HiltViewModel
@@ -15,12 +16,10 @@ class EditIngredientsViewModel @Inject constructor(
 ) : ViewModel() {
 
     val allergens = liveData {
-        daoSession.allergenNameDao.queryBuilder()
-            .where(AllergenNameDao.Properties.LanguageCode.eq(localeManager.getLanguage()))
-            .orderDesc(AllergenNameDao.Properties.Name)
-            .list()
-            .map { it.name }
-            .let { emit(it) }
+        daoSession.allergenNameDao.list {
+            where(AllergenNameDao.Properties.LanguageCode.eq(localeManager.getLanguage()))
+            orderDesc(AllergenNameDao.Properties.Name)
+        }?.map { it.name }.let { emit(it) }
     }
 
 }
