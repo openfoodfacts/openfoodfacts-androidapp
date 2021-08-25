@@ -239,7 +239,7 @@
     <string name="search_drawer">بحث</string>
     <string name="search_by_barcode_drawer">البحث عن طريق الرمز الشريطي</string>
     <string name="category_drawer">التصنيفات</string>
-    <string name="search_by_category">Atassnifate</string>
+    <string name="search_by_category">Category</string>
     <string name="scan_search">امسح</string>
     <string name="user_drawer">المستخدم</string>
     <string name="offline_edit_drawer">تعديل دون اتصال</string>
@@ -497,10 +497,10 @@
     <string name="store_subtitle">المتجر</string>
     <string name="packaging_subtitle">التعبئة والتغليف</string>
     <string name="packaging_string">التعبئة والتغليف</string>
-    <string name="label_string">al3alama</string>
-    <string name="category_string">Atassnifate</string>
+    <string name="label_string">Label</string>
+    <string name="category_string">Category</string>
     <string name="connection">متصل</string>
-    <string name="contributor_string">Almousstakhdimoun</string>
+    <string name="contributor_string"></string>
     <string name="app_disabled_text">التطبيق معطل</string>
     <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
     <string name="vitamin_tags_text">الفيتامينات:</string>
