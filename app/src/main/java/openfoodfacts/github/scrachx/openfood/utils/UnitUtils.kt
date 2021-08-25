@@ -53,6 +53,7 @@ fun Measurement.convertTo(unit: MeasurementUnit): Measurement {
         when (unit) {
             ENERGY_KJ, ENERGY_KCAL ->
                 throw IllegalArgumentException("Cannot convert from/to energy. Use convertEnergyTo instead.")
+
             UNIT_DV, UNIT_IU ->
                 throw IllegalArgumentException("Cannot convert to DV or IU")
 
