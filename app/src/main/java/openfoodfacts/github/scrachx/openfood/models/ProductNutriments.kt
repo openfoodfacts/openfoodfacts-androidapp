@@ -106,6 +106,8 @@ class ProductNutriments : Serializable {
     ) {
         val unit = unit.getRealUnit()
 
+        fun isEnergy() = unit in ENERGY_UNITS
+
         fun getPer100gDisplayString() = buildString {
             modifier.ifNotDefault {
                 append(it.sym)
@@ -118,7 +120,11 @@ class ProductNutriments : Serializable {
          * Returns the amount of nutriment per 100g
          * of product in the units stored in [ProductNutriment.unit]
          */
-        val per100gInUnit get() = per100gInG.convertTo(unit)
+        val per100gInUnit: Measurement
+            get() {
+                return if (isEnergy()) per100gInG
+                else per100gInG.convertTo(unit)
+            }
 
         /**
          * Returns the amount of nutriment per serving
@@ -126,7 +132,11 @@ class ProductNutriments : Serializable {
          *
          * Can be null if [perServingInG] is null.
          */
-        val perServingInUnit get() = perServingInG?.convertTo(unit)
+        val perServingInUnit: Measurement?
+            get() {
+                return if (isEnergy()) perServingInG
+                else perServingInG?.convertTo(unit)
+            }
 
         /**
          * Calculates the nutriment value for a given amount of this product. For example,
