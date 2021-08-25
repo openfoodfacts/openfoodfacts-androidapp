@@ -62,7 +62,6 @@ import openfoodfacts.github.scrachx.openfood.network.ApiFields.Defaults.NUTRITIO
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.FileDownloader.download
-import openfoodfacts.github.scrachx.openfood.utils.Utils.getRoundNumber
 import java.io.File
 import java.text.Collator
 import java.util.*

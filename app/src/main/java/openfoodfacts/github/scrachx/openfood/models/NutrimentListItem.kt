@@ -1,6 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.models
 
-import openfoodfacts.github.scrachx.openfood.utils.Utils.getRoundNumber
+import openfoodfacts.github.scrachx.openfood.utils.getRoundNumber
 
 /**
  * Use a round value for value and servingValue parameters

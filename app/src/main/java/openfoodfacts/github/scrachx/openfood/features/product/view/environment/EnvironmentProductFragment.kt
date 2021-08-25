@@ -108,7 +108,7 @@ class EnvironmentProductFragment : BaseFragment() {
         if (carbonFootprintNutriment != null) {
             binding.textCarbonFootprint.text = buildSpannedString {
                 bold { append(getString(R.string.textCarbonFootprint)) }
-                append(Utils.getRoundNumber(carbonFootprintNutriment.per100gInUnit))
+                append(getRoundNumber(carbonFootprintNutriment.per100gInUnit))
                 append(carbonFootprintNutriment.unit.sym)
             }
         } else {

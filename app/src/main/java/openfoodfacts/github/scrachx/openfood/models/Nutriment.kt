@@ -106,7 +106,7 @@ enum class Nutriment(val key: String) {
 
     companion object {
         fun findbyKey(key: String) = values().find { it.key == key }
-        fun requireByKey(key: String) = findbyKey(key) ?: error("Cannot find nutriment with key '$key'")
+        fun requireByKey(key: String) = findbyKey(key) ?: throw IllegalArgumentException("Cannot find nutriment with key '$key'")
     }
 }
 

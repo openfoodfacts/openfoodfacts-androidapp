@@ -24,7 +24,7 @@ import androidx.browser.customtabs.CustomTabsIntent
 import androidx.browser.customtabs.CustomTabsSession
 import androidx.core.net.toUri
 import openfoodfacts.github.scrachx.openfood.R
-import openfoodfacts.github.scrachx.openfood.utils.Utils.getBitmapFromDrawable
+import openfoodfacts.github.scrachx.openfood.utils.getBitmapFromDrawable
 
 /**
  * Helper class for Custom Tabs.
