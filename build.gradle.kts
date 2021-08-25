@@ -42,6 +42,12 @@ buildscript {
 
 plugins {
     id("org.sonarqube") version "3.0"
+    id("io.gitlab.arturbosch.detekt") version "1.18.0"
+}
+
+detekt {
+    source = files("./app/src/")
+    ignoreFailures = true
 }
 
 allprojects {
@@ -57,6 +63,4 @@ allprojects {
             property("sonar.coverage.exclusions", "**/openfoodfacts/github/scrachx/openfood/models/*")
         }
     }
-
-
 }

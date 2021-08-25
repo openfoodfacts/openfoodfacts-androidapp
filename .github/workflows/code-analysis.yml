@@ -28,32 +28,25 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-env:
-  # Release tag associated with version of Detekt to be installed
-  # SARIF support (required for this workflow) was introduced in Detekt v1.15.0
-  DETEKT_RELEASE_TAG: v1.18.0
-
 jobs:
   detekt:
     name: Detekt
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+      - name: Checkout sources
+        uses: actions/checkout@v2
 
-      # Performs static analysis using Detekt
       - name: Run detekt
-        uses: natiginfo/action-detekt-all@1.18.0
+        uses: gradle/gradle-build-action@v1.5.0
         with:
-          args: --report sarif:/github/workspace/detekt.sarif.json
+          arguments: detekt
 
-      # Uploads results to GitHub repository using the upload-sarif action
-      - uses: github/codeql-action/upload-sarif@v1
+      - name: Upload SARIF
+        uses: github/codeql-action/upload-sarif@v1
         with:
           # Path to SARIF file relative to the root of the repository
-          sarif_file: ${{ github.workspace }}/detekt.sarif.json
+          sarif_file: ${{ github.workspace }}/build/reports/detekt/detekt.sarif
           checkout_path: ${{ github.workspace }}
 
   semgrep:
@@ -61,9 +54,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout sources
+        uses: actions/checkout@v2
 
-      - uses: returntocorp/semgrep-action@v1
+      - name: Run Semgrep
+        uses: returntocorp/semgrep-action@v1
         with:
           # more at semgrep.dev/explore
           config: >-
@@ -71,8 +66,7 @@ jobs:
             p/secrets
           generateSarif: "1"
 
-      # Upload SARIF file generated in previous step
-      - name: Upload SARIF file
+      - name: Upload SARIF
         uses: github/codeql-action/upload-sarif@v1
         with:
           sarif_file: semgrep.sarif
