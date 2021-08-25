@@ -312,7 +312,7 @@ class IngredientsProductFragment : BaseFragment() {
         val novaGroups = product.novaGroups
         if (novaGroups != null && !isFlavors(OBF)) {
             binding.novaLayout.visibility = View.VISIBLE
-            binding.novaExplanation.text = Utils.getNovaGroupExplanation(novaGroups, requireContext()) ?: ""
+            binding.novaExplanation.text = getNovaGroupExplanation(novaGroups, requireContext()) ?: ""
             binding.novaGroup.setImageResource(product.getNovaGroupResource())
             binding.novaGroup.setOnClickListener {
                 val uri = getString(R.string.url_nova_groups).toUri()

@@ -18,13 +18,15 @@ class ProductStateTest {
             setAdditionalProperty(PROPERTY_KEY_2, PROPERTY_VALUE_2)
         }
         val additionalProperties = mapOf<String, Any>(
-                PROPERTY_KEY_1 to PROPERTY_VALUE_1,
-                PROPERTY_KEY_2 to PROPERTY_VALUE_2
+            PROPERTY_KEY_1 to PROPERTY_VALUE_1,
+            PROPERTY_KEY_2 to PROPERTY_VALUE_2
         )
         val checkString = "ProductState[" +
                 "statusVerbose=$STATUS_VERBOSE," +
-                "status=$STATUS,product=$PRODUCT," +
-                "code=$CODE,additionalProperties=$additionalProperties" +
+                "status=$STATUS," +
+                "product=$PRODUCT," +
+                "code=$CODE," +
+                "additionalProperties=$additionalProperties" +
                 "]"
 
         assertThat(productState.toString()).isEqualTo(checkString)

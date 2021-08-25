@@ -230,16 +230,16 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
             val pref = sharedPreferences.getString(getString(R.string.pref_volume_unit_key), "l")
 
             if (pref.equals("oz", true)) {
-                servingSize = UnitUtils.getServingInOz(servingSizeString)
+                servingSize = getServingInOz(servingSizeString)
             } else if (pref.equals("l", true) && servingSizeString.contains("oz", true)) {
-                servingSize = UnitUtils.getServingInL(servingSizeString)
+                servingSize = getServingInL(servingSizeString)
             }
 
             servingSize?.let {
                 binding.textServingSize.text = buildSpannedString {
                     bold { append(getString(R.string.txtServingSize)) }
                     append(" ")
-                    append("${Utils.getRoundNumber(it.value)} ${it.unit}")
+                    append("${getRoundNumber(it.value)} ${it.unit}")
                 }
             }
         }

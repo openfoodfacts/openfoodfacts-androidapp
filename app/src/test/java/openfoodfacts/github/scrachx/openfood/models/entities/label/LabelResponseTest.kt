@@ -37,13 +37,13 @@ class LabelResponseTest {
         assertThat(labelName1.languageCode).isEqualTo(LANGUAGE_CODE_FRENCH)
         assertThat(labelName1.name).isEqualTo(LABEL_NAME_FR)
         assertThat(labelName1.isWikiDataIdPresent).isFalse()
-        assertThat(labelName1.wikiDataId).isEqualTo(null)
+        assertThat(labelName1.wikiDataId).isNull()
         val labelName2 = label.names[1]
         assertThat(labelName2.labelTag).isEqualTo(LABEL_TAG)
         assertThat(labelName2.languageCode).isEqualTo(LANGUAGE_CODE_ENGLISH)
         assertThat(labelName2.name).isEqualTo(LABEL_NAME_EN)
         assertThat(labelName2.isWikiDataIdPresent).isFalse()
-        assertThat(labelName2.wikiDataId).isEqualTo(null)
+        assertThat(labelName2.wikiDataId).isNull()
     }
 
     @Test
