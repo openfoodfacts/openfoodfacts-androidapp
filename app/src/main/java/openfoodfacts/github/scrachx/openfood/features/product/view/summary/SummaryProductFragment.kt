@@ -301,7 +301,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
 
         // Checks the product states_tags to determine which prompt to be shown
         refreshStatesTagsPrompt()
-        lifecycleScope.launch {
+        lifecycleScope.launchWhenResumed {
             presenter.loadAllergens()
             presenter.loadCategories()
             presenter.loadLabels()
