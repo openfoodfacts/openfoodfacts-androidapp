@@ -17,7 +17,7 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    val kotlinVersion by extra("1.5.21")
+    val kotlinVersion by extra("1.5.30")
     val jacksonVersion by extra("2.12.3")
     val greendaoVersion by extra("3.3.0")
     val hiltVersion by extra("2.38.1")
@@ -27,7 +27,7 @@ buildscript {
         maven("https://jitpack.io")
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:7.0.0")
+        classpath("com.android.tools.build:gradle:7.0.1")
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -45,11 +45,6 @@ plugins {
     id("io.gitlab.arturbosch.detekt") version "1.18.0"
 }
 
-detekt {
-    source = files("./app/src/")
-    ignoreFailures = true
-}
-
 allprojects {
     repositories {
         google()
@@ -63,4 +58,9 @@ allprojects {
             property("sonar.coverage.exclusions", "**/openfoodfacts/github/scrachx/openfood/models/*")
         }
     }
+}
+
+detekt {
+    source = files("./app/src/")
+    ignoreFailures = true
 }
