@@ -65,6 +65,7 @@ import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityContinuousScanBinding
 import openfoodfacts.github.scrachx.openfood.features.ImagesManageActivity
 import openfoodfacts.github.scrachx.openfood.features.compare.ProductCompareActivity
+import openfoodfacts.github.scrachx.openfood.features.compare.ProductCompareActivity.Companion.KEY_PRODUCTS_TO_COMPARE
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity
 import openfoodfacts.github.scrachx.openfood.features.product.view.IProductView
 import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewActivity.ShowIngredientsAction
@@ -245,19 +246,8 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
 
                 // If we're here from comparison -> add product, return to comparison activity
                 if (intent.getBooleanExtra(ProductCompareActivity.KEY_COMPARE_PRODUCT, false)) {
-                    startActivity(Intent(this@ContinuousScanActivity, ProductCompareActivity::class.java).apply {
-                        putExtra(ProductCompareActivity.KEY_PRODUCT_FOUND, true)
-
-                        val productsToCompare = intent.extras!!.getSerializable(ProductCompareActivity.KEY_PRODUCTS_TO_COMPARE) as ArrayList<Product>
-                        if (product in productsToCompare) {
-                            putExtra(ProductCompareActivity.KEY_PRODUCT_ALREADY_EXISTS, true)
-                        } else {
-                            productsToCompare += product
-                            matomoAnalytics.trackEvent(AnalyticsEvent.AddProductToComparison(product.code))
-                        }
-                        putExtra(ProductCompareActivity.KEY_PRODUCTS_TO_COMPARE, productsToCompare)
-                        addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                    })
+                    setResult(RESULT_OK, Intent().putExtra(KEY_PRODUCTS_TO_COMPARE, product))
+                    finish()
                 }
 
                 showAllViews()
@@ -868,10 +858,9 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
 
 
         @JvmStatic
-        fun start(context: Context, productsToCompare: ArrayList<Product>) {
+        fun start(context: Context) {
             Intent(context, ContinuousScanActivity::class.java).apply {
                 putExtra(ProductCompareActivity.KEY_COMPARE_PRODUCT, true)
-                putExtra(ProductCompareActivity.KEY_PRODUCTS_TO_COMPARE, productsToCompare)
                 context.startActivity(this)
             }
         }
