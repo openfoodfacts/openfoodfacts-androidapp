@@ -9,6 +9,9 @@ import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.utils.OfflineProductService
+import openfoodfacts.github.scrachx.openfood.utils.buildConstraints
+import openfoodfacts.github.scrachx.openfood.utils.buildData
+import openfoodfacts.github.scrachx.openfood.utils.buildOneTimeWorkRequest
 import javax.inject.Inject
 
 @HiltWorker
@@ -38,36 +41,32 @@ class ProductUploaderWorker @AssistedInject constructor(
     companion object {
         private const val WORK_TAG = "OFFLINE_WORKER_TAG"
         const val KEY_INCLUDE_IMAGES = "includeImages"
-        private fun inputData(includeImages: Boolean) = Data.Builder()
-            .putBoolean(KEY_INCLUDE_IMAGES, includeImages)
-            .build()
 
-        fun scheduleProductUpload(context: Context, sharedPreferences: SharedPreferences) {
+        fun scheduleProductUpload(context: Context, pref: SharedPreferences) {
 
-            val constData = Constraints.Builder()
-                .setRequiredNetworkType(NetworkType.CONNECTED)
-                .build()
-            val uploadDataWorkRequest = OneTimeWorkRequest.Builder(ProductUploaderWorker::class.java)
-                .setInputData(inputData(false))
-                .setConstraints(constData)
-                .build()
+            val constData = buildConstraints {
+                setRequiredNetworkType(NetworkType.CONNECTED)
+            }
+            val uploadDataWorkRequest = buildUploadRequest(constData, false)
 
-            val constPics = Constraints.Builder()
-                .setRequiredNetworkType(
-                    if (sharedPreferences.getBoolean(context.getString(R.string.pref_enable_mobile_data_key), true))
-                        NetworkType.CONNECTED
-                    else
-                        NetworkType.UNMETERED
-                )
-            val uploadPicturesWorkRequest = OneTimeWorkRequest.Builder(ProductUploaderWorker::class.java)
-                .setInputData(inputData(true))
-                .setConstraints(constPics.build())
-                .build()
+            val constPics = buildConstraints {
+                val uploadIfMobile = pref.getBoolean(context.getString(R.string.pref_enable_mobile_data_key), true)
+
+                setRequiredNetworkType(if (uploadIfMobile) NetworkType.CONNECTED else NetworkType.UNMETERED)
+            }
+            val uploadPicturesWorkRequest = buildUploadRequest(constPics, true)
 
             WorkManager.getInstance(context)
                 .beginUniqueWork(WORK_TAG, ExistingWorkPolicy.REPLACE, uploadDataWorkRequest)
                 .then(uploadPicturesWorkRequest)
                 .enqueue()
         }
+
+        private fun buildUploadRequest(constPics: Constraints, includeImages: Boolean) = buildOneTimeWorkRequest<ProductUploaderWorker> {
+            setInputData(buildData { putBoolean(KEY_INCLUDE_IMAGES, includeImages) })
+            setConstraints(constPics)
+        }
+
     }
 }
+

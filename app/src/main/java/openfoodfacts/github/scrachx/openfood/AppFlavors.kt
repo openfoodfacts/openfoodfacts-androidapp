@@ -22,6 +22,6 @@ object AppFlavors {
     const val OBF = "obf"
 
     @JvmStatic
-    fun isFlavors(vararg flavors: String) = flavors.contains(BuildConfig.FLAVOR_versionCode)
+    fun isFlavors(vararg flavors: String) = BuildConfig.FLAVOR_versionCode in flavors
 
 }

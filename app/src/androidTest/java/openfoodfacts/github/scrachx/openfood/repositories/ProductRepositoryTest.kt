@@ -11,6 +11,7 @@ import kotlinx.coroutines.test.runBlockingTest
 import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.Allergen
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenName
+import openfoodfacts.github.scrachx.openfood.utils.getAppPreferences
 import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
@@ -50,8 +51,9 @@ class ProductRepositoryTest {
 
     @Test
     fun testGetAllergens() = runBlockingTest {
-        val mSettings = instance.getSharedPreferences("prefs", 0)
-        val isDownloadActivated = mSettings.getBoolean(Taxonomy.Allergens.getDownloadActivatePreferencesId(), false)
+        val appPrefs = instance.getAppPreferences()
+
+        val isDownloadActivated = appPrefs.getBoolean(Taxonomy.Allergens.getDownloadActivatePreferencesId(), false)
         val allergens = productRepository.reloadAllergensFromServer()
         assertNotNull(allergens)
         if (!isDownloadActivated) {

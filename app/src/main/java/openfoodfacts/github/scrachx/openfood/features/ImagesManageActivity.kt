@@ -96,7 +96,7 @@ class ImagesManageActivity : BaseActivity() {
 
     private var lastViewedImage: File? = null
     private lateinit var attacher: PhotoViewAttacher
-    private val settings by lazy { getSharedPreferences("prefs", 0) }
+    private val settings by lazy { getAppPreferences() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -185,7 +185,7 @@ class ImagesManageActivity : BaseActivity() {
                     4 -> startShowCase(getString(R.string.title_edit_photo), getString(R.string.content_edit_photo), R.id.btnEditImage, 5)
                     5 -> startShowCase(getString(R.string.title_unselect_photo), getString(R.string.content_unselect_photo), R.id.btnUnselectImage, 6)
                     6 -> startShowCase(getString(R.string.title_exit), getString(R.string.content_exit), R.id.btn_done, 7)
-                    7 -> settings!!.edit { putBoolean(getString(R.string.check_first_time), false) }
+                    7 -> settings.edit { putBoolean(getString(R.string.check_first_time), false) }
                 }
             }
             .build()

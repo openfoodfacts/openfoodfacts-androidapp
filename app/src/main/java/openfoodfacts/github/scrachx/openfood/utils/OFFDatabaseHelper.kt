@@ -42,7 +42,7 @@ class OFFDatabaseHelper @JvmOverloads constructor(
         name: String,
         factory: CursorFactory? = null
 ) : OpenHelper(context, name, factory) {
-    private val settings: SharedPreferences by lazy { context.getSharedPreferences("prefs", 0) }
+    private val settings: SharedPreferences by lazy { context.getAppPreferences() }
 
     override fun onCreate(db: Database) {
         Log.i(LOG_TAG, "Creating tables for schema version ${DaoMaster.SCHEMA_VERSION}")

@@ -14,6 +14,7 @@ import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.ActivitySplashBinding
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.features.welcome.WelcomeActivity
+import openfoodfacts.github.scrachx.openfood.utils.getAppPreferences
 import pl.aprilapps.easyphotopicker.EasyImage
 import kotlin.time.ExperimentalTime
 
@@ -23,7 +24,7 @@ class SplashActivity : BaseActivity() {
 
 
     private val controller by lazy {
-        SplashController(getSharedPreferences("prefs", 0), this, this)
+        SplashController(getAppPreferences(), this, this)
     }
 
     @ExperimentalTime

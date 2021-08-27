@@ -62,6 +62,7 @@ import openfoodfacts.github.scrachx.openfood.models.entities.tag.Tag
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.services.AnalysisDataAPI
 import openfoodfacts.github.scrachx.openfood.network.services.RobotoffAPI
+import openfoodfacts.github.scrachx.openfood.utils.getAppPreferences
 import openfoodfacts.github.scrachx.openfood.utils.getLoginPreferences
 import org.greenrobot.greendao.query.WhereCondition.StringCondition
 import javax.inject.Inject
@@ -278,8 +279,9 @@ class ProductRepository @Inject constructor(
      * @param lastDownload Date of last update on Long format
      */
     private fun <T> updateLastDownloadDateInSettings(taxonomy: Taxonomy<T>, lastDownload: Long) {
-        context.getSharedPreferences("prefs", 0)
-            .edit { putLong(taxonomy.getLastDownloadTimeStampPreferenceId(), lastDownload) }
+        context.getAppPreferences().edit {
+            putLong(taxonomy.getLastDownloadTimeStampPreferenceId(), lastDownload)
+        }
         Log.i(LOG_TAG, "Set lastDownload of $taxonomy to $lastDownload")
     }
 
