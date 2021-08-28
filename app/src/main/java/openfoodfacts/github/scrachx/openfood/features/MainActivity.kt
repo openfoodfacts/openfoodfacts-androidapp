@@ -210,7 +210,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
                     return false
                 }
             })
-            withSelectionListEnabledForSingleProfile(selectionListEnabledForSingleProfile = false)
+            withSelectionListEnabledForSingleProfile(false)
             withOnAccountHeaderListener(object : AccountHeader.OnAccountHeaderListener {
                 override fun onProfileChanged(view: View?, profile: IProfile<*>, current: Boolean): Boolean {
                     if (profile is IDrawerItem<*> && profile.identifier == ITEM_MANAGE_ACCOUNT.toLong()) {
@@ -594,7 +594,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
         userSettingsURI = "${getString(R.string.website)}cgi/user.pl?type=edit&userid=$userLogin&user_id=$userLogin&user_session=$userSession".toUri()
         customTabActivityHelper.mayLaunchUrl(userSettingsURI, null, null)
 
-        return profileItem {
+        return profileSettingItem {
             withName(getString(R.string.action_manage_account))
             withIcon(GoogleMaterial.Icon.gmd_settings)
             withIdentifier(ITEM_MANAGE_ACCOUNT.toLong())
@@ -685,7 +685,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
         withSelectable(false)
     }
 
-    private fun getUserProfile() = profileItem {
+    private fun getUserProfile(): ProfileDrawerItem = profileItem {
         withName(getLoginPreferences().getString("user", resources.getString(R.string.txt_anonymous)))
         withIcon(R.drawable.img_home)
         withIdentifier(ITEM_USER.toLong())
