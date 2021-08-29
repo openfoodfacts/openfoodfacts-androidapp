@@ -511,8 +511,8 @@
     <string name="notify_channel_description">Benachrichtigung, um den Speicherort der exportierten Dateien anzuzeigen</string>
     <string name="products_to_be_completed">Noch abzuschließende Produkte</string>
     <string name="offline_notification_title">Noch zu sendende Offline-Beiträge</string>
-    <string name="creator_history">Produkt hinzugefügt am %1$s um %2$s MESZ durch</string>
-    <string name="last_editor_history">Letzte Änderung der Produktseite am %1$s um %2$s MESZ durch </string>
+    <string name="creator_history">Produkt hinzugefügt am %1$s um %2$s MESZ durch %3$s</string>
+    <string name="last_editor_history">Letzte Änderung der Produktseite am %1$s um %2$s MESZ durch %3$s</string>
     <string name="other_editors">Produktseite auch bearbeitet von </string>
     <string name="product_states">Produktdaten</string>
     <string name="incomplete_states">Unvollständige Daten</string>
@@ -551,7 +551,7 @@
     <string name="extract_url">URL aus QR-Code extrahieren</string>
     <string name="search_url">Nach URL der offiziellen Seite suchen</string>
     <string name="product_language">Produktsprache: </string>
-    <string name="hint_emb_codes">Beispiele: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522, FSSL 10013011001409</string>
+    <string name="hint_emb_codes">Beispiele: EMB 53062, FR 62.448.034 CE, DE SN-016 EG, FSSL 10013011001409</string>
     <string name="official_website">Offizielle Website</string>
     <string name="scan_QR_code">Scannen Sie den QR-Code für die Produktwebsite</string>
     <string name="add_at_least_one_picture">Bitte fügen Sie mindestens ein Bild dieses Produkts hinzu, bevor Sie fortfahren</string>
