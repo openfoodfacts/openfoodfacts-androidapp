@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/ -->
-    <string name="website">https://world.openpetfoodfacts.org/</string>
+    <string name="website">https://world-nl.openpetfoodfacts.org/</string>
     <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contribuer -->
-    <string name="website_contribute">https://world.openpetfoodfacts.org/contribute</string>
+    <string name="website_contribute">https://world-nl.openpetfoodfacts.org/bijdragen</string>
     <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/decouvrir -->
-    <string name="website_discover">https://world.openpetfoodfacts.org/discover</string>
+    <string name="website_discover">https://world-nl.openpetfoodfacts.org/ontdekken</string>
     <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/produit/ -->
-    <string name="website_product">https://world.openpetfoodfacts.org/product/</string>
+    <string name="website_product">https://world-nl.openpetfoodfacts.org/product/</string>
     <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contributeur/ -->
-    <string name="website_contributor">https://world.openpetfoodfacts.org/contributor/</string>
+    <string name="website_contributor">https://world-nl.openpetfoodfacts.org/bijdrager/</string>
     <string name="terms_url">https://world.openpetfoodfacts.org/terms-of-use&amp;hl=nl</string>
     <string name="txtHomeOnline">Open Pet Food Facts is een database met meer dan %1$s diervoedingsproducten (plus degene die je gaat bijdragen) Woef. Woef.</string>
     <string name="txtHome">Open Pet Food Facts is een database van diervoedingsproducten met ingrediënten, voedingsfeiten… Woef. Woef.</string>
@@ -24,10 +24,10 @@
     <string name="txtDialogsContent">Het gescande product bestaat nog niet in Open Pet Food Facts. Voeg deze toe.</string>
     <string name="txtDialogsContentPowerMode">Het gescande product bestaat al in Open Pet Food Facts.</string>
     <string name="msg_share">Bekijk dit product op Open Products Facts:</string>
-    <string name="not_support_books">Boeken worden momenteel niet ondersteund door Open Food Facts</string>
+    <string name="not_support_books">Boeken worden momenteel niet ondersteund door Open Pet Food Facts</string>
     <string name="txt_broaden_search">- zoekopdracht uitbreiden \n-scan een product en voeg het toe aan Open Products Facts</string>
     <string name="Donation">Klik hier om te doneren aan Open Products Facts</string>
-    <string name="translate_help_title">Help met het vertalen van Open Food Facts</string>
+    <string name="translate_help_title">Help met het vertalen van Open Pet Food Facts</string>
     <string name="translate_help_summary">Breng de Open Food Fact database naar jouw taal - geen technische kennis vereist</string>
     <string name="text_offline_info_dialog">Scan de producten ook als u offline bent, om ze later aan Open Pet Food Facts toe te voegen. De gescande producten verschijnen hier en u kunt ze verzenden via de onderstaande knop.</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Informatie over je allergieën wordt nooit naar de Open Foods Facts-server verzonden. Let ook op dat productgegevens mogelijk niet accuraat zijn en detectie mogelijk niet 100% accuraat is, dus controleer dit aub zelf! </string>

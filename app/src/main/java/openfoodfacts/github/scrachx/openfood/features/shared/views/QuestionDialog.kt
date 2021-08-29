@@ -24,18 +24,33 @@ import androidx.core.content.res.ResourcesCompat
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.DialogProductQuestionBinding
 
-class QuestionDialog(mContext: Context) {
-    private val binding = DialogProductQuestionBinding.inflate(LayoutInflater.from(mContext))
-    private val mDialog = Dialog(mContext, R.style.QuestionDialog).apply {
+class QuestionDialog(context: Context) {
+    private val binding = DialogProductQuestionBinding.inflate(LayoutInflater.from(context))
+    private val dialog = Dialog(context, R.style.QuestionDialog).apply {
         requestWindowFeature(android.view.Window.FEATURE_NO_TITLE)
         setContentView(binding.root)
     }
-    private val mAmbiguityFeedbackIcon = ResourcesCompat.getDrawable(mContext.resources, R.drawable.ic_help_black_24dp, mContext.theme)
-    private val mAmbiguityFeedbackText = mContext.resources.getString(R.string.product_question_ambiguous_response)
-    private val mNegativeFeedbackIcon = ResourcesCompat.getDrawable(mContext.resources, R.drawable.ic_cancel_black_24dp, mContext.theme)
-    private val mNegativeFeedbackText = mContext.resources.getString(R.string.product_question_negative_response)
-    private val mPositiveFeedbackIcon = ResourcesCompat.getDrawable(mContext.resources, R.drawable.ic_check_circle_black_24dp, mContext.theme)
-    private val mPositiveFeedbackText = mContext.resources.getString(R.string.product_question_positive_response)
+
+    private val mAmbiguityFeedbackIcon = ResourcesCompat.getDrawable(
+        context.resources,
+        R.drawable.ic_help_black_24dp,
+        context.theme
+    )
+    private val mAmbiguityFeedbackText = context.resources.getString(R.string.product_question_ambiguous_response)
+
+    private val mNegativeFeedbackIcon = ResourcesCompat.getDrawable(
+        context.resources,
+        R.drawable.ic_cancel_black_24dp,
+        context.theme
+    )
+    private val mNegativeFeedbackText = context.resources.getString(R.string.product_question_negative_response)
+
+    private val mPositiveFeedbackIcon = ResourcesCompat.getDrawable(
+        context.resources,
+        R.drawable.ic_check_circle_black_24dp,
+        context.theme
+    )
+    private val mPositiveFeedbackText = context.resources.getString(R.string.product_question_positive_response)
 
 
     @ColorRes
@@ -51,19 +66,19 @@ class QuestionDialog(mContext: Context) {
 
     init {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
-            mDialog.window?.setLayout(
-                    (mContext.resources.displayMetrics.widthPixels * 0.90).toInt(),
-                    (mContext.resources.displayMetrics.heightPixels * 0.50).toInt()
+            dialog.window?.setLayout(
+                (context.resources.displayMetrics.widthPixels * 0.90).toInt(),
+                (context.resources.displayMetrics.heightPixels * 0.50).toInt()
             )
         }
     }
 
 
     private fun initiateListeners() {
-        binding.postiveFeedbackLayout.setOnClickListener { onPositiveFeedbackClicked() }
-        binding.negativeFeedbackLayout.setOnClickListener { onNegativeFeedbackClicked() }
-        binding.ambiguityFeedbackLayout.setOnClickListener { onAmbiguityFeedbackClicked() }
-        mDialog.setOnCancelListener { onCancelListener?.invoke(this) }
+        binding.postiveFeedbackLayout.setOnClickListener { onPositiveFeedback?.invoke(this) }
+        binding.negativeFeedbackLayout.setOnClickListener { onNegativeFeedback?.invoke(this) }
+        binding.ambiguityFeedbackLayout.setOnClickListener { onAmbiguityFeedback?.invoke(this) }
+        dialog.setOnCancelListener { onCancelListener?.invoke(this) }
     }
 
     fun show() {
@@ -77,23 +92,15 @@ class QuestionDialog(mContext: Context) {
         binding.ambiguityFeedbackText.text = mAmbiguityFeedbackText
         binding.ambiguityFeedbackIcon.setImageDrawable(mAmbiguityFeedbackIcon)
         binding.feedbackBodyLayout.setBackgroundResource(backgroundColor)
-        mDialog.show()
+        dialog.show()
     }
 
 
-    fun dismiss() = mDialog.dismiss()
+    fun dismiss() = dialog.dismiss()
+}
 
-    private fun onPositiveFeedbackClicked() {
-        onPositiveFeedback?.let { it(this) }
-    }
-
-    private fun onNegativeFeedbackClicked() {
-        onNegativeFeedback?.let { it(this) }
-
-    }
-
-    private fun onAmbiguityFeedbackClicked() {
-        onAmbiguityFeedback?.let { it(this) }
-    }
-
+inline fun showQuestionDialog(context: Context, dialogAction: QuestionDialog.() -> Unit) {
+    val dialog = QuestionDialog(context)
+    dialog.dialogAction()
+    dialog.show()
 }

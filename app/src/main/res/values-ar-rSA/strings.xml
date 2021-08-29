@@ -182,7 +182,7 @@
     <string name="alert_dialog_warning_title">تحذير</string>
     <string name="alert_dialog_warning_msg_user">تم تغيير إسم المستخدم / كلمة السر، يرجى تحديث المعلومات</string>
     <string name="toast_retrieving">جاري التحميل…</string>
-    <string name="txtBarcode">الرمز الشريطي:</string>
+    <string name="txtBarcode">الرقم التسلسلي:</string>
     <string name="txtCategories">الفئات :</string>
     <string name="txtLabels">التسميات، الشهادات، الجوائز:</string>
     <string name="txtEMB">رمز EMB:</string>
@@ -238,7 +238,7 @@
     <string name="open_food_drawer">Open Food Facts</string>
     <string name="search_drawer">بحث</string>
     <string name="search_by_barcode_drawer">البحث عن طريق الرمز الشريطي</string>
-    <string name="category_drawer">التصنيفات</string>
+    <string name="category_drawer">الفئات</string>
     <string name="search_by_category">Category</string>
     <string name="scan_search">امسح</string>
     <string name="user_drawer">المستخدم</string>
@@ -452,20 +452,20 @@
     <string name="dismiss">تجاهل</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <!--Just replace "world" by "fr", "de"… translate the "terms-of-use" with the hyphens -->
-    <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
+    <string name="terms_url">https://world-ar.openfoodfacts.org/terms-of-use</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
-    <string name="faq_url">https://world.openfoodfacts.org/faq</string>
+    <string name="faq_url">https://world-ar.openfoodfacts.org/faq</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
     <string name="hunger_game_url">https://hunger.openfoodfacts.org/</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate the end of the url -->
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
-    <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
+    <string name="nutriscore_uri">https://world-ar.openfoodfacts.org/nutriscore</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
-    <string name="url_nova_groups">https://world-en.openfoodfacts.org/nova</string>
+    <string name="url_nova_groups">https://world-ar.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the end of the url -->
-    <string name="ecoscore_url">https://world.openfoodfacts.org/eco-score-the-environmental-impact-of-food-products</string>
+    <string name="ecoscore_url">https://world-ar.openfoodfacts.org/eco-score-the-environmental-impact-of-food-products</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
+    <string name="url_nutrient_values">https://world-ar.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">عام</string>
     <string name="preference_header_network">Network</string>
     <string name="preference_header_contributing">Contributing</string>
@@ -493,14 +493,15 @@
     <string name="additive_string">المواد المضافة</string>
     <string name="allergen_string">Allergen</string>
     <string name="search_string">بحث</string>
-    <string name="country_string">بلدان بيع</string>
+    <string name="country_string">Country</string>
     <string name="store_subtitle">المتجر</string>
     <string name="packaging_subtitle">التعبئة والتغليف</string>
+    <string name="state_subtitle">الولاية</string>
     <string name="packaging_string">التعبئة والتغليف</string>
-    <string name="label_string">al3alama</string>
+    <string name="label_string">Label</string>
     <string name="category_string">Category</string>
     <string name="connection">متصل</string>
-    <string name="contributor_string">Almousstakhdimoun</string>
+    <string name="contributor_string"></string>
     <string name="app_disabled_text">التطبيق معطل</string>
     <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
     <string name="vitamin_tags_text">الفيتامينات:</string>
@@ -831,11 +832,14 @@
     <string name="changelog_translation_help">Want to see this changelog in %s?\nJoin the translation team!</string>
     <string name="whats_new">What\'s new with Open Food Facts?</string>
     <!-- New onboarding slides -->
-    <string name="eco_score_slide_4_title">Eco-Score</string>
-    <string name="join_the_food_revolution">Join the food revolution</string>
-    <string name="slide_1_text_revolution">Scan food, Take photos, Help transform the food system</string>
-    <string name="get_the_nutri_score">الحصول على Nutriscore (مجموع نقاط التغذية)</string>
-    <string name="synthesis_of_nutrition_slide_2_text">A simple synthesis of the nutritional quality of your food</string>
-    <string name="avoid_ultra_processed_foods">Avoid ultra-processed foods</string>
-    <string name="nova_slide_3_text">Reduce the amount of ultra-processed foods in your diet.</string>
+    <string name="title_welcome_intro">Join the food revolution</string>
+    <string name="msg_welcome_intro">Scan food, Take photos, Help transform the food system</string>
+    <string name="title_welcome_nutriscore">الحصول على Nutriscore (مجموع نقاط التغذية)</string>
+    <string name="msg_welcome_nutriscore">A simple synthesis of the nutritional quality of your food</string>
+    <string name="title_welcome_nova">Avoid ultra-processed foods</string>
+    <string name="msg_welcome_nova">Reduce the amount of ultra-processed foods in your diet.</string>
+    <string name="title_welcome_ecoscore">Eco-Score</string>
+    <string name="msg_welcome_ecoscore">تركيبة من الأثر البيئي لطعامك.</string>
+    <string name="title_welcome_matomo">إرسال تحليلات مجهولة</string>
+    <string name="msg_welcome_matomo">ساعد متطوعين Open Food Facts لتطوير التطبيق. لديك قرار في إرسال تحليلات مجهولة. إذا غيرت رأيك، هذا الخيار يمكن تمكينه وتعطيله في أي وقت من الإعدادات.</string>
 </resources>

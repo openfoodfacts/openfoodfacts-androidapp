@@ -2,11 +2,11 @@ package openfoodfacts.github.scrachx.openfood.utils
 
 import android.util.Log
 import androidx.annotation.CheckResult
-import io.reactivex.Single
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import openfoodfacts.github.scrachx.openfood.repositories.Taxonomy
 import org.greenrobot.greendao.AbstractDao
+import org.greenrobot.greendao.query.QueryBuilder
 import org.jetbrains.annotations.Contract
 
 /**
@@ -17,7 +17,23 @@ import org.jetbrains.annotations.Contract
 suspend fun AbstractDao<*, *>.isEmpty() = withContext(Dispatchers.IO) { this@isEmpty.count() == 0L }
 
 @Contract(pure = true)
-@CheckResult
-fun <T> logDownload(single: Single<List<T>?>, taxonomy: Taxonomy) = single.doOnSuccess {
-    Log.i(Taxonomy::class.simpleName + "getTaxonomyData", "refreshed taxonomy '$taxonomy' from server")
+fun <T> logDownload(taxonomy: Taxonomy<T>) {
+    Log.i(
+        "${Taxonomy::class.simpleName}",
+        "Refreshed taxonomy '${taxonomy::class.simpleName}' from server"
+    )
+}
+
+inline fun <T, R> AbstractDao<T, R>.build(builderAction: QueryBuilder<T>.() -> Unit): QueryBuilder<T> {
+    val builder = queryBuilder()
+    builder.builderAction()
+    return builder
+}
+
+inline fun <T, R> AbstractDao<T, R>.unique(builderAction: QueryBuilder<T>.() -> Unit): T? {
+    return build(builderAction).unique()
+}
+
+inline fun <T, R> AbstractDao<T, R>.list(builderAction: QueryBuilder<T>.() -> Unit = {}): List<T> {
+    return build(builderAction).list()
 }

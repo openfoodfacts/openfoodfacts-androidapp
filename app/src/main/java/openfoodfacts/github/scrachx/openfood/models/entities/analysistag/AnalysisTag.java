@@ -8,21 +8,21 @@ import org.greenrobot.greendao.annotation.Index;
 import org.greenrobot.greendao.annotation.JoinProperty;
 import org.greenrobot.greendao.annotation.Keep;
 import org.greenrobot.greendao.annotation.ToMany;
-import org.greenrobot.greendao.annotation.Unique;
 
 import java.util.List;
 
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
 
-@Entity(indexes = {
-    @Index(value = "tag", unique = true)
-})
+@Entity
 public class AnalysisTag {
     @Id(autoincrement = true)
     private Long id;
-    @Unique
+    @Index
     private String tag;
-    private Boolean enabled = true; /*If the analysis tag is being checked for by the user.*/
+    /**
+     * If the analysis tag is being checked for by the user.
+     */
+    private Boolean enabled = true;
     @ToMany(joinProperties = {
         @JoinProperty(name = "tag", referencedName = "analysisTag")
     })
@@ -149,7 +149,9 @@ public class AnalysisTag {
         this.enabled = enabled;
     }
 
-    /** called by internal mechanisms, do not call yourself. */
+    /**
+     * called by internal mechanisms, do not call yourself.
+     */
     @Generated(hash = 250411501)
     public void __setDaoSession(DaoSession daoSession) {
         this.daoSession = daoSession;

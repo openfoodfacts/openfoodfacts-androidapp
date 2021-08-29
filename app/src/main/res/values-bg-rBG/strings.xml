@@ -160,7 +160,7 @@
     <string name="alert_dialog_warning_title">Предупреждение</string>
     <string name="alert_dialog_warning_msg_user">Потребителско име/парола е променена, моля обновете информацията</string>
     <string name="toast_retrieving">Зареждане…</string>
-    <string name="txtBarcode">Баркод :</string>
+    <string name="txtBarcode">Barcode:</string>
     <string name="txtCategories">Категории :</string>
     <string name="txtLabels">Етикети, сертификации, награди :</string>
     <string name="txtEMB">EMB код:</string>
@@ -187,7 +187,7 @@
     <string name="hintBarcode">Баркод</string>
     <string name="txtNutriScoreInfo">Научете повече за нивата на хранителните вещества</string>
     <string name="txtloginHelper">If you have an Open Food Facts account, you can login here with it</string>
-    <string name="hintLogin">Username</string>
+    <string name="hintLogin">Login</string>
     <string name="hintPass">Парола</string>
     <string name="errorLogin">Грешно име или парола</string>
     <string name="errorWeb">Не успяхме да получим достъп до интернет. Имате ли проблеми със свързаността?</string>
@@ -230,7 +230,7 @@
     <string name="select_camera">Изберете камера</string>
     <string name="ok_button">ОК</string>
     <string name="cancel_button">Отмени</string>
-    <string name="login_button">Username</string>
+    <string name="login_button">Login</string>
     <string name="create_account_button">Създай профил</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
     <string name="title_info_dialog">Как работи това?</string>
@@ -457,7 +457,7 @@
     <string name="preference_analytics_bottom_sheet_grant_button">Grant</string>
     <string name="preference_analytics_bottom_sheet_decline_button">Decline</string>
     <string name="scan_first_string">Историята на продукта ви ще бъде показана тук. \n Тази история е само за вас и се съхранява локално.</string>
-    <string name="log_in">Username</string>
+    <string name="log_in">Login</string>
     <string name="login_true">Вече сте влезли!</string>
     <string name="confirm_logout">Потвърдете излизането</string>
     <string name="logout_dialog_content">Сигурни ли сте, че искате излезете?</string>
@@ -471,9 +471,10 @@
     <string name="additive_string">Добавка</string>
     <string name="allergen_string">Allergen</string>
     <string name="search_string">Търсене</string>
-    <string name="country_string">Държави, където се продават</string>
+    <string name="country_string">Country</string>
     <string name="store_subtitle">Магазин</string>
     <string name="packaging_subtitle">Опаковка</string>
+    <string name="state_subtitle">State</string>
     <string name="packaging_string">Опаковка</string>
     <string name="label_string">Етикет</string>
     <string name="category_string">Категория</string>
@@ -807,11 +808,14 @@
     <string name="changelog_translation_help">Want to see this changelog in %s?\nJoin the translation team!</string>
     <string name="whats_new">What\'s new with Open Food Facts?</string>
     <!-- New onboarding slides -->
-    <string name="eco_score_slide_4_title">Eco-Score</string>
-    <string name="join_the_food_revolution">Join the food revolution</string>
-    <string name="slide_1_text_revolution">Scan food, Take photos, Help transform the food system</string>
-    <string name="get_the_nutri_score">Вземете Nutri-Score</string>
-    <string name="synthesis_of_nutrition_slide_2_text">A simple synthesis of the nutritional quality of your food</string>
-    <string name="avoid_ultra_processed_foods">Avoid ultra-processed foods</string>
-    <string name="nova_slide_3_text">Reduce the amount of ultra-processed foods in your diet.</string>
+    <string name="title_welcome_intro">Join the food revolution</string>
+    <string name="msg_welcome_intro">Scan food, Take photos, Help transform the food system</string>
+    <string name="title_welcome_nutriscore">Вземете Nutri-Score</string>
+    <string name="msg_welcome_nutriscore">A simple synthesis of the nutritional quality of your food</string>
+    <string name="title_welcome_nova">Avoid ultra-processed foods</string>
+    <string name="msg_welcome_nova">Reduce the amount of ultra-processed foods in your diet.</string>
+    <string name="title_welcome_ecoscore">Eco-Score</string>
+    <string name="msg_welcome_ecoscore">A synthesis of the environmental impact of your food.</string>
+    <string name="title_welcome_matomo">Send anonymous analytics</string>
+    <string name="msg_welcome_matomo">Help the Open Food Facts volunteers to improve the app. You decide if you send anonymous analytics.\n\nIf you change your mind this option can be enabled and disabled at any time from the settings.</string>
 </resources>

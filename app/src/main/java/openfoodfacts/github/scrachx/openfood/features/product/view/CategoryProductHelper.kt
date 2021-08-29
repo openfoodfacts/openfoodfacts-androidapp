@@ -1,108 +1,118 @@
 package openfoodfacts.github.scrachx.openfood.features.product.view
 
 import android.graphics.Typeface
-import android.text.SpannableStringBuilder
 import android.text.Spanned
+import android.text.SpannedString
 import android.text.method.LinkMovementMethod
 import android.text.style.*
 import android.view.View
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.text.bold
+import androidx.core.text.buildSpannedString
+import androidx.core.text.color
 import androidx.core.text.inSpans
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.rxkotlin.addTo
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.launch
 import openfoodfacts.github.scrachx.openfood.R
-import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivity.Companion.start
+import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivity
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
 import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoryName
 import openfoodfacts.github.scrachx.openfood.network.WikiDataApiClient
 import openfoodfacts.github.scrachx.openfood.utils.SearchType
 import openfoodfacts.github.scrachx.openfood.utils.showBottomSheet
 
-class CategoryProductHelper(
-        private val categoryText: TextView,
-        private val categories: List<CategoryName>,
-        private val fragment: BaseFragment,
-        private val apiClient: WikiDataApiClient,
-        private val disp: CompositeDisposable
-) {
-    var containsAlcohol = false
-        private set
+object CategoryProductHelper {
 
-    fun showCategories() = categoryText.let {
-        it.movementMethod = LinkMovementMethod.getInstance()
-        it.isClickable = true
-        it.movementMethod = LinkMovementMethod.getInstance()
-
-        val text = SpannableStringBuilder()
-                .bold { append(fragment.getString(R.string.txtCategories)) }
-                .append(" ")
-
+    fun showCategories(
+        fragment: BaseFragment,
+        categoryText: TextView,
+        alcoholAlertText: TextView,
+        categories: List<CategoryName>,
+        apiClient: WikiDataApiClient,
+    ) = categoryText.let { view ->
         if (categories.isEmpty()) {
-            it.visibility = View.GONE
-        } else {
-            it.visibility = View.VISIBLE
-            // Add all the categories to text view and link them to wikidata is possible
-            categories.forEach { category ->
-                // Add category name to text view
-                text.append(getCategoriesTag(category))
+            view.visibility = View.GONE
+            return@let
+        }
 
-                // Add a comma if not the last item
-                if (category != categories.last()) text.append(", ")
-
-                if (category.categoryTag == "en:alcoholic-beverages") {
-                    containsAlcohol = true
-                }
+        view.visibility = View.VISIBLE
+        view.movementMethod = LinkMovementMethod.getInstance()
+        view.isClickable = true
+        view.text = buildSpannedString {
+            bold { append(fragment.getString(R.string.txtCategories)) }
+            append(" ")
+            // Add all the categories to text view and link them to wikidata if possible
+            categories.map { getCategoriesTag(it, fragment, apiClient) }.forEachIndexed { i, el ->
+                append(el)
+                if (i != categories.size) append(", ")
             }
         }
-        it.text = text
+        // Show alcohol health warning
+        if (categories.any { it.categoryTag == "en:alcoholic-beverages" }) {
+            showAlcoholAlert(alcoholAlertText, fragment)
+        }
     }
 
-    private fun getCategoriesTag(category: CategoryName): CharSequence {
+    private fun getCategoriesTag(
+        category: CategoryName,
+        fragment: BaseFragment,
+        apiClient: WikiDataApiClient
+    ): SpannedString {
         val clickableSpan = object : ClickableSpan() {
             override fun onClick(view: View) {
                 if (category.isWikiDataIdPresent == true) {
-                    apiClient.doSomeThing(category.wikiDataId!!).subscribe { result ->
+                    fragment.lifecycleScope.launch {
+                        val result = category.wikiDataId?.let { apiClient.getEntityData(it) }
                         if (result != null) {
                             val activity = fragment.activity
                             if (activity != null && !activity.isFinishing) {
                                 showBottomSheet(result, category, activity.supportFragmentManager)
-                                return@subscribe
                             }
-                        }
-                        start(fragment.requireContext(), SearchType.CATEGORY, category.categoryTag!!, category.name!!)
-                    }.addTo(disp)
+                        } else ProductSearchActivity.start(
+                            fragment.requireContext(),
+                            SearchType.CATEGORY,
+                            category.categoryTag!!,
+                            category.name!!
+                        )
+                    }
                 } else {
-                    start(fragment.requireContext(), SearchType.CATEGORY, category.categoryTag!!, category.name!!)
+                    ProductSearchActivity.start(
+                        fragment.requireContext(),
+                        SearchType.CATEGORY,
+                        category.categoryTag!!,
+                        category.name!!
+                    )
                 }
             }
         }
 
-        val spannableStringBuilder = SpannableStringBuilder()
-                .inSpans(clickableSpan) { append(category.name) }
-        if (!category.isNotNull) {
-            // Span to make text italic
-            spannableStringBuilder.setSpan(StyleSpan(Typeface.ITALIC), 0, spannableStringBuilder.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        return buildSpannedString {
+            inSpans(clickableSpan) { append(category.name) }
+            if (category.isNull) {
+                // Span to make text italic
+                setSpan(StyleSpan(Typeface.ITALIC), 0, length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+            }
         }
-        return spannableStringBuilder
     }
 
-    fun showAlcoholAlert(alcoholAlertText: TextView) {
+    private fun showAlcoholAlert(alcoholAlertText: TextView, fragment: BaseFragment) {
+        val context = fragment.requireContext()
         val alcoholAlertIcon = ContextCompat.getDrawable(
-                fragment.requireContext(),
-                R.drawable.ic_alert_alcoholic_beverage
+            context,
+            R.drawable.ic_alert_alcoholic_beverage
         )!!.apply {
             setBounds(0, 0, intrinsicWidth, intrinsicHeight)
         }
         val riskAlcoholConsumption = fragment.getString(R.string.risk_alcohol_consumption)
         alcoholAlertText.visibility = View.VISIBLE
-        alcoholAlertText.text = SpannableStringBuilder().apply {
+
+        alcoholAlertText.text = buildSpannedString {
             inSpans(ImageSpan(alcoholAlertIcon, DynamicDrawableSpan.ALIGN_BOTTOM)) { append("-") }
             append(" ")
-            inSpans(ForegroundColorSpan(ContextCompat.getColor(fragment.requireContext(), R.color.red)))
-            { append(riskAlcoholConsumption) }
-
+            color(ContextCompat.getColor(context, R.color.red)) {
+                append(riskAlcoholConsumption)
+            }
         }
     }
 }

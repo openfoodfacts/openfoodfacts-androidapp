@@ -18,6 +18,7 @@ package openfoodfacts.github.scrachx.openfood.features.shared
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import androidx.annotation.CallSuper
 import openfoodfacts.github.scrachx.openfood.utils.INavigationItem
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener
 
@@ -42,6 +43,7 @@ abstract class NavigationBaseFragment : BaseFragment(), INavigationItem {
      *
      * @param context: Context to attach the fragment
      */
+    @CallSuper
     override fun onAttach(context: Context) {
         super.onAttach(context)
         (context as? NavigationDrawerListener)?.let { navigationDrawerListener = it }
@@ -54,6 +56,7 @@ abstract class NavigationBaseFragment : BaseFragment(), INavigationItem {
      * @param view: The View returned by onCreateView(LayoutInflater, ViewGroup, Bundle).
      * @param savedInstanceState: If non-null, this fragment is being re-constructed from a previous saved state as given here.
      */
+    @CallSuper
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navigationDrawerListener?.setItemSelected(getNavigationDrawerType())

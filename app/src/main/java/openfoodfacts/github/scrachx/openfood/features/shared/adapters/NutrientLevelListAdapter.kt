@@ -1,7 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.features.shared.adapters
 
 import android.content.Context
-import android.text.SpannableStringBuilder
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.NO_ID
@@ -10,19 +9,22 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.text.bold
+import androidx.core.text.buildSpannedString
 import androidx.recyclerview.widget.RecyclerView
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.features.shared.adapters.NutrientLevelListAdapter.NutrientViewHolder
 import openfoodfacts.github.scrachx.openfood.models.NutrientLevelItem
 
 class NutrientLevelListAdapter(
-        private val context: Context,
-        private val nutrientLevelItems: List<NutrientLevelItem>
+    private val context: Context,
+    private val nutrientLevelItems: List<NutrientLevelItem>
 ) : RecyclerView.Adapter<NutrientViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-            NutrientViewHolder(LayoutInflater.from(parent.context)
-                    .inflate(R.layout.nutrient_lvl_list_item, parent, false))
+        NutrientViewHolder(
+            LayoutInflater.from(parent.context)
+                .inflate(R.layout.nutrient_lvl_list_item, parent, false)
+        )
 
     override fun onBindViewHolder(holder: NutrientViewHolder, position: Int) {
         val (category, value, label, icon) = nutrientLevelItems[position]
@@ -34,13 +36,12 @@ class NutrientLevelListAdapter(
             holder.imgIcon.visibility = View.VISIBLE
         }
 
-        holder.txtTitle.let {
-            it.text = ""
-            it.append(value)
-            it.append(" ")
-            it.append(SpannableStringBuilder().bold { append(category) })
-            it.append("\n")
-            it.append(label)
+        holder.txtTitle.text = buildSpannedString {
+            append(value)
+            append(" ")
+            bold { append(category) }
+            append("\n")
+            append(label)
         }
     }
 

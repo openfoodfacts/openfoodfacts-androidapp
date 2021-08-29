@@ -197,7 +197,7 @@
     <string name="txtSugars">Cukurs</string>
     <string name="hintBarcode">Svītrkods</string>
     <string name="txtNutriScoreInfo">Uzziniet vairāk par uzturvielu līmeni</string>
-    <string name="hintLogin">Username</string>
+    <string name="hintLogin">Login</string>
     <string name="hintPass">Parole</string>
     <string name="errorLogin">Lietotāja vai paroles kļūda</string>
     <string name="errorWeb">Mēs nevarējām piekļūt internetam. Vai jums ir savienojuma problēmas?</string>
@@ -240,7 +240,7 @@
     <string name="select_camera">Atlasiet kameru</string>
     <string name="ok_button">Labi</string>
     <string name="cancel_button">Atcelt</string>
-    <string name="login_button">Username</string>
+    <string name="login_button">Login</string>
     <string name="create_account_button">Izveidot profilu</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Informācija par alerģijām nekad netiks nosūtīta uz Open Food Facts serveri. Tāpat uzmanieties, lai produkta dati varētu nebūt precīzi un to noteikšana varētu nebūt 100% accurate, tāpēc, lūdzu, pārbaudiet pats!</string>
     <string name="title_info_dialog">Kā tas darbojas?</string>

@@ -21,13 +21,13 @@
     <string name="slide_4_title">תמיכה במצב בלתי מקוון</string>
     <string name="slide_4_desc">ניתן להוסיף מוצרים חדשים, אפילו אם אין לך חיבור לאינטרנט כרגע</string>
     <!-- New onboarding-->
-    <string name="join_the_food_revolution">מזמינים אותך להצטרף למהפכת המזון</string>
-    <string name="slide_1_text_revolution">Scan food, Take photos, Help transform the food system</string>
-    <string name="get_the_nutri_score">מה ה־Nutri-Score</string>
-    <string name="synthesis_of_nutrition_slide_2_text">A simple synthesis of the nutritional quality of your food</string>
-    <string name="avoid_ultra_processed_foods">הימנעות ממזון מעובד מאוד</string>
-    <string name="nova_slide_3_text">Reduce the amount of ultra-processed foods in your diet.</string>
-    <string name="eco_score_slide_4_title">Eco-Score</string>
+    <string name="title_welcome_intro">מזמינים אותך להצטרף למהפכת המזון</string>
+    <string name="msg_welcome_intro">סורקים מזון, מצלמים תמונות ומסייעים בשינוי מערכת המזון</string>
+    <string name="title_welcome_nutriscore">מה ה־Nutri-Score</string>
+    <string name="msg_welcome_nutriscore">הערכה פשוטה של האיכות התזונתית של המזון שלך</string>
+    <string name="title_welcome_nova">הימנעות ממזון מעובד מאוד</string>
+    <string name="msg_welcome_nova">כדאי להפחית את מוצרי המזון האולטרה מעובדים בתזונה שלך.</string>
+    <string name="title_welcome_ecoscore">Eco-Score</string>
     <!-- Scan card -->
     <string name="txtDialogsContent">המוצר שסרקת לא קיים עדיין ב־Open Food Facts. נא לסרוק אותו.</string>
     <string name="txtDialogsContentPowerMode">המוצר שסרקת כבר נמצא ב־Open Food Facts.</string>

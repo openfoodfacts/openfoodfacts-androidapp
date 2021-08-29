@@ -272,7 +272,7 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
 
         requirePreference<SwitchPreference>(getString(R.string.pref_analytics_reporting_key)).let {
             it.setOnPreferenceChangeListener { _, newValue ->
-                matomoAnalytics.onAnalyticsEnabledToggled(newValue == true)
+                matomoAnalytics.setEnabled(newValue == true)
                 true
             }
         }

@@ -84,10 +84,12 @@
     <color name="blue_grey_100">#cfd8dc</color>
 
     <!-- Intro Screens-->
-    <color name="bg_screen1">#f64c73</color>
-    <color name="bg_screen2">#20d2bb</color>
-    <color name="bg_screen3">#3395ff</color>
-    <color name="bg_screen4">#c873f4</color>
+    <color name="bg_welcome_intro">#f64c73</color>
+    <color name="bg_welcome_nutriscore">#20d2bb</color>
+    <color name="bg_welcome_nova">#3395ff</color>
+    <color name="bg_welcome_ecoscore">@color/brand_green_dark</color>
+    <color name="bg_welcome_matomo">@color/blue_grey_100</color>
+
     <color name="dot_dark_screen1">#d1395c</color>
     <color name="dot_dark_screen2">#14a895</color>
     <color name="dot_dark_screen3">#2278d4</color>
@@ -100,19 +102,6 @@
     <color name="url_link">@color/primary_dark</color>
     <color name="tag_link">@color/primary_dark</color>
 
-    <array name="array_dot_active">
-        <item>@color/dot_light_screen1</item>
-        <item>@color/dot_light_screen2</item>
-        <item>@color/dot_light_screen3</item>
-        <item>@color/dot_light_screen4</item>
-    </array>
-
-    <array name="array_dot_inactive">
-        <item>@color/dot_dark_screen1</item>
-        <item>@color/dot_dark_screen2</item>
-        <item>@color/dot_dark_screen3</item>
-        <item>@color/dot_dark_screen4</item>
-    </array>
 
     <!--FeedBack Dialog sample color-->
     <color name="sampleColor">#795548</color>

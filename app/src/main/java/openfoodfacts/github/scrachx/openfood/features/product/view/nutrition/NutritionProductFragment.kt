@@ -22,8 +22,6 @@ import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
-import android.text.SpannableStringBuilder
-import android.text.Spanned
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.view.LayoutInflater
@@ -36,9 +34,14 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Spinner
 import androidx.browser.customtabs.CustomTabsIntent
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
+import androidx.core.app.ActivityCompat.requestPermissions
+import androidx.core.content.ContextCompat.checkSelfPermission
+import androidx.core.net.toUri
 import androidx.core.text.bold
+import androidx.core.text.buildSpannedString
+import androidx.core.text.inSpans
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.afollestad.materialdialogs.MaterialDialog
@@ -46,7 +49,8 @@ import com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_SHORT
 import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
-import io.reactivex.rxkotlin.addTo
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.rx2.await
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OBF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
@@ -67,12 +71,7 @@ import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
 import openfoodfacts.github.scrachx.openfood.features.shared.adapters.NutrientLevelListAdapter
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
 import openfoodfacts.github.scrachx.openfood.models.*
-import openfoodfacts.github.scrachx.openfood.models.Nutriments.Companion.ALCOHOL
-import openfoodfacts.github.scrachx.openfood.models.Nutriments.Companion.FAT
-import openfoodfacts.github.scrachx.openfood.models.Nutriments.Companion.SALT
-import openfoodfacts.github.scrachx.openfood.models.Nutriments.Companion.SATURATED_FAT
-import openfoodfacts.github.scrachx.openfood.models.Nutriments.Companion.SODIUM
-import openfoodfacts.github.scrachx.openfood.models.Nutriments.Companion.SUGARS
+import openfoodfacts.github.scrachx.openfood.models.MeasurementUnit.*
 import openfoodfacts.github.scrachx.openfood.models.entities.SendProduct
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
@@ -86,6 +85,8 @@ import javax.inject.Inject
 class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.ConnectionCallback {
     private var _binding: FragmentNutritionProductBinding? = null
     private val binding get() = _binding!!
+
+    private val viewModel: NutritionProductViewModel by viewModels()
 
     @Inject
     lateinit var client: OpenFoodAPIClient
@@ -109,12 +110,13 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
      * Boolean to determine if nutrition data should be shown
      */
     private var showNutritionData = true
-    private val customSharedPreferences by lazy { requireActivity().getSharedPreferences("prefs", 0) }
 
     /**
      * Boolean to determine if image should be loaded or not
      */
-    private val isLowBatteryMode by lazy { requireContext().isDisableImageLoad() && requireContext().isBatteryLevelLow() }
+    private val isLowBatteryMode by lazy {
+        requireContext().isDisableImageLoad() && requireContext().isBatteryLevelLow()
+    }
 
     private var nutrientsImageUrl: String? = null
     private var mSendProduct: SendProduct? = null
@@ -136,7 +138,10 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
         super.onViewCreated(view, savedInstanceState)
 
         // use VERTICAL divider
-        val dividerItemDecoration = DividerItemDecoration(binding.nutrimentsRecyclerView.context, DividerItemDecoration.VERTICAL)
+        val dividerItemDecoration = DividerItemDecoration(
+            binding.nutrimentsRecyclerView.context,
+            DividerItemDecoration.VERTICAL
+        )
         binding.nutrimentsRecyclerView.addItemDecoration(dividerItemDecoration)
         binding.getNutriscorePrompt.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_box_blue_18dp, 0, 0, 0)
         binding.newAdd.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_a_photo_blue_18dp, 0, 0, 0)
@@ -145,17 +150,16 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
         binding.imageViewNutrition.setOnClickListener { openFullScreen() }
         binding.calculateNutritionFacts.setOnClickListener { calculateNutritionFacts() }
         binding.getNutriscorePrompt.setOnClickListener { onNutriScoreButtonClick() }
-        binding.newAdd.setOnClickListener { newNutritionImage() }
+        binding.newAdd.setOnClickListener { doChooseOrTakePhotos() }
 
-        refreshView(requireProductState())
+        viewModel.productState.value = requireProductState()
+        viewModel.productState.observe(viewLifecycleOwner) { refreshView(it) }
     }
 
 
     companion object {
         fun newInstance(productState: ProductState) = NutritionProductFragment().apply {
-            arguments = Bundle().apply {
-                putSerializable(KEY_STATE, productState)
-            }
+            arguments = Bundle().apply { putSerializable(KEY_STATE, productState) }
         }
     }
 
@@ -167,6 +171,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
 
     override fun refreshView(productState: ProductState) {
         super.refreshView(productState)
+
         val langCode = localeManager.getLanguage()
         product = productState.product!!
 
@@ -183,56 +188,67 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
         }
 
         val nutriments = product.nutriments
-        if (Nutriments.CARBON_FOOTPRINT !in nutriments) {
+        if (Nutriment.CARBON_FOOTPRINT !in nutriments) {
             binding.textCarbonFootprint.visibility = GONE
         }
         setupNutrientItems(nutriments)
 
-        //checks the flags and accordingly sets the text of the prompt
+        // Checks the flags and accordingly sets the text of the prompt
         showPrompts()
 
         binding.textNutriScoreInfo.isClickable = true
         binding.textNutriScoreInfo.movementMethod = LinkMovementMethod.getInstance()
 
-        val spannableStringBuilder = SpannableStringBuilder()
         val clickableSpan = object : ClickableSpan() {
             override fun onClick(view: View) {
                 val customTabsIntent = CustomTabsIntent.Builder().build()
                 customTabsIntent.intent.putExtra(
-                        "android.intent.extra.REFERRER",
-                        Uri.parse("android-app://${this@NutritionProductFragment.requireActivity().packageName}")
+                    "android.intent.extra.REFERRER",
+                    "android-app://${requireActivity().packageName}".toUri()
                 )
-                CustomTabActivityHelper.openCustomTab(requireActivity(), customTabsIntent, Uri.parse(getString(R.string.url_nutrient_values)), WebViewFallback())
+                CustomTabActivityHelper.openCustomTab(
+                    requireActivity(),
+                    customTabsIntent,
+                    getString(R.string.url_nutrient_values).toUri(),
+                    WebViewFallback()
+                )
             }
         }
-        spannableStringBuilder.append(getString(R.string.txtNutriScoreInfo))
-        spannableStringBuilder.setSpan(clickableSpan, 0, spannableStringBuilder.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-        binding.textNutriScoreInfo.text = spannableStringBuilder
 
-        var servingSize = product.servingSize
-        if (servingSize.isNullOrEmpty()) {
+        binding.textNutriScoreInfo.text = buildSpannedString {
+            inSpans(clickableSpan) {
+                append(getString(R.string.txtNutriScoreInfo))
+            }
+        }
+
+        var servingSize: Measurement? = null
+        val servingSizeString = product.servingSize
+        if (servingSizeString.isNullOrEmpty()) {
             binding.textServingSize.visibility = GONE
             binding.servingSizeCardView.visibility = GONE
         } else {
             val pref = sharedPreferences.getString(getString(R.string.pref_volume_unit_key), "l")
 
             if (pref.equals("oz", true)) {
-                servingSize = UnitUtils.getServingInOz(servingSize)
-            } else if (pref.equals("l", true) && servingSize.contains("oz", true)) {
-                servingSize = UnitUtils.getServingInL(servingSize)
+                servingSize = getServingInOz(servingSizeString)
+            } else if (pref.equals("l", true) && servingSizeString.contains("oz", true)) {
+                servingSize = getServingInL(servingSizeString)
             }
 
-            binding.textServingSize.text = SpannableStringBuilder()
-                    .bold { append(getString(R.string.txtServingSize)) }
-                    .append(" ")
-                    .append(servingSize)
+            servingSize?.let {
+                binding.textServingSize.text = buildSpannedString {
+                    bold { append(getString(R.string.txtServingSize)) }
+                    append(" ")
+                    append("${getRoundNumber(it.value)} ${it.unit}")
+                }
+            }
         }
 
         if (arguments != null) {
             mSendProduct = requireArguments().getSerializable("sendProduct") as SendProduct?
         }
 
-        val nutrimentListItems = arrayListOf<NutrimentListItem>()
+        val nutrimentListItems = mutableListOf<NutrimentListItem>()
         val inVolume = product.isPerServingInLiter()
         binding.textNutrientTxt.setText(if (inVolume != true) R.string.txtNutrientLevel100g else R.string.txtNutrientLevel100ml)
 
@@ -248,13 +264,14 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
 
             // Load Image if isLowBatteryMode is false
             if (!isLowBatteryMode) {
-                picasso.load(product.getImageNutritionUrl(langCode))
-                        .into(binding.imageViewNutrition)
+                picasso
+                    .load(product.getImageNutritionUrl(langCode))
+                    .into(binding.imageViewNutrition)
             } else {
                 binding.imageViewNutrition.visibility = GONE
             }
             picasso.load(product.getImageNutritionUrl(langCode))
-                    .into(binding.imageViewNutrition)
+                .into(binding.imageViewNutrition)
             nutrientsImageUrl = product.getImageNutritionUrl(langCode)
         }
 
@@ -263,8 +280,8 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
             binding.addPhotoLabel.visibility = GONE
             nutrientsImageUrl = mSendProduct!!.imgUploadNutrition
             picasso.load(LOCALE_FILE_SCHEME + nutrientsImageUrl)
-                    .config(Bitmap.Config.RGB_565)
-                    .into(binding.imageViewNutrition)
+                .config(Bitmap.Config.RGB_565)
+                .into(binding.imageViewNutrition)
         }
 
         // use this setting to improve performance if you know that changes
@@ -277,80 +294,75 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
         binding.nutrimentsRecyclerView.isNestedScrollingEnabled = false
 
         // Header hack
-        nutrimentListItems.add(NutrimentListItem(inVolume == true))
+        nutrimentListItems += NutrimentListItem(inVolume == true)
 
         // Energy
-        val energyKcal = nutriments[Nutriments.ENERGY_KCAL]
+        val energyKcal = nutriments[Nutriment.ENERGY_KCAL]
         if (energyKcal != null) {
-            nutrimentListItems.add(NutrimentListItem(getString(R.string.nutrition_energy_kcal),
-                    nutriments.getEnergyKcalValue(false),
-                    nutriments.getEnergyKcalValue(true),
-                    Units.ENERGY_KCAL,
-                    energyKcal.getModifierIfNotDefault()))
+            nutrimentListItems += NutrimentListItem(
+                getString(R.string.nutrition_energy_kcal),
+                nutriments.getEnergyKcalValue(false)?.value,
+                nutriments.getEnergyKcalValue(true)?.value,
+                ENERGY_KCAL,
+                energyKcal.modifier
+            )
         }
-        val energyKj = nutriments[Nutriments.ENERGY_KJ]
+        val energyKj = nutriments[Nutriment.ENERGY_KJ]
         if (energyKj != null) {
-            nutrimentListItems.add(NutrimentListItem(getString(R.string.nutrition_energy_kj),
-                    nutriments.getEnergyKjValue(false),
-                    nutriments.getEnergyKjValue(true),
-                    Units.ENERGY_KJ,
-                    energyKj.getModifierIfNotDefault()))
+            nutrimentListItems += NutrimentListItem(
+                getString(R.string.nutrition_energy_kj),
+                nutriments.getEnergyKjValue(false)?.value,
+                nutriments.getEnergyKjValue(true)?.value,
+                ENERGY_KJ,
+                energyKj.modifier
+            )
         }
 
         // Fat
-        val fat2 = nutriments[FAT]
+        val fat2 = nutriments[Nutriment.FAT]
         if (fat2 != null) {
-            nutrimentListItems.add(BoldNutrimentListItem(getString(R.string.nutrition_fat),
-                    fat2.for100gInUnits,
-                    fat2.forServingInUnits,
-                    fat2.unit,
-                    fat2.getModifierIfNotDefault()))
-            nutrimentListItems.addAll(getNutrimentItems(nutriments, Nutriments.FAT_MAP))
+            nutrimentListItems += BoldNutrimentListItem(getString(R.string.nutrition_fat), fat2)
+            nutrimentListItems.addAll(getNutrimentItems(nutriments, FAT_MAP))
         }
 
         // Carbohydrates
-        val carbohydrates = nutriments[Nutriments.CARBOHYDRATES]
+        val carbohydrates = nutriments[Nutriment.CARBOHYDRATES]
         if (carbohydrates != null) {
-            nutrimentListItems.add(BoldNutrimentListItem(getString(R.string.nutrition_carbohydrate),
-                    carbohydrates.for100gInUnits,
-                    carbohydrates.forServingInUnits,
-                    carbohydrates.unit,
-                    carbohydrates.getModifierIfNotDefault()))
-            nutrimentListItems.addAll(getNutrimentItems(nutriments, Nutriments.CARBO_MAP))
+            nutrimentListItems += BoldNutrimentListItem(
+                getString(R.string.nutrition_carbohydrate),
+                carbohydrates
+            )
+            nutrimentListItems += getNutrimentItems(nutriments, CARBO_MAP)
         }
 
         // fiber
-        nutrimentListItems.addAll(getNutrimentItems(nutriments, Collections.singletonMap(Nutriments.FIBER, R.string.nutrition_fiber)))
+        nutrimentListItems += getNutrimentItems(nutriments, mapOf(Nutriment.FIBER to R.string.nutrition_fiber))
 
         // Proteins
-        val proteins = nutriments[Nutriments.PROTEINS]
+        val proteins = nutriments[Nutriment.PROTEINS]
         if (proteins != null) {
-            nutrimentListItems.add(BoldNutrimentListItem(getString(R.string.nutrition_proteins),
-                    proteins.for100gInUnits,
-                    proteins.forServingInUnits,
-                    proteins.unit,
-                    proteins.getModifierIfNotDefault()))
-            nutrimentListItems.addAll(getNutrimentItems(nutriments, Nutriments.PROT_MAP))
+            nutrimentListItems += BoldNutrimentListItem(getString(R.string.nutrition_proteins), proteins)
+            nutrimentListItems += getNutrimentItems(nutriments, PROT_MAP)
         }
 
         // salt and alcohol
-        val map = hashMapOf(
-                SALT to R.string.nutrition_salt,
-                SODIUM to R.string.nutrition_sodium,
-                ALCOHOL to R.string.nutrition_alcohol
+        val map = mapOf(
+            Nutriment.SALT to R.string.nutrition_salt,
+            Nutriment.SODIUM to R.string.nutrition_sodium,
+            Nutriment.ALCOHOL to R.string.nutrition_alcohol
         )
-        nutrimentListItems.addAll(getNutrimentItems(nutriments, map))
+        nutrimentListItems += getNutrimentItems(nutriments, map)
 
         // Vitamins
         if (nutriments.hasVitamins) {
-            nutrimentListItems.add(BoldNutrimentListItem(getString(R.string.nutrition_vitamins)))
-            nutrimentListItems.addAll(getNutrimentItems(nutriments, Nutriments.VITAMINS_MAP))
+            nutrimentListItems += BoldNutrimentListItem(getString(R.string.nutrition_vitamins))
+            nutrimentListItems += getNutrimentItems(nutriments, VITAMINS_MAP)
         }
 
         // Minerals
         if (nutriments.hasMinerals) {
-            nutrimentListItems.add(BoldNutrimentListItem(getString(R.string.nutrition_minerals)))
-            nutrimentListItems.addAll(getNutrimentItems(nutriments, Nutriments.MINERALS_MAP))
+            nutrimentListItems += BoldNutrimentListItem(getString(R.string.nutrition_minerals))
+            nutrimentListItems += getNutrimentItems(nutriments, MINERALS_MAP)
         }
 
         // Show nutrition table and nutrition per portion button if nutritional values are available
@@ -361,7 +373,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
 
     }
 
-    private fun setupNutrientItems(nutriments: Nutriments?) {
+    private fun setupNutrientItems(nutriments: ProductNutriments) {
         val levelItemList = mutableListOf<NutrientLevelItem>()
         val nutrientLevels = product.nutrientLevels
         var fat: NutrimentLevel? = null
@@ -384,53 +396,54 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
             // prefetch the uri
             customTabActivityHelper = CustomTabActivityHelper()
             customTabActivityHelper!!.connectionCallback = this
-            nutritionScoreUri = Uri.parse(getString(R.string.nutriscore_uri))
+            nutritionScoreUri = getString(R.string.nutriscore_uri).toUri()
             customTabActivityHelper!!.mayLaunchUrl(nutritionScoreUri, null, null)
 
-            val fatNutriment = nutriments!![FAT]
+            val fatNutriment = nutriments[Nutriment.FAT]
             if (fat != null && fatNutriment != null) {
                 val fatNutrimentLevel = fat.getLocalize(requireActivity())
                 levelItemList += NutrientLevelItem(
-                        getString(R.string.txtFat),
-                        fatNutriment.displayStringFor100g,
-                        fatNutrimentLevel,
-                        fat.getImgRes(),
+                    getString(R.string.txtFat),
+                    fatNutriment.getPer100gDisplayString(),
+                    fatNutrimentLevel,
+                    fat.getImgRes(),
                 )
             }
 
-            val saturatedFatNutriment = nutriments[SATURATED_FAT]
+            val saturatedFatNutriment = nutriments[Nutriment.SATURATED_FAT]
             if (saturatedFat != null && saturatedFatNutriment != null) {
                 val saturatedFatLocalize = saturatedFat.getLocalize(requireActivity())
                 levelItemList += NutrientLevelItem(
-                        getString(R.string.txtSaturatedFat),
-                        saturatedFatNutriment.displayStringFor100g,
-                        saturatedFatLocalize,
-                        saturatedFat.getImgRes(),
+                    getString(R.string.txtSaturatedFat),
+                    saturatedFatNutriment.getPer100gDisplayString(),
+                    saturatedFatLocalize,
+                    saturatedFat.getImgRes(),
                 )
             }
 
-            val sugarsNutriment = nutriments[SUGARS]
+            val sugarsNutriment = nutriments[Nutriment.SUGARS]
             if (sugars != null && sugarsNutriment != null) {
                 val sugarsLocalize = sugars.getLocalize(requireActivity())
                 levelItemList += NutrientLevelItem(
-                        getString(R.string.txtSugars),
-                        sugarsNutriment.displayStringFor100g,
-                        sugarsLocalize,
-                        sugars.getImgRes(),
+                    getString(R.string.txtSugars),
+                    sugarsNutriment.getPer100gDisplayString(),
+                    sugarsLocalize,
+                    sugars.getImgRes(),
                 )
             }
 
-            val saltNutriment = nutriments[SALT]
+            val saltNutriment = nutriments[Nutriment.SALT]
             if (salt != null && saltNutriment != null) {
                 levelItemList += NutrientLevelItem(
-                        getString(R.string.txtSalt),
-                        saltNutriment.displayStringFor100g,
-                        salt.getLocalize(requireActivity()),
-                        salt.getImgRes()
+                    getString(R.string.txtSalt),
+                    saltNutriment.getPer100gDisplayString(),
+                    salt.getLocalize(requireActivity()),
+                    salt.getImgRes()
                 )
             }
             drawNutritionGrade()
         }
+
         binding.listNutrientLevels.adapter = NutrientLevelListAdapter(requireActivity(), levelItemList)
         binding.listNutrientLevels.layoutManager = LinearLayoutManager(requireActivity())
     }
@@ -438,6 +451,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
     private fun drawNutritionGrade() {
         binding.imageGradeLayout.visibility = VISIBLE
         binding.imageGrade.setImageResource(product.getNutriScoreResource())
+
         binding.imageGrade.setOnClickListener {
             val customTabsIntent = CustomTabsHelper.getCustomTabsIntent(requireContext(), customTabActivityHelper!!.session)
             CustomTabActivityHelper.openCustomTab(requireActivity(), customTabsIntent, nutritionScoreUri!!, WebViewFallback())
@@ -473,16 +487,10 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
         }
     }
 
-    private fun getNutrimentItems(nutriments: Nutriments, nutrimentMap: Map<String, Int>): List<NutrimentListItem> {
-        return nutrimentMap.mapNotNull { (key, value) ->
-            val nutriment = nutriments[key] ?: return@mapNotNull null
-            NutrimentListItem(
-                    getString(value),
-                    nutriment.for100gInUnits,
-                    nutriment.forServingInUnits,
-                    if (value == R.string.ph) "" else nutriment.unit,
-                    nutriment.getModifierIfNotDefault(),
-            )
+    private fun getNutrimentItems(productNutriments: ProductNutriments, nutrimentMap: Map<Nutriment, Int>): List<NutrimentListItem> {
+        return nutrimentMap.mapNotNull { (nutriment, stringRes) ->
+            val productNutriment = productNutriments[nutriment] ?: return@mapNotNull null
+            NutrimentListItem(getString(stringRes), productNutriment)
         }
     }
 
@@ -494,13 +502,24 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
 
     private fun openFullScreen() {
         if (nutrientsImageUrl != null) {
-            FullScreenActivityOpener.openForUrl(this, client, product, ProductImageField.NUTRITION, nutrientsImageUrl!!, binding.imageViewNutrition, localeManager.getLanguage())
+            FullScreenActivityOpener.openForUrl(
+                this,
+                client,
+                product,
+                ProductImageField.NUTRITION,
+                nutrientsImageUrl!!,
+                binding.imageViewNutrition,
+                localeManager.getLanguage()
+            )
         } else {
             // take a picture
-            if (ContextCompat.checkSelfPermission(requireActivity(), permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(requireActivity(), arrayOf(permission.CAMERA), MY_PERMISSIONS_REQUEST_CAMERA)
-            } else {
-                EasyImage.openCamera(this, 0)
+            when {
+                checkSelfPermission(requireActivity(), permission.CAMERA) != PackageManager.PERMISSION_GRANTED -> {
+                    requestPermissions(requireActivity(), arrayOf(permission.CAMERA), MY_PERMISSIONS_REQUEST_CAMERA)
+                }
+                else -> {
+                    EasyImage.openCamera(this, 0)
+                }
             }
         }
     }
@@ -509,52 +528,62 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
         val dialog = MaterialDialog.Builder(requireActivity()).run {
             title(R.string.calculate_nutrition_facts)
             customView(R.layout.dialog_calculate_calories, false)
-            dismissListener { Utils.hideKeyboard(requireActivity()) }
+            dismissListener {
+                requireActivity().hideKeyboard()
+            }
             build()
         }.apply { show() }
-        val dialogView = dialog.customView ?: return
 
-        val etWeight = dialogView.findViewById<EditText>(R.id.edit_text_weight)
-        val spinner = dialogView.findViewById<Spinner>(R.id.spinner_weight)
-        spinner.onItemSelectedListener = object : OnItemSelectedListener {
-            override fun onItemSelected(adapterView: AdapterView<*>?, view: View, i: Int, l: Long) {
-                val btn = dialog.findViewById(R.id.txt_calories_result) as Button
-                btn.setOnClickListener {
-                    val toFloatOrNull = etWeight.text.toString().toFloatOrNull()
-                    if (etWeight.text.toString().isEmpty() || toFloatOrNull == null) {
-                        Snackbar.make(binding.root, resources.getString(R.string.please_enter_weight), LENGTH_SHORT).show()
-                    } else {
-                        CalculateDetailsActivity.start(
+
+        val weightText = dialog.findViewById(R.id.edit_text_weight) as EditText
+
+        (dialog.findViewById(R.id.spinner_weight) as Spinner).apply {
+            onItemSelectedListener = object : OnItemSelectedListener {
+                override fun onNothingSelected(adapterView: AdapterView<*>?) = Unit // We don't care
+
+                override fun onItemSelected(adapterView: AdapterView<*>?, view: View, i: Int, l: Long) {
+                    val btn = dialog.findViewById(R.id.txt_calories_result) as Button
+
+                    btn.setOnClickListener {
+                        val weight = weightText.text.toString().toFloatOrNull()
+                        if (weightText.text.isEmpty() || weight == null) {
+                            Snackbar.make(binding.root, resources.getString(R.string.please_enter_weight), LENGTH_SHORT).show()
+                        } else {
+                            CalculateDetailsActivity.start(
                                 requireActivity(),
                                 product,
-                                spinner.selectedItem.toString(),
-                                toFloatOrNull
-                        )
-                        dialog.dismiss()
+                                selectedItem.toString(),
+                                weight
+                            )
+                            dialog.dismiss()
+                        }
                     }
                 }
             }
-
-            override fun onNothingSelected(adapterView: AdapterView<*>?) = Unit // We don't care
         }
     }
 
     private fun loadNutritionPhoto(photoFile: File) {
         // Create a new instance of ProductImage so we can load to server
-        val image = ProductImage(product.code, ProductImageField.NUTRITION, photoFile, localeManager.getLanguage()).apply {
+        val image = ProductImage(
+            product.code,
+            ProductImageField.NUTRITION,
+            photoFile,
+            localeManager.getLanguage()
+        ).apply {
             filePath = photoFile.absolutePath
         }
 
         // Load to server
-        client.postImg(image).subscribe().addTo(disp)
+        lifecycleScope.launch { client.postImg(image).await() }
 
         // Load into view
         binding.addPhotoLabel.visibility = GONE
         nutrientsImageUrl = photoFile.absolutePath
         picasso
-                .load(photoFile)
-                .fit()
-                .into(binding.imageViewNutrition)
+            .load(photoFile)
+            .fit()
+            .into(binding.imageViewNutrition)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -567,9 +596,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
         }
     }
 
-    private fun newNutritionImage() = doChooseOrTakePhotos()
-
-    override fun doOnPhotosPermissionGranted() = newNutritionImage()
+    override fun doOnPhotosPermissionGranted() = doChooseOrTakePhotos()
 
     override fun onCustomTabsConnected() {
         binding.imageGrade.isClickable = true
@@ -591,10 +618,10 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
 
     private fun startEditProduct() {
         ProductEditActivity.start(
-                requireContext(),
-                product,
-                showCategoryPrompt = showCategoryPrompt,
-                showNutritionPrompt = showNutritionPrompt
+            requireContext(),
+            product,
+            showCategoryPrompt = showCategoryPrompt,
+            showNutritionPrompt = showNutritionPrompt
         )
     }
 }

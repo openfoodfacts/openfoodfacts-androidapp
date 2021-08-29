@@ -15,7 +15,6 @@
  */
 package openfoodfacts.github.scrachx.openfood.features.product.view.summary
 
-import io.reactivex.disposables.Disposable
 import openfoodfacts.github.scrachx.openfood.models.AnnotationAnswer
 import openfoodfacts.github.scrachx.openfood.models.AnnotationResponse
 import openfoodfacts.github.scrachx.openfood.models.Question
@@ -30,26 +29,26 @@ import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState
  * Created by Lobster on 17.03.18.
  */
 interface ISummaryProductPresenter {
-    interface Actions : Disposable {
-        fun loadProductQuestion()
-        fun annotateInsight(insightId: String, annotation: AnnotationAnswer)
-        fun loadAllergens(runIfError: (() -> Unit)?)
-        fun loadCategories()
-        fun loadLabels()
-        fun loadAdditives()
-        fun loadAnalysisTags()
+    interface Actions {
+        suspend fun loadProductQuestion()
+        suspend fun loadAllergens()
+        suspend fun loadCategories()
+        suspend fun loadLabels()
+        suspend fun loadAdditives()
+        suspend fun loadAnalysisTags()
+        suspend fun annotateInsight(insightId: String, annotation: AnnotationAnswer)
     }
 
     interface View {
-        fun showAllergens(allergens: List<AllergenName>)
-        fun showProductQuestion(question: Question)
+        suspend fun showProductQuestion(question: Question)
         fun showAnnotatedInsightToast(annotationResponse: AnnotationResponse)
-        fun showCategories(categories: List<CategoryName>)
-        fun showLabels(labelNames: List<LabelName>)
-        fun showCategoriesState(state: ProductInfoState)
-        fun showLabelsState(state: ProductInfoState)
-        fun showAdditives(additives: List<AdditiveName>)
-        fun showAdditivesState(state: ProductInfoState)
-        fun showAnalysisTags(analysisTags: List<AnalysisTagConfig>)
+
+        fun showAllergens(allergens: List<AllergenName>)
+
+        fun showCategoriesState(state: ProductInfoState<List<CategoryName>>)
+        fun showLabelsState(state: ProductInfoState<List<LabelName>>)
+        fun showAdditivesState(state: ProductInfoState<List<AdditiveName>>)
+
+        suspend fun showAnalysisTags(state: ProductInfoState<List<AnalysisTagConfig>>)
     }
 }

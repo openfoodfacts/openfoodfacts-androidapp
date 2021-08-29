@@ -170,7 +170,7 @@
     <string name="alert_dialog_warning_title">Warning</string>
     <string name="alert_dialog_warning_msg_user">Vartotojas / slaptažodis pasikeitė, atnaujinkite informaciją</string>
     <string name="toast_retrieving">Įkeliama…</string>
-    <string name="txtBarcode">Brūkšninis kodas:</string>
+    <string name="txtBarcode">Barcode:</string>
     <string name="txtCategories">Kategorijos:</string>
     <string name="txtLabels">Etiketės, sertifikatai, apdovanojimai:</string>
     <string name="txtEMB">Atsekamumo kodai:</string>
@@ -381,11 +381,11 @@
     <string name="chlorophyl">Chlorofilas</string>
     <string name="take_picture">Nufotografuoti</string>
     <string name="choose_picture_from_gallery">Iš galerijos</string>
-    <string name="take_picture_ingredients">Take a picture of the ingredients</string>
+    <string name="take_picture_ingredients">Take a photo of the ingredients</string>
     <string name="take_picture_recycling">Take a photo of the recycling instructions</string>
     <string name="take_picture_front">Take a photo of the front</string>
-    <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
-    <string name="take_more_pictures">Take more pictures</string>
+    <string name="take_picture_nutrition_table">Take a photo of the nutrition table</string>
+    <string name="take_more_pictures">Take more photos</string>
     <string name="take_extra_packaging_pictures">Padarykite papildomų pakuotės nuotraukų</string>
     <string name="txtSaturatedFat">Saturated fat</string>
     <string name="nutriscore_info_msg">Learn more about the Nutri-Score</string>
@@ -484,6 +484,7 @@
     <string name="country_string">Country</string>
     <string name="store_subtitle">Store</string>
     <string name="packaging_subtitle">Pakuotė</string>
+    <string name="state_subtitle">Valstija</string>
     <string name="packaging_string">Pakuotė</string>
     <string name="label_string">Label</string>
     <string name="category_string">Category</string>
@@ -817,11 +818,14 @@
     <string name="changelog_translation_help">Norite pamatyti šį keitimo žurnalą %s?\nPrisijunkite prie vertimo komandos!</string>
     <string name="whats_new">Kas naujo su „Open Food Facts“?</string>
     <!-- New onboarding slides -->
-    <string name="eco_score_slide_4_title">Eco-Score</string>
-    <string name="join_the_food_revolution">Join the food revolution</string>
-    <string name="slide_1_text_revolution">Scan food, Take photos, Help transform the food system</string>
-    <string name="get_the_nutri_score">Gaukite „Nutri-Score“</string>
-    <string name="synthesis_of_nutrition_slide_2_text">A simple synthesis of the nutritional quality of your food</string>
-    <string name="avoid_ultra_processed_foods">Avoid ultra-processed foods</string>
-    <string name="nova_slide_3_text">Reduce the amount of ultra-processed foods in your diet.</string>
+    <string name="title_welcome_intro">Join the food revolution</string>
+    <string name="msg_welcome_intro">Scan food, Take photos, Help transform the food system</string>
+    <string name="title_welcome_nutriscore">Gaukite „Nutri-Score“</string>
+    <string name="msg_welcome_nutriscore">A simple synthesis of the nutritional quality of your food</string>
+    <string name="title_welcome_nova">Avoid ultra-processed foods</string>
+    <string name="msg_welcome_nova">Reduce the amount of ultra-processed foods in your diet.</string>
+    <string name="title_welcome_ecoscore">Eco-Score</string>
+    <string name="msg_welcome_ecoscore">A synthesis of the environmental impact of your food.</string>
+    <string name="title_welcome_matomo">Send anonymous analytics</string>
+    <string name="msg_welcome_matomo">Help the Open Food Facts volunteers to improve the app. You decide if you send anonymous analytics.\n\nIf you change your mind this option can be enabled and disabled at any time from the settings.</string>
 </resources>

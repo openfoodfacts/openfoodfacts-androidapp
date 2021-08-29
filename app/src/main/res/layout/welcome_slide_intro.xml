@@ -3,41 +3,42 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/brand_blue"
+    android:background="@color/bg_welcome_intro"
     android:gravity="center">
 
     <ImageView
-        android:id="@+id/slide_2_image"
+        android:id="@+id/slide_1_image"
         android:layout_width="@dimen/img_width_height"
         android:layout_height="@dimen/img_width_height"
         android:layout_centerHorizontal="true"
-        app:srcCompat="@drawable/ic_nutriscore_c" />
+        app:srcCompat="@drawable/ic_barcode"
+        android:contentDescription="@string/barcode" />
 
     <TextView
-        android:id="@+id/slide_2_title"
+        android:id="@+id/slide_1_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/slide_2_image"
+        android:layout_below="@id/slide_1_image"
         android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal"
         android:padding="20dp"
-        android:text="@string/get_the_nutri_score"
+        android:text="@string/title_welcome_intro"
+        android:textAlignment="center"
         android:textColor="@android:color/white"
         android:textSize="20sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        />
+        android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/slide_2_desc"
-        android:layout_width="match_parent"
+        android:id="@+id/slide_1_desc"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/slide_2_title"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_below="@id/slide_1_title"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:text="@string/synthesis_of_nutrition_slide_2_text"
+        android:gravity="center_horizontal"
+        android:text="@string/msg_welcome_intro"
         android:textAlignment="center"
         android:textColor="@android:color/white"
         android:textSize="@dimen/slide_desc" />
+
 </RelativeLayout>

@@ -155,7 +155,7 @@
     <string name="alert_dialog_warning_title">경고</string>
     <string name="alert_dialog_warning_msg_user">사용자/비밀번호가 변경되었습니다, 정보를 새로고침 해주세요</string>
     <string name="toast_retrieving">로딩중…</string>
-    <string name="txtBarcode">바코드 :</string>
+    <string name="txtBarcode">바코드:</string>
     <string name="txtCategories">카테고리 :</string>
     <string name="txtLabels">라벨, 인증, 수상 내역 :</string>
     <string name="txtEMB">Traceability codes:</string>
@@ -182,7 +182,7 @@
     <string name="hintBarcode">바코드</string>
     <string name="txtNutriScoreInfo">영양 수치에 대해 더 알아보기</string>
     <string name="txtloginHelper">If you have an Open Food Facts account, you can login here with it</string>
-    <string name="hintLogin">Username</string>
+    <string name="hintLogin">Login</string>
     <string name="hintPass">암호</string>
     <string name="errorLogin">계정 또는 비밀번호 오류</string>
     <string name="errorWeb">인터넷에 연결할수 없습니다. 연결문제가 있습니까?</string>
@@ -225,7 +225,7 @@
     <string name="select_camera">카메라 선택</string>
     <string name="ok_button">확인</string>
     <string name="cancel_button">취소</string>
-    <string name="login_button">Username</string>
+    <string name="login_button">Login</string>
     <string name="create_account_button">계정 만들기</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">귀하의 알레르기 정보는 Open Food Facts 서버로 전송되지 않습니다. 또한 제품 데이터가 정확하지 않을 수 있으며 감지가 100 % 정확하지 않을 수 있으므로 조심하여 직접 확인하십시오! </string>
     <string name="title_info_dialog">이용 방법</string>
@@ -366,11 +366,11 @@
     <string name="chlorophyl">클로로필</string>
     <string name="take_picture">사진 촬영</string>
     <string name="choose_picture_from_gallery">갤러리에서 선택</string>
-    <string name="take_picture_ingredients">Take a picture of the ingredients</string>
+    <string name="take_picture_ingredients">Take a photo of the ingredients</string>
     <string name="take_picture_recycling">재활용 지침 사진 촬영</string>
     <string name="take_picture_front">정면 사진 찍기</string>
-    <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
-    <string name="take_more_pictures">Take more pictures</string>
+    <string name="take_picture_nutrition_table">Take a photo of the nutrition table</string>
+    <string name="take_more_pictures">Take more photos</string>
     <string name="take_extra_packaging_pictures">Take extra photos of packaging</string>
     <string name="txtSaturatedFat">포화 지방</string>
     <string name="nutriscore_info_msg">Nutri-Score에 대해 더 알아보기</string>
@@ -452,7 +452,7 @@
     <string name="preference_analytics_bottom_sheet_grant_button">Grant</string>
     <string name="preference_analytics_bottom_sheet_decline_button">Decline</string>
     <string name="scan_first_string">본 제품 내역이 여기에 표시됩니다.\n이 내역은 나만 볼 수 있으며 로컬로 저장됩니다.</string>
-    <string name="log_in">Username</string>
+    <string name="log_in">Login</string>
     <string name="login_true">이미 로그인했습니다!</string>
     <string name="confirm_logout">로그아웃 확인</string>
     <string name="logout_dialog_content">로그아웃 하겠습니까?</string>
@@ -466,9 +466,10 @@
     <string name="additive_string">첨가물</string>
     <string name="allergen_string">알레르기 유발 성분</string>
     <string name="search_string">검색</string>
-    <string name="country_string">판매의 나라</string>
+    <string name="country_string">Country</string>
     <string name="store_subtitle">상점</string>
     <string name="packaging_subtitle">포장</string>
+    <string name="state_subtitle">상태</string>
     <string name="packaging_string">포장</string>
     <string name="label_string">상표</string>
     <string name="category_string">카테고리</string>
@@ -799,11 +800,14 @@
     <string name="changelog_translation_help">Want to see this changelog in %s?\nJoin the translation team!</string>
     <string name="whats_new">What\'s new with Open Food Facts?</string>
     <!-- New onboarding slides -->
-    <string name="eco_score_slide_4_title">Eco-Score</string>
-    <string name="join_the_food_revolution">Join the food revolution</string>
-    <string name="slide_1_text_revolution">Scan food, Take photos, Help transform the food system</string>
-    <string name="get_the_nutri_score">뉴트리 스코 (Nutri-score) 얻기</string>
-    <string name="synthesis_of_nutrition_slide_2_text">A simple synthesis of the nutritional quality of your food</string>
-    <string name="avoid_ultra_processed_foods">Avoid ultra-processed foods</string>
-    <string name="nova_slide_3_text">Reduce the amount of ultra-processed foods in your diet.</string>
+    <string name="title_welcome_intro">Join the food revolution</string>
+    <string name="msg_welcome_intro">Scan food, Take photos, Help transform the food system</string>
+    <string name="title_welcome_nutriscore">뉴트리 스코 (Nutri-score) 얻기</string>
+    <string name="msg_welcome_nutriscore">A simple synthesis of the nutritional quality of your food</string>
+    <string name="title_welcome_nova">Avoid ultra-processed foods</string>
+    <string name="msg_welcome_nova">Reduce the amount of ultra-processed foods in your diet.</string>
+    <string name="title_welcome_ecoscore">Eco-Score</string>
+    <string name="msg_welcome_ecoscore">A synthesis of the environmental impact of your food.</string>
+    <string name="title_welcome_matomo">Send anonymous analytics</string>
+    <string name="msg_welcome_matomo">Help the Open Food Facts volunteers to improve the app. You decide if you send anonymous analytics.\n\nIf you change your mind this option can be enabled and disabled at any time from the settings.</string>
 </resources>

@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.features.listeners
+package openfoodfacts.github.scrachx.openfood.listeners
 
 import android.app.Activity
 import com.google.android.material.bottomnavigation.BottomNavigationView

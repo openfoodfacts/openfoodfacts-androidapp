@@ -21,13 +21,13 @@
     <string name="slide_4_title">Działa offline</string>
     <string name="slide_4_desc">Możesz dodać nowe produkty, nawet nie mając teraz połączenia</string>
     <!-- New onboarding-->
-    <string name="join_the_food_revolution">Dołącz do rewolucji żywieniowej</string>
-    <string name="slide_1_text_revolution">Skanuj jedzenie, rób zdjęcia, pomóż przekształcić system żywnościowy</string>
-    <string name="get_the_nutri_score">Poznaj skalę Nutri_Score</string>
-    <string name="synthesis_of_nutrition_slide_2_text">Prosta synteza jakości odżywczej Twojego jedzenia</string>
-    <string name="avoid_ultra_processed_foods">Unikaj ultra przetworzonej żywności</string>
-    <string name="nova_slide_3_text">Zmniejsz ilość ultra przetworzonej żywności w swojej diecie.</string>
-    <string name="eco_score_slide_4_title">Eco-Score</string>
+    <string name="title_welcome_intro">Dołącz do rewolucji żywieniowej</string>
+    <string name="msg_welcome_intro">Skanuj jedzenie, rób zdjęcia, pomóż przekształcić system żywnościowy</string>
+    <string name="title_welcome_nutriscore">Poznaj skalę Nutri_Score</string>
+    <string name="msg_welcome_nutriscore">Prosta synteza jakości odżywczej Twojego jedzenia</string>
+    <string name="title_welcome_nova">Unikaj ultra przetworzonej żywności</string>
+    <string name="msg_welcome_nova">Zmniejsz ilość ultra przetworzonej żywności w swojej diecie.</string>
+    <string name="title_welcome_ecoscore">Eco-Score</string>
     <!-- Scan card -->
     <string name="txtDialogsContent">Zeskanowany produkt jeszcze nie figuruje w Open Food Facts. Dodaj go.</string>
     <string name="txtDialogsContentPowerMode">Zeskanowany produkt już widnieje w Open Food Facts.</string>

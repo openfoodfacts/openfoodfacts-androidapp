@@ -21,13 +21,13 @@
     <string name="slide_4_title">Funktioniert auch ohne Internetverbindung</string>
     <string name="slide_4_desc">Sie können neue Produkte hinzufügen, auch wenn gerade keine Internetverbindung besteht</string>
     <!-- New onboarding-->
-    <string name="join_the_food_revolution">Machen Sie mit, bei der Lebensmittel-Revolution</string>
-    <string name="slide_1_text_revolution">Erfassen Sie Lebensmittel, nehmen Sie Fotos auf, helfen Sie mit, das Lebensmittelsystem zu verändern</string>
-    <string name="get_the_nutri_score">„Nutri-Score” (franz. Nahrungsmittelampel) abrufen</string>
-    <string name="synthesis_of_nutrition_slide_2_text">Eine einfache Übersicht die Nährwertqualität Ihrer Lebensmittel</string>
-    <string name="avoid_ultra_processed_foods">Vermeiden Sie hochverarbeitete Lebensmittel</string>
-    <string name="nova_slide_3_text">Reduzieren Sie die Menge an hochverarbeiteten Lebensmitteln in Ihrer Ernährung.</string>
-    <string name="eco_score_slide_4_title">Eco-Score</string>
+    <string name="title_welcome_intro">Machen Sie mit, bei der Lebensmittel-Revolution</string>
+    <string name="msg_welcome_intro">Erfassen Sie Lebensmittel, nehmen Sie Fotos auf, helfen Sie mit, das Lebensmittelsystem zu verändern</string>
+    <string name="title_welcome_nutriscore">„Nutri-Score” (franz. Nahrungsmittelampel) abrufen</string>
+    <string name="msg_welcome_nutriscore">Eine einfache Übersicht die Nährwertqualität Ihrer Lebensmittel</string>
+    <string name="title_welcome_nova">Vermeiden Sie hochverarbeitete Lebensmittel</string>
+    <string name="msg_welcome_nova">Reduzieren Sie die Menge an hochverarbeiteten Lebensmitteln in Ihrer Ernährung.</string>
+    <string name="title_welcome_ecoscore">Eco-Score</string>
     <!-- Scan card -->
     <string name="txtDialogsContent">Das eingelesene Produkt existiert noch nicht in „Open Food Facts”. Bitte fügen Sie es hinzu.</string>
     <string name="txtDialogsContentPowerMode">Das eingelesene Produkt befindet sich bereits in Open Food Facts.</string>

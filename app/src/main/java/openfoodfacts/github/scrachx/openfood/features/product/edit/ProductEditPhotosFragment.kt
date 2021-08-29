@@ -72,7 +72,7 @@ class ProductEditPhotosFragment : ProductEditFragment() {
             val image = ProductImage(code!!, ProductImageField.OTHER, newPhotoFile, localeManager.getLanguage())
             image.filePath = photoFile!!.toURI().path
             if (activity is ProductEditActivity) {
-                (activity as ProductEditActivity).addToPhotoMap(image, 4)
+                (activity as ProductEditActivity).savePhoto(image, 4)
             }
         }
     }

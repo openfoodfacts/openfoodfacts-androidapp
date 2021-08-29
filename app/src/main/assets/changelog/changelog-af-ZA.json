@@ -2,10 +2,10 @@
   "changelog": [
     {
       "date": "10/02/2021",
-      "code": 350,
+      "code": 518,
       "name": "3.5.0",
       "items": [
-        "Added changelog screen",
+        "Masjien-leer verbeterde strepieskodeskandeerder. U kan nou 'n nuwe manier om van die opsies te skandeer, inskakel. U kan die barcode scanner-enjin te eniger tyd van die instellings afskakel.",
         "Help the Open Food Facts volunteers improve the app. You have the option to send anonymous analytics and crash reports. It can be enabled and disabled at any time from the settings."
       ]
     }

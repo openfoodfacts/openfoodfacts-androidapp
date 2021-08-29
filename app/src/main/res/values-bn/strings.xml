@@ -192,7 +192,7 @@
     <string name="txtSugars">চিনি</string>
     <string name="hintBarcode">বারকোড</string>
     <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
-    <string name="hintLogin">Username</string>
+    <string name="hintLogin">Login</string>
     <string name="hintPass">পাসওয়ার্ড</string>
     <string name="errorLogin">লগইন বা পাসওয়ার্ড ত্রুটি</string>
     <string name="errorWeb">আমরা ইন্টারনেট সংযোগ করতে পারিনি। আপনার সংযোগে কি কোন সমস্যা আছে?</string>
@@ -235,7 +235,7 @@
     <string name="select_camera">Select a Camera</string>
     <string name="ok_button">ঠিক আছে</string>
     <string name="cancel_button">Cancel</string>
-    <string name="login_button">Username</string>
+    <string name="login_button">Login</string>
     <string name="create_account_button">Create Account</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
     <string name="title_info_dialog">How does it work?</string>
@@ -592,7 +592,7 @@
     <string name="your_version">Yours</string>
     <string name="ingredients_picture">Ingredients Picture</string>
     <string name="packaging">Recycling</string>
-    <string name="take_ingredients_picture_to_extract">(Please take a picture of the ingredients to automatically extract them)</string>
+    <string name="take_ingredients_picture_to_extract">(Please take a photo of the ingredients to automatically extract them)</string>
     <string name="ingredients_list">Ingredients List</string>
     <string name="ingredients_hint">Keep the order, indicate the % when specified, separate with a comma or use -, use () for ingredients of an ingredient, surround allergens with _</string>
     <string name="extract_ingredients">Extract ingredients</string>

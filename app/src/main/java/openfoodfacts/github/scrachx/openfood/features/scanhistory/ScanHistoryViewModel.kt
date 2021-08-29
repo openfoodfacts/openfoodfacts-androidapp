@@ -1,19 +1,15 @@
 package openfoodfacts.github.scrachx.openfood.features.scanhistory
 
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.content.Context
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.jakewharton.rxrelay2.BehaviorRelay
+import androidx.lifecycle.liveData
+import androidx.lifecycle.switchMap
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
-import io.reactivex.Completable
-import io.reactivex.Observable
-import io.reactivex.Single
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.rxkotlin.addTo
-import io.reactivex.rxkotlin.flatMapIterable
-import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import openfoodfacts.github.scrachx.openfood.models.HistoryProduct
@@ -21,6 +17,7 @@ import openfoodfacts.github.scrachx.openfood.models.HistoryProductDao
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
 import openfoodfacts.github.scrachx.openfood.utils.SortType
+import openfoodfacts.github.scrachx.openfood.utils.list
 import javax.inject.Inject
 
 @HiltViewModel
@@ -32,97 +29,94 @@ class ScanHistoryViewModel @Inject constructor(
     private val localeManager: LocaleManager
 ) : ViewModel() {
 
-    private val compositeDisposable = CompositeDisposable()
-    private val fetchProductsStateRelay = BehaviorRelay.createDefault<FetchProductsState>(FetchProductsState.Loading)
-    private var sortType = SortType.TIME
-
-    init {
-        refreshItems()
-    }
-
-    override fun onCleared() {
-        compositeDisposable.clear()
-        super.onCleared()
-    }
-
-    fun observeFetchProductState() = fetchProductsStateRelay
-
-    fun refreshItems() {
-        fetchProductsStateRelay.accept(FetchProductsState.Loading)
-        Single.fromCallable { daoSession.historyProductDao.queryBuilder().list() }
-            .flatMap { products ->
-                client.getProductsByBarcode(products.map { it.barcode })
+    private val unorderedProductState = MutableLiveData<FetchProductsState>(FetchProductsState.Loading)
+    val productsState = unorderedProductState.switchMap { products ->
+        liveData {
+            when (products) {
+                is FetchProductsState.Loading, is FetchProductsState.Error -> emit(products)
+                is FetchProductsState.Data -> {
+                    try {
+                        (products as? FetchProductsState.Data)?.items
+                            ?.customSort(sortType.value)
+                            ?.let { emit(FetchProductsState.Data(it)) }
+                    } catch (err: Exception) {
+                        emit(FetchProductsState.Error)
+                    }
+                }
             }
-            .toObservable()
-            .flatMapIterable()
-            .map { product ->
-                val historyProduct = daoSession.historyProductDao.queryBuilder()
-                    .where(HistoryProductDao.Properties.Barcode.eq(product.code))
-                    .build()
-                    .unique()
-
-                product.productName?.let { historyProduct.title = it }
-                product.brands?.let { historyProduct.brands = it }
-                product.getImageSmallUrl(localeManager.getLanguage())?.let { historyProduct.url = it }
-                product.quantity?.let { historyProduct.quantity = it }
-                product.nutritionGradeFr?.let { historyProduct.nutritionGrade = it }
-                product.ecoscore?.let { historyProduct.ecoscore = it }
-                product.novaGroups?.let { historyProduct.novaGroup = it }
-                daoSession.historyProductDao.update(historyProduct)
-            }.toList()
-
-            .map { daoSession.historyProductDao.queryBuilder().list() }
-            .map { it.customSort() }
-            .subscribeOn(Schedulers.io())
-            .doOnError { fetchProductsStateRelay.accept(FetchProductsState.Error) }
-            .subscribe { items -> fetchProductsStateRelay.accept(FetchProductsState.Data(items)) }
-            .addTo(compositeDisposable)
-    }
-
-    fun clearHistory() {
-        fetchProductsStateRelay.accept(FetchProductsState.Loading)
-        Completable.fromCallable { daoSession.historyProductDao.deleteAll() }
-            .subscribeOn(Schedulers.io())
-            .doOnError { fetchProductsStateRelay.accept(FetchProductsState.Error) }
-            .subscribe { fetchProductsStateRelay.accept(FetchProductsState.Data(emptyList())) }
-            .addTo(compositeDisposable)
-    }
-
-    fun removeProductFromHistory(product: HistoryProduct) {
-        Observable.fromCallable {
-            daoSession.historyProductDao.delete(product)
-            daoSession.historyProductDao.queryBuilder().list()
         }
-            .map { it.customSort() }
-            .subscribeOn(Schedulers.io())
-            .doOnError { fetchProductsStateRelay.accept(FetchProductsState.Error) }
-            .subscribe { products -> fetchProductsStateRelay.accept(FetchProductsState.Data(products)) }
-            .addTo(compositeDisposable)
+    }
 
+    private val sortType = MutableLiveData(SortType.TIME)
+
+    suspend fun refreshItems() {
+        unorderedProductState.postValue(FetchProductsState.Loading)
+
+        withContext(Dispatchers.IO) {
+            val barcodes = daoSession.historyProductDao.list().map { it.barcode }
+            if (barcodes.isNotEmpty()) {
+                try {
+                    client.getProductsByBarcode(barcodes)
+                        .forEach { product ->
+                            val historyProduct = daoSession.historyProductDao.queryBuilder()
+                                .where(HistoryProductDao.Properties.Barcode.eq(product.code))
+                                .build()
+                                .unique()
+
+                            product.productName?.let { historyProduct.title = it }
+                            product.brands?.let { historyProduct.brands = it }
+                            product.getImageSmallUrl(localeManager.getLanguage())?.let { historyProduct.url = it }
+                            product.quantity?.let { historyProduct.quantity = it }
+                            product.nutritionGradeFr?.let { historyProduct.nutritionGrade = it }
+                            product.ecoscore?.let { historyProduct.ecoscore = it }
+                            product.novaGroups?.let { historyProduct.novaGroup = it }
+
+                            daoSession.historyProductDao.update(historyProduct)
+                        }
+                } catch (err: Exception) {
+                    unorderedProductState.postValue(FetchProductsState.Error)
+                }
+            }
+
+            val updatedProducts = daoSession.historyProductDao.list()
+            unorderedProductState.postValue(FetchProductsState.Data(updatedProducts))
+        }
+    }
+
+    suspend fun clearHistory() = withContext(Dispatchers.IO) {
+        unorderedProductState.postValue(FetchProductsState.Loading)
+
+        try {
+            daoSession.historyProductDao.deleteAll()
+        } catch (err: Exception) {
+            unorderedProductState.postValue(FetchProductsState.Error)
+        }
+
+        unorderedProductState.postValue(FetchProductsState.Data(emptyList()))
+    }
+
+    suspend fun removeProductFromHistory(product: HistoryProduct) = withContext(Dispatchers.IO) {
+        try {
+            daoSession.historyProductDao.delete(product)
+        } catch (err: Exception) {
+            unorderedProductState.postValue(FetchProductsState.Error)
+        }
+
+        val products = daoSession.historyProductDao.list()
+        unorderedProductState.postValue(FetchProductsState.Data(products))
     }
 
     fun updateSortType(type: SortType) {
-        sortType = type
-        fetchProductsStateRelay
-            .take(1)
-            .map {
-                (it as? FetchProductsState.Data)?.items?.customSort() ?: emptyList()
-            }
-            .filter { it.isNotEmpty() }
-            .subscribeOn(Schedulers.io())
-            .doOnError { fetchProductsStateRelay.accept(FetchProductsState.Error) }
-            .subscribe { products -> fetchProductsStateRelay.accept(FetchProductsState.Data(products)) }
-            .addTo(compositeDisposable)
-    }
+        sortType.postValue(type)
 
-    fun openProduct(barcode: String, activity: Activity) {
-        client.openProduct(barcode, activity)
+        // refresh
+        unorderedProductState.postValue(productsState.value)
     }
 
     /**
      * Function to compare history items based on title, brand, barcode, time and nutrition grade
      */
-    private fun List<HistoryProduct>.customSort() = when (sortType) {
+    private fun List<HistoryProduct>.customSort(sortType: SortType?) = when (sortType) {
         SortType.TITLE -> sortedWith { item1, item2 ->
             if (item1.title.isNullOrEmpty()) item1.title = context.getString(R.string.no_title)
             if (item2.title.isNullOrEmpty()) item2.title = context.getString(R.string.no_title)
@@ -137,12 +131,12 @@ class ScanHistoryViewModel @Inject constructor(
         SortType.BARCODE -> sortedBy { it.barcode }
         SortType.GRADE -> sortedBy { it.nutritionGrade }
         SortType.TIME -> sortedByDescending { it.lastSeen }
-        SortType.NONE -> this
+        SortType.NONE, null -> this
     }
 
     sealed class FetchProductsState {
-        object Loading : FetchProductsState()
         data class Data(val items: List<HistoryProduct>) : FetchProductsState()
+        object Loading : FetchProductsState()
         object Error : FetchProductsState()
     }
 }

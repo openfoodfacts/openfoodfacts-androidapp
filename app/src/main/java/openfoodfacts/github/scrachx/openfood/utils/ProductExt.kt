@@ -4,22 +4,18 @@ import android.content.Context
 import android.graphics.drawable.Drawable
 import androidx.annotation.DrawableRes
 import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat
-import io.reactivex.Single
 import openfoodfacts.github.scrachx.openfood.R
-import openfoodfacts.github.scrachx.openfood.models.HistoryProduct
-import openfoodfacts.github.scrachx.openfood.models.Product
-import openfoodfacts.github.scrachx.openfood.models.SearchProduct
-import openfoodfacts.github.scrachx.openfood.models.Units
+import openfoodfacts.github.scrachx.openfood.models.*
 import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.Utils.NO_DRAWABLE_RESOURCE
 import java.util.*
 
-fun OfflineSavedProduct.toState(client: OpenFoodAPIClient) = client.getProductStateFull(barcode)
+suspend fun OfflineSavedProduct.toState(client: OpenFoodAPIClient): ProductState = client.getProductStateFull(barcode)
 
-fun OfflineSavedProduct.toOnlineProduct(client: OpenFoodAPIClient) = toState(client).map { it.product }
+suspend fun OfflineSavedProduct.toOnlineProduct(client: OpenFoodAPIClient) = toState(client).product
 
-fun Product.isPerServingInLiter() = servingSize?.contains(Units.UNIT_LITER, true)
+fun Product.isPerServingInLiter() = servingSize?.contains(MeasurementUnit.UNIT_LITER.sym, true)
 
 fun SearchProduct.getProductBrandsQuantityDetails() = StringBuilder().apply {
     brands?.takeIf { it.isNotEmpty() }?.let { brandStr ->
@@ -31,8 +27,7 @@ fun SearchProduct.getProductBrandsQuantityDetails() = StringBuilder().apply {
     }
 }.toString()
 
-fun SearchProduct.toProduct(client: OpenFoodAPIClient): Single<Product> =
-    client.getProductStateFull(this.code).map { it.product }
+suspend fun SearchProduct.toProduct(client: OpenFoodAPIClient): Product? = client.getProductStateFull(this.code).product
 
 @DrawableRes
 private fun getResourceFromEcoscore(ecoscore: String?) = when (ecoscore?.lowercase(Locale.ROOT)) {

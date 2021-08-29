@@ -831,7 +831,7 @@
     <string name="icon_categories">أيقونة الفئات</string>
     <string name="icon_emb">EMB code icon</string>
     <string name="product_front_image">الصورة اﻷمامية للمنتج</string>
-    <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
+    <string name="brand_hint">Examples: Coca-Cola, Nestle, etc…</string>
     <string name="sign_in_or_register">تسجيل الدخول أو التسجيل</string>
     <string name="hunger_game_call_to_action">ساعد في تصنيف المزيد %1$s</string>
     <string name="txtHomeOnline">Open Food Facts هي قاعدة بيانات مفتوحة لأكثر من %1$s المنتجات الغذائية (بالإضافة إلى المنتجات التي ستساهم بها).</string>

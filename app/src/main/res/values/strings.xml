@@ -224,17 +224,17 @@
     <string name="alert_dialog_warning_title">Warning</string>
     <string name="alert_dialog_warning_msg_user">User/password has changed, please update information</string>
     <string name="toast_retrieving">Loading…</string>
-    <string name="txtBarcode">Barcode :</string>
-    <string name="txtCategories">Categories :</string>
-    <string name="txtLabels">Labels, certifications, awards :</string>
-    <string name="txtEMB">Traceability codes:</string>
-    <string name="txtIngredients">Ingredients list :</string>
+    <string name="txtBarcode">Barcode:</string>
+    <string name="txtCategories">Categories:</string>
+    <string name="txtLabels">Labels, certifications, awards: </string>
+    <string name="txtEMB">Traceability codes: </string>
+    <string name="txtIngredients">Ingredients list: </string>
     <string name="Donate">Donate</string>
     <string name="Donation">Click here to donate to Open Food Facts</string>
-    <string name="txtSubstances">Substances or products causing allergies or intolerances :</string>
-    <string name="txtAdditives">Additives :</string>
-    <string name="txtTraces">Traces :</string>
-    <string name="txtMayBeFromPalmOilProduct">Ingredients that may be from palm oil :</string>
+    <string name="txtSubstances">Substances or products causing allergies or intolerances: </string>
+    <string name="txtAdditives">Additives: </string>
+    <string name="txtTraces">Traces: </string>
+    <string name="txtMayBeFromPalmOilProduct">Ingredients that may be from palm oil: </string>
     <string name="txtPalmOilProduct">Ingredients from palm oil :</string>
     <string name="txtServingSize">Serving size :</string>
     <string name="txtNutrientLevel100g">Nutrient levels for 100g :</string>
@@ -564,9 +564,11 @@
     <string name="additive_string">Additive</string>
     <string name="allergen_string">Allergen</string>
     <string name="search_string">Search</string>
-    <string name="country_string">Countries where sold</string>
+    <string name="country_string">Country</string>
     <string name="store_subtitle">Store</string>
     <string name="packaging_subtitle">Packaging</string>
+    <string name="state_subtitle">State</string>
+
     <string name="packaging_string">Packaging</string>
     <string name="label_string">Label</string>
     <string name="category_string">Category</string>
@@ -678,13 +680,13 @@
     <string name="no_internet_connection">You appear to have no internet connection, images will be uploaded when network is available</string>
     <string name="no_internet_unable_to_extract_ingredients">No internet connection. Unable to extract ingredients</string>
     <string name="percent">%1$d%%</string>
-    <string name="overview">Overview</string>
+    <string name="overview">Summary</string>
     <string name="ingredients">Ingredients</string>
     <string name="nutrition_facts">Nutrition Facts</string>
     <string name="your_version">Yours</string>
     <string name="ingredients_picture">Ingredients Picture</string>
     <string name="packaging">Recycling</string>
-    <string name="take_ingredients_picture_to_extract">(Please take a picture of the ingredients to automatically extract them)</string>
+    <string name="take_ingredients_picture_to_extract">(Please take a photo of the ingredients to automatically extract them)</string>
     <string name="ingredients_list">Ingredients List</string>
     <string name="ingredients_hint">Keep the order, indicate the % when specified, separate with a comma or use -, use () for ingredients of an ingredient, surround allergens with _</string>
     <string name="extract_ingredients">Extract ingredients</string>
@@ -868,6 +870,7 @@
     <string name="help_extract_ingredients">Help extract the ingredients to get the %1$s status</string>
     <string name="add_photo_to_extract_ingredients">Add a photo to begin extracting ingredients</string>
     <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
+
     <string name="compare_brands">Brands :</string>
     <string name="compare_additives">Additives :</string>
     <string name="compare_salt">Salt</string>
@@ -887,21 +890,29 @@
     <!--ShowcaseView Strings-->
     <string name="title_image_type">Select Image Type</string>
     <string name="content_image_type">Choose the photo to work on</string>
+
     <string name="title_choose_language">Select Language</string>
     <string name="content_choose_language">Select the language of the photo</string>
+
     <string name="title_add_photo">Add Photo</string>
     <string name="content_add_photo">Press here to take a new photo</string>
+
     <string name="title_choose_photo">Choose Photo</string>
     <string name="content_choose_photo">Choose among existing photos</string>
+
     <string name="title_edit_photo">Edit Photo</string>
     <string name="content_edit_photo">Edit, crop and rotate the photo</string>
+
     <string name="title_unselect_photo">Unselect Photo</string>
     <string name="content_unselect_photo">Press here to unselect current photo</string>
+
     <string name="title_exit">Exit</string>
     <string name="content_exit">Press here to return to the product</string>
+
     <string name="icon_label">Labels icon</string>
     <string name="icon_categories">Categories icon</string>
     <string name="icon_emb">Traceability code icon</string>
+
     <string name="product_front_image">Product front image</string>
     <string name="brand_hint">Examples: Coca-Cola, Nestle, etc…</string>
     <string name="sign_in_or_register">Sign in or register</string>
@@ -929,20 +940,26 @@
     <string name="follow_system">Follow system</string>
     <string name="day">Day</string>
     <string name="night">Night</string>
-    
+
     <string name="report_email_chooser_title">Send a report email</string>
 
     <!-- Changelog String -->
     <string name="changelog_translation_help">Want to see this changelog in %s?\nJoin the translation team!</string>
     <string name="whats_new">What\'s new with Open Food Facts?</string>
-  
+
     <!-- New onboarding slides -->
-    <string name="eco_score_slide_4_title">Eco-Score</string>
-    <string name="join_the_food_revolution">Join the food revolution</string>
-    <string name="slide_1_text_revolution">Scan food, Take photos, Help transform the food system</string>
-    <string name="get_the_nutri_score">Get the Nutri-Score</string>
-    <string name="synthesis_of_nutrition_slide_2_text">A simple synthesis of the nutritional quality of your food</string>
-    <string name="avoid_ultra_processed_foods">Avoid ultra-processed foods</string>
-    <string name="nova_slide_3_text">Reduce the amount of ultra-processed foods in your diet.</string>
-    <string name="welcome_slide_ecoscore_desc">A synthesis of the environmental impact of your food.</string>
+    <string name="title_welcome_intro">Join the food revolution</string>
+    <string name="msg_welcome_intro">Scan food, Take photos, Help transform the food system</string>
+
+    <string name="title_welcome_nutriscore">Get the Nutri-Score</string>
+    <string name="msg_welcome_nutriscore">A simple synthesis of the nutritional quality of your food</string>
+
+    <string name="title_welcome_nova">Avoid ultra-processed foods</string>
+    <string name="msg_welcome_nova">Reduce the amount of ultra-processed foods in your diet.</string>
+
+    <string name="title_welcome_ecoscore">Eco-Score</string>
+    <string name="msg_welcome_ecoscore">A synthesis of the environmental impact of your food.</string>
+
+    <string name="title_welcome_matomo">Send anonymous analytics</string>
+    <string name="msg_welcome_matomo">Help the Open Food Facts volunteers to improve the app. You decide if you send anonymous analytics.\n\nIf you change your mind this option can be enabled and disabled at any time from the settings.</string>
 </resources>

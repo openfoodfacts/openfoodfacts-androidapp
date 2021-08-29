@@ -153,6 +153,126 @@ lane :release_opf do
     )
 end
 
+desc 'Create a release of Open Pet Food Facts and upload to internal channel of playstore'
+lane :release_opff do
+    PACKAGE_NAME = CredentialsManager::AppfileConfig.try_fetch_value(:package_name)
+    gradle_file = "./app/build.gradle.kts"
+
+    #fetch versionName from current release branch name
+    versionName = version_to_use_from_git_branch(gitBranch: git_branch).to_s
+    UI.important "Using versionName #{versionName}"
+
+    #fetch versionCode from playstore and bump it
+    versionCode = play_store_version_code_to_upload_to().to_s
+
+    UI.important "Releasing android app #{PACKAGE_NAME} v#{versionName} \##{versionCode}"
+
+    android_set_version_name(
+        version_name: versionName,
+        gradle_file: gradle_file
+    )
+    increment_version_code(
+        version_code: versionCode,
+        gradle_file_path: gradle_file
+    )
+
+    #build the bundle
+    gradle(
+        project_dir: './',
+        task: 'clean bundle',
+        build_type: 'opffPlaystoreRelease'
+        #platform: 'playstore'
+    )
+
+    #upload the bundle to internal track of play store
+    supply(
+        track: 'internal',
+        skip_upload_apk: true,
+#        version_codes_to_retain: ['12', '23'],
+        package_name: PACKAGE_NAME,
+        skip_upload_metadata: true,
+        skip_upload_changelogs: true,
+        skip_upload_images: true,
+        skip_upload_screenshots: true
+    )
+
+
+    sentry_create_release(
+        org_slug: 'openfoodfacts',
+        project_slug: 'openpetfoodfacts-android',
+        version: PACKAGE_NAME + '@' + versionName + '+' + versionCode,
+        finalize: false # Release will be finalized by the "finalize_sentry" lane, when the version is in production
+    )
+
+    sentry_set_commits(
+        org_slug: 'openfoodfacts',
+        project_slug: 'openpetfoodfacts-android',
+        version: PACKAGE_NAME + '@' + versionName + '+' + versionCode,
+        auto: true, # enable completely automated commit management
+        clear: false # clear all current commits from the release
+    )
+end
+
+desc 'Create a release of Open Beauty Facts and upload to internal channel of playstore'
+lane :release_obf do
+    PACKAGE_NAME = CredentialsManager::AppfileConfig.try_fetch_value(:package_name)
+    gradle_file = "./app/build.gradle.kts"
+
+    #fetch versionName from current release branch name
+    versionName = version_to_use_from_git_branch(gitBranch: git_branch).to_s
+    UI.important "Using versionName #{versionName}"
+
+    #fetch versionCode from playstore and bump it
+    versionCode = play_store_version_code_to_upload_to().to_s
+
+    UI.important "Releasing android app #{PACKAGE_NAME} v#{versionName} \##{versionCode}"
+
+    android_set_version_name(
+        version_name: versionName,
+        gradle_file: gradle_file
+    )
+    increment_version_code(
+        version_code: versionCode,
+        gradle_file_path: gradle_file
+    )
+
+    #build the bundle
+    gradle(
+        project_dir: './',
+        task: 'clean bundle',
+        build_type: 'obfPlaystoreRelease'
+        #platform: 'playstore'
+    )
+
+    #upload the bundle to internal track of play store
+    supply(
+        track: 'internal',
+        skip_upload_apk: true,
+#        version_codes_to_retain: ['12', '23'],
+        package_name: PACKAGE_NAME,
+        skip_upload_metadata: true,
+        skip_upload_changelogs: true,
+        skip_upload_images: true,
+        skip_upload_screenshots: true
+    )
+
+
+    sentry_create_release(
+        org_slug: 'openfoodfacts',
+        project_slug: 'openbeautyfacts-android',
+        version: PACKAGE_NAME + '@' + versionName + '+' + versionCode,
+        finalize: false # Release will be finalized by the "finalize_sentry" lane, when the version is in production
+    )
+
+    sentry_set_commits(
+        org_slug: 'openfoodfacts',
+        project_slug: 'openbeautyfacts-android',
+        version: PACKAGE_NAME + '@' + versionName + '+' + versionCode,
+        auto: true, # enable completely automated commit management
+        clear: false # clear all current commits from the release
+    )
+end
+
 desc 'Check the version currently in production and mark it as "finalized"'
 lane :finalize_sentry do
     PACKAGE_NAME = CredentialsManager::AppfileConfig.try_fetch_value(:package_name)

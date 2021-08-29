@@ -21,13 +21,13 @@
     <string name="slide_4_title">Utilizzabile offline</string>
     <string name="slide_4_desc">Puoi aggiungere nuovi prodotti, anche senza una connessione internet disponibile sul momento</string>
     <!-- New onboarding-->
-    <string name="join_the_food_revolution">Unisciti alla rivoluzione alimentare</string>
-    <string name="slide_1_text_revolution">Scansiona gli alimenti, scatta foto, aiuta a trasformare il sistema alimentare</string>
-    <string name="get_the_nutri_score">Ottieni il Nutri-Score</string>
-    <string name="synthesis_of_nutrition_slide_2_text">Una semplice sintesi delle qualità nutrizionali dei tuoi alimenti</string>
-    <string name="avoid_ultra_processed_foods">Evita gli alimenti ultra-processati</string>
-    <string name="nova_slide_3_text">Riduci la quantità di alimenti ultra-processati nella tua dieta.</string>
-    <string name="eco_score_slide_4_title">Eco-Score</string>
+    <string name="title_welcome_intro">Unisciti alla rivoluzione alimentare</string>
+    <string name="msg_welcome_intro">Scansiona gli alimenti, scatta foto, aiuta a trasformare il sistema alimentare</string>
+    <string name="title_welcome_nutriscore">Ottieni il Nutri-Score</string>
+    <string name="msg_welcome_nutriscore">Una semplice sintesi delle qualità nutrizionali dei tuoi alimenti</string>
+    <string name="title_welcome_nova">Evita gli alimenti ultra-processati</string>
+    <string name="msg_welcome_nova">Riduci la quantità di alimenti ultra-processati nella tua dieta.</string>
+    <string name="title_welcome_ecoscore">Eco-Score</string>
     <!-- Scan card -->
     <string name="txtDialogsContent">Il prodotto che hai scansionato non è ancora presente in Open Food Facts. Per favore aggiungilo.</string>
     <string name="txtDialogsContentPowerMode">Il prodotto scannerizzato esiste già in Open Food Facts</string>

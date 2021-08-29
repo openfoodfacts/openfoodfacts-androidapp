@@ -18,40 +18,42 @@ package openfoodfacts.github.scrachx.openfood.utils
 import android.Manifest
 import android.app.Activity
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Canvas
+import android.graphics.Color
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.net.Uri
 import android.os.Build
 import android.os.Environment
-import android.text.Spannable
-import android.text.SpannableStringBuilder
-import android.text.Spanned
 import android.text.style.ClickableSpan
-import android.text.style.StyleSpan
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
+import android.widget.ImageView
+import androidx.annotation.ColorInt
 import androidx.annotation.DrawableRes
 import androidx.appcompat.content.res.AppCompatResources
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
+import androidx.core.app.ActivityCompat.requestPermissions
+import androidx.core.app.ActivityCompat.shouldShowRequestPermissionRationale
+import androidx.core.content.ContextCompat.checkSelfPermission
+import androidx.core.graphics.ColorUtils
 import androidx.core.net.toUri
+import androidx.core.text.buildSpannedString
 import androidx.core.text.inSpans
 import androidx.core.view.children
 import androidx.work.*
-import com.afollestad.materialdialogs.MaterialDialog
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.squareup.picasso.Callback
+import com.squareup.picasso.RequestCreator
 import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.features.scan.ContinuousScanActivity
-import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivity.Companion.start
 import openfoodfacts.github.scrachx.openfood.jobs.ImagesUploaderWorker
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import org.apache.commons.validator.routines.checkdigit.EAN13CheckDigit
@@ -60,6 +62,7 @@ import java.text.DecimalFormat
 import java.text.DecimalFormatSymbols
 import java.util.*
 import java.util.concurrent.TimeUnit
+import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivity.Companion.start as startSearch
 
 private const val LOG_TAG_COMPRESS = "COMPRESS_IMAGE"
 
@@ -71,11 +74,6 @@ object Utils {
     const val NO_DRAWABLE_RESOURCE = 0
     const val FORCE_REFRESH_TAXONOMIES = "force_refresh_taxonomies"
 
-    fun hideKeyboard(activity: Activity) {
-        val view = activity.currentFocus ?: return
-        (activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager)
-            .hideSoftInputFromWindow(view.windowToken, 0)
-    }
 
     @JvmStatic
     fun compressImage(fileUrl: String): String? {
@@ -86,70 +84,12 @@ object Utils {
         }
         val smallFileFront = File(fileUrl.replace(".png", "_small.png"))
         try {
-            FileOutputStream(smallFileFront).use { stream -> decodedBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream) }
+            FileOutputStream(smallFileFront).use { decodedBitmap.compress(Bitmap.CompressFormat.PNG, 100, it) }
         } catch (e: IOException) {
             Log.e(LOG_TAG_COMPRESS, e.message, e)
         }
         return smallFileFront.toString()
     }
-
-    /**
-     * Check if a certain application is installed on a device.
-     *
-     * @param context the applications context.
-     * @param packageName the package name that you want to check.
-     * @return true if the application is installed, false otherwise.
-     */
-    fun isApplicationInstalled(context: Context, packageName: String) = try {
-        // Check if the package name exists, if exception is thrown, package name does not
-        // exist.
-        context.packageManager.getPackageInfo(packageName, PackageManager.GET_ACTIVITIES)
-        true
-    } catch (e: PackageManager.NameNotFoundException) {
-        false
-    }
-
-    /**
-     * Returns the NOVA group explanation given the group
-     */
-    fun getNovaGroupExplanation(novaGroup: String, context: Context) = when (novaGroup) {
-        "1" -> context.resources.getString(R.string.nova_grp1_msg)
-        "2" -> context.resources.getString(R.string.nova_grp2_msg)
-        "3" -> context.resources.getString(R.string.nova_grp3_msg)
-        "4" -> context.resources.getString(R.string.nova_grp4_msg)
-        else -> null
-    }
-
-    fun Context.getBitmapFromDrawable(@DrawableRes drawableId: Int): Bitmap? {
-        val drawable = AppCompatResources.getDrawable(this, drawableId) ?: return null
-        val bitmap = Bitmap.createBitmap(drawable.intrinsicWidth, drawable.intrinsicHeight, Bitmap.Config.ARGB_8888)
-        val canvas = Canvas(bitmap)
-        drawable.setBounds(0, 0, canvas.width, canvas.height)
-        drawable.draw(canvas)
-        return bitmap
-    }
-
-    /**
-     * Return a round float value **with 2 decimals**
-     *
-     * **BE CAREFUL:** THE METHOD DOESN'T CHECK THE NUMBER AS A NUMBER.
-     *
-     * @param value float value
-     * @return round value **with 2 decimals** or 0 if the value is empty or equals to 0
-     */
-    fun getRoundNumber(value: CharSequence, locale: Locale = Locale.getDefault()) = when {
-        value.isEmpty() -> "?"
-        value == "0" -> value
-        else -> value.toString().toDoubleOrNull()
-            ?.let { DecimalFormat("##.##", DecimalFormatSymbols(locale)).format(it) }
-            ?: "?"
-    }
-
-    /**
-     * @see Utils.getRoundNumber
-     */
-    fun getRoundNumber(value: Float, locale: Locale = Locale.getDefault()) = getRoundNumber(value.toString(), locale)
-    fun getRoundNumber(value: Double, locale: Locale = Locale.getDefault()) = getRoundNumber(value.toString(), locale)
 
     /**
      * Schedules job to download when network is available
@@ -165,23 +105,6 @@ object Utils {
         WorkManager.getInstance(context).enqueueUniqueWork(UPLOAD_JOB_TAG, ExistingWorkPolicy.KEEP, uploadWorkRequest)
 
         isUploadJobInitialised = true
-    }
-
-    /**
-     * Check if the user is connected to a network. This can be any network.
-     *
-     * @param context of the application.
-     * @return true if connected or connecting. False otherwise.
-     */
-    @Suppress("DEPRECATION")
-    fun isNetworkConnected(context: Context): Boolean {
-        val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            val capability = cm.getNetworkCapabilities(cm.activeNetwork)
-            capability?.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET) ?: false
-        } else {
-            cm.activeNetworkInfo?.isConnectedOrConnecting ?: false
-        }
     }
 
     fun makeOrGetPictureDirectory(context: Context): File {
@@ -202,7 +125,7 @@ object Utils {
         return picDir
     }
 
-    fun isExternalStorageWritable() = Environment.MEDIA_MOUNTED == Environment.getExternalStorageState()
+    fun isExternalStorageWritable() = Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED
 
     fun getOutputPicUri(context: Context): Uri =
         File(makeOrGetPictureDirectory(context), "${System.currentTimeMillis()}.jpg").toUri()
@@ -213,26 +136,30 @@ object Utils {
      * @param activity
      */
     fun scan(activity: Activity) {
-        if (ContextCompat.checkSelfPermission(activity, Manifest.permission.CAMERA) != PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(activity, Manifest.permission.CAMERA)) {
+        when {
+            checkSelfPermission(activity, Manifest.permission.CAMERA) == PERMISSION_GRANTED -> {
+                activity.startActivity(Intent(activity, ContinuousScanActivity::class.java))
+            }
+            shouldShowRequestPermissionRationale(activity, Manifest.permission.CAMERA) -> {
                 MaterialAlertDialogBuilder(activity)
                     .setTitle(R.string.action_about)
                     .setMessage(R.string.permission_camera)
                     .setPositiveButton(android.R.string.ok) { d, _ ->
-                        ActivityCompat.requestPermissions(
-                            activity, arrayOf(Manifest.permission.CAMERA),
+                        requestPermissions(
+                            activity,
+                            arrayOf(Manifest.permission.CAMERA),
                             MY_PERMISSIONS_REQUEST_CAMERA
                         )
                         d.dismiss()
                     }
                     .setNegativeButton(android.R.string.cancel) { d, _ -> d.dismiss() }
                     .show()
-            } else {
-                ActivityCompat.requestPermissions(activity, arrayOf(Manifest.permission.CAMERA), MY_PERMISSIONS_REQUEST_CAMERA)
             }
-        } else {
-            activity.startActivity(Intent(activity, ContinuousScanActivity::class.java))
+            else -> {
+                requestPermissions(activity, arrayOf(Manifest.permission.CAMERA), MY_PERMISSIONS_REQUEST_CAMERA)
+            }
         }
+
     }
 
     @JvmStatic
@@ -242,10 +169,14 @@ object Utils {
 fun isAllGranted(grantResults: IntArray) =
     grantResults.isNotEmpty() && grantResults.none { it != PERMISSION_GRANTED }
 
-fun buildSignInDialog(activity: Activity): MaterialDialog.Builder = MaterialDialog.Builder(activity)
-    .title(R.string.sign_in_to_edit)
-    .positiveText(R.string.txtSignIn)
-    .negativeText(R.string.dialog_cancel)
+fun buildSignInDialog(
+    context: Context,
+    onPositive: (DialogInterface, Int) -> Unit = { d, _ -> d.dismiss() },
+    onNegative: (DialogInterface, Int) -> Unit = { d, _ -> d.dismiss() }
+): MaterialAlertDialogBuilder = MaterialAlertDialogBuilder(context)
+    .setTitle(R.string.sign_in_to_edit)
+    .setPositiveButton(R.string.txtSignIn) { d, i -> onPositive(d, i) }
+    .setNegativeButton(R.string.dialog_cancel) { d, i -> onNegative(d, i) }
 
 
 /**
@@ -290,46 +221,6 @@ const val SPACE = " "
 const val MY_PERMISSIONS_REQUEST_CAMERA = 1
 const val MY_PERMISSIONS_REQUEST_STORAGE = 2
 
-/**
- * Returns a CharSequence that concatenates the specified array of CharSequence
- * objects and then applies a list of zero or more tags to the entire range.
- *
- * @param content an array of character sequences to apply a style to
- * @param styles the styled span objects to apply to the content
- * such as android.text.style.StyleSpan
- */
-private fun apply(content: Array<out CharSequence>, vararg styles: StyleSpan) = SpannableStringBuilder().let {
-    openStyles(it, styles)
-    content.forEach { item -> it.append(item) }
-    closeStyles(it, styles)
-    it.toString()
-}
-
-/**
- * Iterates over an array of tags and applies them to the beginning of the specified
- * Spannable object so that future text appended to the text will have the styling
- * applied to it. Do not call this method directly.
- */
-private fun openStyles(text: Spannable, tags: Array<out StyleSpan>) {
-    tags.forEach { text.setSpan(it, 0, 0, Spanned.SPAN_MARK_MARK) }
-}
-
-/**
- * "Closes" the specified tags on a Spannable by updating the spans to be
- * endpoint-exclusive so that future text appended to the end will not take
- * on the same styling. Do not call this method directly.
- */
-private fun closeStyles(text: Spannable, tags: Array<out StyleSpan>) {
-    tags.forEach {
-        if (text.isNotEmpty()) {
-            text.setSpan(it, 0, text.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-        } else {
-            text.removeSpan(it)
-        }
-    }
-}
-
-fun getModifierNonDefault(modifier: String) = if (modifier != DEFAULT_MODIFIER) modifier else ""
 
 private val LOG_TAG = Utils::class.simpleName!!
 
@@ -368,10 +259,109 @@ fun isBarcodeValid(barcode: String?): Boolean {
  * @return true if installed, false otherwise.
  */
 fun isHardwareCameraInstalled(context: Context) = context.packageManager.hasSystemFeature(PackageManager.FEATURE_CAMERA)
+
+
 fun getSearchLinkText(
     text: String,
     type: SearchType,
     activityToStart: Activity
-): CharSequence = SpannableStringBuilder().inSpans(object : ClickableSpan() {
-    override fun onClick(view: View) = start(activityToStart, type, text)
-}) { append(text) }
+): CharSequence {
+    val clickable = object : ClickableSpan() {
+        override fun onClick(view: View) = startSearch(activityToStart, type, text)
+    }
+    return buildSpannedString {
+        inSpans(clickable) { append(text) }
+    }
+}
+
+
+internal fun RequestCreator.into(target: ImageView, onSuccess: () -> Unit) {
+    return into(target, object : Callback {
+        override fun onSuccess() = onSuccess()
+        override fun onError(e: Exception) = throw e
+    })
+}
+
+
+fun @receiver:ColorInt Int.darken(ratio: Float) = ColorUtils.blendARGB(this, Color.BLACK, ratio)
+fun @receiver:ColorInt Int.lighten(ratio: Float) = ColorUtils.blendARGB(this, Color.WHITE, ratio)
+
+/**
+ * Check if the user is connected to a network. This can be any network.
+ *
+ * @return `true` if connected or connecting;
+ *
+ * `false` otherwise.
+ *
+ */
+@Suppress("DEPRECATION")
+fun Context.isNetworkConnected(): Boolean {
+    val cm = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        val capability = cm.getNetworkCapabilities(cm.activeNetwork)
+        capability?.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET) ?: false
+    } else {
+        cm.activeNetworkInfo?.isConnectedOrConnecting ?: false
+    }
+}
+
+/**
+ * Check if a certain application is installed on a device.
+ *
+ * @param context the applications context.
+ * @param packageName the package name that you want to check.
+ * @return true if the application is installed, false otherwise.
+ */
+fun isApplicationInstalled(context: Context, packageName: String) = try {
+    // Check if the package name exists, if exception is thrown, package name does not
+    // exist.
+    context.packageManager.getPackageInfo(packageName, PackageManager.GET_ACTIVITIES)
+    true
+} catch (e: PackageManager.NameNotFoundException) {
+    false
+}
+
+/**
+ * Returns the NOVA group explanation given the group
+ */
+fun getNovaGroupExplanation(novaGroup: String, context: Context) = when (novaGroup) {
+    "1" -> context.resources.getString(R.string.nova_grp1_msg)
+    "2" -> context.resources.getString(R.string.nova_grp2_msg)
+    "3" -> context.resources.getString(R.string.nova_grp3_msg)
+    "4" -> context.resources.getString(R.string.nova_grp4_msg)
+    else -> null
+}
+
+fun Context.getBitmapFromDrawable(@DrawableRes drawableId: Int): Bitmap? {
+    val drawable = AppCompatResources.getDrawable(this, drawableId) ?: return null
+    val bitmap = Bitmap.createBitmap(drawable.intrinsicWidth, drawable.intrinsicHeight, Bitmap.Config.ARGB_8888)
+    val canvas = Canvas(bitmap)
+    drawable.setBounds(0, 0, canvas.width, canvas.height)
+    drawable.draw(canvas)
+    return bitmap
+}
+
+fun getRoundNumber(measurement: Measurement, locale: Locale = Locale.getDefault()) =
+    getRoundNumber(measurement.value, locale)
+
+fun getRoundNumber(value: Double, locale: Locale = Locale.getDefault()) =
+    getRoundNumber(value.toString(), locale)
+
+fun getRoundNumber(value: Float, locale: Locale = Locale.getDefault()) =
+    getRoundNumber(value.toString(), locale)
+
+/**
+ * Return a round float value **with 2 decimals**
+ *
+ * **BE CAREFUL:** THE METHOD DOESN'T CHECK THE NUMBER AS A NUMBER.
+ *
+ * @param value float value
+ * @return round value **with 2 decimals** or 0 if the value is empty or equals to 0
+ */
+fun getRoundNumber(value: CharSequence, locale: Locale = Locale.getDefault()) = when {
+    value.isEmpty() -> "?"
+    value == "0" -> value
+    else -> value.toString().toDoubleOrNull()
+        ?.let { DecimalFormat("##.##", DecimalFormatSymbols(locale)).format(it) }
+        ?: "?"
+}

@@ -29,17 +29,17 @@ import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.afollestad.materialdialogs.MaterialDialog
-import com.theartofdev.edmodo.cropper.CropImage
+import com.canhub.cropper.CropImage
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import io.reactivex.disposables.CompositeDisposable
 import openfoodfacts.github.scrachx.openfood.R
-import openfoodfacts.github.scrachx.openfood.features.listeners.OnRefreshListener
-import openfoodfacts.github.scrachx.openfood.features.listeners.OnRefreshView
+import openfoodfacts.github.scrachx.openfood.listeners.OnRefreshListener
+import openfoodfacts.github.scrachx.openfood.listeners.OnRefreshViewListener
 import openfoodfacts.github.scrachx.openfood.models.ProductState
 import pl.aprilapps.easyphotopicker.EasyImage
 import java.io.File
 
-abstract class BaseFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener, OnRefreshView {
+abstract class BaseFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener, OnRefreshViewListener {
 
     private val cameraPermissionRequestLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission())
     { isGranted ->
@@ -48,18 +48,17 @@ abstract class BaseFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener, 
             doOnPhotosPermissionGranted()
         } else {
             // Tell the user how to give permission
-            MaterialDialog.Builder(requireActivity())
-                    .title(R.string.permission_title)
-                    .content(R.string.permission_denied)
-                    .negativeText(R.string.txtNo)
-                    .positiveText(R.string.txtYes)
-                    .onPositive { _, _ ->
-                        startActivity(Intent().apply {
-                            action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
-                            data = Uri.fromParts("package", requireActivity().packageName, null)
-                        })
-                    }
-                    .show()
+            MaterialAlertDialogBuilder(requireActivity())
+                .setTitle(R.string.permission_title)
+                .setMessage(R.string.permission_denied)
+                .setNegativeButton(R.string.txtNo) { d, _ -> d.dismiss() }
+                .setPositiveButton(R.string.txtYes) { _, _ ->
+                    startActivity(Intent().apply {
+                        action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
+                        data = Uri.fromParts("package", requireActivity().packageName, null)
+                    })
+                }
+                .show()
         }
     }
     private var refreshListener: OnRefreshListener? = null
@@ -70,17 +69,20 @@ abstract class BaseFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener, 
     /**
      * Dispose [disp] and then call super
      */
+    @CallSuper
     override fun onDestroyView() {
         super.onDestroyView()
         disp.dispose()
     }
 
+    @CallSuper
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         swipeRefreshLayout = view.findViewById(R.id.swipeRefresh)
         swipeRefreshLayout?.setOnRefreshListener(this)
     }
 
+    @CallSuper
     override fun onAttach(context: Context) {
         super.onAttach(context)
 
@@ -89,6 +91,7 @@ abstract class BaseFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener, 
         }
     }
 
+    @CallSuper
     override fun onRefresh() {
         refreshListener?.onRefresh()
     }
@@ -110,24 +113,22 @@ abstract class BaseFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener, 
 
     protected open fun doOnPhotosPermissionGranted() = Unit
 
-    protected fun cropRotateImage(image: File, title: String?) {
-        return cropRotateImage(image.toUri(), title)
-    }
-
     protected fun cropRotateImage(uri: Uri, title: String?) {
         CropImage.activity(uri)
-                .setCropMenuCropButtonIcon(R.drawable.ic_check_white_24dp)
-                .setMinCropResultSize(MIN_CROP_RESULT_WIDTH_ACCEPTED_BY_OFF, MIN_CROP_RESULT_HEIGHT_ACCEPTED_BY_OFF)
-                .setInitialCropWindowPaddingRatio(0f)
-                .setAllowFlipping(false)
-                .setAllowRotation(true)
-                .setAllowCounterRotation(true)
-                .setActivityTitle(title)
-                .start(requireContext(), this)
+            .setCropMenuCropButtonIcon(R.drawable.ic_check_white_24dp)
+            .setMinCropResultSize(MIN_CROP_RESULT_WIDTH_ACCEPTED_BY_OFF, MIN_CROP_RESULT_HEIGHT_ACCEPTED_BY_OFF)
+            .setInitialCropWindowPaddingRatio(0f)
+            .setAllowFlipping(false)
+            .setAllowRotation(true)
+            .setAllowCounterRotation(true)
+            .apply { if (title != null) setActivityTitle(title) }
+            .start(requireContext(), this)
     }
 
+    protected fun cropRotateImage(image: File, title: String?) = cropRotateImage(image.toUri(), title)
+
     private fun canTakePhotos() =
-            ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA) == PERMISSION_GRANTED
+        ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA) == PERMISSION_GRANTED
 
     companion object {
         /**

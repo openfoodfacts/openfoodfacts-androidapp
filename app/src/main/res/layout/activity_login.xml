@@ -5,6 +5,11 @@
 
     <data>
 
+        <import type="openfoodfacts.github.scrachx.openfood.features.login.LoginActivityViewModel" />
+
+        <variable
+            name="viewModel"
+            type="LoginActivityViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -68,6 +73,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
+                android:enabled="@{viewModel.canLogIn}"
                 android:id="@+id/btn_login"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -125,10 +131,11 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:paddingTop="@dimen/padding_short"
+                android:text="@string/txtloginHelper"
                 android:paddingBottom="4dp"
                 android:textColor="@color/grey_500"
                 android:textSize="@dimen/font_normal"
-                android:visibility="gone"/>
+                android:visibility="gone" />
 
         </LinearLayout>
 

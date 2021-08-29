@@ -18,10 +18,13 @@ import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat.shouldShowRequestPermissionRationale
 import androidx.core.content.ContextCompat.checkSelfPermission
 import androidx.core.net.toUri
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.afollestad.materialdialogs.MaterialDialog
+import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.BuildConfig
@@ -29,17 +32,15 @@ import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
 import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityYourListedProductsBinding
-import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.installBottomNavigation
-import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.selectNavigationItem
-import openfoodfacts.github.scrachx.openfood.features.scan.ContinuousScanActivity
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
+import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.installBottomNavigation
+import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.selectNavigationItem
 import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import openfoodfacts.github.scrachx.openfood.models.HistoryProduct
 import openfoodfacts.github.scrachx.openfood.models.HistoryProductDao
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.entities.ListedProduct
 import openfoodfacts.github.scrachx.openfood.models.entities.ProductLists
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.SortType.*
 import java.io.File
@@ -54,9 +55,6 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
     private val binding get() = _binding!!
 
     @Inject
-    lateinit var client: OpenFoodAPIClient
-
-    @Inject
     lateinit var daoSession: DaoSession
 
     @Inject
@@ -65,11 +63,14 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
     @Inject
     lateinit var localeManager: LocaleManager
 
+    @Inject
+    lateinit var picasso: Picasso
+
     private var listID by Delegates.notNull<Long>()
     private lateinit var productList: ProductLists
     private lateinit var adapter: ProductListAdapter
 
-    private var isLowBatteryMode = false
+    private val isLowBatteryMode by lazy { this.isDisableImageLoad() && this.isBatteryLevelLow() }
     private var listName: String? = null
     private var isEatenList = false
 
@@ -83,8 +84,6 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
         setSupportActionBar(binding.toolbar)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setDisplayShowHomeEnabled(true)
-
-        if (this.isDisableImageLoad() && this.isBatteryLevelLow()) isLowBatteryMode = true
 
         // OnClick
         binding.scanFirstYourListedProduct.setOnClickListener { checkPermsStartScan() }
@@ -139,11 +138,19 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
             binding.scanFirstYourListedProduct.visibility = View.VISIBLE
             setInfo(binding.tvInfoYourListedProducts)
         }
-        adapter = ProductListAdapter(this, client, productList.products.toMutableList(), isLowBatteryMode)
+        adapter = ProductListAdapter(
+            this,
+            productList.products.toMutableList(),
+            isLowBatteryMode,
+            picasso,
+            onItemClickListener = {
+                lifecycleScope.launch { client.openProduct(it.barcode, this@ProductListActivity) }
+            }
+        )
         binding.rvYourListedProducts.adapter = adapter
 
         ItemTouchHelper(SwipeController(this, this@ProductListActivity))
-                .attachToRecyclerView(binding.rvYourListedProducts)
+            .attachToRecyclerView(binding.rvYourListedProducts)
 
         binding.bottomNavigation.bottomNavigation.selectNavigationItem(0)
         binding.bottomNavigation.bottomNavigation.installBottomNavigation(this)
@@ -158,9 +165,9 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_your_listed_products, menu)
         listOf(
-                R.id.action_export_all_listed_products,
-                R.id.action_sort_listed_products,
-                R.id.action_share_list
+            R.id.action_export_all_listed_products,
+            R.id.action_sort_listed_products,
+            R.id.action_share_list
         ).forEach {
             menu.findItem(it).isVisible = adapter.products.isNotEmpty()
         }
@@ -236,7 +243,7 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
             val perm = Manifest.permission.WRITE_EXTERNAL_STORAGE
             when {
                 checkSelfPermission(
-                        this, perm
+                    this, perm
                 ) == PackageManager.PERMISSION_GRANTED -> {
                     exportAsCSV()
                     matomoAnalytics.trackEvent(AnalyticsEvent.ShoppingListExported)
@@ -246,10 +253,10 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
                         .title(R.string.action_about)
                         .content(R.string.permision_write_external_storage)
                         .neutralText(android.R.string.ok)
-                            .onNeutral { _, _ ->
-                                requestWriteLauncher.launch(perm)
-                            }
-                            .show()
+                        .onNeutral { _, _ ->
+                            requestWriteLauncher.launch(perm)
+                        }
+                        .show()
                 }
                 else -> {
                     requestWriteLauncher.launch(perm)
@@ -263,19 +270,20 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
                 title(R.string.sort_by)
                 val sortTypes = if (isFlavors(OFF)) {
                     listOf(
-                            getString(R.string.by_title),
-                            getString(R.string.by_brand),
-                            getString(R.string.by_nutrition_grade),
-                            getString(
-                                    R.string.by_barcode),
-                            getString(R.string.by_time)
+                        getString(R.string.by_title),
+                        getString(R.string.by_brand),
+                        getString(R.string.by_nutrition_grade),
+                        getString(
+                            R.string.by_barcode
+                        ),
+                        getString(R.string.by_time)
                     )
                 } else {
                     listOf(
-                            getString(R.string.by_title),
-                            getString(R.string.by_brand),
-                            getString(R.string.by_time),
-                            getString(R.string.by_barcode)
+                        getString(R.string.by_title),
+                        getString(R.string.by_brand),
+                        getString(R.string.by_time),
+                        getString(R.string.by_barcode)
                     )
                 }
                 items(sortTypes)
@@ -309,9 +317,6 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
         view.setText(R.string.txt_info_your_listed_products)
     }
 
-    private val requestCameraLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission())
-    { if (it) startScan() }
-
     private fun checkPermsStartScan() {
         if (!isHardwareCameraInstalled(this)) {
             Log.e(this::class.simpleName, "Device has no camera installed.")
@@ -319,9 +324,9 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
         }
         when {
             checkSelfPermission(
-                    baseContext, Manifest.permission.CAMERA
+                baseContext, Manifest.permission.CAMERA
             ) == PackageManager.PERMISSION_GRANTED -> {
-                startScan()
+                startScanActivity()
             }
             shouldShowRequestPermissionRationale(this, Manifest.permission.CAMERA) -> {
                 MaterialDialog.Builder(this).run {
@@ -329,21 +334,15 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
                     content(R.string.permission_camera)
                     neutralText(android.R.string.ok)
                     onNeutral { _, _ ->
-                        requestCameraLauncher.launch(Manifest.permission.CAMERA)
+                        requestCameraThenOpenScan.launch(Manifest.permission.CAMERA)
                     }
                     show()
                 }
             }
             else -> {
-                requestCameraLauncher.launch(Manifest.permission.CAMERA)
+                requestCameraThenOpenScan.launch(Manifest.permission.CAMERA)
             }
         }
-    }
-
-    private fun startScan() {
-        startActivity(Intent(this, ContinuousScanActivity::class.java).apply {
-            addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-        })
     }
 
     @RequiresApi(Build.VERSION_CODES.KITKAT)

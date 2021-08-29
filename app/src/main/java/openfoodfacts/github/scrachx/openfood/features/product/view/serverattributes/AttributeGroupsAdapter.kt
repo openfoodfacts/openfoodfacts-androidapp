@@ -12,24 +12,24 @@ import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.models.entities.attribute.AttributeGroup
 
 class AttributeGroupsAdapter(
-        private val attributeGroups: List<AttributeGroup>,
-        private val activity: Activity,
-        private val picasso: Picasso
+    private val attributeGroups: List<AttributeGroup>,
+    private val activity: Activity,
+    private val picasso: Picasso
 ) : BaseExpandableListAdapter() {
     override fun getGroupCount() = attributeGroups.count()
 
     override fun getChildrenCount(groupPosition: Int) = attributeGroups[groupPosition].attributes?.count()
-            ?: throw ArrayIndexOutOfBoundsException("$groupPosition is greater than ${attributeGroups.count()}")
+        ?: throw ArrayIndexOutOfBoundsException("$groupPosition is greater than ${attributeGroups.count()}")
 
     override fun getGroup(groupPosition: Int) = attributeGroups[groupPosition]
 
     override fun getGroupId(groupPosition: Int) = getGroup(groupPosition).id.hashCode().toLong()
 
     override fun getChild(groupPosition: Int, childPosition: Int) = attributeGroups[groupPosition].attributes?.get(childPosition)
-            ?: throw ArrayIndexOutOfBoundsException("$groupPosition is greater than ${attributeGroups.count()}")
+        ?: throw ArrayIndexOutOfBoundsException("$groupPosition is greater than ${attributeGroups.count()}")
 
     override fun getChildId(groupPosition: Int, childPosition: Int) =
-            getChild(groupPosition, childPosition).id.hashCode().toLong()
+        getChild(groupPosition, childPosition).id.hashCode().toLong()
 
     override fun hasStableIds() = false
 
@@ -48,16 +48,25 @@ class AttributeGroupsAdapter(
 
         childView.findViewById<TextView>(R.id.title_text).text = attribute.title.orEmpty()
 
-        childView.findViewById<TextView>(R.id.short_desc_text).text = attribute.descriptionShort.orEmpty()
+        // Desc can be null
+        val shortDesc = childView.findViewById<TextView>(R.id.short_desc_text)
+        attribute.descriptionShort.let {
+            if (it == null) {
+                shortDesc.visibility = GONE
+            } else {
+                shortDesc.text = it
+            }
+        }
 
+        // Icon can be null
         val iconView = childView.findViewById<ImageView>(R.id.logo_view)
-        val iconUrl = attribute.iconUrl
-        if (!iconUrl.isNullOrEmpty()) {
-            picasso
-                    .load(iconUrl.replaceAfterLast(".", "png"))
+        attribute.iconUrl.let { iconUrl ->
+            if (!iconUrl.isNullOrEmpty()) {
+                picasso.load(iconUrl.replaceAfterLast(".", "png"))
                     .into(iconView)
-        } else {
-            iconView.visibility = GONE
+            } else {
+                iconView.visibility = GONE
+            }
         }
 
         return childView

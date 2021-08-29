@@ -21,7 +21,7 @@ plugins {
     id("kotlin-parcelize")
     id("kotlin-kapt")
     id("dagger.hilt.android.plugin")
-    id("org.jetbrains.dokka") version "1.4.32"
+    id("org.jetbrains.dokka") version "1.5.0"
 }
 
 fun obtainTestBuildType(): String {
@@ -36,17 +36,19 @@ fun obtainTestBuildType(): String {
 dependencies {
     // Kotlin
     implementation("org.jetbrains.kotlin:kotlin-stdlib:${rootProject.extra["kotlinVersion"]}")
-    val coroutinesVersion = "1.5.0"
+
+    // Kotlin coroutines
+    val coroutinesVersion = "1.5.1"
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-rx2:$coroutinesVersion")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion")
 
 
     // Android KTX
-    implementation("androidx.fragment:fragment-ktx:1.3.4")
-    implementation("androidx.activity:activity-ktx:1.2.3")
+    implementation("androidx.fragment:fragment-ktx:1.3.6")
+    implementation("androidx.activity:activity-ktx:1.3.1")
     implementation("androidx.preference:preference-ktx:1.1.1")
-    implementation("androidx.core:core-ktx:1.6.0-beta02")
+    implementation("androidx.core:core-ktx:1.6.0")
 
     val viewModelKtxVer = "2.3.1"
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$viewModelKtxVer")
@@ -55,49 +57,48 @@ dependencies {
 
 
     // AndroidX
-    implementation("androidx.appcompat:appcompat:1.3.0")
+    implementation("androidx.appcompat:appcompat:1.3.1")
     implementation("androidx.browser:browser:1.3.0")
     implementation("androidx.concurrent:concurrent-futures:1.1.0")
     implementation("androidx.recyclerview:recyclerview:1.2.1")
     implementation("androidx.cardview:cardview:1.0.0")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
     implementation("androidx.annotation:annotation:1.2.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.0.4")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.0")
     implementation("androidx.multidex:multidex:2.0.1")
     implementation("androidx.viewpager2:viewpager2:1.0.0")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
+    implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
+    implementation("androidx.startup:startup-runtime:1.1.0")
+    implementation("androidx.work:work-runtime-ktx:2.5.0")
 
-
-    val workVersion = "2.5.0"
-    implementation("androidx.work:work-runtime-ktx:$workVersion")
-    val hiltVersion = "1.0.0-beta01"
-    implementation("androidx.hilt:hilt-work:$hiltVersion")
-    kapt("androidx.hilt:hilt-compiler:$hiltVersion")
-
-
-    implementation("androidx.startup:startup-runtime:1.0.0")
 
     // ML Kit barcode Scanner
-    implementation("com.google.mlkit:barcode-scanning:16.1.2")
+    implementation("com.google.mlkit:barcode-scanning:16.2.0")
 
-    implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
-
-    kapt("com.google.dagger:dagger-compiler:2.37")
-    implementation("com.google.dagger:dagger:2.37")
-    implementation("com.google.dagger:hilt-android:${rootProject.extra["hiltVersion"]}")
-
-    kapt("com.google.dagger:hilt-compiler:${rootProject.extra["hiltVersion"]}")
 
     compileOnly("javax.annotation:javax.annotation-api:1.3.2")
 
-    //Rx
+    // Dagger & hilt
+    implementation("com.google.dagger:dagger:${rootProject.extra["hiltVersion"]}")
+    implementation("com.google.dagger:hilt-android:${rootProject.extra["hiltVersion"]}")
+    kapt("com.google.dagger:dagger-compiler:${rootProject.extra["hiltVersion"]}")
+    kapt("com.google.dagger:hilt-compiler:${rootProject.extra["hiltVersion"]}")
+
+    // AndroidX hilt work
+    val androidxHiltVersion = "1.0.0"
+    implementation("androidx.hilt:hilt-work:$androidxHiltVersion")
+    kapt("androidx.hilt:hilt-compiler:$androidxHiltVersion")
+
+
+    // Reactive Streams
     implementation("io.reactivex.rxjava2:rxkotlin:2.4.0")
     implementation("io.reactivex.rxjava2:rxjava:2.2.21")
     implementation("io.reactivex.rxjava2:rxandroid:2.1.1")
     implementation("com.jakewharton.rxrelay2:rxrelay:2.1.1")
 
 
-    //Networking
+    // Networking
     implementation("com.squareup.retrofit2:retrofit:2.6.4")
     implementation("com.squareup.retrofit2:converter-jackson:2.6.4")
     implementation("com.squareup.retrofit2:adapter-rxjava2:2.6.4")
@@ -108,7 +109,7 @@ dependencies {
     // Apache commons
     implementation("org.apache.commons:commons-lang3:3.12.0")
     implementation("org.apache.commons:commons-text:1.9")
-    implementation("org.apache.commons:commons-csv:1.8")
+    implementation("org.apache.commons:commons-csv:1.9.0")
     implementation("commons-validator:commons-validator:1.7")
 
     // Serialization/Deserialization
@@ -126,20 +127,23 @@ dependencies {
     implementation("org.greenrobot:eventbus:$eventBusVersion")
     kapt("org.greenrobot:eventbus-annotation-processor:$eventBusVersion")
 
-    implementation("com.google.android.material:material:1.3.0")
+    // Material design
+    implementation("com.google.android.material:material:1.4.0")
 
-    //Image Loading
+    // Image Loading
     implementation("com.squareup.picasso:picasso:2.8")
 
-    //Image from gallery or camera
+    // Image from gallery or camera
     implementation("com.github.jkwiecien:EasyImage:1.4.0")
 
-    //Barcode and QR Scanner
+    // Barcode and QR Scanner
+    // TODO: cannot upgrade, requires API 24 or higher
     implementation("com.google.zxing:core:3.3.0")
+
     implementation("com.journeyapps:zxing-android-embedded:3.6.0") { isTransitive = false }
 
     // UI Component : Custom Toast
-    implementation("net.steamcrafted:load-toast:1.0.12")
+    implementation("com.github.code-mc:loadtoast:1.0.12")
 
     // UI Component : ImageView with Zooming
     implementation("com.github.chrisbanes:PhotoView:2.3.0")
@@ -158,44 +162,43 @@ dependencies {
     // UI Component : Font Icons
     implementation("com.mikepenz:iconics-core:4.0.2@aar")
     implementation("com.mikepenz:google-material-typeface:3.0.1.6.original-kotlin@aar")
-    implementation("com.theartofdev.edmodo:android-image-cropper:2.8.0") {
-        exclude("com.android.support", "appcompat-v7")
-    }
+    implementation("com.github.CanHub:Android-Image-Cropper:3.1.3")
 
     // UI Component : Chips Input
-    implementation("com.hootsuite.android:nachos:1.2.0")
+    implementation("com.github.hootsuite:nachos:1.2.0")
 
     // Crash analytics
-    implementation("io.sentry:sentry-android:5.0.1")
-    implementation("org.matomo.sdk:tracker:4.1.2")
+    implementation("io.sentry:sentry-android:5.1.2")
+    implementation("com.github.matomo-org:matomo-sdk-android:v4.1.2")
 
     // ShowCaseView dependency
     implementation("com.github.mreram:showcaseview:1.0.5")
 
+
     // Unit Testing
     testImplementation("junit:junit:4.13.2")
-    testImplementation("org.robolectric:robolectric:4.5.1")
-    testImplementation("org.mockito:mockito-core:3.11.1")
-    testImplementation("net.javacrumbs.json-unit:json-unit-fluent:2.26.0")
+    testImplementation("org.robolectric:robolectric:4.6.1")
+    testImplementation("org.mockito:mockito-core:3.12.4")
+    testImplementation("net.javacrumbs.json-unit:json-unit-fluent:2.28.0")
     testImplementation("com.google.truth:truth:1.1.3")
     testImplementation("com.google.truth.extensions:truth-java8-extension:1.1.3")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:${coroutinesVersion}")
 
     // Instrumented tests
-    androidTestUtil("androidx.test:orchestrator:1.3.0")
+    androidTestUtil("androidx.test:orchestrator:1.4.0")
 
     // Hilt for Android Testing
-    androidTestImplementation("com.google.dagger:hilt-android-testing:2.37")
-    kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.37")
+    androidTestImplementation("com.google.dagger:hilt-android-testing:2.38.1")
+    kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.38.1")
 
     androidTestImplementation("androidx.test:runner:1.3.0") { exclude("junit") }
-    androidTestImplementation("androidx.test:rules:1.3.0")
+    androidTestImplementation("androidx.test:rules:1.4.0")
 
     androidTestImplementation("androidx.test.ext:junit:1.1.2") { exclude("junit") }
 
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
-    androidTestImplementation("androidx.test.espresso:espresso-intents:3.3.0")
-    androidTestImplementation("androidx.test.espresso:espresso-web:3.3.0")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
+    androidTestImplementation("androidx.test.espresso:espresso-intents:3.4.0")
+    androidTestImplementation("androidx.test.espresso:espresso-web:3.4.0")
     androidTestImplementation("androidx.test.espresso:espresso-contrib:3.3.0") {
         exclude(group = "com.android.support", module = "appcompat-v7")
         exclude(group = "com.android.support", module = "support-v4")
@@ -211,7 +214,7 @@ dependencies {
 }
 
 android {
-    compileSdkVersion(30)
+    compileSdk = 30
 
     testBuildType = obtainTestBuildType()
 
@@ -219,20 +222,20 @@ android {
         dataBinding = true
     }
 
-    flavorDimensions("versionCode", "platform")
+    flavorDimensions += listOf("versionCode", "platform")
 
     defaultConfig {
         applicationId = "openfoodfacts.github.scrachx.openfood"
 
-        minSdkVersion(16)
-        targetSdkVersion(30)
+        minSdk = 16
+        targetSdk = 30
 
         versionCode = 433
         versionName = "3.6.8"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
-        ndk.abiFilters("armeabi-v7a", "arm64-v8a", "x86", "x86_64")
+        ndk.abiFilters += listOf("armeabi-v7a", "arm64-v8a", "x86", "x86_64")
 
         multiDexEnabled = true
     }
@@ -252,7 +255,7 @@ android {
     }
 
     buildTypes {
-        getByName("release") {
+        release {
             isCrunchPngs = true
 
             // Enables code shrinking, obfuscation, and optimization for only
@@ -266,7 +269,8 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
             signingConfig = signingConfigs.getByName("release")
         }
-        getByName("debug") {
+
+        debug {
             applicationIdSuffix = ".debug"
             isDebuggable = true
 
@@ -300,6 +304,9 @@ android {
         }
         create("obf") {
             applicationId = "openfoodfacts.github.scrachx.openbeauty"
+            if ("true" == System.getenv("CI_RELEASE")) { // CI=true is exported by github action
+                applicationId = "org.openbeautyfacts.scanner"
+            }
             resValue("string", "app_name", "OpenBeautyFacts")
             buildConfigField("String", "APP_NAME", "\"Open Beauty Facts\"")
             buildConfigField("String", "HOST", "\"https://ssl-api.openbeautyfacts.org\"")
@@ -334,19 +341,19 @@ android {
             buildConfigField("String", "MATOMO_URL", "\"https://analytics.openfoodfacts.org/matomo.php\"")
             dimension = "versionCode"
         }
+
+
         create("playstore") {
             dimension = "platform"
+
             buildConfigField("boolean", "USE_MLKIT", "true")
         }
+
         create("fdroid") {
             dimension = "platform"
+
             buildConfigField("boolean", "USE_MLKIT", "false")
         }
-    }
-
-    dexOptions {
-        preDexLibraries = false
-        javaMaxHeapSize = "4g"
     }
 
     compileOptions {
@@ -359,22 +366,24 @@ android {
         jvmTarget = "1.8"
     }
 
-    lintOptions {
+    lint {
         isAbortOnError = false
         disable("MissingTranslation")
     }
 
     packagingOptions {
-        exclude("META-INF/DEPENDENCIES.txt")
-        exclude("META-INF/LICENSE.txt")
-        exclude("META-INF/NOTICE.txt")
-        exclude("META-INF/NOTICE")
-        exclude("META-INF/LICENSE")
-        exclude("META-INF/DEPENDENCIES")
-        exclude("META-INF/notice.txt")
-        exclude("META-INF/license.txt")
-        exclude("META-INF/dependencies.txt")
-        exclude("META-INF/LGPL2.1")
+        resources.excludes += listOf(
+            "META-INF/DEPENDENCIES.txt",
+            "META-INF/LICENSE.txt",
+            "META-INF/NOTICE.txt",
+            "META-INF/NOTICE",
+            "META-INF/LICENSE",
+            "META-INF/DEPENDENCIES",
+            "META-INF/notice.txt",
+            "META-INF/license.txt",
+            "META-INF/dependencies.txt",
+            "META-INF/LGPL2.1"
+        )
     }
 
     testOptions {

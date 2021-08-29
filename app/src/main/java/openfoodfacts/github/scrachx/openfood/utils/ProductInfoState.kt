@@ -18,6 +18,8 @@ package openfoodfacts.github.scrachx.openfood.utils
 /**
  * Created by Lobster on 10.03.18.
  */
-enum class ProductInfoState {
-    LOADING, EMPTY
+sealed class ProductInfoState<out T> {
+    object Loading : ProductInfoState<Nothing>()
+    object Empty : ProductInfoState<Nothing>()
+    data class Data<T>(val data: T) : ProductInfoState<T>()
 }

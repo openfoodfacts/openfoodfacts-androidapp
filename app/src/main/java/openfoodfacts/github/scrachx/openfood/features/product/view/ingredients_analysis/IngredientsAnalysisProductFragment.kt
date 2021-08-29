@@ -15,42 +15,28 @@
  */
 package openfoodfacts.github.scrachx.openfood.features.product.view.ingredients_analysis
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.rxkotlin.addTo
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentIngredientsAnalysisProductBinding
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_STATE
 import openfoodfacts.github.scrachx.openfood.features.product.view.ingredients_analysis.adapter.IngredientAnalysisRecyclerAdapter
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
-import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductState
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.requireProductState
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class IngredientsAnalysisProductFragment : BaseFragment() {
     private var _binding: FragmentIngredientsAnalysisProductBinding? = null
     private val binding get() = _binding!!
 
-    @Inject
-    lateinit var api: OpenFoodAPIClient
-    private lateinit var product: Product
-
-    private var adapter: IngredientAnalysisRecyclerAdapter? = null
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        product = requireProductState().product!!
-    }
+    private val viewModel: IngredientsAnalysisViewModel by viewModels()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentIngredientsAnalysisProductBinding.inflate(inflater)
@@ -59,16 +45,19 @@ class IngredientsAnalysisProductFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        api.getIngredients(product)
-                .observeOn(AndroidSchedulers.mainThread())
-                .doOnError { Toast.makeText(activity, requireActivity().getString(R.string.errorWeb), Toast.LENGTH_LONG).show() }
-                .subscribe { ingredients ->
-                    adapter = IngredientAnalysisRecyclerAdapter(ingredients, requireActivity())
-                    binding.ingredientAnalysisRecyclerView.layoutManager = LinearLayoutManager(requireActivity())
-                    binding.ingredientAnalysisRecyclerView.adapter = adapter
-                }.addTo(disp)
 
         refreshView(requireProductState())
+
+        viewModel.ingredients.observe(viewLifecycleOwner) {
+            if (it == null) {
+                Toast.makeText(activity, requireActivity().getString(R.string.errorWeb), Toast.LENGTH_LONG).show()
+                return@observe
+            }
+
+            val adapter = IngredientAnalysisRecyclerAdapter(it, requireActivity())
+            binding.ingredientAnalysisRecyclerView.layoutManager = LinearLayoutManager(requireActivity())
+            binding.ingredientAnalysisRecyclerView.adapter = adapter
+        }
     }
 
     override fun onDestroyView() {
@@ -78,15 +67,12 @@ class IngredientsAnalysisProductFragment : BaseFragment() {
 
     override fun refreshView(productState: ProductState) {
         super.refreshView(productState)
-        product = productState.product!!
-        adapter?.notifyDataSetChanged()
+        viewModel.product.postValue(productState.product!!)
     }
 
     companion object {
         fun newInstance(productState: ProductState) = IngredientsAnalysisProductFragment().apply {
-            arguments = Bundle().apply {
-                putSerializable(KEY_STATE, productState)
-            }
+            arguments = Bundle().apply { putSerializable(KEY_STATE, productState) }
         }
     }
 }

@@ -78,7 +78,7 @@
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
     <string-array name="nutrients_array">
         <item>Alfa linolenik asit / ALA (18:3 n-3)</item>
-        <item>Arakidik asit (20:0)</item>
+        <item>Araşidik asit (20:0)</item>
         <item>Araşidonik asit / AA / ARA (20:4 n-6)</item>
         <item>Behenik asit (22:0)</item>
         <item>Bikarbonat</item>
@@ -160,7 +160,7 @@
     <string name="alert_dialog_warning_title">Uyarı</string>
     <string name="alert_dialog_warning_msg_user">Kullanıcı/şifre değişti, lütfen bilgileri güncelleyin</string>
     <string name="toast_retrieving">Yükleniyor…</string>
-    <string name="txtBarcode">Barkod :</string>
+    <string name="txtBarcode">Barkod:</string>
     <string name="txtCategories">Kategoriler :</string>
     <string name="txtLabels">Etiketler, sertifikalar, ödüller :</string>
     <string name="txtEMB">İzlenebilirlik kodları:</string>
@@ -471,9 +471,10 @@
     <string name="additive_string">Katkı maddesi</string>
     <string name="allergen_string">Alerjen</string>
     <string name="search_string">Ara</string>
-    <string name="country_string">Satılan ülkeler</string>
+    <string name="country_string">Country</string>
     <string name="store_subtitle">Mağaza</string>
     <string name="packaging_subtitle">Ambalaj</string>
+    <string name="state_subtitle">Eyalet</string>
     <string name="packaging_string">Ambalaj</string>
     <string name="label_string">Etiket</string>
     <string name="category_string">Kategori</string>
@@ -805,11 +806,14 @@ Aynı zamanda bu listeye ürünleri arayarak ve ürün sayfasının sağ üstün
     <string name="changelog_translation_help">Bu değişim kaydını %s\'da görmek ister misiniz?\nÇeviri Ekibine Katılın!</string>
     <string name="whats_new">Open Food Facts\'teki yenilikler neler?</string>
     <!-- New onboarding slides -->
-    <string name="eco_score_slide_4_title">Eco-Score</string>
-    <string name="join_the_food_revolution">Join the food revolution</string>
-    <string name="slide_1_text_revolution">Scan food, Take photos, Help transform the food system</string>
-    <string name="get_the_nutri_score">Nutri-Score\'u öğren</string>
-    <string name="synthesis_of_nutrition_slide_2_text">A simple synthesis of the nutritional quality of your food</string>
-    <string name="avoid_ultra_processed_foods">Avoid ultra-processed foods</string>
-    <string name="nova_slide_3_text">Reduce the amount of ultra-processed foods in your diet.</string>
+    <string name="title_welcome_intro">Join the food revolution</string>
+    <string name="msg_welcome_intro">Scan food, Take photos, Help transform the food system</string>
+    <string name="title_welcome_nutriscore">Nutri-Score\'u öğren</string>
+    <string name="msg_welcome_nutriscore">A simple synthesis of the nutritional quality of your food</string>
+    <string name="title_welcome_nova">Avoid ultra-processed foods</string>
+    <string name="msg_welcome_nova">Reduce the amount of ultra-processed foods in your diet.</string>
+    <string name="title_welcome_ecoscore">Eco-Score</string>
+    <string name="msg_welcome_ecoscore">A synthesis of the environmental impact of your food.</string>
+    <string name="title_welcome_matomo">Send anonymous analytics</string>
+    <string name="msg_welcome_matomo">Help the Open Food Facts volunteers to improve the app. You decide if you send anonymous analytics.\n\nIf you change your mind this option can be enabled and disabled at any time from the settings.</string>
 </resources>

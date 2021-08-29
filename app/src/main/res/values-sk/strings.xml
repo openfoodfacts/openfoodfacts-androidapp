@@ -202,7 +202,7 @@
     <string name="txtSugars">Cukry</string>
     <string name="hintBarcode">Čiarový kód</string>
     <string name="txtNutriScoreInfo">Získajte viac informácií o množstvách živín</string>
-    <string name="hintLogin">Username</string>
+    <string name="hintLogin">Login</string>
     <string name="hintPass">Heslo</string>
     <string name="errorLogin">Chyba prihlasovacieho mena alebo hesla</string>
     <string name="errorWeb">Nebolo možné pripojiť sa k internetu. Skontrolujte, prosím, pripojenie k sieti.</string>
@@ -245,7 +245,7 @@
     <string name="select_camera">Vybrať fotoaparát</string>
     <string name="ok_button">OK</string>
     <string name="cancel_button">Zrušiť</string>
-    <string name="login_button">Username</string>
+    <string name="login_button">Login</string>
     <string name="create_account_button">Vytvoriť účet</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
     <string name="title_info_dialog">Ako to funguje?</string>
@@ -394,11 +394,11 @@
     <string name="chlorophyl">Chlorofyl</string>
     <string name="take_picture">Spraviť snímku</string>
     <string name="choose_picture_from_gallery">Z galérie</string>
-    <string name="take_picture_ingredients">Take a picture of the ingredients</string>
+    <string name="take_picture_ingredients">Take a photo of the ingredients</string>
     <string name="take_picture_recycling">Take a photo of the recycling instructions</string>
-    <string name="take_picture_front">Take a picture of the front</string>
-    <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
-    <string name="take_more_pictures">Take more pictures</string>
+    <string name="take_picture_front">Take a photo of the front</string>
+    <string name="take_picture_nutrition_table">Take a photo of the nutrition table</string>
+    <string name="take_more_pictures">Take more photos</string>
     <string name="take_extra_packaging_pictures">Take extra photos of packaging</string>
     <string name="txtSaturatedFat">Nasýtený tuk</string>
     <string name="nutriscore_info_msg">Ďalšie informácie o Nutri-Score</string>

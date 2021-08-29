@@ -24,6 +24,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContract
+import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import androidx.core.content.edit
 import androidx.core.net.toUri
@@ -47,8 +48,8 @@ import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityLoginBinding
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
-import openfoodfacts.github.scrachx.openfood.utils.Utils
 import openfoodfacts.github.scrachx.openfood.utils.getLoginPreferences
+import openfoodfacts.github.scrachx.openfood.utils.hideKeyboard
 import java.io.IOException
 import java.net.HttpCookie
 import javax.inject.Inject
@@ -61,6 +62,8 @@ import javax.inject.Inject
 class LoginActivity : BaseActivity() {
     private var _binding: ActivityLoginBinding? = null
     private val binding get() = _binding!!
+
+    private val viewModel: LoginActivityViewModel by viewModels()
 
     @Inject
     lateinit var productsApi: ProductsAPI
@@ -81,7 +84,10 @@ class LoginActivity : BaseActivity() {
     }
 
     private fun doAttemptLogin() {
-        Utils.hideKeyboard(this)
+        // Disable login button
+        viewModel.canLogIn.postValue(false)
+
+        hideKeyboard()
 
         // Start checks
         val login = binding.loginInput.text.toString()
@@ -102,7 +108,7 @@ class LoginActivity : BaseActivity() {
         }
         // End checks
 
-        val snackbar = Snackbar.make(binding.loginLinearlayout, R.string.toast_retrieving, LENGTH_LONG)
+        val loadingSnackbar = Snackbar.make(binding.loginLinearlayout, R.string.toast_retrieving, LENGTH_LONG)
             .apply { show() }
         binding.btnLogin.isClickable = false
 
@@ -110,16 +116,18 @@ class LoginActivity : BaseActivity() {
             val response = withContext(Dispatchers.IO) {
                 try {
                     productsApi.signIn(login, password, "Sign-in")
-
-                } catch (err: Throwable) {
+                } catch (err: Exception) {
                     Toast.makeText(this@LoginActivity, this@LoginActivity.getString(R.string.errorWeb), Toast.LENGTH_LONG).show()
                     Log.e(this::class.simpleName, "onFailure", err)
+
+                    viewModel.canLogIn.postValue(true)
                     null
                 }
             } ?: return@launch
 
             if (!response.isSuccessful) {
                 Toast.makeText(this@LoginActivity, R.string.errorWeb, Toast.LENGTH_LONG).show()
+                viewModel.canLogIn.postValue(true)
                 return@launch
             }
             val htmlNoParsed = withContext(Dispatchers.IO) {
@@ -127,27 +135,30 @@ class LoginActivity : BaseActivity() {
                     response.body()?.string()
                 } catch (e: IOException) {
                     Log.e("LOGIN", "Unable to parse the login response page", e)
+                    viewModel.canLogIn.postValue(true)
                     null
                 }
             } ?: return@launch
             val pref = this@LoginActivity.getSharedPreferences("login", 0)
             if (isHtmlNotValid(htmlNoParsed)) {
+                loadingSnackbar.dismiss()
+
                 Snackbar.make(binding.loginLinearlayout, R.string.errorLogin, LENGTH_LONG).show()
-                binding.passInput.setText("")
+
                 binding.txtInfoLogin.setTextColor(ContextCompat.getColor(this@LoginActivity, R.color.red))
                 binding.txtInfoLogin.setText(R.string.txtInfoLoginNo)
-                snackbar.dismiss()
+
+                binding.passInput.setText("")
+                viewModel.canLogIn.postValue(true)
             } else {
                 // store the user session id (user_session and user_id)
                 for (httpCookie in HttpCookie.parse(response.headers()["set-cookie"])) {
                     // Example format of set-cookie: session=user_session&S0MeR@nD0MSECRETk3Y&user_id&testuser; domain=.openfoodfacts.org; path=/
                     if (BuildConfig.HOST.contains(httpCookie.domain) && httpCookie.path == "/") {
-                        val cookieValues = httpCookie.value.split("&")
-                        var i = 0
-                        while (i < cookieValues.size) {
-                            pref.edit { putString(cookieValues[i], cookieValues[++i]) }
-                            i++
-                        }
+                        httpCookie.value
+                            .split("&")
+                            .windowed(2, 2)
+                            .forEach { (name, value) -> pref.edit { putString(name, value) } }
                         break
                     }
                 }
@@ -165,7 +176,6 @@ class LoginActivity : BaseActivity() {
                 finish()
             }
         }
-        binding.btnLogin.isClickable = true
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -176,9 +186,11 @@ class LoginActivity : BaseActivity() {
         _binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = this
+
         // check flavour and show helper text for user account
         if (!isFlavors(OFF)) {
-            binding.txtLoginHelper.setText(R.string.txtloginHelper)
             binding.txtLoginHelper.visibility = View.VISIBLE
         }
 
@@ -186,6 +198,7 @@ class LoginActivity : BaseActivity() {
         binding.btnLogin.setOnClickListener { doAttemptLogin() }
         binding.btnCreateAccount.setOnClickListener { doRegister() }
         binding.btnForgotPass.setOnClickListener { doForgotPassword() }
+
         setSupportActionBar(binding.toolbarLayout.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = getString(R.string.txtSignIn)
@@ -198,13 +211,13 @@ class LoginActivity : BaseActivity() {
         customTabActivityHelper.mayLaunchUrl(userLoginUri, null, null)
         binding.btnCreateAccount.isEnabled = true
 
-        val loginS = getLoginPreferences().getString(resources.getString(R.string.user), resources.getString(R.string.txt_anonymous))
-        if (loginS == resources.getString(R.string.user)) {
-            MaterialAlertDialogBuilder(this).apply {
-                setTitle(R.string.log_in)
-                setMessage(R.string.login_true)
-                setNeutralButton(R.string.ok_button) { _, _ -> finish() }
-            }.show()
+        val loginS = getLoginPreferences().getString(resources.getString(R.string.user), null)
+        if (loginS != null) {
+            MaterialAlertDialogBuilder(this)
+                .setTitle(R.string.log_in)
+                .setMessage(R.string.login_true)
+                .setNeutralButton(R.string.ok_button) { _, _ -> finish() }
+                .show()
         }
     }
 
@@ -243,7 +256,6 @@ class LoginActivity : BaseActivity() {
     companion object {
         class LoginContract : ActivityResultContract<Unit?, Boolean>() {
             override fun createIntent(context: Context, input: Unit?) = Intent(context, LoginActivity::class.java)
-
             override fun parseResult(resultCode: Int, intent: Intent?) = resultCode == RESULT_OK
         }
 

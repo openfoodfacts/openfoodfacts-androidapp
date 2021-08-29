@@ -21,13 +21,13 @@
     <string name="slide_4_title">Fungerer offline</string>
     <string name="slide_4_desc">Du kan tilføje nye produkter, selv hvis du ikke har en tilgængelig Internetforbindelse</string>
     <!-- New onboarding-->
-    <string name="join_the_food_revolution">Tilslut dig fødevarerevolutionen</string>
-    <string name="slide_1_text_revolution">Skan fødevarer, tag fotos, hjælp med at traneformere fødevaresystemet</string>
-    <string name="get_the_nutri_score">Få ernæringsinformation</string>
-    <string name="synthesis_of_nutrition_slide_2_text">En simpel syntese af dine fødevarers ernæringskvalitet</string>
-    <string name="avoid_ultra_processed_foods">Undgå ultraforarbejdede fødevarer</string>
-    <string name="nova_slide_3_text">Reducér mængden af ultraforarbejdede fødevarer i din kost.</string>
-    <string name="eco_score_slide_4_title">Øko-Score</string>
+    <string name="title_welcome_intro">Tilslut dig fødevarerevolutionen</string>
+    <string name="msg_welcome_intro">Skan fødevarer, tag fotos, hjælp med at traneformere fødevaresystemet</string>
+    <string name="title_welcome_nutriscore">Få ernæringsinformation</string>
+    <string name="msg_welcome_nutriscore">En simpel syntese af dine fødevarers ernæringskvalitet</string>
+    <string name="title_welcome_nova">Undgå ultraforarbejdede fødevarer</string>
+    <string name="msg_welcome_nova">Reducér mængden af ultraforarbejdede fødevarer i din kost.</string>
+    <string name="title_welcome_ecoscore">Øko-Score</string>
     <!-- Scan card -->
     <string name="txtDialogsContent">Produktet, du skannede, findes ikke i Open Food Facts endnu. Tilføj det venligst.</string>
     <string name="txtDialogsContentPowerMode">Produktet, du har skannet, findes allerede i Open Food Facts.</string>

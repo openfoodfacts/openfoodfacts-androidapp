@@ -160,10 +160,10 @@
     <string name="alert_dialog_warning_title">Aviso</string>
     <string name="alert_dialog_warning_msg_user">Usuário/senha mudou, por favor atualize a informação</string>
     <string name="toast_retrieving">Carregando…</string>
-    <string name="txtBarcode">Código de barras :</string>
+    <string name="txtBarcode">Código de barras:</string>
     <string name="txtCategories">Categorias :</string>
     <string name="txtLabels">Etiquetas, certificações, prémios :</string>
-    <string name="txtEMB">Códigos de rastreio:</string>
+    <string name="txtEMB">Códigos de rastreio: </string>
     <string name="txtIngredients">Lista de ingredientes :</string>
     <string name="Donate">Doar</string>
     <string name="Donation">Clique aqui para doar ao Open Food Facts</string>
@@ -471,9 +471,10 @@
     <string name="additive_string">Aditivo</string>
     <string name="allergen_string">Alérgeno</string>
     <string name="search_string">Procurar</string>
-    <string name="country_string">Países que vendem</string>
+    <string name="country_string">Country</string>
     <string name="store_subtitle">Loja</string>
     <string name="packaging_subtitle">Embalagem</string>
+    <string name="state_subtitle">Estado</string>
     <string name="packaging_string">Embalagem</string>
     <string name="label_string">Rótulo</string>
     <string name="category_string">Categoria</string>
@@ -664,7 +665,7 @@
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">Extrair ingredientes</string>
     <string name="extract_recycling_prompt">Extrair instruções de reciclagem</string>
-    <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
+    <string name="add_nutrient_prompt_text">Adicione fatos nutricionais para calcular o Nutri-Score</string>
     <string name="add_category_prompt_text">Adicione uma categoria para ajudar a completar o produto</string>
     <string name="add_nutrient_category_prompt_text">Adicione uma categoria e mais detalhes para ajudar a completar o produto</string>
     <string name="couldnot_compute_ecoscore_prompt_text">We could not compute an Eco-Score for this product. It might be that the category is not specific enough or that we don\'t have supporting data for this category. If you believe this is an error, you can mail us by clicking below.</string>
@@ -707,7 +708,7 @@
     <string name="empty"></string>
     <string name="add_product">Adicionar produtos</string>
     <string name="add_another_product">Adicione outro produto</string>
-    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
+    <string name="add_nutrition_facts_for_nutriscore">Adicione fatos nutricionais para calcular o Nutri-Score</string>
     <string name="product_summary_action_compare_button_label">Compare</string>
     <string name="product_summary_action_add_to_list_button_label">Adicionar à lista</string>
     <string name="product_summary_action_edit_button_label">Edite</string>
@@ -805,11 +806,14 @@
     <string name="changelog_translation_help">Want to see this changelog in %s?\nJoin the translation team!</string>
     <string name="whats_new">What\'s new with Open Food Facts?</string>
     <!-- New onboarding slides -->
-    <string name="eco_score_slide_4_title">Eco-Pontuação</string>
-    <string name="join_the_food_revolution">Junte-se à revolução dos alimentos</string>
-    <string name="slide_1_text_revolution">Escaneie comida, Tire fotos, Ajude a transformar o sistema alimentar</string>
-    <string name="get_the_nutri_score">Obtenha o Nutri-Score</string>
-    <string name="synthesis_of_nutrition_slide_2_text">Uma síntese simples da qualidade nutricional da sua comida</string>
-    <string name="avoid_ultra_processed_foods">Evite alimentos ultraprocessados</string>
-    <string name="nova_slide_3_text">Reduza a quantidade de alimentos ultraprocessados em sua dieta.</string>
+    <string name="title_welcome_intro">Junte-se à revolução dos alimentos</string>
+    <string name="msg_welcome_intro">Escaneie comida, Tire fotos, Ajude a transformar o sistema alimentar</string>
+    <string name="title_welcome_nutriscore">Obtenha o Nutri-Score</string>
+    <string name="msg_welcome_nutriscore">Uma síntese simples da qualidade nutricional da sua comida</string>
+    <string name="title_welcome_nova">Evite alimentos ultraprocessados</string>
+    <string name="msg_welcome_nova">Reduza a quantidade de alimentos ultraprocessados em sua dieta.</string>
+    <string name="title_welcome_ecoscore">Eco-Pontuação</string>
+    <string name="msg_welcome_ecoscore">A synthesis of the environmental impact of your food.</string>
+    <string name="title_welcome_matomo">Send anonymous analytics</string>
+    <string name="msg_welcome_matomo">Help the Open Food Facts volunteers to improve the app. You decide if you send anonymous analytics.\n\nIf you change your mind this option can be enabled and disabled at any time from the settings.</string>
 </resources>

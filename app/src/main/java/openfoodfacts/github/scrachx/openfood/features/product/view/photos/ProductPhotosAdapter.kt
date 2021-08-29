@@ -20,7 +20,6 @@ import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.rx2.await
 import kotlinx.coroutines.withContext
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.features.login.LoginActivity
@@ -128,7 +127,7 @@ class ProductPhotosAdapter(
 
             // Edit photo async
             lifecycleOwner.lifecycle.coroutineScope.launch(Dispatchers.IO) {
-                val response = client.editImage(product.code, imgMap).await()
+                val response = client.editImage(product.code, imgMap)
                 withContext(Dispatchers.Main) { displaySetImageName(response) }
             }
 

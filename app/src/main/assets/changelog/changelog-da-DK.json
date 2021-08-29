@@ -2,7 +2,7 @@
   "changelog": [
     {
       "date": "1002-2021",
-      "code": 350,
+      "code": 518,
       "name": "3.5.0",
       "items": [
         "Maskinindlæringsforbedret stregkodeskanner. Du kan nu aktivere en ny skanningsmåde via valgmulighederne samt når som helst skifte stregkodeskannermotor via indstillingerne.",

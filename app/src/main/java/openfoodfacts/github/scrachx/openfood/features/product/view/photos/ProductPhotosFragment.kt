@@ -22,7 +22,6 @@ import javax.inject.Inject
 
 /**
  * @author prajwalm
- * @see R.layout.fragment_product_photos
  */
 @AndroidEntryPoint
 class ProductPhotosFragment : BaseFragment() {

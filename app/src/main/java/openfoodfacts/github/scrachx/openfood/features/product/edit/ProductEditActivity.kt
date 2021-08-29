@@ -29,12 +29,12 @@ import androidx.activity.result.contract.ActivityResultContract
 import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.widget.ViewPager2
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
-import com.afollestad.materialdialogs.MaterialDialog
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_INDEFINITE
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
-import io.reactivex.disposables.CompositeDisposable
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.rx2.await
 import kotlinx.coroutines.withContext
@@ -64,13 +64,9 @@ import openfoodfacts.github.scrachx.openfood.models.entities.ToUploadProduct
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient.Companion.PNG_EXT
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient.Companion.addToHistorySync
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient.Companion.addToHistory
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
-import openfoodfacts.github.scrachx.openfood.utils.OfflineProductService
-import openfoodfacts.github.scrachx.openfood.utils.Utils.hideKeyboard
-import openfoodfacts.github.scrachx.openfood.utils.clearCameraCache
-import openfoodfacts.github.scrachx.openfood.utils.getLoginPreferences
-import openfoodfacts.github.scrachx.openfood.utils.getProductState
+import openfoodfacts.github.scrachx.openfood.utils.*
 import java.io.IOException
 import java.util.*
 import javax.inject.Inject
@@ -80,17 +76,11 @@ class ProductEditActivity : BaseActivity() {
     private var _binding: ActivityEditProductBinding? = null
     private val binding get() = _binding!!
 
-    private val disp = CompositeDisposable()
-    private val fragmentsBundle = Bundle()
-
     @Inject
     lateinit var offlineService: OfflineProductService
 
     @Inject
     lateinit var daoSession: DaoSession
-
-    @Inject
-    lateinit var client: OpenFoodAPIClient
 
     @Inject
     lateinit var productsApi: ProductsAPI
@@ -100,6 +90,8 @@ class ProductEditActivity : BaseActivity() {
 
     @Inject
     lateinit var sharedPreferences: SharedPreferences
+
+    private val fragmentsBundle = Bundle()
 
     private val addProductPhotosFragment = ProductEditPhotosFragment()
     private val nutritionFactsFragment = ProductEditNutritionFactsFragment()
@@ -139,23 +131,19 @@ class ProductEditActivity : BaseActivity() {
     }
 
     override fun onBackPressed() {
-        MaterialDialog.Builder(this)
-            .content(R.string.save_product)
-            .positiveText(R.string.txtSave)
-            .negativeText(R.string.txtPictureNeededDialogNo)
-            .onPositive { _, _ -> checkFieldsThenSave() }
-            .onNegative { _, _ -> super.onBackPressed() }
+        MaterialAlertDialogBuilder(this)
+            .setMessage(R.string.save_product)
+            .setPositiveButton(R.string.txtSave) { _, _ -> checkFieldsThenSave() }
+            .setNegativeButton(R.string.txtPictureNeededDialogNo) { _, _ -> super.onBackPressed() }
             .show()
     }
 
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
         android.R.id.home -> {
-            MaterialDialog.Builder(this)
-                .content(R.string.save_product)
-                .positiveText(R.string.txtSave)
-                .negativeText(R.string.txt_discard)
-                .onPositive { _, _ -> checkFieldsThenSave() }
-                .onNegative { _, _ -> finish() }
+            MaterialAlertDialogBuilder(this)
+                .setMessage(R.string.save_product)
+                .setPositiveButton(R.string.txtSave) { _, _ -> checkFieldsThenSave() }
+                .setNegativeButton(R.string.txt_discard) { _, _ -> finish() }
                 .show()
             true
         }
@@ -236,7 +224,6 @@ class ProductEditActivity : BaseActivity() {
 
     public override fun onDestroy() {
         super.onDestroy()
-        disp.dispose()
         clearCameraCache()
         _binding = null
     }
@@ -248,9 +235,9 @@ class ProductEditActivity : BaseActivity() {
         editOverviewFragment.arguments = fragmentsBundle
         ingredientsFragment.arguments = fragmentsBundle
 
-        val adapterResult = ProductFragmentPagerAdapter(this).apply {
-            this += editOverviewFragment to getString(R.string.overview)
-            this += ingredientsFragment to getString(R.string.ingredients)
+        val adapterResult = ProductFragmentPagerAdapter(this).also {
+            it += editOverviewFragment to getString(R.string.overview)
+            it += ingredientsFragment to getString(R.string.ingredients)
         }
 
         // If on off or opff, add Nutrition Facts fragment
@@ -273,18 +260,23 @@ class ProductEditActivity : BaseActivity() {
     private fun createTextPlain(code: String) =
         RequestBody.create(OpenFoodAPIClient.MIME_TEXT, code)
 
-    private fun addLoginPasswordInfo(imgMap: MutableMap<String, RequestBody?>) {
+    private fun getLoginPasswordInfo(): Map<String, RequestBody> {
+        val map = hashMapOf<String, RequestBody>()
         val settings = getLoginPreferences()
+
         val login = settings.getString("user", "") ?: ""
         val password = settings.getString("pass", "") ?: ""
+
         if (login.isNotEmpty() && password.isNotEmpty()) {
-            imgMap[ApiFields.Keys.USER_ID] = createTextPlain(login)
-            imgMap[ApiFields.Keys.USER_PASS] = createTextPlain(password)
+            map[ApiFields.Keys.USER_ID] = createTextPlain(login)
+            map[ApiFields.Keys.USER_PASS] = createTextPlain(password)
         }
-        imgMap[ApiFields.Keys.USER_COMMENT] = createTextPlain(client.getCommentToUpload(login))
+
+        map[ApiFields.Keys.USER_COMMENT] = createTextPlain(client.getCommentToUpload(login))
+        return map
     }
 
-    private fun saveProduct() {
+    private suspend fun saveProduct() {
         editOverviewFragment.addUpdatedFieldsToMap(productDetails)
         ingredientsFragment.addUpdatedFieldsToMap(productDetails)
         if (isFlavors(OFF, OPFF)) {
@@ -301,7 +293,7 @@ class ProductEditActivity : BaseActivity() {
     /**
      * Save the current product in the offline db
      */
-    private fun saveProductOffline() {
+    private suspend fun saveProductOffline() {
         // Add the images to the productDetails to display them in UI later.
         imagesFilePath[0]?.let { productDetails[ApiFields.Keys.IMAGE_FRONT] = it }
         imagesFilePath[1]?.let { productDetails[ApiFields.Keys.IMAGE_INGREDIENTS] = it }
@@ -317,19 +309,22 @@ class ProductEditActivity : BaseActivity() {
         if (imageNutritionFactsUploaded) {
             productDetails[ApiFields.Keys.IMAGE_NUTRITION_UPLOADED] = true.toString()
         }
-        val barcode = this@ProductEditActivity.productDetails[ApiFields.Keys.BARCODE]!!
-        val toSaveOffline = OfflineSavedProduct(
-            barcode,
-            this@ProductEditActivity.productDetails
-        )
-        daoSession.offlineSavedProductDao.insertOrReplace(toSaveOffline)
+        val barcode = productDetails[ApiFields.Keys.BARCODE]!!
+
+
+        // Save product to local database
+        val toSaveOffline = OfflineSavedProduct(barcode, productDetails)
+        withContext(IO) { daoSession.offlineSavedProductDao.insertOrReplace(toSaveOffline) }
+
+        // Add to history db
+        daoSession.historyProductDao.addToHistory(toSaveOffline)
 
         scheduleProductUpload(this, sharedPreferences)
-        daoSession.historyProductDao.addToHistorySync(toSaveOffline)
 
         Toast.makeText(this, R.string.productSavedToast, Toast.LENGTH_SHORT).show()
-        hideKeyboard(this)
+        hideKeyboard()
 
+        // Report analytics
         if (editingMode) {
             matomoAnalytics.trackEvent(AnalyticsEvent.ProductEdited(productDetails[ApiFields.Keys.BARCODE]))
         } else {
@@ -340,25 +335,34 @@ class ProductEditActivity : BaseActivity() {
         finish()
     }
 
-    private fun checkFieldsThenSave() = if (editingMode) {
-        // edit mode, therefore do not check whether front image is empty or not however do check the nutrition facts values.
-        if (isFlavors(OFF, OPFF) && nutritionFactsFragment.anyInvalid()) {
-            // If there are any invalid field and there is nutrition data, scroll to the nutrition fragment
-            binding.viewpager.setCurrentItem(2, true)
-        } else saveProduct()
-    } else {
-        // add mode, check if we have required fields
-        if (editOverviewFragment.anyInvalid()) {
-            binding.viewpager.setCurrentItem(0, true)
-        } else if (isFlavors(OFF, OPFF) && nutritionFactsFragment.anyInvalid()) {
-            binding.viewpager.setCurrentItem(2, true)
-        } else saveProduct()
+    private fun checkFieldsThenSave() {
+        if (editingMode) {
+            // edit mode, therefore do not check whether front image is empty or not however do check the nutrition facts values.
+            if (isFlavors(OFF, OPFF) && nutritionFactsFragment.anyInvalid()) {
+                // If there are any invalid field and there is nutrition data, scroll to the nutrition fragment
+                binding.viewpager.setCurrentItem(2, true)
+                return
+            }
+        } else {
+            // add mode, check if we have required fields
+            if (editOverviewFragment.anyInvalid()) {
+                binding.viewpager.setCurrentItem(0, true)
+                return
+            } else if (isFlavors(OFF, OPFF) && nutritionFactsFragment.anyInvalid()) {
+                binding.viewpager.setCurrentItem(2, true)
+                return
+            }
+        }
+        // If all is correct, save the product
+        lifecycleScope.launch { saveProduct() }
     }
 
     private fun addLoginInfoToProductDetails(targetMap: MutableMap<String, String?>) {
         val settings = getLoginPreferences()
-        val login = settings.getString("user", "") ?: ""
-        val password = settings.getString("pass", "") ?: ""
+
+        val login = settings.getString("user", "")!!
+        val password = settings.getString("pass", "")!!
+
         if (login.isNotEmpty() && password.isNotEmpty()) {
             targetMap[ApiFields.Keys.USER_ID] = login
             targetMap[ApiFields.Keys.USER_PASS] = password
@@ -371,11 +375,11 @@ class ProductEditActivity : BaseActivity() {
 
     private fun switchToNutritionFactsPage() = binding.viewpager.setCurrentItem(2, true)
 
-    fun addToPhotoMap(image: ProductImage, position: Int) {
+    fun savePhoto(image: ProductImage, fragmentIndex: Int) {
         val lang = getProductLanguageForEdition()
         var ocr = false
         val imgMap = hashMapOf<String, RequestBody?>(
-            ApiFields.Keys.BARCODE to image.codeBody,
+            ApiFields.Keys.BARCODE to image.barcodeBody,
             "imagefield" to createTextPlain("${image.imageField}_$lang")
         )
         if (image.imgFront != null) {
@@ -400,26 +404,28 @@ class ProductEditActivity : BaseActivity() {
         }
 
         // Attribute the upload to the connected user
-        addLoginPasswordInfo(imgMap)
+        imgMap += getLoginPasswordInfo()
 
-        lifecycleScope.launch { savePhoto(imgMap, image, position, ocr) }
+        lifecycleScope.launch { savePhoto(imgMap, image, fragmentIndex, ocr) }
 
     }
 
     private suspend fun savePhoto(
         imgMap: Map<String, RequestBody?>,
         image: ProductImage,
-        position: Int,
+        fragmentIndex: Int,
         performOCR: Boolean
-    ) = withContext(Dispatchers.IO) {
-        showImageProgress(position)
+    ) = withContext(IO) {
+
+        showImageProgress(fragmentIndex)
+
         val jsonNode = try {
-            productsApi.saveImage(imgMap).await()
+            productsApi.saveImage(imgMap)
         } catch (err: Throwable) {
             // A network error happened
             if (err is IOException) {
 
-                hideImageProgress(position, getString(R.string.no_internet_connection))
+                hideImageProgress(fragmentIndex, getString(R.string.no_internet_connection))
 
                 Log.e(LOGGER_TAG, err.message!!)
                 if (image.imageField === ProductImageField.OTHER) {
@@ -433,39 +439,43 @@ class ProductEditActivity : BaseActivity() {
                 }
             } else {
                 Log.i(this::class.simpleName, err.message ?: "Empty error.")
-                withContext(Dispatchers.Main) {
-                    hideImageProgress(position, err.message ?: "Empty error.", true)
+                withContext(Main) {
+                    hideImageProgress(fragmentIndex, err.message ?: "Empty error.", true)
                     Toast.makeText(this@ProductEditActivity, err.message, Toast.LENGTH_SHORT).show()
                 }
             }
             return@withContext
         }
+
         val status = jsonNode["status"].asText()
         if (status == "status not ok") {
             val error = jsonNode["error"].asText()
+
             val alreadySent = error == "This picture has already been sent."
             if (alreadySent && performOCR) {
-                hideImageProgress(position, getString(R.string.image_uploaded_successfully))
-                withContext(Dispatchers.Main) { performOCR(image.barcode, "ingredients_${getProductLanguageForEdition()}") }
+                hideImageProgress(fragmentIndex, getString(R.string.image_uploaded_successfully))
+                withContext(Main) { performOCR(image.barcode, "ingredients_${getProductLanguageForEdition()}") }
             } else {
-                hideImageProgress(position, error, true)
+                hideImageProgress(fragmentIndex, error, true)
             }
         } else {
-            when {
-                image.imageField === ProductImageField.FRONT -> {
+            when (image.imageField) {
+                ProductImageField.FRONT -> {
                     imageFrontUploaded = true
                 }
-                image.imageField === ProductImageField.INGREDIENTS -> {
+                ProductImageField.INGREDIENTS -> {
                     imageIngredientsUploaded = true
                 }
-                image.imageField === ProductImageField.NUTRITION -> {
+                ProductImageField.NUTRITION -> {
                     imageNutritionFactsUploaded = true
                 }
             }
-            hideImageProgress(position, getString(R.string.image_uploaded_successfully))
+
+            hideImageProgress(fragmentIndex, getString(R.string.image_uploaded_successfully))
+
             val imageField = jsonNode["imagefield"].asText()
             val imgId = jsonNode["image"]["imgid"].asText()
-            if (position != 3 && position != 4) {
+            if (fragmentIndex != 3 && fragmentIndex != 4) {
                 // Not OTHER image
                 setPhoto(image, imageField, imgId, performOCR)
             }
@@ -475,28 +485,32 @@ class ProductEditActivity : BaseActivity() {
     private suspend fun setPhoto(image: ProductImage, imageField: String, imgId: String, performOCR: Boolean) {
         val queryMap = mapOf(IMG_ID to imgId, "id" to imageField)
 
-        val jsonNode = withContext(Dispatchers.IO) {
+        val jsonNode = withContext(IO) {
             try {
                 productsApi.editImage(image.barcode, queryMap).await()
             } catch (err: Exception) {
                 if (err is IOException) {
                     if (performOCR) {
                         val view = findViewById<View>(R.id.coordinator_layout)
-                        Snackbar.make(view, R.string.no_internet_unable_to_extract_ingredients, Snackbar.LENGTH_INDEFINITE)
-                            .setAction(R.string.txt_try_again) {
-                                lifecycleScope.launch { setPhoto(image, imageField, imgId, true) }
-                            }
-                            .show()
+                        Snackbar.make(
+                            view,
+                            R.string.no_internet_unable_to_extract_ingredients,
+                            Snackbar.LENGTH_INDEFINITE
+                        ).setAction(R.string.txt_try_again) {
+                            lifecycleScope.launch { setPhoto(image, imageField, imgId, true) }
+                        }.show()
                     }
                 } else {
-                    Log.w(this::class.simpleName, err.message!!)
-                    Toast.makeText(this@ProductEditActivity, err.message, Toast.LENGTH_SHORT).show()
+                    withContext(Main) {
+                        Log.w(this::class.simpleName, err.message!!)
+                        Toast.makeText(this@ProductEditActivity, err.message, Toast.LENGTH_SHORT).show()
+                    }
                 }
                 return@withContext null
             }
         } ?: return
 
-        withContext(Dispatchers.Main) {
+        withContext(Main) {
             val status = jsonNode["status"].asText()
             if (performOCR && status == "status ok") {
                 performOCR(image.barcode, imageField)
@@ -507,9 +521,9 @@ class ProductEditActivity : BaseActivity() {
 
 
     suspend fun performOCR(code: String, imageField: String) {
-        withContext(Dispatchers.Main) { ingredientsFragment.showOCRProgress() }
+        withContext(Main) { ingredientsFragment.showOCRProgress() }
 
-        val node = withContext(Dispatchers.IO) {
+        val node = withContext(IO) {
             try {
                 productsApi.performOCR(code, imageField).await()
             } catch (err: Exception) {
@@ -529,9 +543,10 @@ class ProductEditActivity : BaseActivity() {
             }
         } ?: return
 
-        withContext(Dispatchers.Main) {
+        withContext(Main) {
             ingredientsFragment.hideOCRProgress()
-            val status = node["status"].toString()
+
+            val status = node["status"].asText()
             if (status == "0") {
                 val ocrResult = node["ingredients_text_from_image"].asText()
                 ingredientsFragment.setIngredients(status, ocrResult)
@@ -545,7 +560,7 @@ class ProductEditActivity : BaseActivity() {
         position: Int,
         msg: String,
         error: Boolean = false
-    ) = withContext(Dispatchers.Main) {
+    ) = withContext(Main) {
         when (position) {
             0 -> editOverviewFragment.hideImageProgress(error, msg)
             1 -> ingredientsFragment.hideImageProgress(error, msg)
@@ -555,7 +570,7 @@ class ProductEditActivity : BaseActivity() {
         }
     }
 
-    private suspend fun showImageProgress(position: Int) = withContext(Dispatchers.Main) {
+    private suspend fun showImageProgress(position: Int) = withContext(Main) {
         when (position) {
             0 -> editOverviewFragment.showImageProgress()
             1 -> ingredientsFragment.showImageProgress()
@@ -567,7 +582,7 @@ class ProductEditActivity : BaseActivity() {
 
     fun getProductLanguageForEdition() = productDetails[ApiFields.Keys.LANG]
 
-    fun setProductLanguage(languageCode: String) {
+    fun setProductLanguageCode(languageCode: String) {
         productDetails[ApiFields.Keys.LANG] = languageCode
     }
 
@@ -589,8 +604,8 @@ class ProductEditActivity : BaseActivity() {
         override fun parseResult(resultCode: Int, intent: Intent?) = resultCode == RESULT_OK
     }
 
-    class SendUpdatedImgContract : ActivityResultContract<Product?, Boolean>() {
-        override fun createIntent(context: Context, product: Product?) =
+    class SendUpdatedImgContract : ActivityResultContract<Product, Boolean>() {
+        override fun createIntent(context: Context, product: Product) =
             Intent(context, ProductEditActivity::class.java).apply {
                 putExtra(KEY_EDIT_PRODUCT, product)
                 putExtra(KEY_SEND_UPDATED, true)

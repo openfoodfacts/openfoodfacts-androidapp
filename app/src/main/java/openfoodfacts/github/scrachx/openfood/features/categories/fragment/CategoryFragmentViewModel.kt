@@ -20,13 +20,12 @@ import android.view.View
 import androidx.databinding.ObservableArrayList
 import androidx.databinding.ObservableInt
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import io.reactivex.Single
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.rxkotlin.addTo
-import io.reactivex.schedulers.Schedulers
-import kotlinx.coroutines.rx2.rxSingle
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.rx2.await
+import kotlinx.coroutines.withContext
 import openfoodfacts.github.scrachx.openfood.models.entities.category.Category
 import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoryName
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
@@ -45,53 +44,42 @@ class CategoryFragmentViewModel @Inject constructor(
     val showProgress = ObservableInt(View.VISIBLE)
     val showOffline = ObservableInt(View.GONE)
 
-    private val disposable = CompositeDisposable()
-
     init {
         refreshCategories()
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        disposable.dispose()
     }
 
     /**
      * Generates a network call for showing categories in CategoryFragment
      */
     fun refreshCategories() {
-        productRepository.getAllCategoriesByLanguageCode(localeManager.getLanguage())
-            .doOnSubscribe {
-                showOffline.set(View.GONE)
-                showProgress.set(View.VISIBLE)
-            }
-            .flatMap {
-                if (it.isEmpty()) {
-                    productRepository.getAllCategoriesByDefaultLanguageCode()
-                } else Single.just(it)
-            }
-            .flatMap {
-                if (it.isEmpty()) {
-                    rxSingle { extractCategoriesNames(productRepository.getCategories()) }
-                } else Single.just(it)
-            }
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnError {
-                Log.e(CategoryFragmentViewModel::class.simpleName, "Error loading categories", it)
-                if (it is UnknownHostException) {
+        viewModelScope.launch {
+            showOffline.set(View.GONE)
+            showProgress.set(View.VISIBLE)
+            val categoryList = try {
+                withContext(Dispatchers.IO) {
+                    productRepository.getAllCategoriesByLanguageCode(localeManager.getLanguage()).await()
+                        .takeUnless { it.isEmpty() }
+                        ?: productRepository.getAllCategoriesByDefaultLanguageCode().await()
+                            .takeUnless { it.isEmpty() }
+                        ?: extractCategoriesNames(productRepository.getCategories())
+                }
+            } catch (err: Exception) {
+                Log.e(CategoryFragmentViewModel::class.simpleName, "Error loading categories", err)
+                if (err is UnknownHostException) {
                     showOffline.set(View.VISIBLE)
                     showProgress.set(View.GONE)
                 }
+                return@launch
             }
-            .subscribe { categoryList ->
-                allCategories += categoryList
 
-                shownCategories.clear()
-                shownCategories += categoryList
+            allCategories += categoryList
 
-                showProgress.set(View.GONE)
-            }.addTo(disposable)
+            shownCategories.clear()
+            shownCategories += categoryList
+
+            showProgress.set(View.GONE)
+        }
+
     }
 
     /**

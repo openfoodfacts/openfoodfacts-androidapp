@@ -23,16 +23,16 @@
     <string name="slide_4_desc">Vous pouvez ajouter de nouveaux produits, même si vous ne disposez pas d\'une connexion Internet pour le moment</string>
     <string name="txtDialogsContent">Le produit que vous avez scanné n\'existe pas encore dans Open Pet Food Facts. Voulez-vous l\'ajouter?</string>
     <string name="txtDialogsContentPowerMode">Le produit que vous avez scanné existe déjà dans Open Pet Food Facts.</string>
-    <string name="msg_share">Regarde ce produit sur Open Food Facts:</string>
-    <string name="not_support_books">Les livres ne sont actuellement pas pris en charge par Open Food Facts</string>
-    <string name="txt_broaden_search">- élargir votre recherche\n-le scanner et l\'ajouter à Open Food Facts</string>
-    <string name="Donation">Cliquez ici pour faire un don à Open Food Facts</string>
-    <string name="translate_help_title">Aidez à traduire Open Food Facts</string>
-    <string name="translate_help_summary">Rendez la base de données Open Food Facts disponible dans votre langue - aucune connaissance technique requise</string>
+    <string name="msg_share">Regarde ce produit sur Open Pet Food Facts:</string>
+    <string name="not_support_books">Les livres ne sont actuellement pas pris en charge par Open Pet Food Facts</string>
+    <string name="txt_broaden_search">- élargir votre recherche\n-le scanner et l\'ajouter à Open Pet Food Facts</string>
+    <string name="Donation">Cliquez ici pour faire un don à Open Pet Food Facts</string>
+    <string name="translate_help_title">Aidez à traduire Open Pet Food Facts</string>
+    <string name="translate_help_summary">Rendez la base de données Open Pet Food Facts disponible dans votre langue - aucune connaissance technique requise</string>
     <string name="text_offline_info_dialog">Vous pouvez scanner des produits lorsque vous êtes hors-ligne pour les ajouter plus tard à Open Pet Food Facts. Tous les produits que vous scannez apparaîtront ici et vous serez en mesure de les envoyer en utilisant le bouton ci-dessous.</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Les informations relatives à vos allergies ne seront jamais envoyées aux serveurs d\'Open Food Facts. Par ailleurs, soyez vigilant sur le fait que ces données ne sont pas fiables à 100 % at que la détection peut ne pas être précise à 100 %. V leuillez à vérifier également par vous-même ! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Les informations relatives à vos allergies ne seront jamais envoyées aux serveurs d\'Open Pet Food Facts. Par ailleurs, soyez vigilant sur le fait que ces données ne sont pas fiables à 100 % et que la détection peut ne pas être précise à 100 %. V leuillez à vérifier également par vous-même ! </string>
     <!-- OPFF tagline in different languages -->
-    <string name="version_string">Application Android Open Food Facts</string>
+    <string name="version_string">Application Android Open Pet Food Facts</string>
     <string name="tagline">free pet food products database</string>
     <string name="product_not_found">Le produit %1$s que vous scannez n\'existe pas encore dans Open Pet Food Facts. Pouvez-vous l\'ajouter ?</string>
     <string name="currently_on_version">Actuellement sur Open Pet Food Facts</string>

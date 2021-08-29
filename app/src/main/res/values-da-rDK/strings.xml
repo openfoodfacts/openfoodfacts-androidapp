@@ -160,7 +160,7 @@
     <string name="alert_dialog_warning_title">Advarsel</string>
     <string name="alert_dialog_warning_msg_user">Brugernavn/adgangskode er blevet ændret. Opdatér venligst information</string>
     <string name="toast_retrieving">Indlæser…</string>
-    <string name="txtBarcode">Stregkode :</string>
+    <string name="txtBarcode">Stregkode:</string>
     <string name="txtCategories">Kategorier:</string>
     <string name="txtLabels">Mærkning, certificering, priser :</string>
     <string name="txtEMB">EMB-kode:</string>
@@ -168,9 +168,9 @@
     <string name="Donate">Donér</string>
     <string name="Donation">Tryk her for at donere til Open Food Facts</string>
     <string name="txtSubstances">Stoffer eller produkter, som forårsager allergier eller intolerance :</string>
-    <string name="txtAdditives">Tilsætningsstoffer:</string>
-    <string name="txtTraces">Sporstoffer:</string>
-    <string name="txtMayBeFromPalmOilProduct">Ingrediænser, som kan være fremstillet af palmeolie:</string>
+    <string name="txtAdditives">Tilsætningsstoffer: </string>
+    <string name="txtTraces">Sporstoffer: </string>
+    <string name="txtMayBeFromPalmOilProduct">Ingrediænser, som kan være fremstillet af palmeolie: </string>
     <string name="txtPalmOilProduct">Ingrediænser fra palmeolie:</string>
     <string name="txtServingSize">Portionsstørrelse :</string>
     <string name="txtNutrientLevel100g">Næringsstoffer pr. 100 g :</string>
@@ -471,9 +471,10 @@
     <string name="additive_string">Tilsætningsstof</string>
     <string name="allergen_string">Allergen</string>
     <string name="search_string">Søg</string>
-    <string name="country_string">Lande, hvorfra der sælges</string>
+    <string name="country_string">Country</string>
     <string name="store_subtitle">Butik</string>
     <string name="packaging_subtitle">Emballage</string>
+    <string name="state_subtitle">Stat</string>
     <string name="packaging_string">Emballage</string>
     <string name="label_string">Etiket</string>
     <string name="category_string">Kategori</string>
@@ -805,11 +806,14 @@
     <string name="changelog_translation_help">Ønsker at se denne ændringslog i %s?\nDeltag i oversættelsesteamet!</string>
     <string name="whats_new">Nyt i Open Food Facts?</string>
     <!-- New onboarding slides -->
-    <string name="eco_score_slide_4_title">Øko-Score</string>
-    <string name="join_the_food_revolution">Tilslut dig fødevarerevolutionen</string>
-    <string name="slide_1_text_revolution">Skan fødevarer, tag fotos, hjælp med at traneformere fødevaresystemet</string>
-    <string name="get_the_nutri_score">Få ernæringsinformation</string>
-    <string name="synthesis_of_nutrition_slide_2_text">En simpel syntese af dine fødevarers ernæringskvalitet</string>
-    <string name="avoid_ultra_processed_foods">Undgå ultraforarbejdede fødevarer</string>
-    <string name="nova_slide_3_text">Reducér mængden af ultraforarbejdede fødevarer i din kost.</string>
+    <string name="title_welcome_intro">Tilslut dig fødevarerevolutionen</string>
+    <string name="msg_welcome_intro">Skan fødevarer, tag fotos, hjælp med at traneformere fødevaresystemet</string>
+    <string name="title_welcome_nutriscore">Få ernæringsinformation</string>
+    <string name="msg_welcome_nutriscore">En simpel syntese af dine fødevarers ernæringskvalitet</string>
+    <string name="title_welcome_nova">Undgå ultraforarbejdede fødevarer</string>
+    <string name="msg_welcome_nova">Reducér mængden af ultraforarbejdede fødevarer i din kost.</string>
+    <string name="title_welcome_ecoscore">Øko-Score</string>
+    <string name="msg_welcome_ecoscore">En syntese af din mads miljøpåvirkning.</string>
+    <string name="title_welcome_matomo">Indsend anonyme analysedata</string>
+    <string name="msg_welcome_matomo">Hjælp OFF-frivillige med at forbedre appen. Du kan tillade indsendelse af anonyme analysdata\n\nDette kan når som helst aktiveres/deaktiveres via indstillingerne.</string>
 </resources>

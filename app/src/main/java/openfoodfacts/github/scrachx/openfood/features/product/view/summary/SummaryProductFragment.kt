@@ -15,7 +15,6 @@
  */
 package openfoodfacts.github.scrachx.openfood.features.product.view.summary
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -23,8 +22,6 @@ import android.content.res.ColorStateList
 import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
-import android.text.SpannableStringBuilder
-import android.text.Spanned
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.util.Log
@@ -35,19 +32,25 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.content.res.ResourcesCompat
+import androidx.core.net.toUri
 import androidx.core.text.bold
+import androidx.core.text.buildSpannedString
+import androidx.core.text.inSpans
 import androidx.core.view.updatePadding
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.afollestad.materialdialogs.MaterialDialog
 import com.google.android.material.chip.Chip
-import com.google.android.material.snackbar.BaseTransientBottomBar
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_SHORT
 import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.rxkotlin.addTo
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.Dispatchers.Main
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.R
@@ -73,7 +76,7 @@ import openfoodfacts.github.scrachx.openfood.features.productlists.ProductListsA
 import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivity
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
 import openfoodfacts.github.scrachx.openfood.features.shared.adapters.NutrientLevelListAdapter
-import openfoodfacts.github.scrachx.openfood.features.shared.views.QuestionDialog
+import openfoodfacts.github.scrachx.openfood.features.shared.views.showQuestionDialog
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
 import openfoodfacts.github.scrachx.openfood.models.*
 import openfoodfacts.github.scrachx.openfood.models.entities.ListedProduct
@@ -89,7 +92,6 @@ import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.network.WikiDataApiClient
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.*
-import org.greenrobot.greendao.async.AsyncOperationListener
 import java.io.File
 import javax.inject.Inject
 import kotlin.random.Random
@@ -120,14 +122,18 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     @Inject
     lateinit var localeManager: LocaleManager
 
+    @Inject
+    lateinit var productRepository: ProductRepository
+
     private lateinit var presenter: ISummaryProductPresenter.Actions
     private lateinit var mTagDao: TagDao
+
     private lateinit var product: Product
-
     private lateinit var customTabActivityHelper: CustomTabActivityHelper
-    private lateinit var customTabsIntent: CustomTabsIntent
 
+    private lateinit var customTabsIntent: CustomTabsIntent
     private var annotation: AnnotationAnswer? = null
+
     private var hasCategoryInsightQuestion = false
 
     private var insightId: String? = null
@@ -135,8 +141,8 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     //boolean to determine if image should be loaded or not
     private val isLowBatteryMode by lazy { requireContext().isDisableImageLoad() && requireContext().isBatteryLevelLow() }
     private var mUrlImage: String? = null
-    private var nutritionScoreUri: Uri? = null
 
+    private var nutritionScoreUri: Uri? = null
     private val photoReceiverHandler by lazy {
         PhotoReceiverHandler(sharedPreferences) { newPhotoFile: File ->
             //the pictures are uploaded with the correct path
@@ -151,6 +157,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
             }
         }
     }
+
     private var productQuestion: Question? = null
 
     private val loginThenProcessInsight = registerForActivityResult(LoginContract()) { isLogged ->
@@ -159,8 +166,8 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
             processInsight()
         }
     }
-
     private lateinit var productState: ProductState
+
     private var sendOther = false
 
     /**boolean to determine if category prompt should be shown*/
@@ -169,9 +176,9 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     /**boolean to determine if nutrient prompt should be shown*/
     private var showNutrientPrompt = false
 
+
     /**boolean to determine if eco score prompt should be shown*/
     private var showEcoScorePrompt = false
-
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -194,9 +201,6 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         return binding.root
     }
 
-    @Inject
-    lateinit var productRepository: ProductRepository
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -211,12 +215,11 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         binding.productQuestionDismiss.setOnClickListener {
             binding.productQuestionLayout.visibility = View.GONE
         }
-        binding.productQuestionLayout.setOnClickListener { onProductQuestionClick() }
+        binding.productQuestionLayout.setOnClickListener { productQuestion?.let { onProductQuestionClick(it) } }
         productState = requireProductState()
         refreshView(productState)
 
         presenter = SummaryProductPresenter(localeManager.getLanguage(), product, this, productRepository)
-        presenter.addTo(disp)
     }
 
 
@@ -225,20 +228,10 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         _binding = null
     }
 
-    private fun onImageListenerError(error: Throwable) {
-        binding.uploadingImageProgress.visibility = View.GONE
-        binding.uploadingImageProgressText.visibility = View.GONE
-        Toast.makeText(requireContext(), error.message, Toast.LENGTH_SHORT).show()
-    }
-
 
     override fun onRefresh() {
+        super.onRefresh()
         refreshView(productState)
-    }
-
-    private fun onImageListenerComplete() {
-        binding.uploadingImageProgress.visibility = View.GONE
-        binding.uploadingImageProgressText.setText(R.string.image_uploaded_successfully)
     }
 
     /**
@@ -250,10 +243,18 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         binding.uploadingImageProgress.visibility = View.VISIBLE
         binding.uploadingImageProgressText.visibility = View.VISIBLE
         binding.uploadingImageProgressText.setText(R.string.toastSending)
-        client.postImg(image).observeOn(AndroidSchedulers.mainThread())
-            .doOnError { onImageListenerError(it) }
-            .subscribe { onImageListenerComplete() }
-            .addTo(disp)
+
+        lifecycleScope.launch {
+            try {
+                withContext(IO) { client.postImg(image) }
+            } catch (err: Exception) {
+                binding.uploadingImageProgress.visibility = View.GONE
+                binding.uploadingImageProgressText.visibility = View.GONE
+                Toast.makeText(requireContext(), err.message, Toast.LENGTH_SHORT).show()
+            }
+            binding.uploadingImageProgress.visibility = View.GONE
+            binding.uploadingImageProgressText.setText(R.string.image_uploaded_successfully)
+        }
     }
 
     /**
@@ -272,16 +273,19 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     override fun refreshView(productState: ProductState) {
         this.productState = productState
         product = productState.product!!
-        presenter = SummaryProductPresenter(localeManager.getLanguage(), product, this, productRepository).apply { addTo(disp) }
+        presenter = SummaryProductPresenter(localeManager.getLanguage(), product, this, productRepository)
 
-        binding.categoriesText.text = SpannableStringBuilder()
-            .bold { append(getString(R.string.txtCategories)) }
+        binding.categoriesText.text = buildSpannedString {
+            bold { append(getString(R.string.txtCategories)) }
+        }
 
-        binding.labelsText.text = SpannableStringBuilder()
-            .bold { append(getString(R.string.txtLabels)) }
+        binding.labelsText.text = buildSpannedString {
+            bold { append(getString(R.string.txtLabels)) }
+        }
 
-        binding.textAdditiveProduct.text = SpannableStringBuilder()
-            .bold { append(getString(R.string.txtAdditives)) }
+        binding.textAdditiveProduct.text = buildSpannedString {
+            bold { append(getString(R.string.txtAdditives)) }
+        }
 
         // Refresh visibility of UI components
         binding.textBrandProduct.visibility = View.VISIBLE
@@ -297,12 +301,14 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
 
         // Checks the product states_tags to determine which prompt to be shown
         refreshStatesTagsPrompt()
-        presenter.loadAllergens(null)
-        presenter.loadCategories()
-        presenter.loadLabels()
-        presenter.loadProductQuestion()
-        presenter.loadAdditives()
-        presenter.loadAnalysisTags()
+        lifecycleScope.launchWhenResumed {
+            presenter.loadAllergens()
+            presenter.loadCategories()
+            presenter.loadLabels()
+            presenter.loadProductQuestion()
+            presenter.loadAdditives()
+            presenter.loadAnalysisTags()
+        }
 
         val langCode = localeManager.getLanguage()
         val imageUrl = product.getImageUrl(langCode)
@@ -348,24 +354,26 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
 
         if (product.embTags.isNotEmpty() && product.embTags.toString().trim { it <= ' ' } != "[]") {
             binding.embText.movementMethod = LinkMovementMethod.getInstance()
-            binding.embText.text = SpannableStringBuilder()
-                .bold { append(getString(R.string.txtEMB)) }
-            binding.embText.append(" ")
 
-            val embTags = product.embTags.toString()
-                .removeSurrounding("[", "]")
-                .split(", ")
+            binding.embText.text = buildSpannedString {
+                bold { append(getString(R.string.txtEMB)) }
+                append(" ")
 
-            embTags.withIndex().forEach { (i, embTag) ->
-                if (i > 0) binding.embText.append(", ")
 
-                binding.embText.append(
-                    getSearchLinkText(
-                        getEmbCode(embTag).trim { it <= ' ' },
-                        SearchType.EMB,
-                        requireActivity()
-                    )
-                )
+                product.embTags.toString()
+                    .removeSurrounding("[", "]")
+                    .split(", ")
+                    .map {
+                        getSearchLinkText(
+                            getEmbCode(it).trim { it <= ' ' },
+                            SearchType.EMB,
+                            requireActivity()
+                        )
+                    }.forEachIndexed { i, embTag ->
+                        if (i > 0) append(", ")
+
+                        append(embTag)
+                    }
             }
         } else {
             binding.embText.visibility = View.GONE
@@ -400,40 +408,40 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
                 nutritionScoreUri = Uri.parse(getString(R.string.nutriscore_uri))
                 customTabActivityHelper.mayLaunchUrl(nutritionScoreUri, null, null)
                 binding.cvNutritionLights.visibility = View.VISIBLE
-                val fatNutriment = nutriments[Nutriments.FAT]
+                val fatNutriment = nutriments[Nutriment.FAT]
                 if (fat != null && fatNutriment != null) {
                     levelItems += NutrientLevelItem(
                         getString(R.string.txtFat),
-                        fatNutriment.displayStringFor100g,
+                        fatNutriment.getPer100gDisplayString(),
                         fat.getLocalize(requireContext()),
                         fat.getImgRes(),
                     )
                 }
-                val saturatedFatNutriment = nutriments[Nutriments.SATURATED_FAT]
+                val saturatedFatNutriment = nutriments[Nutriment.SATURATED_FAT]
                 if (saturatedFat != null && saturatedFatNutriment != null) {
                     val saturatedFatLocalize = saturatedFat.getLocalize(requireContext())
                     levelItems += NutrientLevelItem(
                         getString(R.string.txtSaturatedFat),
-                        saturatedFatNutriment.displayStringFor100g,
+                        saturatedFatNutriment.getPer100gDisplayString(),
                         saturatedFatLocalize,
                         saturatedFat.getImgRes()
                     )
                 }
-                val sugarsNutriment = nutriments[Nutriments.SUGARS]
+                val sugarsNutriment = nutriments[Nutriment.SUGARS]
                 if (sugars != null && sugarsNutriment != null) {
                     levelItems += NutrientLevelItem(
                         getString(R.string.txtSugars),
-                        sugarsNutriment.displayStringFor100g,
+                        sugarsNutriment.getPer100gDisplayString(),
                         sugars.getLocalize(requireContext()),
                         sugars.getImgRes(),
                     )
                 }
-                val saltNutriment = nutriments[Nutriments.SALT]
+                val saltNutriment = nutriments[Nutriment.SALT]
                 if (salt != null && saltNutriment != null) {
                     val saltLocalize = salt.getLocalize(requireContext())
                     levelItems += NutrientLevelItem(
                         getString(R.string.txtSalt),
-                        saltNutriment.displayStringFor100g,
+                        saltNutriment.getPer100gDisplayString(),
                         saltLocalize,
                         salt.getImgRes(),
                     )
@@ -456,11 +464,11 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
             binding.scoresLayout.visibility = View.GONE
         }
 
-        //to be sure that top of the product view is visible at start
+        // To be sure that top of the product view is visible at start
         binding.textNameProduct.requestFocus()
         binding.textNameProduct.clearFocus()
 
-        //Set refreshing animation to false after all processing is done
+        // Set refreshing animation to false after all processing is done
         super.refreshView(productState)
     }
 
@@ -477,7 +485,10 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         binding.imageGrade.setImageResource(nutriScoreResource)
         binding.imageGrade.setOnClickListener {
             nutritionScoreUri?.let { uri ->
-                val customTabsIntent = CustomTabsHelper.getCustomTabsIntent(requireContext(), customTabActivityHelper.session)
+                val customTabsIntent = CustomTabsHelper.getCustomTabsIntent(
+                    requireContext(),
+                    customTabActivityHelper.session
+                )
                 CustomTabActivityHelper.openCustomTab(requireActivity(), customTabsIntent, uri, WebViewFallback())
             }
         }
@@ -495,7 +506,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     private fun refreshCO2OrEcoscoreIcon() {
         binding.ecoscoreIcon.setImageResource(product.getEcoscoreResource())
         binding.ecoscoreIcon.setOnClickListener {
-            val uri = Uri.parse(getString(R.string.ecoscore_url))
+            val uri = getString(R.string.ecoscore_url).toUri()
             val customTabsIntent = CustomTabsHelper.getCustomTabsIntent(requireContext(), customTabActivityHelper.session)
             CustomTabActivityHelper.openCustomTab(requireActivity(), customTabsIntent, uri, WebViewFallback())
         }
@@ -506,30 +517,37 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         // remove the existing childviews on chip group if any
         binding.listChips.removeAllViews()
 
-        val asyncSessionList = daoSession.startAsyncSession()
-        asyncSessionList.queryList(
-            daoSession.listedProductDao.queryBuilder()
-                .where(ListedProductDao.Properties.Barcode.eq(product.code)).build()
-        )
+        lifecycleScope.launch {
+            val lists = daoSession.listedProductDao.list {
+                where(ListedProductDao.Properties.Barcode.eq(product.code))
+            }
 
-        asyncSessionList.listenerMainThread = AsyncOperationListener { operation ->
-            (operation.result as List<ListedProduct>).forEach { list ->
-                val chip = Chip(context)
-                chip.text = list.listName
-
-                // set a random color to the chip's background, we want a dark background as our text color is white so we will limit our rgb to 180
-                val chipColor: Int = Color.rgb(Random.nextInt(180), Random.nextInt(180), Random.nextInt(180))
-                chip.chipBackgroundColor = ColorStateList.valueOf(chipColor)
-                chip.setTextColor(Color.WHITE)
-
-                // open list when the user clicks on chip
-                chip.setOnClickListener {
-                    ProductListActivity.start(requireContext(), list.listId, list.listName)
-                }
-                binding.listChips.addView(chip)
+            if (lists.isNotEmpty()) {
                 binding.actionAddToListButtonLayout.background = ResourcesCompat.getDrawable(resources, R.color.grey_300, null)
                 binding.actionButtonsLayout.updatePadding(bottom = 0, top = 0)
                 binding.listChips.visibility = View.VISIBLE
+            }
+            lists.forEach { list ->
+                // set a random color to the chip's background, we want a dark background as our text color is white so we will limit our rgb to 180
+                val chipColor = Color.rgb(
+                    Random.nextInt(180),
+                    Random.nextInt(180),
+                    Random.nextInt(180)
+                )
+
+                val chip = Chip(context).apply {
+                    text = list.listName
+
+                    chipBackgroundColor = ColorStateList.valueOf(chipColor)
+                    setTextColor(Color.WHITE)
+
+                    // open list when the user clicks on chip
+                    setOnClickListener {
+                        ProductListActivity.start(requireContext(), list.listId, list.listName)
+                    }
+                }
+
+                binding.listChips.addView(chip)
             }
         }
     }
@@ -537,9 +555,9 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     private fun refreshStatesTagsPrompt() {
         //checks the product states_tags to determine which prompt to be shown
         val statesTags = product.statesTags
-        showCategoryPrompt = statesTags.contains("en:categories-to-be-completed") && !hasCategoryInsightQuestion
-        showNutrientPrompt = statesTags.contains("en:nutrition-facts-to-be-completed") && product.noNutritionData != "on"
-        showEcoScorePrompt = statesTags.contains("en:categories-completed") && (product.ecoscore.isNullOrEmpty() || product.ecoscore.equals("unknown", true))
+        showCategoryPrompt = "en:categories-to-be-completed" in statesTags && !hasCategoryInsightQuestion
+        showNutrientPrompt = "en:nutrition-facts-to-be-completed" in statesTags && product.noNutritionData != "on"
+        showEcoScorePrompt = "en:categories-completed" in statesTags && (product.ecoscore.isNullOrEmpty() || product.ecoscore.equals("unknown", true))
 
         Log.d(LOG_TAG, "Show category prompt: $showCategoryPrompt")
         Log.d(LOG_TAG, "Show nutrient prompt: $showNutrientPrompt")
@@ -552,15 +570,12 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         binding.addNutriscorePrompt.visibility = View.VISIBLE
         when {
             showNutrientPrompt && showCategoryPrompt -> {
-                // showNutrientPrompt and showCategoryPrompt true
                 binding.addNutriscorePrompt.text = getString(R.string.add_nutrient_category_prompt_text)
             }
             showNutrientPrompt -> {
-                // showNutrientPrompt true
                 binding.addNutriscorePrompt.text = getString(R.string.add_nutrient_prompt_text)
             }
             showCategoryPrompt -> {
-                // showCategoryPrompt true
                 binding.addNutriscorePrompt.text = getString(R.string.add_category_prompt_text)
             }
             else -> binding.addNutriscorePrompt.visibility = View.GONE
@@ -568,69 +583,86 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
 
     }
 
-    override fun showAdditives(additives: List<AdditiveName>) {
-        showAdditives(additives, binding.textAdditiveProduct, wikidataClient, this, disp)
-    }
 
-    override fun showAdditivesState(state: ProductInfoState) {
+    override fun showAdditivesState(state: ProductInfoState<List<AdditiveName>>) {
         requireActivity().runOnUiThread {
             when (state) {
-                ProductInfoState.LOADING -> {
+                is ProductInfoState.Loading -> {
                     binding.textAdditiveProduct.append(getString(R.string.txtLoading))
                     binding.textAdditiveProduct.visibility = View.VISIBLE
                 }
-                ProductInfoState.EMPTY -> binding.textAdditiveProduct.visibility = View.GONE
+                is ProductInfoState.Empty -> binding.textAdditiveProduct.visibility = View.GONE
+                is ProductInfoState.Data -> {
+                    showAdditives(state.data, binding.textAdditiveProduct, wikidataClient, this)
+                }
             }
         }
     }
 
-    override fun showAnalysisTags(analysisTags: List<AnalysisTagConfig>) {
-        requireActivity().runOnUiThread {
-            binding.analysisContainer.visibility = View.VISIBLE
-            val adapter = IngredientAnalysisTagsAdapter(requireContext(), analysisTags, picasso, sharedPreferences)
-            adapter.setOnItemClickListener { view, _ ->
-                val fragment = IngredientsWithTagDialogFragment
-                    .newInstance(product, view.getTag(R.id.analysis_tag_config) as AnalysisTagConfig)
-                fragment.show(childFragmentManager, "fragment_ingredients_with_tag")
-                fragment.onDismissListener = { adapter.filterVisibleTags() }
+    override suspend fun showAnalysisTags(state: ProductInfoState<List<AnalysisTagConfig>>) {
+        withContext(Main) {
+            when (state) {
+                is ProductInfoState.Data -> {
+                    val analysisTags = state.data
+
+                    binding.analysisContainer.visibility = View.VISIBLE
+
+                    binding.analysisTags.adapter = IngredientAnalysisTagsAdapter(
+                        requireContext(),
+                        analysisTags,
+                        picasso,
+                        sharedPreferences
+                    ).apply adapter@{
+                        setOnItemClickListener { view, _ ->
+                            IngredientsWithTagDialogFragment.newInstance(
+                                product,
+                                view.getTag(R.id.analysis_tag_config) as AnalysisTagConfig
+                            ).run {
+                                onDismissListener = { filterVisibleTags() }
+                                show(childFragmentManager, "fragment_ingredients_with_tag")
+                            }
+                        }
+                    }
+                }
+                ProductInfoState.Empty -> {
+                    // TODO:
+                }
+                ProductInfoState.Loading -> {
+                    // TODO:
+                }
             }
-            binding.analysisTags.adapter = adapter
+
         }
     }
 
     override fun showAllergens(allergens: List<AllergenName>) {
         val data = AllergenHelper.computeUserAllergen(product, allergens)
-        if (data.isEmpty()) {
-            return
-        }
+        if (data.isEmpty()) return
+
         if (data.incomplete) {
             binding.productAllergenAlertText.setText(R.string.product_incomplete_message)
             binding.productAllergenAlertLayout.visibility = View.VISIBLE
             return
         }
-        binding.productAllergenAlertText.text = StringBuilder(resources.getString(R.string.product_allergen_prompt))
-            .append("\n").append(data.allergens.joinToString(", "))
+        binding.productAllergenAlertText.text = buildSpannedString {
+            append(getString(R.string.product_allergen_prompt))
+            append("\n")
+            append(data.allergens.joinToString(", "))
+        }
 
         binding.productAllergenAlertLayout.visibility = View.VISIBLE
     }
 
-    override fun showCategories(categories: List<CategoryName>) {
-        if (categories.isEmpty()) {
-            binding.categoriesLayout.visibility = View.GONE
-        }
-        val categoryProductHelper = CategoryProductHelper(binding.categoriesText, categories, this, wikidataClient, disp)
-        categoryProductHelper.showCategories()
-        if (categoryProductHelper.containsAlcohol) {
-            categoryProductHelper.showAlcoholAlert(binding.textCategoryAlcoholAlert)
-        }
-    }
 
-    override fun showProductQuestion(question: Question) {
-        if (isRemoving) return
+    override suspend fun showProductQuestion(question: Question) = withContext(Main) {
 
         if (!question.isEmpty()) {
             productQuestion = question
-            binding.productQuestionText.text = "${question.questionText}\n${question.value}"
+            binding.productQuestionText.text = buildSpannedString {
+                append(question.questionText)
+                append("\n")
+                append(question.value)
+            }
             binding.productQuestionLayout.visibility = View.VISIBLE
             hasCategoryInsightQuestion = question.insightType == "category"
         } else {
@@ -644,53 +676,51 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         }
     }
 
-    private fun onProductQuestionClick() {
-        productQuestion?.let {
-            QuestionDialog(requireActivity()).run {
-                backgroundColor = R.color.colorPrimaryDark
-                question = productQuestion!!.questionText
-                value = productQuestion!!.value
-                onPositiveFeedback = {
-                    //init POST request
-                    sendProductInsights(productQuestion!!.insightId, AnnotationAnswer.POSITIVE)
-                    it.dismiss()
-                }
+    private fun onProductQuestionClick(productQuestion: Question) {
+        showQuestionDialog(requireContext()) {
+            backgroundColor = R.color.colorPrimaryDark
+            question = productQuestion.questionText
+            value = productQuestion.value
 
-                onNegativeFeedback = {
-                    sendProductInsights(productQuestion!!.insightId, AnnotationAnswer.NEGATIVE)
-                    it.dismiss()
-                }
 
-                onAmbiguityFeedback = {
-                    sendProductInsights(productQuestion!!.insightId, AnnotationAnswer.AMBIGUITY)
-                    it.dismiss()
-                }
-
-                onCancelListener = { it.dismiss() }
-                show()
+            onPositiveFeedback = {
+                sendProductInsights(productQuestion.insightId, AnnotationAnswer.POSITIVE)
+                it.dismiss()
             }
+
+            onNegativeFeedback = {
+                sendProductInsights(productQuestion.insightId, AnnotationAnswer.NEGATIVE)
+                it.dismiss()
+            }
+
+            onAmbiguityFeedback = {
+                sendProductInsights(productQuestion.insightId, AnnotationAnswer.AMBIGUITY)
+                it.dismiss()
+            }
+
+            onCancelListener = { it.dismiss() }
+
         }
+
     }
 
     private fun sendProductInsights(insightId: String?, annotation: AnnotationAnswer?) {
         this.insightId = insightId
         this.annotation = annotation
+
         if (requireActivity().isUserSet()) {
             processInsight()
         } else {
             matomoAnalytics.trackEvent(AnalyticsEvent.RobotoffLoginPrompt)
-            MaterialDialog.Builder(requireActivity()).run {
-                title(getString(R.string.sign_in_to_answer))
-                positiveText(getString(R.string.sign_in_or_register))
-                onPositive { dialog, _ ->
+
+            MaterialAlertDialogBuilder(requireActivity())
+                .setTitle(getString(R.string.sign_in_to_answer))
+                .setPositiveButton(getString(R.string.sign_in_or_register)) { dialog, _ ->
                     loginThenProcessInsight.launch(Unit)
                     dialog.dismiss()
                 }
-                neutralText(R.string.dialog_cancel)
-                onNeutral { dialog, _ -> dialog.dismiss() }
-                show()
-            }
-
+                .setNegativeButton(R.string.dialog_cancel) { d, _ -> d.dismiss() }
+                .show()
         }
     }
 
@@ -698,7 +728,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         val insightId = this.insightId ?: error("Property 'insightId' not set.")
         val annotation = this.annotation ?: error("Property 'annotation' not set.")
 
-        presenter.annotateInsight(insightId, annotation)
+        lifecycleScope.launch { presenter.annotateInsight(insightId, annotation) }
 
         Log.d(LOG_TAG, "Annotation $annotation received for insight $insightId")
         binding.productQuestionLayout.visibility = View.GONE
@@ -707,40 +737,34 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
 
     override fun showAnnotatedInsightToast(annotationResponse: AnnotationResponse) {
         if (annotationResponse.status == "updated" && activity != null) {
-            Snackbar.make(binding.root, R.string.product_question_submit_message, BaseTransientBottomBar.LENGTH_SHORT).show()
+            Snackbar.make(binding.root, R.string.product_question_submit_message, LENGTH_SHORT).show()
         }
     }
 
-    override fun showLabels(labelNames: List<LabelName>) {
-        binding.labelsText.text = SpannableStringBuilder()
-            .bold { append(getString(R.string.txtLabels)) }
-        binding.labelsText.isClickable = true
-        binding.labelsText.movementMethod = LinkMovementMethod.getInstance()
-        binding.labelsText.append(" ")
-        labelNames.dropLast(1).forEach {
-            binding.labelsText.append(getLabelTag(it))
-            binding.labelsText.append(", ")
-        }
-        binding.labelsText.append(getLabelTag(labelNames.last()))
-    }
-
-    override fun showCategoriesState(state: ProductInfoState) = requireActivity().runOnUiThread {
-        when (state) {
-            ProductInfoState.LOADING -> if (context != null) {
-                binding.categoriesText.append(getString(R.string.txtLoading))
-            }
-            ProductInfoState.EMPTY -> {
-                binding.categoriesText.visibility = View.GONE
-                binding.categoriesIcon.visibility = View.GONE
-            }
-        }
-    }
-
-    override fun showLabelsState(state: ProductInfoState) {
+    override fun showLabelsState(state: ProductInfoState<List<LabelName>>) {
         requireActivity().runOnUiThread {
             when (state) {
-                ProductInfoState.LOADING -> binding.labelsText.append(getString(R.string.txtLoading))
-                ProductInfoState.EMPTY -> {
+                is ProductInfoState.Data -> {
+                    binding.labelsText.isClickable = true
+                    binding.labelsText.movementMethod = LinkMovementMethod.getInstance()
+
+                    binding.labelsText.text = buildSpannedString {
+                        bold { append(getString(R.string.txtLabels)) }
+                        state.data.map(::getLabelTag).forEachIndexed { i, el ->
+                            append(el)
+                            if (i != state.data.size) append(", ")
+                        }
+
+                    }
+                }
+                is ProductInfoState.Loading -> {
+                    binding.labelsText.text = buildSpannedString {
+                        bold { append(getString(R.string.txtLabels)) }
+                        append(getString(R.string.txtLoading))
+                    }
+                }
+
+                is ProductInfoState.Empty -> {
                     binding.labelsText.visibility = View.GONE
                     binding.labelsIcon.visibility = View.GONE
                 }
@@ -748,33 +772,64 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         }
     }
 
-    private fun getEmbUrl(embTag: String): String? {
-        if (mTagDao.queryBuilder().where(TagDao.Properties.Id.eq(embTag)).list().isEmpty()) return null
-        return mTagDao.queryBuilder().where(TagDao.Properties.Id.eq(embTag)).unique().url
+    override fun showCategoriesState(state: ProductInfoState<List<CategoryName>>) {
+        requireActivity().runOnUiThread {
+            when (state) {
+                is ProductInfoState.Loading -> {
+                    binding.categoriesText.text = buildSpannedString {
+                        bold { append(getString(R.string.txtCategories)) }
+                        append(getString(R.string.txtLoading))
+                    }
+                }
+                is ProductInfoState.Empty -> {
+                    binding.categoriesText.visibility = View.GONE
+                    binding.categoriesIcon.visibility = View.GONE
+                }
+                is ProductInfoState.Data -> {
+                    val categories = state.data
+                    if (categories.isEmpty()) {
+                        binding.categoriesLayout.visibility = View.GONE
+                        return@runOnUiThread
+                    }
+                    CategoryProductHelper.showCategories(
+                        this,
+                        binding.categoriesText,
+                        binding.textCategoryAlcoholAlert,
+                        categories,
+                        wikidataClient,
+                    )
+                }
+            }
+        }
+    }
+
+    private suspend fun getEmbUrl(embTag: String): String? = withContext(IO) {
+        if (mTagDao.queryBuilder().where(TagDao.Properties.Id.eq(embTag)).list().isEmpty()) null
+        else mTagDao.queryBuilder().where(TagDao.Properties.Id.eq(embTag)).unique().url
     }
 
     private fun getEmbCode(embTag: String) =
         mTagDao.queryBuilder().where(TagDao.Properties.Id.eq(embTag)).unique()?.name ?: embTag
 
     private fun getLabelTag(label: LabelName): CharSequence {
-        val spannableStringBuilder = SpannableStringBuilder()
         val clickableSpan = object : ClickableSpan() {
             override fun onClick(view: View) {
                 if (label.isWikiDataIdPresent) {
-                    wikidataClient.doSomeThing(label.wikiDataId).subscribe { result ->
+                    lifecycleScope.launch {
+                        val result = wikidataClient.getEntityData(label.wikiDataId)
                         val activity = activity
                         if (activity?.isFinishing == false) {
                             showBottomSheet(result, label, activity.supportFragmentManager)
                         }
-                    }.addTo(disp)
+                    }
                 } else {
                     ProductSearchActivity.start(requireContext(), SearchType.LABEL, label.labelTag, label.name)
                 }
             }
         }
-        spannableStringBuilder.append(label.name)
-        spannableStringBuilder.setSpan(clickableSpan, 0, spannableStringBuilder.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-        return spannableStringBuilder
+        return buildSpannedString {
+            inSpans(clickableSpan) { append(label.name) }
+        }
     }
 
 
@@ -788,13 +843,13 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         if (requireActivity().isUserSet()) {
             editProduct()
         } else {
-            buildSignInDialog(requireActivity())
-                .onPositive { d, _ ->
+            buildSignInDialog(requireActivity(),
+                onPositive = { d, _ ->
                     d.dismiss()
                     loginThenEditLauncher.launch(null)
-                }
-                .onNegative { d, _ -> d.dismiss() }
-                .show()
+                },
+                onNegative = { d, _ -> d.dismiss() }
+            ).show()
         }
     }
 
@@ -803,12 +858,14 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         if (requireActivity().isUserSet()) {
             editProductNutriscore()
         } else {
-            buildSignInDialog(requireActivity())
-                .onPositive { d, _ ->
+            buildSignInDialog(
+                requireActivity(),
+                onPositive = { d, _ ->
                     d.dismiss()
                     loginThenEditNutrition.launch(null)
-                }
-                .onNegative { d, _ -> d.dismiss() }
+                },
+                onNegative = { d, _ -> d.dismiss() }
+            ).show()
         }
     }
 
@@ -842,37 +899,41 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     private fun editProduct() = editProductLauncher.launch(product)
 
     private fun onBookmarkProductButtonClick() {
-        val activity: Activity = requireActivity()
+        val context = requireContext()
+
         // TODO: 19/06/2021 remove runBlocking
-        val productLists = runBlocking { daoSession.getProductListsDaoWithDefaultList(activity).loadAll() }
-        val productBarcode = product.code
-        val productName = product.productName
-        val imageUrl = product.getImageSmallUrl(localeManager.getLanguage())
-        val productDetails = product.getProductBrandsQuantityDetails()
-        val addToListDialog = MaterialDialog.Builder(activity)
-            .title(R.string.add_to_product_lists)
-            .customView(R.layout.dialog_add_to_list, true)
-            .build().apply { show() }
-        val dialogView = addToListDialog.customView ?: return
+        val productLists = runBlocking { daoSession.getProductListsDaoWithDefaultList(context).loadAll() }
+
+        val dialog = MaterialAlertDialogBuilder(context)
+            .setTitle(R.string.add_to_product_lists)
+            .setView(R.layout.dialog_add_to_list)
+            .show()
 
         // Set recycler view
-        val addToListRecyclerView: RecyclerView = dialogView.findViewById(R.id.rv_dialogAddToList)
-        val addToListAdapter = DialogAddToListAdapter(
-            activity,
-            productLists,
-            productBarcode,
-            productName.orEmpty(),
-            productDetails,
-            imageUrl.orEmpty(),
-            daoSession
-        )
-        addToListRecyclerView.layoutManager = LinearLayoutManager(activity)
-        addToListRecyclerView.adapter = addToListAdapter
+        val addToListRecyclerView = dialog.findViewById<RecyclerView>(R.id.rv_dialogAddToList)!!
+        addToListRecyclerView.layoutManager = LinearLayoutManager(context)
+
+        addToListRecyclerView.adapter = DialogAddToListAdapter(
+            context,
+            productLists.filter { list -> product.code !in list.products.map { it.barcode } }
+        ) { list ->
+            val product = ListedProduct().also {
+                it.barcode = product.code
+                it.listId = list.id
+                it.listName = list.listName
+                it.productName = product.productName
+                it.productDetails = product.getProductBrandsQuantityDetails()
+                it.imageUrl = product.getImageSmallUrl(localeManager.getLanguage())
+            }
+            daoSession.listedProductDao.insertOrReplace(product)
+            dialog.dismiss()
+            onRefresh()
+        }
 
         // Add listener to text view
-        val addToNewList = dialogView.findViewById<TextView>(R.id.tvAddToNewList)
+        val addToNewList = dialog.findViewById<TextView>(R.id.tvAddToNewList)!!
         addToNewList.setOnClickListener {
-            activity.startActivity(Intent(activity, ProductListsActivity::class.java).apply {
+            context.startActivity(Intent(context, ProductListsActivity::class.java).apply {
                 putExtra("product", product)
             })
         }
@@ -885,19 +946,19 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     }
 
     private fun openFrontImageFullscreen() {
-        val url = mUrlImage
-        if (url != null) {
-            FullScreenActivityOpener.openForUrl(
-                this,
-                client,
-                product,
-                ProductImageField.FRONT,
-                url,
-                binding.imageViewFront,
-                localeManager.getLanguage()
-            )
-        } else {
-            newFrontImage()
+        when (val url = mUrlImage) {
+            null -> newFrontImage()
+            else -> {
+                FullScreenActivityOpener.openForUrl(
+                    this,
+                    client,
+                    product,
+                    ProductImageField.FRONT,
+                    url,
+                    binding.imageViewFront,
+                    localeManager.getLanguage()
+                )
+            }
         }
     }
 
@@ -923,7 +984,6 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     override fun doOnPhotosPermissionGranted() =
         if (sendOther) takeMorePicture()
         else newFrontImage()
-
 
 
     fun resetScroll() {

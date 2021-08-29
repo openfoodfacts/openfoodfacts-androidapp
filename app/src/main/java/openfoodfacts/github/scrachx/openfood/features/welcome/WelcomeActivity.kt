@@ -17,26 +17,30 @@ package openfoodfacts.github.scrachx.openfood.features.welcome
 
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.ActivityInfo
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
-import android.view.View
 import android.view.Window
 import android.view.WindowManager
 import android.widget.TextView
-import androidx.core.text.HtmlCompat
+import androidx.core.content.edit
+import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
-import androidx.viewpager.widget.ViewPager
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 import dagger.hilt.android.AndroidEntryPoint
 import openfoodfacts.github.scrachx.openfood.R
+import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityWelcomeBinding
 import openfoodfacts.github.scrachx.openfood.features.MainActivity
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.utils.PrefManager
+import openfoodfacts.github.scrachx.openfood.utils.darken
+import openfoodfacts.github.scrachx.openfood.utils.lighten
+import javax.inject.Inject
 
 /**
  * This is the on boarding activity shown on first-run.
@@ -52,48 +56,44 @@ class WelcomeActivity : BaseActivity() {
     private var _binding: ActivityWelcomeBinding? = null
     private val binding get() = _binding!!
 
-    private val layouts = intArrayOf(
-            R.layout.welcome_slide1,
-            R.layout.welcome_slide2,
-            R.layout.welcome_slide3,
-            R.layout.welcome_slide4
-    )
     private lateinit var prefManager: PrefManager
-    private var lastPage = false
+
+    private val screens = WelcomeScreen.values()
+
+    @Inject
+    lateinit var matomoAnalytics: MatomoAnalytics
+
+    @Inject
+    lateinit var sharedPreferences: SharedPreferences
 
     private val viewPagerPageChangeListener = object : OnPageChangeListener {
-        private var currentState = 0
+
+        override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) = Unit
+        override fun onPageScrollStateChanged(state: Int) = Unit
+
         override fun onPageSelected(position: Int) {
-            refreshBottomDots(position)
-            if (position == layouts.lastIndex) {
-                binding.btnNext.text = getString(R.string.start)
-                binding.btnSkip.visibility = View.GONE
-                lastPage = true
-            } else {
-                binding.btnNext.text = getString(R.string.next)
-                binding.btnSkip.visibility = View.VISIBLE
-                lastPage = false
-            }
-        }
+            refreshBottomBar(position)
 
-        /**
-         * If user is on the last page and tries to swipe towards the next page on right then the value of
-         * positionOffset returned is always 0. On the other hand if the user tries to swipe towards the
-         * previous page on the left then the value of positionOffset returned is 0.999 and decreases as the
-         * user continues to swipe in the same direction. Also whenever a user tries to swipe in any
-         * direction the state is changed from idle to dragging and onPageScrollStateChanged is called.
-         * Therefore if the user is on the last page and the value of positionOffset is 0 and state is
-         * dragging it means that the user is trying to go to the next page on right from the last page and
-         * hence MainActivity is started in this case.
-         */
-        override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
-            if (lastPage && positionOffset == 0f && currentState == ViewPager.SCROLL_STATE_DRAGGING) {
-                launchHomeScreen()
-            }
-        }
+            when (WelcomeScreen[position]) {
+                WelcomeScreen.MATOMO -> {
+                    binding.btnNext.setText(R.string.preference_analytics_bottom_sheet_grant_button)
+                    binding.btnSkip.setText(R.string.preference_analytics_bottom_sheet_decline_button)
 
-        override fun onPageScrollStateChanged(state: Int) {
-            currentState = state
+                    binding.btnNext.setTextColor(ResourcesCompat.getColor(resources, android.R.color.black, theme))
+                    binding.btnSkip.setTextColor(ResourcesCompat.getColor(resources, android.R.color.black, theme))
+
+                    binding.btnNext.setOnClickListener { saveThenLaunchHome(true) }
+                    binding.btnSkip.setOnClickListener { saveThenLaunchHome(false) }
+                }
+                else -> {
+                    binding.btnNext.setTextColor(ResourcesCompat.getColor(resources, android.R.color.white, theme))
+                    binding.btnSkip.setTextColor(ResourcesCompat.getColor(resources, android.R.color.white, theme))
+
+                    binding.btnNext.setText(R.string.next)
+                    binding.btnSkip.setText(R.string.skip)
+                    setOnClicks()
+                }
+            }
         }
     }
 
@@ -103,31 +103,26 @@ class WelcomeActivity : BaseActivity() {
         if (resources.getBoolean(R.bool.portrait_only)) {
             requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         }
+
         _binding = ActivityWelcomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         prefManager = PrefManager(this)
         if (!prefManager.isFirstTimeLaunch) {
-            launchHomeScreen()
+            launchHome()
             finish()
         }
 
         WindowCompat.setDecorFitsSystemWindows(window, false)
         WindowInsetsControllerCompat(window, binding.root).hide(WindowInsetsCompat.Type.statusBars())
 
-        refreshBottomDots(0)
+        refreshBottomBar(0)
         changeStatusBarColor()
 
-        binding.viewPager.adapter = WelcomePageAdapter(layoutInflater, layouts)
+        binding.viewPager.adapter = WelcomePageAdapter(layoutInflater)
         binding.viewPager.addOnPageChangeListener(viewPagerPageChangeListener)
-        binding.btnSkip.setOnClickListener { launchHomeScreen() }
 
-        binding.btnNext.setOnClickListener {
-            if (nextItem < layouts.size) {
-                binding.viewPager.currentItem = nextItem
-            } else {
-                launchHomeScreen()
-            }
-        }
+        setOnClicks()
     }
 
     override fun onDestroy() {
@@ -135,26 +130,41 @@ class WelcomeActivity : BaseActivity() {
         super.onDestroy()
     }
 
-    private fun refreshBottomDots(currentPage: Int) {
-        val colorsActive = resources.getIntArray(R.array.array_dot_active)
-        val colorsInactive = resources.getIntArray(R.array.array_dot_inactive)
+    private fun setOnClicks() {
+        binding.btnSkip.setOnClickListener { binding.viewPager.currentItem = screens.size - 1 }
+        binding.btnNext.setOnClickListener { binding.viewPager.currentItem = nextItem }
+    }
+
+    private fun saveThenLaunchHome(grant: Boolean) {
+        saveAnalyticsReportingPref(grant)
+        matomoAnalytics.setEnabled(grant)
+        launchHome()
+    }
+
+    private fun saveAnalyticsReportingPref(value: Boolean) {
+        sharedPreferences.edit {
+            putBoolean(getString(R.string.pref_analytics_reporting_key), value)
+        }
+    }
+
+    private fun launchHome() {
+        prefManager.isFirstTimeLaunch = false
+        MainActivity.start(this)
+        finish()
+    }
+
+    private fun refreshBottomBar(currentPage: Int) {
 
         binding.layoutDots.removeAllViews()
-        val dots = (1..layouts.size).map {
+        val dots = (0..screens.lastIndex).map {
             TextView(this).apply {
-                text = HtmlCompat.fromHtml("&#8226;", HtmlCompat.FROM_HTML_MODE_COMPACT)
+                text = "\u2022"
                 textSize = 35f
-                setTextColor(colorsInactive[currentPage])
+                setTextColor(WelcomeScreen[currentPage].color.lighten(0.85f))
                 binding.layoutDots.addView(this)
             }
         }
-        dots[currentPage].setTextColor(colorsActive[currentPage])
-    }
-
-    private fun launchHomeScreen() {
-        prefManager.isFirstTimeLaunch = false
-        startActivity(Intent(this@WelcomeActivity, MainActivity::class.java))
-        finish()
+        dots[currentPage].setTextColor(WelcomeScreen[currentPage].color.darken(0.1f))
     }
 
     private val nextItem get() = binding.viewPager.currentItem + 1

@@ -3,6 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <import type="openfoodfacts.github.scrachx.openfood.features.product.edit.overview.EditOverviewViewModel" />
+
+        <variable
+            name="viewModel"
+            type="EditOverviewViewModel" />
+    </data>
+
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
@@ -453,7 +462,7 @@
                     app:chipHeight="30dp"
                     app:chipTextColor="@color/grey_50"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"/>
+                    app:layout_constraintStart_toStartOf="parent" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -563,7 +572,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/trace_hint">
 
-            <EditText
+                <EditText
                     android:id="@+id/link"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"

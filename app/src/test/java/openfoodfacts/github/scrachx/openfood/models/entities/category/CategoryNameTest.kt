@@ -17,7 +17,7 @@ class CategoryNameTest {
 
     @Test
     fun getWikiDataIdWithNullWikiDataId_returnsStringNull() {
-        assertThat(mCategoryName.wikiDataId).isEqualTo(null)
+        assertThat(mCategoryName.wikiDataId).isNull()
     }
 
     @Test
@@ -28,7 +28,7 @@ class CategoryNameTest {
     }
 
     @Test
-    fun getWikiDataIdWithoutQuote_returnsWholeWikiDataId(): Unit {
+    fun getWikiDataIdWithoutQuote_returnsWholeWikiDataId() {
         val fakeWikiDataId = "ThisOneIncludesenButNotAQuote"
         mCategoryName.wikiDataId = fakeWikiDataId
         assertThat(mCategoryName.wikiDataId).isEqualTo(fakeWikiDataId)

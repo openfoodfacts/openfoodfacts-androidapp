@@ -20,7 +20,6 @@ import android.app.SearchManager
 import android.content.*
 import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
-import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
@@ -36,18 +35,18 @@ import android.widget.SearchView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.browser.customtabs.CustomTabsIntent
-import androidx.core.app.ActivityCompat
+import androidx.core.app.ActivityCompat.shouldShowRequestPermissionRationale
 import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.checkSelfPermission
 import androidx.core.content.edit
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commit
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.afollestad.materialdialogs.MaterialDialog
-import com.google.android.material.snackbar.BaseTransientBottomBar
-import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.zxing.*
 import com.google.zxing.common.HybridBinarizer
 import com.mikepenz.iconics.typeface.library.googlematerial.GoogleMaterial
@@ -60,12 +59,12 @@ import com.mikepenz.materialdrawer.model.*
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem
 import com.mikepenz.materialdrawer.model.interfaces.IProfile
 import dagger.hilt.android.AndroidEntryPoint
-import io.reactivex.Maybe
-import io.reactivex.Observable
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.rxkotlin.addTo
-import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.rx2.await
+import kotlinx.coroutines.withContext
 import openfoodfacts.github.scrachx.openfood.AppFlavors
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
@@ -83,19 +82,17 @@ import openfoodfacts.github.scrachx.openfood.features.allergensalert.AllergensAl
 import openfoodfacts.github.scrachx.openfood.features.categories.activity.CategoryActivity
 import openfoodfacts.github.scrachx.openfood.features.changelog.ChangelogDialog
 import openfoodfacts.github.scrachx.openfood.features.compare.ProductCompareActivity
-import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.installBottomNavigation
-import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.selectNavigationItem
 import openfoodfacts.github.scrachx.openfood.features.login.LoginActivity
 import openfoodfacts.github.scrachx.openfood.features.login.LoginActivity.Companion.LoginContract
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity
 import openfoodfacts.github.scrachx.openfood.features.productlists.ProductListsActivity
-import openfoodfacts.github.scrachx.openfood.features.scan.ContinuousScanActivity
 import openfoodfacts.github.scrachx.openfood.features.scanhistory.ScanHistoryActivity
-import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivity.Companion.start
 import openfoodfacts.github.scrachx.openfood.features.searchbycode.SearchByCodeFragment
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
 import openfoodfacts.github.scrachx.openfood.jobs.ProductUploaderWorker.Companion.scheduleProductUpload
+import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.installBottomNavigation
+import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.selectNavigationItem
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
@@ -121,14 +118,14 @@ import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Comp
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_SEARCH_BY_CODE
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_USER
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_YOUR_LISTS
-import openfoodfacts.github.scrachx.openfood.utils.Utils.hideKeyboard
-import openfoodfacts.github.scrachx.openfood.utils.Utils.isApplicationInstalled
-import openfoodfacts.github.scrachx.openfood.utils.Utils.isNetworkConnected
 import openfoodfacts.github.scrachx.openfood.utils.Utils.scheduleProductUploadJob
 import java.io.FileNotFoundException
 import java.io.IOException
 import java.util.*
 import javax.inject.Inject
+import kotlin.time.Duration
+import kotlin.time.ExperimentalTime
+import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivity.Companion.start as startSearch
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity(), NavigationDrawerListener {
@@ -165,6 +162,9 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
     private var searchMenuItem: MenuItem? = null
     private var userSettingsURI: Uri? = null
 
+    private var historySyncJob: Job? = null
+
+
     private val loginThenUpdate = registerForActivityResult(LoginContract())
     { isLoggedIn -> if (isLoggedIn) updateConnectedState() }
     private val loginThenOpenContributions = registerForActivityResult(LoginContract())
@@ -179,7 +179,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        hideKeyboard(this)
+        hideKeyboard()
         setSupportActionBar(binding.toolbarInclude.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(false)
         swapToFragment(HomeFragment.newInstance())
@@ -246,8 +246,8 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
             .withHasStableIds(true)
             .withAccountHeader(headerResult) //set the AccountHeader we created earlier for the header
             .withOnDrawerListener(object : Drawer.OnDrawerListener {
-                override fun onDrawerSlide(drawerView: View, slideOffset: Float) = hideKeyboard(this@MainActivity)
-                override fun onDrawerOpened(drawerView: View) = hideKeyboard(this@MainActivity)
+                override fun onDrawerSlide(drawerView: View, slideOffset: Float) = hideKeyboard()
+                override fun onDrawerOpened(drawerView: View) = hideKeyboard()
                 override fun onDrawerClosed(drawerView: View) = Unit
             })
             .addDrawerItems(
@@ -303,13 +303,13 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
                         ITEM_ADDITIVES -> AdditiveListActivity.start(this@MainActivity)
                         ITEM_COMPARE -> ProductCompareActivity.start(this@MainActivity)
                         ITEM_HISTORY -> ScanHistoryActivity.start(this@MainActivity)
-                        ITEM_SCAN -> openScan()
+                        ITEM_SCAN -> checkThenStartScanActivity()
                         ITEM_LOGIN -> loginThenUpdate.launch(Unit)
                         ITEM_ALERT -> newFragment = AllergensAlertFragment.newInstance()
                         ITEM_PREFERENCES -> newFragment = PreferencesFragment.newInstance()
                         ITEM_ABOUT -> CustomTabActivityHelper.openCustomTab(this@MainActivity, customTabsIntent, discoverUri, WebViewFallback())
                         ITEM_CONTRIBUTE -> CustomTabActivityHelper.openCustomTab(this@MainActivity, customTabsIntent, contributeUri, WebViewFallback())
-                        ITEM_INCOMPLETE_PRODUCTS -> start(
+                        ITEM_INCOMPLETE_PRODUCTS -> startSearch(
                             this@MainActivity,
                             SearchType.INCOMPLETE_PRODUCT,
                             ""
@@ -325,7 +325,11 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
                                     Toast.makeText(this@MainActivity, R.string.app_disabled_text, Toast.LENGTH_SHORT).show()
                                     startActivity(Intent().apply {
                                         action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
-                                        data = Uri.fromParts("package", BuildConfig.OFOTHERLINKAPP, null)
+                                        data = Uri.fromParts(
+                                            "package",
+                                            BuildConfig.OFOTHERLINKAPP,
+                                            null
+                                        )
                                     })
                                 }
                             } else {
@@ -345,25 +349,18 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
                             CustomTabActivityHelper.openCustomTab(
                                 this@MainActivity,
                                 CustomTabsIntent.Builder().build(),
-                                Uri.parse(getString(R.string.advanced_search_url)),
+                                getString(R.string.advanced_search_url).toUri(),
                                 WebViewFallback()
                             )
                         }
                         ITEM_MY_CONTRIBUTIONS -> openMyContributions()
                         ITEM_YOUR_LISTS -> ProductListsActivity.start(this@MainActivity)
-                        ITEM_LOGOUT -> MaterialDialog.Builder(this@MainActivity).run {
-                            title(R.string.confirm_logout)
-                            content(R.string.logout_dialog_content)
-                            positiveText(android.R.string.ok)
-                            negativeText(R.string.dialog_cancel)
-                            onPositive { _, _ -> logout() }
-                            onNegative { dialog, _ ->
-                                Snackbar.make(binding.root, "Cancelled", BaseTransientBottomBar.LENGTH_SHORT).show()  // TODO: Is this useful?
-                                dialog.dismiss()
-                            }
-                            show()
-                        }
-
+                        ITEM_LOGOUT -> MaterialAlertDialogBuilder(this@MainActivity)
+                            .setTitle(R.string.confirm_logout)
+                            .setMessage(R.string.logout_dialog_content)
+                            .setPositiveButton(android.R.string.ok) { _, _ -> logout() }
+                            .setNegativeButton(android.R.string.cancel) { d, _ -> d.dismiss() }
+                            .show()
                     }
                     newFragment?.let(::swapToFragment)
                     return false
@@ -420,11 +417,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
         }
 
         // FIXME: When set we cannot go to home fragment from bottom bar
-        if (sharedPreferences.getBoolean("startScan", false)) {
-            startActivity(Intent(this@MainActivity, ContinuousScanActivity::class.java).apply {
-                addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            })
-        }
+        if (sharedPreferences.getBoolean("startScan", false)) startScanActivity()
 
         // prefetch uris
         customTabActivityHelper.mayLaunchUrl(contributeUri, null, null)
@@ -435,7 +428,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
 
         when (intent.action) {
             CONTRIBUTIONS_SHORTCUT -> openMyContributions()
-            SCAN_SHORTCUT -> openScan()
+            SCAN_SHORTCUT -> checkThenStartScanActivity()
             BARCODE_SHORTCUT -> swapToSearchByCode()
         }
 
@@ -445,12 +438,16 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
 
         // Adds nutriscore and quantity values in old history for schema 5 update
         val mSharedPref = getSharedPreferences("prefs", 0)
+
         val isOldHistoryDataSynced = mSharedPref.getBoolean("is_old_history_data_synced", false)
-        if (!isOldHistoryDataSynced && isNetworkConnected(this)) {
-            apiClient.syncOldHistory()
+        if (!isOldHistoryDataSynced && this.isNetworkConnected()) {
+            historySyncJob?.cancel()
+            historySyncJob = lifecycleScope.launch { apiClient.syncOldHistory() }
         }
+
         binding.bottomNavigationInclude.bottomNavigation.selectNavigationItem(0)
         binding.bottomNavigationInclude.bottomNavigation.installBottomNavigation(this)
+
         handleIntent(intent)
 
         if (isFlavors(OFF)) {
@@ -469,35 +466,25 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
         binding.toolbarInclude.toolbar.title = BuildConfig.APP_NAME
     }
 
-    private fun openScan() {
-        if (ContextCompat.checkSelfPermission(this@MainActivity, Manifest.permission.CAMERA) !=
-            PackageManager.PERMISSION_GRANTED
-        ) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this@MainActivity, Manifest.permission.CAMERA)) {
-                MaterialDialog.Builder(this@MainActivity).run {
-                    title(R.string.action_about)
-                    content(R.string.permission_camera)
-                    neutralText(android.R.string.ok)
-                    show().setOnDismissListener {
-                        ActivityCompat.requestPermissions(
-                            this@MainActivity,
-                            arrayOf(Manifest.permission.CAMERA),
-                            MY_PERMISSIONS_REQUEST_CAMERA
-                        )
-                    }
-                }
-            } else {
-                ActivityCompat.requestPermissions(
-                    this@MainActivity,
-                    arrayOf(Manifest.permission.CAMERA),
-                    MY_PERMISSIONS_REQUEST_CAMERA
-                )
+    private fun checkThenStartScanActivity() {
+        when {
+            checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED -> {
+                startScanActivity()
             }
-        } else {
-            startActivity(Intent(this@MainActivity, ContinuousScanActivity::class.java).apply {
-                addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            })
+            shouldShowRequestPermissionRationale(this, Manifest.permission.CAMERA) -> {
+                MaterialAlertDialogBuilder(this)
+                    .setTitle(R.string.action_about)
+                    .setMessage(R.string.permission_camera)
+                    .setPositiveButton(android.R.string.ok) { _, _ ->
+                        requestCameraThenOpenScan.launch(Manifest.permission.CAMERA)
+                    }
+                    .show()
+            }
+            else -> {
+                requestCameraThenOpenScan.launch(Manifest.permission.CAMERA)
+            }
         }
+
     }
 
     private fun updateProfileForCurrentUser() {
@@ -515,12 +502,10 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
         if (isUserSet()) {
             openMyContributionsInSearchActivity()
         } else {
-            MaterialDialog.Builder(this@MainActivity).run {
-                title(R.string.contribute)
-                content(R.string.contribution_without_account)
-                positiveText(R.string.create_account_button)
-                neutralText(R.string.login_button)
-                onPositive { _, _ ->
+            MaterialAlertDialogBuilder(this@MainActivity)
+                .setTitle(R.string.contribute)
+                .setMessage(R.string.contribution_without_account)
+                .setPositiveButton(R.string.create_account_button) { _, _ ->
                     CustomTabActivityHelper.openCustomTab(
                         this@MainActivity,
                         customTabsIntent,
@@ -528,14 +513,14 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
                         WebViewFallback()
                     )
                 }
-                onNeutral { _, _ -> loginThenOpenContributions.launch(Unit) }
-                show()
-            }
+                .setNeutralButton(R.string.login_button) { _, _ -> loginThenOpenContributions.launch(Unit) }
+                .setNegativeButton(android.R.string.cancel) { d, _ -> d.dismiss() }
+                .show()
         }
     }
 
     private fun openMyContributionsInSearchActivity() =
-        start(this, SearchType.CONTRIBUTOR, getUserLogin()!!)
+        startSearch(this, SearchType.CONTRIBUTOR, getUserLogin()!!)
 
     private fun getProfileSettingDrawerItem(): IProfile<ProfileSettingDrawerItem> {
         val userLogin = getUserLogin()
@@ -636,6 +621,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
         .withIcon(R.drawable.img_home)
         .withIdentifier(ITEM_USER.toLong())
 
+    @ExperimentalTime
     override fun onStart() {
         super.onStart()
         customTabActivityHelper.bindCustomTabsService(this)
@@ -647,7 +633,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
             val firstTimeLaunchTime = prefManager.firstTimeLaunchTime
 
             // Check if it has been a week since first launch
-            if (System.currentTimeMillis() - firstTimeLaunchTime >= WEEK_IN_MS)
+            if (Duration.milliseconds(firstTimeLaunchTime + System.currentTimeMillis()) >= Duration.days(7))
                 showFeedbackDialog()
         }
     }
@@ -657,26 +643,22 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
      */
     private fun showFeedbackDialog() {
         //dialog for rating the app on play store
-        val rateDialog = MaterialDialog.Builder(this).apply {
-            title(R.string.app_name)
-            content(R.string.user_ask_rate_app)
-            positiveText(R.string.rate_app)
-            negativeText(R.string.no_thx)
-            onPositive { dialog, _ ->
+        val rateDialog = MaterialAlertDialogBuilder(this).apply {
+            setTitle(R.string.app_name)
+            setMessage(R.string.user_ask_rate_app)
+            setPositiveButton(R.string.rate_app) { dialog, _ ->
                 //open app page in play store
                 startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$packageName")))
                 dialog.dismiss()
             }
-            onNegative { dialog, _ -> dialog.dismiss() }
+            setNegativeButton(R.string.no_thx) { dialog, _ -> dialog.dismiss() }
         }
 
         //dialog for giving feedback
-        val feedbackDialog = MaterialDialog.Builder(this).apply {
-            title(R.string.app_name)
-            content(R.string.user_ask_show_feedback_form)
-            positiveText(android.R.string.ok)
-            negativeText(R.string.txtNo)
-            onPositive { dialog, _ ->
+        val feedbackDialog = MaterialAlertDialogBuilder(this).apply {
+            setTitle(R.string.app_name)
+            setMessage(R.string.user_ask_show_feedback_form)
+            setPositiveButton(android.R.string.ok) { dialog, _ ->
                 //show feedback form
                 CustomTabActivityHelper.openCustomTab(
                     this@MainActivity,
@@ -686,28 +668,24 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
                 )
                 dialog.dismiss()
             }
-            onNegative { dialog, _ -> dialog.dismiss() }
+            setNegativeButton(R.string.txtNo) { dialog, _ -> dialog.dismiss() }
         }
 
 
-        MaterialDialog.Builder(this).run {
-            title(R.string.app_name)
-            content(R.string.user_enjoying_app)
-            positiveText(R.string.txtYes)
-            onPositive { dialog, _ ->
+        MaterialAlertDialogBuilder(this)
+            .setTitle(R.string.app_name)
+            .setMessage(R.string.user_enjoying_app)
+            .setPositiveButton(R.string.txtYes) { dialog, _ ->
                 prefManager.userAskedToRate = true
                 rateDialog.show()
                 dialog.dismiss()
             }
-            negativeText(R.string.txtNo)
-            onNegative { dialog, _ ->
+            .setNegativeButton(R.string.txtNo) { dialog, _ ->
                 prefManager.userAskedToRate = true
                 feedbackDialog.show()
                 dialog.dismiss()
             }
-            show()
-        }
-
+            .show()
     }
 
     override fun onStop() {
@@ -740,7 +718,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
                     SearchSuggestionProvider.MODE
                 )
                 suggestions.saveRecentQuery(query, null)
-                start(this, SearchType.SEARCH, query)
+                startSearch(this, SearchType.SEARCH, query)
 
                 searchMenuItem?.collapseActionView()
             }
@@ -796,10 +774,11 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
     }
 
     private fun chooseDialog(selectedImages: List<Uri>) {
-        detectBarcodeInImages(selectedImages).observeOn(AndroidSchedulers.mainThread()).subscribe { barcodes ->
+        lifecycleScope.launch(Dispatchers.Main) {
+            val barcodes = detectBarcodeInImages(selectedImages)
             if (barcodes.isNotEmpty()) createAlertDialog(false, barcodes.first(), selectedImages)
             else createAlertDialog(true, "", selectedImages)
-        }.addTo(disp)
+        }
     }
 
     /**
@@ -807,42 +786,46 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
      *
      * @param selectedImages
      */
-    private fun detectBarcodeInImages(selectedImages: List<Uri>) = Observable
-        .fromIterable(selectedImages)
-        .flatMapMaybe { uri ->
-            var bMap: Bitmap? = null
-            try {
-                bMap = contentResolver.openInputStream(uri).use { BitmapFactory.decodeStream(it) }
-            } catch (e: FileNotFoundException) {
-                Log.e(MainActivity::class.java.simpleName, "Could not resolve file from Uri $uri", e)
-            } catch (e: IOException) {
-                Log.e(MainActivity::class.java.simpleName, "IO error during bitmap stream decoding: " + e.message, e)
-            }
-            // Decoding bitmap
-            if (bMap == null) return@flatMapMaybe Maybe.empty<String>()
+    private suspend fun detectBarcodeInImages(selectedImages: List<Uri>) =
+        withContext(Dispatchers.Default) {
+            selectedImages
+                .asSequence()
+                .mapNotNull { uri ->
+                    val bMap = try {
+                        contentResolver.openInputStream(uri).use { BitmapFactory.decodeStream(it) }
+                    } catch (e: FileNotFoundException) {
+                        Log.e(MainActivity::class.java.simpleName, "Could not resolve file from Uri $uri", e)
+                        null
+                    } catch (e: IOException) {
+                        Log.e(MainActivity::class.java.simpleName, "IO error during bitmap stream decoding: " + e.message, e)
+                        null
+                    } ?: return@mapNotNull null
 
-            val intArray = IntArray(bMap.width * bMap.height)
-            bMap.getPixels(intArray, 0, bMap.width, 0, 0, bMap.width, bMap.height)
-            val source = RGBLuminanceSource(bMap.width, bMap.height, intArray)
-            val bitmap = BinaryBitmap(HybridBinarizer(source))
-            val reader = MultiFormatReader()
-            return@flatMapMaybe try {
-                val decodeHints = mapOf(
-                    DecodeHintType.TRY_HARDER to true,
-                    DecodeHintType.PURE_BARCODE to true
-                )
-                val decodedResult = reader.decode(bitmap, decodeHints)!!
-                Maybe.just(decodedResult.text)
-            } catch (e: FormatException) {
-                Toast.makeText(this@MainActivity, getString(R.string.format_error), Toast.LENGTH_SHORT).show()
-                Log.e(MainActivity::class.simpleName, "Error decoding bitmap into barcode: ${e.message}")
-                Maybe.empty()
-            } catch (e: Exception) {
-                Log.e(MainActivity::class.simpleName, "Error decoding bitmap into barcode: ${e.message}")
-                Maybe.empty()
-            }
+                    // Decoding bitmap
+                    val intArray = IntArray(bMap.width * bMap.height)
+                    bMap.getPixels(intArray, 0, bMap.width, 0, 0, bMap.width, bMap.height)
+                    val source = RGBLuminanceSource(bMap.width, bMap.height, intArray)
+                    val bitmap = BinaryBitmap(HybridBinarizer(source))
+                    val reader = MultiFormatReader()
 
-        }.toList().subscribeOn(Schedulers.computation())
+                    try {
+                        val decodeHints = mapOf(
+                            DecodeHintType.TRY_HARDER to true,
+                            DecodeHintType.PURE_BARCODE to true
+                        )
+                        val decodedResult = reader.decode(bitmap, decodeHints)
+                        decodedResult?.text
+                    } catch (e: FormatException) {
+                        Toast.makeText(this@MainActivity, getString(R.string.format_error), Toast.LENGTH_SHORT).show()
+                        Log.e(MainActivity::class.simpleName, "Error decoding bitmap into barcode: ${e.message}")
+                        null
+                    } catch (e: Exception) {
+                        Log.e(MainActivity::class.simpleName, "Error decoding bitmap into barcode: ${e.message}")
+                        null
+                    }
+
+                }.toList()
+        }
 
     private fun createAlertDialog(hasEditText: Boolean, barcode: String, imgUris: List<Uri>) {
         val alertDialogBuilder = AlertDialog.Builder(this)
@@ -875,7 +858,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
 
                     if (tempBarcode.isNotEmpty()) {
                         dialog.dismiss()
-                        if (isNetworkConnected(this@MainActivity)) {
+                        if (this@MainActivity.isNetworkConnected()) {
                             contentResolver.openInputStream(selected)!!.use {
                                 val image = ProductImage(
                                     tempBarcode,
@@ -883,7 +866,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
                                     it.readBytes(),
                                     localeManager.getLanguage()
                                 )
-                                apiClient.postImg(image).subscribe().addTo(disp)
+                                lifecycleScope.launch(Dispatchers.IO) { apiClient.postImg(image).await() }
                             }
                         } else {
                             ProductEditActivity.start(this@MainActivity, Product().apply { code = tempBarcode })
@@ -905,8 +888,9 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
         private const val CONTRIBUTIONS_SHORTCUT = "CONTRIBUTIONS"
         private const val SCAN_SHORTCUT = "SCAN"
         private const val BARCODE_SHORTCUT = "BARCODE"
-        private const val WEEK_IN_MS = 1000 * 60 * 60 * 24 * 7 // MS in S * S in M * M in H * H in D * D in W
         const val PRODUCT_SEARCH_KEY = "product_search"
         private val LOG_TAG = MainActivity::class.simpleName!!
+
+        fun start(context: Context) = context.startActivity(Intent(context, MainActivity::class.java))
     }
 }

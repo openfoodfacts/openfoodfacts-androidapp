@@ -97,7 +97,7 @@ class EditIngredientsFragment : ProductEditFragment() {
             val image = ProductImage(code!!, ProductImageField.INGREDIENTS, it, localeManager.getLanguage()).apply {
                 filePath = uri.path
             }
-            (activity as? ProductEditActivity)?.addToPhotoMap(image, 1)
+            (activity as? ProductEditActivity)?.savePhoto(image, 1)
             matomoAnalytics.trackEvent(AnalyticsEvent.ProductIngredientsPictureEdited(code))
             hideImageProgress(false, getString(R.string.image_uploaded_successfully))
         }
@@ -252,9 +252,10 @@ class EditIngredientsFragment : ProductEditFragment() {
      * @param tag Tag associated with the allergen
      */
     private fun getTracesName(languageCode: String, tag: String): String {
-        return daoSession.allergenNameDao!!.queryBuilder()
-            .where(AllergenNameDao.Properties.AllergenTag.eq(tag), AllergenNameDao.Properties.LanguageCode.eq(languageCode))
-            .unique()?.name ?: tag
+        return daoSession.allergenNameDao.unique {
+            where(AllergenNameDao.Properties.AllergenTag.eq(tag))
+            where(AllergenNameDao.Properties.LanguageCode.eq(languageCode))
+        }?.name ?: tag
     }
 
     override fun onDestroyView() {
@@ -358,7 +359,7 @@ class EditIngredientsFragment : ProductEditFragment() {
                     photoFile = File(imagePath)
                     val image = ProductImage(code!!, ProductImageField.INGREDIENTS, photoFile!!, localeManager.getLanguage())
                     image.filePath = imagePath
-                    activity.addToPhotoMap(image, 1)
+                    activity.savePhoto(image, 1)
                 } else {
                     activity.lifecycleScope.launch {
                         activity.performOCR(

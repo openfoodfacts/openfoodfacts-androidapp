@@ -23,14 +23,14 @@
     <string name="slide_4_desc">Pode adicionar novos produtos, mesmo se não tiver uma conexão com a Internet agora</string>
     <string name="txtDialogsContent">O produto que você digitalizou ainda não existe no Open Pet Food Facts. Por favor, adicione.</string>
     <string name="txtDialogsContentPowerMode">O produto que você digitalizou já existe em Open Pet Food Facts.</string>
-    <string name="msg_share">Ver este produto no Open Food Facts :</string>
-    <string name="not_support_books">Atualmente, livros não são suportados pelo Open Food Facts</string>
-    <string name="txt_broaden_search">- alargar a sua pesquisa \n- digitalizar e adicionar ao Open Food Facts</string>
-    <string name="Donation">Clique aqui para doar para Open Food Facts</string>
-    <string name="translate_help_title">Ajude a traduzir o Open Food Facts</string>
-    <string name="translate_help_summary">Traga o banco de dados do Open Food Facts para o seu idioma - não é necessário conhecimento técnico</string>
+    <string name="msg_share">Ver este produto no Open Pet Food Facts :</string>
+    <string name="not_support_books">Atualmente, livros não são suportados pelo Open Pet Food Facts</string>
+    <string name="txt_broaden_search">- alargar a sua pesquisa \n- digitalizar e adicionar ao Open Pet Food Facts</string>
+    <string name="Donation">Clique aqui para doar para Open Pet Food Facts</string>
+    <string name="translate_help_title">Ajude a traduzir o Open Pet Food Facts</string>
+    <string name="translate_help_summary">Traga o banco de dados do Open Pet Food Facts para o seu idioma - não é necessário conhecimento técnico</string>
     <string name="text_offline_info_dialog">Digitalize os produtos mesmo quando estiver offline, para adicioná-los posteriormente ao Open Pet Food Facts. Os produtos digitalizados aparecerão aqui e você poderá enviá-los usando o botão abaixo.</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Pet Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
     <!-- OPFF tagline in different languages -->
     <string name="version_string">Open Pet Food Facts Android App</string>
     <string name="tagline">free pet food products database</string>

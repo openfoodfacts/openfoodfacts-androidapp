@@ -18,12 +18,14 @@ package openfoodfacts.github.scrachx.openfood.features.productlists
 import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.afollestad.materialdialogs.DialogAction
@@ -43,14 +45,14 @@ import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
 import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductListsBinding
-import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.installBottomNavigation
-import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.selectNavigationItem
-import openfoodfacts.github.scrachx.openfood.features.listeners.RecyclerItemClickListener
 import openfoodfacts.github.scrachx.openfood.features.productlist.ProductListActivity
 import openfoodfacts.github.scrachx.openfood.features.productlist.ProductListActivity.Companion.KEY_LIST_ID
 import openfoodfacts.github.scrachx.openfood.features.productlist.ProductListActivity.Companion.KEY_LIST_NAME
 import openfoodfacts.github.scrachx.openfood.features.productlist.ProductListActivity.Companion.KEY_PRODUCT_TO_ADD
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
+import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.installBottomNavigation
+import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.selectNavigationItem
+import openfoodfacts.github.scrachx.openfood.listeners.RecyclerItemClickListener
 import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.entities.*
@@ -183,6 +185,7 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.KITKAT)
     private val chooseFileContract = registerForActivityResult(ActivityResultContracts.OpenDocument())
     { uri ->
         if (uri != null) {
@@ -195,20 +198,19 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
     }
 
     override fun onRightClicked(position: Int) {
-        if (!adapter.lists.isNullOrEmpty()) {
-            val productToRemove = adapter.lists[position]
+        if (adapter.lists.isNullOrEmpty()) return
+        val list = adapter.lists[position]
 
-            // delete the product from YOUR_LISTED_PRODUCT_TABLE
-            val deleteQuery = daoSession.listedProductDao.queryBuilder()
-                .where(ListedProductDao.Properties.ListId.eq(productToRemove.id)).buildDelete()
-            deleteQuery.executeDeleteWithoutDetachingEntities()
-            daoSession.clear()
+        // delete the product from YOUR_LISTED_PRODUCT_TABLE
+        daoSession.listedProductDao.queryBuilder()
+            .where(ListedProductDao.Properties.ListId.eq(list.id))
+            .buildDelete()
+            .executeDeleteWithoutDetachingEntities()
+        daoSession.clear()
 
-            productListsDao.delete(productToRemove)
-            adapter.remove(productToRemove)
-            adapter.notifyItemRemoved(position)
-            adapter.notifyItemRangeChanged(position, adapter.itemCount)
-        }
+        productListsDao.delete(list)
+        adapter.remove(list)
+        adapter.notifyItemRangeChanged(position, adapter.itemCount)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -224,7 +226,13 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
         else -> super.onOptionsItemSelected(item)
     }
 
-    private fun openCSVToImport() = chooseFileContract.launch(arrayOf("text/csv"))
+    private fun openCSVToImport() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            chooseFileContract.launch(arrayOf("text/csv"))
+        } else {
+            Toast.makeText(this, "Feature disabled for your android version.", Toast.LENGTH_LONG).show()
+        }
+    }
 
     public override fun onResume() {
         super.onResume()
@@ -298,13 +306,13 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
         fun start(context: Context) = context.startActivity(Intent(context, ProductListsActivity::class.java))
 
         suspend fun DaoSession.getProductListsDaoWithDefaultList(context: Context): ProductListsDao = withContext(Dispatchers.IO) {
-            if (this@getProductListsDaoWithDefaultList.productListsDao.isEmpty()) {
-                this@getProductListsDaoWithDefaultList.productListsDao.insertInTx(
+            if (productListsDao.isEmpty()) {
+                productListsDao.insertInTx(
                     ProductLists(context.getString(R.string.txt_eaten_products), 0),
                     ProductLists(context.getString(R.string.txt_products_to_buy), 0)
                 )
             }
-            return@withContext this@getProductListsDaoWithDefaultList.productListsDao
+            return@withContext productListsDao
         }
     }
 }

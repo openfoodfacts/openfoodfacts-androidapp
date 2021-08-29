@@ -24,7 +24,7 @@ import io.reactivex.Completable
 import io.reactivex.Maybe
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.rx2.await
 import kotlinx.coroutines.rx2.rxMaybe
 import kotlinx.coroutines.rx2.rxSingle
@@ -88,7 +88,7 @@ class ProductRepository @Inject constructor(
      * @return The list of Labels.
      */
     suspend fun reloadLabelsFromServer() = taxonomiesManager.getTaxonomyData(
-        Taxonomy.LABEL,
+        Taxonomy.Labels,
         true,
         daoSession.labelDao,
         this
@@ -98,7 +98,7 @@ class ProductRepository @Inject constructor(
         .map { it.map() }
         .doOnSuccess { labels ->
             saveLabels(labels)
-            updateLastDownloadDateInSettings(Taxonomy.LABEL, lastModifiedDate)
+            updateLastDownloadDateInSettings(Taxonomy.Labels, lastModifiedDate)
         }
 
     /**
@@ -107,7 +107,7 @@ class ProductRepository @Inject constructor(
      * @return The list of Tags.
      */
     suspend fun reloadTagsFromServer() = taxonomiesManager.getTaxonomyData(
-        Taxonomy.TAGS,
+        Taxonomy.Tags,
         true,
         daoSession.tagDao,
         this
@@ -117,11 +117,11 @@ class ProductRepository @Inject constructor(
         .map { it.tags }
         .doOnSuccess {
             saveTags(it)
-            updateLastDownloadDateInSettings(Taxonomy.TAGS, lastModifiedDate)
+            updateLastDownloadDateInSettings(Taxonomy.Tags, lastModifiedDate)
         }
 
     suspend fun reloadInvalidBarcodesFromServer() = taxonomiesManager.getTaxonomyData(
-        Taxonomy.INVALID_BARCODES,
+        Taxonomy.InvalidBarcodes,
         true,
         daoSession.invalidBarcodeDao,
         this
@@ -131,7 +131,7 @@ class ProductRepository @Inject constructor(
         .map { strings -> strings.map { InvalidBarcode(it) } }
         .doOnSuccess {
             saveInvalidBarcodes(it)
-            updateLastDownloadDateInSettings(Taxonomy.INVALID_BARCODES, lastModifiedDate)
+            updateLastDownloadDateInSettings(Taxonomy.InvalidBarcodes, lastModifiedDate)
         }
 
     /**
@@ -141,16 +141,16 @@ class ProductRepository @Inject constructor(
      */
     suspend fun reloadAllergensFromServer(): List<Allergen> =
         // FIXME: this returns 404
-        taxonomiesManager.getTaxonomyData(Taxonomy.ALLERGEN, true, daoSession.allergenDao, this)
+        taxonomiesManager.getTaxonomyData(Taxonomy.Allergens, true, daoSession.allergenDao, this)
 
     suspend fun getAllergens(): List<Allergen> =
-        taxonomiesManager.getTaxonomyData(Taxonomy.ALLERGEN, false, daoSession.allergenDao, this)
+        taxonomiesManager.getTaxonomyData(Taxonomy.Allergens, false, daoSession.allergenDao, this)
 
     fun loadAllergens(lastModifiedDate: Long): Single<List<Allergen>> = analysisDataApi.getAllergens()
         .map { it.map() }
         .doOnSuccess {
             saveAllergens(it)
-            updateLastDownloadDateInSettings(Taxonomy.ALLERGEN, lastModifiedDate)
+            updateLastDownloadDateInSettings(Taxonomy.Allergens, lastModifiedDate)
         }
 
     /**
@@ -159,13 +159,13 @@ class ProductRepository @Inject constructor(
      * @return The list of countries.
      */
     suspend fun reloadCountriesFromServer(): List<Country> =
-        taxonomiesManager.getTaxonomyData(Taxonomy.COUNTRY, true, daoSession.countryDao, this)
+        taxonomiesManager.getTaxonomyData(Taxonomy.Countries, true, daoSession.countryDao, this)
 
     fun loadCountries(lastModifiedDate: Long): Single<List<Country>> = analysisDataApi.getCountries()
         .map { it.map() }
         .doOnSuccess {
             saveCountries(it)
-            updateLastDownloadDateInSettings(Taxonomy.COUNTRY, lastModifiedDate)
+            updateLastDownloadDateInSettings(Taxonomy.Countries, lastModifiedDate)
         }
 
     /**
@@ -174,15 +174,15 @@ class ProductRepository @Inject constructor(
      * @return The list of categories.
      */
     suspend fun reloadCategoriesFromServer() =
-        taxonomiesManager.getTaxonomyData(Taxonomy.CATEGORY, true, daoSession.categoryDao, this)
+        taxonomiesManager.getTaxonomyData(Taxonomy.Categories, true, daoSession.categoryDao, this)
 
-    suspend fun getCategories() = taxonomiesManager.getTaxonomyData(Taxonomy.CATEGORY, false, daoSession.categoryDao, this)
+    suspend fun getCategories() = taxonomiesManager.getTaxonomyData(Taxonomy.Categories, false, daoSession.categoryDao, this)
 
     fun loadCategories(lastModifiedDate: Long) = analysisDataApi.getCategories()
         .map { it.map() }
         .doOnSuccess {
             saveCategories(it)
-            updateLastDownloadDateInSettings(Taxonomy.CATEGORY, lastModifiedDate)
+            updateLastDownloadDateInSettings(Taxonomy.Categories, lastModifiedDate)
         }
 
     /**
@@ -190,7 +190,7 @@ class ProductRepository @Inject constructor(
      *
      * @return The list of allergens.
      */
-    suspend fun getEnabledAllergens(): List<Allergen> = withContext(Dispatchers.IO) {
+    suspend fun getEnabledAllergens(): List<Allergen> = withContext(IO) {
         daoSession.allergenDao.queryBuilder()
             .where(AllergenDao.Properties.Enabled.eq("true"))
             .list()
@@ -202,13 +202,13 @@ class ProductRepository @Inject constructor(
      * @return The list of additives.
      */
     suspend fun reloadAdditivesFromServer() =
-        taxonomiesManager.getTaxonomyData(Taxonomy.ADDITIVE, true, daoSession.additiveDao, this)
+        taxonomiesManager.getTaxonomyData(Taxonomy.Additives, true, daoSession.additiveDao, this)
 
     fun loadAdditives(lastModifiedDate: Long) = analysisDataApi.getAdditives()
         .map { it.map() }
         .doOnSuccess {
             saveAdditives(it)
-            updateLastDownloadDateInSettings(Taxonomy.ADDITIVE, lastModifiedDate)
+            updateLastDownloadDateInSettings(Taxonomy.Additives, lastModifiedDate)
         }
 
     /**
@@ -222,13 +222,13 @@ class ProductRepository @Inject constructor(
      * @return The ingredients in the product.
      */
     suspend fun reloadIngredientsFromServer(): List<Ingredient> =
-        taxonomiesManager.getTaxonomyData(Taxonomy.INGREDIENT, true, daoSession.ingredientDao, this)
+        taxonomiesManager.getTaxonomyData(Taxonomy.Ingredients, true, daoSession.ingredientDao, this)
 
     fun loadIngredients(lastModifiedDate: Long): Single<List<Ingredient>> = analysisDataApi.getIngredients()
         .map { it.map() }
         .doOnSuccess {
             saveIngredients(it)
-            updateLastDownloadDateInSettings(Taxonomy.INGREDIENT, lastModifiedDate)
+            updateLastDownloadDateInSettings(Taxonomy.Ingredients, lastModifiedDate)
         }
 
     /**
@@ -237,13 +237,13 @@ class ProductRepository @Inject constructor(
      * @return The list of states.
      */
     suspend fun reloadStatesFromServer(): List<States> =
-        taxonomiesManager.getTaxonomyData(Taxonomy.STATES, true, daoSession.statesDao, this)
+        taxonomiesManager.getTaxonomyData(Taxonomy.ProductStates, true, daoSession.statesDao, this)
 
     fun loadStates(lastModifiedDate: Long): Single<List<States>> = analysisDataApi.getStates()
         .map { it.map() }
         .doOnSuccess {
             saveState(it)
-            updateLastDownloadDateInSettings(Taxonomy.STATES, lastModifiedDate)
+            updateLastDownloadDateInSettings(Taxonomy.ProductStates, lastModifiedDate)
         }
 
     /**
@@ -252,23 +252,23 @@ class ProductRepository @Inject constructor(
      * @return The list of stores.
      */
     suspend fun reloadStoresFromServer(): List<Store> =
-        taxonomiesManager.getTaxonomyData(Taxonomy.STORES, true, daoSession.storeDao, this)
+        taxonomiesManager.getTaxonomyData(Taxonomy.Stores, true, daoSession.storeDao, this)
 
     fun loadStores(lastModifiedDate: Long): Single<List<Store>> = analysisDataApi.getStores()
         .map { it.map() }
         .doOnSuccess {
             saveStores(it)
-            updateLastDownloadDateInSettings(Taxonomy.STORES, lastModifiedDate)
+            updateLastDownloadDateInSettings(Taxonomy.Stores, lastModifiedDate)
         }
 
     suspend fun reloadBrandsFromServer(): List<Brand> =
-        taxonomiesManager.getTaxonomyData(Taxonomy.BRANDS, true, daoSession.brandDao, this)
+        taxonomiesManager.getTaxonomyData(Taxonomy.Brands, true, daoSession.brandDao, this)
 
     fun loadBrands(lastModifiedDate: Long): Single<List<Brand>> = analysisDataApi.getBrands()
         .map { it.map() }
         .doOnSuccess {
             saveBrands(it)
-            updateLastDownloadDateInSettings(Taxonomy.BRANDS, lastModifiedDate)
+            updateLastDownloadDateInSettings(Taxonomy.Brands, lastModifiedDate)
         }
 
     /**
@@ -277,9 +277,9 @@ class ProductRepository @Inject constructor(
      * @param taxonomy Name of the taxonomy (allergens, additives, categories, countries, ingredients, labels, tags)
      * @param lastDownload Date of last update on Long format
      */
-    private fun updateLastDownloadDateInSettings(taxonomy: Taxonomy, lastDownload: Long) {
+    private fun <T> updateLastDownloadDateInSettings(taxonomy: Taxonomy<T>, lastDownload: Long) {
         context.getSharedPreferences("prefs", 0)
-            .edit { putLong(taxonomy.lastDownloadTimeStampPreferenceId, lastDownload) }
+            .edit { putLong(taxonomy.getLastDownloadTimeStampPreferenceId(), lastDownload) }
         Log.i(LOG_TAG, "Set lastDownload of $taxonomy to $lastDownload")
     }
 
@@ -425,24 +425,21 @@ class ProductRepository @Inject constructor(
         daoSession.ingredientDao.deleteAll()
         daoSession.ingredientNameDao.deleteAll()
         daoSession.ingredientsRelationDao.deleteAll()
-        val daoSession = daoSession
-        daoSession.database.execSQL(
+        this.daoSession.database.execSQL(
             """update sqlite_sequence set seq=0 where name in 
-            |('${daoSession.ingredientDao.tablename}', 
-            |'${daoSession.ingredientNameDao.tablename}', 
-            |'${daoSession.ingredientsRelationDao.tablename}')""".trimMargin()
+            |('${this.daoSession.ingredientDao.tablename}', 
+            |'${this.daoSession.ingredientNameDao.tablename}', 
+            |'${this.daoSession.ingredientsRelationDao.tablename}')""".trimMargin()
         )
     }
 
     /**
-     * TODO to be improved by loading only if required and only in the user language
      * Ingredients saving to local database
+     * Ingredient and IngredientName has One-To-Many relationship, therefore we need to save them separately.
      *
      * @param ingredients The list of ingredients to be saved.
-     *
-     *
-     * Ingredient and IngredientName has One-To-Many relationship, therefore we need to save them separately.
      */
+    // TODO to be improved by loading only if required and only in the user language
     private fun saveIngredients(ingredients: List<Ingredient>) {
         daoSession.database.beginTransaction()
         try {
@@ -601,7 +598,7 @@ class ProductRepository @Inject constructor(
         getAdditiveByTagAndLanguageCode(additiveTag, ApiFields.Defaults.DEFAULT_LANGUAGE)
 
     suspend fun getCountries() = taxonomiesManager.getTaxonomyData(
-        Taxonomy.COUNTRY,
+        Taxonomy.Countries,
         false,
         daoSession.countryDao,
         this
@@ -677,7 +674,7 @@ class ProductRepository @Inject constructor(
      * @param languageCode is a 2-digit language code
      * @return The list of translated allergen names
      */
-    fun getAllergensByLanguageCode(languageCode: String?) = Single.fromCallable {
+    suspend fun getAllergensByLanguageCode(languageCode: String?): List<AllergenName> = withContext(IO) {
         daoSession.allergenNameDao.queryBuilder()
             .where(AllergenNameDao.Properties.LanguageCode.eq(languageCode))
             .list()
@@ -690,16 +687,14 @@ class ProductRepository @Inject constructor(
      * @param languageCode is a 2-digit language code
      * @return The translated allergen name
      */
-    suspend fun getAllergenByTagAndLanguageCode(allergenTag: String?, languageCode: String?): AllergenName {
-        return withContext(Dispatchers.IO) {
-            daoSession.allergenNameDao.queryBuilder().where(
-                AllergenNameDao.Properties.AllergenTag.eq(allergenTag),
-                AllergenNameDao.Properties.LanguageCode.eq(languageCode)
-            ).unique() ?: AllergenName().apply {
-                this.name = allergenTag
-                this.allergenTag = allergenTag
-                this.isWikiDataIdPresent = false
-            }
+    suspend fun getAllergenByTagAndLanguageCode(allergenTag: String?, languageCode: String?): AllergenName = withContext(IO) {
+        daoSession.allergenNameDao.queryBuilder().where(
+            AllergenNameDao.Properties.AllergenTag.eq(allergenTag),
+            AllergenNameDao.Properties.LanguageCode.eq(languageCode)
+        ).unique() ?: AllergenName().apply {
+            this.name = allergenTag
+            this.allergenTag = allergenTag
+            this.isWikiDataIdPresent = false
         }
     }
 
@@ -720,7 +715,7 @@ class ProductRepository @Inject constructor(
      * @return The translated states name
      */
     suspend fun getStatesByTagAndLanguageCode(statesTag: String, languageCode: String?): StatesName {
-        return withContext(Dispatchers.IO) {
+        return withContext(IO) {
             daoSession.statesNameDao.queryBuilder().where(
                 StatesNameDao.Properties.StatesTag.eq(statesTag),
                 StatesNameDao.Properties.LanguageCode.eq(languageCode)
@@ -770,7 +765,7 @@ class ProductRepository @Inject constructor(
      */
     suspend fun reloadAnalysisTagsFromServer() =
         taxonomiesManager.getTaxonomyData(
-            Taxonomy.ANALYSIS_TAGS,
+            Taxonomy.AnalysisTags,
             true,
             daoSession.analysisTagDao,
             this
@@ -780,7 +775,7 @@ class ProductRepository @Inject constructor(
         val tags = analysisDataApi.getAnalysisTags().await().map()
 
         saveAnalysisTags(tags)
-        updateLastDownloadDateInSettings(Taxonomy.ANALYSIS_TAGS, lastModifiedDate)
+        updateLastDownloadDateInSettings(Taxonomy.AnalysisTags, lastModifiedDate)
         return@rxSingle tags
     }
 
@@ -811,7 +806,7 @@ class ProductRepository @Inject constructor(
 
     suspend fun reloadAnalysisTagConfigsFromServer(): List<AnalysisTagConfig> =
         taxonomiesManager.getTaxonomyData(
-            Taxonomy.ANALYSIS_TAG_CONFIG,
+            Taxonomy.AnalysisTagConfigs,
             true,
             daoSession.analysisTagConfigDao,
             this
@@ -821,7 +816,7 @@ class ProductRepository @Inject constructor(
         .map { it.map() }
         .doOnSuccess {
             saveAnalysisTagConfigs(it)
-            updateLastDownloadDateInSettings(Taxonomy.ANALYSIS_TAG_CONFIG, lastModifiedDate)
+            updateLastDownloadDateInSettings(Taxonomy.AnalysisTagConfigs, lastModifiedDate)
         }
 
     private fun saveAnalysisTagConfigs(analysisTagConfigs: List<AnalysisTagConfig>) {
@@ -876,11 +871,12 @@ class ProductRepository @Inject constructor(
      * @param languageCode
      * @return [Maybe.empty] if no analysis tag found
      */
-    fun getAnalysisTagConfigByTagAndLanguageCode(analysisTag: String?, languageCode: String) = Maybe.fromCallable {
+    suspend fun getAnalysisTagConfigByTagAndLanguageCode(analysisTag: String?, languageCode: String): AnalysisTagConfig? = withContext(IO) {
         daoSession.analysisTagConfigDao.queryBuilder()
             .where(AnalysisTagConfigDao.Properties.AnalysisTag.eq(analysisTag))
-            .unique().also { updateAnalysisTagConfig(it, languageCode) }
-    }.subscribeOn(Schedulers.io())
+            .unique()
+            .also { updateAnalysisTagConfig(it, languageCode) }
+    }
 
     fun getUnknownAnalysisTagConfigsByLanguageCode(languageCode: String) = Single.fromCallable {
         daoSession.analysisTagConfigDao.queryBuilder()

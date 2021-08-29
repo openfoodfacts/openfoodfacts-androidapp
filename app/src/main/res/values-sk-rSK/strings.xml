@@ -132,7 +132,7 @@
         <item>Kyselina montánová (28: 0)</item>
         <item>Kyselina myristová (14: 0)</item>
         <item>Kyselina nervónová (24: 1 n-9)</item>
-        <item>Nucleotides</item>
+        <item>Nukleotidy</item>
         <item>Kyselina olejová (18: 1 n-9)</item>
         <item>Omega 3 mastné kyseliny</item>
         <item>Omega 6 mastné kyseliny</item>
@@ -170,7 +170,7 @@
     <string name="alert_dialog_warning_title">Upozornenie</string>
     <string name="alert_dialog_warning_msg_user">Užívateľské meno/heslo bolo zmenené, prosím upravte informácie</string>
     <string name="toast_retrieving">Načítavam…</string>
-    <string name="txtBarcode">Čiarový kód :</string>
+    <string name="txtBarcode">Čiarový kód:</string>
     <string name="txtCategories">Kategórie :</string>
     <string name="txtLabels">Štítky, certifikáty, ocenenia :</string>
     <string name="txtEMB">Traceability codes:</string>
@@ -327,12 +327,12 @@
     <string name="nutrition_casein">Kazeín</string>
     <string name="nutrition_maltodextrins">Maltodextríny</string>
     <string name="nutrition_serum_proteins">Sérové ​​proteíny</string>
-    <string name="nutrition_nucleotides">Nucleotides</string>
+    <string name="nutrition_nucleotides">Nukleotidy</string>
     <string name="for_100g">Na 100 g</string>
     <string name="for_100ml">Na 100 ml</string>
     <string name="serving">Na jednu porciu</string>
-    <string name="nutrition_monounsaturatedFat">Monounsaturated fat</string>
-    <string name="nutrition_polyunsaturatedFat">Polyunsaturated fat</string>
+    <string name="nutrition_monounsaturatedFat">Mononenasýtené tuky</string>
+    <string name="nutrition_polyunsaturatedFat">Polynenasýtené tuky</string>
     <string name="nutrition_omega3">Omega 3</string>
     <string name="nutrition_omega6">Omega 6</string>
     <string name="nutrition_omega9">Omega 9</string>
@@ -381,11 +381,11 @@
     <string name="chlorophyl">Chlorofyl</string>
     <string name="take_picture">Spraviť snímku</string>
     <string name="choose_picture_from_gallery">Z galérie</string>
-    <string name="take_picture_ingredients">Take a picture of the ingredients</string>
+    <string name="take_picture_ingredients">Take a photo of the ingredients</string>
     <string name="take_picture_recycling">Take a photo of the recycling instructions</string>
-    <string name="take_picture_front">Take a picture of the front</string>
-    <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
-    <string name="take_more_pictures">Take more pictures</string>
+    <string name="take_picture_front">Take a photo of the front</string>
+    <string name="take_picture_nutrition_table">Take a photo of the nutrition table</string>
+    <string name="take_more_pictures">Take more photos</string>
     <string name="take_extra_packaging_pictures">Take extra photos of packaging</string>
     <string name="txtSaturatedFat">Nasýtený tuk</string>
     <string name="nutriscore_info_msg">Ďalšie informácie o Nutri-Score</string>
@@ -484,6 +484,7 @@
     <string name="country_string">Country</string>
     <string name="store_subtitle">Predajňa</string>
     <string name="packaging_subtitle">Balenie</string>
+    <string name="state_subtitle">State</string>
     <string name="packaging_string">Balenie</string>
     <string name="label_string">Štítok</string>
     <string name="category_string">Kategória</string>
@@ -817,11 +818,14 @@
     <string name="changelog_translation_help">Want to see this changelog in %s?\nJoin the translation team!</string>
     <string name="whats_new">What\'s new with Open Food Facts?</string>
     <!-- New onboarding slides -->
-    <string name="eco_score_slide_4_title">Eco-Score</string>
-    <string name="join_the_food_revolution">Join the food revolution</string>
-    <string name="slide_1_text_revolution">Scan food, Take photos, Help transform the food system</string>
-    <string name="get_the_nutri_score">Get the Nutriscore</string>
-    <string name="synthesis_of_nutrition_slide_2_text">A simple synthesis of the nutritional quality of your food</string>
-    <string name="avoid_ultra_processed_foods">Avoid ultra-processed foods</string>
-    <string name="nova_slide_3_text">Reduce the amount of ultra-processed foods in your diet.</string>
+    <string name="title_welcome_intro">Join the food revolution</string>
+    <string name="msg_welcome_intro">Scan food, Take photos, Help transform the food system</string>
+    <string name="title_welcome_nutriscore">Get the Nutri-Score</string>
+    <string name="msg_welcome_nutriscore">A simple synthesis of the nutritional quality of your food</string>
+    <string name="title_welcome_nova">Avoid ultra-processed foods</string>
+    <string name="msg_welcome_nova">Reduce the amount of ultra-processed foods in your diet.</string>
+    <string name="title_welcome_ecoscore">Eco-Score</string>
+    <string name="msg_welcome_ecoscore">A synthesis of the environmental impact of your food.</string>
+    <string name="title_welcome_matomo">Send anonymous analytics</string>
+    <string name="msg_welcome_matomo">Help the Open Food Facts volunteers to improve the app. You decide if you send anonymous analytics.\n\nIf you change your mind this option can be enabled and disabled at any time from the settings.</string>
 </resources>

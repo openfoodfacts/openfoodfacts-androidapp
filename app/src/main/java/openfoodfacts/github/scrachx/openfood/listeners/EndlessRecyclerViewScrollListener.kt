@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.features.listeners
+package openfoodfacts.github.scrachx.openfood.listeners
 
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager

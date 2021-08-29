@@ -7,7 +7,6 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.rx2.await
 import kotlinx.coroutines.test.runBlockingTest
 import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.Allergen
@@ -50,10 +49,10 @@ class ProductRepositoryTest {
     }
 
     @Test
-    fun testGetAllergens() {
+    fun testGetAllergens() = runBlockingTest {
         val mSettings = instance.getSharedPreferences("prefs", 0)
-        val isDownloadActivated = mSettings.getBoolean(Taxonomy.ALLERGEN.downloadActivatePreferencesId, false)
-        val allergens = productRepository.reloadAllergensFromServer().blockingGet()
+        val isDownloadActivated = mSettings.getBoolean(Taxonomy.Allergens.getDownloadActivatePreferencesId(), false)
+        val allergens = productRepository.reloadAllergensFromServer()
         assertNotNull(allergens)
         if (!isDownloadActivated) {
             assertEquals(0, allergens.size.toLong())
@@ -92,7 +91,7 @@ class ProductRepositoryTest {
 
     @Test
     fun testGetAllergensByLanguageCode() = runBlockingTest {
-        val allergenNames = productRepository.getAllergensByLanguageCode(TEST_LANGUAGE_CODE).await()
+        val allergenNames = productRepository.getAllergensByLanguageCode(TEST_LANGUAGE_CODE)
         assertNotNull(allergenNames)
         assertEquals(2, allergenNames.size.toLong())
     }

@@ -10,6 +10,7 @@ Open Food Facts is a food products database made by everyone, for everyone. Open
 [![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=openfoodfacts_openfoodfacts-androidapp&metric=alert_status)](https://sonarcloud.io/dashboard/index/openfoodfacts_openfoodfacts-androidapp)
 [![Crowdin](https://d322cqt584bo4o.cloudfront.net/openfoodfacts/localized.svg)](https://crowdin.com/project/openfoodfacts)
 ![Android Master & PR](https://github.com/openfoodfacts/openfoodfacts-androidapp/workflows/Android%20Master%20&%20PR/badge.svg)
+![Build](https://github.com/openfoodfacts/openfoodfacts-androidapp/workflows/Android%20Integration/badge.svg)
 [![Average time to resolve an issue](https://isitmaintained.com/badge/resolution/openfoodfacts/openfoodfacts-androidapp.svg)](https://isitmaintained.com/project/openfoodfacts/openfoodfacts-androidapp "Average time to resolve an issue")
 [![Percentage of issues still open](https://isitmaintained.com/badge/open/openfoodfacts/openfoodfacts-androidapp.svg)](https://isitmaintained.com/project/openfoodfacts/openfoodfacts-androidapp "Percentage of issues still open")
 [![Open Source Helpers](https://www.codetriage.com/openfoodfacts/openfoodfacts-androidapp/badges/users.svg)](https://www.codetriage.com/openfoodfacts/openfoodfacts-androidapp)
@@ -19,48 +20,35 @@ Open Food Facts is a food products database made by everyone, for everyone. Open
 
 ### A food products database
 
-Open Food Facts is a database of food products with ingredients, allergens, nutrition facts and all the tidbits of information we can find on product labels.
+Open Food Facts is a database of food products with ingredients, allergens, nutrition facts… which allow us to compute scores like Nutri-Score, NOVA groups and Eco-Score.
 
 ### Made by everyone
 
 Open Food Facts is a non-profit association of volunteers.
-25000+ contributors like you have added 1,7M+ products from 150 countries using our Android, iPhone or Windows Phone app or their camera to scan barcodes and upload pictures of products and their labels.
+25000+ contributors like you have added 1,7M+ products from 150 countries using our Android or iPhone apps to scan barcodes and upload pictures of products and their labels.
 
 ### For everyone
 
-Data about food is of public interest and has to be open. The complete database is published as open data and can be reused by anyone and for any use. Check-out the cool reuses or make your own!
+Data about food is of public interest and has to be open. The complete database is published as open data and can be reused by anyone.
+
+## Ongoing documentation of user flows
+[Visual documentation of the App on Figma](https://www.figma.com/file/BQ7CSyFvl7D9ljcXT0ay0u/Navigation-within-the-app)
 
 ## Documentation of the source code
 The documentation is generated automatically from the source code and your improvements to code documentation are published automatically.
-https://openfoodfacts.github.io/openfoodfacts-androidapp/
+[Code documentation on GitHub pages](https://openfoodfacts.github.io/openfoodfacts-androidapp/)
 
 ## Helping stabilize our next release
 Here are issues and feature requests you can work on:
-- [3.6.6 milestone](https://github.com/openfoodfacts/openfoodfacts-androidapp/milestone/36)
-Here's a summary explanation of improvements and regressions that are blocking the release: https://github.com/openfoodfacts/openfoodfacts-androidapp/wiki#pros-and-cons-of-releasing-before-the-15th
-
-## Impact Roadmap
-### A brilliant scan experience 
-https://github.com/openfoodfacts/openfoodfacts-androidapp/projects/20
-- [ ] Add offline scanning
-
-### Help data refresh
-- [ ] Create a "Help with images" button in the scan screen https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/3543
-
-### Open Beauty Facts
-- [ ] https://github.com/openfoodfacts/openfoodfacts-androidapp/projects/8#card-39610510
-
-### Editing papercut bugs
-Make category selection more intuitive for beginners #2951
-Improve suggestions by removing diacritics in the edit mode #2184
-
+- [ ] [3.6.6 milestone](https://github.com/openfoodfacts/openfoodfacts-androidapp/milestone/36)
+- [ ] [Summary explanation of improvements and regressions that are blocking the release](https://github.com/openfoodfacts/openfoodfacts-androidapp/wiki#pros-and-cons-of-releasing-before-the-15th)
 
 ## Test it on your phone or tablet
 
 | Open Food Facts on [Google Play](https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner)  | Open Food Facts on [F-Droid](https://f-droid.org/packages/openfoodfacts.github.scrachx.openfood/) | Open Food Facts on the [Web](https://world.openfoodfacts.org/) |Open Food Facts is also available on [iOS](https://ios.openfoodfacts.org)|
 | ------------- | ------------- | ------------- | ------------- |
 | <a href="https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner" alt="Get it on Google Play" target="_blank"><img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" height="80"></a>  | <a href="https://f-droid.org/packages/openfoodfacts.github.scrachx.openfood/" alt="Get it on F-Droid" target="_blank"><img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" height="80"></a>  | [https://world.openfoodfacts.org/](https://world.openfoodfacts.org/) |<a href="https://apps.apple.com/app/open-food-facts/id588797948"><img height="75" src="https://user-images.githubusercontent.com/7317008/43209852-4ca39622-904b-11e8-8ce1-cdc3aee76ae9.png" align="left" hspace="1" vspace="1"></a> [iOS repository](https://github.com/openfoodfacts/openfoodfacts-ios) |
-|<a href="https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner" alt="Get it on Google Play" target="_blank"><img src="https://lh3.googleusercontent.com/5QxkJkxPmoVxj_H_BidOPHJwFZSvLx9hx3ls-p9FetMORGMf2-7e9J4Jsg9EN8NjBpYq=w1260-h646" width="212" height="400" /></a>|<a href="https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner" alt="Get it on Google Play" target="_blank"><img src="https://lh3.googleusercontent.com/8Oab6oXw8Z8z_a5BO2stLRAkCVVR3cW4R-NfQ4BdYSdWM24I0cG0F2HHvXYRDWslcg=w1260-h646" width="212" height="400" /></a>|<a href="https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner" alt="Get it on Google Play" target="_blank"><img src="https://lh3.googleusercontent.com/9DRWlQwnz1NTKP7VJucWg1i_bzwInSUiUsflKprCSKR_f5aG11MLoYk5BvtVYPI1zg=w1260-h646" width="212" height="400" /></a>|<a href="https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner" alt="Get it on Google Play" target="_blank"><img src="https://lh3.googleusercontent.com/627r30FFxVbodLMApJavAhwLym1kSOxSJScXy7DacfAiBPNxjkC6Rsd8Lhjj7yEb_A=w1260-h646" width="212" height="400" /></a>|
+|<a href="https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner" alt="Get it on Google Play" target="_blank"><img src="https://lh3.googleusercontent.com/5QxkJkxPmoVxj_H_BidOPHJwFZSvLx9hx3ls-p9FetMORGMf2-7e9J4Jsg9EN8NjBpYq=w630-h323" /></a>|<a href="https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner" alt="Get it on Google Play" target="_blank"><img src="https://lh3.googleusercontent.com/8Oab6oXw8Z8z_a5BO2stLRAkCVVR3cW4R-NfQ4BdYSdWM24I0cG0F2HHvXYRDWslcg=w630-h323" /></a>|<a href="https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner" alt="Get it on Google Play" target="_blank"><img src="https://lh3.googleusercontent.com/9DRWlQwnz1NTKP7VJucWg1i_bzwInSUiUsflKprCSKR_f5aG11MLoYk5BvtVYPI1zg=w630-h323" /></a>|<a href="https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner" alt="Get it on Google Play" target="_blank"><img src="https://lh3.googleusercontent.com/627r30FFxVbodLMApJavAhwLym1kSOxSJScXy7DacfAiBPNxjkC6Rsd8Lhjj7yEb_A=w630-h323" /></a>|
 
 ## Bugs and feature requests
 
@@ -71,6 +59,8 @@ Have a bug or a feature request? Please search for existing and closed issues. I
 Open Food Facts on Android has 0,5M users and 1,6M products. *Each contribution you make will have a large impact on food transparency worldwide.* Finding the right issue or feature will help you have even more more impact. Feel free to ask for feedback on the #android channel before you start work, and to document what you intend to code.
 
 Here are issues and feature requests you can work on:
+- [Improve editing](https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/4166)
+- [Improve the product page](https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/4170)
 - [P1 issues](https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/p1)
 - [Issues with a screenshot of the problem](https://github.com/openfoodfacts/openfoodfacts-androidapp/issues?q=is%3Aissue+is%3Aopen+label%3Ascreenshot-available)
 - [Issues with a visual mockup of the solution](https://github.com/openfoodfacts/openfoodfacts-androidapp/issues?q=is%3Aissue+is%3Aopen+label%3Amockup-available)
@@ -78,11 +68,10 @@ Here are issues and feature requests you can work on:
 - [Create onboarding features for new users](https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/onboarding)
 - [Small issues (Hacktoberfest)](https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/hacktoberfest)
 - [Improve product comparison](https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/comparison)
-- [Help remove some of the technical debt](https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/refactoring)
 
 If you don't have time to contribute code, you're very welcome to
-* scan new products
-* make a donation to [_help pay for the hosting and general costs_](https://donate.openfoodfacts.org) 
+* Scan new products
+* [**Make a donation** to help pay for the hosting and general costs](https://donate.openfoodfacts.org) 
 
 ## Help translate Open Food Facts in your language
 
@@ -119,7 +108,9 @@ If you spot any libraries we added or we don't use anymore, feel free to update 
 - [OkHttp](https://github.com/square/okhttp) - An HTTP+SPDY client for Android and Java applications
 - [Mockito](https://github.com/mockito/mockito) - Most popular Mocking framework for unit tests written in Java
 - [Apache](https://github.com/apache/commons-io) - The Apache Commons IO library contains utility classes, stream implementations, file filters, file comparators, endian transformation classes, and much more.
-- [RxJava](https://github.com/ReactiveX/RxJava) - Reactive Extensions for the JVM – a library for composing asynchronous and event-based programs using observable sequences for the Java VM.
+- [Kotlin Coroutines](https://developer.android.com/kotlin/coroutines) - A coroutine is a concurrency design pattern that you can use on Android to simplify code that executes asynchronously.  
+- [Hilt](https://developer.android.com/training/dependency-injection/hilt-android) - Hilt is a dependency injection library for Android that reduces the boilerplate of doing manual dependency injection in your project. 
+- [Dagger](https://developer.android.com/training/dependency-injection/dagger-android) - Manual dependency injection or service locators in an Android app can be problematic depending on the size of your project. You can limit your project's complexity as it scales up by using Dagger to manage dependencies. Dagger automatically generates code that mimics the code you would otherwise have hand-written.
 - [android-async-http](https://loopj.com/android-async-http/) - A Callback-Based Http Client Library for Android
 - [Jackson](https://github.com/FasterXML/jackson) - Core part of Jackson that defines Streaming API as well as basic shared abstractions
 - [code-mc/loadtoast](https://github.com/code-mc/loadtoast) - Pretty material design toasts with feedback animations

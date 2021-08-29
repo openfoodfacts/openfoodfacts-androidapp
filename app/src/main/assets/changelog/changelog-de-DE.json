@@ -2,7 +2,7 @@
   "changelog": [
     {
       "date": "10.02.2021",
-      "code": 350,
+      "code": 518,
       "name": "3.5.0",
       "items": [
         "Verbesserter Strichcode-Scanner durch maschinelles Lernen. Sie können jetzt in den Optionen eine neue Art des Einlesens aktivieren. Sie können die Verarbeitung des Strichcode-Scanners jederzeit in den Einstellungen umschalten.",

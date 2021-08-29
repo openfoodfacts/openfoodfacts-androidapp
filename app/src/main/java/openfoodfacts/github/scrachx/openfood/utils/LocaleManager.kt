@@ -32,8 +32,8 @@ import javax.inject.Singleton
  */
 @Singleton
 class LocaleManager @Inject constructor(
-        @ApplicationContext context: Context,
-        private val sharedPreferences: SharedPreferences
+    @ApplicationContext context: Context,
+    private val sharedPreferences: SharedPreferences
 ) {
 
     private val selectedLanguageKey by lazy {
@@ -49,6 +49,14 @@ class LocaleManager @Inject constructor(
 
     fun restoreLocalizedContext(context: Context) = changeAppLanguage(context, currentLocale)
 
+    /**
+     * Get the language of the app [Locale] (Selected in settings).
+     *
+     * Calling this method is a shorthand for:
+     * ```
+     *      getLocale().getLanguage()
+     * ```
+     */
     fun getLanguage(): String = currentLocale.language
 
     fun getLocale(): Locale = currentLocale

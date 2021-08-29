@@ -83,6 +83,12 @@ object ApiFields {
          */
         const val PRODUCT_NAME = "product_name"
         const val NUTRIMENTS = "nutriments"
+
+        /**
+         * The product language code.
+         *
+         * Eg: "it", "en", "fr"
+         */
         const val LANG = "lang"
         const val IMAGE_FRONT = "image_front"
         const val IMAGE_FRONT_UPLOADED = "image_front_uploaded"

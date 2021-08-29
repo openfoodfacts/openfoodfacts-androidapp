@@ -18,7 +18,7 @@ class ProductIngredientTest {
         val additionalProperties = hashMapOf<String, Any>(additionalPropertyName to additionalPropertyValue)
 
         val productIngredient = ProductIngredient(text, id, rank, percent)
-                .apply { setAdditionalProperty(additionalPropertyName, additionalPropertyValue) }
+            .apply { setAdditionalProperty(additionalPropertyName, additionalPropertyValue) }
 
         val expectedString = "ProductIngredient[text=$text," +
                 "id=$id," +
@@ -31,7 +31,7 @@ class ProductIngredientTest {
     @Test
     fun `Fills up additional property`() {
         val productIngredient = ProductIngredient("Ketchup", "ketchup_id", 300L, "20%")
-                .apply { setAdditionalProperty("Sweetness", "90") }
+            .apply { setAdditionalProperty("Sweetness", "90") }
         assertThat(productIngredient.additionalProperties["Sweetness"]).isEqualTo("90")
     }
 

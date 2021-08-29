@@ -1,14 +1,15 @@
 package openfoodfacts.github.scrachx.openfood.utils
 
 import android.app.Activity
+import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.content.SharedPreferences
 import android.util.Log
-import androidx.core.net.toFile
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
-import com.theartofdev.edmodo.cropper.CropImage
+import com.canhub.cropper.CropImage
 import openfoodfacts.github.scrachx.openfood.R
+import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.utils.Utils.getOutputPicUri
 import pl.aprilapps.easyphotopicker.DefaultCallback
 import pl.aprilapps.easyphotopicker.EasyImage
@@ -19,14 +20,14 @@ import java.io.File
  * A class for handling photo receiver
  */
 class PhotoReceiverHandler(
-        private val sharedPreferences: SharedPreferences,
-        private val photoReceiver: (File) -> Unit,
+    private val sharedPreferences: SharedPreferences,
+    private val photoReceiver: (File) -> Unit,
 ) {
     fun onActivityResult(fragment: Fragment, requestCode: Int, resultCode: Int, data: Intent?) =
-            onActivityResult(null, fragment, requestCode, resultCode, data)
+        onActivityResult(null, fragment, requestCode, resultCode, data)
 
     fun onActivityResult(activity: Activity, requestCode: Int, resultCode: Int, data: Intent?) =
-            onActivityResult(activity, null, requestCode, resultCode, data)
+        onActivityResult(activity, null, requestCode, resultCode, data)
 
     private fun onActivityResult(activity: Activity?, fragment: Fragment?, requestCode: Int, resultCode: Int, data: Intent?) {
         if (onCropResult(requestCode, resultCode, data)) return
@@ -42,23 +43,23 @@ class PhotoReceiverHandler(
                 if (cropActionEnabled) {
                     if (activity == null) {
                         CropImage.activity(imageFiles[0].toUri())
-                                .setCropMenuCropButtonIcon(R.drawable.ic_check_white_24dp)
-                                .setAllowFlipping(false)
-                                .setAllowRotation(true)
-                                .setAllowCounterRotation(true)
-                                .setAutoZoomEnabled(false)
-                                .setInitialCropWindowPaddingRatio(0f)
-                                .setOutputUri(getOutputPicUri(mainContext!!))
-                                .start(mainContext, fragment!!)
+                            .setCropMenuCropButtonIcon(R.drawable.ic_check_white_24dp)
+                            .setAllowFlipping(false)
+                            .setAllowRotation(true)
+                            .setAllowCounterRotation(true)
+                            .setAutoZoomEnabled(false)
+                            .setInitialCropWindowPaddingRatio(0f)
+                            .setOutputUri(getOutputPicUri(mainContext!!))
+                            .start(mainContext, fragment!!)
                     } else {
                         CropImage.activity(imageFiles[0].toUri())
-                                .setCropMenuCropButtonIcon(R.drawable.ic_check_white_24dp)
-                                .setAllowFlipping(false)
-                                .setAllowRotation(true)
-                                .setAllowCounterRotation(true)
-                                .setAutoZoomEnabled(false)
-                                .setInitialCropWindowPaddingRatio(0f)
-                                .start(activity)
+                            .setCropMenuCropButtonIcon(R.drawable.ic_check_white_24dp)
+                            .setAllowFlipping(false)
+                            .setAllowRotation(true)
+                            .setAllowCounterRotation(true)
+                            .setAutoZoomEnabled(false)
+                            .setInitialCropWindowPaddingRatio(0f)
+                            .start(activity)
                     }
                 } else {
                     imageFiles.forEach { photoReceiver(it) }
@@ -80,12 +81,22 @@ class PhotoReceiverHandler(
      */
     private fun onCropResult(requestCode: Int, resultCode: Int, data: Intent?): Boolean {
         if (requestCode != CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) return false
+        val result = CropImage.getActivityResult(data) ?: return true
 
-        val result = CropImage.getActivityResult(data)
-        if (resultCode == Activity.RESULT_OK && result.uri != null) {
-            photoReceiver(result.uri.toFile())
-        } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
-            Log.w(LOG_TAG, "Can't process photo", result.error)
+        when (resultCode) {
+            RESULT_OK -> {
+                if (result.uriContent != null) {
+
+                    // FIXME: Find a method to not use context
+                    photoReceiver(File(result.getUriFilePath(OFFApplication._instance)))
+
+                } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+                    Log.w(LOG_TAG, "Can't process photo", result.error)
+                }
+            }
+            CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE -> {
+                Log.w(LOG_TAG, "Can't process photo", result.error)
+            }
         }
         return true
     }

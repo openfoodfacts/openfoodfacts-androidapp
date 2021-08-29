@@ -3,20 +3,19 @@ package openfoodfacts.github.scrachx.openfood.features.welcome
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.StringRes
 import androidx.viewpager.widget.PagerAdapter
 
 class WelcomePageAdapter(
         private val layoutInflater: LayoutInflater,
-        @param:StringRes private val layouts: IntArray
 ) : PagerAdapter() {
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
-        val view = layoutInflater.inflate(layouts[position], container, false)
+        val layout = WelcomeScreen.values()[position].layout
+        val view = layoutInflater.inflate(layout, container, false)
         container.addView(view)
         return view
     }
 
-    override fun getCount() = layouts.size
+    override fun getCount() = WelcomeScreen.values().size
 
     override fun isViewFromObject(view: View, obj: Any) = view === obj
 

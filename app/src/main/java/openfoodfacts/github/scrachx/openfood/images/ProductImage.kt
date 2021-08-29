@@ -17,7 +17,7 @@ class ProductImage(
     constructor(code: String, field: ProductImageField, image: File, language: String?) :
             this(code, field, image.readBytes(), language)
 
-    val codeBody: RequestBody = RequestBody.create(OpenFoodAPIClient.MIME_TEXT, barcode)
+    val barcodeBody: RequestBody = RequestBody.create(OpenFoodAPIClient.MIME_TEXT, barcode)
     val fieldBody: RequestBody = RequestBody.create(OpenFoodAPIClient.MIME_TEXT, "${imageField}_$language")
 
     var imgFront: RequestBody? = null

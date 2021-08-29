@@ -64,7 +64,7 @@ object NetworkModule {
     @Provides
     @Singleton
     fun provideMainRetrofit(httpClient: OkHttpClient): Retrofit =
-        createDefaultRetrofit(httpClient)
+        httpClient.createDefaultRetrofit()
             .baseUrl(BuildConfig.HOST)
             .build()
 
@@ -72,7 +72,7 @@ object NetworkModule {
     @Provides
     @Singleton
     fun provideWikiRetrofit(httpClient: OkHttpClient): Retrofit =
-        createDefaultRetrofit(httpClient)
+        httpClient.createDefaultRetrofit()
             .baseUrl(BuildConfig.WIKIDATA)
             .build()
 
@@ -80,12 +80,12 @@ object NetworkModule {
     @Provides
     @Singleton
     fun provideRobotoffRetrofit(httpClient: OkHttpClient): Retrofit =
-        createDefaultRetrofit(httpClient)
+        httpClient.createDefaultRetrofit()
             .baseUrl("https://robotoff.openfoodfacts.org")
             .build()
 
-    private fun createDefaultRetrofit(httpClient: OkHttpClient) = Retrofit.Builder()
-        .client(httpClient)
+    private fun OkHttpClient.createDefaultRetrofit() = Retrofit.Builder()
+        .client(this)
         .addConverterFactory(JacksonConverterFactory.create(jacksonObjectMapper()))
         .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
 }

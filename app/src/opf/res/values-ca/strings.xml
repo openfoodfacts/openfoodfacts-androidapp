@@ -12,7 +12,7 @@
     <string name="website_contributor">https://world-ca.openfoodfacts.org/contributor/</string>
     <string name="terms_url">https://es-ca.openproductsfacts.org/terms-of-use</string>
     <string name="txtHomeOnline">Open Products Facts és una base de dades oberta de més de %1$s productes (més els que aportareu).</string>
-    <string name="txtHome">Open Food Facts és una base de dades oberta de productes amb ingredients, al·lèrgens, dades nutricionals i totes les peces d\'informació que es poden trobar a les etiquetes dels productes.</string>
+    <string name="txtHome">Open Products Facts és una base de dades oberta de productes amb ingredients, al·lèrgens, dades nutricionals i totes les peces d\'informació que es poden trobar a les etiquetes dels productes.</string>
     <string name="slide_1_title">Contribuïu a la transparència dels productes</string>
     <string name="slide_1_desc">Scan products, take them in picture, make food transparency happen</string>
     <string name="slide_2_title">Obteniu les Dades</string>

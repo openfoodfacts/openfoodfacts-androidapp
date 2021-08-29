@@ -12,7 +12,7 @@
     <string name="website_contributor">https://world.openfoodfacts.org/contributor/</string>
     <string name="terms_url">https://world.openproductsfacts.org/terms-of-use</string>
     <string name="txtHomeOnline">Open Products Facts is an open database of more than %1$s products (plus the ones you will contribute).</string>
-    <string name="txtHome">Open Food Facts 是一個食品的開發資料庫，它提供食品的營養成份、原料、配料、過敏原、…等資訊。這些資訊的來源全來自於產品本身的外包裝，</string>
+    <string name="txtHome">Open Products Facts 是一個食品的開發資料庫，它提供食品的營養成份、原料、配料、過敏原、…等資訊。這些資訊的來源全來自於產品本身的外包裝，</string>
     <string name="slide_1_title">Contribute to product transparency</string>
     <string name="slide_1_desc">Scan products, take them in picture, make food transparency happen</string>
     <string name="slide_2_title">Get the facts</string>

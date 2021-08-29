@@ -27,9 +27,6 @@ import androidx.core.content.edit
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.rxkotlin.addTo
-import io.reactivex.schedulers.Schedulers
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -168,22 +165,21 @@ class HomeFragment : NavigationBaseFragment() {
     private fun refreshProductCount(oldCount: Int) {
         Log.d(LOG_TAG, "Refreshing total product count...")
 
-        productsApi.getTotalProductCount(getUserAgent())
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnSubscribe { setProductCount(oldCount) }
-            .doOnError {
+        lifecycleScope.launch {
+            val resp = try {
+                withContext(Dispatchers.IO) { productsApi.getTotalProductCount(getUserAgent()) }
+            } catch (err: Exception) {
+                Log.e(LOG_TAG, "Could not retrieve product count from server.", err)
                 setProductCount(oldCount)
-                Log.e(LOG_TAG, "Could not retrieve product count from server.", it)
+                return@launch
             }
-            .subscribe { resp ->
-                val totalProductCount = resp.count.toInt()
-                Log.d(LOG_TAG, "Refreshed total product count. There are $totalProductCount products on the database.")
-                setProductCount(totalProductCount)
-                sharedPrefs.edit {
-                    putInt(PRODUCT_COUNT_KEY, totalProductCount)
-                    apply()
-                }
-            }.addTo(disp)
+            val count = resp.count.toInt()
+            Log.d(LOG_TAG, "Refreshed total product count. There are $count products on the database.")
+
+            setProductCount(count)
+
+            sharedPrefs.edit { putInt(PRODUCT_COUNT_KEY, count) }
+        }
     }
 
     /**
@@ -193,9 +189,9 @@ class HomeFragment : NavigationBaseFragment() {
      */
     private fun setProductCount(count: Int) {
         if (count == 0) {
-            binding.textHome.setText(R.string.txtHome)
+            binding.textHome.text = getString(R.string.txtHome)
         } else {
-            binding.textHome.text = resources.getString(R.string.txtHomeOnline, NumberFormat.getInstance().format(count))
+            binding.textHome.text = getString(R.string.txtHomeOnline, NumberFormat.getInstance().format(count))
         }
     }
 
@@ -203,29 +199,31 @@ class HomeFragment : NavigationBaseFragment() {
      * get tag line url from OpenFoodAPIService
      */
     private fun refreshTagLine() {
-        productsApi.getTagline(getUserAgent())
-            .subscribeOn(Schedulers.io()) // io for network
-            .observeOn(AndroidSchedulers.mainThread()) // Move to main thread for UI changes
-            .doOnError { Log.w(LOG_TAG, "Could not retrieve tag-line from server.", it) }
-            .subscribe { tagLines ->
-                val appLanguage = localeManager.getLanguage()
-                var isLanguageFound = false
-                var isExactLanguageFound = false
-                tagLines.forEach { tag ->
-                    if (!isExactLanguageFound && (tag.language == appLanguage || tag.language.contains(appLanguage))) {
-                        isExactLanguageFound = tag.language == appLanguage
-                        taglineURL = tag.tagLine.url
-                        binding.tvTagLine.text = tag.tagLine.message
-                        isLanguageFound = true
-                    }
-                }
-                if (!isLanguageFound) {
-                    taglineURL = tagLines.last().tagLine.url
-                    binding.tvTagLine.text = tagLines.last().tagLine.message
-                }
-                binding.tvTagLine.visibility = View.VISIBLE
+        lifecycleScope.launch {
+            val tagLines = try {
+                withContext(Dispatchers.IO) { productsApi.getTagline(getUserAgent()) }
+            } catch (err: Exception) {
+                Log.w(LOG_TAG, "Could not retrieve tag-line from server.", err)
+                return@launch
             }
-            .addTo(disp)
+
+            val appLanguage = localeManager.getLanguage()
+            var isLanguageFound = false
+
+            for (tag in tagLines) {
+                if (appLanguage !in tag.language) continue
+                isLanguageFound = true
+                taglineURL = tag.tagLine.url
+                binding.tvTagLine.text = tag.tagLine.message
+                if (tag.language == appLanguage) break
+            }
+
+            if (!isLanguageFound) {
+                taglineURL = tagLines.last().tagLine.url
+                binding.tvTagLine.text = tagLines.last().tagLine.message
+            }
+            binding.tvTagLine.visibility = View.VISIBLE
+        }
     }
 
     companion object {

@@ -7,14 +7,14 @@ import java.io.Serializable
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class Question(
-        @JsonProperty("barcode") val code: String? = null,
-        @JsonProperty("type") val type: String? = null,
-        @JsonProperty("value") val value: String? = null,
-        @JsonProperty("question") val questionText: String? = null,
-        @JsonProperty("insight_id") val insightId: String? = null,
-        @JsonProperty("insight_type") val insightType: String? = null,
-        @JsonProperty("source_image_url") val sourceImageUrl: String? = null,
-        @JsonProperty("image_url") val imageUrl: String? = null,
+    @JsonProperty("barcode") val code: String? = null,
+    @JsonProperty("type") val type: String? = null,
+    @JsonProperty("value") val value: String? = null,
+    @JsonProperty("question") val questionText: String? = null,
+    @JsonProperty("insight_id") val insightId: String? = null,
+    @JsonProperty("insight_type") val insightType: String? = null,
+    @JsonProperty("source_image_url") val sourceImageUrl: String? = null,
+    @JsonProperty("image_url") val imageUrl: String? = null,
 ) : Serializable {
     @JsonIgnore
     fun isEmpty() = questionText.isNullOrEmpty()

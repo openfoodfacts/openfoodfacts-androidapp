@@ -26,7 +26,7 @@ class AdditivesAdapter(
 
         holder.itemView.setOnClickListener {
             if (clickListener != null) {
-                val pos = holder.adapterPosition
+                val pos = holder.bindingAdapterPosition
                 clickListener.invoke(pos, additives[pos].name)
             }
         }
