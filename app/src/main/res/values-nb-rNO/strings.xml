@@ -187,7 +187,7 @@
     <string name="hintBarcode">Strekkode</string>
     <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
     <string name="txtloginHelper">If you have an Open Food Facts account, you can login here with it</string>
-    <string name="hintLogin">Username</string>
+    <string name="hintLogin">Login</string>
     <string name="hintPass">Passord</string>
     <string name="errorLogin">Innloggings- eller passordfeil</string>
     <string name="errorWeb">Vi klarte ikke å koble til Internett. Har du tilkoblingsproblemer?</string>

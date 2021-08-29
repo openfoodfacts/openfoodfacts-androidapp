@@ -187,7 +187,7 @@
     <string name="hintBarcode">Triipkood</string>
     <string name="txtNutriScoreInfo">Lisateave toitainete taseme kohta</string>
     <string name="txtloginHelper">If you have an Open Food Facts account, you can login here with it</string>
-    <string name="hintLogin">Username</string>
+    <string name="hintLogin">Login</string>
     <string name="hintPass">Password</string>
     <string name="errorLogin">Login or password error</string>
     <string name="errorWeb">We were not able to access the internet. Do you have connectivity issues?</string>
