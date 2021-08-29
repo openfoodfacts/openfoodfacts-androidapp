@@ -170,7 +170,7 @@
     <string name="alert_dialog_warning_title">Opozorilo</string>
     <string name="alert_dialog_warning_msg_user">Uporabnik / geslo se je spremenilo, posodobite podatke</string>
     <string name="toast_retrieving">Nalaganje…</string>
-    <string name="txtBarcode">Barcode:</string>
+    <string name="txtBarcode">Črtna koda:</string>
     <string name="txtCategories">Kategorije:</string>
     <string name="txtLabels">Etikete, certifikati, nagrade:</string>
     <string name="txtEMB">Traceability codes:</string>

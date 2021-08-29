@@ -155,7 +155,7 @@
     <string name="alert_dialog_warning_title">Warning</string>
     <string name="alert_dialog_warning_msg_user">ผู้ใช้/รหัสผ่านมีการเปลี่ยนแปลง โปรดอัปเดตข้อมูล</string>
     <string name="toast_retrieving">Loading…</string>
-    <string name="txtBarcode">Barcode:</string>
+    <string name="txtBarcode">บาร์โค้ด :</string>
     <string name="txtCategories">หมวดหมู่</string>
     <string name="txtLabels">ป้าย, ใบรับรอง, รางวัลต่างๆที่ได้รับ :</string>
     <string name="txtEMB">Traceability codes:</string>

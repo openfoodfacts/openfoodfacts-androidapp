@@ -155,7 +155,7 @@
     <string name="alert_dialog_warning_title">သတိေပးခ်က္</string>
     <string name="alert_dialog_warning_msg_user">အသံုးျပဳသူ၊စကားဝွက္ေျပာင္းလဲသြားပါသည္။ အခ်က္အလက္မ်ား အသစ္မြမ္းမံေပးပါ</string>
     <string name="toast_retrieving">ဖြင့္ေနသည္</string>
-    <string name="txtBarcode">Barcode:</string>
+    <string name="txtBarcode">ဘားကုဒ္-</string>
     <string name="txtCategories">ေခါင္းစဥ္မ်ား -</string>
     <string name="txtLabels">Labels, certifications, awards :</string>
     <string name="txtEMB">Traceability codes:</string>

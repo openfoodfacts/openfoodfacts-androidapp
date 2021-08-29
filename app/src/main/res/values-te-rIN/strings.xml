@@ -160,7 +160,7 @@
     <string name="alert_dialog_warning_title">Warning</string>
     <string name="alert_dialog_warning_msg_user">వాడుకరి / పాస్వర్డ్ మార్చబడింది, దయచేసి సమాచారం అప్డేట్ చేయండి</string>
     <string name="toast_retrieving">Loading...</string>
-    <string name="txtBarcode">Barcode:</string>
+    <string name="txtBarcode">బార్కోడ్:</string>
     <string name="txtCategories">వర్గాలు :</string>
     <string name="txtLabels">లేబుళ్ళు, ధృవపత్రాలు, అవార్డులు:</string>
     <string name="txtEMB">Traceability codes:</string>
