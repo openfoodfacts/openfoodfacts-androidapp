@@ -381,7 +381,7 @@ class OpenFoodAPIClient @Inject constructor(
         }
 
 
-        context.getSharedPreferences("prefs", 0).edit {
+        context.getAppPreferences().edit {
             putBoolean("is_old_history_data_synced", true)
         }
     }

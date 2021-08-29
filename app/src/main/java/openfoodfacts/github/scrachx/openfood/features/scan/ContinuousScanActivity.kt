@@ -130,7 +130,7 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
     private val bottomSheetCallback by lazy { QuickViewCallback(this) }
 
     private val cameraPref by lazy { getSharedPreferences("camera", 0) }
-    private val settings by lazy { getSharedPreferences("prefs", 0) }
+    private val settings by lazy { getAppPreferences() }
 
     private var productDisp: Job? = null
     private var hintBarcodeDisp: Disposable? = null
@@ -489,7 +489,7 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
         _binding = ActivityContinuousScanBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        useMLScanner = BuildConfig.USE_MLKIT && settings.getBoolean(getString(R.string.pref_scanner_type_key), false)
+        useMLScanner = BuildConfig.USE_MLKIT && settings.getBoolean(getString(R.string.pref_scanner_mlkit_key), false)
 
         binding.toggleFlash.setOnClickListener { toggleFlash() }
         binding.buttonMore.setOnClickListener { showMoreSettings() }

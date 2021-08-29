@@ -83,14 +83,26 @@ fun Float.sodiumToSalt() = this * SALT_PER_SODIUM
 fun Measurement.saltToSodium() = Measurement(value.saltToSodium(), unit)
 fun Measurement.sodiumToSalt() = Measurement(value.sodiumToSalt(), unit)
 
+private val SIZE_REGEX = Regex("(\\d+[.,]?\\d*)\\s*([A-z]+)?")
+
 fun getServingIn(servingSize: String, unit: MeasurementUnit): Measurement? {
-    val match = Regex("(\\d+(?:\\.\\d+)?) *(\\w+)").find(servingSize) ?: return null
+    val match = SIZE_REGEX.find(servingSize) ?: return null
 
     val value = match.groupValues[1].toFloat()
     val servingUnit = match.groupValues[2].let { Companion.findBySymbol(it) } ?: return null
 
     val measurement = Measurement(value, servingUnit)
     return measurement.convertTo(unit)
+}
+
+fun parseServing(servingSize: String): Pair<String, MeasurementUnit?> {
+    val match = SIZE_REGEX.find(servingSize)
+        ?: throw IllegalArgumentException("Could not parse serving size '$servingSize'")
+
+    val value = match.groupValues[1]
+    val unit = match.groupValues[2].let { Companion.findBySymbol(it) }
+
+    return value to unit
 }
 
 fun getServingInOz(servingSize: String) = getServingIn(servingSize, UNIT_OZ)

@@ -304,12 +304,12 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         getModifierIndex(nutriments[nutriment]?.modifier)
 
     private fun updateServingSize(servingSize: String) {
-        val parts = servingSize.split(Regex("(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)"))
-        binding.servingSize.setText(parts[0])
 
-        if (parts.size > 1) {
-            val symbol = parts[1].trim { it <= ' ' }
-            val unit = MeasurementUnit.findBySymbol(symbol)!!
+        val (value, unit) = parseServing(servingSize)
+
+        binding.servingSize.setText(value)
+
+        if (unit != null) {
             binding.servingSize.unitSpinner?.setSelection(getServingUnitIndex(unit))
         }
     }
@@ -980,5 +980,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
                 override fun onNothingSelected(parent: AdapterView<*>?) = Unit // This is not possible
             }
         }
+
     }
 }
+

@@ -25,7 +25,6 @@ import openfoodfacts.github.scrachx.openfood.models.entities.ProductLists
 import org.apache.commons.csv.CSVFormat
 import org.apache.commons.csv.CSVPrinter
 import org.jetbrains.annotations.Contract
-import java.io.File
 import java.io.IOException
 
 private const val LOG_TAG = "FileUtils"
@@ -132,27 +131,6 @@ fun createNotificationManager(context: Context): NotificationManager {
         notificationManager.createNotificationChannel(notificationChannel)
     }
     return notificationManager
-}
-
-
-fun Context.clearCameraCache() {
-    (getCameraCacheLocation().listFiles() ?: return).forEach {
-        if (it.delete()) Log.i(LOG_TAG, "Deleted cached photo '${it.absolutePath}'.")
-        else Log.i(LOG_TAG, "Couldn't delete cached photo '${it.absolutePath}'.")
-    }
-}
-
-fun Context.getCameraCacheLocation(): File {
-    var cacheDir = cacheDir
-    if (Utils.isExternalStorageWritable()) {
-        cacheDir = externalCacheDir
-    }
-    val picDir = File(cacheDir, "EasyImage")
-    if (!picDir.exists()) {
-        if (picDir.mkdirs()) Log.i(LOG_TAG, "Directory '${picDir.absolutePath}' created.")
-        else Log.i(LOG_TAG, "Couldn't create directory '${picDir.absolutePath}'.")
-    }
-    return picDir
 }
 
 

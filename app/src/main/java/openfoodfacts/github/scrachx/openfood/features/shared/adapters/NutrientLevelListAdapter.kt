@@ -1,7 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.features.shared.adapters
 
 import android.content.Context
-import android.view.LayoutInflater
 import android.view.View
 import android.view.View.NO_ID
 import android.view.ViewGroup
@@ -14,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.features.shared.adapters.NutrientLevelListAdapter.NutrientViewHolder
 import openfoodfacts.github.scrachx.openfood.models.NutrientLevelItem
+import android.view.LayoutInflater.from as inflateFrom
 
 class NutrientLevelListAdapter(
     private val context: Context,
@@ -21,10 +21,8 @@ class NutrientLevelListAdapter(
 ) : RecyclerView.Adapter<NutrientViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        NutrientViewHolder(
-            LayoutInflater.from(parent.context)
-                .inflate(R.layout.nutrient_lvl_list_item, parent, false)
-        )
+        NutrientViewHolder(inflateFrom(parent.context).inflate(R.layout.nutrient_lvl_list_item, parent, false))
+
 
     override fun onBindViewHolder(holder: NutrientViewHolder, position: Int) {
         val (category, value, label, icon) = nutrientLevelItems[position]
