@@ -1,6 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.utils
 
 import com.google.common.truth.Truth.assertThat
+import openfoodfacts.github.scrachx.openfood.models.MeasurementUnit
 import openfoodfacts.github.scrachx.openfood.models.MeasurementUnit.*
 import org.junit.Assert.assertThrows
 import org.junit.Test
@@ -106,6 +107,20 @@ class UnitUtilsTest {
         assertThat(measure(5f, UNIT_GRAM).sodiumToSalt().value).isWithin(TOL).of(12.7f)
         assertThat(measure(5f, UNIT_GRAM).saltToSodium().value).isWithin(TOL).of(1.96850393701f)
     }
+
+    @Test
+    fun `test serving size parsing`() {
+        assertThat(parseServing("25g")).isEqualTo("25" to UNIT_GRAM)
+        assertThat(parseServing("25 g")).isEqualTo("25" to UNIT_GRAM)
+        assertThat(parseServing("25.7g")).isEqualTo("25.7" to UNIT_GRAM)
+        assertThat(parseServing("25.7 g")).isEqualTo("25.7" to UNIT_GRAM)
+        assertThat(parseServing("25,7g")).isEqualTo("25,7" to UNIT_GRAM)
+        assertThat(parseServing("25,7 g")).isEqualTo("25,7" to UNIT_GRAM)
+        assertThat(parseServing("25.5.7g")).isEqualTo(Pair<String, MeasurementUnit?>("25.5", null))
+        assertThat(parseServing("25.5.7")).isEqualTo(Pair<String, MeasurementUnit?>("25.5", null))
+    }
+
+    infix fun <A, B> A.toNull(second: B): Pair<A, B?> = (this to second)
 
     companion object {
         private const val TOL = 1e-5f
