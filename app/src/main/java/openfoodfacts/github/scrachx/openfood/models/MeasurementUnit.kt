@@ -23,6 +23,8 @@ enum class MeasurementUnit(val sym: String) {
 
     companion object {
         fun findBySymbol(symbol: String) = values().find { it.sym == symbol }
+        fun requireBySymbol(symbol: String) = findBySymbol(symbol)
+            ?: throw IllegalArgumentException("Could not find unit with symbol '$symbol'.")
     }
 }
 

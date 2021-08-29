@@ -155,7 +155,7 @@
     <string name="alert_dialog_warning_title">警告</string>
     <string name="alert_dialog_warning_msg_user">ユーザー/パスワードを変更しました。情報を更新してください</string>
     <string name="toast_retrieving">読み込んでいます…</string>
-    <string name="txtBarcode">バーコード :</string>
+    <string name="txtBarcode">バーコード:</string>
     <string name="txtCategories">カテゴリー :</string>
     <string name="txtLabels">ラベル、認定、表彰 :</string>
     <string name="txtEMB">Traceability codes:</string>
@@ -466,9 +466,10 @@
     <string name="additive_string">添加物</string>
     <string name="allergen_string">アレルゲン</string>
     <string name="search_string">検索</string>
-    <string name="country_string">販売の国</string>
+    <string name="country_string">Country</string>
     <string name="store_subtitle">店舗</string>
     <string name="packaging_subtitle">パッケージング</string>
+    <string name="state_subtitle">状態</string>
     <string name="packaging_string">パッケージング</string>
     <string name="label_string">ラベル</string>
     <string name="category_string">カテゴリー</string>

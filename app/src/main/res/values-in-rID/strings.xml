@@ -113,7 +113,7 @@
         <item>Mead acid (20:3 n-9)</item>
         <item>Melissic acid (30:0)</item>
         <item>Molibdenum</item>
-        <item>Lemak tak jenuh Mono</item>
+        <item>Monounsaturated fat</item>
         <item>Montanic acid (28:0)</item>
         <item>Myristic acid (14:0)</item>
         <item>Nervonic acid (24:1 n-9)</item>
@@ -155,7 +155,7 @@
     <string name="alert_dialog_warning_title">bahayaa</string>
     <string name="alert_dialog_warning_msg_user">pengguna  / katasandi telah berubah, mohon memperbaharui informasi</string>
     <string name="toast_retrieving">sedang memuat</string>
-    <string name="txtBarcode">kode batang anda</string>
+    <string name="txtBarcode">Barcode:</string>
     <string name="txtCategories">Kategori:</string>
     <string name="txtLabels">Label, sertifikasi, penghargaan:</string>
     <string name="txtEMB">Traceability codes:</string>
@@ -316,7 +316,7 @@
     <string name="for_100g">untuk100g</string>
     <string name="for_100ml">For 100 ml</string>
     <string name="serving">porsi</string>
-    <string name="nutrition_monounsaturatedFat">Lemak tak jenuh Mono</string>
+    <string name="nutrition_monounsaturatedFat">Monounsaturated fat</string>
     <string name="nutrition_polyunsaturatedFat">Polyunsaturated fat</string>
     <string name="nutrition_omega3">Omega3</string>
     <string name="nutrition_omega6">Omega 6</string>
@@ -375,10 +375,10 @@
     <string name="txtSaturatedFat">Lemak jenuh</string>
     <string name="nutriscore_info_msg">Learn more about the Nutri-Score</string>
     <string name="nova_info_msg">Learn more about NOVA groups</string>
-    <string name="nova_grp1_msg">Group 1 - Unprocessed or minimally processed foods</string>
-    <string name="nova_grp2_msg">Group 2 - Processed culinary ingredients</string>
-    <string name="nova_grp3_msg">Group 3 - Processed foods</string>
-    <string name="nova_grp4_msg">Group 4 - Ultra-processed food and drink products</string>
+    <string name="nova_grp1_msg">Kelompok 1 - Makanan yang tidak diproses atau diproses minimal</string>
+    <string name="nova_grp2_msg">Kelompok 2 - Olahan bahan kuliner</string>
+    <string name="nova_grp3_msg">Kelompok 3 - Makanan olahan</string>
+    <string name="nova_grp4_msg">Kelompok 4 - Produk makanan dan minuman yang ultra proses</string>
     <!-- String related to App Shortcuts -->
     <string name="disabled_message">Pintasan tidak tersedia</string>
     <string name="scan_shortcut_short_label">Pindai</string>
@@ -466,9 +466,10 @@
     <string name="additive_string">Aditif</string>
     <string name="allergen_string">Allergen</string>
     <string name="search_string">mencari </string>
-    <string name="country_string">Negara tempat dijual</string>
+    <string name="country_string">Country</string>
     <string name="store_subtitle">Toko</string>
     <string name="packaging_subtitle">Pengemasan</string>
+    <string name="state_subtitle">Negara</string>
     <string name="packaging_string">Pengemasan</string>
     <string name="label_string">Label</string>
     <string name="category_string">Kategori</string>
@@ -576,7 +577,7 @@
     <string name="your_version">Yours</string>
     <string name="ingredients_picture">Ingredients Picture</string>
     <string name="packaging">Recycling</string>
-    <string name="take_ingredients_picture_to_extract">(Please take a picture of the ingredients to automatically extract them)</string>
+    <string name="take_ingredients_picture_to_extract">(Please take a photo of the ingredients to automatically extract them)</string>
     <string name="ingredients_list">Ingredients List</string>
     <string name="ingredients_hint">Keep the order, indicate the % when specified, separate with a comma or use -, use () for ingredients of an ingredient, surround allergens with _</string>
     <string name="extract_ingredients">Extract ingredients</string>

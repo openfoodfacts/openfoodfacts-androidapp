@@ -160,7 +160,7 @@
     <string name="alert_dialog_warning_title">Advarsel</string>
     <string name="alert_dialog_warning_msg_user">Brukernavn/passord er endret, vennligst oppdater dine innloggingsdetaljer</string>
     <string name="toast_retrieving">Laster…</string>
-    <string name="txtBarcode">Strekkode :</string>
+    <string name="txtBarcode">Strekkode:</string>
     <string name="txtCategories">Kategori:</string>
     <string name="txtLabels">Etiketter, sertifiseringer, priser :</string>
     <string name="txtEMB">Traceability codes:</string>
@@ -471,9 +471,10 @@
     <string name="additive_string">Tilsetningsstoff</string>
     <string name="allergen_string">Allergen</string>
     <string name="search_string">Søk</string>
-    <string name="country_string">Land hvor produktet selges</string>
+    <string name="country_string">Country</string>
     <string name="store_subtitle">Butikk</string>
     <string name="packaging_subtitle">Emballasje</string>
+    <string name="state_subtitle">Region</string>
     <string name="packaging_string">Emballasje</string>
     <string name="label_string">Etikett</string>
     <string name="category_string">Kategori</string>
@@ -582,7 +583,7 @@
     <string name="your_version">Yours</string>
     <string name="ingredients_picture">Ingredients Picture</string>
     <string name="packaging">Recycling</string>
-    <string name="take_ingredients_picture_to_extract">(Please take a picture of the ingredients to automatically extract them)</string>
+    <string name="take_ingredients_picture_to_extract">(Please take a photo of the ingredients to automatically extract them)</string>
     <string name="ingredients_list">Ingredients List</string>
     <string name="ingredients_hint">Keep the order, indicate the % when specified, separate with a comma or use -, use () for ingredients of an ingredient, surround allergens with _</string>
     <string name="extract_ingredients">Extract ingredients</string>

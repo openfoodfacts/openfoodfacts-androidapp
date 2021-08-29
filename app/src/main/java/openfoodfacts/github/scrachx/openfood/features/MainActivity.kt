@@ -20,7 +20,7 @@ import android.app.SearchManager
 import android.content.*
 import android.content.SharedPreferences
 import android.content.pm.ActivityInfo
-import android.content.pm.PackageManager
+import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.graphics.BitmapFactory
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
@@ -52,15 +52,12 @@ import com.google.zxing.*
 import com.google.zxing.common.HybridBinarizer
 import com.mikepenz.iconics.typeface.library.googlematerial.GoogleMaterial
 import com.mikepenz.materialdrawer.AccountHeader
-import com.mikepenz.materialdrawer.AccountHeaderBuilder
 import com.mikepenz.materialdrawer.Drawer
-import com.mikepenz.materialdrawer.DrawerBuilder
 import com.mikepenz.materialdrawer.holder.StringHolder
 import com.mikepenz.materialdrawer.model.*
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem
 import com.mikepenz.materialdrawer.model.interfaces.IProfile
 import dagger.hilt.android.AndroidEntryPoint
-import io.reactivex.disposables.CompositeDisposable
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
@@ -85,6 +82,7 @@ import openfoodfacts.github.scrachx.openfood.features.changelog.ChangelogDialog
 import openfoodfacts.github.scrachx.openfood.features.compare.ProductCompareActivity
 import openfoodfacts.github.scrachx.openfood.features.login.LoginActivity
 import openfoodfacts.github.scrachx.openfood.features.login.LoginActivity.Companion.LoginContract
+import openfoodfacts.github.scrachx.openfood.features.preferences.PreferencesFragment
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity
 import openfoodfacts.github.scrachx.openfood.features.productlists.ProductListsActivity
 import openfoodfacts.github.scrachx.openfood.features.scanhistory.ScanHistoryActivity
@@ -145,8 +143,6 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
     @Inject
     lateinit var localeManager: LocaleManager
 
-    private val disp = CompositeDisposable()
-
     private val contributeUri: Uri by lazy { Uri.parse(getString(R.string.website_contribute)) }
     private val discoverUri: Uri by lazy { Uri.parse(getString(R.string.website_discover)) }
     private fun getUserContributeUri(): Uri = Uri.parse(getString(R.string.website_contributor) + getUserLogin())
@@ -195,12 +191,13 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
 
         // Create the AccountHeader
         val profile = getUserProfile()
-        var accountHeaderBuilder = AccountHeaderBuilder()
-            .withActivity(this)
-            .withTranslucentStatusBar(true)
-            .withTextColorRes(R.color.white)
-            .addProfiles(profile)
-            .withOnAccountHeaderProfileImageListener(object : AccountHeader.OnAccountHeaderProfileImageListener {
+
+        headerResult = buildAccountHeader {
+            withActivity(this@MainActivity)
+            withTranslucentStatusBar(true)
+            withTextColorRes(R.color.white)
+            addProfiles(profile)
+            withOnAccountHeaderProfileImageListener(object : AccountHeader.OnAccountHeaderProfileImageListener {
                 override fun onProfileImageClick(view: View, profile: IProfile<*>, current: Boolean): Boolean {
                     if (!isUserSet()) startActivity(Intent(this@MainActivity, LoginActivity::class.java))
                     return false
@@ -208,14 +205,14 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
 
                 override fun onProfileImageLongClick(view: View, profile: IProfile<*>, current: Boolean) = false
             })
-            .withOnAccountHeaderSelectionViewClickListener(object : AccountHeader.OnAccountHeaderSelectionViewClickListener {
+            withOnAccountHeaderSelectionViewClickListener(object : AccountHeader.OnAccountHeaderSelectionViewClickListener {
                 override fun onClick(view: View, profile: IProfile<*>): Boolean {
                     if (!isUserSet()) startActivity(Intent(this@MainActivity, LoginActivity::class.java))
                     return false
                 }
             })
-            .withSelectionListEnabledForSingleProfile(selectionListEnabledForSingleProfile = false)
-            .withOnAccountHeaderListener(object : AccountHeader.OnAccountHeaderListener {
+            withSelectionListEnabledForSingleProfile(false)
+            withOnAccountHeaderListener(object : AccountHeader.OnAccountHeaderListener {
                 override fun onProfileChanged(view: View?, profile: IProfile<*>, current: Boolean): Boolean {
                     if (profile is IDrawerItem<*> && profile.identifier == ITEM_MANAGE_ACCOUNT.toLong()) {
                         CustomTabActivityHelper.openCustomTab(
@@ -228,148 +225,21 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
                     return false
                 }
             })
-            .withSavedInstance(savedInstanceState)
-        accountHeaderBuilder = try {
-            accountHeaderBuilder.withHeaderBackground(R.drawable.header)
-        } catch (e: OutOfMemoryError) {
-            Log.w(LOG_TAG, "Device has too low memory, loading color drawer header...", e)
-            accountHeaderBuilder.withHeaderBackground(ColorDrawable(ContextCompat.getColor(this, R.color.primary_dark)))
+            withSavedInstance(savedInstanceState)
+
+            try {
+                withHeaderBackground(R.drawable.header)
+            } catch (e: OutOfMemoryError) {
+                Log.w(LOG_TAG, "Device has too low memory, loading color drawer header...", e)
+                withHeaderBackground(ColorDrawable(ContextCompat.getColor(this@MainActivity, R.color.primary_dark)))
+            }
         }
-        headerResult = accountHeaderBuilder.build()
 
         // Add Manage Account profile if the user is connected
         if (isUserSet() && getUserSession() != null) updateProfileForCurrentUser()
 
         // Create the drawer
-        drawerResult = DrawerBuilder()
-            .withActivity(this)
-            .withToolbar(binding.toolbarInclude.toolbar)
-            .withHasStableIds(true)
-            .withAccountHeader(headerResult) //set the AccountHeader we created earlier for the header
-            .withOnDrawerListener(object : Drawer.OnDrawerListener {
-                override fun onDrawerSlide(drawerView: View, slideOffset: Float) = hideKeyboard()
-                override fun onDrawerOpened(drawerView: View) = hideKeyboard()
-                override fun onDrawerClosed(drawerView: View) = Unit
-            })
-            .addDrawerItems(
-                PrimaryDrawerItem().withName(R.string.home_drawer).withIcon(GoogleMaterial.Icon.gmd_home).withIdentifier(ITEM_HOME.toLong()),
-
-                SectionDrawerItem().withName(R.string.search_drawer),
-
-                PrimaryDrawerItem().withName(R.string.search_by_barcode_drawer).withIcon(GoogleMaterial.Icon.gmd_dialpad)
-                    .withIdentifier(ITEM_SEARCH_BY_CODE.toLong()),
-                PrimaryDrawerItem().withName(R.string.search_by_category).withIcon(GoogleMaterial.Icon.gmd_filter_list).withIdentifier(ITEM_CATEGORIES.toLong())
-                    .withSelectable(false),
-                PrimaryDrawerItem().withName(R.string.additives).withIcon(R.drawable.ic_additives).withIdentifier(ITEM_ADDITIVES.toLong())
-                    .withSelectable(false),
-                PrimaryDrawerItem().withName(R.string.scan_search).withIcon(R.drawable.barcode_grey_24dp).withIdentifier(ITEM_SCAN.toLong())
-                    .withSelectable(false),
-                PrimaryDrawerItem().withName(R.string.compare_products).withIcon(GoogleMaterial.Icon.gmd_swap_horiz).withIdentifier(ITEM_COMPARE.toLong())
-                    .withSelectable(false),
-                PrimaryDrawerItem().withName(R.string.advanced_search_title).withIcon(GoogleMaterial.Icon.gmd_insert_chart)
-                    .withIdentifier(ITEM_ADVANCED_SEARCH.toLong()).withSelectable(false),
-                PrimaryDrawerItem().withName(R.string.scan_history_drawer).withIcon(GoogleMaterial.Icon.gmd_history).withIdentifier(ITEM_HISTORY.toLong())
-                    .withSelectable(false),
-
-                SectionDrawerItem().withName(R.string.user_drawer).withIdentifier(USER_ID),
-
-                PrimaryDrawerItem().withName(getString(R.string.action_contributes)).withIcon(GoogleMaterial.Icon.gmd_rate_review)
-                    .withIdentifier(ITEM_MY_CONTRIBUTIONS.toLong()).withSelectable(false),
-                PrimaryDrawerItem().withName(R.string.your_lists).withIcon(GoogleMaterial.Icon.gmd_list).withIdentifier(ITEM_YOUR_LISTS.toLong())
-                    .withSelectable(false),
-                PrimaryDrawerItem().withName(R.string.products_to_be_completed).withIcon(GoogleMaterial.Icon.gmd_edit)
-                    .withIdentifier(ITEM_INCOMPLETE_PRODUCTS.toLong()).withSelectable(false),
-                PrimaryDrawerItem().withName(R.string.alert_drawer).withIcon(GoogleMaterial.Icon.gmd_warning).withIdentifier(ITEM_ALERT.toLong()),
-                PrimaryDrawerItem().withName(R.string.action_preferences).withIcon(GoogleMaterial.Icon.gmd_settings).withIdentifier(ITEM_PREFERENCES.toLong()),
-
-                DividerDrawerItem(),
-
-                PrimaryDrawerItem().withName(R.string.action_discover).withIcon(GoogleMaterial.Icon.gmd_info).withIdentifier(ITEM_ABOUT.toLong())
-                    .withSelectable(false),
-                PrimaryDrawerItem().withName(R.string.contribute).withIcon(GoogleMaterial.Icon.gmd_group).withIdentifier(ITEM_CONTRIBUTE.toLong())
-                    .withSelectable(false),
-                PrimaryDrawerItem().withName(R.string.open_other_flavor_drawer).withIcon(GoogleMaterial.Icon.gmd_shop).withIdentifier(ITEM_OBF.toLong())
-                    .withSelectable(false)
-            )
-            .withOnDrawerItemClickListener(object : Drawer.OnDrawerItemClickListener {
-                override fun onItemClick(view: View?, position: Int, drawerItem: IDrawerItem<*>): Boolean {
-                    var newFragment: Fragment? = null
-                    when (drawerItem.identifier.toInt()) {
-                        ITEM_HOME -> newFragment = HomeFragment.newInstance()
-                        ITEM_SEARCH_BY_CODE -> {
-                            newFragment = SearchByCodeFragment.newInstance()
-                            binding.bottomNavigationInclude.bottomNavigation.selectNavigationItem(0)
-                        }
-                        ITEM_CATEGORIES -> CategoryActivity.start(this@MainActivity)
-                        ITEM_ADDITIVES -> AdditiveListActivity.start(this@MainActivity)
-                        ITEM_COMPARE -> ProductCompareActivity.start(this@MainActivity)
-                        ITEM_HISTORY -> ScanHistoryActivity.start(this@MainActivity)
-                        ITEM_SCAN -> checkThenStartScanActivity()
-                        ITEM_LOGIN -> loginThenUpdate.launch(Unit)
-                        ITEM_ALERT -> newFragment = AllergensAlertFragment.newInstance()
-                        ITEM_PREFERENCES -> newFragment = PreferencesFragment.newInstance()
-                        ITEM_ABOUT -> CustomTabActivityHelper.openCustomTab(this@MainActivity, customTabsIntent, discoverUri, WebViewFallback())
-                        ITEM_CONTRIBUTE -> CustomTabActivityHelper.openCustomTab(this@MainActivity, customTabsIntent, contributeUri, WebViewFallback())
-                        ITEM_INCOMPLETE_PRODUCTS -> startSearch(
-                            this@MainActivity,
-                            SearchType.INCOMPLETE_PRODUCT,
-                            ""
-                        ) // Search and display the products to be completed by moving to ProductBrowsingListActivity
-                        ITEM_OBF -> {
-
-                            val otherOFAppInstalled = isApplicationInstalled(this@MainActivity, BuildConfig.OFOTHERLINKAPP)
-                            if (otherOFAppInstalled) {
-                                val launchIntent = packageManager.getLaunchIntentForPackage(BuildConfig.OFOTHERLINKAPP)
-                                if (launchIntent != null) {
-                                    startActivity(launchIntent)
-                                } else {
-                                    Toast.makeText(this@MainActivity, R.string.app_disabled_text, Toast.LENGTH_SHORT).show()
-                                    startActivity(Intent().apply {
-                                        action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
-                                        data = Uri.fromParts(
-                                            "package",
-                                            BuildConfig.OFOTHERLINKAPP,
-                                            null
-                                        )
-                                    })
-                                }
-                            } else {
-                                try {
-                                    startActivity(Intent(Intent.ACTION_VIEW, "market://details?id=${BuildConfig.OFOTHERLINKAPP}".toUri()))
-                                } catch (anfe: ActivityNotFoundException) {
-                                    startActivity(
-                                        Intent(
-                                            Intent.ACTION_VIEW,
-                                            "https://play.google.com/store/apps/details?id=${BuildConfig.OFOTHERLINKAPP}".toUri()
-                                        )
-                                    )
-                                }
-                            }
-                        }
-                        ITEM_ADVANCED_SEARCH -> {
-                            CustomTabActivityHelper.openCustomTab(
-                                this@MainActivity,
-                                CustomTabsIntent.Builder().build(),
-                                getString(R.string.advanced_search_url).toUri(),
-                                WebViewFallback()
-                            )
-                        }
-                        ITEM_MY_CONTRIBUTIONS -> openMyContributions()
-                        ITEM_YOUR_LISTS -> ProductListsActivity.start(this@MainActivity)
-                        ITEM_LOGOUT -> MaterialAlertDialogBuilder(this@MainActivity)
-                            .setTitle(R.string.confirm_logout)
-                            .setMessage(R.string.logout_dialog_content)
-                            .setPositiveButton(android.R.string.ok) { _, _ -> logout() }
-                            .setNegativeButton(android.R.string.cancel) { d, _ -> d.dismiss() }
-                            .show()
-                    }
-                    newFragment?.let(::swapToFragment)
-                    return false
-                }
-            })
-            .withSavedInstance(savedInstanceState)
-            .withShowDrawerOnFirstLaunch(false)
-            .build()
+        drawerResult = setupDrawer(savedInstanceState)
         drawerResult.actionBarDrawerToggle!!.isDrawerIndicatorEnabled = true
 
         // Add Drawer items for the connected user
@@ -438,9 +308,9 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
         scheduleProductUpload(this, sharedPreferences)
 
         // Adds nutriscore and quantity values in old history for schema 5 update
-        val mSharedPref = getSharedPreferences("prefs", 0)
+        val appPrefs = getAppPreferences()
 
-        val isOldHistoryDataSynced = mSharedPref.getBoolean("is_old_history_data_synced", false)
+        val isOldHistoryDataSynced = appPrefs.getBoolean("is_old_history_data_synced", false)
         if (!isOldHistoryDataSynced && this.isNetworkConnected()) {
             historySyncJob?.cancel()
             historySyncJob = lifecycleScope.launch { apiClient.syncOldHistory() }
@@ -456,6 +326,202 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
         }
     }
 
+
+    private fun setupDrawer(savedInstanceState: Bundle?) = buildDrawer(this) {
+        withToolbar(binding.toolbarInclude.toolbar)
+        withHasStableIds(true)
+        withAccountHeader(headerResult) //set the AccountHeader we created earlier for the header
+
+        withOnDrawerListener(object : Drawer.OnDrawerListener {
+            override fun onDrawerSlide(drawerView: View, slideOffset: Float) = hideKeyboard()
+            override fun onDrawerOpened(drawerView: View) = hideKeyboard()
+            override fun onDrawerClosed(drawerView: View) = Unit
+        })
+
+        addDrawerItems(
+
+            primaryItem {
+                withName(R.string.home_drawer)
+                withIcon(GoogleMaterial.Icon.gmd_home)
+                withIdentifier(ITEM_HOME.toLong())
+            },
+
+            sectionItem { withName(R.string.search_drawer) },
+            primaryItem {
+                withName(R.string.search_by_barcode_drawer)
+                withIcon(GoogleMaterial.Icon.gmd_dialpad)
+                withIdentifier(ITEM_SEARCH_BY_CODE.toLong())
+            },
+            primaryItem {
+                withName(R.string.search_by_category)
+                withIcon(GoogleMaterial.Icon.gmd_filter_list)
+                withIdentifier(ITEM_CATEGORIES.toLong())
+                withSelectable(false)
+            },
+            primaryItem {
+                withName(R.string.additives)
+                withIcon(R.drawable.ic_additives).withIdentifier(ITEM_ADDITIVES.toLong())
+                withSelectable(false)
+            },
+            primaryItem {
+                withName(R.string.scan_search)
+                withIcon(R.drawable.barcode_grey_24dp)
+                withIdentifier(ITEM_SCAN.toLong())
+                withSelectable(false)
+            },
+            primaryItem {
+                withName(R.string.compare_products)
+                withIcon(GoogleMaterial.Icon.gmd_swap_horiz)
+                withIdentifier(ITEM_COMPARE.toLong())
+                withSelectable(false)
+            },
+            primaryItem {
+                withName(R.string.advanced_search_title)
+                withIcon(GoogleMaterial.Icon.gmd_insert_chart)
+                withIdentifier(ITEM_ADVANCED_SEARCH.toLong())
+                withSelectable(false)
+            },
+            primaryItem {
+                withName(R.string.scan_history_drawer)
+                withIcon(GoogleMaterial.Icon.gmd_history)
+                withIdentifier(ITEM_HISTORY.toLong())
+                withSelectable(false)
+            },
+
+            sectionItem { withName(R.string.user_drawer).withIdentifier(USER_ID) },
+            primaryItem {
+                withName(getString(R.string.action_contributes))
+                withIcon(GoogleMaterial.Icon.gmd_rate_review)
+                withIdentifier(ITEM_MY_CONTRIBUTIONS.toLong())
+                withSelectable(false)
+            },
+            primaryItem {
+                withName(R.string.your_lists)
+                withIcon(GoogleMaterial.Icon.gmd_list)
+                withIdentifier(ITEM_YOUR_LISTS.toLong())
+                withSelectable(false)
+            },
+            primaryItem {
+                withName(R.string.products_to_be_completed)
+                withIcon(GoogleMaterial.Icon.gmd_edit)
+                withIdentifier(ITEM_INCOMPLETE_PRODUCTS.toLong())
+                withSelectable(false)
+            },
+            primaryItem {
+                withName(R.string.alert_drawer)
+                withIcon(GoogleMaterial.Icon.gmd_warning)
+                withIdentifier(ITEM_ALERT.toLong())
+            },
+            primaryItem {
+                withName(R.string.action_preferences)
+                withIcon(GoogleMaterial.Icon.gmd_settings)
+                withIdentifier(ITEM_PREFERENCES.toLong())
+            },
+
+            dividerItem(),
+
+            primaryItem {
+                withName(R.string.action_discover)
+                withIcon(GoogleMaterial.Icon.gmd_info)
+                withIdentifier(ITEM_ABOUT.toLong())
+                withSelectable(false)
+            },
+            primaryItem {
+                withName(R.string.contribute)
+                withIcon(GoogleMaterial.Icon.gmd_group)
+                withIdentifier(ITEM_CONTRIBUTE.toLong())
+                withSelectable(false)
+            },
+            primaryItem {
+                withName(R.string.open_other_flavor_drawer)
+                withIcon(GoogleMaterial.Icon.gmd_shop)
+                withIdentifier(ITEM_OBF.toLong())
+                withSelectable(false)
+            }
+        )
+        withOnDrawerItemClickListener(object : Drawer.OnDrawerItemClickListener {
+            override fun onItemClick(view: View?, position: Int, drawerItem: IDrawerItem<*>): Boolean {
+                var newFragment: Fragment? = null
+                when (drawerItem.identifier.toInt()) {
+                    ITEM_HOME -> newFragment = HomeFragment.newInstance()
+                    ITEM_SEARCH_BY_CODE -> {
+                        newFragment = SearchByCodeFragment.newInstance()
+                        binding.bottomNavigationInclude.bottomNavigation.selectNavigationItem(0)
+                    }
+                    ITEM_CATEGORIES -> CategoryActivity.start(this@MainActivity)
+                    ITEM_ADDITIVES -> AdditiveListActivity.start(this@MainActivity)
+                    ITEM_COMPARE -> ProductCompareActivity.start(this@MainActivity)
+                    ITEM_HISTORY -> ScanHistoryActivity.start(this@MainActivity)
+                    ITEM_SCAN -> checkThenStartScanActivity()
+                    ITEM_LOGIN -> loginThenUpdate.launch(Unit)
+                    ITEM_ALERT -> newFragment = AllergensAlertFragment.newInstance()
+                    ITEM_PREFERENCES -> newFragment = PreferencesFragment.newInstance()
+                    ITEM_ABOUT -> CustomTabActivityHelper.openCustomTab(this@MainActivity, customTabsIntent, discoverUri, WebViewFallback())
+                    ITEM_CONTRIBUTE -> CustomTabActivityHelper.openCustomTab(this@MainActivity, customTabsIntent, contributeUri, WebViewFallback())
+                    ITEM_INCOMPLETE_PRODUCTS -> startSearch(
+                        this@MainActivity,
+                        SearchType.INCOMPLETE_PRODUCT,
+                        ""
+                    ) // Search and display the products to be completed by moving to ProductBrowsingListActivity
+                    ITEM_OBF -> {
+
+                        val otherOFAppInstalled = isApplicationInstalled(this@MainActivity, BuildConfig.OFOTHERLINKAPP)
+                        if (otherOFAppInstalled) {
+                            val launchIntent = packageManager.getLaunchIntentForPackage(BuildConfig.OFOTHERLINKAPP)
+                            if (launchIntent != null) {
+                                startActivity(launchIntent)
+                            } else {
+                                Toast.makeText(this@MainActivity, R.string.app_disabled_text, Toast.LENGTH_SHORT).show()
+                                startActivity(Intent().apply {
+                                    action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
+                                    data = Uri.fromParts(
+                                        "package",
+                                        BuildConfig.OFOTHERLINKAPP,
+                                        null
+                                    )
+                                })
+                            }
+                        } else {
+                            try {
+                                startActivity(Intent(Intent.ACTION_VIEW, "market://details?id=${BuildConfig.OFOTHERLINKAPP}".toUri()))
+                            } catch (anfe: ActivityNotFoundException) {
+                                startActivity(
+                                    Intent(
+                                        Intent.ACTION_VIEW,
+                                        "https://play.google.com/store/apps/details?id=${BuildConfig.OFOTHERLINKAPP}".toUri()
+                                    )
+                                )
+                            }
+                        }
+                    }
+                    ITEM_ADVANCED_SEARCH -> {
+                        CustomTabActivityHelper.openCustomTab(
+                            this@MainActivity,
+                            CustomTabsIntent.Builder().build(),
+                            getString(R.string.advanced_search_url).toUri(),
+                            WebViewFallback()
+                        )
+                    }
+                    ITEM_MY_CONTRIBUTIONS -> openMyContributions()
+                    ITEM_YOUR_LISTS -> ProductListsActivity.start(this@MainActivity)
+                    ITEM_LOGOUT -> MaterialAlertDialogBuilder(this@MainActivity)
+                        .setTitle(R.string.confirm_logout)
+                        .setMessage(R.string.logout_dialog_content)
+                        .setPositiveButton(android.R.string.ok) { _, _ -> logout() }
+                        .setNegativeButton(android.R.string.cancel) { d, _ -> d.dismiss() }
+                        .show()
+                }
+                newFragment?.let(::swapToFragment)
+                return false
+            }
+        })
+
+
+        withSavedInstance(savedInstanceState)
+        withShowDrawerOnFirstLaunch(false)
+    }
+
+
     private fun swapToFragment(fragment: Fragment) {
         val currentFragment = supportFragmentManager.fragments.lastOrNull()
         if (currentFragment == null || currentFragment::class.java != fragment::class.java) {
@@ -469,7 +535,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
 
     private fun checkThenStartScanActivity() {
         when {
-            checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED -> {
+            checkSelfPermission(this, Manifest.permission.CAMERA) == PERMISSION_GRANTED -> {
                 startScanActivity()
             }
             shouldShowRequestPermissionRationale(this, Manifest.permission.CAMERA) -> {
@@ -508,7 +574,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
                 .setMessage(R.string.contribution_without_account)
                 .setPositiveButton(R.string.create_account_button) { _, _ ->
                     CustomTabActivityHelper.openCustomTab(
-                        this@MainActivity,
+                        this,
                         customTabsIntent,
                         "${getString(R.string.website)}cgi/user.pl".toUri(),
                         WebViewFallback()
@@ -528,7 +594,8 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
         val userSession = getUserSession()
         userSettingsURI = "${getString(R.string.website)}cgi/user.pl?type=edit&userid=$userLogin&user_id=$userLogin&user_session=$userSession".toUri()
         customTabActivityHelper.mayLaunchUrl(userSettingsURI, null, null)
-        return ProfileSettingDrawerItem().apply {
+
+        return profileSettingItem {
             withName(getString(R.string.action_manage_account))
             withIcon(GoogleMaterial.Icon.gmd_settings)
             withIdentifier(ITEM_MANAGE_ACCOUNT.toLong())
@@ -543,7 +610,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
      * Remove user login info
      */
     private fun logout() {
-        getSharedPreferences(PreferencesFragment.LOGIN_PREF, MODE_PRIVATE).edit { clear() }
+        getLoginPreferences().edit { clear() }
         updateConnectedState()
         matomoAnalytics.trackEvent(AnalyticsEvent.UserLogout)
     }
@@ -605,22 +672,25 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
         return true
     }
 
-    private fun getLogoutDrawerItem() = PrimaryDrawerItem()
-        .withName(getString(R.string.logout_drawer))
-        .withIcon(GoogleMaterial.Icon.gmd_settings_power)
-        .withIdentifier(ITEM_LOGOUT.toLong())
-        .withSelectable(false)
+    private fun getLogoutDrawerItem() = primaryItem {
+        withName(getString(R.string.logout_drawer))
+        withIcon(GoogleMaterial.Icon.gmd_settings_power)
+        withIdentifier(ITEM_LOGOUT.toLong())
+        withSelectable(false)
+    }
 
-    private fun getLoginDrawerItem() = PrimaryDrawerItem()
-        .withName(R.string.sign_in_drawer)
-        .withIcon(GoogleMaterial.Icon.gmd_account_circle)
-        .withIdentifier(ITEM_LOGIN.toLong())
-        .withSelectable(false)
+    private fun getLoginDrawerItem() = primaryItem {
+        withName(R.string.sign_in_drawer)
+        withIcon(GoogleMaterial.Icon.gmd_account_circle)
+        withIdentifier(ITEM_LOGIN.toLong())
+        withSelectable(false)
+    }
 
-    private fun getUserProfile() = ProfileDrawerItem()
-        .withName(getLoginPreferences().getString("user", resources.getString(R.string.txt_anonymous)))
-        .withIcon(R.drawable.img_home)
-        .withIdentifier(ITEM_USER.toLong())
+    private fun getUserProfile(): ProfileDrawerItem = profileItem {
+        withName(getLoginPreferences().getString("user", resources.getString(R.string.txt_anonymous)))
+        withIcon(R.drawable.img_home)
+        withIdentifier(ITEM_USER.toLong())
+    }
 
     @ExperimentalTime
     override fun onStart() {
@@ -644,22 +714,21 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
      */
     private fun showFeedbackDialog() {
         //dialog for rating the app on play store
-        val rateDialog = MaterialAlertDialogBuilder(this).apply {
-            setTitle(R.string.app_name)
-            setMessage(R.string.user_ask_rate_app)
-            setPositiveButton(R.string.rate_app) { dialog, _ ->
+        val rateDialog = MaterialAlertDialogBuilder(this)
+            .setTitle(R.string.app_name)
+            .setMessage(R.string.user_ask_rate_app)
+            .setPositiveButton(R.string.rate_app) { dialog, _ ->
                 //open app page in play store
                 startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$packageName")))
                 dialog.dismiss()
             }
-            setNegativeButton(R.string.no_thx) { dialog, _ -> dialog.dismiss() }
-        }
+            .setNegativeButton(R.string.no_thx) { dialog, _ -> dialog.dismiss() }
 
         //dialog for giving feedback
-        val feedbackDialog = MaterialAlertDialogBuilder(this).apply {
-            setTitle(R.string.app_name)
-            setMessage(R.string.user_ask_show_feedback_form)
-            setPositiveButton(android.R.string.ok) { dialog, _ ->
+        val feedbackDialog = MaterialAlertDialogBuilder(this)
+            .setTitle(R.string.app_name)
+            .setMessage(R.string.user_ask_show_feedback_form)
+            .setPositiveButton(android.R.string.ok) { dialog, _ ->
                 //show feedback form
                 CustomTabActivityHelper.openCustomTab(
                     this@MainActivity,
@@ -669,8 +738,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
                 )
                 dialog.dismiss()
             }
-            setNegativeButton(R.string.txtNo) { dialog, _ -> dialog.dismiss() }
-        }
+            .setNegativeButton(R.string.txtNo) { dialog, _ -> dialog.dismiss() }
 
 
         MaterialAlertDialogBuilder(this)
@@ -696,7 +764,6 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
 
     override fun onDestroy() {
         customTabActivityHelper.connectionCallback = null
-        disp.dispose()
         _binding = null
         super.onDestroy()
     }
@@ -795,10 +862,10 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
                     val bMap = try {
                         contentResolver.openInputStream(uri).use { BitmapFactory.decodeStream(it) }
                     } catch (e: FileNotFoundException) {
-                        Log.e(MainActivity::class.java.simpleName, "Could not resolve file from Uri $uri", e)
+                        Log.e(MainActivity::class.simpleName, "Could not resolve file from Uri $uri", e)
                         null
                     } catch (e: IOException) {
-                        Log.e(MainActivity::class.java.simpleName, "IO error during bitmap stream decoding: " + e.message, e)
+                        Log.e(MainActivity::class.simpleName, "IO error during bitmap stream decoding: ${e.message}", e)
                         null
                     } ?: return@mapNotNull null
 
@@ -814,8 +881,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
                             DecodeHintType.TRY_HARDER to true,
                             DecodeHintType.PURE_BARCODE to true
                         )
-                        val decodedResult = reader.decode(bitmap, decodeHints)
-                        decodedResult?.text
+                        reader.decode(bitmap, decodeHints)?.text
                     } catch (e: FormatException) {
                         Toast.makeText(this@MainActivity, getString(R.string.format_error), Toast.LENGTH_SHORT).show()
                         Log.e(MainActivity::class.simpleName, "Error decoding bitmap into barcode: ${e.message}")
@@ -878,7 +944,6 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
                 }
             }
             setNegativeButton(R.string.txtNo) { d, _ -> d.cancel() }
-            create()
             show()
         }
 

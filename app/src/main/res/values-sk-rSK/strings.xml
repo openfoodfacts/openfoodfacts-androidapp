@@ -170,7 +170,7 @@
     <string name="alert_dialog_warning_title">Upozornenie</string>
     <string name="alert_dialog_warning_msg_user">Užívateľské meno/heslo bolo zmenené, prosím upravte informácie</string>
     <string name="toast_retrieving">Načítavam…</string>
-    <string name="txtBarcode">Čiarový kód :</string>
+    <string name="txtBarcode">Čiarový kód:</string>
     <string name="txtCategories">Kategórie :</string>
     <string name="txtLabels">Štítky, certifikáty, ocenenia :</string>
     <string name="txtEMB">Traceability codes:</string>
@@ -484,6 +484,7 @@
     <string name="country_string">Country</string>
     <string name="store_subtitle">Predajňa</string>
     <string name="packaging_subtitle">Balenie</string>
+    <string name="state_subtitle">State</string>
     <string name="packaging_string">Balenie</string>
     <string name="label_string">Štítok</string>
     <string name="category_string">Kategória</string>

@@ -155,7 +155,7 @@
     <string name="alert_dialog_warning_title">Warning</string>
     <string name="alert_dialog_warning_msg_user">Người dùng / mật khẩu đã thay đổi, vui lòng cập nhật thông tin</string>
     <string name="toast_retrieving">Loading...</string>
-    <string name="txtBarcode">Mã vạch :</string>
+    <string name="txtBarcode">Mã vạch:</string>
     <string name="txtCategories">Thể loại :</string>
     <string name="txtLabels">Nhãn, chứng nhận, giải thưởng:</string>
     <string name="txtEMB">Traceability codes:</string>
@@ -466,9 +466,10 @@
     <string name="additive_string">Phụ gia</string>
     <string name="allergen_string">Allergen</string>
     <string name="search_string">Tìm kiếm</string>
-    <string name="country_string">Các quốc gia bán</string>
+    <string name="country_string">Country</string>
     <string name="store_subtitle">Cửa hàng</string>
     <string name="packaging_subtitle">Bao bì</string>
+    <string name="state_subtitle">Trạng thái</string>
     <string name="packaging_string">Bao bì</string>
     <string name="label_string">Label</string>
     <string name="category_string">Danh mục</string>
@@ -583,7 +584,7 @@
     <string name="extracting_ingredients">Trích xuất nguyên liệu</string>
     <string name="looksGood">Có vẻ tốt</string>
     <string name="skip_ingredients">Quá xấu \n Bỏ qua thành phần</string>
-    <string name="traces">Trace</string>
+    <string name="traces">Traces</string>
     <string name="traces_hint">Cho biết các thành phần từ các đề cập như \'Có thể chứa dấu vết\', \'Được sản xuất tại nhà máy cũng sử dụng\', v. v. \nVí dụ: Sữa, Gluten, Nuts</string>
     <string name="nutrition_facts_not_specified">Thành phần dinh dưỡng không được chỉ định trên sản phẩm.</string>
     <string name="nutrition_facts_picture">Nutrition Facts photo</string>

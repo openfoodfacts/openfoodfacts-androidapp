@@ -36,9 +36,7 @@ class LocaleManager @Inject constructor(
     private val sharedPreferences: SharedPreferences
 ) {
 
-    private val selectedLanguageKey by lazy {
-        context.getString(R.string.pref_language_key)
-    }
+    private val selectedLanguagePrefKey by lazy { context.getString(R.string.pref_language_key) }
     private var currentLocale: Locale
 
     init {
@@ -61,7 +59,6 @@ class LocaleManager @Inject constructor(
 
     fun getLocale(): Locale = currentLocale
 
-    @Deprecated("Only for UI tests.")
     fun saveLanguageToPrefs(context: Context, locale: Locale): Context {
         saveLanguageToPrefs(locale.language)
         return changeAppLanguage(context, locale)
@@ -93,9 +90,9 @@ class LocaleManager @Inject constructor(
 
     private fun saveLanguageToPrefs(language: String) {
         sharedPreferences.edit {
-            putString(selectedLanguageKey, language)
+            putString(selectedLanguagePrefKey, language)
         }
     }
 
-    private fun getLanguageFromPrefs() = sharedPreferences.getString(selectedLanguageKey, null)
+    private fun getLanguageFromPrefs() = sharedPreferences.getString(selectedLanguagePrefKey, null)
 }

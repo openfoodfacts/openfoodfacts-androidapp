@@ -45,7 +45,7 @@ class CategoryListFragment : BaseFragment() {
 
         binding.fastScroller.setRecyclerView(binding.recycler)
         binding.recycler.viewTreeObserver.addOnGlobalLayoutListener {
-            if (this.viewModel.shownCategories.isEmpty()) {
+            if (viewModel.shownCategories.isEmpty()) {
                 binding.fastScroller.visibility = View.GONE
             } else {
                 binding.fastScroller.visibility = View.VISIBLE
@@ -79,12 +79,13 @@ class CategoryListFragment : BaseFragment() {
         searchView.setSearchableInfo(searchManager.getSearchableInfo(requireActivity().componentName))
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
-                val suggestions = SearchRecentSuggestions(
-                        context,
-                        SearchSuggestionProvider.AUTHORITY,
-                        SearchSuggestionProvider.MODE
-                )
-                suggestions.saveRecentQuery(query, null)
+
+                SearchRecentSuggestions(
+                    context,
+                    SearchSuggestionProvider.AUTHORITY,
+                    SearchSuggestionProvider.MODE
+                ).saveRecentQuery(query, null)
+
                 return false
             }
 

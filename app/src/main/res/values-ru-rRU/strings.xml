@@ -481,9 +481,10 @@
     <string name="additive_string">Добавка</string>
     <string name="allergen_string">Аллерген</string>
     <string name="search_string">Поиск</string>
-    <string name="country_string">Страны продажи</string>
+    <string name="country_string">Country</string>
     <string name="store_subtitle">Магазин</string>
     <string name="packaging_subtitle">Упаковка</string>
+    <string name="state_subtitle">статус</string>
     <string name="packaging_string">Упаковка</string>
     <string name="label_string">Маркировка</string>
     <string name="category_string">Категория</string>

@@ -160,7 +160,7 @@
     <string name="alert_dialog_warning_title">Предупреждение</string>
     <string name="alert_dialog_warning_msg_user">Потребителско име/парола е променена, моля обновете информацията</string>
     <string name="toast_retrieving">Зареждане…</string>
-    <string name="txtBarcode">Баркод :</string>
+    <string name="txtBarcode">Barcode:</string>
     <string name="txtCategories">Категории :</string>
     <string name="txtLabels">Етикети, сертификации, награди :</string>
     <string name="txtEMB">EMB код:</string>
@@ -471,9 +471,10 @@
     <string name="additive_string">Добавка</string>
     <string name="allergen_string">Allergen</string>
     <string name="search_string">Търсене</string>
-    <string name="country_string">Държави, където се продават</string>
+    <string name="country_string">Country</string>
     <string name="store_subtitle">Магазин</string>
     <string name="packaging_subtitle">Опаковка</string>
+    <string name="state_subtitle">State</string>
     <string name="packaging_string">Опаковка</string>
     <string name="label_string">Етикет</string>
     <string name="category_string">Категория</string>

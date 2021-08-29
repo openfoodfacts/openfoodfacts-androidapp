@@ -471,9 +471,10 @@
     <string name="additive_string">Aditivo</string>
     <string name="allergen_string">Alergénio</string>
     <string name="search_string">Procurar</string>
-    <string name="country_string">Países onde é vendido</string>
+    <string name="country_string">Country</string>
     <string name="store_subtitle">Loja</string>
     <string name="packaging_subtitle">Embalagem</string>
+    <string name="state_subtitle">Estado</string>
     <string name="packaging_string">Embalagem</string>
     <string name="label_string">Etiqueta</string>
     <string name="category_string">Categoria</string>

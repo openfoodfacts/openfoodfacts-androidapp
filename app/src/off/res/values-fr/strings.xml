@@ -21,12 +21,12 @@
     <string name="slide_4_title">Fonctionne hors connexion</string>
     <string name="slide_4_desc">Vous pouvez ajouter de nouveaux produits, même si vous ne disposez pas d\'une connexion Internet pour le moment</string>
     <!-- New onboarding-->
-    <string name="title_welcome_intro">Join the food revolution</string>
-    <string name="msg_welcome_intro">Scan food, Take photos, Help transform the food system</string>
+    <string name="title_welcome_intro">Rejoignez la révolution alimentaire</string>
+    <string name="msg_welcome_intro">Scannez les aliments, prenez des photos, aidez à transformer le système alimentaire</string>
     <string name="title_welcome_nutriscore">Obtenez le Nutri-Score</string>
-    <string name="msg_welcome_nutriscore">A simple synthesis of the nutritional quality of your food</string>
-    <string name="title_welcome_nova">Avoid ultra-processed foods</string>
-    <string name="msg_welcome_nova">Reduce the amount of ultra-processed foods in your diet.</string>
+    <string name="msg_welcome_nutriscore">Une synthèse simple de la qualité nutritionnelle de vos aliments</string>
+    <string name="title_welcome_nova">Évitez les aliments ultra-transformés</string>
+    <string name="msg_welcome_nova">Réduisez la quantité d\'aliments ultra-transformés dans votre alimentation.</string>
     <string name="title_welcome_ecoscore">Éco-Score</string>
     <!-- Scan card -->
     <string name="txtDialogsContent">Le produit que vous avez scanné n\'existe pas encore dans Open Food Facts. Voulez-vous l\'ajouter ?</string>
@@ -36,7 +36,7 @@
     <string name="txt_broaden_search">- élargir votre recherche\n-le scanner et l\'ajouter à Open Food Facts</string>
     <string name="Donation">Cliquez ici pour faire un don à Open Food Facts</string>
     <string name="text_offline_info_dialog">Vous pouvez scanner des produits lorsque vous êtes hors-ligne pour les ajouter plus tard à Open Food Facts. Tous les produits que vous scannez apparaîtront ici et vous serez en mesure de les envoyer en utilisant le bouton ci-dessous.</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Les informations relatives à vos allergies ne seront jamais envoyées aux serveurs d\'Open Food Facts. Par ailleurs, soyez vigilant sur le fait que ces données ne sont pas fiables à 100 % at que la détection peut ne pas être précise à 100 %. Veuillez donc vérifier vous-même !</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Les informations relatives à vos allergies ne seront jamais envoyées aux serveurs d\'Open Food Facts. Par ailleurs, soyez vigilant sur le fait que ces données ne sont pas fiables à 100 % et que la détection peut ne pas être précise à 100 %. Veuillez donc vérifier vous-même !</string>
     <!-- OFF tagline in different languages -->
     <string name="tagline">l\'information alimentaire ouverte</string>
     <string name="product_not_found">Le produit %1$s que vous scannez n\'existe pas encore dans Open Food Facts. Pouvez-vous l\'ajouter ?</string>

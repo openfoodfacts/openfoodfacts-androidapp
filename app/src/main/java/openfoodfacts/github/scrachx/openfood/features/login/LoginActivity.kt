@@ -139,7 +139,7 @@ class LoginActivity : BaseActivity() {
                     null
                 }
             } ?: return@launch
-            val pref = this@LoginActivity.getSharedPreferences("login", 0)
+            val pref = this@LoginActivity.getLoginPreferences()
             if (isHtmlNotValid(htmlNoParsed)) {
                 loadingSnackbar.dismiss()
 

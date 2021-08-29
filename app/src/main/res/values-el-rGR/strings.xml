@@ -160,7 +160,7 @@
     <string name="alert_dialog_warning_title">Warning</string>
     <string name="alert_dialog_warning_msg_user">Όνομα/Κωδικός λογαριασμού έχει αλλάξει, ανανεώστε τις πληροφορίες</string>
     <string name="toast_retrieving">Loading…</string>
-    <string name="txtBarcode">Barcode :</string>
+    <string name="txtBarcode">Barcode:</string>
     <string name="txtCategories">Κατηγορίες :</string>
     <string name="txtLabels">Ετικέτες, πιστοποιήσεις, βραβεία :</string>
     <string name="txtEMB">Κωδικός παρασκευής/εμφιάλωσης:</string>
@@ -471,9 +471,10 @@
     <string name="additive_string">Προσθετο</string>
     <string name="allergen_string">Αλλεργιογόνα</string>
     <string name="search_string">Αναζήτηση</string>
-    <string name="country_string">Χώρες όπου πωλείται</string>
+    <string name="country_string">Country</string>
     <string name="store_subtitle">Κατάστημα</string>
     <string name="packaging_subtitle">Συσκευασία</string>
+    <string name="state_subtitle">Κατάσταση</string>
     <string name="packaging_string">Συσκευασία</string>
     <string name="label_string">Ετικετα</string>
     <string name="category_string">Κατηγορία</string>
@@ -582,7 +583,7 @@
     <string name="your_version">Τοπικό</string>
     <string name="ingredients_picture">Ingredients Picture</string>
     <string name="packaging">Recycling</string>
-    <string name="take_ingredients_picture_to_extract">(Please take a picture of the ingredients to automatically extract them)</string>
+    <string name="take_ingredients_picture_to_extract">(Please take a photo of the ingredients to automatically extract them)</string>
     <string name="ingredients_list">Λίστα συστατικών</string>
     <string name="ingredients_hint">Keep the order, indicate the % when specified, separate with a comma or use -, use () for ingredients of an ingredient, surround allergens with _</string>
     <string name="extract_ingredients">Extract ingredients</string>
