@@ -457,7 +457,7 @@
     <string name="preference_analytics_bottom_sheet_grant_button">Grant</string>
     <string name="preference_analytics_bottom_sheet_decline_button">Decline</string>
     <string name="scan_first_string">Историята на продукта ви ще бъде показана тук. \n Тази история е само за вас и се съхранява локално.</string>
-    <string name="log_in">Username</string>
+    <string name="log_in">Login</string>
     <string name="login_true">Вече сте влезли!</string>
     <string name="confirm_logout">Потвърдете излизането</string>
     <string name="logout_dialog_content">Сигурни ли сте, че искате излезете?</string>
