@@ -46,7 +46,7 @@ dependencies {
 
     // Android KTX
     implementation("androidx.fragment:fragment-ktx:1.3.6")
-    implementation("androidx.activity:activity-ktx:1.3.0")
+    implementation("androidx.activity:activity-ktx:1.3.1")
     implementation("androidx.preference:preference-ktx:1.1.1")
     implementation("androidx.core:core-ktx:1.6.0")
 
@@ -64,12 +64,12 @@ dependencies {
     implementation("androidx.cardview:cardview:1.0.0")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
     implementation("androidx.annotation:annotation:1.2.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.0.4")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.0")
     implementation("androidx.multidex:multidex:2.0.1")
     implementation("androidx.viewpager2:viewpager2:1.0.0")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
     implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
-    implementation("androidx.startup:startup-runtime:1.0.0")
+    implementation("androidx.startup:startup-runtime:1.1.0")
     implementation("androidx.work:work-runtime-ktx:2.5.0")
 
 
@@ -137,7 +137,7 @@ dependencies {
     implementation("com.github.jkwiecien:EasyImage:1.4.0")
 
     // Barcode and QR Scanner
-    // Cannot upgrade: Requires API 24 or higher
+    // TODO: cannot upgrade, requires API 24 or higher
     implementation("com.google.zxing:core:3.3.0")
 
     implementation("com.journeyapps:zxing-android-embedded:3.6.0") { isTransitive = false }
@@ -168,7 +168,7 @@ dependencies {
     implementation("com.github.hootsuite:nachos:1.2.0")
 
     // Crash analytics
-    implementation("io.sentry:sentry-android:5.1.1")
+    implementation("io.sentry:sentry-android:5.1.2")
     implementation("com.github.matomo-org:matomo-sdk-android:v4.1.2")
 
     // ShowCaseView dependency
@@ -178,8 +178,8 @@ dependencies {
     // Unit Testing
     testImplementation("junit:junit:4.13.2")
     testImplementation("org.robolectric:robolectric:4.6.1")
-    testImplementation("org.mockito:mockito-core:3.12.0")
-    testImplementation("net.javacrumbs.json-unit:json-unit-fluent:2.27.0")
+    testImplementation("org.mockito:mockito-core:3.12.4")
+    testImplementation("net.javacrumbs.json-unit:json-unit-fluent:2.28.0")
     testImplementation("com.google.truth:truth:1.1.3")
     testImplementation("com.google.truth.extensions:truth-java8-extension:1.1.3")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:${coroutinesVersion}")
@@ -255,7 +255,7 @@ android {
     }
 
     buildTypes {
-        getByName("release") {
+        release {
             isCrunchPngs = true
 
             // Enables code shrinking, obfuscation, and optimization for only
@@ -269,7 +269,8 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
             signingConfig = signingConfigs.getByName("release")
         }
-        getByName("debug") {
+
+        debug {
             applicationIdSuffix = ".debug"
             isDebuggable = true
 
@@ -340,12 +341,17 @@ android {
             buildConfigField("String", "MATOMO_URL", "\"https://analytics.openfoodfacts.org/matomo.php\"")
             dimension = "versionCode"
         }
+
+
         create("playstore") {
             dimension = "platform"
+
             buildConfigField("boolean", "USE_MLKIT", "true")
         }
+
         create("fdroid") {
             dimension = "platform"
+
             buildConfigField("boolean", "USE_MLKIT", "false")
         }
     }

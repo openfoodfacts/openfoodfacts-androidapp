@@ -89,9 +89,10 @@ class TaxonomiesManager @Inject constructor(
     ) = withContext(IO) {
         val lastMod = getLastModifiedDateFromServer(taxonomy)
 
-        return@withContext if (lastMod != TAXONOMY_NO_INTERNET)
-            taxonomy.load(productRepository, lastMod).also { logDownload(taxonomy) }
-        else emptyList()
+        if (lastMod != TAXONOMY_NO_INTERNET) {
+            taxonomy.load(productRepository, lastMod)
+                .also { logDownload(taxonomy) }
+        } else emptyList()
     }
 
     private suspend fun <T> checkAndDownloadIfNewer(

@@ -1,114 +1,97 @@
 package openfoodfacts.github.scrachx.openfood.utils
 
-import openfoodfacts.github.scrachx.openfood.models.Units
-import openfoodfacts.github.scrachx.openfood.models.Units.ENERGY_KCAL
-import openfoodfacts.github.scrachx.openfood.models.Units.ENERGY_KJ
-import openfoodfacts.github.scrachx.openfood.models.Units.UNIT_CENTILITRE
-import openfoodfacts.github.scrachx.openfood.models.Units.UNIT_DECILITRE
-import openfoodfacts.github.scrachx.openfood.models.Units.UNIT_KILOGRAM
-import openfoodfacts.github.scrachx.openfood.models.Units.UNIT_LITER
-import openfoodfacts.github.scrachx.openfood.models.Units.UNIT_MICROGRAM
-import openfoodfacts.github.scrachx.openfood.models.Units.UNIT_MILLIGRAM
-import openfoodfacts.github.scrachx.openfood.models.Units.UNIT_MILLILITRE
-import openfoodfacts.github.scrachx.openfood.utils.Utils.getRoundNumber
-import java.util.*
-import java.util.regex.Pattern
+import openfoodfacts.github.scrachx.openfood.models.MeasurementUnit
+import openfoodfacts.github.scrachx.openfood.models.MeasurementUnit.*
 
-object UnitUtils {
-    const val UNIT_IU = "IU"
-    private const val SALT_PER_SODIUM = 2.54
-    private const val KJ_PER_KCAL = 4.184f
-    private const val OZ_PER_L = 33.814f
 
-    /**
-     * Converts a give quantity's unit to kcal
-     *
-     * @param value The value to be converted
-     * @param originalUnit [Units.ENERGY_KCAL] or [Units.ENERGY_KJ]
-     * @return return the converted value
-     */
-    fun convertToKiloCalories(value: Int, originalUnit: String) = when {
-        originalUnit.equals(ENERGY_KJ, true) -> (value / KJ_PER_KCAL).toInt()
-        originalUnit.equals(ENERGY_KCAL, true) -> value
-        else -> throw IllegalArgumentException("energyUnit is neither Units.ENERGY_KCAL nor Units.ENERGY_KJ")
-    }
+data class Measurement(
+    val value: Float,
+    val unit: MeasurementUnit
+)
 
-    fun convertToGrams(value: Float, unit: String?) = convertToGrams(value.toDouble(), unit).toFloat()
+fun measure(value: Float, unit: MeasurementUnit) = Measurement(value, unit)
 
-    /**
-     * Converts a given quantity's unitOfValue to grams.
-     *
-     * @param value The value to be converted
-     * @param unitOfValue must be a unit from [Units]
-     * @return return the converted value
-     */
-    fun convertToGrams(value: Double, unitOfValue: String?) = when {
-        UNIT_MILLIGRAM.equals(unitOfValue, true) -> value / 1000
-        UNIT_MICROGRAM.equals(unitOfValue, true) -> value / 1000000
-        UNIT_KILOGRAM.equals(unitOfValue, true) -> value * 1000
-        UNIT_LITER.equals(unitOfValue, true) -> value * 1000
-        UNIT_DECILITRE.equals(unitOfValue, true) -> value * 100
-        UNIT_CENTILITRE.equals(unitOfValue, true) -> value * 10
-        UNIT_MILLILITRE.equals(unitOfValue, true) -> value
+/**
+ * Converts a given measurement to grams.
+ *
+ * @receiver the measurement to convert.
+ * @return the converted measurement.
+ */
+fun Measurement.convertToGrams() = Measurement(
+    when (unit) {
+        UNIT_MILLIGRAM -> value / 1e3f
+        UNIT_MICROGRAM -> value / 1e6f
+        UNIT_KILOGRAM, UNIT_LITER -> value * 1e3f
+        UNIT_DECILITRE -> value * 1e2f
+        UNIT_CENTILITRE -> value * 10f
+        UNIT_MILLILITRE, UNIT_GRAM -> value
+        UNIT_OZ -> value / OZ_PER_L * 1e3f
         //TODO : what about % DV and IU
         else -> value
-    }
+    }, UNIT_GRAM
+)
 
-    fun convertFromGram(valueInGramOrMl: Float, targetUnit: String?) =
-            convertFromGram(valueInGramOrMl.toDouble(), targetUnit).toFloat()
+private const val KJ_PER_KCAL = 4.184f
+private const val SALT_PER_SODIUM = 2.54f
+private const val OZ_PER_L = 33.814f
 
-    fun convertFromGram(valueInGramOrMl: Double, targetUnit: String?) = when (targetUnit) {
-        UNIT_KILOGRAM, UNIT_LITER -> valueInGramOrMl / 1000
-        UNIT_MILLIGRAM -> valueInGramOrMl * 1000
-        UNIT_MICROGRAM -> valueInGramOrMl * 1000000
-        UNIT_DECILITRE -> valueInGramOrMl / 100
-        UNIT_CENTILITRE -> valueInGramOrMl / 10
-        else -> valueInGramOrMl
-    }
+val Measurement.grams get() = convertToGrams()
 
-    fun saltToSodium(saltValue: Double) = saltValue / SALT_PER_SODIUM
-
-    fun sodiumToSalt(sodiumValue: Double) = sodiumValue * SALT_PER_SODIUM
-
-    /**
-     * Function which returns volume in oz if parameter is in cl, ml, or l
-     *
-     * @param servingSize value to transform
-     * @return volume in oz if servingSize is a volume parameter else return the the parameter unchanged
-     */
-    fun getServingInOz(servingSize: String, locale: Locale = Locale.getDefault()): String {
-        val regex = Pattern.compile("(\\d+(?:\\.\\d+)?)")
-        val matcher = regex.matcher(servingSize)
-        matcher.find()
-        var value = matcher.group(1)!!.toFloat()
-        value *= when {
-            servingSize.contains("ml", true) -> OZ_PER_L / 1000
-            servingSize.contains("cl", true) -> OZ_PER_L / 100
-            servingSize.contains("l", true) -> OZ_PER_L
-            servingSize.contains("oz", true) -> 1f
-            //TODO: HANDLE OTHER CASES, NOT L NOR OZ NOR ML NOR CL
-            else -> return servingSize
-        }
-        return "${getRoundNumber(value, locale)} oz"
-    }
-
-    /**
-     * Function that returns the volume in liters if input parameter is in oz
-     *
-     * @param servingSize the value to transform: not null
-     * @return volume in liter if input parameter is a volume parameter else return the parameter unchanged
-     */
-    fun getServingInL(servingSize: String, locale: Locale = Locale.getDefault()): String {
-        val regex = Pattern.compile("(\\d+(?:\\.\\d+)?)")
-        val matcher = regex.matcher(servingSize)
-        matcher.find()
-        var value = matcher.group(1)!!.toFloat()
-        value /= when {
-            servingSize.contains("oz", true) -> OZ_PER_L
-            servingSize.contains("l", true) -> 1f
-            // TODO: HANDLE OTHER CASES eg. not in L nor oz
-            else -> return servingSize
-        }
-        return "${getRoundNumber(value, locale)} l"
-    }
+fun Measurement.convertEnergyTo(targetUnit: MeasurementUnit): Measurement = when {
+    unit == targetUnit -> this
+    unit == ENERGY_KJ && targetUnit == ENERGY_KCAL -> Measurement(value / KJ_PER_KCAL, targetUnit)
+    unit == ENERGY_KCAL && targetUnit == ENERGY_KJ -> Measurement(value * KJ_PER_KCAL, targetUnit)
+    else -> throw IllegalArgumentException("Cannot convert from/to NON energy. Use convertTo instead.")
 }
+
+fun Measurement.convertTo(unit: MeasurementUnit): Measurement {
+    // First convert to grams/ml
+    val value = grams.value
+
+    // Then to desired unit
+    return Measurement(
+        when (unit) {
+            ENERGY_KJ, ENERGY_KCAL ->
+                throw IllegalArgumentException("Cannot convert from/to energy. Use convertEnergyTo instead.")
+
+            UNIT_DV, UNIT_IU ->
+                throw IllegalArgumentException("Cannot convert to DV or IU")
+
+            UNIT_OZ -> value / 1e3f * OZ_PER_L
+
+            UNIT_MICROGRAM -> value * 1e6f
+            UNIT_MILLIGRAM -> value * 1e3f
+
+            UNIT_GRAM, UNIT_MILLILITRE -> value // 1g of water == 1ml
+
+            UNIT_CENTILITRE -> value / 10f
+            UNIT_DECILITRE -> value / 1e2f
+            UNIT_KILOGRAM, UNIT_LITER -> value / 1e3f
+        }, unit
+    )
+}
+
+fun Measurement.displayString() = buildString {
+    append(getRoundNumber(value))
+    append(" ")
+    append(unit.sym)
+}
+
+fun Float.saltToSodium() = this / SALT_PER_SODIUM
+fun Float.sodiumToSalt() = this * SALT_PER_SODIUM
+
+fun Measurement.saltToSodium() = Measurement(value.saltToSodium(), unit)
+fun Measurement.sodiumToSalt() = Measurement(value.sodiumToSalt(), unit)
+
+fun getServingIn(servingSize: String, unit: MeasurementUnit): Measurement? {
+    val match = Regex("(\\d+(?:\\.\\d+)?) *(\\w+)").find(servingSize) ?: return null
+
+    val value = match.groupValues[1].toFloat()
+    val servingUnit = match.groupValues[2].let { Companion.findBySymbol(it) } ?: return null
+
+    val measurement = Measurement(value, servingUnit)
+    return measurement.convertTo(unit)
+}
+
+fun getServingInOz(servingSize: String) = getServingIn(servingSize, UNIT_OZ)
+fun getServingInL(servingSize: String) = getServingIn(servingSize, UNIT_LITER)

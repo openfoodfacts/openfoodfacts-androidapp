@@ -29,12 +29,13 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.*
 import android.widget.AdapterView.OnItemSelectedListener
+import androidx.annotation.StringRes
 import androidx.core.net.toFile
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
-import com.afollestad.materialdialogs.MaterialDialog
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputLayout
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
@@ -53,12 +54,7 @@ import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditAc
 import openfoodfacts.github.scrachx.openfood.features.shared.views.CustomValidatingEditTextView
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
 import openfoodfacts.github.scrachx.openfood.models.*
-import openfoodfacts.github.scrachx.openfood.models.Units.UNIT_DV
-import openfoodfacts.github.scrachx.openfood.models.Units.UNIT_GRAM
-import openfoodfacts.github.scrachx.openfood.models.Units.UNIT_LITER
-import openfoodfacts.github.scrachx.openfood.models.Units.UNIT_MICROGRAM
-import openfoodfacts.github.scrachx.openfood.models.Units.UNIT_MILLIGRAM
-import openfoodfacts.github.scrachx.openfood.models.Units.UNIT_MILLILITRE
+import openfoodfacts.github.scrachx.openfood.models.MeasurementUnit.*
 import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.Defaults.NUTRITION_DATA_PER_100G
@@ -66,8 +62,6 @@ import openfoodfacts.github.scrachx.openfood.network.ApiFields.Defaults.NUTRITIO
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.FileDownloader.download
-import openfoodfacts.github.scrachx.openfood.utils.UnitUtils.UNIT_IU
-import openfoodfacts.github.scrachx.openfood.utils.Utils.getRoundNumber
 import java.io.File
 import java.text.Collator
 import java.util.*
@@ -236,47 +230,51 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         product!!.servingSize
             ?.takeUnless { it.isEmpty() }
             // Splits the serving size into value and unit. Example: "15g" into "15" and "g"
-            ?.let { updateServingSizeFrom(it) }
+            ?.let { updateServingSize(it) }
 
         if (view == null) return
 
         val nutriments = product!!.nutriments
-        binding.energyKj.setText(nutriments.getEnergyKjValue(isDataPerServing))
-        binding.energyKcal.setText(nutriments.getEnergyKcalValue(isDataPerServing))
+        binding.energyKj.setText(nutriments.getEnergyKjValue(isDataPerServing)?.let { getRoundNumber(it) })
+        binding.energyKcal.setText(nutriments.getEnergyKcalValue(isDataPerServing)?.let { getRoundNumber(it) })
 
         // Fill default nutriments fields
-        (view as ViewGroup).getViewsByType(CustomValidatingEditTextView::class.java).forEach { view ->
-            var nutrientShortName = view.entryName
+        for (view in (view as ViewGroup).getViewsByType(CustomValidatingEditTextView::class.java)) {
+            var nutrimentShortName = view.entryName
 
             // Workaround for saturated-fat
-            if (nutrientShortName == "saturated_fat") nutrientShortName = "saturated-fat"
+            if (nutrimentShortName == "saturated_fat") nutrimentShortName = "saturated-fat"
 
             // Skip serving size and energy view, we already filled them
-            if (view === binding.servingSize || view === binding.energyKcal || view === binding.energyKj) return@forEach
+            if (view === binding.servingSize || view === binding.energyKcal || view === binding.energyKj) continue
 
             // Get the value
-            val value = if (isDataPer100g) nutriments[nutrientShortName]?.for100g else nutriments[nutrientShortName]?.forServing
-            if (value.isNullOrEmpty()) return@forEach
+            val nutriment = Nutriment.findbyKey(nutrimentShortName) ?: error("Cannot find nutrient $nutrimentShortName")
+            val value = (if (isDataPer100g) nutriments[nutriment]?.per100gInUnit else nutriments[nutriment]?.perServingInUnit) ?: continue
 
-            view.setText(value)
-            view.unitSpinner?.setSelection(getSelectedUnitFromShortName(nutriments, nutrientShortName))
-            view.modSpinner?.setSelection(getSelectedModifierFromShortName(nutriments, nutrientShortName))
+            view.setText(getRoundNumber(value))
+            view.unitSpinner?.setSelection(getUnitIndexUnitFromShortName(nutriments, nutriment) ?: 0)
+            view.modSpinner?.setSelection(getModifierIndexFromShortName(nutriments, nutriment))
         }
 
         // Set the values of all the other nutrients if defined and create new row in the tableLayout.
-        PARAMS_OTHER_NUTRIENTS.withIndex().forEach { (i, nutrient) ->
-            val nutrientShortName = getShortName(nutrient)
+        for ((i, nutrient) in PARAMS_OTHER_NUTRIENTS.withIndex()) {
+            val nutrimentShortName = getShortName(nutrient)
 
-            val value = if (isDataPer100g) nutriments[nutrientShortName]?.for100g else nutriments[nutrientShortName]?.forServing
-            if (value.isNullOrEmpty()) return@forEach
+            val nutriment = Nutriment.findbyKey(nutrimentShortName) ?: error("Cannot find nutrient $nutrimentShortName")
+            val measurement = if (isDataPer100g) {
+                nutriments[nutriment]?.per100gInUnit
+            } else {
+                nutriments[nutriment]?.perServingInUnit
+            } ?: continue
 
-            val unitIndex = getSelectedUnitFromShortName(nutriments, nutrientShortName)
-            val modIndex = getSelectedModifierFromShortName(nutriments, nutrientShortName)
+            val unitIndex = getUnitIndexUnitFromShortName(nutriments, nutriment)
+            val modIndex = getModifierIndexFromShortName(nutriments, nutriment)
 
             usedNutrientsIndexes += i
 
             val nutrientNames = resources.getStringArray(R.array.nutrients_array)
-            addNutrientRow(i, nutrientNames[i], true, value, unitIndex, modIndex)
+            addNutrientRow(i, nutrientNames[i], true, measurement.value, unitIndex ?: 0, modIndex)
         }
     }
 
@@ -293,23 +291,26 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         loadNutritionImage(imagePath!!)
     }
 
-    private fun getSelectedUnitFromShortName(nutriments: Nutriments, nutrientShortName: String): Int =
-        getSelectedUnit(nutrientShortName, nutriments[nutrientShortName]?.unit)
+    private fun getUnitIndexUnitFromShortName(nutriments: ProductNutriments, nutriment: Nutriment): Int? =
+        nutriments[nutriment]?.unit?.let { getUnitIndex(nutriment, it) }
 
-    private fun getSelectedUnit(nutrientShortName: String?, unit: String?) = if (unit != null) {
-        if (Nutriments.ENERGY_KCAL == nutrientShortName || Nutriments.ENERGY_KJ == nutrientShortName)
-            throw IllegalArgumentException("Nutrient cannot be energy")
-        else getPositionInAllUnitArray(unit)
-    } else 0
+    private fun getUnitIndex(nutrient: Nutriment, unit: MeasurementUnit): Int {
+        require(nutrient != Nutriment.ENERGY_KCAL && nutrient != Nutriment.ENERGY_KJ) { "Nutrient cannot be energy" }
 
-    private fun getSelectedModifierFromShortName(nutriments: Nutriments, nutrientShortName: String): Int =
-        getPositionInModifierArray(nutriments[nutrientShortName]?.modifier ?: "")
+        return getAllUnitsIndex(unit)
+    }
 
-    private fun updateServingSizeFrom(servingSize: String) {
-        val part = servingSize.split(Regex("(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)")).toTypedArray()
-        binding.servingSize.setText(part[0])
-        if (part.size > 1) {
-            binding.servingSize.unitSpinner?.setSelection(getPositionInServingUnitArray(part[1].trim { it <= ' ' }))
+    private fun getModifierIndexFromShortName(nutriments: ProductNutriments, nutriment: Nutriment): Int =
+        getModifierIndex(nutriments[nutriment]?.modifier)
+
+    private fun updateServingSize(servingSize: String) {
+        val parts = servingSize.split(Regex("(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)"))
+        binding.servingSize.setText(parts[0])
+
+        if (parts.size > 1) {
+            val symbol = parts[1].trim { it <= ' ' }
+            val unit = MeasurementUnit.findBySymbol(symbol)!!
+            binding.servingSize.unitSpinner?.setSelection(getServingUnitIndex(unit))
         }
     }
 
@@ -331,41 +332,40 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
             binding.nutritionFactsLayout.visibility = View.GONE
         }
 
-        productDetails[ApiFields.Keys.NUTRITION_DATA_PER]?.let { nutritionDataPer ->
-            // can be "100g" or "serving"
-            updateSelectedDataPer(nutritionDataPer)
-        }
-        productDetails[ApiFields.Keys.SERVING_SIZE]?.let {
-            // Splits the serving size into value and unit. Example: "15g" into "15" and "g"
-            updateServingSizeFrom(it)
-        }
+        // can be "100g" or "serving"
+        productDetails[ApiFields.Keys.NUTRITION_DATA_PER]?.let(::updateSelectedDataPer)
 
-        (binding.root as ViewGroup).getViewsByType(CustomValidatingEditTextView::class.java).forEach { view ->
+        // Splits the serving size into value and unit. Example: "15g" into "15" and "g"
+        productDetails[ApiFields.Keys.SERVING_SIZE]?.let(::updateServingSize)
+
+        for (view in (binding.root as ViewGroup).getViewsByType(CustomValidatingEditTextView::class.java)) {
             val nutrientShortName = view.entryName
-            if (nutrientShortName == binding.servingSize.entryName) {
-                return@forEach
-            }
+            if (nutrientShortName == binding.servingSize.entryName) continue
+
             val nutrientCompleteName = getCompleteEntryName(view)
-            val value = productDetails[nutrientCompleteName]
-            if (value != null) {
+
+            productDetails[nutrientCompleteName]?.let { value ->
                 view.setText(value)
-                view.unitSpinner?.setSelection(getSelectedUnit(nutrientShortName, productDetails[nutrientCompleteName + ApiFields.Suffix.UNIT]))
+                val unit = productDetails[nutrientCompleteName + ApiFields.Suffix.UNIT] ?: return@let
+                view.unitSpinner?.setSelection(getUnitIndex(Nutriment.findbyKey(nutrientShortName)!!, MeasurementUnit.findBySymbol(unit)!!))
             }
         }
-        //set the values of all the other nutrients if defined and create new row in the tableLayout.
+        // Set the values of all the other nutrients if defined and create new row in the tableLayout.
         for ((i, completeNutrientName) in PARAMS_OTHER_NUTRIENTS.withIndex()) {
             if (productDetails[completeNutrientName] == null) continue
 
             var unitIndex = 0
             var modIndex = 0
-            val value = productDetails[completeNutrientName]
-            if (productDetails[completeNutrientName + ApiFields.Suffix.UNIT] != null) {
-                unitIndex = getPositionInAllUnitArray(productDetails[completeNutrientName + ApiFields.Suffix.UNIT])
+            val value = productDetails[completeNutrientName]?.toFloatOrNull() ?: continue
+
+            productDetails[completeNutrientName + ApiFields.Suffix.UNIT]?.let {
+                unitIndex = getAllUnitsIndex(MeasurementUnit.findBySymbol(it)!!)
             }
-            if (productDetails[completeNutrientName + ApiFields.Suffix.MODIFIER] != null) {
-                modIndex = getPositionInAllUnitArray(productDetails[completeNutrientName + ApiFields.Suffix.MODIFIER])
+            productDetails[completeNutrientName + ApiFields.Suffix.MODIFIER]?.let {
+                modIndex = getAllUnitsIndex(MeasurementUnit.findBySymbol(it)!!)
             }
-            usedNutrientsIndexes.add(i)
+            usedNutrientsIndexes += i
+
             val nutrients = resources.getStringArray(R.array.nutrients_array)
             addNutrientRow(i, nutrients[i], true, value, unitIndex, modIndex)
         }
@@ -412,20 +412,23 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         binding.btnEditImageNutritionFacts.visibility = View.VISIBLE
     }
 
-    private fun getSelectedUnit(i: Int) = NUTRIENTS_UNITS[i]
+    private fun getUnitIndex(index: Int) = NUTRIENTS_UNITS[index]
 
     /**
      * @param unit The unit corresponding to which the index is to be returned.
      * @return returns the index to be set to the spinner.
      */
-    private fun getPositionInAllUnitArray(unit: String?) =
-        NUTRIENTS_UNITS.indexOfFirst { it.equals(unit, true) }.coerceAtLeast(0)
+    private fun getAllUnitsIndex(unit: MeasurementUnit) =
+        NUTRIENTS_UNITS.indexOfFirst { it == unit }.coerceAtLeast(0)
 
-    private fun getPositionInModifierArray(mod: String) =
-        MODIFIERS.indexOfFirst { it == mod }.coerceAtLeast(0)
+    private fun getModifierIndex(modifier: Modifier?) =
+        MODIFIERS.indexOf(modifier).coerceAtLeast(0)
 
-    private fun getPositionInServingUnitArray(unit: String) =
-        SERVING_UNITS.indexOfFirst { it.equals(unit, ignoreCase = true) }.coerceAtLeast(0)
+    private fun getServingUnitIndex(unit: MeasurementUnit) =
+        SERVING_UNITS.indexOfFirst { it == unit }.coerceAtLeast(0)
+
+    private fun getServingUnitIndex(symbol: String) =
+        SERVING_UNITS.indexOfFirst { it.sym == symbol }.coerceAtLeast(0)
 
     private fun addNutritionFactsImage() {
         val path = imagePath
@@ -460,26 +463,32 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
     private fun CustomValidatingEditTextView.checkValue(value: Float) = sequenceOf(
         checkPh(value),
         checkAlcohol(value),
-        checkEnergyField(value),
+        checkEnergy(value),
         checkCarbohydrate(value),
-        checkPerServing()
+        checkServingSize()
     ).firstOrNull { it != ValueState.NOT_TESTED } ?: this.checkAsGram(value)
 
-    private fun CustomValidatingEditTextView.checkAsGram(value: Float): ValueState {
-        val valid = convertToGrams(value, unitSpinner!!.selectedItemPosition) <= referenceValueInGram
-        return if (!valid) {
-            this.showError(getString(R.string.max_nutrient_val_msg))
+    private fun CustomValidatingEditTextView.requireToValidate(condition: Boolean, @StringRes errorMsg: Int): ValueState {
+        return if (condition) ValueState.VALID
+        else {
+            showError(context.getString(errorMsg))
             ValueState.NOT_VALID
-        } else ValueState.VALID
+        }
+    }
+
+    private fun CustomValidatingEditTextView.checkAsGram(value: Float): ValueState {
+        val valid = convertToGrams(value, unitSpinner!!.selectedItemPosition)!!.value <= referenceValueInGram
+
+        return requireToValidate(valid, R.string.max_nutrient_val_msg)
     }
 
     private fun CustomValidatingEditTextView.checkValue() {
         val wasValid = isError()
-        //if no value, we suppose it's valid
+        // If no value, we suppose it's valid
         if (isBlank()) {
             cancelError()
             // If per serving is set must be not blank
-            checkPerServing()
+            checkServingSize()
         } else {
             val value = this.getFloatValue()
             if (value == null) {
@@ -501,7 +510,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         if (isCarbohydrateRelated(this)) {
             binding.carbohydrates.checkValue()
         }
-        if (binding.servingSize.entryName == entryName) {
+        if (entryName == binding.servingSize.entryName) {
             checkAllValues()
         }
     }
@@ -513,22 +522,20 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
     }
 
     private fun updateSodiumValue() {
-        if (requireActivity().currentFocus === binding.salt) {
-            val saltValue = binding.salt.getDoubleValue()
-            if (saltValue != null) {
-                val sodiumValue = UnitUtils.saltToSodium(saltValue)
-                binding.sodium.setText(getRoundNumber(sodiumValue))
-            }
+        if (requireActivity().currentFocus !== binding.salt) return
+
+        binding.salt.getFloatValue()?.let {
+            val sodiumValue = it.saltToSodium()
+            binding.sodium.setText(getRoundNumber(sodiumValue))
         }
     }
 
     private fun updateSaltValue() {
-        if (requireActivity().currentFocus === binding.sodium) {
-            val sodiumValue = binding.sodium.getDoubleValue()
-            if (sodiumValue != null) {
-                val saltValue = UnitUtils.sodiumToSalt(sodiumValue)
-                binding.salt.setText(getRoundNumber(saltValue))
-            }
+        if (requireActivity().currentFocus !== binding.sodium) return
+
+        binding.sodium.getFloatValue()?.let {
+            val saltValue = it.sodiumToSalt()
+            binding.salt.setText(getRoundNumber(saltValue))
         }
     }
 
@@ -554,11 +561,9 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         }
 
         // For every nutrition field add it to map if updated
-        allEditViews.forEach {
-            if (binding.servingSize.entryName == it.entryName) return@forEach
-            if (it.isNotEmpty()) {
-                addNutrientToMapIfUpdated(it, targetMap)
-            }
+        for (view in allEditViews) {
+            if (view.entryName == binding.servingSize.entryName || !view.isNotEmpty()) continue
+            addNutrientToMapIfUpdated(view, targetMap)
         }
     }
 
@@ -596,38 +601,37 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         editTextView: CustomValidatingEditTextView,
         targetMap: MutableMap<String, String?>
     ) {
-        val productNutriments = product?.nutriments ?: Nutriments()
+        val productNutriments = product?.nutriments ?: ProductNutriments()
 
-        val shortName = editTextView.entryName
-        val oldProductNutriment = productNutriments[shortName]
+        val shortName = editTextView.entryName.replace("_", "-")
+        val nutriment = Nutriment.requireByKey(shortName)
+        val oldProductNutriment = productNutriments[nutriment]
 
-        var oldValue: String? = null
-        var oldUnit: String? = null
-        var oldMod: String? = null
+        var oldValue: Float? = null
+        var oldUnit: MeasurementUnit? = null
+        var oldMod: Modifier? = null
 
         if (oldProductNutriment != null) {
             oldUnit = oldProductNutriment.unit
             oldMod = oldProductNutriment.modifier
             oldValue = if (isDataPer100g)
-                oldProductNutriment.for100gInUnits
+                oldProductNutriment.per100gInUnit.value
             else
-                oldProductNutriment.forServingInUnits
+                oldProductNutriment.perServingInUnit!!.value
         }
-        val valueChanged = editTextView.isContentDifferent(oldValue)
+        val valueChanged = editTextView.isValueDifferent(oldValue)
 
         // Check unit and modifier for changes
-        var newUnit: String? = null
-        var newMod: String? = null
+        var newUnit: MeasurementUnit? = null
+        var newMod: Modifier? = null
 
         if (editTextView.hasUnit()) {
             editTextView.unitSpinner?.let {
-                newUnit = getSelectedUnit(it.selectedItemPosition)
+                newUnit = getUnitIndex(it.selectedItemPosition)
             }
         }
 
-        editTextView.modSpinner?.let {
-            newMod = it.selectedItem.toString()
-        }
+        editTextView.modSpinner?.let { newMod = Modifier.findBySymbol(it.selectedItem.toString()) }
 
         val unitChanged = oldUnit == null || oldUnit != newUnit
         val modChanged = oldMod == null || oldMod != newMod
@@ -652,16 +656,18 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
 
         // Add unit field {nutrient-id}_unit to map
         if (editTextView.hasUnit() && editTextView.unitSpinner != null) {
-            val selectedUnit = getSelectedUnit(editTextView.unitSpinner!!.selectedItemPosition)
-            targetMap[fieldName + ApiFields.Suffix.UNIT] = Html.escapeHtml(selectedUnit)
+            val selectedUnit = getUnitIndex(editTextView.unitSpinner!!.selectedItemPosition)
+            targetMap[fieldName + ApiFields.Suffix.UNIT] = Html.escapeHtml(
+                selectedUnit.sym
+            )
         }
 
         // Take modifier from attached spinner, add to value if not the default one
         var mod = ""
         if (editTextView.modSpinner != null) {
-            val selectedMod = editTextView.modSpinner!!.selectedItem.toString()
-            if (DEFAULT_MODIFIER != selectedMod) {
-                mod = selectedMod
+            val selectedMod = Modifier.findBySymbol(editTextView.modSpinner!!.selectedItem.toString())
+            if (selectedMod != null && DEFAULT_MODIFIER != selectedMod) {
+                mod = selectedMod.sym
             }
         }
         // The suffix can either be _serving or _100g depending on user input
@@ -687,25 +693,26 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         get() {
             var reference = 100f
             if (binding.radioGroup.checkedRadioButtonId != R.id.for100g_100ml) {
-                reference = binding.servingSize.getFloatValueOr(reference)
-                reference = UnitUtils.convertToGrams(reference, SERVING_UNITS[binding.servingSize.unitSpinner!!.selectedItemPosition])
+                val value = binding.servingSize.getFloatValueOr(100f)
+                reference = measure(value, SERVING_UNITS[binding.servingSize.unitSpinner!!.selectedItemPosition])
+                    .grams
+                    .value
             }
             return reference
         }
 
     private fun displayAddNutrientDialog() {
         val nutrients = resources.getStringArray(R.array.nutrients_array)
-            .mapIndexedNotNull { index, nutrient ->
-                if (usedNutrientsIndexes.contains(index)) null else nutrient
-            }
+            .filterIndexed { index, _ -> index !in usedNutrientsIndexes }
             .sortedWith(Collator.getInstance(Locale.getDefault()))
+            .toTypedArray()
 
-        MaterialDialog.Builder(requireActivity())
-            .title(R.string.choose_nutrient)
-            .items(nutrients)
-            .itemsCallback { _, _, _, text ->
-                usedNutrientsIndexes.add(nutrients.indexOf(text))
-                val textView = addNutrientRow(nutrients.indexOf(text), text.toString())
+        MaterialAlertDialogBuilder(requireActivity())
+            .setTitle(R.string.choose_nutrient)
+            .setItems(nutrients) { _, index ->
+                val text = nutrients[index]
+                usedNutrientsIndexes += index
+                val textView = addNutrientRow(index, text)
 
                 allEditViews.add(textView)
                 textView.addValidListener()
@@ -726,7 +733,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         index: Int,
         hint: String,
         preFillValues: Boolean = false,
-        value: String? = null,
+        value: Float? = null,
         unitSelectedIndex: Int = 0,
         modSelectedIndex: Int = 0
     ): CustomValidatingEditTextView {
@@ -738,6 +745,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         rowView.findViewById<TextInputLayout>(R.id.value_til).hint = hint
 
         val nutrientShortName = getShortName(nutrientCompleteName)
+        val nutriment = Nutriment.requireByKey(nutrientShortName)
 
         val editText = rowView.findViewById<CustomValidatingEditTextView>(R.id.value)
         editText.entryName = nutrientShortName
@@ -750,24 +758,28 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         editText.imeOptions = EditorInfo.IME_ACTION_DONE
         editText.requestFocus()
 
-        if (preFillValues) editText.setText(value)
+        if (preFillValues && value != null) editText.setText(getRoundNumber(value))
 
         // Setup unit spinner
         val unitSpinner = rowView.findViewById<Spinner>(R.id.spinner_unit)
         val modSpinner = rowView.findViewById<Spinner>(R.id.spinner_mod)
 
-        when (nutrientShortName) {
-            Nutriments.PH -> {
+        when (nutriment) {
+            Nutriment.PH -> {
                 unitSpinner.visibility = View.INVISIBLE
             }
-            Nutriments.STARCH -> {
-                val arrayAdapter =
-                    ArrayAdapter(requireActivity(), android.R.layout.simple_spinner_item, requireActivity().resources.getStringArray(R.array.weights_array))
-                arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            Nutriment.STARCH -> {
+                val arrayAdapter = ArrayAdapter(
+                    requireActivity(),
+                    android.R.layout.simple_spinner_item,
+                    requireActivity().resources.getStringArray(R.array.weights_array)
+                ).apply {
+                    setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                }
                 unitSpinner.adapter = arrayAdapter
                 starchEditText = editText
             }
-            Nutriments.VITAMIN_A, Nutriments.VITAMIN_D, Nutriments.VITAMIN_E -> {
+            Nutriment.VITAMIN_A, Nutriment.VITAMIN_D, Nutriment.VITAMIN_E -> {
                 val adapter = ArrayAdapter(
                     requireActivity(),
                     android.R.layout.simple_spinner_item,
@@ -782,8 +794,8 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
                 unitSpinner.setSelection(unitSelectedIndex)
                 modSpinner.setSelection(modSelectedIndex)
             }
-        } catch (t: Exception) {
-            sentryAnalytics.record(IllegalStateException("Can't find weight units for nutriment: $nutrientShortName", t))
+        } catch (err: Exception) {
+            sentryAnalytics.record(IllegalStateException("Can't find weight units for nutriment: $nutrientShortName", err))
             closeScreenWithAlert()
         }
 
@@ -798,7 +810,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
 
     private fun isCarbohydrateRelated(editText: CustomValidatingEditTextView): Boolean {
         val entryName = editText.entryName
-        return binding.sugars.entryName == entryName || starchEditText != null && entryName == starchEditText!!.entryName
+        return entryName == binding.sugars.entryName || (starchEditText != null && entryName == starchEditText!!.entryName)
     }
 
     /**
@@ -808,98 +820,83 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
     private fun CustomValidatingEditTextView.checkCarbohydrate(value: Float): ValueState {
         if (binding.carbohydrates.entryName != entryName) return ValueState.NOT_TESTED
 
-        val res = this.checkAsGram(value)
+        val res = checkAsGram(value)
 
-        if (ValueState.NOT_VALID == res) return res
+        if (res == ValueState.NOT_VALID) return res
 
-        var carbsValue = binding.carbohydrates.getFloatValueOr(0f)
-        var sugarValue = binding.sugars.getFloatValueOr(0f)
+        val carbsValue = binding.carbohydrates.getFloatValueOr(0f)
+        val sugarValue = binding.sugars.getFloatValueOr(0f)
 
         // Check that value of (sugar + starch) is not greater than value of carbohydrates
         // Convert all the values to grams
-        carbsValue = convertToGrams(carbsValue, binding.carbohydrates.unitSpinner!!.selectedItemPosition)
-        sugarValue = convertToGrams(sugarValue, binding.sugars.unitSpinner!!.selectedItemPosition)
+        val carbsInG = convertToGrams(carbsValue, binding.carbohydrates.unitSpinner!!.selectedItemPosition)!!
+        val sugarInG = convertToGrams(sugarValue, binding.sugars.unitSpinner!!.selectedItemPosition)!!
+        val newStarchInG = convertToGrams(getStarchValue(), getStarchUnitSelectedIndex())!!
 
-        val newStarch = convertToGrams(starchValue, starchUnitSelectedIndex).toDouble()
-
-        return if (sugarValue + newStarch > carbsValue) {
-            binding.carbohydrates.showError(getString(R.string.error_in_carbohydrate_value))
-            ValueState.NOT_VALID
-        } else ValueState.VALID
+        return requireToValidate(sugarInG.value + newStarchInG.value <= carbsInG.value, R.string.error_in_carbohydrate_value)
     }
 
     /**
      * Validate serving size value entered by user
      */
-    private fun CustomValidatingEditTextView.checkPerServing(): ValueState {
-        return if (binding.servingSize.entryName == entryName) {
-            if (isDataPer100g) {
-                return ValueState.VALID
-            }
-            val value = binding.servingSize.getFloatValueOr(0f)
-            if (value <= 0) {
-                showError(getString(R.string.error_nutrient_serving_data))
-                return ValueState.NOT_VALID
-            }
-            ValueState.VALID
-        } else ValueState.NOT_TESTED
+    private fun CustomValidatingEditTextView.checkServingSize(): ValueState {
+        if (entryName != binding.servingSize.entryName) return ValueState.NOT_TESTED
+        if (isDataPer100g) return ValueState.VALID
+
+        val value = binding.servingSize.getFloatValueOr(0f)
+        return requireToValidate(value > 0, R.string.error_nutrient_serving_data)
     }
 
     /**
-     * Validate oh value according to [Nutriments.PH]
+     * Validate oh value according to [Nutriment.PH]
      * @param value quality value with known prefix
      */
     private fun CustomValidatingEditTextView.checkPh(value: Float): ValueState {
-        return if (Nutriments.PH == entryName) {
-            val maxPhValue = 14.0
-            if (value > maxPhValue || value >= maxPhValue && this.isModifierEqualsToGreaterThan()) {
-                setText(maxPhValue.toString())
-            }
-            ValueState.VALID
-        } else ValueState.NOT_TESTED
+        if (entryName != Nutriment.PH.key) return ValueState.NOT_TESTED
+
+        val maxPhValue = 14f
+        // Coerce the value
+        if (value > maxPhValue || value == maxPhValue && this.isModifierEqualsToGreaterThan()) {
+            setText(maxPhValue.toString())
+            modSpinner?.setSelection(0)
+        }
+
+        return ValueState.VALID
     }
 
     /**
      * Validate energy value entered by user
      */
-    private fun CustomValidatingEditTextView.checkEnergyField(value: Float): ValueState {
-        when (entryName) {
-            binding.energyKcal.entryName -> {
-                var energyInKcal = value
-                if (binding.radioGroup.checkedRadioButtonId != R.id.for100g_100ml) {
-                    energyInKcal *= 100.0f / referenceValueInGram
-                }
-                val isValid = energyInKcal <= 2000f
-                if (!isValid) {
-                    showError(getString(R.string.max_energy_val_msg))
-                }
-                return if (isValid) ValueState.VALID else ValueState.NOT_VALID
-            }
-            binding.energyKj.entryName -> {
-                var energyInKj = value
-                if (binding.radioGroup.checkedRadioButtonId != R.id.for100g_100ml) {
-                    energyInKj *= 100.0f / referenceValueInGram
-                }
-                val isValid = energyInKj <= 8368000f
-                if (!isValid) {
-                    showError(getString(R.string.max_energy_val_msg))
-                }
-                return if (isValid) ValueState.VALID else ValueState.NOT_VALID
-            }
-            else -> return ValueState.NOT_TESTED
+    private fun CustomValidatingEditTextView.checkEnergy(value: Float): ValueState {
+        if (entryName != binding.energyKcal.entryName && entryName != binding.energyKj.entryName) return ValueState.NOT_TESTED
+
+        var energy = value
+
+        if (binding.radioGroup.checkedRadioButtonId != R.id.for100g_100ml) {
+            energy *= 100.0f / referenceValueInGram
         }
+
+        val isValid = when (entryName) {
+            binding.energyKcal.entryName -> energy <= 2000f
+            binding.energyKj.entryName -> energy <= 8368000f
+            else -> true
+        }
+
+        return requireToValidate(isValid, R.string.max_energy_val_msg)
     }
 
     /**
      * validate alcohol content entered by user
      */
-    private fun CustomValidatingEditTextView.checkAlcohol(value: Float) =
-        if (binding.alcohol.entryName == entryName) {
-            if (value > 100) {
-                showError("This value is over 100")
-                ValueState.NOT_VALID
-            } else ValueState.VALID
-        } else ValueState.NOT_TESTED
+    private fun CustomValidatingEditTextView.checkAlcohol(value: Float): ValueState {
+        if (entryName != binding.alcohol.entryName) return ValueState.NOT_TESTED
+
+        return if (value <= 100) ValueState.VALID
+        else {
+            showError("This value is over 100") // TODO: i18n
+            ValueState.NOT_VALID
+        }
+    }
 
     override fun showImageProgress() {
         if (!isAdded) return
@@ -909,12 +906,8 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         binding.btnEditImageNutritionFacts.visibility = View.INVISIBLE
     }
 
-    private val starchValue
-        get() = if (starchEditText == null) 0F else starchEditText!!.getFloatValue() ?: 0F
-
-
-    private val starchUnitSelectedIndex
-        get() = if (starchEditText == null) 0 else starchEditText!!.unitSpinner!!.selectedItemPosition
+    private fun getStarchValue() = starchEditText?.getFloatValue() ?: 0F
+    private fun getStarchUnitSelectedIndex() = starchEditText?.unitSpinner?.selectedItemPosition ?: 0
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -965,15 +958,15 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
          * @param index 1 represents milligrams, 2 represents micrograms
          * @return return the converted value
          */
-        private fun convertToGrams(value: Float, index: Int): Float {
-            val unit = NUTRIENTS_UNITS[index]
-            // Can't be converted to grams.
-            return if (UNIT_DV == unit || UNIT_IU == unit) 0F
-            else UnitUtils.convertToGrams(value, unit)
+        private fun convertToGrams(value: Float, index: Int): Measurement? {
+            return when (val unit = NUTRIENTS_UNITS[index]) {
+                UNIT_DV, UNIT_IU -> null // Can't be converted to grams.
+                else -> measure(value, unit).grams
+            }
         }
 
         private fun Spinner.setOnItemSelectedListener(
-            block: (
+            onItemSelected: (
                 parent: AdapterView<*>?,
                 view: View?,
                 position: Int,
@@ -982,7 +975,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         ) {
             this.onItemSelectedListener = object : OnItemSelectedListener {
                 override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) =
-                    block(parent, view, position, id)
+                    onItemSelected(parent, view, position, id)
 
                 override fun onNothingSelected(parent: AdapterView<*>?) = Unit // This is not possible
             }

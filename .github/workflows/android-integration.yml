@@ -23,7 +23,7 @@ jobs:
           java-version: "11"
 
       - name: Compile screenshots android tests
-        uses: eskatos/gradle-command-action@v1.4.1
+        uses: gradle/gradle-build-action@v1.5.1
         with:
           arguments: >
             compileOffPlaystoreScreenshotsAndroidTestSources 
@@ -45,7 +45,7 @@ jobs:
           java-version: "11"
 
       - name: Run unit tests
-        uses: eskatos/gradle-command-action@v1.4.1
+        uses: gradle/gradle-build-action@v1.5.1
         with:
           arguments: >
             testObfPlaystoreDebugUnitTest
@@ -72,7 +72,7 @@ jobs:
         run: 'echo "ndk.dir=${ANDROID_HOME}/ndk-bundle" > local.properties'
 
       - name: Assemble debug APKs
-        uses: eskatos/gradle-command-action@v1.4.1
+        uses: gradle/gradle-build-action@v1.5.1
         with:
           arguments: assembleDebug
 
@@ -132,7 +132,7 @@ jobs:
         run: "echo \"org.gradle.jvmargs=-Xmx4096m\" >> gradle.properties"
 
       - name: Lint sources
-        uses: eskatos/gradle-command-action@v1.4.1
+        uses: gradle/gradle-build-action@v1.5.1
         with:
           arguments: lintOffPlayStoreDebug --stacktrace
 
@@ -163,12 +163,12 @@ jobs:
         run: chmod +x gradlew
 
       - name: Generate documentation
-        uses: eskatos/gradle-command-action@v1.4.1
+        uses: gradle/gradle-build-action@v1.5.1
         with:
           arguments: dokkaHtml
 
       - name: Deploy API documentation to Github Pages
-        uses: JamesIves/github-pages-deploy-action@4.1.4
+        uses: JamesIves/github-pages-deploy-action@4.1.5
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages

@@ -12,23 +12,19 @@ import openfoodfacts.github.scrachx.openfood.models.NutrimentListItem
  * @author herau
  */
 open class NutrimentsGridAdapter(
-        private val nutrimentListItems: List<NutrimentListItem>
+    private val nutrimentListItems: List<NutrimentListItem>
 ) : RecyclerView.Adapter<NutrimentsGridAdapter.NutrimentViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NutrimentViewHolder {
         val isViewTypeHeader = viewType == TYPE_HEADER
         val layoutResourceId = if (isViewTypeHeader) R.layout.nutriment_item_list_header else R.layout.nutriment_item_list
-        val v = LayoutInflater.from(parent.context).inflate(layoutResourceId, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(layoutResourceId, parent, false)
 
         return if (isViewTypeHeader) {
-            var displayServing = false
-            for (nutriment in nutrimentListItems) {
-                val servingValue = nutriment.servingValue
-                if (servingValue.isBlank()) displayServing = true
-            }
-            NutrimentViewHolder.NutrimentHeaderViewHolder(v, displayServing)
+            val displayServing = nutrimentListItems.any { !it.servingValueStr.isNullOrBlank() }
+            NutrimentViewHolder.NutrimentHeaderViewHolder(view, displayServing)
         } else {
-            NutrimentViewHolder.NutrimentListViewHolder(v)
+            NutrimentViewHolder.NutrimentListViewHolder(view)
         }
     }
 
@@ -40,8 +36,7 @@ open class NutrimentsGridAdapter(
             }
             is NutrimentViewHolder.NutrimentListViewHolder -> {
                 val item = nutrimentListItems[position]
-                holder.fillNutrimentValue(item)
-                holder.fillServingValue(item)
+                holder.fillNutriment(item)
             }
         }
     }
@@ -69,25 +64,42 @@ open class NutrimentsGridAdapter(
             private val vNutrimentServingValue: TextView = v.findViewById(R.id.nutriment_serving_value)
             private val vNutrimentValue: TextView = v.findViewById(R.id.nutriment_value)
 
-            fun fillNutrimentValue(item: NutrimentListItem) {
-                vNutrimentName.text = item.title
-                vNutrimentValue.append("${item.modifier} ${item.value} ${item.unit}")
+            fun fillNutriment(item: NutrimentListItem) {
+                fillNutrimentName(item)
+                fillNutrimentValue(item)
+                fillServingValue(item)
             }
 
-            fun fillServingValue(item: NutrimentListItem) {
-                val servingValue = item.servingValue
-                if (servingValue.isBlank()) {
+
+            private fun fillNutrimentName(item: NutrimentListItem) {
+                vNutrimentName.text = item.title
+            }
+
+            private fun fillNutrimentValue(item: NutrimentListItem) {
+                val value = item.value
+                if (value == null) {
+                    vNutrimentValue.visibility = View.INVISIBLE
+                } else {
+                    vNutrimentValue.visibility = View.VISIBLE
+                    vNutrimentValue.text = "${item.modifierStr} $value ${item.unitStr}"
+                }
+            }
+
+            private fun fillServingValue(item: NutrimentListItem) {
+                val servingValue = item.servingValueStr
+                if (servingValue == null) {
                     vNutrimentServingValue.visibility = View.GONE
                 } else {
-                    vNutrimentServingValue.append(String.format("%s %s %s",
-                            item.modifier,
-                            servingValue,
-                            item.unit))
+                    vNutrimentServingValue.visibility = View.VISIBLE
+                    vNutrimentServingValue.text = "${item.modifierStr} $servingValue ${item.unitStr}"
                 }
             }
         }
 
-        internal class NutrimentHeaderViewHolder(itemView: View, displayServing: Boolean) : NutrimentViewHolder(itemView) {
+        internal class NutrimentHeaderViewHolder(
+            itemView: View,
+            displayServing: Boolean
+        ) : NutrimentViewHolder(itemView) {
             val vNutrimentValue: TextView = itemView.findViewById(R.id.nutriment_value)
             private val nutrimentServingValue: TextView = itemView.findViewById(R.id.nutriment_serving_value)
 

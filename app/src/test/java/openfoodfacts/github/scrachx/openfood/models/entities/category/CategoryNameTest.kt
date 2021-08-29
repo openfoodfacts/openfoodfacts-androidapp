@@ -17,7 +17,7 @@ class CategoryNameTest {
 
     @Test
     fun getWikiDataIdWithNullWikiDataId_returnsStringNull() {
-        assertThat(mCategoryName.wikiDataId).isEqualTo(null)
+        assertThat(mCategoryName.wikiDataId).isNull()
     }
 
     @Test

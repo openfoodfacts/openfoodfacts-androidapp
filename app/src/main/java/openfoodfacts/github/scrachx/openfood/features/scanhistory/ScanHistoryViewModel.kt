@@ -17,6 +17,7 @@ import openfoodfacts.github.scrachx.openfood.models.HistoryProductDao
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
 import openfoodfacts.github.scrachx.openfood.utils.SortType
+import openfoodfacts.github.scrachx.openfood.utils.list
 import javax.inject.Inject
 
 @HiltViewModel
@@ -52,7 +53,7 @@ class ScanHistoryViewModel @Inject constructor(
         unorderedProductState.postValue(FetchProductsState.Loading)
 
         withContext(Dispatchers.IO) {
-            val barcodes = daoSession.historyProductDao.queryBuilder().list().map { it.barcode }
+            val barcodes = daoSession.historyProductDao.list().map { it.barcode }
             if (barcodes.isNotEmpty()) {
                 try {
                     client.getProductsByBarcode(barcodes)
@@ -77,7 +78,7 @@ class ScanHistoryViewModel @Inject constructor(
                 }
             }
 
-            val updatedProducts = daoSession.historyProductDao.queryBuilder().list()
+            val updatedProducts = daoSession.historyProductDao.list()
             unorderedProductState.postValue(FetchProductsState.Data(updatedProducts))
         }
     }
@@ -101,7 +102,7 @@ class ScanHistoryViewModel @Inject constructor(
             unorderedProductState.postValue(FetchProductsState.Error)
         }
 
-        val products = daoSession.historyProductDao.queryBuilder().list()
+        val products = daoSession.historyProductDao.list()
         unorderedProductState.postValue(FetchProductsState.Data(products))
     }
 

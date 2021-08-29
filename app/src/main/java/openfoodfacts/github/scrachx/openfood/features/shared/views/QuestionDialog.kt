@@ -98,3 +98,9 @@ class QuestionDialog(context: Context) {
 
     fun dismiss() = dialog.dismiss()
 }
+
+inline fun showQuestionDialog(context: Context, dialogAction: QuestionDialog.() -> Unit) {
+    val dialog = QuestionDialog(context)
+    dialog.dialogAction()
+    dialog.show()
+}

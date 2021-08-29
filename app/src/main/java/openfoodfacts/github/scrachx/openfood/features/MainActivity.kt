@@ -87,7 +87,6 @@ import openfoodfacts.github.scrachx.openfood.features.login.LoginActivity.Compan
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity
 import openfoodfacts.github.scrachx.openfood.features.productlists.ProductListsActivity
 import openfoodfacts.github.scrachx.openfood.features.scanhistory.ScanHistoryActivity
-import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivity.Companion.start
 import openfoodfacts.github.scrachx.openfood.features.searchbycode.SearchByCodeFragment
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
@@ -119,7 +118,6 @@ import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Comp
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_SEARCH_BY_CODE
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_USER
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_YOUR_LISTS
-import openfoodfacts.github.scrachx.openfood.utils.Utils.isApplicationInstalled
 import openfoodfacts.github.scrachx.openfood.utils.Utils.scheduleProductUploadJob
 import java.io.FileNotFoundException
 import java.io.IOException
@@ -127,6 +125,7 @@ import java.util.*
 import javax.inject.Inject
 import kotlin.time.Duration
 import kotlin.time.ExperimentalTime
+import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivity.Companion.start as startSearch
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity(), NavigationDrawerListener {
@@ -310,7 +309,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
                         ITEM_PREFERENCES -> newFragment = PreferencesFragment.newInstance()
                         ITEM_ABOUT -> CustomTabActivityHelper.openCustomTab(this@MainActivity, customTabsIntent, discoverUri, WebViewFallback())
                         ITEM_CONTRIBUTE -> CustomTabActivityHelper.openCustomTab(this@MainActivity, customTabsIntent, contributeUri, WebViewFallback())
-                        ITEM_INCOMPLETE_PRODUCTS -> start(
+                        ITEM_INCOMPLETE_PRODUCTS -> startSearch(
                             this@MainActivity,
                             SearchType.INCOMPLETE_PRODUCT,
                             ""
@@ -326,7 +325,11 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
                                     Toast.makeText(this@MainActivity, R.string.app_disabled_text, Toast.LENGTH_SHORT).show()
                                     startActivity(Intent().apply {
                                         action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
-                                        data = Uri.fromParts("package", BuildConfig.OFOTHERLINKAPP, null)
+                                        data = Uri.fromParts(
+                                            "package",
+                                            BuildConfig.OFOTHERLINKAPP,
+                                            null
+                                        )
                                     })
                                 }
                             } else {
@@ -346,7 +349,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
                             CustomTabActivityHelper.openCustomTab(
                                 this@MainActivity,
                                 CustomTabsIntent.Builder().build(),
-                                Uri.parse(getString(R.string.advanced_search_url)),
+                                getString(R.string.advanced_search_url).toUri(),
                                 WebViewFallback()
                             )
                         }
@@ -356,7 +359,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
                             .setTitle(R.string.confirm_logout)
                             .setMessage(R.string.logout_dialog_content)
                             .setPositiveButton(android.R.string.ok) { _, _ -> logout() }
-                            .setNegativeButton(R.string.dialog_cancel) { d, _ -> d.dismiss() }
+                            .setNegativeButton(android.R.string.cancel) { d, _ -> d.dismiss() }
                             .show()
                     }
                     newFragment?.let(::swapToFragment)
@@ -517,7 +520,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
     }
 
     private fun openMyContributionsInSearchActivity() =
-        start(this, SearchType.CONTRIBUTOR, getUserLogin()!!)
+        startSearch(this, SearchType.CONTRIBUTOR, getUserLogin()!!)
 
     private fun getProfileSettingDrawerItem(): IProfile<ProfileSettingDrawerItem> {
         val userLogin = getUserLogin()
@@ -715,7 +718,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
                     SearchSuggestionProvider.MODE
                 )
                 suggestions.saveRecentQuery(query, null)
-                start(this, SearchType.SEARCH, query)
+                startSearch(this, SearchType.SEARCH, query)
 
                 searchMenuItem?.collapseActionView()
             }
@@ -887,5 +890,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
         private const val BARCODE_SHORTCUT = "BARCODE"
         const val PRODUCT_SEARCH_KEY = "product_search"
         private val LOG_TAG = MainActivity::class.simpleName!!
+
+        fun start(context: Context) = context.startActivity(Intent(context, MainActivity::class.java))
     }
 }

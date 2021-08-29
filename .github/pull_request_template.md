@@ -13,3 +13,6 @@
 
 #### Screenshots
 <!-- If possible, please add relevant screenshots / GIFs -->
+
+#### Link to the automatically generated build APK
+<!-- If your build succeeds after making this PR, you will get an APK. Please edit your PR and add the link here -->

@@ -33,7 +33,6 @@ import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.*
 import java.util.*
 import javax.inject.Inject
-import kotlin.collections.ArrayList
 
 @AndroidEntryPoint
 class ProductCompareActivity : BaseActivity() {
@@ -41,7 +40,6 @@ class ProductCompareActivity : BaseActivity() {
     private val binding get() = _binding!!
 
     private val viewModel: ProductCompareViewModel by viewModels()
-
 
     @Inject
     lateinit var productRepository: ProductRepository
@@ -71,19 +69,19 @@ class ProductCompareActivity : BaseActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         // Use activity results if present
-        var returnedProducts = ArrayList<Product>()
+        var returnedProducts = emptyList<Product>()
         if (intent.extras != null && intent.getBooleanExtra(KEY_PRODUCT_FOUND, false)) {
-            returnedProducts = intent.extras?.getSerializable(KEY_PRODUCTS_TO_COMPARE) as ArrayList<Product>
+            returnedProducts = intent.extras?.getSerializable(KEY_PRODUCTS_TO_COMPARE) as List<Product>
             if (intent.getBooleanExtra(KEY_PRODUCT_ALREADY_EXISTS, false)) {
                 Toast.makeText(this, getString(R.string.product_already_exists_in_comparison), Toast.LENGTH_SHORT).show()
             }
         }
 
-        viewModel.productsToCompare.value = returnedProducts
+        viewModel.addProductsToCompare(returnedProducts)
 
         binding.navigationBottomInclude.bottomNavigation.installBottomNavigation(this)
 
-        viewModel.products.observe(this) { products ->
+        viewModel.productsToCompare.observe(this) { products ->
             // Track compare event
             if (products.size > 1) {
                 matomoAnalytics.trackEvent(AnalyticsEvent.CompareProducts(products.size.toFloat()))
@@ -151,7 +149,8 @@ class ProductCompareActivity : BaseActivity() {
 
     override fun startScanActivity() {
         viewModel.productsToCompare.value
-            ?.let { ContinuousScanActivity.start(this, it) }
+            ?.map { it.product }
+            ?.let { ContinuousScanActivity.start(this, it as java.util.ArrayList<Product>) }
             ?: error("Products still not set.")
     }
 

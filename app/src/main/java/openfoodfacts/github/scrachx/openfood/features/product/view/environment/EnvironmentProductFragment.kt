@@ -4,7 +4,6 @@ import android.app.Activity
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.text.SpannableStringBuilder
 import android.text.method.LinkMovementMethod
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +11,7 @@ import android.view.ViewGroup
 import androidx.core.text.HtmlCompat
 import androidx.core.text.HtmlCompat.FROM_HTML_MODE_COMPACT
 import androidx.core.text.bold
+import androidx.core.text.buildSpannedString
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.rxkotlin.addTo
@@ -24,7 +24,7 @@ import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditAc
 import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewActivity
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
-import openfoodfacts.github.scrachx.openfood.models.Nutriments
+import openfoodfacts.github.scrachx.openfood.models.Nutriment
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.models.ProductState
@@ -104,12 +104,13 @@ class EnvironmentProductFragment : BaseFragment() {
             mUrlImage = imagePackagingUrl
         }
 
-        val carbonFootprintNutriment = nutriments[Nutriments.CARBON_FOOTPRINT]
+        val carbonFootprintNutriment = nutriments[Nutriment.CARBON_FOOTPRINT]
         if (carbonFootprintNutriment != null) {
-            binding.textCarbonFootprint.text = SpannableStringBuilder()
-                    .bold { append(getString(R.string.textCarbonFootprint)) }
-                    .append(carbonFootprintNutriment.for100gInUnits)
-                    .append(carbonFootprintNutriment.unit)
+            binding.textCarbonFootprint.text = buildSpannedString {
+                bold { append(getString(R.string.textCarbonFootprint)) }
+                append(getRoundNumber(carbonFootprintNutriment.per100gInUnit))
+                append(carbonFootprintNutriment.unit.sym)
+            }
         } else {
             binding.carbonFootprintCv.visibility = View.GONE
         }
@@ -124,10 +125,11 @@ class EnvironmentProductFragment : BaseFragment() {
 
         val packaging = product.packaging
         if (!packaging.isNullOrEmpty()) {
-            binding.packagingText.text = SpannableStringBuilder()
-                    .bold { append(getString(R.string.packaging_environmentTab)) }
-                    .append(" ")
-                    .append(packaging.replace(",", ", "))
+            binding.packagingText.text = buildSpannedString {
+                bold { append(getString(R.string.packaging_environmentTab)) }
+                append(" ")
+                append(packaging.replace(",", ", "))
+            }
         } else {
             binding.packagingCv.visibility = View.GONE
         }
@@ -135,9 +137,10 @@ class EnvironmentProductFragment : BaseFragment() {
         val recyclingInstructionsToDiscard = product.recyclingInstructionsToDiscard
         if (!recyclingInstructionsToDiscard.isNullOrEmpty()) {
             // TODO: 02/03/2021 i18n
-            binding.recyclingInstructionToDiscard.text = SpannableStringBuilder()
-                    .bold { append("Recycling instructions - To discard: ") }
-                    .append(recyclingInstructionsToDiscard)
+            binding.recyclingInstructionToDiscard.text = buildSpannedString {
+                bold { append("Recycling instructions - To discard: ") }
+                append(recyclingInstructionsToDiscard)
+            }
         } else {
             binding.recyclingInstructionsDiscardCv.visibility = View.GONE
         }
@@ -145,9 +148,10 @@ class EnvironmentProductFragment : BaseFragment() {
         val recyclingInstructionsToRecycle = product.recyclingInstructionsToRecycle
         if (!recyclingInstructionsToRecycle.isNullOrEmpty()) {
             // TODO: 02/03/2021 i18n
-            binding.recyclingInstructionToRecycle.text = SpannableStringBuilder()
-                    .bold { append("Recycling instructions - To recycle: ") }
-                    .append(recyclingInstructionsToRecycle)
+            binding.recyclingInstructionToRecycle.text = buildSpannedString {
+                bold { append("Recycling instructions - To recycle: ") }
+                append(recyclingInstructionsToRecycle)
+            }
         } else {
             binding.recyclingInstructionsRecycleCv.visibility = View.GONE
         }
