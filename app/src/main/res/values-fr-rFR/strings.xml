@@ -575,7 +575,7 @@
     <string name="percent">%1$d%%</string>
     <string name="overview">Résumé</string>
     <string name="ingredients">Ingrédients</string>
-    <string name="nutrition_facts">Composition nutritionnelle</string>
+    <string name="nutrition_facts">Nutrition</string>
     <string name="your_version">Vous</string>
     <string name="ingredients_picture">Photo de la liste des ingrédients</string>
     <string name="packaging">Recyclage</string>
