@@ -155,7 +155,7 @@
     <string name="alert_dialog_warning_title">Warning</string>
     <string name="alert_dialog_warning_msg_user">Người dùng / mật khẩu đã thay đổi, vui lòng cập nhật thông tin</string>
     <string name="toast_retrieving">Loading...</string>
-    <string name="txtBarcode">Barcode:</string>
+    <string name="txtBarcode">Mã vạch:</string>
     <string name="txtCategories">Thể loại :</string>
     <string name="txtLabels">Nhãn, chứng nhận, giải thưởng:</string>
     <string name="txtEMB">Traceability codes:</string>

@@ -27,7 +27,7 @@
     <string name="msg_welcome_nutriscore">A simple synthesis of the nutritional quality of your food</string>
     <string name="title_welcome_nova">Avoid ultra-processed foods</string>
     <string name="msg_welcome_nova">Reduce the amount of ultra-processed foods in your diet.</string>
-    <string name="title_welcome_ecoscore">Skor Lingkungan</string>
+    <string name="title_welcome_ecoscore">Eco-Score</string>
     <!-- Scan card -->
     <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
     <string name="txtDialogsContentPowerMode">Produk yang Anda pindai sudah ada dalam daftar Open Food Facts.</string>

@@ -160,7 +160,7 @@
     <string name="alert_dialog_warning_title">Avertiment</string>
     <string name="alert_dialog_warning_msg_user">User/password has changed, please update information</string>
     <string name="toast_retrieving">Loading…</string>
-    <string name="txtBarcode">Barcode:</string>
+    <string name="txtBarcode">Còdi de barras:</string>
     <string name="txtCategories">Categorias :</string>
     <string name="txtLabels">Etiquetas, certificacions, premis :</string>
     <string name="txtEMB">Traceability codes:</string>
