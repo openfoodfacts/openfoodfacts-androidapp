@@ -577,7 +577,7 @@
     <string name="your_version">您的圖片</string>
     <string name="ingredients_picture">成分相片</string>
     <string name="packaging">Recycling</string>
-    <string name="take_ingredients_picture_to_extract">(Please take a picture of the ingredients to automatically extract them)</string>
+    <string name="take_ingredients_picture_to_extract">(Please take a photo of the ingredients to automatically extract them)</string>
     <string name="ingredients_list">成分表</string>
     <string name="ingredients_hint">Keep the order, indicate the % when specified, separate with a comma or use -, use () for ingredients of an ingredient, surround allergens with _</string>
     <string name="extract_ingredients">摘錄成分</string>
