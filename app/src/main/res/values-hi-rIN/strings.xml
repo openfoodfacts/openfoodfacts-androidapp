@@ -160,7 +160,7 @@
     <string name="alert_dialog_warning_title">चेतावनी</string>
     <string name="alert_dialog_warning_msg_user">उपयोगकर्ता/ पासवर्ड बदल गया है,  कृप्या  जानकारी अपडेट करें</string>
     <string name="toast_retrieving">लोड किया जा रहा है…</string>
-    <string name="txtBarcode">Barcode:</string>
+    <string name="txtBarcode">बारकोड:</string>
     <string name="txtCategories">श्रेणी:</string>
     <string name="txtLabels">लेबल, प्रमाणपत्र, पुरस्कार:</string>
     <string name="txtEMB">Traceability codes:</string>

@@ -180,7 +180,7 @@
     <string name="alert_dialog_warning_title">Warning</string>
     <string name="alert_dialog_warning_msg_user">User/password has changed, please update information</string>
     <string name="toast_retrieving">Loading...</string>
-    <string name="txtBarcode">Barcode:</string>
+    <string name="txtBarcode">Côd bar:</string>
     <string name="txtCategories">Categorïau :</string>
     <string name="txtLabels">Labels, certifications, awards :</string>
     <string name="txtEMB">Traceability codes:</string>

@@ -160,7 +160,7 @@
     <string name="alert_dialog_warning_title">Abisua</string>
     <string name="alert_dialog_warning_msg_user">Erabiltzailea/pasahitza aldatu egin da, eguneratu informazioa mesedez</string>
     <string name="toast_retrieving">Loading…</string>
-    <string name="txtBarcode">Barcode:</string>
+    <string name="txtBarcode">Barra kodea:</string>
     <string name="txtCategories">Kategoriak :</string>
     <string name="txtLabels">Etiketa, ziurtagiriak, sariak:</string>
     <string name="txtEMB">EMB kodea:</string>

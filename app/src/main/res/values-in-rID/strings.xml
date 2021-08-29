@@ -378,7 +378,7 @@
     <string name="nova_grp1_msg">Kelompok 1 - Makanan yang tidak diproses atau diproses minimal</string>
     <string name="nova_grp2_msg">Kelompok 2 - Olahan bahan kuliner</string>
     <string name="nova_grp3_msg">Kelompok 3 - Makanan olahan</string>
-    <string name="nova_grp4_msg">Group 4 - Produk makanan dan minuman yang ultra proses</string>
+    <string name="nova_grp4_msg">Kelompok 4 - Produk makanan dan minuman yang ultra proses</string>
     <!-- String related to App Shortcuts -->
     <string name="disabled_message">Pintasan tidak tersedia</string>
     <string name="scan_shortcut_short_label">Pindai</string>
@@ -806,7 +806,7 @@
     <string name="msg_welcome_nutriscore">A simple synthesis of the nutritional quality of your food</string>
     <string name="title_welcome_nova">Avoid ultra-processed foods</string>
     <string name="msg_welcome_nova">Reduce the amount of ultra-processed foods in your diet.</string>
-    <string name="title_welcome_ecoscore">Skor Lingkungan</string>
+    <string name="title_welcome_ecoscore">Eco-Score</string>
     <string name="msg_welcome_ecoscore">A synthesis of the environmental impact of your food.</string>
     <string name="title_welcome_matomo">Send anonymous analytics</string>
     <string name="msg_welcome_matomo">Help the Open Food Facts volunteers to improve the app. You decide if you send anonymous analytics.\n\nIf you change your mind this option can be enabled and disabled at any time from the settings.</string>

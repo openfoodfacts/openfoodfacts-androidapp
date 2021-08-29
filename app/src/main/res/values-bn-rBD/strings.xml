@@ -160,7 +160,7 @@
     <string name="alert_dialog_warning_title">সতর্কতা</string>
     <string name="alert_dialog_warning_msg_user">ইউজার/পাসওয়ার্ড পরিবর্তিত হয়েছে, দয়া করে তথ্য হালনাগাদ করুন</string>
     <string name="toast_retrieving">লোড হচ্ছে…</string>
-    <string name="txtBarcode">Barcode:</string>
+    <string name="txtBarcode">বারকোড:</string>
     <string name="txtCategories">শ্রেণীসমূহ :</string>
     <string name="txtLabels">লেবেল, সার্টিফিকেশন, পুরষ্কার:</string>
     <string name="txtEMB">Traceability codes:</string>

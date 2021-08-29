@@ -160,7 +160,7 @@
     <string name="alert_dialog_warning_title">اخطار</string>
     <string name="alert_dialog_warning_msg_user">نام کاربری / رمز عبور تغییر کرده است، لطفا اطلاعات را به روز رسانی کنید</string>
     <string name="toast_retrieving">درحال بارگذاری…</string>
-    <string name="txtBarcode">Barcode:</string>
+    <string name="txtBarcode">بارکد:</string>
     <string name="txtCategories">دسته ها:</string>
     <string name="txtLabels">برچسب ها، گواهی ها، جوایز:</string>
     <string name="txtEMB">Traceability codes:</string>

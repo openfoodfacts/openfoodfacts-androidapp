@@ -160,7 +160,7 @@
     <string name="alert_dialog_warning_title">Averto</string>
     <string name="alert_dialog_warning_msg_user">Uzanto / pasvorto ŝanĝiĝis, bonvolu ĝisdatigi informojn</string>
     <string name="toast_retrieving">Ŝarĝante…</string>
-    <string name="txtBarcode">Barcode:</string>
+    <string name="txtBarcode">Strekokodo:</string>
     <string name="txtCategories">Kategorioj :</string>
     <string name="txtLabels">Labels, certifications, awards :</string>
     <string name="txtEMB">Traceability codes:</string>
