@@ -511,8 +511,8 @@
     <string name="notify_channel_description">Benachrichtigung, um den Speicherort der exportierten Dateien anzuzeigen</string>
     <string name="products_to_be_completed">Noch abzuschließende Produkte</string>
     <string name="offline_notification_title">Noch zu sendende Offline-Beiträge</string>
-    <string name="creator_history">Produkt hinzugefügt am %1$s um %2$s MESZ durch</string>
-    <string name="last_editor_history">Letzte Änderung der Produktseite am %1$s um %2$s MESZ durch </string>
+    <string name="creator_history">Produkt hinzugefügt am %1$s um %2$s MESZ durch %3$s</string>
+    <string name="last_editor_history">Letzte Änderung der Produktseite am %1$s um %2$s MESZ durch %3$s</string>
     <string name="other_editors">Produktseite auch bearbeitet von </string>
     <string name="product_states">Produktdaten</string>
     <string name="incomplete_states">Unvollständige Daten</string>
