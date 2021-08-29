@@ -160,7 +160,7 @@
     <string name="alert_dialog_warning_title">Warning</string>
     <string name="alert_dialog_warning_msg_user">User/password has changed, please update information</string>
     <string name="toast_retrieving">Loading…</string>
-    <string name="txtBarcode">Barcode :</string>
+    <string name="txtBarcode">Barcode:</string>
     <string name="txtCategories">Categories :</string>
     <string name="txtLabels">Labels, certifications, awards :</string>
     <string name="txtEMB">Traceability codes:</string>
@@ -216,7 +216,7 @@
     <string name="open_food_drawer">Open Food Facts</string>
     <string name="search_drawer">Search</string>
     <string name="search_by_barcode_drawer">Type barcode</string>
-    <string name="category_drawer">Categories</string>
+    <string name="category_drawer">വിഭാഗങ്ങൾ</string>
     <string name="search_by_category">Category</string>
     <string name="scan_search">Scan Barcode</string>
     <string name="user_drawer">User</string>
@@ -474,6 +474,7 @@
     <string name="country_string">Country</string>
     <string name="store_subtitle">Store</string>
     <string name="packaging_subtitle">Packaging</string>
+    <string name="state_subtitle">State</string>
     <string name="packaging_string">Packaging</string>
     <string name="label_string">Label</string>
     <string name="category_string">Category</string>
@@ -582,7 +583,7 @@
     <string name="your_version">Yours</string>
     <string name="ingredients_picture">Ingredients Picture</string>
     <string name="packaging">Recycling</string>
-    <string name="take_ingredients_picture_to_extract">(Please take a picture of the ingredients to automatically extract them)</string>
+    <string name="take_ingredients_picture_to_extract">(Please take a photo of the ingredients to automatically extract them)</string>
     <string name="ingredients_list">Ingredients List</string>
     <string name="ingredients_hint">Keep the order, indicate the % when specified, separate with a comma or use -, use () for ingredients of an ingredient, surround allergens with _</string>
     <string name="extract_ingredients">Extract ingredients</string>

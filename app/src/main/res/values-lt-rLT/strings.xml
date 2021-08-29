@@ -170,7 +170,7 @@
     <string name="alert_dialog_warning_title">Warning</string>
     <string name="alert_dialog_warning_msg_user">Vartotojas / slaptažodis pasikeitė, atnaujinkite informaciją</string>
     <string name="toast_retrieving">Įkeliama…</string>
-    <string name="txtBarcode">Brūkšninis kodas:</string>
+    <string name="txtBarcode">Barcode:</string>
     <string name="txtCategories">Kategorijos:</string>
     <string name="txtLabels">Etiketės, sertifikatai, apdovanojimai:</string>
     <string name="txtEMB">Atsekamumo kodai:</string>
@@ -484,6 +484,7 @@
     <string name="country_string">Country</string>
     <string name="store_subtitle">Store</string>
     <string name="packaging_subtitle">Pakuotė</string>
+    <string name="state_subtitle">Valstija</string>
     <string name="packaging_string">Pakuotė</string>
     <string name="label_string">Label</string>
     <string name="category_string">Category</string>

@@ -161,11 +161,11 @@
         <item>Zinc</item>
     </string-array>
     <!-- Content Description -->
-    <string name="search_button">Pretraživanje</string>
+    <string name="search_button">Search</string>
     <string name="alert_dialog_warning_title">Warning</string>
     <string name="alert_dialog_warning_msg_user">User/password has changed, please update information</string>
     <string name="toast_retrieving">Loading…</string>
-    <string name="txtBarcode">Barcode :</string>
+    <string name="txtBarcode">Barcode:</string>
     <string name="txtCategories">Categories :</string>
     <string name="txtLabels">Labels, certifications, awards :</string>
     <string name="txtEMB">Traceability codes:</string>
@@ -189,11 +189,11 @@
     <string name="txtSalt">Salt</string>
     <string name="txtFat">Fat</string>
     <string name="txtSugars">Sugars</string>
-    <string name="hintBarcode">Barkod</string>
+    <string name="hintBarcode">Barcode</string>
     <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
     <string name="txtloginHelper">If you have an Open Food Facts account, you can login here with it</string>
     <string name="hintLogin">Login</string>
-    <string name="hintPass">Lozinka</string>
+    <string name="hintPass">Password</string>
     <string name="errorLogin">Login or password error</string>
     <string name="errorWeb">We were not able to access the internet. Do you have connectivity issues?</string>
     <string name="uploadLater">Image will be uploaded when network is available</string>
@@ -219,7 +219,7 @@
     <string name="install">Install</string>
     <string name="open_beauty_drawer">Open Beauty Facts</string>
     <string name="open_food_drawer">Open Food Facts</string>
-    <string name="search_drawer">Pretraživanje</string>
+    <string name="search_drawer">Search</string>
     <string name="search_by_barcode_drawer">Type barcode</string>
     <string name="category_drawer">Категорије</string>
     <string name="search_by_category">Category</string>
@@ -284,7 +284,7 @@
     <string name="nutrition_energy_short_name">Energy</string>
     <string name="nutrition_fat">Fat</string>
     <string name="nutrition_fiber">Dietary fiber</string>
-    <string name="nutrition_header">Hranljiva vrednost</string>
+    <string name="nutrition_header">Nutrition facts</string>
     <string name="nutrition_proteins">Proteins</string>
     <string name="nutrition_salt">Salt</string>
     <string name="nutrition_satured_fat">Saturated fat</string>
@@ -300,7 +300,7 @@
     <string name="contribution_without_account">You can sign-in or create an account to keep your contributions</string>
     <string name="textCarbonFootprint">Carbon footprint / CO2 emissions: </string>
     <string name="packaging_environmentTab">Packaging:</string>
-    <string name="action_search">Pretraživanje</string>
+    <string name="action_search">Search</string>
     <string name="search_hint">Traži proizvod</string>
     <string name="number_of_results">Number of results: </string>
     <string name="number_of_products">Number of products: </string>
@@ -393,7 +393,7 @@
     <string name="disabled_message">Shortcut Not Available</string>
     <string name="scan_shortcut_short_label">Скенирање</string>
     <string name="scan_shortcut_long_label">Scan Product</string>
-    <string name="barcode_shortcut_short_label">Pretraživanje</string>
+    <string name="barcode_shortcut_short_label">Search</string>
     <string name="barcode_shortcut_long_label">Search By Barcode</string>
     <string name="history_shortcut_short_label">History</string>
     <string name="history_shortcut_long_label">History</string>
@@ -475,10 +475,11 @@
     <string name="brand_string">Brand</string>
     <string name="additive_string">Additive</string>
     <string name="allergen_string">Allergen</string>
-    <string name="search_string">Pretraživanje</string>
-    <string name="country_string">Државе у којима се продаје</string>
+    <string name="search_string">Search</string>
+    <string name="country_string">Country</string>
     <string name="store_subtitle">Store</string>
     <string name="packaging_subtitle">Packaging</string>
+    <string name="state_subtitle">State</string>
     <string name="packaging_string">Packaging</string>
     <string name="label_string">Label</string>
     <string name="category_string">Category</string>
@@ -493,7 +494,7 @@
     <!--shared element transition key-->
     <string name="by_title">Title</string>
     <string name="by_brand">Brand</string>
-    <string name="by_barcode">Barkod</string>
+    <string name="by_barcode">Barcode</string>
     <string name="by_time">Recently Viewed</string>
     <string name="sort">Sort</string>
     <string name="by_nutrition_grade">Nutri-Score</string>
@@ -588,7 +589,7 @@
     <string name="your_version">Yours</string>
     <string name="ingredients_picture">Ingredients Picture</string>
     <string name="packaging">Recycling</string>
-    <string name="take_ingredients_picture_to_extract">(Please take a picture of the ingredients to automatically extract them)</string>
+    <string name="take_ingredients_picture_to_extract">(Please take a photo of the ingredients to automatically extract them)</string>
     <string name="ingredients_list">Ingredients List</string>
     <string name="ingredients_hint">Keep the order, indicate the % when specified, separate with a comma or use -, use () for ingredients of an ingredient, surround allergens with _</string>
     <string name="extract_ingredients">Extract ingredients</string>
@@ -738,7 +739,7 @@
     <string name="cant_edit_image_not_yet_uploaded">The new image is not yet uploaded. Please, wait before editing it</string>
     <string name="unselect_image">Unselect Image</string>
     <string name="choose_default_language">Select product language</string>
-    <string name="barcode">Barkod</string>
+    <string name="barcode">Barcode</string>
     <string name="productAdditivesNone">No additives</string>
     <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
     <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>

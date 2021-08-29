@@ -474,6 +474,7 @@
     <string name="country_string">Country</string>
     <string name="store_subtitle">ಸಂಗ್ರಹಿಸಿ</string>
     <string name="packaging_subtitle">ಪ್ಯಾಕೇಜಿಂಗ್</string>
+    <string name="state_subtitle">State</string>
     <string name="packaging_string">ಪ್ಯಾಕೇಜಿಂಗ್</string>
     <string name="label_string">ಲೇಬಲ್</string>
     <string name="category_string">ವರ್ಗ</string>

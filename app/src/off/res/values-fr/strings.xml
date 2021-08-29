@@ -21,12 +21,12 @@
     <string name="slide_4_title">Fonctionne hors connexion</string>
     <string name="slide_4_desc">Vous pouvez ajouter de nouveaux produits, même si vous ne disposez pas d\'une connexion Internet pour le moment</string>
     <!-- New onboarding-->
-    <string name="title_welcome_intro">Join the food revolution</string>
-    <string name="msg_welcome_intro">Scan food, Take photos, Help transform the food system</string>
+    <string name="title_welcome_intro">Rejoignez la révolution alimentaire</string>
+    <string name="msg_welcome_intro">Scannez les aliments, prenez des photos, aidez à transformer le système alimentaire</string>
     <string name="title_welcome_nutriscore">Obtenez le Nutri-Score</string>
-    <string name="msg_welcome_nutriscore">A simple synthesis of the nutritional quality of your food</string>
-    <string name="title_welcome_nova">Avoid ultra-processed foods</string>
-    <string name="msg_welcome_nova">Reduce the amount of ultra-processed foods in your diet.</string>
+    <string name="msg_welcome_nutriscore">Une synthèse simple de la qualité nutritionnelle de vos aliments</string>
+    <string name="title_welcome_nova">Évitez les aliments ultra-transformés</string>
+    <string name="msg_welcome_nova">Réduisez la quantité d\'aliments ultra-transformés dans votre alimentation.</string>
     <string name="title_welcome_ecoscore">Éco-Score</string>
     <!-- Scan card -->
     <string name="txtDialogsContent">Le produit que vous avez scanné n\'existe pas encore dans Open Food Facts. Voulez-vous l\'ajouter ?</string>

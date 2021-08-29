@@ -7,9 +7,9 @@
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/decouvrir -->
     <string name="website_discover">https://world.openbeautyfacts.org/discover&amp;hl=nl</string>
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/produit/ -->
-    <string name="website_product">https://world.openbeautyfacts.org/product/</string>
+    <string name="website_product">https://world-nl.openbeautyfacts.org/product/</string>
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/contributeur/ -->
-    <string name="website_contributor">https://world.openbeautyfacts.org/contributor/</string>
+    <string name="website_contributor">https://world-nl.openbeautyfacts.org/bijdrager/</string>
     <string name="terms_url">https://world.openbeautyfacts.org/terms-of-use</string>
     <string name="txtHomeOnline">Open Beauty Facts is een open database met meer dan %1$s cosmetische producten (plus degene die je gaat bijdragen).</string>
     <string name="txtHome">Open Beauty Facts is een open en gezamenlijke database van cosmetische producten.</string>

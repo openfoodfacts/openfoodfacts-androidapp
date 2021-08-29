@@ -169,7 +169,7 @@
     <string name="Donation">Cliquez ici pour faire un don à Open Food Facts</string>
     <string name="txtSubstances">Substances ou produits provoquant des allergies ou intolérances :</string>
     <string name="txtAdditives">Additifs :</string>
-    <string name="txtTraces">Traces :</string>
+    <string name="txtTraces">Traces : </string>
     <string name="txtMayBeFromPalmOilProduct">Ingrédients pouvant être issus de l\'huile de palme :</string>
     <string name="txtPalmOilProduct">Ingrédients issus de l\'huile de palme :</string>
     <string name="txtServingSize">Taille d\'une portion :</string>
@@ -467,9 +467,10 @@
     <string name="additive_string">Additif</string>
     <string name="allergen_string">Allergène</string>
     <string name="search_string">Rechercher</string>
-    <string name="country_string">Pays de vente</string>
+    <string name="country_string">Pays</string>
     <string name="store_subtitle">Magasin</string>
     <string name="packaging_subtitle">Conditionnement</string>
+    <string name="state_subtitle">Etat</string>
     <string name="packaging_string">Conditionnement</string>
     <string name="label_string">Etiquette</string>
     <string name="category_string">Catégorie</string>
@@ -572,7 +573,7 @@
     <string name="no_internet_connection">Vous semblez n\'avoir aucune connexion Internet, les images seront envoyées lorsque le réseau sera disponible</string>
     <string name="no_internet_unable_to_extract_ingredients">Pas de connexion Internet. Impossible d\'extraire les ingrédients</string>
     <string name="percent">%1$d%%</string>
-    <string name="overview">Général</string>
+    <string name="overview">Résumé</string>
     <string name="ingredients">Ingrédients</string>
     <string name="nutrition_facts">Nutrition</string>
     <string name="your_version">Vous</string>
@@ -801,14 +802,14 @@
     <string name="changelog_translation_help">Vous voulez voir ce journal des modifications en %s?\nRejoignez l\'équipe de traduction !</string>
     <string name="whats_new">Quoi de neuf avec Open Food Facts ?</string>
     <!-- New onboarding slides -->
-    <string name="title_welcome_intro">Join the food revolution</string>
-    <string name="msg_welcome_intro">Scan food, Take photos, Help transform the food system</string>
+    <string name="title_welcome_intro">Rejoignez la révolution alimentaire</string>
+    <string name="msg_welcome_intro">Scannez les aliments, prenez des photos, aidez à transformer le système alimentaire</string>
     <string name="title_welcome_nutriscore">Obtenez le Nutri-Score</string>
-    <string name="msg_welcome_nutriscore">A simple synthesis of the nutritional quality of your food</string>
-    <string name="title_welcome_nova">Avoid ultra-processed foods</string>
-    <string name="msg_welcome_nova">Reduce the amount of ultra-processed foods in your diet.</string>
+    <string name="msg_welcome_nutriscore">Une synthèse simple de la qualité nutritionnelle de vos aliments</string>
+    <string name="title_welcome_nova">Évitez les aliments ultra-transformés</string>
+    <string name="msg_welcome_nova">Réduisez la quantité d\'aliments ultra-transformés dans votre alimentation.</string>
     <string name="title_welcome_ecoscore">Éco-Score</string>
-    <string name="msg_welcome_ecoscore">A synthesis of the environmental impact of your food.</string>
-    <string name="title_welcome_matomo">Send anonymous analytics</string>
-    <string name="msg_welcome_matomo">Help the Open Food Facts volunteers to improve the app. You decide if you send anonymous analytics.\n\nIf you change your mind this option can be enabled and disabled at any time from the settings.</string>
+    <string name="msg_welcome_ecoscore">Une synthèse de l\'impact environnemental de votre alimentation.</string>
+    <string name="title_welcome_matomo">Partager anonymement les statistiques</string>
+    <string name="msg_welcome_matomo">Aidez les bénévoles d\'Open Food Facts à améliorer l\'application. Vous décidez si vous envoyez des analyses anonymes.\n\nSi vous changez d\'avis, cette option peut être activée et désactivée à tout moment à partir des paramètres.</string>
 </resources>
