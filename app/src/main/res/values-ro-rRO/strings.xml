@@ -165,7 +165,7 @@
     <string name="alert_dialog_warning_title">Atenţie</string>
     <string name="alert_dialog_warning_msg_user">Numele de utilizator sau parola au fost modificate, vă rugăm actualizați datele de conectare.</string>
     <string name="toast_retrieving">Se încarcă…</string>
-    <string name="txtBarcode">Barcode:</string>
+    <string name="txtBarcode">Cod de bare:</string>
     <string name="txtCategories">Categorii:</string>
     <string name="txtLabels">Certificări, premii</string>
     <string name="txtEMB">Codul EMB:</string>
@@ -412,7 +412,7 @@
     <string name="device_offline_dialog_message">Pentru a face acest lucru este necesară o conexiune la rețea, doriți să schimbați acest lucru în setări?</string>
     <string name="device_offline_dialog_negative">Renunță</string>
     <string name="device_offline_dialog_positive">Configurări</string>
-    <string name="scan_first_product">Scan your first product</string>
+    <string name="scan_first_product">Scanați primul produs</string>
     <string name="device_on_mobile_data_warning_title">Informaţii</string>
     <string name="device_on_mobile_data_warning_message">Încărcarea prin datelre mobile este dezactivată, vă rugăm conectați-vă la WiFi sau modificați opțiunile în setări</string>
     <string name="device_on_mobile_data_warning_positive">Preferințe</string>

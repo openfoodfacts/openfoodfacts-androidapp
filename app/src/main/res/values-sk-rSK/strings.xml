@@ -132,7 +132,7 @@
         <item>Kyselina montánová (28: 0)</item>
         <item>Kyselina myristová (14: 0)</item>
         <item>Kyselina nervónová (24: 1 n-9)</item>
-        <item>Nucleotides</item>
+        <item>Nukleotidy</item>
         <item>Kyselina olejová (18: 1 n-9)</item>
         <item>Omega 3 mastné kyseliny</item>
         <item>Omega 6 mastné kyseliny</item>
@@ -327,7 +327,7 @@
     <string name="nutrition_casein">Kazeín</string>
     <string name="nutrition_maltodextrins">Maltodextríny</string>
     <string name="nutrition_serum_proteins">Sérové ​​proteíny</string>
-    <string name="nutrition_nucleotides">Nucleotides</string>
+    <string name="nutrition_nucleotides">Nukleotidy</string>
     <string name="for_100g">Na 100 g</string>
     <string name="for_100ml">Na 100 ml</string>
     <string name="serving">Na jednu porciu</string>

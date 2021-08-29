@@ -170,7 +170,7 @@
     <string name="alert_dialog_warning_title">Предупреждение</string>
     <string name="alert_dialog_warning_msg_user">Пользователь/пароль изменены, обновите информацию</string>
     <string name="toast_retrieving">Загрузка…</string>
-    <string name="txtBarcode">Barcode:</string>
+    <string name="txtBarcode">Штрих-код:</string>
     <string name="txtCategories">Категории:</string>
     <string name="txtLabels">Марки, сертификаты, награды:</string>
     <string name="txtEMB">Коды упаковщика:</string>

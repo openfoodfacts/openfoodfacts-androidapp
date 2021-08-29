@@ -165,7 +165,7 @@
     <string name="alert_dialog_warning_title">Upozorenje</string>
     <string name="alert_dialog_warning_msg_user">Korisničko ime/lozinka je promenjena, molimo vas da ažurirate infromacije.</string>
     <string name="toast_retrieving">Učitavam</string>
-    <string name="txtBarcode">Barcode:</string>
+    <string name="txtBarcode">Barkod:</string>
     <string name="txtCategories">Katergorije :</string>
     <string name="txtLabels">Oznaka, sertifikat, nagrade :</string>
     <string name="txtEMB">Traceability codes:</string>
