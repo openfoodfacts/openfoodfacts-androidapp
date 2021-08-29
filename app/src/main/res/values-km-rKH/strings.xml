@@ -155,7 +155,7 @@
     <string name="alert_dialog_warning_title">ការព្រមាន!</string>
     <string name="alert_dialog_warning_msg_user">អ្នកប្រើ / ពាក្យសម្ងាត់ត្រូវបានផ្លាស់ប្តូរ, សូមធ្វើបច្ចុប្បន្នភាពព័ត៌មាន</string>
     <string name="toast_retrieving">Loading...</string>
-    <string name="txtBarcode">Barcode:</string>
+    <string name="txtBarcode">បារកូដ:</string>
     <string name="txtCategories">ប្រភេទ:</string>
     <string name="txtLabels">ស្លាក, វិញ្ញាបនប័ត្រ, រង្វាន់:</string>
     <string name="txtEMB">Traceability codes:</string>

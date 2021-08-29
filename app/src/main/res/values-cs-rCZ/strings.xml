@@ -170,7 +170,7 @@
     <string name="alert_dialog_warning_title">Varování</string>
     <string name="alert_dialog_warning_msg_user">Uživatelské jméno / heslo se změnilo, aktualizujte prosím informace</string>
     <string name="toast_retrieving">Načítá se…</string>
-    <string name="txtBarcode">Barcode:</string>
+    <string name="txtBarcode">Čárový kód:</string>
     <string name="txtCategories">Kategorie:</string>
     <string name="txtLabels">Označení, certifikáty, ocenění:</string>
     <string name="txtEMB">Kód EMB:</string>
