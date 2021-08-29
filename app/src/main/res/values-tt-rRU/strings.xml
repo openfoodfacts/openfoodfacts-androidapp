@@ -127,7 +127,7 @@
         <item>pH</item>
         <item>Phosphorus</item>
         <item>Sugar alcohols (Polyols)</item>
-        <item>Poly unsaturated fat</item>
+        <item>Polyunsaturated fat</item>
         <item>Potassium</item>
         <item>Selenium</item>
         <item>Serum proteins</item>
@@ -317,7 +317,7 @@
     <string name="for_100ml">For 100 ml</string>
     <string name="serving">Per serving</string>
     <string name="nutrition_monounsaturatedFat">Monounsaturated fat</string>
-    <string name="nutrition_polyunsaturatedFat">Poly unsaturated fat</string>
+    <string name="nutrition_polyunsaturatedFat">Polyunsaturated fat</string>
     <string name="nutrition_omega3">Омега 3</string>
     <string name="nutrition_omega6">Омега 6</string>
     <string name="nutrition_omega9">Омега 9</string>

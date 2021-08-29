@@ -132,7 +132,7 @@
         <item>pH</item>
         <item>பாசுபரசு</item>
         <item>Sugar alcohols (Polyols)</item>
-        <item>Poly unsaturated fat</item>
+        <item>Polyunsaturated fat</item>
         <item>பொட்டாசியம்</item>
         <item>செலினியம்</item>
         <item>சீரம் புரதங்கள்</item>
@@ -322,7 +322,7 @@
     <string name="for_100ml">For 100 ml</string>
     <string name="serving">ஒவ்வொரு பரிமாறலிற்கும்</string>
     <string name="nutrition_monounsaturatedFat">Monounsaturated fat</string>
-    <string name="nutrition_polyunsaturatedFat">Poly unsaturated fat</string>
+    <string name="nutrition_polyunsaturatedFat">Polyunsaturated fat</string>
     <string name="nutrition_omega3">ஒமேகா 3</string>
     <string name="nutrition_omega6">ஒமேகா 6</string>
     <string name="nutrition_omega9">ஒமேகா 9</string>
