@@ -160,7 +160,7 @@
     <string name="alert_dialog_warning_title">Aviso</string>
     <string name="alert_dialog_warning_msg_user">O usuario/contrasinal cambiou, actualice a información</string>
     <string name="toast_retrieving">Cargando…</string>
-    <string name="txtBarcode">Barcode:</string>
+    <string name="txtBarcode">Código de barras:</string>
     <string name="txtCategories">Categorías :</string>
     <string name="txtLabels">Etiquetas, certificacións, premios :</string>
     <string name="txtEMB">Traceability codes:</string>
