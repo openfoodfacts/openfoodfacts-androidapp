@@ -225,7 +225,7 @@
     <string name="select_camera">카메라 선택</string>
     <string name="ok_button">확인</string>
     <string name="cancel_button">취소</string>
-    <string name="login_button">Username</string>
+    <string name="login_button">Login</string>
     <string name="create_account_button">계정 만들기</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">귀하의 알레르기 정보는 Open Food Facts 서버로 전송되지 않습니다. 또한 제품 데이터가 정확하지 않을 수 있으며 감지가 100 % 정확하지 않을 수 있으므로 조심하여 직접 확인하십시오! </string>
     <string name="title_info_dialog">이용 방법</string>
@@ -369,8 +369,8 @@
     <string name="take_picture_ingredients">Take a photo of the ingredients</string>
     <string name="take_picture_recycling">재활용 지침 사진 촬영</string>
     <string name="take_picture_front">정면 사진 찍기</string>
-    <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
-    <string name="take_more_pictures">Take more pictures</string>
+    <string name="take_picture_nutrition_table">Take a photo of the nutrition table</string>
+    <string name="take_more_pictures">Take more photos</string>
     <string name="take_extra_packaging_pictures">Take extra photos of packaging</string>
     <string name="txtSaturatedFat">포화 지방</string>
     <string name="nutriscore_info_msg">Nutri-Score에 대해 더 알아보기</string>
