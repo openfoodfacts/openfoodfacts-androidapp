@@ -118,7 +118,7 @@
         <item>Mead acid (20:3 n-9)</item>
         <item>Melissic acid (30:0)</item>
         <item>Molybdenum</item>
-        <item>Mono unsaturated fat</item>
+        <item>Monounsaturated fat</item>
         <item>Montanic acid (28:0)</item>
         <item>Myristic acid (14:0)</item>
         <item>Nervonic acid (24:1 n-9)</item>
@@ -321,7 +321,7 @@
     <string name="for_100g">100 г үчүн</string>
     <string name="for_100ml">100 мл үчүн</string>
     <string name="serving">Per serving</string>
-    <string name="nutrition_monounsaturatedFat">Mono unsaturated fat</string>
+    <string name="nutrition_monounsaturatedFat">Monounsaturated fat</string>
     <string name="nutrition_polyunsaturatedFat">Polyunsaturated fat</string>
     <string name="nutrition_omega3">Омега 3</string>
     <string name="nutrition_omega6">Омега 6</string>

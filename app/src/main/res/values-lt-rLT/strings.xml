@@ -128,7 +128,7 @@
         <item>Meado rūgštis (20: 3 n-9)</item>
         <item>Meliso rūgštis (30: 0)</item>
         <item>Molybdenum</item>
-        <item>Mono unsaturated fat</item>
+        <item>Monounsaturated fat</item>
         <item>Montano rūgštis (28: 0)</item>
         <item>Miristinė rūgštis (14: 0)</item>
         <item>Nervoninė rūgštis (24: 1 n-9)</item>
@@ -331,7 +331,7 @@
     <string name="for_100g">Už 100 g</string>
     <string name="for_100ml">100 ml</string>
     <string name="serving">Per serving</string>
-    <string name="nutrition_monounsaturatedFat">Mono unsaturated fat</string>
+    <string name="nutrition_monounsaturatedFat">Monounsaturated fat</string>
     <string name="nutrition_polyunsaturatedFat">Polyunsaturated fat</string>
     <string name="nutrition_omega3">Omega 3</string>
     <string name="nutrition_omega6">Omega 6</string>
