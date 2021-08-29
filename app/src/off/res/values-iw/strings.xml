@@ -24,9 +24,9 @@
     <string name="title_welcome_intro">מזמינים אותך להצטרף למהפכת המזון</string>
     <string name="msg_welcome_intro">סורקים מזון, מצלמים תמונות ומסייעים בשינוי מערכת המזון</string>
     <string name="title_welcome_nutriscore">מה ה־Nutri-Score</string>
-    <string name="msg_welcome_nutriscore">A simple synthesis of the nutritional quality of your food</string>
+    <string name="msg_welcome_nutriscore">הערכה פשוטה של האיכות התזונתית של המזון שלך</string>
     <string name="title_welcome_nova">הימנעות ממזון מעובד מאוד</string>
-    <string name="msg_welcome_nova">Reduce the amount of ultra-processed foods in your diet.</string>
+    <string name="msg_welcome_nova">כדאי להפחית את מוצרי המזון האולטרה מעובדים בתזונה שלך.</string>
     <string name="title_welcome_ecoscore">Eco-Score</string>
     <!-- Scan card -->
     <string name="txtDialogsContent">המוצר שסרקת לא קיים עדיין ב־Open Food Facts. נא לסרוק אותו.</string>

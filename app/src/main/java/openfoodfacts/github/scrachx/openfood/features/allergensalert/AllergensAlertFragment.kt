@@ -21,6 +21,8 @@ import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
 import androidx.core.content.res.ResourcesCompat
+import androidx.core.view.isGone
+import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView.AdapterDataObserver
@@ -39,6 +41,7 @@ import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType
+import openfoodfacts.github.scrachx.openfood.utils.getAppPreferences
 import openfoodfacts.github.scrachx.openfood.utils.isNetworkConnected
 import javax.inject.Inject
 
@@ -64,16 +67,15 @@ class AllergensAlertFragment : NavigationBaseFragment() {
     private var allergensFromDao: List<AllergenName>? = null
 
     private lateinit var adapter: AllergensAdapter
-    private val mSettings by lazy { requireActivity().getSharedPreferences("prefs", 0) }
+    private val mSettings by lazy { requireActivity().getAppPreferences() }
     private val dataObserver by lazy { AllergensObserver() }
+    private val appLang: String by lazy { localeManager.getLanguage() }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         setHasOptionsMenu(true)
         _binding = FragmentAlertAllergensBinding.inflate(inflater)
         return binding.root
     }
-
-    private val appLang: String by lazy { localeManager.getLanguage() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -112,7 +114,9 @@ class AllergensAlertFragment : NavigationBaseFragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        adapter.unregisterAdapterDataObserver(dataObserver)
+        if (this::adapter.isInitialized) {
+            adapter.unregisterAdapterDataObserver(dataObserver)
+        }
         _binding = null
     }
 
@@ -207,21 +211,19 @@ class AllergensAlertFragment : NavigationBaseFragment() {
      * Data observer of the Recycler Views
      */
     internal inner class AllergensObserver : AdapterDataObserver() {
-        override fun onChanged() = setAppropriateView()
-        override fun onItemRangeInserted(positionStart: Int, itemCount: Int) = setAppropriateView()
-        override fun onItemRangeRemoved(positionStart: Int, itemCount: Int) = setAppropriateView()
+        override fun onChanged() = updateView()
+        override fun onItemRangeInserted(positionStart: Int, itemCount: Int) = updateView()
+        override fun onItemRangeRemoved(positionStart: Int, itemCount: Int) = updateView()
 
-        private fun setAppropriateView() {
+        private fun updateView() {
             val isListEmpty = adapter.itemCount == 0
-            binding.emptyAllergensView.visibility = if (isListEmpty) View.VISIBLE else View.GONE
-            binding.allergensRecycle.visibility = if (isListEmpty) View.GONE else View.VISIBLE
+
+            binding.emptyAllergensView.isVisible = isListEmpty
+            binding.allergensRecycle.isGone = isListEmpty
         }
     }
 
     companion object {
-        private val LOG_TAG = AllergensAlertFragment::class.simpleName
-
-        @JvmStatic
         fun newInstance() = AllergensAlertFragment().apply { arguments = Bundle() }
     }
 }

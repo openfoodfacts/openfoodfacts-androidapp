@@ -57,10 +57,11 @@ class OfflineProductService @Inject constructor(
         else getOfflineProductsNotSynced().isNotEmpty()
     }
 
-    fun getOfflineProductByBarcode(barcode: String): OfflineSavedProduct? =
-        daoSession.offlineSavedProductDao.queryBuilder()
-            .where(OfflineSavedProductDao.Properties.Barcode.eq(barcode))
-            .unique()
+    fun getOfflineProductByBarcode(barcode: String): OfflineSavedProduct? {
+        return daoSession.offlineSavedProductDao.unique {
+            where(OfflineSavedProductDao.Properties.Barcode.eq(barcode))
+        }
+    }
 
     /**
      * Performs network call and uploads the product to the server.
@@ -156,18 +157,21 @@ class OfflineProductService @Inject constructor(
         }
     }
 
-    private fun getOfflineProducts() =
-        daoSession.offlineSavedProductDao.queryBuilder()
-            .where(OfflineSavedProductDao.Properties.Barcode.isNotNull)
-            .where(OfflineSavedProductDao.Properties.Barcode.notEq(""))
-            .list()
+    private fun getOfflineProducts(): List<OfflineSavedProduct> {
+        return daoSession.offlineSavedProductDao.list {
+            where(OfflineSavedProductDao.Properties.Barcode.isNotNull)
+            where(OfflineSavedProductDao.Properties.Barcode.notEq(""))
+        }
+    }
 
-    private fun getOfflineProductsNotSynced() =
-        daoSession.offlineSavedProductDao.queryBuilder()
-            .where(OfflineSavedProductDao.Properties.Barcode.isNotNull)
-            .where(OfflineSavedProductDao.Properties.Barcode.notEq(""))
-            .where(OfflineSavedProductDao.Properties.IsDataUploaded.notEq(true))
-            .list()
+    private fun getOfflineProductsNotSynced(): List<OfflineSavedProduct> {
+        return daoSession.offlineSavedProductDao.list {
+            where(OfflineSavedProductDao.Properties.Barcode.isNotNull)
+            where(OfflineSavedProductDao.Properties.Barcode.notEq(""))
+            where(OfflineSavedProductDao.Properties.IsDataUploaded.notEq(true))
+        }
+    }
+
 
     private fun ProductImageField.imageType() = when (this) {
         FRONT -> "front"

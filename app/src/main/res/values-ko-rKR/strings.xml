@@ -155,7 +155,7 @@
     <string name="alert_dialog_warning_title">경고</string>
     <string name="alert_dialog_warning_msg_user">사용자/비밀번호가 변경되었습니다, 정보를 새로고침 해주세요</string>
     <string name="toast_retrieving">로딩중…</string>
-    <string name="txtBarcode">바코드 :</string>
+    <string name="txtBarcode">바코드:</string>
     <string name="txtCategories">카테고리 :</string>
     <string name="txtLabels">라벨, 인증, 수상 내역 :</string>
     <string name="txtEMB">Traceability codes:</string>
@@ -466,9 +466,10 @@
     <string name="additive_string">첨가물</string>
     <string name="allergen_string">알레르기 유발 성분</string>
     <string name="search_string">검색</string>
-    <string name="country_string">판매의 나라</string>
+    <string name="country_string">Country</string>
     <string name="store_subtitle">상점</string>
     <string name="packaging_subtitle">포장</string>
+    <string name="state_subtitle">상태</string>
     <string name="packaging_string">포장</string>
     <string name="label_string">상표</string>
     <string name="category_string">카테고리</string>

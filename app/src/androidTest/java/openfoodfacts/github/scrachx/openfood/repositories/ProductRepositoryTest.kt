@@ -1,8 +1,8 @@
 package openfoodfacts.github.scrachx.openfood.repositories
 
 import android.content.Context
+import android.util.Log
 import androidx.test.filters.SmallTest
-import com.google.common.truth.Truth.assertThat
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
@@ -11,10 +11,14 @@ import kotlinx.coroutines.test.runBlockingTest
 import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.Allergen
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenName
+import openfoodfacts.github.scrachx.openfood.utils.getAppPreferences
 import org.junit.After
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNotNull
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
+import java.util.*
 import javax.inject.Inject
 
 /**
@@ -41,57 +45,50 @@ class ProductRepositoryTest {
 
     @Before
     fun cleanAllergens() {
-        hiltRule.inject()
         clearDatabase(daoSession)
         productRepository.saveAllergens(createAllergens())
     }
 
     @Test
     fun testGetAllergens() = runBlockingTest {
-        val mSettings = instance.getSharedPreferences("prefs", 0)
-        val isDownloadActivated = mSettings.getBoolean(Taxonomy.ALLERGEN.downloadActivatePreferencesId, false)
-        val allergens = productRepository.reloadAllergensFromServer().blockingGet()
+        val appPrefs = instance.getAppPreferences()
 
-        assertThat(allergens).isNotNull()
+        val isDownloadActivated = appPrefs.getBoolean(Taxonomy.Allergens.getDownloadActivatePreferencesId(), false)
+        val allergens = productRepository.reloadAllergensFromServer()
+        assertNotNull(allergens)
         if (!isDownloadActivated) {
-            assertThat(allergens).hasSize(0)
+            assertEquals(0, allergens.size.toLong())
         } else {
-            assertThat(allergens).hasSize(2)
-
+            assertEquals(2, allergens.size.toLong())
             val allergen = allergens[0]
-            assertThat(allergen.tag).isEqualTo(TEST_ALLERGEN_TAG)
-
+            assertEquals(TEST_ALLERGEN_TAG, allergen.tag)
             val allergenNames = allergen.names
-            assertThat(allergenNames).hasSize(3)
-
+            assertEquals(3, allergenNames.size.toLong())
             val allergenName = allergenNames[0]
-            assertThat(allergen.tag).isEqualTo(allergenName.allergenTag)
-            assertThat(allergenName.languageCode).isEqualTo(TEST_LANGUAGE_CODE)
-            assertThat(allergenName.name).isEqualTo(TEST_ALLERGEN_NAME)
+            assertEquals(allergenName.allergenTag, allergen.tag)
+            assertEquals(TEST_LANGUAGE_CODE, allergenName.languageCode)
+            assertEquals(TEST_ALLERGEN_NAME, allergenName.name)
         }
     }
 
     @Test
     fun testGetEnabledAllergens() = runBlockingTest {
         val allergens = productRepository.getEnabledAllergens()
-        assertThat(allergens).isNotNull()
-        assertThat(allergens).hasSize(1)
-        assertThat(allergens[0].tag).isEqualTo(TEST_ALLERGEN_TAG)
+        assertNotNull(allergens)
+        assertEquals(1, allergens.size.toLong())
+        assertEquals(TEST_ALLERGEN_TAG, allergens[0].tag)
     }
 
     @Test
     fun testGetAllergensByEnabledAndLanguageCode() {
         val enabledAllergenNames = productRepository.getAllergensByEnabledAndLanguageCode(true, TEST_LANGUAGE_CODE).blockingGet()
         val notEnabledAllergenNames = productRepository.getAllergensByEnabledAndLanguageCode(false, TEST_LANGUAGE_CODE).blockingGet()
-
-        assertThat(enabledAllergenNames).isNotNull()
-        assertThat(notEnabledAllergenNames).isNotNull()
-
-        assertThat(enabledAllergenNames).hasSize(1)
-        assertThat(notEnabledAllergenNames).hasSize(1)
-
-        assertThat(enabledAllergenNames[0].name).isEqualTo(TEST_ALLERGEN_NAME)
-        assertThat(notEnabledAllergenNames[0].name).isEqualTo("Molluschi")
+        assertNotNull(enabledAllergenNames)
+        assertNotNull(notEnabledAllergenNames)
+        assertEquals(1, enabledAllergenNames.size.toLong())
+        assertEquals(1, notEnabledAllergenNames.size.toLong())
+        assertEquals(TEST_ALLERGEN_NAME, enabledAllergenNames[0].name)
+        assertEquals("Molluschi", notEnabledAllergenNames[0].name)
     }
 
     @Test
@@ -110,23 +107,31 @@ class ProductRepositoryTest {
         private const val TEST_LANGUAGE_CODE = "es"
         private const val TEST_ALLERGEN_NAME = "Altramuces"
 
-        private fun clearDatabase(daoSession: DaoSession) = daoSession.allergenDao.deleteAll()
+        private fun clearDatabase(daoSession: DaoSession) {
+            val db = daoSession.database
+            db.beginTransaction()
+            try {
+                daoSession.allergenDao.deleteAll()
+                db.setTransactionSuccessful()
+            } catch (e: Exception) {
+                Log.e(this::class.simpleName, "Error in transaction.", e)
+            } finally {
+                db.endTransaction()
+            }
+        }
 
         private fun createAllergens(): List<Allergen> {
-            var tag = TEST_ALLERGEN_TAG
-            val allergen1 = Allergen(tag, listOf(
-                    AllergenName(tag, TEST_LANGUAGE_CODE, TEST_ALLERGEN_NAME),
-                    AllergenName(tag, "bg", "Лупина"),
-                    AllergenName(tag, "fr", "Lupin")
-            )).apply {
+            val allergen1 = Allergen(TEST_ALLERGEN_TAG, ArrayList()).apply {
                 enabled = true
+                names += AllergenName(tag, TEST_LANGUAGE_CODE, TEST_ALLERGEN_NAME)
+                names += AllergenName(tag, "bg", "Лупина")
+                names += AllergenName(tag, "fr", "Lupin")
             }
 
-            tag = "en:molluscs"
-            val allergen2 = Allergen(tag, listOf(
-                    AllergenName(tag, TEST_LANGUAGE_CODE, "Molluschi"),
-                    AllergenName(tag, "en", "Mollusques")
-            ))
+            val allergen2 = Allergen("en:molluscs", ArrayList()).apply {
+                names += AllergenName(tag, TEST_LANGUAGE_CODE, "Molluschi")
+                names += AllergenName(tag, "en", "Mollusques")
+            }
 
             return listOf(allergen1, allergen2)
         }

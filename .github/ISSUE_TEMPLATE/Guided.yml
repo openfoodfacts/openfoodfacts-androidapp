@@ -1,0 +1,195 @@
+name: Bug Report (Guided)
+description: File a guided bug report
+title: "[Bug]: "
+labels: [bug, triage]
+assignees:
+  - octocat
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report!
+  - type: input
+    id: contact
+    attributes:
+      label: Open Food Facts username
+      description: to get in touch with you if we need more info
+      placeholder: ex. teolemon
+    validations:
+      required: false
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Also tell us, what did you expect to happen?
+      placeholder: Tell us what you see!
+      value: "A bug happened!"
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction-steps
+    attributes:
+      label: Steps to reproduce the behavior
+      description: Can you tell step by step how to recreate the problem ?
+      placeholder: Tell us what you see!
+      value: "1. Go to '...'<br>2. Click on '....'<br>3. Scroll down to '....'<br>4. See error"
+    validations:
+      required: true 
+  - type: textarea
+    id: device-name
+    attributes:
+      label: What device were you using ?
+      description: Please indicate the model and the brand. If you don't know it, you can look in phone settings.
+      placeholder: Samsung Galaxy S3
+    validations:
+      required: true
+  - type: dropdown
+    id: android-version
+    attributes:
+      label: Android Version
+      description: Do you know which version of Android you are running?
+      options:
+        - Android 12
+        - Android 11
+        - Android 10
+        - Android 9
+        - Android 8
+        - Android 7
+        - Android 6
+        - Android 5
+        - Android 4
+    validations:
+      required: true
+  - type: input
+    id: barcodes
+    attributes:
+      label: Barcode(s) of the product(s)
+      description: If relevant, please indicate the barcode(s) of products you manage to make this issue happen on. If systematic, put "All"
+      placeholder: ex. 4740098091547
+    validations:
+      required: false
+  - type: dropdown
+    id: language
+    attributes:
+      label: Language your app was in
+      description:
+      options:
+        - Afrikaans
+        - Albanian
+        - Amharic
+        - Arabic
+        - Armenian
+        - Basque
+        - Bengali
+        - Byelorussian
+        - Burmese
+        - Bulgarian
+        - Catalan
+        - Czech
+        - Chinese
+        - Croatian
+        - Danish
+        - Dari
+        - Dzongkha
+        - Dutch
+        - English
+        - Esperanto
+        - Estonian
+        - Faroese
+        - Farsi
+        - Finnish
+        - French
+        - Gaelic
+        - Galician
+        - German
+        - Greek
+        - Hebrew
+        - Hindi
+        - Hungarian
+        - Icelandic
+        - Indonesian
+        - Inuktitut (Eskimo)
+        - Italian
+        - Japanese
+        - Khmer
+        - Korean
+        - Kurdish
+        - Laotian
+        - Latvian
+        - Lappish
+        - Lithuanian
+        - Macedonian
+        - Malay
+        - Maltese
+        - Nepali
+        - Norwegian
+        - Pashto
+        - Polish
+        - Portuguese
+        - Romanian
+        - Russian
+        - Scots
+        - Serbian
+        - Slovak
+        - Slovenian
+        - Somali
+        - Spanish
+        - Swedish
+        - Swahili
+        - Tagalog-Filipino
+        - Tajik
+        - Tamil
+        - Thai
+        - Tibetan
+        - Tigrinya
+        - Tongan
+        - Turkish
+        - Turkmen
+        - Ucrainian
+        - Urdu
+        - Uzbek
+        - Vietnamese
+        - Welsh
+    validations:
+      required: false
+  - type: dropdown
+    id: version
+    attributes:
+      label: Version
+      description: What version of our software are you running? (Open the left menu, scroll down to Settings, and scroll down to the bottom of settings to get it)
+      options:
+        - 3.6.5 (Default)
+        - 3.6.6 (Beta)
+    validations:
+      required: true
+  - type: dropdown
+    id: flavor
+    attributes:
+      label: Flavor
+      description: Were you running Open Food Facts, Open Beauty Facts, Open Pet Food Facts or Open Products Facts?
+      options:
+        - Open Food Facts
+        - Open Beauty Facts
+        - Open Pet Food Facts
+        - Open Products Facts
+    validations:
+      required: true
+  - type: dropdown
+    id: distribution
+    attributes:
+      label: Installation method
+      description: Where did you install the app from ?
+      options:
+        - Google PlayStore
+        - F-Droid
+        - APK
+        - Amazon AppStore
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant log output
+      description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
+      render: shell

@@ -100,9 +100,10 @@
     <string name="pref_crop_new_images_title">Crop new images</string>
     <string name="pref_crop_new_images_summary">Enables crop action on new images</string>
 
-    <string name="pref_scanner_startup_title">Use MLKit Scanner</string>
-    <string name="pref_scanner_startup_summaryOff">Increases Scanning efficiency.</string>
-    <string name="pref_scanner_startup_summaryOn">Switch off to use Classic Barcode Scanner.</string>
-    <string name="pref_scanner_type_key" translatable="false">select_scanner</string>
+    <string name="pref_scanner_mlkit_key" translatable="false">select_scanner</string>
+    <string name="pref_scanner_mlkit_title">Use MLKit Scanner</string>
+    <string name="pref_scanner_mlkit_summaryOff">Increases Scanning efficiency.</string>
+    <string name="pref_scanner_mlkit_summaryOn">Switch off to use Classic Barcode Scanner.</string>
+    <string name="pref_scanner_mlkit_fdroid">Only available on PlayStore version.</string>
 
 </resources>

@@ -252,9 +252,10 @@ class EditIngredientsFragment : ProductEditFragment() {
      * @param tag Tag associated with the allergen
      */
     private fun getTracesName(languageCode: String, tag: String): String {
-        return daoSession.allergenNameDao!!.queryBuilder()
-            .where(AllergenNameDao.Properties.AllergenTag.eq(tag), AllergenNameDao.Properties.LanguageCode.eq(languageCode))
-            .unique()?.name ?: tag
+        return daoSession.allergenNameDao.unique {
+            where(AllergenNameDao.Properties.AllergenTag.eq(tag))
+            where(AllergenNameDao.Properties.LanguageCode.eq(languageCode))
+        }?.name ?: tag
     }
 
     override fun onDestroyView() {

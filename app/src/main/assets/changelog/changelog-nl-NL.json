@@ -2,7 +2,7 @@
   "changelog": [
     {
       "date": "10/02/2021",
-      "code": 499,
+      "code": 518,
       "name": "3.5.0",
       "items": [
         "Barcodescanner op basis van Machine-Learning. Je kunt nu een nieuwe manier inschakelen om barcodes te scannen. Je kunt op elk moment wisselen van scan-engine via de instellingen.",

@@ -199,7 +199,7 @@ class Product : SearchProduct() {
      * The nutriments
      */
     @JsonProperty(ApiFields.Keys.NUTRIMENTS)
-    var nutriments: Nutriments = Nutriments()
+    var nutriments: ProductNutriments = ProductNutriments()
 
     @JsonProperty(ApiFields.Keys.NUTRITION_DATA_PER)
     val nutritionDataPer: String? = null

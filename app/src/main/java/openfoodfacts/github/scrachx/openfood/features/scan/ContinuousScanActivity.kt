@@ -55,7 +55,6 @@ import io.reactivex.Completable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import kotlinx.coroutines.*
-import kotlinx.coroutines.rx2.await
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.BuildConfig
@@ -131,7 +130,7 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
     private val bottomSheetCallback by lazy { QuickViewCallback(this) }
 
     private val cameraPref by lazy { getSharedPreferences("camera", 0) }
-    private val settings by lazy { getSharedPreferences("prefs", 0) }
+    private val settings by lazy { getAppPreferences() }
 
     private var productDisp: Job? = null
     private var hintBarcodeDisp: Disposable? = null
@@ -210,9 +209,9 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
                 // A network error happened
                 if (err is IOException) {
                     hideAllViews()
-                    val offlineSavedProduct = daoSession.offlineSavedProductDao!!.queryBuilder()
-                        .where(OfflineSavedProductDao.Properties.Barcode.eq(barcode))
-                        .unique()
+                    val offlineSavedProduct = daoSession.offlineSavedProductDao.unique {
+                        where(OfflineSavedProductDao.Properties.Barcode.eq(barcode))
+                    }
                     tryDisplayOffline(offlineSavedProduct, barcode, R.string.addProductOffline)
                     binding.quickView.setOnClickListener { navigateToProductAddition(barcode) }
                 } else {
@@ -242,7 +241,7 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
                 this@ContinuousScanActivity.product = product
 
                 // Add product to scan history
-                productDisp = lifecycleScope.launch { client.addToHistory(product).await() }
+                productDisp = lifecycleScope.launch { client.addToHistory(product) }
 
                 // If we're here from comparison -> add product, return to comparison activity
                 if (intent.getBooleanExtra(ProductCompareActivity.KEY_COMPARE_PRODUCT, false)) {
@@ -364,25 +363,39 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
                 }
             }
 
-            override fun showAnalysisTags(analysisTags: List<AnalysisTagConfig>) {
-                super.showAnalysisTags(analysisTags)
-                if (analysisTags.isEmpty()) {
-                    binding.quickViewTags.visibility = View.GONE
-                    analysisTagsEmpty = true
-                    return
-                }
-                binding.quickViewTags.visibility = View.VISIBLE
-                analysisTagsEmpty = false
-                val adapter = IngredientAnalysisTagsAdapter(this@ContinuousScanActivity, analysisTags, picasso, sharedPreferences)
-                adapter.setOnItemClickListener { view: View?, _ ->
-                    if (view == null) return@setOnItemClickListener
-                    IngredientsWithTagDialogFragment.newInstance(product, view.getTag(R.id.analysis_tag_config) as AnalysisTagConfig).run {
-                        show(supportFragmentManager, "fragment_ingredients_with_tag")
-                        onDismissListener = { adapter.filterVisibleTags() }
+            override suspend fun showAnalysisTags(state: ProductInfoState<List<AnalysisTagConfig>>) = withContext(Dispatchers.Main) {
+                when (state) {
+                    is ProductInfoState.Data -> {
+                        binding.quickViewTags.visibility = View.VISIBLE
+                        analysisTagsEmpty = false
+                        val adapter = IngredientAnalysisTagsAdapter(
+                            this@ContinuousScanActivity,
+                            state.data,
+                            picasso,
+                            sharedPreferences
+                        ).apply adapter@{
+                            setOnItemClickListener { view: View, _ ->
+                                IngredientsWithTagDialogFragment.newInstance(
+                                    product,
+                                    view.getTag(R.id.analysis_tag_config) as AnalysisTagConfig
+                                ).run {
+                                    onDismissListener = { this@adapter.filterVisibleTags() }
+                                    show(supportFragmentManager, "fragment_ingredients_with_tag")
+                                }
+                            }
+                        }
+
+                        binding.quickViewTags.adapter = adapter
+                    }
+                    is ProductInfoState.Empty -> {
+                        binding.quickViewTags.visibility = View.GONE
+                        analysisTagsEmpty = true
+                    }
+                    ProductInfoState.Loading -> {
+                        // TODO
                     }
                 }
 
-                binding.quickViewTags.adapter = adapter
             }
         }, productRepository).also {
             lifecycleScope.launch {
@@ -476,7 +489,7 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
         _binding = ActivityContinuousScanBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        useMLScanner = BuildConfig.USE_MLKIT && settings.getBoolean(getString(R.string.pref_scanner_type_key), false)
+        useMLScanner = BuildConfig.USE_MLKIT && settings.getBoolean(getString(R.string.pref_scanner_mlkit_key), false)
 
         binding.toggleFlash.setOnClickListener { toggleFlash() }
         binding.buttonMore.setOnClickListener { showMoreSettings() }
@@ -555,9 +568,9 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
         // Prevent duplicate scans
         if (barcodeValue.isEmpty() || barcodeValue == lastBarcode) return
 
-        val invalidBarcode = daoSession.invalidBarcodeDao.queryBuilder()
-            .where(InvalidBarcodeDao.Properties.Barcode.eq(barcodeValue))
-            .unique()
+        val invalidBarcode = daoSession.invalidBarcodeDao.unique {
+            where(InvalidBarcodeDao.Properties.Barcode.eq(barcodeValue))
+        }
 
         // Scanned barcode is in the list of invalid barcodes, do nothing
         if (invalidBarcode != null) return
@@ -814,9 +827,9 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
             // Prevent duplicate scans
             if (result.text == null || result.text.isEmpty() || result.text == lastBarcode) return
 
-            val invalidBarcode = daoSession.invalidBarcodeDao.queryBuilder()
-                .where(InvalidBarcodeDao.Properties.Barcode.eq(result.text))
-                .unique()
+            val invalidBarcode = daoSession.invalidBarcodeDao.unique {
+                where(InvalidBarcodeDao.Properties.Barcode.eq(result.text))
+            }
             // Scanned barcode is in the list of invalid barcodes, do nothing
             if (invalidBarcode != null) return
 

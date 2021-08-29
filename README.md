@@ -43,23 +43,6 @@ Here are issues and feature requests you can work on:
 - [ ] [3.6.6 milestone](https://github.com/openfoodfacts/openfoodfacts-androidapp/milestone/36)
 - [ ] [Summary explanation of improvements and regressions that are blocking the release](https://github.com/openfoodfacts/openfoodfacts-androidapp/wiki#pros-and-cons-of-releasing-before-the-15th)
 
-## Impact Roadmap
-### A brilliant scan experience 
-- [ ] ["A brilliant scan experience" project](https://github.com/openfoodfacts/openfoodfacts-androidapp/projects/20)
-- [ ] Add offline scanning
-
-### Help data refresh
-- [ ] [Create a "Help with images" button in the scan screen](https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/3543)
-
-### Open Beauty Facts
-- [ ] [Open Beauty Facts project](https://github.com/openfoodfacts/openfoodfacts-androidapp/projects/8)
-
-### Editing papercut bugs
-
-
-- [ ] [Make category selection more intuitive for beginners #2951](https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/2951)
-- [ ] [Improve suggestions by removing diacritics in the edit mode #2184](https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/2184)
-
 ## Test it on your phone or tablet
 
 | Open Food Facts on [Google Play](https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner)  | Open Food Facts on [F-Droid](https://f-droid.org/packages/openfoodfacts.github.scrachx.openfood/) | Open Food Facts on the [Web](https://world.openfoodfacts.org/) |Open Food Facts is also available on [iOS](https://ios.openfoodfacts.org)|
@@ -76,6 +59,8 @@ Have a bug or a feature request? Please search for existing and closed issues. I
 Open Food Facts on Android has 0,5M users and 1,6M products. *Each contribution you make will have a large impact on food transparency worldwide.* Finding the right issue or feature will help you have even more more impact. Feel free to ask for feedback on the #android channel before you start work, and to document what you intend to code.
 
 Here are issues and feature requests you can work on:
+- [Improve editing](https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/4166)
+- [Improve the product page](https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/4170)
 - [P1 issues](https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/p1)
 - [Issues with a screenshot of the problem](https://github.com/openfoodfacts/openfoodfacts-androidapp/issues?q=is%3Aissue+is%3Aopen+label%3Ascreenshot-available)
 - [Issues with a visual mockup of the solution](https://github.com/openfoodfacts/openfoodfacts-androidapp/issues?q=is%3Aissue+is%3Aopen+label%3Amockup-available)
@@ -83,11 +68,10 @@ Here are issues and feature requests you can work on:
 - [Create onboarding features for new users](https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/onboarding)
 - [Small issues (Hacktoberfest)](https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/hacktoberfest)
 - [Improve product comparison](https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/comparison)
-- [Help remove some of the technical debt](https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/refactoring)
 
 If you don't have time to contribute code, you're very welcome to
-* scan new products
-* make a donation to [_help pay for the hosting and general costs_](https://donate.openfoodfacts.org) 
+* Scan new products
+* [**Make a donation** to help pay for the hosting and general costs](https://donate.openfoodfacts.org) 
 
 ## Help translate Open Food Facts in your language
 
@@ -124,7 +108,9 @@ If you spot any libraries we added or we don't use anymore, feel free to update 
 - [OkHttp](https://github.com/square/okhttp) - An HTTP+SPDY client for Android and Java applications
 - [Mockito](https://github.com/mockito/mockito) - Most popular Mocking framework for unit tests written in Java
 - [Apache](https://github.com/apache/commons-io) - The Apache Commons IO library contains utility classes, stream implementations, file filters, file comparators, endian transformation classes, and much more.
-- [RxJava](https://github.com/ReactiveX/RxJava) - Reactive Extensions for the JVM – a library for composing asynchronous and event-based programs using observable sequences for the Java VM.
+- [Kotlin Coroutines](https://developer.android.com/kotlin/coroutines) - A coroutine is a concurrency design pattern that you can use on Android to simplify code that executes asynchronously.  
+- [Hilt](https://developer.android.com/training/dependency-injection/hilt-android) - Hilt is a dependency injection library for Android that reduces the boilerplate of doing manual dependency injection in your project. 
+- [Dagger](https://developer.android.com/training/dependency-injection/dagger-android) - Manual dependency injection or service locators in an Android app can be problematic depending on the size of your project. You can limit your project's complexity as it scales up by using Dagger to manage dependencies. Dagger automatically generates code that mimics the code you would otherwise have hand-written.
 - [android-async-http](https://loopj.com/android-async-http/) - A Callback-Based Http Client Library for Android
 - [Jackson](https://github.com/FasterXML/jackson) - Core part of Jackson that defines Streaming API as well as basic shared abstractions
 - [code-mc/loadtoast](https://github.com/code-mc/loadtoast) - Pretty material design toasts with feedback animations

@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.JsonMappingException
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
 import com.google.common.truth.Truth.assertThat
-import org.junit.Assert
+import org.junit.Assert.assertThrows
 import org.junit.Test
 
 /**
@@ -63,7 +63,7 @@ class ProductTest {
     @Test
     fun `Throws exception when deserializing bad escape sequences`() {
         val productJson = """{"generic_name": $badEscapeSequence}"""
-        Assert.assertThrows(JsonMappingException::class.java) { deserialize(productJson) }
+        assertThrows(JsonMappingException::class.java) { deserialize(productJson) }
     }
 
     @Test
@@ -79,8 +79,7 @@ class ProductTest {
         private const val htmlEscapedSingleQuoteJson = "\"Sally\\\\\'s\""
         private const val badEscapeSequence = "\"Sally\\\'s\""
         private const val correctlyConvertedString = "Sally's"
-        private val mapper = jacksonObjectMapper()
 
-        private fun deserialize(json: String) = mapper.readValue<Product>(json)
+        private fun deserialize(json: String) = jacksonObjectMapper().readValue<Product>(json)
     }
 }

@@ -8,6 +8,7 @@ import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.withContext
 import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.utils.Utils
+import openfoodfacts.github.scrachx.openfood.utils.getAppPreferences
 import openfoodfacts.github.scrachx.openfood.utils.isEmpty
 import openfoodfacts.github.scrachx.openfood.utils.logDownload
 import org.greenrobot.greendao.AbstractDao
@@ -60,14 +61,14 @@ class TaxonomiesManager @Inject constructor(
         dao: AbstractDao<T, *>,
         productRepository: ProductRepository
     ): List<T> = withContext(Dispatchers.Default) {
-        val mSettings = context.getSharedPreferences("prefs", 0)
+        val appPrefs = context.getAppPreferences()
 
         // First check if this taxonomy is to be loaded for this flavor, else return empty list
-        val isTaxonomyActivated = mSettings.getBoolean(taxonomy.getDownloadActivatePreferencesId(), false)
+        val isTaxonomyActivated = appPrefs.getBoolean(taxonomy.getDownloadActivatePreferencesId(), false)
         if (!isTaxonomyActivated) return@withContext emptyList()
 
         // If the database scheme changed, this settings should be true
-        val forceUpdate = mSettings.getBoolean(Utils.FORCE_REFRESH_TAXONOMIES, false)
+        val forceUpdate = appPrefs.getBoolean(Utils.FORCE_REFRESH_TAXONOMIES, false)
 
         // If database is empty or we have to force update, download it
         val empty = dao.isEmpty()
@@ -76,7 +77,7 @@ class TaxonomiesManager @Inject constructor(
             download(taxonomy, productRepository)
         } else if (checkUpdate) {
             // Get local last downloaded time
-            val localDownloadTime = mSettings.getLong(taxonomy.getLastDownloadTimeStampPreferenceId(), 0L)
+            val localDownloadTime = appPrefs.getLong(taxonomy.getLastDownloadTimeStampPreferenceId(), 0L)
 
             // We need to check for update. Test if file on server is more recent than last download.
             checkAndDownloadIfNewer(taxonomy, localDownloadTime, productRepository)
@@ -89,9 +90,10 @@ class TaxonomiesManager @Inject constructor(
     ) = withContext(IO) {
         val lastMod = getLastModifiedDateFromServer(taxonomy)
 
-        return@withContext if (lastMod != TAXONOMY_NO_INTERNET)
-            taxonomy.load(productRepository, lastMod).also { logDownload(taxonomy) }
-        else emptyList()
+        if (lastMod != TAXONOMY_NO_INTERNET) {
+            taxonomy.load(productRepository, lastMod)
+                .also { logDownload(taxonomy) }
+        } else emptyList()
     }
 
     private suspend fun <T> checkAndDownloadIfNewer(

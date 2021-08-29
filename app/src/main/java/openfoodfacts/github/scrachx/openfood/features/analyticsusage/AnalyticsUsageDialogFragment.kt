@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.edit
 import androidx.databinding.DataBindingUtil
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -34,21 +35,20 @@ class AnalyticsUsageDialogFragment : BottomSheetDialogFragment() {
         val binding: FragmentAnalyticsUsageBottomSheetBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_analytics_usage_bottom_sheet, container, false)
         binding.grantButton.setOnClickListener {
             saveAnalyticsReportingPref(true)
-            matomoAnalytics.onAnalyticsEnabledToggled(true)
+            matomoAnalytics.setEnabled(true)
             dismiss()
         }
         binding.declineButton.setOnClickListener {
             saveAnalyticsReportingPref(false)
-            matomoAnalytics.onAnalyticsEnabledToggled(false)
+            matomoAnalytics.setEnabled(false)
             dismiss()
         }
         return binding.root
     }
 
     private fun saveAnalyticsReportingPref(value: Boolean) {
-        sharedPreferences
-                .edit()
-                .putBoolean(getString(R.string.pref_analytics_reporting_key), value)
-                .apply()
+        sharedPreferences.edit {
+            putBoolean(getString(R.string.pref_analytics_reporting_key), value)
+        }
     }
 }

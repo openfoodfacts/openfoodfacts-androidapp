@@ -24,7 +24,7 @@ import io.reactivex.Completable
 import io.reactivex.Maybe
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.rx2.await
 import kotlinx.coroutines.rx2.rxMaybe
 import kotlinx.coroutines.rx2.rxSingle
@@ -62,6 +62,7 @@ import openfoodfacts.github.scrachx.openfood.models.entities.tag.Tag
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.services.AnalysisDataAPI
 import openfoodfacts.github.scrachx.openfood.network.services.RobotoffAPI
+import openfoodfacts.github.scrachx.openfood.utils.getAppPreferences
 import openfoodfacts.github.scrachx.openfood.utils.getLoginPreferences
 import org.greenrobot.greendao.query.WhereCondition.StringCondition
 import javax.inject.Inject
@@ -190,7 +191,7 @@ class ProductRepository @Inject constructor(
      *
      * @return The list of allergens.
      */
-    suspend fun getEnabledAllergens(): List<Allergen> = withContext(Dispatchers.IO) {
+    suspend fun getEnabledAllergens(): List<Allergen> = withContext(IO) {
         daoSession.allergenDao.queryBuilder()
             .where(AllergenDao.Properties.Enabled.eq("true"))
             .list()
@@ -278,8 +279,9 @@ class ProductRepository @Inject constructor(
      * @param lastDownload Date of last update on Long format
      */
     private fun <T> updateLastDownloadDateInSettings(taxonomy: Taxonomy<T>, lastDownload: Long) {
-        context.getSharedPreferences("prefs", 0)
-            .edit { putLong(taxonomy.getLastDownloadTimeStampPreferenceId(), lastDownload) }
+        context.getAppPreferences().edit {
+            putLong(taxonomy.getLastDownloadTimeStampPreferenceId(), lastDownload)
+        }
         Log.i(LOG_TAG, "Set lastDownload of $taxonomy to $lastDownload")
     }
 
@@ -434,14 +436,12 @@ class ProductRepository @Inject constructor(
     }
 
     /**
-     * TODO to be improved by loading only if required and only in the user language
      * Ingredients saving to local database
+     * Ingredient and IngredientName has One-To-Many relationship, therefore we need to save them separately.
      *
      * @param ingredients The list of ingredients to be saved.
-     *
-     *
-     * Ingredient and IngredientName has One-To-Many relationship, therefore we need to save them separately.
      */
+    // TODO to be improved by loading only if required and only in the user language
     private fun saveIngredients(ingredients: List<Ingredient>) {
         daoSession.database.beginTransaction()
         try {
@@ -676,7 +676,7 @@ class ProductRepository @Inject constructor(
      * @param languageCode is a 2-digit language code
      * @return The list of translated allergen names
      */
-    suspend fun getAllergensByLanguageCode(languageCode: String?): List<AllergenName> = withContext(Dispatchers.IO) {
+    suspend fun getAllergensByLanguageCode(languageCode: String?): List<AllergenName> = withContext(IO) {
         daoSession.allergenNameDao.queryBuilder()
             .where(AllergenNameDao.Properties.LanguageCode.eq(languageCode))
             .list()
@@ -689,7 +689,7 @@ class ProductRepository @Inject constructor(
      * @param languageCode is a 2-digit language code
      * @return The translated allergen name
      */
-    suspend fun getAllergenByTagAndLanguageCode(allergenTag: String?, languageCode: String?): AllergenName = withContext(Dispatchers.IO) {
+    suspend fun getAllergenByTagAndLanguageCode(allergenTag: String?, languageCode: String?): AllergenName = withContext(IO) {
         daoSession.allergenNameDao.queryBuilder().where(
             AllergenNameDao.Properties.AllergenTag.eq(allergenTag),
             AllergenNameDao.Properties.LanguageCode.eq(languageCode)
@@ -717,7 +717,7 @@ class ProductRepository @Inject constructor(
      * @return The translated states name
      */
     suspend fun getStatesByTagAndLanguageCode(statesTag: String, languageCode: String?): StatesName {
-        return withContext(Dispatchers.IO) {
+        return withContext(IO) {
             daoSession.statesNameDao.queryBuilder().where(
                 StatesNameDao.Properties.StatesTag.eq(statesTag),
                 StatesNameDao.Properties.LanguageCode.eq(languageCode)
@@ -873,11 +873,12 @@ class ProductRepository @Inject constructor(
      * @param languageCode
      * @return [Maybe.empty] if no analysis tag found
      */
-    fun getAnalysisTagConfigByTagAndLanguageCode(analysisTag: String?, languageCode: String) = Maybe.fromCallable {
+    suspend fun getAnalysisTagConfigByTagAndLanguageCode(analysisTag: String?, languageCode: String): AnalysisTagConfig? = withContext(IO) {
         daoSession.analysisTagConfigDao.queryBuilder()
             .where(AnalysisTagConfigDao.Properties.AnalysisTag.eq(analysisTag))
-            .unique().also { updateAnalysisTagConfig(it, languageCode) }
-    }.subscribeOn(Schedulers.io())
+            .unique()
+            .also { updateAnalysisTagConfig(it, languageCode) }
+    }
 
     fun getUnknownAnalysisTagConfigsByLanguageCode(languageCode: String) = Single.fromCallable {
         daoSession.analysisTagConfigDao.queryBuilder()

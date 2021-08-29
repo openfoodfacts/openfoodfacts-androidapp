@@ -16,19 +16,19 @@ class LabelNameTest {
     }
 
     @Test
-    fun getWikiDataIdWithNullWikiDataId_returnsNullAsString(): Unit {
-        assertThat(mLabelName.wikiDataId).isEqualTo(null)
+    fun getWikiDataIdWithNullWikiDataId_returnsNullAsString() {
+        assertThat(mLabelName.wikiDataId).isNull()
     }
 
     @Test
-    fun getWikiDataIdWithoutEnInWikiDataId_returnsWholeWikiDataId(): Unit {
+    fun getWikiDataIdWithoutEnInWikiDataId_returnsWholeWikiDataId() {
         val fakeWikiDataId = "aFakeWikiDataId"
         mLabelName.wikiDataId = fakeWikiDataId
         assertThat(mLabelName.wikiDataId).isEqualTo(fakeWikiDataId)
     }
 
     @Test
-    fun getWikiDataIdWithoutQuote_returnsWholeWikiDataId(): Unit {
+    fun getWikiDataIdWithoutQuote_returnsWholeWikiDataId() {
         val wikiDataId = "somethingenmoreofit\"otherstuff"
         mLabelName.wikiDataId = wikiDataId
         assertThat(mLabelName.wikiDataId).isEqualTo("eofit")

@@ -1,5 +1,3 @@
-@file:JvmName("DateExtensions")
-
 package openfoodfacts.github.scrachx.openfood.utils
 
 import android.content.Context
@@ -7,7 +5,7 @@ import openfoodfacts.github.scrachx.openfood.R
 import java.util.*
 import java.util.concurrent.TimeUnit
 
-fun Date.timeFormatted(context: Context): String {
+fun Date.durationToNowFormatted(context: Context): String {
     val duration = Date().time - time
     val seconds = TimeUnit.MILLISECONDS.toSeconds(duration)
     val minutes = TimeUnit.MILLISECONDS.toMinutes(duration)

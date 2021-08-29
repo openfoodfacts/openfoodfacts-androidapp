@@ -94,8 +94,8 @@
 
         <activity
             android:name=".features.splash.SplashActivity"
-            android:label="@string/app_name"
             android:exported="true"
+            android:label="@string/app_name"
             android:theme="@style/SplashTheme">
 
             <intent-filter>
@@ -110,8 +110,8 @@
 
         <activity
             android:name=".features.MainActivity"
-            android:launchMode="singleTop"
             android:exported="true"
+            android:launchMode="singleTop"
             android:windowSoftInputMode="stateUnchanged|adjustResize">
 
             <intent-filter>
@@ -137,9 +137,9 @@
         </activity>
         <activity
             android:name=".features.product.view.ProductViewActivity"
+            android:exported="true"
             android:launchMode="singleTop"
             android:parentActivityName=".features.MainActivity"
-            android:exported="true"
             android:windowSoftInputMode="stateUnchanged|adjustResize">
 
             <meta-data
@@ -151,8 +151,10 @@
                 android:label="@string/app_name_long"
                 tools:targetApi="m">
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+
                 <data
                     android:host="@string/deeplink_product"
                     android:pathPrefix="/product"
@@ -192,11 +194,11 @@
 
         <activity
             android:name=".features.categories.activity.CategoryActivity"
-            android:launchMode="singleTop"
             android:exported="true"
+            android:launchMode="singleTop"
             android:parentActivityName=".features.MainActivity">
 
-        <intent-filter>
+            <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
 
@@ -219,11 +221,13 @@
             android:name=".features.search.ProductSearchActivity"
             android:exported="true"
             android:theme="@style/OFFTheme.NoActionBar">
+
             <intent-filter
                 android:autoVerify="true"
                 android:label="@string/app_name_long"
                 tools:targetApi="m">
-                <action android:name="android.intent.action.VIEW" />
+
+            <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
@@ -278,10 +282,11 @@
                     android:scheme="https" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".features.additives.AdditiveListActivity"
-            android:launchMode="singleTop"
             android:exported="true"
+            android:launchMode="singleTop"
             android:parentActivityName=".features.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

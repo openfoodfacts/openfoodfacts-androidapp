@@ -5,8 +5,6 @@ import android.content.pm.PackageManager
 import com.google.common.truth.Truth.assertThat
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.models.Product
-import openfoodfacts.github.scrachx.openfood.utils.UnitUtils.getServingInOz
-import openfoodfacts.github.scrachx.openfood.utils.Utils.getRoundNumber
 import org.junit.Test
 import org.mockito.Mockito.mock
 import java.util.*
@@ -62,31 +60,14 @@ class UtilsTest {
 
         // Test for best condition
         mockitoWhen(mockPM.hasSystemFeature(PackageManager.FEATURE_CAMERA))
-                .thenReturn(true)
+            .thenReturn(true)
         assertThat(isHardwareCameraInstalled(mockCtx)).isTrue()
 
         // False condition
         mockitoWhen(mockPM.hasSystemFeature(PackageManager.FEATURE_CAMERA))
-                .thenReturn(false)
+            .thenReturn(false)
 
         assertThat(isHardwareCameraInstalled(mockCtx)).isFalse()
     }
 
-    @Test
-    fun getServingInOz_from_ml() {
-        assertThat(getServingInOz("100 ml", Locale.getDefault()))
-                .isEqualTo(String.format(Locale.getDefault(), "%.2f", 3.38) + " oz")
-    }
-
-    @Test
-    fun getServingInOz_from_cl() {
-        assertThat(getServingInOz("250 cl", Locale.getDefault()))
-                .isEqualTo(String.format(Locale.getDefault(), "%.2f", 84.53) + " oz")
-    }
-
-    @Test
-    fun getServingInOz_from_l() {
-        assertThat(getServingInOz("3 l", Locale.getDefault()))
-                .isEqualTo(String.format(Locale.getDefault(), "%.2f", 101.44) + " oz")
-    }
 }

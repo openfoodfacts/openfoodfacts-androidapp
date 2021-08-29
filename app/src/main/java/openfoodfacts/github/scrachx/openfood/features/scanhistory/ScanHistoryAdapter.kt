@@ -82,7 +82,7 @@ class ScanHistoryAdapter(
                 binding.productImage.setImageResource(R.drawable.placeholder_thumb)
                 binding.imgProgress.isVisible = false
             }
-            binding.lastScan.text = product.lastSeen.timeFormatted(context)
+            binding.lastScan.text = product.lastSeen.durationToNowFormatted(context)
 
             if (isFlavors(OFF)) {
                 binding.nutriscore.setImageResource(product.getNutriScoreResource())

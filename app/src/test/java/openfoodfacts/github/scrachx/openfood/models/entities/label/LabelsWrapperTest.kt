@@ -65,14 +65,14 @@ class LabelsWrapperTest {
         assertThat(label1Fr.languageCode).isEqualTo(LANGUAGE_CODE_FRENCH)
         assertThat(label1Fr.name).isEqualTo(LABEL_NAME_FR)
         assertThat(label1Fr.isWikiDataIdPresent).isFalse()
-        assertThat(label1Fr.wikiDataId).isEqualTo(null)
+        assertThat(label1Fr.wikiDataId).isNull()
 
         val label1En = label1.names[1]
         assertThat(label1En.labelTag).isEqualTo(LABEL_TAG)
         assertThat(label1En.languageCode).isEqualTo(LANGUAGE_CODE_ENGLISH)
         assertThat(label1En.name).isEqualTo(LABEL_NAME_EN)
         assertThat(label1En.isWikiDataIdPresent).isFalse()
-        assertThat(label1En.wikiDataId).isEqualTo(null)
+        assertThat(label1En.wikiDataId).isNull()
 
         val label2 = labels!![1]
         val label2De = label2!!.names[0]
@@ -80,13 +80,13 @@ class LabelsWrapperTest {
         assertThat(label2De.languageCode).isEqualTo(LANGUAGE_CODE_GERMAN)
         assertThat(label2De.name).isEqualTo(LABEL_NAME_DE)
         assertThat(label2De.isWikiDataIdPresent).isFalse()
-        assertThat(label2De.wikiDataId).isEqualTo(null)
+        assertThat(label2De.wikiDataId).isNull()
 
         val label2En = label2.names[1]
         assertThat(label2En.labelTag).isEqualTo(labelTag2)
         assertThat(label2En.languageCode).isEqualTo(LANGUAGE_CODE_ENGLISH)
         assertThat(label2En.name).isEqualTo(LABEL_NAME_EN)
         assertThat(label2En.isWikiDataIdPresent).isFalse()
-        assertThat(label2En.wikiDataId).isEqualTo(null)
+        assertThat(label2En.wikiDataId).isNull()
     }
 }
