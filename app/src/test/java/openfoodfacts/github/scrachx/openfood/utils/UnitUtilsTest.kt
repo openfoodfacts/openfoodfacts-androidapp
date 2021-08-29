@@ -120,8 +120,6 @@ class UnitUtilsTest {
         assertThat(parseServing("25.5.7")).isEqualTo(Pair<String, MeasurementUnit?>("25.5", null))
     }
 
-    infix fun <A, B> A.toNull(second: B): Pair<A, B?> = (this to second)
-
     companion object {
         private const val TOL = 1e-5f
     }
