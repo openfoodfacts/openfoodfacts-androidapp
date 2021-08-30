@@ -46,7 +46,7 @@ class ProductCompareActivity : BaseActivity() {
     private val viewModel: ProductCompareViewModel by viewModels()
 
     private val scanProductContract = registerForActivityResult(ScanProductActivityContract()) { product ->
-        product?.let { viewModel.addProductToCompare(it) } ?: error("Unable to deserialize product from intent.")
+        product?.let { viewModel.addProductToCompare(it) }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,6 +58,10 @@ class ProductCompareActivity : BaseActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         binding.navigationBottomInclude.bottomNavigation.installBottomNavigation(this)
+
+        (intent.extras?.getSerializable(KEY_PRODUCTS_TO_COMPARE) as? Product)?.let {
+            viewModel.addProductToCompare(it)
+        }
 
         viewModel.alreadyExistAction.observe(this) {
             Toast.makeText(this@ProductCompareActivity, getString(R.string.product_already_exists_in_comparison), Toast.LENGTH_SHORT).show()

@@ -568,6 +568,11 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
         lastBarcode = barcodeValue.also { if (!isFinishing) setShownProduct(it) }
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        setResult(RESULT_CANCELED)
+    }
+
     override fun onStart() {
         super.onStart()
         EventBus.getDefault().register(this)
