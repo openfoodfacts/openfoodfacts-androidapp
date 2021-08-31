@@ -6,7 +6,6 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.launch
 import androidx.activity.viewModels
@@ -70,7 +69,6 @@ class ProductCompareActivity : BaseActivity() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.alreadyExistFlow.collect {
-                    Log.d("ProductCompareActivity", "alreadyExistFlow")
                     Toast.makeText(this@ProductCompareActivity, getString(R.string.product_already_exists_in_comparison), Toast.LENGTH_SHORT).show()
                 }
             }
@@ -78,9 +76,8 @@ class ProductCompareActivity : BaseActivity() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.productsFlow.collect { products ->
-                    Log.d("ProductCompareActivity", "alreadyExistFlow")
-                        createAdapter(products)
-                    }
+                    createAdapter(products)
+                }
             }
         }
 
