@@ -1,10 +1,13 @@
 package openfoodfacts.github.scrachx.openfood.features.compare
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.rx2.await
 import kotlinx.coroutines.withContext
@@ -15,7 +18,6 @@ import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveNa
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.CoroutineDispatchers
 import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
-import openfoodfacts.github.scrachx.openfood.utils.SingleLiveEvent
 import javax.inject.Inject
 
 @HiltViewModel
@@ -26,16 +28,23 @@ class ProductCompareViewModel @Inject constructor(
     private val coroutineDispatchers: CoroutineDispatchers
 ) : ViewModel() {
 
-    private val _alreadyExistAction = SingleLiveEvent<Unit>()
-    val alreadyExistAction: LiveData<Unit> = _alreadyExistAction
+    private val _alreadyExistFlow = MutableSharedFlow<Unit>()
+    val alreadyExistFlow = _alreadyExistFlow.asSharedFlow()
 
-    private val _products = MutableLiveData<List<CompareProduct>>(emptyList())
-    val products: LiveData<List<CompareProduct>> = _products
+    private val _productsFlow = MutableStateFlow<List<CompareProduct>>(emptyList())
+    val productsFlow = _productsFlow.asStateFlow()
+
+    init {
+        viewModelScope.launch {
+            delay(2000)
+
+        }
+    }
 
     fun addProductToCompare(product: Product) {
         viewModelScope.launch {
-            if (_products.value?.any { it.product.code == product.code } == true) {
-                _alreadyExistAction.call()
+            if (_productsFlow.value.any { it.product.code == product.code }) {
+                _alreadyExistFlow.emit(Unit)
             } else {
                 matomoAnalytics.trackEvent(AnalyticsEvent.AddProductToComparison(product.code))
                 val result = withContext(coroutineDispatchers.io()) {
@@ -53,8 +62,8 @@ class ProductCompareViewModel @Inject constructor(
     }
 
     private fun updateProductList(item: CompareProduct) {
-        val newList = _products.value?.let { it + item } ?: listOf(item)
-        _products.value = newList
+        val newList = _productsFlow.value + item
+        _productsFlow.value = newList
         if (newList.size > 1) {
             matomoAnalytics.trackEvent(AnalyticsEvent.CompareProducts(newList.size.toFloat()))
         }

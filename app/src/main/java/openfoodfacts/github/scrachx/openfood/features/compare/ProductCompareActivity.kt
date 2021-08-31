@@ -6,17 +6,21 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.launch
 import androidx.activity.viewModels
 import androidx.core.app.ActivityCompat.shouldShowRequestPermissionRationale
 import androidx.core.content.ContextCompat.checkSelfPermission
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.rx2.await
 import openfoodfacts.github.scrachx.openfood.R
@@ -63,11 +67,21 @@ class ProductCompareActivity : BaseActivity() {
             viewModel.addProductToCompare(it)
         }
 
-        viewModel.alreadyExistAction.observe(this) {
-            Toast.makeText(this@ProductCompareActivity, getString(R.string.product_already_exists_in_comparison), Toast.LENGTH_SHORT).show()
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.alreadyExistFlow.collect {
+                    Log.d("ProductCompareActivity", "alreadyExistFlow")
+                    Toast.makeText(this@ProductCompareActivity, getString(R.string.product_already_exists_in_comparison), Toast.LENGTH_SHORT).show()
+                }
+            }
         }
-        viewModel.products.observe(this) { products ->
-            createAdapter(products)
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.productsFlow.collect { products ->
+                    Log.d("ProductCompareActivity", "alreadyExistFlow")
+                        createAdapter(products)
+                    }
+            }
         }
 
         binding.productComparisonButton.setOnClickListener {

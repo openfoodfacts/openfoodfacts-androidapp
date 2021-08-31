@@ -4,6 +4,10 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.google.common.truth.Truth.assertThat
 import io.reactivex.Single
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.toList
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.test.runBlockingTest
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
 import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
 import openfoodfacts.github.scrachx.openfood.models.Product
@@ -11,7 +15,6 @@ import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveNa
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.CoroutineDispatchersTest
 import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
-import openfoodfacts.github.scrachx.openfood.utils.getOrAwaitValue
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -38,11 +41,11 @@ class ProductCompareViewModelTest {
 
     @Test
     fun onInit_productsAreEmpty() {
-        assertThat(viewModel.products.getOrAwaitValue()).isEmpty()
+        assertThat(viewModel.productsFlow.value).isEmpty()
     }
 
     @Test
-    fun addProductToCompare_shouldEmitAlreadyExistEvent_whenTheSameProductAdded() {
+    fun addProductToCompare_shouldEmitAlreadyExistEvent_whenTheSameProductAdded() = runBlockingTest {
         // GIVEN
         val product: Product = mock {
             on { code } doReturn "qwerty"
@@ -50,18 +53,22 @@ class ProductCompareViewModelTest {
         whenever(productRepository.getAdditiveByTagAndLanguageCode("qwerty", "en"))
             .doReturn(Single.just(AdditiveName("test-name")))
 
+        val flowItems = mutableListOf<Unit>()
+        val job = launch {
+            viewModel.alreadyExistFlow.toList(flowItems)
+        }
+
         // WHEN
         viewModel.addProductToCompare(product)
         viewModel.addProductToCompare(product)
 
         // THEN
-        val value = viewModel.alreadyExistAction.getOrAwaitValue()
-
-        assertThat(value).isEqualTo(Unit)
+        assertThat(flowItems.size).isEqualTo(1)
+        job.cancel()
     }
 
     @Test
-    fun addProductToCompare_shouldAddProducts_whenProductsAreDifferent() {
+    fun addProductToCompare_shouldAddProducts_whenProductsAreDifferent() = runBlockingTest {
         // GIVEN
         val product1: Product = mock {
             on { code } doReturn "qwerty1"
@@ -74,20 +81,26 @@ class ProductCompareViewModelTest {
         whenever(productRepository.getAdditiveByTagAndLanguageCode("qwerty2", "en"))
             .doReturn(Single.just(AdditiveName("test-name2")))
 
+        var flowItems = listOf<ProductCompareViewModel.CompareProduct>()
+        val job = launch {
+            viewModel.productsFlow.collect {
+                flowItems = it
+            }
+        }
+
         // WHEN
         viewModel.addProductToCompare(product1)
         viewModel.addProductToCompare(product2)
 
         // THEN
-        val products = viewModel.products.getOrAwaitValue()
-
-        assertThat(products.size).isEqualTo(2)
-        assertThat(products[0].product.code).isEqualTo("qwerty1")
-        assertThat(products[1].product.code).isEqualTo("qwerty2")
+        assertThat(flowItems.size).isEqualTo(2)
+        assertThat(flowItems[0].product.code).isEqualTo("qwerty1")
+        assertThat(flowItems[1].product.code).isEqualTo("qwerty2")
+        job.cancel()
     }
 
     @Test
-    fun addProductToCompare_shouldTrackRightAnalytics_whenProductsAddedToCompare() {
+    fun addProductToCompare_shouldTrackRightAnalytics_whenProductsAddedToCompare() = runBlockingTest {
         // GIVEN
         val product1: Product = mock {
             on { code } doReturn "qwerty1"
