@@ -25,6 +25,7 @@ import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.Utils
+import openfoodfacts.github.scrachx.openfood.utils.getAppPreferences
 
 /**
  * @param appContext The application [Context]
@@ -37,7 +38,7 @@ class LoadTaxonomiesWorker @AssistedInject constructor(
     private val repo: ProductRepository
 ) : CoroutineWorker(appContext, workerParams) {
     override suspend fun doWork(): Result {
-        val settings = appContext.getSharedPreferences("prefs", 0)
+        val settings = appContext.getAppPreferences()
 
         return try {
             repo.reloadLabelsFromServer()

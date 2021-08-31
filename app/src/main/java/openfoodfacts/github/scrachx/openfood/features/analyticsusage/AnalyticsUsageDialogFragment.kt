@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.edit
 import androidx.databinding.DataBindingUtil
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -46,9 +47,8 @@ class AnalyticsUsageDialogFragment : BottomSheetDialogFragment() {
     }
 
     private fun saveAnalyticsReportingPref(value: Boolean) {
-        sharedPreferences
-                .edit()
-                .putBoolean(getString(R.string.pref_analytics_reporting_key), value)
-                .apply()
+        sharedPreferences.edit {
+            putBoolean(getString(R.string.pref_analytics_reporting_key), value)
+        }
     }
 }
