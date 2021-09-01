@@ -4,7 +4,6 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.google.common.truth.Truth.assertThat
 import io.reactivex.Single
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.test.runBlockingTest
@@ -76,26 +75,31 @@ class ProductCompareViewModelTest {
         val product2: Product = mock {
             on { code } doReturn "qwerty2"
         }
+        val product3: Product = mock {
+            on { code } doReturn "qwerty3"
+        }
         whenever(productRepository.getAdditiveByTagAndLanguageCode("qwerty1", "en"))
             .doReturn(Single.just(AdditiveName("test-name1")))
         whenever(productRepository.getAdditiveByTagAndLanguageCode("qwerty2", "en"))
             .doReturn(Single.just(AdditiveName("test-name2")))
+        whenever(productRepository.getAdditiveByTagAndLanguageCode("qwerty3", "en"))
+            .doReturn(Single.just(AdditiveName("test-name3")))
 
-        var flowItems = listOf<ProductCompareViewModel.CompareProduct>()
+        val flowItems = mutableListOf<List<ProductCompareViewModel.CompareProduct>>()
         val job = launch {
-            viewModel.productsFlow.collect {
-                flowItems = it
-            }
+            viewModel.productsFlow.toList(flowItems)
         }
 
         // WHEN
         viewModel.addProductToCompare(product1)
         viewModel.addProductToCompare(product2)
+        viewModel.addProductToCompare(product3)
 
         // THEN
-        assertThat(flowItems.size).isEqualTo(2)
-        assertThat(flowItems[0].product.code).isEqualTo("qwerty1")
-        assertThat(flowItems[1].product.code).isEqualTo("qwerty2")
+        assertThat(flowItems.last().size).isEqualTo(3)
+        assertThat(flowItems.last()[0].product.code).isEqualTo("qwerty1")
+        assertThat(flowItems.last()[1].product.code).isEqualTo("qwerty2")
+        assertThat(flowItems.last()[2].product.code).isEqualTo("qwerty3")
         job.cancel()
     }
 

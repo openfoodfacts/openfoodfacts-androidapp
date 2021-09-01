@@ -3,7 +3,6 @@ package openfoodfacts.github.scrachx.openfood.features.compare
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asSharedFlow
@@ -33,13 +32,6 @@ class ProductCompareViewModel @Inject constructor(
 
     private val _productsFlow = MutableStateFlow<List<CompareProduct>>(emptyList())
     val productsFlow = _productsFlow.asStateFlow()
-
-    init {
-        viewModelScope.launch {
-            delay(2000)
-
-        }
-    }
 
     fun addProductToCompare(product: Product) {
         viewModelScope.launch {
