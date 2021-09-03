@@ -47,6 +47,7 @@
     <dimen name="img_width_height">250dp</dimen>
     <dimen name="slide_desc">16sp</dimen>
     <dimen name="slide_desc_dp">16dp</dimen>
+    <dimen name="slide_title_dp">20dp</dimen>
 
     <!--- AlertDialog ProductImage -->
     <dimen name="product_height">200dp</dimen>
