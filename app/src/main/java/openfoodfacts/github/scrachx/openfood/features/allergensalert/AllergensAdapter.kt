@@ -15,6 +15,7 @@
  */
 package openfoodfacts.github.scrachx.openfood.features.allergensalert
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,12 +24,12 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenName
-import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 
 class AllergensAdapter(
-        private val repository: ProductRepository,
-        var allergens: MutableList<AllergenName> = mutableListOf()
+    val onDeleteAction: (allergen: AllergenName) -> Unit,
 ) : RecyclerView.Adapter<AllergensAdapter.AllergenViewHolder>() {
+
+    private var allergens = listOf<AllergenName>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AllergenViewHolder {
         val contactView = LayoutInflater.from(parent.context).inflate(R.layout.item_allergens, parent, false)
@@ -39,14 +40,17 @@ class AllergensAdapter(
         val allergen = allergens[position]
         holder.nameTextView.text = allergen.name
         holder.messageButton.setOnClickListener {
-            val pos = holder.bindingAdapterPosition
-            allergens.removeAt(pos)
-            notifyItemRemoved(pos)
-            repository.setAllergenEnabled(allergen.allergenTag, false)
+            onDeleteAction(allergens[holder.bindingAdapterPosition])
         }
     }
 
     override fun getItemCount() = allergens.size
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateItems(items: List<AllergenName>) {
+        allergens = items
+        notifyDataSetChanged()
+    }
 
     class AllergenViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val messageButton: Button = itemView.findViewById(R.id.delete_button)
