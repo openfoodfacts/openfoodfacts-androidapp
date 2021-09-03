@@ -48,7 +48,7 @@
         android:text="@string/title_welcome_nova"
         android:textAlignment="center"
         android:textColor="@color/white"
-        android:textSize="20dp"
+        android:textSize="@dimen/slide_title_dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/slide_3_desc"
         app:layout_constraintHorizontal_bias="0.5"
