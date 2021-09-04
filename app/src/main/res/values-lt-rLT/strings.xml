@@ -597,7 +597,7 @@
     <string name="packaging">Recycling</string>
     <string name="take_ingredients_picture_to_extract">(Prašome nufotografuoti ingredientus, kad juos automatiškai nuskaitytume)</string>
     <string name="ingredients_list">Ingredientų sąrašas</string>
-    <string name="ingredients_hint" tools:ignore="StringFormatInvalid"Laikykitės eiliškumo, nurodykite %, kur parašyta, atskirkite kableliu arba naudokite -, naudokite () ingredientų sudedamosioms dalims, apsupkite alergenus su _</string>
+    <string name="ingredients_hint">Laikykitės eiliškumo, nurodykite %, kur parašyta, atskirkite kableliu arba naudokite -, naudokite () ingredientų sudedamosioms dalims, apsupkite alergenus su _</string>
     <string name="extract_ingredients">Nuskaityti ingredientus</string>
     <string name="extracting_ingredients">Išgaunami ingredientai</string>
     <string name="looksGood">Atrodo gerai</string>

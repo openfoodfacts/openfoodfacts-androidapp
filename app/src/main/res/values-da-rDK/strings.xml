@@ -585,7 +585,7 @@
     <string name="packaging">Genbrug</string>
     <string name="take_ingredients_picture_to_extract">(Tag venligst et foto af ingredienserne for automatisk at udtrække dem)</string>
     <string name="ingredients_list">Ingrediensoversigt</string>
-    <string name="ingredients_hint" tools:ignore="StringFormatInvalid"Behold rækkefølgen, angiv %, når det angives, adskilt med komma eller brug -, brug () til ingredienser i en ingrediens, omgiv allergener med _</string>
+    <string name="ingredients_hint">Behold rækkefølgen, angiv %, når det angives, adskilt med komma eller brug -, brug () til ingredienser i en ingrediens, omgiv allergener med _</string>
     <string name="extract_ingredients">Udtræk ingredienser</string>
     <string name="extracting_ingredients">Uddrager ingredienser</string>
     <string name="looksGood">Ser godt ud</string>

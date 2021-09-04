@@ -585,7 +585,7 @@
     <string name="packaging">Reciclagem</string>
     <string name="take_ingredients_picture_to_extract">(por favor tire uma foto dos ingredientes para extraí-los automaticamente)</string>
     <string name="ingredients_list">Lista de ingredientes</string>
-    <string name="ingredients_hint" tools:ignore="StringFormatInvalid"Mantenha a mesma ordem da lista mostrada no produto, indique a % quando especificado, separe os ingredientes com uma vírgula \",\" ou hífen \"-\", use parênteses \"()\" para ingredientes compostos de outros ingredientes, adicione um traço inferior \"_\" antes e depois de cada ingrediente alergénio (normalmente a bold/negrito na embalagem), por ex: açúcar, _leite_, água</string>
+    <string name="ingredients_hint">Mantenha a mesma ordem da lista mostrada no produto, indique a % quando especificado, separe os ingredientes com uma vírgula \",\" ou hífen \"-\", use parênteses \"()\" para ingredientes compostos de outros ingredientes, adicione um traço inferior \"_\" antes e depois de cada ingrediente alergénio (normalmente a bold/negrito na embalagem), por ex: açúcar, _leite_, água</string>
     <string name="extract_ingredients">Extrair ingredientes</string>
     <string name="extracting_ingredients">A extrair os ingredientes</string>
     <string name="looksGood">Parece bem</string>

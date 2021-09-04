@@ -588,7 +588,7 @@
     <string name="packaging">Recycling</string>
     <string name="take_ingredients_picture_to_extract">(自動的に抽出するために原材料の写真を撮ってください)</string>
     <string name="ingredients_list">原材料一覧</string>
-    <string name="ingredients_hint" tools:ignore="StringFormatInvalid"順序を守り、指定されたときは % を示し、カンマまたは - で区切り、原材料中の原材料は () を使用し、アレルゲンは _ で囲みます</string>
+    <string name="ingredients_hint">順序を守り、指定されたときは % を示し、カンマまたは - で区切り、原材料中の原材料は () を使用し、アレルゲンは _ で囲みます</string>
     <string name="extract_ingredients">原材料を抽出</string>
     <string name="extracting_ingredients">原材料を抽出しています</string>
     <string name="looksGood">いいですね</string>

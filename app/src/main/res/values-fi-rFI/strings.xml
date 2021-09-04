@@ -585,7 +585,7 @@
     <string name="packaging">Kierrätys</string>
     <string name="take_ingredients_picture_to_extract">(Ota kuva aineosista, jotta ne voidaan poimia automaattisesti)</string>
     <string name="ingredients_list">Ainesosaluettelo</string>
-    <string name="ingredients_hint" tools:ignore="StringFormatInvalid"Säilytä järjestys. Ilmaise prosenttiosuus, jos ilmoitettu. Erottele pilkulla tai väliviivalla. Käytä sulkuja () ainesosan ainesosille. Laita allergeenit kahden alaviivan väliin esim. _maito_</string>
+    <string name="ingredients_hint">Säilytä järjestys. Ilmaise prosenttiosuus, jos ilmoitettu. Erottele pilkulla tai väliviivalla. Käytä sulkuja () ainesosan ainesosille. Laita allergeenit kahden alaviivan väliin esim. _maito_</string>
     <string name="extract_ingredients">Poimi ainesosat</string>
     <string name="extracting_ingredients">Poimitaan ainesosia</string>
     <string name="looksGood">Hyvältä näyttää</string>

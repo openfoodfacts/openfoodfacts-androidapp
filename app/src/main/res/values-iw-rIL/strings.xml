@@ -597,7 +597,7 @@
     <string name="packaging">מיחזור</string>
     <string name="take_ingredients_picture_to_extract">(נא לצלם את רשימת הרכיבים כדי לחלץ אותם אוטומטית)</string>
     <string name="ingredients_list">רשימת רכיבים</string>
-    <string name="ingredients_hint" tools:ignore="StringFormatInvalid"יש לשמור על הסדר, לציין את ה־% איפה שצוין, להפריד בפסיק או להשתמש ב־-, להשתמש ב־() לציון רכיבים של רכיבים ולתחום אלרגנים ב־_</string>
+    <string name="ingredients_hint">יש לשמור על הסדר, לציין את ה־% איפה שצוין, להפריד בפסיק או להשתמש ב־-, להשתמש ב־() לציון רכיבים של רכיבים ולתחום אלרגנים ב־_</string>
     <string name="extract_ingredients">חילוץ רכיבים</string>
     <string name="extracting_ingredients">הרכיבים מחולצים</string>
     <string name="looksGood">נראה טוב</string>

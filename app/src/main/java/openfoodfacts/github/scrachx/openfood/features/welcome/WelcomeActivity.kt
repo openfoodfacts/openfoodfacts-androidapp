@@ -22,7 +22,6 @@ import android.content.pm.ActivityInfo
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
-import android.util.TypedValue
 import android.view.Window
 import android.view.WindowManager
 import android.widget.TextView
@@ -160,7 +159,7 @@ class WelcomeActivity : BaseActivity() {
         val dots = (0..screens.lastIndex).map {
             TextView(this).apply {
                 text = "\u2022"
-                this.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 35F);
+                textSize = 35f
                 setTextColor(WelcomeScreen[currentPage].color.lighten(0.85f))
                 binding.layoutDots.addView(this)
             }
