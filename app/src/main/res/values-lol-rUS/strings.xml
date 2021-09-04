@@ -581,7 +581,7 @@
     <string name="packaging">crwdns179046:0crwdne179046:0</string>
     <string name="take_ingredients_picture_to_extract">crwdns179048:0crwdne179048:0</string>
     <string name="ingredients_list">crwdns179050:0crwdne179050:0</string>
-    <string name="ingredients_hint">crwdns179052:0crwdne179052:0</string>
+    <string name="ingredients_hint" tools:ignore="StringFormatInvalid">crwdns179052:0crwdne179052:0</string>
     <string name="extract_ingredients">crwdns179054:0crwdne179054:0</string>
     <string name="extracting_ingredients">crwdns179056:0crwdne179056:0</string>
     <string name="looksGood">crwdns179058:0crwdne179058:0</string>

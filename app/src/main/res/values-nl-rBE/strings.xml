@@ -585,7 +585,7 @@
     <string name="packaging">Recyclen</string>
     <string name="take_ingredients_picture_to_extract">(Maak een foto van de ingrediënten om ze automatisch te herkennen)</string>
     <string name="ingredients_list">Ingrediëntenlijst</string>
-    <string name="ingredients_hint">Behoud de volgorde, geef het percentage indien vermeld, gescheiden met komma\'s of \'-\', gebruik () voor de ingrediënten van een ingrediënt, vermeld allergenen tussen \'_\' zoals bijvoorbeeld _melk_</string>
+    <string name="ingredients_hint" tools:ignore="StringFormatInvalid">Behoud de volgorde, geef het percentage indien vermeld, gescheiden met komma\'s of \'-\', gebruik () voor de ingrediënten van een ingrediënt, vermeld allergenen tussen \'_\' zoals bijvoorbeeld _melk_</string>
     <string name="extract_ingredients">Extract ingrediënten</string>
     <string name="extracting_ingredients">Bezig de ingrediënten te detecteren</string>
     <string name="looksGood">Ziet er goed uit</string>

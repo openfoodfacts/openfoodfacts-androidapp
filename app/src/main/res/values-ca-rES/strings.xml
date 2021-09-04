@@ -585,7 +585,7 @@
     <string name="packaging">Reciclatge</string>
     <string name="take_ingredients_picture_to_extract">(feu una fotografia dels ingredients per extreure\'ls automàticament)</string>
     <string name="ingredients_list">Llista d\'ingredients</string>
-    <string name="ingredients_hint">Manteniu l\'ordre, indiqueu el % quan s\'especifica, separat per una coma o -, utilitzeu () pels ingredients d\'un ingredient, els al·lèrgens envoltats amb _</string>
+    <string name="ingredients_hint" tools:ignore="StringFormatInvalid">Manteniu l\'ordre, indiqueu el % quan s\'especifica, separat per una coma o -, utilitzeu () pels ingredients d\'un ingredient, els al·lèrgens envoltats amb _</string>
     <string name="extract_ingredients">Extreu els ingredients</string>
     <string name="extracting_ingredients">Extraent ingredients</string>
     <string name="looksGood">Pinta bé</string>
