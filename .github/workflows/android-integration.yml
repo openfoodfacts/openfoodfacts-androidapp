@@ -167,7 +167,7 @@ jobs:
         with:
           arguments: dokkaHtml
 
-      - name: Deploy API documentation to Github Pages
+      - name: Deploy documentation to Github Pages
         uses: JamesIves/github-pages-deploy-action@4.1.5
         with:
           branch: gh-pages
