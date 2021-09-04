@@ -585,7 +585,7 @@
     <string name="packaging">Recycling</string>
     <string name="take_ingredients_picture_to_extract">(ದಯವಿಟ್ಟು ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಅವುಗಳನ್ನು ಹೊರತೆಗೆಯಲು ಪದಾರ್ಥಗಳ ಚಿತ್ರವನ್ನು ತೆಗೆದುಕೊಳ್ಳಿ)</string>
     <string name="ingredients_list">ಪದಾರ್ಥಗಳ ಪಟ್ಟಿ</string>
-    <string name="ingredients_hint">ಆದೇಶವನ್ನು ಇರಿಸಿ, ನಿರ್ದಿಷ್ಟಪಡಿಸಿದಾಗ% ಸೂಚಿಸುತ್ತದೆ, ಒಂದು ಅಲ್ಪವಿರಾಮದಿಂದ ಅಥವಾ ಬಳಕೆಯನ್ನು ಪ್ರತ್ಯೇಕವಾಗಿ -, ಪದಾರ್ಥಗಳ ಪದಾರ್ಥಗಳಿಗಾಗಿ () ಬಳಸಿ, ಸರೌಂಡ್ ಅಲರ್ಜಿನ್ಗಳೊಂದಿಗೆ _</string>
+    <string name="ingredients_hint" tools:ignore="StringFormatInvalid"ಆದೇಶವನ್ನು ಇರಿಸಿ, ನಿರ್ದಿಷ್ಟಪಡಿಸಿದಾಗ% ಸೂಚಿಸುತ್ತದೆ, ಒಂದು ಅಲ್ಪವಿರಾಮದಿಂದ ಅಥವಾ ಬಳಕೆಯನ್ನು ಪ್ರತ್ಯೇಕವಾಗಿ -, ಪದಾರ್ಥಗಳ ಪದಾರ್ಥಗಳಿಗಾಗಿ () ಬಳಸಿ, ಸರೌಂಡ್ ಅಲರ್ಜಿನ್ಗಳೊಂದಿಗೆ _</string>
     <string name="extract_ingredients">ಪದಾರ್ಥಗಳನ್ನು ಹೊರತೆಗೆಯಿರಿ</string>
     <string name="extracting_ingredients">Extracting ingredients</string>
     <string name="looksGood">ಚೆನ್ನಾಗಿ ಕಾಣಿಸುತ್ತದೆ</string>
