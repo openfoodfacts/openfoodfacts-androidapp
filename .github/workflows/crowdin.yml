@@ -16,12 +16,13 @@ jobs:
     - name: Sync translations with Crowdin
       uses: crowdin/github-action@1.3.3
       with:
-        upload_translations: true # default is false
+         # default is false
         # Use this option to upload translations for a single specified language
         download_translations: true
         # Upload sources to Crowdin
         upload_sources: true
         # Upload translations to Crowdin
+        upload_translations: false
         # upload_language: # optional
         # Automatically approves uploaded translations
         # auto_approve_imported: # default is false
