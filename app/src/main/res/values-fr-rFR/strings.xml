@@ -581,7 +581,7 @@
     <string name="packaging">Recyclage</string>
     <string name="take_ingredients_picture_to_extract">(Veuillez prendre une photo des ingrédients pour les extraire automatiquement)</string>
     <string name="ingredients_list">Liste des ingrédients</string>
-    <string name="ingredients_hint" tools:ignore="StringFormatInvalid"Conserver l\'ordre, indiquer le % lorsqu\'il est précisé, séparer par une virgule ou - , utiliser les ( ) pour les ingrédients d\'un ingrédient, indiquer les allergènes entre _</string>
+    <string name="ingredients_hint">Conserver l\'ordre, indiquer le % lorsqu\'il est précisé, séparer par une virgule ou - , utiliser les ( ) pour les ingrédients d\'un ingrédient, indiquer les allergènes entre _</string>
     <string name="extract_ingredients">Extraire les ingrédients</string>
     <string name="extracting_ingredients">Extraction des ingrédients en cours</string>
     <string name="looksGood">Ça a l\'air bon</string>

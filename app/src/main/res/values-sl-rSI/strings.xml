@@ -597,7 +597,7 @@
     <string name="packaging">Recycling</string>
     <string name="take_ingredients_picture_to_extract">(Prosim, posnamite sliko sestavin, za samodejno branje)</string>
     <string name="ingredients_list">Seznam sestavin</string>
-    <string name="ingredients_hint" tools:ignore="StringFormatInvalid"Naj bo urejeno, navedite %, če je naveden, ločite z vejico ali uporabite -, uporabite () za sestavine od sestavin, obkrožite alergene z _</string>
+    <string name="ingredients_hint">Naj bo urejeno, navedite %, če je naveden, ločite z vejico ali uporabite -, uporabite () za sestavine od sestavin, obkrožite alergene z _</string>
     <string name="extract_ingredients">Preberi sestavine</string>
     <string name="extracting_ingredients">Prebiram sestavine</string>
     <string name="looksGood">Izgleda v redu</string>

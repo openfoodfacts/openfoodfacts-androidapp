@@ -595,7 +595,7 @@
     <string name="recycling_picture">Imagen de reciclaje</string>
     <string name="take_ingredients_picture_to_extract">(Por favor, toma una foto de los ingredientes para extraerlos automáticamente)</string>
     <string name="ingredients_list">Lista de ingredientes</string>
-    <string name="ingredients_hint" tools:ignore="StringFormatInvalid"Mantén el orden, indica el % cuando se especifique, separa con una coma o usa -, utiliza () para ingredientes de otro ingrediente, utiliza _ al principio y al final de los alérgenos</string>
+    <string name="ingredients_hint">Mantén el orden, indica el % cuando se especifique, separa con una coma o usa -, utiliza () para ingredientes de otro ingrediente, utiliza _ al principio y al final de los alérgenos</string>
     <string name="extract_ingredients">Extraer ingredientes</string>
     <string name="extracting_ingredients">Extrayendo los ingredientes</string>
     <string name="looksGood">Parece correcto</string>

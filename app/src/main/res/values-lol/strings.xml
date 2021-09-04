@@ -595,7 +595,7 @@
     <string name="recycling_picture">crwdns153798:0crwdne153798:0</string>
     <string name="take_ingredients_picture_to_extract">crwdns128382:0crwdne128382:0</string>
     <string name="ingredients_list">crwdns128384:0crwdne128384:0</string>
-    <string name="ingredients_hint" tools:ignore="StringFormatInvalid"crwdns128386:0crwdne128386:0</string>
+    <string name="ingredients_hint">crwdns128386:0crwdne128386:0</string>
     <string name="extract_ingredients">crwdns128388:0crwdne128388:0</string>
     <string name="extracting_ingredients">crwdns128390:0crwdne128390:0</string>
     <string name="looksGood">crwdns128392:0crwdne128392:0</string>

@@ -585,7 +585,7 @@
     <string name="packaging">Újrahasznosítás</string>
     <string name="take_ingredients_picture_to_extract">(Kérem, készítsen egy képet az összetevőkről, hogy be tudja olvasni róla szöveget a program)</string>
     <string name="ingredients_list">Összetevők</string>
-    <string name="ingredients_hint" tools:ignore="StringFormatInvalid"Tartsa be a sorrendet, adja meg a % -ot, ha meg van adva, vesszővel elválasztva vagy használja -, használja () az összetevő összetevőihez, vegye körül az allergéneket _</string>
+    <string name="ingredients_hint">Tartsa be a sorrendet, adja meg a % -ot, ha meg van adva, vesszővel elválasztva vagy használja -, használja () az összetevő összetevőihez, vegye körül az allergéneket _</string>
     <string name="extract_ingredients">Összetevők kiolvasása</string>
     <string name="extracting_ingredients">Összetevők kiolvasása</string>
     <string name="looksGood">Jónak tűnik</string>
