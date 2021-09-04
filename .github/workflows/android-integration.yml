@@ -170,6 +170,5 @@ jobs:
       - name: Deploy API documentation to Github Pages
         uses: JamesIves/github-pages-deploy-action@4.1.5
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: gh-pages
-          FOLDER: app/build/dokka/html/
+          branch: gh-pages
+          folder: app/build/dokka/html/
