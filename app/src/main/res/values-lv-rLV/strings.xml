@@ -591,7 +591,7 @@
     <string name="packaging">Otrreizējā pārstrāde</string>
     <string name="take_ingredients_picture_to_extract">(Lūdzu, nofotografējiet sastāvdaļas, lai tās automātiski izvilktu)</string>
     <string name="ingredients_list">Sastāvdaļu saraksts</string>
-    <string name="ingredients_hint">Saglabājiet pasūtījumu, norādiet%, kad norādīts, atdaliet ar komatu vai lietojiet -, sastāvdaļu sastāvdaļām izmantojiet (), ieskaujiet alergēnus ar _</string>
+    <string name="ingredients_hint" tools:ignore="StringFormatInvalid"Saglabājiet pasūtījumu, norādiet%, kad norādīts, atdaliet ar komatu vai lietojiet -, sastāvdaļu sastāvdaļām izmantojiet (), ieskaujiet alergēnus ar _</string>
     <string name="extract_ingredients">Ekstrakta sastāvdaļas</string>
     <string name="extracting_ingredients">Sastāvdaļu iegūšana</string>
     <string name="looksGood">Izskatās labi</string>

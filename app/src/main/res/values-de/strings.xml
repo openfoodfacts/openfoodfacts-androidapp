@@ -595,7 +595,7 @@
     <string name="recycling_picture">Recycling-Abbildung</string>
     <string name="take_ingredients_picture_to_extract">(Bitte machen Sie ein Bild von den Zutaten, um sie automatisch zu extrahieren)</string>
     <string name="ingredients_list">Zutatenliste</string>
-    <string name="ingredients_hint">Behalten Sie die Reihenfolge bei, geben Sie \"%\" an, wenn angegeben, trennen Sie mit einem Komma \",\" oder einem Bindestrich \"-\", verwenden Sie \"()\" für Zutaten einer Zutat, umgeben Sie Allergene mit \"_\"</string>
+    <string name="ingredients_hint" tools:ignore="StringFormatInvalid"Behalten Sie die Reihenfolge bei, geben Sie \"%\" an, wenn angegeben, trennen Sie mit einem Komma \",\" oder einem Bindestrich \"-\", verwenden Sie \"()\" für Zutaten einer Zutat, umgeben Sie Allergene mit \"_\"</string>
     <string name="extract_ingredients">Zutaten extrahieren</string>
     <string name="extracting_ingredients">Inhaltsstoffe werden ausgelesen</string>
     <string name="looksGood">Sieht gut aus</string>

@@ -600,7 +600,7 @@
     <string name="packaging">Recycling</string>
     <string name="take_ingredients_picture_to_extract">(Te rog fă o fotografie a ingredientelor pentru a le extrage automat)</string>
     <string name="ingredients_list">Lista de ingrediente</string>
-    <string name="ingredients_hint">Păstrați ordinea, indicați procentul atunci când este specificat, separați cu virgulă sau folosiți -, utilizați () pentru ingredientele unui ingredient, înconjurați alergenii cu _</string>
+    <string name="ingredients_hint" tools:ignore="StringFormatInvalid"Păstrați ordinea, indicați procentul atunci când este specificat, separați cu virgulă sau folosiți -, utilizați () pentru ingredientele unui ingredient, înconjurați alergenii cu _</string>
     <string name="extract_ingredients">Extrageți ingredientele</string>
     <string name="extracting_ingredients">Extrag ingredientele</string>
     <string name="looksGood">Arată bine</string>
