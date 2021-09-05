@@ -15,7 +15,7 @@
   ~ limitations under the License.
   -->
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -24,36 +24,53 @@
 
     <ImageView
         android:id="@+id/slide_3_image"
-        android:layout_width="@dimen/img_width_height"
-        android:layout_height="@dimen/img_width_height"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.4"
+        app:layout_constraintDimensionRatio="1:2"
         android:layout_centerHorizontal="true"
-        app:srcCompat="@drawable/ic_nova_group_4" />
+        app:srcCompat="@drawable/ic_nova_group_4"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintBottom_toTopOf="@+id/slide_3_title"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"/>
 
     <TextView
         android:id="@+id/slide_3_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/slide_3_image"
-        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
         android:gravity="center_horizontal"
         android:padding="20dp"
         android:text="@string/title_welcome_nova"
-        android:textColor="@android:color/white"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="@dimen/slide_title_dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/slide_3_desc"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/slide_3_image" />
 
     <TextView
         android:id="@+id/slide_3_desc"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/slide_3_title"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="20dp"
+        android:layout_marginRight="16dp"
         android:gravity="center_horizontal"
         android:text="@string/msg_welcome_nova"
         android:textAlignment="center"
-        android:textColor="@android:color/white"
-        android:textSize="@dimen/slide_desc" />
-</RelativeLayout>
+        android:textColor="@color/white"
+        android:textSize="@dimen/slide_desc_dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/slide_3_title" />
+</androidx.constraintlayout.widget.ConstraintLayout>

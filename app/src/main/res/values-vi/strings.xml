@@ -588,7 +588,7 @@
     <string name="packaging">Recycling</string>
     <string name="take_ingredients_picture_to_extract">(Vui lòng chụp ảnh các thành phần để tự động trích xuất chúng)</string>
     <string name="ingredients_list">Danh sách thành phần</string>
-    <string name="ingredients_hint">Giữ thứ tự, cho biết% khi được chỉ định, phân tách bằng dấu phẩy hoặc sử dụng -, use () cho các thành phần của một thành phần, bao quanh chất gây dị ứng bằng _</string>
+    <string name="ingredients_hint" tools:ignore="StringFormatInvalid">Giữ thứ tự, cho biết% khi được chỉ định, phân tách bằng dấu phẩy hoặc sử dụng -, use () cho các thành phần của một thành phần, bao quanh chất gây dị ứng bằng _</string>
     <string name="extract_ingredients">Trích xuất thành phần</string>
     <string name="extracting_ingredients">Trích xuất nguyên liệu</string>
     <string name="looksGood">Có vẻ tốt</string>

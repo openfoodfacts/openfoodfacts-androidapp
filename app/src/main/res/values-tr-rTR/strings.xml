@@ -585,7 +585,7 @@
     <string name="packaging">Geri Dönüşüm</string>
     <string name="take_ingredients_picture_to_extract">(Lütfen otomatik olarak almak için içindekilerin bir fotoğrafını çekin)</string>
     <string name="ingredients_list">İçindekiler Listesi</string>
-    <string name="ingredients_hint">Sırasını koruyun, varsa %\'sini belirtin, virgül ile ayırın ya da - kullanın, bir malzemenin içindekileri belirtmek için () kullanın, alerjenlerin etrafını _ ile çevirin</string>
+    <string name="ingredients_hint" tools:ignore="StringFormatInvalid">Sırasını koruyun, varsa %\'sini belirtin, virgül ile ayırın ya da - kullanın, bir malzemenin içindekileri belirtmek için () kullanın, alerjenlerin etrafını _ ile çevirin</string>
     <string name="extract_ingredients">İçindekileri çıkartın</string>
     <string name="extracting_ingredients">Malzemeler çıkartılıyor</string>
     <string name="looksGood">İyi Görünüyor</string>

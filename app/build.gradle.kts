@@ -38,7 +38,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib:${rootProject.extra["kotlinVersion"]}")
 
     // Kotlin coroutines
-    val coroutinesVersion = "1.5.1"
+    val coroutinesVersion = "1.5.2"
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-rx2:$coroutinesVersion")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion")
@@ -50,11 +50,10 @@ dependencies {
     implementation("androidx.preference:preference-ktx:1.1.1")
     implementation("androidx.core:core-ktx:1.6.0")
 
-    val viewModelKtxVer = "2.3.1"
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$viewModelKtxVer")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$viewModelKtxVer")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$viewModelKtxVer")
-
+    val lifecycleVer = "2.4.0-alpha03"
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVer")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVer")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVer")
 
     // AndroidX
     implementation("androidx.appcompat:appcompat:1.3.1")
@@ -68,7 +67,6 @@ dependencies {
     implementation("androidx.multidex:multidex:2.0.1")
     implementation("androidx.viewpager2:viewpager2:1.0.0")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
-    implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
     implementation("androidx.startup:startup-runtime:1.1.0")
     implementation("androidx.work:work-runtime-ktx:2.5.0")
 
@@ -178,9 +176,11 @@ dependencies {
 
 
     // Unit Testing
+    testImplementation("androidx.arch.core:core-testing:2.1.0")
     testImplementation("junit:junit:4.13.2")
     testImplementation("org.robolectric:robolectric:4.6.1")
     testImplementation("org.mockito:mockito-core:3.12.4")
+    testImplementation("org.mockito.kotlin:mockito-kotlin:3.2.0")
     testImplementation("net.javacrumbs.json-unit:json-unit-fluent:2.28.0")
     testImplementation("com.google.truth:truth:1.1.3")
     testImplementation("com.google.truth.extensions:truth-java8-extension:1.1.3")

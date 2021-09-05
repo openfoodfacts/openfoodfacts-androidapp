@@ -515,8 +515,8 @@
     <string name="notify_channel_description">Notification to show exported file\'s location</string>
     <string name="products_to_be_completed">Products to be completed</string>
     <string name="offline_notification_title">Συνεισφορές εκτός σύνδεσης που πρέπει να στείλετε</string>
-    <string name="creator_history">Προϊόν που προστέθηκε στις %1$s στις %2$s GMT+1 από</string>
-    <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by %3$s </string>
+    <string name="creator_history">Προϊόν που προστέθηκε στις %1$s στις %2$s GMT+1 από %3$s</string>
+    <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by %3$s</string>
     <string name="other_editors">Product page also edited by </string>
     <string name="product_states">Product States</string>
     <string name="incomplete_states">Incomplete States</string>
@@ -585,7 +585,7 @@
     <string name="packaging">Recycling</string>
     <string name="take_ingredients_picture_to_extract">(Please take a photo of the ingredients to automatically extract them)</string>
     <string name="ingredients_list">Λίστα συστατικών</string>
-    <string name="ingredients_hint">Keep the order, indicate the % when specified, separate with a comma or use -, use () for ingredients of an ingredient, surround allergens with _</string>
+    <string name="ingredients_hint" tools:ignore="StringFormatInvalid">Keep the order, indicate the % when specified, separate with a comma or use -, use () for ingredients of an ingredient, surround allergens with _</string>
     <string name="extract_ingredients">Extract ingredients</string>
     <string name="extracting_ingredients">Εξαγωγή συστατικών σε εξέλιξη</string>
     <string name="looksGood">Όλα εντάξει</string>
