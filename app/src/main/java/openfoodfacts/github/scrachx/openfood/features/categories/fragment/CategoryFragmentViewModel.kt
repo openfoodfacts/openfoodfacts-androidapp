@@ -16,9 +16,7 @@
 package openfoodfacts.github.scrachx.openfood.features.categories.fragment
 
 import android.util.Log
-import android.view.View
-import androidx.databinding.ObservableArrayList
-import androidx.databinding.ObservableInt
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -40,9 +38,9 @@ class CategoryFragmentViewModel @Inject constructor(
     private val localeManager: LocaleManager
 ) : ViewModel() {
     private val allCategories = mutableListOf<CategoryName>()
-    val shownCategories = ObservableArrayList<CategoryName>()
-    val showProgress = ObservableInt(View.VISIBLE)
-    val showOffline = ObservableInt(View.GONE)
+    val shownCategories = MutableLiveData<List<CategoryName>>(emptyList())
+    val showProgress = MutableLiveData(true)
+    val showOffline = MutableLiveData(false)
 
     init {
         refreshCategories()
@@ -53,8 +51,8 @@ class CategoryFragmentViewModel @Inject constructor(
      */
     fun refreshCategories() {
         viewModelScope.launch {
-            showOffline.set(View.GONE)
-            showProgress.set(View.VISIBLE)
+            showOffline.postValue(false)
+            showProgress.postValue(true)
             val categoryList = try {
                 withContext(Dispatchers.IO) {
                     productRepository.getAllCategoriesByLanguageCode(localeManager.getLanguage()).await()
@@ -66,18 +64,17 @@ class CategoryFragmentViewModel @Inject constructor(
             } catch (err: Exception) {
                 Log.e(CategoryFragmentViewModel::class.simpleName, "Error loading categories", err)
                 if (err is UnknownHostException) {
-                    showOffline.set(View.VISIBLE)
-                    showProgress.set(View.GONE)
+                    showOffline.postValue(true)
+                    showProgress.postValue(false)
                 }
                 return@launch
             }
 
             allCategories += categoryList
 
-            shownCategories.clear()
-            shownCategories += categoryList
+            shownCategories.postValue(categoryList)
 
-            showProgress.set(View.GONE)
+            showProgress.postValue(false)
         }
 
     }
@@ -98,8 +95,7 @@ class CategoryFragmentViewModel @Inject constructor(
      * @param query string which is used to query for category names
      */
     fun searchCategories(query: String) {
-        shownCategories.clear()
-        shownCategories += allCategories.filter { it.name?.lowercase(Locale.getDefault())?.startsWith(query) == true }
+        shownCategories.postValue(allCategories.filter { it.name?.lowercase(Locale.getDefault())?.startsWith(query) == true })
     }
 
 }

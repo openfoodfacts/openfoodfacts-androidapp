@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/exposure_eval_table_root"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -18,14 +19,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/risk_of_exposure"
-        android:textSize="@dimen/font_normal"/>
+        android:textSize="@dimen/font_normal" />
 
     <TextView
         android:id="@+id/efsaWarning"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:textSize="@dimen/font_small"/>
+        android:textSize="@dimen/font_small" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -38,22 +39,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:drawableStart="@drawable/yellow_circle_24dp"
             android:drawablePadding="10dp"
             android:gravity="center_vertical"
             android:text="@string/legend_adi"
-            android:drawableLeft="@drawable/yellow_circle_24dp"
-            android:textSize="@dimen/font_small" />
+            android:textSize="@dimen/font_small"
+            app:drawableLeftCompat="@drawable/yellow_circle_24dp"
+            app:drawableStartCompat="@drawable/yellow_circle_24dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableStart="@drawable/red_circle_24dp"
             android:drawablePadding="10dp"
             android:gravity="center_vertical"
             android:text="@string/legend_noael"
-            android:drawableLeft="@drawable/red_circle_24dp"
-            android:textSize="@dimen/font_small" />
+            android:textSize="@dimen/font_small"
+            app:drawableLeftCompat="@drawable/red_circle_24dp"
+            app:drawableStartCompat="@drawable/red_circle_24dp" />
     </LinearLayout>
 
     <HorizontalScrollView
@@ -73,57 +74,57 @@
                 <View
                     android:layout_width="96dp"
                     android:layout_height="32dp"
-                    android:visibility="invisible"/>
+                    android:visibility="invisible" />
 
                 <TextView
                     android:layout_width="84dp"
                     android:layout_height="match_parent"
-                    android:layout_marginRight="1dp"
+                    android:layout_marginEnd="1dp"
                     android:gravity="center"
                     android:text="@string/infants"
                     android:textColor="@color/md_black_1000"
                     android:textSize="@dimen/font_small"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="84dp"
                     android:layout_height="match_parent"
-                    android:layout_marginRight="1dp"
+                    android:layout_marginEnd="1dp"
                     android:gravity="center"
                     android:text="@string/toddlers"
                     android:textColor="@color/md_black_1000"
                     android:textSize="@dimen/font_small"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="84dp"
                     android:layout_height="match_parent"
-                    android:layout_marginRight="1dp"
+                    android:layout_marginEnd="1dp"
                     android:gravity="center"
                     android:text="@string/children"
                     android:textColor="@color/md_black_1000"
                     android:textSize="@dimen/font_small"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="84dp"
                     android:layout_height="match_parent"
-                    android:layout_marginRight="1dp"
+                    android:layout_marginEnd="1dp"
                     android:gravity="center"
                     android:text="@string/adolescents"
                     android:textColor="@color/md_black_1000"
                     android:textSize="@dimen/font_small"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="84dp"
                     android:layout_height="match_parent"
-                    android:layout_marginRight="1dp"
+                    android:layout_marginEnd="1dp"
                     android:gravity="center"
                     android:text="@string/adults"
                     android:textColor="@color/md_black_1000"
                     android:textSize="@dimen/font_small"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="84dp"
@@ -132,7 +133,7 @@
                     android:text="@string/elderly"
                     android:textColor="@color/md_black_1000"
                     android:textSize="@dimen/font_small"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
@@ -143,57 +144,57 @@
                 <View
                     android:layout_width="96dp"
                     android:layout_height="32dp"
-                    android:visibility="invisible"/>
+                    android:visibility="invisible" />
 
                 <TextView
                     android:layout_width="84dp"
                     android:layout_height="match_parent"
-                    android:layout_marginRight="1dp"
+                    android:layout_marginEnd="1dp"
                     android:background="@color/md_black_1000"
                     android:gravity="center"
                     android:text="@string/infants_age"
                     android:textColor="@color/md_white_1000"
-                    android:textSize="@dimen/font_small"/>
+                    android:textSize="@dimen/font_small" />
 
                 <TextView
                     android:layout_width="84dp"
                     android:layout_height="match_parent"
-                    android:layout_marginRight="1dp"
+                    android:layout_marginEnd="1dp"
                     android:background="@color/md_black_1000"
                     android:gravity="center"
                     android:text="@string/toddlers_age"
                     android:textColor="@color/md_white_1000"
-                    android:textSize="@dimen/font_small"/>
+                    android:textSize="@dimen/font_small" />
 
                 <TextView
                     android:layout_width="84dp"
                     android:layout_height="match_parent"
-                    android:layout_marginRight="1dp"
+                    android:layout_marginEnd="1dp"
                     android:background="@color/md_black_1000"
                     android:gravity="center"
                     android:text="@string/children_age"
                     android:textColor="@color/md_white_1000"
-                    android:textSize="@dimen/font_small"/>
+                    android:textSize="@dimen/font_small" />
 
                 <TextView
                     android:layout_width="84dp"
                     android:layout_height="match_parent"
-                    android:layout_marginRight="1dp"
+                    android:layout_marginEnd="1dp"
                     android:background="@color/md_black_1000"
                     android:gravity="center"
                     android:text="@string/adolescents_age"
                     android:textColor="@color/md_white_1000"
-                    android:textSize="@dimen/font_small"/>
+                    android:textSize="@dimen/font_small" />
 
                 <TextView
                     android:layout_width="84dp"
                     android:layout_height="match_parent"
-                    android:layout_marginRight="1dp"
+                    android:layout_marginEnd="1dp"
                     android:background="@color/md_black_1000"
                     android:gravity="center"
                     android:text="@string/adults_age"
                     android:textColor="@color/md_white_1000"
-                    android:textSize="@dimen/font_small"/>
+                    android:textSize="@dimen/font_small" />
 
                 <TextView
                     android:layout_width="84dp"
@@ -202,7 +203,7 @@
                     android:gravity="center"
                     android:text="@string/elderly_age"
                     android:textColor="@color/md_white_1000"
-                    android:textSize="@dimen/font_small"/>
+                    android:textSize="@dimen/font_small" />
             </LinearLayout>
 
             <LinearLayout
@@ -217,55 +218,49 @@
                     android:text="@string/most_people"
                     android:textColor="@color/md_black_1000"
                     android:textSize="@dimen/font_small"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/mpInfants"
                     android:layout_width="84dp"
                     android:layout_height="84dp"
-                    android:layout_marginRight="1dp"
-                    android:padding="16dp"
-                    />
+                    android:layout_marginEnd="1dp"
+                    android:padding="16dp" />
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/mpToddlers"
                     android:layout_width="84dp"
                     android:layout_height="84dp"
-                    android:layout_marginRight="1dp"
-                    android:padding="16dp"
-                    />
+                    android:layout_marginEnd="1dp"
+                    android:padding="16dp" />
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/mpChildren"
                     android:layout_width="84dp"
                     android:layout_height="84dp"
-                    android:layout_marginRight="1dp"
-                    android:padding="16dp"
-                    />
+                    android:layout_marginEnd="1dp"
+                    android:padding="16dp" />
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/mpAdolescents"
                     android:layout_width="84dp"
                     android:layout_height="84dp"
-                    android:layout_marginRight="1dp"
-                    android:padding="16dp"
-                    />
+                    android:layout_marginEnd="1dp"
+                    android:padding="16dp" />
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/mpAdults"
                     android:layout_width="84dp"
                     android:layout_height="84dp"
-                    android:layout_marginRight="1dp"
-                    android:padding="16dp"
-                    />
+                    android:layout_marginEnd="1dp"
+                    android:padding="16dp" />
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/mpElderly"
                     android:layout_width="84dp"
                     android:layout_height="84dp"
-                    android:layout_marginRight="1dp"
-                    android:padding="16dp"
-                    />
+                    android:layout_marginEnd="1dp"
+                    android:padding="16dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -280,54 +275,48 @@
                     android:text="@string/some_people"
                     android:textColor="@color/md_black_1000"
                     android:textSize="@dimen/font_small"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/spInfants"
                     android:layout_width="84dp"
                     android:layout_height="84dp"
-                    android:layout_marginRight="1dp"
-                    android:padding="16dp"
-                    />
+                    android:layout_marginEnd="1dp"
+                    android:padding="16dp" />
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/spToddlers"
                     android:layout_width="84dp"
                     android:layout_height="84dp"
-                    android:layout_marginRight="1dp"
-                    android:padding="16dp"
-                    />
+                    android:layout_marginEnd="1dp"
+                    android:padding="16dp" />
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/spChildren"
                     android:layout_width="84dp"
                     android:layout_height="84dp"
-                    android:layout_marginRight="1dp"
-                    android:padding="16dp"
-                    />
+                    android:layout_marginEnd="1dp"
+                    android:padding="16dp" />
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/spAdolescents"
                     android:layout_width="84dp"
                     android:layout_height="84dp"
-                    android:layout_marginRight="1dp"
-                    android:padding="16dp"
-                    />
+                    android:layout_marginEnd="1dp"
+                    android:padding="16dp" />
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/spAdults"
                     android:layout_width="84dp"
                     android:layout_height="84dp"
-                    android:layout_marginRight="1dp"
-                    android:padding="16dp"
-                    />
+                    android:layout_marginEnd="1dp"
+                    android:padding="16dp" />
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/spElderly"
                     android:layout_width="84dp"
                     android:layout_height="84dp"
-                    android:padding="16dp"
-                    />
+                    android:padding="16dp" />
             </LinearLayout>
         </LinearLayout>
     </HorizontalScrollView>

@@ -1,58 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:layout="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="openfoodfacts.github.scrachx.openfood.features.additives.AdditiveListActivity">
 
-    <data>
-
-    </data>
-
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context="openfoodfacts.github.scrachx.openfood.features.additives.AdditiveListActivity">
-
-        <include
-            android:id="@+id/toolbar_include"
-            layout="@layout/toolbar"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            layout:layout_constraintBottom_toTopOf="@+id/additiveRecyclerView"
-            layout:layout_constraintEnd_toEndOf="parent"
-            layout:layout_constraintHorizontal_bias="0.5"
-            layout:layout_constraintStart_toStartOf="parent"
-            layout:layout_constraintTop_toTopOf="parent"
-            tools:layout_conversion_absoluteHeight="56dp"
-            tools:layout_conversion_absoluteWidth="411dp" />
+    <include
+        android:id="@+id/toolbar_include"
+        layout="@layout/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        layout:layout_constraintBottom_toTopOf="@+id/additiveRecyclerView"
+        layout:layout_constraintEnd_toEndOf="parent"
+        layout:layout_constraintHorizontal_bias="0.5"
+        layout:layout_constraintStart_toStartOf="parent"
+        layout:layout_constraintTop_toTopOf="parent"
+        tools:layout_conversion_absoluteHeight="56dp"
+        tools:layout_conversion_absoluteWidth="411dp" />
 
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/additiveRecyclerView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            layout:layout_constraintBottom_toTopOf="@+id/navigation_bottom_include"
-            layout:layout_constraintEnd_toEndOf="parent"
-            layout:layout_constraintHorizontal_bias="0.5"
-            layout:layout_constraintStart_toStartOf="parent"
-            layout:layout_constraintTop_toBottomOf="@+id/toolbar_include"
-            tools:layout_conversion_absoluteHeight="547dp"
-            tools:layout_conversion_absoluteWidth="411dp" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/additiveRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        layout:layout_constraintBottom_toTopOf="@+id/navigation_bottom_include"
+        layout:layout_constraintEnd_toEndOf="parent"
+        layout:layout_constraintHorizontal_bias="0.5"
+        layout:layout_constraintStart_toStartOf="parent"
+        layout:layout_constraintTop_toBottomOf="@+id/toolbar_include"
+        tools:layout_conversion_absoluteHeight="547dp"
+        tools:layout_conversion_absoluteWidth="411dp" />
 
-        <include
-            android:id="@+id/navigation_bottom_include"
-            layout="@layout/navigation_bottom"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            layout:layout_constraintBottom_toBottomOf="parent"
-            layout:layout_constraintEnd_toEndOf="parent"
-            layout:layout_constraintHorizontal_bias="0.5"
-            layout:layout_constraintStart_toStartOf="parent"
-            layout:layout_constraintTop_toBottomOf="@+id/additiveRecyclerView"
-            tools:layout_conversion_absoluteHeight="56dp"
-            tools:layout_conversion_absoluteWidth="411dp" />
+    <include
+        android:id="@+id/navigation_bottom_include"
+        layout="@layout/navigation_bottom"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        layout:layout_constraintBottom_toBottomOf="parent"
+        layout:layout_constraintEnd_toEndOf="parent"
+        layout:layout_constraintHorizontal_bias="0.5"
+        layout:layout_constraintStart_toStartOf="parent"
+        layout:layout_constraintTop_toBottomOf="@+id/additiveRecyclerView"
+        tools:layout_conversion_absoluteHeight="56dp"
+        tools:layout_conversion_absoluteWidth="411dp" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-</layout>
+</androidx.constraintlayout.widget.ConstraintLayout>

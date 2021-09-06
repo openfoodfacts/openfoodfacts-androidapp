@@ -15,102 +15,91 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:fab="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinatorLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <data>
+    <Button
+        android:id="@+id/btn_add"
+        style="@style/ButtonBorder"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:clickable="true"
+        android:drawablePadding="-20dp"
+        android:enabled="false"
+        android:focusable="true"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:text="@string/add_an_allergen"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        app:drawableLeftCompat="@drawable/ic_plus_blue_24"
+        fab:layout_constraintEnd_toEndOf="parent"
+        fab:layout_constraintStart_toStartOf="parent"
+        fab:layout_constraintTop_toTopOf="parent" />
 
-    </data>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-
-        android:id="@+id/coordinatorLayout"
+    <LinearLayout
+        android:id="@+id/emptyAllergensView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="16dp"
+        fab:layout_constraintBottom_toBottomOf="parent"
+        fab:layout_constraintEnd_toEndOf="parent"
+        fab:layout_constraintStart_toStartOf="parent"
+        fab:layout_constraintTop_toTopOf="parent"
+        tools:visibility="gone">
 
-
-        <Button
-            android:enabled="false"
-            android:id="@+id/btn_add"
-            style="@style/ButtonBorder"
-            android:layout_width="0dp"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:clickable="true"
-            android:drawablePadding="-20dp"
-            android:focusable="true"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp"
-            android:text="@string/add_an_allergen"
-            android:textAllCaps="false"
-            android:textSize="18sp"
-            app:drawableLeftCompat="@drawable/ic_plus_blue_24"
-            fab:layout_constraintEnd_toEndOf="parent"
-            fab:layout_constraintStart_toStartOf="parent"
-            fab:layout_constraintTop_toTopOf="parent" />
+            android:layout_marginBottom="8dp"
+            android:text="@string/alert_dialog_warning_title"
+            android:textAppearance="@style/EditHeader"
+            android:textSize="22sp" />
 
-        <LinearLayout
-            android:id="@+id/emptyAllergensView"
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:padding="16dp"
-            fab:layout_constraintBottom_toBottomOf="parent"
-            fab:layout_constraintEnd_toEndOf="parent"
-            fab:layout_constraintStart_toStartOf="parent"
-            fab:layout_constraintTop_toTopOf="parent"
-            tools:visibility="gone">
+            android:gravity="center_horizontal"
+            android:text="@string/warning_alert_data"
+            android:textSize="16sp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:text="@string/alert_dialog_warning_title"
-                android:textAppearance="@style/EditHeader"
-                android:textSize="22sp" />
+    </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:text="@string/warning_alert_data"
-                android:textSize="16sp" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/allergens_recycle"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:clipChildren="true"
+        android:clipToPadding="false"
+        android:paddingBottom="100dp"
+        fab:layout_constraintBottom_toBottomOf="parent"
+        fab:layout_constraintEnd_toEndOf="parent"
+        fab:layout_constraintStart_toStartOf="parent"
+        fab:layout_constraintTop_toBottomOf="@+id/btn_add"
+        tools:listitem="@layout/item_allergens"
+        tools:visibility="visible" />
 
-        </LinearLayout>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/allergens_recycle"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:clipChildren="true"
-            android:clipToPadding="false"
-            android:paddingBottom="100dp"
-            fab:layout_constraintBottom_toBottomOf="parent"
-            fab:layout_constraintEnd_toEndOf="parent"
-            fab:layout_constraintStart_toStartOf="parent"
-            fab:layout_constraintTop_toBottomOf="@+id/btn_add"
-            tools:listitem="@layout/item_allergens"
-            tools:visibility="visible" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</layout>
+</androidx.constraintlayout.widget.ConstraintLayout>
 
 
 
