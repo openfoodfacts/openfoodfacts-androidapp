@@ -36,6 +36,7 @@ import androidx.core.net.toUri
 import androidx.core.text.bold
 import androidx.core.text.buildSpannedString
 import androidx.core.text.inSpans
+import androidx.core.view.isVisible
 import androidx.core.view.updatePadding
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -603,24 +604,20 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         withContext(Main) {
             when (state) {
                 is ProductInfoState.Data -> {
-                    val analysisTags = state.data
-
-                    binding.analysisContainer.visibility = View.VISIBLE
-
+                    binding.analysisContainer.isVisible = true
                     binding.analysisTags.adapter = IngredientAnalysisTagsAdapter(
                         requireContext(),
-                        analysisTags,
+                        state.data,
                         picasso,
                         sharedPreferences
                     ).apply adapter@{
                         setOnItemClickListener { view, _ ->
-                            IngredientsWithTagDialogFragment.newInstance(
+                            val fragment = IngredientsWithTagDialogFragment.newInstance(
                                 product,
                                 view.getTag(R.id.analysis_tag_config) as AnalysisTagConfig
-                            ).run {
-                                onDismissListener = { filterVisibleTags() }
-                                show(childFragmentManager, "fragment_ingredients_with_tag")
-                            }
+                            )
+                            fragment.onDismissListener = { filterVisibleTags() }
+                            fragment.show(childFragmentManager, "fragment_ingredients_with_tag")
                         }
                     }
                 }
@@ -631,7 +628,6 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
                     // TODO:
                 }
             }
-
         }
     }
 
