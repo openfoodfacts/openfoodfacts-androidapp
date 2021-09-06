@@ -296,6 +296,7 @@ class ImagesManageActivity : BaseActivity() {
                 .load(url)
                 .into(binding.imageViewFullScreen, object : Callback {
                     override fun onSuccess() {
+                        if (_binding == null) return
                         attacher.update()
                         scheduleStartPostponedTransition(binding.imageViewFullScreen)
                         binding.imageViewFullScreen.visibility = View.VISIBLE
@@ -303,6 +304,7 @@ class ImagesManageActivity : BaseActivity() {
                     }
 
                     override fun onError(ex: Exception) {
+                        if (_binding == null) return
                         binding.imageViewFullScreen.visibility = View.VISIBLE
                         Toast.makeText(this@ImagesManageActivity, resources.getString(R.string.txtConnectionError), Toast.LENGTH_LONG).show()
                         stopRefresh()
