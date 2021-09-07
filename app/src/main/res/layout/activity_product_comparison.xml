@@ -57,6 +57,26 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </HorizontalScrollView>
 
+    <FrameLayout
+        android:id="@+id/comparison_progress_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/barcode_reticle_background"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/navigation_bottom_include"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible">
+
+        <ProgressBar
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:indeterminate="true" />
+    </FrameLayout>
+
     <include
         android:id="@+id/navigation_bottom_include"
         layout="@layout/navigation_bottom"

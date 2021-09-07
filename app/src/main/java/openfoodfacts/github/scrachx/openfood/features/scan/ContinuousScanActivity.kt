@@ -15,7 +15,6 @@
  */
 package openfoodfacts.github.scrachx.openfood.features.scan
 
-import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.hardware.Camera
@@ -62,8 +61,6 @@ import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsView
 import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityContinuousScanBinding
 import openfoodfacts.github.scrachx.openfood.features.ImagesManageActivity
-import openfoodfacts.github.scrachx.openfood.features.compare.ProductCompareActivity
-import openfoodfacts.github.scrachx.openfood.features.compare.ProductCompareActivity.Companion.KEY_PRODUCTS_TO_COMPARE
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity
 import openfoodfacts.github.scrachx.openfood.features.product.view.IProductView
 import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewActivity.ShowIngredientsAction
@@ -245,12 +242,6 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
 
                 // Add product to scan history
                 productDisp = lifecycleScope.launch { client.addToHistory(product) }
-
-                // If we're here from comparison -> add product, return to comparison activity
-                if (intent.getBooleanExtra(ProductCompareActivity.KEY_COMPARE_PRODUCT, false)) {
-                    setResult(RESULT_OK, Intent().putExtra(KEY_PRODUCTS_TO_COMPARE, product))
-                    finish()
-                }
 
                 showAllViews()
 
@@ -569,11 +560,6 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
         lastBarcode = barcodeValue.also { if (!isFinishing) setShownProduct(it) }
     }
 
-    override fun onBackPressed() {
-        super.onBackPressed()
-        setResult(RESULT_CANCELED)
-    }
-
     override fun onStart() {
         super.onStart()
         EventBus.getDefault().register(this)
@@ -648,7 +634,6 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
         this.actionBar?.hide()
     }
 
-
     private fun setupPopupMenu() {
         cameraSettingMenu = PopupMenu(this, binding.buttonMore).also {
             it.menuInflater.inflate(R.menu.popup_menu, it.menu)
@@ -670,7 +655,6 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
 
     @Suppress("deprecation")
     private fun toggleCamera() {
-
         cameraState = if (cameraState == Camera.CameraInfo.CAMERA_FACING_BACK) {
             Camera.CameraInfo.CAMERA_FACING_FRONT
         } else {
@@ -689,7 +673,6 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
         } else {
             mlKitView.toggleCamera()
         }
-
     }
 
     private fun toggleFlash() {
@@ -839,16 +822,5 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
 
     companion object {
         private const val LOGIN_ACTIVITY_REQUEST_CODE = 2
-
-        @JvmStatic
-        fun start(context: Context) {
-            Intent(context, ContinuousScanActivity::class.java).apply {
-                putExtra(ProductCompareActivity.KEY_COMPARE_PRODUCT, true)
-                context.startActivity(this)
-            }
-        }
-
     }
-
-
 }
