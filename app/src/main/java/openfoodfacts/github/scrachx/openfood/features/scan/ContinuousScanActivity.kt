@@ -31,7 +31,6 @@ import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.appcompat.widget.PopupMenu
 import androidx.core.content.ContextCompat
-import androidx.core.content.edit
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.core.view.isVisible
@@ -39,7 +38,6 @@ import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.commit
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.zxing.BarcodeFormat
 import com.google.zxing.ResultPoint
 import com.google.zxing.client.android.BeepManager
 import com.journeyapps.barcodescanner.BarcodeCallback
@@ -77,6 +75,7 @@ import openfoodfacts.github.scrachx.openfood.features.product.view.summary.Summa
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.selectNavigationItem
+import openfoodfacts.github.scrachx.openfood.models.CameraState
 import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import openfoodfacts.github.scrachx.openfood.models.InvalidBarcodeDao
 import openfoodfacts.github.scrachx.openfood.models.Product
@@ -88,6 +87,7 @@ import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.A
 import openfoodfacts.github.scrachx.openfood.models.eventbus.ProductNeedsRefreshEvent
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.StateTags
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
+import openfoodfacts.github.scrachx.openfood.repositories.ScannerPreferencesRepository
 import openfoodfacts.github.scrachx.openfood.utils.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
@@ -122,6 +122,9 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
     @Inject
     lateinit var localeManager: LocaleManager
 
+    @Inject
+    lateinit var scannerPrefsRepository: ScannerPreferencesRepository
+
     private lateinit var beepManager: BeepManager
     internal lateinit var quickViewBehavior: BottomSheetBehavior<LinearLayout>
     private val barcodeInputListener = BarcodeInputListener()
@@ -130,7 +133,6 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
 
     private val bottomSheetCallback by lazy { QuickViewCallback(this) }
 
-    private val cameraPref by lazy { getSharedPreferences("camera", 0) }
     private val settings by lazy { getAppPreferences() }
 
     private var productDisp: Job? = null
@@ -223,7 +225,7 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
                         .apply { setGravity(CENTER, 0, 0) }
                         .show()
 
-                    Log.w(LOG_TAG, err.message, err)
+                    Log.w("ContinuousScanActivity", err.message, err)
                 }
                 return@launch
             }
@@ -509,18 +511,17 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
         quickViewBehavior.state = BottomSheetBehavior.STATE_HIDDEN
 
         quickViewBehavior.addBottomSheetCallback(bottomSheetCallback)
-        cameraPref.let {
-            beepActive = it.getBoolean(SETTING_RING, false)
-            flashActive = it.getBoolean(SETTING_FLASH, false)
-            autoFocusActive = it.getBoolean(SETTING_FOCUS, true)
-            cameraState = it.getInt(SETTING_STATE, 0)
-        }
+
+        beepActive = scannerPrefsRepository.getRingPref()
+        flashActive = scannerPrefsRepository.getFlashPref()
+        autoFocusActive = scannerPrefsRepository.getAutoFocusPref()
+        cameraState = scannerPrefsRepository.getCameraPref().value
 
         // Setup barcode scanner
         if (!useMLScanner) {
             binding.barcodeScanner.visibility = View.VISIBLE
             binding.cameraPreviewViewStub.isVisible = false
-            binding.barcodeScanner.barcodeView.decoderFactory = DefaultDecoderFactory(BARCODE_FORMATS)
+            binding.barcodeScanner.barcodeView.decoderFactory = DefaultDecoderFactory(ScannerPreferencesRepository.BARCODE_FORMATS)
             binding.barcodeScanner.setStatusText(null)
             binding.barcodeScanner.setOnClickListener {
                 quickViewBehavior.state = BottomSheetBehavior.STATE_HIDDEN
@@ -675,7 +676,7 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
         } else {
             Camera.CameraInfo.CAMERA_FACING_BACK
         }
-        cameraPref.edit { putInt(SETTING_STATE, cameraState) }
+        scannerPrefsRepository.saveCameraPref(CameraState.fromInt(cameraState))
 
         if (!useMLScanner) {
             val settings = binding.barcodeScanner.barcodeView.cameraSettings
@@ -692,29 +693,26 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
     }
 
     private fun toggleFlash() {
-        cameraPref.edit {
-            if (flashActive) {
-                flashActive = false
-                binding.toggleFlash.setImageResource(R.drawable.ic_flash_off_white_24dp)
-                putBoolean(SETTING_FLASH, false)
+        if (flashActive) {
+            flashActive = false
+            binding.toggleFlash.setImageResource(R.drawable.ic_flash_off_white_24dp)
 
-                if (useMLScanner) {
-                    mlKitView.updateFlashSetting(flashActive)
-                } else {
-                    binding.barcodeScanner.setTorchOff()
-                }
+            if (useMLScanner) {
+                mlKitView.updateFlashSetting(flashActive)
             } else {
-                flashActive = true
-                binding.toggleFlash.setImageResource(R.drawable.ic_flash_on_white_24dp)
-                putBoolean(SETTING_FLASH, true)
+                binding.barcodeScanner.setTorchOff()
+            }
+        } else {
+            flashActive = true
+            binding.toggleFlash.setImageResource(R.drawable.ic_flash_on_white_24dp)
 
-                if (useMLScanner) {
-                    mlKitView.updateFlashSetting(flashActive)
-                } else {
-                    binding.barcodeScanner.setTorchOn()
-                }
+            if (useMLScanner) {
+                mlKitView.updateFlashSetting(flashActive)
+            } else {
+                binding.barcodeScanner.setTorchOn()
             }
         }
+        scannerPrefsRepository.saveFlashPref(flashActive)
     }
 
     private fun showMoreSettings() {
@@ -726,15 +724,12 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
                 R.id.toggleBeep -> {
                     beepActive = !beepActive
                     item.isChecked = beepActive
-                    cameraPref.edit {
-                        putBoolean(SETTING_RING, beepActive)
-                        apply()
-                    }
+                    scannerPrefsRepository.saveRingPref(beepActive)
                 }
                 R.id.toggleAutofocus -> {
                     autoFocusActive = !autoFocusActive
                     item.isChecked = autoFocusActive
-                    cameraPref.edit { putBoolean(SETTING_FOCUS, autoFocusActive) }
+                    scannerPrefsRepository.saveAutoFocusPref(autoFocusActive)
 
                     if (useMLScanner) {
                         mlKitView.updateFocusModeSetting(autoFocusActive)
@@ -844,23 +839,6 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
 
     companion object {
         private const val LOGIN_ACTIVITY_REQUEST_CODE = 2
-        val BARCODE_FORMATS = listOf(
-            BarcodeFormat.UPC_A,
-            BarcodeFormat.UPC_E,
-            BarcodeFormat.EAN_13,
-            BarcodeFormat.EAN_8,
-            BarcodeFormat.RSS_14,
-            BarcodeFormat.CODE_39,
-            BarcodeFormat.CODE_93,
-            BarcodeFormat.CODE_128,
-            BarcodeFormat.ITF
-        )
-        private const val SETTING_RING = "ring"
-        private const val SETTING_FLASH = "flash"
-        private const val SETTING_FOCUS = "focus"
-        private const val SETTING_STATE = "cameraState"
-        private val LOG_TAG = this::class.simpleName!!
-
 
         @JvmStatic
         fun start(context: Context) {
