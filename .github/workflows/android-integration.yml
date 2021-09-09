@@ -137,7 +137,7 @@ jobs:
           arguments: lintOffPlayStoreDebug --stacktrace
 
       - name: Generate GitHub annotations
-        uses: yutailang0119/action-android-lint@v1.1.0
+        uses: yutailang0119/action-android-lint@v1.1.1
         with:
           xml_path: ./app/build/reports/lint-results-offPlaystoreDebug.xml
 
