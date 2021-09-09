@@ -1,324 +1,319 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="fill_vertical"
+    android:clipToPadding="false"
+    android:isScrollContainer="false"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".features.product.edit.ingredients.EditIngredientsFragment">
 
-    <data>
-
-    </data>
-
-    <ScrollView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="fill_vertical"
-        android:clipToPadding="false"
-        android:isScrollContainer="false"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:context=".features.product.edit.ingredients.EditIngredientsFragment">
+        android:layout_height="wrap_content">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <TextView
+            android:id="@+id/section_ingredients_picture"
+            style="@style/EditHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:text="@string/ingredients_picture"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/hint_image_ingredients"
+            style="@style/EditHint"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:text="@string/take_ingredients_picture_to_extract"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/section_ingredients_picture" />
+
+        <ImageView
+            android:id="@+id/btnAddImageIngredients"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="8dp"
+            android:background="?android:selectableItemBackground"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/hint_image_ingredients"
+            app:srcCompat="@drawable/ic_add_a_photo_dark_48dp"
+            tools:ignore="ContentDescription" />
+
+        <Button
+            android:id="@+id/btnEditImageIngredients"
+            style="@style/ButtonBorder"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:text="@string/update_image"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/btnAddImageIngredients"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btnAddImageIngredients"
+            app:layout_constraintTop_toTopOf="@id/btnAddImageIngredients" />
+
+        <ProgressBar
+            android:id="@+id/imageProgress"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="@dimen/spacing_small"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/btnAddImageIngredients"
+            app:layout_constraintEnd_toEndOf="@+id/btnAddImageIngredients"
+            app:layout_constraintStart_toStartOf="@+id/btnAddImageIngredients"
+            app:layout_constraintTop_toTopOf="@+id/btnAddImageIngredients" />
+
+        <TextView
+            android:id="@+id/imageProgressText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:text="@string/toastSending"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/imageProgress"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btnAddImageIngredients"
+            app:layout_constraintTop_toTopOf="@id/imageProgress"
+            tools:visibility="visible" />
+
+        <View
+            android:id="@+id/grey_line1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="1dp"
+            android:layout_marginLeft="@dimen/spacing_small"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:layout_marginRight="@dimen/spacing_small"
+            android:background="@color/grey_400"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnAddImageIngredients" />
 
-            <TextView
-                android:id="@+id/section_ingredients_picture"
-                style="@style/EditHeader"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                android:text="@string/ingredients_picture"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/section_ingredients_list"
+            style="@style/EditHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:text="@string/ingredients_list"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/grey_line1" />
 
-            <TextView
-                android:id="@+id/hint_image_ingredients"
-                style="@style/EditHint"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                android:text="@string/take_ingredients_picture_to_extract"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/section_ingredients_picture" />
-
-            <ImageView
-                android:id="@+id/btnAddImageIngredients"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
-                android:layout_marginTop="8dp"
-                android:background="?android:selectableItemBackground"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/hint_image_ingredients"
-                app:srcCompat="@drawable/ic_add_a_photo_dark_48dp" />
-
-            <Button
-                android:id="@+id/btnEditImageIngredients"
-                style="@style/ButtonBorder"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                android:text="@string/update_image"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="@id/btnAddImageIngredients"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/btnAddImageIngredients"
-                app:layout_constraintTop_toTopOf="@id/btnAddImageIngredients" />
-
-            <ProgressBar
-                android:id="@+id/imageProgress"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_margin="@dimen/spacing_small"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="@+id/btnAddImageIngredients"
-                app:layout_constraintEnd_toEndOf="@+id/btnAddImageIngredients"
-                app:layout_constraintStart_toStartOf="@+id/btnAddImageIngredients"
-                app:layout_constraintTop_toTopOf="@+id/btnAddImageIngredients" />
-
-            <TextView
-                android:id="@+id/imageProgressText"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                android:text="@string/toastSending"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="@id/imageProgress"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/btnAddImageIngredients"
-                app:layout_constraintTop_toTopOf="@id/imageProgress"
-                tools:visibility="visible" />
-
-            <View
-                android:id="@+id/grey_line1"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginLeft="@dimen/spacing_small"
-                android:layout_marginTop="@dimen/spacing_small"
-                android:layout_marginRight="@dimen/spacing_small"
-                android:background="@color/grey_400"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/btnAddImageIngredients" />
-
-            <TextView
-                android:id="@+id/section_ingredients_list"
-                style="@style/EditHeader"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="@dimen/spacing_small"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                android:text="@string/ingredients_list"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/grey_line1" />
-
-            <TextView
-                android:id="@+id/hint_ingredients_list"
-                style="@style/EditHint"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="@string/ingredients_hint"
-                app:layout_constraintEnd_toEndOf="@id/ingredients_list"
-                app:layout_constraintStart_toStartOf="@id/section_ingredients_picture"
-                app:layout_constraintTop_toBottomOf="@id/section_ingredients_list" />
+        <TextView
+            android:id="@+id/hint_ingredients_list"
+            style="@style/EditHint"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/ingredients_hint"
+            app:layout_constraintEnd_toEndOf="@id/ingredients_list"
+            app:layout_constraintStart_toStartOf="@id/section_ingredients_picture"
+            app:layout_constraintTop_toBottomOf="@id/section_ingredients_list" />
 
 
-            <EditText
-                android:id="@+id/ingredients_list"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginTop="@dimen/spacing_small"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:background="@drawable/bg_edittext"
-                android:gravity="start|top"
-                android:inputType="textMultiLine"
-                android:minHeight="150dp"
-                android:nextFocusDown="@id/traces"
-                android:padding="@dimen/spacing_small"
-                android:singleLine="false"
-                android:textDirection="anyRtl"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/hint_ingredients_list" />
+        <EditText
+            android:id="@+id/ingredients_list"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:background="@drawable/bg_edittext"
+            android:gravity="start|top"
+            android:inputType="textMultiLine"
+            android:minHeight="150dp"
+            android:nextFocusDown="@id/traces"
+            android:padding="@dimen/spacing_small"
+            android:singleLine="false"
+            android:textDirection="anyRtl"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/hint_ingredients_list" />
 
-            <Button
-                android:id="@+id/btn_extract_ingredients"
-                style="@style/ButtonBorder"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/extract_ingredients"
-                android:visibility="gone"
-                app:drawableLeftCompat="@drawable/ic_compare_arrows_black_18dp"
-                app:layout_constraintBottom_toBottomOf="@id/ingredients_list"
-                app:layout_constraintEnd_toEndOf="@id/ingredients_list"
-                app:layout_constraintStart_toStartOf="@id/ingredients_list"
-                app:layout_constraintTop_toBottomOf="@id/traces"
-                app:layout_constraintTop_toTopOf="@id/ingredients_list" />
+        <Button
+            android:id="@+id/btn_extract_ingredients"
+            style="@style/ButtonBorder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/extract_ingredients"
+            android:visibility="gone"
+            app:drawableLeftCompat="@drawable/ic_compare_arrows_black_18dp"
+            app:layout_constraintBottom_toBottomOf="@id/ingredients_list"
+            app:layout_constraintEnd_toEndOf="@id/ingredients_list"
+            app:layout_constraintStart_toStartOf="@id/ingredients_list"
+            app:layout_constraintTop_toBottomOf="@id/traces"
+            app:layout_constraintTop_toTopOf="@id/ingredients_list" />
 
-            <ImageView
-                android:id="@+id/ingredients_list_verified"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/spacing_small"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="@id/ingredients_list"
-                app:layout_constraintEnd_toEndOf="@id/ingredients_list"
-                app:srcCompat="@drawable/ic_check_white_24dp"
-                app:tint="@color/brand_green_dark" />
+        <ImageView
+            android:id="@+id/ingredients_list_verified"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_small"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/ingredients_list"
+            app:layout_constraintEnd_toEndOf="@id/ingredients_list"
+            app:srcCompat="@drawable/ic_check_white_24dp"
+            app:tint="@color/brand_green_dark"
+            tools:ignore="ContentDescription" />
 
-            <ProgressBar
-                android:id="@+id/ocr_progress"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_margin="@dimen/spacing_small"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="@id/ingredients_list"
-                app:layout_constraintEnd_toEndOf="@id/ingredients_list"
-                app:layout_constraintStart_toStartOf="@id/ingredients_list"
-                app:layout_constraintTop_toTopOf="@id/ingredients_list" />
+        <ProgressBar
+            android:id="@+id/ocr_progress"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="@dimen/spacing_small"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/ingredients_list"
+            app:layout_constraintEnd_toEndOf="@id/ingredients_list"
+            app:layout_constraintStart_toStartOf="@id/ingredients_list"
+            app:layout_constraintTop_toTopOf="@id/ingredients_list" />
 
-            <TextView
-                android:id="@+id/ocr_progress_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/spacing_small"
-                android:text="@string/extracting_ingredients"
-                android:visibility="gone"
-                app:layout_constraintEnd_toEndOf="@id/ocr_progress"
-                app:layout_constraintStart_toStartOf="@id/ocr_progress"
-                app:layout_constraintTop_toBottomOf="@id/ocr_progress" />
+        <TextView
+            android:id="@+id/ocr_progress_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_small"
+            android:text="@string/extracting_ingredients"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="@id/ocr_progress"
+            app:layout_constraintStart_toStartOf="@id/ocr_progress"
+            app:layout_constraintTop_toBottomOf="@id/ocr_progress" />
 
-            <Button
-                android:id="@+id/btn_looks_good"
-                style="@style/ButtonFlat.Green"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/spacing_small"
-                android:text="@string/looksGood"
-                android:textColor="@color/white"
-                android:visibility="gone"
-                app:layout_constraintBottom_toTopOf="@id/btn_barrier"
-                app:layout_constraintEnd_toStartOf="@id/btn_skip_ingredients"
-                app:layout_constraintStart_toStartOf="@id/ingredients_list"
-                app:layout_constraintTop_toBottomOf="@id/ingredients_list"
-                tools:visibility="visible" />
+        <Button
+            android:id="@+id/btn_looks_good"
+            style="@style/ButtonFlat.Green"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_small"
+            android:text="@string/looksGood"
+            android:textColor="@color/white"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@id/btn_barrier"
+            app:layout_constraintEnd_toStartOf="@id/btn_skip_ingredients"
+            app:layout_constraintStart_toStartOf="@id/ingredients_list"
+            app:layout_constraintTop_toBottomOf="@id/ingredients_list"
+            tools:visibility="visible" />
 
-            <Button
-                android:id="@+id/btn_skip_ingredients"
-                style="@style/ButtonFlat.Red"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/spacing_small"
-                android:text="@string/skip_ingredients"
-                android:textColor="@color/white"
-                android:visibility="gone"
-                app:layout_constraintBottom_toTopOf="@id/btn_barrier"
-                app:layout_constraintEnd_toEndOf="@id/ingredients_list"
-                app:layout_constraintStart_toEndOf="@+id/btn_looks_good"
-                app:layout_constraintTop_toBottomOf="@id/ingredients_list"
-                tools:text="Really really long text coming from Narnia"
-                tools:visibility="visible" />
+        <Button
+            android:id="@+id/btn_skip_ingredients"
+            style="@style/ButtonFlat.Red"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_small"
+            android:text="@string/skip_ingredients"
+            android:textColor="@color/white"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@id/btn_barrier"
+            app:layout_constraintEnd_toEndOf="@id/ingredients_list"
+            app:layout_constraintStart_toEndOf="@+id/btn_looks_good"
+            app:layout_constraintTop_toBottomOf="@id/ingredients_list"
+            tools:text="Really really long text coming from Narnia"
+            tools:visibility="visible" />
 
-            <androidx.constraintlayout.widget.Barrier
-                android:id="@+id/btn_barrier"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:barrierDirection="bottom"
-                app:constraint_referenced_ids="btn_looks_good,btn_skip_ingredients"
-                tools:layout_editor_absoluteX="165dp"
-                tools:layout_editor_absoluteY="421dp" />
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/btn_barrier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="btn_looks_good,btn_skip_ingredients"
+            tools:layout_editor_absoluteX="165dp"
+            tools:layout_editor_absoluteY="421dp" />
 
-            <View
-                android:id="@+id/grey_line2"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginLeft="@dimen/spacing_small"
-                android:layout_marginTop="@dimen/spacing_small"
-                android:background="@color/grey_400"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/btn_barrier" />
+        <View
+            android:id="@+id/grey_line2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="@dimen/spacing_small"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:background="@color/grey_400"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_barrier" />
 
-            <TextView
-                android:id="@+id/section_traces"
-                style="@style/EditHeader"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="@dimen/spacing_small"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                android:text="@string/traces"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/grey_line2" />
+        <TextView
+            android:id="@+id/section_traces"
+            style="@style/EditHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:text="@string/traces"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/grey_line2" />
 
-            <TextView
-                android:id="@+id/hint_traces"
-                style="@style/EditHint"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                android:text="@string/traces_hint"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/section_traces" />
+        <TextView
+            android:id="@+id/hint_traces"
+            style="@style/EditHint"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:text="@string/traces_hint"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/section_traces" />
 
-            <com.hootsuite.nachos.NachoTextView
-                android:id="@+id/traces"
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginTop="@dimen/spacing_small"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:background="@drawable/bg_edittext"
-                android:completionThreshold="1"
-                android:gravity="center_vertical"
-                android:inputType="text"
-                android:paddingLeft="@dimen/spacing_small"
-                android:paddingRight="@dimen/spacing_small"
-                app:chipBackground="#4389FA"
-                app:chipHeight="30dp"
-                app:chipTextColor="@color/grey_50"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/hint_traces" />
+        <com.hootsuite.nachos.NachoTextView
+            android:id="@+id/traces"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:background="@drawable/bg_edittext"
+            android:completionThreshold="1"
+            android:gravity="center_vertical"
+            android:inputType="text"
+            android:paddingLeft="@dimen/spacing_small"
+            android:paddingRight="@dimen/spacing_small"
+            app:chipBackground="#4389FA"
+            app:chipHeight="30dp"
+            app:chipTextColor="@color/grey_50"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/hint_traces" />
 
-            <Button
-                android:id="@+id/btn_next"
-                style="@style/ButtonFlat"
-                android:layout_width="match_parent"
-                android:layout_marginTop="@dimen/spacing_small"
-                android:text="@string/next"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/traces" />
+        <Button
+            android:id="@+id/btn_next"
+            style="@style/ButtonFlat"
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:text="@string/next"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/traces" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </ScrollView>
-</layout>
+</ScrollView>

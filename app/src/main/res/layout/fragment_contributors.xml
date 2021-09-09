@@ -1,207 +1,199 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swipeRefresh"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <data>
-
-    </data>
-
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/swipeRefresh"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        android:layout_gravity="fill_vertical"
+        android:clipToPadding="false"
+        android:isScrollContainer="false">
 
-        <androidx.core.widget.NestedScrollView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="fill_vertical"
-            android:clipToPadding="false"
-            android:isScrollContainer="false">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/nav_bar_height">
 
-            <LinearLayout
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingBottom="@dimen/nav_bar_height">
+                android:layout_margin="8dp"
+                android:padding="16dp"
+                app:cardElevation="4dp">
 
-                <androidx.cardview.widget.CardView
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:padding="16dp"
-                    app:cardElevation="4dp">
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-                    <LinearLayout
+                    <TextView
+                        android:id="@+id/creator_txt"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_normal"
+                        android:layout_marginTop="@dimen/spacing_tiny"
+                        android:layout_marginRight="@dimen/spacing_normal"
+                        android:layout_marginBottom="@dimen/spacing_tiny"
+                        android:background="@drawable/textview_full"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:padding="@dimen/spacing_small"
+                        android:textColorLink="@color/light_blue_A700" />
 
-                        <TextView
-                            android:id="@+id/creator_txt"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/spacing_normal"
-                            android:layout_marginTop="@dimen/spacing_tiny"
-                            android:layout_marginRight="@dimen/spacing_normal"
-                            android:layout_marginBottom="@dimen/spacing_tiny"
-                            android:background="@drawable/textview_full"
-                            android:clickable="true"
-                            android:focusable="true"
-                            android:gravity="center"
-                            android:padding="@dimen/spacing_small"
-                            android:textColorLink="@color/light_blue_A700" />
+                    <TextView
+                        android:id="@+id/last_editor_txt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_normal"
+                        android:layout_marginTop="@dimen/spacing_tiny"
+                        android:layout_marginRight="@dimen/spacing_normal"
+                        android:layout_marginBottom="@dimen/spacing_tiny"
+                        android:background="@drawable/textview_full"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:padding="@dimen/spacing_small"
+                        android:textColorLink="@color/light_blue_A700" />
 
-                        <TextView
-                            android:id="@+id/last_editor_txt"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/spacing_normal"
-                            android:layout_marginTop="@dimen/spacing_tiny"
-                            android:layout_marginRight="@dimen/spacing_normal"
-                            android:layout_marginBottom="@dimen/spacing_tiny"
-                            android:background="@drawable/textview_full"
-                            android:clickable="true"
-                            android:focusable="true"
-                            android:gravity="center"
-                            android:padding="@dimen/spacing_small"
-                            android:textColorLink="@color/light_blue_A700" />
+                    <TextView
+                        android:id="@+id/other_editors_txt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_normal"
+                        android:layout_marginTop="@dimen/spacing_tiny"
+                        android:layout_marginRight="@dimen/spacing_normal"
+                        android:layout_marginBottom="@dimen/spacing_tiny"
+                        android:background="@drawable/textview_full"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:padding="@dimen/spacing_small"
+                        android:textColorLink="@color/light_blue_A700" />
 
-                        <TextView
-                            android:id="@+id/other_editors_txt"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/spacing_normal"
-                            android:layout_marginTop="@dimen/spacing_tiny"
-                            android:layout_marginRight="@dimen/spacing_normal"
-                            android:layout_marginBottom="@dimen/spacing_tiny"
-                            android:background="@drawable/textview_full"
-                            android:clickable="true"
-                            android:focusable="true"
-                            android:gravity="center"
-                            android:padding="@dimen/spacing_small"
-                            android:textColorLink="@color/light_blue_A700" />
+                </LinearLayout>
 
-                    </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
-                </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/states_tags_cv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:padding="16dp"
+                app:cardElevation="4dp">
 
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/states_tags_cv"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:padding="16dp"
-                    app:cardElevation="4dp">
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-                    <LinearLayout
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_normal"
+                        android:layout_marginTop="@dimen/spacing_tiny"
+                        android:layout_marginRight="@dimen/spacing_normal"
+                        android:layout_marginBottom="@dimen/spacing_tiny"
+                        android:gravity="center"
+                        android:text="@string/product_states"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <View
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="@dimen/spacing_small"
+                        android:layout_marginTop="@dimen/spacing_small"
+                        android:layout_marginRight="@dimen/spacing_small"
+                        android:background="@color/grey_400" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/spacing_normal"
-                            android:layout_marginTop="@dimen/spacing_tiny"
-                            android:layout_marginRight="@dimen/spacing_normal"
-                            android:layout_marginBottom="@dimen/spacing_tiny"
-                            android:textStyle="bold"
-                            android:text="@string/product_states"
-                            android:textSize="18sp"
-                            android:textColor="@color/black"
-                            android:textAlignment="center"
-                            android:gravity="center"/>
+                    <TextView
+                        android:id="@+id/incomplete_states"
+                        style="@style/EditHeader"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="@dimen/spacing_small"
+                        android:paddingEnd="10dp"
+                        android:paddingRight="10dp"
+                        android:text="@string/incomplete_states"
+                        tools:drawableEnd="@drawable/ic_keyboard_arrow_down_grey_24dp"
+                        tools:drawableRight="@drawable/ic_keyboard_arrow_down_grey_24dp" />
 
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:layout_marginLeft="@dimen/spacing_small"
-                            android:layout_marginTop="@dimen/spacing_small"
-                            android:layout_marginRight="@dimen/spacing_small"
-                            android:background="@color/grey_400" />
+                    <TextView
+                        android:id="@+id/incomplete_states_txt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_normal"
+                        android:layout_marginTop="@dimen/spacing_tiny"
+                        android:layout_marginRight="@dimen/spacing_normal"
+                        android:background="@drawable/textview_full"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:padding="@dimen/spacing_small"
+                        android:textColorLink="@color/light_blue_A700"
+                        android:visibility="gone"
+                        tools:text="Test1"
+                        tools:visibility="visible" />
 
-                        <TextView
-                            android:id="@+id/incomplete_states"
-                            style="@style/EditHeader"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginTop="@dimen/spacing_small"
-                            android:paddingEnd="10dp"
-                            android:paddingRight="10dp"
-                            android:text="@string/incomplete_states"
-                            tools:drawableEnd="@drawable/ic_keyboard_arrow_down_grey_24dp"
-                            tools:drawableRight="@drawable/ic_keyboard_arrow_down_grey_24dp" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="@dimen/spacing_small"
+                        android:layout_marginTop="@dimen/spacing_small"
+                        android:layout_marginRight="@dimen/spacing_small"
+                        android:background="@color/grey_400" />
 
-                        <TextView
-                            android:id="@+id/incomplete_states_txt"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/spacing_normal"
-                            android:layout_marginTop="@dimen/spacing_tiny"
-                            android:layout_marginRight="@dimen/spacing_normal"
-                            android:background="@drawable/textview_full"
-                            android:clickable="true"
-                            android:focusable="true"
-                            android:padding="@dimen/spacing_small"
-                            android:textColorLink="@color/light_blue_A700"
-                            android:visibility="gone"
-                            tools:text="Test1"
-                            tools:visibility="visible" />
+                    <TextView
+                        android:id="@+id/complete_states"
+                        style="@style/EditHeaderGreen"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="@dimen/spacing_small"
+                        android:paddingEnd="10dp"
+                        android:paddingRight="10dp"
+                        android:text="@string/complete_states"
+                        tools:drawableEnd="@drawable/ic_keyboard_arrow_down_grey_24dp"
+                        tools:drawableRight="@drawable/ic_keyboard_arrow_down_grey_24dp" />
 
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:layout_marginLeft="@dimen/spacing_small"
-                            android:layout_marginTop="@dimen/spacing_small"
-                            android:layout_marginRight="@dimen/spacing_small"
-                            android:background="@color/grey_400" />
+                    <TextView
+                        android:id="@+id/complete_states_txt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_normal"
+                        android:layout_marginTop="@dimen/spacing_tiny"
+                        android:layout_marginRight="@dimen/spacing_normal"
+                        android:background="@drawable/textview_full"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:padding="@dimen/spacing_small"
+                        android:textColorLink="@color/light_blue_A700"
+                        android:visibility="gone" />
 
-                        <TextView
-                            android:id="@+id/complete_states"
-                            style="@style/EditHeaderGreen"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginTop="@dimen/spacing_small"
-                            android:paddingEnd="10dp"
-                            android:paddingRight="10dp"
-                            android:text="@string/complete_states"
-                            tools:drawableEnd="@drawable/ic_keyboard_arrow_down_grey_24dp"
-                            tools:drawableRight="@drawable/ic_keyboard_arrow_down_grey_24dp" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="@dimen/spacing_small"
+                        android:layout_marginTop="@dimen/spacing_small"
+                        android:layout_marginRight="@dimen/spacing_small"
+                        android:background="@color/grey_400" />
 
-                        <TextView
-                            android:id="@+id/complete_states_txt"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/spacing_normal"
-                            android:layout_marginTop="@dimen/spacing_tiny"
-                            android:layout_marginRight="@dimen/spacing_normal"
-                            android:background="@drawable/textview_full"
-                            android:clickable="true"
-                            android:focusable="true"
-                            android:padding="@dimen/spacing_small"
-                            android:textColorLink="@color/light_blue_A700"
-                            android:visibility="gone" />
+                </LinearLayout>
 
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:layout_marginLeft="@dimen/spacing_small"
-                            android:layout_marginTop="@dimen/spacing_small"
-                            android:layout_marginRight="@dimen/spacing_small"
-                            android:background="@color/grey_400" />
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
 
-                    </LinearLayout>
-
-                </androidx.cardview.widget.CardView>
-            </LinearLayout>
-
-        </androidx.core.widget.NestedScrollView>
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-</layout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

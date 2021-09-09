@@ -60,8 +60,7 @@ import javax.inject.Inject
  */
 @AndroidEntryPoint
 class LoginActivity : BaseActivity() {
-    private var _binding: ActivityLoginBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var binding: ActivityLoginBinding
 
     private val viewModel: LoginActivityViewModel by viewModels()
 
@@ -183,11 +182,8 @@ class LoginActivity : BaseActivity() {
         if (resources.getBoolean(R.bool.portrait_only)) {
             requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         }
-        _binding = ActivityLoginBinding.inflate(layoutInflater)
+        binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        binding.viewModel = viewModel
-        binding.lifecycleOwner = this
 
         // check flavour and show helper text for user account
         if (!isFlavors(OFF)) {
@@ -219,6 +215,10 @@ class LoginActivity : BaseActivity() {
                 .setNeutralButton(R.string.ok_button) { _, _ -> finish() }
                 .show()
         }
+
+        viewModel.canLogIn.observe(this) {
+            binding.btnLogin.isEnabled = it
+        }
     }
 
     private fun doRegister() {
@@ -244,7 +244,6 @@ class LoginActivity : BaseActivity() {
 
     override fun onDestroy() {
         customTabActivityHelper.connectionCallback = null
-        _binding = null
         super.onDestroy()
     }
 

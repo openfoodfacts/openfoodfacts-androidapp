@@ -1,167 +1,166 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    android:orientation="vertical">
 
-    <data>
-
-    </data>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@android:color/black"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:elevation="4dp"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <Spinner
+        android:id="@+id/comboImageType"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_small"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:background="@drawable/spinner_wight_border"
+        app:layout_constraintBottom_toBottomOf="@id/comboLanguages"
+        app:layout_constraintStart_toStartOf="parent" />
 
-        <Spinner
-            android:id="@+id/comboImageType"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/spacing_small"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:background="@drawable/spinner_wight_border"
-            app:layout_constraintBottom_toBottomOf="@id/comboLanguages"
-            app:layout_constraintStart_toStartOf="parent" />
+    <TextView
+        android:id="@+id/btnChooseDefaultLanguage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:text="@string/choose_default_language"
+        android:textColor="?android:textColorPrimaryInverse"
+        android:textSize="@dimen/font_small"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
-        <TextView
-            android:id="@+id/btnChooseDefaultLanguage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/activity_horizontal_margin"
-            android:layout_marginRight="@dimen/activity_horizontal_margin"
-            android:text="@string/choose_default_language"
-            android:textColor="?android:textColorPrimaryInverse"
-            android:textSize="@dimen/font_small"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/toolbar" />
+    <Spinner
+        android:id="@+id/comboLanguages"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_small"
+        android:layout_marginTop="@dimen/spacing_small"
+        android:layout_marginEnd="@dimen/spacing_small"
+        android:background="@drawable/spinner_wight_border"
+        app:layout_constraintEnd_toEndOf="@id/btnChooseDefaultLanguage"
+        app:layout_constraintStart_toStartOf="@id/btnChooseDefaultLanguage"
+        app:layout_constraintTop_toBottomOf="@id/btnChooseDefaultLanguage" />
 
-        <Spinner
-            android:id="@+id/comboLanguages"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/spacing_small"
-            android:layout_marginTop="@dimen/spacing_small"
-            android:layout_marginEnd="@dimen/spacing_small"
-            android:background="@drawable/spinner_wight_border"
-            app:layout_constraintEnd_toEndOf="@id/btnChooseDefaultLanguage"
-            app:layout_constraintStart_toStartOf="@id/btnChooseDefaultLanguage"
-            app:layout_constraintTop_toBottomOf="@id/btnChooseDefaultLanguage" />
+    <com.github.chrisbanes.photoview.PhotoView
+        android:id="@+id/imageViewFullScreen"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/spacing_tiny"
+        android:layout_marginBottom="@dimen/spacing_tiny"
+        android:adjustViewBounds="true"
+        android:gravity="center"
+        android:scaleType="fitCenter"
+        android:transitionName="@string/product_transition"
+        app:layout_constraintBottom_toTopOf="@id/textInfo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/comboLanguages" />
 
-        <com.github.chrisbanes.photoview.PhotoView
-            android:id="@+id/imageViewFullScreen"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginTop="@dimen/spacing_tiny"
-            android:layout_marginBottom="@dimen/spacing_tiny"
-            android:adjustViewBounds="true"
-            android:gravity="center"
-            android:scaleType="fitCenter"
-            android:transitionName="@string/product_transition"
-            app:layout_constraintBottom_toTopOf="@id/textInfo"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/comboLanguages" />
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="@dimen/button_height_short"
+        android:layout_height="@dimen/button_height_short"
+        android:layout_marginStart="@dimen/spacing_small"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@id/btnAddImage"
+        app:layout_constraintStart_toStartOf="parent" />
 
-        <ProgressBar
-            android:id="@+id/progressBar"
-            android:layout_width="@dimen/button_height_short"
-            android:layout_height="@dimen/button_height_short"
-            android:layout_marginStart="@dimen/spacing_small"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toTopOf="@id/btnAddImage"
-            app:layout_constraintStart_toStartOf="parent" />
+    <TextView
+        android:id="@+id/textInfo"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/button_height_short"
+        android:layout_marginStart="@dimen/spacing_small"
+        android:layout_marginLeft="@dimen/spacing_small"
+        android:layout_marginBottom="8dp"
+        android:gravity="start|center_vertical"
+        android:textColor="@color/white"
+        android:textIsSelectable="true"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toTopOf="@id/btnAddImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/progressBar" />
 
-        <TextView
-            android:id="@+id/textInfo"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/button_height_short"
-            android:layout_marginStart="@dimen/spacing_small"
-            android:layout_marginLeft="@dimen/spacing_small"
-            android:layout_marginBottom="8dp"
-            android:gravity="start|center_vertical"
-            android:textColor="@color/white"
-            android:textIsSelectable="true"
-            android:textStyle="normal"
-            app:layout_constraintBottom_toTopOf="@id/btnAddImage"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/progressBar" />
+    <ImageView
+        android:id="@+id/btnAddImage"
+        style="@style/ButtonBorder.Black"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/button_height_short"
+        android:layout_marginStart="@dimen/spacing_small"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginBottom="16dp"
+        android:hint="@string/take_picture"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_add_a_photo_light_18dp"
+        tools:ignore="ContentDescription" />
 
-        <ImageView
-            android:id="@+id/btnAddImage"
-            style="@style/ButtonBorder.Black"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/button_height_short"
-            android:layout_marginStart="@dimen/spacing_small"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginBottom="16dp"
-            android:hint="@string/take_picture"
-            android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/ic_add_a_photo_light_18dp" />
+    <ImageView
+        android:id="@+id/btnChooseImage"
+        style="@style/ButtonBorder.Black"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/button_height_short"
+        android:layout_marginStart="@dimen/spacing_small"
+        android:layout_marginLeft="@dimen/spacing_small"
+        android:layout_marginBottom="16dp"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnAddImage"
+        app:srcCompat="@drawable/ic_baseline_image_search"
+        tools:ignore="ContentDescription" />
 
-        <ImageView
-            android:id="@+id/btnChooseImage"
-            style="@style/ButtonBorder.Black"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/button_height_short"
-            android:layout_marginStart="@dimen/spacing_small"
-            android:layout_marginLeft="@dimen/spacing_small"
-            android:layout_marginBottom="16dp"
-            android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/btnAddImage"
-            app:srcCompat="@drawable/ic_baseline_image_search" />
+    <ImageView
+        android:id="@+id/btnEditImage"
+        style="@style/ButtonBorder.Black"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/button_height_short"
+        android:layout_marginStart="@dimen/spacing_small"
+        android:layout_marginLeft="@dimen/spacing_small"
+        android:layout_marginBottom="16dp"
+        android:text="@string/edit_image"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnChooseImage"
+        app:srcCompat="@drawable/ic_crop_rotate_24dp"
+        tools:ignore="ContentDescription" />
 
-        <ImageView
-            android:id="@+id/btnEditImage"
-            style="@style/ButtonBorder.Black"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/button_height_short"
-            android:layout_marginStart="@dimen/spacing_small"
-            android:layout_marginLeft="@dimen/spacing_small"
-            android:layout_marginBottom="16dp"
-            android:text="@string/edit_image"
-            android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/btnChooseImage"
-            app:srcCompat="@drawable/ic_crop_rotate_24dp" />
+    <ImageView
+        android:id="@+id/btnUnselectImage"
+        style="@style/ButtonBorder.Black"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/button_height_short"
+        android:layout_marginStart="@dimen/spacing_small"
+        android:layout_marginLeft="@dimen/spacing_small"
+        android:layout_marginBottom="16dp"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnEditImage"
+        app:srcCompat="@drawable/ic_remove_circle_white"
+        tools:ignore="ContentDescription" />
 
-        <ImageView
-            android:id="@+id/btnUnselectImage"
-            style="@style/ButtonBorder.Black"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/button_height_short"
-            android:layout_marginStart="@dimen/spacing_small"
-            android:layout_marginLeft="@dimen/spacing_small"
-            android:layout_marginBottom="16dp"
-            android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/btnEditImage"
-            app:srcCompat="@drawable/ic_remove_circle_white" />
-
-        <ImageView
-            android:id="@+id/btn_done"
-            style="@style/ButtonBorder.Black"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/button_height_short"
-            android:layout_marginEnd="@dimen/spacing_small"
-            android:layout_marginRight="@dimen/activity_horizontal_margin"
-            android:layout_marginBottom="16dp"
-            android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:srcCompat="@drawable/ic_check_white_24dp" />
+    <ImageView
+        android:id="@+id/btn_done"
+        style="@style/ButtonBorder.Black"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/button_height_short"
+        android:layout_marginEnd="@dimen/spacing_small"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginBottom="16dp"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_check_white_24dp"
+        tools:ignore="ContentDescription" />
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</layout>
+</androidx.constraintlayout.widget.ConstraintLayout>

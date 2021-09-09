@@ -10,8 +10,11 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SplashViewModel @Inject constructor() : ViewModel() {
-    val tagLines = MutableLiveData<Array<String>>()
-    val tagline = tagLines.switchMap {
+
+    private val tagLines = MutableLiveData<Array<String>>()
+    fun setupTagLines(items: Array<String>) = tagLines.postValue(items)
+
+    val tagLine = tagLines.switchMap {
         liveData {
             var i = 0
             while (true) {

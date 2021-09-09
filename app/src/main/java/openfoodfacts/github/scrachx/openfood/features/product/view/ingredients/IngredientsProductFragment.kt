@@ -152,6 +152,11 @@ class IngredientsProductFragment : BaseFragment() {
         return binding.root
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.extractIngredientsPrompt.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_box_blue_18dp, 0, 0, 0)
@@ -161,8 +166,6 @@ class IngredientsProductFragment : BaseFragment() {
         binding.novaMethodLink.setOnClickListener { novaMethodLinkDisplay() }
         binding.extractIngredientsPrompt.setOnClickListener { extractIngredients() }
         binding.imageViewIngredients.setOnClickListener { openFullScreen() }
-
-        binding.viewModel = viewModel
 
         viewModel.vitaminsTags.observe(viewLifecycleOwner) {
             if (it.isEmpty()) binding.cvVitaminsTagsText.visibility = View.GONE
@@ -526,11 +529,6 @@ class IngredientsProductFragment : BaseFragment() {
             onRefresh()
         }
         photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data)
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     companion object {

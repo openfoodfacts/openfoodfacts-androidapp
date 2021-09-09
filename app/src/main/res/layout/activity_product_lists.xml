@@ -1,81 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".features.productlists.ProductListsActivity">
 
-    <data>
+    <Button
+        android:id="@+id/fabAdd"
+        style="@style/ButtonBorder"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="@string/add_a_list"
+        android:drawableStart="@drawable/ic_plus_blue_24"
+        android:text="@string/add_a_list"
+        app:elevation="10dp"
+        app:layout_constraintBottom_toTopOf="@id/tipBox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    </data>
+    <openfoodfacts.github.scrachx.openfood.features.shared.views.TipBox
+        android:id="@+id/tipBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:arrowAlignment="center"
+        app:backgroundColor="@android:color/holo_green_light"
+        app:identifier="@string/swipe_delete_tip"
+        app:layout_constraintBottom_toTopOf="@id/product_lists_recycler_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fabAdd"
+        app:message="@string/swipe_delete_tip"
+        app:textColor="@android:color/white"
+        tools:layout_editor_absoluteY="56dp" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".features.productlists.ProductListsActivity">
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/product_lists_recycler_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tipBox"
+        tools:listitem="@layout/your_product_lists_item">
+    </androidx.recyclerview.widget.RecyclerView>
 
-        <Button
-            android:id="@+id/fabAdd"
-            style="@style/ButtonBorder"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginBottom="16dp"
-            android:contentDescription="@string/add_a_list"
-            android:text="@string/add_a_list"
-            app:elevation="10dp"
-            android:drawableLeft="@drawable/ic_plus_blue_24"
-            app:layout_constraintBottom_toTopOf="@id/tipBox"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <include
+        android:id="@+id/bottom_navigation"
+        layout="@layout/navigation_bottom"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/product_lists_recycler_view" />
 
-        <openfoodfacts.github.scrachx.openfood.features.shared.views.TipBox
-            android:id="@+id/tipBox"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:arrowAlignment="center"
-            app:backgroundColor="@android:color/holo_green_light"
-            app:identifier="@string/swipe_delete_tip"
-            app:layout_constraintBottom_toTopOf="@id/product_lists_recycler_view"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fabAdd"
-            app:message="@string/swipe_delete_tip"
-            app:textColor="@android:color/white"
-            tools:layout_editor_absoluteY="56dp" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/product_lists_recycler_view"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tipBox"
-            tools:listitem="@layout/your_product_lists_item">
-
-
-        </androidx.recyclerview.widget.RecyclerView>
-
-        <include
-            android:id="@+id/bottom_navigation"
-            layout="@layout/navigation_bottom"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/product_lists_recycler_view" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</layout>
+</androidx.constraintlayout.widget.ConstraintLayout>

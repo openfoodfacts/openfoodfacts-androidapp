@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/parentGroup"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -14,5 +14,6 @@
         android:layout_margin="4dp"
         android:adjustViewBounds="false"
         android:padding="4dp"
-        android:scaleType="centerCrop" />
+        android:scaleType="centerCrop"
+        tools:ignore="ContentDescription" />
 </LinearLayout>

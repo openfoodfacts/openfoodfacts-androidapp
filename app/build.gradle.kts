@@ -221,7 +221,7 @@ android {
     testBuildType = obtainTestBuildType()
 
     buildFeatures {
-        dataBinding = true
+        viewBinding = true
     }
 
     flavorDimensions += listOf("versionCode", "platform")
