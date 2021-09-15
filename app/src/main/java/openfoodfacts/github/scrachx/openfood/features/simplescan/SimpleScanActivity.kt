@@ -173,7 +173,6 @@ class SimpleScanActivity : AppCompatActivity() {
 
     private fun setupBarcodeScanner(options: SimpleScanScannerOptions) {
         binding.scanBarcodeView.isVisible = !options.mlScannerEnabled
-        binding.scanMlView.isVisible = options.mlScannerEnabled
 
         if (options.mlScannerEnabled) {
             mlKitView.attach(binding.scanMlView, options.cameraState.value, options.flashEnabled, options.autoFocusEnabled)
