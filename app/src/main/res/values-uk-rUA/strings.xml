@@ -171,16 +171,16 @@
     <string name="alert_dialog_warning_msg_user">Ім\'я користувача/Пароль було змінено. Будь ласка, оновіть інформацію.</string>
     <string name="toast_retrieving">Завантаження…</string>
     <string name="txtBarcode">Щтрих-код</string>
-    <string name="txtCategories">Категорії:</string>
-    <string name="txtLabels">Мітка, сертифікати, нагороди:</string>
-    <string name="txtEMB">Коди відстежування:</string>
-    <string name="txtIngredients">Склад:</string>
+    <string name="txtCategories">Categories:</string>
+    <string name="txtLabels">Labels, certifications, awards: </string>
+    <string name="txtEMB">Traceability codes: </string>
+    <string name="txtIngredients">Ingredients list: </string>
     <string name="Donate">Підтримати проект</string>
     <string name="Donation">Click here to donate to Open Food Facts</string>
-    <string name="txtSubstances">Речовини або продукти, що викликають алергію чи непереносимість:</string>
-    <string name="txtAdditives">Добавки:</string>
-    <string name="txtTraces">Сліди:</string>
-    <string name="txtMayBeFromPalmOilProduct">Інгредієнти, які можуть бути з пальмової олії:</string>
+    <string name="txtSubstances">Substances or products causing allergies or intolerances: </string>
+    <string name="txtAdditives">Additives: </string>
+    <string name="txtTraces">Traces: </string>
+    <string name="txtMayBeFromPalmOilProduct">Ingredients that may be from palm oil: </string>
     <string name="txtPalmOilProduct">Інгредієнти з пальмової олії:</string>
     <string name="txtServingSize">Розмір порції:</string>
     <string name="txtNutrientLevel100g">Харчова цінність 100г продукту:</string>
@@ -261,7 +261,7 @@
     <string name="user_ask_rate_app">Чудово! Дайте іншим знати, що ви думаєте про цей додаток!</string>
     <string name="rate_app">Оцініть додаток</string>
     <string name="no_thx">Ні, дякую</string>
-    <string name="feedback_form_url">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
+    <string name="feedback_form_url" comment="Please ask teolemon to duplicate the feedback form and give you the right URL">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">Історія</string>
     <string name="clear_history">Очистити історію</string>
@@ -274,13 +274,13 @@
     <string name="no_brand">Торгівельну марку не знайдено</string>
     <string name="no_title">Без назви</string>
     <!-- Nutrition info tab -->
-    <string name="display_fact">Таблиця харчових фактів для %1$s з цих продуктів</string>
+    <string name="display_fact" comment="Do not modify the placeholder">Таблиця харчових фактів для %1$s з цих продуктів</string>
     <string name="check_facts">Перевірити</string>
     <string name="nutrition">Харчова цінність</string>
     <string name="calculated_nutrition">Розраховане харчування</string>
     <string name="please_enter_weight">Будь-ласка введіть вагу продукту</string>
     <string name="enter_weight">Введіть вагу продукту</string>
-    <string name="calculate_nutrition_facts">Calculate Nutrition Facts</string>
+    <string name="calculate_nutrition_facts">Calculate nutrition facts for a specific quantity</string>
     <string name="nutrition_carbohydrate">Вуглеводи</string>
     <string name="nutrition_cholesterol">Холестерин</string>
     <string name="nutrition_energy">Енергетична цінність</string>
@@ -525,8 +525,9 @@
     <string name="notify_channel_description">Сповіщення, щоб показати розташування експортованого файлу</string>
     <string name="products_to_be_completed">Незавантажені продукти</string>
     <string name="offline_notification_title">Оффлайн внески, які вам необхідно надіслати</string>
-    <string name="creator_history">Продукт додано %1$s %2$s о %3$s CET</string>
-    <string name="last_editor_history">Останнє редагування сторінки продукту %1$s %2$s в %3$s CEST </string>
+    <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Продукт додано %1$s %2$s о %3$s CET</string>
+    <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Останнє редагування сторінки продукту %1$s %2$s в %3$s CEST </string>
+    <!-- TODO: Add the placeholder in the string - important for several languages -->
     <string name="other_editors">Сторінка продукту також відредагована </string>
     <string name="product_states">Product States</string>
     <string name="incomplete_states">Incomplete States</string>
@@ -537,12 +538,12 @@
     <string name="offline_product_addition_title">Додати новий продукт</string>
     <string name="productNameNull">Назва невідома</string>
     <string name="productAdditivesUnknown"></string>
-    <string name="productAdditivesTemplate">%1$d additives</string>
+    <string name="productAdditivesTemplate" comment="Do not modify the placeholder">%1$d additives</string>
     <plurals name="productAdditives">
-        <item quantity="one">%d добавка</item>
+        <item quantity="one" comment="Do not change the placeholder">%d добавка</item>
         <item quantity="few">%d добавки</item>
         <item quantity="many">%d добавок</item>
-        <item quantity="other">%d добавки</item>
+        <item quantity="other" comment="Do not change the placeholder">%d добавки</item>
     </plurals>
     <string name="product_not_complete">Цей продукт ще не завершено. \nМожете додати подробиць?</string>
     <string name="addProductOffline">Здається, ви не в мережі. Додати продукт %s за допомогою оффлайн режиму?</string>
@@ -555,7 +556,7 @@
     <string name="initial_loading">Початкове завантаження</string>
     <string name="preferences">Налаштування</string>
     <string name="OFFlogo">Логотип Open Food Facts</string>
-    <string name="loading_product">Завантаження продукту %s</string>
+    <string name="loading_product" comment="Do not modify the placeholder">Завантаження продукту %s</string>
     <string name="image_not_defined_for_language">Немає зображень для вибраної мови. Ви можете додати нове</string>
     <string name="error_adding_ingredients">Щось пішло не так під час спроби додати інгредієнти продукту</string>
     <string name="unable_to_extract_ingredients">Не вдалося витягти інгредієнти з зображення</string>
@@ -680,10 +681,10 @@
     <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
     <string name="add_category_prompt_text">Add a category to help complete the product</string>
     <string name="add_nutrient_category_prompt_text">Add a category and nutrition facts to help complete the product</string>
-    <string name="couldnot_compute_ecoscore_prompt_text">We could not compute an Eco-Score for this product. It might be that the category is not specific enough or that we don\'t have supporting data for this category. If you believe this is an error, you can mail us by clicking below.</string>
-    <string name="add_labels_origins_prompt_text">The Eco-Score takes into account environmental labels and origins of the ingredients. Please take them into photo or edit the product so that they can be taken into account</string>
-    <string name="add_labels_prompt_text">The Eco-Score takes into account environmental labels. Please take them into photo or edit the product so that they can be taken into account</string>
-    <string name="add_origins_prompt_text">The Eco-Score takes into account the origins of the ingredients. Please take them into photo (ingredient list and/or any geographic claim) or edit the product so that they can be taken into account</string>
+    <string name="couldnot_compute_ecoscore_prompt_text" comment="Do not translate Eco-Score">We could not compute an Eco-Score for this product. It might be that the category is not specific enough or that we don\'t have supporting data for this category. If you believe this is an error, you can mail us by clicking below.</string>
+    <string name="add_labels_origins_prompt_text" comment="Do not translate Eco-Score">The Eco-Score takes into account environmental labels and origins of the ingredients. Please take them into photo or edit the product so that they can be taken into account</string>
+    <string name="add_labels_prompt_text" comment="Do not translate Eco-Score">The Eco-Score takes into account environmental labels. Please take them into photo or edit the product so that they can be taken into account</string>
+    <string name="add_origins_prompt_text" comment="Do not translate Eco-Score">The Eco-Score takes into account the origins of the ingredients. Please take them into photo (ingredient list and/or any geographic claim) or edit the product so that they can be taken into account</string>
     <string name="category_game_btn">Help categorize products</string>
     <string name="version_string">Open Food Facts Android App</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
@@ -741,14 +742,14 @@
     <string name="scan_tooltip">You can slide up the card for more details</string>
     <string name="add_an_allergen">Додати алерген</string>
     <string name="add_a_list">Додати список</string>
-    <string name="edit_image">Редагувати зображення</string>
-    <string name="cant_edit_image_not_yet_uploaded">Нове зображення ще не завантажено. Будь ласка, зачекайте перед редагуванням</string>
-    <string name="unselect_image">Скасувати вибір зображення</string>
+    <string name="edit_image">Редагувати світлину</string>
+    <string name="cant_edit_image_not_yet_uploaded">The new photo is not yet uploaded. Please wait before editing it</string>
+    <string name="unselect_image">Скасувати вибір фото</string>
     <string name="choose_default_language">Виберіть мову товару</string>
     <string name="barcode">Код товару</string>
     <string name="productAdditivesNone">Без добавок</string>
     <string name="error_uploading_photo">Під час завантаження нової фотографії сталася помилка</string>
-    <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
+    <string name="required_for_ecoscore" comment="Do not translate Eco-Score">(Required to calculate the Eco-Score)</string>
     <string name="hint_origin">Examples: USA, France, Italy</string>
     <!-- Used for diets AddOn -->
     <string name="history_network_error">Не вдалося завантажити продукт. Будь ласка, спробуйте ще раз, коли знову будете в мережі.</string>
@@ -764,7 +765,7 @@
     <string name="image_edit_tip">Натисніть на зображення, щоб збільшити його, змінити, обрізати, повернути тощо…</string>
     <string name="ingredients_in_this_product_are">Ingredients in this product are %1$s.</string>
     <string name="ingredients_in_this_product">Ingredients in this product that are %1$s:</string>
-    <string name="display_analysis_tag_status">Display %1$s status</string>
+    <string name="display_analysis_tag_status" comment="Do not change the placeholder">Display %1$s status</string>
     <string name="unknown_status_no_translation">We couldn\'t assess the status of the product due to unrecognized ingredients.</string>
     <string name="help_translate_ingredients">Допоможіть перекласти інгредієнти вашою мовою</string>
     <string name="unknown_status_missing_ingredients">We couldn\'t assess the status of the product due to missing ingredients.</string>
@@ -806,7 +807,7 @@
     <string name="product_front_image">Зображення передньої частини товару</string>
     <string name="brand_hint">Приклади: Coca-Cola, Nestle, тощо…</string>
     <string name="sign_in_or_register">Увійти або зареєструватися</string>
-    <string name="hunger_game_call_to_action">Help classify more %1$s</string>
+    <string name="hunger_game_call_to_action" comment="Do not change the placeholder">Help classify more %1$s</string>
     <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s products (plus the ones you will contribute).</string>
     <string name="enabled">Enabled</string>
     <!-- Application theme settings -->
@@ -815,16 +816,16 @@
     <string name="night">Night</string>
     <string name="report_email_chooser_title">Send a report email</string>
     <!-- Changelog String -->
-    <string name="changelog_translation_help">Want to see this changelog in %s?\nJoin the translation team!</string>
+    <string name="changelog_translation_help" comment="Do not change the placeholder">Want to see this changelog in %s?\nJoin the translation team!</string>
     <string name="whats_new">What\'s new with Open Food Facts?</string>
     <!-- New onboarding slides -->
     <string name="title_welcome_intro">Join the food revolution</string>
     <string name="msg_welcome_intro">Scan food, Take photos, Help transform the food system</string>
-    <string name="title_welcome_nutriscore">Get the Nutri-Score</string>
+    <string name="title_welcome_nutriscore" comment="Do not translate Nutri-Score">Get the Nutriscore</string>
     <string name="msg_welcome_nutriscore">A simple synthesis of the nutritional quality of your food</string>
     <string name="title_welcome_nova">Avoid ultra-processed foods</string>
     <string name="msg_welcome_nova">Reduce the amount of ultra-processed foods in your diet.</string>
-    <string name="title_welcome_ecoscore">Eco-Score</string>
+    <string name="title_welcome_ecoscore" comment="Do not translate Eco-Score">Eco-Score</string>
     <string name="msg_welcome_ecoscore">A synthesis of the environmental impact of your food.</string>
     <string name="title_welcome_matomo">Send anonymous analytics</string>
     <string name="msg_welcome_matomo">Help the Open Food Facts volunteers to improve the app. You decide if you send anonymous analytics.\n\nIf you change your mind this option can be enabled and disabled at any time from the settings.</string>
