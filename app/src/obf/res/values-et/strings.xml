@@ -5,7 +5,7 @@
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/contribuer -->
     <string name="website_contribute">https://world.openbeautyfacts.org/contribute</string>
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/decouvrir -->
-    <string name="website_discover">https://world.openbeautyfacts.org/discover</string>
+    <string name="website_discover">https://ee.openbeautyfacts.org/discover</string>
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/produit/ -->
     <string name="website_product">https://world.openbeautyfacts.org/product/</string>
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/contributeur/ -->

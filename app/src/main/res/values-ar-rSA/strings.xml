@@ -183,16 +183,16 @@
     <string name="alert_dialog_warning_msg_user">تم تغيير إسم المستخدم / كلمة السر، يرجى تحديث المعلومات</string>
     <string name="toast_retrieving">جاري التحميل…</string>
     <string name="txtBarcode">الرقم التسلسلي:</string>
-    <string name="txtCategories">الفئات :</string>
-    <string name="txtLabels">التسميات، الشهادات، الجوائز:</string>
-    <string name="txtEMB">رمز EMB:</string>
-    <string name="txtIngredients">قائمة المكونات:</string>
+    <string name="txtCategories">Categories:</string>
+    <string name="txtLabels">Labels, certifications, awards: </string>
+    <string name="txtEMB">رموز التتبع: </string>
+    <string name="txtIngredients">Ingredients list: </string>
     <string name="Donate">تبرع</string>
     <string name="Donation">انقر هنا للتبرع لـ Open Food Facts</string>
-    <string name="txtSubstances">المواد أو المنتجات التي تسبب الحساسية أو عدم التحمل:</string>
-    <string name="txtAdditives">الإضافات:</string>
-    <string name="txtTraces">آثار:</string>
-    <string name="txtMayBeFromPalmOilProduct">المكونات التي قد تكون من زيت النخيل:</string>
+    <string name="txtSubstances">Substances or products causing allergies or intolerances: </string>
+    <string name="txtAdditives">Additives: </string>
+    <string name="txtTraces">Traces: </string>
+    <string name="txtMayBeFromPalmOilProduct">Ingredients that may be from palm oil: </string>
     <string name="txtPalmOilProduct">مكونات من زيت النخيل:</string>
     <string name="txtServingSize">حجم الحصة:</string>
     <string name="txtNutrientLevel100g">مستويات المواد الغذائية لـ 100غ:</string>
@@ -208,7 +208,7 @@
     <string name="txtSugars">السكريات</string>
     <string name="hintBarcode">الرمز الشريطي</string>
     <string name="txtNutriScoreInfo">تعلم المزيد عن المستويات الغذائية</string>
-    <string name="txtloginHelper">If you have an Open Food Facts account, you can login here with it</string>
+    <string name="txtloginHelper">إذا كان لديك حساب Open Food Facts ، فيمكنك تسجيل الدخول باستخدامه هنا</string>
     <string name="hintLogin">اسم المستخدم</string>
     <string name="hintPass">كلمة المرور</string>
     <string name="errorLogin">خطأ في تسجيل الدخول أو كلمة المرور</string>
@@ -273,7 +273,7 @@
     <string name="user_ask_rate_app">رائع! دع اﻷخرين يعرفون رأيك في هذا التطبيق!</string>
     <string name="rate_app">قيِّم التطبيق</string>
     <string name="no_thx">ﻻ، شكرًا</string>
-    <string name="feedback_form_url">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
+    <string name="feedback_form_url" comment="Please ask teolemon to duplicate the feedback form and give you the right URL">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">السجل</string>
     <string name="clear_history">محو السجل</string>
@@ -286,13 +286,13 @@
     <string name="no_brand">لا علامة تجارية</string>
     <string name="no_title">لا يوجد عنوان</string>
     <!-- Nutrition info tab -->
-    <string name="display_fact">جدول حقائق التغذية ل %1$s من هذا المنتج</string>
+    <string name="display_fact" comment="Do not modify the placeholder">جدول حقائق التغذية ل %1$s من هذا المنتج</string>
     <string name="check_facts">تحقق</string>
     <string name="nutrition">التغذية</string>
     <string name="calculated_nutrition">التغذية المحسوبة</string>
     <string name="please_enter_weight">يرجى كتابة وزن المنتج</string>
     <string name="enter_weight">اكتب وزن المنتج</string>
-    <string name="calculate_nutrition_facts">احسب حقائق التغذية</string>
+    <string name="calculate_nutrition_facts">احسب المعلومات الغذائية لكمية محددة</string>
     <string name="nutrition_carbohydrate">كربوهيدرات</string>
     <string name="nutrition_cholesterol">كوليسترول</string>
     <string name="nutrition_energy">الطاقة</string>
@@ -316,7 +316,7 @@
     <string name="logout_drawer">تسجيل خروج</string>
     <string name="contribution_without_account">يمكنك تسجيل الدخول أو إنشاء حساب للحفاظ على مساهماتك</string>
     <string name="textCarbonFootprint">انبعاثات الكربون/انبعاثات CO2: </string>
-    <string name="packaging_environmentTab">Packaging:</string>
+    <string name="packaging_environmentTab">التغليف:</string>
     <string name="action_search">بحث</string>
     <string name="search_hint">ابحث عن منتج</string>
     <string name="number_of_results">عدد النتائج: </string>
@@ -498,10 +498,10 @@
     <string name="packaging_subtitle">التعبئة والتغليف</string>
     <string name="state_subtitle">الولاية</string>
     <string name="packaging_string">التعبئة والتغليف</string>
-    <string name="label_string">Label</string>
+    <string name="label_string">al3alama</string>
     <string name="category_string">Category</string>
     <string name="connection">متصل</string>
-    <string name="contributor_string"></string>
+    <string name="contributor_string">Almousstakhdimoun</string>
     <string name="app_disabled_text">التطبيق معطل</string>
     <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
     <string name="vitamin_tags_text">الفيتامينات:</string>
@@ -537,8 +537,9 @@
     <string name="notify_channel_description">إشعار لإظهار موقع الملف المستخرج</string>
     <string name="products_to_be_completed">مُنتجات مراد إكمالها</string>
     <string name="offline_notification_title">المساهمات دون اتصال التي تحتاج إلى إرسالها</string>
-    <string name="creator_history">تمت إضافة المنتج بتاريخ %1$s فى %2$s من قبل%3$s</string>
-    <string name="last_editor_history">التعديل الأخير من صفحة المنتج على %1$s في %2$s CEST بواسطة %3$s</string>
+    <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">تمت إضافة المنتج بتاريخ %1$s فى %2$s من قبل%3$s</string>
+    <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">التعديل الأخير من صفحة المنتج على %1$s في %2$s CEST بواسطة %3$s</string>
+    <!-- TODO: Add the placeholder in the string - important for several languages -->
     <string name="other_editors">تم تعديل المنتج أيضاً بواسطة </string>
     <string name="product_states">Product States</string>
     <string name="incomplete_states">Incomplete States</string>
@@ -549,14 +550,14 @@
     <string name="offline_product_addition_title">إضافة منتج جديد</string>
     <string name="productNameNull">الاسم غير معروف</string>
     <string name="productAdditivesUnknown"></string>
-    <string name="productAdditivesTemplate">%1$d إضافات</string>
+    <string name="productAdditivesTemplate" comment="Do not modify the placeholder">%1$d إضافات</string>
     <plurals name="productAdditives">
         <item quantity="zero">مواد الإضافية </item>
-        <item quantity="one">%d المواد المضافة</item>
+        <item quantity="one" comment="Do not change the placeholder">%d المواد المضافة</item>
         <item quantity="two">%d مادة مضافة</item>
         <item quantity="few">%d additives</item>
         <item quantity="many">%d additives</item>
-        <item quantity="other">%d additives</item>
+        <item quantity="other" comment="Do not change the placeholder">%d additives</item>
     </plurals>
     <string name="product_not_complete">هذا المنتج لم يكتمل بعد. \n هل يمكنك إضافة بعض التفاصيل؟</string>
     <string name="addProductOffline">يبدو أنك غير متصل. أضف المنتج %s باستخدام الوضع الغير متصل بالشبكة؟</string>
@@ -568,8 +569,8 @@
     <string name="autofocus">ضبط تلقائي للصورة</string>
     <string name="initial_loading">التمهيد للتحميل</string>
     <string name="preferences">الخيارات</string>
-    <string name="OFFlogo">شعار الحقائق الغذائية المفتوحة</string>
-    <string name="loading_product">يتم تحميل المنتج %s</string>
+    <string name="OFFlogo">Open Food Facts logo</string>
+    <string name="loading_product" comment="Do not modify the placeholder">يتم تحميل المنتج %s</string>
     <string name="image_not_defined_for_language">لا توجد صورة للغة المختارة. يمكنك إضافة واحدة جديدة</string>
     <string name="error_adding_ingredients">حدث خطأ ما أثناء محاولة إضافة مكونات المنتج</string>
     <string name="unable_to_extract_ingredients">غير قادر على استخراج المكونات من الصورة</string>
@@ -609,7 +610,7 @@
     <string name="your_version">خاصة بك</string>
     <string name="ingredients_picture">صورة لقائمة المكونات</string>
     <string name="packaging">Recycling</string>
-    <string name="take_ingredients_picture_to_extract">(يرجى التقاط صورة للمكونات ليتم إستخراجها تلقائيًا)</string>
+    <string name="take_ingredients_picture_to_extract">(يرجى التقاط صورة للمكونات ليتم استخراجها تلقائيًا)</string>
     <string name="ingredients_list">قائمة المكونات</string>
     <string name="ingredients_hint" tools:ignore="StringFormatInvalid">حافظ على الترتيب ، أو حدد النسبة المئوية عند تحديدها ، أو افصلها باستخدام فاصلة أو استخدام \"-\" أو استخدم \"()\" لمكون أحد المكونات ، أو احاطة المواد المسببة للحساسية مع _</string>
     <string name="extract_ingredients">استخراج المكونات</string>
@@ -694,10 +695,10 @@
     <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
     <string name="add_category_prompt_text">أضف المزيد من التفاصيل للمساعدة في استكمال المنتج</string>
     <string name="add_nutrient_category_prompt_text">أضف فئة ومزيد الحقائق التغذية للمساعدة في إكمال المنتج</string>
-    <string name="couldnot_compute_ecoscore_prompt_text">We could not compute an Eco-Score for this product. It might be that the category is not specific enough or that we don\'t have supporting data for this category. If you believe this is an error, you can mail us by clicking below.</string>
-    <string name="add_labels_origins_prompt_text">The Eco-Score takes into account environmental labels and origins of the ingredients. Please take them into photo or edit the product so that they can be taken into account</string>
-    <string name="add_labels_prompt_text">The Eco-Score takes into account environmental labels. Please take them into photo or edit the product so that they can be taken into account</string>
-    <string name="add_origins_prompt_text">The Eco-Score takes into account the origins of the ingredients. Please take them into photo (ingredient list and/or any geographic claim) or edit the product so that they can be taken into account</string>
+    <string name="couldnot_compute_ecoscore_prompt_text" comment="Do not translate Eco-Score">We could not compute an Eco-Score for this product. It might be that the category is not specific enough or that we don\'t have supporting data for this category. If you believe this is an error, you can mail us by clicking below.</string>
+    <string name="add_labels_origins_prompt_text" comment="Do not translate Eco-Score">The Eco-Score takes into account environmental labels and origins of the ingredients. Please take them into photo or edit the product so that they can be taken into account</string>
+    <string name="add_labels_prompt_text" comment="Do not translate Eco-Score">The Eco-Score takes into account environmental labels. Please take them into photo or edit the product so that they can be taken into account</string>
+    <string name="add_origins_prompt_text" comment="Do not translate Eco-Score">The Eco-Score takes into account the origins of the ingredients. Please take them into photo (ingredient list and/or any geographic claim) or edit the product so that they can be taken into account</string>
     <string name="category_game_btn">المساعدة في تصنيف المنتجات</string>
     <string name="version_string">افتح تطبيق Open Food Facts على Android</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
@@ -755,14 +756,14 @@
     <string name="scan_tooltip">يمكنك سحب البطاقة للاعلى لمزيد من التفاصيل</string>
     <string name="add_an_allergen">أضف مادة مسببة للحساسية</string>
     <string name="add_a_list">أضف قائمة</string>
-    <string name="edit_image">تحرير صفحة</string>
-    <string name="cant_edit_image_not_yet_uploaded">لم يتم تحميل الصورة الجديدة بعد. من فضلك انتظر قبل التعديل عليه</string>
-    <string name="unselect_image">قم بإلغاء تحديد الصورة</string>
+    <string name="edit_image">حرر الصورة</string>
+    <string name="cant_edit_image_not_yet_uploaded">لم يتم تحميل الصورة الجديدة بعد. من فضلك انتظر قبل التعديل عليها</string>
+    <string name="unselect_image">إلغاء تحديد الصورة</string>
     <string name="choose_default_language">حدد لغة المنتج</string>
     <string name="barcode">الرمز الشريطي</string>
     <string name="productAdditivesNone">بدون إضافات</string>
     <string name="error_uploading_photo">حدث خطأ ما اثناء تحميل صورة جديدة</string>
-    <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
+    <string name="required_for_ecoscore" comment="Do not translate Eco-Score">(Required to calculate the Eco-Score)</string>
     <string name="hint_origin">Examples: USA, France, Italy</string>
     <!-- Used for diets AddOn -->
     <string name="history_network_error">لا يمكن تحميل المنتج. يرجى المحاولة مرة أخرى عند الاتصال بالإنترنت مرة أخرى.</string>
@@ -778,7 +779,7 @@
     <string name="image_edit_tip">اضغط على الصورة لتكبيرها وتغييرها واقتصاصها وتدويرها والمزيد…</string>
     <string name="ingredients_in_this_product_are">المكونات في هذا المنتج هي %1$s.</string>
     <string name="ingredients_in_this_product">المكونات في هذا المنتج هي %1$s.</string>
-    <string name="display_analysis_tag_status">عرض حالة %1$s</string>
+    <string name="display_analysis_tag_status" comment="Do not change the placeholder">عرض حالة %1$s</string>
     <string name="unknown_status_no_translation">لم نتمكن من تقييم حالة المنتج بسبب المكونات غير المعترف بها.</string>
     <string name="help_translate_ingredients">ساعد في ترجمة المكونات بلغتك</string>
     <string name="unknown_status_missing_ingredients">لم نتمكن من تقييم حالة المنتج بسبب نقص المكونات.</string>
@@ -816,11 +817,11 @@
     <string name="content_exit">اضغط هنا للعودة إلى المنتج</string>
     <string name="icon_label">أيقونة التسميات</string>
     <string name="icon_categories">أيقونة الفئات</string>
-    <string name="icon_emb">EMB code icon</string>
+    <string name="icon_emb">Traceability code icon</string>
     <string name="product_front_image">الصورة اﻷمامية للمنتج</string>
     <string name="brand_hint">Examples: Coca-Cola, Nestle, etc…</string>
     <string name="sign_in_or_register">تسجيل الدخول أو التسجيل</string>
-    <string name="hunger_game_call_to_action">ساعد في تصنيف المزيد %1$s</string>
+    <string name="hunger_game_call_to_action" comment="Do not change the placeholder">ساعد في تصنيف المزيد %1$s</string>
     <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s products (plus the ones you will contribute) in the world.</string>
     <string name="enabled">Enabled</string>
     <!-- Application theme settings -->
@@ -829,16 +830,16 @@
     <string name="night">Night</string>
     <string name="report_email_chooser_title">Send a report email</string>
     <!-- Changelog String -->
-    <string name="changelog_translation_help">Want to see this changelog in %s?\nJoin the translation team!</string>
+    <string name="changelog_translation_help" comment="Do not change the placeholder">Want to see this changelog in %s?\nJoin the translation team!</string>
     <string name="whats_new">What\'s new with Open Food Facts?</string>
     <!-- New onboarding slides -->
     <string name="title_welcome_intro">Join the food revolution</string>
     <string name="msg_welcome_intro">Scan food, Take photos, Help transform the food system</string>
-    <string name="title_welcome_nutriscore">الحصول على Nutriscore (مجموع نقاط التغذية)</string>
+    <string name="title_welcome_nutriscore" comment="Do not translate Nutri-Score">الحصول على Nutriscore (مجموع نقاط التغذية)</string>
     <string name="msg_welcome_nutriscore">A simple synthesis of the nutritional quality of your food</string>
     <string name="title_welcome_nova">Avoid ultra-processed foods</string>
     <string name="msg_welcome_nova">Reduce the amount of ultra-processed foods in your diet.</string>
-    <string name="title_welcome_ecoscore">Eco-Score</string>
+    <string name="title_welcome_ecoscore" comment="Do not translate Eco-Score">Eco-Score</string>
     <string name="msg_welcome_ecoscore">تركيبة من الأثر البيئي لطعامك.</string>
     <string name="title_welcome_matomo">إرسال تحليلات مجهولة</string>
     <string name="msg_welcome_matomo">ساعد متطوعين Open Food Facts لتطوير التطبيق. لديك قرار في إرسال تحليلات مجهولة. إذا غيرت رأيك، هذا الخيار يمكن تمكينه وتعطيله في أي وقت من الإعدادات.</string>
