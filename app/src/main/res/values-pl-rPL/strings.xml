@@ -171,16 +171,16 @@
     <string name="alert_dialog_warning_msg_user">Zmieniono nazwę użytkownika/hasło. Proszę zaktualizuj informacje</string>
     <string name="toast_retrieving">Ładowanie…</string>
     <string name="txtBarcode">Kod kreskowy:</string>
-    <string name="txtCategories">Kategorie :</string>
-    <string name="txtLabels">Etykiety, certyfikaty, nagrody :</string>
-    <string name="txtEMB">Kody identyfikacyjne:</string>
-    <string name="txtIngredients">Lista składników :</string>
+    <string name="txtCategories">Categories:</string>
+    <string name="txtLabels">Labels, certifications, awards: </string>
+    <string name="txtEMB">Traceability codes: </string>
+    <string name="txtIngredients">Ingredients list: </string>
     <string name="Donate">Podaruj</string>
     <string name="Donation">Naciśnij, by przekazać darowiznę</string>
-    <string name="txtSubstances">Substancje lub produkty wywołujące alergie lub nietolerancje :</string>
-    <string name="txtAdditives">Dodatki :</string>
-    <string name="txtTraces">Ilości śladowe :</string>
-    <string name="txtMayBeFromPalmOilProduct">Składniki, które mogą pochodzić z oleju palmowego:</string>
+    <string name="txtSubstances">Substances or products causing allergies or intolerances: </string>
+    <string name="txtAdditives">Additives: </string>
+    <string name="txtTraces">Traces: </string>
+    <string name="txtMayBeFromPalmOilProduct">Ingredients that may be from palm oil: </string>
     <string name="txtPalmOilProduct">Składniki pochodzące z oleju palmowego :</string>
     <string name="txtServingSize">Wielkość porcji:</string>
     <string name="txtNutrientLevel100g">Wartość odżywcza w 100 g:</string>
@@ -261,7 +261,7 @@
     <string name="user_ask_rate_app">Świetnie! Daj znać innym co sądzisz o tej aplikacji!</string>
     <string name="rate_app">Oceń aplikację</string>
     <string name="no_thx">Nie, dziękuję</string>
-    <string name="feedback_form_url">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
+    <string name="feedback_form_url" comment="Please ask teolemon to duplicate the feedback form and give you the right URL">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">Historia</string>
     <string name="clear_history">Usuń historię</string>
@@ -274,13 +274,13 @@
     <string name="no_brand">Brak marki</string>
     <string name="no_title">Brak tytułu</string>
     <!-- Nutrition info tab -->
-    <string name="display_fact">Tabela wartości odżywczych dla %1$s tego produktu</string>
+    <string name="display_fact" comment="Do not modify the placeholder">Tabela wartości odżywczych dla %1$s tego produktu</string>
     <string name="check_facts">Sprawdź</string>
     <string name="nutrition">Odżywianie</string>
     <string name="calculated_nutrition">Obliczone wartości odżywcze</string>
     <string name="please_enter_weight">Proszę wpisać wagę produktu</string>
     <string name="enter_weight">Wpisz wagę produktu</string>
-    <string name="calculate_nutrition_facts">Oblicz wartość odżywczą porcji produktu</string>
+    <string name="calculate_nutrition_facts">Calculate nutrition facts for a specific quantity</string>
     <string name="nutrition_carbohydrate">Węglowodany</string>
     <string name="nutrition_cholesterol">Cholesterol</string>
     <string name="nutrition_energy">Energia</string>
@@ -525,8 +525,9 @@
     <string name="notify_channel_description">Powiadomienie wskazujące lokalizację wyeksportowanego pliku</string>
     <string name="products_to_be_completed">Produkty do uzupełnienia</string>
     <string name="offline_notification_title">Do wysłania z trybu offline</string>
-    <string name="creator_history">Produkt dodany %1$s o %2$s CET przez %3$s</string>
-    <string name="last_editor_history">Ostatnia edycja strony produktu %1$s o %2$s CEST przez %3$s </string>
+    <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Produkt dodany %1$s o %2$s CET przez %3$s</string>
+    <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Ostatnia edycja strony produktu %1$s o %2$s CEST przez %3$s </string>
+    <!-- TODO: Add the placeholder in the string - important for several languages -->
     <string name="other_editors">Strona edytowana także przez </string>
     <string name="product_states">Product States</string>
     <string name="incomplete_states">Incomplete States</string>
@@ -537,12 +538,12 @@
     <string name="offline_product_addition_title">Dodawanie nowego produktu</string>
     <string name="productNameNull">Nazwa nieznana</string>
     <string name="productAdditivesUnknown"></string>
-    <string name="productAdditivesTemplate">%1$d dodatków</string>
+    <string name="productAdditivesTemplate" comment="Do not modify the placeholder">%1$d dodatków</string>
     <plurals name="productAdditives">
-        <item quantity="one">%d dodatek</item>
+        <item quantity="one" comment="Do not change the placeholder">%d dodatek</item>
         <item quantity="few">%d dodatków</item>
         <item quantity="many">dodatków</item>
-        <item quantity="other">%d dodatków</item>
+        <item quantity="other" comment="Do not change the placeholder">%d dodatków</item>
     </plurals>
     <string name="product_not_complete">Ten produkt nie jest jeszcze kompletny. \nCzy możesz dodać więcej szczegółów?</string>
     <string name="addProductOffline">Jesteś offline. Dodać produkt %s w trybie offline?</string>
@@ -555,7 +556,7 @@
     <string name="initial_loading">Wstępne ładowanie</string>
     <string name="preferences">Ustawienia</string>
     <string name="OFFlogo">Logo Open Food Facts</string>
-    <string name="loading_product">Ładowanie produktu %s</string>
+    <string name="loading_product" comment="Do not modify the placeholder">Ładowanie produktu %s</string>
     <string name="image_not_defined_for_language">Brak zdjęć produktu dla wybranego języka. Możesz dodać nowe</string>
     <string name="error_adding_ingredients">Coś poszło nie tak podczas próby dodania składników produktu</string>
     <string name="unable_to_extract_ingredients">Nie można wyodrębnić składników z obrazu</string>
@@ -595,7 +596,7 @@
     <string name="your_version">Twoje</string>
     <string name="ingredients_picture">Zdjęcie składników</string>
     <string name="packaging">Recycling</string>
-    <string name="take_ingredients_picture_to_extract">(Zrób zdjęcie składników, aby automatycznie je wyodrębnić)</string>
+    <string name="take_ingredients_picture_to_extract">(Please take a photo of the ingredients to automatically extract them)</string>
     <string name="ingredients_list">Lista składników</string>
     <string name="ingredients_hint" tools:ignore="StringFormatInvalid">Zachowaj kolejność, wskaż % jeśli jest podany, oddziel przecinkiem lub -, zastosuj () dla składników składnika, oznacz alergeny za pomocą _</string>
     <string name="extract_ingredients">Wyodrębnij składniki</string>
@@ -680,10 +681,10 @@
     <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
     <string name="add_category_prompt_text">Dodaj kategorię, aby pomóc w dokończeniu produktu</string>
     <string name="add_nutrient_category_prompt_text">Dodaj kategorię i wartości odżywcze, aby pomóc w dokończeniu produktu</string>
-    <string name="couldnot_compute_ecoscore_prompt_text">We could not compute an Eco-Score for this product. It might be that the category is not specific enough or that we don\'t have supporting data for this category. If you believe this is an error, you can mail us by clicking below.</string>
-    <string name="add_labels_origins_prompt_text">The Eco-Score takes into account environmental labels and origins of the ingredients. Please take them into photo or edit the product so that they can be taken into account</string>
-    <string name="add_labels_prompt_text">The Eco-Score takes into account environmental labels. Please take them into photo or edit the product so that they can be taken into account</string>
-    <string name="add_origins_prompt_text">The Eco-Score takes into account the origins of the ingredients. Please take them into photo (ingredient list and/or any geographic claim) or edit the product so that they can be taken into account</string>
+    <string name="couldnot_compute_ecoscore_prompt_text" comment="Do not translate Eco-Score">We could not compute an Eco-Score for this product. It might be that the category is not specific enough or that we don\'t have supporting data for this category. If you believe this is an error, you can mail us by clicking below.</string>
+    <string name="add_labels_origins_prompt_text" comment="Do not translate Eco-Score">The Eco-Score takes into account environmental labels and origins of the ingredients. Please take them into photo or edit the product so that they can be taken into account</string>
+    <string name="add_labels_prompt_text" comment="Do not translate Eco-Score">The Eco-Score takes into account environmental labels. Please take them into photo or edit the product so that they can be taken into account</string>
+    <string name="add_origins_prompt_text" comment="Do not translate Eco-Score">The Eco-Score takes into account the origins of the ingredients. Please take them into photo (ingredient list and/or any geographic claim) or edit the product so that they can be taken into account</string>
     <string name="category_game_btn">Pomóż kategoryzować produkty</string>
     <string name="version_string">Otwórz aplikację Beauty Facts na Androida</string>
     <string name="set_ingredient_img">Zdjęcie zawierające składniki produktu</string>
@@ -742,13 +743,13 @@
     <string name="add_an_allergen">Dodaj alergen</string>
     <string name="add_a_list">Dodaj listę</string>
     <string name="edit_image">Edytuj zdjęcie</string>
-    <string name="cant_edit_image_not_yet_uploaded">Nowy obraz nie został jeszcze załadowany. Poczekaj przed edycją</string>
+    <string name="cant_edit_image_not_yet_uploaded">The new photo is not yet uploaded. Please wait before editing it</string>
     <string name="unselect_image">Odznacz zdjęcie</string>
     <string name="choose_default_language">Wybierz język produktu</string>
     <string name="barcode">Kod kreskowy</string>
     <string name="productAdditivesNone">Bez dodatków</string>
     <string name="error_uploading_photo">W czasie przesyłania nowego zdjęcia wystąpił błąd</string>
-    <string name="required_for_ecoscore">(Wymagane do obliczenia Eco-Score)</string>
+    <string name="required_for_ecoscore" comment="Do not translate Eco-Score">(Wymagane do obliczenia Eco-Score)</string>
     <string name="hint_origin">Przykłady: USA, Francja, Włochy</string>
     <!-- Used for diets AddOn -->
     <string name="history_network_error">Nie można załadować produktu. Spróbuj ponownie po powrocie do trybu online.</string>
@@ -764,7 +765,7 @@
     <string name="image_edit_tip">Dotknij obrazu, aby go powiększyć, zmienić, przyciąć, obrócić i nie tylko…</string>
     <string name="ingredients_in_this_product_are">Składniki tego produktu to %1$s.</string>
     <string name="ingredients_in_this_product">Składniki tego produktu, które są %1$s:</string>
-    <string name="display_analysis_tag_status">Wyświetl %1$s status</string>
+    <string name="display_analysis_tag_status" comment="Do not change the placeholder">Wyświetl %1$s status</string>
     <string name="unknown_status_no_translation">Nie mogliśmy ocenić statusu produktu z powodu nierozpoznanych składników.</string>
     <string name="help_translate_ingredients">Pomóż przetłumaczyć składniki na swój język</string>
     <string name="unknown_status_missing_ingredients">Nie mogliśmy ocenić statusu produktu z powodu brakujących składników.</string>
@@ -802,11 +803,11 @@
     <string name="content_exit">Naciśnij tutaj, aby wrócić do produktu</string>
     <string name="icon_label">Ikona etykiet</string>
     <string name="icon_categories">Ikona kategorii</string>
-    <string name="icon_emb">Ikona kodu identyfikowalności</string>
+    <string name="icon_emb">Traceability code icon</string>
     <string name="product_front_image">Obraz z przodu produktu</string>
     <string name="brand_hint">Przykłady: Coca-Cola, Nestle itp…</string>
     <string name="sign_in_or_register">Zaloguj się lub zarejestruj</string>
-    <string name="hunger_game_call_to_action">Pomóż sklasyfikować więcej %1$s</string>
+    <string name="hunger_game_call_to_action" comment="Do not change the placeholder">Pomóż sklasyfikować więcej %1$s</string>
     <string name="txtHomeOnline">Open Food Facts to otwarta baza danych więcej niż %1$s produktów (plus te, które pomogą Ci w działaniu).</string>
     <string name="enabled">Włączone</string>
     <!-- Application theme settings -->
@@ -815,16 +816,16 @@
     <string name="night">Noc</string>
     <string name="report_email_chooser_title">Send a report email</string>
     <!-- Changelog String -->
-    <string name="changelog_translation_help">Want to see this changelog in %s?\nJoin the translation team!</string>
+    <string name="changelog_translation_help" comment="Do not change the placeholder">Want to see this changelog in %s?\nJoin the translation team!</string>
     <string name="whats_new">Co nowego w Open Food Facts?</string>
     <!-- New onboarding slides -->
     <string name="title_welcome_intro">Dołącz do rewolucji żywieniowej</string>
     <string name="msg_welcome_intro">Skanuj jedzenie, rób zdjęcia, pomóż przekształcić system żywnościowy</string>
-    <string name="title_welcome_nutriscore">Poznaj skalę Nutri_Score</string>
+    <string name="title_welcome_nutriscore" comment="Do not translate Nutri-Score">Poznaj skalę Nutri_Score</string>
     <string name="msg_welcome_nutriscore">Prosta synteza jakości odżywczej Twojego jedzenia</string>
     <string name="title_welcome_nova">Unikaj ultra przetworzonej żywności</string>
     <string name="msg_welcome_nova">Zmniejsz ilość ultra przetworzonej żywności w swojej diecie.</string>
-    <string name="title_welcome_ecoscore">Eco-Score</string>
+    <string name="title_welcome_ecoscore" comment="Do not translate Eco-Score">Eco-Score</string>
     <string name="msg_welcome_ecoscore">A synthesis of the environmental impact of your food.</string>
     <string name="title_welcome_matomo">Send anonymous analytics</string>
     <string name="msg_welcome_matomo">Help the Open Food Facts volunteers to improve the app. You decide if you send anonymous analytics.\n\nIf you change your mind this option can be enabled and disabled at any time from the settings.</string>

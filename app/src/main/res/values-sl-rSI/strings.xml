@@ -170,17 +170,17 @@
     <string name="alert_dialog_warning_title">Opozorilo</string>
     <string name="alert_dialog_warning_msg_user">Uporabnik / geslo se je spremenilo, posodobite podatke</string>
     <string name="toast_retrieving">Nalaganje…</string>
-    <string name="txtBarcode">Črtna koda:</string>
-    <string name="txtCategories">Kategorije:</string>
-    <string name="txtLabels">Etikete, certifikati, nagrade:</string>
-    <string name="txtEMB">Traceability codes:</string>
-    <string name="txtIngredients">Seznam sestavin:</string>
+    <string name="txtBarcode">Barcode:</string>
+    <string name="txtCategories">Categories:</string>
+    <string name="txtLabels">Labels, certifications, awards: </string>
+    <string name="txtEMB">Traceability codes: </string>
+    <string name="txtIngredients">Seznam sestavin: </string>
     <string name="Donate">Prispevaj</string>
     <string name="Donation">Kliknite tukaj za darovanje, Open Food Facts</string>
-    <string name="txtSubstances">Snovi ali proizvodi, ki povzročajo alergije ali preobčutljivost:</string>
-    <string name="txtAdditives">Aditivi :</string>
-    <string name="txtTraces">Sledi :</string>
-    <string name="txtMayBeFromPalmOilProduct">Sestavine, ki so lahko iz palmovega olja:</string>
+    <string name="txtSubstances">Substances or products causing allergies or intolerances: </string>
+    <string name="txtAdditives">Aditivi: </string>
+    <string name="txtTraces">Sledi: </string>
+    <string name="txtMayBeFromPalmOilProduct">Ingredients that may be from palm oil: </string>
     <string name="txtPalmOilProduct">Sestavine iz palmovega olja:</string>
     <string name="txtServingSize">Velikost serviranja :</string>
     <string name="txtNutrientLevel100g">Vsebnost hranil za 100 g:</string>
@@ -261,7 +261,7 @@
     <string name="user_ask_rate_app">Super! Sporočite drugim, kaj menite o tej aplikaciji!</string>
     <string name="rate_app">Oceni aplikacijo</string>
     <string name="no_thx">Ne hvala</string>
-    <string name="feedback_form_url">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
+    <string name="feedback_form_url" comment="Please ask teolemon to duplicate the feedback form and give you the right URL">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">Zgodovina</string>
     <string name="clear_history">Izbriši zgodovino</string>
@@ -274,13 +274,13 @@
     <string name="no_brand">Ni blagovne znamke</string>
     <string name="no_title">Ni naslova</string>
     <!-- Nutrition info tab -->
-    <string name="display_fact">Nutrition facts table for %1$s of this product</string>
+    <string name="display_fact" comment="Do not modify the placeholder">Nutrition facts table for %1$s of this product</string>
     <string name="check_facts">Preveri</string>
     <string name="nutrition">Prehrana</string>
     <string name="calculated_nutrition">Izračunana hranilna vrednost</string>
     <string name="please_enter_weight">Prosim, vnesite težo izdelka</string>
     <string name="enter_weight">Vnesite težo izdelka</string>
-    <string name="calculate_nutrition_facts">Izračunaj hranilno vrednost</string>
+    <string name="calculate_nutrition_facts">Calculate nutrition facts for a specific quantity</string>
     <string name="nutrition_carbohydrate">Ogljikovi hidrati</string>
     <string name="nutrition_cholesterol">Holesterol</string>
     <string name="nutrition_energy">Energija</string>
@@ -525,8 +525,9 @@
     <string name="notify_channel_description">Obvestilo, da prikažete lokacijo izvožene datoteke</string>
     <string name="products_to_be_completed">Izdelki, ki jih je potrebno dokončati</string>
     <string name="offline_notification_title">Prispevki brez povezave, ki jih morate poslati</string>
-    <string name="creator_history">Product added on %1$s at %2$s CET by %3$s</string>
-    <string name="last_editor_history">Zadnja sprememba strani izdelka %1$s na %2$s CEST z %3$s </string>
+    <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Product added on %1$s at %2$s CET by %3$s</string>
+    <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Zadnja sprememba strani izdelka %1$s na %2$s CEST z %3$s </string>
+    <!-- TODO: Add the placeholder in the string - important for several languages -->
     <string name="other_editors">Stran izdelka, je urejal tudi </string>
     <string name="product_states">Product States</string>
     <string name="incomplete_states">Incomplete States</string>
@@ -537,12 +538,12 @@
     <string name="offline_product_addition_title">Dodaj nov izdelek</string>
     <string name="productNameNull">Neznano ime</string>
     <string name="productAdditivesUnknown"></string>
-    <string name="productAdditivesTemplate">%1$d additives</string>
+    <string name="productAdditivesTemplate" comment="Do not modify the placeholder">%1$d additives</string>
     <plurals name="productAdditives">
-        <item quantity="one">%d additive</item>
+        <item quantity="one" comment="Do not change the placeholder">%d additive</item>
         <item quantity="two">%d additives</item>
         <item quantity="few">%d additives</item>
-        <item quantity="other">%d additives</item>
+        <item quantity="other" comment="Do not change the placeholder">%d additives</item>
     </plurals>
     <string name="product_not_complete">Ta izdelek še ni dokončan. \nLahko dodate nekaj podrobnosti?</string>
     <string name="addProductOffline">You seem offline. Add the product %s using the offline mode ?</string>
@@ -555,7 +556,7 @@
     <string name="initial_loading">Začetno nalaganje</string>
     <string name="preferences">Nastavitve</string>
     <string name="OFFlogo">Open Food Facts logo</string>
-    <string name="loading_product">Loading product %s</string>
+    <string name="loading_product" comment="Do not modify the placeholder">Loading product %s</string>
     <string name="image_not_defined_for_language">Za izbran jezik ni slike. Lahko jo dodate.</string>
     <string name="error_adding_ingredients">Nekaj je šlo narobe med poskusom dodajanja sestavin izdelka</string>
     <string name="unable_to_extract_ingredients">Iz slike ne morem razbrati sestavin</string>
@@ -595,7 +596,7 @@
     <string name="your_version">Vaše</string>
     <string name="ingredients_picture">Slika sestavin</string>
     <string name="packaging">Recycling</string>
-    <string name="take_ingredients_picture_to_extract">(Prosim, posnamite sliko sestavin, za samodejno branje)</string>
+    <string name="take_ingredients_picture_to_extract">(Please take a photo of the ingredients to automatically extract them)</string>
     <string name="ingredients_list">Seznam sestavin</string>
     <string name="ingredients_hint" tools:ignore="StringFormatInvalid">Naj bo urejeno, navedite %, če je naveden, ločite z vejico ali uporabite -, uporabite () za sestavine od sestavin, obkrožite alergene z _</string>
     <string name="extract_ingredients">Preberi sestavine</string>
@@ -680,10 +681,10 @@
     <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
     <string name="add_category_prompt_text">Add a category to help complete the product</string>
     <string name="add_nutrient_category_prompt_text">Add a category and nutrition facts to help complete the product</string>
-    <string name="couldnot_compute_ecoscore_prompt_text">We could not compute an Eco-Score for this product. It might be that the category is not specific enough or that we don\'t have supporting data for this category. If you believe this is an error, you can mail us by clicking below.</string>
-    <string name="add_labels_origins_prompt_text">The Eco-Score takes into account environmental labels and origins of the ingredients. Please take them into photo or edit the product so that they can be taken into account</string>
-    <string name="add_labels_prompt_text">The Eco-Score takes into account environmental labels. Please take them into photo or edit the product so that they can be taken into account</string>
-    <string name="add_origins_prompt_text">The Eco-Score takes into account the origins of the ingredients. Please take them into photo (ingredient list and/or any geographic claim) or edit the product so that they can be taken into account</string>
+    <string name="couldnot_compute_ecoscore_prompt_text" comment="Do not translate Eco-Score">We could not compute an Eco-Score for this product. It might be that the category is not specific enough or that we don\'t have supporting data for this category. If you believe this is an error, you can mail us by clicking below.</string>
+    <string name="add_labels_origins_prompt_text" comment="Do not translate Eco-Score">The Eco-Score takes into account environmental labels and origins of the ingredients. Please take them into photo or edit the product so that they can be taken into account</string>
+    <string name="add_labels_prompt_text" comment="Do not translate Eco-Score">The Eco-Score takes into account environmental labels. Please take them into photo or edit the product so that they can be taken into account</string>
+    <string name="add_origins_prompt_text" comment="Do not translate Eco-Score">The Eco-Score takes into account the origins of the ingredients. Please take them into photo (ingredient list and/or any geographic claim) or edit the product so that they can be taken into account</string>
     <string name="category_game_btn">Help categorize products</string>
     <string name="version_string">Open Food Facts Android App</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
@@ -741,14 +742,14 @@
     <string name="scan_tooltip">You can slide up the card for more details</string>
     <string name="add_an_allergen">Dodaj alergen</string>
     <string name="add_a_list">Dodaj seznam</string>
-    <string name="edit_image">Uredi sliko</string>
-    <string name="cant_edit_image_not_yet_uploaded">Nova slika še ni naložena. Prosim počakajte, da jo lahko uredite</string>
-    <string name="unselect_image">Odstrani izbor</string>
+    <string name="edit_image">Edit Photo</string>
+    <string name="cant_edit_image_not_yet_uploaded">The new photo is not yet uploaded. Please wait before editing it</string>
+    <string name="unselect_image">Unselect Photo</string>
     <string name="choose_default_language">Select product language</string>
     <string name="barcode">Črtna koda</string>
     <string name="productAdditivesNone">Brez dodatkov</string>
     <string name="error_uploading_photo">Med nalaganjem nove fotografije je šlo nekaj narobe</string>
-    <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
+    <string name="required_for_ecoscore" comment="Do not translate Eco-Score">(Required to calculate the Eco-Score)</string>
     <string name="hint_origin">Examples: USA, France, Italy</string>
     <!-- Used for diets AddOn -->
     <string name="history_network_error">Izdelka ni bilo mogoče naložiti. Poskusite znova, ko boste imeli povezavo na splet.</string>
@@ -764,7 +765,7 @@
     <string name="image_edit_tip">Tap on the image to zoom it, change it, crop it, rotate it and more…</string>
     <string name="ingredients_in_this_product_are">Ingredients in this product are %1$s.</string>
     <string name="ingredients_in_this_product">Ingredients in this product that are %1$s:</string>
-    <string name="display_analysis_tag_status">Display %1$s status</string>
+    <string name="display_analysis_tag_status" comment="Do not change the placeholder">Display %1$s status</string>
     <string name="unknown_status_no_translation">We couldn\'t assess the status of the product due to unrecognized ingredients.</string>
     <string name="help_translate_ingredients">Pomagajte prevesti sestavine v vaš jezik</string>
     <string name="unknown_status_missing_ingredients">We couldn\'t assess the status of the product due to missing ingredients.</string>
@@ -806,7 +807,7 @@
     <string name="product_front_image">Sprednja slika izdelka</string>
     <string name="brand_hint">Primeri: Coca-Cola, Nestle itd…</string>
     <string name="sign_in_or_register">Sign in or register</string>
-    <string name="hunger_game_call_to_action">Help classify more %1$s</string>
+    <string name="hunger_game_call_to_action" comment="Do not change the placeholder">Help classify more %1$s</string>
     <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s products (plus the ones you will contribute).</string>
     <string name="enabled">Enabled</string>
     <!-- Application theme settings -->
@@ -815,17 +816,17 @@
     <string name="night">Night</string>
     <string name="report_email_chooser_title">Send a report email</string>
     <!-- Changelog String -->
-    <string name="changelog_translation_help">Want to see this changelog in %s?\nJoin the translation team!</string>
+    <string name="changelog_translation_help" comment="Do not change the placeholder">Want to see this changelog in %s?\nJoin the translation team!</string>
     <string name="whats_new">What\'s new with Open Food Facts?</string>
     <!-- New onboarding slides -->
     <string name="title_welcome_intro">Join the food revolution</string>
     <string name="msg_welcome_intro">Scan food, Take photos, Help transform the food system</string>
-    <string name="title_welcome_nutriscore">Get the Nutri-Score</string>
+    <string name="title_welcome_nutriscore" comment="Do not translate Nutri-Score">Get the Nutriscore</string>
     <string name="msg_welcome_nutriscore">A simple synthesis of the nutritional quality of your food</string>
     <string name="title_welcome_nova">Avoid ultra-processed foods</string>
     <string name="msg_welcome_nova">Reduce the amount of ultra-processed foods in your diet.</string>
-    <string name="title_welcome_ecoscore">Eco-Score</string>
-    <string name="msg_welcome_ecoscore">A synthesis of the environmental impact of your food.</string>
-    <string name="title_welcome_matomo">Send anonymous analytics</string>
-    <string name="msg_welcome_matomo">Help the Open Food Facts volunteers to improve the app. You decide if you send anonymous analytics.\n\nIf you change your mind this option can be enabled and disabled at any time from the settings.</string>
+    <string name="title_welcome_ecoscore" comment="Do not translate Eco-Score">Eco-Score</string>
+    <string name="msg_welcome_ecoscore">Sinteza vpliva hrane na okolje.</string>
+    <string name="title_welcome_matomo">Pošljite anonimno analitiko</string>
+    <string name="msg_welcome_matomo">Pomagajte prostovoljcem Open Food Facts pri izboljšanju aplikacije. Odločite se, ali pošljete anonimno analizo.\n\nČe si premislite, lahko to možnost kadar koli omogočite ali onemogočite v nastavitvah.</string>
 </resources>

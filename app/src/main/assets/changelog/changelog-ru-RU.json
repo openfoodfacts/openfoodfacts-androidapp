@@ -1,12 +1,12 @@
 {
   "changelog": [
     {
-      "date": "10/02/2021",
+      "date": "02.10.2021",
       "code": 518,
       "name": "3.5.0",
       "items": [
-        "Machine-Learning enhanced barcode scanner. You can now enable a new way to scan from the options. You can switch the barcode scanner engine at any time from the settings.",
-        "Help the Open Food Facts volunteers improve the app. You have the option to send anonymous analytics and crash reports. It can be enabled and disabled at any time from the settings."
+        "Улучшенный сканер штрих-кодов с машинным обучением. Вы можете включить новый способ сканирования в настройках. Вы можете выбрать другой движок сканера штрих-кодов в любое время в настройках.",
+        "Помогите волонтерам Open Food Facts улучшить приложение. Вы решаете, будете ли вы отправлять анонимную статистику и отчёты о сбоях.\\n\\nЭту опцию можно включить или отключить в любое время в настройках."
       ]
     }
   ]

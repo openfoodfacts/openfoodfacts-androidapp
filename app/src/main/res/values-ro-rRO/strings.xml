@@ -165,17 +165,17 @@
     <string name="alert_dialog_warning_title">Atenţie</string>
     <string name="alert_dialog_warning_msg_user">Numele de utilizator sau parola au fost modificate, vă rugăm actualizați datele de conectare.</string>
     <string name="toast_retrieving">Se încarcă…</string>
-    <string name="txtBarcode">Cod de bare:</string>
-    <string name="txtCategories">Categorii:</string>
-    <string name="txtLabels">Certificări, premii</string>
-    <string name="txtEMB">Codul EMB:</string>
-    <string name="txtIngredients">Ingrediente:</string>
+    <string name="txtBarcode">Barcode:</string>
+    <string name="txtCategories">Categories:</string>
+    <string name="txtLabels">Labels, certifications, awards: </string>
+    <string name="txtEMB">Traceability codes: </string>
+    <string name="txtIngredients">Ingredients list: </string>
     <string name="Donate">Donează</string>
     <string name="Donation">Apăsă aici pentru a face o donație către Open Food Facts</string>
-    <string name="txtSubstances">Substanțe care provoacă alergii sau intoleranțe:</string>
-    <string name="txtAdditives">Aditivi alimentari:</string>
-    <string name="txtTraces">Urme de:</string>
-    <string name="txtMayBeFromPalmOilProduct">Ingrediente care pot proveni din ulei de palmier:</string>
+    <string name="txtSubstances">Substances or products causing allergies or intolerances: </string>
+    <string name="txtAdditives">Additives: </string>
+    <string name="txtTraces">Traces: </string>
+    <string name="txtMayBeFromPalmOilProduct">Ingredients that may be from palm oil: </string>
     <string name="txtPalmOilProduct">Ingrediente provenind din ulei de palmier:</string>
     <string name="txtServingSize">Cantitatea unei porții:</string>
     <string name="txtNutrientLevel100g">Informații nutriționale pentru 100g:</string>
@@ -256,7 +256,7 @@
     <string name="user_ask_rate_app">Grozav! Împărtășeste cu ceilalți ce crezi despre această aplicație!</string>
     <string name="rate_app">Evaluează aplicația</string>
     <string name="no_thx">Nu, mulțumesc </string>
-    <string name="feedback_form_url">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
+    <string name="feedback_form_url" comment="Please ask teolemon to duplicate the feedback form and give you the right URL">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">Istoric</string>
     <string name="clear_history">Stergere istoric</string>
@@ -269,13 +269,13 @@
     <string name="no_brand">Nicio marca</string>
     <string name="no_title">Fără titlu</string>
     <!-- Nutrition info tab -->
-    <string name="display_fact">Tabel cu fapte nutriționale pentru %1$s din acest produs</string>
+    <string name="display_fact" comment="Do not modify the placeholder">Tabel cu fapte nutriționale pentru %1$s din acest produs</string>
     <string name="check_facts">Verifică</string>
     <string name="nutrition">Informații nutriționale</string>
     <string name="calculated_nutrition">Nutriție calculată</string>
     <string name="please_enter_weight">Te rugăm să introduci cantitatea produsului</string>
     <string name="enter_weight">Scrie cantitatea produsului</string>
-    <string name="calculate_nutrition_facts">Calculează valorile nutriţionale</string>
+    <string name="calculate_nutrition_facts">Calculate nutrition facts for a specific quantity</string>
     <string name="nutrition_carbohydrate">Glucide</string>
     <string name="nutrition_cholesterol">Colesterol</string>
     <string name="nutrition_energy">Valoare energetică</string>
@@ -412,7 +412,7 @@
     <string name="device_offline_dialog_message">Pentru a face acest lucru este necesară o conexiune la rețea, doriți să schimbați acest lucru în setări?</string>
     <string name="device_offline_dialog_negative">Renunță</string>
     <string name="device_offline_dialog_positive">Configurări</string>
-    <string name="scan_first_product">Scanați primul produs</string>
+    <string name="scan_first_product">Scan your first product</string>
     <string name="device_on_mobile_data_warning_title">Informaţii</string>
     <string name="device_on_mobile_data_warning_message">Încărcarea prin datelre mobile este dezactivată, vă rugăm conectați-vă la WiFi sau modificați opțiunile în setări</string>
     <string name="device_on_mobile_data_warning_positive">Preferințe</string>
@@ -520,8 +520,9 @@
     <string name="notify_channel_description">Notificare pentru a arăta locația fișierului exportat</string>
     <string name="products_to_be_completed">Produse ce trebuie să fie finalizate</string>
     <string name="offline_notification_title">Contribuțiile offline pe care trebuie să le trimiți</string>
-    <string name="creator_history">Produs adăugat pe %1$s la %2$s CET de %3$s</string>
-    <string name="last_editor_history">Ultima editare a paginii produsului %1$s la %2$s CEST de %3$s</string>
+    <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Produs adăugat pe %1$s la %2$s CET de %3$s</string>
+    <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Ultima editare a paginii produsului %1$s la %2$s CEST de %3$s</string>
+    <!-- TODO: Add the placeholder in the string - important for several languages -->
     <string name="other_editors">Pagina produsului totodată editată și de </string>
     <string name="product_states">Product States</string>
     <string name="incomplete_states">Incomplete States</string>
@@ -532,11 +533,11 @@
     <string name="offline_product_addition_title">Adaugă un produs nou</string>
     <string name="productNameNull">Nume necunoscut</string>
     <string name="productAdditivesUnknown"></string>
-    <string name="productAdditivesTemplate">%1$d additives</string>
+    <string name="productAdditivesTemplate" comment="Do not modify the placeholder">%1$d additives</string>
     <plurals name="productAdditives">
-        <item quantity="one">%d aditiv</item>
+        <item quantity="one" comment="Do not change the placeholder">%d aditiv</item>
         <item quantity="few">%d aditivi</item>
-        <item quantity="other">%d aditivi</item>
+        <item quantity="other" comment="Do not change the placeholder">%d aditivi</item>
     </plurals>
     <string name="product_not_complete">Acest produs încă nu este complet.\nÎi poți adăuga tu câteva detalii?</string>
     <string name="addProductOffline">Pari a fi deconectat. Adaugi produsul %s folosind modul offline?</string>
@@ -549,7 +550,7 @@
     <string name="initial_loading">Încărcare inițială</string>
     <string name="preferences">Preferințe</string>
     <string name="OFFlogo">Sigla Open Food Facts</string>
-    <string name="loading_product">Se încarcă produse%s</string>
+    <string name="loading_product" comment="Do not modify the placeholder">Se încarcă produse%s</string>
     <string name="image_not_defined_for_language">Nicio imagine pentru limba selectată. Poți adăuga tu una</string>
     <string name="error_adding_ingredients">Au apărut probleme în timp ce încercaţi să adăugaţi ingredientele produsului</string>
     <string name="unable_to_extract_ingredients">Imposibil de detectat ingredientele din imagine</string>
@@ -589,7 +590,7 @@
     <string name="your_version">Al tău</string>
     <string name="ingredients_picture">Imaginea cu ingredientele</string>
     <string name="packaging">Reciclabil</string>
-    <string name="take_ingredients_picture_to_extract">(Te rog fă o fotografie a ingredientelor pentru a le extrage automat)</string>
+    <string name="take_ingredients_picture_to_extract">(Please take a photo of the ingredients to automatically extract them)</string>
     <string name="ingredients_list">Lista de ingrediente</string>
     <string name="ingredients_hint" tools:ignore="StringFormatInvalid">Păstrați ordinea, indicați procentul atunci când este specificat, separați cu virgulă sau folosiți -, utilizați () pentru ingredientele unui ingredient, înconjurați alergenii cu _</string>
     <string name="extract_ingredients">Extrageți ingredientele</string>
@@ -674,10 +675,10 @@
     <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
     <string name="add_category_prompt_text">Adăugați o categorie pentru a ajuta la completarea produsului</string>
     <string name="add_nutrient_category_prompt_text">Add nutrition facts and a category to compute the Nutri-Score</string>
-    <string name="couldnot_compute_ecoscore_prompt_text">We could not compute an Eco-Score for this product. It might be that the category is not specific enough or that we don\'t have supporting data for this category. If you believe this is an error, you can mail us by clicking below.</string>
-    <string name="add_labels_origins_prompt_text">The Eco-Score takes into account environmental labels and origins of the ingredients. Please take them into photo or edit the product so that they can be taken into account</string>
-    <string name="add_labels_prompt_text">The Eco-Score takes into account environmental labels. Please take them into photo or edit the product so that they can be taken into account</string>
-    <string name="add_origins_prompt_text">The Eco-Score takes into account the origins of the ingredients. Please take them into photo (ingredient list and/or any geographic claim) or edit the product so that they can be taken into account</string>
+    <string name="couldnot_compute_ecoscore_prompt_text" comment="Do not translate Eco-Score">We could not compute an Eco-Score for this product. It might be that the category is not specific enough or that we don\'t have supporting data for this category. If you believe this is an error, you can mail us by clicking below.</string>
+    <string name="add_labels_origins_prompt_text" comment="Do not translate Eco-Score">The Eco-Score takes into account environmental labels and origins of the ingredients. Please take them into photo or edit the product so that they can be taken into account</string>
+    <string name="add_labels_prompt_text" comment="Do not translate Eco-Score">The Eco-Score takes into account environmental labels. Please take them into photo or edit the product so that they can be taken into account</string>
+    <string name="add_origins_prompt_text" comment="Do not translate Eco-Score">The Eco-Score takes into account the origins of the ingredients. Please take them into photo (ingredient list and/or any geographic claim) or edit the product so that they can be taken into account</string>
     <string name="category_game_btn">Ajutați la catalogarea produselor</string>
     <string name="version_string">Open Food Facts Android App</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
@@ -735,14 +736,14 @@
     <string name="scan_tooltip">You can slide up the card for more details</string>
     <string name="add_an_allergen">Adăugați un alergen</string>
     <string name="add_a_list">Adăugați o listă</string>
-    <string name="edit_image">Edit Image</string>
-    <string name="cant_edit_image_not_yet_uploaded">The new image is not yet uploaded. Please, wait before editing it</string>
-    <string name="unselect_image">Unselect Image</string>
+    <string name="edit_image">Edit Photo</string>
+    <string name="cant_edit_image_not_yet_uploaded">The new photo is not yet uploaded. Please wait before editing it</string>
+    <string name="unselect_image">Unselect Photo</string>
     <string name="choose_default_language">Select product language</string>
     <string name="barcode">Cod de bare</string>
     <string name="productAdditivesNone">Fără aditivi</string>
     <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
-    <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
+    <string name="required_for_ecoscore" comment="Do not translate Eco-Score">(Required to calculate the Eco-Score)</string>
     <string name="hint_origin">Examples: USA, France, Italy</string>
     <!-- Used for diets AddOn -->
     <string name="history_network_error">The product couldn\'t be loaded. Please try again when you are back online.</string>
@@ -758,7 +759,7 @@
     <string name="image_edit_tip">Tap on the image to zoom it, change it, crop it, rotate it and more…</string>
     <string name="ingredients_in_this_product_are">Ingredients in this product are %1$s.</string>
     <string name="ingredients_in_this_product">Ingredients in this product that are %1$s:</string>
-    <string name="display_analysis_tag_status">Display %1$s status</string>
+    <string name="display_analysis_tag_status" comment="Do not change the placeholder">Display %1$s status</string>
     <string name="unknown_status_no_translation">We couldn\'t assess the status of the product due to unrecognized ingredients.</string>
     <string name="help_translate_ingredients">Ajută la traducerea ingredientelor în limba ta</string>
     <string name="unknown_status_missing_ingredients">We couldn\'t assess the status of the product due to missing ingredients.</string>
@@ -796,11 +797,11 @@
     <string name="content_exit">Press here to return to the product</string>
     <string name="icon_label">Labels icon</string>
     <string name="icon_categories">Categories icon</string>
-    <string name="icon_emb">EMB code icon</string>
+    <string name="icon_emb">Traceability code icon</string>
     <string name="product_front_image">Product front image</string>
-    <string name="brand_hint">Examples: Coca-Cola, Nestle, etc…</string>
+    <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
     <string name="sign_in_or_register">Sign in or register</string>
-    <string name="hunger_game_call_to_action">Help classify more %1$s</string>
+    <string name="hunger_game_call_to_action" comment="Do not change the placeholder">Help classify more %1$s</string>
     <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s products (plus the ones you will contribute) in the world.</string>
     <string name="enabled">Enabled</string>
     <!-- Application theme settings -->
@@ -809,16 +810,16 @@
     <string name="night">Night</string>
     <string name="report_email_chooser_title">Send a report email</string>
     <!-- Changelog String -->
-    <string name="changelog_translation_help">Want to see this changelog in %s?\nJoin the translation team!</string>
+    <string name="changelog_translation_help" comment="Do not change the placeholder">Want to see this changelog in %s?\nJoin the translation team!</string>
     <string name="whats_new">What\'s new with Open Food Facts?</string>
     <!-- New onboarding slides -->
     <string name="title_welcome_intro">Join the food revolution</string>
     <string name="msg_welcome_intro">Scan food, Take photos, Help transform the food system</string>
-    <string name="title_welcome_nutriscore">Obțineți Nutri-Score</string>
+    <string name="title_welcome_nutriscore" comment="Do not translate Nutri-Score">Obțineți Nutri-Score</string>
     <string name="msg_welcome_nutriscore">A simple synthesis of the nutritional quality of your food</string>
     <string name="title_welcome_nova">Avoid ultra-processed foods</string>
     <string name="msg_welcome_nova">Reduce the amount of ultra-processed foods in your diet.</string>
-    <string name="title_welcome_ecoscore">Eco-Score</string>
+    <string name="title_welcome_ecoscore" comment="Do not translate Eco-Score">Eco-Score</string>
     <string name="msg_welcome_ecoscore">A synthesis of the environmental impact of your food.</string>
     <string name="title_welcome_matomo">Send anonymous analytics</string>
     <string name="msg_welcome_matomo">Help the Open Food Facts volunteers to improve the app. You decide if you send anonymous analytics.\n\nIf you change your mind this option can be enabled and disabled at any time from the settings.</string>

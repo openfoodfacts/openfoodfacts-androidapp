@@ -170,17 +170,17 @@
     <string name="alert_dialog_warning_title">Varování</string>
     <string name="alert_dialog_warning_msg_user">Uživatelské jméno / heslo se změnilo, aktualizujte prosím informace</string>
     <string name="toast_retrieving">Načítá se…</string>
-    <string name="txtBarcode">Čárový kód:</string>
-    <string name="txtCategories">Kategorie:</string>
-    <string name="txtLabels">Označení, certifikáty, ocenění:</string>
-    <string name="txtEMB">Kód EMB:</string>
-    <string name="txtIngredients">Složení:</string>
+    <string name="txtBarcode">Barcode:</string>
+    <string name="txtCategories">Categories:</string>
+    <string name="txtLabels">Labels, certifications, awards: </string>
+    <string name="txtEMB">Traceability codes: </string>
+    <string name="txtIngredients">Ingredients list: </string>
     <string name="Donate">Podpořit</string>
     <string name="Donation">Kliknutím zde můžete podpořit Open Food Facts</string>
-    <string name="txtSubstances">Látky nebo produkty vyvolávající alergie nebo nesnášenlivost:</string>
-    <string name="txtAdditives">Aditiva:</string>
-    <string name="txtTraces">Stopy :</string>
-    <string name="txtMayBeFromPalmOilProduct">Přísady, které mohou být z palmového oleje:</string>
+    <string name="txtSubstances">Substances or products causing allergies or intolerances: </string>
+    <string name="txtAdditives">Additives: </string>
+    <string name="txtTraces">Traces: </string>
+    <string name="txtMayBeFromPalmOilProduct">Ingredients that may be from palm oil: </string>
     <string name="txtPalmOilProduct">Přísady z palmového oleje:</string>
     <string name="txtServingSize">Velikost porce :</string>
     <string name="txtNutrientLevel100g">Výživové údaje na 100 g:</string>
@@ -261,7 +261,7 @@
     <string name="user_ask_rate_app">Skvěle! Dejte ostatním vědět, co si o aplikaci myslíte!</string>
     <string name="rate_app">Ohodnoťte aplikaci</string>
     <string name="no_thx">Ne, díky</string>
-    <string name="feedback_form_url">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
+    <string name="feedback_form_url" comment="Please ask teolemon to duplicate the feedback form and give you the right URL">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">Historie</string>
     <string name="clear_history">Smazat historii</string>
@@ -274,13 +274,13 @@
     <string name="no_brand">Chybí výrobce</string>
     <string name="no_title">Bez názvu</string>
     <!-- Nutrition info tab -->
-    <string name="display_fact">Výživové údaje na %1$s výrobku</string>
+    <string name="display_fact" comment="Do not modify the placeholder">Výživové údaje na %1$s výrobku</string>
     <string name="check_facts">Zkontrolovat</string>
     <string name="nutrition">Výživové údaje</string>
     <string name="calculated_nutrition">Vypočítané výživové údaje</string>
     <string name="please_enter_weight">Zadejte hmotnost produktu, prosím</string>
     <string name="enter_weight">Zadejte hmotnost produktu</string>
-    <string name="calculate_nutrition_facts">Přepočítat výživové údaje na dané množství</string>
+    <string name="calculate_nutrition_facts">Calculate nutrition facts for a specific quantity</string>
     <string name="nutrition_carbohydrate">Sacharidy</string>
     <string name="nutrition_cholesterol">Cholesterol</string>
     <string name="nutrition_energy">Energie</string>
@@ -525,8 +525,9 @@
     <string name="notify_channel_description">Oznámení pro zobrazení umístění exportovaného souboru</string>
     <string name="products_to_be_completed">Nedokončené</string>
     <string name="offline_notification_title">Offline příspěvky, které je potřeba poslat</string>
-    <string name="creator_history">Product added on %1$s at %2$s CET by %3$s</string>
-    <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by %3$s </string>
+    <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Product added on %1$s at %2$s CET by %3$s</string>
+    <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Last edit of product page on %1$s at %2$s CEST by %3$s </string>
+    <!-- TODO: Add the placeholder in the string - important for several languages -->
     <string name="other_editors">Stránka produktu také editoval(a) </string>
     <string name="product_states">Product States</string>
     <string name="incomplete_states">Incomplete States</string>
@@ -537,12 +538,12 @@
     <string name="offline_product_addition_title">Přidat nový výrobek</string>
     <string name="productNameNull">Neznámé jméno</string>
     <string name="productAdditivesUnknown"></string>
-    <string name="productAdditivesTemplate">%1$d additives</string>
+    <string name="productAdditivesTemplate" comment="Do not modify the placeholder">%1$d additives</string>
     <plurals name="productAdditives">
-        <item quantity="one">%d additive</item>
+        <item quantity="one" comment="Do not change the placeholder">%d additive</item>
         <item quantity="few">%d additives</item>
         <item quantity="many">%d additives</item>
-        <item quantity="other">%d additives</item>
+        <item quantity="other" comment="Do not change the placeholder">%d additives</item>
     </plurals>
     <string name="product_not_complete">Tento produkt ještě není kompletní. \nMůžete přidat nějaké podrobnosti?</string>
     <string name="addProductOffline">Vypadá to, že jste offline. Chcete přidat výrobek %s v offline režimu?</string>
@@ -555,7 +556,7 @@
     <string name="initial_loading">Načítám</string>
     <string name="preferences">Předvolby</string>
     <string name="OFFlogo">Open Food Facts</string>
-    <string name="loading_product">Načítám výrobek %s</string>
+    <string name="loading_product" comment="Do not modify the placeholder">Načítám výrobek %s</string>
     <string name="image_not_defined_for_language">Pro vybraný jazyk nemáme žádné snímky. Můžete je přidat</string>
     <string name="error_adding_ingredients">Při pokusu o přidání složení, se něco pokazilo</string>
     <string name="unable_to_extract_ingredients">Ze snímku se nepodařilo rozpoznat složení</string>
@@ -589,13 +590,13 @@
     <string name="no_internet_connection">Zdá se, že nemáte připojení k internetu. Obrázky budou nahrány, až bude síť k dispozici</string>
     <string name="no_internet_unable_to_extract_ingredients">Bez připojení k internetu nelze rozpoznat složení</string>
     <string name="percent">%1$d%%</string>
-    <string name="overview">Shrnutí</string>
+    <string name="overview">Přehled</string>
     <string name="ingredients">Složení</string>
     <string name="nutrition_facts">Nutriční hodnoty</string>
     <string name="your_version">Vaše</string>
     <string name="ingredients_picture">Snímek složení</string>
     <string name="packaging">Recycling</string>
-    <string name="take_ingredients_picture_to_extract">(Vyfotografujte prosím složení výrobku, aby mohlo být aut. rozpoznáno.)</string>
+    <string name="take_ingredients_picture_to_extract">(Please take a photo of the ingredients to automatically extract them)</string>
     <string name="ingredients_list">Složení</string>
     <string name="ingredients_hint" tools:ignore="StringFormatInvalid">Zachovejte pořadí složek. Pokud je uveden, tak nezapomeňte uvést podíl složky v %. Jednotlivé složky oddělte čárkou. Pokud je složka z více přísad, uveďte je do závorky (). Alergeny oddělte z obou stran podtržítkem _</string>
     <string name="extract_ingredients">Aut. rozpoznat složení</string>
@@ -680,10 +681,10 @@
     <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
     <string name="add_category_prompt_text">Add a category to help complete the product</string>
     <string name="add_nutrient_category_prompt_text">Add a category and more details to help complete the product</string>
-    <string name="couldnot_compute_ecoscore_prompt_text">We could not compute an Eco-Score for this product. It might be that the category is not specific enough or that we don\'t have supporting data for this category. If you believe this is an error, you can mail us by clicking below.</string>
-    <string name="add_labels_origins_prompt_text">The Eco-Score takes into account environmental labels and origins of the ingredients. Please take them into photo or edit the product so that they can be taken into account</string>
-    <string name="add_labels_prompt_text">The Eco-Score takes into account environmental labels. Please take them into photo or edit the product so that they can be taken into account</string>
-    <string name="add_origins_prompt_text">The Eco-Score takes into account the origins of the ingredients. Please take them into photo (ingredient list and/or any geographic claim) or edit the product so that they can be taken into account</string>
+    <string name="couldnot_compute_ecoscore_prompt_text" comment="Do not translate Eco-Score">We could not compute an Eco-Score for this product. It might be that the category is not specific enough or that we don\'t have supporting data for this category. If you believe this is an error, you can mail us by clicking below.</string>
+    <string name="add_labels_origins_prompt_text" comment="Do not translate Eco-Score">The Eco-Score takes into account environmental labels and origins of the ingredients. Please take them into photo or edit the product so that they can be taken into account</string>
+    <string name="add_labels_prompt_text" comment="Do not translate Eco-Score">The Eco-Score takes into account environmental labels. Please take them into photo or edit the product so that they can be taken into account</string>
+    <string name="add_origins_prompt_text" comment="Do not translate Eco-Score">The Eco-Score takes into account the origins of the ingredients. Please take them into photo (ingredient list and/or any geographic claim) or edit the product so that they can be taken into account</string>
     <string name="category_game_btn">Pomozte roztřídit produkty</string>
     <string name="version_string">Open Food Facts Android App</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
@@ -741,14 +742,14 @@
     <string name="scan_tooltip">You can slide up the card for more details</string>
     <string name="add_an_allergen">Přidat alergen</string>
     <string name="add_a_list">Nový seznam</string>
-    <string name="edit_image">Upravit snímek</string>
-    <string name="cant_edit_image_not_yet_uploaded">Nový obrázek ještě není nahrán. Před úpravou prosím počkejte</string>
-    <string name="unselect_image">Zrušit výběr obrázku</string>
+    <string name="edit_image">Upravit obrázek</string>
+    <string name="cant_edit_image_not_yet_uploaded">The new photo is not yet uploaded. Please wait before editing it</string>
+    <string name="unselect_image">Zrušit výběr fotky</string>
     <string name="choose_default_language">Vyberte jazyk produktu</string>
     <string name="barcode">Čárový kód</string>
     <string name="productAdditivesNone">No additives</string>
     <string name="error_uploading_photo">Při nahrávání nové fotografie došlo k chybě</string>
-    <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
+    <string name="required_for_ecoscore" comment="Do not translate Eco-Score">(Required to calculate the Eco-Score)</string>
     <string name="hint_origin">Examples: USA, France, Italy</string>
     <!-- Used for diets AddOn -->
     <string name="history_network_error">The product couldn\'t be loaded. Please try again when you are back online.</string>
@@ -764,7 +765,7 @@
     <string name="image_edit_tip">Tap on the image to zoom it, change it, crop it, rotate it and more…</string>
     <string name="ingredients_in_this_product_are">Složení tohoto produktu je %1$s.</string>
     <string name="ingredients_in_this_product">Ingredients in this product that are %1$s:</string>
-    <string name="display_analysis_tag_status">Zobrazovat stav %1$s</string>
+    <string name="display_analysis_tag_status" comment="Do not change the placeholder">Zobrazovat stav %1$s</string>
     <string name="unknown_status_no_translation">We couldn\'t assess the status of the product due to unrecognized ingredients.</string>
     <string name="help_translate_ingredients">Pomozte přeložit ingredience do vašeho jazyka</string>
     <string name="unknown_status_missing_ingredients">We couldn\'t assess the status of the product due to missing ingredients.</string>
@@ -802,11 +803,11 @@
     <string name="content_exit">Stisknutím se vrátíte k produktu</string>
     <string name="icon_label">Ikona štítků</string>
     <string name="icon_categories">Ikona kategorií</string>
-    <string name="icon_emb">EMB code icon</string>
+    <string name="icon_emb">Traceability code icon</string>
     <string name="product_front_image">Přední strana výrobku</string>
     <string name="brand_hint">Například: Kofola, Opavia…</string>
     <string name="sign_in_or_register">Přihlaste se nebo se zaregistrujte</string>
-    <string name="hunger_game_call_to_action">Pomozte klasifikovat více %1$s</string>
+    <string name="hunger_game_call_to_action" comment="Do not change the placeholder">Pomozte klasifikovat více %1$s</string>
     <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s products (plus the ones you will contribute) in the world.</string>
     <string name="enabled">Enabled</string>
     <!-- Application theme settings -->
@@ -815,16 +816,16 @@
     <string name="night">Night</string>
     <string name="report_email_chooser_title">Send a report email</string>
     <!-- Changelog String -->
-    <string name="changelog_translation_help">Want to see this changelog in %s?\nJoin the translation team!</string>
+    <string name="changelog_translation_help" comment="Do not change the placeholder">Want to see this changelog in %s?\nJoin the translation team!</string>
     <string name="whats_new">What\'s new with Open Food Facts?</string>
     <!-- New onboarding slides -->
     <string name="title_welcome_intro">Join the food revolution</string>
     <string name="msg_welcome_intro">Scan food, Take photos, Help transform the food system</string>
-    <string name="title_welcome_nutriscore">Zjistěte Nutri-Score</string>
+    <string name="title_welcome_nutriscore" comment="Do not translate Nutri-Score">Zjistěte Nutri-Score</string>
     <string name="msg_welcome_nutriscore">A simple synthesis of the nutritional quality of your food</string>
     <string name="title_welcome_nova">Avoid ultra-processed foods</string>
     <string name="msg_welcome_nova">Reduce the amount of ultra-processed foods in your diet.</string>
-    <string name="title_welcome_ecoscore">Eco-Score</string>
+    <string name="title_welcome_ecoscore" comment="Do not translate Eco-Score">Eco-Score</string>
     <string name="msg_welcome_ecoscore">A synthesis of the environmental impact of your food.</string>
     <string name="title_welcome_matomo">Send anonymous analytics</string>
     <string name="msg_welcome_matomo">Help the Open Food Facts volunteers to improve the app. You decide if you send anonymous analytics.\n\nIf you change your mind this option can be enabled and disabled at any time from the settings.</string>
