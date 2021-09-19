@@ -80,23 +80,19 @@ class AllergensAlertFragment : NavigationBaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // OnClick
+        adapter = AllergensAdapter {
+            removeAllergen(it)
+        }
+        binding.allergensRecycle.adapter = adapter
+        binding.allergensRecycle.layoutManager = LinearLayoutManager(view.context)
+        binding.allergensRecycle.setHasFixedSize(true)
+        adapter.registerAdapterDataObserver(dataObserver)
+        dataObserver.onChanged()
         binding.btnAdd.setOnClickListener { addAllergen() }
 
-        lifecycleScope.launch {
+        lifecycleScope.launchWhenStarted {
             awaitAll(
-                async {
-                    updateEnabledAllergens(appLang)
-
-                    adapter = AllergensAdapter(productRepository, enabledAllergens!!)
-
-                    binding.allergensRecycle.adapter = adapter
-                    binding.allergensRecycle.layoutManager = LinearLayoutManager(view.context)
-                    binding.allergensRecycle.setHasFixedSize(true)
-
-                    adapter.registerAdapterDataObserver(dataObserver)
-                    dataObserver.onChanged()
-                },
+                async { updateEnabledAllergens(appLang) },
                 async { updateAllergensFromDao(appLang) }
             )
             binding.btnAdd.isEnabled = true
@@ -129,7 +125,6 @@ class AllergensAlertFragment : NavigationBaseFragment() {
      * Add an allergen to be checked for when browsing products.
      */
     private fun addAllergen() {
-
         if (enabledAllergens != null && !allergensFromDao.isNullOrEmpty()) {
 
             lifecycleScope.launch {
@@ -143,8 +138,10 @@ class AllergensAlertFragment : NavigationBaseFragment() {
                         viewLifecycleOwner.lifecycleScope.launch {
                             productRepository.setAllergenEnabled(allergens[position].allergenTag, true).await()
                         }
-                        enabledAllergens!!.add(allergens[position])
-                        adapter.notifyItemInserted(enabledAllergens!!.size - 1)
+                        enabledAllergens?.let {
+                            it.add(allergens[position])
+                            adapter.updateItems(it)
+                        }
                         binding.allergensRecycle.scrollToPosition(adapter.itemCount - 1)
                         matomoAnalytics.trackEvent(AnalyticsEvent.AllergenAlertCreated(allergens[position].allergenTag))
                     }.show()
@@ -167,8 +164,9 @@ class AllergensAlertFragment : NavigationBaseFragment() {
                 }
 
                 mSettings.edit { putBoolean("errorAllergens", false) }
-                adapter.allergens = enabledAllergens!!
-                adapter.notifyDataSetChanged()
+                enabledAllergens?.let {
+                    adapter.updateItems(it)
+                }
 
                 updateAllergens()
 
@@ -184,6 +182,18 @@ class AllergensAlertFragment : NavigationBaseFragment() {
                 .setMessage(R.string.info_download_data_connection)
                 .setNeutralButton(android.R.string.ok) { d, _ -> d.dismiss() }
                 .show()
+        }
+    }
+
+    private fun removeAllergen(allergen: AllergenName) {
+        lifecycleScope.launch {
+            enabledAllergens?.let {
+                it.remove(allergen)
+                adapter.updateItems(it)
+            }
+            withContext(Dispatchers.IO) {
+                productRepository.setAllergenEnabled(allergen.allergenTag, false).await()
+            }
         }
     }
 
