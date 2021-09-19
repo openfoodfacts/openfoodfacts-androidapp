@@ -72,7 +72,7 @@ dependencies {
 
 
     // ML Kit barcode Scanner
-    implementation("com.google.mlkit:barcode-scanning:16.2.0")
+    implementation("com.google.mlkit:barcode-scanning:17.0.0")
 
 
     compileOnly("javax.annotation:javax.annotation-api:1.3.2")
