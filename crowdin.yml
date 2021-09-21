@@ -28,17 +28,18 @@ files:
     preserve_hierarchy: true
     languages_mapping:
       two_letters_code:
-        zh-CN: zh-rCN
-        en-GB: en-rGB
         pt-BR: pt-rBR
-        en-AU: en-rAU
         pt-PT: pt-rPT
+        zh-CN: zh-rCN
+        en-AU: en-rAU
+        en-GB: en-rGB
         nl-BE: nl-rBE
         nl: nl
-        zh-HK: zh-rHK
         zh-TW: zh-rTW
-        sr-CS: sr
-        sr: rs
+        zh-HK: zh-rHK
+        sr-CS: sr-rRS # Serbian, Latin
+        me: sr-rME
+        sr: sr # Serbian, Cyrillic
         he: iw
         id: in
         yi: ji
@@ -50,15 +51,17 @@ files:
     languages_mapping:
       two_letters_code:
         pt-BR: pt-rBR
-        zh-CN: zh-rCN
-        en-GB: en-rGB
-        en-AU: en-rAU
-        nl-BE: nl-rBE
         pt-PT: pt-rPT
-        zh-HK: zh-rHK
+        zh-CN: zh-rCN
+        en-AU: en-rAU
+        en-GB: en-rGB
+        nl-BE: nl-rBE
+        nl: nl
         zh-TW: zh-rTW
-        sr-CS: sr
-        sr: rs
+        zh-HK: zh-rHK
+        sr-CS: sr-rRS # Serbian, Latin
+        me: sr-rME
+        sr: sr # Serbian, Cyrillic
         he: iw
         id: in
         yi: ji
@@ -69,16 +72,18 @@ files:
     preserve_hierarchy: true
     languages_mapping:
       two_letters_code:
-        zh-CN: zh-rCN
-        en-GB: en-rGB
-        en-AU: en-rAU
         pt-BR: pt-rBR
-        nl-BE: nl-rBE
         pt-PT: pt-rPT
+        zh-CN: zh-rCN
+        en-AU: en-rAU
+        en-GB: en-rGB
+        nl-BE: nl-rBE
+        nl: nl
         zh-TW: zh-rTW
         zh-HK: zh-rHK
-        sr-CS: sr
-        sr: rs
+        sr-CS: sr-rRS # Serbian, Latin
+        me: sr-rME
+        sr: sr # Serbian, Cyrillic
         he: iw
         id: in
         yi: ji
@@ -89,16 +94,18 @@ files:
     preserve_hierarchy: true
     languages_mapping:
       two_letters_code:
-        zh-CN: zh-rCN
-        en-GB: en-rGB
-        en-AU: en-rAU
         pt-BR: pt-rBR
-        nl-BE: nl-rBE
         pt-PT: pt-rPT
+        zh-CN: zh-rCN
+        en-AU: en-rAU
+        en-GB: en-rGB
+        nl-BE: nl-rBE
+        nl: nl
         zh-TW: zh-rTW
         zh-HK: zh-rHK
-        sr-CS: sr
-        sr: rs
+        sr-CS: sr-rRS # Serbian, Latin
+        me: sr-rME
+        sr: sr # Serbian, Cyrillic
         he: iw
         id: in
         yi: ji
