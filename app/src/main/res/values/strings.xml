@@ -233,7 +233,6 @@
     <string name="txtSubstances">Substances or products causing allergies or intolerances: </string>
     <string name="txtAdditives">Additives: </string>
     <string name="txtTraces">Traces: </string>
-    <string name="txtPalmOilProduct">Ingredients from palm oil :</string>
     <string name="txtServingSize">Serving size :</string>
     <string name="txtNutrientLevel100g">Nutrient levels for 100g :</string>
     <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
@@ -282,7 +281,6 @@
     <string name="your_lists">Your lists</string>
     <string name="title_dialog_alert">Add alert</string>
 
-    <string name="select_camera">Select a Camera</string>
     <string name="ok_button">OK</string>
     <string name="login_button">Login</string>
     <string name="create_account_button">Create Account</string>
@@ -349,7 +347,6 @@
     <string name="nutriment_serving_size">Per portion : </string>
     <string name="action_manage_account">Manage account</string>
     <string name="action_contributes">Your contributions</string>
-    <string name="choose_energy_unit">Choose your preferred energy units for the nutrition table</string>
 
     <string name="logout_drawer">Logout</string>
     <string name="contribution_without_account">You can sign-in or create an Open Food Facts account to keep your contributions</string>
@@ -459,19 +456,14 @@
 
     <string name="next">NEXT</string>
     <string name="skip">SKIP</string>
-    <string name="start">GOT IT</string>
 
     <string name="off_mail" translatable="false">mailto:<u>contact@openfoodfacts.org</u></string>
     <string name="email_not_found">No email applications found</string>
-
-    <string name="airplane_mode_active_dialog_title">Airplane mode enabled</string>
-    <string name="airplane_mode_active_dialog_message">Airplane mode is enabled, please disable this to continue.</string>
 
     <string name="device_offline_dialog_title">Network unavailable</string>
 
     <string name="scan_first_product">Scan your first product</string>
 
-    <string name="device_on_mobile_data_warning_message">You have disabled upload on mobile data , please connect to WiFi or change this in preferences</string>
     <string name="changes_saved">Changes saved successfully</string>
     <string name="proceed">Proceed</string>
     <string name="preference_choose_language_dialog_title">Choose language</string>
@@ -607,7 +599,6 @@
     <string name="offline_product_addition_title">Add a new product</string>
     <string name="productNameNull">Name unknown</string>
     <string name="productAdditivesUnknown"> </string>
-    <string name="productAdditivesTemplate" comment="Do not modify the placeholder">%1$d additives</string>
     <plurals name="productAdditives">
         <item quantity="one" comment="Do not change the placeholder">%d additive</item>
         <item quantity="other" comment="Do not change the placeholder">%d additives</item>
@@ -634,7 +625,6 @@
     <string name="extract_url">Extract URL from QR-code</string>
     <string name="search_url">Search for official page URL</string>
     <string name="product_language">Product language : </string>
-    <string name="hint_emb_codes">Examples: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522, FSSL 10013011001409</string>
     <string name="official_website">Official website</string>
     <string name="scan_QR_code">Scan QR Code for product website</string>
     <string name="add_at_least_one_picture">Please add at least one picture of this product before proceeding</string>
@@ -647,7 +637,6 @@
     <string name="product_uploaded_successfully">Product uploaded successfully</string>
     <string name="no_internet_connection">You appear to have no internet connection, images will be uploaded when network is available</string>
     <string name="no_internet_unable_to_extract_ingredients">No internet connection. Unable to extract ingredients</string>
-    <string name="percent">%1$d%%</string>
     <string name="overview">Summary</string>
     <string name="ingredients">Ingredients</string>
     <string name="nutrition_facts">Nutrition Facts</string>
@@ -690,7 +679,6 @@
     <string name="additional_pictures">Additional Pictures</string>
     <string name="hint_product_pictures">(Add more pictures of the product. eg: recycling instructions, labels etc.)</string>
     <string name="uploading_image">Sending the photo</string>
-    <string name="uploading_nutrition_image">Sending the nutrition facts photo</string>
     <string name="edit_front_image">Edit the front photo</string>
     <string name="edit_nutrition_image">Edit the nutrition photo</string>
     <string name="edit_packaging_image">Edit the recycling photo</string>
@@ -774,7 +762,6 @@
     <string name="toast_import_csv">CSV imported successfully!</string>
 
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
-    <string name="image_prompt_language">Take a photo of the ingredients in</string>
     <string name="swipe_delete_tip">You can delete a list by swiping it left.</string>
 
     <!-- Used for diets AddOn -->
@@ -880,7 +867,6 @@
     <string name="sign_in_or_register">Sign in or register</string>
     <string name="hunger_game_call_to_action" comment="Do not change the placeholder">Help classify more %1$s</string>
     <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s food products (plus the ones you will contribute).</string>
-    <string name="enabled">Enabled</string>
 
     <!-- Application theme settings -->
     <string name="follow_system">Follow system</string>
