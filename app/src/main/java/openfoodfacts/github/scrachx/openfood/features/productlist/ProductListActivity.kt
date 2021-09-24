@@ -139,18 +139,18 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
             setInfo(binding.tvInfoYourListedProducts)
         }
         adapter = ProductListAdapter(
-                this,
-                productList.products.toMutableList(),
-                isLowBatteryMode,
-                picasso,
-                onItemClickListener = {
-                    lifecycleScope.launch { client.openProduct(it.barcode, this@ProductListActivity) }
-                }
+            this,
+            productList.products.toMutableList(),
+            isLowBatteryMode,
+            picasso,
+            onItemClickListener = {
+                lifecycleScope.launch { client.openProduct(it.barcode, this@ProductListActivity) }
+            }
         )
         binding.rvYourListedProducts.adapter = adapter
 
         ItemTouchHelper(SwipeController(this, this@ProductListActivity))
-                .attachToRecyclerView(binding.rvYourListedProducts)
+            .attachToRecyclerView(binding.rvYourListedProducts)
 
         binding.bottomNavigation.bottomNavigation.selectNavigationItem(0)
         binding.bottomNavigation.bottomNavigation.installBottomNavigation(this)
@@ -164,9 +164,9 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_your_listed_products, menu)
         listOf(
-                R.id.action_export_all_listed_products,
-                R.id.action_sort_listed_products,
-                R.id.action_share_list
+            R.id.action_export_all_listed_products,
+            R.id.action_sort_listed_products,
+            R.id.action_share_list
         ).forEach {
             menu.findItem(it).isVisible = adapter.products.isNotEmpty()
         }
@@ -242,19 +242,19 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
             val perm = Manifest.permission.WRITE_EXTERNAL_STORAGE
             when {
                 checkSelfPermission(
-                        this, perm
+                    this, perm
                 ) == PackageManager.PERMISSION_GRANTED -> {
                     exportAsCSV()
                     matomoAnalytics.trackEvent(AnalyticsEvent.ShoppingListExported)
                 }
                 shouldShowRequestPermissionRationale(this, perm) -> {
                     MaterialAlertDialogBuilder(this)
-                            .setTitle(R.string.action_about)
-                            .setMessage(R.string.permision_write_external_storage)
-                            .setNeutralButton(android.R.string.ok) { _, _ ->
-                                requestWriteLauncher.launch(perm)
-                            }
-                            .show()
+                        .setTitle(R.string.action_about)
+                        .setMessage(R.string.permision_write_external_storage)
+                        .setNeutralButton(android.R.string.ok) { _, _ ->
+                            requestWriteLauncher.launch(perm)
+                        }
+                        .show()
                 }
                 else -> {
                     requestWriteLauncher.launch(perm)
@@ -266,35 +266,35 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
         R.id.action_sort_listed_products -> {
             val sortTypes = if (isFlavors(OFF)) {
                 arrayOf(
-                        getString(R.string.by_title),
-                        getString(R.string.by_brand),
-                        getString(R.string.by_nutrition_grade),
-                        getString(R.string.by_barcode),
-                        getString(R.string.by_time)
+                    getString(R.string.by_title),
+                    getString(R.string.by_brand),
+                    getString(R.string.by_nutrition_grade),
+                    getString(R.string.by_barcode),
+                    getString(R.string.by_time)
                 )
             } else {
                 arrayOf(
-                        getString(R.string.by_title),
-                        getString(R.string.by_brand),
-                        getString(R.string.by_time),
-                        getString(R.string.by_barcode)
+                    getString(R.string.by_title),
+                    getString(R.string.by_brand),
+                    getString(R.string.by_time),
+                    getString(R.string.by_barcode)
                 )
             }
             MaterialAlertDialogBuilder(this)
-                    .setTitle(R.string.sort_by)
-                    .setItems(sortTypes) { _, position ->
-                        sortType = when (position) {
-                            0 -> TITLE
-                            1 -> BRAND
-                            2 -> if (isFlavors(OFF)) GRADE else TIME
-                            3 -> BARCODE
-                            else -> TIME
-                        }
-                        adapter.products.customSortBy(sortType)
-                        adapter.notifyDataSetChanged()
-                        binding.rvYourListedProducts.adapter = adapter
+                .setTitle(R.string.sort_by)
+                .setItems(sortTypes) { _, position ->
+                    sortType = when (position) {
+                        0 -> TITLE
+                        1 -> BRAND
+                        2 -> if (isFlavors(OFF)) GRADE else TIME
+                        3 -> BARCODE
+                        else -> TIME
                     }
-                    .show()
+                    adapter.products.customSortBy(sortType)
+                    adapter.notifyDataSetChanged()
+                    binding.rvYourListedProducts.adapter = adapter
+                }
+                .show()
             true
         }
         R.id.action_share_list -> {
@@ -318,18 +318,18 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
         }
         when {
             checkSelfPermission(
-                    baseContext, Manifest.permission.CAMERA
+                baseContext, Manifest.permission.CAMERA
             ) == PackageManager.PERMISSION_GRANTED -> {
                 startScanActivity()
             }
             shouldShowRequestPermissionRationale(this, Manifest.permission.CAMERA) -> {
                 MaterialAlertDialogBuilder(this)
-                        .setTitle(R.string.action_about)
-                        .setMessage(R.string.permission_camera)
-                        .setNeutralButton(android.R.string.ok) { _, _ ->
-                            requestCameraThenOpenScan.launch(Manifest.permission.CAMERA)
-                        }
-                        .show()
+                    .setTitle(R.string.action_about)
+                    .setMessage(R.string.permission_camera)
+                    .setNeutralButton(android.R.string.ok) { _, _ ->
+                        requestCameraThenOpenScan.launch(Manifest.permission.CAMERA)
+                    }
+                    .show()
             }
             else -> {
                 requestCameraThenOpenScan.launch(Manifest.permission.CAMERA)

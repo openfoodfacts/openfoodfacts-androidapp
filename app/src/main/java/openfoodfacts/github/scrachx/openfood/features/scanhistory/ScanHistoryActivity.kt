@@ -75,17 +75,17 @@ class ScanHistoryActivity : BaseActivity() {
             exportAsCSV()
         } else {
             MaterialAlertDialogBuilder(this)
-                    .setTitle(R.string.permission_title)
-                    .setMessage(R.string.permission_denied)
-                    .setNegativeButton(R.string.txtNo) { dialog, _ -> dialog.dismiss() }
-                    .setPositiveButton(R.string.txtYes) { dialog, _ ->
-                        startActivity(Intent().apply {
-                            action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
-                            data = Uri.fromParts("package", this@ScanHistoryActivity.packageName, null)
-                        })
-                        dialog.dismiss()
-                    }
-                    .show()
+                .setTitle(R.string.permission_title)
+                .setMessage(R.string.permission_denied)
+                .setNegativeButton(R.string.txtNo) { dialog, _ -> dialog.dismiss() }
+                .setPositiveButton(R.string.txtYes) { dialog, _ ->
+                    startActivity(Intent().apply {
+                        action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
+                        data = Uri.fromParts("package", this@ScanHistoryActivity.packageName, null)
+                    })
+                    dialog.dismiss()
+                }
+                .show()
         }
     }
 
@@ -204,12 +204,12 @@ class ScanHistoryActivity : BaseActivity() {
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                 if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
                     MaterialAlertDialogBuilder(this)
-                            .setTitle(R.string.action_about)
-                            .setMessage(R.string.permision_write_external_storage)
-                            .setPositiveButton(android.R.string.ok) { _, _ ->
-                                storagePermLauncher.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                            }
-                            .show()
+                        .setTitle(R.string.action_about)
+                        .setMessage(R.string.permision_write_external_storage)
+                        .setPositiveButton(android.R.string.ok) { _, _ ->
+                            storagePermLauncher.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                        }
+                        .show()
 
                 } else {
                     storagePermLauncher.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
@@ -262,12 +262,12 @@ class ScanHistoryActivity : BaseActivity() {
         if (ContextCompat.checkSelfPermission(baseContext, perm) != PackageManager.PERMISSION_GRANTED) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(this, perm)) {
                 MaterialAlertDialogBuilder(this)
-                        .setTitle(R.string.action_about)
-                        .setMessage(R.string.permission_camera)
-                        .setPositiveButton(android.R.string.ok) { _, _ ->
-                            cameraPermLauncher.launch(perm)
-                        }
-                        .show()
+                    .setTitle(R.string.action_about)
+                    .setMessage(R.string.permission_camera)
+                    .setPositiveButton(android.R.string.ok) { _, _ ->
+                        cameraPermLauncher.launch(perm)
+                    }
+                    .show()
             } else {
                 cameraPermLauncher.launch(perm)
             }
@@ -278,39 +278,39 @@ class ScanHistoryActivity : BaseActivity() {
 
     private fun showDeleteConfirmationDialog() {
         MaterialAlertDialogBuilder(this)
-                .setTitle(R.string.title_clear_history_dialog)
-                .setMessage(R.string.text_clear_history_dialog)
-                .setPositiveButton(android.R.string.ok) { _, _ -> lifecycleScope.launch { viewModel.clearHistory() } }
-                .setNegativeButton(android.R.string.cancel) { d, _ -> d.dismiss() }
-                .show()
+            .setTitle(R.string.title_clear_history_dialog)
+            .setMessage(R.string.text_clear_history_dialog)
+            .setPositiveButton(android.R.string.ok) { _, _ -> lifecycleScope.launch { viewModel.clearHistory() } }
+            .setNegativeButton(android.R.string.cancel) { d, _ -> d.dismiss() }
+            .show()
     }
 
     private fun showListSortingDialog() {
         val sortTypes = if (isFlavors(OFF)) arrayOf(
-                getString(R.string.by_title),
-                getString(R.string.by_brand),
-                getString(R.string.by_nutrition_grade),
-                getString(R.string.by_barcode),
-                getString(R.string.by_time)
+            getString(R.string.by_title),
+            getString(R.string.by_brand),
+            getString(R.string.by_nutrition_grade),
+            getString(R.string.by_barcode),
+            getString(R.string.by_time)
         ) else arrayOf(
-                getString(R.string.by_title),
-                getString(R.string.by_brand),
-                getString(R.string.by_time),
-                getString(R.string.by_barcode)
+            getString(R.string.by_title),
+            getString(R.string.by_brand),
+            getString(R.string.by_time),
+            getString(R.string.by_barcode)
         )
         MaterialAlertDialogBuilder(this)
-                .setTitle(R.string.sort_by)
-                .setItems(sortTypes) { _, which ->
-                    val newType = when (which) {
-                        0 -> TITLE
-                        1 -> BRAND
-                        2 -> if (isFlavors(OFF)) GRADE else TIME
-                        3 -> BARCODE
-                        else -> TIME
-                    }
-                    viewModel.updateSortType(newType)
+            .setTitle(R.string.sort_by)
+            .setItems(sortTypes) { _, which ->
+                val newType = when (which) {
+                    0 -> TITLE
+                    1 -> BRAND
+                    2 -> if (isFlavors(OFF)) GRADE else TIME
+                    3 -> BARCODE
+                    else -> TIME
                 }
-                .show()
+                viewModel.updateSortType(newType)
+            }
+            .show()
     }
 
     companion object {
