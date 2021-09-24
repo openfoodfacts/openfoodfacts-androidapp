@@ -17,19 +17,21 @@ package openfoodfacts.github.scrachx.openfood.features.productlists
 
 import android.app.ProgressDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.EditText
+import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.afollestad.materialdialogs.DialogAction
-import com.afollestad.materialdialogs.MaterialDialog
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.Observable
 import io.reactivex.ObservableEmitter
@@ -64,6 +66,7 @@ import java.io.InputStream
 import java.io.InputStreamReader
 import java.util.*
 import javax.inject.Inject
+
 
 @AndroidEntryPoint
 class ProductListsActivity : BaseActivity(), SwipeController.Actions {
@@ -135,41 +138,53 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
     }
 
     private fun showCreateListDialog(productToAdd: Product? = null) {
-        MaterialDialog.Builder(this)
-            .title(R.string.txt_create_new_list)
-            .alwaysCallInputCallback()
-            .input(R.string.create_new_list_list_name, R.string.empty, false) { dialog, listName ->
-                // validate if there is another list with the same name
-                val cannotAdd = checkListNameExist(listName.toString())
+        val inputEditText = EditText(this).apply {
+            setHint(R.string.create_new_list_list_name)
+        }
+        val view = FrameLayout(this).apply {
+            val margin = resources.getDimensionPixelSize(R.dimen.activity_horizontal_margin)
+            setPadding(margin, margin / 2, margin, margin / 2)
+            addView(inputEditText)
+        }
+        val dialog = MaterialAlertDialogBuilder(this)
+            .setCancelable(false)
+            .setTitle(R.string.txt_create_new_list)
+            .setView(view)
+            .setPositiveButton(R.string.dialog_create, null)
+            .setNegativeButton(R.string.dialog_cancel, null)
+            .show()
+        dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener {
+            // this enable to avoid dismissing dialog if list name already exist
+            val newListName = inputEditText.text?.toString()
 
-                dialog.inputEditText?.error = if (cannotAdd) resources.getString(R.string.error_duplicate_listname) else null
-                dialog.getActionButton(DialogAction.POSITIVE).isEnabled = !cannotAdd
+            if (!newListName.isNullOrEmpty() && !checkListNameExist(newListName)) {
+                inputEditText.error = null
+                addNewListName(newListName, productToAdd)
+                dialog.dismiss()
+            } else {
+                inputEditText.error = resources.getString(R.string.error_duplicate_listname)
             }
-            .positiveText(R.string.dialog_create)
-            .negativeText(R.string.dialog_cancel)
-            .onPositive { dialog, _ ->  // this enable to avoid dismissing dialog if list name already exist
-                matomoAnalytics.trackEvent(AnalyticsEvent.ShoppingListCreated)
-                val inputEditText = dialog.inputEditText!!
-                val listName = inputEditText.text.toString()
-                val productList = ProductLists(listName, if (productToAdd != null) 1 else 0)
+        }
+    }
 
-                adapter.lists.add(productList)
-                productListsDao.insert(productList)
+    private fun addNewListName(listName: String, productToAdd: Product?) {
+        matomoAnalytics.trackEvent(AnalyticsEvent.ShoppingListCreated)
+        val productList = ProductLists(listName, if (productToAdd != null) 1 else 0)
 
-                adapter.notifyDataSetChanged()
+        adapter.lists.add(productList)
+        productListsDao.insert(productList)
 
-                if (productToAdd != null) {
-                    val id = productList.id
-                    Intent(this@ProductListsActivity, ProductListActivity::class.java).apply {
-                        putExtra(KEY_LIST_ID, id)
-                        putExtra(KEY_LIST_NAME, listName)
-                        putExtra(KEY_PRODUCT_TO_ADD, productToAdd)
-                        startActivityForResult(this, 1)
-                    }
-                } else {
-                    dialog.dismiss()
-                }
-            }.show()
+        adapter.notifyDataSetChanged()
+
+        if (productToAdd != null) {
+            val id = productList.id
+            val intent = Intent(this@ProductListsActivity, ProductListActivity::class.java).apply {
+                putExtra(KEY_LIST_ID, id)
+                putExtra(KEY_LIST_NAME, listName)
+                putExtra(KEY_PRODUCT_TO_ADD, productToAdd)
+            }
+            startActivityForResult(intent, 1)
+        }
     }
 
     /**

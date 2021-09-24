@@ -44,7 +44,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.afollestad.materialdialogs.MaterialDialog
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_SHORT
 import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
@@ -139,8 +139,8 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
 
         // use VERTICAL divider
         val dividerItemDecoration = DividerItemDecoration(
-            binding.nutrimentsRecyclerView.context,
-            DividerItemDecoration.VERTICAL
+                binding.nutrimentsRecyclerView.context,
+                DividerItemDecoration.VERTICAL
         )
         binding.nutrimentsRecyclerView.addItemDecoration(dividerItemDecoration)
         binding.getNutriscorePrompt.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_box_blue_18dp, 0, 0, 0)
@@ -203,14 +203,14 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
             override fun onClick(view: View) {
                 val customTabsIntent = CustomTabsIntent.Builder().build()
                 customTabsIntent.intent.putExtra(
-                    "android.intent.extra.REFERRER",
-                    "android-app://${requireActivity().packageName}".toUri()
+                        "android.intent.extra.REFERRER",
+                        "android-app://${requireActivity().packageName}".toUri()
                 )
                 CustomTabActivityHelper.openCustomTab(
-                    requireActivity(),
-                    customTabsIntent,
-                    getString(R.string.url_nutrient_values).toUri(),
-                    WebViewFallback()
+                        requireActivity(),
+                        customTabsIntent,
+                        getString(R.string.url_nutrient_values).toUri(),
+                        WebViewFallback()
                 )
             }
         }
@@ -265,13 +265,13 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
             // Load Image if isLowBatteryMode is false
             if (!isLowBatteryMode) {
                 picasso
-                    .load(product.getImageNutritionUrl(langCode))
-                    .into(binding.imageViewNutrition)
+                        .load(product.getImageNutritionUrl(langCode))
+                        .into(binding.imageViewNutrition)
             } else {
                 binding.imageViewNutrition.visibility = GONE
             }
             picasso.load(product.getImageNutritionUrl(langCode))
-                .into(binding.imageViewNutrition)
+                    .into(binding.imageViewNutrition)
             nutrientsImageUrl = product.getImageNutritionUrl(langCode)
         }
 
@@ -280,8 +280,8 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
             binding.addPhotoLabel.visibility = GONE
             nutrientsImageUrl = mSendProduct!!.imgUploadNutrition
             picasso.load(LOCALE_FILE_SCHEME + nutrientsImageUrl)
-                .config(Bitmap.Config.RGB_565)
-                .into(binding.imageViewNutrition)
+                    .config(Bitmap.Config.RGB_565)
+                    .into(binding.imageViewNutrition)
         }
 
         // use this setting to improve performance if you know that changes
@@ -300,21 +300,21 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
         val energyKcal = nutriments[Nutriment.ENERGY_KCAL]
         if (energyKcal != null) {
             nutrimentListItems += NutrimentListItem(
-                getString(R.string.nutrition_energy_kcal),
-                nutriments.getEnergyKcalValue(false)?.value,
-                nutriments.getEnergyKcalValue(true)?.value,
-                ENERGY_KCAL,
-                energyKcal.modifier
+                    getString(R.string.nutrition_energy_kcal),
+                    nutriments.getEnergyKcalValue(false)?.value,
+                    nutriments.getEnergyKcalValue(true)?.value,
+                    ENERGY_KCAL,
+                    energyKcal.modifier
             )
         }
         val energyKj = nutriments[Nutriment.ENERGY_KJ]
         if (energyKj != null) {
             nutrimentListItems += NutrimentListItem(
-                getString(R.string.nutrition_energy_kj),
-                nutriments.getEnergyKjValue(false)?.value,
-                nutriments.getEnergyKjValue(true)?.value,
-                ENERGY_KJ,
-                energyKj.modifier
+                    getString(R.string.nutrition_energy_kj),
+                    nutriments.getEnergyKjValue(false)?.value,
+                    nutriments.getEnergyKjValue(true)?.value,
+                    ENERGY_KJ,
+                    energyKj.modifier
             )
         }
 
@@ -329,8 +329,8 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
         val carbohydrates = nutriments[Nutriment.CARBOHYDRATES]
         if (carbohydrates != null) {
             nutrimentListItems += BoldNutrimentListItem(
-                getString(R.string.nutrition_carbohydrate),
-                carbohydrates
+                    getString(R.string.nutrition_carbohydrate),
+                    carbohydrates
             )
             nutrimentListItems += getNutrimentItems(nutriments, CARBO_MAP)
         }
@@ -347,9 +347,9 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
 
         // salt and alcohol
         val map = mapOf(
-            Nutriment.SALT to R.string.nutrition_salt,
-            Nutriment.SODIUM to R.string.nutrition_sodium,
-            Nutriment.ALCOHOL to R.string.nutrition_alcohol
+                Nutriment.SALT to R.string.nutrition_salt,
+                Nutriment.SODIUM to R.string.nutrition_sodium,
+                Nutriment.ALCOHOL to R.string.nutrition_alcohol
         )
         nutrimentListItems += getNutrimentItems(nutriments, map)
 
@@ -403,10 +403,10 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
             if (fat != null && fatNutriment != null) {
                 val fatNutrimentLevel = fat.getLocalize(requireActivity())
                 levelItemList += NutrientLevelItem(
-                    getString(R.string.txtFat),
-                    fatNutriment.getPer100gDisplayString(),
-                    fatNutrimentLevel,
-                    fat.getImgRes(),
+                        getString(R.string.txtFat),
+                        fatNutriment.getPer100gDisplayString(),
+                        fatNutrimentLevel,
+                        fat.getImgRes(),
                 )
             }
 
@@ -414,10 +414,10 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
             if (saturatedFat != null && saturatedFatNutriment != null) {
                 val saturatedFatLocalize = saturatedFat.getLocalize(requireActivity())
                 levelItemList += NutrientLevelItem(
-                    getString(R.string.txtSaturatedFat),
-                    saturatedFatNutriment.getPer100gDisplayString(),
-                    saturatedFatLocalize,
-                    saturatedFat.getImgRes(),
+                        getString(R.string.txtSaturatedFat),
+                        saturatedFatNutriment.getPer100gDisplayString(),
+                        saturatedFatLocalize,
+                        saturatedFat.getImgRes(),
                 )
             }
 
@@ -425,20 +425,20 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
             if (sugars != null && sugarsNutriment != null) {
                 val sugarsLocalize = sugars.getLocalize(requireActivity())
                 levelItemList += NutrientLevelItem(
-                    getString(R.string.txtSugars),
-                    sugarsNutriment.getPer100gDisplayString(),
-                    sugarsLocalize,
-                    sugars.getImgRes(),
+                        getString(R.string.txtSugars),
+                        sugarsNutriment.getPer100gDisplayString(),
+                        sugarsLocalize,
+                        sugars.getImgRes(),
                 )
             }
 
             val saltNutriment = nutriments[Nutriment.SALT]
             if (salt != null && saltNutriment != null) {
                 levelItemList += NutrientLevelItem(
-                    getString(R.string.txtSalt),
-                    saltNutriment.getPer100gDisplayString(),
-                    salt.getLocalize(requireActivity()),
-                    salt.getImgRes()
+                        getString(R.string.txtSalt),
+                        saltNutriment.getPer100gDisplayString(),
+                        salt.getLocalize(requireActivity()),
+                        salt.getImgRes()
                 )
             }
             drawNutritionGrade()
@@ -503,13 +503,13 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
     private fun openFullScreen() {
         if (nutrientsImageUrl != null) {
             FullScreenActivityOpener.openForUrl(
-                this,
-                client,
-                product,
-                ProductImageField.NUTRITION,
-                nutrientsImageUrl!!,
-                binding.imageViewNutrition,
-                localeManager.getLanguage()
+                    this,
+                    client,
+                    product,
+                    ProductImageField.NUTRITION,
+                    nutrientsImageUrl!!,
+                    binding.imageViewNutrition,
+                    localeManager.getLanguage()
             )
         } else {
             // take a picture
@@ -525,35 +525,32 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
     }
 
     private fun calculateNutritionFacts() {
-        val dialog = MaterialDialog.Builder(requireActivity()).run {
-            title(R.string.calculate_nutrition_facts)
-            customView(R.layout.dialog_calculate_calories, false)
-            dismissListener {
-                requireActivity().hideKeyboard()
-            }
-            build()
-        }.apply { show() }
+        val dialog = MaterialAlertDialogBuilder(requireContext())
+                .setTitle(R.string.calculate_nutrition_facts)
+                .setView(R.layout.dialog_calculate_calories)
+                .setOnDismissListener {
+                    requireActivity().hideKeyboard()
+                }
+                .show()
 
-
-        val weightText = dialog.findViewById(R.id.edit_text_weight) as EditText
-
-        (dialog.findViewById(R.id.spinner_weight) as Spinner).apply {
+        (dialog.findViewById(R.id.spinner_weight) as? Spinner)?.apply {
             onItemSelectedListener = object : OnItemSelectedListener {
-                override fun onNothingSelected(adapterView: AdapterView<*>?) = Unit // We don't care
+                override fun onNothingSelected(adapterView: AdapterView<*>?) = Unit
 
                 override fun onItemSelected(adapterView: AdapterView<*>?, view: View, i: Int, l: Long) {
-                    val btn = dialog.findViewById(R.id.txt_calories_result) as Button
-
-                    btn.setOnClickListener {
-                        val weight = weightText.text.toString().toFloatOrNull()
-                        if (weightText.text.isEmpty() || weight == null) {
+                    (dialog.findViewById(R.id.txt_calories_result) as? Button)?.setOnClickListener {
+                        val weight = (dialog.findViewById(R.id.edit_text_weight) as? EditText)
+                                ?.text
+                                ?.toString()
+                                ?.toFloatOrNull()
+                        if (weight == null) {
                             Snackbar.make(binding.root, resources.getString(R.string.please_enter_weight), LENGTH_SHORT).show()
                         } else {
                             CalculateDetailsActivity.start(
-                                requireActivity(),
-                                product,
-                                selectedItem.toString(),
-                                weight
+                                    requireActivity(),
+                                    product,
+                                    selectedItem.toString(),
+                                    weight
                             )
                             dialog.dismiss()
                         }
@@ -566,10 +563,10 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
     private fun loadNutritionPhoto(photoFile: File) {
         // Create a new instance of ProductImage so we can load to server
         val image = ProductImage(
-            product.code,
-            ProductImageField.NUTRITION,
-            photoFile,
-            localeManager.getLanguage()
+                product.code,
+                ProductImageField.NUTRITION,
+                photoFile,
+                localeManager.getLanguage()
         ).apply {
             filePath = photoFile.absolutePath
         }
@@ -581,9 +578,9 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
         binding.addPhotoLabel.visibility = GONE
         nutrientsImageUrl = photoFile.absolutePath
         picasso
-            .load(photoFile)
-            .fit()
-            .into(binding.imageViewNutrition)
+                .load(photoFile)
+                .fit()
+                .into(binding.imageViewNutrition)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -618,10 +615,10 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
 
     private fun startEditProduct() {
         ProductEditActivity.start(
-            requireContext(),
-            product,
-            showCategoryPrompt = showCategoryPrompt,
-            showNutritionPrompt = showNutritionPrompt
+                requireContext(),
+                product,
+                showCategoryPrompt = showCategoryPrompt,
+                showNutritionPrompt = showNutritionPrompt
         )
     }
 }
