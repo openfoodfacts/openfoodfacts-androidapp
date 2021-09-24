@@ -16,21 +16,14 @@
     <string name="advanced_search_url" translatable="false">https://world.openpetfoodfacts.org/cgi/search.pl</string>
     <string name="txtHomeOnline">Open Pet Food Facts is a database of more than %1$s pet food products (plus the ones you will contribute) Woof. Woof.</string>
     <string name="txtHome">Open Pet Food Facts is a database of pet food products with ingredients, nutrition facts… Woof. Woof.</string>
-    <string name="slide_1_title">Contribute to Pet Food transparency</string>
-    <string name="slide_1_desc">Scan products, take them in picture, make pet food transparency happen</string>
-    <string name="slide_2_title">Get the facts</string>
-    <string name="slide_2_desc">Extensive information about the product you\'ve scanned, deciphered for you</string>
-    <string name="slide_3_title">Keep track of the product you use</string>
-    <string name="slide_3_desc">All the petfood you scan, in one handy list you can export</string>
-    <string name="slide_4_title">Works offline</string>
-    <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet connection right now</string>
+    <!-- New onboarding slides -->
+    <string name="title_welcome_intro">Join the pet food revolution</string>
+    <string name="msg_welcome_intro">Scan food, Take photos, Help document what our pets eat</string>
+    <!-- New onboarding slides -->
     <string name="txtDialogsContent">The product you scanned does not exist yet in Open Pet Food Facts. Please add it.</string>
-    <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Pet Food Facts.</string>
     <string name="msg_share">Look at this product on Open Pet Food Facts :</string>
-    <string name="not_support_books">Books are not currently supported by Open Pet Food Facts</string>
     <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Pet Food Facts</string>
     <string name="Donation">Click here to donate to Open Pet Food Facts</string>
-    <string name="translate_help_title">Help translate Open Pet Food Facts</string>
     <string name="translate_help_summary">Bring the Open Pet Food Facts database to your language - no technical knowledge required</string>
     <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Pet Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Pet Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
