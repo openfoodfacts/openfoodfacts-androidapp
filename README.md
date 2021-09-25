@@ -117,8 +117,7 @@ If you spot any libraries we added or we don't use anymore, feel free to update 
 - [journeyapps/zxing-android-embedded](https://github.com/journeyapps/zxing-android-embedded) - Barcode scanner library for Android, based on the ZXing decoder
 - [koush/ion](https://github.com/koush/ion) - Android Asynchronous Networking and Image Loading
 - [jsoup](https://jsoup.org/) - jsoup is a Java library for working with real-world HTML
-- [satyan/sugar](https://github.com/satyan/sugar) - Insanely easy way to work with Android Database. 
-- [afollestad/material-dialogs](https://github.com/afollestad/material-dialogs) - A beautiful, fluid, and extensible dialogs API for Kotlin & Android.
+- [satyan/sugar](https://github.com/satyan/sugar) - Insanely easy way to work with Android Database.
 - [jjhesk/LoyalNativeSlider](https://github.com/jjhesk/LoyalNativeSlider) - Possible a dynamic viewpager ever you can find.
 - [mikepenz/MaterialDrawer](https://github.com/mikepenz/MaterialDrawer) - The flexible, easy to use, all in one drawer library for your Android project.
 

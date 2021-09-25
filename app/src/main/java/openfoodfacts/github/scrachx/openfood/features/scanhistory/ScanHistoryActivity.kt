@@ -25,7 +25,6 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.afollestad.materialdialogs.MaterialDialog
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
@@ -79,12 +78,14 @@ class ScanHistoryActivity : BaseActivity() {
                 .setTitle(R.string.permission_title)
                 .setMessage(R.string.permission_denied)
                 .setNegativeButton(R.string.txtNo) { dialog, _ -> dialog.dismiss() }
-                .setPositiveButton(R.string.txtYes) { _, _ ->
+                .setPositiveButton(R.string.txtYes) { dialog, _ ->
                     startActivity(Intent().apply {
                         action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
                         data = Uri.fromParts("package", this@ScanHistoryActivity.packageName, null)
                     })
-                }.show()
+                    dialog.dismiss()
+                }
+                .show()
         }
     }
 
@@ -260,11 +261,12 @@ class ScanHistoryActivity : BaseActivity() {
         val perm = Manifest.permission.CAMERA
         if (ContextCompat.checkSelfPermission(baseContext, perm) != PackageManager.PERMISSION_GRANTED) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(this, perm)) {
-                MaterialDialog.Builder(this)
-                    .title(R.string.action_about)
-                    .content(R.string.permission_camera)
-                    .positiveText(android.R.string.ok)
-                    .onPositive { _, _ -> cameraPermLauncher.launch(perm) }
+                MaterialAlertDialogBuilder(this)
+                    .setTitle(R.string.action_about)
+                    .setMessage(R.string.permission_camera)
+                    .setPositiveButton(android.R.string.ok) { _, _ ->
+                        cameraPermLauncher.launch(perm)
+                    }
                     .show()
             } else {
                 cameraPermLauncher.launch(perm)

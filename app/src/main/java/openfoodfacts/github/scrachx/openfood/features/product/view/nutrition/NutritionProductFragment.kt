@@ -44,7 +44,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.afollestad.materialdialogs.MaterialDialog
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_SHORT
 import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
@@ -525,28 +525,25 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
     }
 
     private fun calculateNutritionFacts() {
-        val dialog = MaterialDialog.Builder(requireActivity()).run {
-            title(R.string.calculate_nutrition_facts)
-            customView(R.layout.dialog_calculate_calories, false)
-            dismissListener {
+        val dialog = MaterialAlertDialogBuilder(requireContext())
+            .setTitle(R.string.calculate_nutrition_facts)
+            .setView(R.layout.dialog_calculate_calories)
+            .setOnDismissListener {
                 requireActivity().hideKeyboard()
             }
-            build()
-        }.apply { show() }
+            .show()
 
-
-        val weightText = dialog.findViewById(R.id.edit_text_weight) as EditText
-
-        (dialog.findViewById(R.id.spinner_weight) as Spinner).apply {
+        (dialog.findViewById(R.id.spinner_weight) as? Spinner)?.apply {
             onItemSelectedListener = object : OnItemSelectedListener {
-                override fun onNothingSelected(adapterView: AdapterView<*>?) = Unit // We don't care
+                override fun onNothingSelected(adapterView: AdapterView<*>?) = Unit
 
                 override fun onItemSelected(adapterView: AdapterView<*>?, view: View, i: Int, l: Long) {
-                    val btn = dialog.findViewById(R.id.txt_calories_result) as Button
-
-                    btn.setOnClickListener {
-                        val weight = weightText.text.toString().toFloatOrNull()
-                        if (weightText.text.isEmpty() || weight == null) {
+                    (dialog.findViewById(R.id.txt_calories_result) as? Button)?.setOnClickListener {
+                        val weight = (dialog.findViewById(R.id.edit_text_weight) as? EditText)
+                            ?.text
+                            ?.toString()
+                            ?.toFloatOrNull()
+                        if (weight == null) {
                             Snackbar.make(binding.root, resources.getString(R.string.please_enter_weight), LENGTH_SHORT).show()
                         } else {
                             CalculateDetailsActivity.start(
