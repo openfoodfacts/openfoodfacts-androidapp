@@ -105,7 +105,9 @@ If you spot any libraries we added or we don't use anymore, feel free to update 
 
 - [Dagger 2](https://github.com/google/dagger) - A fast dependency injector for Android and Java
 - [Retrofit](https://square.github.io/retrofit/) - Retrofit turns your REST API into a Java interface
+- [OkHttp](https://github.com/square/okhttp) - An HTTP+SPDY client for Android and Java applications
 - [Mockito](https://github.com/mockito/mockito) - Most popular Mocking framework for unit tests written in Java
+- [Apache](https://github.com/apache/commons-io) - The Apache Commons IO library contains utility classes, stream implementations, file filters, file comparators, endian transformation classes, and much more.
 - [Kotlin Coroutines](https://developer.android.com/kotlin/coroutines) - A coroutine is a concurrency design pattern that you can use on Android to simplify code that executes asynchronously.  
 - [Hilt](https://developer.android.com/training/dependency-injection/hilt-android) - Hilt is a dependency injection library for Android that reduces the boilerplate of doing manual dependency injection in your project. 
 - [Dagger](https://developer.android.com/training/dependency-injection/dagger-android) - Manual dependency injection or service locators in an Android app can be problematic depending on the size of your project. You can limit your project's complexity as it scales up by using Dagger to manage dependencies. Dagger automatically generates code that mimics the code you would otherwise have hand-written.
