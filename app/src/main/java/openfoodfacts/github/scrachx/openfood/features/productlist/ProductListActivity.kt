@@ -21,7 +21,7 @@ import androidx.core.net.toUri
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.afollestad.materialdialogs.MaterialDialog
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -154,7 +154,6 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
 
         binding.bottomNavigation.bottomNavigation.selectNavigationItem(0)
         binding.bottomNavigation.bottomNavigation.installBottomNavigation(this)
-
     }
 
     override fun onDestroy() {
@@ -249,11 +248,10 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
                     matomoAnalytics.trackEvent(AnalyticsEvent.ShoppingListExported)
                 }
                 shouldShowRequestPermissionRationale(this, perm) -> {
-                    MaterialDialog.Builder(this)
-                        .title(R.string.action_about)
-                        .content(R.string.permision_write_external_storage)
-                        .neutralText(android.R.string.ok)
-                        .onNeutral { _, _ ->
+                    MaterialAlertDialogBuilder(this)
+                        .setTitle(R.string.action_about)
+                        .setMessage(R.string.permision_write_external_storage)
+                        .setNeutralButton(android.R.string.ok) { _, _ ->
                             requestWriteLauncher.launch(perm)
                         }
                         .show()
@@ -266,28 +264,25 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
             true
         }
         R.id.action_sort_listed_products -> {
-            MaterialDialog.Builder(this).run {
-                title(R.string.sort_by)
-                val sortTypes = if (isFlavors(OFF)) {
-                    listOf(
-                        getString(R.string.by_title),
-                        getString(R.string.by_brand),
-                        getString(R.string.by_nutrition_grade),
-                        getString(
-                            R.string.by_barcode
-                        ),
-                        getString(R.string.by_time)
-                    )
-                } else {
-                    listOf(
-                        getString(R.string.by_title),
-                        getString(R.string.by_brand),
-                        getString(R.string.by_time),
-                        getString(R.string.by_barcode)
-                    )
-                }
-                items(sortTypes)
-                itemsCallback { _, _, position, _ ->
+            val sortTypes = if (isFlavors(OFF)) {
+                arrayOf(
+                    getString(R.string.by_title),
+                    getString(R.string.by_brand),
+                    getString(R.string.by_nutrition_grade),
+                    getString(R.string.by_barcode),
+                    getString(R.string.by_time)
+                )
+            } else {
+                arrayOf(
+                    getString(R.string.by_title),
+                    getString(R.string.by_brand),
+                    getString(R.string.by_time),
+                    getString(R.string.by_barcode)
+                )
+            }
+            MaterialAlertDialogBuilder(this)
+                .setTitle(R.string.sort_by)
+                .setItems(sortTypes) { _, position ->
                     sortType = when (position) {
                         0 -> TITLE
                         1 -> BRAND
@@ -299,8 +294,7 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
                     adapter.notifyDataSetChanged()
                     binding.rvYourListedProducts.adapter = adapter
                 }
-                show()
-            }
+                .show()
             true
         }
         R.id.action_share_list -> {
@@ -329,15 +323,13 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
                 startScanActivity()
             }
             shouldShowRequestPermissionRationale(this, Manifest.permission.CAMERA) -> {
-                MaterialDialog.Builder(this).run {
-                    title(R.string.action_about)
-                    content(R.string.permission_camera)
-                    neutralText(android.R.string.ok)
-                    onNeutral { _, _ ->
+                MaterialAlertDialogBuilder(this)
+                    .setTitle(R.string.action_about)
+                    .setMessage(R.string.permission_camera)
+                    .setNeutralButton(android.R.string.ok) { _, _ ->
                         requestCameraThenOpenScan.launch(Manifest.permission.CAMERA)
                     }
-                    show()
-                }
+                    .show()
             }
             else -> {
                 requestCameraThenOpenScan.launch(Manifest.permission.CAMERA)
