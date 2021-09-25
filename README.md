@@ -115,7 +115,6 @@ If you spot any libraries we added or we don't use anymore, feel free to update 
 - [code-mc/loadtoast](https://github.com/code-mc/loadtoast) - Pretty material design toasts with feedback animations
 - [journeyapps/zxing-android-embedded](https://github.com/journeyapps/zxing-android-embedded) - Barcode scanner library for Android, based on the ZXing decoder
 - GreenDao
-- [afollestad/material-dialogs](https://github.com/afollestad/material-dialogs) - A beautiful, fluid, and extensible dialogs API for Kotlin & Android.
 - [mikepenz/MaterialDrawer](https://github.com/mikepenz/MaterialDrawer) - The flexible, easy to use, all in one drawer library for your Android project.
 
 Big thanks to their contributors!

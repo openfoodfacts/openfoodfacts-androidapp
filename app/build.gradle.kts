@@ -43,7 +43,6 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-rx2:$coroutinesVersion")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion")
 
-
     // Android KTX
     implementation("androidx.fragment:fragment-ktx:1.3.6")
     implementation("androidx.activity:activity-ktx:1.3.1")
@@ -66,14 +65,11 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.1.0")
     implementation("androidx.multidex:multidex:2.0.1")
     implementation("androidx.viewpager2:viewpager2:1.0.0")
-    implementation("androidx.legacy:legacy-support-v4:1.0.0")
     implementation("androidx.startup:startup-runtime:1.1.0")
     implementation("androidx.work:work-runtime-ktx:2.6.0")
 
-
     // ML Kit barcode Scanner
     implementation("com.google.mlkit:barcode-scanning:17.0.0")
-
 
     compileOnly("javax.annotation:javax.annotation-api:1.3.2")
 
@@ -88,13 +84,11 @@ dependencies {
     implementation("androidx.hilt:hilt-work:$androidxHiltVersion")
     kapt("androidx.hilt:hilt-compiler:$androidxHiltVersion")
 
-
     // Reactive Streams
     implementation("io.reactivex.rxjava2:rxkotlin:2.4.0")
     implementation("io.reactivex.rxjava2:rxjava:2.2.21")
     implementation("io.reactivex.rxjava2:rxandroid:2.1.1")
     implementation("com.jakewharton.rxrelay2:rxrelay:2.1.1")
-
 
     // Networking
     implementation("com.squareup.retrofit2:retrofit:2.6.4")
@@ -102,7 +96,6 @@ dependencies {
     implementation("com.squareup.retrofit2:adapter-rxjava2:2.6.4")
     implementation("com.squareup.retrofit2:converter-scalars:2.1.0")
     implementation("com.squareup.okhttp3:logging-interceptor:3.12.11")
-
 
     // Apache commons
     implementation("org.apache.commons:commons-lang3:3.12.0")
@@ -115,7 +108,6 @@ dependencies {
     implementation("com.fasterxml.jackson.core:jackson-databind:${rootProject.extra["jacksonVersion"]}")
     implementation("com.fasterxml.jackson.core:jackson-annotations:${rootProject.extra["jacksonVersion"]}")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:${rootProject.extra["jacksonVersion"]}")
-
 
     // Database
     implementation("org.greenrobot:greendao:${rootProject.extra["greendaoVersion"]}")
@@ -145,11 +137,6 @@ dependencies {
 
     // UI Component : ImageView with Zooming
     implementation("com.github.chrisbanes:PhotoView:2.3.0")
-
-    // UI Component : Material Dialog
-    implementation("com.afollestad.material-dialogs:core:0.9.6.0") {
-        isTransitive = true
-    }
 
     // UI Component : Material Drawer
     // https://github.com/mikepenz/MaterialDrawer/commit/3b2cb1db4c3b6afe639b0f3c21c03c1de68648a3
