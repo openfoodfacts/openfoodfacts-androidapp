@@ -5,7 +5,7 @@
       "code": 518,
       "name": "3.5.0",
       "items": [
-        "Adicionado ecrã do relatório de alterações",
+        "Machine-Learning enhanced barcode scanner. You can now enable a new way to scan from the options. You can switch the barcode scanner engine at any time from the settings.",
         "Ajude os voluntários do Open Food Facts a melhorar a aplicação. Pode enviar opcionalmente relatórios anónimos de análise e bloqueios da aplicação. Esta opção pode ser ativada e desativada a qualquer momento nas configurações."
       ]
     }

@@ -29,16 +29,16 @@
     <string name="msg_welcome_nova">Reduza a quantidade de alimentos ultraprocessados em sua dieta.</string>
     <string name="title_welcome_ecoscore">Eco-Pontuação</string>
     <!-- Scan card -->
-    <string name="txtDialogsContent">O produto escaneado ainda não existe no Open Products Facts. Por favor adicione-o.</string>
+    <string name="txtDialogsContent">O produto que digitalizou ainda não existe no Open Food Facts. Por favor adicione-o.</string>
     <string name="txtDialogsContentPowerMode">O produto que digitalizou já existe no Open Food Facts.</string>
-    <string name="msg_share">Ver este produto no Open Products Facts:</string>
+    <string name="msg_share">Veja este produto no Open Food Facts :</string>
     <string name="not_support_books">Livros não são atualmente permitidos no Open Food Facts</string>
-    <string name="txt_broaden_search">- ampliando sua pesquisa \n- escaneie e adicione-o ao Open Products Facts</string>
-    <string name="Donation">Clique aqui para doar ao Open Products Facts</string>
+    <string name="txt_broaden_search">- alargar a sua pesquisa \n- digitalizar e adicionar ao Open Food Facts</string>
+    <string name="Donation">Clique aqui para doar ao Open Food Facts</string>
     <string name="text_offline_info_dialog">Digitalize os produtos mesmo quando estiver offline, para adicioná-los posteriormente ao Open Food Facts. Os produtos digitalizados aparecerão aqui e você poderá enviá-los usando o botão abaixo.</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">A informação das suas alergias nunca será enviada ao servidor do Open Products Facts. Também, tenha cuidado com que os dados do produto podem não ser precisos e a detecção pode não ter 100% aquadros, então por favor verifique você mesmo! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">A informação das suas alergias nunca será enviada para o servidor da Open Food Facts. Além disso, tenha cuidado com potenciais erros nos dados e a detecção, que poderá não ser 100% arecisa; então, por favor, verifique por si mesmo!</string>
     <!-- OFF tagline in different languages -->
     <string name="tagline">a base de dados livre de produtos alimentícios</string>
-    <string name="product_not_found">O produto %1$s que digitalizou ainda não existe no Open Products Facts. Você pode adicioná-lo?</string>
+    <string name="product_not_found">O produto %1$s que você digitalizou ainda não existe no Open Food Facts. Pode adicioná-lo?</string>
     <string name="currently_on_version">Atualmente no Open Food Facts</string>
 </resources>

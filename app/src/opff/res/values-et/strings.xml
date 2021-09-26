@@ -5,7 +5,7 @@
     <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contribuer -->
     <string name="website_contribute">https://world.openpetfoodfacts.org/contribute</string>
     <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/decouvrir -->
-    <string name="website_discover">https://world.openpetfoodfacts.org/discover</string>
+    <string name="website_discover">https://ee.openpetfoodfacts.org/discover</string>
     <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/produit/ -->
     <string name="website_product">https://world.openpetfoodfacts.org/product/</string>
     <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contributeur/ -->

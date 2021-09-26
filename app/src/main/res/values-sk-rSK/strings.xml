@@ -52,7 +52,6 @@
     <string name="product_incomplete_message">Tento produkt nie je kompletný. následkom bolo, že sme nemohli urobiť kontrolu alergénov.</string>
     <string name="product_allergen_prompt">Tento výrobok obsahuje:</string>
     <string name="no_offline_data">Ste hotový</string>
-    <string name="first_offline">Produkty, ktoré boli pridané offline sa objavia tu</string>
     <!-- Image Upload -->
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
@@ -132,7 +131,7 @@
         <item>Kyselina montánová (28: 0)</item>
         <item>Kyselina myristová (14: 0)</item>
         <item>Kyselina nervónová (24: 1 n-9)</item>
-        <item>Nukleotidy</item>
+        <item>Nucleotides</item>
         <item>Kyselina olejová (18: 1 n-9)</item>
         <item>Omega 3 mastné kyseliny</item>
         <item>Omega 6 mastné kyseliny</item>
@@ -170,18 +169,16 @@
     <string name="alert_dialog_warning_title">Upozornenie</string>
     <string name="alert_dialog_warning_msg_user">Užívateľské meno/heslo bolo zmenené, prosím upravte informácie</string>
     <string name="toast_retrieving">Načítavam…</string>
-    <string name="txtBarcode">Čiarový kód:</string>
-    <string name="txtCategories">Kategórie :</string>
-    <string name="txtLabels">Štítky, certifikáty, ocenenia :</string>
-    <string name="txtEMB">Traceability codes:</string>
-    <string name="txtIngredients">Zoznam ingrediencií:</string>
+    <string name="txtBarcode">Barcode:</string>
+    <string name="txtCategories">Categories:</string>
+    <string name="txtLabels">Labels, certifications, awards: </string>
+    <string name="txtEMB">Traceability codes: </string>
+    <string name="txtIngredients">Ingredients list: </string>
     <string name="Donate">Darovať</string>
     <string name="Donation">Click here to donate to Open Food Facts</string>
-    <string name="txtSubstances">Látky alebo výrobky spôsobujúce alergie alebo neznášanlivosť :</string>
-    <string name="txtAdditives">Prídavné látky:</string>
-    <string name="txtTraces">Stopy:</string>
-    <string name="txtMayBeFromPalmOilProduct">Ingrediencie, ktoré môžu byť z palmového oleja:</string>
-    <string name="txtPalmOilProduct">Ingrediencie z palmového oleja:</string>
+    <string name="txtSubstances">Prísady alebo výrobky spôsobujúce alergie alebo neznášanlivosť: </string>
+    <string name="txtAdditives">Additives: </string>
+    <string name="txtTraces">Traces: </string>
     <string name="txtServingSize">Veľkosť porcie:</string>
     <string name="txtNutrientLevel100g">Výživové hodnoty na 100g :</string>
     <string name="txtNutrientLevel100ml">Výživové hodnoty na 100g :</string>
@@ -190,7 +187,6 @@
     <string name="txtNutritionLevelHigh">vo veľkom množstve</string>
     <string name="txtSave">Uložiť</string>
     <string name="txtSignIn">Prihlásiť sa</string>
-    <string name="txtToastSaved">Používateľ uložený</string>
     <string name="txtSalt">Soľ</string>
     <string name="txtFat">Tuk</string>
     <string name="txtSugars">Cukry</string>
@@ -201,7 +197,6 @@
     <string name="hintPass">Heslo</string>
     <string name="errorLogin">Chyba prihlasovacieho mena alebo hesla</string>
     <string name="errorWeb">Nebolo možné pripojiť sa k internetu. Skontrolujte, prosím, pripojenie k sieti.</string>
-    <string name="uploadLater">Obrázok bude nahratý, akonáhle bude dostupné internetové spojenie</string>
     <string name="txtInfoLoginOk">Používateľ uložený</string>
     <string name="txtInfoLoginNo">Užívateľ nebol uložený</string>
     <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
@@ -212,37 +207,29 @@
     <string name="txtPictureNeededDialogNo">Odstrániť</string>
     <string name="toastSending">Nahrávam…</string>
     <string name="txtLoading">Načítavam…</string>
-    <string name="txtDialogsContentDelete">Ste si istý, že chcete odstrániť tento koncept?</string>
-    <string name="txtDialogsContentInfoSave">Produkt je uložený lokálne, môžete ho upravovať použitím \"Upravovanie offline\" menu</string>
     <string name="productSavedToast">Produkt uložený, vďaka!</string>
     <string name="txtBarcodeRequire">Je potrebný čiarový kód</string>
-    <string name="txtOk">OK</string>
     <string name="txtBarcodeNotValid">Čiarový kód nie je platný</string>
     <string name="msg_share">Look at this product on Open Food Facts :</string>
     <string name="create_account">Zaregistrovať sa</string>
     <string name="home_drawer">Domov</string>
     <string name="install">Inštalovať</string>
-    <string name="open_beauty_drawer">Open Beauty Facts</string>
-    <string name="open_food_drawer">Open Food Facts</string>
     <string name="search_drawer">Vyhľadať</string>
     <string name="search_by_barcode_drawer">Zadajte čiarový kód</string>
     <string name="category_drawer">Kategórie</string>
     <string name="search_by_category">Kategória</string>
     <string name="scan_search">Nasnímať čiarový kód</string>
     <string name="user_drawer">Používateľ</string>
-    <string name="offline_edit_drawer">Úpravy bez pripojenia</string>
     <string name="txt_anonymous">Anonymný</string>
     <string name="delete_txt">Vymazať</string>
     <string name="sign_in_drawer">Prihlásiť sa</string>
     <string name="alert_drawer">Allergen alert</string>
     <string name="your_lists">Vaše zoznamy</string>
     <string name="title_dialog_alert">Pridať výstrahu</string>
-    <string name="select_camera">Vybrať fotoaparát</string>
     <string name="ok_button">OK</string>
-    <string name="cancel_button">Zrušiť</string>
     <string name="login_button">Login</string>
     <string name="create_account_button">Vytvoriť účet</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
     <string name="title_info_dialog">Ako to funguje?</string>
     <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
     <string name="permission_camera">Na snímanie čiarových kódov a fotenie výrobkov je potrebné povoliť fotoaparát.</string>
@@ -261,7 +248,7 @@
     <string name="user_ask_rate_app">Skvelé! Dajte ostatným vedieť, čo si myslíte o tejto aplikácii!</string>
     <string name="rate_app">Ohodnotiť aplikáciu</string>
     <string name="no_thx">Nie ďakujem</string>
-    <string name="feedback_form_url">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
+    <string name="feedback_form_url" comment="Please ask teolemon to duplicate the feedback form and give you the right URL">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">História</string>
     <string name="clear_history">Vymazať históriu</string>
@@ -274,16 +261,15 @@
     <string name="no_brand">Žiadna značka</string>
     <string name="no_title">Žiadny názov</string>
     <!-- Nutrition info tab -->
-    <string name="display_fact">Nutrition facts table for %1$s of this product</string>
+    <string name="display_fact" comment="Do not modify the placeholder">Nutrition facts table for %1$s of this product</string>
     <string name="check_facts">Overiť</string>
     <string name="nutrition">Nutričné hodnoty</string>
     <string name="calculated_nutrition">Vypočítaná výživa</string>
     <string name="please_enter_weight">Vyplňte prosím hmotnosť výrobku</string>
     <string name="enter_weight">Vyplňte hmotnosť výrobku</string>
-    <string name="calculate_nutrition_facts">Calculate Nutrition Facts</string>
+    <string name="calculate_nutrition_facts">Calculate nutrition facts for a specific quantity</string>
     <string name="nutrition_carbohydrate">Sacharidy</string>
     <string name="nutrition_cholesterol">Cholesterol</string>
-    <string name="nutrition_energy">Energetická hodnota</string>
     <string name="nutrition_energy_kcal">Energia v kalóriách (kcal)</string>
     <string name="nutrition_energy_kj">Energia v jouloch (kJ)</string>
     <string name="nutrition_energy_short_name">Energetická hodnota</string>
@@ -299,8 +285,6 @@
     <string name="nutriment_serving_size">Na porciu: </string>
     <string name="action_manage_account">Spravovať účet</string>
     <string name="action_contributes">Vaše príspevky</string>
-    <string name="choose_energy_unit">Zvoľte požadované jednotky energie pre výživovú tabuľku</string>
-    <string name="choose_volume_unit">Zvoľte požadované jednotky objemu pre výživovú tabuľku</string>
     <string name="logout_drawer">Odhlásiť sa</string>
     <string name="contribution_without_account">You can sign-in or create an account to keep your contributions</string>
     <string name="textCarbonFootprint">Uhlíková stopa / emisie CO2: </string>
@@ -327,7 +311,7 @@
     <string name="nutrition_casein">Kazeín</string>
     <string name="nutrition_maltodextrins">Maltodextríny</string>
     <string name="nutrition_serum_proteins">Sérové ​​proteíny</string>
-    <string name="nutrition_nucleotides">Nukleotidy</string>
+    <string name="nutrition_nucleotides">Nucleotides</string>
     <string name="for_100g">Na 100 g</string>
     <string name="for_100ml">Na 100 ml</string>
     <string name="serving">Na jednu porciu</string>
@@ -384,8 +368,8 @@
     <string name="take_picture_ingredients">Take a photo of the ingredients</string>
     <string name="take_picture_recycling">Take a photo of the recycling instructions</string>
     <string name="take_picture_front">Take a photo of the front</string>
-    <string name="take_picture_nutrition_table">Take a photo of the nutrition table</string>
-    <string name="take_more_pictures">Take more photos</string>
+    <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
+    <string name="take_more_pictures">Take more pictures</string>
     <string name="take_extra_packaging_pictures">Take extra photos of packaging</string>
     <string name="txtSaturatedFat">Nasýtený tuk</string>
     <string name="nutriscore_info_msg">Ďalšie informácie o Nutri-Score</string>
@@ -407,21 +391,9 @@
     <string name="forgot_password">Zabudnuté heslo</string>
     <string name="next">ĎALEJ</string>
     <string name="skip">PRESKOČIŤ</string>
-    <string name="start">ROZUMIEM</string>
     <string name="email_not_found">Nenašli sa žiadne e-mailové aplikácie</string>
-    <string name="airplane_mode_active_dialog_title">Je aktívovaný Režim v lietadle</string>
-    <string name="airplane_mode_active_dialog_message">Je aktivovaný režim v lietadle, prosim vypnite ho aby ste mohli pokračovať.</string>
-    <string name="airplane_mode_active_dialog_negative">Zamietnuť</string>
-    <string name="airplane_mode_active_dialog_positive">Nastavenia</string>
     <string name="device_offline_dialog_title">Sieť nie je k dispozícii</string>
-    <string name="device_offline_dialog_message">Na to je potrebné sieťové pripojenie, chcete to zmeniť v nastaveniach?</string>
-    <string name="device_offline_dialog_negative">Zamietnuť</string>
-    <string name="device_offline_dialog_positive">Nastavenia</string>
     <string name="scan_first_product">Scan your first product</string>
-    <string name="device_on_mobile_data_warning_title">Informácia</string>
-    <string name="device_on_mobile_data_warning_message">You have disabled upload on mobile data , please connect to WiFi or change this in preferences</string>
-    <string name="device_on_mobile_data_warning_positive">Predvoľby</string>
-    <string name="device_on_mobile_data_warning_negative">Nahrať napriek tomu</string>
     <string name="changes_saved">Zmeny boli úspešne uložené</string>
     <string name="proceed">Proceed</string>
     <string name="preference_choose_language_dialog_title">Zvoľte jazyk</string>
@@ -455,8 +427,6 @@
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
     <string name="url_nutrient_values">https://world-sk.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">Všeobecné</string>
-    <string name="preference_header_network">Network</string>
-    <string name="preference_header_contributing">Contributing</string>
     <string name="preference_header_privacy">Privacy</string>
     <string name="preference_crash_title">Crash reporting</string>
     <string name="preference_crash_summary">When enabled, crash reports will be sent to the Open Food Facts server automatically, so that we can fix bugs and improve the app.</string>
@@ -524,9 +494,9 @@
     <string name="notification_channel_name">Oznámenia o exporte</string>
     <string name="notify_channel_description">Oznámenie na zobrazenie umiestnenia exportovaného súboru</string>
     <string name="products_to_be_completed">Výrobky, ktoré sa majú dokončiť</string>
-    <string name="offline_notification_title">Offline príspevky, ktoré treba poslať</string>
-    <string name="creator_history">Product added on %1$s at %2$s CET by %3$s</string>
-    <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by %3$s </string>
+    <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Product added on %1$s at %2$s CET by %3$s</string>
+    <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Last edit of product page on %1$s at %2$s CEST by %3$s </string>
+    <!-- TODO: Add the placeholder in the string - important for several languages -->
     <string name="other_editors">Stránku výrobku upravil aj </string>
     <string name="product_states">Product States</string>
     <string name="incomplete_states">Incomplete States</string>
@@ -537,12 +507,11 @@
     <string name="offline_product_addition_title">Pridať nový výrobok</string>
     <string name="productNameNull">Name unknown</string>
     <string name="productAdditivesUnknown"></string>
-    <string name="productAdditivesTemplate">%1$d additives</string>
     <plurals name="productAdditives">
-        <item quantity="one">%d additive</item>
+        <item quantity="one" comment="Do not change the placeholder">%d additive</item>
         <item quantity="few">%d additives</item>
         <item quantity="many">%d additives</item>
-        <item quantity="other">%d additives</item>
+        <item quantity="other" comment="Do not change the placeholder">%d additives</item>
     </plurals>
     <string name="product_not_complete">This product is not yet complete. \nCan you add some details?</string>
     <string name="addProductOffline">You seem offline. Add the product %s using the offline mode ?</string>
@@ -553,9 +522,8 @@
     <string name="switch_camera">Switch camera</string>
     <string name="autofocus">Autofocus</string>
     <string name="initial_loading">Initial loading</string>
-    <string name="preferences">Predvoľby</string>
     <string name="OFFlogo">Open Food Facts logo</string>
-    <string name="loading_product">Loading product %s</string>
+    <string name="loading_product" comment="Do not modify the placeholder">Loading product %s</string>
     <string name="image_not_defined_for_language">No image for selected language. You can add a new one</string>
     <string name="error_adding_ingredients">Something went wrong while trying to add product ingredients</string>
     <string name="unable_to_extract_ingredients">Unable to extract ingredients from image</string>
@@ -567,20 +535,11 @@
     <string name="extract_url">Extract URL from QR-code</string>
     <string name="search_url">Search for official page URL</string>
     <string name="product_language">Jazyk produktu: </string>
-    <string name="hint_emb_codes">Príklady: EMB 53062, FR 62,448,034 CE, 84 R 20, 33 RECOLTANT 522, FSSL 10013011001409</string>
     <string name="official_website">Oficiálna stránka</string>
     <string name="scan_QR_code">Naskenujte QR kód pre web produktu</string>
     <string name="add_at_least_one_picture">Pred pokračovaním pridajte aspoň jeden obrázok tohto produktu</string>
     <string name="image_uploaded_successfully">Súbor bol úspešne nahraný</string>
     <string name="error_adding_product_photos">Vyskytol sa problém pri pokuse o odovzdanie obrázku</string>
-    <string name="ingredients_overwrite">Ingredients overwrite</string>
-    <string name="choose_mine">Choose mine</string>
-    <string name="keep_previous_version">Keep previous version</string>
-    <string name="product_name_overwrite">Product name overwrite</string>
-    <string name="yours">Yours: </string>
-    <string name="currently_on">Currently on %s: </string>
-    <string name="quantity_overwrite">Quantity overwrite</string>
-    <string name="link_overwrite">Link overwrite</string>
     <string name="save_product">Do you want to save the product?</string>
     <string name="error_adding_product">Something went wrong when adding the product</string>
     <string name="photos">Photos</string>
@@ -588,14 +547,13 @@
     <string name="product_uploaded_successfully">Product uploaded successfully</string>
     <string name="no_internet_connection">You appear to have no internet connection, images will be uploaded when network is available</string>
     <string name="no_internet_unable_to_extract_ingredients">No internet connection. Unable to extract ingredients</string>
-    <string name="percent">%1$d%%</string>
     <string name="overview">Zhrnutie</string>
     <string name="ingredients">Ingrediencie</string>
     <string name="nutrition_facts">Výživové údaje</string>
     <string name="your_version">Vaše</string>
     <string name="ingredients_picture">Obrázok zloženia</string>
     <string name="packaging">Recycling</string>
-    <string name="take_ingredients_picture_to_extract">(Prosím odfoťte zloženie pre automatické rozpoznanie)</string>
+    <string name="take_ingredients_picture_to_extract">(Please take a photo of the ingredients to automatically extract them)</string>
     <string name="ingredients_list">Zoznam zložiek</string>
     <string name="ingredients_hint" tools:ignore="StringFormatInvalid">Keep the order, indicate the % when specified, separate with a comma or use -, use () for ingredients of an ingredient, surround allergens with _</string>
     <string name="extract_ingredients">Rozpoznať zložky</string>
@@ -631,9 +589,6 @@
     <string name="additional_pictures">Ďalšie obrázky</string>
     <string name="hint_product_pictures">(Add more pictures of the product. eg: recycling instructions, labels etc.)</string>
     <string name="uploading_image">Sending the photo</string>
-    <string name="uploading_nutrition_image">Uploading nutrition facts image</string>
-    <string name="uploading_ingredients_image">Uploading ingredients image</string>
-    <string name="uploading_front_image">Uploading front image</string>
     <string name="edit_front_image">Upraviť prednú fotografiu</string>
     <string name="edit_nutrition_image">Edit the nutrition photo</string>
     <string name="edit_packaging_image">Edit the recycling photo</string>
@@ -643,7 +598,6 @@
     <string name="sign_in_to_answer">Ak chcete získať informácie, prihláste sa alebo sa zaregistrujte.</string>
     <string name="hint_quantity">Examples: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
     <string name="edit_product_title">Edit a product</string>
-    <string name="nutrient_already_added">%s is already present in the nutrition facts</string>
     <string name="save_edits">Uložiť úpravy</string>
     <string name="contribution_by">Contribution by</string>
     <string name="title_activity_product">Názov</string>
@@ -680,10 +634,10 @@
     <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
     <string name="add_category_prompt_text">Add a category to help complete the product</string>
     <string name="add_nutrient_category_prompt_text">Add a category and nutrition facts to help complete the product</string>
-    <string name="couldnot_compute_ecoscore_prompt_text">We could not compute an Eco-Score for this product. It might be that the category is not specific enough or that we don\'t have supporting data for this category. If you believe this is an error, you can mail us by clicking below.</string>
-    <string name="add_labels_origins_prompt_text">The Eco-Score takes into account environmental labels and origins of the ingredients. Please take them into photo or edit the product so that they can be taken into account</string>
-    <string name="add_labels_prompt_text">The Eco-Score takes into account environmental labels. Please take them into photo or edit the product so that they can be taken into account</string>
-    <string name="add_origins_prompt_text">The Eco-Score takes into account the origins of the ingredients. Please take them into photo (ingredient list and/or any geographic claim) or edit the product so that they can be taken into account</string>
+    <string name="couldnot_compute_ecoscore_prompt_text" comment="Do not translate Eco-Score">We could not compute an Eco-Score for this product. It might be that the category is not specific enough or that we don\'t have supporting data for this category. If you believe this is an error, you can mail us by clicking below.</string>
+    <string name="add_labels_origins_prompt_text" comment="Do not translate Eco-Score">The Eco-Score takes into account environmental labels and origins of the ingredients. Please take them into photo or edit the product so that they can be taken into account</string>
+    <string name="add_labels_prompt_text" comment="Do not translate Eco-Score">The Eco-Score takes into account environmental labels. Please take them into photo or edit the product so that they can be taken into account</string>
+    <string name="add_origins_prompt_text" comment="Do not translate Eco-Score">The Eco-Score takes into account the origins of the ingredients. Please take them into photo (ingredient list and/or any geographic claim) or edit the product so that they can be taken into account</string>
     <string name="category_game_btn">Help categorize products</string>
     <string name="version_string">Anroid aplikácia Open Food Facts</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
@@ -712,9 +666,7 @@
     <string name="import_csv_to_list">Import an Open Food Facts list CSV file</string>
     <string name="toast_import_csv_error">Error in importing CSV file</string>
     <string name="toast_import_csv">CSV imported successfully!</string>
-    <string name="open_csv">Open CSV</string>
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
-    <string name="image_prompt_language">Take a photo of the ingredients in</string>
     <string name="swipe_delete_tip">You can delete a list by swiping it left.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
@@ -741,17 +693,15 @@
     <string name="scan_tooltip">You can slide up the card for more details</string>
     <string name="add_an_allergen">Add an allergen</string>
     <string name="add_a_list">Add a list</string>
-    <string name="edit_image">Edit Image</string>
-    <string name="cant_edit_image_not_yet_uploaded">The new image is not yet uploaded. Please, wait before editing it</string>
-    <string name="unselect_image">Unselect Image</string>
+    <string name="edit_image">Edit Photo</string>
+    <string name="cant_edit_image_not_yet_uploaded">The new photo is not yet uploaded. Please wait before editing it</string>
+    <string name="unselect_image">Unselect Photo</string>
     <string name="choose_default_language">Select product language</string>
     <string name="barcode">Čiarový kód</string>
     <string name="productAdditivesNone">No additives</string>
-    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
-    <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
+    <string name="required_for_ecoscore" comment="Do not translate Eco-Score">(Required to calculate the Eco-Score)</string>
     <string name="hint_origin">Examples: USA, France, Italy</string>
     <!-- Used for diets AddOn -->
-    <string name="history_network_error">The product couldn\'t be loaded. Please try again when you are back online.</string>
     <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
     <string name="closeZoom">Click to close zoom</string>
     <string name="imageFullscreen">Zoom</string>
@@ -764,7 +714,7 @@
     <string name="image_edit_tip">Tap on the image to zoom it, change it, crop it, rotate it and more…</string>
     <string name="ingredients_in_this_product_are">Ingredients in this product are %1$s.</string>
     <string name="ingredients_in_this_product">Ingredients in this product that are %1$s:</string>
-    <string name="display_analysis_tag_status">Display %1$s status</string>
+    <string name="display_analysis_tag_status" comment="Do not change the placeholder">Display %1$s status</string>
     <string name="unknown_status_no_translation">We couldn\'t assess the status of the product due to unrecognized ingredients.</string>
     <string name="help_translate_ingredients">Help translate the ingredients in your language</string>
     <string name="unknown_status_missing_ingredients">We couldn\'t assess the status of the product due to missing ingredients.</string>
@@ -806,25 +756,24 @@
     <string name="product_front_image">Product front image</string>
     <string name="brand_hint">Examples: Coca-Cola, Nestle, etc…</string>
     <string name="sign_in_or_register">Sign in or register</string>
-    <string name="hunger_game_call_to_action">Help classify more %1$s</string>
+    <string name="hunger_game_call_to_action" comment="Do not change the placeholder">Help classify more %1$s</string>
     <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s products (plus the ones you will contribute).</string>
-    <string name="enabled">Enabled</string>
     <!-- Application theme settings -->
     <string name="follow_system">Follow system</string>
     <string name="day">Day</string>
     <string name="night">Night</string>
     <string name="report_email_chooser_title">Send a report email</string>
     <!-- Changelog String -->
-    <string name="changelog_translation_help">Want to see this changelog in %s?\nJoin the translation team!</string>
+    <string name="changelog_translation_help" comment="Do not change the placeholder">Want to see this changelog in %s?\nJoin the translation team!</string>
     <string name="whats_new">What\'s new with Open Food Facts?</string>
     <!-- New onboarding slides -->
     <string name="title_welcome_intro">Join the food revolution</string>
     <string name="msg_welcome_intro">Scan food, Take photos, Help transform the food system</string>
-    <string name="title_welcome_nutriscore">Get the Nutri-Score</string>
+    <string name="title_welcome_nutriscore" comment="Do not translate Nutri-Score">Get the Nutri-Score</string>
     <string name="msg_welcome_nutriscore">A simple synthesis of the nutritional quality of your food</string>
     <string name="title_welcome_nova">Avoid ultra-processed foods</string>
     <string name="msg_welcome_nova">Reduce the amount of ultra-processed foods in your diet.</string>
-    <string name="title_welcome_ecoscore">Eco-Score</string>
+    <string name="title_welcome_ecoscore" comment="Do not translate Eco-Score">Eco-Score</string>
     <string name="msg_welcome_ecoscore">A synthesis of the environmental impact of your food.</string>
     <string name="title_welcome_matomo">Send anonymous analytics</string>
     <string name="msg_welcome_matomo">Help the Open Food Facts volunteers to improve the app. You decide if you send anonymous analytics.\n\nIf you change your mind this option can be enabled and disabled at any time from the settings.</string>
