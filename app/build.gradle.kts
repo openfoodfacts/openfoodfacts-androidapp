@@ -71,18 +71,13 @@ dependencies {
     // ML Kit barcode Scanner
     implementation("com.google.mlkit:barcode-scanning:17.0.0")
 
-    compileOnly("javax.annotation:javax.annotation-api:1.3.2")
-
-    // Dagger & hilt
-    implementation("com.google.dagger:dagger:${rootProject.extra["hiltVersion"]}")
+    // Hilt
     implementation("com.google.dagger:hilt-android:${rootProject.extra["hiltVersion"]}")
-    kapt("com.google.dagger:dagger-compiler:${rootProject.extra["hiltVersion"]}")
     kapt("com.google.dagger:hilt-compiler:${rootProject.extra["hiltVersion"]}")
 
-    // AndroidX hilt work
-    val androidxHiltVersion = "1.0.0"
-    implementation("androidx.hilt:hilt-work:$androidxHiltVersion")
-    kapt("androidx.hilt:hilt-compiler:$androidxHiltVersion")
+    // WorkManager with Hilt
+    implementation("androidx.hilt:hilt-work:1.0.0")
+    kapt("androidx.hilt:hilt-compiler:1.0.0")
 
     // Reactive Streams
     implementation("io.reactivex.rxjava2:rxkotlin:2.4.0")
@@ -364,16 +359,16 @@ android {
 
     packagingOptions {
         resources.excludes += listOf(
-            "META-INF/DEPENDENCIES.txt",
-            "META-INF/LICENSE.txt",
-            "META-INF/NOTICE.txt",
-            "META-INF/NOTICE",
-            "META-INF/LICENSE",
-            "META-INF/DEPENDENCIES",
-            "META-INF/notice.txt",
-            "META-INF/license.txt",
-            "META-INF/dependencies.txt",
-            "META-INF/LGPL2.1"
+                "META-INF/DEPENDENCIES.txt",
+                "META-INF/LICENSE.txt",
+                "META-INF/NOTICE.txt",
+                "META-INF/NOTICE",
+                "META-INF/LICENSE",
+                "META-INF/DEPENDENCIES",
+                "META-INF/notice.txt",
+                "META-INF/license.txt",
+                "META-INF/dependencies.txt",
+                "META-INF/LGPL2.1"
         )
     }
 
@@ -385,6 +380,7 @@ android {
 }
 
 kapt {
+    correctErrorTypes = true
     arguments {
         arg("eventBusIndex", "openfoodfacts.github.scrachx.openfood.app.OFFEventsIndex")
     }
