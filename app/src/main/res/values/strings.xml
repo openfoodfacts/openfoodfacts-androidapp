@@ -281,7 +281,9 @@
     <string name="your_lists">Your lists</string>
     <string name="title_dialog_alert">Add alert</string>
 
+    <string name="select_camera">Select a Camera</string>
     <string name="ok_button">OK</string>
+    <string name="cancel_button">Cancel</string>
     <string name="login_button">Login</string>
     <string name="create_account_button">Create Account</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>

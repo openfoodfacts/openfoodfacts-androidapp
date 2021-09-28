@@ -306,6 +306,11 @@
             android:screenOrientation="portrait"
             android:theme="@style/OFFTheme.NoActionBar" />
         <activity
+            android:name=".features.simplescan.SimpleScanActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/OFFTheme.NoActionBar"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
             android:name=".features.product.edit.ProductEditActivity"
             android:screenOrientation="portrait"
             android:theme="@style/OFFTheme"
