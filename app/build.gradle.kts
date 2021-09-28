@@ -93,7 +93,6 @@ dependencies {
     implementation("com.squareup.okhttp3:logging-interceptor:3.12.11")
 
     // Apache commons
-    implementation("org.apache.commons:commons-lang3:3.12.0")
     implementation("org.apache.commons:commons-text:1.9")
     implementation("org.apache.commons:commons-csv:1.9.0")
     implementation("commons-validator:commons-validator:1.7")
