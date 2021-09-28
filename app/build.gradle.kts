@@ -127,9 +127,6 @@ dependencies {
 
     implementation("com.journeyapps:zxing-android-embedded:3.6.0") { isTransitive = false }
 
-    // UI Component : Custom Toast
-    implementation("com.github.code-mc:loadtoast:1.0.12")
-
     // UI Component : ImageView with Zooming
     implementation("com.github.chrisbanes:PhotoView:2.3.0")
 
