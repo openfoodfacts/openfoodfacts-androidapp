@@ -9,8 +9,10 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.test.runBlockingTest
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
 import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
+import openfoodfacts.github.scrachx.openfood.features.compare.ProductCompareViewModel.*
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveName
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.CoroutineDispatchersTest
 import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
@@ -29,13 +31,14 @@ class ProductCompareViewModelTest {
     private val localeManager: LocaleManager = mock()
     private val matomoAnalytics: MatomoAnalytics = mock()
     private val coroutineDispatcher = CoroutineDispatchersTest()
+    private val openFoodAPIClient: OpenFoodAPIClient = mock()
 
     private lateinit var viewModel: ProductCompareViewModel
 
     @Before
     fun setup() {
         whenever(localeManager.getLanguage()).doReturn("en")
-        viewModel = ProductCompareViewModel(productRepository, localeManager, matomoAnalytics, coroutineDispatcher)
+        viewModel = ProductCompareViewModel(productRepository, localeManager, matomoAnalytics, coroutineDispatcher, openFoodAPIClient)
     }
 
     @Test
@@ -52,9 +55,9 @@ class ProductCompareViewModelTest {
         whenever(productRepository.getAdditiveByTagAndLanguageCode("qwerty", "en"))
             .doReturn(Single.just(AdditiveName("test-name")))
 
-        val flowItems = mutableListOf<Unit>()
+        val flowItems = mutableListOf<SideEffect>()
         val job = launch {
-            viewModel.alreadyExistFlow.toList(flowItems)
+            viewModel.sideEffectFlow.toList(flowItems)
         }
 
         // WHEN
@@ -63,6 +66,7 @@ class ProductCompareViewModelTest {
 
         // THEN
         assertThat(flowItems.size).isEqualTo(1)
+        assertThat(flowItems[0] is SideEffect.ProductAlreadyAdded).isTrue()
         job.cancel()
     }
 
@@ -85,7 +89,7 @@ class ProductCompareViewModelTest {
         whenever(productRepository.getAdditiveByTagAndLanguageCode("qwerty3", "en"))
             .doReturn(Single.just(AdditiveName("test-name3")))
 
-        val flowItems = mutableListOf<List<ProductCompareViewModel.CompareProduct>>()
+        val flowItems = mutableListOf<List<CompareProduct>>()
         val job = launch {
             viewModel.productsFlow.toList(flowItems)
         }

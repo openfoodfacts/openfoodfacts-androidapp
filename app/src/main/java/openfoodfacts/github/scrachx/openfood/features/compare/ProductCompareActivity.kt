@@ -6,25 +6,27 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.result.launch
 import androidx.activity.viewModels
 import androidx.core.app.ActivityCompat.shouldShowRequestPermissionRationale
 import androidx.core.content.ContextCompat.checkSelfPermission
-import androidx.lifecycle.Lifecycle
+import androidx.core.view.isVisible
+import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.rx2.await
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductComparisonBinding
+import openfoodfacts.github.scrachx.openfood.features.compare.ProductCompareViewModel.SideEffect
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
+import openfoodfacts.github.scrachx.openfood.features.simplescan.SimpleScanActivityContract
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.selectNavigationItem
@@ -48,8 +50,8 @@ class ProductCompareActivity : BaseActivity() {
 
     private val viewModel: ProductCompareViewModel by viewModels()
 
-    private val scanProductContract = registerForActivityResult(ScanProductActivityContract()) { product ->
-        product?.let { viewModel.addProductToCompare(it) }
+    private val scanProductContract = registerForActivityResult(SimpleScanActivityContract()) { barcode ->
+        barcode?.let { viewModel.barcodeDetected(it) }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -67,18 +69,31 @@ class ProductCompareActivity : BaseActivity() {
         }
 
         lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.alreadyExistFlow.collect {
-                    Toast.makeText(this@ProductCompareActivity, getString(R.string.product_already_exists_in_comparison), Toast.LENGTH_SHORT).show()
+            viewModel.sideEffectFlow
+                .flowWithLifecycle(lifecycle)
+                .collect {
+                    when (it) {
+                        is SideEffect.ProductAlreadyAdded -> showProductAlreadyAddedDialog()
+                        is SideEffect.ProductNotFound -> showProductNotFoundDialog()
+                        is SideEffect.ConnectionError -> showConnectionErrorDialog()
+                    }
                 }
-            }
         }
         lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.productsFlow.collect { products ->
+            viewModel.productsFlow
+                .flowWithLifecycle(lifecycle)
+                .distinctUntilChanged()
+                .collect { products ->
                     createAdapter(products)
                 }
-            }
+        }
+        lifecycleScope.launch {
+            viewModel.loadingVisibleFlow
+                .flowWithLifecycle(lifecycle)
+                .distinctUntilChanged()
+                .collect {
+                    binding.comparisonProgressView.isVisible = it
+                }
         }
 
         binding.productComparisonButton.setOnClickListener {
@@ -161,9 +176,36 @@ class ProductCompareActivity : BaseActivity() {
         }
     }
 
+    private fun showProductAlreadyAddedDialog() {
+        MaterialAlertDialogBuilder(this)
+            .setMessage(R.string.product_already_exists_in_comparison)
+            .setPositiveButton(R.string.ok_button) { dialog, _ ->
+                dialog.dismiss()
+            }
+            .show()
+    }
+
+    private fun showProductNotFoundDialog() {
+        MaterialAlertDialogBuilder(this)
+            .setMessage(R.string.txtDialogsContentPowerMode)
+            .setPositiveButton(R.string.ok_button) { dialog, _ ->
+                dialog.dismiss()
+            }
+            .show()
+    }
+
+    private fun showConnectionErrorDialog() {
+        MaterialAlertDialogBuilder(this)
+            .setTitle(R.string.alert_dialog_warning_title)
+            .setMessage(R.string.txtConnectionError)
+            .setPositiveButton(R.string.ok_button) { dialog, _ ->
+                dialog.dismiss()
+            }
+            .show()
+    }
+
     companion object {
         const val KEY_PRODUCTS_TO_COMPARE = "products_to_compare"
-        const val KEY_COMPARE_PRODUCT = "compare_product"
 
         @JvmStatic
         fun start(context: Context, product: Product) {
