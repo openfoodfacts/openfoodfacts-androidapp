@@ -2,11 +2,14 @@
 
 package openfoodfacts.github.scrachx.openfood.features.simplescan
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.hardware.Camera
 import android.os.Bundle
 import android.text.InputType
 import android.util.Log
+import android.widget.EditText
+import android.widget.FrameLayout
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowInsetsCompat
@@ -14,7 +17,7 @@ import androidx.core.view.WindowInsetsControllerCompat
 import androidx.core.view.isVisible
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
-import com.afollestad.materialdialogs.MaterialDialog
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.zxing.ResultPoint
 import com.journeyapps.barcodescanner.BarcodeCallback
 import com.journeyapps.barcodescanner.BarcodeResult
@@ -217,19 +220,28 @@ class SimpleScanActivity : AppCompatActivity() {
     }
 
     private fun showManualInputDialog() {
-        MaterialDialog.Builder(this@SimpleScanActivity)
-            .title(R.string.trouble_scanning)
-            .content(R.string.enter_barcode)
-            .input(null, null, false) { _, input ->
-                viewModel.barcodeDetected(input.toString())
-            }
-            .inputType(InputType.TYPE_CLASS_NUMBER)
-            .positiveText(R.string.ok_button)
-            .negativeText(R.string.cancel_button)
-            .onNegative { _, _ ->
+        val inputEditText = EditText(this).apply {
+            inputType = InputType.TYPE_CLASS_NUMBER
+        }
+        val view = FrameLayout(this).apply {
+            val margin = resources.getDimensionPixelSize(R.dimen.activity_horizontal_margin)
+            setPadding(margin, margin / 2, margin, margin / 2)
+            addView(inputEditText)
+        }
+        val dialog = MaterialAlertDialogBuilder(this@SimpleScanActivity)
+            .setTitle(R.string.trouble_scanning)
+            .setMessage(R.string.enter_barcode)
+            .setView(view)
+            .setPositiveButton(R.string.ok_button, null)
+            .setNegativeButton(R.string.cancel_button) { _, _ ->
                 startScanning()
             }
-            .build()
             .show()
+        dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener {
+            inputEditText.text?.toString()?.let {
+                viewModel.barcodeDetected(it)
+            }
+
+        }
     }
 }

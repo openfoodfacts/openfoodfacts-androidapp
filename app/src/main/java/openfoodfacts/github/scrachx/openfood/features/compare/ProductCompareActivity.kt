@@ -15,7 +15,6 @@ import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
-import com.afollestad.materialdialogs.MaterialDialog
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
@@ -178,24 +177,30 @@ class ProductCompareActivity : BaseActivity() {
     }
 
     private fun showProductAlreadyAddedDialog() {
-        MaterialDialog.Builder(this)
-            .content(R.string.product_already_exists_in_comparison)
-            .positiveText(R.string.ok_button)
+        MaterialAlertDialogBuilder(this)
+            .setMessage(R.string.product_already_exists_in_comparison)
+            .setPositiveButton(R.string.ok_button) { dialog, _ ->
+                dialog.dismiss()
+            }
             .show()
     }
 
     private fun showProductNotFoundDialog() {
-        MaterialDialog.Builder(this)
-            .content(R.string.txtDialogsContentPowerMode)
-            .positiveText(R.string.ok_button)
+        MaterialAlertDialogBuilder(this)
+            .setMessage(R.string.txtDialogsContentPowerMode)
+            .setPositiveButton(R.string.ok_button) { dialog, _ ->
+                dialog.dismiss()
+            }
             .show()
     }
 
     private fun showConnectionErrorDialog() {
-        MaterialDialog.Builder(this)
-            .title(R.string.alert_dialog_warning_title)
-            .content(R.string.txtConnectionError)
-            .positiveText(R.string.ok_button)
+        MaterialAlertDialogBuilder(this)
+            .setTitle(R.string.alert_dialog_warning_title)
+            .setMessage(R.string.txtConnectionError)
+            .setPositiveButton(R.string.ok_button) { dialog, _ ->
+                dialog.dismiss()
+            }
             .show()
     }
 
