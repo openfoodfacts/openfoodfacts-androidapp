@@ -15,45 +15,50 @@
  */
 package openfoodfacts.github.scrachx.openfood.features.allergensalert
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import openfoodfacts.github.scrachx.openfood.R
+import openfoodfacts.github.scrachx.openfood.databinding.ItemAllergensBinding
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenName
+import openfoodfacts.github.scrachx.openfood.utils.AutoUpdatableAdapter
+import kotlin.properties.Delegates
 
 class AllergensAdapter(
-    val onDeleteAction: (allergen: AllergenName) -> Unit,
-) : RecyclerView.Adapter<AllergensAdapter.AllergenViewHolder>() {
+    val onDeleteButtonClick: (allergen: AllergenName) -> Unit,
+) : RecyclerView.Adapter<AllergensAdapter.ViewHolder>(), AutoUpdatableAdapter {
 
-    private var allergens = listOf<AllergenName>()
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AllergenViewHolder {
-        val contactView = LayoutInflater.from(parent.context).inflate(R.layout.item_allergens, parent, false)
-        return AllergenViewHolder(contactView)
+    var allergens: List<AllergenName> by Delegates.observable(emptyList()) { _, oldList, newList ->
+        autoNotify(oldList, newList) { o, n -> o.allergenTag == n.allergenTag }
     }
 
-    override fun onBindViewHolder(holder: AllergenViewHolder, position: Int) {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val contactView = ItemAllergensBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ViewHolder(contactView)
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val allergen = allergens[position]
-        holder.nameTextView.text = allergen.name
-        holder.messageButton.setOnClickListener {
-            onDeleteAction(allergens[holder.bindingAdapterPosition])
+        holder.bind(allergen) {
+            onDeleteButtonClick(it)
         }
+    }
+
+    override fun onViewRecycled(viewHolder: ViewHolder) {
+        super.onViewRecycled(viewHolder)
+        viewHolder.unbind()
     }
 
     override fun getItemCount() = allergens.size
 
-    @SuppressLint("NotifyDataSetChanged")
-    fun updateItems(items: List<AllergenName>) {
-        allergens = items
-        notifyDataSetChanged()
-    }
+    class ViewHolder(private val binding: ItemAllergensBinding) : RecyclerView.ViewHolder(binding.root) {
 
-    class AllergenViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val messageButton: Button = itemView.findViewById(R.id.delete_button)
-        val nameTextView: TextView = itemView.findViewById(R.id.allergen_name)
+        fun bind(item: AllergenName, onDeleteButtonClick: (allergen: AllergenName) -> Unit) {
+            binding.allergenName.text = item.name
+            binding.deleteButton.setOnClickListener { onDeleteButtonClick(item) }
+        }
+
+        fun unbind() {
+            binding.deleteButton.setOnClickListener(null)
+        }
     }
 }

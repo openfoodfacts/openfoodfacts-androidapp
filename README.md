@@ -112,7 +112,6 @@ If you spot any libraries we added or we don't use anymore, feel free to update 
 - [Hilt](https://developer.android.com/training/dependency-injection/hilt-android) - Hilt is a dependency injection library for Android that reduces the boilerplate of doing manual dependency injection in your project. 
 - [Dagger](https://developer.android.com/training/dependency-injection/dagger-android) - Manual dependency injection or service locators in an Android app can be problematic depending on the size of your project. You can limit your project's complexity as it scales up by using Dagger to manage dependencies. Dagger automatically generates code that mimics the code you would otherwise have hand-written.
 - [Jackson](https://github.com/FasterXML/jackson) - Core part of Jackson that defines Streaming API as well as basic shared abstractions
-- [code-mc/loadtoast](https://github.com/code-mc/loadtoast) - Pretty material design toasts with feedback animations
 - [journeyapps/zxing-android-embedded](https://github.com/journeyapps/zxing-android-embedded) - Barcode scanner library for Android, based on the ZXing decoder
 - GreenDao
 - [mikepenz/MaterialDrawer](https://github.com/mikepenz/MaterialDrawer) - The flexible, easy to use, all in one drawer library for your Android project.
