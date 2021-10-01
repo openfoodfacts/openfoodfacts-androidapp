@@ -69,7 +69,7 @@ class ProductNutriments : Serializable {
      */
     private fun getValuePer100g(nutriment: Nutriment) =
         getAdditionalProperty(nutriment, Suffix.VALUE_100G)
-            ?.toFloat()
+            ?.toFloatOrNull()
             ?.let { measure(it, UNIT_GRAM) }
 
     private fun getUnit(nutriment: Nutriment) = getAdditionalProperty(nutriment, Suffix.UNIT)

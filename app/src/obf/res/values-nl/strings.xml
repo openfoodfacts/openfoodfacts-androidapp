@@ -7,9 +7,9 @@
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/decouvrir -->
     <string name="website_discover">https://world.openbeautyfacts.org/discover&amp;hl=nl</string>
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/produit/ -->
-    <string name="website_product">https://world.openbeautyfacts.org/product/</string>
+    <string name="website_product">https://world-nl.openbeautyfacts.org/product/</string>
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/contributeur/ -->
-    <string name="website_contributor">https://world.openbeautyfacts.org/contributor/</string>
+    <string name="website_contributor">https://world-nl.openbeautyfacts.org/bijdrager/</string>
     <string name="terms_url">https://world.openbeautyfacts.org/terms-of-use</string>
     <string name="txtHomeOnline">Open Beauty Facts is een open database met meer dan %1$s cosmetische producten (plus degene die je gaat bijdragen).</string>
     <string name="txtHome">Open Beauty Facts is een open en gezamenlijke database van cosmetische producten.</string>
@@ -29,9 +29,9 @@
     <string name="translate_help_summary">Maak de Open Beauty Facts database in jouw taal beschikbaar - geen technische kennis vereist</string>
     <string name="text_offline_info_dialog">Scan producten ook als je offline bent, om ze later aan Open Beauty Facts toe te voegen. De gescande producten verschijnen hier en je kan ze verzenden via de onderstaande knop.</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Uw allergie-informatie zal nooit naar de Open Beauty Facts worden verzonden. Wees er attent op dat productgegevens, en detectie, niet altijd accuraat zijn, dus controleer de gegevens alsjeblieft zelf! </string>
-    <!-- OBF tagline in different languages -->
+    <!-- Open Beauty Facts tagline in different languages -->
     <string name="version_string">Open Beauty Facts Android-app</string>
-    <string name="tagline">de open database voor cosmetica</string>
+    <string name="tagline">the free cosmetics database</string>
     <string name="product_not_found">Het gescande product %1$s bestaat nog niet in Open Beauty Facts. Voeg deze toe?</string>
     <string name="currently_on_version">Momenteel op Open Beauty Facts</string>
     <string name="category_game_btn">Help producten te categoriseren</string>

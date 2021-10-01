@@ -93,7 +93,6 @@ dependencies {
     implementation("com.squareup.okhttp3:logging-interceptor:3.12.11")
 
     // Apache commons
-    implementation("org.apache.commons:commons-lang3:3.12.0")
     implementation("org.apache.commons:commons-text:1.9")
     implementation("org.apache.commons:commons-csv:1.9.0")
     implementation("commons-validator:commons-validator:1.7")
@@ -127,9 +126,6 @@ dependencies {
 
     implementation("com.journeyapps:zxing-android-embedded:3.6.0") { isTransitive = false }
 
-    // UI Component : Custom Toast
-    implementation("com.github.code-mc:loadtoast:1.0.12")
-
     // UI Component : ImageView with Zooming
     implementation("com.github.chrisbanes:PhotoView:2.3.0")
 
@@ -150,7 +146,7 @@ dependencies {
     implementation("com.github.hootsuite:nachos:1.2.0")
 
     // Crash analytics
-    implementation("io.sentry:sentry-android:5.1.2")
+    implementation("io.sentry:sentry-android:5.2.0")
     implementation("com.github.matomo-org:matomo-sdk-android:v4.1.2")
 
     // ShowCaseView dependency
@@ -172,8 +168,8 @@ dependencies {
     androidTestUtil("androidx.test:orchestrator:1.4.0")
 
     // Hilt for Android Testing
-    androidTestImplementation("com.google.dagger:hilt-android-testing:2.38.1")
-    kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.38.1")
+    androidTestImplementation("com.google.dagger:hilt-android-testing:2.39")
+    kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.39")
 
     androidTestImplementation("androidx.test:runner:1.3.0") { exclude("junit") }
     androidTestImplementation("androidx.test:rules:1.4.0")
