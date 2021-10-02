@@ -46,4 +46,5 @@
     <string name="txt_info_eaten_products">Sarete in grado di aggiungere prodotti a questa lista scansionando i prodotti, trascinando la scheda prodotto e toccando su \"Prodotti da comprare\".
         Sarai anche in grado di aggiungere prodotti a questa lista cercando e cliccando sul pulsante + in alto a destra della pagina del prodotto.</string>
     <string name="OFFlogo">Logo Open Beauty Facts</string>
+    <string name="txtDialogsContentPowerMode">Il prodotto scannerizzato esiste già in Open Food Facts</string>
 </resources>
