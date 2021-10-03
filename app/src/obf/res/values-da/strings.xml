@@ -46,4 +46,5 @@
     <string name="txt_info_eaten_products">Du vil kunne føje produkter til denne liste ved at skanne produkter, trække produktkortet op og trykke på \"Produkter, som skal købes\".
         Du vl også kunne føje produkter til denne liste ved at søge efter dem og trykke på knappen + øverst til højre på produktsiden.</string>
     <string name="OFFlogo">Open Beauty Facts-logo</string>
+    <string name="txtDialogsContentPowerMode">Produktet, du har skannet, findes allerede i Open Food Facts.</string>
 </resources>
