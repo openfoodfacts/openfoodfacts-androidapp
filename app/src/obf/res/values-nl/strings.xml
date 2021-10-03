@@ -46,4 +46,5 @@
     <string name="txt_info_eaten_products">U kan producten aan deze lijst toevoegen door producten te scannen, de productkaart omhoog te slepen en op \"Te kopen producten\" te tikken.
         U kan ook producten aan deze lijst toevoegen door ze te zoeken en op de knop + rechtsboven op de productpagina te klikken.</string>
     <string name="OFFlogo">Open Beauty Facts-logo</string>
+    <string name="txtDialogsContentPowerMode">Het gescannede product bestaat al in Open Food Facts</string>
 </resources>
