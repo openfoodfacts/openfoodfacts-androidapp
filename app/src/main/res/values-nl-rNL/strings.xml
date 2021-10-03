@@ -216,7 +216,9 @@
     <string name="alert_drawer">Stel allergeenwaarschuwingen in</string>
     <string name="your_lists">Jouw lijsten</string>
     <string name="title_dialog_alert">Voeg melding toe</string>
+    <string name="select_camera">Select a Camera</string>
     <string name="ok_button">Ok</string>
+    <string name="cancel_button">Annuleer</string>
     <string name="login_button">Gebruikersnaam</string>
     <string name="create_account_button">Account aanmaken</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Informatie over je allergieën wordt nooit naar de Open Food Facts-server verzonden. Let ook op dat productgegevens mogelijk niet accuraat zijn en detectie mogelijk niet 100% accuraat is, dus controleer dit aub zelf! </string>

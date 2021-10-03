@@ -46,4 +46,5 @@
     <string name="txt_info_eaten_products">ستتمكن من إضافة منتج إلى هذه القائمة عن طريق مسح المنتجات وسحب بطاقة المنتج لأعلى والنقر على \"المنتجات المراد شراؤها\".
         ستتمكن أيضًا من إضافة منتجات إلى هذه القائمة من خلال البحث عنها والنقر فوق الزر + في أعلى يمين صفحة المنتج.</string>
     <string name="OFFlogo">افتح شعار حقائق الجمال</string>
+    <string name="txtDialogsContentPowerMode">المنتج الذي تم مسحه موجود بالفعل في Open Food Facts.</string>
 </resources>
