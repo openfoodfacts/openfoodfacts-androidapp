@@ -34,7 +34,7 @@
         android:id="@+id/allergens_recycle"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"
+        android:background="@color/daynight_recycler_bg"
         android:visibility="gone"
         tools:listitem="@layout/item_allergens" />
 
@@ -53,11 +53,11 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add_allergen_button"
+        style="@style/BrandedFloatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
-        app:backgroundTint="@color/button_link"
         app:fabSize="normal"
         app:srcCompat="@drawable/ic_plus_light_24"
         tools:ignore="ContentDescription" />
