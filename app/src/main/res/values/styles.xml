@@ -70,4 +70,9 @@
         <item name="android:windowExitAnimation">@anim/push_bottom_out</item>
     </style>
 
+    <style name="BrandedFloatingActionButton" parent="Widget.Design.FloatingActionButton">
+        <item name="backgroundTint">@color/button_link</item>
+        <item name="android:tint">@color/white</item>
+    </style>
+
 </resources>
