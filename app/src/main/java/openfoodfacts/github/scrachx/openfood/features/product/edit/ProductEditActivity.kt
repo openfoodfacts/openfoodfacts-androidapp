@@ -527,7 +527,7 @@ class ProductEditActivity : BaseActivity() {
             try {
                 productsApi.performOCR(code, imageField).await()
             } catch (err: Exception) {
-                ingredientsFragment.hideOCRProgress()
+                withContext(Main) { ingredientsFragment.hideOCRProgress() }
                 if (err is IOException) {
                     val view = findViewById<View>(R.id.coordinator_layout)
                     Snackbar.make(view, R.string.no_internet_unable_to_extract_ingredients, LENGTH_INDEFINITE)
