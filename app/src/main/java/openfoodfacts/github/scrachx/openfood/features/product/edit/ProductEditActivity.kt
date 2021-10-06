@@ -77,6 +77,9 @@ class ProductEditActivity : BaseActivity() {
     private val binding get() = _binding!!
 
     @Inject
+    lateinit var client: OpenFoodAPIClient
+
+    @Inject
     lateinit var offlineService: OfflineProductService
 
     @Inject

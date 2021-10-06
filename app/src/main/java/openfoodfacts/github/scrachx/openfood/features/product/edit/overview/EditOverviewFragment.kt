@@ -39,7 +39,7 @@ import com.hootsuite.nachos.validator.ChipifyingNachoValidator
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.rx2.awaitSingleOrNull
+import kotlinx.coroutines.launch
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OBF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OPF
@@ -70,7 +70,6 @@ import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.Keys.lcProductNameKey
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.*
-import openfoodfacts.github.scrachx.openfood.utils.FileDownloader.download
 import org.apache.commons.lang3.StringUtils
 import org.jetbrains.annotations.Contract
 import java.io.File
@@ -95,6 +94,9 @@ class EditOverviewFragment : ProductEditFragment() {
 
     @Inject
     lateinit var client: OpenFoodAPIClient
+
+    @Inject
+    lateinit var fileDownloader: FileDownloader
 
     @Inject
     lateinit var matomoAnalytics: MatomoAnalytics
@@ -635,12 +637,12 @@ class EditOverviewFragment : ProductEditFragment() {
             isFrontImagePresent = true
             if (photoFile == null) {
                 lifecycleScope.launchWhenResumed {
-                    val uri = download(requireContext(), frontImageUrl!!, client).awaitSingleOrNull() ?: return@launchWhenResumed
-
-                    photoFile = uri.toFile()
-                    cropRotateImage(uri, getString(R.string.set_img_front))
+                    val uri = fileDownloader.download(frontImageUrl!!)
+                    if (uri != null) {
+                        photoFile = uri.toFile()
+                        cropRotateImage(uri, getString(R.string.set_img_front))
+                    }
                 }
-
             } else {
                 cropRotateImage(photoFile!!, getString(R.string.set_img_front))
             }

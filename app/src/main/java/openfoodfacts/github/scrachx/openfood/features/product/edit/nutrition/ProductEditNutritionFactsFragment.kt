@@ -41,10 +41,6 @@ import com.google.android.material.textfield.TextInputLayout
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.rx2.awaitSingleOrNull
-import kotlinx.coroutines.withContext
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsView
 import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
@@ -62,7 +58,6 @@ import openfoodfacts.github.scrachx.openfood.network.ApiFields.Defaults.NUTRITIO
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.Defaults.NUTRITION_DATA_PER_SERVING
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.*
-import openfoodfacts.github.scrachx.openfood.utils.FileDownloader.download
 import java.io.File
 import java.text.Collator
 import java.util.*
@@ -83,6 +78,9 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
 
     @Inject
     lateinit var client: OpenFoodAPIClient
+
+    @Inject
+    lateinit var fileDownloader: FileDownloader
 
     @Inject
     lateinit var matomoAnalytics: MatomoAnalytics
@@ -442,14 +440,13 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         if (photoFile != null) {
             cropRotateImage(photoFile!!, getString(R.string.nutrition_facts_picture))
         } else {
-            lifecycleScope.launch(Dispatchers.IO) {
-                val uri = download(requireContext(), path, client).awaitSingleOrNull() ?: return@launch
-                withContext(Dispatchers.Main) {
+            lifecycleScope.launchWhenResumed {
+                val uri = fileDownloader.download(path)
+                if (uri != null) {
                     photoFile = uri.toFile()
                     cropRotateImage(uri, getString(R.string.nutrition_facts_picture))
                 }
             }
-
         }
     }
 

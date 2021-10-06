@@ -25,6 +25,7 @@ import kotlinx.coroutines.rx2.await
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductComparisonBinding
 import openfoodfacts.github.scrachx.openfood.features.compare.ProductCompareViewModel.SideEffect
+import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewActivityStarter
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.features.simplescan.SimpleScanActivityContract
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
@@ -32,6 +33,7 @@ import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInsta
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.selectNavigationItem
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.*
 import java.util.*
 import javax.inject.Inject
@@ -40,10 +42,16 @@ import javax.inject.Inject
 class ProductCompareActivity : BaseActivity() {
 
     @Inject
+    lateinit var client: OpenFoodAPIClient
+
+    @Inject
     lateinit var picasso: Picasso
 
     @Inject
     lateinit var sharedPreferences: SharedPreferences
+
+    @Inject
+    lateinit var productViewActivityStarter: ProductViewActivityStarter
 
     private lateinit var binding: ActivityProductComparisonBinding
     private lateinit var photoReceiverHandler: PhotoReceiverHandler
@@ -140,7 +148,7 @@ class ProductCompareActivity : BaseActivity() {
 
             fullProductClickListener = {
                 val barcode = it.code
-                openProduct(barcode)
+                productViewActivityStarter.openProduct(barcode, this@ProductCompareActivity)
             }
         }
 

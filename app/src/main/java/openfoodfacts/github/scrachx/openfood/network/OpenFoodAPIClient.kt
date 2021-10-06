@@ -1,17 +1,12 @@
 package openfoodfacts.github.scrachx.openfood.network
 
-import android.app.Activity
 import android.content.Context
-import android.content.Intent
 import android.util.Log
-import android.widget.Toast
 import androidx.core.content.edit
 import com.fasterxml.jackson.databind.JsonNode
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.qualifiers.ApplicationContext
 import io.reactivex.Single
 import kotlinx.coroutines.Dispatchers.IO
-import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.rx2.await
 import kotlinx.coroutines.rx2.rxCompletable
 import kotlinx.coroutines.rx2.rxSingle
@@ -23,17 +18,14 @@ import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OPF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OPFF
 import openfoodfacts.github.scrachx.openfood.BuildConfig
-import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.analytics.SentryAnalytics
-import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity
-import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_EDIT_PRODUCT
-import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewActivity
 import openfoodfacts.github.scrachx.openfood.images.*
 import openfoodfacts.github.scrachx.openfood.models.*
 import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct
 import openfoodfacts.github.scrachx.openfood.models.entities.ToUploadProduct
 import openfoodfacts.github.scrachx.openfood.models.entities.ToUploadProductDao
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.Keys
+import openfoodfacts.github.scrachx.openfood.network.ApiFields.getAllFields
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
 import openfoodfacts.github.scrachx.openfood.utils.*
 import java.io.File
@@ -41,7 +33,6 @@ import java.io.IOException
 import java.util.*
 import javax.inject.Inject
 import javax.inject.Singleton
-import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewActivity.Companion.start as startProductViewActivity
 
 /**
  * API Client for all API callbacks
@@ -50,14 +41,14 @@ import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewAc
 class OpenFoodAPIClient @Inject constructor(
     @ApplicationContext private val context: Context,
     private val daoSession: DaoSession,
-    internal val rawApi: ProductsAPI,
+    private val rawApi: ProductsAPI,
     private val sentryAnalytics: SentryAnalytics,
     private val localeManager: LocaleManager
 ) {
 
     suspend fun getProductStateFull(
         barcode: String,
-        fields: String = getAllFields(),
+        fields: String = getAllFields(localeManager.getLanguage()),
         userAgent: String = Utils.HEADER_USER_AGENT_SEARCH
     ): ProductState {
         sentryAnalytics.setBarcode(barcode)
@@ -71,37 +62,9 @@ class OpenFoodAPIClient @Inject constructor(
         customHeader: String = Utils.HEADER_USER_AGENT_SEARCH
     ) = rawApi.getProductsByBarcode(
         codes.joinToString(","),
-        getAllFields(),
+        getAllFields(localeManager.getLanguage()),
         customHeader
     ).products
-
-    private fun getAllFields(): String {
-        val allFields = Keys.PRODUCT_COMMON_FIELDS
-        val fieldsToLocalize = Keys.PRODUCT_LOCAL_FIELDS
-
-        val langCode = localeManager.getLanguage()
-        val fieldsSet = allFields.toMutableSet()
-        fieldsToLocalize.forEach { (field, shouldAddEn) ->
-            fieldsSet += "${field}_$langCode"
-            if (shouldAddEn) fieldsSet += "${field}_en"
-        }
-        return fieldsSet.joinToString(",")
-    }
-
-    private fun productNotFoundDialogBuilder(activity: Activity, barcode: String): MaterialAlertDialogBuilder =
-        MaterialAlertDialogBuilder(activity)
-            .setTitle(R.string.txtDialogsTitle)
-            .setMessage(R.string.product_does_not_exist_please_add_it)
-            .setPositiveButton(R.string.txtYes) { _, _ ->
-                activity.startActivity(Intent(activity, ProductEditActivity::class.java).apply {
-                    putExtra(KEY_EDIT_PRODUCT, Product().apply {
-                        code = barcode
-                        lang = localeManager.getLanguage()
-                    })
-                })
-                activity.finish()
-            }
-            .setNegativeButton(R.string.txtNo) { _, _ -> }
 
     /**
      * Open the product activity if the barcode exist.
@@ -120,43 +83,6 @@ class OpenFoodAPIClient @Inject constructor(
             localeManager.getLanguage(),
             getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)
         )
-    }
-
-    // TODO: This is not part of the client, move it to another class (preferably a utility class)
-    /**
-     * Open the product in [ProductViewActivity] if the barcode exist.
-     * Also add it in the history if the product exist.
-     *
-     * @param barcode product barcode
-     * @param activity
-     */
-    suspend fun openProduct(barcode: String, activity: Activity) {
-        val state = try {
-            rawApi.getProductByBarcode(
-                barcode,
-                getAllFields(),
-                localeManager.getLanguage(),
-                getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)
-            )
-        } catch (err: Exception) {
-            when (err) {
-                is IOException -> Toast.makeText(activity, R.string.something_went_wrong, Toast.LENGTH_LONG).show()
-                else -> productNotFoundDialogBuilder(activity, barcode).show()
-            }
-            return
-        }
-        withContext(Main) {
-            if (state.status == 0L) {
-                productNotFoundDialogBuilder(activity, barcode)
-                    .setNegativeButton(R.string.txtNo) { _, _ -> activity.onBackPressed() }
-                    .show()
-            } else {
-                addToHistory(state.product!!)
-
-                // After this the lifecycleScope is cleared because we're switching activities
-                startProductViewActivity(activity, state)
-            }
-        }
     }
 
     /**

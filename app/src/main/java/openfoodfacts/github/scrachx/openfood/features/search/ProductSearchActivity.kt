@@ -37,6 +37,7 @@ import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductBrowsingListBinding
 import openfoodfacts.github.scrachx.openfood.features.adapters.ProductSearchAdapter
+import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewActivityStarter
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.selectNavigationItem
@@ -45,6 +46,7 @@ import openfoodfacts.github.scrachx.openfood.listeners.RecyclerItemClickListener
 import openfoodfacts.github.scrachx.openfood.models.Search
 import openfoodfacts.github.scrachx.openfood.models.SearchInfo
 import openfoodfacts.github.scrachx.openfood.models.SearchProduct
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.SearchType.*
@@ -56,6 +58,12 @@ import javax.inject.Inject
 class ProductSearchActivity : BaseActivity() {
     private var _binding: ActivityProductBrowsingListBinding? = null
     private val binding get() = _binding!!
+
+    @Inject
+    lateinit var client: OpenFoodAPIClient
+
+    @Inject
+    lateinit var productViewActivityStarter: ProductViewActivityStarter
 
     @Inject
     lateinit var analytics: MatomoAnalytics
@@ -324,7 +332,7 @@ class ProductSearchActivity : BaseActivity() {
 
             SEARCH -> {
                 if (isBarcodeValid(searchQuery)) {
-                    lifecycleScope.launch { openProduct(searchQuery) }
+                    productViewActivityStarter.openProduct(searchQuery, this@ProductSearchActivity)
                 } else {
                     client.searchProductsByName(searchQuery, pageAddress)
                         .startSearch(R.string.txt_no_matching_products, R.string.txt_broaden_search)
@@ -517,8 +525,9 @@ class ProductSearchActivity : BaseActivity() {
             })
 
             binding.productsRecyclerView.addOnItemTouchListener(RecyclerItemClickListener(this) { _, position ->
-                val product = adapter.getProduct(position) ?: return@RecyclerItemClickListener
-                openProduct(product.code)
+                adapter.getProduct(position)?.let {
+                    productViewActivityStarter.openProduct(it.code, this)
+                }
                 return@RecyclerItemClickListener
             })
 

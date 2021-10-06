@@ -32,8 +32,6 @@ import com.hootsuite.nachos.validator.ChipifyingNachoValidator
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.rxkotlin.addTo
 import kotlinx.coroutines.launch
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
@@ -54,7 +52,6 @@ import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.Keys.lcIngredientsKey
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.*
-import openfoodfacts.github.scrachx.openfood.utils.FileDownloader.download
 import java.io.File
 import javax.inject.Inject
 
@@ -78,6 +75,9 @@ class EditIngredientsFragment : ProductEditFragment() {
 
     @Inject
     lateinit var client: OpenFoodAPIClient
+
+    @Inject
+    lateinit var fileDownloader: FileDownloader
 
     @Inject
     lateinit var matomoAnalytics: MatomoAnalytics
@@ -332,12 +332,13 @@ class EditIngredientsFragment : ProductEditFragment() {
             imagePath == null -> editIngredientsImage()
             photoFile != null -> cropRotateImage(photoFile!!, getString(R.string.ingredients_picture))
             else -> {
-                download(requireContext(), imagePath!!, client)
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe { uri ->
+                lifecycleScope.launchWhenResumed {
+                    val uri = fileDownloader.download(imagePath!!)
+                    if (uri != null) {
                         photoFile = uri.toFile()
                         cropRotateImage(uri, getString(R.string.ingredients_picture))
-                    }.addTo(disp)
+                    }
+                }
             }
         }
     }
