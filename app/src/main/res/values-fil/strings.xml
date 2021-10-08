@@ -199,7 +199,7 @@
     <string name="uploadLater">Ang litrato ay maaaring ma-upload kapag mayroon ng network</string>
     <string name="txtInfoLoginOk">Na-save ang user</string>
     <string name="txtInfoLoginNo">Hindi nai-save ang user</string>
-    <string name="txtDialogsContent">Ang produkto na hinahanap mo ay wala pa sa Open Food Facts. Mangyaring idagdag ang mga ito.</string>
+    <string name="product_does_not_exist_please_add_it">Ang produkto na hinahanap mo ay wala pa sa Open Food Facts. Mangyaring idagdag ang mga ito.</string>
     <string name="txtYes">Oo</string>
     <string name="txtNo">Hindi</string>
     <string name="hintBrand">Mga Tatak</string>

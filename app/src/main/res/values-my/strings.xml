@@ -194,7 +194,7 @@
     <string name="uploadLater">Image will be uploaded when network is available</string>
     <string name="txtInfoLoginOk">အသံုးျပဳသူကိုသိမ္းခဲ့ျပီးျပီ</string>
     <string name="txtInfoLoginNo">အသံုးျပဳသူကိုမသိမ္းခဲ့ပါ</string>
-    <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
+    <string name="product_does_not_exist_please_add_it">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
     <string name="txtYes">ဟုတ္</string>
     <string name="txtNo">မဟုတ္</string>
     <string name="hintBrand">အမှတ်တံဆိပ်</string>

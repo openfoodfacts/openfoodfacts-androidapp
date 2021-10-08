@@ -29,7 +29,7 @@
     <string name="msg_welcome_nova">Reducér mængden af ultraforarbejdede fødevarer i din kost.</string>
     <string name="title_welcome_ecoscore">Øko-Score</string>
     <!-- Scan card -->
-    <string name="txtDialogsContent">Produktet, du skannede, findes ikke i Open Food Facts endnu. Tilføj det venligst.</string>
+    <string name="product_does_not_exist_please_add_it">Produktet, du skannede, findes ikke i Open Food Facts endnu. Tilføj det venligst.</string>
     <string name="txtDialogsContentPowerMode">Produktet, du har skannet, findes allerede i Open Food Facts.</string>
     <string name="msg_share">Kig på dette produkt på Open Food Facts :</string>
     <string name="not_support_books">Bøger understøttes ikke pt. af Open Food Facts</string>

@@ -204,7 +204,7 @@
     <string name="uploadLater">Image will be uploaded when network is available</string>
     <string name="txtInfoLoginOk">Korisničko ime sačuvano</string>
     <string name="txtInfoLoginNo">Korisničko ime nije sačuvano</string>
-    <string name="txtDialogsContent">Proizvod koji ste skenirali ne postoji u bazi Open Food Facts. Molimo Vas da ga dodate.</string>
+    <string name="product_does_not_exist_please_add_it">Proizvod koji ste skenirali ne postoji u bazi Open Food Facts. Molimo Vas da ga dodate.</string>
     <string name="txtYes">Da</string>
     <string name="txtNo">Ne</string>
     <string name="hintBrand">Brend</string>

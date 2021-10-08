@@ -199,7 +199,7 @@
     <string name="uploadLater">Sarea eskuragarri dagoenean igoko da irudia</string>
     <string name="txtInfoLoginOk">Erabiltzaileak gordea</string>
     <string name="txtInfoLoginNo">Erabiltzailea ez dago gordeta</string>
-    <string name="txtDialogsContent">Eskaneatu duzun produktua ez dago Open Food Facts datu-basean oraindik. Gehitu ezazu.</string>
+    <string name="product_does_not_exist_please_add_it">Eskaneatu duzun produktua ez dago Open Food Facts datu-basean oraindik. Gehitu ezazu.</string>
     <string name="txtYes">Bai</string>
     <string name="txtNo">Ez</string>
     <string name="hintBrand">Marka</string>

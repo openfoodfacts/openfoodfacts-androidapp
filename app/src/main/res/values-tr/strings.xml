@@ -199,7 +199,7 @@
     <string name="uploadLater">Ağ kullanılabilir olduğunda resim yüklenecek</string>
     <string name="txtInfoLoginOk">Kullanıcı kaydedildi</string>
     <string name="txtInfoLoginNo">Kullanıcı kaydedilemedi</string>
-    <string name="txtDialogsContent">Aradığınız ürün Open Food Facts\'te mevcut değil. Lütfen ekleyin.</string>
+    <string name="product_does_not_exist_please_add_it">Aradığınız ürün Open Food Facts\'te mevcut değil. Lütfen ekleyin.</string>
     <string name="txtYes">Evet</string>
     <string name="txtNo">Hayır</string>
     <string name="hintBrand">Marka</string>

@@ -194,7 +194,7 @@
     <string name="uploadLater">A imaxe subirase cando a rede esté dispoñible</string>
     <string name="txtInfoLoginOk">Gardouse o usuario</string>
     <string name="txtInfoLoginNo">Non se gardou o usuario</string>
-    <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
+    <string name="product_does_not_exist_please_add_it">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
     <string name="txtYes">Si</string>
     <string name="txtNo">Non</string>
     <string name="hintBrand">Marca</string>

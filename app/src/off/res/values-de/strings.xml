@@ -29,7 +29,7 @@
     <string name="msg_welcome_nova">Reduzieren Sie die Menge an hochverarbeiteten Lebensmitteln in Ihrer Ernährung.</string>
     <string name="title_welcome_ecoscore">Eco-Score</string>
     <!-- Scan card -->
-    <string name="txtDialogsContent">Das eingelesene Produkt existiert noch nicht in „Open Food Facts”. Bitte fügen Sie es hinzu.</string>
+    <string name="product_does_not_exist_please_add_it">Das eingelesene Produkt existiert noch nicht in „Open Food Facts”. Bitte fügen Sie es hinzu.</string>
     <string name="txtDialogsContentPowerMode">Das eingelesene Produkt befindet sich bereits in Open Food Facts.</string>
     <string name="msg_share">Dieses Produkt auf Open Food Facts anzeigen:</string>
     <string name="not_support_books">Bücher werden derzeit von „Open Food Facts” nicht unterstützt</string>

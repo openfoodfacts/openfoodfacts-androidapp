@@ -199,7 +199,7 @@
     <string name="uploadLater">Image will be uploaded when network is available</string>
     <string name="txtInfoLoginOk">ইউজার সেইভ করা হয়েছে</string>
     <string name="txtInfoLoginNo">ব্যবহারকারী সংরক্ষিত না</string>
-    <string name="txtDialogsContent">আপনি যে পণ্য স্ক্যান করছেন তা Open Food Facts এ বিদ্যমান নাই। দয়া করে যোগ করুন।</string>
+    <string name="product_does_not_exist_please_add_it">আপনি যে পণ্য স্ক্যান করছেন তা Open Food Facts এ বিদ্যমান নাই। দয়া করে যোগ করুন।</string>
     <string name="txtYes">হ্যাঁ</string>
     <string name="txtNo">না</string>
     <string name="hintBrand">ব্র্যান্ড</string>

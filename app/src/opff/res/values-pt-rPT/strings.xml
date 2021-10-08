@@ -21,7 +21,7 @@
     <string name="slide_3_desc">Todos os alimentos para animais que você digitaliza, em uma lista útil que pode exportar</string>
     <string name="slide_4_title">Funciona offline</string>
     <string name="slide_4_desc">Pode adicionar novos produtos, mesmo se não tiver uma conexão com a Internet agora</string>
-    <string name="txtDialogsContent">O produto que você digitalizou ainda não existe no Open Pet Food Facts. Por favor, adicione.</string>
+    <string name="product_does_not_exist_please_add_it">O produto que você digitalizou ainda não existe no Open Pet Food Facts. Por favor, adicione.</string>
     <string name="txtDialogsContentPowerMode">O produto que você digitalizou já existe em Open Pet Food Facts.</string>
     <string name="msg_share">Ver este produto no Open Pet Food Facts :</string>
     <string name="not_support_books">Atualmente, livros não são suportados pelo Open Pet Food Facts</string>

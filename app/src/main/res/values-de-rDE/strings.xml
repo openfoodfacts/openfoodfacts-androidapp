@@ -189,7 +189,7 @@
     <string name="errorWeb">Kein Internetzugang. Netzwerkverbindung überprüfen.</string>
     <string name="txtInfoLoginOk">Benutzer gespeichert</string>
     <string name="txtInfoLoginNo">Benutzer nicht gespeichert</string>
-    <string name="txtDialogsContent">Das eingelesene Produkt existiert noch nicht in „Open Food Facts”. Bitte fügen Sie es hinzu.</string>
+    <string name="product_does_not_exist_please_add_it">Das eingelesene Produkt existiert noch nicht in „Open Food Facts”. Bitte fügen Sie es hinzu.</string>
     <string name="txtYes">Ja</string>
     <string name="txtNo">Nein</string>
     <string name="hintBrand">Marke</string>

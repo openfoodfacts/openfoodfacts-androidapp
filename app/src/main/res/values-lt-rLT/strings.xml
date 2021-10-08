@@ -204,7 +204,7 @@
     <string name="uploadLater">Vaizdas bus įkeltas, kai bus prieinamas tinklas</string>
     <string name="txtInfoLoginOk">Vartotojas išsaugotas</string>
     <string name="txtInfoLoginNo">Vartotojas neišsaugotas</string>
-    <string name="txtDialogsContent">Nuskaityto produkto dar nėra „Open Food Facts“. Prašau jį pridėti.</string>
+    <string name="product_does_not_exist_please_add_it">Nuskaityto produkto dar nėra „Open Food Facts“. Prašau jį pridėti.</string>
     <string name="txtYes">Taip</string>
     <string name="txtNo">Ne</string>
     <string name="hintBrand">Brand</string>

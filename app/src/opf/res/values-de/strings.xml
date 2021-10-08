@@ -21,7 +21,7 @@
     <string name="slide_3_desc">Alle durch Sie eingelesenen Produkte können in einer praktischen Liste exportiert werden.</string>
     <string name="slide_4_title">Funktioniert auch ohne Internetverbindung</string>
     <string name="slide_4_desc">Sie können neue Produkte hinzufügen, auch wenn gerade keine Internetverbindung besteht</string>
-    <string name="txtDialogsContent">Das eingelesene Produkt existiert noch nicht in „Open Products Facts”. Bitte fügen Sie es hinzu.</string>
+    <string name="product_does_not_exist_please_add_it">Das eingelesene Produkt existiert noch nicht in „Open Products Facts”. Bitte fügen Sie es hinzu.</string>
     <string name="txtDialogsContentPowerMode">Das eingelesene Produkt existiert bereits in „Open Products Facts”.</string>
     <string name="msg_share">Dieses Produkt auf Open Products Facts anzeigen:</string>
     <string name="not_support_books">Bücher werden derzeit von „Open Products Facts” nicht unterstützt</string>

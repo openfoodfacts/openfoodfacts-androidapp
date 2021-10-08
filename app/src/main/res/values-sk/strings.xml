@@ -209,7 +209,7 @@
     <string name="uploadLater">Obrázok bude nahratý, akonáhle bude dostupné internetové spojenie</string>
     <string name="txtInfoLoginOk">Používateľ uložený</string>
     <string name="txtInfoLoginNo">Užívateľ nebol uložený</string>
-    <string name="txtDialogsContent">Produkt, ktorý ste naskenovali ešte neexistuje v Open Food Facts. Prosím pridajte ho.</string>
+    <string name="product_does_not_exist_please_add_it">Produkt, ktorý ste naskenovali ešte neexistuje v Open Food Facts. Prosím pridajte ho.</string>
     <string name="txtYes">Áno</string>
     <string name="txtNo">Nie</string>
     <string name="hintBrand">Značka</string>

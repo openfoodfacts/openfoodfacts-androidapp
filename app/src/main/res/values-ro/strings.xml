@@ -204,7 +204,7 @@
     <string name="uploadLater">Imaginea va fi încărcată când va fi disponibilă o conexiune la internet</string>
     <string name="txtInfoLoginOk">Utilizator salvat</string>
     <string name="txtInfoLoginNo">Utilizatorul nu a fost salvat.</string>
-    <string name="txtDialogsContent">Produsul scanat nu există în baza de date Open Food Facts. Doriți să-l adăugați?</string>
+    <string name="product_does_not_exist_please_add_it">Produsul scanat nu există în baza de date Open Food Facts. Doriți să-l adăugați?</string>
     <string name="txtYes">Da</string>
     <string name="txtNo">Nu</string>
     <string name="hintBrand">Marca</string>

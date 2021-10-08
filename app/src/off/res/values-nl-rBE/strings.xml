@@ -29,7 +29,7 @@
     <string name="msg_welcome_nova">Verminder de hoeveelheid ultra-bewerkte levensmiddelen in je dieet.</string>
     <string name="title_welcome_ecoscore">Eco-score</string>
     <!-- Scan card -->
-    <string name="txtDialogsContent">Het gescande product bestaat nog niet in Open Products Facts. Voeg deze toe.</string>
+    <string name="product_does_not_exist_please_add_it">Het gescande product bestaat nog niet in Open Products Facts. Voeg deze toe.</string>
     <string name="txtDialogsContentPowerMode">Het gescannede product bestaat al in Open Food Facts</string>
     <string name="msg_share">Bekijk dit product op Open Products Facts:</string>
     <string name="not_support_books">Boeken worden momenteel niet ondersteund door Open Food Facts</string>

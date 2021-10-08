@@ -199,7 +199,7 @@
     <string name="uploadLater">L\'image sera téléchargée lorsque le réseau sera disponible</string>
     <string name="txtInfoLoginOk">Utilisateur connecté</string>
     <string name="txtInfoLoginNo">Utilisateur anonyme</string>
-    <string name="txtDialogsContent">Le produit que vous recherchez n\'existe pas dans notre base de données. Voulez-vous l\'ajouter?</string>
+    <string name="product_does_not_exist_please_add_it">Le produit que vous recherchez n\'existe pas dans notre base de données. Voulez-vous l\'ajouter?</string>
     <string name="txtYes">Oui</string>
     <string name="txtNo">Non</string>
     <string name="hintBrand">Marque</string>

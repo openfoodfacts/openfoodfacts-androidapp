@@ -194,7 +194,7 @@
     <string name="uploadLater">Image will be uploaded when network is available</string>
     <string name="txtInfoLoginOk">Bruker lagret</string>
     <string name="txtInfoLoginNo">Bruker ikke lagret</string>
-    <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
+    <string name="product_does_not_exist_please_add_it">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
     <string name="txtYes">Ja</string>
     <string name="txtNo">Nei</string>
     <string name="hintBrand">Merke</string>

@@ -204,7 +204,7 @@
     <string name="uploadLater">Зображення буде завантажено, коли з\'явиться інтернет</string>
     <string name="txtInfoLoginOk">Користувача збережено</string>
     <string name="txtInfoLoginNo">Користувача не збережено</string>
-    <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
+    <string name="product_does_not_exist_please_add_it">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
     <string name="txtYes">Так</string>
     <string name="txtNo">Ні</string>
     <string name="hintBrand">Виробник</string>

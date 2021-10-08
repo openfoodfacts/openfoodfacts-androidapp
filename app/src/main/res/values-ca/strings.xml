@@ -199,7 +199,7 @@
     <string name="uploadLater">La imatge es carregarà quan la xarxa estigui disponible</string>
     <string name="txtInfoLoginOk">Usuari desat</string>
     <string name="txtInfoLoginNo">Usuari no desat</string>
-    <string name="txtDialogsContent">El producte que heu escanejat encara no existeix a Open Food Facts. Si us plau, afegiu-lo.</string>
+    <string name="product_does_not_exist_please_add_it">El producte que heu escanejat encara no existeix a Open Food Facts. Si us plau, afegiu-lo.</string>
     <string name="txtYes">Si</string>
     <string name="txtNo">No</string>
     <string name="hintBrand">Marca</string>

@@ -211,7 +211,7 @@
     <string name="errorWeb">لم نتمكن من الوصول إلى الإنترنت. هل لديك مشاكل في الاتصال؟</string>
     <string name="txtInfoLoginOk">تم حفظ المستخدم</string>
     <string name="txtInfoLoginNo">لم يتم حفظ المستخدم</string>
-    <string name="txtDialogsContent">المنتج الذي قمت بمسحه ضوئياً غير موجود حتى الآن في Open Open Facts. يرجى إضافته.</string>
+    <string name="product_does_not_exist_please_add_it">المنتج الذي قمت بمسحه ضوئياً غير موجود حتى الآن في Open Open Facts. يرجى إضافته.</string>
     <string name="txtYes">نعم</string>
     <string name="txtNo">كلا</string>
     <string name="hintBrand">العلامة التجارية</string>
