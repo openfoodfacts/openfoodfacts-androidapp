@@ -21,7 +21,7 @@
     <string name="slide_3_desc">All the cosmetic you use, in one handy list you can export</string>
     <string name="slide_4_title">Fungerar offline</string>
     <string name="slide_4_desc">Du kan lägga till nya produkter även om du inte har en internetanslutning just nu</string>
-    <string name="txtDialogsContent">The product you scanned does not exist yet in Open Beauty Facts. Please add it.</string>
+    <string name="product_does_not_exist_please_add_it">The product you scanned does not exist yet in Open Beauty Facts. Please add it.</string>
     <string name="msg_share">Titta på denna produkt på Open Beauty Facts :</string>
     <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Beauty Facts</string>
     <string name="Donation">Klicka här för att donera till Open Beauty Facts</string>

@@ -21,7 +21,7 @@
     <string name="slide_3_desc">所有你扫描过的产品都可以在一个便利的列表中导出</string>
     <string name="slide_4_title">离线工作</string>
     <string name="slide_4_desc">即使您目前没有互联网连接，也可以添加新的产品。</string>
-    <string name="txtDialogsContent">您扫描的产品尚未存在于 Open Products Facts 中，请添加它。</string>
+    <string name="product_does_not_exist_please_add_it">您扫描的产品尚未存在于 Open Products Facts 中，请添加它。</string>
     <string name="txtDialogsContentPowerMode">您所扫描的产品已经存在于 Open Products Facts 中。</string>
     <string name="msg_share">在 Open Products Facts 中查看这个产品：</string>
     <string name="not_support_books">图书目前未被 Open Products Facts 支持</string>

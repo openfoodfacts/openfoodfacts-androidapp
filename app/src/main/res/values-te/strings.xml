@@ -199,7 +199,7 @@
     <string name="uploadLater">నెట్వర్క్ అందుబాటులో ఉన్నప్పుడు చిత్రం అప్లోడ్ చేయబడుతుంది</string>
     <string name="txtInfoLoginOk">వినియోగదారు సేవ్ చేయబడింది</string>
     <string name="txtInfoLoginNo">వినియోగదారు సేవ్ చేయలేదు</string>
-    <string name="txtDialogsContent">ఓపెన్ ఫుడ్ ఫ్యాక్ట్స్లో స్కాన్ చేసిన ఉత్పత్తి ఇంకా లేదు. దయచేసి దానిని జోడించండి.</string>
+    <string name="product_does_not_exist_please_add_it">ఓపెన్ ఫుడ్ ఫ్యాక్ట్స్లో స్కాన్ చేసిన ఉత్పత్తి ఇంకా లేదు. దయచేసి దానిని జోడించండి.</string>
     <string name="txtYes">అవును</string>
     <string name="txtNo">నో</string>
     <string name="hintBrand">బ్రాండ్</string>

@@ -29,7 +29,7 @@
     <string name="msg_welcome_nova">Zmniejsz ilość ultra przetworzonej żywności w swojej diecie.</string>
     <string name="title_welcome_ecoscore">Eco-Score</string>
     <!-- Scan card -->
-    <string name="txtDialogsContent">Zeskanowany produkt jeszcze nie figuruje w Open Food Facts. Dodaj go.</string>
+    <string name="product_does_not_exist_please_add_it">Zeskanowany produkt jeszcze nie figuruje w Open Food Facts. Dodaj go.</string>
     <string name="txtDialogsContentPowerMode">Zeskanowany produkt już widnieje w Open Food Facts.</string>
     <string name="msg_share">Zobacz produkt na Open Food Facts:</string>
     <string name="not_support_books">Open Food Facts obecnie nie obsługuje książek</string>

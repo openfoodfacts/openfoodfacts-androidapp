@@ -199,7 +199,7 @@
     <string name="uploadLater">Attēls tiks augšupielādēts, kad interneta savienojums būs pieejams</string>
     <string name="txtInfoLoginOk">Lietotājs ir saglabāts</string>
     <string name="txtInfoLoginNo">Lietotājs nav saglabāts</string>
-    <string name="txtDialogsContent">Skenētais produkts vēl nav pieejams Open Food Facts sarakstā. Lūdzu, pievienojiet to.</string>
+    <string name="product_does_not_exist_please_add_it">Skenētais produkts vēl nav pieejams Open Food Facts sarakstā. Lūdzu, pievienojiet to.</string>
     <string name="txtYes">Jā</string>
     <string name="txtNo">Nē</string>
     <string name="hintBrand">Zīmols</string>

@@ -194,7 +194,7 @@
     <string name="uploadLater">La imagen será enviada cuando la red esté disponible</string>
     <string name="txtInfoLoginOk">Usuario guardado</string>
     <string name="txtInfoLoginNo">Usuario no guardado</string>
-    <string name="txtDialogsContent">El producto que escaneó aún no existe en Open Food Facts. Por favor agrégalo.</string>
+    <string name="product_does_not_exist_please_add_it">El producto que escaneó aún no existe en Open Food Facts. Por favor agrégalo.</string>
     <string name="txtYes">Sí</string>
     <string name="txtNo">No</string>
     <string name="hintBrand">Marca</string>

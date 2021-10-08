@@ -199,7 +199,7 @@
     <string name="uploadLater">Image will be uploaded when network is available</string>
     <string name="txtInfoLoginOk">Utente salvà</string>
     <string name="txtInfoLoginNo">Utente no salvà</string>
-    <string name="txtDialogsContent">El prodoto ca te ga pasà sol scàner no \'l existe gnancora so Open Food Facts. Par favor xónteło.</string>
+    <string name="product_does_not_exist_please_add_it">El prodoto ca te ga pasà sol scàner no \'l existe gnancora so Open Food Facts. Par favor xónteło.</string>
     <string name="txtYes">Sì</string>
     <string name="txtNo">No</string>
     <string name="hintBrand">Produtor</string>

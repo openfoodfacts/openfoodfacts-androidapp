@@ -194,7 +194,7 @@
     <string name="uploadLater">Gambar akan diunggah ketika jaringan tersedia</string>
     <string name="txtInfoLoginOk">Pengguna yang disimpan</string>
     <string name="txtInfoLoginNo">Pengguna belum disimpan</string>
-    <string name="txtDialogsContent">Produk yang anda scan belum ada pada daftar Open Food Facts. Silahkan tambahkan</string>
+    <string name="product_does_not_exist_please_add_it">Produk yang anda scan belum ada pada daftar Open Food Facts. Silahkan tambahkan</string>
     <string name="txtYes">Ya</string>
     <string name="txtNo">Tidak</string>
     <string name="hintBrand">Merek</string>

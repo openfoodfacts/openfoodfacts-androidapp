@@ -21,7 +21,7 @@
     <string name="slide_3_desc">Semua kosmetik yang Anda gunakan, dalam satu daftar praktis yang dapat Anda ekspor</string>
     <string name="slide_4_title">Bekerja secara luring</string>
     <string name="slide_4_desc">Anda dapat menambahkan produk - produk baru, bahkan jika Anda tidak memiliki koneksi Internet saat ini</string>
-    <string name="txtDialogsContent">Produk yang Anda pindai belum ada di Open Beauty Facts. Silahkan tambahkan.</string>
+    <string name="product_does_not_exist_please_add_it">Produk yang Anda pindai belum ada di Open Beauty Facts. Silahkan tambahkan.</string>
     <string name="msg_share">Lihat produk ini di Open Beauty Facts :</string>
     <string name="txt_broaden_search">- memperluas pencarian Anda \n- pindai dan tambahkan ke Open Beauty Facts</string>
     <string name="Donation">Klik di sini untuk berdonasi ke Open Beauty Facts</string>

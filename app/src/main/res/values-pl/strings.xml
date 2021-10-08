@@ -209,7 +209,7 @@
     <string name="uploadLater">Obraz zostanie przesłany, gdy połączenie będzie dostępne</string>
     <string name="txtInfoLoginOk">Zapisano użytkownika</string>
     <string name="txtInfoLoginNo">Nie zapisano użytkownika</string>
-    <string name="txtDialogsContent">Zeskanowany produkt nie figuruje jeszcze w Open Food Facts. Dodaj go.</string>
+    <string name="product_does_not_exist_please_add_it">Zeskanowany produkt nie figuruje jeszcze w Open Food Facts. Dodaj go.</string>
     <string name="txtYes">Tak</string>
     <string name="txtNo">Nie</string>
     <string name="hintBrand">Marka</string>

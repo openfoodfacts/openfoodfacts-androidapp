@@ -194,7 +194,7 @@
     <string name="uploadLater">Изображението ще бъде качено, когато е налична мрежа</string>
     <string name="txtInfoLoginOk">Потребителят е запазен</string>
     <string name="txtInfoLoginNo">Потребителят не е запазен</string>
-    <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
+    <string name="product_does_not_exist_please_add_it">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
     <string name="txtYes">Да</string>
     <string name="txtNo">Не</string>
     <string name="hintBrand">Марка</string>

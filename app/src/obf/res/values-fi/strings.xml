@@ -21,7 +21,7 @@
     <string name="slide_3_desc">Kaikki käyttämäsi kosmetiikka, yhtenä näppäränä luettelona jonka voit viedä</string>
     <string name="slide_4_title">Toimii offline-tilassa</string>
     <string name="slide_4_desc">Voit lisätä uusia tuotteita, vaikka sinulla ei olisi Internet-yhteyttä tällä hetkellä</string>
-    <string name="txtDialogsContent">Luettua tuotetta ei vielä ole Open Beauty Factsissa. Lisääthän sen.</string>
+    <string name="product_does_not_exist_please_add_it">Luettua tuotetta ei vielä ole Open Beauty Factsissa. Lisääthän sen.</string>
     <string name="msg_share">Katso tätä tuotetta Open Beauty Factsissa:</string>
     <string name="txt_broaden_search">- laajenna hakuasi \n- lue, ja lisää se Open Beauty Factsiin</string>
     <string name="Donation">Napsauta tästä lahjoittaaksesi Open Beauty Factsille</string>

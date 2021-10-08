@@ -209,7 +209,7 @@
     <string name="uploadLater">Slika bo naložena, ko bo omrežje na voljo</string>
     <string name="txtInfoLoginOk">Uporabnik je shranjen</string>
     <string name="txtInfoLoginNo">Uporabnik ni shranjen</string>
-    <string name="txtDialogsContent">Izdelek, ki ste ga optično prebrali, še ne obstaja v podatkih o odprtih živilih. Prosimo, dodajte.</string>
+    <string name="product_does_not_exist_please_add_it">Izdelek, ki ste ga optično prebrali, še ne obstaja v podatkih o odprtih živilih. Prosimo, dodajte.</string>
     <string name="txtYes">Da</string>
     <string name="txtNo">Ne</string>
     <string name="hintBrand">Blagovna znamka</string>

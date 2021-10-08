@@ -209,7 +209,7 @@
     <string name="uploadLater">Изображение будет загружено, когда сеть будет доступна</string>
     <string name="txtInfoLoginOk">Пользователь сохранён</string>
     <string name="txtInfoLoginNo">Пользователь не сохранён</string>
-    <string name="txtDialogsContent">Отсканированного продукта ещё нет в  базе Open Food Facts. Добавьте его, пожалуйста.</string>
+    <string name="product_does_not_exist_please_add_it">Отсканированного продукта ещё нет в  базе Open Food Facts. Добавьте его, пожалуйста.</string>
     <string name="txtYes">Да</string>
     <string name="txtNo">Нет</string>
     <string name="hintBrand">Марка</string>

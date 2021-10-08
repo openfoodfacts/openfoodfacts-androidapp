@@ -21,7 +21,7 @@
     <string name="slide_3_desc">你扫描的所有宠物食品，在一个方便的列表中，你可以导出所有的宠物食品</string>
     <string name="slide_4_title">离线工作</string>
     <string name="slide_4_desc">即使您目前没有互联网连接，也可以添加新的产品。</string>
-    <string name="txtDialogsContent">您扫描的产品还不存在于Open Pet Food Facts。请添加它。</string>
+    <string name="product_does_not_exist_please_add_it">您扫描的产品还不存在于Open Pet Food Facts。请添加它。</string>
     <string name="txtDialogsContentPowerMode">您扫描的产品已经存在于Open Pet Food Facts。</string>
     <string name="msg_share">在 Open Pet Food Facts 中查看这个产品：</string>
     <string name="not_support_books">图书目前未被 Open Pet Food Facts 支持</string>

@@ -194,7 +194,7 @@
     <string name="uploadLater">Afbeelding wordt geüpload wanneer netwerk beschikbaar is</string>
     <string name="txtInfoLoginOk">Gebruiker opgeslagen</string>
     <string name="txtInfoLoginNo">Gebruiker niet opgeslagen</string>
-    <string name="txtDialogsContent">Het gescande product bestaat nog niet in Open Food Facts. Voeg deze toe.</string>
+    <string name="product_does_not_exist_please_add_it">Het gescande product bestaat nog niet in Open Food Facts. Voeg deze toe.</string>
     <string name="txtYes">Ja</string>
     <string name="txtNo">Nee</string>
     <string name="hintBrand">Merk</string>

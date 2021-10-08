@@ -189,7 +189,7 @@
     <string name="errorWeb">Ingen adgang til Internet. Har du forbindelsesproblemer?</string>
     <string name="txtInfoLoginOk">Bruger gemt</string>
     <string name="txtInfoLoginNo">Bruger ikke gemt</string>
-    <string name="txtDialogsContent">Produktet, du skannede, findes ikke i Open Food Facts endnu. Tilføj det venligst.</string>
+    <string name="product_does_not_exist_please_add_it">Produktet, du skannede, findes ikke i Open Food Facts endnu. Tilføj det venligst.</string>
     <string name="txtYes">Ja</string>
     <string name="txtNo">Nej</string>
     <string name="hintBrand">Mærke</string>

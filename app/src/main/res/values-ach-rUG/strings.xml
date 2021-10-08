@@ -194,7 +194,7 @@
     <string name="uploadLater">Image will be uploaded when network is available</string>
     <string name="txtInfoLoginOk">User saved</string>
     <string name="txtInfoLoginNo">User not saved</string>
-    <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
+    <string name="product_does_not_exist_please_add_it">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
     <string name="txtYes">Yes</string>
     <string name="txtNo">No</string>
     <string name="hintBrand">Brand</string>

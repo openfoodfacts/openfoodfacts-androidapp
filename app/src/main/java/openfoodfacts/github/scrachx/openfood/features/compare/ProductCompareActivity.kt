@@ -187,7 +187,7 @@ class ProductCompareActivity : BaseActivity() {
 
     private fun showProductNotFoundDialog() {
         MaterialAlertDialogBuilder(this)
-            .setMessage(R.string.txtDialogsContentPowerMode)
+            .setMessage(R.string.product_does_not_exist_please_add_it)
             .setPositiveButton(R.string.ok_button) { dialog, _ ->
                 dialog.dismiss()
             }

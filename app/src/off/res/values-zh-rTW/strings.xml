@@ -19,7 +19,7 @@
     <string name="slide_3_desc">A synthetic view of the nutritional properties of your favorite food products</string>
     <string name="slide_4_title">Works offline</string>
     <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet connection right now</string>
-    <string name="txtDialogsContent">您掃描的產品尚未登錄於 Open Food Facts。請新增它。</string>
+    <string name="product_does_not_exist_please_add_it">您掃描的產品尚未登錄於 Open Food Facts。請新增它。</string>
     <string name="txtDialogsContentPowerMode">您掃描的產品已存在於 Open Food Facts 中。</string>
     <string name="msg_share">於 Open Food Facts 上查看此產品：</string>
     <string name="not_support_books">Books are not currently supported by Open Food Facts</string>

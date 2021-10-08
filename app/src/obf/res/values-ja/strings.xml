@@ -21,7 +21,7 @@
     <string name="slide_3_desc">あなたが使用するすべての化粧品を、便利な一つのリストに書き出すことができます</string>
     <string name="slide_4_title">オフラインで作業する</string>
     <string name="slide_4_desc">今インターネットに接続していなくても、新製品を追加できます</string>
-    <string name="txtDialogsContent">The product you scanned does not exist yet in Open Beauty Facts. Please add it.</string>
+    <string name="product_does_not_exist_please_add_it">The product you scanned does not exist yet in Open Beauty Facts. Please add it.</string>
     <string name="msg_share">Look at this product on Open Beauty Facts :</string>
     <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Beauty Facts</string>
     <string name="Donation">Click here to donate to Open Beauty Facts</string>

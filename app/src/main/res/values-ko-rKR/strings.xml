@@ -189,7 +189,7 @@
     <string name="uploadLater">네트워크에 연결되면 이미지가 업로드됩니다</string>
     <string name="txtInfoLoginOk">사용자 정보 저장됨</string>
     <string name="txtInfoLoginNo">유저 정보가 저장되지 않았습니다</string>
-    <string name="txtDialogsContent">스캔한 제품이 Open Food Facts에 아직 존재하지 않습니다. 제품을 추가하십시오.</string>
+    <string name="product_does_not_exist_please_add_it">스캔한 제품이 Open Food Facts에 아직 존재하지 않습니다. 제품을 추가하십시오.</string>
     <string name="txtYes">예</string>
     <string name="txtNo">아니요</string>
     <string name="hintBrand">브랜드</string>

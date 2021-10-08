@@ -91,7 +91,7 @@ class OpenFoodAPIClient @Inject constructor(
     private fun productNotFoundDialogBuilder(activity: Activity, barcode: String): MaterialAlertDialogBuilder =
         MaterialAlertDialogBuilder(activity)
             .setTitle(R.string.txtDialogsTitle)
-            .setMessage(R.string.txtDialogsContent)
+            .setMessage(R.string.product_does_not_exist_please_add_it)
             .setPositiveButton(R.string.txtYes) { _, _ ->
                 activity.startActivity(Intent(activity, ProductEditActivity::class.java).apply {
                     putExtra(KEY_EDIT_PRODUCT, Product().apply {

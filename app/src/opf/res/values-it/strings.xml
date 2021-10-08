@@ -21,7 +21,7 @@
     <string name="slide_3_desc">Tutti i prodotti che scansionato, in un pratico elenco che puoi esportare</string>
     <string name="slide_4_title">Utilizzabile offline</string>
     <string name="slide_4_desc">Puoi aggiungere nuovi prodotti, anche senza una connessione internet disponibile sul momento</string>
-    <string name="txtDialogsContent">Il prodotto che hai scansionato non è ancora presente in Open Products Facts. Per favore aggiungilo.</string>
+    <string name="product_does_not_exist_please_add_it">Il prodotto che hai scansionato non è ancora presente in Open Products Facts. Per favore aggiungilo.</string>
     <string name="txtDialogsContentPowerMode">Il prodotto che hai scansionato è già presente in Open Products Facts.</string>
     <string name="msg_share">Guarda questo prodotto su Open Products Facts:</string>
     <string name="not_support_books">I libri non sono attualmente supportati da Open Products Facts</string>

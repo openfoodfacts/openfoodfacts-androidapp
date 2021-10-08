@@ -21,7 +21,7 @@
     <string name="slide_3_desc">Alle cosmetica die je gebruikt, in een handige lijst die je kunt exporteren</string>
     <string name="slide_4_title">Werkt offline</string>
     <string name="slide_4_desc">Je kan nieuwe producten toevoegen, zelfs als je nu geen internetverbinding hebt</string>
-    <string name="txtDialogsContent">Het gescande product bestaat nog niet in Open Beauty Facts. Voeg deze toe.</string>
+    <string name="product_does_not_exist_please_add_it">Het gescande product bestaat nog niet in Open Beauty Facts. Voeg deze toe.</string>
     <string name="msg_share">Kijk naar dit product op Open Beauty Facts:</string>
     <string name="txt_broaden_search">- zoekopdracht uitbreiden \n-scan een product en voeg het toe aan Open Beauty Facts</string>
     <string name="Donation">Klik hier om te doneren aan Open Beauty Facts</string>

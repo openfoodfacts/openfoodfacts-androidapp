@@ -21,7 +21,7 @@
     <string name="slide_3_desc">Kaikki lukemasi lemmikkien elintarvikkeet, yhtenä näppäränä luettelona jonka voit viedä</string>
     <string name="slide_4_title">Toimii offline-tilassa</string>
     <string name="slide_4_desc">Voit lisätä uusia tuotteita, vaikka sinulla ei olisi Internet-yhteyttä tällä hetkellä</string>
-    <string name="txtDialogsContent">Lukemaasi tuotetta ei vielä ole Open Pet Food Factsissa. Lisääthän sen.</string>
+    <string name="product_does_not_exist_please_add_it">Lukemaasi tuotetta ei vielä ole Open Pet Food Factsissa. Lisääthän sen.</string>
     <string name="txtDialogsContentPowerMode">Lukemasi tuote on jo olemassa Open Pet Food Factsissa.</string>
     <string name="msg_share">Katso tätä tuotetta Open Pet Food Factsissa:</string>
     <string name="not_support_books">Open Pet Food Facts ei tue kirjoja tällä hetkellä</string>

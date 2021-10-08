@@ -21,7 +21,7 @@
     <string name="slide_3_desc">Semua produk yang Anda pindai, dalam satu daftar praktis yang dapat Anda ekspor</string>
     <string name="slide_4_title">Bekerja secara luring</string>
     <string name="slide_4_desc">Anda dapat menambahkan produk - produk baru, bahkan jika Anda tidak memiliki koneksi Internet saat ini</string>
-    <string name="txtDialogsContent">Produk yang Anda pindai belum ada di Open Products Facts. Silahkan tambahkan.</string>
+    <string name="product_does_not_exist_please_add_it">Produk yang Anda pindai belum ada di Open Products Facts. Silahkan tambahkan.</string>
     <string name="txtDialogsContentPowerMode">Produk yang Anda pindai sudah ada dalam Open Products Facts.</string>
     <string name="msg_share">Lihat produk ini di Open Products Facts :</string>
     <string name="not_support_books">Buku - buku yang tidak didukung Open Products Facts saat ini</string>
