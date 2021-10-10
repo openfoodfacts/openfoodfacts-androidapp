@@ -39,7 +39,6 @@ import com.hootsuite.nachos.validator.ChipifyingNachoValidator
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.rx2.awaitSingleOrNull
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OBF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
@@ -575,7 +574,7 @@ class EditOverviewFragment : ProductEditFragment() {
             loadFrontImage(languageCode)
             val fields = "ingredients_text_$languageCode,product_name_$languageCode"
 
-            lifecycleScope.launch {
+            lifecycleScope.launchWhenResumed {
                 binding.name.setText(getString(R.string.txtLoading))
                 binding.name.isActivated = false
 
@@ -588,7 +587,7 @@ class EditOverviewFragment : ProductEditFragment() {
                     Log.e(EditOverviewFragment::class.simpleName, "Error retrieving product state from server api.", err)
                     binding.name.setText(StringUtils.EMPTY)
                     binding.name.isActivated = true
-                    return@launch
+                    return@launchWhenResumed
                 }
 
                 if (productState.status != 1L) {
@@ -598,7 +597,7 @@ class EditOverviewFragment : ProductEditFragment() {
                     )
                     binding.name.setText(StringUtils.EMPTY)
                     binding.name.isActivated = true
-                    return@launch
+                    return@launchWhenResumed
                 }
                 val product = productState.product!!
                 if (product.getProductName(languageCode) != null) {
@@ -635,8 +634,8 @@ class EditOverviewFragment : ProductEditFragment() {
             // Image found, download it if necessary and edit it
             isFrontImagePresent = true
             if (photoFile == null) {
-                lifecycleScope.launch {
-                    val uri = download(requireContext(), frontImageUrl!!, client).awaitSingleOrNull() ?: return@launch
+                lifecycleScope.launchWhenResumed {
+                    val uri = download(requireContext(), frontImageUrl!!, client).awaitSingleOrNull() ?: return@launchWhenResumed
 
                     photoFile = uri.toFile()
                     cropRotateImage(uri, getString(R.string.set_img_front))
