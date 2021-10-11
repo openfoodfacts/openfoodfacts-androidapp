@@ -160,7 +160,7 @@ class WelcomeActivity : BaseActivity() {
         val dots = (0..screens.lastIndex).map {
             TextView(this).apply {
                 text = "\u2022"
-                this.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 35F);
+                this.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 35F)
                 setTextColor(WelcomeScreen[currentPage].color.lighten(0.85f))
                 binding.layoutDots.addView(this)
             }
