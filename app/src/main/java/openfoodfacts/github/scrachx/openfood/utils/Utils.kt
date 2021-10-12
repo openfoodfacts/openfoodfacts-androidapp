@@ -257,7 +257,7 @@ fun isBarcodeValid(barcode: String?): Boolean {
  *
  * @return true if installed, false otherwise.
  */
-fun isHardwareCameraInstalled(context: Context) = context.packageManager.hasSystemFeature(PackageManager.FEATURE_CAMERA)
+fun isHardwareCameraInstalled(context: Context) = context.packageManager.hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY)
 
 
 fun getSearchLinkText(
