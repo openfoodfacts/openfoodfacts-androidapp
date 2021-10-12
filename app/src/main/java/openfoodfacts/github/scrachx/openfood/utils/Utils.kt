@@ -217,7 +217,6 @@ private fun decodeFile(f: File): Bitmap? {
 }
 
 private const val REQUIRED_SIZE = 1200
-const val SPACE = " "
 const val MY_PERMISSIONS_REQUEST_CAMERA = 1
 const val MY_PERMISSIONS_REQUEST_STORAGE = 2
 
