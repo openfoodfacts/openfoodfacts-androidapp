@@ -9,9 +9,10 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.ArgumentMatchers
 import org.mockito.Mock
-import org.mockito.Mockito
+import org.mockito.Mockito.verify
 import org.mockito.junit.MockitoJUnitRunner
-import org.mockito.Mockito.`when` as mockitoWhen
+import org.mockito.kotlin.doReturn
+import org.mockito.kotlin.whenever
 
 /**
  * Tests for [Additive]
@@ -30,10 +31,9 @@ class AdditiveTest {
 
     @Before
     fun setup() {
-        mockitoWhen(mockDaoSession!!.additiveNameDao).thenReturn(mockAdditiveNameDao)
-        mockitoWhen(mockDaoSession.additiveDao).thenReturn(mockAdditiveDao)
-        mockitoWhen(mockAdditiveNameDao._queryAdditive_Names(ArgumentMatchers.any()))
-                .thenReturn(listOf(ADDITIVE_NAME_1, ADDITIVE_NAME_2))
+        whenever(mockDaoSession!!.additiveNameDao) doReturn mockAdditiveNameDao
+        whenever(mockDaoSession.additiveDao) doReturn mockAdditiveDao
+        whenever(mockAdditiveNameDao._queryAdditive_Names(ArgumentMatchers.any())) doReturn listOf(ADDITIVE_NAME_1, ADDITIVE_NAME_2)
         mAdditive = Additive()
     }
 
@@ -60,7 +60,7 @@ class AdditiveTest {
     fun deleteWithNonNullDao_callsDeleteOnDao() {
         mAdditive.__setDaoSession(mockDaoSession)
         mAdditive.delete()
-        Mockito.verify(mockAdditiveDao).delete(mAdditive)
+        verify(mockAdditiveDao).delete(mAdditive)
     }
 
     @Test
@@ -72,7 +72,7 @@ class AdditiveTest {
     fun refreshWithNonNullDao_callsRefreshOnDao() {
         mAdditive.__setDaoSession(mockDaoSession)
         mAdditive.refresh()
-        Mockito.verify(mockAdditiveDao)?.refresh(mAdditive)
+        verify(mockAdditiveDao).refresh(mAdditive)
     }
 
     @Test
@@ -84,7 +84,7 @@ class AdditiveTest {
     fun updateWithNonNullDao_callsUpdateOnDao() {
         mAdditive.__setDaoSession(mockDaoSession)
         mAdditive.update()
-        Mockito.verify(mockAdditiveDao)?.update(mAdditive)
+        verify(mockAdditiveDao).update(mAdditive)
     }
 
     companion object {
