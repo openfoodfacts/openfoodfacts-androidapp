@@ -7,33 +7,35 @@ import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.models.Product
 import org.junit.Test
 import org.mockito.Mockito.mock
+import org.mockito.kotlin.doReturn
+import org.mockito.kotlin.mock
+import org.mockito.kotlin.whenever
 import java.util.*
-import org.mockito.Mockito.`when` as mockitoWhen
 
 class UtilsTest {
     @Test
     fun testGetImageGrade() {
         val mockProduct = mock(Product::class.java)
 
-        mockitoWhen(mockProduct.nutritionGradeFr).thenReturn("a")
+        whenever(mockProduct.nutritionGradeFr) doReturn "a"
         assertThat(mockProduct.getNutriScoreResource()).isEqualTo(R.drawable.ic_nutriscore_a)
 
-        mockitoWhen(mockProduct.nutritionGradeFr).thenReturn("b")
+        whenever(mockProduct.nutritionGradeFr) doReturn "b"
         assertThat(mockProduct.getNutriScoreResource()).isEqualTo(R.drawable.ic_nutriscore_b)
 
-        mockitoWhen(mockProduct.nutritionGradeFr).thenReturn("c")
+        whenever(mockProduct.nutritionGradeFr) doReturn "c"
         assertThat(mockProduct.getNutriScoreResource()).isEqualTo(R.drawable.ic_nutriscore_c)
 
-        mockitoWhen(mockProduct.nutritionGradeFr).thenReturn("d")
+        whenever(mockProduct.nutritionGradeFr) doReturn "d"
         assertThat(mockProduct.getNutriScoreResource()).isEqualTo(R.drawable.ic_nutriscore_d)
 
-        mockitoWhen(mockProduct.nutritionGradeFr).thenReturn("e")
+        whenever(mockProduct.nutritionGradeFr) doReturn "e"
         assertThat(mockProduct.getNutriScoreResource()).isEqualTo(R.drawable.ic_nutriscore_e)
 
-        mockitoWhen(mockProduct.nutritionGradeFr).thenReturn("")
+        whenever(mockProduct.nutritionGradeFr) doReturn ""
         assertThat(mockProduct.getNutriScoreResource()).isEqualTo(R.drawable.ic_nutriscore_unknown)
 
-        mockitoWhen(mockProduct.nutritionGradeFr).thenReturn(null)
+        whenever(mockProduct.nutritionGradeFr) doReturn null
         assertThat(mockProduct.getNutriScoreResource()).isEqualTo(R.drawable.ic_nutriscore_unknown)
     }
 
@@ -53,21 +55,16 @@ class UtilsTest {
 
     @Test
     fun isHardwareCameraInstalled() {
-        val mockCtx = mock(Context::class.java)
-        val mockPM = mock(PackageManager::class.java)
+        val mockPM = mock<PackageManager> {}
+        val mockCtx = mock<Context> {
+            on { this.packageManager } doReturn mockPM
+        }
 
-        mockitoWhen(mockCtx.packageManager).thenReturn(mockPM)
-
-        // Test for best condition
-        mockitoWhen(mockPM.hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY))
-            .thenReturn(true)
-
+        // Test for true/false
+        whenever(mockPM.hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY)) doReturn true
         assertThat(isHardwareCameraInstalled(mockCtx)).isTrue()
 
-        // False condition
-        mockitoWhen(mockPM.hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY))
-            .thenReturn(false)
-
+        whenever(mockPM.hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY)) doReturn false
         assertThat(isHardwareCameraInstalled(mockCtx)).isFalse()
     }
 

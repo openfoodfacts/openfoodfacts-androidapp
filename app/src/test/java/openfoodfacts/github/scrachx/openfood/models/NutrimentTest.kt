@@ -7,7 +7,7 @@ import org.junit.Test
 class NutrimentTest {
 
     @Test
-    fun `test findbyKey`() {
+    fun `test findByKey`() {
         Nutriment.values().forEach {
             assertThat(Nutriment.findbyKey(it.key)).isEqualTo(it)
         }

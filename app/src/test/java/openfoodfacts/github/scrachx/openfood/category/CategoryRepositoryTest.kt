@@ -1,6 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.category
 
-import com.google.common.truth.Truth
+import com.google.common.truth.Truth.assertThat
 import io.reactivex.Single
 import io.reactivex.observers.TestObserver
 import openfoodfacts.github.scrachx.openfood.MockitoHelper
@@ -12,9 +12,9 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
-import org.mockito.Mockito
 import org.mockito.junit.MockitoJUnitRunner
-import org.mockito.Mockito.`when` as mockitoWhen
+import org.mockito.kotlin.doReturn
+import org.mockito.kotlin.whenever
 
 /**
  * Created by Abdelali Eramli on 01/01/2018.
@@ -36,20 +36,19 @@ class CategoryRepositoryTest {
 
     @Before
     fun setup() {
-        mockitoWhen(mapper.fromNetwork(MockitoHelper.anyObject())).thenReturn(listOf(category, category, category))
-        mockitoWhen(networkService.getCategories()).thenReturn(Single.just(response))
+        whenever(mapper.fromNetwork(MockitoHelper.anyObject())) doReturn listOf(category, category, category)
+        whenever(networkService.getCategories()) doReturn Single.just(response)
         repository = CategoryRepository(networkService, mapper)
     }
-
-    private fun <T> any(type: Class<T>): T = Mockito.any(type)
 
     @Test
     fun retrieveAll_Success() {
         val testObserver = TestObserver<List<Category>>()
         repository.retrieveAll().subscribe(testObserver)
         testObserver.awaitTerminalEvent()
+
         val result = testObserver.values()[0]
-        Truth.assertThat(result[0]).isEqualTo(category)
+        assertThat(result[0]).isEqualTo(category)
     }
 
 }
