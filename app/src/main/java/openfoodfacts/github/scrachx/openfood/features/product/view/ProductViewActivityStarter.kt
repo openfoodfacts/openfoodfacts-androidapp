@@ -81,7 +81,7 @@ class ProductViewActivityStarter @Inject constructor(
     private fun showNotFoundDialog(activity: Activity, barcode: String, withBackPressure: Boolean) {
         MaterialAlertDialogBuilder(activity)
             .setTitle(R.string.txtDialogsTitle)
-            .setMessage(R.string.txtDialogsContent)
+            .setMessage(R.string.product_does_not_exist_please_add_it)
             .setPositiveButton(R.string.txtYes) { _, _ ->
                 val product = Product().apply {
                     code = barcode
