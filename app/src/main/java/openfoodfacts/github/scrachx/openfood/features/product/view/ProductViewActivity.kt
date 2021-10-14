@@ -56,6 +56,7 @@ import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInsta
 import openfoodfacts.github.scrachx.openfood.listeners.OnRefreshListener
 import openfoodfacts.github.scrachx.openfood.models.ProductState
 import openfoodfacts.github.scrachx.openfood.models.eventbus.ProductNeedsRefreshEvent
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.Utils
 import openfoodfacts.github.scrachx.openfood.utils.requireProductState
 import org.greenrobot.eventbus.EventBus
@@ -68,7 +69,13 @@ class ProductViewActivity : BaseActivity(), IProductView, OnRefreshListener {
     private val binding get() = _binding!!
 
     @Inject
+    lateinit var client: OpenFoodAPIClient
+
+    @Inject
     lateinit var sharedPreferences: SharedPreferences
+
+    @Inject
+    lateinit var productViewActivityStarter: ProductViewActivityStarter
 
     private var productState: ProductState? = null
     private var adapterResult: ProductFragmentPagerAdapter? = null
@@ -153,7 +160,7 @@ class ProductViewActivity : BaseActivity(), IProductView, OnRefreshListener {
     }
 
     override fun onRefresh() {
-        openProduct(productState!!.product!!.code)
+        productViewActivityStarter.openProduct(productState!!.product!!.code, this)
     }
 
     override fun onNewIntent(intent: Intent) {

@@ -307,4 +307,16 @@ object ApiFields {
             NOVA_GROUPS
         )
     }
+
+    fun getAllFields(langCode: String): String {
+        val allFields = Keys.PRODUCT_COMMON_FIELDS
+        val fieldsToLocalize = Keys.PRODUCT_LOCAL_FIELDS
+
+        val fieldsSet = allFields.toMutableSet()
+        fieldsToLocalize.forEach { (field, shouldAddEn) ->
+            fieldsSet += "${field}_$langCode"
+            if (shouldAddEn) fieldsSet += "${field}_en"
+        }
+        return fieldsSet.joinToString(",")
+    }
 }

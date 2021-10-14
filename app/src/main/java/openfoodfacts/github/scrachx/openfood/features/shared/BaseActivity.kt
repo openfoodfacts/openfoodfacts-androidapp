@@ -24,24 +24,18 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.CallSuper
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.lifecycle.lifecycleScope
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.EntryPoints
-import kotlinx.coroutines.launch
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.features.scan.ContinuousScanActivity
 import openfoodfacts.github.scrachx.openfood.hilt.AppEntryPoint
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
-import openfoodfacts.github.scrachx.openfood.utils.*
-import javax.inject.Inject
+import openfoodfacts.github.scrachx.openfood.utils.MY_PERMISSIONS_REQUEST_CAMERA
+import openfoodfacts.github.scrachx.openfood.utils.getLoginPreferences
 
 abstract class BaseActivity : AppCompatActivity() {
 
-    @Inject
-    lateinit var client: OpenFoodAPIClient
-
-    protected val requestCameraThenOpenScan = registerForActivityResult(ActivityResultContracts.RequestPermission())
-    { if (it) startScanActivity() }
+    protected val requestCameraThenOpenScan = registerForActivityResult(ActivityResultContracts.RequestPermission()) {
+        if (it) startScanActivity()
+    }
 
     override fun attachBaseContext(newBase: Context) {
         val lm = EntryPoints.get(newBase.applicationContext, AppEntryPoint::class.java).localeManager()
@@ -76,20 +70,6 @@ abstract class BaseActivity : AppCompatActivity() {
         Intent(this, ContinuousScanActivity::class.java)
             .apply { addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP) }
             .let { startActivity(it) }
-    }
-
-    protected fun openProduct(barcode: String) {
-        if (isNetworkConnected()) {
-            hideKeyboard()
-            lifecycleScope.launch { client.openProduct(barcode, this@BaseActivity) }
-        } else {
-            MaterialAlertDialogBuilder(this)
-                .setTitle(R.string.device_offline_dialog_title)
-                .setMessage(R.string.connectivity_check)
-                .setPositiveButton(R.string.txt_try_again) { _, _ -> openProduct(barcode) }
-                .setNegativeButton(R.string.dismiss) { d, _ -> d.dismiss() }
-                .show()
-        }
     }
 }
 
