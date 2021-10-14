@@ -26,9 +26,7 @@ class LocaleUtilsTest {
     @Test
     fun getLocale_FromContext() {
         val locale = LocaleUtils.parseLocale("en-US")
-        val configuration = mock<Configuration> {
-            on { this.locale } doReturn locale
-        }
+        val configuration = mock<Configuration> { }.apply { this.locale = locale }
         val resources = mock<Resources> {
             on { this.configuration } doReturn configuration
         }
