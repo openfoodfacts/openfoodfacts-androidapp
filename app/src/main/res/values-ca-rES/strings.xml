@@ -189,7 +189,7 @@
     <string name="errorWeb">No ens hem pogut connectar a Internet. Teniu problemes amb la connexió?</string>
     <string name="txtInfoLoginOk">Usuari desat</string>
     <string name="txtInfoLoginNo">Usuari no desat</string>
-    <string name="txtDialogsContent">El producte que heu escanejat encara no existeix a Open Food Facts. Afegiu-lo.</string>
+    <string name="product_does_not_exist_please_add_it">El producte que heu escanejat encara no existeix a Open Food Facts. Afegiu-lo.</string>
     <string name="txtYes">Sí</string>
     <string name="txtNo">No</string>
     <string name="hintBrand">Marca</string>

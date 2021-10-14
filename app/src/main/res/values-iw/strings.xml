@@ -209,7 +209,7 @@
     <string name="uploadLater">התמונה תישלח ברגע שהרשת תהיה זמינה</string>
     <string name="txtInfoLoginOk">המשתמש נשמר</string>
     <string name="txtInfoLoginNo">המשתמש לא נשמר</string>
-    <string name="txtDialogsContent">המוצר שסרקת לא קיים עדיין ב־Open Food Facts. נא לסרוק אותו.</string>
+    <string name="product_does_not_exist_please_add_it">המוצר שסרקת לא קיים עדיין ב־Open Food Facts. נא לסרוק אותו.</string>
     <string name="txtYes">כן</string>
     <string name="txtNo">לא</string>
     <string name="hintBrand">מותג</string>

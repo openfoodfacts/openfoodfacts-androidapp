@@ -189,7 +189,7 @@
     <string name="errorWeb">Erreur de connexion internet</string>
     <string name="txtInfoLoginOk">Utilisateur connecté</string>
     <string name="txtInfoLoginNo">Utilisateur anonyme</string>
-    <string name="txtDialogsContent">Le produit que vous avez scanné n\'existe pas encore dans Open Food Facts. Voulez-vous l\'ajouter ?</string>
+    <string name="product_does_not_exist_please_add_it">Le produit que vous avez scanné n\'existe pas encore dans Open Food Facts. Voulez-vous l\'ajouter ?</string>
     <string name="txtYes">Oui</string>
     <string name="txtNo">Non</string>
     <string name="hintBrand">Marque</string>

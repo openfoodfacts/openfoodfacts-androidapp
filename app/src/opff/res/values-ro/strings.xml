@@ -21,7 +21,7 @@
     <string name="slide_3_desc">Toate produsele pe care le-ai scanat, sunt într-o listă pe care o poți exporta</string>
     <string name="slide_4_title">Funcţionează offline</string>
     <string name="slide_4_desc">Poți adăuga produse noi, chiar dacă nu ești conectat la internet momentan</string>
-    <string name="txtDialogsContent">Produsul scanat nu există în baza de date Open Pet Food Facts. Doriți să-l adăugați?</string>
+    <string name="product_does_not_exist_please_add_it">Produsul scanat nu există în baza de date Open Pet Food Facts. Doriți să-l adăugați?</string>
     <string name="txtDialogsContentPowerMode">Produsul scanat există deja în baza de date Open Pet Food Facts.</string>
     <string name="msg_share">Vizualizează acest produs în Open Pet Food Facts :</string>
     <string name="not_support_books">Cărțile momentan nu sunt suportate de către Open Pet Food Facts</string>

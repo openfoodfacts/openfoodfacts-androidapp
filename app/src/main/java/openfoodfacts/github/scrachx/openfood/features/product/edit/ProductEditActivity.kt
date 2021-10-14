@@ -71,6 +71,7 @@ import java.io.IOException
 import java.util.*
 import javax.inject.Inject
 
+// TODO: 12/10/2021 refactor to use an activity view model shared between fragments of ProductEditActivity
 @AndroidEntryPoint
 class ProductEditActivity : BaseActivity() {
     private var _binding: ActivityEditProductBinding? = null
@@ -277,12 +278,12 @@ class ProductEditActivity : BaseActivity() {
     }
 
     private suspend fun saveProduct() {
-        editOverviewFragment.addUpdatedFieldsToMap(productDetails)
-        ingredientsFragment.addUpdatedFieldsToMap(productDetails)
+        productDetails += editOverviewFragment.getUpdatedFieldsMap()
+        productDetails += ingredientsFragment.getUpdatedFieldsMap()
         if (isFlavors(OFF, OPFF)) {
-            nutritionFactsFragment.addUpdatedFieldsToMap(productDetails)
+            productDetails += nutritionFactsFragment.getUpdatedFieldsMap()
         }
-        addLoginInfoToProductDetails(productDetails)
+        productDetails += getLoginInfoMap()
         saveProductOffline()
     }
 
@@ -357,16 +358,17 @@ class ProductEditActivity : BaseActivity() {
         lifecycleScope.launch { saveProduct() }
     }
 
-    private fun addLoginInfoToProductDetails(targetMap: MutableMap<String, String?>) {
+    private fun getLoginInfoMap(): Map<String, String?> {
         val settings = getLoginPreferences()
 
         val login = settings.getString("user", "")!!
         val password = settings.getString("pass", "")!!
 
-        if (login.isNotEmpty() && password.isNotEmpty()) {
-            targetMap[ApiFields.Keys.USER_ID] = login
-            targetMap[ApiFields.Keys.USER_PASS] = password
-        }
+        return if (login.isEmpty() || password.isEmpty()) emptyMap()
+        else mapOf(
+            ApiFields.Keys.USER_ID to login,
+            ApiFields.Keys.USER_PASS to password
+        )
     }
 
     private fun switchToOverviewPage() = binding.viewpager.setCurrentItem(0, true)
@@ -483,7 +485,10 @@ class ProductEditActivity : BaseActivity() {
     }
 
     private suspend fun setPhoto(image: ProductImage, imageField: String, imgId: String, performOCR: Boolean) {
-        val queryMap = mapOf(IMG_ID to imgId, "id" to imageField)
+        val queryMap = mapOf(
+            IMG_ID to imgId,
+            "id" to imageField
+        )
 
         val jsonNode = withContext(IO) {
             try {

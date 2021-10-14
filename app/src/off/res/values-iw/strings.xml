@@ -29,7 +29,7 @@
     <string name="msg_welcome_nova">כדאי להפחית את מוצרי המזון האולטרה מעובדים בתזונה שלך.</string>
     <string name="title_welcome_ecoscore">Eco-Score</string>
     <!-- Scan card -->
-    <string name="txtDialogsContent">המוצר שסרקת לא קיים עדיין ב־Open Food Facts. נא לסרוק אותו.</string>
+    <string name="product_does_not_exist_please_add_it">המוצר שסרקת לא קיים עדיין ב־Open Food Facts. נא לסרוק אותו.</string>
     <string name="txtDialogsContentPowerMode">המוצר שסרקת כבר נמצא ב־Open Food Facts.</string>
     <string name="msg_share">להלן מוצר מתוך Open Food Facts :</string>
     <string name="not_support_books">אין כרגע תמיכה בספרים ב־Open Food Facts</string>

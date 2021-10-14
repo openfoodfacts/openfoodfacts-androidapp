@@ -194,7 +194,7 @@
     <string name="uploadLater">รูปภาพจะถูกอัพโหลดเมื่อเครือข่ายพร้อมใช้งาน</string>
     <string name="txtInfoLoginOk">บันทึกผู้ใช้แล้ว</string>
     <string name="txtInfoLoginNo">ไม่ได้บันทึกผู้ใช้</string>
-    <string name="txtDialogsContent">ผลิตภัณฑ์ที่คุณสแกนยังไม่มีอยู่ใน Open Food Facts กรุณาเพิ่ม
+    <string name="product_does_not_exist_please_add_it">ผลิตภัณฑ์ที่คุณสแกนยังไม่มีอยู่ใน Open Food Facts กรุณาเพิ่ม
 ชื่อผลิตภัณฑ์</string>
     <string name="txtYes">ถูกต้อง</string>
     <string name="txtNo">ไม่ใช่</string>

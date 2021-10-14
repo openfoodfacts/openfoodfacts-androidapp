@@ -199,7 +199,7 @@
     <string name="uploadLater">L\'immagine verrà caricata quando la rete sarà disponibile</string>
     <string name="txtInfoLoginOk">Utente salvato</string>
     <string name="txtInfoLoginNo">Utente non salvato</string>
-    <string name="txtDialogsContent">Il prodotto scansionato non esiste ancora in Open Food Facts. Per favore, aggiungilo.</string>
+    <string name="product_does_not_exist_please_add_it">Il prodotto scansionato non esiste ancora in Open Food Facts. Per favore, aggiungilo.</string>
     <string name="txtYes">Sì</string>
     <string name="txtNo">No</string>
     <string name="hintBrand">Marche</string>

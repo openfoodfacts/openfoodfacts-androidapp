@@ -199,7 +199,7 @@
     <string name="uploadLater">Bilden kommer att laddas upp när ett nätverk finns tillgängligt</string>
     <string name="txtInfoLoginOk">Användare sparad</string>
     <string name="txtInfoLoginNo">Användare inte sparad</string>
-    <string name="txtDialogsContent">Den skannade produkten finns inte i Open Food Facts. Vänligen lägg till den.</string>
+    <string name="product_does_not_exist_please_add_it">Den skannade produkten finns inte i Open Food Facts. Vänligen lägg till den.</string>
     <string name="txtYes">Ja</string>
     <string name="txtNo">Nej</string>
     <string name="hintBrand">Varumärke</string>

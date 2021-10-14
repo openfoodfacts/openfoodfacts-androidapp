@@ -194,7 +194,7 @@
     <string name="uploadLater">图像将在网络可用时上传</string>
     <string name="txtInfoLoginOk">用户已保存</string>
     <string name="txtInfoLoginNo">用户未保存</string>
-    <string name="txtDialogsContent">您扫描的产品尚未在 Open Food Facts 中，请添加它。</string>
+    <string name="product_does_not_exist_please_add_it">您扫描的产品尚未在 Open Food Facts 中，请添加它。</string>
     <string name="txtYes">是的</string>
     <string name="txtNo">不</string>
     <string name="hintBrand">品牌</string>

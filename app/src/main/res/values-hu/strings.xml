@@ -199,7 +199,7 @@
     <string name="uploadLater">A kép feltöltésre kerül amikor a hálózat elérhető lesz</string>
     <string name="txtInfoLoginOk">Felhasználó elmentve</string>
     <string name="txtInfoLoginNo">Felhasználó nem lett elmentve</string>
-    <string name="txtDialogsContent">A beolvasott termék nem található az Open Food Facts adatbázisában. Kérjük, adja hozzá.</string>
+    <string name="product_does_not_exist_please_add_it">A beolvasott termék nem található az Open Food Facts adatbázisában. Kérjük, adja hozzá.</string>
     <string name="txtYes">Igen</string>
     <string name="txtNo">Nem</string>
     <string name="hintBrand">Márkanév</string>

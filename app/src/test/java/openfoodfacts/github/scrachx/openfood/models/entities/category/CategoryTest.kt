@@ -1,39 +1,37 @@
 package openfoodfacts.github.scrachx.openfood.models.entities.category
 
-import com.google.common.truth.Truth
+import com.google.common.truth.Truth.assertThat
 import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import org.greenrobot.greendao.DaoException
 import org.junit.Assert.assertThrows
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.mockito.ArgumentMatchers
 import org.mockito.Mock
-import org.mockito.Mockito
 import org.mockito.junit.MockitoJUnitRunner
-import org.mockito.Mockito.`when` as mockitoWhen
+import org.mockito.kotlin.*
 
 /**
  * Tests for [Category]
  */
-@RunWith(MockitoJUnitRunner::class)
+@RunWith(MockitoJUnitRunner.StrictStubs::class)
 class CategoryTest {
     @Mock
-    private val mockDaoSession: DaoSession? = null
+    private lateinit var mockDaoSession: DaoSession
 
     @Mock
-    private val mockCategoryDao: CategoryDao? = null
+    private lateinit var mockCategoryDao: CategoryDao
 
     @Mock
-    private val mockCategoryNameDao: CategoryNameDao? = null
+    private lateinit var mockCategoryNameDao: CategoryNameDao
     private lateinit var mCategory: Category
 
     @Before
     fun setup() {
-        mockitoWhen(mockDaoSession!!.categoryDao).thenReturn(mockCategoryDao)
-        mockitoWhen(mockDaoSession.categoryNameDao).thenReturn(mockCategoryNameDao)
-        mockitoWhen(mockCategoryNameDao!!._queryCategory_Names(ArgumentMatchers.any()))
-                .thenReturn(listOf(CATEGORY_NAME_1, CATEGORY_NAME_2))
+        whenever(mockDaoSession.categoryDao) doReturn mockCategoryDao
+        whenever(mockDaoSession.categoryNameDao) doReturn mockCategoryNameDao
+        whenever(mockCategoryNameDao._queryCategory_Names(anyOrNull())) doReturn listOf(CATEGORY_NAME_1, CATEGORY_NAME_2)
+
         mCategory = Category()
     }
 
@@ -46,13 +44,18 @@ class CategoryTest {
     fun getNamesWithNullNamesAndNonNullDaoSession_setsNamesFromCategoryNameDao() {
         mCategory.__setDaoSession(mockDaoSession)
         val names = mCategory.names
-        Truth.assertThat(names).hasSize(2)
-        Truth.assertThat(names[0]!!.categoryTag).isEqualTo(CATEGORY_TAG_1)
-        Truth.assertThat(names[0]!!.languageCode).isEqualTo(LANGUAGE_CODE_ENGLISH)
-        Truth.assertThat(names[0]!!.name).isEqualTo(CATEGORY_NAME_NAME_1)
-        Truth.assertThat(names[1]!!.categoryTag).isEqualTo(CATEGORY_TAG_2)
-        Truth.assertThat(names[1]!!.languageCode).isEqualTo(LANGUAGE_CODE_FRENCH)
-        Truth.assertThat(names[1]!!.name).isEqualTo(CATEGORY_NAME_NAME_2)
+
+        assertThat(names).hasSize(2)
+
+        val name1 = names[0]!!
+        assertThat(name1.categoryTag).isEqualTo(CATEGORY_TAG_1)
+        assertThat(name1.languageCode).isEqualTo(LANGUAGE_CODE_ENGLISH)
+        assertThat(name1.name).isEqualTo(CATEGORY_NAME_NAME_1)
+
+        val name2 = names[1]!!
+        assertThat(name2.categoryTag).isEqualTo(CATEGORY_TAG_2)
+        assertThat(name2.languageCode).isEqualTo(LANGUAGE_CODE_FRENCH)
+        assertThat(name2.name).isEqualTo(CATEGORY_NAME_NAME_2)
     }
 
     @Test
@@ -64,7 +67,7 @@ class CategoryTest {
     fun deleteWithNonNullDao_callsDeleteOnDao() {
         mCategory.__setDaoSession(mockDaoSession)
         mCategory.delete()
-        Mockito.verify(mockCategoryDao)!!.delete(mCategory)
+        verify(mockCategoryDao).delete(mCategory)
     }
 
     @Test
@@ -76,7 +79,7 @@ class CategoryTest {
     fun refreshWithNonNullDao_callsRefreshOnDao() {
         mCategory.__setDaoSession(mockDaoSession)
         mCategory.refresh()
-        Mockito.verify(mockCategoryDao)!!.refresh(mCategory)
+        verify(mockCategoryDao).refresh(mCategory)
     }
 
     @Test
@@ -88,7 +91,7 @@ class CategoryTest {
     fun updateWithNonNullDao_callsUpdateOnDao() {
         mCategory.__setDaoSession(mockDaoSession)
         mCategory.update()
-        Mockito.verify(mockCategoryDao)!!.update(mCategory)
+        verify(mockCategoryDao).update(mCategory)
     }
 
     @Test
@@ -96,7 +99,7 @@ class CategoryTest {
         mCategory.__setDaoSession(mockDaoSession)
         mCategory.resetNames()
         mCategory.names
-        Mockito.verify(mockDaoSession)!!.categoryNameDao
+        verify(mockDaoSession).categoryNameDao
     }
 
     companion object {

@@ -92,7 +92,7 @@ class ProductEditPhotosFragment : ProductEditFragment() {
     }
 
     override fun allValid() = true
-    override fun addUpdatedFieldsToMap(targetMap: MutableMap<String, String?>) = Unit
+    override fun getUpdatedFieldsMap() = mapOf<String, String?>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

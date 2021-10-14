@@ -189,7 +189,7 @@
     <string name="uploadLater">圖片會在網路可以使用的時候上傳</string>
     <string name="txtInfoLoginOk">使用者已儲存</string>
     <string name="txtInfoLoginNo">使用者未被儲存</string>
-    <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
+    <string name="product_does_not_exist_please_add_it">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
     <string name="txtYes">是</string>
     <string name="txtNo">否</string>
     <string name="hintBrand">品牌</string>

@@ -209,7 +209,7 @@
     <string name="uploadLater">Зображення буде завантажено, коли з\'явиться інтернет</string>
     <string name="txtInfoLoginOk">Користувача збережено</string>
     <string name="txtInfoLoginNo">Користувача не збережено</string>
-    <string name="txtDialogsContent">Товар, який ви скануєте, ще не існує у нашій базі. Будь ласка, додайте його.</string>
+    <string name="product_does_not_exist_please_add_it">Товар, який ви скануєте, ще не існує у нашій базі. Будь ласка, додайте його.</string>
     <string name="txtYes">Так</string>
     <string name="txtNo">Ні</string>
     <string name="hintBrand">Виробник</string>

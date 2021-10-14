@@ -21,7 +21,7 @@
     <string name="slide_3_desc">Toate produsele pe care le-ai scanat, sunt într-o listă pe care o poți exporta</string>
     <string name="slide_4_title">Funcţionează offline</string>
     <string name="slide_4_desc">Poți adăuga produse noi, chiar dacă nu ești conectat la internet momentan</string>
-    <string name="txtDialogsContent">Produsul pe care l-ai sanat încă nu există în Open Products Facts. Te rog să îl adaugi tu.</string>
+    <string name="product_does_not_exist_please_add_it">Produsul pe care l-ai sanat încă nu există în Open Products Facts. Te rog să îl adaugi tu.</string>
     <string name="txtDialogsContentPowerMode">Produsul pe care l-ai scanat există deja în Open Products Facts.</string>
     <string name="msg_share">Vizualizează acest produs în Open Products Facts :</string>
     <string name="not_support_books">Cărțiile nu sunt momentan recunoscute de Open Products Facts</string>

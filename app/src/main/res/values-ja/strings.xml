@@ -194,7 +194,7 @@
     <string name="uploadLater">ネットワークが利用可能になると画像がアップロードされます</string>
     <string name="txtInfoLoginOk">ユーザーを保存しました</string>
     <string name="txtInfoLoginNo">ユーザーを保存できませんでした</string>
-    <string name="txtDialogsContent">スキャンした製品はまだ Open Food Facts に存在しません。追加してください。</string>
+    <string name="product_does_not_exist_please_add_it">スキャンした製品はまだ Open Food Facts に存在しません。追加してください。</string>
     <string name="txtYes">はい</string>
     <string name="txtNo">いいえ</string>
     <string name="hintBrand">ブランド（会社名）</string>

@@ -184,7 +184,7 @@
     <string name="errorWeb">Kami tidak bisa mengakses internet. Apakah Anda memiliki masalah konektivitas?</string>
     <string name="txtInfoLoginOk">Pengguna tersimpan</string>
     <string name="txtInfoLoginNo">Pengguna tidak tersimpan</string>
-    <string name="txtDialogsContent">Produk yang Anda pindai belum terdaftar di Open Food Facts. Tolong ditambahkan.</string>
+    <string name="product_does_not_exist_please_add_it">Produk yang Anda pindai belum terdaftar di Open Food Facts. Tolong ditambahkan.</string>
     <string name="txtYes">Ya</string>
     <string name="txtNo">Tidak</string>
     <string name="hintBrand">Merek</string>

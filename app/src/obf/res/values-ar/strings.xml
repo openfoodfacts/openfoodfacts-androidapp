@@ -21,7 +21,7 @@
     <string name="slide_3_desc">كل مستحضرات التجميل التي تستخدمها ، في قائمة واحدة يدوية يمكنك إخراجها</string>
     <string name="slide_4_title">يعمل بدون اتصال</string>
     <string name="slide_4_desc">يمكنك إضافة منتجات جديدة ، حتى إذا لم يكن لديك اتصال بالإنترنت في الوقت الحالي</string>
-    <string name="txtDialogsContent">المنتج الذي تم مسحه غير موجود حتى الآن في \"حقائق الجمال المفتوحة\". الرجاء إضافته.</string>
+    <string name="product_does_not_exist_please_add_it">المنتج الذي تم مسحه غير موجود حتى الآن في \"حقائق الجمال المفتوحة\". الرجاء إضافته.</string>
     <string name="msg_share">انظر لهذا المنتج على \"حقائق الجمال المفتوحة\":</string>
     <string name="txt_broaden_search">- لتوسيع بحثك \n- قم بمسحه ضوئياً وإضافته إلى Open Beauty Facts</string>
     <string name="Donation">انقر هنا للتبرع الى \"حقائق الجمال المفتوحة\"</string>

@@ -21,7 +21,7 @@
     <string name="slide_3_desc">Erabiltzen duzen kosmetika guztia, esportatu dezakezun zerrenda erabailgarri batean</string>
     <string name="slide_4_title">Lineaz kanpo funtzionatzen du</string>
     <string name="slide_4_desc">Produktu berriak gehi ditzakezu, momentuan Interneterako konexioa ez baduzu ere</string>
-    <string name="txtDialogsContent">Eskaneatu duzun produktua ez dago Open Beauty Facts datu-basean oraindik. Gehitu ezazu mesedez.</string>
+    <string name="product_does_not_exist_please_add_it">Eskaneatu duzun produktua ez dago Open Beauty Facts datu-basean oraindik. Gehitu ezazu mesedez.</string>
     <string name="msg_share">Ikusi produktu hau Open Beauty Facts-en:</string>
     <string name="txt_broaden_search">- Zure \n- bilaketa zabaltzen, eskaneatu eta gehitu Open Beauty Facts-en</string>
     <string name="Donation">Egin klik hemen Open Beauty Facts-i donatzeko</string>

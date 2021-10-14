@@ -21,7 +21,7 @@ plugins {
     id("kotlin-parcelize")
     id("kotlin-kapt")
     id("dagger.hilt.android.plugin")
-    id("org.jetbrains.dokka") version "1.5.0"
+    id("org.jetbrains.dokka") version "1.5.31"
 }
 
 fun obtainTestBuildType(): String {
@@ -146,7 +146,7 @@ dependencies {
     implementation("com.github.hootsuite:nachos:1.2.0")
 
     // Crash analytics
-    implementation("io.sentry:sentry-android:5.2.0")
+    implementation("io.sentry:sentry-android:5.2.2")
     implementation("com.github.matomo-org:matomo-sdk-android:v4.1.2")
 
     // ShowCaseView dependency
@@ -157,8 +157,8 @@ dependencies {
     testImplementation("androidx.arch.core:core-testing:2.1.0")
     testImplementation("junit:junit:4.13.2")
     testImplementation("org.robolectric:robolectric:4.6.1")
-    testImplementation("org.mockito:mockito-core:3.12.4")
-    testImplementation("org.mockito.kotlin:mockito-kotlin:3.2.0")
+    testImplementation("org.mockito:mockito-core:4.0.0")
+    testImplementation("org.mockito.kotlin:mockito-kotlin:4.0.0")
     testImplementation("net.javacrumbs.json-unit:json-unit-fluent:2.28.0")
     testImplementation("com.google.truth:truth:1.1.3")
     testImplementation("com.google.truth.extensions:truth-java8-extension:1.1.3")
@@ -168,8 +168,8 @@ dependencies {
     androidTestUtil("androidx.test:orchestrator:1.4.0")
 
     // Hilt for Android Testing
-    androidTestImplementation("com.google.dagger:hilt-android-testing:2.39")
-    kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.39")
+    androidTestImplementation("com.google.dagger:hilt-android-testing:2.39.1")
+    kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.39.1")
 
     androidTestImplementation("androidx.test:runner:1.3.0") { exclude("junit") }
     androidTestImplementation("androidx.test:rules:1.4.0")

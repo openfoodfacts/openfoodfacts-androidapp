@@ -406,9 +406,11 @@ class EditIngredientsFragment : ProductEditFragment() {
     /**
      * adds only those fields to the query map which are not empty and have changed.
      */
-    override fun addUpdatedFieldsToMap(targetMap: MutableMap<String, String?>) {
+    override fun getUpdatedFieldsMap(): Map<String, String?> {
+        val targetMap = mutableMapOf<String, String?>()
+        if (activity !is ProductEditActivity) return targetMap
+
         binding.traces.chipifyAllUnterminatedTokens()
-        if (activity !is ProductEditActivity) return
 
         binding.ingredientsList
             .takeIf { it.isContentDifferent(product?.ingredientsText) }
@@ -423,6 +425,7 @@ class EditIngredientsFragment : ProductEditFragment() {
             ?.let {
                 targetMap[ApiFields.Keys.ADD_TRACES] = it.chipValues.joinToString(",")
             }
+        return targetMap
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

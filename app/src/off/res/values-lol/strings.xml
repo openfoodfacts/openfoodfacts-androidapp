@@ -29,7 +29,7 @@
     <string name="msg_welcome_nova">crwdns187494:0crwdne187494:0</string>
     <string name="title_welcome_ecoscore">crwdns187496:0crwdne187496:0</string>
     <!-- Scan card -->
-    <string name="txtDialogsContent">crwdns179602:0crwdne179602:0</string>
+    <string name="product_does_not_exist_please_add_it">crwdns179602:0crwdne179602:0</string>
     <string name="txtDialogsContentPowerMode">crwdns179604:0crwdne179604:0</string>
     <string name="msg_share">crwdns179606:0crwdne179606:0</string>
     <string name="not_support_books">crwdns179608:0crwdne179608:0</string>

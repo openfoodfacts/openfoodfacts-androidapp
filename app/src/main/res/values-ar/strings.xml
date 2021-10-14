@@ -221,7 +221,7 @@
     <string name="uploadLater">سيتم تحميل الصورة عندما تكون الشبكة متاحة</string>
     <string name="txtInfoLoginOk">تم حفظ المستخدم</string>
     <string name="txtInfoLoginNo">لم يتم حفظ المستخدم</string>
-    <string name="txtDialogsContent">المنتج الذي تم مسحه غير موجود حتى الآن في Open Food Facts. الرجاء إضافته.</string>
+    <string name="product_does_not_exist_please_add_it">المنتج الذي تم مسحه غير موجود حتى الآن في Open Food Facts. الرجاء إضافته.</string>
     <string name="txtYes">نعم</string>
     <string name="txtNo">لا</string>
     <string name="hintBrand">العلامة التجارية</string>

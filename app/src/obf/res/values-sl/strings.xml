@@ -21,7 +21,7 @@
     <string name="slide_3_desc">Vso kozmetiko, ki jo uporabljate, lahko izvozite na enem priročnem seznamu</string>
     <string name="slide_4_title">Deluje brez povezave</string>
     <string name="slide_4_desc">Dodate lahko nove izdelke, tudi če trenutno nimate internetne povezave</string>
-    <string name="txtDialogsContent">Skeniran izdelek še ne obstaja v Open Beauty Facts. Prosim, dodajte ga.</string>
+    <string name="product_does_not_exist_please_add_it">Skeniran izdelek še ne obstaja v Open Beauty Facts. Prosim, dodajte ga.</string>
     <string name="msg_share">Poglej ta izdelek na Open Beauty Facts:</string>
     <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Beauty Facts</string>
     <string name="Donation">Click here to donate to Open Beauty Facts</string>

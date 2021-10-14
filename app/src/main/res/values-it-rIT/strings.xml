@@ -189,7 +189,7 @@
     <string name="errorWeb">Impossibile accedere ad internet. Verifica la connessione.</string>
     <string name="txtInfoLoginOk">Utente salvato</string>
     <string name="txtInfoLoginNo">Utente non salvato</string>
-    <string name="txtDialogsContent">Il prodotto che hai scansionato non è ancora presente in Open Food Facts. Per favore aggiungilo.</string>
+    <string name="product_does_not_exist_please_add_it">Il prodotto che hai scansionato non è ancora presente in Open Food Facts. Per favore aggiungilo.</string>
     <string name="txtYes">Sì</string>
     <string name="txtNo">No</string>
     <string name="hintBrand">Marche</string>

@@ -21,7 +21,7 @@
     <string name="slide_3_desc">Tots els productes que heu escanejat, en una llista útil que podeu exportar</string>
     <string name="slide_4_title">Treballeu fora de línia</string>
     <string name="slide_4_desc">Podeu afegir nous productes, fins i tot si ara mateix no teniu una connexió a Internet</string>
-    <string name="txtDialogsContent">El producte que heu escanejat encara no existeix a Open Products Facts. Afegiu-lo.</string>
+    <string name="product_does_not_exist_please_add_it">El producte que heu escanejat encara no existeix a Open Products Facts. Afegiu-lo.</string>
     <string name="txtDialogsContentPowerMode">El producte que heu escanejat ja existeix a Open Products Facts.</string>
     <string name="msg_share">Mireu aquest producte a Open Products Facts:</string>
     <string name="not_support_books">Actualment els llibres no són compatibles amb Open Product Facts</string>

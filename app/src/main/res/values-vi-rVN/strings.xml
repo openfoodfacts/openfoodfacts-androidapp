@@ -189,7 +189,7 @@
     <string name="uploadLater">Hình ảnh sẽ được tải lên khi mạng khả dụng</string>
     <string name="txtInfoLoginOk">User saved</string>
     <string name="txtInfoLoginNo">User not saved</string>
-    <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
+    <string name="product_does_not_exist_please_add_it">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
     <string name="txtYes">Có</string>
     <string name="txtNo">Không</string>
     <string name="hintBrand">Nhãn hiệu</string>

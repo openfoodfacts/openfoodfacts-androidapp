@@ -10,7 +10,6 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.provider.Settings
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -33,7 +32,6 @@ import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.R
-import openfoodfacts.github.scrachx.openfood.analytics.SentryAnalytics
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityHistoryScanBinding
 import openfoodfacts.github.scrachx.openfood.features.productlist.CreateCSVContract
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
@@ -42,7 +40,6 @@ import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInsta
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.SortType.*
 import java.io.File
-import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
 import javax.inject.Inject
@@ -95,15 +92,9 @@ class ScanHistoryActivity : BaseActivity() {
         }
     }
 
-    @Inject
-    lateinit var sentryAnalytics: SentryAnalytics
-
     @RequiresApi(Build.VERSION_CODES.KITKAT)
-    val fileWriterLauncher = registerForActivityResult(CreateCSVContract()) {
-        if (it == null) {
-            Log.w(LOG_TAG, "Could not write to file.")
-            sentryAnalytics.record(IOException("Could not write to file."))
-        } else {
+    val fileWriterLauncher = registerForActivityResult(CreateCSVContract()) { uri ->
+        uri?.let {
             writeHistoryToFile(this, adapter.products, it)
         }
     }

@@ -199,7 +199,7 @@
     <string name="uploadLater">Image will be uploaded when network is available</string>
     <string name="txtInfoLoginOk">Bikarhêner hatine qeydkirin</string>
     <string name="txtInfoLoginNo">Bikarhêner xilas ne</string>
-    <string name="txtDialogsContent">Ye Tara ne yet di berhema License de derbasdar hûn Gerçeker xwaringehê servekirî. Ji kerema xwe ve lê zêde bike.</string>
+    <string name="product_does_not_exist_please_add_it">Ye Tara ne yet di berhema License de derbasdar hûn Gerçeker xwaringehê servekirî. Ji kerema xwe ve lê zêde bike.</string>
     <string name="txtYes">Erê</string>
     <string name="txtNo">No no</string>
     <string name="hintBrand">Brand</string>

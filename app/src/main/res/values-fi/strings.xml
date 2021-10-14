@@ -199,7 +199,7 @@
     <string name="uploadLater">Kuva lähetetään, kun verkko on käytettävissä</string>
     <string name="txtInfoLoginOk">Käyttäjä tallennettu</string>
     <string name="txtInfoLoginNo">Käyttäjää ei tallennettu</string>
-    <string name="txtDialogsContent">Lukemaasi tuotetta ei vielä ole Open Food Factsissa. Lisäähän se.</string>
+    <string name="product_does_not_exist_please_add_it">Lukemaasi tuotetta ei vielä ole Open Food Factsissa. Lisäähän se.</string>
     <string name="txtYes">Kyllä</string>
     <string name="txtNo">Ei</string>
     <string name="hintBrand">Tuotemerkki</string>
