@@ -217,7 +217,6 @@ private fun decodeFile(f: File): Bitmap? {
 }
 
 private const val REQUIRED_SIZE = 1200
-const val SPACE = " "
 const val MY_PERMISSIONS_REQUEST_CAMERA = 1
 const val MY_PERMISSIONS_REQUEST_STORAGE = 2
 
@@ -260,7 +259,7 @@ fun isBarcodeValid(barcode: String?): Boolean {
  *
  * @return true if installed, false otherwise.
  */
-fun isHardwareCameraInstalled(context: Context) = context.packageManager.hasSystemFeature(PackageManager.FEATURE_CAMERA)
+fun isHardwareCameraInstalled(context: Context) = context.packageManager.hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY)
 
 
 fun getSearchLinkText(

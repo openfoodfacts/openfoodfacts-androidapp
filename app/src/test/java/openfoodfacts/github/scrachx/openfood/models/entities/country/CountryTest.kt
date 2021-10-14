@@ -13,10 +13,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
 import org.mockito.junit.MockitoJUnitRunner
-import org.mockito.kotlin.any
-import org.mockito.kotlin.doReturn
-import org.mockito.kotlin.verify
-import org.mockito.kotlin.whenever
+import org.mockito.kotlin.*
 
 /**
  * Tests for [Country]
@@ -32,26 +29,27 @@ class CountryTest {
 
     @Mock
     private lateinit var mockCountryNameDao: CountryNameDao
-    private lateinit var mCountry: Country
+    private lateinit var country: Country
 
     @Before
     fun setup() {
         whenever(mockDaoSession.countryDao) doReturn mockCountryDao
         whenever(mockDaoSession.countryNameDao) doReturn mockCountryNameDao
-        whenever(mockCountryNameDao._queryCountry_Names(any())) doReturn listOf(GERMANY_IN_ENGLISH, GERMANY_IN_FRENCH)
-        mCountry = Country()
+        whenever(mockCountryNameDao._queryCountry_Names(anyOrNull())) doReturn listOf(GERMANY_IN_ENGLISH, GERMANY_IN_FRENCH)
+
+        country = Country()
     }
 
     @Test
-    fun getNamesWithNullNamesAndNullDaoSession_throwsDaoException() {
-        assertThrows(DaoException::class.java) { mCountry.names }
+    fun `getting names with null names and null dao session throws DaoException`() {
+        assertThrows(DaoException::class.java) { country.names }
     }
 
     @Test
-    fun getNamesWithNullNamesAndNonNullDaoSession_getsNamesFromCountryNamesDao() {
-        mCountry.__setDaoSession(mockDaoSession)
+    fun `getting names with null names`() {
+        country.__setDaoSession(mockDaoSession)
 
-        val names = mCountry.names
+        val names = country.names
         assertThat(names).hasSize(2)
 
         val countryName1 = names[0]!!
@@ -66,39 +64,40 @@ class CountryTest {
     }
 
     @Test
-    fun deleteWithNullDaoSession_throwsDaoException() {
-        assertThrows(DaoException::class.java) { mCountry.delete() }
+    fun `delete with null daoSession throws DaoException`() {
+        assertThrows(DaoException::class.java) { country.delete() }
     }
 
     @Test
-    fun deleteWithNonNullDaoSession_callsDeleteOnCountryDao() {
-        mCountry.__setDaoSession(mockDaoSession)
-        mCountry.delete()
-        verify(mockCountryDao).delete(mCountry)
+    fun `delete calls delete on CountryDao`() {
+        country.__setDaoSession(mockDaoSession)
+        country.delete()
+
+        verify(mockCountryDao).delete(country)
     }
 
     @Test
-    fun refreshWithNullDaoSession_throwsDaoException() {
-        assertThrows(DaoException::class.java) { mCountry.refresh() }
+    fun `refresh with null daoSession throws DaoException`() {
+        assertThrows(DaoException::class.java) { country.refresh() }
     }
 
     @Test
-    fun refreshWithNonNullDaoSession_callsRefreshOnCountryDao() {
-        mCountry.__setDaoSession(mockDaoSession)
-        mCountry.refresh()
-        verify(mockCountryDao).refresh(mCountry)
+    fun `refresh calls refresh on CountryDao`() {
+        country.__setDaoSession(mockDaoSession)
+        country.refresh()
+        verify(mockCountryDao).refresh(country)
     }
 
     @Test
-    fun updateWithNullDaoSession_throwsDaoException() {
-        assertThrows(DaoException::class.java) { mCountry.update() }
+    fun `update with null daoSession should throw DaoException`() {
+        assertThrows(DaoException::class.java) { country.update() }
     }
 
     @Test
-    fun updateWithNonNullDaoSession_callsUpdateOnCountryDao() {
-        mCountry.__setDaoSession(mockDaoSession)
-        mCountry.update()
-        verify(mockCountryDao).update(mCountry)
+    fun `update calls update on CountryDao`() {
+        country.__setDaoSession(mockDaoSession)
+        country.update()
+        verify(mockCountryDao).update(country)
     }
 
     companion object {

@@ -61,10 +61,10 @@ class UtilsTest {
         }
 
         // Test for true/false
-        whenever(mockPM.hasSystemFeature(PackageManager.FEATURE_CAMERA)) doReturn true
+        whenever(mockPM.hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY)) doReturn true
         assertThat(isHardwareCameraInstalled(mockCtx)).isTrue()
 
-        whenever(mockPM.hasSystemFeature(PackageManager.FEATURE_CAMERA)) doReturn false
+        whenever(mockPM.hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY)) doReturn false
         assertThat(isHardwareCameraInstalled(mockCtx)).isFalse()
     }
 

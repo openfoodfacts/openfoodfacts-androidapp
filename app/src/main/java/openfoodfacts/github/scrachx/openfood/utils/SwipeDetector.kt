@@ -17,6 +17,7 @@ package openfoodfacts.github.scrachx.openfood.utils
 
 import android.util.Log
 import android.view.MotionEvent
+import android.view.MotionEvent.*
 import android.view.View
 import android.view.View.OnTouchListener
 import kotlin.math.abs
@@ -27,34 +28,35 @@ class SwipeDetector(private val view: View, private val swipeEventListener: OnSw
     private var downY = 0f
     private var upX = 0f
     private var upY = 0f
+
     private fun onRightToLeftSwipe() {
         swipeEventListener?.onSwipeEventDetected(view, SwipeTypeEnum.RIGHT_TO_LEFT)
-                ?: Log.e(LOG_TAG, ERR_NO_LISTENER_MSG)
+            ?: Log.e(LOG_TAG, ERR_NO_LISTENER_MSG)
     }
 
     private fun onLeftToRightSwipe() {
         swipeEventListener?.onSwipeEventDetected(view, SwipeTypeEnum.LEFT_TO_RIGHT)
-                ?: Log.e(LOG_TAG, ERR_NO_LISTENER_MSG)
+            ?: Log.e(LOG_TAG, ERR_NO_LISTENER_MSG)
     }
 
     private fun onTopToBottomSwipe() {
         swipeEventListener?.onSwipeEventDetected(view, SwipeTypeEnum.TOP_TO_BOTTOM)
-                ?: Log.e(LOG_TAG, ERR_NO_LISTENER_MSG)
+            ?: Log.e(LOG_TAG, ERR_NO_LISTENER_MSG)
     }
 
     private fun onBottomToTopSwipe() {
         swipeEventListener?.onSwipeEventDetected(view, SwipeTypeEnum.BOTTOM_TO_TOP)
-                ?: Log.e(LOG_TAG, ERR_NO_LISTENER_MSG)
+            ?: Log.e(LOG_TAG, ERR_NO_LISTENER_MSG)
     }
 
     override fun onTouch(v: View, event: MotionEvent): Boolean {
         when (event.action) {
-            MotionEvent.ACTION_DOWN -> {
+            ACTION_DOWN -> {
                 downX = event.x
                 downY = event.y
                 return true
             }
-            MotionEvent.ACTION_UP -> {
+            ACTION_UP -> {
                 upX = event.x
                 upY = event.y
                 val deltaX = downX - upX
@@ -98,10 +100,7 @@ class SwipeDetector(private val view: View, private val swipeEventListener: OnSw
         return false
     }
 
-    fun setMinDistanceInPixels(minDistance: Int): SwipeDetector {
-        this.minDistance = minDistance
-        return this
-    }
+    fun setMinDistanceInPixels(minDistance: Int) = apply { this.minDistance = minDistance }
 
     enum class SwipeTypeEnum {
         RIGHT_TO_LEFT, LEFT_TO_RIGHT, TOP_TO_BOTTOM, BOTTOM_TO_TOP

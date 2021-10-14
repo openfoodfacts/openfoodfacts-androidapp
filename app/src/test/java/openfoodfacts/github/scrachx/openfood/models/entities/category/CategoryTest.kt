@@ -9,15 +9,12 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
 import org.mockito.junit.MockitoJUnitRunner
-import org.mockito.kotlin.any
-import org.mockito.kotlin.doReturn
-import org.mockito.kotlin.verify
-import org.mockito.kotlin.whenever
+import org.mockito.kotlin.*
 
 /**
  * Tests for [Category]
  */
-@RunWith(MockitoJUnitRunner::class)
+@RunWith(MockitoJUnitRunner.StrictStubs::class)
 class CategoryTest {
     @Mock
     private lateinit var mockDaoSession: DaoSession
@@ -33,7 +30,8 @@ class CategoryTest {
     fun setup() {
         whenever(mockDaoSession.categoryDao) doReturn mockCategoryDao
         whenever(mockDaoSession.categoryNameDao) doReturn mockCategoryNameDao
-        whenever(mockCategoryNameDao._queryCategory_Names(any())) doReturn listOf(CATEGORY_NAME_1, CATEGORY_NAME_2)
+        whenever(mockCategoryNameDao._queryCategory_Names(anyOrNull())) doReturn listOf(CATEGORY_NAME_1, CATEGORY_NAME_2)
+
         mCategory = Category()
     }
 
@@ -46,13 +44,18 @@ class CategoryTest {
     fun getNamesWithNullNamesAndNonNullDaoSession_setsNamesFromCategoryNameDao() {
         mCategory.__setDaoSession(mockDaoSession)
         val names = mCategory.names
+
         assertThat(names).hasSize(2)
-        assertThat(names[0]!!.categoryTag).isEqualTo(CATEGORY_TAG_1)
-        assertThat(names[0]!!.languageCode).isEqualTo(LANGUAGE_CODE_ENGLISH)
-        assertThat(names[0]!!.name).isEqualTo(CATEGORY_NAME_NAME_1)
-        assertThat(names[1]!!.categoryTag).isEqualTo(CATEGORY_TAG_2)
-        assertThat(names[1]!!.languageCode).isEqualTo(LANGUAGE_CODE_FRENCH)
-        assertThat(names[1]!!.name).isEqualTo(CATEGORY_NAME_NAME_2)
+
+        val name1 = names[0]!!
+        assertThat(name1.categoryTag).isEqualTo(CATEGORY_TAG_1)
+        assertThat(name1.languageCode).isEqualTo(LANGUAGE_CODE_ENGLISH)
+        assertThat(name1.name).isEqualTo(CATEGORY_NAME_NAME_1)
+
+        val name2 = names[1]!!
+        assertThat(name2.categoryTag).isEqualTo(CATEGORY_TAG_2)
+        assertThat(name2.languageCode).isEqualTo(LANGUAGE_CODE_FRENCH)
+        assertThat(name2.name).isEqualTo(CATEGORY_NAME_NAME_2)
     }
 
     @Test
