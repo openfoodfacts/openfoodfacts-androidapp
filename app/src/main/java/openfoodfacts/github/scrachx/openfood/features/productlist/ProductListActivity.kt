@@ -32,6 +32,7 @@ import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
 import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityYourListedProductsBinding
+import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewActivityStarter
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.selectNavigationItem
@@ -65,6 +66,9 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
 
     @Inject
     lateinit var picasso: Picasso
+
+    @Inject
+    lateinit var productViewActivityStarter: ProductViewActivityStarter
 
     private var listID by Delegates.notNull<Long>()
     private lateinit var productList: ProductLists
@@ -144,7 +148,7 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
             isLowBatteryMode,
             picasso,
             onItemClickListener = {
-                lifecycleScope.launch { client.openProduct(it.barcode, this@ProductListActivity) }
+                lifecycleScope.launch { productViewActivityStarter.openProduct(it.barcode, this@ProductListActivity) }
             }
         )
         binding.rvYourListedProducts.adapter = adapter

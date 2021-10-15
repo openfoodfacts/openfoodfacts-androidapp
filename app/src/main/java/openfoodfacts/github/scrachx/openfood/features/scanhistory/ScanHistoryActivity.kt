@@ -33,10 +33,12 @@ import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityHistoryScanBinding
+import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewActivityStarter
 import openfoodfacts.github.scrachx.openfood.features.productlist.CreateCSVContract
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.selectNavigationItem
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.SortType.*
 import java.io.File
@@ -51,6 +53,12 @@ class ScanHistoryActivity : BaseActivity() {
     private val viewModel: ScanHistoryViewModel by viewModels()
 
     @Inject
+    lateinit var client: OpenFoodAPIClient
+
+    @Inject
+    lateinit var productViewActivityStarter: ProductViewActivityStarter
+
+    @Inject
     lateinit var picasso: Picasso
 
     @Inject
@@ -63,7 +71,7 @@ class ScanHistoryActivity : BaseActivity() {
 
     private val adapter by lazy {
         ScanHistoryAdapter(isLowBatteryMode = isDisableImageLoad() && isBatteryLevelLow(), picasso) {
-            openProduct(it.barcode)
+            productViewActivityStarter.openProduct(it.barcode, this)
         }
     }
 

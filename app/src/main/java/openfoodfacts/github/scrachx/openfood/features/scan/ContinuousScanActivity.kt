@@ -83,6 +83,7 @@ import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenNa
 import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.AnalysisTagConfig
 import openfoodfacts.github.scrachx.openfood.models.eventbus.ProductNeedsRefreshEvent
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.StateTags
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.repositories.ScannerPreferencesRepository
 import openfoodfacts.github.scrachx.openfood.utils.*
@@ -97,6 +98,9 @@ import javax.inject.Inject
 class ContinuousScanActivity : BaseActivity(), IProductView {
     private var _binding: ActivityContinuousScanBinding? = null
     internal val binding get() = _binding!!
+
+    @Inject
+    lateinit var client: OpenFoodAPIClient
 
     @Inject
     lateinit var daoSession: DaoSession

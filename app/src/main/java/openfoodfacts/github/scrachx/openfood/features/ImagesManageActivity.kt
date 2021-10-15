@@ -59,9 +59,8 @@ import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.models.findByCode
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
-import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.*
-import openfoodfacts.github.scrachx.openfood.utils.FileDownloader.download
 import openfoodfacts.github.scrachx.openfood.utils.SwipeDetector.OnSwipeEventListener
 import openfoodfacts.github.scrachx.openfood.utils.SwipeDetector.SwipeTypeEnum
 import org.apache.commons.lang3.StringUtils
@@ -80,8 +79,10 @@ class ImagesManageActivity : BaseActivity() {
     private val binding get() = _binding!!
 
     @Inject
-    lateinit var productsApi: ProductsAPI
+    lateinit var client: OpenFoodAPIClient
 
+    @Inject
+    lateinit var fileDownloader: FileDownloader
 
     @Inject
     lateinit var picasso: Picasso
@@ -478,11 +479,11 @@ class ImagesManageActivity : BaseActivity() {
     }
 
     private fun editPhoto(field: ProductImageField, transformation: ImageTransformation) {
-        if (transformation.isEmpty()) return
+        val url = transformation.imageUrl?.takeIf { it.isNotBlank() } ?: return
 
-        download(this, transformation.imageUrl!!, client)
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe { fileUri ->
+        lifecycleScope.launchWhenResumed {
+            val fileUri = fileDownloader.download(url)
+            if (fileUri != null) {
                 //to delete the file after:
                 lastViewedImage = fileUri.toFile()
                 cropRotateExistingImageOnServer(
@@ -490,7 +491,8 @@ class ImagesManageActivity : BaseActivity() {
                     getString(getResourceIdForEditAction(field)),
                     transformation
                 )
-            }.addTo(disp)
+            }
+        }
     }
 
     private fun getProduct() = intent.getSerializableExtra(PRODUCT) as Product?
