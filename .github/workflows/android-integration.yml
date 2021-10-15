@@ -23,7 +23,7 @@ jobs:
           java-version: "11"
 
       - name: Compile screenshots android tests
-        uses: gradle/gradle-build-action@v2
+        uses: gradle/gradle-build-action@v1.5.1
         with:
           arguments: >
             compileOffPlaystoreScreenshotsAndroidTestSources 
@@ -45,7 +45,7 @@ jobs:
           java-version: "11"
 
       - name: Run unit tests
-        uses: gradle/gradle-build-action@v2
+        uses: gradle/gradle-build-action@v1.5.1
         with:
           arguments: >
             testObfPlaystoreDebugUnitTest
@@ -72,7 +72,7 @@ jobs:
         run: 'echo "ndk.dir=${ANDROID_HOME}/ndk-bundle" > local.properties'
 
       - name: Assemble debug APKs
-        uses: gradle/gradle-build-action@v2
+        uses: gradle/gradle-build-action@v1.5.1
         with:
           arguments: assembleDebug
 
@@ -132,7 +132,7 @@ jobs:
         run: "echo \"org.gradle.jvmargs=-Xmx4096m\" >> gradle.properties"
 
       - name: Lint sources
-        uses: gradle/gradle-build-action@v2
+        uses: gradle/gradle-build-action@v1.5.1
         with:
           arguments: lintOffPlayStoreDebug --stacktrace
 
@@ -163,7 +163,7 @@ jobs:
         run: chmod +x gradlew
 
       - name: Generate documentation
-        uses: gradle/gradle-build-action@v2
+        uses: gradle/gradle-build-action@v1.5.1
         with:
           arguments: dokkaHtml
 
