@@ -47,6 +47,8 @@ import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
 import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductListsBinding
+import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity
+import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_PRODUCT
 import openfoodfacts.github.scrachx.openfood.features.productlist.ProductListActivity
 import openfoodfacts.github.scrachx.openfood.features.productlist.ProductListActivity.Companion.KEY_LIST_ID
 import openfoodfacts.github.scrachx.openfood.features.productlist.ProductListActivity.Companion.KEY_LIST_NAME
@@ -309,7 +311,6 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
     }
 
     companion object {
-        private const val KEY_PRODUCT = "product"
 
         @JvmStatic
         fun start(context: Context, productToAdd: Product) = context.startActivity(
