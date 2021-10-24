@@ -228,38 +228,38 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         // Set nutrition data per
         product!!.nutritionDataPer
             ?.takeUnless { it.isEmpty() }
-            ?.let { updateSelectedDataPer(it) }
+            ?.let(::updateSelectedDataPer)
 
 
         // Set serving size
         product!!.servingSize
             ?.takeUnless { it.isEmpty() }
             // Splits the serving size into value and unit. Example: "15g" into "15" and "g"
-            ?.let { updateServingSize(it) }
+            ?.let(::updateServingSize)
 
         if (view == null) return
 
         val nutriments = product!!.nutriments
-        binding.energyKj.setText(nutriments.getEnergyKjValue(isDataPerServing)?.let { getRoundNumber(it) })
-        binding.energyKcal.setText(nutriments.getEnergyKcalValue(isDataPerServing)?.let { getRoundNumber(it) })
+        binding.energyKj.setText(nutriments.getEnergyKjValue(isDataPerServing)?.let(::getRoundNumber))
+        binding.energyKcal.setText(nutriments.getEnergyKcalValue(isDataPerServing)?.let(::getRoundNumber))
 
         // Fill default nutriments fields
-        for (view in (view as ViewGroup).getViewsByType(CustomValidatingEditTextView::class.java)) {
-            var nutrimentShortName = view.entryName
+        for (editView in (view as ViewGroup).getViewsByType(CustomValidatingEditTextView::class.java)) {
+            var nutrimentShortName = editView.entryName
 
             // Workaround for saturated-fat
             if (nutrimentShortName == "saturated_fat") nutrimentShortName = "saturated-fat"
 
             // Skip serving size and energy view, we already filled them
-            if (view === binding.servingSize || view === binding.energyKcal || view === binding.energyKj) continue
+            if (editView === binding.servingSize || editView === binding.energyKcal || editView === binding.energyKj) continue
 
             // Get the value
             val nutriment = Nutriment.findbyKey(nutrimentShortName) ?: error("Cannot find nutrient $nutrimentShortName")
             val value = (if (isDataPer100g) nutriments[nutriment]?.per100gInUnit else nutriments[nutriment]?.perServingInUnit) ?: continue
 
-            view.setText(getRoundNumber(value))
-            view.unitSpinner?.setSelection(getUnitIndexUnitFromShortName(nutriments, nutriment) ?: 0)
-            view.modSpinner?.setSelection(getModifierIndexFromShortName(nutriments, nutriment))
+            editView.setText(getRoundNumber(value))
+            editView.unitSpinner?.setSelection(getUnitIndexUnitFromShortName(nutriments, nutriment) ?: 0)
+            editView.modSpinner?.setSelection(getModifierIndexFromShortName(nutriments, nutriment))
         }
 
         // Set the values of all the other nutrients if defined and create new row in the tableLayout.
@@ -310,16 +310,21 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         getModifierIndex(nutriments[nutriment]?.modifier)
 
     private fun updateServingSize(servingSize: String) {
-        try {
-            val (value, unit) = parseServing(servingSize)
+        val (value, unit) = try {
+            parseServing(servingSize)
+        } catch (ex: IllegalArgumentException) {
+            // Serving size not not matching size regex. Incorrect format
+            sentryAnalytics.record(ex)
 
-            binding.servingSize.setText(value)
+            // Disable fields and return
+            binding.servingSize.isEnabled = false
+            binding.servingSize.unitSpinner?.isEnabled = false
+            return
+        }
 
-            if (unit != null) {
-                binding.servingSize.unitSpinner?.setSelection(getServingUnitIndex(unit))
-            }
-        } catch (exception : IllegalArgumentException) {
-            binding.servingSize.setText("")
+        binding.servingSize.setText(value)
+        if (unit != null) {
+            binding.servingSize.unitSpinner?.setSelection(getServingUnitIndex(unit))
         }
     }
 
