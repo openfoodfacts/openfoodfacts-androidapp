@@ -310,13 +310,16 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         getModifierIndex(nutriments[nutriment]?.modifier)
 
     private fun updateServingSize(servingSize: String) {
+        try {
+            val (value, unit) = parseServing(servingSize)
 
-        val (value, unit) = parseServing(servingSize)
+            binding.servingSize.setText(value)
 
-        binding.servingSize.setText(value)
-
-        if (unit != null) {
-            binding.servingSize.unitSpinner?.setSelection(getServingUnitIndex(unit))
+            if (unit != null) {
+                binding.servingSize.unitSpinner?.setSelection(getServingUnitIndex(unit))
+            }
+        } catch (exception : IllegalArgumentException) {
+            binding.servingSize.setText("")
         }
     }
 
