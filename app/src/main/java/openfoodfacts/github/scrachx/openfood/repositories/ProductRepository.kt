@@ -336,7 +336,18 @@ class ProductRepository @Inject constructor(
     fun saveAllergens(allergens: List<Allergen>) {
         daoSession.database.beginTransaction()
         try {
+
             allergens.forEach { allergen ->
+                // If the allergen is already in the database, ensure the "enabled" field is used,
+                // instead of replaced
+                val dbAllergen = daoSession.allergenDao.queryBuilder()
+                    .where(AllergenDao.Properties.Tag.eq(allergen.tag))
+                    .unique()
+
+                if (dbAllergen != null) {
+                    allergen.enabled = dbAllergen.enabled
+                }
+
                 daoSession.allergenDao.insertOrReplace(allergen)
                 allergen.names.forEach { daoSession.allergenNameDao.insertOrReplace(it) }
             }
