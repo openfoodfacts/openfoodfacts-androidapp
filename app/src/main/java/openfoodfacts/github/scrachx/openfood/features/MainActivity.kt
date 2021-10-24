@@ -629,15 +629,18 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
         // activity
         if (drawerResult.isDrawerOpen) {
             drawerResult.closeDrawer()
+        } else if (supportFragmentManager.backStackEntryCount > 0) {
+            supportFragmentManager.popBackStackImmediate(
+                supportFragmentManager.getBackStackEntryAt(0).id,
+                FragmentManager.POP_BACK_STACK_INCLUSIVE
+            )
+
+            // Close the app if no Fragment is visible anymore
+            if (supportFragmentManager.backStackEntryCount == 0) {
+                super.onBackPressed()
+            }
         } else {
-            if (supportFragmentManager.backStackEntryCount > 0) {
-                supportFragmentManager.popBackStack(
-                    supportFragmentManager.getBackStackEntryAt(0).id,
-                    FragmentManager.POP_BACK_STACK_INCLUSIVE
-                )
-                // Recreate the activity onBackPressed
-                recreate()
-            } else super.onBackPressed()
+            super.onBackPressed()
         }
     }
 

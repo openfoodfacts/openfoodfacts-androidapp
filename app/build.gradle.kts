@@ -146,7 +146,7 @@ dependencies {
     implementation("com.github.hootsuite:nachos:1.2.0")
 
     // Crash analytics
-    implementation("io.sentry:sentry-android:5.2.2")
+    implementation("io.sentry:sentry-android:5.2.4")
     implementation("com.github.matomo-org:matomo-sdk-android:v4.1.2")
 
     // ShowCaseView dependency
@@ -186,7 +186,7 @@ dependencies {
         exclude(module = "recyclerview-v7")
     }
     androidTestImplementation("com.jraska:falcon:2.2.0")
-    androidTestImplementation("tools.fastlane:screengrab:2.1.0")
+    androidTestImplementation("tools.fastlane:screengrab:2.1.1")
     androidTestImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:${coroutinesVersion}")
 
 

@@ -24,6 +24,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.core.net.toFile
+import androidx.core.view.isGone
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -286,6 +287,7 @@ class EditIngredientsFragment : ProductEditFragment() {
     private fun preFillValuesForOffline(prod: OfflineSavedProduct) {
         productDetails = prod.productDetails.toMutableMap()
 
+        // Load ingredients image
         getImageIngredients()?.let {
             binding.imageProgress.visibility = View.VISIBLE
             picasso
@@ -317,11 +319,16 @@ class EditIngredientsFragment : ProductEditFragment() {
      * Automatically load suggestions for allergen names
      */
     private fun loadAutoSuggestions(allergens: List<String>) {
-        val adapter = ArrayAdapter(requireActivity(), android.R.layout.simple_dropdown_item_1line, allergens)
         binding.traces.addChipTerminator(',', ChipTerminatorHandler.BEHAVIOR_CHIPIFY_CURRENT_TOKEN)
         binding.traces.setNachoValidator(ChipifyingNachoValidator())
         binding.traces.enableEditChipOnTouch(false, true)
-        binding.traces.setAdapter(adapter)
+        binding.traces.setAdapter(
+            ArrayAdapter(
+                requireActivity(),
+                android.R.layout.simple_dropdown_item_1line,
+                allergens
+            )
+        )
     }
 
 
@@ -381,11 +388,7 @@ class EditIngredientsFragment : ProductEditFragment() {
     }
 
     private fun toggleOCRButtonVisibility() {
-        if (binding.ingredientsList.isEmpty()) {
-            binding.btnExtractIngredients.visibility = View.VISIBLE
-        } else {
-            binding.btnExtractIngredients.visibility = View.GONE
-        }
+        binding.ingredientsList.isGone = binding.ingredientsList.isNotEmpty()
     }
 
     /**
@@ -399,8 +402,7 @@ class EditIngredientsFragment : ProductEditFragment() {
                 ?.takeUnless { it.isEmpty() } ?: ApiFields.Defaults.DEFAULT_LANGUAGE
 
             targetMap[lcIngredientsKey(lc)] = binding.ingredientsList.text.toString()
-            val string = binding.traces.chipValues.joinToString(",")
-            targetMap[ApiFields.Keys.ADD_TRACES.substring(4)] = string
+            targetMap[ApiFields.Keys.ADD_TRACES.substring(4)] = binding.traces.chipValues.joinToString(",")
         }
     }
 

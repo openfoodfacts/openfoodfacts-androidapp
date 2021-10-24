@@ -135,27 +135,32 @@ class ProductEditActivity : BaseActivity() {
     }
 
     override fun onBackPressed() {
+        // If the user changed something, alert before exiting
+        if (getUpdatedFieldsMap().isNotEmpty()) showExitConfirmDialog()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                if (getUpdatedFieldsMap().isNotEmpty()) {
+                    showExitConfirmDialog()
+                    true
+                } else false
+            }
+            R.id.save_product -> {
+                checkFieldsThenSave()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    private fun showExitConfirmDialog() {
         MaterialAlertDialogBuilder(this)
             .setMessage(R.string.save_product)
             .setPositiveButton(R.string.txtSave) { _, _ -> checkFieldsThenSave() }
-            .setNegativeButton(R.string.txtPictureNeededDialogNo) { _, _ -> super.onBackPressed() }
+            .setNegativeButton(R.string.txt_discard) { _, _ -> super.onBackPressed() }
             .show()
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
-        android.R.id.home -> {
-            MaterialAlertDialogBuilder(this)
-                .setMessage(R.string.save_product)
-                .setPositiveButton(R.string.txtSave) { _, _ -> checkFieldsThenSave() }
-                .setNegativeButton(R.string.txt_discard) { _, _ -> finish() }
-                .show()
-            true
-        }
-        R.id.save_product -> {
-            checkFieldsThenSave()
-            true
-        }
-        else -> super.onOptionsItemSelected(item)
     }
 
     private fun selectPage(position: Int) = when (position) {
@@ -234,7 +239,7 @@ class ProductEditActivity : BaseActivity() {
 
     private fun setupViewPager(viewPager: ViewPager2) {
         // Initialize fragments
-        fragmentsBundle.putSerializable("product", mProduct)
+        fragmentsBundle.putSerializable(KEY_PRODUCT, mProduct)
 
         editOverviewFragment.arguments = fragmentsBundle
         ingredientsFragment.arguments = fragmentsBundle
@@ -261,9 +266,6 @@ class ProductEditActivity : BaseActivity() {
         viewPager.adapter = adapterResult
     }
 
-    private fun createTextPlain(code: String) =
-        RequestBody.create(OpenFoodAPIClient.MIME_TEXT, code)
-
     private fun getLoginPasswordInfo(): Map<String, RequestBody> {
         val map = hashMapOf<String, RequestBody>()
         val settings = getLoginPreferences()
@@ -281,13 +283,18 @@ class ProductEditActivity : BaseActivity() {
     }
 
     private suspend fun saveProduct() {
-        productDetails += editOverviewFragment.getUpdatedFieldsMap()
-        productDetails += ingredientsFragment.getUpdatedFieldsMap()
-        if (isFlavors(OFF, OPFF)) {
-            productDetails += nutritionFactsFragment.getUpdatedFieldsMap()
-        }
-        productDetails += getLoginInfoMap()
+        productDetails += getUpdatedFieldsMap() + getLoginInfoMap()
         saveProductOffline()
+    }
+
+    private fun getUpdatedFieldsMap(): Map<String, String?> {
+        val updatedValues = editOverviewFragment.getUpdatedFieldsMap().toMutableMap()
+        updatedValues += ingredientsFragment.getUpdatedFieldsMap()
+
+        if (isFlavors(OFF, OPFF))
+            updatedValues += nutritionFactsFragment.getUpdatedFieldsMap()
+
+        return updatedValues
     }
 
     fun proceed() = if (binding.viewpager.currentItem < 2) {
@@ -529,7 +536,9 @@ class ProductEditActivity : BaseActivity() {
 
 
     suspend fun performOCR(code: String, imageField: String) {
-        withContext(Main) { ingredientsFragment.showOCRProgress() }
+        withContext(Main) {
+            ingredientsFragment.showOCRProgress()
+        }
 
         val node = withContext(IO) {
             try {
@@ -641,6 +650,7 @@ class ProductEditActivity : BaseActivity() {
 
         const val KEY_EDIT_OFFLINE_PRODUCT = "edit_offline_product"
         const val KEY_EDIT_PRODUCT = "edit_product"
+        const val KEY_PRODUCT = "product"
 
         const val KEY_IS_EDITING = "is_edition"
         const val KEY_STATE = "state"
@@ -693,5 +703,8 @@ class ProductEditActivity : BaseActivity() {
                 context.startActivity(this)
             }
         }
+
+        private fun createTextPlain(code: String) =
+            RequestBody.create(OpenFoodAPIClient.MIME_TEXT, code)
     }
 }

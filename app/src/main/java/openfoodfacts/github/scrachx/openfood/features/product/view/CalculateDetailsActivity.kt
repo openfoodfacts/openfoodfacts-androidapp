@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.CalculateDetailsBinding
 import openfoodfacts.github.scrachx.openfood.features.adapters.CalculatedNutrimentsGridAdapter
+import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_PRODUCT
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.models.*
 import openfoodfacts.github.scrachx.openfood.models.MeasurementUnit
@@ -191,7 +192,6 @@ class CalculateDetailsActivity : BaseActivity() {
     }
 
     companion object {
-        private const val KEY_PRODUCT = "product"
         private const val KEY_SPINNER_VALUE = "spinnerValue"
         private const val KEY_WEIGHT = "weight"
 
