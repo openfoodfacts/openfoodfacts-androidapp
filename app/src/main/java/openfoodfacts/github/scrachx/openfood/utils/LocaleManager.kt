@@ -42,7 +42,7 @@ class LocaleManager @Inject constructor(
     init {
         currentLocale = reloadLocale()
     }
-    
+
     fun restoreLocalizedContext(context: Context): Context = changeAppLanguage(context, reloadLocale())
 
     private fun reloadLocale() = getLanguageFromPrefs()?.let {
