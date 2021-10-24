@@ -187,9 +187,9 @@
     <string name="hintPass">Password</string>
     <string name="errorLogin">Login o password errati</string>
     <string name="errorWeb">Impossibile accedere ad internet. Verifica la connessione.</string>
-    <string name="txtInfoLoginOk">Utente salvato</string>
-    <string name="txtInfoLoginNo">Utente non salvato</string>
-    <string name="product_does_not_exist_please_add_it">Il prodotto che hai scansionato non è ancora presente in Open Food Facts. Per favore aggiungilo.</string>
+    <string name="txtInfoLoginOk">You successfully logged into your Open Food Facts account.</string>
+    <string name="txtInfoLoginNo">An error happened while trying to log into your Open Food Facts account.</string>
+    <string name="product_does_not_exist_please_add_it">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
     <string name="txtYes">Sì</string>
     <string name="txtNo">No</string>
     <string name="hintBrand">Marche</string>
@@ -216,7 +216,7 @@
     <string name="alert_drawer">Allarme allergeni</string>
     <string name="your_lists">Le tue liste</string>
     <string name="title_dialog_alert">Aggiungi allarme</string>
-    <string name="select_camera">Select a Camera</string>
+    <string name="select_camera">Seleziona una Fotocamera</string>
     <string name="ok_button">Ok</string>
     <string name="cancel_button">Annulla</string>
     <string name="login_button">Nome utente</string>
