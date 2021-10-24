@@ -251,8 +251,8 @@
     <string name="hintPass">Password</string>
     <string name="errorLogin">Login or password error</string>
     <string name="errorWeb">We were not able to access the internet. Do you have connectivity issues?</string>
-    <string name="txtInfoLoginOk">User saved</string>
-    <string name="txtInfoLoginNo">User not saved</string>
+    <string name="txtInfoLoginOk">You successfully logged into your Open Food Facts account.</string>
+    <string name="txtInfoLoginNo">An error happened while trying to log into your Open Food Facts account.</string>
     <string name="product_does_not_exist_please_add_it">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
     <string name="txtYes">Yes</string>
     <string name="txtNo">No</string>
