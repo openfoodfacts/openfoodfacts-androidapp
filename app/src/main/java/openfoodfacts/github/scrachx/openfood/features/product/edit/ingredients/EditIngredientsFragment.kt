@@ -24,7 +24,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.core.net.toFile
-import androidx.core.view.isGone
+import androidx.core.view.isVisible
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -89,27 +89,42 @@ class EditIngredientsFragment : ProductEditFragment() {
     @Inject
     lateinit var localeManager: LocaleManager
 
+    /**
+     * Executed when an image is returned from the camera
+     */
     private val photoReceiverHandler by lazy {
         PhotoReceiverHandler(sharedPreferences) {
             val uri = it.toURI()
             imagePath = uri.path
             newImageSelected = true
             photoFile = it
-            val image = ProductImage(code!!, ProductImageField.INGREDIENTS, it, localeManager.getLanguage()).apply {
+            val image = ProductImage(
+                code!!,
+                ProductImageField.INGREDIENTS,
+                it,
+                localeManager.getLanguage()
+            ).apply {
                 filePath = uri.path
             }
+
             (activity as? ProductEditActivity)?.savePhoto(image, 1)
-            matomoAnalytics.trackEvent(AnalyticsEvent.ProductIngredientsPictureEdited(code))
+
+            // Change UI state
             hideImageProgress(false, getString(R.string.image_uploaded_successfully))
+
+            // Analytics
+            matomoAnalytics.trackEvent(AnalyticsEvent.ProductIngredientsPictureEdited(code))
         }
     }
 
     private var photoFile: File? = null
     private var code: String? = null
-    private var mOfflineSavedProduct: OfflineSavedProduct? = null
-    private var productDetails = mutableMapOf<String, String?>()
-    private var imagePath: String? = null
+
+    private var offlineProduct: OfflineSavedProduct? = null
     private var product: Product? = null
+    private var productDetails = mutableMapOf<String, String?>()
+
+    private var imagePath: String? = null
     private var newImageSelected = false
 
 
@@ -123,10 +138,11 @@ class EditIngredientsFragment : ProductEditFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val intent = if (activity == null) null else requireActivity().intent
-        if (intent != null
-            && intent.getBooleanExtra(ProductEditActivity.KEY_MODIFY_NUTRITION_PROMPT, false)
-            && !intent.getBooleanExtra(ProductEditActivity.KEY_MODIFY_CATEGORY_PROMPT, false)
+        // FIXME: DO NOT USE INTENTS IN FRAGMENTS
+        val activityIntent = activity?.intent
+        if (activityIntent != null
+            && activityIntent.getBooleanExtra(ProductEditActivity.KEY_MODIFY_NUTRITION_PROMPT, false)
+            && !activityIntent.getBooleanExtra(ProductEditActivity.KEY_MODIFY_CATEGORY_PROMPT, false)
         ) {
             (activity as ProductEditActivity).proceed()
         }
@@ -137,7 +153,9 @@ class EditIngredientsFragment : ProductEditFragment() {
         binding.btnLooksGood.setOnClickListener { verifyIngredients() }
         binding.btnSkipIngredients.setOnClickListener { skipIngredients() }
         binding.btnExtractIngredients.setOnClickListener { extractIngredients() }
-        binding.ingredientsList.doAfterTextChanged { toggleOCRButtonVisibility() }
+        binding.ingredientsList.doAfterTextChanged { newText ->
+            binding.btnExtractIngredients.isVisible = newText.isNullOrEmpty()
+        }
 
         val bundle = arguments
         if (bundle == null) {
@@ -148,8 +166,8 @@ class EditIngredientsFragment : ProductEditFragment() {
         }
 
         product = getProductFromArgs()
+        offlineProduct = getEditOfflineProductFromArgs()
 
-        mOfflineSavedProduct = getEditOfflineProductFromArgs()
         if (product != null) {
             code = product!!.code
         }
@@ -157,9 +175,11 @@ class EditIngredientsFragment : ProductEditFragment() {
         if (isEditingFromArgs && product != null) {
             code = product!!.code
             preFillProductValues(product!!)
-        } else if (mOfflineSavedProduct != null) {
-            code = mOfflineSavedProduct!!.barcode
-            preFillValuesForOffline(mOfflineSavedProduct!!)
+
+        } else if (offlineProduct != null) {
+            code = offlineProduct!!.barcode
+            preFillValuesForOffline(offlineProduct!!)
+
         } else {
             // Fast addition
             val enabled = requireContext().isFastAdditionMode()
@@ -182,6 +202,7 @@ class EditIngredientsFragment : ProductEditFragment() {
             binding.btnExtractIngredients.visibility = View.VISIBLE
         }
 
+        // Allergens autosuggestion
         viewModel.allergens.observe(viewLifecycleOwner) { loadAutoSuggestions(it) }
 
         (activity as? ProductEditActivity)?.let { getAllDetails(it) }
@@ -197,7 +218,9 @@ class EditIngredientsFragment : ProductEditFragment() {
     private fun getAddProductActivity() = activity as ProductEditActivity?
 
     private fun extractTracesChipValues(product: Product?): List<String> =
-        product?.tracesTags?.map { getTracesName(localeManager.getLanguage(), it) } ?: emptyList()
+        product?.tracesTags
+            ?.map { getTracesName(localeManager.getLanguage(), it) }
+            ?: emptyList()
 
     /**
      * Pre fill the fields of the product which are already present on the server.
@@ -211,8 +234,7 @@ class EditIngredientsFragment : ProductEditFragment() {
 
         product.takeUnless { it.tracesTags.isEmpty() }
             ?.let {
-                val chipValues = extractTracesChipValues(it)
-                binding.traces.setText(chipValues)
+                binding.traces.setText(extractTracesChipValues(it))
             }
     }
 
@@ -387,10 +409,6 @@ class EditIngredientsFragment : ProductEditFragment() {
         binding.btnLooksGood.visibility = View.GONE
     }
 
-    private fun toggleOCRButtonVisibility() {
-        binding.ingredientsList.isGone = binding.ingredientsList.isNotEmpty()
-    }
-
     /**
      * adds all the fields to the query map even those which are null or empty.
      */
@@ -490,15 +508,24 @@ class EditIngredientsFragment : ProductEditFragment() {
     }
 
     fun showOCRProgress() {
-        binding.btnExtractIngredients.visibility = View.GONE
+        // Disable extract button and ingredients text field
+        binding.btnExtractIngredients.isEnabled = false
+        binding.ingredientsList.isEnabled = false
+
+        // Delete ingredients text
         binding.ingredientsList.text = null
+
+        // Show progress spinner and text
         binding.ocrProgress.visibility = View.VISIBLE
-        binding.ocrProgressText.visibility = View.VISIBLE
     }
 
     fun hideOCRProgress() {
+        // Re-enable extract button and ingredients text field
+        binding.btnExtractIngredients.isEnabled = true
+        binding.ingredientsList.isEnabled = true
+
+        // Hide progress spinner and text
         binding.ocrProgress.visibility = View.GONE
-        binding.ocrProgressText.visibility = View.GONE
     }
 
     private val dps50ToPixels by lazy { requireContext().dpsToPixel(50) }

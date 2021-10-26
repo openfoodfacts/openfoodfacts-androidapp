@@ -102,12 +102,13 @@
             android:id="@+id/grey_line1"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginLeft="@dimen/spacing_small"
+            android:layout_marginStart="@dimen/spacing_small"
             android:layout_marginTop="@dimen/spacing_small"
-            android:layout_marginRight="@dimen/spacing_small"
+            android:layout_marginEnd="@dimen/spacing_small"
             android:background="@color/grey_400"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btnAddImageIngredients" />
+            app:layout_constraintTop_toBottomOf="@+id/btn_extract_ingredients" />
 
         <TextView
             android:id="@+id/section_ingredients_list"
@@ -119,6 +120,7 @@
             android:layout_marginTop="@dimen/spacing_small"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
+            android:labelFor="@id/ingredients_list"
             android:text="@string/ingredients_list"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -158,15 +160,16 @@
         <Button
             android:id="@+id/btn_extract_ingredients"
             style="@style/ButtonBorder"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
             android:text="@string/extract_ingredients"
             android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@id/ingredients_list"
-            app:layout_constraintEnd_toEndOf="@id/ingredients_list"
-            app:layout_constraintStart_toStartOf="@id/ingredients_list"
-            app:layout_constraintTop_toBottomOf="@id/traces"
-            app:layout_constraintTop_toTopOf="@id/ingredients_list"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnAddImageIngredients"
             tools:visibility="visible" />
 
         <ImageView
@@ -182,35 +185,39 @@
             tools:ignore="ContentDescription" />
 
         <ProgressBar
-            android:id="@+id/ocr_progress"
+            android:id="@+id/ocr_progress_spinner"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_margin="@dimen/spacing_small"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@id/ingredients_list"
+            app:layout_constraintBottom_toTopOf="@id/ocr_progress_text"
             app:layout_constraintEnd_toEndOf="@id/ingredients_list"
             app:layout_constraintStart_toStartOf="@id/ingredients_list"
             app:layout_constraintTop_toTopOf="@id/ingredients_list"
-            tools:visibility="visible" />
+            app:layout_constraintVertical_chainStyle="packed" />
 
         <TextView
             android:id="@+id/ocr_progress_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/spacing_small"
             android:text="@string/extracting_ingredients"
+            app:layout_constraintBottom_toBottomOf="@+id/ingredients_list"
+            app:layout_constraintEnd_toEndOf="@id/ocr_progress_spinner"
+            app:layout_constraintStart_toStartOf="@id/ocr_progress_spinner"
+            app:layout_constraintTop_toBottomOf="@id/ocr_progress_spinner" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/ocr_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="@id/ocr_progress"
-            app:layout_constraintStart_toStartOf="@id/ocr_progress"
-            app:layout_constraintTop_toBottomOf="@id/ocr_progress"
-            tools:visibility="visible" />
+            app:constraint_referenced_ids="ocr_progress_spinner,ocr_progress_text" />
 
         <Button
             android:id="@+id/btn_looks_good"
             style="@style/ButtonFlat.Green"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/spacing_small"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:layout_marginEnd="@dimen/spacing_small"
             android:text="@string/looksGood"
             android:textColor="@color/white"
             android:visibility="gone"
@@ -225,7 +232,8 @@
             style="@style/ButtonFlat.Red"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/spacing_small"
+            android:layout_marginStart="@dimen/spacing_small"
+            android:layout_marginTop="@dimen/spacing_small"
             android:text="@string/skip_ingredients"
             android:textColor="@color/white"
             android:visibility="gone"
@@ -251,7 +259,9 @@
             android:layout_height="1dp"
             android:layout_marginStart="@dimen/spacing_small"
             android:layout_marginTop="@dimen/spacing_small"
+            android:layout_marginEnd="@dimen/spacing_small"
             android:background="@color/grey_400"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btn_barrier" />
 
