@@ -1,902 +1,918 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_gravity="fill_vertical"
-    android:clipToPadding="false"
-    android:isScrollContainer="false"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".features.product.edit.nutrition.ProductEditNutritionFactsFragment">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <androidx.appcompat.widget.SwitchCompat
-            android:id="@+id/checkbox_no_nutrition_data"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginRight="@dimen/activity_horizontal_margin"
-            android:text="@string/nutrition_facts_not_specified"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    android:layout_height="match_parent"
+    tools:context=".features.product.edit.nutrition.ProductEditNutritionFactsFragment"
+    >
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_default="wrap"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btn_add"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0"
+        android:paddingTop="@dimen/spacing_small"
+        android:paddingBottom="16dp"
+        android:layout_gravity="fill_vertical"
+        android:clipToPadding="false"
+        android:isScrollContainer="false"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        >
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/nutrition_facts_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/checkbox_no_nutrition_data">
+            android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/section_nutrition_facts_picture"
-                style="@style/EditHeader"
-                android:layout_width="wrap_content"
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/checkbox_no_nutrition_data"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/activity_horizontal_margin"
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginTop="@dimen/spacing_small"
-                android:text="@string/nutrition_facts_picture"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:text="@string/nutrition_facts_not_specified"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
-                android:id="@+id/btnAddImageNutritionFacts"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_margin="@dimen/spacing_small"
-                android:background="?android:selectableItemBackground"
-                app:layout_constraintStart_toStartOf="@id/section_nutrition_facts_picture"
-                app:layout_constraintTop_toBottomOf="@id/section_nutrition_facts_picture"
-                app:srcCompat="@drawable/ic_add_a_photo_dark_48dp"
-                tools:ignore="ContentDescription" />
-
-            <Button
-                android:id="@+id/btnEditImageNutritionFacts"
-                style="@style/ButtonBorder"
-                android:layout_width="wrap_content"
-                android:layout_height="32dp"
-                android:layout_marginLeft="@dimen/padding_large"
-                android:layout_marginRight="@dimen/padding_large"
-                android:text="@string/update_image"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="@id/btnAddImageNutritionFacts"
-                app:layout_constraintStart_toEndOf="@id/btnAddImageNutritionFacts"
-                app:layout_constraintTop_toTopOf="@id/btnAddImageNutritionFacts" />
-
-            <ProgressBar
-                android:id="@+id/imageProgress"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_margin="@dimen/spacing_small"
-                android:visibility="gone"
-                app:layout_constraintStart_toStartOf="@id/section_nutrition_facts_picture"
-                app:layout_constraintTop_toBottomOf="@id/section_nutrition_facts_picture"
-                tools:visibility="visible" />
-
-            <TextView
-                android:id="@+id/imageProgressText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/spacing_small"
-                android:text="@string/toastSending"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="@id/imageProgress"
-                app:layout_constraintStart_toEndOf="@id/imageProgress"
-                app:layout_constraintTop_toTopOf="@id/imageProgress"
-                tools:visibility="visible" />
-
-            <View
-                android:id="@+id/grey_line1"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/nutrition_facts_layout"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginLeft="@dimen/spacing_small"
-                android:layout_marginTop="@dimen/spacing_small"
-                android:layout_marginRight="@dimen/spacing_small"
-                android:background="@color/grey_400"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/btnAddImageNutritionFacts" />
-
-            <TextView
-                android:id="@+id/section_nutrition_facts"
-                style="@style/EditHeader"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/activity_horizontal_margin"
-                android:layout_marginTop="@dimen/spacing_small"
-                android:text="@string/nutrition_facts"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/grey_line1" />
-
-            <RadioGroup
-                android:id="@+id/radio_group"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/activity_horizontal_margin"
-                android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@id/section_nutrition_facts"
-                app:layout_constraintTop_toBottomOf="@id/section_nutrition_facts">
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/checkbox_no_nutrition_data">
 
-                <RadioButton
-                    android:id="@+id/for100g_100ml"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/for_100g_100ml" />
-
-                <RadioButton
-                    android:id="@+id/per_serving"
+                <TextView
+                    android:id="@+id/section_nutrition_facts_picture"
+                    style="@style/EditHeader"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/activity_horizontal_margin"
                     android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                    android:text="@string/per_serving" />
-            </RadioGroup>
+                    android:layout_marginTop="@dimen/spacing_small"
+                    android:text="@string/nutrition_facts_picture"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/serving_size_til"
-                android:layout_width="0dp"
+                <ImageView
+                    android:id="@+id/btnAddImageNutritionFacts"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="@dimen/spacing_small"
+                    android:background="?android:selectableItemBackground"
+                    app:layout_constraintStart_toStartOf="@id/section_nutrition_facts_picture"
+                    app:layout_constraintTop_toBottomOf="@id/section_nutrition_facts_picture"
+                    app:srcCompat="@drawable/ic_add_a_photo_dark_48dp"
+                    tools:ignore="ContentDescription" />
+
+                <Button
+                    android:id="@+id/btnEditImageNutritionFacts"
+                    style="@style/ButtonBorder"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:layout_marginLeft="@dimen/padding_large"
+                    android:layout_marginRight="@dimen/padding_large"
+                    android:text="@string/update_image"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@id/btnAddImageNutritionFacts"
+                    app:layout_constraintStart_toEndOf="@id/btnAddImageNutritionFacts"
+                    app:layout_constraintTop_toTopOf="@id/btnAddImageNutritionFacts" />
+
+                <ProgressBar
+                    android:id="@+id/imageProgress"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="@dimen/spacing_small"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="@id/section_nutrition_facts_picture"
+                    app:layout_constraintTop_toBottomOf="@id/section_nutrition_facts_picture"
+                    tools:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/imageProgressText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/spacing_small"
+                    android:text="@string/toastSending"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@id/imageProgress"
+                    app:layout_constraintStart_toEndOf="@id/imageProgress"
+                    app:layout_constraintTop_toTopOf="@id/imageProgress"
+                    tools:visibility="visible" />
+
+                <View
+                    android:id="@+id/grey_line1"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="@dimen/spacing_small"
+                    android:layout_marginTop="@dimen/spacing_small"
+                    android:layout_marginRight="@dimen/spacing_small"
+                    android:background="@color/grey_400"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/btnAddImageNutritionFacts" />
+
+                <TextView
+                    android:id="@+id/section_nutrition_facts"
+                    style="@style/EditHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="@dimen/spacing_small"
+                    android:text="@string/nutrition_facts"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/grey_line1" />
+
+                <RadioGroup
+                    android:id="@+id/radio_group"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/section_nutrition_facts"
+                    app:layout_constraintTop_toBottomOf="@id/section_nutrition_facts">
+
+                    <RadioButton
+                        android:id="@+id/for100g_100ml"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/for_100g_100ml" />
+
+                    <RadioButton
+                        android:id="@+id/per_serving"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/activity_horizontal_margin"
+                        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                        android:text="@string/per_serving" />
+                </RadioGroup>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/serving_size_til"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/activity_horizontal_margin"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="@dimen/spacing_small"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    app:errorTextAppearance="@style/errorText"
+                    app:layout_constraintEnd_toStartOf="@id/spinner_serving_unit"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/radio_group">
+
+                    <openfoodfacts.github.scrachx.openfood.features.shared.views.CustomValidatingEditTextView
+                        android:id="@+id/serving_size"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:background="@drawable/bg_edittext_til"
+                        android:digits="0123456789.,"
+                        android:gravity="center_vertical"
+                        android:hint="@string/serving_size"
+                        android:inputType="number"
+                        android:nextFocusDown="@id/energy_kcal"
+                        app:attachedUnitSpinner="@id/spinner_serving_unit"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:parentTextInputLayout="@id/serving_size_til" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Spinner
+                    android:id="@+id/spinner_serving_unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="@dimen/top_margin_spinner_hint"
+                    android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:background="@drawable/spinner_weights_grey"
+                    android:entries="@array/nutrition_serving_weight_units"
+                    android:gravity="center_vertical"
+                    android:spinnerMode="dropdown"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/serving_size_til"
+                    app:layout_constraintTop_toTopOf="@id/serving_size_til" />
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/energy_kcal_til"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/activity_horizontal_margin"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="@dimen/spacing_small"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    app:errorTextAppearance="@style/errorText"
+                    app:layout_constraintEnd_toStartOf="@+id/energy_kcal_unit"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/serving_size_til">
+
+                    <openfoodfacts.github.scrachx.openfood.features.shared.views.CustomValidatingEditTextView
+                        android:id="@+id/energy_kcal"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:background="@drawable/bg_edittext_til"
+                        android:digits="0123456789.,"
+                        android:gravity="center_vertical"
+                        android:hint="@string/nutrition_energy_kcal"
+                        android:inputType="numberDecimal"
+                        android:nextFocusDown="@id/fat"
+                        android:singleLine="true"
+                        app:fieldName="energy-kcal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:parentTextInputLayout="@+id/energy_kcal_til" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/energy_kcal_unit"
+                    android:layout_width="0dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="@dimen/top_margin_spinner_hint"
+                    android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:gravity="start|center_vertical"
+                    android:text="@string/kcal"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/spinner_serving_unit"
+                    app:layout_constraintTop_toTopOf="@id/energy_kcal_til" />
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/energy_kj_til"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/activity_horizontal_margin"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="@dimen/spacing_small"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    app:errorTextAppearance="@style/errorText"
+                    app:layout_constraintEnd_toStartOf="@+id/energy_kj_unit"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/energy_kcal_til">
+
+                    <openfoodfacts.github.scrachx.openfood.features.shared.views.CustomValidatingEditTextView
+                        android:id="@+id/energy_kj"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:background="@drawable/bg_edittext_til"
+                        android:digits="0123456789.,"
+                        android:gravity="center_vertical"
+                        android:hint="@string/nutrition_energy_kj"
+                        android:inputType="numberDecimal"
+                        android:nextFocusDown="@id/fat"
+                        android:singleLine="true"
+                        app:fieldName="energy-kj"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:parentTextInputLayout="@+id/energy_kcal_til" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/energy_kj_unit"
+                    android:layout_width="0dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="@dimen/top_margin_spinner_hint"
+                    android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                    android:gravity="start|center_vertical"
+                    android:text="@string/kj"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/energy_kcal_unit"
+                    app:layout_constraintTop_toTopOf="@+id/energy_kj_til" />
+
+                <Spinner
+                    android:id="@+id/spinner_fat_comp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="@dimen/top_margin_spinner_hint"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:background="@drawable/spinner_weights_grey"
+                    android:entries="@array/nutrition_comparison_units"
+                    android:gravity="center_vertical"
+                    android:spinnerMode="dropdown"
+                    app:layout_constraintEnd_toStartOf="@id/fat_til"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/fat_til" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/fat_til"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_small"
+                    app:errorTextAppearance="@style/errorText"
+                    app:layout_constraintEnd_toStartOf="@id/spinner_fat_unit"
+                    app:layout_constraintStart_toEndOf="@id/spinner_fat_comp"
+                    app:layout_constraintTop_toBottomOf="@id/energy_kj_til">
+
+                    <openfoodfacts.github.scrachx.openfood.features.shared.views.CustomValidatingEditTextView
+                        android:id="@+id/fat"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:background="@drawable/bg_edittext_til"
+                        android:digits="0123456789.,"
+                        android:gravity="center_vertical"
+                        android:hint="@string/nutrition_fat"
+                        android:inputType="numberDecimal"
+                        android:nextFocusDown="@id/saturated_fat"
+                        android:singleLine="true"
+                        app:attachedModSpinner="@id/spinner_fat_comp"
+                        app:attachedUnitSpinner="@id/spinner_fat_unit"
+                        app:fieldName="fat"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:parentTextInputLayout="@+id/fat_til" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Spinner
+                    android:id="@+id/spinner_fat_unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="@dimen/padding_short"
+                    android:layout_marginLeft="@dimen/padding_short"
+                    android:layout_marginTop="@dimen/top_margin_spinner_hint"
+                    android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:background="@drawable/spinner_weights_grey"
+                    android:entries="@array/nutrition_weight_units"
+                    android:gravity="center_vertical"
+                    android:spinnerMode="dropdown"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/fat_til"
+                    app:layout_constraintTop_toTopOf="@id/fat_til" />
+
+
+                <Spinner
+                    android:id="@+id/spinner_saturated_fat_comp"
+                    android:layout_width="wrap_content"
+
+                    android:layout_height="35dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="@dimen/top_margin_spinner_hint"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:background="@drawable/spinner_weights_grey"
+                    android:entries="@array/nutrition_comparison_units"
+                    android:gravity="center_vertical"
+                    android:spinnerMode="dropdown"
+                    app:layout_constraintEnd_toStartOf="@id/saturated_fat_til"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/saturated_fat_til" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/saturated_fat_til"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_small"
+                    app:errorTextAppearance="@style/errorText"
+                    app:layout_constraintEnd_toStartOf="@id/spinner_saturated_fat_unit"
+                    app:layout_constraintStart_toEndOf="@id/spinner_saturated_fat_comp"
+                    app:layout_constraintTop_toBottomOf="@id/fat_til">
+
+                    <openfoodfacts.github.scrachx.openfood.features.shared.views.CustomValidatingEditTextView
+                        android:id="@+id/saturated_fat"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:background="@drawable/bg_edittext_til"
+                        android:digits="0123456789.,"
+                        android:gravity="center_vertical"
+                        android:hint="@string/nutrition_satured_fat"
+                        android:inputType="numberDecimal"
+                        android:nextFocusDown="@id/carbohydrates"
+                        android:singleLine="true"
+                        app:attachedModSpinner="@id/spinner_saturated_fat_comp"
+                        app:attachedUnitSpinner="@id/spinner_saturated_fat_unit"
+                        app:fieldName="saturated-fat"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:parentTextInputLayout="@+id/saturated_fat_til" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Spinner
+                    android:id="@+id/spinner_saturated_fat_unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="@dimen/padding_short"
+                    android:layout_marginLeft="@dimen/padding_short"
+                    android:layout_marginTop="@dimen/top_margin_spinner_hint"
+                    android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:background="@drawable/spinner_weights_grey"
+                    android:entries="@array/nutrition_weight_units"
+                    android:gravity="center_vertical"
+                    android:spinnerMode="dropdown"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/saturated_fat_til"
+                    app:layout_constraintTop_toTopOf="@id/saturated_fat_til" />
+
+
+                <Spinner
+                    android:id="@+id/spinner_carbohydrates_comp"
+                    android:layout_width="wrap_content"
+
+                    android:layout_height="35dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="@dimen/top_margin_spinner_hint"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:background="@drawable/spinner_weights_grey"
+                    android:entries="@array/nutrition_comparison_units"
+                    android:gravity="center_vertical"
+                    android:spinnerMode="dropdown"
+                    app:layout_constraintEnd_toStartOf="@id/carbohydrates_til"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/carbohydrates_til" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/carbohydrates_til"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_small"
+                    app:errorTextAppearance="@style/errorText"
+                    app:layout_constraintEnd_toStartOf="@+id/spinner_carbohydrates_unit"
+                    app:layout_constraintStart_toEndOf="@+id/spinner_carbohydrates_comp"
+                    app:layout_constraintTop_toBottomOf="@id/saturated_fat_til">
+
+                    <openfoodfacts.github.scrachx.openfood.features.shared.views.CustomValidatingEditTextView
+                        android:id="@+id/carbohydrates"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:background="@drawable/bg_edittext_til"
+                        android:digits="0123456789.,"
+                        android:gravity="center_vertical"
+                        android:hint="@string/nutrition_carbohydrate"
+                        android:inputType="numberDecimal"
+                        android:nextFocusDown="@id/sugars"
+                        android:singleLine="true"
+                        app:attachedModSpinner="@id/spinner_carbohydrates_comp"
+                        app:attachedUnitSpinner="@id/spinner_carbohydrates_unit"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:parentTextInputLayout="@+id/carbohydrates_til" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Spinner
+                    android:id="@+id/spinner_carbohydrates_unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="@dimen/padding_short"
+                    android:layout_marginLeft="@dimen/padding_short"
+                    android:layout_marginTop="@dimen/top_margin_spinner_hint"
+                    android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:background="@drawable/spinner_weights_grey"
+                    android:entries="@array/nutrition_weight_units"
+                    android:gravity="center_vertical"
+                    android:spinnerMode="dropdown"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/carbohydrates_til"
+                    app:layout_constraintTop_toTopOf="@id/carbohydrates_til" />
+
+
+                <Spinner
+                    android:id="@+id/spinner_sugars_comp"
+                    android:layout_width="wrap_content"
+
+                    android:layout_height="35dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="@dimen/top_margin_spinner_hint"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:background="@drawable/spinner_weights_grey"
+                    android:entries="@array/nutrition_comparison_units"
+                    android:gravity="center_vertical"
+                    android:spinnerMode="dropdown"
+                    app:layout_constraintEnd_toStartOf="@id/sugars_til"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/sugars_til" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/sugars_til"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_small"
+                    app:errorTextAppearance="@style/errorText"
+                    app:layout_constraintEnd_toStartOf="@+id/spinner_sugars_unit"
+                    app:layout_constraintStart_toEndOf="@+id/spinner_sugars_comp"
+                    app:layout_constraintTop_toBottomOf="@id/carbohydrates_til">
+
+                    <openfoodfacts.github.scrachx.openfood.features.shared.views.CustomValidatingEditTextView
+                        android:id="@+id/sugars"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:background="@drawable/bg_edittext_til"
+                        android:digits="0123456789.,"
+                        android:gravity="center_vertical"
+                        android:hint="@string/nutrition_sugars"
+                        android:inputType="numberDecimal"
+                        android:nextFocusDown="@id/fiber"
+                        android:singleLine="true"
+                        app:attachedModSpinner="@+id/spinner_sugars_comp"
+                        app:attachedUnitSpinner="@+id/spinner_sugars_unit"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:parentTextInputLayout="@+id/sugars_til" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Spinner
+                    android:id="@+id/spinner_sugars_unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="@dimen/padding_short"
+                    android:layout_marginLeft="@dimen/padding_short"
+                    android:layout_marginTop="@dimen/top_margin_spinner_hint"
+                    android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:background="@drawable/spinner_weights_grey"
+                    android:entries="@array/nutrition_weight_units"
+                    android:gravity="center_vertical"
+                    android:spinnerMode="dropdown"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/sugars_til"
+                    app:layout_constraintTop_toTopOf="@id/sugars_til" />
+
+
+                <Spinner
+                    android:id="@+id/spinner_fiber_comp"
+                    android:layout_width="wrap_content"
+
+                    android:layout_height="35dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="@dimen/top_margin_spinner_hint"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:background="@drawable/spinner_weights_grey"
+                    android:entries="@array/nutrition_comparison_units"
+                    android:gravity="center_vertical"
+                    android:spinnerMode="dropdown"
+                    app:layout_constraintEnd_toStartOf="@id/fiber_til"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/fiber_til" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/fiber_til"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_small"
+                    app:errorTextAppearance="@style/errorText"
+                    app:layout_constraintEnd_toStartOf="@+id/spinner_fiber_unit"
+                    app:layout_constraintStart_toEndOf="@+id/spinner_fiber_comp"
+                    app:layout_constraintTop_toBottomOf="@id/sugars_til">
+
+                    <openfoodfacts.github.scrachx.openfood.features.shared.views.CustomValidatingEditTextView
+                        android:id="@+id/fiber"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:background="@drawable/bg_edittext_til"
+                        android:digits="0123456789.,"
+                        android:gravity="center_vertical"
+                        android:hint="@string/nutrition_fiber"
+                        android:inputType="numberDecimal"
+                        android:nextFocusDown="@id/proteins"
+                        android:singleLine="true"
+                        app:attachedModSpinner="@+id/spinner_fiber_comp"
+                        app:attachedUnitSpinner="@+id/spinner_fiber_unit"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:parentTextInputLayout="@+id/fiber_til" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Spinner
+                    android:id="@+id/spinner_fiber_unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="@dimen/padding_short"
+                    android:layout_marginLeft="@dimen/padding_short"
+                    android:layout_marginTop="@dimen/top_margin_spinner_hint"
+                    android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:background="@drawable/spinner_weights_grey"
+                    android:entries="@array/nutrition_weight_units"
+                    android:gravity="center_vertical"
+                    android:spinnerMode="dropdown"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/fiber_til"
+                    app:layout_constraintTop_toTopOf="@id/fiber_til" />
+
+
+                <Spinner
+                    android:id="@+id/spinner_proteins_comp"
+                    android:layout_width="wrap_content"
+
+                    android:layout_height="35dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="@dimen/top_margin_spinner_hint"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:background="@drawable/spinner_weights_grey"
+                    android:entries="@array/nutrition_comparison_units"
+                    android:gravity="center_vertical"
+                    android:spinnerMode="dropdown"
+                    app:layout_constraintEnd_toStartOf="@id/proteins_til"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/proteins_til" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/proteins_til"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_small"
+                    app:errorTextAppearance="@style/errorText"
+                    app:layout_constraintEnd_toStartOf="@+id/spinner_proteins_unit"
+                    app:layout_constraintStart_toEndOf="@+id/spinner_proteins_comp"
+                    app:layout_constraintTop_toBottomOf="@id/fiber_til">
+
+                    <openfoodfacts.github.scrachx.openfood.features.shared.views.CustomValidatingEditTextView
+                        android:id="@+id/proteins"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:background="@drawable/bg_edittext_til"
+                        android:digits="0123456789.,"
+                        android:gravity="center_vertical"
+                        android:hint="@string/nutrition_proteins"
+                        android:inputType="numberDecimal"
+                        android:nextFocusDown="@id/salt"
+                        android:singleLine="true"
+                        app:attachedModSpinner="@+id/spinner_proteins_comp"
+                        app:attachedUnitSpinner="@+id/spinner_proteins_unit"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:parentTextInputLayout="@+id/proteins_til" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Spinner
+                    android:id="@+id/spinner_proteins_unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="@dimen/padding_short"
+                    android:layout_marginLeft="@dimen/padding_short"
+                    android:layout_marginTop="@dimen/top_margin_spinner_hint"
+                    android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:background="@drawable/spinner_weights_grey"
+                    android:entries="@array/nutrition_weight_units"
+                    android:gravity="center_vertical"
+                    android:spinnerMode="dropdown"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/proteins_til"
+                    app:layout_constraintTop_toTopOf="@id/proteins_til" />
+
+
+                <Spinner
+                    android:id="@+id/spinner_salt_comp"
+                    android:layout_width="wrap_content"
+
+                    android:layout_height="35dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="@dimen/top_margin_spinner_hint"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:background="@drawable/spinner_weights_grey"
+                    android:entries="@array/nutrition_comparison_units"
+                    android:gravity="center_vertical"
+                    android:spinnerMode="dropdown"
+                    app:layout_constraintEnd_toStartOf="@id/salt_til"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/salt_til" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/salt_til"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_small"
+                    app:errorTextAppearance="@style/errorText"
+                    app:layout_constraintEnd_toStartOf="@+id/spinner_salt_unit"
+                    app:layout_constraintStart_toEndOf="@+id/spinner_salt_comp"
+                    app:layout_constraintTop_toBottomOf="@id/proteins_til">
+
+                    <openfoodfacts.github.scrachx.openfood.features.shared.views.CustomValidatingEditTextView
+                        android:id="@+id/salt"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:background="@drawable/bg_edittext_til"
+                        android:digits="0123456789.,"
+                        android:gravity="center_vertical"
+                        android:hint="@string/nutrition_salt"
+                        android:inputType="numberDecimal"
+                        android:nextFocusDown="@id/sodium"
+                        android:singleLine="true"
+                        app:attachedModSpinner="@+id/spinner_salt_comp"
+                        app:attachedUnitSpinner="@+id/spinner_salt_unit"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:parentTextInputLayout="@+id/salt_til" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Spinner
+                    android:id="@+id/spinner_salt_unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="@dimen/padding_short"
+                    android:layout_marginLeft="@dimen/padding_short"
+                    android:layout_marginTop="@dimen/top_margin_spinner_hint"
+                    android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:background="@drawable/spinner_weights_grey"
+                    android:entries="@array/nutrition_weight_units"
+                    android:gravity="center_vertical"
+                    android:spinnerMode="dropdown"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/salt_til"
+                    app:layout_constraintTop_toTopOf="@id/salt_til" />
+
+
+                <Spinner
+                    android:id="@+id/spinner_sodium_comp"
+                    android:layout_width="wrap_content"
+
+                    android:layout_height="35dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="@dimen/top_margin_spinner_hint"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:background="@drawable/spinner_weights_grey"
+                    android:entries="@array/nutrition_comparison_units"
+                    android:gravity="center_vertical"
+                    android:spinnerMode="dropdown"
+                    app:layout_constraintEnd_toStartOf="@id/sodium_til"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/sodium_til" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/sodium_til"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_small"
+                    app:errorTextAppearance="@style/errorText"
+                    app:layout_constraintEnd_toStartOf="@+id/spinner_sodium_unit"
+                    app:layout_constraintStart_toEndOf="@+id/spinner_sodium_comp"
+                    app:layout_constraintTop_toBottomOf="@id/salt_til">
+
+                    <openfoodfacts.github.scrachx.openfood.features.shared.views.CustomValidatingEditTextView
+                        android:id="@+id/sodium"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:background="@drawable/bg_edittext_til"
+                        android:digits="0123456789.,"
+                        android:gravity="center_vertical"
+                        android:hint="@string/nutrition_sodium"
+                        android:inputType="numberDecimal"
+                        android:nextFocusDown="@id/alcohol"
+                        android:singleLine="true"
+                        app:attachedModSpinner="@id/spinner_sodium_comp"
+                        app:attachedUnitSpinner="@id/spinner_sodium_unit"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:parentTextInputLayout="@+id/sodium_til" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Spinner
+                    android:id="@+id/spinner_sodium_unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="@dimen/padding_short"
+                    android:layout_marginLeft="@dimen/padding_short"
+                    android:layout_marginTop="@dimen/top_margin_spinner_hint"
+                    android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:background="@drawable/spinner_weights_grey"
+                    android:entries="@array/nutrition_weight_units"
+                    android:gravity="center_vertical"
+                    android:spinnerMode="dropdown"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/sodium_til"
+                    app:layout_constraintTop_toTopOf="@id/sodium_til" />
+
+                <Spinner
+                    android:id="@+id/spinner_alcohol_comp"
+                    android:layout_width="wrap_content"
+
+                    android:layout_height="35dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="@dimen/top_margin_spinner_hint"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:background="@drawable/spinner_weights_grey"
+                    android:entries="@array/nutrition_comparison_units"
+                    android:gravity="center_vertical"
+                    android:spinnerMode="dropdown"
+                    app:layout_constraintEnd_toStartOf="@id/alcohol_til"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/alcohol_til" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/alcohol_til"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_small"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    app:errorTextAppearance="@style/errorText"
+                    app:layout_constraintEnd_toStartOf="@+id/text_alcohol_unit"
+                    app:layout_constraintStart_toEndOf="@+id/spinner_alcohol_comp"
+                    app:layout_constraintTop_toBottomOf="@id/sodium_til">
+
+                    <openfoodfacts.github.scrachx.openfood.features.shared.views.CustomValidatingEditTextView
+                        android:id="@+id/alcohol"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:background="@drawable/bg_edittext_til"
+                        android:digits="0123456789.,"
+                        android:gravity="center_vertical"
+                        android:hint="@string/nutrition_alcohol"
+                        android:inputType="numberDecimal"
+                        android:singleLine="true"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:parentTextInputLayout="@+id/alcohol_til" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/text_alcohol_unit"
+                    android:layout_width="0dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="@dimen/top_margin_spinner_hint"
+                    android:gravity="center"
+                    android:text="@string/alcohol_unit"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@id/alcohol_til"
+                    app:layout_constraintEnd_toEndOf="@+id/spinner_sodium_unit"
+                    app:layout_constraintStart_toStartOf="@+id/spinner_sodium_unit"
+                    app:layout_constraintTop_toTopOf="@id/alcohol_til" />
+
+                <LinearLayout
+                    android:id="@+id/table_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/alcohol_til" />
+
+                <Button
+                    android:id="@+id/btn_add_a_nutrient"
+                    style="@style/ButtonBorder"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_small"
+                    android:drawablePadding="@dimen/spacing_tiny"
+                    android:text="@string/add_a_nutrient"
+                    app:drawableLeftCompat="@drawable/ic_add_box_blue_18dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/table_layout" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/global_validation_msg"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/activity_horizontal_margin"
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginTop="@dimen/spacing_small"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                app:errorTextAppearance="@style/errorText"
-                app:layout_constraintEnd_toStartOf="@id/spinner_serving_unit"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/radio_group">
-
-                <openfoodfacts.github.scrachx.openfood.features.shared.views.CustomValidatingEditTextView
-                    android:id="@+id/serving_size"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:background="@drawable/bg_edittext_til"
-                    android:digits="0123456789.,"
-                    android:gravity="center_vertical"
-                    android:hint="@string/serving_size"
-                    android:inputType="number"
-                    android:nextFocusDown="@id/energy_kcal"
-                    app:attachedUnitSpinner="@id/spinner_serving_unit"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:parentTextInputLayout="@id/serving_size_til" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <Spinner
-                android:id="@+id/spinner_serving_unit"
-                android:layout_width="wrap_content"
-                android:layout_height="35dp"
-                android:layout_marginTop="@dimen/top_margin_spinner_hint"
-                android:layout_marginEnd="@dimen/activity_horizontal_margin"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:background="@drawable/spinner_weights_grey"
-                android:entries="@array/nutrition_serving_weight_units"
-                android:gravity="center_vertical"
-                android:spinnerMode="dropdown"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/serving_size_til"
-                app:layout_constraintTop_toTopOf="@id/serving_size_til" />
-
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/energy_kcal_til"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/activity_horizontal_margin"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginTop="@dimen/spacing_small"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                app:errorTextAppearance="@style/errorText"
-                app:layout_constraintEnd_toStartOf="@+id/energy_kcal_unit"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/serving_size_til">
-
-                <openfoodfacts.github.scrachx.openfood.features.shared.views.CustomValidatingEditTextView
-                    android:id="@+id/energy_kcal"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:background="@drawable/bg_edittext_til"
-                    android:digits="0123456789.,"
-                    android:gravity="center_vertical"
-                    android:hint="@string/nutrition_energy_kcal"
-                    android:inputType="numberDecimal"
-                    android:nextFocusDown="@id/fat"
-                    android:singleLine="true"
-                    app:fieldName="energy-kcal"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:parentTextInputLayout="@+id/energy_kcal_til" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <TextView
-                android:id="@+id/energy_kcal_unit"
-                android:layout_width="0dp"
-                android:layout_height="35dp"
-                android:layout_marginTop="@dimen/top_margin_spinner_hint"
-                android:layout_marginEnd="@dimen/activity_horizontal_margin"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:gravity="start|center_vertical"
-                android:text="@string/kcal"
-                android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/spinner_serving_unit"
-                app:layout_constraintTop_toTopOf="@id/energy_kcal_til" />
-
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/energy_kj_til"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="@dimen/activity_horizontal_margin"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginTop="@dimen/spacing_small"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                app:errorTextAppearance="@style/errorText"
-                app:layout_constraintEnd_toStartOf="@+id/energy_kj_unit"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/energy_kcal_til">
-
-                <openfoodfacts.github.scrachx.openfood.features.shared.views.CustomValidatingEditTextView
-                    android:id="@+id/energy_kj"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:background="@drawable/bg_edittext_til"
-                    android:digits="0123456789.,"
-                    android:gravity="center_vertical"
-                    android:hint="@string/nutrition_energy_kj"
-                    android:inputType="numberDecimal"
-                    android:nextFocusDown="@id/fat"
-                    android:singleLine="true"
-                    app:fieldName="energy-kj"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:parentTextInputLayout="@+id/energy_kcal_til" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <TextView
-                android:id="@+id/energy_kj_unit"
-                android:layout_width="0dp"
-                android:layout_height="35dp"
-                android:layout_marginTop="@dimen/top_margin_spinner_hint"
-                android:layout_marginEnd="@dimen/activity_horizontal_margin"
-                android:gravity="start|center_vertical"
-                android:text="@string/kj"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/energy_kcal_unit"
-                app:layout_constraintTop_toTopOf="@+id/energy_kj_til" />
-
-            <Spinner
-                android:id="@+id/spinner_fat_comp"
-                android:layout_width="wrap_content"
-                android:layout_height="35dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginTop="@dimen/top_margin_spinner_hint"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:background="@drawable/spinner_weights_grey"
-                android:entries="@array/nutrition_comparison_units"
-                android:gravity="center_vertical"
-                android:spinnerMode="dropdown"
-                app:layout_constraintEnd_toStartOf="@id/fat_til"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/fat_til" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/fat_til"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_small"
-                app:errorTextAppearance="@style/errorText"
-                app:layout_constraintEnd_toStartOf="@id/spinner_fat_unit"
-                app:layout_constraintStart_toEndOf="@id/spinner_fat_comp"
-                app:layout_constraintTop_toBottomOf="@id/energy_kj_til">
-
-                <openfoodfacts.github.scrachx.openfood.features.shared.views.CustomValidatingEditTextView
-                    android:id="@+id/fat"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:background="@drawable/bg_edittext_til"
-                    android:digits="0123456789.,"
-                    android:gravity="center_vertical"
-                    android:hint="@string/nutrition_fat"
-                    android:inputType="numberDecimal"
-                    android:nextFocusDown="@id/saturated_fat"
-                    android:singleLine="true"
-                    app:attachedModSpinner="@id/spinner_fat_comp"
-                    app:attachedUnitSpinner="@id/spinner_fat_unit"
-                    app:fieldName="fat"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:parentTextInputLayout="@+id/fat_til" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <Spinner
-                android:id="@+id/spinner_fat_unit"
-                android:layout_width="wrap_content"
-                android:layout_height="35dp"
-                android:layout_marginStart="@dimen/padding_short"
-                android:layout_marginLeft="@dimen/padding_short"
-                android:layout_marginTop="@dimen/top_margin_spinner_hint"
-                android:layout_marginEnd="@dimen/activity_horizontal_margin"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:background="@drawable/spinner_weights_grey"
-                android:entries="@array/nutrition_weight_units"
-                android:gravity="center_vertical"
-                android:spinnerMode="dropdown"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/fat_til"
-                app:layout_constraintTop_toTopOf="@id/fat_til" />
-
-
-            <Spinner
-                android:id="@+id/spinner_saturated_fat_comp"
-                android:layout_width="wrap_content"
-
-                android:layout_height="35dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginTop="@dimen/top_margin_spinner_hint"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:background="@drawable/spinner_weights_grey"
-                android:entries="@array/nutrition_comparison_units"
-                android:gravity="center_vertical"
-                android:spinnerMode="dropdown"
-                app:layout_constraintEnd_toStartOf="@id/saturated_fat_til"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/saturated_fat_til" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/saturated_fat_til"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_small"
-                app:errorTextAppearance="@style/errorText"
-                app:layout_constraintEnd_toStartOf="@id/spinner_saturated_fat_unit"
-                app:layout_constraintStart_toEndOf="@id/spinner_saturated_fat_comp"
-                app:layout_constraintTop_toBottomOf="@id/fat_til">
-
-                <openfoodfacts.github.scrachx.openfood.features.shared.views.CustomValidatingEditTextView
-                    android:id="@+id/saturated_fat"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:background="@drawable/bg_edittext_til"
-                    android:digits="0123456789.,"
-                    android:gravity="center_vertical"
-                    android:hint="@string/nutrition_satured_fat"
-                    android:inputType="numberDecimal"
-                    android:nextFocusDown="@id/carbohydrates"
-                    android:singleLine="true"
-                    app:attachedModSpinner="@id/spinner_saturated_fat_comp"
-                    app:attachedUnitSpinner="@id/spinner_saturated_fat_unit"
-                    app:fieldName="saturated-fat"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:parentTextInputLayout="@+id/saturated_fat_til" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <Spinner
-                android:id="@+id/spinner_saturated_fat_unit"
-                android:layout_width="wrap_content"
-                android:layout_height="35dp"
-                android:layout_marginStart="@dimen/padding_short"
-                android:layout_marginLeft="@dimen/padding_short"
-                android:layout_marginTop="@dimen/top_margin_spinner_hint"
-                android:layout_marginEnd="@dimen/activity_horizontal_margin"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:background="@drawable/spinner_weights_grey"
-                android:entries="@array/nutrition_weight_units"
-                android:gravity="center_vertical"
-                android:spinnerMode="dropdown"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/saturated_fat_til"
-                app:layout_constraintTop_toTopOf="@id/saturated_fat_til" />
-
-
-            <Spinner
-                android:id="@+id/spinner_carbohydrates_comp"
-                android:layout_width="wrap_content"
-
-                android:layout_height="35dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginTop="@dimen/top_margin_spinner_hint"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:background="@drawable/spinner_weights_grey"
-                android:entries="@array/nutrition_comparison_units"
-                android:gravity="center_vertical"
-                android:spinnerMode="dropdown"
-                app:layout_constraintEnd_toStartOf="@id/carbohydrates_til"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/carbohydrates_til" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/carbohydrates_til"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_small"
-                app:errorTextAppearance="@style/errorText"
-                app:layout_constraintEnd_toStartOf="@+id/spinner_carbohydrates_unit"
-                app:layout_constraintStart_toEndOf="@+id/spinner_carbohydrates_comp"
-                app:layout_constraintTop_toBottomOf="@id/saturated_fat_til">
-
-                <openfoodfacts.github.scrachx.openfood.features.shared.views.CustomValidatingEditTextView
-                    android:id="@+id/carbohydrates"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:background="@drawable/bg_edittext_til"
-                    android:digits="0123456789.,"
-                    android:gravity="center_vertical"
-                    android:hint="@string/nutrition_carbohydrate"
-                    android:inputType="numberDecimal"
-                    android:nextFocusDown="@id/sugars"
-                    android:singleLine="true"
-                    app:attachedModSpinner="@id/spinner_carbohydrates_comp"
-                    app:attachedUnitSpinner="@id/spinner_carbohydrates_unit"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:parentTextInputLayout="@+id/carbohydrates_til" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <Spinner
-                android:id="@+id/spinner_carbohydrates_unit"
-                android:layout_width="wrap_content"
-                android:layout_height="35dp"
-                android:layout_marginStart="@dimen/padding_short"
-                android:layout_marginLeft="@dimen/padding_short"
-                android:layout_marginTop="@dimen/top_margin_spinner_hint"
-                android:layout_marginEnd="@dimen/activity_horizontal_margin"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:background="@drawable/spinner_weights_grey"
-                android:entries="@array/nutrition_weight_units"
-                android:gravity="center_vertical"
-                android:spinnerMode="dropdown"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/carbohydrates_til"
-                app:layout_constraintTop_toTopOf="@id/carbohydrates_til" />
-
-
-            <Spinner
-                android:id="@+id/spinner_sugars_comp"
-                android:layout_width="wrap_content"
-
-                android:layout_height="35dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginTop="@dimen/top_margin_spinner_hint"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:background="@drawable/spinner_weights_grey"
-                android:entries="@array/nutrition_comparison_units"
-                android:gravity="center_vertical"
-                android:spinnerMode="dropdown"
-                app:layout_constraintEnd_toStartOf="@id/sugars_til"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/sugars_til" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/sugars_til"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_small"
-                app:errorTextAppearance="@style/errorText"
-                app:layout_constraintEnd_toStartOf="@+id/spinner_sugars_unit"
-                app:layout_constraintStart_toEndOf="@+id/spinner_sugars_comp"
-                app:layout_constraintTop_toBottomOf="@id/carbohydrates_til">
-
-                <openfoodfacts.github.scrachx.openfood.features.shared.views.CustomValidatingEditTextView
-                    android:id="@+id/sugars"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:background="@drawable/bg_edittext_til"
-                    android:digits="0123456789.,"
-                    android:gravity="center_vertical"
-                    android:hint="@string/nutrition_sugars"
-                    android:inputType="numberDecimal"
-                    android:nextFocusDown="@id/fiber"
-                    android:singleLine="true"
-                    app:attachedModSpinner="@+id/spinner_sugars_comp"
-                    app:attachedUnitSpinner="@+id/spinner_sugars_unit"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:parentTextInputLayout="@+id/sugars_til" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <Spinner
-                android:id="@+id/spinner_sugars_unit"
-                android:layout_width="wrap_content"
-                android:layout_height="35dp"
-                android:layout_marginStart="@dimen/padding_short"
-                android:layout_marginLeft="@dimen/padding_short"
-                android:layout_marginTop="@dimen/top_margin_spinner_hint"
-                android:layout_marginEnd="@dimen/activity_horizontal_margin"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:background="@drawable/spinner_weights_grey"
-                android:entries="@array/nutrition_weight_units"
-                android:gravity="center_vertical"
-                android:spinnerMode="dropdown"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/sugars_til"
-                app:layout_constraintTop_toTopOf="@id/sugars_til" />
-
-
-            <Spinner
-                android:id="@+id/spinner_fiber_comp"
-                android:layout_width="wrap_content"
-
-                android:layout_height="35dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginTop="@dimen/top_margin_spinner_hint"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:background="@drawable/spinner_weights_grey"
-                android:entries="@array/nutrition_comparison_units"
-                android:gravity="center_vertical"
-                android:spinnerMode="dropdown"
-                app:layout_constraintEnd_toStartOf="@id/fiber_til"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/fiber_til" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/fiber_til"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_small"
-                app:errorTextAppearance="@style/errorText"
-                app:layout_constraintEnd_toStartOf="@+id/spinner_fiber_unit"
-                app:layout_constraintStart_toEndOf="@+id/spinner_fiber_comp"
-                app:layout_constraintTop_toBottomOf="@id/sugars_til">
-
-                <openfoodfacts.github.scrachx.openfood.features.shared.views.CustomValidatingEditTextView
-                    android:id="@+id/fiber"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:background="@drawable/bg_edittext_til"
-                    android:digits="0123456789.,"
-                    android:gravity="center_vertical"
-                    android:hint="@string/nutrition_fiber"
-                    android:inputType="numberDecimal"
-                    android:nextFocusDown="@id/proteins"
-                    android:singleLine="true"
-                    app:attachedModSpinner="@+id/spinner_fiber_comp"
-                    app:attachedUnitSpinner="@+id/spinner_fiber_unit"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:parentTextInputLayout="@+id/fiber_til" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <Spinner
-                android:id="@+id/spinner_fiber_unit"
-                android:layout_width="wrap_content"
-                android:layout_height="35dp"
-                android:layout_marginStart="@dimen/padding_short"
-                android:layout_marginLeft="@dimen/padding_short"
-                android:layout_marginTop="@dimen/top_margin_spinner_hint"
-                android:layout_marginEnd="@dimen/activity_horizontal_margin"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:background="@drawable/spinner_weights_grey"
-                android:entries="@array/nutrition_weight_units"
-                android:gravity="center_vertical"
-                android:spinnerMode="dropdown"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/fiber_til"
-                app:layout_constraintTop_toTopOf="@id/fiber_til" />
-
-
-            <Spinner
-                android:id="@+id/spinner_proteins_comp"
-                android:layout_width="wrap_content"
-
-                android:layout_height="35dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginTop="@dimen/top_margin_spinner_hint"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:background="@drawable/spinner_weights_grey"
-                android:entries="@array/nutrition_comparison_units"
-                android:gravity="center_vertical"
-                android:spinnerMode="dropdown"
-                app:layout_constraintEnd_toStartOf="@id/proteins_til"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/proteins_til" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/proteins_til"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_small"
-                app:errorTextAppearance="@style/errorText"
-                app:layout_constraintEnd_toStartOf="@+id/spinner_proteins_unit"
-                app:layout_constraintStart_toEndOf="@+id/spinner_proteins_comp"
-                app:layout_constraintTop_toBottomOf="@id/fiber_til">
-
-                <openfoodfacts.github.scrachx.openfood.features.shared.views.CustomValidatingEditTextView
-                    android:id="@+id/proteins"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:background="@drawable/bg_edittext_til"
-                    android:digits="0123456789.,"
-                    android:gravity="center_vertical"
-                    android:hint="@string/nutrition_proteins"
-                    android:inputType="numberDecimal"
-                    android:nextFocusDown="@id/salt"
-                    android:singleLine="true"
-                    app:attachedModSpinner="@+id/spinner_proteins_comp"
-                    app:attachedUnitSpinner="@+id/spinner_proteins_unit"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:parentTextInputLayout="@+id/proteins_til" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <Spinner
-                android:id="@+id/spinner_proteins_unit"
-                android:layout_width="wrap_content"
-                android:layout_height="35dp"
-                android:layout_marginStart="@dimen/padding_short"
-                android:layout_marginLeft="@dimen/padding_short"
-                android:layout_marginTop="@dimen/top_margin_spinner_hint"
-                android:layout_marginEnd="@dimen/activity_horizontal_margin"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:background="@drawable/spinner_weights_grey"
-                android:entries="@array/nutrition_weight_units"
-                android:gravity="center_vertical"
-                android:spinnerMode="dropdown"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/proteins_til"
-                app:layout_constraintTop_toTopOf="@id/proteins_til" />
-
-
-            <Spinner
-                android:id="@+id/spinner_salt_comp"
-                android:layout_width="wrap_content"
-
-                android:layout_height="35dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginTop="@dimen/top_margin_spinner_hint"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:background="@drawable/spinner_weights_grey"
-                android:entries="@array/nutrition_comparison_units"
-                android:gravity="center_vertical"
-                android:spinnerMode="dropdown"
-                app:layout_constraintEnd_toStartOf="@id/salt_til"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/salt_til" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/salt_til"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_small"
-                app:errorTextAppearance="@style/errorText"
-                app:layout_constraintEnd_toStartOf="@+id/spinner_salt_unit"
-                app:layout_constraintStart_toEndOf="@+id/spinner_salt_comp"
-                app:layout_constraintTop_toBottomOf="@id/proteins_til">
-
-                <openfoodfacts.github.scrachx.openfood.features.shared.views.CustomValidatingEditTextView
-                    android:id="@+id/salt"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:background="@drawable/bg_edittext_til"
-                    android:digits="0123456789.,"
-                    android:gravity="center_vertical"
-                    android:hint="@string/nutrition_salt"
-                    android:inputType="numberDecimal"
-                    android:nextFocusDown="@id/sodium"
-                    android:singleLine="true"
-                    app:attachedModSpinner="@+id/spinner_salt_comp"
-                    app:attachedUnitSpinner="@+id/spinner_salt_unit"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:parentTextInputLayout="@+id/salt_til" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <Spinner
-                android:id="@+id/spinner_salt_unit"
-                android:layout_width="wrap_content"
-                android:layout_height="35dp"
-                android:layout_marginStart="@dimen/padding_short"
-                android:layout_marginLeft="@dimen/padding_short"
-                android:layout_marginTop="@dimen/top_margin_spinner_hint"
-                android:layout_marginEnd="@dimen/activity_horizontal_margin"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:background="@drawable/spinner_weights_grey"
-                android:entries="@array/nutrition_weight_units"
-                android:gravity="center_vertical"
-                android:spinnerMode="dropdown"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/salt_til"
-                app:layout_constraintTop_toTopOf="@id/salt_til" />
-
-
-            <Spinner
-                android:id="@+id/spinner_sodium_comp"
-                android:layout_width="wrap_content"
-
-                android:layout_height="35dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginTop="@dimen/top_margin_spinner_hint"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:background="@drawable/spinner_weights_grey"
-                android:entries="@array/nutrition_comparison_units"
-                android:gravity="center_vertical"
-                android:spinnerMode="dropdown"
-                app:layout_constraintEnd_toStartOf="@id/sodium_til"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/sodium_til" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/sodium_til"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_small"
-                app:errorTextAppearance="@style/errorText"
-                app:layout_constraintEnd_toStartOf="@+id/spinner_sodium_unit"
-                app:layout_constraintStart_toEndOf="@+id/spinner_sodium_comp"
-                app:layout_constraintTop_toBottomOf="@id/salt_til">
-
-                <openfoodfacts.github.scrachx.openfood.features.shared.views.CustomValidatingEditTextView
-                    android:id="@+id/sodium"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:background="@drawable/bg_edittext_til"
-                    android:digits="0123456789.,"
-                    android:gravity="center_vertical"
-                    android:hint="@string/nutrition_sodium"
-                    android:inputType="numberDecimal"
-                    android:nextFocusDown="@id/alcohol"
-                    android:singleLine="true"
-                    app:attachedModSpinner="@id/spinner_sodium_comp"
-                    app:attachedUnitSpinner="@id/spinner_sodium_unit"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:parentTextInputLayout="@+id/sodium_til" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <Spinner
-                android:id="@+id/spinner_sodium_unit"
-                android:layout_width="wrap_content"
-                android:layout_height="35dp"
-                android:layout_marginStart="@dimen/padding_short"
-                android:layout_marginLeft="@dimen/padding_short"
-                android:layout_marginTop="@dimen/top_margin_spinner_hint"
-                android:layout_marginEnd="@dimen/activity_horizontal_margin"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:background="@drawable/spinner_weights_grey"
-                android:entries="@array/nutrition_weight_units"
-                android:gravity="center_vertical"
-                android:spinnerMode="dropdown"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/sodium_til"
-                app:layout_constraintTop_toTopOf="@id/sodium_til" />
-
-            <Spinner
-                android:id="@+id/spinner_alcohol_comp"
-                android:layout_width="wrap_content"
-
-                android:layout_height="35dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginTop="@dimen/top_margin_spinner_hint"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:background="@drawable/spinner_weights_grey"
-                android:entries="@array/nutrition_comparison_units"
-                android:gravity="center_vertical"
-                android:spinnerMode="dropdown"
-                app:layout_constraintEnd_toStartOf="@id/alcohol_til"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/alcohol_til" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/alcohol_til"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_small"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                app:errorTextAppearance="@style/errorText"
-                app:layout_constraintEnd_toStartOf="@+id/text_alcohol_unit"
-                app:layout_constraintStart_toEndOf="@+id/spinner_alcohol_comp"
-                app:layout_constraintTop_toBottomOf="@id/sodium_til">
-
-                <openfoodfacts.github.scrachx.openfood.features.shared.views.CustomValidatingEditTextView
-                    android:id="@+id/alcohol"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:background="@drawable/bg_edittext_til"
-                    android:digits="0123456789.,"
-                    android:gravity="center_vertical"
-                    android:hint="@string/nutrition_alcohol"
-                    android:inputType="numberDecimal"
-                    android:singleLine="true"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:parentTextInputLayout="@+id/alcohol_til" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <TextView
-                android:id="@+id/text_alcohol_unit"
-                android:layout_width="0dp"
-                android:layout_height="35dp"
-                android:layout_marginTop="@dimen/top_margin_spinner_hint"
-                android:gravity="center"
-                android:text="@string/alcohol_unit"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="@id/alcohol_til"
-                app:layout_constraintEnd_toEndOf="@+id/spinner_sodium_unit"
-                app:layout_constraintStart_toStartOf="@+id/spinner_sodium_unit"
-                app:layout_constraintTop_toTopOf="@id/alcohol_til" />
-
-            <LinearLayout
-                android:id="@+id/table_layout"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:layout_marginEnd="85dp"
+                android:layout_marginRight="85dp"
+                android:text="@string/error_in_nutrient_data"
+                android:textColor="#dd0b16"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/alcohol_til" />
-
-            <Button
-                android:id="@+id/btn_add_a_nutrient"
-                style="@style/ButtonBorder"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_small"
-                android:drawablePadding="@dimen/spacing_tiny"
-                android:text="@string/add_a_nutrient"
-                app:drawableLeftCompat="@drawable/ic_add_box_blue_18dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/table_layout" />
-
+                app:layout_constraintTop_toBottomOf="@+id/nutrition_facts_layout" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <TextView
-            android:id="@+id/global_validation_msg"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/activity_horizontal_margin"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginTop="@dimen/spacing_small"
-            android:layout_marginEnd="85dp"
-            android:layout_marginRight="85dp"
-            android:text="@string/error_in_nutrient_data"
-            android:textColor="#dd0b16"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/nutrition_facts_layout" />
+    </ScrollView>
 
-        <Button
-            android:id="@+id/btn_add"
-            style="@style/ButtonFlat.Green"
-            android:layout_width="match_parent"
-            android:layout_marginTop="@dimen/spacing_small"
-            android:clickable="true"
-            android:focusable="true"
-            android:text="@string/add_this_product"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/global_validation_msg" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-</ScrollView>
+    <Button
+        android:id="@+id/btn_add"
+        style="@style/ButtonFlat.Green"
+        android:layout_width="match_parent"
+        android:clickable="true"
+        android:focusable="true"
+        android:text="@string/add_this_product"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>
