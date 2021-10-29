@@ -20,9 +20,7 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.Editable
 import android.text.Html
-import android.text.InputType
 import android.text.TextWatcher
-import android.text.method.NumberKeyListener
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -94,12 +92,6 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
 
     @Inject
     lateinit var localeManager: LocaleManager
-
-    private val keyListener = object : NumberKeyListener() {
-        override fun getInputType() = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
-
-        override fun getAcceptedChars() = charArrayOf('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ',', '.')
-    }
 
     private val photoReceiverHandler: PhotoReceiverHandler by lazy {
         PhotoReceiverHandler(sharedPreferences) {
@@ -767,7 +759,6 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
 
         val editText = rowView.findViewById<CustomValidatingEditTextView>(R.id.value)
         editText.entryName = nutrientShortName
-        editText.keyListener = keyListener
 
         lastEditText!!.nextFocusDownId = editText.id
         lastEditText!!.imeOptions = EditorInfo.IME_ACTION_NEXT
