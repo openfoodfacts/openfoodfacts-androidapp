@@ -12,37 +12,48 @@ import javax.inject.Singleton
 
 @Singleton
 class SentryAnalytics @Inject constructor(
-        @ApplicationContext private val context: Context,
-        private val sharedPreferences: SharedPreferences,
+    @ApplicationContext private val context: Context,
+    private val sharedPreferences: SharedPreferences,
 ) {
 
-    // isCrashReportingEnabled is not dynamic, as sentry can not be enabled / disabled, so it takes the value at startup, and changes will only be taken into account after an app restart
-    private val isCrashReportingEnabled by lazy {
-        sharedPreferences.getBoolean(context.getString(R.string.pref_crash_reporting_key), true)
+    val prefKey = context.getString(R.string.pref_crash_reporting_key)
+
+    private val enabledFromPrefs get() = sharedPreferences.getBoolean(prefKey, false)
+
+    private val listener: (SharedPreferences, String) -> Unit = { _, key ->
+        if (key == prefKey) refresh()
     }
 
     init {
-        if (isCrashReportingEnabled) {
+        // Init sharedPrefs listener
+        sharedPreferences.registerOnSharedPreferenceChangeListener(listener)
+        refresh()
+    }
+
+    private fun refresh() {
+        if (enabledFromPrefs) {
             SentryAndroid.init(context)
-            Sentry.configureScope { scope ->
-                scope.setTag("flavor", BuildConfig.FLAVOR)
+            Sentry.configureScope {
+                it.setTag(FLAVOR_TAG, BuildConfig.FLAVOR)
             }
-        }
-    }
-
-    fun setBarcode(barcode: String) {
-        setTag("barcode", barcode)
-    }
-
-    fun setTag(key: String, value: String) {
-        if (isCrashReportingEnabled) {
-            Sentry.setTag(key, value)
+        } else {
+            // Init with null dsn == disable sentry
+            Sentry.init("")
         }
     }
 
     fun record(exception: Throwable) {
-        if (isCrashReportingEnabled) {
-            Sentry.captureException(exception)
-        }
+        Sentry.captureException(exception)
+    }
+
+    fun setTag(key: String, value: String) {
+        Sentry.setTag(key, value)
+    }
+
+    fun setBarcode(barcode: String) = setTag(BARCODE_TAG, barcode)
+
+    companion object {
+        private const val FLAVOR_TAG = "flavor"
+        private const val BARCODE_TAG = "barcode"
     }
 }

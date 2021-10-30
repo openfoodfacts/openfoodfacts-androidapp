@@ -35,6 +35,7 @@ import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 import dagger.hilt.android.AndroidEntryPoint
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
+import openfoodfacts.github.scrachx.openfood.analytics.SentryAnalytics
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityWelcomeBinding
 import openfoodfacts.github.scrachx.openfood.features.MainActivity
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
@@ -65,6 +66,9 @@ class WelcomeActivity : BaseActivity() {
     lateinit var matomoAnalytics: MatomoAnalytics
 
     @Inject
+    lateinit var sentryAnalytics: SentryAnalytics
+
+    @Inject
     lateinit var sharedPreferences: SharedPreferences
 
     private val viewPagerPageChangeListener = object : OnPageChangeListener {
@@ -76,7 +80,7 @@ class WelcomeActivity : BaseActivity() {
             refreshBottomBar(position)
 
             when (WelcomeScreen[position]) {
-                WelcomeScreen.MATOMO -> {
+                WelcomeScreen.ANALYTICS -> {
                     binding.btnNext.setText(R.string.preference_analytics_bottom_sheet_grant_button)
                     binding.btnSkip.setText(R.string.preference_analytics_bottom_sheet_decline_button)
 
@@ -136,15 +140,16 @@ class WelcomeActivity : BaseActivity() {
         binding.btnNext.setOnClickListener { binding.viewPager.currentItem = nextItem }
     }
 
-    private fun saveThenLaunchHome(grant: Boolean) {
-        saveAnalyticsReportingPref(grant)
-        matomoAnalytics.setEnabled(grant)
+    private fun saveThenLaunchHome(analyticsEnabled: Boolean) {
+        saveAnalyticsReportingPref(analyticsEnabled)
+        matomoAnalytics.setEnabled(analyticsEnabled)
         launchHome()
     }
 
-    private fun saveAnalyticsReportingPref(value: Boolean) {
+    private fun saveAnalyticsReportingPref(enabled: Boolean) {
         sharedPreferences.edit {
-            putBoolean(getString(R.string.pref_analytics_reporting_key), value)
+            putBoolean(getString(R.string.pref_analytics_reporting_key), enabled)
+            putBoolean(sentryAnalytics.prefKey, enabled)
         }
     }
 
