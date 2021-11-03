@@ -35,7 +35,7 @@ jobs:
 
     steps:
       - name: Checkout sources
-        uses: actions/checkout@v2.3.5
+        uses: actions/checkout@v2.4.0
 
       - name: Run detekt
         uses: gradle/gradle-build-action@v1.5.1
