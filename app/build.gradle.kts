@@ -146,7 +146,7 @@ dependencies {
     implementation("com.github.hootsuite:nachos:1.2.0")
 
     // Crash analytics
-    implementation("io.sentry:sentry-android:5.3.0")
+    implementation("io.sentry:sentry-android:5.4.0")
     implementation("com.github.matomo-org:matomo-sdk-android:v4.1.2")
 
     // ShowCaseView dependency
@@ -168,7 +168,7 @@ dependencies {
     androidTestUtil("androidx.test:orchestrator:1.4.0")
 
     // Hilt for Android Testing
-    androidTestImplementation("com.google.dagger:hilt-android-testing:2.40")
+    androidTestImplementation("com.google.dagger:hilt-android-testing:2.40.1")
     kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.40")
 
     androidTestImplementation("androidx.test:runner:1.3.0") { exclude("junit") }
