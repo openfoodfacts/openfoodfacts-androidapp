@@ -5,6 +5,7 @@ version: 2
 updates:
   - package-ecosystem: "gradle"
     directory: "/app"
+    open-pull-requests-limit: -1
     schedule:
       interval: "daily"
     labels:
