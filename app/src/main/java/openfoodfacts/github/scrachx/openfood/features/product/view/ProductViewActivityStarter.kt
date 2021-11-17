@@ -12,7 +12,7 @@ import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
+import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
 import openfoodfacts.github.scrachx.openfood.repositories.NetworkConnectivityRepository
 import openfoodfacts.github.scrachx.openfood.utils.*
@@ -22,7 +22,7 @@ import javax.inject.Inject
 class ProductViewActivityStarter @Inject constructor(
     private val productsApi: ProductsAPI,
     private val localeManager: LocaleManager,
-    private val client: OpenFoodAPIClient,
+    private val client: ProductRepository,
     private val coroutineDispatchers: CoroutineDispatchers,
     private val networkConnectivityRepository: NetworkConnectivityRepository,
 ) {

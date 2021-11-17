@@ -36,7 +36,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.rx2.await
 import kotlinx.coroutines.withContext
 import okhttp3.RequestBody
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OBF
@@ -62,10 +61,11 @@ import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct
 import openfoodfacts.github.scrachx.openfood.models.entities.ToUploadProduct
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient.Companion.PNG_EXT
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient.Companion.addToHistory
+import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
+import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository.Companion.PNG_EXT
+import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository.Companion.addToHistory
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
+import openfoodfacts.github.scrachx.openfood.repositories.OfflineProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.*
 import java.io.IOException
 import java.util.*
@@ -78,10 +78,10 @@ class ProductEditActivity : BaseActivity() {
     private val binding get() = _binding!!
 
     @Inject
-    lateinit var client: OpenFoodAPIClient
+    lateinit var client: ProductRepository
 
     @Inject
-    lateinit var offlineService: OfflineProductService
+    lateinit var offlineRepository: OfflineProductRepository
 
     @Inject
     lateinit var daoSession: DaoSession
@@ -202,7 +202,7 @@ class ProductEditActivity : BaseActivity() {
             mProduct = productState.product
 
             // Search if the barcode already exists in the OfflineSavedProducts db
-            offlineSavedProduct = offlineService.getOfflineProductByBarcode(productState.product!!.code)
+            offlineSavedProduct = offlineRepository.getOfflineProductByBarcode(productState.product!!.code)
         }
         if (mEditProduct != null) {
             setTitle(R.string.edit_product_title)
@@ -502,7 +502,7 @@ class ProductEditActivity : BaseActivity() {
 
         val jsonNode = withContext(IO) {
             try {
-                productsApi.editImage(image.barcode, queryMap).await()
+                productsApi.editImage(image.barcode, queryMap)
             } catch (err: Exception) {
                 if (err is IOException) {
                     if (performOCR) {
@@ -542,7 +542,7 @@ class ProductEditActivity : BaseActivity() {
 
         val node = withContext(IO) {
             try {
-                productsApi.performOCR(code, imageField).await()
+                productsApi.performOCR(code, imageField)
             } catch (err: Exception) {
                 withContext(Main) { ingredientsFragment.hideOCRProgress() }
                 if (err is IOException) {
@@ -705,6 +705,6 @@ class ProductEditActivity : BaseActivity() {
         }
 
         private fun createTextPlain(code: String) =
-            RequestBody.create(OpenFoodAPIClient.MIME_TEXT, code)
+            RequestBody.create(ProductRepository.MIME_TEXT, code)
     }
 }

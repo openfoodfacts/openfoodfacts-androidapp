@@ -1,8 +1,8 @@
 package openfoodfacts.github.scrachx.openfood.category
 
 import com.google.common.truth.Truth.assertThat
-import io.reactivex.Single
-import io.reactivex.observers.TestObserver
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.runBlockingTest
 import openfoodfacts.github.scrachx.openfood.MockitoHelper
 import openfoodfacts.github.scrachx.openfood.category.mapper.CategoryMapper
 import openfoodfacts.github.scrachx.openfood.category.model.Category
@@ -19,6 +19,7 @@ import org.mockito.kotlin.whenever
 /**
  * Created by Abdelali Eramli on 01/01/2018.
  */
+@ExperimentalCoroutinesApi
 @RunWith(MockitoJUnitRunner::class)
 class CategoryRepositoryTest {
     @Mock
@@ -35,20 +36,16 @@ class CategoryRepositoryTest {
     private lateinit var repository: CategoryRepository
 
     @Before
-    fun setup() {
+    fun setup() = runBlockingTest {
         whenever(mapper.fromNetwork(MockitoHelper.anyObject())) doReturn listOf(category, category, category)
-        whenever(networkService.getCategories()) doReturn Single.just(response)
+        whenever(networkService.getCategories()) doReturn response
         repository = CategoryRepository(networkService, mapper)
     }
 
     @Test
-    fun retrieveAll_Success() {
-        val testObserver = TestObserver<List<Category>>()
-        repository.retrieveAll().subscribe(testObserver)
-        testObserver.awaitTerminalEvent()
-
-        val result = testObserver.values()[0]
-        assertThat(result[0]).isEqualTo(category)
+    fun retrieveAll_Success() = runBlockingTest {
+        val result = repository.retrieveAll()!![0]
+        assertThat(result).isEqualTo(category)
     }
 
 }

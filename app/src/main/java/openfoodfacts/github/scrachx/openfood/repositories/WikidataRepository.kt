@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.network
+package openfoodfacts.github.scrachx.openfood.repositories
 
 import com.fasterxml.jackson.databind.JsonNode
 import openfoodfacts.github.scrachx.openfood.network.services.WikidataAPI
@@ -12,7 +12,7 @@ import javax.inject.Singleton
  * @since 14.03.18
  */
 @Singleton
-class WikiDataApiClient @Inject constructor(
+class WikidataRepository @Inject constructor(
     private val wikidataAPI: WikidataAPI
 ) {
     /**

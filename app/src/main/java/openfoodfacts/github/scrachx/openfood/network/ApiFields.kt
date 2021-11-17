@@ -68,8 +68,10 @@ object ApiFields {
     }
 
     object Keys {
-        const val ATTRIBUTE_GROUPS: String = "attribute_groups"
+        const val ATTRIBUTE_GROUPS = "attribute_groups"
         const val NO_NUTRITION_DATA = "no_nutrition_data"
+
+        const val IMAGE_FIELD = "imagefield"
 
         /**
          * The value can either be [Defaults.NUTRITION_DATA_PER_100G]

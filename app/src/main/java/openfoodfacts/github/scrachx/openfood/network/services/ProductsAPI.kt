@@ -17,7 +17,6 @@ package openfoodfacts.github.scrachx.openfood.network.services
 
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.node.ObjectNode
-import io.reactivex.Single
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
 import openfoodfacts.github.scrachx.openfood.BuildConfig.FLAVOR_versionCode
@@ -96,16 +95,16 @@ interface ProductsAPI {
     ): JsonNode
 
     @GET("/cgi/product_image_crop.pl")
-    fun editImage(
+    suspend fun editImage(
         @Query(ApiFields.Keys.BARCODE) code: String,
         @QueryMap fields: Map<String, @JvmSuppressWildcards String?>
-    ): Single<JsonNode>
+    ): JsonNode
 
     @GET("/cgi/ingredients.pl?process_image=1&ocr_engine=google_cloud_vision")
-    fun performOCR(
+    suspend fun performOCR(
         @Query(ApiFields.Keys.BARCODE) code: String,
         @Query("id") imgId: String
-    ): Single<JsonNode>
+    ): JsonNode
 
     @GET("cgi/suggest.pl")
     suspend fun getSuggestions(
@@ -240,10 +239,10 @@ interface ProductsAPI {
     suspend fun getProductsByNutriScore(@Path("nutriscore") nutritionGrade: String): Search
 
     @GET("nutrient-level/{nutrient_level}.json")
-    fun byNutrientLevel(@Path("nutrient_level") nutrientLevel: String): Single<Search>
+    suspend fun byNutrientLevel(@Path("nutrient_level") nutrientLevel: String): Search
 
     @GET("contributor/{contributor}.json?nocache=1")
-    fun byContributor(@Path("contributor") contributor: String): Single<Search>
+    suspend fun byContributor(@Path("contributor") contributor: String): Search
 
     @GET("contributor/{contributor}/state/to-be-completed/{page}.json?nocache=1")
     suspend fun getToBeCompletedProductsByContributor(
@@ -258,7 +257,7 @@ interface ProductsAPI {
     ): Search
 
     @GET("photographer/{Photographer}.json?nocache=1")
-    fun getProductsByPhotographer(@Path("Photographer") photographer: String): Single<Search>
+    suspend fun getProductsByPhotographer(@Path("Photographer") photographer: String): Search
 
     @GET("photographer/{contributor}/state/to-be-completed/{page}.json?nocache=1")
     suspend fun getPicturesContributedIncompleteProducts(
@@ -267,7 +266,7 @@ interface ProductsAPI {
     ): Search
 
     @GET("informer/{informer}.json?nocache=1")
-    fun getProductsByInformer(@Path("informer") informer: String?): Single<Search>
+    suspend fun getProductsByInformer(@Path("informer") informer: String?): Search
 
     @GET("informer/{contributor}/{page}.json?nocache=1")
     suspend fun getInfoAddedProducts(
@@ -276,28 +275,28 @@ interface ProductsAPI {
     ): Search
 
     @GET("informer/{contributor}/state/to-be-completed/{page}.json?nocache=1")
-    suspend fun getInfoAddedIncompleteProductsSingle(
+    suspend fun getInfoAddedIncompleteProducts(
         @Path("contributor") contributor: String,
         @Path("page") page: Int
     ): Search
 
     @GET("last-edit-date/{LastEditDate}.json")
-    fun getProductsByLastEditDate(@Path("LastEditDate") lastEditDate: String): Single<Search>
+    suspend fun getProductsByLastEditDate(@Path("LastEditDate") lastEditDate: String): Search
 
     @GET("entry-dates/{EntryDates}.json")
-    fun getProductsByEntryDates(@Path("EntryDates") entryDates: String): Single<Search>
+    suspend fun getProductsByEntryDates(@Path("EntryDates") entryDates: String): Search
 
     @GET("unknown-nutrient/{UnknownNutrient}.json")
-    fun getProductsByUnknownNutrient(@Path("UnknownNutrient") unknownNutrient: String): Single<Search>
+    suspend fun getProductsByUnknownNutrient(@Path("UnknownNutrient") unknownNutrient: String): Search
 
     @GET("additive/{Additive}.json")
-    fun getProductsByAdditive(
+    suspend fun getProductsByAdditive(
         @Path("Additive") additive: String?,
         @Query("fields") fields: String?
-    ): Single<Search>
+    ): Search
 
     @GET("code/{Code}.json")
-    fun getProductsByBarcode(@Path("Code") code: String): Single<Search>
+    suspend fun getProductsByBarcode(@Path("Code") code: String): Search
 
     @GET("state/{State}/{page}.json")
     suspend fun getProductsByState(
@@ -343,7 +342,7 @@ interface ProductsAPI {
      * @param barcode barcode for the current product
      */
     @GET("$API_P/product/{barcode}.json?fields=images")
-    fun getProductImages(@Path("barcode") barcode: String): Single<ObjectNode>
+    suspend fun getProductImages(@Path("barcode") barcode: String): ObjectNode
 
     /**
      * This method is to crop images server side
@@ -356,16 +355,6 @@ interface ProductsAPI {
     ): ObjectNode
 
     /**
-     * This method is to crop images server side
-     */
-    @Deprecated("")
-    @GET("/cgi/product_image_crop.pl")
-    fun editImagesSingle(
-        @Query(ApiFields.Keys.BARCODE) code: String,
-        @QueryMap fields: Map<String?, @JvmSuppressWildcards String?>?
-    ): Single<String>
-
-    /**
      * @param code
      * @param fields
      */
@@ -376,6 +365,6 @@ interface ProductsAPI {
     ): String
 
     @GET
-    fun downloadFile(@Url fileUrl: String): Single<ResponseBody>
+    suspend fun downloadFile(@Url fileUrl: String): ResponseBody
 
 }

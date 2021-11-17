@@ -13,7 +13,7 @@ import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentFindProductBinding
 import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewActivityStarter
 import openfoodfacts.github.scrachx.openfood.features.shared.NavigationBaseFragment
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
+import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType
 import openfoodfacts.github.scrachx.openfood.utils.hideKeyboard
@@ -29,7 +29,7 @@ class SearchByCodeFragment : NavigationBaseFragment() {
     private val binding get() = _binding!!
 
     @Inject
-    lateinit var client: OpenFoodAPIClient
+    lateinit var client: ProductRepository
 
     @Inject
     lateinit var productViewActivityStarter: ProductViewActivityStarter

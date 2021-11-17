@@ -29,25 +29,23 @@ import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
-import io.reactivex.Observable
-import io.reactivex.ObservableEmitter
-import io.reactivex.Single
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.rxkotlin.addTo
-import io.reactivex.schedulers.Schedulers
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
 import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductListsBinding
-import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_PRODUCT
 import openfoodfacts.github.scrachx.openfood.features.productlist.ProductListActivity
 import openfoodfacts.github.scrachx.openfood.features.productlist.ProductListActivity.Companion.KEY_LIST_ID
@@ -260,55 +258,59 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
         val progressDialog = ProgressDialog(this@ProductListsActivity)
         progressDialog.show()
 
-        Observable.create { emitter: ObservableEmitter<Int> ->
-            Single.fromCallable {
-                val listProductDao = daoSession.listedProductDao
-                val list = mutableListOf<ListedProduct>()
-                try {
-                    CSVParser(
-                        InputStreamReader(inputStream),
-                        CSVFormat.DEFAULT.withFirstRecordAsHeader()
-                    ).use { parser ->
-                        val size = parser.records.size
-                        parser.records.withIndex().forEach { (index, record) ->
-                            val listName = record[2]
-                            var daoList = productListsDao.queryBuilder()
-                                .where(ProductListsDao.Properties.ListName.eq(listName)).unique()
-                            if (daoList == null) {
-                                //create new list
-                                val productList = ProductLists(listName, 0)
-                                adapter.lists.add(productList)
-                                productListsDao.insert(productList)
-                                daoList = productListsDao.queryBuilder()
-                                    .where(ProductListsDao.Properties.ListName.eq(listName)).unique()
-                            }
-                            val yourListedProduct = ListedProduct().apply {
-                                this.barcode = record[0]
-                                this.productName = record[1]
-                                this.listName = listName
-                                this.productDetails = record[3]
-                                this.listId = daoList.id
-                            }
-                            list += yourListedProduct
-                            emitter.onNext(index * 100 / size)
-                        }
-                        listProductDao.insertOrReplaceInTx(list)
-                        return@fromCallable true
-                    }
-                } catch (e: Exception) {
-                    Log.e("ParseCSV", e.message, e)
-                    return@fromCallable false
-                }
-            }.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe { success ->
-                progressDialog.dismiss()
-                if (success) {
-                    Toast.makeText(this@ProductListsActivity, getString(R.string.toast_import_csv), Toast.LENGTH_SHORT).show()
-                } else {
-                    Toast.makeText(this@ProductListsActivity, getString(R.string.toast_import_csv_error), Toast.LENGTH_SHORT).show()
-                }
-            }.addTo(disp)
-        }.subscribe { value -> progressDialog.progress = value!! }.addTo(disp)
+        importStream(inputStream, progressDialog).let {
+            lifecycleScope.launch { it.collect { value -> progressDialog.progress = value } }
+        }
     }
+
+    private fun importStream(inputStream: InputStream?, progressDialog: ProgressDialog) = flow {
+        val listProductDao = daoSession.listedProductDao
+        val list = mutableListOf<ListedProduct>()
+
+        val success = try {
+            CSVParser(
+                InputStreamReader(inputStream),
+                CSVFormat.DEFAULT.withFirstRecordAsHeader()
+            ).use { parser ->
+                val size = parser.records.size
+                parser.records.withIndex().forEach { (index, record) ->
+                    val listName = record[2]
+                    var daoList = productListsDao.queryBuilder()
+                        .where(ProductListsDao.Properties.ListName.eq(listName)).unique()
+                    if (daoList == null) {
+                        //create new list
+                        val productList = ProductLists(listName, 0)
+                        adapter.lists.add(productList)
+                        productListsDao.insert(productList)
+                        daoList = productListsDao.queryBuilder()
+                            .where(ProductListsDao.Properties.ListName.eq(listName)).unique()
+                    }
+                    val yourListedProduct = ListedProduct().apply {
+                        this.barcode = record[0]
+                        this.productName = record[1]
+                        this.listName = listName
+                        this.productDetails = record[3]
+                        this.listId = daoList.id
+                    }
+                    list += yourListedProduct
+                    emit(index * 100 / size)
+                }
+                listProductDao.insertOrReplaceInTx(list)
+                true
+            }
+        } catch (e: Exception) {
+            Log.e("ParseCSV", e.message, e)
+            false
+        }
+
+        progressDialog.dismiss()
+
+        if (success) {
+            Toast.makeText(this@ProductListsActivity, getString(R.string.toast_import_csv), Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(this@ProductListsActivity, getString(R.string.toast_import_csv_error), Toast.LENGTH_SHORT).show()
+        }
+    }.flowOn(Dispatchers.IO)
 
     companion object {
 

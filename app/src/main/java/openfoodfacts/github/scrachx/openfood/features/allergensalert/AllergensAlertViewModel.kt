@@ -8,21 +8,20 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.rx2.await
 import kotlinx.coroutines.withContext
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
 import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenName
 import openfoodfacts.github.scrachx.openfood.repositories.AllergenPreferencesRepository
 import openfoodfacts.github.scrachx.openfood.repositories.NetworkConnectivityRepository
-import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
+import openfoodfacts.github.scrachx.openfood.repositories.TaxonomiesRepository
 import openfoodfacts.github.scrachx.openfood.utils.CoroutineDispatchers
 import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
 import javax.inject.Inject
 
 @HiltViewModel
 class AllergensAlertViewModel @Inject constructor(
-    private val productRepository: ProductRepository,
+    private val taxonomiesRepository: TaxonomiesRepository,
     private val matomoAnalytics: MatomoAnalytics,
     private val localeManager: LocaleManager,
     private val coroutineDispatchers: CoroutineDispatchers,
@@ -60,7 +59,7 @@ class AllergensAlertViewModel @Inject constructor(
     fun addAllergen(allergen: AllergenName) {
         viewModelScope.launch {
             withContext(coroutineDispatchers.io()) {
-                productRepository.setAllergenEnabled(allergen.allergenTag, true).await()
+                taxonomiesRepository.setAllergenEnabled(allergen.allergenTag, true)
                 matomoAnalytics.trackEvent(AnalyticsEvent.AllergenAlertCreated(allergen.allergenTag))
             }
             refreshAllergens()
@@ -70,7 +69,7 @@ class AllergensAlertViewModel @Inject constructor(
     fun removeAllergen(allergen: AllergenName) {
         viewModelScope.launch {
             withContext(coroutineDispatchers.io()) {
-                productRepository.setAllergenEnabled(allergen.allergenTag, false).await()
+                taxonomiesRepository.setAllergenEnabled(allergen.allergenTag, false)
             }
             refreshAllergens()
         }
@@ -78,8 +77,7 @@ class AllergensAlertViewModel @Inject constructor(
 
     private suspend fun refreshAllergens() {
         val enabledAllergens = withContext(coroutineDispatchers.io()) {
-            productRepository.getAllergensByEnabledAndLanguageCode(true, localeManager.getLanguage())
-                .await()
+            taxonomiesRepository.getAllergens(true, localeManager.getLanguage())
                 .sortedBy { it.name }
         }
         _viewStateFlow.emit(_viewStateFlow.value.copy(allergens = enabledAllergens))
@@ -89,7 +87,7 @@ class AllergensAlertViewModel @Inject constructor(
         _viewStateFlow.emit(_viewStateFlow.value.copy(loading = true))
         val result = withContext(coroutineDispatchers.io()) {
             runCatching {
-                productRepository.getAllergens()
+                taxonomiesRepository.getAllergens()
             }
         }
         _viewStateFlow.emit(_viewStateFlow.value.copy(loading = false))
@@ -106,14 +104,13 @@ class AllergensAlertViewModel @Inject constructor(
     }
 
     private suspend fun getNotEnabledAllergens() = withContext(coroutineDispatchers.io()) {
-        productRepository.getAllergensByEnabledAndLanguageCode(false, localeManager.getLanguage())
-            .await()
+        taxonomiesRepository.getAllergens(false, localeManager.getLanguage())
             .filter { it.allergenTag != "en:none" }
             .sortedBy { it.name }
     }
 
     private suspend fun isDatabaseEmpty() = withContext(coroutineDispatchers.io()) {
-        productRepository.getAllergensByLanguageCode(localeManager.getLanguage()).isEmpty()
+        taxonomiesRepository.getAllergens(localeManager.getLanguage()).isEmpty()
     }
 
     data class ViewState(

@@ -18,7 +18,7 @@ import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivity
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
 import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoryName
-import openfoodfacts.github.scrachx.openfood.network.WikiDataApiClient
+import openfoodfacts.github.scrachx.openfood.repositories.WikidataRepository
 import openfoodfacts.github.scrachx.openfood.utils.SearchType
 import openfoodfacts.github.scrachx.openfood.utils.showBottomSheet
 
@@ -29,7 +29,7 @@ object CategoryProductHelper {
         categoryText: TextView,
         alcoholAlertText: TextView,
         categories: List<CategoryName>,
-        apiClient: WikiDataApiClient,
+        apiClient: WikidataRepository,
     ) = categoryText.let { view ->
         if (categories.isEmpty()) {
             view.visibility = View.GONE
@@ -57,7 +57,7 @@ object CategoryProductHelper {
     private fun getCategoriesTag(
         category: CategoryName,
         fragment: BaseFragment,
-        apiClient: WikiDataApiClient
+        apiClient: WikidataRepository
     ): SpannedString {
         val clickableSpan = object : ClickableSpan() {
             override fun onClick(view: View) {
