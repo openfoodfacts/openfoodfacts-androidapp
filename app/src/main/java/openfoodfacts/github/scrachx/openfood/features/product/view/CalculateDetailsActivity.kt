@@ -94,26 +94,26 @@ class CalculateDetailsActivity : BaseActivity() {
         // Fat
         val fat = nutriments[Nutriment.FAT]
         if (fat != null) {
-            nutrimentListItems += BoldNutrimentListItem(
+            nutrimentListItems += NutrimentListItem(
                 getString(R.string.nutrition_fat),
                 fat.getForPortion(portion).value,
                 fat.perServingInUnit?.value,
                 fat.unit,
                 fat.modifier
-            )
+            ).bold()
             nutrimentListItems += getNutrimentItems(nutriments, FAT_MAP)
         }
 
         // Carbohydrates
         val carbohydrates = nutriments[Nutriment.CARBOHYDRATES]
         if (carbohydrates != null) {
-            nutrimentListItems += BoldNutrimentListItem(
+            nutrimentListItems += NutrimentListItem(
                 getString(R.string.nutrition_carbohydrate),
                 carbohydrates.getForPortion(portion).value,
                 carbohydrates.perServingInUnit?.value,
                 carbohydrates.unit,
                 carbohydrates.modifier
-            )
+            ).bold()
             nutrimentListItems += getNutrimentItems(nutriments, CARBO_MAP)
         }
 
@@ -123,13 +123,13 @@ class CalculateDetailsActivity : BaseActivity() {
         // Proteins
         val proteins = nutriments[Nutriment.PROTEINS]
         if (proteins != null) {
-            nutrimentListItems += BoldNutrimentListItem(
+            nutrimentListItems += NutrimentListItem(
                 getString(R.string.nutrition_proteins),
                 proteins.getForPortion(portion).value,
                 proteins.perServingInUnit?.value,
                 proteins.unit,
                 proteins.modifier
-            )
+            ).bold()
             nutrimentListItems += getNutrimentItems(nutriments, PROT_MAP)
         }
 
@@ -144,13 +144,13 @@ class CalculateDetailsActivity : BaseActivity() {
 
         // Vitamins
         if (nutriments.hasVitamins) {
-            nutrimentListItems += BoldNutrimentListItem(getString(R.string.nutrition_vitamins))
+            nutrimentListItems += NutrimentListItem(getString(R.string.nutrition_vitamins)).bold()
             nutrimentListItems += getNutrimentItems(nutriments, VITAMINS_MAP)
         }
 
         // Minerals
         if (nutriments.hasMinerals) {
-            nutrimentListItems += BoldNutrimentListItem(getString(R.string.nutrition_minerals))
+            nutrimentListItems += NutrimentListItem(getString(R.string.nutrition_minerals)).bold()
             nutrimentListItems += getNutrimentItems(nutriments, MINERALS_MAP)
         }
         binding.nutriments.adapter = CalculatedNutrimentsGridAdapter(nutrimentListItems)

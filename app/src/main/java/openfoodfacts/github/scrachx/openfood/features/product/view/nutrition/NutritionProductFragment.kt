@@ -321,17 +321,14 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
         // Fat
         val fat2 = nutriments[Nutriment.FAT]
         if (fat2 != null) {
-            nutrimentListItems += BoldNutrimentListItem(getString(R.string.nutrition_fat), fat2)
+            nutrimentListItems += NutrimentListItem(getString(R.string.nutrition_fat), fat2).bold()
             nutrimentListItems.addAll(getNutrimentItems(nutriments, FAT_MAP))
         }
 
         // Carbohydrates
         val carbohydrates = nutriments[Nutriment.CARBOHYDRATES]
         if (carbohydrates != null) {
-            nutrimentListItems += BoldNutrimentListItem(
-                getString(R.string.nutrition_carbohydrate),
-                carbohydrates
-            )
+            nutrimentListItems += NutrimentListItem(getString(R.string.nutrition_carbohydrate), carbohydrates).bold()
             nutrimentListItems += getNutrimentItems(nutriments, CARBO_MAP)
         }
 
@@ -341,7 +338,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
         // Proteins
         val proteins = nutriments[Nutriment.PROTEINS]
         if (proteins != null) {
-            nutrimentListItems += BoldNutrimentListItem(getString(R.string.nutrition_proteins), proteins)
+            nutrimentListItems += NutrimentListItem(getString(R.string.nutrition_proteins), proteins).bold()
             nutrimentListItems += getNutrimentItems(nutriments, PROT_MAP)
         }
 
@@ -355,13 +352,13 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
 
         // Vitamins
         if (nutriments.hasVitamins) {
-            nutrimentListItems += BoldNutrimentListItem(getString(R.string.nutrition_vitamins))
+            nutrimentListItems += NutrimentListItem(getString(R.string.nutrition_vitamins)).bold()
             nutrimentListItems += getNutrimentItems(nutriments, VITAMINS_MAP)
         }
 
         // Minerals
         if (nutriments.hasMinerals) {
-            nutrimentListItems += BoldNutrimentListItem(getString(R.string.nutrition_minerals))
+            nutrimentListItems += NutrimentListItem(getString(R.string.nutrition_minerals)).bold()
             nutrimentListItems += getNutrimentItems(nutriments, MINERALS_MAP)
         }
 
