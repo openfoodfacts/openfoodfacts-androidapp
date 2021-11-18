@@ -156,7 +156,7 @@ dependencies {
     // Unit Testing
     testImplementation("androidx.arch.core:core-testing:2.1.0")
     testImplementation("junit:junit:4.13.2")
-    testImplementation("org.robolectric:robolectric:4.7")
+    testImplementation("org.robolectric:robolectric:4.7.1")
     testImplementation("org.mockito:mockito-core:4.0.0")
     testImplementation("org.mockito.kotlin:mockito-kotlin:4.0.0")
     testImplementation("net.javacrumbs.json-unit:json-unit-fluent:2.28.0")
