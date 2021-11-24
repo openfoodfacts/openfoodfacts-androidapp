@@ -58,7 +58,6 @@ import openfoodfacts.github.scrachx.openfood.network.ApiFields.Defaults.NUTRITIO
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.*
 import java.io.File
-import java.text.Collator
 import java.util.*
 import javax.inject.Inject
 
@@ -712,17 +711,25 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         }
 
     private fun displayAddNutrientDialog() {
-        val nutrients = resources.getStringArray(R.array.nutrients_array)
+        val nutrientsDefUnits = resources.getStringArray(R.array.nutrients_array).zip(PARAMS_OTHER_NUTRIENTS_DEFAULT_UNITS.keys)
+        val filteredNutrients = resources.getStringArray(R.array.nutrients_array)
             .filterIndexed { index, _ -> index !in usedNutrientsIndexes }
-            .sortedWith(Collator.getInstance(Locale.getDefault()))
+            .sortedBy { it.lowercase() }
             .toTypedArray()
 
         MaterialAlertDialogBuilder(requireActivity())
             .setTitle(R.string.choose_nutrient)
-            .setItems(nutrients) { _, index ->
-                val text = nutrients[index]
-                usedNutrientsIndexes += index
-                val textView = addNutrientRow(index, text)
+            .setItems(filteredNutrients) { _, index ->
+                val realIndex = nutrientsDefUnits.indexOfFirst { it.first == filteredNutrients[index] }
+                val text = nutrientsDefUnits[realIndex].first
+                usedNutrientsIndexes += realIndex
+                val textView = addNutrientRow(
+                    realIndex, text, true, unitSelectedIndex = getAllUnitsIndex(
+                        MeasurementUnit.findBySymbol(
+                            PARAMS_OTHER_NUTRIENTS_DEFAULT_UNITS[nutrientsDefUnits[realIndex].second]!!
+                        )!!
+                    )
+                )
 
                 allEditViews.add(textView)
                 textView.addValidListener()
