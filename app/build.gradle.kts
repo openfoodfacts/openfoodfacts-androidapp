@@ -168,7 +168,7 @@ dependencies {
     androidTestUtil("androidx.test:orchestrator:1.4.0")
 
     // Hilt for Android Testing
-    androidTestImplementation("com.google.dagger:hilt-android-testing:2.40.1")
+    androidTestImplementation("com.google.dagger:hilt-android-testing:2.40.2")
     kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.40.1")
 
     androidTestImplementation("androidx.test:runner:1.3.0") { exclude("junit") }
