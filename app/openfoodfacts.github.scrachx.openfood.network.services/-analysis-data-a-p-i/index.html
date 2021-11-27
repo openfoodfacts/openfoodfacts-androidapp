@@ -2,28 +2,35 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>AnalysisDataAPI</title>
-<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script><script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script><link href="../../../styles/style.css" rel="Stylesheet"><link href="../../../styles/logo-styles.css" rel="Stylesheet"><link href="../../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../../styles/main.css" rel="Stylesheet"><script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script><script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script><script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script><script type="text/javascript" src="../../../scripts/main.js" async="async"></script>  </head>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script>    <script>const storage = localStorage.getItem("dokka-dark-mode")
+const savedDarkMode = storage ? JSON.parse(storage) : false
+if(savedDarkMode === true){
+    document.getElementsByTagName("html")[0].classList.add("theme-dark")
+}</script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script><link href="../../../styles/style.css" rel="Stylesheet"><link href="../../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../../styles/main.css" rel="Stylesheet"><link href="../../../styles/prism.css" rel="Stylesheet"><link href="../../../styles/logo-styles.css" rel="Stylesheet"><script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script><script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script><script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script><script type="text/javascript" src="../../../scripts/main.js" async="async"></script><script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>  </head>
   <body>
+    <div class="navigation-wrapper" id="navigation-wrapper">
+      <div id="leftToggler"><span class="icon-toggler"></span></div>
+      <div class="library-name"><a href="../../../index.html">app</a></div>
+      <div></div>
+      <div class="pull-right d-flex">
+        <div class="filter-section" id="filter-section"><button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<button id="theme-toggle-button"><span id="theme-toggle"></span></button>
+        <div id="searchBar"></div>
+      </div>
+    </div>
     <div id="container">
-      <div id="leftColumn"><a href="../../../index.html">
-          <div id="logo"></div>
-        </a>
-        <div id="paneSearch"></div>
+      <div id="leftColumn">
         <div id="sideMenu"></div>
       </div>
-      <div id="main">
-        <div id="leftToggler"><span class="icon-toggler"></span></div>
-<script type="text/javascript" src="../../../scripts/main.js"></script>        <div class="main-content" id="content" pageIds="app::openfoodfacts.github.scrachx.openfood.network.services/AnalysisDataAPI///PointingToDeclaration//-402147001">
-          <div class="navigation-wrapper" id="navigation-wrapper">
-            <div class="breadcrumbs"><a href="../../../index.html">app</a>/<a href="../index.html">openfoodfacts.github.scrachx.openfood.network.services</a>/<a href="index.html">AnalysisDataAPI</a></div>
-            <div class="pull-right d-flex">
-              <div class="filter-section" id="filter-section"><button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":app:dokkaHtml/screenshots">androidJvm</button></div>
-              <div id="searchBar"></div>
-            </div>
-          </div>
+      <div id="main"><script type="text/javascript" src="../../../scripts/main.js"></script>
+        <div class="main-content" id="content" pageIds="app::openfoodfacts.github.scrachx.openfood.network.services/AnalysisDataAPI///PointingToDeclaration//-402147001">
+          <div class="breadcrumbs"><a href="../../../index.html">app</a>/<a href="../index.html">openfoodfacts.github.scrachx.openfood.network.services</a>/<a href="index.html">AnalysisDataAPI</a></div>
           <div class="cover ">
             <h1 class="cover"><span>Analysis</span><wbr></wbr><span>Data</span><wbr></wbr><span><span>API</span></span></h1>
-            <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace">interface <a href="index.html">AnalysisDataAPI</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">API calls for loading static multilingual data This calls should be used as rare as possible, because they load Big Data</p><h4 class="">Author</h4><p class="paragraph">Lobster</p></div></div>
+            <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+              <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><span class="token keyword">interface </span><a href="index.html">AnalysisDataAPI</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">API calls for loading static multilingual data This calls should be used as rare as possible, because they load Big Data</p><h4 class="">Author</h4><p class="paragraph">Lobster</p></div>            </div>
           </div>
           <div class="tabbedcontent">
             <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Types">Types</button><button class="section-tab" data-togglable="Functions">Functions</button></div>
@@ -36,16 +43,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><span class="token keyword">object </span><a href="-companion/index.html">Companion</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace">object <a href="-companion/index.html">Companion</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -58,16 +60,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation">@</span><span data-unresolved-link="retrofit2.http/GET///PointingToDeclaration/"><span class="token annotation">GET</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">&quot;data/taxonomies/additives.json&quot;</span></span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="get-additives.html"><span class="token function">getAdditives</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../openfoodfacts.github.scrachx.openfood.models.entities.additive/-additives-wrapper/index.html">AdditivesWrapper</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><div class="block"><div class="block">@<span data-unresolved-link="retrofit2.http/GET///PointingToDeclaration/">GET</span>(<span>value = <span class="breakable-word">&quot;data/taxonomies/additives.json&quot;</span></span><wbr></wbr>)</div></div>abstract fun <a href="get-additives.html">getAdditives</a>(): <span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span>&lt;<a href="../../openfoodfacts.github.scrachx.openfood.models.entities.additive/-additives-wrapper/index.html">AdditivesWrapper</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -78,16 +75,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation">@</span><span data-unresolved-link="retrofit2.http/GET///PointingToDeclaration/"><span class="token annotation">GET</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">&quot;data/taxonomies/additives_classes.json&quot;</span></span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="get-additives-classes.html"><span class="token function">getAdditivesClasses</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../openfoodfacts.github.scrachx.openfood.models.entities.category/-categories-wrapper/index.html">CategoriesWrapper</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><div class="block"><div class="block">@<span data-unresolved-link="retrofit2.http/GET///PointingToDeclaration/">GET</span>(<span>value = <span class="breakable-word">&quot;data/taxonomies/additives_classes.json&quot;</span></span><wbr></wbr>)</div></div>abstract fun <a href="get-additives-classes.html">getAdditivesClasses</a>(): <span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span>&lt;<a href="../../openfoodfacts.github.scrachx.openfood.models.entities.category/-categories-wrapper/index.html">CategoriesWrapper</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -98,16 +90,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation">@</span><span data-unresolved-link="retrofit2.http/GET///PointingToDeclaration/"><span class="token annotation">GET</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">&quot;data/taxonomies/allergens.json&quot;</span></span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="get-allergens.html"><span class="token function">getAllergens</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../openfoodfacts.github.scrachx.openfood.models.entities.allergen/-allergens-wrapper/index.html">AllergensWrapper</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><div class="block"><div class="block">@<span data-unresolved-link="retrofit2.http/GET///PointingToDeclaration/">GET</span>(<span>value = <span class="breakable-word">&quot;data/taxonomies/allergens.json&quot;</span></span><wbr></wbr>)</div></div>abstract fun <a href="get-allergens.html">getAllergens</a>(): <span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span>&lt;<a href="../../openfoodfacts.github.scrachx.openfood.models.entities.allergen/-allergens-wrapper/index.html">AllergensWrapper</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -118,16 +105,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation">@</span><span data-unresolved-link="retrofit2.http/GET///PointingToDeclaration/"><span class="token annotation">GET</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">&quot;files/app/ingredients-analysis.json&quot;</span></span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="get-analysis-tag-configs.html"><span class="token function">getAnalysisTagConfigs</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig/-analysis-tag-configs-wrapper/index.html">AnalysisTagConfigsWrapper</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><div class="block"><div class="block">@<span data-unresolved-link="retrofit2.http/GET///PointingToDeclaration/">GET</span>(<span>value = <span class="breakable-word">&quot;files/app/ingredients-analysis.json&quot;</span></span><wbr></wbr>)</div></div>abstract fun <a href="get-analysis-tag-configs.html">getAnalysisTagConfigs</a>(): <span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span>&lt;<a href="../../openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig/-analysis-tag-configs-wrapper/index.html">AnalysisTagConfigsWrapper</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -138,16 +120,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation">@</span><span data-unresolved-link="retrofit2.http/GET///PointingToDeclaration/"><span class="token annotation">GET</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">&quot;data/taxonomies/ingredients_analysis.json&quot;</span></span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="get-analysis-tags.html"><span class="token function">getAnalysisTags</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../openfoodfacts.github.scrachx.openfood.models.entities.analysistag/-analysis-tags-wrapper/index.html">AnalysisTagsWrapper</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><div class="block"><div class="block">@<span data-unresolved-link="retrofit2.http/GET///PointingToDeclaration/">GET</span>(<span>value = <span class="breakable-word">&quot;data/taxonomies/ingredients_analysis.json&quot;</span></span><wbr></wbr>)</div></div>abstract fun <a href="get-analysis-tags.html">getAnalysisTags</a>(): <span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span>&lt;<a href="../../openfoodfacts.github.scrachx.openfood.models.entities.analysistag/-analysis-tags-wrapper/index.html">AnalysisTagsWrapper</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -158,16 +135,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation">@</span><span data-unresolved-link="retrofit2.http/GET///PointingToDeclaration/"><span class="token annotation">GET</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">&quot;data/taxonomies/brands.json&quot;</span></span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="get-brands.html"><span class="token function">getBrands</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../openfoodfacts.github.scrachx.openfood.models.entities.brand/-brands-wrapper/index.html">BrandsWrapper</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><div class="block"><div class="block">@<span data-unresolved-link="retrofit2.http/GET///PointingToDeclaration/">GET</span>(<span>value = <span class="breakable-word">&quot;data/taxonomies/brands.json&quot;</span></span><wbr></wbr>)</div></div>abstract fun <a href="get-brands.html">getBrands</a>(): <span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span>&lt;<a href="../../openfoodfacts.github.scrachx.openfood.models.entities.brand/-brands-wrapper/index.html">BrandsWrapper</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -178,16 +150,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation">@</span><span data-unresolved-link="retrofit2.http/GET///PointingToDeclaration/"><span class="token annotation">GET</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">&quot;data/taxonomies/categories.json&quot;</span></span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="get-categories.html"><span class="token function">getCategories</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../openfoodfacts.github.scrachx.openfood.models.entities.category/-categories-wrapper/index.html">CategoriesWrapper</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><div class="block"><div class="block">@<span data-unresolved-link="retrofit2.http/GET///PointingToDeclaration/">GET</span>(<span>value = <span class="breakable-word">&quot;data/taxonomies/categories.json&quot;</span></span><wbr></wbr>)</div></div>abstract fun <a href="get-categories.html">getCategories</a>(): <span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span>&lt;<a href="../../openfoodfacts.github.scrachx.openfood.models.entities.category/-categories-wrapper/index.html">CategoriesWrapper</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -198,16 +165,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation">@</span><span data-unresolved-link="retrofit2.http/GET///PointingToDeclaration/"><span class="token annotation">GET</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">&quot;data/taxonomies/countries.json&quot;</span></span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="get-countries.html"><span class="token function">getCountries</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../openfoodfacts.github.scrachx.openfood.models.entities.country/-countries-wrapper/index.html">CountriesWrapper</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><div class="block"><div class="block">@<span data-unresolved-link="retrofit2.http/GET///PointingToDeclaration/">GET</span>(<span>value = <span class="breakable-word">&quot;data/taxonomies/countries.json&quot;</span></span><wbr></wbr>)</div></div>abstract fun <a href="get-countries.html">getCountries</a>(): <span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span>&lt;<a href="../../openfoodfacts.github.scrachx.openfood.models.entities.country/-countries-wrapper/index.html">CountriesWrapper</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -218,16 +180,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation">@</span><span data-unresolved-link="retrofit2.http/GET///PointingToDeclaration/"><span class="token annotation">GET</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">&quot;data/taxonomies/ingredients.json&quot;</span></span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="get-ingredients.html"><span class="token function">getIngredients</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../openfoodfacts.github.scrachx.openfood.models.entities.ingredient/-ingredients-wrapper/index.html">IngredientsWrapper</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><div class="block"><div class="block">@<span data-unresolved-link="retrofit2.http/GET///PointingToDeclaration/">GET</span>(<span>value = <span class="breakable-word">&quot;data/taxonomies/ingredients.json&quot;</span></span><wbr></wbr>)</div></div>abstract fun <a href="get-ingredients.html">getIngredients</a>(): <span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span>&lt;<a href="../../openfoodfacts.github.scrachx.openfood.models.entities.ingredient/-ingredients-wrapper/index.html">IngredientsWrapper</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -238,16 +195,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation">@</span><span data-unresolved-link="retrofit2.http/GET///PointingToDeclaration/"><span class="token annotation">GET</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">&quot;data/invalid-barcodes.json&quot;</span></span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="get-invalid-barcodes.html"><span class="token function">getInvalidBarcodes</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><div class="block"><div class="block">@<span data-unresolved-link="retrofit2.http/GET///PointingToDeclaration/">GET</span>(<span>value = <span class="breakable-word">&quot;data/invalid-barcodes.json&quot;</span></span><wbr></wbr>)</div></div>abstract fun <a href="get-invalid-barcodes.html">getInvalidBarcodes</a>(): <span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span>&lt;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a>&lt;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>&gt;&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -258,16 +210,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation">@</span><span data-unresolved-link="retrofit2.http/GET///PointingToDeclaration/"><span class="token annotation">GET</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">&quot;data/taxonomies/labels.json&quot;</span></span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="get-labels.html"><span class="token function">getLabels</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../openfoodfacts.github.scrachx.openfood.models.entities.label/-labels-wrapper/index.html">LabelsWrapper</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><div class="block"><div class="block">@<span data-unresolved-link="retrofit2.http/GET///PointingToDeclaration/">GET</span>(<span>value = <span class="breakable-word">&quot;data/taxonomies/labels.json&quot;</span></span><wbr></wbr>)</div></div>abstract fun <a href="get-labels.html">getLabels</a>(): <span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span>&lt;<a href="../../openfoodfacts.github.scrachx.openfood.models.entities.label/-labels-wrapper/index.html">LabelsWrapper</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -278,16 +225,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation">@</span><span data-unresolved-link="retrofit2.http/GET///PointingToDeclaration/"><span class="token annotation">GET</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">&quot;data/taxonomies/languages.json&quot;</span></span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="get-languages.html"><span class="token function">getLanguages</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../openfoodfacts.github.scrachx.openfood.models.entities.category/-categories-wrapper/index.html">CategoriesWrapper</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><div class="block"><div class="block">@<span data-unresolved-link="retrofit2.http/GET///PointingToDeclaration/">GET</span>(<span>value = <span class="breakable-word">&quot;data/taxonomies/languages.json&quot;</span></span><wbr></wbr>)</div></div>abstract fun <a href="get-languages.html">getLanguages</a>(): <span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span>&lt;<a href="../../openfoodfacts.github.scrachx.openfood.models.entities.category/-categories-wrapper/index.html">CategoriesWrapper</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -298,16 +240,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation">@</span><span data-unresolved-link="retrofit2.http/GET///PointingToDeclaration/"><span class="token annotation">GET</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">&quot;data/taxonomies/minerals.json&quot;</span></span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="get-minerals.html"><span class="token function">getMinerals</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../openfoodfacts.github.scrachx.openfood.models.entities.category/-categories-wrapper/index.html">CategoriesWrapper</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><div class="block"><div class="block">@<span data-unresolved-link="retrofit2.http/GET///PointingToDeclaration/">GET</span>(<span>value = <span class="breakable-word">&quot;data/taxonomies/minerals.json&quot;</span></span><wbr></wbr>)</div></div>abstract fun <a href="get-minerals.html">getMinerals</a>(): <span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span>&lt;<a href="../../openfoodfacts.github.scrachx.openfood.models.entities.category/-categories-wrapper/index.html">CategoriesWrapper</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -318,16 +255,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation">@</span><span data-unresolved-link="retrofit2.http/GET///PointingToDeclaration/"><span class="token annotation">GET</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">&quot;data/taxonomies/nucleotides.json&quot;</span></span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="get-nucleotides.html"><span class="token function">getNucleotides</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../openfoodfacts.github.scrachx.openfood.models.entities.category/-categories-wrapper/index.html">CategoriesWrapper</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><div class="block"><div class="block">@<span data-unresolved-link="retrofit2.http/GET///PointingToDeclaration/">GET</span>(<span>value = <span class="breakable-word">&quot;data/taxonomies/nucleotides.json&quot;</span></span><wbr></wbr>)</div></div>abstract fun <a href="get-nucleotides.html">getNucleotides</a>(): <span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span>&lt;<a href="../../openfoodfacts.github.scrachx.openfood.models.entities.category/-categories-wrapper/index.html">CategoriesWrapper</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -338,16 +270,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation">@</span><span data-unresolved-link="retrofit2.http/GET///PointingToDeclaration/"><span class="token annotation">GET</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">&quot;data/taxonomies/nutrient_levels.json&quot;</span></span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="get-nutrient-levels.html"><span class="token function">getNutrientLevels</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../openfoodfacts.github.scrachx.openfood.models.entities.category/-categories-wrapper/index.html">CategoriesWrapper</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><div class="block"><div class="block">@<span data-unresolved-link="retrofit2.http/GET///PointingToDeclaration/">GET</span>(<span>value = <span class="breakable-word">&quot;data/taxonomies/nutrient_levels.json&quot;</span></span><wbr></wbr>)</div></div>abstract fun <a href="get-nutrient-levels.html">getNutrientLevels</a>(): <span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span>&lt;<a href="../../openfoodfacts.github.scrachx.openfood.models.entities.category/-categories-wrapper/index.html">CategoriesWrapper</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -358,16 +285,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation">@</span><span data-unresolved-link="retrofit2.http/GET///PointingToDeclaration/"><span class="token annotation">GET</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">&quot;data/taxonomies/nutrients.json&quot;</span></span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="get-nutrients.html"><span class="token function">getNutrients</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../openfoodfacts.github.scrachx.openfood.models.entities.category/-categories-wrapper/index.html">CategoriesWrapper</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><div class="block"><div class="block">@<span data-unresolved-link="retrofit2.http/GET///PointingToDeclaration/">GET</span>(<span>value = <span class="breakable-word">&quot;data/taxonomies/nutrients.json&quot;</span></span><wbr></wbr>)</div></div>abstract fun <a href="get-nutrients.html">getNutrients</a>(): <span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span>&lt;<a href="../../openfoodfacts.github.scrachx.openfood.models.entities.category/-categories-wrapper/index.html">CategoriesWrapper</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -378,16 +300,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation">@</span><span data-unresolved-link="retrofit2.http/GET///PointingToDeclaration/"><span class="token annotation">GET</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">&quot;data/taxonomies/states.json&quot;</span></span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="get-states.html"><span class="token function">getStates</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../openfoodfacts.github.scrachx.openfood.models.entities.states/-states-wrapper/index.html">StatesWrapper</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><div class="block"><div class="block">@<span data-unresolved-link="retrofit2.http/GET///PointingToDeclaration/">GET</span>(<span>value = <span class="breakable-word">&quot;data/taxonomies/states.json&quot;</span></span><wbr></wbr>)</div></div>abstract fun <a href="get-states.html">getStates</a>(): <span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span>&lt;<a href="../../openfoodfacts.github.scrachx.openfood.models.entities.states/-states-wrapper/index.html">StatesWrapper</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -398,16 +315,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation">@</span><span data-unresolved-link="retrofit2.http/GET///PointingToDeclaration/"><span class="token annotation">GET</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">&quot;data/taxonomies/stores.json&quot;</span></span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="get-stores.html"><span class="token function">getStores</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../openfoodfacts.github.scrachx.openfood.models.entities.store/-stores-wrapper/index.html">StoresWrapper</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><div class="block"><div class="block">@<span data-unresolved-link="retrofit2.http/GET///PointingToDeclaration/">GET</span>(<span>value = <span class="breakable-word">&quot;data/taxonomies/stores.json&quot;</span></span><wbr></wbr>)</div></div>abstract fun <a href="get-stores.html">getStores</a>(): <span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span>&lt;<a href="../../openfoodfacts.github.scrachx.openfood.models.entities.store/-stores-wrapper/index.html">StoresWrapper</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -418,16 +330,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation">@</span><span data-unresolved-link="retrofit2.http/GET///PointingToDeclaration/"><span class="token annotation">GET</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">&quot;data/taxonomies/packager-codes.json&quot;</span></span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="get-tags.html"><span class="token function">getTags</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../openfoodfacts.github.scrachx.openfood.models.entities.tag/-tags-wrapper/index.html">TagsWrapper</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><div class="block"><div class="block">@<span data-unresolved-link="retrofit2.http/GET///PointingToDeclaration/">GET</span>(<span>value = <span class="breakable-word">&quot;data/taxonomies/packager-codes.json&quot;</span></span><wbr></wbr>)</div></div>abstract fun <a href="get-tags.html">getTags</a>(): <span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span>&lt;<a href="../../openfoodfacts.github.scrachx.openfood.models.entities.tag/-tags-wrapper/index.html">TagsWrapper</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -438,16 +345,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation">@</span><span data-unresolved-link="retrofit2.http/GET///PointingToDeclaration/"><span class="token annotation">GET</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token string">&quot;data/taxonomies/vitamins.json&quot;</span></span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="get-vitamins.html"><span class="token function">getVitamins</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../openfoodfacts.github.scrachx.openfood.models.entities.category/-categories-wrapper/index.html">CategoriesWrapper</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><div class="block"><div class="block">@<span data-unresolved-link="retrofit2.http/GET///PointingToDeclaration/">GET</span>(<span>value = <span class="breakable-word">&quot;data/taxonomies/vitamins.json&quot;</span></span><wbr></wbr>)</div></div>abstract fun <a href="get-vitamins.html">getVitamins</a>(): <span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span>&lt;<a href="../../openfoodfacts.github.scrachx.openfood.models.entities.category/-categories-wrapper/index.html">CategoriesWrapper</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -455,7 +357,7 @@
             </div>
           </div>
         </div>
-        <div class="footer"><span class="go-to-top-icon"><a href="#content"></a></span><span>© 2021 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
+        <div class="footer"><span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2021 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
       </div>
     </div>
   </body>

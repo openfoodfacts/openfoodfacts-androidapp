@@ -2,28 +2,35 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>SendProduct</title>
-<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script><script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script><link href="../../../styles/style.css" rel="Stylesheet"><link href="../../../styles/logo-styles.css" rel="Stylesheet"><link href="../../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../../styles/main.css" rel="Stylesheet"><script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script><script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script><script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script><script type="text/javascript" src="../../../scripts/main.js" async="async"></script>  </head>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script>    <script>const storage = localStorage.getItem("dokka-dark-mode")
+const savedDarkMode = storage ? JSON.parse(storage) : false
+if(savedDarkMode === true){
+    document.getElementsByTagName("html")[0].classList.add("theme-dark")
+}</script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script><link href="../../../styles/style.css" rel="Stylesheet"><link href="../../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../../styles/main.css" rel="Stylesheet"><link href="../../../styles/prism.css" rel="Stylesheet"><link href="../../../styles/logo-styles.css" rel="Stylesheet"><script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script><script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script><script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script><script type="text/javascript" src="../../../scripts/main.js" async="async"></script><script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>  </head>
   <body>
+    <div class="navigation-wrapper" id="navigation-wrapper">
+      <div id="leftToggler"><span class="icon-toggler"></span></div>
+      <div class="library-name"><a href="../../../index.html">app</a></div>
+      <div></div>
+      <div class="pull-right d-flex">
+        <div class="filter-section" id="filter-section"><button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<button id="theme-toggle-button"><span id="theme-toggle"></span></button>
+        <div id="searchBar"></div>
+      </div>
+    </div>
     <div id="container">
-      <div id="leftColumn"><a href="../../../index.html">
-          <div id="logo"></div>
-        </a>
-        <div id="paneSearch"></div>
+      <div id="leftColumn">
         <div id="sideMenu"></div>
       </div>
-      <div id="main">
-        <div id="leftToggler"><span class="icon-toggler"></span></div>
-<script type="text/javascript" src="../../../scripts/main.js"></script>        <div class="main-content" id="content" pageIds="app::openfoodfacts.github.scrachx.openfood.models.entities/SendProduct///PointingToDeclaration//-402147001">
-          <div class="navigation-wrapper" id="navigation-wrapper">
-            <div class="breadcrumbs"><a href="../../../index.html">app</a>/<a href="../index.html">openfoodfacts.github.scrachx.openfood.models.entities</a>/<a href="index.html">SendProduct</a></div>
-            <div class="pull-right d-flex">
-              <div class="filter-section" id="filter-section"><button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":app:dokkaHtml/screenshots">androidJvm</button></div>
-              <div id="searchBar"></div>
-            </div>
-          </div>
+      <div id="main"><script type="text/javascript" src="../../../scripts/main.js"></script>
+        <div class="main-content" id="content" pageIds="app::openfoodfacts.github.scrachx.openfood.models.entities/SendProduct///PointingToDeclaration//-402147001">
+          <div class="breadcrumbs"><a href="../../../index.html">app</a>/<a href="../index.html">openfoodfacts.github.scrachx.openfood.models.entities</a>/<a href="index.html">SendProduct</a></div>
           <div class="cover ">
             <h1 class="cover"><span>Send</span><wbr></wbr><span><span>Product</span></span></h1>
-            <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace">open class <a href="index.html">SendProduct</a> : <a href="https://developer.android.com/reference/kotlin/java/io/Serializable.html">Serializable</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+            <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+              <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="index.html">SendProduct</a> : <a href="https://developer.android.com/reference/kotlin/java/io/Serializable.html">Serializable</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>            </div>
           </div>
           <div class="tabbedcontent">
             <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Constructors">Constructors</button><button class="section-tab" data-togglable="Functions">Functions</button><button class="section-tab" data-togglable="Properties">Properties</button></div>
@@ -36,11 +43,10 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
-                      </div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace">open fun <a href="-send-product.html">SendProduct</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="-send-product.html"><span class="token function">SendProduct</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
                       </div>
                     </div>
                   </div>
@@ -52,11 +58,10 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
-                      </div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace">open fun <a href="-send-product.html">SendProduct</a>(id: <a href="https://developer.android.com/reference/kotlin/java/lang/Long.html">Long</a>, barcode: <a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a>, lang: <a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a>, name: <a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a>, brands: <a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a>, weight: <a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a>, imgUploadFront: <a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a>, imgUploadIngredients: <a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a>, imgUploadNutrition: <a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a>, imgUploadPackaging: <a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a>, weightUnit: <a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="-send-product.html"><span class="token function">SendProduct</span></a><span class="token punctuation">(</span>id<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/lang/Long.html">Long</a><span class="token punctuation">, </span>barcode<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a><span class="token punctuation">, </span>lang<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a><span class="token punctuation">, </span>name<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a><span class="token punctuation">, </span>brands<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a><span class="token punctuation">, </span>weight<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a><span class="token punctuation">, </span>imgUploadFront<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a><span class="token punctuation">, </span>imgUploadIngredients<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a><span class="token punctuation">, </span>imgUploadNutrition<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a><span class="token punctuation">, </span>imgUploadPackaging<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a><span class="token punctuation">, </span>weightUnit<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
                       </div>
                     </div>
                   </div>
@@ -68,11 +73,10 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
-                      </div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace">open fun <a href="-send-product.html">SendProduct</a>(<span>@<a href="https://developer.android.com/reference/kotlin/androidx/annotation/NonNull.html">NonNull</a> </span>sp: <a href="index.html">SendProduct</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="-send-product.html"><span class="token function">SendProduct</span></a><span class="token punctuation">(</span><span><span class="token annotation">@</span><a href="https://developer.android.com/reference/kotlin/androidx/annotation/NonNull.html"><span class="token annotation">NonNull</span></a> </span>sp<span class="token operator">: </span><a href="index.html">SendProduct</a><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
                       </div>
                     </div>
                   </div>
@@ -86,16 +90,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="compress.html"><span class="token function">compress</span></a><span class="token punctuation">(</span><span><span class="token annotation">@</span><a href="https://developer.android.com/reference/kotlin/androidx/annotation/NonNull.html"><span class="token annotation">NonNull</span></a> </span>field<span class="token operator">: </span><a href="../../openfoodfacts.github.scrachx.openfood.models/-product-image-field/index.html">ProductImageField</a><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief ">Compress the image according to the <a href="../../openfoodfacts.github.scrachx.openfood.models/-product-image-field/index.html">ProductImageField</a>.</div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace">open fun <a href="compress.html">compress</a>(<span>@<a href="https://developer.android.com/reference/kotlin/androidx/annotation/NonNull.html">NonNull</a> </span>field: <a href="../../openfoodfacts.github.scrachx.openfood.models/-product-image-field/index.html">ProductImageField</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<div class="brief ">Compress the image according to the <a href="../../openfoodfacts.github.scrachx.openfood.models/-product-image-field/index.html">ProductImageField</a>.</div></div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -106,16 +105,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="equals.html"><span class="token function">equals</span></a><span class="token punctuation">(</span>o<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace">open fun <a href="equals.html">equals</a>(o: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a>): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -126,16 +120,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="get-quantity.html"><span class="token function">getQuantity</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace">open fun <a href="get-quantity.html">getQuantity</a>(): <a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -148,11 +137,10 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
-                      </div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><a data-name="1958583295%2FProperties%2F-402147001" anchor-label="barcode" id="1958583295%2FProperties%2F-402147001" data-filterable-set=":app:dokkaHtml/screenshots"></a><div class="symbol monospace">private open var <a href="barcode.html">barcode</a>: <a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted" data-togglable="Properties">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><a data-name="1958583295%2FProperties%2F-402147001" anchor-label="barcode" id="1958583295%2FProperties%2F-402147001" data-filterable-set=":app:dokkaHtml/screenshots"></a><div class="symbol monospace"><span class="token keyword">private </span><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">var </span><a href="barcode.html">barcode</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
                       </div>
                     </div>
                   </div>
@@ -164,11 +152,10 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
-                      </div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><a data-name="-93918609%2FProperties%2F-402147001" anchor-label="brands" id="-93918609%2FProperties%2F-402147001" data-filterable-set=":app:dokkaHtml/screenshots"></a><div class="symbol monospace">private open var <a href="brands.html">brands</a>: <a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted" data-togglable="Properties">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><a data-name="-93918609%2FProperties%2F-402147001" anchor-label="brands" id="-93918609%2FProperties%2F-402147001" data-filterable-set=":app:dokkaHtml/screenshots"></a><div class="symbol monospace"><span class="token keyword">private </span><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">var </span><a href="brands.html">brands</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
                       </div>
                     </div>
                   </div>
@@ -180,11 +167,10 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
-                      </div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><a data-name="-1672234752%2FProperties%2F-402147001" anchor-label="id" id="-1672234752%2FProperties%2F-402147001" data-filterable-set=":app:dokkaHtml/screenshots"></a><div class="symbol monospace">private open var <a href="id.html">id</a>: <a href="https://developer.android.com/reference/kotlin/java/lang/Long.html">Long</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted" data-togglable="Properties">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><a data-name="-1672234752%2FProperties%2F-402147001" anchor-label="id" id="-1672234752%2FProperties%2F-402147001" data-filterable-set=":app:dokkaHtml/screenshots"></a><div class="symbol monospace"><span class="token keyword">private </span><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">var </span><a href="id.html">id</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/lang/Long.html">Long</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
                       </div>
                     </div>
                   </div>
@@ -196,11 +182,10 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
-                      </div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><a data-name="1883869046%2FProperties%2F-402147001" anchor-label="imgUploadFront" id="1883869046%2FProperties%2F-402147001" data-filterable-set=":app:dokkaHtml/screenshots"></a><div class="symbol monospace">private open var <a href="img-upload-front.html">imgUploadFront</a>: <a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted" data-togglable="Properties">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><a data-name="1883869046%2FProperties%2F-402147001" anchor-label="imgUploadFront" id="1883869046%2FProperties%2F-402147001" data-filterable-set=":app:dokkaHtml/screenshots"></a><div class="symbol monospace"><span class="token keyword">private </span><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">var </span><a href="img-upload-front.html">imgUploadFront</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
                       </div>
                     </div>
                   </div>
@@ -212,11 +197,10 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
-                      </div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><a data-name="-2069317251%2FProperties%2F-402147001" anchor-label="imgUploadIngredients" id="-2069317251%2FProperties%2F-402147001" data-filterable-set=":app:dokkaHtml/screenshots"></a><div class="symbol monospace">private open var <a href="img-upload-ingredients.html">imgUploadIngredients</a>: <a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted" data-togglable="Properties">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><a data-name="-2069317251%2FProperties%2F-402147001" anchor-label="imgUploadIngredients" id="-2069317251%2FProperties%2F-402147001" data-filterable-set=":app:dokkaHtml/screenshots"></a><div class="symbol monospace"><span class="token keyword">private </span><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">var </span><a href="img-upload-ingredients.html">imgUploadIngredients</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
                       </div>
                     </div>
                   </div>
@@ -228,11 +212,10 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
-                      </div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><a data-name="1152445415%2FProperties%2F-402147001" anchor-label="imgUploadNutrition" id="1152445415%2FProperties%2F-402147001" data-filterable-set=":app:dokkaHtml/screenshots"></a><div class="symbol monospace">private open var <a href="img-upload-nutrition.html">imgUploadNutrition</a>: <a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted" data-togglable="Properties">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><a data-name="1152445415%2FProperties%2F-402147001" anchor-label="imgUploadNutrition" id="1152445415%2FProperties%2F-402147001" data-filterable-set=":app:dokkaHtml/screenshots"></a><div class="symbol monospace"><span class="token keyword">private </span><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">var </span><a href="img-upload-nutrition.html">imgUploadNutrition</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
                       </div>
                     </div>
                   </div>
@@ -244,11 +227,10 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
-                      </div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><a data-name="-405946788%2FProperties%2F-402147001" anchor-label="imgUploadPackaging" id="-405946788%2FProperties%2F-402147001" data-filterable-set=":app:dokkaHtml/screenshots"></a><div class="symbol monospace">private open var <a href="img-upload-packaging.html">imgUploadPackaging</a>: <a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted" data-togglable="Properties">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><a data-name="-405946788%2FProperties%2F-402147001" anchor-label="imgUploadPackaging" id="-405946788%2FProperties%2F-402147001" data-filterable-set=":app:dokkaHtml/screenshots"></a><div class="symbol monospace"><span class="token keyword">private </span><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">var </span><a href="img-upload-packaging.html">imgUploadPackaging</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
                       </div>
                     </div>
                   </div>
@@ -260,11 +242,10 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
-                      </div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><a data-name="-161107955%2FProperties%2F-402147001" anchor-label="lang" id="-161107955%2FProperties%2F-402147001" data-filterable-set=":app:dokkaHtml/screenshots"></a><div class="symbol monospace">private open var <a href="lang.html">lang</a>: <a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted" data-togglable="Properties">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><a data-name="-161107955%2FProperties%2F-402147001" anchor-label="lang" id="-161107955%2FProperties%2F-402147001" data-filterable-set=":app:dokkaHtml/screenshots"></a><div class="symbol monospace"><span class="token keyword">private </span><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">var </span><a href="lang.html">lang</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
                       </div>
                     </div>
                   </div>
@@ -276,11 +257,10 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
-                      </div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><a data-name="201441808%2FProperties%2F-402147001" anchor-label="name" id="201441808%2FProperties%2F-402147001" data-filterable-set=":app:dokkaHtml/screenshots"></a><div class="symbol monospace">private open var <a href="name.html">name</a>: <a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted" data-togglable="Properties">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><a data-name="201441808%2FProperties%2F-402147001" anchor-label="name" id="201441808%2FProperties%2F-402147001" data-filterable-set=":app:dokkaHtml/screenshots"></a><div class="symbol monospace"><span class="token keyword">private </span><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">var </span><a href="name.html">name</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
                       </div>
                     </div>
                   </div>
@@ -292,11 +272,10 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
-                      </div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><a data-name="-223525632%2FProperties%2F-402147001" anchor-label="password" id="-223525632%2FProperties%2F-402147001" data-filterable-set=":app:dokkaHtml/screenshots"></a><div class="symbol monospace">private open var <a href="password.html">password</a>: <a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted" data-togglable="Properties">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><a data-name="-223525632%2FProperties%2F-402147001" anchor-label="password" id="-223525632%2FProperties%2F-402147001" data-filterable-set=":app:dokkaHtml/screenshots"></a><div class="symbol monospace"><span class="token keyword">private </span><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">var </span><a href="password.html">password</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
                       </div>
                     </div>
                   </div>
@@ -308,11 +287,10 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
-                      </div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><a data-name="-1905583275%2FProperties%2F-402147001" anchor-label="userID" id="-1905583275%2FProperties%2F-402147001" data-filterable-set=":app:dokkaHtml/screenshots"></a><div class="symbol monospace">private open var <a href="user-i-d.html">userID</a>: <a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted" data-togglable="Properties">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><a data-name="-1905583275%2FProperties%2F-402147001" anchor-label="userID" id="-1905583275%2FProperties%2F-402147001" data-filterable-set=":app:dokkaHtml/screenshots"></a><div class="symbol monospace"><span class="token keyword">private </span><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">var </span><a href="user-i-d.html">userID</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
                       </div>
                     </div>
                   </div>
@@ -324,11 +302,10 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
-                      </div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><a data-name="1151346499%2FProperties%2F-402147001" anchor-label="weight" id="1151346499%2FProperties%2F-402147001" data-filterable-set=":app:dokkaHtml/screenshots"></a><div class="symbol monospace">private open var <a href="weight.html">weight</a>: <a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted" data-togglable="Properties">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><a data-name="1151346499%2FProperties%2F-402147001" anchor-label="weight" id="1151346499%2FProperties%2F-402147001" data-filterable-set=":app:dokkaHtml/screenshots"></a><div class="symbol monospace"><span class="token keyword">private </span><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">var </span><a href="weight.html">weight</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
                       </div>
                     </div>
                   </div>
@@ -340,11 +317,10 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
-                      </div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><a data-name="1746437919%2FProperties%2F-402147001" anchor-label="weightUnit" id="1746437919%2FProperties%2F-402147001" data-filterable-set=":app:dokkaHtml/screenshots"></a><div class="symbol monospace">private open var <a href="weight-unit.html">weightUnit</a>: <a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted" data-togglable="Properties">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><a data-name="1746437919%2FProperties%2F-402147001" anchor-label="weightUnit" id="1746437919%2FProperties%2F-402147001" data-filterable-set=":app:dokkaHtml/screenshots"></a><div class="symbol monospace"><span class="token keyword">private </span><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">var </span><a href="weight-unit.html">weightUnit</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/lang/String.html">String</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
                       </div>
                     </div>
                   </div>
@@ -353,7 +329,7 @@
             </div>
           </div>
         </div>
-        <div class="footer"><span class="go-to-top-icon"><a href="#content"></a></span><span>© 2021 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
+        <div class="footer"><span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2021 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
       </div>
     </div>
   </body>

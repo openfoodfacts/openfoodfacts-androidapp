@@ -2,28 +2,35 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>ProductRepository</title>
-<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script><script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script><link href="../../../styles/style.css" rel="Stylesheet"><link href="../../../styles/logo-styles.css" rel="Stylesheet"><link href="../../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../../styles/main.css" rel="Stylesheet"><script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script><script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script><script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script><script type="text/javascript" src="../../../scripts/main.js" async="async"></script>  </head>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script>    <script>const storage = localStorage.getItem("dokka-dark-mode")
+const savedDarkMode = storage ? JSON.parse(storage) : false
+if(savedDarkMode === true){
+    document.getElementsByTagName("html")[0].classList.add("theme-dark")
+}</script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script><link href="../../../styles/style.css" rel="Stylesheet"><link href="../../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../../styles/main.css" rel="Stylesheet"><link href="../../../styles/prism.css" rel="Stylesheet"><link href="../../../styles/logo-styles.css" rel="Stylesheet"><script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script><script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script><script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script><script type="text/javascript" src="../../../scripts/main.js" async="async"></script><script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>  </head>
   <body>
+    <div class="navigation-wrapper" id="navigation-wrapper">
+      <div id="leftToggler"><span class="icon-toggler"></span></div>
+      <div class="library-name"><a href="../../../index.html">app</a></div>
+      <div></div>
+      <div class="pull-right d-flex">
+        <div class="filter-section" id="filter-section"><button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<button id="theme-toggle-button"><span id="theme-toggle"></span></button>
+        <div id="searchBar"></div>
+      </div>
+    </div>
     <div id="container">
-      <div id="leftColumn"><a href="../../../index.html">
-          <div id="logo"></div>
-        </a>
-        <div id="paneSearch"></div>
+      <div id="leftColumn">
         <div id="sideMenu"></div>
       </div>
-      <div id="main">
-        <div id="leftToggler"><span class="icon-toggler"></span></div>
-<script type="text/javascript" src="../../../scripts/main.js"></script>        <div class="main-content" id="content" pageIds="app::openfoodfacts.github.scrachx.openfood.repositories/ProductRepository///PointingToDeclaration//-402147001">
-          <div class="navigation-wrapper" id="navigation-wrapper">
-            <div class="breadcrumbs"><a href="../../../index.html">app</a>/<a href="../index.html">openfoodfacts.github.scrachx.openfood.repositories</a>/<a href="index.html">ProductRepository</a></div>
-            <div class="pull-right d-flex">
-              <div class="filter-section" id="filter-section"><button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":app:dokkaHtml/screenshots">androidJvm</button></div>
-              <div id="searchBar"></div>
-            </div>
-          </div>
+      <div id="main"><script type="text/javascript" src="../../../scripts/main.js"></script>
+        <div class="main-content" id="content" pageIds="app::openfoodfacts.github.scrachx.openfood.repositories/ProductRepository///PointingToDeclaration//-402147001">
+          <div class="breadcrumbs"><a href="../../../index.html">app</a>/<a href="../index.html">openfoodfacts.github.scrachx.openfood.repositories</a>/<a href="index.html">ProductRepository</a></div>
           <div class="cover ">
             <h1 class="cover"><span>Product</span><wbr></wbr><span><span>Repository</span></span></h1>
-            <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><div class="block"><div class="block">@<span data-unresolved-link="javax.inject/Singleton///PointingToDeclaration/">Singleton</span></div></div>class <a href="index.html">ProductRepository</a> <span>@<span data-unresolved-link="javax.inject/Inject///PointingToDeclaration/">Inject</span> </span>constructor(context: <a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a>, daoSession: <span data-unresolved-link="/&amp;lt;ERROR CLASS&amp;gt;///PointingToDeclaration/">&lt;ERROR CLASS&gt;</span>, analysisDataApi: <a href="../../openfoodfacts.github.scrachx.openfood.network.services/-analysis-data-a-p-i/index.html">AnalysisDataAPI</a>, robotoffApi: <a href="../../openfoodfacts.github.scrachx.openfood.network.services/-robotoff-a-p-i/index.html">RobotoffAPI</a>, taxonomiesManager: <a href="../-taxonomies-manager/index.html">TaxonomiesManager</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">This is a repository class which implements repository interface.</p><h4 class="">Author</h4><p class="paragraph">Lobster</p><h4 class="">Since</h4><p class="paragraph">03.03.18</p></div></div>
+            <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+              <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation">@</span><span data-unresolved-link="javax.inject/Singleton///PointingToDeclaration/"><span class="token annotation">Singleton</span></span></div></div><span class="token keyword">class </span><a href="index.html">ProductRepository</a> <span><span class="token annotation">@</span><span data-unresolved-link="javax.inject/Inject///PointingToDeclaration/"><span class="token annotation">Inject</span></span> </span><span class="token keyword">constructor</span><span class="token punctuation">(</span>context<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a><span class="token punctuation">, </span>daoSession<span class="token operator">: </span><span data-unresolved-link="/&amp;lt;ERROR CLASS&amp;gt;///PointingToDeclaration/">&lt;ERROR CLASS&gt;</span><span class="token punctuation">, </span>analysisDataApi<span class="token operator">: </span><a href="../../openfoodfacts.github.scrachx.openfood.network.services/-analysis-data-a-p-i/index.html">AnalysisDataAPI</a><span class="token punctuation">, </span>robotoffApi<span class="token operator">: </span><a href="../../openfoodfacts.github.scrachx.openfood.network.services/-robotoff-a-p-i/index.html">RobotoffAPI</a><span class="token punctuation">, </span>taxonomiesManager<span class="token operator">: </span><a href="../-taxonomies-manager/index.html">TaxonomiesManager</a><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">This is a repository class which implements repository interface.</p><h4 class="">Author</h4><p class="paragraph">Lobster</p><h4 class="">Since</h4><p class="paragraph">03.03.18</p></div>            </div>
           </div>
           <div class="tabbedcontent">
             <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Types">Types</button><button class="section-tab" data-togglable="Constructors">Constructors</button><button class="section-tab" data-togglable="Functions">Functions</button></div>
@@ -36,11 +43,10 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
-                      </div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><div class="block"><div class="block">@<span data-unresolved-link="javax.inject/Inject///PointingToDeclaration/">Inject</span></div></div>fun <a href="-product-repository.html">ProductRepository</a>(context: <a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a>, daoSession: <span data-unresolved-link="/&amp;lt;ERROR CLASS&amp;gt;///PointingToDeclaration/">&lt;ERROR CLASS&gt;</span>, analysisDataApi: <a href="../../openfoodfacts.github.scrachx.openfood.network.services/-analysis-data-a-p-i/index.html">AnalysisDataAPI</a>, robotoffApi: <a href="../../openfoodfacts.github.scrachx.openfood.network.services/-robotoff-a-p-i/index.html">RobotoffAPI</a>, taxonomiesManager: <a href="../-taxonomies-manager/index.html">TaxonomiesManager</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation">@</span><span data-unresolved-link="javax.inject/Inject///PointingToDeclaration/"><span class="token annotation">Inject</span></span></div></div><span class="token keyword"></span><span class="token keyword">fun </span><a href="-product-repository.html"><span class="token function">ProductRepository</span></a><span class="token punctuation">(</span>context<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a><span class="token punctuation">, </span>daoSession<span class="token operator">: </span><span data-unresolved-link="/&amp;lt;ERROR CLASS&amp;gt;///PointingToDeclaration/">&lt;ERROR CLASS&gt;</span><span class="token punctuation">, </span>analysisDataApi<span class="token operator">: </span><a href="../../openfoodfacts.github.scrachx.openfood.network.services/-analysis-data-a-p-i/index.html">AnalysisDataAPI</a><span class="token punctuation">, </span>robotoffApi<span class="token operator">: </span><a href="../../openfoodfacts.github.scrachx.openfood.network.services/-robotoff-a-p-i/index.html">RobotoffAPI</a><span class="token punctuation">, </span>taxonomiesManager<span class="token operator">: </span><a href="../-taxonomies-manager/index.html">TaxonomiesManager</a><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
                       </div>
                     </div>
                   </div>
@@ -54,16 +60,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><span class="token keyword">object </span><a href="-companion/index.html">Companion</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace">object <a href="-companion/index.html">Companion</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -76,16 +77,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="annotate-insight.html"><span class="token function">annotateInsight</span></a><span class="token punctuation">(</span>insightId<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span>annotation<span class="token operator">: </span><a href="../../openfoodfacts.github.scrachx.openfood.models/-annotation-answer/index.html">AnnotationAnswer</a><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../openfoodfacts.github.scrachx.openfood.models/-annotation-response/index.html">AnnotationResponse</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Annotate the Robotoff insight response using insight id and annotation</p></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace">fun <a href="annotate-insight.html">annotateInsight</a>(insightId: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>, annotation: <a href="../../openfoodfacts.github.scrachx.openfood.models/-annotation-answer/index.html">AnnotationAnswer</a>): <span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span>&lt;<a href="../../openfoodfacts.github.scrachx.openfood.models/-annotation-response/index.html">AnnotationResponse</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<div class="brief "><p class="paragraph">Annotate the Robotoff insight response using insight id and annotation</p></div></div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -96,16 +92,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="delete-ingredient-cascade.html"><span class="token function">deleteIngredientCascade</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Delete rows from Ingredient, IngredientName and IngredientsRelation set the autoincrement to 0</p></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace">fun <a href="delete-ingredient-cascade.html">deleteIngredientCascade</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<div class="brief "><p class="paragraph">Delete rows from Ingredient, IngredientName and IngredientsRelation set the autoincrement to 0</p></div></div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -116,16 +107,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="get-additive-by-tag-and-default-language-code.html"><span class="token function">getAdditiveByTagAndDefaultLanguageCode</span></a><span class="token punctuation">(</span>additiveTag<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../openfoodfacts.github.scrachx.openfood.models.entities.additive/-additive-name/index.html">AdditiveName</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Loads translated additive from the local database by unique tag of additive and default language code</p></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace">fun <a href="get-additive-by-tag-and-default-language-code.html">getAdditiveByTagAndDefaultLanguageCode</a>(additiveTag: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>?): <span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span>&lt;<a href="../../openfoodfacts.github.scrachx.openfood.models.entities.additive/-additive-name/index.html">AdditiveName</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<div class="brief "><p class="paragraph">Loads translated additive from the local database by unique tag of additive and default language code</p></div></div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -136,16 +122,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="get-additive-by-tag-and-language-code.html"><span class="token function">getAdditiveByTagAndLanguageCode</span></a><span class="token punctuation">(</span>additiveTag<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token punctuation">, </span>languageCode<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../openfoodfacts.github.scrachx.openfood.models.entities.additive/-additive-name/index.html">AdditiveName</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Loads translated additive from the local database by unique tag of additive and language code</p></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace">fun <a href="get-additive-by-tag-and-language-code.html">getAdditiveByTagAndLanguageCode</a>(additiveTag: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>?, languageCode: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>?): <span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span>&lt;<a href="../../openfoodfacts.github.scrachx.openfood.models.entities.additive/-additive-name/index.html">AdditiveName</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<div class="brief "><p class="paragraph">Loads translated additive from the local database by unique tag of additive and language code</p></div></div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -156,16 +137,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="get-all-categories-by-default-language-code.html"><span class="token function">getAllCategoriesByDefaultLanguageCode</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="/&amp;lt;ERROR CLASS&amp;gt;///PointingToDeclaration/">&lt;ERROR CLASS&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Loads list of category names from the local database by default language code</p></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace">fun <a href="get-all-categories-by-default-language-code.html">getAllCategoriesByDefaultLanguageCode</a>(): <span data-unresolved-link="/&amp;lt;ERROR CLASS&amp;gt;///PointingToDeclaration/">&lt;ERROR CLASS&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<div class="brief "><p class="paragraph">Loads list of category names from the local database by default language code</p></div></div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -176,16 +152,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="get-all-categories-by-language-code.html"><span class="token function">getAllCategoriesByLanguageCode</span></a><span class="token punctuation">(</span>languageCode<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="/&amp;lt;ERROR CLASS&amp;gt;///PointingToDeclaration/">&lt;ERROR CLASS&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Loads list of translated category names from the local database by language code</p></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace">fun <a href="get-all-categories-by-language-code.html">getAllCategoriesByLanguageCode</a>(languageCode: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>?): <span data-unresolved-link="/&amp;lt;ERROR CLASS&amp;gt;///PointingToDeclaration/">&lt;ERROR CLASS&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<div class="brief "><p class="paragraph">Loads list of translated category names from the local database by language code</p></div></div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -196,16 +167,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="get-allergen-by-tag-and-default-language-code.html"><span class="token function">getAllergenByTagAndDefaultLanguageCode</span></a><span class="token punctuation">(</span>allergenTag<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../openfoodfacts.github.scrachx.openfood.models.entities.allergen/-allergen-name/index.html">AllergenName</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Loads translated allergen from the local database by unique tag of allergen and default language code</p></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace">suspend fun <a href="get-allergen-by-tag-and-default-language-code.html">getAllergenByTagAndDefaultLanguageCode</a>(allergenTag: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>?): <a href="../../openfoodfacts.github.scrachx.openfood.models.entities.allergen/-allergen-name/index.html">AllergenName</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<div class="brief "><p class="paragraph">Loads translated allergen from the local database by unique tag of allergen and default language code</p></div></div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -216,16 +182,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="get-allergen-by-tag-and-language-code.html"><span class="token function">getAllergenByTagAndLanguageCode</span></a><span class="token punctuation">(</span>allergenTag<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token punctuation">, </span>languageCode<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../openfoodfacts.github.scrachx.openfood.models.entities.allergen/-allergen-name/index.html">AllergenName</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Loads translated allergen from the local database by unique tag of allergen and language code</p></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace">suspend fun <a href="get-allergen-by-tag-and-language-code.html">getAllergenByTagAndLanguageCode</a>(allergenTag: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>?, languageCode: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>?): <a href="../../openfoodfacts.github.scrachx.openfood.models.entities.allergen/-allergen-name/index.html">AllergenName</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<div class="brief "><p class="paragraph">Loads translated allergen from the local database by unique tag of allergen and language code</p></div></div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -236,16 +197,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="get-allergens.html"><span class="token function">getAllergens</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../openfoodfacts.github.scrachx.openfood.models.entities.allergen/-allergen/index.html">Allergen</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace">suspend fun <a href="get-allergens.html">getAllergens</a>(): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a>&lt;<a href="../../openfoodfacts.github.scrachx.openfood.models.entities.allergen/-allergen/index.html">Allergen</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -256,16 +212,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="get-allergens-by-enabled-and-language-code.html"><span class="token function">getAllergensByEnabledAndLanguageCode</span></a><span class="token punctuation">(</span>isEnabled<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token punctuation">, </span>lc<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="/&amp;lt;ERROR CLASS&amp;gt;///PointingToDeclaration/">&lt;ERROR CLASS&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Loads translated and selected/unselected allergens.</p></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace">fun <a href="get-allergens-by-enabled-and-language-code.html">getAllergensByEnabledAndLanguageCode</a>(isEnabled: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a>, lc: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>): <span data-unresolved-link="/&amp;lt;ERROR CLASS&amp;gt;///PointingToDeclaration/">&lt;ERROR CLASS&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<div class="brief "><p class="paragraph">Loads translated and selected/unselected allergens.</p></div></div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -276,16 +227,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="get-allergens-by-language-code.html"><span class="token function">getAllergensByLanguageCode</span></a><span class="token punctuation">(</span>languageCode<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../openfoodfacts.github.scrachx.openfood.models.entities.allergen/-allergen-name/index.html">AllergenName</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Loads all translated allergens.</p></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace">suspend fun <a href="get-allergens-by-language-code.html">getAllergensByLanguageCode</a>(languageCode: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>?): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a>&lt;<a href="../../openfoodfacts.github.scrachx.openfood.models.entities.allergen/-allergen-name/index.html">AllergenName</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<div class="brief "><p class="paragraph">Loads all translated allergens.</p></div></div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -296,16 +242,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="get-analysis-tag-config-by-tag-and-language-code.html"><span class="token function">getAnalysisTagConfigByTagAndLanguageCode</span></a><span class="token punctuation">(</span>analysisTag<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token punctuation">, </span>languageCode<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig/-analysis-tag-config/index.html">AnalysisTagConfig</a><span class="token operator">?</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace">suspend fun <a href="get-analysis-tag-config-by-tag-and-language-code.html">getAnalysisTagConfigByTagAndLanguageCode</a>(analysisTag: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>?, languageCode: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>): <a href="../../openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig/-analysis-tag-config/index.html">AnalysisTagConfig</a>?<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -316,16 +257,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="get-categories.html"><span class="token function">getCategories</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../openfoodfacts.github.scrachx.openfood.models.entities.category/-category/index.html">Category</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace">suspend fun <a href="get-categories.html">getCategories</a>(): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a>&lt;<a href="../../openfoodfacts.github.scrachx.openfood.models.entities.category/-category/index.html">Category</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -336,16 +272,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="get-category-by-tag-and-language-code.html"><span class="token function">getCategoryByTagAndLanguageCode</span></a><span class="token punctuation">(</span>categoryTag<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span>languageCode<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span>ApiFields.Defaults.DEFAULT_LANGUAGE<span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../openfoodfacts.github.scrachx.openfood.models.entities.category/-category-name/index.html">CategoryName</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Loads translated category from the local database by unique tag of category and language code</p></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace">fun <a href="get-category-by-tag-and-language-code.html">getCategoryByTagAndLanguageCode</a>(categoryTag: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>, languageCode: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a> = ApiFields.Defaults.DEFAULT_LANGUAGE): <span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span>&lt;<a href="../../openfoodfacts.github.scrachx.openfood.models.entities.category/-category-name/index.html">CategoryName</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<div class="brief "><p class="paragraph">Loads translated category from the local database by unique tag of category and language code</p></div></div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -356,16 +287,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="get-countries.html"><span class="token function">getCountries</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../openfoodfacts.github.scrachx.openfood.models.entities.country/-country/index.html">Country</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace">suspend fun <a href="get-countries.html">getCountries</a>(): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a>&lt;<a href="../../openfoodfacts.github.scrachx.openfood.models.entities.country/-country/index.html">Country</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -376,16 +302,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="get-country-by-c-c2-or-world.html"><span class="token function">getCountryByCC2OrWorld</span></a><span class="token punctuation">(</span>cc2<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex/Maybe///PointingToDeclaration/">Maybe</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../openfoodfacts.github.scrachx.openfood.models.entities.country/-country/index.html">Country</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace">suspend fun <a href="get-country-by-c-c2-or-world.html">getCountryByCC2OrWorld</a>(cc2: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>?): <span data-unresolved-link="io.reactivex/Maybe///PointingToDeclaration/">Maybe</span>&lt;<a href="../../openfoodfacts.github.scrachx.openfood.models.entities.country/-country/index.html">Country</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -396,16 +317,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="get-enabled-allergens.html"><span class="token function">getEnabledAllergens</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../openfoodfacts.github.scrachx.openfood.models.entities.allergen/-allergen/index.html">Allergen</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Load allergens which user selected earlier (i.e user's allergens)</p></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace">suspend fun <a href="get-enabled-allergens.html">getEnabledAllergens</a>(): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a>&lt;<a href="../../openfoodfacts.github.scrachx.openfood.models.entities.allergen/-allergen/index.html">Allergen</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<div class="brief "><p class="paragraph">Load allergens which user selected earlier (i.e user's allergens)</p></div></div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -416,16 +332,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="get-label-by-tag-and-default-language-code.html"><span class="token function">getLabelByTagAndDefaultLanguageCode</span></a><span class="token punctuation">(</span>labelTag<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../openfoodfacts.github.scrachx.openfood.models.entities.label/-label-name/index.html">LabelName</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Loads translated label from the local database by unique tag of label and default language code</p></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace">fun <a href="get-label-by-tag-and-default-language-code.html">getLabelByTagAndDefaultLanguageCode</a>(labelTag: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>?): <span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span>&lt;<a href="../../openfoodfacts.github.scrachx.openfood.models.entities.label/-label-name/index.html">LabelName</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<div class="brief "><p class="paragraph">Loads translated label from the local database by unique tag of label and default language code</p></div></div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -436,16 +347,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="get-label-by-tag-and-language-code.html"><span class="token function">getLabelByTagAndLanguageCode</span></a><span class="token punctuation">(</span>labelTag<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token punctuation">, </span>languageCode<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../openfoodfacts.github.scrachx.openfood.models.entities.label/-label-name/index.html">LabelName</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Loads translated label from the local database by unique tag of label and language code</p></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace">fun <a href="get-label-by-tag-and-language-code.html">getLabelByTagAndLanguageCode</a>(labelTag: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>?, languageCode: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>?): <span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span>&lt;<a href="../../openfoodfacts.github.scrachx.openfood.models.entities.label/-label-name/index.html">LabelName</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<div class="brief "><p class="paragraph">Loads translated label from the local database by unique tag of label and language code</p></div></div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -456,16 +362,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="get-product-question.html"><span class="token function">getProductQuestion</span></a><span class="token punctuation">(</span>code<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span>lang<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex/Maybe///PointingToDeclaration/">Maybe</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../openfoodfacts.github.scrachx.openfood.models/-question/index.html">Question</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Loads Robotoff question from the local database by code and lang of question.</p></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace">fun <a href="get-product-question.html">getProductQuestion</a>(code: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>, lang: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>): <span data-unresolved-link="io.reactivex/Maybe///PointingToDeclaration/">Maybe</span>&lt;<a href="../../openfoodfacts.github.scrachx.openfood.models/-question/index.html">Question</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<div class="brief "><p class="paragraph">Loads Robotoff question from the local database by code and lang of question.</p></div></div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -476,16 +377,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="get-states-by-tag-and-language-code.html"><span class="token function">getStatesByTagAndLanguageCode</span></a><span class="token punctuation">(</span>statesTag<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span>languageCode<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../openfoodfacts.github.scrachx.openfood.models.entities.states/-states-name/index.html">StatesName</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Loads translated states from the local database by unique tag of states and language code</p></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace">suspend fun <a href="get-states-by-tag-and-language-code.html">getStatesByTagAndLanguageCode</a>(statesTag: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>, languageCode: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>?): <a href="../../openfoodfacts.github.scrachx.openfood.models.entities.states/-states-name/index.html">StatesName</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<div class="brief "><p class="paragraph">Loads translated states from the local database by unique tag of states and language code</p></div></div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -496,16 +392,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="get-unknown-analysis-tag-configs-by-language-code.html"><span class="token function">getUnknownAnalysisTagConfigsByLanguageCode</span></a><span class="token punctuation">(</span>languageCode<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="/&amp;lt;ERROR CLASS&amp;gt;///PointingToDeclaration/">&lt;ERROR CLASS&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace">fun <a href="get-unknown-analysis-tag-configs-by-language-code.html">getUnknownAnalysisTagConfigsByLanguageCode</a>(languageCode: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>): <span data-unresolved-link="/&amp;lt;ERROR CLASS&amp;gt;///PointingToDeclaration/">&lt;ERROR CLASS&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -516,16 +407,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="load-additives.html"><span class="token function">loadAdditives</span></a><span class="token punctuation">(</span>lastModifiedDate<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../openfoodfacts.github.scrachx.openfood.models.entities.additive/-additive/index.html">Additive</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace">fun <a href="load-additives.html">loadAdditives</a>(lastModifiedDate: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a>): <span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span>&lt;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a>&lt;<a href="../../openfoodfacts.github.scrachx.openfood.models.entities.additive/-additive/index.html">Additive</a>&gt;&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -536,16 +422,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="load-allergens.html"><span class="token function">loadAllergens</span></a><span class="token punctuation">(</span>lastModifiedDate<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../openfoodfacts.github.scrachx.openfood.models.entities.allergen/-allergen/index.html">Allergen</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace">fun <a href="load-allergens.html">loadAllergens</a>(lastModifiedDate: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a>): <span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span>&lt;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a>&lt;<a href="../../openfoodfacts.github.scrachx.openfood.models.entities.allergen/-allergen/index.html">Allergen</a>&gt;&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -556,16 +437,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="load-analysis-tag-configs.html"><span class="token function">loadAnalysisTagConfigs</span></a><span class="token punctuation">(</span>lastModifiedDate<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig/-analysis-tag-config/index.html">AnalysisTagConfig</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace">fun <a href="load-analysis-tag-configs.html">loadAnalysisTagConfigs</a>(lastModifiedDate: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a>): <span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span>&lt;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a>&lt;<a href="../../openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig/-analysis-tag-config/index.html">AnalysisTagConfig</a>&gt;&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -576,16 +452,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="load-analysis-tags.html"><span class="token function">loadAnalysisTags</span></a><span class="token punctuation">(</span>lastModifiedDate<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../openfoodfacts.github.scrachx.openfood.models.entities.analysistag/-analysis-tag/index.html">AnalysisTag</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace">fun <a href="load-analysis-tags.html">loadAnalysisTags</a>(lastModifiedDate: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a>): <span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span>&lt;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a>&lt;<a href="../../openfoodfacts.github.scrachx.openfood.models.entities.analysistag/-analysis-tag/index.html">AnalysisTag</a>&gt;&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -596,16 +467,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="load-brands.html"><span class="token function">loadBrands</span></a><span class="token punctuation">(</span>lastModifiedDate<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../openfoodfacts.github.scrachx.openfood.models.entities.brand/-brand/index.html">Brand</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace">fun <a href="load-brands.html">loadBrands</a>(lastModifiedDate: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a>): <span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span>&lt;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a>&lt;<a href="../../openfoodfacts.github.scrachx.openfood.models.entities.brand/-brand/index.html">Brand</a>&gt;&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -616,16 +482,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="load-categories.html"><span class="token function">loadCategories</span></a><span class="token punctuation">(</span>lastModifiedDate<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../openfoodfacts.github.scrachx.openfood.models.entities.category/-category/index.html">Category</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace">fun <a href="load-categories.html">loadCategories</a>(lastModifiedDate: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a>): <span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span>&lt;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a>&lt;<a href="../../openfoodfacts.github.scrachx.openfood.models.entities.category/-category/index.html">Category</a>&gt;&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -636,16 +497,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="load-countries.html"><span class="token function">loadCountries</span></a><span class="token punctuation">(</span>lastModifiedDate<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../openfoodfacts.github.scrachx.openfood.models.entities.country/-country/index.html">Country</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace">fun <a href="load-countries.html">loadCountries</a>(lastModifiedDate: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a>): <span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span>&lt;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a>&lt;<a href="../../openfoodfacts.github.scrachx.openfood.models.entities.country/-country/index.html">Country</a>&gt;&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -656,16 +512,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="load-ingredients.html"><span class="token function">loadIngredients</span></a><span class="token punctuation">(</span>lastModifiedDate<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../openfoodfacts.github.scrachx.openfood.models.entities.ingredient/-ingredient/index.html">Ingredient</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace">fun <a href="load-ingredients.html">loadIngredients</a>(lastModifiedDate: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a>): <span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span>&lt;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a>&lt;<a href="../../openfoodfacts.github.scrachx.openfood.models.entities.ingredient/-ingredient/index.html">Ingredient</a>&gt;&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -676,16 +527,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="load-invalid-barcodes.html"><span class="token function">loadInvalidBarcodes</span></a><span class="token punctuation">(</span>lastModifiedDate<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../openfoodfacts.github.scrachx.openfood.models/-invalid-barcode/index.html">InvalidBarcode</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace">fun <a href="load-invalid-barcodes.html">loadInvalidBarcodes</a>(lastModifiedDate: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a>): <span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span>&lt;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a>&lt;<a href="../../openfoodfacts.github.scrachx.openfood.models/-invalid-barcode/index.html">InvalidBarcode</a>&gt;&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -696,16 +542,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="load-labels.html"><span class="token function">loadLabels</span></a><span class="token punctuation">(</span>lastModifiedDate<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../openfoodfacts.github.scrachx.openfood.models.entities.label/-label/index.html">Label</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace">fun <a href="load-labels.html">loadLabels</a>(lastModifiedDate: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a>): <span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span>&lt;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a>&lt;<a href="../../openfoodfacts.github.scrachx.openfood.models.entities.label/-label/index.html">Label</a>&gt;&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -716,16 +557,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="load-states.html"><span class="token function">loadStates</span></a><span class="token punctuation">(</span>lastModifiedDate<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../openfoodfacts.github.scrachx.openfood.models.entities.states/-states/index.html">States</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace">fun <a href="load-states.html">loadStates</a>(lastModifiedDate: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a>): <span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span>&lt;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a>&lt;<a href="../../openfoodfacts.github.scrachx.openfood.models.entities.states/-states/index.html">States</a>&gt;&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -736,16 +572,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="load-stores.html"><span class="token function">loadStores</span></a><span class="token punctuation">(</span>lastModifiedDate<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../openfoodfacts.github.scrachx.openfood.models.entities.store/-store/index.html">Store</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace">fun <a href="load-stores.html">loadStores</a>(lastModifiedDate: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a>): <span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span>&lt;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a>&lt;<a href="../../openfoodfacts.github.scrachx.openfood.models.entities.store/-store/index.html">Store</a>&gt;&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -756,16 +587,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="load-tags.html"><span class="token function">loadTags</span></a><span class="token punctuation">(</span>lastModifiedDate<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../openfoodfacts.github.scrachx.openfood.models.entities.tag/-tag/index.html">Tag</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace">fun <a href="load-tags.html">loadTags</a>(lastModifiedDate: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a>): <span data-unresolved-link="io.reactivex/Single///PointingToDeclaration/">Single</span>&lt;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a>&lt;<a href="../../openfoodfacts.github.scrachx.openfood.models.entities.tag/-tag/index.html">Tag</a>&gt;&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -776,16 +602,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="reload-additives-from-server.html"><span class="token function">reloadAdditivesFromServer</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../openfoodfacts.github.scrachx.openfood.models.entities.additive/-additive/index.html">Additive</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Load additives from the server or local database</p></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace">suspend fun <a href="reload-additives-from-server.html">reloadAdditivesFromServer</a>(): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a>&lt;<a href="../../openfoodfacts.github.scrachx.openfood.models.entities.additive/-additive/index.html">Additive</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<div class="brief "><p class="paragraph">Load additives from the server or local database</p></div></div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -796,16 +617,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="reload-allergens-from-server.html"><span class="token function">reloadAllergensFromServer</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../openfoodfacts.github.scrachx.openfood.models.entities.allergen/-allergen/index.html">Allergen</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Load allergens from the server or local database</p></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace">suspend fun <a href="reload-allergens-from-server.html">reloadAllergensFromServer</a>(): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a>&lt;<a href="../../openfoodfacts.github.scrachx.openfood.models.entities.allergen/-allergen/index.html">Allergen</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<div class="brief "><p class="paragraph">Load allergens from the server or local database</p></div></div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -816,16 +632,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="reload-analysis-tag-configs-from-server.html"><span class="token function">reloadAnalysisTagConfigsFromServer</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig/-analysis-tag-config/index.html">AnalysisTagConfig</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace">suspend fun <a href="reload-analysis-tag-configs-from-server.html">reloadAnalysisTagConfigsFromServer</a>(): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a>&lt;<a href="../../openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig/-analysis-tag-config/index.html">AnalysisTagConfig</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -836,16 +647,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="reload-analysis-tags-from-server.html"><span class="token function">reloadAnalysisTagsFromServer</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../openfoodfacts.github.scrachx.openfood.models.entities.analysistag/-analysis-tag/index.html">AnalysisTag</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Load analysis tags from the server or local database</p></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace">suspend fun <a href="reload-analysis-tags-from-server.html">reloadAnalysisTagsFromServer</a>(): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a>&lt;<a href="../../openfoodfacts.github.scrachx.openfood.models.entities.analysistag/-analysis-tag/index.html">AnalysisTag</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<div class="brief "><p class="paragraph">Load analysis tags from the server or local database</p></div></div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -856,16 +662,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="reload-brands-from-server.html"><span class="token function">reloadBrandsFromServer</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../openfoodfacts.github.scrachx.openfood.models.entities.brand/-brand/index.html">Brand</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace">suspend fun <a href="reload-brands-from-server.html">reloadBrandsFromServer</a>(): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a>&lt;<a href="../../openfoodfacts.github.scrachx.openfood.models.entities.brand/-brand/index.html">Brand</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -876,16 +677,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="reload-categories-from-server.html"><span class="token function">reloadCategoriesFromServer</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../openfoodfacts.github.scrachx.openfood.models.entities.category/-category/index.html">Category</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Load categories from the server or local database</p></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace">suspend fun <a href="reload-categories-from-server.html">reloadCategoriesFromServer</a>(): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a>&lt;<a href="../../openfoodfacts.github.scrachx.openfood.models.entities.category/-category/index.html">Category</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<div class="brief "><p class="paragraph">Load categories from the server or local database</p></div></div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -896,16 +692,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="reload-countries-from-server.html"><span class="token function">reloadCountriesFromServer</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../openfoodfacts.github.scrachx.openfood.models.entities.country/-country/index.html">Country</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Load countries from the server or local database</p></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace">suspend fun <a href="reload-countries-from-server.html">reloadCountriesFromServer</a>(): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a>&lt;<a href="../../openfoodfacts.github.scrachx.openfood.models.entities.country/-country/index.html">Country</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<div class="brief "><p class="paragraph">Load countries from the server or local database</p></div></div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -916,16 +707,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="reload-ingredients-from-server.html"><span class="token function">reloadIngredientsFromServer</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../openfoodfacts.github.scrachx.openfood.models.entities.ingredient/-ingredient/index.html">Ingredient</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">TODO to be improved by loading only in the user language ? Load ingredients from (the server or) local database If SharedPreferences lastDownloadIngredients is set try this : if file from the server is newer than last download delete database, load the file and fill database, else if database is empty, download the file and fill database, else return the content from the local database.</p></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace">suspend fun <a href="reload-ingredients-from-server.html">reloadIngredientsFromServer</a>(): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a>&lt;<a href="../../openfoodfacts.github.scrachx.openfood.models.entities.ingredient/-ingredient/index.html">Ingredient</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<div class="brief "><p class="paragraph">TODO to be improved by loading only in the user language ? Load ingredients from (the server or) local database If SharedPreferences lastDownloadIngredients is set try this : if file from the server is newer than last download delete database, load the file and fill database, else if database is empty, download the file and fill database, else return the content from the local database.</p></div></div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -936,16 +722,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="reload-invalid-barcodes-from-server.html"><span class="token function">reloadInvalidBarcodesFromServer</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../openfoodfacts.github.scrachx.openfood.models/-invalid-barcode/index.html">InvalidBarcode</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace">suspend fun <a href="reload-invalid-barcodes-from-server.html">reloadInvalidBarcodesFromServer</a>(): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a>&lt;<a href="../../openfoodfacts.github.scrachx.openfood.models/-invalid-barcode/index.html">InvalidBarcode</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -956,16 +737,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="reload-labels-from-server.html"><span class="token function">reloadLabelsFromServer</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../openfoodfacts.github.scrachx.openfood.models.entities.label/-label/index.html">Label</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Load labels from the server or local database</p></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace">suspend fun <a href="reload-labels-from-server.html">reloadLabelsFromServer</a>(): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a>&lt;<a href="../../openfoodfacts.github.scrachx.openfood.models.entities.label/-label/index.html">Label</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<div class="brief "><p class="paragraph">Load labels from the server or local database</p></div></div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -976,16 +752,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="reload-states-from-server.html"><span class="token function">reloadStatesFromServer</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../openfoodfacts.github.scrachx.openfood.models.entities.states/-states/index.html">States</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Load states from the server or local database</p></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace">suspend fun <a href="reload-states-from-server.html">reloadStatesFromServer</a>(): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a>&lt;<a href="../../openfoodfacts.github.scrachx.openfood.models.entities.states/-states/index.html">States</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<div class="brief "><p class="paragraph">Load states from the server or local database</p></div></div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -996,16 +767,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="reload-stores-from-server.html"><span class="token function">reloadStoresFromServer</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../openfoodfacts.github.scrachx.openfood.models.entities.store/-store/index.html">Store</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Load stores from the server or local database</p></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace">suspend fun <a href="reload-stores-from-server.html">reloadStoresFromServer</a>(): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a>&lt;<a href="../../openfoodfacts.github.scrachx.openfood.models.entities.store/-store/index.html">Store</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<div class="brief "><p class="paragraph">Load stores from the server or local database</p></div></div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -1016,16 +782,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="reload-tags-from-server.html"><span class="token function">reloadTagsFromServer</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../openfoodfacts.github.scrachx.openfood.models.entities.tag/-tag/index.html">Tag</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Load tags from the server or local database</p></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace">suspend fun <a href="reload-tags-from-server.html">reloadTagsFromServer</a>(): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a>&lt;<a href="../../openfoodfacts.github.scrachx.openfood.models.entities.tag/-tag/index.html">Tag</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<div class="brief "><p class="paragraph">Load tags from the server or local database</p></div></div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -1036,16 +797,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="save-allergens.html"><span class="token function">saveAllergens</span></a><span class="token punctuation">(</span>allergens<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../openfoodfacts.github.scrachx.openfood.models.entities.allergen/-allergen/index.html">Allergen</a><span class="token operator">&gt;</span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Allergens saving to local database</p></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace">fun <a href="save-allergens.html">saveAllergens</a>(allergens: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a>&lt;<a href="../../openfoodfacts.github.scrachx.openfood.models.entities.allergen/-allergen/index.html">Allergen</a>&gt;)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<div class="brief "><p class="paragraph">Allergens saving to local database</p></div></div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -1056,16 +812,11 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="platform-tags ">
-                        <div class="platform-tag jvm-like">androidJvm</div>
+                      <div class="title">
+                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark jvm-like" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots" data-active="" data-toggle=":app:dokkaHtml/screenshots">androidJvm</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="set-allergen-enabled.html"><span class="token function">setAllergenEnabled</span></a><span class="token punctuation">(</span>allergenTag<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span>isEnabled<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex/Completable///PointingToDeclaration/">Completable</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Changes enabled field of allergen and updates it.</p></div></div>                        </div>
                       </div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/screenshots" data-filterable-set=":app:dokkaHtml/screenshots"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/screenshots"><div class="symbol monospace">fun <a href="set-allergen-enabled.html">setAllergenEnabled</a>(allergenTag: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>, isEnabled: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a>): <span data-unresolved-link="io.reactivex/Completable///PointingToDeclaration/">Completable</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<div class="brief "><p class="paragraph">Changes enabled field of allergen and updates it.</p></div></div>
-</div>
                     </div>
                   </div>
                 </div>
@@ -1073,7 +824,7 @@
             </div>
           </div>
         </div>
-        <div class="footer"><span class="go-to-top-icon"><a href="#content"></a></span><span>© 2021 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
+        <div class="footer"><span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2021 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
       </div>
     </div>
   </body>
