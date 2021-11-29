@@ -26,7 +26,7 @@ import openfoodfacts.github.scrachx.openfood.features.login.LoginActivity
 import openfoodfacts.github.scrachx.openfood.images.*
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
+import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.isUserSet
 import org.json.JSONException
 
@@ -37,7 +37,7 @@ class ProductPhotosAdapter(
     private val context: Context,
     private val lifecycleOwner: LifecycleOwner,
     private val picasso: Picasso,
-    private val client: OpenFoodAPIClient,
+    private val client: ProductRepository,
     private val product: Product,
     private val images: List<String>,
     private val snackView: View? = null,

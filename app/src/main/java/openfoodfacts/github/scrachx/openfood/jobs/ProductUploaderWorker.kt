@@ -8,7 +8,7 @@ import androidx.work.*
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 import openfoodfacts.github.scrachx.openfood.R
-import openfoodfacts.github.scrachx.openfood.utils.OfflineProductService
+import openfoodfacts.github.scrachx.openfood.repositories.OfflineProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.buildConstraints
 import openfoodfacts.github.scrachx.openfood.utils.buildData
 import openfoodfacts.github.scrachx.openfood.utils.buildOneTimeWorkRequest
@@ -21,13 +21,13 @@ class ProductUploaderWorker @AssistedInject constructor(
 ) : CoroutineWorker(context, workerParams) {
 
     @Inject
-    lateinit var offlineProductService: OfflineProductService
+    lateinit var offlineProductRepository: OfflineProductRepository
 
     override suspend fun doWork(): Result {
         val includeImages = inputData.getBoolean(KEY_INCLUDE_IMAGES, false)
         Log.d(WORK_TAG, "[START] (includeImages=$includeImages)")
 
-        val shouldRetry = offlineProductService.uploadAll(includeImages)
+        val shouldRetry = offlineProductRepository.uploadAll(includeImages)
 
         return if (shouldRetry) {
             Log.d(WORK_TAG, "[RETRY]")

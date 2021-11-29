@@ -51,7 +51,6 @@ import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabsHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentIngredientsProductBinding
-import openfoodfacts.github.scrachx.openfood.features.FullScreenActivityOpener
 import openfoodfacts.github.scrachx.openfood.features.ImagesManageActivity
 import openfoodfacts.github.scrachx.openfood.features.additives.AdditiveFragmentHelper.showAdditives
 import openfoodfacts.github.scrachx.openfood.features.login.LoginActivity.Companion.LoginContract
@@ -68,9 +67,9 @@ import openfoodfacts.github.scrachx.openfood.models.entities.SendProduct
 import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveName
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenName
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenNameDao
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
-import openfoodfacts.github.scrachx.openfood.network.WikiDataApiClient
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
+import openfoodfacts.github.scrachx.openfood.repositories.TaxonomiesRepository
+import openfoodfacts.github.scrachx.openfood.repositories.WikidataRepository
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.*
 import java.io.File
@@ -83,16 +82,16 @@ class IngredientsProductFragment : BaseFragment() {
     private val binding get() = _binding!!
 
     @Inject
-    lateinit var client: OpenFoodAPIClient
+    lateinit var client: ProductRepository
 
     @Inject
-    lateinit var productRepository: ProductRepository
+    lateinit var taxonomiesRepository: TaxonomiesRepository
 
     @Inject
     lateinit var daoSession: DaoSession
 
     @Inject
-    lateinit var wikidataClient: WikiDataApiClient
+    lateinit var wikidataClient: WikidataRepository
 
     @Inject
     lateinit var picasso: Picasso
@@ -165,7 +164,18 @@ class IngredientsProductFragment : BaseFragment() {
         binding.changeIngImg.setOnClickListener { changeIngImage() }
         binding.novaMethodLink.setOnClickListener { novaMethodLinkDisplay() }
         binding.extractIngredientsPrompt.setOnClickListener { extractIngredients() }
-        binding.imageViewIngredients.setOnClickListener { openFullScreen() }
+        binding.imageViewIngredients.setOnClickListener {
+            if (ingredientsImgUrl != null && productState.product != null) {
+                viewModel.openFullScreen(
+                    ingredientsImgUrl,
+                    productState,
+                    binding.imageViewIngredients,
+                    this@IngredientsProductFragment
+                )
+            } else
+                newIngredientImage()
+
+        }
 
         viewModel.vitaminsTags.observe(viewLifecycleOwner) {
             if (it.isEmpty()) binding.cvVitaminsTagsText.visibility = View.GONE
@@ -485,21 +495,6 @@ class IngredientsProductFragment : BaseFragment() {
         ).show()
     }
 
-    private fun openFullScreen() {
-        if (ingredientsImgUrl != null && productState.product != null) {
-            FullScreenActivityOpener.openForUrl(
-                this,
-                client,
-                productState.product!!,
-                ProductImageField.INGREDIENTS,
-                ingredientsImgUrl!!,
-                binding.imageViewIngredients,
-                localeManager.getLanguage()
-            )
-        } else {
-            newIngredientImage()
-        }
-    }
 
     private fun newIngredientImage() = doChooseOrTakePhotos()
 
@@ -513,7 +508,7 @@ class IngredientsProductFragment : BaseFragment() {
             localeManager.getLanguage()
         ).apply { filePath = newPhotoFile.absolutePath }
 
-        lifecycleScope.launch { client.postImg(image).await() }
+        lifecycleScope.launch { client.postImg(image) }
 
         binding.addPhotoLabel.visibility = View.GONE
         ingredientsImgUrl = newPhotoFile.absolutePath

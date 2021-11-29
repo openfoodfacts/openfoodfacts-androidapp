@@ -2,18 +2,18 @@ package openfoodfacts.github.scrachx.openfood.features.compare
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.google.common.truth.Truth.assertThat
-import io.reactivex.Single
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.test.runBlockingTest
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
 import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
-import openfoodfacts.github.scrachx.openfood.features.compare.ProductCompareViewModel.*
+import openfoodfacts.github.scrachx.openfood.features.compare.ProductCompareViewModel.CompareProduct
+import openfoodfacts.github.scrachx.openfood.features.compare.ProductCompareViewModel.SideEffect
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveName
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
+import openfoodfacts.github.scrachx.openfood.repositories.TaxonomiesRepository
 import openfoodfacts.github.scrachx.openfood.utils.CoroutineDispatchersTest
 import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
 import org.junit.Before
@@ -27,18 +27,18 @@ class ProductCompareViewModelTest {
     @get:Rule
     var instantExecutorRule = InstantTaskExecutorRule()
 
-    private val productRepository: ProductRepository = mock()
+    private val taxonomiesRepository: TaxonomiesRepository = mock()
     private val localeManager: LocaleManager = mock()
     private val matomoAnalytics: MatomoAnalytics = mock()
     private val coroutineDispatcher = CoroutineDispatchersTest()
-    private val openFoodAPIClient: OpenFoodAPIClient = mock()
+    private val productRepository: ProductRepository = mock()
 
     private lateinit var viewModel: ProductCompareViewModel
 
     @Before
     fun setup() {
         whenever(localeManager.getLanguage()).doReturn("en")
-        viewModel = ProductCompareViewModel(productRepository, localeManager, matomoAnalytics, coroutineDispatcher, openFoodAPIClient)
+        viewModel = ProductCompareViewModel(taxonomiesRepository, localeManager, matomoAnalytics, coroutineDispatcher, productRepository)
     }
 
     @Test
@@ -52,8 +52,8 @@ class ProductCompareViewModelTest {
         val product: Product = mock {
             on { code } doReturn "qwerty"
         }
-        whenever(productRepository.getAdditiveByTagAndLanguageCode("qwerty", "en"))
-            .doReturn(Single.just(AdditiveName("test-name")))
+        whenever(taxonomiesRepository.getAdditive("qwerty", "en"))
+            .doReturn(AdditiveName("test-name"))
 
         val flowItems = mutableListOf<SideEffect>()
         val job = launch {
@@ -82,12 +82,12 @@ class ProductCompareViewModelTest {
         val product3: Product = mock {
             on { code } doReturn "qwerty3"
         }
-        whenever(productRepository.getAdditiveByTagAndLanguageCode("qwerty1", "en"))
-            .doReturn(Single.just(AdditiveName("test-name1")))
-        whenever(productRepository.getAdditiveByTagAndLanguageCode("qwerty2", "en"))
-            .doReturn(Single.just(AdditiveName("test-name2")))
-        whenever(productRepository.getAdditiveByTagAndLanguageCode("qwerty3", "en"))
-            .doReturn(Single.just(AdditiveName("test-name3")))
+        whenever(taxonomiesRepository.getAdditive("qwerty1", "en"))
+            .doReturn(AdditiveName("test-name1"))
+        whenever(taxonomiesRepository.getAdditive("qwerty2", "en"))
+            .doReturn(AdditiveName("test-name2"))
+        whenever(taxonomiesRepository.getAdditive("qwerty3", "en"))
+            .doReturn(AdditiveName("test-name3"))
 
         val flowItems = mutableListOf<List<CompareProduct>>()
         val job = launch {
@@ -116,10 +116,10 @@ class ProductCompareViewModelTest {
         val product2: Product = mock {
             on { code } doReturn "qwerty2"
         }
-        whenever(productRepository.getAdditiveByTagAndLanguageCode("qwerty1", "en"))
-            .doReturn(Single.just(AdditiveName("test-name1")))
-        whenever(productRepository.getAdditiveByTagAndLanguageCode("qwerty2", "en"))
-            .doReturn(Single.just(AdditiveName("test-name2")))
+        whenever(taxonomiesRepository.getAdditive("qwerty1", "en"))
+            .doReturn(AdditiveName("test-name1"))
+        whenever(taxonomiesRepository.getAdditive("qwerty2", "en"))
+            .doReturn(AdditiveName("test-name2"))
 
         // WHEN
         viewModel.addProductToCompare(product1)

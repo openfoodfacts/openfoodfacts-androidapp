@@ -9,14 +9,13 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.rx2.await
 import kotlinx.coroutines.withContext
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
 import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveName
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
+import openfoodfacts.github.scrachx.openfood.repositories.TaxonomiesRepository
 import openfoodfacts.github.scrachx.openfood.utils.CoroutineDispatchers
 import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
 import openfoodfacts.github.scrachx.openfood.utils.Utils
@@ -24,11 +23,11 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ProductCompareViewModel @Inject constructor(
-    private val productRepository: ProductRepository,
+    private val taxonomiesRepository: TaxonomiesRepository,
     private val localeManager: LocaleManager,
     private val matomoAnalytics: MatomoAnalytics,
     private val coroutineDispatchers: CoroutineDispatchers,
-    private val openFoodAPIClient: OpenFoodAPIClient,
+    private val productRepository: ProductRepository,
 ) : ViewModel() {
 
     private val _sideEffectFlow = MutableSharedFlow<SideEffect>()
@@ -88,8 +87,8 @@ class ProductCompareViewModel @Inject constructor(
         return product
             .additivesTags
             .map { tag ->
-                productRepository.getAdditiveByTagAndLanguageCode(tag, localeManager.getLanguage()).await()
-                    .takeUnless { it.isNull } ?: productRepository.getAdditiveByTagAndDefaultLanguageCode(tag).await()
+                taxonomiesRepository.getAdditive(tag, localeManager.getLanguage())
+                    .takeUnless { it.isNull } ?: taxonomiesRepository.getAdditive(tag)
             }
             .filter { it.isNotNull }
     }
@@ -98,7 +97,7 @@ class ProductCompareViewModel @Inject constructor(
         _loadingVisibleFlow.emit(true)
         withContext(coroutineDispatchers.io()) {
             try {
-                val product = openFoodAPIClient.getProductStateFull(barcode, userAgent = Utils.HEADER_USER_AGENT_SCAN).product
+                val product = productRepository.getProductStateFull(barcode, userAgent = Utils.HEADER_USER_AGENT_SCAN).product
                 if (product == null) {
                     emitSideEffect(SideEffect.ProductNotFound)
                 } else {

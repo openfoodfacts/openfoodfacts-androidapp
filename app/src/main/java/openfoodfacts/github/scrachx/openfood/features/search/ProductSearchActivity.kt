@@ -24,12 +24,10 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.Single
-import io.reactivex.disposables.CompositeDisposable
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.rx2.await
-import kotlinx.coroutines.rx2.awaitSingleOrNull
 import kotlinx.coroutines.withContext
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
@@ -46,8 +44,8 @@ import openfoodfacts.github.scrachx.openfood.listeners.RecyclerItemClickListener
 import openfoodfacts.github.scrachx.openfood.models.Search
 import openfoodfacts.github.scrachx.openfood.models.SearchInfo
 import openfoodfacts.github.scrachx.openfood.models.SearchProduct
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
+import openfoodfacts.github.scrachx.openfood.repositories.TaxonomiesRepository
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.SearchType.*
 import java.text.NumberFormat
@@ -60,7 +58,7 @@ class ProductSearchActivity : BaseActivity() {
     private val binding get() = _binding!!
 
     @Inject
-    lateinit var client: OpenFoodAPIClient
+    lateinit var client: ProductRepository
 
     @Inject
     lateinit var productViewActivityStarter: ProductViewActivityStarter
@@ -69,7 +67,7 @@ class ProductSearchActivity : BaseActivity() {
     lateinit var analytics: MatomoAnalytics
 
     @Inject
-    lateinit var productRepository: ProductRepository
+    lateinit var taxonomiesRepository: TaxonomiesRepository
 
     @Inject
     lateinit var picasso: Picasso
@@ -84,7 +82,6 @@ class ProductSearchActivity : BaseActivity() {
     private lateinit var adapter: ProductSearchAdapter
 
     private var contributionType = 0
-    private var disp = CompositeDisposable()
     private val lowBatteryMode by lazy { isDisableImageLoad() && isBatteryLevelLow() }
 
     /**
@@ -148,7 +145,6 @@ class ProductSearchActivity : BaseActivity() {
     }
 
     override fun onDestroy() {
-        disp.dispose()
         _binding = null
         super.onDestroy()
     }
@@ -216,9 +212,8 @@ class ProductSearchActivity : BaseActivity() {
         val actualCountryTag = sharedPreferences.getString(getString(R.string.pref_country_key), "")
         if (actualCountryTag.isNullOrBlank()) {
             lifecycleScope.launch {
-                val url = productRepository
-                    .getCountryByCC2OrWorld(localeManager.getLocale().country)
-                    .awaitSingleOrNull()
+                val url = taxonomiesRepository
+                    .getCountry(localeManager.getLocale().country)
                     ?.tag ?: "en:world"
                 withContext(Main) { setupUrlHungerGames(url) }
             }

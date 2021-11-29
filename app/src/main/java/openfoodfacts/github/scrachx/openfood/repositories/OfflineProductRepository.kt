@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.utils
+package openfoodfacts.github.scrachx.openfood.repositories
 
 import android.util.Log
 import kotlinx.coroutines.Dispatchers
@@ -12,8 +12,9 @@ import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct
 import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProductDao
 import openfoodfacts.github.scrachx.openfood.models.eventbus.ProductNeedsRefreshEvent
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
+import openfoodfacts.github.scrachx.openfood.utils.list
+import openfoodfacts.github.scrachx.openfood.utils.unique
 import org.greenrobot.eventbus.EventBus
 import java.io.File
 import java.util.*
@@ -21,10 +22,10 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class OfflineProductService @Inject constructor(
+class OfflineProductRepository @Inject constructor(
     private val daoSession: DaoSession,
     private val api: ProductsAPI,
-    private val client: OpenFoodAPIClient
+    private val client: ProductRepository
 ) {
     /**
      * @return true if there is still products to upload, false otherwise
@@ -191,16 +192,20 @@ class OfflineProductService @Inject constructor(
         productDetails: Map<String, String>,
         frontImg: ProductImageField
     ): MutableMap<String, RequestBody> {
-        val barcode = RequestBody.create(OpenFoodAPIClient.MIME_TEXT, code)
+        val barcode = RequestBody.create(ProductRepository.MIME_TEXT, code)
+
         val imageField = RequestBody.create(
-            OpenFoodAPIClient.MIME_TEXT,
+            ProductRepository.MIME_TEXT,
             "${frontImg}_${productDetails["lang"]}"
         )
 
-        return hashMapOf("code" to barcode, "imagefield" to imageField)
+        return hashMapOf(
+            ApiFields.Keys.BARCODE to barcode,
+            ApiFields.Keys.IMAGE_FIELD to imageField
+        )
     }
 
     companion object {
-        private val LOG_TAG = OfflineProductService::class.simpleName!!
+        private val LOG_TAG = OfflineProductRepository::class.simpleName!!
     }
 }

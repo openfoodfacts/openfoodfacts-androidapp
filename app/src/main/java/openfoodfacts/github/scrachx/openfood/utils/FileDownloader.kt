@@ -37,7 +37,7 @@ class FileDownloader @Inject constructor(
     suspend fun download(fileUrl: String): Uri? {
         val file = withContext(coroutineDispatchers.io()) {
             val result = runCatching {
-                productsAPI.downloadFile(fileUrl).await()
+                productsAPI.downloadFile(fileUrl)
             }
             result.fold(
                 onSuccess = { response ->

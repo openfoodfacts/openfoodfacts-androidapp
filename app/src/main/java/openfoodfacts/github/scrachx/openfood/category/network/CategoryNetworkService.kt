@@ -1,6 +1,5 @@
 package openfoodfacts.github.scrachx.openfood.category.network
 
-import io.reactivex.Single
 import retrofit2.http.GET
 
 /**
@@ -8,5 +7,5 @@ import retrofit2.http.GET
  */
 interface CategoryNetworkService {
     @GET("categories.json")
-    fun getCategories(): Single<CategoryResponse>
+    suspend fun getCategories(): CategoryResponse
 }

@@ -4,7 +4,7 @@ import okhttp3.MediaType
 import okhttp3.RequestBody
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField.*
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
+import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import java.io.File
 
 class ProductImage(
@@ -17,8 +17,8 @@ class ProductImage(
     constructor(code: String, field: ProductImageField, image: File, language: String?) :
             this(code, field, image.readBytes(), language)
 
-    val barcodeBody: RequestBody = RequestBody.create(OpenFoodAPIClient.MIME_TEXT, barcode)
-    val fieldBody: RequestBody = RequestBody.create(OpenFoodAPIClient.MIME_TEXT, "${imageField}_$language")
+    val barcodeBody: RequestBody = RequestBody.create(ProductRepository.MIME_TEXT, barcode)
+    val fieldBody: RequestBody = RequestBody.create(ProductRepository.MIME_TEXT, "${imageField}_$language")
 
     var imgFront: RequestBody? = null
     var imgIngredients: RequestBody? = null

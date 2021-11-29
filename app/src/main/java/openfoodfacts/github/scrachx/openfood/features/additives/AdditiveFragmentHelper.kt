@@ -19,7 +19,7 @@ import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivity
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
 import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveName
-import openfoodfacts.github.scrachx.openfood.network.WikiDataApiClient
+import openfoodfacts.github.scrachx.openfood.repositories.WikidataRepository
 import openfoodfacts.github.scrachx.openfood.utils.SearchType
 import openfoodfacts.github.scrachx.openfood.utils.showBottomSheet
 
@@ -38,7 +38,7 @@ object AdditiveFragmentHelper {
     fun showAdditives(
         additives: List<AdditiveName>,
         additivesView: TextView,
-        apiClientForWikiData: WikiDataApiClient,
+        apiClientForWikiData: WikidataRepository,
         fragment: BaseFragment
     ) = additivesView.run {
         movementMethod = LinkMovementMethod.getInstance()
@@ -62,7 +62,7 @@ object AdditiveFragmentHelper {
      */
     private fun getAdditiveTag(
         additive: AdditiveName,
-        wikidataClient: WikiDataApiClient,
+        wikidataClient: WikidataRepository,
         fragment: BaseFragment
     ): CharSequence {
         val activity = fragment.requireActivity()

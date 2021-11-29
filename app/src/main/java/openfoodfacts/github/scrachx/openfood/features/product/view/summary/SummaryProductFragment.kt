@@ -89,9 +89,10 @@ import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.A
 import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoryName
 import openfoodfacts.github.scrachx.openfood.models.entities.label.LabelName
 import openfoodfacts.github.scrachx.openfood.models.entities.tag.TagDao
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
-import openfoodfacts.github.scrachx.openfood.network.WikiDataApiClient
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
+import openfoodfacts.github.scrachx.openfood.repositories.RobotoffRepository
+import openfoodfacts.github.scrachx.openfood.repositories.WikidataRepository
+import openfoodfacts.github.scrachx.openfood.repositories.TaxonomiesRepository
 import openfoodfacts.github.scrachx.openfood.utils.*
 import java.io.File
 import javax.inject.Inject
@@ -103,10 +104,13 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     private val binding get() = _binding!!
 
     @Inject
-    lateinit var client: OpenFoodAPIClient
+    lateinit var client: ProductRepository
 
     @Inject
-    lateinit var wikidataClient: WikiDataApiClient
+    lateinit var robotoffRepository: RobotoffRepository
+
+    @Inject
+    lateinit var wikidataClient: WikidataRepository
 
     @Inject
     lateinit var daoSession: DaoSession
@@ -124,7 +128,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     lateinit var localeManager: LocaleManager
 
     @Inject
-    lateinit var productRepository: ProductRepository
+    lateinit var taxonomiesRepository: TaxonomiesRepository
 
     private lateinit var presenter: ISummaryProductPresenter.Actions
     private lateinit var mTagDao: TagDao
@@ -220,7 +224,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         productState = requireProductState()
         refreshView(productState)
 
-        presenter = SummaryProductPresenter(localeManager.getLanguage(), product, this, productRepository)
+        presenter = SummaryProductPresenter(localeManager.getLanguage(), product, this, taxonomiesRepository, robotoffRepository)
     }
 
 
@@ -274,7 +278,13 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     override fun refreshView(productState: ProductState) {
         this.productState = productState
         product = productState.product!!
-        presenter = SummaryProductPresenter(localeManager.getLanguage(), product, this, productRepository)
+        presenter = SummaryProductPresenter(
+            localeManager.getLanguage(),
+            product,
+            this,
+            taxonomiesRepository,
+            robotoffRepository
+        )
 
         binding.categoriesText.text = buildSpannedString {
             bold { append(getString(R.string.txtCategories)) }
@@ -364,9 +374,9 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
                 product.embTags.toString()
                     .removeSurrounding("[", "]")
                     .split(", ")
-                    .map {
+                    .map { tag ->
                         getSearchLinkText(
-                            getEmbCode(it).trim { it <= ' ' },
+                            getEmbCode(tag).trim { it <= ' ' },
                             SearchType.EMB,
                             requireActivity()
                         )
@@ -945,15 +955,17 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         when (val url = mUrlImage) {
             null -> newFrontImage()
             else -> {
-                FullScreenActivityOpener.openForUrl(
-                    this,
-                    client,
-                    product,
-                    ProductImageField.FRONT,
-                    url,
-                    binding.imageViewFront,
-                    localeManager.getLanguage()
-                )
+                lifecycleScope.launch {
+                    FullScreenActivityOpener.openForUrl(
+                        this@SummaryProductFragment,
+                        client,
+                        product,
+                        ProductImageField.FRONT,
+                        url,
+                        binding.imageViewFront,
+                        localeManager.getLanguage()
+                    )
+                }
             }
         }
     }
