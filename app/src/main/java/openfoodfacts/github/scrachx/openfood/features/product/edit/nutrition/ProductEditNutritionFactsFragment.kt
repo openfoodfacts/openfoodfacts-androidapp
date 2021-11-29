@@ -55,7 +55,7 @@ import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.Defaults.NUTRITION_DATA_PER_100G
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.Defaults.NUTRITION_DATA_PER_SERVING
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
+import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.*
 import java.io.File
 import java.text.Collator
@@ -76,7 +76,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
     lateinit var picasso: Picasso
 
     @Inject
-    lateinit var client: OpenFoodAPIClient
+    lateinit var client: ProductRepository
 
     @Inject
     lateinit var fileDownloader: FileDownloader

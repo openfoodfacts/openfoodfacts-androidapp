@@ -74,7 +74,7 @@ import openfoodfacts.github.scrachx.openfood.models.*
 import openfoodfacts.github.scrachx.openfood.models.MeasurementUnit.*
 import openfoodfacts.github.scrachx.openfood.models.entities.SendProduct
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
+import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.*
 import pl.aprilapps.easyphotopicker.EasyImage
 import java.io.File
@@ -89,7 +89,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
     private val viewModel: NutritionProductViewModel by viewModels()
 
     @Inject
-    lateinit var client: OpenFoodAPIClient
+    lateinit var client: ProductRepository
 
     @Inject
     lateinit var picasso: Picasso
@@ -499,15 +499,17 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
 
     private fun openFullScreen() {
         if (nutrientsImageUrl != null) {
-            FullScreenActivityOpener.openForUrl(
-                this,
-                client,
-                product,
-                ProductImageField.NUTRITION,
-                nutrientsImageUrl!!,
-                binding.imageViewNutrition,
-                localeManager.getLanguage()
-            )
+            lifecycleScope.launch {
+                FullScreenActivityOpener.openForUrl(
+                    this@NutritionProductFragment,
+                    client,
+                    product,
+                    ProductImageField.NUTRITION,
+                    nutrientsImageUrl!!,
+                    binding.imageViewNutrition,
+                    localeManager.getLanguage()
+                )
+            }
         } else {
             // take a picture
             when {
@@ -569,7 +571,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
         }
 
         // Load to server
-        lifecycleScope.launch { client.postImg(image).await() }
+        lifecycleScope.launch { client.postImg(image) }
 
         // Load into view
         binding.addPhotoLabel.visibility = GONE

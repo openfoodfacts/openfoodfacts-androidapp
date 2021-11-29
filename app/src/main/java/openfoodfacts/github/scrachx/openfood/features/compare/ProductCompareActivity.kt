@@ -33,7 +33,7 @@ import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInsta
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.selectNavigationItem
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
+import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.*
 import java.util.*
 import javax.inject.Inject
@@ -42,7 +42,7 @@ import javax.inject.Inject
 class ProductCompareActivity : BaseActivity() {
 
     @Inject
-    lateinit var client: OpenFoodAPIClient
+    lateinit var client: ProductRepository
 
     @Inject
     lateinit var picasso: Picasso
@@ -128,7 +128,8 @@ class ProductCompareActivity : BaseActivity() {
         // Create adapter
         val productComparisonAdapter = ProductCompareAdapter(
             products,
-            this@ProductCompareActivity,
+            this,
+            this,
             client,
             picasso,
             viewModel.getCurrentLanguage()
@@ -142,7 +143,7 @@ class ProductCompareActivity : BaseActivity() {
                     viewModel.getCurrentLanguage()
                 ).apply { filePath = file.absolutePath }
 
-                lifecycleScope.launch { client.postImg(image).await() }
+                lifecycleScope.launch { client.postImg(image) }
                 product.imageUrl = file.absolutePath
             }
 

@@ -7,7 +7,9 @@ import com.google.common.truth.Subject.Factory
 import com.google.common.truth.Truth.assertAbout
 import com.google.common.truth.Truth.assertThat
 import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runBlockingTest
 import okhttp3.Credentials
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -118,10 +120,11 @@ class ProductsAPITest {
         assertThat(response).hasFoundNoProducts()
     }
 
+    @ExperimentalCoroutinesApi
     @Test
-    fun productByAdditive_e301_productsFound() {
+    fun productByAdditive_e301_productsFound() = runBlockingTest {
         val fieldsToFetchFacets = "brands,product_name,image_small_url,quantity,nutrition_grades_tags"
-        val response = prodClient.getProductsByAdditive("e301-sodium-ascorbate", fieldsToFetchFacets).blockingGet() as Search
+        val response = prodClient.getProductsByAdditive("e301-sodium-ascorbate", fieldsToFetchFacets)
         assertThat(response).hasFoundProducts()
     }
 

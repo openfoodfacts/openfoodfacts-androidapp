@@ -34,6 +34,7 @@ import android.view.View
 import android.widget.EditText
 import android.widget.SearchView
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.app.ActivityCompat.shouldShowRequestPermissionRationale
@@ -58,11 +59,7 @@ import com.mikepenz.materialdrawer.model.*
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem
 import com.mikepenz.materialdrawer.model.interfaces.IProfile
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.rx2.await
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 import openfoodfacts.github.scrachx.openfood.AppFlavors
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
@@ -94,7 +91,6 @@ import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInsta
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.selectNavigationItem
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.*
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_ABOUT
@@ -122,8 +118,6 @@ import java.io.FileNotFoundException
 import java.io.IOException
 import java.util.*
 import javax.inject.Inject
-import kotlin.time.Duration
-import kotlin.time.ExperimentalTime
 import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivity.Companion.start as startSearch
 
 @AndroidEntryPoint
@@ -131,8 +125,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
     private var _binding: ActivityMainBinding? = null
     private val binding get() = _binding!!
 
-    @Inject
-    lateinit var apiClient: OpenFoodAPIClient
+    private val viewModel: MainActivityViewModel by viewModels()
 
     @Inject
     lateinit var matomoAnalytics: MatomoAnalytics
@@ -308,12 +301,11 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
         scheduleProductUpload(this, sharedPreferences)
 
         // Adds nutriscore and quantity values in old history for schema 5 update
-        val appPrefs = getAppPreferences()
 
-        val isOldHistoryDataSynced = appPrefs.getBoolean("is_old_history_data_synced", false)
-        if (!isOldHistoryDataSynced && this.isNetworkConnected()) {
+        val isOldHistoryDataSynced = getAppPreferences().getBoolean("is_old_history_data_synced", false)
+        if (!isOldHistoryDataSynced && isNetworkConnected()) {
             historySyncJob?.cancel()
-            historySyncJob = lifecycleScope.launch { apiClient.syncOldHistory() }
+            historySyncJob = viewModel.syncOldHistory()
         }
 
         binding.bottomNavigationInclude.bottomNavigation.selectNavigationItem(0)
@@ -556,12 +548,10 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
 
     private fun updateProfileForCurrentUser() {
         headerResult.updateProfile(getUserProfile())
-        if (isUserSet()) {
-            if (headerResult.profiles != null && headerResult.profiles!!.size < 2) {
-                headerResult.addProfiles(getProfileSettingDrawerItem())
-            }
-        } else {
+        if (!isUserSet()) {
             headerResult.removeProfileByIdentifier(ITEM_MANAGE_ACCOUNT.toLong())
+        } else if (headerResult.profiles != null && headerResult.profiles!!.size < 2) {
+            headerResult.addProfiles(getProfileSettingDrawerItem())
         }
     }
 
@@ -695,7 +685,6 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
         withIdentifier(ITEM_USER.toLong())
     }
 
-    @ExperimentalTime
     override fun onStart() {
         super.onStart()
         customTabActivityHelper.bindCustomTabsService(this)
@@ -707,7 +696,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
             val firstTimeLaunchTime = prefManager.firstTimeLaunchTime
 
             // Check if it has been a week since first launch
-            if (Duration.milliseconds(firstTimeLaunchTime + System.currentTimeMillis()) >= Duration.days(7))
+            if (firstTimeLaunchTime + System.currentTimeMillis() >= 7 * 24 * 60 * 60 * 1000)
                 showFeedbackDialog()
         }
     }
@@ -837,14 +826,14 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
     }
 
     private fun handleSendImage(intent: Intent) {
-        intent.getParcelableExtra<Uri>(Intent.EXTRA_STREAM)?.let { chooseDialog(listOf(it)) }
+        intent.getParcelableExtra<Uri>(Intent.EXTRA_STREAM)?.let { chooseImageDialog(listOf(it)) }
     }
 
     private fun handleSendMultipleImages(intent: Intent) {
-        intent.getParcelableArrayListExtra<Uri>(Intent.EXTRA_STREAM)?.let { chooseDialog(it.filterNotNull()) }
+        intent.getParcelableArrayListExtra<Uri>(Intent.EXTRA_STREAM)?.let { chooseImageDialog(it.filterNotNull()) }
     }
 
-    private fun chooseDialog(selectedImages: List<Uri>) {
+    private fun chooseImageDialog(selectedImages: List<Uri>) {
         lifecycleScope.launch(Dispatchers.Main) {
             val barcodes = detectBarcodeInImages(selectedImages)
             if (barcodes.isNotEmpty()) createAlertDialog(false, barcodes.first(), selectedImages)
@@ -897,7 +886,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
                 }.toList()
         }
 
-    private fun createAlertDialog(hasEditText: Boolean, barcode: String, imgUris: List<Uri>) {
+    private fun createAlertDialog(hasEditText: Boolean, barcode: String, uris: List<Uri>) {
         val alertDialogBuilder = AlertDialog.Builder(this)
 
         val dialogView = layoutInflater.inflate(R.layout.alert_barcode, null)
@@ -905,7 +894,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
 
         dialogView.findViewById<RecyclerView>(R.id.product_image).run {
             layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
-            adapter = PhotosAdapter(imgUris)
+            adapter = PhotosAdapter(uris)
         }
 
         val barcodeEditText = dialogView.findViewById<EditText>(R.id.barcode)
@@ -923,26 +912,27 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
             setCancelable(false)
 
             setPositiveButton(R.string.txtYes) { dialog, _ ->
-                imgUris.forEach { selected ->
+                for (imgUri in uris) {
                     val tempBarcode = if (hasEditText) barcodeEditText.text.toString() else barcode
 
-                    if (tempBarcode.isNotEmpty()) {
+                    if (tempBarcode.isEmpty()) {
+                        Toast.makeText(this@MainActivity, getString(R.string.sorry_msg), Toast.LENGTH_LONG).show()
+                    } else {
                         dialog.dismiss()
-                        if (this@MainActivity.isNetworkConnected()) {
-                            contentResolver.openInputStream(selected)!!.use {
+                        if (!this@MainActivity.isNetworkConnected()) {
+                            ProductEditActivity.start(this@MainActivity, Product().apply { code = tempBarcode })
+                        } else {
+                            contentResolver.openInputStream(imgUri)!!.use {
                                 val image = ProductImage(
                                     tempBarcode,
                                     ProductImageField.OTHER,
                                     it.readBytes(),
                                     localeManager.getLanguage()
                                 )
-                                lifecycleScope.launch(Dispatchers.IO) { apiClient.postImg(image).await() }
+                                // Post image
+                                viewModel.postImage(image)
                             }
-                        } else {
-                            ProductEditActivity.start(this@MainActivity, Product().apply { code = tempBarcode })
                         }
-                    } else {
-                        Toast.makeText(this@MainActivity, getString(R.string.sorry_msg), Toast.LENGTH_LONG).show()
                     }
                 }
             }

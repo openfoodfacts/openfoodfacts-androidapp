@@ -38,7 +38,7 @@ import openfoodfacts.github.scrachx.openfood.features.productlist.CreateCSVContr
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.selectNavigationItem
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
+import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.SortType.*
 import java.io.File
@@ -53,7 +53,7 @@ class ScanHistoryActivity : BaseActivity() {
     private val viewModel: ScanHistoryViewModel by viewModels()
 
     @Inject
-    lateinit var client: OpenFoodAPIClient
+    lateinit var client: ProductRepository
 
     @Inject
     lateinit var productViewActivityStarter: ProductViewActivityStarter

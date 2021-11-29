@@ -48,9 +48,6 @@ import com.mikepenz.iconics.IconicsSize
 import com.mikepenz.iconics.typeface.library.googlematerial.GoogleMaterial
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
-import io.reactivex.Completable
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.Disposable
 import kotlinx.coroutines.*
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
@@ -83,15 +80,12 @@ import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenNa
 import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.AnalysisTagConfig
 import openfoodfacts.github.scrachx.openfood.models.eventbus.ProductNeedsRefreshEvent
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.StateTags
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
-import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
-import openfoodfacts.github.scrachx.openfood.repositories.ScannerPreferencesRepository
+import openfoodfacts.github.scrachx.openfood.repositories.*
 import openfoodfacts.github.scrachx.openfood.utils.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import java.io.IOException
 import java.util.*
-import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -100,16 +94,19 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
     internal val binding get() = _binding!!
 
     @Inject
-    lateinit var client: OpenFoodAPIClient
+    lateinit var client: ProductRepository
 
     @Inject
     lateinit var daoSession: DaoSession
 
     @Inject
-    lateinit var offlineProductService: OfflineProductService
+    lateinit var offlineProductRepository: OfflineProductRepository
 
     @Inject
-    lateinit var productRepository: ProductRepository
+    lateinit var taxonomiesRepository: TaxonomiesRepository
+
+    @Inject
+    lateinit var robotoffRepository: RobotoffRepository
 
     @Inject
     lateinit var picasso: Picasso
@@ -137,7 +134,7 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
     private val settings by lazy { getAppPreferences() }
 
     private var productDisp: Job? = null
-    private var hintBarcodeDisp: Disposable? = null
+    private var hintBarcodeDisp: Job? = null
 
 
     private var cameraState = 0
@@ -192,7 +189,7 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
         productDisp?.cancel()
 
         // First, try to show if we have an offline saved product in the db
-        offlineSavedProduct = offlineProductService.getOfflineProductByBarcode(barcode).also { product ->
+        offlineSavedProduct = offlineProductRepository.getOfflineProductByBarcode(barcode).also { product ->
             product?.let { showOfflineSavedDetails(it) }
         }
 
@@ -384,7 +381,7 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
                 }
 
             }
-        }, productRepository).also {
+        }, taxonomiesRepository, robotoffRepository).also {
             lifecycleScope.launch {
                 try {
                     it.loadAllergens()
@@ -489,16 +486,16 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
         // The system bars are visible.
         hideSystemUI()
 
-        hintBarcodeDisp = Completable.timer(15, TimeUnit.SECONDS)
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnComplete {
-                if (productShowing) return@doOnComplete
+        hintBarcodeDisp = lifecycleScope.launch {
+            delay(15 * 1000)
 
-                hideAllViews()
-                quickViewBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
-                binding.quickViewSearchByBarcode.visibility = View.VISIBLE
-                binding.quickViewSearchByBarcode.requestFocus()
-            }.subscribe()
+            if (productShowing) return@launch
+
+            hideAllViews()
+            quickViewBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+            binding.quickViewSearchByBarcode.visibility = View.VISIBLE
+            binding.quickViewSearchByBarcode.requestFocus()
+        }
 
         quickViewBehavior = BottomSheetBehavior.from(binding.quickView)
 
@@ -549,7 +546,7 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
     }
 
     private fun mlBarcodeCallback(barcodeValue: String) {
-        hintBarcodeDisp?.dispose()
+        hintBarcodeDisp?.cancel()
 
         // Prevent duplicate scans
         if (barcodeValue.isEmpty() || barcodeValue == lastBarcode) return
@@ -610,7 +607,7 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
         mlKitView.detach()
 
         // Dispose all RxJava disposable
-        hintBarcodeDisp?.dispose()
+        hintBarcodeDisp?.cancel()
 
         // Remove bottom sheet callback as it uses binding
         quickViewBehavior.removeBottomSheetCallback(bottomSheetCallback)
@@ -733,7 +730,7 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
                 }
                 R.id.troubleScanning -> {
                     hideAllViews()
-                    hintBarcodeDisp?.dispose()
+                    hintBarcodeDisp?.cancel()
                     binding.quickView.setOnClickListener(null)
                     binding.quickViewSearchByBarcode.text = null
                     binding.quickViewSearchByBarcode.visibility = View.VISIBLE
@@ -799,7 +796,7 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
 
     private inner class BarcodeScannerCallback : BarcodeCallback {
         override fun barcodeResult(result: BarcodeResult) {
-            hintBarcodeDisp?.dispose()
+            hintBarcodeDisp?.cancel()
 
             // Prevent duplicate scans
             if (result.text == null || result.text.isEmpty() || result.text == lastBarcode) return
