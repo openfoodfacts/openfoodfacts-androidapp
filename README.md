@@ -1,6 +1,7 @@
 <img height='175' src="https://static.openfoodfacts.org/images/svg/openfoodfacts-logo-en.svg" align="left" hspace="1" vspace="1">
 
 # Open Food Facts - Android application
+(Note: this codebase is also used for Open Beauty Facts, Open Pet Food Facts and Open Products Facts)
 
 ### A food products database
 
