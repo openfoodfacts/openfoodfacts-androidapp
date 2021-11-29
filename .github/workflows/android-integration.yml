@@ -139,7 +139,7 @@ jobs:
       - name: Generate GitHub annotations
         uses: yutailang0119/action-android-lint@v2
         with:
-          xml_path: ./app/build/reports/lint-results-offPlaystoreDebug.xml
+          report-path: ./app/build/reports/lint-results-offPlaystoreDebug.xml
 
   build_deploy_pages:
     name: Deploy dokka to GitHub Pages
