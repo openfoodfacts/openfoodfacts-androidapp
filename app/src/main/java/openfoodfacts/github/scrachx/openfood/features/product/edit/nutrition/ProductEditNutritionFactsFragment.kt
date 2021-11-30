@@ -58,6 +58,7 @@ import openfoodfacts.github.scrachx.openfood.network.ApiFields.Defaults.NUTRITIO
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.*
 import java.io.File
+import java.text.Collator
 import java.util.*
 import javax.inject.Inject
 
