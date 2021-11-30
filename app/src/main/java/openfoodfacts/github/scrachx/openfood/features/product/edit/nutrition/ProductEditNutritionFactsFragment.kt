@@ -714,7 +714,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         val nutrientsDefUnits = resources.getStringArray(R.array.nutrients_array).zip(PARAMS_OTHER_NUTRIENTS_DEFAULT_UNITS.keys)
         val filteredNutrients = resources.getStringArray(R.array.nutrients_array)
             .filterIndexed { index, _ -> index !in usedNutrientsIndexes }
-            .sortedBy { it.lowercase() }
+            .sortedWith(Collator.getInstance(Locale.getDefault()))
             .toTypedArray()
 
         MaterialAlertDialogBuilder(requireActivity())
