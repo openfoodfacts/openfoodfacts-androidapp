@@ -122,7 +122,7 @@ class ProductsAPITest {
 
     @ExperimentalCoroutinesApi
     @Test
-    fun productByAdditive_e301_productsFound() = runBlockingTest {
+    fun productByAdditive_e301_productsFound() = runBlocking {
         val fieldsToFetchFacets = "brands,product_name,image_small_url,quantity,nutrition_grades_tags"
         val response = prodClient.getProductsByAdditive("e301-sodium-ascorbate", fieldsToFetchFacets)
         assertThat(response).hasFoundProducts()
