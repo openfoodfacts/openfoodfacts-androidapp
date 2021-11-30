@@ -2,6 +2,7 @@ package openfoodfacts.github.scrachx.openfood.category
 
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.runBlockingTest
 import openfoodfacts.github.scrachx.openfood.MockitoHelper
 import openfoodfacts.github.scrachx.openfood.category.mapper.CategoryMapper
@@ -43,7 +44,7 @@ class CategoryRepositoryTest {
     }
 
     @Test
-    fun retrieveAll_Success() = runBlockingTest {
+    fun retrieveAll_Success() = runBlocking { // runBlockingTest made this crash
         val result = repository.retrieveAll()!![0]
         assertThat(result).isEqualTo(category)
     }
