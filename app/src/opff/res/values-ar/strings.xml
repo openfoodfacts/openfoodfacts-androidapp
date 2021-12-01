@@ -21,7 +21,7 @@
     <string name="slide_3_desc">جميع أغذية الحيوانات الأليفة التي تمسحها ضوئيًا ، في قائمة واحدة سهلة الاستخدام يمكنك تصديرها</string>
     <string name="slide_4_title">يعمل بدون اتصال</string>
     <string name="slide_4_desc">يمكنك إضافة منتجات جديدة ، حتى إذا لم يكن لديك اتصال بالإنترنت في الوقت الحالي</string>
-    <string name="product_does_not_exist_please_add_it">المنتج [[%1$s]] الذي مسحته غير موجود حتى الآن في Open Products Facts. هل يمكنك إضافته؟</string>
+    <string name="product_does_not_exist_please_add_it">المنتج الذي مسحته غير موجود حتى الآن في Open Pet Food Facts. يرجى إضافته.</string>
     <string name="txtDialogsContentPowerMode">المنتج الذي مسحته موجودًا بالفعل في Open Pet Food Facts.</string>
     <string name="msg_share">انظر إلى هذا المنتج على Open Pet Food Facts :</string>
     <string name="not_support_books">الكتب ليست مدعومة في الوقت الحالي من قبل \"حقائق الغذاء المفتوحة\"</string>

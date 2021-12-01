@@ -36,19 +36,18 @@
         <item quantity="other">%d days ago</item>
     </plurals>
     <string name="action_about">Info</string>
-    <string name="action_discover">Discover</string>
+    <string name="action_discover">Avasta</string>
     <string name="contribute">Kuidas panustada</string>
     <string name="action_find">Otsi</string>
     <string name="product_incomplete_message">This product is not complete. As a result, we couldn\'t do the allergen check.</string>
     <string name="product_allergen_prompt">Toode sisaldab:</string>
     <string name="no_offline_data">Olete valmis</string>
-    <string name="first_offline">Võrguühenduseta lisatud tooted kuvatakse siin</string>
     <!-- Image Upload -->
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
         <item>Ülevaade</item>
-        <item>Ingredients</item>
-        <item>Nutrition</item>
+        <item>Koostisosad</item>
+        <item>Toitained</item>
         <item>Nutrition Table</item>
         <item>Keskkond</item>
     </string-array>
@@ -141,7 +140,7 @@
         <item>Stearic acid (18:0)</item>
         <item>Sahharoos</item>
         <item>Tauriin</item>
-        <item>Trans fat</item>
+        <item>Trans-rasva</item>
         <item>A-vitamiin</item>
         <item>B1-vitamiin (tiamiin)</item>
         <item>B12-vitamiin (kobalamiin)</item>
@@ -159,19 +158,17 @@
     <string name="search_button">Otsi</string>
     <string name="alert_dialog_warning_title">Warning</string>
     <string name="alert_dialog_warning_msg_user">Kasutaja / parool on muutunud, värskendage teavet</string>
-    <string name="toast_retrieving">Loading…</string>
-    <string name="txtBarcode">Triipkood:</string>
-    <string name="txtCategories">Kategooriad :</string>
-    <string name="txtLabels">Labels, certifications, awards :</string>
-    <string name="txtEMB">Traceability codes:</string>
-    <string name="txtIngredients">Koostisosade loend:</string>
+    <string name="toast_retrieving">Laadimine…</string>
+    <string name="txtBarcode">Barcode:</string>
+    <string name="txtCategories">Categories:</string>
+    <string name="txtLabels">Labels, certifications, awards: </string>
+    <string name="txtEMB">Traceability codes: </string>
+    <string name="txtIngredients">Koostisosade loend: </string>
     <string name="Donate">Anneta</string>
     <string name="Donation">Click here to donate to Open Food Facts</string>
-    <string name="txtSubstances">Allergiat või talumatust tekitavad ained või tooted :</string>
-    <string name="txtAdditives">Lisandid :</string>
-    <string name="txtTraces">Traces :</string>
-    <string name="txtMayBeFromPalmOilProduct">Koostisosad, mis võivad olla palmiõlist:</string>
-    <string name="txtPalmOilProduct">Palmiõlist koostisosad :</string>
+    <string name="txtSubstances">Substances or products causing allergies or intolerances: </string>
+    <string name="txtAdditives">Lisandid: </string>
+    <string name="txtTraces">Traces: </string>
     <string name="txtServingSize">Portsjon :</string>
     <string name="txtNutrientLevel100g">100 g toitainete sisaldus:</string>
     <string name="txtNutrientLevel100ml">100 ml toitainete sisaldus:</string>
@@ -180,60 +177,52 @@
     <string name="txtNutritionLevelHigh">suures koguses</string>
     <string name="txtSave">Salvesta</string>
     <string name="txtSignIn">Logi sisse</string>
-    <string name="txtToastSaved">Kasutaja salvestatud</string>
-    <string name="txtSalt">Salt</string>
+    <string name="txtSalt">Soola</string>
     <string name="txtFat">Fat</string>
     <string name="txtSugars">Sugars</string>
     <string name="hintBarcode">Triipkood</string>
     <string name="txtNutriScoreInfo">Lisateave toitainete taseme kohta</string>
     <string name="txtloginHelper">If you have an Open Food Facts account, you can login here with it</string>
-    <string name="hintLogin">Login</string>
+    <string name="hintLogin">Username</string>
     <string name="hintPass">Password</string>
     <string name="errorLogin">Login or password error</string>
     <string name="errorWeb">We were not able to access the internet. Do you have connectivity issues?</string>
-    <string name="uploadLater">Image will be uploaded when network is available</string>
-    <string name="txtInfoLoginOk">Kasutaja salvestatud</string>
-    <string name="txtInfoLoginNo">User not saved</string>
+    <string name="txtInfoLoginOk">You successfully logged into your Open Food Facts account.</string>
+    <string name="txtInfoLoginNo">An error happened while trying to log into your Open Food Facts account.</string>
     <string name="product_does_not_exist_please_add_it">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
-    <string name="txtYes">Yes</string>
-    <string name="txtNo">No</string>
+    <string name="txtYes">Jah</string>
+    <string name="txtNo">Ei</string>
     <string name="hintBrand">Brand</string>
     <string name="txtSendAll">Upload all</string>
-    <string name="txtPictureNeededDialogNo">Discard</string>
-    <string name="toastSending">Uploading…</string>
-    <string name="txtLoading">Loading…</string>
-    <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
-    <string name="txtDialogsContentInfoSave">The product is saved locally, you can edit it in the \"Offline Edit\" menu</string>
+    <string name="txtPictureNeededDialogNo">Loobu</string>
+    <string name="toastSending">Üleslaadimine…</string>
+    <string name="txtLoading">Laadimine…</string>
     <string name="productSavedToast">Product saved, thanks!</string>
-    <string name="txtBarcodeRequire">Barcode required</string>
-    <string name="txtOk">OK</string>
+    <string name="txtBarcodeRequire">Triipkood nõutud</string>
     <string name="txtBarcodeNotValid">Barcode not valid</string>
     <string name="msg_share">Look at this product on Open Food Facts :</string>
-    <string name="create_account">Sign up</string>
-    <string name="home_drawer">Home</string>
-    <string name="install">Install</string>
-    <string name="open_beauty_drawer">Open Beauty Facts</string>
-    <string name="open_food_drawer">Open Food Facts</string>
+    <string name="create_account">Registreeru</string>
+    <string name="home_drawer">Kodu</string>
+    <string name="install">Paigalda</string>
     <string name="search_drawer">Otsi</string>
-    <string name="search_by_barcode_drawer">Type barcode</string>
+    <string name="search_by_barcode_drawer">Sisesta triipkood</string>
     <string name="category_drawer">Kategooriad</string>
-    <string name="search_by_category">Category</string>
-    <string name="scan_search">Scan Barcode</string>
+    <string name="search_by_category">Kategooria</string>
+    <string name="scan_search">Skanni triipkoodi</string>
     <string name="user_drawer">User</string>
-    <string name="offline_edit_drawer">Offline edit</string>
-    <string name="txt_anonymous">Anonymous</string>
-    <string name="delete_txt">Delete</string>
+    <string name="txt_anonymous">Anonüümne</string>
+    <string name="delete_txt">Kustuta</string>
     <string name="sign_in_drawer">Logi sisse</string>
-    <string name="alert_drawer">Allergen alert</string>
-    <string name="your_lists">Your lists</string>
-    <string name="title_dialog_alert">Add alert</string>
+    <string name="alert_drawer">Allergeeniteavitus</string>
+    <string name="your_lists">Sinu loendid</string>
+    <string name="title_dialog_alert">Lisa hoiatus</string>
     <string name="select_camera">Select a Camera</string>
     <string name="ok_button">OK</string>
     <string name="cancel_button">Cancel</string>
-    <string name="login_button">Login</string>
-    <string name="create_account_button">Create Account</string>
+    <string name="login_button">Username</string>
+    <string name="create_account_button">Loo konto</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
-    <string name="title_info_dialog">How does it work?</string>
+    <string name="title_info_dialog">Kuidas see töötab?</string>
     <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
     <string name="permission_camera">Camera permission is needed to scan barcodes and take pictures.</string>
     <string name="no_camera_dialog_title">Camera not found</string>
@@ -249,31 +238,30 @@
     <string name="user_enjoying_app">Are you enjoying your experience with Open Food Facts?</string>
     <string name="user_ask_show_feedback_form">We\'re sorry to hear that! Could you tell us what happened?</string>
     <string name="user_ask_rate_app">Great! Let others know what you think of this app!</string>
-    <string name="rate_app">Rate app</string>
-    <string name="no_thx">No thanks</string>
-    <string name="feedback_form_url">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
+    <string name="rate_app">Hinda rakendust</string>
+    <string name="no_thx">Tänan, ei</string>
+    <string name="feedback_form_url" comment="Please ask teolemon to duplicate the feedback form and give you the right URL">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">History</string>
-    <string name="clear_history">Clear history</string>
+    <string name="clear_history">Tühjenda ajalugu</string>
     <string name="title_clear_history_dialog">Clear</string>
     <string name="text_clear_history_dialog">Do you want to clear all your scan history?</string>
     <string name="export_csv_history">Ekspordi CSV</string>
     <string name="txt_exporting_history">Exporting history…</string>
     <string name="txt_history_exported">History exported</string>
     <string name="permision_write_external_storage">Write external storage permission is needed to export history.</string>
-    <string name="no_brand">Bränd puudub</string>
+    <string name="no_brand">Kaubamärk puudub</string>
     <string name="no_title">Pealkiri puudub</string>
     <!-- Nutrition info tab -->
-    <string name="display_fact">Nutrition facts table for %1$s of this product</string>
-    <string name="check_facts">Check</string>
-    <string name="nutrition">Nutrition</string>
+    <string name="display_fact" comment="Do not modify the placeholder">Nutrition facts table for %1$s of this product</string>
+    <string name="check_facts">Kontrolli</string>
+    <string name="nutrition">Toitained</string>
     <string name="calculated_nutrition">Calculated Nutrition</string>
     <string name="please_enter_weight">Palun sisesta toote kaal</string>
     <string name="enter_weight">Sisesta toote kaal</string>
-    <string name="calculate_nutrition_facts">Calculate Nutrition Facts</string>
+    <string name="calculate_nutrition_facts">Calculate nutrition facts for a specific quantity</string>
     <string name="nutrition_carbohydrate">Carbohydrate</string>
     <string name="nutrition_cholesterol">Kolesterool</string>
-    <string name="nutrition_energy">Energy</string>
     <string name="nutrition_energy_kcal">Energy in calories (kcal)</string>
     <string name="nutrition_energy_kj">Energy in joules (kJ)</string>
     <string name="nutrition_energy_short_name">Energy</string>
@@ -281,16 +269,14 @@
     <string name="nutrition_fiber">Dietary fiber</string>
     <string name="nutrition_header">Nutrition facts</string>
     <string name="nutrition_proteins">Proteins</string>
-    <string name="nutrition_salt">Salt</string>
+    <string name="nutrition_salt">Soola</string>
     <string name="nutrition_satured_fat">Küllastunud rasv</string>
     <string name="nutrition_sodium">Sodium</string>
     <string name="nutrition_sugars">Sugars</string>
-    <string name="nutrition_trans_fat">Trans fat</string>
+    <string name="nutrition_trans_fat">Trans-rasva</string>
     <string name="nutriment_serving_size">Portsjoni kohta: </string>
     <string name="action_manage_account">Halda kontot</string>
-    <string name="action_contributes">Your contributions</string>
-    <string name="choose_energy_unit">Choose your preferred energy units for the nutrition table</string>
-    <string name="choose_volume_unit">Choose your preferred volume units for the nutrition table</string>
+    <string name="action_contributes">Sinu panused</string>
     <string name="logout_drawer">Logi välja</string>
     <string name="contribution_without_account">You can sign-in or create an account to keep your contributions</string>
     <string name="textCarbonFootprint">Carbon footprint / CO2 emissions: </string>
@@ -374,44 +360,32 @@
     <string name="take_picture_ingredients">Take a photo of the ingredients</string>
     <string name="take_picture_recycling">Take a photo of the recycling instructions</string>
     <string name="take_picture_front">Take a photo of the front</string>
-    <string name="take_picture_nutrition_table">Take a photo of the nutrition table</string>
-    <string name="take_more_pictures">Take more photos</string>
-    <string name="take_extra_packaging_pictures">Take extra photos of packaging</string>
+    <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
+    <string name="take_more_pictures">Take more pictures</string>
+    <string name="take_extra_packaging_pictures">Tee pakendist lisafotosid</string>
     <string name="txtSaturatedFat">Küllastunud rasv</string>
-    <string name="nutriscore_info_msg">Learn more about the Nutri-Score</string>
-    <string name="nova_info_msg">Learn more about NOVA groups</string>
-    <string name="nova_grp1_msg">Group 1 - Unprocessed or minimally processed foods</string>
-    <string name="nova_grp2_msg">Group 2 - Processed culinary ingredients</string>
-    <string name="nova_grp3_msg">Group 3 - Processed foods</string>
-    <string name="nova_grp4_msg">Group 4 - Ultra-processed food and drink products</string>
+    <string name="nutriscore_info_msg">Lisateave Nutri-Score kohta</string>
+    <string name="nova_info_msg">Lisateave NOVA gruppide kohta</string>
+    <string name="nova_grp1_msg">1. rühm - töötlemata või minimaalselt töödeldud toidud</string>
+    <string name="nova_grp2_msg">2. rühm - kulinaarsed koostisosad töödeldud</string>
+    <string name="nova_grp3_msg">3. rühm - töödeldud toidud</string>
+    <string name="nova_grp4_msg">4. rühm - ülitöödeldud toidu- ja joogitooted</string>
     <!-- String related to App Shortcuts -->
     <string name="disabled_message">Shortcut Not Available</string>
     <string name="scan_shortcut_short_label">Skanneeri</string>
-    <string name="scan_shortcut_long_label">Scan Product</string>
+    <string name="scan_shortcut_long_label">Skanni toodet</string>
     <string name="barcode_shortcut_short_label">Otsi</string>
     <string name="barcode_shortcut_long_label">Search By Barcode</string>
     <string name="history_shortcut_short_label">History</string>
     <string name="history_shortcut_long_label">History</string>
-    <string name="contributions_shortcut_short_label">Contributions</string>
+    <string name="contributions_shortcut_short_label">Panused</string>
     <string name="contributions_shortcut_long_label">My contributions</string>
     <string name="forgot_password">Forgot Password</string>
-    <string name="next">NEXT</string>
-    <string name="skip">SKIP</string>
-    <string name="start">GOT IT</string>
+    <string name="next">JÄRGMINE</string>
+    <string name="skip">JÄTA VAHELE</string>
     <string name="email_not_found">No email applications found</string>
-    <string name="airplane_mode_active_dialog_title">Airplane mode enabled</string>
-    <string name="airplane_mode_active_dialog_message">Airplane mode is enabled, please disable this to continue.</string>
-    <string name="airplane_mode_active_dialog_negative">Dismiss</string>
-    <string name="airplane_mode_active_dialog_positive">Seaded</string>
     <string name="device_offline_dialog_title">Network unavailable</string>
-    <string name="device_offline_dialog_message">A network connection is needed to do this, would you like to change this in settings?</string>
-    <string name="device_offline_dialog_negative">Dismiss</string>
-    <string name="device_offline_dialog_positive">Seaded</string>
     <string name="scan_first_product">Skannige oma esimene toode</string>
-    <string name="device_on_mobile_data_warning_title">Informatsioon</string>
-    <string name="device_on_mobile_data_warning_message">You have disabled upload on mobile data , please connect to WiFi or change this in preferences</string>
-    <string name="device_on_mobile_data_warning_positive">Eelistused</string>
-    <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
     <string name="changes_saved">Changes saved successfully</string>
     <string name="proceed">Proceed</string>
     <string name="preference_choose_language_dialog_title">Choose language</string>
@@ -424,51 +398,49 @@
     <string name="prompt_point_at_a_barcode">Point your camera at a barcode</string>
     <string name="prompt_move_camera_closer">Move closer to detect</string>
     <string name="please_check_your_connection">Please check your connection.</string>
-    <string name="advanced_search_title">Advanced Search &amp; Charts</string>
-    <string name="compare_products">Compare products</string>
+    <string name="advanced_search_title">Detailne otsing ja graafikud</string>
+    <string name="compare_products">Võrdle tooteid</string>
     <string name="connectivity_check">Please check your internet connection</string>
-    <string name="dismiss">Dismiss</string>
+    <string name="dismiss">Loobu</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <!--Just replace "world" by "fr", "de"… translate the "terms-of-use" with the hyphens -->
-    <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
+    <string name="terms_url">https://ee.openfoodfacts.org/terms-of-use</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
-    <string name="faq_url">https://world.openfoodfacts.org/faq</string>
+    <string name="faq_url">https://ee.openfoodfacts.org/faq</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
     <string name="hunger_game_url">https://hunger.openfoodfacts.org/</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate the end of the url -->
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
-    <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
+    <string name="nutriscore_uri">https://ee.openfoodfacts.org/nutriscore</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
-    <string name="url_nova_groups">https://world-en.openfoodfacts.org/nova</string>
+    <string name="url_nova_groups">https://ee.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the end of the url -->
-    <string name="ecoscore_url">https://world.openfoodfacts.org/eco-score-the-environmental-impact-of-food-products</string>
+    <string name="ecoscore_url">https://ee.openfoodfacts.org/eco-score-the-environmental-impact-of-food-products</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
-    <string name="preference_header_general">General</string>
-    <string name="preference_header_network">Network</string>
-    <string name="preference_header_contributing">Contributing</string>
-    <string name="preference_header_privacy">Privacy</string>
-    <string name="preference_crash_title">Crash reporting</string>
-    <string name="preference_crash_summary">When enabled, crash reports will be sent to the Open Food Facts server automatically, so that we can fix bugs and improve the app.</string>
-    <string name="preference_analytics_title">Send anonymous data</string>
+    <string name="url_nutrient_values">https://ee.openfoodfacts.org/nutrition-traffic-lights</string>
+    <string name="preference_header_general">Üldine</string>
+    <string name="preference_header_privacy">Privaatsus</string>
+    <string name="preference_crash_title">Krahhidest teavitamine</string>
+    <string name="preference_crash_summary">Lubamisel saadetakse krahhiaruanded Open Food Facts serverile automaatselt, et me saaks vigu parandada ning rakendust täiendada.</string>
+    <string name="preference_analytics_title">Saada anonüümseid andmeid</string>
     <string name="preference_analytics_summary">When enabled, some anonymous information regarding app usage will be sent to the Open Food Facts servers, so that we can understand how and how much features are used in order to improve them.</string>
-    <string name="preference_analytics_bottom_sheet_title">Send anonymous data</string>
+    <string name="preference_analytics_bottom_sheet_title">Saada anonüümseid andmeid</string>
     <string name="preference_analytics_bottom_sheet_description">Help improve Open Food Facts by letting us know how you use it. Data collected is anonymous. This option can be disabled at any time in the settings section.</string>
-    <string name="preference_analytics_bottom_sheet_grant_button">Grant</string>
-    <string name="preference_analytics_bottom_sheet_decline_button">Decline</string>
+    <string name="preference_analytics_bottom_sheet_grant_button">Luba</string>
+    <string name="preference_analytics_bottom_sheet_decline_button">Keeldu</string>
     <string name="scan_first_string">Your viewed product history will be listed here.\nThis history is for your eyes only and is stored locally.</string>
-    <string name="log_in">Login</string>
+    <string name="log_in">Username</string>
     <string name="login_true">Already logged in!</string>
     <string name="confirm_logout">Confirm Logout</string>
     <string name="logout_dialog_content">Are you sure to log out ?</string>
     <string name="dialog_cancel">Cancel</string>
-    <string name="dialog_create">Create</string>
+    <string name="dialog_create">Loo</string>
     <string name="wikidata_information">Going further</string>
     <string name="wikidata_unavailable">There is no Wikipedia page in your language yet.</string>
-    <string name="Wikipedia">View on Wikipedia</string>
+    <string name="Wikipedia">Vaata Vikipeedias</string>
     <string name="Browse_Products">Browse Products</string>
     <string name="brand_string">Brand</string>
-    <string name="additive_string">Additive</string>
+    <string name="additive_string">Lisand</string>
     <string name="allergen_string">Allergen</string>
     <string name="search_string">Otsi</string>
     <string name="country_string">Country</string>
@@ -477,21 +449,21 @@
     <string name="state_subtitle">State</string>
     <string name="packaging_string">Packaging</string>
     <string name="label_string">Label</string>
-    <string name="category_string">Category</string>
-    <string name="connection">Connected</string>
-    <string name="contributor_string">Contributor</string>
-    <string name="app_disabled_text">Application is disabled</string>
+    <string name="category_string">Kategooria</string>
+    <string name="connection">Ühendatud</string>
+    <string name="contributor_string">Panustaja</string>
+    <string name="app_disabled_text">Rakendus on keelatud</string>
     <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
-    <string name="vitamin_tags_text">Vitamins:</string>
-    <string name="amino_acid_tags_text">Amino Acids:</string>
-    <string name="mineral_tags_text">Minerals:</string>
-    <string name="other_tags_text">Other Substances:</string>
+    <string name="vitamin_tags_text">Vitamiinid:</string>
+    <string name="amino_acid_tags_text">Aminohapped:</string>
+    <string name="mineral_tags_text">Mineraalid:</string>
+    <string name="other_tags_text">Muud ained:</string>
     <!--shared element transition key-->
-    <string name="by_title">Title</string>
+    <string name="by_title">Pealkiri</string>
     <string name="by_brand">Brand</string>
     <string name="by_barcode">Triipkood</string>
-    <string name="by_time">Recently Viewed</string>
-    <string name="sort">Sort</string>
+    <string name="by_time">Hiljuti vaadatud</string>
+    <string name="sort">Sorteeri</string>
     <string name="by_nutrition_grade">Nutri-Score</string>
     <string name="sort_by">Sort by</string>
     <!-- strings related to share images -->
@@ -513,37 +485,35 @@
     <string name="notify_content">Click to view exported products</string>
     <string name="notification_channel_name">Export Notifications</string>
     <string name="notify_channel_description">Notification to show exported file\'s location</string>
-    <string name="products_to_be_completed">Products to be completed</string>
-    <string name="offline_notification_title">Offline contributions you need to send</string>
-    <string name="creator_history">Product added on %1$s at %2$s CET by %3$s</string>
-    <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by %3$s </string>
+    <string name="products_to_be_completed">Tooted, mida täiendada</string>
+    <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Product added on %1$s at %2$s CET by %3$s</string>
+    <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Last edit of product page on %1$s at %2$s CEST by %3$s </string>
+    <!-- TODO: Add the placeholder in the string - important for several languages -->
     <string name="other_editors">Product page also edited by </string>
     <string name="product_states">Product States</string>
     <string name="incomplete_states">Incomplete States</string>
     <string name="complete_states">Complete States</string>
-    <string name="contribution_tab">Contributions</string>
-    <string name="synthesis_tab">Synthesis</string>
+    <string name="contribution_tab">Panused</string>
+    <string name="synthesis_tab">Süntees</string>
     <string name="txtDialogsTitle">Informatsioon</string>
-    <string name="offline_product_addition_title">Add a new product</string>
-    <string name="productNameNull">Name unknown</string>
+    <string name="offline_product_addition_title">Lisa uus toode</string>
+    <string name="productNameNull">Nimi teadmata</string>
     <string name="productAdditivesUnknown"></string>
-    <string name="productAdditivesTemplate">%1$d additives</string>
     <plurals name="productAdditives">
-        <item quantity="one">%d additive</item>
-        <item quantity="other">%d additives</item>
+        <item quantity="one" comment="Do not change the placeholder">%d additive</item>
+        <item quantity="other" comment="Do not change the placeholder">%d lisandit</item>
     </plurals>
-    <string name="product_not_complete">This product is not yet complete. \nCan you add some details?</string>
+    <string name="product_not_complete">See toode pole veel valmis. \nKas saad lisada mõned üksikasjad?</string>
     <string name="addProductOffline">You seem offline. Add the product %s using the offline mode ?</string>
     <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
-    <string name="scan_sound">Scan sound</string>
+    <string name="scan_sound">Skannimisheli</string>
     <string name="trouble_scanning">Trouble Scanning?</string>
     <string name="barcode_hint">Trouble Scanning? Enter Barcode</string>
     <string name="switch_camera">Switch camera</string>
-    <string name="autofocus">Autofocus</string>
-    <string name="initial_loading">Initial loading</string>
-    <string name="preferences">Eelistused</string>
+    <string name="autofocus">Autofookus</string>
+    <string name="initial_loading">Esialgne laadimine</string>
     <string name="OFFlogo">Open Food Facts logo</string>
-    <string name="loading_product">Loading product %s</string>
+    <string name="loading_product" comment="Do not modify the placeholder">Toote %s laadimine</string>
     <string name="image_not_defined_for_language">No image for selected language. You can add a new one</string>
     <string name="error_adding_ingredients">Something went wrong while trying to add product ingredients</string>
     <string name="unable_to_extract_ingredients">Unable to extract ingredients from image</string>
@@ -555,20 +525,11 @@
     <string name="extract_url">Extract URL from QR-code</string>
     <string name="search_url">Search for official page URL</string>
     <string name="product_language">Product language : </string>
-    <string name="hint_emb_codes">Examples: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522, FSSL 10013011001409</string>
-    <string name="official_website">Official website</string>
+    <string name="official_website">Ametlik veebileht</string>
     <string name="scan_QR_code">Scan QR Code for product website</string>
     <string name="add_at_least_one_picture">Please add at least one picture of this product before proceeding</string>
     <string name="image_uploaded_successfully">Image uploaded successfully</string>
     <string name="error_adding_product_photos">Something went wrong while trying to add product photos</string>
-    <string name="ingredients_overwrite">Ingredients overwrite</string>
-    <string name="choose_mine">Choose mine</string>
-    <string name="keep_previous_version">Keep previous version</string>
-    <string name="product_name_overwrite">Product name overwrite</string>
-    <string name="yours">Yours: </string>
-    <string name="currently_on">Currently on %s: </string>
-    <string name="quantity_overwrite">Quantity overwrite</string>
-    <string name="link_overwrite">Link overwrite</string>
     <string name="save_product">Do you want to save the product?</string>
     <string name="error_adding_product">Something went wrong when adding the product</string>
     <string name="photos">Photos</string>
@@ -576,15 +537,14 @@
     <string name="product_uploaded_successfully">Product uploaded successfully</string>
     <string name="no_internet_connection">You appear to have no internet connection, images will be uploaded when network is available</string>
     <string name="no_internet_unable_to_extract_ingredients">No internet connection. Unable to extract ingredients</string>
-    <string name="percent">%1$d%%</string>
-    <string name="overview">Summary</string>
-    <string name="ingredients">Ingredients</string>
+    <string name="overview">Ülevaade</string>
+    <string name="ingredients">Koostisosad</string>
     <string name="nutrition_facts">Nutrition Facts</string>
     <string name="your_version">Yours</string>
     <string name="ingredients_picture">Ingredients Picture</string>
     <string name="packaging">Recycling</string>
     <string name="take_ingredients_picture_to_extract">(Please take a photo of the ingredients to automatically extract them)</string>
-    <string name="ingredients_list">Ingredients List</string>
+    <string name="ingredients_list">Koostisosade loend</string>
     <string name="ingredients_hint" tools:ignore="StringFormatInvalid">Keep the order, indicate the % when specified, separate with a comma or use -, use () for ingredients of an ingredient, surround allergens with _</string>
     <string name="extract_ingredients">Extract ingredients</string>
     <string name="extracting_ingredients">Extracting ingredients</string>
@@ -606,8 +566,8 @@
     <string name="one_photo_compulsory">(one photo is compulsory to add a new product)</string>
     <string name="product_details">Product Details</string>
     <string name="product_name">Product name</string>
-    <string name="quantity">Quantity</string>
-    <string name="labels">Labels</string>
+    <string name="quantity">Kogus</string>
+    <string name="labels">Sildid</string>
     <string name="period_of_time_after_opening">Period of time after opening</string>
     <string name="manufacturing_details">Manufacturing Details</string>
     <string name="origin_of_ingredients">Origin of ingredients</string>
@@ -619,9 +579,6 @@
     <string name="additional_pictures">Additional Pictures</string>
     <string name="hint_product_pictures">(Add more pictures of the product. eg: recycling instructions, labels etc.)</string>
     <string name="uploading_image">Sending the photo</string>
-    <string name="uploading_nutrition_image">Uploading nutrition facts image</string>
-    <string name="uploading_ingredients_image">Uploading ingredients image</string>
-    <string name="uploading_front_image">Uploading front image</string>
     <string name="edit_front_image">Edit the front photo</string>
     <string name="edit_nutrition_image">Edit the nutrition photo</string>
     <string name="edit_packaging_image">Edit the recycling photo</string>
@@ -631,10 +588,9 @@
     <string name="sign_in_to_answer">Please sign in or register to answer an insight.</string>
     <string name="hint_quantity">Examples: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
     <string name="edit_product_title">Muuda toodet</string>
-    <string name="nutrient_already_added">%s is already present in the nutrition facts</string>
     <string name="save_edits">Save edits</string>
     <string name="contribution_by">Contribution by</string>
-    <string name="title_activity_product">Title</string>
+    <string name="title_activity_product">Pealkiri</string>
     <string name="description_activity_product">description</string>
     <string name="intent_filter_share_label">Add to Open Food Facts</string>
     <!-- Used for additive exposure evaluation table -->
@@ -661,17 +617,17 @@
     <string name="legend_adi">above Acceptable Daily Intake (ADI)</string>
     <string name="max_energy_val_msg">This value is above 2000 kcal per 100g. Can you correct it ?</string>
     <string name="max_nutrient_val_msg">Value entered is more than given per serving size</string>
-    <string name="update_image">Send an Updated Image</string>
+    <string name="update_image">Saada uuendatud pilt</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">Extract ingredients</string>
     <string name="extract_recycling_prompt">Extract recycling instructions</string>
     <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
     <string name="add_category_prompt_text">Add a category to help complete the product</string>
     <string name="add_nutrient_category_prompt_text">Add a category and nutrition facts to help complete the product</string>
-    <string name="couldnot_compute_ecoscore_prompt_text">We could not compute an Eco-Score for this product. It might be that the category is not specific enough or that we don\'t have supporting data for this category. If you believe this is an error, you can mail us by clicking below.</string>
-    <string name="add_labels_origins_prompt_text">The Eco-Score takes into account environmental labels and origins of the ingredients. Please take them into photo or edit the product so that they can be taken into account</string>
-    <string name="add_labels_prompt_text">The Eco-Score takes into account environmental labels. Please take them into photo or edit the product so that they can be taken into account</string>
-    <string name="add_origins_prompt_text">The Eco-Score takes into account the origins of the ingredients. Please take them into photo (ingredient list and/or any geographic claim) or edit the product so that they can be taken into account</string>
+    <string name="couldnot_compute_ecoscore_prompt_text" comment="Do not translate Eco-Score">We could not compute an Eco-Score for this product. It might be that the category is not specific enough or that we don\'t have supporting data for this category. If you believe this is an error, you can mail us by clicking below.</string>
+    <string name="add_labels_origins_prompt_text" comment="Do not translate Eco-Score">The Eco-Score takes into account environmental labels and origins of the ingredients. Please take them into photo or edit the product so that they can be taken into account</string>
+    <string name="add_labels_prompt_text" comment="Do not translate Eco-Score">The Eco-Score takes into account environmental labels. Please take them into photo or edit the product so that they can be taken into account</string>
+    <string name="add_origins_prompt_text" comment="Do not translate Eco-Score">The Eco-Score takes into account the origins of the ingredients. Please take them into photo (ingredient list and/or any geographic claim) or edit the product so that they can be taken into account</string>
     <string name="category_game_btn">Help categorize products</string>
     <string name="version_string">Open Food Facts Android App</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
@@ -685,7 +641,7 @@
     <string name="addtive_search">Search for a additive</string>
     <string name="additives">Lisandid</string>
     <!--used for product_lists implementation-->
-    <string name="add_to_product_lists">Add to your lists</string>
+    <string name="add_to_product_lists">Lisa oma loenditesse</string>
     <string name="txt_create_new_list">Create a new list</string>
     <string name="txt_add_to_new_list">Add to a new list</string>
     <string name="create_new_list_list_name">List Name</string>
@@ -693,29 +649,27 @@
     <string name="txt_products_to_buy">Products to buy</string>
     <string name="txt_exporting_your_listed_products">Exporting Your Products…</string>
     <string name="txt_your_listed_products_exported">Your products have been exported</string>
-    <string name="txt_discard">Discard</string>
+    <string name="txt_discard">Loobu</string>
     <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
         You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
     <string name="txt_info_your_listed_products">You\'ll be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
     <string name="import_csv_to_list">Import an Open Food Facts list CSV file</string>
     <string name="toast_import_csv_error">Error in importing CSV file</string>
     <string name="toast_import_csv">CSV imported successfully!</string>
-    <string name="open_csv">Open CSV</string>
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
-    <string name="image_prompt_language">Take a photo of the ingredients in</string>
     <string name="swipe_delete_tip">You can delete a list by swiping it left.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Add products</string>
     <string name="add_another_product">Add another product</string>
     <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
-    <string name="product_summary_action_compare_button_label">Compare</string>
-    <string name="product_summary_action_add_to_list_button_label">Add to list</string>
-    <string name="product_summary_action_edit_button_label">Edit</string>
+    <string name="product_summary_action_compare_button_label">Võrdle</string>
+    <string name="product_summary_action_add_to_list_button_label">Lisa loendisse</string>
+    <string name="product_summary_action_edit_button_label">Muuda</string>
     <string name="product_summary_action_share_button_label">Share</string>
     <string name="product_question_prompt">Tap here to answer</string>
-    <string name="product_question_positive_response">Yes</string>
-    <string name="product_question_negative_response">No</string>
+    <string name="product_question_positive_response">Jah</string>
+    <string name="product_question_negative_response">Ei</string>
     <string name="product_question_ambiguous_response">Not sure</string>
     <string name="product_question_submit_message">Thank you for your contribution!</string>
     <string name="error_nutrient_entry">The value should be numeric. Example: &quot;1.5&quot;, &quot;2,0&quot;</string>
@@ -729,17 +683,15 @@
     <string name="scan_tooltip">You can slide up the card for more details</string>
     <string name="add_an_allergen">Add an allergen</string>
     <string name="add_a_list">Add a list</string>
-    <string name="edit_image">Edit Image</string>
-    <string name="cant_edit_image_not_yet_uploaded">The new image is not yet uploaded. Please, wait before editing it</string>
-    <string name="unselect_image">Unselect Image</string>
+    <string name="edit_image">Edit Photo</string>
+    <string name="cant_edit_image_not_yet_uploaded">The new photo is not yet uploaded. Please wait before editing it</string>
+    <string name="unselect_image">Unselect Photo</string>
     <string name="choose_default_language">Select product language</string>
     <string name="barcode">Triipkood</string>
     <string name="productAdditivesNone">No additives</string>
-    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
-    <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
+    <string name="required_for_ecoscore" comment="Do not translate Eco-Score">(Required to calculate the Eco-Score)</string>
     <string name="hint_origin">Examples: USA, France, Italy</string>
     <!-- Used for diets AddOn -->
-    <string name="history_network_error">The product couldn\'t be loaded. Please try again when you are back online.</string>
     <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
     <string name="closeZoom">Click to close zoom</string>
     <string name="imageFullscreen">Suurenda</string>
@@ -752,7 +704,7 @@
     <string name="image_edit_tip">Tap on the image to zoom it, change it, crop it, rotate it and more…</string>
     <string name="ingredients_in_this_product_are">Ingredients in this product are %1$s.</string>
     <string name="ingredients_in_this_product">Ingredients in this product that are %1$s:</string>
-    <string name="display_analysis_tag_status">Display %1$s status</string>
+    <string name="display_analysis_tag_status" comment="Do not change the placeholder">Display %1$s status</string>
     <string name="unknown_status_no_translation">We couldn\'t assess the status of the product due to unrecognized ingredients.</string>
     <string name="help_translate_ingredients">Help translate the ingredients in your language</string>
     <string name="unknown_status_missing_ingredients">We couldn\'t assess the status of the product due to missing ingredients.</string>
@@ -760,13 +712,13 @@
     <string name="help_extract_ingredients">Help extract the ingredients to get the %1$s status</string>
     <string name="add_photo_to_extract_ingredients">Add a photo to begin extracting ingredients</string>
     <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
-    <string name="compare_brands">Brands :</string>
-    <string name="compare_additives">Lisandid :</string>
-    <string name="compare_salt">Salt</string>
+    <string name="compare_brands">Kaubamärgid:</string>
+    <string name="compare_additives">Lisandid:</string>
+    <string name="compare_salt">Soola</string>
     <string name="compare_sugars">Sugars</string>
     <string name="compare_saturated_fat">Küllastunud rasv</string>
     <string name="compare_fat">Fat</string>
-    <string name="compare_quantity">Quantity :</string>
+    <string name="compare_quantity">Kogused:</string>
     <string name="load_ingredient_detection_data">Load ingredient detection data</string>
     <string name="load_ingredient_detection_data_summary">No ingredient detection data has been found, try to load it from server</string>
     <string name="white_check_image_descr">A white check</string>
@@ -794,25 +746,24 @@
     <string name="product_front_image">Product front image</string>
     <string name="brand_hint">Examples: Coca-Cola, Nestle, etc…</string>
     <string name="sign_in_or_register">Sign in or register</string>
-    <string name="hunger_game_call_to_action">Help classify more %1$s</string>
+    <string name="hunger_game_call_to_action" comment="Do not change the placeholder">Help classify more %1$s</string>
     <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s products (plus the ones you will contribute).</string>
-    <string name="enabled">Enabled</string>
     <!-- Application theme settings -->
     <string name="follow_system">Follow system</string>
     <string name="day">Day</string>
     <string name="night">Night</string>
     <string name="report_email_chooser_title">Send a report email</string>
     <!-- Changelog String -->
-    <string name="changelog_translation_help">Want to see this changelog in %s?\nJoin the translation team!</string>
+    <string name="changelog_translation_help" comment="Do not change the placeholder">Want to see this changelog in %s?\nJoin the translation team!</string>
     <string name="whats_new">What\'s new with Open Food Facts?</string>
     <!-- New onboarding slides -->
     <string name="title_welcome_intro">Join the food revolution</string>
     <string name="msg_welcome_intro">Scan food, Take photos, Help transform the food system</string>
-    <string name="title_welcome_nutriscore">Get the Nutri-Score</string>
+    <string name="title_welcome_nutriscore" comment="Do not translate Nutri-Score">Get the Nutri-Score</string>
     <string name="msg_welcome_nutriscore">A simple synthesis of the nutritional quality of your food</string>
     <string name="title_welcome_nova">Avoid ultra-processed foods</string>
     <string name="msg_welcome_nova">Reduce the amount of ultra-processed foods in your diet.</string>
-    <string name="title_welcome_ecoscore">Eco-Score</string>
+    <string name="title_welcome_ecoscore" comment="Do not translate Eco-Score">Eco-Score</string>
     <string name="msg_welcome_ecoscore">A synthesis of the environmental impact of your food.</string>
     <string name="title_welcome_matomo">Send anonymous analytics</string>
     <string name="msg_welcome_matomo">Help the Open Food Facts volunteers to improve the app. You decide if you send anonymous analytics.\n\nIf you change your mind this option can be enabled and disabled at any time from the settings.</string>

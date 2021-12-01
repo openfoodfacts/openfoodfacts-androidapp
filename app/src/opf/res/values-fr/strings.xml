@@ -21,7 +21,7 @@
     <string name="slide_3_desc">Tous les produits que vous avez scannés, dans une liste pratique que vous pouvez exporter</string>
     <string name="slide_4_title">Fonctionne hors connexion</string>
     <string name="slide_4_desc">Vous pouvez ajouter de nouveaux produits, même si vous ne disposez pas d\'une connexion Internet pour le moment</string>
-    <string name="product_does_not_exist_please_add_it">Le produit que vous avez scanné n\'existe pas encore dans Open Products Facts. Voulez-vous l\'ajouter ?</string>
+    <string name="product_does_not_exist_please_add_it">The product you scanned does not exist yet in Open Products Facts. Please add it.</string>
     <string name="txtDialogsContentPowerMode">Le produit que vous avez scanné existe déjà dans Open Products Facts.</string>
     <string name="msg_share">Regarde ce produit sur Open Products Facts:</string>
     <string name="not_support_books">Les livres ne sont actuellement pas pris en charge par Open Products Facts</string>

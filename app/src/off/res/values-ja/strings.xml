@@ -16,14 +16,14 @@
     <string name="slide_1_desc">製品をスキャンし、写真に写して、食品の透明性を実現します</string>
     <string name="slide_2_title">事実を入手します</string>
     <string name="slide_2_desc">あなたがスキャンした製品に関する広範な情報。あなたのために解読されました</string>
-    <string name="slide_3_title">栄養スコアを入手します</string>
+    <string name="slide_3_title">Get the Nutri-Score</string>
     <string name="slide_3_desc">あなたの好きな食品の栄養特性の合成表示</string>
     <string name="slide_4_title">オフラインで作業する</string>
     <string name="slide_4_desc">今インターネットに接続していなくても、新製品を追加できます</string>
     <!-- New onboarding-->
     <string name="title_welcome_intro">Join the food revolution</string>
     <string name="msg_welcome_intro">Scan food, Take photos, Help transform the food system</string>
-    <string name="title_welcome_nutriscore">栄養スコアを入手します</string>
+    <string name="title_welcome_nutriscore">Get the Nutri-Score</string>
     <string name="msg_welcome_nutriscore">A simple synthesis of the nutritional quality of your food</string>
     <string name="title_welcome_nova">Avoid ultra-processed foods</string>
     <string name="msg_welcome_nova">Reduce the amount of ultra-processed foods in your diet.</string>
@@ -36,7 +36,7 @@
     <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
     <string name="Donation">Click here to donate to Open Food Facts</string>
     <string name="text_offline_info_dialog">オフラインのときも、Open Food Facts に後で追加するために製品をスキャンしてください。スキャンした製品がここに表示されます。下のボタンを使用してそれらを送信することができます。</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
     <!-- OFF tagline in different languages -->
     <string name="tagline">無料の食品データベース</string>
     <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>

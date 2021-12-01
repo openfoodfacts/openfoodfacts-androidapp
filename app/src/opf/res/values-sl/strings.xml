@@ -21,7 +21,7 @@
     <string name="slide_3_desc">Vse izdelke, ki ste jih skenirali, lahko izvozite na enem priročnem seznamu</string>
     <string name="slide_4_title">Deluje brez povezave</string>
     <string name="slide_4_desc">Dodate lahko nove izdelke, tudi če trenutno nimate internetne povezave</string>
-    <string name="product_does_not_exist_please_add_it">The product you scanned does not exist yet in Open Products Facts. Please add it.</string>
+    <string name="product_does_not_exist_please_add_it">Izdelek, ki ste ga skenirali, še ne obstaja v Open Products Facts. Prosim, dodajte ga.</string>
     <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Products Facts.</string>
     <string name="msg_share">Look at this product on Open Products Facts :</string>
     <string name="not_support_books">Books are not currently supported by Open Products Facts</string>

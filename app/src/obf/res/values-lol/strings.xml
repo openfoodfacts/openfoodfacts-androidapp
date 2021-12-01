@@ -21,7 +21,7 @@
     <string name="slide_3_desc">crwdns179506:0crwdne179506:0</string>
     <string name="slide_4_title">crwdns179508:0crwdne179508:0</string>
     <string name="slide_4_desc">crwdns179510:0crwdne179510:0</string>
-    <string name="product_does_not_exist_please_add_it">crwdns179512:0crwdne179512:0</string>
+    <string name="product_does_not_exist_please_add_it">crwdns191231:0crwdne191231:0</string>
     <string name="msg_share">crwdns179514:0crwdne179514:0</string>
     <string name="txt_broaden_search">crwdns179516:0crwdne179516:0</string>
     <string name="Donation">crwdns179518:0crwdne179518:0</string>
@@ -45,4 +45,5 @@
     <string name="brand_hint">crwdns179566:0crwdne179566:0</string>
     <string name="txt_info_eaten_products">crwdns179568:0crwdne179568:0</string>
     <string name="OFFlogo">crwdns179570:0crwdne179570:0</string>
+    <string name="txtDialogsContentPowerMode">crwdns190991:0crwdne190991:0</string>
 </resources>

@@ -23,13 +23,13 @@
     <!-- New onboarding-->
     <string name="title_welcome_intro">Doe mee met de voedselrevolutie</string>
     <string name="msg_welcome_intro">Scan levensmiddelen, maak foto\'s, help het voedselsysteem te veranderen</string>
-    <string name="title_welcome_nutriscore">Krijg de Nutriscore</string>
+    <string name="title_welcome_nutriscore">Krijg de Nutri-Score</string>
     <string name="msg_welcome_nutriscore">Een eenvoudige voedingskwaliteitssamenvatting van jouw voedsel</string>
     <string name="title_welcome_nova">Vermijd ultra-bewerkte levensmiddelen</string>
     <string name="msg_welcome_nova">Verminder de hoeveelheid ultra-bewerkte levensmiddelen in je dieet.</string>
     <string name="title_welcome_ecoscore">Eco-score</string>
     <!-- Scan card -->
-    <string name="product_does_not_exist_please_add_it">Het gescande product bestaat nog niet in Open Products Facts. Voeg deze toe.</string>
+    <string name="product_does_not_exist_please_add_it">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
     <string name="txtDialogsContentPowerMode">Het gescannede product bestaat al in Open Food Facts</string>
     <string name="msg_share">Bekijk dit product op Open Products Facts:</string>
     <string name="not_support_books">Boeken worden momenteel niet ondersteund door Open Food Facts</string>

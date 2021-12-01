@@ -187,9 +187,9 @@
     <string name="hintPass">Mot de passe</string>
     <string name="errorLogin">Identifiant ou mot de passe incorrect</string>
     <string name="errorWeb">Erreur de connexion internet</string>
-    <string name="txtInfoLoginOk">Utilisateur connecté</string>
-    <string name="txtInfoLoginNo">Utilisateur anonyme</string>
-    <string name="product_does_not_exist_please_add_it">Le produit que vous avez scanné n\'existe pas encore dans Open Food Facts. Voulez-vous l\'ajouter ?</string>
+    <string name="txtInfoLoginOk">Vous vous êtes connecté avec succès à votre compte Open Food Facts.</string>
+    <string name="txtInfoLoginNo">Une erreur s\'est produite lors de la tentative de connexion à votre compte Open Food Facts.</string>
+    <string name="product_does_not_exist_please_add_it">Le produit que vous avez scanné n\'existe pas encore dans Open Food Facts. Voulez-vous l\'ajouter?</string>
     <string name="txtYes">Oui</string>
     <string name="txtNo">Non</string>
     <string name="hintBrand">Marque</string>
@@ -216,7 +216,7 @@
     <string name="alert_drawer">Alerte allergènes</string>
     <string name="your_lists">Vos listes</string>
     <string name="title_dialog_alert">Ajouter une alerte</string>
-    <string name="select_camera">Select a Camera</string>
+    <string name="select_camera">Choisir une caméra</string>
     <string name="ok_button">OK</string>
     <string name="cancel_button">Annuler</string>
     <string name="login_button">Nom d\'utilisateur</string>
@@ -738,7 +738,7 @@
     <string name="content_exit">Cliquez ici pour revenir au produit</string>
     <string name="icon_label">Icône d\'étiquette</string>
     <string name="icon_categories">Icône des catégories</string>
-    <string name="icon_emb">Traceability code icon</string>
+    <string name="icon_emb">Icône de code de traçabilité</string>
     <string name="product_front_image">Image frontale du produit</string>
     <string name="brand_hint">Exemples: Coca-Cola, Nestle…</string>
     <string name="sign_in_or_register">Se connecter ou s\'inscrire</string>

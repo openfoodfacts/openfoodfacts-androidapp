@@ -21,7 +21,7 @@
     <string name="slide_3_desc">All the petfood you scan, in one handy list you can export</string>
     <string name="slide_4_title">Работа извън линия</string>
     <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet connection right now</string>
-    <string name="product_does_not_exist_please_add_it">The product you scanned does not exist yet in Open Pet Food Facts. Please add it.</string>
+    <string name="product_does_not_exist_please_add_it">Продуктът който сканира, все още не съществува в Open Pet Food Facts. Моля, добави го.</string>
     <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Pet Food Facts.</string>
     <string name="msg_share">Look at this product on Open Pet Food Facts :</string>
     <string name="not_support_books">Книгите понастоящем не се поддържат от Open Pet Food Facts</string>
