@@ -137,11 +137,11 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     private lateinit var customTabActivityHelper: CustomTabActivityHelper
 
     private lateinit var customTabsIntent: CustomTabsIntent
-    private var annotation: AnnotationAnswer? = null
+
 
     private var hasCategoryInsightQuestion = false
 
-    private var insightId: String? = null
+    private var annotation: AnnotationAnswer? = null
 
     //boolean to determine if image should be loaded or not
     private val isLowBatteryMode by lazy { requireContext().isDisableImageLoad() && requireContext().isBatteryLevelLow() }
@@ -690,17 +690,17 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
 
 
             onPositiveFeedback = {
-                sendProductInsights(productQuestion.insightId, AnnotationAnswer.POSITIVE)
+                sendProductInsights(productQuestion.insightId, AnnotationAnswer.Value.POSITIVE)
                 it.dismiss()
             }
 
             onNegativeFeedback = {
-                sendProductInsights(productQuestion.insightId, AnnotationAnswer.NEGATIVE)
+                sendProductInsights(productQuestion.insightId, AnnotationAnswer.Value.NEGATIVE)
                 it.dismiss()
             }
 
             onAmbiguityFeedback = {
-                sendProductInsights(productQuestion.insightId, AnnotationAnswer.AMBIGUITY)
+                sendProductInsights(productQuestion.insightId, AnnotationAnswer.Value.AMBIGUITY)
                 it.dismiss()
             }
 
@@ -710,9 +710,8 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
 
     }
 
-    private fun sendProductInsights(insightId: String?, annotation: AnnotationAnswer?) {
-        this.insightId = insightId
-        this.annotation = annotation
+    private fun sendProductInsights(insightId: String, annotation: AnnotationAnswer.Value) {
+        this.annotation = AnnotationAnswer(insightId, annotation)
 
         if (requireActivity().isUserSet()) {
             processInsight()
@@ -731,12 +730,11 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     }
 
     private fun processInsight() {
-        val insightId = this.insightId ?: error("Property 'insightId' not set.")
         val annotation = this.annotation ?: error("Property 'annotation' not set.")
 
-        lifecycleScope.launch { presenter.annotateInsight(insightId, annotation) }
+        lifecycleScope.launch { presenter.annotateInsight(annotation) }
 
-        Log.d(LOG_TAG, "Annotation $annotation received for insight $insightId")
+        Log.d(LOG_TAG, "Annotation {ID=${annotation.insightId}, VALUE=${annotation.value}} sent.")
         binding.productQuestionLayout.visibility = View.GONE
         productQuestion = null
     }
