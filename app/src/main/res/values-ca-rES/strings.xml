@@ -187,9 +187,9 @@
     <string name="hintPass">Contrasenya</string>
     <string name="errorLogin">Identificador o contrasenya errònia</string>
     <string name="errorWeb">No ens hem pogut connectar a Internet. Teniu problemes amb la connexió?</string>
-    <string name="txtInfoLoginOk">Usuari desat</string>
-    <string name="txtInfoLoginNo">Usuari no desat</string>
-    <string name="product_does_not_exist_please_add_it">El producte que heu escanejat encara no existeix a Open Food Facts. Afegiu-lo.</string>
+    <string name="txtInfoLoginOk">Heu iniciat sessió correctament al compte d\'Open Food Facts.</string>
+    <string name="txtInfoLoginNo">S\'ha produït un error iniciant la sessió al compte d\'Open Food Facts.</string>
+    <string name="product_does_not_exist_please_add_it">El producte que heu escanejat encara no existeix a Open Products Facts. Afegiu-lo.</string>
     <string name="txtYes">Sí</string>
     <string name="txtNo">No</string>
     <string name="hintBrand">Marca</string>
@@ -216,7 +216,7 @@
     <string name="alert_drawer">Alerta d\'al·lèrgens</string>
     <string name="your_lists">Les vostres llistes</string>
     <string name="title_dialog_alert">Afegir Alerta</string>
-    <string name="select_camera">Triï una càmera</string>
+    <string name="select_camera">Triau una càmera</string>
     <string name="ok_button">D\'acord</string>
     <string name="cancel_button">Cancel·lar</string>
     <string name="login_button">Nom d\'usuari</string>

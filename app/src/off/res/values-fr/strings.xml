@@ -29,7 +29,7 @@
     <string name="msg_welcome_nova">Réduisez la quantité d\'aliments ultra-transformés dans votre alimentation.</string>
     <string name="title_welcome_ecoscore">Éco-Score</string>
     <!-- Scan card -->
-    <string name="product_does_not_exist_please_add_it">Le produit que vous avez scanné n\'existe pas encore dans Open Food Facts. Voulez-vous l\'ajouter ?</string>
+    <string name="product_does_not_exist_please_add_it">Le produit que vous avez scanné n\'existe pas encore dans Open Food Facts. Voulez-vous l\'ajouter?</string>
     <string name="txtDialogsContentPowerMode">Le produit que vous avez scanné existe déjà dans Open Food Facts.</string>
     <string name="msg_share">Regarde ce produit sur Open Food Facts:</string>
     <string name="not_support_books">Les livres ne sont actuellement pas pris en charge par Open Food Facts</string>

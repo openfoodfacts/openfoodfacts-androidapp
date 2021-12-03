@@ -21,7 +21,7 @@
     <string name="slide_3_desc">כל מוצרי המזון לחיות מחמד שסרקת ברשימה שימושית אחת שניתן לייצא</string>
     <string name="slide_4_title">תמיכה במצב בלתי מקוון</string>
     <string name="slide_4_desc">ניתן להוסיף מוצרים חדשים, אפילו אם אין לך חיבור לאינטרנט כרגע</string>
-    <string name="product_does_not_exist_please_add_it">המוצר שסרקת לא קיים עדיין ב־Open Pet Food Facts. נא לסרוק אותו.</string>
+    <string name="product_does_not_exist_please_add_it">המוצר שסרקת לא קיים עדיין ב־Open Pet Food Facts. נא להוסיף אותו.</string>
     <string name="txtDialogsContentPowerMode">המוצר שסרקת כבר נמצא ב־Open Pet Food Facts.</string>
     <string name="msg_share">להלן מוצר מתוך Open Pet Food Facts :</string>
     <string name="not_support_books">אין כרגע תמיכה בספרים ב־Open Pet Food Facts</string>

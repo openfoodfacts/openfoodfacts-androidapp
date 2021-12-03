@@ -5,7 +5,7 @@
       "code": 518,
       "name": "3.5.0",
       "items": [
-        "Pantalla de registro de cambios añadida",
+        "Escáner de código de barras mejorado vía aprendizaje automático. Ahora puedes habilitar una nueva forma de escanear desde las opciones. Puedes cambiar el motor del escáner de código de barras en cualquier momento desde la configuración.",
         "Colabora con los voluntarios de Open Food Facts a mejorar la aplicación. Contamos con la opción de Reporte De Errores y comentarios anónimos. Se puede habilitar y deshabilitar en cualquier momento desde la configuración."
       ]
     }

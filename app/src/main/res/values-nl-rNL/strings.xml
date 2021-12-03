@@ -187,9 +187,9 @@
     <string name="hintPass">Wachtwoord</string>
     <string name="errorLogin">Verkeerde gebruikersnaam of wachtwoord</string>
     <string name="errorWeb">We krijgen geen verbinding met het internet. Gelieve uw netwerkconnectie te controleren.</string>
-    <string name="txtInfoLoginOk">Gebruiker opgeslagen</string>
-    <string name="txtInfoLoginNo">Gebruiker niet opgeslagen</string>
-    <string name="product_does_not_exist_please_add_it">Het gescande product bestaat nog niet in Open Food Facts. Voeg deze toe.</string>
+    <string name="txtInfoLoginOk">You successfully logged into your Open Food Facts account.</string>
+    <string name="txtInfoLoginNo">An error happened while trying to log into your Open Food Facts account.</string>
+    <string name="product_does_not_exist_please_add_it">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
     <string name="txtYes">Ja</string>
     <string name="txtNo">Nee</string>
     <string name="hintBrand">Merk</string>
@@ -759,7 +759,7 @@
     <!-- New onboarding slides -->
     <string name="title_welcome_intro">Doe mee met de voedselrevolutie</string>
     <string name="msg_welcome_intro">Scan levensmiddelen, maak foto\'s, help het voedselsysteem te veranderen</string>
-    <string name="title_welcome_nutriscore" comment="Do not translate Nutri-Score">Krijg de Nutriscore</string>
+    <string name="title_welcome_nutriscore" comment="Do not translate Nutri-Score">Krijg de Nutri-Score</string>
     <string name="msg_welcome_nutriscore">Een eenvoudige voedingskwaliteitssamenvatting van jouw voedsel</string>
     <string name="title_welcome_nova">Vermijd ultra-bewerkte levensmiddelen</string>
     <string name="msg_welcome_nova">Verminder de hoeveelheid ultra-bewerkte levensmiddelen in je dieet.</string>

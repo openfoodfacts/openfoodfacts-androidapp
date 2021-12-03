@@ -21,7 +21,7 @@
     <string name="slide_3_desc">Możesz wyeksportować poręczną listę używanych kosmetyków</string>
     <string name="slide_4_title">Działa offline</string>
     <string name="slide_4_desc">Możesz dodać nowe produkty, nawet nie mając teraz połączenia</string>
-    <string name="product_does_not_exist_please_add_it">Zeskanowany produkt nie znajduje się w bazie Open Beauty Facts. Dodaj go.</string>
+    <string name="product_does_not_exist_please_add_it">The product you scanned does not exist yet in Open Beauty Facts. Please add it.</string>
     <string name="msg_share">Zobacz produkt na Open Beauty Facts:</string>
     <string name="txt_broaden_search">poszerz zakres wyszukiwania \n - zeskanuj i dodaj do Open Beauty Facts</string>
     <string name="Donation">Kliknij by wpłacić darowiznę na rzecz Open Beauty Facts</string>
@@ -46,4 +46,5 @@
     <string name="txt_info_eaten_products">Będziesz mógł dodać produkt do tej listy skanując produkty, przeciągając kartę produktu i klikając \"Produkty do zakupu\".
         Możesz również dodać produkty do tej listy, przeszukując je i klikając przycisk + w prawym górnym rogu strony produktu.</string>
     <string name="OFFlogo">Otwórz logo Beauty Facts</string>
+    <string name="txtDialogsContentPowerMode">Zeskanowany produkt już widnieje w Open Food Facts.</string>
 </resources>

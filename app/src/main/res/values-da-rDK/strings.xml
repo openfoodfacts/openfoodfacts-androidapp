@@ -187,9 +187,9 @@
     <string name="hintPass">Adgangskode</string>
     <string name="errorLogin">Brugernavn eller adgangskode-fejl</string>
     <string name="errorWeb">Ingen adgang til Internet. Har du forbindelsesproblemer?</string>
-    <string name="txtInfoLoginOk">Bruger gemt</string>
-    <string name="txtInfoLoginNo">Bruger ikke gemt</string>
-    <string name="product_does_not_exist_please_add_it">Produktet, du skannede, findes ikke i Open Food Facts endnu. Tilføj det venligst.</string>
+    <string name="txtInfoLoginOk">Du er nu logget ind på din Open Food Facts-konto.</string>
+    <string name="txtInfoLoginNo">En fejl opstod under forsøget på at logge ind på din Open Food Facts-konto.</string>
+    <string name="product_does_not_exist_please_add_it">Det skannede produktet findes endnu ikke i Open Food Facts. Tilføj det gerne.</string>
     <string name="txtYes">Ja</string>
     <string name="txtNo">Nej</string>
     <string name="hintBrand">Mærke</string>
@@ -443,7 +443,7 @@
     <string name="additive_string">Tilsætningsstof</string>
     <string name="allergen_string">Allergen</string>
     <string name="search_string">Søg</string>
-    <string name="country_string">Country</string>
+    <string name="country_string">Land</string>
     <string name="store_subtitle">Butik</string>
     <string name="packaging_subtitle">Emballage</string>
     <string name="state_subtitle">Stat</string>
@@ -759,7 +759,7 @@
     <!-- New onboarding slides -->
     <string name="title_welcome_intro">Tilslut dig fødevarerevolutionen</string>
     <string name="msg_welcome_intro">Skan fødevarer, tag fotos, hjælp med at traneformere fødevaresystemet</string>
-    <string name="title_welcome_nutriscore" comment="Do not translate Nutri-Score">Få ernæringsinformation</string>
+    <string name="title_welcome_nutriscore" comment="Do not translate Nutri-Score">Get the Nutri-Score</string>
     <string name="msg_welcome_nutriscore">En simpel syntese af dine fødevarers ernæringskvalitet</string>
     <string name="title_welcome_nova">Undgå ultraforarbejdede fødevarer</string>
     <string name="msg_welcome_nova">Reducér mængden af ultraforarbejdede fødevarer i din kost.</string>
