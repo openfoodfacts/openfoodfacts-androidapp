@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- For fr, Replace by https://world-fr.openproductsfacts.org/ -->
-    <string name="website">https://world-eo.openfoodfacts.org/</string>
+    <string name="website">https://world.openproductsfacts.org/</string>
     <!-- For fr, Replace by https://world-fr.openproductsfacts.org/contribuer -->
-    <string name="website_contribute">https://world-eo.openfoodfacts.org/kontribui</string>
+    <string name="website_contribute">https://world.openproductsfacts.org/contribute</string>
     <!-- For fr, Replace by https://world-fr.openproductsdfacts.org/decouvrir -->
-    <string name="website_discover">https://world-eo.openfoodfacts.org/esploru</string>
+    <string name="website_discover">https://world.openproductsfacts.org/discover</string>
     <!-- For fr, Replace by https://world-fr.openproductsfacts.org/produit/ -->
-    <string name="website_product">https://world-eo.openfoodfacts.org/produkto/</string>
+    <string name="website_product">https://world.openproductsfacts.org/product/</string>
     <!-- For fr, Replace by https://world-fr.openproductsfacts.org/contributeur/ -->
     <string name="website_contributor">https://world-eo.openfoodfacts.org/kontribuanto/</string>
     <string name="terms_url">https://world.openproductsfacts.org/terms-of-use</string>

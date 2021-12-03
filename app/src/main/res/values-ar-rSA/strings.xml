@@ -209,8 +209,8 @@
     <string name="hintPass">كلمة المرور</string>
     <string name="errorLogin">خطأ في تسجيل الدخول أو كلمة المرور</string>
     <string name="errorWeb">لم نتمكن من الوصول إلى الإنترنت. هل لديك مشاكل في الاتصال؟</string>
-    <string name="txtInfoLoginOk">تم حفظ المستخدم</string>
-    <string name="txtInfoLoginNo">لم يتم حفظ المستخدم</string>
+    <string name="txtInfoLoginOk">لقد نجحت في تسجيل الدخول إلى حسابك في Open Food Facts.</string>
+    <string name="txtInfoLoginNo">حدث خطأ أثناء محاولة تسجيل الدخول إلى حساب Open Food Facts الخاص بك.</string>
     <string name="product_does_not_exist_please_add_it">المنتج الذي قمت بمسحه ضوئياً غير موجود حتى الآن في Open Open Facts. يرجى إضافته.</string>
     <string name="txtYes">نعم</string>
     <string name="txtNo">كلا</string>
@@ -238,7 +238,7 @@
     <string name="alert_drawer">تنبيه مسببات الحساسية</string>
     <string name="your_lists">قوائمك</string>
     <string name="title_dialog_alert">إضافة تنبيه</string>
-    <string name="select_camera">Select a Camera</string>
+    <string name="select_camera">حدد الكاميرا</string>
     <string name="ok_button">موافق</string>
     <string name="cancel_button">إلغاء</string>
     <string name="login_button">اسم المستخدم</string>
@@ -389,8 +389,8 @@
     <string name="nutriscore_info_msg">معرفة المزيد عن Nutri-Score</string>
     <string name="nova_info_msg">معرفة المزيد عن Nova</string>
     <string name="nova_grp1_msg">Group 1 - Unprocessed or minimally processed foods</string>
-    <string name="nova_grp2_msg">Group 2 - Processed culinary ingredients</string>
-    <string name="nova_grp3_msg">Group 3 - Processed foods</string>
+    <string name="nova_grp2_msg">المجموعة 2 - مكونات الطهي المصنعة</string>
+    <string name="nova_grp3_msg">المجموعة 3 - الأطعمة المصنّعة</string>
     <string name="nova_grp4_msg">Group 4 - Ultra-processed food and drink products</string>
     <!-- String related to App Shortcuts -->
     <string name="disabled_message">الاختصار غير متاح</string>

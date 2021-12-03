@@ -42,7 +42,6 @@
     <string name="product_incomplete_message">ಈ ಉತ್ಪನ್ನ ಪೂರ್ಣಗೊಂಡಿಲ್ಲ. ಪರಿಣಾಮವಾಗಿ, ನಾವು ಅಲರ್ಜಿ ಪರೀಕ್ಷೆಯನ್ನು ಮಾಡಲಾಗಲಿಲ್ಲ.</string>
     <string name="product_allergen_prompt">This product contains:</string>
     <string name="no_offline_data">ನೀವು ಮುಗಿಸಿದ್ದೀರಿ</string>
-    <string name="first_offline">ಉತ್ಪನ್ನಗಳನ್ನು ಆಫ್ಲೈನ್ ​​ಸೇರಿಸಲಾಗುತ್ತದೆ ಇಲ್ಲಿ</string>
     <!-- Image Upload -->
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
@@ -160,18 +159,16 @@
     <string name="alert_dialog_warning_title">ಎಚ್ಚರಿಕೆ</string>
     <string name="alert_dialog_warning_msg_user">ಬಳಕೆದಾರ / ಪಾಸ್ವರ್ಡ್ ಬದಲಾಗಿದೆ, ದಯವಿಟ್ಟು ಮಾಹಿತಿಯನ್ನು ನವೀಕರಿಸಿ</string>
     <string name="toast_retrieving">Loading...</string>
-    <string name="txtBarcode">ಬಾರ್‌ ಕೋಡ್:</string>
-    <string name="txtCategories">ವರ್ಗಗಳು:</string>
-    <string name="txtLabels">ಲೇಬಲ್ಗಳು, ಪ್ರಮಾಣೀಕರಣಗಳು, ಪ್ರಶಸ್ತಿಗಳು:</string>
-    <string name="txtEMB">Traceability codes:</string>
-    <string name="txtIngredients">ಪದಾರ್ಥಗಳ ಪಟ್ಟಿ:</string>
+    <string name="txtBarcode">Barcode:</string>
+    <string name="txtCategories">Categories:</string>
+    <string name="txtLabels">Labels, certifications, awards: </string>
+    <string name="txtEMB">Traceability codes: </string>
+    <string name="txtIngredients">Ingredients list: </string>
     <string name="Donate">ಕಾಣಿಕೆ</string>
     <string name="Donation">ಉತ್ಪನ್ನಗಳ ಫ್ಯಾಕ್ಟ್ಸ್ ತೆರೆಯಲು ದಾನ ಮಾಡಲು ಇಲ್ಲಿ ಕ್ಲಿಕ್ ಮಾಡಿ</string>
-    <string name="txtSubstances">ಅಲರ್ಜಿಗಳು ಅಥವಾ ಅಸಹಿಷ್ಣುತೆಗಳಿಗೆ ಕಾರಣವಾಗುವ ಪದಾರ್ಥಗಳು ಅಥವಾ ಉತ್ಪನ್ನಗಳು:</string>
-    <string name="txtAdditives">ಸೇರ್ಪಡೆಗಳು:</string>
-    <string name="txtTraces">ಕುರುಹುಗಳು:</string>
-    <string name="txtMayBeFromPalmOilProduct">ತಾಳೆ ಎಣ್ಣೆಯಿಂದ ಬೇಕಾದ ಪದಾರ್ಥಗಳು:</string>
-    <string name="txtPalmOilProduct">ಪಾಮ್ ಎಣ್ಣೆಯಿಂದ ಬೇಕಾಗುವ ಪದಾರ್ಥಗಳು:</string>
+    <string name="txtSubstances">Substances or products causing allergies or intolerances: </string>
+    <string name="txtAdditives">Additives: </string>
+    <string name="txtTraces">Traces: </string>
     <string name="txtServingSize">ವಿತರಣೆಯ ಗಾತ್ರ :</string>
     <string name="txtNutrientLevel100g">100 ಗ್ರಾಂ ಪೋಷಕಾಂಶದ ಮಟ್ಟಗಳು:</string>
     <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
@@ -180,7 +177,6 @@
     <string name="txtNutritionLevelHigh">ಹೆಚ್ಚಿನ ಪ್ರಮಾಣದಲ್ಲಿ</string>
     <string name="txtSave">ಉಳಿಸು</string>
     <string name="txtSignIn">ಸೈನ್ ಇನ್ ಮಾಡಿ</string>
-    <string name="txtToastSaved">ಬಳಕೆದಾರ ಉಳಿಸಲಾಗಿದೆ</string>
     <string name="txtSalt">ಸಾಲ್ಟ್</string>
     <string name="txtFat">ಫ್ಯಾಟ್</string>
     <string name="txtSugars">ಸಕ್ಕರೆಗಳು</string>
@@ -191,10 +187,9 @@
     <string name="hintPass">ಪಾಸ್‌ವರ್ಡ್</string>
     <string name="errorLogin">ಲಾಗಿನ್ ಅಥವಾ ಪಾಸ್ವರ್ಡ್ ದೋಷ</string>
     <string name="errorWeb">ಇಂಟರ್ನೆಟ್ ಪ್ರವೇಶಿಸಲು ನಮಗೆ ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ನೀವು ಸಂಪರ್ಕ ಸಮಸ್ಯೆಗಳನ್ನು ಹೊಂದಿದ್ದೀರಾ?</string>
-    <string name="uploadLater">ನೆಟ್ವರ್ಕ್ ಲಭ್ಯವಿದ್ದಾಗ ಚಿತ್ರವನ್ನು ಅಪ್ಲೋಡ್ ಮಾಡಲಾಗುತ್ತದೆ</string>
-    <string name="txtInfoLoginOk">ಬಳಕೆದಾರ ಉಳಿಸಲಾಗಿದೆ</string>
-    <string name="txtInfoLoginNo">ಬಳಕೆದಾರ ಉಳಿಸಲಾಗಿದೆ</string>
-    <string name="product_does_not_exist_please_add_it">ನೀವು ಸ್ಕ್ಯಾನ್ ಮಾಡಿದ ಉತ್ಪನ್ನವು ಓಪನ್ ಪ್ರಾಡಕ್ಟ್ಸ್ ಫ್ಯಾಕ್ಟ್ಸ್ನಲ್ಲಿ ಇನ್ನೂ ಅಸ್ತಿತ್ವದಲ್ಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಅದನ್ನು ಸೇರಿಸಿ.</string>
+    <string name="txtInfoLoginOk">You successfully logged into your Open Food Facts account.</string>
+    <string name="txtInfoLoginNo">An error happened while trying to log into your Open Food Facts account.</string>
+    <string name="product_does_not_exist_please_add_it">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
     <string name="txtYes">ಹೌದು</string>
     <string name="txtNo">ಇಲ್ಲ</string>
     <string name="hintBrand">ಬ್ರ್ಯಾಂಡ್</string>
@@ -202,25 +197,19 @@
     <string name="txtPictureNeededDialogNo">ತಿರಸ್ಕರಿಸು</string>
     <string name="toastSending">Uploading...</string>
     <string name="txtLoading">Loading...</string>
-    <string name="txtDialogsContentDelete">ಈ ಫೋಲ್ಡರ್ ತೆಗೆದುಹಾಕುವ ನಿಮ್ಮ ಬಯಕೆ ಖಚಿತವೆ?</string>
-    <string name="txtDialogsContentInfoSave">ಉತ್ಪನ್ನವನ್ನು ಸ್ಥಳೀಯವಾಗಿ ಉಳಿಸಲಾಗಿದೆ, ನೀವು ಅದನ್ನು \"ಆಫ್ಲೈನ್ ​​ಸಂಪಾದಿಸು\" ಮೆನುವಿನಲ್ಲಿ ಸಂಪಾದಿಸಬಹುದು</string>
     <string name="productSavedToast">Product saved, thanks!</string>
     <string name="txtBarcodeRequire">ಬಾರ್ಕೋಡ್ ಅಗತ್ಯವಿದೆ</string>
-    <string name="txtOk">ಸರಿ</string>
     <string name="txtBarcodeNotValid">ಬಾರ್ಕೋಡ್ ಮಾನ್ಯವಾಗಿಲ್ಲ</string>
     <string name="msg_share">ಓಪನ್ ಉತ್ಪನ್ನಗಳು ಫ್ಯಾಕ್ಟ್ಸ್ನಲ್ಲಿ ಈ ಉತ್ಪನ್ನವನ್ನು ನೋಡಿ:</string>
     <string name="create_account">ಸೈನ್ ಅಪ್ ಮಾಡಿ</string>
     <string name="home_drawer">ಮುಖಪುಟ</string>
     <string name="install">Install</string>
-    <string name="open_beauty_drawer">Open Beauty Facts</string>
-    <string name="open_food_drawer">Open Food Facts</string>
     <string name="search_drawer">ಹುಡುಕಿ</string>
     <string name="search_by_barcode_drawer">ಬಾರ್ಕೋಡ್ ಟೈಪ್ ಮಾಡಿ</string>
     <string name="category_drawer">ವರ್ಗಗಳು</string>
     <string name="search_by_category">ವರ್ಗ</string>
     <string name="scan_search">ಬಾರ್ಕೋಡ್ ಅನ್ನು ಸ್ಕ್ಯಾನ್ ಮಾಡಿ</string>
     <string name="user_drawer">ಬಳಕೆದಾರ</string>
-    <string name="offline_edit_drawer">ಆಫ್ಲೈನ್ ​​ಸಂಪಾದನೆ</string>
     <string name="txt_anonymous">ಅನಾಮಧೇಯ</string>
     <string name="delete_txt">ಅಳಿಸಿ</string>
     <string name="sign_in_drawer">ಸೈನ್-ಇನ್ ಮಾಡಿ</string>
@@ -251,7 +240,7 @@
     <string name="user_ask_rate_app">Great! Let others know what you think of this app!</string>
     <string name="rate_app">Rate app</string>
     <string name="no_thx">No thanks</string>
-    <string name="feedback_form_url">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
+    <string name="feedback_form_url" comment="Please ask teolemon to duplicate the feedback form and give you the right URL">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">ಇತಿಹಾಸ</string>
     <string name="clear_history">ಇತಿಹಾಸ ತೆರವುಮಾಡಿ</string>
@@ -264,16 +253,15 @@
     <string name="no_brand">ಯಾವುದೇ ಬ್ರ್ಯಾಂಡ್ ಇಲ್ಲ</string>
     <string name="no_title">ಶೀರ್ಷಿಕೆಯಿಲ್ಲ</string>
     <!-- Nutrition info tab -->
-    <string name="display_fact">Nutrition facts table for %1$s of this product</string>
+    <string name="display_fact" comment="Do not modify the placeholder">Nutrition facts table for %1$s of this product</string>
     <string name="check_facts">ಪರಿಶೀಲಿಸಿ</string>
     <string name="nutrition">ಪೋಷಣೆ</string>
     <string name="calculated_nutrition">ಲೆಕ್ಕಹಾಕಿದ ನ್ಯೂಟ್ರಿಷನ್</string>
     <string name="please_enter_weight">Please type the product weight</string>
     <string name="enter_weight">Type the product weight</string>
-    <string name="calculate_nutrition_facts">ಲೆಕ್ಕಹಾಕಿದ ನ್ಯೂಟ್ರಿಷನ್</string>
+    <string name="calculate_nutrition_facts">Calculate nutrition facts for a specific quantity</string>
     <string name="nutrition_carbohydrate">ಕಾರ್ಬೋಹೈಡ್ರೇಟ್</string>
     <string name="nutrition_cholesterol">ಕೊಲೆಸ್ಟರಾಲ್</string>
-    <string name="nutrition_energy">ಶಕ್ತಿ</string>
     <string name="nutrition_energy_kcal">Energy in calories (kcal)</string>
     <string name="nutrition_energy_kj">Energy in joules (kJ)</string>
     <string name="nutrition_energy_short_name">ಶಕ್ತಿ</string>
@@ -289,8 +277,6 @@
     <string name="nutriment_serving_size">ಪ್ರತಿ ಭಾಗ: </string>
     <string name="action_manage_account">ಖಾತೆಯನ್ನು ನಿರ್ವಹಿಸಿ</string>
     <string name="action_contributes">ನಿಮ್ಮ ಕೊಡುಗೆಗಳು</string>
-    <string name="choose_energy_unit">Choose your preferred energy units for the nutrition table</string>
-    <string name="choose_volume_unit">Choose your preferred volume units for the nutrition table</string>
     <string name="logout_drawer">ಲಾಗ್‌ಔಟ್</string>
     <string name="contribution_without_account">ನಿಮ್ಮ ಕೊಡುಗೆಗಳನ್ನು ಉಳಿಸಿಕೊಳ್ಳಲು ನೀವು ಸೈನ್-ಇನ್ ಮಾಡಬಹುದು ಅಥವಾ ಖಾತೆಯನ್ನು ರಚಿಸಬಹುದು</string>
     <string name="textCarbonFootprint">ಇಂಗಾಲದ ಹೆಜ್ಜೆಗುರುತು / CO2 ಹೊರಸೂಸುವಿಕೆಗಳು: </string>
@@ -397,21 +383,9 @@
     <string name="forgot_password">ಪಾಸ್‌ವರ್ಡ್ ಮರೆತಿರಾ</string>
     <string name="next">ಮುಂದೆ</string>
     <string name="skip">SKIP</string>
-    <string name="start">ಅರ್ಥವಾಯಿತು</string>
     <string name="email_not_found">ಯಾವುದೇ ಇಮೇಲ್ ಅಪ್ಲಿಕೇಶನ್ಗಳು ಕಂಡುಬಂದಿಲ್ಲ</string>
-    <string name="airplane_mode_active_dialog_title">ಏರ್ಪ್ಲೇನ್ ಮೋಡ್ ಸಕ್ರಿಯಗೊಳಿಸಲಾಗಿದೆ</string>
-    <string name="airplane_mode_active_dialog_message">ಏರ್ಪ್ಲೇನ್ ಮೋಡ್ ಅನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಲಾಗಿದೆ, ದಯವಿಟ್ಟು ಇದನ್ನು ಮುಂದುವರಿಸಲು ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಿ.</string>
-    <string name="airplane_mode_active_dialog_negative">ವಜಾಮಾಡು</string>
-    <string name="airplane_mode_active_dialog_positive">ಸೆಟ್ಟಿಂಗ್</string>
     <string name="device_offline_dialog_title">ನೆಟ್‌ವರ್ಕ್ ಲಭ್ಯವಿಲ್ಲ</string>
-    <string name="device_offline_dialog_message">ಇದನ್ನು ಮಾಡಲು ನೆಟ್ವರ್ಕ್ ಸಂಪರ್ಕವನ್ನು ಅಗತ್ಯವಿದೆ, ನೀವು ಇದನ್ನು ಸೆಟ್ಟಿಂಗ್ಗಳಲ್ಲಿ ಬದಲಾಯಿಸಲು ಬಯಸುತ್ತೀರಾ?</string>
-    <string name="device_offline_dialog_negative">ವಜಾಮಾಡು</string>
-    <string name="device_offline_dialog_positive">ಸೆಟ್ಟಿಂಗ್</string>
     <string name="scan_first_product">ಮೊದಲ ಉತ್ಪನ್ನವನ್ನು ಸ್ಕ್ಯಾನ್ ಮಾಡಿ</string>
-    <string name="device_on_mobile_data_warning_title">ಮಾಹಿತಿ</string>
-    <string name="device_on_mobile_data_warning_message">You have disabled upload on mobile data , please connect to WiFi or change this in preferences</string>
-    <string name="device_on_mobile_data_warning_positive">ಆದ್ಯತೆಗಳು</string>
-    <string name="device_on_mobile_data_warning_negative">ಹೇಗಾದರೂ ಅಪ್ಲೋಡ್ ಮಾಡಿ</string>
     <string name="changes_saved">Changes saved successfully</string>
     <string name="proceed">Proceed</string>
     <string name="preference_choose_language_dialog_title">ಭಾಷೆ ಆಯ್ಕೆ</string>
@@ -445,8 +419,6 @@
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
     <string name="url_nutrient_values">https://world-kn.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">ಸಾಮಾನ್ಯ</string>
-    <string name="preference_header_network">Network</string>
-    <string name="preference_header_contributing">Contributing</string>
     <string name="preference_header_privacy">Privacy</string>
     <string name="preference_crash_title">Crash reporting</string>
     <string name="preference_crash_summary">When enabled, crash reports will be sent to the Open Food Facts server automatically, so that we can fix bugs and improve the app.</string>
@@ -514,9 +486,9 @@
     <string name="notification_channel_name">ರಫ್ತು ಸೂಚನೆಗಳು</string>
     <string name="notify_channel_description">ರಫ್ತು ಮಾಡಿದ ಕಡತದ ಸ್ಥಳವನ್ನು ತೋರಿಸಲು ಅಧಿಸೂಚನೆ</string>
     <string name="products_to_be_completed">ಉತ್ಪನ್ನಗಳು ಪೂರ್ಣಗೊಳ್ಳಬೇಕು</string>
-    <string name="offline_notification_title">ಆಫ್ಲೈನ್ ​​ಕೊಡುಗೆಗಳನ್ನು ನೀವು ಕಳುಹಿಸಬೇಕು</string>
-    <string name="creator_history">Product added on %1$s at %2$s CET by %3$s</string>
-    <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by %3$s </string>
+    <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Product added on %1$s at %2$s CET by %3$s</string>
+    <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Last edit of product page on %1$s at %2$s CEST by %3$s </string>
+    <!-- TODO: Add the placeholder in the string - important for several languages -->
     <string name="other_editors">ಉತ್ಪನ್ನ ಪುಟವು ಸಹ ಸಂಪಾದಿಸಿದೆ </string>
     <string name="product_states">Product States</string>
     <string name="incomplete_states">Incomplete States</string>
@@ -527,10 +499,9 @@
     <string name="offline_product_addition_title">ಈ ಉತ್ಪನ್ನವನ್ನು ಸೇರಿಸಿ</string>
     <string name="productNameNull">ಹೆಸರು ತಿಳಿದಿಲ್ಲ</string>
     <string name="productAdditivesUnknown"></string>
-    <string name="productAdditivesTemplate">%1$d additives</string>
     <plurals name="productAdditives">
-        <item quantity="one">%d additive</item>
-        <item quantity="other">%d additives</item>
+        <item quantity="one" comment="Do not change the placeholder">%d additive</item>
+        <item quantity="other" comment="Do not change the placeholder">%d additives</item>
     </plurals>
     <string name="product_not_complete">ಈ ಉತ್ಪನ್ನ ಇನ್ನೂ ಪೂರ್ಣಗೊಂಡಿಲ್ಲ. \ n ನೀವು ಕೆಲವು ವಿವರಗಳನ್ನು ಸೇರಿಸಬಹುದೇ?</string>
     <string name="addProductOffline">You seem offline. Add the product %s using the offline mode ?</string>
@@ -541,9 +512,8 @@
     <string name="switch_camera">ಕ್ಯಾಮೆರಾ ಬದಲಿಸಿ</string>
     <string name="autofocus">ಆಟೋಫೋಕಸ್</string>
     <string name="initial_loading">ಆರಂಭಿಕ ಲೋಡ್</string>
-    <string name="preferences">ಆದ್ಯತೆಗಳು</string>
     <string name="OFFlogo">ಆಹಾರ ಸಂಗತಿಗಳು ತೆರೆಯಿರಿ</string>
-    <string name="loading_product">Loading product %s</string>
+    <string name="loading_product" comment="Do not modify the placeholder">Loading product %s</string>
     <string name="image_not_defined_for_language">No image for selected language. You can add a new one</string>
     <string name="error_adding_ingredients">ಉತ್ಪನ್ನ ಪದಾರ್ಥಗಳನ್ನು ಸೇರಿಸಲು ಪ್ರಯತ್ನಿಸುವಾಗ ಯಾವುದೋ ತಪ್ಪು ಸಂಭವಿಸಿದೆ</string>
     <string name="unable_to_extract_ingredients">ಚಿತ್ರದಿಂದ ಪದಾರ್ಥಗಳನ್ನು ಹೊರತೆಗೆಯಲು ಸಾಧ್ಯವಿಲ್ಲ</string>
@@ -555,20 +525,11 @@
     <string name="extract_url">Extract URL from QR-code</string>
     <string name="search_url">Search for official page URL</string>
     <string name="product_language">ಉತ್ಪನ್ನ ಭಾಷೆ: </string>
-    <string name="hint_emb_codes">ಉದಾಹರಣೆಗಳು: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 ರೆಕಾಲ್ಟ್ 522, ಎಫ್ಎಸ್ಎಸ್ಎಲ್ 10013011001409</string>
     <string name="official_website">ಅಧಿಕೃತ ಜಾಲತಾಣ</string>
     <string name="scan_QR_code">ಉತ್ಪನ್ನ ವೆಬ್ಸೈಟ್ಗಾಗಿ QR ಕೋಡ್ ಅನ್ನು ಸ್ಕ್ಯಾನ್ ಮಾಡಿ</string>
     <string name="add_at_least_one_picture">ಮುಂದುವರಿಯುವ ಮೊದಲು ಈ ಉತ್ಪನ್ನದ ಕನಿಷ್ಠ ಒಂದು ಚಿತ್ರವನ್ನು ಸೇರಿಸಿ</string>
     <string name="image_uploaded_successfully">ಚಿತ್ರವನ್ನು ಯಶಸ್ವಿಯಾಗಿ ಅಪ್ಲೋಡ್ ಮಾಡಲಾಗಿದೆ</string>
     <string name="error_adding_product_photos">ಉತ್ಪನ್ನ ಫೋಟೋಗಳನ್ನು ಸೇರಿಸಲು ಪ್ರಯತ್ನಿಸುವಾಗ ಯಾವುದೋ ತಪ್ಪು ಸಂಭವಿಸಿದೆ</string>
-    <string name="ingredients_overwrite">ಪದಾರ್ಥಗಳು ಬದಲಿಸಿ</string>
-    <string name="choose_mine">ಗಣಿ ಆಯ್ಕೆಮಾಡಿ</string>
-    <string name="keep_previous_version">ಹಿಂದಿನ ಆವೃತ್ತಿಯನ್ನು ಇರಿಸಿಕೊಳ್ಳಿ</string>
-    <string name="product_name_overwrite">ಉತ್ಪನ್ನದ ಹೆಸರು ಬದಲಿಸಿ</string>
-    <string name="yours">ನಿಮ್ಮದು: </string>
-    <string name="currently_on">Currently on %s: </string>
-    <string name="quantity_overwrite">ಪ್ರಮಾಣ ಬದಲಿಸಿ</string>
-    <string name="link_overwrite">ಲಿಂಕ್ ಬದಲಿಸಿ</string>
     <string name="save_product">ಉತ್ಪನ್ನವನ್ನು ಉಳಿಸಲು ನೀವು ಬಯಸುವಿರಾ?</string>
     <string name="error_adding_product">Something went wrong when adding the product</string>
     <string name="photos">ಫೋಟೋಗಳು</string>
@@ -576,14 +537,13 @@
     <string name="product_uploaded_successfully">ಉತ್ಪನ್ನವನ್ನು ಯಶಸ್ವಿಯಾಗಿ ಕಳುಹಿಸಲಾಗಿದೆ</string>
     <string name="no_internet_connection">ಇಂಟರ್ನೆಟ್ ಸಂಪರ್ಕವಿಲ್ಲ ಎಂದು ನಿಮಗೆ ಕಾಣುತ್ತದೆ, ನೆಟ್ವರ್ಕ್ ಲಭ್ಯವಿದ್ದಾಗ ಚಿತ್ರಗಳನ್ನು ಅಪ್ಲೋಡ್ ಮಾಡಲಾಗುತ್ತದೆ</string>
     <string name="no_internet_unable_to_extract_ingredients">ಇಂಟರ್ನೆಟ್ ಸಂಪರ್ಕವಿಲ್ಲ. ಪದಾರ್ಥಗಳನ್ನು ಹೊರತೆಗೆಯಲು ಸಾಧ್ಯವಿಲ್ಲ</string>
-    <string name="percent">%1$d%%</string>
     <string name="overview">ಸಾರಾಂಶ</string>
     <string name="ingredients">ಪದಾರ್ಥಗಳು</string>
     <string name="nutrition_facts">ಪೌಷ್ಟಿಕ ಅಂಶಗಳು</string>
     <string name="your_version">ನಿಮ್ಮದು</string>
     <string name="ingredients_picture">ಪದಾರ್ಥಗಳು ಚಿತ್ರ</string>
     <string name="packaging">Recycling</string>
-    <string name="take_ingredients_picture_to_extract">(ದಯವಿಟ್ಟು ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಅವುಗಳನ್ನು ಹೊರತೆಗೆಯಲು ಪದಾರ್ಥಗಳ ಚಿತ್ರವನ್ನು ತೆಗೆದುಕೊಳ್ಳಿ)</string>
+    <string name="take_ingredients_picture_to_extract">(Please take a photo of the ingredients to automatically extract them)</string>
     <string name="ingredients_list">ಪದಾರ್ಥಗಳ ಪಟ್ಟಿ</string>
     <string name="ingredients_hint" tools:ignore="StringFormatInvalid">ಆದೇಶವನ್ನು ಇರಿಸಿ, ನಿರ್ದಿಷ್ಟಪಡಿಸಿದಾಗ% ಸೂಚಿಸುತ್ತದೆ, ಒಂದು ಅಲ್ಪವಿರಾಮದಿಂದ ಅಥವಾ ಬಳಕೆಯನ್ನು ಪ್ರತ್ಯೇಕವಾಗಿ -, ಪದಾರ್ಥಗಳ ಪದಾರ್ಥಗಳಿಗಾಗಿ () ಬಳಸಿ, ಸರೌಂಡ್ ಅಲರ್ಜಿನ್ಗಳೊಂದಿಗೆ _</string>
     <string name="extract_ingredients">ಪದಾರ್ಥಗಳನ್ನು ಹೊರತೆಗೆಯಿರಿ</string>
@@ -619,9 +579,6 @@
     <string name="additional_pictures">ಹೆಚ್ಚುವರಿ ಚಿತ್ರಗಳು</string>
     <string name="hint_product_pictures">(ಉತ್ಪನ್ನದ ಹೆಚ್ಚಿನ ಚಿತ್ರಗಳನ್ನು ಸೇರಿಸಿ ಉದಾ: ಮರುಬಳಕೆಯ ಸೂಚನೆಗಳು, ಲೇಬಲ್ಗಳು ಇತ್ಯಾದಿ.)</string>
     <string name="uploading_image">Sending the photo</string>
-    <string name="uploading_nutrition_image">ಪೌಷ್ಟಿಕಾಂಶ ಸತ್ಯದ ಚಿತ್ರವನ್ನು ಅಪ್ಲೋಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ</string>
-    <string name="uploading_ingredients_image">ಪದಾರ್ಥಗಳ ಚಿತ್ರವನ್ನು ಅಪ್ಲೋಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ</string>
-    <string name="uploading_front_image">ಪದಾರ್ಥಗಳ ಚಿತ್ರವನ್ನು ಅಪ್ಲೋಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ</string>
     <string name="edit_front_image">Edit the front photo</string>
     <string name="edit_nutrition_image">Edit the nutrition photo</string>
     <string name="edit_packaging_image">Edit the recycling photo</string>
@@ -631,7 +588,6 @@
     <string name="sign_in_to_answer">Please sign in or register to answer an insight.</string>
     <string name="hint_quantity">ಉದಾಹರಣೆಗಳು: 2 ಎಲ್, 250 ಗ್ರಾಂ, 1 ಕೆಜಿ, 25 ಕ್ಲಾ, 6 ಫ್ಲ್ ಔಜ್, 1 ಪೌಂಡ್</string>
     <string name="edit_product_title">Edit a product</string>
-    <string name="nutrient_already_added">%s is already present in the nutrition facts</string>
     <string name="save_edits">ಸಂಪಾದನೆಗಳನ್ನು ಉಳಿಸಿ</string>
     <string name="contribution_by">Contribution by</string>
     <string name="title_activity_product">ಶೀರ್ಷಿಕೆ</string>
@@ -668,10 +624,10 @@
     <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
     <string name="add_category_prompt_text">Add a category to help complete the product</string>
     <string name="add_nutrient_category_prompt_text">Add a category and nutrition facts to help complete the product</string>
-    <string name="couldnot_compute_ecoscore_prompt_text">We could not compute an Eco-Score for this product. It might be that the category is not specific enough or that we don\'t have supporting data for this category. If you believe this is an error, you can mail us by clicking below.</string>
-    <string name="add_labels_origins_prompt_text">The Eco-Score takes into account environmental labels and origins of the ingredients. Please take them into photo or edit the product so that they can be taken into account</string>
-    <string name="add_labels_prompt_text">The Eco-Score takes into account environmental labels. Please take them into photo or edit the product so that they can be taken into account</string>
-    <string name="add_origins_prompt_text">The Eco-Score takes into account the origins of the ingredients. Please take them into photo (ingredient list and/or any geographic claim) or edit the product so that they can be taken into account</string>
+    <string name="couldnot_compute_ecoscore_prompt_text" comment="Do not translate Eco-Score">We could not compute an Eco-Score for this product. It might be that the category is not specific enough or that we don\'t have supporting data for this category. If you believe this is an error, you can mail us by clicking below.</string>
+    <string name="add_labels_origins_prompt_text" comment="Do not translate Eco-Score">The Eco-Score takes into account environmental labels and origins of the ingredients. Please take them into photo or edit the product so that they can be taken into account</string>
+    <string name="add_labels_prompt_text" comment="Do not translate Eco-Score">The Eco-Score takes into account environmental labels. Please take them into photo or edit the product so that they can be taken into account</string>
+    <string name="add_origins_prompt_text" comment="Do not translate Eco-Score">The Eco-Score takes into account the origins of the ingredients. Please take them into photo (ingredient list and/or any geographic claim) or edit the product so that they can be taken into account</string>
     <string name="category_game_btn">Help categorize products</string>
     <string name="version_string">Open Food Facts Android App</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
@@ -700,9 +656,7 @@
     <string name="import_csv_to_list">Import an Open Food Facts list CSV file</string>
     <string name="toast_import_csv_error">Error in importing CSV file</string>
     <string name="toast_import_csv">CSV imported successfully!</string>
-    <string name="open_csv">Open CSV</string>
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
-    <string name="image_prompt_language">Take a photo of the ingredients in</string>
     <string name="swipe_delete_tip">You can delete a list by swiping it left.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
@@ -729,17 +683,15 @@
     <string name="scan_tooltip">You can slide up the card for more details</string>
     <string name="add_an_allergen">Add an allergen</string>
     <string name="add_a_list">Add a list</string>
-    <string name="edit_image">Edit Image</string>
-    <string name="cant_edit_image_not_yet_uploaded">The new image is not yet uploaded. Please, wait before editing it</string>
-    <string name="unselect_image">Unselect Image</string>
+    <string name="edit_image">Edit Photo</string>
+    <string name="cant_edit_image_not_yet_uploaded">The new photo is not yet uploaded. Please wait before editing it</string>
+    <string name="unselect_image">Unselect Photo</string>
     <string name="choose_default_language">Select product language</string>
     <string name="barcode">ಬಾರ್‌ ಕೋಡ್</string>
     <string name="productAdditivesNone">No additives</string>
-    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
-    <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
+    <string name="required_for_ecoscore" comment="Do not translate Eco-Score">(Required to calculate the Eco-Score)</string>
     <string name="hint_origin">Examples: USA, France, Italy</string>
     <!-- Used for diets AddOn -->
-    <string name="history_network_error">The product couldn\'t be loaded. Please try again when you are back online.</string>
     <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
     <string name="closeZoom">Click to close zoom</string>
     <string name="imageFullscreen">Zoom</string>
@@ -752,7 +704,7 @@
     <string name="image_edit_tip">Tap on the image to zoom it, change it, crop it, rotate it and more…</string>
     <string name="ingredients_in_this_product_are">Ingredients in this product are %1$s.</string>
     <string name="ingredients_in_this_product">Ingredients in this product that are %1$s:</string>
-    <string name="display_analysis_tag_status">Display %1$s status</string>
+    <string name="display_analysis_tag_status" comment="Do not change the placeholder">Display %1$s status</string>
     <string name="unknown_status_no_translation">We couldn\'t assess the status of the product due to unrecognized ingredients.</string>
     <string name="help_translate_ingredients">Help translate the ingredients in your language</string>
     <string name="unknown_status_missing_ingredients">We couldn\'t assess the status of the product due to missing ingredients.</string>
@@ -794,25 +746,24 @@
     <string name="product_front_image">Product front image</string>
     <string name="brand_hint">Examples: Coca-Cola, Nestle, etc…</string>
     <string name="sign_in_or_register">Sign in or register</string>
-    <string name="hunger_game_call_to_action">Help classify more %1$s</string>
+    <string name="hunger_game_call_to_action" comment="Do not change the placeholder">Help classify more %1$s</string>
     <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s products (plus the ones you will contribute).</string>
-    <string name="enabled">Enabled</string>
     <!-- Application theme settings -->
     <string name="follow_system">Follow system</string>
     <string name="day">Day</string>
     <string name="night">Night</string>
     <string name="report_email_chooser_title">Send a report email</string>
     <!-- Changelog String -->
-    <string name="changelog_translation_help">Want to see this changelog in %s?\nJoin the translation team!</string>
+    <string name="changelog_translation_help" comment="Do not change the placeholder">Want to see this changelog in %s?\nJoin the translation team!</string>
     <string name="whats_new">What\'s new with Open Food Facts?</string>
     <!-- New onboarding slides -->
     <string name="title_welcome_intro">Join the food revolution</string>
     <string name="msg_welcome_intro">Scan food, Take photos, Help transform the food system</string>
-    <string name="title_welcome_nutriscore">ನ್ಯೂಟ್ರಿಕೋರ್ ಪಡೆಯಿರಿ</string>
+    <string name="title_welcome_nutriscore" comment="Do not translate Nutri-Score">Get the Nutri-Score</string>
     <string name="msg_welcome_nutriscore">A simple synthesis of the nutritional quality of your food</string>
     <string name="title_welcome_nova">Avoid ultra-processed foods</string>
     <string name="msg_welcome_nova">Reduce the amount of ultra-processed foods in your diet.</string>
-    <string name="title_welcome_ecoscore">Eco-Score</string>
+    <string name="title_welcome_ecoscore" comment="Do not translate Eco-Score">Eco-Score</string>
     <string name="msg_welcome_ecoscore">A synthesis of the environmental impact of your food.</string>
     <string name="title_welcome_matomo">Send anonymous analytics</string>
     <string name="msg_welcome_matomo">Help the Open Food Facts volunteers to improve the app. You decide if you send anonymous analytics.\n\nIf you change your mind this option can be enabled and disabled at any time from the settings.</string>

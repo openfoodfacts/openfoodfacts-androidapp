@@ -197,9 +197,9 @@
     <string name="hintPass">ססמה</string>
     <string name="errorLogin">שם המשתמש או הססמה שגויים</string>
     <string name="errorWeb">לא הצלחנו לגשת לאינטרנט. יש לך תקלה בחיבור?</string>
-    <string name="txtInfoLoginOk">המשתמש נשמר</string>
-    <string name="txtInfoLoginNo">המשתמש לא נשמר</string>
-    <string name="product_does_not_exist_please_add_it">המוצר שסרקת לא קיים עדיין ב־Open Food Facts. נא לסרוק אותו.</string>
+    <string name="txtInfoLoginOk">נכנסת בהצלחה לחשבון שלך ב־Open Food Facts.</string>
+    <string name="txtInfoLoginNo">אירעה שגיאה בעת ניסיון להיכנס לחשבון שלך ב־Open Food Facts.</string>
+    <string name="product_does_not_exist_please_add_it">המוצר שסרקת לא קיים עדיין ב־Open Pet Food Facts. נא להוסיף אותו.</string>
     <string name="txtYes">כן</string>
     <string name="txtNo">לא</string>
     <string name="hintBrand">מותג</string>

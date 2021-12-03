@@ -16,7 +16,7 @@
     <string name="slide_1_desc">Skenirajte izdelke, posnamite sliko izdelka, naredite preglednost hrane</string>
     <string name="slide_2_title">Pridobi dejstva</string>
     <string name="slide_2_desc">Obširne informacije o izdelku, ki ste jih optično prebrali, so razložene za vas</string>
-    <string name="slide_3_title">Get the Nutriscore</string>
+    <string name="slide_3_title">Get the Nutri-Score</string>
     <string name="slide_3_desc">Sintetični pogled na prehranske lastnosti vaših najljubših prehrambenih izdelkov</string>
     <string name="slide_4_title">Deluje brez povezave</string>
     <string name="slide_4_desc">Dodate lahko nove izdelke, tudi če trenutno nimate internetne povezave</string>
@@ -29,7 +29,7 @@
     <string name="msg_welcome_nova">Reduce the amount of ultra-processed foods in your diet.</string>
     <string name="title_welcome_ecoscore">Eco-Score</string>
     <!-- Scan card -->
-    <string name="product_does_not_exist_please_add_it">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
+    <string name="product_does_not_exist_please_add_it">Izdelek, ki ste ga skenirali, še ne obstaja v Open Food Facts. Prosim, dodajte ga.</string>
     <string name="txtDialogsContentPowerMode">Izdelek, ki ste ga optično prebrali, že obstaja v podatkih o odprtih živilih.</string>
     <string name="msg_share">Look at this product on Open Food Facts :</string>
     <string name="not_support_books">Open Food Facts trenutno ne podpirajo knjig</string>

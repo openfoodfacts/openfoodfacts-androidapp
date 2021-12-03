@@ -21,7 +21,7 @@
     <string name="slide_3_desc">جميع المنتجات التي قمت بمسحها ضوئيًا ، في قائمة واحدة يدوية يمكنك الحصول عليها</string>
     <string name="slide_4_title">يعمل بدون اتصال</string>
     <string name="slide_4_desc">يمكنك إضافة منتجات جديدة ، حتى إذا لم يكن لديك اتصال بالإنترنت في الوقت الحالي</string>
-    <string name="product_does_not_exist_please_add_it">المنتج الذي قمت بمسحه ضوئياً غير موجود حتى الآن في Open Open Facts. يرجى إضافته.</string>
+    <string name="product_does_not_exist_please_add_it">المنتج الذي مسحته غير موجود حتى الآن في Open Products Facts. يرجى إضافته.</string>
     <string name="txtDialogsContentPowerMode">المنتج الذي قمت بمسحه ضوئياً موجود بالفعل في Open Open Facts.</string>
     <string name="msg_share">انظر إلى هذا المنتج على Open Products Facts :</string>
     <string name="not_support_books">الكتب غير مدعومة حالياً بواسطة Open Products Facts</string>

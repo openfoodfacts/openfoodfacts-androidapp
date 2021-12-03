@@ -187,9 +187,9 @@
     <string name="hintPass">Passwort</string>
     <string name="errorLogin">Benutzername oder Passwort stimmen nicht</string>
     <string name="errorWeb">Kein Internetzugang. Netzwerkverbindung überprüfen.</string>
-    <string name="txtInfoLoginOk">Benutzer gespeichert</string>
-    <string name="txtInfoLoginNo">Benutzer nicht gespeichert</string>
-    <string name="product_does_not_exist_please_add_it">Das eingelesene Produkt existiert noch nicht in „Open Food Facts”. Bitte fügen Sie es hinzu.</string>
+    <string name="txtInfoLoginOk">Sie haben sich erfolgreich bei Ihrem Open Food Facts-Konto angemeldet.</string>
+    <string name="txtInfoLoginNo">Anmelden bei Ihrem Open Food Facts-Konto fehlgeschlagen.</string>
+    <string name="product_does_not_exist_please_add_it">Das eingelesene Produkt existiert noch nicht in Open Pet Food Facts. Bitte fügen Sie es hinzu.</string>
     <string name="txtYes">Ja</string>
     <string name="txtNo">Nein</string>
     <string name="hintBrand">Marke</string>
@@ -755,7 +755,7 @@ Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchs
     <!-- New onboarding slides -->
     <string name="title_welcome_intro">Machen Sie mit, bei der Lebensmittel-Revolution</string>
     <string name="msg_welcome_intro">Erfassen Sie Lebensmittel, nehmen Sie Fotos auf, helfen Sie mit, das Lebensmittelsystem zu verändern</string>
-    <string name="title_welcome_nutriscore" comment="Do not translate Nutri-Score">„Nutri-Score” (franz. Nahrungsmittelampel) abrufen</string>
+    <string name="title_welcome_nutriscore" comment="Do not translate Nutri-Score">Nutri-Score abrufen</string>
     <string name="msg_welcome_nutriscore">Eine einfache Übersicht die Nährwertqualität Ihrer Lebensmittel</string>
     <string name="title_welcome_nova">Vermeiden Sie hochverarbeitete Lebensmittel</string>
     <string name="msg_welcome_nova">Reduzieren Sie die Menge an hochverarbeiteten Lebensmitteln in Ihrer Ernährung.</string>
