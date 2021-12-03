@@ -5,7 +5,7 @@
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/contribuer -->
     <string name="website_contribute">https://world.openbeautyfacts.org/contribute</string>
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/decouvrir -->
-    <string name="website_discover">https://world.openbeautyfacts.org/discover</string>
+    <string name="website_discover">https://ee.openbeautyfacts.org/discover</string>
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/produit/ -->
     <string name="website_product">https://world.openbeautyfacts.org/product/</string>
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/contributeur/ -->
@@ -46,4 +46,5 @@
     <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
         You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
     <string name="OFFlogo">Open Beauty Facts logo</string>
+    <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Food Facts.</string>
 </resources>

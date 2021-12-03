@@ -29,7 +29,7 @@
     <string name="msg_welcome_nova">Reduce the amount of ultra-processed foods in your diet.</string>
     <string name="title_welcome_ecoscore">Eco-Score</string>
     <!-- Scan card -->
-    <string name="product_does_not_exist_please_add_it">스캔한 제품이 Open Food Facts에 아직 존재하지 않습니다. 제품을 추가하십시오.</string>
+    <string name="product_does_not_exist_please_add_it">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
     <string name="txtDialogsContentPowerMode">스캔 한 제품은 이미 Open Food Facts에 있습니다.</string>
     <string name="msg_share">Open Food Facts에서 이 제품을 검색해보세요 : </string>
     <string name="not_support_books">책은 현재 Open Food Facts에서 지원되지 않습니다.</string>

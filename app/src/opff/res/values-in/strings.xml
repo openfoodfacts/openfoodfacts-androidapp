@@ -21,7 +21,7 @@
     <string name="slide_3_desc">Semua makanan hewan yang Anda pindai, dalam satu daftar praktis yang dapat Anda ekspor</string>
     <string name="slide_4_title">Bekerja secara luring</string>
     <string name="slide_4_desc">Anda dapat menambahkan produk - produk baru, bahkan jika Anda tidak memiliki koneksi Internet saat ini</string>
-    <string name="product_does_not_exist_please_add_it">Produk yang Anda pindai belum ada di Open Pet Food Facts. Silahkan tambahkan.</string>
+    <string name="product_does_not_exist_please_add_it">Produk yang Anda pindai belum ada di Open Pet Food Facts. SilahkanTolong tambahkan.</string>
     <string name="txtDialogsContentPowerMode">Produk yang Anda pindai sudah ada dalam Open Pet Food Facts.</string>
     <string name="msg_share">Lihat produk ini di Open Pet FoodFacts :</string>
     <string name="not_support_books">Buku - buku yang tidak didukung Open Pet Food Facts saat ini</string>
@@ -38,8 +38,8 @@
     <string name="currently_on_version">Saat ini di Open Pet Food Facts</string>
     <string name="category_game_btn">Bantu mengkategorikan produk</string>
     <string name="add_nutrient_prompt_text">Tambahkan informasi nilai gizi untuk menghitung tingkat nutrisi</string>
-    <string name="add_category_prompt_text">Tambahkan kategori untuk membantu melengkapi produk</string>
-    <string name="add_nutrient_category_prompt_text">Tambahkan kategori dan informasi nilai gizi untuk membantu melengkapi produk</string>
+    <string name="add_category_prompt_text">Tambahkan kategori untuk membantu melengkapi informasi produk</string>
+    <string name="add_nutrient_category_prompt_text">Tambahkan kategori dan informasi nilai gizi untuk membantu melengkapi informasi produk</string>
     <string name="txt_eaten_products">Produk yang saya miliki</string>
     <string name="txt_products_to_buy">Produk - produk untuk dibeli</string>
     <string name="intent_filter_share_label">Tambahkan ke Open Pet Food Facts</string>

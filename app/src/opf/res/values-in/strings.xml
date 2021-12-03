@@ -21,7 +21,7 @@
     <string name="slide_3_desc">Semua produk yang Anda pindai, dalam satu daftar praktis yang dapat Anda ekspor</string>
     <string name="slide_4_title">Bekerja secara luring</string>
     <string name="slide_4_desc">Anda dapat menambahkan produk - produk baru, bahkan jika Anda tidak memiliki koneksi Internet saat ini</string>
-    <string name="product_does_not_exist_please_add_it">Produk yang Anda pindai belum ada di Open Products Facts. Silahkan tambahkan.</string>
+    <string name="product_does_not_exist_please_add_it">Produk yang Anda pindai belum ada di Open Products Facts. Tolong tambahkan.</string>
     <string name="txtDialogsContentPowerMode">Produk yang Anda pindai sudah ada dalam Open Products Facts.</string>
     <string name="msg_share">Lihat produk ini di Open Products Facts :</string>
     <string name="not_support_books">Buku - buku yang tidak didukung Open Products Facts saat ini</string>
@@ -37,9 +37,9 @@
     <string name="product_not_found">Produk %1$s yang Anda pindai belum ada di Open Products Facts. Bisakah Anda menambahkannya?</string>
     <string name="currently_on_version">Saat ini di Open Products Facts</string>
     <string name="category_game_btn">Bantu mengkategorikan produk</string>
-    <string name="add_nutrient_prompt_text">Tambahkan lebih banyak detail untuk membantu melengkapi produk</string>
-    <string name="add_category_prompt_text">Tambahkan kategori untuk membantu melengkapi produk</string>
-    <string name="add_nutrient_category_prompt_text">Tambahkan kategori dan lebih banyak detail untuk membantu melengkapi produk</string>
+    <string name="add_nutrient_prompt_text">Tambahkan lebih banyak detail untuk membantu melengkapi informasi produk</string>
+    <string name="add_category_prompt_text">Tambahkan kategori untuk membantu melengkapi informasi produk</string>
+    <string name="add_nutrient_category_prompt_text">Tambahkan kategori dan lebih banyak detail untuk membantu melengkapi informasi produk</string>
     <string name="txt_eaten_products">Produk yang saya miliki</string>
     <string name="txt_products_to_buy">Produk - produk untuk dibeli</string>
     <string name="intent_filter_share_label">Tambahkan ke Open Products Facts</string>

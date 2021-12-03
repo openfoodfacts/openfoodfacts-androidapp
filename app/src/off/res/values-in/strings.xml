@@ -29,7 +29,7 @@
     <string name="msg_welcome_nova">Kurangi jumlah makanan olahan ultra dalam diet Anda.</string>
     <string name="title_welcome_ecoscore">Eco-Score</string>
     <!-- Scan card -->
-    <string name="product_does_not_exist_please_add_it">Produk yang Anda pindai belum terdaftar di Open Food Facts. Tolong ditambahkan.</string>
+    <string name="product_does_not_exist_please_add_it">Produk yang Anda pindai belum ada di Open Food Facts. Tolong tambahkan.</string>
     <string name="txtDialogsContentPowerMode">Produk yang Anda pindai sudah ada dalam Open Food Facts.</string>
     <string name="msg_share">Lihat produk ini di Open Food Facts :</string>
     <string name="not_support_books">Buku - buku yang tidak didukung Open Food Facts saat ini</string>

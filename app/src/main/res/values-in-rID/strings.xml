@@ -182,9 +182,9 @@
     <string name="hintPass">Kata sandi</string>
     <string name="errorLogin">Kesalahan pada proses masuk atau kata sandi</string>
     <string name="errorWeb">Kami tidak bisa mengakses internet. Apakah Anda memiliki masalah konektivitas?</string>
-    <string name="txtInfoLoginOk">Pengguna tersimpan</string>
-    <string name="txtInfoLoginNo">Pengguna tidak tersimpan</string>
-    <string name="product_does_not_exist_please_add_it">Produk yang Anda pindai belum terdaftar di Open Food Facts. Tolong ditambahkan.</string>
+    <string name="txtInfoLoginOk">Anda berhasil masuk ke akun Open Food Facts Anda.</string>
+    <string name="txtInfoLoginNo">Terjadi kesalahan saat mencoba masuk ke akun Open Food Facts Anda.</string>
+    <string name="product_does_not_exist_please_add_it">Produk yang Anda pindai belum ada di Open Food Facts. Tolong tambahkan.</string>
     <string name="txtYes">Ya</string>
     <string name="txtNo">Tidak</string>
     <string name="hintBrand">Merek</string>
@@ -359,7 +359,7 @@
     <string name="take_more_pictures">Ambil lebih banyak foto</string>
     <string name="take_extra_packaging_pictures">Ambil foto - foto kemasan tambahan</string>
     <string name="txtSaturatedFat">Lemak jenuh</string>
-    <string name="nutriscore_info_msg">Learn more about the Nutri-Score</string>
+    <string name="nutriscore_info_msg">Pelajari lebih banyak tentang Nutri-Score</string>
     <string name="nova_info_msg">Pelajari lebih lanjut tentang grup NOVA</string>
     <string name="nova_grp1_msg">Grup 1 - Makanan yang tidak diproses atau sedikit diproses</string>
     <string name="nova_grp2_msg">Grup 2 - Bahan - bahan kuliner olahan</string>

@@ -21,7 +21,7 @@
     <string name="slide_3_desc">Όλες οι ζωοτροφές που σαρώνεις, σε μία εύχρηστη λίστα που μπορείτε να προβάλετε</string>
     <string name="slide_4_title">Works offline</string>
     <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet connection right now</string>
-    <string name="product_does_not_exist_please_add_it">Το προϊόν που σαρώσατε δεν υπάρχει ακόμα στο Open Pet Food Facts. Παρακαλούμε προσθέστε το.</string>
+    <string name="product_does_not_exist_please_add_it">The product you scanned does not exist yet in Open Pet Food Facts. Please add it.</string>
     <string name="txtDialogsContentPowerMode">Το προϊόν που σαρώσατε υπάρχει ήδη στο Open Pet Food Facts.</string>
     <string name="msg_share">Look at this product on Open Pet Food Facts :</string>
     <string name="not_support_books">Δεν υποστηρίζονται βιβλία</string>

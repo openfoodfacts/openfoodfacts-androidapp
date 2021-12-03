@@ -29,7 +29,7 @@
     <string name="msg_welcome_nova">Reduce the amount of ultra-processed foods in your diet.</string>
     <string name="title_welcome_ecoscore">Eco-Score</string>
     <!-- Scan card -->
-    <string name="product_does_not_exist_please_add_it">Produkt, který jste naskenovali, v databázi Open Food Facts neexistuje. Přidejte jej prosím.</string>
+    <string name="product_does_not_exist_please_add_it">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
     <string name="txtDialogsContentPowerMode">Výrobek, který jste naskenovali, už je v databázi Open Food Facts.</string>
     <string name="msg_share">Podívejte se na tento produkt v Open Food Facts :</string>
     <string name="not_support_books">Knihy zatím nejsou databází Open Food Facts podporovány</string>
