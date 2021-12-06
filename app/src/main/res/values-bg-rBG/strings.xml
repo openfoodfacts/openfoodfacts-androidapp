@@ -162,7 +162,7 @@
     <string name="txtBarcode">Баркод:</string>
     <string name="txtCategories">Категории:</string>
     <string name="txtLabels">Етикети, сертификати, награди: </string>
-    <string name="txtEMB">Traceability codes: </string>
+    <string name="txtEMB">Кодове за проследимост: </string>
     <string name="txtIngredients">Списък на съставките: </string>
     <string name="Donate">Дари</string>
     <string name="Donation">Щракни тук, за да дариш на Open Food Facts</string>
@@ -494,7 +494,7 @@
     <string name="incomplete_states">Incomplete States</string>
     <string name="complete_states">Complete States</string>
     <string name="contribution_tab">Приноси</string>
-    <string name="synthesis_tab">Synthesis</string>
+    <string name="synthesis_tab">Обобщение</string>
     <string name="txtDialogsTitle">Информация</string>
     <string name="offline_product_addition_title">Добави нов продукт</string>
     <string name="productNameNull">Неизвестно име</string>
@@ -574,7 +574,7 @@
     <string name="manufacturing_details">Manufacturing Details</string>
     <string name="origin_of_ingredients">Произход на съставките</string>
     <string name="manufacturing_place">Manufacturing place</string>
-    <string name="emb_code">EMB код</string>
+    <string name="emb_code">Код за проследимост</string>
     <string name="purchasing_details">Purchasing Details</string>
     <string name="country_where_purchased">Страна на покупка</string>
     <string name="stores">Магазини</string>
@@ -744,7 +744,7 @@
     <string name="content_exit">Press here to return to the product</string>
     <string name="icon_label">Labels icon</string>
     <string name="icon_categories">Categories icon</string>
-    <string name="icon_emb">Traceability code icon</string>
+    <string name="icon_emb">Икона на код за проследяване</string>
     <string name="product_front_image">Предна снимка на продукта</string>
     <string name="brand_hint">Примери: Кока-Кола, Нестле и т.н.</string>
     <string name="sign_in_or_register">Вход или регистрация</string>
