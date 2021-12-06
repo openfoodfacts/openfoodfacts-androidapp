@@ -31,19 +31,17 @@ class RobotoffRepository @Inject constructor(
     /**
      * Annotate the Robotoff insight response using insight id and annotation
      *
-     * @param insightId is the unique id for the insight
-     * @param annotation is the annotation to be used
      * @return The annotated insight response
      */
-    suspend fun annotateInsight(insightId: String, annotation: AnnotationAnswer): AnnotationResponse {
+    suspend fun annotateInsight(answer: AnnotationAnswer): AnnotationResponse {
         // if the user is logged in, send the auth, otherwise make it anonymous
         val user = context.getLoginPreferences().getString("user", "")?.trim { it <= ' ' } ?: ""
         val pass = context.getLoginPreferences().getString("pass", "")?.trim { it <= ' ' } ?: ""
 
         return if (user.isBlank() || pass.isBlank()) {
-            robotoffAPI.annotateInsight(insightId, annotation.result)
+            robotoffAPI.annotateInsight(answer.insightId, answer.value.result)
         } else {
-            robotoffAPI.annotateInsight(insightId, annotation.result, Credentials.basic(user, pass, Charsets.UTF_8))
+            robotoffAPI.annotateInsight(answer.insightId, answer.value.result, Credentials.basic(user, pass, Charsets.UTF_8))
         }
     }
 }
