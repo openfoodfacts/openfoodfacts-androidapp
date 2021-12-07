@@ -107,7 +107,7 @@ dependencies {
     implementation("org.greenrobot:greendao:${rootProject.extra["greendaoVersion"]}")
 
     // Event bus and index
-    val eventBusVersion = "3.2.0"
+    val eventBusVersion = "3.3.0"
     implementation("org.greenrobot:eventbus:$eventBusVersion")
     kapt("org.greenrobot:eventbus-annotation-processor:$eventBusVersion")
 
