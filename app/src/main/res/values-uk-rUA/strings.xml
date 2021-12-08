@@ -456,7 +456,7 @@
     <string name="country_string">Країна</string>
     <string name="store_subtitle">Магазин</string>
     <string name="packaging_subtitle">Упаковка</string>
-    <string name="state_subtitle">State</string>
+    <string name="state_subtitle">Стан</string>
     <string name="packaging_string">Упаковка</string>
     <string name="label_string">Мітка</string>
     <string name="category_string">Категорія</string>
@@ -559,7 +559,7 @@
     <string name="ingredients_list">Список інгредієнтів</string>
     <string name="ingredients_hint" tools:ignore="StringFormatInvalid">Keep the order, indicate the % when specified, separate with a comma or use -, use () for ingredients of an ingredient, surround allergens with _</string>
     <string name="extract_ingredients">Extract ingredients</string>
-    <string name="extracting_ingredients">Extracting ingredients</string>
+    <string name="extracting_ingredients">Компоненти, які були вибрані</string>
     <string name="looksGood">Looks Good</string>
     <string name="skip_ingredients">Too Bad \n Skip Ingredients</string>
     <string name="traces">Сліди</string>

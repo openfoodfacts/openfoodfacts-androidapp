@@ -107,7 +107,7 @@ dependencies {
     implementation("org.greenrobot:greendao:${rootProject.extra["greendaoVersion"]}")
 
     // Event bus and index
-    val eventBusVersion = "3.2.0"
+    val eventBusVersion = "3.3.0"
     implementation("org.greenrobot:eventbus:$eventBusVersion")
     kapt("org.greenrobot:eventbus-annotation-processor:$eventBusVersion")
 
@@ -168,8 +168,8 @@ dependencies {
     androidTestUtil("androidx.test:orchestrator:1.4.0")
 
     // Hilt for Android Testing
-    androidTestImplementation("com.google.dagger:hilt-android-testing:2.40.4")
-    kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.40.4")
+    androidTestImplementation("com.google.dagger:hilt-android-testing:2.40.5")
+    kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.40.5")
 
     androidTestImplementation("androidx.test:runner:1.3.0") { exclude("junit") }
     androidTestImplementation("androidx.test:rules:1.4.0")

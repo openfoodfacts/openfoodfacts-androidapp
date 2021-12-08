@@ -52,7 +52,7 @@ jobs:
         # To add labels for created pull request
         pull_request_labels: "translations"
         # Create pull request to specified branch instead of default one
-        # pull_request_base_branch_name: # optional
+        pull_request_base_branch_name: develop
         # Option to upload or download files to the specified version branch in your Crowdin project
         # crowdin_branch_name: # optional
         # Option to specify a path to user-specific credentials, without / at the beginning
