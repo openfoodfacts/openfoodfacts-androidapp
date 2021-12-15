@@ -44,7 +44,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion")
 
     // Android KTX
-    implementation("androidx.fragment:fragment-ktx:1.3.6")
+    implementation("androidx.fragment:fragment-ktx:1.4.0")
     implementation("androidx.activity:activity-ktx:1.3.1")
     implementation("androidx.preference:preference-ktx:1.1.1")
     implementation("androidx.core:core-ktx:1.6.0")
