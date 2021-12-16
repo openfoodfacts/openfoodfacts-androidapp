@@ -213,6 +213,7 @@ GEM
       xcpretty (~> 0.2, >= 0.0.7)
 
 PLATFORMS
+  universal-darwin-19
   universal-darwin-20
   universal-darwin-21
   x64-mingw32
@@ -228,4 +229,4 @@ DEPENDENCIES
   versionomy
 
 BUNDLED WITH
-   2.2.24
+   2.2.33
