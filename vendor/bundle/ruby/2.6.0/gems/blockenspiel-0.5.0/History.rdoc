@@ -1,0 +1,140 @@
+=== 0.5.0 / 2016-01-07
+
+* Fixed an issue with the proxy strategy, where if a block spawns blocks that live longer than it, the sub-blocks lost their context.
+* Changed the default strategy to proxy due to semantic issues with mixin and difficulty supporting it.
+* Dropped support for the mixin strategy on MRI because Ruby 2.3.0 broke it and I don't have the bandwidth to find a remedy.
+* Updated the Rakefile, tests, and general infrastructure to play better with modern Rubies.
+* Dropped support for Ruby 1.8, because who still uses 1.8???
+
+=== 0.4.6 / (never actually released)
+
+* Compatibility with the signature change to reset_method_cache in recent builds of Rubinius 2.0.
+* The gemspec no longer includes the timestamp in the version, so that bundler can pull from github. (Reported by corneverbruggen)
+* The Rakefile is now compatible with Ruby 2.0 and RubyGems 2.0.
+
+=== 0.4.5 / 2012-06-27
+
+* The 0.4.4 build was missing the JRuby unmixer. Fixed.
+
+=== 0.4.4 / 2012-06-27
+
+* Under JRuby 1.9 mode, if two threads mixed into the same object, the calls sometimes went to the wrong place. Fixed.
+* The VERSION constant behaved very oddly under Rubinius 1.9 mode. Fixed.
+* Eliminate some warnings.
+* Integrate with Travis CI.
+
+=== 0.4.3 / 2011-06-22
+
+* MRI C extension experienced a compile error under the current MRI head (e.g. 1.9.3). Fixed.
+* Rake-based build of the MRI C extension failed under newer rakes. Fixed.
+* Eliminated some Rakefile deprecation warnings under newer rakes.
+
+=== 0.4.2 / 2011-06-02
+
+* Fixed an unmixer compatibility issue with Rubinius > 1.2.x. (Thanks to @meh for the fix.)
+* Recent versions of Rubinius raised exceptions involving Fiber. Fixed.
+* Workaround for a JRuby NullPointerException (JRUBY-5842).
+* Integrated JRuby platform gem back into main gem.
+* A .gemspec file is now available for gem building and bundler git integration.
+* Some cleanup of the Rakefile and tests.
+
+=== 0.4.1 / 2010-06-23
+
+* Support for rubinius 1.0.
+
+=== 0.4.0 / 2010-06-21
+
+* Implemented string- and file-based DSLs (in addition to block-based).
+* Correctly handle separate active DSLs in different fibers within the
+  same thread, when fibers are avaialble.
+* Updated ruby runtime dependencies to reflect what I'm actually testing.
+* Organized the source a little better, and fixed some Rakefile quirks.
+
+=== 0.3.3 / 2010-05-24
+
+* Some Rakefile fixes to match RDoc and Ruby 1.9 changes.
+* Minor documentation updates.
+
+=== 0.3.2 / 2009-11-17
+
+* Modules included in a DSL-ized class now have their methods included in
+  the DSL.
+* Raise a more informative error (for now) when trying to include
+  Blockenspiel::DSL in a module. At some point, we'll support this usage,
+  once I figure out the right semantics for it.
+
+=== 0.3.1 / 2009-11-08
+
+* Blockenspiel#invoke can now take its options hash as the second argument
+  (instead of the third) when using dynamic target generation, since the
+  second argument is otherwise unused in this case.
+* Now defines Blockenspiel::VERSION, as a versionomy object if the
+  versionomy library is available, or as a version string if not.
+
+=== 0.3.0 / 2009-11-04
+
+* dsl_attr_writer and dsl_attr_accessor convenience methods are available
+  for creating DSL-friendly attributes.
+* Dynamic DSL methods can now take real block arguments, if supported by
+  the Ruby interpreter.
+* Shortened README.rdoc and renamed the longer version to Blockenspiel.rdoc.
+* Some documentation updates.
+
+=== 0.2.2 / 2009-10-28
+
+* Support for gemcutter hosting in the build/release scripts.
+* Some clarifications to constant scopes internal in the code.
+* A few documentation updates.
+* Minor changes to the Implementing DSL Blocks paper to deal with
+  Why's disappearance.
+
+=== 0.2.1 / 2009-04-16
+
+* Now compatible with Ruby 1.9.
+* Now compatible with JRuby 1.2.
+* No longer requires the mixology gem.
+* Building no longer requires hoe.
+
+=== 0.2.0 / 2009-04-15
+
+* Earlier build of 0.2.1 that had some problems with JRuby.
+
+=== 0.1.1 / 2008-11-06
+
+* Added ability to pass the block as the first parameter in
+  the dynamic DSL builder API; cleaned up the API a little
+* Minor fixes to Implementing DSL Blocks paper
+* Some updates to rdocs
+* More test coverage
+
+=== 0.1.0 / 2008-10-29
+
+* Alpha release, opened for public feedback
+* Tightened constraints on block parameters
+* Added some test cases for threads and parameter constraints
+* Revisions to the Implementing DSL Blocks paper
+
+=== 0.0.4 / 2008-10-24
+
+* Improvements to the logic for choosing behaviors
+* Added exception classes and provided better error handling
+* Actually added the behavior test case to the gem manifest...
+* Documentation revisions
+* Revisions to the Implementing DSL Blocks paper
+
+=== 0.0.3 / 2008-10-23
+
+* Added :proxy behavior for parameterless blocks
+* Removed option to turn off inheriting, since the semantics are somewhat
+  ill-defined and inconsistent. All parameterless blocks now exhibit the
+  inheriting behavior.
+* Added tests for the different behavior settings.
+
+=== 0.0.2 / 2008-10-21
+
+* Cleaned up some of the documentation
+* Revisions to the Implementing DSL Blocks paper
+
+=== 0.0.1 / 2008-10-20
+
+* Initial test release

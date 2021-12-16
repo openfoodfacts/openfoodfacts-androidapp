@@ -1,0 +1,55 @@
+name: CI
+on:
+  pull_request:
+    branches:
+      - master
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+jobs:
+  CI:
+    if: ${{ github.repository == 'googleapis/google-auth-library-ruby' }}
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-latest
+            ruby: "2.5"
+            task: test , spec
+          - os: ubuntu-latest
+            ruby: "2.6"
+            task: test , spec
+          - os: ubuntu-latest
+            ruby: "2.7"
+            task: test , spec
+          - os: ubuntu-latest
+            ruby: "3.0"
+            task: test , spec
+          - os: macos-latest
+            ruby: "2.7"
+            task: test , spec
+          - os: windows-latest
+            ruby: "2.7"
+            task: test , spec
+          - os: ubuntu-latest
+            ruby: "2.7"
+            task: rubocop , integration , build , yardoc , linkinator
+      fail-fast: false
+    runs-on: ${{ matrix.os }}
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v2
+    - name: Install Ruby ${{ matrix.ruby }}
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: "${{ matrix.ruby }}"
+    - name: Install NodeJS 14.x
+      uses: actions/setup-node@v2
+      with:
+        node-version: "14.x"
+    - name: Install dependencies
+      shell: bash
+      run: "gem install --no-document toys && bundle install"
+    - name: Test ${{ matrix.task }}
+      shell: bash
+      run: toys do ${{ matrix.task }} < /dev/null

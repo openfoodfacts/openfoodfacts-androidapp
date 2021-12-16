@@ -1,0 +1,139 @@
+== Blockenspiel
+
+Blockenspiel is a helper library designed to make it easy to implement DSL
+blocks. It is designed to be comprehensive and robust, supporting most common
+usage patterns, and working correctly in the presence of nested blocks and
+multithreading.
+
+=== Summary
+
+Blockenspiel is a helper library providing several different strategies for
+implementing DSL blocks. It supports both DSLs that take a block parameter
+and those that do not. For example:
+
+ # Call DSL block with parameter
+ configure_me do |config|
+   config.add_foo(1)
+   config.add_bar(2)
+ end
+
+ # Call DSL block without parameter
+ configure_me do
+   add_foo(3)
+   add_bar(4)
+ end
+
+To support the above usage, you can do this:
+
+ # Implement DSL block methods
+ class ConfigMethods
+   include Blockenspiel::DSL
+   def add_foo(value)
+     # do something
+   end
+   def add_bar(value)
+     # do something
+   end
+ end
+
+ # Implement configure_me method
+ def configure_me(&block)
+   Blockenspiel.invoke(block, ConfigMethods.new)
+ end
+
+By default, Blockenspiel uses a "delegation" technique (to my knowledge first
+proposed by Dan Manges) to support parameterless blocks while mitigating some
+of the issues with <tt>instance_eval</tt>. It supports nested blocks and
+multithreaded access, and provides a variety of tools for handling the
+typical issues you may encounter when writing DSLs. On some ruby platforms,
+Blockenspiel also supports a mixin technique (proposed by Why The Lucky Stiff).
+
+For more detailed usage and examples, see
+{Blockenspiel.rdoc}[link:Blockenspiel\_rdoc.html].
+
+For an extended analysis of different ways to implement DSL blocks, see
+{ImplementingDSLblocks.rdoc}[link:ImplementingDSLblocks\_rdoc.html].
+
+=== Requirements
+
+* Ruby 1.9.3 or later, JRuby 1.5 or later, or Rubinius 1.0 or later.
+
+=== Installation
+
+ gem install blockenspiel
+
+=== Known issues and to-do items
+
+* Implementing wildcard DSL methods using <tt>method_missing</tt> doesn't
+  work. I haven't yet decided on the right semantics for this case, or
+  whether it is even a reasonable feature at all.
+* Including Blockenspiel::DSL in a module (rather than a class) is not
+  supported, but this could appear in a future release.
+* Find a way to implement mixin behavior reliably on MRI.
+
+=== Development and support
+
+Documentation is available at http://dazuma.github.com/blockenspiel/rdoc
+
+Source code is hosted on Github at http://github.com/dazuma/blockenspiel
+
+Contributions are welcome. Fork the project on Github.
+
+Build status: {<img src="https://secure.travis-ci.org/dazuma/blockenspiel.png" />}[http://travis-ci.org/dazuma/blockenspiel]
+
+Report bugs on Github issues at http://github.org/dazuma/blockenspiel/issues
+
+Contact the author at dazuma at gmail dot com.
+
+=== Author / Credits
+
+Blockenspiel is written by Daniel Azuma (http://www.daniel-azuma.com/).
+
+The mixin implementation is based on a concept by the late Why The Lucky
+Stiff, documented in his 6 October 2008 blog posting entitled "Mixing Our
+Way Out Of Instance Eval?". The original link has disappeared along with
+its author, but you may find copies or mirrors out there.
+
+The unmixer code is based on {Mixology}[http://rubyforge.org/projects/mixology],
+version by Patrick Farley, anonymous z, Dan Manges, and Clint Bishop.
+The JRuby code is adapted from Mixology 0.1, and has been stripped down and
+modified to support JRuby >= 1.2. The Rubinius code was adapted from unreleased
+code in the Mixology source tree and modified to support Rubinius 1.0. I know
+Mixology 0.2 is now available, but its Rubinius support is not active, and I'd
+rather keep the unmixer bundled with Blockenspiel for now to reduce
+dependencies. Earlier versions of Blockenspiel also included a C extension,
+adapted from Mixology, to support mixins for MRI, but this code has been
+disabled due to issues with newer versions of Ruby.
+
+The dsl_attr_writer and dsl_attr_accessor feature came from a suggestion by
+Luis Lavena.
+
+=== License
+
+Copyright 2008 Daniel Azuma.
+
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+* Redistributions of source code must retain the above copyright notice,
+  this list of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the above copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of the copyright holder, nor the names of any other
+  contributors to this software, may be used to endorse or promote products
+  derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+POSSIBILITY OF SUCH DAMAGE.

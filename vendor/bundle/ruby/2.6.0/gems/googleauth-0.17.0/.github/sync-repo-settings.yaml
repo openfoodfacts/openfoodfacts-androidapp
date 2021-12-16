@@ -1,0 +1,18 @@
+rebaseMergeAllowed: true
+squashMergeAllowed: true
+mergeCommitAllowed: false
+branchProtectionRules:
+- pattern: master
+  isAdminEnforced: false
+  requiredStatusCheckContexts:
+    - 'cla/google'
+  requiredApprovingReviewCount: 1
+  requiresCodeOwnerReviews: true
+  requiresStrictStatusChecks: true
+permissionRules:
+  - team: yoshi-admins
+    permission: admin
+  - team: yoshi-ruby-admins
+    permission: admin
+  - team: yoshi-ruby
+    permission: push

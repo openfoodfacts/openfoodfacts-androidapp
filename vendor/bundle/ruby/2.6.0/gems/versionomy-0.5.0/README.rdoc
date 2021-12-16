@@ -1,0 +1,175 @@
+== Versionomy
+
+Versionomy is a generalized version number library.
+It provides tools to represent, manipulate, parse, and compare version
+numbers in the wide variety of versioning schemes in use.
+
+This document summarizes the features of Versionomy with a quick synopsis
+and feature list. For more detailed usage information and examples, see
+{Versionomy.rdoc}[link:Versionomy\_rdoc.html].
+
+=== Some examples
+
+ require 'versionomy'
+
+ # Create version numbers that understand their own semantics
+ v1 = Versionomy.create(:major => 1, :minor => 3, :tiny => 2)
+ v1.major                                 # => 1
+ v1.minor                                 # => 3
+ v1.tiny                                  # => 2
+ v1.release_type                          # => :final
+ v1.patchlevel                            # => 0
+
+ # Parse version numbers, including common prerelease syntax
+ v2 = Versionomy.parse('1.4a3')
+ v2.major                                 # => 1
+ v2.minor                                 # => 4
+ v2.tiny                                  # => 0
+ v2.release_type                          # => :alpha
+ v2.alpha_version                         # => 3
+ v2 > v1                                  # => true
+ v2.to_s                                  # => '1.4a3'
+
+ # Version numbers are semantically self-adjusting.
+ v3 = Versionomy.parse('1.4.0b2')
+ v3.major                                 # => 1
+ v3.minor                                 # => 4
+ v3.tiny                                  # => 0
+ v3.release_type                          # => :beta
+ v3.alpha_version                         # raises NoMethodError
+ v3.beta_version                          # => 2
+ v3 > v2                                  # => true
+ v3.to_s                                  # => '1.4.0b2'
+
+ # You can bump any field
+ v4 = Versionomy.parse('1.4.0b2').bump(:beta_version)
+ v4.to_s                                  # => '1.4.0b3'
+ v5 = v4.bump(:tiny)
+ v5.to_s                                  # => '1.4.1'
+
+ # Bumping the release type works as you would expect
+ v6 = Versionomy.parse('1.4.0b2').bump(:release_type)
+ v6.release_type                          # => :release_candidate
+ v6.to_s                                  # => '1.4.0rc1'
+ v7 = v6.bump(:release_type)
+ v7.release_type                          # => :final
+ v7.to_s                                  # => '1.4.0'
+
+ # If a version has trailing zeros, it remembers how many fields to
+ # unparse; however, you can also change this.
+ v8 = Versionomy.parse('1.4.0b2').bump(:major)
+ v8.to_s                                  # => '2.0.0'
+ v8.unparse(:optional_fields => [:tiny])  # => '2.0'
+ v8.unparse(:required_fields => [:tiny2]) # => '2.0.0.0'
+
+ # Comparisons are semantic, so will behave as expected even if the
+ # formatting is set up differently.
+ v9 = Versionomy.parse('2.0.0.0')
+ v9.to_s                                  # => '2.0.0.0'
+ v9 == Versionomy.parse('2')              # => true
+
+ # Patchlevels are supported when the release type is :final
+ v10 = Versionomy.parse('2.0.0').bump(:patchlevel)
+ v10.patchlevel                           # => 1
+ v10.to_s                                 # => '2.0.0-1'
+ v11 = Versionomy.parse('2.0p1')
+ v11.patchlevel                           # => 1
+ v11.to_s                                 # => '2.0p1'
+ v11 == v10                               # => true
+
+ # You can create your own format from scratch or by modifying an
+ # existing format
+ microsoft_format = Versionomy.default_format.modified_copy do
+   field(:minor) do
+     recognize_number(:default_value_optional => true,
+                      :delimiter_regexp => '\s?sp',
+                      :default_delimiter => ' SP')
+   end
+ end
+ v12 = microsoft_format.parse('2008 SP2')
+ v12.major                                # => 2008
+ v12.minor                                # => 2
+ v12.tiny                                 # => 0
+ v12.to_s                                 # => '2008 SP2'
+ v12 == Versionomy.parse('2008.2')        # => true
+
+=== Feature list
+
+Versionomy's default versioning scheme handles four primary fields (labeled
++major+, +minor+, +tiny+, and +tiny2+). It also supports prerelease versions
+such as preview, development, alpha, beta, and release candidate. Finally,
+it supports patchlevel numbers for released versions.
+
+Versionomy can compare any two version numbers with compatible structure,
+and "bump" versions at any level. It supports parsing and unparsing in most
+commonly-used formats, and allows you to extend the parsing to include
+custom formats.
+
+Finally, Versionomy also lets you to create alternate versioning "schemas".
+You can define any number of version number fields, and provide your own
+semantics for comparing, parsing, and modifying version numbers. You can
+provide conversions from one schema to another. As an example, Versionomy
+provides a schema and formatter/parser matching Gem::Version.
+
+=== Requirements
+
+* Ruby 1.9.3 or later, JRuby 1.5 or later, or Rubinius 1.0 or later.
+* blockenspiel 0.5.0 or later.
+
+=== Installation
+
+ gem install versionomy
+
+=== Known issues and limitations
+
+* Test coverage is still a little skimpy. It is focused on the "standard"
+  version number format and schema, but doesn't fully exercise all the
+  capabilities of custom formats.
+
+=== Development and support
+
+Documentation is available at http://dazuma.github.com/versionomy/rdoc
+
+Source code is hosted on Github at http://github.com/dazuma/versionomy
+
+Contributions are welcome. Fork the project on Github.
+
+Build status: {<img src="https://secure.travis-ci.org/dazuma/versionomy.png" />}[http://travis-ci.org/dazuma/versionomy]
+
+Report bugs on Github issues at http://github.org/dazuma/versionomy/issues
+
+Contact the author at dazuma at gmail dot com.
+
+=== Author / Credits
+
+Versionomy is written by Daniel Azuma (http://www.daniel-azuma.com/).
+
+== LICENSE:
+
+Copyright 2008 Daniel Azuma.
+
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+* Redistributions of source code must retain the above copyright notice,
+  this list of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the above copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of the copyright holder, nor the names of any other
+  contributors to this software, may be used to endorse or promote products
+  derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+POSSIBILITY OF SUCH DAMAGE.

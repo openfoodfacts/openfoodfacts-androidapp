@@ -1,0 +1,128 @@
+=== 0.5.0 / 2016-01-07
+
+* The gemspec no longer includes the timestamp in the version, so that bundler can pull from github. (Reported by corneverbruggen)
+* Updated the Rakefile, tests, and general infrastructure to play better with modern Rubies.
+* Dropped support for Ruby 1.8, because who still uses 1.8???
+
+=== 0.4.4 / 2012-06-27
+
+* Tried to be a little more robust against incomplete psych installations.
+* Travis CI integration.
+
+=== 0.4.3 / 2012-03-27
+
+* Fixed a few warnings.
+
+=== 0.4.2 / 2012-02-17
+
+* Support psych interface for YAML serialization.
+
+=== 0.4.1 / 2011-04-26
+
+* Support underscore "_" as a delimiter.
+* A .gemspec file is now available for gem building and bundler git integration.
+* Some cleanup of the Rakefile and tests.
+
+=== 0.4.0 / 2010-05-24
+
+* Included Semantic Version (http://semver.org/) format called "semver".
+* Parsing conversions can now prescreen or premodify the original format value.
+* Conversion algorithm tries to convert through the standard format if a direct conversion isn't found. For example, there is currently no direct conversion between semver and rubygems formats, but the converter can nevertheless convert the two because both can convert to and from standard.
+* Expanded the module version detection to include VERSION submodules.
+* Some Rakefile fixes to match RDoc and Ruby 1.9 changes.
+
+=== 0.3.0 / 2009-11-30
+
+* Alpha release, opened for public feedback
+* Autoloading of format definitions using a load path.
+* Format and conversion registry/lookup is now thread-safe.
+* Implemented resetting a particular field in the value.
+* Implemented aliases for field names.
+* Changed the canonical YAML tag to its permanent value. The old one will continue to be recognized, but only the permanent one will be written from now on.
+* Documentation updates
+
+=== 0.2.5 / 2009-11-24
+
+* Preserve minimum width of a field, if the field has leading zeros. For example, "2.01".
+
+=== 0.2.4 / 2009-11-19
+
+* Fixed a regression introduced in 0.2.2 where "1.0a" was being recognized as an alpha version rather than a patchlevel of 1, and similar for "1.0b" and "1.0d".
+
+=== 0.2.3 / 2009-11-19
+
+* Recognize "_" and "u" as patchlevel delimiters, to support Sun's Java version numbers (e.g. "1.6.0_17", "6u17").
+* Recognize "v" prefix found on some version numbers (e.g. "v1.2")
+
+=== 0.2.2 / 2009-11-18
+
+* Standard format now supports certain kinds of prereleases without a prerelease number. e.g. "1.9.2dev" is interpreted as the same number as "1.9.2dev0".
+* Added Versionomy#ruby_version.
+* A field can specify a default_value for parsing, distinct from the one specified by the schema.
+* A field can specify requires_next_field to control whether the following field is required or optional.
+
+=== 0.2.1 / 2009-11-08
+
+* Added Versionomy#version_of.
+* Now lets Blockenspiel set its own VERSION instead of reaching into Blockenspiel's namespace.
+
+=== 0.2.0 / 2009-11-05
+
+* API CHANGE: Slight change to value comparison semantics. Value#eql? returns true only if the schemas are the same, whereas Value#== and the greater than and less than comparisons attempt to compare the semantic value, and thus may perform automatic schema conversion on the RHS.
+* API CHANGE: Merged Formats namespace into Format. Versionomy::Formats is now a (deprecated) alias for Versionomy::Format.
+* API CHANGE: The delimiter parsing algorithm now defaults :extra_characters to :error instead of :ignore.
+* Added a mechanism for converting from one format/schema to another.
+* Added Rubygems format, along with conversions to and from the standard format.
+* Values now include Comparable.
+* Values can now be serialized using Marshal and YAML.
+* Schemas can now add custom methods to value objects. Added "prerelease?" and "release" methods to rubygems and standard format values.
+* Added default field settings to schema DSL.
+* Implemented #=== for schemas and formats.
+* Many minor bug fixes and documentation updates.
+
+=== 0.1.3 / 2009-10-29
+
+* Fixed an issue with parsing the "-p" patchlevel delimiter, e.g. "1.9.1-p243". (Reported by Luis Lavena.)
+
+=== 0.1.2 / 2009-10-28
+
+* You can now specify fields by index in methods of Versionomy::Value.
+* Minor rakefile and documentation updates.
+
+=== 0.1.1 / 2009-10-19
+
+* Formats can now be specified by name in the convenience interface.
+* FormatRedefinedError no longer subclasses FormatCreationError.
+* Some documentation updates.
+* Rakefile updates for publishing to rubyforge and gemcutter.
+
+=== 0.1.0 / 2009-10-14
+
+* General rearchitecture. Better distinction between format and schema. Schema split into schema and field objects so the API makes more sense. Values are tighter and easier to use. Formats can now be built using a DSL. A bunch of API changes and bug fixes accompanied this-- too many to list.
+* In the standard schema, renamed release type "release" to "final". Also renamed release type "prerelease" to "preview", now sorted between "release candidate" and "final".
+* Documentation is much more complete.
+* Now tested and confirmed compatible with Matz Ruby 1.9.1 and JRuby 1.4.
+* Now uses blockenspiel 0.2; thus longer requires the mixology gem.
+* Building no longer requires hoe.
+
+=== 0.0.4 / 2008-10-24
+
+* Fixed incompatibility with Blockenspiel 0.0.4
+* Fixed a number of issues with remembering value parse settings
+* Parser recognizes additional release type formats
+* Values have a parse method to parse another string in the same form
+* Implemented comparison between value and string
+* Exceptions correctly raised on comparison between incompatible types
+
+=== 0.0.3 / 2008-10-21
+
+* Fixed string representations (inspect method)
+* Fixed up equality and hash computation for version values
+
+=== 0.0.2 / 2008-10-20
+
+* Fixed manifest
+
+=== 0.0.1 / 2008-10-20
+
+* Initial test release

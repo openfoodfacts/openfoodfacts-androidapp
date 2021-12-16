@@ -1,0 +1,349 @@
+== Versionomy
+
+Versionomy is a generalized version number library.
+It provides tools to represent, manipulate, parse, and compare version
+numbers in the wide variety of versioning schemes in use.
+
+This document provides a step-by-step introduction to most of the features
+of Versionomy.
+
+=== Version numbers done right?
+
+Let's be honest. Version numbers are not easy to deal with, and very
+seldom seem to be done right.
+
+Imagine the common case of testing the Ruby version. Most of us, if we
+need to worry about Ruby VM compatibility, will do something like:
+
+ do_something if RUBY_VERSION >= "1.8.7"
+
+Treating the version number as a string works well enough, until it
+doesn't. The above code will do the right thing for Ruby 1.8.6, 1.8.7,
+1.8.8, and 1.9.1. But it will fail if the version is "1.8.10" or "1.10".
+And properly interpreting "prerelease" version syntax such as
+"1.9.2-preview1"? Forget it.
+
+There are a few version number classes out there that do better than
+treating version numbers as plain strings. One example is Gem::Version,
+part of the RubyGems package. This class separates the version into fields
+and lets you manipulate and compare version numbers more robustly. It even
+provides limited support for "prerelease" versions through using string-
+valued fields-- although it's a hack, and a bit of a clumsy one at that. A
+prerelease version has to be represented like this: "1.9.2.b.1" or
+"1.9.2.preview.2". Wouldn't it be nice to be able to parse more typical
+version number formats such as "1.9.2b1" and "1.9.2-preview2"? Wouldn't
+it be nice for a version like "1.9.2b1" to _understand_ that it's a "beta"
+version and behave accordingly?
+
+With Versionomy, you can do all this and more. Here's how...
+
+=== Creating version numbers
+
+Creating a version number object in Versionomy is as simple as passing a
+string to a factory. Versionomy understands a wide range of version number
+formats out of the box.
+
+ v1 = Versionomy.parse('1.2')             # Simple version numbers
+ v2 = Versionomy.parse('2.1.5.0')         # Up to four fields supported
+ v3 = Versionomy.parse('1.9b3')           # Alpha and beta versions
+ v4 = Versionomy.parse('1.9rc2')          # Release candidates too
+ v5 = Versionomy.parse('1.9.2-preview2')  # Preview releases
+ v6 = Versionomy.parse('1.9.2-p6')        # Patchlevels
+ v7 = Versionomy.parse('v2.0 beta 6.1')   # Many alternative syntaxes
+
+You can also construct version numbers manually by passing a hash of field
+values. See the next section for a discussion of fields.
+
+ v1 = Versionomy.create(:major => 1, :minor => 2)    # creates version "1.2"
+ v2 = Versionomy.create(:major => 1, :minor => 9,
+        :release_type => :beta, :beta_version => 3)  # creates version "1.9b3"
+
+The current ruby virtual machine version can be obtained using:
+
+ v1 = Versionomy.ruby_version
+
+Many other libraries include their version as a string constant in their
+main namespace module. Versionomy provides a quick facility to attempt to
+extract the version of a library:
+
+ require 'nokogiri'
+ v1 = Versionomy.version_of(Nokogiri)
+
+=== Version number fields
+
+A version number is a collection of fields in a particular order. Standard
+version numbers have the following fields:
+
+* :major
+* :minor
+* :tiny
+* :tiny2
+* :release_type
+
+The first four fields correspond to the four numeric fields of the version
+number. E.g. version numbers have the form "major.minor.tiny.tiny2".
+Trailing fields that have a zero value may be omitted from a string
+representation, but are still present in the Versionomy::Value object.
+
+The fifth field is special. Its value is one of the following symbols:
+
+* :development
+* :alpha
+* :beta
+* :release_candidate
+* :preview
+* :final
+
+The value of the :release_type field determines which other fields are
+available in the version number. If the :release_type is :development, then
+the two fields :development_version and :development_minor are available.
+Similarly, if :release_type is :alpha, then the two fields :alpha_version
+and :alpha_minor are available, and so on. If :release_type is :final, that
+exposes the two fields :patchlevel and :patchlevel_minor.
+
+You can query a field value simply by calling a method on the value:
+
+ v1 = Versionomy.parse('1.2b3')
+ v1.major                        # => 1
+ v1.minor                        # => 2
+ v1.tiny                         # => 0
+ v1.tiny2                        # => 0
+ v1.release_type                 # => :beta
+ v1.beta_version                 # => 3
+ v1.beta_minor                   # => 0
+ v1.release_candidate_version    # raises NoMethodError
+
+The above fields are merely the standard fields that Versionomy provides
+out of the box. Versionomy also provides advanced users the ability to
+define new version "schemas" with any number of different fields and
+different semantics. See the RDocs for Versionomy::Schema for more
+information.
+
+=== Version number calculations
+
+Version numbers can be compared (and thus sorted). Versionomy knows how to
+handle prerelease versions and patchlevels correctly. It also compares the
+semantic value so even if versions use an alternate syntax, they will be
+compared correctly. Each of these expressions evaluates to true:
+
+ Versionomy.parse('1.2') < Versionomy.parse('1.10')
+ Versionomy.parse('1.2') > Versionomy.parse('1.2b3')
+ Versionomy.parse('1.2b3') > Versionomy.parse('1.2a4')
+ Versionomy.parse('1.2') < Versionomy.parse('1.2-p1')
+ Versionomy.parse('1.2') == Versionomy.parse('1.2-p0')
+ Versionomy.parse('1.2b3') == Versionomy.parse('1.2.0-beta3')
+
+Versionomy automatically converts (parses) strings when comparing with a
+version number, so you could even evaluate these:
+
+ Versionomy.parse('1.2') < '1.10'
+ Versionomy::VERSION > '0.2'
+
+The Versionomy API provides various methods for manipulating fields such as
+bumping, resetting to default, and changing to an arbitrary value. Version
+numbers are always immutable, so changing a version number always produces
+a copy. Below are a few examples. See the RDocs for the class
+Versionomy::Value for more details.
+
+ v_orig = Versionomy.parse('1.2b3')
+ v1 = v_orig.change(:beta_version => 4)  # creates version "1.2b4"
+ v2 = v_orig.change(:tiny => 4)          # creates version "1.2.4b3"
+ v3 = v_orig.bump(:minor)                # creates version "1.3"
+ v4 = v_orig.bump(:release_type)         # creates version "1.2rc1"
+ v5 = v_orig.reset(:minor)               # creates version "1.0"
+
+A few more common calculations are also provided:
+
+ v_orig = Versionomy.parse('1.2b3')
+ v_orig.prerelease?                  # => true
+ v6 = v_orig.release                 # creates version "1.2"
+
+=== Parsing and unparsing
+
+Versionomy's parsing and unparsing services appear simple from the outside,
+but a closer look reveals some sophisticated features. Parsing is as simple
+as passing a string to Versionomy#parse, and unparsing is as simple as
+calling Versionomy::Value#unparse or Versionomy::Value#to_s.
+
+ v = Versionomy.parse('1.2b3')  # Create a Versionomy::Value
+ v.unparse                      # => "1.2b3"
+
+Versionomy does its best to preserve the original syntax when parsing a
+version string, so that syntax can be used when unparsing.
+
+ v1 = Versionomy.parse('1.2b3')
+ v2 = Versionomy.parse('1.2.0-beta3')
+ v1 == b2                              # => true
+ v1.unparse                            # => "1.2b3"
+ v2.unparse                            # => "1.2.0-beta3"
+
+Versionomy even preserves the original syntax when changing a value:
+
+ v1 = Versionomy.parse('1.2b3')
+ v2 = Versionomy.parse('1.2.0.0b3')
+ v1 == v2                            # => true
+ v1r = v1.release
+ v2r = v2.release
+ v1r == v2r                          # => true
+ v1r.unparse                         # => "1.2"
+ v2r.unparse                         # => "1.2.0.0"
+
+You can change the settings manually when unparsing a value.
+
+ v1 = Versionomy.parse('1.2b3')
+ v1.unparse                                # => "1.2b3"
+ v1.unparse(:required_fields => :tiny)     # => "1.2.0b3"
+ v1.unparse(:release_type_delim => '-',
+            :release_type_style => :long)  # => "1.2-beta3"
+
+Versionomy also supports serialization using Marshal and YAML.
+
+ require 'yaml'
+ v1 = Versionomy.parse('1.2b3')
+ v1.unparse                      # => "1.2b3"
+ str = v1.to_yaml
+ v2 = YAML.load(str)
+ v2.unparse                      # => "1.2b3"
+
+=== Customized formats
+
+Although the standard parser used by Versionomy is likely sufficient for
+most common syntaxes, Versionomy also lets you customize the parser for an
+unusual syntax. Here is an example of a customized formatter for version
+numbers used by a certain large software company:
+
+ year_sp_format = Versionomy.default_format.modified_copy do
+   field(:minor) do
+     recognize_number(:default_value_optional => true,
+                      :delimiter_regexp => '\s?sp',
+                      :default_delimiter => ' SP')
+   end
+ end
+ v1 = year_sp_format.parse('2008 SP2')
+ v1.major                               # => 2008
+ v1.minor                               # => 2
+ v1.unparse                             # => "2008 SP2"
+ v1 == "2008.2"                         # => true
+ v2 = v1.bump(:minor)
+ v2.unparse                             # => "2008 SP3"
+
+The above example uses a powerful DSL provided by Versionomy to create a
+specialized parser. In most cases, this DSL will be powerful enough to
+handle your parsing needs; in fact Versionomy's entire standard parser is
+written using the DSL. However, in case you need to parse very unusual
+syntax, you can also write an arbitrary parser. See the RDocs for the
+Versionomy::Format::Delimiter class for more information on the DSL. See
+the RDocs for the Versionomy::Format::Base class for information on the
+interface you need to implement to write an arbitrary parser.
+
+If you create a format, you can register it with Versionomy and provide a
+name for it. This will allow you to reference it easily, as well as allow
+Versionomy to serialize versions created with your custom format. See the
+RDocs for the Versionomy::Format module for more information.
+
+ Versionomy::Format.register("bigcompany.versionformat", year_sp_format)
+ v1 = Versionomy.parse("2009 SP1", "bigcompany.versionformat")
+
+Note that versions in the year_sp_format example can be compared with
+versions using the standard parser. This is because the versions actually
+share the same schema-- that is, they have the same fields. We have merely
+changed the parser.
+
+Recall that it is also possible to change the schema (the fields). This is
+also done via a DSL (see the Versionomy::Schema module and its contents).
+Version numbers with different schemas cannot normally be compared, because
+they have different fields and different semantics. You can, however,
+define ways to convert version numbers from one schema to another. See the
+Versionomy::Conversion module and its contents for details.
+
+Versionomy provides an example of a custom schema with its own custom
+format, designed to mimic the Rubygems version class. This can be accessed
+using the format registered under the name "rubygems". Conversion functions
+are also provided between the rubygems and standard schemas.
+
+ v1 = Versionomy.parse("1.2b3")               # Standard schema/format
+ v2 = Versionomy.parse("1.2.b.4", :rubygems)  # Rubygems schema/format
+ v2.field0                                    # => 1
+                                              #   (Rubygems fields have different names)
+ v1a = v1.convert(:rubygems)                  # creates rubygems version "1.2.b.3"
+ v2a = v2.convert(:standard)                  # creates standard version "1.2b4"
+ v1 < v2                                      # => true
+                                              #   (Schemas are different but Versionomy
+                                              #   autoconverts if possible)
+ v2 < v1                                      # => false
+ v3 = Versionomy.parse("1.2.foo", :rubygems)  # rubygems schema/format
+ v3a = v3.convert(:standard)                  # raises Versionomy::Errors::ConversionError
+                                              #   (Value not convertable to standard)
+ v1 < v3                                      # raises Versionomy::Errors::SchemaMismatchError
+                                              #   (Autoconversion failed)
+ v3 > v1                                      # => true
+                                              #   (Autoconversion is attempted only on the
+                                              #   the second value, and this one succeeds.)
+
+The APIs for defining schemas, formats, and conversions are rather complex.
+I recommend looking through the examples in the modules
+Versionomy::Format::Standard, Versionomy::Format::Rubygems, and
+Versionomy::Conversion::Rubygems for further information.
+
+=== Requirements
+
+* Ruby 1.9.3 or later, JRuby 1.5 or later, or Rubinius 1.0 or later.
+* blockenspiel 0.5.0 or later.
+
+=== Installation
+
+ gem install versionomy
+
+=== Known issues and limitations
+
+* Test coverage is still a little skimpy. It is focused on the "standard"
+  version number format and schema, but doesn't fully exercise all the
+  capabilities of custom formats.
+
+=== Development and support
+
+Documentation is available at http://dazuma.github.com/versionomy/rdoc
+
+Source code is hosted on Github at http://github.com/dazuma/versionomy
+
+Contributions are welcome. Fork the project on Github.
+
+Build status: {<img src="https://secure.travis-ci.org/dazuma/versionomy.png" />}[http://travis-ci.org/dazuma/versionomy]
+
+Report bugs on Github issues at http://github.org/dazuma/versionomy/issues
+
+Contact the author at dazuma at gmail dot com.
+
+=== Author / Credits
+
+Versionomy is written by Daniel Azuma (http://www.daniel-azuma.com/).
+
+== LICENSE:
+
+Copyright 2008 Daniel Azuma.
+
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+* Redistributions of source code must retain the above copyright notice,
+  this list of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the above copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of the copyright holder, nor the names of any other
+  contributors to this software, may be used to endorse or promote products
+  derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+POSSIBILITY OF SUCH DAMAGE.
