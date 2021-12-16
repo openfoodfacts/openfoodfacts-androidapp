@@ -253,7 +253,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
         binding.textNutrientTxt.setText(if (inVolume != true) R.string.txtNutrientLevel100g else R.string.txtNutrientLevel100ml)
 
         if (!product.servingSize.isNullOrBlank()) {
-            binding.textPerPortion.text = "${getString(R.string.nutriment_serving_size)} ${product.servingSize}"
+            binding.textPerPortion.text = "Serving size: ${product.servingSize}"//"${getString(R.string.nutriment_serving_size)} ${product.servingSize}"
         } else {
             binding.textPerPortion.visibility = GONE
         }

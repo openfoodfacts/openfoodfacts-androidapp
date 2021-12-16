@@ -108,6 +108,16 @@
             app:tint="@color/brand_light_blue"
             tools:ignore="ContentDescription" />
 
+        <TextView
+            style="@style/ButtonRounded"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_margin="10dp"
+            android:layout_gravity="left"
+            android:background="@color/red"
+            android:text="Ingredients Analysis" />
+
     </LinearLayout>
 
 </LinearLayout>
