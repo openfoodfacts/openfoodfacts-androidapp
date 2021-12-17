@@ -155,8 +155,8 @@ class SummaryProductPresenter(
         }
     }
 
-    override suspend fun annotateInsight(insightId: String, annotation: AnnotationAnswer) {
-        val response = withContext(IO) { robotoff.annotateInsight(insightId, annotation) }
+    override suspend fun annotateInsight(annotation: AnnotationAnswer) {
+        val response = withContext(IO) { robotoff.annotateInsight(annotation) }
         withContext(Main) { view.showAnnotatedInsightToast(response) }
     }
 }

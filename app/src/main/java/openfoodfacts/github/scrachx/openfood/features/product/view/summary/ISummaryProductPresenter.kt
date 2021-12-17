@@ -36,7 +36,7 @@ interface ISummaryProductPresenter {
         suspend fun loadLabels()
         suspend fun loadAdditives()
         suspend fun loadAnalysisTags()
-        suspend fun annotateInsight(insightId: String, annotation: AnnotationAnswer)
+        suspend fun annotateInsight(annotation: AnnotationAnswer)
     }
 
     interface View {
