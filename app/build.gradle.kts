@@ -44,10 +44,10 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion")
 
     // Android KTX
-    implementation("androidx.fragment:fragment-ktx:1.3.6")
-    implementation("androidx.activity:activity-ktx:1.3.1")
+    implementation("androidx.fragment:fragment-ktx:1.4.0")
+    implementation("androidx.activity:activity-ktx:1.4.0")
     implementation("androidx.preference:preference-ktx:1.1.1")
-    implementation("androidx.core:core-ktx:1.6.0")
+    implementation("androidx.core:core-ktx:1.7.0")
 
     val lifecycleVer = "2.4.0-alpha03"
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVer")
@@ -55,13 +55,13 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVer")
 
     // AndroidX
-    implementation("androidx.appcompat:appcompat:1.3.1")
-    implementation("androidx.browser:browser:1.3.0")
+    implementation("androidx.appcompat:appcompat:1.4.0")
+    implementation("androidx.browser:browser:1.4.0")
     implementation("androidx.concurrent:concurrent-futures:1.1.0")
     implementation("androidx.recyclerview:recyclerview:1.2.1")
     implementation("androidx.cardview:cardview:1.0.0")
-    implementation("androidx.annotation:annotation:1.2.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.0")
+    implementation("androidx.annotation:annotation:1.3.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.2")
     implementation("androidx.multidex:multidex:2.0.1")
     implementation("androidx.viewpager2:viewpager2:1.0.0")
     implementation("androidx.startup:startup-runtime:1.1.0")
@@ -146,7 +146,7 @@ dependencies {
     implementation("com.github.hootsuite:nachos:1.2.0")
 
     // Crash analytics
-    implementation("io.sentry:sentry-android:5.4.3")
+    implementation("io.sentry:sentry-android:5.5.1")
     implementation("com.github.matomo-org:matomo-sdk-android:v4.1.2")
 
     // ShowCaseView dependency
