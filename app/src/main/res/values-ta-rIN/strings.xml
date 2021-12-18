@@ -221,15 +221,15 @@
     <string name="cancel_button">Cancel</string>
     <string name="login_button">Login</string>
     <string name="create_account_button">கணக்கை உருவாக்கு</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
     <string name="title_info_dialog">இது எப்படி வேலை செய்கிறது?</string>
-    <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
+    <string name="text_offline_info_dialog">You can scan products when you\'re offline to add them to Open Food Facts later. All the products you scan will appear here, and you\'ll be able to send them using the button below.</string>
     <string name="permission_camera">Camera permission is needed to scan barcodes and take pictures.</string>
     <string name="no_camera_dialog_title">கேமராவினை அணுக இயலவில்லை</string>
     <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
     <string name="permission_title">Permission information</string>
     <string name="permission_denied">Please activate permission in the settings</string>
-    <string name="info_download_data_connection">You need to download some data to get this functionality working. Please activate internet connection.</string>
+    <string name="info_download_data_connection">You need to download some data to get this functionality working. Please activate your internet connection.</string>
     <!-- Strings related to login -->
     <string name="error_invalid_password">கடவுச்சொல்லில் குறைந்தது 6 எழுத்துகளாவது இருக்க வேண்டும்.</string>
     <string name="user">பயனர்</string>
@@ -278,7 +278,7 @@
     <string name="action_manage_account">Manage account</string>
     <string name="action_contributes">Your contributions</string>
     <string name="logout_drawer">விடுபதிகை</string>
-    <string name="contribution_without_account">You can sign-in or create an account to keep your contributions</string>
+    <string name="contribution_without_account">You can sign-in or create an Open Food Facts account to keep your contributions</string>
     <string name="textCarbonFootprint">Carbon footprint / CO2 emissions: </string>
     <string name="packaging_environmentTab">Packaging:</string>
     <string name="action_search">தேடுக</string>
@@ -357,11 +357,11 @@
     <string name="chlorophyl">குளோரோபில்</string>
     <string name="take_picture">Take a photo</string>
     <string name="choose_picture_from_gallery">From gallery</string>
-    <string name="take_picture_ingredients">Take a photo of the ingredients</string>
+    <string name="take_picture_ingredients">Take a photo of the ingredient list</string>
     <string name="take_picture_recycling">Take a photo of the recycling instructions</string>
-    <string name="take_picture_front">Take a picture of the front</string>
-    <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
-    <string name="take_more_pictures">Take more pictures</string>
+    <string name="take_picture_front">Take a photo of the front</string>
+    <string name="take_picture_nutrition_table">Take a photo of the nutrition table</string>
+    <string name="take_more_pictures">Take more photos</string>
     <string name="take_extra_packaging_pictures">Take extra photos of packaging</string>
     <string name="txtSaturatedFat">Saturated fat</string>
     <string name="nutriscore_info_msg">Learn more about the Nutri-Score</string>
@@ -371,11 +371,11 @@
     <string name="nova_grp3_msg">Group 3 - Processed foods</string>
     <string name="nova_grp4_msg">Group 4 - Ultra-processed food and drink products</string>
     <!-- String related to App Shortcuts -->
-    <string name="disabled_message">Shortcut Not Available</string>
+    <string name="disabled_message">The shortcut is not available.</string>
     <string name="scan_shortcut_short_label">ஸ்கேன்</string>
     <string name="scan_shortcut_long_label">Scan Product</string>
     <string name="barcode_shortcut_short_label">தேடுக</string>
-    <string name="barcode_shortcut_long_label">Search By Barcode</string>
+    <string name="barcode_shortcut_long_label">Search by barcode</string>
     <string name="history_shortcut_short_label">வரலாறு</string>
     <string name="history_shortcut_long_label">வரலாறு</string>
     <string name="contributions_shortcut_short_label">Contributions</string>
@@ -413,7 +413,7 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
-    <string name="url_nova_groups">https://world.openfoodfacts.org/nova</string>
+    <string name="url_nova_groups">https://world-en.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the end of the url -->
     <string name="ecoscore_url">https://world.openfoodfacts.org/eco-score-the-environmental-impact-of-food-products</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
@@ -432,7 +432,7 @@
     <string name="log_in">Login</string>
     <string name="login_true">நீங்கள் ஏற்கனவே புகுபதிகை செய்துவிட்டீர்கள்.</string>
     <string name="confirm_logout">Confirm Logout</string>
-    <string name="logout_dialog_content">Are you sure to log out ?</string>
+    <string name="logout_dialog_content">Are you sure to log out of your Open Food Facts contributor account ?</string>
     <string name="dialog_cancel">Cancel</string>
     <string name="dialog_create">உருவாக்கு</string>
     <string name="wikidata_information">மேலும்</string>
@@ -574,7 +574,7 @@
     <string name="manufacturing_place">Manufacturing place</string>
     <string name="emb_code">Traceability Code</string>
     <string name="purchasing_details">Purchasing Details</string>
-    <string name="country_where_purchased">Country where purchased</string>
+    <string name="country_where_purchased">Country of purchase</string>
     <string name="stores">Stores</string>
     <string name="additional_pictures">Additional Pictures</string>
     <string name="hint_product_pictures">(Add more pictures of the product. eg: recycling instructions, labels etc.)</string>
@@ -747,7 +747,7 @@
     <string name="brand_hint">Examples: Coca-Cola, Nestle, etc…</string>
     <string name="sign_in_or_register">புகுபதிகையிடுங்கள் அல்லது பதிவு செய்யுங்கள்</string>
     <string name="hunger_game_call_to_action" comment="Do not change the placeholder">Help classify more %1$s</string>
-    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s products (plus the ones you will contribute).</string>
+    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s food products (plus the ones you will contribute).</string>
     <!-- Application theme settings -->
     <string name="follow_system">Follow system</string>
     <string name="day">Day</string>

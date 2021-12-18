@@ -17,8 +17,8 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
         <item quantity="one">Zadali jste 1 výrobek offline, který čeká na přidání do Open Food Facts</item>
-        <item quantity="few"> Máte %d offline produkty, které čekají na přidání do Open Food Facts</item>
-        <item quantity="many"> You have %d offline products waiting to be contributed to Open Food Facts</item>
+        <item quantity="few">Máte %d offline produkty, které čekají na přidání do Open Food Facts</item>
+        <item quantity="many">You have %d offline products waiting to be contributed to Open Food Facts</item>
         <item quantity="other"> Máte %d offline produktů, které čekají na přidání do Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
@@ -231,7 +231,7 @@
     <string name="cancel_button">Zrušit</string>
     <string name="login_button">Uživatelské jméno</string>
     <string name="create_account_button">Vytvořit účet</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
     <string name="title_info_dialog">Jak to funguje?</string>
     <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
     <string name="permission_camera">Přístup k fotoaparátu je zapotřebí ke snímání čárových kódů a pořizování snímků.</string>
@@ -571,7 +571,7 @@
     <string name="for_100g_100ml">Na 100 g / 100 ml</string>
     <string name="per_serving">V jedné porci</string>
     <string name="serving_size">Velikost porce</string>
-    <string name="alcohol_unit" formatted="false">[%i]bj.</string>
+    <string name="alcohol_unit" formatted="false">% vol / °</string>
     <string name="add_a_nutrient">Přidejte živinu</string>
     <string name="add_this_product">Přidat výrobek</string>
     <string name="product_picture">Snímek výrobku</string>
@@ -584,7 +584,7 @@
     <string name="manufacturing_details">Výrobní informace</string>
     <string name="origin_of_ingredients">Původ přísad</string>
     <string name="manufacturing_place">Země původu</string>
-    <string name="emb_code">Kód EMB</string>
+    <string name="emb_code">Traceability Code</string>
     <string name="purchasing_details">Podrobnosti o nákupu</string>
     <string name="country_where_purchased">Země nákupu</string>
     <string name="stores">Prodejny</string>
@@ -721,7 +721,7 @@
     <string name="help_translate_ingredients">Pomozte přeložit ingredience do vašeho jazyka</string>
     <string name="unknown_status_missing_ingredients">We couldn\'t assess the status of the product due to missing ingredients.</string>
     <string name="unknown_status_ambiguous_ingredients">We couldn\'t assess the status of the product because of ambiguous ingredients : <![CDATA[<b>%1$s</b>]]></string>
-    <string name="help_extract_ingredients">Help extract the ingredients to get the %1$s status.</string>
+    <string name="help_extract_ingredients">Help extract the ingredients to get the %1$s status</string>
     <string name="add_photo_to_extract_ingredients">Add a photo to begin extracting ingredients</string>
     <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
     <string name="compare_brands">Výrobce:</string>
