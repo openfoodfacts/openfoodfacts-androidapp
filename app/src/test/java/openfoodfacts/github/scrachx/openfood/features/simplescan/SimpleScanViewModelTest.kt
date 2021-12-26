@@ -9,6 +9,7 @@ import kotlinx.coroutines.test.runBlockingTest
 import openfoodfacts.github.scrachx.openfood.features.simplescan.SimpleScanViewModel.SideEffect
 import openfoodfacts.github.scrachx.openfood.models.CameraState
 import openfoodfacts.github.scrachx.openfood.repositories.ScannerPreferencesRepository
+import openfoodfacts.github.scrachx.openfood.utils.CoroutineDispatchersTest
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -20,7 +21,8 @@ class SimpleScanViewModelTest {
     @get:Rule
     var instantExecutorRule = InstantTaskExecutorRule()
 
-    private val prefsRepository: ScannerPreferencesRepository = mock()
+    private val prefsRepository = mock<ScannerPreferencesRepository>()
+    private val dispatchers = CoroutineDispatchersTest()
 
     private lateinit var viewModel: SimpleScanViewModel
 
@@ -31,7 +33,8 @@ class SimpleScanViewModelTest {
         whenever(prefsRepository.isMlScannerEnabled()).doReturn(false)
         whenever(prefsRepository.getCameraPref()).doReturn(CameraState.Back)
 
-        viewModel = SimpleScanViewModel(prefsRepository)
+
+        viewModel = SimpleScanViewModel(prefsRepository, dispatchers)
     }
 
     @Test

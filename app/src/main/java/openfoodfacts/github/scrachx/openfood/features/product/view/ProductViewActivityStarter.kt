@@ -12,9 +12,9 @@ import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
-import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
 import openfoodfacts.github.scrachx.openfood.repositories.NetworkConnectivityRepository
+import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.*
 import java.io.IOException
 import javax.inject.Inject
@@ -23,7 +23,7 @@ class ProductViewActivityStarter @Inject constructor(
     private val productsApi: ProductsAPI,
     private val localeManager: LocaleManager,
     private val client: ProductRepository,
-    private val coroutineDispatchers: CoroutineDispatchers,
+    private val dispatchers: CoroutineDispatchers,
     private val networkConnectivityRepository: NetworkConnectivityRepository,
 ) {
 
@@ -48,7 +48,7 @@ class ProductViewActivityStarter @Inject constructor(
     }
 
     private suspend fun tryToStartActivity(activity: Activity, barcode: String) {
-        val result = withContext(coroutineDispatchers.io()) {
+        val result = withContext(dispatchers.IO) {
             runCatching {
                 productsApi.getProductByBarcode(
                     barcode,
@@ -58,14 +58,14 @@ class ProductViewActivityStarter @Inject constructor(
                 )
             }
         }
-        withContext(coroutineDispatchers.main()) {
+        withContext(dispatchers.Main) {
             result.fold(
-                onSuccess = { productState ->
-                    if (productState.status == 0L) {
+                onSuccess = { state ->
+                    if (state.status == 0L) {
                         showNotFoundDialog(activity, barcode, true)
                     } else {
-                        client.addToHistory(productState.product!!)
-                        ProductViewActivity.start(activity, productState)
+                        client.addToHistory(state.product!!)
+                        ProductViewActivity.start(activity, state)
                     }
                 },
                 onFailure = {

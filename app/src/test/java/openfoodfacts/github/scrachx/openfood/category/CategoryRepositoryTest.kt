@@ -4,7 +4,6 @@ import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.runBlockingTest
-import openfoodfacts.github.scrachx.openfood.MockitoHelper
 import openfoodfacts.github.scrachx.openfood.category.mapper.CategoryMapper
 import openfoodfacts.github.scrachx.openfood.category.model.Category
 import openfoodfacts.github.scrachx.openfood.category.network.CategoryNetworkService
@@ -14,6 +13,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
 import org.mockito.junit.MockitoJUnitRunner
+import org.mockito.kotlin.any
 import org.mockito.kotlin.doReturn
 import org.mockito.kotlin.whenever
 
@@ -38,7 +38,7 @@ class CategoryRepositoryTest {
 
     @Before
     fun setup() = runBlockingTest {
-        whenever(mapper.fromNetwork(MockitoHelper.anyObject())) doReturn listOf(category, category, category)
+        whenever(mapper.fromNetwork(any())) doReturn listOf(category, category, category)
         whenever(networkService.getCategories()) doReturn response
         repository = CategoryRepository(networkService, mapper)
     }

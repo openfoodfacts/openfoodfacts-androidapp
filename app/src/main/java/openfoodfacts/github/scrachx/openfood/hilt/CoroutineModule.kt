@@ -5,7 +5,7 @@ import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import openfoodfacts.github.scrachx.openfood.utils.CoroutineDispatchers
-import openfoodfacts.github.scrachx.openfood.utils.CoroutineDispatchersImpl
+import openfoodfacts.github.scrachx.openfood.utils.CoroutineDispatchersDefaultImpl
 import javax.inject.Singleton
 
 @Module
@@ -14,5 +14,5 @@ abstract class CoroutineModule {
 
     @Binds
     @Singleton
-    abstract fun bindCoroutineDispatchers(coroutineDispatchersImpl: CoroutineDispatchersImpl): CoroutineDispatchers
+    abstract fun bindCoroutineDispatchers(impl: CoroutineDispatchersDefaultImpl): CoroutineDispatchers
 }
