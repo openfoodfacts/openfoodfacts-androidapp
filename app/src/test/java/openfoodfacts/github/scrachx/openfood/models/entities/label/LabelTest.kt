@@ -16,7 +16,8 @@ import org.mockito.ArgumentMatchers
 import org.mockito.Mock
 import org.mockito.Mockito.verify
 import org.mockito.junit.MockitoJUnitRunner
-import org.mockito.Mockito.`when` as mockitoWhen
+import org.mockito.kotlin.doReturn
+import org.mockito.kotlin.whenever
 
 /**
  * Tests for [Label]
@@ -24,35 +25,35 @@ import org.mockito.Mockito.`when` as mockitoWhen
 @RunWith(MockitoJUnitRunner::class)
 class LabelTest {
     @Mock
-    private val mockDaoSession: DaoSession? = null
+    private lateinit var mockDaoSession: DaoSession
 
     @Mock
-    private val mockLabelDao: LabelDao? = null
+    private lateinit var mockLabelDao: LabelDao
 
     @Mock
     private val mockLabelNameDao: LabelNameDao? = null
-    private var mLabel: Label? = null
+
+    private lateinit var mLabel: Label
 
     @Before
     fun setup() {
-        mockitoWhen(mockDaoSession!!.labelDao).thenReturn(mockLabelDao)
-        mockitoWhen(mockDaoSession.labelNameDao).thenReturn(mockLabelNameDao)
+        whenever(mockDaoSession.labelDao) doReturn mockLabelDao
+        whenever(mockDaoSession.labelNameDao) doReturn mockLabelNameDao
         val labelName1 = LabelName(LABEL_TAG, LANGUAGE_CODE_ENGLISH, LABEL_NAME_EN)
         val labelName2 = LabelName(LABEL_TAG, LANGUAGE_CODE_FRENCH, LABEL_NAME_FR)
-        mockitoWhen(mockLabelNameDao!!._queryLabel_Names(ArgumentMatchers.any()))
-                .thenReturn(listOf(labelName1, labelName2))
+        whenever(mockLabelNameDao!!._queryLabel_Names(ArgumentMatchers.any())) doReturn listOf(labelName1, labelName2)
         mLabel = Label()
     }
 
     @Test
     fun getNamesWithNullNamesAndNullDaoSession_throwsDaoException() {
-        Assert.assertThrows(DaoException::class.java) { mLabel!!.names }
+        Assert.assertThrows(DaoException::class.java) { mLabel.names }
     }
 
     @Test
     fun getNamesWithNullNamesAndNonNullDaoSession_getsNamesFromLabelNameDao() {
-        mLabel!!.__setDaoSession(mockDaoSession)
-        val labelNames = mLabel!!.names
+        mLabel.__setDaoSession(mockDaoSession)
+        val labelNames = mLabel.names
         Truth.assertThat(labelNames).hasSize(2)
         val labelName1 = labelNames[0]
         Truth.assertThat(labelName1!!.labelTag).isEqualTo(LABEL_TAG)
@@ -66,45 +67,45 @@ class LabelTest {
 
     @Test
     fun deleteWithNullDaoSession_throwsDaoException() {
-        Assert.assertThrows(DaoException::class.java) { mLabel!!.delete() }
+        Assert.assertThrows(DaoException::class.java) { mLabel.delete() }
     }
 
     @Test
     fun deleteWithNonNullDaoSession_callsDeleteOnLabelDao() {
-        mLabel!!.__setDaoSession(mockDaoSession)
-        mLabel!!.delete()
+        mLabel.__setDaoSession(mockDaoSession)
+        mLabel.delete()
         verify(mockLabelDao)!!.delete(mLabel)
     }
 
     @Test
     fun refreshWithNullDaoSession_throwsDaoException() {
-        Assert.assertThrows(DaoException::class.java) { mLabel!!.refresh() }
+        Assert.assertThrows(DaoException::class.java) { mLabel.refresh() }
     }
 
     @Test
     fun refreshWithNonNullDaoSession_callsRefreshOnLabelDao() {
-        mLabel!!.__setDaoSession(mockDaoSession)
-        mLabel!!.refresh()
+        mLabel.__setDaoSession(mockDaoSession)
+        mLabel.refresh()
         verify(mockLabelDao)!!.refresh(mLabel)
     }
 
     @Test
     fun updateWithNullDaoSession_throwsDaoException() {
-        Assert.assertThrows(DaoException::class.java) { mLabel!!.update() }
+        Assert.assertThrows(DaoException::class.java) { mLabel.update() }
     }
 
     @Test
     fun updateWithNonNullDaoSession_callsUpdateOnLabelDao() {
-        mLabel!!.__setDaoSession(mockDaoSession)
-        mLabel!!.update()
+        mLabel.__setDaoSession(mockDaoSession)
+        mLabel.update()
         verify(mockLabelDao)!!.update(mLabel)
     }
 
     @Test
     fun resetNames_callsGetLabelNameDao() {
-        mLabel!!.__setDaoSession(mockDaoSession)
-        mLabel!!.resetNames()
-        mLabel!!.names
+        mLabel.__setDaoSession(mockDaoSession)
+        mLabel.resetNames()
+        mLabel.names
         verify(mockDaoSession)!!.labelNameDao
     }
 }

@@ -1,10 +1,11 @@
 package openfoodfacts.github.scrachx.openfood.features.product.view.photos
 
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.liveData
-import androidx.lifecycle.switchMap
+import androidx.lifecycle.*
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.rx2.await
 import openfoodfacts.github.scrachx.openfood.images.extractImagesNameSortedByUploadTimeDesc
 import openfoodfacts.github.scrachx.openfood.models.Product
@@ -16,14 +17,16 @@ class ProductPhotosViewModel @Inject constructor(
     private val productsAPI: ProductsAPI
 ) : ViewModel() {
 
-    internal val product = MutableLiveData<Product>()
+    private val _product = MutableSharedFlow<Product>()
+    val product = _product.asSharedFlow()
 
-    internal val imageNames = product.switchMap {
-        liveData {
-            productsAPI.getProductImages(it.code).await()
-                .extractImagesNameSortedByUploadTimeDesc()
-                .let { emit(it) }
-        }
+    fun setProduct(product: Product) {
+        viewModelScope.launch { _product.emit(product) }
+    }
+
+    val imageNames = product.map {
+        productsAPI.getProductImages(it.code)
+            .extractImagesNameSortedByUploadTimeDesc()
     }
 
 }

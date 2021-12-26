@@ -13,16 +13,16 @@ import com.squareup.picasso.Picasso
 import openfoodfacts.github.scrachx.openfood.AppFlavors
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.models.SearchProduct
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
+import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.*
 
 class ProductSearchAdapter(
-        val products: MutableList<SearchProduct?>,
-        private val isLowBatteryMode: Boolean,
-        private val context: Context,
-        private val picasso: Picasso,
-        private val openFoodAPIClient: OpenFoodAPIClient,
-        private val localeManager: LocaleManager
+    val products: MutableList<SearchProduct?>,
+    private val isLowBatteryMode: Boolean,
+    private val context: Context,
+    private val picasso: Picasso,
+    private val productRepository: ProductRepository,
+    private val localeManager: LocaleManager
 ) : RecyclerView.Adapter<ProductSearchAdapter.ProductsListViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductsListViewHolder {
@@ -70,7 +70,7 @@ class ProductSearchAdapter(
 
         // Set product name
         holder.productName.text = product.productName ?: context.getString(R.string.productNameNull)
-        val productNameInLocale = product.additionalProperties[openFoodAPIClient.localeProductNameField] as String?
+        val productNameInLocale = product.additionalProperties[productRepository.localeProductNameField] as String?
         if (!productNameInLocale.isNullOrBlank()) {
             holder.productName.text = productNameInLocale
         }

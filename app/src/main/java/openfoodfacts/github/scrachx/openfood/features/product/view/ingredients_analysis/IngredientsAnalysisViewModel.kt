@@ -7,12 +7,12 @@ import androidx.lifecycle.switchMap
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import openfoodfacts.github.scrachx.openfood.models.Product
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
+import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import javax.inject.Inject
 
 @HiltViewModel
 class IngredientsAnalysisViewModel @Inject constructor(
-    private val api: OpenFoodAPIClient
+    private val api: ProductRepository
 ) : ViewModel() {
 
     val product = MutableLiveData<Product>()

@@ -10,7 +10,6 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.provider.Settings
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -25,7 +24,6 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.afollestad.materialdialogs.MaterialDialog
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
@@ -34,16 +32,16 @@ import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.R
-import openfoodfacts.github.scrachx.openfood.analytics.SentryAnalytics
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityHistoryScanBinding
+import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewActivityStarter
 import openfoodfacts.github.scrachx.openfood.features.productlist.CreateCSVContract
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.selectNavigationItem
+import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.SortType.*
 import java.io.File
-import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
 import javax.inject.Inject
@@ -53,6 +51,12 @@ class ScanHistoryActivity : BaseActivity() {
 
     private lateinit var binding: ActivityHistoryScanBinding
     private val viewModel: ScanHistoryViewModel by viewModels()
+
+    @Inject
+    lateinit var client: ProductRepository
+
+    @Inject
+    lateinit var productViewActivityStarter: ProductViewActivityStarter
 
     @Inject
     lateinit var picasso: Picasso
@@ -67,7 +71,7 @@ class ScanHistoryActivity : BaseActivity() {
 
     private val adapter by lazy {
         ScanHistoryAdapter(isLowBatteryMode = isDisableImageLoad() && isBatteryLevelLow(), picasso) {
-            openProduct(it.barcode)
+            productViewActivityStarter.openProduct(it.barcode, this)
         }
     }
 
@@ -79,12 +83,14 @@ class ScanHistoryActivity : BaseActivity() {
                 .setTitle(R.string.permission_title)
                 .setMessage(R.string.permission_denied)
                 .setNegativeButton(R.string.txtNo) { dialog, _ -> dialog.dismiss() }
-                .setPositiveButton(R.string.txtYes) { _, _ ->
+                .setPositiveButton(R.string.txtYes) { dialog, _ ->
                     startActivity(Intent().apply {
                         action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
                         data = Uri.fromParts("package", this@ScanHistoryActivity.packageName, null)
                     })
-                }.show()
+                    dialog.dismiss()
+                }
+                .show()
         }
     }
 
@@ -94,15 +100,9 @@ class ScanHistoryActivity : BaseActivity() {
         }
     }
 
-    @Inject
-    lateinit var sentryAnalytics: SentryAnalytics
-
     @RequiresApi(Build.VERSION_CODES.KITKAT)
-    val fileWriterLauncher = registerForActivityResult(CreateCSVContract()) {
-        if (it == null) {
-            Log.w(LOG_TAG, "Could not write to file.")
-            sentryAnalytics.record(IOException("Could not write to file."))
-        } else {
+    val fileWriterLauncher = registerForActivityResult(CreateCSVContract()) { uri ->
+        uri?.let {
             writeHistoryToFile(this, adapter.products, it)
         }
     }
@@ -260,11 +260,12 @@ class ScanHistoryActivity : BaseActivity() {
         val perm = Manifest.permission.CAMERA
         if (ContextCompat.checkSelfPermission(baseContext, perm) != PackageManager.PERMISSION_GRANTED) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(this, perm)) {
-                MaterialDialog.Builder(this)
-                    .title(R.string.action_about)
-                    .content(R.string.permission_camera)
-                    .positiveText(android.R.string.ok)
-                    .onPositive { _, _ -> cameraPermLauncher.launch(perm) }
+                MaterialAlertDialogBuilder(this)
+                    .setTitle(R.string.action_about)
+                    .setMessage(R.string.permission_camera)
+                    .setPositiveButton(android.R.string.ok) { _, _ ->
+                        cameraPermLauncher.launch(perm)
+                    }
                     .show()
             } else {
                 cameraPermLauncher.launch(perm)

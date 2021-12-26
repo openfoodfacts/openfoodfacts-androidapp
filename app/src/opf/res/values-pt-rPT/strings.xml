@@ -21,7 +21,7 @@
     <string name="slide_3_desc">Todos os produtos que digitalizou, numa lista prática que pode exportar</string>
     <string name="slide_4_title">Funciona offline</string>
     <string name="slide_4_desc">Pode adicionar novos produtos, mesmo se não tiver uma conexão com a Internet agora</string>
-    <string name="txtDialogsContent">O produto que digitalizou ainda não existe no Open Products Facts. Por favor adicione-o.</string>
+    <string name="product_does_not_exist_please_add_it">O produto que digitalizou ainda não existe no Open Products Facts. Por favor adicione-o.</string>
     <string name="txtDialogsContentPowerMode">O produto que digitalizou ainda já existe no Open Products Facts.</string>
     <string name="msg_share">Ver este produto no Open Products Facts:</string>
     <string name="not_support_books">Os livros não são suportados neste momento no Open Products Facts</string>

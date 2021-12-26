@@ -20,8 +20,8 @@
     <string name="slide_3_title">Keep track of the product you use</string>
     <string name="slide_3_desc">All the cosmetic you use, in one handy list you can export</string>
     <string name="slide_4_title">Works offline</string>
-    <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet connection right now</string>
-    <string name="txtDialogsContent">The product you scanned does not exist yet in Open Beauty Facts. Please add it.</string>
+    <string name="slide_4_desc">Ви маєте змогу дододати нову продукцію, навіть за відсутності Інтернету на даний час</string>
+    <string name="product_does_not_exist_please_add_it">Відсканований продукт не існує в базі Open Beauty Facts. Будь ласка, додайте його.</string>
     <string name="msg_share">Look at this product on Open Beauty Facts :</string>
     <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Beauty Facts</string>
     <string name="Donation">Click here to donate to Open Beauty Facts</string>
@@ -43,7 +43,8 @@
     <string name="txt_products_to_buy">Товари для покупки</string>
     <string name="intent_filter_share_label">Add to Open Beauty Facts</string>
     <string name="brand_hint">Examples: Nivea, L\'Oréal, etc…</string>
-    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
-        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
+    <string name="txt_info_eaten_products">Ви зможете додати товар в цей список, відсканувавши продукцію, перетягнувши картку товару вгору і клікнувши \"Товари для покупки\".
+        Ви також маєте змогу додавати товари в цей список, виконавши їх пошук і натиснувши кнопку \"+\" в правому верхньому куті сторінки товару.</string>
     <string name="OFFlogo">Open Beauty Facts logo</string>
+    <string name="txtDialogsContentPowerMode">Товар, який ви скануєте, вже існує у нашій базі.</string>
 </resources>

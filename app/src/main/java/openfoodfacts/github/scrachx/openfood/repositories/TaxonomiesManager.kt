@@ -50,16 +50,16 @@ class TaxonomiesManager @Inject constructor(
      * @param taxonomy
      * @param checkUpdate defines if the source of data must be refresh from server if it has been update there.
      *
-     *  * If checkUpdate is true (or local database is empty) then load it from the server,
+     *  * If checkUpdate is true (or local database is empty) then force-load it from the server,
      *  * else from the local database.
      *
-     * @param dao used to check if locale data is empty
+     * @param dao used to check if there is data saved in the local database.
      */
     suspend fun <T> getTaxonomyData(
         taxonomy: Taxonomy<T>,
         checkUpdate: Boolean,
         dao: AbstractDao<T, *>,
-        productRepository: ProductRepository
+        taxonomiesRepository: TaxonomiesRepository
     ): List<T> = withContext(Dispatchers.Default) {
         val appPrefs = context.getAppPreferences()
 
@@ -74,24 +74,24 @@ class TaxonomiesManager @Inject constructor(
         val empty = dao.isEmpty()
         if (empty || forceUpdate) {
             // Table is empty, no need check for update, just load taxonomy
-            download(taxonomy, productRepository)
+            download(taxonomy, taxonomiesRepository)
         } else if (checkUpdate) {
             // Get local last downloaded time
             val localDownloadTime = appPrefs.getLong(taxonomy.getLastDownloadTimeStampPreferenceId(), 0L)
 
             // We need to check for update. Test if file on server is more recent than last download.
-            checkAndDownloadIfNewer(taxonomy, localDownloadTime, productRepository)
+            checkAndDownloadIfNewer(taxonomy, localDownloadTime, taxonomiesRepository)
         } else emptyList()
     }
 
     private suspend fun <T> download(
         taxonomy: Taxonomy<T>,
-        productRepository: ProductRepository
+        taxonomiesRepository: TaxonomiesRepository
     ) = withContext(IO) {
         val lastMod = getLastModifiedDateFromServer(taxonomy)
 
         if (lastMod != TAXONOMY_NO_INTERNET) {
-            taxonomy.load(productRepository, lastMod)
+            taxonomy.load(taxonomiesRepository, lastMod)
                 .also { logDownload(taxonomy) }
         } else emptyList()
     }
@@ -99,12 +99,12 @@ class TaxonomiesManager @Inject constructor(
     private suspend fun <T> checkAndDownloadIfNewer(
         taxonomy: Taxonomy<T>,
         localDownloadTime: Long,
-        productRepository: ProductRepository
+        taxonomiesRepository: TaxonomiesRepository
     ) = withContext(IO) {
         val lastModRemote = getLastModifiedDateFromServer(taxonomy)
 
         if (lastModRemote == 0L || lastModRemote > localDownloadTime)
-            taxonomy.load(productRepository, lastModRemote).also { logDownload(taxonomy) }
+            taxonomy.load(taxonomiesRepository, lastModRemote).also { logDownload(taxonomy) }
         else emptyList()
     }
 

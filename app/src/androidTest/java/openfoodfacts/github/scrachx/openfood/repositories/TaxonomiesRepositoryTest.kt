@@ -27,13 +27,13 @@ import javax.inject.Inject
 @ExperimentalCoroutinesApi
 @SmallTest
 @HiltAndroidTest
-class ProductRepositoryTest {
+class TaxonomiesRepositoryTest {
     @get:Rule
     var hiltRule = HiltAndroidRule(this)
 
 
     @Inject
-    lateinit var productRepository: ProductRepository
+    lateinit var taxonomiesRepository: TaxonomiesRepository
 
     @Inject
     @ApplicationContext
@@ -46,7 +46,7 @@ class ProductRepositoryTest {
     @Before
     fun cleanAllergens() {
         clearDatabase(daoSession)
-        productRepository.saveAllergens(createAllergens())
+        taxonomiesRepository.saveAllergens(createAllergens())
     }
 
     @Test
@@ -54,7 +54,7 @@ class ProductRepositoryTest {
         val appPrefs = instance.getAppPreferences()
 
         val isDownloadActivated = appPrefs.getBoolean(Taxonomy.Allergens.getDownloadActivatePreferencesId(), false)
-        val allergens = productRepository.reloadAllergensFromServer()
+        val allergens = taxonomiesRepository.reloadAllergensFromServer()
         assertNotNull(allergens)
         if (!isDownloadActivated) {
             assertEquals(0, allergens.size.toLong())
@@ -73,16 +73,16 @@ class ProductRepositoryTest {
 
     @Test
     fun testGetEnabledAllergens() = runBlockingTest {
-        val allergens = productRepository.getEnabledAllergens()
+        val allergens = taxonomiesRepository.getEnabledAllergens()
         assertNotNull(allergens)
         assertEquals(1, allergens.size.toLong())
         assertEquals(TEST_ALLERGEN_TAG, allergens[0].tag)
     }
 
     @Test
-    fun testGetAllergensByEnabledAndLanguageCode() {
-        val enabledAllergenNames = productRepository.getAllergensByEnabledAndLanguageCode(true, TEST_LANGUAGE_CODE).blockingGet()
-        val notEnabledAllergenNames = productRepository.getAllergensByEnabledAndLanguageCode(false, TEST_LANGUAGE_CODE).blockingGet()
+    fun testGetAllergensByEnabledAndLanguageCode() = runBlockingTest {
+        val enabledAllergenNames = taxonomiesRepository.getAllergens(true, TEST_LANGUAGE_CODE)
+        val notEnabledAllergenNames = taxonomiesRepository.getAllergens(false, TEST_LANGUAGE_CODE)
         assertNotNull(enabledAllergenNames)
         assertNotNull(notEnabledAllergenNames)
         assertEquals(1, enabledAllergenNames.size.toLong())
@@ -93,7 +93,7 @@ class ProductRepositoryTest {
 
     @Test
     fun testGetAllergensByLanguageCode() = runBlockingTest {
-        val allergenNames = productRepository.getAllergensByLanguageCode(TEST_LANGUAGE_CODE)
+        val allergenNames = taxonomiesRepository.getAllergens(TEST_LANGUAGE_CODE)
         assertNotNull(allergenNames)
         assertEquals(2, allergenNames.size.toLong())
     }

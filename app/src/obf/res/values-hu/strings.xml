@@ -21,7 +21,7 @@
     <string name="slide_3_desc">Az összes kozmetikai szer amit ön használ, egy könnyen kezelhető listán amit exportálni is tud</string>
     <string name="slide_4_title">Kapcsolat nélküli módban is működik</string>
     <string name="slide_4_desc">Hozzáadhat új termékeket még akkor is, ha jelenleg nincs internet kapcsolata</string>
-    <string name="txtDialogsContent">A beolvasott termék nem található az Open Beauty Facts adatbázisában. Kérjük, adja hozzá.</string>
+    <string name="product_does_not_exist_please_add_it">The product you scanned does not exist yet in Open Beauty Facts. Please add it.</string>
     <string name="msg_share">Nézze meg a terméket az Open Beauty Facts adatbázisában:</string>
     <string name="txt_broaden_search">- szélesítse a keresést \n- olvassa be és adja hozzá az Open Beauty Facts-hez</string>
     <string name="Donation">Kattintson ide az Open Beauty Facts-nek szánt adományozáshoz</string>
@@ -46,4 +46,5 @@
     <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
         You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
     <string name="OFFlogo">Open Beauty Facts logo</string>
+    <string name="txtDialogsContentPowerMode">A beolvasott termék megtalálható az Open Food Facts adatbázisában.</string>
 </resources>

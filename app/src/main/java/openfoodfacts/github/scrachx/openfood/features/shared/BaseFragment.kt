@@ -31,7 +31,6 @@ import androidx.fragment.app.Fragment
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.canhub.cropper.CropImage
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import io.reactivex.disposables.CompositeDisposable
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.listeners.OnRefreshListener
 import openfoodfacts.github.scrachx.openfood.listeners.OnRefreshViewListener
@@ -63,17 +62,6 @@ abstract class BaseFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener, 
     }
     private var refreshListener: OnRefreshListener? = null
     private var swipeRefreshLayout: SwipeRefreshLayout? = null
-
-    protected val disp = CompositeDisposable()
-
-    /**
-     * Dispose [disp] and then call super
-     */
-    @CallSuper
-    override fun onDestroyView() {
-        super.onDestroyView()
-        disp.dispose()
-    }
 
     @CallSuper
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

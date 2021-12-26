@@ -209,7 +209,7 @@
     <string name="uploadLater">Зображення буде завантажено, коли з\'явиться інтернет</string>
     <string name="txtInfoLoginOk">Користувача збережено</string>
     <string name="txtInfoLoginNo">Користувача не збережено</string>
-    <string name="txtDialogsContent">Товар, який ви скануєте, ще не існує у нашій базі. Будь ласка, додайте його.</string>
+    <string name="product_does_not_exist_please_add_it">Товар, який ви скануєте, ще не існує у нашій базі. Будь ласка, додайте його.</string>
     <string name="txtYes">Так</string>
     <string name="txtNo">Ні</string>
     <string name="hintBrand">Виробник</string>
@@ -606,7 +606,7 @@
     <string name="packaging">Recycling</string>
     <string name="take_ingredients_picture_to_extract">(Please take a photo of the ingredients to automatically extract them)</string>
     <string name="ingredients_list">Ingredients List</string>
-    <string name="ingredients_hint">Keep the order, indicate the % when specified, separate with a comma or use -, use () for ingredients of an ingredient, surround allergens with _</string>
+    <string name="ingredients_hint" tools:ignore="StringFormatInvalid">Keep the order, indicate the % when specified, separate with a comma or use -, use () for ingredients of an ingredient, surround allergens with _</string>
     <string name="extract_ingredients">Extract ingredients</string>
     <string name="extracting_ingredients">Extracting ingredients</string>
     <string name="looksGood">Looks Good</string>

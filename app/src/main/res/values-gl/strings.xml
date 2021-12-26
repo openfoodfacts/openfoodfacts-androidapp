@@ -199,7 +199,7 @@
     <string name="uploadLater">A imaxe subirase cando a rede esté dispoñible</string>
     <string name="txtInfoLoginOk">Gardouse o usuario</string>
     <string name="txtInfoLoginNo">Non se gardou o usuario</string>
-    <string name="txtDialogsContent">O produto que escaneou non está en Open Food Facts. Por favor, engádao.</string>
+    <string name="product_does_not_exist_please_add_it">O produto que escaneou non está en Open Food Facts. Por favor, engádao.</string>
     <string name="txtYes">Si</string>
     <string name="txtNo">Non</string>
     <string name="hintBrand">Marca</string>
@@ -594,7 +594,7 @@
     <string name="packaging">Recycling</string>
     <string name="take_ingredients_picture_to_extract">(Please take a photo of the ingredients to automatically extract them)</string>
     <string name="ingredients_list">Ingredients List</string>
-    <string name="ingredients_hint">Keep the order, indicate the % when specified, separate with a comma or use -, use () for ingredients of an ingredient, surround allergens with _</string>
+    <string name="ingredients_hint" tools:ignore="StringFormatInvalid">Keep the order, indicate the % when specified, separate with a comma or use -, use () for ingredients of an ingredient, surround allergens with _</string>
     <string name="extract_ingredients">Extract ingredients</string>
     <string name="extracting_ingredients">Extracting ingredients</string>
     <string name="looksGood">Looks Good</string>

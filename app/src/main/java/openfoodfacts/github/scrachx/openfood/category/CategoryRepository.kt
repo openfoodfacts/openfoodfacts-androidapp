@@ -1,8 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.category
 
-import android.util.Log
-import io.reactivex.Single
-import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.withContext
 import openfoodfacts.github.scrachx.openfood.category.mapper.CategoryMapper
 import openfoodfacts.github.scrachx.openfood.category.model.Category
 import openfoodfacts.github.scrachx.openfood.category.network.CategoryNetworkService
@@ -15,22 +14,22 @@ import javax.inject.Singleton
  */
 @Singleton
 class CategoryRepository @Inject constructor(
-        private val networkService: CategoryNetworkService,
-        private val mapper: CategoryMapper
+    private val networkService: CategoryNetworkService,
+    private val mapper: CategoryMapper
 ) {
     private val memoryCache = AtomicReference<List<Category>?>()
 
     /**
      * Calling this function retrieves list of all categories from NetworkService
      */
-    fun retrieveAll() = if (memoryCache.get() != null) {
-        Single.just(memoryCache.get())
-    } else {
-        networkService.getCategories()
-                .map { mapper.fromNetwork(it.tags) }
-                .doOnSuccess { memoryCache.set(it) }
-                .doOnError { Log.w(LOG_TAG, "Can't get categories", it) }
-                .subscribeOn(Schedulers.io())
+    suspend fun retrieveAll() = withContext(IO) {
+        if (memoryCache.get() != null) {
+            memoryCache.get()
+        } else {
+            networkService.getCategories()
+                .let { mapper.fromNetwork(it.tags) }
+                .also { memoryCache.set(it) }
+        }
     }
 
     companion object {

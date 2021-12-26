@@ -4,8 +4,8 @@ import android.content.Context
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
 import dagger.hilt.android.qualifiers.ApplicationContext
-import io.reactivex.Single
-import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import openfoodfacts.github.scrachx.openfood.models.Changelog
 import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
 import java.io.BufferedReader
@@ -25,9 +25,7 @@ class ChangelogService @Inject constructor(
 
     private val mapper = ObjectMapper()
 
-    fun observeChangelog() = Single
-        .fromCallable { parseJsonFile() }
-        .subscribeOn(Schedulers.io())
+    suspend fun observeChangelog() = withContext(Dispatchers.IO) { parseJsonFile() }
 
     @Throws(IOException::class)
     private fun parseJsonFile(): Changelog {
@@ -43,9 +41,9 @@ class ChangelogService @Inject constructor(
     @Throws(IOException::class)
     private fun getJsonStringFromAsset(fileName: String): String {
         return context.assets
-                .open(FOLDER + fileName)
-                .bufferedReader()
-                .use(BufferedReader::readText)
+            .open(FOLDER + fileName)
+            .bufferedReader()
+            .use(BufferedReader::readText)
     }
 
     @Throws(IOException::class)

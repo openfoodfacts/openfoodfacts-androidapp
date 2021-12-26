@@ -21,7 +21,7 @@
     <string name="slide_3_desc">Wszystkie zeskanowane produkty na jednej poręcznej liście, którą możesz wyeksportować</string>
     <string name="slide_4_title">Działa offline</string>
     <string name="slide_4_desc">Możesz dodać nowe produkty, nawet nie mając teraz połączenia</string>
-    <string name="txtDialogsContent">Zeskanowany produkt jeszcze nie figuruje w Open Products Facts. Dodaj go.</string>
+    <string name="product_does_not_exist_please_add_it">The product you scanned does not exist yet in Open Products Facts. Please add it.</string>
     <string name="txtDialogsContentPowerMode">Zeskanowany produkt istnieje już w Open Products Facts.</string>
     <string name="msg_share">Zobacz produkt na Open Products Facts:</string>
     <string name="not_support_books">Obecnie Open Products Facts nie obsługuje książek</string>

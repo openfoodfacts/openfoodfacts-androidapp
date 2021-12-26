@@ -204,7 +204,7 @@
     <string name="uploadLater">Imaginea va fi încărcată când va fi disponibilă o conexiune la internet</string>
     <string name="txtInfoLoginOk">Utilizator salvat</string>
     <string name="txtInfoLoginNo">Utilizatorul nu a fost salvat.</string>
-    <string name="txtDialogsContent">Produsul scanat nu există în baza de date Open Food Facts. Doriți să-l adăugați?</string>
+    <string name="product_does_not_exist_please_add_it">Produsul scanat nu există în baza de date Open Food Facts. Doriți să-l adăugați?</string>
     <string name="txtYes">Da</string>
     <string name="txtNo">Nu</string>
     <string name="hintBrand">Marca</string>
@@ -600,7 +600,7 @@
     <string name="packaging">Recycling</string>
     <string name="take_ingredients_picture_to_extract">(Te rog fă o fotografie a ingredientelor pentru a le extrage automat)</string>
     <string name="ingredients_list">Lista de ingrediente</string>
-    <string name="ingredients_hint">Păstrați ordinea, indicați procentul atunci când este specificat, separați cu virgulă sau folosiți -, utilizați () pentru ingredientele unui ingredient, înconjurați alergenii cu _</string>
+    <string name="ingredients_hint" tools:ignore="StringFormatInvalid">Păstrați ordinea, indicați procentul atunci când este specificat, separați cu virgulă sau folosiți -, utilizați () pentru ingredientele unui ingredient, înconjurați alergenii cu _</string>
     <string name="extract_ingredients">Extrageți ingredientele</string>
     <string name="extracting_ingredients">Extrag ingredientele</string>
     <string name="looksGood">Arată bine</string>

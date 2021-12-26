@@ -16,7 +16,7 @@
     <string name="slide_1_desc">Scan products, take them in picture, make food transparency happen</string>
     <string name="slide_2_title">Get the facts</string>
     <string name="slide_2_desc">Extensive information about the product you\'ve scanned, deciphered for you</string>
-    <string name="slide_3_title">Get the Nutriscore</string>
+    <string name="slide_3_title">Get the Nutri-Score</string>
     <string name="slide_3_desc">A synthetic view of the nutritional properties of your favorite food products</string>
     <string name="slide_4_title">Works offline</string>
     <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet connection right now</string>
@@ -29,7 +29,7 @@
     <string name="msg_welcome_nova">Reduce the amount of ultra-processed foods in your diet.</string>
     <string name="title_welcome_ecoscore">Eco-Score</string>
     <!-- Scan card -->
-    <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
+    <string name="product_does_not_exist_please_add_it">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
     <string name="txtDialogsContentPowerMode">ผลิตภัณฑ์ที่คุณสแกนมีอยู่ใน Open Food Facts แล้ว</string>
     <string name="msg_share">Look at this product on Open Food Facts :</string>
     <string name="not_support_books">Books are not currently supported by Open Food Facts</string>

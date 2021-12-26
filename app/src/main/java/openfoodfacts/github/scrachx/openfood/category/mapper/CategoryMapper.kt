@@ -12,6 +12,7 @@ class CategoryMapper @Inject constructor() {
      * Returns list of Category objects using the tags
      * @param  tags List of CategoryResponse.Tag object
      */
-    fun fromNetwork(tags: List<CategoryResponse.Tag>) = tags.map { Category(it.id, it.name, it.url, it.products) }
+    fun fromNetwork(tags: List<CategoryResponse.Tag>) =
+        tags.map { Category(it.id, it.name, it.url, it.products) }
             .sortedBy { it.name }
 }

@@ -76,7 +76,7 @@ open class NutrimentsGridAdapter(
             }
 
             private fun fillNutrimentValue(item: NutrimentListItem) {
-                val value = item.value
+                val value = item.valueStr
                 if (value == null) {
                     vNutrimentValue.visibility = View.INVISIBLE
                 } else {

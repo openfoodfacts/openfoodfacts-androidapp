@@ -1,61 +1,82 @@
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="openfoodfacts.github.scrachx.openfood.features.categories.fragment.CategoryListFragment">
 
-    <data>
-
-        <import type="android.view.View" />
-
-        <variable
-            name="viewModel"
-            type="openfoodfacts.github.scrachx.openfood.features.categories.fragment.CategoryFragmentViewModel" />
-    </data>
-
-    <FrameLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="openfoodfacts.github.scrachx.openfood.features.categories.fragment.CategoryListFragment">
+        tools:listitem="@layout/category_recycler_item" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler"
+    <openfoodfacts.github.scrachx.openfood.features.shared.layouts.FastScroller
+        android:id="@+id/fast_scroller"
+        android:layout_width="24dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="end" />
+
+    <LinearLayout
+        android:id="@+id/offline_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <ImageView
+            android:id="@+id/sadCloud"
+            android:layout_width="180dp"
+            android:layout_height="150dp"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/ic_cloud_off"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/txtCannotLoadResults"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="@dimen/spacing_normal"
+            android:gravity="center"
+            android:text="@string/please_check_your_connection"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/grey_500"
+            android:textSize="@dimen/font_normal" />
+
+        <Button
+            android:id="@+id/buttonToRefresh"
+            style="@style/ButtonBorder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="@string/txt_try_again" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/progress_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <ProgressBar
+            style="?android:attr/progressBarStyle"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:categories="@{viewModel.shownCategories}"
-            tools:listitem="@layout/category_recycler_item" />
+            android:layout_height="wrap_content"
+            android:indeterminate="true" />
 
-        <openfoodfacts.github.scrachx.openfood.features.shared.layouts.FastScroller
-            android:id="@+id/fast_scroller"
-            android:layout_width="24dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="end" />
-
-        <include
-            android:id="@+id/offline_view"
-            layout="@layout/offline_cloud_layout"
-            android:visibility="@{viewModel.showOffline}" />
-
-        <LinearLayout
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:orientation="vertical"
-            android:padding="16dp"
-            android:visibility="@{viewModel.showProgress}">
+            android:text="@string/toast_retrieving"
+            android:textStyle="bold" />
 
-            <ProgressBar
-                style="?android:attr/progressBarStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:indeterminate="true" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/toast_retrieving"
-                android:textStyle="bold" />
-
-        </LinearLayout>
-    </FrameLayout>
-
-</layout>
+    </LinearLayout>
+</FrameLayout>

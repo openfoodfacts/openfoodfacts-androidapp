@@ -16,20 +16,20 @@
     <string name="slide_1_desc">Skan produkter, tilføj billeder, få fødevaregennemsigtighed til at ske</string>
     <string name="slide_2_title">Få fat i fakta</string>
     <string name="slide_2_desc">Omfattende oplysninger om produktet du har skannet, tydeliggjort for dig</string>
-    <string name="slide_3_title">Få ernæringsinformation</string>
+    <string name="slide_3_title">Get the Nutri-Score</string>
     <string name="slide_3_desc">Et virtuelt billede af de ernæringsmæssige egenskaber for dine favoritfødevarer</string>
     <string name="slide_4_title">Fungerer offline</string>
     <string name="slide_4_desc">Du kan tilføje nye produkter, selv hvis du ikke har en tilgængelig Internetforbindelse</string>
     <!-- New onboarding-->
     <string name="title_welcome_intro">Tilslut dig fødevarerevolutionen</string>
     <string name="msg_welcome_intro">Skan fødevarer, tag fotos, hjælp med at traneformere fødevaresystemet</string>
-    <string name="title_welcome_nutriscore">Få ernæringsinformation</string>
+    <string name="title_welcome_nutriscore">Get the Nutri-Score</string>
     <string name="msg_welcome_nutriscore">En simpel syntese af dine fødevarers ernæringskvalitet</string>
     <string name="title_welcome_nova">Undgå ultraforarbejdede fødevarer</string>
     <string name="msg_welcome_nova">Reducér mængden af ultraforarbejdede fødevarer i din kost.</string>
     <string name="title_welcome_ecoscore">Øko-Score</string>
     <!-- Scan card -->
-    <string name="txtDialogsContent">Produktet, du skannede, findes ikke i Open Food Facts endnu. Tilføj det venligst.</string>
+    <string name="product_does_not_exist_please_add_it">Det skannede produktet findes endnu ikke i Open Food Facts. Tilføj det gerne.</string>
     <string name="txtDialogsContentPowerMode">Produktet, du har skannet, findes allerede i Open Food Facts.</string>
     <string name="msg_share">Kig på dette produkt på Open Food Facts :</string>
     <string name="not_support_books">Bøger understøttes ikke pt. af Open Food Facts</string>

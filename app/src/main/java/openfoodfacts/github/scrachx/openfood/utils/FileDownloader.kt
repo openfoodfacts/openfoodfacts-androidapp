@@ -4,74 +4,79 @@ import android.content.Context
 import android.net.Uri
 import android.util.Log
 import androidx.core.net.toUri
-import io.reactivex.Maybe
-import io.reactivex.schedulers.Schedulers
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.rx2.await
-import kotlinx.coroutines.rx2.rxMaybe
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.withContext
 import okhttp3.ResponseBody
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
+import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
 import openfoodfacts.github.scrachx.openfood.utils.Utils.makeOrGetPictureDirectory
 import java.io.File
 import java.io.IOException
+import javax.inject.Inject
 
 /**
  * File Downloader class which is used to download a file and
  * write response to the disk.
  */
-object FileDownloader {
-    private val LOG_TAG = FileDownloader::class.simpleName
+class FileDownloader @Inject constructor(
+    @ApplicationContext private val context: Context,
+    private val productsAPI: ProductsAPI,
+    private val dispatchers: CoroutineDispatchers,
+) {
+
+    companion object {
+        private const val LOG_TAG = "FileDownloader"
+    }
 
     /**
-     * Downloads a file from the given fileUrl.
-     * If file is found write to disk and then return it via [Maybe].
+     * Downloads a file from the given fileUrl and stores it on disk.
      *
-     * Network operations are done via [Schedulers.io]
-     *
-     * To use the result for UI updated remember to *OBSERVE ON MAIN THREAD*
-     *
-     * @param context
-     * @param fileUrl provides the URL of the file to download.
-     * @return [Maybe]
+     * @param fileUrl provides the URL of the file to download
+     * @return [Uri] in case of success and null otherwise
      */
-    fun download(context: Context, fileUrl: String, client: OpenFoodAPIClient): Maybe<Uri> = rxMaybe(Dispatchers.IO) {
-        val body = try {
-            client.rawApi.downloadFile(fileUrl).await()
-        } catch (err: Exception) {
-            Log.e(LOG_TAG, "error", err)
-            return@rxMaybe null
+    suspend fun download(fileUrl: String): Uri? {
+        val file = withContext(dispatchers.IO) {
+            productsAPI
+                .runCatching { downloadFile(fileUrl) }
+                .fold(
+                    onSuccess = { response ->
+                        writeResponseBodyToDisk(response, fileUrl)
+                    },
+                    onFailure = {
+                        Log.e(LOG_TAG, "error", it)
+                        null
+                    }
+                )
         }
-        Log.d(LOG_TAG, "Server contacted and has file")
-
-        writeResponseBodyToDiskSync(context, body, fileUrl).also {
-            Log.d(LOG_TAG, "Downloaded file $it")
-        }
+        // TODO: check if Main is needed here
+        return withContext(dispatchers.Main) { file?.toUri() }
     }
+
 
     /**
      * A method to write the response body to disk.
      *
-     * @param context: [Context] of the class.
-     * @param body: [ResponseBody] from the call.
-     * @param request: url of the downloaded file.
-     * @return [File] that has been written to the disk.
+     * **It uses the current thread.**
+     *
+     * @param body [ResponseBody] from the call.
+     * @param request url of the downloaded file.
+     * @return [File] that has been written to the disk or null in case of failure
      */
-    private suspend fun writeResponseBodyToDiskSync(context: Context, body: ResponseBody, request: String): Uri? =
-        withContext(Dispatchers.IO) {
-            val requestUri = request.toUri()
-            val writtenFile = File(makeOrGetPictureDirectory(context), "${System.currentTimeMillis()}-${requestUri.lastPathSegment}")
-            try {
-                body.byteStream().use { stream ->
-                    writtenFile.outputStream().use { out ->
-                        stream.copyTo(out)
-                        out.flush()
-                    }
+    private fun writeResponseBodyToDisk(body: ResponseBody, request: String): File? {
+        val requestUri = request.toUri()
+        val writtenFile = File(
+            makeOrGetPictureDirectory(context),
+            "${System.currentTimeMillis()}-${requestUri.lastPathSegment}"
+        )
+        return try {
+            body.byteStream().use { input ->
+                writtenFile.outputStream().use { output ->
+                    input.copyTo(output)
                 }
-                writtenFile.toUri()
-            } catch (e: IOException) {
-                Log.w(LOG_TAG, "Could not write file $writtenFile to disk.", e)
-                null
             }
+            writtenFile
+        } catch (e: IOException) {
+            Log.w(LOG_TAG, "Could not write file $writtenFile to disk.", e)
+            null
         }
+    }
 }

@@ -21,7 +21,7 @@
     <string name="slide_3_desc">Tots els cosmètics que utilitzeu, en una llista útil que podeu exportar</string>
     <string name="slide_4_title">Treballeu fora de línia</string>
     <string name="slide_4_desc">Podeu afegir nous productes, fins i tot si ara mateix no teniu una connexió a Internet</string>
-    <string name="txtDialogsContent">El producte que heu escanejat encara no existeix a Open Beauty Facts. Afegiu-lo.</string>
+    <string name="product_does_not_exist_please_add_it">El producte que heu escanejat encara no existeix a Open Products Facts. Afegiu-lo.</string>
     <string name="msg_share">Mireu aquest producte a Open Beauty Facts:</string>
     <string name="txt_broaden_search">- amplieu la cerca \n- escanegeu-ho i afegiu-ho a Open Beauty Facts</string>
     <string name="Donation">Feu clic aquí per a fer un donatiu a Open Beauty Facts</string>
@@ -46,4 +46,5 @@
     <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
         You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
     <string name="OFFlogo">Open Beauty Facts logo</string>
+    <string name="txtDialogsContentPowerMode">El producte que heu escanejat ja existeix a Open Food Facts.</string>
 </resources>

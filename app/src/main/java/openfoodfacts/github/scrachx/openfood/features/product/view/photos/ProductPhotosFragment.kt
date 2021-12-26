@@ -5,9 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.GridLayoutManager
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentProductPhotosBinding
 import openfoodfacts.github.scrachx.openfood.features.FullScreenActivityOpener
@@ -15,7 +20,7 @@ import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditAc
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductState
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
+import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
 import openfoodfacts.github.scrachx.openfood.utils.requireProductState
 import javax.inject.Inject
@@ -31,7 +36,7 @@ class ProductPhotosFragment : BaseFragment() {
     private val viewModel: ProductPhotosViewModel by viewModels()
 
     @Inject
-    lateinit var client: OpenFoodAPIClient
+    lateinit var client: ProductRepository
 
     @Inject
     lateinit var productsApi: ProductsAPI
@@ -48,8 +53,13 @@ class ProductPhotosFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         val product = requireProductState().product!!
 
-        viewModel.product.value = product
-        viewModel.imageNames.observe(viewLifecycleOwner) { loadImages(product, it) }
+        viewModel.setProduct(product)
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                launch { viewModel.imageNames.collectLatest { loadImages(product, it) } }
+            }
+        }
+
     }
 
     private fun loadImages(product: Product, imageNames: List<String>) {
@@ -101,7 +111,6 @@ class ProductPhotosFragment : BaseFragment() {
     }
 
     companion object {
-        private val LOG_TAG = ProductPhotosFragment::class.simpleName
         fun newInstance(productState: ProductState) = ProductPhotosFragment().apply {
             arguments = Bundle().apply {
                 putSerializable(KEY_STATE, productState)

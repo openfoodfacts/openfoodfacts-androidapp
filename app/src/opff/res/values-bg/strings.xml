@@ -21,14 +21,14 @@
     <string name="slide_3_desc">All the petfood you scan, in one handy list you can export</string>
     <string name="slide_4_title">Работа извън линия</string>
     <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet connection right now</string>
-    <string name="txtDialogsContent">The product you scanned does not exist yet in Open Pet Food Facts. Please add it.</string>
+    <string name="product_does_not_exist_please_add_it">Продуктът който сканира, все още не съществува в Open Pet Food Facts. Моля, добави го.</string>
     <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Pet Food Facts.</string>
     <string name="msg_share">Look at this product on Open Pet Food Facts :</string>
     <string name="not_support_books">Книгите понастоящем не се поддържат от Open Pet Food Facts</string>
     <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Pet Food Facts</string>
     <string name="Donation">Click here to donate to Open Pet Food Facts</string>
-    <string name="translate_help_title">Помогнете за превода на Open Pet Food Facts</string>
-    <string name="translate_help_summary">Въведете Open Pet Food Facts база данни във вашия език без изискване за техничекси познания</string>
+    <string name="translate_help_title">Помогни за превода на Open Pet Food Facts</string>
+    <string name="translate_help_summary">Направи базата данни на Open Pet Facts налична на твоя език - не се изискват технически познания</string>
     <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Pet Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Вашата информация за алергиите никога няма да бъде изпратена на сървъра на Open Pet Food Facts. Също така бъдете внимателни с това, че данните за продукта може да не са точни и откриването може да не е 100% точно, затова моля, проверете повторно сами! </string>
     <!-- OPFF tagline in different languages -->
@@ -41,7 +41,7 @@
     <string name="add_category_prompt_text">Add a category to help complete the product</string>
     <string name="add_nutrient_category_prompt_text">Add a category and nutrition facts to help complete the product</string>
     <string name="txt_eaten_products">Products I have</string>
-    <string name="txt_products_to_buy">Products to buy</string>
+    <string name="txt_products_to_buy">Продукти за купуване</string>
     <string name="intent_filter_share_label">Add to Open Pet Food Facts</string>
     <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
         You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>

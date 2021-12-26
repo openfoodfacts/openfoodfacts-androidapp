@@ -12,9 +12,11 @@ import androidx.core.text.HtmlCompat
 import androidx.core.text.HtmlCompat.FROM_HTML_MODE_COMPACT
 import androidx.core.text.bold
 import androidx.core.text.buildSpannedString
+import androidx.lifecycle.lifecycleScope
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
-import io.reactivex.rxkotlin.addTo
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.rx2.await
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentEnvironmentProductBinding
 import openfoodfacts.github.scrachx.openfood.features.FullScreenActivityOpener
@@ -29,7 +31,7 @@ import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.models.ProductState
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
+import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.*
 import java.io.File
 import javax.inject.Inject
@@ -39,7 +41,7 @@ class EnvironmentProductFragment : BaseFragment() {
     private lateinit var productState: ProductState
 
     @Inject
-    lateinit var client: OpenFoodAPIClient
+    lateinit var productRepo: ProductRepository
 
     @Inject
     lateinit var picasso: Picasso
@@ -173,17 +175,19 @@ class EnvironmentProductFragment : BaseFragment() {
 
     private fun openFullScreen() {
         val imageUrl = mUrlImage
-        val p = productState.product
-        if (imageUrl != null && p != null) {
-            FullScreenActivityOpener.openForUrl(
-                    this,
-                    client,
-                    p,
+        val product = productState.product
+        if (imageUrl != null && product != null) {
+            lifecycleScope.launch {
+                FullScreenActivityOpener.openForUrl(
+                    this@EnvironmentProductFragment,
+                    productRepo,
+                    product,
                     ProductImageField.PACKAGING,
                     imageUrl,
                     binding.imageViewPackaging,
                     localeManager.getLanguage(),
-            )
+                )
+            }
         } else {
             newPackagingImage()
         }
@@ -197,15 +201,15 @@ class EnvironmentProductFragment : BaseFragment() {
         image.filePath = photoFile.absolutePath
 
         // Load to server
-        client.postImg(image).subscribe().addTo(disp)
+        lifecycleScope.launch { productRepo.postImg(image) }
 
         // Load into view
         binding.addPhotoLabel.visibility = View.GONE
         mUrlImage = photoFile.absolutePath
         picasso
-                .load(photoFile)
-                .fit()
-                .into(binding.imageViewPackaging)
+            .load(photoFile)
+            .fit()
+            .into(binding.imageViewPackaging)
     }
 
     //checks the product states_tags to determine which prompt to be shown

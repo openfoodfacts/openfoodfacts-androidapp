@@ -21,12 +21,12 @@
     <string name="slide_3_desc">Todas as pet foods que você escanear, em uma lista prática que você pode exportar</string>
     <string name="slide_4_title">Funciona offline</string>
     <string name="slide_4_desc">Você pode adicionar novos produtos, mesmo se você não estiver atualmente conectado à Internet</string>
-    <string name="txtDialogsContent">O produto que você escaneou ainda não existe no Open Pet Food Facts. Por favor adicione-o.</string>
+    <string name="product_does_not_exist_please_add_it">The product you scanned does not exist yet in Open Pet Food Facts. Please add it.</string>
     <string name="txtDialogsContentPowerMode">O produto que você escaneou já existe no Open Pet Food Facts.</string>
     <string name="msg_share">Ver este produto no Open Products Facts:</string>
     <string name="not_support_books">Livros não são atualmente permitidos no Open Pet Food Facts</string>
     <string name="txt_broaden_search">- ampliando sua pesquisa \n- escaneie e adicione-o ao Open Products Facts</string>
-    <string name="Donation">Clique aqui para doar ao Open Products Facts</string>
+    <string name="Donation">Clique aqui para doar para o Open Pet Food Facts</string>
     <string name="translate_help_title">Ajudar a traduzir Open Pet Food Facts</string>
     <string name="translate_help_summary">Traga a base de dados Open Pet Food Facts ao seu idioma - nenhum conhecimento técnico necessário</string>
     <string name="text_offline_info_dialog">Digitalize os produtos mesmo quando estiver offline, para adicioná-los posteriormente ao Open Pet Food Facts. Os produtos digitalizados aparecerão aqui e você poderá enviá-los usando o botão abaixo.</string>

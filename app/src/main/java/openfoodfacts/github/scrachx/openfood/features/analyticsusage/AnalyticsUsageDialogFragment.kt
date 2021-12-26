@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.edit
-import androidx.databinding.DataBindingUtil
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 import openfoodfacts.github.scrachx.openfood.R
@@ -21,6 +20,10 @@ class AnalyticsUsageDialogFragment : BottomSheetDialogFragment() {
         const val TAG = "AnalyticsUsageDialogFragment"
     }
 
+    private var _binding: FragmentAnalyticsUsageBottomSheetBinding? = null
+    private val binding get() = _binding!!
+
+
     @Inject
     lateinit var matomoAnalytics: MatomoAnalytics
 
@@ -32,7 +35,7 @@ class AnalyticsUsageDialogFragment : BottomSheetDialogFragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        val binding: FragmentAnalyticsUsageBottomSheetBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_analytics_usage_bottom_sheet, container, false)
+        _binding = FragmentAnalyticsUsageBottomSheetBinding.inflate(inflater, container, false)
         binding.grantButton.setOnClickListener {
             saveAnalyticsReportingPref(true)
             matomoAnalytics.setEnabled(true)
@@ -44,6 +47,11 @@ class AnalyticsUsageDialogFragment : BottomSheetDialogFragment() {
             dismiss()
         }
         return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     private fun saveAnalyticsReportingPref(value: Boolean) {

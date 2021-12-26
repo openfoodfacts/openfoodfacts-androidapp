@@ -21,7 +21,7 @@
     <string name="slide_3_desc">Erabiltzen duzen kosmetika guztia, esportatu dezakezun zerrenda erabailgarri batean</string>
     <string name="slide_4_title">Lineaz kanpo funtzionatzen du</string>
     <string name="slide_4_desc">Produktu berriak gehi ditzakezu, momentuan Interneterako konexioa ez baduzu ere</string>
-    <string name="txtDialogsContent">Eskaneatu duzun produktua ez dago Open Beauty Facts datu-basean oraindik. Gehitu ezazu mesedez.</string>
+    <string name="product_does_not_exist_please_add_it">The product you scanned does not exist yet in Open Beauty Facts. Please add it.</string>
     <string name="msg_share">Ikusi produktu hau Open Beauty Facts-en:</string>
     <string name="txt_broaden_search">- Zure \n- bilaketa zabaltzen, eskaneatu eta gehitu Open Beauty Facts-en</string>
     <string name="Donation">Egin klik hemen Open Beauty Facts-i donatzeko</string>
@@ -46,4 +46,5 @@
     <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
         You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
     <string name="OFFlogo">Open Beauty Facts logo</string>
+    <string name="txtDialogsContentPowerMode">Eskaneatu duzun produktua badago Open Food Facts datu-basean.</string>
 </resources>

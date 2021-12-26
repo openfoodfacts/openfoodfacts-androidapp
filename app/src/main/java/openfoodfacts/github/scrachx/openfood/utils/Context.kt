@@ -6,8 +6,9 @@ import android.content.IntentFilter
 import android.content.pm.PackageManager
 import android.os.BatteryManager
 import android.util.Log
-import androidx.preference.PreferenceManager
+import androidx.preference.PreferenceManager.getDefaultSharedPreferences
 import java.io.File
+import java.io.IOException
 import kotlin.math.ceil
 
 private const val LOG_TAG = "ContextExt"
@@ -18,23 +19,23 @@ private const val LOG_TAG = "ContextExt"
  * @return true if battery is low or false if battery in not low
  */
 fun Context.isBatteryLevelLow(percent: Int = 15): Boolean {
-    val ifilter = IntentFilter(Intent.ACTION_BATTERY_CHANGED)
-    val batteryStatus = registerReceiver(null, ifilter) ?: throw IllegalStateException("cannot get battery level")
+    val filter = IntentFilter(Intent.ACTION_BATTERY_CHANGED)
+    val batteryStatus = registerReceiver(null, filter) ?: throw IllegalStateException("cannot get battery level")
 
     val level = batteryStatus.getIntExtra(BatteryManager.EXTRA_LEVEL, -1)
     val scale = batteryStatus.getIntExtra(BatteryManager.EXTRA_SCALE, -1)
 
-    val batteryPct = level / scale.toFloat() * 100
+    val batteryPct = level.toFloat() / scale * 100
     Log.i("BATTERYSTATUS", batteryPct.toString())
-    return ceil(batteryPct.toDouble()) <= percent
+    return ceil(batteryPct) <= percent
 }
-
-fun Context.isDisableImageLoad(defValue: Boolean = false) = PreferenceManager.getDefaultSharedPreferences(this)
-    .getBoolean("disableImageLoad", defValue)
 
 fun Context.isLowBatteryMode() = isDisableImageLoad() && isBatteryLevelLow()
 
-fun Context.isFastAdditionMode(defValue: Boolean = false) = PreferenceManager.getDefaultSharedPreferences(this)
+fun Context.isDisableImageLoad(defValue: Boolean = false) = getDefaultSharedPreferences(this)
+    .getBoolean("disableImageLoad", defValue)
+
+fun Context.isFastAdditionMode(defValue: Boolean = false) = getDefaultSharedPreferences(this)
     .getBoolean("fastAdditionMode", defValue)
 
 fun Context.dpsToPixel(dps: Int) = dps.toPx(this)
@@ -53,6 +54,7 @@ fun Context.getVersionName(): String = try {
 }
 
 fun Context.isHardwareCameraInstalled() = isHardwareCameraInstalled(this)
+
 fun Context.clearCameraCache() {
     (getCameraCacheLocation().listFiles() ?: return).forEach {
         if (it.delete()) Log.i(LOG_TAG, "Deleted cached photo '${it.absolutePath}'.")
@@ -61,14 +63,19 @@ fun Context.clearCameraCache() {
 }
 
 fun Context.getCameraCacheLocation(): File {
-    var cacheDir = cacheDir
-    if (Utils.isExternalStorageWritable()) {
-        cacheDir = externalCacheDir
-    }
+    // Prefer external storage, photos are not sensible.
+    // From android docs:
+    // > If you need to store sensitive data only temporarily,
+    // > you should use the app's designated cache directory
+    // > within internal storage to save the data
+    val cacheDir = if (Utils.isExternalStorageWritable()) externalCacheDir else cacheDir
+
     val picDir = File(cacheDir, "EasyImage")
-    if (!picDir.exists()) {
+    if (picDir.exists()) {
+        check(picDir.isDirectory) { "Path '$picDir' is not a directory." }
+    } else {
         if (picDir.mkdirs()) Log.i(LOG_TAG, "Directory '${picDir.absolutePath}' created.")
-        else Log.i(LOG_TAG, "Couldn't create directory '${picDir.absolutePath}'.")
+        else throw IOException("Couldn't create directory '${picDir.absolutePath}'.")
     }
     return picDir
 }

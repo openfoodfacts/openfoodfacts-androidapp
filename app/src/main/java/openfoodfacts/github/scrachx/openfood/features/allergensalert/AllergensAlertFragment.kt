@@ -19,59 +19,39 @@ import android.os.Bundle
 import android.util.Log
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.edit
-import androidx.core.content.res.ResourcesCompat
-import androidx.core.view.isGone
 import androidx.core.view.isVisible
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView.AdapterDataObserver
+import androidx.recyclerview.widget.RecyclerView.VERTICAL
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.*
-import kotlinx.coroutines.rx2.await
-import net.steamcrafted.loadtoast.LoadToast
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import openfoodfacts.github.scrachx.openfood.R
-import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
-import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentAlertAllergensBinding
+import openfoodfacts.github.scrachx.openfood.features.allergensalert.AllergensAlertViewModel.SideEffect
 import openfoodfacts.github.scrachx.openfood.features.shared.NavigationBaseFragment
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenName
-import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
-import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType
-import openfoodfacts.github.scrachx.openfood.utils.getAppPreferences
-import openfoodfacts.github.scrachx.openfood.utils.isNetworkConnected
-import javax.inject.Inject
 
-/**
- * @see R.layout.fragment_alert_allergens
- */
 @AndroidEntryPoint
 class AllergensAlertFragment : NavigationBaseFragment() {
 
     private var _binding: FragmentAlertAllergensBinding? = null
     private val binding get() = _binding!!
 
-    @Inject
-    lateinit var productRepository: ProductRepository
+    private val viewModel: AllergensAlertViewModel by viewModels()
 
-    @Inject
-    lateinit var matomoAnalytics: MatomoAnalytics
-
-    @Inject
-    lateinit var localeManager: LocaleManager
-
-    private var enabledAllergens: MutableList<AllergenName>? = null
-    private var allergensFromDao: List<AllergenName>? = null
-
-    private lateinit var adapter: AllergensAdapter
-    private val mSettings by lazy { requireActivity().getAppPreferences() }
-    private val dataObserver by lazy { AllergensObserver() }
-    private val appLang: String by lazy { localeManager.getLanguage() }
+    private val adapter = AllergensAdapter {
+        viewModel.removeAllergen(it)
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        super.onCreateView(inflater, container, savedInstanceState)
         setHasOptionsMenu(true)
         _binding = FragmentAlertAllergensBinding.inflate(inflater)
         return binding.root
@@ -80,26 +60,35 @@ class AllergensAlertFragment : NavigationBaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // OnClick
-        binding.btnAdd.setOnClickListener { addAllergen() }
+        binding.addAllergenButton.setOnClickListener {
+            viewModel.addAllergenClicked()
+        }
+
+        binding.allergensRecycle.adapter = adapter
+        binding.allergensRecycle.layoutManager = LinearLayoutManager(requireContext(), VERTICAL, false)
+        binding.allergensRecycle.setHasFixedSize(true)
+        binding.allergensRecycle.addItemDecoration(DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL))
 
         lifecycleScope.launch {
-            awaitAll(
-                async {
-                    updateEnabledAllergens(appLang)
+            viewModel.viewStateFlow
+                .flowWithLifecycle(lifecycle)
+                .collect { state ->
+                    binding.allergensProgressbar.isVisible = state.loading
+                    adapter.allergens = state.allergens
+                    binding.allergensRecycle.isVisible = state.allergens.isNotEmpty()
+                }
+        }
 
-                    adapter = AllergensAdapter(productRepository, enabledAllergens!!)
-
-                    binding.allergensRecycle.adapter = adapter
-                    binding.allergensRecycle.layoutManager = LinearLayoutManager(view.context)
-                    binding.allergensRecycle.setHasFixedSize(true)
-
-                    adapter.registerAdapterDataObserver(dataObserver)
-                    dataObserver.onChanged()
-                },
-                async { updateAllergensFromDao(appLang) }
-            )
-            binding.btnAdd.isEnabled = true
+        lifecycleScope.launch {
+            viewModel.sideEffectFlow
+                .flowWithLifecycle(lifecycle)
+                .collect { sideEffect ->
+                    when (sideEffect) {
+                        is SideEffect.ShowNoDataDialog -> showNoDataDialog()
+                        is SideEffect.ShowAddAllergenDialog -> showAddAllergenDialog(sideEffect.items)
+                        is SideEffect.ShowNetworkErrorDialog -> showNetworkErrorDialog()
+                    }
+                }
         }
     }
 
@@ -114,9 +103,6 @@ class AllergensAlertFragment : NavigationBaseFragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        if (this::adapter.isInitialized) {
-            adapter.unregisterAdapterDataObserver(dataObserver)
-        }
         _binding = null
     }
 
@@ -125,102 +111,32 @@ class AllergensAlertFragment : NavigationBaseFragment() {
         menu.findItem(R.id.action_search).isVisible = false
     }
 
-    /**
-     * Add an allergen to be checked for when browsing products.
-     */
-    private fun addAllergen() {
-
-        if (enabledAllergens != null && !allergensFromDao.isNullOrEmpty()) {
-
-            lifecycleScope.launch {
-                val allergens = withContext(Dispatchers.IO) {
-                    productRepository.getAllergensByEnabledAndLanguageCode(false, appLang).await()
-                }.sortedBy { it.name }
-
-                MaterialAlertDialogBuilder(requireContext())
-                    .setTitle(R.string.title_dialog_alert)
-                    .setItems(allergens.map { it.name }.toTypedArray()) { _, position ->
-                        viewLifecycleOwner.lifecycleScope.launch {
-                            productRepository.setAllergenEnabled(allergens[position].allergenTag, true).await()
-                        }
-                        enabledAllergens!!.add(allergens[position])
-                        adapter.notifyItemInserted(enabledAllergens!!.size - 1)
-                        binding.allergensRecycle.scrollToPosition(adapter.itemCount - 1)
-                        matomoAnalytics.trackEvent(AnalyticsEvent.AllergenAlertCreated(allergens[position].allergenTag))
-                    }.show()
-            }
-
-        } else if (requireContext().isNetworkConnected()) {
-            val lt = LoadToast(context)
-                .setText(requireActivity().getString(R.string.toast_retrieving))
-                .setBackgroundColor(ResourcesCompat.getColor(requireContext().resources, R.color.blue, requireContext().theme))
-                .setTextColor(ResourcesCompat.getColor(requireActivity().resources, R.color.white, requireContext().theme))
-                .show()
-
-            // Retry to get allergens
-            lifecycleScope.launch {
-                try {
-                    productRepository.getAllergens()
-                } catch (err: Exception) {
-                    mSettings.edit { putBoolean("errorAllergens", true) }
-                    lt.error()
-                }
-
-                mSettings.edit { putBoolean("errorAllergens", false) }
-                adapter.allergens = enabledAllergens!!
-                adapter.notifyDataSetChanged()
-
-                updateAllergens()
-
-                // Retry
-                addAllergen()
-
-                // Close modal
-                lt.success()
-            }
-        } else {
-            MaterialAlertDialogBuilder(requireContext())
-                .setTitle(R.string.title_dialog_alert)
-                .setMessage(R.string.info_download_data_connection)
-                .setNeutralButton(android.R.string.ok) { d, _ -> d.dismiss() }
-                .show()
-        }
-    }
-
-    /**
-     * Retrieve modified list of allergens from ProductRepository
-     */
-    private suspend fun updateAllergens() {
-        updateEnabledAllergens(appLang)
-        updateAllergensFromDao(appLang)
-    }
-
-    private suspend fun updateAllergensFromDao(language: String) {
-        allergensFromDao = productRepository.getAllergensByLanguageCode(language)
-    }
-
-    private suspend fun updateEnabledAllergens(language: String) {
-        enabledAllergens = productRepository.getAllergensByEnabledAndLanguageCode(true, language).await().toMutableList()
-    }
-
     @NavigationDrawerType
     override fun getNavigationDrawerType() = NavigationDrawerListener.ITEM_ALERT
 
+    private fun showAddAllergenDialog(items: List<AllergenName>) {
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle(R.string.title_dialog_alert)
+            .setItems(items.map { it.name }.toTypedArray()) { _, position ->
+                viewModel.addAllergen(items[position])
+            }
+            .show()
+    }
 
-    /**
-     * Data observer of the Recycler Views
-     */
-    internal inner class AllergensObserver : AdapterDataObserver() {
-        override fun onChanged() = updateView()
-        override fun onItemRangeInserted(positionStart: Int, itemCount: Int) = updateView()
-        override fun onItemRangeRemoved(positionStart: Int, itemCount: Int) = updateView()
+    private fun showNoDataDialog() {
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle(R.string.title_dialog_alert)
+            .setMessage(R.string.info_download_data_connection)
+            .setNeutralButton(android.R.string.ok) { d, _ -> d.dismiss() }
+            .show()
+    }
 
-        private fun updateView() {
-            val isListEmpty = adapter.itemCount == 0
-
-            binding.emptyAllergensView.isVisible = isListEmpty
-            binding.allergensRecycle.isGone = isListEmpty
-        }
+    private fun showNetworkErrorDialog() {
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle(R.string.alert_dialog_warning_title)
+            .setMessage(R.string.txtConnectionError)
+            .setPositiveButton(R.string.ok_button) { dialog, _ -> dialog.dismiss() }
+            .show()
     }
 
     companion object {

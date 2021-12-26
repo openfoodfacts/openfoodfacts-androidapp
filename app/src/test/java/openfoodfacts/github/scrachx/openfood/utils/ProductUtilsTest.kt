@@ -4,17 +4,18 @@ import com.google.common.truth.Truth.assertThat
 import openfoodfacts.github.scrachx.openfood.models.Product
 import org.junit.Test
 import org.mockito.Mockito.mock
-import org.mockito.Mockito.`when` as mockitoWhen
+import org.mockito.kotlin.doReturn
+import org.mockito.kotlin.whenever
 
 class ProductUtilsTest {
     @Test
     fun isPerServingInLiter() {
         val mockProd = mock(Product::class.java)
 
-        mockitoWhen(mockProd.servingSize).thenReturn("3l")
+        whenever(mockProd.servingSize) doReturn "3l"
         assertThat(mockProd.isPerServingInLiter()).isTrue()
 
-        mockitoWhen(mockProd.servingSize).thenReturn("3oz")
+        whenever(mockProd.servingSize) doReturn "3oz"
         assertThat(mockProd.isPerServingInLiter()).isFalse()
     }
 
@@ -133,5 +134,9 @@ class ProductUtilsTest {
             "9528722036004",
             "9634827116517"
         ).forEach { assertThat(isBarcodeValid(it)).isTrue() }
+
+        listOf(
+            "9781484506578"
+        ).forEach { assertThat(isBarcodeValid(it)).isFalse()}
     }
 }

@@ -21,17 +21,14 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContract
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.rxkotlin.addTo
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductImagesListBinding
 import openfoodfacts.github.scrachx.openfood.features.adapters.ProductImagesSelectionAdapter
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
@@ -63,7 +60,6 @@ class ImagesSelectActivity : BaseActivity() {
     lateinit var sharedPreferences: SharedPreferences
 
     private lateinit var adapter: ProductImagesSelectionAdapter
-    private val disp = CompositeDisposable()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -84,21 +80,18 @@ class ImagesSelectActivity : BaseActivity() {
     }
 
     private fun loadProductImages(code: String) {
-        productsApi.getProductImages(code)
-            .map { it.extractImagesNameSortedByUploadTimeDesc() }
-                .observeOn(AndroidSchedulers.mainThread())
-                .doOnError { Log.e(LOG_TAG, "Cannot download images from server", it) }
-                .subscribe { imageNames ->
-                    supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        lifecycleScope.launchWhenCreated {
+            val imageNames = productsApi.getProductImages(code).extractImagesNameSortedByUploadTimeDesc()
+            supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-                    // Check if user is logged in
-                    adapter = ProductImagesSelectionAdapter(this, picasso, imageNames, code) {
-                        setSelectedImage(it)
-                    }
+            // Check if user is logged in
+            adapter = ProductImagesSelectionAdapter(this@ImagesSelectActivity, picasso, imageNames, code) {
+                setSelectedImage(it)
+            }
 
-                    binding.imagesRecycler.adapter = adapter
-                    binding.imagesRecycler.layoutManager = GridLayoutManager(this, 3)
-                }.addTo(disp)
+            binding.imagesRecycler.adapter = adapter
+            binding.imagesRecycler.layoutManager = GridLayoutManager(this@ImagesSelectActivity, 3)
+        }
     }
 
     private fun setSelectedImage(selectedPosition: Int) {
@@ -138,7 +131,6 @@ class ImagesSelectActivity : BaseActivity() {
     }
 
     override fun onDestroy() {
-        disp.dispose()
         _binding = null
         super.onDestroy()
     }
@@ -178,7 +170,7 @@ class ImagesSelectActivity : BaseActivity() {
         })
 
         class SelectImageContract(
-                private val toolbarTitle: String
+            private val toolbarTitle: String
         ) : ActivityResultContract<String, Pair<String?, File?>>() {
             override fun createIntent(context: Context, barcode: String) = Intent(context, ImagesSelectActivity::class.java).apply {
                 putExtra(TOOLBAR_TITLE, toolbarTitle)
@@ -186,8 +178,8 @@ class ImagesSelectActivity : BaseActivity() {
             }
 
             override fun parseResult(resultCode: Int, intent: Intent?) =
-                    if (resultCode != RESULT_OK) null to null
-                    else intent?.getStringExtra(IMG_ID) to intent?.getSerializableExtra(IMAGE_FILE) as File?
+                if (resultCode != RESULT_OK) null to null
+                else intent?.getStringExtra(IMG_ID) to intent?.getSerializableExtra(IMAGE_FILE) as File?
 
         }
     }

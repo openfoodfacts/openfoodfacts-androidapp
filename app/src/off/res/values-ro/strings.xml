@@ -14,22 +14,22 @@
     <!-- Old onboarding slides -->
     <string name="slide_1_title">Contribuie la transparența alimentelor</string>
     <string name="slide_1_desc">Scanați produse, fotografiați-le, ajutați la concretizarea transparenței alimentelor</string>
-    <string name="slide_2_title">Obțineți informații</string>
-    <string name="slide_2_desc">Informații detaliate despre produsul pe care l-ați scanat, descifrate pentru dvs</string>
+    <string name="slide_2_title">Obțineți faptele</string>
+    <string name="slide_2_desc">Informații extinse despre produsul pe care l-ați scanat, descifrat pentru dvs</string>
     <string name="slide_3_title">Obțineți Nutri-Score</string>
     <string name="slide_3_desc">O vedere de ansamblu asupra proprietăților nutriționale ale produselor dvs alimentare preferate</string>
-    <string name="slide_4_title">Funcţionează offline</string>
-    <string name="slide_4_desc">Poți adăuga produse noi, chiar dacă nu ești conectat la internet momentan</string>
+    <string name="slide_4_title">Funcționează offline</string>
+    <string name="slide_4_desc">Puteți adăuga produse noi, chiar dacă nu aveți o conexiune la internet în acest moment</string>
     <!-- New onboarding-->
-    <string name="title_welcome_intro">Join the food revolution</string>
-    <string name="msg_welcome_intro">Scan food, Take photos, Help transform the food system</string>
+    <string name="title_welcome_intro">Alăturați-vă revoluției alimentare</string>
+    <string name="msg_welcome_intro">Scanați alimente, faceți fotografii, ajutați la transformarea sistemului alimentar</string>
     <string name="title_welcome_nutriscore">Obțineți Nutri-Score</string>
-    <string name="msg_welcome_nutriscore">A simple synthesis of the nutritional quality of your food</string>
-    <string name="title_welcome_nova">Avoid ultra-processed foods</string>
-    <string name="msg_welcome_nova">Reduce the amount of ultra-processed foods in your diet.</string>
-    <string name="title_welcome_ecoscore">Eco-Score</string>
+    <string name="msg_welcome_nutriscore">O sinteză simplă a calității nutriționale a alimentelor dumneavoastră</string>
+    <string name="title_welcome_nova">Evita alimentele ultraprocesate</string>
+    <string name="msg_welcome_nova">Reduceți cantitatea de alimente ultraprocesate din alimentația dumneavoastră.</string>
+    <string name="title_welcome_ecoscore">Scor Ecologic</string>
     <!-- Scan card -->
-    <string name="txtDialogsContent">Produsul pe care l-ai sanat încă nu există în Open Food Facts. Te rog să îl adaugi tu.</string>
+    <string name="product_does_not_exist_please_add_it">Produsul scanat nu există încă în baza de date Open Food Facts. Vă rugăm să îl adăugați.</string>
     <string name="txtDialogsContentPowerMode">Produsul scanat există deja în baza de date Open Food Facts.</string>
     <string name="msg_share">Vizualizează acest produs în Open Food Facts :</string>
     <string name="not_support_books">Cărțile momentan nu sunt suportate de către Open Food Facts</string>

@@ -199,7 +199,7 @@
     <string name="uploadLater">Ağ kullanılabilir olduğunda resim yüklenecek</string>
     <string name="txtInfoLoginOk">Kullanıcı kaydedildi</string>
     <string name="txtInfoLoginNo">Kullanıcı kaydedilemedi</string>
-    <string name="txtDialogsContent">Aradığınız ürün Open Food Facts\'te mevcut değil. Lütfen ekleyin.</string>
+    <string name="product_does_not_exist_please_add_it">Aradığınız ürün Open Food Facts\'te mevcut değil. Lütfen ekleyin.</string>
     <string name="txtYes">Evet</string>
     <string name="txtNo">Hayır</string>
     <string name="hintBrand">Marka</string>
@@ -594,7 +594,7 @@
     <string name="packaging">Recycling</string>
     <string name="take_ingredients_picture_to_extract">(Lütfen otomatik olarak almak için içindekilerin bir fotoğrafını çekin)</string>
     <string name="ingredients_list">İçindekiler Listesi</string>
-    <string name="ingredients_hint">Sırasını koruyun, varsa %\'sini belirtin, virgül ile ayırın ya da - kullanın, bir malzemenin içindekileri belirtmek için () kullanın, alerjenlerin etrafını _ ile çevirin</string>
+    <string name="ingredients_hint" tools:ignore="StringFormatInvalid">Sırasını koruyun, varsa %\'sini belirtin, virgül ile ayırın ya da - kullanın, bir malzemenin içindekileri belirtmek için () kullanın, alerjenlerin etrafını _ ile çevirin</string>
     <string name="extract_ingredients">İçindekileri çıkartın</string>
     <string name="extracting_ingredients">Malzemeler çıkartılıyor</string>
     <string name="looksGood">İyi Görünüyor</string>

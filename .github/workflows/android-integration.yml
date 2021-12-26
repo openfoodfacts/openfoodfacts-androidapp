@@ -14,7 +14,7 @@ jobs:
 
     steps:
       - name: Checkout sources
-        uses: actions/checkout@v2.3.4
+        uses: actions/checkout@v2.4.0
 
       - name: Set up JDK 11
         uses: actions/setup-java@v2
@@ -23,7 +23,7 @@ jobs:
           java-version: "11"
 
       - name: Compile screenshots android tests
-        uses: gradle/gradle-build-action@v1.5.1
+        uses: gradle/gradle-build-action@v2.0.1
         with:
           arguments: >
             compileOffPlaystoreScreenshotsAndroidTestSources 
@@ -36,7 +36,7 @@ jobs:
 
     steps:
       - name: Checkout sources
-        uses: actions/checkout@v2.3.4
+        uses: actions/checkout@v2.4.0
 
       - name: Set up JDK 11
         uses: actions/setup-java@v2
@@ -45,7 +45,7 @@ jobs:
           java-version: "11"
 
       - name: Run unit tests
-        uses: gradle/gradle-build-action@v1.5.1
+        uses: gradle/gradle-build-action@v2.0.1
         with:
           arguments: >
             testObfPlaystoreDebugUnitTest
@@ -60,7 +60,7 @@ jobs:
 
     steps:
       - name: Checkout sources
-        uses: actions/checkout@v2.3.4
+        uses: actions/checkout@v2.4.0
 
       - name: Set up JDK 11
         uses: actions/setup-java@v2
@@ -72,12 +72,12 @@ jobs:
         run: 'echo "ndk.dir=${ANDROID_HOME}/ndk-bundle" > local.properties'
 
       - name: Assemble debug APKs
-        uses: gradle/gradle-build-action@v1.5.1
+        uses: gradle/gradle-build-action@v2.0.1
         with:
           arguments: assembleDebug
 
       - name: Upload OBF APKs
-        uses: actions/upload-artifact@v2.2.4
+        uses: actions/upload-artifact@v2.3.1
         with:
           name: OBF
           path: |
@@ -85,7 +85,7 @@ jobs:
             ./app/build/outputs/apk/obfFdroid/debug/app-obf-fdroid-debug.apk
 
       - name: Upload OFF APK
-        uses: actions/upload-artifact@v2.2.4
+        uses: actions/upload-artifact@v2.3.1
         with:
           name: OFF
           path: |
@@ -93,7 +93,7 @@ jobs:
             ./app/build/outputs/apk/offFdroid/debug/app-off-fdroid-debug.apk
 
       - name: Upload OPF APK
-        uses: actions/upload-artifact@v2.2.4
+        uses: actions/upload-artifact@v2.3.1
         with:
           name: OPF
           path: |
@@ -101,7 +101,7 @@ jobs:
             ./app/build/outputs/apk/opfFdroid/debug/app-opf-fdroid-debug.apk
 
       - name: Upload OPFF APK
-        uses: actions/upload-artifact@v2.2.4
+        uses: actions/upload-artifact@v2.3.1
         with:
           name: OPFF
           path: |
@@ -117,7 +117,7 @@ jobs:
 
     steps:
       - name: Checkout sources
-        uses: actions/checkout@v2.3.4
+        uses: actions/checkout@v2.4.0
 
       - name: Set up JDK 11
         uses: actions/setup-java@v2
@@ -132,14 +132,14 @@ jobs:
         run: "echo \"org.gradle.jvmargs=-Xmx4096m\" >> gradle.properties"
 
       - name: Lint sources
-        uses: gradle/gradle-build-action@v1.5.1
+        uses: gradle/gradle-build-action@v2.0.1
         with:
           arguments: lintOffPlayStoreDebug --stacktrace
 
       - name: Generate GitHub annotations
-        uses: yutailang0119/action-android-lint@v1.1.0
+        uses: yutailang0119/action-android-lint@v2
         with:
-          xml_path: ./app/build/reports/lint-results-offPlaystoreDebug.xml
+          report-path: ./app/build/reports/lint-results-offPlaystoreDebug.xml
 
   build_deploy_pages:
     name: Deploy dokka to GitHub Pages
@@ -151,7 +151,7 @@ jobs:
 
     steps:
       - name: Checkout sources
-        uses: actions/checkout@v2.3.4
+        uses: actions/checkout@v2.4.0
 
       - name: Set up JDK 11
         uses: actions/setup-java@v2
@@ -163,13 +163,12 @@ jobs:
         run: chmod +x gradlew
 
       - name: Generate documentation
-        uses: gradle/gradle-build-action@v1.5.1
+        uses: gradle/gradle-build-action@v2.0.1
         with:
           arguments: dokkaHtml
 
-      - name: Deploy API documentation to Github Pages
-        uses: JamesIves/github-pages-deploy-action@4.1.5
+      - name: Deploy documentation to Github Pages
+        uses: JamesIves/github-pages-deploy-action@4.1.8
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: gh-pages
-          FOLDER: app/build/dokka/html/
+          branch: gh-pages
+          folder: app/build/dokka/html/
