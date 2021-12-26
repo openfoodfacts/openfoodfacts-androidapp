@@ -221,7 +221,7 @@
     <string name="cancel_button">Ακύρωση</string>
     <string name="login_button">Όνομα χρήστη</string>
     <string name="create_account_button">Δημιουργία Λογαριασμού</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
     <string name="title_info_dialog">Οδηγίες Χρήσης</string>
     <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
     <string name="permission_camera">Χρειάζεται άδεια κάμερας για τη σάρωση των Barcodes και τη λήψη φωτογραφιών.</string>
@@ -430,9 +430,9 @@
     <string name="preference_analytics_bottom_sheet_decline_button">Decline</string>
     <string name="scan_first_string">Your viewed product history will be listed here.\nThis history is for your eyes only and is stored locally.</string>
     <string name="log_in">Όνομα χρήστη</string>
-    <string name="login_true">Already logged in!</string>
+    <string name="login_true">You are already logged in.</string>
     <string name="confirm_logout">Επιβεβαίωση αποσύνδεσης</string>
-    <string name="logout_dialog_content">Are you sure to log out ?</string>
+    <string name="logout_dialog_content">Are you sure to log out of your Open Food Facts contributor account ?</string>
     <string name="dialog_cancel">Ακύρωση</string>
     <string name="dialog_create">Δημιουργία</string>
     <string name="wikidata_information">Περισσότερες Πληροφορίες</string>
@@ -709,7 +709,7 @@
     <string name="help_translate_ingredients">Help translate the ingredients in your language</string>
     <string name="unknown_status_missing_ingredients">We couldn\'t assess the status of the product due to missing ingredients.</string>
     <string name="unknown_status_ambiguous_ingredients">We couldn\'t assess the status of the product because of ambiguous ingredients : <![CDATA[<b>%1$s</b>]]></string>
-    <string name="help_extract_ingredients">Help extract the ingredients to get the %1$s status.</string>
+    <string name="help_extract_ingredients">Help extract the ingredients to get the %1$s status</string>
     <string name="add_photo_to_extract_ingredients">Add a photo to begin extracting ingredients</string>
     <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
     <string name="compare_brands">Brands :</string>
@@ -744,7 +744,7 @@
     <string name="icon_categories">Categories icon</string>
     <string name="icon_emb">Traceability code icon</string>
     <string name="product_front_image">Product front image</string>
-    <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
+    <string name="brand_hint">Examples: Coca-Cola, Nestle, etc…</string>
     <string name="sign_in_or_register">Sign in or register</string>
     <string name="hunger_game_call_to_action" comment="Do not change the placeholder">Help classify more %1$s</string>
     <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s products (plus the ones you will contribute) in the world.</string>

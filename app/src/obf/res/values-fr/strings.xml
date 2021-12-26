@@ -21,7 +21,7 @@
     <string name="slide_3_desc">Tous les cosmétiques que vous utilisez, dans une liste pratique, que vous pouvez exporter</string>
     <string name="slide_4_title">Fonctionne hors connexion</string>
     <string name="slide_4_desc">Vous pouvez ajouter de nouveaux produits, même si vous ne disposez pas d\'une connexion Internet pour le moment</string>
-    <string name="product_does_not_exist_please_add_it">The product you scanned does not exist yet in Open Beauty Facts. Please add it.</string>
+    <string name="product_does_not_exist_please_add_it">Le produit que vous avez scanné n\'existe pas encore dans Open Beauty Facts. Veuillez l\'ajouter.</string>
     <string name="msg_share">Regardez ce produit sur Open Beauty Facts:</string>
     <string name="txt_broaden_search">- élargir votre recherche\n-le scanner et l\'ajouter à Open Beauty Facts</string>
     <string name="Donation">Cliquez ici pour faire un don à Open Beauty Facts</string>

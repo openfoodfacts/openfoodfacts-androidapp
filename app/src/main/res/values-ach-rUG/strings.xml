@@ -268,7 +268,7 @@
     <string name="nutrition_fat">Fat</string>
     <string name="nutrition_fiber">Dietary fiber</string>
     <string name="nutrition_header">Nutrition facts</string>
-    <string name="nutrition_proteins">Jdztcy</string>
+    <string name="nutrition_proteins">Proteins</string>
     <string name="nutrition_salt">Salt</string>
     <string name="nutrition_satured_fat">Saturated fat</string>
     <string name="nutrition_sodium">Sodium</string>
@@ -481,7 +481,7 @@
     <string name="product_info_added">Products you added information for</string>
     <string name="product_info_tocomplete">Products you added information for that need to be completed</string>
     <string name="show_by">Show</string>
-    <string name="notify_title">Hdudu</string>
+    <string name="notify_title">Export complete</string>
     <string name="notify_content">Click to view exported products</string>
     <string name="notification_channel_name">Export Notifications</string>
     <string name="notify_channel_description">Notification to show exported file\'s location</string>

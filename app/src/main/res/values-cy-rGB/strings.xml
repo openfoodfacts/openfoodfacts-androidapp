@@ -59,7 +59,7 @@
     <string name="action_discover">Discover</string>
     <string name="contribute">How to contribute</string>
     <string name="action_find">Find</string>
-    <string name="product_incomplete_message">This product is not complete. As a result, we couldn\'t do the allergen check.</string>
+    <string name="product_incomplete_message">The ingredient list of this product is not complete. As a result, the allergen alert is not shown.</string>
     <string name="product_allergen_prompt">This product contains:</string>
     <string name="no_offline_data">You\'re all done</string>
     <!-- Image Upload -->
@@ -243,13 +243,13 @@
     <string name="create_account_button">Create Account</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
     <string name="title_info_dialog">How does it work?</string>
-    <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
+    <string name="text_offline_info_dialog">You can scan products when you\'re offline to add them to Open Food Facts later. All the products you scan will appear here, and you\'ll be able to send them using the button below.</string>
     <string name="permission_camera">Camera permission is needed to scan barcodes and take pictures.</string>
     <string name="no_camera_dialog_title">Camera not found</string>
     <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
     <string name="permission_title">Permission information</string>
     <string name="permission_denied">Please activate permission in the settings</string>
-    <string name="info_download_data_connection">You need to download some data to get this functionality working. Please activate internet connection.</string>
+    <string name="info_download_data_connection">You need to download some data to get this functionality working. Please activate your internet connection.</string>
     <!-- Strings related to login -->
     <string name="error_invalid_password">The password needs to be at least 6 characters long.</string>
     <string name="user">user</string>
@@ -298,7 +298,7 @@
     <string name="action_manage_account">Manage account</string>
     <string name="action_contributes">Your contributions</string>
     <string name="logout_drawer">Logout</string>
-    <string name="contribution_without_account">You can sign-in or create an account to keep your contributions</string>
+    <string name="contribution_without_account">You can sign-in or create an Open Food Facts account to keep your contributions</string>
     <string name="textCarbonFootprint">Carbon footprint / CO2 emissions: </string>
     <string name="packaging_environmentTab">Packaging:</string>
     <string name="action_search">Search</string>

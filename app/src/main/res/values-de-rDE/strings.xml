@@ -482,8 +482,8 @@
     <string name="notification_channel_name">Benachrichtigungen exportieren</string>
     <string name="notify_channel_description">Benachrichtigung, um den Speicherort der exportierten Dateien anzuzeigen</string>
     <string name="products_to_be_completed">Noch abzuschließende Produkte</string>
-    <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Produkt hinzugefügt am %1$s um %2$s MESZ durch</string>
-    <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Letzte Änderung der Produktseite am %1$s um %2$s MESZ durch </string>
+    <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Produkt hinzugefügt am %1$s um %2$s MESZ durch %3$s</string>
+    <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Letzte Änderung der Produktseite am %1$s um %2$s MESZ durch %3$s </string>
     <!-- TODO: Add the placeholder in the string - important for several languages -->
     <string name="other_editors">Produktseite auch bearbeitet von </string>
     <string name="product_states">Produktdaten</string>

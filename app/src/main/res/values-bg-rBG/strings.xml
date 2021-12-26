@@ -36,7 +36,7 @@
         <item quantity="other">преди %d дена</item>
     </plurals>
     <string name="action_about">Относно</string>
-    <string name="action_discover">Открийте</string>
+    <string name="action_discover">Открий</string>
     <string name="contribute">Как да допринесеш</string>
     <string name="action_find">Намери</string>
     <string name="product_incomplete_message">Този продукт не е завършен. В резултат на това не можем да направим проверката на алергените.</string>
@@ -170,8 +170,8 @@
     <string name="txtAdditives">Добавки: </string>
     <string name="txtTraces">Следи: </string>
     <string name="txtServingSize">Големина на порцията :</string>
-    <string name="txtNutrientLevel100g">Нива на хранителните вещества за 100g :</string>
-    <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
+    <string name="txtNutrientLevel100g">Нива на хранителните вещества за 100 г :</string>
+    <string name="txtNutrientLevel100ml">Нива на хранителните вещества за 100 мл :</string>
     <string name="txtNutritionLevelLow">в малко количество</string>
     <string name="txtNutritionLevelModerate">в умерено количество</string>
     <string name="txtNutritionLevelHigh">във високо количество</string>
@@ -214,16 +214,16 @@
     <string name="delete_txt">Изтрий</string>
     <string name="sign_in_drawer">Вход</string>
     <string name="alert_drawer">Предупреждение за алергени</string>
-    <string name="your_lists">Твоят списък</string>
+    <string name="your_lists">Твоите списъци</string>
     <string name="title_dialog_alert">Добави предупреждение</string>
     <string name="select_camera">Избери камера</string>
     <string name="ok_button">ОК</string>
     <string name="cancel_button">Отмени</string>
     <string name="login_button">Username</string>
     <string name="create_account_button">Създай профил</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Информацията за алергиите ти никога няма да бъде изпратена на сървъра на Open Food Facts. Също така бъди внимателен с това, че данните за продукта може да не са точни и откриването може да не е 100% точно, затова моля, провери повторно сам!</string>
     <string name="title_info_dialog">Как работи това?</string>
-    <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
+    <string name="text_offline_info_dialog">Можеш да сканираш продукти, когато си офлайн, за да ги добавиш към Open Food Facts по-късно. Всички продукти, които сканираш, ще се покажат тук и ще можеш да ги изпратиш, като използваш бутона по-долу.</string>
     <string name="permission_camera">Необходимо е разрешение за камерата за сканиране на баркодове и заснемане на снимки.</string>
     <string name="no_camera_dialog_title">Камерата не е намерена</string>
     <string name="no_camera_dialog_content">Твоето устройство няма камера. Няма да можеш да сканираш никакъв баркод.</string>
@@ -238,7 +238,7 @@
     <string name="user_enjoying_app">Харесваш ли преживяването си с Open Food Facts?</string>
     <string name="user_ask_show_feedback_form">Съжаляваме да чуем това! Би ли ни казал какво се случи?</string>
     <string name="user_ask_rate_app">Страхотно! Кажи на другите какво мислиш за това приложениие!</string>
-    <string name="rate_app">Rate app</string>
+    <string name="rate_app">Оцени приложението</string>
     <string name="no_thx">Не, благодаря</string>
     <string name="feedback_form_url" comment="Please ask teolemon to duplicate the feedback form and give you the right URL">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
     <!-- Scan history -->
@@ -266,7 +266,7 @@
     <string name="nutrition_energy_kj">Енергия в джаули (kJ)</string>
     <string name="nutrition_energy_short_name">Енергия</string>
     <string name="nutrition_fat">Мазнини</string>
-    <string name="nutrition_fiber">Хранителните влакнини</string>
+    <string name="nutrition_fiber">Хранителни влакна</string>
     <string name="nutrition_header">Хранителни факти</string>
     <string name="nutrition_proteins">Протеини</string>
     <string name="nutrition_salt">Сол</string>
@@ -280,7 +280,7 @@
     <string name="logout_drawer">Изход</string>
     <string name="contribution_without_account">Можеш да влезеш или да създадеш профил, за да запазиш приносите си</string>
     <string name="textCarbonFootprint">Въглероден отпечатък / емисии на СО2: </string>
-    <string name="packaging_environmentTab">Опаковка:</string>
+    <string name="packaging_environmentTab">Опаковане:</string>
     <string name="action_search">Търсене</string>
     <string name="search_hint">Търсене на продукт</string>
     <string name="number_of_results">Брой резултати: </string>
@@ -293,10 +293,10 @@
     <string name="txt_no_matching_store_products">О, не! Нямаме продукти от този магазин. Можеш ли да добавиш?</string>
     <string name="txt_no_matching_packaging_products">О, не! Нямаме продукти с тази опаковка. Можеш ли да добавиш?</string>
     <string name="txt_no_matching_brand_products">О, не! Нямаме продукти с тази марка. Можеш ли да добавиш?</string>
-    <string name="txt_no_matching_incomplete_products">We don’t have any incomplete products! Add a new product?</string>
+    <string name="txt_no_matching_incomplete_products">Нямаме нито един незавъшен продукт! Добавяне на нов продукт?</string>
     <string name="txt_no_matching_contributor_products">О, не! Нямаме продукти от този сътрудник. Можеш ли да добавиш?</string>
     <string name="txt_no_matching_products">Не намерихме съвпадащи продукти.\n Можеш да опиташ :</string>
-    <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
+    <string name="txt_broaden_search">- разширяване на твоето търсене \n- сканирай и го добави към Open Food Facts</string>
     <string name="something_went_wrong">Съжаляваме, нещо се обърка…</string>
     <string name="txt_try_again">Опитай пак</string>
     <string name="nutrition_lactose">Лактоза</string>
@@ -362,7 +362,7 @@
     <string name="take_picture_front">Take a photo of the front</string>
     <string name="take_picture_nutrition_table">Направи снимка на таблицата с хранителните стойности</string>
     <string name="take_more_pictures">Направи още снимки</string>
-    <string name="take_extra_packaging_pictures">Направи допълнителни снимки на опаковката</string>
+    <string name="take_extra_packaging_pictures">Направи още снимки на опаковката</string>
     <string name="txtSaturatedFat">Наситени мазнини</string>
     <string name="nutriscore_info_msg">Научи повече за Nutri-Score</string>
     <string name="nova_info_msg">Научи повече за Nova</string>
@@ -389,14 +389,14 @@
     <string name="changes_saved">Промените са запазени успешно</string>
     <string name="proceed">Продължи</string>
     <string name="preference_choose_language_dialog_title">Избери език</string>
-    <string name="preference_choose_scanner_dialog_title"><b>New: Enhanced “MLKit” scanner</b></string>
+    <string name="preference_choose_scanner_dialog_title"><b>Ново: подобрен скенер “MLKit”</b></string>
     <string name="preference_choose_scanner_dialog_body">We have included a new option to more reliably scan barcodes. While this scanner works on your device, using machine learning,
             please be aware that it is a proprietary component provided by Google, governed by this privacy policy, and that some limited telemetry might be sent back to Google’s servers
             to improve their software. As noted in the MLKit terms, this won’t include any information about the products you scan and the telemetry is anonymized. Choosing MLKit scanner
             implies that you accept those terms\n<b>Note: You can switch back at any time between the 2 scanners in the Settings.</b>
     </string>
     <string name="prompt_point_at_a_barcode">Насочи камерата към баркод</string>
-    <string name="prompt_move_camera_closer">Move closer to detect</string>
+    <string name="prompt_move_camera_closer">Приближи се, за да засечеш</string>
     <string name="please_check_your_connection">Моля, провери връзката си.</string>
     <string name="advanced_search_title">Разширено търсене &amp; Графики</string>
     <string name="compare_products">Сравни продукти</string>
@@ -404,7 +404,7 @@
     <string name="dismiss">Отхвърли</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <!--Just replace "world" by "fr", "de"… translate the "terms-of-use" with the hyphens -->
-    <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
+    <string name="terms_url">https://bg.openfoodfacts.org/terms-of-use</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
     <string name="faq_url">https://world-bg.openfoodfacts.org/faq</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
@@ -421,7 +421,7 @@
     <string name="preference_header_general">Общи</string>
     <string name="preference_header_privacy">Поверителност</string>
     <string name="preference_crash_title">Докладване за срив</string>
-    <string name="preference_crash_summary">When enabled, crash reports will be sent to the Open Food Facts server automatically, so that we can fix bugs and improve the app.</string>
+    <string name="preference_crash_summary">Когато е активирано, докладите за сривове ще се изпращат автоматично до сървъра на Open Food Facts, за да можем да коригираме грешки и да подобрим приложението.</string>
     <string name="preference_analytics_title">Изпращане на анонимни данни</string>
     <string name="preference_analytics_summary">When enabled, some anonymous information regarding app usage will be sent to the Open Food Facts servers, so that we can understand how and how much features are used in order to improve them.</string>
     <string name="preference_analytics_bottom_sheet_title">Изпращане на анонимни данни</string>
@@ -446,7 +446,7 @@
     <string name="country_string">Държава</string>
     <string name="store_subtitle">Магазин</string>
     <string name="packaging_subtitle">Опаковка</string>
-    <string name="state_subtitle">State</string>
+    <string name="state_subtitle">Държава</string>
     <string name="packaging_string">Опаковка</string>
     <string name="label_string">Етикет</string>
     <string name="category_string">Категория</string>
@@ -475,7 +475,7 @@
     <string name="do_you_want_to">Искаш ли да добавиш снимки към този баркод?</string>
     <string name="bottomNav_history">История</string>
     <string name="products_added">Продукти, които сте добавили или редактирали</string>
-    <string name="products_incomplete">Продуктите, които си добавил и трябва да бъдат завършени</string>
+    <string name="products_incomplete">Продукти, които си добавил и трябва да бъдат завършени</string>
     <string name="product_pictures_contributed">Продукти, за които си направил снимки</string>
     <string name="picture_contributed_incomplete">Продуктите, за които си направил снимки и трябва да бъдат завършени</string>
     <string name="product_info_added">Продуктите, за които си добавил информация</string>
@@ -523,7 +523,7 @@
     <string name="error_adding_product_details">Нещо се обърка, докато се опитвахме да добавим детайли за продукта</string>
     <string name="hint_product_URL">Линк към официалната страница на продукта</string>
     <string name="extract_url">Извличане на URL от QR-код</string>
-    <string name="search_url">Search for official page URL</string>
+    <string name="search_url">Потърси URL адрес на официалната страница</string>
     <string name="product_language">Език на продукта: </string>
     <string name="official_website">Официален уебсайт</string>
     <string name="scan_QR_code">Сканирай QR кода за уеб сайта на продукта</string>
@@ -540,10 +540,10 @@
     <string name="overview">Обобщение</string>
     <string name="ingredients">Съставки</string>
     <string name="nutrition_facts">Хранителна информация</string>
-    <string name="your_version">Yours</string>
+    <string name="your_version">Твоето</string>
     <string name="ingredients_picture">Изображение на съставките</string>
     <string name="packaging">Рециклиране</string>
-    <string name="take_ingredients_picture_to_extract">(Please take a photo of the ingredients to automatically extract them)</string>
+    <string name="take_ingredients_picture_to_extract">(Моля, направи снимка на съставките, за да ги извлечеш автоматично)</string>
     <string name="ingredients_list">Списък на съставките</string>
     <string name="ingredients_hint" tools:ignore="StringFormatInvalid">Запазете поръчката, посочете % (процент), когато е нужно, отделете със , (запетая) или използвайте - (тире), използвайте () (скоби) за подсъставките на дадена съставка, оградете алергените с _ (долна черта)</string>
     <string name="extract_ingredients">Извлечи съставките</string>
@@ -556,7 +556,7 @@
 Приложения: Мляко, глутен, ядки\"</string>
     <string name="nutrition_facts_not_specified">Хранителните факти не са посочени върху продукта.</string>
     <string name="nutrition_facts_picture">Снимка на хранителните стойности</string>
-    <string name="front_short_picture">Front</string>
+    <string name="front_short_picture">Отпред</string>
     <string name="other_picture">Друга снимка</string>
     <string name="for_100g_100ml">За 100 г / 100 мл</string>
     <string name="per_serving">На порция</string>
@@ -566,16 +566,16 @@
     <string name="add_this_product">Добави продукта</string>
     <string name="product_picture">Снимка на продукта</string>
     <string name="one_photo_compulsory">(Една снимка е задължителна за добавяне на нов продукт)</string>
-    <string name="product_details">Product Details</string>
+    <string name="product_details">Детайли за продукта</string>
     <string name="product_name">Име на продукта</string>
     <string name="quantity">Количество</string>
-    <string name="labels">Надписи</string>
+    <string name="labels">Етикети</string>
     <string name="period_of_time_after_opening">Period of time after opening</string>
-    <string name="manufacturing_details">Manufacturing Details</string>
+    <string name="manufacturing_details">Детайли за производство</string>
     <string name="origin_of_ingredients">Произход на съставките</string>
-    <string name="manufacturing_place">Manufacturing place</string>
+    <string name="manufacturing_place">Място на производство</string>
     <string name="emb_code">Код за проследимост</string>
-    <string name="purchasing_details">Purchasing Details</string>
+    <string name="purchasing_details">Подробности за покупка</string>
     <string name="country_where_purchased">Страна на покупка</string>
     <string name="stores">Магазини</string>
     <string name="additional_pictures">Допълнителни снимки</string>
@@ -612,13 +612,13 @@
     <string name="elderly_age">65+</string>
     <string name="most_people">Повечето хора\n(над 50%)</string>
     <string name="some_people">Някои хора\n(над 5%)</string>
-    <string name="safety_and_exposure_assessment">Safety and exposure assessment</string>
-    <string name="risk_of_exposure">Risk of exposure</string>
+    <string name="safety_and_exposure_assessment">Оценка на безопасността и експозицията</string>
+    <string name="risk_of_exposure">Риск от експозиция</string>
     <string name="efsa_warning_high_risk">The European Food Safety Authority (EFSA) has determined that some population groups have a high risk of consuming too much %1$s.</string>
     <string name="legend_noael">above dose with observed adverse effect (NOAEL)</string>
-    <string name="legend_adi">above Acceptable Daily Intake (ADI)</string>
+    <string name="legend_adi">над допустимия дневен прием (ADI)</string>
     <string name="max_energy_val_msg">Тази стойност е над 2000 kcal на 100 г. Можеш ли да го коригираш?</string>
-    <string name="max_nutrient_val_msg">Value entered is more than given per serving size</string>
+    <string name="max_nutrient_val_msg">Въведената стойност е повече от дадена за размер на порция</string>
     <string name="update_image">Изпрати актуализирана снимка</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">Извлечи съставките</string>
@@ -740,8 +740,8 @@
     <string name="content_edit_photo">Edit, crop and rotate the photo</string>
     <string name="title_unselect_photo">Unselect Photo</string>
     <string name="content_unselect_photo">Press here to unselect current photo</string>
-    <string name="title_exit">Exit</string>
-    <string name="content_exit">Press here to return to the product</string>
+    <string name="title_exit">Изход</string>
+    <string name="content_exit">Натисни тук, за да се върнеш към продукта</string>
     <string name="icon_label">Labels icon</string>
     <string name="icon_categories">Categories icon</string>
     <string name="icon_emb">Икона на код за проследяване</string>
