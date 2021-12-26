@@ -195,7 +195,7 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem {
         }
 
         requirePreference<Preference>(getString(R.string.pref_contact_us_key)) {
-            setOnPreferenceChangeListener { _, _ ->
+            setOnPreferenceClickListener {
                 try {
                     startActivity(Intent(Intent.ACTION_SENDTO).apply {
                         data = getString(R.string.off_mail).toUri()
@@ -209,7 +209,7 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem {
         }
 
         requirePreference<Preference>(getString(R.string.pref_rate_us_key)) {
-            setOnPreferenceChangeListener { _, _ ->
+            setOnPreferenceClickListener {
                 try {
                     startActivity(
                         Intent(

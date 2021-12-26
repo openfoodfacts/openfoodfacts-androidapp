@@ -68,8 +68,10 @@ object ApiFields {
     }
 
     object Keys {
-        const val ATTRIBUTE_GROUPS: String = "attribute_groups"
+        const val ATTRIBUTE_GROUPS = "attribute_groups"
         const val NO_NUTRITION_DATA = "no_nutrition_data"
+
+        const val IMAGE_FIELD = "imagefield"
 
         /**
          * The value can either be [Defaults.NUTRITION_DATA_PER_100G]
@@ -306,5 +308,17 @@ object ApiFields {
             ECOSCORE,
             NOVA_GROUPS
         )
+    }
+
+    fun getAllFields(langCode: String): String {
+        val allFields = Keys.PRODUCT_COMMON_FIELDS
+        val fieldsToLocalize = Keys.PRODUCT_LOCAL_FIELDS
+
+        val fieldsSet = allFields.toMutableSet()
+        fieldsToLocalize.forEach { (field, shouldAddEn) ->
+            fieldsSet += "${field}_$langCode"
+            if (shouldAddEn) fieldsSet += "${field}_en"
+        }
+        return fieldsSet.joinToString(",")
     }
 }

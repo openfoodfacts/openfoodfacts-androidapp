@@ -1,201 +1,195 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swipeRefresh"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <data>
-
-    </data>
-
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/swipeRefresh"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_gravity="fill_vertical"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        android:isScrollContainer="false"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <androidx.core.widget.NestedScrollView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="fill_vertical"
-            android:clipToPadding="false"
-            android:fillViewport="true"
-            android:isScrollContainer="false"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/nav_bar_height">
 
-            <LinearLayout
+
+            <openfoodfacts.github.scrachx.openfood.features.shared.views.TipBox
+                android:id="@+id/packagingImagetipBox"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:paddingBottom="@dimen/nav_bar_height">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:visibility="gone"
+                app:arrowAlignment="center"
+                app:arrowMarginStart="0dp"
+                app:backgroundColor="@android:color/holo_green_light"
+                app:identifier="recycling_image_tip_box"
+                app:message="@string/image_edit_tip"
+                app:shouldDisplayImmediately="false"
+                app:textColor="@android:color/white" />
 
+            <ImageButton
+                android:id="@+id/image_view_packaging"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/spacing_normal"
+                android:layout_marginTop="@dimen/spacing_tiny"
+                android:layout_marginRight="@dimen/spacing_normal"
+                android:adjustViewBounds="true"
+                android:background="?android:selectableItemBackground"
+                android:maxHeight="120dp"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/ic_add_a_photo_dark_48dp"
+                tools:ignore="ContentDescription" />
 
-                <openfoodfacts.github.scrachx.openfood.features.shared.views.TipBox
-                    android:id="@+id/packagingImagetipBox"
-                    android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/addPhotoLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/take_picture_recycling"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/extract_recycling_prompt"
+                style="@style/ButtonBorder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="@dimen/spacing_normal"
+                android:text="@string/extract_recycling_prompt"
+                android:visibility="gone"
+                tools:visibility="visible" />
+
+            <TextView
+                android:id="@+id/add_label_origin_prompt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp"
+                android:gravity="center"
+                android:padding="@dimen/padding_too_short"
+                android:textSize="@dimen/font_normal"
+                android:visibility="gone"
+                tools:text="@string/add_origins_prompt_text"
+                tools:visibility="visible" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/carbon_footprint_cv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:cardElevation="4dp">
+
+                <TextView
+                    android:id="@+id/textCarbonFootprint"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/activity_vertical_margin"
-                    app:arrowAlignment="center"
-                    app:arrowMarginStart="0dp"
-                    app:shouldDisplayImmediately="false"
-                    app:backgroundColor="@android:color/holo_green_light"
-                    app:textColor="@android:color/white"
-                    android:visibility="gone"
-                    app:identifier="recycling_image_tip_box"
-                    app:message="@string/image_edit_tip" />
-
-                <ImageButton
-                    android:id="@+id/image_view_packaging"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
                     android:layout_marginLeft="@dimen/spacing_normal"
-                    android:layout_marginRight="@dimen/spacing_normal"
-                    android:adjustViewBounds="true"
                     android:layout_marginTop="@dimen/spacing_tiny"
-                    android:background="?android:selectableItemBackground"
-                    android:maxHeight="120dp"
-                    android:scaleType="fitCenter"
-                    app:srcCompat="@drawable/ic_add_a_photo_dark_48dp" />
+                    android:layout_marginRight="@dimen/spacing_normal"
+                    android:layout_marginBottom="@dimen/spacing_tiny"
+                    android:padding="@dimen/spacing_small"
+                    android:textIsSelectable="true"
+                    android:textSize="@dimen/font_normal" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/environment_info_cv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:cardElevation="4dp">
 
                 <TextView
-                    android:id="@+id/addPhotoLabel"
+                    android:id="@+id/environment_info_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@string/take_picture_recycling"
-                    android:textStyle="bold" />
+                    android:layout_marginLeft="@dimen/spacing_normal"
+                    android:layout_marginTop="@dimen/spacing_tiny"
+                    android:layout_marginRight="@dimen/spacing_normal"
+                    android:layout_marginBottom="@dimen/spacing_tiny"
+                    android:padding="@dimen/spacing_small"
+                    android:textIsSelectable="true"
+                    android:textSize="@dimen/font_normal" />
 
-                <Button
-                    android:id="@+id/extract_recycling_prompt"
-                    style="@style/ButtonBorder"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_margin="@dimen/spacing_normal"
-                    android:text="@string/extract_recycling_prompt"
-                    android:visibility="gone"
-                    tools:visibility="visible" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/packaging_cv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:cardElevation="4dp">
 
                 <TextView
-                    android:id="@+id/add_label_origin_prompt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="6dp"
-                    android:visibility="gone"
-                    android:gravity="center"
-                    android:textSize="@dimen/font_normal"
-                    android:padding="@dimen/padding_too_short"
-                    tools:text="@string/add_origins_prompt_text"
-                    tools:visibility="visible"/>
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/carbon_footprint_cv"
+                    android:id="@+id/packaging_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    app:cardElevation="4dp">
+                    android:layout_marginLeft="@dimen/spacing_normal"
+                    android:layout_marginTop="@dimen/spacing_tiny"
+                    android:layout_marginRight="@dimen/spacing_normal"
+                    android:layout_marginBottom="@dimen/spacing_tiny"
+                    android:padding="@dimen/spacing_small"
+                    android:textIsSelectable="true"
+                    android:textSize="@dimen/font_normal" />
 
-                    <TextView
-                        android:id="@+id/textCarbonFootprint"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/spacing_normal"
-                        android:layout_marginTop="@dimen/spacing_tiny"
-                        android:layout_marginRight="@dimen/spacing_normal"
-                        android:layout_marginBottom="@dimen/spacing_tiny"
-                        android:padding="@dimen/spacing_small"
-                        android:textIsSelectable="true"
-                        android:textSize="@dimen/font_normal" />
+            </androidx.cardview.widget.CardView>
 
-                </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/recycling_instructions_discard_cv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:cardElevation="4dp">
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/environment_info_cv"
+                <TextView
+                    android:id="@+id/recyclingInstructionToDiscard"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    app:cardElevation="4dp">
+                    android:layout_marginLeft="@dimen/spacing_normal"
+                    android:layout_marginTop="@dimen/spacing_tiny"
+                    android:layout_marginRight="@dimen/spacing_normal"
+                    android:layout_marginBottom="@dimen/spacing_tiny"
+                    android:padding="@dimen/spacing_small"
+                    android:textIsSelectable="true"
+                    android:textSize="@dimen/font_normal" />
 
-                    <TextView
-                        android:id="@+id/environment_info_text"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/spacing_normal"
-                        android:layout_marginTop="@dimen/spacing_tiny"
-                        android:layout_marginRight="@dimen/spacing_normal"
-                        android:layout_marginBottom="@dimen/spacing_tiny"
-                        android:padding="@dimen/spacing_small"
-                        android:textIsSelectable="true"
-                        android:textSize="@dimen/font_normal" />
+            </androidx.cardview.widget.CardView>
 
-                </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/recycling_instructions_recycle_cv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:cardElevation="4dp">
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/packaging_cv"
+                <TextView
+                    android:id="@+id/recyclingInstructionToRecycle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    app:cardElevation="4dp">
+                    android:layout_marginLeft="@dimen/spacing_normal"
+                    android:layout_marginTop="@dimen/spacing_tiny"
+                    android:layout_marginRight="@dimen/spacing_normal"
+                    android:layout_marginBottom="@dimen/spacing_tiny"
+                    android:padding="@dimen/spacing_small"
+                    android:textIsSelectable="true"
+                    android:textSize="@dimen/font_normal" />
 
-                    <TextView
-                        android:id="@+id/packaging_text"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/spacing_normal"
-                        android:layout_marginTop="@dimen/spacing_tiny"
-                        android:layout_marginRight="@dimen/spacing_normal"
-                        android:layout_marginBottom="@dimen/spacing_tiny"
-                        android:padding="@dimen/spacing_small"
-                        android:textIsSelectable="true"
-                        android:textSize="@dimen/font_normal" />
+            </androidx.cardview.widget.CardView>
 
-                </androidx.cardview.widget.CardView>
+        </LinearLayout>
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/recycling_instructions_discard_cv"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    app:cardElevation="4dp">
+    </androidx.core.widget.NestedScrollView>
 
-                    <TextView
-                        android:id="@+id/recyclingInstructionToDiscard"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/spacing_normal"
-                        android:layout_marginTop="@dimen/spacing_tiny"
-                        android:layout_marginRight="@dimen/spacing_normal"
-                        android:layout_marginBottom="@dimen/spacing_tiny"
-                        android:padding="@dimen/spacing_small"
-                        android:textIsSelectable="true"
-                        android:textSize="@dimen/font_normal" />
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/recycling_instructions_recycle_cv"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    app:cardElevation="4dp">
-
-                    <TextView
-                        android:id="@+id/recyclingInstructionToRecycle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/spacing_normal"
-                        android:layout_marginTop="@dimen/spacing_tiny"
-                        android:layout_marginRight="@dimen/spacing_normal"
-                        android:layout_marginBottom="@dimen/spacing_tiny"
-                        android:padding="@dimen/spacing_small"
-                        android:textIsSelectable="true"
-                        android:textSize="@dimen/font_normal" />
-
-                </androidx.cardview.widget.CardView>
-
-            </LinearLayout>
-
-        </androidx.core.widget.NestedScrollView>
-
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-</layout>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

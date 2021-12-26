@@ -1,9 +1,9 @@
 package openfoodfacts.github.scrachx.openfood.features.scan
 
 import android.util.Log
+import android.view.ViewStub
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
-import androidx.databinding.ViewStubProxy
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.chip.Chip
@@ -31,9 +31,9 @@ class MlKitCameraView(private val activity: AppCompatActivity) {
     var onOverlayClickListener: (() -> Unit)? = null
     var barcodeScannedCallback: ((String) -> Unit)? = null
 
-    fun attach(viewStubProxy: ViewStubProxy, cameraState: Int, flashActive: Boolean, autoFocusActive: Boolean) {
-        viewStubProxy.viewStub?.layoutResource = R.layout.view_camera_source_preview
-        preview = (viewStubProxy.viewStub?.inflate() as CameraSourcePreview).apply {
+    fun attach(viewStub: ViewStub, cameraState: Int, flashActive: Boolean, autoFocusActive: Boolean) {
+        viewStub.layoutResource = R.layout.view_camera_source_preview
+        preview = (viewStub.inflate() as CameraSourcePreview).apply {
             graphicOverlay = findViewById(R.id.camera_preview_graphic_overlay)
             promptChip = findViewById(R.id.bottom_prompt_chip)
         }

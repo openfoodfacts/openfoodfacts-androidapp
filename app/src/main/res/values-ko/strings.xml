@@ -194,7 +194,7 @@
     <string name="uploadLater">네트워크에 연결되면 이미지가 업로드됩니다</string>
     <string name="txtInfoLoginOk">사용자 정보 저장됨</string>
     <string name="txtInfoLoginNo">유저 정보가 저장되지 않았습니다</string>
-    <string name="txtDialogsContent">스캔한 상품이 Open Food Facts에 존재 하지 않습니다. 품목을 추가하여 주십시오.</string>
+    <string name="product_does_not_exist_please_add_it">스캔한 상품이 Open Food Facts에 존재 하지 않습니다. 품목을 추가하여 주십시오.</string>
     <string name="txtYes">예</string>
     <string name="txtNo">아니요</string>
     <string name="hintBrand">브랜드</string>
@@ -588,7 +588,7 @@
     <string name="packaging">Recycling</string>
     <string name="take_ingredients_picture_to_extract">(성분을 자동으로 추출하려면 사진을 촬영하십시오)</string>
     <string name="ingredients_list">성분 목록</string>
-    <string name="ingredients_hint">순서를 유지하고, 지정된 경우 %를 표시하고, 쉼표로 구분하거나-성분의 성분에 ()를 사용하며 _로 알레르겐을 둘러싸십시오.</string>
+    <string name="ingredients_hint" tools:ignore="StringFormatInvalid">순서를 유지하고, 지정된 경우 %를 표시하고, 쉼표로 구분하거나-성분의 성분에 ()를 사용하며 _로 알레르겐을 둘러싸십시오.</string>
     <string name="extract_ingredients">성분 추출</string>
     <string name="extracting_ingredients">성분을 추출하는 중입니다.</string>
     <string name="looksGood">좋아요</string>

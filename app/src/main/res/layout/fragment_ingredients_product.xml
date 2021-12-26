@@ -1,314 +1,304 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swipeRefresh"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <data>
-
-        <import type="openfoodfacts.github.scrachx.openfood.features.product.view.ingredients.ProductIngredientsViewModel" />
-
-        <variable
-            name="viewModel"
-            type="ProductIngredientsViewModel" />
-    </data>
-
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/swipeRefresh"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_gravity="fill_vertical"
+        android:clipToPadding="false"
+        android:isScrollContainer="false"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <androidx.core.widget.NestedScrollView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="fill_vertical"
-            android:clipToPadding="false"
-            android:isScrollContainer="false"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/nav_bar_height">
 
-            <LinearLayout
+            <openfoodfacts.github.scrachx.openfood.features.shared.views.TipBox
+                android:id="@+id/ingredientImagetipBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingBottom="@dimen/nav_bar_height">
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:visibility="gone"
+                app:arrowAlignment="center"
+                app:arrowMarginStart="0dp"
+                app:backgroundColor="@android:color/holo_green_light"
+                app:identifier="ingredient_image_tip_box"
+                app:message="@string/image_edit_tip"
+                app:shouldDisplayImmediately="false"
+                app:textColor="@android:color/white" />
 
-                <openfoodfacts.github.scrachx.openfood.features.shared.views.TipBox
-                    android:id="@+id/ingredientImagetipBox"
+            <ImageButton
+                android:id="@+id/imageViewIngredients"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/spacing_normal"
+                android:layout_marginTop="@dimen/spacing_tiny"
+                android:layout_marginRight="@dimen/spacing_normal"
+                android:adjustViewBounds="true"
+                android:background="?android:selectableItemBackground"
+                android:maxHeight="120dp"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/ic_add_a_photo_dark_48dp"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/addPhotoLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/take_picture_ingredients"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/extract_ingredients_prompt"
+                style="@style/ButtonBorder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="@dimen/spacing_normal"
+                android:text="@string/extract_ingredients_prompt"
+                android:visibility="gone"
+                tools:visibility="visible" />
+
+            <LinearLayout
+                android:id="@+id/novaLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/nova_group"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/activity_vertical_margin"
-                    android:visibility="gone"
-                    app:arrowAlignment="center"
-                    app:arrowMarginStart="0dp"
-                    app:backgroundColor="@android:color/holo_green_light"
-                    app:identifier="ingredient_image_tip_box"
-                    app:message="@string/image_edit_tip"
-                    app:shouldDisplayImmediately="false"
-                    app:textColor="@android:color/white" />
+                    android:layout_height="100dp"
+                    android:layout_gravity="center_horizontal"
+                    android:maxWidth="20dp"
+                    android:paddingTop="@dimen/activity_horizontal_margin"
+                    android:paddingBottom="@dimen/activity_horizontal_margin"
+                    android:scaleType="fitCenter"
+                    tools:ignore="ContentDescription"
+                    tools:src="@drawable/ic_nova_group_1" />
 
-                <ImageButton
-                    android:id="@+id/imageViewIngredients"
+                <TextView
+                    android:id="@+id/novaExplanation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginLeft="@dimen/spacing_normal"
-                    android:layout_marginTop="@dimen/spacing_tiny"
                     android:layout_marginRight="@dimen/spacing_normal"
-                    android:adjustViewBounds="true"
-                    android:background="?android:selectableItemBackground"
-                    android:maxHeight="120dp"
-                    android:scaleType="fitCenter"
-                    app:srcCompat="@drawable/ic_add_a_photo_dark_48dp" />
-
-                <TextView
-                    android:id="@+id/addPhotoLabel"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@string/take_picture_ingredients"
+                    android:gravity="center_horizontal"
                     android:textStyle="bold" />
 
-                <Button
-                    android:id="@+id/extract_ingredients_prompt"
-                    style="@style/ButtonBorder"
+                <TextView
+                    android:id="@+id/novaMethodLink"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_margin="@dimen/spacing_normal"
-                    android:text="@string/extract_ingredients_prompt"
-                    android:visibility="gone"
-                    tools:visibility="visible" />
+                    android:gravity="center_horizontal"
+                    android:paddingTop="@dimen/activity_horizontal_margin"
+                    android:paddingBottom="@dimen/activity_horizontal_margin"
+                    android:text="@string/nova_info_msg"
+                    android:textColor="@color/url_link" />
+
+            </LinearLayout>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvTextIngredientProduct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"
+                android:visibility="gone"
+                app:cardElevation="@dimen/card_elevation">
 
                 <LinearLayout
-                    android:id="@+id/novaLayout"
+                    android:id="@+id/ingredientLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <ImageView
-                        android:id="@+id/nova_group"
-                        android:layout_width="match_parent"
-                        android:layout_height="100dp"
-                        android:layout_gravity="center_horizontal"
-                        android:maxWidth="20dp"
-                        android:paddingTop="@dimen/activity_horizontal_margin"
-                        android:paddingBottom="@dimen/activity_horizontal_margin"
-                        android:scaleType="fitCenter"
-                        tools:src="@drawable/ic_nova_group_1" />
-
                     <TextView
-                        android:id="@+id/novaExplanation"
-                        android:layout_width="match_parent"
+                        android:id="@+id/textIngredientProduct"
+                        android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
                         android:layout_marginLeft="@dimen/spacing_normal"
                         android:layout_marginRight="@dimen/spacing_normal"
-                        android:gravity="center_horizontal"
-                        android:textStyle="bold" />
+                        android:padding="@dimen/spacing_small"
+                        android:textIsSelectable="true"
+                        android:textSize="@dimen/font_normal" />
 
                     <TextView
-                        android:id="@+id/novaMethodLink"
-                        android:layout_width="match_parent"
+                        android:id="@+id/textSubstanceProduct"
+                        android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center_horizontal"
-                        android:paddingTop="@dimen/activity_horizontal_margin"
-                        android:paddingBottom="@dimen/activity_horizontal_margin"
-                        android:text="@string/nova_info_msg"
-                        android:textColor="@color/url_link" />
-
+                        android:layout_marginLeft="@dimen/spacing_normal"
+                        android:layout_marginRight="@dimen/spacing_normal"
+                        android:padding="@dimen/spacing_small"
+                        android:textColorLink="@color/tag_link"
+                        android:textIsSelectable="true"
+                        android:textSize="@dimen/font_normal" />
                 </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cvTextIngredientProduct"
-                    android:layout_width="match_parent"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvTextTraceProduct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:visibility="gone"
+                app:cardElevation="@dimen/card_elevation">
+
+                <TextView
+                    android:id="@+id/textTraceProduct"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="8dp"
-                    android:visibility="gone"
-                    app:cardElevation="@dimen/card_elevation">
+                    android:layout_marginLeft="@dimen/spacing_normal"
+                    android:layout_marginTop="@dimen/spacing_tiny"
+                    android:layout_marginRight="@dimen/spacing_normal"
+                    android:layout_marginBottom="@dimen/spacing_tiny"
+                    android:padding="@dimen/spacing_small"
+                    android:textColorLink="@color/tag_link"
+                    android:textIsSelectable="true"
+                    android:textSize="@dimen/font_normal" />
 
-                    <LinearLayout
-                        android:id="@+id/ingredientLayout"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
+            </androidx.cardview.widget.CardView>
 
-                        <TextView
-                            android:id="@+id/textIngredientProduct"
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/spacing_normal"
-                            android:layout_marginRight="@dimen/spacing_normal"
-                            android:padding="@dimen/spacing_small"
-                            android:textIsSelectable="true"
-                            android:textSize="@dimen/font_normal" />
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvTextAdditiveProduct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:visibility="gone"
+                app:cardElevation="@dimen/card_elevation">
 
-                        <TextView
-                            android:id="@+id/textSubstanceProduct"
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/spacing_normal"
-                            android:layout_marginRight="@dimen/spacing_normal"
-                            android:padding="@dimen/spacing_small"
-                            android:textColorLink="@color/tag_link"
-                            android:textIsSelectable="true"
-                            android:textSize="@dimen/font_normal" />
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cvTextTraceProduct"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/textAdditiveProduct"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:visibility="gone"
-                    app:cardElevation="@dimen/card_elevation">
+                    android:layout_marginLeft="@dimen/spacing_normal"
+                    android:layout_marginTop="@dimen/spacing_tiny"
+                    android:layout_marginRight="@dimen/spacing_normal"
+                    android:layout_marginBottom="@dimen/spacing_tiny"
+                    android:padding="@dimen/spacing_small"
+                    android:textColorLink="@color/tag_link"
+                    android:textIsSelectable="true"
+                    android:textSize="@dimen/font_normal" />
 
-                    <TextView
-                        android:id="@+id/textTraceProduct"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/spacing_normal"
-                        android:layout_marginTop="@dimen/spacing_tiny"
-                        android:layout_marginRight="@dimen/spacing_normal"
-                        android:layout_marginBottom="@dimen/spacing_tiny"
-                        android:padding="@dimen/spacing_small"
-                        android:textColorLink="@color/tag_link"
-                        android:textIsSelectable="true"
-                        android:textSize="@dimen/font_normal" />
+            </androidx.cardview.widget.CardView>
 
-                </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvVitaminsTagsText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:visibility="gone"
+                app:cardElevation="@dimen/card_elevation">
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cvTextAdditiveProduct"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/vitaminsTagsText"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:visibility="gone"
-                    app:cardElevation="@dimen/card_elevation">
+                    android:layout_marginLeft="@dimen/spacing_normal"
+                    android:layout_marginTop="@dimen/spacing_tiny"
+                    android:layout_marginRight="@dimen/spacing_normal"
+                    android:layout_marginBottom="@dimen/spacing_tiny"
+                    android:padding="@dimen/spacing_small"
+                    android:textIsSelectable="true"
+                    android:textSize="@dimen/font_normal" />
 
-                    <TextView
-                        android:id="@+id/textAdditiveProduct"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/spacing_normal"
-                        android:layout_marginTop="@dimen/spacing_tiny"
-                        android:layout_marginRight="@dimen/spacing_normal"
-                        android:layout_marginBottom="@dimen/spacing_tiny"
-                        android:padding="@dimen/spacing_small"
-                        android:textColorLink="@color/tag_link"
-                        android:textIsSelectable="true"
-                        android:textSize="@dimen/font_normal" />
+            </androidx.cardview.widget.CardView>
 
-                </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvMineralTagsText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:visibility="gone"
+                app:cardElevation="@dimen/card_elevation">
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cvVitaminsTagsText"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/mineralTagsText"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:visibility="gone"
-                    app:cardElevation="@dimen/card_elevation">
+                    android:layout_marginLeft="@dimen/spacing_normal"
+                    android:layout_marginTop="@dimen/spacing_tiny"
+                    android:layout_marginRight="@dimen/spacing_normal"
+                    android:layout_marginBottom="@dimen/spacing_tiny"
+                    android:padding="@dimen/spacing_small"
+                    android:textIsSelectable="true"
+                    android:textSize="@dimen/font_normal" />
 
-                    <TextView
-                        android:id="@+id/vitaminsTagsText"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/spacing_normal"
-                        android:layout_marginTop="@dimen/spacing_tiny"
-                        android:layout_marginRight="@dimen/spacing_normal"
-                        android:layout_marginBottom="@dimen/spacing_tiny"
-                        android:padding="@dimen/spacing_small"
-                        android:textIsSelectable="true"
-                        android:textSize="@dimen/font_normal" />
+            </androidx.cardview.widget.CardView>
 
-                </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvAminoAcidTagsText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:visibility="gone"
+                app:cardElevation="@dimen/card_elevation">
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cvMineralTagsText"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/aminoAcidTagsText"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:visibility="gone"
-                    app:cardElevation="@dimen/card_elevation">
+                    android:layout_marginLeft="@dimen/spacing_normal"
+                    android:layout_marginTop="@dimen/spacing_tiny"
+                    android:layout_marginRight="@dimen/spacing_normal"
+                    android:layout_marginBottom="@dimen/spacing_tiny"
+                    android:padding="@dimen/spacing_small"
+                    android:textIsSelectable="true"
+                    android:textSize="@dimen/font_normal" />
 
-                    <TextView
-                        android:id="@+id/mineralTagsText"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/spacing_normal"
-                        android:layout_marginTop="@dimen/spacing_tiny"
-                        android:layout_marginRight="@dimen/spacing_normal"
-                        android:layout_marginBottom="@dimen/spacing_tiny"
-                        android:padding="@dimen/spacing_small"
-                        android:textIsSelectable="true"
-                        android:textSize="@dimen/font_normal" />
+            </androidx.cardview.widget.CardView>
 
-                </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvOtherNutritionTags"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:visibility="gone"
+                app:cardElevation="@dimen/card_elevation">
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cvAminoAcidTagsText"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/otherNutritionTags"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:visibility="gone"
-                    app:cardElevation="@dimen/card_elevation">
+                    android:layout_marginLeft="@dimen/spacing_normal"
+                    android:layout_marginTop="@dimen/spacing_tiny"
+                    android:layout_marginRight="@dimen/spacing_normal"
+                    android:layout_marginBottom="@dimen/spacing_tiny"
+                    android:padding="@dimen/spacing_small"
+                    android:textIsSelectable="true"
+                    android:textSize="@dimen/font_normal" />
 
-                    <TextView
-                        android:id="@+id/aminoAcidTagsText"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/spacing_normal"
-                        android:layout_marginTop="@dimen/spacing_tiny"
-                        android:layout_marginRight="@dimen/spacing_normal"
-                        android:layout_marginBottom="@dimen/spacing_tiny"
-                        android:padding="@dimen/spacing_small"
-                        android:textIsSelectable="true"
-                        android:textSize="@dimen/font_normal" />
+            </androidx.cardview.widget.CardView>
 
-                </androidx.cardview.widget.CardView>
+            <Button
+                android:id="@+id/change_ing_img"
+                style="@style/ButtonBorder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="@dimen/spacing_normal"
+                android:text="@string/update_image"
+                android:visibility="gone" />
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cvOtherNutritionTags"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:visibility="gone"
-                    app:cardElevation="@dimen/card_elevation">
+        </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/otherNutritionTags"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/spacing_normal"
-                        android:layout_marginTop="@dimen/spacing_tiny"
-                        android:layout_marginRight="@dimen/spacing_normal"
-                        android:layout_marginBottom="@dimen/spacing_tiny"
-                        android:padding="@dimen/spacing_small"
-                        android:textIsSelectable="true"
-                        android:textSize="@dimen/font_normal" />
+    </androidx.core.widget.NestedScrollView>
 
-                </androidx.cardview.widget.CardView>
-
-                <Button
-                    android:id="@+id/change_ing_img"
-                    style="@style/ButtonBorder"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_margin="@dimen/spacing_normal"
-                    android:text="@string/update_image"
-                    android:visibility="gone" />
-
-            </LinearLayout>
-
-        </androidx.core.widget.NestedScrollView>
-
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-</layout>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

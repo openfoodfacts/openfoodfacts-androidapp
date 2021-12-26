@@ -16,41 +16,40 @@
   -->
 <resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
-        <item quantity="other">You have %d offline products waiting to be contributed to Open Food Facts</item>
+        <item quantity="other">Anda memiliki %d produk luring yang menunggu untuk dikontribusikan ke Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
-        <item quantity="other">%d seconds ago</item>
+        <item quantity="other">%d detik yang lalu</item>
     </plurals>
     <plurals name="minutes">
-        <item quantity="other">%d minutes ago</item>
+        <item quantity="other">%d menit yang lalu</item>
     </plurals>
     <plurals name="hours">
-        <item quantity="other">%d hours ago</item>
+        <item quantity="other">%d jam yang lalu</item>
     </plurals>
     <plurals name="days">
-        <item quantity="other">%d days ago</item>
+        <item quantity="other">%d hari yang lalu</item>
     </plurals>
-    <string name="action_about">Tentang,</string>
-    <string name="action_discover">Jelajahi</string>
+    <string name="action_about">Tentang</string>
+    <string name="action_discover">Temukan</string>
     <string name="contribute">Bagaimana cara  kontribusi,</string>
-    <string name="action_find">mencari</string>
-    <string name="product_incomplete_message">Produk ini tidak lengkap. Akibatnya, kami tidak bisa melakukan pemeriksaan alergen.</string>
+    <string name="action_find">Temukan</string>
+    <string name="product_incomplete_message">Daftar kandungan bahan produk ini tidak lengkap. Akibatnya, peringatan alergen tidak ditampilkan.</string>
     <string name="product_allergen_prompt">Produk ini mengandung:</string>
-    <string name="no_offline_data">Anda selesai</string>
-    <string name="first_offline">Produk yang ditambahkan luring akan tampil disini</string>
+    <string name="no_offline_data">Anda sudah selesai</string>
     <!-- Image Upload -->
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
-        <item>meringkas</item>
-        <item>Bahan</item>
+        <item>Ringkasan</item>
+        <item>Kandungan bahan</item>
         <item>kandungan nutrisi</item>
-        <item>meja nutrisi</item>
+        <item>Tabel Nutrisi</item>
         <item>Lingkungan</item>
     </string-array>
     <!-- New Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_new_items_product">
-        <item>Product Photos</item>
-        <item>Ingredient Analysis</item>
+        <item>Foto - foto produk</item>
+        <item>Analisis Kandungan Bahan</item>
     </string-array>
     <!-- Text units -->
     <!-- weight units -->
@@ -73,355 +72,326 @@
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
     <string-array name="nutrients_array">
         <item>Alpha-linolenic acid / ALA (18:3 n-3)</item>
-        <item>Arachidic acid (20:0)</item>
-        <item>Arachidonic acid / AA / ARA (20:4 n-6)</item>
-        <item>Behenic acid (22:0)</item>
+        <item>Asam arakidonat (20:0)</item>
+        <item>Asam arakidonat / AA / ARA (20:4 n-6)</item>
+        <item>Asam behenat (22:0)</item>
         <item>Bikarbonat</item>
-        <item>Biotiin</item>
-        <item>Butyric acid (4:0)</item>
+        <item>Biotin</item>
+        <item>Asam butirat (4:0)</item>
         <item>Kafein</item>
         <item>Kalsium</item>
-        <item>Capric acid (10:0)</item>
-        <item>Caproic acid (6:0)</item>
-        <item>Caprylic acid (8:0)</item>
-        <item>kasen</item>
-        <item>Cerotic acid (26:0)</item>
-        <item>Khlorida</item>
+        <item>Asam dekanoat (10:0)</item>
+        <item>Asam heksanoat (6:0)</item>
+        <item>Asam kaprilat (8:0)</item>
+        <item>Kasein</item>
+        <item>Asam cerotic (26:0)</item>
+        <item>Klorida</item>
         <item>Kolesterol</item>
         <item>Kromium</item>
         <item>Tembaga</item>
         <item>Dihomo-gamma-linolenic acid / DGLA (20:3 n-6)</item>
         <item>Docosahexaenoic acid / DHA (22:6 n-3)</item>
         <item>Eicosapentaenoic acid / EPA (20:5 n-3)</item>
-        <item>Elaidic acid (18:1 n-9)</item>
-        <item>Erucic acid (22:1 n-9)</item>
-        <item>Fluor</item>
+        <item>Asam elaidik (18:1 n-9)</item>
+        <item>Asam erukat (22:1 n-9)</item>
+        <item>Fluorida</item>
         <item>Fruktosa</item>
         <item>Gamma-linolenic acid / GLA (18:3 n-6)</item>
-        <item>Glukosa,,</item>
-        <item>Gondoic acid (20:1 n-9)</item>
-        <item>Yodium</item>
-        <item>Besi</item>
-        <item>laxtosa</item>
-        <item>Lauric acid (12:0)</item>
-        <item>Lignoceric acid (24:0)</item>
+        <item>Glukosa</item>
+        <item>Asam 11-eikosenoat (20:1 n-9)</item>
+        <item>Iodin</item>
+        <item>Zat Besi</item>
+        <item>Laktosa</item>
+        <item>Asam laurat (12:0)</item>
+        <item>Asam lignoserat (24:0)</item>
         <item>Linoleic acid / LA (18:2 n-6)</item>
-        <item>magnesium</item>
+        <item>Magnesium</item>
         <item>Maltodekstrin</item>
-        <item>Maltose</item>
+        <item>Maltosa</item>
         <item>Mangan</item>
-        <item>Mead acid (20:3 n-9)</item>
-        <item>Melissic acid (30:0)</item>
+        <item>Asam mead (20:3 n-9)</item>
+        <item>Asam melisat (30:0)</item>
         <item>Molibdenum</item>
-        <item>Monounsaturated fat</item>
-        <item>Montanic acid (28:0)</item>
-        <item>Myristic acid (14:0)</item>
-        <item>Nervonic acid (24:1 n-9)</item>
-        <item>Nukleotidaa</item>
-        <item>Oleic acid (18:1 n-9)</item>
-        <item>Omega 3 fatty acids</item>
-        <item>Omega 6 fatty acids</item>
-        <item>Omega 9 fatty acids</item>
-        <item>Palmitic acid (16:0)</item>
-        <item>Pantothenic acid / Pantothenate (Vitamin B5)</item>
+        <item>Lemak tak jenuh tunggal</item>
+        <item>Asam montanic (28:0)</item>
+        <item>Asam miristat (14:0)</item>
+        <item>Asam nervonic (24:1 n-9)</item>
+        <item>Nukleotida</item>
+        <item>Asam oleat (18:1 n-9)</item>
+        <item>Asam lemak Omega-3</item>
+        <item>Asam lemak Omega-6</item>
+        <item>Asam lemak Omega-9</item>
+        <item>Asam palmitat (16:0)</item>
+        <item>Asam pantotenat / Pantotenat (Vitamin B5)</item>
         <item>pH</item>
         <item>Fosfor</item>
-        <item>Sugar alcohols (Polyols)</item>
-        <item>Polyunsaturated fat</item>
-        <item>poKaliium</item>
-        <item>senium</item>
-        <item>Serum proteins</item>
-        <item>silikaa</item>
-        <item>Starch</item>
-        <item>Stearic acid (18:0)</item>
+        <item>Alkohol gula (Poliol)</item>
+        <item>Lemak tak jenuh ganda</item>
+        <item>Potasium</item>
+        <item>Selenium</item>
+        <item>Protein serum</item>
+        <item>Silika</item>
+        <item>Amilum</item>
+        <item>Asam stearat (18:0)</item>
         <item>Sukrosa</item>
-        <item>taurin</item>
+        <item>Taurina</item>
         <item>Lemak trans</item>
         <item>Vitamin A</item>
-        <item>Vitamin B1 (Thiamin)</item>
-        <item>Vitamin B12 (Cobalamin)</item>
+        <item>Vitamin B1 (Tiamin)</item>
+        <item>Vitamin B12 (Kobalamin)</item>
         <item>Vitamin B2 (Riboflavin)</item>
-        <item>Vitamin B3 / Vitamin PP (Niacin)</item>
-        <item>Vitamin B6 (Pyridoxin)</item>
-        <item>Vitamin B9 (Folic acid)</item>
-        <item>Vitamin C (Ascorbic acid)</item>
+        <item>Vitamin B3 / Vitamin PP (Niasin)</item>
+        <item>Vitamin B6 (Piridoksina)</item>
+        <item>Vitamin B9 (Asam folat)</item>
+        <item>Vitamin C (Asam askorbat)</item>
         <item>Vitamin D</item>
         <item>Vitamin E</item>
         <item>Vitamin K</item>
-        <item>zat</item>
+        <item>Zinc</item>
     </string-array>
     <!-- Content Description -->
-    <string name="search_button">mencari </string>
-    <string name="alert_dialog_warning_title">bahayaa</string>
-    <string name="alert_dialog_warning_msg_user">pengguna  / katasandi telah berubah, mohon memperbaharui informasi</string>
-    <string name="toast_retrieving">sedang memuat</string>
+    <string name="search_button">Cari</string>
+    <string name="alert_dialog_warning_title">Peringatan</string>
+    <string name="alert_dialog_warning_msg_user">Pengguna/katasandi telah berubah, mohon memperbarui informasi</string>
+    <string name="toast_retrieving">Memuat…</string>
     <string name="txtBarcode">Barcode:</string>
     <string name="txtCategories">Kategori:</string>
-    <string name="txtLabels">Label, sertifikasi, penghargaan:</string>
-    <string name="txtEMB">Traceability codes:</string>
-    <string name="txtIngredients">Daftar komposisi :</string>
-    <string name="Donate">Donasi</string>
-    <string name="Donation">Click here to donate to Open Food Facts</string>
-    <string name="txtSubstances">Zat atau produk yang menyebabkan alergi atau intoleransi penyakit</string>
-    <string name="txtAdditives">Bahan tambahan :</string>
-    <string name="txtTraces">Jejak :</string>
-    <string name="txtMayBeFromPalmOilProduct">Kandungan yang mungkin berasal dari minyak kelapa sawit :</string>
-    <string name="txtPalmOilProduct">Bahan dari minyak kelapa sawit :</string>
-    <string name="txtServingSize">Porsi penyajian :</string>
+    <string name="txtLabels">Label, sertifikasi, penghargaan: </string>
+    <string name="txtEMB">Kode keterlacakan: </string>
+    <string name="txtIngredients">Daftar kandungan bahan: </string>
+    <string name="Donate">Berdonasi</string>
+    <string name="Donation">Klik di sini untuk berdonasi ke Open Food Facts</string>
+    <string name="txtSubstances">Zat atau produk yang menyebabkan alergi atau intoleransi: </string>
+    <string name="txtAdditives">Zat - zat aditif: </string>
+    <string name="txtTraces">Jejak - jejak: </string>
+    <string name="txtServingSize">Takaran saji :</string>
     <string name="txtNutrientLevel100g">Tingkat nutrisi untuk 100 g:</string>
-    <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
-    <string name="txtNutritionLevelLow">kualitas jumlah rendah</string>
-    <string name="txtNutritionLevelModerate">dalam jumlah sedang</string>
-    <string name="txtNutritionLevelHigh">kualitas hasil rendah</string>
+    <string name="txtNutrientLevel100ml">Tingkat nutrisi untuk 100ml :</string>
+    <string name="txtNutritionLevelLow">dalam kuantitas rendah</string>
+    <string name="txtNutritionLevelModerate">dalam kuantitas sedang</string>
+    <string name="txtNutritionLevelHigh">dalam kuantitas tinggi</string>
     <string name="txtSave">Simpan</string>
     <string name="txtSignIn">Masuk</string>
-    <string name="txtToastSaved">Pengguna yang disimpan</string>
-    <string name="txtSalt">garam</string>
+    <string name="txtSalt">Garam</string>
     <string name="txtFat">Lemak</string>
     <string name="txtSugars">Gula</string>
     <string name="hintBarcode">kode batang</string>
-    <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
-    <string name="txtloginHelper">If you have an Open Food Facts account, you can login here with it</string>
-    <string name="hintLogin">Nama pengguna</string>
-    <string name="hintPass">kata sandi anda</string>
-    <string name="errorLogin">Nama pengguna atau password salah</string>
-    <string name="errorWeb">Tidak bisa mengakses internet. Mohon periksa koneksi anda.</string>
-    <string name="uploadLater">Gambar akan diunggah ketika jaringan tersedia</string>
-    <string name="txtInfoLoginOk">Pengguna yang disimpan</string>
-    <string name="txtInfoLoginNo">Pengguna belum disimpan</string>
-    <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
+    <string name="txtNutriScoreInfo">Pelajari lebih banyak tentang tingkat nutrisi</string>
+    <string name="txtloginHelper">Jika Anda memiliki akun Open Food Facts, Anda dapat masuk di sini dengannya</string>
+    <string name="hintLogin">Masuk</string>
+    <string name="hintPass">Kata sandi</string>
+    <string name="errorLogin">Kesalahan pada proses masuk atau kata sandi</string>
+    <string name="errorWeb">Kami tidak bisa mengakses internet. Apakah Anda memiliki masalah konektivitas?</string>
+    <string name="txtInfoLoginOk">Anda berhasil masuk ke akun Open Food Facts Anda.</string>
+    <string name="txtInfoLoginNo">Terjadi kesalahan saat mencoba masuk ke akun Open Food Facts Anda.</string>
+    <string name="product_does_not_exist_please_add_it">Produk yang Anda pindai belum ada di Open Food Facts. Tolong tambahkan.</string>
     <string name="txtYes">Ya</string>
     <string name="txtNo">Tidak</string>
     <string name="hintBrand">Merek</string>
-    <string name="txtSendAll">mengirimkan semua</string>
+    <string name="txtSendAll">Unggah semua</string>
     <string name="txtPictureNeededDialogNo">Buang</string>
     <string name="toastSending">Mengunggah…</string>
-    <string name="txtLoading">sedang memuat</string>
-    <string name="txtDialogsContentDelete">Apakah anda yakin ingin menghapus draf ini?</string>
-    <string name="txtDialogsContentInfoSave">Produk disimpan di perangkat, anda dapat mengubahnya di menu \"ubah Offline\"</string>
+    <string name="txtLoading">Memuat…</string>
     <string name="productSavedToast">Produk telah disimpan, terima kasih!</string>
-    <string name="txtBarcodeRequire">kode batang dibutuhkan</string>
-    <string name="txtOk">OK</string>
+    <string name="txtBarcodeRequire">Kode batang dibutuhkan</string>
     <string name="txtBarcodeNotValid">Kode batang tidak valid</string>
-    <string name="msg_share">Look at this product on Open Food Facts :</string>
+    <string name="msg_share">Lihat produk ini di Open Food Facts :</string>
     <string name="create_account">Daftar</string>
     <string name="home_drawer">Beranda</string>
-    <string name="install">Install</string>
-    <string name="open_beauty_drawer">Open Beauty Facts</string>
-    <string name="open_food_drawer">Open Food Facts</string>
-    <string name="search_drawer">mencari </string>
+    <string name="install">Instal</string>
+    <string name="search_drawer">Cari</string>
     <string name="search_by_barcode_drawer">Ketik kode batang</string>
     <string name="category_drawer">Kategori</string>
     <string name="search_by_category">Kategori</string>
     <string name="scan_search">Pindai kode batang</string>
-    <string name="user_drawer">pengguna</string>
-    <string name="offline_edit_drawer">Ubah Offline</string>
+    <string name="user_drawer">Pengguna</string>
     <string name="txt_anonymous">Anonim</string>
     <string name="delete_txt">Hapus</string>
     <string name="sign_in_drawer">Masuk</string>
-    <string name="alert_drawer">Peringatan bahan alergi</string>
-    <string name="your_lists">Your lists</string>
+    <string name="alert_drawer">Peringatan alergen</string>
+    <string name="your_lists">Daftar - daftar Anda</string>
     <string name="title_dialog_alert">Tambahkan peringatan</string>
-    <string name="select_camera">Select a Camera</string>
+    <string name="select_camera">Pilih Kamera</string>
     <string name="ok_button">OK</string>
-    <string name="cancel_button">Cancel</string>
-    <string name="login_button">Nama pengguna</string>
-    <string name="create_account_button">Create Account</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+    <string name="cancel_button">Batalkan</string>
+    <string name="login_button">Masuk</string>
+    <string name="create_account_button">Buat akun</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Informasi tentang alergi Anda tidak akan pernah dikirim ke peladen Open Food Facts. Juga, berhati - hatilah bahwa data produk mungkin tidak akurat, dan pendeteksian mungkin tidak 100% akurat, jadi harap memeriksanya sendiri!</string>
     <string name="title_info_dialog">Bagaimana ini bekerja?</string>
-    <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
-    <string name="permission_camera">kamera membutuhkan izin untuk memindah kode batang dan mengambil gambar</string>
-    <string name="no_camera_dialog_title">Camera not found</string>
-    <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
-    <string name="permission_title">mengizinkan informasi</string>
-    <string name="permission_denied">silahkan mengaktifkan izin di penganturan</string>
-    <string name="info_download_data_connection">kamu perlu mendownload beberapa data untuk mendapatkan perintah bekerja. Silahkan mengaktifkan koneksi internet.</string>
+    <string name="text_offline_info_dialog">Anda dapat memindai produk - produk ketika Anda sedang luring untuk menambahkannya ke Open Food Facts nanti. Semua produk yang Anda pindai akan muncul di sini, dan Anda akan dapat mengirimkannya menggunakan tombol di bawah.</string>
+    <string name="permission_camera">Kamera membutuhkan izin untuk memindah kode batang dan mengambil gambar.</string>
+    <string name="no_camera_dialog_title">Kamera tidak ditemukan</string>
+    <string name="no_camera_dialog_content">Perangkat Anda tidak memiliki kamera. Anda tidak akan dapat memindai kode batang manapun.</string>
+    <string name="permission_title">Infomasi izin akses</string>
+    <string name="permission_denied">Silahkan mengaktifkan izin di bagian pengaturan</string>
+    <string name="info_download_data_connection">Anda perlu mengunduh beberapa data agar fungsi ini bekerja. Silahkan aktifkan koneksi internet Anda.</string>
     <!-- Strings related to login -->
     <string name="error_invalid_password">Panjang password minimum 6 karakter.</string>
     <string name="user">pengguna</string>
-    <string name="error_field_required">ruang ini dipakai</string>
+    <string name="error_field_required">Field ini diperlukan.</string>
     <!-- Strings related to feedback dialog -->
-    <string name="user_enjoying_app">Are you enjoying your experience with Open Food Facts?</string>
-    <string name="user_ask_show_feedback_form">We\'re sorry to hear that! Could you tell us what happened?</string>
-    <string name="user_ask_rate_app">Great! Let others know what you think of this app!</string>
-    <string name="rate_app">Rate app</string>
-    <string name="no_thx">No thanks</string>
-    <string name="feedback_form_url">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
+    <string name="user_enjoying_app">Apakah Anda menikmati pengalaman Anda dengan Open Food Facts?</string>
+    <string name="user_ask_show_feedback_form">Kami menyesal mendengarnya! Bisakah Anda memberi tahu kami apa yang terjadi?</string>
+    <string name="user_ask_rate_app">Hebat! Beri tahu orang lain pendapat Anda tentang aplikasi ini!</string>
+    <string name="rate_app">Beri rating aplikasi</string>
+    <string name="no_thx">Tidak, terima kasih</string>
+    <string name="feedback_form_url" comment="Please ask teolemon to duplicate the feedback form and give you the right URL">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
     <!-- Scan history -->
-    <string name="scan_history_drawer">riwayat/kenangan</string>
-    <string name="clear_history">menghapus riwayat</string>
-    <string name="title_clear_history_dialog">hapus</string>
-    <string name="text_clear_history_dialog">Do you want to clear all your scan history?</string>
-    <string name="export_csv_history">kirim CSV</string>
-    <string name="txt_exporting_history">Mengekspor kejadian yang dulu</string>
-    <string name="txt_history_exported">sejarah sukses di ekspor</string>
-    <string name="permision_write_external_storage">tulis pengizinan penyimpanan eksternal sangat diperlukan untuk mengespor riwayat</string>
-    <string name="no_brand">Tanpa merek</string>
-    <string name="no_title">Tanpa judul</string>
+    <string name="scan_history_drawer">Riwayat</string>
+    <string name="clear_history">Hapus riwayat</string>
+    <string name="title_clear_history_dialog">Hapus</string>
+    <string name="text_clear_history_dialog">Apakah Anda ingin menghapus semua riwayat pemindaian Anda?</string>
+    <string name="export_csv_history">Ekspor CSV</string>
+    <string name="txt_exporting_history">Mengekspor riwayat…</string>
+    <string name="txt_history_exported">Riwayat diekspor</string>
+    <string name="permision_write_external_storage">Tulis pengizinan penyimpanan eksternal diperlukan untuk mengekspor riwayat.</string>
+    <string name="no_brand">Tanpa Merek</string>
+    <string name="no_title">Tanpa Judul</string>
     <!-- Nutrition info tab -->
-    <string name="display_fact">Nutrition facts table for %1$s of this product</string>
-    <string name="check_facts">Memeriksa</string>
+    <string name="display_fact" comment="Do not modify the placeholder">Tabel informasi nilai gizi untuk %1$s produk ini</string>
+    <string name="check_facts">Periksa</string>
     <string name="nutrition">kandungan nutrisi</string>
-    <string name="calculated_nutrition">Nutrisi terhitung</string>
-    <string name="please_enter_weight">Please type the product weight</string>
-    <string name="enter_weight">Type the product weight</string>
-    <string name="calculate_nutrition_facts">Menghitung fakta nutrisi</string>
+    <string name="calculated_nutrition">Nutrisi Terhitung</string>
+    <string name="please_enter_weight">Silahkan ketik ukuran berat produk</string>
+    <string name="enter_weight">Ketik ukuran berat produk</string>
+    <string name="calculate_nutrition_facts">Hitung informasi nilai gizi untuk jumlah tertentu</string>
     <string name="nutrition_carbohydrate">Karbohidrat</string>
     <string name="nutrition_cholesterol">Kolesterol</string>
-    <string name="nutrition_energy">Energi</string>
     <string name="nutrition_energy_kcal">Energi dalam kalori (kkal)</string>
     <string name="nutrition_energy_kj">Energi dalam joule (kJ)</string>
     <string name="nutrition_energy_short_name">Energi</string>
     <string name="nutrition_fat">Lemak</string>
     <string name="nutrition_fiber">Serat makanan</string>
-    <string name="nutrition_header">tabel nutrisi</string>
+    <string name="nutrition_header">Informasi nilai gizi</string>
     <string name="nutrition_proteins">Protein:</string>
-    <string name="nutrition_salt">garam</string>
+    <string name="nutrition_salt">Garam</string>
     <string name="nutrition_satured_fat">Lemak jenuh</string>
     <string name="nutrition_sodium">Sodium</string>
     <string name="nutrition_sugars">Gula</string>
     <string name="nutrition_trans_fat">Lemak trans</string>
-    <string name="nutriment_serving_size">per butir</string>
-    <string name="action_manage_account">menggunakan akun</string>
-    <string name="action_contributes">hasil anda</string>
-    <string name="choose_energy_unit">Choose your preferred energy units for the nutrition table</string>
-    <string name="choose_volume_unit">Choose your preferred volume units for the nutrition table</string>
-    <string name="logout_drawer">keluar dari akun</string>
-    <string name="contribution_without_account">kamu bisa masuk atau membuat akun untuk menyimpan kontribusi kamu</string>
-    <string name="textCarbonFootprint">langkah karbon/co2 emissions</string>
-    <string name="packaging_environmentTab">Packaging:</string>
-    <string name="action_search">mencari </string>
+    <string name="nutriment_serving_size">Per sajian : </string>
+    <string name="action_manage_account">Kelola akun</string>
+    <string name="action_contributes">Kontribusi Anda</string>
+    <string name="logout_drawer">Keluar</string>
+    <string name="contribution_without_account">Anda dapat masuk atau membuat akun untuk menyimpan kontribusi Anda</string>
+    <string name="textCarbonFootprint">Jejak karbon / emisi CO2: </string>
+    <string name="packaging_environmentTab">Pengemasan:</string>
+    <string name="action_search">Cari</string>
     <string name="search_hint">Cari produk</string>
     <string name="number_of_results">Jumlah hasil: </string>
     <string name="number_of_products">Jumlah produk: </string>
-    <string name="txt_no_matching__category_products">Oh no, we don’t have any product in this category, can you add one?</string>
-    <string name="txt_no_matching_allergen_products">Oh Maaf, kami tidak memiliki produk dengan alergen ini, bisakah anda menambahkannya?</string>
-    <string name="txt_no_matching_label_products">Oh maaf, kami tidak memiliki produk dengan label ini, bisakah anda menambahkannya?</string>
-    <string name="txt_no_matching_additive_products">Oh maaf, kami tidak memiliki produk dengan zat tambahan ini, bisakah anda menambahkannya?</string>
-    <string name="txt_no_matching_country_products">Oh maaf, kami tidak memiliki produk dari negara ini, bisakah anda menambahkannya?</string>
-    <string name="txt_no_matching_store_products">Oh maaf, kami tidak memiliki produk dari toko ini, bisakah anda menambakan satu?</string>
-    <string name="txt_no_matching_packaging_products">Oh maaf, kami tidak memiliki produk dengan pengemasan seperti ini, bisakah anda menambakan satu?</string>
-    <string name="txt_no_matching_brand_products">Oh maaf, kami tidak memiliki produk dengan merek ini, bisakah anda menambakan satu?</string>
-    <string name="txt_no_matching_incomplete_products">Kami sudah memiliki produk lengkap, anda masih akan menambakan produk baru lagi?</string>
-    <string name="txt_no_matching_contributor_products">Oh maaf, kami tidak memiliki produk dari kontributor ini, bisakah anda menambakan satu?</string>
-    <string name="txt_no_matching_products">Kami belum menemukan produk yang cocok. \nAnda dapat mencoba:</string>
-    <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
+    <string name="txt_no_matching__category_products">Oh tidak, kami tidak memiliki produk apapun dalam kategori ini, bisakah Anda menambahkannya?</string>
+    <string name="txt_no_matching_allergen_products">Oh tidak, kami tidak memiliki produk apapun dengan alergen ini, bisakah Anda menambahkannya?</string>
+    <string name="txt_no_matching_label_products">Oh tidak, kami tidak memiliki produk apapun dengan label ini, bisakah Anda menambahkannya?</string>
+    <string name="txt_no_matching_additive_products">Oh tidak, kami tidak memiliki produk apapun dengan zat aditif ini, bisakah Anda menambahkannya?</string>
+    <string name="txt_no_matching_country_products">Oh tidak, kami tidak memiliki produk apapun dari negara ini, bisakah Anda menambahkannya?</string>
+    <string name="txt_no_matching_store_products">Oh tidak, kami tidak memiliki produk apapun dari toko ini, bisakah Anda menambahkannya?</string>
+    <string name="txt_no_matching_packaging_products">Oh tidak, kami tidak memiliki produk apapun dengan kemasan seperti ini, bisakah Anda menambahkannya?</string>
+    <string name="txt_no_matching_brand_products">Oh tidak, kami tidak memiliki produk apapun dengan merek ini, bisakah Anda menambahkannya?</string>
+    <string name="txt_no_matching_incomplete_products">Kami sudah memiliki produk lengkap! Anda masih akan menambahkan produk baru?</string>
+    <string name="txt_no_matching_contributor_products">Oh tidak, kami tidak memiliki produk apapun dari kontributor ini, bisakah Anda menambahkannya?</string>
+    <string name="txt_no_matching_products">Kami belum menemukan produk apapun yang cocok.\nAnda dapat mencoba:</string>
+    <string name="txt_broaden_search">- memperluas pencarian Anda \n- pindai dan tambahkan ke Open Food Facts</string>
     <string name="something_went_wrong">Maaf, sesuatu tidak beres…</string>
-    <string name="txt_try_again">coba kembali</string>
-    <string name="nutrition_lactose">laxtosa</string>
-    <string name="nutrition_casein">kasen</string>
+    <string name="txt_try_again">Coba lagi</string>
+    <string name="nutrition_lactose">Laktosa</string>
+    <string name="nutrition_casein">Kasein</string>
     <string name="nutrition_maltodextrins">Maltodekstrin</string>
-    <string name="nutrition_serum_proteins">protein serum</string>
-    <string name="nutrition_nucleotides">Nukleotidaa</string>
-    <string name="for_100g">untuk100g</string>
-    <string name="for_100ml">For 100 ml</string>
-    <string name="serving">porsi</string>
-    <string name="nutrition_monounsaturatedFat">Monounsaturated fat</string>
-    <string name="nutrition_polyunsaturatedFat">Polyunsaturated fat</string>
-    <string name="nutrition_omega3">Omega3</string>
+    <string name="nutrition_serum_proteins">Protein Serum</string>
+    <string name="nutrition_nucleotides">Nukleotida</string>
+    <string name="for_100g">Untuk 100g</string>
+    <string name="for_100ml">Untuk 100 ml</string>
+    <string name="serving">Per porsi</string>
+    <string name="nutrition_monounsaturatedFat">Lemak tak jenuh tunggal</string>
+    <string name="nutrition_polyunsaturatedFat">Lemak tak jenuh ganda</string>
+    <string name="nutrition_omega3">Omega 3</string>
     <string name="nutrition_omega6">Omega 6</string>
-    <string name="nutrition_omega9">Omega9</string>
+    <string name="nutrition_omega9">Omega 9</string>
     <string name="nutrition_sucrose">Sukrosa</string>
-    <string name="nutrition_glucose">Glukosa,,</string>
+    <string name="nutrition_glucose">Glukosa</string>
     <string name="nutrition_fructose">Fruktosa</string>
-    <string name="nutrition_maltose">Maltose</string>
+    <string name="nutrition_maltose">Maltosa</string>
     <string name="nutrition_alcohol">Alkohol</string>
-    <string name="nutrition_vitamins">banyak vitamin</string>
+    <string name="nutrition_vitamins">Vitamin</string>
     <string name="vitamin_a">Vitamin A</string>
     <string name="vitamin_d">Vitamin D</string>
     <string name="vitamin_e">Vitamin E</string>
     <string name="vitamin_k">Vitamin K</string>
-    <string name="vitamin_c">Vitaminc</string>
-    <string name="vitamin_b1">Vitamin .B1</string>
-    <string name="vitamin_b2">Vitamin.B2</string>
-    <string name="vitamin_pp">Vitamin ,PP</string>
-    <string name="vitamin_b6">Vitamin,B6</string>
-    <string name="vitamin_b9">Vitamin,B9</string>
-    <string name="vitamin_b12">Vitamin.B12</string>
-    <string name="biotin">Biotiin</string>
-    <string name="pantothenic_acid">Asem pantotenat</string>
+    <string name="vitamin_c">Vitamin C</string>
+    <string name="vitamin_b1">Vitamin B1</string>
+    <string name="vitamin_b2">Vitamin B2</string>
+    <string name="vitamin_pp">Vitamin B3</string>
+    <string name="vitamin_b6">Vitamin B6</string>
+    <string name="vitamin_b9">Vitamin B9</string>
+    <string name="vitamin_b12">Vitamin B12</string>
+    <string name="biotin">Biotin</string>
+    <string name="pantothenic_acid">Asam pantotenat</string>
     <string name="nutrition_minerals">Mineral</string>
-    <string name="silica">silikaa</string>
+    <string name="silica">Silika</string>
     <string name="bicarbonate">Bikarbonat</string>
-    <string name="potassium">poKaliium</string>
-    <string name="chloride">Khlorida</string>
+    <string name="potassium">Potasium</string>
+    <string name="chloride">Klorida</string>
     <string name="calcium">Kalsium</string>
     <string name="phosphorus">Fosfor</string>
-    <string name="iron">Besi</string>
-    <string name="magnesium">magnesium</string>
-    <string name="zinc">zat</string>
+    <string name="iron">Zat Besi</string>
+    <string name="magnesium">Magnesium</string>
+    <string name="zinc">Zinc</string>
     <string name="copper">Tembaga</string>
     <string name="manganese">Mangan</string>
-    <string name="fluoride">Fluor</string>
-    <string name="selenium">senium</string>
+    <string name="fluoride">Fluorida</string>
+    <string name="selenium">Selenium</string>
     <string name="chromium">Kromium</string>
     <string name="molybdenum">Molibdenum</string>
-    <string name="iodine">Yodium</string>
+    <string name="iodine">Iodin</string>
     <string name="caffeine">Kafein</string>
-    <string name="taurine">taurin</string>
+    <string name="taurine">Taurina</string>
     <string name="ph">pH</string>
-    <string name="fruits_vegetables_nuts">Buah-buahan, sayuran, kacang-kacangan</string>
+    <string name="fruits_vegetables_nuts">Buah-buahan, sayur - sayuran, kacang-kacangan</string>
     <string name="collagen_meat_protein_ratio">Rasio protein daging kolagen</string>
     <string name="cocoa">Biji cokelat</string>
     <string name="chlorophyl">Klorofil</string>
-    <string name="take_picture">Take a photo</string>
-    <string name="choose_picture_from_gallery">From gallery</string>
-    <string name="take_picture_ingredients">mengambil gambar ramuan</string>
+    <string name="take_picture">Ambil foto</string>
+    <string name="choose_picture_from_gallery">Dari galeri</string>
+    <string name="take_picture_ingredients">Ambil foto kandungan bahan</string>
     <string name="take_picture_recycling">Ambil foto instruksi daur ulang</string>
     <string name="take_picture_front">Ambil foto dari depan</string>
-    <string name="take_picture_nutrition_table">ambil gambar nutrisi</string>
-    <string name="take_more_pictures">memfoto</string>
-    <string name="take_extra_packaging_pictures">Take extra photos of packaging</string>
+    <string name="take_picture_nutrition_table">Ambil foto tabel nutrisi</string>
+    <string name="take_more_pictures">Ambil lebih banyak foto</string>
+    <string name="take_extra_packaging_pictures">Ambil foto - foto kemasan tambahan</string>
     <string name="txtSaturatedFat">Lemak jenuh</string>
-    <string name="nutriscore_info_msg">Learn more about the Nutri-Score</string>
-    <string name="nova_info_msg">Learn more about NOVA groups</string>
-    <string name="nova_grp1_msg">Kelompok 1 - Makanan yang tidak diproses atau diproses minimal</string>
-    <string name="nova_grp2_msg">Kelompok 2 - Olahan bahan kuliner</string>
-    <string name="nova_grp3_msg">Kelompok 3 - Makanan olahan</string>
-    <string name="nova_grp4_msg">Kelompok 4 - Produk makanan dan minuman yang ultra proses</string>
+    <string name="nutriscore_info_msg">Pelajari lebih banyak tentang Nutri-Score</string>
+    <string name="nova_info_msg">Pelajari lebih lanjut tentang grup NOVA</string>
+    <string name="nova_grp1_msg">Grup 1 - Makanan yang tidak diproses atau sedikit diproses</string>
+    <string name="nova_grp2_msg">Grup 2 - Bahan - bahan kuliner olahan</string>
+    <string name="nova_grp3_msg">Grup 3 - Makanan olahan</string>
+    <string name="nova_grp4_msg">Grup 4 - Produk - produk makanan dan minuman ultra proses</string>
     <!-- String related to App Shortcuts -->
-    <string name="disabled_message">Pintasan tidak tersedia</string>
+    <string name="disabled_message">Pintasan tidak tersedia.</string>
     <string name="scan_shortcut_short_label">Pindai</string>
-    <string name="scan_shortcut_long_label">Memindai Produk</string>
-    <string name="barcode_shortcut_short_label">mencari </string>
-    <string name="barcode_shortcut_long_label">Cari dengan Barcode</string>
-    <string name="history_shortcut_short_label">riwayat/kenangan</string>
-    <string name="history_shortcut_long_label">riwayat/kenangan</string>
+    <string name="scan_shortcut_long_label">Pindai Produk</string>
+    <string name="barcode_shortcut_short_label">Cari</string>
+    <string name="barcode_shortcut_long_label">Cari berdasarkan kode batang</string>
+    <string name="history_shortcut_short_label">Riwayat</string>
+    <string name="history_shortcut_long_label">Riwayat</string>
     <string name="contributions_shortcut_short_label">Kontribusi</string>
-    <string name="contributions_shortcut_long_label">My contributions</string>
+    <string name="contributions_shortcut_long_label">Kontribusi saya</string>
     <string name="forgot_password">Lupa Kata Sandi</string>
     <string name="next">BERIKUTNYA</string>
     <string name="skip">LEWATI</string>
-    <string name="start">BAIKLAH</string>
     <string name="email_not_found">Aplikasi email tidak ditemukan</string>
-    <string name="airplane_mode_active_dialog_title">Aktifkan Mode Pesawat</string>
-    <string name="airplane_mode_active_dialog_message">Mode Pesawat diaktifkan, nonaktifkan untuk melanjutkan</string>
-    <string name="airplane_mode_active_dialog_negative">Abaikan</string>
-    <string name="airplane_mode_active_dialog_positive">Pengaturan</string>
     <string name="device_offline_dialog_title">Jaringan tidak tersedia</string>
-    <string name="device_offline_dialog_message">Koneksi jaringan diperlukan untuk melakukan ini, apakah anda ingin mengubahnya di pengaturan?</string>
-    <string name="device_offline_dialog_negative">Abaikan</string>
-    <string name="device_offline_dialog_positive">Pengaturan</string>
-    <string name="scan_first_product">Pindai produk pertama</string>
-    <string name="device_on_mobile_data_warning_title">informasi</string>
-    <string name="device_on_mobile_data_warning_message">You have disabled upload on mobile data , please connect to WiFi or change this in preferences</string>
-    <string name="device_on_mobile_data_warning_positive">pengaturan</string>
-    <string name="device_on_mobile_data_warning_negative">Tetap unggah</string>
-    <string name="changes_saved">Changes saved successfully</string>
-    <string name="proceed">Proceed</string>
+    <string name="scan_first_product">Pindai produk pertama Anda</string>
+    <string name="changes_saved">Perubahan berhasil disimpan</string>
+    <string name="proceed">Lanjutkan</string>
     <string name="preference_choose_language_dialog_title">Pilih bahasa</string>
-    <string name="preference_choose_scanner_dialog_title"><b>New: Enhanced “MLKit” scanner</b></string>
-    <string name="preference_choose_scanner_dialog_body">We have included a new option to more reliably scan barcodes. While this scanner works on your device, using machine learning,
-            please be aware that it is a proprietary component provided by Google, governed by this privacy policy, and that some limited telemetry might be sent back to Google’s servers
-            to improve their software. As noted in the MLKit terms, this won’t include any information about the products you scan and the telemetry is anonymized. Choosing MLKit scanner
-            implies that you accept those terms\n<b>Note: You can switch back at any time between the 2 scanners in the Settings.</b>
-    </string>
-    <string name="prompt_point_at_a_barcode">Point your camera at a barcode</string>
-    <string name="prompt_move_camera_closer">Move closer to detect</string>
-    <string name="please_check_your_connection">Mohon periksa koneksi jaringan anda.</string>
-    <string name="advanced_search_title">Pencarian lanjutan &amp; grafik</string>
-    <string name="compare_products">Compare products</string>
-    <string name="connectivity_check">Silakan periksa koneksi internet Anda</string>
+    <string name="preference_choose_scanner_dialog_title"><b>Baru: Pemindai \"MLKit\" yang diperkuat</b></string>
+    <string name="preference_choose_scanner_dialog_body">Kami telah memasukkan opsi baru untuk memindai kode batang dengan lebih handal. Sementara pemindai ini bekerja di perangkat Anda, yang menggunakan pembelajaran mesin, harap perhatikan bahwa ini adalah komponen dengan hak milik yang disediakan oleh Google, yang dikelola oleh kebijakan privasi ini, dan bahwa beberapa telimetri terbatas mungkin dikirimkan kembali ke peladen Google untuk meningkatkan perangkat lunak mereka. Seperti yang dicatat dalam persyaratan MLKit, ini tidak akan menyertakan informasi apapun tentang produk - produk yang Anda pindai dan telemetrinya dianonimkan. Memilih pemindai MLKit menyiratkan bahwa Anda menerima persyaratan tersebut\n<b>Catatan: Anda dapat beralih kembali kapan saja di antara 2 pemindai dalam Pengaturan.</b>    </string>
+    <string name="prompt_point_at_a_barcode">Arahkan kamera Anda pada kode batang</string>
+    <string name="prompt_move_camera_closer">Bergerak lebih dekat untuk mendeteksi</string>
+    <string name="please_check_your_connection">Mohon periksa koneksi Anda.</string>
+    <string name="advanced_search_title">Pencarian Lanjutan &amp; Grafik</string>
+    <string name="compare_products">Bandingkan produk - produk</string>
+    <string name="connectivity_check">Harap periksa koneksi internet Anda</string>
     <string name="dismiss">Abaikan</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <!--Just replace "world" by "fr", "de"… translate the "terms-of-use" with the hyphens -->
@@ -440,200 +410,182 @@
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
     <string name="url_nutrient_values">https://world-id.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">Umum</string>
-    <string name="preference_header_network">Network</string>
-    <string name="preference_header_contributing">Contributing</string>
-    <string name="preference_header_privacy">Privacy</string>
-    <string name="preference_crash_title">Crash reporting</string>
-    <string name="preference_crash_summary">When enabled, crash reports will be sent to the Open Food Facts server automatically, so that we can fix bugs and improve the app.</string>
-    <string name="preference_analytics_title">Send anonymous data</string>
-    <string name="preference_analytics_summary">When enabled, some anonymous information regarding app usage will be sent to the Open Food Facts servers, so that we can understand how and how much features are used in order to improve them.</string>
-    <string name="preference_analytics_bottom_sheet_title">Send anonymous data</string>
-    <string name="preference_analytics_bottom_sheet_description">Help improve Open Food Facts by letting us know how you use it. Data collected is anonymous. This option can be disabled at any time in the settings section.</string>
-    <string name="preference_analytics_bottom_sheet_grant_button">Grant</string>
-    <string name="preference_analytics_bottom_sheet_decline_button">Decline</string>
-    <string name="scan_first_string">Riwayat produk Anda yang dilihat akan dicantumkan di sini. \ Nriwayat ini hanya dapat dilihat oleh Anda dan disimpan secara lokal.</string>
-    <string name="log_in">Nama pengguna</string>
-    <string name="login_true">Sudah masuk!</string>
-    <string name="confirm_logout">Konfirmasi keluar</string>
-    <string name="logout_dialog_content">Apakah anda yakin untuk keluar?</string>
-    <string name="dialog_cancel">Cancel</string>
-    <string name="dialog_create">Create</string>
-    <string name="wikidata_information">Menuju selanjutnya</string>
-    <string name="wikidata_unavailable">There is no Wikipedia page in your language yet.</string>
+    <string name="preference_header_privacy">Privasi</string>
+    <string name="preference_crash_title">Pelaporan kerusakan</string>
+    <string name="preference_crash_summary">Saat diaktifkan, laporan kerusakan akan dikirimkan peladen Open Food Facts secara otomatis, sehingga kami bisa memperbaiki bug dan meningkatkan aplikasinya.</string>
+    <string name="preference_analytics_title">Kirim data anonim</string>
+    <string name="preference_analytics_summary">Saat diaktifkan, beberapa informasi anonim terkait penggunaan aplikasi akan dikirimkan ke peladen Open Food Facts, sehingga kami dapat memahami bagaimana dan berapa banyak fitur digunakan untuk meningkatkannya.</string>
+    <string name="preference_analytics_bottom_sheet_title">Kirim data anonim</string>
+    <string name="preference_analytics_bottom_sheet_description">Bantu meningkatkan Open Food Facts dengan memberi tahu kami cara Anda menggunakannya. Data yang dikumpulkan bersifat anonim. Opsi ini dapat dinonaktifkan kapan saja di bagian pengaturan.</string>
+    <string name="preference_analytics_bottom_sheet_grant_button">Hibah</string>
+    <string name="preference_analytics_bottom_sheet_decline_button">Tolak</string>
+    <string name="scan_first_string">Riwayat produk Anda yang dilihat akan dicantumkan di sini.\nRiwayat ini hanya dapat dilihat oleh Anda dan disimpan secara lokal.</string>
+    <string name="log_in">Masuk</string>
+    <string name="login_true">Anda sudah masuk.</string>
+    <string name="confirm_logout">Konfirmasi keluar dari Open Food Facts</string>
+    <string name="logout_dialog_content">Apakah Anda yakin untuk keluar dari akun kontributor Open Food Facts Anda?</string>
+    <string name="dialog_cancel">Batalkan</string>
+    <string name="dialog_create">Buat</string>
+    <string name="wikidata_information">Lebih lanjut</string>
+    <string name="wikidata_unavailable">Halaman Wikipedia dalam bahasa Anda belum tersedia.</string>
     <string name="Wikipedia">Lihat di Wikipedia</string>
     <string name="Browse_Products">Telusuri Produk</string>
     <string name="brand_string">Merek</string>
-    <string name="additive_string">Aditif</string>
-    <string name="allergen_string">Allergen</string>
-    <string name="search_string">mencari </string>
-    <string name="country_string">Country</string>
+    <string name="additive_string">Zat aditif</string>
+    <string name="allergen_string">Alergen</string>
+    <string name="search_string">Cari</string>
+    <string name="country_string">Negara</string>
     <string name="store_subtitle">Toko</string>
-    <string name="packaging_subtitle">Pengemasan</string>
+    <string name="packaging_subtitle">Kemasan</string>
     <string name="state_subtitle">Negara</string>
-    <string name="packaging_string">Pengemasan</string>
+    <string name="packaging_string">Kemasan</string>
     <string name="label_string">Label</string>
     <string name="category_string">Kategori</string>
     <string name="connection">Terhubung</string>
-    <string name="contributor_string">Penyumbang</string>
+    <string name="contributor_string">Kontributor</string>
     <string name="app_disabled_text">Aplikasi dinonaktifkan</string>
     <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
-    <string name="vitamin_tags_text">banyak vitamin:</string>
+    <string name="vitamin_tags_text">Vitamin:</string>
     <string name="amino_acid_tags_text">Asam Amino:</string>
-    <string name="mineral_tags_text">Meneral:</string>
+    <string name="mineral_tags_text">Mineral:</string>
     <string name="other_tags_text">Zat Lainnya:</string>
     <!--shared element transition key-->
     <string name="by_title">Judul</string>
     <string name="by_brand">Merek</string>
     <string name="by_barcode">kode batang</string>
-    <string name="by_time">Barusaja dilihat</string>
-    <string name="sort">Urutkan</string>
+    <string name="by_time">Baru saja Dilihat</string>
+    <string name="sort">Sortir</string>
     <string name="by_nutrition_grade">Nutri-Score</string>
     <string name="sort_by">Sortir berdasarkan</string>
     <!-- strings related to share images -->
-    <string name="sorry_msg">Gambar tanpa barcode belum bisa ditambahkan ke aplikasi. Mohon coba versi web seluler.</string>
-    <string name="no_barcode">Kami tidak mendeteksi barcode apapun</string>
-    <string name="enter_barcode">Silakan masukkan barcode dibawah ini</string>
-    <string name="format_error">Salah format Barkod/QR</string>
-    <string name="code_detected">Kami telah mendeteksi barkod</string>
-    <string name="do_you_want_to">Apakah anda ingin menambahkan gambar ke barcode ini?</string>
-    <string name="bottomNav_history">riwayat/kenangan</string>
-    <string name="products_added">Produk yang telah Anda tambahkan atau edit</string>
-    <string name="products_incomplete">Produk yang Anda tambahkan perlu diselesaikan</string>
-    <string name="product_pictures_contributed">Produk yang anda ambil gambarnya</string>
-    <string name="picture_contributed_incomplete">Produk yang anda ambil gambarnya perlu diselesaikan</string>
-    <string name="product_info_added">Produk yang anda tambahkan informasinya</string>
-    <string name="product_info_tocomplete">Produk yang anda tambahkan informasinya perlu diselesaikan</string>
-    <string name="show_by">Tunjukan</string>
+    <string name="sorry_msg">Gambar tanpa kode batang belum bisa ditambahkan dengan aplikasi. Silahkan coba versi web seluler.</string>
+    <string name="no_barcode">Kami belum mendeteksi kode batang apapun</string>
+    <string name="enter_barcode">Silakan masukkan kode batang di bawah ini</string>
+    <string name="format_error">Format Kode Batang/QR salah</string>
+    <string name="code_detected">Kami telah mendeteksi kode batang</string>
+    <string name="do_you_want_to">Apakah Anda ingin menambahkan foto untuk kode batang ini?</string>
+    <string name="bottomNav_history">Riwayat</string>
+    <string name="products_added">Produk - produk yang Anda tambahkan atau sunting</string>
+    <string name="products_incomplete">Produk - produk yang Anda tambahkan yang perlu diselesaikan</string>
+    <string name="product_pictures_contributed">Produk - produk yang Anda ambil gambarnya</string>
+    <string name="picture_contributed_incomplete">Produk - produk yang Anda ambil gambarnya yang perlu dilengkapi</string>
+    <string name="product_info_added">Produk - produk yang Anda tambahkan informasinya</string>
+    <string name="product_info_tocomplete">Produk - produk yang Anda tambahkan informasinya yang perlu dilengkapi</string>
+    <string name="show_by">Tampilkan</string>
     <string name="notify_title">Ekspor selesai</string>
     <string name="notify_content">Klik untuk melihat produk yang diekspor</string>
-    <string name="notification_channel_name">Ekspor pemberitahuan</string>
-    <string name="notify_channel_description">Pemberitahuan untuk melihat lokasi file yang diekspor</string>
-    <string name="products_to_be_completed">Produk perlu diselesaikan</string>
-    <string name="offline_notification_title">Kontribusi luar jaringan yang perlu anda kirim</string>
-    <string name="creator_history">Product added on %1$s at %2$s CET by %3$s</string>
-    <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by %3$s </string>
-    <string name="other_editors">Halaman produk juga diubah oleh </string>
-    <string name="product_states">Product States</string>
-    <string name="incomplete_states">Incomplete States</string>
-    <string name="complete_states">Complete States</string>
+    <string name="notification_channel_name">Pemberitahuan Ekspor</string>
+    <string name="notify_channel_description">Pemberitahuan untuk menampilkan lokasi berkas yang diekspor</string>
+    <string name="products_to_be_completed">Produk - produk yang perlu dilengkapi</string>
+    <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Produk ditambahkan pada hari %1$s jam %2$s CET sebesar %3$s</string>
+    <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Penyuntingan terakhir halaman produk pada hari %1$s jam %2$s CEST oleh %3$s </string>
+    <!-- TODO: Add the placeholder in the string - important for several languages -->
+    <string name="other_editors">Halaman produk juga disunting oleh </string>
+    <string name="product_states">Status produk</string>
+    <string name="incomplete_states">Status tidak lengkap</string>
+    <string name="complete_states">Status lengkap</string>
     <string name="contribution_tab">Kontribusi</string>
-    <string name="synthesis_tab">Synthesis</string>
-    <string name="txtDialogsTitle">informasi</string>
-    <string name="offline_product_addition_title">Add a new product</string>
-    <string name="productNameNull">Nama tidak dikenali</string>
+    <string name="synthesis_tab">Sintesis</string>
+    <string name="txtDialogsTitle">Informasi</string>
+    <string name="offline_product_addition_title">Tambahkan produk baru</string>
+    <string name="productNameNull">Nama tidak diketahui</string>
     <string name="productAdditivesUnknown"></string>
-    <string name="productAdditivesTemplate">%1$d additives</string>
     <plurals name="productAdditives">
-        <item quantity="other">%d additives</item>
+        <item quantity="other" comment="Do not change the placeholder">%d zat aditif</item>
     </plurals>
-    <string name="product_not_complete">Produk ini belum selesai. \nBisa tambahkan detail lain?</string>
-    <string name="addProductOffline">You seem offline. Add the product %s using the offline mode ?</string>
-    <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
+    <string name="product_not_complete">Produk ini belum lengkap. \nBisakah Anda menambahkan beberapa detail?</string>
+    <string name="addProductOffline">Tampaknya Anda luring. Tambahkan produk %s menggunakan mode luring?</string>
+    <string name="product_not_found">Produk %1$s yang Anda pindai belum terdaftar di Open Food Facts. Bisakah Anda menambahkannya?</string>
     <string name="scan_sound">Suara pemindai</string>
     <string name="trouble_scanning">Pemindaian bermasalah?</string>
-    <string name="barcode_hint">Kesulitan memindai? Masukkan barcode</string>
+    <string name="barcode_hint">Pemindaian bermasalah? Masukkan kode batang</string>
     <string name="switch_camera">Ganti kamera</string>
     <string name="autofocus">Fokus otomatis</string>
     <string name="initial_loading">Pemuatan awal</string>
-    <string name="preferences">pengaturan</string>
     <string name="OFFlogo">Logo Open Food Facts</string>
-    <string name="loading_product">Loading product %s</string>
-    <string name="image_not_defined_for_language">No image for selected language. You can add a new one</string>
-    <string name="error_adding_ingredients">Something went wrong while trying to add product ingredients</string>
-    <string name="unable_to_extract_ingredients">Unable to extract ingredients from image</string>
-    <string name="error_adding_nutrition_facts">Something went wrong while trying to add product nutrition facts</string>
-    <string name="error_in_carbohydrate_value">Carbohydrates can\'t be less than the sum of sugar and starch</string>
-    <string name="choose_nutrient">Choose a nutrient</string>
-    <string name="error_adding_product_details">Something went wrong while trying to add product details</string>
-    <string name="hint_product_URL">Link of the official page of the product</string>
-    <string name="extract_url">Extract URL from QR-code</string>
-    <string name="search_url">Search for official page URL</string>
-    <string name="product_language">Product language : </string>
-    <string name="hint_emb_codes">Examples: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522, FSSL 10013011001409</string>
-    <string name="official_website">Official website</string>
-    <string name="scan_QR_code">Scan QR Code for product website</string>
-    <string name="add_at_least_one_picture">Please add at least one picture of this product before proceeding</string>
-    <string name="image_uploaded_successfully">Image uploaded successfully</string>
-    <string name="error_adding_product_photos">Something went wrong while trying to add product photos</string>
-    <string name="ingredients_overwrite">Ingredients overwrite</string>
-    <string name="choose_mine">Choose mine</string>
-    <string name="keep_previous_version">Keep previous version</string>
-    <string name="product_name_overwrite">Product name overwrite</string>
-    <string name="yours">Yours: </string>
-    <string name="currently_on">Currently on %s: </string>
-    <string name="quantity_overwrite">Quantity overwrite</string>
-    <string name="link_overwrite">Link overwrite</string>
-    <string name="save_product">Do you want to save the product?</string>
-    <string name="error_adding_product">Something went wrong when adding the product</string>
-    <string name="photos">Photos</string>
-    <string name="please_wait">Please wait</string>
-    <string name="product_uploaded_successfully">Product uploaded successfully</string>
-    <string name="no_internet_connection">You appear to have no internet connection, images will be uploaded when network is available</string>
-    <string name="no_internet_unable_to_extract_ingredients">No internet connection. Unable to extract ingredients</string>
-    <string name="percent">%1$d%%</string>
-    <string name="overview">meringkas</string>
-    <string name="ingredients">Bahan</string>
-    <string name="nutrition_facts">Nutrition Facts</string>
-    <string name="your_version">Yours</string>
-    <string name="ingredients_picture">Ingredients Picture</string>
-    <string name="packaging">Recycling</string>
-    <string name="take_ingredients_picture_to_extract">(Please take a photo of the ingredients to automatically extract them)</string>
-    <string name="ingredients_list">Ingredients List</string>
-    <string name="ingredients_hint">Keep the order, indicate the % when specified, separate with a comma or use -, use () for ingredients of an ingredient, surround allergens with _</string>
-    <string name="extract_ingredients">Extract ingredients</string>
-    <string name="extracting_ingredients">Mengekstraksi bahan</string>
-    <string name="looksGood">Looks Good</string>
-    <string name="skip_ingredients">Too Bad \n Skip Ingredients</string>
-    <string name="traces">Jejak</string>
-    <string name="traces_hint">Indicate ingredients from mentions like \'May contain traces of\', \'Made in a factory that also uses\', etc. \nExamples: Milk, Gluten, Nuts</string>
+    <string name="loading_product" comment="Do not modify the placeholder">Memuat produk %s</string>
+    <string name="image_not_defined_for_language">Tidak ada gambar untuk bahasa yang dipilih. Anda dapat menambahkan gambar barunya</string>
+    <string name="error_adding_ingredients">Terjadi kesalahan saat mencoba menambahkan kandungan bahan produk</string>
+    <string name="unable_to_extract_ingredients">Tidak dapat mengekstrak kandungan bahan dari gambar</string>
+    <string name="error_adding_nutrition_facts">Terjadi kesalahan saat mencoba menambahkan informasi nilai gizi produk</string>
+    <string name="error_in_carbohydrate_value">Karbohidrat tidak boleh kurang dari jumlah gula dan amilum</string>
+    <string name="choose_nutrient">Pilih nutrisi</string>
+    <string name="error_adding_product_details">Terjadi kesalahan saat mencoba menambahkan detail produk</string>
+    <string name="hint_product_URL">Tautan halaman resmi produk</string>
+    <string name="extract_url">Ekstrak URL dari kode QR</string>
+    <string name="search_url">Cari URL halaman resmi</string>
+    <string name="product_language">Bahasa produk: </string>
+    <string name="official_website">Situs web resmi</string>
+    <string name="scan_QR_code">Pindai kode QR untuk mengakses situs web produk</string>
+    <string name="add_at_least_one_picture">Harap tambahkan setidaknya satu gambar untuk produk ini sebelum melanjutkan</string>
+    <string name="image_uploaded_successfully">Gambar berhasil diunggah</string>
+    <string name="error_adding_product_photos">Terjadi kesalahan saat mencoba menambahkan foto produk</string>
+    <string name="save_product">Apakah Anda mau menyimpan produk?</string>
+    <string name="error_adding_product">Terjadi kesalahan saat menambahkan produk</string>
+    <string name="photos">Foto - foto</string>
+    <string name="please_wait">Mohon menunggu</string>
+    <string name="product_uploaded_successfully">Produk berhasil diunggah</string>
+    <string name="no_internet_connection">Tampaknya Anda tidak memiliki koneksi internet, gambar akan diunggah saat jaringan tersedia</string>
+    <string name="no_internet_unable_to_extract_ingredients">Tidak ada koneksi internet. Tidak dapat mengekstrak kandungan bahan</string>
+    <string name="overview">Ringkasan</string>
+    <string name="ingredients">Kandungan bahan</string>
+    <string name="nutrition_facts">Informasi nilai gizi</string>
+    <string name="your_version">Milik Anda</string>
+    <string name="ingredients_picture">Gambar Kandungan Bahan</string>
+    <string name="packaging">Mendaur ulang</string>
+    <string name="take_ingredients_picture_to_extract">(Silahkan mengambil foto kandungan bahan untuk secara otomatis mengekstraknya)</string>
+    <string name="ingredients_list">Daftar Kandungan Bahan</string>
+    <string name="ingredients_hint" tools:ignore="StringFormatInvalid">Pertahankan urutannya, tunjukkan %nya bila ditetapkan, pisahkan dengan koma atau gunakan -, gunakan () untuk kandungan bahan dari ramuan, apit alergen dengan _</string>
+    <string name="extract_ingredients">Ekstrak kandungan bahan</string>
+    <string name="extracting_ingredients">Mengekstrak kandungan bahan</string>
+    <string name="looksGood">Kelihatan Bagus</string>
+    <string name="skip_ingredients">Sayang sekali \n Lewati Kandungan Bahan</string>
+    <string name="traces">Jejak - jejak</string>
+    <string name="traces_hint">Tunjukkan kandungan bahan dari penyebutan seperti \"Mungkin berisi jejak - jejak dari\', Dibuat di pabrik yang juga menggunakan\', dll.\nContoh: Susu, Gluten, Kacang - kacangan</string>
     <string name="nutrition_facts_not_specified">Informasi nilai gizi tidak ditetapkan pada produk.</string>
-    <string name="nutrition_facts_picture">Nutrition Facts photo</string>
-    <string name="front_short_picture">Front</string>
-    <string name="other_picture">Other Picture</string>
-    <string name="for_100g_100ml">For 100g / 100ml</string>
-    <string name="per_serving">porsi</string>
-    <string name="serving_size">Melayani ukuran</string>
+    <string name="nutrition_facts_picture">Foto Informasi Nilai Gizi</string>
+    <string name="front_short_picture">Tampak depan</string>
+    <string name="other_picture">Gambar lainnya</string>
+    <string name="for_100g_100ml">Untuk 100g / 100ml</string>
+    <string name="per_serving">Per porsi</string>
+    <string name="serving_size">Takaran saji</string>
     <string name="alcohol_unit" formatted="false">% vol / °</string>
     <string name="add_a_nutrient">Tambahkan nutrisi</string>
-    <string name="add_this_product">Add this product</string>
-    <string name="product_picture">Product Picture</string>
-    <string name="one_photo_compulsory">(one photo is compulsory to add a new product)</string>
-    <string name="product_details">Product Details</string>
+    <string name="add_this_product">Tambahkan produk ini</string>
+    <string name="product_picture">Gambar Produk</string>
+    <string name="one_photo_compulsory">(satu foto bersifat wajib untuk menambah produk baru)</string>
+    <string name="product_details">Detail Produk</string>
     <string name="product_name">Nama Produk</string>
     <string name="quantity">Kuantitas</string>
-    <string name="labels">Labels</string>
+    <string name="labels">Label - label</string>
     <string name="period_of_time_after_opening">Periode waktu setelah pembukaan</string>
-    <string name="manufacturing_details">Manufacturing Details</string>
-    <string name="origin_of_ingredients">Asal bahan</string>
-    <string name="manufacturing_place">Manufacturing place</string>
-    <string name="emb_code">Traceability Code</string>
-    <string name="purchasing_details">Purchasing Details</string>
-    <string name="country_where_purchased">Country where purchased</string>
+    <string name="manufacturing_details">Detail Produksi</string>
+    <string name="origin_of_ingredients">Asal usul bahan</string>
+    <string name="manufacturing_place">Tempat produksi</string>
+    <string name="emb_code">Kode keterlacakan</string>
+    <string name="purchasing_details">Detail Pembelian</string>
+    <string name="country_where_purchased">Negara tempat pembelian</string>
     <string name="stores">Toko</string>
-    <string name="additional_pictures">Additional Pictures</string>
-    <string name="hint_product_pictures">(Add more pictures of the product. eg: recycling instructions, labels etc.)</string>
-    <string name="uploading_image">Sending the photo</string>
-    <string name="uploading_nutrition_image">Uploading nutrition facts image</string>
-    <string name="uploading_ingredients_image">Uploading ingredients image</string>
-    <string name="uploading_front_image">Uploading front image</string>
-    <string name="edit_front_image">Edit the front photo</string>
-    <string name="edit_nutrition_image">Edit the nutrition photo</string>
-    <string name="edit_packaging_image">Edit the recycling photo</string>
-    <string name="edit_ingredients_image">Edit the ingredients photo</string>
-    <string name="edit_other_image">Edit the photo</string>
-    <string name="sign_in_to_edit">Please sign in to edit a product.</string>
-    <string name="sign_in_to_answer">Please sign in or register to answer an insight.</string>
-    <string name="hint_quantity">Examples: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
-    <string name="edit_product_title">Edit produk</string>
-    <string name="nutrient_already_added">%s is already present in the nutrition facts</string>
-    <string name="save_edits">Save edits</string>
-    <string name="contribution_by">Contribution by</string>
+    <string name="additional_pictures">Gambar - gambar tambahan</string>
+    <string name="hint_product_pictures">(Tambahkan lebih banyak gambar produk, contohnya: instruksi daur ulang, label, dll.)</string>
+    <string name="uploading_image">Mengirim foto</string>
+    <string name="edit_front_image">Sunting foto bagian depan</string>
+    <string name="edit_nutrition_image">Sunting foto nutrisi</string>
+    <string name="edit_packaging_image">Sunting foto daur ulang</string>
+    <string name="edit_ingredients_image">Sunting foto kandungan bahan</string>
+    <string name="edit_other_image">Sunting foto</string>
+    <string name="sign_in_to_edit">Silahkan masuk untuk menyunting produk.</string>
+    <string name="sign_in_to_answer">Silahkan masuk atau mendaftar untuk menjawab wawasan.</string>
+    <string name="hint_quantity">Contoh: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pon</string>
+    <string name="edit_product_title">Sunting produk</string>
+    <string name="save_edits">Simpan suntingan</string>
+    <string name="contribution_by">Kontribusi oleh</string>
     <string name="title_activity_product">Judul</string>
-    <string name="description_activity_product">description</string>
-    <string name="intent_filter_share_label">Add to Open Food Facts</string>
+    <string name="description_activity_product">deskripsi</string>
+    <string name="intent_filter_share_label">Tambahkan ke Open Food Facts</string>
     <!-- Used for additive exposure evaluation table -->
-    <string name="overexposure_high">Memiliki risiko tinggi terhadap paparan berlebih</string>
-    <string name="overexposure_moderate">Memiliki risiko menengah terhadap paparan berlebih</string>
+    <string name="overexposure_high">Risiko tinggi terhadap paparan berlebih</string>
+    <string name="overexposure_moderate">Risiko menengah terhadap paparan berlebih</string>
     <string name="infants">Bayi</string>
     <string name="infants_age">&lt; 1</string>
     <string name="toddlers">Batita</string>
@@ -646,168 +598,162 @@
     <string name="adults_age">18 sampai 64</string>
     <string name="elderly">Lansia</string>
     <string name="elderly_age">65+</string>
-    <string name="most_people">Most people\n(over 50%)</string>
-    <string name="some_people">Some people\n(over 5%)</string>
-    <string name="safety_and_exposure_assessment">Safety and exposure assessment</string>
-    <string name="risk_of_exposure">Risk of exposure</string>
-    <string name="efsa_warning_high_risk">The European Food Safety Authority (EFSA) has determined that some population groups have a high risk of consuming too much %1$s.</string>
-    <string name="legend_noael">above dose with observed adverse effect (NOAEL)</string>
-    <string name="legend_adi">above Acceptable Daily Intake (ADI)</string>
-    <string name="max_energy_val_msg">This value is above 2000 kcal per 100g. Can you correct it ?</string>
-    <string name="max_nutrient_val_msg">Value entered is more than given per serving size</string>
-    <string name="update_image">Send an Updated Image</string>
+    <string name="most_people">Kebanyakan orang\n(lebih dari 50%)</string>
+    <string name="some_people">Beberapa orang\n(lebih dari 5%)</string>
+    <string name="safety_and_exposure_assessment">Penilaian keamanan dan paparan</string>
+    <string name="risk_of_exposure">Resiko paparan</string>
+    <string name="efsa_warning_high_risk">European Food Safety Authority (EFSA) telah menentukan bahwa beberapa kelompok populasi memiliki resiko tinggi mengonsumsi %1$s secara berlebihan.</string>
+    <string name="legend_noael">di atas dosis dengan observed adverse effect (NOAEL)</string>
+    <string name="legend_adi">di atas Acceptable Daily Intake (ADI)</string>
+    <string name="max_energy_val_msg">Nilai ini di atas 2000 kkal per 100g. Bisakah Anda memperbaikinya?</string>
+    <string name="max_nutrient_val_msg">Nilai yang dimasukkan lebih dari yang diberikan per takaran saji</string>
+    <string name="update_image">Kirim Gambar yang Diperbarui</string>
     <!-- Used for additive exposure evaluation table -->
-    <string name="extract_ingredients_prompt">Extract ingredients</string>
-    <string name="extract_recycling_prompt">Extract recycling instructions</string>
-    <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
-    <string name="add_category_prompt_text">Add a category to help complete the product</string>
-    <string name="add_nutrient_category_prompt_text">Add a category and nutrition facts to help complete the product</string>
-    <string name="couldnot_compute_ecoscore_prompt_text">We could not compute an Eco-Score for this product. It might be that the category is not specific enough or that we don\'t have supporting data for this category. If you believe this is an error, you can mail us by clicking below.</string>
-    <string name="add_labels_origins_prompt_text">The Eco-Score takes into account environmental labels and origins of the ingredients. Please take them into photo or edit the product so that they can be taken into account</string>
-    <string name="add_labels_prompt_text">The Eco-Score takes into account environmental labels. Please take them into photo or edit the product so that they can be taken into account</string>
-    <string name="add_origins_prompt_text">The Eco-Score takes into account the origins of the ingredients. Please take them into photo (ingredient list and/or any geographic claim) or edit the product so that they can be taken into account</string>
-    <string name="category_game_btn">Help categorize products</string>
-    <string name="version_string">Open Food Facts Android App</string>
-    <string name="set_ingredient_img">Set as ingredients image</string>
-    <string name="set_img_nutrients">Set as nutrition image</string>
-    <string name="set_img_front">Set as front image</string>
-    <string name="set_img_recycling">Set Image as Recycling</string>
-    <string name="report_img">Report Image</string>
-    <string name="detected_ingredients">Detected Ingredients</string>
-    <string name="txtConnectionError">We could not download certain data. This may be due to a connection error.</string>
-    <string name="set_image_name">Successfully set the image as</string>
-    <string name="addtive_search">Search for a additive</string>
-    <string name="additives">Aditif</string>
+    <string name="extract_ingredients_prompt">Ekstrak kandungan bahan</string>
+    <string name="extract_recycling_prompt">Ekstrak instruksi daur ulang</string>
+    <string name="add_nutrient_prompt_text">Tambahkan informasi nilai gizi untuk menghitung Nutri-Score</string>
+    <string name="add_category_prompt_text">Tambahkan kategori untuk menghitung Nutri-Score</string>
+    <string name="add_nutrient_category_prompt_text">Tambahkan informasi nilai gizi dan kategori untuk menghitung Nutri-Score</string>
+    <string name="couldnot_compute_ecoscore_prompt_text" comment="Do not translate Eco-Score">Kami tidak dapat menghitung Eco-Score untuk produk ini. Mungkin kategorinya tidak cukup spesifik atau kami tidak memiliki data pendukung untuk kategori ini. Jika Anda yakin ini adalah kesalahan, Anda dapat mengirim surel ke kami dengan mengklik di bawah ini.</string>
+    <string name="add_labels_origins_prompt_text" comment="Do not translate Eco-Score">Eco-Score memperhitungkan label lingkungan dan asal usul kandungan bahan. Harap memfoto mereka atau sunting produknya sehingga mereka bisa diperhitungkan</string>
+    <string name="add_labels_prompt_text" comment="Do not translate Eco-Score">Eco-Score memperhitungkan label lingkungan. Harap memfoto mereka atau sunting produknya sehingga mereka bisa diperhitungkan</string>
+    <string name="add_origins_prompt_text" comment="Do not translate Eco-Score">Eco-Score memperhitungkan asal usul kandungan bahan. Harap memfoto mereka (daftar kandungan bahan dan/atau klaim geografis manapun) atau sunting produknya sehingga mereka dapat diperhitungkan</string>
+    <string name="category_game_btn">Bantu mengkategorikan produk untuk menghitung Nutri-Score</string>
+    <string name="version_string">Aplikasi Android Open Food Facts</string>
+    <string name="set_ingredient_img">Tetapkan gambar sebagai Kandungan Bahan</string>
+    <string name="set_img_nutrients">Tetapkan Gambar sebagai Nutrisi</string>
+    <string name="set_img_front">Tetapkan Gambar sebagai Bagian Depan</string>
+    <string name="set_img_recycling">Tetapkan Gambar sebagai Daur Ulang</string>
+    <string name="report_img">Laporkan Gambar</string>
+    <string name="detected_ingredients">Kandungan Bahan Terdeteksi</string>
+    <string name="txtConnectionError">Kami tidak dapat mengunduh data tertentu. Ini mungkin karena kesalahan koneksi.</string>
+    <string name="set_image_name">Berhasil menetapkan gambar sebagai</string>
+    <string name="addtive_search">Cari zat aditif</string>
+    <string name="additives">Zat - zat aditif</string>
     <!--used for product_lists implementation-->
-    <string name="add_to_product_lists">Add to your lists</string>
-    <string name="txt_create_new_list">Create a new list</string>
-    <string name="txt_add_to_new_list">Add to a new list</string>
-    <string name="create_new_list_list_name">List Name</string>
-    <string name="txt_eaten_products">Produk yang saya miliki</string>
-    <string name="txt_products_to_buy">Products to buy</string>
-    <string name="txt_exporting_your_listed_products">Exporting Your Products…</string>
-    <string name="txt_your_listed_products_exported">Your products have been exported</string>
+    <string name="add_to_product_lists">Tambahkan ke daftar Anda</string>
+    <string name="txt_create_new_list">Buat daftar baru</string>
+    <string name="txt_add_to_new_list">Tambahkan ke daftar baru</string>
+    <string name="create_new_list_list_name">Nama Daftar</string>
+    <string name="txt_eaten_products">Produk - produk yang dimakan</string>
+    <string name="txt_products_to_buy">Produk - produk untuk dibeli</string>
+    <string name="txt_exporting_your_listed_products">Mengekspor Produk - Produk Anda…</string>
+    <string name="txt_your_listed_products_exported">Produk - produk Anda telah diekspor</string>
     <string name="txt_discard">Buang</string>
-    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
-        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
-    <string name="txt_info_your_listed_products">You\'ll be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
-    <string name="import_csv_to_list">Import an Open Food Facts list CSV file</string>
-    <string name="toast_import_csv_error">Error in importing CSV file</string>
-    <string name="toast_import_csv">CSV imported successfully!</string>
-    <string name="open_csv">Open CSV</string>
-    <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
-    <string name="image_prompt_language">Take a photo of the ingredients in</string>
-    <string name="swipe_delete_tip">You can delete a list by swiping it left.</string>
+    <string name="txt_info_eaten_products">Anda akan dapat menambahkan produk ke daftar ini dengan memindai produk - produk, menarik kartu produknya ke atas dan mengetuk pada \"Saya mengonsumsi ini\". Anda juga akan dapat menambahkan produk - produk ke daftar ini dengan mencarinya dan mengklik tombol + di bagian kanan atas halaman produk.</string>
+    <string name="txt_info_your_listed_products">Anda akan dapat menambahkan produk - produk ke daftar ini dengan mencarinya dan mengklik tombol + di bagian kanan atas halaman produk.</string>
+    <string name="import_csv_to_list">Impor berkas CSV daftar Open Food Facts</string>
+    <string name="toast_import_csv_error">Kesalahan dalam mengimpor berkas CSV</string>
+    <string name="toast_import_csv">CSV berhasil diimpor!</string>
+    <string name="txt_no_nutrition_data">Produk ini tidak memiliki informasi nutrisi apapun pada kemasannya. Jika ini telah berubah, Anda bisa menyunting produknya.</string>
+    <string name="swipe_delete_tip">Anda bisa menghapus daftar dengan menggesernya ke kiri.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
-    <string name="add_product">Add products</string>
-    <string name="add_another_product">Add another product</string>
-    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
-    <string name="product_summary_action_compare_button_label">Compare</string>
-    <string name="product_summary_action_add_to_list_button_label">Add to list</string>
+    <string name="add_product">Tambahkan produk</string>
+    <string name="add_another_product">Tambahkan produk lain</string>
+    <string name="add_nutrition_facts_for_nutriscore">Tambahkan informasi nilai gizi untuk menghitung Nutri-Score</string>
+    <string name="product_summary_action_compare_button_label">Bandingkan</string>
+    <string name="product_summary_action_add_to_list_button_label">Tambahkan ke daftar</string>
     <string name="product_summary_action_edit_button_label">Sunting</string>
     <string name="product_summary_action_share_button_label">Bagikan</string>
-    <string name="product_question_prompt">Tap here to answer</string>
+    <string name="product_question_prompt">Ketuk di sini untuk menjawab</string>
     <string name="product_question_positive_response">Ya</string>
     <string name="product_question_negative_response">Tidak</string>
-    <string name="product_question_ambiguous_response">Not sure</string>
-    <string name="product_question_submit_message">Thank you for your contribution!</string>
+    <string name="product_question_ambiguous_response">Tidak yakin</string>
+    <string name="product_question_submit_message">Terima kasih untuk kontribusi Anda!</string>
     <string name="error_nutrient_entry">Nilai harus berupa angka. Contoh: &quot;1,5&quot;, &quot;2,0&quot;</string>
-    <string name="error_nutrient_serving_data">The serving size value must be a positive value</string>
-    <string name="error_in_nutrient_data">Some nutrient values are not valid. Please, fix above fields with error marker</string>
-    <string name="go_to_full_product_page">Go to product</string>
-    <string name="no_additive_data_available_for_this_product">No additive data available for this product</string>
-    <string name="no_nutrient_information_available_for_this_product">No nutrient information available for this product</string>
-    <string name="error_duplicate_listname">You already have a list with this name</string>
-    <string name="required_to_compute_nutriscore">(Required to calculate the Nutri-Score)</string>
-    <string name="scan_tooltip">You can slide up the card for more details</string>
-    <string name="add_an_allergen">Add an allergen</string>
-    <string name="add_a_list">Add a list</string>
-    <string name="edit_image">Edit Image</string>
-    <string name="cant_edit_image_not_yet_uploaded">The new image is not yet uploaded. Please, wait before editing it</string>
-    <string name="unselect_image">Unselect Image</string>
-    <string name="choose_default_language">Select product language</string>
+    <string name="error_nutrient_serving_data">Nilai takaran saji harus merupakan nilai positif</string>
+    <string name="error_in_nutrient_data">Beberapa nilai gizi tidak valid. Tolong, perbaiki field di atas yang memiliki penanda kesalahan</string>
+    <string name="go_to_full_product_page">Beralih ke produk</string>
+    <string name="no_additive_data_available_for_this_product">Tidak ada data zat aditif yang tersedia untuk produk ini</string>
+    <string name="no_nutrient_information_available_for_this_product">Tidak ada informasi nilai gizi yang tersedia untuk produk ini</string>
+    <string name="error_duplicate_listname">Anda sudah memiliki daftar dengan nama ini</string>
+    <string name="required_to_compute_nutriscore">(Diperlukan untuk menghitung Nutri-Score)</string>
+    <string name="scan_tooltip">Anda dapat menggeser kartu ke atas untuk lebih banyak detail</string>
+    <string name="add_an_allergen">Tambahkan alergen</string>
+    <string name="add_a_list">Tambahkan daftar</string>
+    <string name="edit_image">Sunting Foto</string>
+    <string name="cant_edit_image_not_yet_uploaded">Foto barunya belum diunggah. Harap tunggu sebelum menyuntingnya</string>
+    <string name="unselect_image">Batalkan Pilihan Foto</string>
+    <string name="choose_default_language">Pilih bahasa produk</string>
     <string name="barcode">kode batang</string>
-    <string name="productAdditivesNone">No additives</string>
-    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
-    <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
-    <string name="hint_origin">Examples: USA, France, Italy</string>
+    <string name="productAdditivesNone">Tidak ada zat aditif</string>
+    <string name="required_for_ecoscore" comment="Do not translate Eco-Score">(Diperlukan untuk menghitung Eco-Score)</string>
+    <string name="hint_origin">Contoh: AS, Perancis, Italia</string>
     <!-- Used for diets AddOn -->
-    <string name="history_network_error">The product couldn\'t be loaded. Please try again when you are back online.</string>
-    <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
-    <string name="closeZoom">Click to close zoom</string>
+    <string name="cant_modify_if_refreshing">Mohon menunggu hingga unggahan selesai</string>
+    <string name="closeZoom">Klik untuk menutup mode perbesaran</string>
     <string name="imageFullscreen">Perbesar</string>
     <!-- Used for product ingredients analysis tags -->
     <string name="close_button">Tutup</string>
     <string name="tip_message">TIP: %1$s </string>
-    <string name="ingredient_analysis_tip">Click on the icons below to learn more about the product and to select what information you are interested in.</string>
-    <string name="got_it">Got it!</string>
-    <string name="onboarding_hint_msg">Hint: %s </string>
-    <string name="image_edit_tip">Tap on the image to zoom it, change it, crop it, rotate it and more…</string>
-    <string name="ingredients_in_this_product_are">Ingredients in this product are %1$s.</string>
-    <string name="ingredients_in_this_product">Ingredients in this product that are %1$s:</string>
-    <string name="display_analysis_tag_status">Display %1$s status</string>
-    <string name="unknown_status_no_translation">We couldn\'t assess the status of the product due to unrecognized ingredients.</string>
-    <string name="help_translate_ingredients">Help translate the ingredients in your language</string>
-    <string name="unknown_status_missing_ingredients">We couldn\'t assess the status of the product due to missing ingredients.</string>
-    <string name="unknown_status_ambiguous_ingredients">We couldn\'t assess the status of the product because of ambiguous ingredients : <![CDATA[<b>%1$s</b>]]></string>
-    <string name="help_extract_ingredients">Help extract the ingredients to get the %1$s status</string>
-    <string name="add_photo_to_extract_ingredients">Add a photo to begin extracting ingredients</string>
-    <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
-    <string name="compare_brands">Brands :</string>
-    <string name="compare_additives">Bahan tambahan :</string>
-    <string name="compare_salt">garam</string>
+    <string name="ingredient_analysis_tip">Klik ikon di bawah untuk belajar lebih banyak tentang produk dan untuk memilih infomasi yang Anda minati.</string>
+    <string name="got_it">Mengerti!</string>
+    <string name="onboarding_hint_msg">Petunjuk: %s </string>
+    <string name="image_edit_tip">Ketuk gambar untuk memperbesarnya, mengubahnya, memotongnya, memutarnya dan banyak lagi…</string>
+    <string name="ingredients_in_this_product_are">Kandungan bahan dalam produk ini yaitu %1$s.</string>
+    <string name="ingredients_in_this_product">Kandungan bahan dalam produk yang %1$s:</string>
+    <string name="display_analysis_tag_status" comment="Do not change the placeholder">Tampilkan status %1$s</string>
+    <string name="unknown_status_no_translation">Kami tidak dapat menilai status produk karena kandungan bahan yang tidak dikenal.</string>
+    <string name="help_translate_ingredients">Bantu terjemahkan kandungan bahannya dalam bahasa Anda</string>
+    <string name="unknown_status_missing_ingredients">Kami tidak dapat menilai status produk karena kandungan bahan yang hilang.</string>
+    <string name="unknown_status_ambiguous_ingredients">Kami tidak dapat menilai status produk karena kandungan bahan yang tidak jelas : <![CDATA[<b>%1$s</b>]]></string>
+    <string name="help_extract_ingredients">Bantu mengekstrak kandungan bahannya untuk mendapatkan status %1$s</string>
+    <string name="add_photo_to_extract_ingredients">Tambahkan foto untuk mulai mengekstrak kandungan bahan</string>
+    <string name="product_already_exists_in_comparison">Produk telah ada dalam daftar perbandingan</string>
+    <string name="compare_brands">Merek :</string>
+    <string name="compare_additives">Zat aditif :</string>
+    <string name="compare_salt">Garam</string>
     <string name="compare_sugars">Gula</string>
     <string name="compare_saturated_fat">Lemak jenuh</string>
     <string name="compare_fat">Lemak</string>
-    <string name="compare_quantity">Quantity :</string>
-    <string name="load_ingredient_detection_data">Load ingredient detection data</string>
-    <string name="load_ingredient_detection_data_summary">No ingredient detection data has been found, try to load it from server</string>
-    <string name="white_check_image_descr">A white check</string>
-    <string name="hint_packaging">Examples: plastic, paper, glass</string>
-    <string name="hint_trace_code">Examples: EMB 23456, FR 23.345.34 CE</string>
-    <string name="risk_alcohol_consumption">Excessive consumption of alcohol is harmful to health, to be consumed in moderation</string>
+    <string name="compare_quantity">Jumlah :</string>
+    <string name="load_ingredient_detection_data">Muat data deteksi kandungan bahan</string>
+    <string name="load_ingredient_detection_data_summary">Tidak ada data deteksi kandungan bahan yang telah ditemukan, coba untuk memuatnya dari peladen</string>
+    <string name="white_check_image_descr">Sebuah cek putih</string>
+    <string name="hint_packaging">Contoh: plastik, kertas, kaca</string>
+    <string name="hint_trace_code">Contoh: EMB 23456, FR 23.345.34 CE</string>
+    <string name="risk_alcohol_consumption">Konsumsi alkohol secara berlebihan berbahaya untuk kesehatan, harap mengonsumsi secukupnya</string>
     <!--ShowcaseView Strings-->
-    <string name="title_image_type">Select Image Type</string>
-    <string name="content_image_type">Choose the photo to work on</string>
-    <string name="title_choose_language">Select Language</string>
-    <string name="content_choose_language">Select the language of the photo</string>
-    <string name="title_add_photo">Add Photo</string>
-    <string name="content_add_photo">Press here to take a new photo</string>
-    <string name="title_choose_photo">Choose Photo</string>
-    <string name="content_choose_photo">Choose among existing photos</string>
-    <string name="title_edit_photo">Edit Photo</string>
-    <string name="content_edit_photo">Edit, crop and rotate the photo</string>
-    <string name="title_unselect_photo">Unselect Photo</string>
-    <string name="content_unselect_photo">Press here to unselect current photo</string>
-    <string name="title_exit">Exit</string>
-    <string name="content_exit">Press here to return to the product</string>
-    <string name="icon_label">Labels icon</string>
-    <string name="icon_categories">Categories icon</string>
-    <string name="icon_emb">Traceability code icon</string>
-    <string name="product_front_image">Product front image</string>
-    <string name="brand_hint">Examples: Coca-Cola, Nestle, etc…</string>
-    <string name="sign_in_or_register">Sign in or register</string>
-    <string name="hunger_game_call_to_action">Help classify more %1$s</string>
-    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s products (plus the ones you will contribute).</string>
-    <string name="enabled">Enabled</string>
+    <string name="title_image_type">Pilih Tipe Gambar</string>
+    <string name="content_image_type">Pilih foto untuk dikerjakan</string>
+    <string name="title_choose_language">Pilih Bahasa</string>
+    <string name="content_choose_language">Pilih bahasa foto</string>
+    <string name="title_add_photo">Tambahkan Foto</string>
+    <string name="content_add_photo">Tekan di sini untuk mengambil foto baru</string>
+    <string name="title_choose_photo">Pilih Foto</string>
+    <string name="content_choose_photo">Pilih dari antara foto - foto yang ada</string>
+    <string name="title_edit_photo">Sunting Foto</string>
+    <string name="content_edit_photo">Sunting, potong dan putar foto</string>
+    <string name="title_unselect_photo">Batalkan Pilihan Foto</string>
+    <string name="content_unselect_photo">Tekan di sini untuk membatalkan pilihan foto saat ini</string>
+    <string name="title_exit">Keluar</string>
+    <string name="content_exit">Tekan di sini untuk kembali ke halaman produk</string>
+    <string name="icon_label">Ikon label</string>
+    <string name="icon_categories">Ikon kategori</string>
+    <string name="icon_emb">Ikon kode keterlacakan</string>
+    <string name="product_front_image">Gambar bagian depan produk</string>
+    <string name="brand_hint">ContohL Coca-Cola, Nestle, dll…</string>
+    <string name="sign_in_or_register">Masuk atau daftar</string>
+    <string name="hunger_game_call_to_action" comment="Do not change the placeholder">Bantu mengklasifikasikan lebih banyak %1$s</string>
+    <string name="txtHomeOnline">Open Food Facts adalah sebuah basis data terbuka yang mencakup lebih dari %1$s produk makanan (ditambah yang akan Anda sumbangkan).</string>
     <!-- Application theme settings -->
-    <string name="follow_system">Follow system</string>
-    <string name="day">Day</string>
-    <string name="night">Night</string>
-    <string name="report_email_chooser_title">Send a report email</string>
+    <string name="follow_system">Ikuti sistem</string>
+    <string name="day">Siang</string>
+    <string name="night">Malam</string>
+    <string name="report_email_chooser_title">Kirim surel laporan</string>
     <!-- Changelog String -->
-    <string name="changelog_translation_help">Want to see this changelog in %s?\nJoin the translation team!</string>
-    <string name="whats_new">What\'s new with Open Food Facts?</string>
+    <string name="changelog_translation_help" comment="Do not change the placeholder">Ingin melihat changelog ini dalam %s?\nBergabunglah dengan tim penerjemah!</string>
+    <string name="whats_new">Apa yang baru dari Open Food Facts?</string>
     <!-- New onboarding slides -->
-    <string name="title_welcome_intro">Join the food revolution</string>
-    <string name="msg_welcome_intro">Scan food, Take photos, Help transform the food system</string>
-    <string name="title_welcome_nutriscore">Dapatkan Nutri-Score</string>
-    <string name="msg_welcome_nutriscore">A simple synthesis of the nutritional quality of your food</string>
-    <string name="title_welcome_nova">Avoid ultra-processed foods</string>
-    <string name="msg_welcome_nova">Reduce the amount of ultra-processed foods in your diet.</string>
-    <string name="title_welcome_ecoscore">Eco-Score</string>
-    <string name="msg_welcome_ecoscore">A synthesis of the environmental impact of your food.</string>
-    <string name="title_welcome_matomo">Send anonymous analytics</string>
-    <string name="msg_welcome_matomo">Help the Open Food Facts volunteers to improve the app. You decide if you send anonymous analytics.\n\nIf you change your mind this option can be enabled and disabled at any time from the settings.</string>
+    <string name="title_welcome_intro">Bergabunglah dengan revolusi makanan</string>
+    <string name="msg_welcome_intro">Pindai makanan, Ambil foto, Bantu mengubah sistem makanan</string>
+    <string name="title_welcome_nutriscore" comment="Do not translate Nutri-Score">Dapatkan Nutri-Score</string>
+    <string name="msg_welcome_nutriscore">Sintesis sederhana dari kualitas nutrisi makanan Anda</string>
+    <string name="title_welcome_nova">Hindari makanan olahan ultra</string>
+    <string name="msg_welcome_nova">Kurangi jumlah makanan olahan ultra dalam diet Anda.</string>
+    <string name="title_welcome_ecoscore" comment="Do not translate Eco-Score">Eco-Score</string>
+    <string name="msg_welcome_ecoscore">Sintesis dampak lingkungan dari makanan Anda.</string>
+    <string name="title_welcome_matomo">Kirim analitik anonim</string>
+    <string name="msg_welcome_matomo">Bantu para relawan Open Food Facts untuk meningkatkan aplikasi. Anda memiliki pilihan untuk mengirim analitik anonim.\n\nJika Anda berubah pikiran, opsi ini dapat diaktifkan dan dinonaktifkan kapan saja dari bagian pengaturan.</string>
 </resources>

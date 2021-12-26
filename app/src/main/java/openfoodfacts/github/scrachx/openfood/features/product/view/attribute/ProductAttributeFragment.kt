@@ -131,7 +131,6 @@ class ProductAttributeFragment : BottomSheetDialogFragment() {
 
         if (!additive.hasOverexposureData()) return
 
-        val exposureEvalTable = binding.exposureEvalTable
         val efsaWarning = view.findViewById<TextView>(R.id.efsaWarning)
 
         val overexposureRisk = additive.overexposureRisk
@@ -150,7 +149,7 @@ class ProductAttributeFragment : BottomSheetDialogFragment() {
         updateAdditiveExposureTable(0, additive.exposureMeanGreaterThanNoael, R.drawable.red_circle)
         updateAdditiveExposureTable(1, additive.exposure95ThGreaterThanAdi, R.drawable.yellow_circle)
         updateAdditiveExposureTable(1, additive.exposure95ThGreaterThanNoael, R.drawable.red_circle)
-        exposureEvalTable.visibility = View.VISIBLE
+        binding.exposureEvalTable.exposureEvalTableRoot.visibility = View.VISIBLE
     }
 
     private fun updateAdditiveExposureTable(row: Int, exposure: String?, drawableResId: Int) {

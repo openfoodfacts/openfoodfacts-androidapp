@@ -21,7 +21,7 @@
     <string name="slide_3_desc">आपके द्वारा उपयोग किए हुए सभी कॉस्मेटिक को आप एक आसान सूची में निर्यात कर सकते हैं</string>
     <string name="slide_4_title">ऑफ़लाइन काम करता है</string>
     <string name="slide_4_desc">आप नए उत्पादों को ऐड कर सकते हैं, भले ही आपके पास अभी कोई इंटरनेट कनेक्शन न हो</string>
-    <string name="txtDialogsContent">The product you scanned does not exist yet in Open Beauty Facts. Please add it.</string>
+    <string name="product_does_not_exist_please_add_it">The product you scanned does not exist yet in Open Beauty Facts. Please add it.</string>
     <string name="msg_share">Look at this product on Open Beauty Facts :</string>
     <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Beauty Facts</string>
     <string name="Donation">Click here to donate to Open Beauty Facts</string>
@@ -46,4 +46,5 @@
     <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
         You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
     <string name="OFFlogo">Open Beauty Facts logo</string>
+    <string name="txtDialogsContentPowerMode">जिस उत्पाद को आप स्कैन कर चुके हैं वह ओपन फूड फैक्ट्स में उपलब्ध है।</string>
 </resources>

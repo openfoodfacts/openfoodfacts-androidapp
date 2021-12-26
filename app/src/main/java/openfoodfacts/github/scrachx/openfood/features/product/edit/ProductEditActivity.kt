@@ -36,7 +36,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.rx2.await
 import kotlinx.coroutines.withContext
 import okhttp3.RequestBody
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OBF
@@ -62,22 +61,27 @@ import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct
 import openfoodfacts.github.scrachx.openfood.models.entities.ToUploadProduct
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient.Companion.PNG_EXT
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient.Companion.addToHistory
+import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
+import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository.Companion.PNG_EXT
+import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository.Companion.addToHistory
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
+import openfoodfacts.github.scrachx.openfood.repositories.OfflineProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.*
 import java.io.IOException
 import java.util.*
 import javax.inject.Inject
 
+// TODO: 12/10/2021 refactor to use an activity view model shared between fragments of ProductEditActivity
 @AndroidEntryPoint
 class ProductEditActivity : BaseActivity() {
     private var _binding: ActivityEditProductBinding? = null
     private val binding get() = _binding!!
 
     @Inject
-    lateinit var offlineService: OfflineProductService
+    lateinit var client: ProductRepository
+
+    @Inject
+    lateinit var offlineRepository: OfflineProductRepository
 
     @Inject
     lateinit var daoSession: DaoSession
@@ -131,27 +135,32 @@ class ProductEditActivity : BaseActivity() {
     }
 
     override fun onBackPressed() {
+        // If the user changed something, alert before exiting
+        if (getUpdatedFieldsMap().isNotEmpty()) showExitConfirmDialog()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                if (getUpdatedFieldsMap().isNotEmpty()) {
+                    showExitConfirmDialog()
+                    true
+                } else false
+            }
+            R.id.save_product -> {
+                checkFieldsThenSave()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    private fun showExitConfirmDialog() {
         MaterialAlertDialogBuilder(this)
             .setMessage(R.string.save_product)
             .setPositiveButton(R.string.txtSave) { _, _ -> checkFieldsThenSave() }
-            .setNegativeButton(R.string.txtPictureNeededDialogNo) { _, _ -> super.onBackPressed() }
+            .setNegativeButton(R.string.txt_discard) { _, _ -> super.onBackPressed() }
             .show()
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
-        android.R.id.home -> {
-            MaterialAlertDialogBuilder(this)
-                .setMessage(R.string.save_product)
-                .setPositiveButton(R.string.txtSave) { _, _ -> checkFieldsThenSave() }
-                .setNegativeButton(R.string.txt_discard) { _, _ -> finish() }
-                .show()
-            true
-        }
-        R.id.save_product -> {
-            checkFieldsThenSave()
-            true
-        }
-        else -> super.onOptionsItemSelected(item)
     }
 
     private fun selectPage(position: Int) = when (position) {
@@ -193,7 +202,7 @@ class ProductEditActivity : BaseActivity() {
             mProduct = productState.product
 
             // Search if the barcode already exists in the OfflineSavedProducts db
-            offlineSavedProduct = offlineService.getOfflineProductByBarcode(productState.product!!.code)
+            offlineSavedProduct = offlineRepository.getOfflineProductByBarcode(productState.product!!.code)
         }
         if (mEditProduct != null) {
             setTitle(R.string.edit_product_title)
@@ -230,7 +239,7 @@ class ProductEditActivity : BaseActivity() {
 
     private fun setupViewPager(viewPager: ViewPager2) {
         // Initialize fragments
-        fragmentsBundle.putSerializable("product", mProduct)
+        fragmentsBundle.putSerializable(KEY_PRODUCT, mProduct)
 
         editOverviewFragment.arguments = fragmentsBundle
         ingredientsFragment.arguments = fragmentsBundle
@@ -257,9 +266,6 @@ class ProductEditActivity : BaseActivity() {
         viewPager.adapter = adapterResult
     }
 
-    private fun createTextPlain(code: String) =
-        RequestBody.create(OpenFoodAPIClient.MIME_TEXT, code)
-
     private fun getLoginPasswordInfo(): Map<String, RequestBody> {
         val map = hashMapOf<String, RequestBody>()
         val settings = getLoginPreferences()
@@ -277,13 +283,18 @@ class ProductEditActivity : BaseActivity() {
     }
 
     private suspend fun saveProduct() {
-        editOverviewFragment.addUpdatedFieldsToMap(productDetails)
-        ingredientsFragment.addUpdatedFieldsToMap(productDetails)
-        if (isFlavors(OFF, OPFF)) {
-            nutritionFactsFragment.addUpdatedFieldsToMap(productDetails)
-        }
-        addLoginInfoToProductDetails(productDetails)
+        productDetails += getUpdatedFieldsMap() + getLoginInfoMap()
         saveProductOffline()
+    }
+
+    private fun getUpdatedFieldsMap(): Map<String, String?> {
+        val updatedValues = editOverviewFragment.getUpdatedFieldsMap().toMutableMap()
+        updatedValues += ingredientsFragment.getUpdatedFieldsMap()
+
+        if (isFlavors(OFF, OPFF))
+            updatedValues += nutritionFactsFragment.getUpdatedFieldsMap()
+
+        return updatedValues
     }
 
     fun proceed() = if (binding.viewpager.currentItem < 2) {
@@ -357,16 +368,17 @@ class ProductEditActivity : BaseActivity() {
         lifecycleScope.launch { saveProduct() }
     }
 
-    private fun addLoginInfoToProductDetails(targetMap: MutableMap<String, String?>) {
+    private fun getLoginInfoMap(): Map<String, String?> {
         val settings = getLoginPreferences()
 
         val login = settings.getString("user", "")!!
         val password = settings.getString("pass", "")!!
 
-        if (login.isNotEmpty() && password.isNotEmpty()) {
-            targetMap[ApiFields.Keys.USER_ID] = login
-            targetMap[ApiFields.Keys.USER_PASS] = password
-        }
+        return if (login.isEmpty() || password.isEmpty()) emptyMap()
+        else mapOf(
+            ApiFields.Keys.USER_ID to login,
+            ApiFields.Keys.USER_PASS to password
+        )
     }
 
     private fun switchToOverviewPage() = binding.viewpager.setCurrentItem(0, true)
@@ -483,11 +495,14 @@ class ProductEditActivity : BaseActivity() {
     }
 
     private suspend fun setPhoto(image: ProductImage, imageField: String, imgId: String, performOCR: Boolean) {
-        val queryMap = mapOf(IMG_ID to imgId, "id" to imageField)
+        val queryMap = mapOf(
+            IMG_ID to imgId,
+            "id" to imageField
+        )
 
         val jsonNode = withContext(IO) {
             try {
-                productsApi.editImage(image.barcode, queryMap).await()
+                productsApi.editImage(image.barcode, queryMap)
             } catch (err: Exception) {
                 if (err is IOException) {
                     if (performOCR) {
@@ -521,13 +536,15 @@ class ProductEditActivity : BaseActivity() {
 
 
     suspend fun performOCR(code: String, imageField: String) {
-        withContext(Main) { ingredientsFragment.showOCRProgress() }
+        withContext(Main) {
+            ingredientsFragment.showOCRProgress()
+        }
 
         val node = withContext(IO) {
             try {
-                productsApi.performOCR(code, imageField).await()
+                productsApi.performOCR(code, imageField)
             } catch (err: Exception) {
-                ingredientsFragment.hideOCRProgress()
+                withContext(Main) { ingredientsFragment.hideOCRProgress() }
                 if (err is IOException) {
                     val view = findViewById<View>(R.id.coordinator_layout)
                     Snackbar.make(view, R.string.no_internet_unable_to_extract_ingredients, LENGTH_INDEFINITE)
@@ -633,6 +650,7 @@ class ProductEditActivity : BaseActivity() {
 
         const val KEY_EDIT_OFFLINE_PRODUCT = "edit_offline_product"
         const val KEY_EDIT_PRODUCT = "edit_product"
+        const val KEY_PRODUCT = "product"
 
         const val KEY_IS_EDITING = "is_edition"
         const val KEY_STATE = "state"
@@ -685,5 +703,8 @@ class ProductEditActivity : BaseActivity() {
                 context.startActivity(this)
             }
         }
+
+        private fun createTextPlain(code: String) =
+            RequestBody.create(ProductRepository.MIME_TEXT, code)
     }
 }

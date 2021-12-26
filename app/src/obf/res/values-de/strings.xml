@@ -21,7 +21,7 @@
     <string name="slide_3_desc">Alle Kosmetika, die Sie verwenden, in einer handlichen Liste, die Sie exportieren können</string>
     <string name="slide_4_title">Funktioniert auch ohne Internetverbindung</string>
     <string name="slide_4_desc">Sie können neue Produkte hinzufügen, auch wenn gerade keine Internetverbindung besteht</string>
-    <string name="txtDialogsContent">Das eingelesene Produkt existiert noch nicht in „Open Beauty Facts”. Bitte fügen Sie es jetzt hinzu.</string>
+    <string name="product_does_not_exist_please_add_it">Das eingelesene Produkt existiert noch nicht in „Open Beauty Facts”. Bitte fügen Sie es jetzt hinzu.</string>
     <string name="msg_share">Dieses Produkt auf Open Beauty Facts anzeigen:</string>
     <string name="txt_broaden_search">• Suche erweitern \n• erfassen und zu Open Beauty Facts hinzufügen</string>
     <string name="Donation">Klicken Sie hier, um für Open Beauty Facts zu spenden</string>
@@ -46,4 +46,5 @@
     <string name="txt_info_eaten_products">Sie können ein Produkt zu dieser Liste hinzufügen, indem Sie Produkte erfassen, die Produktkarte nach oben ziehen und auf „Zu erwerbende Produkte” tippen.
 Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchsuchen und auf die Schaltfläche ➕ oben rechts auf der Produktseite klicken.</string>
     <string name="OFFlogo">Logo von Open Food Fact</string>
+    <string name="txtDialogsContentPowerMode">Das eingelesene Produkt befindet sich bereits in Open Food Facts.</string>
 </resources>

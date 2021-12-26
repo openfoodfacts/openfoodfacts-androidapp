@@ -21,7 +21,7 @@
     <string name="slide_3_desc">Alle cosmetica die je gebruikt, in een handige lijst die je kunt exporteren</string>
     <string name="slide_4_title">Werkt offline</string>
     <string name="slide_4_desc">Je kan nieuwe producten toevoegen, zelfs als je nu geen internetverbinding hebt</string>
-    <string name="txtDialogsContent">Het gescande product bestaat nog niet in Open Beauty Facts. Voeg deze toe.</string>
+    <string name="product_does_not_exist_please_add_it">The product you scanned does not exist yet in Open Beauty Facts. Please add it.</string>
     <string name="msg_share">Kijk naar dit product op Open Beauty Facts:</string>
     <string name="txt_broaden_search">- zoekopdracht uitbreiden \n-scan een product en voeg het toe aan Open Beauty Facts</string>
     <string name="Donation">Klik hier om te doneren aan Open Beauty Facts</string>
@@ -46,4 +46,5 @@
     <string name="txt_info_eaten_products">U kan producten aan deze lijst toevoegen door producten te scannen, de productkaart omhoog te slepen en op \"Te kopen producten\" te tikken.
         U kan ook producten aan deze lijst toevoegen door ze te zoeken en op de knop + rechtsboven op de productpagina te klikken.</string>
     <string name="OFFlogo">Open Beauty Facts-logo</string>
+    <string name="txtDialogsContentPowerMode">Het gescannede product bestaat al in Open Food Facts</string>
 </resources>

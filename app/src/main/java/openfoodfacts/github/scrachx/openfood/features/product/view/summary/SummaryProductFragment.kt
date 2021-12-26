@@ -36,6 +36,7 @@ import androidx.core.net.toUri
 import androidx.core.text.bold
 import androidx.core.text.buildSpannedString
 import androidx.core.text.inSpans
+import androidx.core.view.isVisible
 import androidx.core.view.updatePadding
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -88,9 +89,10 @@ import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.A
 import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoryName
 import openfoodfacts.github.scrachx.openfood.models.entities.label.LabelName
 import openfoodfacts.github.scrachx.openfood.models.entities.tag.TagDao
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
-import openfoodfacts.github.scrachx.openfood.network.WikiDataApiClient
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
+import openfoodfacts.github.scrachx.openfood.repositories.RobotoffRepository
+import openfoodfacts.github.scrachx.openfood.repositories.WikidataRepository
+import openfoodfacts.github.scrachx.openfood.repositories.TaxonomiesRepository
 import openfoodfacts.github.scrachx.openfood.utils.*
 import java.io.File
 import javax.inject.Inject
@@ -102,10 +104,13 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     private val binding get() = _binding!!
 
     @Inject
-    lateinit var client: OpenFoodAPIClient
+    lateinit var client: ProductRepository
 
     @Inject
-    lateinit var wikidataClient: WikiDataApiClient
+    lateinit var robotoffRepository: RobotoffRepository
+
+    @Inject
+    lateinit var wikidataClient: WikidataRepository
 
     @Inject
     lateinit var daoSession: DaoSession
@@ -123,7 +128,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     lateinit var localeManager: LocaleManager
 
     @Inject
-    lateinit var productRepository: ProductRepository
+    lateinit var taxonomiesRepository: TaxonomiesRepository
 
     private lateinit var presenter: ISummaryProductPresenter.Actions
     private lateinit var mTagDao: TagDao
@@ -132,11 +137,11 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     private lateinit var customTabActivityHelper: CustomTabActivityHelper
 
     private lateinit var customTabsIntent: CustomTabsIntent
-    private var annotation: AnnotationAnswer? = null
+
 
     private var hasCategoryInsightQuestion = false
 
-    private var insightId: String? = null
+    private var annotation: AnnotationAnswer? = null
 
     //boolean to determine if image should be loaded or not
     private val isLowBatteryMode by lazy { requireContext().isDisableImageLoad() && requireContext().isBatteryLevelLow() }
@@ -219,7 +224,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         productState = requireProductState()
         refreshView(productState)
 
-        presenter = SummaryProductPresenter(localeManager.getLanguage(), product, this, productRepository)
+        presenter = SummaryProductPresenter(localeManager.getLanguage(), product, this, taxonomiesRepository, robotoffRepository)
     }
 
 
@@ -273,7 +278,13 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     override fun refreshView(productState: ProductState) {
         this.productState = productState
         product = productState.product!!
-        presenter = SummaryProductPresenter(localeManager.getLanguage(), product, this, productRepository)
+        presenter = SummaryProductPresenter(
+            localeManager.getLanguage(),
+            product,
+            this,
+            taxonomiesRepository,
+            robotoffRepository
+        )
 
         binding.categoriesText.text = buildSpannedString {
             bold { append(getString(R.string.txtCategories)) }
@@ -363,9 +374,9 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
                 product.embTags.toString()
                     .removeSurrounding("[", "]")
                     .split(", ")
-                    .map {
+                    .map { tag ->
                         getSearchLinkText(
-                            getEmbCode(it).trim { it <= ' ' },
+                            getEmbCode(tag).trim { it <= ' ' },
                             SearchType.EMB,
                             requireActivity()
                         )
@@ -603,24 +614,20 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         withContext(Main) {
             when (state) {
                 is ProductInfoState.Data -> {
-                    val analysisTags = state.data
-
-                    binding.analysisContainer.visibility = View.VISIBLE
-
+                    binding.analysisContainer.isVisible = true
                     binding.analysisTags.adapter = IngredientAnalysisTagsAdapter(
                         requireContext(),
-                        analysisTags,
+                        state.data,
                         picasso,
                         sharedPreferences
                     ).apply adapter@{
                         setOnItemClickListener { view, _ ->
-                            IngredientsWithTagDialogFragment.newInstance(
+                            val fragment = IngredientsWithTagDialogFragment.newInstance(
                                 product,
                                 view.getTag(R.id.analysis_tag_config) as AnalysisTagConfig
-                            ).run {
-                                onDismissListener = { filterVisibleTags() }
-                                show(childFragmentManager, "fragment_ingredients_with_tag")
-                            }
+                            )
+                            fragment.onDismissListener = { filterVisibleTags() }
+                            fragment.show(childFragmentManager, "fragment_ingredients_with_tag")
                         }
                     }
                 }
@@ -631,7 +638,6 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
                     // TODO:
                 }
             }
-
         }
     }
 
@@ -684,17 +690,17 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
 
 
             onPositiveFeedback = {
-                sendProductInsights(productQuestion.insightId, AnnotationAnswer.POSITIVE)
+                sendProductInsights(productQuestion.insightId, AnnotationAnswer.Value.POSITIVE)
                 it.dismiss()
             }
 
             onNegativeFeedback = {
-                sendProductInsights(productQuestion.insightId, AnnotationAnswer.NEGATIVE)
+                sendProductInsights(productQuestion.insightId, AnnotationAnswer.Value.NEGATIVE)
                 it.dismiss()
             }
 
             onAmbiguityFeedback = {
-                sendProductInsights(productQuestion.insightId, AnnotationAnswer.AMBIGUITY)
+                sendProductInsights(productQuestion.insightId, AnnotationAnswer.Value.AMBIGUITY)
                 it.dismiss()
             }
 
@@ -704,9 +710,8 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
 
     }
 
-    private fun sendProductInsights(insightId: String?, annotation: AnnotationAnswer?) {
-        this.insightId = insightId
-        this.annotation = annotation
+    private fun sendProductInsights(insightId: String, annotation: AnnotationAnswer.Value) {
+        this.annotation = AnnotationAnswer(insightId, annotation)
 
         if (requireActivity().isUserSet()) {
             processInsight()
@@ -725,12 +730,11 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     }
 
     private fun processInsight() {
-        val insightId = this.insightId ?: error("Property 'insightId' not set.")
         val annotation = this.annotation ?: error("Property 'annotation' not set.")
 
-        lifecycleScope.launch { presenter.annotateInsight(insightId, annotation) }
+        lifecycleScope.launch { presenter.annotateInsight(annotation) }
 
-        Log.d(LOG_TAG, "Annotation $annotation received for insight $insightId")
+        Log.d(LOG_TAG, "Annotation {ID=${annotation.insightId}, VALUE=${annotation.value}} sent.")
         binding.productQuestionLayout.visibility = View.GONE
         productQuestion = null
     }
@@ -949,15 +953,17 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         when (val url = mUrlImage) {
             null -> newFrontImage()
             else -> {
-                FullScreenActivityOpener.openForUrl(
-                    this,
-                    client,
-                    product,
-                    ProductImageField.FRONT,
-                    url,
-                    binding.imageViewFront,
-                    localeManager.getLanguage()
-                )
+                lifecycleScope.launch {
+                    FullScreenActivityOpener.openForUrl(
+                        this@SummaryProductFragment,
+                        client,
+                        product,
+                        ProductImageField.FRONT,
+                        url,
+                        binding.imageViewFront,
+                        localeManager.getLanguage()
+                    )
+                }
             }
         }
     }

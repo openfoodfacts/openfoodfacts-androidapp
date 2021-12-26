@@ -15,12 +15,17 @@
  */
 package openfoodfacts.github.scrachx.openfood.features.product.view.ingredients
 
+import android.widget.ImageButton
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.*
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.rx2.await
+import kotlinx.coroutines.launch
+import openfoodfacts.github.scrachx.openfood.features.FullScreenActivityOpener
 import openfoodfacts.github.scrachx.openfood.models.Product
-import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveName
+import openfoodfacts.github.scrachx.openfood.models.ProductImageField
+import openfoodfacts.github.scrachx.openfood.models.ProductState
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
+import openfoodfacts.github.scrachx.openfood.repositories.TaxonomiesRepository
 import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
 import javax.inject.Inject
 
@@ -29,14 +34,15 @@ import javax.inject.Inject
  */
 @HiltViewModel
 class ProductIngredientsViewModel @Inject constructor(
-    private val productRepository: ProductRepository,
-    private val localeManager: LocaleManager
+    private val taxonomiesRepository: TaxonomiesRepository,
+    private val localeManager: LocaleManager,
+    private val productRepository: ProductRepository
 ) : ViewModel() {
 
     val product = MutableLiveData<Product>()
 
     val additives = product.switchMap { product ->
-        liveData<List<AdditiveName>> {
+        liveData {
             val additivesTags = product.additivesTags
             if (additivesTags.isEmpty()) {
                 emit(emptyList())
@@ -44,9 +50,9 @@ class ProductIngredientsViewModel @Inject constructor(
                 val languageCode = localeManager.getLanguage()
 
                 additivesTags.map { tag ->
-                    productRepository.getAdditiveByTagAndLanguageCode(tag, languageCode).await()
+                    taxonomiesRepository.getAdditive(tag, languageCode)
                         .takeUnless { it.isNull }
-                        ?: productRepository.getAdditiveByTagAndDefaultLanguageCode(tag).await()
+                        ?: taxonomiesRepository.getAdditive(tag)
                 }.filter { it.isNotNull }.let { emit(it) }
             }
         }
@@ -62,9 +68,9 @@ class ProductIngredientsViewModel @Inject constructor(
 
             val languageCode = localeManager.getLanguage()
             allergenTags.map { tag ->
-                productRepository.getAllergenByTagAndLanguageCode(tag, languageCode)
+                taxonomiesRepository.getAllergenName(tag, languageCode)
                     .takeUnless { it.isNull }
-                    ?: productRepository.getAllergenByTagAndDefaultLanguageCode(tag)
+                    ?: taxonomiesRepository.getAllergenName(tag)
             }.filter { it.isNotNull }.let { emit(it) }
         }
     }
@@ -74,5 +80,27 @@ class ProductIngredientsViewModel @Inject constructor(
     val mineralTags = product.map(Product::mineralTags)
     val otherNutritionTags = product.map(Product::otherNutritionTags)
     val aminoAcidTagsList = product.map(Product::aminoAcidTags)
+
+
+    fun openFullScreen(
+        ingredientsImgUrl: String?,
+        productState: ProductState,
+        imageViewIngredients: ImageButton,
+        fragment: Fragment
+    ) {
+        viewModelScope.launch {
+            // TODO: not good if invoked in click listener, refactor
+            FullScreenActivityOpener.openForUrl(
+                fragment,
+                productRepository,
+                productState.product!!,
+                ProductImageField.INGREDIENTS,
+                ingredientsImgUrl!!,
+                imageViewIngredients,
+                localeManager.getLanguage()
+            )
+        }
+
+    }
 
 }

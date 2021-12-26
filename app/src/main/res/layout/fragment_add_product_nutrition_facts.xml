@@ -1,34 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
-
-    <data>
-
-        <import type="openfoodfacts.github.scrachx.openfood.features.product.edit.nutrition.ProductEditNutritionViewModel" />
-
-        <import type="android.view.View" />
-
-        <variable
-            name="viewModel"
-            type="ProductEditNutritionViewModel" />
-    </data>
-
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".features.product.edit.nutrition.ProductEditNutritionFactsFragment"
+    >
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_default="wrap"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btn_add"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0"
+        android:paddingTop="@dimen/spacing_small"
+        android:paddingBottom="16dp"
         android:layout_gravity="fill_vertical"
         android:clipToPadding="false"
         android:isScrollContainer="false"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:context=".features.product.edit.nutrition.ProductEditNutritionFactsFragment">
+        >
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <androidx.appcompat.widget.SwitchCompat
-                android:checked="@={viewModel.noNutritionFactsChecked}"
                 android:id="@+id/checkbox_no_nutrition_data"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -41,7 +42,6 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:visibility="@{viewModel.noNutritionFactsChecked ? View.GONE : View.VISIBLE}"
                 android:id="@+id/nutrition_facts_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -69,7 +69,8 @@
                     android:background="?android:selectableItemBackground"
                     app:layout_constraintStart_toStartOf="@id/section_nutrition_facts_picture"
                     app:layout_constraintTop_toBottomOf="@id/section_nutrition_facts_picture"
-                    app:srcCompat="@drawable/ic_add_a_photo_dark_48dp" />
+                    app:srcCompat="@drawable/ic_add_a_photo_dark_48dp"
+                    tools:ignore="ContentDescription" />
 
                 <Button
                     android:id="@+id/btnEditImageNutritionFacts"
@@ -122,7 +123,7 @@
                     style="@style/EditHeader"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginStart="@dimen/activity_horizontal_margin"
                     android:layout_marginTop="@dimen/spacing_small"
                     android:text="@string/nutrition_facts"
                     app:layout_constraintStart_toStartOf="parent"
@@ -132,9 +133,8 @@
                     android:id="@+id/radio_group"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:layout_marginEnd="@dimen/activity_horizontal_margin"
                     android:orientation="horizontal"
-                    android:checkedButton="@={viewModel.dataFormat}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@id/section_nutrition_facts"
                     app:layout_constraintTop_toBottomOf="@id/section_nutrition_facts">
@@ -194,6 +194,7 @@
                     android:layout_marginRight="@dimen/activity_horizontal_margin"
                     android:background="@drawable/spinner_weights_grey"
                     android:entries="@array/nutrition_serving_weight_units"
+                    android:gravity="center_vertical"
                     android:spinnerMode="dropdown"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/serving_size_til"
@@ -283,7 +284,7 @@
                     android:layout_width="0dp"
                     android:layout_height="35dp"
                     android:layout_marginTop="@dimen/top_margin_spinner_hint"
-                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:layout_marginEnd="@dimen/activity_horizontal_margin"
                     android:gravity="start|center_vertical"
                     android:text="@string/kj"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -347,6 +348,7 @@
                     android:layout_marginRight="@dimen/activity_horizontal_margin"
                     android:background="@drawable/spinner_weights_grey"
                     android:entries="@array/nutrition_weight_units"
+                    android:gravity="center_vertical"
                     android:spinnerMode="dropdown"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/fat_til"
@@ -411,6 +413,7 @@
                     android:layout_marginRight="@dimen/activity_horizontal_margin"
                     android:background="@drawable/spinner_weights_grey"
                     android:entries="@array/nutrition_weight_units"
+                    android:gravity="center_vertical"
                     android:spinnerMode="dropdown"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/saturated_fat_til"
@@ -472,9 +475,9 @@
                     android:layout_marginTop="@dimen/top_margin_spinner_hint"
                     android:layout_marginEnd="@dimen/activity_horizontal_margin"
                     android:layout_marginRight="@dimen/activity_horizontal_margin"
-
                     android:background="@drawable/spinner_weights_grey"
                     android:entries="@array/nutrition_weight_units"
+                    android:gravity="center_vertical"
                     android:spinnerMode="dropdown"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/carbohydrates_til"
@@ -538,6 +541,7 @@
                     android:layout_marginRight="@dimen/activity_horizontal_margin"
                     android:background="@drawable/spinner_weights_grey"
                     android:entries="@array/nutrition_weight_units"
+                    android:gravity="center_vertical"
                     android:spinnerMode="dropdown"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/sugars_til"
@@ -601,6 +605,7 @@
                     android:layout_marginRight="@dimen/activity_horizontal_margin"
                     android:background="@drawable/spinner_weights_grey"
                     android:entries="@array/nutrition_weight_units"
+                    android:gravity="center_vertical"
                     android:spinnerMode="dropdown"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/fiber_til"
@@ -664,6 +669,7 @@
                     android:layout_marginRight="@dimen/activity_horizontal_margin"
                     android:background="@drawable/spinner_weights_grey"
                     android:entries="@array/nutrition_weight_units"
+                    android:gravity="center_vertical"
                     android:spinnerMode="dropdown"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/proteins_til"
@@ -727,6 +733,7 @@
                     android:layout_marginRight="@dimen/activity_horizontal_margin"
                     android:background="@drawable/spinner_weights_grey"
                     android:entries="@array/nutrition_weight_units"
+                    android:gravity="center_vertical"
                     android:spinnerMode="dropdown"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/salt_til"
@@ -790,6 +797,7 @@
                     android:layout_marginRight="@dimen/activity_horizontal_margin"
                     android:background="@drawable/spinner_weights_grey"
                     android:entries="@array/nutrition_weight_units"
+                    android:gravity="center_vertical"
                     android:spinnerMode="dropdown"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/sodium_til"
@@ -892,19 +900,19 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/nutrition_facts_layout" />
-
-            <Button
-                android:id="@+id/btn_add"
-                style="@style/ButtonFlat.Green"
-                android:layout_width="match_parent"
-                android:layout_marginTop="@dimen/spacing_small"
-                android:clickable="true"
-                android:focusable="true"
-                android:text="@string/add_this_product"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/global_validation_msg" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
-</layout>
+
+    <Button
+        android:id="@+id/btn_add"
+        style="@style/ButtonFlat.Green"
+        android:layout_width="match_parent"
+        android:clickable="true"
+        android:focusable="true"
+        android:text="@string/add_this_product"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>

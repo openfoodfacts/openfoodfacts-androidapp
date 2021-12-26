@@ -21,7 +21,7 @@
     <string name="slide_3_desc">Kaikki käyttämäsi kosmetiikka, yhtenä näppäränä luettelona jonka voit viedä</string>
     <string name="slide_4_title">Toimii offline-tilassa</string>
     <string name="slide_4_desc">Voit lisätä uusia tuotteita, vaikka sinulla ei olisi Internet-yhteyttä tällä hetkellä</string>
-    <string name="txtDialogsContent">Luettua tuotetta ei vielä ole Open Beauty Factsissa. Lisääthän sen.</string>
+    <string name="product_does_not_exist_please_add_it">The product you scanned does not exist yet in Open Beauty Facts. Please add it.</string>
     <string name="msg_share">Katso tätä tuotetta Open Beauty Factsissa:</string>
     <string name="txt_broaden_search">- laajenna hakuasi \n- lue, ja lisää se Open Beauty Factsiin</string>
     <string name="Donation">Napsauta tästä lahjoittaaksesi Open Beauty Factsille</string>
@@ -46,4 +46,5 @@
     <string name="txt_info_eaten_products">Voit lisätä tuotteita tähän luetteloon liu\'uttamalla luetun tuotteen tuotekortin ylöspäin, ja napauttamalla \"Ostettavat tuotteet\".
         Voit lisätä tuotteita tähän luetteloon myös etsimällä niitä, ja napsauttamalla + -painiketta tuotesivun oikeassa yläkulmassa.</string>
     <string name="OFFlogo">Open Beauty Facts -logo</string>
+    <string name="txtDialogsContentPowerMode">Lukemasi tuote on jo olemassa Open Food Factsissa.</string>
 </resources>

@@ -22,6 +22,7 @@ import android.content.pm.ActivityInfo
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.util.TypedValue
 import android.view.Window
 import android.view.WindowManager
 import android.widget.TextView
@@ -34,6 +35,7 @@ import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 import dagger.hilt.android.AndroidEntryPoint
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
+import openfoodfacts.github.scrachx.openfood.analytics.SentryAnalytics
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityWelcomeBinding
 import openfoodfacts.github.scrachx.openfood.features.MainActivity
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
@@ -64,6 +66,9 @@ class WelcomeActivity : BaseActivity() {
     lateinit var matomoAnalytics: MatomoAnalytics
 
     @Inject
+    lateinit var sentryAnalytics: SentryAnalytics
+
+    @Inject
     lateinit var sharedPreferences: SharedPreferences
 
     private val viewPagerPageChangeListener = object : OnPageChangeListener {
@@ -75,7 +80,7 @@ class WelcomeActivity : BaseActivity() {
             refreshBottomBar(position)
 
             when (WelcomeScreen[position]) {
-                WelcomeScreen.MATOMO -> {
+                WelcomeScreen.ANALYTICS -> {
                     binding.btnNext.setText(R.string.preference_analytics_bottom_sheet_grant_button)
                     binding.btnSkip.setText(R.string.preference_analytics_bottom_sheet_decline_button)
 
@@ -135,15 +140,16 @@ class WelcomeActivity : BaseActivity() {
         binding.btnNext.setOnClickListener { binding.viewPager.currentItem = nextItem }
     }
 
-    private fun saveThenLaunchHome(grant: Boolean) {
-        saveAnalyticsReportingPref(grant)
-        matomoAnalytics.setEnabled(grant)
+    private fun saveThenLaunchHome(analyticsEnabled: Boolean) {
+        saveAnalyticsReportingPref(analyticsEnabled)
+        matomoAnalytics.setEnabled(analyticsEnabled)
         launchHome()
     }
 
-    private fun saveAnalyticsReportingPref(value: Boolean) {
+    private fun saveAnalyticsReportingPref(enabled: Boolean) {
         sharedPreferences.edit {
-            putBoolean(getString(R.string.pref_analytics_reporting_key), value)
+            putBoolean(getString(R.string.pref_analytics_reporting_key), enabled)
+            putBoolean(sentryAnalytics.prefKey, enabled)
         }
     }
 
@@ -159,7 +165,7 @@ class WelcomeActivity : BaseActivity() {
         val dots = (0..screens.lastIndex).map {
             TextView(this).apply {
                 text = "\u2022"
-                textSize = 35f
+                this.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 35F)
                 setTextColor(WelcomeScreen[currentPage].color.lighten(0.85f))
                 binding.layoutDots.addView(this)
             }

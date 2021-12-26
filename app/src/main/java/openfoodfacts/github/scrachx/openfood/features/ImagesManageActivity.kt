@@ -41,12 +41,8 @@ import com.github.chrisbanes.photoview.PhotoViewAttacher
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.rxkotlin.addTo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.rx2.await
 import kotlinx.coroutines.withContext
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityFullScreenImageBinding
@@ -59,9 +55,8 @@ import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.models.findByCode
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
-import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
+import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.*
-import openfoodfacts.github.scrachx.openfood.utils.FileDownloader.download
 import openfoodfacts.github.scrachx.openfood.utils.SwipeDetector.OnSwipeEventListener
 import openfoodfacts.github.scrachx.openfood.utils.SwipeDetector.SwipeTypeEnum
 import org.apache.commons.lang3.StringUtils
@@ -80,8 +75,10 @@ class ImagesManageActivity : BaseActivity() {
     private val binding get() = _binding!!
 
     @Inject
-    lateinit var productsApi: ProductsAPI
+    lateinit var client: ProductRepository
 
+    @Inject
+    lateinit var fileDownloader: FileDownloader
 
     @Inject
     lateinit var picasso: Picasso
@@ -91,8 +88,6 @@ class ImagesManageActivity : BaseActivity() {
 
     @Inject
     lateinit var localeManager: LocaleManager
-
-    private val disp = CompositeDisposable()
 
     private var lastViewedImage: File? = null
     private lateinit var attacher: PhotoViewAttacher
@@ -164,7 +159,6 @@ class ImagesManageActivity : BaseActivity() {
     }
 
     override fun onDestroy() {
-        disp.dispose()
         _binding = null
         super.onDestroy()
     }
@@ -296,6 +290,7 @@ class ImagesManageActivity : BaseActivity() {
                 .load(url)
                 .into(binding.imageViewFullScreen, object : Callback {
                     override fun onSuccess() {
+                        if (_binding == null) return
                         attacher.update()
                         scheduleStartPostponedTransition(binding.imageViewFullScreen)
                         binding.imageViewFullScreen.visibility = View.VISIBLE
@@ -303,6 +298,7 @@ class ImagesManageActivity : BaseActivity() {
                     }
 
                     override fun onError(ex: Exception) {
+                        if (_binding == null) return
                         binding.imageViewFullScreen.visibility = View.VISIBLE
                         Toast.makeText(this@ImagesManageActivity, resources.getString(R.string.txtConnectionError), Toast.LENGTH_LONG).show()
                         stopRefresh()
@@ -321,7 +317,7 @@ class ImagesManageActivity : BaseActivity() {
             startRefresh(getString(R.string.loading_product, "${it.getProductName(localeManager.getLanguage())}..."))
 
             lifecycleScope.launch {
-                val newState = client.getProductImages(it.code).observeOn(AndroidSchedulers.mainThread()).await()
+                val newState = client.getProductImages(it.code)
                 val newProduct = newState.product
                 var imageReloaded = false
 
@@ -355,10 +351,11 @@ class ImagesManageActivity : BaseActivity() {
      */
     private fun updateProductImagesInfo(toDoAfter: () -> Unit = {}) {
         getProduct()?.let { product ->
-            client.getProductImages(product.code).observeOn(AndroidSchedulers.mainThread()).subscribe { newState ->
+            lifecycleScope.launchWhenCreated {
+                val newState = client.getProductImages(product.code)
                 newState.product?.let { intent.putExtra(PRODUCT, it) }
                 toDoAfter()
-            }.addTo(disp)
+            }
         }
     }
 
@@ -476,11 +473,11 @@ class ImagesManageActivity : BaseActivity() {
     }
 
     private fun editPhoto(field: ProductImageField, transformation: ImageTransformation) {
-        if (transformation.isEmpty()) return
+        val url = transformation.imageUrl?.takeIf { it.isNotBlank() } ?: return
 
-        download(this, transformation.imageUrl!!, client)
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe { fileUri ->
+        lifecycleScope.launchWhenResumed {
+            val fileUri = fileDownloader.download(url)
+            if (fileUri != null) {
                 //to delete the file after:
                 lastViewedImage = fileUri.toFile()
                 cropRotateExistingImageOnServer(
@@ -488,7 +485,8 @@ class ImagesManageActivity : BaseActivity() {
                     getString(getResourceIdForEditAction(field)),
                     transformation
                 )
-            }.addTo(disp)
+            }
+        }
     }
 
     private fun getProduct() = intent.getSerializableExtra(PRODUCT) as Product?
@@ -561,7 +559,7 @@ class ImagesManageActivity : BaseActivity() {
 
     private val selectImageLauncher = registerForActivityResult(ImagesSelectActivity.Companion.SelectImageContract(""))
     { (imgId, file) ->
-        // Photo choosed from gallery
+        // Photo chosen from gallery
         if (file != null) {
             onPhotoReturned(file)
         } else if (!imgId.isNullOrBlank()) {
@@ -643,20 +641,27 @@ class ImagesManageActivity : BaseActivity() {
      */
     private fun onPhotoReturned(newPhotoFile: File) {
         startRefresh(getString(R.string.uploading_image))
-        val image = ProductImage(requireProduct().code, getSelectedType(), newPhotoFile, getCurrentLanguage()).apply {
+        val image = ProductImage(
+            requireProduct().code,
+            getSelectedType(),
+            newPhotoFile,
+            getCurrentLanguage()
+        ).apply {
             filePath = newPhotoFile.absolutePath
         }
-        client.postImg(image, true)
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnError {
-                Toast.makeText(this@ImagesManageActivity, it.message, Toast.LENGTH_LONG).show()
-                Log.e(ImagesManageActivity::class.java.simpleName, it.message, it)
+
+        // Send image
+        lifecycleScope.launchWhenCreated {
+            try {
+                client.postImg(image, true)
+            } catch (err: Exception) {
+                Toast.makeText(this@ImagesManageActivity, err.message, Toast.LENGTH_LONG).show()
+                Log.e(ImagesManageActivity::class.simpleName, err.message, err)
                 stopRefresh()
             }
-            .subscribe {
-                reloadProduct()
-                setResult(RESULTCODE_MODIFIED)
-            }.addTo(disp)
+            reloadProduct()
+            setResult(RESULTCODE_MODIFIED)
+        }
     }
 
     companion object {

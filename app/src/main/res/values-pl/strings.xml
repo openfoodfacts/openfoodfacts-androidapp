@@ -209,7 +209,7 @@
     <string name="uploadLater">Obraz zostanie przesłany, gdy połączenie będzie dostępne</string>
     <string name="txtInfoLoginOk">Zapisano użytkownika</string>
     <string name="txtInfoLoginNo">Nie zapisano użytkownika</string>
-    <string name="txtDialogsContent">Zeskanowany produkt nie figuruje jeszcze w Open Food Facts. Dodaj go.</string>
+    <string name="product_does_not_exist_please_add_it">Zeskanowany produkt nie figuruje jeszcze w Open Food Facts. Dodaj go.</string>
     <string name="txtYes">Tak</string>
     <string name="txtNo">Nie</string>
     <string name="hintBrand">Marka</string>
@@ -607,7 +607,7 @@
     <string name="recycling_picture">Zdjęcie z recyklingu</string>
     <string name="take_ingredients_picture_to_extract">(Zrób zdjęcie składników, aby automatycznie je wyodrębnić)</string>
     <string name="ingredients_list">Lista składników</string>
-    <string name="ingredients_hint">Zachowaj kolejność, wskaż % jeśli jest podany, oddziel przecinkiem lub -, zastosuj () dla składników składnika, oznacz alergeny za pomocą _</string>
+    <string name="ingredients_hint" tools:ignore="StringFormatInvalid">Zachowaj kolejność, wskaż % jeśli jest podany, oddziel przecinkiem lub -, zastosuj () dla składników składnika, oznacz alergeny za pomocą _</string>
     <string name="extract_ingredients">Wyodrębnij składniki</string>
     <string name="extracting_ingredients">Wyodrębnianie składników</string>
     <string name="looksGood">Wygląda dobrze</string>

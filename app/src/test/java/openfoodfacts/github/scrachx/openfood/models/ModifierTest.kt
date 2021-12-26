@@ -5,6 +5,9 @@ import com.google.common.truth.Truth.assertThat
 import openfoodfacts.github.scrachx.openfood.utils.modifier
 import org.junit.Test
 import org.mockito.Mockito
+import org.mockito.kotlin.doReturn
+import org.mockito.kotlin.mock
+import org.mockito.kotlin.whenever
 
 class ModifierTest {
     @Test
@@ -29,14 +32,14 @@ class ModifierTest {
 
     @Test
     fun `modifier should match index`() {
-        val mockSpinner = Mockito.mock(Spinner::class.java)
-        Mockito.`when`(mockSpinner.selectedItemPosition).thenReturn(0)
+        val mockSpinner = mock<Spinner>()
+        whenever(mockSpinner.selectedItemPosition) doReturn 0
         assertThat(mockSpinner.modifier).isEqualTo(Modifier.EQUALS_TO)
 
-        Mockito.`when`(mockSpinner.selectedItemPosition).thenReturn(1)
+        whenever(mockSpinner.selectedItemPosition) doReturn 1
         assertThat(mockSpinner.modifier).isEqualTo(Modifier.LESS_THAN)
 
-        Mockito.`when`(mockSpinner.selectedItemPosition).thenReturn(2)
+        whenever(mockSpinner.selectedItemPosition) doReturn 2
         assertThat(mockSpinner.modifier).isEqualTo(Modifier.GREATER_THAN)
     }
 }

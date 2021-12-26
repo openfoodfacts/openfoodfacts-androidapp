@@ -19,7 +19,7 @@
     <string name="slide_3_desc">您喜爱食物的营养特性综合视图</string>
     <string name="slide_4_title">离线工作</string>
     <string name="slide_4_desc">即使您目前没有互联网连接，也可以添加新的产品。</string>
-    <string name="txtDialogsContent">您扫描的产品尚未在 Open Food Facts 中，请添加它。</string>
+    <string name="product_does_not_exist_please_add_it">您扫描的产品尚未在 Open Food Facts 中，请添加它。</string>
     <string name="txtDialogsContentPowerMode">您所扫描的产品已经在 Open Food Facts 中。</string>
     <string name="msg_share">在 Open Food Facts 中查看这个产品：</string>
     <string name="not_support_books">图书目前未被 Open Food Facts 支持</string>

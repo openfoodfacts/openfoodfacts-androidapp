@@ -24,6 +24,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.core.net.toFile
+import androidx.core.view.isVisible
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -32,8 +33,6 @@ import com.hootsuite.nachos.validator.ChipifyingNachoValidator
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.rxkotlin.addTo
 import kotlinx.coroutines.launch
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
@@ -52,9 +51,8 @@ import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenNameDao
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.Keys.lcIngredientsKey
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
+import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.*
-import openfoodfacts.github.scrachx.openfood.utils.FileDownloader.download
 import java.io.File
 import javax.inject.Inject
 
@@ -77,7 +75,10 @@ class EditIngredientsFragment : ProductEditFragment() {
     lateinit var picasso: Picasso
 
     @Inject
-    lateinit var client: OpenFoodAPIClient
+    lateinit var client: ProductRepository
+
+    @Inject
+    lateinit var fileDownloader: FileDownloader
 
     @Inject
     lateinit var matomoAnalytics: MatomoAnalytics
@@ -88,27 +89,42 @@ class EditIngredientsFragment : ProductEditFragment() {
     @Inject
     lateinit var localeManager: LocaleManager
 
+    /**
+     * Executed when an image is returned from the camera
+     */
     private val photoReceiverHandler by lazy {
         PhotoReceiverHandler(sharedPreferences) {
             val uri = it.toURI()
             imagePath = uri.path
             newImageSelected = true
             photoFile = it
-            val image = ProductImage(code!!, ProductImageField.INGREDIENTS, it, localeManager.getLanguage()).apply {
+            val image = ProductImage(
+                code!!,
+                ProductImageField.INGREDIENTS,
+                it,
+                localeManager.getLanguage()
+            ).apply {
                 filePath = uri.path
             }
+
             (activity as? ProductEditActivity)?.savePhoto(image, 1)
-            matomoAnalytics.trackEvent(AnalyticsEvent.ProductIngredientsPictureEdited(code))
+
+            // Change UI state
             hideImageProgress(false, getString(R.string.image_uploaded_successfully))
+
+            // Analytics
+            matomoAnalytics.trackEvent(AnalyticsEvent.ProductIngredientsPictureEdited(code))
         }
     }
 
     private var photoFile: File? = null
     private var code: String? = null
-    private var mOfflineSavedProduct: OfflineSavedProduct? = null
-    private var productDetails = mutableMapOf<String, String?>()
-    private var imagePath: String? = null
+
+    private var offlineProduct: OfflineSavedProduct? = null
     private var product: Product? = null
+    private var productDetails = mutableMapOf<String, String?>()
+
+    private var imagePath: String? = null
     private var newImageSelected = false
 
 
@@ -122,10 +138,11 @@ class EditIngredientsFragment : ProductEditFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val intent = if (activity == null) null else requireActivity().intent
-        if (intent != null
-            && intent.getBooleanExtra(ProductEditActivity.KEY_MODIFY_NUTRITION_PROMPT, false)
-            && !intent.getBooleanExtra(ProductEditActivity.KEY_MODIFY_CATEGORY_PROMPT, false)
+        // FIXME: DO NOT USE INTENTS IN FRAGMENTS
+        val activityIntent = activity?.intent
+        if (activityIntent != null
+            && activityIntent.getBooleanExtra(ProductEditActivity.KEY_MODIFY_NUTRITION_PROMPT, false)
+            && !activityIntent.getBooleanExtra(ProductEditActivity.KEY_MODIFY_CATEGORY_PROMPT, false)
         ) {
             (activity as ProductEditActivity).proceed()
         }
@@ -136,7 +153,9 @@ class EditIngredientsFragment : ProductEditFragment() {
         binding.btnLooksGood.setOnClickListener { verifyIngredients() }
         binding.btnSkipIngredients.setOnClickListener { skipIngredients() }
         binding.btnExtractIngredients.setOnClickListener { extractIngredients() }
-        binding.ingredientsList.doAfterTextChanged { toggleOCRButtonVisibility() }
+        binding.ingredientsList.doAfterTextChanged { newText ->
+            binding.btnExtractIngredients.isVisible = newText.isNullOrEmpty()
+        }
 
         val bundle = arguments
         if (bundle == null) {
@@ -147,8 +166,8 @@ class EditIngredientsFragment : ProductEditFragment() {
         }
 
         product = getProductFromArgs()
+        offlineProduct = getEditOfflineProductFromArgs()
 
-        mOfflineSavedProduct = getEditOfflineProductFromArgs()
         if (product != null) {
             code = product!!.code
         }
@@ -156,9 +175,11 @@ class EditIngredientsFragment : ProductEditFragment() {
         if (isEditingFromArgs && product != null) {
             code = product!!.code
             preFillProductValues(product!!)
-        } else if (mOfflineSavedProduct != null) {
-            code = mOfflineSavedProduct!!.barcode
-            preFillValuesForOffline(mOfflineSavedProduct!!)
+
+        } else if (offlineProduct != null) {
+            code = offlineProduct!!.barcode
+            preFillValuesForOffline(offlineProduct!!)
+
         } else {
             // Fast addition
             val enabled = requireContext().isFastAdditionMode()
@@ -181,6 +202,7 @@ class EditIngredientsFragment : ProductEditFragment() {
             binding.btnExtractIngredients.visibility = View.VISIBLE
         }
 
+        // Allergens autosuggestion
         viewModel.allergens.observe(viewLifecycleOwner) { loadAutoSuggestions(it) }
 
         (activity as? ProductEditActivity)?.let { getAllDetails(it) }
@@ -196,7 +218,9 @@ class EditIngredientsFragment : ProductEditFragment() {
     private fun getAddProductActivity() = activity as ProductEditActivity?
 
     private fun extractTracesChipValues(product: Product?): List<String> =
-        product?.tracesTags?.map { getTracesName(localeManager.getLanguage(), it) } ?: emptyList()
+        product?.tracesTags
+            ?.map { getTracesName(localeManager.getLanguage(), it) }
+            ?: emptyList()
 
     /**
      * Pre fill the fields of the product which are already present on the server.
@@ -210,8 +234,7 @@ class EditIngredientsFragment : ProductEditFragment() {
 
         product.takeUnless { it.tracesTags.isEmpty() }
             ?.let {
-                val chipValues = extractTracesChipValues(it)
-                binding.traces.setText(chipValues)
+                binding.traces.setText(extractTracesChipValues(it))
             }
     }
 
@@ -286,6 +309,7 @@ class EditIngredientsFragment : ProductEditFragment() {
     private fun preFillValuesForOffline(prod: OfflineSavedProduct) {
         productDetails = prod.productDetails.toMutableMap()
 
+        // Load ingredients image
         getImageIngredients()?.let {
             binding.imageProgress.visibility = View.VISIBLE
             picasso
@@ -317,11 +341,16 @@ class EditIngredientsFragment : ProductEditFragment() {
      * Automatically load suggestions for allergen names
      */
     private fun loadAutoSuggestions(allergens: List<String>) {
-        val adapter = ArrayAdapter(requireActivity(), android.R.layout.simple_dropdown_item_1line, allergens)
         binding.traces.addChipTerminator(',', ChipTerminatorHandler.BEHAVIOR_CHIPIFY_CURRENT_TOKEN)
         binding.traces.setNachoValidator(ChipifyingNachoValidator())
         binding.traces.enableEditChipOnTouch(false, true)
-        binding.traces.setAdapter(adapter)
+        binding.traces.setAdapter(
+            ArrayAdapter(
+                requireActivity(),
+                android.R.layout.simple_dropdown_item_1line,
+                allergens
+            )
+        )
     }
 
 
@@ -332,12 +361,13 @@ class EditIngredientsFragment : ProductEditFragment() {
             imagePath == null -> editIngredientsImage()
             photoFile != null -> cropRotateImage(photoFile!!, getString(R.string.ingredients_picture))
             else -> {
-                download(requireContext(), imagePath!!, client)
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe { uri ->
+                lifecycleScope.launchWhenResumed {
+                    val uri = fileDownloader.download(imagePath!!)
+                    if (uri != null) {
                         photoFile = uri.toFile()
                         cropRotateImage(uri, getString(R.string.ingredients_picture))
-                    }.addTo(disp)
+                    }
+                }
             }
         }
     }
@@ -379,14 +409,6 @@ class EditIngredientsFragment : ProductEditFragment() {
         binding.btnLooksGood.visibility = View.GONE
     }
 
-    private fun toggleOCRButtonVisibility() {
-        if (binding.ingredientsList.isEmpty()) {
-            binding.btnExtractIngredients.visibility = View.VISIBLE
-        } else {
-            binding.btnExtractIngredients.visibility = View.GONE
-        }
-    }
-
     /**
      * adds all the fields to the query map even those which are null or empty.
      */
@@ -398,17 +420,18 @@ class EditIngredientsFragment : ProductEditFragment() {
                 ?.takeUnless { it.isEmpty() } ?: ApiFields.Defaults.DEFAULT_LANGUAGE
 
             targetMap[lcIngredientsKey(lc)] = binding.ingredientsList.text.toString()
-            val string = binding.traces.chipValues.joinToString(",")
-            targetMap[ApiFields.Keys.ADD_TRACES.substring(4)] = string
+            targetMap[ApiFields.Keys.ADD_TRACES.substring(4)] = binding.traces.chipValues.joinToString(",")
         }
     }
 
     /**
      * adds only those fields to the query map which are not empty and have changed.
      */
-    override fun addUpdatedFieldsToMap(targetMap: MutableMap<String, String?>) {
+    override fun getUpdatedFieldsMap(): Map<String, String?> {
+        val targetMap = mutableMapOf<String, String?>()
+        if (activity !is ProductEditActivity) return targetMap
+
         binding.traces.chipifyAllUnterminatedTokens()
-        if (activity !is ProductEditActivity) return
 
         binding.ingredientsList
             .takeIf { it.isContentDifferent(product?.ingredientsText) }
@@ -423,6 +446,7 @@ class EditIngredientsFragment : ProductEditFragment() {
             ?.let {
                 targetMap[ApiFields.Keys.ADD_TRACES] = it.chipValues.joinToString(",")
             }
+        return targetMap
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -484,15 +508,24 @@ class EditIngredientsFragment : ProductEditFragment() {
     }
 
     fun showOCRProgress() {
-        binding.btnExtractIngredients.visibility = View.GONE
+        // Disable extract button and ingredients text field
+        binding.btnExtractIngredients.isEnabled = false
+        binding.ingredientsList.isEnabled = false
+
+        // Delete ingredients text
         binding.ingredientsList.text = null
+
+        // Show progress spinner and text
         binding.ocrProgress.visibility = View.VISIBLE
-        binding.ocrProgressText.visibility = View.VISIBLE
     }
 
     fun hideOCRProgress() {
+        // Re-enable extract button and ingredients text field
+        binding.btnExtractIngredients.isEnabled = true
+        binding.ingredientsList.isEnabled = true
+
+        // Hide progress spinner and text
         binding.ocrProgress.visibility = View.GONE
-        binding.ocrProgressText.visibility = View.GONE
     }
 
     private val dps50ToPixels by lazy { requireContext().dpsToPixel(50) }

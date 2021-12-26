@@ -199,7 +199,7 @@
     <string name="uploadLater">Foto uploades, når netværket er tilgængeligt</string>
     <string name="txtInfoLoginOk">Bruger gemt</string>
     <string name="txtInfoLoginNo">Bruger ikke gemt</string>
-    <string name="txtDialogsContent">Produktet, du har skannet, findes endnu ikke i Open Food Facts. Tilføj det venligst.</string>
+    <string name="product_does_not_exist_please_add_it">Produktet, du har skannet, findes endnu ikke i Open Food Facts. Tilføj det venligst.</string>
     <string name="txtYes">Ja</string>
     <string name="txtNo">Nej</string>
     <string name="hintBrand">Mærke</string>
@@ -595,7 +595,7 @@
     <string name="recycling_picture">Genbrugsfoto</string>
     <string name="take_ingredients_picture_to_extract">(Tag venligst et foto af ingredienserne for automatisk at udtrække dem)</string>
     <string name="ingredients_list">Ingrediensoversigt</string>
-    <string name="ingredients_hint">Behold rækkefølgen, angiv %, når det angives, adskilt med komma eller brug -, brug () til ingredienser i en ingrediens, omgiv allergener med _</string>
+    <string name="ingredients_hint" tools:ignore="StringFormatInvalid">Behold rækkefølgen, angiv %, når det angives, adskilt med komma eller brug -, brug () til ingredienser i en ingrediens, omgiv allergener med _</string>
     <string name="extract_ingredients">Udtræk ingredienser</string>
     <string name="extracting_ingredients">Uddrager ingredienser</string>
     <string name="looksGood">Ser godt ud</string>

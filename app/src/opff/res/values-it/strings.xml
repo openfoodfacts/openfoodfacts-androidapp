@@ -21,7 +21,7 @@
     <string name="slide_3_desc">Tutti gli alimenti per animali che scansionato, in un pratico elenco che puoi esportare</string>
     <string name="slide_4_title">Utilizzabile offline</string>
     <string name="slide_4_desc">Puoi aggiungere nuovi prodotti, anche senza una connessione internet disponibile sul momento</string>
-    <string name="txtDialogsContent">Il prodotto scansionato non esiste ancora in Open Pet Food Facts. Aggiungerlo per favore.</string>
+    <string name="product_does_not_exist_please_add_it">Il prodotto che hai scansionato non esiste ancora in Open Pet Food Facts. Sei pregato di aggiungerlo.</string>
     <string name="txtDialogsContentPowerMode">Il prodotto scannerizzato esiste già in Open Pet Food Facts.</string>
     <string name="msg_share">Guarda questo prodotto su Open Pet Food Facts:</string>
     <string name="not_support_books">I libri non sono attualmente supportati da Open Pet Food Facts</string>

@@ -21,7 +21,7 @@
     <string name="slide_3_desc">כל מוצרי הקוסמטיקה שלך ברשימה נוחה אחת שניתן לייצא</string>
     <string name="slide_4_title">תמיכה במצב בלתי מקוון</string>
     <string name="slide_4_desc">ניתן להוסיף מוצרים חדשים, אפילו אם אין לך חיבור לאינטרנט כרגע</string>
-    <string name="txtDialogsContent">המוצר שסרקת לא קיים עדיין ב־Open Beauty Facts. נא להוסיף אותו.</string>
+    <string name="product_does_not_exist_please_add_it">המוצר שסרקת לא קיים עדיין ב־Open Beauty Facts. נא להוסיף אותו.</string>
     <string name="msg_share">להלן מוצר מתוך Open Beauty Facts :</string>
     <string name="txt_broaden_search">- להרחיב את החיפוש שלך \n- לסרוק ולהוסיף ל־Open Beauty Facts</string>
     <string name="Donation">יש ללחוץ כאן כדי לתרום ל־Open Beauty Facts</string>
@@ -46,4 +46,5 @@
     <string name="txt_info_eaten_products">יתאפשר לך להוסיף מוצרים לרשימה זו על ידי סריקת מוצרים, גרירת הכרטיס למעלה ונגיעה ב־„מוצרים לרכישה”.
         כמו כן, יתאפשר לך להוסיף מוצרים לרשימה זו על ידי חיפוש אחריהם ולחיצה על כפתור ה־+ הפינה השמאלית העליונה של עמוד המוצר.</string>
     <string name="OFFlogo">הלוגו של Open Beauty Facts</string>
+    <string name="txtDialogsContentPowerMode">המוצר שסרקת כבר נמצא ב־Open Food Facts.</string>
 </resources>

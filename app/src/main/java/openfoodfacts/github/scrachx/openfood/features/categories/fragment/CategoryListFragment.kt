@@ -11,7 +11,9 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import openfoodfacts.github.scrachx.openfood.R
+import androidx.core.view.isVisible
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentCategoryListBinding
+import openfoodfacts.github.scrachx.openfood.features.categories.adapter.CategoryListRecyclerAdapter
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
 import openfoodfacts.github.scrachx.openfood.utils.SearchSuggestionProvider
 import java.util.*
@@ -23,6 +25,7 @@ class CategoryListFragment : BaseFragment() {
 
     private var _binding: FragmentCategoryListBinding? = null
     private val binding get() = _binding!!
+    private lateinit var categoryAdapter: CategoryListRecyclerAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,23 +44,33 @@ class CategoryListFragment : BaseFragment() {
         binding.recycler.layoutManager = LinearLayoutManager(context)
         binding.recycler.addItemDecoration(DividerItemDecoration(requireActivity(), DividerItemDecoration.VERTICAL))
 
-        binding.viewModel = this.viewModel
-
         binding.fastScroller.setRecyclerView(binding.recycler)
         binding.recycler.viewTreeObserver.addOnGlobalLayoutListener {
-            if (viewModel.shownCategories.isEmpty()) {
+            val shownCategories = viewModel.shownCategories.value ?: return@addOnGlobalLayoutListener
+
+            if (shownCategories.isEmpty()) {
                 binding.fastScroller.visibility = View.GONE
             } else {
                 binding.fastScroller.visibility = View.VISIBLE
                 // check for an empty item in the start of the list
-                if (viewModel.shownCategories[0].name!!.isEmpty()) {
-                    viewModel.shownCategories.removeAt(0)
-                    binding.recycler.adapter!!.notifyItemRemoved(0)
-                    binding.recycler.adapter!!.notifyItemRangeChanged(0, binding.recycler.adapter!!.itemCount)
+                if (shownCategories.first().name.isNullOrEmpty()) {
+                    viewModel.shownCategories.postValue(shownCategories.drop(1))
+                    binding.recycler.adapter?.notifyItemRemoved(0)
+                    binding.recycler.adapter?.notifyItemRangeChanged(0, binding.recycler.adapter?.itemCount ?: 0)
                 }
             }
         }
-        binding.offlineView.findViewById<View>(R.id.buttonToRefresh).setOnClickListener { viewModel.refreshCategories() }
+        binding.buttonToRefresh.setOnClickListener { viewModel.refreshCategories() }
+        viewModel.showOffline.observe(viewLifecycleOwner) {
+            binding.offlineView.isVisible = it
+        }
+        viewModel.showProgress.observe(viewLifecycleOwner) {
+            binding.progressView.isVisible = it
+        }
+        viewModel.shownCategories.observe(viewLifecycleOwner) {
+            categoryAdapter = CategoryListRecyclerAdapter(it)
+            binding.recycler.adapter = categoryAdapter
+        }
     }
 
     override fun onDestroyView() {

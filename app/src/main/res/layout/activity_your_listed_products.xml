@@ -1,87 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".features.productlist.ProductListActivity">
 
-    <data>
-
-    </data>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".features.productlist.ProductListActivity">
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintBottom_toTopOf="@+id/rvYourListedProducts"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary"
-            android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme"
-            app:layout_constraintBottom_toTopOf="@+id/rvYourListedProducts"
-            app:layout_constraintTop_toTopOf="parent" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvYourListedProducts"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/materialize_baseline_grid_small"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginEnd="4dp"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        tools:listitem="@layout/your_listed_products_item" />
 
+    <LinearLayout
+        android:id="@+id/main_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        tools:visibility="visible">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvYourListedProducts"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/tvInfoYourListedProducts"
+            android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_margin="@dimen/materialize_baseline_grid_small"
-            android:layout_marginStart="4dp"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginEnd="4dp"
-            android:layout_marginRight="@dimen/activity_horizontal_margin"
-            app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar"
-            tools:listitem="@layout/your_listed_products_item" />
+            android:layout_gravity="center"
+            android:layout_margin="12dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="12dp"
+            android:textAlignment="center"
+            android:textColor="@android:color/darker_gray"
+            android:visibility="invisible"
+            tools:visibility="visible" />
 
-        <LinearLayout
-            android:id="@+id/main_layout"
+        <Button
+            android:id="@+id/scanFirstYourListedProduct"
+            style="@style/ButtonRounded"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar"
-            tools:visibility="visible">
+            android:text="@string/scan_first_product"
+            android:visibility="invisible"
+            tools:visibility="visible" />
+    </LinearLayout>
 
-            <TextView
-                android:id="@+id/tvInfoYourListedProducts"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_gravity="center"
-                android:layout_margin="12dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:padding="12dp"
-                android:textAlignment="center"
-                android:textColor="@android:color/darker_gray"
-                android:visibility="invisible"
-                tools:visibility="visible" />
-
-            <Button
-                android:id="@+id/scanFirstYourListedProduct"
-                style="@style/ButtonRounded"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/scan_first_product"
-                android:visibility="invisible"
-                tools:visibility="visible" />
-        </LinearLayout>
-
-        <include
-            android:id="@+id/bottom_navigation"
-            layout="@layout/navigation_bottom"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rvYourListedProducts" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</layout>
+    <include
+        android:id="@+id/bottom_navigation"
+        layout="@layout/navigation_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rvYourListedProducts" />
+</androidx.constraintlayout.widget.ConstraintLayout>

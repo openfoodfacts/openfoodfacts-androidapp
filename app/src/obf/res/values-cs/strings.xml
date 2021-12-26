@@ -11,7 +11,7 @@
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/contributeur/ -->
     <string name="website_contributor">https://world.openbeautyfacts.org/contributor/</string>
     <string name="terms_url">https://world-cs.openbeautyfacts.org/terms-of-use</string>
-    <string name="txtHomeOnline">Open Beauty Facts is an open database of more than %1$s cosmetic products (plus the ones you will contribute) with ingredients, allergens, indicia and all the tidbits of information we can find on product labels.</string>
+    <string name="txtHomeOnline">Open Beauty Facts is an open database of more than %1$s cosmetic products (plus the ones you will contribute).</string>
     <string name="txtHome">Open Beauty Facts is a open and collaborative database of cosmetic products.</string>
     <string name="slide_1_title">Contribute to Cosmetic transparency</string>
     <string name="slide_1_desc">Scan products, take them in picture, make cosmetic transparency happen</string>
@@ -21,7 +21,7 @@
     <string name="slide_3_desc">All the cosmetic you use, in one handy list you can export</string>
     <string name="slide_4_title">Pracuje offline</string>
     <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet connection right now</string>
-    <string name="txtDialogsContent">Produkt, který jste naskenovali, ještě neexistuje v databázi Open Beauty Facts. Přidejte jej prosím.</string>
+    <string name="product_does_not_exist_please_add_it">The product you scanned does not exist yet in Open Beauty Facts. Please add it.</string>
     <string name="msg_share">Podívejte se na tento produkt v Open Beauty Facts :</string>
     <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Beauty Facts</string>
     <string name="Donation">Kliknutím můžete přispět na Open Beauty Facts</string>
@@ -46,4 +46,5 @@
     <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
         You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
     <string name="OFFlogo">Logo Open Beauty Facts</string>
+    <string name="txtDialogsContentPowerMode">Výrobek, který jste naskenovali, už je v databázi Open Food Facts.</string>
 </resources>

@@ -21,12 +21,12 @@
     <string name="slide_3_desc">All the cosmetic you use, in one handy list you can export</string>
     <string name="slide_4_title">Работа извън линия</string>
     <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet connection right now</string>
-    <string name="txtDialogsContent">The product you scanned does not exist yet in Open Beauty Facts. Please add it.</string>
+    <string name="product_does_not_exist_please_add_it">Продуктът който сканира, все още не съществува в Open Beauty Facts. Моля, добави го.</string>
     <string name="msg_share">Look at this product on Open Beauty Facts :</string>
     <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Beauty Facts</string>
     <string name="Donation">Click here to donate to Open Beauty Facts</string>
     <string name="translate_help_title">Помогнете с превода на Open Beauty Facts</string>
-    <string name="translate_help_summary">Bring the Open Beauty Facts database to your language - no technical knowledge required</string>
+    <string name="translate_help_summary">Направи базата данни на Open Beauty Facts налична на твоя език - не се изискват технически познания</string>
     <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Beauty Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Beauty Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
     <!-- Open Beauty Facts tagline in different languages -->
@@ -46,4 +46,5 @@
     <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
         You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
     <string name="OFFlogo">Open Beauty Facts logo</string>
+    <string name="txtDialogsContentPowerMode">Продуктът, който си сканирал, вече съществува в Open Food Facts.</string>
 </resources>

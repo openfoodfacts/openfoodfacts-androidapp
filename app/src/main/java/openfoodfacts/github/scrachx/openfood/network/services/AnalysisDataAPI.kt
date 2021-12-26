@@ -1,6 +1,5 @@
 package openfoodfacts.github.scrachx.openfood.network.services
 
-import io.reactivex.Single
 import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditivesWrapper
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergensWrapper
 import openfoodfacts.github.scrachx.openfood.models.entities.analysistag.AnalysisTagsWrapper
@@ -23,64 +22,64 @@ import retrofit2.http.GET
  */
 interface AnalysisDataAPI {
     @GET(LABELS_JSON)
-    fun getLabels(): Single<LabelsWrapper>
+    suspend fun getLabels(): LabelsWrapper
 
     @GET(ALLERGENS_JSON)
-    fun getAllergens(): Single<AllergensWrapper>
+    suspend fun getAllergens(): AllergensWrapper
 
     @GET(INGREDIENTS_JSON)
-    fun getIngredients(): Single<IngredientsWrapper>
+    suspend fun getIngredients(): IngredientsWrapper
 
     @GET(ADDITIVES_JSON)
-    fun getAdditives(): Single<AdditivesWrapper>
+    suspend fun getAdditives(): AdditivesWrapper
 
     @GET(COUNTRIES_JSON)
-    fun getCountries(): Single<CountriesWrapper>
+    suspend fun getCountries(): CountriesWrapper
 
     @GET(CATEGORIES_JSON)
-    fun getCategories(): Single<CategoriesWrapper>
+    suspend fun getCategories(): CategoriesWrapper
 
     @GET(TAGS_JSON)
-    fun getTags(): Single<TagsWrapper>
+    suspend fun getTags(): TagsWrapper
 
     @GET(INVALID_BARCODES_JSON)
-    fun getInvalidBarcodes(): Single<List<String>>
+    suspend fun getInvalidBarcodes(): List<String>
 
     @GET(VITAMINS_JSON)
-    fun getVitamins(): Single<CategoriesWrapper>
+    suspend fun getVitamins(): CategoriesWrapper
 
     @GET(ADDITIVES_CLASSES_JSON)
-    fun getAdditivesClasses(): Single<CategoriesWrapper>
+    suspend fun getAdditivesClasses(): CategoriesWrapper
 
     @GET(NUCLEOTIDES_JSON)
-    fun getNucleotides(): Single<CategoriesWrapper>
+    suspend fun getNucleotides(): CategoriesWrapper
 
     @GET(NUTRIENT_LEVELS_JSON)
-    fun getNutrientLevels(): Single<CategoriesWrapper>
+    suspend fun getNutrientLevels(): CategoriesWrapper
 
     @GET(LANGUAGES_JSON)
-    fun getLanguages(): Single<CategoriesWrapper>
+    suspend fun getLanguages(): CategoriesWrapper
 
     @GET(NUTRIENTS_JSON)
-    fun getNutrients(): Single<CategoriesWrapper>
+    suspend fun getNutrients(): CategoriesWrapper
 
     @GET(MINERALS_JSON)
-    fun getMinerals(): Single<CategoriesWrapper>
+    suspend fun getMinerals(): CategoriesWrapper
 
     @GET(STATES_JSON)
-    fun getStates(): Single<StatesWrapper>
+    suspend fun getStates(): StatesWrapper
 
     @GET(STORES_JSON)
-    fun getStores(): Single<StoresWrapper>
+    suspend fun getStores(): StoresWrapper
 
     @GET(BRANDS_JSON)
-    fun getBrands(): Single<BrandsWrapper>
+    suspend fun getBrands(): BrandsWrapper
 
     @GET(ANALYSIS_TAG_JSON)
-    fun getAnalysisTags(): Single<AnalysisTagsWrapper>
+    suspend fun getAnalysisTags(): AnalysisTagsWrapper
 
     @GET(ANALYSIS_TAG_CONFIG_JSON)
-    fun getAnalysisTagConfigs(): Single<AnalysisTagConfigsWrapper>
+    suspend fun getAnalysisTagConfigs(): AnalysisTagConfigsWrapper
 
 
     companion object {

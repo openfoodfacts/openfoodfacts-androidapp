@@ -199,7 +199,7 @@
     <string name="uploadLater">Изображението ще бъде качено, когато е налична мрежа</string>
     <string name="txtInfoLoginOk">Потребителят е запазен</string>
     <string name="txtInfoLoginNo">Потребителят не е запазен</string>
-    <string name="txtDialogsContent">Продуктът, който сте сканирали, все още не съществува в Open Food Facts. Моля, добавете го.</string>
+    <string name="product_does_not_exist_please_add_it">Продуктът, който сте сканирали, все още не съществува в Open Food Facts. Моля, добавете го.</string>
     <string name="txtYes">Да</string>
     <string name="txtNo">Не</string>
     <string name="hintBrand">Марка</string>
@@ -594,7 +594,7 @@
     <string name="packaging">Recycling</string>
     <string name="take_ingredients_picture_to_extract">(Моля, направете снимка на съставките, за да ги извлечете автоматично)</string>
     <string name="ingredients_list">Списък на съставките</string>
-    <string name="ingredients_hint">Запазете поръчката, посочете % (процент), когато е нужно, отделете със , (запетая) или използвайте - (тире), използвайте () (скоби) за подсъставките на дадена съставка, оградете алергените с _ (долна черта)</string>
+    <string name="ingredients_hint" tools:ignore="StringFormatInvalid">Запазете поръчката, посочете % (процент), когато е нужно, отделете със , (запетая) или използвайте - (тире), използвайте () (скоби) за подсъставките на дадена съставка, оградете алергените с _ (долна черта)</string>
     <string name="extract_ingredients">Извлечете съставките</string>
     <string name="extracting_ingredients">Extracting ingredients</string>
     <string name="looksGood">Изглежда добре</string>

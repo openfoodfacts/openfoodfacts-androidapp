@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/brand_blue"
@@ -8,36 +9,53 @@
 
     <ImageView
         android:id="@+id/slide_2_image"
-        android:layout_width="@dimen/img_width_height"
-        android:layout_height="@dimen/img_width_height"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintWidth_percent="0.6"
+        app:layout_constraintDimensionRatio="2:1"
         android:layout_centerHorizontal="true"
-        app:srcCompat="@drawable/ic_nutriscore_c" />
+        android:contentDescription="@null"
+        app:srcCompat="@drawable/ic_nutriscore_c"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintBottom_toTopOf="@+id/slide_2_title"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"/>
 
     <TextView
         android:id="@+id/slide_2_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/slide_2_image"
-        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:gravity="center_horizontal"
         android:padding="20dp"
         android:text="@string/title_welcome_nutriscore"
         android:textColor="@android:color/white"
-        android:textSize="20sp"
+        android:textSize="@dimen/slide_title_dp"
         android:textStyle="bold"
-        android:gravity="center"
-        />
+        app:layout_constraintBottom_toTopOf="@+id/slide_2_desc"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/slide_2_image" />
 
     <TextView
         android:id="@+id/slide_2_desc"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/slide_2_title"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="20dp"
-        android:gravity="center"
+        android:layout_marginRight="16dp"
+        android:gravity="center_horizontal"
         android:text="@string/msg_welcome_nutriscore"
         android:textAlignment="center"
-        android:textColor="@android:color/white"
-        android:textSize="@dimen/slide_desc" />
-</RelativeLayout>
+        android:textColor="@color/white"
+        android:textSize="@dimen/slide_desc_dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/slide_2_title" />
+</androidx.constraintlayout.widget.ConstraintLayout>

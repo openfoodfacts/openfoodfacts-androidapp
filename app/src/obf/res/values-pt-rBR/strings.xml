@@ -21,7 +21,7 @@
     <string name="slide_3_desc">Todos os cosméticos que você usa, em uma lista prática que você pode exportar</string>
     <string name="slide_4_title">Funciona offline</string>
     <string name="slide_4_desc">Você pode adicionar novos produtos, mesmo se você não estiver atualmente conectado à Internet</string>
-    <string name="txtDialogsContent">O produto que você escaneou ainda não existe no Open Beauty Facts. Por favor adicione-o.</string>
+    <string name="product_does_not_exist_please_add_it">The product you scanned does not exist yet in Open Beauty Facts. Please add it.</string>
     <string name="msg_share">Ver este produto no Open Beauty Facts:</string>
     <string name="txt_broaden_search">- ampliando sua pesquisa \n- escaneie e adicione-o ao Open Beauty Facts</string>
     <string name="Donation">Clique aqui para doar ao Open Beauty Facts</string>
@@ -46,4 +46,5 @@
     <string name="txt_info_eaten_products">Você poderá adicionar produtos a essa lista escaneando produtos, arrastando o cartão do produto para cima e tocando em \"Produtos para comprar\".
          Você também poderá adicionar produtos a essa lista pesquisando-os e clicando no botão + no canto superior direito da página do produto.</string>
     <string name="OFFlogo">Logotipo do Open Beauty Facts</string>
+    <string name="txtDialogsContentPowerMode">O produto que digitalizou já existe no Open Food Facts.</string>
 </resources>

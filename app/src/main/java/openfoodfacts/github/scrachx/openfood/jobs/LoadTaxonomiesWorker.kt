@@ -23,7 +23,7 @@ import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
-import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
+import openfoodfacts.github.scrachx.openfood.repositories.TaxonomiesRepository
 import openfoodfacts.github.scrachx.openfood.utils.Utils
 import openfoodfacts.github.scrachx.openfood.utils.getAppPreferences
 
@@ -35,8 +35,9 @@ import openfoodfacts.github.scrachx.openfood.utils.getAppPreferences
 class LoadTaxonomiesWorker @AssistedInject constructor(
     @Assisted private val appContext: Context,
     @Assisted workerParams: WorkerParameters,
-    private val repo: ProductRepository
+    private val repo: TaxonomiesRepository
 ) : CoroutineWorker(appContext, workerParams) {
+
     override suspend fun doWork(): Result {
         val settings = appContext.getAppPreferences()
 
@@ -46,8 +47,8 @@ class LoadTaxonomiesWorker @AssistedInject constructor(
             repo.reloadInvalidBarcodesFromServer()
             repo.reloadAllergensFromServer()
             repo.reloadIngredientsFromServer()
-            repo.reloadAnalysisTagConfigsFromServer()
-            repo.reloadAnalysisTagsFromServer()
+            repo.reloadAnalysisTagConfigs()
+            repo.reloadAnalysisTags()
             repo.reloadCountriesFromServer()
             repo.reloadAdditivesFromServer()
             repo.reloadCategoriesFromServer()

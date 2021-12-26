@@ -21,7 +21,7 @@
     <string name="slide_3_desc">Az összes állateledel amit ön beolvas, egy könnyen kezelhető listán amit exportálni is tud</string>
     <string name="slide_4_title">Kapcsolat nélküli módban is működik</string>
     <string name="slide_4_desc">Hozzáadhat új termékeket még akkor is, ha jelenleg nincs internet kapcsolata</string>
-    <string name="txtDialogsContent">A beolvasott termék nem található az Open Pet Food Facts adatbázisában. Kérjük, adja hozzá.</string>
+    <string name="product_does_not_exist_please_add_it">The product you scanned does not exist yet in Open Pet Food Facts. Please add it.</string>
     <string name="txtDialogsContentPowerMode">A beolvasott termék megtalálható az Open Pet Food Facts adatbázisában.</string>
     <string name="msg_share">Nézze meg a terméket az Open Pet Food Facts adatbázisában:</string>
     <string name="not_support_books">A könyveket jelenleg nem támogatja az Open Pet Food Facts</string>

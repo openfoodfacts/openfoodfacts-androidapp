@@ -1,9 +1,9 @@
 package openfoodfacts.github.scrachx.openfood.category
 
-import com.google.common.truth.Truth
-import io.reactivex.Single
-import io.reactivex.observers.TestObserver
-import openfoodfacts.github.scrachx.openfood.MockitoHelper
+import com.google.common.truth.Truth.assertThat
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runBlockingTest
 import openfoodfacts.github.scrachx.openfood.category.mapper.CategoryMapper
 import openfoodfacts.github.scrachx.openfood.category.model.Category
 import openfoodfacts.github.scrachx.openfood.category.network.CategoryNetworkService
@@ -12,13 +12,15 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
-import org.mockito.Mockito
 import org.mockito.junit.MockitoJUnitRunner
-import org.mockito.Mockito.`when` as mockitoWhen
+import org.mockito.kotlin.any
+import org.mockito.kotlin.doReturn
+import org.mockito.kotlin.whenever
 
 /**
  * Created by Abdelali Eramli on 01/01/2018.
  */
+@ExperimentalCoroutinesApi
 @RunWith(MockitoJUnitRunner::class)
 class CategoryRepositoryTest {
     @Mock
@@ -35,21 +37,16 @@ class CategoryRepositoryTest {
     private lateinit var repository: CategoryRepository
 
     @Before
-    fun setup() {
-        mockitoWhen(mapper.fromNetwork(MockitoHelper.anyObject())).thenReturn(listOf(category, category, category))
-        mockitoWhen(networkService.getCategories()).thenReturn(Single.just(response))
+    fun setup() = runBlockingTest {
+        whenever(mapper.fromNetwork(any())) doReturn listOf(category, category, category)
+        whenever(networkService.getCategories()) doReturn response
         repository = CategoryRepository(networkService, mapper)
     }
 
-    private fun <T> any(type: Class<T>): T = Mockito.any(type)
-
     @Test
-    fun retrieveAll_Success() {
-        val testObserver = TestObserver<List<Category>>()
-        repository.retrieveAll().subscribe(testObserver)
-        testObserver.awaitTerminalEvent()
-        val result = testObserver.values()[0]
-        Truth.assertThat(result[0]).isEqualTo(category)
+    fun retrieveAll_Success() = runBlocking { // runBlockingTest made this crash
+        val result = repository.retrieveAll()!![0]
+        assertThat(result).isEqualTo(category)
     }
 
 }

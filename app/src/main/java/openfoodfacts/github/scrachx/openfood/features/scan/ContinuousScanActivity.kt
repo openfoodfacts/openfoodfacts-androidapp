@@ -15,7 +15,6 @@
  */
 package openfoodfacts.github.scrachx.openfood.features.scan
 
-import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.hardware.Camera
@@ -31,7 +30,6 @@ import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.appcompat.widget.PopupMenu
 import androidx.core.content.ContextCompat
-import androidx.core.content.edit
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.core.view.isVisible
@@ -39,7 +37,6 @@ import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.commit
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.zxing.BarcodeFormat
 import com.google.zxing.ResultPoint
 import com.google.zxing.client.android.BeepManager
 import com.journeyapps.barcodescanner.BarcodeCallback
@@ -51,9 +48,6 @@ import com.mikepenz.iconics.IconicsSize
 import com.mikepenz.iconics.typeface.library.googlematerial.GoogleMaterial
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
-import io.reactivex.Completable
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.Disposable
 import kotlinx.coroutines.*
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
@@ -64,7 +58,6 @@ import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsView
 import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityContinuousScanBinding
 import openfoodfacts.github.scrachx.openfood.features.ImagesManageActivity
-import openfoodfacts.github.scrachx.openfood.features.compare.ProductCompareActivity
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity
 import openfoodfacts.github.scrachx.openfood.features.product.view.IProductView
 import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewActivity.ShowIngredientsAction
@@ -76,6 +69,7 @@ import openfoodfacts.github.scrachx.openfood.features.product.view.summary.Summa
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.selectNavigationItem
+import openfoodfacts.github.scrachx.openfood.models.CameraState
 import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import openfoodfacts.github.scrachx.openfood.models.InvalidBarcodeDao
 import openfoodfacts.github.scrachx.openfood.models.Product
@@ -86,13 +80,12 @@ import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenNa
 import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.AnalysisTagConfig
 import openfoodfacts.github.scrachx.openfood.models.eventbus.ProductNeedsRefreshEvent
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.StateTags
-import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
+import openfoodfacts.github.scrachx.openfood.repositories.*
 import openfoodfacts.github.scrachx.openfood.utils.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import java.io.IOException
 import java.util.*
-import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -101,13 +94,19 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
     internal val binding get() = _binding!!
 
     @Inject
+    lateinit var client: ProductRepository
+
+    @Inject
     lateinit var daoSession: DaoSession
 
     @Inject
-    lateinit var offlineProductService: OfflineProductService
+    lateinit var offlineProductRepository: OfflineProductRepository
 
     @Inject
-    lateinit var productRepository: ProductRepository
+    lateinit var taxonomiesRepository: TaxonomiesRepository
+
+    @Inject
+    lateinit var robotoffRepository: RobotoffRepository
 
     @Inject
     lateinit var picasso: Picasso
@@ -121,6 +120,9 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
     @Inject
     lateinit var localeManager: LocaleManager
 
+    @Inject
+    lateinit var scannerPrefsRepository: ScannerPreferencesRepository
+
     private lateinit var beepManager: BeepManager
     internal lateinit var quickViewBehavior: BottomSheetBehavior<LinearLayout>
     private val barcodeInputListener = BarcodeInputListener()
@@ -129,11 +131,10 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
 
     private val bottomSheetCallback by lazy { QuickViewCallback(this) }
 
-    private val cameraPref by lazy { getSharedPreferences("camera", 0) }
     private val settings by lazy { getAppPreferences() }
 
     private var productDisp: Job? = null
-    private var hintBarcodeDisp: Disposable? = null
+    private var hintBarcodeDisp: Job? = null
 
 
     private var cameraState = 0
@@ -188,7 +189,7 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
         productDisp?.cancel()
 
         // First, try to show if we have an offline saved product in the db
-        offlineSavedProduct = offlineProductService.getOfflineProductByBarcode(barcode).also { product ->
+        offlineSavedProduct = offlineProductRepository.getOfflineProductByBarcode(barcode).also { product ->
             product?.let { showOfflineSavedDetails(it) }
         }
 
@@ -222,7 +223,7 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
                         .apply { setGravity(CENTER, 0, 0) }
                         .show()
 
-                    Log.w(LOG_TAG, err.message, err)
+                    Log.w("ContinuousScanActivity", err.message, err)
                 }
                 return@launch
             }
@@ -242,23 +243,6 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
 
                 // Add product to scan history
                 productDisp = lifecycleScope.launch { client.addToHistory(product) }
-
-                // If we're here from comparison -> add product, return to comparison activity
-                if (intent.getBooleanExtra(ProductCompareActivity.KEY_COMPARE_PRODUCT, false)) {
-                    startActivity(Intent(this@ContinuousScanActivity, ProductCompareActivity::class.java).apply {
-                        putExtra(ProductCompareActivity.KEY_PRODUCT_FOUND, true)
-
-                        val productsToCompare = intent.extras!!.getSerializable(ProductCompareActivity.KEY_PRODUCTS_TO_COMPARE) as ArrayList<Product>
-                        if (product in productsToCompare) {
-                            putExtra(ProductCompareActivity.KEY_PRODUCT_ALREADY_EXISTS, true)
-                        } else {
-                            productsToCompare += product
-                            matomoAnalytics.trackEvent(AnalyticsEvent.AddProductToComparison(product.code))
-                        }
-                        putExtra(ProductCompareActivity.KEY_PRODUCTS_TO_COMPARE, productsToCompare)
-                        addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                    })
-                }
 
                 showAllViews()
 
@@ -397,7 +381,7 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
                 }
 
             }
-        }, productRepository).also {
+        }, taxonomiesRepository, robotoffRepository).also {
             lifecycleScope.launch {
                 try {
                     it.loadAllergens()
@@ -502,16 +486,16 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
         // The system bars are visible.
         hideSystemUI()
 
-        hintBarcodeDisp = Completable.timer(15, TimeUnit.SECONDS)
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnComplete {
-                if (productShowing) return@doOnComplete
+        hintBarcodeDisp = lifecycleScope.launch {
+            delay(15 * 1000)
 
-                hideAllViews()
-                quickViewBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
-                binding.quickViewSearchByBarcode.visibility = View.VISIBLE
-                binding.quickViewSearchByBarcode.requestFocus()
-            }.subscribe()
+            if (productShowing) return@launch
+
+            hideAllViews()
+            quickViewBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+            binding.quickViewSearchByBarcode.visibility = View.VISIBLE
+            binding.quickViewSearchByBarcode.requestFocus()
+        }
 
         quickViewBehavior = BottomSheetBehavior.from(binding.quickView)
 
@@ -519,18 +503,17 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
         quickViewBehavior.state = BottomSheetBehavior.STATE_HIDDEN
 
         quickViewBehavior.addBottomSheetCallback(bottomSheetCallback)
-        cameraPref.let {
-            beepActive = it.getBoolean(SETTING_RING, false)
-            flashActive = it.getBoolean(SETTING_FLASH, false)
-            autoFocusActive = it.getBoolean(SETTING_FOCUS, true)
-            cameraState = it.getInt(SETTING_STATE, 0)
-        }
+
+        beepActive = scannerPrefsRepository.getRingPref()
+        flashActive = scannerPrefsRepository.getFlashPref()
+        autoFocusActive = scannerPrefsRepository.getAutoFocusPref()
+        cameraState = scannerPrefsRepository.getCameraPref().value
 
         // Setup barcode scanner
         if (!useMLScanner) {
             binding.barcodeScanner.visibility = View.VISIBLE
-            binding.cameraPreviewViewStub.viewStub?.isVisible = false
-            binding.barcodeScanner.barcodeView.decoderFactory = DefaultDecoderFactory(BARCODE_FORMATS)
+            binding.cameraPreviewViewStub.isVisible = false
+            binding.barcodeScanner.barcodeView.decoderFactory = DefaultDecoderFactory(ScannerPreferencesRepository.BARCODE_FORMATS)
             binding.barcodeScanner.setStatusText(null)
             binding.barcodeScanner.setOnClickListener {
                 quickViewBehavior.state = BottomSheetBehavior.STATE_HIDDEN
@@ -563,7 +546,7 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
     }
 
     private fun mlBarcodeCallback(barcodeValue: String) {
-        hintBarcodeDisp?.dispose()
+        hintBarcodeDisp?.cancel()
 
         // Prevent duplicate scans
         if (barcodeValue.isEmpty() || barcodeValue == lastBarcode) return
@@ -624,7 +607,7 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
         mlKitView.detach()
 
         // Dispose all RxJava disposable
-        hintBarcodeDisp?.dispose()
+        hintBarcodeDisp?.cancel()
 
         // Remove bottom sheet callback as it uses binding
         quickViewBehavior.removeBottomSheetCallback(bottomSheetCallback)
@@ -652,7 +635,6 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
         this.actionBar?.hide()
     }
 
-
     private fun setupPopupMenu() {
         cameraSettingMenu = PopupMenu(this, binding.buttonMore).also {
             it.menuInflater.inflate(R.menu.popup_menu, it.menu)
@@ -674,13 +656,12 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
 
     @Suppress("deprecation")
     private fun toggleCamera() {
-
         cameraState = if (cameraState == Camera.CameraInfo.CAMERA_FACING_BACK) {
             Camera.CameraInfo.CAMERA_FACING_FRONT
         } else {
             Camera.CameraInfo.CAMERA_FACING_BACK
         }
-        cameraPref.edit { putInt(SETTING_STATE, cameraState) }
+        scannerPrefsRepository.saveCameraPref(CameraState.fromInt(cameraState))
 
         if (!useMLScanner) {
             val settings = binding.barcodeScanner.barcodeView.cameraSettings
@@ -693,33 +674,29 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
         } else {
             mlKitView.toggleCamera()
         }
-
     }
 
     private fun toggleFlash() {
-        cameraPref.edit {
-            if (flashActive) {
-                flashActive = false
-                binding.toggleFlash.setImageResource(R.drawable.ic_flash_off_white_24dp)
-                putBoolean(SETTING_FLASH, false)
+        if (flashActive) {
+            flashActive = false
+            binding.toggleFlash.setImageResource(R.drawable.ic_flash_off_white_24dp)
 
-                if (useMLScanner) {
-                    mlKitView.updateFlashSetting(flashActive)
-                } else {
-                    binding.barcodeScanner.setTorchOff()
-                }
+            if (useMLScanner) {
+                mlKitView.updateFlashSetting(flashActive)
             } else {
-                flashActive = true
-                binding.toggleFlash.setImageResource(R.drawable.ic_flash_on_white_24dp)
-                putBoolean(SETTING_FLASH, true)
+                binding.barcodeScanner.setTorchOff()
+            }
+        } else {
+            flashActive = true
+            binding.toggleFlash.setImageResource(R.drawable.ic_flash_on_white_24dp)
 
-                if (useMLScanner) {
-                    mlKitView.updateFlashSetting(flashActive)
-                } else {
-                    binding.barcodeScanner.setTorchOn()
-                }
+            if (useMLScanner) {
+                mlKitView.updateFlashSetting(flashActive)
+            } else {
+                binding.barcodeScanner.setTorchOn()
             }
         }
+        scannerPrefsRepository.saveFlashPref(flashActive)
     }
 
     private fun showMoreSettings() {
@@ -731,15 +708,12 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
                 R.id.toggleBeep -> {
                     beepActive = !beepActive
                     item.isChecked = beepActive
-                    cameraPref.edit {
-                        putBoolean(SETTING_RING, beepActive)
-                        apply()
-                    }
+                    scannerPrefsRepository.saveRingPref(beepActive)
                 }
                 R.id.toggleAutofocus -> {
                     autoFocusActive = !autoFocusActive
                     item.isChecked = autoFocusActive
-                    cameraPref.edit { putBoolean(SETTING_FOCUS, autoFocusActive) }
+                    scannerPrefsRepository.saveAutoFocusPref(autoFocusActive)
 
                     if (useMLScanner) {
                         mlKitView.updateFocusModeSetting(autoFocusActive)
@@ -756,7 +730,7 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
                 }
                 R.id.troubleScanning -> {
                     hideAllViews()
-                    hintBarcodeDisp?.dispose()
+                    hintBarcodeDisp?.cancel()
                     binding.quickView.setOnClickListener(null)
                     binding.quickViewSearchByBarcode.text = null
                     binding.quickViewSearchByBarcode.visibility = View.VISIBLE
@@ -822,7 +796,7 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
 
     private inner class BarcodeScannerCallback : BarcodeCallback {
         override fun barcodeResult(result: BarcodeResult) {
-            hintBarcodeDisp?.dispose()
+            hintBarcodeDisp?.cancel()
 
             // Prevent duplicate scans
             if (result.text == null || result.text.isEmpty() || result.text == lastBarcode) return
@@ -849,34 +823,5 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
 
     companion object {
         private const val LOGIN_ACTIVITY_REQUEST_CODE = 2
-        val BARCODE_FORMATS = listOf(
-            BarcodeFormat.UPC_A,
-            BarcodeFormat.UPC_E,
-            BarcodeFormat.EAN_13,
-            BarcodeFormat.EAN_8,
-            BarcodeFormat.RSS_14,
-            BarcodeFormat.CODE_39,
-            BarcodeFormat.CODE_93,
-            BarcodeFormat.CODE_128,
-            BarcodeFormat.ITF
-        )
-        private const val SETTING_RING = "ring"
-        private const val SETTING_FLASH = "flash"
-        private const val SETTING_FOCUS = "focus"
-        private const val SETTING_STATE = "cameraState"
-        private val LOG_TAG = this::class.simpleName!!
-
-
-        @JvmStatic
-        fun start(context: Context, productsToCompare: ArrayList<Product>) {
-            Intent(context, ContinuousScanActivity::class.java).apply {
-                putExtra(ProductCompareActivity.KEY_COMPARE_PRODUCT, true)
-                putExtra(ProductCompareActivity.KEY_PRODUCTS_TO_COMPARE, productsToCompare)
-                context.startActivity(this)
-            }
-        }
-
     }
-
-
 }

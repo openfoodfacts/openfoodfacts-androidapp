@@ -42,7 +42,6 @@
     <string name="product_incomplete_message">A termék összetevőinek listája nem teljes. Emiatt az allergén riasztás nem jelenik meg.</string>
     <string name="product_allergen_prompt">Ez a termék a következőket tartalmazza:</string>
     <string name="no_offline_data">Mindennel elkészült</string>
-    <string name="first_offline">A kapcsolat nélküli módban hozzáadott termékek itt fognak megjelenni</string>
     <!-- Image Upload -->
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
@@ -161,17 +160,15 @@
     <string name="alert_dialog_warning_msg_user">Felhasználó/jelszó megváltozott, kérjük, frissítse az adatokat</string>
     <string name="toast_retrieving">Betöltés…</string>
     <string name="txtBarcode">Vonalkód:</string>
-    <string name="txtCategories">Kategóriák:</string>
-    <string name="txtLabels">Címkék, tanúsítványok, díjak:</string>
-    <string name="txtEMB">EMB vagy EK üzemkód:</string>
-    <string name="txtIngredients">Összetevők:</string>
+    <string name="txtCategories">Categories:</string>
+    <string name="txtLabels">Labels, certifications, awards: </string>
+    <string name="txtEMB">Traceability codes: </string>
+    <string name="txtIngredients">Ingredients list: </string>
     <string name="Donate">Adományozás</string>
     <string name="Donation">Kattintson ide az Open Food Facts-nek szánt adományozáshoz</string>
-    <string name="txtSubstances">Allergiát vagy intoleranciát okozó anyagok vagy termékek:</string>
-    <string name="txtAdditives">Adalékanyagok:</string>
-    <string name="txtTraces">Nyomokban tartalmazhat:</string>
-    <string name="txtMayBeFromPalmOilProduct">Összetevők, amelyek pálmaolajat tartalmazhatnak:</string>
-    <string name="txtPalmOilProduct">Összetevők pálmaolajból:</string>
+    <string name="txtSubstances">Substances or products causing allergies or intolerances: </string>
+    <string name="txtAdditives">Additives: </string>
+    <string name="txtTraces">Traces: </string>
     <string name="txtServingSize">Adag:</string>
     <string name="txtNutrientLevel100g">Átlagos tápérték 100 g termékben:</string>
     <string name="txtNutrientLevel100ml">Átlagos tápérték 100ml termékben:</string>
@@ -180,7 +177,6 @@
     <string name="txtNutritionLevelHigh">nagy mennyiségben</string>
     <string name="txtSave">Mentés</string>
     <string name="txtSignIn">Bejelentkezés</string>
-    <string name="txtToastSaved">Felhasználó elmentve</string>
     <string name="txtSalt">Só</string>
     <string name="txtFat">Zsír</string>
     <string name="txtSugars">Cukrok</string>
@@ -191,10 +187,9 @@
     <string name="hintPass">Jelszó</string>
     <string name="errorLogin">Hibás felhasználónév vagy jelszó</string>
     <string name="errorWeb">Nem sikerült elérni az internetet. Kapcsolódási problémája van?</string>
-    <string name="uploadLater">A kép feltöltésre kerül amikor a hálózat elérhető lesz</string>
-    <string name="txtInfoLoginOk">Felhasználó elmentve</string>
-    <string name="txtInfoLoginNo">Felhasználó nem lett elmentve</string>
-    <string name="txtDialogsContent">A beolvasott termék nem található az Open Food Facts adatbázisában. Kérjük, adja hozzá.</string>
+    <string name="txtInfoLoginOk">You successfully logged into your Open Food Facts account.</string>
+    <string name="txtInfoLoginNo">An error happened while trying to log into your Open Food Facts account.</string>
+    <string name="product_does_not_exist_please_add_it">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
     <string name="txtYes">Igen</string>
     <string name="txtNo">Nem</string>
     <string name="hintBrand">Márkanév</string>
@@ -202,32 +197,26 @@
     <string name="txtPictureNeededDialogNo">Elvet</string>
     <string name="toastSending">Feltöltés…</string>
     <string name="txtLoading">Betöltés…</string>
-    <string name="txtDialogsContentDelete">Biztosan eltávolítja ezt a vázlatot?</string>
-    <string name="txtDialogsContentInfoSave">A termék el lett mentve a készülékére, szerkeszthető az \"Offline Szerkesztés\" menüből</string>
     <string name="productSavedToast">Termék mentve, köszönjük!</string>
     <string name="txtBarcodeRequire">Vonalkód szükséges</string>
-    <string name="txtOk">OK</string>
     <string name="txtBarcodeNotValid">Érvénytelen vonalkód</string>
     <string name="msg_share">Nézze meg a terméket az Open Food Facts adatbázisában:</string>
     <string name="create_account">Regisztráció</string>
     <string name="home_drawer">Kezdőlap</string>
     <string name="install">Telepítés</string>
-    <string name="open_beauty_drawer">Open Beauty Facts</string>
-    <string name="open_food_drawer">Open Food Facts</string>
     <string name="search_drawer">Keres</string>
     <string name="search_by_barcode_drawer">Írja be a vonalkódot</string>
     <string name="category_drawer">Kategóriák</string>
     <string name="search_by_category">Kategória</string>
     <string name="scan_search">Vonalkód beolvasása</string>
     <string name="user_drawer">Felhasználó</string>
-    <string name="offline_edit_drawer">Offline szerkesztés</string>
     <string name="txt_anonymous">Névtelen</string>
     <string name="delete_txt">Törlés</string>
     <string name="sign_in_drawer">Bejelentkezés</string>
     <string name="alert_drawer">Allergén riasztás</string>
     <string name="your_lists">A listája</string>
     <string name="title_dialog_alert">Figyelmeztetés hozzáadása</string>
-    <string name="select_camera">Válassza ki a kamerát</string>
+    <string name="select_camera">Select a Camera</string>
     <string name="ok_button">OK</string>
     <string name="cancel_button">Mégse</string>
     <string name="login_button">Felhasználói név</string>
@@ -251,7 +240,7 @@
     <string name="user_ask_rate_app">Nagyszerű! Tudasd másokkal, hogy mit gondolsz erről az appról!</string>
     <string name="rate_app">App értékelése</string>
     <string name="no_thx">Nem köszönöm</string>
-    <string name="feedback_form_url">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
+    <string name="feedback_form_url" comment="Please ask teolemon to duplicate the feedback form and give you the right URL">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">Előzmények</string>
     <string name="clear_history">Előzmények törlése</string>
@@ -264,16 +253,15 @@
     <string name="no_brand">Nincs márka</string>
     <string name="no_title">Nincs cím</string>
     <!-- Nutrition info tab -->
-    <string name="display_fact">Átlagos tápérték %1$s termékben</string>
+    <string name="display_fact" comment="Do not modify the placeholder">Átlagos tápérték %1$s termékben</string>
     <string name="check_facts">Ellenőrzés</string>
     <string name="nutrition">Tápanyag</string>
     <string name="calculated_nutrition">Kiszámított tápanyag</string>
     <string name="please_enter_weight">Kérjük, írja be a termék súlyát</string>
     <string name="enter_weight">Írja be a termék súlyának</string>
-    <string name="calculate_nutrition_facts">Tápértékadatok kiszámítása megadott mennyiséghez</string>
+    <string name="calculate_nutrition_facts">Calculate nutrition facts for a specific quantity</string>
     <string name="nutrition_carbohydrate">Szénhidrát</string>
     <string name="nutrition_cholesterol">Koleszterin</string>
-    <string name="nutrition_energy">Energia</string>
     <string name="nutrition_energy_kcal">Energia kalóriában (kcal)</string>
     <string name="nutrition_energy_kj">Energia joule-ban (kJ)</string>
     <string name="nutrition_energy_short_name">Energia</string>
@@ -289,8 +277,6 @@
     <string name="nutriment_serving_size">Adagonként: </string>
     <string name="action_manage_account">Fiók kezelése</string>
     <string name="action_contributes">Az ön hozzájárulásai</string>
-    <string name="choose_energy_unit">Válassza ki a kívánt energia mértékegységeket a tápérték táblázathoz</string>
-    <string name="choose_volume_unit">Válassza ki a kívánt mennyiség mértékegységet a tápérték táblázathoz</string>
     <string name="logout_drawer">Kijelentkezés</string>
     <string name="contribution_without_account">Jelentkezzen be vagy hozzon létre egy fiókot a hozzájárulásainak megtartásához</string>
     <string name="textCarbonFootprint">Ökológiai lábnyom / szén-dioxid-kibocsátás: </string>
@@ -372,7 +358,7 @@
     <string name="take_picture">Fotó készítése</string>
     <string name="choose_picture_from_gallery">Kiválasztás galériából</string>
     <string name="take_picture_ingredients">Kép készítése az összetevőkről</string>
-    <string name="take_picture_recycling">Take a photo of the recycling instructions</string>
+    <string name="take_picture_recycling">Készítsen fényképet az újrahasznosítási útmutatóról</string>
     <string name="take_picture_front">Készíts egy képet az elejéről</string>
     <string name="take_picture_nutrition_table">Kép készítése a tápanyagtáblázatról</string>
     <string name="take_more_pictures">Készítsen további képeket</string>
@@ -397,21 +383,9 @@
     <string name="forgot_password">Elfelejtett jelszó</string>
     <string name="next">KÖVETKEZŐ</string>
     <string name="skip">KIHAGY</string>
-    <string name="start">MEGÉRTETTEM</string>
     <string name="email_not_found">Nem találhatóak email alkalmazások</string>
-    <string name="airplane_mode_active_dialog_title">Repülőgép mód engedélyezve</string>
-    <string name="airplane_mode_active_dialog_message">A repülőgép mód engedélyezve van, kérjük, tiltsa le a folytatáshoz.</string>
-    <string name="airplane_mode_active_dialog_negative">Elutasít</string>
-    <string name="airplane_mode_active_dialog_positive">Beállítások</string>
     <string name="device_offline_dialog_title">A hálózat nem érhető el</string>
-    <string name="device_offline_dialog_message">Ehhez a művelethez hálózati kapcsolat szükséges, szeretné megváltoztatni a beállításokat?</string>
-    <string name="device_offline_dialog_negative">Elutasít</string>
-    <string name="device_offline_dialog_positive">Beállítások</string>
     <string name="scan_first_product">Első termék beolvasása</string>
-    <string name="device_on_mobile_data_warning_title">Információ</string>
-    <string name="device_on_mobile_data_warning_message">A feltöltés mobilinterneten le van tiltva, kérjük, csatlakozzon WiFi-hez vagy módosítsa a beállításokat</string>
-    <string name="device_on_mobile_data_warning_positive">Beállítások</string>
-    <string name="device_on_mobile_data_warning_negative">Feltöltés mindenképpen</string>
     <string name="changes_saved">A módosítások sikeresen mentésre kerültek</string>
     <string name="proceed">Proceed</string>
     <string name="preference_choose_language_dialog_title">Válasszon nyelvet</string>
@@ -445,8 +419,6 @@
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
     <string name="url_nutrient_values">https://hu.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">Általános</string>
-    <string name="preference_header_network">Hálózat</string>
-    <string name="preference_header_contributing">Hozzájárulás</string>
     <string name="preference_header_privacy">Adatvédelem</string>
     <string name="preference_crash_title">Összeomlási jelentés</string>
     <string name="preference_crash_summary">Ha engedélyezve van, az összeomlási jelentéseket automatikusan elküldi az Open Food Facts szerverre, hogy kijavíthassuk a hibákat és fejleszthessük az alkalmazást.</string>
@@ -471,7 +443,7 @@
     <string name="additive_string">Adalékanyag</string>
     <string name="allergen_string">Allergén</string>
     <string name="search_string">Keres</string>
-    <string name="country_string">Country</string>
+    <string name="country_string">Ország</string>
     <string name="store_subtitle">Bolt</string>
     <string name="packaging_subtitle">Csomagolás</string>
     <string name="state_subtitle">Állapot</string>
@@ -503,7 +475,7 @@
     <string name="do_you_want_to">Szeretne fényképeket hozzáadni ehhez a vonalkódhoz?</string>
     <string name="bottomNav_history">Előzmények</string>
     <string name="products_added">Termékek, amelyeket hozzáadott vagy szerkesztett</string>
-    <string name="products_incomplete">Termékek, amiket hozzáadott és befejezésre vár</string>
+    <string name="products_incomplete">Az Ön által hozzáadott termékek, amelyek befejezésre várnak</string>
     <string name="product_pictures_contributed">Termékek, amelyekről képeket készített</string>
     <string name="picture_contributed_incomplete">Termékek, amelyekről képeket készített és ki kell egészíteni</string>
     <string name="product_info_added">Termékek, amelyekhez információt adott hozzá</string>
@@ -514,9 +486,9 @@
     <string name="notification_channel_name">Exportálási értesítések</string>
     <string name="notify_channel_description">Értesítés az exportált fájl helyének megjelenítéséhez</string>
     <string name="products_to_be_completed">Kiegészítendő termékek</string>
-    <string name="offline_notification_title">Kapcsolat nélküli módban készült hozzájárulások, amiket el kell küldenie</string>
-    <string name="creator_history">A terméket hozzáadta %1$s ekkor: %2$s, %3$s (CET)</string>
-    <string name="last_editor_history">Termékoldalt legutóbb szerkesztette %1$s ekkor: %2$s, %3$s (CEST) </string>
+    <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">A terméket hozzáadta %1$s ekkor: %2$s, %3$s (CET)</string>
+    <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Termékoldalt legutóbb szerkesztette %1$s ekkor: %2$s, %3$s (CEST) </string>
+    <!-- TODO: Add the placeholder in the string - important for several languages -->
     <string name="other_editors">A termékoldalt szerkesztette még </string>
     <string name="product_states">Product States</string>
     <string name="incomplete_states">Incomplete States</string>
@@ -527,10 +499,9 @@
     <string name="offline_product_addition_title">Új termék hozzáadása</string>
     <string name="productNameNull">Ismeretlen név</string>
     <string name="productAdditivesUnknown"></string>
-    <string name="productAdditivesTemplate">%1$d adalékanyag</string>
     <plurals name="productAdditives">
-        <item quantity="one">%d adalékanyag</item>
-        <item quantity="other">%d adalékanyag</item>
+        <item quantity="one" comment="Do not change the placeholder">%d adalékanyag</item>
+        <item quantity="other" comment="Do not change the placeholder">%d adalékanyag</item>
     </plurals>
     <string name="product_not_complete">Ez a termékoldal még nem teljes. \nHozzá tudna adni néhány adatot?</string>
     <string name="addProductOffline">Úgy tűnik, hogy kapcsolat nélküli módban van. Hozzáadja a(z) %s terméket offline módban?</string>
@@ -541,9 +512,8 @@
     <string name="switch_camera">Kamera váltása</string>
     <string name="autofocus">Autofókusz</string>
     <string name="initial_loading">Kezdeti betöltés</string>
-    <string name="preferences">Beállítások</string>
     <string name="OFFlogo">Open Food Facts embléma</string>
-    <string name="loading_product">%s termék betöltése</string>
+    <string name="loading_product" comment="Do not modify the placeholder">%s termék betöltése</string>
     <string name="image_not_defined_for_language">Nincs kép a kiválasztott nyelven. Adjon hozzá egy újat</string>
     <string name="error_adding_ingredients">Valami hiba történt a termékösszetevők hozzáadása közben</string>
     <string name="unable_to_extract_ingredients">Nem sikerült az összetevők kiolvasása a képből</string>
@@ -555,20 +525,11 @@
     <string name="extract_url">Extract URL from QR-code</string>
     <string name="search_url">Search for official page URL</string>
     <string name="product_language">A termék nyelve: </string>
-    <string name="hint_emb_codes">Például: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522, FSSL 10013011001409</string>
     <string name="official_website">Hivatalos weboldal</string>
     <string name="scan_QR_code">Termék oldalára mutató QR-kód beolvasása</string>
     <string name="add_at_least_one_picture">Kérjük, adjon meg legalább egy képet a termékről, mielőtt folytatná</string>
     <string name="image_uploaded_successfully">A kép sikeresen fel lett töltve</string>
     <string name="error_adding_product_photos">Valami hiba történt a termékfotók hozzáadása közben</string>
-    <string name="ingredients_overwrite">Összetevők felülírása</string>
-    <string name="choose_mine">Válassza az enyémet</string>
-    <string name="keep_previous_version">Előző változat megtartása</string>
-    <string name="product_name_overwrite">Termék nevének felülírása</string>
-    <string name="yours">A tied: </string>
-    <string name="currently_on">Jelenleg %s: </string>
-    <string name="quantity_overwrite">Mennyiség felülírása</string>
-    <string name="link_overwrite">Link felülírása</string>
     <string name="save_product">Szeretné menteni a terméket?</string>
     <string name="error_adding_product">Valami hiba történt a termék hozzáadásakor</string>
     <string name="photos">Fényképek</string>
@@ -576,16 +537,15 @@
     <string name="product_uploaded_successfully">Termék sikeresen feltöltve</string>
     <string name="no_internet_connection">Úgy tűnik, hogy nincs internetkapcsolata, a képek majd feltöltésre kerülnek, amikor elérhető lesz a hálózat</string>
     <string name="no_internet_unable_to_extract_ingredients">Nincs internetkapcsolat. Nem sikerült beolvasni a képről az összetevőket</string>
-    <string name="percent">%1$d%%</string>
-    <string name="overview">Összefoglalás</string>
+    <string name="overview">Összegzés</string>
     <string name="ingredients">Összetevők</string>
     <string name="nutrition_facts">Tápértékadatok</string>
     <string name="your_version">A tied</string>
     <string name="ingredients_picture">Összetevők képe</string>
     <string name="packaging">Újrahasznosítás</string>
-    <string name="take_ingredients_picture_to_extract">(Kérem, készítsen egy képet az összetevőkről, hogy be tudja olvasni róla szöveget a program)</string>
+    <string name="take_ingredients_picture_to_extract">(Please take a photo of the ingredients to automatically extract them)</string>
     <string name="ingredients_list">Összetevők</string>
-    <string name="ingredients_hint">Tartsa be a sorrendet, adja meg a % -ot, ha meg van adva, vesszővel elválasztva vagy használja -, használja () az összetevő összetevőihez, vegye körül az allergéneket _</string>
+    <string name="ingredients_hint" tools:ignore="StringFormatInvalid">Tartsa be a sorrendet, adja meg a % -ot, ha meg van adva, vesszővel elválasztva vagy használja -, használja () az összetevő összetevőihez, vegye körül az allergéneket _</string>
     <string name="extract_ingredients">Összetevők kiolvasása</string>
     <string name="extracting_ingredients">Összetevők kiolvasása</string>
     <string name="looksGood">Jónak tűnik</string>
@@ -593,7 +553,7 @@
 Összetevők kihagyása</string>
     <string name="traces">Nyomokban</string>
     <string name="traces_hint">Adja hozzá az összetevőket, amelyek a következőképpen vannak megemlítve: „Nyomokban tartalmazhat”, „… (is) felhasználó üzemben készült”, stb.\nPéldák: Tej, Glutén, Diófélék</string>
-    <string name="nutrition_facts_not_specified">Nincsenek megadva tápértékadatok a termékhez.</string>
+    <string name="nutrition_facts_not_specified">A tápértékadatok nincsenek feltüntetve a terméken.</string>
     <string name="nutrition_facts_picture">Tápértékadatok képe</string>
     <string name="front_short_picture">Elölnézet</string>
     <string name="other_picture">Egyéb kép</string>
@@ -620,9 +580,6 @@
     <string name="additional_pictures">További képek</string>
     <string name="hint_product_pictures">(Készítsen még több képet a termékről, például: újrahasznosítási utasítások, címkék stb.)</string>
     <string name="uploading_image">Kép feltöltése a termékről</string>
-    <string name="uploading_nutrition_image">Kép feltöltése a tápértékadatokról</string>
-    <string name="uploading_ingredients_image">Kép feltöltése az összetevőkről</string>
-    <string name="uploading_front_image">Elölnézeti fotó feltöltése</string>
     <string name="edit_front_image">Elölnézeti kép szerkesztése</string>
     <string name="edit_nutrition_image">Tápérték adatok kép szerkesztése</string>
     <string name="edit_packaging_image">Edit the recycling photo</string>
@@ -632,7 +589,6 @@
     <string name="sign_in_to_answer">Please sign in or register to answer an insight.</string>
     <string name="hint_quantity">Példák: 2 liter, 250 g, 1 kg, 25 cl, 6 fl oz, 1 font</string>
     <string name="edit_product_title">Termék szerkesztése</string>
-    <string name="nutrient_already_added">%s már szerepel a tárléptékadatok között</string>
     <string name="save_edits">Módosítások mentése</string>
     <string name="contribution_by">Hozzájárult</string>
     <string name="title_activity_product">Cím</string>
@@ -669,10 +625,10 @@
     <string name="add_nutrient_prompt_text">Adjon hozzá tápértékeket a Nutri-Score kiszámításához</string>
     <string name="add_category_prompt_text">Add a category to help complete the product</string>
     <string name="add_nutrient_category_prompt_text">Adjon hozzá táplálkozási tényeket és kategóriát a Nutri-Score kiszámításához</string>
-    <string name="couldnot_compute_ecoscore_prompt_text">We could not compute an Eco-Score for this product. It might be that the category is not specific enough or that we don\'t have supporting data for this category. If you believe this is an error, you can mail us by clicking below.</string>
-    <string name="add_labels_origins_prompt_text">The Eco-Score takes into account environmental labels and origins of the ingredients. Please take them into photo or edit the product so that they can be taken into account</string>
-    <string name="add_labels_prompt_text">The Eco-Score takes into account environmental labels. Please take them into photo or edit the product so that they can be taken into account</string>
-    <string name="add_origins_prompt_text">The Eco-Score takes into account the origins of the ingredients. Please take them into photo (ingredient list and/or any geographic claim) or edit the product so that they can be taken into account</string>
+    <string name="couldnot_compute_ecoscore_prompt_text" comment="Do not translate Eco-Score">We could not compute an Eco-Score for this product. It might be that the category is not specific enough or that we don\'t have supporting data for this category. If you believe this is an error, you can mail us by clicking below.</string>
+    <string name="add_labels_origins_prompt_text" comment="Do not translate Eco-Score">The Eco-Score takes into account environmental labels and origins of the ingredients. Please take them into photo or edit the product so that they can be taken into account</string>
+    <string name="add_labels_prompt_text" comment="Do not translate Eco-Score">The Eco-Score takes into account environmental labels. Please take them into photo or edit the product so that they can be taken into account</string>
+    <string name="add_origins_prompt_text" comment="Do not translate Eco-Score">The Eco-Score takes into account the origins of the ingredients. Please take them into photo (ingredient list and/or any geographic claim) or edit the product so that they can be taken into account</string>
     <string name="category_game_btn">Segítsen kategorizálni a termékeket</string>
     <string name="version_string">Open Food Facts Android App</string>
     <string name="set_ingredient_img">Kép beállítása összetevő fotónak</string>
@@ -701,9 +657,7 @@
     <string name="import_csv_to_list">Importáljon egy Open Food Facts lista CSV fájlt</string>
     <string name="toast_import_csv_error">Hiba a CSV-fájl importálásakor</string>
     <string name="toast_import_csv">A CSV importálás sikeres!</string>
-    <string name="open_csv">CSV megnyitása</string>
     <string name="txt_no_nutrition_data">Ez a termék nem tartalmaz tápértéketadatokat a csomagoláson. Ha ez megváltozott, akkor szerkessze a terméket.</string>
-    <string name="image_prompt_language">Készítsen egy fotót az összetevőkről ezen a nyelven:</string>
     <string name="swipe_delete_tip">Balra húzással törölhetsz egy listát.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
@@ -730,17 +684,15 @@
     <string name="scan_tooltip">További részletekért csúsztassa fel a kártyát</string>
     <string name="add_an_allergen">Adjon hozzá egy allergént</string>
     <string name="add_a_list">Új lista készítése</string>
-    <string name="edit_image">Kép szerkesztése</string>
-    <string name="cant_edit_image_not_yet_uploaded">Az új kép még nincs feltöltve. Kérjük, várjon a szerkesztés előtt!</string>
-    <string name="unselect_image">Kép kiválasztásának megszüntetése</string>
+    <string name="edit_image">Fénykép szerkesztése</string>
+    <string name="cant_edit_image_not_yet_uploaded">The new photo is not yet uploaded. Please wait before editing it</string>
+    <string name="unselect_image">Unselect Photo</string>
     <string name="choose_default_language">Válassza ki a termék nyelvét</string>
     <string name="barcode">Vonalkód</string>
     <string name="productAdditivesNone">Nincs adalékanyag</string>
-    <string name="error_uploading_photo">Valami hiba történt az új fotó feltöltésekor</string>
-    <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
+    <string name="required_for_ecoscore" comment="Do not translate Eco-Score">(Required to calculate the Eco-Score)</string>
     <string name="hint_origin">Examples: USA, France, Italy</string>
     <!-- Used for diets AddOn -->
-    <string name="history_network_error">A terméket nem lehet betölteni. Kérjük, próbálkozzon újra, ha újra online.</string>
     <string name="cant_modify_if_refreshing">Várjon, amíg a feltöltés befejeződik</string>
     <string name="closeZoom">Kattintson a nagyítás bezárásához</string>
     <string name="imageFullscreen">Zoom</string>
@@ -753,7 +705,7 @@
     <string name="image_edit_tip">Tap on the image to zoom it, change it, crop it, rotate it and more…</string>
     <string name="ingredients_in_this_product_are">A termék összetevői %1$s.</string>
     <string name="ingredients_in_this_product">A termék összetevői amik %1$s:</string>
-    <string name="display_analysis_tag_status">%1$s állapot megjelenítése</string>
+    <string name="display_analysis_tag_status" comment="Do not change the placeholder">%1$s állapot megjelenítése</string>
     <string name="unknown_status_no_translation">A felismerhetetlen összetevők miatt nem tudtuk felmérni a termék állapotát.</string>
     <string name="help_translate_ingredients">Segítsen lefordítani az összetevőket az Ön nyelvére</string>
     <string name="unknown_status_missing_ingredients">A hiányzó összetevők miatt nem tudtuk felmérni a termék állapotát.</string>
@@ -791,29 +743,28 @@
     <string name="content_exit">Press here to return to the product</string>
     <string name="icon_label">Labels icon</string>
     <string name="icon_categories">Categories icon</string>
-    <string name="icon_emb">EMB code icon</string>
+    <string name="icon_emb">Traceability code icon</string>
     <string name="product_front_image">A termék elülső képe</string>
-    <string name="brand_hint">Examples: Coca-Cola, Nestle, etc…</string>
+    <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
     <string name="sign_in_or_register">Jelentkezz be, vagy regisztrálj</string>
-    <string name="hunger_game_call_to_action">Help classify more %1$s</string>
+    <string name="hunger_game_call_to_action" comment="Do not change the placeholder">Help classify more %1$s</string>
     <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s products (plus the ones you will contribute) in the world.</string>
-    <string name="enabled">Engedélyezve</string>
     <!-- Application theme settings -->
     <string name="follow_system">Follow system</string>
     <string name="day">Day</string>
     <string name="night">Night</string>
     <string name="report_email_chooser_title">Send a report email</string>
     <!-- Changelog String -->
-    <string name="changelog_translation_help">Want to see this changelog in %s?\nJoin the translation team!</string>
+    <string name="changelog_translation_help" comment="Do not change the placeholder">Want to see this changelog in %s?\nJoin the translation team!</string>
     <string name="whats_new">Mi az újdonság az Open Food Facts-ben?</string>
     <!-- New onboarding slides -->
     <string name="title_welcome_intro">Join the food revolution</string>
     <string name="msg_welcome_intro">Scan food, Take photos, Help transform the food system</string>
-    <string name="title_welcome_nutriscore">Ismerje meg a Nutri-Score-t</string>
+    <string name="title_welcome_nutriscore" comment="Do not translate Nutri-Score">Ismerje meg a Nutri-Score-t</string>
     <string name="msg_welcome_nutriscore">A simple synthesis of the nutritional quality of your food</string>
     <string name="title_welcome_nova">Avoid ultra-processed foods</string>
     <string name="msg_welcome_nova">Reduce the amount of ultra-processed foods in your diet.</string>
-    <string name="title_welcome_ecoscore">Eco-Score</string>
+    <string name="title_welcome_ecoscore" comment="Do not translate Eco-Score">Eco-Score</string>
     <string name="msg_welcome_ecoscore">A synthesis of the environmental impact of your food.</string>
     <string name="title_welcome_matomo">Send anonymous analytics</string>
     <string name="msg_welcome_matomo">Help the Open Food Facts volunteers to improve the app. You decide if you send anonymous analytics.\n\nIf you change your mind this option can be enabled and disabled at any time from the settings.</string>

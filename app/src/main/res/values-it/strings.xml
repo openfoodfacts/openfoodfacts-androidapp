@@ -199,7 +199,7 @@
     <string name="uploadLater">L\'immagine verrà caricata quando la rete sarà disponibile</string>
     <string name="txtInfoLoginOk">Utente salvato</string>
     <string name="txtInfoLoginNo">Utente non salvato</string>
-    <string name="txtDialogsContent">Il prodotto scansionato non esiste ancora in Open Food Facts. Per favore, aggiungilo.</string>
+    <string name="product_does_not_exist_please_add_it">Il prodotto scansionato non esiste ancora in Open Food Facts. Per favore, aggiungilo.</string>
     <string name="txtYes">Sì</string>
     <string name="txtNo">No</string>
     <string name="hintBrand">Marche</string>
@@ -595,7 +595,7 @@
     <string name="recycling_picture">Immagine del Riciclaggio</string>
     <string name="take_ingredients_picture_to_extract">(Fai una foto degli ingredienti per estrarli automaticamente)</string>
     <string name="ingredients_list">Lista degli ingredienti</string>
-    <string name="ingredients_hint">Mantenere l\'ordine, indicare la % quando specificata, separare con una virgola oppure -, utilizzare () per indicare gli ingredienti di un ingrediente, segnalare gli allergeni con _</string>
+    <string name="ingredients_hint" tools:ignore="StringFormatInvalid">Mantenere l\'ordine, indicare la % quando specificata, separare con una virgola oppure -, utilizzare () per indicare gli ingredienti di un ingrediente, segnalare gli allergeni con _</string>
     <string name="extract_ingredients">Estrai ingredienti</string>
     <string name="extracting_ingredients">Estrazione degli ingredienti</string>
     <string name="looksGood">Va bene</string>

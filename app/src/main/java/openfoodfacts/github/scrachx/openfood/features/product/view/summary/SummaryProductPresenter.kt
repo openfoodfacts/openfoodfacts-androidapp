@@ -18,8 +18,6 @@ package openfoodfacts.github.scrachx.openfood.features.product.view.summary
 import android.util.Log
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
-import kotlinx.coroutines.rx2.await
-import kotlinx.coroutines.rx2.awaitSingleOrNull
 import kotlinx.coroutines.withContext
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OBF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
@@ -27,14 +25,16 @@ import openfoodfacts.github.scrachx.openfood.AppFlavors.OPFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.models.AnnotationAnswer
 import openfoodfacts.github.scrachx.openfood.models.Product
-import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
+import openfoodfacts.github.scrachx.openfood.repositories.RobotoffRepository
+import openfoodfacts.github.scrachx.openfood.repositories.TaxonomiesRepository
 import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState
 
 class SummaryProductPresenter(
     private val languageCode: String,
     private val product: Product,
     private val view: ISummaryProductPresenter.View,
-    private val productRepository: ProductRepository
+    private val taxonomiesRepository: TaxonomiesRepository,
+    private val robotoff: RobotoffRepository
 ) : ISummaryProductPresenter.Actions {
 
     override suspend fun loadAdditives() {
@@ -46,9 +46,9 @@ class SummaryProductPresenter(
         view.showAdditivesState(ProductInfoState.Loading)
         val additives = try {
             additivesTags.map { tag ->
-                val categoryName = productRepository.getAdditiveByTagAndLanguageCode(tag, languageCode).await()
+                val categoryName = taxonomiesRepository.getAdditive(tag, languageCode)
                 if (categoryName.isNotNull) categoryName
-                else productRepository.getAdditiveByTagAndDefaultLanguageCode(tag).await()
+                else taxonomiesRepository.getAdditive(tag)
             }.filter { it.isNotNull }
         } catch (err: Exception) {
             Log.e(SummaryProductPresenter::class.simpleName, "loadAdditives", err)
@@ -60,7 +60,7 @@ class SummaryProductPresenter(
     }
 
     override suspend fun loadAllergens() {
-        val allergens = productRepository.getAllergensByEnabledAndLanguageCode(true, languageCode).await()
+        val allergens = taxonomiesRepository.getAllergens(true, languageCode)
         withContext(Main) { view.showAllergens(allergens) }
     }
 
@@ -70,9 +70,9 @@ class SummaryProductPresenter(
             view.showCategoriesState(ProductInfoState.Loading)
             val categories = try {
                 categoriesTags.map { tag ->
-                    val categoryName = productRepository.getCategoryByTagAndLanguageCode(tag, languageCode).await()
+                    val categoryName = taxonomiesRepository.getCategory(tag, languageCode)
                     if (categoryName.isNotNull) categoryName
-                    else productRepository.getCategoryByTagAndLanguageCode(tag).await()
+                    else taxonomiesRepository.getCategory(tag)
                 }
             } catch (err: Exception) {
                 Log.e(SummaryProductPresenter::class.java.simpleName, "loadCategories", err)
@@ -96,9 +96,9 @@ class SummaryProductPresenter(
             view.showLabelsState(ProductInfoState.Loading)
             val labels = try {
                 labelsTags.map { tag ->
-                    val labelName = productRepository.getLabelByTagAndLanguageCode(tag, languageCode).await()
+                    val labelName = taxonomiesRepository.getLabel(tag, languageCode)
                     if (labelName.isNotNull) labelName
-                    else productRepository.getLabelByTagAndDefaultLanguageCode(tag).await()
+                    else taxonomiesRepository.getLabel(tag)
                 }.filter { it.isNotNull }
             } catch (err: Exception) {
                 Log.e(SummaryProductPresenter::class.java.simpleName, "loadLabels", err)
@@ -115,8 +115,7 @@ class SummaryProductPresenter(
     }
 
     override suspend fun loadProductQuestion() {
-        val question = withContext(IO) { productRepository.getProductQuestion(product.code, languageCode) }
-            .awaitSingleOrNull() ?: return
+        val question = withContext(IO) { robotoff.getProductQuestion(product.code, languageCode) } ?: return
         withContext(Main) { view.showProductQuestion(question) }
     }
 
@@ -130,7 +129,7 @@ class SummaryProductPresenter(
         if (knownTags.isNotEmpty()) {
             val configs = try {
                 knownTags.mapNotNull {
-                    productRepository.getAnalysisTagConfigByTagAndLanguageCode(it, languageCode)
+                    taxonomiesRepository.getAnalysisTagConfig(it, languageCode)
                 }
             } catch (err: Exception) {
                 Log.e(SummaryProductPresenter::class.simpleName, "loadAnalysisTags", err)
@@ -143,7 +142,7 @@ class SummaryProductPresenter(
 
         } else {
             val configs = try {
-                productRepository.getUnknownAnalysisTagConfigsByLanguageCode(languageCode).await()
+                taxonomiesRepository.getUnknownAnalysisTagConfigs(languageCode)
             } catch (err: Exception) {
                 Log.e(SummaryProductPresenter::class.simpleName, "loadAnalysisTags", err)
                 view.showLabelsState(ProductInfoState.Empty)
@@ -156,8 +155,8 @@ class SummaryProductPresenter(
         }
     }
 
-    override suspend fun annotateInsight(insightId: String, annotation: AnnotationAnswer) {
-        val response = withContext(IO) { productRepository.annotateInsight(insightId, annotation).await() }
+    override suspend fun annotateInsight(annotation: AnnotationAnswer) {
+        val response = withContext(IO) { robotoff.annotateInsight(annotation) }
         withContext(Main) { view.showAnnotatedInsightToast(response) }
     }
 }

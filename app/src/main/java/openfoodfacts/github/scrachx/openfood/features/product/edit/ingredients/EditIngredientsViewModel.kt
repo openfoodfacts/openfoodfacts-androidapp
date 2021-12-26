@@ -19,7 +19,7 @@ class EditIngredientsViewModel @Inject constructor(
         daoSession.allergenNameDao.list {
             where(AllergenNameDao.Properties.LanguageCode.eq(localeManager.getLanguage()))
             orderDesc(AllergenNameDao.Properties.Name)
-        }?.map { it.name }.let { emit(it) }
+        }.map { it.name }.let { emit(it) }
     }
 
 }

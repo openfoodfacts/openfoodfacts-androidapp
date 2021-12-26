@@ -1,6 +1,7 @@
 <img height='175' src="https://static.openfoodfacts.org/images/svg/openfoodfacts-logo-en.svg" align="left" hspace="1" vspace="1">
 
 # Open Food Facts - Android application
+(Note: this codebase is also used for Open Beauty Facts, Open Pet Food Facts and Open Products Facts)
 
 ### A food products database
 
@@ -15,6 +16,8 @@ Open Food Facts is a food products database made by everyone, for everyone. Open
 [![Percentage of issues still open](https://isitmaintained.com/badge/open/openfoodfacts/openfoodfacts-androidapp.svg)](https://isitmaintained.com/project/openfoodfacts/openfoodfacts-androidapp "Percentage of issues still open")
 [![Open Source Helpers](https://www.codetriage.com/openfoodfacts/openfoodfacts-androidapp/badges/users.svg)](https://www.codetriage.com/openfoodfacts/openfoodfacts-androidapp)
 <br>
+
+[Join the Play Store Beta](https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner) (rather stable) - [Join the Play Store internal build](https://play.google.com/apps/internaltest/4699092342921529278) (bleeding edge). You might need communicating your email for whitelisting to teolemon on slack (or pierre at openfoodfacts org)
 
 ## What is Open Food Facts?
 
@@ -111,15 +114,9 @@ If you spot any libraries we added or we don't use anymore, feel free to update 
 - [Kotlin Coroutines](https://developer.android.com/kotlin/coroutines) - A coroutine is a concurrency design pattern that you can use on Android to simplify code that executes asynchronously.  
 - [Hilt](https://developer.android.com/training/dependency-injection/hilt-android) - Hilt is a dependency injection library for Android that reduces the boilerplate of doing manual dependency injection in your project. 
 - [Dagger](https://developer.android.com/training/dependency-injection/dagger-android) - Manual dependency injection or service locators in an Android app can be problematic depending on the size of your project. You can limit your project's complexity as it scales up by using Dagger to manage dependencies. Dagger automatically generates code that mimics the code you would otherwise have hand-written.
-- [android-async-http](https://loopj.com/android-async-http/) - A Callback-Based Http Client Library for Android
 - [Jackson](https://github.com/FasterXML/jackson) - Core part of Jackson that defines Streaming API as well as basic shared abstractions
-- [code-mc/loadtoast](https://github.com/code-mc/loadtoast) - Pretty material design toasts with feedback animations
 - [journeyapps/zxing-android-embedded](https://github.com/journeyapps/zxing-android-embedded) - Barcode scanner library for Android, based on the ZXing decoder
-- [koush/ion](https://github.com/koush/ion) - Android Asynchronous Networking and Image Loading
-- [jsoup](https://jsoup.org/) - jsoup is a Java library for working with real-world HTML
-- [satyan/sugar](https://github.com/satyan/sugar) - Insanely easy way to work with Android Database. 
-- [afollestad/material-dialogs](https://github.com/afollestad/material-dialogs) - A beautiful, fluid, and extensible dialogs API for Kotlin & Android.
-- [jjhesk/LoyalNativeSlider](https://github.com/jjhesk/LoyalNativeSlider) - Possible a dynamic viewpager ever you can find.
+- GreenDao
 - [mikepenz/MaterialDrawer](https://github.com/mikepenz/MaterialDrawer) - The flexible, easy to use, all in one drawer library for your Android project.
 
 Big thanks to their contributors!
