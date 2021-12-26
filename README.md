@@ -19,6 +19,8 @@ Open Food Facts is a food products database made by everyone, for everyone. Open
 
 [Join the Play Store Beta](https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner) (rather stable) - [Join the Play Store internal build](https://play.google.com/apps/internaltest/4699092342921529278) (bleeding edge). You might need communicating your email for whitelisting to teolemon on slack (or pierre at openfoodfacts org)
 
+[Open Beauty Facts](https://play.google.com/store/apps/details?id=org.openbeautyfacts.scanner), [Open Pet Food Facts](https://play.google.com/store/apps/details?id=org.openpetfoodfacts.scanner) and [Open Products Facts](https://play.google.com/store/apps/details?id=org.openproductsfacts.scanner) are also built from this codebase
+
 ## What is Open Food Facts?
 
 ### A food products database
