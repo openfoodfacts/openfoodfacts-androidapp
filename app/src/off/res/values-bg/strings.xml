@@ -24,7 +24,7 @@
     <string name="title_welcome_intro">Присъедини се към хранителната революция</string>
     <string name="msg_welcome_intro">Сканирай храните, прави снимки, помагай за да променим хранителната система</string>
     <string name="title_welcome_nutriscore">Получи Nutri-Score</string>
-    <string name="msg_welcome_nutriscore">A simple synthesis of the nutritional quality of your food</string>
+    <string name="msg_welcome_nutriscore">Просто обобщение на хранителните качества на твоята храна</string>
     <string name="title_welcome_nova">Избягвай свръхпреработени храни</string>
     <string name="msg_welcome_nova">Намали количеството свръхпреработени храни в твоята диета.</string>
     <string name="title_welcome_ecoscore">Eco-Score</string>
