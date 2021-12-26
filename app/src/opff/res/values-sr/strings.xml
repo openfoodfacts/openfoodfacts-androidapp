@@ -21,12 +21,12 @@
     <string name="slide_3_desc">All the petfood you scan, in one handy list you can export</string>
     <string name="slide_4_title">Works offline</string>
     <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet connection right now</string>
-    <string name="txtDialogsContent">The product you scanned does not exist yet in Open Pet Food Facts. Please add it.</string>
+    <string name="product_does_not_exist_please_add_it">The product you scanned does not exist yet in Open Pet Food Facts. Please add it.</string>
     <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Pet Food Facts.</string>
-    <string name="msg_share">Pogledaj ovaj proizvod na Open Pet Food Facts :</string>
+    <string name="msg_share">Look at this product on Open Pet Food Facts :</string>
     <string name="not_support_books">Books are not currently supported by Open Pet Food Facts</string>
     <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Pet Food Facts</string>
-    <string name="Donation">Kliknite ovde da donirate Open Pet Food Facts</string>
+    <string name="Donation">Click here to donate to Open Pet Food Facts</string>
     <string name="translate_help_title">Help translate Open Pet Food Facts</string>
     <string name="translate_help_summary">Bring the Open Pet Food Facts database to your language - no technical knowledge required</string>
     <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Pet Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>

@@ -6,14 +6,14 @@ import androidx.lifecycle.liveData
 import androidx.lifecycle.switchMap
 import dagger.hilt.android.lifecycle.HiltViewModel
 import openfoodfacts.github.scrachx.openfood.models.Product
-import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
+import openfoodfacts.github.scrachx.openfood.repositories.TaxonomiesRepository
 import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
 import javax.inject.Inject
 
 @HiltViewModel
 class ContributorsViewModel @Inject constructor(
     private val localeManager: LocaleManager,
-    private val productRepository: ProductRepository
+    private val taxonomiesRepository: TaxonomiesRepository
 ) : ViewModel() {
 
     val product = MutableLiveData<Product>()
@@ -26,7 +26,7 @@ class ContributorsViewModel @Inject constructor(
             val languageCode = localeManager.getLanguage()
 
             try {
-                emit(tags.map { productRepository.getStatesByTagAndLanguageCode(it, languageCode) })
+                emit(tags.map { taxonomiesRepository.getStatesName(it, languageCode) })
             } catch (err: Throwable) {
                 emit(null)
             }

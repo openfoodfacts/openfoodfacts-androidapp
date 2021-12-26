@@ -5,14 +5,14 @@ import android.widget.ArrayAdapter
 import android.widget.Filter
 import android.widget.Filterable
 import kotlinx.coroutines.runBlocking
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
+import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import org.apache.commons.lang3.StringUtils
 import java.util.*
 
 class PeriodAfterOpeningAutoCompleteAdapter(
         context: Context,
         textViewResourceId: Int,
-        private val client: OpenFoodAPIClient
+        private val client: ProductRepository
 ) : ArrayAdapter<String>(context, textViewResourceId), Filterable {
     private val periodsList = mutableListOf<String>()
 

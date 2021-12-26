@@ -21,7 +21,7 @@
     <string name="slide_3_desc">All the petfood you scan, in one handy list you can export</string>
     <string name="slide_4_title">Pracuje offline</string>
     <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet connection right now</string>
-    <string name="txtDialogsContent">The product you scanned does not exist yet in Open Pet Food Facts. Please add it.</string>
+    <string name="product_does_not_exist_please_add_it">The product you scanned does not exist yet in Open Pet Food Facts. Please add it.</string>
     <string name="txtDialogsContentPowerMode">Produkt, který jste naskenovali, již existuje v Open Pet Food Facts.</string>
     <string name="msg_share">Podívejte se na tento produkt v Open Pet Food Facts :</string>
     <string name="not_support_books">Knihy zatím nejsou databází Open Pet Food Facts podporovány</string>

@@ -40,12 +40,14 @@ class LocaleManager @Inject constructor(
     private var currentLocale: Locale
 
     init {
-        currentLocale = getLanguageFromPrefs()?.let {
-            LocaleUtils.parseLocale(it)
-        } ?: Locale.getDefault()
+        currentLocale = reloadLocale()
     }
 
-    fun restoreLocalizedContext(context: Context) = changeAppLanguage(context, currentLocale)
+    fun restoreLocalizedContext(context: Context): Context = changeAppLanguage(context, reloadLocale())
+
+    private fun reloadLocale() = getLanguageFromPrefs()?.let {
+        LocaleUtils.parseLocale(it)
+    } ?: Locale.getDefault()
 
     /**
      * Get the language of the app [Locale] (Selected in settings).

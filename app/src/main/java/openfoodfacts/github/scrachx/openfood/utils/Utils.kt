@@ -217,7 +217,6 @@ private fun decodeFile(f: File): Bitmap? {
 }
 
 private const val REQUIRED_SIZE = 1200
-const val SPACE = " "
 const val MY_PERMISSIONS_REQUEST_CAMERA = 1
 const val MY_PERMISSIONS_REQUEST_STORAGE = 2
 
@@ -240,17 +239,19 @@ fun <T : View?> ViewGroup.getViewsByType(typeClass: Class<T>): List<T> {
 /**
  * @param barcode
  * @return true if valid according to [EAN13CheckDigit.EAN13_CHECK_DIGIT]
- * and if the barcode doesn't start will 977/978/979 (Book barcode)
+ * and if the barcode doesn't start with 977/978/979 (Book barcode)
  */
 fun isBarcodeValid(barcode: String?): Boolean {
-    // For debug only: the barcode '1' is used for test:
-    if (ApiFields.Defaults.DEBUG_BARCODE == barcode) return true
-    return barcode != null
-            && EAN13CheckDigit.EAN13_CHECK_DIGIT.isValid(barcode)
-            && barcode.length > 3
-            && (!barcode.substring(0, 3).contains("977")
-            || !barcode.substring(0, 3).contains("978")
-            || !barcode.substring(0, 3).contains("979"))
+    // DEBUG ONLY: the barcode '1' is used for test:
+    if (barcode == ApiFields.Defaults.DEBUG_BARCODE) return true
+
+    if (
+        barcode == null || barcode.length <= 3
+        || !EAN13CheckDigit.EAN13_CHECK_DIGIT.isValid(barcode)
+    ) return false
+
+    // It must not start with these prefixes
+    return barcode.take(3) !in listOf("977", "978", "979")
 }
 
 /**
@@ -258,7 +259,7 @@ fun isBarcodeValid(barcode: String?): Boolean {
  *
  * @return true if installed, false otherwise.
  */
-fun isHardwareCameraInstalled(context: Context) = context.packageManager.hasSystemFeature(PackageManager.FEATURE_CAMERA)
+fun isHardwareCameraInstalled(context: Context) = context.packageManager.hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY)
 
 
 fun getSearchLinkText(

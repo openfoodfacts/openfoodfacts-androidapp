@@ -21,7 +21,7 @@
     <string name="slide_3_desc">당신이 사용하는 모든 화장품을 편리하도록 하나의 목록에 내보낼 수 있습니다</string>
     <string name="slide_4_title">오프라인으로 작업</string>
     <string name="slide_4_desc">인터넷에 연결되어 있지 않아도 새 제품을 추가 할 수 있습니다.</string>
-    <string name="txtDialogsContent">스캔한 제품이 Open Beauty Facts에 아직 존재하지 않습니다. 그것을 추가하십시오.</string>
+    <string name="product_does_not_exist_please_add_it">The product you scanned does not exist yet in Open Beauty Facts. Please add it.</string>
     <string name="msg_share">Open Beauty Facts에서 이 제품을 검색해보세요 : </string>
     <string name="txt_broaden_search">- 검색 범위를 넓힌후 \n 제품을 Open Beauty Facts에 추가하십시오</string>
     <string name="Donation">Open Beauty Facts에 기부하려면 여기를 클릭하십시오</string>
@@ -46,4 +46,5 @@
     <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
         You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
     <string name="OFFlogo">Open Beauty Facts logo</string>
+    <string name="txtDialogsContentPowerMode">스캔 한 제품은 이미 Open Food Facts에 있습니다.</string>
 </resources>

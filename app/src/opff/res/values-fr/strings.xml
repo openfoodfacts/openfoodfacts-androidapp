@@ -21,7 +21,7 @@
     <string name="slide_3_desc">Tous les aliments pour animaux de compagnie que vous utilisez, dans une liste pratique que vous pouvez exporter</string>
     <string name="slide_4_title">Fonctionne hors connexion</string>
     <string name="slide_4_desc">Vous pouvez ajouter de nouveaux produits, même si vous ne disposez pas d\'une connexion Internet pour le moment</string>
-    <string name="txtDialogsContent">Le produit que vous avez scanné n\'existe pas encore dans Open Pet Food Facts. Voulez-vous l\'ajouter?</string>
+    <string name="product_does_not_exist_please_add_it">Le produit que vous avez scanné n\'existe pas encore dans Open Pet Food Facts. Veuillez l\'ajouter.</string>
     <string name="txtDialogsContentPowerMode">Le produit que vous avez scanné existe déjà dans Open Pet Food Facts.</string>
     <string name="msg_share">Regarde ce produit sur Open Pet Food Facts:</string>
     <string name="not_support_books">Les livres ne sont actuellement pas pris en charge par Open Pet Food Facts</string>
@@ -30,7 +30,7 @@
     <string name="translate_help_title">Aidez à traduire Open Pet Food Facts</string>
     <string name="translate_help_summary">Rendez la base de données Open Pet Food Facts disponible dans votre langue - aucune connaissance technique requise</string>
     <string name="text_offline_info_dialog">Vous pouvez scanner des produits lorsque vous êtes hors-ligne pour les ajouter plus tard à Open Pet Food Facts. Tous les produits que vous scannez apparaîtront ici et vous serez en mesure de les envoyer en utilisant le bouton ci-dessous.</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Les informations relatives à vos allergies ne seront jamais envoyées aux serveurs d\'Open Pet Food Facts. Par ailleurs, soyez vigilant sur le fait que ces données ne sont pas fiables à 100 % et que la détection peut ne pas être précise à 100 %. V leuillez à vérifier également par vous-même ! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Les informations relatives à vos allergies ne seront jamais envoyées aux serveurs d\'Open Pet Food Facts. Par ailleurs, soyez vigilant sur le fait que ces données ne sont pas fiables à 100 % at que la détection peut ne pas être précise à 100 %. V leuillez à vérifier également par vous-même ! </string>
     <!-- OPFF tagline in different languages -->
     <string name="version_string">Application Android Open Pet Food Facts</string>
     <string name="tagline">free pet food products database</string>

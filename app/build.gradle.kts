@@ -21,7 +21,7 @@ plugins {
     id("kotlin-parcelize")
     id("kotlin-kapt")
     id("dagger.hilt.android.plugin")
-    id("org.jetbrains.dokka") version "1.5.0"
+    id("org.jetbrains.dokka") version "1.6.0"
 }
 
 fun obtainTestBuildType(): String {
@@ -38,65 +38,52 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib:${rootProject.extra["kotlinVersion"]}")
 
     // Kotlin coroutines
-    val coroutinesVersion = "1.5.1"
+    val coroutinesVersion = "1.6.0"
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-rx2:$coroutinesVersion")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion")
 
-
     // Android KTX
-    implementation("androidx.fragment:fragment-ktx:1.3.6")
-    implementation("androidx.activity:activity-ktx:1.3.1")
+    implementation("androidx.fragment:fragment-ktx:1.4.0")
+    implementation("androidx.activity:activity-ktx:1.4.0")
     implementation("androidx.preference:preference-ktx:1.1.1")
-    implementation("androidx.core:core-ktx:1.6.0")
+    implementation("androidx.core:core-ktx:1.7.0")
 
-    val viewModelKtxVer = "2.3.1"
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$viewModelKtxVer")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$viewModelKtxVer")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$viewModelKtxVer")
-
+    val lifecycleVer = "2.4.0-alpha03"
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVer")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVer")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVer")
 
     // AndroidX
-    implementation("androidx.appcompat:appcompat:1.3.1")
-    implementation("androidx.browser:browser:1.3.0")
+    implementation("androidx.appcompat:appcompat:1.4.0")
+    implementation("androidx.browser:browser:1.4.0")
     implementation("androidx.concurrent:concurrent-futures:1.1.0")
     implementation("androidx.recyclerview:recyclerview:1.2.1")
     implementation("androidx.cardview:cardview:1.0.0")
-    implementation("androidx.legacy:legacy-support-v4:1.0.0")
-    implementation("androidx.annotation:annotation:1.2.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.0")
+    implementation("androidx.annotation:annotation:1.3.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.2")
     implementation("androidx.multidex:multidex:2.0.1")
     implementation("androidx.viewpager2:viewpager2:1.0.0")
-    implementation("androidx.legacy:legacy-support-v4:1.0.0")
-    implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
     implementation("androidx.startup:startup-runtime:1.1.0")
-    implementation("androidx.work:work-runtime-ktx:2.5.0")
-
+    implementation("androidx.work:work-runtime-ktx:2.6.0")
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 
     // ML Kit barcode Scanner
-    implementation("com.google.mlkit:barcode-scanning:16.2.0")
+    implementation("com.google.mlkit:barcode-scanning:17.0.0")
 
-
-    compileOnly("javax.annotation:javax.annotation-api:1.3.2")
-
-    // Dagger & hilt
-    implementation("com.google.dagger:dagger:${rootProject.extra["hiltVersion"]}")
+    // Hilt
     implementation("com.google.dagger:hilt-android:${rootProject.extra["hiltVersion"]}")
-    kapt("com.google.dagger:dagger-compiler:${rootProject.extra["hiltVersion"]}")
     kapt("com.google.dagger:hilt-compiler:${rootProject.extra["hiltVersion"]}")
 
-    // AndroidX hilt work
-    val androidxHiltVersion = "1.0.0"
-    implementation("androidx.hilt:hilt-work:$androidxHiltVersion")
-    kapt("androidx.hilt:hilt-compiler:$androidxHiltVersion")
-
+    // WorkManager with Hilt
+    implementation("androidx.hilt:hilt-work:1.0.0")
+    kapt("androidx.hilt:hilt-compiler:1.0.0")
 
     // Reactive Streams
     implementation("io.reactivex.rxjava2:rxkotlin:2.4.0")
     implementation("io.reactivex.rxjava2:rxjava:2.2.21")
     implementation("io.reactivex.rxjava2:rxandroid:2.1.1")
     implementation("com.jakewharton.rxrelay2:rxrelay:2.1.1")
-
 
     // Networking
     implementation("com.squareup.retrofit2:retrofit:2.6.4")
@@ -105,9 +92,7 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-scalars:2.1.0")
     implementation("com.squareup.okhttp3:logging-interceptor:3.12.11")
 
-
     // Apache commons
-    implementation("org.apache.commons:commons-lang3:3.12.0")
     implementation("org.apache.commons:commons-text:1.9")
     implementation("org.apache.commons:commons-csv:1.9.0")
     implementation("commons-validator:commons-validator:1.7")
@@ -118,12 +103,11 @@ dependencies {
     implementation("com.fasterxml.jackson.core:jackson-annotations:${rootProject.extra["jacksonVersion"]}")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:${rootProject.extra["jacksonVersion"]}")
 
-
     // Database
     implementation("org.greenrobot:greendao:${rootProject.extra["greendaoVersion"]}")
 
     // Event bus and index
-    val eventBusVersion = "3.2.0"
+    val eventBusVersion = "3.3.1"
     implementation("org.greenrobot:eventbus:$eventBusVersion")
     kapt("org.greenrobot:eventbus-annotation-processor:$eventBusVersion")
 
@@ -142,16 +126,8 @@ dependencies {
 
     implementation("com.journeyapps:zxing-android-embedded:3.6.0") { isTransitive = false }
 
-    // UI Component : Custom Toast
-    implementation("com.github.code-mc:loadtoast:1.0.12")
-
     // UI Component : ImageView with Zooming
     implementation("com.github.chrisbanes:PhotoView:2.3.0")
-
-    // UI Component : Material Dialog
-    implementation("com.afollestad.material-dialogs:core:0.9.6.0") {
-        isTransitive = true
-    }
 
     // UI Component : Material Drawer
     // https://github.com/mikepenz/MaterialDrawer/commit/3b2cb1db4c3b6afe639b0f3c21c03c1de68648a3
@@ -170,7 +146,7 @@ dependencies {
     implementation("com.github.hootsuite:nachos:1.2.0")
 
     // Crash analytics
-    implementation("io.sentry:sentry-android:5.1.2")
+    implementation("io.sentry:sentry-android:5.5.2")
     implementation("com.github.matomo-org:matomo-sdk-android:v4.1.2")
 
     // ShowCaseView dependency
@@ -178,9 +154,11 @@ dependencies {
 
 
     // Unit Testing
+    testImplementation("androidx.arch.core:core-testing:2.1.0")
     testImplementation("junit:junit:4.13.2")
-    testImplementation("org.robolectric:robolectric:4.6.1")
-    testImplementation("org.mockito:mockito-core:3.12.4")
+    testImplementation("org.robolectric:robolectric:4.7.3")
+    testImplementation("org.mockito:mockito-core:4.2.0")
+    testImplementation("org.mockito.kotlin:mockito-kotlin:4.0.0")
     testImplementation("net.javacrumbs.json-unit:json-unit-fluent:2.28.0")
     testImplementation("com.google.truth:truth:1.1.3")
     testImplementation("com.google.truth.extensions:truth-java8-extension:1.1.3")
@@ -190,8 +168,8 @@ dependencies {
     androidTestUtil("androidx.test:orchestrator:1.4.0")
 
     // Hilt for Android Testing
-    androidTestImplementation("com.google.dagger:hilt-android-testing:2.38.1")
-    kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.38.1")
+    androidTestImplementation("com.google.dagger:hilt-android-testing:2.40.5")
+    kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.40.5")
 
     androidTestImplementation("androidx.test:runner:1.3.0") { exclude("junit") }
     androidTestImplementation("androidx.test:rules:1.4.0")
@@ -208,7 +186,7 @@ dependencies {
         exclude(module = "recyclerview-v7")
     }
     androidTestImplementation("com.jraska:falcon:2.2.0")
-    androidTestImplementation("tools.fastlane:screengrab:2.1.0")
+    androidTestImplementation("tools.fastlane:screengrab:2.1.1")
     androidTestImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:${coroutinesVersion}")
 
 
@@ -216,12 +194,12 @@ dependencies {
 }
 
 android {
-    compileSdk = 30
+    compileSdk = 31
 
     testBuildType = obtainTestBuildType()
 
     buildFeatures {
-        dataBinding = true
+        viewBinding = true
     }
 
     flavorDimensions += listOf("versionCode", "platform")
@@ -377,16 +355,16 @@ android {
 
     packagingOptions {
         resources.excludes += listOf(
-            "META-INF/DEPENDENCIES.txt",
-            "META-INF/LICENSE.txt",
-            "META-INF/NOTICE.txt",
-            "META-INF/NOTICE",
-            "META-INF/LICENSE",
-            "META-INF/DEPENDENCIES",
-            "META-INF/notice.txt",
-            "META-INF/license.txt",
-            "META-INF/dependencies.txt",
-            "META-INF/LGPL2.1"
+                "META-INF/DEPENDENCIES.txt",
+                "META-INF/LICENSE.txt",
+                "META-INF/NOTICE.txt",
+                "META-INF/NOTICE",
+                "META-INF/LICENSE",
+                "META-INF/DEPENDENCIES",
+                "META-INF/notice.txt",
+                "META-INF/license.txt",
+                "META-INF/dependencies.txt",
+                "META-INF/LGPL2.1"
         )
     }
 
@@ -398,6 +376,7 @@ android {
 }
 
 kapt {
+    correctErrorTypes = true
     arguments {
         arg("eventBusIndex", "openfoodfacts.github.scrachx.openfood.app.OFFEventsIndex")
     }

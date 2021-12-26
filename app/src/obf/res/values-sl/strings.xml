@@ -21,7 +21,7 @@
     <string name="slide_3_desc">Vso kozmetiko, ki jo uporabljate, lahko izvozite na enem priročnem seznamu</string>
     <string name="slide_4_title">Deluje brez povezave</string>
     <string name="slide_4_desc">Dodate lahko nove izdelke, tudi če trenutno nimate internetne povezave</string>
-    <string name="txtDialogsContent">Skeniran izdelek še ne obstaja v Open Beauty Facts. Prosim, dodajte ga.</string>
+    <string name="product_does_not_exist_please_add_it">Skeniran izdelek še ne obstaja v Open Beauty Facts. Prosim, dodajte ga.</string>
     <string name="msg_share">Poglej ta izdelek na Open Beauty Facts:</string>
     <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Beauty Facts</string>
     <string name="Donation">Click here to donate to Open Beauty Facts</string>
@@ -46,4 +46,5 @@
     <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
         You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
     <string name="OFFlogo">Open Beauty Facts logo</string>
+    <string name="txtDialogsContentPowerMode">Izdelek, ki ste ga optično prebrali, že obstaja v podatkih o odprtih živilih.</string>
 </resources>

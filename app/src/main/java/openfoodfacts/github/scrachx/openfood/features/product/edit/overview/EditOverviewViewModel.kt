@@ -26,21 +26,21 @@ class EditOverviewViewModel @Inject constructor(
         daoSession.categoryNameDao.list {
             where(CategoryNameDao.Properties.LanguageCode.eq(appLang))
             orderDesc(CategoryNameDao.Properties.Name)
-        }?.mapNotNull { it.name }.let { emit(it) }
+        }.mapNotNull { it.name }.let { emit(it) }
     }
 
     internal val suggestCountries = liveData {
         daoSession.countryNameDao.list {
             where(CountryNameDao.Properties.LanguageCode.eq(appLang))
             orderDesc(CountryNameDao.Properties.Name)
-        }?.mapNotNull { it.name }.let { emit(it) }
+        }.mapNotNull { it.name }.let { emit(it) }
     }
 
     internal val suggestLabels = liveData {
         daoSession.labelNameDao.list {
             where(LabelNameDao.Properties.LanguageCode.eq(appLang))
             orderDesc(LabelNameDao.Properties.Name)
-        }?.mapNotNull { it.name }.let { emit(it) }
+        }.mapNotNull { it.name }.let { emit(it) }
 
     }
 
@@ -55,7 +55,7 @@ class EditOverviewViewModel @Inject constructor(
         daoSession.brandNameDao.list {
             where(BrandNameDao.Properties.LanguageCode.eq(appLang))
             orderDesc(BrandNameDao.Properties.Name)
-        }?.mapNotNull { it.name }.let { emit(it) }
+        }.mapNotNull { it.name }.let { emit(it) }
     }
 
     internal val product = MutableLiveData<Product>()

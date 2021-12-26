@@ -19,9 +19,6 @@ import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import dagger.hilt.android.AndroidEntryPoint
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.rxkotlin.addTo
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.analytics.SentryAnalytics
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper
@@ -66,7 +63,6 @@ class ChangelogDialog : DialogFragment(R.layout.fragment_changelog) {
 
     private lateinit var translationHelpLabel: TextView
     private lateinit var recyclerView: RecyclerView
-    private val disp = CompositeDisposable()
 
     override fun getTheme(): Int = R.style.OFFTheme_NoActionBar
 
@@ -80,11 +76,6 @@ class ChangelogDialog : DialogFragment(R.layout.fragment_changelog) {
         applyWindowTweaks()
         setupTranslationHelpLabel()
         setupRecyclerView()
-    }
-
-    override fun onDestroyView() {
-        disp.clear()
-        super.onDestroyView()
     }
 
     @Suppress("DEPRECATION")
@@ -135,23 +126,20 @@ class ChangelogDialog : DialogFragment(R.layout.fragment_changelog) {
         val layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         recyclerView.layoutManager = layoutManager
 
-        changelogService
-            .observeChangelog()
-            .map { changelog ->
-                val itemList = mutableListOf<ChangelogListItem>()
-                changelog.versions.forEach { version ->
-                    itemList.add(ChangelogListItem.Header(version.name, version.date))
-                    version.items.forEach { item ->
-                        itemList.add(ChangelogListItem.Item("- $item"))
-                    }
+        lifecycleScope.launchWhenCreated {
+            val changelog = changelogService.observeChangelog()
+            val itemList = mutableListOf<ChangelogListItem>()
+
+            changelog.versions.forEach { version ->
+                itemList += ChangelogListItem.Header(version.name, version.date)
+                version.items.forEach { item ->
+                    itemList += ChangelogListItem.Item("- $item")
                 }
-                itemList
             }
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(
-                { items -> recyclerView.adapter = ChangelogAdapter(items) },
-                { throwable -> sentryAnalytics.record(throwable) }
-            ).addTo(disp)
+
+            recyclerView.adapter = ChangelogAdapter(itemList)
+        }
+
     }
 
     private fun openDailyFoodFacts() {

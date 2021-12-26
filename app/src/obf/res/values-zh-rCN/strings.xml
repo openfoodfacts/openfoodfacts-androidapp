@@ -21,7 +21,7 @@
     <string name="slide_3_desc">您可以方便导出使用的所有化妆品的清单</string>
     <string name="slide_4_title">离线工作</string>
     <string name="slide_4_desc">即使您目前没有互联网连接，也可以添加新的产品。</string>
-    <string name="txtDialogsContent">您扫描的产品尚不在 Open Beauty Facts 中，请添加。</string>
+    <string name="product_does_not_exist_please_add_it">您扫描的产品尚不在 Open Beauty Facts 中，请添加。</string>
     <string name="msg_share">在Open Beauty Facts上查看此产品：</string>
     <string name="txt_broaden_search">- 扩大您的搜索 \n- 扫描并将其添加到 Open Beauty Facts</string>
     <string name="Donation">点击此处捐赠给 Open Beauty Facts</string>

@@ -18,7 +18,7 @@ import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
 import openfoodfacts.github.scrachx.openfood.models.ProductState
 import openfoodfacts.github.scrachx.openfood.models.entities.states.StatesName
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
-import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
+import openfoodfacts.github.scrachx.openfood.repositories.TaxonomiesRepository
 import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
 import openfoodfacts.github.scrachx.openfood.utils.SearchType
 import openfoodfacts.github.scrachx.openfood.utils.requireProductState
@@ -39,7 +39,7 @@ class ContributorsFragment : BaseFragment() {
     private val viewModel: ContributorsViewModel by viewModels()
 
     @Inject
-    lateinit var productRepository: ProductRepository
+    lateinit var taxonomiesRepository: TaxonomiesRepository
 
     @Inject
     lateinit var localeManager: LocaleManager
@@ -194,8 +194,7 @@ class ContributorsFragment : BaseFragment() {
             }
         }
 
-        internal fun isIncompleteState(stateTag: String) = ApiFields.StateTags.INCOMPLETE_TAGS
-            .map { stateTag.contains(it) }
-            .any { it }
+        internal fun isIncompleteState(stateTag: String) =
+            ApiFields.StateTags.INCOMPLETE_TAGS.any { it in stateTag }
     }
 }

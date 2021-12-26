@@ -14,7 +14,7 @@ import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import openfoodfacts.github.scrachx.openfood.models.HistoryProduct
 import openfoodfacts.github.scrachx.openfood.models.HistoryProductDao
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
+import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
 import openfoodfacts.github.scrachx.openfood.utils.SortType
 import openfoodfacts.github.scrachx.openfood.utils.list
@@ -25,7 +25,7 @@ import javax.inject.Inject
 class ScanHistoryViewModel @Inject constructor(
     @ApplicationContext private val context: Context,
     private val daoSession: DaoSession,
-    private val client: OpenFoodAPIClient,
+    private val client: ProductRepository,
     private val localeManager: LocaleManager
 ) : ViewModel() {
 

@@ -11,40 +11,40 @@
     <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contributeur/ -->
     <string name="website_contributor">https://world.openpetfoodfacts.org/contributor/</string>
     <string name="terms_url">https://world.openpetfoodfacts.org/terms-of-use</string>
-    <string name="txtHomeOnline">Open Pet Food Facts is a database of more than %1$s pet food products (plus the ones you will contribute) Woof. Woof.</string>
-    <string name="txtHome">Open Pet Food Facts is a database of pet food products with ingredients, nutrition facts… Woof. Woof.</string>
-    <string name="slide_1_title">Contribuie la transparența produselor alimentare veterinare</string>
-    <string name="slide_1_desc">Scanați produsele, fotografiați-le, ajutați la concretizarea transparenței produselor alimentare veterinare</string>
-    <string name="slide_2_title">Obțineți informații</string>
-    <string name="slide_2_desc">Informații detaliate despre produsul pe care l-ați scanat, descifrate pentru dvs</string>
-    <string name="slide_3_title">Ține evidența produsului pe care îl folosești</string>
+    <string name="txtHomeOnline">Open Pet Food Facts este o bază de date cu mai mult de %1$s produse alimentare pentru animale de companie (plus cele cu care veți contribui) Woof. Woof.</string>
+    <string name="txtHome">Open Pet Food Facts este o bază de date de produse alimentare pentru animale de companie cu ingrediente, informații nutriționale… Woof. Woof.</string>
+    <string name="slide_1_title">Contribuie la transparența alimentelor pentru animale de companie</string>
+    <string name="slide_1_desc">Scanați produsele, fotografiați-le, faceți ca transparența alimentelor animalelor de companie să se întâmple</string>
+    <string name="slide_2_title">Obțineți faptele</string>
+    <string name="slide_2_desc">Informații extinse despre produsul pe care l-ați scanat, descifrat pentru dvs</string>
+    <string name="slide_3_title">Urmăriți produsul pe care îl utilizați</string>
     <string name="slide_3_desc">Toate produsele pe care le-ai scanat, sunt într-o listă pe care o poți exporta</string>
-    <string name="slide_4_title">Funcţionează offline</string>
-    <string name="slide_4_desc">Poți adăuga produse noi, chiar dacă nu ești conectat la internet momentan</string>
-    <string name="txtDialogsContent">Produsul scanat nu există în baza de date Open Pet Food Facts. Doriți să-l adăugați?</string>
+    <string name="slide_4_title">Funcționează offline</string>
+    <string name="slide_4_desc">Puteți adăuga produse noi, chiar dacă nu aveți o conexiune la internet în acest moment</string>
+    <string name="product_does_not_exist_please_add_it">Produsul pe care l-ați scanat nu există încă în Open Pet Food Facts. Vă rugăm să-l adăugați.</string>
     <string name="txtDialogsContentPowerMode">Produsul scanat există deja în baza de date Open Pet Food Facts.</string>
-    <string name="msg_share">Vizualizează acest produs în Open Pet Food Facts :</string>
+    <string name="msg_share">Vizualizează acest produs în Open Pet Food Facts:</string>
     <string name="not_support_books">Cărțile momentan nu sunt suportate de către Open Pet Food Facts</string>
     <string name="txt_broaden_search">- extinderea căutării tale \n- scanează-l și adaugă-l în Open Pet Food Facts</string>
     <string name="Donation">Apăsă aici pentru a face o donație către Open Pet Food Facts</string>
     <string name="translate_help_title">Ajută la traducerea informațiilor din Open Pet Food Facts</string>
-    <string name="translate_help_summary">Aduceți baza de date Open Pet Food Facts în limba dvs. - nu aveți nevoie de cunoștințe tehnice</string>
+    <string name="translate_help_summary">Traduceți baza de date Open Pet Food Facts în limba dvs. - nu aveți nevoie de cunoștințe tehnice</string>
     <string name="text_offline_info_dialog">Scanați produsele când sunteți offline pentru a le adăuga in Open Pet Food Facts mai târziu. Toate produsele scanate vor apărea aici, și le veți putea trimite folosind butonul de mai jos.</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Informațiile despre alergiile dumneavostră nu vor fi trimise către serverele Open Pet Food Facts. De asemenea, luați în considerare faptul că datele produselor si detectarea datelor pot fi imprecise, de aceea vă rugam sa le re-verificați dumneavoastră înșivă! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Informațiile despre alergiile dumneavoastră nu vor fi trimise către serverele Open Pet Food Facts. De asemenea, luați în considerare faptul că datele produselor si detectarea datelor pot fi imprecise, de aceea vă rugam sa le re-verificați dumneavoastră înșivă! </string>
     <!-- OPFF tagline in different languages -->
-    <string name="version_string">Open Pet Food Facts Android App</string>
+    <string name="version_string">Deschideți aplicația pentru Android, Open Pet Food Facts</string>
     <string name="tagline">free pet food products database</string>
     <string name="product_not_found">Produsul %1$s pe care l-ai scanat încă nu există în Open Pet Food Facts. Îl poți adăuga tu?</string>
-    <string name="currently_on_version">Currently on Open Pet Food Facts</string>
-    <string name="category_game_btn">Ajutați la catalogarea produselor</string>
-    <string name="add_nutrient_prompt_text">Add nutrition facts to compute nutrient levels</string>
+    <string name="currently_on_version">În prezent pe Open Pet Food Facts</string>
+    <string name="category_game_btn">Ajută la clasificarea produselor</string>
+    <string name="add_nutrient_prompt_text">Adăugați informații nutriționale pentru a calcula nivelurile de nutrienți</string>
     <string name="add_category_prompt_text">Adăugați o categorie pentru a ajuta la completarea produsului</string>
-    <string name="add_nutrient_category_prompt_text">Add a category and nutrition facts to help complete the product</string>
-    <string name="txt_eaten_products">Products I have</string>
-    <string name="txt_products_to_buy">Products to buy</string>
-    <string name="intent_filter_share_label">Add to Open Pet Food Facts</string>
-    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
-        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
-    <string name="OFFlogo">Open Pet Food Facts logo</string>
+    <string name="add_nutrient_category_prompt_text">Adăugați o categorie și informații nutriționale pentru a ajuta la completarea produsului</string>
+    <string name="txt_eaten_products">Produsele pe care le am</string>
+    <string name="txt_products_to_buy">Produse de cumpărat</string>
+    <string name="intent_filter_share_label">Adăugați la Open Pet Food Facts</string>
+    <string name="txt_info_eaten_products">Veți putea adăuga un produs la această listă scanând produse, trăgând cardul produsului în sus și atingând „Produse de cumpărat”.
+        De asemenea, veți putea adăuga produse în această listă căutându-le și făcând clic pe butonul + din partea dreaptă sus a paginii produsului.</string>
+    <string name="OFFlogo">Logo Open Pet Food Facts</string>
     <string name="brand_hint">Exemple: Purina, Whiskas, etc…</string>
 </resources>

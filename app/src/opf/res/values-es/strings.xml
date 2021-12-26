@@ -21,7 +21,7 @@
     <string name="slide_3_desc">Todos los productos que has ojeado, los puedes exportar de manera práctica</string>
     <string name="slide_4_title">Funciona sin conexión</string>
     <string name="slide_4_desc">Puedes agregar nuevos productos, incluso si no tienes una conexión de Internet al momento</string>
-    <string name="txtDialogsContent">El producto que escaneó aún no existe en Open Products Facts. Por favor agrégalo.</string>
+    <string name="product_does_not_exist_please_add_it">El producto que escaneaste aún no existe en Open Products Facts. Por favor, añádelo.</string>
     <string name="txtDialogsContentPowerMode">El producto que escaneó ya existe en Open Products Facts.</string>
     <string name="msg_share">Échale un vistazo a este producto en Open Products Facts :</string>
     <string name="not_support_books">los libros no son compatibles actualmente con open products facts</string>

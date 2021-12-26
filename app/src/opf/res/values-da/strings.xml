@@ -21,7 +21,7 @@
     <string name="slide_3_desc">Alle produkterne, du skannede, på én praktisk liste, som du kan eksportere</string>
     <string name="slide_4_title">Fungerer offline</string>
     <string name="slide_4_desc">Du kan tilføje nye produkter, selv hvis du ikke har en tilgængelig Internetforbindelse</string>
-    <string name="txtDialogsContent">Produktet, du skannede, findes ikke i Open Products Facts endnu. Tilføj det venligst.</string>
+    <string name="product_does_not_exist_please_add_it">Det skannede produktet findes endnu ikke i Open Products Facts. Tilføj det gerne.</string>
     <string name="txtDialogsContentPowerMode">Produktet, du skannede, findes allerede i Open Products Facts.</string>
     <string name="msg_share">Kig på dette produkt på Open Products Facts :</string>
     <string name="not_support_books">Bøger understøttes ikke pt. af Open Products Facts</string>

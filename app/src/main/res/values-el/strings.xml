@@ -199,7 +199,7 @@
     <string name="uploadLater">Η εικόνα θα αποσταλθεί όταν βρεθεί WiFi</string>
     <string name="txtInfoLoginOk">Αλλαγές αποθηκεύτηκαν</string>
     <string name="txtInfoLoginNo">Ο χρήστης δεν είναι αποθηκευμένος</string>
-    <string name="txtDialogsContent">Το προϊόν που σαρώσατε δεν υπάρχει ακόμα στο Open Food Facts. Παρακαλούμε προσθέστε το.</string>
+    <string name="product_does_not_exist_please_add_it">Το προϊόν που σαρώσατε δεν υπάρχει ακόμα στο Open Food Facts. Παρακαλούμε προσθέστε το.</string>
     <string name="txtYes">Ναι</string>
     <string name="txtNo">Όχι</string>
     <string name="hintBrand">Μάρκα</string>
@@ -594,7 +594,7 @@
     <string name="packaging">Recycling</string>
     <string name="take_ingredients_picture_to_extract">(Please take a photo of the ingredients to automatically extract them)</string>
     <string name="ingredients_list">Λίστα συστατικών</string>
-    <string name="ingredients_hint">Keep the order, indicate the % when specified, separate with a comma or use -, use () for ingredients of an ingredient, surround allergens with _</string>
+    <string name="ingredients_hint" tools:ignore="StringFormatInvalid">Keep the order, indicate the % when specified, separate with a comma or use -, use () for ingredients of an ingredient, surround allergens with _</string>
     <string name="extract_ingredients">Extract ingredients</string>
     <string name="extracting_ingredients">Εξαγωγή συστατικών σε εξέλιξη</string>
     <string name="looksGood">Όλα εντάξει</string>

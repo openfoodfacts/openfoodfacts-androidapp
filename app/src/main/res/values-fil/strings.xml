@@ -199,7 +199,7 @@
     <string name="uploadLater">Ang litrato ay maaaring ma-upload kapag mayroon ng network</string>
     <string name="txtInfoLoginOk">Na-save ang user</string>
     <string name="txtInfoLoginNo">Hindi nai-save ang user</string>
-    <string name="txtDialogsContent">Ang produkto na hinahanap mo ay wala pa sa Open Food Facts. Mangyaring idagdag ang mga ito.</string>
+    <string name="product_does_not_exist_please_add_it">Ang produkto na hinahanap mo ay wala pa sa Open Food Facts. Mangyaring idagdag ang mga ito.</string>
     <string name="txtYes">Oo</string>
     <string name="txtNo">Hindi</string>
     <string name="hintBrand">Mga Tatak</string>
@@ -594,7 +594,7 @@
     <string name="packaging">Recycling</string>
     <string name="take_ingredients_picture_to_extract">(Please take a photo of the ingredients to automatically extract them)</string>
     <string name="ingredients_list">Ingredients List</string>
-    <string name="ingredients_hint">Keep the order, indicate the % when specified, separate with a comma or use -, use () for ingredients of an ingredient, surround allergens with _</string>
+    <string name="ingredients_hint" tools:ignore="StringFormatInvalid">Keep the order, indicate the % when specified, separate with a comma or use -, use () for ingredients of an ingredient, surround allergens with _</string>
     <string name="extract_ingredients">Extract ingredients</string>
     <string name="extracting_ingredients">Pag-extract ng mga sangkap</string>
     <string name="looksGood">Looks Good</string>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="48dp">
 
@@ -11,7 +12,8 @@
         android:layout_marginLeft="12dp"
         android:layout_marginRight="12dp"
         android:layout_alignParentStart="true"
-        android:layout_centerVertical="true" />
+        android:layout_centerVertical="true"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/title"
@@ -23,6 +25,6 @@
         android:gravity="center_vertical"
         android:textColor="@color/grey_50"
         android:layout_toEndOf="@id/icon"
-        android:paddingRight="40dp" />
+        android:paddingEnd="40dp" />
 
 </RelativeLayout>

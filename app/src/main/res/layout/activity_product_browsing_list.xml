@@ -1,193 +1,185 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout5"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivity">
 
-    <data>
+    <include
+        android:id="@+id/toolbar_include"
+        layout="@layout/toolbar" />
 
-    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/linearLayout5"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context="openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivity">
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/navigation_bottom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_include">
 
-        <include
-            android:id="@+id/toolbar_include"
-            layout="@layout/toolbar" />
 
+        <TextView
+            android:id="@+id/textCountProduct"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:paddingTop="@dimen/padding_too_short"
+            android:paddingBottom="@dimen/padding_too_short"
+            android:text="@string/number_of_products"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_hunger_games" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/linearLayout"
+        <Button
+            android:id="@+id/btn_hunger_games"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/brand_yellow"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/font_small"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_refresh"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@+id/navigation_bottom"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar_include">
-
-
-            <TextView
-                android:id="@+id/textCountProduct"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                android:paddingTop="@dimen/padding_too_short"
-                android:paddingBottom="@dimen/padding_too_short"
-                android:text="@string/number_of_products"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btn_hunger_games" />
-
-            <Button
-                android:id="@+id/btn_hunger_games"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:background="@color/brand_yellow"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/font_small"
-                android:visibility="gone"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-                android:id="@+id/swipe_refresh"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textCountProduct">
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/products_recycler_view"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    tools:listitem="@layout/products_list_item">
-
-                </androidx.recyclerview.widget.RecyclerView>
-            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <LinearLayout
-            android:id="@+id/offlineCloudLinearLayout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:visibility="invisible"
-            app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar_include">
-
-            <ImageView
-                android:id="@+id/sadCloud"
-                android:layout_width="180dp"
-                android:layout_height="150dp"
-                android:scaleType="centerCrop"
-                app:srcCompat="@drawable/ic_cloud_off" />
-
-            <TextView
-                android:id="@+id/txtCannotLoadResults"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_margin="@dimen/spacing_normal"
-                android:gravity="center"
-                android:text="@string/something_went_wrong"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/grey_500"
-                android:textSize="@dimen/font_normal" />
-
-            <Button
-                android:id="@+id/buttonTryAgain"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:clickable="true"
-                android:focusable="true"
-                android:text="@string/txt_try_again"
-                android:textColor="@color/light_blue_500" />
-
-        </LinearLayout>
-
-        <ProgressBar
-            android:id="@+id/progress_bar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
-            app:layout_constraintEnd_toEndOf="@+id/linearLayout"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/linearLayout"
-            tools:visibility="invisible" />
-
-        <LinearLayout
-            android:id="@+id/noResultsLayout"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="24dp"
-            android:layout_marginRight="24dp"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:visibility="invisible"
-            app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar_include">
-
-            <TextView
-                android:id="@+id/textNoResults"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:paddingStart="@dimen/padding_too_short"
-                android:paddingEnd="@dimen/padding_too_short"
-                android:text="@string/txt_no_matching_products"
-                android:textAlignment="center"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textSize="@dimen/font_normal" />
-
-            <TextView
-                android:id="@+id/textExtendSearch"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/materialize_typography_subheading"
-                android:paddingStart="@dimen/padding_too_short"
-                android:paddingEnd="@dimen/padding_too_short"
-                android:text="@string/txt_broaden_search"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textSize="@dimen/font_normal" />
-
-            <ImageButton
-                android:id="@+id/addProduct"
-                style="@style/ButtonBorder"
-                android:layout_width="95dp"
-                android:layout_height="90dp"
-                android:layout_marginTop="25dp"
-                android:scaleType="fitCenter"
-                app:srcCompat="@drawable/ic_add_a_photo_dark_48dp"
-                app:tint="@color/button_link" />
-
-        </LinearLayout>
-
-        <include
-            android:id="@+id/navigation_bottom"
-            layout="@layout/navigation_bottom"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+            app:layout_constraintTop_toBottomOf="@+id/textCountProduct">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/products_recycler_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/products_list_item">
+
+            </androidx.recyclerview.widget.RecyclerView>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
-</layout>
+
+    <LinearLayout
+        android:id="@+id/offlineCloudLinearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_include">
+
+        <ImageView
+            android:id="@+id/sadCloud"
+            android:layout_width="180dp"
+            android:layout_height="150dp"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/ic_cloud_off" />
+
+        <TextView
+            android:id="@+id/txtCannotLoadResults"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="@dimen/spacing_normal"
+            android:gravity="center"
+            android:text="@string/something_went_wrong"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/grey_500"
+            android:textSize="@dimen/font_normal" />
+
+        <Button
+            android:id="@+id/buttonTryAgain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="@string/txt_try_again"
+            android:textColor="@color/light_blue_500" />
+
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout"
+        tools:visibility="invisible" />
+
+    <LinearLayout
+        android:id="@+id/noResultsLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_include">
+
+        <TextView
+            android:id="@+id/textNoResults"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:paddingStart="@dimen/padding_too_short"
+            android:paddingEnd="@dimen/padding_too_short"
+            android:text="@string/txt_no_matching_products"
+            android:textAlignment="center"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="@dimen/font_normal" />
+
+        <TextView
+            android:id="@+id/textExtendSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/materialize_typography_subheading"
+            android:paddingStart="@dimen/padding_too_short"
+            android:paddingEnd="@dimen/padding_too_short"
+            android:text="@string/txt_broaden_search"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="@dimen/font_normal" />
+
+        <ImageButton
+            android:id="@+id/addProduct"
+            style="@style/ButtonBorder"
+            android:layout_width="95dp"
+            android:layout_height="90dp"
+            android:layout_marginTop="25dp"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/ic_add_a_photo_dark_48dp"
+            app:tint="@color/button_link"
+            tools:ignore="ContentDescription" />
+
+    </LinearLayout>
+
+    <include
+        android:id="@+id/navigation_bottom"
+        layout="@layout/navigation_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -60,8 +60,7 @@ import javax.inject.Inject
  */
 @AndroidEntryPoint
 class LoginActivity : BaseActivity() {
-    private var _binding: ActivityLoginBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var binding: ActivityLoginBinding
 
     private val viewModel: LoginActivityViewModel by viewModels()
 
@@ -85,7 +84,7 @@ class LoginActivity : BaseActivity() {
 
     private fun doAttemptLogin() {
         // Disable login button
-        viewModel.canLogIn.postValue(false)
+        updateLoginButtonState(LoginButtonState.Disabled)
 
         hideKeyboard()
 
@@ -95,15 +94,18 @@ class LoginActivity : BaseActivity() {
         if (login.isBlank()) {
             binding.loginInput.error = getString(R.string.error_field_required)
             binding.loginInput.requestFocus()
+            updateLoginButtonState(LoginButtonState.Enabled)
             return
         }
         if (password.isBlank()) {
             binding.passInput.error = getString(R.string.error_field_required)
             binding.passInput.requestFocus()
+            updateLoginButtonState(LoginButtonState.Enabled)
             return
         } else if (password.length < 6) {
             binding.passInput.error = getText(R.string.error_invalid_password)
             binding.passInput.requestFocus()
+            updateLoginButtonState(LoginButtonState.Enabled)
             return
         }
         // End checks
@@ -120,14 +122,14 @@ class LoginActivity : BaseActivity() {
                     Toast.makeText(this@LoginActivity, this@LoginActivity.getString(R.string.errorWeb), Toast.LENGTH_LONG).show()
                     Log.e(this::class.simpleName, "onFailure", err)
 
-                    viewModel.canLogIn.postValue(true)
+                    updateLoginButtonState(LoginButtonState.Enabled)
                     null
                 }
             } ?: return@launch
 
             if (!response.isSuccessful) {
                 Toast.makeText(this@LoginActivity, R.string.errorWeb, Toast.LENGTH_LONG).show()
-                viewModel.canLogIn.postValue(true)
+                updateLoginButtonState(LoginButtonState.Enabled)
                 return@launch
             }
             val htmlNoParsed = withContext(Dispatchers.IO) {
@@ -135,7 +137,7 @@ class LoginActivity : BaseActivity() {
                     response.body()?.string()
                 } catch (e: IOException) {
                     Log.e("LOGIN", "Unable to parse the login response page", e)
-                    viewModel.canLogIn.postValue(true)
+                    updateLoginButtonState(LoginButtonState.Enabled)
                     null
                 }
             } ?: return@launch
@@ -149,7 +151,7 @@ class LoginActivity : BaseActivity() {
                 binding.txtInfoLogin.setText(R.string.txtInfoLoginNo)
 
                 binding.passInput.setText("")
-                viewModel.canLogIn.postValue(true)
+                updateLoginButtonState(LoginButtonState.Enabled)
             } else {
                 // store the user session id (user_session and user_id)
                 for (httpCookie in HttpCookie.parse(response.headers()["set-cookie"])) {
@@ -178,16 +180,17 @@ class LoginActivity : BaseActivity() {
         }
     }
 
+    private fun updateLoginButtonState(state: LoginButtonState) {
+        viewModel.canLogIn.postValue(state == LoginButtonState.Enabled)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (resources.getBoolean(R.bool.portrait_only)) {
             requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         }
-        _binding = ActivityLoginBinding.inflate(layoutInflater)
+        binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        binding.viewModel = viewModel
-        binding.lifecycleOwner = this
 
         // check flavour and show helper text for user account
         if (!isFlavors(OFF)) {
@@ -219,6 +222,10 @@ class LoginActivity : BaseActivity() {
                 .setNeutralButton(R.string.ok_button) { _, _ -> finish() }
                 .show()
         }
+
+        viewModel.canLogIn.observe(this) {
+            binding.btnLogin.isEnabled = it
+        }
     }
 
     private fun doRegister() {
@@ -244,7 +251,6 @@ class LoginActivity : BaseActivity() {
 
     override fun onDestroy() {
         customTabActivityHelper.connectionCallback = null
-        _binding = null
         super.onDestroy()
     }
 
@@ -258,4 +264,8 @@ class LoginActivity : BaseActivity() {
                 || html.contains("Incorrect user name or password.")
                 || html.contains("See you soon!"))
     }
+}
+
+private enum class LoginButtonState {
+    Enabled, Disabled
 }

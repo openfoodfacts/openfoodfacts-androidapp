@@ -11,40 +11,39 @@
     <!-- For fr, Replace by https://world-fr.openproductsfacts.org/contributeur/ -->
     <string name="website_contributor">https://world.openfoodfacts.org/contributor/</string>
     <string name="terms_url">https://world.openproductsfacts.org/terms-of-use</string>
-    <string name="txtHomeOnline">Open Products Facts is an open database of more than %1$s products (plus the ones you will contribute).</string>
-    <string name="txtHome">Open Product Facts adalah basis data terbuka untuk semua produk di seluruh dunia.</string>
-    <string name="slide_1_title">Contribute to product transparency</string>
-    <string name="slide_1_desc">Scan products, take them in picture, make food transparency happen</string>
+    <string name="txtHomeOnline">Open Products Facts adalah sebuah basis data terbuka yang mencakup lebih dari %1$s produk (ditambah yang akan Anda sumbangkan).</string>
+    <string name="txtHome">Open Product Facts adalah sebuah basis data terbuka dari semua produk di seluruh dunia.</string>
+    <string name="slide_1_title">Berkontribusi pada transparansi produk</string>
+    <string name="slide_1_desc">Pindai produk, ambil gambarnya, wujudkan transparansi produk</string>
     <string name="slide_2_title">Dapatkan faktanya</string>
-    <string name="slide_2_desc">Extensive information about the products you\'ve scanned, deciphered for you</string>
-    <string name="slide_3_title">Keep track of the product you use</string>
-    <string name="slide_3_desc">All the products you scanned, in one handy list you can export</string>
-    <string name="slide_4_title">Works offline</string>
-    <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet connection right now</string>
-    <string name="txtDialogsContent">The product you scanned does not exist yet in Open Products Facts. Please add it.</string>
-    <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Products Facts.</string>
-    <string name="msg_share">Look at this product on Open Products Facts :</string>
-    <string name="not_support_books">Books are not currently supported by Open Products Facts</string>
-    <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Products Facts</string>
-    <string name="Donation">Click here to donate to Open Products Facts</string>
-    <string name="translate_help_title">Help translate Open Products Facts</string>
-    <string name="translate_help_summary">Bring the Open Products Facts database to your language - no technical knowledge required</string>
-    <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Products Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Products Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+    <string name="slide_2_desc">Informasi lengkap tentang produk yang telah Anda pindai, ditafsirkan untuk Anda</string>
+    <string name="slide_3_title">Lacak produk yang Anda gunakan</string>
+    <string name="slide_3_desc">Semua produk yang Anda pindai, dalam satu daftar praktis yang dapat Anda ekspor</string>
+    <string name="slide_4_title">Bekerja secara luring</string>
+    <string name="slide_4_desc">Anda dapat menambahkan produk - produk baru, bahkan jika Anda tidak memiliki koneksi Internet saat ini</string>
+    <string name="product_does_not_exist_please_add_it">Produk yang Anda pindai belum ada di Open Products Facts. Tolong tambahkan.</string>
+    <string name="txtDialogsContentPowerMode">Produk yang Anda pindai sudah ada dalam Open Products Facts.</string>
+    <string name="msg_share">Lihat produk ini di Open Products Facts :</string>
+    <string name="not_support_books">Buku - buku yang tidak didukung Open Products Facts saat ini</string>
+    <string name="txt_broaden_search">- memperluas pencarian Anda \n- pindai dan tambahkan ke Open Products Facts</string>
+    <string name="Donation">Klik di sini untuk berdonasi ke Open Products Facts</string>
+    <string name="translate_help_title">Bantu terjemahkan Open Products Facts</string>
+    <string name="translate_help_summary">Bawa basis data Open Products Facts ke dalam bahasa Anda - pengetahuan teknis tidak diperlukan</string>
+    <string name="text_offline_info_dialog">Pindai produk - produk bahkan ketika Anda sedang luring untuk menambahkannya nanti ke Open Products Facts. Produk - produk yang dipindai akan muncul di sini dan Anda akan dapat mengirimkannya menggunakan tombol di bawah.</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Informasi tentang alergi Anda tidak akan pernah dikirimkan ke peladen Open Products Facts. Juga, berhati - hatilah bahwa data produk mungkin tidak akurat, dan pendeteksian mungkin tidak 100% akurat, jadi harap memeriksanya sendiri! </string>
     <!-- OPF tagline in different languages -->
-    <string name="version_string">Open Products Facts Android App</string>
+    <string name="version_string">Aplikasi Android Open Products Facts</string>
     <string name="tagline">the free product database</string>
-    <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Products Facts. Can you add it?</string>
-    <string name="currently_on_version">Currently on Open Products Facts</string>
-    <string name="category_game_btn">Help categorize products</string>
-    <string name="add_nutrient_prompt_text">Add more details to help complete the product</string>
-    <string name="add_category_prompt_text">Add a category to help complete the product</string>
-    <string name="add_nutrient_category_prompt_text">Add a category and more details to help complete the product</string>
+    <string name="product_not_found">Produk %1$s yang Anda pindai belum ada di Open Products Facts. Bisakah Anda menambahkannya?</string>
+    <string name="currently_on_version">Saat ini di Open Products Facts</string>
+    <string name="category_game_btn">Bantu mengkategorikan produk</string>
+    <string name="add_nutrient_prompt_text">Tambahkan lebih banyak detail untuk membantu melengkapi informasi produk</string>
+    <string name="add_category_prompt_text">Tambahkan kategori untuk membantu melengkapi informasi produk</string>
+    <string name="add_nutrient_category_prompt_text">Tambahkan kategori dan lebih banyak detail untuk membantu melengkapi informasi produk</string>
     <string name="txt_eaten_products">Produk yang saya miliki</string>
-    <string name="txt_products_to_buy">Products to buy</string>
-    <string name="intent_filter_share_label">Add to Open Products Facts</string>
-    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
-        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
-    <string name="OFFlogo">Open Products Facts logo</string>
-    <string name="brand_hint">Examples: Nike, Apple, etc…</string>
+    <string name="txt_products_to_buy">Produk - produk untuk dibeli</string>
+    <string name="intent_filter_share_label">Tambahkan ke Open Products Facts</string>
+    <string name="txt_info_eaten_products">Anda akan dapat menambahkan produk ke daftar ini dengan memindai produk - produk, menarik kartu produknya ke atas dan mengetuk pada \"Produk - produk untuk dibeli\". Anda juga akan dapat menambahkan produk - produk ke daftar ini dengan mencarinya dan mengklik tombol + di bagian kanan atas halaman produk.</string>
+    <string name="OFFlogo">Logo Open Products Facts</string>
+    <string name="brand_hint">Contoh: Nike, Apple, etc…</string>
 </resources>

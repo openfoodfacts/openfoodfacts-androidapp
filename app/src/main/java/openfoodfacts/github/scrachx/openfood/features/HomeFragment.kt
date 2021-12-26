@@ -154,31 +154,30 @@ class HomeFragment : NavigationBaseFragment() {
 
     override fun onResume() {
         super.onResume()
-        val productCount = sharedPrefs.getInt(PRODUCT_COUNT_KEY, 0)
-
-        refreshProductCount(productCount)
+        refreshProductCount()
         refreshTagLine()
 
         (activity as? AppCompatActivity)?.supportActionBar?.let { it.title = "" }
     }
 
-    private fun refreshProductCount(oldCount: Int) {
+    private fun refreshProductCount() {
         Log.d(LOG_TAG, "Refreshing total product count...")
-
-        lifecycleScope.launch {
-            val resp = try {
-                withContext(Dispatchers.IO) { productsApi.getTotalProductCount(getUserAgent()) }
+        lifecycleScope.launchWhenResumed {
+            val count = try {
+                withContext(Dispatchers.IO) {
+                    val fetchedCount = productsApi.getTotalProductCount(getUserAgent()).count.toInt()
+                    sharedPrefs.edit { putInt(PRODUCT_COUNT_KEY, fetchedCount) }
+                    fetchedCount
+                }
             } catch (err: Exception) {
                 Log.e(LOG_TAG, "Could not retrieve product count from server.", err)
-                setProductCount(oldCount)
-                return@launch
+                sharedPrefs.getInt(PRODUCT_COUNT_KEY, 0)
             }
-            val count = resp.count.toInt()
             Log.d(LOG_TAG, "Refreshed total product count. There are $count products on the database.")
 
-            setProductCount(count)
-
-            sharedPrefs.edit { putInt(PRODUCT_COUNT_KEY, count) }
+            withContext(Dispatchers.Main) {
+                setProductCount(count)
+            }
         }
     }
 
@@ -188,10 +187,13 @@ class HomeFragment : NavigationBaseFragment() {
      * @param count count of total products available on the apps database
      */
     private fun setProductCount(count: Int) {
-        if (count == 0) {
-            binding.textHome.text = getString(R.string.txtHome)
+        if (_binding == null) {
+            Log.w(LOG_TAG, "setProductCount() calls with null binding")
+        }
+        _binding?.textHome?.text = if (count == 0) {
+            getString(R.string.txtHome)
         } else {
-            binding.textHome.text = getString(R.string.txtHomeOnline, NumberFormat.getInstance().format(count))
+            getString(R.string.txtHomeOnline, NumberFormat.getInstance().format(count))
         }
     }
 

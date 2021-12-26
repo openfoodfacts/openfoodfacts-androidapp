@@ -42,7 +42,6 @@
     <string name="product_incomplete_message">Dette produkt er ikke komplet, hvorfor der ikke foretages et allergentjek.</string>
     <string name="product_allergen_prompt">Dette produkt indeholder:</string>
     <string name="no_offline_data">Du er helt færdig</string>
-    <string name="first_offline">Produkter tilføjet offline vil fremgå hér</string>
     <!-- Image Upload -->
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
@@ -162,16 +161,14 @@
     <string name="toast_retrieving">Indlæser…</string>
     <string name="txtBarcode">Stregkode:</string>
     <string name="txtCategories">Kategorier:</string>
-    <string name="txtLabels">Mærkning, certificering, priser :</string>
-    <string name="txtEMB">EMB-kode:</string>
-    <string name="txtIngredients">Ingrediensoversigt:</string>
+    <string name="txtLabels">Etiketter, certificeringer, udmærkelser: </string>
+    <string name="txtEMB">Sporbarhedskoder: </string>
+    <string name="txtIngredients">Ingrediensoversigt: </string>
     <string name="Donate">Donér</string>
     <string name="Donation">Tryk her for at donere til Open Food Facts</string>
-    <string name="txtSubstances">Stoffer eller produkter, som forårsager allergier eller intolerance :</string>
+    <string name="txtSubstances">Stoffer eller produkter, som forårsager allergier eller intolerance: </string>
     <string name="txtAdditives">Tilsætningsstoffer: </string>
     <string name="txtTraces">Sporstoffer: </string>
-    <string name="txtMayBeFromPalmOilProduct">Ingrediænser, som kan være fremstillet af palmeolie: </string>
-    <string name="txtPalmOilProduct">Ingrediænser fra palmeolie:</string>
     <string name="txtServingSize">Portionsstørrelse :</string>
     <string name="txtNutrientLevel100g">Næringsstoffer pr. 100 g :</string>
     <string name="txtNutrientLevel100ml">Næringsstofniveauer pr. 100 ml:</string>
@@ -180,7 +177,6 @@
     <string name="txtNutritionLevelHigh">i højt kvantum</string>
     <string name="txtSave">Gem</string>
     <string name="txtSignIn">Log ind</string>
-    <string name="txtToastSaved">Bruger gemt</string>
     <string name="txtSalt">Salt</string>
     <string name="txtFat">Fedt</string>
     <string name="txtSugars">Sukkerarter</string>
@@ -191,10 +187,9 @@
     <string name="hintPass">Adgangskode</string>
     <string name="errorLogin">Brugernavn eller adgangskode-fejl</string>
     <string name="errorWeb">Ingen adgang til Internet. Har du forbindelsesproblemer?</string>
-    <string name="uploadLater">Foto uploades, når netværket er tilgængeligt</string>
-    <string name="txtInfoLoginOk">Bruger gemt</string>
-    <string name="txtInfoLoginNo">Bruger ikke gemt</string>
-    <string name="txtDialogsContent">Produktet, du skannede, findes ikke i Open Food Facts endnu. Tilføj det venligst.</string>
+    <string name="txtInfoLoginOk">Du er nu logget ind på din Open Food Facts-konto.</string>
+    <string name="txtInfoLoginNo">En fejl opstod under forsøget på at logge ind på din Open Food Facts-konto.</string>
+    <string name="product_does_not_exist_please_add_it">Det skannede produktet findes endnu ikke i Open Food Facts. Tilføj det gerne.</string>
     <string name="txtYes">Ja</string>
     <string name="txtNo">Nej</string>
     <string name="hintBrand">Mærke</string>
@@ -202,25 +197,19 @@
     <string name="txtPictureNeededDialogNo">Kassér</string>
     <string name="toastSending">Uploader…</string>
     <string name="txtLoading">Indlæser…</string>
-    <string name="txtDialogsContentDelete">Sikker på, at du vil fjerne dette udkast?</string>
-    <string name="txtDialogsContentInfoSave">Produktet er gemt på enheden. Du kan redigere det via menuen \"Offline-redigering\"</string>
     <string name="productSavedToast">Produkt gemt, tak!</string>
     <string name="txtBarcodeRequire">Stregkode kræves</string>
-    <string name="txtOk">OK</string>
     <string name="txtBarcodeNotValid">Stregkode er ikke gyldig</string>
     <string name="msg_share">Kig på dette produkt på Open Food Facts :</string>
     <string name="create_account">Tilmeld dig</string>
     <string name="home_drawer">Hjem</string>
     <string name="install">Installér</string>
-    <string name="open_beauty_drawer">Open Beauty Facts</string>
-    <string name="open_food_drawer">Open Food Facts</string>
     <string name="search_drawer">Søg</string>
     <string name="search_by_barcode_drawer">Indtast stregkode</string>
     <string name="category_drawer">Kategorier</string>
     <string name="search_by_category">Kategori</string>
     <string name="scan_search">Søg</string>
     <string name="user_drawer">Bruger</string>
-    <string name="offline_edit_drawer">Offline-redigering</string>
     <string name="txt_anonymous">Anonym</string>
     <string name="delete_txt">Slet</string>
     <string name="sign_in_drawer">Log ind</string>
@@ -251,7 +240,7 @@
     <string name="user_ask_rate_app">Storartet! Lad andre vide, hvad du synes om appen!</string>
     <string name="rate_app">Bedøm appen</string>
     <string name="no_thx">Nei takk</string>
-    <string name="feedback_form_url">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
+    <string name="feedback_form_url" comment="Please ask teolemon to duplicate the feedback form and give you the right URL">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">Historik</string>
     <string name="clear_history">Ryd historik</string>
@@ -264,16 +253,15 @@
     <string name="no_brand">Intet mærke</string>
     <string name="no_title">Uden titel</string>
     <!-- Nutrition info tab -->
-    <string name="display_fact">Ernæring fakta tabel for %1$s af dette produkt</string>
+    <string name="display_fact" comment="Do not modify the placeholder">Ernæring fakta tabel for %1$s af dette produkt</string>
     <string name="check_facts">Tjek</string>
     <string name="nutrition">Ernæring</string>
     <string name="calculated_nutrition">Beregnet ernæring</string>
     <string name="please_enter_weight">Indtast venligst produktets vægt</string>
     <string name="enter_weight">Indtast produktets vægt</string>
-    <string name="calculate_nutrition_facts">Beregn ernæringfakta</string>
+    <string name="calculate_nutrition_facts">Beregn ernæringfakta for en bestemt mængde</string>
     <string name="nutrition_carbohydrate">Kulhydrat</string>
     <string name="nutrition_cholesterol">Kolesterol</string>
-    <string name="nutrition_energy">Energi</string>
     <string name="nutrition_energy_kcal">Energi i kalorier (kcal)</string>
     <string name="nutrition_energy_kj">Energi i joules (kJ)</string>
     <string name="nutrition_energy_short_name">Energi</string>
@@ -289,8 +277,6 @@
     <string name="nutriment_serving_size">Pr. portion : </string>
     <string name="action_manage_account">Administrer konto</string>
     <string name="action_contributes">Dine bidrag</string>
-    <string name="choose_energy_unit">Vælg din foretrukne energienhed til ernæringstabellen</string>
-    <string name="choose_volume_unit">Vælg din foretrukne enhed for mængde til ernæringstabellen</string>
     <string name="logout_drawer">Log ud</string>
     <string name="contribution_without_account">Du kan logge ind eller oprette en konto for at gemme bidrag</string>
     <string name="textCarbonFootprint">CO2-regnskab / emissioner: </string>
@@ -397,21 +383,9 @@
     <string name="forgot_password">Glemt adgangskode</string>
     <string name="next">NÆSTE</string>
     <string name="skip">SPRING OVER</string>
-    <string name="start">FORSTÅET</string>
     <string name="email_not_found">Ingen e-mail-apps fundet</string>
-    <string name="airplane_mode_active_dialog_title">Flytilstand aktiveret</string>
-    <string name="airplane_mode_active_dialog_message">Flytilstand aktiv, deaktivér denne for at fortsætte.</string>
-    <string name="airplane_mode_active_dialog_negative">Afvis</string>
-    <string name="airplane_mode_active_dialog_positive">Indstillinger</string>
     <string name="device_offline_dialog_title">Netværk utilgængeligt</string>
-    <string name="device_offline_dialog_message">En netværksforbindelse kræves for at gøre dette. Vil du ændre dette i Indstillinger?</string>
-    <string name="device_offline_dialog_negative">Afvis</string>
-    <string name="device_offline_dialog_positive">Indstillinger</string>
     <string name="scan_first_product">Skan første produkt</string>
-    <string name="device_on_mobile_data_warning_title">Oplysninger</string>
-    <string name="device_on_mobile_data_warning_message">Upload via mobildata er inaktiv. Opret forbindelse til Wi-Fi eller ændr indstillingen i præferencer</string>
-    <string name="device_on_mobile_data_warning_positive">Præferencer</string>
-    <string name="device_on_mobile_data_warning_negative">Upload alligevel</string>
     <string name="changes_saved">Ændring er gemt</string>
     <string name="proceed">Fortsæt</string>
     <string name="preference_choose_language_dialog_title">Vælg sprog</string>
@@ -445,8 +419,6 @@
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
     <string name="url_nutrient_values">https://world.openfoodfacts.org/ernæringstraffiklys</string>
     <string name="preference_header_general">Generelt</string>
-    <string name="preference_header_network">Netværk</string>
-    <string name="preference_header_contributing">Bidrag</string>
     <string name="preference_header_privacy">Fortrolighed</string>
     <string name="preference_crash_title">Nedbrudsanmeldelse</string>
     <string name="preference_crash_summary">Når aktiveret, indsendes nedbrudsrapporter automatisk til OFF-serveren, så vi kan fejlrette og forbedre appen.</string>
@@ -471,7 +443,7 @@
     <string name="additive_string">Tilsætningsstof</string>
     <string name="allergen_string">Allergen</string>
     <string name="search_string">Søg</string>
-    <string name="country_string">Country</string>
+    <string name="country_string">Land</string>
     <string name="store_subtitle">Butik</string>
     <string name="packaging_subtitle">Emballage</string>
     <string name="state_subtitle">Stat</string>
@@ -514,9 +486,9 @@
     <string name="notification_channel_name">Eksportnotifikationer</string>
     <string name="notify_channel_description">Notifikation for at vise eksporterede fils placering</string>
     <string name="products_to_be_completed">Produkter, som skal færdiggøres</string>
-    <string name="offline_notification_title">Offline-bidrag, du skal sende</string>
-    <string name="creator_history">Produkt tilføjetd. %1$s kl. %2$s CET af %3$s</string>
-    <string name="last_editor_history">Seneste redigering af produktside d. %1$s kl. %2$s CEST by %3$s</string>
+    <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Produkt tilføjetd. %1$s kl. %2$s CET af %3$s</string>
+    <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Seneste redigering af produktside d. %1$s kl. %2$s CEST by %3$s</string>
+    <!-- TODO: Add the placeholder in the string - important for several languages -->
     <string name="other_editors">Produktside også redigeret af </string>
     <string name="product_states">Product States</string>
     <string name="incomplete_states">Incomplete States</string>
@@ -527,10 +499,9 @@
     <string name="offline_product_addition_title">Tilføj nyt produkt</string>
     <string name="productNameNull">Ukendt navn</string>
     <string name="productAdditivesUnknown"></string>
-    <string name="productAdditivesTemplate">%1$d tilsætningsstoffer</string>
     <plurals name="productAdditives">
-        <item quantity="one">%d tilsætningsstof</item>
-        <item quantity="other">%d tilsætningsstoffer</item>
+        <item quantity="one" comment="Do not change the placeholder">%d tilsætningsstof</item>
+        <item quantity="other" comment="Do not change the placeholder">%d tilsætningsstoffer</item>
     </plurals>
     <string name="product_not_complete">Dette produkt er endnu ikke færdiggjort.\nKan du tilføje yderligere detaljer?</string>
     <string name="addProductOffline">Du ser ud til at være offline. Tilføj produktet %s vha. offline-tilstanden?</string>
@@ -541,9 +512,8 @@
     <string name="switch_camera">Skift kamera</string>
     <string name="autofocus">Autofokus</string>
     <string name="initial_loading">Indledende indlæsning</string>
-    <string name="preferences">Præferencer</string>
     <string name="OFFlogo">Open Food Facts logo</string>
-    <string name="loading_product">Indlæser produkt %s</string>
+    <string name="loading_product" comment="Do not modify the placeholder">Indlæser produkt %s</string>
     <string name="image_not_defined_for_language">Intet foto for valgte sprog. Du kan tilføje et nyt</string>
     <string name="error_adding_ingredients">Noget gik galt under forsøget på at tilføje produktingredienser</string>
     <string name="unable_to_extract_ingredients">Kunne ikke udtrække ingredienser fra fotoet</string>
@@ -555,20 +525,11 @@
     <string name="extract_url">Udtræk URL fra QR-kode</string>
     <string name="search_url">Søg efter officiel side-URL</string>
     <string name="product_language">Produktsprog: </string>
-    <string name="hint_emb_codes">Eksempler: EMB 53062, FR 62.448.034 CE, 84R20, 33 RECOLTANT 522, FSSL 10013011001409</string>
     <string name="official_website">Officielt websted</string>
     <string name="scan_QR_code">Skan QR-koden til produktwebsted</string>
     <string name="add_at_least_one_picture">Tilføj mindst ét foto af dette produkt, inden du fortsætter</string>
     <string name="image_uploaded_successfully">Foto uploadet</string>
     <string name="error_adding_product_photos">Noget gik galt under forsøget på at tilføje produktfotos</string>
-    <string name="ingredients_overwrite">Ingrediensoverskrivning</string>
-    <string name="choose_mine">Vælg mine</string>
-    <string name="keep_previous_version">Behold foregående version</string>
-    <string name="product_name_overwrite">Produktnavnsoverskrivning</string>
-    <string name="yours">Dine: </string>
-    <string name="currently_on">Pt. på %s: </string>
-    <string name="quantity_overwrite">Mængdeoverskrivning</string>
-    <string name="link_overwrite">Link-overskrivning</string>
     <string name="save_product">Vil du gemme dette produkt?</string>
     <string name="error_adding_product">Noget gik galt, da produktet skulle tilføjes</string>
     <string name="photos">Fotos</string>
@@ -576,16 +537,15 @@
     <string name="product_uploaded_successfully">Produkt uploadet</string>
     <string name="no_internet_connection">Du ser ikke ud til at have nogen Internetforbindelse. Fotos uploades, når et netværk bliver tilgængeligt</string>
     <string name="no_internet_unable_to_extract_ingredients">Ingen Internetforbindelse. Kan ikke udtrække ingredienser</string>
-    <string name="percent">%1$d%%</string>
     <string name="overview">Oversigt</string>
     <string name="ingredients">Ingredienser</string>
     <string name="nutrition_facts">Ernæringsfakta</string>
     <string name="your_version">Dine</string>
     <string name="ingredients_picture">Ingrediensfoto</string>
     <string name="packaging">Genbrug</string>
-    <string name="take_ingredients_picture_to_extract">(Tag venligst et foto af ingredienserne for automatisk at udtrække dem)</string>
+    <string name="take_ingredients_picture_to_extract">(Tag et foto af ingredienserne for automatisk at udtrække dem)</string>
     <string name="ingredients_list">Ingrediensoversigt</string>
-    <string name="ingredients_hint">Behold rækkefølgen, angiv %, når det angives, adskilt med komma eller brug -, brug () til ingredienser i en ingrediens, omgiv allergener med _</string>
+    <string name="ingredients_hint" tools:ignore="StringFormatInvalid">Behold rækkefølgen, angiv %, når det angives, adskilt med komma eller brug -, brug () til ingredienser i en ingrediens, omgiv allergener med _</string>
     <string name="extract_ingredients">Udtræk ingredienser</string>
     <string name="extracting_ingredients">Uddrager ingredienser</string>
     <string name="looksGood">Ser godt ud</string>
@@ -619,9 +579,6 @@
     <string name="additional_pictures">Yderligere fotos</string>
     <string name="hint_product_pictures">(Tilføj flere produktfotos, f.eks. genbrugsanvisninger, etiketter mv.)</string>
     <string name="uploading_image">Uploader foto</string>
-    <string name="uploading_nutrition_image">Uploader næringsindholdsfoto</string>
-    <string name="uploading_ingredients_image">Uploader ingrediensfoto</string>
-    <string name="uploading_front_image">Uploader forsidefoto</string>
     <string name="edit_front_image">Refigér forsidefoto</string>
     <string name="edit_nutrition_image">Refigér ernæringsfoto</string>
     <string name="edit_packaging_image">Redigér genbrugsfoto</string>
@@ -631,7 +588,6 @@
     <string name="sign_in_to_answer">Log ind eller opret en konto for at besvare en indsigt.</string>
     <string name="hint_quantity">Eksempler: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pund</string>
     <string name="edit_product_title">Rediger et produkt</string>
-    <string name="nutrient_already_added">%s er allerede til stede i næringsfakta</string>
     <string name="save_edits">Gem ændringer</string>
     <string name="contribution_by">Bidrag fra</string>
     <string name="title_activity_product">Titel</string>
@@ -668,10 +624,10 @@
     <string name="add_nutrient_prompt_text">Tilføj ernæringsfakta for at beregne Nutri-Score</string>
     <string name="add_category_prompt_text">Tilføj en kategori som hjælp til produktfærdiggørelsen</string>
     <string name="add_nutrient_category_prompt_text">Tilføj en kategori og ernæringsfakta som hjælp til produktfærdiggørelsen</string>
-    <string name="couldnot_compute_ecoscore_prompt_text">Det er ikke muligt at udtrække Øko-Score for dette produkt grundet f.eks. en kategori, der ikke er specifik nok eller mangler understøttende data. Mener du, at dette er en fejl, kan du e-maile OFF ved at klikke nedenfor.</string>
-    <string name="add_labels_origins_prompt_text">Øko-Score tager hensyn til miljømærkningsetiketterne og ingrediensoprindelser, så medtag disse på fotoet eller redigér produktet, så de kan tages i betragtning</string>
-    <string name="add_labels_prompt_text">Øko-Score tager hensyn til miljømærkningsetiketterne, så medtag disse på fotoet eller redigér produktet, så de kan tages i betragtning</string>
-    <string name="add_origins_prompt_text">Øko-Score tager hensyn til ingredientsoprindelserne, så medtag disse på fotoet (ingrediensovesigt og/eller enhver geografisk angivelse) eller redigér produktet, så de kan tages i betragtning</string>
+    <string name="couldnot_compute_ecoscore_prompt_text" comment="Do not translate Eco-Score">Det er ikke muligt at udtrække Øko-Score for dette produkt grundet f.eks. en kategori, der ikke er specifik nok eller mangler understøttende data. Mener du, at dette er en fejl, kan du e-maile OFF ved at klikke nedenfor.</string>
+    <string name="add_labels_origins_prompt_text" comment="Do not translate Eco-Score">Øko-Score tager hensyn til miljømærkningsetiketterne og ingrediensoprindelser, så medtag disse på fotoet eller redigér produktet, så de kan tages i betragtning</string>
+    <string name="add_labels_prompt_text" comment="Do not translate Eco-Score">Øko-Score tager hensyn til miljømærkningsetiketterne, så medtag disse på fotoet eller redigér produktet, så de kan tages i betragtning</string>
+    <string name="add_origins_prompt_text" comment="Do not translate Eco-Score">Øko-Score tager hensyn til ingredientsoprindelserne, så medtag disse på fotoet (ingrediensovesigt og/eller enhver geografisk angivelse) eller redigér produktet, så de kan tages i betragtning</string>
     <string name="category_game_btn">Hjælp med at kategorisere produkter</string>
     <string name="version_string">Open Food Facts Android-app</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
@@ -700,9 +656,7 @@
     <string name="import_csv_to_list">Importér en Open Food Facts-liste som CSV-fil</string>
     <string name="toast_import_csv_error">Fejl ved import af CSV-fil</string>
     <string name="toast_import_csv">CSV importeret!</string>
-    <string name="open_csv">Åbn CSV</string>
     <string name="txt_no_nutrition_data">Dette produkt har ingen næringsoplysninger på emballagen. Hvis dette er ændret, kan du redigere produktet.</string>
-    <string name="image_prompt_language">Tag et foto af ingredienserne i</string>
     <string name="swipe_delete_tip">En liste kan slettes ved at stryge den til venstre.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
@@ -729,17 +683,15 @@
     <string name="scan_tooltip">Du kan skubbe op kortet for flere detaljer</string>
     <string name="add_an_allergen">Tilføj et allergen</string>
     <string name="add_a_list">Tilføj en liste</string>
-    <string name="edit_image">Rediger billede</string>
-    <string name="cant_edit_image_not_yet_uploaded">Det nye foto er endnu ikke uploadet. Vent med at redigerer det</string>
-    <string name="unselect_image">Afmarér foto</string>
+    <string name="edit_image">Redigér foto</string>
+    <string name="cant_edit_image_not_yet_uploaded">Nyt foto endnu ikke uploadet. Afvent med redigering af det</string>
+    <string name="unselect_image">Fravælg foto</string>
     <string name="choose_default_language">Vælg produktsprog</string>
     <string name="barcode">Stregkode</string>
     <string name="productAdditivesNone">Ingen tilsætningsstoffer</string>
-    <string name="error_uploading_photo">Noget gik galt under upload af et nyt foto</string>
-    <string name="required_for_ecoscore">(Nødvendig til beregning af Nutri-Score)</string>
+    <string name="required_for_ecoscore" comment="Do not translate Eco-Score">(Nødvendig til beregning af Nutri-Score)</string>
     <string name="hint_origin">Eks.: USA, Frankrig, Italien</string>
     <!-- Used for diets AddOn -->
-    <string name="history_network_error">Produktet kunne ikke indlæses. Forsøg igen, når du atter er online.</string>
     <string name="cant_modify_if_refreshing">Afvent færdiggørelse af upload</string>
     <string name="closeZoom">Klik for at lukke zoom</string>
     <string name="imageFullscreen">Zoom</string>
@@ -752,7 +704,7 @@
     <string name="image_edit_tip">Tryk på fotoet for at zoome, ændre, beskære, rotere mv.…</string>
     <string name="ingredients_in_this_product_are">Ingredienser i dette produkt udgør %1$s.</string>
     <string name="ingredients_in_this_product">Ingredienser i dette produkt udgør %1$s:</string>
-    <string name="display_analysis_tag_status">Vis %1$s-status</string>
+    <string name="display_analysis_tag_status" comment="Do not change the placeholder">Vis %1$s-status</string>
     <string name="unknown_status_no_translation">Produktstatussen kunne ikke vurderes grundet ukendte ingredienser.</string>
     <string name="help_translate_ingredients">Hjælp med at oversætte ingredienserne til dit sprog</string>
     <string name="unknown_status_missing_ingredients">Produktstatussen kunne ikke vurderes grundet manglende ingredienser.</string>
@@ -790,29 +742,28 @@
     <string name="content_exit">Tryk hér for at returnere til produktet</string>
     <string name="icon_label">Etiketikon</string>
     <string name="icon_categories">Kategoriikon</string>
-    <string name="icon_emb">EMB-kodeikon</string>
+    <string name="icon_emb">Sporbarhedskodeikon</string>
     <string name="product_front_image">Produktbillede front</string>
     <string name="brand_hint">Eks.: Coca-Cola, Nestle, mv.…</string>
     <string name="sign_in_or_register">Log ind eller tilmeld</string>
-    <string name="hunger_game_call_to_action">Hjælp med at klassificere flere %1$s</string>
+    <string name="hunger_game_call_to_action" comment="Do not change the placeholder">Hjælp med at klassificere flere %1$s</string>
     <string name="txtHomeOnline">Open Food Facts er en åben database med flere end %1$s produkter (plus dem, du vil bidrage med).</string>
-    <string name="enabled">Aktiveret</string>
     <!-- Application theme settings -->
     <string name="follow_system">Følg system</string>
     <string name="day">Dag</string>
     <string name="night">Nat</string>
     <string name="report_email_chooser_title">Indsend en rapport e-mail</string>
     <!-- Changelog String -->
-    <string name="changelog_translation_help">Ønsker at se denne ændringslog i %s?\nDeltag i oversættelsesteamet!</string>
+    <string name="changelog_translation_help" comment="Do not change the placeholder">Ønsker at se denne ændringslog i %s?\nDeltag i oversættelsesteamet!</string>
     <string name="whats_new">Nyt i Open Food Facts?</string>
     <!-- New onboarding slides -->
     <string name="title_welcome_intro">Tilslut dig fødevarerevolutionen</string>
     <string name="msg_welcome_intro">Skan fødevarer, tag fotos, hjælp med at traneformere fødevaresystemet</string>
-    <string name="title_welcome_nutriscore">Få ernæringsinformation</string>
+    <string name="title_welcome_nutriscore" comment="Do not translate Nutri-Score">Get the Nutri-Score</string>
     <string name="msg_welcome_nutriscore">En simpel syntese af dine fødevarers ernæringskvalitet</string>
     <string name="title_welcome_nova">Undgå ultraforarbejdede fødevarer</string>
     <string name="msg_welcome_nova">Reducér mængden af ultraforarbejdede fødevarer i din kost.</string>
-    <string name="title_welcome_ecoscore">Øko-Score</string>
+    <string name="title_welcome_ecoscore" comment="Do not translate Eco-Score">Øko-Score</string>
     <string name="msg_welcome_ecoscore">En syntese af din mads miljøpåvirkning.</string>
     <string name="title_welcome_matomo">Indsend anonyme analysedata</string>
     <string name="msg_welcome_matomo">Hjælp OFF-frivillige med at forbedre appen. Du kan tillade indsendelse af anonyme analysdata\n\nDette kan når som helst aktiveres/deaktiveres via indstillingerne.</string>

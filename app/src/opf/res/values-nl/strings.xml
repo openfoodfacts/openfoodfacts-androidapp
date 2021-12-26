@@ -21,7 +21,7 @@
     <string name="slide_3_desc">Alle producten die je gebruikt, in een handige exporteerbare lijst</string>
     <string name="slide_4_title">Werkt offline</string>
     <string name="slide_4_desc">Je kan nieuwe producten toevoegen, zelfs als je nu geen internetverbinding hebt</string>
-    <string name="txtDialogsContent">Het gescande product bestaat nog niet in Open Products Facts. Voeg deze toe.</string>
+    <string name="product_does_not_exist_please_add_it">Het gescande product bestaat nog niet in Open Products Facts. Voeg deze toe.</string>
     <string name="txtDialogsContentPowerMode">Het gescande product bestaat al in Open Products Facts.</string>
     <string name="msg_share">Bekijk dit product op Open Products Facts:</string>
     <string name="not_support_books">Boeken worden nog niet ondersteund door Open Products Facts</string>
@@ -33,7 +33,7 @@
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Informatie over je allergieën wordt nooit naar de Open Products Facts-server verzonden. Let ook op dat productgegevens mogelijk niet accuraat zijn en detectie mogelijk niet 100% accuraat is, dus controleer dit aub zelf! </string>
     <!-- OPF tagline in different languages -->
     <string name="version_string">Open Products Facts Android-app</string>
-    <string name="tagline">de open producten-database</string>
+    <string name="tagline">the free product database</string>
     <string name="product_not_found">Het door jou gescande product %1$s, bestaat nog niet. Wil je het toevoegen?</string>
     <string name="currently_on_version">Momenteel op Open Products Facts</string>
     <string name="category_game_btn">Help producten te categoriseren</string>

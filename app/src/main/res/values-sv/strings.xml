@@ -199,7 +199,7 @@
     <string name="uploadLater">Bilden kommer att laddas upp när ett nätverk finns tillgängligt</string>
     <string name="txtInfoLoginOk">Användare sparad</string>
     <string name="txtInfoLoginNo">Användare inte sparad</string>
-    <string name="txtDialogsContent">Den skannade produkten finns inte i Open Food Facts. Vänligen lägg till den.</string>
+    <string name="product_does_not_exist_please_add_it">Den skannade produkten finns inte i Open Food Facts. Vänligen lägg till den.</string>
     <string name="txtYes">Ja</string>
     <string name="txtNo">Nej</string>
     <string name="hintBrand">Varumärke</string>
@@ -594,7 +594,7 @@
     <string name="packaging">Recycling</string>
     <string name="take_ingredients_picture_to_extract">(Please take a photo of the ingredients to automatically extract them)</string>
     <string name="ingredients_list">Ingredienslista</string>
-    <string name="ingredients_hint">Keep the order, indicate the % when specified, separate with a comma or use -, use () for ingredients of an ingredient, surround allergens with _</string>
+    <string name="ingredients_hint" tools:ignore="StringFormatInvalid">Keep the order, indicate the % when specified, separate with a comma or use -, use () for ingredients of an ingredient, surround allergens with _</string>
     <string name="extract_ingredients">Extrahera ingredienser</string>
     <string name="extracting_ingredients">Utvinner ingredienser</string>
     <string name="looksGood">Ser bra ut</string>

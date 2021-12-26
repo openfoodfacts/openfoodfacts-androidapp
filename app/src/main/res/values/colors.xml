@@ -110,4 +110,6 @@
     <color name="monkey_uncertain">#fecb02</color>
     <color name="monkey_sad">#e63e11</color>
     <color name="monkey_unknown">#777777</color>
+
+    <color name="daynight_recycler_bg">@color/md_light_background</color>
 </resources>

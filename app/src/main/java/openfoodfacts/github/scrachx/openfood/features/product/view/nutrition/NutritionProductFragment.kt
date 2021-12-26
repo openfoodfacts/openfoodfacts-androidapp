@@ -44,7 +44,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.afollestad.materialdialogs.MaterialDialog
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_SHORT
 import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
@@ -74,7 +74,7 @@ import openfoodfacts.github.scrachx.openfood.models.*
 import openfoodfacts.github.scrachx.openfood.models.MeasurementUnit.*
 import openfoodfacts.github.scrachx.openfood.models.entities.SendProduct
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
+import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.*
 import pl.aprilapps.easyphotopicker.EasyImage
 import java.io.File
@@ -89,7 +89,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
     private val viewModel: NutritionProductViewModel by viewModels()
 
     @Inject
-    lateinit var client: OpenFoodAPIClient
+    lateinit var client: ProductRepository
 
     @Inject
     lateinit var picasso: Picasso
@@ -321,17 +321,14 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
         // Fat
         val fat2 = nutriments[Nutriment.FAT]
         if (fat2 != null) {
-            nutrimentListItems += BoldNutrimentListItem(getString(R.string.nutrition_fat), fat2)
+            nutrimentListItems += NutrimentListItem(getString(R.string.nutrition_fat), fat2).bold()
             nutrimentListItems.addAll(getNutrimentItems(nutriments, FAT_MAP))
         }
 
         // Carbohydrates
         val carbohydrates = nutriments[Nutriment.CARBOHYDRATES]
         if (carbohydrates != null) {
-            nutrimentListItems += BoldNutrimentListItem(
-                getString(R.string.nutrition_carbohydrate),
-                carbohydrates
-            )
+            nutrimentListItems += NutrimentListItem(getString(R.string.nutrition_carbohydrate), carbohydrates).bold()
             nutrimentListItems += getNutrimentItems(nutriments, CARBO_MAP)
         }
 
@@ -341,7 +338,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
         // Proteins
         val proteins = nutriments[Nutriment.PROTEINS]
         if (proteins != null) {
-            nutrimentListItems += BoldNutrimentListItem(getString(R.string.nutrition_proteins), proteins)
+            nutrimentListItems += NutrimentListItem(getString(R.string.nutrition_proteins), proteins).bold()
             nutrimentListItems += getNutrimentItems(nutriments, PROT_MAP)
         }
 
@@ -355,13 +352,13 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
 
         // Vitamins
         if (nutriments.hasVitamins) {
-            nutrimentListItems += BoldNutrimentListItem(getString(R.string.nutrition_vitamins))
+            nutrimentListItems += NutrimentListItem(getString(R.string.nutrition_vitamins)).bold()
             nutrimentListItems += getNutrimentItems(nutriments, VITAMINS_MAP)
         }
 
         // Minerals
         if (nutriments.hasMinerals) {
-            nutrimentListItems += BoldNutrimentListItem(getString(R.string.nutrition_minerals))
+            nutrimentListItems += NutrimentListItem(getString(R.string.nutrition_minerals)).bold()
             nutrimentListItems += getNutrimentItems(nutriments, MINERALS_MAP)
         }
 
@@ -502,15 +499,17 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
 
     private fun openFullScreen() {
         if (nutrientsImageUrl != null) {
-            FullScreenActivityOpener.openForUrl(
-                this,
-                client,
-                product,
-                ProductImageField.NUTRITION,
-                nutrientsImageUrl!!,
-                binding.imageViewNutrition,
-                localeManager.getLanguage()
-            )
+            lifecycleScope.launch {
+                FullScreenActivityOpener.openForUrl(
+                    this@NutritionProductFragment,
+                    client,
+                    product,
+                    ProductImageField.NUTRITION,
+                    nutrientsImageUrl!!,
+                    binding.imageViewNutrition,
+                    localeManager.getLanguage()
+                )
+            }
         } else {
             // take a picture
             when {
@@ -525,28 +524,25 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
     }
 
     private fun calculateNutritionFacts() {
-        val dialog = MaterialDialog.Builder(requireActivity()).run {
-            title(R.string.calculate_nutrition_facts)
-            customView(R.layout.dialog_calculate_calories, false)
-            dismissListener {
+        val dialog = MaterialAlertDialogBuilder(requireContext())
+            .setTitle(R.string.calculate_nutrition_facts)
+            .setView(R.layout.dialog_calculate_calories)
+            .setOnDismissListener {
                 requireActivity().hideKeyboard()
             }
-            build()
-        }.apply { show() }
+            .show()
 
-
-        val weightText = dialog.findViewById(R.id.edit_text_weight) as EditText
-
-        (dialog.findViewById(R.id.spinner_weight) as Spinner).apply {
+        (dialog.findViewById(R.id.spinner_weight) as? Spinner)?.apply {
             onItemSelectedListener = object : OnItemSelectedListener {
-                override fun onNothingSelected(adapterView: AdapterView<*>?) = Unit // We don't care
+                override fun onNothingSelected(adapterView: AdapterView<*>?) = Unit
 
                 override fun onItemSelected(adapterView: AdapterView<*>?, view: View, i: Int, l: Long) {
-                    val btn = dialog.findViewById(R.id.txt_calories_result) as Button
-
-                    btn.setOnClickListener {
-                        val weight = weightText.text.toString().toFloatOrNull()
-                        if (weightText.text.isEmpty() || weight == null) {
+                    (dialog.findViewById(R.id.txt_calories_result) as? Button)?.setOnClickListener {
+                        val weight = (dialog.findViewById(R.id.edit_text_weight) as? EditText)
+                            ?.text
+                            ?.toString()
+                            ?.toFloatOrNull()
+                        if (weight == null) {
                             Snackbar.make(binding.root, resources.getString(R.string.please_enter_weight), LENGTH_SHORT).show()
                         } else {
                             CalculateDetailsActivity.start(
@@ -575,7 +571,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
         }
 
         // Load to server
-        lifecycleScope.launch { client.postImg(image).await() }
+        lifecycleScope.launch { client.postImg(image) }
 
         // Load into view
         binding.addPhotoLabel.visibility = GONE

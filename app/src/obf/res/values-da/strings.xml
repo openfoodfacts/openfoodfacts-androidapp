@@ -21,7 +21,7 @@
     <string name="slide_3_desc">Al den kosmetik du benytter i én praktisk liste du kan eksportere</string>
     <string name="slide_4_title">Fungerer offline</string>
     <string name="slide_4_desc">Du kan tilføje nye produkter, selv hvis du ikke har en tilgængelig Internetforbindelse</string>
-    <string name="txtDialogsContent">Det skannede produkt findes ikke i Open Beauty Facts endnu. Tilføj det venligst.</string>
+    <string name="product_does_not_exist_please_add_it">Det skannede produkt findes endnu ikke i Open Beauty Facts. Tilføj det gerne.</string>
     <string name="msg_share">Kig på dette produkt på Open Beauty Facts:</string>
     <string name="txt_broaden_search">- udvider din søgning\n- skan og føj den til Open Beauty Facts</string>
     <string name="Donation">Trykk her for at donere til Open Beauty Facts</string>
@@ -46,4 +46,5 @@
     <string name="txt_info_eaten_products">Du vil kunne føje produkter til denne liste ved at skanne produkter, trække produktkortet op og trykke på \"Produkter, som skal købes\".
         Du vl også kunne føje produkter til denne liste ved at søge efter dem og trykke på knappen + øverst til højre på produktsiden.</string>
     <string name="OFFlogo">Open Beauty Facts-logo</string>
+    <string name="txtDialogsContentPowerMode">Produktet, du har skannet, findes allerede i Open Food Facts.</string>
 </resources>

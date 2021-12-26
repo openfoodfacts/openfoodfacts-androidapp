@@ -21,7 +21,7 @@
     <string name="slide_3_desc">All the petfood you scan, in one handy list you can export</string>
     <string name="slide_4_title">ऑफ़लाइन काम करता है</string>
     <string name="slide_4_desc">आप नए उत्पादों को ऐड कर सकते हैं, भले ही आपके पास अभी कोई इंटरनेट कनेक्शन न हो</string>
-    <string name="txtDialogsContent">The product you scanned does not exist yet in Open Pet Food Facts. Please add it.</string>
+    <string name="product_does_not_exist_please_add_it">The product you scanned does not exist yet in Open Pet Food Facts. Please add it.</string>
     <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Pet Food Facts.</string>
     <string name="msg_share">Look at this product on Open Pet Food Facts :</string>
     <string name="not_support_books">ओपन फ़ूड फैक्ट्स पर पुस्तकें उपलब्ध नहीं है</string>

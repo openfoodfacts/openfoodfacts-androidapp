@@ -15,6 +15,11 @@
  */
 package openfoodfacts.github.scrachx.openfood.models
 
-enum class AnnotationAnswer(val result: Int) {
-    NEGATIVE(0), POSITIVE(1), AMBIGUITY(-1);
+data class AnnotationAnswer(
+    val insightId: String,
+    val value: Value
+) {
+    enum class Value(val result: Int) {
+        NEGATIVE(0), POSITIVE(1), AMBIGUITY(-1);
+    }
 }

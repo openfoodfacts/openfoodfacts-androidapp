@@ -28,6 +28,8 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat.checkSelfPermission
 import androidx.core.text.bold
 import androidx.core.text.buildSpannedString
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.coroutineScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
@@ -40,7 +42,7 @@ import openfoodfacts.github.scrachx.openfood.features.FullScreenActivityOpener
 import openfoodfacts.github.scrachx.openfood.features.shared.adapters.NutrientLevelListAdapter
 import openfoodfacts.github.scrachx.openfood.models.*
 import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveName
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
+import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.*
 import pl.aprilapps.easyphotopicker.EasyImage
 import java.io.File
@@ -48,7 +50,8 @@ import java.io.File
 class ProductCompareAdapter(
     private val compareProducts: List<ProductCompareViewModel.CompareProduct>,
     internal val activity: Activity,
-    private val client: OpenFoodAPIClient,
+    private val lifecycleOwner: LifecycleOwner,
+    private val client: ProductRepository,
     private val picasso: Picasso,
     private val language: String
 
@@ -105,15 +108,17 @@ class ProductCompareAdapter(
         val imageUrl = product.getImageUrl(language)
         holder.binding.productComparisonImage.setOnClickListener {
             if (imageUrl != null) {
-                FullScreenActivityOpener.openForUrl(
-                    activity,
-                    client,
-                    product,
-                    ProductImageField.FRONT,
-                    imageUrl,
-                    holder.binding.productComparisonImage,
-                    language
-                )
+                lifecycleOwner.lifecycle.coroutineScope.launchWhenCreated {
+                    FullScreenActivityOpener.openForUrl(
+                        activity,
+                        client,
+                        product,
+                        ProductImageField.FRONT,
+                        imageUrl,
+                        holder.binding.productComparisonImage,
+                        language
+                    )
+                }
             } else {
                 // take a picture
                 when {

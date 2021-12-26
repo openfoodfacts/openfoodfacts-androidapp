@@ -1,20 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <data>
-
-    </data>
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:background="?android:attr/windowBackground"
-        app:itemIconTint="@color/navigation_bottom_item"
-        app:itemTextColor="@color/navigation_bottom_item"
-        app:labelVisibilityMode="labeled"
-        app:menu="@menu/navigation_bottom" />
-</layout>
+<com.google.android.material.bottomnavigation.BottomNavigationView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bottom_navigation"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
+    android:background="?android:attr/windowBackground"
+    app:itemIconTint="@color/navigation_bottom_item"
+    app:itemTextColor="@color/navigation_bottom_item"
+    app:labelVisibilityMode="labeled"
+    app:menu="@menu/navigation_bottom" />

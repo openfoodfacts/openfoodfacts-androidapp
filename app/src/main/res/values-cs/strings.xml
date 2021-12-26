@@ -209,7 +209,7 @@
     <string name="uploadLater">Obrázek se nahraje, až bude síť k dispozici</string>
     <string name="txtInfoLoginOk">Uživatel byl uložen</string>
     <string name="txtInfoLoginNo">Uživatel nebyl uložen</string>
-    <string name="txtDialogsContent">Produkt, který jste naskenovali, ještě neexistuje v databázi Open Food Facts. Přidejte jej prosím.</string>
+    <string name="product_does_not_exist_please_add_it">Produkt, který jste naskenovali, ještě neexistuje v databázi Open Food Facts. Přidejte jej prosím.</string>
     <string name="txtYes">Ano</string>
     <string name="txtNo">Ne</string>
     <string name="hintBrand">Výrobce</string>
@@ -606,7 +606,7 @@
     <string name="packaging">Recycling</string>
     <string name="take_ingredients_picture_to_extract">(Vyfotografujte prosím složení výrobku, aby mohlo být aut. rozpoznáno.)</string>
     <string name="ingredients_list">Složení</string>
-    <string name="ingredients_hint">Zachovejte pořadí složek. Pokud je uveden, tak nezapomeňte uvést podíl složky v %. Jednotlivé složky oddělte čárkou. Pokud je složka z více přísad, uveďte je do závorky (). Alergeny oddělte z obou stran podtržítkem _</string>
+    <string name="ingredients_hint" tools:ignore="StringFormatInvalid">Zachovejte pořadí složek. Pokud je uveden, tak nezapomeňte uvést podíl složky v %. Jednotlivé složky oddělte čárkou. Pokud je složka z více přísad, uveďte je do závorky (). Alergeny oddělte z obou stran podtržítkem _</string>
     <string name="extract_ingredients">Aut. rozpoznat složení</string>
     <string name="extracting_ingredients">Rozpoznávám složení</string>
     <string name="looksGood">Uložit</string>

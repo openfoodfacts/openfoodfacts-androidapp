@@ -21,7 +21,7 @@
     <string name="slide_3_desc">Todo o cosmético que você usa pode exportar em uma lista útil</string>
     <string name="slide_4_title">Funciona offline</string>
     <string name="slide_4_desc">Pode adicionar novos produtos, mesmo se não tiver uma conexão com a Internet agora</string>
-    <string name="txtDialogsContent">O produto que digitalizou ainda não existe no Open Beauty Facts. Por favor adicione-o.</string>
+    <string name="product_does_not_exist_please_add_it">O produto que digitalizou ainda não existe no Open Beauty Facts. Por favor adicione-o.</string>
     <string name="msg_share">Veja este produto em Open Beauty Facts:</string>
     <string name="txt_broaden_search">- alargar a sua pesquisa \n- digitalizar e adicionar ao Open Beauty Facts</string>
     <string name="Donation">Clique aqui para doar para Open Beauty Facts</string>
