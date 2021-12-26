@@ -2775,6 +2775,34 @@ $dokka.location:openfoodfacts.github.scrachx.openfood.scanner/BarcodeProcessor.C
 $dokka.location:openfoodfacts.github.scrachx.openfood.scanner/BarcodeProcessor///PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.scanner/-barcode-processor/index.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.scanner/BarcodeProcessor/BarcodeProcessor/#openfoodfacts.github.scrachx.openfood.camera.GraphicOverlay#openfoodfacts.github.scrachx.openfood.camera.WorkflowModel/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.scanner/-barcode-processor/-barcode-processor.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.scanner/BarcodeProcessor/stop/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.scanner/-barcode-processor/stop.html
+$dokka.location:openfoodfacts.github.scrachx.openfood.test////PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.test/index.html
+$dokka.location:openfoodfacts.github.scrachx.openfood.test//getFilteredParameters/#kotlin.Function1[openfoodfacts.github.scrachx.openfood.test.ScreenshotParameter?,kotlin.Boolean]/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.test/get-filtered-parameters.html
+$dokka.location:openfoodfacts.github.scrachx.openfood.test/FileWritingScreenshotCallback.Companion///PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.test/-file-writing-screenshot-callback/-companion/index.html
+$dokka.location:openfoodfacts.github.scrachx.openfood.test/FileWritingScreenshotCallback///PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.test/-file-writing-screenshot-callback/index.html
+$dokka.location:openfoodfacts.github.scrachx.openfood.test/FileWritingScreenshotCallback/screenshotCaptured/#kotlin.String#Bitmap/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.test/-file-writing-screenshot-callback/screenshot-captured.html
+$dokka.location:openfoodfacts.github.scrachx.openfood.test/ScreenshotActivityTestRule.Companion///PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.test/-screenshot-activity-test-rule/-companion/index.html
+$dokka.location:openfoodfacts.github.scrachx.openfood.test/ScreenshotActivityTestRule.Companion/MILLIS_TO_WAIT_TO_DISPLAY_ACTIVITY/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.test/-screenshot-activity-test-rule/-companion/-m-i-l-l-i-s_-t-o_-w-a-i-t_-t-o_-d-i-s-p-l-a-y_-a-c-t-i-v-i-t-y.html
+$dokka.location:openfoodfacts.github.scrachx.openfood.test/ScreenshotActivityTestRule///PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.test/-screenshot-activity-test-rule/index.html
+$dokka.location:openfoodfacts.github.scrachx.openfood.test/ScreenshotActivityTestRule/ScreenshotActivityTestRule/#Class<T>[TypeParam(bounds=[kotlin.Any?])]#kotlin.String#Context#LocaleManager/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.test/-screenshot-activity-test-rule/-screenshot-activity-test-rule.html
+$dokka.location:openfoodfacts.github.scrachx.openfood.test/ScreenshotActivityTestRule/afterActivityLaunched/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.test/-screenshot-activity-test-rule/after-activity-launched.html
+$dokka.location:openfoodfacts.github.scrachx.openfood.test/ScreenshotActivityTestRule/afterActivityLaunchedAction/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.test/-screenshot-activity-test-rule/after-activity-launched-action.html
+$dokka.location:openfoodfacts.github.scrachx.openfood.test/ScreenshotActivityTestRule/beforeActivityLaunched/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.test/-screenshot-activity-test-rule/before-activity-launched.html
+$dokka.location:openfoodfacts.github.scrachx.openfood.test/ScreenshotActivityTestRule/beforeActivityStartedAction/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.test/-screenshot-activity-test-rule/before-activity-started-action.html
+$dokka.location:openfoodfacts.github.scrachx.openfood.test/ScreenshotActivityTestRule/context/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.test/-screenshot-activity-test-rule/context.html
+$dokka.location:openfoodfacts.github.scrachx.openfood.test/ScreenshotActivityTestRule/firstTimeLaunched/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.test/-screenshot-activity-test-rule/first-time-launched.html
+$dokka.location:openfoodfacts.github.scrachx.openfood.test/ScreenshotActivityTestRule/name/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.test/-screenshot-activity-test-rule/name.html
+$dokka.location:openfoodfacts.github.scrachx.openfood.test/ScreenshotActivityTestRule/screenshotParameter/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.test/-screenshot-activity-test-rule/screenshot-parameter.html
+$dokka.location:openfoodfacts.github.scrachx.openfood.test/ScreenshotActivityTestRule/takeScreenshot/#kotlin.String?/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.test/-screenshot-activity-test-rule/take-screenshot.html
+$dokka.location:openfoodfacts.github.scrachx.openfood.test/ScreenshotParameter///PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.test/-screenshot-parameter/index.html
+$dokka.location:openfoodfacts.github.scrachx.openfood.test/ScreenshotParameter/ScreenshotParameter/#Locale#kotlin.collections.List[kotlin.String]/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.test/-screenshot-parameter/-screenshot-parameter.html
+$dokka.location:openfoodfacts.github.scrachx.openfood.test/ScreenshotParameter/locale/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.test/-screenshot-parameter/locale.html
+$dokka.location:openfoodfacts.github.scrachx.openfood.test/ScreenshotParameter/productCodes/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.test/-screenshot-parameter/product-codes.html
+$dokka.location:openfoodfacts.github.scrachx.openfood.test/ScreenshotParametersProvider///PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.test/-screenshot-parameters-provider/index.html
+$dokka.location:openfoodfacts.github.scrachx.openfood.test/ScreenshotParametersProvider/defaults/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.test/-screenshot-parameters-provider/defaults.html
+$dokka.location:openfoodfacts.github.scrachx.openfood.test/ScreenshotTaker.Companion///PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.test/-screenshot-taker/-companion/index.html
+$dokka.location:openfoodfacts.github.scrachx.openfood.test/ScreenshotTaker///PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.test/-screenshot-taker/index.html
+$dokka.location:openfoodfacts.github.scrachx.openfood.test/ScreenshotTaker/ScreenshotTaker/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.test/-screenshot-taker/-screenshot-taker.html
+$dokka.location:openfoodfacts.github.scrachx.openfood.test/ScreenshotTaker/takeScreenshot/#openfoodfacts.github.scrachx.openfood.test.ScreenshotParameter#kotlin.String#openfoodfacts.github.scrachx.openfood.test.ScreenshotActivityTestRule[Activity?]/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.test/-screenshot-taker/take-screenshot.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.utils////PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.utils/index.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.utils//LOCALE_FILE_SCHEME/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.utils/-l-o-c-a-l-e_-f-i-l-e_-s-c-h-e-m-e.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.utils//MY_PERMISSIONS_REQUEST_CAMERA/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.utils/-m-y_-p-e-r-m-i-s-s-i-o-n-s_-r-e-q-u-e-s-t_-c-a-m-e-r-a.html
@@ -3176,12 +3204,42 @@ $dokka.location:openfoodfacts.github.scrachx.openfood.utils/ValueState.NOT_VALID
 $dokka.location:openfoodfacts.github.scrachx.openfood.utils/ValueState.VALID///PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.utils/-value-state/-v-a-l-i-d/index.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.utils/ValueState///PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.utils/-value-state/index.html
 $dokka.location:openfoodfacts.github.scrachx.openfood////PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood/index.html
+$dokka.location:openfoodfacts.github.scrachx.openfood/AbstractScreenshotTest.Companion///PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood/-abstract-screenshot-test/-companion/index.html
+$dokka.location:openfoodfacts.github.scrachx.openfood/AbstractScreenshotTest.Companion/ACTION_NAME/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood/-abstract-screenshot-test/-companion/-a-c-t-i-o-n_-n-a-m-e.html
+$dokka.location:openfoodfacts.github.scrachx.openfood/AbstractScreenshotTest///PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood/-abstract-screenshot-test/index.html
+$dokka.location:openfoodfacts.github.scrachx.openfood/AbstractScreenshotTest/AbstractScreenshotTest/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood/-abstract-screenshot-test/-abstract-screenshot-test.html
+$dokka.location:openfoodfacts.github.scrachx.openfood/AbstractScreenshotTest/context/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood/-abstract-screenshot-test/context.html
+$dokka.location:openfoodfacts.github.scrachx.openfood/AbstractScreenshotTest/hiltRule/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood/-abstract-screenshot-test/hilt-rule.html
+$dokka.location:openfoodfacts.github.scrachx.openfood/AbstractScreenshotTest/localeManager/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood/-abstract-screenshot-test/locale-manager.html
+$dokka.location:openfoodfacts.github.scrachx.openfood/AbstractScreenshotTest/permissionRule/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood/-abstract-screenshot-test/permission-rule.html
+$dokka.location:openfoodfacts.github.scrachx.openfood/AbstractScreenshotTest/release/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood/-abstract-screenshot-test/release.html
+$dokka.location:openfoodfacts.github.scrachx.openfood/AbstractScreenshotTest/setup/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood/-abstract-screenshot-test/setup.html
 $dokka.location:openfoodfacts.github.scrachx.openfood/AppFlavors///PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood/-app-flavors/index.html
 $dokka.location:openfoodfacts.github.scrachx.openfood/AppFlavors/OBF/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood/-app-flavors/-o-b-f.html
 $dokka.location:openfoodfacts.github.scrachx.openfood/AppFlavors/OFF/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood/-app-flavors/-o-f-f.html
 $dokka.location:openfoodfacts.github.scrachx.openfood/AppFlavors/OPF/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood/-app-flavors/-o-p-f.html
 $dokka.location:openfoodfacts.github.scrachx.openfood/AppFlavors/OPFF/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood/-app-flavors/-o-p-f-f.html
 $dokka.location:openfoodfacts.github.scrachx.openfood/AppFlavors/isFlavors/#kotlin.Array[kotlin.String]/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood/-app-flavors/is-flavors.html
+$dokka.location:openfoodfacts.github.scrachx.openfood/TakeScreenshotIncompleteProductsTest///PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood/-take-screenshot-incomplete-products-test/index.html
+$dokka.location:openfoodfacts.github.scrachx.openfood/TakeScreenshotIncompleteProductsTest/TakeScreenshotIncompleteProductsTest/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood/-take-screenshot-incomplete-products-test/-take-screenshot-incomplete-products-test.html
+$dokka.location:openfoodfacts.github.scrachx.openfood/TakeScreenshotIncompleteProductsTest/incompleteRule/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood/-take-screenshot-incomplete-products-test/incomplete-rule.html
+$dokka.location:openfoodfacts.github.scrachx.openfood/TakeScreenshotIncompleteProductsTest/testTakeScreenshot/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood/-take-screenshot-incomplete-products-test/test-take-screenshot.html
+$dokka.location:openfoodfacts.github.scrachx.openfood/TakeScreenshotMainActivityTest///PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood/-take-screenshot-main-activity-test/index.html
+$dokka.location:openfoodfacts.github.scrachx.openfood/TakeScreenshotMainActivityTest/TakeScreenshotMainActivityTest/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood/-take-screenshot-main-activity-test/-take-screenshot-main-activity-test.html
+$dokka.location:openfoodfacts.github.scrachx.openfood/TakeScreenshotMainActivityTest/activityRule/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood/-take-screenshot-main-activity-test/activity-rule.html
+$dokka.location:openfoodfacts.github.scrachx.openfood/TakeScreenshotMainActivityTest/testTakeScreenshotMainActivity/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood/-take-screenshot-main-activity-test/test-take-screenshot-main-activity.html
+$dokka.location:openfoodfacts.github.scrachx.openfood/TakeScreenshotMainActivityTest/welcomeActivityRule/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood/-take-screenshot-main-activity-test/welcome-activity-rule.html
+$dokka.location:openfoodfacts.github.scrachx.openfood/TakeScreenshotScanActivityTest.Companion///PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood/-take-screenshot-scan-activity-test/-companion/index.html
+$dokka.location:openfoodfacts.github.scrachx.openfood/TakeScreenshotScanActivityTest.Companion/MS_TO_WAIT_TO_DISPLAY_PRODUCT_IN_SCAN/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood/-take-screenshot-scan-activity-test/-companion/-m-s_-t-o_-w-a-i-t_-t-o_-d-i-s-p-l-a-y_-p-r-o-d-u-c-t_-i-n_-s-c-a-n.html
+$dokka.location:openfoodfacts.github.scrachx.openfood/TakeScreenshotScanActivityTest///PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood/-take-screenshot-scan-activity-test/index.html
+$dokka.location:openfoodfacts.github.scrachx.openfood/TakeScreenshotScanActivityTest/TakeScreenshotScanActivityTest/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood/-take-screenshot-scan-activity-test/-take-screenshot-scan-activity-test.html
+$dokka.location:openfoodfacts.github.scrachx.openfood/TakeScreenshotScanActivityTest/activityRule/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood/-take-screenshot-scan-activity-test/activity-rule.html
+$dokka.location:openfoodfacts.github.scrachx.openfood/TakeScreenshotScanActivityTest/testTakeScreenshotScanActivity/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood/-take-screenshot-scan-activity-test/test-take-screenshot-scan-activity.html
+$dokka.location:openfoodfacts.github.scrachx.openfood/TakeScreenshotShowProductsTest///PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood/-take-screenshot-show-products-test/index.html
+$dokka.location:openfoodfacts.github.scrachx.openfood/TakeScreenshotShowProductsTest/TakeScreenshotShowProductsTest/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood/-take-screenshot-show-products-test/-take-screenshot-show-products-test.html
+$dokka.location:openfoodfacts.github.scrachx.openfood/TakeScreenshotShowProductsTest/activityHistoryRule/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood/-take-screenshot-show-products-test/activity-history-rule.html
+$dokka.location:openfoodfacts.github.scrachx.openfood/TakeScreenshotShowProductsTest/activityShowProductRule/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood/-take-screenshot-show-products-test/activity-show-product-rule.html
+$dokka.location:openfoodfacts.github.scrachx.openfood/TakeScreenshotShowProductsTest/testTakeScreenshot/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood/-take-screenshot-show-products-test/test-take-screenshot.html
 openfoodfacts.github.scrachx.openfood
 openfoodfacts.github.scrachx.openfood.analytics
 openfoodfacts.github.scrachx.openfood.app
@@ -3258,5 +3316,6 @@ openfoodfacts.github.scrachx.openfood.network
 openfoodfacts.github.scrachx.openfood.network.services
 openfoodfacts.github.scrachx.openfood.repositories
 openfoodfacts.github.scrachx.openfood.scanner
+openfoodfacts.github.scrachx.openfood.test
 openfoodfacts.github.scrachx.openfood.utils
 
