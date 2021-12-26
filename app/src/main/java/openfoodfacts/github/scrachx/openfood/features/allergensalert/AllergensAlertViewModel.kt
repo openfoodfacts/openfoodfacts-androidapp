@@ -24,7 +24,7 @@ class AllergensAlertViewModel @Inject constructor(
     private val taxonomiesRepository: TaxonomiesRepository,
     private val matomoAnalytics: MatomoAnalytics,
     private val localeManager: LocaleManager,
-    private val coroutineDispatchers: CoroutineDispatchers,
+    private val dispatchers: CoroutineDispatchers,
     private val allergenPreferencesRepository: AllergenPreferencesRepository,
     private val networkConnectivityRepository: NetworkConnectivityRepository
 ) : ViewModel() {
@@ -58,7 +58,7 @@ class AllergensAlertViewModel @Inject constructor(
 
     fun addAllergen(allergen: AllergenName) {
         viewModelScope.launch {
-            withContext(coroutineDispatchers.io()) {
+            withContext(dispatchers.IO) {
                 taxonomiesRepository.setAllergenEnabled(allergen.allergenTag, true)
                 matomoAnalytics.trackEvent(AnalyticsEvent.AllergenAlertCreated(allergen.allergenTag))
             }
@@ -68,7 +68,7 @@ class AllergensAlertViewModel @Inject constructor(
 
     fun removeAllergen(allergen: AllergenName) {
         viewModelScope.launch {
-            withContext(coroutineDispatchers.io()) {
+            withContext(dispatchers.IO) {
                 taxonomiesRepository.setAllergenEnabled(allergen.allergenTag, false)
             }
             refreshAllergens()
@@ -76,7 +76,7 @@ class AllergensAlertViewModel @Inject constructor(
     }
 
     private suspend fun refreshAllergens() {
-        val enabledAllergens = withContext(coroutineDispatchers.io()) {
+        val enabledAllergens = withContext(dispatchers.IO) {
             taxonomiesRepository.getAllergens(true, localeManager.getLanguage())
                 .sortedBy { it.name }
         }
@@ -85,7 +85,7 @@ class AllergensAlertViewModel @Inject constructor(
 
     private suspend fun downloadAllergensFromServer() {
         _viewStateFlow.emit(_viewStateFlow.value.copy(loading = true))
-        val result = withContext(coroutineDispatchers.io()) {
+        val result = withContext(dispatchers.IO) {
             runCatching {
                 taxonomiesRepository.getAllergens()
             }
@@ -103,13 +103,13 @@ class AllergensAlertViewModel @Inject constructor(
         )
     }
 
-    private suspend fun getNotEnabledAllergens() = withContext(coroutineDispatchers.io()) {
+    private suspend fun getNotEnabledAllergens() = withContext(dispatchers.IO) {
         taxonomiesRepository.getAllergens(false, localeManager.getLanguage())
             .filter { it.allergenTag != "en:none" }
             .sortedBy { it.name }
     }
 
-    private suspend fun isDatabaseEmpty() = withContext(coroutineDispatchers.io()) {
+    private suspend fun isDatabaseEmpty() = withContext(dispatchers.IO) {
         taxonomiesRepository.getAllergens(localeManager.getLanguage()).isEmpty()
     }
 
