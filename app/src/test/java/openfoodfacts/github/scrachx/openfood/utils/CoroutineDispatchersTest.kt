@@ -5,9 +5,9 @@ import kotlinx.coroutines.test.TestCoroutineDispatcher
 
 @ExperimentalCoroutinesApi
 class CoroutineDispatchersTest : CoroutineDispatchers {
-    override fun main() = TestCoroutineDispatcher()
+    override val Main get() = TestCoroutineDispatcher()
 
-    override fun io() = TestCoroutineDispatcher()
+    override val IO get() = TestCoroutineDispatcher()
 
-    override fun default() = TestCoroutineDispatcher()
+    override val Default get() = TestCoroutineDispatcher()
 }

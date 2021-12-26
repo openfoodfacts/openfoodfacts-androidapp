@@ -5,7 +5,7 @@
     <!-- For fr, Replace by https://world-fr.openproductsfacts.org/contribuer -->
     <string name="website_contribute">https://world.openfoodfacts.org/contribute</string>
     <!-- For fr, Replace by https://world-fr.openproductsdfacts.org/decouvrir -->
-    <string name="website_discover">https://world.openfoodfacts.org/discover</string>
+    <string name="website_discover">https://world-bg.openproductsfacts.org/discover</string>
     <!-- For fr, Replace by https://world-fr.openproductsfacts.org/produit/ -->
     <string name="website_product">https://world.openfoodfacts.org/product/</string>
     <!-- For fr, Replace by https://world-fr.openproductsfacts.org/contributeur/ -->
@@ -28,7 +28,7 @@
     <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Products Facts</string>
     <string name="Donation">Click here to donate to Open Products Facts</string>
     <string name="translate_help_title">Help translate Open Products Facts</string>
-    <string name="translate_help_summary">Bring the Open Products Facts database to your language - no technical knowledge required</string>
+    <string name="translate_help_summary">Направи базата данни на Open Products Facts налична на твоя език - не се изискват технически познания</string>
     <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Products Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Products Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
     <!-- OPF tagline in different languages -->
@@ -42,7 +42,7 @@
     <string name="add_nutrient_category_prompt_text">Add a category and more details to help complete the product</string>
     <string name="txt_eaten_products">Products I have</string>
     <string name="txt_products_to_buy">Products to buy</string>
-    <string name="intent_filter_share_label">Add to Open Products Facts</string>
+    <string name="intent_filter_share_label">Добави в Open Products Facts</string>
     <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
         You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
     <string name="OFFlogo">Open Products Facts logo</string>

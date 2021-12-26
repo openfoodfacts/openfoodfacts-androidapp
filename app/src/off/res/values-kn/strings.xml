@@ -36,7 +36,7 @@
     <string name="txt_broaden_search">- ನಿಮ್ಮ ಹುಡುಕಾಟವನ್ನು ವಿಸ್ತರಿಸುವುದು \ n- ಸ್ಕ್ಯಾನ್ ಮಾಡಿ ಮತ್ತು ಉತ್ಪನ್ನ ಫ್ಯಾಕ್ಟ್ಸ್ ಅನ್ನು ತೆರೆಯಿರಿ</string>
     <string name="Donation">ಉತ್ಪನ್ನಗಳ ಫ್ಯಾಕ್ಟ್ಸ್ ತೆರೆಯಲು ದಾನ ಮಾಡಲು ಇಲ್ಲಿ ಕ್ಲಿಕ್ ಮಾಡಿ</string>
     <string name="text_offline_info_dialog">ನೀವು ಆಫ್ಲೈನ್ನಲ್ಲಿರುವಾಗಲೂ ಉತ್ಪನ್ನಗಳನ್ನು ಸ್ಕ್ಯಾನ್ ಮಾಡಿ ನಂತರ ಅವುಗಳನ್ನು ನಂತರದ ಆಹಾರ ಸಂಗತಿಗಳನ್ನು ತೆರೆಯಿರಿ. ಸ್ಕ್ಯಾನ್ ಮಾಡಲಾದ ಉತ್ಪನ್ನಗಳು ಇಲ್ಲಿ ಕಾಣಿಸುತ್ತವೆ ಮತ್ತು ಕೆಳಗಿನ ಬಟನ್ ಬಳಸಿ ಅವುಗಳನ್ನು ಕಳುಹಿಸಲು ನಿಮಗೆ ಸಾಧ್ಯವಾಗುತ್ತದೆ.</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
     <!-- OFF tagline in different languages -->
     <string name="tagline">the free food products database</string>
     <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>

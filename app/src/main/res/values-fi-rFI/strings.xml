@@ -572,7 +572,7 @@
     <string name="manufacturing_details">Valmistustiedot</string>
     <string name="origin_of_ingredients">Ainesosien alkuperä</string>
     <string name="manufacturing_place">Valmistuspaikka</string>
-    <string name="emb_code">EMB-koodi</string>
+    <string name="emb_code">Traceability Code</string>
     <string name="purchasing_details">Ostotiedot</string>
     <string name="country_where_purchased">Ostomaa</string>
     <string name="stores">Myymälät</string>

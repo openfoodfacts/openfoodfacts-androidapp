@@ -20,9 +20,7 @@ class ScannerPreferencesRepository @Inject constructor(
     private val appPrefs by lazy { context.getAppPreferences() }
 
     fun saveAutoFocusPref(value: Boolean) {
-        cameraPrefs.edit {
-            putBoolean(SETTING_FOCUS, value)
-        }
+        cameraPrefs.edit { putBoolean(SETTING_FOCUS, value) }
     }
 
     fun getAutoFocusPref() = cameraPrefs.getBoolean(SETTING_FOCUS, true)

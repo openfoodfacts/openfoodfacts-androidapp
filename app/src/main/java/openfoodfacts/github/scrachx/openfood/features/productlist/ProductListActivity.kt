@@ -343,7 +343,7 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
 
     @RequiresApi(Build.VERSION_CODES.KITKAT)
     val fileWriterLauncher = registerForActivityResult(CreateCSVContract())
-    { writeListToFile(this, productList, it) }
+    { uri -> uri?.let { writeListToFile(this, productList, it) } }
 
     private fun exportAsCSV() {
         Toast.makeText(this, R.string.txt_exporting_your_listed_products, Toast.LENGTH_LONG).show()

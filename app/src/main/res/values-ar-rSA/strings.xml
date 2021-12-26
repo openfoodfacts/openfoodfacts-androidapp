@@ -19,8 +19,8 @@
         <item quantity="zero">لديك منتج 1 %d لايُباع على الإنترنت بانتظار الإسهام في اوبن فود فاكتس</item>
         <item quantity="one">لديك منتج 1 [%i] لايُباع على الإنترنت بانتظار المساهمة به في حقائق الغذاء المفتوح</item>
         <item quantity="two"> لديك منتج 1 %d لايُباع على الإنترنت بانتظار المساهمة به في حقائق الغذاء المفتوح</item>
-        <item quantity="few"> You have %d offline products waiting to be contributed to Open Food Facts</item>
-        <item quantity="many"> You have %d offline products waiting to be contributed to Open Food Facts</item>
+        <item quantity="few">You have %d offline products waiting to be contributed to Open Food Facts</item>
+        <item quantity="many">You have %d offline products waiting to be contributed to Open Food Facts</item>
         <item quantity="other"> لديك %d منتجات في وضع عدم الاتصال بإنتظار أن تُساهم به في Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
@@ -473,7 +473,7 @@
     <string name="label_string">al3alama</string>
     <string name="category_string">Category</string>
     <string name="connection">متصل</string>
-    <string name="contributor_string">Almousstakhdimoun</string>
+    <string name="contributor_string">Contributor</string>
     <string name="app_disabled_text">التطبيق معطل</string>
     <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
     <string name="vitamin_tags_text">الفيتامينات:</string>
@@ -486,7 +486,7 @@
     <string name="by_barcode">الرمز الشريطي</string>
     <string name="by_time">شوهدت مؤخرًا</string>
     <string name="sort">التصنيف</string>
-    <string name="by_nutrition_grade">Nutri-Score</string>
+    <string name="by_nutrition_grade">درجة الجودة الغذائية</string>
     <string name="sort_by">ترتيب حسب</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">لا يمكن بعد إضافة الصور بدون الباركود فى التطبيق. يرجى تجربة نسخة الويب للهاتف المحمولة.</string>

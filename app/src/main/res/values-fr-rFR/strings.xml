@@ -186,7 +186,7 @@
     <string name="hintLogin">Nom d\'utilisateur</string>
     <string name="hintPass">Mot de passe</string>
     <string name="errorLogin">Identifiant ou mot de passe incorrect</string>
-    <string name="errorWeb">Erreur de connexion internet</string>
+    <string name="errorWeb">Nous n\'avons pas pu accéder à internet. Avez-vous des problèmes de connexion ?</string>
     <string name="txtInfoLoginOk">Vous vous êtes connecté avec succès à votre compte Open Food Facts.</string>
     <string name="txtInfoLoginNo">Une erreur s\'est produite lors de la tentative de connexion à votre compte Open Food Facts.</string>
     <string name="product_does_not_exist_please_add_it">Le produit que vous avez scanné n\'existe pas encore dans Open Food Facts. Voulez-vous l\'ajouter?</string>
@@ -371,7 +371,7 @@
     <string name="nova_grp3_msg">Groupe 3 - Aliments transformés</string>
     <string name="nova_grp4_msg">Groupe 4 - Produits alimentaires et boissons ultra-transformés</string>
     <!-- String related to App Shortcuts -->
-    <string name="disabled_message">Raccourci non disponible</string>
+    <string name="disabled_message">Le raccourci n\'est pas disponible.</string>
     <string name="scan_shortcut_short_label">Scanner</string>
     <string name="scan_shortcut_long_label">Scanner un produit</string>
     <string name="barcode_shortcut_short_label">Rechercher</string>
