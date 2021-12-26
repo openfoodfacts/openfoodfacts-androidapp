@@ -5,7 +5,6 @@ import android.net.Uri
 import android.util.Log
 import androidx.core.net.toUri
 import dagger.hilt.android.qualifiers.ApplicationContext
-import kotlinx.coroutines.rx2.await
 import kotlinx.coroutines.withContext
 import okhttp3.ResponseBody
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
@@ -21,7 +20,7 @@ import javax.inject.Inject
 class FileDownloader @Inject constructor(
     @ApplicationContext private val context: Context,
     private val productsAPI: ProductsAPI,
-    private val coroutineDispatchers: CoroutineDispatchers,
+    private val dispatchers: CoroutineDispatchers,
 ) {
 
     companion object {
@@ -35,36 +34,39 @@ class FileDownloader @Inject constructor(
      * @return [Uri] in case of success and null otherwise
      */
     suspend fun download(fileUrl: String): Uri? {
-        val file = withContext(coroutineDispatchers.io()) {
-            val result = runCatching {
-                productsAPI.downloadFile(fileUrl)
-            }
-            result.fold(
-                onSuccess = { response ->
-                    writeResponseBodyToDisk(response, fileUrl)
-                },
-                onFailure = {
-                    Log.e(LOG_TAG, "error", it)
-                    null
-                }
-            )
+        val file = withContext(dispatchers.IO) {
+            productsAPI
+                .runCatching { downloadFile(fileUrl) }
+                .fold(
+                    onSuccess = { response ->
+                        writeResponseBodyToDisk(response, fileUrl)
+                    },
+                    onFailure = {
+                        Log.e(LOG_TAG, "error", it)
+                        null
+                    }
+                )
         }
-        return withContext(coroutineDispatchers.main()) {
-            file?.toUri()
-        }
+        // TODO: check if Main is needed here
+        return withContext(dispatchers.Main) { file?.toUri() }
     }
 
 
     /**
      * A method to write the response body to disk.
      *
-     * @param body: [ResponseBody] from the call.
-     * @param request: url of the downloaded file.
+     * **It uses the current thread.**
+     *
+     * @param body [ResponseBody] from the call.
+     * @param request url of the downloaded file.
      * @return [File] that has been written to the disk or null in case of failure
      */
     private fun writeResponseBodyToDisk(body: ResponseBody, request: String): File? {
         val requestUri = request.toUri()
-        val writtenFile = File(makeOrGetPictureDirectory(context), "${System.currentTimeMillis()}-${requestUri.lastPathSegment}")
+        val writtenFile = File(
+            makeOrGetPictureDirectory(context),
+            "${System.currentTimeMillis()}-${requestUri.lastPathSegment}"
+        )
         return try {
             body.byteStream().use { input ->
                 writtenFile.outputStream().use { output ->

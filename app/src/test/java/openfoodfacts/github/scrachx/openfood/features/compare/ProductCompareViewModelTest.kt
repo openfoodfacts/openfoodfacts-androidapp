@@ -73,13 +73,13 @@ class ProductCompareViewModelTest {
     @Test
     fun addProductToCompare_shouldAddProducts_whenProductsAreDifferent() = runBlockingTest {
         // GIVEN
-        val product1: Product = mock {
+        val product1 = mock<Product> {
             on { code } doReturn "qwerty1"
         }
-        val product2: Product = mock {
+        val product2 = mock<Product> {
             on { code } doReturn "qwerty2"
         }
-        val product3: Product = mock {
+        val product3 = mock<Product> {
             on { code } doReturn "qwerty3"
         }
         whenever(taxonomiesRepository.getAdditive("qwerty1", "en"))

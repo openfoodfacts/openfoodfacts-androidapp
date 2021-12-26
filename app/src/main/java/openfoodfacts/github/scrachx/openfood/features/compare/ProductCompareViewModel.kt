@@ -26,7 +26,7 @@ class ProductCompareViewModel @Inject constructor(
     private val taxonomiesRepository: TaxonomiesRepository,
     private val localeManager: LocaleManager,
     private val matomoAnalytics: MatomoAnalytics,
-    private val coroutineDispatchers: CoroutineDispatchers,
+    private val dispatchers: CoroutineDispatchers,
     private val productRepository: ProductRepository,
 ) : ViewModel() {
 
@@ -50,16 +50,16 @@ class ProductCompareViewModel @Inject constructor(
     }
 
     fun addProductToCompare(product: Product) {
-        viewModelScope.launch {
+        viewModelScope.launch(dispatchers.Default) {
             if (isProductAlreadyAdded(product.code)) {
                 emitSideEffect(SideEffect.ProductAlreadyAdded)
             } else {
                 _loadingVisibleFlow.emit(true)
                 matomoAnalytics.trackEvent(AnalyticsEvent.AddProductToComparison(product.code))
-                val result = withContext(coroutineDispatchers.io()) {
+                val result = withContext(dispatchers.IO) {
                     CompareProduct(product, fetchAdditives(product))
                 }
-                withContext(coroutineDispatchers.main()) {
+                withContext(dispatchers.Main) {
                     updateProductList(result)
                 }
                 _loadingVisibleFlow.emit(false)
@@ -95,7 +95,7 @@ class ProductCompareViewModel @Inject constructor(
 
     private suspend fun fetchProduct(barcode: String) {
         _loadingVisibleFlow.emit(true)
-        withContext(coroutineDispatchers.io()) {
+        withContext(dispatchers.IO) {
             try {
                 val product = productRepository.getProductStateFull(barcode, userAgent = Utils.HEADER_USER_AGENT_SCAN).product
                 if (product == null) {
@@ -111,7 +111,7 @@ class ProductCompareViewModel @Inject constructor(
     }
 
     private suspend fun emitSideEffect(effect: SideEffect) {
-        withContext(coroutineDispatchers.main()) {
+        withContext(dispatchers.Default) {
             _sideEffectFlow.emit(effect)
             _loadingVisibleFlow.emit(false)
         }

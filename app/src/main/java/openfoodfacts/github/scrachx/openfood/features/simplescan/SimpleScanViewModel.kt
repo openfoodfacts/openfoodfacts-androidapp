@@ -10,11 +10,13 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import openfoodfacts.github.scrachx.openfood.models.CameraState
 import openfoodfacts.github.scrachx.openfood.repositories.ScannerPreferencesRepository
+import openfoodfacts.github.scrachx.openfood.utils.CoroutineDispatchers
 import javax.inject.Inject
 
 @HiltViewModel
 class SimpleScanViewModel @Inject constructor(
     private val scannerPrefsRepository: ScannerPreferencesRepository,
+    private val dispatchers: CoroutineDispatchers
 ) : ViewModel() {
 
     private val _sideEffectsFlow = MutableSharedFlow<SideEffect>()
@@ -58,13 +60,13 @@ class SimpleScanViewModel @Inject constructor(
     }
 
     fun barcodeDetected(barcode: String) {
-        viewModelScope.launch {
+        viewModelScope.launch(dispatchers.Default) {
             _sideEffectsFlow.emit(SideEffect.BarcodeDetected(barcode))
         }
     }
 
     fun troubleScanningPressed() {
-        viewModelScope.launch {
+        viewModelScope.launch(dispatchers.Default) {
             _sideEffectsFlow.emit(SideEffect.ScanTrouble)
         }
     }
