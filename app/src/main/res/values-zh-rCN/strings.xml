@@ -202,7 +202,7 @@
     <string name="install">安装</string>
     <string name="search_drawer">搜索</string>
     <string name="search_by_barcode_drawer">输入条形码</string>
-    <string name="category_drawer">类别</string>
+    <string name="category_drawer">分类</string>
     <string name="search_by_category">分类</string>
     <string name="scan_search">扫描条形码</string>
     <string name="user_drawer">用户</string>
