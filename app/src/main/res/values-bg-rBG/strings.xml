@@ -183,7 +183,7 @@
     <string name="hintBarcode">Баркод</string>
     <string name="txtNutriScoreInfo">Научи повече за нивата на хранителните вещества</string>
     <string name="txtloginHelper">Ако имаш акаунт в Open Food Facts, можеш да влезеш тук с него</string>
-    <string name="hintLogin">Username</string>
+    <string name="hintLogin">Потребителско име</string>
     <string name="hintPass">Парола</string>
     <string name="errorLogin">Грешно име или парола</string>
     <string name="errorWeb">Не успяхме да получим достъп до интернет. Имаш ли проблеми със свързаността?</string>
@@ -219,7 +219,7 @@
     <string name="select_camera">Избери камера</string>
     <string name="ok_button">ОК</string>
     <string name="cancel_button">Отмени</string>
-    <string name="login_button">Username</string>
+    <string name="login_button">Потребителско име</string>
     <string name="create_account_button">Създай профил</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Информацията за алергиите ти никога няма да бъде изпратена на сървъра на Open Food Facts. Също така бъди внимателен с това, че данните за продукта може да не са точни и откриването може да не е 100% точно, затова моля, провери повторно сам!</string>
     <string name="title_info_dialog">Как работи това?</string>
@@ -244,7 +244,7 @@
     <!-- Scan history -->
     <string name="scan_history_drawer">История</string>
     <string name="clear_history">Изчисти историята</string>
-    <string name="title_clear_history_dialog">Изчистване</string>
+    <string name="title_clear_history_dialog">Изчисти</string>
     <string name="text_clear_history_dialog">Искаш ли да изчистиш цялата си история на сканирането?</string>
     <string name="export_csv_history">Изнасяне в CSV</string>
     <string name="txt_exporting_history">Експортиране на история…</string>
@@ -358,8 +358,8 @@
     <string name="take_picture">Направи снимка</string>
     <string name="choose_picture_from_gallery">От галерията</string>
     <string name="take_picture_ingredients">Направи снимка на съставките</string>
-    <string name="take_picture_recycling">Take a photo of the recycling instructions</string>
-    <string name="take_picture_front">Take a photo of the front</string>
+    <string name="take_picture_recycling">Направи снимка на инструкциите за рециклиране</string>
+    <string name="take_picture_front">Направи снимка отпред</string>
     <string name="take_picture_nutrition_table">Направи снимка на таблицата с хранителните стойности</string>
     <string name="take_more_pictures">Направи още снимки</string>
     <string name="take_extra_packaging_pictures">Направи още снимки на опаковката</string>
@@ -385,7 +385,7 @@
     <string name="skip">ПРОПУСНИ</string>
     <string name="email_not_found">Няма намерени имейл приложения</string>
     <string name="device_offline_dialog_title">Мрежата е недостъпна</string>
-    <string name="scan_first_product">Сканиране на първия продукт</string>
+    <string name="scan_first_product">Сканирай първия си продукт</string>
     <string name="changes_saved">Промените са запазени успешно</string>
     <string name="proceed">Продължи</string>
     <string name="preference_choose_language_dialog_title">Избери език</string>
@@ -428,8 +428,8 @@
     <string name="preference_analytics_bottom_sheet_description">Help improve Open Food Facts by letting us know how you use it. Data collected is anonymous. This option can be disabled at any time in the settings section.</string>
     <string name="preference_analytics_bottom_sheet_grant_button">Разреши</string>
     <string name="preference_analytics_bottom_sheet_decline_button">Откажи</string>
-    <string name="scan_first_string">Историята на продукта ти ще бъде показана тук. \n Тази история е само за теб и се съхранява локално.</string>
-    <string name="log_in">Username</string>
+    <string name="scan_first_string">Историята на продуктите които си видял/а ще се покажат тук. \n Тази история е само за теб и се съхранява локално.</string>
+    <string name="log_in">Потребителско име</string>
     <string name="login_true">Вече си влязъл.</string>
     <string name="confirm_logout">Потвърди излизането</string>
     <string name="logout_dialog_content">Сигурен ли си, че искаш да излезеш?</string>
@@ -443,7 +443,7 @@
     <string name="additive_string">Добавка</string>
     <string name="allergen_string">Алерген</string>
     <string name="search_string">Търсене</string>
-    <string name="country_string">Държава</string>
+    <string name="country_string">Страна</string>
     <string name="store_subtitle">Магазин</string>
     <string name="packaging_subtitle">Опаковка</string>
     <string name="state_subtitle">Държава</string>
@@ -491,7 +491,7 @@
     <!-- TODO: Add the placeholder in the string - important for several languages -->
     <string name="other_editors">Страницата на продукта е редактирана също от </string>
     <string name="product_states">Product States</string>
-    <string name="incomplete_states">Incomplete States</string>
+    <string name="incomplete_states">Непълни държави</string>
     <string name="complete_states">Complete States</string>
     <string name="contribution_tab">Приноси</string>
     <string name="synthesis_tab">Обобщение</string>
@@ -562,7 +562,7 @@
     <string name="per_serving">На порция</string>
     <string name="serving_size">Размер на порция</string>
     <string name="alcohol_unit" formatted="false">% vol / °</string>
-    <string name="add_a_nutrient">Добавете хранително вещество</string>
+    <string name="add_a_nutrient">Добави хранително вещество</string>
     <string name="add_this_product">Добави продукта</string>
     <string name="product_picture">Снимка на продукта</string>
     <string name="one_photo_compulsory">(Една снимка е задължителна за добавяне на нов продукт)</string>
@@ -591,7 +591,7 @@
     <string name="hint_quantity">Примери: 2 l, 250 g, 1 kg, 25 cl</string>
     <string name="edit_product_title">Редактирай продукт</string>
     <string name="save_edits">Запази редакциите</string>
-    <string name="contribution_by">Contribution by</string>
+    <string name="contribution_by">Принос от</string>
     <string name="title_activity_product">Заглавие</string>
     <string name="description_activity_product">описание</string>
     <string name="intent_filter_share_label">Добави в Open Food Facts</string>
@@ -626,7 +626,7 @@
     <string name="add_nutrient_prompt_text">Добави хранителни стойности, за да изчислиш Nutri-Score</string>
     <string name="add_category_prompt_text">Добави категория, за да изчислиш Nutri-Score</string>
     <string name="add_nutrient_category_prompt_text">Добави хранителни стойности и категория, за да изчислиш Nutri-Score</string>
-    <string name="couldnot_compute_ecoscore_prompt_text" comment="Do not translate Eco-Score">We could not compute an Eco-Score for this product. It might be that the category is not specific enough or that we don\'t have supporting data for this category. If you believe this is an error, you can mail us by clicking below.</string>
+    <string name="couldnot_compute_ecoscore_prompt_text" comment="Do not translate Eco-Score">Не можахме да изчислим Eco-Score за този продукт. Може да се окаже, че категорията не е достатъчно конкретна или че нямаме поддържащи данни за тази категория. Ако смяташ, че това е грешка, можеш да ни изпратиш имейл, като щракнеш по-долу.</string>
     <string name="add_labels_origins_prompt_text" comment="Do not translate Eco-Score">The Eco-Score takes into account environmental labels and origins of the ingredients. Please take them into photo or edit the product so that they can be taken into account</string>
     <string name="add_labels_prompt_text" comment="Do not translate Eco-Score">The Eco-Score takes into account environmental labels. Please take them into photo or edit the product so that they can be taken into account</string>
     <string name="add_origins_prompt_text" comment="Do not translate Eco-Score">The Eco-Score takes into account the origins of the ingredients. Please take them into photo (ingredient list and/or any geographic claim) or edit the product so that they can be taken into account</string>
@@ -648,7 +648,7 @@
     <string name="txt_add_to_new_list">Добави към нов списък</string>
     <string name="create_new_list_list_name">Име на списъка</string>
     <string name="txt_eaten_products">Продукти които имам</string>
-    <string name="txt_products_to_buy">Products to buy</string>
+    <string name="txt_products_to_buy">Продукти за купуване</string>
     <string name="txt_exporting_your_listed_products">Exporting Your Products…</string>
     <string name="txt_your_listed_products_exported">Your products have been exported</string>
     <string name="txt_discard">Отказ</string>
@@ -685,9 +685,9 @@
     <string name="scan_tooltip">You can slide up the card for more details</string>
     <string name="add_an_allergen">Добави алерген</string>
     <string name="add_a_list">Добавяне на списък</string>
-    <string name="edit_image">Edit Photo</string>
+    <string name="edit_image">Редактиране на снимка</string>
     <string name="cant_edit_image_not_yet_uploaded">The new photo is not yet uploaded. Please wait before editing it</string>
-    <string name="unselect_image">Unselect Photo</string>
+    <string name="unselect_image">Отмяна на избор на снимка</string>
     <string name="choose_default_language">Избери език на продукта</string>
     <string name="barcode">Баркод</string>
     <string name="productAdditivesNone">Без добавки</string>
@@ -695,12 +695,12 @@
     <string name="hint_origin">Примери: САЩ, Франция, Италия</string>
     <!-- Used for diets AddOn -->
     <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
-    <string name="closeZoom">Click to close zoom</string>
+    <string name="closeZoom">Щракни, за да затвориш мащаба</string>
     <string name="imageFullscreen">Zoom</string>
     <!-- Used for product ingredients analysis tags -->
     <string name="close_button">Затвори</string>
     <string name="tip_message">СЪВЕТ: %1$s </string>
-    <string name="ingredient_analysis_tip">Click on the icons below to learn more about the product and to select what information you are interested in.</string>
+    <string name="ingredient_analysis_tip">Щракни върху иконите по-долу, за да научиш повече за продукта и да избереш каква информация те интересува.</string>
     <string name="got_it">Разбрах!</string>
     <string name="onboarding_hint_msg">Съвет: %s </string>
     <string name="image_edit_tip">Докоснете снимката, за да увеличите, промените, изрежете, завъртите и още…</string>
@@ -708,7 +708,7 @@
     <string name="ingredients_in_this_product">Съставки в този продукт, които са %1$s:</string>
     <string name="display_analysis_tag_status" comment="Do not change the placeholder">Display %1$s status</string>
     <string name="unknown_status_no_translation">We couldn\'t assess the status of the product due to unrecognized ingredients.</string>
-    <string name="help_translate_ingredients">Help translate the ingredients in your language</string>
+    <string name="help_translate_ingredients">Помогни за превода на съставките на твоя език</string>
     <string name="unknown_status_missing_ingredients">We couldn\'t assess the status of the product due to missing ingredients.</string>
     <string name="unknown_status_ambiguous_ingredients">Не можахме да оценим статуса на продукта заради двусмислени съставки: <![CDATA[<b>%1$s</b>]]></string>
     <string name="help_extract_ingredients">Help extract the ingredients to get the %1$s status</string>
@@ -735,11 +735,11 @@
     <string name="title_add_photo">Добави снимка</string>
     <string name="content_add_photo">Press here to take a new photo</string>
     <string name="title_choose_photo">Избери снимка</string>
-    <string name="content_choose_photo">Choose among existing photos</string>
-    <string name="title_edit_photo">Edit Photo</string>
-    <string name="content_edit_photo">Edit, crop and rotate the photo</string>
-    <string name="title_unselect_photo">Unselect Photo</string>
-    <string name="content_unselect_photo">Press here to unselect current photo</string>
+    <string name="content_choose_photo">Избери между съществуващите снимки</string>
+    <string name="title_edit_photo">Редактиране на снимка</string>
+    <string name="content_edit_photo">Редактирай, изрежи и завърти снимката</string>
+    <string name="title_unselect_photo">Отмяна на избор на снимка</string>
+    <string name="content_unselect_photo">Натисни тук, за да отмениш избора на текущата снимка</string>
     <string name="title_exit">Изход</string>
     <string name="content_exit">Натисни тук, за да се върнеш към продукта</string>
     <string name="icon_label">Labels icon</string>
@@ -751,10 +751,10 @@
     <string name="hunger_game_call_to_action" comment="Do not change the placeholder">Help classify more %1$s</string>
     <string name="txtHomeOnline">Open Food Facts е отворена база данни с повече от %1$s хранителни продукта (плюс тези, с които ще допринесете).</string>
     <!-- Application theme settings -->
-    <string name="follow_system">Follow system</string>
+    <string name="follow_system">Според системата</string>
     <string name="day">Ден</string>
     <string name="night">Нощ</string>
-    <string name="report_email_chooser_title">Send a report email</string>
+    <string name="report_email_chooser_title">Изпрати имейл с отчет</string>
     <!-- Changelog String -->
     <string name="changelog_translation_help" comment="Do not change the placeholder">Want to see this changelog in %s?\nJoin the translation team!</string>
     <string name="whats_new">What\'s new with Open Food Facts?</string>
@@ -762,11 +762,11 @@
     <string name="title_welcome_intro">Присъедини се към хранителната революция</string>
     <string name="msg_welcome_intro">Сканирай храните, прави снимки, помагай за да променим хранителната система</string>
     <string name="title_welcome_nutriscore" comment="Do not translate Nutri-Score">Получи Nutri-Score</string>
-    <string name="msg_welcome_nutriscore">A simple synthesis of the nutritional quality of your food</string>
+    <string name="msg_welcome_nutriscore">Просто обобщение на хранителните качества на твоята храна</string>
     <string name="title_welcome_nova">Избягвай свръхпреработени храни</string>
     <string name="msg_welcome_nova">Намали количеството свръхпреработени храни в твоята диета.</string>
     <string name="title_welcome_ecoscore" comment="Do not translate Eco-Score">Eco-Score</string>
-    <string name="msg_welcome_ecoscore">A synthesis of the environmental impact of your food.</string>
-    <string name="title_welcome_matomo">Send anonymous analytics</string>
-    <string name="msg_welcome_matomo">Help the Open Food Facts volunteers to improve the app. You decide if you send anonymous analytics.\n\nIf you change your mind this option can be enabled and disabled at any time from the settings.</string>
+    <string name="msg_welcome_ecoscore">Обобщение на въздействието на твоята храна върху околната среда.</string>
+    <string name="title_welcome_matomo">Анонимно споделяне на статистики</string>
+    <string name="msg_welcome_matomo">Помогни на доброволците на Open Food Facts да подобрят приложението. Ти решаваш дали да изпращаш анонимни статистики.\n\nАко промениш решението си, тази опция може да бъде активирана и деактивирана по всяко време от настройките.</string>
 </resources>

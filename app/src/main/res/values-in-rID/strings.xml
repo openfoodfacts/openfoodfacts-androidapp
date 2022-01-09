@@ -170,7 +170,7 @@
     <string name="txtNutritionLevelLow">dalam kuantitas rendah</string>
     <string name="txtNutritionLevelModerate">dalam kuantitas sedang</string>
     <string name="txtNutritionLevelHigh">dalam kuantitas tinggi</string>
-    <string name="txtSave">Simpan</string>
+    <string name="txtSave">menyimpan </string>
     <string name="txtSignIn">Masuk</string>
     <string name="txtSalt">Garam</string>
     <string name="txtFat">Lemak</string>

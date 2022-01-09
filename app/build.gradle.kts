@@ -21,7 +21,7 @@ plugins {
     id("kotlin-parcelize")
     id("kotlin-kapt")
     id("dagger.hilt.android.plugin")
-    id("org.jetbrains.dokka") version "1.6.0"
+    id("org.jetbrains.dokka") version "1.6.10"
 }
 
 fun obtainTestBuildType(): String {
@@ -90,7 +90,7 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-jackson:2.6.4")
     implementation("com.squareup.retrofit2:adapter-rxjava2:2.6.4")
     implementation("com.squareup.retrofit2:converter-scalars:2.1.0")
-    implementation("com.squareup.okhttp3:logging-interceptor:3.12.11")
+implementation("com.squareup.okhttp3:logging-interceptor:3.12.13")
 
     // Apache commons
     implementation("org.apache.commons:commons-text:1.9")
@@ -208,7 +208,7 @@ android {
         applicationId = "openfoodfacts.github.scrachx.openfood"
 
         minSdk = 16
-        targetSdk = 30
+        targetSdk = 31
 
         versionCode = 433
         versionName = "3.6.8"
