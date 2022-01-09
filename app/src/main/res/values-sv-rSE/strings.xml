@@ -282,7 +282,7 @@
     <string name="textCarbonFootprint">Koldioxidutsläpp: </string>
     <string name="packaging_environmentTab">Förpackning:</string>
     <string name="action_search">Sök</string>
-    <string name="search_hint">Sök en produkt</string>
+    <string name="search_hint">Sök efter en produkt</string>
     <string name="number_of_results">Antal resultat: </string>
     <string name="number_of_products">Antal produkter: </string>
     <string name="txt_no_matching__category_products">Åh nej, vi har ingen produkt i den här kategorin, kan du lägga till en?</string>

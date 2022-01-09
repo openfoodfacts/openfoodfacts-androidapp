@@ -485,7 +485,7 @@
     <string name="notify_content">Щракни, за да видиш експортираните продукти</string>
     <string name="notification_channel_name">Уведомления за изнасяне</string>
     <string name="notify_channel_description">Уведомление за показване на местоположението на изнесения файл</string>
-    <string name="products_to_be_completed">Продукти, които трябва да бъдат завършени</string>
+    <string name="products_to_be_completed">Продукти за завършване</string>
     <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Продукт добавен в %1$s на %2$s CET от %3$s</string>
     <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Последна редакция на страницата на продукта в %1$s на %2$s CEST от %3$s</string>
     <!-- TODO: Add the placeholder in the string - important for several languages -->

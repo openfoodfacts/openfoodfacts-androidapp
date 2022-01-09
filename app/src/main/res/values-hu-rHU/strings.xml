@@ -155,20 +155,20 @@
         <item>Cink</item>
     </string-array>
     <!-- Content Description -->
-    <string name="search_button">Keres</string>
+    <string name="search_button">Keresés</string>
     <string name="alert_dialog_warning_title">Figyelmeztetés</string>
     <string name="alert_dialog_warning_msg_user">Felhasználó/jelszó megváltozott, kérjük, frissítse az adatokat</string>
     <string name="toast_retrieving">Betöltés…</string>
     <string name="txtBarcode">Vonalkód:</string>
-    <string name="txtCategories">Categories:</string>
-    <string name="txtLabels">Labels, certifications, awards: </string>
+    <string name="txtCategories">Kategóriák:</string>
+    <string name="txtLabels">Címkék, tanúsítványok, díjak: </string>
     <string name="txtEMB">Traceability codes: </string>
-    <string name="txtIngredients">Ingredients list: </string>
+    <string name="txtIngredients">Összetevők: </string>
     <string name="Donate">Adományozás</string>
     <string name="Donation">Kattintson ide az Open Food Facts-nek szánt adományozáshoz</string>
-    <string name="txtSubstances">Substances or products causing allergies or intolerances: </string>
-    <string name="txtAdditives">Additives: </string>
-    <string name="txtTraces">Traces: </string>
+    <string name="txtSubstances">Allergiát vagy intoleranciát okozó anyagok vagy termékek: </string>
+    <string name="txtAdditives">Adalékanyagok: </string>
+    <string name="txtTraces">Nyomokban tartalmazhat: </string>
     <string name="txtServingSize">Adag:</string>
     <string name="txtNutrientLevel100g">Átlagos tápérték 100 g termékben:</string>
     <string name="txtNutrientLevel100ml">Átlagos tápérték 100ml termékben:</string>
@@ -204,7 +204,7 @@
     <string name="create_account">Regisztráció</string>
     <string name="home_drawer">Kezdőlap</string>
     <string name="install">Telepítés</string>
-    <string name="search_drawer">Keres</string>
+    <string name="search_drawer">Keresés</string>
     <string name="search_by_barcode_drawer">Írja be a vonalkódot</string>
     <string name="category_drawer">Kategóriák</string>
     <string name="search_by_category">Kategória</string>
@@ -281,7 +281,7 @@
     <string name="contribution_without_account">Jelentkezzen be vagy hozzon létre egy fiókot a hozzájárulásainak megtartásához</string>
     <string name="textCarbonFootprint">Ökológiai lábnyom / szén-dioxid-kibocsátás: </string>
     <string name="packaging_environmentTab">Packaging:</string>
-    <string name="action_search">Keres</string>
+    <string name="action_search">Keresés</string>
     <string name="search_hint">Termék keresése</string>
     <string name="number_of_results">Találatok száma: </string>
     <string name="number_of_products">Termékek száma: </string>
@@ -374,7 +374,7 @@
     <string name="disabled_message">Parancsikon nem elérhető</string>
     <string name="scan_shortcut_short_label">Beolvasás</string>
     <string name="scan_shortcut_long_label">Termék beolvasása</string>
-    <string name="barcode_shortcut_short_label">Keres</string>
+    <string name="barcode_shortcut_short_label">Keresés</string>
     <string name="barcode_shortcut_long_label">Keresés vonalkód alapján</string>
     <string name="history_shortcut_short_label">Előzmények</string>
     <string name="history_shortcut_long_label">Előzmények</string>
@@ -442,7 +442,7 @@
     <string name="brand_string">Márkanév</string>
     <string name="additive_string">Adalékanyag</string>
     <string name="allergen_string">Allergén</string>
-    <string name="search_string">Keres</string>
+    <string name="search_string">Keresés</string>
     <string name="country_string">Ország</string>
     <string name="store_subtitle">Bolt</string>
     <string name="packaging_subtitle">Csomagolás</string>

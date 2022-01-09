@@ -175,7 +175,7 @@
     <string name="txtNutritionLevelLow">em quantidade baixa</string>
     <string name="txtNutritionLevelModerate">em quantidade moderada</string>
     <string name="txtNutritionLevelHigh">em quantidade elevada</string>
-    <string name="txtSave">Salvar</string>
+    <string name="txtSave">Guardar</string>
     <string name="txtSignIn">Iniciar sessão</string>
     <string name="txtSalt">Sal :</string>
     <string name="txtFat">Gordura</string>
