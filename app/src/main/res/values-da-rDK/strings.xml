@@ -759,7 +759,7 @@
     <!-- New onboarding slides -->
     <string name="title_welcome_intro">Tilslut dig fødevarerevolutionen</string>
     <string name="msg_welcome_intro">Skan fødevarer, tag fotos, hjælp med at traneformere fødevaresystemet</string>
-    <string name="title_welcome_nutriscore" comment="Do not translate Nutri-Score">Get the Nutri-Score</string>
+    <string name="title_welcome_nutriscore" comment="Do not translate Nutri-Score">Få Nutri-Score</string>
     <string name="msg_welcome_nutriscore">En simpel syntese af dine fødevarers ernæringskvalitet</string>
     <string name="title_welcome_nova">Undgå ultraforarbejdede fødevarer</string>
     <string name="msg_welcome_nova">Reducér mængden af ultraforarbejdede fødevarer i din kost.</string>
