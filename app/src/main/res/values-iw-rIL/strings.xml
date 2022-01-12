@@ -167,7 +167,7 @@
     <!-- Content Description -->
     <string name="search_button">חיפוש</string>
     <string name="alert_dialog_warning_title">אזהרה</string>
-    <string name="alert_dialog_warning_msg_user">שם משתמש/ססמה השתנו, נא לעדכן את הפרטים</string>
+    <string name="alert_dialog_warning_msg_user">שם משתמש/סיסמה השתנו, נא לעדכן את הפרטים</string>
     <string name="toast_retrieving">בטעינה…</string>
     <string name="txtBarcode">ברקוד:</string>
     <string name="txtCategories">קטגוריות:</string>
@@ -194,8 +194,8 @@
     <string name="txtNutriScoreInfo">מידע נוסף על רמות חומרי ההזנה</string>
     <string name="txtloginHelper">אם יש לך חשבון Open Food Facts, ניתן להיכנס אתו לכאן</string>
     <string name="hintLogin">שם משתמש</string>
-    <string name="hintPass">ססמה</string>
-    <string name="errorLogin">שם המשתמש או הססמה שגויים</string>
+    <string name="hintPass">סיסמה</string>
+    <string name="errorLogin">שם המשתמש או הסיסמה שגויים</string>
     <string name="errorWeb">לא הצלחנו לגשת לאינטרנט. יש לך תקלה בחיבור?</string>
     <string name="txtInfoLoginOk">נכנסת בהצלחה לחשבון שלך ב־Open Food Facts.</string>
     <string name="txtInfoLoginNo">אירעה שגיאה בעת ניסיון להיכנס לחשבון שלך ב־Open Food Facts.</string>
@@ -241,7 +241,7 @@
     <string name="permission_denied">נא להפעיל את ההרשאות בהגדרות</string>
     <string name="info_download_data_connection">עליך להוריד נתונים כדי שתכונה זו תפעל. נא להתחבר לאינטרנט.</string>
     <!-- Strings related to login -->
-    <string name="error_invalid_password">הססמה חייבת להיות באורך של 6 תווים לפחות.</string>
+    <string name="error_invalid_password">הסיסמה חייבת להיות באורך של 6 תווים לפחות.</string>
     <string name="user">משתמש</string>
     <string name="error_field_required">זהו שדה חובה.</string>
     <!-- Strings related to feedback dialog -->
@@ -390,7 +390,7 @@
     <string name="history_shortcut_long_label">היסטוריה</string>
     <string name="contributions_shortcut_short_label">תרומות</string>
     <string name="contributions_shortcut_long_label">התרומות שלי</string>
-    <string name="forgot_password">שכחתי ססמה</string>
+    <string name="forgot_password">שכחתי סיסמה</string>
     <string name="next">הבא</string>
     <string name="skip">דילוג</string>
     <string name="email_not_found">לא נמצאו יישומוני דוא״ל</string>
