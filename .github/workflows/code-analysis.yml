@@ -37,6 +37,12 @@ jobs:
       - name: Checkout sources
         uses: actions/checkout@v2.4.0
 
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '11'
+
       - name: Run detekt
         uses: gradle/gradle-build-action@v2.1.0
         with:
