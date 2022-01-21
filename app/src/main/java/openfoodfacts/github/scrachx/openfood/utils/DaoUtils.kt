@@ -14,7 +14,7 @@ import org.jetbrains.annotations.Contract
  */
 @Contract(pure = true)
 @CheckResult
-suspend fun AbstractDao<*, *>.isEmpty() = withContext(Dispatchers.IO) { this@isEmpty.count() == 0L }
+fun AbstractDao<*, *>.isEmpty() = count() == 0L
 
 @Contract(pure = true)
 fun <T> logDownload(taxonomy: Taxonomy<T>) {
