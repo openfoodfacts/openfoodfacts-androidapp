@@ -1,6 +1,5 @@
 package openfoodfacts.github.scrachx.openfood.features.compare
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.toList
@@ -15,17 +14,16 @@ import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveNa
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.repositories.TaxonomiesRepository
 import openfoodfacts.github.scrachx.openfood.utils.CoroutineDispatchersTest
+import openfoodfacts.github.scrachx.openfood.utils.InstantTaskExecutorExtension
 import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
-import org.junit.Before
-import org.junit.Rule
-import org.junit.Test
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.kotlin.*
 
+@ExtendWith(InstantTaskExecutorExtension::class)
 @ExperimentalCoroutinesApi
 class ProductCompareViewModelTest {
-
-    @get:Rule
-    var instantExecutorRule = InstantTaskExecutorRule()
 
     private val taxonomiesRepository: TaxonomiesRepository = mock()
     private val localeManager: LocaleManager = mock()
@@ -35,7 +33,7 @@ class ProductCompareViewModelTest {
 
     private lateinit var viewModel: ProductCompareViewModel
 
-    @Before
+    @BeforeEach
     fun setup() {
         whenever(localeManager.getLanguage()).doReturn("en")
         viewModel = ProductCompareViewModel(taxonomiesRepository, localeManager, matomoAnalytics, coroutineDispatcher, productRepository)
