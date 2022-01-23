@@ -8,7 +8,7 @@ import org.junit.jupiter.api.extension.BeforeEachCallback
 import org.junit.jupiter.api.extension.ExtensionContext
 
 /**
- * A JUnit 5 adaption of [InstantTaskExecutorRule].
+ * A JUnit 5 adaptation of [InstantTaskExecutorRule].
  *
  * Inspired from https://jeroenmols.com/blog/2019/01/17/livedatajunit5/
  */
