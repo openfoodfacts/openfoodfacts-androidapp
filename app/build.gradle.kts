@@ -152,13 +152,6 @@ implementation("com.squareup.okhttp3:logging-interceptor:3.12.13")
     // ShowCaseView dependency
     implementation("com.github.mreram:showcaseview:1.0.5")
 
-
-    val junit5Bom = "5.8.2"
-    testImplementation(platform("org.junit:junit-bom:$junit5Bom"))
-    testImplementation("org.junit.jupiter:junit-jupiter")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
-    testRuntimeOnly("org.junit.vintage:junit-vintage-engine")
-
     // Unit Testing
     testImplementation("androidx.arch.core:core-testing:2.1.0")
     testImplementation("junit:junit:4.13.2")
@@ -170,6 +163,12 @@ implementation("com.squareup.okhttp3:logging-interceptor:3.12.13")
     testImplementation("com.google.truth:truth:1.1.3")
     testImplementation("com.google.truth.extensions:truth-java8-extension:1.1.3")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:${coroutinesVersion}")
+
+    val junit5Bom = "5.8.2"
+    testImplementation(platform("org.junit:junit-bom:$junit5Bom"))
+    testImplementation("org.junit.jupiter:junit-jupiter")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
+    testRuntimeOnly("org.junit.vintage:junit-vintage-engine")
 
     // Instrumented tests
     androidTestUtil("androidx.test:orchestrator:1.4.0")
