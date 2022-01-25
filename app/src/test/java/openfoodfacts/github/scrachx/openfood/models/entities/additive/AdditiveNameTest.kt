@@ -1,8 +1,8 @@
 package openfoodfacts.github.scrachx.openfood.models.entities.additive
 
 import com.google.common.truth.Truth.assertThat
-import org.junit.Before
-import org.junit.Test
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
 
 /**
  * Tests for [AdditiveName]
@@ -10,7 +10,7 @@ import org.junit.Test
 class AdditiveNameTest {
     private lateinit var mAdditiveName: AdditiveName
 
-    @Before
+    @BeforeEach
     fun setup() {
         mAdditiveName = AdditiveName()
     }

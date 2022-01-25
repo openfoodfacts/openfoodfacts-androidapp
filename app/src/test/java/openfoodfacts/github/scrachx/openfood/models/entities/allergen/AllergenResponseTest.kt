@@ -3,15 +3,15 @@ package openfoodfacts.github.scrachx.openfood.models.entities.allergen
 import com.google.common.truth.Truth.assertThat
 import openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_ENGLISH
 import openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_FRENCH
-import org.junit.Before
-import org.junit.Test
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
 
 /**
  * Tests for [AllergenResponse]
  */
 class AllergenResponseTest {
     lateinit var nameMap: MutableMap<String, String>
-    @Before
+    @BeforeEach
     fun setUp() {
         nameMap = mutableMapOf()
     }

@@ -9,17 +9,17 @@ import openfoodfacts.github.scrachx.openfood.models.entities.allergen.PEANUTS_EN
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.UNIQUE_ALLERGEN_ID_1
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.UNIQUE_ALLERGEN_ID_2
 import org.greenrobot.greendao.DaoException
-import org.junit.Assert.assertThrows
-import org.junit.Before
-import org.junit.Test
-import org.junit.runner.RunWith
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
+import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.Mock
 import org.mockito.Mockito
-import org.mockito.junit.MockitoJUnitRunner
+import org.mockito.junit.jupiter.MockitoExtension
 import org.mockito.kotlin.doReturn
 import org.mockito.kotlin.whenever
 
-@RunWith(MockitoJUnitRunner::class)
+@ExtendWith(MockitoExtension::class)
 class AnalysisTagTest {
     private lateinit var testAnalysisTag: AnalysisTag
     private val tagEnglish = AnalysisTagName(UNIQUE_ALLERGEN_ID_2, LANGUAGE_CODE_ENGLISH, PEANUTS_EN, "show")
@@ -27,28 +27,27 @@ class AnalysisTagTest {
     private lateinit var tagNames: MutableList<AnalysisTagName>
 
     @Mock
-    var mockDaoSession: DaoSession? = null
+    lateinit var mockDaoSession: DaoSession
 
     @Mock
-    var mockAnalysisTagNameDao: AnalysisTagNameDao? = null
+    lateinit var mockAnalysisTagNameDao: AnalysisTagNameDao
 
-    @Before
+    @BeforeEach
     fun setUp() {
         tagNames = arrayListOf(tagGerman, tagEnglish)
-
-        whenever(mockDaoSession!!.analysisTagNameDao) doReturn mockAnalysisTagNameDao
-        whenever(mockAnalysisTagNameDao!!._queryAnalysisTag_Names(Mockito.any())) doReturn tagNames
-
         testAnalysisTag = AnalysisTag()
     }
 
     @Test
     fun getNames_DaoSessionIsNull() {
-        assertThrows(DaoException::class.java) { testAnalysisTag.names }
+        assertThrows<DaoException> { testAnalysisTag.names }
     }
 
     @Test
     fun getNames_returnsListOfTags() {
+        whenever(mockDaoSession.analysisTagNameDao) doReturn mockAnalysisTagNameDao
+        whenever(mockAnalysisTagNameDao._queryAnalysisTag_Names(Mockito.any())) doReturn tagNames
+
         testAnalysisTag.__setDaoSession(mockDaoSession)
         val tags = testAnalysisTag.names
         assertThat(tags[0].analysisTag).isEqualTo(UNIQUE_ALLERGEN_ID_1)
@@ -59,10 +58,11 @@ class AnalysisTagTest {
         assertThat(tags[1].name).isEqualTo(PEANUTS_EN)
     }
 
-    @Test(expected = DaoException::class)
-    @Throws(DaoException::class)
+    @Test
     fun delete_throwsExceptionMyDaoIsNull() {
-        testAnalysisTag.__setDaoSession(mockDaoSession)
-        testAnalysisTag.delete()
+        assertThrows<DaoException> {
+            testAnalysisTag.__setDaoSession(mockDaoSession)
+            testAnalysisTag.delete()
+        }
     }
 }

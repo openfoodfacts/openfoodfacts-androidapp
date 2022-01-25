@@ -9,7 +9,6 @@ import com.google.common.truth.Truth.assertThat
 import io.reactivex.schedulers.Schedulers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.test.runBlockingTest
 import okhttp3.Credentials
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -20,8 +19,8 @@ import openfoodfacts.github.scrachx.openfood.network.ProductsAPITest.SearchSubje
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
 import openfoodfacts.github.scrachx.openfood.utils.Utils
 import openfoodfacts.github.scrachx.openfood.utils.getUserAgent
-import org.junit.BeforeClass
-import org.junit.Test
+import org.junit.jupiter.api.BeforeAll
+import org.junit.jupiter.api.Test
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.jackson.JacksonConverterFactory
@@ -194,7 +193,7 @@ class ProductsAPITest {
         private lateinit var devClientWithAuth: ProductsAPI
         private lateinit var prodClient: ProductsAPI
 
-        @BeforeClass
+        @BeforeAll
         @JvmStatic
         fun setupClient() {
             val httpClientWithAuth = OkHttpClient.Builder()
