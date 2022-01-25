@@ -146,7 +146,7 @@ implementation("com.squareup.okhttp3:logging-interceptor:3.12.13")
     implementation("com.github.hootsuite:nachos:1.2.0")
 
     // Crash analytics
-    implementation("io.sentry:sentry-android:5.5.3")
+    implementation("io.sentry:sentry-android:5.6.0")
     implementation("com.github.matomo-org:matomo-sdk-android:v4.1.2")
 
     // ShowCaseView dependency
