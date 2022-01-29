@@ -67,7 +67,7 @@
             android:value="2.1" />
 
         <provider
-            android:name="androidx.Startup"
+            android:name="androidx.startup"
             android:authorities="${applicationId}.workmanager-init"
             android:exported="false"
             tools:node="remove" />
