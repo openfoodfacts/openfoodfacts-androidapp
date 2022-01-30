@@ -166,7 +166,7 @@
     </string-array>
     <!-- Content Description -->
     <string name="search_button">Поиск</string>
-    <string name="alert_dialog_warning_title">Предупреждение</string>
+    <string name="alert_dialog_warning_title">Nazwa zwyczajowa</string>
     <string name="alert_dialog_warning_msg_user">Пользователь/пароль изменены, обновите информацию</string>
     <string name="toast_retrieving">Загрузка…</string>
     <string name="txtBarcode">Штрих-код:</string>

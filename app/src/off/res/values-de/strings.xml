@@ -13,7 +13,7 @@
     <string name="txtHome">„Open Food Facts” ist eine offene Datenbank von Lebensmitteln. </string>
     <!-- Old onboarding slides -->
     <string name="slide_1_title">Beitrag zur Transparenz von Lebensmittelprodukten leisten</string>
-    <string name="slide_1_desc">Produkte erfassen und Fotos von diesen hinzuzufügen ermöglicht Transparenz über Lebensmittelprodukte zu erhöhen</string>
+    <string name="slide_1_desc">Produkte erfassen, fotografieren, Lebensmitteltransparenz schaffen</string>
     <string name="slide_2_title">Holen Sie sich die Fakten</string>
     <string name="slide_2_desc">Umfassende Informationen über das erfasste Produkt wurden für Sie entschlüsselt</string>
     <string name="slide_3_title">„Nutri-Score” (franz. Nahrungsmittelampel) abrufen</string>
@@ -21,7 +21,7 @@
     <string name="slide_4_title">Funktioniert auch ohne Internetverbindung</string>
     <string name="slide_4_desc">Sie können neue Produkte hinzufügen, auch wenn gerade keine Internetverbindung besteht</string>
     <!-- New onboarding-->
-    <string name="title_welcome_intro">Machen Sie mit, bei der Lebensmittel-Revolution</string>
+    <string name="title_welcome_intro">Machen Sie mit bei der Lebensmittel-Revolution</string>
     <string name="msg_welcome_intro">Erfassen Sie Lebensmittel, nehmen Sie Fotos auf, helfen Sie mit, das Lebensmittelsystem zu verändern</string>
     <string name="title_welcome_nutriscore">Nutri-Score abrufen</string>
     <string name="msg_welcome_nutriscore">Eine einfache Übersicht die Nährwertqualität Ihrer Lebensmittel</string>
@@ -29,16 +29,16 @@
     <string name="msg_welcome_nova">Reduzieren Sie die Menge an hochverarbeiteten Lebensmitteln in Ihrer Ernährung.</string>
     <string name="title_welcome_ecoscore">Eco-Score</string>
     <!-- Scan card -->
-    <string name="product_does_not_exist_please_add_it">Das eingelesene Produkt existiert noch nicht in Open Pet Food Facts. Bitte fügen Sie es hinzu.</string>
+    <string name="product_does_not_exist_please_add_it">Das eingelesene Produkt existiert noch nicht in Open Food Facts. Bitte fügen Sie es hinzu.</string>
     <string name="txtDialogsContentPowerMode">Das eingelesene Produkt befindet sich bereits in Open Food Facts.</string>
     <string name="msg_share">Dieses Produkt auf Open Food Facts anzeigen:</string>
     <string name="not_support_books">Bücher werden derzeit von „Open Food Facts” nicht unterstützt</string>
-    <string name="txt_broaden_search">• Suche erweitern \n• erfassen und zu Open Food Facts hinzufügen</string>
+    <string name="txt_broaden_search">• Ihre Suche zu erweitern \n• Das Produkt zu erfassen und zu Open Food Facts hinzuzufügen</string>
     <string name="Donation">Hier klicken, um für Open Food Facts zu spenden</string>
     <string name="text_offline_info_dialog">Sie können Produkte auch dann erfassen, wenn Sie offline sind, um sie später zu Open Food Facts hinzuzufügen. Die eingelesenen Produkte werden hier angezeigt und Sie können sie mit der folgenden Schaltfläche versenden.</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Ihre Allergie-Informationen werden niemals an die Open Food Facts Server gesendet. Beachten Sie bitte auch, dass die Produktdaten nicht immer zu 100% aorrekt sind. Überprüfen Sie die Allergieüberprüfungen deshalb bitte! </string>
     <!-- OFF tagline in different languages -->
     <string name="tagline">die freie Lebensmitteldatenbank</string>
-    <string name="product_not_found">Das eingelesene Produkt „%1$s” existiert noch nicht in Open Product Facts. Könnten Sie es bitte hinzufügen?</string>
+    <string name="product_not_found">Das eingelesene Produkt „%1$s“ existiert noch nicht in Open Product Facts. Könnten Sie es bitte hinzufügen?</string>
     <string name="currently_on_version">Aktuell auf Open Food Facts</string>
 </resources>

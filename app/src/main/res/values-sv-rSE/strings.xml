@@ -160,7 +160,7 @@
     <string name="alert_dialog_warning_msg_user">Användarnamn/lösenord har ändrats, var vänlig uppdatera informationen</string>
     <string name="toast_retrieving">Laddar…</string>
     <string name="txtBarcode">Streckkod:</string>
-    <string name="txtCategories">Categories:</string>
+    <string name="txtCategories">Kategorier:</string>
     <string name="txtLabels">Labels, certifications, awards: </string>
     <string name="txtEMB">Traceability codes: </string>
     <string name="txtIngredients">Ingredients list: </string>
@@ -419,7 +419,7 @@
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
     <string name="url_nutrient_values">https://world-sv.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">Allmänt</string>
-    <string name="preference_header_privacy">Privacy</string>
+    <string name="preference_header_privacy">Sekretess</string>
     <string name="preference_crash_title">Crash reporting</string>
     <string name="preference_crash_summary">When enabled, crash reports will be sent to the Open Food Facts server automatically, so that we can fix bugs and improve the app.</string>
     <string name="preference_analytics_title">Skicka anonym data</string>
