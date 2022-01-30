@@ -2,8 +2,8 @@ package openfoodfacts.github.scrachx.openfood.models
 
 import com.google.common.truth.Truth.assertThat
 import openfoodfacts.github.scrachx.openfood.models.entities.ToUploadProduct
-import org.junit.Before
-import org.junit.Test
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
 
 /**
  * Tests for [ToUploadProduct]
@@ -14,7 +14,7 @@ class ToUploadProductTest {
     // nutrients and NUTRITION
     private lateinit var toUploadProduct: ToUploadProduct
 
-    @Before
+    @BeforeEach
     fun setUp() {
         toUploadProduct = ToUploadProduct()
     }
