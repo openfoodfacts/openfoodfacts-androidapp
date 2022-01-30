@@ -5,8 +5,8 @@ import openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAG
 import openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_FRENCH
 import openfoodfacts.github.scrachx.openfood.models.entities.country.CountryNameTestData.GERMANY_EN
 import openfoodfacts.github.scrachx.openfood.models.entities.country.CountryNameTestData.GERMANY_FR
-import org.junit.Before
-import org.junit.Test
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
 import java.util.*
 
 /**
@@ -16,7 +16,7 @@ class CountryResponseTest {
     private var mCountryResponse: CountryResponse? = null
     private var country: Country? = null
 
-    @Before
+    @BeforeEach
     fun setup() {
         NAMES_MAP[LANGUAGE_CODE_ENGLISH] = GERMANY_EN
         NAMES_MAP[LANGUAGE_CODE_FRENCH] = GERMANY_FR

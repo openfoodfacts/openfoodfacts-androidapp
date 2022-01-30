@@ -382,7 +382,7 @@
     <string name="nova_grp4_msg">Grupa 4 - Wysoko przetworzone produkty spożywcze i napoje</string>
     <!-- String related to App Shortcuts -->
     <string name="disabled_message">Skrót niedostępny</string>
-    <string name="scan_shortcut_short_label">Skan</string>
+    <string name="scan_shortcut_short_label">Skanuj</string>
     <string name="scan_shortcut_long_label">Zeskanuj produkt</string>
     <string name="barcode_shortcut_short_label">Wyszukiwanie</string>
     <string name="barcode_shortcut_long_label">Szukaj po kodzie kreskowym</string>
@@ -453,7 +453,7 @@
     <string name="additive_string">Dodatek</string>
     <string name="allergen_string">Alergeny</string>
     <string name="search_string">Wyszukiwanie</string>
-    <string name="country_string">Country</string>
+    <string name="country_string">Kraj</string>
     <string name="store_subtitle">Sklep</string>
     <string name="packaging_subtitle">Opakowania</string>
     <string name="state_subtitle">Stan</string>

@@ -3,8 +3,7 @@ package openfoodfacts.github.scrachx.openfood.models
 import android.widget.Spinner
 import com.google.common.truth.Truth.assertThat
 import openfoodfacts.github.scrachx.openfood.utils.modifier
-import org.junit.Test
-import org.mockito.Mockito
+import org.junit.jupiter.api.Test
 import org.mockito.kotlin.doReturn
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever

@@ -146,23 +146,29 @@ implementation("com.squareup.okhttp3:logging-interceptor:3.12.13")
     implementation("com.github.hootsuite:nachos:1.2.0")
 
     // Crash analytics
-    implementation("io.sentry:sentry-android:5.5.2")
+    implementation("io.sentry:sentry-android:5.6.0")
     implementation("com.github.matomo-org:matomo-sdk-android:v4.1.2")
 
     // ShowCaseView dependency
     implementation("com.github.mreram:showcaseview:1.0.5")
 
-
     // Unit Testing
     testImplementation("androidx.arch.core:core-testing:2.1.0")
     testImplementation("junit:junit:4.13.2")
     testImplementation("org.robolectric:robolectric:4.7.3")
-    testImplementation("org.mockito:mockito-core:4.2.0")
+    testImplementation("org.mockito:mockito-core:4.3.1")
     testImplementation("org.mockito.kotlin:mockito-kotlin:4.0.0")
+    testImplementation("org.mockito:mockito-junit-jupiter:4.3.1")
     testImplementation("net.javacrumbs.json-unit:json-unit-fluent:2.28.0")
     testImplementation("com.google.truth:truth:1.1.3")
     testImplementation("com.google.truth.extensions:truth-java8-extension:1.1.3")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:${coroutinesVersion}")
+
+    val junit5Bom = "5.8.2"
+    testImplementation(platform("org.junit:junit-bom:$junit5Bom"))
+    testImplementation("org.junit.jupiter:junit-jupiter")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
+    testRuntimeOnly("org.junit.vintage:junit-vintage-engine")
 
     // Instrumented tests
     androidTestUtil("androidx.test:orchestrator:1.4.0")
@@ -208,7 +214,7 @@ android {
         applicationId = "openfoodfacts.github.scrachx.openfood"
 
         minSdk = 16
-        targetSdk = 31
+        targetSdk = 30
 
         versionCode = 433
         versionName = "3.6.8"
@@ -369,6 +375,15 @@ android {
     }
 
     testOptions {
+        unitTests.all { test ->
+            test.useJUnitPlatform {
+                includeEngines("junit-jupiter", "junit-vintage")
+            }
+            test.testLogging {
+                events("passed", "skipped", "failed")
+            }
+        }
+
         // avoid "Method ... not mocked."
         unitTests.isReturnDefaultValues = true
         execution = "ANDROIDX_TEST_ORCHESTRATOR"

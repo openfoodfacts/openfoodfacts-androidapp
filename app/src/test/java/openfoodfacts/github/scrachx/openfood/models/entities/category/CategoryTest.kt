@@ -4,17 +4,23 @@ import com.google.common.truth.Truth.assertThat
 import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import org.greenrobot.greendao.DaoException
 import org.junit.Assert.assertThrows
-import org.junit.Before
-import org.junit.Test
-import org.junit.runner.RunWith
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.Mock
-import org.mockito.junit.MockitoJUnitRunner
-import org.mockito.kotlin.*
+import org.mockito.junit.jupiter.MockitoExtension
+import org.mockito.junit.jupiter.MockitoSettings
+import org.mockito.kotlin.anyOrNull
+import org.mockito.kotlin.doReturn
+import org.mockito.kotlin.verify
+import org.mockito.kotlin.whenever
+import org.mockito.quality.Strictness
 
 /**
  * Tests for [Category]
  */
-@RunWith(MockitoJUnitRunner.StrictStubs::class)
+@ExtendWith(MockitoExtension::class)
+@MockitoSettings(strictness = Strictness.LENIENT)
 class CategoryTest {
     @Mock
     private lateinit var mockDaoSession: DaoSession
@@ -26,7 +32,7 @@ class CategoryTest {
     private lateinit var mockCategoryNameDao: CategoryNameDao
     private lateinit var mCategory: Category
 
-    @Before
+    @BeforeEach
     fun setup() {
         whenever(mockDaoSession.categoryDao) doReturn mockCategoryDao
         whenever(mockDaoSession.categoryNameDao) doReturn mockCategoryNameDao

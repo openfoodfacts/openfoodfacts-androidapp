@@ -4,8 +4,8 @@ import com.google.common.truth.Truth.assertThat
 import openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_ENGLISH
 import openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_FRENCH
 import openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_GERMAN
-import org.junit.Before
-import org.junit.Test
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
 
 /**
  * Tests for [AllergensWrapper]
@@ -15,7 +15,7 @@ class AllergensWrapperTest {
     lateinit var allergen1: Allergen
     lateinit var allergen2: Allergen
 
-    @Before
+    @BeforeEach
     fun setUp() {
 
         val nameMap1 = mapOf(

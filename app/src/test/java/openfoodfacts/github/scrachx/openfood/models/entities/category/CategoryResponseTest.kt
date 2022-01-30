@@ -5,8 +5,8 @@ import openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAG
 import openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_FRENCH
 import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoryResponseTestData.GUMMY_BEARS_EN
 import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoryResponseTestData.GUMMY_BEARS_FR
-import org.junit.Before
-import org.junit.Test
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
 import java.util.*
 
 /**
@@ -16,7 +16,7 @@ class CategoryResponseTest {
     private val mNamesMap: MutableMap<String, String> = HashMap()
     private var mCategoryResponse: CategoryResponse? = null
 
-    @Before
+    @BeforeEach
     fun setup() {
         mNamesMap[LANGUAGE_CODE_ENGLISH] = GUMMY_BEARS_EN
         mNamesMap[LANGUAGE_CODE_FRENCH] = GUMMY_BEARS_FR
