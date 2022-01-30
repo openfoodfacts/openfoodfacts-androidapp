@@ -55,17 +55,18 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVer")
 
     // AndroidX
-    implementation("androidx.appcompat:appcompat:1.4.0")
+    implementation("androidx.appcompat:appcompat:1.4.1")
     implementation("androidx.browser:browser:1.4.0")
     implementation("androidx.concurrent:concurrent-futures:1.1.0")
     implementation("androidx.recyclerview:recyclerview:1.2.1")
     implementation("androidx.cardview:cardview:1.0.0")
     implementation("androidx.annotation:annotation:1.3.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.2")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.3")
     implementation("androidx.multidex:multidex:2.0.1")
     implementation("androidx.viewpager2:viewpager2:1.0.0")
     implementation("androidx.startup:startup-runtime:1.1.0")
     implementation("androidx.work:work-runtime-ktx:2.6.0")
+    //     implementation("androidx.work:work-runtime-ktx:2.7.1") requires SDK31, see issue https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/4428
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 
     // ML Kit barcode Scanner
@@ -112,7 +113,7 @@ implementation("com.squareup.okhttp3:logging-interceptor:3.12.13")
     kapt("org.greenrobot:eventbus-annotation-processor:$eventBusVersion")
 
     // Material design
-    implementation("com.google.android.material:material:1.4.0")
+    implementation("com.google.android.material:material:1.5.0")
 
     // Image Loading
     implementation("com.squareup.picasso:picasso:2.8")
@@ -171,7 +172,7 @@ implementation("com.squareup.okhttp3:logging-interceptor:3.12.13")
     testRuntimeOnly("org.junit.vintage:junit-vintage-engine")
 
     // Instrumented tests
-    androidTestUtil("androidx.test:orchestrator:1.4.0")
+    androidTestUtil("androidx.test:orchestrator:1.4.1")
 
     // Hilt for Android Testing
     androidTestImplementation("com.google.dagger:hilt-android-testing:2.40.5")
