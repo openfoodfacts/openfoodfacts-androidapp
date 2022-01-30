@@ -46,7 +46,7 @@ Here are issues and feature requests you can work on:
 
 Open Food Facts on Android has 0,5M users and 1,6M products. *Each contribution you make will have a large impact on food transparency worldwide.* Finding the right issue or feature will help you have even more more impact. Feel free to ask for feedback on the #android channel before you start work, and to document what you intend to code.
 
-- [Here are issues and feature requests you can work on](https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/4166)
+- [Here are issues and feature requests you can work on](https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/4169)
 - [P1 issues](https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/p1)
 - [Small issues (Hacktoberfest)](https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/hacktoberfest)
 
