@@ -143,20 +143,19 @@ class ScanHistoryActivity : BaseActivity() {
 
                     if (state.items.isEmpty()) {
                         setMenuEnabled(false)
-                        binding.emptyHistoryInfo.isVisible = true
-                        binding.scanFirst.isVisible = true
+                        binding.scanFirstProductContainer.isVisible = true
                     } else {
+                        binding.scanFirstProductContainer.isVisible = false
                         setMenuEnabled(true)
                     }
 
-                    adapter.notifyDataSetChanged()
+                    adapter.notifyItemRangeChanged(0, state.items.count())
                 }
                 ScanHistoryViewModel.FetchProductsState.Error -> {
                     setMenuEnabled(false)
                     binding.srRefreshHistoryScanList.isRefreshing = false
                     binding.historyProgressbar.isVisible = false
-                    binding.emptyHistoryInfo.isVisible = true
-                    binding.scanFirst.isVisible = true
+                    binding.scanFirstProductContainer.isVisible = true
                 }
                 ScanHistoryViewModel.FetchProductsState.Loading -> {
                     setMenuEnabled(false)
