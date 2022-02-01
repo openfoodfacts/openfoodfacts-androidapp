@@ -65,7 +65,7 @@ dependencies {
     implementation("androidx.multidex:multidex:2.0.1")
     implementation("androidx.viewpager2:viewpager2:1.0.0")
     implementation("androidx.startup:startup-runtime:1.1.0")
-    implementation("androidx.work:work-runtime-ktx:2.6.0")
+    implementation("androidx.work:work-runtime-ktx:2.7.1")
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 
     // ML Kit barcode Scanner
@@ -214,7 +214,7 @@ android {
         applicationId = "openfoodfacts.github.scrachx.openfood"
 
         minSdk = 16
-        targetSdk = 30
+        targetSdk = 31
 
         versionCode = 433
         versionName = "3.6.8"
