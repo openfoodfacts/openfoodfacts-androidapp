@@ -430,6 +430,19 @@ $dokka.location:openfoodfacts.github.scrachx.openfood.features.compare/ProductCo
 $dokka.location:openfoodfacts.github.scrachx.openfood.features.compare/ProductCompareViewModel/loadingVisibleFlow/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.features.compare/-product-compare-view-model/loading-visible-flow.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.features.compare/ProductCompareViewModel/productsFlow/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.features.compare/-product-compare-view-model/products-flow.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.features.compare/ProductCompareViewModel/sideEffectFlow/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.features.compare/-product-compare-view-model/side-effect-flow.html
+$dokka.location:openfoodfacts.github.scrachx.openfood.features.home////PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.features.home/index.html
+$dokka.location:openfoodfacts.github.scrachx.openfood.features.home/HomeFragment.Companion///PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.features.home/-home-fragment/-companion/index.html
+$dokka.location:openfoodfacts.github.scrachx.openfood.features.home/HomeFragment.Companion/newInstance/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.features.home/-home-fragment/-companion/new-instance.html
+$dokka.location:openfoodfacts.github.scrachx.openfood.features.home/HomeFragment///PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.features.home/-home-fragment/index.html
+$dokka.location:openfoodfacts.github.scrachx.openfood.features.home/HomeFragment/HomeFragment/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.features.home/-home-fragment/-home-fragment.html
+$dokka.location:openfoodfacts.github.scrachx.openfood.features.home/HomeFragment/getNavigationDrawerType/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.features.home/-home-fragment/get-navigation-drawer-type.html
+$dokka.location:openfoodfacts.github.scrachx.openfood.features.home/HomeFragment/localeManager/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.features.home/-home-fragment/locale-manager.html
+$dokka.location:openfoodfacts.github.scrachx.openfood.features.home/HomeFragment/onCreateView/#android.view.LayoutInflater#android.view.ViewGroup?#android.os.Bundle?/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.features.home/-home-fragment/on-create-view.html
+$dokka.location:openfoodfacts.github.scrachx.openfood.features.home/HomeFragment/onDestroyView/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.features.home/-home-fragment/on-destroy-view.html
+$dokka.location:openfoodfacts.github.scrachx.openfood.features.home/HomeFragment/onResume/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.features.home/-home-fragment/on-resume.html
+$dokka.location:openfoodfacts.github.scrachx.openfood.features.home/HomeFragment/onViewCreated/#android.view.View#android.os.Bundle?/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.features.home/-home-fragment/on-view-created.html
+$dokka.location:openfoodfacts.github.scrachx.openfood.features.home/HomeFragment/productsApi/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.features.home/-home-fragment/products-api.html
+$dokka.location:openfoodfacts.github.scrachx.openfood.features.home/HomeFragment/sharedPrefs/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.features.home/-home-fragment/shared-prefs.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.features.login////PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.features.login/index.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.features.login/LoginActivity.Companion.LoginContract///PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.features.login/-login-activity/-companion/-login-contract/index.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.features.login/LoginActivity.Companion.LoginContract/LoginContract/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.features.login/-login-activity/-companion/-login-contract/-login-contract.html
@@ -1220,18 +1233,6 @@ $dokka.location:openfoodfacts.github.scrachx.openfood.features/FullScreenActivit
 $dokka.location:openfoodfacts.github.scrachx.openfood.features/FullScreenActivityOpener/openForUrl/#android.app.Activity#openfoodfacts.github.scrachx.openfood.repositories.ProductRepository#openfoodfacts.github.scrachx.openfood.models.Product#openfoodfacts.github.scrachx.openfood.models.ProductImageField#kotlin.String#android.view.View#kotlin.String/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.features/-full-screen-activity-opener/open-for-url.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.features/FullScreenActivityOpener/openForUrl/#androidx.fragment.app.Fragment#openfoodfacts.github.scrachx.openfood.repositories.ProductRepository#openfoodfacts.github.scrachx.openfood.models.Product#openfoodfacts.github.scrachx.openfood.models.ProductImageField#kotlin.String#android.view.View#kotlin.String/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.features/-full-screen-activity-opener/open-for-url.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.features/FullScreenActivityOpener/openZoom/#android.app.Activity#kotlin.String#android.view.View?/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.features/-full-screen-activity-opener/open-zoom.html
-$dokka.location:openfoodfacts.github.scrachx.openfood.features/HomeFragment.Companion///PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.features/-home-fragment/-companion/index.html
-$dokka.location:openfoodfacts.github.scrachx.openfood.features/HomeFragment.Companion/newInstance/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.features/-home-fragment/-companion/new-instance.html
-$dokka.location:openfoodfacts.github.scrachx.openfood.features/HomeFragment///PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.features/-home-fragment/index.html
-$dokka.location:openfoodfacts.github.scrachx.openfood.features/HomeFragment/HomeFragment/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.features/-home-fragment/-home-fragment.html
-$dokka.location:openfoodfacts.github.scrachx.openfood.features/HomeFragment/getNavigationDrawerType/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.features/-home-fragment/get-navigation-drawer-type.html
-$dokka.location:openfoodfacts.github.scrachx.openfood.features/HomeFragment/localeManager/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.features/-home-fragment/locale-manager.html
-$dokka.location:openfoodfacts.github.scrachx.openfood.features/HomeFragment/onCreateView/#android.view.LayoutInflater#android.view.ViewGroup?#android.os.Bundle?/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.features/-home-fragment/on-create-view.html
-$dokka.location:openfoodfacts.github.scrachx.openfood.features/HomeFragment/onDestroyView/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.features/-home-fragment/on-destroy-view.html
-$dokka.location:openfoodfacts.github.scrachx.openfood.features/HomeFragment/onResume/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.features/-home-fragment/on-resume.html
-$dokka.location:openfoodfacts.github.scrachx.openfood.features/HomeFragment/onViewCreated/#android.view.View#android.os.Bundle?/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.features/-home-fragment/on-view-created.html
-$dokka.location:openfoodfacts.github.scrachx.openfood.features/HomeFragment/productsApi/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.features/-home-fragment/products-api.html
-$dokka.location:openfoodfacts.github.scrachx.openfood.features/HomeFragment/sharedPrefs/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.features/-home-fragment/shared-prefs.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.features/ImageZoomActivity.Companion///PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.features/-image-zoom-activity/-companion/index.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.features/ImageZoomActivity.Companion/start/#android.content.Context#kotlin.String/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.features/-image-zoom-activity/-companion/start.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.features/ImageZoomActivity///PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.features/-image-zoom-activity/index.html
@@ -3258,6 +3259,7 @@ openfoodfacts.github.scrachx.openfood.features.categories.adapter
 openfoodfacts.github.scrachx.openfood.features.categories.fragment
 openfoodfacts.github.scrachx.openfood.features.changelog
 openfoodfacts.github.scrachx.openfood.features.compare
+openfoodfacts.github.scrachx.openfood.features.home
 openfoodfacts.github.scrachx.openfood.features.login
 openfoodfacts.github.scrachx.openfood.features.preferences
 openfoodfacts.github.scrachx.openfood.features.product
