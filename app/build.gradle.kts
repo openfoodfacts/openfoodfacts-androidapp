@@ -44,7 +44,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion")
 
     // Android KTX
-    implementation("androidx.fragment:fragment-ktx:1.4.0")
+    implementation("androidx.fragment:fragment-ktx:1.4.1")
     implementation("androidx.activity:activity-ktx:1.4.0")
     implementation("androidx.preference:preference-ktx:1.1.1")
     implementation("androidx.core:core-ktx:1.7.0")
@@ -69,7 +69,7 @@ dependencies {
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 
     // ML Kit barcode Scanner
-    implementation("com.google.mlkit:barcode-scanning:17.0.0")
+    implementation("com.google.mlkit:barcode-scanning:17.0.2")
 
     // Hilt
     implementation("com.google.dagger:hilt-android:${rootProject.extra["hiltVersion"]}")
@@ -171,7 +171,7 @@ implementation("com.squareup.okhttp3:logging-interceptor:3.12.13")
     testRuntimeOnly("org.junit.vintage:junit-vintage-engine")
 
     // Instrumented tests
-    androidTestUtil("androidx.test:orchestrator:1.4.0")
+    androidTestUtil("androidx.test:orchestrator:1.4.1")
 
     // Hilt for Android Testing
     androidTestImplementation("com.google.dagger:hilt-android-testing:2.40.5")
