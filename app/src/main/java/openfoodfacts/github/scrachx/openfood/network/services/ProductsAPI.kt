@@ -334,7 +334,7 @@ interface ProductsAPI {
      * This method gives the news in all languages
      */
     @GET("/files/tagline/tagline-$FLAVOR_versionCode.json")
-    suspend fun getTagline(@Header("User-Agent") header: String): ArrayList<TagLineLanguage>
+    suspend fun getTaglineLanguages(@Header("User-Agent") header: String): ArrayList<TagLineLanguage>
 
     /**
      * Returns images for the current product

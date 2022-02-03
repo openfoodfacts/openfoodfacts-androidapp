@@ -18,35 +18,28 @@ package openfoodfacts.github.scrachx.openfood.features.home
 import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
-import androidx.lifecycle.lifecycleScope
+import androidx.fragment.app.viewModels
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import logcat.logcat
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabsHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentHomeBinding
-import openfoodfacts.github.scrachx.openfood.features.login.LoginActivity
 import openfoodfacts.github.scrachx.openfood.features.login.LoginActivity.Companion.LoginContract
 import openfoodfacts.github.scrachx.openfood.features.shared.NavigationBaseFragment
-import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
+import openfoodfacts.github.scrachx.openfood.models.TagLine
 import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType
 import openfoodfacts.github.scrachx.openfood.utils.getLoginPreferences
-import openfoodfacts.github.scrachx.openfood.utils.getUserAgent
-import java.io.IOException
 import java.text.NumberFormat
-import java.util.*
 import javax.inject.Inject
 
 /**
@@ -58,8 +51,7 @@ class HomeFragment : NavigationBaseFragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
-    @Inject
-    lateinit var productsApi: ProductsAPI
+    private val viewModel: HomeViewModel by viewModels()
 
     @Inject
     lateinit var sharedPrefs: SharedPreferences
@@ -69,6 +61,9 @@ class HomeFragment : NavigationBaseFragment() {
 
     private var taglineURL: String? = null
 
+    private val numberFormat by lazy { NumberFormat.getInstance() }
+    private val loginPreferences by lazy { requireActivity().getLoginPreferences() }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
@@ -77,11 +72,24 @@ class HomeFragment : NavigationBaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.tvTagLine.setOnClickListener { openDailyFoodFacts() }
+
+        viewModel.signInState.observe(viewLifecycleOwner, ::checkLoginValidity)
+        viewModel.productCount.observe(viewLifecycleOwner, ::setProductCount)
+        viewModel.tagline.observe(viewLifecycleOwner, ::setTagline)
+
         checkUserCredentials()
     }
 
+    private fun setTagline(tagline: TagLine) {
+
+        taglineURL = tagline.url
+        binding.tvTagLine.text = tagline.message
+
+        binding.tvTagLine.visibility = View.VISIBLE
+    }
+
+
     override fun onDestroyView() {
-        // Stop the call to server to get total product count and tagline
         super.onDestroyView()
         _binding = null
     }
@@ -110,75 +118,40 @@ class HomeFragment : NavigationBaseFragment() {
     private val loginLauncher = registerForActivityResult(LoginContract()) { }
 
     private fun checkUserCredentials() {
-        val settings = requireActivity().getLoginPreferences()
 
-        val login = settings.getString("user", null)
-        val password = settings.getString("pass", null)
+        val login = loginPreferences.getString("user", null)
+        val password = loginPreferences.getString("pass", null)
 
-        Log.d(LOG_TAG, "Checking user saved credentials...")
+        logcat { "Checking user saved credentials..." }
         if (login.isNullOrEmpty() || password.isNullOrEmpty()) {
-            Log.d(LOG_TAG, "User is not logged in.")
+            logcat { "User is not logged in." }
             return
         }
 
-        lifecycleScope.launch(Dispatchers.IO) {
-            val response = try {
-                productsApi.signIn(login, password, "Sign-in")
-            } catch (err: Throwable) {
-                Log.e(LOG_TAG, "Cannot check user credentials.", err)
-                null
-            } ?: return@launch
+        viewModel.signIn(login, password)
+    }
 
-            val htmlBody: String = try {
-                response.body()!!.string()
-            } catch (e: IOException) {
-                Log.e(LOG_TAG, "I/O Exception while checking user saved credentials.", e)
-                return@launch
-            }
-            if (LoginActivity.isHtmlNotValid(htmlBody)) {
-                Log.w(LOG_TAG, "Cannot validate login, deleting saved credentials and asking the user to log back in.")
-                settings.edit {
-                    putString("user", "")
-                    putString("pass", "")
-                }
-                withContext(Dispatchers.Main) {
-                    MaterialAlertDialogBuilder(requireActivity())
-                        .setTitle(R.string.alert_dialog_warning_title)
-                        .setMessage(R.string.alert_dialog_warning_msg_user)
-                        .setPositiveButton(android.R.string.ok) { _, _ -> loginLauncher.launch(Unit) }
-                        .show()
-                }
-            }
+    private fun checkLoginValidity(valid: Boolean) {
+        if (valid) return
+
+        loginPreferences.edit {
+            putString("user", "")
+            putString("pass", "")
         }
+
+        MaterialAlertDialogBuilder(requireActivity())
+            .setTitle(R.string.alert_dialog_warning_title)
+            .setMessage(R.string.alert_dialog_warning_msg_user)
+            .setPositiveButton(android.R.string.ok) { _, _ -> loginLauncher.launch(Unit) }
+            .show()
     }
 
     override fun onResume() {
         super.onResume()
-        refreshProductCount()
-        refreshTagLine()
+        viewModel.refreshProductCount()
+        viewModel.refreshTagline()
 
         (activity as? AppCompatActivity)?.supportActionBar?.let { it.title = "" }
-    }
-
-    private fun refreshProductCount() {
-        Log.d(LOG_TAG, "Refreshing total product count...")
-        lifecycleScope.launchWhenResumed {
-            val count = try {
-                withContext(Dispatchers.IO) {
-                    val fetchedCount = productsApi.getTotalProductCount(getUserAgent()).count.toInt()
-                    sharedPrefs.edit { putInt(PRODUCT_COUNT_KEY, fetchedCount) }
-                    fetchedCount
-                }
-            } catch (err: Exception) {
-                Log.e(LOG_TAG, "Could not retrieve product count from server.", err)
-                sharedPrefs.getInt(PRODUCT_COUNT_KEY, 0)
-            }
-            Log.d(LOG_TAG, "Refreshed total product count. There are $count products on the database.")
-
-            withContext(Dispatchers.Main) {
-                setProductCount(count)
-            }
-        }
     }
 
     /**
@@ -187,50 +160,14 @@ class HomeFragment : NavigationBaseFragment() {
      * @param count count of total products available on the apps database
      */
     private fun setProductCount(count: Int) {
-        if (_binding == null) {
-            Log.w(LOG_TAG, "setProductCount() calls with null binding")
-        }
-        _binding?.textHome?.text = if (count == 0) {
-            getString(R.string.txtHome)
-        } else {
-            getString(R.string.txtHomeOnline, NumberFormat.getInstance().format(count))
-        }
-    }
-
-    /**
-     * get tag line url from OpenFoodAPIService
-     */
-    private fun refreshTagLine() {
-        lifecycleScope.launch {
-            val tagLines = try {
-                withContext(Dispatchers.IO) { productsApi.getTagline(getUserAgent()) }
-            } catch (err: Exception) {
-                Log.w(LOG_TAG, "Could not retrieve tag-line from server.", err)
-                return@launch
+        binding.textHome.text =
+            if (count == 0) getString(R.string.txtHome)
+            else {
+                getString(R.string.txtHomeOnline, numberFormat.format(count))
             }
-
-            val appLanguage = localeManager.getLanguage()
-            var isLanguageFound = false
-
-            for (tag in tagLines) {
-                if (appLanguage !in tag.language) continue
-                isLanguageFound = true
-                taglineURL = tag.tagLine.url
-                binding.tvTagLine.text = tag.tagLine.message
-                if (tag.language == appLanguage) break
-            }
-
-            if (!isLanguageFound) {
-                taglineURL = tagLines.last().tagLine.url
-                binding.tvTagLine.text = tagLines.last().tagLine.message
-            }
-            binding.tvTagLine.visibility = View.VISIBLE
-        }
     }
 
     companion object {
-        private val LOG_TAG = HomeFragment::class.simpleName!!
-        private const val PRODUCT_COUNT_KEY = "productCount"
         fun newInstance() = HomeFragment().apply { arguments = Bundle() }
     }
 }
