@@ -69,7 +69,7 @@ dependencies {
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 
     // ML Kit barcode Scanner
-    implementation("com.google.mlkit:barcode-scanning:17.0.2")
+    implementation("com.google.mlkit:barcode-scanning:17.0.0")
 
     // Hilt
     implementation("com.google.dagger:hilt-android:${rootProject.extra["hiltVersion"]}")
