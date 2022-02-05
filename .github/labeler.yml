@@ -1,2 +1,52 @@
 github:
 - .github/**/*
+
+taxonomies:
+- app/src/androidTest/java/openfoodfacts/github/scrachx/openfood/repositories/TaxonomiesRepositoryTest.kt
+- app/src/main/java/openfoodfacts/github/scrachx/openfood/repositories/TaxonomiesManager.kt
+- app/src/main/java/openfoodfacts/github/scrachx/openfood/repositories/Taxonomy.kt
+- app/src/main/java/openfoodfacts/github/scrachx/openfood/repositories/TaxonomiesRepository.kt
+
+allergen alert:
+- app/src/test/java/openfoodfacts/github/scrachx/openfood/models/entities/allergen/AllergenResponseTestData.kt
+- app/src/test/java/openfoodfacts/github/scrachx/openfood/models/entities/allergen/AllergensWrapperTest.kt
+- app/src/test/java/openfoodfacts/github/scrachx/openfood/models/entities/allergen/AllergenTest.kt
+- app/src/test/java/openfoodfacts/github/scrachx/openfood/models/entities/allergen/AllergenResponseTest.kt
+- app/src/main/java/openfoodfacts/github/scrachx/openfood/features/allergensalert/AllergensAlertViewModel.kt
+- app/src/main/java/openfoodfacts/github/scrachx/openfood/features/allergensalert/AllergensAdapter.kt
+- app/src/main/java/openfoodfacts/github/scrachx/openfood/features/allergensalert/AllergensAlertFragment.kt
+- app/src/main/java/openfoodfacts/github/scrachx/openfood/repositories/AllergenPreferencesRepository.kt
+- app/src/main/java/openfoodfacts/github/scrachx/openfood/models/entities/allergen/AllergenResponse.kt
+- app/src/main/java/openfoodfacts/github/scrachx/openfood/models/entities/allergen/AllergenName.java
+- app/src/main/java/openfoodfacts/github/scrachx/openfood/models/entities/allergen/AllergensWrapperDeserializer.kt
+- app/src/main/java/openfoodfacts/github/scrachx/openfood/models/entities/allergen/AllergensWrapper.kt
+- app/src/main/java/openfoodfacts/github/scrachx/openfood/models/entities/allergen/Allergen.java
+- app/src/main/java/openfoodfacts/github/scrachx/openfood/models/entities/allergen/AllergenHelper.kt
+
+questions:
+- app/src/main/java/openfoodfacts/github/scrachx/openfood/repositories/RobotoffRepository.kt
+
+screenshots:
+- app/src/androidTestScreenshots/java/openfoodfacts/github/scrachx/openfood/test/ScreenshotParameter.kt
+- app/src/androidTestScreenshots/java/openfoodfacts/github/scrachx/openfood/test/ScreenshotActivityTestRule.kt
+- app/src/androidTestScreenshots/java/openfoodfacts/github/scrachx/openfood/test/ScreenshotTaker.kt
+- app/src/androidTestScreenshots/java/openfoodfacts/github/scrachx/openfood/test/ScreenshotParametersProvider.kt
+- app/src/androidTestScreenshots/java/openfoodfacts/github/scrachx/openfood/test/ScreenshotsLocaleProvider.kt
+
+translations:
+- app/src/off/res/values-*
+- app/src/obf/res/values-*
+- app/src/opf/res/values-*
+- app/src/opff/res/values-*
+
+open beauty facts:
+- app/src/obf/res/values-*
+
+open products facts:
+- app/src/opf/res/values-*
+
+open pet food facts:
+- app/src/opff/res/values-*
+
+changelog:
+- app/src/main/assets/changelog/*
