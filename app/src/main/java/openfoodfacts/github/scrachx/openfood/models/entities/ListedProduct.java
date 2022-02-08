@@ -6,6 +6,8 @@ import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Index;
 import org.greenrobot.greendao.annotation.Property;
 
+import javax.annotation.Nullable;
+
 @Entity(
     nameInDb = "YOUR_LISTED_PRODUCT",
     indexes = {@Index(value = "listId, barcode", unique = true)}
@@ -82,6 +84,7 @@ public class ListedProduct {
         this.productDetails = productDetails;
     }
 
+    @Nullable
     public String getImageUrl() {
         return this.imageUrl;
     }
