@@ -7,10 +7,10 @@ assignees: ''
 
 ---
 ### What
-A clear and concise description of what the feature is.
+Write here a clear and concise description of what the feature is.
 
 ### Why/User story
-A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
+Write here why it's important or why it bothers you.
 
 ### Screenshot/Mockup/Before-After
 (optional, delete if empty)
