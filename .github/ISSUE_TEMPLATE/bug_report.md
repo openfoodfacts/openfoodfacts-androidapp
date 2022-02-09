@@ -9,31 +9,31 @@ assignees: ''
 ### What
 - Describe the issue clearly
 
-### Why
-- (Optional) Why it's important
-
-### Part of
-- Add the issue number preceded by # (that also allows searching by name for similar issues): eg #1
-
 ### Steps to reproduce the behavior
 1. Go to '...'
 2. Click on '....'
 3. …
 4. See error
 
-**Expected behavior**
+### Expected behavior
 A clear and concise description of what you expected to happen.
 
+### Why
+- (optional, delete if empty) Why it's important
+
+### Part of
+- Add the issue number preceded by # (that also allows searching by name for similar issues): eg #1
+
 ### Screenshot/Mockup/Before-After
+(optional, delete if empty)
 
 ### Smartphone model
- - Device: [e.g. iPhone6]
- - OS: [e.g. iOS8.1]
- - Browser [e.g. stock browser, safari]
- - Version [e.g. 22]
+ - Device: [e.g. Pixel6]
+ - OS: [e.g. Android 10]
+ - App Version [e.g. 22] - you can see that either at the bottom of the app settings (left menu) or https://nerdschalk.com/how-to-find-version-number-of-an-app-installed-on-your-device/
 
 ### Additional context
-Add any other context about the problem here.
+(optional, delete if empty)
 
 
 
