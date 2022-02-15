@@ -76,6 +76,7 @@ import openfoodfacts.github.scrachx.openfood.features.allergensalert.AllergensAl
 import openfoodfacts.github.scrachx.openfood.features.categories.activity.CategoryActivity
 import openfoodfacts.github.scrachx.openfood.features.changelog.ChangelogDialog
 import openfoodfacts.github.scrachx.openfood.features.compare.ProductCompareActivity
+import openfoodfacts.github.scrachx.openfood.features.home.HomeFragment
 import openfoodfacts.github.scrachx.openfood.features.login.LoginActivity
 import openfoodfacts.github.scrachx.openfood.features.login.LoginActivity.Companion.LoginContract
 import openfoodfacts.github.scrachx.openfood.features.preferences.PreferencesFragment

@@ -183,11 +183,11 @@
     <string name="hintPass">密码</string>
     <string name="errorLogin">用户名或密码错误</string>
     <string name="errorWeb">我们无法访问互联网，你有连接问题吗？</string>
-    <string name="txtInfoLoginOk">You successfully logged into your Open Food Facts account.</string>
-    <string name="txtInfoLoginNo">An error happened while trying to log into your Open Food Facts account.</string>
-    <string name="product_does_not_exist_please_add_it">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
-    <string name="txtYes">是的</string>
-    <string name="txtNo">不</string>
+    <string name="txtInfoLoginOk">您已成功登录到您的 Open Food Facts 帐户。</string>
+    <string name="txtInfoLoginNo">尝试登录您的 Open Food Facts 帐户时发生错误。</string>
+    <string name="product_does_not_exist_please_add_it">您扫描的产品尚未收录于 Open Food Facts 中，请添加它。</string>
+    <string name="txtYes">有的</string>
+    <string name="txtNo">没有</string>
     <string name="hintBrand">品牌</string>
     <string name="txtSendAll">全部上传</string>
     <string name="txtPictureNeededDialogNo">舍弃</string>
@@ -212,7 +212,7 @@
     <string name="alert_drawer">过敏原警告</string>
     <string name="your_lists">您的清单</string>
     <string name="title_dialog_alert">添加提醒</string>
-    <string name="select_camera">Select a Camera</string>
+    <string name="select_camera">选择一个摄像头</string>
     <string name="ok_button">确定</string>
     <string name="cancel_button">取消</string>
     <string name="login_button">用户名</string>
@@ -255,7 +255,7 @@
     <string name="calculated_nutrition">计算营养</string>
     <string name="please_enter_weight">请输入产品重量</string>
     <string name="enter_weight">输入产品重量</string>
-    <string name="calculate_nutrition_facts">Calculate nutrition facts for a specific quantity</string>
+    <string name="calculate_nutrition_facts">计算特定数量的营养成分</string>
     <string name="nutrition_carbohydrate">碳水化合物</string>
     <string name="nutrition_cholesterol">胆固醇</string>
     <string name="nutrition_energy_kcal">卡路里热量（千卡）</string>
@@ -358,7 +358,7 @@
     <string name="take_picture_front">拍摄正面照片</string>
     <string name="take_picture_nutrition_table">拍摄营养成分</string>
     <string name="take_more_pictures">拍摄更多照片</string>
-    <string name="take_extra_packaging_pictures">Take extra photos of packaging</string>
+    <string name="take_extra_packaging_pictures">拍摄额外的包装照片</string>
     <string name="txtSaturatedFat">饱和脂肪</string>
     <string name="nutriscore_info_msg">Learn more about the Nutri-Score</string>
     <string name="nova_info_msg">了解有关NOVA组的更多信息</string>
@@ -385,14 +385,14 @@
     <string name="changes_saved">更改已成功保存</string>
     <string name="proceed">继续</string>
     <string name="preference_choose_language_dialog_title">选择语言</string>
-    <string name="preference_choose_scanner_dialog_title"><b>New: Enhanced “MLKit” scanner</b></string>
-    <string name="preference_choose_scanner_dialog_body">We have included a new option to more reliably scan barcodes. While this scanner works on your device, using machine learning,
-            please be aware that it is a proprietary component provided by Google, governed by this privacy policy, and that some limited telemetry might be sent back to Google’s servers
-            to improve their software. As noted in the MLKit terms, this won’t include any information about the products you scan and the telemetry is anonymized. Choosing MLKit scanner
-            implies that you accept those terms\n<b>Note: You can switch back at any time between the 2 scanners in the Settings.</b>
+    <string name="preference_choose_scanner_dialog_title"><b>新：增强的“MLKit”扫描仪</b></string>
+    <string name="preference_choose_scanner_dialog_body">我们添加了一个新选项，可以更可靠地扫描条形码。虽然此扫描仪使用机器学习在您的设备上工作，但
+            请注意，它是由 Google 提供的专有组件，受本隐私政策约束，并且可能会将一些有限的遥测数据发送回 Google 的服务器
+            以改进其软件。如 MLKit 条款中所述，这不包括有关您扫描的产品的任何信息，并且遥测是匿名的。选择 MLKit 扫描仪
+            意味着您接受这些条款\n<b>注意：您可以随时在设置中的 2 种扫描仪之间切换回来。</b>
     </string>
     <string name="prompt_point_at_a_barcode">将相机对准条形码</string>
-    <string name="prompt_move_camera_closer">Move closer to detect</string>
+    <string name="prompt_move_camera_closer">靠近一些以进行搜索</string>
     <string name="please_check_your_connection">请检查你的网络连接</string>
     <string name="advanced_search_title">高级搜索和图表</string>
     <string name="compare_products">比较产品</string>
@@ -417,13 +417,13 @@
     <string name="preference_header_general">一般</string>
     <string name="preference_header_privacy">隐私</string>
     <string name="preference_crash_title">崩溃报告</string>
-    <string name="preference_crash_summary">When enabled, crash reports will be sent to the Open Food Facts server automatically, so that we can fix bugs and improve the app.</string>
+    <string name="preference_crash_summary">启用后，崩溃报告将自动发送到 Open Food Facts 服务器，以便我们修复错误并改进应用程序。</string>
     <string name="preference_analytics_title">发送匿名数据</string>
-    <string name="preference_analytics_summary">When enabled, some anonymous information regarding app usage will be sent to the Open Food Facts servers, so that we can understand how and how much features are used in order to improve them.</string>
+    <string name="preference_analytics_summary">启用后，一些关于应用程序使用情况的匿名信息将被发送到 Open Food Facts 服务器，以便我们了解如何以及使用了多少功能来改进它们。</string>
     <string name="preference_analytics_bottom_sheet_title">发送匿名数据</string>
-    <string name="preference_analytics_bottom_sheet_description">Help improve Open Food Facts by letting us know how you use it. Data collected is anonymous. This option can be disabled at any time in the settings section.</string>
+    <string name="preference_analytics_bottom_sheet_description">通过让我们知道您如何使用它来帮助改进 Open Food Facts。收集的数据是匿名的。可以随时在设置部分禁用此选项。</string>
     <string name="preference_analytics_bottom_sheet_grant_button">授权</string>
-    <string name="preference_analytics_bottom_sheet_decline_button">Decline</string>
+    <string name="preference_analytics_bottom_sheet_decline_button">拒绝</string>
     <string name="scan_first_string">您查看的产品历史记录将在此处列出。\n此历史记录仅供您查看，并存储在本地。</string>
     <string name="log_in">用户名</string>
     <string name="login_true">已经登录！</string>
@@ -463,7 +463,7 @@
     <string name="by_nutrition_grade">营养分数</string>
     <string name="sort_by">排序方式</string>
     <!-- strings related to share images -->
-    <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
+    <string name="sorry_msg">没有条形码的图片尚无法使用应用程序添加。请尝试使用移动端的网页版。</string>
     <string name="no_barcode">我们没有检测到任何条码</string>
     <string name="enter_barcode">请在下面输入条码</string>
     <string name="format_error">错误的条码/二维码格式</string>
@@ -472,25 +472,25 @@
     <string name="bottomNav_history">历史记录</string>
     <string name="products_added">你所添加或编辑的产品</string>
     <string name="products_incomplete">您添加的产品需要完成</string>
-    <string name="product_pictures_contributed">Products you took pictures for</string>
-    <string name="picture_contributed_incomplete">Products you took pictures for that need to be completed</string>
-    <string name="product_info_added">Products you added information for</string>
-    <string name="product_info_tocomplete">Products you added information for that need to be completed</string>
-    <string name="show_by">Show</string>
+    <string name="product_pictures_contributed">您为其拍照的产品</string>
+    <string name="picture_contributed_incomplete">您为其添加的产品照片需要完善</string>
+    <string name="product_info_added">您为其添加的产品信息</string>
+    <string name="product_info_tocomplete">您为其添加的产品信息需要完善</string>
+    <string name="show_by">显示</string>
     <string name="notify_title">导出完成</string>
     <string name="notify_content">点击查看导出的产品</string>
     <string name="notification_channel_name">导出通知</string>
-    <string name="notify_channel_description">Notification to show exported file\'s location</string>
+    <string name="notify_channel_description">显示导出文件位置的通知</string>
     <string name="products_to_be_completed">待完成的产品</string>
-    <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Product added on %1$s at %2$s CET by %3$s</string>
-    <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Last edit of product page on %1$s at %2$s CEST by %3$s </string>
+    <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">产品在 %2$s CET 由 %3$s添加到 %1$s</string>
+    <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">产品页面的最后一次编辑在 %1$s 的 %2$s CEST 由 %3$s </string>
     <!-- TODO: Add the placeholder in the string - important for several languages -->
     <string name="other_editors">产品页面也被以下人员修改 </string>
-    <string name="product_states">Product States</string>
-    <string name="incomplete_states">Incomplete States</string>
-    <string name="complete_states">Complete States</string>
+    <string name="product_states">产品状态</string>
+    <string name="incomplete_states">状态不完整</string>
+    <string name="complete_states">完整状态</string>
     <string name="contribution_tab">贡献</string>
-    <string name="synthesis_tab">Synthesis</string>
+    <string name="synthesis_tab">合成</string>
     <string name="txtDialogsTitle">信息</string>
     <string name="offline_product_addition_title">添加新产品</string>
     <string name="productNameNull">名称未知</string>
@@ -526,20 +526,20 @@
     <string name="image_uploaded_successfully">图片已经上传成功</string>
     <string name="error_adding_product_photos">尝试添加产品照片时出现了问题</string>
     <string name="save_product">您要保存产品吗？</string>
-    <string name="error_adding_product">Something went wrong when adding the product</string>
+    <string name="error_adding_product">添加产品时出现问题</string>
     <string name="photos">照片</string>
     <string name="please_wait">请稍候</string>
     <string name="product_uploaded_successfully">产品上传成功</string>
-    <string name="no_internet_connection">You appear to have no internet connection, images will be uploaded when network is available</string>
-    <string name="no_internet_unable_to_extract_ingredients">No internet connection. Unable to extract ingredients</string>
+    <string name="no_internet_connection">您似乎没有网络连接，当网络可用时图像将被上传</string>
+    <string name="no_internet_unable_to_extract_ingredients">没有网络连接。无法提取成分</string>
     <string name="overview">摘要</string>
     <string name="ingredients">成分</string>
     <string name="nutrition_facts">营养成分表</string>
-    <string name="your_version">Yours</string>
-    <string name="ingredients_picture">Ingredients Picture</string>
+    <string name="your_version">您的</string>
+    <string name="ingredients_picture">成分表图片</string>
     <string name="packaging">循坏利用</string>
-    <string name="take_ingredients_picture_to_extract">(Please take a photo of the ingredients to automatically extract them)</string>
-    <string name="ingredients_list">Ingredients List</string>
+    <string name="take_ingredients_picture_to_extract">(请拍摄成分表的照片以自动提取)</string>
+    <string name="ingredients_list">成分列表：</string>
     <string name="ingredients_hint" tools:ignore="StringFormatInvalid">Keep the order, indicate the % when specified, separate with a comma or use -, use () for ingredients of an ingredient, surround allergens with _</string>
     <string name="extract_ingredients">提取成分</string>
     <string name="extracting_ingredients">提取成分</string>
@@ -549,9 +549,9 @@
     <string name="traces_hint">从提到的内容中指明成分，例如“可能含有痕迹”，“也使用的工厂制造”等 \n示例：牛奶，面筋，坚果</string>
     <string name="nutrition_facts_not_specified">营养成分没有在产品傻姑娘注明</string>
     <string name="nutrition_facts_picture">营养成分照片</string>
-    <string name="front_short_picture">Front</string>
-    <string name="other_picture">Other Picture</string>
-    <string name="for_100g_100ml">For 100g / 100ml</string>
+    <string name="front_short_picture">正面</string>
+    <string name="other_picture">其他图片</string>
+    <string name="for_100g_100ml">每 100 克 / 100 毫升</string>
     <string name="per_serving">每份</string>
     <string name="serving_size">份量</string>
     <string name="alcohol_unit" formatted="false">% vol / °</string>
@@ -559,16 +559,16 @@
     <string name="add_this_product">添加该商品</string>
     <string name="product_picture">产品的照片</string>
     <string name="one_photo_compulsory">（必须添加一张照片才能添加新产品）</string>
-    <string name="product_details">Product Details</string>
+    <string name="product_details">产品细节</string>
     <string name="product_name">产品名称</string>
     <string name="quantity">数量</string>
     <string name="labels">标签</string>
     <string name="period_of_time_after_opening">开放后一段时间</string>
-    <string name="manufacturing_details">Manufacturing Details</string>
+    <string name="manufacturing_details">制造细节</string>
     <string name="origin_of_ingredients">成分来源</string>
-    <string name="manufacturing_place">Manufacturing place</string>
-    <string name="emb_code">Traceability Code</string>
-    <string name="purchasing_details">Purchasing Details</string>
+    <string name="manufacturing_place">生产地</string>
+    <string name="emb_code">溯源代码</string>
+    <string name="purchasing_details">购买详情</string>
     <string name="country_where_purchased">Country where purchased</string>
     <string name="stores">商店</string>
     <string name="additional_pictures">更多的图片</string>
@@ -615,11 +615,11 @@
     <string name="update_image">发送更新的图像</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">提取成分</string>
-    <string name="extract_recycling_prompt">Extract recycling instructions</string>
+    <string name="extract_recycling_prompt">提取回收说明</string>
     <string name="add_nutrient_prompt_text">添加营养成分以计算Nutri-Score</string>
     <string name="add_category_prompt_text">添加类别以计算Nutri-Score</string>
     <string name="add_nutrient_category_prompt_text">添加营养成分和类别以计算Nutri-Score</string>
-    <string name="couldnot_compute_ecoscore_prompt_text" comment="Do not translate Eco-Score">We could not compute an Eco-Score for this product. It might be that the category is not specific enough or that we don\'t have supporting data for this category. If you believe this is an error, you can mail us by clicking below.</string>
+    <string name="couldnot_compute_ecoscore_prompt_text" comment="Do not translate Eco-Score">我们无法计算该产品的 Eco-Score。可能是该类别不够具体，或者我们没有该类别的支持数据。如果您认为这是一个错误，您可以点击下面的邮件给我们。</string>
     <string name="add_labels_origins_prompt_text" comment="Do not translate Eco-Score">The Eco-Score takes into account environmental labels and origins of the ingredients. Please take them into photo or edit the product so that they can be taken into account</string>
     <string name="add_labels_prompt_text" comment="Do not translate Eco-Score">The Eco-Score takes into account environmental labels. Please take them into photo or edit the product so that they can be taken into account</string>
     <string name="add_origins_prompt_text" comment="Do not translate Eco-Score">The Eco-Score takes into account the origins of the ingredients. Please take them into photo (ingredient list and/or any geographic claim) or edit the product so that they can be taken into account</string>
@@ -663,8 +663,8 @@
     <string name="product_summary_action_edit_button_label">编辑</string>
     <string name="product_summary_action_share_button_label">推荐给好友</string>
     <string name="product_question_prompt">点击此处回答</string>
-    <string name="product_question_positive_response">是的</string>
-    <string name="product_question_negative_response">不</string>
+    <string name="product_question_positive_response">有的</string>
+    <string name="product_question_negative_response">没有</string>
     <string name="product_question_ambiguous_response">不确定</string>
     <string name="product_question_submit_message">感谢您的贡献！</string>
     <string name="error_nutrient_entry">该值应为数字。例如： &quot;1.5&quot;， &quot;2,0&quot;</string>
@@ -684,7 +684,7 @@
     <string name="choose_default_language">选择产品语言</string>
     <string name="barcode">条形码</string>
     <string name="productAdditivesNone">无添加剂</string>
-    <string name="required_for_ecoscore" comment="Do not translate Eco-Score">(Required to calculate the Eco-Score)</string>
+    <string name="required_for_ecoscore" comment="Do not translate Eco-Score">（需要计算 Eco-Score）</string>
     <string name="hint_origin">例子：美国、法国、意大利</string>
     <!-- Used for diets AddOn -->
     <string name="cant_modify_if_refreshing">请等待上传完成</string>
@@ -703,7 +703,7 @@
     <string name="unknown_status_no_translation">由于未识别的成分，我们无法评估该产品的状况。</string>
     <string name="help_translate_ingredients">帮助翻译您的语言中的成分</string>
     <string name="unknown_status_missing_ingredients">由于缺少成分，我们无法评估产品的状态。</string>
-    <string name="unknown_status_ambiguous_ingredients">We couldn\'t assess the status of the product because of ambiguous ingredients : <![CDATA[<b>%1$s</b>]]></string>
+    <string name="unknown_status_ambiguous_ingredients">由于成分模糊，我们无法评估产品的状态： <![CDATA[<b>%1$s</b>]]></string>
     <string name="help_extract_ingredients">帮助提取成分以获得 %1$s 状态</string>
     <string name="add_photo_to_extract_ingredients">添加照片以开始提取成分</string>
     <string name="product_already_exists_in_comparison">该产品已经在比较列表中</string>
@@ -719,7 +719,7 @@
     <string name="white_check_image_descr">A white check</string>
     <string name="hint_packaging">例如：塑料、纸张、玻璃</string>
     <string name="hint_trace_code">示例：EMB 23456、FR 23.345.34 CE</string>
-    <string name="risk_alcohol_consumption">Excessive consumption of alcohol is harmful to health, to be consumed in moderation</string>
+    <string name="risk_alcohol_consumption">过量饮酒有害健康，应适量饮用</string>
     <!--ShowcaseView Strings-->
     <string name="title_image_type">选择图像类型</string>
     <string name="content_image_type">选择要处理的照片</string>
@@ -737,7 +737,7 @@
     <string name="content_exit">按此处返回产品</string>
     <string name="icon_label">标签图标</string>
     <string name="icon_categories">类别图标</string>
-    <string name="icon_emb">Traceability code icon</string>
+    <string name="icon_emb">溯源代码图标</string>
     <string name="product_front_image">产品正面图片</string>
     <string name="brand_hint">例如：可口可乐，雀巢等…</string>
     <string name="sign_in_or_register">登录或注册</string>

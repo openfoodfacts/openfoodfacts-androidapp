@@ -37,7 +37,7 @@ class ProductListAdapter(
         holder.tvDetails.text = products[position].productDetails
         holder.tvBarcode.text = products[position].barcode
 
-        if (!isLowBatteryMode && products[position].imageUrl.isNotEmpty()) {
+        if (!isLowBatteryMode && !products[position].imageUrl.isNullOrEmpty()) {
             picasso
                 .load(products[position].imageUrl)
                 .placeholder(R.drawable.placeholder_thumb)

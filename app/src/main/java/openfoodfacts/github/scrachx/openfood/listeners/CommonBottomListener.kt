@@ -13,7 +13,7 @@ import androidx.fragment.app.commit
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import openfoodfacts.github.scrachx.openfood.R
-import openfoodfacts.github.scrachx.openfood.features.HomeFragment
+import openfoodfacts.github.scrachx.openfood.features.home.HomeFragment
 import openfoodfacts.github.scrachx.openfood.features.MainActivity
 import openfoodfacts.github.scrachx.openfood.features.compare.ProductCompareActivity
 import openfoodfacts.github.scrachx.openfood.features.productlists.ProductListsActivity

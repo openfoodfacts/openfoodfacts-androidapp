@@ -190,7 +190,7 @@
     <string name="txtInfoLoginOk">You successfully logged into your Open Food Facts account.</string>
     <string name="txtInfoLoginNo">An error happened while trying to log into your Open Food Facts account.</string>
     <string name="product_does_not_exist_please_add_it">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
-    <string name="txtYes">Yes</string>
+    <string name="txtYes">Po</string>
     <string name="txtNo">No</string>
     <string name="hintBrand">Brand</string>
     <string name="txtSendAll">Upload all</string>
@@ -668,7 +668,7 @@
     <string name="product_summary_action_edit_button_label">Edit</string>
     <string name="product_summary_action_share_button_label">Share</string>
     <string name="product_question_prompt">Tap here to answer</string>
-    <string name="product_question_positive_response">Yes</string>
+    <string name="product_question_positive_response">Po</string>
     <string name="product_question_negative_response">No</string>
     <string name="product_question_ambiguous_response">Not sure</string>
     <string name="product_question_submit_message">Thank you for your contribution!</string>
