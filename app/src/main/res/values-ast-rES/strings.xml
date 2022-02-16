@@ -99,7 +99,7 @@
         <item>Eicosapentaenoic acid / EPA (20:5 n-3)</item>
         <item>Elaidic acid (18:1 n-9)</item>
         <item>Erucic acid (22:1 n-9)</item>
-        <item>Ushdhdjd</item>
+        <item>Fluoride</item>
         <item>Fructose</item>
         <item>Gamma-linolenic acid / GLA (18:3 n-6)</item>
         <item>Glucose</item>
@@ -343,7 +343,7 @@
     <string name="zinc">Zinc</string>
     <string name="copper">Copper</string>
     <string name="manganese">Manganese</string>
-    <string name="fluoride">Ushdhdjd</string>
+    <string name="fluoride">Fluoride</string>
     <string name="selenium">Selenium</string>
     <string name="chromium">Chromium</string>
     <string name="molybdenum">Molybdenum</string>
