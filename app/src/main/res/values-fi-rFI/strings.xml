@@ -206,7 +206,7 @@
     <string name="install">Asenna</string>
     <string name="search_drawer">Etsi</string>
     <string name="search_by_barcode_drawer">Etsi viivakoodilla</string>
-    <string name="category_drawer">Luokat</string>
+    <string name="category_drawer">Tuoteluokat</string>
     <string name="search_by_category">Tuoteluokka</string>
     <string name="scan_search">Lue viivakoodi</string>
     <string name="user_drawer">Käyttäjä</string>
