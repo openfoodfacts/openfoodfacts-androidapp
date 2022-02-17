@@ -12,6 +12,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.commit
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.navigation.NavigationBarView
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.features.home.HomeFragment
 import openfoodfacts.github.scrachx.openfood.features.MainActivity
@@ -25,7 +26,7 @@ import openfoodfacts.github.scrachx.openfood.utils.isHardwareCameraInstalled
 
 class CommonBottomListener internal constructor(
     private val currentActivity: Activity
-) : BottomNavigationView.OnNavigationItemSelectedListener {
+) : NavigationBarView.OnItemSelectedListener {
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.scan_bottom_nav -> {
