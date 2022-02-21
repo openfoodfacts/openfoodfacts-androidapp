@@ -42,7 +42,6 @@
     <string name="product_incomplete_message">Dit product is niet compleet. Hierdoor konden we de allergenencontrole niet uitvoeren.</string>
     <string name="product_allergen_prompt">Dit product bevat:</string>
     <string name="no_offline_data">Je bent helemaal klaar</string>
-    <string name="first_offline">Producten die offline toegevoegd zijn, verschijnen hier</string>
     <!-- Image Upload -->
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
@@ -176,8 +175,6 @@
     <string name="txtSubstances">Ingrediënten of producten die allergieën of intoleranties veroorzaken</string>
     <string name="txtAdditives">Additieven</string>
     <string name="txtTraces">Sporen</string>
-    <string name="txtMayBeFromPalmOilProduct">Ingrediënten bevatten mogelijk palmolie</string>
-    <string name="txtPalmOilProduct">Ingrediënten bevatten palmolie</string>
     <string name="txtServingSize">Per portie</string>
     <string name="txtNutrientLevel100g">Voedingsstoffen per 100g</string>
     <string name="txtNutrientLevel100ml">Voedingswaarden per 100 g :</string>
@@ -186,7 +183,6 @@
     <string name="txtNutritionLevelHigh">grote hoeveelheid</string>
     <string name="txtSave">Opslaan</string>
     <string name="txtSignIn">Inloggen</string>
-    <string name="txtToastSaved">Gebruiker opgeslagen</string>
     <string name="txtSalt">Zout</string>
     <string name="txtFat">Vet</string>
     <string name="txtSugars">Suikers</string>
@@ -196,7 +192,6 @@
     <string name="hintPass">Wachtwoord</string>
     <string name="errorLogin">Verkeerde gebruikersnaam of wachtwoord</string>
     <string name="errorWeb">We krijgen geen verbinding met het internet. Gelieve uw netwerkconnectie te controleren.</string>
-    <string name="uploadLater">Afbeelding wordt geüpload wanneer netwerk beschikbaar is</string>
     <string name="txtInfoLoginOk">Gebruiker opgeslagen</string>
     <string name="txtInfoLoginNo">Gebruiker niet opgeslagen</string>
     <string name="product_does_not_exist_please_add_it">Het gescande product bestaat nog niet in Open Food Facts. Voeg deze toe.</string>
@@ -207,25 +202,19 @@
     <string name="txtPictureNeededDialogNo">Negeren</string>
     <string name="toastSending">Aan het doorsturen…</string>
     <string name="txtLoading">Bezig met laden…</string>
-    <string name="txtDialogsContentDelete">Weet u zeker dat u deze concept wilt verwijderen?</string>
-    <string name="txtDialogsContentInfoSave">Het product is lokaal opgeslagen, u kunt het bewerken in het Offline Edit-menu</string>
     <string name="productSavedToast">Product opgeslagen, bedankt!</string>
     <string name="txtBarcodeRequire">Streepjescode verplicht</string>
-    <string name="txtOk">Ok</string>
     <string name="txtBarcodeNotValid">Streepjescode niet geldig</string>
     <string name="msg_share">Bekijk dit product op Open Food Facts</string>
     <string name="create_account">Inschrijven</string>
     <string name="home_drawer">Hoofdmenu</string>
     <string name="install">Installeer</string>
-    <string name="open_beauty_drawer">Open Beauty Facts</string>
-    <string name="open_food_drawer">Open Food Facts</string>
     <string name="search_drawer">Zoeken</string>
     <string name="search_by_barcode_drawer">Zoek met streepjescode</string>
     <string name="category_drawer">Categorieën</string>
     <string name="search_by_category">Categorie</string>
     <string name="scan_search">Zoeken op streepjescode</string>
     <string name="user_drawer">Gebruikersnaam</string>
-    <string name="offline_edit_drawer">Offline bewerken</string>
     <string name="txt_anonymous">Anoniem</string>
     <string name="delete_txt">Verwijder</string>
     <string name="sign_in_drawer">Aanmelden</string>
@@ -285,7 +274,6 @@
     <string name="calculate_nutrition_facts">Calculate Nutrition Facts</string>
     <string name="nutrition_carbohydrate">Koolhydraten</string>
     <string name="nutrition_cholesterol">Cholesterol</string>
-    <string name="nutrition_energy">Energie</string>
     <string name="nutrition_energy_kcal">Energie in calorieën (kcal)</string>
     <string name="nutrition_energy_kj">Energie in joule (kJ)</string>
     <string name="nutrition_energy_short_name">Energie</string>
@@ -301,9 +289,7 @@
     <string name="nutriment_serving_size">Per portie:</string>
     <string name="action_manage_account">Account beheren</string>
     <string name="action_contributes">Uw bijdragen</string>
-    <string name="choose_energy_unit">Kies de gewenste energie-eenheid voor de voedingstabel</string>
     <string name="pref_energy_unit_title">Gewenste volume-eenheid</string>
-    <string name="choose_volume_unit">Kies de gewenste volume-eenheid voor de voedingstabel</string>
     <string name="pref_volume_unit_title">Gewenste volume-eenheid</string>
     <string name="logout_drawer">Afmelden</string>
     <string name="contribution_without_account">U kunt zich aanmelden of een account aanmaken om uw bijdragen te bewaren</string>
@@ -410,16 +396,13 @@
     <string name="forgot_password">Wachtwoord vergeten</string>
     <string name="next">VOLGENDE</string>
     <string name="skip">OVERSLAAN</string>
-    <string name="start">BEGREPEN</string>
     <string name="pref_contact_us_title">Contactpersoon</string>
     <string name="pref_contact_us_summary">Contact opnemen met het team</string>
     <string name="email_not_found">Geen e-mailtoepassing gevonden</string>
     <string name="airplane_mode_active_dialog_title">Vliegtuigmodus ingeschakeld</string>
     <string name="airplane_mode_active_dialog_message">Vliegtuigmodus is ingeschakeld, schakel dit uit om door te gaan.</string>
-    <string name="airplane_mode_active_dialog_negative">Afwijzen</string>
     <string name="airplane_mode_active_dialog_positive">Instellingen</string>
     <string name="device_offline_dialog_title">Netwerk niet beschikbaar</string>
-    <string name="device_offline_dialog_message">Hiervoor is een netwerkverbinding nodig, wilt u dit wijzigen in de instellingen?</string>
     <string name="device_offline_dialog_negative">Afwijzen</string>
     <string name="device_offline_dialog_positive">Instellingen</string>
     <string name="scan_first_product">Scan je eerste product</string>
@@ -525,7 +508,6 @@
     <string name="notification_channel_name">Exportmeldingen</string>
     <string name="notify_channel_description">Melding om de locatie van het geëxporteerde bestand te tonen</string>
     <string name="products_to_be_completed">Onvoltooide producten</string>
-    <string name="offline_notification_title">Offline bijdragen die nog niet zijn verzonden</string>
     <string name="creator_history">Product toegevoegd op %1$s om %2$s CET door %3$s</string>
     <string name="last_editor_history">Laatste bewerking van productpagina op %1$s om %2$s CET door %3$s</string>
     <string name="other_editors">Productpagina ook bewerkt door </string>
@@ -552,7 +534,6 @@
     <string name="switch_camera">Wissel camera</string>
     <string name="autofocus">Autofocus</string>
     <string name="initial_loading">Bezig met laden</string>
-    <string name="preferences">Voorkeuren</string>
     <string name="OFFlogo">Open Food Facts logo</string>
     <string name="loading_product">Product %s wordt geladen</string>
     <string name="image_not_defined_for_language">Geen afbeelding voor de geselecteerde taal. Je kan een nieuwe toevoegen</string>
@@ -570,12 +551,10 @@
     <string name="add_at_least_one_picture">Voeg ten minste één foto van dit product toe voordat je doorgaat</string>
     <string name="image_uploaded_successfully">Afbeelding met succes geüpload</string>
     <string name="error_adding_product_photos">Er is iets fout gegaan bij het uploaden van een productafbeelding</string>
-    <string name="ingredients_overwrite">Ingrediënten overschrijven</string>
     <string name="choose_mine">Kies mijn</string>
     <string name="keep_previous_version">Behoud de vorige versie</string>
     <string name="product_name_overwrite">Productnaam overschrijven</string>
     <string name="yours">Jouw: </string>
-    <string name="currently_on">Momenteel op %s: </string>
     <string name="quantity_overwrite">Grootte overschrijven</string>
     <string name="link_overwrite">Link overschrijven</string>
     <string name="save_product">Wilt u het product opslaan?</string>
@@ -747,13 +726,11 @@
     <string name="choose_default_language">Selecteer producttaal</string>
     <string name="barcode">Streepjescode</string>
     <string name="productAdditivesNone">Geen additieven</string>
-    <string name="error_uploading_photo">Er ging iets mis tijdens het uploaden van een nieuwe foto</string>
     <string name="import_csv_to_list">Importeer een CSV-bestand van de Open Food Facts-lijst</string>
     <string name="toast_import_csv_error">Fout bij het importeren van CSV-bestand</string>
     <string name="toast_import_csv">CSV succesvol geïmporteerd!</string>
     <string name="open_csv">Open CSV</string>
     <!-- Used for diets AddOn -->
-    <string name="history_network_error">Het product kan niet worden geladen. Probeer het opnieuw wanneer je weer online bent.</string>
     <string name="cant_modify_if_refreshing">Wacht tot het uploaden is voltooid</string>
     <string name="closeZoom">Klik om zoom te sluiten</string>
     <string name="imageFullscreen">Inzoomen</string>

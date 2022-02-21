@@ -52,7 +52,6 @@
     <string name="product_incomplete_message">Ta izdelek ni popoln. Zaradi tega ni moče preveriti vsebnost alergenov.</string>
     <string name="product_allergen_prompt">Ta izdelek vsebuje:</string>
     <string name="no_offline_data">Pripravljeni ste</string>
-    <string name="first_offline">Tukaj bodo prikazani izdelki, ki so bili dodani brez povezave</string>
     <!-- Image Upload -->
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
@@ -186,8 +185,6 @@
     <string name="txtSubstances">Snovi ali proizvodi, ki povzročajo alergije ali preobčutljivost:</string>
     <string name="txtAdditives">Aditivi :</string>
     <string name="txtTraces">Sledi :</string>
-    <string name="txtMayBeFromPalmOilProduct">Sestavine, ki so lahko iz palmovega olja:</string>
-    <string name="txtPalmOilProduct">Sestavine iz palmovega olja:</string>
     <string name="txtServingSize">Velikost serviranja :</string>
     <string name="txtNutrientLevel100g">Vsebnost hranil za 100 g:</string>
     <string name="txtNutrientLevel100ml">Vsebnost hranil na 100 ml:</string>
@@ -196,7 +193,6 @@
     <string name="txtNutritionLevelHigh">v veliki količini</string>
     <string name="txtSave">Shrani</string>
     <string name="txtSignIn">Vpis</string>
-    <string name="txtToastSaved">Uporabnik je shranjen</string>
     <string name="txtSalt">Sol</string>
     <string name="txtFat">Maščoba</string>
     <string name="txtSugars">Sladkorji</string>
@@ -206,7 +202,6 @@
     <string name="hintPass">Geslo</string>
     <string name="errorLogin">Uporabniško ime ali geslo sta napačna</string>
     <string name="errorWeb">Nismo mogli dostopati do interneta. Imate težave s povezljivostjo?</string>
-    <string name="uploadLater">Slika bo naložena, ko bo omrežje na voljo</string>
     <string name="txtInfoLoginOk">Uporabnik je shranjen</string>
     <string name="txtInfoLoginNo">Uporabnik ni shranjen</string>
     <string name="product_does_not_exist_please_add_it">Izdelek, ki ste ga optično prebrali, še ne obstaja v podatkih o odprtih živilih. Prosimo, dodajte.</string>
@@ -217,25 +212,19 @@
     <string name="txtPictureNeededDialogNo">Zavrzi</string>
     <string name="toastSending">Nalaganje…</string>
     <string name="txtLoading">Nalaganje…</string>
-    <string name="txtDialogsContentDelete">Ali ste prepričani, da želite odstraniti ta osnutek?</string>
-    <string name="txtDialogsContentInfoSave">Izdelek je shranjen lokalno, lahko ga uredite v meniju »Brez povezave«</string>
     <string name="productSavedToast">Product saved, thanks!</string>
     <string name="txtBarcodeRequire">Potrebna je črtna koda</string>
-    <string name="txtOk">V redu</string>
     <string name="txtBarcodeNotValid">Črtna koda ni veljavna</string>
     <string name="msg_share">Poglej ta izdelek na dejstvih o odprtih živilih:</string>
     <string name="create_account">Prijava</string>
     <string name="home_drawer">Domov</string>
     <string name="install">Namesti</string>
-    <string name="open_beauty_drawer">Open Beauty Facts</string>
-    <string name="open_food_drawer">Open Food Facts</string>
     <string name="search_drawer">Iskanje</string>
     <string name="search_by_barcode_drawer">Vnesite črtno kodo</string>
     <string name="category_drawer">Kategorije</string>
     <string name="search_by_category">Kategorijo</string>
     <string name="scan_search">Skeniraj črtno kodo</string>
     <string name="user_drawer">Uporabnik</string>
-    <string name="offline_edit_drawer">Urejanje brez povezave</string>
     <string name="txt_anonymous">Anonimno</string>
     <string name="delete_txt">Izbriši</string>
     <string name="sign_in_drawer">Prijava</string>
@@ -295,7 +284,6 @@
     <string name="calculate_nutrition_facts">Izračunaj hranilno vrednost</string>
     <string name="nutrition_carbohydrate">Ogljikovi hidrati</string>
     <string name="nutrition_cholesterol">Holesterol</string>
-    <string name="nutrition_energy">Energija</string>
     <string name="nutrition_energy_kcal">Energy in calories (kcal)</string>
     <string name="nutrition_energy_kj">Energy in joules (kJ)</string>
     <string name="nutrition_energy_short_name">Energija</string>
@@ -311,9 +299,7 @@
     <string name="nutriment_serving_size">Na porcijo : </string>
     <string name="action_manage_account">Upravljajte račun</string>
     <string name="action_contributes">Moji prispevki</string>
-    <string name="choose_energy_unit">Izberite želeno enoto za energijo za tabelo prehranjevanja</string>
     <string name="pref_energy_unit_title">Prednostna enota za energijo</string>
-    <string name="choose_volume_unit">Izberite želeno enoto za volumen za tabelo prehranjevanja</string>
     <string name="pref_volume_unit_title">Prednostna enota za prostornino</string>
     <string name="logout_drawer">Odjava</string>
     <string name="contribution_without_account">Prijavite se lahko ali ustvarite račun, s katerim boste ohranili svoje prispevke</string>
@@ -420,16 +406,13 @@
     <string name="forgot_password">Pozabljeno geslo</string>
     <string name="next">NAPREJ</string>
     <string name="skip">PRESKOČI</string>
-    <string name="start">RAZUMEM</string>
     <string name="pref_contact_us_title">Stik</string>
     <string name="pref_contact_us_summary">Obrnite se na ekipo</string>
     <string name="email_not_found">Ni najdenih e-poštnih aplikacij</string>
     <string name="airplane_mode_active_dialog_title">Način za letalo je omogočen</string>
     <string name="airplane_mode_active_dialog_message">Način za letalo je omogočen. Onemogočite, da lako nadaljujete.</string>
-    <string name="airplane_mode_active_dialog_negative">Opusti</string>
     <string name="airplane_mode_active_dialog_positive">Nastavitve</string>
     <string name="device_offline_dialog_title">Omrežje ni na voljo</string>
-    <string name="device_offline_dialog_message">Za to je potrebna omrežna povezava, bi želeli spremeniti to v nastavitvah?</string>
     <string name="device_offline_dialog_negative">Opusti</string>
     <string name="device_offline_dialog_positive">Nastavitve</string>
     <string name="scan_first_product">Skenirajte prvi izdelek</string>
@@ -535,7 +518,6 @@
     <string name="notification_channel_name">Obvestilo pri izvozu</string>
     <string name="notify_channel_description">Obvestilo, da prikažete lokacijo izvožene datoteke</string>
     <string name="products_to_be_completed">Izdelki, ki jih je potrebno dokončati</string>
-    <string name="offline_notification_title">Prispevki brez povezave, ki jih morate poslati</string>
     <string name="creator_history">Product added on %1$s at %2$s CET by %3$s</string>
     <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by %3$s </string>
     <string name="other_editors">Stran izdelka, je urejal tudi </string>
@@ -564,7 +546,6 @@
     <string name="switch_camera">Preobrni kamero</string>
     <string name="autofocus">Samodejno ostrenje</string>
     <string name="initial_loading">Začetno nalaganje</string>
-    <string name="preferences">Nastavitve</string>
     <string name="OFFlogo">Logotip odprta dejstva o hrani</string>
     <string name="loading_product">Loading product %s</string>
     <string name="image_not_defined_for_language">Za izbran jezik ni slike. Lahko jo dodate.</string>
@@ -582,12 +563,10 @@
     <string name="add_at_least_one_picture">Pred nadaljevanjem dodajte vsaj eno sliko tega izdelka</string>
     <string name="image_uploaded_successfully">Slika uspešno naložena</string>
     <string name="error_adding_product_photos">Nekaj je šlo narobe med poskusom dodajanja fotografije izdelka</string>
-    <string name="ingredients_overwrite">Prepiši sestavine</string>
     <string name="choose_mine">Izberi mojo</string>
     <string name="keep_previous_version">Obdrži prejšnjo različico</string>
     <string name="product_name_overwrite">Prepiši ime izdelka</string>
     <string name="yours">Vaše: </string>
-    <string name="currently_on">Currently on %s: </string>
     <string name="quantity_overwrite">Prepiši količine</string>
     <string name="link_overwrite">Prepiši povezavo</string>
     <string name="save_product">Želite shraniti ta izdelek?</string>
@@ -758,13 +737,11 @@
     <string name="choose_default_language">Select product language</string>
     <string name="barcode">Črtna koda</string>
     <string name="productAdditivesNone">Brez dodatkov</string>
-    <string name="error_uploading_photo">Med nalaganjem nove fotografije je šlo nekaj narobe</string>
     <string name="import_csv_to_list">Uvoz datoteke CSV s seznama Open Food Facts</string>
     <string name="toast_import_csv_error">Napaka pri uvozu datoteke CSV</string>
     <string name="toast_import_csv">CSV je bil uspešno uvožen!</string>
     <string name="open_csv">Odprite CSV</string>
     <!-- Used for diets AddOn -->
-    <string name="history_network_error">Izdelka ni bilo mogoče naložiti. Poskusite znova, ko boste imeli povezavo na splet.</string>
     <string name="cant_modify_if_refreshing">Počakajte, da se prenos konča</string>
     <string name="closeZoom">Kliknite, da zaprete povečavo</string>
     <string name="imageFullscreen">Povečava</string>

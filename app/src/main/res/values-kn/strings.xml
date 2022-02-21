@@ -42,7 +42,6 @@
     <string name="product_incomplete_message">ಈ ಉತ್ಪನ್ನ ಪೂರ್ಣಗೊಂಡಿಲ್ಲ. ಪರಿಣಾಮವಾಗಿ, ನಾವು ಅಲರ್ಜಿ ಪರೀಕ್ಷೆಯನ್ನು ಮಾಡಲಾಗಲಿಲ್ಲ.</string>
     <string name="product_allergen_prompt">This product contains:</string>
     <string name="no_offline_data">ನೀವು ಮುಗಿಸಿದ್ದೀರಿ</string>
-    <string name="first_offline">ಉತ್ಪನ್ನಗಳನ್ನು ಆಫ್ಲೈನ್ ​​ಸೇರಿಸಲಾಗುತ್ತದೆ ಇಲ್ಲಿ</string>
     <!-- Image Upload -->
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
@@ -176,8 +175,6 @@
     <string name="txtSubstances">ಅಲರ್ಜಿಗಳು ಅಥವಾ ಅಸಹಿಷ್ಣುತೆಗಳಿಗೆ ಕಾರಣವಾಗುವ ಪದಾರ್ಥಗಳು ಅಥವಾ ಉತ್ಪನ್ನಗಳು:</string>
     <string name="txtAdditives">ಸೇರ್ಪಡೆಗಳು:</string>
     <string name="txtTraces">ಕುರುಹುಗಳು:</string>
-    <string name="txtMayBeFromPalmOilProduct">ತಾಳೆ ಎಣ್ಣೆಯಿಂದ ಬೇಕಾದ ಪದಾರ್ಥಗಳು:</string>
-    <string name="txtPalmOilProduct">ಪಾಮ್ ಎಣ್ಣೆಯಿಂದ ಬೇಕಾಗುವ ಪದಾರ್ಥಗಳು:</string>
     <string name="txtServingSize">ವಿತರಣೆಯ ಗಾತ್ರ :</string>
     <string name="txtNutrientLevel100g">100 ಗ್ರಾಂ ಪೋಷಕಾಂಶದ ಮಟ್ಟಗಳು:</string>
     <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
@@ -186,7 +183,6 @@
     <string name="txtNutritionLevelHigh">ಹೆಚ್ಚಿನ ಪ್ರಮಾಣದಲ್ಲಿ</string>
     <string name="txtSave">ಉಳಿಸು</string>
     <string name="txtSignIn">ಸೈನ್ ಇನ್ ಮಾಡಿ</string>
-    <string name="txtToastSaved">ಬಳಕೆದಾರ ಉಳಿಸಲಾಗಿದೆ</string>
     <string name="txtSalt">ಸಾಲ್ಟ್</string>
     <string name="txtFat">ಫ್ಯಾಟ್</string>
     <string name="txtSugars">ಸಕ್ಕರೆಗಳು</string>
@@ -196,7 +192,6 @@
     <string name="hintPass">ಪಾಸ್‌ವರ್ಡ್</string>
     <string name="errorLogin">ಲಾಗಿನ್ ಅಥವಾ ಪಾಸ್ವರ್ಡ್ ದೋಷ</string>
     <string name="errorWeb">ಇಂಟರ್ನೆಟ್ ಪ್ರವೇಶಿಸಲು ನಮಗೆ ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ನೀವು ಸಂಪರ್ಕ ಸಮಸ್ಯೆಗಳನ್ನು ಹೊಂದಿದ್ದೀರಾ?</string>
-    <string name="uploadLater">ನೆಟ್ವರ್ಕ್ ಲಭ್ಯವಿದ್ದಾಗ ಚಿತ್ರವನ್ನು ಅಪ್ಲೋಡ್ ಮಾಡಲಾಗುತ್ತದೆ</string>
     <string name="txtInfoLoginOk">ಬಳಕೆದಾರ ಉಳಿಸಲಾಗಿದೆ</string>
     <string name="txtInfoLoginNo">ಬಳಕೆದಾರ ಉಳಿಸಲಾಗಿದೆ</string>
     <string name="product_does_not_exist_please_add_it">ನೀವು ಸ್ಕ್ಯಾನ್ ಮಾಡಲಾದ ಉತ್ಪನ್ನ ಇನ್ನೂ ಓಪನ್ ಫುಡ್ ಫ್ಯಾಕ್ಟ್ಸ್ನಲ್ಲಿ ಅಸ್ತಿತ್ವದಲ್ಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಅದನ್ನು ಸೇರಿಸಿ.</string>
@@ -207,25 +202,19 @@
     <string name="txtPictureNeededDialogNo">ತಿರಸ್ಕರಿಸು</string>
     <string name="toastSending">Uploading...</string>
     <string name="txtLoading">Loading...</string>
-    <string name="txtDialogsContentDelete">ಈ ಫೋಲ್ಡರ್ ತೆಗೆದುಹಾಕುವ ನಿಮ್ಮ ಬಯಕೆ ಖಚಿತವೆ?</string>
-    <string name="txtDialogsContentInfoSave">ಉತ್ಪನ್ನವನ್ನು ಸ್ಥಳೀಯವಾಗಿ ಉಳಿಸಲಾಗಿದೆ, ನೀವು ಅದನ್ನು \"ಆಫ್ಲೈನ್ ​​ಸಂಪಾದಿಸು\" ಮೆನುವಿನಲ್ಲಿ ಸಂಪಾದಿಸಬಹುದು</string>
     <string name="productSavedToast">Product saved, thanks!</string>
     <string name="txtBarcodeRequire">ಬಾರ್ಕೋಡ್ ಅಗತ್ಯವಿದೆ</string>
-    <string name="txtOk">ಸರಿ</string>
     <string name="txtBarcodeNotValid">ಬಾರ್ಕೋಡ್ ಮಾನ್ಯವಾಗಿಲ್ಲ</string>
     <string name="msg_share">ಓಪನ್ ಫುಡ್ ಫ್ಯಾಕ್ಟ್ಸ್ನಲ್ಲಿ ಈ ಉತ್ಪನ್ನವನ್ನು ನೋಡಿ:</string>
     <string name="create_account">ಸೈನ್ ಅಪ್ ಮಾಡಿ</string>
     <string name="home_drawer">ಮುಖಪುಟ</string>
     <string name="install">Install</string>
-    <string name="open_beauty_drawer">Open Beauty Facts</string>
-    <string name="open_food_drawer">Open Food Facts</string>
     <string name="search_drawer">ಹುಡುಕಿ</string>
     <string name="search_by_barcode_drawer">ಬಾರ್ಕೋಡ್ ಟೈಪ್ ಮಾಡಿ</string>
     <string name="category_drawer">ವರ್ಗಗಳು</string>
     <string name="search_by_category">ವರ್ಗ</string>
     <string name="scan_search">ಬಾರ್ಕೋಡ್ ಅನ್ನು ಸ್ಕ್ಯಾನ್ ಮಾಡಿ</string>
     <string name="user_drawer">ಬಳಕೆದಾರ</string>
-    <string name="offline_edit_drawer">ಆಫ್ಲೈನ್ ​​ಸಂಪಾದನೆ</string>
     <string name="txt_anonymous">ಅನಾಮಧೇಯ</string>
     <string name="delete_txt">ಅಳಿಸಿ</string>
     <string name="sign_in_drawer">ಸೈನ್-ಇನ್ ಮಾಡಿ</string>
@@ -285,7 +274,6 @@
     <string name="calculate_nutrition_facts">ಲೆಕ್ಕಹಾಕಿದ ನ್ಯೂಟ್ರಿಷನ್</string>
     <string name="nutrition_carbohydrate">ಕಾರ್ಬೋಹೈಡ್ರೇಟ್</string>
     <string name="nutrition_cholesterol">ಕೊಲೆಸ್ಟರಾಲ್</string>
-    <string name="nutrition_energy">ಶಕ್ತಿ</string>
     <string name="nutrition_energy_kcal">Energy in calories (kcal)</string>
     <string name="nutrition_energy_kj">Energy in joules (kJ)</string>
     <string name="nutrition_energy_short_name">ಶಕ್ತಿ</string>
@@ -301,9 +289,7 @@
     <string name="nutriment_serving_size">ಪ್ರತಿ ಭಾಗ: </string>
     <string name="action_manage_account">ಖಾತೆಯನ್ನು ನಿರ್ವಹಿಸಿ</string>
     <string name="action_contributes">ನಿಮ್ಮ ಕೊಡುಗೆಗಳು</string>
-    <string name="choose_energy_unit">Choose your preferred energy units for the nutrition table</string>
     <string name="pref_energy_unit_title">Preferred energy unit</string>
-    <string name="choose_volume_unit">Choose your preferred volume units for the nutrition table</string>
     <string name="pref_volume_unit_title">Preferred volume unit</string>
     <string name="logout_drawer">ಲಾಗ್‌ಔಟ್</string>
     <string name="contribution_without_account">ನಿಮ್ಮ ಕೊಡುಗೆಗಳನ್ನು ಉಳಿಸಿಕೊಳ್ಳಲು ನೀವು ಸೈನ್-ಇನ್ ಮಾಡಬಹುದು ಅಥವಾ ಖಾತೆಯನ್ನು ರಚಿಸಬಹುದು</string>
@@ -410,16 +396,13 @@
     <string name="forgot_password">ಪಾಸ್‌ವರ್ಡ್ ಮರೆತಿರಾ</string>
     <string name="next">ಮುಂದೆ</string>
     <string name="skip">SKIP</string>
-    <string name="start">ಅರ್ಥವಾಯಿತು</string>
     <string name="pref_contact_us_title">ಸಂಪರ್ಕಗಳು</string>
     <string name="pref_contact_us_summary">ತಂಡವನ್ನು ಸಂಪರ್ಕಿಸಿ</string>
     <string name="email_not_found">ಯಾವುದೇ ಇಮೇಲ್ ಅಪ್ಲಿಕೇಶನ್ಗಳು ಕಂಡುಬಂದಿಲ್ಲ</string>
     <string name="airplane_mode_active_dialog_title">ಏರ್ಪ್ಲೇನ್ ಮೋಡ್ ಸಕ್ರಿಯಗೊಳಿಸಲಾಗಿದೆ</string>
     <string name="airplane_mode_active_dialog_message">ಏರ್ಪ್ಲೇನ್ ಮೋಡ್ ಅನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಲಾಗಿದೆ, ದಯವಿಟ್ಟು ಇದನ್ನು ಮುಂದುವರಿಸಲು ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಿ.</string>
-    <string name="airplane_mode_active_dialog_negative">ವಜಾಮಾಡು</string>
     <string name="airplane_mode_active_dialog_positive">ಸೆಟ್ಟಿಂಗ್</string>
     <string name="device_offline_dialog_title">ನೆಟ್‌ವರ್ಕ್ ಲಭ್ಯವಿಲ್ಲ</string>
-    <string name="device_offline_dialog_message">ಇದನ್ನು ಮಾಡಲು ನೆಟ್ವರ್ಕ್ ಸಂಪರ್ಕವನ್ನು ಅಗತ್ಯವಿದೆ, ನೀವು ಇದನ್ನು ಸೆಟ್ಟಿಂಗ್ಗಳಲ್ಲಿ ಬದಲಾಯಿಸಲು ಬಯಸುತ್ತೀರಾ?</string>
     <string name="device_offline_dialog_negative">ವಜಾಮಾಡು</string>
     <string name="device_offline_dialog_positive">ಸೆಟ್ಟಿಂಗ್</string>
     <string name="scan_first_product">ಮೊದಲ ಉತ್ಪನ್ನವನ್ನು ಸ್ಕ್ಯಾನ್ ಮಾಡಿ</string>
@@ -525,7 +508,6 @@
     <string name="notification_channel_name">ರಫ್ತು ಸೂಚನೆಗಳು</string>
     <string name="notify_channel_description">ರಫ್ತು ಮಾಡಿದ ಕಡತದ ಸ್ಥಳವನ್ನು ತೋರಿಸಲು ಅಧಿಸೂಚನೆ</string>
     <string name="products_to_be_completed">ಉತ್ಪನ್ನಗಳು ಪೂರ್ಣಗೊಳ್ಳಬೇಕು</string>
-    <string name="offline_notification_title">ಆಫ್ಲೈನ್ ​​ಕೊಡುಗೆಗಳನ್ನು ನೀವು ಕಳುಹಿಸಬೇಕು</string>
     <string name="creator_history">Product added on %1$s at %2$s CET by %3$s</string>
     <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by %3$s </string>
     <string name="other_editors">ಉತ್ಪನ್ನ ಪುಟವು ಸಹ ಸಂಪಾದಿಸಿದೆ </string>
@@ -552,7 +534,6 @@
     <string name="switch_camera">ಕ್ಯಾಮೆರಾ ಬದಲಿಸಿ</string>
     <string name="autofocus">ಆಟೋಫೋಕಸ್</string>
     <string name="initial_loading">ಆರಂಭಿಕ ಲೋಡ್</string>
-    <string name="preferences">ಆದ್ಯತೆಗಳು</string>
     <string name="OFFlogo">ಆಹಾರ ಸಂಗತಿಗಳು ತೆರೆಯಿರಿ</string>
     <string name="loading_product">Loading product %s</string>
     <string name="image_not_defined_for_language">No image for selected language. You can add a new one</string>
@@ -570,12 +551,10 @@
     <string name="add_at_least_one_picture">ಮುಂದುವರಿಯುವ ಮೊದಲು ಈ ಉತ್ಪನ್ನದ ಕನಿಷ್ಠ ಒಂದು ಚಿತ್ರವನ್ನು ಸೇರಿಸಿ</string>
     <string name="image_uploaded_successfully">ಚಿತ್ರವನ್ನು ಯಶಸ್ವಿಯಾಗಿ ಅಪ್ಲೋಡ್ ಮಾಡಲಾಗಿದೆ</string>
     <string name="error_adding_product_photos">ಉತ್ಪನ್ನ ಫೋಟೋಗಳನ್ನು ಸೇರಿಸಲು ಪ್ರಯತ್ನಿಸುವಾಗ ಯಾವುದೋ ತಪ್ಪು ಸಂಭವಿಸಿದೆ</string>
-    <string name="ingredients_overwrite">ಪದಾರ್ಥಗಳು ಬದಲಿಸಿ</string>
     <string name="choose_mine">ಗಣಿ ಆಯ್ಕೆಮಾಡಿ</string>
     <string name="keep_previous_version">ಹಿಂದಿನ ಆವೃತ್ತಿಯನ್ನು ಇರಿಸಿಕೊಳ್ಳಿ</string>
     <string name="product_name_overwrite">ಉತ್ಪನ್ನದ ಹೆಸರು ಬದಲಿಸಿ</string>
     <string name="yours">ನಿಮ್ಮದು: </string>
-    <string name="currently_on">Currently on %s: </string>
     <string name="quantity_overwrite">ಪ್ರಮಾಣ ಬದಲಿಸಿ</string>
     <string name="link_overwrite">ಲಿಂಕ್ ಬದಲಿಸಿ</string>
     <string name="save_product">ಉತ್ಪನ್ನವನ್ನು ಉಳಿಸಲು ನೀವು ಬಯಸುವಿರಾ?</string>
@@ -746,13 +725,11 @@
     <string name="choose_default_language">Select product language</string>
     <string name="barcode">ಬಾರ್‌ ಕೋಡ್</string>
     <string name="productAdditivesNone">No additives</string>
-    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
     <string name="import_csv_to_list">Import an Open Food Facts list CSV file</string>
     <string name="toast_import_csv_error">Error in importing CSV file</string>
     <string name="toast_import_csv">CSV imported successfully!</string>
     <string name="open_csv">Open CSV</string>
     <!-- Used for diets AddOn -->
-    <string name="history_network_error">The product couldn\'t be loaded. Please try again when you are back online.</string>
     <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
     <string name="closeZoom">Click to close zoom</string>
     <string name="imageFullscreen">Zoom</string>

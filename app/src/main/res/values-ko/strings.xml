@@ -37,7 +37,6 @@
     <string name="product_incomplete_message">이 제품의 정보는 완벽하지 않습니다, 이로인해 알레르기 검사를 진행할수 없습니다.</string>
     <string name="product_allergen_prompt">이 제품이 포함하고 있는 것 :</string>
     <string name="no_offline_data">완료되었습니다.</string>
-    <string name="first_offline">오프라인에 추가 한 제품이 여기에 표시됩니다.</string>
     <!-- Image Upload -->
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
@@ -171,8 +170,6 @@
     <string name="txtSubstances">알레르기 또는 과민 반응을 일으키는 물질 또는 제품 :</string>
     <string name="txtAdditives">첨가물:</string>
     <string name="txtTraces">흔적 :</string>
-    <string name="txtMayBeFromPalmOilProduct">야자 기름일지도 모르는 성분:</string>
-    <string name="txtPalmOilProduct">야자 기름에서 나온 성분:</string>
     <string name="txtServingSize">서빙 사이즈 :</string>
     <string name="txtNutrientLevel100g">100g에 들어있는 영향 레벨:</string>
     <string name="txtNutrientLevel100ml">100ml에 들어있는 영양 수치:</string>
@@ -181,7 +178,6 @@
     <string name="txtNutritionLevelHigh">대량일시</string>
     <string name="txtSave">저장</string>
     <string name="txtSignIn">가입하기</string>
-    <string name="txtToastSaved">사용자 정보 저장됨</string>
     <string name="txtSalt">소금</string>
     <string name="txtFat">지방</string>
     <string name="txtSugars">당류</string>
@@ -191,7 +187,6 @@
     <string name="hintPass">암호</string>
     <string name="errorLogin">계정 또는 비밀번호 오류</string>
     <string name="errorWeb">인터넷에 연결할수 없습니다. 연결문제가 있습니까?</string>
-    <string name="uploadLater">네트워크에 연결되면 이미지가 업로드됩니다</string>
     <string name="txtInfoLoginOk">사용자 정보 저장됨</string>
     <string name="txtInfoLoginNo">유저 정보가 저장되지 않았습니다</string>
     <string name="product_does_not_exist_please_add_it">스캔한 상품이 Open Food Facts에 존재 하지 않습니다. 품목을 추가하여 주십시오.</string>
@@ -202,25 +197,19 @@
     <string name="txtPictureNeededDialogNo">삭제</string>
     <string name="toastSending">업로드 중…</string>
     <string name="txtLoading">로딩중…</string>
-    <string name="txtDialogsContentDelete">정말로 해당 항목을 삭제하시겠습니까?</string>
-    <string name="txtDialogsContentInfoSave">제품이 로컬에 저장되었으므로 \"오프라인 편집\" 메뉴에서 편집 할 수 있습니다.</string>
     <string name="productSavedToast">제품이 저장되었습니다. 감사합니다!</string>
     <string name="txtBarcodeRequire">바코드가 필요함</string>
-    <string name="txtOk">확인</string>
     <string name="txtBarcodeNotValid">바코드가 유효하지 않습니다.</string>
     <string name="msg_share">오픈 푸드 팩트에서 이 상품을 검색해보세요.</string>
     <string name="create_account">회원 가입</string>
     <string name="home_drawer">홈</string>
     <string name="install">설치</string>
-    <string name="open_beauty_drawer">Open Beauty Facts</string>
-    <string name="open_food_drawer">Open Food Facts</string>
     <string name="search_drawer">수색</string>
     <string name="search_by_barcode_drawer">바코드를 입력해주세요.</string>
     <string name="category_drawer">카테고리</string>
     <string name="search_by_category">카테고리</string>
     <string name="scan_search">바코드 스캔</string>
     <string name="user_drawer">사용자</string>
-    <string name="offline_edit_drawer">오프라인 편집</string>
     <string name="txt_anonymous">익명</string>
     <string name="delete_txt">삭제</string>
     <string name="sign_in_drawer">로그인에</string>
@@ -280,7 +269,6 @@
     <string name="calculate_nutrition_facts">영양 정보 계산</string>
     <string name="nutrition_carbohydrate">탄수화물</string>
     <string name="nutrition_cholesterol">콜레스테롤</string>
-    <string name="nutrition_energy">에너지</string>
     <string name="nutrition_energy_kcal">칼로리 에너지 (kcal)</string>
     <string name="nutrition_energy_kj">줄 에너지 (kJ)</string>
     <string name="nutrition_energy_short_name">에너지</string>
@@ -296,9 +284,7 @@
     <string name="nutriment_serving_size">부분당 : </string>
     <string name="action_manage_account">계정 관리</string>
     <string name="action_contributes">기부금</string>
-    <string name="choose_energy_unit">영양표에 사용할 에너지 단위를 선택하세요.</string>
     <string name="pref_energy_unit_title">선호 체중 단위</string>
-    <string name="choose_volume_unit">영양표에 사용할 볼륨 단위를 선택하세요.</string>
     <string name="pref_volume_unit_title">선호 볼륨 단위</string>
     <string name="logout_drawer">로그아웃</string>
     <string name="contribution_without_account">로그인하거나 계정을 만들어서 기부를 유지할 수 있습니다.</string>
@@ -405,16 +391,13 @@
     <string name="forgot_password">비밀번호를 잊어버렸어요</string>
     <string name="next">다음</string>
     <string name="skip">건너뛰기</string>
-    <string name="start">확인</string>
     <string name="pref_contact_us_title">문의</string>
     <string name="pref_contact_us_summary">팀에게 문의하기</string>
     <string name="email_not_found">이메일 응용 프로그램을 찾을 수 없음</string>
     <string name="airplane_mode_active_dialog_title">비행기 모드 활성화</string>
     <string name="airplane_mode_active_dialog_message">비행기 모드로 설정되어있습니다. 계속하려면 해제하시기 바랍니다.</string>
-    <string name="airplane_mode_active_dialog_negative">무시</string>
     <string name="airplane_mode_active_dialog_positive">설정</string>
     <string name="device_offline_dialog_title">네트워크를 사용할 수 없습니다</string>
-    <string name="device_offline_dialog_message">네트워크 연결이 필요합니다. 설정에서 변경하시겠습니까?</string>
     <string name="device_offline_dialog_negative">무시</string>
     <string name="device_offline_dialog_positive">설정</string>
     <string name="scan_first_product">Scan your first product</string>
@@ -520,7 +503,6 @@
     <string name="notification_channel_name">알림 설정</string>
     <string name="notify_channel_description">내보낸 파일의 위치를 표시하는 알림</string>
     <string name="products_to_be_completed">완제품</string>
-    <string name="offline_notification_title">보내야할 오프라인 기여</string>
     <string name="creator_history">%1$s CET %2$s 에 %3$s가 추가 된 제품</string>
     <string name="last_editor_history">%1$s 시에 %2$s CEST에서 %3$s 가 제품의 페이지를 마지막으로 편집</string>
     <string name="other_editors">상품 페이지는 다음 사람들에 의해 수정되었습니다.</string>
@@ -546,7 +528,6 @@
     <string name="switch_camera">카메라 전환</string>
     <string name="autofocus">자동 초점</string>
     <string name="initial_loading">초기 로딩</string>
-    <string name="preferences">환경 설정</string>
     <string name="OFFlogo">Open Food Facts 로고</string>
     <string name="loading_product">상품 불러오는 중… %s</string>
     <string name="image_not_defined_for_language">선택한 언어에 대한 이미지가 없습니다. 새로운 것을 추가 할 수 있습니다.</string>
@@ -564,12 +545,10 @@
     <string name="add_at_least_one_picture">계속하기 전에 이 제품의 사진을 하나 이상 추가하십시오.</string>
     <string name="image_uploaded_successfully">이미지 업로드 성공</string>
     <string name="error_adding_product_photos">제품 사진을 추가하는 중에 문제가 발생했습니다.</string>
-    <string name="ingredients_overwrite">성분 덮어 쓰기</string>
     <string name="choose_mine">덮어 쓰기</string>
     <string name="keep_previous_version">이전 버전 유지하기</string>
     <string name="product_name_overwrite">제품 이름 덮어 쓰기</string>
     <string name="yours">당신의 것 : </string>
-    <string name="currently_on">현재 %s : </string>
     <string name="quantity_overwrite">수량 덮어 쓰기</string>
     <string name="link_overwrite">링크 덮어 쓰기</string>
     <string name="save_product">제품을 저장 하시겠습니까?</string>
@@ -740,13 +719,11 @@
     <string name="choose_default_language">제품 언어를 선택하십시오</string>
     <string name="barcode">바코드</string>
     <string name="productAdditivesNone">첨가물 없음</string>
-    <string name="error_uploading_photo">새 사진을 업로드하는 중에 문제가 발생했습니다</string>
     <string name="import_csv_to_list"> Open Food Facts 목록 CSV 파일 가져 오기</string>
     <string name="toast_import_csv_error">CSV 파일을 가져 오는 중 오류가 발생했습니다</string>
     <string name="toast_import_csv">CSV 가져오기 성공!</string>
     <string name="open_csv">CSV 열기</string>
     <!-- Used for diets AddOn -->
-    <string name="history_network_error">제품을 불러올 수 없습니다. 온라인 상태가 되면 다시 시도하십시오.</string>
     <string name="cant_modify_if_refreshing">업로드가 완료될 때까지 기다리십시오</string>
     <string name="closeZoom">확대/축소를 닫으려면 클릭하십시오.</string>
     <string name="imageFullscreen">확대/축소</string>

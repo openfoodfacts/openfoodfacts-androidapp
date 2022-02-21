@@ -62,7 +62,6 @@
     <string name="product_incomplete_message">هذا المنتج غير كامل. ونتيجة لذلك، لم نتمكن من القيام بفحص المواد المسببة للحساسية.</string>
     <string name="product_allergen_prompt">هذا المنتج يحتوي على:</string>
     <string name="no_offline_data">لقد انتهيت</string>
-    <string name="first_offline">ستظهر هنا المنتجات المضافة بلا اتصال بالإنترنت</string>
     <!-- Image Upload -->
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
@@ -198,8 +197,6 @@
     <string name="txtSubstances">المواد أو المنتجات التي تسبب الحساسية أو عدم التحمل:</string>
     <string name="txtAdditives">الإضافات:</string>
     <string name="txtTraces">آثار:</string>
-    <string name="txtMayBeFromPalmOilProduct">المكونات التي قد تكون من زيت النخيل:</string>
-    <string name="txtPalmOilProduct">مكونات من زيت النخيل:</string>
     <string name="txtServingSize">حجم الحصة:</string>
     <string name="txtNutrientLevel100g">مستويات المواد الغذائية لـ 100غ:</string>
     <string name="txtNutrientLevel100ml">مستويات العناصر الغذائية ل ١٠٠ ميللي جرام:</string>
@@ -208,7 +205,6 @@
     <string name="txtNutritionLevelHigh">كمية عالية</string>
     <string name="txtSave">حفظ</string>
     <string name="txtSignIn">تسجيل الدخول</string>
-    <string name="txtToastSaved">تم حفظ المستخدم</string>
     <string name="txtSalt">ملح</string>
     <string name="txtFat">الدهون</string>
     <string name="txtSugars">السكريات</string>
@@ -218,7 +214,6 @@
     <string name="hintPass">كلمة المرور</string>
     <string name="errorLogin">خطأ في تسجيل الدخول أو كلمة المرور</string>
     <string name="errorWeb">لم نتمكن من الوصول إلى الإنترنت. هل لديك مشاكل في الاتصال؟</string>
-    <string name="uploadLater">سيتم تحميل الصورة عندما تكون الشبكة متاحة</string>
     <string name="txtInfoLoginOk">تم حفظ المستخدم</string>
     <string name="txtInfoLoginNo">لم يتم حفظ المستخدم</string>
     <string name="product_does_not_exist_please_add_it">المنتج الذي تم مسحه غير موجود حتى الآن في Open Food Facts. الرجاء إضافته.</string>
@@ -229,25 +224,19 @@
     <string name="txtPictureNeededDialogNo">تجاهل</string>
     <string name="toastSending">جاري الإرسال…</string>
     <string name="txtLoading">جاري التحميل…</string>
-    <string name="txtDialogsContentDelete">هل أنت متأكد من أنك تريد حذف هذه المسودة؟</string>
-    <string name="txtDialogsContentInfoSave">تم حفظ المنتج محليا، يمكنك تحريره في قائمة  تحرير</string>
     <string name="productSavedToast">تم حفظ المنتج، شكرًا!</string>
     <string name="txtBarcodeRequire">الرمز الشريطي مطلوب</string>
-    <string name="txtOk">موافق</string>
     <string name="txtBarcodeNotValid">الرمز الشريطي غير صحيح.</string>
     <string name="msg_share">انظر لهذا المنتج على Open Food Facts:</string>
     <string name="create_account">تسجيل الدخول</string>
     <string name="home_drawer">الصفحة الرئيسية</string>
     <string name="install">تثبيت</string>
-    <string name="open_beauty_drawer">Open Beauty Facts</string>
-    <string name="open_food_drawer">Open Food Facts</string>
     <string name="search_drawer">بحث</string>
     <string name="search_by_barcode_drawer">البحث عن طريق الرمز الشريطي</string>
     <string name="category_drawer">الفئات</string>
     <string name="search_by_category">Atassnifate</string>
     <string name="scan_search">امسح</string>
     <string name="user_drawer">المستخدم</string>
-    <string name="offline_edit_drawer">تعديل دون اتصال</string>
     <string name="txt_anonymous">مجهول</string>
     <string name="delete_txt">حذف</string>
     <string name="sign_in_drawer">تسجيل الدخول</string>
@@ -307,7 +296,6 @@
     <string name="calculate_nutrition_facts">احسب حقائق التغذية</string>
     <string name="nutrition_carbohydrate">كربوهيدرات</string>
     <string name="nutrition_cholesterol">كوليسترول</string>
-    <string name="nutrition_energy">الطاقة</string>
     <string name="nutrition_energy_kcal">الطاقة في السعرات الحرارية (كيلو كالوري)</string>
     <string name="nutrition_energy_kj">الطاقة بالجول (كيلوجول)</string>
     <string name="nutrition_energy_short_name">الطاقة</string>
@@ -323,9 +311,7 @@
     <string name="nutriment_serving_size">كل جزء: </string>
     <string name="action_manage_account">أدر الحساب</string>
     <string name="action_contributes">مساهماتكم</string>
-    <string name="choose_energy_unit">اختر وحدات الطاقة المفضلة لديك لجدول التغذية</string>
     <string name="pref_energy_unit_title">وحدة الطاقة المفضلة</string>
-    <string name="choose_volume_unit">اختر وحدات الحجم المفضلة لديك لجدول التغذية</string>
     <string name="pref_volume_unit_title">وحدة الحجم المفضلة</string>
     <string name="logout_drawer">تسجيل خروج</string>
     <string name="contribution_without_account">يمكنك تسجيل الدخول أو إنشاء حساب للحفاظ على مساهماتك</string>
@@ -432,16 +418,13 @@
     <string name="forgot_password">نسيت كلمة المرور</string>
     <string name="next">التالي</string>
     <string name="skip">تخطى</string>
-    <string name="start">فهمت ذلك</string>
     <string name="pref_contact_us_title">جهة الاتصال</string>
     <string name="pref_contact_us_summary">اتصل بالفريق</string>
     <string name="email_not_found">لم يتم العثور على تطبيقات البريد الإلكتروني</string>
     <string name="airplane_mode_active_dialog_title">تم تمكين وضع الطيران</string>
     <string name="airplane_mode_active_dialog_message">وضع الطيران فعّال ، يرجى تعطيل هذا للمتابعة.</string>
-    <string name="airplane_mode_active_dialog_negative">تجاهل</string>
     <string name="airplane_mode_active_dialog_positive">الإعدادات</string>
     <string name="device_offline_dialog_title">الشبكة غير متوفرة</string>
-    <string name="device_offline_dialog_message">يتطلب الاتصال بالشبكة للقيام بذلك، هل ترغب في تغيير هذا في الإعدادات؟</string>
     <string name="device_offline_dialog_negative">تجاهل</string>
     <string name="device_offline_dialog_positive">الإعدادات</string>
     <string name="scan_first_product">مسح المنتج الأول</string>
@@ -547,7 +530,6 @@
     <string name="notification_channel_name">إخراج الإشعارات</string>
     <string name="notify_channel_description">إشعار لإظهار موقع الملف المستخرج</string>
     <string name="products_to_be_completed">مُنتجات مراد إكمالها</string>
-    <string name="offline_notification_title">المساهمات دون اتصال التي تحتاج إلى إرسالها</string>
     <string name="creator_history">Product added on %1$s at %2$s CET by %3$s</string>
     <string name="last_editor_history">التعديل الأخير من صفحة المنتج على %1$s في %2$s CEST بواسطة %3$s</string>
     <string name="other_editors">تم تعديل المنتج أيضاً بواسطة </string>
@@ -578,7 +560,6 @@
     <string name="switch_camera">تبديل الكاميرا</string>
     <string name="autofocus">ضبط تلقائي للصورة</string>
     <string name="initial_loading">التمهيد للتحميل</string>
-    <string name="preferences">الخيارات</string>
     <string name="OFFlogo">شعار الحقائق الغذائية المفتوحة</string>
     <string name="loading_product">يتم تحميل المنتج %s</string>
     <string name="image_not_defined_for_language">لا توجد صورة للغة المختارة. يمكنك إضافة واحدة جديدة</string>
@@ -596,12 +577,10 @@
     <string name="add_at_least_one_picture">الرجاء إضافة صورة واحدة على الأقل لهذا المنتج قبل المتابعة</string>
     <string name="image_uploaded_successfully">تم تحميل الصورة بنجاح</string>
     <string name="error_adding_product_photos">حدث خطأ ما أثناء محاولة إضافة صور المنتج</string>
-    <string name="ingredients_overwrite">إعادة كتابة المكونات</string>
     <string name="choose_mine">اختر لي</string>
     <string name="keep_previous_version">حافظ على الإصدار السابق</string>
     <string name="product_name_overwrite">إعادة كتابة اسم المنتج</string>
     <string name="yours">خاصة بك: </string>
-    <string name="currently_on">حاليا على %s: </string>
     <string name="quantity_overwrite">إعادة كتابة الكمية</string>
     <string name="link_overwrite">إعادة كتابة الرابط</string>
     <string name="save_product">هل تريد حفظ المنتج؟</string>
@@ -772,13 +751,11 @@
     <string name="choose_default_language">حدد لغة المنتج</string>
     <string name="barcode">الرمز الشريطي</string>
     <string name="productAdditivesNone">بدون إضافات</string>
-    <string name="error_uploading_photo">حدث خطأ ما اثناء تحميل صورة جديدة</string>
     <string name="import_csv_to_list">استيراد ملف CSV بقائمة حقائق الأطعمة المفتوحة</string>
     <string name="toast_import_csv_error">خطأ في استيراد ملف CSV</string>
     <string name="toast_import_csv">تم استيراد ملف CSV بنجاح!</string>
     <string name="open_csv">افتح CSV</string>
     <!-- Used for diets AddOn -->
-    <string name="history_network_error">لا يمكن تحميل المنتج. يرجى المحاولة مرة أخرى عند الاتصال بالإنترنت مرة أخرى.</string>
     <string name="cant_modify_if_refreshing">الرجاء الانتظار حتى انتهاء التحميل</string>
     <string name="closeZoom">انقر لإغلاق التكبير</string>
     <string name="imageFullscreen">التكبير</string>

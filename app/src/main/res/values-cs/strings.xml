@@ -52,7 +52,6 @@
     <string name="product_incomplete_message">Tento výrobek není kompletní. V důsledku toho jsme nemohli provést kontrolu alergenů.</string>
     <string name="product_allergen_prompt">Tento výrobek obsahuje:</string>
     <string name="no_offline_data">Hotovo</string>
-    <string name="first_offline">Zde se zobrazí výrobky přidané offline</string>
     <!-- Image Upload -->
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
@@ -186,8 +185,6 @@
     <string name="txtSubstances">Látky nebo produkty vyvolávající alergie nebo nesnášenlivost:</string>
     <string name="txtAdditives">Aditiva:</string>
     <string name="txtTraces">Stopy :</string>
-    <string name="txtMayBeFromPalmOilProduct">Přísady, které mohou být z palmového oleje:</string>
-    <string name="txtPalmOilProduct">Přísady z palmového oleje:</string>
     <string name="txtServingSize">Velikost porce :</string>
     <string name="txtNutrientLevel100g">Výživové údaje na 100 g:</string>
     <string name="txtNutrientLevel100ml">Výživová hodnota ve 100 ml :</string>
@@ -196,7 +193,6 @@
     <string name="txtNutritionLevelHigh">ve velkém množství</string>
     <string name="txtSave">Uložit</string>
     <string name="txtSignIn">Přihlásit se</string>
-    <string name="txtToastSaved">Uživatel byl uložen</string>
     <string name="txtSalt">Sůl</string>
     <string name="txtFat">Tuky</string>
     <string name="txtSugars">Cukry</string>
@@ -206,7 +202,6 @@
     <string name="hintPass">Heslo</string>
     <string name="errorLogin">Přihlašovací jméno nebo heslo je chybné</string>
     <string name="errorWeb">Nelze se připojit k internetu. Zkontrolujte, prosím, připojení k síti.</string>
-    <string name="uploadLater">Obrázek se nahraje, až bude síť k dispozici</string>
     <string name="txtInfoLoginOk">Uživatel byl uložen</string>
     <string name="txtInfoLoginNo">Uživatel nebyl uložen</string>
     <string name="product_does_not_exist_please_add_it">Produkt, který jste naskenovali, ještě neexistuje v databázi Open Food Facts. Přidejte jej prosím.</string>
@@ -217,25 +212,19 @@
     <string name="txtPictureNeededDialogNo">Zahodit</string>
     <string name="toastSending">Nahrávám…</string>
     <string name="txtLoading">Načítá se…</string>
-    <string name="txtDialogsContentDelete">Jste si jisti, že chcete odstranit tento koncept?</string>
-    <string name="txtDialogsContentInfoSave">Produkt je uložen lokálně, můžete ho upravit v menu \"Offline editor\"</string>
     <string name="productSavedToast">Výrobek byl uložen, děkujeme!</string>
     <string name="txtBarcodeRequire">Je třeba zadat čárový kód</string>
-    <string name="txtOk">OK</string>
     <string name="txtBarcodeNotValid">Čárový kód není platný</string>
     <string name="msg_share">Podívejte se na tento produkt v Open Food Facts :</string>
     <string name="create_account">Registrovat</string>
     <string name="home_drawer">Úvod</string>
     <string name="install">Nainstalovat</string>
-    <string name="open_beauty_drawer">Open Beauty Facts</string>
-    <string name="open_food_drawer">Open Food Facts</string>
     <string name="search_drawer">Vyhledat</string>
     <string name="search_by_barcode_drawer">Zadat čárový kód</string>
     <string name="category_drawer">Kategorie výrobků</string>
     <string name="search_by_category">Kategorie</string>
     <string name="scan_search">Skenovat čárový kód</string>
     <string name="user_drawer">Uživatel</string>
-    <string name="offline_edit_drawer">Offline editor</string>
     <string name="txt_anonymous">Anonymní uživatel</string>
     <string name="delete_txt">Odstranit</string>
     <string name="sign_in_drawer">Přihlásit se</string>
@@ -295,7 +284,6 @@
     <string name="calculate_nutrition_facts">Přepočítat výživové údaje na dané množství</string>
     <string name="nutrition_carbohydrate">Sacharidy</string>
     <string name="nutrition_cholesterol">Cholesterol</string>
-    <string name="nutrition_energy">Energie</string>
     <string name="nutrition_energy_kcal">Energie v kaloriích (kcal)</string>
     <string name="nutrition_energy_kj">Energie v joulech (kJ)</string>
     <string name="nutrition_energy_short_name">Energie</string>
@@ -311,9 +299,7 @@
     <string name="nutriment_serving_size">Na jednu porci : </string>
     <string name="action_manage_account">Spravovat účet</string>
     <string name="action_contributes">Vaše příspěvky</string>
-    <string name="choose_energy_unit">Vyberte výchozí jednotku energie pro výživovou tabulku</string>
     <string name="pref_energy_unit_title">Výběr energetické jednotky</string>
-    <string name="choose_volume_unit">Vyberte výchozí jednotku objemu pro výživovou tabulku</string>
     <string name="pref_volume_unit_title">Výběr jednotky objemu</string>
     <string name="logout_drawer">Odhlásit se</string>
     <string name="contribution_without_account">Můžete se přihlásit nebo vytvořit účet pro zachování vašich příspěvků</string>
@@ -420,16 +406,13 @@
     <string name="forgot_password">Zapomenuté heslo</string>
     <string name="next">DALŠÍ</string>
     <string name="skip">PŘESKOČIT</string>
-    <string name="start">ROZUMÍM</string>
     <string name="pref_contact_us_title">Kontakt</string>
     <string name="pref_contact_us_summary">Kontaktujte tým</string>
     <string name="email_not_found">Nebyla nalezena žádná aplikace pro emaily</string>
     <string name="airplane_mode_active_dialog_title">Zapnutý režim letadla</string>
     <string name="airplane_mode_active_dialog_message">Režim letadla je zapnutý, chcete-li pokračovat, vypněte ho.</string>
-    <string name="airplane_mode_active_dialog_negative">Zamítnout</string>
     <string name="airplane_mode_active_dialog_positive">Nastavení</string>
     <string name="device_offline_dialog_title">Síť není k dispozici</string>
-    <string name="device_offline_dialog_message">K této akci je potřeba připojení k síti. Chcete provést změny v nastavení?</string>
     <string name="device_offline_dialog_negative">Zamítnout</string>
     <string name="device_offline_dialog_positive">Nastavení</string>
     <string name="scan_first_product">Naskenujte svůj první výrobek</string>
@@ -535,7 +518,6 @@
     <string name="notification_channel_name">Exportovat oznámení</string>
     <string name="notify_channel_description">Oznámení pro zobrazení umístění exportovaného souboru</string>
     <string name="products_to_be_completed">Výrobky k dokončení</string>
-    <string name="offline_notification_title">Offline příspěvky, které je potřeba poslat</string>
     <string name="creator_history">Product added on %1$s at %2$s CET by %3$s</string>
     <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by %3$s </string>
     <string name="other_editors">Stránka produktu také editoval(a) </string>
@@ -564,7 +546,6 @@
     <string name="switch_camera">Přepnout fotoaparát</string>
     <string name="autofocus">Aut. zaostř.</string>
     <string name="initial_loading">Načítám</string>
-    <string name="preferences">Předvolby</string>
     <string name="OFFlogo">Open Food Facts</string>
     <string name="loading_product">Načítám výrobek %s</string>
     <string name="image_not_defined_for_language">Pro vybraný jazyk nemáme žádné snímky. Můžete je přidat</string>
@@ -582,12 +563,10 @@
     <string name="add_at_least_one_picture">Před pokračováním přidejte alespoň jeden obrázek tohoto výrobku</string>
     <string name="image_uploaded_successfully">Snímek byl úspěšně nahrán</string>
     <string name="error_adding_product_photos">Nepovedlo se přidat fotografii výrobku</string>
-    <string name="ingredients_overwrite">Přepsání složení</string>
     <string name="choose_mine">Zvolit mou</string>
     <string name="keep_previous_version">Ponechat stávající verzi</string>
     <string name="product_name_overwrite">Přepsat název výrobku</string>
     <string name="yours">Vaše: </string>
-    <string name="currently_on">Momentálně je %s: </string>
     <string name="quantity_overwrite">Přepsat množství</string>
     <string name="link_overwrite">Přepsat odkaz</string>
     <string name="save_product">Přejete si výrobek uložit?</string>
@@ -758,13 +737,11 @@
     <string name="choose_default_language">Vyberte jazyk produktu</string>
     <string name="barcode">Čárový kód</string>
     <string name="productAdditivesNone">No additives</string>
-    <string name="error_uploading_photo">Při nahrávání nové fotografie došlo k chybě</string>
     <string name="import_csv_to_list">Import an Open Food Facts list CSV file</string>
     <string name="toast_import_csv_error">Chyba při importu CSV souboru</string>
     <string name="toast_import_csv">CSV imported successfully!</string>
     <string name="open_csv">Otevřít CSV</string>
     <!-- Used for diets AddOn -->
-    <string name="history_network_error">The product couldn\'t be loaded. Please try again when you are back online.</string>
     <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
     <string name="closeZoom">Click to close zoom</string>
     <string name="imageFullscreen">Přiblížit</string>

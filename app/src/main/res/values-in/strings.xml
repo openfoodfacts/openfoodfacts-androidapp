@@ -37,7 +37,6 @@
     <string name="product_incomplete_message">Produk ini tidak lengkap. Akibatnya, kami tidak bisa melakukan pemeriksaan alergen.</string>
     <string name="product_allergen_prompt">Produk ini mengandung:</string>
     <string name="no_offline_data">Anda selesai</string>
-    <string name="first_offline">Produk yang ditambahkan luring akan tampil disini</string>
     <!-- Image Upload -->
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
@@ -171,8 +170,6 @@
     <string name="txtSubstances">Zat atau produk yang menyebabkan alergi atau intoleransi penyakit</string>
     <string name="txtAdditives">Bahan tambahan :</string>
     <string name="txtTraces">Jejak :</string>
-    <string name="txtMayBeFromPalmOilProduct">Kandungan yang mungkin berasal dari minyak kelapa sawit :</string>
-    <string name="txtPalmOilProduct">Bahan dari minyak kelapa sawit :</string>
     <string name="txtServingSize">Porsi penyajian :</string>
     <string name="txtNutrientLevel100g">Tingkat nutrisi untuk 100 g:</string>
     <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
@@ -181,7 +178,6 @@
     <string name="txtNutritionLevelHigh">kualitas hasil rendah</string>
     <string name="txtSave">Simpan</string>
     <string name="txtSignIn">Masuk</string>
-    <string name="txtToastSaved">Pengguna yang disimpan</string>
     <string name="txtSalt">garam</string>
     <string name="txtFat">Lemak</string>
     <string name="txtSugars">Gula</string>
@@ -191,7 +187,6 @@
     <string name="hintPass">Kata sandi</string>
     <string name="errorLogin">Nama pengguna atau password salah</string>
     <string name="errorWeb">Tidak bisa mengakses internet. Mohon periksa koneksi anda.</string>
-    <string name="uploadLater">Gambar akan diunggah ketika jaringan tersedia</string>
     <string name="txtInfoLoginOk">Pengguna yang disimpan</string>
     <string name="txtInfoLoginNo">Pengguna belum disimpan</string>
     <string name="product_does_not_exist_please_add_it">Produk yang anda scan belum ada pada daftar Open Food Facts. Silahkan tambahkan</string>
@@ -202,25 +197,19 @@
     <string name="txtPictureNeededDialogNo">Buang</string>
     <string name="toastSending">Mengunggah…</string>
     <string name="txtLoading">sedang memuat</string>
-    <string name="txtDialogsContentDelete">Apakah anda yakin ingin menghapus draf ini?</string>
-    <string name="txtDialogsContentInfoSave">Produk disimpan di perangkat, anda dapat mengubahnya di menu \"ubah Offline\"</string>
     <string name="productSavedToast">Produk telah disimpan, terima kasih!</string>
     <string name="txtBarcodeRequire">kode batang dibutuhkan</string>
-    <string name="txtOk">OK</string>
     <string name="txtBarcodeNotValid">Kode batang tidak valid</string>
     <string name="msg_share">Lihat produk ini pada Open Food Facts:</string>
     <string name="create_account">Daftar</string>
     <string name="home_drawer">Beranda</string>
     <string name="install">Install</string>
-    <string name="open_beauty_drawer">Open Beauty Facts</string>
-    <string name="open_food_drawer">Open Food Facts</string>
     <string name="search_drawer">mencari </string>
     <string name="search_by_barcode_drawer">Ketik kode batang</string>
     <string name="category_drawer">Kategori</string>
     <string name="search_by_category">Kategori</string>
     <string name="scan_search">Pindai kode batang</string>
     <string name="user_drawer">pengguna</string>
-    <string name="offline_edit_drawer">Ubah Offline</string>
     <string name="txt_anonymous">Anonim</string>
     <string name="delete_txt">Hapus</string>
     <string name="sign_in_drawer">memasuki</string>
@@ -280,7 +269,6 @@
     <string name="calculate_nutrition_facts">Menghitung fakta nutrisi</string>
     <string name="nutrition_carbohydrate">Karbohidrat</string>
     <string name="nutrition_cholesterol">Kolesterol</string>
-    <string name="nutrition_energy">tenaga</string>
     <string name="nutrition_energy_kcal">Energi dalam kalori (kkal)</string>
     <string name="nutrition_energy_kj">Energi dalam joule (kJ)</string>
     <string name="nutrition_energy_short_name">tenaga</string>
@@ -296,9 +284,7 @@
     <string name="nutriment_serving_size">per butir</string>
     <string name="action_manage_account">menggunakan akun</string>
     <string name="action_contributes">hasil anda</string>
-    <string name="choose_energy_unit">Choose your preferred energy units for the nutrition table</string>
     <string name="pref_energy_unit_title">Preferred energy unit</string>
-    <string name="choose_volume_unit">Choose your preferred volume units for the nutrition table</string>
     <string name="pref_volume_unit_title">Preferred volume unit</string>
     <string name="logout_drawer">keluar dari akun</string>
     <string name="contribution_without_account">kamu bisa masuk atau membuat akun untuk menyimpan kontribusi kamu</string>
@@ -405,16 +391,13 @@
     <string name="forgot_password">Lupa Kata Sandi</string>
     <string name="next">BERIKUTNYA</string>
     <string name="skip">LEWATI</string>
-    <string name="start">BAIKLAH</string>
     <string name="pref_contact_us_title">Kontak</string>
     <string name="pref_contact_us_summary">Hubungi tim</string>
     <string name="email_not_found">Aplikasi email tidak ditemukan</string>
     <string name="airplane_mode_active_dialog_title">Aktifkan Mode Pesawat</string>
     <string name="airplane_mode_active_dialog_message">Mode Pesawat diaktifkan, nonaktifkan untuk melanjutkan</string>
-    <string name="airplane_mode_active_dialog_negative">Abaikan</string>
     <string name="airplane_mode_active_dialog_positive">Pengaturan</string>
     <string name="device_offline_dialog_title">Jaringan tidak tersedia</string>
-    <string name="device_offline_dialog_message">Koneksi jaringan diperlukan untuk melakukan ini, apakah anda ingin mengubahnya di pengaturan?</string>
     <string name="device_offline_dialog_negative">Abaikan</string>
     <string name="device_offline_dialog_positive">Pengaturan</string>
     <string name="scan_first_product">Pindai produk pertama</string>
@@ -520,7 +503,6 @@
     <string name="notification_channel_name">Ekspor pemberitahuan</string>
     <string name="notify_channel_description">Pemberitahuan untuk melihat lokasi file yang diekspor</string>
     <string name="products_to_be_completed">Produk perlu diselesaikan</string>
-    <string name="offline_notification_title">Kontribusi luar jaringan yang perlu anda kirim</string>
     <string name="creator_history">Product added on %1$s at %2$s CET by %3$s</string>
     <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by %3$s </string>
     <string name="other_editors">Halaman produk juga diubah oleh </string>
@@ -546,7 +528,6 @@
     <string name="switch_camera">Ganti kamera</string>
     <string name="autofocus">Fokus otomatis</string>
     <string name="initial_loading">Pemuatan awal</string>
-    <string name="preferences">pengaturan</string>
     <string name="OFFlogo">Logo Open Food Facts</string>
     <string name="loading_product">Loading product %s</string>
     <string name="image_not_defined_for_language">No image for selected language. You can add a new one</string>
@@ -564,12 +545,10 @@
     <string name="add_at_least_one_picture">Please add at least one picture of this product before proceeding</string>
     <string name="image_uploaded_successfully">Image uploaded successfully</string>
     <string name="error_adding_product_photos">Something went wrong while trying to add product photos</string>
-    <string name="ingredients_overwrite">Ingredients overwrite</string>
     <string name="choose_mine">Choose mine</string>
     <string name="keep_previous_version">Keep previous version</string>
     <string name="product_name_overwrite">Product name overwrite</string>
     <string name="yours">Yours: </string>
-    <string name="currently_on">Currently on %s: </string>
     <string name="quantity_overwrite">Quantity overwrite</string>
     <string name="link_overwrite">Link overwrite</string>
     <string name="save_product">Do you want to save the product?</string>
@@ -740,13 +719,11 @@
     <string name="choose_default_language">Select product language</string>
     <string name="barcode">Kode batang</string>
     <string name="productAdditivesNone">No additives</string>
-    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
     <string name="import_csv_to_list">Import an Open Food Facts list CSV file</string>
     <string name="toast_import_csv_error">Error in importing CSV file</string>
     <string name="toast_import_csv">CSV imported successfully!</string>
     <string name="open_csv">Open CSV</string>
     <!-- Used for diets AddOn -->
-    <string name="history_network_error">The product couldn\'t be loaded. Please try again when you are back online.</string>
     <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
     <string name="closeZoom">Click to close zoom</string>
     <string name="imageFullscreen">Perbesar</string>
