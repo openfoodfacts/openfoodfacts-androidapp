@@ -15,12 +15,6 @@
   ~ limitations under the License.
   -->
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <plurals name="offline_notification_count">
-        <item quantity="one">יש מוצר אחד בלתי מקוון שממתין להגשה כתרומה ל־Open Food Facts</item>
-        <item quantity="two">יש שני מוצרים בלתי מקוונים שממתינים להגשה כתרומה ל־Open Food Facts</item>
-        <item quantity="many">יש %d מוצרים בלתי מקוונים שממתינים להגשה כתרומה ל־Open Food Facts</item>
-        <item quantity="other">יש %d מוצרים בלתי מקוונים שממתינים להגשה כתרומה ל־Open Food Facts</item>
-    </plurals>
     <plurals name="seconds">
         <item quantity="one">לפני שנייה</item>
         <item quantity="two">לפני שתי שניות</item>
@@ -48,10 +42,8 @@
     <string name="action_about">על אודות</string>
     <string name="action_discover">לגלות</string>
     <string name="contribute">כיצד ניתן לתרום</string>
-    <string name="action_find">חיפוש</string>
     <string name="product_incomplete_message">המפרט של מוצר זה לוקה בחסר. כתוצאה מכך, לא הצלחנו לבדוק מה הם מעוררי הרגישות.</string>
     <string name="product_allergen_prompt">מוצר זה מכיל:</string>
-    <string name="no_offline_data">סיימת</string>
     <!-- Image Upload -->
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
@@ -171,7 +163,6 @@
     </string-array>
     <!-- Text units -->
     <!-- Content Description -->
-    <string name="search_button">חיפוש</string>
     <string name="alert_dialog_warning_title">אזהרה</string>
     <string name="alert_dialog_warning_msg_user">שם משתמש/ססמה השתנו, נא לעדכן את הפרטים</string>
     <string name="toast_retrieving">בטעינה…</string>
@@ -196,10 +187,7 @@
     <string name="txtSalt">מלח</string>
     <string name="txtFat">שומן</string>
     <string name="txtSugars">סוכרים</string>
-    <string name="hintBarcode">ברקוד</string>
     <string name="txtNutriScoreInfo">מידע נוסף על רמות חומרי ההזנה</string>
-    <string name="hintLogin">שם משתמש</string>
-    <string name="hintPass">ססמה</string>
     <string name="errorLogin">שם המשתמש או הססמה שגויים</string>
     <string name="errorWeb">לא הצלחנו לגשת לאינטרנט. יש לך תקלה בחיבור?</string>
     <string name="txtInfoLoginOk">המשתמש נשמר</string>
@@ -207,16 +195,12 @@
     <string name="product_does_not_exist_please_add_it">המוצר שסרקת לא קיים עדיין ב־Open Food Facts. נא לסרוק אותו.</string>
     <string name="txtYes">כן</string>
     <string name="txtNo">לא</string>
-    <string name="hintBrand">מותג</string>
-    <string name="txtSendAll">לשלוח הכול</string>
-    <string name="txtPictureNeededDialogNo">התעלמות</string>
     <string name="toastSending">מתבצעת שליחה…</string>
     <string name="txtLoading">בטעינה…</string>
     <string name="productSavedToast">המוצר נשמר, תודה!</string>
     <string name="txtBarcodeRequire">נדרש ברקוד</string>
     <string name="txtBarcodeNotValid">הברקוד לא זמין</string>
     <string name="msg_share">להלן מוצר מתוך Open Food Facts :</string>
-    <string name="create_account">הרשמה</string>
     <string name="home_drawer">ראשי</string>
     <string name="install">התקנה</string>
     <string name="search_drawer">חיפוש</string>
@@ -231,14 +215,10 @@
     <string name="alert_drawer">אזהרת אלרגן</string>
     <string name="your_lists">הרשימות שלך</string>
     <string name="title_dialog_alert">הוספת התרעה</string>
-    <string name="select_camera">בחירת מצלמה</string>
     <string name="ok_button">אישור</string>
     <string name="cancel_button">ביטול</string>
     <string name="login_button">שם משתמש</string>
     <string name="create_account_button">יצירת חשבון</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">נתוני האלרגיות שלך לא יישלחו לשרת של Open Food Facts server. כמו כן, מוטב להיזהר כי נתונים של מוצרים עשויים להיות חלקיים והזיהוי עשוי להיות בלתי מדויק, לכן, מוטב לנקוט במשנה זהירות ולבדוק בדרך נוספת באופן עצמאי! </string>
-    <string name="title_info_dialog">איך זה עובד?</string>
-    <string name="text_offline_info_dialog">ניתן לסרוק מוצרים ללא חיבור לאינטרנט ולהוסיף אותם למסד נתוני המזון הפתוח מאוחר יותר. כל המוצרים שנסרקים מופיעים כאן, תהיה לך אפשרות לשלוח אותם בעזרת הכפתור שלהלן.</string>
     <string name="permission_camera">נדרשת הרשאה לשימוש במצלמה כדי לסרוק ברקודים ולצלם תמונות.</string>
     <string name="no_camera_dialog_title">מצלמה לא נמצאה</string>
     <string name="no_camera_dialog_content">למכשיר שלך אין מצלמה. לא תהיה לך אפשרות לסרוק ברקודים.</string>
@@ -255,7 +235,6 @@
     <string name="pref_power_mode_title">סריקת על</string>
     <string name="pref_power_mode_summary">ניתן לסרוק מוצרים במהירות בסופר כדי לראות אילו מהם לא נמצאים במסד הנתונים.</string>
     <string name="pref_language_title">שפה</string>
-    <string name="pref_language_summary">החלפת שפה</string>
     <!-- Strings related to feedback dialog -->
     <string name="user_enjoying_app">האם החוויה שלך עם Open Food Facts חיובית?</string>
     <string name="user_ask_show_feedback_form">לא לנו לשמוע על כך! נוכל להבין ממך מה קרה?</string>
@@ -306,7 +285,6 @@
     <string name="action_search">חיפוש</string>
     <string name="search_hint">חיפוש מוצר</string>
     <string name="number_of_results">מספר התוצאות: </string>
-    <string name="number_of_products">מספר המוצרים: </string>
     <string name="txt_no_matching__category_products">שוד ושבר, אין לנו אף מוצר בקטגוריה הזו, נוכל לבקש ממך להוסיף מוצרים?</string>
     <string name="txt_no_matching_allergen_products">השם ישמור, אין לנו מוצרים עם האלרגן הזה, נוכל לבקש ממך להוסיף אחד?</string>
     <string name="txt_no_matching_label_products">אוי א בראך, אינו לנו מוצרים עם התווית הזאת, נוכל לבקש ממך להוסיף אחד?</string>
@@ -377,15 +355,7 @@
     <string name="collagen_meat_protein_ratio">טווח הקולגן בבשר</string>
     <string name="cocoa">קקאו</string>
     <string name="chlorophyl">כלורופיל</string>
-    <string name="take_picture">צילום תמונה</string>
-    <string name="choose_picture_from_gallery">מהגלריה</string>
-    <string name="take_picture_ingredients">צילום תמונה של הרכיבים</string>
-    <string name="take_picture_front">צילום תמונה של החזית</string>
-    <string name="take_picture_nutrition_table">צילום תמונה של טבלת הערכים</string>
-    <string name="take_more_pictures">צילום תמונות נוספות</string>
     <string name="txtSaturatedFat">שומן רווי</string>
-    <string name="nutriscore_info_msg">מידע נוסף על ציון תזונתי</string>
-    <string name="nova_info_msg">מידע נוסף על NOVA</string>
     <string name="nova_grp1_msg">קבוצה 1 - מזון עם עיבוד מזערי או נטול</string>
     <string name="nova_grp2_msg">קבוצה 2 - רכיבים קולינריים מעובדים</string>
     <string name="nova_grp3_msg">קבוצה 3 - מזון מעובד</string>
@@ -400,34 +370,22 @@
     <string name="history_shortcut_long_label">היסטוריה</string>
     <string name="contributions_shortcut_short_label">תרומות</string>
     <string name="contributions_shortcut_long_label">התרומות שלי</string>
-    <string name="forgot_password">שכחתי ססמה</string>
     <string name="next">הבא</string>
     <string name="skip">דילוג</string>
     <string name="pref_contact_us_title">יצירת קשר</string>
     <string name="pref_contact_us_summary">יצירת קשר עם הצוות</string>
     <string name="email_not_found">לא נמצאו יישומוני דוא״ל</string>
-    <string name="airplane_mode_active_dialog_title">מצב טיסה מופעל</string>
-    <string name="airplane_mode_active_dialog_message">מצב טיסה פעיל, נא להשבית אותו כדי להמשיך.</string>
-    <string name="airplane_mode_active_dialog_positive">הגדרות</string>
     <string name="device_offline_dialog_title">הרשת אינה זמינה</string>
-    <string name="device_offline_dialog_negative">התעלמות</string>
-    <string name="device_offline_dialog_positive">הגדרות</string>
-    <string name="scan_first_product">סריקת המוצר הראשון</string>
     <string name="pref_delete_history">ההיסטוריה נמחקה בהצלחה</string>
     <string name="pref_enable_mobile_data_title">להעלות כשיש חיבור נתונים סלולרי</string>
     <string name="pref_enable_mobile_data_summary_on">להעלות מוצרים חדשים כשיש חיבור נתונים סלולרי או אלחוטי</string>
     <string name="pref_enable_mobile_data_summary_off">להעלות מוצרים חדשים כשיש חיבור נתונים אלחוטי בלבד</string>
-    <string name="device_on_mobile_data_warning_title">פרטים</string>
-    <string name="device_on_mobile_data_warning_message">העלאת מוצרים חדשים כשיש חיבור נתונים סלולרי מושבתת, נא להתחבר לרשת אלחוטית או לשנות זאת בהעדפות</string>
-    <string name="device_on_mobile_data_warning_positive">העדפות</string>
-    <string name="device_on_mobile_data_warning_negative">להעלות בכל זאת</string>
     <string name="changes_saved">השינויים נשמרו בהצלחה</string>
     <string name="preference_choose_language_dialog_title">בחירת שפה</string>
     <string name="pref_faq_title">שו״ת</string>
     <string name="pref_faq_summary">שאלות ותשובות נפוצות</string>
     <string name="pref_help_translate_title">סיוע בתרגום Open Food Facts</string>
     <string name="pref_help_translate_summary">הנגשת מסד הנתונים של Open Food Facts לאנשים שדוברים את אותה השפה כמוך - לא נדרש ידע טכני</string>
-    <string name="please_check_your_connection">נא לבדוק את החיבור שלך.</string>
     <string name="advanced_search_title">חיפוש ותרשימים ומתקדמים</string>
     <string name="compare_products">השוואת מוצרים</string>
     <string name="connectivity_check">נא לבדוק את החיבור שלך לאינטרנט</string>
@@ -451,7 +409,6 @@
     <string name="preference_header_general">כללי</string>
     <string name="pref_header_network">רשת</string>
     <string name="pref_header_contributing">התנדבות</string>
-    <string name="scan_first_string">היסטוריית המוצרים בהם צפית תופיע כאן\nההיסטוריה הזאת מיועדת לעיניך בלבד והיא מאוחסנת במחשב שלך.</string>
     <string name="log_in">שם משתמש</string>
     <string name="login_true">כבר נכנסת!</string>
     <string name="confirm_logout">אימות יציאה</string>
@@ -461,10 +418,7 @@
     <string name="pref_resolution_dialog_title">נא לבחור ברזולוציה</string>
     <string name="pref_resolution_summary">נא לבחור רזולוציה להעלאת התמונה</string>
     <string name="pref_resolution_title">רזולוציית התמונה להעלאה</string>
-    <string name="wikidata_information">להמשיך מעבר</string>
     <string name="wikidata_unavailable">אין ערך ויקיפדי בשפה שלך עדיין.</string>
-    <string name="Wikipedia">הצגה בוויקיפדיה</string>
-    <string name="Browse_Products">עיון במוצרים</string>
     <string name="brand_string">מותג</string>
     <string name="additive_string">תוסף</string>
     <string name="allergen_string">אלרגן</string>
@@ -472,7 +426,6 @@
     <string name="country_string">ארצות בהן נמכר</string>
     <string name="store_subtitle">חנות</string>
     <string name="packaging_subtitle">אריזה</string>
-    <string name="packaging_string">אריזה</string>
     <string name="label_string">תווית</string>
     <string name="category_string">קטגוריה</string>
     <string name="connection">יש חיבור</string>
@@ -502,7 +455,6 @@
     <string name="format_error">תסדיר הברקוד/QR שגוי</string>
     <string name="code_detected">הברקוד זוהה</string>
     <string name="do_you_want_to">להוסיף תמונות לברקוד הזה?</string>
-    <string name="bottomNav_history">היסטוריה</string>
     <string name="products_added">משתנים שהוספת או ערכת</string>
     <string name="products_incomplete">מוצרים שהוספת שדורשים השלמה</string>
     <string name="product_pictures_contributed">מוצרים שצילמת</string>
@@ -527,7 +479,6 @@
     <string name="offline_product_addition_title">הוספת מוצר חדש</string>
     <string name="productNameNull">שם לא ידוע</string>
     <string name="productAdditivesUnknown"></string>
-    <string name="productAdditivesTemplate">%1$d תוספים</string>
     <plurals name="productAdditives">
         <item quantity="one">תוסף אחד</item>
         <item quantity="two">%d תוספים</item>
@@ -539,11 +490,8 @@
     <string name="product_not_found">המוצר %1$s שסרקת לא קיים עדיין ב־Open Food Facts. נוכל לבקש ממך להוסיף אותו?</string>
     <string name="scan_sound">צליל סריקה</string>
     <string name="trouble_scanning">בעיה בסריקה?</string>
-    <string name="barcode_hint">בעיה בסריקה? ניתן להקליד ברקוד</string>
     <string name="switch_camera">החלפת מצלמה</string>
     <string name="autofocus">מיקוד אוטומטי</string>
-    <string name="initial_loading">טעינה ראשונית</string>
-    <string name="OFFlogo">הלוגו של Open Food Facts</string>
     <string name="loading_product">המוצר %s נטען</string>
     <string name="image_not_defined_for_language">אין תמונה עבור השפה הנבחרת. ניתן להוסיף אחת חדשה</string>
     <string name="error_adding_ingredients">משהו השתבש במהלך הניסיון להוסיף רכיבים למוצר</string>
@@ -552,121 +500,56 @@
     <string name="error_in_carbohydrate_value">תכולת הפחמימות לא יכול להיות פחותה מסכום הסוכר והעמילן</string>
     <string name="choose_nutrient">נא לבחור מרכיב תזונתי</string>
     <string name="error_adding_product_details">משהו השתבש במהלך הניסיון להוסיף פרטים למוצר</string>
-    <string name="hint_product_URL">קישור לעמוד הרשמי של המוצר</string>
     <string name="product_language">שפת המוצר: </string>
-    <string name="hint_emb_codes">דוגמאות: EMB 53062,‏ FR 62.448.034 CE,‏ 84 R 20,‏ 33 RECOLTANT 522,‏ FSSL 10013011001409</string>
     <string name="official_website">אתר רשמי</string>
     <string name="scan_QR_code">סריקת קוד QR לאתר המוצר</string>
     <string name="add_at_least_one_picture">נא להוסיף לפחות תמונה אחת של המוצר בטרם המשך התהליך</string>
     <string name="image_uploaded_successfully">התמונה הועלתה בהצלחה</string>
     <string name="error_adding_product_photos">משהו השתבש במהלך הניסיון להוסיף תמונות למוצר</string>
-    <string name="choose_mine">לבחור את שלי</string>
-    <string name="keep_previous_version">להשאיר את הגרסה הקודמת</string>
-    <string name="product_name_overwrite">שכתוב שם מוצר</string>
-    <string name="yours">שלך: </string>
-    <string name="quantity_overwrite">שכתוב כמות</string>
     <string name="save_product">לשמור את המוצר?</string>
     <string name="error_adding_product">משהו השתבש בעת הוספת המוצר</string>
     <string name="photos">תמונות</string>
     <string name="please_wait">נא להמתין</string>
-    <string name="product_uploaded_successfully">המוצר הועלה בהצלחה</string>
     <string name="no_internet_connection">נראה כי אין לך חיבור לאינטרנט, התמונות תועלינה כשהרשת תשוב להיות זמינה</string>
     <string name="no_internet_unable_to_extract_ingredients">אין חיבור לאינטרנט. לא ניתן לחלץ רכיבים</string>
-    <string name="percent">%1$d%%</string>
     <string name="overview">סקירה</string>
     <string name="ingredients">רכיבים</string>
     <string name="nutrition_facts">מפרט תזונתי</string>
-    <string name="your_version">שלך</string>
     <string name="ingredients_picture">תמונת הרכיבים</string>
-    <string name="take_ingredients_picture_to_extract">(נא לצלם את רשימת הרכיבים כדי לחלץ אותם אוטומטית)</string>
-    <string name="ingredients_list">רשימת רכיבים</string>
-    <string name="ingredients_hint" tools:ignore="StringFormatInvalid">יש לשמור על הסדר, לציין את ה־% איפה שצוין, להפריד בפסיק או להשתמש ב־-, להשתמש ב־() לציון רכיבים של רכיבים ולתחום אלרגנים ב־_</string>
-    <string name="extract_ingredients">חילוץ רכיבים</string>
-    <string name="extracting_ingredients">הרכיבים מחולצים</string>
-    <string name="looksGood">נראה טוב</string>
-    <string name="skip_ingredients">לא טוב \n לדלג על הרכיבים</string>
     <string name="traces">עקבות</string>
-    <string name="traces_hint">יש לציין רכיבים מאזכורים כגון ‚עשוי להכיל עקבות של’, ‚נוצר במפעל שמשתמש גם ב־’.\nדוגמאות: חלב, גלוטן, אגוזים</string>
-    <string name="nutrition_facts_not_specified">המפרט התזונתי אינו מצוין על המוצר.</string>
     <string name="nutrition_facts_picture">תמונת הפירוט התזונתי</string>
     <string name="front_short_picture">חזית</string>
     <string name="other_picture">תמונה אחרת</string>
-    <string name="for_100g_100ml">ל־100 ג׳ / 100 מ״ל</string>
-    <string name="per_serving">להגשה</string>
-    <string name="serving_size">גודל ההגשה</string>
-    <string name="alcohol_unit" formatted="false">% בנפח / °</string>
-    <string name="add_a_nutrient">הוספת רכיב תזונתי</string>
-    <string name="add_this_product">הוספת המוצר הזה</string>
-    <string name="product_picture">תמונת המוצר</string>
-    <string name="one_photo_compulsory">(לצורך הוספת מוצר יש להוסיף תמונה אחת לפחות)</string>
-    <string name="product_details">פרטי המוצר</string>
-    <string name="product_name">שם המוצר</string>
-    <string name="quantity">כמות</string>
-    <string name="labels">תוויות</string>
-    <string name="period_of_time_after_opening">משך הזמן לאחר הפתיחה</string>
-    <string name="manufacturing_details">פרטי ייצור</string>
     <string name="origin_of_ingredients">מקור הרכיבים</string>
     <string name="manufacturing_place">מקום ייצור</string>
     <string name="emb_code">קוד EMB</string>
-    <string name="purchasing_details">פרטי רכישה</string>
-    <string name="country_where_purchased">מדינת הרכישה</string>
-    <string name="stores">חנויות</string>
-    <string name="additional_pictures">תמונות נוספות</string>
-    <string name="hint_product_pictures">(כדאי להוסיף תמונות נוספות של המוצר, למשל: הנחיות מחזור, תוויות וכו׳)</string>
     <string name="uploading_image">התמונה נשלחת</string>
-    <string name="uploading_ingredients_image">נשלחת תמונת רכיבים</string>
     <string name="edit_front_image">עריכת תמונת החזית</string>
     <string name="edit_nutrition_image">עריכת תמונת התזונה</string>
     <string name="edit_ingredients_image">עריכת תמונת הרכיבים</string>
     <string name="edit_other_image">עריכת התמונה</string>
     <string name="sign_in_to_edit">נא להיכנס כדי לערוך מוצר.</string>
     <string name="sign_in_to_answer">נא להיכנס או להירשם כדי לענות על תובנה.</string>
-    <string name="hint_quantity">למשל: 2 ל׳, 250 ג׳, 1 ק״ג, 25 סנטיליטרים, 6 אונקיות נוזלים, 1 פאונד</string>
     <string name="edit_product_title">עריכת מוצר</string>
-    <string name="nutrient_already_added">%s כבר קיים בעובדות התזונתיות</string>
     <string name="save_edits">שמירת העריכות</string>
     <string name="contribution_by">תרומה של</string>
-    <string name="title_activity_product">כותרת</string>
-    <string name="description_activity_product">תיאור</string>
     <string name="intent_filter_share_label">הוספה ל־Open Food Facts</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="overexposure_high">סיכון גבוה לחשיפת יתר</string>
     <string name="overexposure_moderate">סיכון בינוני לחשיפת יתר</string>
-    <string name="infants">תינוקות</string>
-    <string name="infants_age">‎&lt; 1</string>
-    <string name="toddlers">פעוטות</string>
-    <string name="toddlers_age">שנה עד שנתיים</string>
-    <string name="children">ילדים</string>
-    <string name="children_age">3 עד 9</string>
-    <string name="adolescents">מתבגרים</string>
-    <string name="adolescents_age">10 עד 17</string>
-    <string name="adults">בוגרים</string>
-    <string name="adults_age">18 עד 64</string>
-    <string name="elderly">קשישים</string>
-    <string name="elderly_age">65+</string>
-    <string name="most_people">רוב האנשים\n(מעל 50%)</string>
-    <string name="some_people">חלק מהאנשים\n(מעל 5%)</string>
-    <string name="safety_and_exposure_assessment">הערכת בטיחות וחשיפה</string>
-    <string name="risk_of_exposure">סכנת חשיפה</string>
     <string name="efsa_warning_high_risk">הרשות האירופית לבטיחות מזון (EFSA) קבעה כי בחלק מקבוצות האוכלוסיה יש סכנה גבוהה בצריכה מוגברת של %1$s.</string>
-    <string name="legend_noael">מעל למינון עם יכולת להשפעה שלילית (NOAEL)</string>
-    <string name="legend_adi">מעל לכמות היומית המומלצת (ADI)</string>
     <string name="max_energy_val_msg">ערך זה הוא מעל 2000 קק״ל ל־100 גרם. אפשר לבקש ממך לתקן זאת?</string>
     <string name="max_nutrient_val_msg">הערך שהוקלד גבוה מגודל למנה</string>
-    <string name="update_image">שליחת תמונה מעודכנת</string>
     <!-- Used for additive exposure evaluation table -->
-    <string name="extract_ingredients_prompt">חילוץ רכיבים</string>
     <string name="add_nutrient_prompt_text">יש להוסיף מפרט תזונתי כדי לחשב Nutri-Score</string>
     <string name="add_category_prompt_text">יש להוסיף קטגוריה כדי לחשב Nutri-Score</string>
     <string name="add_nutrient_category_prompt_text">יש להוסיף מפרט תזונתי וקטגוריה כדי לחשב ציון תזונתי</string>
-    <string name="category_game_btn">נא לסייע לסדר את המוצרים בקטגוריות כדי לחשב Nutri-Score</string>
     <string name="version_string">יישומון ה־Android של Open Food Facts</string>
     <string name="pref_version_title">גרסה</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
     <string name="set_img_nutrients">Set as nutrition image</string>
     <string name="set_img_front">Set as front image</string>
     <string name="report_img">דיווח על תמונה</string>
-    <string name="detected_ingredients">הרכיבים שזוהו</string>
     <string name="txtConnectionError">לא הצלחנו להוריד נתונים מסוימים. יכול להיות שמדובר בשגיאת חיבור.</string>
     <string name="set_image_name">התמונה הוגדרה בהצלחה בתור</string>
     <string name="pref_fast_addition_title">מצב הוספה מהירה</string>
@@ -694,51 +577,29 @@
     <string name="pref_country_dialog_title">בחירת המדינה שלך</string>
     <string name="pref_country_summary">החלפת המדינה שבחרת</string>
     <string name="pref_country_title">מדינה</string>
-    <string name="txt_no_nutrition_data">למוצר זה אינו פירוט תזונתי על האריזה. אם מצב זה השתנה, ניתן לערוך את המוצר.</string>
-    <string name="image_prompt_language">צילום הרכיבים של</string>
     <!-- Used for diets AddOn -->
-    <string name="empty"></string>
-    <string name="add_product">הוספת מוצרים</string>
     <string name="add_another_product">הוספת מוצר נוסף</string>
-    <string name="add_nutrition_facts_for_nutriscore">יש להוסיף מפרט תזונתי כדי לחשב Nutri-Score</string>
-    <string name="product_summary_action_compare_button_label">השוואה</string>
-    <string name="product_summary_action_add_to_list_button_label">הוספה לרשימה</string>
-    <string name="product_summary_action_edit_button_label">עריכה</string>
-    <string name="product_summary_action_share_button_label">שיתוף</string>
-    <string name="product_question_prompt">יש לגעת כאן כדי לענות</string>
     <string name="product_question_positive_response">כן</string>
     <string name="product_question_negative_response">לא</string>
     <string name="product_question_ambiguous_response">לא בטוח</string>
     <string name="product_question_submit_message">תודה לך על תרומתך!</string>
     <string name="error_nutrient_entry">הערך אמור להיות מספרי. למשל: &quot;1.5&quot;,‏ &quot;2.0&quot;</string>
     <string name="error_nutrient_serving_data">גודל ההגשה חייב להיות ערך חיובי</string>
-    <string name="error_in_nutrient_data">חלק מערכי ההזנה אינם תקינים. נא לתקן את השדות להלן שמסומנים כשגויים</string>
-    <string name="go_to_full_product_page">למוצר</string>
-    <string name="no_additive_data_available_for_this_product">אין נתוני תוספים זמינים עבור המוצר הזה</string>
-    <string name="no_nutrient_information_available_for_this_product">אין נתוני חומרי הזנה זמינים עבור המוצר הזה</string>
     <string name="error_duplicate_listname">כבר יש לך רשימה בשם הזה</string>
-    <string name="required_to_compute_nutriscore">(נדרש לטובת חישוב Nutri-Score)</string>
     <string name="scan_tooltip">ניתן להחליק את הכרטיס כלפי מעלה לפרטים נוספים</string>
-    <string name="add_an_allergen">הוספת אלרגן</string>
-    <string name="add_a_list">הוסף לרשימה</string>
     <string name="edit_image">עריכת תמונה</string>
     <string name="cant_edit_image_not_yet_uploaded">התמונה החדשה לא התקבלה עדיין. נא להמתין בטרם עריכתה</string>
     <string name="unselect_image">ביטול בחירת התמונה</string>
-    <string name="choose_default_language">בחירת שפת המוצר</string>
     <string name="barcode">ברקוד</string>
     <string name="productAdditivesNone">ללא תוספים</string>
     <string name="import_csv_to_list">ייבוא קובץ רשימה בתצורת CSV של Open Food Facts</string>
     <string name="toast_import_csv_error">שגיאה בייבוא קובץ CSV</string>
     <string name="toast_import_csv">ה־CSV ייובא בהצלחה!</string>
-    <string name="open_csv">פתיחת CSV</string>
     <!-- Used for diets AddOn -->
     <string name="cant_modify_if_refreshing">נא להמתין עד לסיום ההעלאה</string>
-    <string name="closeZoom">לחיצה לסגירת התקריב</string>
     <string name="imageFullscreen">תקריב</string>
     <!-- Used for product ingredients analysis tags -->
-    <string name="close_button">סגירה</string>
     <string name="tip_message">עצה: %1$s </string>
-    <string name="ingredient_analysis_tip">יש ללחוץ על הסמלים שלהלן כדי ללמוד עוד על המוצר ולבחור את המידע שמעניין אותך.</string>
     <string name="got_it">הבנתי!</string>
     <string name="ingredients_in_this_product_are">הרכיבים במוצר הזה הם %1$s.</string>
     <string name="ingredients_in_this_product">הרכיבים במוצר הזה שהם %1$s:</string>
@@ -759,8 +620,6 @@
     <string name="compare_quantity">כמות:</string>
     <string name="load_ingredient_detection_data">טעינת נתוני זיהוי רכיבים</string>
     <string name="load_ingredient_detection_data_summary">לא נמצאו נתוני זיהוי רכיבים, כדאי לנסות לטעון אותם מהשרת</string>
-    <string name="white_check_image_descr">סימון לבן</string>
-    <string name="hint_packaging">דוגמאות: פלסטיק, נייר, זכוכית</string>
     <string name="risk_alcohol_consumption">צריכה מופרזת של אלכוהול מסוכנת לבריאות, יש לצרוך בכמות מתונה</string>
     <string name="check_first_time">check_first_time</string>
     <!--ShowcaseView Strings-->
@@ -778,10 +637,5 @@
     <string name="content_unselect_photo">יש ללחוץ כאן כדי לבטל את בחירת התמונה הנוכחית</string>
     <string name="title_exit">יציאה</string>
     <string name="content_exit">יש ללחוץ כאן כדי לחזור למוצר</string>
-    <string name="icon_label">סמל תוויות</string>
-    <string name="icon_categories">סמל קטגוריות</string>
-    <string name="icon_emb">סמל קוד EMB</string>
-    <string name="product_front_image">תמונת חזית המוצר</string>
-    <string name="brand_hint">דוגמאות: קוקה קולה, נסטלה וכו׳…</string>
     <string name="sign_in_or_register">כניסה או הרשמה</string>
 </resources>

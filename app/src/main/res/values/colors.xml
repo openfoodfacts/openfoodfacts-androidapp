@@ -19,7 +19,6 @@
     <!-- Basic OpenFoodFacts colors -->
     <color name="brand_red">#FF0000</color>
     <color name="brand_yellow">#FFCC00</color>
-    <color name="brand_green">#00D400</color>
     <color name="brand_light_blue">#00ccff</color>
     <color name="brand_blue">#0066FF</color>
 
@@ -33,30 +32,18 @@
     <color name="material_red">#F44336</color>
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
-    <color name="gray">#808080</color>
 
     <color name="overexposure_high">#FF0000</color>
     <color name="overexposure_moderate">#FF6600</color>
 
     <!-- Material colors -->
-    <color name="red_500">#e51c23</color>
-    <color name="red_700">#d01716</color>
-
-    <color name="indigo_50">#e8eaf6</color>
 
     <color name="blue_500">#5677fc</color>
 
-    <color name="light_blue_500">#03a9f4</color>
-    <color name="light_blue_A700">#0091ea</color>
-
-    <color name="green_300">#42bd41</color>
-    <color name="green_400">#43A047</color>
     <color name="green_500">#259b24</color>
 
     <color name="yellow_500">#ffeb3b</color>
 
-    <color name="orange_400">#ffa726</color>
-    <color name="orange_800">#ef6c00</color>
     <color name="orange_800_alpha">#88ef6c00</color>
 
     <color name="brown_100">#d7ccc8</color>
@@ -64,22 +51,15 @@
     <!-- MLKit Scanner preview screen overlay-->
     <color name="transparent">#00000000</color>
     <color name="reticle_ripple">#9AFFFFFF</color>
-    <color name="object_reticle_outer_ring_fill">#1F000000</color>
-    <color name="object_reticle_outer_ring_stroke">#9AFFFFFF</color>
-    <color name="object_reticle_inner_ring">@color/white</color>
     <color name="barcode_reticle_background">#99000000</color>
     <color name="barcode_reticle_stroke">#40000000</color>
 
     <color name="grey_50">#fafafa</color>
-    <color name="grey_100">#f5f5f5</color>
-    <color name="grey_200">#eeeeee</color>
     <color name="grey_300">#e0e0e0</color>
     <color name="grey_400">#bdbdbd</color>
     <color name="grey_500">#9e9e9e</color>
-    <color name="grey_600">#757575</color>
     <color name="grey_800">#424242</color>
     <color name="grey_800_alpha">#88424242</color>
-    <color name="grey_round">#303030</color>
 
     <color name="blue_grey_100">#cfd8dc</color>
 
@@ -90,26 +70,9 @@
     <color name="bg_welcome_ecoscore">@color/brand_green_dark</color>
     <color name="bg_welcome_matomo">@color/blue_grey_100</color>
 
-    <color name="dot_dark_screen1">#d1395c</color>
-    <color name="dot_dark_screen2">#14a895</color>
-    <color name="dot_dark_screen3">#2278d4</color>
-    <color name="dot_dark_screen4">#a854d4</color>
-    <color name="dot_light_screen1">#f98da5</color>
-    <color name="dot_light_screen2">#8cf9eb</color>
-    <color name="dot_light_screen3">#93c6fd</color>
-    <color name="dot_light_screen4">#e4b5fc</color>
     <color name="button_link">@color/primary_dark</color>
-    <color name="url_link">@color/primary_dark</color>
-    <color name="tag_link">@color/primary_dark</color>
 
 
     <!--FeedBack Dialog sample color-->
-    <color name="sampleColor">#795548</color>
 
-    <color name="monkey_happy">#85bb2f</color>
-    <color name="monkey_uncertain">#fecb02</color>
-    <color name="monkey_sad">#e63e11</color>
-    <color name="monkey_unknown">#777777</color>
-
-    <color name="daynight_recycler_bg">@color/md_light_background</color>
 </resources>

@@ -19,10 +19,6 @@
         <item name="android:shadowRadius">1</item>
     </style>
 
-    <style name="ButtonRounded.Red">
-        <item name="android:background">@drawable/rounded_button_red</item>
-    </style>
-
     <style name="ButtonBorder" parent="ButtonRounded">
         <item name="android:background">@drawable/rounded_button_shape</item>
         <item name="android:textColor">@color/button_link</item>
@@ -33,17 +29,4 @@
         <item name="android:paddingBottom">@dimen/spacing_tiny</item>
     </style>
 
-    <style name="ButtonBorder.Black" parent="ButtonBorder">
-        <item name="android:background">@drawable/rounded_button_shape_nobg</item>
-        <item name="android:drawablePadding">@dimen/spacing_tiny</item>
-        <item name="android:textColor">@android:color/white</item>
-    </style>
-
-    <style name="ButtonFlat.Green">
-        <item name="android:background">@color/brand_green_dark</item>
-    </style>
-
-    <style name="ButtonFlat.Red">
-        <item name="android:background">@color/brand_red_dark</item>
-    </style>
 </resources>

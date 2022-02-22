@@ -7,5 +7,4 @@
         <item>Nutrition Table</item>
         <item>Environment</item>
     </string-array>
-    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
 </resources>

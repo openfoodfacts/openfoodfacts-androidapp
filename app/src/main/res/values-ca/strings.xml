@@ -15,10 +15,6 @@
   ~ limitations under the License.
   -->
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <plurals name="offline_notification_count">
-        <item quantity="one"> Teniu 1 producte fora de línia esperant la vostra aportació a Open Food Facts</item>
-        <item quantity="other"> Teniu %d productes fora de línia esperant la vostra aportació a Open Food Facts</item>
-    </plurals>
     <plurals name="seconds">
         <item quantity="one">Fa %d segon</item>
         <item quantity="other">Fa %d segons</item>
@@ -38,10 +34,8 @@
     <string name="action_about">Quant a</string>
     <string name="action_discover">Descobrir</string>
     <string name="contribute">Com fer aportacions</string>
-    <string name="action_find">Cerca</string>
     <string name="product_incomplete_message">Aquest producte no està complet. Per això no hem pogut fer el control d\'al·lèrgens.</string>
     <string name="product_allergen_prompt">Aquest producte conté:</string>
-    <string name="no_offline_data">Enllestit</string>
     <!-- Image Upload -->
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
@@ -161,7 +155,6 @@
     </string-array>
     <!-- Text units -->
     <!-- Content Description -->
-    <string name="search_button">Cerca</string>
     <string name="alert_dialog_warning_title">Avís</string>
     <string name="alert_dialog_warning_msg_user">L\'identificador/contrasenya ha canviat, si us plau, actualitzeu la informació</string>
     <string name="toast_retrieving">S\'està carregant…</string>
@@ -186,10 +179,7 @@
     <string name="txtSalt">Sal</string>
     <string name="txtFat">Greixos</string>
     <string name="txtSugars">Sucres</string>
-    <string name="hintBarcode">Codi de barres</string>
     <string name="txtNutriScoreInfo">Apreneu més sobre el nivell de nutrients</string>
-    <string name="hintLogin">Identificador</string>
-    <string name="hintPass">Contrasenya</string>
     <string name="errorLogin">Identificador o contrasenya errònia</string>
     <string name="errorWeb">No ens hem pogut connectar a Internet. Teniu problemes amb la connexió?</string>
     <string name="txtInfoLoginOk">Usuari desat</string>
@@ -197,16 +187,12 @@
     <string name="product_does_not_exist_please_add_it">El producte que heu escanejat encara no existeix a Open Food Facts. Si us plau, afegiu-lo.</string>
     <string name="txtYes">Si</string>
     <string name="txtNo">No</string>
-    <string name="hintBrand">Marca</string>
-    <string name="txtSendAll">Puja-ho tot</string>
-    <string name="txtPictureNeededDialogNo">Descarta</string>
     <string name="toastSending">Carregant…</string>
     <string name="txtLoading">S\'està carregant…</string>
     <string name="productSavedToast">Producte guardat, gràcies!</string>
     <string name="txtBarcodeRequire">Es necessita un codi de barres</string>
     <string name="txtBarcodeNotValid">Codi de barres no vàlid</string>
     <string name="msg_share">Mireu aquest producte a Open Food Facts:</string>
-    <string name="create_account">Uniu-vos</string>
     <string name="home_drawer">Inici</string>
     <string name="install">Instal·la</string>
     <string name="search_drawer">Cerca</string>
@@ -221,14 +207,10 @@
     <string name="alert_drawer">Alerta d\'al·lèrgens</string>
     <string name="your_lists">Les vostres llistes</string>
     <string name="title_dialog_alert">Afegir Alerta</string>
-    <string name="select_camera">Selecciona la càmera</string>
     <string name="ok_button">D\'acord</string>
     <string name="cancel_button">Cancel·la</string>
     <string name="login_button">Iniciar sessió</string>
     <string name="create_account_button">Crea un compte</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">La informació sobre les vostres al·lèrgies no s\'enviarà mai al servidor d\'Open Food Facts. Tot i això, aneu amb compte, les dades dels productes poden ser poc precises i és possible que la detecció pot ser que no sigui 100% axacta, així que comproveu-ho dues vegades!</string>
-    <string name="title_info_dialog">Com funciona?</string>
-    <string name="text_offline_info_dialog">Podeu escanejar productes fora de línia i afegir-los després a Open Food Facts. Tots els productes que escanegi apareixeran aquí, i podrà enviar-los amb el botó de baix.</string>
     <string name="permission_camera">El permís de la càmera és necessari per escanejar codis de barres i fer fotos.</string>
     <string name="no_camera_dialog_title">No s\'ha trobat càmera</string>
     <string name="no_camera_dialog_content">El vostre dispositiu no té càmera. No podreu escanejar cap codi de barres.</string>
@@ -245,7 +227,6 @@
     <string name="pref_power_mode_title">Escaneig en mode potència</string>
     <string name="pref_power_mode_summary">Escanegeu ràpidament els productes d\'un comerç per veure quins no es troben a la base de dades.</string>
     <string name="pref_language_title">Idioma</string>
-    <string name="pref_language_summary">Canvi de llengua</string>
     <!-- Strings related to feedback dialog -->
     <string name="user_enjoying_app">Esteu gaudint d\'una bona experiència amb Open Food Facts?</string>
     <string name="user_ask_show_feedback_form">Ens sap greu escoltar això! Ens podeu dir què us ha passat?</string>
@@ -297,7 +278,6 @@
     <string name="action_search">Cerca</string>
     <string name="search_hint">Cercar un producte</string>
     <string name="number_of_results">Nombre de resultats: </string>
-    <string name="number_of_products">Nombre de productes: </string>
     <string name="txt_no_matching__category_products">Oh no! No tenim cap producte d\'aquesta categoria, podeu afegir-ne un?</string>
     <string name="txt_no_matching_allergen_products">Oh no! No tenim cap producte amb aquest al·lergen, podeu afegir-lo?</string>
     <string name="txt_no_matching_label_products">Oh no! No tenim cap producte amb aquesta etiqueta, podeu afegir-lo?</string>
@@ -368,17 +348,7 @@
     <string name="collagen_meat_protein_ratio">Ràtio de col·lagen en la proteïna càrnia</string>
     <string name="cocoa">Cacau</string>
     <string name="chlorophyl">Clorofil·la</string>
-    <string name="take_picture">Feu una foto</string>
-    <string name="choose_picture_from_gallery">Des de la galeria</string>
-    <string name="take_picture_ingredients">Feu una foto dels ingredients</string>
-    <string name="take_picture_recycling">Take a photo of the recycling instructions</string>
-    <string name="take_picture_front">Feu una foto del davant</string>
-    <string name="take_picture_nutrition_table">Feu una foto de la taula nutricional</string>
-    <string name="take_more_pictures">Feu més fotos</string>
-    <string name="take_extra_packaging_pictures">Take extra photos of packaging</string>
     <string name="txtSaturatedFat">Greixos saturats</string>
-    <string name="nutriscore_info_msg">Apreneu més sobre la Nutri-Score</string>
-    <string name="nova_info_msg">Obteniu més informació sobre els grups NOVA</string>
     <string name="nova_grp1_msg">Grup 1 - Aliments no processats o mínimament processats</string>
     <string name="nova_grp2_msg">Grup 2 - Ingredients culinaris processats</string>
     <string name="nova_grp3_msg">Grup 3 - Aliments processats</string>
@@ -393,34 +363,22 @@
     <string name="history_shortcut_long_label">Historial</string>
     <string name="contributions_shortcut_short_label">Aportacions</string>
     <string name="contributions_shortcut_long_label">Les meves aportacions</string>
-    <string name="forgot_password">Heu oblidat la contrasenya?</string>
     <string name="next">SEGÜENT</string>
     <string name="skip">SALTA</string>
     <string name="pref_contact_us_title">Contacte</string>
     <string name="pref_contact_us_summary">Contacta amb l\'equip</string>
     <string name="email_not_found">No s\'ha trobat cap aplicació de correu electrònic</string>
-    <string name="airplane_mode_active_dialog_title">El mode avió està activat</string>
-    <string name="airplane_mode_active_dialog_message">El mode avió està activat, si us plau, desactiveu-lo per continuar.</string>
-    <string name="airplane_mode_active_dialog_positive">Preferències</string>
     <string name="device_offline_dialog_title">Xarxa no disponible</string>
-    <string name="device_offline_dialog_negative">Omet</string>
-    <string name="device_offline_dialog_positive">Preferències</string>
-    <string name="scan_first_product">Escanegeu el primer producte</string>
     <string name="pref_delete_history">L\'historial s\'ha esborrat correctament</string>
     <string name="pref_enable_mobile_data_title">Càrrega amb dades mòbils</string>
     <string name="pref_enable_mobile_data_summary_on">Carrega de nous productes utilitzant dades mòbils &amp; Wi-Fi</string>
     <string name="pref_enable_mobile_data_summary_off">Carrega nous productes utilitzant només Wi-Fi</string>
-    <string name="device_on_mobile_data_warning_title">Informació</string>
-    <string name="device_on_mobile_data_warning_message">La càrrega amb dades mòbils està desactivada, connecteu-vos a la Wi-Fi o canvieu la configuració</string>
-    <string name="device_on_mobile_data_warning_positive">Preferències</string>
-    <string name="device_on_mobile_data_warning_negative">Carrega igualment</string>
     <string name="changes_saved">Els canvis s\'han desat correctament</string>
     <string name="preference_choose_language_dialog_title">Trieu la llengua</string>
     <string name="pref_faq_title">PMF</string>
     <string name="pref_faq_summary">Preguntes freqüents</string>
     <string name="pref_help_translate_title">Ajudeu a traduir Open Food Facts</string>
     <string name="pref_help_translate_summary">Porteu la base de dades Open Food Facts al vostre idioma - no es requereix cap coneixement tècnic</string>
-    <string name="please_check_your_connection">Si us plau, comproveu la connexió a internet.</string>
     <string name="advanced_search_title">Cerca avançada &amp; Gràfics</string>
     <string name="compare_products">Compara productes</string>
     <string name="connectivity_check">Si us plau, comproveu la connexió a internet</string>
@@ -444,7 +402,6 @@
     <string name="preference_header_general">General</string>
     <string name="pref_header_network">Xarxa</string>
     <string name="pref_header_contributing">Aportant</string>
-    <string name="scan_first_string">L\'historial del producte vist es mostrarà aquí. \nAquest historial només és per a vosaltres i s\'emmagatzema localment.</string>
     <string name="log_in">Identificador</string>
     <string name="login_true">Ja heu iniciat la sessió!</string>
     <string name="confirm_logout">Confirmeu que voleu sortir</string>
@@ -454,10 +411,7 @@
     <string name="pref_resolution_dialog_title">Trieu la resolució</string>
     <string name="pref_resolution_summary">Tria una resolució per carregar imatges</string>
     <string name="pref_resolution_title">Resolució de càrrega d\'imatges</string>
-    <string name="wikidata_information">Ves més enllà</string>
     <string name="wikidata_unavailable">Encara no hi ha cap pàgina de Wikipedia en la vostra llengua.</string>
-    <string name="Wikipedia">Mostra-ho a Viquipèdia</string>
-    <string name="Browse_Products">Navega pels productes</string>
     <string name="brand_string">Marca</string>
     <string name="additive_string">Additiu</string>
     <string name="allergen_string">Al·lergen</string>
@@ -465,7 +419,6 @@
     <string name="country_string">Països on es va vendre</string>
     <string name="store_subtitle">Botiga</string>
     <string name="packaging_subtitle">Empaquetament</string>
-    <string name="packaging_string">Empaquetament</string>
     <string name="label_string">Etiqueta</string>
     <string name="category_string">Categoria</string>
     <string name="connection">Connectat</string>
@@ -495,7 +448,6 @@
     <string name="format_error">El format del codi de barres/QR és incorrecte</string>
     <string name="code_detected">Hem detectat el codi de barres</string>
     <string name="do_you_want_to">Voleu afegir fotos a aquest codi de barres?</string>
-    <string name="bottomNav_history">Historial</string>
     <string name="products_added">Productes que ha afegit o editat</string>
     <string name="products_incomplete">Productes que ha afegit que han de ser completats</string>
     <string name="product_pictures_contributed">Productes pels quals vau fer fotos</string>
@@ -520,7 +472,6 @@
     <string name="offline_product_addition_title">Afegeix un nou producte</string>
     <string name="productNameNull">Nom desconegut</string>
     <string name="productAdditivesUnknown"></string>
-    <string name="productAdditivesTemplate">%1$d additius</string>
     <plurals name="productAdditives">
         <item quantity="one">%d additiu</item>
         <item quantity="other">%d additius</item>
@@ -530,11 +481,8 @@
     <string name="product_not_found">El producte %1$s que heu escanejat encara no existeix a Open Food Facts. Podeu afegir-lo?</string>
     <string name="scan_sound">Escaneja el so</string>
     <string name="trouble_scanning">Teniu problemes escanejant?</string>
-    <string name="barcode_hint">Teniu problemes escanejant? Escriviu el codi de barres</string>
     <string name="switch_camera">Canvia la càmera</string>
     <string name="autofocus">Autoenfocament</string>
-    <string name="initial_loading">Càrrega inicial</string>
-    <string name="OFFlogo">Logo d\'Open Food Facts</string>
     <string name="loading_product">S\'està carregant el producte %s</string>
     <string name="image_not_defined_for_language">No hi ha cap imatge per la llengua seleccionada. Podeu afegir-ne una</string>
     <string name="error_adding_ingredients">Alguna cosa ha sortit malament mentre s\'intentaven afegir els ingredients del producte</string>
@@ -543,70 +491,31 @@
     <string name="error_in_carbohydrate_value">Els hidrats de carboni no poden ser inferiors a la suma dels sucres i el midó</string>
     <string name="choose_nutrient">Trieu un nutrient</string>
     <string name="error_adding_product_details">Alguna cosa ha sortit malament mentre s\'intentaven afegir detalls del producte</string>
-    <string name="hint_product_URL">Enllaç de la pàgina oficial del producte</string>
     <string name="product_language">Llengua d\'etiquetat: </string>
-    <string name="hint_emb_codes">Exemples: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522, FSSL 10013011001409</string>
     <string name="official_website">Lloc web oficial</string>
     <string name="scan_QR_code">Escaneja el codi QR del lloc web del producte</string>
     <string name="add_at_least_one_picture">Afegiu com a mínim una imatge d\'aquest producte abans de continuar</string>
     <string name="image_uploaded_successfully">La imatge s\'ha pujat correctament</string>
     <string name="error_adding_product_photos">Alguna cosa ha sortit malament mentre s\'intentaven afegir imatges del producte</string>
-    <string name="choose_mine">Tria una meva</string>
-    <string name="keep_previous_version">Mantén la versió anterior</string>
-    <string name="product_name_overwrite">Sobrescriu el nom del producte</string>
-    <string name="yours">Les vostres: </string>
-    <string name="quantity_overwrite">Sobreescriu la quantitat</string>
     <string name="save_product">Voleu desar aquest producte?</string>
     <string name="error_adding_product">Alguna cosa ha anat malament mentre s\'afegia el producte</string>
     <string name="photos">Fotos</string>
     <string name="please_wait">Espereu, si us plau</string>
-    <string name="product_uploaded_successfully">El producte s\'ha carregat correctament</string>
     <string name="no_internet_connection">Sembla que no teniu cap connexió a Internet, les imatges es carregaran quan la xarxa estigui disponible</string>
     <string name="no_internet_unable_to_extract_ingredients">No hi ha connexió a Internet. No es poden extreure els ingredients</string>
-    <string name="percent">%1$d%%</string>
     <string name="overview">Visió general</string>
     <string name="ingredients">Ingredients</string>
     <string name="nutrition_facts">Informació nutricional</string>
-    <string name="your_version">Les vostres</string>
     <string name="ingredients_picture">Imatge dels ingredients</string>
     <string name="packaging">Recycling</string>
-    <string name="take_ingredients_picture_to_extract">(feu una fotografia dels ingredients per extreure\'ls automàticament)</string>
-    <string name="ingredients_list">Llista d\'ingredients</string>
-    <string name="ingredients_hint" tools:ignore="StringFormatInvalid">Manteniu l\'ordre, indiqueu el % quan s\'especifica, separat per una coma o -, utilitzeu () pels ingredients d\'un ingredient, els al·lèrgens envoltats amb _</string>
-    <string name="extract_ingredients">Extreu els ingredients</string>
-    <string name="extracting_ingredients">Extraent ingredients</string>
-    <string name="looksGood">Pinta bé</string>
-    <string name="skip_ingredients">Massa dolent \n Saltar Ingredients</string>
     <string name="traces">Rastres</string>
-    <string name="traces_hint">Indiqueu els ingredients de les mencions com \"Pot contenir restes de\", \"Fabricat en una fàbrica que també s\'utilitza\", etc. \ nExemples: llet, gluten, fruits secs</string>
-    <string name="nutrition_facts_not_specified">Les dades nutricionals no s\'especifiquen en el producte.</string>
     <string name="nutrition_facts_picture">Imatge de la Informació Nutricional</string>
     <string name="front_short_picture">Davant</string>
     <string name="other_picture">Una altra imatge</string>
-    <string name="for_100g_100ml">Per 100 g/100 ml</string>
-    <string name="per_serving">Per ració</string>
-    <string name="serving_size">Mida de la porció</string>
-    <string name="alcohol_unit" formatted="false">% vol / °</string>
-    <string name="add_a_nutrient">Afegir un nutrient</string>
-    <string name="add_this_product">Afegir aquest producte</string>
-    <string name="product_picture">Foto del producte</string>
-    <string name="one_photo_compulsory">(una foto és obligatòria per afegir un nou producte)</string>
-    <string name="product_details">Detalls del producte</string>
-    <string name="product_name">Nom del producte</string>
-    <string name="quantity">Quantitat</string>
-    <string name="labels">Etiquetes</string>
-    <string name="period_of_time_after_opening">Període de temps després d\'obrir</string>
-    <string name="manufacturing_details">Detalls de fabricació</string>
     <string name="origin_of_ingredients">Origen dels ingredients</string>
     <string name="manufacturing_place">Lloc de fabricació</string>
     <string name="emb_code">Codi de traçabilitat</string>
-    <string name="purchasing_details">Detalls de compra</string>
-    <string name="country_where_purchased">País on s\'ha comprat</string>
-    <string name="stores">Botigues</string>
-    <string name="additional_pictures">Imatges addicionals</string>
-    <string name="hint_product_pictures">(Afegiu més imatges del producte, per exemple: instruccions de reciclatge, etiquetes, etc.)</string>
     <string name="uploading_image">Enviant la foto</string>
-    <string name="uploading_ingredients_image">S\'està carregant la imatge dels ingredients</string>
     <string name="edit_front_image">Edita la foto del davant</string>
     <string name="edit_nutrition_image">Edita la foto de la taula nutricional</string>
     <string name="edit_packaging_image">Edit the recycling photo</string>
@@ -614,53 +523,26 @@
     <string name="edit_other_image">Edita la foto</string>
     <string name="sign_in_to_edit">Inicieu la sessió per editar un producte.</string>
     <string name="sign_in_to_answer">Inicieu la sessió o registreu-vos per respondre a una informació.</string>
-    <string name="hint_quantity">Exemples: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
     <string name="edit_product_title">Edita un producte</string>
-    <string name="nutrient_already_added">%s ja està present en les dades nutricionals</string>
     <string name="save_edits">Desa l\'edició</string>
     <string name="contribution_by">Aportació de</string>
-    <string name="title_activity_product">Títol</string>
-    <string name="description_activity_product">descripció</string>
     <string name="intent_filter_share_label">Afegiu a Open Food Facts</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="overexposure_high">Risc alt per exposició excessiva</string>
     <string name="overexposure_moderate">Risc moderat per exposició excessiva</string>
-    <string name="infants">Nadons</string>
-    <string name="infants_age">&lt; 1</string>
-    <string name="toddlers">Infants</string>
-    <string name="toddlers_age">d\'1 a 2</string>
-    <string name="children">Mainada</string>
-    <string name="children_age">de 3 a 9</string>
-    <string name="adolescents">Adolescents</string>
-    <string name="adolescents_age">de 10 a 17</string>
-    <string name="adults">Adults</string>
-    <string name="adults_age">de 18 a 64</string>
-    <string name="elderly">Gent gran</string>
-    <string name="elderly_age">més de 65</string>
-    <string name="most_people">La majoria de la gent\n(més del 50%)</string>
-    <string name="some_people">Algunes persones\n(més del 5%)</string>
-    <string name="safety_and_exposure_assessment">Seguretat i avaluació de l\'exposició</string>
-    <string name="risk_of_exposure">Risc d\'exposició</string>
     <string name="efsa_warning_high_risk">L\'Autoritat Europea de Seguretat Alimentària (EFSA) ha determinat que alguns grups de població tenen un alt risc de consumir massa %1$s.</string>
-    <string name="legend_noael">per sobre d\'una dosi amb efectes adversos observats (NOAEL)</string>
-    <string name="legend_adi">per sobre de la Ingesta Diària Acceptable (IDA)</string>
     <string name="max_energy_val_msg">Aquest valor és superior a 2000 kcal per 100 g. El podeu corregir?</string>
     <string name="max_nutrient_val_msg">El valor introduït és superior a l\'indicat per la mida de la porció</string>
-    <string name="update_image">Envieu una imatge actualitzada</string>
     <!-- Used for additive exposure evaluation table -->
-    <string name="extract_ingredients_prompt">Extreu els ingredients</string>
-    <string name="extract_recycling_prompt">Extract recycling instructions</string>
     <string name="add_nutrient_prompt_text">Afegiu informació nutricional per calcular el Nutri-Score</string>
     <string name="add_category_prompt_text">Afegiu una categoria per calcular Nutri-Score</string>
     <string name="add_nutrient_category_prompt_text">Afegiu informació nutricional i una categoria per calcular Nutri-Score</string>
-    <string name="category_game_btn">Ajudeu a classificar els productes per calcular la Nutri-Score</string>
     <string name="version_string">Aplicació d\'Android Open Food Facts</string>
     <string name="pref_version_title">Versió</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
     <string name="set_img_nutrients">Set as nutrition image</string>
     <string name="set_img_front">Set as front image</string>
     <string name="report_img">Reporteu imatge</string>
-    <string name="detected_ingredients">Ingredients detectats</string>
     <string name="txtConnectionError">No hem pogut descarregar certes dades. Potser ha estat per una errada de connexió.</string>
     <string name="set_image_name">Imatge configurada correctament com</string>
     <string name="pref_fast_addition_title">Mode d\'addició ràpida</string>
@@ -688,52 +570,29 @@
     <string name="pref_country_dialog_title">Seleccioneu el vostre país</string>
     <string name="pref_country_summary">Canvieu el país seleccionat</string>
     <string name="pref_country_title">País</string>
-    <string name="txt_no_nutrition_data">Aquest producte no conté informació nutricional a l’envàs. Si això ha canviat, podeu editar el producte.</string>
-    <string name="image_prompt_language">Feu una foto dels ingredients a</string>
-    <string name="swipe_delete_tip">You can delete a list by swiping it left.</string>
     <!-- Used for diets AddOn -->
-    <string name="empty"></string>
-    <string name="add_product">Afegiu productes</string>
     <string name="add_another_product">Afegiu un altre producte</string>
-    <string name="add_nutrition_facts_for_nutriscore">Afegiu informació nutricional per calcular el Nutri-Score</string>
-    <string name="product_summary_action_compare_button_label">Comparar</string>
-    <string name="product_summary_action_add_to_list_button_label">Afegeix a la llista</string>
-    <string name="product_summary_action_edit_button_label">Edita</string>
-    <string name="product_summary_action_share_button_label">Comparteix</string>
-    <string name="product_question_prompt">Toca per contestar</string>
     <string name="product_question_positive_response">Si</string>
     <string name="product_question_negative_response">No</string>
     <string name="product_question_ambiguous_response">No ho puc assegurar</string>
     <string name="product_question_submit_message">Gràcies per la teva aportació</string>
     <string name="error_nutrient_entry">El valor ha de ser numèric. Exemple: &quot;1.5&quot;, &quot;2,0&quot;</string>
     <string name="error_nutrient_serving_data">El valor de la mida de la porció ha de ser positiu</string>
-    <string name="error_in_nutrient_data">Alguns valors de nutrients no són vàlids. Corregiu els camps anteriors amb el marcador d\'error</string>
-    <string name="go_to_full_product_page">Anar al producte</string>
-    <string name="no_additive_data_available_for_this_product">No hi ha cap informació disponible sobre els additius d\'aquest producte</string>
-    <string name="no_nutrient_information_available_for_this_product">No hi ha informació nutricional disponible per a aquest producte</string>
     <string name="error_duplicate_listname">Ja teniu una llista amb aquest nom</string>
-    <string name="required_to_compute_nutriscore">(Obligatori per calcular el Nutri-Score)</string>
     <string name="scan_tooltip">Podeu lliscar la targeta cap amunt per obtenir més detalls</string>
-    <string name="add_an_allergen">Afegiu un al·lergen</string>
-    <string name="add_a_list">Afegiu una llista</string>
     <string name="edit_image">Edita la imatge</string>
     <string name="cant_edit_image_not_yet_uploaded">La nova imatge encara no s\'ha penjat. Espereu abans d’editar-la</string>
     <string name="unselect_image">Desmarcar la imatge</string>
-    <string name="choose_default_language">Seleccioneu l\'idioma del producte</string>
     <string name="barcode">Codi de barres</string>
     <string name="productAdditivesNone">Sense additius</string>
     <string name="import_csv_to_list">Importeu una llista CSV d\'Open Food Facts</string>
     <string name="toast_import_csv_error">Error en importar el fitxer CSV</string>
     <string name="toast_import_csv">CSV importat correctament!</string>
-    <string name="open_csv">Obre CSV</string>
     <!-- Used for diets AddOn -->
     <string name="cant_modify_if_refreshing">Espereu fins que s\'acabi la càrrega</string>
-    <string name="closeZoom">Feu clic per tancar el zoom</string>
     <string name="imageFullscreen">Zoom</string>
     <!-- Used for product ingredients analysis tags -->
-    <string name="close_button">Tanca</string>
     <string name="tip_message">CONSELL: %1$s </string>
-    <string name="ingredient_analysis_tip">Feu clic a les icones següents per obtenir més informació sobre el producte i seleccionar quina informació us interessa.</string>
     <string name="got_it">Entesos!</string>
     <string name="onboarding_hint_msg">Consell: %s </string>
     <string name="image_edit_tip">Toqueu la imatge per ampliar-la, canviar-la, retallar-la, girar-la i més…</string>
@@ -757,8 +616,6 @@
     <string name="compare_quantity">Quantitat:</string>
     <string name="load_ingredient_detection_data">Carrega dades de detecció d\'ingredients</string>
     <string name="load_ingredient_detection_data_summary">No s\'han trobat dades de detećcció d\'ingredients, proveu de carregar-les des del servidor</string>
-    <string name="white_check_image_descr">Un vist blanc</string>
-    <string name="hint_packaging">Exemples: plàstic, paper, vidre</string>
     <string name="risk_alcohol_consumption">El consum excessiu d’alcohol és perjudicial per a la salut, cal consumir-lo amb moderació</string>
     <!--ShowcaseView Strings-->
     <string name="title_image_type">Seleccioneu el tipus d\'imatge</string>
@@ -775,19 +632,11 @@
     <string name="content_unselect_photo">Premeu aquí per desmarcar la foto actual</string>
     <string name="title_exit">Sortir</string>
     <string name="content_exit">Premeu aquí per tornar al producte</string>
-    <string name="icon_label">Icona d\'etiquetes</string>
-    <string name="icon_categories">Icona de categories</string>
-    <string name="icon_emb">Icona de codi de traçabilitat</string>
-    <string name="product_front_image">Imatge frontal del producte</string>
-    <string name="brand_hint">Exemples: Coca-Cola, Nestlé, etc…</string>
     <string name="sign_in_or_register">Inicieu la sessió o registreu-vos</string>
     <string name="hunger_game_call_to_action">Ajudeu a classificar millor %1$s</string>
     <string name="txtHomeOnline">Open Food Facts és una base de dades oberta de més de %1$s productes alimentaris (més els que hi aportareu).</string>
-    <string name="enabled">Enabled</string>
     <!-- Application theme settings -->
     <string name="follow_system">Follow system</string>
     <string name="day">Day</string>
     <string name="night">Night</string>
-    <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
-    <string name="hint_origin">Examples: USA, France, Italy</string>
 </resources>

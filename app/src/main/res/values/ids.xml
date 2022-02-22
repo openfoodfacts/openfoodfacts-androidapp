@@ -1,10 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item name="menu_flash" type="id" />
-    <item name="menu_ring" type="id" />
-    <item name="menu_auto_focus" type="id" />
-    <item name="menu_camera_selector" type="id" />
-    <item name="menu_about" type="id" />
-    <item name="menu_problem_scanning" type="id" />
     <item name="analysis_tag_config" type="id" />
 </resources>

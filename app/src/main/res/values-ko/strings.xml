@@ -15,9 +15,6 @@
   ~ limitations under the License.
   -->
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <plurals name="offline_notification_count">
-        <item quantity="other"> Open Foods Facts 에 기부되기를 기다리는 오프라인 제품이 %d 있습니다.</item>
-    </plurals>
     <plurals name="seconds">
         <item quantity="other">%d 초 전</item>
     </plurals>
@@ -33,10 +30,8 @@
     <string name="action_about">정보</string>
     <string name="action_discover">발견</string>
     <string name="contribute">기여 방법</string>
-    <string name="action_find">찾기</string>
     <string name="product_incomplete_message">이 제품의 정보는 완벽하지 않습니다, 이로인해 알레르기 검사를 진행할수 없습니다.</string>
     <string name="product_allergen_prompt">이 제품이 포함하고 있는 것 :</string>
-    <string name="no_offline_data">완료되었습니다.</string>
     <!-- Image Upload -->
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
@@ -156,7 +151,6 @@
     </string-array>
     <!-- Text units -->
     <!-- Content Description -->
-    <string name="search_button">수색</string>
     <string name="alert_dialog_warning_title">경고</string>
     <string name="alert_dialog_warning_msg_user">사용자/비밀번호가 변경되었습니다, 정보를 새로고침 해주세요</string>
     <string name="toast_retrieving">로딩중…</string>
@@ -181,10 +175,7 @@
     <string name="txtSalt">소금</string>
     <string name="txtFat">지방</string>
     <string name="txtSugars">당류</string>
-    <string name="hintBarcode">바코드</string>
     <string name="txtNutriScoreInfo">영양 수치에 대해 더 알아보기</string>
-    <string name="hintLogin">로그인</string>
-    <string name="hintPass">암호</string>
     <string name="errorLogin">계정 또는 비밀번호 오류</string>
     <string name="errorWeb">인터넷에 연결할수 없습니다. 연결문제가 있습니까?</string>
     <string name="txtInfoLoginOk">사용자 정보 저장됨</string>
@@ -192,16 +183,12 @@
     <string name="product_does_not_exist_please_add_it">스캔한 상품이 Open Food Facts에 존재 하지 않습니다. 품목을 추가하여 주십시오.</string>
     <string name="txtYes">예</string>
     <string name="txtNo">아니요</string>
-    <string name="hintBrand">브랜드</string>
-    <string name="txtSendAll">모두 업로드</string>
-    <string name="txtPictureNeededDialogNo">삭제</string>
     <string name="toastSending">업로드 중…</string>
     <string name="txtLoading">로딩중…</string>
     <string name="productSavedToast">제품이 저장되었습니다. 감사합니다!</string>
     <string name="txtBarcodeRequire">바코드가 필요함</string>
     <string name="txtBarcodeNotValid">바코드가 유효하지 않습니다.</string>
     <string name="msg_share">오픈 푸드 팩트에서 이 상품을 검색해보세요.</string>
-    <string name="create_account">회원 가입</string>
     <string name="home_drawer">홈</string>
     <string name="install">설치</string>
     <string name="search_drawer">수색</string>
@@ -216,14 +203,10 @@
     <string name="alert_drawer">알레르기 항원 경보</string>
     <string name="your_lists">내 목록</string>
     <string name="title_dialog_alert">경보 추가하기</string>
-    <string name="select_camera">카메라 선택</string>
     <string name="ok_button">확인</string>
     <string name="cancel_button">취소</string>
     <string name="login_button">로그인</string>
     <string name="create_account_button">계정 만들기</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
-    <string name="title_info_dialog">이용 방법</string>
-    <string name="text_offline_info_dialog">오프라인 상태 일 때 제품을 스캔하여 나중에 Open Food Facts에 추가 할 수 있습니다. 스캔한 모든 제품이 여기에 표시되며 아래 버튼을 사용하여 추가할 수 있습니다.</string>
     <string name="permission_camera">바코드를 스캔하고 사진을 찍으려면 카메라 사용 권한이 필요합니다.</string>
     <string name="no_camera_dialog_title">카메라를 찾을 수 없습니다</string>
     <string name="no_camera_dialog_content">기기에 카메라가 없습니다. 바코드를 스캔할 수 없습니다.</string>
@@ -240,7 +223,6 @@
     <string name="pref_power_mode_title">전원 모드 스캔</string>
     <string name="pref_power_mode_summary">슈퍼마켓에서 제품을 신속하게 스캔하여 데이터베이스에 없는 제품을 확인합니다.</string>
     <string name="pref_language_title">언어</string>
-    <string name="pref_language_summary">언어 변경</string>
     <!-- Strings related to feedback dialog -->
     <string name="user_enjoying_app">Open Food Facts에 만족하십니까?</string>
     <string name="user_ask_show_feedback_form">유감입니다! 무슨 일이 있었는지 말씀해 주실 수 있을까요?</string>
@@ -292,7 +274,6 @@
     <string name="action_search">수색</string>
     <string name="search_hint">제품 검색</string>
     <string name="number_of_results">제품 수: </string>
-    <string name="number_of_products">제품 수: </string>
     <string name="txt_no_matching__category_products">이런, 이 카테고리에 상품이 없군요. 추가해 주실 수 있나요?</string>
     <string name="txt_no_matching_allergen_products">이런, 알레르겐을 함유한 상품이 없군요. 추가해 주실 수 있나요?</string>
     <string name="txt_no_matching_label_products">이런, 이 라벨의 상품이 없군요. 추가해 주실 수 있나요?</string>
@@ -363,17 +344,7 @@
     <string name="collagen_meat_protein_ratio">콜라겐 고기 단백질 비율</string>
     <string name="cocoa">코코아</string>
     <string name="chlorophyl">클로로필</string>
-    <string name="take_picture">사진 촬영</string>
-    <string name="choose_picture_from_gallery">갤러리에서 선택</string>
-    <string name="take_picture_ingredients">Take a photo of the ingredients</string>
-    <string name="take_picture_recycling">Take a photo of the recycling instructions</string>
-    <string name="take_picture_front">정면 사진 찍기</string>
-    <string name="take_picture_nutrition_table">Take a photo of the nutrition table</string>
-    <string name="take_more_pictures">Take more photos</string>
-    <string name="take_extra_packaging_pictures">Take extra photos of packaging</string>
     <string name="txtSaturatedFat">포화 지방</string>
-    <string name="nutriscore_info_msg">Nutri-Score에 대해 더 알아보기</string>
-    <string name="nova_info_msg">Learn more about NOVA groups</string>
     <string name="nova_grp1_msg">그룹 1 - 미가공 식품 또는 최소 가공 식품</string>
     <string name="nova_grp2_msg">그룹 2 - 가공 식품 재료</string>
     <string name="nova_grp3_msg">그룹 3 - 가공 식품</string>
@@ -388,34 +359,22 @@
     <string name="history_shortcut_long_label">최근 기록</string>
     <string name="contributions_shortcut_short_label">기여</string>
     <string name="contributions_shortcut_long_label">My contributions</string>
-    <string name="forgot_password">비밀번호를 잊어버렸어요</string>
     <string name="next">다음</string>
     <string name="skip">건너뛰기</string>
     <string name="pref_contact_us_title">문의</string>
     <string name="pref_contact_us_summary">팀에게 문의하기</string>
     <string name="email_not_found">이메일 응용 프로그램을 찾을 수 없음</string>
-    <string name="airplane_mode_active_dialog_title">비행기 모드 활성화</string>
-    <string name="airplane_mode_active_dialog_message">비행기 모드로 설정되어있습니다. 계속하려면 해제하시기 바랍니다.</string>
-    <string name="airplane_mode_active_dialog_positive">설정</string>
     <string name="device_offline_dialog_title">네트워크를 사용할 수 없습니다</string>
-    <string name="device_offline_dialog_negative">무시</string>
-    <string name="device_offline_dialog_positive">설정</string>
-    <string name="scan_first_product">Scan your first product</string>
     <string name="pref_delete_history">기록을 성공적으로 삭제</string>
     <string name="pref_enable_mobile_data_title">모바일 테이터를 사용하여 업로드하기</string>
     <string name="pref_enable_mobile_data_summary_on">모바일 데이터 &amp; WiFi를 사용하여 새 제품 업로드하기</string>
     <string name="pref_enable_mobile_data_summary_off">WiFi 만 사용하여 새 제품 업로드하기</string>
-    <string name="device_on_mobile_data_warning_title">정보</string>
-    <string name="device_on_mobile_data_warning_message">You have disabled upload on mobile data , please connect to WiFi or change this in preferences</string>
-    <string name="device_on_mobile_data_warning_positive">환경 설정</string>
-    <string name="device_on_mobile_data_warning_negative">강제 업로드</string>
     <string name="changes_saved">변경 사항이 성공적으로 저장되었습니다</string>
     <string name="preference_choose_language_dialog_title">언어 선택</string>
     <string name="pref_faq_title">FAQ</string>
     <string name="pref_faq_summary">자주 묻는 질문</string>
     <string name="pref_help_translate_title">Open Food Facts 번역 도움말</string>
     <string name="pref_help_translate_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
-    <string name="please_check_your_connection">네트워크 연결을 확인하십시오.</string>
     <string name="advanced_search_title">고급 검색 &amp; 차트</string>
     <string name="compare_products">상품 비교</string>
     <string name="connectivity_check">인터넷 연결을 확인하십시오.</string>
@@ -439,7 +398,6 @@
     <string name="preference_header_general">일반</string>
     <string name="pref_header_network">네트워크</string>
     <string name="pref_header_contributing">도움 보내기</string>
-    <string name="scan_first_string">본 제품 내역이 여기에 표시됩니다.\n이 내역은 나만 볼 수 있으며 로컬로 저장됩니다.</string>
     <string name="log_in">로그인</string>
     <string name="login_true">이미 로그인했습니다!</string>
     <string name="confirm_logout">로그아웃 확인</string>
@@ -449,10 +407,7 @@
     <string name="pref_resolution_dialog_title">해상도 선택</string>
     <string name="pref_resolution_summary">업로드하는 이미지 해상도 설정</string>
     <string name="pref_resolution_title">이미지 업로드 해상도</string>
-    <string name="wikidata_information">더 알아보기</string>
     <string name="wikidata_unavailable">당신의 언어로 된 위키백과 페이지가 없습니다.</string>
-    <string name="Wikipedia">Wikipedia에서 보기</string>
-    <string name="Browse_Products">제품 찾아보기</string>
     <string name="brand_string">브랜드</string>
     <string name="additive_string">첨가물</string>
     <string name="allergen_string">알레르기 유발 성분</string>
@@ -460,7 +415,6 @@
     <string name="country_string">판매의 나라</string>
     <string name="store_subtitle">상점</string>
     <string name="packaging_subtitle">포장</string>
-    <string name="packaging_string">포장</string>
     <string name="label_string">상표</string>
     <string name="category_string">카테고리</string>
     <string name="connection">연결되었습니다.</string>
@@ -490,7 +444,6 @@
     <string name="format_error">잘못된 바코드 / QR 형식</string>
     <string name="code_detected">바코드를 감지했습니다.</string>
     <string name="do_you_want_to">이 바코드에 사진을 추가 하시겠어요?</string>
-    <string name="bottomNav_history">최근 기록</string>
     <string name="products_added">추가 또는 편집한 제품</string>
     <string name="products_incomplete">완성돼야하는 추가된 제품</string>
     <string name="product_pictures_contributed">사진을 찍은 제품</string>
@@ -515,7 +468,6 @@
     <string name="offline_product_addition_title">새 상품 추가</string>
     <string name="productNameNull">알 수 없는 이름</string>
     <string name="productAdditivesUnknown"></string>
-    <string name="productAdditivesTemplate">%1$d개 첨가물</string>
     <plurals name="productAdditives">
         <item quantity="other">%d개 첨가물</item>
     </plurals>
@@ -524,11 +476,8 @@
     <string name="product_not_found">스캔한 상품 %1$s가 Open Food Facts에 존재하지 않습니다. 추가하시겠습니까?</string>
     <string name="scan_sound">소리 스캔</string>
     <string name="trouble_scanning">스캔에 문제가 발생했습니까?</string>
-    <string name="barcode_hint">스캔에 문제가 발생했습니까? 바코드를 입력하세요.</string>
     <string name="switch_camera">카메라 전환</string>
     <string name="autofocus">자동 초점</string>
-    <string name="initial_loading">초기 로딩</string>
-    <string name="OFFlogo">Open Food Facts 로고</string>
     <string name="loading_product">상품 불러오는 중… %s</string>
     <string name="image_not_defined_for_language">선택한 언어에 대한 이미지가 없습니다. 새로운 것을 추가 할 수 있습니다.</string>
     <string name="error_adding_ingredients">제품 성분을 추가하는 중에 문제가 발생했습니다.</string>
@@ -537,70 +486,31 @@
     <string name="error_in_carbohydrate_value">탄수화물은 설탕과 전분의 합보다 적을 수 없습니다.</string>
     <string name="choose_nutrient">영양소를 선택하세요.</string>
     <string name="error_adding_product_details">제품 상세 정보를 추가하는 중에 문제가 발생했습니다.</string>
-    <string name="hint_product_URL">제품의 공식 페이지 링크</string>
     <string name="product_language">제품 언어 : </string>
-    <string name="hint_emb_codes">예 : EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522, FSSL 10013011001409</string>
     <string name="official_website">공식 웹사이트</string>
     <string name="scan_QR_code">제품 웹 사이트에 대한 QR 코드 스캔</string>
     <string name="add_at_least_one_picture">계속하기 전에 이 제품의 사진을 하나 이상 추가하십시오.</string>
     <string name="image_uploaded_successfully">이미지 업로드 성공</string>
     <string name="error_adding_product_photos">제품 사진을 추가하는 중에 문제가 발생했습니다.</string>
-    <string name="choose_mine">덮어 쓰기</string>
-    <string name="keep_previous_version">이전 버전 유지하기</string>
-    <string name="product_name_overwrite">제품 이름 덮어 쓰기</string>
-    <string name="yours">당신의 것 : </string>
-    <string name="quantity_overwrite">수량 덮어 쓰기</string>
     <string name="save_product">제품을 저장 하시겠습니까?</string>
     <string name="error_adding_product">제품을 추가하는 동안 문제가 발생했습니다.</string>
     <string name="photos">사진</string>
     <string name="please_wait">잠시만 기다려 주세요.</string>
-    <string name="product_uploaded_successfully">제품 업로드 성공</string>
     <string name="no_internet_connection">인터넷에 연결되어 있지 않은 것 같습니다. 네트워크를 사용할 수 있을 때 이미지가 업로드됩니다.</string>
     <string name="no_internet_unable_to_extract_ingredients">인터넷에 연결되어 있지 않습니다. 성분을 추출 할 수 없습니다.</string>
-    <string name="percent">%1$d%%</string>
     <string name="overview">요약</string>
     <string name="ingredients">성분</string>
     <string name="nutrition_facts">영양 성분 정보</string>
-    <string name="your_version">당신의 것</string>
     <string name="ingredients_picture">성분 목록의 그림</string>
     <string name="packaging">Recycling</string>
-    <string name="take_ingredients_picture_to_extract">(성분을 자동으로 추출하려면 사진을 촬영하십시오)</string>
-    <string name="ingredients_list">성분 목록</string>
-    <string name="ingredients_hint" tools:ignore="StringFormatInvalid">순서를 유지하고, 지정된 경우 %를 표시하고, 쉼표로 구분하거나-성분의 성분에 ()를 사용하며 _로 알레르겐을 둘러싸십시오.</string>
-    <string name="extract_ingredients">성분 추출</string>
-    <string name="extracting_ingredients">성분을 추출하는 중입니다.</string>
-    <string name="looksGood">좋아요</string>
-    <string name="skip_ingredients">너무 나쁨 \n 성분 건너 뛰기</string>
     <string name="traces">흔적</string>
-    <string name="traces_hint">\'~를 미량 함유할 수 있음\', \'~를 사용하는 공장에서 제조 됨\' 등과 같이 언급된 성분을 표시하십시오. \n예시 : 우유, 글루텐, 견과류</string>
-    <string name="nutrition_facts_not_specified">영양성분표가 제품에 명시되어 있지 않습니다.</string>
     <string name="nutrition_facts_picture">영양성분표 사진</string>
     <string name="front_short_picture">앞</string>
     <string name="other_picture">다른 사진</string>
-    <string name="for_100g_100ml">100g / 100ml 당</string>
-    <string name="per_serving">인분</string>
-    <string name="serving_size">서빙 사이즈</string>
-    <string name="alcohol_unit" formatted="false">% vol / °</string>
-    <string name="add_a_nutrient">영양소 추가하기</string>
-    <string name="add_this_product">제품 추가</string>
-    <string name="product_picture">제품 사진</string>
-    <string name="one_photo_compulsory">(세 재품에는 한 장만의 사진만 추가할 수 있습니다)</string>
-    <string name="product_details">제품 상세 정보</string>
-    <string name="product_name">제품 이름</string>
-    <string name="quantity">양</string>
-    <string name="labels">라벨</string>
-    <string name="period_of_time_after_opening">개봉 후 기간</string>
-    <string name="manufacturing_details">제조 정보</string>
     <string name="origin_of_ingredients">성분의 유래</string>
     <string name="manufacturing_place">제조 장소</string>
     <string name="emb_code">Traceability Code</string>
-    <string name="purchasing_details">구매 세부 사항</string>
-    <string name="country_where_purchased">Country where purchased</string>
-    <string name="stores">상점</string>
-    <string name="additional_pictures">이미지 추가</string>
-    <string name="hint_product_pictures">(제품 사진을 더 추가하십시오. 예 : 재활용 지침, 라벨 등)</string>
     <string name="uploading_image">사진 보내기</string>
-    <string name="uploading_ingredients_image">Uploading ingredients image</string>
     <string name="edit_front_image">앞면 사진 편집</string>
     <string name="edit_nutrition_image">영양 사진 편집</string>
     <string name="edit_packaging_image">Edit the recycling photo</string>
@@ -608,53 +518,26 @@
     <string name="edit_other_image">사진 편집</string>
     <string name="sign_in_to_edit">제품을 편집 하시려면 로그인 하세요.</string>
     <string name="sign_in_to_answer">Please sign in or register to answer an insight.</string>
-    <string name="hint_quantity">예 : 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 파운드</string>
     <string name="edit_product_title">제품을 편집</string>
-    <string name="nutrient_already_added">%s 은 영양 정보에 이미 존재합니다</string>
     <string name="save_edits">편집 저장</string>
     <string name="contribution_by">기여</string>
-    <string name="title_activity_product">타이틀</string>
-    <string name="description_activity_product">설명</string>
     <string name="intent_filter_share_label">Open Beauty Facts에 추가하기</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="overexposure_high">과다 노출에 대한 고위험</string>
     <string name="overexposure_moderate">과다 노출에 대한 중위험</string>
-    <string name="infants">영아</string>
-    <string name="infants_age">&lt; 1</string>
-    <string name="toddlers">유아</string>
-    <string name="toddlers_age">1~2</string>
-    <string name="children">어린이</string>
-    <string name="children_age">3~9</string>
-    <string name="adolescents">청소년</string>
-    <string name="adolescents_age">10~17</string>
-    <string name="adults">성인</string>
-    <string name="adults_age">18~64</string>
-    <string name="elderly">노인</string>
-    <string name="elderly_age">65+</string>
-    <string name="most_people">대부분의 사람들\n(50 % 이상)</string>
-    <string name="some_people">일부 사람들\n(5 % 이상)</string>
-    <string name="safety_and_exposure_assessment">안전 및 노출 평가</string>
-    <string name="risk_of_exposure">노출 위험성</string>
     <string name="efsa_warning_high_risk">유럽 식품 안전청 (EFSA) 은 일부 집단이 %1$s를 너무 많이 소비하는 고위험군이라고 확인했습니다.</string>
-    <string name="legend_noael">인체에 유해한 영향을 미치지 않는 최대 투여량 (NOAEL)</string>
-    <string name="legend_adi">일일 섭취허용량 (ADI)</string>
     <string name="max_energy_val_msg">이 값은 100g 당 2000kcal 이상입니다. 맞습니까?</string>
     <string name="max_nutrient_val_msg">입력한 값이 1인분당 지정된 값보다 큽니다.</string>
-    <string name="update_image">업데이트된 이미지 보내기</string>
     <!-- Used for additive exposure evaluation table -->
-    <string name="extract_ingredients_prompt">성분 추출</string>
-    <string name="extract_recycling_prompt">Extract recycling instructions</string>
     <string name="add_nutrient_prompt_text">영양 성분을 추가하여 Nutri-Score 계산</string>
     <string name="add_category_prompt_text">Nutri-Score를 계산하기 위한 카테고리 추가</string>
     <string name="add_nutrient_category_prompt_text">영양 성분 및 카테고리를 추가하여 Nutri-Score 계산</string>
-    <string name="category_game_btn">Nutri-Score를 계산하기위한 제품 분류 지원</string>
     <string name="version_string">Open Food Facts 안드로이드 App</string>
     <string name="pref_version_title">버전</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
     <string name="set_img_nutrients">Set as nutrition image</string>
     <string name="set_img_front">Set as front image</string>
     <string name="report_img">이미지 보내기</string>
-    <string name="detected_ingredients">검출된 성분</string>
     <string name="txtConnectionError">특정 데이터를 다운로드할 수 없습니다. 연결 오류 때문일 수 있습니다.</string>
     <string name="set_image_name">이미지를 성공적으로 설정</string>
     <string name="pref_fast_addition_title">빠른 추가 모드</string>
@@ -682,52 +565,29 @@
     <string name="pref_country_dialog_title">국가를 선택하세요.</string>
     <string name="pref_country_summary">선택한 국가 변경</string>
     <string name="pref_country_title">국가</string>
-    <string name="txt_no_nutrition_data">이 제품 포장에는 영양 정보가 없습니다. 변경된 경우 제품을 편집할 수 있습니다.</string>
-    <string name="image_prompt_language">성분의 사진을 촬영</string>
-    <string name="swipe_delete_tip">You can delete a list by swiping it left.</string>
     <!-- Used for diets AddOn -->
-    <string name="empty"></string>
-    <string name="add_product">제품 추가</string>
     <string name="add_another_product">다른 제품 추가</string>
-    <string name="add_nutrition_facts_for_nutriscore">영양 성분을 추가하여 영양 점수 계산</string>
-    <string name="product_summary_action_compare_button_label">비교하기</string>
-    <string name="product_summary_action_add_to_list_button_label">목록에 추가</string>
-    <string name="product_summary_action_edit_button_label">수정</string>
-    <string name="product_summary_action_share_button_label">공유</string>
-    <string name="product_question_prompt">여기를 눌러 대답하세요</string>
     <string name="product_question_positive_response">예</string>
     <string name="product_question_negative_response">아니요</string>
     <string name="product_question_ambiguous_response">잘 모르곘습니다.</string>
     <string name="product_question_submit_message">기여해주셔서 감사합니다!</string>
     <string name="error_nutrient_entry">값은 숫자 여야한다. 예 : &quot;1.5&quot;, &quot;2,0&quot;</string>
     <string name="error_nutrient_serving_data">1회 제공량은 양의 값이어야 합니다.</string>
-    <string name="error_in_nutrient_data">일부 영양소 값이 유효하지 않습니다. 위의 필드를 오류 마커로 수정하십시오.</string>
-    <string name="go_to_full_product_page">제품으로 이동</string>
-    <string name="no_additive_data_available_for_this_product">이 제품에 대한 추가 데이터가 없습니다</string>
-    <string name="no_nutrient_information_available_for_this_product">이 제품에 사용할 수 있는 영양소 정보가 없습니다</string>
     <string name="error_duplicate_listname">이미 이 이름을 가진 목록이 있습니다</string>
-    <string name="required_to_compute_nutriscore">(Nutri-Score 계산에 필요)</string>
     <string name="scan_tooltip">자세한 내용을 보려면 카드를 밀어 올리십시오.</string>
-    <string name="add_an_allergen">알레르기 유발 물질 추가</string>
-    <string name="add_a_list">목록 추가</string>
     <string name="edit_image">이미지 편집</string>
     <string name="cant_edit_image_not_yet_uploaded">새 이미지가 아직 업로드되지 않았습니다. 편집하기 전에 기다려주십시오</string>
     <string name="unselect_image">이미지 선택 해제</string>
-    <string name="choose_default_language">제품 언어를 선택하십시오</string>
     <string name="barcode">바코드</string>
     <string name="productAdditivesNone">첨가물 없음</string>
     <string name="import_csv_to_list"> Open Food Facts 목록 CSV 파일 가져 오기</string>
     <string name="toast_import_csv_error">CSV 파일을 가져 오는 중 오류가 발생했습니다</string>
     <string name="toast_import_csv">CSV 가져오기 성공!</string>
-    <string name="open_csv">CSV 열기</string>
     <!-- Used for diets AddOn -->
     <string name="cant_modify_if_refreshing">업로드가 완료될 때까지 기다리십시오</string>
-    <string name="closeZoom">확대/축소를 닫으려면 클릭하십시오.</string>
     <string name="imageFullscreen">확대/축소</string>
     <!-- Used for product ingredients analysis tags -->
-    <string name="close_button">닫기</string>
     <string name="tip_message">팁 : %1$s </string>
-    <string name="ingredient_analysis_tip">아래 아이콘을 클릭하여 제품에 대한 자세한 내용을 보고 관심있는 정보를 선택하십시오.</string>
     <string name="got_it">알겠습니다!</string>
     <string name="onboarding_hint_msg">Hint: %s </string>
     <string name="image_edit_tip">Tap on the image to zoom it, change it, crop it, rotate it and more…</string>
@@ -751,8 +611,6 @@
     <string name="compare_quantity">수량 :</string>
     <string name="load_ingredient_detection_data">성분 탐지 데이터 로드</string>
     <string name="load_ingredient_detection_data_summary">성분 검출 데이터를 찾을 수 없습니다. 서버에서 로드하십시오</string>
-    <string name="white_check_image_descr">화이트 체크</string>
-    <string name="hint_packaging">예 : 플라스틱, 종이, 유리</string>
     <string name="risk_alcohol_consumption">과도한 알코올 섭취는 건강에 해로우며, 적당히 섭취해야 합니다</string>
     <!--ShowcaseView Strings-->
     <string name="title_image_type">이미지 유형 선택</string>
@@ -769,19 +627,11 @@
     <string name="content_unselect_photo">현재 사진을 선택 해제하려면 여기를 누르십시오</string>
     <string name="title_exit">종료</string>
     <string name="content_exit">제품으로 돌아가려면 여기를 누르십시오</string>
-    <string name="icon_label">라벨 아이콘</string>
-    <string name="icon_categories">카테고리 아이콘</string>
-    <string name="icon_emb">Traceability code icon</string>
-    <string name="product_front_image">제품 전면 이미지</string>
-    <string name="brand_hint">Examples: Coca-Cola, Nestle, etc…</string>
     <string name="sign_in_or_register">Sign in or register</string>
     <string name="hunger_game_call_to_action">Help classify more %1$s</string>
     <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s food products (plus the ones you will contribute).</string>
-    <string name="enabled">Enabled</string>
     <!-- Application theme settings -->
     <string name="follow_system">Follow system</string>
     <string name="day">Day</string>
     <string name="night">Night</string>
-    <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
-    <string name="hint_origin">Examples: USA, France, Italy</string>
 </resources>

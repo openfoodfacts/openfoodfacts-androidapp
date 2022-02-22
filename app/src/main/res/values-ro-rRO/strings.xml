@@ -15,11 +15,6 @@
   ~ limitations under the License.
   -->
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <plurals name="offline_notification_count">
-        <item quantity="one">Aveți 1 produs offline care așteaptă să fie completat la Open Food Facts</item>
-        <item quantity="few">Aveți %d produse offline care așteaptă să fie completat la Open Food Facts</item>
-        <item quantity="other"> Aveți %d produse offline care așteaptă să fie contribuite la Open Food Facts</item>
-    </plurals>
     <plurals name="seconds">
         <item quantity="one">Acum 1 secundă</item>
         <item quantity="few">Acum %d secunde</item>
@@ -43,10 +38,8 @@
     <string name="action_about">Despre</string>
     <string name="action_discover">Descoperiți</string>
     <string name="contribute">Cum să contribuiţi</string>
-    <string name="action_find">Căutare</string>
     <string name="product_incomplete_message">Acest produs nu este complet. Ca urmare, nu am putut verifica alergenii.</string>
     <string name="product_allergen_prompt">Acest produs conține:</string>
-    <string name="no_offline_data">Aţi terminat tot</string>
     <!-- Image Upload -->
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
@@ -160,7 +153,6 @@
         <item>Zinc</item>
     </string-array>
     <!-- Content Description -->
-    <string name="search_button">Caută</string>
     <string name="alert_dialog_warning_title">Atenţie</string>
     <string name="alert_dialog_warning_msg_user">Numele de utilizator sau parola au fost modificate, vă rugăm actualizați datele de conectare.</string>
     <string name="toast_retrieving">Se încarcă…</string>
@@ -185,11 +177,7 @@
     <string name="txtSalt">Sare</string>
     <string name="txtFat">Grăsimi</string>
     <string name="txtSugars">Zaharuri</string>
-    <string name="hintBarcode">Cod de bare</string>
     <string name="txtNutriScoreInfo">Află mai multe despre valorile nutriționale</string>
-    <string name="txtloginHelper">Dacă aveți un cont Open Food Facts vă puteți autentifica aici cu el</string>
-    <string name="hintLogin">Nume de utilizator</string>
-    <string name="hintPass">Parolă</string>
     <string name="errorLogin">Numele de utilizator sau parola sunt incorecte</string>
     <string name="errorWeb">Conectarea la internet nu e posibilă. Aveți probleme cu conexiunea la internet?</string>
     <string name="txtInfoLoginOk">Te-ai conectat cu succes la contul tău Open Food Facts.</string>
@@ -197,16 +185,12 @@
     <string name="product_does_not_exist_please_add_it">Produsul scanat nu există încă în baza de date Open Food Facts. Vă rugăm să îl adăugați.</string>
     <string name="txtYes">Da</string>
     <string name="txtNo">Nu</string>
-    <string name="hintBrand">Marca</string>
-    <string name="txtSendAll">Trimiteți toate produsele</string>
-    <string name="txtPictureNeededDialogNo">Renunță</string>
     <string name="toastSending">Se trimite…</string>
     <string name="txtLoading">Se încarcă…</string>
     <string name="productSavedToast">Produs salvat, mulțumim!</string>
     <string name="txtBarcodeRequire">Codul de bare este obligatoriu</string>
     <string name="txtBarcodeNotValid">Codul de bare este invalid.</string>
     <string name="msg_share">Vizualizează acest produs în Open Food Facts :</string>
-    <string name="create_account">Înregistrare</string>
     <string name="home_drawer">Pagina de start</string>
     <string name="install">Instalare</string>
     <string name="search_drawer">Caută</string>
@@ -221,14 +205,10 @@
     <string name="alert_drawer">Alertă alergeni</string>
     <string name="your_lists">Listele tale</string>
     <string name="title_dialog_alert">Adaugare alertă</string>
-    <string name="select_camera">Selectează o cameră foto</string>
     <string name="ok_button">Bine</string>
     <string name="cancel_button">Anulare</string>
     <string name="login_button">Nume de utilizator</string>
     <string name="create_account_button">Creează cont</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Informațiile despre alergiile tale nu vor fi trimise niciodată serverului Open Food Facts. Totodată, fi atent pentru că datele despre anumite produse pot fi incorecte, și detecția s-ar putea să nu fie 100% aorectă, așa că te rog să verifici și tu personal acele produse! </string>
-    <string name="title_info_dialog">Cum funcționează?</string>
-    <string name="text_offline_info_dialog">Scanează produsele chiar dacă ești deconectat și le poți adăuga mai târziu în baza de date Open Food Facts. Produsele scanate vor apărea aici și le vei putea trimite folosind butonul de mai jos.</string>
     <string name="permission_camera">Pentru a scana codul de bare și a fotografia produse sunt necesare drepturi de access la camera foto.</string>
     <string name="no_camera_dialog_title">Camera nu s-a putut deschide</string>
     <string name="no_camera_dialog_content">Aparatul tău nu este dotat cu cameră. Nu vei putea scana niciun cod de bare.</string>
@@ -289,7 +269,6 @@
     <string name="action_search">Caută</string>
     <string name="search_hint">Căutați un produs</string>
     <string name="number_of_results">Număr de rezultate: </string>
-    <string name="number_of_products">Număr de produse: </string>
     <string name="txt_no_matching__category_products">Din păcate, nu avem niciun produs în această categorie, puteți adăuga unul?</string>
     <string name="txt_no_matching_allergen_products">Din păcate, nu avem niciun produs cu acest alergen, puteți adăuga unul?</string>
     <string name="txt_no_matching_label_products">Din păcate, nu avem niciun produs cu această etichetă, puteți adăuga unul?</string>
@@ -360,17 +339,7 @@
     <string name="collagen_meat_protein_ratio">Raport colagen / proteine din carne</string>
     <string name="cocoa">Cacao</string>
     <string name="chlorophyl">Clorofilă</string>
-    <string name="take_picture">Faceți o fotografie</string>
-    <string name="choose_picture_from_gallery">Din galerie</string>
-    <string name="take_picture_ingredients">Faceți o poză ingredientelor</string>
-    <string name="take_picture_recycling">Fotografiază Instrucțiunile de reciclare</string>
-    <string name="take_picture_front">Faceți o poză frontală produsului</string>
-    <string name="take_picture_nutrition_table">Faceți o poză tabelului cu informații nutriționale</string>
-    <string name="take_more_pictures">Faceți mai multe poze</string>
-    <string name="take_extra_packaging_pictures">Faceți fotografii suplimentare pentru ambalaj</string>
     <string name="txtSaturatedFat">Acizi grași saturați</string>
-    <string name="nutriscore_info_msg">Aflați mai multe despre Nutri-Score</string>
-    <string name="nova_info_msg">Learn more about Nova</string>
     <string name="nova_grp1_msg">Grupa 1 - Alimente neprocesate sau procesate minim</string>
     <string name="nova_grp2_msg">Grupa 2 - Ingrediente culinare procesate</string>
     <string name="nova_grp3_msg">Grupa 3 - Alimente procesate</string>
@@ -385,12 +354,10 @@
     <string name="history_shortcut_long_label">Istoric</string>
     <string name="contributions_shortcut_short_label">Contribuții</string>
     <string name="contributions_shortcut_long_label">Contribuțiile mele</string>
-    <string name="forgot_password">Parolă uitată</string>
     <string name="next">CONTINUĂ</string>
     <string name="skip">Treci peste</string>
     <string name="email_not_found">Nu a fost găsită nicio aplicație de email</string>
     <string name="device_offline_dialog_title">Rețea indisponibilă</string>
-    <string name="scan_first_product">Scanează primul tău produs</string>
     <string name="changes_saved">Schimbați salvate cu succes</string>
     <string name="proceed">Continuați</string>
     <string name="preference_choose_language_dialog_title">Alegeți limba</string>
@@ -402,7 +369,6 @@
     </string>
     <string name="prompt_point_at_a_barcode">Îndreptați camera către un cod de bare</string>
     <string name="prompt_move_camera_closer">Mută mai aproape pentru a detecta</string>
-    <string name="please_check_your_connection">Te rog verifică conexiunea ta.</string>
     <string name="advanced_search_title">Cautare avansată &amp; Grafice</string>
     <string name="compare_products">Compară produsele</string>
     <string name="connectivity_check">Te rog verifică conexiunea ta la internet</string>
@@ -429,21 +395,15 @@
     <string name="preference_crash_summary">Când este activată, rapoartele de blocare vor fi trimise automat la serverul Open Food Facts, astfel încât să putem remedia erorile și să îmbunătățim aplicația.</string>
     <string name="preference_analytics_title">Trimiteți date anonime</string>
     <string name="preference_analytics_summary">Când este activată, unele informații anonime privind utilizarea aplicației vor fi trimise către serverele Open Food Facts, astfel încât să putem înțelege cum și cât de mult sunt utilizate funcțiile pentru a le îmbunătăți.</string>
-    <string name="preference_analytics_bottom_sheet_title">Trimiteți date anonime</string>
-    <string name="preference_analytics_bottom_sheet_description">Ajutați la îmbunătățirea Open Food Facts anunțându-ne cum îl folosiți. Datele colectate sunt anonime. Această opțiune poate fi dezactivată oricând în secțiunea de setări.</string>
     <string name="preference_analytics_bottom_sheet_grant_button">Permiteţi</string>
     <string name="preference_analytics_bottom_sheet_decline_button">Refuzați</string>
-    <string name="scan_first_string">Istoricul produselor vizualizate va fi afișat aici.\nAcest istoric este doar pentru tine și este stocat doar local.</string>
     <string name="log_in">Nume de utilizator</string>
     <string name="login_true">Ești deja conectat!</string>
     <string name="confirm_logout">Confirmă Deconectarea</string>
     <string name="logout_dialog_content">Ești sigur că vrei să te deconectezi?</string>
     <string name="dialog_cancel">Anulare</string>
     <string name="dialog_create">Crează</string>
-    <string name="wikidata_information">Mergi mai departe</string>
     <string name="wikidata_unavailable">Nu există nici o pagină de Wikipedia in limba dumneavoastră, încă.</string>
-    <string name="Wikipedia">Vizualizează pe Wikipedia</string>
-    <string name="Browse_Products">Răsfoiește produse</string>
     <string name="brand_string">Marca</string>
     <string name="additive_string">Aditiv</string>
     <string name="allergen_string">Alergeni</string>
@@ -452,7 +412,6 @@
     <string name="store_subtitle">Magazine</string>
     <string name="packaging_subtitle">Ambalare</string>
     <string name="state_subtitle">Status</string>
-    <string name="packaging_string">Ambalare</string>
     <string name="label_string">Eticheta</string>
     <string name="category_string">Categorie</string>
     <string name="connection">Conectat</string>
@@ -478,7 +437,6 @@
     <string name="format_error">Cod QR sau Cod de bare incorect</string>
     <string name="code_detected">Nu am detectat nici un cod de bare</string>
     <string name="do_you_want_to">Vrei să adaugi fotografi la acest cod de bare?</string>
-    <string name="bottomNav_history">Istoric</string>
     <string name="products_added">Produse adăugate sau modificate de dumneavoastră</string>
     <string name="products_incomplete">Produse adăugate de dumneavoastră care trebuie completate</string>
     <string name="product_pictures_contributed">Produsele cărora le-ai făcut poze</string>
@@ -495,9 +453,6 @@
     <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Ultima editare a paginii produsului %1$s la %2$s CEST de %3$s</string>
     <!-- TODO: Add the placeholder in the string - important for several languages -->
     <string name="other_editors">Pagina produsului totodată editată și de </string>
-    <string name="product_states">Stări produse</string>
-    <string name="incomplete_states">State incomplete</string>
-    <string name="complete_states">Completează Statele</string>
     <string name="contribution_tab">Contribuții</string>
     <string name="synthesis_tab">Sinteză</string>
     <string name="txtDialogsTitle">Informaţii</string>
@@ -514,11 +469,8 @@
     <string name="product_not_found">Produsul %1$s pe care l-ai scanat nu există încă în Open Food Facts. Îl poți adăuga tu?</string>
     <string name="scan_sound">Scanează sunetul</string>
     <string name="trouble_scanning">Probleme cu scanarea?</string>
-    <string name="barcode_hint">Probleme cu scanarea? Introduce manual codul de bare</string>
     <string name="switch_camera">Schimbă camera foto</string>
     <string name="autofocus">Autofocalizare</string>
-    <string name="initial_loading">Încărcare inițială</string>
-    <string name="OFFlogo">Logo Open Food Facts</string>
     <string name="loading_product" comment="Do not modify the placeholder">Se încarcă produse%s</string>
     <string name="image_not_defined_for_language">Nicio imagine pentru limba selectată. Poți adăuga tu una</string>
     <string name="error_adding_ingredients">Au apărut probleme în timp ce încercaţi să adăugaţi ingredientele produsului</string>
@@ -527,9 +479,6 @@
     <string name="error_in_carbohydrate_value">Numărul de carbohidrați nu poate fi mai puțin decât suma zaharului și a amidonului</string>
     <string name="choose_nutrient">Alege un nutrient</string>
     <string name="error_adding_product_details">A apărut o problemă în timp ce încercați să adăugați detaliile produsului</string>
-    <string name="hint_product_URL">Legătura cu pagina oficială a produsului</string>
-    <string name="extract_url">Extrageți adresa URL din codul QR</string>
-    <string name="search_url">Căutați adresa URL a paginii oficiale</string>
     <string name="product_language">Limba produsului: </string>
     <string name="official_website">Pagina oficială</string>
     <string name="scan_QR_code">Scanați codul QR pentru pagina de produse</string>
@@ -540,50 +489,20 @@
     <string name="error_adding_product">Ceva nu funcționează la adăugarea produsului</string>
     <string name="photos">Imagini</string>
     <string name="please_wait">Te rog așteaptă</string>
-    <string name="product_uploaded_successfully">Produsul a fost încărcat cu succes</string>
     <string name="no_internet_connection">Se pare că nu aveți conexiune la internet, imaginile vor fi încărcate atunci când este disponibilă o rețea</string>
     <string name="no_internet_unable_to_extract_ingredients">Fără conexiune la internet. Nu se pot extrage ingredientele</string>
     <string name="overview">Continut</string>
     <string name="ingredients">Ingrediente</string>
     <string name="nutrition_facts">Valori nutriționale</string>
-    <string name="your_version">Al tău</string>
     <string name="ingredients_picture">Imaginea cu ingredientele</string>
     <string name="packaging">Reciclabil</string>
-    <string name="take_ingredients_picture_to_extract">(Vă rugăm să faceți o fotografie a ingredientelor pentru a le extrage automat)</string>
-    <string name="ingredients_list">Lista de ingrediente</string>
-    <string name="ingredients_hint" tools:ignore="StringFormatInvalid">Păstrați ordinea, indicați procentul atunci când este specificat, separați cu virgulă sau folosiți -, utilizați () pentru ingredientele unui ingredient, înconjurați alergenii cu _</string>
-    <string name="extract_ingredients">Extrageți ingredientele</string>
-    <string name="extracting_ingredients">Extrag ingredientele</string>
-    <string name="looksGood">Arată bine</string>
-    <string name="skip_ingredients">Păcat ignoră Ingredientele</string>
     <string name="traces">Urme</string>
-    <string name="traces_hint">Indicați ingredientele din mențiuni ca de exemplu: \"Ar putea conține urme de\", \"Produse într-o fabrică care procesează și\" etc. \nExemple: Lapte, Gluten, Nuci</string>
-    <string name="nutrition_facts_not_specified">Valorile nutriționale nu sunt specificate pe produs.</string>
     <string name="nutrition_facts_picture">Imaginea cu valori nutriționale</string>
     <string name="front_short_picture">Față</string>
     <string name="other_picture">Altă fotografie</string>
-    <string name="for_100g_100ml">Pentru 100 g / 100 ml</string>
-    <string name="per_serving">Per porție</string>
-    <string name="serving_size">Cantitatea unei porții</string>
-    <string name="alcohol_unit" formatted="false">% Vol. / °</string>
-    <string name="add_a_nutrient">Adăugați un nutrient</string>
-    <string name="add_this_product">Adaugă acest produs</string>
-    <string name="product_picture">Imagine produs</string>
-    <string name="one_photo_compulsory">(este obligatorie o imagine pentru a trimite un produs nou)</string>
-    <string name="product_details">Detalii ale produsului</string>
-    <string name="product_name">Numele produsului</string>
-    <string name="quantity">Cantitate</string>
-    <string name="labels">Etichete</string>
-    <string name="period_of_time_after_opening">Perioadă de timp după deschidere</string>
-    <string name="manufacturing_details">Detalii de fabricație</string>
     <string name="origin_of_ingredients">Originea ingredientelor</string>
     <string name="manufacturing_place">Locul de fabricaţie</string>
     <string name="emb_code">Codul EMB</string>
-    <string name="purchasing_details">Detalii de achiziție</string>
-    <string name="country_where_purchased">Țara în care a fost achiziționată</string>
-    <string name="stores">Magazine</string>
-    <string name="additional_pictures">Imagini suplimentare</string>
-    <string name="hint_product_pictures">(Adăugați mai multe imagini ale produsului, de exemplu: instrucțiuni de reciclare, etichete etc.)</string>
     <string name="uploading_image">Încărcarea fotografiei</string>
     <string name="edit_front_image">Editează fotografia frontală</string>
     <string name="edit_nutrition_image">Editează fotografia cu date nutriționale</string>
@@ -592,56 +511,29 @@
     <string name="edit_other_image">Editează fotografia</string>
     <string name="sign_in_to_edit">Conectați-vă pentru a edita un produs.</string>
     <string name="sign_in_to_answer">Vă rugăm să vă conectați sau să vă înregistrați pentru a răspunde însemnării.</string>
-    <string name="hint_quantity">Exemple: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
     <string name="edit_product_title">Modificare produs</string>
     <string name="save_edits">Salvați modificările</string>
     <string name="contribution_by">Contribuiția [user.neme]</string>
-    <string name="title_activity_product">Titlu</string>
-    <string name="description_activity_product">descriere</string>
     <string name="intent_filter_share_label">Adăugați la Open Food Facts</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="overexposure_high">Risc crescut de supraexpunere</string>
     <string name="overexposure_moderate">Risc moderat de supraexpunere</string>
-    <string name="infants">Sugari</string>
-    <string name="infants_age">&lt; 1</string>
-    <string name="toddlers">Copii mici</string>
-    <string name="toddlers_age">1–2 ani</string>
-    <string name="children">Copii</string>
-    <string name="children_age">3 la 9</string>
-    <string name="adolescents">Adolescenţi</string>
-    <string name="adolescents_age">10 la 17</string>
-    <string name="adults">Adulţi</string>
-    <string name="adults_age">18–64 ani</string>
-    <string name="elderly">Vârstnic</string>
-    <string name="elderly_age">peste 65 de ani</string>
-    <string name="most_people">Majoritatea persoanelor \ n (peste 50%)</string>
-    <string name="some_people">Unii oameni\n(peste 5%)</string>
-    <string name="safety_and_exposure_assessment">Evaluarea siguranței și a expunerii</string>
-    <string name="risk_of_exposure">Risc de expunere</string>
     <string name="efsa_warning_high_risk">Autoritatea Europeană pentru Siguranța Alimentară (EFSA) a stabilit că unele grupuri de populație prezintă un risc ridicat de a consuma prea mult %1$s.</string>
-    <string name="legend_noael">depăşirea dozei cu efecte adverse observate (NOAEL)</string>
-    <string name="legend_adi">peste doza zilnică acceptabilă (ADI)</string>
     <string name="max_energy_val_msg">Această valoare este mai mare de 2000 kcal per 100g. O poți corecta?</string>
     <string name="max_nutrient_val_msg">Valoarea introdusă este mai mare decât cea dată pentru dimensiunea porției</string>
-    <string name="update_image">Trimiteți o imagine actualizată</string>
     <!-- Used for additive exposure evaluation table -->
-    <string name="extract_ingredients_prompt">Extrageți ingredientele</string>
-    <string name="extract_recycling_prompt">Extrageți instrucțiunile de reciclare</string>
     <string name="add_nutrient_prompt_text">Adăugați informații nutriționale pentru a calcula Scorul Nutrițional</string>
     <string name="add_category_prompt_text">Adăugați o categorie pentru a ajuta la completarea produsului</string>
     <string name="add_nutrient_category_prompt_text">Adăugați informații nutriționale și o categorie pentru a calcula Scorul Nutrițional</string>
-    <string name="couldnot_compute_ecoscore_prompt_text" comment="Do not translate Eco-Score">Nu am putut calcula un Scor Eco pentru acest produs. Este posibil categoria să nu fie suficient de specifică sau să nu avem date justificative pentru această categorie. Dacă credeți că aceasta este o eroare, ne puteți trimite un e-mail făcând clic mai jos.</string>
     <string name="add_labels_origins_prompt_text" comment="Do not translate Eco-Score">Scorul Eco ține cont de etichetele de mediu și de originea ingredientelor. Vă rugăm să le fotografiați sau să editați produsul pentru a putea fi luate în considerare</string>
     <string name="add_labels_prompt_text" comment="Do not translate Eco-Score">Scorul Eco ține cont de etichetele de mediu. Vă rugăm să le fotografiați sau să editați produsul pentru a putea fi luate în considerare</string>
     <string name="add_origins_prompt_text" comment="Do not translate Eco-Score">Scorul Eco ține cont de originile ingredientelor. Vă rugăm să le fotografiați (lista de ingrediente și/sau orice declarație geografică) sau să editați produsul pentru a putea fi luate în considerare</string>
-    <string name="category_game_btn">Ajutați la catalogarea produselor</string>
     <string name="version_string">Open Food Facts Android App</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
     <string name="set_img_nutrients">Set as nutrition image</string>
     <string name="set_img_front">Set as front image</string>
     <string name="set_img_recycling">Setează imaginea ca Reciclare</string>
     <string name="report_img">Raportează imaginea</string>
-    <string name="detected_ingredients">Ingrediente detectate</string>
     <string name="txtConnectionError">Nu am putut descărca anumite date. Acest lucru se poate datora unei erori de conexiune.</string>
     <string name="set_image_name">Setați cu succes imaginea ca</string>
     <string name="addtive_search">Căutați un aditiv</string>
@@ -662,49 +554,26 @@
     <string name="import_csv_to_list">Importați un fișier CSV cu lista Open Food Facts</string>
     <string name="toast_import_csv_error">Eroare la importarea fișierului CSV</string>
     <string name="toast_import_csv">CSV a fost importat cu succes!</string>
-    <string name="txt_no_nutrition_data">Acest produs nu are nicio informație nutrițională pe ambalaj. Dacă acest lucru s-a schimbat, puteți edita produsul.</string>
-    <string name="swipe_delete_tip">Puteți șterge o listă glisând-o spre stânga.</string>
     <!-- Used for diets AddOn -->
-    <string name="empty"></string>
-    <string name="add_product">Adăugați produse</string>
     <string name="add_another_product">Adaugă un alt produs</string>
-    <string name="add_nutrition_facts_for_nutriscore">Adăugați informații nutriționale pentru a calcula Scorul Nutrițional</string>
-    <string name="product_summary_action_compare_button_label">Compară</string>
-    <string name="product_summary_action_add_to_list_button_label">Adaugă la listă</string>
-    <string name="product_summary_action_edit_button_label">Modificare</string>
-    <string name="product_summary_action_share_button_label">Distribuiți</string>
-    <string name="product_question_prompt">Atingeți aici pentru a răspunde</string>
     <string name="product_question_positive_response">Da</string>
     <string name="product_question_negative_response">Nu</string>
     <string name="product_question_ambiguous_response">Nu sunt sigur</string>
     <string name="product_question_submit_message">Vă mulțumim pentru contribuție!</string>
     <string name="error_nutrient_entry">Valoarea ar trebui să fie numerică. Exemplu: &quot;1,5&quot;, &quot;2,0&quot;</string>
     <string name="error_nutrient_serving_data">Valoarea mărimii porției trebuie să fie o valoare pozitivă</string>
-    <string name="error_in_nutrient_data">Unele valori nutriționale nu sunt valide. Vă rugăm să remediați câmpurile de deasupra cu marcajul de eroare</string>
-    <string name="go_to_full_product_page">Mergi la produs</string>
-    <string name="no_additive_data_available_for_this_product">Nu sunt disponibile date despre aditivi pentru acest produs</string>
-    <string name="no_nutrient_information_available_for_this_product">Nu sunt disponibile informaţii referitoare la nutrienţi pentru acest produs</string>
     <string name="error_duplicate_listname">Aveți deja o listă cu acest nume</string>
-    <string name="required_to_compute_nutriscore">(Necesar pentru a calcula Scorul Nutritiv)</string>
     <string name="scan_tooltip">Puteți glisa în sus cardul pentru mai multe detalii</string>
-    <string name="add_an_allergen">Adăugați un alergen</string>
-    <string name="add_a_list">Adăugați o listă</string>
     <string name="edit_image">Editare fotografie</string>
     <string name="cant_edit_image_not_yet_uploaded">Noua fotografie nu este încă încărcată. Vă rugăm să aşteptaţi înainte de a o edita</string>
     <string name="unselect_image">Deselectare fotografie</string>
-    <string name="choose_default_language">Selectați limba produsului</string>
     <string name="barcode">Cod de bare</string>
     <string name="productAdditivesNone">Fără aditivi</string>
-    <string name="required_for_ecoscore" comment="Do not translate Eco-Score">(Necesar pentru a calcula Scorul Eco)</string>
-    <string name="hint_origin">Exemple: SUA, Franța, Italia</string>
     <!-- Used for diets AddOn -->
     <string name="cant_modify_if_refreshing">Vă rugăm să așteptați până se termină încărcarea</string>
-    <string name="closeZoom">Faceți clic pentru a închide zoomul</string>
     <string name="imageFullscreen">Zoom</string>
     <!-- Used for product ingredients analysis tags -->
-    <string name="close_button">Închidere</string>
     <string name="tip_message">Sfat: %1$s </string>
-    <string name="ingredient_analysis_tip">Faceți clic pe pictogramele de mai jos pentru a afla mai multe despre produs și pentru a selecta informațiile care vă interesează.</string>
     <string name="got_it">Am înțeles!</string>
     <string name="onboarding_hint_msg">Sugestie: %s </string>
     <string name="image_edit_tip">Atinge imaginea pentru a o mări, modifica, tăia, roti și mai multe…</string>
@@ -727,9 +596,6 @@
     <string name="compare_quantity">Cantitate:</string>
     <string name="load_ingredient_detection_data">Încărcați datele de detectare a ingredientelor</string>
     <string name="load_ingredient_detection_data_summary">Nu au fost găsite date de detectare a ingredientelor, încercați să le încărcați de pe server</string>
-    <string name="white_check_image_descr">Un cec alb</string>
-    <string name="hint_packaging">Exemple: plastic, hârtie, sticlă</string>
-    <string name="hint_trace_code">Exemple: EMB 23456, FR 23.345.34 CE</string>
     <string name="risk_alcohol_consumption">Consumul excesiv de alcool este dăunător sănătății, de consumat cu moderație</string>
     <!--ShowcaseView Strings-->
     <string name="title_image_type">Selectați tipul de imagine</string>
@@ -746,11 +612,6 @@
     <string name="content_unselect_photo">Apăsați aici pentru a deselecta fotografia curentă</string>
     <string name="title_exit">Ieșire</string>
     <string name="content_exit">Apăsați aici pentru a reveni la produs</string>
-    <string name="icon_label">Pictogramă etichete</string>
-    <string name="icon_categories">Pictogramă categorii</string>
-    <string name="icon_emb">Pictograma codului de trasabilitate</string>
-    <string name="product_front_image">Imaginea din față a produsului</string>
-    <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
     <string name="sign_in_or_register">Conectați-vă sau înregistrați-vă</string>
     <string name="hunger_game_call_to_action" comment="Do not change the placeholder">Ajuta la clasificarea mai multor %1$s</string>
     <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s products (plus the ones you will contribute) in the world.</string>

@@ -1,26 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="EditHeader">
-        <item name="android:textColor">@color/brand_red_dark</item>
-        <item name="android:textStyle">bold</item>
-    </style>
-
-    <style name="EditHint">
-        <item name="android:textColor">@color/grey_500</item>
-        <item name="android:textSize">12sp</item>
-        <item name="android:paddingLeft">@dimen/spacing_small</item>
-        <item name="android:paddingRight">@dimen/spacing_small</item>
-        <item name="android:selectable">false</item>
-    </style>
-
-    <style name="EditHint.Important">
-        <item name="android:textColor">@color/md_red_400</item>
-    </style>
-
-    <style name="EditHeaderGreen">
-        <item name="android:textColor">@color/brand_green_dark</item>
-        <item name="android:textStyle">bold</item>
-    </style>
-
 </resources>

@@ -22,17 +22,12 @@
     <dimen name="font_small">12sp</dimen>
 
     <!-- typical spacing between two views -->
-    <dimen name="spacing_larger">32dp</dimen>
-    <dimen name="spacing_large">24dp</dimen>
     <dimen name="spacing_normal">14dp</dimen>
     <dimen name="spacing_small">10dp</dimen>
     <dimen name="spacing_tiny">4dp</dimen>
 
     <!-- typical sizes of views -->
-    <dimen name="button_height_default">48dp</dimen>
     <dimen name="button_height_normal">40dp</dimen>
-    <dimen name="button_height_short">32dp</dimen>
-    <dimen name="button_height_too_short">20dp</dimen>
 
     <!-- Gauge -->
 
@@ -43,10 +38,6 @@
     <dimen name="padding_too_short">4dp</dimen>
 
     <!-- Intro Screens -->
-    <dimen name="dots_height">30dp</dimen>
-    <dimen name="dots_margin_bottom">20dp</dimen>
-    <dimen name="img_width_height">250dp</dimen>
-    <dimen name="slide_desc">16sp</dimen>
     <dimen name="slide_desc_dp">16dp</dimen>
     <dimen name="slide_title_dp">20dp</dimen>
 
@@ -56,11 +47,8 @@
     <dimen name="photo_height">180dp</dimen>
     <dimen name="photo_width">180dp</dimen>
 
-    <dimen name="card_elevation">1dp</dimen>
-
 
     <dimen name="floating_hint_margin">6dp</dimen>
-    <dimen name="floating_hint_margin_nacho">8dp</dimen>
     <dimen name="top_margin_spinner_hint">18dp</dimen>
 
     <dimen name="nav_bar_height">65dp</dimen>
@@ -71,16 +59,11 @@
     <dimen name="small_loading_size">24dp</dimen>
 
     <!-- Override the navigation dimensions to be identical in both active and inactive states -->
-    <dimen name="design_bottom_navigation_text_size" tools:override="true">12sp</dimen>
-    <dimen name="design_bottom_navigation_active_text_size" tools:override="true">12sp</dimen>
 
     <!-- preview graphic overlay -->
     <dimen name="barcode_reticle_ripple_stroke_width">4dp</dimen>
     <dimen name="barcode_reticle_ripple_size_offset">40dp</dimen>
     <dimen name="barcode_reticle_stroke_width">4dp</dimen>
     <dimen name="barcode_reticle_corner_radius">8dp</dimen>
-    <dimen name="bottom_prompt_chip_text_size">14sp</dimen>
-    <dimen name="bottom_prompt_chip_margin_bottom">28dp</dimen>
-    <dimen name="bottom_prompt_chip_corner_radius">8dp</dimen>
 
 </resources>

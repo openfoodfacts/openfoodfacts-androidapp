@@ -4,7 +4,6 @@
     <string name="action_about">O</string>
   <string name="action_discover">Otkrij</string>
   <string name="contribute">Kako da doprinesete</string>
-  <string name="action_find">Nađi</string>
     <!-- Nav Drawer Product Menu Items -->
   <string-array name="nav_drawer_items_product">
     <item>Pregled</item>
@@ -16,7 +15,6 @@
   <!-- Text units -->
     <!-- Text units -->
     <!-- Content Description -->
-  <string name="search_button">Pretraživanje</string>
     <string name="alert_dialog_warning_title">Upozorenje</string>
   <string name="alert_dialog_warning_msg_user">Korisničko ime/lozinka je promenjena, molimo vas da ažurirate infromacije.</string>
     <string name="toast_retrieving">Učitavam</string>
@@ -37,10 +35,7 @@
     <string name="txtSalt">So</string>
   <string name="txtFat">Masti</string>
   <string name="txtSugars">Šećer</string>
-  <string name="hintBarcode">Barkod</string>
-  <string name="hintLogin">Prijavi se</string>
-  <string name="hintPass">Lozinka</string>
-  <string name="errorLogin">Korisničko ime ili lozinka greška</string>
+    <string name="errorLogin">Korisničko ime ili lozinka greška</string>
   <string name="errorWeb">Nismo uspeli da se povežemo na internet. Da li imate problema sa konekcijom?</string>
   <string name="txtInfoLoginOk">Korisničko ime sačuvano</string>
   <string name="txtInfoLoginNo">Korisničko ime nije sačuvano</string>
@@ -48,15 +43,12 @@
   <string name="product_does_not_exist_please_add_it">Proizvod koji ste skenirali ne postoji u bazi Open Food Facts. Molimo Vas da ga dodate.</string>
     <string name="txtYes">Da</string>
   <string name="txtNo">Ne</string>
-    <string name="hintBrand">Brend</string>
-    <string name="txtSendAll">Pošaljite sve</string>
     <string name="toastSending">Otpremanje…</string>
     <string name="txtLoading">Učitavam…</string>
   <string name="txtBarcodeRequire">Barkod je neophodan</string>
     <string name="txtBarcodeNotValid">Barkod nije ispravan</string>
     <string name="msg_share">Pogledaj ovaj proizvod na Open Food Facts :</string>
-  <string name="create_account">Registruj se</string>
-  <string name="home_drawer">Početna</string>
+    <string name="home_drawer">Početna</string>
   <string name="search_drawer">Pretraži</string>
   <string name="search_by_barcode_drawer">Pretraži po barkodu</string>
   <string name="category_drawer">Kategorije</string>
@@ -68,9 +60,6 @@
   <string name="sign_in_drawer">Prijavite se</string>
   <string name="alert_drawer">Alergen alarm</string>
     <string name="title_dialog_alert">Dodaj alarm</string>
-  <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Vaše informacije o alergijama nikada neće biti poslate na Open Food Facts server. Takođe, budite oprezni jer je moguće da podaci nisu tačni, molimo vas da proverite sami!</string>
-    <string name="title_info_dialog">Informacija</string>
-    <string name="text_offline_info_dialog">Možete skenirati proizvode i kada niste povezani na internet kako biste ih dodali kasnije na Open Food Facts. Svi proizvodi koje skenirate pojaviće se ovde, i bićete u mogućnosti da ih pošaljete pritiskom na dugme ispod.</string>
     <string name="permission_camera">Dozvola za kameru je potrebna za skeniranje barkodova i fotografije.</string>
     <string name="permission_title">Informacije o dozvolama</string>
     <string name="permission_denied">Molimo Vas da aktivirate ovu dozvolu u podešavanjima</string>
@@ -84,7 +73,6 @@
     <string name="pref_power_mode_title">Power mode skeniranje</string>
     <string name="pref_power_mode_summary">Brzo skeniranje proizvoda u prodavnici da biste videli koji nisu u bazi.</string>
     <string name="pref_language_title">Jezik</string>
-    <string name="pref_language_summary">Promenite jezik</string>
     <string name="scan_history_drawer">Istorija</string>
     <string name="clear_history">Obriši istoriju</string>
     <string name="title_clear_history_dialog">Obriši</string>
@@ -173,11 +161,7 @@
   <string name="collagen_meat_protein_ratio">Odnos kolagena i proteina mesa</string>
   <string name="cocoa">Kakao</string>
   <string name="chlorophyl">Hlorofil</string>
-  <string name="take_picture_ingredients">Uslikajte sastav proizvoda</string>
-  <string name="take_picture_front">Uslikajte prednju stranu proizvoda</string>
-  <string name="take_picture_nutrition_table">Uslikajte tablicu nutritivnih vrednosti</string>
-  <string name="take_more_pictures">Uslikaj</string>
-  <string name="txtSaturatedFat">Zasićene masne kiseline</string>
+    <string name="txtSaturatedFat">Zasićene masne kiseline</string>
   <!-- String related to App Shortcuts -->
   <string name="disabled_message">Shortcut Not Available</string>
   <string name="scan_shortcut_short_label">Skeniraj</string>
@@ -188,6 +172,4 @@
   <string name="history_shortcut_long_label">Istorija</string>
   <string name="contributions_shortcut_short_label">Contributions</string>
   <string name="contributions_shortcut_long_label">My Contributions</string>
-  <string name="forgot_password">Forgot Password</string>
-    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
 </resources>

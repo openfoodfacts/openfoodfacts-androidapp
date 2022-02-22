@@ -38,20 +38,6 @@
         <item name="android:summaryOn">@color/grey_500</item>
     </style>
 
-    <style name="DefaultButtonText">
-        <item name="android:layout_width">fill_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">@color/grey_50</item>
-        <item name="android:gravity">center</item>
-        <item name="android:layout_margin">3dp</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:textSize">20sp</item>
-        <item name="android:shadowColor">@color/grey_100</item>
-        <item name="android:shadowDx">1</item>
-        <item name="android:shadowDy">1</item>
-        <item name="android:shadowRadius">1</item>
-    </style>
-
     <style name="QuestionDialog" parent="Theme.AppCompat.Dialog">
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowMinWidthMajor">90%</item>
@@ -59,20 +45,9 @@
     </style>
 
 
-    <style name="HorizontalLineSeparator">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">0.4dp</item>
-        <item name="android:background">@color/grey_200</item>
-    </style>
-
     <style name="ChangelogDialogAnimation" parent="@android:style/Animation">
         <item name="android:windowEnterAnimation">@anim/push_bottom_in</item>
         <item name="android:windowExitAnimation">@anim/push_bottom_out</item>
-    </style>
-
-    <style name="BrandedFloatingActionButton" parent="Widget.Design.FloatingActionButton">
-        <item name="backgroundTint">@color/button_link</item>
-        <item name="android:tint">@color/white</item>
     </style>
 
 </resources>

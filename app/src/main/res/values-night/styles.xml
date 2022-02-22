@@ -38,13 +38,4 @@
         <item name="android:shadowColor">@android:color/transparent</item>
     </style>
 
-    <style name="PreferenceThemeOverlay.v14" tools:override="true">
-        <item name="android:textColor">?android:textColorPrimary</item>
-        <item name="android:textColorSecondary">@color/grey_500</item>
-    </style>
-
-    <style name="BrandedFloatingActionButton" parent="Widget.Design.FloatingActionButton">
-        <item name="backgroundTint">@color/brand_light_blue</item>
-        <item name="android:tint">@color/grey_200</item>
-    </style>
 </resources>

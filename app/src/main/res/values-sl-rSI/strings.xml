@@ -15,12 +15,6 @@
   ~ limitations under the License.
   -->
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <plurals name="offline_notification_count">
-        <item quantity="one">You have 1 offline product waiting to be contributed to Open Food Facts</item>
-        <item quantity="two">You have %d offline products waiting to be contributed to Open Food Facts</item>
-        <item quantity="few">You have %d offline products waiting to be contributed to Open Food Facts</item>
-        <item quantity="other">You have %d offline products waiting to be contributed to Open Food Facts</item>
-    </plurals>
     <plurals name="seconds">
         <item quantity="one">%d second ago</item>
         <item quantity="two">%d seconds ago</item>
@@ -48,10 +42,8 @@
     <string name="action_about">O programu</string>
     <string name="action_discover">Odkritje</string>
     <string name="contribute">Kako prispevati</string>
-    <string name="action_find">Poišči</string>
     <string name="product_incomplete_message">Ta izdelek ni popoln. Zaradi tega ni moče preveriti vsebnost alergenov.</string>
     <string name="product_allergen_prompt">Ta izdelek vsebuje:</string>
-    <string name="no_offline_data">Pripravljeni ste</string>
     <!-- Image Upload -->
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
@@ -165,7 +157,6 @@
         <item>Cink</item>
     </string-array>
     <!-- Content Description -->
-    <string name="search_button">Iskanje</string>
     <string name="alert_dialog_warning_title">Opozorilo</string>
     <string name="alert_dialog_warning_msg_user">Uporabnik / geslo se je spremenilo, posodobite podatke</string>
     <string name="toast_retrieving">Nalaganje…</string>
@@ -190,11 +181,7 @@
     <string name="txtSalt">Sol</string>
     <string name="txtFat">Maščoba</string>
     <string name="txtSugars">Sladkorji</string>
-    <string name="hintBarcode">Črtna koda</string>
     <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
-    <string name="txtloginHelper">If you have an Open Food Facts account, you can login here with it</string>
-    <string name="hintLogin">Uporabniško ime</string>
-    <string name="hintPass">Geslo</string>
     <string name="errorLogin">Uporabniško ime ali geslo sta napačna</string>
     <string name="errorWeb">Nismo mogli dostopati do interneta. Imate težave s povezljivostjo?</string>
     <string name="txtInfoLoginOk">Uspešno ste se prijavili v svoj račun Open Food Facts.</string>
@@ -202,16 +189,12 @@
     <string name="product_does_not_exist_please_add_it">Izdelek, ki ste ga skenirali, še ne obstaja v Open Food Facts. Prosim, dodajte ga.</string>
     <string name="txtYes">Da</string>
     <string name="txtNo">Ne</string>
-    <string name="hintBrand">Blagovna znamka</string>
-    <string name="txtSendAll">Naložite vse</string>
-    <string name="txtPictureNeededDialogNo">Zavrzi</string>
     <string name="toastSending">Nalaganje…</string>
     <string name="txtLoading">Nalaganje…</string>
     <string name="productSavedToast">Product saved, thanks!</string>
     <string name="txtBarcodeRequire">Potrebna je črtna koda</string>
     <string name="txtBarcodeNotValid">Črtna koda ni veljavna</string>
     <string name="msg_share">Look at this product on Open Food Facts :</string>
-    <string name="create_account">Prijava</string>
     <string name="home_drawer">Domov</string>
     <string name="install">Namesti</string>
     <string name="search_drawer">Iskanje</string>
@@ -226,14 +209,10 @@
     <string name="alert_drawer">Opozorilo na alergene</string>
     <string name="your_lists">Tvoji seznami</string>
     <string name="title_dialog_alert">Dodaj opozorilo</string>
-    <string name="select_camera">Select a Camera</string>
     <string name="ok_button">V redu</string>
     <string name="cancel_button">Prekliči</string>
     <string name="login_button">Uporabniško ime</string>
     <string name="create_account_button">Ustvari račun</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
-    <string name="title_info_dialog">Kako deluje?</string>
-    <string name="text_offline_info_dialog">Skenirajte izdelke tudi, ko ste brez povezave, da jih boste kasneje dodali v Open Food Facts. Skenirani izdelki bodo prikazani tukaj in jih boste lahko poslali z uporabo spodnjega gumba.</string>
     <string name="permission_camera">Za pregledovanje črtnih kod in fotografiranje potrebujete dovoljenje kamere.</string>
     <string name="no_camera_dialog_title">Camera not found</string>
     <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
@@ -294,7 +273,6 @@
     <string name="action_search">Iskanje</string>
     <string name="search_hint">Poišči izdelek</string>
     <string name="number_of_results">Število rezulatov: </string>
-    <string name="number_of_products">Število izdelkov: </string>
     <string name="txt_no_matching__category_products">Oh ne, v tej kategoriji ni nobenega izdelka, ali ga lahko dodate?</string>
     <string name="txt_no_matching_allergen_products">Oh ne, ni izdelkov s tem alergenom, ali lahko dodate enega?</string>
     <string name="txt_no_matching_label_products">Oh, ne, ni izdelkov s to oznako, ali lahko dodate enega?</string>
@@ -365,17 +343,7 @@
     <string name="collagen_meat_protein_ratio">Razmerje beljakovin v kolagenskem mesu</string>
     <string name="cocoa">Kakav</string>
     <string name="chlorophyl">Klorofil</string>
-    <string name="take_picture">Fotografiraj</string>
-    <string name="choose_picture_from_gallery">Iz galerije</string>
-    <string name="take_picture_ingredients">Fotografiraj sestavine</string>
-    <string name="take_picture_recycling">Fotografirajte navodila za recikliranje</string>
-    <string name="take_picture_front">Naredi sliko spredaj</string>
-    <string name="take_picture_nutrition_table">Naredi posnetek iz tabele sestavin</string>
-    <string name="take_more_pictures">Naredite več slik</string>
-    <string name="take_extra_packaging_pictures">Naredite dodatne fotografije embalaže</string>
     <string name="txtSaturatedFat">Nasičena maščoba</string>
-    <string name="nutriscore_info_msg">Več o rezultatu Nutri-Score</string>
-    <string name="nova_info_msg">Learn more about NOVA groups</string>
     <string name="nova_grp1_msg">Skupina 1 - Nepredelana ali minimalno predelana živila</string>
     <string name="nova_grp2_msg">Skupina 2 - predelane kulinarične sestavine</string>
     <string name="nova_grp3_msg">Skupina 3 - Predelana živila</string>
@@ -390,12 +358,10 @@
     <string name="history_shortcut_long_label">Zgodovina</string>
     <string name="contributions_shortcut_short_label">Prispevki</string>
     <string name="contributions_shortcut_long_label">My contributions</string>
-    <string name="forgot_password">Pozabljeno geslo</string>
     <string name="next">NAPREJ</string>
     <string name="skip">PRESKOČI</string>
     <string name="email_not_found">Ni najdenih e-poštnih aplikacij</string>
     <string name="device_offline_dialog_title">Omrežje ni na voljo</string>
-    <string name="scan_first_product">Skenirajte prvi izdelek</string>
     <string name="changes_saved">Spremembe so uspešno shranjene</string>
     <string name="proceed">Nadaljuj</string>
     <string name="preference_choose_language_dialog_title">Izberi jezik</string>
@@ -407,7 +373,6 @@
     </string>
     <string name="prompt_point_at_a_barcode">Usmerite fotoaparat na črtno kodo</string>
     <string name="prompt_move_camera_closer">Move closer to detect</string>
-    <string name="please_check_your_connection">Prosim, preverite povezavo.</string>
     <string name="advanced_search_title">Napredno iskanje &amp; Grafikoni</string>
     <string name="compare_products">Primerjava izdelkov</string>
     <string name="connectivity_check">Prosim preverite svojo internetno povezavo</string>
@@ -434,21 +399,15 @@
     <string name="preference_crash_summary">Ko je omogočeno, se poročilo o sesutju samodejno pošlje na strežnik Open Food Facts, tako lahko odpravimo napake in izboljšamo aplikacijo.</string>
     <string name="preference_analytics_title">Pošlji anonimne podatke</string>
     <string name="preference_analytics_summary">Ko je omogočeno, bodo nekateri anonimni podatki o uporabi poslani strežnikom Open Food Facts, da bomo lahko lažje razumeli, kako in koliko funkcij se uporablja za njihovo izboljšanje.</string>
-    <string name="preference_analytics_bottom_sheet_title">Pošlji anonimne podatke</string>
-    <string name="preference_analytics_bottom_sheet_description">Pomagajte izboljšati Open Food Facts, tako, da nam sporočite, kako jo uporabljate. Zbrani podatki so anonimni. To možnost lahko kadar koli onemogočite v razdelku z nastavitvami.</string>
     <string name="preference_analytics_bottom_sheet_grant_button">Omogoči</string>
     <string name="preference_analytics_bottom_sheet_decline_button">Zavrni</string>
-    <string name="scan_first_string">Vaša ogledana zgodovina izdelkov bo navedena tukaj.\nTa zgodovina je samo za vaše oči in je shranjena lokalno.</string>
     <string name="log_in">Uporabniško ime</string>
     <string name="login_true">Že prijavljen!</string>
     <string name="confirm_logout">Potrdi odjavo</string>
     <string name="logout_dialog_content">Ali ste prepričani, da se želite odjaviti?</string>
     <string name="dialog_cancel">Prekliči</string>
     <string name="dialog_create">Ustvari</string>
-    <string name="wikidata_information">Še korak dlje</string>
     <string name="wikidata_unavailable">Stran v Wikipediji še ni na voljo v vašem jeziku.</string>
-    <string name="Wikipedia">Poglej na Wikipediji</string>
-    <string name="Browse_Products">Brskajte po izdelkih</string>
     <string name="brand_string">Blagovna znamka</string>
     <string name="additive_string">Aditiv</string>
     <string name="allergen_string">Alergen</string>
@@ -457,7 +416,6 @@
     <string name="store_subtitle">Trgovina</string>
     <string name="packaging_subtitle">Pakiranje</string>
     <string name="state_subtitle">State</string>
-    <string name="packaging_string">Pakiranje</string>
     <string name="label_string">Oznaka</string>
     <string name="category_string">Kategorijo</string>
     <string name="connection">Povezano</string>
@@ -483,7 +441,6 @@
     <string name="format_error">Napačna oblika črtne kode / QR</string>
     <string name="code_detected">Črtna koda je zaznana</string>
     <string name="do_you_want_to">Želite dodati fotografije tej črtni kodi?</string>
-    <string name="bottomNav_history">Zgodovina</string>
     <string name="products_added">Izdelki, ki ste jih dodali ali uredili</string>
     <string name="products_incomplete">Izdelki, ki ste jih dodali in jih je potrebno dokončati</string>
     <string name="product_pictures_contributed">Izdelki, za katere ste posneli slike</string>
@@ -500,9 +457,6 @@
     <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Zadnja sprememba strani izdelka %1$s na %2$s CEST z %3$s </string>
     <!-- TODO: Add the placeholder in the string - important for several languages -->
     <string name="other_editors">Stran izdelka, je urejal tudi </string>
-    <string name="product_states">Product States</string>
-    <string name="incomplete_states">Incomplete States</string>
-    <string name="complete_states">Complete States</string>
     <string name="contribution_tab">Prispevki</string>
     <string name="synthesis_tab">Synthesis</string>
     <string name="txtDialogsTitle">Informacije</string>
@@ -520,11 +474,8 @@
     <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
     <string name="scan_sound">Zvok pri skeniranju</string>
     <string name="trouble_scanning">Težave pri skeniranju?</string>
-    <string name="barcode_hint">Težave pri skeniranju? Vnesite črtno kodo</string>
     <string name="switch_camera">Preobrni kamero</string>
     <string name="autofocus">Samodejno ostrenje</string>
-    <string name="initial_loading">Začetno nalaganje</string>
-    <string name="OFFlogo">Open Food Facts logo</string>
     <string name="loading_product" comment="Do not modify the placeholder">Loading product %s</string>
     <string name="image_not_defined_for_language">Za izbran jezik ni slike. Lahko jo dodate.</string>
     <string name="error_adding_ingredients">Nekaj je šlo narobe med poskusom dodajanja sestavin izdelka</string>
@@ -533,9 +484,6 @@
     <string name="error_in_carbohydrate_value">Ogljikovi hidrati ne morejo biti manjši od vsote sladkorja in škroba</string>
     <string name="choose_nutrient">Izberite hranilo</string>
     <string name="error_adding_product_details">Nekaj je šlo narobe med poskusom dodajanja podrobnosti izdelka</string>
-    <string name="hint_product_URL">Povezava na uradno stran izdelka</string>
-    <string name="extract_url">Extract URL from QR-code</string>
-    <string name="search_url">Search for official page URL</string>
     <string name="product_language">Jezik izdelka: </string>
     <string name="official_website">Uradna spletna stran</string>
     <string name="scan_QR_code">Preberi QR kodo za spletno stran izdelka</string>
@@ -546,50 +494,20 @@
     <string name="error_adding_product">Pri dodajanju izdelka je prišlo do napake</string>
     <string name="photos">Fotografije</string>
     <string name="please_wait">Prosim, počakajte</string>
-    <string name="product_uploaded_successfully">Izdelek je uspešno naložen</string>
     <string name="no_internet_connection">Zdi se, da nimate internetne povezave, slike bodo naložene, ko bo omrežje na voljo</string>
     <string name="no_internet_unable_to_extract_ingredients">Brez internetne povezave. Ni mogoče izločiti sestavin</string>
     <string name="overview">Povzetek</string>
     <string name="ingredients">Sestavine</string>
     <string name="nutrition_facts">Dejstva o hranilni vrednosti</string>
-    <string name="your_version">Vaše</string>
     <string name="ingredients_picture">Slika sestavin</string>
     <string name="packaging">Recycling</string>
-    <string name="take_ingredients_picture_to_extract">(Please take a photo of the ingredients to automatically extract them)</string>
-    <string name="ingredients_list">Seznam sestavin</string>
-    <string name="ingredients_hint" tools:ignore="StringFormatInvalid">Naj bo urejeno, navedite %, če je naveden, ločite z vejico ali uporabite -, uporabite () za sestavine od sestavin, obkrožite alergene z _</string>
-    <string name="extract_ingredients">Preberi sestavine</string>
-    <string name="extracting_ingredients">Prebiram sestavine</string>
-    <string name="looksGood">Izgleda v redu</string>
-    <string name="skip_ingredients">Preveč slabo \n Preskoči sestavine</string>
     <string name="traces">Sledi</string>
-    <string name="traces_hint">Navedite sestavine iz navedb, kot so \"Lahko vsebujejo sledi\", \"Izdelano v tovarni, ki prav tako uporablja\", itd. \nPrimeri: mleko, gluten, oreščki</string>
-    <string name="nutrition_facts_not_specified">Podatki o hranilni vrednosti niso navedeni na izdelku.</string>
     <string name="nutrition_facts_picture">Nutrition Facts photo</string>
     <string name="front_short_picture">Spredaj</string>
     <string name="other_picture">Druga slika</string>
-    <string name="for_100g_100ml">Na 100g / 100ml</string>
-    <string name="per_serving">Na porcijo</string>
-    <string name="serving_size">Velikost obroka</string>
-    <string name="alcohol_unit" formatted="false">% vol / °</string>
-    <string name="add_a_nutrient">Dodaj hranilo</string>
-    <string name="add_this_product">Dodaj ta izdelek</string>
-    <string name="product_picture">Slika izdelka</string>
-    <string name="one_photo_compulsory">(ena fotografija je obvezna za dodajanje novega izdelka)</string>
-    <string name="product_details">Podrobnosti o izdelku</string>
-    <string name="product_name">Ime izdelka</string>
-    <string name="quantity">Količina</string>
-    <string name="labels">Oznake</string>
-    <string name="period_of_time_after_opening">Obdobje po odprtju</string>
-    <string name="manufacturing_details">Podrobnosti o izdelavi</string>
     <string name="origin_of_ingredients">Poreklo sestavin</string>
     <string name="manufacturing_place">Kraj proizvodnje</string>
     <string name="emb_code">Traceability Code</string>
-    <string name="purchasing_details">Podrobnosti nakupa</string>
-    <string name="country_where_purchased">Država, kjer ste kupili</string>
-    <string name="stores">Trgovine</string>
-    <string name="additional_pictures">Dodatne slike</string>
-    <string name="hint_product_pictures">(Dodajte več slik izdelka, npr.: navodila za recikliranje, nalepke itd.)</string>
     <string name="uploading_image">Pošiljanje fotografije</string>
     <string name="edit_front_image">Uredite sprednjo fotografijo</string>
     <string name="edit_nutrition_image">Uredite prehransko fotografijo</string>
@@ -598,56 +516,29 @@
     <string name="edit_other_image">Uredite fotografijo</string>
     <string name="sign_in_to_edit">Prijavite se, če želite urediti izdelek.</string>
     <string name="sign_in_to_answer">Please sign in or register to answer an insight.</string>
-    <string name="hint_quantity">Primeri: 2 l, 250 g, 1 kg, 25 kl, 6 fl oz, 1 funt</string>
     <string name="edit_product_title">Uredi izdelek</string>
     <string name="save_edits">Shrani spremembe</string>
     <string name="contribution_by">Prispevek od</string>
-    <string name="title_activity_product">Naslovu</string>
-    <string name="description_activity_product">opis</string>
     <string name="intent_filter_share_label">Add to Open Food Facts</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="overexposure_high">Visoko tveganje prekomerne izpostavljenosti</string>
     <string name="overexposure_moderate">Zmerno tveganje prekomerne izpostavljenosti</string>
-    <string name="infants">Dojenčki</string>
-    <string name="infants_age">&lt; 1</string>
-    <string name="toddlers">Malčki</string>
-    <string name="toddlers_age">1 do 2</string>
-    <string name="children">Otroci</string>
-    <string name="children_age">3 do 9</string>
-    <string name="adolescents">Mladostniki</string>
-    <string name="adolescents_age">10 do 17</string>
-    <string name="adults">Odrasli</string>
-    <string name="adults_age">18 do 64</string>
-    <string name="elderly">Starejši</string>
-    <string name="elderly_age">65+</string>
-    <string name="most_people">Večina ljudi \n (več kot 50%)</string>
-    <string name="some_people">Nekateri ljudje \n (več kot 5%)</string>
-    <string name="safety_and_exposure_assessment">Ocena varnosti in izpostavljenosti</string>
-    <string name="risk_of_exposure">Tveganje za izpostavljenost</string>
     <string name="efsa_warning_high_risk">The European Food Safety Authority (EFSA) has determined that some population groups have a high risk of consuming too much %1$s.</string>
-    <string name="legend_noael">nad odmerkom z opaženim škodljivim učinkom (NOAEL)</string>
-    <string name="legend_adi">nad sprejemljivim dnevnim vnosom (ADI)</string>
     <string name="max_energy_val_msg">Vrednost je nad 2000 kcal na 100 g. Ali lahko to popravite?</string>
     <string name="max_nutrient_val_msg">Vnesena vrednost je večja od velikosti obroka</string>
-    <string name="update_image">Pošlji posodobljeno sliko</string>
     <!-- Used for additive exposure evaluation table -->
-    <string name="extract_ingredients_prompt">Preberi sestavine</string>
-    <string name="extract_recycling_prompt">Extract recycling instructions</string>
     <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
     <string name="add_category_prompt_text">Add a category to help complete the product</string>
     <string name="add_nutrient_category_prompt_text">Add a category and nutrition facts to help complete the product</string>
-    <string name="couldnot_compute_ecoscore_prompt_text" comment="Do not translate Eco-Score">We could not compute an Eco-Score for this product. It might be that the category is not specific enough or that we don\'t have supporting data for this category. If you believe this is an error, you can mail us by clicking below.</string>
     <string name="add_labels_origins_prompt_text" comment="Do not translate Eco-Score">The Eco-Score takes into account environmental labels and origins of the ingredients. Please take them into photo or edit the product so that they can be taken into account</string>
     <string name="add_labels_prompt_text" comment="Do not translate Eco-Score">The Eco-Score takes into account environmental labels. Please take them into photo or edit the product so that they can be taken into account</string>
     <string name="add_origins_prompt_text" comment="Do not translate Eco-Score">The Eco-Score takes into account the origins of the ingredients. Please take them into photo (ingredient list and/or any geographic claim) or edit the product so that they can be taken into account</string>
-    <string name="category_game_btn">Help categorize products</string>
     <string name="version_string">Open Food Facts Android App</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
     <string name="set_img_nutrients">Set as nutrition image</string>
     <string name="set_img_front">Set as front image</string>
     <string name="set_img_recycling">Set Image as Recycling</string>
     <string name="report_img">Prijavi sliko</string>
-    <string name="detected_ingredients">Prepoznane sestavine</string>
     <string name="txtConnectionError">Ne moremo prenesti določenih podatkov. To je lahko posledica napake v povezavi.</string>
     <string name="set_image_name">Slika je bila uspešno nastavljena kot</string>
     <string name="addtive_search">Poiščite dodatek</string>
@@ -668,49 +559,26 @@
     <string name="import_csv_to_list">Uvoz datoteke CSV s seznama Open Food Facts</string>
     <string name="toast_import_csv_error">Napaka pri uvozu datoteke CSV</string>
     <string name="toast_import_csv">CSV je bil uspešno uvožen!</string>
-    <string name="txt_no_nutrition_data">Na embalaži ni nobenih informacij o hranilni vrednosti. Če se je to spremenilo, lahko izdelek uredite.</string>
-    <string name="swipe_delete_tip">You can delete a list by swiping it left.</string>
     <!-- Used for diets AddOn -->
-    <string name="empty"></string>
-    <string name="add_product">Dodajte izdelke</string>
     <string name="add_another_product">Dodajte še en izdelek</string>
-    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
-    <string name="product_summary_action_compare_button_label">Primerjaj</string>
-    <string name="product_summary_action_add_to_list_button_label">Dodaj na seznam</string>
-    <string name="product_summary_action_edit_button_label">Uredi</string>
-    <string name="product_summary_action_share_button_label">Deli</string>
-    <string name="product_question_prompt">Tapnite tukaj, če želite odgovoriti</string>
     <string name="product_question_positive_response">Da</string>
     <string name="product_question_negative_response">Ne</string>
     <string name="product_question_ambiguous_response">Nisem prepričan</string>
     <string name="product_question_submit_message">Hvala za vaš prispevek!</string>
     <string name="error_nutrient_entry">The value should be numeric. Example: &quot;1.5&quot;, &quot;2,0&quot;</string>
     <string name="error_nutrient_serving_data">Vrednost velikosti serviranja mora biti pozitivna</string>
-    <string name="error_in_nutrient_data">Nekatere vrednosti hranil niso veljavne. Popravite zgoraj označena polja z napako</string>
-    <string name="go_to_full_product_page">Pojdi na izdelek</string>
-    <string name="no_additive_data_available_for_this_product">No additive data available for this product</string>
-    <string name="no_nutrient_information_available_for_this_product">No nutrient information available for this product</string>
     <string name="error_duplicate_listname">You already have a list with this name</string>
-    <string name="required_to_compute_nutriscore">(Required to calculate the Nutri-Score)</string>
     <string name="scan_tooltip">You can slide up the card for more details</string>
-    <string name="add_an_allergen">Dodaj alergen</string>
-    <string name="add_a_list">Dodaj seznam</string>
     <string name="edit_image">Edit Photo</string>
     <string name="cant_edit_image_not_yet_uploaded">The new photo is not yet uploaded. Please wait before editing it</string>
     <string name="unselect_image">Unselect Photo</string>
-    <string name="choose_default_language">Select product language</string>
     <string name="barcode">Črtna koda</string>
     <string name="productAdditivesNone">Brez dodatkov</string>
-    <string name="required_for_ecoscore" comment="Do not translate Eco-Score">(Required to calculate the Eco-Score)</string>
-    <string name="hint_origin">Examples: USA, France, Italy</string>
     <!-- Used for diets AddOn -->
     <string name="cant_modify_if_refreshing">Počakajte, da se prenos konča</string>
-    <string name="closeZoom">Kliknite, da zaprete povečavo</string>
     <string name="imageFullscreen">Povečava</string>
     <!-- Used for product ingredients analysis tags -->
-    <string name="close_button">Zapri</string>
     <string name="tip_message">TIP: %1$s </string>
-    <string name="ingredient_analysis_tip">Kliknite na spodnje ikone, če želite izvedeti več o izdelku in izbrati, katere informacije vas zanimajo.</string>
     <string name="got_it">Razumem!</string>
     <string name="onboarding_hint_msg">Hint: %s </string>
     <string name="image_edit_tip">Tap on the image to zoom it, change it, crop it, rotate it and more…</string>
@@ -733,9 +601,6 @@
     <string name="compare_quantity">Kolićina:</string>
     <string name="load_ingredient_detection_data">Load ingredient detection data</string>
     <string name="load_ingredient_detection_data_summary">No ingredient detection data has been found, try to load it from server</string>
-    <string name="white_check_image_descr">A white check</string>
-    <string name="hint_packaging">Primeri: plastika, papir, steklo</string>
-    <string name="hint_trace_code">Examples: EMB 23456, FR 23.345.34 CE</string>
     <string name="risk_alcohol_consumption">Excessive consumption of alcohol is harmful to health, to be consumed in moderation</string>
     <!--ShowcaseView Strings-->
     <string name="title_image_type">Select Image Type</string>
@@ -752,11 +617,6 @@
     <string name="content_unselect_photo">Press here to unselect current photo</string>
     <string name="title_exit">Exit</string>
     <string name="content_exit">Press here to return to the product</string>
-    <string name="icon_label">Labels icon</string>
-    <string name="icon_categories">Categories icon</string>
-    <string name="icon_emb">Traceability code icon</string>
-    <string name="product_front_image">Sprednja slika izdelka</string>
-    <string name="brand_hint">Primeri: Coca-Cola, Nestle itd…</string>
     <string name="sign_in_or_register">Sign in or register</string>
     <string name="hunger_game_call_to_action" comment="Do not change the placeholder">Help classify more %1$s</string>
     <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s products (plus the ones you will contribute).</string>
