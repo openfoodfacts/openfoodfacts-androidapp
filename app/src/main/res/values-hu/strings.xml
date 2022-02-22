@@ -556,7 +556,6 @@
     <string name="product_name_overwrite">Termék nevének felülírása</string>
     <string name="yours">A tied: </string>
     <string name="quantity_overwrite">Mennyiség felülírása</string>
-    <string name="link_overwrite">Link felülírása</string>
     <string name="save_product">Szeretné menteni a terméket?</string>
     <string name="error_adding_product">Valami hiba történt a termék hozzáadásakor</string>
     <string name="photos">Fényképek</string>
@@ -608,9 +607,7 @@
     <string name="additional_pictures">További képek</string>
     <string name="hint_product_pictures">(Készítsen még több képet a termékről, például: újrahasznosítási utasítások, címkék stb.)</string>
     <string name="uploading_image">Kép feltöltése a termékről</string>
-    <string name="uploading_nutrition_image">Kép feltöltése a tápértékadatokról</string>
     <string name="uploading_ingredients_image">Kép feltöltése az összetevőkről</string>
-    <string name="uploading_front_image">Elölnézeti fotó feltöltése</string>
     <string name="edit_front_image">Elölnézeti kép szerkesztése</string>
     <string name="edit_nutrition_image">Tápérték adatok kép szerkesztése</string>
     <string name="edit_packaging_image">Edit the recycling photo</string>

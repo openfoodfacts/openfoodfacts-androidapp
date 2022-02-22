@@ -556,7 +556,6 @@
     <string name="product_name_overwrite">ಉತ್ಪನ್ನದ ಹೆಸರು ಬದಲಿಸಿ</string>
     <string name="yours">ನಿಮ್ಮದು: </string>
     <string name="quantity_overwrite">ಪ್ರಮಾಣ ಬದಲಿಸಿ</string>
-    <string name="link_overwrite">ಲಿಂಕ್ ಬದಲಿಸಿ</string>
     <string name="save_product">ಉತ್ಪನ್ನವನ್ನು ಉಳಿಸಲು ನೀವು ಬಯಸುವಿರಾ?</string>
     <string name="error_adding_product">Something went wrong when adding the product</string>
     <string name="photos">ಫೋಟೋಗಳು</string>
@@ -607,9 +606,7 @@
     <string name="additional_pictures">ಹೆಚ್ಚುವರಿ ಚಿತ್ರಗಳು</string>
     <string name="hint_product_pictures">(ಉತ್ಪನ್ನದ ಹೆಚ್ಚಿನ ಚಿತ್ರಗಳನ್ನು ಸೇರಿಸಿ ಉದಾ: ಮರುಬಳಕೆಯ ಸೂಚನೆಗಳು, ಲೇಬಲ್ಗಳು ಇತ್ಯಾದಿ.)</string>
     <string name="uploading_image">Sending the photo</string>
-    <string name="uploading_nutrition_image">ಪೌಷ್ಟಿಕಾಂಶ ಸತ್ಯದ ಚಿತ್ರವನ್ನು ಅಪ್ಲೋಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ</string>
     <string name="uploading_ingredients_image">ಪದಾರ್ಥಗಳ ಚಿತ್ರವನ್ನು ಅಪ್ಲೋಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ</string>
-    <string name="uploading_front_image">ಪದಾರ್ಥಗಳ ಚಿತ್ರವನ್ನು ಅಪ್ಲೋಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ</string>
     <string name="edit_front_image">Edit the front photo</string>
     <string name="edit_nutrition_image">Edit the nutrition photo</string>
     <string name="edit_packaging_image">Edit the recycling photo</string>

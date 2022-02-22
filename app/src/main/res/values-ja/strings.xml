@@ -550,7 +550,6 @@
     <string name="product_name_overwrite">製品名の上書き</string>
     <string name="yours">あなたのもの: </string>
     <string name="quantity_overwrite">数量の上書き</string>
-    <string name="link_overwrite">リンクの上書き</string>
     <string name="save_product">製品を保存しますか?</string>
     <string name="error_adding_product">Something went wrong when adding the product</string>
     <string name="photos">写真</string>
@@ -601,9 +600,7 @@
     <string name="additional_pictures">追加の写真</string>
     <string name="hint_product_pictures">(製品の写真をさらに追加してください。例: リサイクルの指示、ラベル、など)</string>
     <string name="uploading_image">Sending the photo</string>
-    <string name="uploading_nutrition_image">栄養成分表をアップロードしています</string>
     <string name="uploading_ingredients_image">原材料画像をアップロードしています</string>
-    <string name="uploading_front_image">正面画像をアップロードしています</string>
     <string name="edit_front_image">Edit the front photo</string>
     <string name="edit_nutrition_image">Edit the nutrition photo</string>
     <string name="edit_packaging_image">Edit the recycling photo</string>

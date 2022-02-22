@@ -556,7 +556,6 @@
     <string name="product_name_overwrite">Produktnavnsoverskrivning</string>
     <string name="yours">Dine: </string>
     <string name="quantity_overwrite">Mængdeoverskrivning</string>
-    <string name="link_overwrite">Link-overskrivning</string>
     <string name="save_product">Vil du gemme dette produkt?</string>
     <string name="error_adding_product">Noget gik galt, da produktet skulle tilføjes</string>
     <string name="photos">Fotos</string>
@@ -608,9 +607,7 @@
     <string name="additional_pictures">Yderligere fotos</string>
     <string name="hint_product_pictures">(Tilføj flere produktfotos, f.eks. genbrugsanvisninger, etiketter mv.)</string>
     <string name="uploading_image">Uploader foto</string>
-    <string name="uploading_nutrition_image">Uploader næringsindholdsfoto</string>
     <string name="uploading_ingredients_image">Uploader ingrediensfoto</string>
-    <string name="uploading_front_image">Uploader forsidefoto</string>
     <string name="edit_front_image">Refigér forsidefoto</string>
     <string name="edit_nutrition_image">Refigér ernæringsfoto</string>
     <string name="edit_packaging_image">Redigér genbrugsfoto</string>

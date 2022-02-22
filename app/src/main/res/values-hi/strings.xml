@@ -556,7 +556,6 @@
     <string name="product_name_overwrite">उत्पाद का नाम ओवरराइट करें</string>
     <string name="yours">आपका: </string>
     <string name="quantity_overwrite">मात्रा ओवरराइट करें</string>
-    <string name="link_overwrite">लिंक ओवरराइट करें</string>
     <string name="save_product">क्या आप परिवर्तनों को सहेजना चाहते हैं?</string>
     <string name="error_adding_product">Something went wrong when adding the product</string>
     <string name="photos">तस्वीरें</string>
@@ -607,9 +606,7 @@
     <string name="additional_pictures">अतिरिक्त तस्वीरें</string>
     <string name="hint_product_pictures">(उत्पाद की और तस्वीरें ऐड करें। उदाहरण: रीसाइक्लिंग निर्देश, लेबल इत्यादि)</string>
     <string name="uploading_image">Sending the photo</string>
-    <string name="uploading_nutrition_image">पोषण तथ्य की तस्वीर अपलोड हो रही है</string>
     <string name="uploading_ingredients_image">सामग्री की तस्वीर अपलोड हो रही है</string>
-    <string name="uploading_front_image">उत्पाद की तस्वीर अपलोड हो रही है</string>
     <string name="edit_front_image">Edit the front photo</string>
     <string name="edit_nutrition_image">Edit the nutrition photo</string>
     <string name="edit_packaging_image">Edit the recycling photo</string>

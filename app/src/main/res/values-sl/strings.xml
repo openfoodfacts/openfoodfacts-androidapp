@@ -568,7 +568,6 @@
     <string name="product_name_overwrite">Prepiši ime izdelka</string>
     <string name="yours">Vaše: </string>
     <string name="quantity_overwrite">Prepiši količine</string>
-    <string name="link_overwrite">Prepiši povezavo</string>
     <string name="save_product">Želite shraniti ta izdelek?</string>
     <string name="error_adding_product">Pri dodajanju izdelka je prišlo do napake</string>
     <string name="photos">Fotografije</string>
@@ -619,9 +618,7 @@
     <string name="additional_pictures">Dodatne slike</string>
     <string name="hint_product_pictures">(Dodajte več slik izdelka, npr.: navodila za recikliranje, nalepke itd.)</string>
     <string name="uploading_image">Pošiljanje fotografije</string>
-    <string name="uploading_nutrition_image">Nalaganje slike z dejstvi o prehrani</string>
     <string name="uploading_ingredients_image">Nalaganje slike s sestavinami</string>
-    <string name="uploading_front_image">Nalaganje sprednje slike</string>
     <string name="edit_front_image">Uredite sprednjo fotografijo</string>
     <string name="edit_nutrition_image">Uredite prehransko fotografijo</string>
     <string name="edit_packaging_image">Edit the recycling photo</string>

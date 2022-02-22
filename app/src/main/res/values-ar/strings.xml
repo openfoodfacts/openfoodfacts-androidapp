@@ -582,7 +582,6 @@
     <string name="product_name_overwrite">إعادة كتابة اسم المنتج</string>
     <string name="yours">خاصة بك: </string>
     <string name="quantity_overwrite">إعادة كتابة الكمية</string>
-    <string name="link_overwrite">إعادة كتابة الرابط</string>
     <string name="save_product">هل تريد حفظ المنتج؟</string>
     <string name="error_adding_product">حدث خطأ ما عند إضافة المنتج</string>
     <string name="photos">صور</string>
@@ -633,9 +632,7 @@
     <string name="additional_pictures">صور إضافية</string>
     <string name="hint_product_pictures">(أضف المزيد من الصور للمنتج ، على سبيل المثال: تعليمات إعادة التدوير والملصقات وغير ذلك)</string>
     <string name="uploading_image">إرسال الصورة</string>
-    <string name="uploading_nutrition_image">تحميل صورة حقائق التغذية</string>
     <string name="uploading_ingredients_image">تحميل صورة المكونات</string>
-    <string name="uploading_front_image">تحميل الصورة الأمامية</string>
     <string name="edit_front_image">تعديل الصورة الأمامية</string>
     <string name="edit_nutrition_image">تعديل صورة التغذية</string>
     <string name="edit_packaging_image">Edit the recycling photo</string>

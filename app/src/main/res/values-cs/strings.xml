@@ -568,7 +568,6 @@
     <string name="product_name_overwrite">Přepsat název výrobku</string>
     <string name="yours">Vaše: </string>
     <string name="quantity_overwrite">Přepsat množství</string>
-    <string name="link_overwrite">Přepsat odkaz</string>
     <string name="save_product">Přejete si výrobek uložit?</string>
     <string name="error_adding_product">Při přidávání výrobku došlo k chybě</string>
     <string name="photos">Fotky</string>
@@ -619,9 +618,7 @@
     <string name="additional_pictures">Další obrázky</string>
     <string name="hint_product_pictures">(Přidejte další obrázky výrobku, jako pokyny pro recyklaci, štítky apod.)</string>
     <string name="uploading_image">Odeslání fotografie</string>
-    <string name="uploading_nutrition_image">Uploading nutrition facts image</string>
     <string name="uploading_ingredients_image">Uploading ingredients image</string>
-    <string name="uploading_front_image">Uploading front image</string>
     <string name="edit_front_image">Upravit hlavní fotografii</string>
     <string name="edit_nutrition_image">Upravit fotografii výživových údajů</string>
     <string name="edit_packaging_image">Edit the recycling photo</string>

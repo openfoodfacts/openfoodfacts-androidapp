@@ -556,7 +556,6 @@
     <string name="product_name_overwrite">crwdns128346:0crwdne128346:0</string>
     <string name="yours">crwdns128348:0crwdne128348:0</string>
     <string name="quantity_overwrite">crwdns128352:0crwdne128352:0</string>
-    <string name="link_overwrite">crwdns128354:0crwdne128354:0</string>
     <string name="save_product">crwdns128356:0crwdne128356:0</string>
     <string name="error_adding_product">crwdns128358:0crwdne128358:0</string>
     <string name="photos">crwdns128360:0crwdne128360:0</string>
@@ -608,9 +607,7 @@
     <string name="additional_pictures">crwdns128448:0crwdne128448:0</string>
     <string name="hint_product_pictures">crwdns128450:0crwdne128450:0</string>
     <string name="uploading_image">crwdns128452:0crwdne128452:0</string>
-    <string name="uploading_nutrition_image">crwdns128454:0crwdne128454:0</string>
     <string name="uploading_ingredients_image">crwdns128456:0crwdne128456:0</string>
-    <string name="uploading_front_image">crwdns128458:0crwdne128458:0</string>
     <string name="edit_front_image">crwdns128460:0crwdne128460:0</string>
     <string name="edit_nutrition_image">crwdns128462:0crwdne128462:0</string>
     <string name="edit_packaging_image">crwdns153800:0crwdne153800:0</string>

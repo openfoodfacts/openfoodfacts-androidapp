@@ -556,7 +556,6 @@
     <string name="product_name_overwrite">Productnaam overschrijven</string>
     <string name="yours">Jouw: </string>
     <string name="quantity_overwrite">Grootte overschrijven</string>
-    <string name="link_overwrite">Link overschrijven</string>
     <string name="save_product">Wilt u het product opslaan?</string>
     <string name="error_adding_product">Er is iets fout gegaan bij het toevoegen van een product</string>
     <string name="photos">Foto’s</string>
@@ -608,9 +607,7 @@
     <string name="additional_pictures">Extra afbeeldingen</string>
     <string name="hint_product_pictures">(Voeg meer afbeeldingen van het product toe. Bijvoorbeeld: recycling instructies, labels etc.)</string>
     <string name="uploading_image">De foto verzenden</string>
-    <string name="uploading_nutrition_image">Foto van de voedingswaarden aan het uploaden</string>
     <string name="uploading_ingredients_image">Foto van de ingrediënten aan het uploaden</string>
-    <string name="uploading_front_image">Foto van voorkant aan het uploaden</string>
     <string name="edit_front_image">Bewerk de foto van de voorkant</string>
     <string name="edit_nutrition_image">Bewerk de foto met voedingswaarden</string>
     <string name="edit_packaging_image">Bewerk de recyclingfoto</string>

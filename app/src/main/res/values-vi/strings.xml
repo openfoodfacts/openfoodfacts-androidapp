@@ -550,7 +550,6 @@
     <string name="product_name_overwrite">Ghi đè tên sản phẩm</string>
     <string name="yours">Của bạn: </string>
     <string name="quantity_overwrite">Quantity overwrite</string>
-    <string name="link_overwrite">Ghi đè liên kết</string>
     <string name="save_product">Bạn có muốn lưu sản phẩm không?</string>
     <string name="error_adding_product">Something went wrong when adding the product</string>
     <string name="photos">Ảnh</string>
@@ -601,9 +600,7 @@
     <string name="additional_pictures">Hình ảnh bổ sung</string>
     <string name="hint_product_pictures">(Thêm nhiều hình ảnh của sản phẩm hơn, ví dụ: hướng dẫn tái chế, nhãn, vv..)</string>
     <string name="uploading_image">Sending the photo</string>
-    <string name="uploading_nutrition_image">Tải lên hình ảnh sự kiện dinh dưỡng</string>
     <string name="uploading_ingredients_image">Uploading ingredients image</string>
-    <string name="uploading_front_image">Uploading front image</string>
     <string name="edit_front_image">Edit the front photo</string>
     <string name="edit_nutrition_image">Edit the nutrition photo</string>
     <string name="edit_packaging_image">Edit the recycling photo</string>

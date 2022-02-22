@@ -556,7 +556,6 @@
     <string name="product_name_overwrite">Sobrescribir el nombre del producto</string>
     <string name="yours">Tuyo: </string>
     <string name="quantity_overwrite">Sobrescribir cantidad</string>
-    <string name="link_overwrite">Sobreescribir enlace</string>
     <string name="save_product">¿Deseas guardar el producto?</string>
     <string name="error_adding_product">Algo salió mal al añadir el producto</string>
     <string name="photos">Fotos</string>
@@ -608,9 +607,7 @@
     <string name="additional_pictures">Imágenes adicionales</string>
     <string name="hint_product_pictures">(Agregue más imágenes del producto, por ejemplo: instrucciones de reciclaje, etiquetas, etc.)</string>
     <string name="uploading_image">Enviando la foto</string>
-    <string name="uploading_nutrition_image">Subiendo imagen de la información nutricional</string>
     <string name="uploading_ingredients_image">Subiendo la imagen de los ingredientes</string>
-    <string name="uploading_front_image">Subiendo la imagen del frente</string>
     <string name="edit_front_image">Editar la foto frontal</string>
     <string name="edit_nutrition_image">Editar la foto nutricional</string>
     <string name="edit_packaging_image">Editar la foto de reciclaje</string>

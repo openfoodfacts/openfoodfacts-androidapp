@@ -556,7 +556,6 @@
     <string name="product_name_overwrite">Ürün adının üzerine yaz</string>
     <string name="yours">Seninki: </string>
     <string name="quantity_overwrite">Miktarın üzerine yaz</string>
-    <string name="link_overwrite">Bağlantının üzerine yaz</string>
     <string name="save_product">Ürünü kaydetmek istiyor musunuz?</string>
     <string name="error_adding_product">Ürün ekleme sırasında bir hata oluştu</string>
     <string name="photos">Fotoğraflar</string>
@@ -607,9 +606,7 @@
     <string name="additional_pictures">İlave Resimler</string>
     <string name="hint_product_pictures">(Ürüne ait daha fazla resim ekleyin. örneğin: geri dönüşüm talimatları, etiketler vb.)</string>
     <string name="uploading_image">Fotoğraf gönderiliyor</string>
-    <string name="uploading_nutrition_image">Uploading nutrition facts image</string>
     <string name="uploading_ingredients_image">Uploading ingredients image</string>
-    <string name="uploading_front_image">Uploading front image</string>
     <string name="edit_front_image">Ön fotoğrafı düzenleyin</string>
     <string name="edit_nutrition_image">Beslenme fotoğrafını düzenleyin</string>
     <string name="edit_packaging_image">Edit the recycling photo</string>

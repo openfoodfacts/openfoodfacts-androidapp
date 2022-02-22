@@ -562,7 +562,6 @@
     <string name="product_name_overwrite">Suprascriere de nume a produsului</string>
     <string name="yours">Al tău: </string>
     <string name="quantity_overwrite">Suprascriere cantitate</string>
-    <string name="link_overwrite">Suprascriere legătură</string>
     <string name="save_product">Dorești să salvezi produsul?</string>
     <string name="error_adding_product">Something went wrong when adding the product</string>
     <string name="photos">Imagini</string>
@@ -613,9 +612,7 @@
     <string name="additional_pictures">Imagini suplimentare</string>
     <string name="hint_product_pictures">(Adăugați mai multe imagini ale produsului, de exemplu: instrucțiuni de reciclare, etichete etc.)</string>
     <string name="uploading_image">Sending the photo</string>
-    <string name="uploading_nutrition_image">Uploading nutrition facts image</string>
     <string name="uploading_ingredients_image">Încărcarea imaginii ingredientelor</string>
-    <string name="uploading_front_image">Încărcarea imaginii</string>
     <string name="edit_front_image">Edit the front photo</string>
     <string name="edit_nutrition_image">Edit the nutrition photo</string>
     <string name="edit_packaging_image">Edit the recycling photo</string>

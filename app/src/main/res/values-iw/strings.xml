@@ -568,7 +568,6 @@
     <string name="product_name_overwrite">שכתוב שם מוצר</string>
     <string name="yours">שלך: </string>
     <string name="quantity_overwrite">שכתוב כמות</string>
-    <string name="link_overwrite">שכתוב קישור</string>
     <string name="save_product">לשמור את המוצר?</string>
     <string name="error_adding_product">משהו השתבש בעת הוספת המוצר</string>
     <string name="photos">תמונות</string>
@@ -620,9 +619,7 @@
     <string name="additional_pictures">תמונות נוספות</string>
     <string name="hint_product_pictures">(כדאי להוסיף תמונות נוספות של המוצר, למשל: הנחיות מחזור, תוויות וכו׳)</string>
     <string name="uploading_image">התמונה נשלחת</string>
-    <string name="uploading_nutrition_image">נשלחת תמונה של העובדות התזונתיות</string>
     <string name="uploading_ingredients_image">נשלחת תמונת רכיבים</string>
-    <string name="uploading_front_image">התמונה הראשית נשלחת</string>
     <string name="edit_front_image">עריכת תמונת החזית</string>
     <string name="edit_nutrition_image">עריכת תמונת התזונה</string>
     <string name="edit_packaging_image">עריכת תמונת המיחזור</string>

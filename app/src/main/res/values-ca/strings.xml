@@ -556,7 +556,6 @@
     <string name="product_name_overwrite">Sobrescriu el nom del producte</string>
     <string name="yours">Les vostres: </string>
     <string name="quantity_overwrite">Sobreescriu la quantitat</string>
-    <string name="link_overwrite">Sobreescriu l\'enllaç</string>
     <string name="save_product">Voleu desar aquest producte?</string>
     <string name="error_adding_product">Alguna cosa ha anat malament mentre s\'afegia el producte</string>
     <string name="photos">Fotos</string>
@@ -607,9 +606,7 @@
     <string name="additional_pictures">Imatges addicionals</string>
     <string name="hint_product_pictures">(Afegiu més imatges del producte, per exemple: instruccions de reciclatge, etiquetes, etc.)</string>
     <string name="uploading_image">Enviant la foto</string>
-    <string name="uploading_nutrition_image">S\'està carregant la imatge de les dades nutricionals</string>
     <string name="uploading_ingredients_image">S\'està carregant la imatge dels ingredients</string>
-    <string name="uploading_front_image">S\'està carregant la imatge frontal</string>
     <string name="edit_front_image">Edita la foto del davant</string>
     <string name="edit_nutrition_image">Edita la foto de la taula nutricional</string>
     <string name="edit_packaging_image">Edit the recycling photo</string>

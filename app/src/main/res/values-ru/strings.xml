@@ -568,7 +568,6 @@
     <string name="product_name_overwrite">Перезапись названия</string>
     <string name="yours">Ваши: </string>
     <string name="quantity_overwrite">Перезапись количества</string>
-    <string name="link_overwrite">Перезапись ссылки</string>
     <string name="save_product">Вы хотите сохранить продукт?</string>
     <string name="error_adding_product">Что-то пошло не так при добавлении продукта</string>
     <string name="photos">Фотографии</string>
@@ -619,9 +618,7 @@
     <string name="additional_pictures">Дополнительные фотографии</string>
     <string name="hint_product_pictures">(Добавьте дополнительные фото продукта, например, инструкции по утилизации, этикетки и т. д.)</string>
     <string name="uploading_image">Отправка фото</string>
-    <string name="uploading_nutrition_image">Загрузка изображения пищевой ценности</string>
     <string name="uploading_ingredients_image">Загрузка изображения состава</string>
-    <string name="uploading_front_image">Загрузка изображения лицевой стороны</string>
     <string name="edit_front_image">Редактировать фото лицевой стороны</string>
     <string name="edit_nutrition_image">Редактировать лицевое фото</string>
     <string name="edit_packaging_image">Edit the recycling photo</string>

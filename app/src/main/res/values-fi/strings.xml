@@ -556,7 +556,6 @@
     <string name="product_name_overwrite">Tuotenimen korvaaminen</string>
     <string name="yours">Sinun: </string>
     <string name="quantity_overwrite">Määrän korvaaminen</string>
-    <string name="link_overwrite">Linkin korvaaminen</string>
     <string name="save_product">Haluatko tallentaa tuotteen?</string>
     <string name="error_adding_product">Jokin meni vikaan tuotteen lisäyksessä</string>
     <string name="photos">Kuvat</string>
@@ -608,9 +607,7 @@
     <string name="additional_pictures">Lisäkuvia</string>
     <string name="hint_product_pictures">(Lisää muita kuvia tuotteesta. Esimerkiksi: kierrätysohjeet, merkit jne.)</string>
     <string name="uploading_image">Lähtetään kuvaa</string>
-    <string name="uploading_nutrition_image">Lähetetään kuvaa ravintosisällöstä</string>
     <string name="uploading_ingredients_image">Lähetetään kuvaa ainesosista</string>
-    <string name="uploading_front_image">Lähetetään etukuvaa</string>
     <string name="edit_front_image">Muokkaa etukuvaa</string>
     <string name="edit_nutrition_image">Muokkaa kuvaa ravintosisällöstä</string>
     <string name="edit_packaging_image">Muokkaa kierrätyskuvaa</string>

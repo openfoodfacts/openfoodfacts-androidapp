@@ -550,7 +550,6 @@
     <string name="product_name_overwrite">제품 이름 덮어 쓰기</string>
     <string name="yours">당신의 것 : </string>
     <string name="quantity_overwrite">수량 덮어 쓰기</string>
-    <string name="link_overwrite">링크 덮어 쓰기</string>
     <string name="save_product">제품을 저장 하시겠습니까?</string>
     <string name="error_adding_product">제품을 추가하는 동안 문제가 발생했습니다.</string>
     <string name="photos">사진</string>
@@ -601,9 +600,7 @@
     <string name="additional_pictures">이미지 추가</string>
     <string name="hint_product_pictures">(제품 사진을 더 추가하십시오. 예 : 재활용 지침, 라벨 등)</string>
     <string name="uploading_image">사진 보내기</string>
-    <string name="uploading_nutrition_image">Uploading nutrition facts image</string>
     <string name="uploading_ingredients_image">Uploading ingredients image</string>
-    <string name="uploading_front_image">Uploading front image</string>
     <string name="edit_front_image">앞면 사진 편집</string>
     <string name="edit_nutrition_image">영양 사진 편집</string>
     <string name="edit_packaging_image">Edit the recycling photo</string>
