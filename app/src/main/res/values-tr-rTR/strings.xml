@@ -487,7 +487,6 @@
     <string name="notify_channel_description">Dışa aktarılan dosyanın konumunu gösteren bildirim</string>
     <string name="products_to_be_completed">Tamamlanacak ürünler</string>
     <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Ürün %1$s %2$s CET\'te %3$s tarafından eklendi</string>
-    <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Ürün sayfası en son %1$s %2$s CEST\'te %3$s tarafından düzenlendi </string>
     <!-- TODO: Add the placeholder in the string - important for several languages -->
     <string name="other_editors">Ürün sayfası ayrıca … tarafından düzenlendi</string>
     <string name="product_states">Ürün Durumları</string>
