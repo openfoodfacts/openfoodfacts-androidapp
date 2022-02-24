@@ -527,7 +527,6 @@
     <string name="products_to_be_completed">Tamamlanacak ürünler</string>
     <string name="offline_notification_title">Göndermeniz gereken çevrimdışı katkılar</string>
     <string name="creator_history">Ürün %1$s %2$s CET\'te %3$s tarafından eklendi</string>
-    <string name="last_editor_history">Ürün sayfası en son %1$s %2$s CEST\'te %3$s tarafından düzenlendi </string>
     <string name="other_editors">Ürün sayfası ayrıca … tarafından düzenlendi</string>
     <string name="contribution_tab">Katkıda Bulunulanlar</string>
     <string name="pref_contribution_tab_summary">Kullanıcı ürün katkıları sekmesini göster</string>

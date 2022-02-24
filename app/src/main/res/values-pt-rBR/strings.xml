@@ -487,7 +487,6 @@
     <string name="notify_channel_description">Notificação para mostrar a localização do arquivo exportado</string>
     <string name="products_to_be_completed">Produtos a completar</string>
     <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Produto adicionado em %1$s às %2$s CET por %3$s</string>
-    <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Última edição da página do produto em %1$s às %2$s CEST por %3$s </string>
     <!-- TODO: Add the placeholder in the string - important for several languages -->
     <string name="other_editors">Página do produto editada também por </string>
     <string name="product_states">Product States</string>

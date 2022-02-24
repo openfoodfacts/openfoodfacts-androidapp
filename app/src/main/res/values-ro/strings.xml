@@ -532,7 +532,6 @@
     <string name="products_to_be_completed">Produse ce trebuie să fie finalizate</string>
     <string name="offline_notification_title">Contribuțiile offline pe care trebuie să le trimiți</string>
     <string name="creator_history">Produs adăugat pe %1$s la %2$s CET de %3$s</string>
-    <string name="last_editor_history">Ultima editare a paginii produsului %1$s la %2$s CEST de %3$s</string>
     <string name="other_editors">Pagina produsului totodată editată și de </string>
     <string name="contribution_tab">Contribuții</string>
     <string name="pref_contribution_tab_summary">Afișează panoul de contribuție cu produse a utilizatorului</string>
