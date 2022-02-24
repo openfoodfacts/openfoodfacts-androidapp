@@ -1,9 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.features.product.view.photos
 
-import androidx.lifecycle.SavedStateHandle
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asFlow
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.filterNotNull
@@ -27,7 +24,8 @@ class ProductPhotosViewModel @Inject constructor(
         .map { it.product }
         .filterNotNull()
         .map { product ->
-            productsAPI.getProductImages(product.code)
-                .extractImagesNameSortedByUploadTimeDesc()
-        }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyList())
+            productsAPI.getProductImages(product.code).extractImagesNameSortedByUploadTimeDesc()
+        }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyList())
+        .asLiveData(viewModelScope.coroutineContext)
 }
