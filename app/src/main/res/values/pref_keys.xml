@@ -21,6 +21,7 @@
 
     <string name="pref_language_key" translatable="false">Locale.Helper.Selected.Language</string>
     <string name="pref_language_title">Language</string>
+    <string name="pref_language_summary">Change language</string>
 
     <string name="pref_energy_unit_key" translatable="false">energyUnitPreference</string>
     <string name="pref_energy_unit_title">Preferred energy unit</string>
