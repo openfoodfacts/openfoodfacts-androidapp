@@ -527,7 +527,6 @@
     <string name="products_to_be_completed">Productos por completar</string>
     <string name="offline_notification_title">Contribuciones realizadas sin conexión pendientes de envío</string>
     <string name="creator_history">Producto agregado desde %1$s a %2$s CET por %3$s</string>
-    <string name="last_editor_history">Última edición de la página del producto en %1$s a %2$s CEST por %3$s</string>
     <string name="other_editors">Página de producto también editada por </string>
     <string name="contribution_tab">Contribuciones</string>
     <string name="pref_contribution_tab_summary">Muestra una tabla con las contribuciones de los usuarios con productos</string>

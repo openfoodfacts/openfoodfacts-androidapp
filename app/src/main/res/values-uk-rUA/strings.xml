@@ -497,7 +497,6 @@
     <string name="notify_channel_description">Сповіщення, щоб показати розташування експортованого файлу</string>
     <string name="products_to_be_completed">Незавантажені продукти</string>
     <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Продукт додано %1$s %2$s о %3$s CET</string>
-    <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Останнє редагування сторінки продукту %1$s %2$s в %3$s CEST </string>
     <!-- TODO: Add the placeholder in the string - important for several languages -->
     <string name="other_editors">Сторінка продукту також відредагована </string>
     <string name="product_states">Product States</string>

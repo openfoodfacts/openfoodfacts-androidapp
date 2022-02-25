@@ -537,7 +537,6 @@
     <string name="products_to_be_completed">Незавантажені продукти</string>
     <string name="offline_notification_title">Оффлайн внески, які вам необхідно надіслати</string>
     <string name="creator_history">Продукт додано %1$s %2$s о %3$s CET</string>
-    <string name="last_editor_history">Останнє редагування сторінки продукту %1$s %2$s в %3$s CEST </string>
     <string name="other_editors">Сторінка продукту також відредагована </string>
     <string name="contribution_tab">Внески</string>
     <string name="pref_contribution_tab_summary">Показувати вкладку внесків користувача з товарами</string>
