@@ -11,6 +11,7 @@ import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import openfoodfacts.github.scrachx.openfood.models.HistoryProduct
 import openfoodfacts.github.scrachx.openfood.models.HistoryProductDao
+import openfoodfacts.github.scrachx.openfood.models.asBarcode
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.*
 import javax.inject.Inject
@@ -52,7 +53,7 @@ class ScanHistoryViewModel @Inject constructor(
             unorderedProductState.postValue(FetchProductsState.Loading)
 
             withContext(dispatchers.IO) {
-                val barcodes = historyProductDao.list().map { it.barcode }
+                val barcodes = historyProductDao.list().map { it.barcode.asBarcode() }
                 if (barcodes.isNotEmpty()) {
                     try {
                         productRepository.getProductsByBarcode(barcodes)

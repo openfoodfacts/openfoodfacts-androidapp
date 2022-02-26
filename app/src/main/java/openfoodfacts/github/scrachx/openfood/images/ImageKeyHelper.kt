@@ -3,6 +3,7 @@ package openfoodfacts.github.scrachx.openfood.images
 import android.os.Bundle
 import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.R
+import openfoodfacts.github.scrachx.openfood.models.Barcode
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField.*
@@ -27,10 +28,10 @@ fun getLanguageCodeFromUrl(field: ProductImageField?, url: String?): String? {
 }
 
 fun createImageBundle(
-        imageType: ProductImageField?,
-        product: Product?,
-        language: String?,
-        imageUrl: String
+    imageType: ProductImageField?,
+    product: Product?,
+    language: String?,
+    imageUrl: String
 ) = Bundle().apply {
     putString(IMAGE_URL, imageUrl)
     if (product != null) {
@@ -49,19 +50,20 @@ fun getResourceIdForEditAction(field: ProductImageField) = when (field) {
     else -> R.string.edit_other_image
 }
 
-fun getImageUrl(barcode: String, imageName: String, size: String): String {
-    val baseUrlString = BuildConfig.STATICURL + "/images/products/"
-    var barcodePattern = barcode
-    if (barcodePattern.length > 8) {
-        barcodePattern = StringBuilder(barcode).let {
-            it.insert(3, "/")
-            it.insert(7, "/")
-            it.insert(11, "/")
-            it.toString()
-        }
+fun getImageUrl(barcode: Barcode, imageName: String, size: String): String {
+    val baseUrl = BuildConfig.STATICURL + "/images/products/"
 
+    var barcodeStr = barcode.b
+    if (barcodeStr.length > 8) {
+        barcodeStr = buildString(barcodeStr.length) {
+            append(barcodeStr)
+            insert(3, "/")
+            insert(7, "/")
+            insert(11, "/")
+        }
     }
-    return "$baseUrlString$barcodePattern/$imageName$size.jpg"
+
+    return "$baseUrl$barcodeStr/$imageName$size.jpg"
 }
 
 const val IMAGE_URL = "imageurl"

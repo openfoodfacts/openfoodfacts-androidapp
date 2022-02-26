@@ -15,15 +15,17 @@ internal fun JsonNode.extractImagesNameSortedByUploadTimeDesc(): List<String> {
             // as they are duplicate and do not load as well
             if (!isNameOk(imageName)) null
             else NameTimestampKey(imageName, value["uploaded_t"].asLong())
-        }.sorted().map { it.name }
+        }
+        .sorted()
+        .map { it.name }
 }
 
 internal fun isNameOk(name: String) =
-        name.isNotBlank() && !Regex("[nfio]").containsMatchIn(name)
+    name.isNotBlank() && !Regex("[nfio]").containsMatchIn(name)
 
 internal data class NameTimestampKey(
-        val name: String,
-        private val timestamp: Long
+    val name: String,
+    private val timestamp: Long
 ) : Comparable<NameTimestampKey> {
 
     /**

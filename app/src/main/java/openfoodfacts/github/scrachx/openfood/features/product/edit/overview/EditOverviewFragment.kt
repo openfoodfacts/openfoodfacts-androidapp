@@ -73,7 +73,6 @@ import openfoodfacts.github.scrachx.openfood.utils.*
 import org.apache.commons.lang3.StringUtils
 import org.jetbrains.annotations.Contract
 import java.io.File
-import java.util.*
 import javax.inject.Inject
 
 /**
@@ -588,7 +587,7 @@ class EditOverviewFragment : ProductEditFragment() {
                 binding.name.isActivated = false
 
                 val productState = try {
-                    client.getProductStateFull(product!!.code, fields)
+                    client.getProductStateFull(product!!.barcode, fields)
                 } catch (err: Exception) {
                     Log.e(EditOverviewFragment::class.simpleName, "Error retrieving product state from server api.", err)
                     binding.name.setText(StringUtils.EMPTY)
