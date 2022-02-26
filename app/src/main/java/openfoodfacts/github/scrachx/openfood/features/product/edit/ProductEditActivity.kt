@@ -144,10 +144,11 @@ class ProductEditActivity : BaseActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             android.R.id.home -> {
-                if (getUpdatedFieldsMap().isNotEmpty()) {
+                if (getUpdatedFieldsMap().isEmpty()) false
+                else {
                     showExitConfirmDialog()
                     true
-                } else false
+                }
             }
             R.id.save_product -> {
                 checkFieldsThenSave()
@@ -290,10 +291,15 @@ class ProductEditActivity : BaseActivity() {
     }
 
     private fun getUpdatedFieldsMap(): Map<String, String?> {
-        val updatedValues = editOverviewFragment.getUpdatedFieldsMap().toMutableMap()
-        updatedValues += ingredientsFragment.getUpdatedFieldsMap()
+        val updatedValues = mutableMapOf<String, String?>()
 
-        if (isFlavors(OFF, OPFF))
+        if (editOverviewFragment.isAdded)
+            updatedValues += editOverviewFragment.getUpdatedFieldsMap().toMutableMap()
+
+        if (ingredientsFragment.isAdded)
+            updatedValues += ingredientsFragment.getUpdatedFieldsMap()
+
+        if (isFlavors(OFF, OPFF) && nutritionFactsFragment.isAdded)
             updatedValues += nutritionFactsFragment.getUpdatedFieldsMap()
 
         return updatedValues
@@ -324,7 +330,6 @@ class ProductEditActivity : BaseActivity() {
         }
         val barcode = productDetails[ApiFields.Keys.BARCODE]!!
 
-
         // Save product to local database
         val toSaveOffline = OfflineSavedProduct(barcode, productDetails)
         withContext(IO) { daoSession.offlineSavedProductDao.insertOrReplace(toSaveOffline) }
@@ -339,9 +344,9 @@ class ProductEditActivity : BaseActivity() {
 
         // Report analytics
         if (editingMode) {
-            matomoAnalytics.trackEvent(AnalyticsEvent.ProductEdited(productDetails[ApiFields.Keys.BARCODE]))
+            matomoAnalytics.trackEvent(AnalyticsEvent.ProductEdited(barcode))
         } else {
-            matomoAnalytics.trackEvent(AnalyticsEvent.ProductCreated(productDetails[ApiFields.Keys.BARCODE]))
+            matomoAnalytics.trackEvent(AnalyticsEvent.ProductCreated(barcode))
         }
 
         setResult(RESULT_OK)
@@ -614,9 +619,9 @@ class ProductEditActivity : BaseActivity() {
         ingredientsFragment.setIngredients(status, ingredients)
 
     class PerformOCRContract : ActivityResultContract<Product?, Boolean>() {
-        override fun createIntent(context: Context, product: Product?) =
+        override fun createIntent(context: Context, input: Product?) =
             Intent(context, ProductEditActivity::class.java).apply {
-                putExtra(KEY_EDIT_PRODUCT, product)
+                putExtra(KEY_EDIT_PRODUCT, input)
                 putExtra(KEY_PERFORM_OCR, true)
             }
 
@@ -624,9 +629,9 @@ class ProductEditActivity : BaseActivity() {
     }
 
     class SendUpdatedImgContract : ActivityResultContract<Product, Boolean>() {
-        override fun createIntent(context: Context, product: Product) =
+        override fun createIntent(context: Context, input: Product) =
             Intent(context, ProductEditActivity::class.java).apply {
-                putExtra(KEY_EDIT_PRODUCT, product)
+                putExtra(KEY_EDIT_PRODUCT, input)
                 putExtra(KEY_SEND_UPDATED, true)
             }
 
