@@ -11,16 +11,17 @@ import com.squareup.picasso.Picasso
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.images.IMAGE_EDIT_SIZE_FILE
 import openfoodfacts.github.scrachx.openfood.images.getImageUrl
+import openfoodfacts.github.scrachx.openfood.models.Barcode
 
 /**
  * Created by prajwalm on 10/09/18.
  */
 class ProductImagesSelectionAdapter(
-        private val context: Context,
-        private val picasso: Picasso,
-        private val images: List<String>,
-        private val barcode: String,
-        private val onImageClick: ((Int) -> Unit)?
+    private val context: Context,
+    private val picasso: Picasso,
+    private val images: List<String>,
+    private val barcode: Barcode,
+    private val onImageClick: ((Int) -> Unit)?
 ) : RecyclerView.Adapter<ProductImagesSelectionAdapter.CustomViewHolder>() {
     var selectedPosition = -1
     fun isSelectionDone() = selectedPosition >= 0
@@ -38,14 +39,14 @@ class ProductImagesSelectionAdapter(
 
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
         holder.itemView.setBackgroundColor(
-                if (position == selectedPosition) ContextCompat.getColor(context, R.color.blue)
-                else 0
+            if (position == selectedPosition) ContextCompat.getColor(context, R.color.blue)
+            else 0
         )
         val finalUrlString = getImageUrl(position)
         picasso.load(finalUrlString)
-                .resize(400, 400)
-                .centerInside()
-                .into(holder.productImage)
+            .resize(400, 400)
+            .centerInside()
+            .into(holder.productImage)
     }
 
     override fun getItemCount() = images.size
@@ -58,8 +59,8 @@ class ProductImagesSelectionAdapter(
                 notifyItemChanged(selectedPosition)
             }
 
-            // If the user reclick on the same image -> deselect
-            selectedPosition = if (adapterPosition != selectedPosition) adapterPosition else -1
+            // If the user clicks on the same image -> deselect
+            selectedPosition = if (bindingAdapterPosition != selectedPosition) bindingAdapterPosition else -1
 
             if (selectedPosition >= 0) {
                 notifyItemChanged(selectedPosition)

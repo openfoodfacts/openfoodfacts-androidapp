@@ -53,12 +53,7 @@ class ProductPhotosFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         val product = requireProductState().product!!
 
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                launch { viewModel.imageNames.collectLatest { loadImages(product, it) } }
-            }
-        }
-
+        viewModel.imageNames.observe(viewLifecycleOwner) { loadImages(product, it) }
     }
 
     private fun loadImages(product: Product, imageNames: List<String>) {

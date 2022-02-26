@@ -1,3 +1,5 @@
 package openfoodfacts.github.scrachx.openfood.models.eventbus
 
-data class ProductNeedsRefreshEvent(val barcode: String)
+import openfoodfacts.github.scrachx.openfood.models.Barcode
+
+data class ProductNeedsRefreshEvent(val barcode: Barcode)
