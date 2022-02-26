@@ -5,14 +5,13 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.node.ObjectNode
 import com.fasterxml.jackson.module.kotlin.readValue
 import com.google.common.truth.Truth.assertThat
-import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.runTest
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductState
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
-import openfoodfacts.github.scrachx.openfood.utils.CoroutinesSetMainExtension
 import openfoodfacts.github.scrachx.openfood.utils.InstantTaskExecutorExtension
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName
@@ -24,8 +23,11 @@ import org.mockito.junit.jupiter.MockitoExtension
 import org.mockito.kotlin.any
 import org.mockito.kotlin.whenever
 
-@ExtendWith(MockitoExtension::class, CoroutinesSetMainExtension::class, InstantTaskExecutorExtension::class)
-internal class ProductPhotosViewModelTest(@Mock private val mockProductsApi: ProductsAPI) {
+@ExtendWith(MockitoExtension::class, InstantTaskExecutorExtension::class)
+@ExperimentalCoroutinesApi
+internal class ProductPhotosViewModelTest(
+    @Mock private val mockProductsApi: ProductsAPI
+) {
 
     private val stubProduct = Product().also {
         it.code = "code"
@@ -62,7 +64,7 @@ internal class ProductPhotosViewModelTest(@Mock private val mockProductsApi: Pro
             @BeforeEach
             fun beforeEach() {
                 runTest {
-                    result = testSubject.imageNames.first()
+                    result = testSubject.imageNames.value!!
                 }
             }
 
