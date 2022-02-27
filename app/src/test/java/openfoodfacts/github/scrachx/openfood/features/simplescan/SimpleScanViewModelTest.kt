@@ -5,6 +5,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.test.runBlockingTest
+import kotlinx.coroutines.test.runTest
 import openfoodfacts.github.scrachx.openfood.features.simplescan.SimpleScanViewModel.SideEffect
 import openfoodfacts.github.scrachx.openfood.models.CameraState
 import openfoodfacts.github.scrachx.openfood.repositories.ScannerPreferencesRepository
@@ -53,7 +54,7 @@ class SimpleScanViewModelTest {
     }
 
     @Test
-    fun changeCameraAutoFocus_shouldChangeAutoFocus() = runBlockingTest {
+    fun changeCameraAutoFocus_shouldChangeAutoFocus() = runTest {
         // GIVEN
         val flowItems = mutableListOf<SimpleScanScannerOptions>()
         val job = launch {
@@ -71,7 +72,7 @@ class SimpleScanViewModelTest {
     }
 
     @Test
-    fun changeCameraFlash_shouldChangeFlash() = runBlockingTest {
+    fun changeCameraFlash_shouldChangeFlash() = runTest {
         // GIVEN
         val flowItems = mutableListOf<SimpleScanScannerOptions>()
         val job = launch {
