@@ -487,6 +487,7 @@
     <string name="notify_channel_description">Értesítés az exportált fájl helyének megjelenítéséhez</string>
     <string name="products_to_be_completed">Kiegészítendő termékek</string>
     <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">A terméket hozzáadta %1$s ekkor: %2$s, %3$s (CET)</string>
+    <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Termékoldalt legutóbb szerkesztette %1$s ekkor: %2$s, %3$s (CEST) </string>
     <!-- TODO: Add the placeholder in the string - important for several languages -->
     <string name="other_editors">A termékoldalt szerkesztette még </string>
     <string name="product_states">Product States</string>

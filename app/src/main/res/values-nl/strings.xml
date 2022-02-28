@@ -527,6 +527,7 @@
     <string name="products_to_be_completed">Onvoltooide producten</string>
     <string name="offline_notification_title">Offline bijdragen die nog niet zijn verzonden</string>
     <string name="creator_history">Product toegevoegd op %1$s om %2$s CET door %3$s</string>
+    <string name="last_editor_history">Laatste bewerking van productpagina op %1$s om %2$s CET door %3$s</string>
     <string name="other_editors">Productpagina ook bewerkt door </string>
     <string name="contribution_tab">Bijdragen</string>
     <string name="pref_contribution_tab_summary">Bijdragen weergeven bij producten</string>

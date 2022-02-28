@@ -522,6 +522,7 @@
     <string name="products_to_be_completed">Produk perlu diselesaikan</string>
     <string name="offline_notification_title">Kontribusi luar jaringan yang perlu anda kirim</string>
     <string name="creator_history">Product added on %1$s at %2$s CET by %3$s</string>
+    <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by %3$s </string>
     <string name="other_editors">Halaman produk juga diubah oleh </string>
     <string name="contribution_tab">Kontribusi</string>
     <string name="pref_contribution_tab_summary">Tampilkan kontribusi pengguna dengan produk</string>

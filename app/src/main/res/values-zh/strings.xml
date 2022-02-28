@@ -519,6 +519,7 @@
     <string name="products_to_be_completed">待完成的产品</string>
     <string name="offline_notification_title">你需要发送的离线贡献</string>
     <string name="creator_history">Product added on %1$s at %2$s CET by %3$s</string>
+    <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by %3$s </string>
     <string name="other_editors">产品页面也被以下人员修改 </string>
     <string name="contribution_tab">贡献</string>
     <string name="pref_contribution_tab_summary">Show user contributions tab with products</string>

@@ -482,6 +482,7 @@
     <string name="notify_channel_description">Thông báo để hiển thị vị trí của tệp đã xuất</string>
     <string name="products_to_be_completed">Các sản phẩm cần được hoàn thành</string>
     <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Product added on %1$s at %2$s CET by %3$s</string>
+    <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Last edit of product page on %1$s at %2$s CEST by %3$s </string>
     <!-- TODO: Add the placeholder in the string - important for several languages -->
     <string name="other_editors">Trang sản phẩm cũng được chỉnh sửa bởi </string>
     <string name="product_states">Product States</string>

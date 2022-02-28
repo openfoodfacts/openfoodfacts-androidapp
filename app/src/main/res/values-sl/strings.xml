@@ -537,6 +537,7 @@
     <string name="products_to_be_completed">Izdelki, ki jih je potrebno dokončati</string>
     <string name="offline_notification_title">Prispevki brez povezave, ki jih morate poslati</string>
     <string name="creator_history">Product added on %1$s at %2$s CET by %3$s</string>
+    <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by %3$s </string>
     <string name="other_editors">Stran izdelka, je urejal tudi </string>
     <string name="contribution_tab">Prispevki</string>
     <string name="pref_contribution_tab_summary">Pokaži kartico s prispevki uporabnika z izdelki</string>

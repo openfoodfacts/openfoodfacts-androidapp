@@ -492,6 +492,7 @@
     <string name="notify_channel_description">Paziņojums, lai parādītu eksportēto failu atrašanās vietu</string>
     <string name="products_to_be_completed">Produkta nosaukums jāpabeidz</string>
     <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Produkts pievienots %1$s plkst. %2$s CET pēc %3$s</string>
+    <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Pēdējais produkta lapas labojums: %1$s plkst. %2$s CEST līdz %3$s </string>
     <!-- TODO: Add the placeholder in the string - important for several languages -->
     <string name="other_editors">Produkta lapa ir arī rediģējis </string>
     <string name="product_states">Product States</string>

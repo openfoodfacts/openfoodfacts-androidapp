@@ -527,6 +527,7 @@
     <string name="products_to_be_completed">Kiegészítendő termékek</string>
     <string name="offline_notification_title">Kapcsolat nélküli módban készült hozzájárulások, amiket el kell küldenie</string>
     <string name="creator_history">A terméket hozzáadta %1$s ekkor: %2$s, %3$s (CET)</string>
+    <string name="last_editor_history">Termékoldalt legutóbb szerkesztette %1$s ekkor: %2$s, %3$s (CEST) </string>
     <string name="other_editors">A termékoldalt szerkesztette még </string>
     <string name="contribution_tab">Hozzájárulások</string>
     <string name="pref_contribution_tab_summary">Felhasználói hozzájárulások fül megjelenítése a termékekkel</string>

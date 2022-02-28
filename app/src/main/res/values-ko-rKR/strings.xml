@@ -482,6 +482,7 @@
     <string name="notify_channel_description">내보낸 파일의 위치를 표시하는 알림</string>
     <string name="products_to_be_completed">완제품</string>
     <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">%1$s CET %2$s 에 %3$s가 추가 된 제품</string>
+    <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">%1$s 시에 %2$s CEST에서 %3$s 가 제품의 페이지를 마지막으로 편집</string>
     <!-- TODO: Add the placeholder in the string - important for several languages -->
     <string name="other_editors">상품 페이지는 다음 사람들에 의해 수정되었습니다.</string>
     <string name="product_states">Product States</string>

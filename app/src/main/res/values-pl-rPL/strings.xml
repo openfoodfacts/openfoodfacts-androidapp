@@ -497,6 +497,7 @@
     <string name="notify_channel_description">Powiadomienie wskazujące lokalizację wyeksportowanego pliku</string>
     <string name="products_to_be_completed">Produkty do uzupełnienia</string>
     <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Produkt dodany %1$s o %2$s CET przez %3$s</string>
+    <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Ostatnia edycja strony produktu %1$s o %2$s CEST przez %3$s </string>
     <!-- TODO: Add the placeholder in the string - important for several languages -->
     <string name="other_editors">Strona edytowana także przez </string>
     <string name="product_states">Product States</string>

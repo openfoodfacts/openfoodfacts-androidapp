@@ -492,6 +492,7 @@
     <string name="notify_channel_description">Notificare pentru a arăta locația fișierului exportat</string>
     <string name="products_to_be_completed">Produse ce trebuie să fie finalizate</string>
     <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Produs adăugat pe %1$s la %2$s CET de %3$s</string>
+    <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Ultima editare a paginii produsului %1$s la %2$s CEST de %3$s</string>
     <!-- TODO: Add the placeholder in the string - important for several languages -->
     <string name="other_editors">Pagina produsului totodată editată și de </string>
     <string name="product_states">Stări produse</string>

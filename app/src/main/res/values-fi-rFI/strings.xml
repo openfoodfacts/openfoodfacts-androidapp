@@ -487,6 +487,7 @@
     <string name="notify_channel_description">Ilmoitus viedyn tiedoston sijainnin näyttämiseksi</string>
     <string name="products_to_be_completed">Täydennettävät tuotteet</string>
     <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Tuotteen lisäsi %1$s, %2$s kello %3$s CET</string>
+    <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Viimeisimmän tuotesivun muokkauksen %1$s kello %2$s CEST teki %3$s </string>
     <!-- TODO: Add the placeholder in the string - important for several languages -->
     <string name="other_editors">Tuotesivua on muokannut myös </string>
     <string name="product_states">Product States</string>

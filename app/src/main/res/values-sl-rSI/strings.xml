@@ -497,6 +497,7 @@
     <string name="notify_channel_description">Obvestilo, da prikažete lokacijo izvožene datoteke</string>
     <string name="products_to_be_completed">Izdelki, ki jih je potrebno dokončati</string>
     <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Product added on %1$s at %2$s CET by %3$s</string>
+    <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Zadnja sprememba strani izdelka %1$s na %2$s CEST z %3$s </string>
     <!-- TODO: Add the placeholder in the string - important for several languages -->
     <string name="other_editors">Stran izdelka, je urejal tudi </string>
     <string name="product_states">Product States</string>

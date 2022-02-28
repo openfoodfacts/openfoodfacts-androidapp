@@ -527,6 +527,7 @@
     <string name="products_to_be_completed">crwdns128256:0crwdne128256:0</string>
     <string name="offline_notification_title">crwdns128258:0crwdne128258:0</string>
     <string name="creator_history">crwdns128260:0%1$scrwdnd128260:0%2$scrwdnd128260:0%3$scrwdne128260:0</string>
+    <string name="last_editor_history">crwdns128262:0%1$scrwdnd128262:0%2$scrwdnd128262:0%3$scrwdne128262:0</string>
     <string name="other_editors">crwdns128264:0crwdne128264:0</string>
     <string name="contribution_tab">crwdns128266:0crwdne128266:0</string>
     <string name="pref_contribution_tab_summary">crwdns128268:0crwdne128268:0</string>

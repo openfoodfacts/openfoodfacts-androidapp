@@ -483,6 +483,7 @@
     <string name="notify_channel_description">显示导出文件位置的通知</string>
     <string name="products_to_be_completed">待完成的产品</string>
     <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">产品在 %2$s CET 由 %3$s添加到 %1$s</string>
+    <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">产品页面的最后一次编辑在 %1$s 的 %2$s CEST 由 %3$s </string>
     <!-- TODO: Add the placeholder in the string - important for several languages -->
     <string name="other_editors">产品页面也被以下人员修改 </string>
     <string name="product_states">产品状态</string>

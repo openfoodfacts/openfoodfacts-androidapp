@@ -522,6 +522,7 @@
     <string name="products_to_be_completed">Products to be completed</string>
     <string name="offline_notification_title">Offline contributions you need to send</string>
     <string name="creator_history">Product added on %1$s at %2$s CET by %3$s</string>
+    <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by %3$s </string>
     <string name="other_editors">Product page also edited by </string>
     <string name="contribution_tab">Contributions</string>
     <string name="synthesis_tab">Synthesis</string>

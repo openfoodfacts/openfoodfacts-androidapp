@@ -497,6 +497,7 @@
     <string name="notify_channel_description">התרעה להצגת מיקום הקובץ שייוצא</string>
     <string name="products_to_be_completed">מוצרים שדורשים השלמה</string>
     <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">המוצר נערך ב־%1$s בשעה %2$s לפי מרכז אירופה על ידי %3$s</string>
+    <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">עריכת המוצר האחרונה נערכה ב־%1$s בשעה %2$s לפי שעון קיץ מרכז אירופה על ידי %3$s</string>
     <!-- TODO: Add the placeholder in the string - important for several languages -->
     <string name="other_editors">עמוד המוצר נערך גם על ידי </string>
     <string name="product_states">מצבי המוצרים</string>
