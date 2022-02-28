@@ -4,13 +4,11 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import androidx.activity.result.contract.ActivityResultContract
-import openfoodfacts.github.scrachx.openfood.models.Barcode
-import openfoodfacts.github.scrachx.openfood.models.asBarcode
 
 /**
  * Returns a string containing the product barcode.
  */
-class SimpleScanActivityContract : ActivityResultContract<Unit, Barcode?>() {
+class SimpleScanActivityContract : ActivityResultContract<Unit, String?>() {
 
     companion object {
         const val KEY_SCANNED_BARCODE = "scanned_barcode"
@@ -20,10 +18,10 @@ class SimpleScanActivityContract : ActivityResultContract<Unit, Barcode?>() {
         return Intent(context, SimpleScanActivity::class.java)
     }
 
-    override fun parseResult(resultCode: Int, intent: Intent?): Barcode? {
+    override fun parseResult(resultCode: Int, intent: Intent?): String? {
         val bundle = intent?.extras ?: return null
         if (resultCode == Activity.RESULT_OK && bundle.containsKey(KEY_SCANNED_BARCODE)) {
-            return bundle.getString(KEY_SCANNED_BARCODE, null).asBarcode()
+            return bundle.getString(KEY_SCANNED_BARCODE, null)
         }
         return null
     }

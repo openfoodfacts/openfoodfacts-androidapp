@@ -95,7 +95,7 @@ class ProductViewFragment : Fragment(), IProductView, OnRefreshListener {
     override fun onRefresh() {
         lifecycleScope.launch {
             val newState = try {
-                client.getProductStateFull(productState.product!!.barcode)
+                client.getProductStateFull(productState.product!!.code)
             } catch (err: Exception) {
                 adapterResult.refresh(productState)
                 return@launch

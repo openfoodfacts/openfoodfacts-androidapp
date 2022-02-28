@@ -10,6 +10,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -24,6 +25,7 @@
         android:adjustViewBounds="true"
         android:gravity="center"
         android:scaleType="fitCenter"
+        android:transitionName="@string/product_transition"
         app:layout_constraintBottom_toTopOf="@id/textInfo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,7 +36,6 @@
         android:layout_width="@dimen/button_height_short"
         android:layout_height="@dimen/button_height_short"
         android:layout_marginStart="@dimen/spacing_small"
-        android:layout_marginLeft="@dimen/spacing_small"
         android:layout_marginTop="@dimen/spacing_small"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -44,7 +45,6 @@
         android:layout_width="0dp"
         android:layout_height="@dimen/button_height_short"
         android:layout_marginStart="@dimen/spacing_small"
-        android:layout_marginLeft="@dimen/spacing_small"
         android:layout_marginTop="@dimen/spacing_small"
         android:gravity="start|center_vertical"
         android:textColor="@color/white"

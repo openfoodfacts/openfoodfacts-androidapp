@@ -11,7 +11,7 @@ import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.Utils.NO_DRAWABLE_RESOURCE
 import java.util.*
 
-suspend fun OfflineSavedProduct.toState(client: ProductRepository): ProductState = client.getProductStateFull(barcode.asBarcode())
+suspend fun OfflineSavedProduct.toState(client: ProductRepository): ProductState = client.getProductStateFull(barcode)
 
 suspend fun OfflineSavedProduct.toOnlineProduct(client: ProductRepository) = toState(client).product
 
@@ -27,7 +27,7 @@ fun SearchProduct.getProductBrandsQuantityDetails() = StringBuilder().apply {
     }
 }.toString()
 
-suspend fun SearchProduct.toProduct(client: ProductRepository): Product? = client.getProductStateFull(barcode).product
+suspend fun SearchProduct.toProduct(client: ProductRepository): Product? = client.getProductStateFull(this.code).product
 
 @DrawableRes
 private fun getResourceFromEcoscore(ecoscore: String?) = when (ecoscore?.lowercase(Locale.ROOT)) {

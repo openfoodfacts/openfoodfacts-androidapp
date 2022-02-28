@@ -9,13 +9,12 @@ import com.squareup.picasso.Picasso
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.images.IMAGE_EDIT_SIZE_FILE
 import openfoodfacts.github.scrachx.openfood.images.getImageUrl
-import openfoodfacts.github.scrachx.openfood.models.Barcode
 
 class ProductPhotoViewHolder(itemView: View, private val picasso: Picasso) : RecyclerView.ViewHolder(itemView) {
     private val editBtn: Button = itemView.findViewById(R.id.buttonOptions)
     private val imageView: ImageView = itemView.findViewById(R.id.img)
 
-    fun setImage(barcode: Barcode, imageName: String) {
+    fun setImage(barcode: String, imageName: String) {
         val finalUrlString = getImageUrl(barcode, imageName, IMAGE_EDIT_SIZE_FILE)
         Log.d(LOG_TAG, "Loading image $finalUrlString...")
         picasso.load(finalUrlString)

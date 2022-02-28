@@ -4,10 +4,10 @@ import android.content.Context
 import android.util.Log
 import androidx.core.content.edit
 import com.fasterxml.jackson.databind.JsonNode
-import com.fasterxml.jackson.databind.node.ObjectNode
 import dagger.hilt.android.qualifiers.ApplicationContext
 import io.reactivex.Single
 import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.rx2.rxCompletable
 import kotlinx.coroutines.rx2.rxSingle
 import kotlinx.coroutines.withContext
 import okhttp3.MediaType
@@ -30,6 +30,7 @@ import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
 import openfoodfacts.github.scrachx.openfood.utils.*
 import java.io.File
 import java.io.IOException
+import java.util.*
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -46,18 +47,18 @@ class ProductRepository @Inject constructor(
 ) {
 
     suspend fun getProductStateFull(
-        barcode: Barcode,
+        barcode: String,
         fields: String = getAllFields(localeManager.getLanguage()),
         userAgent: String = Utils.HEADER_USER_AGENT_SEARCH
     ): ProductState {
-        sentryAnalytics.setBarcode(barcode.b)
+        sentryAnalytics.setBarcode(barcode)
         return withContext(IO) {
-            rawApi.getProductByBarcode(barcode.b, fields, localeManager.getLanguage(), getUserAgent(userAgent))
+            rawApi.getProductByBarcode(barcode, fields, localeManager.getLanguage(), getUserAgent(userAgent))
         }
     }
 
     suspend fun getProductsByBarcode(
-        codes: List<Barcode>,
+        codes: List<String>,
         customHeader: String = Utils.HEADER_USER_AGENT_SEARCH
     ) = rawApi.getProductsByBarcode(
         codes.joinToString(","),
@@ -71,21 +72,17 @@ class ProductRepository @Inject constructor(
      *
      * @param barcode product barcode
      */
-    suspend fun getProductStateWithImages(barcode: Barcode): ProductState = withContext(IO) {
+    suspend fun getProductImages(barcode: String): ProductState = withContext(IO) {
         val fields = Keys.PRODUCT_IMAGES_FIELDS.toMutableSet().also {
             it += Keys.lcProductNameKey(localeManager.getLanguage())
         }.joinToString(",")
 
         rawApi.getProductByBarcode(
-            barcode.b,
+            barcode,
             fields,
             localeManager.getLanguage(),
             getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)
         )
-    }
-
-    suspend fun getProductImages(barcode: Barcode): ObjectNode = withContext(IO) {
-        rawApi.getProductImages(barcode.b)
     }
 
     /**
@@ -253,8 +250,8 @@ class ProductRepository @Inject constructor(
         if (node[Keys.STATUS].asText() != "status ok") throw IOException(node["error"].asText())
     }
 
-    suspend fun editImage(code: Barcode, imgMap: MutableMap<String, String>) = withContext(IO) {
-        rawApi.editImages(code.b, imgMap + getUserInfo())
+    suspend fun editImage(code: String, imgMap: MutableMap<String, String>) = withContext(IO) {
+        rawApi.editImages(code, imgMap + getUserInfo())
     }
 
     /**
@@ -262,9 +259,9 @@ class ProductRepository @Inject constructor(
      *
      * @param code code of the product
      */
-    suspend fun unSelectImage(code: Barcode, field: ProductImageField, language: String): Unit = withContext(IO) {
+    suspend fun unSelectImage(code: String, field: ProductImageField, language: String) = withContext(IO) {
         val imgMap = getUserInfo() + (IMAGE_STRING_ID to getImageStringKey(field, language))
-        rawApi.unSelectImage(code.b, imgMap)
+        rawApi.unSelectImage(code, imgMap)
     }
 
     fun getProductsByOrigin(origin: String, page: Int) = rxSingle(IO) {

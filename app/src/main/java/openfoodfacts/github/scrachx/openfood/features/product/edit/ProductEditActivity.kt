@@ -61,16 +61,14 @@ import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct
 import openfoodfacts.github.scrachx.openfood.models.entities.ToUploadProduct
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
-import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
-import openfoodfacts.github.scrachx.openfood.repositories.OfflineProductRepository
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository.Companion.PNG_EXT
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository.Companion.addToHistory
-import openfoodfacts.github.scrachx.openfood.utils.clearCameraCache
-import openfoodfacts.github.scrachx.openfood.utils.getLoginPreferences
-import openfoodfacts.github.scrachx.openfood.utils.getProductState
-import openfoodfacts.github.scrachx.openfood.utils.hideKeyboard
+import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
+import openfoodfacts.github.scrachx.openfood.repositories.OfflineProductRepository
+import openfoodfacts.github.scrachx.openfood.utils.*
 import java.io.IOException
+import java.util.*
 import javax.inject.Inject
 
 // TODO: 12/10/2021 refactor to use an activity view model shared between fragments of ProductEditActivity
@@ -204,7 +202,7 @@ class ProductEditActivity : BaseActivity() {
             mProduct = productState.product
 
             // Search if the barcode already exists in the OfflineSavedProducts db
-            offlineSavedProduct = offlineRepository.getOfflineProductByBarcode(productState.product!!.barcode)
+            offlineSavedProduct = offlineRepository.getOfflineProductByBarcode(productState.product!!.code)
         }
         if (mEditProduct != null) {
             setTitle(R.string.edit_product_title)
