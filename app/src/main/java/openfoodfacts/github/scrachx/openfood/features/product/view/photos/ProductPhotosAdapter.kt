@@ -23,7 +23,11 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.features.login.LoginActivity
-import openfoodfacts.github.scrachx.openfood.images.*
+import openfoodfacts.github.scrachx.openfood.images.IMAGE_STRING_ID
+import openfoodfacts.github.scrachx.openfood.images.IMG_ID
+import openfoodfacts.github.scrachx.openfood.images.PRODUCT_BARCODE
+import openfoodfacts.github.scrachx.openfood.images.getImageStringKey
+import openfoodfacts.github.scrachx.openfood.models.Barcode
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
@@ -53,7 +57,7 @@ class ProductPhotosAdapter(
 
 
     override fun onBindViewHolder(holder: ProductPhotoViewHolder, position: Int) = holder.run {
-        setImage(product.code, this@ProductPhotosAdapter.images[position])
+        setImage(product.barcode, this@ProductPhotosAdapter.images[position])
         setOnImageClickListener(onImageClick)
         setOnEditClickListener {
             if (!isLoggedIn) {
@@ -127,7 +131,7 @@ class ProductPhotosAdapter(
 
             // Edit photo async
             lifecycleOwner.lifecycle.coroutineScope.launch(Dispatchers.IO) {
-                val response = client.editImage(product.code, imgMap)
+                val response = client.editImage(Barcode(product.code), imgMap)
                 withContext(Dispatchers.Main) { displaySetImageName(response) }
             }
 

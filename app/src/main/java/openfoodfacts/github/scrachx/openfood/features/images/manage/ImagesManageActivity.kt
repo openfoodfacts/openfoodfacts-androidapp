@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package openfoodfacts.github.scrachx.openfood.features
+package openfoodfacts.github.scrachx.openfood.features.images.manage
 
 import android.Manifest
 import android.content.Intent
@@ -21,7 +21,6 @@ import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.ViewTreeObserver.OnPreDrawListener
 import android.widget.AdapterView
@@ -30,6 +29,7 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.edit
@@ -44,9 +44,14 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import logcat.LogPriority.ERROR
+import logcat.LogPriority.WARN
+import logcat.asLog
+import logcat.logcat
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityFullScreenImageBinding
 import openfoodfacts.github.scrachx.openfood.features.adapters.LanguageDataAdapter
+import openfoodfacts.github.scrachx.openfood.features.images.select.ImagesSelectActivity
 import openfoodfacts.github.scrachx.openfood.features.login.LoginActivity
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.images.*
@@ -63,7 +68,6 @@ import org.apache.commons.lang3.StringUtils
 import pl.aprilapps.easyphotopicker.EasyImage
 import smartdevelop.ir.eram.showcaseviewlib.GuideView
 import java.io.File
-import java.util.*
 import javax.inject.Inject
 
 /**
@@ -74,11 +78,11 @@ class ImagesManageActivity : BaseActivity() {
     private var _binding: ActivityFullScreenImageBinding? = null
     private val binding get() = _binding!!
 
+    private val viewModel: ImagesManageViewModel by viewModels()
+
     @Inject
     lateinit var client: ProductRepository
 
-    @Inject
-    lateinit var fileDownloader: FileDownloader
 
     @Inject
     lateinit var picasso: Picasso
@@ -126,7 +130,31 @@ class ImagesManageActivity : BaseActivity() {
             }
         }
 
-        val product = intent.getSerializableExtra(PRODUCT) as Product?
+        viewModel.sendState.observe(this) { result ->
+            result.onFailure {
+                Toast.makeText(this@ImagesManageActivity, it.message, Toast.LENGTH_LONG).show()
+                logcat(ERROR) { it.message + it.asLog() }
+                stopRefresh()
+            }
+
+            reloadProduct()
+            setResult(RESULTCODE_MODIFIED)
+        }
+
+        viewModel.editState.observe(this) { editPhoto ->
+            if (editPhoto.fileUri != null) {
+                //to delete the file after:
+                lastViewedImage = editPhoto.fileUri.toFile()
+                cropRotateExistingImageOnServer(
+                    editPhoto.fileUri,
+                    getString(getResourceIdForEditAction(editPhoto.field)),
+                    editPhoto.transformation
+                )
+            }
+        }
+
+
+        val product = intent.getProduct()
         binding.btnEditImage.visibility = if (product != null) View.VISIBLE else View.INVISIBLE
         binding.btnUnselectImage.visibility = binding.btnEditImage.visibility
         attacher = PhotoViewAttacher(binding.imageViewFullScreen)
@@ -153,9 +181,11 @@ class ImagesManageActivity : BaseActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         product?.let { loadLanguage(it) }
-        binding.comboImageType.setSelection(ApiFields.Keys.TYPE_IMAGE.indexOf(getSelectedType()))
+        binding.comboImageType.setSelection(ApiFields.Keys.TYPE_IMAGE.indexOf(intent.requireSelectedType()))
         updateProductImagesInfo()
         onRefresh(false)
+
+
     }
 
     override fun onDestroy() {
@@ -209,7 +239,7 @@ class ImagesManageActivity : BaseActivity() {
     private fun loadLanguage(product: Product) {
         // We load all available languages for product/type
         val currentLanguage = getCurrentLanguage()
-        val productImageField = getSelectedType()
+        val productImageField = intent.requireSelectedType()
 
         val addedLanguages = product.getAvailableLanguageForImage(productImageField, ImageSize.DISPLAY).toMutableSet()
         val languageForImage = LocaleUtils.getLanguageData(addedLanguages, true).toMutableList()
@@ -237,8 +267,8 @@ class ImagesManageActivity : BaseActivity() {
      * Use to warn the user that there is no image for the selected image.
      */
     private fun updateLanguageStatus(): Boolean {
-        val serializableExtra = getSelectedType()
-        val imageUrl = getCurrentImageUrl()
+        val serializableExtra = intent.requireSelectedType()
+        val imageUrl = intent.getCurrentImageUrl()
         val imgLangCode = getLanguageCodeFromUrl(serializableExtra, imageUrl)
         val appLangCode = getCurrentLanguage()
 
@@ -259,19 +289,17 @@ class ImagesManageActivity : BaseActivity() {
 
     private fun getCurrentLanguage(): String = intent.getStringExtra(LANGUAGE) ?: localeManager.getLanguage()
 
-    private fun updateToolbarTitle(product: Product?) {
-        product?.let {
-            binding.toolbar.title = "${it.getProductName(localeManager.getLanguage()).orEmpty()} / ${binding.comboImageType.selectedItem}"
-        }
+    private fun updateToolbarTitle(product: Product) {
+        binding.toolbar.title = "${product.getProductName(localeManager.getLanguage()).orEmpty()} / ${binding.comboImageType.selectedItem}"
     }
 
     override fun onResume() {
         super.onResume()
-        updateToolbarTitle(getProduct())
+        intent.getProduct()?.let { updateToolbarTitle(it) }
     }
 
     private fun onRefresh(reloadProduct: Boolean) {
-        val imageUrl = getCurrentImageUrl()
+        val imageUrl = intent.getCurrentImageUrl()
         if (reloadProduct || imageUrl == null) reloadProduct()
         else loadImage(imageUrl)
     }
@@ -313,18 +341,18 @@ class ImagesManageActivity : BaseActivity() {
     private fun reloadProduct() {
         if (isFinishing) return
 
-        getProduct()?.let {
+        intent.getProduct()?.let {
             startRefresh(getString(R.string.loading_product, "${it.getProductName(localeManager.getLanguage())}..."))
 
             lifecycleScope.launch {
-                val newState = client.getProductImages(it.code)
+                val newState = client.getProductStateWithImages(it.barcode)
                 val newProduct = newState.product
                 var imageReloaded = false
 
                 if (newProduct != null) {
                     updateToolbarTitle(newProduct)
 
-                    val imgUrl = getCurrentImageUrl()
+                    val imgUrl = intent.getCurrentImageUrl()
                     intent.putExtra(PRODUCT, newProduct)
 
                     val newImgUrl = getImageUrlToDisplay(newProduct)
@@ -349,20 +377,19 @@ class ImagesManageActivity : BaseActivity() {
      * So we load the product images in background.
      * Could be improved by loading only the field "images".
      */
-    private fun updateProductImagesInfo(toDoAfter: () -> Unit = {}) {
-        getProduct()?.let { product ->
+    private fun updateProductImagesInfo(callback: () -> Unit = {}) {
+        intent.getProduct()?.let { product ->
             lifecycleScope.launchWhenCreated {
-                val newState = client.getProductImages(product.code)
+                val newState = client.getProductStateWithImages(product.barcode)
                 newState.product?.let { intent.putExtra(PRODUCT, it) }
-                toDoAfter()
+                callback()
             }
         }
     }
 
     private fun getImageUrlToDisplay(product: Product) =
-        product.getSelectedImage(getCurrentLanguage(), getSelectedType(), ImageSize.DISPLAY)
+        product.getSelectedImage(getCurrentLanguage(), intent.requireSelectedType(), ImageSize.DISPLAY)
 
-    private fun getCurrentImageUrl() = intent.getStringExtra(IMAGE_URL)
 
     /**
      * @see .startRefresh
@@ -387,7 +414,7 @@ class ImagesManageActivity : BaseActivity() {
     }
 
     private fun selectDefaultLanguage() {
-        val lang = LocaleUtils.parseLocale(getProduct()!!.lang).language
+        val lang = LocaleUtils.parseLocale(intent.getProduct()!!.lang).language
         val position = (binding.comboLanguages.adapter as LanguageDataAdapter).getPosition(lang)
         if (position >= 0) {
             binding.comboLanguages.setSelection(position, true)
@@ -402,20 +429,13 @@ class ImagesManageActivity : BaseActivity() {
     private fun unSelectImage() {
         if (cannotEdit(REQUEST_UNSELECT_IMAGE_AFTER_LOGIN)) return
         startRefresh(getString(R.string.unselect_image))
-        lifecycleScope.launch {
-            try {
-                client.unSelectImage(getProduct()!!.code, getSelectedType(), getCurrentLanguage())
-            } catch (err: Exception) {
-                reloadProduct()
-            }
-            setResult(RESULTCODE_MODIFIED)
-            reloadProduct()
-        }
+
+        viewModel.unSelectImage(intent.getProduct()!!, intent.requireSelectedType(), getCurrentLanguage())
     }
 
     private fun selectImage() {
         if (cannotEdit(REQUEST_CHOOSE_IMAGE_AFTER_LOGIN)) return
-        selectImageLauncher.launch(getProduct()!!.code)
+        selectImageLauncher.launch(intent.getProduct()!!.barcode)
     }
 
     /**
@@ -451,51 +471,31 @@ class ImagesManageActivity : BaseActivity() {
     }
 
     private fun updateSelectDefaultLanguageAction() {
-        val isDefault = getProduct()?.lang != null && getCurrentLanguage() == LocaleUtils.parseLocale(getProduct()!!.lang).language
+        val isDefault = intent.getProduct()?.lang != null && getCurrentLanguage() == LocaleUtils.parseLocale(intent.getProduct()!!.lang).language
         binding.btnChooseDefaultLanguage.visibility = if (isDefault) View.INVISIBLE else View.VISIBLE
     }
 
     private fun onStartEditExistingImage() {
         if (cannotEdit(REQUEST_EDIT_IMAGE_AFTER_LOGIN)) return
 
-        val productImageField = getSelectedType()
+        val productImageField = intent.requireSelectedType()
         val language = getCurrentLanguage()
-        val product = this.getProduct()!!
+        val product = this.intent.getProduct()!!
 
         // The rotation/crop set on the server
         val transformation = getScreenTransformation(product, productImageField, language)
 
         // The first time, the images properties are not loaded...
         if (transformation.isEmpty()) {
-            updateProductImagesInfo { editPhoto(productImageField, getScreenTransformation(product, productImageField, language)) }
+            updateProductImagesInfo { viewModel.editPhoto(productImageField, getScreenTransformation(product, productImageField, language)) }
         }
-        editPhoto(productImageField, transformation)
+
+        viewModel.editPhoto(productImageField, transformation)
     }
-
-    private fun editPhoto(field: ProductImageField, transformation: ImageTransformation) {
-        val url = transformation.imageUrl?.takeIf { it.isNotBlank() } ?: return
-
-        lifecycleScope.launchWhenResumed {
-            val fileUri = fileDownloader.download(url)
-            if (fileUri != null) {
-                //to delete the file after:
-                lastViewedImage = fileUri.toFile()
-                cropRotateExistingImageOnServer(
-                    fileUri,
-                    getString(getResourceIdForEditAction(field)),
-                    transformation
-                )
-            }
-        }
-    }
-
-    private fun getProduct() = intent.getSerializableExtra(PRODUCT) as Product?
-
-    private fun requireProduct() = getProduct() ?: error("Cannot start $LOG_TAG without product.")
 
     private fun onLanguageChanged() {
         val data = binding.comboLanguages.selectedItem as LanguageData
-        val product = requireProduct()
+        val product = intent.requireProduct()
         if (data.code != getCurrentLanguage()) {
             intent.putExtra(LANGUAGE, data.code)
             intent.putExtra(IMAGE_URL, getImageUrlToDisplay(product))
@@ -505,13 +505,11 @@ class ImagesManageActivity : BaseActivity() {
         updateSelectDefaultLanguageAction()
     }
 
-    private fun getSelectedType(): ProductImageField = intent.getSerializableExtra(IMAGE_TYPE) as ProductImageField?
-        ?: error("Cannot initialize $LOG_TAG without IMAGE_TYPE")
 
     private fun onImageTypeChanged() {
-        getProduct()?.let {
+        intent.getProduct()?.let {
             val newTypeSelected = ApiFields.Keys.TYPE_IMAGE[binding.comboImageType.selectedItemPosition]
-            val selectedType = getSelectedType()
+            val selectedType = intent.requireSelectedType()
             if (newTypeSelected == selectedType) return
 
             intent.putExtra(IMAGE_TYPE, newTypeSelected)
@@ -581,10 +579,10 @@ class ImagesManageActivity : BaseActivity() {
         if (isResultOk) {
             startRefresh(StringUtils.EMPTY)
             val result = CropImage.getActivityResult(dataFromCropActivity)!!
-            val product = requireProduct()
-            val currentServerTransformation = getInitialServerTransformation(product, getSelectedType(), getCurrentLanguage())
+            val product = intent.requireProduct()
+            val currentServerTransformation = getInitialServerTransformation(product, intent.requireSelectedType(), getCurrentLanguage())
             val newServerTransformation =
-                toServerTransformation(ImageTransformation(result.rotation, result.cropRect), product, getSelectedType(), getCurrentLanguage())
+                toServerTransformation(ImageTransformation(result.rotation, result.cropRect), product, intent.requireSelectedType(), getCurrentLanguage())
             val isModified = currentServerTransformation != newServerTransformation
             if (isModified) {
                 startRefresh(getString(R.string.toastSending))
@@ -598,15 +596,15 @@ class ImagesManageActivity : BaseActivity() {
     }
 
     private fun postEditImage(imgMap: Map<String, String>) {
-        val code = requireProduct().code
+        val barcode = intent.requireProduct().barcode
         val map = imgMap.toMutableMap().apply {
-            put(PRODUCT_BARCODE, code)
-            put(IMAGE_STRING_ID, getImageStringKey(getSelectedType(), getCurrentLanguage()))
+            put(PRODUCT_BARCODE, barcode.b)
+            put(IMAGE_STRING_ID, getImageStringKey(intent.requireSelectedType(), getCurrentLanguage()))
         }
         binding.imageViewFullScreen.visibility = View.INVISIBLE
 
         lifecycleScope.launch(Dispatchers.IO) {
-            client.editImage(code, map)
+            client.editImage(barcode, map)
             setResult(RESULTCODE_MODIFIED)
             withContext(Dispatchers.Main) { reloadProduct() }
         }
@@ -614,10 +612,10 @@ class ImagesManageActivity : BaseActivity() {
 
     private fun deleteLocalFiles() {
         lastViewedImage?.let {
-            if (!it.delete()) {
-                Log.w(ImagesManageActivity::class.simpleName, "Cannot delete file ${lastViewedImage!!.absolutePath}.")
-            } else {
+            if (it.delete()) {
                 lastViewedImage = null
+            } else {
+                logcat(WARN) { "Cannot delete file ${lastViewedImage!!.absolutePath}." }
             }
         }
     }
@@ -642,8 +640,8 @@ class ImagesManageActivity : BaseActivity() {
     private fun onPhotoReturned(newPhotoFile: File) {
         startRefresh(getString(R.string.uploading_image))
         val image = ProductImage(
-            requireProduct().code,
-            getSelectedType(),
+            intent.requireProduct().code,
+            intent.requireSelectedType(),
             newPhotoFile,
             getCurrentLanguage()
         ).apply {
@@ -656,7 +654,7 @@ class ImagesManageActivity : BaseActivity() {
                 client.postImg(image, true)
             } catch (err: Exception) {
                 Toast.makeText(this@ImagesManageActivity, err.message, Toast.LENGTH_LONG).show()
-                Log.e(ImagesManageActivity::class.simpleName, err.message, err)
+                logcat(ERROR) { err.message + err.asLog() }
                 stopRefresh()
             }
             reloadProduct()
@@ -676,5 +674,14 @@ class ImagesManageActivity : BaseActivity() {
             requestCode == REQUEST_EDIT_IMAGE && resultCode == RESULTCODE_MODIFIED
 
         private val LOG_TAG = ImagesManageActivity::class.simpleName
+
+
+        private fun Intent.getProduct(): Product? = getSerializableExtra(PRODUCT) as Product?
+        private fun Intent.requireProduct() = getProduct() ?: error("Cannot start $LOG_TAG without product.")
+
+        private fun Intent.getCurrentImageUrl(): String? = getStringExtra(IMAGE_URL)
+
+        private fun Intent.requireSelectedType(): ProductImageField = getSerializableExtra(IMAGE_TYPE) as ProductImageField?
+            ?: error("Cannot initialize $LOG_TAG without IMAGE_TYPE")
     }
 }

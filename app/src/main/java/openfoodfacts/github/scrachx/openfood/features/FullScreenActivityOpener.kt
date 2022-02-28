@@ -1,6 +1,5 @@
 package openfoodfacts.github.scrachx.openfood.features
 
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
@@ -10,6 +9,8 @@ import androidx.annotation.CheckResult
 import androidx.core.app.ActivityOptionsCompat
 import androidx.fragment.app.Fragment
 import openfoodfacts.github.scrachx.openfood.R
+import openfoodfacts.github.scrachx.openfood.features.images.manage.ImagesManageActivity
+import openfoodfacts.github.scrachx.openfood.features.images.zoom.ImageZoomActivity
 import openfoodfacts.github.scrachx.openfood.images.IMAGE_URL
 import openfoodfacts.github.scrachx.openfood.images.ImageSize
 import openfoodfacts.github.scrachx.openfood.images.createImageBundle
@@ -96,7 +97,7 @@ object FullScreenActivityOpener {
         mImageFront: View,
         language: String
     ) {
-        client.getProductImages(product.code).product?.let { newProduct ->
+        client.getProductStateWithImages(product.barcode).product?.let { newProduct ->
             val imageUrl = newProduct.getSelectedImage(language, imageType, ImageSize.DISPLAY)
             if (!imageUrl.isNullOrBlank()) {
                 openForUrl(activity, client, newProduct, imageType, imageUrl, mImageFront, language)

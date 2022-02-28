@@ -41,7 +41,7 @@ buildscript {
 }
 
 plugins {
-    id("org.sonarqube") version "3.0"
+    id("org.sonarqube") version "3.3"
     id("io.gitlab.arturbosch.detekt") version "1.18.0"
 }
 

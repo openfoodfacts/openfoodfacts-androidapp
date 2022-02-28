@@ -537,7 +537,6 @@
     <string name="products_to_be_completed">Незавершенные продукты</string>
     <string name="offline_notification_title">Оффлайн-вклады, которые необходимо отправить</string>
     <string name="creator_history">Product added on %1$s at %2$s CET by %3$s</string>
-    <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by %3$s </string>
     <string name="other_editors">Страницу продукта также редактировали </string>
     <string name="contribution_tab">Вклад</string>
     <string name="pref_contribution_tab_summary">Показать вкладку участия пользователя с продуктами</string>

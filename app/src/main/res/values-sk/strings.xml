@@ -537,7 +537,6 @@
     <string name="products_to_be_completed">Výrobky, ktoré sa majú dokončiť</string>
     <string name="offline_notification_title">Offline príspevky, ktoré treba poslať</string>
     <string name="creator_history">Product added on %1$s at %2$s CET by %3$s</string>
-    <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by %3$s </string>
     <string name="other_editors">Stránku výrobku upravil aj </string>
     <string name="contribution_tab">Príspevky</string>
     <string name="pref_contribution_tab_summary">Zobraziť kartu príspevkov používateľov spolu s výrobkami</string>

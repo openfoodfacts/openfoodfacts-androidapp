@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package openfoodfacts.github.scrachx.openfood.features
+package openfoodfacts.github.scrachx.openfood.features.images.select
 
 import android.Manifest.permission
 import android.content.Context
@@ -23,9 +23,9 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContract
+import androidx.activity.viewModels
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
@@ -35,8 +35,8 @@ import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.images.IMAGE_FILE
 import openfoodfacts.github.scrachx.openfood.images.IMG_ID
 import openfoodfacts.github.scrachx.openfood.images.PRODUCT_BARCODE
-import openfoodfacts.github.scrachx.openfood.images.extractImagesNameSortedByUploadTimeDesc
-import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
+import openfoodfacts.github.scrachx.openfood.models.Barcode
+import openfoodfacts.github.scrachx.openfood.models.asBarcode
 import openfoodfacts.github.scrachx.openfood.utils.MY_PERMISSIONS_REQUEST_STORAGE
 import openfoodfacts.github.scrachx.openfood.utils.PhotoReceiverHandler
 import openfoodfacts.github.scrachx.openfood.utils.isAllGranted
@@ -54,13 +54,11 @@ class ImagesSelectActivity : BaseActivity() {
     lateinit var picasso: Picasso
 
     @Inject
-    lateinit var productsApi: ProductsAPI
-
-    @Inject
     lateinit var sharedPreferences: SharedPreferences
 
     private lateinit var adapter: ProductImagesSelectionAdapter
 
+    private val viewModel: ImageSelectViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivityProductImagesListBinding.inflate(layoutInflater)
@@ -75,13 +73,10 @@ class ImagesSelectActivity : BaseActivity() {
         binding.btnChooseImage.setOnClickListener { chooseImage() }
 
         // Get intent data
-        val code = intent.getStringExtra(PRODUCT_BARCODE) ?: error("Cannot start activity without product barcode.")
-        loadProductImages(code)
-    }
+        val code = intent.getStringExtra(PRODUCT_BARCODE)?.asBarcode() ?: error("Cannot start activity without product barcode.")
+        viewModel.setBarcode(code)
 
-    private fun loadProductImages(code: String) {
-        lifecycleScope.launchWhenCreated {
-            val imageNames = productsApi.getProductImages(code).extractImagesNameSortedByUploadTimeDesc()
+        viewModel.imageNames.observe(this) { imageNames ->
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
             // Check if user is logged in
@@ -92,6 +87,7 @@ class ImagesSelectActivity : BaseActivity() {
             binding.imagesRecycler.adapter = adapter
             binding.imagesRecycler.layoutManager = GridLayoutManager(this@ImagesSelectActivity, 3)
         }
+
     }
 
     private fun setSelectedImage(selectedPosition: Int) {
@@ -161,9 +157,7 @@ class ImagesSelectActivity : BaseActivity() {
 
     companion object {
         const val TOOLBAR_TITLE = "TOOLBAR_TITLE"
-        private val LOG_TAG = ImagesSelectActivity::class.simpleName
 
-        @JvmStatic
         fun start(context: Context, toolbarTitle: String, productCode: String) = context.startActivity(Intent(context, this::class.java).apply {
             putExtra(TOOLBAR_TITLE, toolbarTitle)
             putExtra(PRODUCT_BARCODE, productCode)
@@ -171,10 +165,10 @@ class ImagesSelectActivity : BaseActivity() {
 
         class SelectImageContract(
             private val toolbarTitle: String
-        ) : ActivityResultContract<String, Pair<String?, File?>>() {
-            override fun createIntent(context: Context, barcode: String) = Intent(context, ImagesSelectActivity::class.java).apply {
+        ) : ActivityResultContract<Barcode, Pair<String?, File?>>() {
+            override fun createIntent(context: Context, input: Barcode) = Intent(context, ImagesSelectActivity::class.java).apply {
                 putExtra(TOOLBAR_TITLE, toolbarTitle)
-                putExtra(PRODUCT_BARCODE, barcode)
+                putExtra(PRODUCT_BARCODE, input.b)
             }
 
             override fun parseResult(resultCode: Int, intent: Intent?) =
