@@ -537,7 +537,6 @@
     <string name="products_to_be_completed">מוצרים שדורשים השלמה</string>
     <string name="offline_notification_title">תרומות בלתי מקוונות שעליך לשלוח</string>
     <string name="creator_history">Product added on %1$s at %2$s CET by %3$s</string>
-    <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by %3$s </string>
     <string name="other_editors">עמוד המוצר נערך גם על ידי </string>
     <string name="contribution_tab">תרומות</string>
     <string name="pref_contribution_tab_summary">הצגת לשונית תרומות משתמשים עם מוצרים</string>
