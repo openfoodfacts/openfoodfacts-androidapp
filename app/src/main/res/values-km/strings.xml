@@ -159,7 +159,7 @@
     <string name="search_button">ស្វែងរក</string>
     <string name="alert_dialog_warning_title">ការព្រមាន!</string>
     <string name="alert_dialog_warning_msg_user">អ្នកប្រើ / ពាក្យសម្ងាត់ត្រូវបានផ្លាស់ប្តូរ, សូមធ្វើបច្ចុប្បន្នភាពព័ត៌មាន</string>
-    <string name="toast_retrieving">Loading...</string>
+    <string name="toast_retrieving">Loading…</string>
     <string name="txtBarcode">បារកូដ:</string>
     <string name="txtCategories">ប្រភេទ:</string>
     <string name="txtLabels">ស្លាក, វិញ្ញាបនប័ត្រ, រង្វាន់:</string>
@@ -195,8 +195,8 @@
     <string name="hintBrand">Brand</string>
     <string name="txtSendAll">Upload all</string>
     <string name="txtPictureNeededDialogNo">Discard</string>
-    <string name="toastSending">Uploading...</string>
-    <string name="txtLoading">Loading...</string>
+    <string name="toastSending">Uploading…</string>
+    <string name="txtLoading">Loading…</string>
     <string name="productSavedToast">Product saved, thanks!</string>
     <string name="txtBarcodeRequire">Barcode required</string>
     <string name="txtBarcodeNotValid">លេខកូដមិនត្រឹមត្រូវ</string>
@@ -254,7 +254,7 @@
     <string name="title_clear_history_dialog">Clear</string>
     <string name="text_clear_history_dialog">Do you want to clear all your scan history?</string>
     <string name="export_csv_history">Export CSV</string>
-    <string name="txt_exporting_history">Exporting history...</string>
+    <string name="txt_exporting_history">Exporting history…</string>
     <string name="txt_history_exported">History exported</string>
     <string name="permision_write_external_storage">Write external storage permission is needed to export history.</string>
     <string name="no_brand">No Brand</string>

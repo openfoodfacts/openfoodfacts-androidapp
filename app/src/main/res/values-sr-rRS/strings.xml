@@ -205,7 +205,7 @@
     <string name="hintBrand">Brend</string>
     <string name="txtSendAll">Pošaljite sve</string>
     <string name="txtPictureNeededDialogNo">Discard</string>
-    <string name="toastSending">Otpremanje...</string>
+    <string name="toastSending">Otpremanje…</string>
     <string name="txtLoading">Učitavam</string>
     <string name="productSavedToast">Product saved, thanks!</string>
     <string name="txtBarcodeRequire">Barkod je neophodan</string>
@@ -264,7 +264,7 @@
     <string name="title_clear_history_dialog">Obriši</string>
     <string name="text_clear_history_dialog">Do you want to clear all your scan history?</string>
     <string name="export_csv_history">Izvezi CSV</string>
-    <string name="txt_exporting_history">Izvoz istorije u toku...</string>
+    <string name="txt_exporting_history">Izvoz istorije u toku…</string>
     <string name="txt_history_exported">Istorija izvezena</string>
     <string name="permision_write_external_storage">Dozvola za upis na eksternu memorije je potrebna za izvoz istorije.</string>
     <string name="no_brand">No Brand</string>
