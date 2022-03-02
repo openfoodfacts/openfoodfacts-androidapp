@@ -85,7 +85,6 @@ import openfoodfacts.github.scrachx.openfood.utils.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import java.io.IOException
-import java.util.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
