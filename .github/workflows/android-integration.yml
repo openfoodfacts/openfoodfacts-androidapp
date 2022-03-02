@@ -159,16 +159,13 @@ jobs:
           distribution: 'adopt'
           java-version: '11'
 
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
-
       - name: Generate documentation
         uses: gradle/gradle-build-action@v2.1.3
         with:
           arguments: dokkaHtml
 
       - name: Deploy documentation to Github Pages
-        if: github.event_name == 'push'
+        if: github.event_name == 'push' && github.ref == 'refs/heads/develop'
         uses: JamesIves/github-pages-deploy-action@v4.2.5
         with:
           branch: gh-pages
