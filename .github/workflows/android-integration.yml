@@ -144,6 +144,7 @@ jobs:
   build_deploy_pages:
     name: Deploy dokka to GitHub Pages
     runs-on: ubuntu-20.04
+    if: github.event_name == 'push' && github.ref == 'refs/heads/develop'
 
     needs:
       - assemble_apk
@@ -165,7 +166,6 @@ jobs:
           arguments: dokkaHtml
 
       - name: Deploy documentation to Github Pages
-        if: github.event_name == 'push' && github.ref == 'refs/heads/develop'
         uses: JamesIves/github-pages-deploy-action@v4.2.5
         with:
           branch: gh-pages
