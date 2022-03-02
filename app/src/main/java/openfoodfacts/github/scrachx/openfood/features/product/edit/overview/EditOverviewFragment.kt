@@ -73,7 +73,6 @@ import openfoodfacts.github.scrachx.openfood.utils.*
 import org.apache.commons.lang3.StringUtils
 import org.jetbrains.annotations.Contract
 import java.io.File
-import java.util.*
 import javax.inject.Inject
 
 /**
