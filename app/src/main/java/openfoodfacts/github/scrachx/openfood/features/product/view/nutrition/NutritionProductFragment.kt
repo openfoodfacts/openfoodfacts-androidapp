@@ -59,8 +59,8 @@ import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabsHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentNutritionProductBinding
 import openfoodfacts.github.scrachx.openfood.features.FullScreenActivityOpener
-import openfoodfacts.github.scrachx.openfood.features.adapters.NutrimentsGridAdapter
 import openfoodfacts.github.scrachx.openfood.features.images.manage.ImagesManageActivity
+import openfoodfacts.github.scrachx.openfood.features.adapters.NutrimentsGridAdapter
 import openfoodfacts.github.scrachx.openfood.features.login.LoginActivity
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_STATE
@@ -70,8 +70,7 @@ import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
 import openfoodfacts.github.scrachx.openfood.features.shared.adapters.NutrientLevelListAdapter
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
 import openfoodfacts.github.scrachx.openfood.models.*
-import openfoodfacts.github.scrachx.openfood.models.MeasurementUnit.ENERGY_KCAL
-import openfoodfacts.github.scrachx.openfood.models.MeasurementUnit.ENERGY_KJ
+import openfoodfacts.github.scrachx.openfood.models.MeasurementUnit.*
 import openfoodfacts.github.scrachx.openfood.models.entities.SendProduct
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository

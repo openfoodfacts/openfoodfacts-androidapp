@@ -97,7 +97,7 @@ object FullScreenActivityOpener {
         mImageFront: View,
         language: String
     ) {
-        client.getProductStateWithImages(product.barcode).product?.let { newProduct ->
+        client.getProductImages(product.code).product?.let { newProduct ->
             val imageUrl = newProduct.getSelectedImage(language, imageType, ImageSize.DISPLAY)
             if (!imageUrl.isNullOrBlank()) {
                 openForUrl(activity, client, newProduct, imageType, imageUrl, mImageFront, language)

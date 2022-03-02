@@ -45,7 +45,7 @@ fun getInitialServerTransformation(
 
     return ImageTransformation().apply {
         imageId = initImageId
-        imageUrl = getImageUrl(product.barcode, initImageId, IMAGE_EDIT_SIZE_FILE)
+        imageUrl = getImageUrl(product.code, initImageId, IMAGE_EDIT_SIZE_FILE)
         rotationInDegree = getImageRotation(imageDetails)
 
         getImageCropRect(imageDetails)?.let { cropRectangle = it.toRect() }

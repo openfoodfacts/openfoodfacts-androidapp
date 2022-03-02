@@ -26,7 +26,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.Single
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
-import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.rx2.await
 import kotlinx.coroutines.withContext
@@ -366,8 +365,8 @@ class ProductSearchActivity : BaseActivity() {
                 throwable = err
                 null
             }
-            if (isActive)
-                displaySearch(throwable == null, search, noMatchMsg, extendedMsg)
+
+            displaySearch(throwable == null, search, noMatchMsg, extendedMsg)
         }
     }
 
