@@ -5,11 +5,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import okhttp3.RequestBody
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
-import openfoodfacts.github.scrachx.openfood.models.Barcode
 import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField.*
-import openfoodfacts.github.scrachx.openfood.models.asBarcode
 import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct
 import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProductDao
 import openfoodfacts.github.scrachx.openfood.models.eventbus.ProductNeedsRefreshEvent
@@ -19,6 +17,7 @@ import openfoodfacts.github.scrachx.openfood.utils.list
 import openfoodfacts.github.scrachx.openfood.utils.unique
 import org.greenrobot.eventbus.EventBus
 import java.io.File
+import java.util.*
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -59,9 +58,9 @@ class OfflineProductRepository @Inject constructor(
         else getOfflineProductsNotSynced().isNotEmpty()
     }
 
-    fun getOfflineProductByBarcode(barcode: Barcode): OfflineSavedProduct? {
+    fun getOfflineProductByBarcode(barcode: String): OfflineSavedProduct? {
         return daoSession.offlineSavedProductDao.unique {
-            where(OfflineSavedProductDao.Properties.Barcode.eq(barcode.b))
+            where(OfflineSavedProductDao.Properties.Barcode.eq(barcode))
         }
     }
 
@@ -96,7 +95,7 @@ class OfflineProductRepository @Inject constructor(
                 Log.i(LOG_TAG, "Product ${product.barcode} uploaded.")
 
                 // Refresh product if open
-                EventBus.getDefault().post(ProductNeedsRefreshEvent(product.barcode.asBarcode()))
+                EventBus.getDefault().post(ProductNeedsRefreshEvent(product.barcode))
                 return true
             } else {
                 Log.i(LOG_TAG, "Could not upload product ${product.barcode}. Error code: ${productState.status}")
@@ -151,7 +150,7 @@ class OfflineProductRepository @Inject constructor(
             Log.d(LOG_TAG, "Uploaded image_$imageType for product ${product.barcode}")
 
             // Refresh event
-            EventBus.getDefault().post(ProductNeedsRefreshEvent(product.barcode.asBarcode()))
+            EventBus.getDefault().post(ProductNeedsRefreshEvent(product.barcode))
             true
         } catch (e: Exception) {
             Log.e(LOG_TAG, e.message, e)

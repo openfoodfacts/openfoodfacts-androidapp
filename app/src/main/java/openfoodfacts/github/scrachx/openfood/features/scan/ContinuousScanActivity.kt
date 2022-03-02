@@ -20,11 +20,8 @@ import android.content.SharedPreferences
 import android.hardware.Camera
 import android.os.Bundle
 import android.util.Log
+import android.view.*
 import android.view.Gravity.CENTER
-import android.view.KeyEvent
-import android.view.MenuItem
-import android.view.View
-import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -60,7 +57,7 @@ import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsView
 import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityContinuousScanBinding
-import openfoodfacts.github.scrachx.openfood.features.images.manage.ImagesManageActivity
+import openfoodfacts.github.scrachx.openfood.features.ImagesManageActivity
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity
 import openfoodfacts.github.scrachx.openfood.features.product.view.IProductView
 import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewActivity.ShowIngredientsAction
@@ -72,7 +69,10 @@ import openfoodfacts.github.scrachx.openfood.features.product.view.summary.Summa
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.selectNavigationItem
-import openfoodfacts.github.scrachx.openfood.models.*
+import openfoodfacts.github.scrachx.openfood.models.CameraState
+import openfoodfacts.github.scrachx.openfood.models.DaoSession
+import openfoodfacts.github.scrachx.openfood.models.InvalidBarcodeDao
+import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct
 import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProductDao
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenHelper
@@ -85,6 +85,7 @@ import openfoodfacts.github.scrachx.openfood.utils.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import java.io.IOException
+import java.util.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -132,8 +133,8 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
 
     private val settings by lazy { getAppPreferences() }
 
-    private var productJob: Job? = null
-    private var hintBarcodeJob: Job? = null
+    private var productDisp: Job? = null
+    private var hintBarcodeDisp: Job? = null
 
 
     private var cameraState = 0
@@ -152,7 +153,7 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
 
     private var offlineSavedProduct: OfflineSavedProduct? = null
     private var product: Product? = null
-    internal var lastBarcode: Barcode? = null
+    internal var lastBarcode: String? = null
     internal var productViewFragment: ProductViewFragment? = null
 
     private lateinit var cameraSettingMenu: PopupMenu
@@ -173,7 +174,7 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
         binding.barcodeScanner.pause()
         mlKitView.stopCameraPreview()
         binding.imageForScreenshotGenerationOnly.visibility = View.VISIBLE
-        setShownProduct(barcode.asBarcode())
+        setShownProduct(barcode)
     }
 
     /**
@@ -181,11 +182,11 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
      *
      * @param barcode Barcode to be searched
      */
-    private fun setShownProduct(barcode: Barcode) {
+    private fun setShownProduct(barcode: String) {
         if (isFinishing) return
 
         // Dispose the previous call if not ended.
-        productJob?.cancel()
+        productDisp?.cancel()
 
         // First, try to show if we have an offline saved product in the db
         offlineSavedProduct = offlineProductRepository.getOfflineProductByBarcode(barcode).also { product ->
@@ -193,7 +194,7 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
         }
 
         // Then query the online db
-        productJob = lifecycleScope.launch(Dispatchers.Main) {
+        productDisp = lifecycleScope.launch(Dispatchers.Main) {
 
             hideAllViews()
             quickViewBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
@@ -241,7 +242,7 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
                 this@ContinuousScanActivity.product = product
 
                 // Add product to scan history
-                productJob = lifecycleScope.launch { client.addToHistory(product) }
+                productDisp = lifecycleScope.launch { client.addToHistory(product) }
 
                 showAllViews()
 
@@ -321,7 +322,7 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
 
     private fun tryDisplayOffline(
         offlineSavedProduct: OfflineSavedProduct?,
-        barcode: Barcode,
+        barcode: String,
         @StringRes errorMsg: Int
     ) = if (offlineSavedProduct != null) showOfflineSavedDetails(offlineSavedProduct)
     else showProductNotFound(getString(errorMsg, barcode))
@@ -423,9 +424,9 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
         quickViewBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
     }
 
-    private fun navigateToProductAddition(barcode: Barcode) {
+    private fun navigateToProductAddition(productBarcode: String) {
         navigateToProductAddition(Product().apply {
-            code = barcode.b
+            code = productBarcode
             lang = localeManager.getLanguage()
         })
     }
@@ -485,7 +486,7 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
         // The system bars are visible.
         hideSystemUI()
 
-        hintBarcodeJob = lifecycleScope.launch {
+        hintBarcodeDisp = lifecycleScope.launch {
             delay(15 * 1000)
 
             if (productShowing) return@launch
@@ -532,7 +533,9 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
             mlKitView.onOverlayClickListener = {
                 quickViewBehavior.state = BottomSheetBehavior.STATE_HIDDEN
             }
-            mlKitView.barcodeScannedCallback = { mlBarcodeCallback(it) }
+            mlKitView.barcodeScannedCallback = {
+                mlBarcodeCallback(it)
+            }
         }
 
         binding.quickViewSearchByBarcode.setOnEditorActionListener(barcodeInputListener)
@@ -542,21 +545,20 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
         setupPopupMenu()
     }
 
-    private fun mlBarcodeCallback(barcodeStr: String) {
-        hintBarcodeJob?.cancel()
+    private fun mlBarcodeCallback(barcodeValue: String) {
+        hintBarcodeDisp?.cancel()
 
         // Prevent duplicate scans
-        val barcode = barcodeStr.asBarcode()
-        if (barcodeStr.isEmpty() || barcode == lastBarcode) return
+        if (barcodeValue.isEmpty() || barcodeValue == lastBarcode) return
 
         val invalidBarcode = daoSession.invalidBarcodeDao.unique {
-            where(InvalidBarcodeDao.Properties.Barcode.eq(barcodeStr))
+            where(InvalidBarcodeDao.Properties.Barcode.eq(barcodeValue))
         }
 
         // Scanned barcode is in the list of invalid barcodes, do nothing
         if (invalidBarcode != null) return
 
-        lastBarcode = barcode.also { if (!isFinishing) setShownProduct(it) }
+        lastBarcode = barcodeValue.also { if (!isFinishing) setShownProduct(it) }
     }
 
     override fun onStart() {
@@ -583,7 +585,7 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
-        productJob?.cancel()
+        productDisp?.cancel()
         super.onSaveInstanceState(outState)
     }
 
@@ -605,7 +607,7 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
         mlKitView.detach()
 
         // Dispose all RxJava disposable
-        hintBarcodeJob?.cancel()
+        hintBarcodeDisp?.cancel()
 
         // Remove bottom sheet callback as it uses binding
         quickViewBehavior.removeBottomSheetCallback(bottomSheetCallback)
@@ -728,7 +730,7 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
                 }
                 R.id.troubleScanning -> {
                     hideAllViews()
-                    hintBarcodeJob?.cancel()
+                    hintBarcodeDisp?.cancel()
                     binding.quickView.setOnClickListener(null)
                     binding.quickViewSearchByBarcode.text = null
                     binding.quickViewSearchByBarcode.visibility = View.VISIBLE
@@ -784,22 +786,20 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
                 textView.error = getString(R.string.txtBarcodeNotValid)
                 return true
             }
-            val barcode = barcodeText.asBarcode()
-            lastBarcode = barcode
+            lastBarcode = barcodeText
 
             textView.visibility = View.GONE
-            setShownProduct(barcode)
+            setShownProduct(barcodeText)
             return true
         }
     }
 
     private inner class BarcodeScannerCallback : BarcodeCallback {
         override fun barcodeResult(result: BarcodeResult) {
-            hintBarcodeJob?.cancel()
+            hintBarcodeDisp?.cancel()
 
             // Prevent duplicate scans
-            val barcode = result.text.asBarcode()
-            if (result.text == null || result.text.isEmpty() || barcode == lastBarcode) return
+            if (result.text == null || result.text.isEmpty() || result.text == lastBarcode) return
 
             val invalidBarcode = daoSession.invalidBarcodeDao.unique {
                 where(InvalidBarcodeDao.Properties.Barcode.eq(result.text))
@@ -810,10 +810,10 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
             if (beepActive) {
                 beepManager.playBeepSound()
             }
-            lastBarcode = barcode
+            lastBarcode = result.text
             if (!isFinishing) {
-                setShownProduct(barcode)
-                matomoAnalytics.trackEvent(AnalyticsEvent.ScannedBarcode(barcode))
+                setShownProduct(result.text)
+                matomoAnalytics.trackEvent(AnalyticsEvent.ScannedBarcode(result.text))
             }
         }
 

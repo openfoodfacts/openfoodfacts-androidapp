@@ -12,7 +12,6 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
 import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
-import openfoodfacts.github.scrachx.openfood.models.Barcode
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveName
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
@@ -40,7 +39,7 @@ class ProductCompareViewModel @Inject constructor(
     private val _loadingVisibleFlow = MutableStateFlow(false)
     val loadingVisibleFlow = _loadingVisibleFlow.asStateFlow()
 
-    fun barcodeDetected(barcode: Barcode) {
+    fun barcodeDetected(barcode: String) {
         viewModelScope.launch {
             if (isProductAlreadyAdded(barcode)) {
                 emitSideEffect(SideEffect.ProductAlreadyAdded)
@@ -52,7 +51,7 @@ class ProductCompareViewModel @Inject constructor(
 
     fun addProductToCompare(product: Product) {
         viewModelScope.launch(dispatchers.Default) {
-            if (isProductAlreadyAdded(product.barcode)) {
+            if (isProductAlreadyAdded(product.code)) {
                 emitSideEffect(SideEffect.ProductAlreadyAdded)
             } else {
                 _loadingVisibleFlow.emit(true)
@@ -72,8 +71,8 @@ class ProductCompareViewModel @Inject constructor(
         return localeManager.getLanguage()
     }
 
-    private fun isProductAlreadyAdded(barcode: Barcode): Boolean {
-        return _productsFlow.value.any { it.product.barcode == barcode }
+    private fun isProductAlreadyAdded(barcode: String): Boolean {
+        return _productsFlow.value.any { it.product.code == barcode }
     }
 
     private fun updateProductList(item: CompareProduct) {
@@ -94,7 +93,7 @@ class ProductCompareViewModel @Inject constructor(
             .filter { it.isNotNull }
     }
 
-    private suspend fun fetchProduct(barcode: Barcode) {
+    private suspend fun fetchProduct(barcode: String) {
         _loadingVisibleFlow.emit(true)
         withContext(dispatchers.IO) {
             try {

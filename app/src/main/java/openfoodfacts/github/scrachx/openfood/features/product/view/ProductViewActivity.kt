@@ -54,9 +54,7 @@ import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.selectNavigationItem
 import openfoodfacts.github.scrachx.openfood.listeners.OnRefreshListener
-import openfoodfacts.github.scrachx.openfood.models.Barcode
 import openfoodfacts.github.scrachx.openfood.models.ProductState
-import openfoodfacts.github.scrachx.openfood.models.asBarcode
 import openfoodfacts.github.scrachx.openfood.models.eventbus.ProductNeedsRefreshEvent
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.Utils
@@ -122,7 +120,7 @@ class ProductViewActivity : BaseActivity(), IProductView, OnRefreshListener {
      *
      * @param barcode from the URL.
      */
-    private suspend fun fetchProduct(barcode: Barcode) = try {
+    private suspend fun fetchProduct(barcode: String) = try {
         client.getProductStateFull(barcode = barcode, userAgent = Utils.HEADER_USER_AGENT_SCAN)
     } catch (err: Exception) {
         Log.w(this::class.simpleName, "Failed to load product $barcode.", err)
@@ -156,7 +154,7 @@ class ProductViewActivity : BaseActivity(), IProductView, OnRefreshListener {
 
     @Subscribe
     fun onEventBusProductNeedsRefreshEvent(event: ProductNeedsRefreshEvent) {
-        if (event.barcode == productState!!.product!!.barcode) {
+        if (event.barcode == productState!!.product!!.code) {
             onRefresh()
         }
     }
@@ -202,7 +200,7 @@ class ProductViewActivity : BaseActivity(), IProductView, OnRefreshListener {
     private fun checkActionFromIntent() = when (intent.action) {
         Intent.ACTION_VIEW -> {
             val data = intent.data
-            val barcode = data.toString().split("/")[4].asBarcode()
+            val barcode = data.toString().split("/")[4]
 
             // Fetch product from server, then initialize views
             lifecycleScope.launch {
