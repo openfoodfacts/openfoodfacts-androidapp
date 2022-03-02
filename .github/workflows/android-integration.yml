@@ -168,6 +168,7 @@ jobs:
           arguments: dokkaHtml
 
       - name: Deploy documentation to Github Pages
+        if: github.event_name == 'push'
         uses: JamesIves/github-pages-deploy-action@v4.2.5
         with:
           branch: gh-pages
