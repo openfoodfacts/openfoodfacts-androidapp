@@ -2,6 +2,7 @@ package openfoodfacts.github.scrachx.openfood.hilt
 
 import dagger.Binds
 import dagger.Module
+import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import kotlinx.coroutines.CoroutineDispatcher
@@ -20,17 +21,17 @@ abstract class CoroutineModule {
     @Singleton
     abstract fun bindCoroutineDispatchers(impl: CoroutineDispatchersDefaultImpl): CoroutineDispatchers
 
-    @Binds
+    @Provides
     @Singleton
     @IODispatcher
     fun bindIODispatcher(impl: CoroutineDispatchersDefaultImpl): CoroutineDispatcher = impl.IO
 
-    @Binds
+    @Provides
     @Singleton
     @MainDispatcher
     fun bindMainDispatcher(impl: CoroutineDispatchersDefaultImpl): CoroutineDispatcher = impl.Main
 
-    @Binds
+    @Provides
     @Singleton
     @DefaultDispatcher
     fun bindDefaultDispatcher(impl: CoroutineDispatchersDefaultImpl): CoroutineDispatcher = impl.Default
