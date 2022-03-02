@@ -21,19 +21,21 @@ abstract class CoroutineModule {
     @Singleton
     abstract fun bindCoroutineDispatchers(impl: CoroutineDispatchersDefaultImpl): CoroutineDispatchers
 
-    @Provides
-    @Singleton
-    @IODispatcher
-    fun bindIODispatcher(impl: CoroutineDispatchersDefaultImpl): CoroutineDispatcher = impl.IO
+    companion object {
+        @Provides
+        @Singleton
+        @IODispatcher
+        fun provideIODispatcher(impl: CoroutineDispatchersDefaultImpl): CoroutineDispatcher = impl.IO
 
-    @Provides
-    @Singleton
-    @MainDispatcher
-    fun bindMainDispatcher(impl: CoroutineDispatchersDefaultImpl): CoroutineDispatcher = impl.Main
+        @Provides
+        @Singleton
+        @MainDispatcher
+        fun provideMainDispatcher(impl: CoroutineDispatchersDefaultImpl): CoroutineDispatcher = impl.Main
 
-    @Provides
-    @Singleton
-    @DefaultDispatcher
-    fun bindDefaultDispatcher(impl: CoroutineDispatchersDefaultImpl): CoroutineDispatcher = impl.Default
+        @Provides
+        @Singleton
+        @DefaultDispatcher
+        fun provideDefaultDispatcher(impl: CoroutineDispatchersDefaultImpl): CoroutineDispatcher = impl.Default
+    }
 
 }
