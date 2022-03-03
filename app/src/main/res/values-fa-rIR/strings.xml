@@ -16,7 +16,7 @@
   -->
 <resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
-        <item quantity="one">شما 1 محصول آفلاین دارید که منتظر کمک به Open Food Facts است</item>
+        <item quantity="one">شما %d محصول آفلاین دارید که منتظر کمک به Open Food Facts است</item>
         <item quantity="other">شما %d آفلاین دارید که منتظر مشارکت در Open Food Facts هستند</item>
     </plurals>
     <plurals name="seconds">

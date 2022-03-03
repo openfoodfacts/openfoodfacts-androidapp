@@ -16,8 +16,8 @@
   -->
 <resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
-        <item quantity="zero">Jums ir 1 bezsaistes produkts, kas gaida pievienošanu Open Food Facts</item>
-        <item quantity="one">Jums ir 1 bezsaistes produkts, kas gaida pievienošanu Open Food Facts</item>
+        <item quantity="zero">Jums ir %d bezsaistes produkts, kas gaida pievienošanu Open Food Facts</item>
+        <item quantity="one">Jums ir %d bezsaistes produkts, kas gaida pievienošanu Open Food Facts</item>
         <item quantity="other">Jums ir %d bezsaistes produktu, kas gaida pievienošanu Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
