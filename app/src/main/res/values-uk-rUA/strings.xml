@@ -16,7 +16,7 @@
   -->
 <resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
-        <item quantity="one">У вас 1 оффлайн продукт, що чекає на внесення до бази Open Food Facts</item>
+        <item quantity="one">У вас %d оффлайн продукт, що чекає на внесення до бази Open Food Facts</item>
         <item quantity="few">У вас %d оффлайн продукти, що чекають на внесення до бази Open Food Facts</item>
         <item quantity="many">У вас %d оффлайн продуктів, що чекають на внесення до бази Open Food Facts</item>
         <item quantity="other">У вас %d оффлайн продуктів, що чекають на внесення до бази Open Food Facts</item>

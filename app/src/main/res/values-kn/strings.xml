@@ -16,7 +16,7 @@
   -->
 <resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
-        <item quantity="one">You have 1 offline product waiting to be contributed to Open Food Facts</item>
+        <item quantity="one">You have %d offline product waiting to be contributed to Open Food Facts</item>
         <item quantity="other">You have %d offline products waiting to be contributed to Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
@@ -164,7 +164,7 @@
     <string name="search_button">ಹುಡುಕಿ</string>
     <string name="alert_dialog_warning_title">ಎಚ್ಚರಿಕೆ</string>
     <string name="alert_dialog_warning_msg_user">ಬಳಕೆದಾರ / ಪಾಸ್ವರ್ಡ್ ಬದಲಾಗಿದೆ, ದಯವಿಟ್ಟು ಮಾಹಿತಿಯನ್ನು ನವೀಕರಿಸಿ</string>
-    <string name="toast_retrieving">Loading...</string>
+    <string name="toast_retrieving">Loading…</string>
     <string name="txtBarcode">ಬಾರ್‌ ಕೋಡ್:</string>
     <string name="txtCategories">ವರ್ಗಗಳು:</string>
     <string name="txtLabels">ಲೇಬಲ್ಗಳು, ಪ್ರಮಾಣೀಕರಣಗಳು, ಪ್ರಶಸ್ತಿಗಳು:</string>
@@ -200,8 +200,8 @@
     <string name="hintBrand">ಬ್ರ್ಯಾಂಡ್</string>
     <string name="txtSendAll">ಎಲ್ಲವನ್ನೂ ಅಪ್ಲೋಡ್ ಮಾಡಿ</string>
     <string name="txtPictureNeededDialogNo">ತಿರಸ್ಕರಿಸು</string>
-    <string name="toastSending">Uploading...</string>
-    <string name="txtLoading">Loading...</string>
+    <string name="toastSending">Uploading…</string>
+    <string name="txtLoading">Loading…</string>
     <string name="productSavedToast">Product saved, thanks!</string>
     <string name="txtBarcodeRequire">ಬಾರ್ಕೋಡ್ ಅಗತ್ಯವಿದೆ</string>
     <string name="txtBarcodeNotValid">ಬಾರ್ಕೋಡ್ ಮಾನ್ಯವಾಗಿಲ್ಲ</string>
@@ -259,7 +259,7 @@
     <string name="title_clear_history_dialog">ತೆರವು ಮಾಡಿ</string>
     <string name="text_clear_history_dialog">Do you want to clear all your scan history?</string>
     <string name="export_csv_history">CSV ರಫ್ತು ಮಾಡಿ</string>
-    <string name="txt_exporting_history">Exporting history...</string>
+    <string name="txt_exporting_history">Exporting history…</string>
     <string name="txt_history_exported">ಇತಿಹಾಸವನ್ನು ರಫ್ತು ಮಾಡಲಾಗಿದೆ</string>
     <string name="permision_write_external_storage">ಇತಿಹಾಸವನ್ನು ರಫ್ತು ಮಾಡಲು ಬಾಹ್ಯ ಸಂಗ್ರಹಣೆ ಅನುಮತಿ ಬರೆಯಿರಿ.</string>
     <string name="no_brand">ಯಾವುದೇ ಬ್ರ್ಯಾಂಡ್ ಇಲ್ಲ</string>

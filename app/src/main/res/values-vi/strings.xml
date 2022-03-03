@@ -159,7 +159,7 @@
     <string name="search_button">Tìm kiếm</string>
     <string name="alert_dialog_warning_title">Warning</string>
     <string name="alert_dialog_warning_msg_user">Người dùng / mật khẩu đã thay đổi, vui lòng cập nhật thông tin</string>
-    <string name="toast_retrieving">Loading...</string>
+    <string name="toast_retrieving">Loading…</string>
     <string name="txtBarcode">Mã vạch :</string>
     <string name="txtCategories">Thể loại :</string>
     <string name="txtLabels">Nhãn, chứng nhận, giải thưởng:</string>
@@ -195,8 +195,8 @@
     <string name="hintBrand">Nhãn hiệu</string>
     <string name="txtSendAll">Tải lên tất cả</string>
     <string name="txtPictureNeededDialogNo">Discard</string>
-    <string name="toastSending">Uploading...</string>
-    <string name="txtLoading">Loading...</string>
+    <string name="toastSending">Uploading…</string>
+    <string name="txtLoading">Loading…</string>
     <string name="productSavedToast">Product saved, thanks!</string>
     <string name="txtBarcodeRequire">Cần mã vạch</string>
     <string name="txtBarcodeNotValid">Mã vạch không hợp lệ</string>
@@ -254,7 +254,7 @@
     <string name="title_clear_history_dialog">Clear</string>
     <string name="text_clear_history_dialog">Do you want to clear all your scan history?</string>
     <string name="export_csv_history">Export CSV</string>
-    <string name="txt_exporting_history">Exporting history...</string>
+    <string name="txt_exporting_history">Exporting history…</string>
     <string name="txt_history_exported">Lịch sử đã được xuất</string>
     <string name="permision_write_external_storage">Viết quyền lưu trữ bên ngoài là cần thiết để xuất lịch sử.</string>
     <string name="no_brand">No Brand</string>

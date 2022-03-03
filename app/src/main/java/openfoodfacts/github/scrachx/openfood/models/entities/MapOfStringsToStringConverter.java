@@ -31,7 +31,7 @@ class MapOfStringsToStringConverter implements PropertyConverter<Map<String, Str
         try {
             ByteArrayInputStream bis = new ByteArrayInputStream(Base64.decode(databaseValue, DEFAULT));
             ObjectInputStream objectInputStream = new ObjectInputStream(bis);
-            @SuppressWarnings("UNCHECKED_CAST")
+            @SuppressWarnings({"UNCHECKED_CAST", "unchecked"})
             final Map<String, String> readMap = (Map<String, String>) objectInputStream.readObject() ;
             decodedResult.putAll(readMap);
         } catch (IOException | ClassNotFoundException e) {

@@ -164,7 +164,7 @@
     <string name="search_button">Издөө</string>
     <string name="alert_dialog_warning_title">Эскертүү</string>
     <string name="alert_dialog_warning_msg_user">Колдонуучу / сырсөз өзгөрүлдү, маалыматты жаңыртыңыз</string>
-    <string name="toast_retrieving">Loading...</string>
+    <string name="toast_retrieving">Loading…</string>
     <string name="txtBarcode">Штрих-код :</string>
     <string name="txtCategories">Категориялар :</string>
     <string name="txtLabels">Маркалар, сертификаттар, сыйлыктар:</string>
@@ -200,8 +200,8 @@
     <string name="hintBrand">Бренд</string>
     <string name="txtSendAll">Баарын жөнөтүү</string>
     <string name="txtPictureNeededDialogNo">Жокко чыгаруу</string>
-    <string name="toastSending">Uploading...</string>
-    <string name="txtLoading">Loading...</string>
+    <string name="toastSending">Uploading…</string>
+    <string name="txtLoading">Loading…</string>
     <string name="productSavedToast">Продукт сакталды, рахмат!</string>
     <string name="txtBarcodeRequire">Штрих-код талап кылынат</string>
     <string name="txtBarcodeNotValid">Штрих-код жараксыз</string>
@@ -259,7 +259,7 @@
     <string name="title_clear_history_dialog">Clear</string>
     <string name="text_clear_history_dialog">Do you want to clear all your scan history?</string>
     <string name="export_csv_history">Export CSV</string>
-    <string name="txt_exporting_history">Exporting history...</string>
+    <string name="txt_exporting_history">Exporting history…</string>
     <string name="txt_history_exported">History exported</string>
     <string name="permision_write_external_storage">Write external storage permission is needed to export history.</string>
     <string name="no_brand">No Brand</string>

@@ -16,7 +16,7 @@
   -->
 <resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
-        <item quantity="one">Vous avez 1 produit hors-ligne en attente d\'être ajouté à Open Food Facts</item>
+        <item quantity="one">Vous avez %d produit hors-ligne en attente d\'être ajouté à Open Food Facts</item>
         <item quantity="other">Vous avez %d produits hors-ligne en attente d\'être ajoutés à Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
@@ -24,15 +24,15 @@
         <item quantity="other">Il y a %d secondes</item>
     </plurals>
     <plurals name="minutes">
-        <item quantity="one">Il y a 1 minute</item>
+        <item quantity="one">Il y a %d minute</item>
         <item quantity="other">Il y a %d minutes</item>
     </plurals>
     <plurals name="hours">
-        <item quantity="one">Il y a 1 heure</item>
+        <item quantity="one">Il y a %d heure</item>
         <item quantity="other">Il y a %d heures</item>
     </plurals>
     <plurals name="days">
-        <item quantity="one">Il y a 1 jour</item>
+        <item quantity="one">Il y a %d jour</item>
         <item quantity="other">Il y a %d jours</item>
     </plurals>
     <string name="action_about">À propos</string>
