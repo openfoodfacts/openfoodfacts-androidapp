@@ -93,7 +93,7 @@ class ProductCompareActivity : BaseActivity() {
                 viewModel.productsFlow
                     .flowWithLifecycle(lifecycle)
                     .distinctUntilChanged()
-                    .collect(::createAdapter)
+                    .collect { createAdapter(it) }
             }
             launch {
                 viewModel.loadingVisibleFlow
