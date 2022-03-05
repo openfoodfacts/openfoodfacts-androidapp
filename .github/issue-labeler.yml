@@ -1,0 +1,177 @@
+# Add/remove 'critical' label if issue contains the words 'urgent' or 'critical'
+analytics:
+    - '(analytics)'
+
+android:
+    - '(android)'
+
+attributes:
+    - '(attributes)'
+    
+category explorer:
+    - '(category explorer)'
+
+critical:
+    - '(critical|urgent)'
+    
+contribution:
+    - '(contribution)'
+    
+darkmode:
+    - '(darkmode|Dark mode)'
+    
+database:
+    - '(database)'
+    
+dev mode:
+    - '(dev mode)'
+
+deeplinking:
+    - '(deeplinking)'
+    
+ecoscore:
+    - '(ecoscore)'
+
+editing:
+    - '(editing)'
+    
+enhancement:
+    - '(enhancement)'
+
+fastlane:
+    - '(fastlane)'
+    
+folksonomy engine:
+    - '(folksonomy engine)'
+
+gamification:
+    - '(gamification)'
+    
+history:
+    - '(history)'
+ 
+help wanted:
+    - '(help wanted)'
+    
+mlkit:
+    - '(mlkit)'
+    
+matomo:
+    - '(matomo)'
+    
+offline:
+    - '(offline)'
+    
+open beauty facts:
+    - '(open beauty facts)'
+ 
+high priority:
+    - '(high priority)'
+    
+ingredients:
+    - '(ingredients)'
+    
+image upload:
+    - '(image upload|photo upload)'
+ 
+local cache:
+    - '(local cache)'
+    
+lists:
+    - '(lists)'
+    
+launch:
+    - '(launch)'
+
+layout:
+    - '(layout)'
+    
+low priority:
+    - '(low priority)'
+
+mockups available:
+    - '(mockups available)'
+
+nutrition facts:
+    - '(nutrition facts)'
+
+onboarding:
+    - '(onboarding)'
+
+preferences:
+    - '(preferences)'
+ 
+personal scoring:
+    - '(personal scoring)'
+ 
+performance:
+    - '(performance)'
+ 
+privacy:
+    - '(privacy)'
+ 
+permissions:
+    - '(permissions)'
+ 
+packaging input:
+    - '(packaging input)'
+
+product page:
+    - '(product page)'
+    
+road to scores:
+    - '(road to scores)'
+  
+robotoff:
+    - '(robotoff)'
+    
+refactoring:
+    - '(Refactoring)'
+    
+scan:
+    - '(scan)'
+    
+sentry:
+    - '(sentry)'
+    
+summary tab:
+    - '(summary tab)'
+    
+splashscreen:
+    - '(splashscreen)' 
+
+search:
+    - '(search)'
+
+screenshot-generation:
+    - '(screenshot-generation)'
+
+svg:
+    - '(svg)'
+
+security:
+    - '(security)'
+
+speed:
+    - '(speed)'
+ 
+sentry:
+    - '(sentry)'
+    
+scanning:
+    - '(scanning)'
+ 
+settings:
+    - '(settings)'
+ 
+scan:
+    - '(scan)'
+
+translations:
+    - '(translations)'
+
+tests:
+    - '(tests|test)'
+
+ui/ux:
+    - '(ui/ux|user interface|user experience)'
