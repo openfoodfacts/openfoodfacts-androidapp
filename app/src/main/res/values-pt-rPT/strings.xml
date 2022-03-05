@@ -16,7 +16,7 @@
   -->
 <resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
-        <item quantity="one">Tem 1 produto armazenado no seu dispositivo à espera de ser enviado para o Open Food Facts</item>
+        <item quantity="one">Tem %d produto armazenado no seu dispositivo à espera de ser enviado para o Open Food Facts</item>
         <item quantity="other">Tem %d produtos armazenados no seu dispositivo à espera de serem enviados para o Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
@@ -487,7 +487,6 @@
     <string name="notify_channel_description">Notificação para mostrar a localização do ficheiro exportado</string>
     <string name="products_to_be_completed">Produtos que precisam ser completados</string>
     <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Produto adicionado em %1$s às %2$s CET por %3$s</string>
-    <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Última edição da página do produto em %1$s às %2$s por %3$s </string>
     <!-- TODO: Add the placeholder in the string - important for several languages -->
     <string name="other_editors">Página do produto também editada por </string>
     <string name="product_states">Estados de produto</string>

@@ -160,7 +160,7 @@
     <string name="alert_dialog_warning_msg_user">Användarnamn/lösenord har ändrats, var vänlig uppdatera informationen</string>
     <string name="toast_retrieving">Laddar…</string>
     <string name="txtBarcode">Streckkod:</string>
-    <string name="txtCategories">Categories:</string>
+    <string name="txtCategories">Kategorier:</string>
     <string name="txtLabels">Labels, certifications, awards: </string>
     <string name="txtEMB">Traceability codes: </string>
     <string name="txtIngredients">Ingredients list: </string>
@@ -282,7 +282,7 @@
     <string name="textCarbonFootprint">Koldioxidutsläpp: </string>
     <string name="packaging_environmentTab">Förpackning:</string>
     <string name="action_search">Sök</string>
-    <string name="search_hint">Sök en produkt</string>
+    <string name="search_hint">Sök efter en produkt</string>
     <string name="number_of_results">Antal resultat: </string>
     <string name="number_of_products">Antal produkter: </string>
     <string name="txt_no_matching__category_products">Åh nej, vi har ingen produkt i den här kategorin, kan du lägga till en?</string>
@@ -419,7 +419,7 @@
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
     <string name="url_nutrient_values">https://world-sv.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">Allmänt</string>
-    <string name="preference_header_privacy">Privacy</string>
+    <string name="preference_header_privacy">Sekretess</string>
     <string name="preference_crash_title">Crash reporting</string>
     <string name="preference_crash_summary">When enabled, crash reports will be sent to the Open Food Facts server automatically, so that we can fix bugs and improve the app.</string>
     <string name="preference_analytics_title">Skicka anonym data</string>
@@ -487,7 +487,6 @@
     <string name="notify_channel_description">Meddelande för att visa den exporterade filens plats</string>
     <string name="products_to_be_completed">Produkter att slutföra</string>
     <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Product added on %1$s at %2$s CET by %3$s</string>
-    <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Last edit of product page on %1$s at %2$s CEST by %3$s </string>
     <!-- TODO: Add the placeholder in the string - important for several languages -->
     <string name="other_editors">Produktsidan har också redigerats av </string>
     <string name="product_states">Product States</string>

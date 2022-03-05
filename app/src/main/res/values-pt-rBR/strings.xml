@@ -16,7 +16,7 @@
   -->
 <resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
-        <item quantity="one">Você tem um produto offline aguardando ser contribuído para o Open Food Facts</item>
+        <item quantity="one">Você tem %d produto offline aguardando ser contribuído para o Open Food Facts</item>
         <item quantity="other">Você tem %d produtos offline aguardando serem contribuídos para o Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
@@ -175,7 +175,7 @@
     <string name="txtNutritionLevelLow">em quantidade baixa</string>
     <string name="txtNutritionLevelModerate">em quantidade moderada</string>
     <string name="txtNutritionLevelHigh">em quantidade elevada</string>
-    <string name="txtSave">Salvar</string>
+    <string name="txtSave">Guardar</string>
     <string name="txtSignIn">Iniciar sessão</string>
     <string name="txtSalt">Sal :</string>
     <string name="txtFat">Gordura</string>
@@ -443,7 +443,7 @@
     <string name="additive_string">Aditivo</string>
     <string name="allergen_string">Alérgeno</string>
     <string name="search_string">Procurar</string>
-    <string name="country_string">Country</string>
+    <string name="country_string">País</string>
     <string name="store_subtitle">Loja</string>
     <string name="packaging_subtitle">Embalagem</string>
     <string name="state_subtitle">Estado</string>
@@ -487,7 +487,6 @@
     <string name="notify_channel_description">Notificação para mostrar a localização do arquivo exportado</string>
     <string name="products_to_be_completed">Produtos a completar</string>
     <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Produto adicionado em %1$s às %2$s CET por %3$s</string>
-    <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Última edição da página do produto em %1$s às %2$s CEST por %3$s </string>
     <!-- TODO: Add the placeholder in the string - important for several languages -->
     <string name="other_editors">Página do produto editada também por </string>
     <string name="product_states">Product States</string>

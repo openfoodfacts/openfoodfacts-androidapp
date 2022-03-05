@@ -20,26 +20,26 @@
         <item quantity="other">You have %d offline products waiting to be contributed to Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
-        <item quantity="one">%d second ago</item>
+        <item quantity="one">%d sekund tagasi</item>
         <item quantity="other">%d seconds ago</item>
     </plurals>
     <plurals name="minutes">
         <item quantity="one">%d minute ago</item>
-        <item quantity="other">%d minutes ago</item>
+        <item quantity="other">%d minutit tagasi</item>
     </plurals>
     <plurals name="hours">
         <item quantity="one">%d hour ago</item>
-        <item quantity="other">%d hours ago</item>
+        <item quantity="other">%d tundi tagasi</item>
     </plurals>
     <plurals name="days">
         <item quantity="one">%d day ago</item>
-        <item quantity="other">%d days ago</item>
+        <item quantity="other">%d päeva tagasi</item>
     </plurals>
     <string name="action_about">Info</string>
     <string name="action_discover">Avasta</string>
     <string name="contribute">Kuidas panustada</string>
     <string name="action_find">Otsi</string>
-    <string name="product_incomplete_message">The ingredient list of this product is not complete. As a result, the allergen alert is not shown.</string>
+    <string name="product_incomplete_message">Selle toote koostisosade loetelu ei ole täielik. Selle tulemusena ei saa kuvada allergeenidega seotud hoiatust.</string>
     <string name="product_allergen_prompt">Toode sisaldab:</string>
     <string name="no_offline_data">Olete valmis</string>
     <!-- Image Upload -->
@@ -48,13 +48,13 @@
         <item>Ülevaade</item>
         <item>Koostisosad</item>
         <item>Toitained</item>
-        <item>Nutrition Table</item>
+        <item>Toitumisalane tabel</item>
         <item>Keskkond</item>
     </string-array>
     <!-- New Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_new_items_product">
         <item>Tootefotod</item>
-        <item>Ingredient Analysis</item>
+        <item>Koostisainete analüüs</item>
     </string-array>
     <!-- Text units -->
     <!-- weight units -->
@@ -76,16 +76,16 @@
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
     <string-array name="nutrients_array">
-        <item>Alpha-linolenic acid / ALA (18:3 n-3)</item>
-        <item>Arachidic acid (20:0)</item>
-        <item>Arachidonic acid / AA / ARA (20:4 n-6)</item>
-        <item>Behenic acid (22:0)</item>
+        <item>Alfa-linoleenhape / ALA (18:3 n-3)</item>
+        <item>Arahhiidhape (20:0)</item>
+        <item>Arahhidoonhape / AA / ARA (20:4 n-6)</item>
+        <item>Beheenhape (22:0)</item>
         <item>Bikarbonaat</item>
         <item>Biotiin</item>
-        <item>Butyric acid (4:0)</item>
+        <item>Võihape (4:0)</item>
         <item>Kofeiin</item>
         <item>Kaltsium</item>
-        <item>Capric acid (10:0)</item>
+        <item>Kapriinhape (10:0)</item>
         <item>Caproic acid (6:0)</item>
         <item>Caprylic acid (8:0)</item>
         <item>Kaseiin</item>
@@ -159,9 +159,9 @@
     <string name="alert_dialog_warning_title">Warning</string>
     <string name="alert_dialog_warning_msg_user">Kasutaja / parool on muutunud, värskendage teavet</string>
     <string name="toast_retrieving">Laadimine…</string>
-    <string name="txtBarcode">Barcode:</string>
-    <string name="txtCategories">Categories:</string>
-    <string name="txtLabels">Labels, certifications, awards: </string>
+    <string name="txtBarcode">Triipkood:</string>
+    <string name="txtCategories">Kategooriad:</string>
+    <string name="txtLabels">Sildid, sertifikaadid, auhinnad: </string>
     <string name="txtEMB">Traceability codes: </string>
     <string name="txtIngredients">Koostisosade loend: </string>
     <string name="Donate">Anneta</string>
@@ -193,14 +193,14 @@
     <string name="txtYes">Jah</string>
     <string name="txtNo">Ei</string>
     <string name="hintBrand">Brand</string>
-    <string name="txtSendAll">Upload all</string>
+    <string name="txtSendAll">Laadi kõik üles</string>
     <string name="txtPictureNeededDialogNo">Loobu</string>
     <string name="toastSending">Üleslaadimine…</string>
     <string name="txtLoading">Laadimine…</string>
-    <string name="productSavedToast">Product saved, thanks!</string>
+    <string name="productSavedToast">Toode on salvestatud, aitäh!</string>
     <string name="txtBarcodeRequire">Triipkood nõutud</string>
-    <string name="txtBarcodeNotValid">Barcode not valid</string>
-    <string name="msg_share">Look at this product on Open Food Facts :</string>
+    <string name="txtBarcodeNotValid">Vigane triipkood</string>
+    <string name="msg_share">Otsi seda toodet Open Food Facts\'is:</string>
     <string name="create_account">Registreeru</string>
     <string name="home_drawer">Kodu</string>
     <string name="install">Paigalda</string>
@@ -216,7 +216,7 @@
     <string name="alert_drawer">Allergeeniteavitus</string>
     <string name="your_lists">Sinu loendid</string>
     <string name="title_dialog_alert">Lisa hoiatus</string>
-    <string name="select_camera">Select a Camera</string>
+    <string name="select_camera">Vali kaamera</string>
     <string name="ok_button">OK</string>
     <string name="cancel_button">Cancel</string>
     <string name="login_button">Login</string>
@@ -448,7 +448,7 @@
     <string name="packaging_subtitle">Packaging</string>
     <string name="state_subtitle">State</string>
     <string name="packaging_string">Packaging</string>
-    <string name="label_string">Label</string>
+    <string name="label_string">Silt</string>
     <string name="category_string">Kategooria</string>
     <string name="connection">Ühendatud</string>
     <string name="contributor_string">Panustaja</string>
@@ -487,7 +487,6 @@
     <string name="notify_channel_description">Notification to show exported file\'s location</string>
     <string name="products_to_be_completed">Tooted, mida täiendada</string>
     <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Product added on %1$s at %2$s CET by %3$s</string>
-    <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Last edit of product page on %1$s at %2$s CEST by %3$s </string>
     <!-- TODO: Add the placeholder in the string - important for several languages -->
     <string name="other_editors">Product page also edited by </string>
     <string name="product_states">Product States</string>

@@ -169,11 +169,11 @@
                 android:value=".features.MainActivity" />
         </activity>
 
-        <activity android:name=".features.ImagesManageActivity" />
+        <activity android:name=".features.images.manage.ImagesManageActivity" />
 
-        <activity android:name=".features.ImageZoomActivity" />
+        <activity android:name=".features.images.zoom.ImageZoomActivity" />
 
-        <activity android:name=".features.ImagesSelectActivity" />
+        <activity android:name=".features.images.select.ImagesSelectActivity" />
 
         <activity
             android:name=".features.scanhistory.ScanHistoryActivity"

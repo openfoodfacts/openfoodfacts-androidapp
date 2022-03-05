@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- For fr, Replace by https://world-fr.openproductsfacts.org/ -->
-    <string name="website">https://world.openfoodfacts.org/</string>
+    <string name="website">https://world.openproductsfacts.org/</string>
     <!-- For fr, Replace by https://world-fr.openproductsfacts.org/contribuer -->
-    <string name="website_contribute">https://world.openfoodfacts.org/contribute</string>
+    <string name="website_contribute">https://world.openproductsfacts.org/contribute</string>
     <!-- For fr, Replace by https://world-fr.openproductsdfacts.org/decouvrir -->
     <string name="website_discover">https://world-bg.openproductsfacts.org/discover</string>
     <!-- For fr, Replace by https://world-fr.openproductsfacts.org/produit/ -->
-    <string name="website_product">https://world.openfoodfacts.org/product/</string>
+    <string name="website_product">https://world.openproductsfacts.org/product/</string>
     <!-- For fr, Replace by https://world-fr.openproductsfacts.org/contributeur/ -->
-    <string name="website_contributor">https://world.openfoodfacts.org/contributor/</string>
+    <string name="website_contributor">https://world.openproductsfacts.org/contributor/</string>
     <string name="terms_url">https://bg.openproductsfacts.org/terms-of-use</string>
-    <string name="txtHomeOnline">Open Products Facts is an open database of more than %1$s products (plus the ones you will contribute) in the world.</string>
+    <string name="txtHomeOnline">Open Products Facts is an open database of more than %1$s products (plus the ones you will contribute).</string>
     <string name="txtHome">Open Products Facts е отворена база данни за всички продукти в света.</string>
     <string name="slide_1_title">Допринеси за прозрачността при храните</string>
-    <string name="slide_1_desc">Scan products, take them in picture, make food transparency happen</string>
+    <string name="slide_1_desc">Scan products, take them in picture, make product transparency happen</string>
     <string name="slide_2_title">Get the facts</string>
     <string name="slide_2_desc">Обширна информация за продуктите, които си сканирал, дешифрирана за теб</string>
     <string name="slide_3_title">Keep track of the product you use</string>
@@ -27,7 +27,7 @@
     <string name="not_support_books">Books are not currently supported by Open Products Facts</string>
     <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Products Facts</string>
     <string name="Donation">Click here to donate to Open Products Facts</string>
-    <string name="translate_help_title">Help translate Open Products Facts</string>
+    <string name="translate_help_title">Помогни с превода на Open Products Facts</string>
     <string name="translate_help_summary">Направи базата данни на Open Products Facts налична на твоя език - не се изискват технически познания</string>
     <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Products Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Products Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
@@ -40,8 +40,8 @@
     <string name="add_nutrient_prompt_text">Add more details to help complete the product</string>
     <string name="add_category_prompt_text">Add a category to help complete the product</string>
     <string name="add_nutrient_category_prompt_text">Add a category and more details to help complete the product</string>
-    <string name="txt_eaten_products">Products I have</string>
-    <string name="txt_products_to_buy">Products to buy</string>
+    <string name="txt_eaten_products">Продукти, които имам</string>
+    <string name="txt_products_to_buy">Списък за пазаруване</string>
     <string name="intent_filter_share_label">Добави в Open Products Facts</string>
     <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
         You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>

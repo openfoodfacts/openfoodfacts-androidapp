@@ -6,8 +6,8 @@ import openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAG
 import openfoodfacts.github.scrachx.openfood.models.entities.label.LabelNameTestData.LABEL_NAME_EN
 import openfoodfacts.github.scrachx.openfood.models.entities.label.LabelNameTestData.LABEL_NAME_FR
 import openfoodfacts.github.scrachx.openfood.models.entities.label.LabelNameTestData.LABEL_TAG
-import org.junit.Before
-import org.junit.Test
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
 import java.util.*
 
 /**
@@ -17,7 +17,7 @@ class LabelResponseTest {
     private lateinit var mNamesMap: MutableMap<String, String>
     private var mLabelResponse: LabelResponse? = null
 
-    @Before
+    @BeforeEach
     fun setup() {
         mNamesMap = HashMap(2)
         mNamesMap[LANGUAGE_CODE_ENGLISH] = LABEL_NAME_EN

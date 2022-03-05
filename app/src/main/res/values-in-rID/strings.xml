@@ -170,7 +170,7 @@
     <string name="txtNutritionLevelLow">dalam kuantitas rendah</string>
     <string name="txtNutritionLevelModerate">dalam kuantitas sedang</string>
     <string name="txtNutritionLevelHigh">dalam kuantitas tinggi</string>
-    <string name="txtSave">Simpan</string>
+    <string name="txtSave">menyimpan </string>
     <string name="txtSignIn">Masuk</string>
     <string name="txtSalt">Garam</string>
     <string name="txtFat">Lemak</string>
@@ -478,7 +478,6 @@
     <string name="notify_channel_description">Pemberitahuan untuk menampilkan lokasi berkas yang diekspor</string>
     <string name="products_to_be_completed">Produk - produk yang perlu dilengkapi</string>
     <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Produk ditambahkan pada hari %1$s jam %2$s CET sebesar %3$s</string>
-    <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Penyuntingan terakhir halaman produk pada hari %1$s jam %2$s CEST oleh %3$s </string>
     <!-- TODO: Add the placeholder in the string - important for several languages -->
     <string name="other_editors">Halaman produk juga disunting oleh </string>
     <string name="product_states">Status produk</string>

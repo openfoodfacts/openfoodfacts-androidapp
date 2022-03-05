@@ -4,20 +4,23 @@ import com.google.common.truth.Truth.assertThat
 import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import org.greenrobot.greendao.DaoException
 import org.junit.Assert.assertThrows
-import org.junit.Before
-import org.junit.Test
-import org.junit.runner.RunWith
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.ArgumentMatchers
 import org.mockito.Mock
 import org.mockito.Mockito.verify
-import org.mockito.junit.MockitoJUnitRunner
+import org.mockito.junit.jupiter.MockitoExtension
+import org.mockito.junit.jupiter.MockitoSettings
 import org.mockito.kotlin.doReturn
 import org.mockito.kotlin.whenever
+import org.mockito.quality.Strictness
 
 /**
  * Tests for [Additive]
  */
-@RunWith(MockitoJUnitRunner::class)
+@ExtendWith(MockitoExtension::class)
+@MockitoSettings(strictness = Strictness.LENIENT)
 class AdditiveTest {
     @Mock
     private val mockDaoSession: DaoSession? = null
@@ -29,7 +32,7 @@ class AdditiveTest {
     private lateinit var mockAdditiveNameDao: AdditiveNameDao
     private lateinit var mAdditive: Additive
 
-    @Before
+    @BeforeEach
     fun setup() {
         whenever(mockDaoSession!!.additiveNameDao) doReturn mockAdditiveNameDao
         whenever(mockDaoSession.additiveDao) doReturn mockAdditiveDao

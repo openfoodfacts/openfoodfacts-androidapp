@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.features
+package openfoodfacts.github.scrachx.openfood.features.images.zoom
 
 import android.content.Context
 import android.content.Intent
@@ -16,7 +16,6 @@ import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityZoomImageBinding
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.images.IMAGE_URL
-import java.util.*
 import javax.inject.Inject
 
 /**

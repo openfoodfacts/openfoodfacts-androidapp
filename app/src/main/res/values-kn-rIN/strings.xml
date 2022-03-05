@@ -16,7 +16,7 @@
   -->
 <resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
-        <item quantity="one">You have 1 offline product waiting to be contributed to Open Food Facts</item>
+        <item quantity="one">You have %d offline product waiting to be contributed to Open Food Facts</item>
         <item quantity="other">You have %d offline products waiting to be contributed to Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
@@ -487,7 +487,6 @@
     <string name="notify_channel_description">ರಫ್ತು ಮಾಡಿದ ಕಡತದ ಸ್ಥಳವನ್ನು ತೋರಿಸಲು ಅಧಿಸೂಚನೆ</string>
     <string name="products_to_be_completed">ಉತ್ಪನ್ನಗಳು ಪೂರ್ಣಗೊಳ್ಳಬೇಕು</string>
     <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Product added on %1$s at %2$s CET by %3$s</string>
-    <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Last edit of product page on %1$s at %2$s CEST by %3$s </string>
     <!-- TODO: Add the placeholder in the string - important for several languages -->
     <string name="other_editors">ಉತ್ಪನ್ನ ಪುಟವು ಸಹ ಸಂಪಾದಿಸಿದೆ </string>
     <string name="product_states">Product States</string>

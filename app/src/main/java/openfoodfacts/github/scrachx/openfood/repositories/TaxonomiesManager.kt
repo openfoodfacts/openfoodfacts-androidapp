@@ -71,8 +71,7 @@ class TaxonomiesManager @Inject constructor(
         val forceUpdate = appPrefs.getBoolean(Utils.FORCE_REFRESH_TAXONOMIES, false)
 
         // If database is empty or we have to force update, download it
-        val empty = dao.isEmpty()
-        if (empty || forceUpdate) {
+        if (dao.isEmpty() || forceUpdate) {
             // Table is empty, no need check for update, just load taxonomy
             download(taxonomy, taxonomiesRepository)
         } else if (checkUpdate) {
