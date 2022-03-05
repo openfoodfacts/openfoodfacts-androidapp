@@ -6,7 +6,7 @@ import android.content.res.Configuration
 import android.content.res.Resources
 import com.google.common.truth.Truth.assertThat
 import openfoodfacts.github.scrachx.openfood.models.LanguageData
-import org.junit.Test
+import org.junit.jupiter.api.Test
 import org.mockito.kotlin.doReturn
 import org.mockito.kotlin.mock
 import java.util.*

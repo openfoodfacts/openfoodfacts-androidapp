@@ -5,7 +5,7 @@ import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
 import com.google.common.truth.Truth.assertThat
 import org.junit.Assert.assertThrows
-import org.junit.Test
+import org.junit.jupiter.api.Test
 
 /**
  * Tests for [Product]

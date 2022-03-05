@@ -7,7 +7,6 @@ import com.fasterxml.jackson.databind.JsonNode
 import dagger.hilt.android.qualifiers.ApplicationContext
 import io.reactivex.Single
 import kotlinx.coroutines.Dispatchers.IO
-import kotlinx.coroutines.rx2.rxCompletable
 import kotlinx.coroutines.rx2.rxSingle
 import kotlinx.coroutines.withContext
 import okhttp3.MediaType
@@ -30,7 +29,6 @@ import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
 import openfoodfacts.github.scrachx.openfood.utils.*
 import java.io.File
 import java.io.IOException
-import java.util.*
 import javax.inject.Inject
 import javax.inject.Singleton
 

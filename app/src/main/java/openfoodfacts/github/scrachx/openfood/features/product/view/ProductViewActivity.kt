@@ -121,7 +121,7 @@ class ProductViewActivity : BaseActivity(), IProductView, OnRefreshListener {
      * @param barcode from the URL.
      */
     private suspend fun fetchProduct(barcode: String) = try {
-        client.getProductStateFull(barcode, Utils.HEADER_USER_AGENT_SCAN)
+        client.getProductStateFull(barcode = barcode, userAgent = Utils.HEADER_USER_AGENT_SCAN)
     } catch (err: Exception) {
         Log.w(this::class.simpleName, "Failed to load product $barcode.", err)
         finish()

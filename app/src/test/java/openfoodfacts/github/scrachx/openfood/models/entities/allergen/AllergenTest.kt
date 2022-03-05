@@ -3,14 +3,14 @@ package openfoodfacts.github.scrachx.openfood.models.entities.allergen
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
 import com.google.common.truth.Truth.assertThat
-import org.junit.Before
-import org.junit.Test
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
 import java.io.IOException
 
 class AllergenTest {
     lateinit var allergens: List<Allergen>
 
-    @Before
+    @BeforeEach
     @Throws(IOException::class)
     fun setUp() {
         //language=JSON

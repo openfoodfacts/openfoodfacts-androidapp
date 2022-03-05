@@ -1,8 +1,8 @@
 package openfoodfacts.github.scrachx.openfood.models.entities.category
 
 import com.google.common.truth.Truth.assertThat
-import org.junit.Before
-import org.junit.Test
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
 
 /**
  * Tests for [CategoryName]
@@ -10,7 +10,7 @@ import org.junit.Test
 class CategoryNameTest {
     private lateinit var mCategoryName: CategoryName
 
-    @Before
+    @BeforeEach
     fun setup() {
         mCategoryName = CategoryName()
     }

@@ -1,6 +1,5 @@
 package openfoodfacts.github.scrachx.openfood.features.simplescan
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.toList
@@ -10,23 +9,22 @@ import openfoodfacts.github.scrachx.openfood.features.simplescan.SimpleScanViewM
 import openfoodfacts.github.scrachx.openfood.models.CameraState
 import openfoodfacts.github.scrachx.openfood.repositories.ScannerPreferencesRepository
 import openfoodfacts.github.scrachx.openfood.utils.CoroutineDispatchersTest
-import org.junit.Before
-import org.junit.Rule
-import org.junit.Test
+import openfoodfacts.github.scrachx.openfood.utils.InstantTaskExecutorExtension
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.kotlin.*
 
+@ExtendWith(InstantTaskExecutorExtension::class)
 @ExperimentalCoroutinesApi
 class SimpleScanViewModelTest {
-
-    @get:Rule
-    var instantExecutorRule = InstantTaskExecutorRule()
 
     private val prefsRepository = mock<ScannerPreferencesRepository>()
     private val dispatchers = CoroutineDispatchersTest()
 
     private lateinit var viewModel: SimpleScanViewModel
 
-    @Before
+    @BeforeEach
     fun setup() {
         whenever(prefsRepository.getAutoFocusPref()).doReturn(true)
         whenever(prefsRepository.getFlashPref()).doReturn(true)

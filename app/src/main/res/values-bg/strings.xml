@@ -42,7 +42,6 @@
     <string name="product_incomplete_message">Този продукт не е завършен. В резултат на това не можем да направим проверката на алергените.</string>
     <string name="product_allergen_prompt">Продуктът съдържа:</string>
     <string name="no_offline_data">Всичко е готово</string>
-    <string name="first_offline">Продуктите добавени офлайн ще се показват тук</string>
     <!-- Image Upload -->
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
@@ -176,8 +175,6 @@
     <string name="txtSubstances">Вещества или продукти, причиняващи алергии или непоносимост :</string>
     <string name="txtAdditives">Добавки :</string>
     <string name="txtTraces">Следи :</string>
-    <string name="txtMayBeFromPalmOilProduct">Съставки, които могат да бъдат от палмово масло :</string>
-    <string name="txtPalmOilProduct">Съставки от палмово масло :</string>
     <string name="txtServingSize">Големина на порцията :</string>
     <string name="txtNutrientLevel100g">Нива на хранителните вещества за 100g :</string>
     <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
@@ -186,7 +183,6 @@
     <string name="txtNutritionLevelHigh">във високо количество</string>
     <string name="txtSave">Запис</string>
     <string name="txtSignIn">Вход</string>
-    <string name="txtToastSaved">Потребителят е запазен</string>
     <string name="txtSalt">Сол</string>
     <string name="txtFat">Мазнини</string>
     <string name="txtSugars">Захар</string>
@@ -196,7 +192,6 @@
     <string name="hintPass">Парола</string>
     <string name="errorLogin">Грешно име или парола</string>
     <string name="errorWeb">Не успяхме да получим достъп до интернет. Имате ли проблеми със свързаността?</string>
-    <string name="uploadLater">Изображението ще бъде качено, когато е налична мрежа</string>
     <string name="txtInfoLoginOk">Потребителят е запазен</string>
     <string name="txtInfoLoginNo">Потребителят не е запазен</string>
     <string name="product_does_not_exist_please_add_it">Продуктът, който сте сканирали, все още не съществува в Open Food Facts. Моля, добавете го.</string>
@@ -207,25 +202,19 @@
     <string name="txtPictureNeededDialogNo">Отказ</string>
     <string name="toastSending">Качване…</string>
     <string name="txtLoading">Зареждане…</string>
-    <string name="txtDialogsContentDelete">Сигурни ли сте, че искате да премахнете тази чернова?</string>
-    <string name="txtDialogsContentInfoSave">Продуктът е запазен локално, можете да го редактирате в менюто \"Редактиране офлайн\"</string>
     <string name="productSavedToast">Product saved, thanks!</string>
     <string name="txtBarcodeRequire">Необходим е баркод</string>
-    <string name="txtOk">ОК</string>
     <string name="txtBarcodeNotValid">Баркодът не е валиден</string>
     <string name="msg_share">Погледнете този продукт в Open Food Facts:</string>
     <string name="create_account">Регистрирай се</string>
     <string name="home_drawer">Начало</string>
     <string name="install">Install</string>
-    <string name="open_beauty_drawer">Open Beauty Facts</string>
-    <string name="open_food_drawer">Open Food Facts</string>
     <string name="search_drawer">Търсене</string>
     <string name="search_by_barcode_drawer">Въведете баркод</string>
     <string name="category_drawer">Категории</string>
     <string name="search_by_category">Категория</string>
     <string name="scan_search">Сканирай баркод</string>
     <string name="user_drawer">Потребител</string>
-    <string name="offline_edit_drawer">Редактирай офлайн</string>
     <string name="txt_anonymous">Анонимен</string>
     <string name="delete_txt">Изтрий</string>
     <string name="sign_in_drawer">Вход</string>
@@ -285,7 +274,6 @@
     <string name="calculate_nutrition_facts">Calculate Nutrition Facts</string>
     <string name="nutrition_carbohydrate">Въглехидрати</string>
     <string name="nutrition_cholesterol">Холестерол</string>
-    <string name="nutrition_energy">Енергия</string>
     <string name="nutrition_energy_kcal">Енергия в калории (kcal)</string>
     <string name="nutrition_energy_kj">Енергия в джаули (kJ)</string>
     <string name="nutrition_energy_short_name">Енергия</string>
@@ -301,9 +289,7 @@
     <string name="nutriment_serving_size">За порция : </string>
     <string name="action_manage_account">Управление на профил</string>
     <string name="action_contributes">Вашите приноси</string>
-    <string name="choose_energy_unit">Choose your preferred energy units for the nutrition table</string>
     <string name="pref_energy_unit_title">Предпочитана енергийна единица</string>
-    <string name="choose_volume_unit">Choose your preferred volume units for the nutrition table</string>
     <string name="pref_volume_unit_title">Preferred volume unit</string>
     <string name="logout_drawer">Изход</string>
     <string name="contribution_without_account">Можете да влезете или да създадете профил, за да запазите приносите си</string>
@@ -410,27 +396,15 @@
     <string name="forgot_password">Забравена парола</string>
     <string name="next">НАПРЕД</string>
     <string name="skip">ПРОПУСНИ</string>
-    <string name="start">РАЗБРАХ</string>
     <string name="pref_contact_us_title">За контакти</string>
     <string name="pref_contact_us_summary">Свържете се с екипа</string>
     <string name="email_not_found">Няма намерени имейл приложения</string>
-    <string name="airplane_mode_active_dialog_title">Самолетния режим е включен</string>
-    <string name="airplane_mode_active_dialog_message">Самолетния режим е включен, моля, деактивирайте това, за да продължите.</string>
-    <string name="airplane_mode_active_dialog_negative">Отхвърли</string>
-    <string name="airplane_mode_active_dialog_positive">Настройки</string>
     <string name="device_offline_dialog_title">Мрежата е недостъпна</string>
-    <string name="device_offline_dialog_message">Необходима е мрежова връзка с мрежата за да направите това. Искате ли да промените това в настройките?</string>
-    <string name="device_offline_dialog_negative">Отхвърли</string>
-    <string name="device_offline_dialog_positive">Настройки</string>
     <string name="scan_first_product">Сканиране на първия продукт</string>
     <string name="pref_delete_history">Successfully deleted history</string>
     <string name="pref_enable_mobile_data_title">Качване при мобилни данни</string>
     <string name="pref_enable_mobile_data_summary_on">Качване на нови продукти чрез мобилни данни &amp; WiFi</string>
     <string name="pref_enable_mobile_data_summary_off">Качвайте нови продукти само с WiFi</string>
-    <string name="device_on_mobile_data_warning_title">Информация</string>
-    <string name="device_on_mobile_data_warning_message">Качването на мобилни данни е забранено, моля, свържете се с WiFi или променете това в предпочитанията си</string>
-    <string name="device_on_mobile_data_warning_positive">Предпочитания</string>
-    <string name="device_on_mobile_data_warning_negative">Качете все пак</string>
     <string name="changes_saved">Changes saved successfully</string>
     <string name="preference_choose_language_dialog_title">Изберете език</string>
     <string name="pref_faq_title">ЧЗВ</string>
@@ -525,9 +499,7 @@
     <string name="notification_channel_name">Уведомления за изнасяне</string>
     <string name="notify_channel_description">Уведомление за показване на местоположението на изнесения файл</string>
     <string name="products_to_be_completed">Продукти, които трябва да бъдат завършени</string>
-    <string name="offline_notification_title">Офлайн приноси, които трябва да изпратите</string>
     <string name="creator_history">Продукт добавен в %1$s на %2$s CET от %3$s</string>
-    <string name="last_editor_history">Последна редакция на страницата на продукта в %1$s на %2$s CEST от %3$s</string>
     <string name="other_editors">Страницата на продукта е редактирана също от </string>
     <string name="contribution_tab">Приноси</string>
     <string name="pref_contribution_tab_summary">Показване на раздела с потребителски приноси с продукти</string>
@@ -538,7 +510,6 @@
     <string name="offline_product_addition_title">Добавете нов продукт</string>
     <string name="productNameNull">Name unknown</string>
     <string name="productAdditivesUnknown"></string>
-    <string name="productAdditivesTemplate">%1$d добавки</string>
     <plurals name="productAdditives">
         <item quantity="one">%d добавка</item>
         <item quantity="other">%d additives</item>
@@ -552,7 +523,6 @@
     <string name="switch_camera">Превключване на камера</string>
     <string name="autofocus">Автофокусиране</string>
     <string name="initial_loading">Първоначално зареждане</string>
-    <string name="preferences">Предпочитания</string>
     <string name="OFFlogo">Open Food Facts лого</string>
     <string name="loading_product">Зареждане на продукт %s</string>
     <string name="image_not_defined_for_language">No image for selected language. You can add a new one</string>
@@ -564,20 +534,11 @@
     <string name="error_adding_product_details">Нещо се обърка, докато се опитвахме да добавим детайли за продукта</string>
     <string name="hint_product_URL">Линк към официалната страница на продукта</string>
     <string name="product_language">Език на продукта: </string>
-    <string name="hint_emb_codes">Примери: EMB 53062, FR 62.448.034 СЕ, 84R20, 33 RECOLTANT 522, FSSL 10013011001409</string>
     <string name="official_website">Официален уебсайт</string>
     <string name="scan_QR_code">Сканирайте QR кода за уеб сайта на продукта</string>
     <string name="add_at_least_one_picture">Моля, добавете поне една снимка на този продукт, преди да продължите</string>
     <string name="image_uploaded_successfully">Изображението бе качено успешно</string>
     <string name="error_adding_product_photos">Нещо се обърка, докато се опитвахме да добавим снимки на продукта</string>
-    <string name="ingredients_overwrite">Презаписването на съставките</string>
-    <string name="choose_mine">Изберете моя</string>
-    <string name="keep_previous_version">Запазване на предишната версия</string>
-    <string name="product_name_overwrite">Презаписване на името на продукта</string>
-    <string name="yours">Ваш: </string>
-    <string name="currently_on">В момента на %s: </string>
-    <string name="quantity_overwrite">Презаписване на количеството</string>
-    <string name="link_overwrite">Презаписване на връзката</string>
     <string name="save_product">Искате ли да запазите продукта?</string>
     <string name="error_adding_product">Нещо се обърка при добавяне на продукт</string>
     <string name="photos">Снимки</string>
@@ -585,7 +546,6 @@
     <string name="product_uploaded_successfully">Продуктът бе качен успешно</string>
     <string name="no_internet_connection">Изглежда, че нямате интернет връзка, изображенията ще бъдат качени, когато е налична мрежа</string>
     <string name="no_internet_unable_to_extract_ingredients">Нямате интернет връзка. Невъзможно е да се извлекат съставките</string>
-    <string name="percent">%1$d%%</string>
     <string name="overview">Обобщение</string>
     <string name="ingredients">Съставки</string>
     <string name="nutrition_facts">Хранителна информация</string>
@@ -630,9 +590,6 @@
     <string name="additional_pictures">Additional Pictures</string>
     <string name="hint_product_pictures">(Add more pictures of the product. eg: recycling instructions, labels etc.)</string>
     <string name="uploading_image">Sending the photo</string>
-    <string name="uploading_nutrition_image">Uploading nutrition facts image</string>
-    <string name="uploading_ingredients_image">Uploading ingredients image</string>
-    <string name="uploading_front_image">Uploading front image</string>
     <string name="edit_front_image">Edit the front photo</string>
     <string name="edit_nutrition_image">Edit the nutrition photo</string>
     <string name="edit_packaging_image">Edit the recycling photo</string>
@@ -642,7 +599,6 @@
     <string name="sign_in_to_answer">Please sign in or register to answer an insight.</string>
     <string name="hint_quantity">Examples: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
     <string name="edit_product_title">Edit a product</string>
-    <string name="nutrient_already_added">%s is already present in the nutrition facts</string>
     <string name="save_edits">Save edits</string>
     <string name="contribution_by">Contribution by</string>
     <string name="title_activity_product">Заглавие</string>
@@ -715,7 +671,6 @@
     <string name="pref_country_summary">Change your selected country</string>
     <string name="pref_country_title">Country</string>
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
-    <string name="image_prompt_language">Take a photo of the ingredients in</string>
     <string name="swipe_delete_tip">You can delete a list by swiping it left.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
@@ -748,13 +703,10 @@
     <string name="choose_default_language">Select product language</string>
     <string name="barcode">Баркод</string>
     <string name="productAdditivesNone">No additives</string>
-    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
     <string name="import_csv_to_list">Import an Open Food Facts list CSV file</string>
     <string name="toast_import_csv_error">Error in importing CSV file</string>
     <string name="toast_import_csv">CSV imported successfully!</string>
-    <string name="open_csv">Open CSV</string>
     <!-- Used for diets AddOn -->
-    <string name="history_network_error">The product couldn\'t be loaded. Please try again when you are back online.</string>
     <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
     <string name="closeZoom">Click to close zoom</string>
     <string name="imageFullscreen">Zoom</string>
@@ -811,7 +763,6 @@
     <string name="sign_in_or_register">Sign in or register</string>
     <string name="hunger_game_call_to_action">Help classify more %1$s</string>
     <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s food products (plus the ones you will contribute).</string>
-    <string name="enabled">Enabled</string>
     <!-- Application theme settings -->
     <string name="follow_system">Follow system</string>
     <string name="day">Day</string>

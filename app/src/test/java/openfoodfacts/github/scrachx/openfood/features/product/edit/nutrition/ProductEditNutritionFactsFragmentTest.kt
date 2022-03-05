@@ -2,7 +2,7 @@ package openfoodfacts.github.scrachx.openfood.features.product.edit.nutrition
 
 import com.google.common.truth.Truth.assertThat
 import openfoodfacts.github.scrachx.openfood.models.Nutriment
-import org.junit.Test
+import org.junit.jupiter.api.Test
 
 class ProductEditNutritionFactsFragmentTest {
 

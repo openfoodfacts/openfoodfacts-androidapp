@@ -7,8 +7,8 @@ import openfoodfacts.github.scrachx.openfood.models.entities.country.CountryName
 import openfoodfacts.github.scrachx.openfood.models.entities.country.CountryNameTestData.GERMANY_FR
 import openfoodfacts.github.scrachx.openfood.models.entities.country.CountryNameTestData.USA_EN
 import openfoodfacts.github.scrachx.openfood.models.entities.country.CountryNameTestData.USA_FR
-import org.junit.BeforeClass
-import org.junit.Test
+import org.junit.jupiter.api.BeforeAll
+import org.junit.jupiter.api.Test
 
 /**
  * Tests for [CountriesWrapper]
@@ -65,7 +65,7 @@ class CountriesWrapperTest {
         private lateinit var gerCountry: Country
 
         @JvmStatic
-        @BeforeClass
+        @BeforeAll
         fun setup() {
             val usaNamesMap = mapOf(LANGUAGE_CODE_ENGLISH to USA_EN, LANGUAGE_CODE_FRENCH to USA_FR)
             val usaCC2Map = mapOf(LANGUAGE_CODE_ENGLISH to "US")

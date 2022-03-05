@@ -5,8 +5,8 @@
       "code": 518,
       "name": "3.5.0",
       "items": [
-        "Gépi tanulással továbbfejlesztett vonalkód olvasó. A beolvasás új módját a beállításokban engedélyezheti. A beállításokban bármikor átállíthatja a vonalkódolvasó motort.",
-        "Segítsen az Open Food Facts önkénteseinek az alkalmazás fejlesztésében. Lehetősége van névtelen elemzések és összeomlási jelentések küldésére. A beállításokból bármikor be- és kikapcsolható."
+        "Gépi tanulással továbbfejlesztett vonalkód olvasó. A beolvasás új módját a beállításokban engedélyezheti. A beállításokban bármikor átállíthatja a vonalkód-olvasó motort.",
+        "Segítsen az Open Food Facts önkénteseinek az alkalmazás fejlesztésében. Lehetősége van névtelen analitikai és összeomlási jelentések küldésére. A beállításokból bármikor be- és kikapcsolható."
       ]
     }
   ]

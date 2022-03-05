@@ -8,8 +8,8 @@ import openfoodfacts.github.scrachx.openfood.models.entities.label.LabelNameTest
 import openfoodfacts.github.scrachx.openfood.models.entities.label.LabelNameTestData.LABEL_NAME_EN
 import openfoodfacts.github.scrachx.openfood.models.entities.label.LabelNameTestData.LABEL_NAME_FR
 import openfoodfacts.github.scrachx.openfood.models.entities.label.LabelNameTestData.LABEL_TAG
-import org.junit.Before
-import org.junit.Test
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
 
 /**
  * Tests for [LabelsWrapper]
@@ -18,7 +18,7 @@ class LabelsWrapperTest {
     private var labels: List<Label?>? = null
     private var labelTag2: String? = null
 
-    @Before
+    @BeforeEach
     fun setUp() {
         val namesMap1 = hashMapOf(
                 LANGUAGE_CODE_ENGLISH to LABEL_NAME_EN,

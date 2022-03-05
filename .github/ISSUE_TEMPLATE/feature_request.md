@@ -6,15 +6,14 @@ labels: ''
 assignees: ''
 
 ---
+### What
+Write here a clear and concise description of what the feature is.
 
-**Is your feature request related to a problem? Please describe.**
-A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
+### Why/User story
+Write here why it's important or why it bothers you.
 
-**Describe the solution you'd like**
-A clear and concise description of what you want to happen.
+### Screenshot/Mockup/Before-After
+(optional, delete if empty)
 
-**Describe alternatives you've considered**
-A clear and concise description of any alternative solutions or features you've considered.
-
-**Additional context**
-Add any other context or screenshots about the feature request here.
+### Part of
+- Add the issue number preceded by # (that also allows searching by name for similar issues): eg #374
