@@ -44,9 +44,9 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion")
 
     // Android KTX
-    implementation("androidx.fragment:fragment-ktx:1.4.0")
+    implementation("androidx.fragment:fragment-ktx:1.4.1")
     implementation("androidx.activity:activity-ktx:1.4.0")
-    implementation("androidx.preference:preference-ktx:1.1.1")
+    implementation("androidx.preference:preference-ktx:1.2.0")
     implementation("androidx.core:core-ktx:1.7.0")
 
     val lifecycleVer = "2.4.0-alpha03"
@@ -55,17 +55,17 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVer")
 
     // AndroidX
-    implementation("androidx.appcompat:appcompat:1.4.0")
+    implementation("androidx.appcompat:appcompat:1.4.1")
     implementation("androidx.browser:browser:1.4.0")
     implementation("androidx.concurrent:concurrent-futures:1.1.0")
     implementation("androidx.recyclerview:recyclerview:1.2.1")
     implementation("androidx.cardview:cardview:1.0.0")
     implementation("androidx.annotation:annotation:1.3.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.2")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.3")
     implementation("androidx.multidex:multidex:2.0.1")
     implementation("androidx.viewpager2:viewpager2:1.0.0")
     implementation("androidx.startup:startup-runtime:1.1.0")
-    implementation("androidx.work:work-runtime-ktx:2.6.0")
+    implementation("androidx.work:work-runtime-ktx:2.7.1")
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 
     // ML Kit barcode Scanner
@@ -90,7 +90,10 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-jackson:2.6.4")
     implementation("com.squareup.retrofit2:adapter-rxjava2:2.6.4")
     implementation("com.squareup.retrofit2:converter-scalars:2.1.0")
-implementation("com.squareup.okhttp3:logging-interceptor:3.12.13")
+    implementation("com.squareup.okhttp3:logging-interceptor:3.12.13")
+
+    // Logging
+    implementation("com.squareup.logcat:logcat:0.1")
 
     // Apache commons
     implementation("org.apache.commons:commons-text:1.9")
@@ -146,7 +149,7 @@ implementation("com.squareup.okhttp3:logging-interceptor:3.12.13")
     implementation("com.github.hootsuite:nachos:1.2.0")
 
     // Crash analytics
-    implementation("io.sentry:sentry-android:5.6.0")
+    implementation("io.sentry:sentry-android:5.6.1")
     implementation("com.github.matomo-org:matomo-sdk-android:v4.1.2")
 
     // ShowCaseView dependency
@@ -171,11 +174,11 @@ implementation("com.squareup.okhttp3:logging-interceptor:3.12.13")
     testRuntimeOnly("org.junit.vintage:junit-vintage-engine")
 
     // Instrumented tests
-    androidTestUtil("androidx.test:orchestrator:1.4.0")
+    androidTestUtil("androidx.test:orchestrator:1.4.1")
 
     // Hilt for Android Testing
-    androidTestImplementation("com.google.dagger:hilt-android-testing:2.40.5")
-    kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.40.5")
+    androidTestImplementation("com.google.dagger:hilt-android-testing:2.41")
+    kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.41")
 
     androidTestImplementation("androidx.test:runner:1.3.0") { exclude("junit") }
     androidTestImplementation("androidx.test:rules:1.4.0")
@@ -214,7 +217,7 @@ android {
         applicationId = "openfoodfacts.github.scrachx.openfood"
 
         minSdk = 16
-        targetSdk = 30
+        targetSdk = 31
 
         versionCode = 433
         versionName = "3.6.8"
@@ -361,16 +364,16 @@ android {
 
     packagingOptions {
         resources.excludes += listOf(
-                "META-INF/DEPENDENCIES.txt",
-                "META-INF/LICENSE.txt",
-                "META-INF/NOTICE.txt",
-                "META-INF/NOTICE",
-                "META-INF/LICENSE",
-                "META-INF/DEPENDENCIES",
-                "META-INF/notice.txt",
-                "META-INF/license.txt",
-                "META-INF/dependencies.txt",
-                "META-INF/LGPL2.1"
+            "META-INF/DEPENDENCIES.txt",
+            "META-INF/LICENSE.txt",
+            "META-INF/NOTICE.txt",
+            "META-INF/NOTICE",
+            "META-INF/LICENSE",
+            "META-INF/DEPENDENCIES",
+            "META-INF/notice.txt",
+            "META-INF/license.txt",
+            "META-INF/dependencies.txt",
+            "META-INF/LGPL2.1"
         )
     }
 

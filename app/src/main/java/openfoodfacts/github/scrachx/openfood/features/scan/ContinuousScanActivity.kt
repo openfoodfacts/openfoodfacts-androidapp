@@ -57,7 +57,7 @@ import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsView
 import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityContinuousScanBinding
-import openfoodfacts.github.scrachx.openfood.features.ImagesManageActivity
+import openfoodfacts.github.scrachx.openfood.features.images.manage.ImagesManageActivity
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity
 import openfoodfacts.github.scrachx.openfood.features.product.view.IProductView
 import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewActivity.ShowIngredientsAction
@@ -85,7 +85,6 @@ import openfoodfacts.github.scrachx.openfood.utils.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import java.io.IOException
-import java.util.*
 import javax.inject.Inject
 
 @AndroidEntryPoint

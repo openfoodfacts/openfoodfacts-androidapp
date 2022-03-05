@@ -1,5 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.models.entities;
 
+import static android.util.Base64.DEFAULT;
+
 import android.util.Base64;
 import android.util.Log;
 
@@ -15,8 +17,6 @@ import java.io.ObjectOutputStream;
 import java.util.HashMap;
 import java.util.Map;
 
-import static android.util.Base64.DEFAULT;
-
 class MapOfStringsToStringConverter implements PropertyConverter<Map<String, String>, String> {
     private static final String LOG_TAG;
 
@@ -26,14 +26,18 @@ class MapOfStringsToStringConverter implements PropertyConverter<Map<String, Str
         if (databaseValue == null) {
             return new HashMap<>();
         }
+
+        final Map<String, String> decodedResult = new HashMap<>();
         try {
             ByteArrayInputStream bis = new ByteArrayInputStream(Base64.decode(databaseValue, DEFAULT));
             ObjectInputStream objectInputStream = new ObjectInputStream(bis);
-            objectInputStream.readObject();
+            @SuppressWarnings({"UNCHECKED_CAST", "unchecked"})
+            final Map<String, String> readMap = (Map<String, String>) objectInputStream.readObject() ;
+            decodedResult.putAll(readMap);
         } catch (IOException | ClassNotFoundException e) {
             Log.e(LOG_TAG, "Cannot serialize map to database.", e);
         }
-        return new HashMap<>();
+        return decodedResult;
     }
 
     @Override

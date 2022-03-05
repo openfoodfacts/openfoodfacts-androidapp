@@ -1,5 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.models.entities;
 
+import static openfoodfacts.github.scrachx.openfood.utils.Utils.firstNotEmpty;
+
 import android.text.TextUtils;
 
 import androidx.annotation.NonNull;
@@ -11,14 +13,14 @@ import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Index;
+import org.greenrobot.greendao.annotation.Keep;
 
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.Map;
 
 import openfoodfacts.github.scrachx.openfood.network.ApiFields;
 import openfoodfacts.github.scrachx.openfood.utils.FileUtilsKt;
-
-import static openfoodfacts.github.scrachx.openfood.utils.Utils.firstNotEmpty;
 
 @Entity
 public class OfflineSavedProduct implements Serializable {
@@ -31,7 +33,7 @@ public class OfflineSavedProduct implements Serializable {
     private Long id;
     @Index
     private boolean isDataUploaded;
-    @SuppressWarnings("NotNullFieldNotInitialized")
+
     @NonNull
     @Convert(converter = MapOfStringsToStringConverter.class, columnType = String.class)
     private Map<String, String> productDetails;
@@ -52,8 +54,9 @@ public class OfflineSavedProduct implements Serializable {
         this.productDetails = productDetails;
     }
 
-    @Generated(hash = 403273060)
+    @Keep
     public OfflineSavedProduct() {
+        this.productDetails = new HashMap<>();
     }
 
     @NonNull

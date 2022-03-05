@@ -316,11 +316,11 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem {
         } catch (e: NullPointerException) {
             throw IllegalStateException("Preference fragment not attached to AppCompatActivity.")
         }
-        preferenceManager.sharedPreferences.registerOnSharedPreferenceChangeListener(preferencesListener)
+        preferenceManager.sharedPreferences?.registerOnSharedPreferenceChangeListener(preferencesListener)
     }
 
     override fun onPause() {
-        preferenceManager.sharedPreferences.unregisterOnSharedPreferenceChangeListener(preferencesListener)
+        preferenceManager.sharedPreferences?.unregisterOnSharedPreferenceChangeListener(preferencesListener)
         super.onPause()
     }
 
@@ -362,7 +362,7 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem {
                     // The service will load server resources only if newer than already downloaded...
                     WorkManager.getInstance(requireContext()).let {
                         it.enqueue(request)
-                        it.getWorkInfoByIdLiveData(request.id).observe(this@PreferencesFragment, { workInfo: WorkInfo? ->
+                        it.getWorkInfoByIdLiveData(request.id).observe(this@PreferencesFragment) { workInfo: WorkInfo? ->
                             when (workInfo?.state) {
                                 WorkInfo.State.RUNNING -> {
                                     pref.setTitle(R.string.please_wait)
@@ -375,7 +375,7 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem {
                                 }
                                 else -> Unit  // Nothing
                             }
-                        })
+                        }
                     }
                     true
                 }

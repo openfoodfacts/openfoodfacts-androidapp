@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package openfoodfacts.github.scrachx.openfood.features
+package openfoodfacts.github.scrachx.openfood.features.images.manage
 
 import android.Manifest
 import android.content.Intent
@@ -46,6 +46,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityFullScreenImageBinding
+import openfoodfacts.github.scrachx.openfood.features.images.select.ImagesSelectActivity
 import openfoodfacts.github.scrachx.openfood.features.adapters.LanguageDataAdapter
 import openfoodfacts.github.scrachx.openfood.features.login.LoginActivity
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
@@ -63,7 +64,6 @@ import org.apache.commons.lang3.StringUtils
 import pl.aprilapps.easyphotopicker.EasyImage
 import smartdevelop.ir.eram.showcaseviewlib.GuideView
 import java.io.File
-import java.util.*
 import javax.inject.Inject
 
 /**

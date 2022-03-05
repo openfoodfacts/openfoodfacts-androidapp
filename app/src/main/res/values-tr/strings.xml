@@ -42,7 +42,6 @@
     <string name="product_incomplete_message">Bu ürünün içerik listesi tam değil. Sonuç olarak, alerjen uyarısı gösterilmiyor.</string>
     <string name="product_allergen_prompt">Bu ürünün içeriği:</string>
     <string name="no_offline_data">İşleminiz tamamlandı</string>
-    <string name="first_offline">Çevrimdışı eklenen ürünler burada görünecek</string>
     <!-- Image Upload -->
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
@@ -176,8 +175,6 @@
     <string name="txtSubstances">Alerjiye veya intoleransa neden olan maddeler veya ürünler :</string>
     <string name="txtAdditives">Katkı maddeleri :</string>
     <string name="txtTraces">İzler :</string>
-    <string name="txtMayBeFromPalmOilProduct">Palmiye yağından elde edilmiş olabilecek malzemeler :</string>
-    <string name="txtPalmOilProduct">Palmiye yağından elde edilen malzemeler :</string>
     <string name="txtServingSize">Porsiyon boyutu :</string>
     <string name="txtNutrientLevel100g">100g için besin seviyeleri :</string>
     <string name="txtNutrientLevel100ml">100ml için besin seviyeleri :</string>
@@ -186,7 +183,6 @@
     <string name="txtNutritionLevelHigh">yüksek miktarda</string>
     <string name="txtSave">Kaydet</string>
     <string name="txtSignIn">Giriş Yap</string>
-    <string name="txtToastSaved">Kullanıcı kaydedildi</string>
     <string name="txtSalt">Tuz</string>
     <string name="txtFat">Yağ</string>
     <string name="txtSugars">Şeker</string>
@@ -196,7 +192,6 @@
     <string name="hintPass">Şifre</string>
     <string name="errorLogin">Giriş veya parola hatası</string>
     <string name="errorWeb">İnternet\'e erişemedik. Bağlantı sorununuz var mı?</string>
-    <string name="uploadLater">Ağ kullanılabilir olduğunda resim yüklenecek</string>
     <string name="txtInfoLoginOk">Kullanıcı kaydedildi</string>
     <string name="txtInfoLoginNo">Kullanıcı kaydedilemedi</string>
     <string name="product_does_not_exist_please_add_it">Aradığınız ürün Open Food Facts\'te mevcut değil. Lütfen ekleyin.</string>
@@ -207,25 +202,19 @@
     <string name="txtPictureNeededDialogNo">Sil</string>
     <string name="toastSending">Karşıya yükleniyor…</string>
     <string name="txtLoading">Yükleniyor…</string>
-    <string name="txtDialogsContentDelete">Bu taslağı kaldırmak istediğinizden emin misiniz?</string>
-    <string name="txtDialogsContentInfoSave">Ürün lokal olarak kaydedildi, \"Çevrimdışı Düzenle\" menüsünden düzenleyebilirsiniz</string>
     <string name="productSavedToast">Ürün kaydedildi, teşekkürler!</string>
     <string name="txtBarcodeRequire">Barkod gerekli</string>
-    <string name="txtOk">Tamam</string>
     <string name="txtBarcodeNotValid">Barkod geçerli değil</string>
     <string name="msg_share">Bu ürüne Open Food Facts\'te bak :</string>
     <string name="create_account">Kaydol</string>
     <string name="home_drawer">Ana Sayfa</string>
     <string name="install">Yükle</string>
-    <string name="open_beauty_drawer">Open Beauty Facts</string>
-    <string name="open_food_drawer">Open Food Facts</string>
     <string name="search_drawer">Ara</string>
     <string name="search_by_barcode_drawer">Barkodu yazın</string>
     <string name="category_drawer">Kategoriler</string>
     <string name="search_by_category">Kategori</string>
     <string name="scan_search">Barkod Tarama</string>
     <string name="user_drawer">Kullanıcı</string>
-    <string name="offline_edit_drawer">Çevrimdışı düzenle</string>
     <string name="txt_anonymous">Anonim</string>
     <string name="delete_txt">Sil</string>
     <string name="sign_in_drawer">Giriş yap</string>
@@ -285,7 +274,6 @@
     <string name="calculate_nutrition_facts">Calculate Nutrition Facts</string>
     <string name="nutrition_carbohydrate">Karbonhidrat</string>
     <string name="nutrition_cholesterol">Kollesterol</string>
-    <string name="nutrition_energy">Enerji</string>
     <string name="nutrition_energy_kcal">Kalori cinsinden enerji (kcal)</string>
     <string name="nutrition_energy_kj">Joule cinsinden enerji (kJ)</string>
     <string name="nutrition_energy_short_name">Enerji</string>
@@ -301,9 +289,7 @@
     <string name="nutriment_serving_size">Porsiyon başına : </string>
     <string name="action_manage_account">Hesabı yönet</string>
     <string name="action_contributes">Katkılarınız</string>
-    <string name="choose_energy_unit">Besin değerleri tablosu için tercih ettiğiniz enerji birimlerini seçin</string>
     <string name="pref_energy_unit_title">Tercih edilen enerji birimi</string>
-    <string name="choose_volume_unit">Besin değerleri tablosu için tercih ettiğiniz hacim birimlerini seçin</string>
     <string name="pref_volume_unit_title">Tercih edilen hacim birimi</string>
     <string name="logout_drawer">Çıkış Yap</string>
     <string name="contribution_without_account">Katkılarınızı devam ettirmek için giriş yapabilir veya hesap oluşturabilirsiniz</string>
@@ -410,27 +396,15 @@
     <string name="forgot_password">Şifremi Unuttum</string>
     <string name="next">SONRAKİ</string>
     <string name="skip">ATLA</string>
-    <string name="start">ANLADIM</string>
     <string name="pref_contact_us_title">İletişim</string>
     <string name="pref_contact_us_summary">Ekip ile irtibat kurun</string>
     <string name="email_not_found">Herhangi bir e-posta uygulaması bulunamadı</string>
-    <string name="airplane_mode_active_dialog_title">Uçak modu etkinleştirildi</string>
-    <string name="airplane_mode_active_dialog_message">Uçak modu etkin, lütfen devam etmek için bunu devre dışı bırakın.</string>
-    <string name="airplane_mode_active_dialog_negative">Yoksay</string>
-    <string name="airplane_mode_active_dialog_positive">Ayarlar</string>
     <string name="device_offline_dialog_title">Ağ mevcut değil</string>
-    <string name="device_offline_dialog_message">Bunu yapmak için bir ağ bağlantısına ihtiyaç var, bunu ayarlarda değiştirmek ister misiniz?</string>
-    <string name="device_offline_dialog_negative">Yoksay</string>
-    <string name="device_offline_dialog_positive">Ayarlar</string>
     <string name="scan_first_product">İlk Ürünü Tara</string>
     <string name="pref_delete_history">Geçmiş başarıyla silindi</string>
     <string name="pref_enable_mobile_data_title">Mobil verilere yükle</string>
     <string name="pref_enable_mobile_data_summary_on">Mobil veri &amp; WiFi kullanarak yeni ürünler yükleyin</string>
     <string name="pref_enable_mobile_data_summary_off">Yalnızca WiFi kullanarak yeni ürünleri yükle</string>
-    <string name="device_on_mobile_data_warning_title">Bilgi</string>
-    <string name="device_on_mobile_data_warning_message">Mobil veride yüklemeyi devre dışı bıraktınız, lütfen WiFi\'ye bağlanın veya bunu tercihlerde değiştirin</string>
-    <string name="device_on_mobile_data_warning_positive">Tercihler</string>
-    <string name="device_on_mobile_data_warning_negative">Yine de yükle</string>
     <string name="changes_saved">Değişiklikler başarıyla kaydedildi</string>
     <string name="preference_choose_language_dialog_title">Dil seçin</string>
     <string name="pref_faq_title">SSS</string>
@@ -525,9 +499,7 @@
     <string name="notification_channel_name">Aktarma Bildirimleri</string>
     <string name="notify_channel_description">Dışa aktarılan dosyanın konumunu gösteren bildirim</string>
     <string name="products_to_be_completed">Tamamlanacak ürünler</string>
-    <string name="offline_notification_title">Göndermeniz gereken çevrimdışı katkılar</string>
     <string name="creator_history">Ürün %1$s %2$s CET\'te %3$s tarafından eklendi</string>
-    <string name="last_editor_history">Ürün sayfası en son %1$s %2$s CEST\'te %3$s tarafından düzenlendi </string>
     <string name="other_editors">Ürün sayfası ayrıca … tarafından düzenlendi</string>
     <string name="contribution_tab">Katkıda Bulunulanlar</string>
     <string name="pref_contribution_tab_summary">Kullanıcı ürün katkıları sekmesini göster</string>
@@ -538,7 +510,6 @@
     <string name="offline_product_addition_title">Yeni bir ürün ekle</string>
     <string name="productNameNull">İsim bilinmiyor</string>
     <string name="productAdditivesUnknown"></string>
-    <string name="productAdditivesTemplate">%1$d katkı maddesi</string>
     <plurals name="productAdditives">
         <item quantity="one">%d katkı maddesi</item>
         <item quantity="other">%d katkı maddesi</item>
@@ -552,7 +523,6 @@
     <string name="switch_camera">Kamerayı değiştir</string>
     <string name="autofocus">Otomatik odaklama</string>
     <string name="initial_loading">Açılış yükleniyor</string>
-    <string name="preferences">Tercihler</string>
     <string name="OFFlogo">Open Food Facts logosu</string>
     <string name="loading_product">Ürün yükleniyor %s</string>
     <string name="image_not_defined_for_language">Seçilen dil için resim yok. Yeni bir tane ekleyebilirsiniz</string>
@@ -564,20 +534,11 @@
     <string name="error_adding_product_details">Ürünün ayrıntılarını eklemeye çalışırken bir hata oluştu</string>
     <string name="hint_product_URL">Ürünün resmi sayfasının adresi</string>
     <string name="product_language">Ürün dili : </string>
-    <string name="hint_emb_codes">Örnekler: EMB 53062, FR 62.448.034 CE, 84 R20, 33 RECOLTANT 522, FSSL 10013011001409</string>
     <string name="official_website">Resmi web sitesi</string>
     <string name="scan_QR_code">Ürünün web sitesi için QR Kodunu tarayın</string>
     <string name="add_at_least_one_picture">Lütfen devam etmeden önce bu ürünün en az bir resmini ekleyin</string>
     <string name="image_uploaded_successfully">Resim başarıyla yüklendi</string>
     <string name="error_adding_product_photos">Ürün fotoğraflarını eklemeye çalışırken bir hata oluştu</string>
-    <string name="ingredients_overwrite">İçindekilerin üzerine yaz</string>
-    <string name="choose_mine">Benimkini seç</string>
-    <string name="keep_previous_version">Önceki versiyonu koru</string>
-    <string name="product_name_overwrite">Ürün adının üzerine yaz</string>
-    <string name="yours">Seninki: </string>
-    <string name="currently_on">Şu an %s: </string>
-    <string name="quantity_overwrite">Miktarın üzerine yaz</string>
-    <string name="link_overwrite">Bağlantının üzerine yaz</string>
     <string name="save_product">Ürünü kaydetmek istiyor musunuz?</string>
     <string name="error_adding_product">Ürün ekleme sırasında bir hata oluştu</string>
     <string name="photos">Fotoğraflar</string>
@@ -585,7 +546,6 @@
     <string name="product_uploaded_successfully">Ürün başarıyla yüklendi</string>
     <string name="no_internet_connection">İnternet bağlantınız yok gibi görünüyor, resimler ağ kullanılabilir olduğunda yüklenecek</string>
     <string name="no_internet_unable_to_extract_ingredients">İnternet bağlantısı yok. İçerikler alınamıyor</string>
-    <string name="percent">%1$d%%</string>
     <string name="overview">Özet</string>
     <string name="ingredients">İçindekiler</string>
     <string name="nutrition_facts">Besin Değerleri</string>
@@ -628,9 +588,6 @@
     <string name="additional_pictures">İlave Resimler</string>
     <string name="hint_product_pictures">(Ürüne ait daha fazla resim ekleyin. örneğin: geri dönüşüm talimatları, etiketler vb.)</string>
     <string name="uploading_image">Fotoğraf gönderiliyor</string>
-    <string name="uploading_nutrition_image">Uploading nutrition facts image</string>
-    <string name="uploading_ingredients_image">Uploading ingredients image</string>
-    <string name="uploading_front_image">Uploading front image</string>
     <string name="edit_front_image">Ön fotoğrafı düzenleyin</string>
     <string name="edit_nutrition_image">Beslenme fotoğrafını düzenleyin</string>
     <string name="edit_packaging_image">Edit the recycling photo</string>
@@ -640,7 +597,6 @@
     <string name="sign_in_to_answer">Bir kavrayışı yanıtlamak için lütfen oturum açın veya kaydolun.</string>
     <string name="hint_quantity">Örnekler: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
     <string name="edit_product_title">Ürün düzenle</string>
-    <string name="nutrient_already_added">%s besin değerlerinde zaten var</string>
     <string name="save_edits">Düzenlemeleri kaydet</string>
     <string name="contribution_by">Katkıda bulunan</string>
     <string name="title_activity_product">Başlık</string>
@@ -713,7 +669,6 @@
     <string name="pref_country_summary">Seçili ülkenizi değiştirin</string>
     <string name="pref_country_title">Ülke</string>
     <string name="txt_no_nutrition_data">Bu ürün ambalaj üzerinde herhangi bir beslenme bilgisine sahip değildir. Bu durum değiştiyse, ürünü düzenleyebilirsiniz.</string>
-    <string name="image_prompt_language">Malzemelerin fotoğrafını çekin</string>
     <string name="swipe_delete_tip">You can delete a list by swiping it left.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
@@ -746,13 +701,10 @@
     <string name="choose_default_language">Ürün dilini seçiniz</string>
     <string name="barcode">Barkod</string>
     <string name="productAdditivesNone">Katkı maddesi yok</string>
-    <string name="error_uploading_photo">Yeni bir fotoğraf yüklenirken bir şeyler ters gitti</string>
     <string name="import_csv_to_list">Open Food Facts listesi CSV dosyasını içe aktarma</string>
     <string name="toast_import_csv_error">CSV dosyasını içe aktarma hatası</string>
     <string name="toast_import_csv">CSV başarıyla içe aktarıldı!</string>
-    <string name="open_csv">CSV\'yi aç</string>
     <!-- Used for diets AddOn -->
-    <string name="history_network_error">Ürün yüklenemedi. Lütfen tekrar çevrimiçi olduğunuzda yeniden deneyin.</string>
     <string name="cant_modify_if_refreshing">Lütfen yükleme tamamlanana kadar bekleyin</string>
     <string name="closeZoom">Yakınlaştırmayı kapatmak için tıklayın</string>
     <string name="imageFullscreen">Yakınlaştır</string>
@@ -809,7 +761,6 @@
     <string name="sign_in_or_register">Oturum aç / Kayıt ol</string>
     <string name="hunger_game_call_to_action">Daha fazla sınıflandırmaya yardımcı olun %1$s</string>
     <string name="txtHomeOnline">Open Food Facts, %1$s fazla gıda ürününün (artı sizin katkıda bulunacaklarınız) açık bir veritabanıdır.</string>
-    <string name="enabled">Enabled</string>
     <!-- Application theme settings -->
     <string name="follow_system">Follow system</string>
     <string name="day">Day</string>

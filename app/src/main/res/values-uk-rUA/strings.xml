@@ -16,7 +16,7 @@
   -->
 <resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
-        <item quantity="one">У вас 1 оффлайн продукт, що чекає на внесення до бази Open Food Facts</item>
+        <item quantity="one">У вас %d оффлайн продукт, що чекає на внесення до бази Open Food Facts</item>
         <item quantity="few">У вас %d оффлайн продукти, що чекають на внесення до бази Open Food Facts</item>
         <item quantity="many">У вас %d оффлайн продуктів, що чекають на внесення до бази Open Food Facts</item>
         <item quantity="other">У вас %d оффлайн продуктів, що чекають на внесення до бази Open Food Facts</item>
@@ -177,7 +177,7 @@
     <string name="Donate">Підтримати проект</string>
     <string name="Donation">Клікніть тут, щоб здійснити пожертвування для мобільного додатку Open Food Facts</string>
     <string name="txtSubstances">Речовина або продукти харчування, що викликають алергічні реакції або непереносимість: </string>
-    <string name="txtAdditives">Additives: </string>
+    <string name="txtAdditives">Добавки: </string>
     <string name="txtTraces">Traces: </string>
     <string name="txtServingSize">Розмір порції:</string>
     <string name="txtNutrientLevel100g">Харчова цінність 100г продукту:</string>
@@ -223,7 +223,7 @@
     <string name="txt_anonymous">Анонімний</string>
     <string name="delete_txt">Видалити</string>
     <string name="sign_in_drawer">Увійти</string>
-    <string name="alert_drawer">Мої аллергени</string>
+    <string name="alert_drawer">Сповіщення про алерген</string>
     <string name="your_lists">Ваші списки</string>
     <string name="title_dialog_alert">Додати оповіщення</string>
     <string name="select_camera">Обрати камеру</string>
@@ -290,7 +290,7 @@
     <string name="logout_drawer">Вийти</string>
     <string name="contribution_without_account">Вам потрібно увійти або створити обліковий запис, щоб побачити свої внески</string>
     <string name="textCarbonFootprint">Викиди вуглецю / CO2: </string>
-    <string name="packaging_environmentTab">Packaging:</string>
+    <string name="packaging_environmentTab">Пакування:</string>
     <string name="action_search">Пошук</string>
     <string name="search_hint">Пошук товару</string>
     <string name="number_of_results">Кількість результатів: </string>
@@ -374,7 +374,7 @@
     <string name="take_more_pictures">Зробити більше фото</string>
     <string name="take_extra_packaging_pictures">Зробіть додаткові фото упаковки</string>
     <string name="txtSaturatedFat">Насичені жири</string>
-    <string name="nutriscore_info_msg">Learn more about the Nutri-Score</string>
+    <string name="nutriscore_info_msg">Дізнатися більше про Nutri-Score</string>
     <string name="nova_info_msg">Дізнатися більше про групи NOVA</string>
     <string name="nova_grp1_msg">Група 1 - неперероблені або мінімально перероблені продукти</string>
     <string name="nova_grp2_msg">Група 2 - перероблені кулінарні складники</string>
@@ -409,7 +409,7 @@
     <string name="prompt_move_camera_closer">Move closer to detect</string>
     <string name="please_check_your_connection">Будь ласка, перевірте інтернет.</string>
     <string name="advanced_search_title">Розширений Пошук та Графіки</string>
-    <string name="compare_products">Compare products</string>
+    <string name="compare_products">Порівняти товари</string>
     <string name="connectivity_check">Будь ласка, перевірте підключення до інтернету</string>
     <string name="dismiss">Закрити</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
@@ -497,7 +497,6 @@
     <string name="notify_channel_description">Сповіщення, щоб показати розташування експортованого файлу</string>
     <string name="products_to_be_completed">Незавантажені продукти</string>
     <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Продукт додано %1$s %2$s о %3$s CET</string>
-    <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Останнє редагування сторінки продукту %1$s %2$s в %3$s CEST </string>
     <!-- TODO: Add the placeholder in the string - important for several languages -->
     <string name="other_editors">Сторінка продукту також відредагована </string>
     <string name="product_states">Product States</string>
@@ -672,7 +671,7 @@
     <string name="swipe_delete_tip">Ви можете видалити список, провівши пальцем ліворуч.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
-    <string name="add_product">Add products</string>
+    <string name="add_product">Додати продукти</string>
     <string name="add_another_product">Додати інший продукт</string>
     <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
     <string name="product_summary_action_compare_button_label">Порівняти</string>

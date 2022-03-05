@@ -2,8 +2,6 @@ package openfoodfacts.github.scrachx.openfood.utils
 
 import android.util.Log
 import androidx.annotation.CheckResult
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 import openfoodfacts.github.scrachx.openfood.repositories.Taxonomy
 import org.greenrobot.greendao.AbstractDao
 import org.greenrobot.greendao.query.QueryBuilder

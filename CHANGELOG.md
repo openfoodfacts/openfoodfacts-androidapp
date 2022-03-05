@@ -1,5 +1,18 @@
 # Changelog
 
+## [3.8.0](https://github.com/openfoodfacts/openfoodfacts-androidapp/compare/v3.7.0...v3.8.0) (2022-02-09)
+
+
+### Features
+
+* use JDK 11 in detekt workflow ([7787aef](https://github.com/openfoodfacts/openfoodfacts-androidapp/commit/7787aef14a360aca7733c20ba84987383c6f1f60))
+
+
+### Bug Fixes
+
+* NPE in ProductListAdapter ([#4469](https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/4469)) ([3af2973](https://github.com/openfoodfacts/openfoodfacts-androidapp/commit/3af29736e8c1ad586a379b5126eadd611b3a0763))
+* robotoff should not make the app crash if unavailable ([#4464](https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/4464)) ([70d4e09](https://github.com/openfoodfacts/openfoodfacts-androidapp/commit/70d4e0984045c2ec7f2af28506255bd13ecb7bbc))
+
 ## [3.7.0](https://www.github.com/openfoodfacts/openfoodfacts-androidapp/compare/v3.6.8...v3.7.0) (2021-12-26)
 
 

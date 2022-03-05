@@ -6,19 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
+import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentFindProductBinding
-import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewActivityStarter
 import openfoodfacts.github.scrachx.openfood.features.shared.NavigationBaseFragment
-import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType
 import openfoodfacts.github.scrachx.openfood.utils.hideKeyboard
 import openfoodfacts.github.scrachx.openfood.utils.isBarcodeValid
-import javax.inject.Inject
 
 /**
  * @see R.layout.fragment_find_product
@@ -28,11 +24,7 @@ class SearchByCodeFragment : NavigationBaseFragment() {
     private var _binding: FragmentFindProductBinding? = null
     private val binding get() = _binding!!
 
-    @Inject
-    lateinit var client: ProductRepository
-
-    @Inject
-    lateinit var productViewActivityStarter: ProductViewActivityStarter
+    private val viewModel: SearchByCodeViewModel by viewModels()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentFindProductBinding.inflate(inflater)
@@ -50,30 +42,31 @@ class SearchByCodeFragment : NavigationBaseFragment() {
         binding.buttonBarcode.setOnClickListener { checkBarcodeThenSearch() }
 
         // Get barcode from intent or saved instance or from arguments, in this order
-        var barCode = requireActivity().intent.getStringExtra(INTENT_KEY_BARCODE)
-        if (barCode.isNullOrBlank()) {
-            barCode = savedInstanceState?.getString(INTENT_KEY_BARCODE) ?: arguments?.getString(INTENT_KEY_BARCODE)
-        }
-        if (!barCode.isNullOrBlank()) {
-            setBarcodeThenSearch(barCode)
-        }
+        val barcode = requireActivity().intent.getStringExtra(INTENT_KEY_BARCODE).takeUnless { it.isNullOrBlank() }
+            ?: savedInstanceState?.getString(INTENT_KEY_BARCODE).takeUnless { it.isNullOrBlank() }
+            ?: arguments?.getString(INTENT_KEY_BARCODE).takeUnless { it.isNullOrBlank() }
 
-    }
-
-    private fun setBarcodeThenSearch(code: String) {
-        binding.editTextBarcode.setText(code, TextView.BufferType.EDITABLE)
-        checkBarcodeThenSearch()
+        // If we have the barcode, set the textbox and start the search
+        if (!barcode.isNullOrBlank()) {
+            binding.editTextBarcode.setText(barcode, TextView.BufferType.EDITABLE)
+            checkBarcodeThenSearch()
+        }
     }
 
     private fun checkBarcodeThenSearch() {
         requireActivity().hideKeyboard()
-        val barCodeTxt = binding.editTextBarcode.text.toString()
-        if (barCodeTxt.isEmpty()) {
-            binding.editTextBarcode.error = resources.getString(R.string.txtBarcodeRequire)
-        } else if (!isBarcodeValid(barCodeTxt)) {
-            binding.editTextBarcode.error = resources.getString(R.string.txtBarcodeNotValid)
-        } else {
-            lifecycleScope.launch { productViewActivityStarter.openProduct(barCodeTxt, requireActivity()) }
+
+        val code = binding.editTextBarcode.text.toString()
+        when {
+            code.isEmpty() -> {
+                binding.editTextBarcode.error = resources.getString(R.string.txtBarcodeRequire)
+            }
+            !isBarcodeValid(code) -> {
+                binding.editTextBarcode.error = resources.getString(R.string.txtBarcodeNotValid)
+            }
+            else -> {
+                viewModel.openProduct(code, requireActivity())
+            }
         }
     }
 
