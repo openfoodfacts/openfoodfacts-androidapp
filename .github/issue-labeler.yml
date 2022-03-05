@@ -2,9 +2,6 @@
 analytics:
     - '(analytics)'
 
-android:
-    - '(android)'
-
 attributes:
     - '(attributes)'
     
@@ -30,7 +27,7 @@ deeplinking:
     - '(deeplinking)'
     
 ecoscore:
-    - '(ecoscore)'
+    - '(ecoscore|eco-score)'
 
 editing:
     - '(editing)'
@@ -59,12 +56,21 @@ mlkit:
 matomo:
     - '(matomo)'
     
+nutriscore:
+    - '(nutriscore|nutri-score)'
+
 offline:
     - '(offline)'
     
 open beauty facts:
     - '(open beauty facts)'
- 
+
+open pet food facts:
+    - '(open pet food facts)'
+
+open products facts:
+    - '(open products facts)'
+
 high priority:
     - '(high priority)'
     
@@ -100,9 +106,6 @@ onboarding:
 
 preferences:
     - '(preferences)'
- 
-personal scoring:
-    - '(personal scoring)'
  
 performance:
     - '(performance)'
@@ -143,7 +146,7 @@ splashscreen:
 search:
     - '(search)'
 
-screenshot-generation:
+screenshot generation:
     - '(screenshot-generation)'
 
 svg:
