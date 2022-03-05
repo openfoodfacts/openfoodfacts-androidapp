@@ -16,7 +16,7 @@
   -->
 <resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
-        <item quantity="one">You have 1 offline product waiting to be contributed to Open Food Facts</item>
+        <item quantity="one">You have %d offline product waiting to be contributed to Open Food Facts</item>
         <item quantity="few"> You have %d offline products waiting to be contributed to Open Food Facts</item>
         <item quantity="many"> You have %d offline products waiting to be contributed to Open Food Facts</item>
         <item quantity="other"> You have %d offline products waiting to be contributed to Open Food Facts</item>
@@ -497,7 +497,6 @@
     <string name="notify_channel_description">Pranešimas, rodantis eksportuoto failo vietą</string>
     <string name="products_to_be_completed">Produktai, kurie turi būti baigti</string>
     <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Produktas pridėtas %1$s %2$s CET iki %3$s</string>
-    <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Paskutinis produkto puslapio redagavimas %1$s, %2$s CEST, %3$s </string>
     <!-- TODO: Add the placeholder in the string - important for several languages -->
     <string name="other_editors">Produkto puslapį taip pat redagavo </string>
     <string name="product_states">Produkto Būsenos</string>

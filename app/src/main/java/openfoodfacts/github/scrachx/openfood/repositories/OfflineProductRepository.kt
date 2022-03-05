@@ -17,7 +17,6 @@ import openfoodfacts.github.scrachx.openfood.utils.list
 import openfoodfacts.github.scrachx.openfood.utils.unique
 import org.greenrobot.eventbus.EventBus
 import java.io.File
-import java.util.*
 import javax.inject.Inject
 import javax.inject.Singleton
 

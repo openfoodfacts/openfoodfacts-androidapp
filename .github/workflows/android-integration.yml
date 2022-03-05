@@ -14,7 +14,7 @@ jobs:
 
     steps:
       - name: Checkout sources
-        uses: actions/checkout@v2.4.0
+        uses: actions/checkout@v3
 
       - name: Set up JDK 11
         uses: actions/setup-java@v2
@@ -23,7 +23,7 @@ jobs:
           java-version: "11"
 
       - name: Compile screenshots android tests
-        uses: gradle/gradle-build-action@v2.1.2
+        uses: gradle/gradle-build-action@v2.1.3
         with:
           arguments: >
             compileOffPlaystoreScreenshotsAndroidTestSources 
@@ -36,7 +36,7 @@ jobs:
 
     steps:
       - name: Checkout sources
-        uses: actions/checkout@v2.4.0
+        uses: actions/checkout@v3
 
       - name: Set up JDK 11
         uses: actions/setup-java@v2
@@ -45,7 +45,7 @@ jobs:
           java-version: "11"
 
       - name: Run unit tests
-        uses: gradle/gradle-build-action@v2.1.2
+        uses: gradle/gradle-build-action@v2.1.3
         with:
           arguments: >
             testObfPlaystoreDebugUnitTest
@@ -60,7 +60,7 @@ jobs:
 
     steps:
       - name: Checkout sources
-        uses: actions/checkout@v2.4.0
+        uses: actions/checkout@v3
 
       - name: Set up JDK 11
         uses: actions/setup-java@v2
@@ -72,12 +72,12 @@ jobs:
         run: 'echo "ndk.dir=${ANDROID_HOME}/ndk-bundle" > local.properties'
 
       - name: Assemble debug APKs
-        uses: gradle/gradle-build-action@v2.1.2
+        uses: gradle/gradle-build-action@v2.1.3
         with:
           arguments: assembleDebug
 
       - name: Upload OBF APKs
-        uses: actions/upload-artifact@v2.3.1
+        uses: actions/upload-artifact@v3
         with:
           name: OBF
           path: |
@@ -85,7 +85,7 @@ jobs:
             ./app/build/outputs/apk/obfFdroid/debug/app-obf-fdroid-debug.apk
 
       - name: Upload OFF APK
-        uses: actions/upload-artifact@v2.3.1
+        uses: actions/upload-artifact@v3
         with:
           name: OFF
           path: |
@@ -93,7 +93,7 @@ jobs:
             ./app/build/outputs/apk/offFdroid/debug/app-off-fdroid-debug.apk
 
       - name: Upload OPF APK
-        uses: actions/upload-artifact@v2.3.1
+        uses: actions/upload-artifact@v3
         with:
           name: OPF
           path: |
@@ -101,7 +101,7 @@ jobs:
             ./app/build/outputs/apk/opfFdroid/debug/app-opf-fdroid-debug.apk
 
       - name: Upload OPFF APK
-        uses: actions/upload-artifact@v2.3.1
+        uses: actions/upload-artifact@v3
         with:
           name: OPFF
           path: |
@@ -117,7 +117,7 @@ jobs:
 
     steps:
       - name: Checkout sources
-        uses: actions/checkout@v2.4.0
+        uses: actions/checkout@v3
 
       - name: Set up JDK 11
         uses: actions/setup-java@v2
@@ -132,7 +132,7 @@ jobs:
         run: "echo \"org.gradle.jvmargs=-Xmx4096m\" >> gradle.properties"
 
       - name: Lint sources
-        uses: gradle/gradle-build-action@v2.1.2
+        uses: gradle/gradle-build-action@v2.1.3
         with:
           arguments: lintOffPlayStoreDebug --stacktrace
 
@@ -144,6 +144,7 @@ jobs:
   build_deploy_pages:
     name: Deploy dokka to GitHub Pages
     runs-on: ubuntu-20.04
+    if: github.event_name == 'push' && github.ref == 'refs/heads/develop'
 
     needs:
       - assemble_apk
@@ -151,7 +152,7 @@ jobs:
 
     steps:
       - name: Checkout sources
-        uses: actions/checkout@v2.4.0
+        uses: actions/checkout@v3
 
       - name: Set up JDK 11
         uses: actions/setup-java@v2
@@ -159,16 +160,13 @@ jobs:
           distribution: 'adopt'
           java-version: '11'
 
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
-
       - name: Generate documentation
-        uses: gradle/gradle-build-action@v2.1.2
+        uses: gradle/gradle-build-action@v2.1.3
         with:
           arguments: dokkaHtml
 
       - name: Deploy documentation to Github Pages
-        uses: JamesIves/github-pages-deploy-action@v4.2.3
+        uses: JamesIves/github-pages-deploy-action@v4.2.5
         with:
           branch: gh-pages
           folder: app/build/dokka/html/

@@ -18,10 +18,8 @@ import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.rx2.await
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductComparisonBinding
 import openfoodfacts.github.scrachx.openfood.features.compare.ProductCompareViewModel.SideEffect
@@ -34,8 +32,8 @@ import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInsta
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
-import openfoodfacts.github.scrachx.openfood.utils.*
-import java.util.*
+import openfoodfacts.github.scrachx.openfood.utils.PhotoReceiverHandler
+import openfoodfacts.github.scrachx.openfood.utils.isHardwareCameraInstalled
 import javax.inject.Inject
 
 @AndroidEntryPoint

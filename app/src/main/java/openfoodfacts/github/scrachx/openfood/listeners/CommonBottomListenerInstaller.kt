@@ -7,11 +7,11 @@ import openfoodfacts.github.scrachx.openfood.R
 object CommonBottomListenerInstaller {
     // We use LinkedHashSet to retain insertion order
     private val NAV_ITEMS = linkedSetOf(
-            R.id.scan_bottom_nav,
-            R.id.compare_products,
-            R.id.home_page,
-            R.id.history_bottom_nav,
-            R.id.my_lists
+        R.id.scan_bottom_nav,
+        R.id.compare_products,
+        R.id.home_page,
+        R.id.history_bottom_nav,
+        R.id.my_lists
     )
 
 
@@ -22,6 +22,6 @@ object CommonBottomListenerInstaller {
     }
 
     fun BottomNavigationView.installBottomNavigation(activity: Activity) =
-            setOnNavigationItemSelectedListener(CommonBottomListener(activity))
+        setOnItemSelectedListener(CommonBottomListener(activity))
 
 }

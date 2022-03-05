@@ -40,7 +40,6 @@ import androidx.viewpager2.widget.ViewPager2
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.rx2.await
 import openfoodfacts.github.scrachx.openfood.AppFlavors
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OBF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OPF
@@ -51,7 +50,7 @@ import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabsHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentIngredientsProductBinding
-import openfoodfacts.github.scrachx.openfood.features.ImagesManageActivity
+import openfoodfacts.github.scrachx.openfood.features.images.manage.ImagesManageActivity
 import openfoodfacts.github.scrachx.openfood.features.additives.AdditiveFragmentHelper.showAdditives
 import openfoodfacts.github.scrachx.openfood.features.login.LoginActivity.Companion.LoginContract
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity

@@ -1,11 +1,11 @@
 package openfoodfacts.github.scrachx.openfood.features.welcome
 
 import androidx.annotation.ColorRes
-import androidx.annotation.StringRes
+import androidx.annotation.LayoutRes
 import openfoodfacts.github.scrachx.openfood.R
 
 internal enum class WelcomeScreen(
-    @field:StringRes @StringRes val layout: Int,
+    @field:LayoutRes @LayoutRes val layout: Int,
     @field:ColorRes @ColorRes val color: Int
 ) {
     INTRO(R.layout.welcome_slide_intro, R.color.bg_welcome_intro),

@@ -5,6 +5,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import okhttp3.Credentials
 import openfoodfacts.github.scrachx.openfood.models.AnnotationAnswer
 import openfoodfacts.github.scrachx.openfood.models.AnnotationResponse
+import openfoodfacts.github.scrachx.openfood.models.Question
 import openfoodfacts.github.scrachx.openfood.network.services.RobotoffAPI
 import openfoodfacts.github.scrachx.openfood.utils.getLoginPreferences
 import javax.inject.Inject
@@ -23,10 +24,10 @@ class RobotoffRepository @Inject constructor(
      * @param lang is language of the question
      * @return The single question
      */
-    suspend fun getProductQuestion(code: String, lang: String) =
-        robotoffAPI.getProductQuestions(code, lang, 1).questions
-            ?.takeUnless { it.isEmpty() }
-            ?.get(0)
+    suspend fun getProductQuestion(code: String, lang: String): Question? {
+        val state = runCatching { robotoffAPI.getProductQuestions(code, lang, 1) }
+        return state.getOrNull()?.questions?.getOrNull(0)
+    }
 
     /**
      * Annotate the Robotoff insight response using insight id and annotation

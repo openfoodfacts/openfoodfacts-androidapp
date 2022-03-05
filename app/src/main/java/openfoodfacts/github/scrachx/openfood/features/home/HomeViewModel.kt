@@ -1,7 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.features.home
 
 import android.content.SharedPreferences
-import android.view.View
 import androidx.core.content.edit
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
