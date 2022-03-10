@@ -113,7 +113,7 @@ class MlKitCameraView(private val activity: AppCompatActivity) {
     }
 
     private fun setUpWorkflowModel() {
-        workflowModel = ViewModelProvider(activity).get(WorkflowModel::class.java)
+        workflowModel = ViewModelProvider(activity)[WorkflowModel::class.java]
 
         // Observes the workflow state changes, if happens, update the overlay view indicators and
         // camera preview state.
@@ -139,11 +139,11 @@ class MlKitCameraView(private val activity: AppCompatActivity) {
 
         })
 
-        workflowModel?.detectedBarcode?.observe(activity, { barcode ->
+        workflowModel?.detectedBarcode?.observe(activity) { barcode ->
             barcode?.rawValue?.let {
                 barcodeScannedCallback?.invoke(it)
                 Log.i(LOG_TAG, "barcode =" + barcode.rawValue)
             }
-        })
+        }
     }
 }

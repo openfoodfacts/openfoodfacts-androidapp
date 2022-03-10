@@ -26,6 +26,7 @@ import android.util.TypedValue
 import android.view.Window
 import android.view.WindowManager
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.core.content.edit
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.WindowCompat
@@ -160,17 +161,21 @@ class WelcomeActivity : BaseActivity() {
     }
 
     private fun refreshBottomBar(currentPage: Int) {
-
         binding.layoutDots.removeAllViews()
+
+        val color = ContextCompat.getColor(this, WelcomeScreen[currentPage].color)
+        val lightColor = color.lighten(0.85f)
+        val darkColor = color.darken(0.1f)
+
         val dots = (0..screens.lastIndex).map {
             TextView(this).apply {
                 text = "\u2022"
                 this.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 35F)
-                setTextColor(WelcomeScreen[currentPage].color.lighten(0.85f))
+                setTextColor(lightColor)
                 binding.layoutDots.addView(this)
             }
         }
-        dots[currentPage].setTextColor(WelcomeScreen[currentPage].color.darken(0.1f))
+        dots[currentPage].setTextColor(darkColor)
     }
 
     private val nextItem get() = binding.viewPager.currentItem + 1

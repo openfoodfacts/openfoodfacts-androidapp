@@ -47,7 +47,6 @@
     <string name="product_incomplete_message">Acest produs nu este complet. Ca urmare, nu am putut verifica alergenii.</string>
     <string name="product_allergen_prompt">Acest produs conține:</string>
     <string name="no_offline_data">Aţi terminat tot</string>
-    <string name="first_offline">Produsele adăugate offline vor apărea aici</string>
     <!-- Image Upload -->
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
@@ -181,8 +180,6 @@
     <string name="txtSubstances">Substanțe care provoacă alergii sau intoleranțe:</string>
     <string name="txtAdditives">Aditivi alimentari:</string>
     <string name="txtTraces">Urme de:</string>
-    <string name="txtMayBeFromPalmOilProduct">Ingrediente care pot proveni din ulei de palmier:</string>
-    <string name="txtPalmOilProduct">Ingrediente provenind din ulei de palmier:</string>
     <string name="txtServingSize">Cantitatea unei porții:</string>
     <string name="txtNutrientLevel100g">Informații nutriționale pentru 100g:</string>
     <string name="txtNutrientLevel100ml">Valori nutriționale pentru 100ml:</string>
@@ -191,7 +188,6 @@
     <string name="txtNutritionLevelHigh">în cantitate ridicată</string>
     <string name="txtSave">Salvează</string>
     <string name="txtSignIn">Conectare</string>
-    <string name="txtToastSaved">Utilizator salvat</string>
     <string name="txtSalt">Sare</string>
     <string name="txtFat">Grăsimi</string>
     <string name="txtSugars">Zaharuri</string>
@@ -201,7 +197,6 @@
     <string name="hintPass">Parolă</string>
     <string name="errorLogin">Numele de utilizator sau parola sunt incorecte</string>
     <string name="errorWeb">Conectarea la internet nu e posibilă. Aveți probleme cu conexiunea la internet?</string>
-    <string name="uploadLater">Imaginea va fi încărcată când va fi disponibilă o conexiune la internet</string>
     <string name="txtInfoLoginOk">Utilizator salvat</string>
     <string name="txtInfoLoginNo">Utilizatorul nu a fost salvat.</string>
     <string name="product_does_not_exist_please_add_it">Produsul scanat nu există în baza de date Open Food Facts. Doriți să-l adăugați?</string>
@@ -212,25 +207,19 @@
     <string name="txtPictureNeededDialogNo">Renunță</string>
     <string name="toastSending">Se trimite…</string>
     <string name="txtLoading">Se încarcă…</string>
-    <string name="txtDialogsContentDelete">Sunteţi sigur(ă) că doriţi să ştergeţi această ciornă?</string>
-    <string name="txtDialogsContentInfoSave">Produsul a fost salvat local, puteți să il modificați din meniul \"Editare offline\".</string>
     <string name="productSavedToast">Product saved, thanks!</string>
     <string name="txtBarcodeRequire">Codul de bare este obligatoriu</string>
-    <string name="txtOk">OK</string>
     <string name="txtBarcodeNotValid">Codul de bare este invalid.</string>
     <string name="msg_share">Privește acest produs pe Open Food Facts:</string>
     <string name="create_account">Înregistrare</string>
     <string name="home_drawer">Pagina de start</string>
     <string name="install">Install</string>
-    <string name="open_beauty_drawer">Open Beauty Facts</string>
-    <string name="open_food_drawer">Open Food Facts</string>
     <string name="search_drawer">Caută</string>
     <string name="search_by_barcode_drawer">Căutare după codul de bare</string>
     <string name="category_drawer">Categorii</string>
     <string name="search_by_category">Categorie</string>
     <string name="scan_search">Scanare</string>
     <string name="user_drawer">Utilizator</string>
-    <string name="offline_edit_drawer">Modificare offline</string>
     <string name="txt_anonymous">Anonim</string>
     <string name="delete_txt">Ştergeţi</string>
     <string name="sign_in_drawer">Conectare</string>
@@ -290,7 +279,6 @@
     <string name="calculate_nutrition_facts">Calculează valorile nutriţionale</string>
     <string name="nutrition_carbohydrate">Glucide</string>
     <string name="nutrition_cholesterol">Colesterol</string>
-    <string name="nutrition_energy">Valoare energetică</string>
     <string name="nutrition_energy_kcal">Energy in calories (kcal)</string>
     <string name="nutrition_energy_kj">Energy in joules (kJ)</string>
     <string name="nutrition_energy_short_name">Valoare energetică</string>
@@ -306,9 +294,7 @@
     <string name="nutriment_serving_size">Per porție:</string>
     <string name="action_manage_account">Administrare cont</string>
     <string name="action_contributes">Contribuțiile dumneavoastră</string>
-    <string name="choose_energy_unit">Choose your preferred energy units for the nutrition table</string>
     <string name="pref_energy_unit_title">Preferred energy unit</string>
-    <string name="choose_volume_unit">Choose your preferred volume units for the nutrition table</string>
     <string name="pref_volume_unit_title">Unitate de volum preferată</string>
     <string name="logout_drawer">Deconectare</string>
     <string name="contribution_without_account">Conectați-vă sau creați un cont pentru a păstra contribuțiile.</string>
@@ -415,27 +401,15 @@
     <string name="forgot_password">Parolă uitată</string>
     <string name="next">CONTINUĂ</string>
     <string name="skip">OMITE</string>
-    <string name="start">AM ÎNȚELES</string>
     <string name="pref_contact_us_title">Contact</string>
     <string name="pref_contact_us_summary">Contactați echipa</string>
     <string name="email_not_found">Nu a fost găsită nicio aplicație de email</string>
-    <string name="airplane_mode_active_dialog_title">Mod avion activat</string>
-    <string name="airplane_mode_active_dialog_message">Modul avion este activat, vă rugăm dezactivați-l pentru a continua.</string>
-    <string name="airplane_mode_active_dialog_negative">Renunță</string>
-    <string name="airplane_mode_active_dialog_positive">Configurări</string>
     <string name="device_offline_dialog_title">Rețea indisponibilă</string>
-    <string name="device_offline_dialog_message">Pentru a face acest lucru este necesară o conexiune la rețea, doriți să schimbați acest lucru în setări?</string>
-    <string name="device_offline_dialog_negative">Renunță</string>
-    <string name="device_offline_dialog_positive">Configurări</string>
     <string name="scan_first_product">Scanați primul produs</string>
     <string name="pref_delete_history">Successfully deleted history</string>
     <string name="pref_enable_mobile_data_title">Încărcați prin datele mobile</string>
     <string name="pref_enable_mobile_data_summary_on">Încărcați produse noi utilizând datele mobile &amp; Wi-Fi</string>
     <string name="pref_enable_mobile_data_summary_off">Încărcați produse noi utilizând doar WiFi</string>
-    <string name="device_on_mobile_data_warning_title">Informaţii</string>
-    <string name="device_on_mobile_data_warning_message">Încărcarea prin datelre mobile este dezactivată, vă rugăm conectați-vă la WiFi sau modificați opțiunile în setări</string>
-    <string name="device_on_mobile_data_warning_positive">Preferințe</string>
-    <string name="device_on_mobile_data_warning_negative">Încărcați oricum</string>
     <string name="changes_saved">Changes saved successfully</string>
     <string name="preference_choose_language_dialog_title">Alegeți limba</string>
     <string name="pref_faq_title">FAQ</string>
@@ -530,7 +504,6 @@
     <string name="notification_channel_name">Notificări pentru exportare</string>
     <string name="notify_channel_description">Notificare pentru a arăta locația fișierului exportat</string>
     <string name="products_to_be_completed">Produse ce trebuie să fie finalizate</string>
-    <string name="offline_notification_title">Contribuțiile offline pe care trebuie să le trimiți</string>
     <string name="creator_history">Produs adăugat pe %1$s la %2$s CET de %3$s</string>
     <string name="other_editors">Pagina produsului totodată editată și de </string>
     <string name="contribution_tab">Contribuții</string>
@@ -542,7 +515,6 @@
     <string name="offline_product_addition_title">Adaugă un produs nou</string>
     <string name="productNameNull">Nume necunoscut</string>
     <string name="productAdditivesUnknown"></string>
-    <string name="productAdditivesTemplate">%1$d additives</string>
     <plurals name="productAdditives">
         <item quantity="one">%d aditiv</item>
         <item quantity="few">%d aditivi</item>
@@ -557,7 +529,6 @@
     <string name="switch_camera">Schimbă camera foto</string>
     <string name="autofocus">Autofocalizare</string>
     <string name="initial_loading">Încărcare inițială</string>
-    <string name="preferences">Preferințe</string>
     <string name="OFFlogo">Sigla Open Food Facts</string>
     <string name="loading_product">Se încarcă produse%s</string>
     <string name="image_not_defined_for_language">No image for selected language. You can add a new one</string>
@@ -569,20 +540,11 @@
     <string name="error_adding_product_details">A apărut o problemă în timp ce încercați să adăugați detaliile produsului</string>
     <string name="hint_product_URL">Legătura cu pagina oficială a produsului</string>
     <string name="product_language">Limba produsului: </string>
-    <string name="hint_emb_codes">Exemple: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522, FSSL 10013011001409</string>
     <string name="official_website">Pagina oficială</string>
     <string name="scan_QR_code">Scanați codul QR pentru pagina de produse</string>
     <string name="add_at_least_one_picture">Vă rugăm să adăugaţi cel puţin o imagine a acestui produs înainte de a continua</string>
     <string name="image_uploaded_successfully">Fișierul a fost încărcat cu succes</string>
     <string name="error_adding_product_photos">A apărut o problemă în timp ce încercați să adăugați imaginile produsului</string>
-    <string name="ingredients_overwrite">Suprascriere ingrediente</string>
-    <string name="choose_mine">Alege-mă pe mine</string>
-    <string name="keep_previous_version">Păstrează versiunea anterioară</string>
-    <string name="product_name_overwrite">Suprascriere de nume a produsului</string>
-    <string name="yours">Al tău: </string>
-    <string name="currently_on">În prezent la %s: </string>
-    <string name="quantity_overwrite">Suprascriere cantitate</string>
-    <string name="link_overwrite">Suprascriere legătură</string>
     <string name="save_product">Dorești să salvezi produsul?</string>
     <string name="error_adding_product">Something went wrong when adding the product</string>
     <string name="photos">Imagini</string>
@@ -590,7 +552,6 @@
     <string name="product_uploaded_successfully">Produsul a fost încărcat cu succes</string>
     <string name="no_internet_connection">Se pare că nu aveți conexiune la internet, imaginile vor fi încărcate atunci când este disponibilă o rețea</string>
     <string name="no_internet_unable_to_extract_ingredients">Fără conexiune la internet. Nu se pot extrage ingredientele</string>
-    <string name="percent">%1$d%%</string>
     <string name="overview">Prezentare generală</string>
     <string name="ingredients">Ingrediente</string>
     <string name="nutrition_facts">Valori nutriționale</string>
@@ -633,9 +594,6 @@
     <string name="additional_pictures">Imagini suplimentare</string>
     <string name="hint_product_pictures">(Adăugați mai multe imagini ale produsului, de exemplu: instrucțiuni de reciclare, etichete etc.)</string>
     <string name="uploading_image">Sending the photo</string>
-    <string name="uploading_nutrition_image">Uploading nutrition facts image</string>
-    <string name="uploading_ingredients_image">Încărcarea imaginii ingredientelor</string>
-    <string name="uploading_front_image">Încărcarea imaginii</string>
     <string name="edit_front_image">Edit the front photo</string>
     <string name="edit_nutrition_image">Edit the nutrition photo</string>
     <string name="edit_packaging_image">Edit the recycling photo</string>
@@ -645,7 +603,6 @@
     <string name="sign_in_to_answer">Please sign in or register to answer an insight.</string>
     <string name="hint_quantity">Exemple: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
     <string name="edit_product_title">Modificare produs</string>
-    <string name="nutrient_already_added">%s is already present in the nutrition facts</string>
     <string name="save_edits">Salvați modificările</string>
     <string name="contribution_by">Contribution by</string>
     <string name="title_activity_product">Titlu</string>
@@ -718,7 +675,6 @@
     <string name="pref_country_summary">Change your selected country</string>
     <string name="pref_country_title">Țara</string>
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
-    <string name="image_prompt_language">Take a photo of the ingredients in</string>
     <string name="swipe_delete_tip">You can delete a list by swiping it left.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
@@ -751,13 +707,10 @@
     <string name="choose_default_language">Select product language</string>
     <string name="barcode">Cod de bare</string>
     <string name="productAdditivesNone">Fără aditivi</string>
-    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
     <string name="import_csv_to_list">Import an Open Food Facts list CSV file</string>
     <string name="toast_import_csv_error">Error in importing CSV file</string>
     <string name="toast_import_csv">CSV imported successfully!</string>
-    <string name="open_csv">Open CSV</string>
     <!-- Used for diets AddOn -->
-    <string name="history_network_error">The product couldn\'t be loaded. Please try again when you are back online.</string>
     <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
     <string name="closeZoom">Click to close zoom</string>
     <string name="imageFullscreen">Zoom</string>
@@ -814,7 +767,6 @@
     <string name="sign_in_or_register">Sign in or register</string>
     <string name="hunger_game_call_to_action">Help classify more %1$s</string>
     <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s food products (plus the ones you will contribute).</string>
-    <string name="enabled">Enabled</string>
     <!-- Application theme settings -->
     <string name="follow_system">Follow system</string>
     <string name="day">Day</string>

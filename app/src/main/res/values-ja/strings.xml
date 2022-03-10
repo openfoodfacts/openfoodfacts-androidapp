@@ -37,7 +37,6 @@
     <string name="product_incomplete_message">この製品は完全ではありません。その結果、アレルゲンチェックを行うことができませんでした。</string>
     <string name="product_allergen_prompt">この製品には以下が含まれます:</string>
     <string name="no_offline_data">すべて完了しました</string>
-    <string name="first_offline">オフラインで追加した製品がここに表示されます</string>
     <!-- Image Upload -->
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
@@ -171,8 +170,6 @@
     <string name="txtSubstances">アレルギーまたは不耐性の原因となる物質または製品 :</string>
     <string name="txtAdditives">添加物 :</string>
     <string name="txtTraces">追跡 :</string>
-    <string name="txtMayBeFromPalmOilProduct">パーム油を原材料とする可能性があるもの :</string>
-    <string name="txtPalmOilProduct">パーム油を原材料とするもの :</string>
     <string name="txtServingSize">分量 :</string>
     <string name="txtNutrientLevel100g">100g 当たりの栄養成分:</string>
     <string name="txtNutrientLevel100ml">100ml 当たりの栄養成分:</string>
@@ -181,7 +178,6 @@
     <string name="txtNutritionLevelHigh">多量</string>
     <string name="txtSave">保存</string>
     <string name="txtSignIn">サインイン</string>
-    <string name="txtToastSaved">ユーザーを保存しました</string>
     <string name="txtSalt">食塩</string>
     <string name="txtFat">脂肪</string>
     <string name="txtSugars">砂糖</string>
@@ -191,7 +187,6 @@
     <string name="hintPass">パスワード</string>
     <string name="errorLogin">ログインまたはパスワードエラー</string>
     <string name="errorWeb">インターネットにアクセスできませんでした。接続に問題がありませんか?</string>
-    <string name="uploadLater">ネットワークが利用可能になると画像がアップロードされます</string>
     <string name="txtInfoLoginOk">ユーザーを保存しました</string>
     <string name="txtInfoLoginNo">ユーザーを保存できませんでした</string>
     <string name="product_does_not_exist_please_add_it">スキャンした製品はまだ Open Food Facts に存在しません。追加してください。</string>
@@ -202,25 +197,19 @@
     <string name="txtPictureNeededDialogNo">破棄</string>
     <string name="toastSending">アップロードしています…</string>
     <string name="txtLoading">読み込んでいます…</string>
-    <string name="txtDialogsContentDelete">このドラフトを削除してもよろしいですか?</string>
-    <string name="txtDialogsContentInfoSave">この製品はローカルに保存されます。オフライン編集 メニューで編集することができます</string>
     <string name="productSavedToast">Product saved, thanks!</string>
     <string name="txtBarcodeRequire">バーコードが必要です</string>
-    <string name="txtOk">OK</string>
     <string name="txtBarcodeNotValid">バーコードが正しくありません</string>
     <string name="msg_share">Open Food Facts でこの製品を参照してください:</string>
     <string name="create_account">サインアップ</string>
     <string name="home_drawer">ホーム</string>
     <string name="install">インストール</string>
-    <string name="open_beauty_drawer">Open Beauty Facts</string>
-    <string name="open_food_drawer">Open Food Facts</string>
     <string name="search_drawer">検索</string>
     <string name="search_by_barcode_drawer">バーコードで検索</string>
     <string name="category_drawer">カテゴリー</string>
     <string name="search_by_category">カテゴリー</string>
     <string name="scan_search">スキャン</string>
     <string name="user_drawer">ユーザー</string>
-    <string name="offline_edit_drawer">オフライン編集</string>
     <string name="txt_anonymous">匿名</string>
     <string name="delete_txt">削除</string>
     <string name="sign_in_drawer">サインイン</string>
@@ -280,7 +269,6 @@
     <string name="calculate_nutrition_facts">栄養成分を計算</string>
     <string name="nutrition_carbohydrate">炭水化物</string>
     <string name="nutrition_cholesterol">コレステロール</string>
-    <string name="nutrition_energy">エネルギー</string>
     <string name="nutrition_energy_kcal">Energy in calories (kcal)</string>
     <string name="nutrition_energy_kj">Energy in joules (kJ)</string>
     <string name="nutrition_energy_short_name">エネルギー</string>
@@ -296,9 +284,7 @@
     <string name="nutriment_serving_size">品目当たり :</string>
     <string name="action_manage_account">アカウントの管理</string>
     <string name="action_contributes">あなたの貢献</string>
-    <string name="choose_energy_unit">栄養成分表に使用するエネルギー単位を選択してください</string>
     <string name="pref_energy_unit_title">使用するエネルギー単位</string>
-    <string name="choose_volume_unit">栄養成分表に使用する容量単位を選択してください</string>
     <string name="pref_volume_unit_title">使用する容量の単位</string>
     <string name="logout_drawer">ログアウト</string>
     <string name="contribution_without_account">サインイン、またはアカウントを作成して、貢献を続けることができます</string>
@@ -405,27 +391,15 @@
     <string name="forgot_password">パスワードを忘れた場合</string>
     <string name="next">次へ</string>
     <string name="skip">スキップ</string>
-    <string name="start">了解</string>
     <string name="pref_contact_us_title">お問い合わせ</string>
     <string name="pref_contact_us_summary">チームに連絡します</string>
     <string name="email_not_found">メールアプリケーションが見つかりません</string>
-    <string name="airplane_mode_active_dialog_title">機内モードが有効です</string>
-    <string name="airplane_mode_active_dialog_message">飛行機モードが有効になっているので、これを無効にして続行してください。</string>
-    <string name="airplane_mode_active_dialog_negative">消去</string>
-    <string name="airplane_mode_active_dialog_positive">設定</string>
     <string name="device_offline_dialog_title">ネットワークが利用できません</string>
-    <string name="device_offline_dialog_message">これを行うにはネットワーク接続が必要です。設定でこれを変更しますか?</string>
-    <string name="device_offline_dialog_negative">消去</string>
-    <string name="device_offline_dialog_positive">設定</string>
     <string name="scan_first_product">最初の製品をスキャンします</string>
     <string name="pref_delete_history">Successfully deleted history</string>
     <string name="pref_enable_mobile_data_title">モバイルデータ通信時にアップロード</string>
     <string name="pref_enable_mobile_data_summary_on">モバイル データ通信 &amp; WiFi を使用して新しい製品をアップロードします</string>
     <string name="pref_enable_mobile_data_summary_off">WiFi 接続時のみ新しい製品をアップロードします</string>
-    <string name="device_on_mobile_data_warning_title">情報</string>
-    <string name="device_on_mobile_data_warning_message">You have disabled upload on mobile data , please connect to WiFi or change this in preferences</string>
-    <string name="device_on_mobile_data_warning_positive">プリファレンス</string>
-    <string name="device_on_mobile_data_warning_negative">とにかくアップロード</string>
     <string name="changes_saved">Changes saved successfully</string>
     <string name="preference_choose_language_dialog_title">言語を選択</string>
     <string name="pref_faq_title">FAQ</string>
@@ -520,7 +494,6 @@
     <string name="notification_channel_name">エクスポートの通知</string>
     <string name="notify_channel_description">エクスポートされたファイルの場所を示す通知</string>
     <string name="products_to_be_completed">完了が必要な製品</string>
-    <string name="offline_notification_title">オフラインの貢献を送信する必要があります</string>
     <string name="creator_history">Product added on %1$s at %2$s CET by %3$s</string>
     <string name="other_editors">製品ページの共同編集者</string>
     <string name="contribution_tab">貢献</string>
@@ -532,7 +505,6 @@
     <string name="offline_product_addition_title">新しい製品を追加</string>
     <string name="productNameNull">名前不明</string>
     <string name="productAdditivesUnknown"></string>
-    <string name="productAdditivesTemplate">%1$d additives</string>
     <plurals name="productAdditives">
         <item quantity="other">%d additives</item>
     </plurals>
@@ -545,7 +517,6 @@
     <string name="switch_camera">カメラを切り替え</string>
     <string name="autofocus">オートフォーカス</string>
     <string name="initial_loading">ロードしています…</string>
-    <string name="preferences">プリファレンス</string>
     <string name="OFFlogo">Open Food Facts ロゴ</string>
     <string name="loading_product">製品「%s」を読み込み中</string>
     <string name="image_not_defined_for_language">No image for selected language. You can add a new one</string>
@@ -557,20 +528,11 @@
     <string name="error_adding_product_details">製品の詳細を追加中に問題が発生しました</string>
     <string name="hint_product_URL">製品の公式ページへのリンク</string>
     <string name="product_language">製品の言語 : </string>
-    <string name="hint_emb_codes">例: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522, FSSL 10013011001409</string>
     <string name="official_website">公式サイト</string>
     <string name="scan_QR_code">製品ウェブサイトのQRコードをスキャンする</string>
     <string name="add_at_least_one_picture">続行する前に、この製品の写真を少なくとも1枚追加してください</string>
     <string name="image_uploaded_successfully">画像がアップロードされました</string>
     <string name="error_adding_product_photos">製品の写真を追加中に問題が発生しました</string>
-    <string name="ingredients_overwrite">成分を上書きする</string>
-    <string name="choose_mine">選択する</string>
-    <string name="keep_previous_version">以前のバージョンのままにする</string>
-    <string name="product_name_overwrite">製品名の上書き</string>
-    <string name="yours">あなたのもの: </string>
-    <string name="currently_on">現在 %s: </string>
-    <string name="quantity_overwrite">数量の上書き</string>
-    <string name="link_overwrite">リンクの上書き</string>
     <string name="save_product">製品を保存しますか?</string>
     <string name="error_adding_product">Something went wrong when adding the product</string>
     <string name="photos">写真</string>
@@ -578,7 +540,6 @@
     <string name="product_uploaded_successfully">製品をアップロードしました</string>
     <string name="no_internet_connection">インターネットに接続していないようです、ネットワークが利用可能なときに画像がアップロードされます</string>
     <string name="no_internet_unable_to_extract_ingredients">インターネットに接続できません。原材料を抽出できません</string>
-    <string name="percent">%1$d%%</string>
     <string name="overview">概要</string>
     <string name="ingredients">原材料</string>
     <string name="nutrition_facts">栄養成分表</string>
@@ -621,9 +582,6 @@
     <string name="additional_pictures">追加の写真</string>
     <string name="hint_product_pictures">(製品の写真をさらに追加してください。例: リサイクルの指示、ラベル、など)</string>
     <string name="uploading_image">Sending the photo</string>
-    <string name="uploading_nutrition_image">栄養成分表をアップロードしています</string>
-    <string name="uploading_ingredients_image">原材料画像をアップロードしています</string>
-    <string name="uploading_front_image">正面画像をアップロードしています</string>
     <string name="edit_front_image">Edit the front photo</string>
     <string name="edit_nutrition_image">Edit the nutrition photo</string>
     <string name="edit_packaging_image">Edit the recycling photo</string>
@@ -633,7 +591,6 @@
     <string name="sign_in_to_answer">Please sign in or register to answer an insight.</string>
     <string name="hint_quantity">例：2リットル、250リットル、1リットル、25リットル、6リットル、1ポンド</string>
     <string name="edit_product_title">製品を編集</string>
-    <string name="nutrient_already_added">%s はすでに栄養成分表に含まれています</string>
     <string name="save_edits">編集内容を保存</string>
     <string name="contribution_by">Contribution by</string>
     <string name="title_activity_product">タイトル</string>
@@ -706,7 +663,6 @@
     <string name="pref_country_summary">Change your selected country</string>
     <string name="pref_country_title">国</string>
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
-    <string name="image_prompt_language">Take a photo of the ingredients in</string>
     <string name="swipe_delete_tip">You can delete a list by swiping it left.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
@@ -739,13 +695,10 @@
     <string name="choose_default_language">Select product language</string>
     <string name="barcode">バーコード</string>
     <string name="productAdditivesNone">No additives</string>
-    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
     <string name="import_csv_to_list">Import an Open Food Facts list CSV file</string>
     <string name="toast_import_csv_error">Error in importing CSV file</string>
     <string name="toast_import_csv">CSV imported successfully!</string>
-    <string name="open_csv">Open CSV</string>
     <!-- Used for diets AddOn -->
-    <string name="history_network_error">The product couldn\'t be loaded. Please try again when you are back online.</string>
     <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
     <string name="closeZoom">Click to close zoom</string>
     <string name="imageFullscreen">Zoom</string>
@@ -802,7 +755,6 @@
     <string name="sign_in_or_register">Sign in or register</string>
     <string name="hunger_game_call_to_action">Help classify more %1$s</string>
     <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s food products (plus the ones you will contribute).</string>
-    <string name="enabled">Enabled</string>
     <!-- Application theme settings -->
     <string name="follow_system">Follow system</string>
     <string name="day">Day</string>

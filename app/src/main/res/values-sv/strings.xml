@@ -42,7 +42,6 @@
     <string name="product_incomplete_message">Denna produkt är inte komplett. På grund av detta kunde vi inte göra allergenkontrollen.</string>
     <string name="product_allergen_prompt">Den här produkten innehåller:</string>
     <string name="no_offline_data">Du är klar</string>
-    <string name="first_offline">Produkter som läggs till offline visas här</string>
     <!-- Image Upload -->
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
@@ -176,8 +175,6 @@
     <string name="txtSubstances">Substanser eller produkter som orsaker allergier eller intolerans :</string>
     <string name="txtAdditives">Tillsatser :</string>
     <string name="txtTraces">Spår :</string>
-    <string name="txtMayBeFromPalmOilProduct">Ingredienser som kan vara från palmolja :</string>
-    <string name="txtPalmOilProduct">Ingredienser från palmolja :</string>
     <string name="txtServingSize">Portionsstorlek :</string>
     <string name="txtNutrientLevel100g">Näringsnivåer per 100g :</string>
     <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
@@ -186,7 +183,6 @@
     <string name="txtNutritionLevelHigh">i hög kvantitet</string>
     <string name="txtSave">Spara</string>
     <string name="txtSignIn">Logga in</string>
-    <string name="txtToastSaved">Användare sparad</string>
     <string name="txtSalt">Salt</string>
     <string name="txtFat">Fett</string>
     <string name="txtSugars">Socker</string>
@@ -196,7 +192,6 @@
     <string name="hintPass">Lösenord</string>
     <string name="errorLogin">Fel användarnamn eller lösenord</string>
     <string name="errorWeb">Vi kunde inte nå internet. Har du problem med anslutningen?</string>
-    <string name="uploadLater">Bilden kommer att laddas upp när ett nätverk finns tillgängligt</string>
     <string name="txtInfoLoginOk">Användare sparad</string>
     <string name="txtInfoLoginNo">Användare inte sparad</string>
     <string name="product_does_not_exist_please_add_it">Den skannade produkten finns inte i Open Food Facts. Vänligen lägg till den.</string>
@@ -207,25 +202,19 @@
     <string name="txtPictureNeededDialogNo">Kasta</string>
     <string name="toastSending">Laddar upp…</string>
     <string name="txtLoading">Laddar…</string>
-    <string name="txtDialogsContentDelete">Är du säker på att du vill ta bort det här utkastet?</string>
-    <string name="txtDialogsContentInfoSave">Produkten är sparad lokalt. Du kan redigera den i menyn ”Redigera offline”</string>
     <string name="productSavedToast">Product saved, thanks!</string>
     <string name="txtBarcodeRequire">Streckkod krävs</string>
-    <string name="txtOk">OK</string>
     <string name="txtBarcodeNotValid">Streckkoden är inte giltig</string>
     <string name="msg_share">Titta på denna produkt på Open Food Facts:</string>
     <string name="create_account">Registrera</string>
     <string name="home_drawer">Hem</string>
     <string name="install">Installera</string>
-    <string name="open_beauty_drawer">Open Beauty Facts</string>
-    <string name="open_food_drawer">Open Food Facts</string>
     <string name="search_drawer">Sök</string>
     <string name="search_by_barcode_drawer">Sök med streckkod</string>
     <string name="category_drawer">Kategorier</string>
     <string name="search_by_category">Kategori</string>
     <string name="scan_search">Skanna</string>
     <string name="user_drawer">Användare</string>
-    <string name="offline_edit_drawer">Redigera offline</string>
     <string name="txt_anonymous">Anonym</string>
     <string name="delete_txt">Radera</string>
     <string name="sign_in_drawer">Logga in</string>
@@ -285,7 +274,6 @@
     <string name="calculate_nutrition_facts">Calculate Nutrition Facts</string>
     <string name="nutrition_carbohydrate">Kolhydrat</string>
     <string name="nutrition_cholesterol">Kolesterol</string>
-    <string name="nutrition_energy">Energi</string>
     <string name="nutrition_energy_kcal">Energi i kalorier (kcal)</string>
     <string name="nutrition_energy_kj">Energi i joule (kJ)</string>
     <string name="nutrition_energy_short_name">Energi</string>
@@ -301,9 +289,7 @@
     <string name="nutriment_serving_size">Per portion: </string>
     <string name="action_manage_account">Hantera konto</string>
     <string name="action_contributes">Dina bidrag</string>
-    <string name="choose_energy_unit">Choose your preferred energy units for the nutrition table</string>
     <string name="pref_energy_unit_title">Preferred energy unit</string>
-    <string name="choose_volume_unit">Choose your preferred volume units for the nutrition table</string>
     <string name="pref_volume_unit_title">Preferred volume unit</string>
     <string name="logout_drawer">Logga ut</string>
     <string name="contribution_without_account">Du kan logga in eller skapa ett konto för att behålla dina bidrag</string>
@@ -410,27 +396,15 @@
     <string name="forgot_password">Glömt lösenord</string>
     <string name="next">NÄSTA</string>
     <string name="skip">HOPPA ÖVER</string>
-    <string name="start">UPPFATTAT</string>
     <string name="pref_contact_us_title">Kontakt</string>
     <string name="pref_contact_us_summary">Kontakta teamet</string>
     <string name="email_not_found">Inga e-postprogram hittades</string>
-    <string name="airplane_mode_active_dialog_title">Flygplansläge aktiverat</string>
-    <string name="airplane_mode_active_dialog_message">Flygplansläge är aktiverat, var vänlig avaktivera detta för att fortsätta.</string>
-    <string name="airplane_mode_active_dialog_negative">Avfärda</string>
-    <string name="airplane_mode_active_dialog_positive">Inställningar</string>
     <string name="device_offline_dialog_title">Nätverk ej tillgängligt</string>
-    <string name="device_offline_dialog_message">En nätverksanslutning behövs för att göra detta, vill du ändra det i inställningarna?</string>
-    <string name="device_offline_dialog_negative">Avfärda</string>
-    <string name="device_offline_dialog_positive">Inställningar</string>
     <string name="scan_first_product">Skanna första produkten</string>
     <string name="pref_delete_history">Successfully deleted history</string>
     <string name="pref_enable_mobile_data_title">Ladda upp över mobildata</string>
     <string name="pref_enable_mobile_data_summary_on">Ladda upp nya produkter med mobildata &amp; WiFi</string>
     <string name="pref_enable_mobile_data_summary_off">Ladda bara upp produkter över WiFi</string>
-    <string name="device_on_mobile_data_warning_title">Information</string>
-    <string name="device_on_mobile_data_warning_message">You have disabled upload on mobile data , please connect to WiFi or change this in preferences</string>
-    <string name="device_on_mobile_data_warning_positive">Inställningar</string>
-    <string name="device_on_mobile_data_warning_negative">Ladda upp ändå</string>
     <string name="changes_saved">Ändringarna har sparats korrekt</string>
     <string name="preference_choose_language_dialog_title">Välj språk</string>
     <string name="pref_faq_title">FAQ</string>
@@ -525,7 +499,6 @@
     <string name="notification_channel_name">Exportera meddelanden</string>
     <string name="notify_channel_description">Meddelande för att visa den exporterade filens plats</string>
     <string name="products_to_be_completed">Produkter att slutföra</string>
-    <string name="offline_notification_title">Offlinebidrag du ännu inte skickat</string>
     <string name="creator_history">Product added on %1$s at %2$s CET by %3$s</string>
     <string name="other_editors">Produktsidan har också redigerats av </string>
     <string name="contribution_tab">Bidrag</string>
@@ -537,7 +510,6 @@
     <string name="offline_product_addition_title">Lägg till en ny produkt</string>
     <string name="productNameNull">Namn okänt</string>
     <string name="productAdditivesUnknown"></string>
-    <string name="productAdditivesTemplate">%1$d additives</string>
     <plurals name="productAdditives">
         <item quantity="one">%d additive</item>
         <item quantity="other">%d additives</item>
@@ -551,7 +523,6 @@
     <string name="switch_camera">Byt kamera</string>
     <string name="autofocus">Autofokus</string>
     <string name="initial_loading">Inledande laddning</string>
-    <string name="preferences">Inställningar</string>
     <string name="OFFlogo">Open Food Facts logotyp</string>
     <string name="loading_product">Loading product %s</string>
     <string name="image_not_defined_for_language">Ingen bild för valt språk. Du kan lägga till en ny</string>
@@ -563,20 +534,11 @@
     <string name="error_adding_product_details">Something went wrong while trying to add product details</string>
     <string name="hint_product_URL">Link of the official page of the product</string>
     <string name="product_language">Produktspråk: </string>
-    <string name="hint_emb_codes">Exempel: EMB 53062, FR 62.448.034 CE, 84R20, 33 RECOLTANT 522, FSSL 10013011001409</string>
     <string name="official_website">Officiell hemsida</string>
     <string name="scan_QR_code">Scan QR Code for product website</string>
     <string name="add_at_least_one_picture">Please add at least one picture of this product before proceeding</string>
     <string name="image_uploaded_successfully">Bilden har laddats upp</string>
     <string name="error_adding_product_photos">Something went wrong while trying to add product photos</string>
-    <string name="ingredients_overwrite">Ingredients overwrite</string>
-    <string name="choose_mine">Välj min</string>
-    <string name="keep_previous_version">Behåll föregående version</string>
-    <string name="product_name_overwrite">Product name overwrite</string>
-    <string name="yours">Din: </string>
-    <string name="currently_on">Currently on %s: </string>
-    <string name="quantity_overwrite">Quantity overwrite</string>
-    <string name="link_overwrite">Link overwrite</string>
     <string name="save_product">Vill du spara produkten?</string>
     <string name="error_adding_product">Something went wrong when adding the product</string>
     <string name="photos">Foton</string>
@@ -584,7 +546,6 @@
     <string name="product_uploaded_successfully">Product uploaded successfully</string>
     <string name="no_internet_connection">You appear to have no internet connection, images will be uploaded when network is available</string>
     <string name="no_internet_unable_to_extract_ingredients">No internet connection. Unable to extract ingredients</string>
-    <string name="percent">%1$d%%</string>
     <string name="overview">Sammanfattning</string>
     <string name="ingredients">Ingredienser</string>
     <string name="nutrition_facts">Näringsfakta</string>
@@ -627,9 +588,6 @@
     <string name="additional_pictures">Ytterligare bilder</string>
     <string name="hint_product_pictures">(Add more pictures of the product. eg: recycling instructions, labels etc.)</string>
     <string name="uploading_image">Ladda upp foto</string>
-    <string name="uploading_nutrition_image">Uploading nutrition facts image</string>
-    <string name="uploading_ingredients_image">Uploading ingredients image</string>
-    <string name="uploading_front_image">Uploading front image</string>
     <string name="edit_front_image">Edit the front photo</string>
     <string name="edit_nutrition_image">Edit the nutrition photo</string>
     <string name="edit_packaging_image">Edit the recycling photo</string>
@@ -639,7 +597,6 @@
     <string name="sign_in_to_answer">Please sign in or register to answer an insight.</string>
     <string name="hint_quantity">Examples: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
     <string name="edit_product_title">Redigera en produkt</string>
-    <string name="nutrient_already_added">%s is already present in the nutrition facts</string>
     <string name="save_edits">Spara ändringar</string>
     <string name="contribution_by">Bidrag från</string>
     <string name="title_activity_product">Titel</string>
@@ -712,7 +669,6 @@
     <string name="pref_country_summary">Change your selected country</string>
     <string name="pref_country_title">Land</string>
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
-    <string name="image_prompt_language">Take a photo of the ingredients in</string>
     <string name="swipe_delete_tip">You can delete a list by swiping it left.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
@@ -745,13 +701,10 @@
     <string name="choose_default_language">Välj produktspråk</string>
     <string name="barcode">Streckkod</string>
     <string name="productAdditivesNone">Inga tillsatser</string>
-    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
     <string name="import_csv_to_list">Import an Open Food Facts list CSV file</string>
     <string name="toast_import_csv_error">Error in importing CSV file</string>
     <string name="toast_import_csv">CSV imported successfully!</string>
-    <string name="open_csv">Open CSV</string>
     <!-- Used for diets AddOn -->
-    <string name="history_network_error">The product couldn\'t be loaded. Please try again when you are back online.</string>
     <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
     <string name="closeZoom">Click to close zoom</string>
     <string name="imageFullscreen">Zoom</string>
@@ -808,7 +761,6 @@
     <string name="sign_in_or_register">Sign in or register</string>
     <string name="hunger_game_call_to_action">Help classify more %1$s</string>
     <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s food products (plus the ones you will contribute).</string>
-    <string name="enabled">Enabled</string>
     <!-- Application theme settings -->
     <string name="follow_system">Follow system</string>
     <string name="day">Day</string>
