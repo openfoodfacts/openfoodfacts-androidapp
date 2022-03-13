@@ -10,13 +10,12 @@ import androidx.core.app.ActivityCompat.shouldShowRequestPermissionRationale
 import androidx.core.content.ContextCompat.checkSelfPermission
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.commit
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.navigation.NavigationBarView
 import openfoodfacts.github.scrachx.openfood.R
-import openfoodfacts.github.scrachx.openfood.features.home.HomeFragment
 import openfoodfacts.github.scrachx.openfood.features.MainActivity
 import openfoodfacts.github.scrachx.openfood.features.compare.ProductCompareActivity
+import openfoodfacts.github.scrachx.openfood.features.home.HomeFragment
 import openfoodfacts.github.scrachx.openfood.features.productlists.ProductListsActivity
 import openfoodfacts.github.scrachx.openfood.features.scan.ContinuousScanActivity
 import openfoodfacts.github.scrachx.openfood.features.scanhistory.ScanHistoryActivity

@@ -4,8 +4,9 @@ import android.content.Context
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
 import dagger.hilt.android.qualifiers.ApplicationContext
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
+import openfoodfacts.github.scrachx.openfood.hilt.qualifiers.IODispatcher
 import openfoodfacts.github.scrachx.openfood.models.Changelog
 import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
 import java.io.BufferedReader
@@ -13,9 +14,11 @@ import java.io.IOException
 import javax.inject.Inject
 import javax.inject.Singleton
 
+
 @Singleton
 class ChangelogService @Inject constructor(
     @ApplicationContext private val context: Context,
+    @IODispatcher private val ioDispatcher: CoroutineDispatcher,
     private val localeManager: LocaleManager
 ) {
 
@@ -25,7 +28,10 @@ class ChangelogService @Inject constructor(
 
     private val mapper = ObjectMapper()
 
-    suspend fun observeChangelog() = withContext(Dispatchers.IO) { parseJsonFile() }
+    suspend fun observeChangelog() = withContext(ioDispatcher) {
+        @Suppress("BlockingMethodInNonBlockingContext")
+        parseJsonFile()
+    }
 
     @Throws(IOException::class)
     private fun parseJsonFile(): Changelog {

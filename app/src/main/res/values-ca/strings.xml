@@ -42,7 +42,6 @@
     <string name="product_incomplete_message">Aquest producte no està complet. Per això no hem pogut fer el control d\'al·lèrgens.</string>
     <string name="product_allergen_prompt">Aquest producte conté:</string>
     <string name="no_offline_data">Enllestit</string>
-    <string name="first_offline">Els productes afegits fora de línia apareixeran aquí</string>
     <!-- Image Upload -->
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
@@ -176,8 +175,6 @@
     <string name="txtSubstances">Substàncies o productes que causen al·lèrgies o intoleràncies:</string>
     <string name="txtAdditives">Additius :</string>
     <string name="txtTraces">Traces:</string>
-    <string name="txtMayBeFromPalmOilProduct">Ingredients que poden venir de l\'oli de palma :</string>
-    <string name="txtPalmOilProduct">Ingredients d\'oli de palma :</string>
     <string name="txtServingSize">Mida de la porció :</string>
     <string name="txtNutrientLevel100g">Nivells de nutrients per a 100 g:</string>
     <string name="txtNutrientLevel100ml">Nivell de nutrients per 100ml:</string>
@@ -186,7 +183,6 @@
     <string name="txtNutritionLevelHigh">en grans quantitats</string>
     <string name="txtSave">Desa</string>
     <string name="txtSignIn">Inicia la sessió</string>
-    <string name="txtToastSaved">Usuari desat</string>
     <string name="txtSalt">Sal</string>
     <string name="txtFat">Greixos</string>
     <string name="txtSugars">Sucres</string>
@@ -196,7 +192,6 @@
     <string name="hintPass">Contrasenya</string>
     <string name="errorLogin">Identificador o contrasenya errònia</string>
     <string name="errorWeb">No ens hem pogut connectar a Internet. Teniu problemes amb la connexió?</string>
-    <string name="uploadLater">La imatge es carregarà quan la xarxa estigui disponible</string>
     <string name="txtInfoLoginOk">Usuari desat</string>
     <string name="txtInfoLoginNo">Usuari no desat</string>
     <string name="product_does_not_exist_please_add_it">El producte que heu escanejat encara no existeix a Open Food Facts. Si us plau, afegiu-lo.</string>
@@ -207,25 +202,19 @@
     <string name="txtPictureNeededDialogNo">Descarta</string>
     <string name="toastSending">Carregant…</string>
     <string name="txtLoading">S\'està carregant…</string>
-    <string name="txtDialogsContentDelete">Segur que voleu suprimir aquest esborrany?</string>
-    <string name="txtDialogsContentInfoSave">El producte s\'ha desat localment, podeu editar-lo amb el menú \"Edita fora de línia\"</string>
     <string name="productSavedToast">Producte guardat, gràcies!</string>
     <string name="txtBarcodeRequire">Es necessita un codi de barres</string>
-    <string name="txtOk">D\'acord</string>
     <string name="txtBarcodeNotValid">Codi de barres no vàlid</string>
     <string name="msg_share">Mireu aquest producte a Open Food Facts:</string>
     <string name="create_account">Uniu-vos</string>
     <string name="home_drawer">Inici</string>
     <string name="install">Instal·la</string>
-    <string name="open_beauty_drawer">Open Beauty Facts</string>
-    <string name="open_food_drawer">Open Food Facts</string>
     <string name="search_drawer">Cerca</string>
     <string name="search_by_barcode_drawer">Cerca per codi de barres</string>
     <string name="category_drawer">Categories</string>
     <string name="search_by_category">Categoria</string>
     <string name="scan_search">Escànner</string>
     <string name="user_drawer">Usuari</string>
-    <string name="offline_edit_drawer">Edita fora de línia</string>
     <string name="txt_anonymous">Anònim</string>
     <string name="delete_txt">Elimina</string>
     <string name="sign_in_drawer">Obre sessió</string>
@@ -285,7 +274,6 @@
     <string name="calculate_nutrition_facts">Calcula les Dades Nutricionals</string>
     <string name="nutrition_carbohydrate">Carbohidrat</string>
     <string name="nutrition_cholesterol">Colesterol</string>
-    <string name="nutrition_energy">Energia</string>
     <string name="nutrition_energy_kcal">Energia en calories (kcal)</string>
     <string name="nutrition_energy_kj">Energia en joules (kJ)</string>
     <string name="nutrition_energy_short_name">Energia</string>
@@ -301,9 +289,7 @@
     <string name="nutriment_serving_size">Per porció :</string>
     <string name="action_manage_account">Gestiona el compte</string>
     <string name="action_contributes">Les vostres aportacions</string>
-    <string name="choose_energy_unit">Tria les unitats d\'energia que vols fer servir per a la taula d\'informació nutricional</string>
     <string name="pref_energy_unit_title">Unitat d\'energia preferida</string>
-    <string name="choose_volume_unit">Tria les unitats de volum que vols fer servir per a la taula d\'informació nutricional</string>
     <string name="pref_volume_unit_title">Unitat de volum preferida</string>
     <string name="logout_drawer">Tanca la sessió</string>
     <string name="contribution_without_account">Podeu iniciar la sessió o crear un compte per mantenir les vostres aportacions</string>
@@ -410,27 +396,15 @@
     <string name="forgot_password">Heu oblidat la contrasenya?</string>
     <string name="next">SEGÜENT</string>
     <string name="skip">SALTA</string>
-    <string name="start">D\'ACORD</string>
     <string name="pref_contact_us_title">Contacte</string>
     <string name="pref_contact_us_summary">Contacta amb l\'equip</string>
     <string name="email_not_found">No s\'ha trobat cap aplicació de correu electrònic</string>
-    <string name="airplane_mode_active_dialog_title">El mode avió està activat</string>
-    <string name="airplane_mode_active_dialog_message">El mode avió està activat, si us plau, desactiveu-lo per continuar.</string>
-    <string name="airplane_mode_active_dialog_negative">Omet</string>
-    <string name="airplane_mode_active_dialog_positive">Preferències</string>
     <string name="device_offline_dialog_title">Xarxa no disponible</string>
-    <string name="device_offline_dialog_message">Es necessita una connexió de xarxa per fer-ho, voleu modificar-ho a la configuració?</string>
-    <string name="device_offline_dialog_negative">Omet</string>
-    <string name="device_offline_dialog_positive">Preferències</string>
     <string name="scan_first_product">Escanegeu el primer producte</string>
     <string name="pref_delete_history">L\'historial s\'ha esborrat correctament</string>
     <string name="pref_enable_mobile_data_title">Càrrega amb dades mòbils</string>
     <string name="pref_enable_mobile_data_summary_on">Carrega de nous productes utilitzant dades mòbils &amp; Wi-Fi</string>
     <string name="pref_enable_mobile_data_summary_off">Carrega nous productes utilitzant només Wi-Fi</string>
-    <string name="device_on_mobile_data_warning_title">Informació</string>
-    <string name="device_on_mobile_data_warning_message">La càrrega amb dades mòbils està desactivada, connecteu-vos a la Wi-Fi o canvieu la configuració</string>
-    <string name="device_on_mobile_data_warning_positive">Preferències</string>
-    <string name="device_on_mobile_data_warning_negative">Carrega igualment</string>
     <string name="changes_saved">Els canvis s\'han desat correctament</string>
     <string name="preference_choose_language_dialog_title">Trieu la llengua</string>
     <string name="pref_faq_title">PMF</string>
@@ -525,9 +499,7 @@
     <string name="notification_channel_name">Notificacions d\'exportació</string>
     <string name="notify_channel_description">Notificació per mostrar la ubicació de l\'arxiu exportat</string>
     <string name="products_to_be_completed">Productes que s\'han de completar</string>
-    <string name="offline_notification_title">Aportacions fora de línia que cal enviar</string>
     <string name="creator_history">Producte afegit el %1$s a les %2$s CET per %3$s</string>
-    <string name="last_editor_history">Darrera edició de la pàgina del producte el %1$s a %2$s CEST per %3$s</string>
     <string name="other_editors">La pàgina del producte també ha estat editada per </string>
     <string name="contribution_tab">Aportacions</string>
     <string name="pref_contribution_tab_summary">Mostra la pestanya d\'aportacions dels usuaris amb productes</string>
@@ -538,7 +510,6 @@
     <string name="offline_product_addition_title">Afegeix un nou producte</string>
     <string name="productNameNull">Nom desconegut</string>
     <string name="productAdditivesUnknown"></string>
-    <string name="productAdditivesTemplate">%1$d additius</string>
     <plurals name="productAdditives">
         <item quantity="one">%d additiu</item>
         <item quantity="other">%d additius</item>
@@ -552,7 +523,6 @@
     <string name="switch_camera">Canvia la càmera</string>
     <string name="autofocus">Autoenfocament</string>
     <string name="initial_loading">Càrrega inicial</string>
-    <string name="preferences">Preferències</string>
     <string name="OFFlogo">Logo d\'Open Food Facts</string>
     <string name="loading_product">S\'està carregant el producte %s</string>
     <string name="image_not_defined_for_language">No hi ha cap imatge per la llengua seleccionada. Podeu afegir-ne una</string>
@@ -564,20 +534,11 @@
     <string name="error_adding_product_details">Alguna cosa ha sortit malament mentre s\'intentaven afegir detalls del producte</string>
     <string name="hint_product_URL">Enllaç de la pàgina oficial del producte</string>
     <string name="product_language">Llengua d\'etiquetat: </string>
-    <string name="hint_emb_codes">Exemples: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522, FSSL 10013011001409</string>
     <string name="official_website">Lloc web oficial</string>
     <string name="scan_QR_code">Escaneja el codi QR del lloc web del producte</string>
     <string name="add_at_least_one_picture">Afegiu com a mínim una imatge d\'aquest producte abans de continuar</string>
     <string name="image_uploaded_successfully">La imatge s\'ha pujat correctament</string>
     <string name="error_adding_product_photos">Alguna cosa ha sortit malament mentre s\'intentaven afegir imatges del producte</string>
-    <string name="ingredients_overwrite">Sobreescriure els ingredients</string>
-    <string name="choose_mine">Tria una meva</string>
-    <string name="keep_previous_version">Mantén la versió anterior</string>
-    <string name="product_name_overwrite">Sobrescriu el nom del producte</string>
-    <string name="yours">Les vostres: </string>
-    <string name="currently_on">Actualment a %s: </string>
-    <string name="quantity_overwrite">Sobreescriu la quantitat</string>
-    <string name="link_overwrite">Sobreescriu l\'enllaç</string>
     <string name="save_product">Voleu desar aquest producte?</string>
     <string name="error_adding_product">Alguna cosa ha anat malament mentre s\'afegia el producte</string>
     <string name="photos">Fotos</string>
@@ -585,7 +546,6 @@
     <string name="product_uploaded_successfully">El producte s\'ha carregat correctament</string>
     <string name="no_internet_connection">Sembla que no teniu cap connexió a Internet, les imatges es carregaran quan la xarxa estigui disponible</string>
     <string name="no_internet_unable_to_extract_ingredients">No hi ha connexió a Internet. No es poden extreure els ingredients</string>
-    <string name="percent">%1$d%%</string>
     <string name="overview">Visió general</string>
     <string name="ingredients">Ingredients</string>
     <string name="nutrition_facts">Informació nutricional</string>
@@ -628,9 +588,6 @@
     <string name="additional_pictures">Imatges addicionals</string>
     <string name="hint_product_pictures">(Afegiu més imatges del producte, per exemple: instruccions de reciclatge, etiquetes, etc.)</string>
     <string name="uploading_image">Enviant la foto</string>
-    <string name="uploading_nutrition_image">S\'està carregant la imatge de les dades nutricionals</string>
-    <string name="uploading_ingredients_image">S\'està carregant la imatge dels ingredients</string>
-    <string name="uploading_front_image">S\'està carregant la imatge frontal</string>
     <string name="edit_front_image">Edita la foto del davant</string>
     <string name="edit_nutrition_image">Edita la foto de la taula nutricional</string>
     <string name="edit_packaging_image">Edit the recycling photo</string>
@@ -640,7 +597,6 @@
     <string name="sign_in_to_answer">Inicieu la sessió o registreu-vos per respondre a una informació.</string>
     <string name="hint_quantity">Exemples: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
     <string name="edit_product_title">Edita un producte</string>
-    <string name="nutrient_already_added">%s ja està present en les dades nutricionals</string>
     <string name="save_edits">Desa l\'edició</string>
     <string name="contribution_by">Aportació de</string>
     <string name="title_activity_product">Títol</string>
@@ -713,7 +669,6 @@
     <string name="pref_country_summary">Canvieu el país seleccionat</string>
     <string name="pref_country_title">País</string>
     <string name="txt_no_nutrition_data">Aquest producte no conté informació nutricional a l’envàs. Si això ha canviat, podeu editar el producte.</string>
-    <string name="image_prompt_language">Feu una foto dels ingredients a</string>
     <string name="swipe_delete_tip">You can delete a list by swiping it left.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
@@ -746,13 +701,10 @@
     <string name="choose_default_language">Seleccioneu l\'idioma del producte</string>
     <string name="barcode">Codi de barres</string>
     <string name="productAdditivesNone">Sense additius</string>
-    <string name="error_uploading_photo">S\'ha produït un error en penjar una foto nova</string>
     <string name="import_csv_to_list">Importeu una llista CSV d\'Open Food Facts</string>
     <string name="toast_import_csv_error">Error en importar el fitxer CSV</string>
     <string name="toast_import_csv">CSV importat correctament!</string>
-    <string name="open_csv">Obre CSV</string>
     <!-- Used for diets AddOn -->
-    <string name="history_network_error">No s\'ha pogut carregar el producte. Torneu-ho a provar quan torneu a estar en línia.</string>
     <string name="cant_modify_if_refreshing">Espereu fins que s\'acabi la càrrega</string>
     <string name="closeZoom">Feu clic per tancar el zoom</string>
     <string name="imageFullscreen">Zoom</string>
@@ -809,7 +761,6 @@
     <string name="sign_in_or_register">Inicieu la sessió o registreu-vos</string>
     <string name="hunger_game_call_to_action">Ajudeu a classificar millor %1$s</string>
     <string name="txtHomeOnline">Open Food Facts és una base de dades oberta de més de %1$s productes alimentaris (més els que hi aportareu).</string>
-    <string name="enabled">Enabled</string>
     <!-- Application theme settings -->
     <string name="follow_system">Follow system</string>
     <string name="day">Day</string>

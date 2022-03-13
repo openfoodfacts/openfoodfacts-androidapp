@@ -36,7 +36,6 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
@@ -57,14 +56,16 @@ import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInsta
 import openfoodfacts.github.scrachx.openfood.listeners.RecyclerItemClickListener
 import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import openfoodfacts.github.scrachx.openfood.models.Product
-import openfoodfacts.github.scrachx.openfood.models.entities.*
+import openfoodfacts.github.scrachx.openfood.models.entities.ListedProduct
+import openfoodfacts.github.scrachx.openfood.models.entities.ListedProductDao
+import openfoodfacts.github.scrachx.openfood.models.entities.ProductLists
+import openfoodfacts.github.scrachx.openfood.models.entities.ProductListsDao
 import openfoodfacts.github.scrachx.openfood.utils.SwipeController
 import openfoodfacts.github.scrachx.openfood.utils.isEmpty
 import org.apache.commons.csv.CSVFormat
 import org.apache.commons.csv.CSVParser
 import java.io.InputStream
 import java.io.InputStreamReader
-import java.util.*
 import javax.inject.Inject
 
 
