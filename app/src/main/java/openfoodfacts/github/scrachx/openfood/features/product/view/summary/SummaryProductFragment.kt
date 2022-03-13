@@ -130,6 +130,9 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     @Inject
     lateinit var taxonomiesRepository: TaxonomiesRepository
 
+    @Inject
+    lateinit var photoReceiverHandler: PhotoReceiverHandler
+
     private lateinit var presenter: ISummaryProductPresenter.Actions
     private lateinit var mTagDao: TagDao
 
@@ -148,20 +151,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     private var mUrlImage: String? = null
 
     private var nutritionScoreUri: Uri? = null
-    private val photoReceiverHandler by lazy {
-        PhotoReceiverHandler(sharedPreferences) { newPhotoFile: File ->
-            //the pictures are uploaded with the correct path
-            val resultUri = newPhotoFile.toURI()
-            val photoFile = if (sendOther) newPhotoFile else File(resultUri.path)
-            val field = if (sendOther) ProductImageField.OTHER else ProductImageField.FRONT
-            val image = ProductImage(product.code, field, photoFile, localeManager.getLanguage())
-            image.filePath = photoFile.absolutePath
-            uploadImage(image)
-            if (!sendOther) {
-                loadPhoto(photoFile)
-            }
-        }
-    }
+
 
     private var productQuestion: Question? = null
 
@@ -977,7 +967,18 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data)
+        photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data) { newPhotoFile: File ->
+            //the pictures are uploaded with the correct path
+            val resultUri = newPhotoFile.toURI()
+            val photoFile = if (sendOther) newPhotoFile else File(resultUri.path)
+            val field = if (sendOther) ProductImageField.OTHER else ProductImageField.FRONT
+            val image = ProductImage(product.code, field, photoFile, localeManager.getLanguage())
+            image.filePath = photoFile.absolutePath
+            uploadImage(image)
+            if (!sendOther) {
+                loadPhoto(photoFile)
+            }
+        }
 
         val shouldRefresh = ImagesManageActivity.isImageModified(requestCode, resultCode)
 
