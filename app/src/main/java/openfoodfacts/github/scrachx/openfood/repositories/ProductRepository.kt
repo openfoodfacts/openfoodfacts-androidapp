@@ -41,7 +41,8 @@ class ProductRepository @Inject constructor(
     private val daoSession: DaoSession,
     private val rawApi: ProductsAPI,
     private val sentryAnalytics: SentryAnalytics,
-    private val localeManager: LocaleManager
+    private val localeManager: LocaleManager,
+    private val installationService: InstallationService
 ) {
 
     suspend fun getProductStateFull(
@@ -442,7 +443,7 @@ class ProductRepository @Inject constructor(
         append(" ")
         append(context.getVersionName())
         if (login.isNullOrEmpty()) {
-            append(" (Added by ").append(InstallationUtils.id(context)).append(")")
+            append(" (Added by ").append(installationService.id).append(")")
         }
     }
 

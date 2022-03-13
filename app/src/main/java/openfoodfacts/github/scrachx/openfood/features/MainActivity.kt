@@ -142,6 +142,9 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
     @Inject
     lateinit var localeManager: LocaleManager
 
+    @Inject
+    lateinit var prefManager: PreferencesService
+
     private val contributeUri: Uri by lazy { Uri.parse(getString(R.string.website_contribute)) }
     private val discoverUri: Uri by lazy { Uri.parse(getString(R.string.website_discover)) }
     private fun getUserContributeUri(): Uri = Uri.parse(getString(R.string.website_contributor) + getUserLogin())
@@ -153,7 +156,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
     private lateinit var customTabActivityHelper: CustomTabActivityHelper
     private lateinit var drawerResult: Drawer
     private lateinit var headerResult: AccountHeader
-    private val prefManager: PrefManager by lazy { PrefManager(this) }
+
 
     private var searchMenuItem: MenuItem? = null
     private var userSettingsURI: Uri? = null

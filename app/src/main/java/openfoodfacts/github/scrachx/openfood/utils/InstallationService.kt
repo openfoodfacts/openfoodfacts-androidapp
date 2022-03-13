@@ -2,28 +2,24 @@ package openfoodfacts.github.scrachx.openfood.utils
 
 import android.content.Context
 import android.util.Log
+import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.File
 import java.io.IOException
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
 import java.util.*
+import javax.inject.Inject
 
-object InstallationUtils {
-    private const val KEY_INSTALLATION = "INSTALLATION"
-    private var id: String? = null
+class InstallationService @Inject constructor(
+    @ApplicationContext private val context: Context
+) {
 
-    @Synchronized
-    fun id(context: Context?): String {
-        if (context == null) return "(no id)"
-
-        if (id.isNullOrEmpty()) {
-            val installFile = File(context.filesDir, KEY_INSTALLATION)
-            if (!installFile.exists()) {
-                writeInstallationFile(installFile)
-            }
-            id = installFile.readText()
+    val id: String by lazy {
+        val installFile = File(context.filesDir, KEY_INSTALLATION)
+        if (!installFile.exists()) {
+            writeInstallationFile(installFile)
         }
-        return id as String
+        installFile.readText()
     }
 
     @Throws(IOException::class)
@@ -41,7 +37,11 @@ object InstallationUtils {
             digest.forEach { b -> it.append(Integer.toHexString(0xFF and b.toInt())) }
         }.toString()
     } catch (e: NoSuchAlgorithmException) {
-        Log.e(InstallationUtils::class.simpleName, "getHashedString $str", e)
+        Log.e(InstallationService::class.simpleName, "getHashedString $str", e)
         ""
+    }
+
+    companion object {
+        private const val KEY_INSTALLATION = "INSTALLATION"
     }
 }

@@ -93,18 +93,9 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
     @Inject
     lateinit var localeManager: LocaleManager
 
-    private val photoReceiverHandler: PhotoReceiverHandler by lazy {
-        PhotoReceiverHandler(sharedPreferences) {
-            val resultUri = it.toURI()
-            imagePath = resultUri.path
-            photoFile = it
-            val image = ProductImage(productCode!!, ProductImageField.NUTRITION, it, localeManager.getLanguage()).apply {
-                filePath = resultUri.path
-            }
-            (activity as? ProductEditActivity)?.savePhoto(image, 2)
-            hideImageProgress(false, "")
-        }
-    }
+    @Inject
+    lateinit var photoReceiverHandler: PhotoReceiverHandler
+
     private var photoFile: File? = null
     private var productCode: String? = null
     private var mOfflineSavedProduct: OfflineSavedProduct? = null
@@ -928,7 +919,17 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data)
+        photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data) {
+            val resultUri = it.toURI()
+            imagePath = resultUri.path
+            photoFile = it
+            val image = ProductImage(productCode!!, ProductImageField.NUTRITION, it, localeManager.getLanguage()).apply {
+                filePath = resultUri.path
+            }
+            (activity as? ProductEditActivity)?.savePhoto(image, 2)
+            hideImageProgress(false, "")
+        }
+
     }
 
     override fun hideImageProgress(errorInUploading: Boolean, message: String) {
