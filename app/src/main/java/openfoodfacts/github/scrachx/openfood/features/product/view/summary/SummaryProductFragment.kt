@@ -30,6 +30,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.result.ActivityResultLauncher
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.net.toUri
@@ -140,7 +141,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     private lateinit var customTabActivityHelper: CustomTabActivityHelper
 
     private lateinit var customTabsIntent: CustomTabsIntent
-
+    private lateinit var editProductLauncher: ActivityResultLauncher<Product>
 
     private var hasCategoryInsightQuestion = false
 
@@ -189,6 +190,9 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mTagDao = daoSession.tagDao
+
+        editProductLauncher = registerForActivityResult(ProductEditActivity.EditProductContract())
+        { isOk -> if (isOk) (activity as? ProductViewActivity)?.onRefresh() }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -886,9 +890,6 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
             putExtra(Intent.EXTRA_TEXT, shareBody)
         }, null))
     }
-
-    private val editProductLauncher = registerForActivityResult(ProductEditActivity.EditProductContract())
-    { isOk -> if (isOk) (activity as? ProductViewActivity)?.onRefresh() }
 
     private fun editProduct() = editProductLauncher.launch(product)
 
