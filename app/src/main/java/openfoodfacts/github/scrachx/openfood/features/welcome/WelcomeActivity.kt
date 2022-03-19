@@ -40,7 +40,7 @@ import openfoodfacts.github.scrachx.openfood.analytics.SentryAnalytics
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityWelcomeBinding
 import openfoodfacts.github.scrachx.openfood.features.MainActivity
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
-import openfoodfacts.github.scrachx.openfood.utils.PrefManager
+import openfoodfacts.github.scrachx.openfood.utils.PreferencesService
 import openfoodfacts.github.scrachx.openfood.utils.darken
 import openfoodfacts.github.scrachx.openfood.utils.lighten
 import javax.inject.Inject
@@ -59,8 +59,6 @@ class WelcomeActivity : BaseActivity() {
     private var _binding: ActivityWelcomeBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var prefManager: PrefManager
-
     private val screens = WelcomeScreen.values()
 
     @Inject
@@ -71,6 +69,9 @@ class WelcomeActivity : BaseActivity() {
 
     @Inject
     lateinit var sharedPreferences: SharedPreferences
+
+    @Inject
+    lateinit var prefManager: PreferencesService
 
     private val viewPagerPageChangeListener = object : OnPageChangeListener {
 
@@ -113,7 +114,6 @@ class WelcomeActivity : BaseActivity() {
         _binding = ActivityWelcomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        prefManager = PrefManager(this)
         if (!prefManager.isFirstTimeLaunch) {
             launchHome()
             finish()

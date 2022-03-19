@@ -61,9 +61,9 @@ class EnvironmentProductFragment : BaseFragment() {
      */
     private var isLowBatteryMode = false
     private var mUrlImage: String? = null
-    private val photoReceiverHandler by lazy {
-        PhotoReceiverHandler(sharedPreferences) { loadPackagingPhoto(it) }
-    }
+
+    @Inject
+    lateinit var photoReceiverHandler: PhotoReceiverHandler
 
     /**boolean to determine if labels prompt should be shown*/
     private var showLabelsPrompt = false
@@ -236,7 +236,7 @@ class EnvironmentProductFragment : BaseFragment() {
         super.onActivityResult(requestCode, resultCode, data)
 
         // TODO: 15/11/2020 find a way to use ActivityResultApi
-        photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data)
+        photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data) { loadPackagingPhoto(it) }
         if (requestCode == EDIT_PRODUCT_AFTER_LOGIN_REQUEST_CODE && resultCode == Activity.RESULT_OK && requireActivity().isUserSet()) {
             startEditProduct()
         }
