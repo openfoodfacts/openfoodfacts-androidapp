@@ -84,8 +84,7 @@ class CategoryListFragment : BaseFragment() {
         val searchMenuItem = menu.findItem(R.id.action_search)
         val searchView = searchMenuItem.actionView as SearchView
 
-        // TODO: 26/07/2020 use resources
-        searchView.queryHint = "Search for a food category"
+        searchView.queryHint = getString(R.string.hint_category_list)
 
         if (searchManager.getSearchableInfo(requireActivity().componentName) == null) return
 
