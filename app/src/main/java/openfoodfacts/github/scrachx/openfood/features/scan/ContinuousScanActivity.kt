@@ -516,7 +516,6 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
             binding.barcodeScanner.setStatusText(null)
             binding.barcodeScanner.setOnClickListener {
                 quickViewBehavior.state = BottomSheetBehavior.STATE_HIDDEN
-                binding.barcodeScanner.resume()
             }
             binding.barcodeScanner.barcodeView.cameraSettings.run {
                 requestedCameraId = cameraState
@@ -767,6 +766,15 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
     override fun showIngredientsTab(action: ShowIngredientsAction) {
         quickViewBehavior.state = BottomSheetBehavior.STATE_EXPANDED
         productViewFragment?.showIngredientsTab(action)
+    }
+
+    // The back button will close the bottom sheet if visible
+    override fun onBackPressed() {
+        if (quickViewBehavior.state != BottomSheetBehavior.STATE_HIDDEN) {
+            collapseBottomSheet()
+        } else {
+            super.onBackPressed()
+        }
     }
 
     private inner class BarcodeInputListener : OnEditorActionListener {
