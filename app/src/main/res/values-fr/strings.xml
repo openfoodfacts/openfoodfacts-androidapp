@@ -766,4 +766,5 @@
     <string name="night">Nuit</string>
     <string name="required_for_ecoscore">(Requis pour calculer l\'Eco-Score)</string>
     <string name="hint_origin">Exemples: USA, France, Italie</string>
+    <string name="hint_category_list">Recherche une catégorie</string>
 </resources>
