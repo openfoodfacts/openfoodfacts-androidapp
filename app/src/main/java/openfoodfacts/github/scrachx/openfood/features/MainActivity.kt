@@ -92,6 +92,8 @@ import openfoodfacts.github.scrachx.openfood.features.productlists.ProductListsA
 import openfoodfacts.github.scrachx.openfood.features.scanhistory.ScanHistoryActivity
 import openfoodfacts.github.scrachx.openfood.features.searchbycode.SearchByCodeFragment
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
+import openfoodfacts.github.scrachx.openfood.features.shared.NavigationDrawerHost
+import openfoodfacts.github.scrachx.openfood.features.shared.OnNavigationDrawerStatusChanged
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
 import openfoodfacts.github.scrachx.openfood.jobs.ProductUploaderWorker.Companion.scheduleProductUpload
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.installBottomNavigation
@@ -127,7 +129,7 @@ import javax.inject.Inject
 import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivity.Companion.start as startSearch
 
 @AndroidEntryPoint
-class MainActivity : BaseActivity(), NavigationDrawerListener {
+class MainActivity : BaseActivity(), NavigationDrawerListener, NavigationDrawerHost {
     private var _binding: ActivityMainBinding? = null
     private val binding get() = _binding!!
 
@@ -162,7 +164,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
     private var userSettingsURI: Uri? = null
 
     private var historySyncJob: Job? = null
-
+    private var drawerStatusChanged: OnNavigationDrawerStatusChanged? = null
 
     private val loginThenUpdate = registerForActivityResult(LoginContract())
     { isLoggedIn -> if (isLoggedIn) updateConnectedState() }
@@ -335,8 +337,13 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
 
         withOnDrawerListener(object : Drawer.OnDrawerListener {
             override fun onDrawerSlide(drawerView: View, slideOffset: Float) = hideKeyboard()
-            override fun onDrawerOpened(drawerView: View) = hideKeyboard()
-            override fun onDrawerClosed(drawerView: View) = Unit
+            override fun onDrawerOpened(drawerView: View) {
+                hideKeyboard()
+                drawerStatusChanged?.onDrawerOpened()
+            }
+            override fun onDrawerClosed(drawerView: View) {
+                drawerStatusChanged?.onDrawerClosed()
+            }
         })
 
         addDrawerItems(
@@ -965,7 +972,10 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
             setNegativeButton(R.string.txtNo) { d, _ -> d.cancel() }
             show()
         }
+    }
 
+    override fun setOnDrawerStatusChanged(onDrawerStatusChanged: OnNavigationDrawerStatusChanged?) {
+        this.drawerStatusChanged = onDrawerStatusChanged
     }
 
     companion object {
