@@ -5,7 +5,6 @@ import android.content.Context
 import androidx.lifecycle.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import openfoodfacts.github.scrachx.openfood.R
@@ -36,7 +35,7 @@ class ScanHistoryViewModel @Inject constructor(
                 is FetchProductsState.Data -> {
                     try {
                         state.items
-                            .customSort(sortType.value)
+                            .customSort(_sortType.value)
                             .let { emit(FetchProductsState.Data(it)) }
                     } catch (err: Exception) {
                         emit(FetchProductsState.Error)
@@ -46,7 +45,8 @@ class ScanHistoryViewModel @Inject constructor(
         }
     }
 
-    private val sortType = MutableLiveData(SortType.TIME)
+    private val _sortType = MutableLiveData(SortType.TIME)
+    val sortType = _sortType as LiveData<SortType>
 
     fun refreshItems() {
         viewModelScope.launch {
@@ -116,7 +116,7 @@ class ScanHistoryViewModel @Inject constructor(
     }
 
     fun updateSortType(type: SortType) {
-        sortType.postValue(type)
+        _sortType.postValue(type)
 
         // refresh
         unorderedProductState.postValue(productsState.value)

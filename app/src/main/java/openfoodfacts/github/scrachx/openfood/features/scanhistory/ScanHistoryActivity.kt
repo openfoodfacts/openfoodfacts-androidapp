@@ -275,20 +275,26 @@ class ScanHistoryActivity : BaseActivity() {
 
     private fun showListSortingDialog() {
         val sortTypes = if (isFlavors(OFF)) arrayOf(
-            getString(R.string.by_title),
-            getString(R.string.by_brand),
-            getString(R.string.by_nutrition_grade),
-            getString(R.string.by_barcode),
-            getString(R.string.by_time)
+            TITLE,
+            BRAND,
+            GRADE,
+            BARCODE,
+            TIME,
         ) else arrayOf(
-            getString(R.string.by_title),
-            getString(R.string.by_brand),
-            getString(R.string.by_time),
-            getString(R.string.by_barcode)
+            TITLE,
+            BRAND,
+            TIME,
+            BARCODE,
         )
+
+        val selectedItemPosition = sortTypes.indexOf(viewModel.sortType.value)
+
         MaterialAlertDialogBuilder(this)
             .setTitle(R.string.sort_by)
-            .setItems(sortTypes) { _, which ->
+            .setSingleChoiceItems(
+                sortTypes.map { getString(it.stringRes) }.toTypedArray(),
+                if (selectedItemPosition < 0) 0 else selectedItemPosition
+            ) { dialog, which ->
                 val newType = when (which) {
                     0 -> TITLE
                     1 -> BRAND
@@ -296,7 +302,9 @@ class ScanHistoryActivity : BaseActivity() {
                     3 -> BARCODE
                     else -> TIME
                 }
+
                 viewModel.updateSortType(newType)
+                dialog.dismiss()
             }
             .show()
     }
