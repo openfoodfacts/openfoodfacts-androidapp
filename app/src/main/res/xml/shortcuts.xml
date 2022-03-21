@@ -1,7 +1,7 @@
 <shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
     <shortcut
         android:enabled="true"
-        android:icon="@drawable/ic_shortcut_scan"
+        android:icon="@mipmap/ic_shortcut_scan"
         android:shortcutDisabledMessage="@string/disabled_message"
         android:shortcutId="scan"
         android:shortcutLongLabel="@string/scan_shortcut_long_label"
@@ -14,7 +14,7 @@
     </shortcut>
     <shortcut
         android:enabled="true"
-        android:icon="@drawable/ic_shortcut_search"
+        android:icon="@mipmap/ic_shortcut_search"
         android:shortcutDisabledMessage="@string/disabled_message"
         android:shortcutId="barcode"
         android:shortcutLongLabel="@string/barcode_shortcut_long_label"
@@ -27,7 +27,7 @@
     </shortcut>
     <shortcut
         android:enabled="true"
-        android:icon="@drawable/ic_shortcut_history"
+        android:icon="@mipmap/ic_shortcut_history"
         android:shortcutDisabledMessage="@string/disabled_message"
         android:shortcutId="history"
         android:shortcutLongLabel="@string/history_shortcut_long_label"
@@ -40,7 +40,7 @@
     </shortcut>
     <shortcut
         android:enabled="true"
-        android:icon="@drawable/ic_shortcut_contributions"
+        android:icon="@mipmap/ic_shortcut_contributions"
         android:shortcutDisabledMessage="@string/disabled_message"
         android:shortcutId="contributions"
         android:shortcutLongLabel="@string/contributions_shortcut_long_label"
