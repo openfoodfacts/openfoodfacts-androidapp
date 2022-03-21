@@ -419,9 +419,13 @@ class ProductRepository @Inject constructor(
         val imgMap = mutableMapOf<String, String>()
 
         val settings = context.getLoginPreferences()
-        settings.getString("user", null)?.let {
-            imgMap[Keys.USER_COMMENT] = getCommentToUpload(it)
-            if (it.isNotBlank()) imgMap[Keys.USER_ID] = it
+        val userName = settings.getString("user", null)
+        val userPassword = settings.getString("pass", null)
+
+        if (userName?.isNotBlank() == true && userPassword?.isNotBlank() == true) {
+            imgMap[Keys.USER_COMMENT] = getCommentToUpload(userName)
+            imgMap[Keys.USER_ID] = userName
+            imgMap[Keys.USER_PASS] = userPassword
         }
 
         return imgMap
