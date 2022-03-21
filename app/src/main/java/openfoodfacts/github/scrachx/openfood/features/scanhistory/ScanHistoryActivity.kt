@@ -164,18 +164,12 @@ class ScanHistoryActivity : BaseActivity() {
     private fun refreshViewModel() = viewModel.refreshItems()
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu_history, menu)
-        with(menu) {
-            val alpha = if (menuButtonsEnabled) 255 else 130
-            findItem(R.id.action_export_all_history).isEnabled = menuButtonsEnabled
-            findItem(R.id.action_export_all_history).icon.alpha = alpha
+        menu.clear()
 
-            findItem(R.id.action_remove_all_history).isEnabled = menuButtonsEnabled
-            findItem(R.id.action_remove_all_history).icon.alpha = alpha
-
-            findItem(R.id.sort_history).isEnabled = menuButtonsEnabled
-            findItem(R.id.sort_history).icon.alpha = alpha
+        if (menuButtonsEnabled) {
+            menuInflater.inflate(R.menu.menu_history, menu)
         }
+
         return true
     }
 
