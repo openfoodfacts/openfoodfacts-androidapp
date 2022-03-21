@@ -5,6 +5,7 @@ import android.content.Context
 import androidx.lifecycle.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import openfoodfacts.github.scrachx.openfood.R
@@ -29,7 +30,7 @@ class ScanHistoryViewModel @Inject constructor(
 
     private val unorderedProductState = MutableLiveData<FetchProductsState>(FetchProductsState.Loading)
     val productsState = unorderedProductState.switchMap { state ->
-        liveData {
+        liveData(dispatchers.IO) {
             when (state) {
                 is FetchProductsState.Loading, is FetchProductsState.Error -> emit(state)
                 is FetchProductsState.Data -> {
