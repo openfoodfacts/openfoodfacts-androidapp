@@ -29,6 +29,7 @@ import android.widget.TextView.OnEditorActionListener
 import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.appcompat.widget.PopupMenu
+import androidx.appcompat.widget.TooltipCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
@@ -473,6 +474,8 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
         setContentView(binding.root)
 
         useMLScanner = BuildConfig.USE_MLKIT && settings.getBoolean(getString(R.string.pref_scanner_mlkit_key), false)
+
+        TooltipCompat.setTooltipText(binding.toggleFlash, getString(R.string.toggle_flash))
 
         binding.toggleFlash.setOnClickListener { toggleFlash() }
         binding.buttonMore.setOnClickListener { showMoreSettings() }
