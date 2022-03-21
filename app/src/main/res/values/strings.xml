@@ -612,6 +612,7 @@
     <string name="trouble_scanning">Trouble Scanning?</string>
     <string name="barcode_hint">Trouble Scanning? Enter Barcode</string>
     <string name="switch_camera">Switch camera</string>
+    <string name="toggle_flash">Toggle flash</string>
     <string name="autofocus">Autofocus</string>
     <string name="initial_loading">Initial loading</string>
     <string name="OFFlogo">Open Food Facts logo</string>
