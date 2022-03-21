@@ -29,27 +29,28 @@
             android:id="@+id/linearLayout3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:orientation="vertical"
-            android:padding="20dp"
-            android:gravity="center">
+            android:padding="20dp">
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/login_input_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/hintLogin"
                 app:startIconDrawable="@drawable/ic_person_grey_24dp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/loginInput"
+                    android:id="@+id/login_input"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:inputType="text"
                     android:maxLines="1" />
-
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/pass_input_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:passwordToggleEnabled="true"
@@ -61,7 +62,6 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/hintPass"
                     android:inputType="textPassword"
-
                     android:maxLines="1" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -73,6 +73,7 @@
                 android:background="@drawable/rounded_button"
                 android:text="@string/txtSignIn"
                 android:textColor="@android:color/white" />
+
 
             <TextView
                 android:id="@+id/txt_info_login"
