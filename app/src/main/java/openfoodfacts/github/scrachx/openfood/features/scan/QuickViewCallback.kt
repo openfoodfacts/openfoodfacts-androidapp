@@ -14,22 +14,12 @@ internal class QuickViewCallback(
     internal val peekSmall by lazy { activity.resources.getDimensionPixelSize(R.dimen.scan_summary_peek_small) }
     internal val peekLarge by lazy { activity.resources.getDimensionPixelSize(R.dimen.scan_summary_peek_large) }
 
-    private fun stopScanner() {
-        if (activity.useMLScanner) {
-            activity.mlKitView.updateWorkflowState(WorkflowState.DETECTED)
-            activity.mlKitView.stopCameraPreview()
-        } else {
-            activity.binding.barcodeScanner.pause()
-        }
-    }
-
     override fun onStateChanged(bottomSheet: View, newState: Int) {
-
-
         when (newState) {
             BottomSheetBehavior.STATE_HIDDEN -> {
                 activity.lastBarcode = null
                 activity.binding.txtProductCallToAction.visibility = View.GONE
+                startScanner()
             }
             BottomSheetBehavior.STATE_COLLAPSED -> stopScanner()
             BottomSheetBehavior.STATE_EXPANDED -> {
@@ -70,20 +60,34 @@ internal class QuickViewCallback(
                     activity.binding.bottomNavigation.bottomNavigation.visibility = View.GONE
                 }
             } else {
-                if (activity.useMLScanner) {
-                    activity.mlKitView.updateWorkflowState(WorkflowState.DETECTING)
-                    activity.mlKitView.startCameraPreview()
-                } else {
-                    activity.binding.barcodeScanner.resume()
-                }
-                activity.binding.quickViewDetails.visibility = View.VISIBLE
-                activity.binding.quickViewTags.visibility = if (activity.analysisTagsEmpty) View.GONE else View.VISIBLE
-                activity.binding.bottomNavigation.bottomNavigation.visibility = View.VISIBLE
-                if (activity.binding.quickViewProductNotFound.visibility != View.VISIBLE) {
-                    activity.binding.txtProductCallToAction.visibility = View.VISIBLE
-                }
+                startScanner()
             }
         }
         previousSlideOffset = slideOffset
+    }
+
+    private fun startScanner() {
+        if (activity.useMLScanner) {
+            activity.mlKitView.updateWorkflowState(WorkflowState.DETECTING)
+            activity.mlKitView.startCameraPreview()
+        } else {
+            activity.binding.barcodeScanner.resume()
+        }
+
+        activity.binding.quickViewDetails.visibility = View.VISIBLE
+        activity.binding.quickViewTags.visibility = if (activity.analysisTagsEmpty) View.GONE else View.VISIBLE
+        activity.binding.bottomNavigation.bottomNavigation.visibility = View.VISIBLE
+        activity.binding.toggleFlash.visibility = View.VISIBLE
+    }
+
+    private fun stopScanner() {
+        if (activity.useMLScanner) {
+            activity.mlKitView.updateWorkflowState(WorkflowState.DETECTED)
+            activity.mlKitView.stopCameraPreview()
+        } else {
+            activity.binding.barcodeScanner.pause()
+        }
+
+        activity.binding.toggleFlash.visibility = View.GONE
     }
 }

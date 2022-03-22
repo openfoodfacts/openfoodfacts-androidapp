@@ -92,30 +92,8 @@ class EditIngredientsFragment : ProductEditFragment() {
     /**
      * Executed when an image is returned from the camera
      */
-    private val photoReceiverHandler by lazy {
-        PhotoReceiverHandler(sharedPreferences) {
-            val uri = it.toURI()
-            imagePath = uri.path
-            newImageSelected = true
-            photoFile = it
-            val image = ProductImage(
-                code!!,
-                ProductImageField.INGREDIENTS,
-                it,
-                localeManager.getLanguage()
-            ).apply {
-                filePath = uri.path
-            }
-
-            (activity as? ProductEditActivity)?.savePhoto(image, 1)
-
-            // Change UI state
-            hideImageProgress(false, getString(R.string.image_uploaded_successfully))
-
-            // Analytics
-            matomoAnalytics.trackEvent(AnalyticsEvent.ProductIngredientsPictureEdited(code))
-        }
-    }
+    @Inject
+    lateinit var photoReceiverHandler: PhotoReceiverHandler
 
     private var photoFile: File? = null
     private var code: String? = null
@@ -451,7 +429,28 @@ class EditIngredientsFragment : ProductEditFragment() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data)
+        photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data) {
+            val uri = it.toURI()
+            imagePath = uri.path
+            newImageSelected = true
+            photoFile = it
+            val image = ProductImage(
+                code!!,
+                ProductImageField.INGREDIENTS,
+                it,
+                localeManager.getLanguage()
+            ).apply {
+                filePath = uri.path
+            }
+
+            (activity as? ProductEditActivity)?.savePhoto(image, 1)
+
+            // Change UI state
+            hideImageProgress(false, getString(R.string.image_uploaded_successfully))
+
+            // Analytics
+            matomoAnalytics.trackEvent(AnalyticsEvent.ProductIngredientsPictureEdited(code))
+        }
     }
 
     /**

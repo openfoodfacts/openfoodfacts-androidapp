@@ -7,7 +7,7 @@ import androidx.preference.PreferenceManager
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.rule.ActivityTestRule
 import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
-import openfoodfacts.github.scrachx.openfood.utils.PrefManager
+import openfoodfacts.github.scrachx.openfood.utils.PreferencesService
 import org.apache.commons.lang3.StringUtils
 import org.junit.Assert
 
@@ -28,8 +28,8 @@ class ScreenshotActivityTestRule<T : Activity?>
     override fun beforeActivityLaunched() {
         try {
             runOnUiThread {
-                PrefManager(ApplicationProvider.getApplicationContext()).isFirstTimeLaunch = firstTimeLaunched
-                LocaleHelper.setContextLanguage(
+                PreferencesService(context).isFirstTimeLaunch = firstTimeLaunched
+                localeManager.saveLanguageToPrefs(
                         InstrumentationRegistry.getInstrumentation().targetContext,
                         screenshotParameter!!.locale,
                 )

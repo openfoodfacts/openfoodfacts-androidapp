@@ -55,6 +55,7 @@ class AttributeGroupsAdapter(
                 shortDesc.visibility = GONE
             } else {
                 shortDesc.text = it
+                shortDesc.visibility = View.VISIBLE
             }
         }
 

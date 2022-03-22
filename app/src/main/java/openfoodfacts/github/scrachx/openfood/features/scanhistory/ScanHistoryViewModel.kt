@@ -29,13 +29,13 @@ class ScanHistoryViewModel @Inject constructor(
 
     private val unorderedProductState = MutableLiveData<FetchProductsState>(FetchProductsState.Loading)
     val productsState = unorderedProductState.switchMap { state ->
-        liveData {
+        liveData(dispatchers.IO) {
             when (state) {
                 is FetchProductsState.Loading, is FetchProductsState.Error -> emit(state)
                 is FetchProductsState.Data -> {
                     try {
                         state.items
-                            .customSort(sortType.value)
+                            .customSort(_sortType.value)
                             .let { emit(FetchProductsState.Data(it)) }
                     } catch (err: Exception) {
                         emit(FetchProductsState.Error)
@@ -45,7 +45,8 @@ class ScanHistoryViewModel @Inject constructor(
         }
     }
 
-    private val sortType = MutableLiveData(SortType.TIME)
+    private val _sortType = MutableLiveData(SortType.TIME)
+    val sortType = _sortType as LiveData<SortType>
 
     fun refreshItems() {
         viewModelScope.launch {
@@ -115,7 +116,7 @@ class ScanHistoryViewModel @Inject constructor(
     }
 
     fun updateSortType(type: SortType) {
-        sortType.postValue(type)
+        _sortType.postValue(type)
 
         // refresh
         unorderedProductState.postValue(productsState.value)

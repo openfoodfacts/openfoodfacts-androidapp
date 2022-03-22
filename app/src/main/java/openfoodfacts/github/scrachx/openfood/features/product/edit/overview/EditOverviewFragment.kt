@@ -106,28 +106,12 @@ class EditOverviewFragment : ProductEditFragment() {
     @Inject
     lateinit var localeManager: LocaleManager
 
+    @Inject
+    lateinit var photoReceiverHandler: PhotoReceiverHandler
+
     private val appLocale by lazy { localeManager.getLocale() }
+
     private val appLang by lazy { appLocale.language }
-
-    private val photoReceiverHandler by lazy {
-        PhotoReceiverHandler(sharedPreferences) { newPhotoFile ->
-            photoFile = newPhotoFile
-            val image: ProductImage
-            val position: Int
-            if (isFrontImagePresent) {
-                image = ProductImage(barcode!!, ProductImageField.FRONT, newPhotoFile, appLang)
-                frontImageUrl = newPhotoFile.absolutePath
-                position = 0
-            } else {
-                image = ProductImage(barcode!!, ProductImageField.OTHER, newPhotoFile, appLang)
-                position = 3
-            }
-            image.filePath = newPhotoFile.toURI().path
-            (activity as? ProductEditActivity)?.savePhoto(image, position)
-
-            hideImageProgress(false, StringUtils.EMPTY)
-        }
-    }
 
     private var barcode: String? = null
     private var editingMode = false
@@ -874,7 +858,23 @@ class EditOverviewFragment : ProductEditFragment() {
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
             isFrontImagePresent = true
         }
-        photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data)
+        photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data) { newPhotoFile ->
+            photoFile = newPhotoFile
+            val image: ProductImage
+            val position: Int
+            if (isFrontImagePresent) {
+                image = ProductImage(barcode!!, ProductImageField.FRONT, newPhotoFile, appLang)
+                frontImageUrl = newPhotoFile.absolutePath
+                position = 0
+            } else {
+                image = ProductImage(barcode!!, ProductImageField.OTHER, newPhotoFile, appLang)
+                position = 3
+            }
+            image.filePath = newPhotoFile.toURI().path
+            (activity as? ProductEditActivity)?.savePhoto(image, position)
+
+            hideImageProgress(false, StringUtils.EMPTY)
+        }
     }
 
     override fun showImageProgress() {

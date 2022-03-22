@@ -29,6 +29,7 @@ import android.widget.TextView.OnEditorActionListener
 import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.appcompat.widget.PopupMenu
+import androidx.appcompat.widget.TooltipCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
@@ -474,6 +475,8 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
 
         useMLScanner = BuildConfig.USE_MLKIT && settings.getBoolean(getString(R.string.pref_scanner_mlkit_key), false)
 
+        TooltipCompat.setTooltipText(binding.toggleFlash, getString(R.string.toggle_flash))
+
         binding.toggleFlash.setOnClickListener { toggleFlash() }
         binding.buttonMore.setOnClickListener { showMoreSettings() }
 
@@ -516,7 +519,6 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
             binding.barcodeScanner.setStatusText(null)
             binding.barcodeScanner.setOnClickListener {
                 quickViewBehavior.state = BottomSheetBehavior.STATE_HIDDEN
-                binding.barcodeScanner.resume()
             }
             binding.barcodeScanner.barcodeView.cameraSettings.run {
                 requestedCameraId = cameraState
@@ -767,6 +769,15 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
     override fun showIngredientsTab(action: ShowIngredientsAction) {
         quickViewBehavior.state = BottomSheetBehavior.STATE_EXPANDED
         productViewFragment?.showIngredientsTab(action)
+    }
+
+    // The back button will close the bottom sheet if visible
+    override fun onBackPressed() {
+        if (quickViewBehavior.state != BottomSheetBehavior.STATE_HIDDEN) {
+            collapseBottomSheet()
+        } else {
+            super.onBackPressed()
+        }
     }
 
     private inner class BarcodeInputListener : OnEditorActionListener {

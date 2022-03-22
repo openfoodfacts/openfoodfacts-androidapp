@@ -66,16 +66,8 @@ class ProductEditPhotosFragment : ProductEditFragment() {
     @Inject
     lateinit var picasso: Picasso
 
-    private val photoReceiverHandler by lazy {
-        PhotoReceiverHandler(sharedPreferences) { newPhotoFile ->
-            photoFile = newPhotoFile
-            val image = ProductImage(code!!, ProductImageField.OTHER, newPhotoFile, localeManager.getLanguage())
-            image.filePath = photoFile!!.toURI().path
-            if (activity is ProductEditActivity) {
-                (activity as ProductEditActivity).savePhoto(image, 4)
-            }
-        }
-    }
+    @Inject
+    lateinit var photoReceiverHandler: PhotoReceiverHandler
     private var code: String? = null
     private var photoFile: File? = null
 
@@ -134,7 +126,14 @@ class ProductEditPhotosFragment : ProductEditFragment() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data)
+        photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data) { newPhotoFile ->
+            photoFile = newPhotoFile
+            val image = ProductImage(code!!, ProductImageField.OTHER, newPhotoFile, localeManager.getLanguage())
+            image.filePath = photoFile!!.toURI().path
+            if (activity is ProductEditActivity) {
+                (activity as ProductEditActivity).savePhoto(image, 4)
+            }
+        }
     }
 
     override fun showImageProgress() {
@@ -168,9 +167,9 @@ class ProductEditPhotosFragment : ProductEditFragment() {
             layoutParams = lp
         }
         picasso.load(photoFile!!)
-                .resize(requireContext().dpsToPixel(100), requireContext().dpsToPixel(100))
-                .centerInside()
-                .into(imageView)
+            .resize(requireContext().dpsToPixel(100), requireContext().dpsToPixel(100))
+            .centerInside()
+            .into(imageView)
         row.addView(imageView)
         binding.tableLayout.addView(row)
     }
