@@ -361,7 +361,13 @@ android {
 
     lint {
         isAbortOnError = false
-        disable("MissingTranslation")
+
+        disable(
+            "MissingTranslation",
+            "ImpliedQuantity",
+            // Invalid Resource Folder is for values-b+sr… folders
+            "InvalidResourceFolder"
+        )
     }
 
     packagingOptions {

@@ -8,7 +8,6 @@
     <string name="website_discover">https://world.openbeautyfacts.org/discover</string>
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/produit/ -->
     <string name="website_product">https://world.openbeautyfacts.org/product/</string>
-    <string name="deeplink_product" translatable="false">*.openbeautyfacts.org</string>
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/contributeur/ -->
     <string name="website_contributor">https://world.openbeautyfacts.org/contributor/</string>
     <string name="terms_url">https://world.openbeautyfacts.org/terms-of-use</string>
