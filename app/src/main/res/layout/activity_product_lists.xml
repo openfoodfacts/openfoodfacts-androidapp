@@ -18,7 +18,6 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="16dp"
         android:contentDescription="@string/add_a_list"
-        android:drawableStart="@drawable/ic_plus_blue_24"
         android:text="@string/add_a_list"
         app:elevation="10dp"
         app:layout_constraintBottom_toTopOf="@id/tipBox"

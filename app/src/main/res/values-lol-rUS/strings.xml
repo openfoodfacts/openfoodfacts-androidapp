@@ -483,7 +483,6 @@
     <string name="notify_channel_description">crwdns178914:0crwdne178914:0</string>
     <string name="products_to_be_completed">crwdns178916:0crwdne178916:0</string>
     <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">crwdns178920:0%1$scrwdnd178920:0%2$scrwdnd178920:0%3$scrwdne178920:0</string>
-    <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">crwdns181774:0%1$scrwdnd181774:0%2$scrwdnd181774:0%3$scrwdne181774:0</string>
     <!-- TODO: Add the placeholder in the string - important for several languages -->
     <string name="other_editors">crwdns178924:0crwdne178924:0</string>
     <string name="product_states">crwdns178926:0crwdne178926:0</string>

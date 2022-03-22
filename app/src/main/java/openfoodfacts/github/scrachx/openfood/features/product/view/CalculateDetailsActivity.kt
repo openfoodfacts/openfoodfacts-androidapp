@@ -13,12 +13,10 @@ import openfoodfacts.github.scrachx.openfood.features.adapters.CalculatedNutrime
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_PRODUCT
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.models.*
-import openfoodfacts.github.scrachx.openfood.models.MeasurementUnit
 import openfoodfacts.github.scrachx.openfood.utils.Measurement
 import openfoodfacts.github.scrachx.openfood.utils.grams
 import openfoodfacts.github.scrachx.openfood.utils.isPerServingInLiter
 import openfoodfacts.github.scrachx.openfood.utils.measure
-import java.util.*
 import kotlin.properties.Delegates
 
 class CalculateDetailsActivity : BaseActivity() {

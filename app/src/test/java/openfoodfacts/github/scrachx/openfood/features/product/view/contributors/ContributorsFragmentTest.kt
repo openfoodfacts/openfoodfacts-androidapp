@@ -1,7 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.features.product.view.contributors
 
 import com.google.common.truth.Truth.assertThat
-import org.junit.Test
+import org.junit.jupiter.api.Test
 
 class ContributorsFragmentTest {
     @Test

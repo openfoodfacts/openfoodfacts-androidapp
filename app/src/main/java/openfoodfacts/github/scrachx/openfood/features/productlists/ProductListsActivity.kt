@@ -29,6 +29,8 @@ import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -36,7 +38,6 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
@@ -57,14 +58,16 @@ import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInsta
 import openfoodfacts.github.scrachx.openfood.listeners.RecyclerItemClickListener
 import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import openfoodfacts.github.scrachx.openfood.models.Product
-import openfoodfacts.github.scrachx.openfood.models.entities.*
+import openfoodfacts.github.scrachx.openfood.models.entities.ListedProduct
+import openfoodfacts.github.scrachx.openfood.models.entities.ListedProductDao
+import openfoodfacts.github.scrachx.openfood.models.entities.ProductLists
+import openfoodfacts.github.scrachx.openfood.models.entities.ProductListsDao
 import openfoodfacts.github.scrachx.openfood.utils.SwipeController
 import openfoodfacts.github.scrachx.openfood.utils.isEmpty
 import org.apache.commons.csv.CSVFormat
 import org.apache.commons.csv.CSVParser
 import java.io.InputStream
 import java.io.InputStreamReader
-import java.util.*
 import javax.inject.Inject
 
 
@@ -92,6 +95,7 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivityProductListsBinding.inflate(layoutInflater)
+        fixFabIcon()
 
         setContentView(binding.root)
         setTitle(R.string.your_lists)
@@ -135,6 +139,15 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
         itemTouchHelper.attachToRecyclerView(binding.productListsRecyclerView)
 
         binding.fabAdd.setOnClickListener { showCreateListDialog() }
+    }
+
+    // On Android < 5, the drawableStart attribute in XML will cause a crash
+    // That's why, it's instead done here in the code
+    private fun fixFabIcon() {
+        binding.fabAdd.setCompoundDrawablesRelative(
+            ContextCompat.getDrawable(this, R.drawable.ic_plus_blue_24),
+            null, null, null
+        )
     }
 
     private fun showCreateListDialog(productToAdd: Product? = null) {

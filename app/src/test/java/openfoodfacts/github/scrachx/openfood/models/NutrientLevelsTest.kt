@@ -3,8 +3,8 @@ package openfoodfacts.github.scrachx.openfood.models
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.google.common.truth.Truth
-import org.junit.Before
-import org.junit.Test
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
 
 /**
  * @author herau
@@ -12,7 +12,7 @@ import org.junit.Test
 class NutrientLevelsTest {
     private lateinit var nutrientLevels: NutrientLevels
 
-    @Before
+    @BeforeEach
     fun setUp() {
         nutrientLevels = NutrientLevels()
         nutrientLevels.fat = NutrimentLevel.LOW
@@ -31,7 +31,6 @@ class NutrientLevelsTest {
     }
 
     @Test
-    @Throws(Exception::class)
     fun jsonDeserialization_ok() {
         val objectMapper = jacksonObjectMapper()
         val nutrientLevelsResult = objectMapper.treeToValue(

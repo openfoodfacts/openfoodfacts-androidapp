@@ -4,14 +4,14 @@ import com.google.common.truth.Truth
 import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
-import org.junit.Before
-import org.junit.Test
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
 import org.mockito.Mockito
 
 class ImageKeyHelperTest {
     private lateinit var mockProduct: Product
 
-    @Before
+    @BeforeEach
     fun setUp() {
         mockProduct = Mockito.mock(Product::class.java)
     }

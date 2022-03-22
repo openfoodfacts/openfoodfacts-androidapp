@@ -4,7 +4,7 @@ import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.google.common.truth.Truth.assertThat
 import openfoodfacts.github.scrachx.openfood.category.network.CategoryResponse
 import openfoodfacts.github.scrachx.openfood.utils.readTextFileFromResources
-import org.junit.Test
+import org.junit.jupiter.api.Test
 import java.io.IOException
 
 /**

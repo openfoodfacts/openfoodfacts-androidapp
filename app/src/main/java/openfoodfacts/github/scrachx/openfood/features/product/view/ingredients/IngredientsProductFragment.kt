@@ -40,7 +40,6 @@ import androidx.viewpager2.widget.ViewPager2
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.rx2.await
 import openfoodfacts.github.scrachx.openfood.AppFlavors
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OBF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OPF
@@ -51,7 +50,7 @@ import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabsHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentIngredientsProductBinding
-import openfoodfacts.github.scrachx.openfood.features.ImagesManageActivity
+import openfoodfacts.github.scrachx.openfood.features.images.manage.ImagesManageActivity
 import openfoodfacts.github.scrachx.openfood.features.additives.AdditiveFragmentHelper.showAdditives
 import openfoodfacts.github.scrachx.openfood.features.login.LoginActivity.Companion.LoginContract
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity
@@ -129,9 +128,9 @@ class IngredientsProductFragment : BaseFragment() {
     private lateinit var productState: ProductState
     private lateinit var customTabActivityHelper: CustomTabActivityHelper
     private lateinit var customTabsIntent: CustomTabsIntent
-    private val photoReceiverHandler by lazy {
-        PhotoReceiverHandler(sharedPreferences) { onPhotoReturned(it) }
-    }
+
+    @Inject
+    lateinit var photoReceiverHandler: PhotoReceiverHandler
 
     private var ingredientExtracted = false
 
@@ -523,7 +522,7 @@ class IngredientsProductFragment : BaseFragment() {
         if (ImagesManageActivity.isImageModified(requestCode, resultCode)) {
             onRefresh()
         }
-        photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data)
+        photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data) { onPhotoReturned(it) }
     }
 
     companion object {

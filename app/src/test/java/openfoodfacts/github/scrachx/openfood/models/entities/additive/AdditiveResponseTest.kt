@@ -3,8 +3,8 @@ package openfoodfacts.github.scrachx.openfood.models.entities.additive
 import com.google.common.truth.Truth.assertThat
 import openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_ENGLISH
 import openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_FRENCH
-import org.junit.Before
-import org.junit.Test
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
 
 /**
  * Tests for [AdditiveResponse]
@@ -12,7 +12,7 @@ import org.junit.Test
 class AdditiveResponseTest {
     private lateinit var mStringMap: Map<String, String>
 
-    @Before
+    @BeforeEach
     fun setup() {
         mStringMap = mapOf(
                 LANGUAGE_CODE_ENGLISH to AdditiveResponseTestData.VINEGAR_EN,

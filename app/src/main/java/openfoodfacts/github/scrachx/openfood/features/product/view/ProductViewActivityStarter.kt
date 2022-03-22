@@ -105,7 +105,10 @@ class ProductViewActivityStarter @Inject constructor(
         MaterialAlertDialogBuilder(activity)
             .setTitle(R.string.device_offline_dialog_title)
             .setMessage(R.string.connectivity_check)
-            .setPositiveButton(R.string.txt_try_again) { _, _ -> positiveAction() }
+            .setPositiveButton(R.string.txt_try_again) { d, _ ->
+                d.dismiss()
+                positiveAction()
+            }
             .setNegativeButton(R.string.dismiss) { d, _ -> d.dismiss() }
             .show()
     }

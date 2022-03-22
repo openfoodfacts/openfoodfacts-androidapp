@@ -37,7 +37,6 @@
     <string name="product_incomplete_message">Sản phẩm này chưa hoàn thiện. Theo kết quả, chúng tôi không thể kiểm tra chất gây dị ứng.</string>
     <string name="product_allergen_prompt">Sản phẩm này có chứa:</string>
     <string name="no_offline_data">Bạn đã xong</string>
-    <string name="first_offline">Sản phẩm được thêm offline sẽ xuất hiện ở đây</string>
     <!-- Image Upload -->
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
@@ -160,7 +159,7 @@
     <string name="search_button">Tìm kiếm</string>
     <string name="alert_dialog_warning_title">Warning</string>
     <string name="alert_dialog_warning_msg_user">Người dùng / mật khẩu đã thay đổi, vui lòng cập nhật thông tin</string>
-    <string name="toast_retrieving">Loading...</string>
+    <string name="toast_retrieving">Loading…</string>
     <string name="txtBarcode">Mã vạch :</string>
     <string name="txtCategories">Thể loại :</string>
     <string name="txtLabels">Nhãn, chứng nhận, giải thưởng:</string>
@@ -171,8 +170,6 @@
     <string name="txtSubstances">Các chất hoặc sản phẩm gây dị ứng hoặc không dung nạp:</string>
     <string name="txtAdditives">Chất phụ gia :</string>
     <string name="txtTraces">Traces :</string>
-    <string name="txtMayBeFromPalmOilProduct">Thành phần có thể từ dầu cọ:</string>
-    <string name="txtPalmOilProduct">Thành phần từ dầu cọ:</string>
     <string name="txtServingSize">Kích thước phục vụ :</string>
     <string name="txtNutrientLevel100g">Mức dinh dưỡng cho 100g:</string>
     <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
@@ -181,7 +178,6 @@
     <string name="txtNutritionLevelHigh">nhiều quá đấy</string>
     <string name="txtSave">Lưu</string>
     <string name="txtSignIn">Đăng nhập</string>
-    <string name="txtToastSaved">User saved</string>
     <string name="txtSalt">Muối</string>
     <string name="txtFat">Fat</string>
     <string name="txtSugars">Đường</string>
@@ -191,7 +187,6 @@
     <string name="hintPass">Mật khẩu</string>
     <string name="errorLogin">Lỗi đăng nhập hoặc mật khẩu</string>
     <string name="errorWeb">Chúng tôi không thể truy cập internet. Bạn có vấn đề kết nối?</string>
-    <string name="uploadLater">Hình ảnh sẽ được tải lên khi mạng khả dụng</string>
     <string name="txtInfoLoginOk">User saved</string>
     <string name="txtInfoLoginNo">User not saved</string>
     <string name="product_does_not_exist_please_add_it">Sản phẩm bạn đã quét không tồn tại trong Sự Open Food Facts. Vui lòng thêm nó.</string>
@@ -200,27 +195,21 @@
     <string name="hintBrand">Nhãn hiệu</string>
     <string name="txtSendAll">Tải lên tất cả</string>
     <string name="txtPictureNeededDialogNo">Discard</string>
-    <string name="toastSending">Uploading...</string>
-    <string name="txtLoading">Loading...</string>
-    <string name="txtDialogsContentDelete">Bạn có chắc chắn muốn xóa bản nháp này không?</string>
-    <string name="txtDialogsContentInfoSave">Sản phẩm được lưu cục bộ, bạn có thể chỉnh sửa nó trong menu \"Chỉnh sửa ngoại tuyến\"</string>
+    <string name="toastSending">Uploading…</string>
+    <string name="txtLoading">Loading…</string>
     <string name="productSavedToast">Product saved, thanks!</string>
     <string name="txtBarcodeRequire">Cần mã vạch</string>
-    <string name="txtOk">OK</string>
     <string name="txtBarcodeNotValid">Mã vạch không hợp lệ</string>
     <string name="msg_share">Xem sản phẩm này trên Open Food Facts:</string>
     <string name="create_account">Đăng ký</string>
     <string name="home_drawer">Trang chủ</string>
     <string name="install">Install</string>
-    <string name="open_beauty_drawer">Open Beauty Facts</string>
-    <string name="open_food_drawer">Open Food Facts</string>
     <string name="search_drawer">Tìm kiếm</string>
     <string name="search_by_barcode_drawer">Nhập mã vạch</string>
     <string name="category_drawer">Thể loại</string>
     <string name="search_by_category">Danh mục</string>
     <string name="scan_search">Quét mã vạch</string>
     <string name="user_drawer">Người dùng</string>
-    <string name="offline_edit_drawer">Chỉnh sửa ngoại tuyến</string>
     <string name="txt_anonymous">Ẩn danh</string>
     <string name="delete_txt">Xóa</string>
     <string name="sign_in_drawer">Đăng nhập</string>
@@ -265,7 +254,7 @@
     <string name="title_clear_history_dialog">Clear</string>
     <string name="text_clear_history_dialog">Do you want to clear all your scan history?</string>
     <string name="export_csv_history">Export CSV</string>
-    <string name="txt_exporting_history">Exporting history...</string>
+    <string name="txt_exporting_history">Exporting history…</string>
     <string name="txt_history_exported">Lịch sử đã được xuất</string>
     <string name="permision_write_external_storage">Viết quyền lưu trữ bên ngoài là cần thiết để xuất lịch sử.</string>
     <string name="no_brand">No Brand</string>
@@ -280,7 +269,6 @@
     <string name="calculate_nutrition_facts">Tính toán dinh dưỡng</string>
     <string name="nutrition_carbohydrate">Cacbohydrat</string>
     <string name="nutrition_cholesterol">Cholesterol</string>
-    <string name="nutrition_energy">Năng lượng</string>
     <string name="nutrition_energy_kcal">Energy in calories (kcal)</string>
     <string name="nutrition_energy_kj">Energy in joules (kJ)</string>
     <string name="nutrition_energy_short_name">Năng lượng</string>
@@ -296,9 +284,7 @@
     <string name="nutriment_serving_size">Per portion : </string>
     <string name="action_manage_account">Quản lý tài khoản</string>
     <string name="action_contributes">Đóng góp của bạn</string>
-    <string name="choose_energy_unit">Choose your preferred energy units for the nutrition table</string>
     <string name="pref_energy_unit_title">Preferred energy unit</string>
-    <string name="choose_volume_unit">Choose your preferred volume units for the nutrition table</string>
     <string name="pref_volume_unit_title">Preferred volume unit</string>
     <string name="logout_drawer">Logout</string>
     <string name="contribution_without_account">Bạn có thể đăng nhập hoặc tạo tài khoản để giữ các khoản đóng góp của mình</string>
@@ -405,27 +391,15 @@
     <string name="forgot_password">Quên mật khẩu</string>
     <string name="next">KẾ TIẾP</string>
     <string name="skip">SKIP</string>
-    <string name="start">GOT IT</string>
     <string name="pref_contact_us_title">Contact</string>
     <string name="pref_contact_us_summary">Liên hệ với nhóm</string>
     <string name="email_not_found">Không tìm thấy ứng dụng email nào</string>
-    <string name="airplane_mode_active_dialog_title">Đã bật chế độ trên máy bay</string>
-    <string name="airplane_mode_active_dialog_message">Chế độ trên máy bay được bật, vui lòng tắt chế độ này để tiếp tục.</string>
-    <string name="airplane_mode_active_dialog_negative">Dismiss</string>
-    <string name="airplane_mode_active_dialog_positive">Cài đặt</string>
     <string name="device_offline_dialog_title">Không có mạng</string>
-    <string name="device_offline_dialog_message">Cần có kết nối mạng để thực hiện việc này, bạn có muốn thay đổi điều này trong cài đặt không?</string>
-    <string name="device_offline_dialog_negative">Dismiss</string>
-    <string name="device_offline_dialog_positive">Cài đặt</string>
     <string name="scan_first_product">Quét sản phẩm đầu tiên</string>
     <string name="pref_delete_history">Successfully deleted history</string>
     <string name="pref_enable_mobile_data_title">Tải lên dữ liệu di động</string>
     <string name="pref_enable_mobile_data_summary_on">Tải lên các sản phẩm mới sử dụng dữ liệu di động &amp; WiFi</string>
     <string name="pref_enable_mobile_data_summary_off">Tải lên các sản phẩm mới chỉ sử dụng WiFi</string>
-    <string name="device_on_mobile_data_warning_title">Thông tin</string>
-    <string name="device_on_mobile_data_warning_message">You have disabled upload on mobile data , please connect to WiFi or change this in preferences</string>
-    <string name="device_on_mobile_data_warning_positive">Tuỳ chỉnh</string>
-    <string name="device_on_mobile_data_warning_negative">Vẫn tải lên</string>
     <string name="changes_saved">Thay đổi được lưu thành công</string>
     <string name="preference_choose_language_dialog_title">Chọn ngôn ngữ</string>
     <string name="pref_faq_title">FAQ</string>
@@ -520,9 +494,7 @@
     <string name="notification_channel_name">Export Notifications</string>
     <string name="notify_channel_description">Thông báo để hiển thị vị trí của tệp đã xuất</string>
     <string name="products_to_be_completed">Các sản phẩm cần được hoàn thành</string>
-    <string name="offline_notification_title">Chỉnh sửa ngoại tuyến bạn cần gửi</string>
     <string name="creator_history">Product added on %1$s at %2$s CET by %3$s</string>
-    <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by %3$s </string>
     <string name="other_editors">Trang sản phẩm cũng được chỉnh sửa bởi </string>
     <string name="contribution_tab">Đóng góp</string>
     <string name="pref_contribution_tab_summary">Hiển thị tab đóng góp của người dùng với các sản phẩm</string>
@@ -533,7 +505,6 @@
     <string name="offline_product_addition_title">Thêm sản phẩm mới</string>
     <string name="productNameNull">Tên không xác định</string>
     <string name="productAdditivesUnknown"></string>
-    <string name="productAdditivesTemplate">%1$d additives</string>
     <plurals name="productAdditives">
         <item quantity="other">%d additives</item>
     </plurals>
@@ -546,7 +517,6 @@
     <string name="switch_camera">Chuyển máy ảnh</string>
     <string name="autofocus">Tự động lấy nét</string>
     <string name="initial_loading">Tải ban đầu</string>
-    <string name="preferences">Tuỳ chỉnh</string>
     <string name="OFFlogo">Open Food Facts logo</string>
     <string name="loading_product">Loading product %s</string>
     <string name="image_not_defined_for_language">No image for selected language. You can add a new one</string>
@@ -558,20 +528,11 @@
     <string name="error_adding_product_details">Đã xảy ra sự cố khi cố thêm chi tiết sản phẩm</string>
     <string name="hint_product_URL">Liên kết của trang chính thức của sản phẩm</string>
     <string name="product_language">Ngôn ngữ sản phẩm: </string>
-    <string name="hint_emb_codes">Ví dụ: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522, FSSL 10013011001409</string>
     <string name="official_website">Trang web chinh thưc</string>
     <string name="scan_QR_code">Quét mã QR cho trang web sản phẩm</string>
     <string name="add_at_least_one_picture">Vui lòng thêm ít nhất một hình ảnh của sản phẩm này trước khi tiếp tục</string>
     <string name="image_uploaded_successfully">Đã tải lên thành công hình ảnh</string>
     <string name="error_adding_product_photos">Đã xảy ra lỗi khi cố gắng thêm ảnh sản phẩm</string>
-    <string name="ingredients_overwrite">Thành phần ghi đè lên</string>
-    <string name="choose_mine">Chọn của tôi</string>
-    <string name="keep_previous_version">Giữ phiên bản trước</string>
-    <string name="product_name_overwrite">Ghi đè tên sản phẩm</string>
-    <string name="yours">Của bạn: </string>
-    <string name="currently_on">Currently on %s: </string>
-    <string name="quantity_overwrite">Quantity overwrite</string>
-    <string name="link_overwrite">Ghi đè liên kết</string>
     <string name="save_product">Bạn có muốn lưu sản phẩm không?</string>
     <string name="error_adding_product">Something went wrong when adding the product</string>
     <string name="photos">Ảnh</string>
@@ -579,7 +540,6 @@
     <string name="product_uploaded_successfully">Đã tải lên thành công sản phẩm</string>
     <string name="no_internet_connection">Dường như bạn không có kết nối internet, hình ảnh sẽ được tải lên khi mạng khả dụng</string>
     <string name="no_internet_unable_to_extract_ingredients">Không có kết nối Internet. Không thể trích xuất thành phần</string>
-    <string name="percent">%1$d%%</string>
     <string name="overview">Tổng quan</string>
     <string name="ingredients">Thành phần</string>
     <string name="nutrition_facts">Giá trị dinh dưỡng</string>
@@ -622,9 +582,6 @@
     <string name="additional_pictures">Hình ảnh bổ sung</string>
     <string name="hint_product_pictures">(Thêm nhiều hình ảnh của sản phẩm hơn, ví dụ: hướng dẫn tái chế, nhãn, vv..)</string>
     <string name="uploading_image">Sending the photo</string>
-    <string name="uploading_nutrition_image">Tải lên hình ảnh sự kiện dinh dưỡng</string>
-    <string name="uploading_ingredients_image">Uploading ingredients image</string>
-    <string name="uploading_front_image">Uploading front image</string>
     <string name="edit_front_image">Edit the front photo</string>
     <string name="edit_nutrition_image">Edit the nutrition photo</string>
     <string name="edit_packaging_image">Edit the recycling photo</string>
@@ -634,7 +591,6 @@
     <string name="sign_in_to_answer">Please sign in or register to answer an insight.</string>
     <string name="hint_quantity">Ví dụ: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
     <string name="edit_product_title">Chỉnh sửa sản phẩm</string>
-    <string name="nutrient_already_added">%s is already present in the nutrition facts</string>
     <string name="save_edits">Lưu chỉnh sửa</string>
     <string name="contribution_by">Contribution by</string>
     <string name="title_activity_product">Title</string>
@@ -707,7 +663,6 @@
     <string name="pref_country_summary">Change your selected country</string>
     <string name="pref_country_title">Nước</string>
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
-    <string name="image_prompt_language">Take a photo of the ingredients in</string>
     <string name="swipe_delete_tip">You can delete a list by swiping it left.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
@@ -740,13 +695,10 @@
     <string name="choose_default_language">Select product language</string>
     <string name="barcode">Mã vạch</string>
     <string name="productAdditivesNone">No additives</string>
-    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
     <string name="import_csv_to_list">Import an Open Food Facts list CSV file</string>
     <string name="toast_import_csv_error">Error in importing CSV file</string>
     <string name="toast_import_csv">CSV imported successfully!</string>
-    <string name="open_csv">Open CSV</string>
     <!-- Used for diets AddOn -->
-    <string name="history_network_error">The product couldn\'t be loaded. Please try again when you are back online.</string>
     <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
     <string name="closeZoom">Click to close zoom</string>
     <string name="imageFullscreen">Zoom</string>
@@ -803,7 +755,6 @@
     <string name="sign_in_or_register">Sign in or register</string>
     <string name="hunger_game_call_to_action">Help classify more %1$s</string>
     <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s food products (plus the ones you will contribute).</string>
-    <string name="enabled">Enabled</string>
     <!-- Application theme settings -->
     <string name="follow_system">Follow system</string>
     <string name="day">Day</string>

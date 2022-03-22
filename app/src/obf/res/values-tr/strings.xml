@@ -11,8 +11,8 @@
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/contributeur/ -->
     <string name="website_contributor">https://tr.openbeautyfacts.org/contributor/</string>
     <string name="terms_url">https://tr.openbeautyfacts.org/terms-of-use</string>
-    <string name="txtHomeOnline">Open Beauty Facts %1$s den daha fazla kozmetik ürünün (buna ek olarak sizin ekleyeceklerinizin) açık erişimli bir veritabanıdır.</string>
-    <string name="txtHome">Open Beauty Facts bir kozmetik ürün veritabanıdır.</string>
+    <string name="txtHomeOnline">Open Beauty Facts %1$s den fazla kozmetik ürününün (buna ek olarak sizin ekleyeceklerinizin) açık erişimli veritabanıdır.</string>
+    <string name="txtHome">Open Beauty Facts açık ve işbirliğine dayalı bir kozmetik ürünleri veritabanıdır.</string>
     <string name="slide_1_title">Kozmetikte şeffaflığa katkıda bulunun</string>
     <string name="slide_1_desc">Ürünleri tarayın, resimlerini çekin, kozmetik şeffaflığın gerçekleşmesini sağlayın</string>
     <string name="slide_2_title">Gerçekleri öğrenin</string>
@@ -21,7 +21,7 @@
     <string name="slide_3_desc">Kullandığınız tüm kozmetik ürünleri, dışa aktarabileceğiniz kullanışlı bir listede</string>
     <string name="slide_4_title">Çevrimdışı çalışır</string>
     <string name="slide_4_desc">Şu anda internet bağlantınız olmasa dahi yeni ürünler ekleyebilirsiniz</string>
-    <string name="product_does_not_exist_please_add_it">The product you scanned does not exist yet in Open Beauty Facts. Please add it.</string>
+    <string name="product_does_not_exist_please_add_it">Taramış olduğunuz ürün henüz Open Beauty Facts\'de mevcut değil. Lütfen ekleyin.</string>
     <string name="msg_share">Bu ürüne Open Beauty Facts\'te bak :</string>
     <string name="txt_broaden_search">- aramanız genişletiliyor \n- tara ve Open Beauty Facts\'e ekle</string>
     <string name="Donation">Open Beauty Facts\'e bağışta bulunmak için buraya tıklayınız</string>
@@ -42,7 +42,7 @@
     <string name="txt_eaten_products">Sahip olduğum ürünler</string>
     <string name="txt_products_to_buy">Satın alınacak ürünler</string>
     <string name="intent_filter_share_label">Open Beauty Facts\'e ekle</string>
-    <string name="brand_hint">Örnekler: Nivea, L\'Oréal vb.</string>
+    <string name="brand_hint">Örnekler: Nivea, L\'Oréal vb…</string>
     <string name="txt_info_eaten_products">Bu listeye ürün eklemeniz ürünleri tarayarak, ürün kartını yukarıya sürükleyip \"Satın alınacak ürünler\"e tıklayarak mümkün olacaktır.
 Aynı zamanda bu listeye ürünleri arayarak ve ürün sayfasının sağ üstündeki + butonuna tıklayarak ürünleri ekleyebilirsiniz.</string>
     <string name="OFFlogo">Open Beauty Facts amblemi</string>

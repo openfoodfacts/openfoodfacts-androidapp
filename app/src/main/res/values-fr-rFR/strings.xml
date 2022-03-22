@@ -16,7 +16,7 @@
   -->
 <resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
-        <item quantity="one">Vous avez 1 produit hors-ligne en attente d\'être ajouté à Open Food Facts</item>
+        <item quantity="one">Vous avez %d produit hors-ligne en attente d\'être ajouté à Open Food Facts</item>
         <item quantity="other">Vous avez %d produits hors-ligne en attente d\'être ajoutés à Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
@@ -24,15 +24,15 @@
         <item quantity="other">Il y a %d secondes</item>
     </plurals>
     <plurals name="minutes">
-        <item quantity="one">Il y a 1 minute</item>
+        <item quantity="one">Il y a %d minute</item>
         <item quantity="other">Il y a %d minutes</item>
     </plurals>
     <plurals name="hours">
-        <item quantity="one">Il y a 1 heure</item>
+        <item quantity="one">Il y a %d heure</item>
         <item quantity="other">Il y a %d heures</item>
     </plurals>
     <plurals name="days">
-        <item quantity="one">Il y a 1 jour</item>
+        <item quantity="one">Il y a %d jour</item>
         <item quantity="other">Il y a %d jours</item>
     </plurals>
     <string name="action_about">À propos</string>
@@ -483,7 +483,6 @@
     <string name="notify_channel_description">Notification pour afficher l\'emplacement du fichier exporté</string>
     <string name="products_to_be_completed">Produits à compléter</string>
     <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Produit ajouté le %1$s à %2$s CET par %3$s</string>
-    <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Dernière modification de la page du produit le %1$s à %2$s CEST par %3$s</string>
     <!-- TODO: Add the placeholder in the string - important for several languages -->
     <string name="other_editors">Fiche produit également modifiée par </string>
     <string name="product_states">États du Produit</string>
@@ -763,4 +762,5 @@
     <string name="msg_welcome_ecoscore">Une synthèse de l\'impact environnemental de votre alimentation.</string>
     <string name="title_welcome_matomo">Partager anonymement les statistiques</string>
     <string name="msg_welcome_matomo">Aidez les bénévoles d\'Open Food Facts à améliorer l\'application. Vous décidez si vous envoyez des analyses anonymes.\n\nSi vous changez d\'avis, cette option peut être activée et désactivée à tout moment à partir des paramètres.</string>
+    <string name="hint_category_list">Recherche une catégorie</string>
 </resources>
