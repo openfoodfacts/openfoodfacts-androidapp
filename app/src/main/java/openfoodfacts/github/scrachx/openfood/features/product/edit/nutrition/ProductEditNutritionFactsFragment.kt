@@ -93,18 +93,9 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
     @Inject
     lateinit var localeManager: LocaleManager
 
-    private val photoReceiverHandler: PhotoReceiverHandler by lazy {
-        PhotoReceiverHandler(sharedPreferences) {
-            val resultUri = it.toURI()
-            imagePath = resultUri.path
-            photoFile = it
-            val image = ProductImage(productCode!!, ProductImageField.NUTRITION, it, localeManager.getLanguage()).apply {
-                filePath = resultUri.path
-            }
-            (activity as? ProductEditActivity)?.savePhoto(image, 2)
-            hideImageProgress(false, "")
-        }
-    }
+    @Inject
+    lateinit var photoReceiverHandler: PhotoReceiverHandler
+
     private var photoFile: File? = null
     private var productCode: String? = null
     private var mOfflineSavedProduct: OfflineSavedProduct? = null
@@ -130,7 +121,12 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         binding.btnAddImageNutritionFacts.setOnClickListener { addNutritionFactsImage() }
         binding.btnEditImageNutritionFacts.setOnClickListener { newNutritionFactsImage() }
         binding.btnAdd.setOnClickListener { next() }
-        binding.for100g100ml.setOnClickListener { checkAllValues() }
+        binding.radioGroup.setOnCheckedChangeListener { _, checkedId ->
+            if (checkedId >= 0) {
+                viewModel.dataFormat.postValue(checkedId)
+            }
+        }
+
         binding.btnAddANutrient.setOnClickListener { displayAddNutrientDialog() }
 
         binding.salt.doAfterTextChanged { updateSodiumValue() }
@@ -142,7 +138,6 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         binding.spinnerSodiumComp.setOnItemSelectedListener { _, _, _, _ ->
             binding.spinnerSaltComp.setSelection(binding.spinnerSodiumComp.selectedItemPosition)
         }
-
 
         val bundle = arguments
         lastEditText = binding.alcohol
@@ -384,11 +379,13 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
      */
     private fun updateSelectedDataPer(value: String) {
         binding.radioGroup.clearCheck()
+
         when (value) {
             NUTRITION_DATA_PER_100G -> binding.radioGroup.check(R.id.for100g_100ml)
             NUTRITION_DATA_PER_SERVING -> binding.radioGroup.check(R.id.per_serving)
             else -> throw IllegalArgumentException("Value is neither $NUTRITION_DATA_PER_100G nor $NUTRITION_DATA_PER_SERVING")
         }
+
         binding.radioGroup.jumpDrawablesToCurrentState()
     }
 
@@ -928,7 +925,17 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data)
+        photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data) {
+            val resultUri = it.toURI()
+            imagePath = resultUri.path
+            photoFile = it
+            val image = ProductImage(productCode!!, ProductImageField.NUTRITION, it, localeManager.getLanguage()).apply {
+                filePath = resultUri.path
+            }
+            (activity as? ProductEditActivity)?.savePhoto(image, 2)
+            hideImageProgress(false, "")
+        }
+
     }
 
     override fun hideImageProgress(errorInUploading: Boolean, message: String) {

@@ -20,7 +20,7 @@ buildscript {
     val kotlinVersion by extra("1.5.30")
     val jacksonVersion by extra("2.12.3")
     val greendaoVersion by extra("3.3.0")
-    val hiltVersion by extra("2.38.1")
+    val hiltVersion by extra("2.39.1")
     repositories {
         google()
         mavenCentral()
@@ -41,7 +41,7 @@ buildscript {
 }
 
 plugins {
-    id("org.sonarqube") version "3.0"
+    id("org.sonarqube") version "3.3"
     id("io.gitlab.arturbosch.detekt") version "1.18.0"
 }
 

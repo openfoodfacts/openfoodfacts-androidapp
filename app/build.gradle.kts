@@ -44,9 +44,9 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion")
 
     // Android KTX
-    implementation("androidx.fragment:fragment-ktx:1.4.0")
+    implementation("androidx.fragment:fragment-ktx:1.4.1")
     implementation("androidx.activity:activity-ktx:1.4.0")
-    implementation("androidx.preference:preference-ktx:1.1.1")
+    implementation("androidx.preference:preference-ktx:1.2.0")
     implementation("androidx.core:core-ktx:1.7.0")
 
     val lifecycleVer = "2.4.0-alpha03"
@@ -92,7 +92,10 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-jackson:2.6.4")
     implementation("com.squareup.retrofit2:adapter-rxjava2:2.6.4")
     implementation("com.squareup.retrofit2:converter-scalars:2.1.0")
-implementation("com.squareup.okhttp3:logging-interceptor:3.12.13")
+    implementation("com.squareup.okhttp3:logging-interceptor:3.12.13")
+
+    // Logging
+    implementation("com.squareup.logcat:logcat:0.1")
 
     // Apache commons
     implementation("org.apache.commons:commons-text:1.9")
@@ -148,7 +151,7 @@ implementation("com.squareup.okhttp3:logging-interceptor:3.12.13")
     implementation("com.github.hootsuite:nachos:1.2.0")
 
     // Crash analytics
-    implementation("io.sentry:sentry-android:5.6.0")
+    implementation("io.sentry:sentry-android:5.7.0")
     implementation("com.github.matomo-org:matomo-sdk-android:v4.1.2")
 
     // ShowCaseView dependency
@@ -158,9 +161,9 @@ implementation("com.squareup.okhttp3:logging-interceptor:3.12.13")
     testImplementation("androidx.arch.core:core-testing:2.1.0")
     testImplementation("junit:junit:4.13.2")
     testImplementation("org.robolectric:robolectric:4.7.3")
-    testImplementation("org.mockito:mockito-core:4.3.1")
+    testImplementation("org.mockito:mockito-core:4.4.0")
     testImplementation("org.mockito.kotlin:mockito-kotlin:4.0.0")
-    testImplementation("org.mockito:mockito-junit-jupiter:4.3.1")
+    testImplementation("org.mockito:mockito-junit-jupiter:4.4.0")
     testImplementation("net.javacrumbs.json-unit:json-unit-fluent:2.28.0")
     testImplementation("com.google.truth:truth:1.1.3")
     testImplementation("com.google.truth.extensions:truth-java8-extension:1.1.3")
@@ -176,8 +179,10 @@ implementation("com.squareup.okhttp3:logging-interceptor:3.12.13")
     androidTestUtil("androidx.test:orchestrator:1.4.1")
 
     // Hilt for Android Testing
-    androidTestImplementation("com.google.dagger:hilt-android-testing:2.40.5")
-    kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.40.5")
+    androidTestImplementation("com.google.dagger:hilt-android-testing:2.39.1")
+    kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.39.1")
+    androidTestImplementation("com.google.dagger:dagger:2.39.1")
+    kaptAndroidTest("com.google.dagger:dagger-compiler:2.39.1")
 
     androidTestImplementation("androidx.test:runner:1.3.0") { exclude("junit") }
     androidTestImplementation("androidx.test:rules:1.4.0")
@@ -216,7 +221,7 @@ android {
         applicationId = "openfoodfacts.github.scrachx.openfood"
 
         minSdk = 16
-        targetSdk = 30
+        targetSdk = 31
 
         versionCode = 433
         versionName = "3.6.8"
@@ -358,21 +363,27 @@ android {
 
     lint {
         isAbortOnError = false
-        disable("MissingTranslation")
+
+        disable(
+            "MissingTranslation",
+            "ImpliedQuantity",
+            // Invalid Resource Folder is for values-b+sr… folders
+            "InvalidResourceFolder"
+        )
     }
 
     packagingOptions {
         resources.excludes += listOf(
-                "META-INF/DEPENDENCIES.txt",
-                "META-INF/LICENSE.txt",
-                "META-INF/NOTICE.txt",
-                "META-INF/NOTICE",
-                "META-INF/LICENSE",
-                "META-INF/DEPENDENCIES",
-                "META-INF/notice.txt",
-                "META-INF/license.txt",
-                "META-INF/dependencies.txt",
-                "META-INF/LGPL2.1"
+            "META-INF/DEPENDENCIES.txt",
+            "META-INF/LICENSE.txt",
+            "META-INF/NOTICE.txt",
+            "META-INF/NOTICE",
+            "META-INF/LICENSE",
+            "META-INF/DEPENDENCIES",
+            "META-INF/notice.txt",
+            "META-INF/license.txt",
+            "META-INF/dependencies.txt",
+            "META-INF/LGPL2.1"
         )
     }
 

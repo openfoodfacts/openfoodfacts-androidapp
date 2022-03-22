@@ -509,7 +509,6 @@
     <string name="notify_channel_description">إشعار لإظهار موقع الملف المستخرج</string>
     <string name="products_to_be_completed">مُنتجات مراد إكمالها</string>
     <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">تمت إضافة المنتج بتاريخ %1$s فى %2$s من قبل%3$s</string>
-    <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">التعديل الأخير من صفحة المنتج على %1$s في %2$s CEST بواسطة %3$s</string>
     <!-- TODO: Add the placeholder in the string - important for several languages -->
     <string name="other_editors">تم تعديل المنتج أيضاً بواسطة </string>
     <string name="product_states">Product States</string>
@@ -538,7 +537,7 @@
     <string name="switch_camera">تبديل الكاميرا</string>
     <string name="autofocus">ضبط تلقائي للصورة</string>
     <string name="initial_loading">التمهيد للتحميل</string>
-    <string name="OFFlogo">Open Food Facts logo</string>
+    <string name="OFFlogo">شعار الحقائق الغذائية المفتوحة</string>
     <string name="loading_product" comment="Do not modify the placeholder">يتم تحميل المنتج %s</string>
     <string name="image_not_defined_for_language">لا توجد صورة للغة المختارة. يمكنك إضافة واحدة جديدة</string>
     <string name="error_adding_ingredients">حدث خطأ ما أثناء محاولة إضافة مكونات المنتج</string>
@@ -630,7 +629,7 @@
     <string name="children_age">3 إلى 9</string>
     <string name="adolescents">المراهقين</string>
     <string name="adolescents_age">10 الى 17</string>
-    <string name="adults">الكبار</string>
+    <string name="adults">البالغين</string>
     <string name="adults_age">18 إلى 64</string>
     <string name="elderly">كبار السن</string>
     <string name="elderly_age">+65</string>

@@ -1,45 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical"
-    android:padding="@dimen/activity_horizontal_margin">
+    android:layout_gravity="center">
 
-    <ImageView
-        android:id="@+id/imageSearch"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="14dp"
-        android:adjustViewBounds="true"
-        android:contentDescription="@string/search_button"
-        app:srcCompat="@drawable/ic_crowdsourcing_icon" />
-
-    <EditText
-        android:id="@+id/editTextBarcode"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="14dp"
-        android:background="@drawable/edittext_full"
-        android:drawablePadding="10dip"
-        android:ems="10"
-        android:hint="@string/hintBarcode"
-        android:inputType="number"
-        android:maxLines="1"
-        android:paddingLeft="10dip"
-        android:paddingRight="10dip" />
-
-    <Button
-        android:id="@+id/buttonBarcode"
-        style="@style/ButtonRounded"
-        android:layout_width="match_parent"
-
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:gravity="center"
-        android:text="@string/action_find"
-        android:textSize="@dimen/font_large" />
-</LinearLayout>
+        android:layout_gravity="center"
+        tools:ignore="UselessParent">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="@dimen/activity_horizontal_margin">
+
+            <ImageView
+                android:id="@+id/imageSearch"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="14dp"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/search_button"
+                app:srcCompat="@drawable/ic_crowdsourcing_icon" />
+
+            <EditText
+                android:id="@+id/editTextBarcode"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="14dp"
+                android:background="@drawable/edittext_full"
+                android:drawablePadding="10dp"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="@string/hintBarcode"
+                android:imeOptions="actionSearch"
+                android:inputType="number"
+                android:maxLines="1"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+            </EditText>
+
+            <Button
+                android:id="@+id/buttonBarcode"
+                style="@style/ButtonRounded"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:gravity="center"
+                android:text="@string/action_find"
+                android:textSize="@dimen/font_large" />
+        </LinearLayout>
+
+    </ScrollView>
+
+</FrameLayout>
