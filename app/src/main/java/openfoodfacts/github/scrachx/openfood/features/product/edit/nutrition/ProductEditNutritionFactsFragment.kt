@@ -575,6 +575,10 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
             targetMap += getNutrientMapIfUpdated(view)
         }
 
+        // We force a null value here for "no nutrition", instead of an "off" String,
+        // to be sure to do not break other apps
+        targetMap[ApiFields.Keys.NO_NUTRITION_DATA] = null
+
         return targetMap
     }
 
