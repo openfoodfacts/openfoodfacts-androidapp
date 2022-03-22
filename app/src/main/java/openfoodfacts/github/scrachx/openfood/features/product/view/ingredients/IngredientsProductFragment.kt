@@ -128,9 +128,9 @@ class IngredientsProductFragment : BaseFragment() {
     private lateinit var productState: ProductState
     private lateinit var customTabActivityHelper: CustomTabActivityHelper
     private lateinit var customTabsIntent: CustomTabsIntent
-    private val photoReceiverHandler by lazy {
-        PhotoReceiverHandler(sharedPreferences) { onPhotoReturned(it) }
-    }
+
+    @Inject
+    lateinit var photoReceiverHandler: PhotoReceiverHandler
 
     private var ingredientExtracted = false
 
@@ -522,7 +522,7 @@ class IngredientsProductFragment : BaseFragment() {
         if (ImagesManageActivity.isImageModified(requestCode, resultCode)) {
             onRefresh()
         }
-        photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data)
+        photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data) { onPhotoReturned(it) }
     }
 
     companion object {

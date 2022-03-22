@@ -142,6 +142,9 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
     @Inject
     lateinit var localeManager: LocaleManager
 
+    @Inject
+    lateinit var prefManager: PreferencesService
+
     private val contributeUri: Uri by lazy { Uri.parse(getString(R.string.website_contribute)) }
     private val discoverUri: Uri by lazy { Uri.parse(getString(R.string.website_discover)) }
     private fun getUserContributeUri(): Uri = Uri.parse(getString(R.string.website_contributor) + getUserLogin())
@@ -153,7 +156,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
     private lateinit var customTabActivityHelper: CustomTabActivityHelper
     private lateinit var drawerResult: Drawer
     private lateinit var headerResult: AccountHeader
-    private val prefManager: PrefManager by lazy { PrefManager(this) }
+
 
     private var searchMenuItem: MenuItem? = null
     private var userSettingsURI: Uri? = null
@@ -644,28 +647,44 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
         super.onCreateOptionsMenu(menu)
         menuInflater.inflate(R.menu.menu_main, menu)
 
+
+
         // Associate searchable configuration with the SearchView
         val searchManager = getSystemService(SEARCH_SERVICE) as SearchManager
-        searchMenuItem = menu.findItem(R.id.action_search).also {
-            val searchView = it.actionView as SearchView
+        searchMenuItem = menu.findItem(R.id.action_search).also { menuItem ->
+            val searchView = menuItem.actionView as SearchView
+            val bottomNavigation = binding.bottomNavigationInclude.bottomNavigation
+
             searchView.setSearchableInfo(searchManager.getSearchableInfo(componentName))
             searchView.setOnQueryTextFocusChangeListener { _, hasFocus ->
                 if (hasFocus) {
-                    binding.bottomNavigationInclude.bottomNavigation.visibility = View.GONE
+                    bottomNavigation.visibility = View.GONE
                 } else {
-                    binding.bottomNavigationInclude.bottomNavigation.visibility = View.VISIBLE
+                    bottomNavigation.visibility = View.VISIBLE
                 }
             }
-            it.setOnActionExpandListener(object : MenuItem.OnActionExpandListener {
-                override fun onMenuItemActionExpand(menuItem: MenuItem): Boolean {
-                    binding.bottomNavigationInclude.bottomNavigation.visibility = View.GONE
-                    return true
-                }
 
-                override fun onMenuItemActionCollapse(menuItem: MenuItem) = true
-            })
+            searchView.setOnSearchClickListener {
+                listenToKeyboardVisibilityChanges(object : OnKeyboardVisibilityChanged {
+                    override fun onKeyboardVisible() {
+                        bottomNavigation.visibility = View.GONE
+                    }
+
+                    override fun onKeyboardDismissed() {
+                        bottomNavigation.visibility = View.VISIBLE
+                    }
+                })
+
+                bottomNavigation.visibility = View.GONE
+            }
+
+            searchView.setOnCloseListener {
+                stopListeningToKeyboardVisibilityChanges()
+                false
+            }
+
             if (intent.getBooleanExtra(PRODUCT_SEARCH_KEY, false)) {
-                it.expandActionView()
+                menuItem.expandActionView()
             }
         }
         return true
@@ -762,6 +781,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
 
     override fun onDestroy() {
         customTabActivityHelper.connectionCallback = null
+        stopListeningToKeyboardVisibilityChanges()
         _binding = null
         super.onDestroy()
     }

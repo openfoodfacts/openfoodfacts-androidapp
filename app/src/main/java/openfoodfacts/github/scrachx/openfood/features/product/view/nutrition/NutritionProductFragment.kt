@@ -98,9 +98,8 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
     @Inject
     lateinit var localeManager: LocaleManager
 
-    private val photoReceiverHandler by lazy {
-        PhotoReceiverHandler(sharedPreferences) { loadNutritionPhoto(it) }
-    }
+    @Inject
+    lateinit var photoReceiverHandler: PhotoReceiverHandler
 
     private lateinit var product: Product
 
@@ -583,7 +582,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data)
+        photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data) { loadNutritionPhoto(it) }
 
         if (ImagesManageActivity.isImageModified(requestCode, resultCode)) {
             (activity as? ProductViewActivity)?.onRefresh()

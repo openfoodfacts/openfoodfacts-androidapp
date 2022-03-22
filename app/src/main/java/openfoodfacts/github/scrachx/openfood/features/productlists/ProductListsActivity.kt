@@ -29,6 +29,8 @@ import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -93,6 +95,7 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivityProductListsBinding.inflate(layoutInflater)
+        fixFabIcon()
 
         setContentView(binding.root)
         setTitle(R.string.your_lists)
@@ -136,6 +139,15 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
         itemTouchHelper.attachToRecyclerView(binding.productListsRecyclerView)
 
         binding.fabAdd.setOnClickListener { showCreateListDialog() }
+    }
+
+    // On Android < 5, the drawableStart attribute in XML will cause a crash
+    // That's why, it's instead done here in the code
+    private fun fixFabIcon() {
+        binding.fabAdd.setCompoundDrawablesRelative(
+            ContextCompat.getDrawable(this, R.drawable.ic_plus_blue_24),
+            null, null, null
+        )
     }
 
     private fun showCreateListDialog(productToAdd: Product? = null) {

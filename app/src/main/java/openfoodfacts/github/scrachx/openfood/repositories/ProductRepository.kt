@@ -41,7 +41,8 @@ class ProductRepository @Inject constructor(
     private val daoSession: DaoSession,
     private val rawApi: ProductsAPI,
     private val sentryAnalytics: SentryAnalytics,
-    private val localeManager: LocaleManager
+    private val localeManager: LocaleManager,
+    private val installationService: InstallationService
 ) {
 
     suspend fun getProductStateFull(
@@ -285,8 +286,10 @@ class ProductRepository @Inject constructor(
                 getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)
             )
 
-            if (state.status == 0L) throw IOException("Could not sync history. Error with product ${state.code} ")
-            else {
+            // Products not found should be skipped
+            if (state.status == 0L && state.statusVerbose?.contains("not found") != true) {
+                throw IOException("Could not sync history. Error with product ${state.code} ")
+            } else if (state.status > 0L) {
                 val product = state.product!!
                 val hp = HistoryProduct(
                     product.productName,
@@ -416,9 +419,13 @@ class ProductRepository @Inject constructor(
         val imgMap = mutableMapOf<String, String>()
 
         val settings = context.getLoginPreferences()
-        settings.getString("user", null)?.let {
-            imgMap[Keys.USER_COMMENT] = getCommentToUpload(it)
-            if (it.isNotBlank()) imgMap[Keys.USER_ID] = it
+        val userName = settings.getString("user", null)
+        val userPassword = settings.getString("pass", null)
+
+        if (userName?.isNotBlank() == true && userPassword?.isNotBlank() == true) {
+            imgMap[Keys.USER_COMMENT] = getCommentToUpload(userName)
+            imgMap[Keys.USER_ID] = userName
+            imgMap[Keys.USER_PASS] = userPassword
         }
 
         return imgMap
@@ -442,7 +449,7 @@ class ProductRepository @Inject constructor(
         append(" ")
         append(context.getVersionName())
         if (login.isNullOrEmpty()) {
-            append(" (Added by ").append(InstallationUtils.id(context)).append(")")
+            append(" (Added by ").append(installationService.id).append(")")
         }
     }
 
