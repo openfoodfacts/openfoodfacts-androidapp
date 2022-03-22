@@ -554,7 +554,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
 
         // Add no nutrition data entry to map
         if (binding.checkboxNoNutritionData.isChecked) {
-            targetMap[ApiFields.Keys.NO_NUTRITION_DATA] = "on"
+            targetMap[ApiFields.Keys.NO_NUTRITION_DATA] = ApiFields.Defaults.NO_NUTRITION_DATA_ON
             return targetMap
         }
 
@@ -588,7 +588,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         if (activity !is ProductEditActivity) return emptyMap()
 
         if (binding.checkboxNoNutritionData.isChecked) {
-            return mapOf(ApiFields.Keys.NO_NUTRITION_DATA to "on")
+            return mapOf(ApiFields.Keys.NO_NUTRITION_DATA to ApiFields.Defaults.NO_NUTRITION_DATA_ON)
         }
 
         val targetMap = mutableMapOf<String, String?>()
