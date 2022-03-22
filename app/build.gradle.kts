@@ -69,8 +69,7 @@ dependencies {
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 
     // ML Kit barcode Scanner
-    implementation("com.google.mlkit:barcode-scanning:17.0.0")
-
+    implementation("com.google.mlkit:barcode-scanning:17.0.2")
     // Hilt
     implementation("com.google.dagger:hilt-android:${rootProject.extra["hiltVersion"]}")
     kapt("com.google.dagger:hilt-compiler:${rootProject.extra["hiltVersion"]}")
@@ -218,7 +217,7 @@ android {
     defaultConfig {
         applicationId = "openfoodfacts.github.scrachx.openfood"
 
-        minSdk = 16
+        minSdk = 19
         targetSdk = 31
 
         versionCode = 433
@@ -264,8 +263,6 @@ android {
         debug {
             applicationIdSuffix = ".debug"
             isDebuggable = true
-
-            defaultConfig.minSdk = 18
 
             // Uncomment to use dev server
 //            buildConfigField("String", "HOST", "\"https://ssl-api.openfoodfacts.net\"")
