@@ -50,7 +50,6 @@ import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.rx2.await
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OBF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
@@ -60,7 +59,7 @@ import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabsHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentNutritionProductBinding
 import openfoodfacts.github.scrachx.openfood.features.FullScreenActivityOpener
-import openfoodfacts.github.scrachx.openfood.features.ImagesManageActivity
+import openfoodfacts.github.scrachx.openfood.features.images.manage.ImagesManageActivity
 import openfoodfacts.github.scrachx.openfood.features.adapters.NutrimentsGridAdapter
 import openfoodfacts.github.scrachx.openfood.features.login.LoginActivity
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity
@@ -78,7 +77,6 @@ import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.*
 import pl.aprilapps.easyphotopicker.EasyImage
 import java.io.File
-import java.util.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -100,9 +98,8 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
     @Inject
     lateinit var localeManager: LocaleManager
 
-    private val photoReceiverHandler by lazy {
-        PhotoReceiverHandler(sharedPreferences) { loadNutritionPhoto(it) }
-    }
+    @Inject
+    lateinit var photoReceiverHandler: PhotoReceiverHandler
 
     private lateinit var product: Product
 
@@ -585,7 +582,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data)
+        photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data) { loadNutritionPhoto(it) }
 
         if (ImagesManageActivity.isImageModified(requestCode, resultCode)) {
             (activity as? ProductViewActivity)?.onRefresh()

@@ -74,13 +74,13 @@ class SplashController internal constructor(
             val request = OneTimeWorkRequest.from(LoadTaxonomiesWorker::class.java)
             WorkManager.getInstance(activity).let {
                 it.enqueue(request)
-                it.getWorkInfoByIdLiveData(request.id).observe(activity, { workInfo: WorkInfo? ->
+                it.getWorkInfoByIdLiveData(request.id).observe(activity) { workInfo: WorkInfo? ->
                     if (workInfo != null && workInfo.state == WorkInfo.State.RUNNING) {
                         activity.lifecycleScope.launch { view.showLoading() }
                     } else if (workInfo != null) {
                         activity.lifecycleScope.launch { view.hideLoading(workInfo.state == WorkInfo.State.FAILED) }
                     }
-                })
+                }
             }
         }
 

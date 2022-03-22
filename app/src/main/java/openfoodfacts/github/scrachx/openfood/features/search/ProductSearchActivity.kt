@@ -24,8 +24,10 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.Single
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
+import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.rx2.await
 import kotlinx.coroutines.withContext
@@ -145,8 +147,8 @@ class ProductSearchActivity : BaseActivity() {
     }
 
     override fun onDestroy() {
-        _binding = null
         super.onDestroy()
+        _binding = null
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -366,7 +368,10 @@ class ProductSearchActivity : BaseActivity() {
                 null
             }
 
-            displaySearch(throwable == null, search, noMatchMsg, extendedMsg)
+            // Ensure the Fragment is still visible = job not cancelled
+            if (isActive) {
+                displaySearch(throwable == null, search, noMatchMsg, extendedMsg)
+            }
         }
     }
 

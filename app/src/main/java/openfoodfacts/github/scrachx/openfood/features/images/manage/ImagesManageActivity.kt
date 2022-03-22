@@ -13,11 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package openfoodfacts.github.scrachx.openfood.features
+package openfoodfacts.github.scrachx.openfood.features.images.manage
 
 import android.Manifest
 import android.content.Intent
-import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
@@ -47,6 +46,7 @@ import kotlinx.coroutines.withContext
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityFullScreenImageBinding
 import openfoodfacts.github.scrachx.openfood.features.adapters.LanguageDataAdapter
+import openfoodfacts.github.scrachx.openfood.features.images.select.ImagesSelectActivity
 import openfoodfacts.github.scrachx.openfood.features.login.LoginActivity
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.images.*
@@ -63,7 +63,6 @@ import org.apache.commons.lang3.StringUtils
 import pl.aprilapps.easyphotopicker.EasyImage
 import smartdevelop.ir.eram.showcaseviewlib.GuideView
 import java.io.File
-import java.util.*
 import javax.inject.Inject
 
 /**
@@ -84,10 +83,10 @@ class ImagesManageActivity : BaseActivity() {
     lateinit var picasso: Picasso
 
     @Inject
-    lateinit var sharedPreferences: SharedPreferences
+    lateinit var localeManager: LocaleManager
 
     @Inject
-    lateinit var localeManager: LocaleManager
+    lateinit var photoReceiverHandler: PhotoReceiverHandler
 
     private var lastViewedImage: File? = null
     private lateinit var attacher: PhotoViewAttacher
@@ -493,6 +492,9 @@ class ImagesManageActivity : BaseActivity() {
 
     private fun requireProduct() = getProduct() ?: error("Cannot start $LOG_TAG without product.")
 
+    private fun getSelectedType(): ProductImageField = intent.getSerializableExtra(IMAGE_TYPE) as ProductImageField?
+        ?: error("Cannot initialize $LOG_TAG without IMAGE_TYPE")
+
     private fun onLanguageChanged() {
         val data = binding.comboLanguages.selectedItem as LanguageData
         val product = requireProduct()
@@ -504,9 +506,6 @@ class ImagesManageActivity : BaseActivity() {
         }
         updateSelectDefaultLanguageAction()
     }
-
-    private fun getSelectedType(): ProductImageField = intent.getSerializableExtra(IMAGE_TYPE) as ProductImageField?
-        ?: error("Cannot initialize $LOG_TAG without IMAGE_TYPE")
 
     private fun onImageTypeChanged() {
         getProduct()?.let {
@@ -543,6 +542,7 @@ class ImagesManageActivity : BaseActivity() {
         startActivityForResult(activityBuilder.getIntent(this, CropImageActivity::class.java), REQUEST_EDIT_IMAGE)
     }
 
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         val isResultOk = resultCode == RESULT_OK
@@ -552,8 +552,8 @@ class ImagesManageActivity : BaseActivity() {
             REQUEST_ADD_IMAGE_AFTER_LOGIN -> if (isResultOk) addImage()
             REQUEST_CHOOSE_IMAGE_AFTER_LOGIN -> if (isResultOk) selectImage()
             REQUEST_UNSELECT_IMAGE_AFTER_LOGIN -> if (isResultOk) unSelectImage()
-            else -> PhotoReceiverHandler(sharedPreferences) { onPhotoReturned(it) }
-                .onActivityResult(this, requestCode, resultCode, data)
+            else -> photoReceiverHandler
+                .onActivityResult(this, requestCode, resultCode, data) { onPhotoReturned(it) }
         }
     }
 

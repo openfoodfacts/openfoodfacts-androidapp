@@ -17,7 +17,10 @@ package openfoodfacts.github.scrachx.openfood.features
 
 import android.Manifest
 import android.app.SearchManager
-import android.content.*
+import android.content.ActivityNotFoundException
+import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.graphics.BitmapFactory
@@ -54,11 +57,15 @@ import com.mikepenz.iconics.typeface.library.googlematerial.GoogleMaterial
 import com.mikepenz.materialdrawer.AccountHeader
 import com.mikepenz.materialdrawer.Drawer
 import com.mikepenz.materialdrawer.holder.StringHolder
-import com.mikepenz.materialdrawer.model.*
+import com.mikepenz.materialdrawer.model.ProfileDrawerItem
+import com.mikepenz.materialdrawer.model.ProfileSettingDrawerItem
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem
 import com.mikepenz.materialdrawer.model.interfaces.IProfile
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import openfoodfacts.github.scrachx.openfood.AppFlavors
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
@@ -92,7 +99,6 @@ import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInsta
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.utils.*
-import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.*
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_ABOUT
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_ADDITIVES
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_ADVANCED_SEARCH
@@ -113,10 +119,10 @@ import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Comp
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_SEARCH_BY_CODE
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_USER
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_YOUR_LISTS
+import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType
 import openfoodfacts.github.scrachx.openfood.utils.Utils.scheduleProductUploadJob
 import java.io.FileNotFoundException
 import java.io.IOException
-import java.util.*
 import javax.inject.Inject
 import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivity.Companion.start as startSearch
 
@@ -136,6 +142,9 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
     @Inject
     lateinit var localeManager: LocaleManager
 
+    @Inject
+    lateinit var prefManager: PreferencesService
+
     private val contributeUri: Uri by lazy { Uri.parse(getString(R.string.website_contribute)) }
     private val discoverUri: Uri by lazy { Uri.parse(getString(R.string.website_discover)) }
     private fun getUserContributeUri(): Uri = Uri.parse(getString(R.string.website_contributor) + getUserLogin())
@@ -147,7 +156,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
     private lateinit var customTabActivityHelper: CustomTabActivityHelper
     private lateinit var drawerResult: Drawer
     private lateinit var headerResult: AccountHeader
-    private val prefManager: PrefManager by lazy { PrefManager(this) }
+
 
     private var searchMenuItem: MenuItem? = null
     private var userSettingsURI: Uri? = null
@@ -638,28 +647,44 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
         super.onCreateOptionsMenu(menu)
         menuInflater.inflate(R.menu.menu_main, menu)
 
+
+
         // Associate searchable configuration with the SearchView
         val searchManager = getSystemService(SEARCH_SERVICE) as SearchManager
-        searchMenuItem = menu.findItem(R.id.action_search).also {
-            val searchView = it.actionView as SearchView
+        searchMenuItem = menu.findItem(R.id.action_search).also { menuItem ->
+            val searchView = menuItem.actionView as SearchView
+            val bottomNavigation = binding.bottomNavigationInclude.bottomNavigation
+
             searchView.setSearchableInfo(searchManager.getSearchableInfo(componentName))
             searchView.setOnQueryTextFocusChangeListener { _, hasFocus ->
                 if (hasFocus) {
-                    binding.bottomNavigationInclude.bottomNavigation.visibility = View.GONE
+                    bottomNavigation.visibility = View.GONE
                 } else {
-                    binding.bottomNavigationInclude.bottomNavigation.visibility = View.VISIBLE
+                    bottomNavigation.visibility = View.VISIBLE
                 }
             }
-            it.setOnActionExpandListener(object : MenuItem.OnActionExpandListener {
-                override fun onMenuItemActionExpand(menuItem: MenuItem): Boolean {
-                    binding.bottomNavigationInclude.bottomNavigation.visibility = View.GONE
-                    return true
-                }
 
-                override fun onMenuItemActionCollapse(menuItem: MenuItem) = true
-            })
+            searchView.setOnSearchClickListener {
+                listenToKeyboardVisibilityChanges(object : OnKeyboardVisibilityChanged {
+                    override fun onKeyboardVisible() {
+                        bottomNavigation.visibility = View.GONE
+                    }
+
+                    override fun onKeyboardDismissed() {
+                        bottomNavigation.visibility = View.VISIBLE
+                    }
+                })
+
+                bottomNavigation.visibility = View.GONE
+            }
+
+            searchView.setOnCloseListener {
+                stopListeningToKeyboardVisibilityChanges()
+                false
+            }
+
             if (intent.getBooleanExtra(PRODUCT_SEARCH_KEY, false)) {
-                it.expandActionView()
+                menuItem.expandActionView()
             }
         }
         return true
@@ -756,6 +781,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
 
     override fun onDestroy() {
         customTabActivityHelper.connectionCallback = null
+        stopListeningToKeyboardVisibilityChanges()
         _binding = null
         super.onDestroy()
     }

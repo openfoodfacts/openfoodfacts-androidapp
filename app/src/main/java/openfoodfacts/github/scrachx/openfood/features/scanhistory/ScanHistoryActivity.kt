@@ -21,13 +21,11 @@ import androidx.core.app.NavUtils
 import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
 import androidx.core.view.isVisible
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.BuildConfig
@@ -38,7 +36,6 @@ import openfoodfacts.github.scrachx.openfood.features.productlist.CreateCSVContr
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.selectNavigationItem
-import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.SortType.*
 import java.io.File
@@ -51,9 +48,6 @@ class ScanHistoryActivity : BaseActivity() {
 
     private lateinit var binding: ActivityHistoryScanBinding
     private val viewModel: ScanHistoryViewModel by viewModels()
-
-    @Inject
-    lateinit var client: ProductRepository
 
     @Inject
     lateinit var productViewActivityStarter: ProductViewActivityStarter
@@ -122,9 +116,7 @@ class ScanHistoryActivity : BaseActivity() {
         binding.listHistoryScan.adapter = adapter
         val swipeController = SwipeController(this) { position ->
             adapter.products.getOrNull(position)?.let {
-                lifecycleScope.launch {
-                    viewModel.removeProductFromHistory(it)
-                }
+                viewModel.removeProductFromHistory(it)
             }
         }
         ItemTouchHelper(swipeController).attachToRecyclerView(binding.listHistoryScan)
@@ -169,23 +161,15 @@ class ScanHistoryActivity : BaseActivity() {
         refreshViewModel()
     }
 
-    private fun refreshViewModel() {
-        lifecycleScope.launchWhenCreated { viewModel.refreshItems() }
-    }
+    private fun refreshViewModel() = viewModel.refreshItems()
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu_history, menu)
-        with(menu) {
-            val alpha = if (menuButtonsEnabled) 255 else 130
-            findItem(R.id.action_export_all_history).isEnabled = menuButtonsEnabled
-            findItem(R.id.action_export_all_history).icon.alpha = alpha
+        menu.clear()
 
-            findItem(R.id.action_remove_all_history).isEnabled = menuButtonsEnabled
-            findItem(R.id.action_remove_all_history).icon.alpha = alpha
-
-            findItem(R.id.sort_history).isEnabled = menuButtonsEnabled
-            findItem(R.id.sort_history).icon.alpha = alpha
+        if (menuButtonsEnabled) {
+            menuInflater.inflate(R.menu.menu_history, menu)
         }
+
         return true
     }
 
@@ -257,20 +241,23 @@ class ScanHistoryActivity : BaseActivity() {
         if (!isHardwareCameraInstalled(this)) return
         // TODO: 21/06/2021 add dialog to explain why we can't
         val perm = Manifest.permission.CAMERA
-        if (ContextCompat.checkSelfPermission(baseContext, perm) != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this, perm)) {
+        when {
+            ContextCompat.checkSelfPermission(baseContext, perm) == PackageManager.PERMISSION_GRANTED -> {
+                startScanActivity()
+            }
+            ActivityCompat.shouldShowRequestPermissionRationale(this, perm) -> {
                 MaterialAlertDialogBuilder(this)
                     .setTitle(R.string.action_about)
                     .setMessage(R.string.permission_camera)
-                    .setPositiveButton(android.R.string.ok) { _, _ ->
+                    .setPositiveButton(android.R.string.ok) { d, _ ->
+                        d.dismiss()
                         cameraPermLauncher.launch(perm)
                     }
                     .show()
-            } else {
+            }
+            else -> {
                 cameraPermLauncher.launch(perm)
             }
-        } else {
-            startScanActivity()
         }
     }
 
@@ -278,27 +265,36 @@ class ScanHistoryActivity : BaseActivity() {
         MaterialAlertDialogBuilder(this)
             .setTitle(R.string.title_clear_history_dialog)
             .setMessage(R.string.text_clear_history_dialog)
-            .setPositiveButton(android.R.string.ok) { _, _ -> lifecycleScope.launch { viewModel.clearHistory() } }
+            .setPositiveButton(android.R.string.ok) { d, _ ->
+                viewModel.clearHistory()
+                d.dismiss()
+            }
             .setNegativeButton(android.R.string.cancel) { d, _ -> d.dismiss() }
             .show()
     }
 
     private fun showListSortingDialog() {
         val sortTypes = if (isFlavors(OFF)) arrayOf(
-            getString(R.string.by_title),
-            getString(R.string.by_brand),
-            getString(R.string.by_nutrition_grade),
-            getString(R.string.by_barcode),
-            getString(R.string.by_time)
+            TITLE,
+            BRAND,
+            GRADE,
+            BARCODE,
+            TIME,
         ) else arrayOf(
-            getString(R.string.by_title),
-            getString(R.string.by_brand),
-            getString(R.string.by_time),
-            getString(R.string.by_barcode)
+            TITLE,
+            BRAND,
+            TIME,
+            BARCODE,
         )
+
+        val selectedItemPosition = sortTypes.indexOf(viewModel.sortType.value)
+
         MaterialAlertDialogBuilder(this)
             .setTitle(R.string.sort_by)
-            .setItems(sortTypes) { _, which ->
+            .setSingleChoiceItems(
+                sortTypes.map { getString(it.stringRes) }.toTypedArray(),
+                if (selectedItemPosition < 0) 0 else selectedItemPosition
+            ) { dialog, which ->
                 val newType = when (which) {
                     0 -> TITLE
                     1 -> BRAND
@@ -306,7 +302,9 @@ class ScanHistoryActivity : BaseActivity() {
                     3 -> BARCODE
                     else -> TIME
                 }
+
                 viewModel.updateSortType(newType)
+                dialog.dismiss()
             }
             .show()
     }

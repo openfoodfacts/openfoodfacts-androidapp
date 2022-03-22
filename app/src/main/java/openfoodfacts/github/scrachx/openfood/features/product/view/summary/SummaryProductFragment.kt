@@ -30,6 +30,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.result.ActivityResultLauncher
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.net.toUri
@@ -62,7 +63,7 @@ import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabsHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentSummaryProductBinding
 import openfoodfacts.github.scrachx.openfood.features.FullScreenActivityOpener
-import openfoodfacts.github.scrachx.openfood.features.ImagesManageActivity
+import openfoodfacts.github.scrachx.openfood.features.images.manage.ImagesManageActivity
 import openfoodfacts.github.scrachx.openfood.features.additives.AdditiveFragmentHelper.showAdditives
 import openfoodfacts.github.scrachx.openfood.features.compare.ProductCompareActivity.Companion.start
 import openfoodfacts.github.scrachx.openfood.features.login.LoginActivity.Companion.LoginContract
@@ -130,6 +131,9 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     @Inject
     lateinit var taxonomiesRepository: TaxonomiesRepository
 
+    @Inject
+    lateinit var photoReceiverHandler: PhotoReceiverHandler
+
     private lateinit var presenter: ISummaryProductPresenter.Actions
     private lateinit var mTagDao: TagDao
 
@@ -137,7 +141,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     private lateinit var customTabActivityHelper: CustomTabActivityHelper
 
     private lateinit var customTabsIntent: CustomTabsIntent
-
+    private lateinit var editProductLauncher: ActivityResultLauncher<Product>
 
     private var hasCategoryInsightQuestion = false
 
@@ -148,20 +152,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     private var mUrlImage: String? = null
 
     private var nutritionScoreUri: Uri? = null
-    private val photoReceiverHandler by lazy {
-        PhotoReceiverHandler(sharedPreferences) { newPhotoFile: File ->
-            //the pictures are uploaded with the correct path
-            val resultUri = newPhotoFile.toURI()
-            val photoFile = if (sendOther) newPhotoFile else File(resultUri.path)
-            val field = if (sendOther) ProductImageField.OTHER else ProductImageField.FRONT
-            val image = ProductImage(product.code, field, photoFile, localeManager.getLanguage())
-            image.filePath = photoFile.absolutePath
-            uploadImage(image)
-            if (!sendOther) {
-                loadPhoto(photoFile)
-            }
-        }
-    }
+
 
     private var productQuestion: Question? = null
 
@@ -199,6 +190,9 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mTagDao = daoSession.tagDao
+
+        editProductLauncher = registerForActivityResult(ProductEditActivity.EditProductContract())
+        { isOk -> if (isOk) (activity as? ProductViewActivity)?.onRefresh() }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -897,9 +891,6 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         }, null))
     }
 
-    private val editProductLauncher = registerForActivityResult(ProductEditActivity.EditProductContract())
-    { isOk -> if (isOk) (activity as? ProductViewActivity)?.onRefresh() }
-
     private fun editProduct() = editProductLauncher.launch(product)
 
     private fun onBookmarkProductButtonClick() {
@@ -977,7 +968,18 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data)
+        photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data) { newPhotoFile: File ->
+            //the pictures are uploaded with the correct path
+            val resultUri = newPhotoFile.toURI()
+            val photoFile = if (sendOther) newPhotoFile else File(resultUri.path)
+            val field = if (sendOther) ProductImageField.OTHER else ProductImageField.FRONT
+            val image = ProductImage(product.code, field, photoFile, localeManager.getLanguage())
+            image.filePath = photoFile.absolutePath
+            uploadImage(image)
+            if (!sendOther) {
+                loadPhoto(photoFile)
+            }
+        }
 
         val shouldRefresh = ImagesManageActivity.isImageModified(requestCode, resultCode)
 
