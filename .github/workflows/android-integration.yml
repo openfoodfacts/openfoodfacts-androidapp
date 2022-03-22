@@ -23,7 +23,7 @@ jobs:
           java-version: "11"
 
       - name: Compile screenshots android tests
-        uses: gradle/gradle-build-action@v2.1.3
+        uses: gradle/gradle-build-action@v2.1.4
         with:
           arguments: >
             compileOffPlaystoreScreenshotsAndroidTestSources 
@@ -45,7 +45,7 @@ jobs:
           java-version: "11"
 
       - name: Run unit tests
-        uses: gradle/gradle-build-action@v2.1.3
+        uses: gradle/gradle-build-action@v2.1.4
         with:
           arguments: >
             testObfPlaystoreDebugUnitTest
@@ -72,7 +72,7 @@ jobs:
         run: 'echo "ndk.dir=${ANDROID_HOME}/ndk-bundle" > local.properties'
 
       - name: Assemble debug APKs
-        uses: gradle/gradle-build-action@v2.1.3
+        uses: gradle/gradle-build-action@v2.1.4
         with:
           arguments: assembleDebug
 
@@ -132,12 +132,12 @@ jobs:
         run: "echo \"org.gradle.jvmargs=-Xmx4096m\" >> gradle.properties"
 
       - name: Lint sources
-        uses: gradle/gradle-build-action@v2.1.3
+        uses: gradle/gradle-build-action@v2.1.4
         with:
           arguments: lintOffPlayStoreDebug --stacktrace
 
       - name: Generate GitHub annotations
-        uses: yutailang0119/action-android-lint@v2
+        uses: yutailang0119/action-android-lint@v3
         with:
           report-path: ./app/build/reports/lint-results-offPlaystoreDebug.xml
 
@@ -161,7 +161,7 @@ jobs:
           java-version: '11'
 
       - name: Generate documentation
-        uses: gradle/gradle-build-action@v2.1.3
+        uses: gradle/gradle-build-action@v2.1.4
         with:
           arguments: dokkaHtml
 
