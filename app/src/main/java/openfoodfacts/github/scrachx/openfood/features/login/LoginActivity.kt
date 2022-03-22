@@ -112,7 +112,6 @@ class LoginActivity : BaseActivity() {
 
         val loadingSnackbar = Snackbar.make(binding.loginLinearlayout, R.string.toast_retrieving, LENGTH_LONG)
             .apply { show() }
-        binding.btnLogin.isClickable = false
 
         lifecycleScope.launch(Dispatchers.Main) {
             val response = withContext(Dispatchers.IO) {

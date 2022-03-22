@@ -37,10 +37,7 @@ import openfoodfacts.github.scrachx.openfood.images.IMG_ID
 import openfoodfacts.github.scrachx.openfood.images.PRODUCT_BARCODE
 import openfoodfacts.github.scrachx.openfood.images.extractImagesNameSortedByUploadTimeDesc
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
-import openfoodfacts.github.scrachx.openfood.utils.MY_PERMISSIONS_REQUEST_STORAGE
-import openfoodfacts.github.scrachx.openfood.utils.PhotoReceiverHandler
-import openfoodfacts.github.scrachx.openfood.utils.isAllGranted
-import openfoodfacts.github.scrachx.openfood.utils.isUserSet
+import openfoodfacts.github.scrachx.openfood.utils.*
 import pl.aprilapps.easyphotopicker.EasyImage
 import java.io.File
 import javax.inject.Inject
@@ -58,6 +55,9 @@ class ImagesSelectActivity : BaseActivity() {
 
     @Inject
     lateinit var sharedPreferences: SharedPreferences
+
+    @Inject
+    lateinit var photoReceiverHandler: PhotoReceiverHandler
 
     private lateinit var adapter: ProductImagesSelectionAdapter
 
@@ -143,12 +143,12 @@ class ImagesSelectActivity : BaseActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        PhotoReceiverHandler(sharedPreferences) { newPhotoFile ->
+        photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data) { newPhotoFile ->
             setResult(RESULT_OK, Intent().apply {
                 putExtra(IMAGE_FILE, newPhotoFile)
             })
             finish()
-        }.onActivityResult(this, requestCode, resultCode, data)
+        }
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
@@ -161,7 +161,6 @@ class ImagesSelectActivity : BaseActivity() {
 
     companion object {
         const val TOOLBAR_TITLE = "TOOLBAR_TITLE"
-        private val LOG_TAG = ImagesSelectActivity::class.simpleName
 
         @JvmStatic
         fun start(context: Context, toolbarTitle: String, productCode: String) = context.startActivity(Intent(context, this::class.java).apply {
@@ -172,10 +171,11 @@ class ImagesSelectActivity : BaseActivity() {
         class SelectImageContract(
             private val toolbarTitle: String
         ) : ActivityResultContract<String, Pair<String?, File?>>() {
-            override fun createIntent(context: Context, barcode: String) = Intent(context, ImagesSelectActivity::class.java).apply {
+            override fun createIntent(context: Context, input: String) = Intent<ImagesSelectActivity>(context) {
                 putExtra(TOOLBAR_TITLE, toolbarTitle)
-                putExtra(PRODUCT_BARCODE, barcode)
+                putExtra(PRODUCT_BARCODE, input)
             }
+
 
             override fun parseResult(resultCode: Int, intent: Intent?) =
                 if (resultCode != RESULT_OK) null to null

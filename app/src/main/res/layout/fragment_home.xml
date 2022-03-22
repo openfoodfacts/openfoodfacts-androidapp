@@ -68,6 +68,7 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:padding="12dp"
+        android:background="?android:attr/selectableItemBackground"
         android:textColor="@color/blue"
         android:visibility="gone" />
 
