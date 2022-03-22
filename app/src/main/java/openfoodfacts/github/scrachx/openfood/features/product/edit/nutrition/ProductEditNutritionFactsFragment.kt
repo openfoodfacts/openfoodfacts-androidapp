@@ -127,6 +127,10 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
             }
         }
 
+        binding.checkboxNoNutritionData.setOnCheckedChangeListener { _, isChecked ->
+            binding.nutritionFactsLayout.visibility = if (isChecked) View.GONE else View.VISIBLE
+        }
+
         binding.btnAddANutrient.setOnClickListener { displayAddNutrientDialog() }
 
         binding.salt.doAfterTextChanged { updateSodiumValue() }
@@ -551,9 +555,10 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         // Add no nutrition data entry to map
         if (binding.checkboxNoNutritionData.isChecked) {
             targetMap[ApiFields.Keys.NO_NUTRITION_DATA] = "on"
-        } else {
-            targetMap += getNutrientsModeMap()
+            return targetMap
         }
+
+        targetMap += getNutrientsModeMap()
 
         // Add serving size entry to map if it has been changed
         if (binding.servingSize.isNotEmpty()) {
