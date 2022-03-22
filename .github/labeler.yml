@@ -7,6 +7,17 @@ taxonomies:
 - app/src/main/java/openfoodfacts/github/scrachx/openfood/repositories/Taxonomy.kt
 - app/src/main/java/openfoodfacts/github/scrachx/openfood/repositories/TaxonomiesRepository.kt
 
+lists:
+- app/src/main/res/menu/menu_your_listed_products.xml
+- app/src/main/res/layout/your_listed_products_item.xml
+- app/src/main/res/layout/activity_your_listed_products.xml
+- app/src/main/res/layout-v21/activity_your_listed_products.xml
+- app/src/main/java/openfoodfacts/github/scrachx/openfood/models/entities/ListedProduct.java
+- app/src/main/java/openfoodfacts/github/scrachx/openfood/features/productlist/ProductListAdapter.kt
+- app/src/main/java/openfoodfacts/github/scrachx/openfood/features/productlist/ProductListActivity.kt
+- app/src/main/java/openfoodfacts/github/scrachx/openfood/features/productlists/ProductListsAdapter.kt
+- app/src/main/java/openfoodfacts/github/scrachx/openfood/features/productlists/ProductListsActivity.kt
+
 allergen alert:
 - app/src/test/java/openfoodfacts/github/scrachx/openfood/models/entities/allergen/AllergenResponseTestData.kt
 - app/src/test/java/openfoodfacts/github/scrachx/openfood/models/entities/allergen/AllergensWrapperTest.kt
