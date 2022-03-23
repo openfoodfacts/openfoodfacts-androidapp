@@ -310,6 +310,11 @@ object ApiFields {
             ECOSCORE,
             NOVA_GROUPS
         )
+
+        val PRODUCT_FIELDS_WITH_EMPTY_VALUE = setOf(
+            NO_NUTRITION_DATA
+        )
+
     }
 
     fun getAllFields(langCode: String): String {

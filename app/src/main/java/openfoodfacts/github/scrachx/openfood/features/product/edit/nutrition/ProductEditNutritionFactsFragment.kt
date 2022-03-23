@@ -606,6 +606,8 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
             addNutrientToMap(view, targetMap)
         }
 
+        targetMap[ApiFields.Keys.NO_NUTRITION_DATA] = ApiFields.Defaults.NO_NUTRITION_DATA_OFF
+
         return targetMap
     }
 
