@@ -60,7 +60,7 @@ object ApiFields {
      */
     object Defaults {
         const val NO_NUTRITION_DATA_ON = "on"
-        const val NO_NUTRITION_DATA_OFF = "off"
+        const val NO_NUTRITION_DATA_OFF = ""
         const val NUTRITION_DATA_PER_100G = "100g"
         const val NUTRITION_DATA_PER_SERVING = "serving"
         const val DEBUG_BARCODE = "1"

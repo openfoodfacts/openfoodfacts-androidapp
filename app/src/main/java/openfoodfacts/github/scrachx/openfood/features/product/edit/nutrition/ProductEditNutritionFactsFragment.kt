@@ -575,8 +575,9 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
             targetMap += getNutrientMapIfUpdated(view)
         }
 
-        // We force an "off" value here
-        targetMap[ApiFields.Keys.NO_NUTRITION_DATA] = ApiFields.Defaults.NO_NUTRITION_DATA_OFF
+        if (targetMap.containsKey(ApiFields.Keys.NO_NUTRITION_DATA)) {
+            targetMap[ApiFields.Keys.NO_NUTRITION_DATA] = ApiFields.Defaults.NO_NUTRITION_DATA_OFF
+        }
 
         return targetMap
     }
