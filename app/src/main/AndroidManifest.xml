@@ -16,6 +16,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
@@ -324,6 +325,18 @@
             android:parentActivityName=".features.MainActivity"
             android:theme="@style/OFFTheme" />
         <activity android:name=".features.productlist.ProductListActivity" />
+
+        <service
+            android:name=".utils.MyTileService"
+            android:enabled="true"
+            android:exported="true"
+            android:label="Tremble"
+            android:icon="@drawable/ic_baseline_vibration_24"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>
