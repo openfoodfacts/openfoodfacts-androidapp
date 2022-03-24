@@ -101,7 +101,8 @@
                     android:padding="12sp"
                     android:text="@string/create_account"
                     android:textColor="@color/primary"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:background="?attr/selectableItemBackground"/>
 
                 <TextView
                     android:id="@+id/btn_forgot_pass"
@@ -113,7 +114,8 @@
                     android:padding="12sp"
                     android:text="@string/forgot_password"
                     android:textColor="@color/primary"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:background="?attr/selectableItemBackground" />
             </LinearLayout>
 
             <TextView
