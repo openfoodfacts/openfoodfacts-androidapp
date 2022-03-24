@@ -331,7 +331,7 @@
             android:enabled="true"
             android:exported="true"
             android:label="@string/scan_shortcut_short_label"
-            android:icon="@mipmap/ic_shortcut_scan"
+            android:icon="@drawable/ic_shortcut_scan_foreground"
             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
