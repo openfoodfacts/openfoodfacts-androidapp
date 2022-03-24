@@ -3082,6 +3082,10 @@ $dokka.location:openfoodfacts.github.scrachx.openfood.utils/ProductInfoState///P
 $dokka.location:openfoodfacts.github.scrachx.openfood.utils/ProductStringConverter///PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.utils/-product-string-converter/index.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.utils/ProductStringConverter/ProductStringConverter/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.utils/-product-string-converter/-product-string-converter.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.utils/ProductStringConverter/convert/#kotlin.String/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.utils/-product-string-converter/convert.html
+$dokka.location:openfoodfacts.github.scrachx.openfood.utils/ScanTileService///PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.utils/-scan-tile-service/index.html
+$dokka.location:openfoodfacts.github.scrachx.openfood.utils/ScanTileService/ScanTileService/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.utils/-scan-tile-service/-scan-tile-service.html
+$dokka.location:openfoodfacts.github.scrachx.openfood.utils/ScanTileService/onClick/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.utils/-scan-tile-service/on-click.html
+$dokka.location:openfoodfacts.github.scrachx.openfood.utils/ScanTileService/onTileAdded/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.utils/-scan-tile-service/on-tile-added.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.utils/ScopedExecutor///PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.utils/-scoped-executor/index.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.utils/ScopedExecutor/ScopedExecutor/#java.util.concurrent.Executor/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.utils/-scoped-executor/-scoped-executor.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.utils/ScopedExecutor/execute/#java.lang.Runnable/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.utils/-scoped-executor/execute.html
