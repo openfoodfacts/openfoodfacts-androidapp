@@ -327,11 +327,11 @@
         <activity android:name=".features.productlist.ProductListActivity" />
 
         <service
-            android:name=".utils.MyTileService"
+            android:name=".utils.ScanTileService"
             android:enabled="true"
             android:exported="true"
-            android:label="Tremble"
-            android:icon="@drawable/ic_baseline_vibration_24"
+            android:label="@string/scan_shortcut_short_label"
+            android:icon="@mipmap/ic_shortcut_scan"
             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
