@@ -67,10 +67,11 @@
             android:value="2.1" />
 
         <provider
-            android:name="androidx.work.impl.WorkManagerInitializer"
-            android:authorities="${applicationId}.workmanager-init"
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="${applicationId}.androidx-startup"
             android:exported="false"
-            tools:node="remove" />
+            tools:node="remove">
+        </provider>
 
         <provider
             android:name=".utils.SearchSuggestionProvider"
@@ -323,6 +324,18 @@
             android:parentActivityName=".features.MainActivity"
             android:theme="@style/OFFTheme" />
         <activity android:name=".features.productlist.ProductListActivity" />
+
+        <service
+            android:name=".utils.ScanTileService"
+            android:enabled="true"
+            android:exported="true"
+            android:label="@string/scan_shortcut_short_label"
+            android:icon="@drawable/ic_shortcut_scan_foreground"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

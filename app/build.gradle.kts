@@ -149,7 +149,7 @@ dependencies {
     implementation("com.github.hootsuite:nachos:1.2.0")
 
     // Crash analytics
-    implementation("io.sentry:sentry-android:5.6.2")
+    implementation("io.sentry:sentry-android:5.7.0")
     implementation("com.github.matomo-org:matomo-sdk-android:v4.1.2")
 
     // ShowCaseView dependency
@@ -177,8 +177,10 @@ dependencies {
     androidTestUtil("androidx.test:orchestrator:1.4.1")
 
     // Hilt for Android Testing
-    androidTestImplementation("com.google.dagger:hilt-android-testing:2.41")
-    kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.41")
+    androidTestImplementation("com.google.dagger:hilt-android-testing:2.39.1")
+    kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.39.1")
+    androidTestImplementation("com.google.dagger:dagger:2.39.1")
+    kaptAndroidTest("com.google.dagger:dagger-compiler:2.39.1")
 
     androidTestImplementation("androidx.test:runner:1.3.0") { exclude("junit") }
     androidTestImplementation("androidx.test:rules:1.4.0")
@@ -359,7 +361,13 @@ android {
 
     lint {
         isAbortOnError = false
-        disable("MissingTranslation")
+
+        disable(
+            "MissingTranslation",
+            "ImpliedQuantity",
+            // Invalid Resource Folder is for values-b+sr… folders
+            "InvalidResourceFolder"
+        )
     }
 
     packagingOptions {

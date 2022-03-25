@@ -34,20 +34,27 @@ class ProductViewActivityStarter @Inject constructor(
      * @param barcode product barcode
      * @param activity
      */
-    fun openProduct(barcode: String, activity: FragmentActivity) {
+    fun openProduct(barcode: String, activity: FragmentActivity, resultResultListener: OnProductViewActivityStarterResultListener? = null) {
         if (networkConnectivityRepository.isNetworkAvailable()) {
             activity.hideKeyboard()
             activity.lifecycleScope.launch {
-                tryToStartActivity(activity, barcode)
+                val res = tryToStartActivity(activity, barcode)
+
+                if (res == null) {
+                    resultResultListener?.onProductOpened()
+                } else {
+                    resultResultListener?.onProductError(res)
+                }
             }
         } else {
             showNoNetworkDialog(activity) {
+                resultResultListener?.onProductError(ProductViewActivityStarterErrorType.NoNetworkAvailable)
                 openProduct(barcode, activity)
             }
         }
     }
 
-    private suspend fun tryToStartActivity(activity: Activity, barcode: String) {
+    private suspend fun tryToStartActivity(activity: Activity, barcode: String) : ProductViewActivityStarterErrorType? {
         val result = withContext(dispatchers.IO) {
             runCatching {
                 productsApi.getProductByBarcode(
@@ -58,20 +65,29 @@ class ProductViewActivityStarter @Inject constructor(
                 )
             }
         }
-        withContext(dispatchers.Main) {
+
+        return withContext(dispatchers.Main) {
             result.fold(
                 onSuccess = { state ->
                     if (state.status == 0L) {
                         showNotFoundDialog(activity, barcode, true)
+                        ProductViewActivityStarterErrorType.NotFound
                     } else {
                         client.addToHistory(state.product!!)
                         ProductViewActivity.start(activity, state)
+                        null
                     }
                 },
                 onFailure = {
                     when (it) {
-                        is IOException -> Toast.makeText(activity, R.string.something_went_wrong, Toast.LENGTH_LONG).show()
-                        else -> showNotFoundDialog(activity, barcode, false)
+                        is IOException -> {
+                            Toast.makeText(activity, R.string.something_went_wrong, Toast.LENGTH_LONG).show()
+                            ProductViewActivityStarterErrorType.NotFound
+                        }
+                        else -> {
+                            showNotFoundDialog(activity, barcode, false)
+                            ProductViewActivityStarterErrorType.NotFound
+                        }
                     }
                 }
             )
@@ -112,4 +128,13 @@ class ProductViewActivityStarter @Inject constructor(
             .setNegativeButton(R.string.dismiss) { d, _ -> d.dismiss() }
             .show()
     }
+}
+
+interface OnProductViewActivityStarterResultListener {
+    fun onProductOpened()
+    fun onProductError(type: ProductViewActivityStarterErrorType)
+}
+
+enum class ProductViewActivityStarterErrorType {
+    NoNetworkAvailable, NotFound, GenericError
 }

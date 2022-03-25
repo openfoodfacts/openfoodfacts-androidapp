@@ -18,6 +18,7 @@ package openfoodfacts.github.scrachx.openfood.features.login
 import android.content.Context
 import android.content.Intent
 import android.content.pm.ActivityInfo
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
@@ -88,23 +89,26 @@ class LoginActivity : BaseActivity() {
 
         hideKeyboard()
 
+        binding.loginInputLayout.error = null
+        binding.passInputLayout.error = null
+
         // Start checks
         val login = binding.loginInput.text.toString()
         val password = binding.passInput.text.toString()
         if (login.isBlank()) {
-            binding.loginInput.error = getString(R.string.error_field_required)
-            binding.loginInput.requestFocus()
+            binding.loginInputLayout.error = getString(R.string.error_field_required)
+            binding.loginInputLayout.requestFocus()
             updateLoginButtonState(LoginButtonState.Enabled)
             return
         }
         if (password.isBlank()) {
-            binding.passInput.error = getString(R.string.error_field_required)
-            binding.passInput.requestFocus()
+            binding.passInputLayout.error = getText(R.string.error_field_required)
+            binding.passInputLayout.requestFocus()
             updateLoginButtonState(LoginButtonState.Enabled)
             return
         } else if (password.length < 6) {
-            binding.passInput.error = getText(R.string.error_invalid_password)
-            binding.passInput.requestFocus()
+            binding.passInputLayout.error = getText(R.string.error_invalid_password)
+            binding.passInputLayout.requestFocus()
             updateLoginButtonState(LoginButtonState.Enabled)
             return
         }

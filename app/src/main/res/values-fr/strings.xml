@@ -521,6 +521,7 @@
     <string name="trouble_scanning">Problèmes de scan?</string>
     <string name="barcode_hint">Problème de scan ? Saisissez le code-barres</string>
     <string name="switch_camera">Changer d\'appareil photo</string>
+    <string name="toggle_flash">Activer / Désactiver le flash</string>
     <string name="autofocus">Autofocus</string>
     <string name="initial_loading">Chargement initial</string>
     <string name="OFFlogo">Logo Open Food Facts</string>

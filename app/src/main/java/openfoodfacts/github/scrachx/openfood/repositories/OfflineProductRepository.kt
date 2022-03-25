@@ -82,7 +82,7 @@ class OfflineProductRepository @Inject constructor(
             remove(ApiFields.Keys.IMAGE_FRONT_UPLOADED)
             remove(ApiFields.Keys.IMAGE_INGREDIENTS_UPLOADED)
             remove(ApiFields.Keys.IMAGE_NUTRITION_UPLOADED)
-        }.filter { !it.value.isNullOrEmpty() }
+        }.filter { !it.value.isNullOrEmpty() || ApiFields.Keys.PRODUCT_FIELDS_WITH_EMPTY_VALUE.contains(it.key) }
 
         Log.d(LOG_TAG, "Uploading data for product ${product.barcode}: $productDetails")
         try {

@@ -121,7 +121,16 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         binding.btnAddImageNutritionFacts.setOnClickListener { addNutritionFactsImage() }
         binding.btnEditImageNutritionFacts.setOnClickListener { newNutritionFactsImage() }
         binding.btnAdd.setOnClickListener { next() }
-        binding.for100g100ml.setOnClickListener { checkAllValues() }
+        binding.radioGroup.setOnCheckedChangeListener { _, checkedId ->
+            if (checkedId >= 0) {
+                viewModel.dataFormat.postValue(checkedId)
+            }
+        }
+
+        binding.checkboxNoNutritionData.setOnCheckedChangeListener { _, isChecked ->
+            binding.nutritionFactsLayout.visibility = if (isChecked) View.GONE else View.VISIBLE
+        }
+
         binding.btnAddANutrient.setOnClickListener { displayAddNutrientDialog() }
 
         binding.salt.doAfterTextChanged { updateSodiumValue() }
@@ -133,7 +142,6 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         binding.spinnerSodiumComp.setOnItemSelectedListener { _, _, _, _ ->
             binding.spinnerSaltComp.setSelection(binding.spinnerSodiumComp.selectedItemPosition)
         }
-
 
         val bundle = arguments
         lastEditText = binding.alcohol
@@ -324,7 +332,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
             loadNutritionImage(path)
         }
 
-        if (productDetails[ApiFields.Keys.NO_NUTRITION_DATA] != null) {
+        if (productDetails[ApiFields.Keys.NO_NUTRITION_DATA]?.trim()?.lowercase() == ApiFields.Defaults.NO_NUTRITION_DATA_ON) {
             binding.checkboxNoNutritionData.isChecked = true
             binding.nutritionFactsLayout.visibility = View.GONE
         }
@@ -375,11 +383,13 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
      */
     private fun updateSelectedDataPer(value: String) {
         binding.radioGroup.clearCheck()
+
         when (value) {
             NUTRITION_DATA_PER_100G -> binding.radioGroup.check(R.id.for100g_100ml)
             NUTRITION_DATA_PER_SERVING -> binding.radioGroup.check(R.id.per_serving)
             else -> throw IllegalArgumentException("Value is neither $NUTRITION_DATA_PER_100G nor $NUTRITION_DATA_PER_SERVING")
         }
+
         binding.radioGroup.jumpDrawablesToCurrentState()
     }
 
@@ -544,10 +554,11 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
 
         // Add no nutrition data entry to map
         if (binding.checkboxNoNutritionData.isChecked) {
-            targetMap[ApiFields.Keys.NO_NUTRITION_DATA] = "on"
-        } else {
-            targetMap += getNutrientsModeMap()
+            targetMap[ApiFields.Keys.NO_NUTRITION_DATA] = ApiFields.Defaults.NO_NUTRITION_DATA_ON
+            return targetMap
         }
+
+        targetMap += getNutrientsModeMap()
 
         // Add serving size entry to map if it has been changed
         if (binding.servingSize.isNotEmpty()) {
@@ -564,6 +575,10 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
             targetMap += getNutrientMapIfUpdated(view)
         }
 
+        if (targetMap.containsKey(ApiFields.Keys.NO_NUTRITION_DATA)) {
+            targetMap[ApiFields.Keys.NO_NUTRITION_DATA] = ApiFields.Defaults.NO_NUTRITION_DATA_OFF
+        }
+
         return targetMap
     }
 
@@ -574,7 +589,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         if (activity !is ProductEditActivity) return emptyMap()
 
         if (binding.checkboxNoNutritionData.isChecked) {
-            return mapOf(ApiFields.Keys.NO_NUTRITION_DATA to "on")
+            return mapOf(ApiFields.Keys.NO_NUTRITION_DATA to ApiFields.Defaults.NO_NUTRITION_DATA_ON)
         }
 
         val targetMap = mutableMapOf<String, String?>()
@@ -590,6 +605,8 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
             if (binding.servingSize.entryName == view.entryName) continue
             addNutrientToMap(view, targetMap)
         }
+
+        targetMap[ApiFields.Keys.NO_NUTRITION_DATA] = ApiFields.Defaults.NO_NUTRITION_DATA_OFF
 
         return targetMap
     }
