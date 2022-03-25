@@ -93,10 +93,9 @@ abstract class BaseFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener, 
     protected fun doChooseOrTakePhotos() {
         if (canTakePhotos()) {
             EasyImage.openCamera(this, 0)
-            return
+        } else {
+            cameraPermissionRequestLauncher.launch(Manifest.permission.CAMERA)
         }
-        // Ask for permissions
-        cameraPermissionRequestLauncher.launch(Manifest.permission.CAMERA)
     }
 
     protected open fun doOnPhotosPermissionGranted() = Unit

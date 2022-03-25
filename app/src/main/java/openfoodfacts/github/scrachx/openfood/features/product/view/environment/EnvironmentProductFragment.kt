@@ -80,7 +80,7 @@ class EnvironmentProductFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         val langCode = localeManager.getLanguage()
         productState = requireProductState()
-        binding.imageViewPackaging.setOnClickListener { openFullScreen() }
+        binding.imageViewPackaging.setOnClickListener { openFullScreenImage() }
 
         // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
         if (requireContext().isDisableImageLoad() && requireContext().isBatteryLevelLow()) {
@@ -172,7 +172,7 @@ class EnvironmentProductFragment : BaseFragment() {
         refreshTagsPrompt()
     }
 
-    private fun openFullScreen() {
+    private fun openFullScreenImage() {
         val imageUrl = mUrlImage
         val product = productState.product
         if (imageUrl != null && product != null) {
@@ -193,6 +193,8 @@ class EnvironmentProductFragment : BaseFragment() {
     }
 
     private fun newPackagingImage() = doChooseOrTakePhotos()
+
+    override fun doOnPhotosPermissionGranted() = doChooseOrTakePhotos()
 
     private fun loadPackagingPhoto(photoFile: File) {
         // Create a new instance of ProductImage so we can load to server
