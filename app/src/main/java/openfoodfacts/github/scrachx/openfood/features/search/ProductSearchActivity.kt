@@ -456,6 +456,7 @@ class ProductSearchActivity : BaseActivity() {
      * @param extendedMessage additional message to display, -1 if no message is displayed
      */
     private fun showEmptyResponse(@StringRes message: Int, @StringRes extendedMessage: Int) {
+        binding.swipeRefresh.isEnabled = false
         binding.swipeRefresh.isRefreshing = false
 
         binding.productsRecyclerView.visibility = View.INVISIBLE
