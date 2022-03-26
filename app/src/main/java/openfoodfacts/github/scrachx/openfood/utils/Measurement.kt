@@ -12,6 +12,16 @@ data class Measurement(
 fun measure(value: Float, unit: MeasurementUnit) = Measurement(value, unit)
 
 /**
+ * Calculates the nutriment value for a given amount of this product. For example,
+ * calling `forServing(1, "kg")` will give you the amount of this Measurement
+ * given 1 kg of the product.
+ *
+ * @param serving a measurement of the portion
+ * @return a measurement
+ */
+fun Measurement.forServing(serving: Measurement) = copy(value = value / 100 * serving.grams.value)
+
+/**
  * Converts a given measurement to grams.
  *
  * @receiver the measurement to convert.
@@ -72,7 +82,7 @@ fun Measurement.convertTo(unit: MeasurementUnit): Measurement {
 }
 
 fun Measurement.displayString() = buildString {
-    append(getRoundNumber(value))
+    append(value.getRoundNumber())
     append(" ")
     append(unit.sym)
 }

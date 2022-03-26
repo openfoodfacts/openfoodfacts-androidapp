@@ -37,6 +37,8 @@ import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import logcat.LogPriority
+import logcat.logcat
 import okhttp3.RequestBody
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OBF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
@@ -441,7 +443,7 @@ class ProductEditActivity : BaseActivity() {
 
                 hideImageProgress(fragmentIndex, getString(R.string.no_internet_connection))
 
-                Log.e(LOGGER_TAG, err.message!!)
+                logcat(LogPriority.ERROR) { err.message!! }
                 if (image.imageField === ProductImageField.OTHER) {
                     daoSession.toUploadProductDao.insertOrReplace(
                         ToUploadProduct(
@@ -452,7 +454,7 @@ class ProductEditActivity : BaseActivity() {
                     )
                 }
             } else {
-                Log.i(this::class.simpleName, err.message ?: "Empty error.")
+                logcat(LogPriority.INFO) { err.message ?: "Empty error." }
                 withContext(Main) {
                     hideImageProgress(fragmentIndex, err.message ?: "Empty error.", true)
                     Toast.makeText(this@ProductEditActivity, err.message, Toast.LENGTH_SHORT).show()

@@ -41,16 +41,16 @@ class UtilsTest {
 
     @Test
     fun getRoundNumber() {
-        assertThat(getRoundNumber("")).isEqualTo("?")
-        assertThat(getRoundNumber("test")).isEqualTo("?")
-        assertThat(getRoundNumber("0")).isEqualTo("0")
-        assertThat(getRoundNumber(0.0f)).isEqualTo("0")
-        assertThat(getRoundNumber(1.00f)).isEqualTo("1")
-        assertThat(getRoundNumber(1.70f, Locale.ENGLISH)).isEqualTo("1.7")
-        assertThat(getRoundNumber(1.75f, Locale.ENGLISH)).isEqualTo("1.75")
-        assertThat(getRoundNumber(1.754f, Locale.ENGLISH)).isEqualTo("1.75")
-        assertThat(getRoundNumber(1.756f, Locale.ENGLISH)).isEqualTo("1.76")
-        assertThat(getRoundNumber(1.756f, Locale.ENGLISH)).isEqualTo("1.76")
+        assertThat("".getRoundNumber()).isEqualTo("?")
+        assertThat("test".getRoundNumber()).isEqualTo("?")
+        assertThat("0".getRoundNumber()).isEqualTo("0")
+        assertThat(0.0f.getRoundNumber()).isEqualTo("0")
+        assertThat(1.00f.getRoundNumber()).isEqualTo("1")
+        assertThat(1.70f.getRoundNumber(Locale.ENGLISH)).isEqualTo("1.7")
+        assertThat(1.75f.getRoundNumber(Locale.ENGLISH)).isEqualTo("1.75")
+        assertThat(1.754f.getRoundNumber(Locale.ENGLISH)).isEqualTo("1.75")
+        assertThat(1.756f.getRoundNumber(Locale.ENGLISH)).isEqualTo("1.76")
+        assertThat(1.756f.getRoundNumber(Locale.ENGLISH)).isEqualTo("1.76")
     }
 
     @Test

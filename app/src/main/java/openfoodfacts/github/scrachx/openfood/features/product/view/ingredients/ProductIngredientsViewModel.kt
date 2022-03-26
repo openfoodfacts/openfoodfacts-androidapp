@@ -20,7 +20,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import openfoodfacts.github.scrachx.openfood.features.FullScreenActivityOpener
+import openfoodfacts.github.scrachx.openfood.features.ImageOpenerUtil.startImageEditFromUrl
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.models.ProductState
@@ -90,9 +90,8 @@ class ProductIngredientsViewModel @Inject constructor(
     ) {
         viewModelScope.launch {
             // TODO: not good if invoked in click listener, refactor
-            FullScreenActivityOpener.openForUrl(
-                fragment,
-                productRepository,
+            startImageEditFromUrl(
+                fragment.requireActivity(), productRepository,
                 productState.product!!,
                 ProductImageField.INGREDIENTS,
                 ingredientsImgUrl!!,

@@ -38,8 +38,9 @@ enum class NutrimentLevel {
 }
 
 /**
- * get the localize text of a nutriment level
- * @param context to fetch localised strings
+ * Get the localized text of a nutriment level
+ *
+ * @receiver to fetch localised strings
  * @return The localised word for the nutrition amount.
  */
-fun NutrimentLevel.getLocalize(context: Context) = context.getString(getDescRes())
+fun Context.getString(nutrimentLevel: NutrimentLevel) = getString(nutrimentLevel.getDescRes())

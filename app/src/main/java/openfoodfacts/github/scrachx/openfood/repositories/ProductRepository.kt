@@ -65,12 +65,7 @@ class ProductRepository @Inject constructor(
         customHeader
     ).products
 
-    /**
-     * Open the product activity if the barcode exist.
-     * Also add it in the history if the product exist.
-     *
-     * @param barcode product barcode
-     */
+
     suspend fun getProductImages(barcode: String): ProductState = withContext(IO) {
         val fields = Keys.PRODUCT_IMAGES_FIELDS.toMutableSet().also {
             it += Keys.lcProductNameKey(localeManager.getLanguage())

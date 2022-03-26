@@ -31,7 +31,7 @@ data class NutrimentListItem(
         nutriment: ProductNutriments.ProductNutriment
     ) : this(
         title,
-        nutriment.per100gInUnit.value,
+        nutriment.per100gInUnit?.value,
         nutriment.perServingInUnit?.value,
         nutriment.unit,
         nutriment.modifier
@@ -46,8 +46,8 @@ data class NutrimentListItem(
         displayVolumeHeader: Boolean = false
     ) : this(
         title,
-        value?.let { getRoundNumber(it) },
-        servingValue?.let { getRoundNumber(it) },
+        value?.let { it.getRoundNumber() },
+        servingValue?.let { it.getRoundNumber() },
         unit.sym,
         modifier.nullIfDefault()?.sym ?: "",
         displayVolumeHeader

@@ -342,27 +342,27 @@ fun Context.getBitmapFromDrawable(@DrawableRes drawableId: Int): Bitmap? {
     return bitmap
 }
 
-fun getRoundNumber(measurement: Measurement, locale: Locale = Locale.getDefault()) =
-    getRoundNumber(measurement.value, locale)
+fun Measurement.getRoundNumber(locale: Locale = Locale.getDefault()) =
+    this.value.getRoundNumber(locale)
 
-fun getRoundNumber(value: Double, locale: Locale = Locale.getDefault()) =
-    getRoundNumber(value.toString(), locale)
+fun Double.getRoundNumber(locale: Locale = Locale.getDefault()) =
+    this.toString().getRoundNumber(locale)
 
-fun getRoundNumber(value: Float, locale: Locale = Locale.getDefault()) =
-    getRoundNumber(value.toString(), locale)
+fun Float.getRoundNumber(locale: Locale = Locale.getDefault()) =
+    this.toString().getRoundNumber(locale)
 
 /**
  * Return a round float value **with 2 decimals**
  *
  * **BE CAREFUL:** THE METHOD DOESN'T CHECK THE NUMBER AS A NUMBER.
  *
- * @param value float value
+ * @param this@getRoundNumber float value
  * @return round value **with 2 decimals** or 0 if the value is empty or equals to 0
  */
-fun getRoundNumber(value: CharSequence, locale: Locale = Locale.getDefault()) = when {
-    value.isEmpty() -> "?"
-    value == "0" -> value
-    else -> value.toString().toDoubleOrNull()
+fun CharSequence.getRoundNumber(locale: Locale = Locale.getDefault()) = when {
+    this.isEmpty() -> "?"
+    this == "0" -> this
+    else -> toString().toDoubleOrNull()
         ?.let { DecimalFormat("##.##", DecimalFormatSymbols(locale)).format(it) }
         ?: "?"
 }

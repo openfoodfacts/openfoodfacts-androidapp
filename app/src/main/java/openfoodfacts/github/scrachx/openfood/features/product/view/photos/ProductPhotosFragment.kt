@@ -15,7 +15,7 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentProductPhotosBinding
-import openfoodfacts.github.scrachx.openfood.features.FullScreenActivityOpener
+import openfoodfacts.github.scrachx.openfood.features.ImageOpenerUtil
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_STATE
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
 import openfoodfacts.github.scrachx.openfood.models.Product
@@ -102,7 +102,7 @@ class ProductPhotosFragment : BaseFragment() {
      * @param mUrlImage url of the image in FullScreenImage
      */
     private fun openFullScreen(mUrlImage: String?) {
-        FullScreenActivityOpener.openZoom(
+        ImageOpenerUtil.startImageZoomActivity(
             requireActivity(),
             mUrlImage ?: return,
             null

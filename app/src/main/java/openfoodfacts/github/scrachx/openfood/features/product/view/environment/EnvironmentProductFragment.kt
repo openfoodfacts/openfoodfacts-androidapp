@@ -4,31 +4,28 @@ import android.app.Activity
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.text.Spanned
 import android.text.method.LinkMovementMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.text.HtmlCompat
-import androidx.core.text.HtmlCompat.FROM_HTML_MODE_COMPACT
 import androidx.core.text.bold
 import androidx.core.text.buildSpannedString
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentEnvironmentProductBinding
-import openfoodfacts.github.scrachx.openfood.features.FullScreenActivityOpener
+import openfoodfacts.github.scrachx.openfood.features.ImageOpenerUtil
 import openfoodfacts.github.scrachx.openfood.features.images.manage.ImagesManageActivity
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_STATE
 import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewActivity
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
-import openfoodfacts.github.scrachx.openfood.models.Nutriment
-import openfoodfacts.github.scrachx.openfood.models.Product
-import openfoodfacts.github.scrachx.openfood.models.ProductImageField
-import openfoodfacts.github.scrachx.openfood.models.ProductState
+import openfoodfacts.github.scrachx.openfood.models.*
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.*
@@ -37,7 +34,10 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class EnvironmentProductFragment : BaseFragment() {
-    private lateinit var productState: ProductState
+    private var _binding: FragmentEnvironmentProductBinding? = null
+    private val binding get() = _binding!!
+
+    private val viewModel: EnvironmentProductViewModel by viewModels()
 
     @Inject
     lateinit var productRepo: ProductRepository
@@ -51,25 +51,17 @@ class EnvironmentProductFragment : BaseFragment() {
     @Inject
     lateinit var localeManager: LocaleManager
 
-    private var _binding: FragmentEnvironmentProductBinding? = null
-    private val binding get() = _binding!!
-
-    private lateinit var product: Product
+    @Inject
+    lateinit var photoReceiverHandler: PhotoReceiverHandler
 
     /**
      * boolean to determine if image should be loaded or not
      */
-    private var isLowBatteryMode = false
+    private val isLowBatteryMode by lazy { requireContext().isDisableImageLoad() && requireContext().isBatteryLevelLow() }
+
+    private lateinit var productState: ProductState
+
     private var mUrlImage: String? = null
-
-    @Inject
-    lateinit var photoReceiverHandler: PhotoReceiverHandler
-
-    /**boolean to determine if labels prompt should be shown*/
-    private var showLabelsPrompt = false
-
-    /**boolean to determine if origins prompt should be shown*/
-    private var showOriginsPrompt = false
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentEnvironmentProductBinding.inflate(inflater)
@@ -78,86 +70,93 @@ class EnvironmentProductFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val langCode = localeManager.getLanguage()
-        productState = requireProductState()
+
+        viewModel.imagePackagingUrl.observe(viewLifecycleOwner) { setPackagingImage(it) }
+        viewModel.carbonFootprint.observe(viewLifecycleOwner) { setCarbonFootprint(it) }
+        viewModel.environmentInfoCard.observe(viewLifecycleOwner) { setInfoCard(it) }
+        viewModel.packaging.observe(viewLifecycleOwner) { setPackaging(it) }
+        viewModel.recyclingInstructionsToDiscard.observe(viewLifecycleOwner) { setRecyclingInstructionsToDiscard(it) }
+        viewModel.recyclingInstructionsToRecycle.observe(viewLifecycleOwner) { setRecyclingInstructionsToRecycle(it) }
+        viewModel.statesTags.observe(viewLifecycleOwner) { refreshTagsPrompt(it) }
+
+        refreshView(requireProductState())
+
         binding.imageViewPackaging.setOnClickListener { openFullScreenImage() }
+    }
 
-        // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
-        if (requireContext().isDisableImageLoad() && requireContext().isBatteryLevelLow()) {
-            isLowBatteryMode = true
-        }
-
-        product = productState.product!!
-        val nutriments = product.nutriments
-
-        val imagePackagingUrl = product.getImagePackagingUrl(langCode)
-        if (!imagePackagingUrl.isNullOrBlank()) {
-            binding.packagingImagetipBox.setTipMessage(getString(R.string.onboarding_hint_msg, getString(R.string.image_edit_tip)))
-            binding.packagingImagetipBox.loadToolTip()
-            binding.addPhotoLabel.visibility = View.GONE
-
-            // Load Image if isLowBatteryMode is false
-            if (!isLowBatteryMode) {
-                picasso.load(imagePackagingUrl).into(binding.imageViewPackaging)
-            } else {
-                binding.imageViewPackaging.visibility = View.GONE
-            }
-            mUrlImage = imagePackagingUrl
-        }
-
-        val carbonFootprintNutriment = nutriments[Nutriment.CARBON_FOOTPRINT]
-        if (carbonFootprintNutriment != null) {
-            binding.textCarbonFootprint.text = buildSpannedString {
-                bold { append(getString(R.string.textCarbonFootprint)) }
-                append(getRoundNumber(carbonFootprintNutriment.per100gInUnit))
-                append(carbonFootprintNutriment.unit.sym)
-            }
+    private fun setRecyclingInstructionsToRecycle(recyclingInstructionsToRecycle: String?) {
+        if (recyclingInstructionsToRecycle.isNullOrEmpty()) {
+            binding.recyclingInstructionsRecycleCv.visibility = View.GONE
         } else {
-            binding.carbonFootprintCv.visibility = View.GONE
-        }
-
-        val environmentInfoCard = product.environmentInfoCard
-        if (!environmentInfoCard.isNullOrEmpty()) {
-            binding.environmentInfoText.append(HtmlCompat.fromHtml(environmentInfoCard, FROM_HTML_MODE_COMPACT))
-            binding.environmentInfoText.movementMethod = LinkMovementMethod.getInstance()
-        } else {
-            binding.environmentInfoCv.visibility = View.GONE
-        }
-
-        val packaging = product.packaging
-        if (!packaging.isNullOrEmpty()) {
-            binding.packagingText.text = buildSpannedString {
-                bold { append(getString(R.string.packaging_environmentTab)) }
-                append(" ")
-                append(packaging.replace(",", ", "))
-            }
-        } else {
-            binding.packagingCv.visibility = View.GONE
-        }
-
-        val recyclingInstructionsToDiscard = product.recyclingInstructionsToDiscard
-        if (!recyclingInstructionsToDiscard.isNullOrEmpty()) {
-            // TODO: 02/03/2021 i18n
-            binding.recyclingInstructionToDiscard.text = buildSpannedString {
-                bold { append("Recycling instructions - To discard: ") }
-                append(recyclingInstructionsToDiscard)
-            }
-        } else {
-            binding.recyclingInstructionsDiscardCv.visibility = View.GONE
-        }
-
-        val recyclingInstructionsToRecycle = product.recyclingInstructionsToRecycle
-        if (!recyclingInstructionsToRecycle.isNullOrEmpty()) {
             // TODO: 02/03/2021 i18n
             binding.recyclingInstructionToRecycle.text = buildSpannedString {
                 bold { append("Recycling instructions - To recycle: ") }
                 append(recyclingInstructionsToRecycle)
             }
-        } else {
-            binding.recyclingInstructionsRecycleCv.visibility = View.GONE
         }
+    }
 
-        refreshView(productState)
+    private fun setRecyclingInstructionsToDiscard(instructions: String?) {
+        if (instructions == null) {
+            binding.recyclingInstructionsDiscardCv.visibility = View.GONE
+        } else {
+            // TODO: 02/03/2021 i18n
+            binding.recyclingInstructionToDiscard.text = buildSpannedString {
+                bold { append("Recycling instructions - To discard: ") }
+                append(instructions)
+            }
+        }
+    }
+
+    private fun setPackaging(packaging: String?) {
+        if (packaging == null) {
+            binding.packagingCv.visibility = View.GONE
+        } else {
+            binding.packagingText.text = buildSpannedString {
+                bold { append(getString(R.string.packaging_environmentTab)) }
+                append(" ")
+                append(packaging)
+            }
+        }
+    }
+
+    private fun setPackagingImage(url: String?) {
+        binding.packagingImagetipBox.setTipMessage(getString(R.string.onboarding_hint_msg, getString(R.string.image_edit_tip)))
+        binding.packagingImagetipBox.loadToolTip()
+
+        binding.addPhotoLabel.visibility = View.GONE
+
+        // Load Image if isLowBatteryMode is false
+        if (isLowBatteryMode) {
+            binding.imageViewPackaging.visibility = View.GONE
+        } else {
+            picasso.load(url).into(binding.imageViewPackaging)
+        }
+        mUrlImage = url
+    }
+
+    private fun setCarbonFootprint(nutriment: ProductNutriments.ProductNutriment?) {
+        if (nutriment == null) {
+            binding.carbonFootprintCv.visibility = View.GONE
+        } else {
+            val carbonFootprintValue = nutriment.per100gInUnit?.getRoundNumber()
+            val carbonFootprintSymbol = nutriment.unit.sym
+
+            binding.textCarbonFootprint.text = buildSpannedString {
+                bold { append(getString(R.string.textCarbonFootprint)) }
+                append(carbonFootprintValue)
+                append(carbonFootprintSymbol)
+            }
+        }
+    }
+
+    private fun setInfoCard(it: Spanned?) {
+        if (it == null) {
+            binding.environmentInfoCv.visibility = View.GONE
+        } else {
+            binding.environmentInfoText.append(it)
+            binding.environmentInfoText.movementMethod = LinkMovementMethod.getInstance()
+        }
     }
 
     override fun onDestroyView() {
@@ -169,7 +168,7 @@ class EnvironmentProductFragment : BaseFragment() {
         super.refreshView(productState)
         this.productState = productState
 
-        refreshTagsPrompt()
+        viewModel.setProduct(productState.product!!)
     }
 
     private fun openFullScreenImage() {
@@ -177,14 +176,14 @@ class EnvironmentProductFragment : BaseFragment() {
         val product = productState.product
         if (imageUrl != null && product != null) {
             lifecycleScope.launch {
-                FullScreenActivityOpener.openForUrl(
-                    this@EnvironmentProductFragment,
+                ImageOpenerUtil.startImageEditFromUrl(
+                    requireActivity(),
                     productRepo,
                     product,
                     ProductImageField.PACKAGING,
                     imageUrl,
                     binding.imageViewPackaging,
-                    localeManager.getLanguage(),
+                    localeManager.getLanguage()
                 )
             }
         } else {
@@ -202,7 +201,7 @@ class EnvironmentProductFragment : BaseFragment() {
         image.filePath = photoFile.absolutePath
 
         // Load to server
-        lifecycleScope.launch { productRepo.postImg(image) }
+        viewModel.postImg(image)
 
         // Load into view
         binding.addPhotoLabel.visibility = View.GONE
@@ -214,10 +213,9 @@ class EnvironmentProductFragment : BaseFragment() {
     }
 
     //checks the product states_tags to determine which prompt to be shown
-    private fun refreshTagsPrompt() {
-        val statesTags = product.statesTags
-        showLabelsPrompt = ApiFields.StateTags.LABELS_TO_BE_COMPLETED in statesTags
-        showOriginsPrompt = ApiFields.StateTags.ORIGINS_TO_BE_COMPLETED in statesTags
+    private fun refreshTagsPrompt(stateTags: List<String>) {
+        val showLabelsPrompt = ApiFields.StateTags.LABELS_TO_BE_COMPLETED in stateTags
+        val showOriginsPrompt = ApiFields.StateTags.ORIGINS_TO_BE_COMPLETED in stateTags
 
         binding.addLabelOriginPrompt.visibility = View.VISIBLE
         when {
@@ -230,7 +228,9 @@ class EnvironmentProductFragment : BaseFragment() {
             showOriginsPrompt -> {
                 binding.addLabelOriginPrompt.text = getString(R.string.add_origins_prompt_text)
             }
-            else -> binding.addLabelOriginPrompt.visibility = View.GONE
+            else -> {
+                binding.addLabelOriginPrompt.visibility = View.GONE
+            }
         }
     }
 

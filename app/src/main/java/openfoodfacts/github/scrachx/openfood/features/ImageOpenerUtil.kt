@@ -23,53 +23,43 @@ import org.jetbrains.annotations.Contract
 /**
  * Used to open fullscreen activity
  */
-object FullScreenActivityOpener {
+object ImageOpenerUtil {
 
-    suspend fun openForUrl(
-        fragment: Fragment,
-        client: ProductRepository,
-        product: Product,
-        imageType: ProductImageField,
-        mUrlImage: String,
-        mImageFront: View,
-        language: String
-    ) = openForUrl(fragment.requireActivity(), client, product, imageType, mUrlImage, mImageFront, language)
-
-    suspend fun openForUrl(
+    suspend fun startImageEditFromUrl(
         activity: Activity,
         client: ProductRepository,
         product: Product,
         imageType: ProductImageField,
-        mUrlImage: String,
-        mImageFront: View,
+        imageUrl: String,
+        imageView: View,
         language: String
     ) {
         // A new file added just now
-        if (isAbsoluteUrl(mUrlImage)) {
-            loadImageServerUrl(activity, client, product, imageType, mImageFront, language)
+        if (isAbsoluteUrl(imageUrl)) {
+            loadImageServerUrl(activity, client, product, imageType, imageView, language)
             return
         }
-        startActivity(activity, mImageFront, createIntent(activity, product, imageType, mUrlImage, language))
+        startImageEditActivity(activity, imageView, createIntent(activity, product, imageType, imageUrl, language))
     }
 
-    private fun startActivity(activity: Activity, mImageFront: View?, intent: Intent) {
-        val bundle = mImageFront?.let {
+    fun startImageZoomActivity(
+        activity: Activity,
+        imageUrl: String,
+        imageView: View?
+    ) = startImageEditActivity(activity, imageView, Intent(activity, ImageZoomActivity::class.java).apply {
+        putExtra(IMAGE_URL, imageUrl)
+    })
+
+    private fun startImageEditActivity(activity: Activity, imageView: View?, intent: Intent) {
+        val bundle = imageView?.let {
             ActivityOptionsCompat.makeSceneTransitionAnimation(
                 activity,
-                mImageFront,
+                imageView,
                 activity.getString(R.string.product_transition)
             ).toBundle()
         }
         activity.startActivityForResult(intent, ImagesManageActivity.REQUEST_EDIT_IMAGE, bundle)
     }
-
-    fun openZoom(
-        activity: Activity,
-        mUrlImage: String,
-        mImageFront: View?
-    ) = startActivity(activity, mImageFront, Intent(activity, ImageZoomActivity::class.java).apply {
-        putExtra(IMAGE_URL, mUrlImage)
-    })
 
     @CheckResult
     @Contract(pure = true)
@@ -100,7 +90,7 @@ object FullScreenActivityOpener {
         client.getProductImages(product.code).product?.let { newProduct ->
             val imageUrl = newProduct.getSelectedImage(language, imageType, ImageSize.DISPLAY)
             if (!imageUrl.isNullOrBlank()) {
-                openForUrl(activity, client, newProduct, imageType, imageUrl, mImageFront, language)
+                startImageEditFromUrl(activity, client, newProduct, imageType, imageUrl, mImageFront, language)
             } else {
                 Toast.makeText(activity, R.string.cant_edit_image_not_yet_uploaded, Toast.LENGTH_LONG).show()
             }

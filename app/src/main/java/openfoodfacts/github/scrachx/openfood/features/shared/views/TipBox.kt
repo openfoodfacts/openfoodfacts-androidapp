@@ -29,6 +29,7 @@ class TipBox(context: Context, attrs: AttributeSet?) : LinearLayout(context, att
 
     init {
         val attributes = context.obtainStyledAttributes(attrs, R.styleable.TipBox)
+
         identifier = attributes.getStringOrThrow(R.styleable.TipBox_identifier)
         shouldAnimate = attributes.getBoolean(R.styleable.TipBox_animate, true)
         val message = attributes.getStringOrThrow(R.styleable.TipBox_message)
@@ -37,11 +38,15 @@ class TipBox(context: Context, attrs: AttributeSet?) : LinearLayout(context, att
         val arrowAlignment = attributes.getInt(R.styleable.TipBox_arrowAlignment, Gravity.START)
         val canDisplayImmediately = attributes.getBoolean(R.styleable.TipBox_shouldDisplayImmediately, false)
 
-        val toolTipTextColor = attributes.getColor(R.styleable.TipBox_textColor,
-                ResourcesCompat.getColor(resources, R.color.md_black_1000, context.theme))
+        val toolTipTextColor = attributes.getColor(
+            R.styleable.TipBox_textColor,
+            ResourcesCompat.getColor(resources, R.color.md_black_1000, context.theme)
+        )
 
-        val toolTipBackgroundColor = attributes.getColor(R.styleable.TipBox_backgroundColor,
-                ResourcesCompat.getColor(resources, R.color.brand_light_blue, context.theme))
+        val toolTipBackgroundColor = attributes.getColor(
+            R.styleable.TipBox_backgroundColor,
+            ResourcesCompat.getColor(resources, R.color.brand_light_blue, context.theme)
+        )
         attributes.recycle()
 
         // if identifier != "showEcoScorePrompt" , set values to button Tip Box
@@ -97,10 +102,11 @@ class TipBox(context: Context, attrs: AttributeSet?) : LinearLayout(context, att
     }
 
     fun setArrowAlignment(arrowAlignment: Int, marginStart: Int, marginEnd: Int) {
-        val alignment = if (arrowAlignment != Gravity.START
-                && arrowAlignment != Gravity.CENTER_HORIZONTAL
-                && arrowAlignment != Gravity.END) Gravity.START
-        else arrowAlignment
+        val alignment = when (arrowAlignment) {
+            Gravity.START, Gravity.CENTER_HORIZONTAL, Gravity.END -> arrowAlignment
+            else -> Gravity.START
+        }
+
         binding.arrow.layoutParams = (binding.arrow.layoutParams as LayoutParams).apply {
             setMargins(marginStart, 0, marginEnd, 0)
             gravity = alignment

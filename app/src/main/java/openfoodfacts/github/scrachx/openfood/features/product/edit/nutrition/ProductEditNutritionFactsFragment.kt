@@ -231,8 +231,8 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         if (view == null) return
 
         val nutriments = product!!.nutriments
-        binding.energyKj.setText(nutriments.getEnergyKjValue(isDataPerServing)?.let(::getRoundNumber))
-        binding.energyKcal.setText(nutriments.getEnergyKcalValue(isDataPerServing)?.let(::getRoundNumber))
+        binding.energyKj.setText(nutriments.getEnergyKjValue(isDataPerServing)?.getRoundNumber())
+        binding.energyKcal.setText(nutriments.getEnergyKcalValue(isDataPerServing)?.getRoundNumber())
 
         // Fill default nutriments fields
         for (editView in (view as ViewGroup).getViewsByType(CustomValidatingEditTextView::class.java)) {
@@ -248,7 +248,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
             val nutriment = Nutriment.findbyKey(nutrimentShortName) ?: error("Cannot find nutrient $nutrimentShortName")
             val value = (if (isDataPer100g) nutriments[nutriment]?.per100gInUnit else nutriments[nutriment]?.perServingInUnit) ?: continue
 
-            editView.setText(getRoundNumber(value))
+            editView.setText(value.getRoundNumber())
             editView.unitSpinner?.setSelection(getUnitIndexUnitFromShortName(nutriments, nutriment) ?: 0)
             editView.modSpinner?.setSelection(getModifierIndexFromShortName(nutriments, nutriment))
         }
@@ -533,7 +533,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
 
         binding.salt.getFloatValue()?.let {
             val sodiumValue = it.saltToSodium()
-            binding.sodium.setText(getRoundNumber(sodiumValue))
+            binding.sodium.setText(sodiumValue.getRoundNumber())
         }
     }
 
@@ -542,7 +542,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
 
         binding.sodium.getFloatValue()?.let {
             val saltValue = it.sodiumToSalt()
-            binding.salt.setText(getRoundNumber(saltValue))
+            binding.salt.setText(saltValue.getRoundNumber())
         }
     }
 
@@ -633,7 +633,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
             oldUnit = oldProductNutriment.unit
             oldMod = oldProductNutriment.modifier
             oldValue = if (isDataPer100g)
-                oldProductNutriment.per100gInUnit.value
+                oldProductNutriment.per100gInUnit!!.value
             else
                 oldProductNutriment.perServingInUnit!!.value
         }
@@ -783,7 +783,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         editText.imeOptions = EditorInfo.IME_ACTION_DONE
         editText.requestFocus()
 
-        if (preFillValues && value != null) editText.setText(getRoundNumber(value))
+        if (preFillValues && value != null) editText.setText(value.getRoundNumber())
 
         // Setup unit spinner
         val unitSpinner = rowView.findViewById<Spinner>(R.id.spinner_unit)
