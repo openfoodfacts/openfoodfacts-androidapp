@@ -39,8 +39,8 @@
     <string name="add_category_prompt_text">Přidejte kategorii, která pomůže produkt dokončit</string>
     <string name="add_nutrient_category_prompt_text">Přidejte kategorii a další podrobnosti pro dokončení produktu</string>
     <string name="required_to_compute_nutriscore"></string>
-    <string name="txt_eaten_products">Produkty, které mám</string>
-    <string name="txt_products_to_buy">Nákupní seznam</string>
+    <string name="default_list_title_stored">Produkty, které mám</string>
+    <string name="default_list_title_to_buy">Nákupní seznam</string>
     <string name="intent_filter_share_label">Přidat do Open Beauty Facts</string>
     <string name="brand_hint">Příklady: Nivea, L\'Oréal, atd…</string>
     <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".

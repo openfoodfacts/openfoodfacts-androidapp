@@ -40,8 +40,8 @@
     <string name="add_nutrient_prompt_text">Dodaj wartości odżywcze do obliczenia poziomów składników odżywczych</string>
     <string name="add_category_prompt_text">Dodaj kategorię, aby pomóc w dokończeniu produktu</string>
     <string name="add_nutrient_category_prompt_text">Dodaj kategorię i wartości odżywcze, aby pomóc w dokończeniu produktu</string>
-    <string name="txt_eaten_products">Produkty które posiadam</string>
-    <string name="txt_products_to_buy">Produkty do kupienia</string>
+    <string name="default_list_title_stored">Produkty które posiadam</string>
+    <string name="default_list_title_to_buy">Produkty do kupienia</string>
     <string name="intent_filter_share_label">Dodaj do Open Pet Food Facts</string>
     <string name="txt_info_eaten_products">Będziesz mógł dodać produkt do tej listy skanując produkty, przeciągając kartę produktu i klikając \"Produkty do zakupu\".
         Możesz również dodać produkty do tej listy, przeszukując je i klikając przycisk + w prawym górnym rogu strony produktu.</string>

@@ -652,12 +652,12 @@
     <string name="addtive_search">Poiščite dodatek</string>
     <string name="additives">Aditivi</string>
     <!--used for product_lists implementation-->
-    <string name="add_to_product_lists">Dodaj v vaš seznam</string>
-    <string name="txt_create_new_list">Ustvari nov seznam</string>
-    <string name="txt_add_to_new_list">Dodaj na nov seznam</string>
-    <string name="create_new_list_list_name">Ime seznama</string>
-    <string name="txt_eaten_products">Products I have</string>
-    <string name="txt_products_to_buy">Izdelki za nakup</string>
+    <string name="dialog_add_product_to_list_title">Dodaj v vaš seznam</string>
+    <string name="dialog_create_new_list_title">Ustvari nov seznam</string>
+    <string name="dialog_add_product_to_list_new">Dodaj na nov seznam</string>
+    <string name="dialog_create_new_list_hint">Ime seznama</string>
+    <string name="default_list_title_stored">Products I have</string>
+    <string name="default_list_title_to_buy">Izdelki za nakup</string>
     <string name="txt_exporting_your_listed_products">Izvoz vaših izdelkov…</string>
     <string name="txt_your_listed_products_exported">Vaši izdelki so bili izvoženi</string>
     <string name="txt_discard">Zavrzi</string>

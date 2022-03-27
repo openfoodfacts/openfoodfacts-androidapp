@@ -640,12 +640,12 @@
     <string name="addtive_search">Zoek een additief</string>
     <string name="additives">Additieven</string>
     <!--used for product_lists implementation-->
-    <string name="add_to_product_lists">Voeg toe aan je lijsten</string>
-    <string name="txt_create_new_list">Maak een nieuwe lijst aan</string>
-    <string name="txt_add_to_new_list">Voeg toe aan een nieuwe lijst</string>
-    <string name="create_new_list_list_name">Lijstnaam</string>
-    <string name="txt_eaten_products">Mijn Producten</string>
-    <string name="txt_products_to_buy">Producten om te kopen</string>
+    <string name="dialog_add_product_to_list_title">Voeg toe aan je lijsten</string>
+    <string name="dialog_create_new_list_title">Maak een nieuwe lijst aan</string>
+    <string name="dialog_add_product_to_list_new">Voeg toe aan een nieuwe lijst</string>
+    <string name="dialog_create_new_list_hint">Lijstnaam</string>
+    <string name="default_list_title_stored">Mijn Producten</string>
+    <string name="default_list_title_to_buy">Producten om te kopen</string>
     <string name="txt_exporting_your_listed_products">Exporteren van jouw producten…</string>
     <string name="txt_your_listed_products_exported">Jouw producten zijn geëxporteerd</string>
     <string name="txt_discard">Negeren</string>

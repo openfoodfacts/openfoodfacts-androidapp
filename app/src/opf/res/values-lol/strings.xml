@@ -40,8 +40,8 @@
     <string name="add_nutrient_prompt_text">crwdns179822:0crwdne179822:0</string>
     <string name="add_category_prompt_text">crwdns179824:0crwdne179824:0</string>
     <string name="add_nutrient_category_prompt_text">crwdns179826:0crwdne179826:0</string>
-    <string name="txt_eaten_products">crwdns179828:0crwdne179828:0</string>
-    <string name="txt_products_to_buy">crwdns179830:0crwdne179830:0</string>
+    <string name="default_list_title_stored">crwdns179828:0crwdne179828:0</string>
+    <string name="default_list_title_to_buy">crwdns179830:0crwdne179830:0</string>
     <string name="intent_filter_share_label">crwdns179832:0crwdne179832:0</string>
     <string name="txt_info_eaten_products">crwdns179834:0crwdne179834:0</string>
     <string name="OFFlogo">crwdns179836:0crwdne179836:0</string>

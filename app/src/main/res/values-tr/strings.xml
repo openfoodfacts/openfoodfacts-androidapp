@@ -650,12 +650,12 @@
     <string name="addtive_search">Katkı maddesi ara</string>
     <string name="additives">Katkı maddeleri</string>
     <!--used for product_lists implementation-->
-    <string name="add_to_product_lists">Listelerinize ekleyin</string>
-    <string name="txt_create_new_list">Yeni liste oluştur</string>
-    <string name="txt_add_to_new_list">Yeni bir listeye ekle</string>
-    <string name="create_new_list_list_name">Liste Adı</string>
-    <string name="txt_eaten_products">Yenilen ürünler</string>
-    <string name="txt_products_to_buy">Satın alınacak ürünler</string>
+    <string name="dialog_add_product_to_list_title">Listelerinize ekleyin</string>
+    <string name="dialog_create_new_list_title">Yeni liste oluştur</string>
+    <string name="dialog_add_product_to_list_new">Yeni bir listeye ekle</string>
+    <string name="dialog_create_new_list_hint">Liste Adı</string>
+    <string name="default_list_title_stored">Yenilen ürünler</string>
+    <string name="default_list_title_to_buy">Satın alınacak ürünler</string>
     <string name="txt_exporting_your_listed_products">Ürünleriniz Dışa Aktarılıyor…</string>
     <string name="txt_your_listed_products_exported">Ürünleriniz dışa aktarıldı</string>
     <string name="txt_discard">Sil</string>

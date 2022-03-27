@@ -39,8 +39,8 @@
     <string name="add_category_prompt_text">Добавить категорию, чтобы помочь завершить продукт</string>
     <string name="add_nutrient_category_prompt_text">Добавьте категорию и более подробную информацию, чтобы помочь завершить продукт</string>
     <string name="required_to_compute_nutriscore"></string>
-    <string name="txt_eaten_products">У меня есть товары</string>
-    <string name="txt_products_to_buy">Продукты для покупки</string>
+    <string name="default_list_title_stored">У меня есть товары</string>
+    <string name="default_list_title_to_buy">Продукты для покупки</string>
     <string name="intent_filter_share_label">Add to Open Beauty Facts</string>
     <string name="brand_hint">Examples: Nivea, L\'Oréal, etc…</string>
     <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".

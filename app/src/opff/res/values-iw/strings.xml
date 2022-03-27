@@ -40,8 +40,8 @@
     <string name="add_nutrient_prompt_text">ניתן להוסיף עובדות תזונתיות כדי לחשב רמות הזנה</string>
     <string name="add_category_prompt_text">ניתן להוסיף קטגוריה כדי לסייע בהשלמת תיעוד המוצר</string>
     <string name="add_nutrient_category_prompt_text">ניתן להוסיף קטגוריה ועובדות תזונתיות כדי לסייע בהשלמת תיעוד המוצר</string>
-    <string name="txt_eaten_products">מוצרים שיש לי</string>
-    <string name="txt_products_to_buy">מוצרים לרכישה</string>
+    <string name="default_list_title_stored">מוצרים שיש לי</string>
+    <string name="default_list_title_to_buy">מוצרים לרכישה</string>
     <string name="intent_filter_share_label">הוספה ל־Open Pet Food Facts</string>
     <string name="txt_info_eaten_products">יתאפשר לך להוסיף מוצרים לרשימה זו על ידי סריקת מוצרים, גרירת הכרטיס למעלה ונגיעה ב־„מוצרים לרכישה”.
         כמו כן, יתאפשר לך להוסיף מוצרים לרשימה זו על ידי חיפוש אחריהם ולחיצה על כפתור ה־+ הפינה השמאלית העליונה של עמוד המוצר.</string>
