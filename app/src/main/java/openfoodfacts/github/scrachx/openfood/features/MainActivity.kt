@@ -164,7 +164,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener, NavigationDrawerH
     private var userSettingsURI: Uri? = null
 
     private var historySyncJob: Job? = null
-    private var drawerStatusChanged: OnNavigationDrawerStatusChanged? = null
+    private val drawerStatusChangedListeners = mutableSetOf<OnNavigationDrawerStatusChanged>()
 
     private val loginThenUpdate = registerForActivityResult(LoginContract())
     { isLoggedIn -> if (isLoggedIn) updateConnectedState() }
@@ -339,10 +339,15 @@ class MainActivity : BaseActivity(), NavigationDrawerListener, NavigationDrawerH
             override fun onDrawerSlide(drawerView: View, slideOffset: Float) = hideKeyboard()
             override fun onDrawerOpened(drawerView: View) {
                 hideKeyboard()
-                drawerStatusChanged?.onDrawerOpened()
+                drawerStatusChangedListeners.forEach { listener ->
+                    listener.onDrawerOpened()
+                }
             }
+
             override fun onDrawerClosed(drawerView: View) {
-                drawerStatusChanged?.onDrawerClosed()
+                drawerStatusChangedListeners.forEach { listener ->
+                    listener.onDrawerClosed()
+                }
             }
         })
 
@@ -655,7 +660,6 @@ class MainActivity : BaseActivity(), NavigationDrawerListener, NavigationDrawerH
         menuInflater.inflate(R.menu.menu_main, menu)
 
 
-
         // Associate searchable configuration with the SearchView
         val searchManager = getSystemService(SEARCH_SERVICE) as SearchManager
         searchMenuItem = menu.findItem(R.id.action_search).also { menuItem ->
@@ -789,6 +793,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener, NavigationDrawerH
     override fun onDestroy() {
         customTabActivityHelper.connectionCallback = null
         stopListeningToKeyboardVisibilityChanges()
+        drawerStatusChangedListeners.clear()
         _binding = null
         super.onDestroy()
     }
@@ -974,8 +979,12 @@ class MainActivity : BaseActivity(), NavigationDrawerListener, NavigationDrawerH
         }
     }
 
-    override fun setOnDrawerStatusChanged(onDrawerStatusChanged: OnNavigationDrawerStatusChanged?) {
-        this.drawerStatusChanged = onDrawerStatusChanged
+    override fun addOnDrawerStatusChanged(listener: OnNavigationDrawerStatusChanged) {
+        drawerStatusChangedListeners.add(listener)
+    }
+
+    override fun removeOnDrawerStatusChanged(listener: OnNavigationDrawerStatusChanged) {
+        drawerStatusChangedListeners.remove(listener)
     }
 
     companion object {
