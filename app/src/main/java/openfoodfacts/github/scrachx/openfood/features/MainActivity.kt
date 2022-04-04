@@ -93,7 +93,7 @@ import openfoodfacts.github.scrachx.openfood.features.scanhistory.ScanHistoryAct
 import openfoodfacts.github.scrachx.openfood.features.searchbycode.SearchByCodeFragment
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.features.shared.NavigationDrawerHost
-import openfoodfacts.github.scrachx.openfood.features.shared.OnNavigationDrawerStatusChanged
+import openfoodfacts.github.scrachx.openfood.features.shared.OnNavigationDrawerStatusChangedListener
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
 import openfoodfacts.github.scrachx.openfood.jobs.ProductUploaderWorker.Companion.scheduleProductUpload
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.installBottomNavigation
@@ -149,7 +149,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener, NavigationDrawerH
 
     private val contributeUri: Uri by lazy { Uri.parse(getString(R.string.website_contribute)) }
     private val discoverUri: Uri by lazy { Uri.parse(getString(R.string.website_discover)) }
-    private fun getUserContributeUri(): Uri = Uri.parse(getString(R.string.website_contributor) + getUserLogin())
+    private fun getUserContributeUri(): Uri = Uri.parse(getString(R.string.website_contributor) + getLoginUsername())
 
     /**
      * Used to re-create the fragment after activity recreation
@@ -164,7 +164,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener, NavigationDrawerH
     private var userSettingsURI: Uri? = null
 
     private var historySyncJob: Job? = null
-    private val drawerStatusChangedListeners = mutableSetOf<OnNavigationDrawerStatusChanged>()
+    private val drawerStatusChangedListeners = mutableSetOf<OnNavigationDrawerStatusChangedListener>()
 
     private val loginThenUpdate = registerForActivityResult(LoginContract())
     { isLoggedIn -> if (isLoggedIn) updateConnectedState() }
@@ -339,15 +339,13 @@ class MainActivity : BaseActivity(), NavigationDrawerListener, NavigationDrawerH
             override fun onDrawerSlide(drawerView: View, slideOffset: Float) = hideKeyboard()
             override fun onDrawerOpened(drawerView: View) {
                 hideKeyboard()
-                drawerStatusChangedListeners.forEach { listener ->
-                    listener.onDrawerOpened()
-                }
+                // Signal event to listeners
+                drawerStatusChangedListeners.forEach { it.onDrawerOpened() }
             }
 
             override fun onDrawerClosed(drawerView: View) {
-                drawerStatusChangedListeners.forEach { listener ->
-                    listener.onDrawerClosed()
-                }
+                // Signal event to listeners
+                drawerStatusChangedListeners.forEach { it.onDrawerClosed() }
             }
         })
 
@@ -598,10 +596,10 @@ class MainActivity : BaseActivity(), NavigationDrawerListener, NavigationDrawerH
     }
 
     private fun openMyContributionsInSearchActivity() =
-        startSearch(this, SearchType.CONTRIBUTOR, getUserLogin()!!)
+        startSearch(this, SearchType.CONTRIBUTOR, getLoginUsername()!!)
 
     private fun getProfileSettingDrawerItem(): IProfile<ProfileSettingDrawerItem> {
-        val userLogin = getUserLogin()
+        val userLogin = getLoginUsername()
         val userSession = getUserSession()
         userSettingsURI = "${getString(R.string.website)}cgi/user.pl?type=edit&userid=$userLogin&user_id=$userLogin&user_session=$userSession".toUri()
         customTabActivityHelper.mayLaunchUrl(userSettingsURI, null, null)
@@ -716,7 +714,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener, NavigationDrawerH
     }
 
     private fun getUserProfile(): ProfileDrawerItem = profileItem {
-        withName(getLoginPreferences().getString("user", resources.getString(R.string.txt_anonymous)))
+        withName(getLoginUsername(resources.getString(R.string.txt_anonymous)))
         withIcon(R.drawable.img_home)
         withIdentifier(ITEM_USER.toLong())
     }
@@ -979,11 +977,11 @@ class MainActivity : BaseActivity(), NavigationDrawerListener, NavigationDrawerH
         }
     }
 
-    override fun addOnDrawerStatusChanged(listener: OnNavigationDrawerStatusChanged) {
+    override fun addOnDrawerStatusChangedListener(listener: OnNavigationDrawerStatusChangedListener) {
         drawerStatusChangedListeners.add(listener)
     }
 
-    override fun removeOnDrawerStatusChanged(listener: OnNavigationDrawerStatusChanged) {
+    override fun removeOnDrawerStatusChangedListener(listener: OnNavigationDrawerStatusChangedListener) {
         drawerStatusChangedListeners.remove(listener)
     }
 

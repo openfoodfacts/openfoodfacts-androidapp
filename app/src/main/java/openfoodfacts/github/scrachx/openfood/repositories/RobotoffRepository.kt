@@ -7,7 +7,8 @@ import openfoodfacts.github.scrachx.openfood.models.AnnotationAnswer
 import openfoodfacts.github.scrachx.openfood.models.AnnotationResponse
 import openfoodfacts.github.scrachx.openfood.models.Question
 import openfoodfacts.github.scrachx.openfood.network.services.RobotoffAPI
-import openfoodfacts.github.scrachx.openfood.utils.getLoginPreferences
+import openfoodfacts.github.scrachx.openfood.utils.getLoginPassword
+import openfoodfacts.github.scrachx.openfood.utils.getLoginUsername
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -36,8 +37,8 @@ class RobotoffRepository @Inject constructor(
      */
     suspend fun annotateInsight(answer: AnnotationAnswer): AnnotationResponse {
         // if the user is logged in, send the auth, otherwise make it anonymous
-        val user = context.getLoginPreferences().getString("user", "")?.trim { it <= ' ' } ?: ""
-        val pass = context.getLoginPreferences().getString("pass", "")?.trim { it <= ' ' } ?: ""
+        val user = context.getLoginUsername("")?.trim { it <= ' ' } ?: ""
+        val pass = context.getLoginPassword("")?.trim { it <= ' ' } ?: ""
 
         return if (user.isBlank() || pass.isBlank()) {
             robotoffAPI.annotateInsight(answer.insightId, answer.value.result)
