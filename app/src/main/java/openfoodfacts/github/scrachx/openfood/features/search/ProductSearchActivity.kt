@@ -24,7 +24,6 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.Single
-import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.isActive
@@ -37,7 +36,9 @@ import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductBrowsingListBinding
 import openfoodfacts.github.scrachx.openfood.features.adapters.ProductSearchAdapter
+import openfoodfacts.github.scrachx.openfood.features.product.view.OnProductViewActivityStarterResultListener
 import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewActivityStarter
+import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewActivityStarterErrorType
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.selectNavigationItem
@@ -329,7 +330,14 @@ class ProductSearchActivity : BaseActivity() {
 
             SEARCH -> {
                 if (isBarcodeValid(searchQuery)) {
-                    productViewActivityStarter.openProduct(searchQuery, this@ProductSearchActivity)
+                    productViewActivityStarter.openProduct(searchQuery, this@ProductSearchActivity, object: OnProductViewActivityStarterResultListener {
+                        override fun onProductOpened() {
+                            finish()
+                        }
+
+                        override fun onProductError(type: ProductViewActivityStarterErrorType) {}
+
+                    })
                 } else {
                     client.searchProductsByName(searchQuery, pageAddress)
                         .startSearch(R.string.txt_no_matching_products, R.string.txt_broaden_search)
@@ -448,6 +456,7 @@ class ProductSearchActivity : BaseActivity() {
      * @param extendedMessage additional message to display, -1 if no message is displayed
      */
     private fun showEmptyResponse(@StringRes message: Int, @StringRes extendedMessage: Int) {
+        binding.swipeRefresh.isEnabled = false
         binding.swipeRefresh.isRefreshing = false
 
         binding.productsRecyclerView.visibility = View.INVISIBLE

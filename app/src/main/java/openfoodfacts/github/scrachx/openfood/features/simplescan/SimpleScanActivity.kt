@@ -98,6 +98,11 @@ class SimpleScanActivity : AppCompatActivity() {
         startScanning()
     }
 
+    override fun onPause() {
+        super.onPause()
+        stopScanning()
+    }
+
     override fun onWindowFocusChanged(hasFocus: Boolean) {
         super.onWindowFocusChanged(hasFocus)
         // status bar will remain visible if user presses home and then reopens the activity
@@ -135,22 +140,7 @@ class SimpleScanActivity : AppCompatActivity() {
         }
 
         // flash
-        val flashIconRes = if (options.flashEnabled) {
-            R.drawable.ic_flash_off_white_24dp
-        } else {
-            R.drawable.ic_flash_on_white_24dp
-        }
-        binding.scanFlashBtn.setImageResource(flashIconRes)
-
-        if (options.mlScannerEnabled) {
-            mlKitView.updateFlashSetting(options.flashEnabled)
-        } else {
-            if (options.flashEnabled) {
-                binding.scanBarcodeView.setTorchOn()
-            } else {
-                binding.scanBarcodeView.setTorchOff()
-            }
-        }
+        updateFlashStatus(options.flashEnabled)
 
         // autofocus
         val focusIconRes = if (options.autoFocusEnabled) {
@@ -169,6 +159,25 @@ class SimpleScanActivity : AppCompatActivity() {
                 }
                 barcodeView.cameraSettings = newSettings
                 resume()
+            }
+        }
+    }
+
+    private fun updateFlashStatus(flashEnabled: Boolean) {
+        val flashIconRes = if (flashEnabled) {
+            R.drawable.ic_flash_off_white_24dp
+        } else {
+            R.drawable.ic_flash_on_white_24dp
+        }
+        binding.scanFlashBtn.setImageResource(flashIconRes)
+
+        if (viewModel.scannerOptionsFlow.value.mlScannerEnabled) {
+            mlKitView.updateFlashSetting(flashEnabled)
+        } else {
+            if (flashEnabled) {
+                binding.scanBarcodeView.setTorchOn()
+            } else {
+                binding.scanBarcodeView.setTorchOff()
             }
         }
     }
@@ -202,6 +211,8 @@ class SimpleScanActivity : AppCompatActivity() {
     }
 
     private fun stopScanning() {
+        updateFlashStatus(flashEnabled = false)
+
         if (viewModel.scannerOptionsFlow.value.mlScannerEnabled) {
             mlKitView.stopCameraPreview()
         } else {

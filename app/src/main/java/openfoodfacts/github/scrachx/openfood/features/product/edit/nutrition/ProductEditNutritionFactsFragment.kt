@@ -127,6 +127,10 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
             }
         }
 
+        binding.checkboxNoNutritionData.setOnCheckedChangeListener { _, isChecked ->
+            binding.nutritionFactsLayout.visibility = if (isChecked) View.GONE else View.VISIBLE
+        }
+
         binding.btnAddANutrient.setOnClickListener { displayAddNutrientDialog() }
 
         binding.salt.doAfterTextChanged { updateSodiumValue() }
@@ -328,7 +332,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
             loadNutritionImage(path)
         }
 
-        if (productDetails[ApiFields.Keys.NO_NUTRITION_DATA] != null) {
+        if (productDetails[ApiFields.Keys.NO_NUTRITION_DATA]?.trim()?.lowercase() == ApiFields.Defaults.NO_NUTRITION_DATA_ON) {
             binding.checkboxNoNutritionData.isChecked = true
             binding.nutritionFactsLayout.visibility = View.GONE
         }
@@ -550,10 +554,11 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
 
         // Add no nutrition data entry to map
         if (binding.checkboxNoNutritionData.isChecked) {
-            targetMap[ApiFields.Keys.NO_NUTRITION_DATA] = "on"
-        } else {
-            targetMap += getNutrientsModeMap()
+            targetMap[ApiFields.Keys.NO_NUTRITION_DATA] = ApiFields.Defaults.NO_NUTRITION_DATA_ON
+            return targetMap
         }
+
+        targetMap += getNutrientsModeMap()
 
         // Add serving size entry to map if it has been changed
         if (binding.servingSize.isNotEmpty()) {
@@ -570,6 +575,10 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
             targetMap += getNutrientMapIfUpdated(view)
         }
 
+        if (targetMap.containsKey(ApiFields.Keys.NO_NUTRITION_DATA)) {
+            targetMap[ApiFields.Keys.NO_NUTRITION_DATA] = ApiFields.Defaults.NO_NUTRITION_DATA_OFF
+        }
+
         return targetMap
     }
 
@@ -580,7 +589,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         if (activity !is ProductEditActivity) return emptyMap()
 
         if (binding.checkboxNoNutritionData.isChecked) {
-            return mapOf(ApiFields.Keys.NO_NUTRITION_DATA to "on")
+            return mapOf(ApiFields.Keys.NO_NUTRITION_DATA to ApiFields.Defaults.NO_NUTRITION_DATA_ON)
         }
 
         val targetMap = mutableMapOf<String, String?>()
@@ -596,6 +605,8 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
             if (binding.servingSize.entryName == view.entryName) continue
             addNutrientToMap(view, targetMap)
         }
+
+        targetMap[ApiFields.Keys.NO_NUTRITION_DATA] = ApiFields.Defaults.NO_NUTRITION_DATA_OFF
 
         return targetMap
     }
