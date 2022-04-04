@@ -6,19 +6,19 @@ import android.content.Context
  * A custom [NavigationBaseFragment] that can be notified of navigation drawer events.
  * The host (= Activity) must contain a Navigation Drawer and implements [NavigationDrawerHost]
  */
-abstract class NavigationWithDrawerBaseFragment : NavigationBaseFragment(), OnNavigationDrawerStatusChanged {
+abstract class NavigationWithDrawerBaseFragment : NavigationBaseFragment(), OnNavigationDrawerStatusChangedListener {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
 
         if (context is NavigationDrawerHost) {
-            context.addOnDrawerStatusChanged(this)
+            context.addOnDrawerStatusChangedListener(this)
         }
     }
 
     override fun onDetach() {
         if (requireContext() is NavigationDrawerHost) {
-            (context as NavigationDrawerHost).removeOnDrawerStatusChanged(this)
+            (context as NavigationDrawerHost).removeOnDrawerStatusChangedListener(this)
         }
 
         super.onDetach()
@@ -37,14 +37,14 @@ abstract class NavigationWithDrawerBaseFragment : NavigationBaseFragment(), OnNa
  * Interface to implement for an Activity with a NavigationDrawer
  */
 interface NavigationDrawerHost {
-    fun addOnDrawerStatusChanged(onDrawerStatusChanged: OnNavigationDrawerStatusChanged)
-    fun removeOnDrawerStatusChanged(onDrawerStatusChanged: OnNavigationDrawerStatusChanged)
+    fun addOnDrawerStatusChangedListener(listener: OnNavigationDrawerStatusChangedListener)
+    fun removeOnDrawerStatusChangedListener(listener: OnNavigationDrawerStatusChangedListener)
 }
 
 /**
  * Interface to notify when the status of a NavigationDrawer has changed (opened/closed)
  */
-interface OnNavigationDrawerStatusChanged {
+interface OnNavigationDrawerStatusChangedListener {
     fun onDrawerOpened()
     fun onDrawerClosed()
 }

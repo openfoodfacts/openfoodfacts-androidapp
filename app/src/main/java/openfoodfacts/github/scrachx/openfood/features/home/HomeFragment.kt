@@ -22,7 +22,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.edit
 import androidx.fragment.app.viewModels
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
@@ -35,10 +34,8 @@ import openfoodfacts.github.scrachx.openfood.databinding.FragmentHomeBinding
 import openfoodfacts.github.scrachx.openfood.features.login.LoginActivity.Companion.LoginContract
 import openfoodfacts.github.scrachx.openfood.features.shared.NavigationBaseFragment
 import openfoodfacts.github.scrachx.openfood.models.TagLine
-import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
-import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener
+import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType
-import openfoodfacts.github.scrachx.openfood.utils.getLoginPreferences
 import java.text.NumberFormat
 import javax.inject.Inject
 
@@ -62,7 +59,6 @@ class HomeFragment : NavigationBaseFragment() {
     private var taglineURL: String? = null
 
     private val numberFormat by lazy { NumberFormat.getInstance() }
-    private val loginPreferences by lazy { requireActivity().getLoginPreferences() }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
@@ -119,8 +115,8 @@ class HomeFragment : NavigationBaseFragment() {
 
     private fun checkUserCredentials() {
 
-        val login = loginPreferences.getString("user", null)
-        val password = loginPreferences.getString("pass", null)
+        val login = requireContext().getLoginUsername()
+        val password = requireContext().getLoginPassword()
 
         logcat { "Checking user saved credentials..." }
         if (login.isNullOrEmpty() || password.isNullOrEmpty()) {
@@ -134,10 +130,7 @@ class HomeFragment : NavigationBaseFragment() {
     private fun checkLoginValidity(valid: Boolean) {
         if (valid) return
 
-        loginPreferences.edit {
-            putString("user", "")
-            putString("pass", "")
-        }
+        requireContext().setLogin("", "")
 
         MaterialAlertDialogBuilder(requireActivity())
             .setTitle(R.string.alert_dialog_warning_title)
