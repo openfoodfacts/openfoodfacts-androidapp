@@ -39,8 +39,8 @@
     <string name="add_category_prompt_text">添加类别以帮助完成产品</string>
     <string name="add_nutrient_category_prompt_text">添加类别以及更多详细信息以完成产品</string>
     <string name="required_to_compute_nutriscore"></string>
-    <string name="txt_eaten_products">我的产品</string>
-    <string name="txt_products_to_buy">要购买的产品</string>
+    <string name="default_list_title_stored">我的产品</string>
+    <string name="default_list_title_to_buy">要购买的产品</string>
     <string name="intent_filter_share_label">添加到 Open Beauty Facts</string>
     <string name="brand_hint">例如：妮维雅，欧莱雅等…</string>
     <string name="txt_info_eaten_products">您可以通过扫描产品，向上拖动产品卡并点击“要购买的产品”，将产品添加到此列表中。

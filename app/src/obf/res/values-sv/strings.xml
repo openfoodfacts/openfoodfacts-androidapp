@@ -39,8 +39,8 @@
     <string name="add_category_prompt_text">Lägg till en kategori för att komplettera produkten</string>
     <string name="add_nutrient_category_prompt_text">Lägg till en kategori och mer information för att komplettera produkten</string>
     <string name="required_to_compute_nutriscore"></string>
-    <string name="txt_eaten_products">Produkter jag har</string>
-    <string name="txt_products_to_buy">Produkter att köpa</string>
+    <string name="default_list_title_stored">Produkter jag har</string>
+    <string name="default_list_title_to_buy">Produkter att köpa</string>
     <string name="intent_filter_share_label">Lägg till i Open Beauty Facts</string>
     <string name="brand_hint">Exempel: Nivea, L\'Oréal, etc…</string>
     <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".

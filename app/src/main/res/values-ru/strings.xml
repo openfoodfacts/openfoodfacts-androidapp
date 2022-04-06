@@ -662,12 +662,12 @@
     <string name="addtive_search">Поиск добавки</string>
     <string name="additives">Добавки</string>
     <!--used for product_lists implementation-->
-    <string name="add_to_product_lists">Добавить в ваши списки</string>
-    <string name="txt_create_new_list">Создать новый список</string>
-    <string name="txt_add_to_new_list">Добавить в новый список</string>
-    <string name="create_new_list_list_name">Список Имен</string>
-    <string name="txt_eaten_products">Съеденные продукты</string>
-    <string name="txt_products_to_buy">Продукты для покупки</string>
+    <string name="dialog_add_product_to_list_title">Добавить в ваши списки</string>
+    <string name="dialog_create_new_list_title">Создать новый список</string>
+    <string name="dialog_add_product_to_list_new">Добавить в новый список</string>
+    <string name="dialog_create_new_list_hint">Список Имен</string>
+    <string name="default_list_title_stored">Съеденные продукты</string>
+    <string name="default_list_title_to_buy">Продукты для покупки</string>
     <string name="txt_exporting_your_listed_products">Экспорт ваших продуктов…</string>
     <string name="txt_your_listed_products_exported">Ваши продукты были экспортированы</string>
     <string name="txt_discard">Отменить</string>

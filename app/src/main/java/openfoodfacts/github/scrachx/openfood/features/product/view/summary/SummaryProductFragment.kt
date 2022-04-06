@@ -51,7 +51,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
@@ -63,9 +62,9 @@ import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabsHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentSummaryProductBinding
 import openfoodfacts.github.scrachx.openfood.features.FullScreenActivityOpener
-import openfoodfacts.github.scrachx.openfood.features.images.manage.ImagesManageActivity
 import openfoodfacts.github.scrachx.openfood.features.additives.AdditiveFragmentHelper.showAdditives
 import openfoodfacts.github.scrachx.openfood.features.compare.ProductCompareActivity.Companion.start
+import openfoodfacts.github.scrachx.openfood.features.images.manage.ImagesManageActivity
 import openfoodfacts.github.scrachx.openfood.features.login.LoginActivity.Companion.LoginContract
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_STATE
@@ -74,7 +73,7 @@ import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewAc
 import openfoodfacts.github.scrachx.openfood.features.product.view.ingredients_analysis.IngredientsWithTagDialogFragment
 import openfoodfacts.github.scrachx.openfood.features.productlist.ProductListActivity
 import openfoodfacts.github.scrachx.openfood.features.productlists.ProductListsActivity
-import openfoodfacts.github.scrachx.openfood.features.productlists.ProductListsActivity.Companion.getProductListsDaoWithDefaultList
+import openfoodfacts.github.scrachx.openfood.features.productlists.ProductListsActivity.Companion.defaultIfEmpty
 import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivity
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
 import openfoodfacts.github.scrachx.openfood.features.shared.adapters.NutrientLevelListAdapter
@@ -92,8 +91,8 @@ import openfoodfacts.github.scrachx.openfood.models.entities.label.LabelName
 import openfoodfacts.github.scrachx.openfood.models.entities.tag.TagDao
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.repositories.RobotoffRepository
-import openfoodfacts.github.scrachx.openfood.repositories.WikidataRepository
 import openfoodfacts.github.scrachx.openfood.repositories.TaxonomiesRepository
+import openfoodfacts.github.scrachx.openfood.repositories.WikidataRepository
 import openfoodfacts.github.scrachx.openfood.utils.*
 import java.io.File
 import javax.inject.Inject
@@ -896,12 +895,11 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     private fun onBookmarkProductButtonClick() {
         val context = requireContext()
 
-        // TODO: 19/06/2021 remove runBlocking
-        val productLists = runBlocking { daoSession.getProductListsDaoWithDefaultList(context).loadAll() }
+        val productLists = daoSession.productListsDao.defaultIfEmpty(context).loadAll()
 
         val dialog = MaterialAlertDialogBuilder(context)
-            .setTitle(R.string.add_to_product_lists)
-            .setView(R.layout.dialog_add_to_list)
+            .setTitle(R.string.dialog_add_product_to_list_title)
+            .setView(R.layout.dialog_add_product_to_list)
             .show()
 
         // Set recycler view

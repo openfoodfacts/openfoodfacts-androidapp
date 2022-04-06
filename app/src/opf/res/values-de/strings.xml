@@ -40,8 +40,8 @@
     <string name="add_nutrient_prompt_text">Füge Sie weitere Informationen hinzu, um das Produkt zu vervollständigen.</string>
     <string name="add_category_prompt_text">Fügen Sie eine Kategorie hinzu, um das Produkt zu vervollständigen.</string>
     <string name="add_nutrient_category_prompt_text">Fügen Sie eine Kategorie und weitere Details hinzu, um das Produkt zu vervollständigen.</string>
-    <string name="txt_eaten_products">Produkte, die ich besitze</string>
-    <string name="txt_products_to_buy">Zu kaufende Produkte</string>
+    <string name="default_list_title_stored">Produkte, die ich besitze</string>
+    <string name="default_list_title_to_buy">Zu kaufende Produkte</string>
     <string name="intent_filter_share_label">Zu Open Products Facts hinzufügen</string>
     <string name="txt_info_eaten_products">Sie können ein Produkt zu dieser Liste hinzufügen, indem Sie Produkte erfassen, die Produktkarte nach oben ziehen und auf „Zu erwerbende Produkte” tippen.
 Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchsuchen und auf die Schaltfläche ➕ oben rechts auf der Produktseite klicken.</string>

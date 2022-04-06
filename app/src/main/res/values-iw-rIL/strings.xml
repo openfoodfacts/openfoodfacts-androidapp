@@ -652,12 +652,12 @@
     <string name="addtive_search">חיפוש תוסף</string>
     <string name="additives">תוספים</string>
     <!--used for product_lists implementation-->
-    <string name="add_to_product_lists">הוספה לרשימות שלך</string>
-    <string name="txt_create_new_list">יצירת רשימה חדשה</string>
-    <string name="txt_add_to_new_list">הוספה לרשימה חדשה</string>
-    <string name="create_new_list_list_name">שם רשימה</string>
-    <string name="txt_eaten_products">מוצרים שיש לי</string>
-    <string name="txt_products_to_buy">מוצרים לרכישה</string>
+    <string name="dialog_add_product_to_list_title">הוספה לרשימות שלך</string>
+    <string name="dialog_create_new_list_title">יצירת רשימה חדשה</string>
+    <string name="dialog_add_product_to_list_new">הוספה לרשימה חדשה</string>
+    <string name="dialog_create_new_list_hint">שם רשימה</string>
+    <string name="default_list_title_stored">מוצרים שיש לי</string>
+    <string name="default_list_title_to_buy">מוצרים לרכישה</string>
     <string name="txt_exporting_your_listed_products">המוצרים שלך מיוצאים…</string>
     <string name="txt_your_listed_products_exported">המוצרים שלך יוצאו</string>
     <string name="txt_discard">התעלמות</string>

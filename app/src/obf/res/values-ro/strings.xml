@@ -39,8 +39,8 @@
     <string name="add_category_prompt_text">Adăugați o categorie pentru a ajuta la completarea produsului</string>
     <string name="add_nutrient_category_prompt_text">Adăugați o categorie și mai multe detalii pentru a ajuta la completarea produsului</string>
     <string name="required_to_compute_nutriscore"></string>
-    <string name="txt_eaten_products">Produsele pe care le am</string>
-    <string name="txt_products_to_buy">Produse de cumpărat</string>
+    <string name="default_list_title_stored">Produsele pe care le am</string>
+    <string name="default_list_title_to_buy">Produse de cumpărat</string>
     <string name="intent_filter_share_label">Adaugă la Open Beauty Facts</string>
     <string name="brand_hint">Exemple: Nivea, L\'Oréal, etc…</string>
     <string name="txt_info_eaten_products">Veți putea adăuga un produs la această listă scanând produse, trăgând cardul produsului în sus și atingând „Produse de cumpărat”.

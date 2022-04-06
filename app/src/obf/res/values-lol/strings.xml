@@ -39,8 +39,8 @@
     <string name="add_category_prompt_text">crwdns179556:0crwdne179556:0</string>
     <string name="add_nutrient_category_prompt_text">crwdns179558:0crwdne179558:0</string>
     <string name="required_to_compute_nutriscore"></string>
-    <string name="txt_eaten_products">crwdns179560:0crwdne179560:0</string>
-    <string name="txt_products_to_buy">crwdns179562:0crwdne179562:0</string>
+    <string name="default_list_title_stored">crwdns179560:0crwdne179560:0</string>
+    <string name="default_list_title_to_buy">crwdns179562:0crwdne179562:0</string>
     <string name="intent_filter_share_label">crwdns179564:0crwdne179564:0</string>
     <string name="brand_hint">crwdns179566:0crwdne179566:0</string>
     <string name="txt_info_eaten_products">crwdns179568:0crwdne179568:0</string>
