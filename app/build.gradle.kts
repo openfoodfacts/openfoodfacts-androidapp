@@ -184,7 +184,7 @@ dependencies {
     androidTestImplementation("androidx.test:runner:1.3.0") { exclude("junit") }
     androidTestImplementation("androidx.test:rules:1.4.0")
 
-    androidTestImplementation("androidx.test.ext:junit:1.1.2") { exclude("junit") }
+    androidTestImplementation("androidx.test.ext:junit:1.1.3") { exclude("junit") }
 
     androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
     androidTestImplementation("androidx.test.espresso:espresso-intents:3.4.0")
