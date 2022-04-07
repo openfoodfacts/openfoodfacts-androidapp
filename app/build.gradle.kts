@@ -189,7 +189,7 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
     androidTestImplementation("androidx.test.espresso:espresso-intents:3.4.0")
     androidTestImplementation("androidx.test.espresso:espresso-web:3.4.0")
-    androidTestImplementation("androidx.test.espresso:espresso-contrib:3.3.0") {
+    androidTestImplementation("androidx.test.espresso:espresso-contrib:3.4.0") {
         exclude(group = "com.android.support", module = "appcompat-v7")
         exclude(group = "com.android.support", module = "support-v4")
         exclude(group = "com.android.support", module = "design")
