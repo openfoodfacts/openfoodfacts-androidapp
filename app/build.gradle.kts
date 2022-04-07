@@ -141,7 +141,7 @@ dependencies {
     implementation("com.mikepenz:fastadapter-commons:3.3.1@aar")
 
     // UI Component : Font Icons
-    implementation("com.mikepenz:iconics-core:4.0.2@aar")
+    implementation("com.mikepenz:iconics-core:5.3.3@aar")
     implementation("com.mikepenz:google-material-typeface:3.0.1.6.original-kotlin@aar")
     implementation("com.github.CanHub:Android-Image-Cropper:3.1.3")
 
