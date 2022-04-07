@@ -53,12 +53,13 @@ class ZXCameraView(
         else decoratedView.setTorchOff()
     }
 
-    override fun toggleCamera(cameraState: Int) {
-        val settings = decoratedView.barcodeView.cameraSettings
+    override fun toggleCamera(requestedCameraId: Int) {
         if (decoratedView.barcodeView.isPreviewActive) {
             decoratedView.pause()
         }
-        settings.requestedCameraId = cameraState
+        val settings = decoratedView.barcodeView.cameraSettings.apply {
+            this.requestedCameraId = requestedCameraId
+        }
         decoratedView.barcodeView.cameraSettings = settings
         decoratedView.resume()
     }
