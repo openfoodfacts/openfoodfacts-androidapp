@@ -49,7 +49,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
-import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsView
@@ -495,16 +494,14 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
 
         quickViewBehavior.addBottomSheetCallback(bottomSheetCallback)
 
-        beepActive = scannerPrefsRepository.getRingPref()
-        flashActive = scannerPrefsRepository.getFlashPref()
-        autoFocusActive = scannerPrefsRepository.getAutoFocusPref()
-        cameraState = scannerPrefsRepository.getCameraPref().value
+        beepActive = scannerPrefsRepository.ringPref
+        flashActive = scannerPrefsRepository.flashPref
+        autoFocusActive = scannerPrefsRepository.autoFocusPref
+        cameraState = scannerPrefsRepository.cameraPref.value
 
         // Setup barcode scanner
-        val useMLScanner = BuildConfig.USE_MLKIT &&
-                settings.getBoolean(getString(R.string.pref_scanner_mlkit_key), false)
 
-        cameraView = if (!useMLScanner) {
+        cameraView = if (!scannerPrefsRepository.mlScannerEnabled) {
             ZXCameraView(this, binding.barcodeScanner)
         } else {
             MLKitCameraView(this, binding.cameraPreviewViewStub)
@@ -616,7 +613,7 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
         } else {
             Camera.CameraInfo.CAMERA_FACING_BACK
         }
-        scannerPrefsRepository.saveCameraPref(CameraState.fromInt(cameraState))
+        scannerPrefsRepository.cameraPref = CameraState.fromInt(cameraState)
 
 
         cameraView.toggleCamera(cameraState)
@@ -635,7 +632,7 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
 
             cameraView.updateFlashSetting(flashActive)
         }
-        scannerPrefsRepository.saveFlashPref(flashActive)
+        scannerPrefsRepository.flashPref = flashActive
     }
 
     private fun showMoreSettings() {
@@ -647,12 +644,12 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
                 R.id.toggleBeep -> {
                     beepActive = !beepActive
                     item.isChecked = beepActive
-                    scannerPrefsRepository.saveRingPref(beepActive)
+                    scannerPrefsRepository.ringPref = beepActive
                 }
                 R.id.toggleAutofocus -> {
                     autoFocusActive = !autoFocusActive
                     item.isChecked = autoFocusActive
-                    scannerPrefsRepository.saveAutoFocusPref(autoFocusActive)
+                    scannerPrefsRepository.autoFocusPref = autoFocusActive
 
                     cameraView.updateFocusModeSetting(autoFocusActive)
                 }
