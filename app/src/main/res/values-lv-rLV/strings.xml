@@ -646,12 +646,12 @@
     <string name="addtive_search">Meklējiet piedevu</string>
     <string name="additives">Piedevas</string>
     <!--used for product_lists implementation-->
-    <string name="add_to_product_lists">Pievienojiet saviem sarakstiem</string>
-    <string name="txt_create_new_list">Izveidojiet jaunu sarakstu</string>
-    <string name="txt_add_to_new_list">Pievienot jaunam sarakstam</string>
-    <string name="create_new_list_list_name">Saraksta nosaukums</string>
-    <string name="txt_eaten_products">Products I have</string>
-    <string name="txt_products_to_buy">Produkti, kurus iegādāties</string>
+    <string name="dialog_add_product_to_list_title">Pievienojiet saviem sarakstiem</string>
+    <string name="dialog_create_new_list_title">Izveidojiet jaunu sarakstu</string>
+    <string name="dialog_add_product_to_list_new">Pievienot jaunam sarakstam</string>
+    <string name="dialog_create_new_list_hint">Saraksta nosaukums</string>
+    <string name="default_list_title_stored">Products I have</string>
+    <string name="default_list_title_to_buy">Produkti, kurus iegādāties</string>
     <string name="txt_exporting_your_listed_products">Produktu eksportēšana…</string>
     <string name="txt_your_listed_products_exported">Jūsu produkti ir eksportēti</string>
     <string name="txt_discard">Atcelt</string>

@@ -40,8 +40,8 @@
     <string name="add_nutrient_prompt_text">添加营养成分以计算营养水平</string>
     <string name="add_category_prompt_text">添加类别以帮助完成产品</string>
     <string name="add_nutrient_category_prompt_text">添加类别和营养成分以帮助完善产品信息</string>
-    <string name="txt_eaten_products">我的产品</string>
-    <string name="txt_products_to_buy">购买产品</string>
+    <string name="default_list_title_stored">我的产品</string>
+    <string name="default_list_title_to_buy">购买产品</string>
     <string name="intent_filter_share_label">添加到Open Pet Food Facts</string>
     <string name="txt_info_eaten_products">您可以通过扫描产品，向上拖动产品卡并点击“要购买的产品”，将产品添加到此列表中。
 您还可以通过搜索产品并单击产品页面右上角的+按钮，将产品添加到此列表中。</string>

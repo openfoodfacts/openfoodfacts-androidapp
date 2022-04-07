@@ -634,12 +634,12 @@
     <string name="addtive_search">搜尋添加劑</string>
     <string name="additives">添加劑</string>
     <!--used for product_lists implementation-->
-    <string name="add_to_product_lists">加入您的列表</string>
-    <string name="txt_create_new_list">新增清單</string>
-    <string name="txt_add_to_new_list">加入新列表</string>
-    <string name="create_new_list_list_name">清單名稱</string>
-    <string name="txt_eaten_products">Products I have</string>
-    <string name="txt_products_to_buy">要購買的產品</string>
+    <string name="dialog_add_product_to_list_title">加入您的列表</string>
+    <string name="dialog_create_new_list_title">新增清單</string>
+    <string name="dialog_add_product_to_list_new">加入新列表</string>
+    <string name="dialog_create_new_list_hint">清單名稱</string>
+    <string name="default_list_title_stored">Products I have</string>
+    <string name="default_list_title_to_buy">要購買的產品</string>
     <string name="txt_exporting_your_listed_products">匯出產品……</string>
     <string name="txt_your_listed_products_exported">已匯出您的產品</string>
     <string name="txt_discard">放棄</string>

@@ -114,7 +114,7 @@ class ImagesManageActivity : BaseActivity() {
         }
 
         binding.comboImageType.onItemSelectedListener = object : OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View, position: Int, id: Long) =
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) =
                 onImageTypeChanged()
 
             override fun onNothingSelected(parent: AdapterView<*>?) = Unit // Do nothing

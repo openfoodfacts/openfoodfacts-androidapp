@@ -39,8 +39,8 @@
     <string name="add_category_prompt_text">أضف المزيد من التفاصيل للمساعدة في استكمال المنتج</string>
     <string name="add_nutrient_category_prompt_text">أضف فئة ومزيد من التفاصيل للمساعدة في إكمال المنتج</string>
     <string name="required_to_compute_nutriscore"></string>
-    <string name="txt_eaten_products">المنتجات التي أملكها</string>
-    <string name="txt_products_to_buy">منتجات للشراء</string>
+    <string name="default_list_title_stored">المنتجات التي أملكها</string>
+    <string name="default_list_title_to_buy">منتجات للشراء</string>
     <string name="intent_filter_share_label">افتح حقائق الجمال</string>
     <string name="brand_hint">أمثلة: Nivea ، L\'Oréal ، إلخ…</string>
     <string name="txt_info_eaten_products">ستتمكن من إضافة منتج إلى هذه القائمة عن طريق مسح المنتجات وسحب بطاقة المنتج لأعلى والنقر على \"المنتجات المراد شراؤها\".

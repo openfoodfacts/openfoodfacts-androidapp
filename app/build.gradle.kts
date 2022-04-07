@@ -38,7 +38,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib:${rootProject.extra["kotlinVersion"]}")
 
     // Kotlin coroutines
-    val coroutinesVersion = "1.6.0"
+    val coroutinesVersion = "1.6.1"
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-rx2:$coroutinesVersion")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion")
@@ -149,7 +149,7 @@ dependencies {
     implementation("com.github.hootsuite:nachos:1.2.0")
 
     // Crash analytics
-    implementation("io.sentry:sentry-android:5.7.0")
+    implementation("io.sentry:sentry-android:5.7.1")
     implementation("com.github.matomo-org:matomo-sdk-android:v4.1.2")
 
     // ShowCaseView dependency
@@ -162,7 +162,6 @@ dependencies {
     testImplementation("org.mockito:mockito-core:4.4.0")
     testImplementation("org.mockito.kotlin:mockito-kotlin:4.0.0")
     testImplementation("org.mockito:mockito-junit-jupiter:4.4.0")
-    testImplementation("net.javacrumbs.json-unit:json-unit-fluent:2.28.0")
     testImplementation("com.google.truth:truth:1.1.3")
     testImplementation("com.google.truth.extensions:truth-java8-extension:1.1.3")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:${coroutinesVersion}")
@@ -177,7 +176,7 @@ dependencies {
     androidTestUtil("androidx.test:orchestrator:1.4.1")
 
     // Hilt for Android Testing
-    androidTestImplementation("com.google.dagger:hilt-android-testing:2.39.1")
+    androidTestImplementation("com.google.dagger:hilt-android-testing:2.41")
     kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.39.1")
     androidTestImplementation("com.google.dagger:dagger:2.39.1")
     kaptAndroidTest("com.google.dagger:dagger-compiler:2.39.1")
@@ -221,8 +220,8 @@ android {
         minSdk = 16
         targetSdk = 31
 
-        versionCode = 433
-        versionName = "3.6.8"
+        versionCode = 582
+        versionName = "3.8.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true

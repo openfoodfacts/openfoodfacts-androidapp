@@ -640,12 +640,12 @@
     <string name="addtive_search">Cerqueu un additiu</string>
     <string name="additives">Additius</string>
     <!--used for product_lists implementation-->
-    <string name="add_to_product_lists">Afegeix a les vostres llistes</string>
-    <string name="txt_create_new_list">Crea una llista nova</string>
-    <string name="txt_add_to_new_list">Afegeix a una llista nova</string>
-    <string name="create_new_list_list_name">Nom de la llista</string>
-    <string name="txt_eaten_products">Productes que tinc</string>
-    <string name="txt_products_to_buy">Productes per comprar</string>
+    <string name="dialog_add_product_to_list_title">Afegeix a les vostres llistes</string>
+    <string name="dialog_create_new_list_title">Crea una llista nova</string>
+    <string name="dialog_add_product_to_list_new">Afegeix a una llista nova</string>
+    <string name="dialog_create_new_list_hint">Nom de la llista</string>
+    <string name="default_list_title_stored">Productes que tinc</string>
+    <string name="default_list_title_to_buy">Productes per comprar</string>
     <string name="txt_exporting_your_listed_products">Exportant Els Vostres Productes…</string>
     <string name="txt_your_listed_products_exported">Els vostres productes s\'han exportat</string>
     <string name="txt_discard">Descarta</string>

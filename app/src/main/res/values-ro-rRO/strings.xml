@@ -646,12 +646,12 @@
     <string name="addtive_search">Căutați un aditiv</string>
     <string name="additives">Aditivi</string>
     <!--used for product_lists implementation-->
-    <string name="add_to_product_lists">Adaugă la listele tale</string>
-    <string name="txt_create_new_list">Creați o nouă listă</string>
-    <string name="txt_add_to_new_list">Adaugă la o nouă listă</string>
-    <string name="create_new_list_list_name">Numele listei</string>
-    <string name="txt_eaten_products">Products I have</string>
-    <string name="txt_products_to_buy">Produse de cumpărat</string>
+    <string name="dialog_add_product_to_list_title">Adaugă la listele tale</string>
+    <string name="dialog_create_new_list_title">Creați o nouă listă</string>
+    <string name="dialog_add_product_to_list_new">Adaugă la o nouă listă</string>
+    <string name="dialog_create_new_list_hint">Numele listei</string>
+    <string name="default_list_title_stored">Products I have</string>
+    <string name="default_list_title_to_buy">Produse de cumpărat</string>
     <string name="txt_exporting_your_listed_products">Se exportă produsele dvs…</string>
     <string name="txt_your_listed_products_exported">Produsele dumneavoastră au fost exportate</string>
     <string name="txt_discard">Renunță</string>

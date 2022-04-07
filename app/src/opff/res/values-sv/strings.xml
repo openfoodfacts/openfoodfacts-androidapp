@@ -40,8 +40,8 @@
     <string name="add_nutrient_prompt_text">Lägg till näringsfakta för att beräkna näringsnivåer</string>
     <string name="add_category_prompt_text">Lägg till en kategori för att komplettera produkten</string>
     <string name="add_nutrient_category_prompt_text">Lägg till en kategori och näringsfakta för att komplettera produkten</string>
-    <string name="txt_eaten_products">Produkter jag har</string>
-    <string name="txt_products_to_buy">Produkter att köpa</string>
+    <string name="default_list_title_stored">Produkter jag har</string>
+    <string name="default_list_title_to_buy">Produkter att köpa</string>
     <string name="intent_filter_share_label">Lägg till i Open Pet Food Facts</string>
     <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
         You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
