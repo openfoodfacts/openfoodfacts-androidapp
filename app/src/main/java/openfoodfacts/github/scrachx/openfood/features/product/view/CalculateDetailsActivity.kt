@@ -72,7 +72,7 @@ class CalculateDetailsActivity : BaseActivity() {
         if (energyKcal != null) {
             nutrimentListItems += NutrimentListItem(
                 getString(R.string.nutrition_energy_short_name),
-                calculateCalories(portion).value,
+                calculateCalories(portion)?.value,
                 energyKcal.perServingInUnit?.value,
                 MeasurementUnit.ENERGY_KCAL,
                 energyKcal.modifier,
@@ -82,7 +82,7 @@ class CalculateDetailsActivity : BaseActivity() {
         if (energyKj != null) {
             nutrimentListItems += NutrimentListItem(
                 getString(R.string.nutrition_energy_short_name),
-                calculateKj(portion).value,
+                calculateKj(portion)?.value,
                 energyKj.perServingInUnit?.value,
                 MeasurementUnit.ENERGY_KJ,
                 energyKj.modifier,
@@ -94,7 +94,7 @@ class CalculateDetailsActivity : BaseActivity() {
         if (fat != null) {
             nutrimentListItems += NutrimentListItem(
                 getString(R.string.nutrition_fat),
-                fat.getForPortion(portion).value,
+                fat.getForPortion(portion)?.value,
                 fat.perServingInUnit?.value,
                 fat.unit,
                 fat.modifier
@@ -107,7 +107,7 @@ class CalculateDetailsActivity : BaseActivity() {
         if (carbohydrates != null) {
             nutrimentListItems += NutrimentListItem(
                 getString(R.string.nutrition_carbohydrate),
-                carbohydrates.getForPortion(portion).value,
+                carbohydrates.getForPortion(portion)?.value,
                 carbohydrates.perServingInUnit?.value,
                 carbohydrates.unit,
                 carbohydrates.modifier
@@ -123,7 +123,7 @@ class CalculateDetailsActivity : BaseActivity() {
         if (proteins != null) {
             nutrimentListItems += NutrimentListItem(
                 getString(R.string.nutrition_proteins),
-                proteins.getForPortion(portion).value,
+                proteins.getForPortion(portion)?.value,
                 proteins.perServingInUnit?.value,
                 proteins.unit,
                 proteins.modifier
@@ -155,12 +155,14 @@ class CalculateDetailsActivity : BaseActivity() {
     }
 
     private fun getNutrimentItems(nutriments: ProductNutriments, nutrimentMap: Map<Nutriment, Int>): List<NutrimentListItem> {
+        val portion = measure(weight, unitOfMeasurement)
+
         return nutrimentMap.mapNotNull { (name, stringRes) ->
             val nutriment = nutriments[name] ?: return@mapNotNull null
 
             NutrimentListItem(
                 getString(stringRes),
-                nutriment.getForPortion(measure(weight, unitOfMeasurement)).value,
+                nutriment.getForPortion(portion)?.value,
                 nutriment.perServingInUnit?.value,
                 nutriment.unit,
                 nutriment.modifier
@@ -168,14 +170,14 @@ class CalculateDetailsActivity : BaseActivity() {
         }
     }
 
-    private fun calculateCalories(portion: Measurement): Measurement {
-        val energy100gCal = product.nutriments[Nutriment.ENERGY_KCAL]!!.per100gInG
+    private fun calculateCalories(portion: Measurement): Measurement? {
+        val energy100gCal = product.nutriments[Nutriment.ENERGY_KCAL]?.per100gInG ?: return null
         val portionGrams = portion.grams.value
         return Measurement(energy100gCal.value / 100 * portionGrams, energy100gCal.unit)
     }
 
-    private fun calculateKj(portion: Measurement): Measurement {
-        val energy100gKj = product.nutriments[Nutriment.ENERGY_KJ]!!.per100gInG
+    private fun calculateKj(portion: Measurement): Measurement? {
+        val energy100gKj = product.nutriments[Nutriment.ENERGY_KJ]?.per100gInG ?: return null
         val weightGrams = portion.grams.value
         return Measurement(energy100gKj.value / 100 * weightGrams, energy100gKj.unit)
     }

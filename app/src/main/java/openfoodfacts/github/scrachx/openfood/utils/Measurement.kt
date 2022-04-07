@@ -2,6 +2,8 @@ package openfoodfacts.github.scrachx.openfood.utils
 
 import openfoodfacts.github.scrachx.openfood.models.MeasurementUnit
 import openfoodfacts.github.scrachx.openfood.models.MeasurementUnit.*
+import openfoodfacts.github.scrachx.openfood.models.Modifier
+import openfoodfacts.github.scrachx.openfood.models.ifNotDefault
 
 
 data class Measurement(
@@ -10,6 +12,12 @@ data class Measurement(
 )
 
 fun measure(value: Float, unit: MeasurementUnit) = Measurement(value, unit)
+
+fun Measurement.forPortion(portion: Measurement) = Measurement(
+    value = value / 100 * portion.grams.value,
+    unit = this.unit
+)
+
 
 /**
  * Converts a given measurement to grams.
@@ -71,7 +79,12 @@ fun Measurement.convertTo(unit: MeasurementUnit): Measurement {
     )
 }
 
-fun Measurement.displayString() = buildString {
+
+fun Measurement.toDisplayString(modifier: Modifier? = null): String = buildString {
+    modifier?.ifNotDefault {
+        append(it.sym)
+        append(" ")
+    }
     append(getRoundNumber(value))
     append(" ")
     append(unit.sym)

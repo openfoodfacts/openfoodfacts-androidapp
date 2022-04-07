@@ -1,13 +1,14 @@
 package openfoodfacts.github.scrachx.openfood.models
 
+import android.content.Context
 import com.fasterxml.jackson.annotation.JsonAnyGetter
 import com.fasterxml.jackson.annotation.JsonAnySetter
 import com.fasterxml.jackson.annotation.JsonInclude
+import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.models.MeasurementUnit.UNIT_GRAM
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.Suffix
 import openfoodfacts.github.scrachx.openfood.utils.*
 import java.io.Serializable
-import java.util.*
 
 /**
  * JSON representation of the product `nutriments` entry.
@@ -48,7 +49,7 @@ class ProductNutriments : Serializable {
         else ProductNutriment(
             nutriment,
             name,
-            getValuePer100g(nutriment)!!,
+            getValuePer100g(nutriment),
             getValuePerServing(nutriment),
             getUnit(nutriment),
             getModifier(nutriment)
@@ -99,8 +100,10 @@ class ProductNutriments : Serializable {
     class ProductNutriment internal constructor(
         val nutriment: Nutriment,
         val name: String,
-        val per100gInG: Measurement,
+
+        val per100gInG: Measurement?,
         val perServingInG: Measurement?,
+
         unit: MeasurementUnit,
         val modifier: Modifier
     ) {
@@ -108,22 +111,16 @@ class ProductNutriments : Serializable {
 
         fun isEnergy() = unit in ENERGY_UNITS
 
-        fun getPer100gDisplayString() = buildString {
-            modifier.ifNotDefault {
-                append(it.sym)
-                append(" ")
-            }
-            append(per100gInUnit.displayString())
-        }
+        fun getPer100gDisplayString() = per100gInUnit?.toDisplayString(modifier)
 
         /**
          * Returns the amount of nutriment per 100g
          * of product in the units stored in [ProductNutriment.unit]
          */
-        val per100gInUnit: Measurement
+        val per100gInUnit: Measurement?
             get() {
                 return if (isEnergy()) per100gInG
-                else per100gInG.convertTo(unit)
+                else per100gInG?.convertTo(unit)
             }
 
         /**
@@ -146,10 +143,22 @@ class ProductNutriments : Serializable {
          * @param portion a measurement of the portion
          * @return a nutrient measurement for a the given amount of this product
          */
-        fun getForPortion(portion: Measurement) = Measurement(
-            value = per100gInUnit.value / 100 * portion.grams.value,
-            unit = per100gInUnit.unit
-        )
-    }
+        fun getForPortion(portion: Measurement): Measurement? = per100gInUnit?.forPortion(portion)
 
+
+    }
+}
+
+fun ProductNutriments.buildLevelItem(
+    context: Context,
+    nutriment: Nutriment,
+    nutrimentLevel: NutrimentLevel?,
+): NutrientLevelItem? {
+    val productNutriment = this[nutriment] ?: return null
+
+    val per100gDisplayString = productNutriment.getPer100gDisplayString() ?: return null
+    val localizedNutrimentLevel = nutrimentLevel?.getLocalize(context) ?: return null
+    val category = context.getString(R.string.compare_fat)
+
+    return NutrientLevelItem(category, per100gDisplayString, localizedNutrimentLevel, nutrimentLevel.getImgRes())
 }
