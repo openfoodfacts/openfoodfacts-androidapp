@@ -127,7 +127,7 @@ dependencies {
     // TODO: cannot upgrade, requires API 24 or higher
     implementation("com.google.zxing:core:3.3.0")
 
-    implementation("com.journeyapps:zxing-android-embedded:3.6.0") { isTransitive = false }
+    implementation("com.journeyapps:zxing-android-embedded:4.3.0") { isTransitive = false }
 
     // UI Component : ImageView with Zooming
     implementation("com.github.chrisbanes:PhotoView:2.3.0")
