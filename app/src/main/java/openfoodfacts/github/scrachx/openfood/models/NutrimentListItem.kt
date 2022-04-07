@@ -31,7 +31,7 @@ data class NutrimentListItem(
         nutriment: ProductNutriments.ProductNutriment
     ) : this(
         title,
-        nutriment.per100gInUnit.value,
+        nutriment.per100gInUnit?.value,
         nutriment.perServingInUnit?.value,
         nutriment.unit,
         nutriment.modifier
