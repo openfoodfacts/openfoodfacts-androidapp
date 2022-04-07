@@ -26,7 +26,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.ActivitySimpleScanBinding
-import openfoodfacts.github.scrachx.openfood.features.scan.MlKitCameraView
+import openfoodfacts.github.scrachx.openfood.features.scan.MLKitCameraView
 import openfoodfacts.github.scrachx.openfood.features.simplescan.SimpleScanActivityContract.Companion.KEY_SCANNED_BARCODE
 import openfoodfacts.github.scrachx.openfood.models.CameraState
 import openfoodfacts.github.scrachx.openfood.repositories.ScannerPreferencesRepository
@@ -38,7 +38,7 @@ class SimpleScanActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySimpleScanBinding
     private val viewModel: SimpleScanViewModel by viewModels()
 
-    private val mlKitView by lazy { MlKitCameraView(this) }
+    private val mlKitView by lazy { MLKitCameraView(this) }
     private val scannerInitialized = AtomicBoolean(false)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -123,7 +123,7 @@ class SimpleScanActivity : AppCompatActivity() {
     private fun applyScannerOptions(options: SimpleScanScannerOptions) {
         // camera state
         if (options.mlScannerEnabled) {
-            mlKitView.toggleCamera()
+            mlKitView.toggleCamera(cameraState)
         } else {
             val cameraId = when (options.cameraState) {
                 CameraState.Back -> Camera.CameraInfo.CAMERA_FACING_BACK
@@ -186,7 +186,7 @@ class SimpleScanActivity : AppCompatActivity() {
         binding.scanBarcodeView.isVisible = !options.mlScannerEnabled
 
         if (options.mlScannerEnabled) {
-            mlKitView.attach(binding.scanMlView, options.cameraState.value, options.flashEnabled, options.autoFocusEnabled)
+            mlKitView.attach(options.cameraState.value, options.flashEnabled, options.autoFocusEnabled)
             mlKitView.barcodeScannedCallback = {
                 viewModel.barcodeDetected(it)
             }

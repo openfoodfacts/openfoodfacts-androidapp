@@ -33,12 +33,14 @@
         <com.journeyapps.barcodescanner.DecoratedBarcodeView
             android:id="@+id/barcode_scanner"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:visibility="gone" />
 
         <ViewStub
             android:id="@+id/camera_preview_view_stub"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:visibility="gone" />
 
         <ImageView
             android:id="@+id/button_more"
