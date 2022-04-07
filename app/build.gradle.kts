@@ -125,7 +125,7 @@ dependencies {
 
     // Barcode and QR Scanner
     // TODO: cannot upgrade, requires API 24 or higher
-    implementation("com.google.zxing:core:3.3.0")
+    implementation("com.google.zxing:core:3.4.1")
 
     implementation("com.journeyapps:zxing-android-embedded:3.6.0") { isTransitive = false }
 
