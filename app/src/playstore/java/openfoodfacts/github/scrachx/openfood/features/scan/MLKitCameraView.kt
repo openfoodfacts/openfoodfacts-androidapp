@@ -19,10 +19,12 @@ import java.io.IOException
 
 class MLKitCameraView(
     activity: AppCompatActivity,
-    private val viewStub: ViewStub,
-) : CameraView(activity) {
-
-    private var preview: CameraSourcePreview? = null
+    viewStub: ViewStub,
+) : CameraView<CameraSourcePreview>(
+    activity,
+    viewStub,
+    R.layout.view_camera_mlkit_preview
+) {
     private var graphicOverlay: GraphicOverlay? = null
     private var promptChip: Chip? = null
 
@@ -30,9 +32,9 @@ class MLKitCameraView(
     private var workflowModel: WorkflowModel? = null
 
     override fun attach(cameraState: Int, flashActive: Boolean, autoFocusActive: Boolean) {
-        viewStub.isVisible = true
-        viewStub.layoutResource = R.layout.view_camera_source_preview
-        preview = (viewStub.inflate() as CameraSourcePreview).apply {
+        super.attach(cameraState, flashActive, autoFocusActive)
+
+        view = (viewStub.inflate() as CameraSourcePreview).apply {
             graphicOverlay = findViewById(R.id.camera_preview_graphic_overlay)
             promptChip = findViewById(R.id.bottom_prompt_chip)
         }
@@ -59,7 +61,7 @@ class MLKitCameraView(
         if (!workflowModel.isCameraLive) {
             try {
                 workflowModel.markCameraLive()
-                preview?.start(cameraSource)
+                view.start(cameraSource)
             } catch (e: IOException) {
                 logcat(LogPriority.ERROR) { "Failed to start camera preview! ${e.asLog()}" }
                 cameraSource.release()
@@ -72,7 +74,7 @@ class MLKitCameraView(
         workflowModel?.let {
             if (it.isCameraLive) {
                 it.markCameraFrozen()
-                preview?.stop()
+                view.stop()
             }
         }
     }
@@ -85,7 +87,7 @@ class MLKitCameraView(
         cameraSource?.setFocusMode(autoFocusActive)
     }
 
-    override fun toggleCamera(cameraState: Int) {
+    override fun toggleCamera(requestedCameraId: Int) {
         stopCameraPreview()
         cameraSource?.switchCamera()
         startCameraPreview()

@@ -124,8 +124,6 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
 
     private val bottomSheetCallback by lazy { QuickViewCallback(this) }
 
-    private val settings by lazy { getAppPreferences() }
-
     private var productDisp: Job? = null
     private var hintBarcodeDisp: Job? = null
 
@@ -138,7 +136,7 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
     private var beepActive = false
 
 
-    internal lateinit var cameraView: CameraView
+    internal lateinit var cameraView: CameraView<*>
 
     private var offlineSavedProduct: OfflineSavedProduct? = null
     private var product: Product? = null
@@ -500,12 +498,7 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
         cameraState = scannerPrefsRepository.cameraPref.value
 
         // Setup barcode scanner
-
-        cameraView = if (!scannerPrefsRepository.mlScannerEnabled) {
-            ZXCameraView(this, binding.barcodeScanner)
-        } else {
-            MLKitCameraView(this, binding.cameraPreviewViewStub)
-        }
+        cameraView = scannerPrefsRepository.buildCameraView(this, binding.cameraPreviewViewStub)
 
         cameraView.attach(cameraState, flashActive, autoFocusActive)
         cameraView.barcodeScannedCallback = ::onBarcodeResult

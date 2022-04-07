@@ -55,5 +55,7 @@ class ScannerPreferencesRepository @Inject constructor(
             BarcodeFormat.CODE_128,
             BarcodeFormat.ITF
         )
+
+
     }
 }

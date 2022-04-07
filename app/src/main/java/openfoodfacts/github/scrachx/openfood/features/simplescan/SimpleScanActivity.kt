@@ -13,7 +13,6 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
-import androidx.core.view.isVisible
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -34,7 +33,7 @@ class SimpleScanActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySimpleScanBinding
     private val viewModel: SimpleScanViewModel by viewModels()
 
-    private lateinit var cameraView: CameraView
+    private lateinit var cameraView: CameraView<*>
     private val scannerInitialized = AtomicBoolean(false)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -121,7 +120,7 @@ class SimpleScanActivity : AppCompatActivity() {
         cameraView = if (options.mlScannerEnabled) {
             MLKitCameraView(this, binding.scanMlView)
         } else {
-            ZXCameraView(this, binding.scanBarcodeView)
+            ZXCameraView(this, binding.scanMlView)
         }
 
         cameraView.toggleCamera(
@@ -155,8 +154,6 @@ class SimpleScanActivity : AppCompatActivity() {
     }
 
     private fun setupBarcodeScanner(options: SimpleScanScannerOptions) {
-        binding.scanBarcodeView.isVisible = !options.mlScannerEnabled
-
         cameraView.attach(options.cameraState.value, options.flashEnabled, options.autoFocusEnabled)
         cameraView.barcodeScannedCallback = { barcode ->
             barcode?.let { viewModel.barcodeDetected(it) }

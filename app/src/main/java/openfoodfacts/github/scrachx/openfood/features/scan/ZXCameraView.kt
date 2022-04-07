@@ -1,6 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.features.scan
 
 import android.view.View
+import android.view.ViewStub
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.google.zxing.ResultPoint
@@ -9,78 +10,88 @@ import com.journeyapps.barcodescanner.BarcodeCallback
 import com.journeyapps.barcodescanner.BarcodeResult
 import com.journeyapps.barcodescanner.DecoratedBarcodeView
 import com.journeyapps.barcodescanner.DefaultDecoderFactory
+import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.repositories.ScannerPreferencesRepository
 
 class ZXCameraView(
     activity: AppCompatActivity,
-    private val decoratedView: DecoratedBarcodeView,
-) : CameraView(activity) {
-
+    viewStub: ViewStub,
+) : CameraView<DecoratedBarcodeView>(
+    activity,
+    viewStub,
+    R.layout.view_camera_zx_preview
+) {
     private val beepManager by lazy { BeepManager(activity) }
 
     override fun attach(cameraState: Int, flashActive: Boolean, autoFocusActive: Boolean) {
-        decoratedView.isVisible = true
-        decoratedView.visibility = View.VISIBLE
+        super.attach(cameraState, flashActive, autoFocusActive)
 
-        decoratedView.barcodeView.decoderFactory = DefaultDecoderFactory(ScannerPreferencesRepository.BARCODE_FORMATS)
-        decoratedView.setStatusText(null)
+        view.apply {
+            isVisible = true
+            visibility = View.VISIBLE
 
-        decoratedView.barcodeView.cameraSettings.run {
-            requestedCameraId = cameraState
-            isAutoFocusEnabled = autoFocusActive
-        }
+            barcodeView.decoderFactory = DefaultDecoderFactory(ScannerPreferencesRepository.BARCODE_FORMATS)
+            setStatusText(null)
 
-        decoratedView.setOnClickListener { onOverlayClickListener?.invoke() }
-
-
-        // Start continuous scanner
-        decoratedView.decodeContinuous(object : BarcodeCallback {
-            override fun barcodeResult(result: BarcodeResult?) {
-                beepManager.playBeepSound()
-                barcodeScannedCallback?.invoke(result?.text)
+            barcodeView.cameraSettings.run {
+                requestedCameraId = cameraState
+                isAutoFocusEnabled = autoFocusActive
             }
 
-            override fun possibleResultPoints(resultPoints: MutableList<ResultPoint>?) = Unit
-        })
+            setOnClickListener { onOverlayClickListener?.invoke() }
+
+            // Start continuous scanner
+            decodeContinuous(object : BarcodeCallback {
+                override fun barcodeResult(result: BarcodeResult?) {
+                    beepManager.playBeepSound()
+                    barcodeScannedCallback?.invoke(result?.text)
+                }
+
+                override fun possibleResultPoints(resultPoints: MutableList<ResultPoint>?) = Unit
+            })
+        }
     }
 
     override fun onResume() {
-        decoratedView.resume()
+        view.resume()
     }
 
     override fun updateFlashSetting(flashActive: Boolean) {
-        if (flashActive) decoratedView.setTorchOn()
-        else decoratedView.setTorchOff()
+        if (flashActive) {
+            view.setTorchOn()
+        } else {
+            view.setTorchOff()
+        }
     }
 
     override fun toggleCamera(requestedCameraId: Int) {
-        if (decoratedView.barcodeView.isPreviewActive) {
-            decoratedView.pause()
+        if (view.barcodeView.isPreviewActive) {
+            view.pause()
         }
-        val settings = decoratedView.barcodeView.cameraSettings.apply {
+        val settings = view.barcodeView.cameraSettings.apply {
             this.requestedCameraId = requestedCameraId
         }
-        decoratedView.barcodeView.cameraSettings = settings
-        decoratedView.resume()
+        view.barcodeView.cameraSettings = settings
+        view.resume()
     }
 
     override fun updateFocusModeSetting(autoFocusActive: Boolean) {
-        if (decoratedView.barcodeView.isPreviewActive) {
-            decoratedView.pause()
+        if (view.barcodeView.isPreviewActive) {
+            view.pause()
         }
-        val settings = decoratedView.barcodeView.cameraSettings.apply {
+        val settings = view.barcodeView.cameraSettings.apply {
             isAutoFocusEnabled = autoFocusActive
         }
-        decoratedView.barcodeView.cameraSettings = settings
-        decoratedView.resume()
+        view.barcodeView.cameraSettings = settings
+        view.resume()
     }
 
     override fun startCameraPreview() {
-        decoratedView.resume()
+        view.resume()
     }
 
     override fun stopCameraPreview() {
-        decoratedView.pause()
+        view.pause()
     }
 
     override fun playBeepSound() {
