@@ -633,7 +633,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
             oldUnit = oldProductNutriment.unit
             oldMod = oldProductNutriment.modifier
             oldValue = if (isDataPer100g)
-                oldProductNutriment.per100gInUnit.value
+                oldProductNutriment.per100gInUnit!!.value
             else
                 oldProductNutriment.perServingInUnit!!.value
         }
