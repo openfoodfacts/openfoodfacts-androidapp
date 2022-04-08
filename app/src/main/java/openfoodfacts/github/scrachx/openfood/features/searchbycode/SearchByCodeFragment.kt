@@ -103,10 +103,13 @@ class SearchByCodeFragment : NavigationWithDrawerBaseFragment() {
         super.onDrawerClosed()
 
         // Force the keyboard to be visible
-        if (binding.editTextBarcode.isEmpty()) {
-            binding.editTextBarcode.requestFocus()
-            requireActivity().showKeyboard()
+        _binding?.apply {
+            if (editTextBarcode.isEmpty()) {
+                editTextBarcode.requestFocus()
+                requireActivity().showKeyboard()
+            }
         }
+
     }
 
     companion object {
