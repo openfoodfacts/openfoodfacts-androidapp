@@ -210,7 +210,6 @@ class EnvironmentProductFragment : BaseFragment() {
         mUrlImage = photoFile.absolutePath
         picasso
             .load(photoFile)
-            .fit()
             .into(binding.imageViewPackaging)
     }
 
