@@ -26,7 +26,7 @@ sealed class AnalyticsEvent(val category: String, val action: String, val name: 
 
     object RobotoffLoggedInAfterPrompt : AnalyticsEvent("user-account", "logged-in-after-prompt", "robotoff", null)
 
-    data class ShoppingListCreated(val listName: String?) : AnalyticsEvent("shopping-lists", "created", listName, null)
+    object ShoppingListCreated : AnalyticsEvent("shopping-lists", "created", null, null)
 
     data class ShoppingListProductAdded(val barcode: String) : AnalyticsEvent("shopping-lists", "add_product", barcode, null)
 
