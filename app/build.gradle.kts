@@ -115,7 +115,7 @@ dependencies {
     kapt("org.greenrobot:eventbus-annotation-processor:$eventBusVersion")
 
     // Material design
-    implementation("com.google.android.material:material:1.4.0")
+    implementation("com.google.android.material:material:1.5.0")
 
     // Image Loading
     implementation("com.squareup.picasso:picasso:2.8")
@@ -135,7 +135,7 @@ dependencies {
     // UI Component : Material Drawer
     // https://github.com/mikepenz/MaterialDrawer/commit/3b2cb1db4c3b6afe639b0f3c21c03c1de68648a3
     // TODO: We need minSdk 16 to update
-    implementation("com.mikepenz:materialdrawer:7.0.0") { isTransitive = true }
+    implementation("com.mikepenz:materialdrawer:8.4.5") { isTransitive = true }
 
     // DO NOT UPDATE : RecyclerViewCacheUtil removed, needs rework
     implementation("com.mikepenz:fastadapter-commons:3.3.1@aar")
