@@ -24,7 +24,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.BuildConfig
@@ -372,14 +371,32 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
             putExtra(Intent.EXTRA_TEXT, shareUrl)
             type = "text/plain"
         }, null))
+
+        matomoAnalytics.trackEvent(AnalyticsEvent.ShoppingListShared)
     }
 
     override fun onRightClicked(position: Int) {
         if (adapter.products.isEmpty()) return
 
         val productToRemove = adapter.products[position]
-        daoSession.listedProductDao.delete(productToRemove)
+        removeListedProductFromDatabase(productToRemove)
+
+        matomoAnalytics.trackEvent(AnalyticsEvent.ShoppingListProductRemoved(
+            barcode = productToRemove.barcode
+        ))
         adapter.remove(productToRemove)
+    }
+
+    private fun removeListedProductFromDatabase(productToRemove: ListedProduct) {
+        daoSession.listedProductDao.delete(productToRemove)
+
+        productList.apply {
+            numOfProducts -= 1
+            products.remove(productToRemove)
+        }
+
+        daoSession.listedProductDao.delete(productToRemove)
+        daoSession.productListsDao.update(productList)
     }
 
     override fun onBackPressed() {

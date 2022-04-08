@@ -67,7 +67,6 @@ import java.io.InputStream
 import java.io.InputStreamReader
 import javax.inject.Inject
 
-
 @AndroidEntryPoint
 class ProductListsActivity : BaseActivity(), SwipeController.Actions {
     private var _binding: ActivityProductListsBinding? = null
@@ -102,12 +101,7 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
 
         binding.fabAdd.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_plus_blue_24, 0, 0, 0)
 
-        // FIXME: remove runBlocking
-        productListsDao = daoSession.productListsDao.defaultIfEmpty(this)
-        val productLists = productListsDao.loadAll().toMutableList()
-
-        adapter = ProductListsAdapter(this, productLists)
-
+        adapter = ProductListsAdapter(this, mutableListOf())
 
         binding.productListsRecyclerView.layoutManager = LinearLayoutManager(this)
         binding.productListsRecyclerView.adapter = adapter
@@ -122,6 +116,8 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
 
         binding.productListsRecyclerView.addOnItemTouchListener(
             RecyclerItemClickListener(this) { _, position ->
+                val productLists = adapter.lists
+
                 val id = productLists[position].id
                 val listName = productLists[position].listName
                 Intent(this, ProductListActivity::class.java).apply {
@@ -136,6 +132,12 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
         itemTouchHelper.attachToRecyclerView(binding.productListsRecyclerView)
 
         binding.fabAdd.setOnClickListener { showCreateListDialog() }
+    }
+
+    private fun refreshLists() {
+        // FIXME: remove runBlocking
+        productListsDao = daoSession.productListsDao.defaultIfEmpty(this)
+        adapter.replaceWith(productListsDao.loadAll())
     }
 
     // On Android < 5, the drawableStart attribute in XML will cause a crash
@@ -178,10 +180,10 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
     }
 
     private fun addNewListName(listName: String, productToAdd: Product?) {
-        matomoAnalytics.trackEvent(AnalyticsEvent.ShoppingListCreated)
+        matomoAnalytics.trackEvent(AnalyticsEvent.ShoppingListCreated(listName))
         val productList = ProductLists(listName, if (productToAdd != null) 1 else 0)
 
-        adapter.lists.add(productList)
+        adapter.add(productList)
         productListsDao.insert(productList)
 
         adapter.notifyDataSetChanged()
@@ -261,6 +263,7 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
 
     public override fun onResume() {
         super.onResume()
+        refreshLists()
         binding.bottomNavigation.bottomNavigation.selectNavigationItem(R.id.my_lists)
     }
 
