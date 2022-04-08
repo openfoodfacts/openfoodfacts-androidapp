@@ -20,11 +20,8 @@ import android.content.SharedPreferences
 import android.hardware.Camera
 import android.os.Bundle
 import android.util.Log
+import android.view.*
 import android.view.Gravity.CENTER
-import android.view.KeyEvent
-import android.view.MenuItem
-import android.view.View
-import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -36,10 +33,16 @@ import androidx.appcompat.widget.TooltipCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
+import androidx.core.view.isVisible
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.commit
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.zxing.ResultPoint
+import com.google.zxing.client.android.BeepManager
+import com.journeyapps.barcodescanner.BarcodeCallback
+import com.journeyapps.barcodescanner.BarcodeResult
+import com.journeyapps.barcodescanner.DefaultDecoderFactory
 import com.mikepenz.iconics.IconicsColor
 import com.mikepenz.iconics.IconicsDrawable
 import com.mikepenz.iconics.IconicsSize
@@ -49,6 +52,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
+import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsView
@@ -119,10 +123,15 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
     @Inject
     lateinit var scannerPrefsRepository: ScannerPreferencesRepository
 
+    private lateinit var beepManager: BeepManager
     internal lateinit var quickViewBehavior: BottomSheetBehavior<LinearLayout>
     private val barcodeInputListener = BarcodeInputListener()
 
+    private val barcodeScanCallback = BarcodeScannerCallback()
+
     private val bottomSheetCallback by lazy { QuickViewCallback(this) }
+
+    private val settings by lazy { getAppPreferences() }
 
     private var productDisp: Job? = null
     private var hintBarcodeDisp: Job? = null
@@ -135,8 +144,12 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
     private var productShowing = false
     private var beepActive = false
 
+    /**
+    boolean to determine if MLKit Scanner is to be used
+     */
+    internal var useMLScanner = false
 
-    internal lateinit var cameraView: CameraView<*>
+    internal val mlKitView by lazy { MlKitCameraView(this) }
 
     private var offlineSavedProduct: OfflineSavedProduct? = null
     private var product: Product? = null
@@ -157,9 +170,9 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
     @Suppress("unused")
     internal fun showProduct(barcode: String) {
         productShowing = true
-
-        cameraView.stopCameraPreview()
-
+        binding.barcodeScanner.isVisible = false
+        binding.barcodeScanner.pause()
+        mlKitView.stopCameraPreview()
         binding.imageForScreenshotGenerationOnly.visibility = View.VISIBLE
         setShownProduct(barcode)
     }
@@ -460,6 +473,7 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
         _binding = ActivityContinuousScanBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        useMLScanner = BuildConfig.USE_MLKIT && settings.getBoolean(getString(R.string.pref_scanner_mlkit_key), false)
 
         TooltipCompat.setTooltipText(binding.toggleFlash, getString(R.string.toggle_flash))
 
@@ -492,18 +506,37 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
 
         quickViewBehavior.addBottomSheetCallback(bottomSheetCallback)
 
-        beepActive = scannerPrefsRepository.ringPref
-        flashActive = scannerPrefsRepository.flashPref
-        autoFocusActive = scannerPrefsRepository.autoFocusPref
-        cameraState = scannerPrefsRepository.cameraPref.value
+        beepActive = scannerPrefsRepository.getRingPref()
+        flashActive = scannerPrefsRepository.getFlashPref()
+        autoFocusActive = scannerPrefsRepository.getAutoFocusPref()
+        cameraState = scannerPrefsRepository.getCameraPref().value
 
         // Setup barcode scanner
-        cameraView = scannerPrefsRepository.buildCameraView(this, binding.cameraPreviewViewStub)
+        if (!useMLScanner) {
+            binding.barcodeScanner.visibility = View.VISIBLE
+            binding.cameraPreviewViewStub.isVisible = false
+            binding.barcodeScanner.barcodeView.decoderFactory = DefaultDecoderFactory(ScannerPreferencesRepository.BARCODE_FORMATS)
+            binding.barcodeScanner.setStatusText(null)
+            binding.barcodeScanner.setOnClickListener {
+                quickViewBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+            }
+            binding.barcodeScanner.barcodeView.cameraSettings.run {
+                requestedCameraId = cameraState
+                isAutoFocusEnabled = autoFocusActive
+            }
 
-        cameraView.attach(cameraState, flashActive, autoFocusActive)
-        cameraView.barcodeScannedCallback = ::onBarcodeResult
-        cameraView.onOverlayClickListener = {
-            quickViewBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+            // Start continuous scanner
+            binding.barcodeScanner.decodeContinuous(barcodeScanCallback)
+            beepManager = BeepManager(this)
+        } else {
+            binding.barcodeScanner.isVisible = false
+            mlKitView.attach(binding.cameraPreviewViewStub, cameraState, flashActive, autoFocusActive)
+            mlKitView.onOverlayClickListener = {
+                quickViewBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+            }
+            mlKitView.barcodeScannedCallback = {
+                mlBarcodeCallback(it)
+            }
         }
 
         binding.quickViewSearchByBarcode.setOnEditorActionListener(barcodeInputListener)
@@ -513,6 +546,21 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
         setupPopupMenu()
     }
 
+    private fun mlBarcodeCallback(barcodeValue: String) {
+        hintBarcodeDisp?.cancel()
+
+        // Prevent duplicate scans
+        if (barcodeValue.isEmpty() || barcodeValue == lastBarcode) return
+
+        val invalidBarcode = daoSession.invalidBarcodeDao.unique {
+            where(InvalidBarcodeDao.Properties.Barcode.eq(barcodeValue))
+        }
+
+        // Scanned barcode is in the list of invalid barcodes, do nothing
+        if (invalidBarcode != null) return
+
+        lastBarcode = barcodeValue.also { if (!isFinishing) setShownProduct(it) }
+    }
 
     override fun onStart() {
         super.onStart()
@@ -523,8 +571,10 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
         super.onResume()
         binding.bottomNavigation.bottomNavigation.selectNavigationItem(R.id.scan_bottom_nav)
 
-        if (quickViewBehavior.state != BottomSheetBehavior.STATE_EXPANDED) {
-            cameraView.onResume()
+        if (!useMLScanner && quickViewBehavior.state != BottomSheetBehavior.STATE_EXPANDED) {
+            binding.barcodeScanner.resume()
+        } else if (useMLScanner && quickViewBehavior.state != BottomSheetBehavior.STATE_EXPANDED) {
+            mlKitView.onResume()
         }
         matomoAnalytics.trackView(AnalyticsView.Scanner)
     }
@@ -532,7 +582,7 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
     override fun onPostResume() {
         super.onPostResume()
         // Back to working state after the bottom sheet is dismissed.
-        cameraView.updateWorkflowState(WorkflowState.DETECTING)
+        mlKitView.updateWorkflowState(WorkflowState.DETECTING)
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -541,7 +591,11 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
     }
 
     override fun onPause() {
-        cameraView.stopCameraPreview()
+        if (!useMLScanner) {
+            binding.barcodeScanner.pause()
+        } else {
+            mlKitView.stopCameraPreview()
+        }
         super.onPause()
     }
 
@@ -551,7 +605,7 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
     }
 
     override fun onDestroy() {
-        cameraView.detach()
+        mlKitView.detach()
 
         // Dispose all RxJava disposable
         hintBarcodeDisp?.cancel()
@@ -588,7 +642,9 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
             // turn flash on if flashActive true in pref
             if (flashActive) {
                 binding.toggleFlash.setImageResource(R.drawable.ic_flash_on_white_24dp)
-                cameraView.updateFlashSetting(true)
+                if (!useMLScanner) {
+                    binding.barcodeScanner.setTorchOn()
+                }
             }
             if (beepActive) {
                 it.menu.findItem(R.id.toggleBeep).isChecked = true
@@ -606,11 +662,19 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
         } else {
             Camera.CameraInfo.CAMERA_FACING_BACK
         }
-        scannerPrefsRepository.cameraPref = CameraState.fromInt(cameraState)
+        scannerPrefsRepository.saveCameraPref(CameraState.fromInt(cameraState))
 
-
-        cameraView.toggleCamera(cameraState)
-
+        if (!useMLScanner) {
+            val settings = binding.barcodeScanner.barcodeView.cameraSettings
+            if (binding.barcodeScanner.barcodeView.isPreviewActive) {
+                binding.barcodeScanner.pause()
+            }
+            settings.requestedCameraId = cameraState
+            binding.barcodeScanner.barcodeView.cameraSettings = settings
+            binding.barcodeScanner.resume()
+        } else {
+            mlKitView.toggleCamera()
+        }
     }
 
     private fun toggleFlash() {
@@ -618,18 +682,26 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
             flashActive = false
             binding.toggleFlash.setImageResource(R.drawable.ic_flash_off_white_24dp)
 
-            cameraView.updateFlashSetting(flashActive)
+            if (useMLScanner) {
+                mlKitView.updateFlashSetting(flashActive)
+            } else {
+                binding.barcodeScanner.setTorchOff()
+            }
         } else {
             flashActive = true
             binding.toggleFlash.setImageResource(R.drawable.ic_flash_on_white_24dp)
 
-            cameraView.updateFlashSetting(flashActive)
+            if (useMLScanner) {
+                mlKitView.updateFlashSetting(flashActive)
+            } else {
+                binding.barcodeScanner.setTorchOn()
+            }
         }
-        scannerPrefsRepository.flashPref = flashActive
+        scannerPrefsRepository.saveFlashPref(flashActive)
     }
 
     private fun showMoreSettings() {
-        if (cameraView is ZXCameraView) {
+        if (useMLScanner) {
             cameraSettingMenu.menu.findItem(R.id.toggleBeep).isEnabled = false
         }
         cameraSettingMenu.setOnMenuItemClickListener { item: MenuItem ->
@@ -637,14 +709,25 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
                 R.id.toggleBeep -> {
                     beepActive = !beepActive
                     item.isChecked = beepActive
-                    scannerPrefsRepository.ringPref = beepActive
+                    scannerPrefsRepository.saveRingPref(beepActive)
                 }
                 R.id.toggleAutofocus -> {
                     autoFocusActive = !autoFocusActive
                     item.isChecked = autoFocusActive
-                    scannerPrefsRepository.autoFocusPref = autoFocusActive
+                    scannerPrefsRepository.saveAutoFocusPref(autoFocusActive)
 
-                    cameraView.updateFocusModeSetting(autoFocusActive)
+                    if (useMLScanner) {
+                        mlKitView.updateFocusModeSetting(autoFocusActive)
+                    } else {
+                        if (binding.barcodeScanner.barcodeView.isPreviewActive) {
+                            binding.barcodeScanner.pause()
+                        }
+                        val settings = binding.barcodeScanner.barcodeView.cameraSettings
+                        settings.isAutoFocusEnabled = autoFocusActive
+                        binding.barcodeScanner.resume()
+                        binding.barcodeScanner.barcodeView.cameraSettings = settings
+
+                    }
                 }
                 R.id.troubleScanning -> {
                     hideAllViews()
@@ -721,26 +804,31 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
         }
     }
 
-    private fun onBarcodeResult(text: String?) {
-        hintBarcodeDisp?.cancel()
+    private inner class BarcodeScannerCallback : BarcodeCallback {
+        override fun barcodeResult(result: BarcodeResult) {
+            hintBarcodeDisp?.cancel()
 
-        // Prevent duplicate scans
-        if (text == null || text.isEmpty() || text == lastBarcode) return
+            // Prevent duplicate scans
+            if (result.text == null || result.text.isEmpty() || result.text == lastBarcode) return
 
-        val invalidBarcode = daoSession.invalidBarcodeDao.unique {
-            where(InvalidBarcodeDao.Properties.Barcode.eq(text))
-        }
-        // Scanned barcode is in the list of invalid barcodes, do nothing
-        if (invalidBarcode != null) return
+            val invalidBarcode = daoSession.invalidBarcodeDao.unique {
+                where(InvalidBarcodeDao.Properties.Barcode.eq(result.text))
+            }
+            // Scanned barcode is in the list of invalid barcodes, do nothing
+            if (invalidBarcode != null) return
 
-        if (beepActive) {
-            cameraView.playBeepSound()
+            if (beepActive) {
+                beepManager.playBeepSound()
+            }
+            lastBarcode = result.text
+            if (!isFinishing) {
+                setShownProduct(result.text)
+                matomoAnalytics.trackEvent(AnalyticsEvent.ScannedBarcode(result.text))
+            }
         }
-        lastBarcode = text
-        if (!isFinishing) {
-            setShownProduct(text)
-            matomoAnalytics.trackEvent(AnalyticsEvent.ScannedBarcode(text))
-        }
+
+        // Here possible results are useless but we must implement this
+        override fun possibleResultPoints(resultPoints: List<ResultPoint>) = Unit
     }
 
     companion object {

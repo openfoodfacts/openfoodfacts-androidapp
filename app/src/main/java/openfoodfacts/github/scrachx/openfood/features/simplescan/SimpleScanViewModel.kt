@@ -24,17 +24,17 @@ class SimpleScanViewModel @Inject constructor(
 
     private val _scannerOptionsFlow = MutableStateFlow(
         SimpleScanScannerOptions(
-            mlScannerEnabled = scannerPrefsRepository.mlScannerEnabled,
-            cameraState = scannerPrefsRepository.cameraPref,
-            autoFocusEnabled = scannerPrefsRepository.autoFocusPref,
-            flashEnabled = scannerPrefsRepository.flashPref
+            mlScannerEnabled = scannerPrefsRepository.isMlScannerEnabled(),
+            cameraState = scannerPrefsRepository.getCameraPref(),
+            autoFocusEnabled = scannerPrefsRepository.getAutoFocusPref(),
+            flashEnabled = scannerPrefsRepository.getFlashPref()
         )
     )
     val scannerOptionsFlow = _scannerOptionsFlow.asStateFlow()
 
     fun changeCameraAutoFocus() {
         val newValue = !_scannerOptionsFlow.value.autoFocusEnabled
-        scannerPrefsRepository.autoFocusPref = newValue
+        scannerPrefsRepository.saveAutoFocusPref(newValue)
         _scannerOptionsFlow.value = _scannerOptionsFlow.value.copy(
             autoFocusEnabled = newValue
         )
@@ -42,7 +42,7 @@ class SimpleScanViewModel @Inject constructor(
 
     fun changeCameraFlash() {
         val newValue = !_scannerOptionsFlow.value.flashEnabled
-        scannerPrefsRepository.flashPref = newValue
+        scannerPrefsRepository.saveFlashPref(newValue)
         _scannerOptionsFlow.value = _scannerOptionsFlow.value.copy(
             flashEnabled = newValue
         )
@@ -53,7 +53,7 @@ class SimpleScanViewModel @Inject constructor(
             CameraState.Front -> CameraState.Back
             CameraState.Back -> CameraState.Front
         }
-        scannerPrefsRepository.cameraPref = newValue
+        scannerPrefsRepository.saveCameraPref(newValue)
         _scannerOptionsFlow.value = _scannerOptionsFlow.value.copy(
             cameraState = newValue
         )

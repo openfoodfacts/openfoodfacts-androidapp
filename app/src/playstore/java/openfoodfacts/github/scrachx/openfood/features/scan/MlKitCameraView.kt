@@ -1,14 +1,12 @@
 package openfoodfacts.github.scrachx.openfood.features.scan
 
+import android.util.Log
 import android.view.ViewStub
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.chip.Chip
-import logcat.LogPriority
-import logcat.asLog
-import logcat.logcat
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.camera.CameraSource
 import openfoodfacts.github.scrachx.openfood.camera.CameraSourcePreview
@@ -17,24 +15,25 @@ import openfoodfacts.github.scrachx.openfood.camera.WorkflowModel
 import openfoodfacts.github.scrachx.openfood.scanner.BarcodeProcessor
 import java.io.IOException
 
-class MLKitCameraView(
-    activity: AppCompatActivity,
-    viewStub: ViewStub,
-) : CameraView<CameraSourcePreview>(
-    activity,
-    viewStub,
-    R.layout.view_camera_mlkit_preview
-) {
+class MlKitCameraView(private val activity: AppCompatActivity) {
+
+    companion object {
+        private const val LOG_TAG = "MlKitCameraView"
+    }
+
+    private var preview: CameraSourcePreview? = null
     private var graphicOverlay: GraphicOverlay? = null
     private var promptChip: Chip? = null
 
     private var cameraSource: CameraSource? = null
     private var workflowModel: WorkflowModel? = null
 
-    override fun attach(cameraState: Int, flashActive: Boolean, autoFocusActive: Boolean) {
-        super.attach(cameraState, flashActive, autoFocusActive)
+    var onOverlayClickListener: (() -> Unit)? = null
+    var barcodeScannedCallback: ((String) -> Unit)? = null
 
-        view = (viewStub.inflate() as CameraSourcePreview).apply {
+    fun attach(viewStub: ViewStub, cameraState: Int, flashActive: Boolean, autoFocusActive: Boolean) {
+        viewStub.layoutResource = R.layout.view_camera_source_preview
+        preview = (viewStub.inflate() as CameraSourcePreview).apply {
             graphicOverlay = findViewById(R.id.camera_preview_graphic_overlay)
             promptChip = findViewById(R.id.bottom_prompt_chip)
         }
@@ -42,58 +41,59 @@ class MLKitCameraView(
         setUpWorkflowModel()
     }
 
-    override fun detach() {
+    fun detach() {
         stopCameraPreview()
         cameraSource?.release()
         cameraSource = null
     }
 
-    override fun onResume() {
+    fun onResume() {
         workflowModel?.markCameraFrozen()
         cameraSource?.setFrameProcessor(BarcodeProcessor(graphicOverlay!!, workflowModel!!))
         workflowModel?.setWorkflowState(WorkflowState.DETECTING)
+
     }
 
-    override fun startCameraPreview() {
+    fun startCameraPreview() {
         val workflowModel = this.workflowModel ?: return
         val cameraSource = this.cameraSource ?: return
 
         if (!workflowModel.isCameraLive) {
             try {
                 workflowModel.markCameraLive()
-                view.start(cameraSource)
+                preview?.start(cameraSource)
             } catch (e: IOException) {
-                logcat(LogPriority.ERROR) { "Failed to start camera preview! ${e.asLog()}" }
+                Log.e(LOG_TAG, "Failed to start camera preview!", e)
                 cameraSource.release()
                 this.cameraSource = null
             }
         }
     }
 
-    override fun stopCameraPreview() {
+    fun stopCameraPreview() {
         workflowModel?.let {
             if (it.isCameraLive) {
                 it.markCameraFrozen()
-                view.stop()
+                preview?.stop()
             }
         }
     }
 
-    override fun updateFlashSetting(flashActive: Boolean) {
+    fun updateFlashSetting(flashActive: Boolean) {
         cameraSource?.updateFlashMode(flashActive)
     }
 
-    override fun updateFocusModeSetting(autoFocusActive: Boolean) {
+    fun updateFocusModeSetting(autoFocusActive: Boolean) {
         cameraSource?.setFocusMode(autoFocusActive)
     }
 
-    override fun toggleCamera(requestedCameraId: Int) {
+    fun toggleCamera() {
         stopCameraPreview()
         cameraSource?.switchCamera()
         startCameraPreview()
     }
 
-    override fun updateWorkflowState(state: WorkflowState) {
+    fun updateWorkflowState(state: WorkflowState) {
         workflowModel?.setWorkflowState(state)
     }
 
@@ -142,7 +142,7 @@ class MLKitCameraView(
         workflowModel?.detectedBarcode?.observe(activity) { barcode ->
             barcode?.rawValue?.let {
                 barcodeScannedCallback?.invoke(it)
-                logcat { "barcode = ${barcode.rawValue}" }
+                Log.i(LOG_TAG, "barcode =" + barcode.rawValue)
             }
         }
     }

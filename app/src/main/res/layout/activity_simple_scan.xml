@@ -6,6 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".features.simplescan.SimpleScanActivity">
 
+    <com.journeyapps.barcodescanner.DecoratedBarcodeView
+        android:id="@+id/scan_barcode_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
     <ViewStub
         android:id="@+id/scan_ml_view"
         android:layout_width="match_parent"
