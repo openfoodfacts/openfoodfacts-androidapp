@@ -49,8 +49,12 @@ internal class QuickViewCallback(
             if (slideOffset > 0.01f) {
                 activity.binding.quickViewDetails.visibility = View.GONE
                 activity.binding.quickViewTags.visibility = View.GONE
-                activity.cameraView.updateWorkflowState(WorkflowState.DETECTED)
-                activity.cameraView.stopCameraPreview()
+                if (activity.useMLScanner) {
+                    activity.mlKitView.updateWorkflowState(WorkflowState.DETECTED)
+                    activity.mlKitView.stopCameraPreview()
+                } else {
+                    activity.binding.barcodeScanner.pause()
+                }
                 if (slideDelta > 0 && activity.productViewFragment != null) {
                     activity.productViewFragment!!.bottomSheetWillGrow()
                     activity.binding.bottomNavigation.bottomNavigation.visibility = View.GONE
@@ -63,8 +67,12 @@ internal class QuickViewCallback(
     }
 
     private fun startScanner() {
-        activity.cameraView.updateWorkflowState(WorkflowState.DETECTING)
-        activity.cameraView.startCameraPreview()
+        if (activity.useMLScanner) {
+            activity.mlKitView.updateWorkflowState(WorkflowState.DETECTING)
+            activity.mlKitView.startCameraPreview()
+        } else {
+            activity.binding.barcodeScanner.resume()
+        }
 
         activity.binding.quickViewDetails.visibility = View.VISIBLE
         activity.binding.quickViewTags.visibility = if (activity.analysisTagsEmpty) View.GONE else View.VISIBLE
@@ -73,8 +81,12 @@ internal class QuickViewCallback(
     }
 
     private fun stopScanner() {
-        activity.cameraView.updateWorkflowState(WorkflowState.DETECTED)
-        activity.cameraView.stopCameraPreview()
+        if (activity.useMLScanner) {
+            activity.mlKitView.updateWorkflowState(WorkflowState.DETECTED)
+            activity.mlKitView.stopCameraPreview()
+        } else {
+            activity.binding.barcodeScanner.pause()
+        }
 
         activity.binding.toggleFlash.visibility = View.GONE
     }

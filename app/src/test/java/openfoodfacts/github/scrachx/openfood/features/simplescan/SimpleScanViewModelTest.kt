@@ -13,9 +13,7 @@ import openfoodfacts.github.scrachx.openfood.utils.InstantTaskExecutorExtension
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
-import org.mockito.kotlin.doReturn
-import org.mockito.kotlin.mock
-import org.mockito.kotlin.whenever
+import org.mockito.kotlin.*
 
 @ExtendWith(InstantTaskExecutorExtension::class)
 @ExperimentalCoroutinesApi
@@ -28,10 +26,10 @@ class SimpleScanViewModelTest {
 
     @BeforeEach
     fun setup() {
-        whenever(prefsRepository.autoFocusPref).doReturn(true)
-        whenever(prefsRepository.flashPref).doReturn(true)
-        whenever(prefsRepository.mlScannerEnabled).doReturn(false)
-        whenever(prefsRepository.cameraPref).doReturn(CameraState.Back)
+        whenever(prefsRepository.getAutoFocusPref()).doReturn(true)
+        whenever(prefsRepository.getFlashPref()).doReturn(true)
+        whenever(prefsRepository.isMlScannerEnabled()).doReturn(false)
+        whenever(prefsRepository.getCameraPref()).doReturn(CameraState.Back)
 
 
         viewModel = SimpleScanViewModel(prefsRepository, dispatchers)
@@ -66,7 +64,7 @@ class SimpleScanViewModelTest {
         viewModel.changeCameraAutoFocus()
 
         // THEN
-        assertThat(prefsRepository.autoFocusPref).isFalse()
+        verify(prefsRepository).saveAutoFocusPref(eq(false))
         assertThat(flowItems.size).isEqualTo(2)
         assertThat(flowItems[1].autoFocusEnabled).isFalse()
         job.cancel()
@@ -84,7 +82,7 @@ class SimpleScanViewModelTest {
         viewModel.changeCameraFlash()
 
         // THEN
-        assertThat(prefsRepository.flashPref).isFalse()
+        verify(prefsRepository).saveFlashPref(eq(false))
         assertThat(flowItems.size).isEqualTo(2)
         assertThat(flowItems[1].flashEnabled).isFalse()
         job.cancel()
@@ -102,7 +100,7 @@ class SimpleScanViewModelTest {
         viewModel.changeCameraState()
 
         // THEN
-        assertThat(prefsRepository.cameraPref).isEqualTo(CameraState.Front)
+        verify(prefsRepository).saveCameraPref(eq(CameraState.Front))
         assertThat(flowItems.size).isEqualTo(2)
         assertThat(flowItems[1].cameraState).isEqualTo(CameraState.Front)
         job.cancel()
