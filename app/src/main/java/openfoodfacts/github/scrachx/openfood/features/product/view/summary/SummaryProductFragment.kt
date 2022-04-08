@@ -893,9 +893,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         // Add listener to text view
         val addToNewList = dialog.findViewById<TextView>(R.id.tvAddToNewList)!!
         addToNewList.setOnClickListener {
-            context.startActivity(Intent(context, ProductListsActivity::class.java).apply {
-                putExtra("product", product)
-            })
+            ProductListsActivity.start(context, productToAdd = product)
         }
     }
 
