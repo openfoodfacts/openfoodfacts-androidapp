@@ -180,7 +180,7 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
     }
 
     private fun addNewListName(listName: String, productToAdd: Product?) {
-        matomoAnalytics.trackEvent(AnalyticsEvent.ShoppingListCreated(listName))
+        matomoAnalytics.trackEvent(AnalyticsEvent.ShoppingListCreated)
         val productList = ProductLists(listName, if (productToAdd != null) 1 else 0)
 
         adapter.add(productList)
