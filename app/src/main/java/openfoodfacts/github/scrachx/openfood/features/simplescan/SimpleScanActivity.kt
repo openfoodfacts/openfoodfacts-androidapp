@@ -25,12 +25,17 @@ import com.journeyapps.barcodescanner.DefaultDecoderFactory
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import openfoodfacts.github.scrachx.openfood.R
+import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
+import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsTrackingEvent
+import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
+import openfoodfacts.github.scrachx.openfood.analytics.startTrackEvent
 import openfoodfacts.github.scrachx.openfood.databinding.ActivitySimpleScanBinding
 import openfoodfacts.github.scrachx.openfood.features.scan.MlKitCameraView
 import openfoodfacts.github.scrachx.openfood.features.simplescan.SimpleScanActivityContract.Companion.KEY_SCANNED_BARCODE
 import openfoodfacts.github.scrachx.openfood.models.CameraState
 import openfoodfacts.github.scrachx.openfood.repositories.ScannerPreferencesRepository
 import java.util.concurrent.atomic.AtomicBoolean
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class SimpleScanActivity : AppCompatActivity() {
@@ -40,6 +45,10 @@ class SimpleScanActivity : AppCompatActivity() {
 
     private val mlKitView by lazy { MlKitCameraView(this) }
     private val scannerInitialized = AtomicBoolean(false)
+
+    @Inject
+    lateinit var matomoAnalytics: MatomoAnalytics
+    private var trackingEvent: AnalyticsTrackingEvent? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -96,11 +105,21 @@ class SimpleScanActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         startScanning()
+        trackingEvent = startTrackEvent(AnalyticsEvent.BarcodeDecoder())
     }
 
     override fun onPause() {
         super.onPause()
         stopScanning()
+
+        trackingEvent?.let {
+            matomoAnalytics.trackEvent(
+                AnalyticsEvent.BarcodeDecoder(
+                    success = viewModel.sideEffectsFlow.replayCache.lastOrNull() is SimpleScanViewModel.SideEffect.BarcodeDetected,
+                    duration = it.computeDurationInSeconds(),
+                )
+            )
+        }
     }
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {
