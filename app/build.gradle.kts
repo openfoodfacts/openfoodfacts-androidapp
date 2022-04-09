@@ -115,7 +115,7 @@ dependencies {
     kapt("org.greenrobot:eventbus-annotation-processor:$eventBusVersion")
 
     // Material design
-    implementation("com.google.android.material:material:1.4.0")
+    implementation("com.google.android.material:material:1.5.0")
 
     // Image Loading
     implementation("com.squareup.picasso:picasso:2.8")
@@ -149,7 +149,7 @@ dependencies {
     implementation("com.github.hootsuite:nachos:1.2.0")
 
     // Crash analytics
-    implementation("io.sentry:sentry-android:5.7.1")
+    implementation("io.sentry:sentry-android:5.7.2")
     implementation("com.github.matomo-org:matomo-sdk-android:v4.1.2")
 
     // ShowCaseView dependency
@@ -184,12 +184,12 @@ dependencies {
     androidTestImplementation("androidx.test:runner:1.3.0") { exclude("junit") }
     androidTestImplementation("androidx.test:rules:1.4.0")
 
-    androidTestImplementation("androidx.test.ext:junit:1.1.2") { exclude("junit") }
+    androidTestImplementation("androidx.test.ext:junit:1.1.3") { exclude("junit") }
 
     androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
     androidTestImplementation("androidx.test.espresso:espresso-intents:3.4.0")
     androidTestImplementation("androidx.test.espresso:espresso-web:3.4.0")
-    androidTestImplementation("androidx.test.espresso:espresso-contrib:3.3.0") {
+    androidTestImplementation("androidx.test.espresso:espresso-contrib:3.4.0") {
         exclude(group = "com.android.support", module = "appcompat-v7")
         exclude(group = "com.android.support", module = "support-v4")
         exclude(group = "com.android.support", module = "design")

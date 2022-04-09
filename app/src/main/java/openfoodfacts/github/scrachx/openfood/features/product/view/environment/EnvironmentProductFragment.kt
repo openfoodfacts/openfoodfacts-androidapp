@@ -13,6 +13,7 @@ import androidx.core.text.HtmlCompat.FROM_HTML_MODE_COMPACT
 import androidx.core.text.bold
 import androidx.core.text.buildSpannedString
 import androidx.lifecycle.lifecycleScope
+import com.squareup.picasso.MemoryPolicy
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -106,10 +107,11 @@ class EnvironmentProductFragment : BaseFragment() {
         }
 
         val carbonFootprintNutriment = nutriments[Nutriment.CARBON_FOOTPRINT]
-        if (carbonFootprintNutriment != null) {
+        val carbonFootprintMeasure = carbonFootprintNutriment?.per100gInUnit
+        if (carbonFootprintMeasure != null) {
             binding.textCarbonFootprint.text = buildSpannedString {
                 bold { append(getString(R.string.textCarbonFootprint)) }
-                append(getRoundNumber(carbonFootprintNutriment.per100gInUnit))
+                append(getRoundNumber(carbonFootprintMeasure))
                 append(carbonFootprintNutriment.unit.sym)
             }
         } else {
@@ -209,7 +211,7 @@ class EnvironmentProductFragment : BaseFragment() {
         mUrlImage = photoFile.absolutePath
         picasso
             .load(photoFile)
-            .fit()
+            .memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE)
             .into(binding.imageViewPackaging)
     }
 
