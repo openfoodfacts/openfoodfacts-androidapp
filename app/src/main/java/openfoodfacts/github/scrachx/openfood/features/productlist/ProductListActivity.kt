@@ -372,14 +372,32 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
             putExtra(Intent.EXTRA_TEXT, shareUrl)
             type = "text/plain"
         }, null))
+
+        matomoAnalytics.trackEvent(AnalyticsEvent.ShoppingListShared)
     }
 
     override fun onRightClicked(position: Int) {
         if (adapter.products.isEmpty()) return
 
         val productToRemove = adapter.products[position]
-        daoSession.listedProductDao.delete(productToRemove)
+        removeListedProductFromDatabase(productToRemove)
+
+        matomoAnalytics.trackEvent(AnalyticsEvent.ShoppingListProductRemoved(
+            barcode = productToRemove.barcode
+        ))
         adapter.remove(productToRemove)
+    }
+
+    private fun removeListedProductFromDatabase(productToRemove: ListedProduct) {
+        daoSession.listedProductDao.delete(productToRemove)
+
+        productList.apply {
+            numOfProducts -= 1
+            products.remove(productToRemove)
+        }
+
+        daoSession.listedProductDao.delete(productToRemove)
+        daoSession.productListsDao.update(productList)
     }
 
     override fun onBackPressed() {

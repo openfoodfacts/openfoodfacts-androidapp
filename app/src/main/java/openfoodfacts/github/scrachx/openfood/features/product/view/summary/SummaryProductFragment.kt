@@ -82,6 +82,7 @@ import openfoodfacts.github.scrachx.openfood.images.ProductImage
 import openfoodfacts.github.scrachx.openfood.models.*
 import openfoodfacts.github.scrachx.openfood.models.entities.ListedProduct
 import openfoodfacts.github.scrachx.openfood.models.entities.ListedProductDao
+import openfoodfacts.github.scrachx.openfood.models.entities.ProductLists
 import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveName
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenHelper
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenName
@@ -883,7 +884,8 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
                 it.productDetails = product.getProductBrandsQuantityDetails()
                 it.imageUrl = product.getImageSmallUrl(localeManager.getLanguage())
             }
-            daoSession.listedProductDao.insertOrReplace(product)
+            addListedProductToDatabase(product, list)
+            matomoAnalytics.trackEvent(AnalyticsEvent.ShoppingListProductAdded(product.barcode))
             dialog.dismiss()
             onRefresh()
         }
@@ -891,12 +893,20 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         // Add listener to text view
         val addToNewList = dialog.findViewById<TextView>(R.id.tvAddToNewList)!!
         addToNewList.setOnClickListener {
-            context.startActivity(Intent(context, ProductListsActivity::class.java).apply {
-                putExtra("product", product)
-            })
+            ProductListsActivity.start(context, productToAdd = product)
         }
     }
 
+    private fun addListedProductToDatabase(
+        product: ListedProduct,
+        list: ProductLists
+    ) {
+        daoSession.listedProductDao.insertOrReplace(product)
+        daoSession.productListsDao.update(list.apply {
+            products.add(product)
+            numOfProducts++
+        })
+    }
 
     private fun takeMorePicture() {
         sendOther = true
