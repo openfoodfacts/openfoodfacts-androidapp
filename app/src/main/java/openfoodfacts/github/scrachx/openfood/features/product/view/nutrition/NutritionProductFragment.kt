@@ -220,6 +220,8 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
             }
         }
 
+        binding.nutriscoreLink.visibility = if (product.nutritionGradeFr != null) VISIBLE else GONE
+
         var servingSize: Measurement? = null
         val servingSizeString = product.servingSize
         if (servingSizeString.isNullOrEmpty()) {
@@ -274,7 +276,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
             nutrientsImageUrl = product.getImageNutritionUrl(langCode)
         }
 
-        // Wseful when this fragment is used in offline saving
+        // Useful when this fragment is used in offline saving
         if (mSendProduct != null && mSendProduct!!.imgUploadNutrition.isNotBlank()) {
             binding.addPhotoLabel.visibility = GONE
             nutrientsImageUrl = mSendProduct!!.imgUploadNutrition
