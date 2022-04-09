@@ -20,6 +20,9 @@ abstract class CameraView<T : FrameLayout>(
     @Suppress("UNCHECKED_CAST")
     @CallSuper
     open fun attach(cameraState: Int, flashActive: Boolean, autoFocusActive: Boolean) {
+        // For stubs
+        if (resId == 0) return
+
         viewStub.isVisible = true
         viewStub.layoutResource = resId
         view = viewStub.inflate() as T
