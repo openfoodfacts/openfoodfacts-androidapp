@@ -37,6 +37,7 @@ class SearchByCodeFragment : NavigationWithDrawerBaseFragment() {
     }
 
     override fun onDestroyView() {
+        removeDrawerListener()
         super.onDestroyView()
         _binding = null
     }
@@ -107,6 +108,7 @@ class SearchByCodeFragment : NavigationWithDrawerBaseFragment() {
             binding.editTextBarcode.requestFocus()
             requireActivity().showKeyboard()
         }
+
     }
 
     companion object {
