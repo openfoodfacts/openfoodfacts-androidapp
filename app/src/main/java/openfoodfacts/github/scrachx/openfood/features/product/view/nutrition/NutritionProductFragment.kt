@@ -220,7 +220,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
             }
         }
 
-        binding.nutriscoreLink.visibility = if (product.nutritionGradeFr != null) VISIBLE else GONE
+        binding.nutriscoreLink.isVisible = product.nutritionGradeFr != null
 
         var servingSize: Measurement? = null
         val servingSizeString = product.servingSize
