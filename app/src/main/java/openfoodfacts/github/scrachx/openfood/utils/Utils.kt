@@ -184,7 +184,7 @@ fun buildSignInDialog(
  * @return Returns the header to be put in network call
  */
 fun getUserAgent(type: String) = "${getUserAgent()} $type"
-fun getUserAgent() = "${BuildConfig.APP_NAME} Official Android App ${BuildConfig.VERSION_NAME}"
+fun getUserAgent() = "${BuildConfig.APP_NAME} Official Android App ${BuildConfig.VERSION_NAME} (${BuildConfig.VERSION_CODE})"
 
 /**
  * Decodes image and scales it to reduce memory consumption
