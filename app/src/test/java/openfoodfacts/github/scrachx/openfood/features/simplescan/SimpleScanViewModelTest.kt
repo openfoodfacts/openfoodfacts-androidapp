@@ -4,7 +4,8 @@ import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.test.runBlockingTest
+import kotlinx.coroutines.test.UnconfinedTestDispatcher
+import kotlinx.coroutines.test.runTest
 import openfoodfacts.github.scrachx.openfood.features.simplescan.SimpleScanViewModel.SideEffect
 import openfoodfacts.github.scrachx.openfood.models.CameraState
 import openfoodfacts.github.scrachx.openfood.repositories.ScannerPreferencesRepository
@@ -15,15 +16,17 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.kotlin.doReturn
 import org.mockito.kotlin.mock
+import org.mockito.kotlin.verify
 import org.mockito.kotlin.whenever
 
 @ExtendWith(InstantTaskExecutorExtension::class)
 @ExperimentalCoroutinesApi
 class SimpleScanViewModelTest {
 
-    private val prefsRepository = mock<ScannerPreferencesRepository>()
     private val dispatchers = CoroutineDispatchersTest()
+    private val testDispatcher = UnconfinedTestDispatcher()
 
+    private val prefsRepository = mock<ScannerPreferencesRepository>()
     private lateinit var viewModel: SimpleScanViewModel
 
     @BeforeEach
@@ -38,7 +41,7 @@ class SimpleScanViewModelTest {
     }
 
     @Test
-    fun onInit_shouldEmitDefaultCameraOptions() = runBlockingTest {
+    fun onInit_shouldEmitDefaultCameraOptions() = runTest(testDispatcher) {
         // GIVEN
         val flowItems = mutableListOf<SimpleScanScannerOptions>()
         val job = launch {
@@ -54,8 +57,9 @@ class SimpleScanViewModelTest {
         job.cancel()
     }
 
+
     @Test
-    fun changeCameraAutoFocus_shouldChangeAutoFocus() = runBlockingTest {
+    fun changeCameraAutoFocus_shouldChangeAutoFocus() = runTest(testDispatcher) {
         // GIVEN
         val flowItems = mutableListOf<SimpleScanScannerOptions>()
         val job = launch {
@@ -66,14 +70,14 @@ class SimpleScanViewModelTest {
         viewModel.changeCameraAutoFocus()
 
         // THEN
-        assertThat(prefsRepository.autoFocusPref).isFalse()
+        verify(prefsRepository).autoFocusPref = false
         assertThat(flowItems.size).isEqualTo(2)
         assertThat(flowItems[1].autoFocusEnabled).isFalse()
         job.cancel()
     }
 
     @Test
-    fun changeCameraFlash_shouldChangeFlash() = runBlockingTest {
+    fun changeCameraFlash_shouldChangeFlash() = runTest(testDispatcher) {
         // GIVEN
         val flowItems = mutableListOf<SimpleScanScannerOptions>()
         val job = launch {
@@ -84,14 +88,14 @@ class SimpleScanViewModelTest {
         viewModel.changeCameraFlash()
 
         // THEN
-        assertThat(prefsRepository.flashPref).isFalse()
+        verify(prefsRepository).flashPref = false
         assertThat(flowItems.size).isEqualTo(2)
         assertThat(flowItems[1].flashEnabled).isFalse()
         job.cancel()
     }
 
     @Test
-    fun changeCameraState_shouldCameraState() = runBlockingTest {
+    fun changeCameraState_shouldCameraState() = runTest(testDispatcher) {
         // GIVEN
         val flowItems = mutableListOf<SimpleScanScannerOptions>()
         val job = launch {
@@ -102,14 +106,14 @@ class SimpleScanViewModelTest {
         viewModel.changeCameraState()
 
         // THEN
-        assertThat(prefsRepository.cameraPref).isEqualTo(CameraState.Front)
+        verify(prefsRepository).cameraPref = CameraState.Front
         assertThat(flowItems.size).isEqualTo(2)
         assertThat(flowItems[1].cameraState).isEqualTo(CameraState.Front)
         job.cancel()
     }
 
     @Test
-    fun barcodeDetected_shouldEmitRightEffect() = runBlockingTest {
+    fun barcodeDetected_shouldEmitRightEffect() = runTest(testDispatcher) {
         // GIVEN
         val givenBarcode = "qwerty"
         val flowItems = mutableListOf<SideEffect>()
@@ -127,7 +131,7 @@ class SimpleScanViewModelTest {
     }
 
     @Test
-    fun troubleScanningPressed_shouldEmitRightEffect() = runBlockingTest {
+    fun troubleScanningPressed_shouldEmitRightEffect() = runTest(testDispatcher) {
         // GIVEN
         val flowItems = mutableListOf<SideEffect>()
         val job = launch {
