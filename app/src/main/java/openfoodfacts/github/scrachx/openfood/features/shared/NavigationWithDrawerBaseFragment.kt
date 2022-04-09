@@ -17,11 +17,14 @@ abstract class NavigationWithDrawerBaseFragment : NavigationBaseFragment(), OnNa
     }
 
     override fun onDetach() {
+        removeDrawerListener()
+        super.onDetach()
+    }
+
+    fun removeDrawerListener() {
         if (requireContext() is NavigationDrawerHost) {
             (context as NavigationDrawerHost).removeOnDrawerStatusChangedListener(this)
         }
-
-        super.onDetach()
     }
 
     override fun onDrawerOpened() {
