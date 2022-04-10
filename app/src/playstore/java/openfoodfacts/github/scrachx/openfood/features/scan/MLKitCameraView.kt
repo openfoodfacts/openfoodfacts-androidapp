@@ -34,7 +34,7 @@ class MLKitCameraView(
     override fun attach(cameraState: Int, flashActive: Boolean, autoFocusActive: Boolean) {
         super.attach(cameraState, flashActive, autoFocusActive)
 
-        view = (viewStub.inflate() as CameraSourcePreview).apply {
+        view.apply {
             graphicOverlay = findViewById(R.id.camera_preview_graphic_overlay)
             promptChip = findViewById(R.id.bottom_prompt_chip)
         }
@@ -43,6 +43,7 @@ class MLKitCameraView(
     }
 
     override fun detach() {
+        super.detach()
         stopCameraPreview()
         cameraSource?.release()
         cameraSource = null

@@ -14,15 +14,9 @@ class MLKitCameraView(
 ) : CameraView<FrameLayout>(
     activity,
     viewStub,
-    0
+    null
 ) {
 
-    override fun attach(cameraState: Int, flashActive: Boolean, autoFocusActive: Boolean) {
-        super.attach(cameraState, flashActive, autoFocusActive)
-        viewStub.isVisible = false
-    }
-
-    override fun detach() = Unit
     override fun onResume() = Unit
     override fun stopCameraPreview() = Unit
     override fun startCameraPreview() = Unit

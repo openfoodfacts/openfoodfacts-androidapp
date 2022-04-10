@@ -1,6 +1,5 @@
 package openfoodfacts.github.scrachx.openfood.features.scan
 
-import android.view.View
 import android.view.ViewStub
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
@@ -28,7 +27,6 @@ class ZXCameraView(
 
         view.apply {
             isVisible = true
-            visibility = View.VISIBLE
 
             barcodeView.decoderFactory = DefaultDecoderFactory(ScannerPreferencesRepository.BARCODE_FORMATS)
             setStatusText(null)
@@ -97,8 +95,6 @@ class ZXCameraView(
     override fun playBeepSound() {
         beepManager.playBeepSound()
     }
-
-    override fun detach() = Unit
 
 
     override fun updateWorkflowState(state: WorkflowState) = Unit

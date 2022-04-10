@@ -9,10 +9,10 @@ import androidx.core.view.isVisible
 
 abstract class CameraView<T : FrameLayout>(
     protected val activity: AppCompatActivity,
-    protected val viewStub: ViewStub,
-    @LayoutRes private val resId: Int,
-    var barcodeScannedCallback: ((String?) -> Unit)? = null
+    private val viewStub: ViewStub,
+    @LayoutRes private val resId: Int?,
 ) {
+    var barcodeScannedCallback: ((String?) -> Unit)? = null
     var onOverlayClickListener: (() -> Unit)? = null
 
     protected lateinit var view: T
@@ -21,14 +21,20 @@ abstract class CameraView<T : FrameLayout>(
     @CallSuper
     open fun attach(cameraState: Int, flashActive: Boolean, autoFocusActive: Boolean) {
         // For stubs
-        if (resId == 0) return
+        if (resId == null) {
+            viewStub.isVisible = false
+            return
+        }
 
         viewStub.isVisible = true
         viewStub.layoutResource = resId
         view = viewStub.inflate() as T
     }
 
-    abstract fun detach()
+    @CallSuper
+    open fun detach() {
+        // Default impl
+    }
 
     abstract fun startCameraPreview()
     abstract fun stopCameraPreview()
