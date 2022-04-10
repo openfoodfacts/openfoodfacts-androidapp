@@ -98,8 +98,8 @@ import openfoodfacts.github.scrachx.openfood.images.ProductImage
 import openfoodfacts.github.scrachx.openfood.jobs.ProductUploaderWorker.Companion.scheduleProductUpload
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.selectNavigationItem
+import openfoodfacts.github.scrachx.openfood.models.ImageType
 import openfoodfacts.github.scrachx.openfood.models.Product
-import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_ABOUT
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_ADDITIVES
@@ -961,7 +961,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener, NavigationDrawerH
                             contentResolver.openInputStream(imgUri)!!.use {
                                 val image = ProductImage(
                                     tempBarcode,
-                                    ProductImageField.OTHER,
+                                    ImageType.OTHER,
                                     it.readBytes(),
                                     localeManager.getLanguage()
                                 )

@@ -5,7 +5,7 @@ import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Index;
 
-import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
+import openfoodfacts.github.scrachx.openfood.models.ImageType;
 
 /**
  * Created by jayanth on 22/2/18.
@@ -83,16 +83,16 @@ public class ToUploadProduct {
         return field;
     }
 
-    public ProductImageField getProductField() {
+    public ImageType getProductField() {
         switch (field) {
             case "front":
-                return ProductImageField.FRONT;
+                return ImageType.FRONT;
             case "ingredients":
-                return ProductImageField.INGREDIENTS;
+                return ImageType.INGREDIENTS;
             case "nutrients":
-                return ProductImageField.NUTRITION;
+                return ImageType.NUTRITION;
             default:
-                return ProductImageField.OTHER;
+                return ImageType.OTHER;
         }
     }
 }

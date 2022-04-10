@@ -17,7 +17,7 @@
 
 package openfoodfacts.github.scrachx.openfood.network
 
-import openfoodfacts.github.scrachx.openfood.models.ProductImageField
+import openfoodfacts.github.scrachx.openfood.models.ImageType
 import org.jetbrains.annotations.Contract
 
 /**
@@ -184,10 +184,10 @@ object ApiFields {
         const val SEARCH_TERMS = "search_terms"
 
         val TYPE_IMAGE = arrayOf(
-            ProductImageField.FRONT,
-            ProductImageField.INGREDIENTS,
-            ProductImageField.NUTRITION,
-            ProductImageField.PACKAGING
+            ImageType.FRONT,
+            ImageType.INGREDIENTS,
+            ImageType.NUTRITION,
+            ImageType.PACKAGING
         )
         const val LANGUAGES_CODES = "languages_codes"
         const val URL = "url"

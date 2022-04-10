@@ -5,8 +5,8 @@ import android.graphics.RectF
 import android.util.Log
 import androidx.core.graphics.toRect
 import androidx.core.graphics.toRectF
+import openfoodfacts.github.scrachx.openfood.models.ImageType
 import openfoodfacts.github.scrachx.openfood.models.Product
-import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.utils.getAsFloat
 import openfoodfacts.github.scrachx.openfood.utils.getAsInt
 
@@ -33,9 +33,9 @@ fun ImageTransformation.applyToMap(imgMap: MutableMap<String, String>) {
 }
 
 fun getInitialServerTransformation(
-        product: Product,
-        productImageField: ProductImageField?,
-        language: String?
+    product: Product,
+    productImageField: ImageType?,
+    language: String?
 ): ImageTransformation {
     val imageKey = getImageStringKey(productImageField!!, language!!)
     val imageDetails = product.getImageDetails(imageKey) ?: return ImageTransformation()
@@ -67,11 +67,11 @@ private fun getImageCropRect(imgDetails: Map<String, *>): RectF? {
 }
 
 private fun applyRotationOnCropRectangle(
-        product: Product,
-        productImageField: ProductImageField,
-        language: String,
-        res: ImageTransformation,
-        invert: Boolean
+    product: Product,
+    productImageField: ImageType,
+    language: String,
+    res: ImageTransformation,
+    invert: Boolean
 ) {
     // if a crop and a rotation is done, we should rotate the cropped rectangle
     val imageKey = getImageStringKey(productImageField, language)
@@ -118,9 +118,9 @@ private fun applyRotationOnCropRectangle(
  * @return the image transformation containing the initial url and the transformation (rotation/crop) for screen
  */
 fun getScreenTransformation(
-        product: Product,
-        productImageField: ProductImageField,
-        language: String
+    product: Product,
+    productImageField: ImageType,
+    language: String
 ): ImageTransformation {
     val res = getInitialServerTransformation(product, productImageField, language)
     if (res.isEmpty()) return res
@@ -141,10 +141,10 @@ fun getScreenTransformation(
  * @return the image transformation containing the initial url and the transformation (rotation/crop) for screen
  */
 fun toServerTransformation(
-        screenTransformation: ImageTransformation,
-        product: Product,
-        productImageField: ProductImageField,
-        language: String
+    screenTransformation: ImageTransformation,
+    product: Product,
+    productImageField: ImageType,
+    language: String
 ): ImageTransformation {
     val res = getInitialServerTransformation(product, productImageField, language)
     if (res.isEmpty()) {

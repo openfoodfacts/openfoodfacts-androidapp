@@ -6,7 +6,7 @@ import java.util.Locale.ROOT
 /**
  * Kind of Product Image
  */
-enum class ProductImageField {
+enum class ImageType {
     // DO NOT CHANGE ENUM NAMES
     FRONT, INGREDIENTS, NUTRITION, PACKAGING, OTHER;
 

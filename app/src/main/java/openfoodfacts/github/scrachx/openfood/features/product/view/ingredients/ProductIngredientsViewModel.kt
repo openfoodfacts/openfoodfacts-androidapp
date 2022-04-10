@@ -21,8 +21,8 @@ import androidx.lifecycle.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import openfoodfacts.github.scrachx.openfood.features.FullScreenActivityOpener
+import openfoodfacts.github.scrachx.openfood.models.ImageType
 import openfoodfacts.github.scrachx.openfood.models.Product
-import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.models.ProductState
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.repositories.TaxonomiesRepository
@@ -94,7 +94,7 @@ class ProductIngredientsViewModel @Inject constructor(
                 fragment,
                 productRepository,
                 productState.product!!,
-                ProductImageField.INGREDIENTS,
+                ImageType.INGREDIENTS,
                 ingredientsImgUrl!!,
                 imageViewIngredients,
                 localeManager.getLanguage()

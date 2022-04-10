@@ -29,8 +29,8 @@ import openfoodfacts.github.scrachx.openfood.features.simplescan.SimpleScanActiv
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.selectNavigationItem
+import openfoodfacts.github.scrachx.openfood.models.ImageType
 import openfoodfacts.github.scrachx.openfood.models.Product
-import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.Intent
 import openfoodfacts.github.scrachx.openfood.utils.PhotoReceiverHandler
@@ -140,7 +140,7 @@ class ProductCompareActivity : BaseActivity() {
 
                 val image = ProductImage(
                     product.code,
-                    ProductImageField.FRONT,
+                    ImageType.FRONT,
                     file,
                     viewModel.getCurrentLanguage()
                 ).apply { filePath = file.absolutePath }

@@ -22,13 +22,13 @@ class ToUploadProductTest {
     @Test
     fun `getProductField returns correct ProductImageField`() {
         toUploadProduct.field = "front"
-        assertThat(toUploadProduct.productField).isEqualTo(ProductImageField.FRONT)
+        assertThat(toUploadProduct.productField).isEqualTo(ImageType.FRONT)
         toUploadProduct.field = "ingredients"
-        assertThat(toUploadProduct.productField).isEqualTo(ProductImageField.INGREDIENTS)
+        assertThat(toUploadProduct.productField).isEqualTo(ImageType.INGREDIENTS)
         toUploadProduct.field = "nutrients"
-        assertThat(toUploadProduct.productField).isEqualTo(ProductImageField.NUTRITION)
+        assertThat(toUploadProduct.productField).isEqualTo(ImageType.NUTRITION)
         toUploadProduct.field = "something else"
-        assertThat(toUploadProduct.productField).isEqualTo(ProductImageField.OTHER)
+        assertThat(toUploadProduct.productField).isEqualTo(ImageType.OTHER)
     }
 
     @Test

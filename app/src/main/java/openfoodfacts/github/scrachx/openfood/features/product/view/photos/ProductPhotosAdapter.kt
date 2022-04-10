@@ -23,9 +23,12 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.features.login.LoginActivity
-import openfoodfacts.github.scrachx.openfood.images.*
+import openfoodfacts.github.scrachx.openfood.images.IMAGE_STRING_ID
+import openfoodfacts.github.scrachx.openfood.images.IMG_ID
+import openfoodfacts.github.scrachx.openfood.images.PRODUCT_BARCODE
+import openfoodfacts.github.scrachx.openfood.images.getImageStringKey
+import openfoodfacts.github.scrachx.openfood.models.ImageType
 import openfoodfacts.github.scrachx.openfood.models.Product
-import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.isUserSet
 import org.json.JSONException
@@ -115,11 +118,11 @@ class ProductPhotosAdapter(
                     return true
                 }
 
-                R.id.set_ingredient_image -> product.getImageStringKey(ProductImageField.INGREDIENTS)
-                R.id.set_recycling_image -> product.getImageStringKey(ProductImageField.PACKAGING)
-                R.id.set_nutrition_image -> product.getImageStringKey(ProductImageField.NUTRITION)
-                R.id.set_front_image -> product.getImageStringKey(ProductImageField.FRONT)
-                else -> product.getImageStringKey(ProductImageField.OTHER)
+                R.id.set_ingredient_image -> product.getImageStringKey(ImageType.INGREDIENTS)
+                R.id.set_recycling_image -> product.getImageStringKey(ImageType.PACKAGING)
+                R.id.set_nutrition_image -> product.getImageStringKey(ImageType.NUTRITION)
+                R.id.set_front_image -> product.getImageStringKey(ImageType.FRONT)
+                else -> product.getImageStringKey(ImageType.OTHER)
             }
 
             if (snackView == null) Toast.makeText(context, context.getString(R.string.changes_saved), Toast.LENGTH_SHORT).show()

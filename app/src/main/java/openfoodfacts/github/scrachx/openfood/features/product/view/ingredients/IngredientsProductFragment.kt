@@ -60,7 +60,7 @@ import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditAc
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
 import openfoodfacts.github.scrachx.openfood.models.DaoSession
-import openfoodfacts.github.scrachx.openfood.models.ProductImageField
+import openfoodfacts.github.scrachx.openfood.models.ImageType
 import openfoodfacts.github.scrachx.openfood.models.ProductState
 import openfoodfacts.github.scrachx.openfood.models.entities.SendProduct
 import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveName
@@ -501,7 +501,7 @@ class IngredientsProductFragment : BaseFragment() {
     private fun onPhotoReturned(newPhotoFile: File) {
         val image = ProductImage(
             productState.code!!,
-            ProductImageField.INGREDIENTS,
+            ImageType.INGREDIENTS,
             newPhotoFile,
             localeManager.getLanguage()
         ).apply { filePath = newPhotoFile.absolutePath }

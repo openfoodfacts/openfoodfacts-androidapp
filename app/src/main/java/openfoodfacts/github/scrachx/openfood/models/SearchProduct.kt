@@ -10,7 +10,6 @@ import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.utils.ProductStringConverter
 import java.io.Serializable
 import java.util.*
-import kotlin.collections.HashMap
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 open class SearchProduct : Serializable {
@@ -90,7 +89,7 @@ open class SearchProduct : Serializable {
         additionalProperties[name] = value
     }
 
-    fun getSelectedImage(languageCode: String?, type: ProductImageField, size: ImageSize): String? {
+    fun getSelectedImage(languageCode: String?, type: ImageType, size: ImageSize): String? {
         var images = additionalProperties[ApiFields.Keys.SELECTED_IMAGES] as Map<String?, Map<*, *>>?
         if (images != null) {
             images = images[type.toString()] as Map<String?, Map<*, *>>?
@@ -105,15 +104,15 @@ open class SearchProduct : Serializable {
             }
         }
         return when (type) {
-            ProductImageField.FRONT -> imageUrl
-            ProductImageField.INGREDIENTS -> imageIngredientsUrl
-            ProductImageField.NUTRITION -> imageNutritionUrl
-            ProductImageField.PACKAGING -> imagePackagingUrl
-            ProductImageField.OTHER -> null
+            ImageType.FRONT -> imageUrl
+            ImageType.INGREDIENTS -> imageIngredientsUrl
+            ImageType.NUTRITION -> imageNutritionUrl
+            ImageType.PACKAGING -> imagePackagingUrl
+            ImageType.OTHER -> null
         }
     }
 
     fun getImageSmallUrl(languageCode: String?) =
-            getSelectedImage(languageCode, ProductImageField.FRONT, ImageSize.SMALL)
-                    ?.ifBlank { null } ?: imageSmallUrl
+        getSelectedImage(languageCode, ImageType.FRONT, ImageSize.SMALL)
+            ?.ifBlank { null } ?: imageSmallUrl
 }

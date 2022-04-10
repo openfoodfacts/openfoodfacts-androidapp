@@ -36,9 +36,10 @@ import dagger.hilt.android.AndroidEntryPoint
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentAddProductPhotosBinding
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
+import openfoodfacts.github.scrachx.openfood.models.ImageType
 import openfoodfacts.github.scrachx.openfood.models.Product
-import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct
+import openfoodfacts.github.scrachx.openfood.models.fieldsOf
 import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
 import openfoodfacts.github.scrachx.openfood.utils.MY_PERMISSIONS_REQUEST_CAMERA
 import openfoodfacts.github.scrachx.openfood.utils.PhotoReceiverHandler
@@ -84,13 +85,14 @@ class ProductEditPhotosFragment : ProductEditFragment() {
     }
 
     override fun allValid() = true
-    override fun getUpdatedFieldsMap() = mapOf<String, String?>()
+    override fun getUpdatedFields() = fieldsOf()
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnAddOtherImage.setOnClickListener { addOtherImage() }
-        binding.btnAdd.setOnClickListener { next() }
+        binding.btnAdd.setOnClickListener { nextFragment() }
 
         val bundle = arguments
         if (bundle == null) {
@@ -128,7 +130,7 @@ class ProductEditPhotosFragment : ProductEditFragment() {
         super.onActivityResult(requestCode, resultCode, data)
         photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data) { newPhotoFile ->
             photoFile = newPhotoFile
-            val image = ProductImage(code!!, ProductImageField.OTHER, newPhotoFile, localeManager.getLanguage())
+            val image = ProductImage(code!!, ImageType.OTHER, newPhotoFile, localeManager.getLanguage())
             image.filePath = photoFile!!.toURI().path
             if (activity is ProductEditActivity) {
                 (activity as ProductEditActivity).savePhoto(image, 4)

@@ -2,8 +2,8 @@ package openfoodfacts.github.scrachx.openfood.images
 
 import com.google.common.truth.Truth
 import openfoodfacts.github.scrachx.openfood.BuildConfig
+import openfoodfacts.github.scrachx.openfood.models.ImageType
 import openfoodfacts.github.scrachx.openfood.models.Product
-import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.mockito.Mockito
@@ -19,19 +19,19 @@ class ImageKeyHelperTest {
     @Test
     fun imageStringKey_returnsCorrectString() {
         Mockito.`when`(mockProduct.lang).thenReturn("de")
-        Truth.assertThat(mockProduct.getImageStringKey(ProductImageField.FRONT)).isEqualTo("front_de")
+        Truth.assertThat(mockProduct.getImageStringKey(ImageType.FRONT)).isEqualTo("front_de")
     }
 
     @Test
     fun languageCodeFromUrl_blankURL() {
         val url = ""
-        Truth.assertThat(getLanguageCodeFromUrl(ProductImageField.INGREDIENTS, url)).isNull()
+        Truth.assertThat(getLanguageCodeFromUrl(ImageType.INGREDIENTS, url)).isNull()
     }
 
     @Test
     fun languageCodeFromUrl_returnsCorrectLanguage() {
         val url = "https://static.openfoodfacts.org/images/products/541/004/100/1204/ingredients_de.48.100.jpg"
-        Truth.assertThat(getLanguageCodeFromUrl(ProductImageField.INGREDIENTS, url)).isEqualTo("de")
+        Truth.assertThat(getLanguageCodeFromUrl(ImageType.INGREDIENTS, url)).isEqualTo("de")
     }
 
     @Test

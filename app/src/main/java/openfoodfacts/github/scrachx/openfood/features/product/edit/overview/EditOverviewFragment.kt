@@ -58,9 +58,7 @@ import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditAc
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_SEND_UPDATED
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditFragment
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
-import openfoodfacts.github.scrachx.openfood.models.DaoSession
-import openfoodfacts.github.scrachx.openfood.models.Product
-import openfoodfacts.github.scrachx.openfood.models.ProductImageField
+import openfoodfacts.github.scrachx.openfood.models.*
 import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct
 import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoryNameDao
 import openfoodfacts.github.scrachx.openfood.models.entities.country.CountryNameDao
@@ -118,9 +116,7 @@ class EditOverviewFragment : ProductEditFragment() {
     private var isFrontImagePresent = false
     private var languageCode: String? = null
     private var frontImageUrl: String? = null
-    private var savedProduct: OfflineSavedProduct? = null
     private var photoFile: File? = null
-    private var product: Product? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentAddProductOverviewBinding.inflate(inflater)
@@ -132,7 +128,7 @@ class EditOverviewFragment : ProductEditFragment() {
 
         binding.btnOtherPictures.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_a_photo_blue_18dp, 0, 0, 0)
 
-        binding.btnNext.setOnClickListener { next() }
+        binding.btnNext.setOnClickListener { nextFragment() }
         binding.imgFront.setOnClickListener { openFrontImage() }
         binding.btnEditImgFront.setOnClickListener { chooseOrTakeFrontImage() }
         binding.btnOtherPictures.setOnClickListener { chooseOrTakeOtherImage() }
@@ -156,8 +152,7 @@ class EditOverviewFragment : ProductEditFragment() {
             return
         }
 
-        product = args.getSerializable("product") as Product?
-        savedProduct = getEditOfflineProductFromArgs()
+        val product = editViewModel.product.value
         editingMode = args.getBoolean(ProductEditActivity.KEY_IS_EDITING)
 
 
@@ -166,23 +161,21 @@ class EditOverviewFragment : ProductEditFragment() {
         binding.sectionPurchasingDetails.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_down_grey_24dp, 0)
 
         if (product != null) {
-            barcode = product!!.code
+            barcode = product.code
         }
 
-        if (editingMode && product != null) {
-            barcode = product!!.code
+        if (product != null && editingMode) {
+            barcode = product.code
 
-            val languageToUse = if (product!!.isLanguageSupported(appLang)) appLang
-            else product!!.lang
+            val languageToUse = if (product.isLanguageSupported(appLang)) appLang
+            else product.lang
 
-            preFillProductValues(product!!, getLCOrDefault(languageToUse))
-        } else if (savedProduct != null) {
-            barcode = savedProduct!!.barcode
-            preFillValuesFromOffline(savedProduct!!)
+            preFillProductValues(product, getLCOrDefault(languageToUse))
         } else {
             // Addition
             enableFastAdditionMode(requireContext().isFastAdditionMode())
         }
+
 
         binding.barcode.text = buildString {
             append(getString(R.string.txtBarcode))
@@ -204,9 +197,8 @@ class EditOverviewFragment : ProductEditFragment() {
 
         setupAutoSuggestion()
 
-        if (activity is ProductEditActivity && (activity as ProductEditActivity).initialValues != null) {
-            (activity as ProductEditActivity).initialValues!! += getAllFieldsMap()
-        }
+        editViewModel.addToInitialValues(getAllFields())
+
         if (languageCode.isNullOrEmpty()) {
             setProductLanguage(appLang)
         }
@@ -341,7 +333,7 @@ class EditOverviewFragment : ProductEditFragment() {
      */
     private fun loadFrontImage(language: String?) {
         photoFile = null
-        val imageFrontUrl = product!!.getImageFrontUrl(language)
+        val imageFrontUrl = editViewModel.product.value!!.getImageFrontUrl(language)
         if (imageFrontUrl != null && imageFrontUrl.isNotEmpty()) {
             frontImageUrl = imageFrontUrl
             binding.imageProgress.visibility = View.VISIBLE
@@ -571,7 +563,7 @@ class EditOverviewFragment : ProductEditFragment() {
                 binding.name.isActivated = false
 
                 val productState = try {
-                    client.getProductStateFull(product!!.code, fields)
+                    client.getProductStateFull(editViewModel.product.value!!.code, fields)
                 } catch (err: Exception) {
                     Log.e(EditOverviewFragment::class.simpleName, "Error retrieving product state from server api.", err)
                     binding.name.setText(StringUtils.EMPTY)
@@ -601,18 +593,20 @@ class EditOverviewFragment : ProductEditFragment() {
                 } else {
                     binding.name.setText(StringUtils.EMPTY)
                     binding.name.isActivated = true
-                    (activity as? ProductEditActivity)?.setIngredients("set", null)
+                    editViewModel.setIngredients("set", null)
                 }
             }
 
         }
     }
 
-    override fun allValid() = if (!frontImageUrl.isNullOrEmpty()) true
-    else {
-        Snackbar.make(binding.root, R.string.add_at_least_one_picture, BaseTransientBottomBar.LENGTH_SHORT).show()
-        binding.scrollView.fullScroll(View.FOCUS_UP)
-        false
+    override fun allValid(): Boolean {
+        val ok = !frontImageUrl.isNullOrEmpty()
+        if (!ok) {
+            Snackbar.make(binding.root, R.string.add_at_least_one_picture, BaseTransientBottomBar.LENGTH_SHORT).show()
+            binding.scrollView.fullScroll(View.FOCUS_UP)
+        }
+        return ok
     }
 
     private fun openFrontImage() {
@@ -654,106 +648,108 @@ class EditOverviewFragment : ProductEditFragment() {
     /**
      * adds all the fields to the query map even those which are null or empty.
      */
-    private fun getAllFieldsMap(): Map<String, String?> {
-        val targetMap = mutableMapOf<String, String?>()
+    private fun getAllFields(): Fields {
         chipifyAllUnterminatedTokens()
 
-        if (activity !is ProductEditActivity) return targetMap
+        val fields = mutableFieldsOf()
+        if (activity !is ProductEditActivity) return fields
 
         val lc = getLCOrDefault(languageCode)
 
-        targetMap[ApiFields.Keys.BARCODE] = barcode
-        targetMap[ApiFields.Keys.LANG] = lc
-        targetMap[ApiFields.Keys.LC] = appLang
-        targetMap[lcProductNameKey(lc)] = binding.name.text.toString()
+        fields[ApiFields.Keys.BARCODE] = barcode
+        fields[ApiFields.Keys.LANG] = lc
+        fields[ApiFields.Keys.LC] = appLang
+        fields[lcProductNameKey(lc)] = binding.name.text.toString()
 
-        targetMap[ApiFields.Keys.QUANTITY] = binding.quantity.text.toString()
+        fields[ApiFields.Keys.QUANTITY] = binding.quantity.text.toString()
 
-        targetMap[ApiFields.Keys.BRANDS] = getNachoValues(binding.brand)
-        targetMap[ApiFields.Keys.PACKAGING] = getNachoValues(binding.packaging)
-        targetMap[ApiFields.Keys.CATEGORIES] = getNachoValues(binding.categories)
-        targetMap[ApiFields.Keys.LABELS] = getNachoValues(binding.label)
+        fields[ApiFields.Keys.BRANDS] = getNachoValues(binding.brand)
+        fields[ApiFields.Keys.PACKAGING] = getNachoValues(binding.packaging)
+        fields[ApiFields.Keys.CATEGORIES] = getNachoValues(binding.categories)
+        fields[ApiFields.Keys.LABELS] = getNachoValues(binding.label)
 
         if (isFlavors(OBF)) {
-            targetMap[ApiFields.Keys.PERIODS_AFTER_OPENING] = binding.periodOfTimeAfterOpening.text.toString()
+            fields[ApiFields.Keys.PERIODS_AFTER_OPENING] = binding.periodOfTimeAfterOpening.text.toString()
         }
 
-        frontImageUrl?.let { targetMap["imageUrl"] = it }
+        frontImageUrl?.let { fields["imageUrl"] = it }
 
-        targetMap[ApiFields.Keys.ORIGINS] = getNachoValues(binding.originOfIngredients)
-        targetMap[ApiFields.Keys.MANUFACTURING_PLACES] = binding.manufacturingPlace.text.toString()
-        targetMap[ApiFields.Keys.EMB_CODES] = getNachoValues(binding.embCode)
-        targetMap[ApiFields.Keys.LINK] = binding.link.text.toString()
-        targetMap[ApiFields.Keys.PURCHASE_PLACES] = getNachoValues(binding.countryWherePurchased)
-        targetMap[ApiFields.Keys.STORES] = getNachoValues(binding.stores)
-        targetMap[ApiFields.Keys.COUNTRIES] = getNachoValues(binding.countriesWhereSold)
+        fields[ApiFields.Keys.ORIGINS] = getNachoValues(binding.originOfIngredients)
+        fields[ApiFields.Keys.MANUFACTURING_PLACES] = binding.manufacturingPlace.text.toString()
+        fields[ApiFields.Keys.EMB_CODES] = getNachoValues(binding.embCode)
+        fields[ApiFields.Keys.LINK] = binding.link.text.toString()
+        fields[ApiFields.Keys.PURCHASE_PLACES] = getNachoValues(binding.countryWherePurchased)
+        fields[ApiFields.Keys.STORES] = getNachoValues(binding.stores)
+        fields[ApiFields.Keys.COUNTRIES] = getNachoValues(binding.countriesWhereSold)
 
-        return targetMap
+        return fields
     }
 
     /**
      * adds only those fields to the query map which have changed.
      */
-    override fun getUpdatedFieldsMap(): Map<String, String?> {
+    override fun getUpdatedFields(): Fields {
         if (activity !is ProductEditActivity) return emptyMap()
 
-        val targetMap = mutableMapOf<String, String?>()
+        val product = editViewModel.product.value
+
+        val fields = mutableFieldsOf()
         chipifyAllUnterminatedTokens()
 
 
-        barcode?.let { if (it.isNotEmpty()) targetMap[ApiFields.Keys.BARCODE] = it }
-        languageCode?.let { if (it.isNotEmpty()) targetMap[ApiFields.Keys.LANG] = it }
-        appLang.let { if (it.isNotEmpty()) targetMap[ApiFields.Keys.LC] = it }
+        barcode?.let { if (it.isNotEmpty()) fields[ApiFields.Keys.BARCODE] = it }
+        languageCode?.let { if (it.isNotEmpty()) fields[ApiFields.Keys.LANG] = it }
+        appLang.let { if (it.isNotEmpty()) fields[ApiFields.Keys.LC] = it }
 
         val lc = getLCOrDefault(languageCode)
-        if (binding.name.isNotEmpty() && binding.name.isContentDifferent(if (product != null) product!!.getProductName(lc) else null)) {
-            targetMap[lcProductNameKey(lc)] = binding.name.text.toString()
+        if (binding.name.isNotEmpty() && binding.name.isContentDifferent(product?.getProductName(lc))) {
+            fields[lcProductNameKey(lc)] = binding.name.text.toString()
         }
-        if (binding.quantity.isNotEmpty() && binding.quantity.isContentDifferent(if (product != null) product!!.quantity else null)) {
-            targetMap[ApiFields.Keys.QUANTITY] = binding.quantity.text.toString()
+        if (binding.quantity.isNotEmpty() && binding.quantity.isContentDifferent(product?.quantity)) {
+            fields[ApiFields.Keys.QUANTITY] = binding.quantity.text.toString()
         }
         if (binding.brand.areChipsDifferent(extractProductBrandsChipsValues(product))) {
-            targetMap[ApiFields.Keys.BRANDS] = getNachoValues(binding.brand)
+            fields[ApiFields.Keys.BRANDS] = getNachoValues(binding.brand)
         }
         if (binding.packaging.areChipsDifferent(extractProductPackagingChipsValues(product))) {
-            targetMap[ApiFields.Keys.PACKAGING] = getNachoValues(binding.packaging)
+            fields[ApiFields.Keys.PACKAGING] = getNachoValues(binding.packaging)
         }
         if (binding.categories.areChipsDifferent(extractProductCategoriesChipsValues(product))) {
-            targetMap[ApiFields.Keys.CATEGORIES] = getNachoValues(binding.categories)
+            fields[ApiFields.Keys.CATEGORIES] = getNachoValues(binding.categories)
         }
         if (binding.label.areChipsDifferent(extractProductTagsChipsValues(product))) {
-            targetMap[ApiFields.Keys.LABELS] = getNachoValues(binding.label)
+            fields[ApiFields.Keys.LABELS] = getNachoValues(binding.label)
         }
         if (binding.periodOfTimeAfterOpening.isNotEmpty()) {
-            targetMap[ApiFields.Keys.PERIODS_AFTER_OPENING] = binding.periodOfTimeAfterOpening.text.toString()
+            fields[ApiFields.Keys.PERIODS_AFTER_OPENING] = binding.periodOfTimeAfterOpening.text.toString()
         }
-        frontImageUrl?.let { targetMap["imageUrl"] = it }
+        frontImageUrl?.let { fields["imageUrl"] = it }
         if (binding.originOfIngredients.areChipsDifferent(extractProductOriginsChipsValues(product))) {
-            targetMap[ApiFields.Keys.ORIGINS] = getNachoValues(binding.originOfIngredients)
+            fields[ApiFields.Keys.ORIGINS] = getNachoValues(binding.originOfIngredients)
         }
         if (binding.manufacturingPlace.isNotEmpty()
             && binding.manufacturingPlace.isContentDifferent(product?.manufacturingPlaces)
         ) {
-            targetMap[ApiFields.Keys.MANUFACTURING_PLACES] = binding.manufacturingPlace.text.toString()
+            fields[ApiFields.Keys.MANUFACTURING_PLACES] = binding.manufacturingPlace.text.toString()
         }
         if (binding.embCode.areChipsDifferent(extractProductEmbTagsChipsValues(product))) {
-            targetMap[ApiFields.Keys.EMB_CODES] = getNachoValues(binding.embCode)
+            fields[ApiFields.Keys.EMB_CODES] = getNachoValues(binding.embCode)
         }
 
         if (binding.link.isNotEmpty() && binding.link.isContentDifferent(product?.manufacturerUrl)) {
-            targetMap[ApiFields.Keys.LINK] = binding.link.text.toString()
+            fields[ApiFields.Keys.LINK] = binding.link.text.toString()
         }
 
         if (binding.countryWherePurchased.areChipsDifferent(extractProductPurchasePlaces(product))) {
-            targetMap[ApiFields.Keys.PURCHASE_PLACES] = getNachoValues(binding.countryWherePurchased)
+            fields[ApiFields.Keys.PURCHASE_PLACES] = getNachoValues(binding.countryWherePurchased)
         }
         if (binding.stores.areChipsDifferent(extractProductStoresChipValues(product))) {
-            targetMap[ApiFields.Keys.STORES] = getNachoValues(binding.stores)
+            fields[ApiFields.Keys.STORES] = getNachoValues(binding.stores)
         }
         if (binding.countriesWhereSold.areChipsDifferent(extractProductCountriesTagsChipValues(product))) {
-            targetMap[ApiFields.Keys.COUNTRIES] = getNachoValues(binding.countriesWhereSold)
+            fields[ApiFields.Keys.COUNTRIES] = getNachoValues(binding.countriesWhereSold)
         }
-        return targetMap
+        return fields
     }
 
     /**
@@ -863,11 +859,11 @@ class EditOverviewFragment : ProductEditFragment() {
             val image: ProductImage
             val position: Int
             if (isFrontImagePresent) {
-                image = ProductImage(barcode!!, ProductImageField.FRONT, newPhotoFile, appLang)
+                image = ProductImage(barcode!!, ImageType.FRONT, newPhotoFile, appLang)
                 frontImageUrl = newPhotoFile.absolutePath
                 position = 0
             } else {
-                image = ProductImage(barcode!!, ProductImageField.OTHER, newPhotoFile, appLang)
+                image = ProductImage(barcode!!, ImageType.OTHER, newPhotoFile, appLang)
                 position = 3
             }
             image.filePath = newPhotoFile.toURI().path

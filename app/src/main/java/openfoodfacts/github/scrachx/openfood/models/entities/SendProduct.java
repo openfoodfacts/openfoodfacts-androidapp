@@ -18,7 +18,7 @@ import org.greenrobot.greendao.annotation.Transient;
 
 import java.io.Serializable;
 
-import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
+import openfoodfacts.github.scrachx.openfood.models.ImageType;
 import openfoodfacts.github.scrachx.openfood.network.ApiFields;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 
@@ -187,10 +187,10 @@ public class SendProduct implements Serializable {
     }
 
     /**
-     * Compress the image according to the {@link ProductImageField}.
+     * Compress the image according to the {@link ImageType}.
      * Add a "_small" prefix in the image name after the compression
      */
-    public void compress(@NonNull ProductImageField field) {
+    public void compress(@NonNull ImageType field) {
         switch (field) {
             case NUTRITION:
                 this.imgUploadNutrition = Utils.compressImage(this.imgUploadNutrition);

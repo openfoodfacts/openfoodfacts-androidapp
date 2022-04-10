@@ -25,9 +25,9 @@ import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditAc
 import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewActivity
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
+import openfoodfacts.github.scrachx.openfood.models.ImageType
 import openfoodfacts.github.scrachx.openfood.models.Nutriment
 import openfoodfacts.github.scrachx.openfood.models.Product
-import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.models.ProductState
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
@@ -182,7 +182,7 @@ class EnvironmentProductFragment : BaseFragment() {
                     this@EnvironmentProductFragment,
                     productRepo,
                     product,
-                    ProductImageField.PACKAGING,
+                    ImageType.PACKAGING,
                     imageUrl,
                     binding.imageViewPackaging,
                     localeManager.getLanguage(),
@@ -199,7 +199,7 @@ class EnvironmentProductFragment : BaseFragment() {
 
     private fun loadPackagingPhoto(photoFile: File) {
         // Create a new instance of ProductImage so we can load to server
-        val image = ProductImage(productState.product!!.code, ProductImageField.PACKAGING, photoFile, localeManager.getLanguage())
+        val image = ProductImage(productState.product!!.code, ImageType.PACKAGING, photoFile, localeManager.getLanguage())
         image.filePath = photoFile.absolutePath
 
         // Load to server

@@ -14,8 +14,8 @@ import openfoodfacts.github.scrachx.openfood.features.images.zoom.ImageZoomActiv
 import openfoodfacts.github.scrachx.openfood.images.IMAGE_URL
 import openfoodfacts.github.scrachx.openfood.images.ImageSize
 import openfoodfacts.github.scrachx.openfood.images.createImageBundle
+import openfoodfacts.github.scrachx.openfood.models.ImageType
 import openfoodfacts.github.scrachx.openfood.models.Product
-import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.isAbsoluteUrl
 import org.jetbrains.annotations.Contract
@@ -29,7 +29,7 @@ object FullScreenActivityOpener {
         fragment: Fragment,
         client: ProductRepository,
         product: Product,
-        imageType: ProductImageField,
+        imageType: ImageType,
         mUrlImage: String,
         mImageFront: View,
         language: String
@@ -39,7 +39,7 @@ object FullScreenActivityOpener {
         activity: Activity,
         client: ProductRepository,
         product: Product,
-        imageType: ProductImageField,
+        imageType: ImageType,
         mUrlImage: String,
         mImageFront: View,
         language: String
@@ -76,7 +76,7 @@ object FullScreenActivityOpener {
     private fun createIntent(
         context: Context,
         product: Product,
-        imageType: ProductImageField,
+        imageType: ImageType,
         mUrlImage: String,
         language: String
     ): Intent {
@@ -93,7 +93,7 @@ object FullScreenActivityOpener {
         activity: Activity,
         client: ProductRepository,
         product: Product,
-        imageType: ProductImageField,
+        imageType: ImageType,
         mImageFront: View,
         language: String
     ) {

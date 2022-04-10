@@ -3,11 +3,12 @@ package openfoodfacts.github.scrachx.openfood.repositories
 import android.util.Log
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import logcat.logcat
 import okhttp3.RequestBody
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
 import openfoodfacts.github.scrachx.openfood.models.DaoSession
-import openfoodfacts.github.scrachx.openfood.models.ProductImageField
-import openfoodfacts.github.scrachx.openfood.models.ProductImageField.*
+import openfoodfacts.github.scrachx.openfood.models.ImageType
+import openfoodfacts.github.scrachx.openfood.models.ImageType.*
 import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct
 import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProductDao
 import openfoodfacts.github.scrachx.openfood.models.eventbus.ProductNeedsRefreshEvent
@@ -30,31 +31,44 @@ class OfflineProductRepository @Inject constructor(
      * @return true if there is still products to upload, false otherwise
      */
     suspend fun uploadAll(includeImages: Boolean) = withContext(Dispatchers.IO) {
-        for (product in getOfflineProducts()) {
-            if (product.barcode.isEmpty()) {
-                Log.d(LOG_TAG, "Ignore product because empty barcode: $product")
-                continue
-            }
-            Log.d(LOG_TAG, "Start treating of product $product")
 
-
-            val ok = mutableListOf(
-                uploadProductIfNeededSync(product)
-            ).apply {
-                if (includeImages) {
-                    this += uploadImageIfNeededSync(product, FRONT)
-                    this += uploadImageIfNeededSync(product, INGREDIENTS)
-                    this += uploadImageIfNeededSync(product, NUTRITION)
+        getOfflineProducts()
+            .asSequence()
+            .filter { product ->
+                val barcodeEmpty = product.barcode.isEmpty()
+                if (barcodeEmpty) {
+                    logcat { "Ignoring upload because of empty barcode: $product" }
                 }
-            }.all { it }
-
-            if (ok) {
-                daoSession.offlineSavedProductDao.deleteByKey(product.id)
+                barcodeEmpty
             }
-        }
+            .forEach { product ->
+                logcat { "Uploading offline product with barcode ${product.barcode}..." }
+
+                val ok = uploadProduct(product, includeImages)
+
+                if (ok) {
+                    logcat { "Successfully uploaded product." }
+                    daoSession.offlineSavedProductDao.deleteByKey(product.id)
+                } else {
+                    logcat { "Error uploading product $product." }
+                }
+            }
 
         if (includeImages) getOfflineProducts().isNotEmpty()
         else getOfflineProductsNotSynced().isNotEmpty()
+    }
+
+    private suspend fun uploadProduct(
+        product: OfflineSavedProduct,
+        includeImages: Boolean
+    ): Boolean {
+        val ok = mutableListOf(uploadProductIfNeededSync(product))
+        if (includeImages) {
+            ok += uploadImageIfNeededSync(product, FRONT)
+            ok += uploadImageIfNeededSync(product, INGREDIENTS)
+            ok += uploadImageIfNeededSync(product, NUTRITION)
+        }
+        return ok.all { it }
     }
 
     fun getOfflineProductByBarcode(barcode: String): OfflineSavedProduct? {
@@ -107,7 +121,7 @@ class OfflineProductRepository @Inject constructor(
 
     private suspend fun uploadImageIfNeededSync(
         product: OfflineSavedProduct,
-        imageField: ProductImageField
+        imageField: ImageType
     ) = withContext(Dispatchers.IO) {
 
         val imageType = imageField.imageType()
@@ -173,7 +187,7 @@ class OfflineProductRepository @Inject constructor(
     }
 
 
-    private fun ProductImageField.imageType() = when (this) {
+    private fun ImageType.imageType() = when (this) {
         FRONT -> "front"
         INGREDIENTS -> "ingredients"
         NUTRITION -> "nutrition"
@@ -189,7 +203,7 @@ class OfflineProductRepository @Inject constructor(
     private fun createRequestBodyMap(
         code: String,
         productDetails: Map<String, String>,
-        frontImg: ProductImageField
+        frontImg: ImageType
     ): MutableMap<String, RequestBody> {
         val barcode = RequestBody.create(ProductRepository.MIME_TEXT, code)
 

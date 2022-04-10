@@ -23,17 +23,19 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.annotation.UiThread
 import androidx.core.net.toFile
 import androidx.core.view.isVisible
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import com.google.android.material.snackbar.BaseTransientBottomBar
+import com.google.android.material.snackbar.Snackbar
 import com.hootsuite.nachos.terminator.ChipTerminatorHandler
 import com.hootsuite.nachos.validator.ChipifyingNachoValidator
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsView
@@ -43,10 +45,9 @@ import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditAc
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_PERFORM_OCR
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_SEND_UPDATED
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditFragment
+import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditViewModel
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
-import openfoodfacts.github.scrachx.openfood.models.DaoSession
-import openfoodfacts.github.scrachx.openfood.models.Product
-import openfoodfacts.github.scrachx.openfood.models.ProductImageField
+import openfoodfacts.github.scrachx.openfood.models.*
 import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenNameDao
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
@@ -100,7 +101,7 @@ class EditIngredientsFragment : ProductEditFragment() {
 
     private var offlineProduct: OfflineSavedProduct? = null
     private var product: Product? = null
-    private var productDetails = mutableMapOf<String, String?>()
+    private var productDetails = mutableFieldsOf()
 
     private var imagePath: String? = null
     private var newImageSelected = false
@@ -122,12 +123,13 @@ class EditIngredientsFragment : ProductEditFragment() {
             && activityIntent.getBooleanExtra(ProductEditActivity.KEY_MODIFY_NUTRITION_PROMPT, false)
             && !activityIntent.getBooleanExtra(ProductEditActivity.KEY_MODIFY_CATEGORY_PROMPT, false)
         ) {
-            (activity as ProductEditActivity).proceed()
+            // Do not use nextFragment because we want to skip checks
+            editViewModel.nextFragment()
         }
 
         binding.btnAddImageIngredients.setOnClickListener { addIngredientsImage() }
         binding.btnEditImageIngredients.setOnClickListener { editIngredientsImage() }
-        binding.btnNext.setOnClickListener { next() }
+        binding.btnNext.setOnClickListener { nextFragment() }
         binding.btnLooksGood.setOnClickListener { verifyIngredients() }
         binding.btnSkipIngredients.setOnClickListener { skipIngredients() }
         binding.btnExtractIngredients.setOnClickListener { extractIngredients() }
@@ -137,7 +139,7 @@ class EditIngredientsFragment : ProductEditFragment() {
 
         val bundle = arguments
         if (bundle == null) {
-            Toast.makeText(activity, R.string.error_adding_ingredients, Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), R.string.error_adding_ingredients, Toast.LENGTH_SHORT).show()
 
             requireActivity().finish()
             return
@@ -183,7 +185,32 @@ class EditIngredientsFragment : ProductEditFragment() {
         // Allergens autosuggestion
         viewModel.allergens.observe(viewLifecycleOwner) { loadAutoSuggestions(it) }
 
-        (activity as? ProductEditActivity)?.let { getAllDetails(it) }
+        editViewModel.addToInitialValues(getAllDetails())
+        editViewModel.ingredientsProgress.observe(viewLifecycleOwner) { onIngredientsChange(it) }
+    }
+
+    private fun onIngredientsChange(progress: ProductEditViewModel.IngredientsProgress) {
+        when (progress) {
+            is ProductEditViewModel.IngredientsProgress.LoadingOCR -> showOCRProgress()
+            is ProductEditViewModel.IngredientsProgress.Success -> {
+                hideOCRProgress()
+                setIngredients(progress.status, progress.ingredientsText)
+            }
+            is ProductEditViewModel.IngredientsProgress.NoInternetError -> {
+                hideOCRProgress()
+                Snackbar.make(
+                    binding.root,
+                    R.string.no_internet_unable_to_extract_ingredients,
+                    BaseTransientBottomBar.LENGTH_INDEFINITE
+                ).setAction(R.string.txt_try_again) {
+                    editViewModel.performIngredientsOCR(progress.code!!, progress.imageField!!)
+                }.show()
+            }
+            is ProductEditViewModel.IngredientsProgress.Error -> {
+                hideOCRProgress()
+                setIngredients(progress.status, null)
+            }
+        }
     }
 
     override fun onResume() {
@@ -192,8 +219,6 @@ class EditIngredientsFragment : ProductEditFragment() {
     }
 
     private fun getImageIngredients() = productDetails[ApiFields.Keys.IMAGE_INGREDIENTS]
-
-    private fun getAddProductActivity() = activity as ProductEditActivity?
 
     private fun extractTracesChipValues(product: Product?): List<String> =
         product?.tracesTags
@@ -220,9 +245,8 @@ class EditIngredientsFragment : ProductEditFragment() {
      * Load ingredients image on the image view
      */
     fun loadIngredientsImage() {
-        if (getAddProductActivity() == null) return
 
-        val newImageIngredientsUrl = product!!.getImageIngredientsUrl(getAddProductActivity()!!.getProductLanguageForEdition())
+        val newImageIngredientsUrl = product!!.getImageIngredientsUrl(editViewModel.getProductLanguageForEdition())
         photoFile = null
         if (newImageIngredientsUrl != null && newImageIngredientsUrl.isNotEmpty()) {
             binding.imageProgress.visibility = View.VISIBLE
@@ -365,16 +389,14 @@ class EditIngredientsFragment : ProductEditFragment() {
             imagePath?.let { imagePath ->
                 if (!isEditingFromArgs || newImageSelected) {
                     photoFile = File(imagePath)
-                    val image = ProductImage(code!!, ProductImageField.INGREDIENTS, photoFile!!, localeManager.getLanguage())
+                    val image = ProductImage(code!!, ImageType.INGREDIENTS, photoFile!!, localeManager.getLanguage())
                     image.filePath = imagePath
                     activity.savePhoto(image, 1)
                 } else {
-                    activity.lifecycleScope.launch {
-                        activity.performOCR(
-                            code!!,
-                            "ingredients_" + activity.getProductLanguageForEdition()
-                        )
-                    }
+                    editViewModel.performIngredientsOCR(
+                        code!!,
+                        "ingredients_" + editViewModel.getProductLanguageForEdition()
+                    )
                 }
             }
 
@@ -390,44 +412,50 @@ class EditIngredientsFragment : ProductEditFragment() {
     /**
      * adds all the fields to the query map even those which are null or empty.
      */
-    private fun getAllDetails(activity: ProductEditActivity) {
-        activity.initialValues?.let { targetMap ->
-            binding.traces.chipifyAllUnterminatedTokens()
+    // TODO: remove activity usage here and prefer edit view model
+    private fun getAllDetails(): Fields {
+        binding.traces.chipifyAllUnterminatedTokens()
 
-            val lc = activity.getProductLanguageForEdition()
-                ?.takeUnless { it.isEmpty() } ?: ApiFields.Defaults.DEFAULT_LANGUAGE
+        val lang = editViewModel.getProductLanguageForEdition()
 
-            targetMap[lcIngredientsKey(lc)] = binding.ingredientsList.text.toString()
-            targetMap[ApiFields.Keys.ADD_TRACES.substring(4)] = binding.traces.chipValues.joinToString(",")
-        }
+        val lc = lang
+            ?.takeUnless { it.isEmpty() } ?: ApiFields.Defaults.DEFAULT_LANGUAGE
+
+        return fieldsOf(
+            lcIngredientsKey(lc) to binding.ingredientsList.text.toString(),
+            ApiFields.Keys.ADD_TRACES.substring(4) to binding.traces.chipValues.joinToString(",")
+        )
     }
 
     /**
      * adds only those fields to the query map which are not empty and have changed.
      */
-    override fun getUpdatedFieldsMap(): Map<String, String?> {
+    override fun getUpdatedFields(): Fields {
+        val fields = mutableFieldsOf()
+
         // TODO: hacky fix, better use a shared view model for saving product details
-        if (activity !is ProductEditActivity || _binding == null) return emptyMap()
-        val targetMap = mutableMapOf<String, String?>()
+        if (_binding == null) return fields
 
         binding.traces.chipifyAllUnterminatedTokens()
 
         binding.ingredientsList
             .takeIf { it.isContentDifferent(product?.ingredientsText) }
             ?.let {
-                val languageCode = (activity as ProductEditActivity).getProductLanguageForEdition()
+                val languageCode = editViewModel.getProductLanguageForEdition()
                 val lc = if (!languageCode.isNullOrEmpty()) languageCode else ApiFields.Defaults.DEFAULT_LANGUAGE
-                targetMap[lcIngredientsKey(lc)] = it.getContent()
+                fields[lcIngredientsKey(lc)] = it.getContent()
             }
 
         binding.traces
             .takeIf { it.isNotEmpty() && it.areChipsDifferent(extractTracesChipValues(product)) }
             ?.let {
-                targetMap[ApiFields.Keys.ADD_TRACES] = it.chipValues.joinToString(",")
+                fields[ApiFields.Keys.ADD_TRACES] = it.chipValues.joinToString(",")
             }
-        return targetMap
+
+        return fields
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data) {
@@ -437,7 +465,7 @@ class EditIngredientsFragment : ProductEditFragment() {
             photoFile = it
             val image = ProductImage(
                 code!!,
-                ProductImageField.INGREDIENTS,
+                ImageType.INGREDIENTS,
                 it,
                 localeManager.getLanguage()
             ).apply {
@@ -491,8 +519,8 @@ class EditIngredientsFragment : ProductEditFragment() {
      * @param status status of ocr, in case of proper OCR it returns "set" or "0"
      * @param ocrResult resultant string obtained after OCR of image
      */
-    fun setIngredients(status: String?, ocrResult: String?) {
-        if (activity == null || requireActivity().isFinishing) return
+    @UiThread
+    private fun setIngredients(status: String, ocrResult: String?) {
         when (status) {
             "set" -> {
                 binding.ingredientsList.setText(ocrResult)
@@ -503,11 +531,12 @@ class EditIngredientsFragment : ProductEditFragment() {
                 binding.btnLooksGood.visibility = View.VISIBLE
                 binding.btnSkipIngredients.visibility = View.VISIBLE
             }
-            else -> Toast.makeText(activity, R.string.unable_to_extract_ingredients, Toast.LENGTH_SHORT).show()
+            else -> Toast.makeText(requireContext(), R.string.unable_to_extract_ingredients, Toast.LENGTH_SHORT).show()
         }
     }
 
-    fun showOCRProgress() {
+    @UiThread
+    private fun showOCRProgress() {
         // Disable extract button and ingredients text field
         binding.btnExtractIngredients.isEnabled = false
         binding.ingredientsList.isEnabled = false
@@ -519,7 +548,8 @@ class EditIngredientsFragment : ProductEditFragment() {
         binding.ocrProgress.visibility = View.VISIBLE
     }
 
-    fun hideOCRProgress() {
+    @UiThread
+    private fun hideOCRProgress() {
         // Re-enable extract button and ingredients text field
         binding.btnExtractIngredients.isEnabled = true
         binding.ingredientsList.isEnabled = true

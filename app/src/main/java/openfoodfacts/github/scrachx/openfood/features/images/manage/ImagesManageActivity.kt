@@ -50,9 +50,9 @@ import openfoodfacts.github.scrachx.openfood.features.images.select.ImagesSelect
 import openfoodfacts.github.scrachx.openfood.features.login.LoginActivity
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.images.*
+import openfoodfacts.github.scrachx.openfood.models.ImageType
 import openfoodfacts.github.scrachx.openfood.models.LanguageData
 import openfoodfacts.github.scrachx.openfood.models.Product
-import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.models.findByCode
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
@@ -471,7 +471,7 @@ class ImagesManageActivity : BaseActivity() {
         editPhoto(productImageField, transformation)
     }
 
-    private fun editPhoto(field: ProductImageField, transformation: ImageTransformation) {
+    private fun editPhoto(field: ImageType, transformation: ImageTransformation) {
         val url = transformation.imageUrl?.takeIf { it.isNotBlank() } ?: return
 
         lifecycleScope.launchWhenResumed {
@@ -492,7 +492,7 @@ class ImagesManageActivity : BaseActivity() {
 
     private fun requireProduct() = getProduct() ?: error("Cannot start $LOG_TAG without product.")
 
-    private fun getSelectedType(): ProductImageField = intent.getSerializableExtra(IMAGE_TYPE) as ProductImageField?
+    private fun getSelectedType(): ImageType = intent.getSerializableExtra(IMAGE_TYPE) as ImageType?
         ?: error("Cannot initialize $LOG_TAG without IMAGE_TYPE")
 
     private fun onLanguageChanged() {

@@ -475,7 +475,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
                     this@NutritionProductFragment,
                     client,
                     product,
-                    ProductImageField.NUTRITION,
+                    ImageType.NUTRITION,
                     nutrientsImageUrl!!,
                     binding.imageViewNutrition,
                     localeManager.getLanguage()
@@ -534,7 +534,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
         // Create a new instance of ProductImage so we can load to server
         val image = ProductImage(
             product.code,
-            ProductImageField.NUTRITION,
+            ImageType.NUTRITION,
             photoFile,
             localeManager.getLanguage()
         ).apply {

@@ -912,7 +912,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
                         this@SummaryProductFragment,
                         client,
                         product,
-                        ProductImageField.FRONT,
+                        ImageType.FRONT,
                         url,
                         binding.imageViewFront,
                         localeManager.getLanguage()
@@ -935,7 +935,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
             //the pictures are uploaded with the correct path
             val resultUri = newPhotoFile.toURI()
             val photoFile = if (sendOther) newPhotoFile else File(resultUri.path)
-            val field = if (sendOther) ProductImageField.OTHER else ProductImageField.FRONT
+            val field = if (sendOther) ImageType.OTHER else ImageType.FRONT
             val image = ProductImage(product.code, field, photoFile, localeManager.getLanguage())
             image.filePath = photoFile.absolutePath
             uploadImage(image)

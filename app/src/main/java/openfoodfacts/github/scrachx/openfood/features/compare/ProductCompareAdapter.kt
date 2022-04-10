@@ -17,7 +17,6 @@ package openfoodfacts.github.scrachx.openfood.features.compare
 
 import android.Manifest.permission
 import android.app.Activity
-import android.content.Context
 import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.os.Build
 import android.view.LayoutInflater
@@ -114,7 +113,7 @@ class ProductCompareAdapter(
                         activity,
                         client,
                         product,
-                        ProductImageField.FRONT,
+                        ImageType.FRONT,
                         imageUrl,
                         holder.binding.productComparisonImage,
                         language

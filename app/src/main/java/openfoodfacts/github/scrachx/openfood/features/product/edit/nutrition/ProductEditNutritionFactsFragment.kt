@@ -123,7 +123,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
 
         binding.btnAddImageNutritionFacts.setOnClickListener { addNutritionFactsImage() }
         binding.btnEditImageNutritionFacts.setOnClickListener { newNutritionFactsImage() }
-        binding.btnAdd.setOnClickListener { next() }
+        binding.btnAdd.setOnClickListener { nextFragment() }
         binding.radioGroup.setOnCheckedChangeListener { _, checkedId ->
             if (checkedId >= 0) {
                 viewModel.dataFormat.postValue(checkedId)
@@ -181,7 +181,8 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
             it.checkValue()
         }
 
-        (activity as? ProductEditActivity)?.initialValues?.let { it += getAllFieldsMap() }
+
+        editViewModel.addToInitialValues(getAllFields())
 
         viewModel.noNutritionFactsChecked.observe(viewLifecycleOwner) {
             binding.checkboxNoNutritionData.isChecked = it
@@ -205,7 +206,6 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
 
     override fun allValid() = allEditViews.none { it.isError() }
 
-    private fun requireAddProductActivity() = requireActivity() as ProductEditActivity
 
     /**
      * Pre fill the fields of the product which are already present on the server.
@@ -283,7 +283,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
      */
     fun loadNutritionImage() {
         photoFile = null
-        val newImageNutritionUrl = product?.getImageNutritionUrl(requireAddProductActivity().getProductLanguageForEdition())
+        val newImageNutritionUrl = product?.getImageNutritionUrl(editViewModel.getProductLanguageForEdition())
         if (newImageNutritionUrl.isNullOrEmpty()) return
 
         binding.imageProgress.visibility = View.VISIBLE
@@ -552,74 +552,73 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
     /**
      * adds only those fields to the query map which are not empty.
      */
-    override fun getUpdatedFieldsMap(): Map<String, String?> {
+    override fun getUpdatedFields(): Fields {
         // We need this as we're calling this method
         // without knowing if the fragment is in a good state.
         // TODO: To be replaced with an activity shared view model
         if (_binding == null) {
             logcat(LogPriority.WARN) { "Binding is null. Returning an emptyMap." }
-            return emptyMap()
+            return emptyFields()
         }
 
-        val targetMap = mutableMapOf<String, String?>()
 
         // Add no nutrition data entry to map
         if (binding.checkboxNoNutritionData.isChecked) {
-            targetMap[ApiFields.Keys.NO_NUTRITION_DATA] = ApiFields.Defaults.NO_NUTRITION_DATA_ON
-            return targetMap
+            return fieldsOf(ApiFields.Keys.NO_NUTRITION_DATA to ApiFields.Defaults.NO_NUTRITION_DATA_ON)
         }
 
-        targetMap += getNutrientsModeMap()
+        val fields = getNutrientsModeFields().toMutableMap()
 
         // Add serving size entry to map if it has been changed
         if (binding.servingSize.isNotEmpty()) {
             @Suppress("USELESS_ELVIS") val servingSizeValue = binding.servingSize.getContent() +
             binding.servingSize.unitSpinner!!.selectedItem?.toString() ?: ""
+
             if (product == null || servingSizeValue != product!!.servingSize) {
-                targetMap[ApiFields.Keys.SERVING_SIZE] = servingSizeValue
+                fields[ApiFields.Keys.SERVING_SIZE] = servingSizeValue
             }
         }
 
         // For every nutrition field add it to map if updated
         for (view in allEditViews) {
             if (view.entryName == binding.servingSize.entryName || !view.isNotEmpty()) continue
-            targetMap += getNutrientMapIfUpdated(view)
+            fields += getNutrientUpdatedFields(view)
         }
 
-        if (targetMap.containsKey(ApiFields.Keys.NO_NUTRITION_DATA)) {
-            targetMap[ApiFields.Keys.NO_NUTRITION_DATA] = ApiFields.Defaults.NO_NUTRITION_DATA_OFF
+        if (fields.containsKey(ApiFields.Keys.NO_NUTRITION_DATA)) {
+            fields[ApiFields.Keys.NO_NUTRITION_DATA] = ApiFields.Defaults.NO_NUTRITION_DATA_OFF
         }
 
-        return targetMap
+        return fields
     }
 
     /**
      * adds all the fields to the query map even those which are null or empty.
      */
-    private fun getAllFieldsMap(): Map<String, String?> {
+    private fun getAllFields(): Fields {
         if (activity !is ProductEditActivity) return emptyMap()
 
         if (binding.checkboxNoNutritionData.isChecked) {
-            return mapOf(ApiFields.Keys.NO_NUTRITION_DATA to ApiFields.Defaults.NO_NUTRITION_DATA_ON)
+            return fieldsOf(ApiFields.Keys.NO_NUTRITION_DATA to ApiFields.Defaults.NO_NUTRITION_DATA_ON)
         }
 
-        val targetMap = mutableMapOf<String, String?>()
+        val fields = mutableFieldsOf()
         val servingSizeValue =
             if (binding.servingSize.text == null || binding.servingSize.text.toString().isEmpty()) ""
             else {
                 @Suppress("USELESS_ELVIS")
                 binding.servingSize.text.toString() + binding.servingSize.unitSpinner?.selectedItem ?: ""
             }
-        targetMap[ApiFields.Keys.SERVING_SIZE] = servingSizeValue
+        fields[ApiFields.Keys.SERVING_SIZE] = servingSizeValue
 
         for (view in allEditViews) {
             if (binding.servingSize.entryName == view.entryName) continue
-            addNutrientToMap(view, targetMap)
+            fields += getNutrientFields(view)
         }
 
-        targetMap[ApiFields.Keys.NO_NUTRITION_DATA] = ApiFields.Defaults.NO_NUTRITION_DATA_OFF
+        fields[ApiFields.Keys.NO_NUTRITION_DATA] = ApiFields.Defaults.NO_NUTRITION_DATA_OFF
 
-        return targetMap
+        return fields
     }
 
     /**
@@ -628,8 +627,8 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
      * @param editTextView EditText with spinner for entering the nutrients
      * @return map to enter the nutrient value received from edit texts
      */
-    private fun getNutrientMapIfUpdated(editTextView: CustomValidatingEditTextView): Map<String, String?> {
-        val targetMap = mutableMapOf<String, String?>()
+    private fun getNutrientUpdatedFields(editTextView: CustomValidatingEditTextView): Fields {
+        val fields = mutableFieldsOf()
         val productNutriments = product?.nutriments ?: ProductNutriments()
 
         val shortName = editTextView.entryName.replace("_", "-")
@@ -666,29 +665,26 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         val modChanged = oldMod == null || oldMod != newMod
 
         if (valueChanged || unitChanged || modChanged) {
-            addNutrientToMap(editTextView, targetMap)
+            getNutrientFields(editTextView)
         }
 
-        return targetMap
+        return fields
     }
 
     /**
      * Add nutrients to the map by from the text entered into EditText
      *
      * @param editTextView EditText with spinner for entering the nutrients
-     * @param targetMap map to enter the nutrient value received from edit texts
      */
-    private fun addNutrientToMap(
-        editTextView: CustomValidatingEditTextView,
-        targetMap: MutableMap<String, String?>
-    ) {
+    private fun getNutrientFields(editTextView: CustomValidatingEditTextView): Fields {
+        val fields = mutableFieldsOf()
         // For impl reference, see https://wiki.openfoodfacts.org/Nutrients_handling_in_Open_Food_Facts#Data_display
         val fieldName = getCompleteEntryName(editTextView)
 
         // Add unit field {nutrient-id}_unit to map
         if (editTextView.hasUnit() && editTextView.unitSpinner != null) {
             val selectedUnit = getUnitIndex(editTextView.unitSpinner!!.selectedItemPosition)
-            targetMap[fieldName + ApiFields.Suffix.UNIT] = Html.escapeHtml(selectedUnit.sym)
+            fields[fieldName + ApiFields.Suffix.UNIT] = Html.escapeHtml(selectedUnit.sym)
         }
 
         // Take modifier from attached spinner, add to value if not the default one
@@ -701,14 +697,16 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         }
         // The suffix can either be _serving or _100g depending on user input
         val value = editTextView.text!!.toString()
-        targetMap[fieldName] = mod + value
+        fields[fieldName] = mod + value
+
+        return fields
     }
 
-    private fun getNutrientsModeMap(): Map<String, String> {
+    private fun getNutrientsModeFields(): Fields {
         return when {
-            isDataPer100g -> mapOf(ApiFields.Keys.NUTRITION_DATA_PER to NUTRITION_DATA_PER_100G)
-            isDataPerServing -> mapOf(ApiFields.Keys.NUTRITION_DATA_PER to NUTRITION_DATA_PER_SERVING)
-            else -> mapOf()
+            isDataPer100g -> fieldsOf(ApiFields.Keys.NUTRITION_DATA_PER to NUTRITION_DATA_PER_100G)
+            isDataPerServing -> fieldsOf(ApiFields.Keys.NUTRITION_DATA_PER to NUTRITION_DATA_PER_SERVING)
+            else -> emptyFields()
         }
     }
 
@@ -824,6 +822,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                 unitSpinner.adapter = adapter
             }
+            else -> Unit
         }
         try {
             if (preFillValues) {
@@ -951,7 +950,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
             val resultUri = it.toURI()
             imagePath = resultUri.path
             photoFile = it
-            val image = ProductImage(productCode!!, ProductImageField.NUTRITION, it, localeManager.getLanguage()).apply {
+            val image = ProductImage(productCode!!, ImageType.NUTRITION, it, localeManager.getLanguage()).apply {
                 filePath = resultUri.path
             }
             (activity as? ProductEditActivity)?.savePhoto(image, 2)

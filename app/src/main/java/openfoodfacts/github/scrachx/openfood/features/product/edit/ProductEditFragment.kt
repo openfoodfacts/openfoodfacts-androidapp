@@ -1,12 +1,19 @@
 package openfoodfacts.github.scrachx.openfood.features.product.edit
 
+import androidx.fragment.app.activityViewModels
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
+import openfoodfacts.github.scrachx.openfood.models.Fields
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct
 
 abstract class ProductEditFragment : BaseFragment() {
-    open operator fun next() {
-        if (allValid()) (activity as? ProductEditActivity)?.proceed()
+
+    protected val editViewModel: ProductEditViewModel by activityViewModels()
+
+    fun nextFragment() {
+        if (allValid()) {
+            editViewModel.nextFragment()
+        }
     }
 
     protected fun getProductFromArgs() = arguments?.getSerializable("product") as Product?
@@ -21,7 +28,7 @@ abstract class ProductEditFragment : BaseFragment() {
     /**
      * adds only those fields to the query map which have changed.
      */
-    abstract fun getUpdatedFieldsMap(): Map<String, String?>
+    abstract fun getUpdatedFields(): Fields
 
     abstract fun hideImageProgress(errorInUploading: Boolean, message: String)
 

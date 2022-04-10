@@ -2,19 +2,19 @@ package openfoodfacts.github.scrachx.openfood.images
 
 import okhttp3.MediaType
 import okhttp3.RequestBody
-import openfoodfacts.github.scrachx.openfood.models.ProductImageField
-import openfoodfacts.github.scrachx.openfood.models.ProductImageField.*
+import openfoodfacts.github.scrachx.openfood.models.ImageType
+import openfoodfacts.github.scrachx.openfood.models.ImageType.*
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import java.io.File
 
 class ProductImage(
-        val barcode: String,
-        val imageField: ProductImageField,
-        imageBytes: ByteArray,
-        val language: String?
+    val barcode: String,
+    val imageField: ImageType,
+    imageBytes: ByteArray,
+    val language: String?
 ) {
 
-    constructor(code: String, field: ProductImageField, image: File, language: String?) :
+    constructor(code: String, field: ImageType, image: File, language: String?) :
             this(code, field, image.readBytes(), language)
 
     val barcodeBody: RequestBody = RequestBody.create(ProductRepository.MIME_TEXT, barcode)

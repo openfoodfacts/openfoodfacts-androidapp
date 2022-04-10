@@ -14,7 +14,6 @@ import openfoodfacts.github.scrachx.openfood.utils.ProductStringConverter
 import org.apache.commons.lang3.builder.ToStringBuilder
 import org.apache.commons.lang3.builder.ToStringStyle
 import java.util.*
-import kotlin.collections.ArrayList
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -293,17 +292,17 @@ class Product : SearchProduct() {
             getFieldForLanguage(ApiFields.Keys.INGREDIENTS_TEXT, languageCode) ?: ingredientsText
 
     fun getImageIngredientsUrl(languageCode: String?): String? {
-        val result = getSelectedImage(languageCode, ProductImageField.INGREDIENTS, ImageSize.DISPLAY)
+        val result = getSelectedImage(languageCode, ImageType.INGREDIENTS, ImageSize.DISPLAY)
         return if (!result.isNullOrBlank()) result else imageIngredientsUrl
     }
 
     fun getImagePackagingUrl(languageCode: String?): String? {
-        val result = getSelectedImage(languageCode, ProductImageField.PACKAGING, ImageSize.DISPLAY)
+        val result = getSelectedImage(languageCode, ImageType.PACKAGING, ImageSize.DISPLAY)
         return if (!result.isNullOrBlank()) result else imagePackagingUrl
     }
 
     fun getImageNutritionUrl(languageCode: String?): String? {
-        val result = getSelectedImage(languageCode, ProductImageField.NUTRITION, ImageSize.DISPLAY)
+        val result = getSelectedImage(languageCode, ImageType.NUTRITION, ImageSize.DISPLAY)
         return if (!result.isNullOrBlank()) result else imageNutritionUrl
     }
 
@@ -320,7 +319,7 @@ class Product : SearchProduct() {
                             ?.replace("&quot", "'")
 
 
-    fun getAvailableLanguageForImage(type: ProductImageField, size: ImageSize): List<String> {
+    fun getAvailableLanguageForImage(type: ImageType, size: ImageSize): List<String> {
         val images = additionalProperties[ApiFields.Keys.SELECTED_IMAGES] as Map<String, Map<String, Map<String, String>>>?
         if (images != null) {
             val imagesType = images[type.name.lowercase(Locale.ROOT)]
@@ -344,7 +343,7 @@ class Product : SearchProduct() {
     }
 
     fun getImageFrontUrl(languageCode: String?): String? {
-        val image = getSelectedImage(languageCode, ProductImageField.FRONT, ImageSize.DISPLAY)
+        val image = getSelectedImage(languageCode, ImageType.FRONT, ImageSize.DISPLAY)
         return if (image.isNullOrBlank()) image else imageFrontUrl
     }
 
@@ -359,7 +358,7 @@ class Product : SearchProduct() {
             getFieldForLanguage(ApiFields.Keys.PRODUCT_NAME, languageCode) ?: productName
 
     fun getImageUrl(languageCode: String?): String? {
-        val url = getSelectedImage(languageCode, ProductImageField.FRONT, ImageSize.DISPLAY)
+        val url = getSelectedImage(languageCode, ImageType.FRONT, ImageSize.DISPLAY)
         return if (!url.isNullOrBlank()) url else imageUrl
     }
 

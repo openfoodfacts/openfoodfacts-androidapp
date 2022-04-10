@@ -135,7 +135,7 @@ class ProductRepository @Inject constructor(
         }
 
         // Attribute the upload to the connected user
-        getUserInfo().forEach { (key, value) ->
+        getUserFields().forEach { (key, value) ->
             imgMap[key] = RequestBody.create(MIME_TEXT, value)
         }
         return imgMap
@@ -239,7 +239,7 @@ class ProductRepository @Inject constructor(
     }
 
     private suspend fun setDefaultImageFromServerResponse(body: JsonNode, image: ProductImage) {
-        val queryMap = getUserInfo() + listOf(
+        val queryMap = getUserFields() + listOf(
             IMG_ID to body["image"][IMG_ID].asText(),
             "id" to body["imagefield"].asText()
         )
@@ -250,7 +250,7 @@ class ProductRepository @Inject constructor(
     }
 
     suspend fun editImage(code: String, imgMap: MutableMap<String, String>) = withContext(IO) {
-        rawApi.editImages(code, imgMap + getUserInfo())
+        rawApi.editImages(code, imgMap + getUserFields())
     }
 
     /**
@@ -258,8 +258,8 @@ class ProductRepository @Inject constructor(
      *
      * @param code code of the product
      */
-    suspend fun unSelectImage(code: String, field: ProductImageField, language: String) = withContext(IO) {
-        val imgMap = getUserInfo() + (IMAGE_STRING_ID to getImageStringKey(field, language))
+    suspend fun unSelectImage(code: String, field: ImageType, language: String) = withContext(IO) {
+        val imgMap = getUserFields() + (IMAGE_STRING_ID to getImageStringKey(field, language))
         rawApi.unSelectImage(code, imgMap)
     }
 
@@ -364,70 +364,62 @@ class ProductRepository @Inject constructor(
         val MIME_TEXT: MediaType = MediaType.get("text/plain")
         const val PNG_EXT = ".png"
 
-        suspend fun HistoryProductDao.addToHistory(prod: OfflineSavedProduct): Unit = withContext(IO) {
-            val savedProduct = unique {
-                where(HistoryProductDao.Properties.Barcode.eq(prod.barcode))
-            }
+        /**
+         * Creates a [HistoryProduct] from a [OfflineSavedProduct] and adds
+         * it to the [HistoryProductDao].
+         */
+        suspend fun HistoryProductDao.addToHistory(prod: OfflineSavedProduct) {
+            withContext(IO) {
+                val savedProduct = unique {
+                    where(HistoryProductDao.Properties.Barcode.eq(prod.barcode))
+                }
 
-            val details = prod.productDetails
-            val hp = HistoryProduct(
-                prod.name,
-                details[Keys.ADD_BRANDS],
-                prod.imageFrontLocalUrl,
-                prod.barcode,
-                details[Keys.QUANTITY],
-                details[Keys.NUTRITION_GRADE_FR],
-                details[Keys.ECOSCORE],
-                details[Keys.NOVA_GROUPS]
-            )
-            if (savedProduct != null) hp.id = savedProduct.id
-            insertOrReplace(hp)
+                val hp = prod.toHistoryProduct()
+
+                if (savedProduct != null) {
+                    hp.id = savedProduct.id
+                }
+
+                insertOrReplace(hp)
+            }
         }
 
         /**
          * Add a product to ScanHistory synchronously
          */
-        suspend fun HistoryProductDao.addToHistory(product: Product, language: String): Unit =
+        suspend fun HistoryProductDao.addToHistory(product: Product, language: String) {
             withContext(IO) {
-
-                val savedProduct: HistoryProduct? = unique {
+                val savedProduct = unique {
                     where(HistoryProductDao.Properties.Barcode.eq(product.code))
                 }
 
-                val hp = HistoryProduct(
-                    product.productName,
-                    product.brands,
-                    product.getImageSmallUrl(language),
-                    product.code,
-                    product.quantity,
-                    product.nutritionGradeFr,
-                    product.ecoscore,
-                    product.novaGroups
-                )
+                val hp = product.toHistoryProduct(language)
 
-                if (savedProduct != null) hp.id = savedProduct.id
+                if (savedProduct != null) {
+                    hp.id = savedProduct.id
+                }
                 insertOrReplace(hp)
-
-                return@withContext
             }
+        }
     }
 
     /**
-     * Return a [Map] with user info (username, password, comment)
+     * Return [Fields] with user info (username, password, comment)
      */
-    private fun getUserInfo(): Map<String, String> {
-        val imgMap = mutableMapOf<String, String>()
+    fun getUserFields(): Fields {
 
-        val userName = context.getLoginUsername()
-        val userPassword = context.getLoginPassword()
+        val username = context.getLoginUsername()
+        val password = context.getLoginPassword()
 
-        if (userName?.isNotBlank() == true && userPassword?.isNotBlank() == true) {
-            imgMap[Keys.USER_COMMENT] = getCommentToUpload(userName)
-            imgMap[Keys.USER_ID] = userName
-            imgMap[Keys.USER_PASS] = userPassword
+        if (username.isNullOrBlank() || password.isNullOrBlank()) {
+            return emptyFields()
         }
 
-        return imgMap
+        return fieldsOf(
+            Keys.USER_ID to username,
+            Keys.USER_PASS to password,
+            Keys.USER_COMMENT to getCommentToUpload(username)
+        )
     }
 
     /**
@@ -436,23 +428,25 @@ class ProductRepository @Inject constructor(
      * @param login the username
      */
     fun getCommentToUpload(login: String? = null) = buildString {
-        append(
-            when (BuildConfig.FLAVOR) {
-                OBF -> StringBuilder("Official Open Beauty Facts Android app")
-                OPFF -> StringBuilder("Official Open Pet Food Facts Android app")
-                OPF -> StringBuilder("Official Open Products Facts Android app")
-                OFF -> StringBuilder("Official Open Food Facts Android app")
-                else -> StringBuilder("Official Open Food Facts Android app")
-            }
-        )
+
+        when (BuildConfig.FLAVOR) {
+            OBF -> append("Official Open Beauty Facts Android app")
+            OPFF -> append("Official Open Pet Food Facts Android app")
+            OPF -> append("Official Open Products Facts Android app")
+            OFF -> append("Official Open Food Facts Android app")
+            else -> append("Official Open Food Facts Android app")
+        }
+
         append(" ")
         append(context.getVersionName())
+
         if (login.isNullOrEmpty()) {
             append(" (Added by ").append(installationService.id).append(")")
         }
     }
 
-    val localeProductNameField get() = "product_name_${localeManager.getLanguage()}"
+    val localeProductNameField
+        get() = "product_name_${localeManager.getLanguage()}"
 
     private val fieldsToFetchFacets
         get() = (Keys.PRODUCT_SEARCH_FIELDS + localeProductNameField).joinToString(",")
