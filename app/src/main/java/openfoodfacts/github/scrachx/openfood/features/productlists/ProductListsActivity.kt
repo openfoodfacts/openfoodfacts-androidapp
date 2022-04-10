@@ -29,7 +29,6 @@ import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -41,8 +40,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.withContext
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
 import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
@@ -69,7 +66,6 @@ import org.apache.commons.csv.CSVParser
 import java.io.InputStream
 import java.io.InputStreamReader
 import javax.inject.Inject
-
 
 @AndroidEntryPoint
 class ProductListsActivity : BaseActivity(), SwipeController.Actions {
@@ -105,12 +101,7 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
 
         binding.fabAdd.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_plus_blue_24, 0, 0, 0)
 
-        // FIXME: remove runBlocking
-        productListsDao = runBlocking { daoSession.getProductListsDaoWithDefaultList(this@ProductListsActivity) }
-        val productLists = productListsDao.loadAll().toMutableList()
-
-        adapter = ProductListsAdapter(this@ProductListsActivity, productLists)
-
+        adapter = ProductListsAdapter(this, mutableListOf())
 
         binding.productListsRecyclerView.layoutManager = LinearLayoutManager(this)
         binding.productListsRecyclerView.adapter = adapter
@@ -125,6 +116,8 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
 
         binding.productListsRecyclerView.addOnItemTouchListener(
             RecyclerItemClickListener(this) { _, position ->
+                val productLists = adapter.lists
+
                 val id = productLists[position].id
                 val listName = productLists[position].listName
                 Intent(this, ProductListActivity::class.java).apply {
@@ -141,6 +134,12 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
         binding.fabAdd.setOnClickListener { showCreateListDialog() }
     }
 
+    private fun refreshLists() {
+        // FIXME: remove runBlocking
+        productListsDao = daoSession.productListsDao.defaultIfEmpty(this)
+        adapter.replaceWith(productListsDao.loadAll())
+    }
+
     // On Android < 5, the drawableStart attribute in XML will cause a crash
     // That's why, it's instead done here in the code
     private fun fixFabIcon() {
@@ -152,7 +151,7 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
 
     private fun showCreateListDialog(productToAdd: Product? = null) {
         val inputEditText = EditText(this).apply {
-            setHint(R.string.create_new_list_list_name)
+            setHint(R.string.dialog_create_new_list_hint)
         }
         val view = FrameLayout(this).apply {
             val margin = resources.getDimensionPixelSize(R.dimen.activity_horizontal_margin)
@@ -161,7 +160,7 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
         }
         val dialog = MaterialAlertDialogBuilder(this)
             .setCancelable(false)
-            .setTitle(R.string.txt_create_new_list)
+            .setTitle(R.string.dialog_create_new_list_title)
             .setView(view)
             .setPositiveButton(R.string.dialog_create, null)
             .setNegativeButton(R.string.dialog_cancel, null)
@@ -184,7 +183,7 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
         matomoAnalytics.trackEvent(AnalyticsEvent.ShoppingListCreated)
         val productList = ProductLists(listName, if (productToAdd != null) 1 else 0)
 
-        adapter.lists.add(productList)
+        adapter.add(productList)
         productListsDao.insert(productList)
 
         adapter.notifyDataSetChanged()
@@ -264,6 +263,7 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
 
     public override fun onResume() {
         super.onResume()
+        refreshLists()
         binding.bottomNavigation.bottomNavigation.selectNavigationItem(R.id.my_lists)
     }
 
@@ -336,14 +336,13 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
         @JvmStatic
         fun start(context: Context) = context.startActivity(Intent(context, ProductListsActivity::class.java))
 
-        suspend fun DaoSession.getProductListsDaoWithDefaultList(context: Context): ProductListsDao = withContext(Dispatchers.IO) {
-            if (productListsDao.isEmpty()) {
-                productListsDao.insertInTx(
-                    ProductLists(context.getString(R.string.txt_eaten_products), 0),
-                    ProductLists(context.getString(R.string.txt_products_to_buy), 0)
+        fun ProductListsDao.defaultIfEmpty(context: Context): ProductListsDao = also {
+            if (it.isEmpty()) {
+                it.insertInTx(
+                    ProductLists(context.getString(R.string.default_list_title_stored), 0),
+                    ProductLists(context.getString(R.string.default_list_title_to_buy), 0)
                 )
             }
-            return@withContext productListsDao
         }
     }
 }

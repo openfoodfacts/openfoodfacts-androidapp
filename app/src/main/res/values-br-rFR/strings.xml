@@ -658,12 +658,12 @@
     <string name="addtive_search">Klask un danvez ouzhpenn</string>
     <string name="additives">Danvezioù ouzhpenn</string>
     <!--used for product_lists implementation-->
-    <string name="add_to_product_lists">Ouzhpennañ d\'ho rolloù</string>
-    <string name="txt_create_new_list">Krouiñ ur roll nevez</string>
-    <string name="txt_add_to_new_list">Ouzhpennañ d\'ur roll nevez</string>
-    <string name="create_new_list_list_name">Anv ar roll</string>
-    <string name="txt_eaten_products">Products I have</string>
-    <string name="txt_products_to_buy">Produioù da brenañ</string>
+    <string name="dialog_add_product_to_list_title">Ouzhpennañ d\'ho rolloù</string>
+    <string name="dialog_create_new_list_title">Krouiñ ur roll nevez</string>
+    <string name="dialog_add_product_to_list_new">Ouzhpennañ d\'ur roll nevez</string>
+    <string name="dialog_create_new_list_hint">Anv ar roll</string>
+    <string name="default_list_title_stored">Products I have</string>
+    <string name="default_list_title_to_buy">Produioù da brenañ</string>
     <string name="txt_exporting_your_listed_products">Exporting Your Products…</string>
     <string name="txt_your_listed_products_exported">Your products have been exported</string>
     <string name="txt_discard">Discard</string>

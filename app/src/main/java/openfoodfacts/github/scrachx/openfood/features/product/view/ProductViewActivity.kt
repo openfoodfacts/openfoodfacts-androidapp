@@ -269,7 +269,9 @@ class ProductViewActivity : BaseActivity(), IProductView, OnRefreshListener {
                 adapter += IngredientsAnalysisProductFragment.newInstance(productState) to newTitles[1]
             }
 
-            if (sharedPreferences.getBoolean(activity.getString(R.string.pref_contribution_tab_key), false)) {
+            val contributionTabEnabled =
+                sharedPreferences.getBoolean(activity.getString(R.string.pref_contribution_tab_key), false)
+            if (contributionTabEnabled) {
                 adapter += ContributorsFragment.newInstance(productState) to activity.getString(R.string.contribution_tab)
             }
 

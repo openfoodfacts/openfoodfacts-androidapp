@@ -39,13 +39,16 @@ import com.google.android.material.textfield.TextInputLayout
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
+import logcat.LogPriority
+import logcat.logcat
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsView
 import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
 import openfoodfacts.github.scrachx.openfood.analytics.SentryAnalytics
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentAddProductNutritionFactsBinding
-import openfoodfacts.github.scrachx.openfood.features.product.edit.*
+import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_EDIT_OFFLINE_PRODUCT
+import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditFragment
 import openfoodfacts.github.scrachx.openfood.features.shared.views.CustomValidatingEditTextView
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
 import openfoodfacts.github.scrachx.openfood.models.*
@@ -550,6 +553,14 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
      * adds only those fields to the query map which are not empty.
      */
     override fun getUpdatedFieldsMap(): Map<String, String?> {
+        // We need this as we're calling this method
+        // without knowing if the fragment is in a good state.
+        // TODO: To be replaced with an activity shared view model
+        if (_binding == null) {
+            logcat(LogPriority.WARN) { "Binding is null. Returning an emptyMap." }
+            return emptyMap()
+        }
+
         val targetMap = mutableMapOf<String, String?>()
 
         // Add no nutrition data entry to map
@@ -633,7 +644,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
             oldUnit = oldProductNutriment.unit
             oldMod = oldProductNutriment.modifier
             oldValue = if (isDataPer100g)
-                oldProductNutriment.per100gInUnit.value
+                oldProductNutriment.per100gInUnit!!.value
             else
                 oldProductNutriment.perServingInUnit!!.value
         }

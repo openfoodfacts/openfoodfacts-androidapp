@@ -640,12 +640,12 @@
     <string name="addtive_search">Buscar un aditivo</string>
     <string name="additives">Aditivos</string>
     <!--used for product_lists implementation-->
-    <string name="add_to_product_lists">Añadir a tus listas</string>
-    <string name="txt_create_new_list">Crear nueva lista</string>
-    <string name="txt_add_to_new_list">Añadir a una nueva lista</string>
-    <string name="create_new_list_list_name">Nombre de la lista</string>
-    <string name="txt_eaten_products">Productos Ingeridos</string>
-    <string name="txt_products_to_buy">Productos para comprar</string>
+    <string name="dialog_add_product_to_list_title">Añadir a tus listas</string>
+    <string name="dialog_create_new_list_title">Crear nueva lista</string>
+    <string name="dialog_add_product_to_list_new">Añadir a una nueva lista</string>
+    <string name="dialog_create_new_list_hint">Nombre de la lista</string>
+    <string name="default_list_title_stored">Productos Ingeridos</string>
+    <string name="default_list_title_to_buy">Productos para comprar</string>
     <string name="txt_exporting_your_listed_products">Exportando tus productos…</string>
     <string name="txt_your_listed_products_exported">Tus productos han sido exportados</string>
     <string name="txt_discard">Descartar</string>

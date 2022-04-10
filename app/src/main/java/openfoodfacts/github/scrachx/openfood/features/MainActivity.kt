@@ -92,6 +92,8 @@ import openfoodfacts.github.scrachx.openfood.features.productlists.ProductListsA
 import openfoodfacts.github.scrachx.openfood.features.scanhistory.ScanHistoryActivity
 import openfoodfacts.github.scrachx.openfood.features.searchbycode.SearchByCodeFragment
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
+import openfoodfacts.github.scrachx.openfood.features.shared.NavigationDrawerHost
+import openfoodfacts.github.scrachx.openfood.features.shared.OnNavigationDrawerStatusChangedListener
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
 import openfoodfacts.github.scrachx.openfood.jobs.ProductUploaderWorker.Companion.scheduleProductUpload
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.installBottomNavigation
@@ -127,7 +129,7 @@ import javax.inject.Inject
 import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivity.Companion.start as startSearch
 
 @AndroidEntryPoint
-class MainActivity : BaseActivity(), NavigationDrawerListener {
+class MainActivity : BaseActivity(), NavigationDrawerListener, NavigationDrawerHost {
     private var _binding: ActivityMainBinding? = null
     private val binding get() = _binding!!
 
@@ -147,7 +149,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
 
     private val contributeUri: Uri by lazy { Uri.parse(getString(R.string.website_contribute)) }
     private val discoverUri: Uri by lazy { Uri.parse(getString(R.string.website_discover)) }
-    private fun getUserContributeUri(): Uri = Uri.parse(getString(R.string.website_contributor) + getUserLogin())
+    private fun getUserContributeUri(): Uri = Uri.parse(getString(R.string.website_contributor) + getLoginUsername())
 
     /**
      * Used to re-create the fragment after activity recreation
@@ -162,7 +164,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
     private var userSettingsURI: Uri? = null
 
     private var historySyncJob: Job? = null
-
+    private val drawerStatusChangedListeners = mutableSetOf<OnNavigationDrawerStatusChangedListener>()
 
     private val loginThenUpdate = registerForActivityResult(LoginContract())
     { isLoggedIn -> if (isLoggedIn) updateConnectedState() }
@@ -335,8 +337,16 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
 
         withOnDrawerListener(object : Drawer.OnDrawerListener {
             override fun onDrawerSlide(drawerView: View, slideOffset: Float) = hideKeyboard()
-            override fun onDrawerOpened(drawerView: View) = hideKeyboard()
-            override fun onDrawerClosed(drawerView: View) = Unit
+            override fun onDrawerOpened(drawerView: View) {
+                hideKeyboard()
+                // Signal event to listeners
+                drawerStatusChangedListeners.forEach { it.onDrawerOpened() }
+            }
+
+            override fun onDrawerClosed(drawerView: View) {
+                // Signal event to listeners
+                drawerStatusChangedListeners.forEach { it.onDrawerClosed() }
+            }
         })
 
         addDrawerItems(
@@ -586,10 +596,10 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
     }
 
     private fun openMyContributionsInSearchActivity() =
-        startSearch(this, SearchType.CONTRIBUTOR, getUserLogin()!!)
+        startSearch(this, SearchType.CONTRIBUTOR, getLoginUsername()!!)
 
     private fun getProfileSettingDrawerItem(): IProfile<ProfileSettingDrawerItem> {
-        val userLogin = getUserLogin()
+        val userLogin = getLoginUsername()
         val userSession = getUserSession()
         userSettingsURI = "${getString(R.string.website)}cgi/user.pl?type=edit&userid=$userLogin&user_id=$userLogin&user_session=$userSession".toUri()
         customTabActivityHelper.mayLaunchUrl(userSettingsURI, null, null)
@@ -648,7 +658,6 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
         menuInflater.inflate(R.menu.menu_main, menu)
 
 
-
         // Associate searchable configuration with the SearchView
         val searchManager = getSystemService(SEARCH_SERVICE) as SearchManager
         searchMenuItem = menu.findItem(R.id.action_search).also { menuItem ->
@@ -705,7 +714,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
     }
 
     private fun getUserProfile(): ProfileDrawerItem = profileItem {
-        withName(getLoginPreferences().getString("user", resources.getString(R.string.txt_anonymous)))
+        withName(getLoginUsername(resources.getString(R.string.txt_anonymous)))
         withIcon(R.drawable.img_home)
         withIdentifier(ITEM_USER.toLong())
     }
@@ -782,6 +791,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
     override fun onDestroy() {
         customTabActivityHelper.connectionCallback = null
         stopListeningToKeyboardVisibilityChanges()
+        drawerStatusChangedListeners.clear()
         _binding = null
         super.onDestroy()
     }
@@ -965,7 +975,14 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
             setNegativeButton(R.string.txtNo) { d, _ -> d.cancel() }
             show()
         }
+    }
 
+    override fun addOnDrawerStatusChangedListener(listener: OnNavigationDrawerStatusChangedListener) {
+        drawerStatusChangedListeners.add(listener)
+    }
+
+    override fun removeOnDrawerStatusChangedListener(listener: OnNavigationDrawerStatusChangedListener) {
+        drawerStatusChangedListeners.remove(listener)
     }
 
     companion object {

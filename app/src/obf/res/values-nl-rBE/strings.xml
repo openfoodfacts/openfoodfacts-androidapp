@@ -39,8 +39,8 @@
     <string name="add_category_prompt_text">Voeg een categorie toe om het product te helpen voltooien</string>
     <string name="add_nutrient_category_prompt_text">Voeg een categorie en meer details toe om het product te helpen voltooien</string>
     <string name="required_to_compute_nutriscore"></string>
-    <string name="txt_eaten_products">Mijn Producten</string>
-    <string name="txt_products_to_buy">Producten om te kopen</string>
+    <string name="default_list_title_stored">Mijn Producten</string>
+    <string name="default_list_title_to_buy">Producten om te kopen</string>
     <string name="intent_filter_share_label">Voeg toe aan Open Beauty Facts</string>
     <string name="brand_hint">Voorbeelden: Nivea, L\'Oreľal, etc…</string>
     <string name="txt_info_eaten_products">U kan producten aan deze lijst toevoegen door producten te scannen, de productkaart omhoog te slepen en op \"Te kopen producten\" te tikken.

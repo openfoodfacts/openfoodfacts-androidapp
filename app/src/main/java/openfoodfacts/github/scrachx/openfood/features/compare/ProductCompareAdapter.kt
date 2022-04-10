@@ -17,6 +17,7 @@ package openfoodfacts.github.scrachx.openfood.features.compare
 
 import android.Manifest.permission
 import android.app.Activity
+import android.content.Context
 import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.os.Build
 import android.view.LayoutInflater
@@ -219,67 +220,17 @@ class ProductCompareAdapter(
     }
 
     private fun getLevelItems(product: Product): List<NutrientLevelItem> {
-        val levelItems = mutableListOf<NutrientLevelItem>()
-
         val nutriments = product.nutriments
         val nutrientLevels = product.nutrientLevels
 
-        var fat: NutrimentLevel? = null
-        var saturatedFat: NutrimentLevel? = null
-        var sugars: NutrimentLevel? = null
-        var salt: NutrimentLevel? = null
-
-        if (nutrientLevels != null) {
-            fat = nutrientLevels.fat
-            saturatedFat = nutrientLevels.saturatedFat
-            sugars = nutrientLevels.sugars
-            salt = nutrientLevels.salt
-        }
-
-        if (fat != null || salt != null || saturatedFat != null || sugars != null) {
-            val fatNutriment = nutriments[Nutriment.FAT]
-            if (fat != null && fatNutriment != null) {
-                val fatNutrimentLevel = fat.getLocalize(activity)
-                levelItems += NutrientLevelItem(
-                    activity.getString(R.string.compare_fat),
-                    fatNutriment.getPer100gDisplayString(),
-                    fatNutrimentLevel,
-                    fat.getImgRes()
-                )
-            }
-            val saturatedFatNutriment = nutriments[Nutriment.SATURATED_FAT]
-            if (saturatedFat != null && saturatedFatNutriment != null) {
-                val saturatedFatLocalize = saturatedFat.getLocalize(activity)
-                levelItems += NutrientLevelItem(
-                    activity.getString(R.string.compare_saturated_fat),
-                    saturatedFatNutriment.getPer100gDisplayString(),
-                    saturatedFatLocalize,
-                    saturatedFat.getImgRes()
-                )
-            }
-            val sugarsNutriment = nutriments[Nutriment.SUGARS]
-            if (sugars != null && sugarsNutriment != null) {
-                val sugarsLocalize = sugars.getLocalize(activity)
-                levelItems += NutrientLevelItem(
-                    activity.getString(R.string.compare_sugars),
-                    sugarsNutriment.getPer100gDisplayString(),
-                    sugarsLocalize,
-                    sugars.getImgRes()
-                )
-            }
-            val saltNutriment = nutriments[Nutriment.SALT]
-            if (salt != null && saltNutriment != null) {
-                val saltLocalize = salt.getLocalize(activity)
-                levelItems += NutrientLevelItem(
-                    activity.getString(R.string.compare_salt),
-                    saltNutriment.getPer100gDisplayString(),
-                    saltLocalize,
-                    salt.getImgRes()
-                )
-            }
-        }
-        return levelItems
+        return listOfNotNull(
+            nutriments.buildLevelItem(activity, Nutriment.FAT, nutrientLevels?.fat),
+            nutriments.buildLevelItem(activity, Nutriment.SATURATED_FAT, nutrientLevels?.saturatedFat),
+            nutriments.buildLevelItem(activity, Nutriment.SUGARS, nutrientLevels?.sugars),
+            nutriments.buildLevelItem(activity, Nutriment.SALT, nutrientLevels?.salt)
+        )
     }
+
 
     fun onImageReturned(file: File) {
         val pos = imageReturnedPosition
@@ -320,6 +271,10 @@ class ProductCompareAdapter(
         init {
             binding.fullProductButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_fullscreen_blue_18dp, 0, 0, 0)
         }
+    }
+
+    companion object {
+
     }
 }
 

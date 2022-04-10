@@ -40,8 +40,8 @@
     <string name="add_nutrient_prompt_text">Tambahkan lebih banyak detail untuk membantu melengkapi informasi produk</string>
     <string name="add_category_prompt_text">Tambahkan kategori untuk membantu melengkapi informasi produk</string>
     <string name="add_nutrient_category_prompt_text">Tambahkan kategori dan lebih banyak detail untuk membantu melengkapi informasi produk</string>
-    <string name="txt_eaten_products">Produk yang saya miliki</string>
-    <string name="txt_products_to_buy">Produk - produk untuk dibeli</string>
+    <string name="default_list_title_stored">Produk yang saya miliki</string>
+    <string name="default_list_title_to_buy">Produk - produk untuk dibeli</string>
     <string name="intent_filter_share_label">Tambahkan ke Open Products Facts</string>
     <string name="txt_info_eaten_products">Anda akan dapat menambahkan produk ke daftar ini dengan memindai produk - produk, menarik kartu produknya ke atas dan mengetuk pada \"Produk - produk untuk dibeli\". Anda juga akan dapat menambahkan produk - produk ke daftar ini dengan mencarinya dan mengklik tombol + di bagian kanan atas halaman produk.</string>
     <string name="OFFlogo">Logo Open Products Facts</string>

@@ -13,11 +13,9 @@ import dagger.hilt.android.AndroidEntryPoint
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentFindProductBinding
 import openfoodfacts.github.scrachx.openfood.features.shared.NavigationBaseFragment
-import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener
+import openfoodfacts.github.scrachx.openfood.features.shared.NavigationWithDrawerBaseFragment
+import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType
-import openfoodfacts.github.scrachx.openfood.utils.hideKeyboard
-import openfoodfacts.github.scrachx.openfood.utils.isBarcodeValid
-import openfoodfacts.github.scrachx.openfood.utils.isEmpty
 import java.time.Duration
 import java.time.temporal.ChronoUnit
 import java.util.concurrent.TimeUnit
@@ -27,7 +25,7 @@ import kotlin.time.DurationUnit
  * @see R.layout.fragment_find_product
  */
 @AndroidEntryPoint
-class SearchByCodeFragment : NavigationBaseFragment() {
+class SearchByCodeFragment : NavigationWithDrawerBaseFragment() {
     private var _binding: FragmentFindProductBinding? = null
     private val binding get() = _binding!!
 
@@ -39,6 +37,7 @@ class SearchByCodeFragment : NavigationBaseFragment() {
     }
 
     override fun onDestroyView() {
+        removeDrawerListener()
         super.onDestroyView()
         _binding = null
     }
@@ -99,6 +98,17 @@ class SearchByCodeFragment : NavigationBaseFragment() {
     override fun onResume() {
         super.onResume()
         (requireActivity() as AppCompatActivity).supportActionBar?.title = getString(R.string.search_by_barcode_drawer)
+    }
+
+    override fun onDrawerClosed() {
+        super.onDrawerClosed()
+
+        // Force the keyboard to be visible
+        if (binding.editTextBarcode.isEmpty()) {
+            binding.editTextBarcode.requestFocus()
+            requireActivity().showKeyboard()
+        }
+
     }
 
     companion object {

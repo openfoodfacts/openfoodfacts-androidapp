@@ -40,8 +40,8 @@
     <string name="add_nutrient_prompt_text">Besin ögesi seviyelerini hesaplamak için besin değerlerini ekleyin</string>
     <string name="add_category_prompt_text">Ürünü tamamlamaya yardım etmek için bir kategori ekleyin</string>
     <string name="add_nutrient_category_prompt_text">Ürünü tamamlamaya yardım etmek için bir kategori ve besin değerlerini ekleyin</string>
-    <string name="txt_eaten_products">Sahip olduğum ürünler</string>
-    <string name="txt_products_to_buy">Satın alınacak ürünler</string>
+    <string name="default_list_title_stored">Sahip olduğum ürünler</string>
+    <string name="default_list_title_to_buy">Satın alınacak ürünler</string>
     <string name="intent_filter_share_label">Open Pet Food Facts\'e ekle</string>
     <string name="txt_info_eaten_products">Bu listeye ürün eklemeniz ürünleri tarayarak, ürün kartını yukarıya sürükleyip \"Satın alınacak ürünler\"e tıklayarak mümkün olacaktır.
 Aynı zamanda bu listeye ürünleri arayarak ve ürün sayfasının sağ üstündeki + butonuna tıklayarak ürünleri ekleyebilirsiniz.</string>

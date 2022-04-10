@@ -40,8 +40,8 @@
     <string name="add_nutrient_prompt_text">Adăugați informații nutriționale pentru a calcula nivelurile de nutrienți</string>
     <string name="add_category_prompt_text">Adăugați o categorie pentru a ajuta la completarea produsului</string>
     <string name="add_nutrient_category_prompt_text">Adăugați o categorie și informații nutriționale pentru a ajuta la completarea produsului</string>
-    <string name="txt_eaten_products">Produsele pe care le am</string>
-    <string name="txt_products_to_buy">Produse de cumpărat</string>
+    <string name="default_list_title_stored">Produsele pe care le am</string>
+    <string name="default_list_title_to_buy">Produse de cumpărat</string>
     <string name="intent_filter_share_label">Adăugați la Open Pet Food Facts</string>
     <string name="txt_info_eaten_products">Veți putea adăuga un produs la această listă scanând produse, trăgând cardul produsului în sus și atingând „Produse de cumpărat”.
         De asemenea, veți putea adăuga produse în această listă căutându-le și făcând clic pe butonul + din partea dreaptă sus a paginii produsului.</string>

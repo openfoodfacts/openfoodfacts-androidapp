@@ -98,8 +98,8 @@ class UnitUtilsTest {
 
     @Test
     fun `test display string`() {
-        assertThat(measure(5.92f, UNIT_GRAM).displayString()).isIn(listOf("5.92 g", "5,92 g"))
-        assertThat(measure(5f, UNIT_GRAM).displayString()).isEqualTo("5 g")
+        assertThat(measure(5.92f, UNIT_GRAM).toDisplayString()).isIn(listOf("5.92 g", "5,92 g"))
+        assertThat(measure(5f, UNIT_GRAM).toDisplayString()).isEqualTo("5 g")
     }
 
     @Test

@@ -29,13 +29,12 @@ import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.features.scan.ContinuousScanActivity
 import openfoodfacts.github.scrachx.openfood.hilt.AppEntryPoint
 import openfoodfacts.github.scrachx.openfood.utils.MY_PERMISSIONS_REQUEST_CAMERA
-import openfoodfacts.github.scrachx.openfood.utils.getLoginPreferences
 
 abstract class BaseActivity : AppCompatActivity() {
 
-    protected val requestCameraThenOpenScan = registerForActivityResult(ActivityResultContracts.RequestPermission()) {
-        if (it) startScanActivity()
-    }
+    protected val requestCameraThenOpenScan = registerForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { if (it) startScanActivity() }
 
     override fun attachBaseContext(newBase: Context) {
         val lm = EntryPoints.get(newBase.applicationContext, AppEntryPoint::class.java).localeManager()
@@ -50,10 +49,6 @@ abstract class BaseActivity : AppCompatActivity() {
         }
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
     }
-
-    fun getUserLogin() = getLoginPreferences().getString("user", null)
-
-    fun getUserSession() = getLoginPreferences().getString("user_session", null)
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
@@ -72,4 +67,5 @@ abstract class BaseActivity : AppCompatActivity() {
             .let { startActivity(it) }
     }
 }
+
 
