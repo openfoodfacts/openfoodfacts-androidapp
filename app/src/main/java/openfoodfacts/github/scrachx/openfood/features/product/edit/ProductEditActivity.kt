@@ -63,6 +63,7 @@ import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
 import openfoodfacts.github.scrachx.openfood.repositories.OfflineProductRepository
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository.Companion.PNG_EXT
+import openfoodfacts.github.scrachx.openfood.utils.asRequestBody
 import openfoodfacts.github.scrachx.openfood.utils.clearCameraCache
 import openfoodfacts.github.scrachx.openfood.utils.getProductState
 import openfoodfacts.github.scrachx.openfood.utils.hideKeyboard
@@ -283,7 +284,7 @@ class ProductEditActivity : BaseActivity() {
     /**
      * Save the current product in the offline db
      */
-    suspend fun saveProductOffline() {
+    private fun saveProductOffline() {
         editViewModel.saveProductOffline(editingMode)
 
         Toast.makeText(this, R.string.productSavedToast, Toast.LENGTH_SHORT).show()
@@ -327,7 +328,7 @@ class ProductEditActivity : BaseActivity() {
         var ocr = false
         val imgMap = hashMapOf<String, RequestBody?>(
             ApiFields.Keys.BARCODE to image.barcodeBody,
-            "imagefield" to createTextPlain("${image.imageField}_$lang")
+            "imagefield" to "${image.imageField}_$lang".asRequestBody()
         )
         if (image.imgFront != null) {
             editViewModel.updateImagesData { pathsMap[ImageType.FRONT] = image.filePath }
@@ -352,7 +353,7 @@ class ProductEditActivity : BaseActivity() {
         }
 
         // Attribute the upload to the connected user
-        imgMap += productRepository.getUserFields().mapValues { createTextPlain(it.value ?: "") }
+        imgMap += productRepository.getUserFields().mapValues { (it.value ?: "").asRequestBody() }
 
         savePhoto(imgMap, image, fragmentIndex, ocr)
 
@@ -602,7 +603,5 @@ class ProductEditActivity : BaseActivity() {
             }
         }
 
-        private fun createTextPlain(code: String) =
-            RequestBody.create(ProductRepository.MIME_TEXT, code)
     }
 }

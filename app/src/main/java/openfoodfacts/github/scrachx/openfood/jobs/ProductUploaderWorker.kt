@@ -43,18 +43,21 @@ class ProductUploaderWorker @AssistedInject constructor(
         const val KEY_INCLUDE_IMAGES = "includeImages"
 
         fun scheduleProductUpload(context: Context, pref: SharedPreferences) {
+            val uploadIfMobile = pref.getBoolean(context.getString(R.string.pref_enable_mobile_data_key), true)
 
-            val constData = buildConstraints {
-                setRequiredNetworkType(NetworkType.CONNECTED)
-            }
-            val uploadDataWorkRequest = buildUploadRequest(constData, false)
+            val uploadDataWorkRequest = buildUploadRequest(
+                inputData = buildData(false),
+                constraints = buildConstraints {
+                    setRequiredNetworkType(NetworkType.CONNECTED)
+                }
+            )
 
-            val constPics = buildConstraints {
-                val uploadIfMobile = pref.getBoolean(context.getString(R.string.pref_enable_mobile_data_key), true)
-
-                setRequiredNetworkType(if (uploadIfMobile) NetworkType.CONNECTED else NetworkType.UNMETERED)
-            }
-            val uploadPicturesWorkRequest = buildUploadRequest(constPics, true)
+            val uploadPicturesWorkRequest = buildUploadRequest(
+                inputData = buildData(true),
+                constraints = buildConstraints {
+                    setRequiredNetworkType(if (uploadIfMobile) NetworkType.CONNECTED else NetworkType.UNMETERED)
+                }
+            )
 
             WorkManager.getInstance(context)
                 .beginUniqueWork(WORK_TAG, ExistingWorkPolicy.REPLACE, uploadDataWorkRequest)
@@ -62,9 +65,16 @@ class ProductUploaderWorker @AssistedInject constructor(
                 .enqueue()
         }
 
-        private fun buildUploadRequest(constPics: Constraints, includeImages: Boolean) = buildOneTimeWorkRequest<ProductUploaderWorker> {
-            setInputData(buildData { putBoolean(KEY_INCLUDE_IMAGES, includeImages) })
-            setConstraints(constPics)
+        private fun buildData(includeImages: Boolean) = buildData {
+            putBoolean(KEY_INCLUDE_IMAGES, includeImages)
+        }
+
+        private fun buildUploadRequest(
+            inputData: Data,
+            constraints: Constraints = Constraints.NONE
+        ) = buildOneTimeWorkRequest<ProductUploaderWorker> {
+            setInputData(inputData)
+            setConstraints(constraints)
         }
 
     }

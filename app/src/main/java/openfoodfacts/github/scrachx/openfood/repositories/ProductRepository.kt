@@ -9,7 +9,6 @@ import io.reactivex.Single
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.rx2.rxSingle
 import kotlinx.coroutines.withContext
-import okhttp3.MediaType
 import okhttp3.RequestBody
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OBF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
@@ -135,9 +134,8 @@ class ProductRepository @Inject constructor(
         }
 
         // Attribute the upload to the connected user
-        getUserFields().forEach { (key, value) ->
-            imgMap[key] = RequestBody.create(MIME_TEXT, value)
-        }
+        imgMap += getUserFields().asRequestBody()
+
         return imgMap
     }
 
@@ -361,7 +359,6 @@ class ProductRepository @Inject constructor(
     }
 
     companion object {
-        val MIME_TEXT: MediaType = MediaType.get("text/plain")
         const val PNG_EXT = ".png"
 
         /**

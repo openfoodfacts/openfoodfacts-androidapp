@@ -1,10 +1,10 @@
 package openfoodfacts.github.scrachx.openfood.images
 
-import okhttp3.MediaType
 import okhttp3.RequestBody
 import openfoodfacts.github.scrachx.openfood.models.ImageType
 import openfoodfacts.github.scrachx.openfood.models.ImageType.*
-import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
+import openfoodfacts.github.scrachx.openfood.utils.asImageRequest
+import openfoodfacts.github.scrachx.openfood.utils.asRequestBody
 import java.io.File
 
 class ProductImage(
@@ -17,8 +17,8 @@ class ProductImage(
     constructor(code: String, field: ImageType, image: File, language: String?) :
             this(code, field, image.readBytes(), language)
 
-    val barcodeBody: RequestBody = RequestBody.create(ProductRepository.MIME_TEXT, barcode)
-    val fieldBody: RequestBody = RequestBody.create(ProductRepository.MIME_TEXT, "${imageField}_$language")
+    val barcodeBody = barcode.asRequestBody()
+    val fieldBody = "${imageField}_$language".asRequestBody()
 
     var imgFront: RequestBody? = null
     var imgIngredients: RequestBody? = null
@@ -30,17 +30,12 @@ class ProductImage(
 
     init {
         when (imageField) {
-            FRONT -> imgFront = createImageRequest(imageBytes)
-            INGREDIENTS -> imgIngredients = createImageRequest(imageBytes)
-            NUTRITION -> imgNutrition = createImageRequest(imageBytes)
-            PACKAGING -> imgPackaging = createImageRequest(imageBytes)
-            OTHER -> imgOther = createImageRequest(imageBytes)
+            FRONT -> imgFront = imageBytes.asImageRequest()
+            INGREDIENTS -> imgIngredients = imageBytes.asImageRequest()
+            NUTRITION -> imgNutrition = imageBytes.asImageRequest()
+            PACKAGING -> imgPackaging = imageBytes.asImageRequest()
+            OTHER -> imgOther = imageBytes.asImageRequest()
         }
-    }
-
-    companion object {
-        fun createImageRequest(image: File): RequestBody = RequestBody.create(MediaType.parse("image/*"), image)
-        fun createImageRequest(bytes: ByteArray): RequestBody = RequestBody.create(MediaType.parse("image/*"), bytes)
     }
 
 }

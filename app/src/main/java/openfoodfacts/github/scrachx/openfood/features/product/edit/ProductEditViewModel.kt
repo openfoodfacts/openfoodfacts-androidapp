@@ -164,7 +164,6 @@ class ProductEditViewModel @Inject constructor(
                 daoSession.historyProductDao.addToHistory(toSaveOffline)
             }
 
-
             ProductUploaderWorker.scheduleProductUpload(getApplication(), sharedPreferences)
 
             // Report analytics
