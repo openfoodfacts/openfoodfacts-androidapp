@@ -17,7 +17,6 @@ package openfoodfacts.github.scrachx.openfood.features.compare
 
 import android.Manifest.permission
 import android.app.Activity
-import android.content.Context
 import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.os.Build
 import android.view.LayoutInflater
@@ -238,7 +237,7 @@ class ProductCompareAdapter(
 
         imageReturnedListener?.invoke(compareProducts[pos].product, file)
         imageReturnedPosition = null
-        notifyDataSetChanged()
+        notifyItemChanged(pos)
     }
 
     private fun updateCardsHeight() {
@@ -269,12 +268,13 @@ class ProductCompareAdapter(
         val binding: ProductComparisonListItemBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         init {
-            binding.fullProductButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_fullscreen_blue_18dp, 0, 0, 0)
+            binding.fullProductButton.setCompoundDrawablesWithIntrinsicBounds(
+                R.drawable.ic_fullscreen_blue_18dp,
+                0,
+                0,
+                0
+            )
         }
-    }
-
-    companion object {
-
     }
 }
 
