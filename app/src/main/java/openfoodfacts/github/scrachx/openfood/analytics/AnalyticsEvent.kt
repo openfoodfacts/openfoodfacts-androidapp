@@ -28,6 +28,12 @@ sealed class AnalyticsEvent(val category: String, val action: String, val name: 
 
     object ShoppingListCreated : AnalyticsEvent("shopping-lists", "created", null, null)
 
+    data class ShoppingListProductAdded(val barcode: String) : AnalyticsEvent("shopping-lists", "add_product", barcode, null)
+
+    data class ShoppingListProductRemoved(val barcode: String) : AnalyticsEvent("shopping-lists", "remove_product", barcode, null)
+
+    object ShoppingListShared : AnalyticsEvent("shopping-lists", "shared", null, null)
+
     object ShoppingListExported : AnalyticsEvent("shopping-lists", "exported", null, null)
 
     data class IngredientAnalysisEnabled(val type: String) : AnalyticsEvent("ingredient-analysis", "enabled", type, null)

@@ -2,7 +2,6 @@
 
 package openfoodfacts.github.scrachx.openfood.features.simplescan
 
-import android.content.DialogInterface
 import android.content.Intent
 import android.hardware.Camera
 import android.os.Bundle
@@ -14,22 +13,18 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
-import androidx.core.view.isVisible
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.zxing.ResultPoint
-import com.journeyapps.barcodescanner.BarcodeCallback
-import com.journeyapps.barcodescanner.BarcodeResult
-import com.journeyapps.barcodescanner.DefaultDecoderFactory
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.ActivitySimpleScanBinding
-import openfoodfacts.github.scrachx.openfood.features.scan.MlKitCameraView
+import openfoodfacts.github.scrachx.openfood.features.scan.CameraView
+import openfoodfacts.github.scrachx.openfood.features.scan.MLKitCameraView
+import openfoodfacts.github.scrachx.openfood.features.scan.ZXCameraView
 import openfoodfacts.github.scrachx.openfood.features.simplescan.SimpleScanActivityContract.Companion.KEY_SCANNED_BARCODE
 import openfoodfacts.github.scrachx.openfood.models.CameraState
-import openfoodfacts.github.scrachx.openfood.repositories.ScannerPreferencesRepository
 import java.util.concurrent.atomic.AtomicBoolean
 
 @AndroidEntryPoint
@@ -38,7 +33,7 @@ class SimpleScanActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySimpleScanBinding
     private val viewModel: SimpleScanViewModel by viewModels()
 
-    private val mlKitView by lazy { MlKitCameraView(this) }
+    private lateinit var cameraView: CameraView<*>
     private val scannerInitialized = AtomicBoolean(false)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -122,22 +117,18 @@ class SimpleScanActivity : AppCompatActivity() {
 
     private fun applyScannerOptions(options: SimpleScanScannerOptions) {
         // camera state
-        if (options.mlScannerEnabled) {
-            mlKitView.toggleCamera()
+        cameraView = if (options.mlScannerEnabled) {
+            MLKitCameraView(this, binding.scanMlView)
         } else {
-            val cameraId = when (options.cameraState) {
+            ZXCameraView(this, binding.scanMlView)
+        }
+
+        cameraView.toggleCamera(
+            when (options.cameraState) {
                 CameraState.Back -> Camera.CameraInfo.CAMERA_FACING_BACK
                 CameraState.Front -> Camera.CameraInfo.CAMERA_FACING_FRONT
             }
-            with(binding.scanBarcodeView) {
-                pause()
-                val newSettings = barcodeView.cameraSettings.apply {
-                    requestedCameraId = cameraId
-                }
-                barcodeView.cameraSettings = newSettings
-                resume()
-            }
-        }
+        )
 
         // flash
         updateFlashStatus(options.flashEnabled)
@@ -149,18 +140,7 @@ class SimpleScanActivity : AppCompatActivity() {
             R.drawable.ic_baseline_camera_focus_off_24
         }
         binding.scanChangeFocusBtn.setImageResource(focusIconRes)
-        if (options.mlScannerEnabled) {
-            mlKitView.updateFocusModeSetting(options.autoFocusEnabled)
-        } else {
-            with(binding.scanBarcodeView) {
-                pause()
-                val newSettings = barcodeView.cameraSettings.apply {
-                    isAutoFocusEnabled = options.autoFocusEnabled
-                }
-                barcodeView.cameraSettings = newSettings
-                resume()
-            }
-        }
+        cameraView.updateFocusModeSetting(options.autoFocusEnabled)
     }
 
     private fun updateFlashStatus(flashEnabled: Boolean) {
@@ -170,63 +150,25 @@ class SimpleScanActivity : AppCompatActivity() {
             R.drawable.ic_flash_on_white_24dp
         }
         binding.scanFlashBtn.setImageResource(flashIconRes)
-
-        if (viewModel.scannerOptionsFlow.value.mlScannerEnabled) {
-            mlKitView.updateFlashSetting(flashEnabled)
-        } else {
-            if (flashEnabled) {
-                binding.scanBarcodeView.setTorchOn()
-            } else {
-                binding.scanBarcodeView.setTorchOff()
-            }
-        }
+        cameraView.updateFlashSetting(flashEnabled)
     }
 
     private fun setupBarcodeScanner(options: SimpleScanScannerOptions) {
-        binding.scanBarcodeView.isVisible = !options.mlScannerEnabled
-
-        if (options.mlScannerEnabled) {
-            mlKitView.attach(binding.scanMlView, options.cameraState.value, options.flashEnabled, options.autoFocusEnabled)
-            mlKitView.barcodeScannedCallback = {
-                viewModel.barcodeDetected(it)
-            }
-        } else {
-            with(binding.scanBarcodeView) {
-                barcodeView.decoderFactory = DefaultDecoderFactory(ScannerPreferencesRepository.BARCODE_FORMATS)
-                setStatusText(null)
-                barcodeView.cameraSettings.requestedCameraId = options.cameraState.value
-                barcodeView.cameraSettings.isAutoFocusEnabled = options.autoFocusEnabled
-
-                decodeContinuous(object : BarcodeCallback {
-                    override fun barcodeResult(result: BarcodeResult?) {
-                        result?.text?.let {
-                            viewModel.barcodeDetected(it)
-                        }
-                    }
-
-                    override fun possibleResultPoints(resultPoints: MutableList<ResultPoint>?) = Unit
-                })
-            }
+        cameraView.attach(options.cameraState.value, options.flashEnabled, options.autoFocusEnabled)
+        cameraView.barcodeScannedCallback = { barcode ->
+            barcode?.let { viewModel.barcodeDetected(it) }
         }
     }
 
     private fun stopScanning() {
         updateFlashStatus(flashEnabled = false)
 
-        if (viewModel.scannerOptionsFlow.value.mlScannerEnabled) {
-            mlKitView.stopCameraPreview()
-        } else {
-            binding.scanBarcodeView.pause()
-        }
+        cameraView.stopCameraPreview()
     }
 
     private fun startScanning() {
-        if (viewModel.scannerOptionsFlow.value.mlScannerEnabled) {
-            mlKitView.onResume()
-            mlKitView.startCameraPreview()
-        } else {
-            binding.scanBarcodeView.resume()
-        }
+        cameraView.onResume()
+        cameraView.startCameraPreview()
     }
 
     private fun showManualInputDialog() {
@@ -238,20 +180,18 @@ class SimpleScanActivity : AppCompatActivity() {
             setPadding(margin, margin / 2, margin, margin / 2)
             addView(inputEditText)
         }
-        val dialog = MaterialAlertDialogBuilder(this@SimpleScanActivity)
+        MaterialAlertDialogBuilder(this@SimpleScanActivity)
             .setTitle(R.string.trouble_scanning)
             .setMessage(R.string.enter_barcode)
             .setView(view)
-            .setPositiveButton(R.string.ok_button, null)
+            .setPositiveButton(R.string.ok_button) { _, _ ->
+                inputEditText.text?.toString()?.let {
+                    viewModel.barcodeDetected(it)
+                }
+            }
             .setNegativeButton(R.string.cancel_button) { _, _ ->
                 startScanning()
             }
             .show()
-        dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener {
-            inputEditText.text?.toString()?.let {
-                viewModel.barcodeDetected(it)
-            }
-
-        }
     }
 }
