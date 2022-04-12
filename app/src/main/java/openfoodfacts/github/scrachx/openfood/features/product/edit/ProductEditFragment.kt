@@ -10,7 +10,7 @@ abstract class ProductEditFragment : BaseFragment() {
 
     protected val editViewModel: ProductEditViewModel by activityViewModels()
 
-    fun nextFragment() {
+    protected fun nextFragment() {
         if (allValid()) {
             editViewModel.nextFragment()
         }
@@ -29,8 +29,4 @@ abstract class ProductEditFragment : BaseFragment() {
      * adds only those fields to the query map which have changed.
      */
     abstract fun getUpdatedFields(): Fields
-
-    abstract fun hideImageProgress(errorInUploading: Boolean, message: String)
-
-    abstract fun showImageProgress()
 }

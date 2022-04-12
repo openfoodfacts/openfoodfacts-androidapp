@@ -18,7 +18,7 @@ import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
 import openfoodfacts.github.scrachx.openfood.utils.asImageRequest
 import openfoodfacts.github.scrachx.openfood.utils.asRequestBody
 import openfoodfacts.github.scrachx.openfood.utils.list
-import openfoodfacts.github.scrachx.openfood.utils.unique
+import openfoodfacts.github.scrachx.openfood.utils.uniqueAsync
 import org.greenrobot.eventbus.EventBus
 import java.io.File
 import javax.inject.Inject
@@ -71,8 +71,8 @@ class OfflineProductRepository @Inject constructor(
         return ok.all { it }
     }
 
-    fun getOfflineProductByBarcode(barcode: String): OfflineSavedProduct? {
-        return daoSession.offlineSavedProductDao.unique {
+    suspend fun getOfflineProductByBarcode(barcode: String): OfflineSavedProduct? {
+        return daoSession.offlineSavedProductDao.uniqueAsync {
             where(OfflineSavedProductDao.Properties.Barcode.eq(barcode))
         }
     }
@@ -141,7 +141,7 @@ class OfflineProductRepository @Inject constructor(
         imgMap["""imgupload_$type"; filename="${type}_${product.language}.png""""] = imageReqBody
 
         return@withContext try {
-            val jsonNode = productsAPI.saveImage(imgMap)
+            val jsonNode = productsAPI.uploadImage(imgMap)
             val status = jsonNode["status"].asText()
 
             if (status == "status not ok") {

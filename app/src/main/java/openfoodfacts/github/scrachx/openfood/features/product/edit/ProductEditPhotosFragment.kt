@@ -35,6 +35,8 @@ import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentAddProductPhotosBinding
+import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditViewModel.ImagePosition
+import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditViewModel.ImageProgress
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
 import openfoodfacts.github.scrachx.openfood.models.ImageType
 import openfoodfacts.github.scrachx.openfood.models.Product
@@ -94,6 +96,15 @@ class ProductEditPhotosFragment : ProductEditFragment() {
         binding.btnAddOtherImage.setOnClickListener { addOtherImage() }
         binding.btnAdd.setOnClickListener { nextFragment() }
 
+        editViewModel.getImageProgress(ImagePosition.PHOTOS)
+            .observe(viewLifecycleOwner) {
+                when (it) {
+                    is ImageProgress.Loading -> showImageProgress()
+                    is ImageProgress.Done -> hideImageProgress(false)
+                    is ImageProgress.Error -> hideImageProgress(true)
+                }
+            }
+
         val bundle = arguments
         if (bundle == null) {
             Toast.makeText(activity, R.string.error_adding_product_photos, Toast.LENGTH_SHORT).show()
@@ -130,22 +141,27 @@ class ProductEditPhotosFragment : ProductEditFragment() {
         super.onActivityResult(requestCode, resultCode, data)
         photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data) { newPhotoFile ->
             photoFile = newPhotoFile
-            val image = ProductImage(code!!, ImageType.OTHER, newPhotoFile, localeManager.getLanguage())
-            image.filePath = photoFile!!.toURI().path
-            if (activity is ProductEditActivity) {
-                (activity as ProductEditActivity).savePhoto(image, 4)
-            }
+
+            val image = ProductImage(
+                code = code!!,
+                field = ImageType.OTHER,
+                image = newPhotoFile,
+                language = localeManager.getLanguage(),
+                filePath = photoFile!!.toURI().path
+            )
+
+            editViewModel.uploadPhoto(image, ImagePosition.PHOTOS)
         }
     }
 
-    override fun showImageProgress() {
+    private fun showImageProgress() {
         binding.imageProgress.visibility = View.VISIBLE
         binding.imageProgressText.visibility = View.VISIBLE
         binding.imageProgressText.setText(R.string.toastSending)
         addImageRow()
     }
 
-    override fun hideImageProgress(errorInUploading: Boolean, message: String) {
+    private fun hideImageProgress(errorInUploading: Boolean) {
         binding.imageProgress.visibility = View.GONE
         binding.btnAddOtherImage.visibility = View.VISIBLE
         if (errorInUploading) {

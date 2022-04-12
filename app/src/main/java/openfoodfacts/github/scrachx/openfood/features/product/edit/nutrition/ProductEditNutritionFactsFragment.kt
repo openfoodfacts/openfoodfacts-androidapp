@@ -49,6 +49,8 @@ import openfoodfacts.github.scrachx.openfood.databinding.FragmentAddProductNutri
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_EDIT_OFFLINE_PRODUCT
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditFragment
+import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditViewModel
+import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditViewModel.ImagePosition
 import openfoodfacts.github.scrachx.openfood.features.shared.views.CustomValidatingEditTextView
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
 import openfoodfacts.github.scrachx.openfood.models.*
@@ -183,6 +185,14 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
 
 
         editViewModel.addToInitialValues(getAllFields())
+        editViewModel.sideEffects.observe(viewLifecycleOwner, ::handleSideEffect)
+        editViewModel.getImageProgress(ImagePosition.NUTRITION).observe(viewLifecycleOwner) {
+            when (it) {
+                is ProductEditViewModel.ImageProgress.Loading -> showImageProgress()
+                is ProductEditViewModel.ImageProgress.Done -> hideImageProgress(false)
+                is ProductEditViewModel.ImageProgress.Error -> hideImageProgress(true)
+            }
+        }
 
         viewModel.noNutritionFactsChecked.observe(viewLifecycleOwner) {
             binding.checkboxNoNutritionData.isChecked = it
@@ -190,6 +200,13 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         }
 
         viewModel.dataFormat.observe(viewLifecycleOwner, binding.radioGroup::check)
+    }
+
+    private fun handleSideEffect(sideEffect: ProductEditViewModel.SideEffect) {
+        when (sideEffect) {
+            is ProductEditViewModel.SideEffect.LanguageUpdated -> loadNutritionImage()
+            else -> Unit
+        }
     }
 
     override fun onResume() {
@@ -281,7 +298,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
     /**
      * Load the nutrition image uploaded form AddProductActivity
      */
-    fun loadNutritionImage() {
+    private fun loadNutritionImage() {
         photoFile = null
         val newImageNutritionUrl = product?.getImageNutritionUrl(editViewModel.getProductLanguageForEdition())
         if (newImageNutritionUrl.isNullOrEmpty()) return
@@ -933,34 +950,14 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         }
     }
 
-    override fun showImageProgress() {
-        if (!isAdded) return
+    private fun showImageProgress() {
         binding.imageProgress.visibility = View.VISIBLE
         binding.imageProgressText.visibility = View.VISIBLE
         binding.btnAddImageNutritionFacts.visibility = View.INVISIBLE
         binding.btnEditImageNutritionFacts.visibility = View.INVISIBLE
     }
 
-    private fun getStarchValue() = starchEditText?.getFloatValue() ?: 0F
-    private fun getStarchUnitSelectedIndex() = starchEditText?.unitSpinner?.selectedItemPosition ?: 0
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data) {
-            val resultUri = it.toURI()
-            imagePath = resultUri.path
-            photoFile = it
-            val image = ProductImage(productCode!!, ImageType.NUTRITION, it, localeManager.getLanguage()).apply {
-                filePath = resultUri.path
-            }
-            (activity as? ProductEditActivity)?.savePhoto(image, 2)
-            hideImageProgress(false, "")
-        }
-
-    }
-
-    override fun hideImageProgress(errorInUploading: Boolean, message: String) {
-        if (!isAdded) return
+    private fun hideImageProgress(errorInUploading: Boolean) {
         binding.imageProgress.visibility = View.GONE
         binding.imageProgressText.visibility = View.GONE
         binding.btnAddImageNutritionFacts.visibility = View.VISIBLE
@@ -971,6 +968,27 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
                 .centerInside()
                 .into(binding.btnAddImageNutritionFacts)
         }
+    }
+
+    private fun getStarchValue() = starchEditText?.getFloatValue() ?: 0F
+
+    private fun getStarchUnitSelectedIndex() = starchEditText?.unitSpinner?.selectedItemPosition ?: 0
+
+    @Deprecated("Deprecated in Java")
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data) {
+            val resultUri = it.toURI()
+            imagePath = resultUri.path
+            photoFile = it
+            val image = ProductImage(productCode!!, ImageType.NUTRITION, it, localeManager.getLanguage()).apply {
+                filePath = resultUri.path
+            }
+
+            editViewModel.uploadPhoto(image, ImagePosition.NUTRITION)
+            hideImageProgress(false)
+        }
+
     }
 
     internal inner class ValidTextWatcher(private val editTextView: CustomValidatingEditTextView) : TextWatcher, OnItemSelectedListener {

@@ -113,24 +113,30 @@ class ProductRepository @Inject constructor(
      *
      * @param image object of ProductImage
      */
-    private fun getUploadableMap(image: ProductImage): Map<String, RequestBody?> {
+    fun getImageUploadMap(image: ProductImage): Map<String, RequestBody?> {
         val lang = image.language
 
-        val imgMap = hashMapOf(PRODUCT_BARCODE to image.barcodeBody, "imagefield" to image.fieldBody)
-        if (image.imgFront != null) {
-            imgMap["""imgupload_front"; filename="front_$lang$PNG_EXT"""] = image.imgFront!!
-        }
-        if (image.imgIngredients != null) {
-            imgMap["""imgupload_ingredients"; filename="ingredients_$lang$PNG_EXT"""] = image.imgIngredients!!
-        }
-        if (image.imgNutrition != null) {
-            imgMap["""imgupload_nutrition"; filename="nutrition_$lang$PNG_EXT"""] = image.imgNutrition!!
-        }
-        if (image.imgPackaging != null) {
-            imgMap["""imgupload_packaging"; filename="packaging_$lang$PNG_EXT"""] = image.imgPackaging!!
-        }
-        if (image.imgOther != null) {
-            imgMap["""imgupload_other"; filename="other_$lang$PNG_EXT"""] = image.imgOther!!
+        val imgMap = mutableMapOf(
+            PRODUCT_BARCODE to image.barcodeBody,
+            "imagefield" to image.fieldBody
+        )
+
+        when (image.imageField) {
+            ImageType.FRONT -> {
+                imgMap["""imgupload_front"; filename="front_$lang$PNG_EXT"""] = image.body
+            }
+            ImageType.INGREDIENTS -> {
+                imgMap["""imgupload_ingredients"; filename="ingredients_$lang$PNG_EXT"""] = image.body
+            }
+            ImageType.NUTRITION -> {
+                imgMap["""imgupload_nutrition"; filename="nutrition_$lang$PNG_EXT"""] = image.body
+            }
+            ImageType.PACKAGING -> {
+                imgMap["""imgupload_packaging"; filename="packaging_$lang$PNG_EXT"""] = image.body
+            }
+            ImageType.OTHER -> {
+                imgMap["""imgupload_other"; filename="other_$lang$PNG_EXT"""] = image.body
+            }
         }
 
         // Attribute the upload to the connected user
@@ -180,7 +186,7 @@ class ProductRepository @Inject constructor(
                     imageFile,
                     localeManager.getLanguage()
                 )
-                val jsonNode = rawApi.saveImage(getUploadableMap(productImage))
+                val jsonNode = rawApi.uploadImage(getImageUploadMap(productImage))
 
                 Log.d("onResponse", jsonNode.toString())
                 if (!jsonNode.isObject) {
@@ -214,7 +220,7 @@ class ProductRepository @Inject constructor(
 
     suspend fun postImg(image: ProductImage, setAsDefault: Boolean = false) = withContext(IO) {
         try {
-            val body = rawApi.saveImage(getUploadableMap(image))
+            val body = rawApi.uploadImage(getImageUploadMap(image))
 
             if (!body.isObject) {
                 throw IOException("body is not an object")
@@ -366,37 +372,33 @@ class ProductRepository @Inject constructor(
          * it to the [HistoryProductDao].
          */
         suspend fun HistoryProductDao.addToHistory(prod: OfflineSavedProduct) {
-            withContext(IO) {
-                val savedProduct = unique {
-                    where(HistoryProductDao.Properties.Barcode.eq(prod.barcode))
-                }
-
-                val hp = prod.toHistoryProduct()
-
-                if (savedProduct != null) {
-                    hp.id = savedProduct.id
-                }
-
-                insertOrReplace(hp)
+            val savedProduct = uniqueAsync {
+                where(HistoryProductDao.Properties.Barcode.eq(prod.barcode))
             }
+
+            val hp = prod.toHistoryProduct()
+
+            if (savedProduct != null) {
+                hp.id = savedProduct.id
+            }
+
+            insertOrReplace(hp)
         }
 
         /**
          * Add a product to ScanHistory synchronously
          */
         suspend fun HistoryProductDao.addToHistory(product: Product, language: String) {
-            withContext(IO) {
-                val savedProduct = unique {
-                    where(HistoryProductDao.Properties.Barcode.eq(product.code))
-                }
-
-                val hp = product.toHistoryProduct(language)
-
-                if (savedProduct != null) {
-                    hp.id = savedProduct.id
-                }
-                insertOrReplace(hp)
+            val savedProduct = uniqueAsync {
+                where(HistoryProductDao.Properties.Barcode.eq(product.code))
             }
+
+            val hp = product.toHistoryProduct(language)
+
+            if (savedProduct != null) {
+                hp.id = savedProduct.id
+            }
+            insertOrReplace(hp)
         }
     }
 

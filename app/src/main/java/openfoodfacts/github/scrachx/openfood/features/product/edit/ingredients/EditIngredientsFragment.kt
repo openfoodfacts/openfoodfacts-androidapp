@@ -36,6 +36,7 @@ import com.hootsuite.nachos.validator.ChipifyingNachoValidator
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.runBlocking
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsView
@@ -46,6 +47,7 @@ import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditAc
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_SEND_UPDATED
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditFragment
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditViewModel
+import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditViewModel.ImagePosition
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
 import openfoodfacts.github.scrachx.openfood.models.*
 import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct
@@ -187,6 +189,21 @@ class EditIngredientsFragment : ProductEditFragment() {
 
         editViewModel.addToInitialValues(getAllDetails())
         editViewModel.ingredientsProgress.observe(viewLifecycleOwner) { onIngredientsChange(it) }
+        editViewModel.sideEffects.observe(viewLifecycleOwner, ::handleSideEffect)
+        editViewModel.getImageProgress(ImagePosition.INGREDIENTS).observe(viewLifecycleOwner) {
+            when (it) {
+                is ProductEditViewModel.ImageProgress.Loading -> showImageProgress()
+                is ProductEditViewModel.ImageProgress.Done -> hideImageProgress(false, it.message)
+                is ProductEditViewModel.ImageProgress.Error -> hideImageProgress(true, it.message)
+            }
+        }
+    }
+
+    private fun handleSideEffect(sideEffect: ProductEditViewModel.SideEffect) {
+        when (sideEffect) {
+            is ProductEditViewModel.SideEffect.LanguageUpdated -> loadIngredientsImage()
+            else -> Unit
+        }
     }
 
     private fun onIngredientsChange(progress: ProductEditViewModel.IngredientsProgress) {
@@ -220,10 +237,12 @@ class EditIngredientsFragment : ProductEditFragment() {
 
     private fun getImageIngredients() = productDetails[ApiFields.Keys.IMAGE_INGREDIENTS]
 
-    private fun extractTracesChipValues(product: Product?): List<String> =
-        product?.tracesTags
-            ?.map { getTracesName(localeManager.getLanguage(), it) }
-            ?: emptyList()
+    private fun extractTracesChipValues(product: Product?): List<String> {
+        return runBlocking {
+            product?.tracesTags
+                ?.map { getTracesName(localeManager.getLanguage(), it) }
+        } ?: emptyList()
+    }
 
     /**
      * Pre fill the fields of the product which are already present on the server.
@@ -244,7 +263,7 @@ class EditIngredientsFragment : ProductEditFragment() {
     /**
      * Load ingredients image on the image view
      */
-    fun loadIngredientsImage() {
+    private fun loadIngredientsImage() {
 
         val newImageIngredientsUrl = product!!.getImageIngredientsUrl(editViewModel.getProductLanguageForEdition())
         photoFile = null
@@ -276,8 +295,8 @@ class EditIngredientsFragment : ProductEditFragment() {
      * @param languageCode language in which additive name and tag are written
      * @param tag Tag associated with the allergen
      */
-    private fun getTracesName(languageCode: String, tag: String): String {
-        return daoSession.allergenNameDao.unique {
+    private suspend fun getTracesName(languageCode: String, tag: String): String {
+        return daoSession.allergenNameDao.uniqueAsync {
             where(AllergenNameDao.Properties.AllergenTag.eq(tag))
             where(AllergenNameDao.Properties.LanguageCode.eq(languageCode))
         }?.name ?: tag
@@ -384,21 +403,21 @@ class EditIngredientsFragment : ProductEditFragment() {
     }
 
     private fun extractIngredients() {
-        (activity as? ProductEditActivity)?.let { activity ->
 
-            imagePath?.let { imagePath ->
-                if (!isEditingFromArgs || newImageSelected) {
-                    photoFile = File(imagePath)
-                    val image = ProductImage(code!!, ImageType.INGREDIENTS, photoFile!!, localeManager.getLanguage())
-                    image.filePath = imagePath
-                    activity.savePhoto(image, 1)
-                } else {
-                    editViewModel.performIngredientsOCR(
-                        code!!,
-                        "ingredients_" + editViewModel.getProductLanguageForEdition()
-                    )
+        imagePath?.let { imagePath ->
+            if (!isEditingFromArgs || newImageSelected) {
+                photoFile = File(imagePath)
+                val image = ProductImage(code!!, ImageType.INGREDIENTS, photoFile!!, localeManager.getLanguage()).apply {
+                    filePath = imagePath
                 }
+                editViewModel.uploadPhoto(image, ImagePosition.INGREDIENTS)
+            } else {
+                editViewModel.performIngredientsOCR(
+                    code!!,
+                    "ingredients_" + editViewModel.getProductLanguageForEdition()
+                )
             }
+
 
         }
     }
@@ -458,24 +477,22 @@ class EditIngredientsFragment : ProductEditFragment() {
     @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data) {
-            val uri = it.toURI()
+
+        photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data) { image ->
+            val uri = image.toURI()
             imagePath = uri.path
             newImageSelected = true
-            photoFile = it
-            val image = ProductImage(
-                code!!,
-                ImageType.INGREDIENTS,
-                it,
-                localeManager.getLanguage()
-            ).apply {
+            photoFile = image
+
+            val productImage = ProductImage(
+                code = code!!,
+                field = ImageType.INGREDIENTS,
+                image = image,
+                language = localeManager.getLanguage(),
                 filePath = uri.path
-            }
+            )
 
-            (activity as? ProductEditActivity)?.savePhoto(image, 1)
-
-            // Change UI state
-            hideImageProgress(false, getString(R.string.image_uploaded_successfully))
+            editViewModel.uploadPhoto(productImage, ImagePosition.INGREDIENTS)
 
             // Analytics
             matomoAnalytics.trackEvent(AnalyticsEvent.ProductIngredientsPictureEdited(code))
@@ -485,7 +502,7 @@ class EditIngredientsFragment : ProductEditFragment() {
     /**
      * Displays progress bar and hides other views util image is still loading
      */
-    override fun showImageProgress() {
+    private fun showImageProgress() {
         binding.imageProgress.visibility = View.VISIBLE
         binding.imageProgressText.visibility = View.VISIBLE
         binding.imageProgressText.setText(R.string.toastSending)
@@ -499,7 +516,7 @@ class EditIngredientsFragment : ProductEditFragment() {
      * @param errorInUploading boolean variable is true, if there is an error while showing image
      * @param message error message in case of failure to display image
      */
-    override fun hideImageProgress(errorInUploading: Boolean, message: String) {
+    private fun hideImageProgress(errorInUploading: Boolean, message: String) {
         binding.imageProgress.visibility = View.INVISIBLE
         binding.imageProgressText.visibility = View.GONE
         binding.btnAddImageIngredients.visibility = View.VISIBLE

@@ -90,7 +90,7 @@ interface ProductsAPI {
 
     @Multipart
     @POST("/cgi/product_image_upload.pl")
-    suspend fun saveImage(
+    suspend fun uploadImage(
         @PartMap fields: Map<String, @JvmSuppressWildcards RequestBody?>
     ): JsonNode
 

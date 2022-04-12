@@ -7,6 +7,8 @@ import android.content.pm.PackageManager
 import android.os.BatteryManager
 import android.util.Log
 import androidx.preference.PreferenceManager.getDefaultSharedPreferences
+import logcat.LogPriority
+import logcat.logcat
 import java.io.File
 import java.io.IOException
 import kotlin.math.ceil
@@ -57,8 +59,11 @@ fun Context.isHardwareCameraInstalled() = isHardwareCameraInstalled(this)
 
 fun Context.clearCameraCache() {
     (getCameraCacheLocation().listFiles() ?: return).forEach {
-        if (it.delete()) Log.i(LOG_TAG, "Deleted cached photo '${it.absolutePath}'.")
-        else Log.i(LOG_TAG, "Couldn't delete cached photo '${it.absolutePath}'.")
+        if (it.delete()) {
+            logcat(LogPriority.INFO) { "Deleted cached photo '${it.absolutePath}'." }
+        } else {
+            logcat(LogPriority.INFO) { "Couldn't delete cached photo '${it.absolutePath}'." }
+        }
     }
 }
 
