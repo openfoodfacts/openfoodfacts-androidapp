@@ -176,9 +176,9 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
         productDisp?.cancel()
 
         // First, try to show if we have an offline saved product in the db
-        offlineSavedProduct = offlineProductRepository.getOfflineProductByBarcode(barcode).also { product ->
-            product?.let { showOfflineSavedDetails(it) }
-        }
+        // TODO: Remove runBlocking
+        offlineSavedProduct = runBlocking { offlineProductRepository.getOfflineProductByBarcode(barcode) }
+            ?.also { showOfflineSavedDetails(it) }
 
         // Then query the online db
         productDisp = lifecycleScope.launch(Dispatchers.Main) {
@@ -197,7 +197,7 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
                 // A network error happened
                 if (err is IOException) {
                     hideAllViews()
-                    val offlineSavedProduct = daoSession.offlineSavedProductDao.unique {
+                    val offlineSavedProduct = daoSession.offlineSavedProductDao.uniqueAsync {
                         where(OfflineSavedProductDao.Properties.Barcode.eq(barcode))
                     }
                     tryDisplayOffline(offlineSavedProduct, barcode, R.string.addProductOffline)
@@ -727,8 +727,11 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
         // Prevent duplicate scans
         if (text == null || text.isEmpty() || text == lastBarcode) return
 
-        val invalidBarcode = daoSession.invalidBarcodeDao.unique {
-            where(InvalidBarcodeDao.Properties.Barcode.eq(text))
+        // TODO: Move to view model
+        val invalidBarcode = runBlocking {
+            daoSession.invalidBarcodeDao.uniqueAsync {
+                where(InvalidBarcodeDao.Properties.Barcode.eq(text))
+            }
         }
         // Scanned barcode is in the list of invalid barcodes, do nothing
         if (invalidBarcode != null) return
