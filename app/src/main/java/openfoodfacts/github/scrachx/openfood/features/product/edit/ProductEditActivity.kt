@@ -42,10 +42,12 @@ import openfoodfacts.github.scrachx.openfood.features.product.edit.ingredients.E
 import openfoodfacts.github.scrachx.openfood.features.product.edit.nutrition.ProductEditNutritionFactsFragment
 import openfoodfacts.github.scrachx.openfood.features.product.edit.overview.EditOverviewFragment
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
-import openfoodfacts.github.scrachx.openfood.models.*
+import openfoodfacts.github.scrachx.openfood.models.Fields
+import openfoodfacts.github.scrachx.openfood.models.ImageType
+import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct
+import openfoodfacts.github.scrachx.openfood.models.mutableFieldsOf
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
-import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
 import openfoodfacts.github.scrachx.openfood.repositories.OfflineProductRepository
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.clearCameraCache
@@ -65,12 +67,6 @@ class ProductEditActivity : BaseActivity() {
 
     @Inject
     lateinit var offlineRepository: OfflineProductRepository
-
-    @Inject
-    lateinit var daoSession: DaoSession
-
-    @Inject
-    lateinit var productsApi: ProductsAPI
 
     private val fragmentsBundle = Bundle()
 
