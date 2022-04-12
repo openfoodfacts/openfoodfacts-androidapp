@@ -30,3 +30,4 @@ updates:
       interval: "daily"
     labels:
       - "dependencies"
+#end
