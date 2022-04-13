@@ -64,7 +64,7 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.1.3")
     implementation("androidx.multidex:multidex:2.0.1")
     implementation("androidx.viewpager2:viewpager2:1.0.0")
-    implementation("androidx.startup:startup-runtime:1.1.0")
+    implementation("androidx.startup:startup-runtime:1.1.1")
     implementation("androidx.work:work-runtime-ktx:2.7.1")
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 
@@ -150,7 +150,7 @@ dependencies {
 
     // Crash analytics
     implementation("io.sentry:sentry-android:5.7.2")
-    implementation("com.github.matomo-org:matomo-sdk-android:v4.1.2")
+    implementation("com.github.matomo-org:matomo-sdk-android:4.1.4")
 
     // ShowCaseView dependency
     implementation("com.github.mreram:showcaseview:1.0.5")
@@ -181,7 +181,7 @@ dependencies {
     androidTestImplementation("com.google.dagger:dagger:2.39.1")
     kaptAndroidTest("com.google.dagger:dagger-compiler:2.39.1")
 
-    androidTestImplementation("androidx.test:runner:1.3.0") { exclude("junit") }
+    androidTestImplementation("androidx.test:runner:1.4.0") { exclude("junit") }
     androidTestImplementation("androidx.test:rules:1.4.0")
 
     androidTestImplementation("androidx.test.ext:junit:1.1.3") { exclude("junit") }
