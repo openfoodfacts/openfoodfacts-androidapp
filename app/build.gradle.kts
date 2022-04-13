@@ -64,7 +64,7 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.1.3")
     implementation("androidx.multidex:multidex:2.0.1")
     implementation("androidx.viewpager2:viewpager2:1.0.0")
-    implementation("androidx.startup:startup-runtime:1.1.0")
+    implementation("androidx.startup:startup-runtime:1.1.1")
     implementation("androidx.work:work-runtime-ktx:2.7.1")
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 
