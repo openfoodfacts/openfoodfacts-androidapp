@@ -181,7 +181,7 @@ dependencies {
     androidTestImplementation("com.google.dagger:dagger:2.39.1")
     kaptAndroidTest("com.google.dagger:dagger-compiler:2.39.1")
 
-    androidTestImplementation("androidx.test:runner:1.3.0") { exclude("junit") }
+    androidTestImplementation("androidx.test:runner:1.4.0") { exclude("junit") }
     androidTestImplementation("androidx.test:rules:1.4.0")
 
     androidTestImplementation("androidx.test.ext:junit:1.1.3") { exclude("junit") }
