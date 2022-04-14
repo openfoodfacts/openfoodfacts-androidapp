@@ -9,6 +9,7 @@ updates:
       interval: "daily"
     labels:
       - "dependencies"
+    open-pull-requests-limit: 30
 
   - package-ecosystem: "gradle"
     directory: "/"
@@ -16,17 +17,19 @@ updates:
       interval: "daily"
     labels:
       - "dependencies"
-
+    open-pull-requests-limit: 30
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "daily"
     labels:
       - "dependencies"
-
+    open-pull-requests-limit: 30
   - package-ecosystem: "bundler"
     directory: "/"
     schedule:
       interval: "daily"
     labels:
       - "dependencies"
+    open-pull-requests-limit: 30
+#end
