@@ -51,6 +51,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.play.core.review.ReviewManagerFactory
 import com.google.zxing.*
 import com.google.zxing.common.HybridBinarizer
 import com.mikepenz.iconics.typeface.library.googlematerial.GoogleMaterial
@@ -70,7 +71,6 @@ import openfoodfacts.github.scrachx.openfood.AppFlavors
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.BuildConfig
-import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
 import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper
@@ -125,6 +125,7 @@ import java.io.FileNotFoundException
 import java.io.IOException
 import javax.inject.Inject
 import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivity.Companion.start as startSearch
+
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity(), NavigationDrawerListener {
@@ -720,58 +721,68 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
         ) {
             val firstTimeLaunchTime = prefManager.firstTimeLaunchTime
 
-            // Check if it has been a week since first launch
+//             Check if it has been a week since first launch
             if (firstTimeLaunchTime + System.currentTimeMillis() >= 7 * 24 * 60 * 60 * 1000)
                 showFeedbackDialog()
         }
     }
-
     /**
      * show dialog to ask the user to rate the app/give feedback
      */
     private fun showFeedbackDialog() {
         //dialog for rating the app on play store
-        val rateDialog = MaterialAlertDialogBuilder(this)
-            .setTitle(R.string.app_name)
-            .setMessage(R.string.user_ask_rate_app)
-            .setPositiveButton(R.string.rate_app) { dialog, _ ->
-                //open app page in play store
-                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$packageName")))
-                dialog.dismiss()
-            }
-            .setNegativeButton(R.string.no_thx) { dialog, _ -> dialog.dismiss() }
+        val manager = ReviewManagerFactory.create(this)
+        val request = manager.requestReviewFlow()
 
-        //dialog for giving feedback
-        val feedbackDialog = MaterialAlertDialogBuilder(this)
-            .setTitle(R.string.app_name)
-            .setMessage(R.string.user_ask_show_feedback_form)
-            .setPositiveButton(android.R.string.ok) { dialog, _ ->
-                //show feedback form
-                CustomTabActivityHelper.openCustomTab(
-                    this@MainActivity,
-                    customTabsIntent,
-                    getString(R.string.feedback_form_url).toUri(),
-                    WebViewFallback(),
-                )
-                dialog.dismiss()
-            }
-            .setNegativeButton(R.string.txtNo) { dialog, _ -> dialog.dismiss() }
+        request.addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                //have the ReviewInfo object
+                val reviewInfo = task.result
+                val flow = manager.launchReviewFlow(this, reviewInfo)
+                flow.addOnCompleteListener { _ ->
+                    val rateDialog = MaterialAlertDialogBuilder(this)
+                        .setTitle(R.string.app_name)
+                        .setMessage(R.string.user_ask_rate_app)
+                        .setPositiveButton(R.string.rate_app) { dialog, _ ->
+                            //open app page in play store
+                            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$packageName")))
+                            dialog.dismiss()
+                        }
+                        .setNegativeButton(R.string.no_thx) { dialog, _ -> dialog.dismiss() }
 
+                    //dialog for giving feedback
+                    val feedbackDialog = MaterialAlertDialogBuilder(this)
+                        .setTitle(R.string.app_name)
+                        .setMessage(R.string.user_ask_show_feedback_form)
+                        .setPositiveButton(android.R.string.ok) { dialog, _ ->
+                            //show feedback form
+                            CustomTabActivityHelper.openCustomTab(
+                                this@MainActivity,
+                                customTabsIntent,
+                                getString(R.string.feedback_form_url).toUri(),
+                                WebViewFallback(),
+                            )
+                            dialog.dismiss()
+                        }
+                        .setNegativeButton(R.string.txtNo) { dialog, _ -> dialog.dismiss() }
 
-        MaterialAlertDialogBuilder(this)
-            .setTitle(R.string.app_name)
-            .setMessage(R.string.user_enjoying_app)
-            .setPositiveButton(R.string.txtYes) { dialog, _ ->
-                prefManager.userAskedToRate = true
-                rateDialog.show()
-                dialog.dismiss()
+                    MaterialAlertDialogBuilder(this)
+                        .setTitle(R.string.app_name)
+                        .setMessage(R.string.user_enjoying_app)
+                        .setPositiveButton(R.string.txtYes) { dialog, _ ->
+                            prefManager.userAskedToRate = true
+                            rateDialog.show()
+                            dialog.dismiss()
+                        }
+                        .setNegativeButton(R.string.txtNo) { dialog, _ ->
+                            prefManager.userAskedToRate = true
+                            feedbackDialog.show()
+                            dialog.dismiss()
+                        }
+                        .show()
+                }
             }
-            .setNegativeButton(R.string.txtNo) { dialog, _ ->
-                prefManager.userAskedToRate = true
-                feedbackDialog.show()
-                dialog.dismiss()
-            }
-            .show()
+        }
     }
 
     override fun onStop() {
