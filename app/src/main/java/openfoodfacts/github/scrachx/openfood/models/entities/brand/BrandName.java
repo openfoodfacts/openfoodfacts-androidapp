@@ -1,10 +1,10 @@
 package openfoodfacts.github.scrachx.openfood.models.entities.brand;
 
 import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Index;
 import org.greenrobot.greendao.annotation.Keep;
-import org.greenrobot.greendao.annotation.Generated;
 
 @Entity(indexes = {
     @Index(value = "languageCode, brandTag", unique = true)

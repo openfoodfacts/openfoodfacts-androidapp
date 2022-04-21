@@ -6,12 +6,12 @@ import android.os.Bundle
 import android.provider.SearchRecentSuggestions
 import android.view.*
 import android.widget.SearchView
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import openfoodfacts.github.scrachx.openfood.R
-import androidx.core.view.isVisible
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentCategoryListBinding
 import openfoodfacts.github.scrachx.openfood.features.categories.adapter.CategoryListRecyclerAdapter
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment

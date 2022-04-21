@@ -6,7 +6,6 @@ import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer
 import openfoodfacts.github.scrachx.openfood.utils.DeserializerHelper
 import java.io.IOException
-import java.util.ArrayList
 
 class BrandsWrapperDeserializer : StdDeserializer<BrandsWrapper>(BrandsWrapper::class.java) {
     @Throws(IOException::class)

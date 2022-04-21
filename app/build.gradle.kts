@@ -57,7 +57,6 @@ dependencies {
     // AndroidX
     implementation("androidx.appcompat:appcompat:1.4.1")
     implementation("androidx.browser:browser:1.4.0")
-    implementation("androidx.concurrent:concurrent-futures:1.1.0")
     implementation("androidx.recyclerview:recyclerview:1.2.1")
     implementation("androidx.cardview:cardview:1.0.0")
     implementation("androidx.annotation:annotation:1.3.0")
@@ -80,16 +79,12 @@ dependencies {
     kapt("androidx.hilt:hilt-compiler:1.0.0")
 
     // Reactive Streams
-    implementation("io.reactivex.rxjava2:rxkotlin:2.4.0")
     implementation("io.reactivex.rxjava2:rxjava:2.2.21")
-    implementation("io.reactivex.rxjava2:rxandroid:2.1.1")
-    implementation("com.jakewharton.rxrelay2:rxrelay:2.1.1")
 
     // Networking
     implementation("com.squareup.retrofit2:retrofit:2.6.4")
     implementation("com.squareup.retrofit2:converter-jackson:2.6.4")
     implementation("com.squareup.retrofit2:adapter-rxjava2:2.6.4")
-    implementation("com.squareup.retrofit2:converter-scalars:2.1.0")
     implementation("com.squareup.okhttp3:logging-interceptor:3.12.13")
 
     // Logging
@@ -163,7 +158,6 @@ dependencies {
     testImplementation("org.mockito.kotlin:mockito-kotlin:4.0.0")
     testImplementation("org.mockito:mockito-junit-jupiter:4.5.0")
     testImplementation("com.google.truth:truth:1.1.3")
-    testImplementation("com.google.truth.extensions:truth-java8-extension:1.1.3")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:${coroutinesVersion}")
 
     val junit5Bom = "5.8.2"

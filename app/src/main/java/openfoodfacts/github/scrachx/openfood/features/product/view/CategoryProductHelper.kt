@@ -4,7 +4,10 @@ import android.graphics.Typeface
 import android.text.Spanned
 import android.text.SpannedString
 import android.text.method.LinkMovementMethod
-import android.text.style.*
+import android.text.style.ClickableSpan
+import android.text.style.DynamicDrawableSpan
+import android.text.style.ImageSpan
+import android.text.style.StyleSpan
 import android.view.View
 import android.widget.TextView
 import androidx.core.content.ContextCompat
