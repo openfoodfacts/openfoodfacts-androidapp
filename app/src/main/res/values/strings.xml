@@ -754,7 +754,7 @@
     <string name="dialog_create_new_list_title">Create a new list</string>
     <string name="dialog_create_new_list_hint">List Name</string>
 
-    <string name="default_list_title_stored">Products I have</string>
+    <string name="default_list_title_stored">Eaten products</string>
     <string name="default_list_title_to_buy">Products to buy</string>
 
     <string name="txt_exporting_your_listed_products">Exporting Your Products…</string>
