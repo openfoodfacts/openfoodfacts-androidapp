@@ -166,7 +166,7 @@ jobs:
           arguments: dokkaHtml
 
       - name: Deploy documentation to Github Pages
-        uses: JamesIves/github-pages-deploy-action@v4.3.2
+        uses: JamesIves/github-pages-deploy-action@v4.3.3
         with:
           branch: gh-pages
           folder: app/build/dokka/html/
