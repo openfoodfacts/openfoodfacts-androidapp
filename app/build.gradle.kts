@@ -115,7 +115,7 @@ dependencies {
     kapt("org.greenrobot:eventbus-annotation-processor:$eventBusVersion")
 
     // Material design
-    implementation("com.google.android.material:material:1.5.0")
+    implementation("com.google.android.material:material:1.6.0")
 
     // Image Loading
     implementation("com.squareup.picasso:picasso:2.8")
