@@ -170,6 +170,14 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem {
 
         }
 
+        requirePreference<Preference>(getString(R.string.pref_export_db_key)) {
+
+            setOnPreferenceClickListener {
+                OFFDatabaseHelper.exportDB(requireContext())
+                true
+            }
+
+        }
 
         requirePreference<ListPreference>(getString(R.string.pref_country_key)) {
 
