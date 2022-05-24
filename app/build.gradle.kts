@@ -21,7 +21,7 @@ plugins {
     id("kotlin-parcelize")
     id("kotlin-kapt")
     id("dagger.hilt.android.plugin")
-    id("org.jetbrains.dokka") version "1.6.10"
+    id("org.jetbrains.dokka") version "1.6.21"
 }
 
 fun obtainTestBuildType(): String {
@@ -49,7 +49,7 @@ dependencies {
     implementation("androidx.preference:preference-ktx:1.2.0")
     implementation("androidx.core:core-ktx:1.7.0")
 
-    val lifecycleVer = "2.4.0-alpha03"
+    val lifecycleVer = "2.4.1"
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVer")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVer")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVer")
@@ -149,7 +149,7 @@ dependencies {
     implementation("com.github.hootsuite:nachos:1.2.0")
 
     // Crash analytics
-    implementation("io.sentry:sentry-android:5.7.3")
+    implementation("io.sentry:sentry-android:5.7.4")
     implementation("com.github.matomo-org:matomo-sdk-android:4.1.4")
 
     // ShowCaseView dependency
@@ -159,9 +159,9 @@ dependencies {
     testImplementation("androidx.arch.core:core-testing:2.1.0")
     testImplementation("junit:junit:4.13.2")
     testImplementation("org.robolectric:robolectric:4.7.3")
-    testImplementation("org.mockito:mockito-core:4.4.0")
+    testImplementation("org.mockito:mockito-core:4.5.0")
     testImplementation("org.mockito.kotlin:mockito-kotlin:4.0.0")
-    testImplementation("org.mockito:mockito-junit-jupiter:4.4.0")
+    testImplementation("org.mockito:mockito-junit-jupiter:4.5.0")
     testImplementation("com.google.truth:truth:1.1.3")
     testImplementation("com.google.truth.extensions:truth-java8-extension:1.1.3")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:${coroutinesVersion}")

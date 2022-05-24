@@ -31,14 +31,7 @@ class AppModule {
     fun provideDaoSession(@ApplicationContext context: Context): DaoSession {
         // Use only during development: DaoMaster.DevOpenHelper (Drops all table on Upgrade!)
         // Use only during production: OFFDatabaseHelper (see on Upgrade!)
-        val dbName = when (BuildConfig.FLAVOR) {
-            AppFlavors.OPFF -> "open_pet_food_facts"
-            AppFlavors.OBF -> "open_beauty_facts"
-            AppFlavors.OPF -> "open_products_facts"
-            AppFlavors.OFF -> "open_food_facts"
-            else -> "open_food_facts"
-        }
-        return DaoMaster(OFFDatabaseHelper(context, dbName).writableDb).newSession()
+        return DaoMaster(OFFDatabaseHelper(context).writableDb).newSession()
     }
 
     @Provides
