@@ -18,17 +18,16 @@ import openfoodfacts.github.scrachx.openfood.models.entities.ListedProduct
 
 class ProductListAdapter(
     private val context: Context,
-    val products: MutableList<ListedProduct>,
     private val isLowBatteryMode: Boolean,
-    private val picasso: Picasso,
-    private val onItemClickListener: (ListedProduct) -> Unit = { }
+    private val picasso: Picasso
 ) : RecyclerView.Adapter<ProductViewHolder>() {
+    var products = mutableListOf<ListedProduct>()
+    var onItemClickListener: (ListedProduct) -> Unit = { }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        ProductViewHolder(
-            LayoutInflater.from(context)
-                .inflate(R.layout.your_listed_products_item, parent, false)
-        )
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
+        val inflater = LayoutInflater.from(context)
+        return ProductViewHolder(inflater.inflate(R.layout.your_listed_products_item, parent, false))
+    }
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
         holder.imgProgressBar.visibility = View.VISIBLE
