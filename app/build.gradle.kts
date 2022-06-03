@@ -161,7 +161,7 @@ dependencies {
     testImplementation("org.robolectric:robolectric:4.7.3")
     testImplementation("org.mockito:mockito-core:4.5.0")
     testImplementation("org.mockito.kotlin:mockito-kotlin:4.0.0")
-    testImplementation("org.mockito:mockito-junit-jupiter:4.5.0")
+    testImplementation("org.mockito:mockito-junit-jupiter:4.6.1")
     testImplementation("com.google.truth:truth:1.1.3")
     testImplementation("com.google.truth.extensions:truth-java8-extension:1.1.3")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:${coroutinesVersion}")
