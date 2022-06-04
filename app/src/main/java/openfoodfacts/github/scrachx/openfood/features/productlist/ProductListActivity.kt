@@ -40,8 +40,11 @@ import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.selectNavigationItem
 import openfoodfacts.github.scrachx.openfood.models.entities.ProductLists
-import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.SortType.*
+import openfoodfacts.github.scrachx.openfood.utils.SwipeController
+import openfoodfacts.github.scrachx.openfood.utils.getCsvFolderName
+import openfoodfacts.github.scrachx.openfood.utils.isHardwareCameraInstalled
+import openfoodfacts.github.scrachx.openfood.utils.writeListToFile
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
@@ -59,9 +62,6 @@ class ProductListActivity : BaseActivity() {
     lateinit var matomoAnalytics: MatomoAnalytics
 
     @Inject
-    lateinit var localeManager: LocaleManager
-
-    @Inject
     lateinit var picasso: Picasso
 
     @Inject
@@ -69,7 +69,6 @@ class ProductListActivity : BaseActivity() {
 
     private lateinit var adapter: ProductListAdapter
 
-    private val isLowBatteryMode by lazy { this.isDisableImageLoad() && this.isBatteryLevelLow() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -84,14 +83,11 @@ class ProductListActivity : BaseActivity() {
         // OnClick
         binding.scanFirstYourListedProduct.setOnClickListener { checkPermsStartScan() }
 
-        adapter = ProductListAdapter(
-            this,
-            isLowBatteryMode,
-            picasso,
-        )
-        adapter.onItemClickListener = {
-            // TODO: Find a better way to do this
-            lifecycleScope.launch { productViewActivityStarter.openProduct(it.barcode, this@ProductListActivity) }
+        adapter = ProductListAdapter(this, picasso).apply {
+            onItemClickListener = {
+                // TODO: Find a better way to do this
+                lifecycleScope.launch { productViewActivityStarter.openProduct(it.barcode, this@ProductListActivity) }
+            }
         }
         binding.rvYourListedProducts.adapter = adapter
         binding.rvYourListedProducts.layoutManager = LinearLayoutManager(this)
@@ -155,9 +151,7 @@ class ProductListActivity : BaseActivity() {
         R.id.action_export_all_listed_products -> {
             val perm = Manifest.permission.WRITE_EXTERNAL_STORAGE
             when {
-                checkSelfPermission(
-                    this, perm
-                ) == PackageManager.PERMISSION_GRANTED -> {
+                checkSelfPermission(this, perm) == PackageManager.PERMISSION_GRANTED -> {
                     exportAsCSV()
                     matomoAnalytics.trackEvent(AnalyticsEvent.ShoppingListExported)
                 }

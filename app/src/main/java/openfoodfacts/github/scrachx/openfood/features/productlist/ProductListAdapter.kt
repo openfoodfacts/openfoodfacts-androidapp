@@ -4,61 +4,71 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ProgressBar
-import android.widget.TextView
-import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import openfoodfacts.github.scrachx.openfood.R
+import openfoodfacts.github.scrachx.openfood.databinding.YourListedProductsItemBinding
 import openfoodfacts.github.scrachx.openfood.features.productlist.ProductListAdapter.ProductViewHolder
-import openfoodfacts.github.scrachx.openfood.features.shared.views.CustomTextView
 import openfoodfacts.github.scrachx.openfood.models.entities.ListedProduct
+import openfoodfacts.github.scrachx.openfood.utils.isLowBatteryMode
 
 class ProductListAdapter(
     private val context: Context,
-    private val isLowBatteryMode: Boolean,
     private val picasso: Picasso
 ) : RecyclerView.Adapter<ProductViewHolder>() {
+
     var products = mutableListOf<ListedProduct>()
     var onItemClickListener: (ListedProduct) -> Unit = { }
 
+    private val isLowBatteryMode by lazy { context.isLowBatteryMode() }
+
+    override fun getItemCount() = products.size
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
         val inflater = LayoutInflater.from(context)
-        return ProductViewHolder(inflater.inflate(R.layout.your_listed_products_item, parent, false))
+        return ProductViewHolder(YourListedProductsItemBinding.inflate(inflater, parent, false))
     }
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
-        holder.imgProgressBar.visibility = View.VISIBLE
+        val product = products[position]
+        val binding = holder.binding
 
-        holder.tvTitle.text = products[position].productName
-        holder.tvDetails.text = products[position].productDetails
-        holder.tvBarcode.text = products[position].barcode
+        binding.titleYourListedProduct.text = product.productName
+        binding.productDetailsYourListedProduct.text = product.productDetails
+        binding.barcodeYourListedProduct.text = product.barcode
 
-        if (!isLowBatteryMode && !products[position].imageUrl.isNullOrEmpty()) {
+        binding.imageProgressbarYourListedProduct.visibility = View.VISIBLE
+
+
+        if (isLowBatteryMode || product.imageUrl.isNullOrEmpty()) {
+            binding.imgProductYourListedProduct.background = ResourcesCompat.getDrawable(
+                context.resources,
+                R.drawable.placeholder_thumb,
+                context.theme
+            )
+            binding.imageProgressbarYourListedProduct.visibility = View.INVISIBLE
+        } else {
             picasso
-                .load(products[position].imageUrl)
+                .load(product.imageUrl)
                 .placeholder(R.drawable.placeholder_thumb)
                 .error(R.drawable.ic_no_red_24dp)
                 .fit()
                 .centerCrop()
-                .into(holder.imgProduct, object : Callback {
+                .into(binding.imgProductYourListedProduct, object : Callback {
                     override fun onSuccess() {
-                        holder.imgProgressBar.visibility = View.GONE
+                        binding.imageProgressbarYourListedProduct.visibility = View.GONE
                     }
 
                     override fun onError(ex: Exception) {
-                        holder.imgProgressBar.visibility = View.GONE
+                        binding.imageProgressbarYourListedProduct.visibility = View.GONE
                     }
                 })
-        } else {
-            holder.imgProduct.background = ResourcesCompat.getDrawable(context.resources, R.drawable.placeholder_thumb, context.theme)
-            holder.imgProgressBar.visibility = View.INVISIBLE
         }
 
         // Set on click listener
-        holder.itemView.setOnClickListener { onItemClickListener(products[position]) }
+        binding.root.setOnClickListener { onItemClickListener(product) }
     }
 
     fun remove(product: ListedProduct) {
@@ -67,13 +77,6 @@ class ProductListAdapter(
         notifyItemRemoved(position)
     }
 
-    override fun getItemCount() = products.size
 
-    class ProductViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val imgProduct: AppCompatImageView = itemView.findViewById(R.id.imgProductYourListedProduct)
-        val imgProgressBar: ProgressBar = itemView.findViewById(R.id.imageProgressbarYourListedProduct)
-        val tvBarcode: CustomTextView = itemView.findViewById(R.id.barcodeYourListedProduct)
-        val tvDetails: TextView = itemView.findViewById(R.id.productDetailsYourListedProduct)
-        val tvTitle: TextView = itemView.findViewById(R.id.titleYourListedProduct)
-    }
+    class ProductViewHolder(val binding: YourListedProductsItemBinding) : RecyclerView.ViewHolder(binding.root)
 }
