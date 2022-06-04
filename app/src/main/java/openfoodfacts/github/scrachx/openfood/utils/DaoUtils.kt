@@ -24,9 +24,7 @@ fun <T> logDownload(taxonomy: Taxonomy<T>) {
 }
 
 inline fun <T, R> AbstractDao<T, R>.build(builderAction: QueryBuilder<T>.() -> Unit): QueryBuilder<T> {
-    val builder = queryBuilder()
-    builder.builderAction()
-    return builder
+    return queryBuilder().apply(builderAction)
 }
 
 inline fun <T, R> AbstractDao<T, R>.unique(builderAction: QueryBuilder<T>.() -> Unit): T? {

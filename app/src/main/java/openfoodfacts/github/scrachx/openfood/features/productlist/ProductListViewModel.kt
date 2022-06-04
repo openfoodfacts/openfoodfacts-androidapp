@@ -22,19 +22,14 @@ class ProductListViewModel @Inject constructor(
     private val savedStateHandle: SavedStateHandle,
     private val daoSession: DaoSession
 ) : ViewModel() {
-
-    init {
-        tryAddProduct()
-        fetchProductList()
-    }
-
-    val listId: Long = savedStateHandle.get(ProductListActivity.KEY_LIST_ID)
+    val listId: Long = savedStateHandle.get<Long?>(ProductListActivity.KEY_LIST_ID)
         ?: error("Could not load listId from intent data!")
 
-    val listName: String = savedStateHandle.get(ProductListActivity.KEY_LIST_NAME)
+    val listName: String = savedStateHandle.get<String?>(ProductListActivity.KEY_LIST_NAME)
         ?: error("Could not load listName from intent data!")
 
     val productList = MutableStateFlow(ProductLists())
+
 
     fun removeProduct(productToRemove: ListedProduct) {
         viewModelScope.launch {
@@ -141,5 +136,10 @@ class ProductListViewModel @Inject constructor(
 
             daoSession.listedProductDao.insertOrReplace(listedProduct)
         }
+    }
+
+    init {
+        tryAddProduct()
+        fetchProductList()
     }
 }
