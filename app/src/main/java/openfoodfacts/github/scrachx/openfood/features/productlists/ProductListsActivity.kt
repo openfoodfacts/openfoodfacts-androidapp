@@ -35,7 +35,6 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
-import io.reactivex.disposables.CompositeDisposable
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
@@ -80,13 +79,6 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
 
     private lateinit var adapter: ProductListsAdapter
     private lateinit var productListsDao: ProductListsDao
-
-    private val disp = CompositeDisposable()
-
-    override fun onDestroy() {
-        disp.dispose()
-        super.onDestroy()
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
