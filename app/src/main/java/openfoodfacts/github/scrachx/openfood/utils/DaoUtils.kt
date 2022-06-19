@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.annotation.CheckResult
 import openfoodfacts.github.scrachx.openfood.repositories.Taxonomy
 import org.greenrobot.greendao.AbstractDao
+import org.greenrobot.greendao.query.DeleteQuery
 import org.greenrobot.greendao.query.QueryBuilder
 import org.greenrobot.greendao.query.WhereCondition
 import org.jetbrains.annotations.Contract
@@ -25,6 +26,10 @@ fun <T> logDownload(taxonomy: Taxonomy<T>) {
 
 inline fun <T, R> AbstractDao<T, R>.build(builderAction: QueryBuilder<T>.() -> Unit): QueryBuilder<T> {
     return queryBuilder().apply(builderAction)
+}
+
+inline fun <T, R> AbstractDao<T, R>.buildDelete(builderAction: QueryBuilder<T>.() -> Unit): DeleteQuery<T> {
+    return build(builderAction).buildDelete()
 }
 
 inline fun <T, R> AbstractDao<T, R>.unique(builderAction: QueryBuilder<T>.() -> Unit): T? {

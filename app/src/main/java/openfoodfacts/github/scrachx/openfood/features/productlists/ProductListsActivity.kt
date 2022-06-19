@@ -59,6 +59,7 @@ import openfoodfacts.github.scrachx.openfood.models.entities.ListedProductDao
 import openfoodfacts.github.scrachx.openfood.models.entities.ProductLists
 import openfoodfacts.github.scrachx.openfood.models.entities.ProductListsDao
 import openfoodfacts.github.scrachx.openfood.utils.SwipeController
+import openfoodfacts.github.scrachx.openfood.utils.buildDelete
 import openfoodfacts.github.scrachx.openfood.utils.isEmpty
 import org.apache.commons.csv.CSVFormat
 import org.apache.commons.csv.CSVParser
@@ -93,7 +94,7 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
 
         binding.fabAdd.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_plus_blue_24, 0, 0, 0)
 
-        adapter = ProductListsAdapter(this, mutableListOf())
+        adapter = ProductListsAdapter(this)
 
         binding.productListsRecyclerView.layoutManager = LinearLayoutManager(this)
         binding.productListsRecyclerView.adapter = adapter
@@ -217,14 +218,15 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
     }
 
     override fun onRightClicked(position: Int) {
-        if (adapter.lists.isNullOrEmpty()) return
+        if (adapter.lists.isEmpty()) return
+
         val list = adapter.lists[position]
 
         // delete the product from YOUR_LISTED_PRODUCT_TABLE
-        daoSession.listedProductDao.queryBuilder()
-            .where(ListedProductDao.Properties.ListId.eq(list.id))
-            .buildDelete()
-            .executeDeleteWithoutDetachingEntities()
+        daoSession.listedProductDao.buildDelete {
+            where(ListedProductDao.Properties.ListId.eq(list.id))
+        }.executeDeleteWithoutDetachingEntities()
+
         daoSession.clear()
 
         productListsDao.delete(list)
