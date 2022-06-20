@@ -573,8 +573,8 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
 
         // Add serving size entry to map if it has been changed
         if (binding.servingSize.isNotEmpty()) {
-            @Suppress("USELESS_ELVIS") val servingSizeValue = binding.servingSize.getContent() +
-            binding.servingSize.unitSpinner!!.selectedItem?.toString() ?: ""
+            val unit = binding.servingSize.unitSpinner!!.selectedItem?.toString() ?: ""
+            val servingSizeValue = binding.servingSize.getContent() + unit
             if (product == null || servingSizeValue != product!!.servingSize) {
                 targetMap[ApiFields.Keys.SERVING_SIZE] = servingSizeValue
             }
@@ -607,8 +607,8 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         val servingSizeValue =
             if (binding.servingSize.text == null || binding.servingSize.text.toString().isEmpty()) ""
             else {
-                @Suppress("USELESS_ELVIS")
-                binding.servingSize.text.toString() + binding.servingSize.unitSpinner?.selectedItem ?: ""
+                val unit = binding.servingSize.unitSpinner?.selectedItem ?: ""
+                binding.servingSize.text.toString() + unit
             }
         targetMap[ApiFields.Keys.SERVING_SIZE] = servingSizeValue
 
@@ -680,7 +680,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
      */
     private fun addNutrientToMap(
         editTextView: CustomValidatingEditTextView,
-        targetMap: MutableMap<String, String?>
+        targetMap: MutableMap<String, String?>,
     ) {
         // For impl reference, see https://wiki.openfoodfacts.org/Nutrients_handling_in_Open_Food_Facts#Data_display
         val fieldName = getCompleteEntryName(editTextView)
@@ -772,7 +772,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         preFillValues: Boolean = false,
         value: Float? = null,
         unitSelectedIndex: Int = 0,
-        modSelectedIndex: Int = 0
+        modSelectedIndex: Int = 0,
     ): CustomValidatingEditTextView {
         val nutrientCompleteName = PARAMS_OTHER_NUTRIENTS[index]
 
@@ -823,6 +823,9 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
                 )
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                 unitSpinner.adapter = adapter
+            }
+            else -> {
+                // Don't do anything
             }
         }
         try {
@@ -1016,8 +1019,8 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
                 parent: AdapterView<*>?,
                 view: View?,
                 position: Int,
-                id: Long
-            ) -> Unit
+                id: Long,
+            ) -> Unit,
         ) {
             this.onItemSelectedListener = object : OnItemSelectedListener {
                 override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) =

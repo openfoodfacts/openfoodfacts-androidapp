@@ -20,12 +20,9 @@ class ModifierTest {
 
     @Test
     fun `test nullIfDefault`() {
-        Modifier.values().forEach {
-            assertThat(it.nullIfDefault()).run {
-                if (it == Modifier.EQUALS_TO) isNull()
-                else isEqualTo(it)
-            }
-        }
+        assertThat(Modifier.GREATER_THAN.takeUnlessDefault()).isEqualTo(Modifier.GREATER_THAN)
+        assertThat(Modifier.LESS_THAN.takeUnlessDefault()).isEqualTo(Modifier.LESS_THAN)
+        assertThat(Modifier.EQUALS_TO.takeUnlessDefault()).isNull()
     }
 
 

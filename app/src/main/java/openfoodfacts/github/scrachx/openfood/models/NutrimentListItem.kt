@@ -49,7 +49,7 @@ data class NutrimentListItem(
         value?.let { getRoundNumber(it) },
         servingValue?.let { getRoundNumber(it) },
         unit.sym,
-        modifier.nullIfDefault()?.sym ?: "",
+        modifier.takeUnlessDefault()?.sym ?: "",
         displayVolumeHeader
     )
 }
