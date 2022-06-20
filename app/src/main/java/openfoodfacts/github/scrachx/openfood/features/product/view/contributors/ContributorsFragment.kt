@@ -25,7 +25,6 @@ import openfoodfacts.github.scrachx.openfood.repositories.TaxonomiesRepository
 import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
 import openfoodfacts.github.scrachx.openfood.utils.SearchType
 import openfoodfacts.github.scrachx.openfood.utils.requireProductState
-import java.time.Instant
 import java.util.*
 import javax.inject.Inject
 
@@ -123,7 +122,7 @@ class ContributorsFragment : BaseFragment() {
      */
     private fun formatDateTime(epoch: String): Pair<String, String> {
         val date = try {
-            Instant.ofEpochSecond(epoch.toLong())
+            Date(epoch.toLong() * 1000L)
         } catch (err: Exception) {
             logcat { "Could not parse product date $epoch: " + err.asLog() }
             return "" to ""
