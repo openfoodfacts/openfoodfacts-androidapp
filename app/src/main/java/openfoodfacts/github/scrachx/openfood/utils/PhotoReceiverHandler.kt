@@ -9,7 +9,6 @@ import android.util.Log
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import com.canhub.cropper.CropImage
-import dagger.hilt.android.qualifiers.ApplicationContext
 import logcat.LogPriority
 import logcat.asLog
 import logcat.logcat
