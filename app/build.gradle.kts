@@ -264,7 +264,6 @@ android {
             applicationIdSuffix = ".debug"
             isDebuggable = true
 
-            defaultConfig.minSdk = 18
 
             // Uncomment to use dev server
 //            buildConfigField("String", "HOST", "\"https://ssl-api.openfoodfacts.net\"")
