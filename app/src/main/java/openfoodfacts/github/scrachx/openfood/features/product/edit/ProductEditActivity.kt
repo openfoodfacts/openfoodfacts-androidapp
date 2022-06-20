@@ -477,6 +477,9 @@ class ProductEditActivity : BaseActivity() {
                 ProductImageField.NUTRITION -> {
                     imageNutritionFactsUploaded = true
                 }
+                else -> {
+                    // Do nothing
+                }
             }
 
             hideImageProgress(fragmentIndex, getString(R.string.image_uploaded_successfully))

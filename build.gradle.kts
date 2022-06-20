@@ -20,7 +20,7 @@ buildscript {
     val kotlinVersion by extra("1.7.0")
     val jacksonVersion by extra("2.12.3")
     val greendaoVersion by extra("3.3.0")
-    val hiltVersion by extra("2.39.1")
+    val hiltVersion by extra("2.42")
     repositories {
         google()
         mavenCentral()
