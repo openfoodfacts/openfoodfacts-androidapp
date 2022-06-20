@@ -59,6 +59,8 @@ object ApiFields {
      * Default values for some fields
      */
     object Defaults {
+        const val NO_NUTRITION_DATA_ON = "on"
+        const val NO_NUTRITION_DATA_OFF = ""
         const val NUTRITION_DATA_PER_100G = "100g"
         const val NUTRITION_DATA_PER_SERVING = "serving"
         const val DEBUG_BARCODE = "1"
@@ -308,6 +310,11 @@ object ApiFields {
             ECOSCORE,
             NOVA_GROUPS
         )
+
+        val PRODUCT_FIELDS_WITH_EMPTY_VALUE = setOf(
+            NO_NUTRITION_DATA
+        )
+
     }
 
     fun getAllFields(langCode: String): String {

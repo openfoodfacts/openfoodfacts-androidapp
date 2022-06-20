@@ -189,6 +189,8 @@ class Product : SearchProduct() {
     @JsonProperty(ApiFields.Keys.NO_NUTRITION_DATA)
     val noNutritionData: String? = null
 
+    fun isNoNutrition(): Boolean = noNutritionData.contentEquals("on", true)
+
     /**
      * The nutrientLevels
      */

@@ -39,13 +39,16 @@ import com.google.android.material.textfield.TextInputLayout
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
+import logcat.LogPriority
+import logcat.logcat
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsView
 import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
 import openfoodfacts.github.scrachx.openfood.analytics.SentryAnalytics
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentAddProductNutritionFactsBinding
-import openfoodfacts.github.scrachx.openfood.features.product.edit.*
+import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_EDIT_OFFLINE_PRODUCT
+import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditFragment
 import openfoodfacts.github.scrachx.openfood.features.shared.views.CustomValidatingEditTextView
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
 import openfoodfacts.github.scrachx.openfood.models.*
@@ -125,6 +128,10 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
             if (checkedId >= 0) {
                 viewModel.dataFormat.postValue(checkedId)
             }
+        }
+
+        binding.checkboxNoNutritionData.setOnCheckedChangeListener { _, isChecked ->
+            binding.nutritionFactsLayout.visibility = if (isChecked) View.GONE else View.VISIBLE
         }
 
         binding.btnAddANutrient.setOnClickListener { displayAddNutrientDialog() }
@@ -328,7 +335,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
             loadNutritionImage(path)
         }
 
-        if (productDetails[ApiFields.Keys.NO_NUTRITION_DATA] != null) {
+        if (productDetails[ApiFields.Keys.NO_NUTRITION_DATA]?.trim()?.lowercase() == ApiFields.Defaults.NO_NUTRITION_DATA_ON) {
             binding.checkboxNoNutritionData.isChecked = true
             binding.nutritionFactsLayout.visibility = View.GONE
         }
@@ -546,19 +553,28 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
      * adds only those fields to the query map which are not empty.
      */
     override fun getUpdatedFieldsMap(): Map<String, String?> {
+        // We need this as we're calling this method
+        // without knowing if the fragment is in a good state.
+        // TODO: To be replaced with an activity shared view model
+        if (_binding == null) {
+            logcat(LogPriority.WARN) { "Binding is null. Returning an emptyMap." }
+            return emptyMap()
+        }
+
         val targetMap = mutableMapOf<String, String?>()
 
         // Add no nutrition data entry to map
         if (binding.checkboxNoNutritionData.isChecked) {
-            targetMap[ApiFields.Keys.NO_NUTRITION_DATA] = "on"
-        } else {
-            targetMap += getNutrientsModeMap()
+            targetMap[ApiFields.Keys.NO_NUTRITION_DATA] = ApiFields.Defaults.NO_NUTRITION_DATA_ON
+            return targetMap
         }
+
+        targetMap += getNutrientsModeMap()
 
         // Add serving size entry to map if it has been changed
         if (binding.servingSize.isNotEmpty()) {
-            @Suppress("USELESS_ELVIS") val servingSizeValue = binding.servingSize.getContent() +
-            binding.servingSize.unitSpinner!!.selectedItem?.toString() ?: ""
+            val unit = binding.servingSize.unitSpinner!!.selectedItem?.toString() ?: ""
+            val servingSizeValue = binding.servingSize.getContent() + unit
             if (product == null || servingSizeValue != product!!.servingSize) {
                 targetMap[ApiFields.Keys.SERVING_SIZE] = servingSizeValue
             }
@@ -568,6 +584,10 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         for (view in allEditViews) {
             if (view.entryName == binding.servingSize.entryName || !view.isNotEmpty()) continue
             targetMap += getNutrientMapIfUpdated(view)
+        }
+
+        if (targetMap.containsKey(ApiFields.Keys.NO_NUTRITION_DATA)) {
+            targetMap[ApiFields.Keys.NO_NUTRITION_DATA] = ApiFields.Defaults.NO_NUTRITION_DATA_OFF
         }
 
         return targetMap
@@ -580,15 +600,15 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         if (activity !is ProductEditActivity) return emptyMap()
 
         if (binding.checkboxNoNutritionData.isChecked) {
-            return mapOf(ApiFields.Keys.NO_NUTRITION_DATA to "on")
+            return mapOf(ApiFields.Keys.NO_NUTRITION_DATA to ApiFields.Defaults.NO_NUTRITION_DATA_ON)
         }
 
         val targetMap = mutableMapOf<String, String?>()
         val servingSizeValue =
             if (binding.servingSize.text == null || binding.servingSize.text.toString().isEmpty()) ""
             else {
-                @Suppress("USELESS_ELVIS")
-                binding.servingSize.text.toString() + binding.servingSize.unitSpinner?.selectedItem ?: ""
+                val unit = binding.servingSize.unitSpinner?.selectedItem ?: ""
+                binding.servingSize.text.toString() + unit
             }
         targetMap[ApiFields.Keys.SERVING_SIZE] = servingSizeValue
 
@@ -596,6 +616,8 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
             if (binding.servingSize.entryName == view.entryName) continue
             addNutrientToMap(view, targetMap)
         }
+
+        targetMap[ApiFields.Keys.NO_NUTRITION_DATA] = ApiFields.Defaults.NO_NUTRITION_DATA_OFF
 
         return targetMap
     }
@@ -622,7 +644,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
             oldUnit = oldProductNutriment.unit
             oldMod = oldProductNutriment.modifier
             oldValue = if (isDataPer100g)
-                oldProductNutriment.per100gInUnit.value
+                oldProductNutriment.per100gInUnit!!.value
             else
                 oldProductNutriment.perServingInUnit!!.value
         }
@@ -658,7 +680,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
      */
     private fun addNutrientToMap(
         editTextView: CustomValidatingEditTextView,
-        targetMap: MutableMap<String, String?>
+        targetMap: MutableMap<String, String?>,
     ) {
         // For impl reference, see https://wiki.openfoodfacts.org/Nutrients_handling_in_Open_Food_Facts#Data_display
         val fieldName = getCompleteEntryName(editTextView)
@@ -750,7 +772,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         preFillValues: Boolean = false,
         value: Float? = null,
         unitSelectedIndex: Int = 0,
-        modSelectedIndex: Int = 0
+        modSelectedIndex: Int = 0,
     ): CustomValidatingEditTextView {
         val nutrientCompleteName = PARAMS_OTHER_NUTRIENTS[index]
 
@@ -801,6 +823,9 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
                 )
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                 unitSpinner.adapter = adapter
+            }
+            else -> {
+                // Don't do anything
             }
         }
         try {
@@ -923,6 +948,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
     private fun getStarchValue() = starchEditText?.getFloatValue() ?: 0F
     private fun getStarchUnitSelectedIndex() = starchEditText?.unitSpinner?.selectedItemPosition ?: 0
 
+    @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data) {
@@ -994,8 +1020,8 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
                 parent: AdapterView<*>?,
                 view: View?,
                 position: Int,
-                id: Long
-            ) -> Unit
+                id: Long,
+            ) -> Unit,
         ) {
             this.onItemSelectedListener = object : OnItemSelectedListener {
                 override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) =

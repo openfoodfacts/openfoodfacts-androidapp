@@ -104,10 +104,9 @@
                         android:gravity="center"
                         android:text="@string/product_states"
                         android:textAlignment="center"
-                        android:textColor="@color/black"
+                        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Small"
                         android:textSize="18sp"
                         android:textStyle="bold" />
-
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"

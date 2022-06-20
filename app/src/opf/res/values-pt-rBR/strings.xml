@@ -40,8 +40,8 @@
     <string name="add_nutrient_prompt_text">Adicione mais detalhes para ajudar a completar o produto</string>
     <string name="add_category_prompt_text">Adicione uma categoria para ajudar a completar o produto</string>
     <string name="add_nutrient_category_prompt_text">Adicione uma categoria e mais detalhes para ajudar a completar o produto</string>
-    <string name="txt_eaten_products">Produtos que eu tenho</string>
-    <string name="txt_products_to_buy">Produtos para comprar</string>
+    <string name="default_list_title_stored">Produtos que eu tenho</string>
+    <string name="default_list_title_to_buy">Produtos para comprar</string>
     <string name="intent_filter_share_label">Adicionar ao Open Products Facts</string>
     <string name="txt_info_eaten_products">Você poderá adicionar produtos a essa lista escaneando produtos, arrastando o cartão do produto para cima e tocando em \"Produtos para comprar\".
          Você também poderá adicionar produtos a essa lista pesquisando-os e clicando no botão + no canto superior direito da página do produto.</string>

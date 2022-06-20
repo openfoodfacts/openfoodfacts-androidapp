@@ -19,28 +19,24 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContract
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
-import androidx.core.content.edit
 import androidx.core.net.toUri
+import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_LONG
+import com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_SHORT
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
-import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.R
-import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
 import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabsHelper
@@ -50,8 +46,6 @@ import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
 import openfoodfacts.github.scrachx.openfood.utils.getLoginPreferences
 import openfoodfacts.github.scrachx.openfood.utils.hideKeyboard
-import java.io.IOException
-import java.net.HttpCookie
 import javax.inject.Inject
 
 /**
@@ -63,6 +57,7 @@ class LoginActivity : BaseActivity() {
     private lateinit var binding: ActivityLoginBinding
 
     private val viewModel: LoginActivityViewModel by viewModels()
+    private var loadingSnackbar: Snackbar? = null
 
     @Inject
     lateinit var productsApi: ProductsAPI
@@ -83,105 +78,33 @@ class LoginActivity : BaseActivity() {
     }
 
     private fun doAttemptLogin() {
-        // Disable login button
-        updateLoginButtonState(LoginButtonState.Disabled)
-
         hideKeyboard()
+
+        binding.loginInputLayout.error = null
+        binding.passInputLayout.error = null
 
         // Start checks
         val login = binding.loginInput.text.toString()
         val password = binding.passInput.text.toString()
         if (login.isBlank()) {
-            binding.loginInput.error = getString(R.string.error_field_required)
-            binding.loginInput.requestFocus()
-            updateLoginButtonState(LoginButtonState.Enabled)
+            binding.loginInputLayout.error = getString(R.string.error_field_required)
+            binding.loginInputLayout.requestFocus()
             return
         }
         if (password.isBlank()) {
-            binding.passInput.error = getString(R.string.error_field_required)
-            binding.passInput.requestFocus()
-            updateLoginButtonState(LoginButtonState.Enabled)
+            binding.passInputLayout.error = getText(R.string.error_field_required)
+            binding.passInputLayout.requestFocus()
             return
         } else if (password.length < 6) {
-            binding.passInput.error = getText(R.string.error_invalid_password)
-            binding.passInput.requestFocus()
-            updateLoginButtonState(LoginButtonState.Enabled)
+            binding.passInputLayout.error = getText(R.string.error_invalid_password)
+            binding.passInputLayout.requestFocus()
             return
         }
         // End checks
 
-        val loadingSnackbar = Snackbar.make(binding.loginLinearlayout, R.string.toast_retrieving, LENGTH_LONG)
-            .apply { show() }
-
-        lifecycleScope.launch(Dispatchers.Main) {
-            val response = withContext(Dispatchers.IO) {
-                try {
-                    productsApi.signIn(login, password, "Sign-in")
-                } catch (err: Exception) {
-                    Toast.makeText(this@LoginActivity, this@LoginActivity.getString(R.string.errorWeb), Toast.LENGTH_LONG).show()
-                    Log.e(this::class.simpleName, "onFailure", err)
-
-                    updateLoginButtonState(LoginButtonState.Enabled)
-                    null
-                }
-            } ?: return@launch
-
-            if (!response.isSuccessful) {
-                Toast.makeText(this@LoginActivity, R.string.errorWeb, Toast.LENGTH_LONG).show()
-                updateLoginButtonState(LoginButtonState.Enabled)
-                return@launch
-            }
-            val htmlNoParsed = withContext(Dispatchers.IO) {
-                try {
-                    response.body()?.string()
-                } catch (e: IOException) {
-                    Log.e("LOGIN", "Unable to parse the login response page", e)
-                    updateLoginButtonState(LoginButtonState.Enabled)
-                    null
-                }
-            } ?: return@launch
-            val pref = this@LoginActivity.getLoginPreferences()
-            if (isHtmlNotValid(htmlNoParsed)) {
-                loadingSnackbar.dismiss()
-
-                Snackbar.make(binding.loginLinearlayout, R.string.errorLogin, LENGTH_LONG).show()
-
-                binding.txtInfoLogin.setTextColor(ContextCompat.getColor(this@LoginActivity, R.color.red))
-                binding.txtInfoLogin.setText(R.string.txtInfoLoginNo)
-
-                binding.passInput.setText("")
-                updateLoginButtonState(LoginButtonState.Enabled)
-            } else {
-                // store the user session id (user_session and user_id)
-                for (httpCookie in HttpCookie.parse(response.headers()["set-cookie"])) {
-                    // Example format of set-cookie: session=user_session&S0MeR@nD0MSECRETk3Y&user_id&testuser; domain=.openfoodfacts.org; path=/
-                    if (BuildConfig.HOST.contains(httpCookie.domain) && httpCookie.path == "/") {
-                        httpCookie.value
-                            .split("&")
-                            .windowed(2, 2)
-                            .forEach { (name, value) -> pref.edit { putString(name, value) } }
-                        break
-                    }
-                }
-                Snackbar.make(binding.loginLinearlayout, R.string.connection, LENGTH_LONG).show()
-                pref.edit {
-                    putString("user", login)
-                    putString("pass", password)
-                }
-                binding.txtInfoLogin.setTextColor(ContextCompat.getColor(this@LoginActivity, R.color.green_500))
-                binding.txtInfoLogin.setText(R.string.txtInfoLoginOk)
-
-                matomoAnalytics.trackEvent(AnalyticsEvent.UserLogin)
-
-                setResult(RESULT_OK)
-                finish()
-            }
-        }
+        viewModel.tryLogin(login, password)
     }
 
-    private fun updateLoginButtonState(state: LoginButtonState) {
-        viewModel.canLogIn.postValue(state == LoginButtonState.Enabled)
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -198,8 +121,8 @@ class LoginActivity : BaseActivity() {
 
         // Setup view listeners
         binding.btnLogin.setOnClickListener { doAttemptLogin() }
-        binding.btnCreateAccount.setOnClickListener { doRegister() }
-        binding.btnForgotPass.setOnClickListener { doForgotPassword() }
+        binding.btnCreateAccount.setOnClickListener { openRegisterLink() }
+        binding.btnForgotPass.setOnClickListener { openForgotPasswordLink() }
 
         setSupportActionBar(binding.toolbarLayout.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -213,26 +136,62 @@ class LoginActivity : BaseActivity() {
         customTabActivityHelper.mayLaunchUrl(userLoginUri, null, null)
         binding.btnCreateAccount.isEnabled = true
 
-        val loginS = getLoginPreferences().getString(resources.getString(R.string.user), null)
-        if (loginS != null) {
-            MaterialAlertDialogBuilder(this)
-                .setTitle(R.string.log_in)
-                .setMessage(R.string.login_true)
-                .setNeutralButton(R.string.ok_button) { _, _ -> finish() }
-                .show()
-        }
+        finishIfAlreadyLogged()
 
-        viewModel.canLogIn.observe(this) {
-            binding.btnLogin.isEnabled = it
+        viewModel.loginButtonEnabled
+            .flowWithLifecycle(lifecycle)
+            .onEach { binding.btnLogin.isEnabled = it }
+            .launchIn(lifecycleScope)
+
+        viewModel.loginStatus
+            .flowWithLifecycle(lifecycle)
+            .onEach(::updateLoginStatus)
+            .launchIn(lifecycleScope)
+    }
+
+    private fun updateLoginStatus(it: LoginActivityViewModel.LoginStatus) {
+        when (it) {
+            LoginActivityViewModel.LoginStatus.WebError -> {
+                Toast.makeText(this, R.string.errorWeb, Toast.LENGTH_LONG).show()
+            }
+            LoginActivityViewModel.LoginStatus.IncorrectCredentials -> {
+                loadingSnackbar?.dismiss()
+
+                binding.txtInfoLogin.setTextColor(ContextCompat.getColor(this, R.color.red))
+                binding.txtInfoLogin.setText(R.string.txtInfoLoginNo)
+
+                binding.passInput.setText("")
+            }
+            LoginActivityViewModel.LoginStatus.Success -> {
+                loadingSnackbar?.dismiss()
+
+                binding.txtInfoLogin.setTextColor(ContextCompat.getColor(this, R.color.green_500))
+                binding.txtInfoLogin.setText(R.string.txtInfoLoginOk)
+
+                setResult(RESULT_OK)
+                finish()
+            }
+            LoginActivityViewModel.LoginStatus.Loading -> {
+                loadingSnackbar = Snackbar.make(binding.loginLinearlayout, R.string.toast_retrieving, LENGTH_LONG)
+                loadingSnackbar!!.show()
+            }
         }
     }
 
-    private fun doRegister() {
+    private fun finishIfAlreadyLogged() {
+        val username = getLoginPreferences().getString(resources.getString(R.string.user), null)
+        if (username != null) {
+            Toast.makeText(this, R.string.login_true, LENGTH_SHORT).show()
+            finish()
+        }
+    }
+
+    private fun openRegisterLink() {
         val customTabsIntent = CustomTabsHelper.getCustomTabsIntent(this, customTabActivityHelper.session)
         CustomTabActivityHelper.openCustomTab(this, customTabsIntent, userLoginUri, WebViewFallback())
     }
 
-    private fun doForgotPassword() {
+    private fun openForgotPasswordLink() {
         val customTabsIntent = CustomTabsHelper.getCustomTabsIntent(this, customTabActivityHelper.session)
         CustomTabActivityHelper.openCustomTab(this, customTabsIntent, resetPasswordUri, WebViewFallback())
     }
@@ -260,11 +219,7 @@ class LoginActivity : BaseActivity() {
         }
 
         internal fun isHtmlNotValid(html: String?) = (html == null
-                || html.contains("Incorrect user name or password.")
-                || html.contains("See you soon!"))
+                || "Incorrect user name or password." in html
+                || "See you soon!" in html)
     }
-}
-
-private enum class LoginButtonState {
-    Enabled, Disabled
 }

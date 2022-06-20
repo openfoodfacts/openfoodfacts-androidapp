@@ -844,6 +844,7 @@ class EditOverviewFragment : ProductEditFragment() {
         }
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         // Scanned QR code returned

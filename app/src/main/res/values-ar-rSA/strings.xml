@@ -666,12 +666,12 @@
     <string name="addtive_search">البحث عن مادة مضافة</string>
     <string name="additives">إضافات</string>
     <!--used for product_lists implementation-->
-    <string name="add_to_product_lists">أضف إلى قائمتك</string>
-    <string name="txt_create_new_list">قم بإنشاء قائمة جديدة</string>
-    <string name="txt_add_to_new_list">قم بإنشاء قائمة جديدة</string>
-    <string name="create_new_list_list_name">اسم القائمة</string>
-    <string name="txt_eaten_products">المنتجات التي أملكها</string>
-    <string name="txt_products_to_buy">منتجات للشراء</string>
+    <string name="dialog_add_product_to_list_title">أضف إلى قائمتك</string>
+    <string name="dialog_create_new_list_title">قم بإنشاء قائمة جديدة</string>
+    <string name="dialog_add_product_to_list_new">قم بإنشاء قائمة جديدة</string>
+    <string name="dialog_create_new_list_hint">اسم القائمة</string>
+    <string name="default_list_title_stored">المنتجات التي أملكها</string>
+    <string name="default_list_title_to_buy">منتجات للشراء</string>
     <string name="txt_exporting_your_listed_products">تصدير منتجاتك…</string>
     <string name="txt_your_listed_products_exported">تم تصدير المنتجات الخاصة بك</string>
     <string name="txt_discard">تجاهل</string>

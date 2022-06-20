@@ -83,6 +83,10 @@
     <string name="pref_power_mode_title">Power mode scan</string>
     <string name="pref_power_mode_summary">Quickly scan products in a supermarket to see which ones are not in the database.</string>
 
+    <string name="pref_export_db_key" translatable="false">exportDB</string>
+    <string name="pref_export_db_title">Export app database</string>
+    <string name="pref_export_db_summary">Extract the app database (containing your lists)</string>
+
     <string name="pref_terms_key" translatable="false">Terms</string>
     <string name="pref_terms_title">Terms</string>
     <string name="pref_terms_summary">Terms and Privacy</string>

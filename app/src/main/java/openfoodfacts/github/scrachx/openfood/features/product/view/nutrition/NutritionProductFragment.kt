@@ -40,6 +40,8 @@ import androidx.core.net.toUri
 import androidx.core.text.bold
 import androidx.core.text.buildSpannedString
 import androidx.core.text.inSpans
+import androidx.core.view.isGone
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -59,8 +61,8 @@ import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabsHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentNutritionProductBinding
 import openfoodfacts.github.scrachx.openfood.features.FullScreenActivityOpener
-import openfoodfacts.github.scrachx.openfood.features.images.manage.ImagesManageActivity
 import openfoodfacts.github.scrachx.openfood.features.adapters.NutrimentsGridAdapter
+import openfoodfacts.github.scrachx.openfood.features.images.manage.ImagesManageActivity
 import openfoodfacts.github.scrachx.openfood.features.login.LoginActivity
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_STATE
@@ -70,9 +72,10 @@ import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
 import openfoodfacts.github.scrachx.openfood.features.shared.adapters.NutrientLevelListAdapter
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
 import openfoodfacts.github.scrachx.openfood.models.*
-import openfoodfacts.github.scrachx.openfood.models.MeasurementUnit.*
+import openfoodfacts.github.scrachx.openfood.models.MeasurementUnit.ENERGY_KCAL
+import openfoodfacts.github.scrachx.openfood.models.MeasurementUnit.ENERGY_KJ
 import openfoodfacts.github.scrachx.openfood.models.entities.SendProduct
-import openfoodfacts.github.scrachx.openfood.network.ApiFields
+import openfoodfacts.github.scrachx.openfood.network.ApiFields.StateTags
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.*
 import pl.aprilapps.easyphotopicker.EasyImage
@@ -218,6 +221,8 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
             }
         }
 
+        binding.nutriscoreLink.isVisible = product.nutritionGradeFr != null
+
         var servingSize: Measurement? = null
         val servingSizeString = product.servingSize
         if (servingSizeString.isNullOrEmpty()) {
@@ -272,7 +277,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
             nutrientsImageUrl = product.getImageNutritionUrl(langCode)
         }
 
-        // Wseful when this fragment is used in offline saving
+        // Useful when this fragment is used in offline saving
         if (mSendProduct != null && mSendProduct!!.imgUploadNutrition.isNotBlank()) {
             binding.addPhotoLabel.visibility = GONE
             nutrientsImageUrl = mSendProduct!!.imgUploadNutrition
@@ -370,22 +375,16 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
     private fun setupNutrientItems(nutriments: ProductNutriments) {
         val levelItemList = mutableListOf<NutrientLevelItem>()
         val nutrientLevels = product.nutrientLevels
-        var fat: NutrimentLevel? = null
-        var saturatedFat: NutrimentLevel? = null
-        var sugars: NutrimentLevel? = null
-        var salt: NutrimentLevel? = null
 
-        if (nutrientLevels != null) {
-            fat = nutrientLevels.fat
-            saturatedFat = nutrientLevels.saturatedFat
-            sugars = nutrientLevels.sugars
-            salt = nutrientLevels.salt
-        }
+        val fat = nutrientLevels?.fat
+        val saturatedFat = nutrientLevels?.saturatedFat
+        val sugars = nutrientLevels?.sugars
+        val salt = nutrientLevels?.salt
 
         if (fat == null && salt == null && saturatedFat == null && sugars == null) {
-            binding.nutrientLevelsCardView.visibility = GONE
             levelItemList += NutrientLevelItem("", "", "", NO_ID)
-            binding.imageGrade.visibility = GONE
+            binding.nutrientLevelsCardView.visibility = GONE
+            updateNutritionGradeImg(false)
         } else {
             // prefetch the uri
             customTabActivityHelper = CustomTabActivityHelper()
@@ -393,62 +392,37 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
             nutritionScoreUri = getString(R.string.nutriscore_uri).toUri()
             customTabActivityHelper!!.mayLaunchUrl(nutritionScoreUri, null, null)
 
-            val fatNutriment = nutriments[Nutriment.FAT]
-            if (fat != null && fatNutriment != null) {
-                val fatNutrimentLevel = fat.getLocalize(requireActivity())
-                levelItemList += NutrientLevelItem(
-                    getString(R.string.txtFat),
-                    fatNutriment.getPer100gDisplayString(),
-                    fatNutrimentLevel,
-                    fat.getImgRes(),
-                )
-            }
-
-            val saturatedFatNutriment = nutriments[Nutriment.SATURATED_FAT]
-            if (saturatedFat != null && saturatedFatNutriment != null) {
-                val saturatedFatLocalize = saturatedFat.getLocalize(requireActivity())
-                levelItemList += NutrientLevelItem(
-                    getString(R.string.txtSaturatedFat),
-                    saturatedFatNutriment.getPer100gDisplayString(),
-                    saturatedFatLocalize,
-                    saturatedFat.getImgRes(),
-                )
-            }
-
-            val sugarsNutriment = nutriments[Nutriment.SUGARS]
-            if (sugars != null && sugarsNutriment != null) {
-                val sugarsLocalize = sugars.getLocalize(requireActivity())
-                levelItemList += NutrientLevelItem(
-                    getString(R.string.txtSugars),
-                    sugarsNutriment.getPer100gDisplayString(),
-                    sugarsLocalize,
-                    sugars.getImgRes(),
-                )
-            }
-
-            val saltNutriment = nutriments[Nutriment.SALT]
-            if (salt != null && saltNutriment != null) {
-                levelItemList += NutrientLevelItem(
-                    getString(R.string.txtSalt),
-                    saltNutriment.getPer100gDisplayString(),
-                    salt.getLocalize(requireActivity()),
-                    salt.getImgRes()
-                )
-            }
-            drawNutritionGrade()
+            levelItemList += listOfNotNull(
+                nutriments.buildLevelItem(requireContext(), Nutriment.FAT, fat),
+                nutriments.buildLevelItem(requireContext(), Nutriment.SATURATED_FAT, saturatedFat),
+                nutriments.buildLevelItem(requireContext(), Nutriment.SUGARS, sugars),
+                nutriments.buildLevelItem(requireContext(), Nutriment.SALT, salt)
+            )
+            updateNutritionGradeImg(true)
         }
 
-        binding.listNutrientLevels.adapter = NutrientLevelListAdapter(requireActivity(), levelItemList)
-        binding.listNutrientLevels.layoutManager = LinearLayoutManager(requireActivity())
+        binding.listNutrientLevels.apply {
+            adapter = NutrientLevelListAdapter(requireActivity(), levelItemList)
+            layoutManager = LinearLayoutManager(requireActivity())
+        }
     }
 
-    private fun drawNutritionGrade() {
-        binding.imageGradeLayout.visibility = VISIBLE
+    private fun updateNutritionGradeImg(show: Boolean) {
+        if (!show) {
+            binding.imageGradeLayout.isGone = true
+            return
+        }
+
+        binding.imageGradeLayout.isGone = false
         binding.imageGrade.setImageResource(product.getNutriScoreResource())
 
         binding.imageGrade.setOnClickListener {
-            val customTabsIntent = CustomTabsHelper.getCustomTabsIntent(requireContext(), customTabActivityHelper!!.session)
-            CustomTabActivityHelper.openCustomTab(requireActivity(), customTabsIntent, nutritionScoreUri!!, WebViewFallback())
+            CustomTabActivityHelper.openCustomTab(
+                requireActivity(),
+                CustomTabsHelper.getCustomTabsIntent(requireContext(), customTabActivityHelper!!.session),
+                nutritionScoreUri!!,
+                WebViewFallback()
+            )
         }
     }
 
@@ -457,13 +431,16 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
      * Checks the product states_tags to determine which prompt to be shown
      */
     private fun checkPrompts() {
-        if (product.statesTags.contains(ApiFields.StateTags.CATEGORIES_TO_BE_COMPLETED)) {
+        // Category
+        if (StateTags.CATEGORIES_TO_BE_COMPLETED in product.statesTags) {
             showCategoryPrompt = true
         }
-        if (product.noNutritionData == "on") {
+
+        // Nutrition
+        if (product.isNoNutrition()) {
             showNutritionPrompt = false
             showNutritionData = false
-        } else if (product.statesTags.contains(ApiFields.StateTags.NUTRITION_FACTS_TO_BE_COMPLETED)) {
+        } else if (StateTags.NUTRITION_FACTS_TO_BE_COMPLETED in product.statesTags) {
             showNutritionPrompt = true
         }
     }
@@ -579,6 +556,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
             .into(binding.imageViewNutrition)
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 

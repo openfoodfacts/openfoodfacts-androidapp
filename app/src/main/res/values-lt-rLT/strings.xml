@@ -652,12 +652,12 @@
     <string name="addtive_search">Ieškoti priedo</string>
     <string name="additives">Additives</string>
     <!--used for product_lists implementation-->
-    <string name="add_to_product_lists">Pridėti prie savo sąrašų</string>
-    <string name="txt_create_new_list">Sukurkite naują sąrašą</string>
-    <string name="txt_add_to_new_list">Pridėti prie naujo sąrašo</string>
-    <string name="create_new_list_list_name">Sąrašo pavadinimas</string>
-    <string name="txt_eaten_products">Products I have</string>
-    <string name="txt_products_to_buy">Produktai, kuriuos reikia nusipirkti</string>
+    <string name="dialog_add_product_to_list_title">Pridėti prie savo sąrašų</string>
+    <string name="dialog_create_new_list_title">Sukurkite naują sąrašą</string>
+    <string name="dialog_add_product_to_list_new">Pridėti prie naujo sąrašo</string>
+    <string name="dialog_create_new_list_hint">Sąrašo pavadinimas</string>
+    <string name="default_list_title_stored">Products I have</string>
+    <string name="default_list_title_to_buy">Produktai, kuriuos reikia nusipirkti</string>
     <string name="txt_exporting_your_listed_products">Eksportuojami produktai…</string>
     <string name="txt_your_listed_products_exported">Jūsų produktai buvo eksportuoti</string>
     <string name="txt_discard">Atmesti</string>

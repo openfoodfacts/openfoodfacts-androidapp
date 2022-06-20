@@ -22,7 +22,6 @@
             android:orientation="vertical"
             android:paddingBottom="@dimen/nav_bar_height">
 
-
             <openfoodfacts.github.scrachx.openfood.features.shared.views.TipBox
                 android:id="@+id/packagingImagetipBox"
                 android:layout_width="match_parent"

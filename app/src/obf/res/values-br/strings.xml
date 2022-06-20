@@ -39,8 +39,8 @@
     <string name="add_category_prompt_text">Add a category to help complete the product</string>
     <string name="add_nutrient_category_prompt_text">Add a category and more details to help complete the product</string>
     <string name="required_to_compute_nutriscore"></string>
-    <string name="txt_eaten_products">Products I have</string>
-    <string name="txt_products_to_buy">Produioù da brenañ</string>
+    <string name="default_list_title_stored">Products I have</string>
+    <string name="default_list_title_to_buy">Produioù da brenañ</string>
     <string name="intent_filter_share_label">Add to Open Beauty Facts</string>
     <string name="brand_hint">Examples: Nivea, L\'Oréal, etc…</string>
     <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".

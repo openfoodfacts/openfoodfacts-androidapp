@@ -13,6 +13,7 @@ import androidx.core.text.HtmlCompat.FROM_HTML_MODE_COMPACT
 import androidx.core.text.bold
 import androidx.core.text.buildSpannedString
 import androidx.lifecycle.lifecycleScope
+import com.squareup.picasso.MemoryPolicy
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -80,7 +81,7 @@ class EnvironmentProductFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         val langCode = localeManager.getLanguage()
         productState = requireProductState()
-        binding.imageViewPackaging.setOnClickListener { openFullScreen() }
+        binding.imageViewPackaging.setOnClickListener { openFullScreenImage() }
 
         // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
         if (requireContext().isDisableImageLoad() && requireContext().isBatteryLevelLow()) {
@@ -106,10 +107,11 @@ class EnvironmentProductFragment : BaseFragment() {
         }
 
         val carbonFootprintNutriment = nutriments[Nutriment.CARBON_FOOTPRINT]
-        if (carbonFootprintNutriment != null) {
+        val carbonFootprintMeasure = carbonFootprintNutriment?.per100gInUnit
+        if (carbonFootprintMeasure != null) {
             binding.textCarbonFootprint.text = buildSpannedString {
                 bold { append(getString(R.string.textCarbonFootprint)) }
-                append(getRoundNumber(carbonFootprintNutriment.per100gInUnit))
+                append(getRoundNumber(carbonFootprintMeasure))
                 append(carbonFootprintNutriment.unit.sym)
             }
         } else {
@@ -172,7 +174,7 @@ class EnvironmentProductFragment : BaseFragment() {
         refreshTagsPrompt()
     }
 
-    private fun openFullScreen() {
+    private fun openFullScreenImage() {
         val imageUrl = mUrlImage
         val product = productState.product
         if (imageUrl != null && product != null) {
@@ -194,6 +196,8 @@ class EnvironmentProductFragment : BaseFragment() {
 
     private fun newPackagingImage() = doChooseOrTakePhotos()
 
+    override fun doOnPhotosPermissionGranted() = doChooseOrTakePhotos()
+
     private fun loadPackagingPhoto(photoFile: File) {
         // Create a new instance of ProductImage so we can load to server
         val image = ProductImage(productState.product!!.code, ProductImageField.PACKAGING, photoFile, localeManager.getLanguage())
@@ -207,7 +211,7 @@ class EnvironmentProductFragment : BaseFragment() {
         mUrlImage = photoFile.absolutePath
         picasso
             .load(photoFile)
-            .fit()
+            .memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE)
             .into(binding.imageViewPackaging)
     }
 
@@ -232,6 +236,7 @@ class EnvironmentProductFragment : BaseFragment() {
         }
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 

@@ -40,8 +40,8 @@
     <string name="add_nutrient_prompt_text">아직 완성되지 않은 제품의 정보를 추가하기</string>
     <string name="add_category_prompt_text">아직 완성되지 않은 제품의 카테고리 추가하기</string>
     <string name="add_nutrient_category_prompt_text">아직 완성되지 않은 제품의 정보와 카테고리를 추가하기</string>
-    <string name="txt_eaten_products">내가 가진 제품</string>
-    <string name="txt_products_to_buy">구매할 제품</string>
+    <string name="default_list_title_stored">내가 가진 제품</string>
+    <string name="default_list_title_to_buy">구매할 제품</string>
     <string name="intent_filter_share_label">Add to Open Products Facts</string>
     <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
         You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>

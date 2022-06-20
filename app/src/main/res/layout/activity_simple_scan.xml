@@ -6,11 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".features.simplescan.SimpleScanActivity">
 
-    <com.journeyapps.barcodescanner.DecoratedBarcodeView
-        android:id="@+id/scan_barcode_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
     <ViewStub
         android:id="@+id/scan_ml_view"
         android:layout_width="match_parent"
@@ -49,7 +44,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_baseline_camera_focus_on_24" />
 
-
     <Button
         android:id="@+id/trouble_scanning_btn"
         android:layout_width="wrap_content"
@@ -61,4 +55,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

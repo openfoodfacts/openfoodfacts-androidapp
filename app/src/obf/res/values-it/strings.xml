@@ -39,8 +39,8 @@
     <string name="add_category_prompt_text">Aggiungi una categoria per aiutare a completare il prodotto</string>
     <string name="add_nutrient_category_prompt_text">Aggiungi una categoria ed ulteriori dettagli per aiutare a completare il prodotto</string>
     <string name="required_to_compute_nutriscore"></string>
-    <string name="txt_eaten_products">Prodotti che ho</string>
-    <string name="txt_products_to_buy">Prodotti da acquistare</string>
+    <string name="default_list_title_stored">Prodotti che ho</string>
+    <string name="default_list_title_to_buy">Prodotti da acquistare</string>
     <string name="intent_filter_share_label">Aggiungi a Open Beauty Facts</string>
     <string name="brand_hint">Esempi: Nivea, L\'Oréal, ecc…</string>
     <string name="txt_info_eaten_products">Sarete in grado di aggiungere prodotti a questa lista scansionando i prodotti, trascinando la scheda prodotto e toccando su \"Prodotti da comprare\".

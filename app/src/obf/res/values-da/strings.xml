@@ -39,8 +39,8 @@
     <string name="add_category_prompt_text">Tilføj en kategori som hjælp til produktfærdiggørelsen</string>
     <string name="add_nutrient_category_prompt_text">Tilføj en kategori og flere detaljer som hjælp til produktfærdiggørelsen</string>
     <string name="required_to_compute_nutriscore"></string>
-    <string name="txt_eaten_products">Produkter, jeg har</string>
-    <string name="txt_products_to_buy">Produkter at købe</string>
+    <string name="default_list_title_stored">Produkter, jeg har</string>
+    <string name="default_list_title_to_buy">Produkter at købe</string>
     <string name="intent_filter_share_label">Føj til Open Beauty Facts</string>
     <string name="brand_hint">Eks.: Nivea, L\'Oréal etc.…</string>
     <string name="txt_info_eaten_products">Du vil kunne føje produkter til denne liste ved at skanne produkter, trække produktkortet op og trykke på \"Produkter, som skal købes\".

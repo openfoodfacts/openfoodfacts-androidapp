@@ -24,7 +24,6 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.Single
-import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.isActive
@@ -329,7 +328,11 @@ class ProductSearchActivity : BaseActivity() {
 
             SEARCH -> {
                 if (isBarcodeValid(searchQuery)) {
-                    productViewActivityStarter.openProduct(searchQuery, this@ProductSearchActivity)
+                    productViewActivityStarter.openProduct(
+                        searchQuery,
+                        this@ProductSearchActivity,
+                        productOpenedListener = { finish() }
+                    )
                 } else {
                     client.searchProductsByName(searchQuery, pageAddress)
                         .startSearch(R.string.txt_no_matching_products, R.string.txt_broaden_search)
@@ -448,6 +451,7 @@ class ProductSearchActivity : BaseActivity() {
      * @param extendedMessage additional message to display, -1 if no message is displayed
      */
     private fun showEmptyResponse(@StringRes message: Int, @StringRes extendedMessage: Int) {
+        binding.swipeRefresh.isEnabled = false
         binding.swipeRefresh.isRefreshing = false
 
         binding.productsRecyclerView.visibility = View.INVISIBLE
@@ -475,7 +479,7 @@ class ProductSearchActivity : BaseActivity() {
         isResponseSuccessful: Boolean,
         response: Search?,
         @StringRes emptyMessage: Int,
-        @StringRes extendedMessage: Int = -1
+        @StringRes extendedMessage: Int = -1,
     ) {
         if (response == null || !isResponseSuccessful) {
             showOfflineCloud()

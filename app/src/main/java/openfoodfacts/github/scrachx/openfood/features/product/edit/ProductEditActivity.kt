@@ -66,10 +66,7 @@ import openfoodfacts.github.scrachx.openfood.repositories.OfflineProductReposito
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository.Companion.PNG_EXT
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository.Companion.addToHistory
-import openfoodfacts.github.scrachx.openfood.utils.clearCameraCache
-import openfoodfacts.github.scrachx.openfood.utils.getLoginPreferences
-import openfoodfacts.github.scrachx.openfood.utils.getProductState
-import openfoodfacts.github.scrachx.openfood.utils.hideKeyboard
+import openfoodfacts.github.scrachx.openfood.utils.*
 import java.io.IOException
 import javax.inject.Inject
 
@@ -270,10 +267,9 @@ class ProductEditActivity : BaseActivity() {
 
     private fun getLoginPasswordInfo(): Map<String, RequestBody> {
         val map = hashMapOf<String, RequestBody>()
-        val settings = getLoginPreferences()
 
-        val login = settings.getString("user", "") ?: ""
-        val password = settings.getString("pass", "") ?: ""
+        val login = getLoginUsername() ?: ""
+        val password = getLoginPassword() ?: ""
 
         if (login.isNotEmpty() && password.isNotEmpty()) {
             map[ApiFields.Keys.USER_ID] = createTextPlain(login)
@@ -371,12 +367,10 @@ class ProductEditActivity : BaseActivity() {
     }
 
     private fun getLoginInfoMap(): Map<String, String?> {
-        val settings = getLoginPreferences()
+        val login = getLoginUsername()
+        val password = getLoginPassword()
 
-        val login = settings.getString("user", "")!!
-        val password = settings.getString("pass", "")!!
-
-        return if (login.isEmpty() || password.isEmpty()) emptyMap()
+        return if (login.isNullOrEmpty() || password.isNullOrEmpty()) emptyMap()
         else mapOf(
             ApiFields.Keys.USER_ID to login,
             ApiFields.Keys.USER_PASS to password
@@ -482,6 +476,9 @@ class ProductEditActivity : BaseActivity() {
                 }
                 ProductImageField.NUTRITION -> {
                     imageNutritionFactsUploaded = true
+                }
+                else -> {
+                    // Do nothing
                 }
             }
 

@@ -406,8 +406,9 @@ class EditIngredientsFragment : ProductEditFragment() {
      * adds only those fields to the query map which are not empty and have changed.
      */
     override fun getUpdatedFieldsMap(): Map<String, String?> {
+        // TODO: hacky fix, better use a shared view model for saving product details
+        if (activity !is ProductEditActivity || _binding == null) return emptyMap()
         val targetMap = mutableMapOf<String, String?>()
-        if (activity !is ProductEditActivity) return targetMap
 
         binding.traces.chipifyAllUnterminatedTokens()
 
@@ -427,6 +428,7 @@ class EditIngredientsFragment : ProductEditFragment() {
         return targetMap
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data) {

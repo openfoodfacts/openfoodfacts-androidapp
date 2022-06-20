@@ -40,8 +40,8 @@
     <string name="add_nutrient_prompt_text">Додайте факти про харчування, щоб обчислити рівень поживних речовин</string>
     <string name="add_category_prompt_text">Add a category to help complete the product</string>
     <string name="add_nutrient_category_prompt_text">Додайте категорію та факти про харчування, щоб допомогти доповнити продукт</string>
-    <string name="txt_eaten_products">Products I have</string>
-    <string name="txt_products_to_buy">Товари для покупки</string>
+    <string name="default_list_title_stored">Products I have</string>
+    <string name="default_list_title_to_buy">Товари для покупки</string>
     <string name="intent_filter_share_label">Додайте до Opn Pet Food Facts</string>
     <string name="txt_info_eaten_products">Ви зможете додати товар в цей список, відсканувавши продукцію, перетягнувши картку товару вгору і клікнувши \"Товари для покупки\".
         Ви також маєте змогу додавати товари в цей список, виконавши їх пошук і натиснувши кнопку \"+\" в правому верхньому куті сторінки товару.</string>
