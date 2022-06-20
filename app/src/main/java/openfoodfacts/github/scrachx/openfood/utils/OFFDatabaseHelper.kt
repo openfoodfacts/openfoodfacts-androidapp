@@ -43,8 +43,6 @@ import openfoodfacts.github.scrachx.openfood.models.entities.store.StoreNameDao
 import openfoodfacts.github.scrachx.openfood.models.entities.tag.TagDao
 import org.greenrobot.greendao.database.Database
 import java.io.*
-import java.nio.file.Files
-import kotlin.io.path.Path
 
 
 class OFFDatabaseHelper @JvmOverloads constructor(

@@ -27,8 +27,6 @@ import org.apache.commons.csv.CSVPrinter
 import org.jetbrains.annotations.Contract
 import java.io.IOException
 
-private const val LOG_TAG = "FileUtils"
-
 
 fun isLocaleFile(url: String?) = url?.startsWith(LOCALE_FILE_SCHEME) ?: false
 
