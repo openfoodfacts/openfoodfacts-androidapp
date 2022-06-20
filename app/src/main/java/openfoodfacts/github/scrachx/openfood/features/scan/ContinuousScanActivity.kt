@@ -498,7 +498,7 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
         cameraState = scannerPrefsRepository.cameraPref.value
 
         // Setup barcode scanner
-        cameraView = scannerPrefsRepository.buildCameraView(this, binding.cameraPreviewViewStub)
+        cameraView = CameraView.of(this, binding.cameraPreviewViewStub, scannerPrefsRepository.mlScannerEnabled)
 
         cameraView.attach(cameraState, flashActive, autoFocusActive)
         cameraView.barcodeScannedCallback = ::onBarcodeResult
@@ -614,17 +614,12 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
     }
 
     private fun toggleFlash() {
-        if (flashActive) {
-            flashActive = false
-            binding.toggleFlash.setImageResource(R.drawable.ic_flash_off_white_24dp)
+        flashActive = !flashActive
 
-            cameraView.updateFlashSetting(flashActive)
-        } else {
-            flashActive = true
-            binding.toggleFlash.setImageResource(R.drawable.ic_flash_on_white_24dp)
+        val res = CameraView.getFlashRes(flashActive)
 
-            cameraView.updateFlashSetting(flashActive)
-        }
+        binding.toggleFlash.setImageResource(res)
+        cameraView.updateFlashSetting(flashActive)
         scannerPrefsRepository.flashPref = flashActive
     }
 
@@ -670,6 +665,7 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
         quickViewBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == ImagesManageActivity.REQUEST_EDIT_IMAGE && (resultCode == RESULT_OK || resultCode == RESULT_CANCELED)) {

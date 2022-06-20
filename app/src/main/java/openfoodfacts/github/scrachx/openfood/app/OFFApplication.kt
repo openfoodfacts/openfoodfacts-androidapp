@@ -15,7 +15,6 @@
  */
 package openfoodfacts.github.scrachx.openfood.app
 
-import android.util.Log
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.hilt.work.HiltWorkerFactory
 import androidx.multidex.MultiDexApplication
@@ -23,6 +22,9 @@ import androidx.work.Configuration
 import dagger.hilt.android.HiltAndroidApp
 import io.reactivex.exceptions.UndeliverableException
 import io.reactivex.plugins.RxJavaPlugins
+import logcat.LogPriority
+import logcat.asLog
+import logcat.logcat
 import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.greendao.query.QueryBuilder
@@ -39,14 +41,13 @@ class OFFApplication : MultiDexApplication(), Configuration.Provider {
     lateinit var daoSession: DaoSession
 
     override fun getWorkManagerConfiguration() = Configuration.Builder()
-            .setWorkerFactory(workerFactory)
-            .build()
+        .setWorkerFactory(workerFactory)
+        .build()
 
 
     @Suppress("DEPRECATION")
     override fun onCreate() {
         super.onCreate()
-        _instance = this
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
 
         EventBus.builder().addIndex(OFFEventsIndex()).installDefaultEventBus()
@@ -57,21 +58,18 @@ class OFFApplication : MultiDexApplication(), Configuration.Provider {
         RxJavaPlugins.setErrorHandler {
             when (it) {
                 is UndeliverableException ->
-                    Log.w(LOG_TAG, "Undeliverable exception received, not sure what to do", it.cause)
+                    logcat(LogPriority.WARN) { "Undeliverable exception received, not sure what to do: ${it.cause}" }
                 is IOException -> {
                     // fine, irrelevant network problem or API that throws on cancellation
-                    Log.i(LOG_TAG, "network exception", it)
-                    return@setErrorHandler
+                    logcat(LogPriority.WARN) { "IO Exception: " + it.asLog() }
                 }
                 is InterruptedException -> {
                     // fine, some blocking code was interrupted by a dispose call
-                    return@setErrorHandler
                 }
                 is NullPointerException, is IllegalArgumentException, is IllegalStateException -> {
                     // that's likely a bug in the application
                     Thread.currentThread().uncaughtExceptionHandler!!
-                            .uncaughtException(Thread.currentThread(), it)
-                    return@setErrorHandler
+                        .uncaughtException(Thread.currentThread(), it)
                 }
             }
         }
@@ -79,11 +77,5 @@ class OFFApplication : MultiDexApplication(), Configuration.Provider {
 
     companion object {
         private const val DEBUG = false
-        val LOG_TAG = OFFApplication::class.simpleName!!
-
-        @Deprecated("Use hilt.")
-        lateinit var _instance: OFFApplication
-            @Synchronized
-            private set
     }
 }

@@ -6,6 +6,7 @@ import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Index;
 
 import java.util.Date;
+import java.util.Objects;
 
 @Entity(indexes = {
     @Index(value = "barcode", unique = true)
@@ -72,34 +73,34 @@ public class HistoryProduct {
 
         HistoryProduct that = (HistoryProduct) o;
 
-        if (id != null ? !id.equals(that.id) : that.id != null) {
+        if (!Objects.equals(id, that.id)) {
             return false;
         }
-        if (title != null ? !title.equals(that.title) : that.title != null) {
+        if (!Objects.equals(title, that.title)) {
             return false;
         }
-        if (brands != null ? !brands.equals(that.brands) : that.brands != null) {
+        if (!Objects.equals(brands, that.brands)) {
             return false;
         }
-        if (url != null ? !url.equals(that.url) : that.url != null) {
+        if (!Objects.equals(url, that.url)) {
             return false;
         }
-        if (lastSeen != null ? !lastSeen.equals(that.lastSeen) : that.lastSeen != null) {
+        if (!Objects.equals(lastSeen, that.lastSeen)) {
             return false;
         }
-        if (barcode != null ? !barcode.equals(that.barcode) : that.barcode != null) {
+        if (!Objects.equals(barcode, that.barcode)) {
             return false;
         }
-        if (quantity != null ? !quantity.equals(that.quantity) : that.quantity != null) {
+        if (!Objects.equals(quantity, that.quantity)) {
             return false;
         }
-        if (nutritionGrade != null ? !nutritionGrade.equals(that.nutritionGrade) : that.nutritionGrade != null) {
+        if (!Objects.equals(nutritionGrade, that.nutritionGrade)) {
             return false;
         }
-        if (ecoscore != null ? !ecoscore.equals(that.ecoscore) : that.ecoscore != null) {
+        if (!Objects.equals(ecoscore, that.ecoscore)) {
             return false;
         }
-        return novaGroup != null ? novaGroup.equals(that.novaGroup) : that.novaGroup == null;
+        return Objects.equals(novaGroup, that.novaGroup);
     }
 
     @Override

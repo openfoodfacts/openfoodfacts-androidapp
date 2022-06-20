@@ -21,7 +21,7 @@ plugins {
     id("kotlin-parcelize")
     id("kotlin-kapt")
     id("dagger.hilt.android.plugin")
-    id("org.jetbrains.dokka") version "1.6.21"
+    id("org.jetbrains.dokka") version "1.7.0"
 }
 
 fun obtainTestBuildType(): String {
@@ -55,13 +55,13 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVer")
 
     // AndroidX
-    implementation("androidx.appcompat:appcompat:1.4.1")
+    implementation("androidx.appcompat:appcompat:1.4.2")
     implementation("androidx.browser:browser:1.4.0")
     implementation("androidx.concurrent:concurrent-futures:1.1.0")
     implementation("androidx.recyclerview:recyclerview:1.2.1")
     implementation("androidx.cardview:cardview:1.0.0")
-    implementation("androidx.annotation:annotation:1.3.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.3")
+    implementation("androidx.annotation:annotation:1.4.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.multidex:multidex:2.0.1")
     implementation("androidx.viewpager2:viewpager2:1.0.0")
     implementation("androidx.startup:startup-runtime:1.1.1")
@@ -149,7 +149,7 @@ dependencies {
     implementation("com.github.hootsuite:nachos:1.2.0")
 
     // Crash analytics
-    implementation("io.sentry:sentry-android:5.7.4")
+    implementation("io.sentry:sentry-android:6.1.2")
     implementation("com.github.matomo-org:matomo-sdk-android:4.1.4")
 
     // ShowCaseView dependency
@@ -217,7 +217,7 @@ android {
     defaultConfig {
         applicationId = "openfoodfacts.github.scrachx.openfood"
 
-        minSdk = 16
+        minSdk = 21
         targetSdk = 31
 
         versionCode = 582
@@ -264,7 +264,6 @@ android {
             applicationIdSuffix = ".debug"
             isDebuggable = true
 
-            defaultConfig.minSdk = 18
 
             // Uncomment to use dev server
 //            buildConfigField("String", "HOST", "\"https://ssl-api.openfoodfacts.net\"")

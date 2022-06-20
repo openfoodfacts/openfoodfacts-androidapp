@@ -32,7 +32,7 @@ import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.jobs.LoadTaxonomiesWorker
 import openfoodfacts.github.scrachx.openfood.repositories.Taxonomy
 import openfoodfacts.github.scrachx.openfood.repositories.Taxonomy.*
-import kotlin.time.Duration
+import kotlin.time.Duration.Companion.seconds
 import kotlin.time.ExperimentalTime
 
 /**
@@ -86,7 +86,7 @@ class SplashController internal constructor(
 
         // The 6000 delay is to show one loop of the multilingual logo. I asked for it ~ Pierre
         if (firstRun) {
-            delay(Duration.seconds(6))
+            delay(6.seconds)
             view.navigateToMainActivity()
         } else {
             view.navigateToMainActivity()
