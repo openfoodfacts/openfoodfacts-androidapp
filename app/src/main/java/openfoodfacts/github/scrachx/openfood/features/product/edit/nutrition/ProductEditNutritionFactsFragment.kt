@@ -824,6 +824,9 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                 unitSpinner.adapter = adapter
             }
+            else -> {
+                // Do nothing
+            }
         }
         try {
             if (preFillValues) {
@@ -945,6 +948,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
     private fun getStarchValue() = starchEditText?.getFloatValue() ?: 0F
     private fun getStarchUnitSelectedIndex() = starchEditText?.unitSpinner?.selectedItemPosition ?: 0
 
+    @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data) {

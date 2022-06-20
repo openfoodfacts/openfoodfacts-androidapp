@@ -516,6 +516,7 @@ class IngredientsProductFragment : BaseFragment() {
             .into(binding.imageViewIngredients)
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (ImagesManageActivity.isImageModified(requestCode, resultCode)) {
