@@ -3,7 +3,7 @@ package openfoodfacts.github.scrachx.openfood.features.scan
 import android.view.ViewStub
 import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isVisible
+import openfoodfacts.github.scrachx.openfood.BuildConfig
 
 /**
  * When on FDroid this class is just a stub.
@@ -16,6 +16,9 @@ class MLKitCameraView(
     viewStub,
     null
 ) {
+    init {
+        error("Could not create ${this::class.simpleName} in ${BuildConfig.BUILD_TYPE} build type.")
+    }
 
     override fun onResume() = Unit
     override fun stopCameraPreview() = Unit

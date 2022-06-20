@@ -119,6 +119,7 @@ class ProductCompareActivity : BaseActivity() {
         binding.navigationBottomInclude.bottomNavigation.selectNavigationItem(R.id.compare_products)
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data) {

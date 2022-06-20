@@ -2,6 +2,7 @@ package openfoodfacts.github.scrachx.openfood.features.product.view.contributors
 
 import android.os.Bundle
 import android.text.Spanned
+import android.text.format.DateFormat
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.view.LayoutInflater
@@ -10,6 +11,8 @@ import android.view.ViewGroup
 import androidx.core.text.buildSpannedString
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
+import logcat.asLog
+import logcat.logcat
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentContributorsBinding
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_STATE
@@ -22,7 +25,6 @@ import openfoodfacts.github.scrachx.openfood.repositories.TaxonomiesRepository
 import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
 import openfoodfacts.github.scrachx.openfood.utils.SearchType
 import openfoodfacts.github.scrachx.openfood.utils.requireProductState
-import java.text.SimpleDateFormat
 import java.util.*
 import javax.inject.Inject
 
@@ -45,6 +47,14 @@ class ContributorsFragment : BaseFragment() {
     lateinit var localeManager: LocaleManager
 
     private lateinit var productState: ProductState
+
+    private val dateFormat = DateFormat.getDateFormat(requireContext()).apply {
+        timeZone = TimeZone.getTimeZone("CET")
+    }
+    private val timeFormatter = DateFormat.getTimeFormat(requireContext()).apply {
+        timeZone = TimeZone.getTimeZone("CET")
+    }
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentContributorsBinding.inflate(inflater)
@@ -69,7 +79,7 @@ class ContributorsFragment : BaseFragment() {
         val product = this.productState.product!!
 
         if (!product.creator.isNullOrBlank()) {
-            val createdDate = getDateTime(product.createdDateTime!!)
+            val createdDate = formatDateTime(product.createdDateTime!!)
             binding.creatorTxt.movementMethod = LinkMovementMethod.getInstance()
             binding.creatorTxt.text = getString(R.string.creator_history, createdDate.first, createdDate.second, product.creator)
         } else {
@@ -77,7 +87,7 @@ class ContributorsFragment : BaseFragment() {
         }
 
         if (!product.lastModifiedBy.isNullOrBlank()) {
-            val lastEditDate = getDateTime(product.lastModifiedTime!!)
+            val lastEditDate = formatDateTime(product.lastModifiedTime!!)
             binding.lastEditorTxt.movementMethod = LinkMovementMethod.getInstance()
             binding.lastEditorTxt.text = getString(R.string.last_editor_history, lastEditDate.first, lastEditDate.second, product.lastModifiedBy)
         } else {
@@ -108,18 +118,16 @@ class ContributorsFragment : BaseFragment() {
     /**
      * Get date and time in MMMM dd, yyyy and HH:mm:ss a format
      *
-     * @param dateTime date and time in miliseconds
+     * @param epoch unix epoch in seconds
      */
-    private fun getDateTime(dateTime: String): Pair<String, String> {
-        val unixSeconds = dateTime.toLong()
-        val date = Date(unixSeconds * 1000L)
-        val sdf = SimpleDateFormat("MMMM dd, yyyy", Locale.getDefault()).apply {
-            timeZone = TimeZone.getTimeZone("CET")
+    private fun formatDateTime(epoch: String): Pair<String, String> {
+        val date = try {
+            Date(epoch.toLong() * 1000L)
+        } catch (err: Exception) {
+            logcat { "Could not parse product date $epoch: " + err.asLog() }
+            return "" to ""
         }
-        val sdf2 = SimpleDateFormat("HH:mm:ss a", Locale.getDefault()).apply {
-            timeZone = TimeZone.getTimeZone("CET")
-        }
-        return sdf.format(date) to sdf2.format(date)
+        return dateFormat.format(date) to timeFormatter.format(date)
     }
 
     private fun getContributorsTag(contributor: String): CharSequence {
@@ -188,6 +196,7 @@ class ContributorsFragment : BaseFragment() {
     }
 
     companion object {
+
         fun newInstance(productState: ProductState) = ContributorsFragment().apply {
             arguments = Bundle().apply {
                 putSerializable(KEY_STATE, productState)

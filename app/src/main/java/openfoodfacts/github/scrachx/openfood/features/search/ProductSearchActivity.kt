@@ -36,9 +36,7 @@ import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductBrowsingListBinding
 import openfoodfacts.github.scrachx.openfood.features.adapters.ProductSearchAdapter
-import openfoodfacts.github.scrachx.openfood.features.product.view.OnProductViewActivityStarterResultListener
 import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewActivityStarter
-import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewActivityStarterErrorType
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.selectNavigationItem
@@ -330,14 +328,11 @@ class ProductSearchActivity : BaseActivity() {
 
             SEARCH -> {
                 if (isBarcodeValid(searchQuery)) {
-                    productViewActivityStarter.openProduct(searchQuery, this@ProductSearchActivity, object: OnProductViewActivityStarterResultListener {
-                        override fun onProductOpened() {
-                            finish()
-                        }
-
-                        override fun onProductError(type: ProductViewActivityStarterErrorType) {}
-
-                    })
+                    productViewActivityStarter.openProduct(
+                        searchQuery,
+                        this@ProductSearchActivity,
+                        productOpenedListener = { finish() }
+                    )
                 } else {
                     client.searchProductsByName(searchQuery, pageAddress)
                         .startSearch(R.string.txt_no_matching_products, R.string.txt_broaden_search)
@@ -484,7 +479,7 @@ class ProductSearchActivity : BaseActivity() {
         isResponseSuccessful: Boolean,
         response: Search?,
         @StringRes emptyMessage: Int,
-        @StringRes extendedMessage: Int = -1
+        @StringRes extendedMessage: Int = -1,
     ) {
         if (response == null || !isResponseSuccessful) {
             showOfflineCloud()

@@ -35,7 +35,6 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
-import io.reactivex.disposables.CompositeDisposable
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
@@ -60,6 +59,7 @@ import openfoodfacts.github.scrachx.openfood.models.entities.ListedProductDao
 import openfoodfacts.github.scrachx.openfood.models.entities.ProductLists
 import openfoodfacts.github.scrachx.openfood.models.entities.ProductListsDao
 import openfoodfacts.github.scrachx.openfood.utils.SwipeController
+import openfoodfacts.github.scrachx.openfood.utils.buildDelete
 import openfoodfacts.github.scrachx.openfood.utils.isEmpty
 import org.apache.commons.csv.CSVFormat
 import org.apache.commons.csv.CSVParser
@@ -81,13 +81,6 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
     private lateinit var adapter: ProductListsAdapter
     private lateinit var productListsDao: ProductListsDao
 
-    private val disp = CompositeDisposable()
-
-    override fun onDestroy() {
-        disp.dispose()
-        super.onDestroy()
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivityProductListsBinding.inflate(layoutInflater)
@@ -101,7 +94,7 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
 
         binding.fabAdd.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_plus_blue_24, 0, 0, 0)
 
-        adapter = ProductListsAdapter(this, mutableListOf())
+        adapter = ProductListsAdapter(this)
 
         binding.productListsRecyclerView.layoutManager = LinearLayoutManager(this)
         binding.productListsRecyclerView.adapter = adapter
@@ -205,6 +198,7 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
     private fun checkListNameExist(listName: String) =
         adapter.lists.firstOrNull { it.listName == listName } != null
 
+    @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 1 && resultCode == RESULT_OK && data!!.extras!!.getBoolean("update")) {
@@ -225,14 +219,15 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
     }
 
     override fun onRightClicked(position: Int) {
-        if (adapter.lists.isNullOrEmpty()) return
+        if (adapter.lists.isEmpty()) return
+
         val list = adapter.lists[position]
 
         // delete the product from YOUR_LISTED_PRODUCT_TABLE
-        daoSession.listedProductDao.queryBuilder()
-            .where(ListedProductDao.Properties.ListId.eq(list.id))
-            .buildDelete()
-            .executeDeleteWithoutDetachingEntities()
+        daoSession.listedProductDao.buildDelete {
+            where(ListedProductDao.Properties.ListId.eq(list.id))
+        }.executeDeleteWithoutDetachingEntities()
+
         daoSession.clear()
 
         productListsDao.delete(list)

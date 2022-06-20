@@ -21,7 +21,7 @@ plugins {
     id("kotlin-parcelize")
     id("kotlin-kapt")
     id("dagger.hilt.android.plugin")
-    id("org.jetbrains.dokka") version "1.6.10"
+    id("org.jetbrains.dokka") version "1.7.0"
 }
 
 fun obtainTestBuildType(): String {
@@ -38,7 +38,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib:${rootProject.extra["kotlinVersion"]}")
 
     // Kotlin coroutines
-    val coroutinesVersion = "1.6.1"
+    val coroutinesVersion = "1.6.2"
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-rx2:$coroutinesVersion")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion")
@@ -47,24 +47,24 @@ dependencies {
     implementation("androidx.fragment:fragment-ktx:1.4.1")
     implementation("androidx.activity:activity-ktx:1.4.0")
     implementation("androidx.preference:preference-ktx:1.2.0")
-    implementation("androidx.core:core-ktx:1.7.0")
+    implementation("androidx.core:core-ktx:1.8.0")
 
-    val lifecycleVer = "2.4.0-alpha03"
+    val lifecycleVer = "2.4.1"
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVer")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVer")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVer")
 
     // AndroidX
-    implementation("androidx.appcompat:appcompat:1.4.1")
+    implementation("androidx.appcompat:appcompat:1.4.2")
     implementation("androidx.browser:browser:1.4.0")
     implementation("androidx.concurrent:concurrent-futures:1.1.0")
     implementation("androidx.recyclerview:recyclerview:1.2.1")
     implementation("androidx.cardview:cardview:1.0.0")
-    implementation("androidx.annotation:annotation:1.3.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.3")
+    implementation("androidx.annotation:annotation:1.4.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.multidex:multidex:2.0.1")
     implementation("androidx.viewpager2:viewpager2:1.0.0")
-    implementation("androidx.startup:startup-runtime:1.1.0")
+    implementation("androidx.startup:startup-runtime:1.1.1")
     implementation("androidx.work:work-runtime-ktx:2.7.1")
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 
@@ -115,7 +115,7 @@ dependencies {
     kapt("org.greenrobot:eventbus-annotation-processor:$eventBusVersion")
 
     // Material design
-    implementation("com.google.android.material:material:1.5.0")
+    implementation("com.google.android.material:material:1.6.1")
 
     // Image Loading
     implementation("com.squareup.picasso:picasso:2.8")
@@ -125,7 +125,7 @@ dependencies {
 
     // Barcode and QR Scanner
     // TODO: cannot upgrade, requires API 24 or higher
-    implementation("com.google.zxing:core:3.3.0")
+    implementation("com.google.zxing:core:3.5.0")
 
     implementation("com.journeyapps:zxing-android-embedded:3.6.0") { isTransitive = false }
 
@@ -149,8 +149,8 @@ dependencies {
     implementation("com.github.hootsuite:nachos:1.2.0")
 
     // Crash analytics
-    implementation("io.sentry:sentry-android:5.7.2")
-    implementation("com.github.matomo-org:matomo-sdk-android:v4.1.2")
+    implementation("io.sentry:sentry-android:6.1.2")
+    implementation("com.github.matomo-org:matomo-sdk-android:4.1.4")
 
     // ShowCaseView dependency
     implementation("com.github.mreram:showcaseview:1.0.5")
@@ -158,10 +158,10 @@ dependencies {
     // Unit Testing
     testImplementation("androidx.arch.core:core-testing:2.1.0")
     testImplementation("junit:junit:4.13.2")
-    testImplementation("org.robolectric:robolectric:4.7.3")
-    testImplementation("org.mockito:mockito-core:4.4.0")
+    testImplementation("org.robolectric:robolectric:4.8.1")
+    testImplementation("org.mockito:mockito-core:4.6.1")
     testImplementation("org.mockito.kotlin:mockito-kotlin:4.0.0")
-    testImplementation("org.mockito:mockito-junit-jupiter:4.4.0")
+    testImplementation("org.mockito:mockito-junit-jupiter:4.6.1")
     testImplementation("com.google.truth:truth:1.1.3")
     testImplementation("com.google.truth.extensions:truth-java8-extension:1.1.3")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:${coroutinesVersion}")
@@ -177,11 +177,11 @@ dependencies {
 
     // Hilt for Android Testing
     androidTestImplementation("com.google.dagger:hilt-android-testing:2.41")
-    kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.39.1")
+    kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.42")
     androidTestImplementation("com.google.dagger:dagger:2.39.1")
-    kaptAndroidTest("com.google.dagger:dagger-compiler:2.39.1")
+    kaptAndroidTest("com.google.dagger:dagger-compiler:2.42")
 
-    androidTestImplementation("androidx.test:runner:1.3.0") { exclude("junit") }
+    androidTestImplementation("androidx.test:runner:1.4.0") { exclude("junit") }
     androidTestImplementation("androidx.test:rules:1.4.0")
 
     androidTestImplementation("androidx.test.ext:junit:1.1.3") { exclude("junit") }
@@ -217,7 +217,7 @@ android {
     defaultConfig {
         applicationId = "openfoodfacts.github.scrachx.openfood"
 
-        minSdk = 16
+        minSdk = 21
         targetSdk = 31
 
         versionCode = 582
@@ -264,7 +264,6 @@ android {
             applicationIdSuffix = ".debug"
             isDebuggable = true
 
-            defaultConfig.minSdk = 18
 
             // Uncomment to use dev server
 //            buildConfigField("String", "HOST", "\"https://ssl-api.openfoodfacts.net\"")

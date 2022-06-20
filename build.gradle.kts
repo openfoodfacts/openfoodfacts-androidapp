@@ -17,10 +17,10 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    val kotlinVersion by extra("1.6.20")
+    val kotlinVersion by extra("1.7.0")
     val jacksonVersion by extra("2.12.3")
     val greendaoVersion by extra("3.3.0")
-    val hiltVersion by extra("2.39.1")
+    val hiltVersion by extra("2.42")
     repositories {
         google()
         mavenCentral()
@@ -41,8 +41,8 @@ buildscript {
 }
 
 plugins {
-    id("org.sonarqube") version "3.3"
-    id("io.gitlab.arturbosch.detekt") version "1.18.0"
+    id("org.sonarqube") version "3.4.0.2513"
+    id("io.gitlab.arturbosch.detekt") version "1.20.0"
 }
 
 allprojects {
