@@ -19,11 +19,6 @@ import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    repositories {
-        google()
-        mavenCentral()
-        maven("https://jitpack.io")
-    }
     dependencies {
         classpath(libs.plugin.gradle.android)
         classpath(libs.plugin.gradle.greendao)
@@ -41,12 +36,6 @@ plugins {
 }
 
 allprojects {
-    repositories {
-        google()
-        mavenCentral()
-        maven("https://jitpack.io")
-    }
-
     sonarqube {
         properties {
             property("sonar.exclusions", "**/openfoodfacts/github/scrachx/openfood/models/*,**/*.xml")
