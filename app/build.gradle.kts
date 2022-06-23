@@ -71,7 +71,7 @@ dependencies {
     implementation(libs.fastadapter.commons) { artifact { type = "aar" } }
     implementation(libs.nachos)
     implementation(libs.showcaseview)
-    testImplementation(libs.bundles.unit.testing)
+    testImplementation(libs.bundles.testing)
 
     testImplementation(platform("org.junit:junit-bom:5.8.2"))
     testImplementation(libs.junit.jupiter)

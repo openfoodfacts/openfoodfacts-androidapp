@@ -211,7 +211,7 @@ crash-analytics = [
     "matomo",
     "sentry-android",
 ]
-unit-testing = [
+testing = [
     "androidx-arch-core-testing",
     "json-unit-fluent",
     "junit",
