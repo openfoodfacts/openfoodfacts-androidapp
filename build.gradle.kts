@@ -14,35 +14,30 @@
  * limitations under the License.
  */
 
+import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
+
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    val kotlinVersion by extra("1.7.0")
-    val jacksonVersion by extra("2.12.3")
-    val greendaoVersion by extra("3.3.0")
-    val hiltVersion by extra("2.42")
     repositories {
         google()
         mavenCentral()
         maven("https://jitpack.io")
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:7.2.1")
-
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
-        classpath("org.greenrobot:greendao-gradle-plugin:$greendaoVersion")
-        classpath("com.github.timfreiheit:ResourcePlaceholdersPlugin:0.2")
-
-        classpath("com.google.dagger:hilt-android-gradle-plugin:$hiltVersion")
-
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
+        classpath(libs.plugin.gradle.android)
+        classpath(libs.plugin.gradle.greendao)
+        classpath(libs.plugin.gradle.hilt)
+        classpath(libs.plugin.gradle.kotlin)
     }
 }
 
 plugins {
-    id("org.sonarqube") version "3.4.0.2513"
-    id("io.gitlab.arturbosch.detekt") version "1.21.0"
+    alias(libs.plugins.resourceplaceholders) apply false // Android Extension in `app` breaks without this
+    alias(libs.plugins.sonarqube)
+    alias(libs.plugins.detekt)
+    alias(libs.plugins.versions)
+    alias(libs.plugins.updates)
 }
 
 allprojects {
@@ -63,4 +58,22 @@ allprojects {
 detekt {
     source = files("./app/src/")
     ignoreFailures = true
+}
+
+// https://github.com/ben-manes/gradle-versions-plugin
+tasks.withType<DependencyUpdatesTask>().configureEach {
+    rejectVersionIf {
+        val components = candidate.version.split('-')
+        if (components.size <= 1) return@rejectVersionIf false
+        val build = components[1]
+        val preReleaseBuildPrefixes = listOf("alpha", "beta", "rc", "eap")
+        preReleaseBuildPrefixes.any { preReleaseBuildPrefix ->
+            build.startsWith(prefix = preReleaseBuildPrefix, ignoreCase = true)
+        }
+    }
+}
+
+// https://github.com/littlerobots/version-catalog-update-plugin
+versionCatalogUpdate {
+    sortByKey.set(false)
 }

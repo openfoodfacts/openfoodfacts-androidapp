@@ -1,0 +1,233 @@
+[versions]
+# https://kotlinlang.org/docs/releases.html#release-details
+kotlin = "1.7.0"
+# https://github.com/Kotlin/kotlinx.coroutines
+kotlin-coroutines = "1.6.3"
+# https://github.com/FasterXML/jackson
+jackson = "2.13.3"
+# https://greenrobot.org/greendao/
+greendao = "3.3.0"
+# https://github.com/googlecodelabs/android-hilt
+hilt = "2.42"
+# https://developer.android.com/studio/releases/gradle-plugin
+android-gradle = "7.2.1"
+# https://developer.android.com/jetpack/androidx/releases/lifecycle
+android-lifecycle = "2.4.1"
+# https://github.com/greenrobot/EventBus
+eventbus = "3.3.1"
+# https://junit.org/junit5/
+junit5 = "5.9.0-M1"
+androidx-hilt = "1.0.0"
+org-mockito = "4.6.1"
+com-squareup-retrofit2 = "2.9.0"
+androidx-test-espresso = "3.4.0"
+
+[libraries]
+# Gradle Plugins
+# https://greenrobot.org/greendao/
+plugin-gradle-greendao = { module = "org.greenrobot:greendao-gradle-plugin", version.ref = "greendao" }
+# https://developer.android.com/studio/releases/gradle-plugin
+plugin-gradle-android = { module = "com.android.tools.build:gradle", version.ref = "android-gradle" }
+# https://github.com/googlecodelabs/android-hilt
+plugin-gradle-hilt = { module = "com.google.dagger:hilt-android-gradle-plugin", version.ref = "hilt" }
+# https://kotlinlang.org/docs/gradle.html
+plugin-gradle-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+
+# Coroutines
+kotlin-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlin-coroutines" }
+kotlin-coroutines-rx2 = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-rx2", version.ref = "kotlin-coroutines" }
+kotlin-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlin-coroutines" }
+test-kotlin-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlin-coroutines" }
+# Android KTX
+android-ktx-fragment = "androidx.fragment:fragment-ktx:1.4.1"
+android-ktx-activity = "androidx.activity:activity-ktx:1.4.0"
+android-ktx-preference = "androidx.preference:preference-ktx:1.2.0"
+android-ktx-core = "androidx.core:core-ktx:1.8.0"
+# Lifecycle
+android-lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "android-lifecycle" }
+android-lifecycle-livedata = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "android-lifecycle" }
+android-lifecycle-runtime = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "android-lifecycle" }
+# AndroidX
+androidx-appcompat = "androidx.appcompat:appcompat:1.4.2"
+androidx-browser = "androidx.browser:browser:1.4.0"
+androidx-concurrent = "androidx.concurrent:concurrent-futures:1.1.0"
+androidx-recyclerview = "androidx.recyclerview:recyclerview:1.2.1"
+androidx-cardview = "androidx.cardview:cardview:1.0.0"
+androidx-annotation = "androidx.annotation:annotation:1.4.0"
+androidx-constraintlayout = "androidx.constraintlayout:constraintlayout:2.1.4"
+androidx-multidex = "androidx.multidex:multidex:2.0.1"
+androidx-viewpager2 = "androidx.viewpager2:viewpager2:1.0.0"
+androidx-startup-runtime = "androidx.startup:startup-runtime:1.1.1"
+androidx-work-runtime = "androidx.work:work-runtime-ktx:2.7.1"
+androidx-swiperefreshlayout = "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+# ML Kit
+barcode-scanning = "com.google.mlkit:barcode-scanning:17.0.2"
+# Hilt
+hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
+hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hilt" }
+# WorkManager with Hilt
+androidx-hilt-work = { module = "androidx.hilt:hilt-work", version.ref = "androidx-hilt" }
+androidx-hilt-compiler = { module = "androidx.hilt:hilt-compiler", version.ref = "androidx-hilt" }
+# Reactive Streams
+rx-kotlin = "io.reactivex.rxjava2:rxkotlin:2.4.0"
+rx-java = "io.reactivex.rxjava2:rxjava:2.2.21"
+rx-android = "io.reactivex.rxjava2:rxandroid:2.1.1"
+rx-relay = "com.jakewharton.rxrelay2:rxrelay:2.1.1"
+# Networking
+networking-retrofit-core = { module = "com.squareup.retrofit2:retrofit", version.ref = "com-squareup-retrofit2" }
+networking-retrofit-converter-jackson = { module = "com.squareup.retrofit2:converter-jackson", version.ref = "com-squareup-retrofit2" }
+networking-retrofit-adapter-rxjava2 = { module = "com.squareup.retrofit2:adapter-rxjava2", version.ref = "com-squareup-retrofit2" }
+networking-retrofit-converter-scalars = { module = "com.squareup.retrofit2:converter-scalars", version.ref = "com-squareup-retrofit2" }
+networking-okhttp3-logging-interceptor = "com.squareup.okhttp3:logging-interceptor:4.10.0"
+# Logging
+logcat = "com.squareup.logcat:logcat:0.1"
+# Apache Commons
+apache-text = "org.apache.commons:commons-text:1.9"
+apache-csv = "org.apache.commons:commons-csv:1.9.0"
+apache-validator = "commons-validator:commons-validator:1.7"
+# Serialization/Deserialization
+jackson-core = { module = "com.fasterxml.jackson.core:jackson-core", version.ref = "jackson" }
+jackson-databind = { module = "com.fasterxml.jackson.core:jackson-databind", version.ref = "jackson" }
+jackson-annotations = { module = "com.fasterxml.jackson.core:jackson-annotations", version.ref = "jackson" }
+jackson-kotlin = { module = "com.fasterxml.jackson.module:jackson-module-kotlin", version.ref = "jackson" }
+# Database
+greendao = { module = "org.greenrobot:greendao", version.ref = "greendao" }
+# Event bus and index
+eventbus-runtime = { module = "org.greenrobot:eventbus", version.ref = "eventbus" }
+eventbus-compiler = { module = "org.greenrobot:eventbus-annotation-processor", version.ref = "eventbus" }
+# Material Design
+material = "com.google.android.material:material:1.6.1"
+# Image Loading
+picasso = "com.squareup.picasso:picasso:2.8"
+# Image from gallery or camera
+easyimage = "com.github.jkwiecien:EasyImage:3.2.0"
+# Barcode and QR Scanner
+zxing-core = "com.google.zxing:core:3.5.0"
+zxing-android-embedded = "com.journeyapps:zxing-android-embedded:4.3.0"
+# UI Component : ImageView with Zooming
+photoview = "com.github.chrisbanes:PhotoView:2.3.0"
+# UI Component : Material Drawer
+# https://github.com/mikepenz/MaterialDrawer/commit/3b2cb1db4c3b6afe639b0f3c21c03c1de68648a3
+materialdrawer = "com.mikepenz:materialdrawer:9.0.0"
+# DO NOT UPDATE : RecyclerViewCacheUtil removed, needs rework
+fastadapter-commons = "com.mikepenz:fastadapter-commons:3.3.1"
+# UI Component : Font Icons
+iconics-core = "com.mikepenz:iconics-core:5.3.3"
+google-material-typeface = "com.mikepenz:google-material-typeface:4.0.0.2-kotlin"
+android-image-cropper = "com.github.CanHub:Android-Image-Cropper:4.3.0"
+# UI Component : Chips Input
+nachos = "com.github.hootsuite:nachos:1.2.0"
+# Crash analytics
+sentry-android = "io.sentry:sentry-android:6.1.2"
+matomo = "com.github.matomo-org:matomo-sdk-android:v4.1.2"
+# ShowCaseView dependency
+showcaseview = "com.github.mreram:showcaseview:1.4.0"
+# Unit Testing
+androidx-arch-core-testing = "androidx.arch.core:core-testing:2.1.0"
+junit = "junit:junit:4.13.2"
+robolectric = "org.robolectric:robolectric:4.8.1"
+mockito-core = { module = "org.mockito:mockito-core", version.ref = "org-mockito" }
+mockito-kotlin = "org.mockito.kotlin:mockito-kotlin:4.0.0"
+mockito-junit-jupiter = { module = "org.mockito:mockito-junit-jupiter", version.ref = "org-mockito" }
+json-unit-fluent = "net.javacrumbs.json-unit:json-unit-fluent:2.35.0"
+truth = "com.google.truth:truth:1.1.3"
+truth-java8 = "com.google.truth.extensions:truth-java8-extension:1.1.3"
+# JUnit 5
+junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit5" }
+junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit5" }
+junit-vintage-engine = { module = "org.junit.vintage:junit-vintage-engine", version.ref = "junit5" }
+orchestrator = "androidx.test:orchestrator:1.4.1"
+# Hilt Testing
+hilt-android-testing = { module = "com.google.dagger:hilt-android-testing", version.ref = "hilt" }
+hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt" }
+# AndroidX Test
+androidx-test-runner = "androidx.test:runner:1.4.0"
+androidx-test-rules = "androidx.test:rules:1.4.0"
+androidx-test-ext = "androidx.test.ext:junit:1.1.3"
+# Espresso
+androidx-test-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "androidx-test-espresso" }
+androidx-test-espresso-intents = { module = "androidx.test.espresso:espresso-intents", version.ref = "androidx-test-espresso" }
+androidx-test-espresso-web = { module = "androidx.test.espresso:espresso-web", version.ref = "androidx-test-espresso" }
+androidx-test-espresso-contrib = { module = "androidx.test.espresso:espresso-contrib", version.ref = "androidx-test-espresso" }
+falcon = "com.jraska:falcon:2.2.0"
+screengrab = "tools.fastlane:screengrab:2.1.1"
+
+[bundles]
+kotlin-coroutines = [
+    "kotlin-coroutines-android",
+    "kotlin-coroutines-core",
+    "kotlin-coroutines-rx2",
+]
+android-ktx = [
+    "android-ktx-activity",
+    "android-ktx-core",
+    "android-ktx-fragment",
+    "android-ktx-preference",
+]
+android-lifecycle = [
+    "android-lifecycle-livedata",
+    "android-lifecycle-runtime",
+    "android-lifecycle-viewmodel",
+]
+androidx = [
+    "androidx-annotation",
+    "androidx-appcompat",
+    "androidx-browser",
+    "androidx-cardview",
+    "androidx-concurrent",
+    "androidx-constraintlayout",
+    "androidx-multidex",
+    "androidx-recyclerview",
+    "androidx-startup-runtime",
+    "androidx-swiperefreshlayout",
+    "androidx-viewpager2",
+    "androidx-work-runtime",
+]
+rx = [
+    "rx-android",
+    "rx-java",
+    "rx-kotlin",
+    "rx-relay",
+]
+networking = [
+    "networking-okhttp3-logging-interceptor",
+    "networking-retrofit-adapter-rxjava2",
+    "networking-retrofit-converter-jackson",
+    "networking-retrofit-converter-scalars",
+    "networking-retrofit-core",
+]
+apache-commons = [
+    "apache-csv",
+    "apache-text",
+    "apache-validator",
+]
+jackson = [
+    "jackson-annotations",
+    "jackson-core",
+    "jackson-databind",
+    "jackson-kotlin",
+]
+crash-analytics = [
+    "matomo",
+    "sentry-android",
+]
+unit-testing = [
+    "androidx-arch-core-testing",
+    "json-unit-fluent",
+    "junit",
+    "mockito-core",
+    "mockito-junit-jupiter",
+    "mockito-kotlin",
+    "robolectric",
+    "test-kotlin-coroutines",
+    "truth",
+    "truth-java8",
+]
+
+[plugins]
+resourceplaceholders = "de.timfreiheit.resourceplaceholders:0.4"
+dokka = "org.jetbrains.dokka:1.7.0"
+sonarqube = "org.sonarqube:3.4.0.2513"
+detekt = "io.gitlab.arturbosch.detekt:1.20.0"
+versions = "com.github.ben-manes.versions:0.41.0"
+updates = "nl.littlerobots.version-catalog-update:0.5.1"
