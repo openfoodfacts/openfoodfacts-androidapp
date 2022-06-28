@@ -155,7 +155,7 @@ dependencies {
     implementation("com.github.hootsuite:nachos:1.2.0")
 
     // Crash analytics
-    implementation("io.sentry:sentry-android:6.1.2")
+    implementation("io.sentry:sentry-android:6.1.4")
     implementation("com.github.matomo-org:matomo-sdk-android:4.1.4")
 
     // ShowCaseView dependency
