@@ -23,7 +23,10 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.features.login.LoginActivity
-import openfoodfacts.github.scrachx.openfood.images.*
+import openfoodfacts.github.scrachx.openfood.images.IMAGE_STRING_ID
+import openfoodfacts.github.scrachx.openfood.images.IMG_ID
+import openfoodfacts.github.scrachx.openfood.images.PRODUCT_BARCODE
+import openfoodfacts.github.scrachx.openfood.images.getImageStringKey
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository

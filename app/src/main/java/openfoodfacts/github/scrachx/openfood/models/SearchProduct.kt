@@ -10,7 +10,6 @@ import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.utils.ProductStringConverter
 import java.io.Serializable
 import java.util.*
-import kotlin.collections.HashMap
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 open class SearchProduct : Serializable {

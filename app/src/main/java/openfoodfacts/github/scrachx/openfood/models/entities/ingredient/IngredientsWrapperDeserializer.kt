@@ -8,7 +8,6 @@ import openfoodfacts.github.scrachx.openfood.utils.DeserializerHelper
 import openfoodfacts.github.scrachx.openfood.utils.DeserializerHelper.extractChildNodeAsText
 import openfoodfacts.github.scrachx.openfood.utils.DeserializerHelper.extractMapFromJsonNode
 import java.io.IOException
-import java.util.*
 
 /**
  * Custom deserializer for [IngredientsWrapper]

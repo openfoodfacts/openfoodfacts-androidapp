@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
 import org.apache.commons.lang3.builder.ToStringBuilder
 import java.io.Serializable
-import java.util.*
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 data class NutrientLevels(

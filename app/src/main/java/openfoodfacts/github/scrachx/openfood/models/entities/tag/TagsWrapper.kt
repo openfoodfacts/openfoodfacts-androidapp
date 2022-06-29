@@ -1,7 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.models.entities.tag
 
 import com.fasterxml.jackson.annotation.*
-import java.util.*
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder("tags")

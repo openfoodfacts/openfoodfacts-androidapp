@@ -1,9 +1,9 @@
 package openfoodfacts.github.scrachx.openfood.models.entities.states;
 
 import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Index;
-import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Keep;
 
 @Entity(indexes = {@Index(value = "languageCode, statesTag", unique = true)})

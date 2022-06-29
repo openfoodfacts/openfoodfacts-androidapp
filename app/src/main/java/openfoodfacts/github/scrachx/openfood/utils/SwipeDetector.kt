@@ -17,7 +17,8 @@ package openfoodfacts.github.scrachx.openfood.utils
 
 import android.util.Log
 import android.view.MotionEvent
-import android.view.MotionEvent.*
+import android.view.MotionEvent.ACTION_DOWN
+import android.view.MotionEvent.ACTION_UP
 import android.view.View
 import android.view.View.OnTouchListener
 import kotlin.math.abs

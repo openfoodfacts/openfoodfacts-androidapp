@@ -1,6 +1,8 @@
 package openfoodfacts.github.scrachx.openfood.models.entities.store;
 
+import org.greenrobot.greendao.DaoException;
 import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Index;
 import org.greenrobot.greendao.annotation.JoinProperty;
@@ -9,8 +11,7 @@ import org.greenrobot.greendao.annotation.ToMany;
 import org.greenrobot.greendao.annotation.Unique;
 
 import java.util.List;
-import org.greenrobot.greendao.annotation.Generated;
-import org.greenrobot.greendao.DaoException;
+
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
 
 @Entity(indexes = {

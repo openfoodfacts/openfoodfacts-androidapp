@@ -14,7 +14,6 @@ import openfoodfacts.github.scrachx.openfood.utils.ProductStringConverter
 import org.apache.commons.lang3.builder.ToStringBuilder
 import org.apache.commons.lang3.builder.ToStringStyle
 import java.util.*
-import kotlin.collections.ArrayList
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)

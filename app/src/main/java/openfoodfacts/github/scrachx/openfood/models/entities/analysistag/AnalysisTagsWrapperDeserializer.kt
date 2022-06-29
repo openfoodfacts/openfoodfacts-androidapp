@@ -7,7 +7,6 @@ import com.fasterxml.jackson.databind.deser.std.StdDeserializer
 import openfoodfacts.github.scrachx.openfood.utils.DeserializerHelper
 import openfoodfacts.github.scrachx.openfood.utils.DeserializerHelper.extractMapFromJsonNode
 import java.io.IOException
-import java.util.*
 
 /**
  * Custom deserializer for [AnalysisTagsWrapper]

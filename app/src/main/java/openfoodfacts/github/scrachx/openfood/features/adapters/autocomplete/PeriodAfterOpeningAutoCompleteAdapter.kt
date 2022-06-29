@@ -7,7 +7,6 @@ import android.widget.Filterable
 import kotlinx.coroutines.runBlocking
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import org.apache.commons.lang3.StringUtils
-import java.util.*
 
 class PeriodAfterOpeningAutoCompleteAdapter(
         context: Context,
