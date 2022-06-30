@@ -49,7 +49,7 @@ dependencies {
     implementation("androidx.preference:preference-ktx:1.2.0")
     implementation("androidx.core:core-ktx:1.8.0")
 
-    val lifecycleVer = "2.4.1"
+    val lifecycleVer = "2.5.0"
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVer")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVer")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVer")
