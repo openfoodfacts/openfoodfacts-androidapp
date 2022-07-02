@@ -44,6 +44,8 @@ import com.mikepenz.iconics.IconicsColor
 import com.mikepenz.iconics.IconicsDrawable
 import com.mikepenz.iconics.IconicsSize
 import com.mikepenz.iconics.typeface.library.googlematerial.GoogleMaterial
+import com.mikepenz.iconics.utils.color
+import com.mikepenz.iconics.utils.size
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
@@ -323,8 +325,8 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
                 binding.callToActionImageProgress.visibility = View.GONE
                 if (data.isEmpty()) return
                 val iconicsDrawable = IconicsDrawable(this@ContinuousScanActivity, GoogleMaterial.Icon.gmd_warning)
-                    .color(IconicsColor.colorInt(ContextCompat.getColor(this@ContinuousScanActivity, R.color.white)))
-                    .size(IconicsSize.dp(24))
+                    .color { IconicsColor.colorInt(ContextCompat.getColor(this@ContinuousScanActivity, R.color.white)) }
+                    .size { IconicsSize.dp(24) }
                 binding.txtProductCallToAction.setCompoundDrawablesWithIntrinsicBounds(iconicsDrawable, null, null, null)
                 binding.txtProductCallToAction.background = ContextCompat.getDrawable(this@ContinuousScanActivity, R.drawable.rounded_quick_view_text_warn)
                 binding.txtProductCallToAction.text = if (data.incomplete) {
