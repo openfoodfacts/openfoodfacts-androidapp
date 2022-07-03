@@ -35,42 +35,98 @@ fun obtainTestBuildType(): String {
 
 dependencies {
 
-    kapt(libs.hilt.compiler)
-    kapt(libs.androidx.hilt.compiler)
-    kapt(libs.eventbus.compiler)
-
+    // Kotlin coroutines
     implementation(libs.bundles.kotlin.coroutines)
-    implementation(libs.bundles.android.ktx)
-    implementation(libs.bundles.android.lifecycle)
-    implementation(libs.bundles.androidx)
-    implementation(libs.bundles.rx)
-    implementation(libs.bundles.networking)
-    implementation(libs.bundles.apache.commons)
-    implementation(libs.bundles.jackson)
-    implementation(libs.bundles.crash.analytics)
 
+    // Android KTX
+    implementation(libs.bundles.android.ktx)
+
+    implementation(libs.bundles.android.lifecycle)
+
+    // AndroidX
+    implementation(libs.bundles.androidx)
+
+    // ML Kit barcode Scanner
+    implementation(libs.barcode.scanning)
+
+    // Hilt
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
+
+    // Hilt for Android Testing
+    androidTestImplementation(libs.hilt.android.testing)
+    androidTestImplementation(libs.dagger)
+    kaptAndroidTest(libs.hilt.android.compiler)
+    kaptAndroidTest(libs.dagger.compiler)
+
+    // WorkManager with Hilt
+    implementation(libs.androidx.hilt.work)
+    kapt(libs.androidx.hilt.compiler)
+
+    // Reactive Streams
+    implementation(libs.bundles.rx)
+
+    // Networking
+    implementation(libs.bundles.networking)
+
+    // Logging
     implementation(libs.logcat)
 
+    // Apache commons
+    implementation(libs.bundles.apache.commons)
+
+    // Serialization/Deserialization
+    implementation(libs.bundles.jackson)
+
+    // Database
+    implementation(libs.greendao)
+
+    // Event bus and index
+    implementation(libs.eventbus.runtime)
+    kapt(libs.eventbus.compiler)
+
+    // Material design
+    implementation(libs.material)
+
+    // Image Loading
+    implementation(libs.picasso)
+
+    // Image from gallery or camera
+    implementation(libs.easyimage)
+
+    // Barcode and QR Scanner
+    // TODO: cannot upgrade, requires API 24 or higher
+    implementation(libs.zxing.core)
+
+    implementation(libs.zxing.android.embedded) { isTransitive = false }
+
+    // UI Component : ImageView with Zooming
+    implementation(libs.photoview)
+
+    // UI Component : Material Drawer
+    // https://github.com/mikepenz/MaterialDrawer/commit/3b2cb1db4c3b6afe639b0f3c21c03c1de68648a3
+    // TODO: We need minSdk 16 to update
+    implementation(libs.materialdrawer) { isTransitive = false }
+
+    // DO NOT UPDATE : RecyclerViewCacheUtil removed, needs rework
+    implementation(libs.fastadapter.commons) { artifact { type = "aar" } }
+
+    // UI Component : Font Icons
     // This Font/Icon grouping resists 'bundling' due to (AAR) type specification not being directly supported by Version Catalogs.
     implementation(libs.iconics.core) { artifact { type = "aar" } }
     implementation(libs.google.material.typeface) { artifact { type = "aar" } }
     implementation(libs.android.image.cropper)
 
-    implementation(libs.barcode.scanning)
-    implementation(libs.hilt.android)
-    implementation(libs.androidx.hilt.work)
-    implementation(libs.greendao)
-    implementation(libs.eventbus.runtime)
-    implementation(libs.material)
-    implementation(libs.picasso)
-    implementation(libs.easyimage)
-    implementation(libs.zxing.core)
-    implementation(libs.zxing.android.embedded) { isTransitive = false }
-    implementation(libs.photoview)
-    implementation(libs.materialdrawer) { isTransitive = true }
-    implementation(libs.fastadapter.commons) { artifact { type = "aar" } }
+    // UI Component : Chips Input
     implementation(libs.nachos)
+
+    // Crash analytics
+    implementation(libs.bundles.crash.analytics)
+
+    // ShowCaseView dependency
     implementation(libs.showcaseview)
+
+    // Unit Testing
     testImplementation(libs.bundles.testing)
 
     testImplementation(platform("org.junit:junit-bom:5.8.2"))
@@ -78,10 +134,9 @@ dependencies {
     testRuntimeOnly(libs.junit.jupiter.engine)
     testRuntimeOnly(libs.junit.vintage.engine)
 
+    // Instrumented tests
     androidTestUtil(libs.orchestrator)
 
-    androidTestImplementation(libs.hilt.android.testing)
-    kaptAndroidTest(libs.hilt.android.compiler)
 
     androidTestImplementation(libs.androidx.test.runner) { exclude("junit") }
     androidTestImplementation(libs.androidx.test.rules)
@@ -100,6 +155,7 @@ dependencies {
     androidTestImplementation(libs.falcon)
     androidTestImplementation(libs.screengrab)
     androidTestImplementation(libs.test.kotlin.coroutines)
+
 
     resourcePlaceholders { files = listOf("xml/shortcuts.xml") }
 }
