@@ -106,7 +106,7 @@ dependencies {
     // UI Component : Material Drawer
     // https://github.com/mikepenz/MaterialDrawer/commit/3b2cb1db4c3b6afe639b0f3c21c03c1de68648a3
     // TODO: We need minSdk 16 to update
-    implementation(libs.materialdrawer) { isTransitive = false }
+    implementation(libs.materialdrawer)
 
     // DO NOT UPDATE : RecyclerViewCacheUtil removed, needs rework
     implementation(libs.fastadapter.commons) { artifact { type = "aar" } }
@@ -114,7 +114,7 @@ dependencies {
     // UI Component : Font Icons
     // This Font/Icon grouping resists 'bundling' due to (AAR) type specification not being directly supported by Version Catalogs.
     implementation(libs.iconics.core) { artifact { type = "aar" } }
-    implementation(libs.google.material.typeface) { artifact { type = "aar" } }
+    implementation(libs.google.material.typeface) { isTransitive = false; artifact { type = "aar" } }
     implementation(libs.android.image.cropper)
 
     // UI Component : Chips Input
