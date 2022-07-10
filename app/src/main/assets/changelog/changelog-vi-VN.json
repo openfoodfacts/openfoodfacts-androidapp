@@ -5,8 +5,8 @@
       "code": 518,
       "name": "3.5.0",
       "items": [
-        "Machine-Learning enhanced barcode scanner. You can now enable a new way to scan from the options. You can switch the barcode scanner engine at any time from the settings.",
-        "Help the Open Food Facts volunteers improve the app. You have the option to send anonymous analytics and crash reports. It can be enabled and disabled at any time from the settings."
+        "Máy quét mã vạch nâng cao Machine-Learning. Bây giờ bạn có sử dụng phương thức mới để quét từ các tùy chọn. Bạn có thể chuyển đổi công cụ máy quét mã vạch bất kỳ lúc nào từ phần cài đặt.",
+        "Giúp các tình nguyện viên của Open Food Facts cải thiện ứng dụng. Bạn có thể chọn gửi phân tích và báo cáo sự cố ẩn danh. Nó có thể được bật và tắt bất kỳ lúc nào từ phần cài đặt."
       ]
     }
   ]

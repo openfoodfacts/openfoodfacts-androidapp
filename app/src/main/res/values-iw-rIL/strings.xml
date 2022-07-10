@@ -497,6 +497,7 @@
     <string name="notify_channel_description">התרעה להצגת מיקום הקובץ שייוצא</string>
     <string name="products_to_be_completed">מוצרים שדורשים השלמה</string>
     <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">המוצר נערך ב־%1$s בשעה %2$s לפי מרכז אירופה על ידי %3$s</string>
+    <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">עריכת המוצר האחרונה נערכה ב־%1$s בשעה %2$s לפי שעון קיץ מרכז אירופה על ידי %3$s</string>
     <!-- TODO: Add the placeholder in the string - important for several languages -->
     <string name="other_editors">עמוד המוצר נערך גם על ידי </string>
     <string name="product_states">מצבי המוצרים</string>
@@ -509,10 +510,10 @@
     <string name="productNameNull">שם לא ידוע</string>
     <string name="productAdditivesUnknown"></string>
     <plurals name="productAdditives">
-        <item quantity="one" comment="Do not change the placeholder">תוסף אחד</item>
+        <item comment="Do not change the placeholder" quantity="one">תוסף אחד</item>
         <item quantity="two">%d תוספים</item>
         <item quantity="many">%d תוספים</item>
-        <item quantity="other" comment="Do not change the placeholder">%d תוספים</item>
+        <item comment="Do not change the placeholder" quantity="other">%d תוספים</item>
     </plurals>
     <string name="product_not_complete">מוצר זה טרם הושלם. \nנוכל לבקש ממך להוסיף עוד פרטים?</string>
     <string name="addProductOffline">כנראה שאין לך חיבור לאינטרנט. להוסיף את המוצר %s במצב בלתי מקוון?</string>
@@ -521,6 +522,7 @@
     <string name="trouble_scanning">בעיה בסריקה?</string>
     <string name="barcode_hint">בעיה בסריקה? ניתן להקליד ברקוד</string>
     <string name="switch_camera">החלפת מצלמה</string>
+    <string name="toggle_flash">החלפת מצב מבזק</string>
     <string name="autofocus">מיקוד אוטומטי</string>
     <string name="initial_loading">טעינה ראשונית</string>
     <string name="OFFlogo">הלוגו של Open Food Facts</string>
@@ -653,10 +655,10 @@
     <string name="additives">תוספים</string>
     <!--used for product_lists implementation-->
     <string name="dialog_add_product_to_list_title">הוספה לרשימות שלך</string>
-    <string name="dialog_create_new_list_title">יצירת רשימה חדשה</string>
     <string name="dialog_add_product_to_list_new">הוספה לרשימה חדשה</string>
-    <string name="dialog_create_new_list_hint">שם רשימה</string>
-    <string name="default_list_title_stored">מוצרים שיש לי</string>
+    <string name="dialog_create_new_list_title">יצירת רשימה חדשה</string>
+    <string name="dialog_create_new_list_hint">שם הרשימה</string>
+    <string name="default_list_title_stored">מוצרים שנאכלו</string>
     <string name="default_list_title_to_buy">מוצרים לרכישה</string>
     <string name="txt_exporting_your_listed_products">המוצרים שלך מיוצאים…</string>
     <string name="txt_your_listed_products_exported">המוצרים שלך יוצאו</string>
@@ -778,4 +780,5 @@
     <string name="msg_welcome_ecoscore">הערכה של ההשפעה הסביבתית של המזון שלך.</string>
     <string name="title_welcome_matomo">שליחת ניתוח נתונים אלמוני</string>
     <string name="msg_welcome_matomo">מזמינים אותך לסייע למתנדבי Open Food Facts לשפר את היישומון. בידיך נתונה ההחלטה אם לשלוח ניתוח התנהגות אלמוני.\n\nאם התחרטת על בחירתך ניתן להפעיל או לכבות את האפשרות הזאת בכל עת דרך ההגדרות.</string>
+    <string name="hint_category_list">חיפוש קטגוריית מזון</string>
 </resources>

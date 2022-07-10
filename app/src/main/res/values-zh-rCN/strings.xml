@@ -43,7 +43,7 @@
     <string-array name="nav_drawer_items_product">
         <item>摘要</item>
         <item>成分</item>
-        <item>营养</item>
+        <item>營養素</item>
         <item>营养表</item>
         <item>环境影响</item>
     </string-array>
@@ -186,8 +186,8 @@
     <string name="txtInfoLoginOk">您已成功登录到您的 Open Food Facts 帐户。</string>
     <string name="txtInfoLoginNo">尝试登录您的 Open Food Facts 帐户时发生错误。</string>
     <string name="product_does_not_exist_please_add_it">您扫描的产品尚未收录于 Open Food Facts 中，请添加它。</string>
-    <string name="txtYes">有的</string>
-    <string name="txtNo">没有</string>
+    <string name="txtYes">是</string>
+    <string name="txtNo">否</string>
     <string name="hintBrand">品牌</string>
     <string name="txtSendAll">全部上传</string>
     <string name="txtPictureNeededDialogNo">舍弃</string>
@@ -251,7 +251,7 @@
     <!-- Nutrition info tab -->
     <string name="display_fact" comment="Do not modify the placeholder">%1$s 该产品的营养成分表</string>
     <string name="check_facts">检查</string>
-    <string name="nutrition">营养</string>
+    <string name="nutrition">營養素</string>
     <string name="calculated_nutrition">计算营养</string>
     <string name="please_enter_weight">请输入产品重量</string>
     <string name="enter_weight">输入产品重量</string>
@@ -483,6 +483,7 @@
     <string name="notify_channel_description">显示导出文件位置的通知</string>
     <string name="products_to_be_completed">待完成的产品</string>
     <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">产品在 %2$s CET 由 %3$s添加到 %1$s</string>
+    <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">产品页面的最后一次编辑在 %1$s 的 %2$s CEST 由 %3$s </string>
     <!-- TODO: Add the placeholder in the string - important for several languages -->
     <string name="other_editors">产品页面也被以下人员修改 </string>
     <string name="product_states">产品状态</string>
@@ -495,7 +496,7 @@
     <string name="productNameNull">名称未知</string>
     <string name="productAdditivesUnknown"></string>
     <plurals name="productAdditives">
-        <item quantity="other" comment="Do not change the placeholder">%d 添加剂</item>
+        <item comment="Do not change the placeholder" quantity="other">%d 添加剂</item>
     </plurals>
     <string name="product_not_complete">这个产品还未完成。\n您可以添加一些细节吗？</string>
     <string name="addProductOffline">您似乎离线。使用离线模式添加产品 %s？</string>
@@ -504,6 +505,7 @@
     <string name="trouble_scanning">扫描时遇到问题？</string>
     <string name="barcode_hint">扫描时遇到问题？输入条形码：</string>
     <string name="switch_camera">切换摄像头</string>
+    <string name="toggle_flash">Toggle flash</string>
     <string name="autofocus">自动对焦</string>
     <string name="initial_loading">初始加载</string>
     <string name="OFFlogo">Open Food Facts标志</string>
@@ -635,11 +637,11 @@
     <string name="addtive_search">搜索添加剂</string>
     <string name="additives">添加</string>
     <!--used for product_lists implementation-->
-    <string name="dialog_add_product_to_list_title">添加到您的列表</string>
-    <string name="dialog_create_new_list_title">新建一个列表</string>
-    <string name="dialog_add_product_to_list_new">添加到新列表</string>
-    <string name="dialog_create_new_list_hint">列表名</string>
-    <string name="default_list_title_stored">我的产品</string>
+    <string name="dialog_add_product_to_list_title">Add to your lists</string>
+    <string name="dialog_add_product_to_list_new">Add to a new list</string>
+    <string name="dialog_create_new_list_title">Create a new list</string>
+    <string name="dialog_create_new_list_hint">List Name</string>
+    <string name="default_list_title_stored">Eaten products</string>
     <string name="default_list_title_to_buy">购买产品</string>
     <string name="txt_exporting_your_listed_products">正在导出您的产品……</string>
     <string name="txt_your_listed_products_exported">您的产品已被导出</string>
@@ -662,8 +664,8 @@
     <string name="product_summary_action_edit_button_label">编辑</string>
     <string name="product_summary_action_share_button_label">推荐给好友</string>
     <string name="product_question_prompt">点击此处回答</string>
-    <string name="product_question_positive_response">有的</string>
-    <string name="product_question_negative_response">没有</string>
+    <string name="product_question_positive_response">是</string>
+    <string name="product_question_negative_response">否</string>
     <string name="product_question_ambiguous_response">不确定</string>
     <string name="product_question_submit_message">感谢您的贡献！</string>
     <string name="error_nutrient_entry">该值应为数字。例如： &quot;1.5&quot;， &quot;2,0&quot;</string>
@@ -761,4 +763,5 @@
     <string name="msg_welcome_ecoscore">您的食物对环境影响的综述。</string>
     <string name="title_welcome_matomo">发送匿名分析</string>
     <string name="msg_welcome_matomo">帮助 Open Food Facts 志愿者改进这个应用。由您决定是否发送匿名分析。\n\n如果您改变主意，可以随时从设置中启用和禁用此选项。</string>
+    <string name="hint_category_list">Search for a food category</string>
 </resources>

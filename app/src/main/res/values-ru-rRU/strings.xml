@@ -16,7 +16,7 @@
   -->
 <resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
-        <item quantity="one">%d оффлайн продукт ожидает отправки в Open Food Facts</item>
+        <item quantity="one">1 оффлайн продукт ожидает отправки в Open Food Facts</item>
         <item quantity="few">You have %d offline products waiting to be contributed to Open Food Facts</item>
         <item quantity="many">You have %d offline products waiting to be contributed to Open Food Facts</item>
         <item quantity="other">%d оффлайн продуктов ожидают отправки в Open Food Facts</item>
@@ -56,7 +56,7 @@
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
         <item>Резюме</item>
-        <item>Состав</item>
+        <item>Ингредиенты</item>
         <item>Пищевая ценность</item>
         <item>Состав</item>
         <item>Окружающая среда</item>
@@ -169,7 +169,7 @@
     <string name="alert_dialog_warning_title">Nazwa zwyczajowa</string>
     <string name="alert_dialog_warning_msg_user">Пользователь/пароль изменены, обновите информацию</string>
     <string name="toast_retrieving">Загрузка…</string>
-    <string name="txtBarcode">Штрих-код:</string>
+    <string name="txtBarcode">Штрихкод:</string>
     <string name="txtCategories">Categories:</string>
     <string name="txtLabels">Labels, certifications, awards: </string>
     <string name="txtEMB">Traceability codes: </string>
@@ -208,17 +208,17 @@
     <string name="toastSending">Передача…</string>
     <string name="txtLoading">Загрузка…</string>
     <string name="productSavedToast">Товар сохранен, спасибо!</string>
-    <string name="txtBarcodeRequire">Требуется штрих-код</string>
-    <string name="txtBarcodeNotValid">Недействительный штрих-код</string>
+    <string name="txtBarcodeRequire">Требуется штрихкод</string>
+    <string name="txtBarcodeNotValid">Неправильный штрихкод</string>
     <string name="msg_share">Посмотрите на этот продукт на Open Food Facts:</string>
     <string name="create_account">Регистрация</string>
     <string name="home_drawer">Главная</string>
     <string name="install">Установить</string>
     <string name="search_drawer">Поиск</string>
-    <string name="search_by_barcode_drawer">Поиск по штрих-коду</string>
+    <string name="search_by_barcode_drawer">Поиск по штрихкоду</string>
     <string name="category_drawer">Категории</string>
     <string name="search_by_category">Категория</string>
-    <string name="scan_search">Сканировать</string>
+    <string name="scan_search">Сканировать штрихкод</string>
     <string name="user_drawer">Пользователь</string>
     <string name="txt_anonymous">Анонимный</string>
     <string name="delete_txt">Удалить</string>
@@ -234,9 +234,9 @@
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
     <string name="title_info_dialog">Как это работает?</string>
     <string name="text_offline_info_dialog">Сканируйте продукты, когда вы не подключены к сети, чтобы добавить их в Open Food Facts позже. Все продукты, которые вы отсканируете, будут отображаться здесь, и вы сможете отправить их, используя кнопку ниже.</string>
-    <string name="permission_camera">Разрешение на доступ к камере требуется для сканирования штрих-кодов и получения фото.</string>
+    <string name="permission_camera">Для сканирования штрихкодов и фотографирования требуется разрешение на доступ к камере.</string>
     <string name="no_camera_dialog_title">Камера не обнаружена</string>
-    <string name="no_camera_dialog_content">На вашем устройстве нет камеры. Вы не сможете сканировать штрих-код.</string>
+    <string name="no_camera_dialog_content">На вашем устройстве нет камеры. Вы не сможете сканировать какой-либо штрихкод.</string>
     <string name="permission_title">Информация о разрешениях</string>
     <string name="permission_denied">Пожалуйста, включите разрешение в настройках.</string>
     <string name="info_download_data_connection">Для работы этой функциональности требуется скачать некоторые данные. Пожалуйста, включите интернет-соединение.</string>
@@ -385,7 +385,7 @@
     <string name="scan_shortcut_short_label">Сканировать</string>
     <string name="scan_shortcut_long_label">Сканировать продукт</string>
     <string name="barcode_shortcut_short_label">Поиск</string>
-    <string name="barcode_shortcut_long_label">Поиск по штрих-коду</string>
+    <string name="barcode_shortcut_long_label">Поиск по штрихкоду</string>
     <string name="history_shortcut_short_label">История</string>
     <string name="history_shortcut_long_label">История</string>
     <string name="contributions_shortcut_short_label">Вклад</string>
@@ -400,12 +400,12 @@
     <string name="proceed">Продолжить</string>
     <string name="preference_choose_language_dialog_title">Выберите язык</string>
     <string name="preference_choose_scanner_dialog_title"><b>Новое: Улучшенный сканер “MLKit”</b></string>
-    <string name="preference_choose_scanner_dialog_body">Мы добавили новый, более надежный сканер штрих-кодов. Хотя он работает на вашем устройстве с использованием машинного обучения,
-            имейте в виду, что это проприетарный компонент, предоставляемый Google, регулируемый настоящей политикой конфиденциальности, и что некоторые ограниченные данные телеметрии могут быть отправлены обратно на серверы Google
-            для улучшения их программного обеспечения. Как указано в условиях MLKit, это не будет включать никакой информации о сканируемых продуктах, а телеметрия будет анонимной. Выбор сканера MLKit
-            означает, что вы принимаете эти условия\n<b>Примечание. Вы можете в любой момент переключиться между 2 сканерами в Настройках.</b>
+    <string name="preference_choose_scanner_dialog_body">Мы добавили новую опцию для более надежного сканирования штрихкодов. Хотя этот сканер работает на вашем устройстве с использованием машинного обучения
+            , имейте в виду, что это проприетарный компонент, предоставляемый Google, который регулируется настоящей политикой конфиденциальности, и что некоторые ограниченные данные телеметрии могут отправляться обратно на серверы Google
+            для улучшения их программного обеспечения. Как указано в условиях MLKit, телеметрия является анонимной и ее данные не будет включать какой-либо информации о сканируемых вами продуктах. Выбирая сканер MLKit,
+            вы принимаете эти условия.\n<b>Примечание: вы можете в любое время переключиться между двумя сканерами в настройках.</b>
     </string>
-    <string name="prompt_point_at_a_barcode">Наведите камеру на штрих-код</string>
+    <string name="prompt_point_at_a_barcode">Наведите камеру на штрихкод</string>
     <string name="prompt_move_camera_closer">Подойдите ближе для распознавания</string>
     <string name="please_check_your_connection">Проверьте подключение к интернету.</string>
     <string name="advanced_search_title">Расширенный поиск и графики</string>
@@ -453,7 +453,7 @@
     <string name="additive_string">Добавка</string>
     <string name="allergen_string">Аллерген</string>
     <string name="search_string">Поиск</string>
-    <string name="country_string">Country</string>
+    <string name="country_string">Страна</string>
     <string name="store_subtitle">Магазин</string>
     <string name="packaging_subtitle">Упаковка</string>
     <string name="state_subtitle">статус</string>
@@ -477,12 +477,12 @@
     <string name="by_nutrition_grade">Nutri-Score</string>
     <string name="sort_by">Сортировать по</string>
     <!-- strings related to share images -->
-    <string name="sorry_msg">Фотографии без штрих-кода невозможно добавить в приложении. Попробуйте мобильную веб-версию.</string>
-    <string name="no_barcode">Не найден штрих-код</string>
-    <string name="enter_barcode">Введите штрих-код ниже</string>
-    <string name="format_error">Неверный формат штрих-кода/​​QR-кода</string>
-    <string name="code_detected">Не найден штрих-код</string>
-    <string name="do_you_want_to">Вы хотите добавить фотографии к этому штрих-коду?</string>
+    <string name="sorry_msg">Фотографии без штрихкода пока нельзя добавить в приложении. Пожалуйста, попробуйте мобильную веб-версию.</string>
+    <string name="no_barcode">Не удалось обнаружить штрихкод</string>
+    <string name="enter_barcode">Пожалуйста, введите штрихкод ниже</string>
+    <string name="format_error">Неверный формат штрихкода/​​QR-кода</string>
+    <string name="code_detected">Штрихкод обнаружен</string>
+    <string name="do_you_want_to">Вы хотите добавить фотографии к этому штрихкоду?</string>
     <string name="bottomNav_history">История</string>
     <string name="products_added">Продукты, которые вы добавили или редактировали</string>
     <string name="products_incomplete">Добавленные вами незавершенные продукты</string>
@@ -497,6 +497,7 @@
     <string name="notify_channel_description">Уведомление о местоположении экспортируемого файла</string>
     <string name="products_to_be_completed">Незавершенные продукты</string>
     <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Продукт добавлен %1$s в %2$s CET %3$s</string>
+    <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Последнее изменение страницы продукта %1$s в %2$s CEST %3$s </string>
     <!-- TODO: Add the placeholder in the string - important for several languages -->
     <string name="other_editors">Страницу продукта также редактировали </string>
     <string name="product_states">Состояния товара</string>
@@ -509,18 +510,19 @@
     <string name="productNameNull">Название неизвестно</string>
     <string name="productAdditivesUnknown"></string>
     <plurals name="productAdditives">
-        <item quantity="one" comment="Do not change the placeholder">%d additive</item>
+        <item comment="Do not change the placeholder" quantity="one">%d additive</item>
         <item quantity="few">%d additives</item>
         <item quantity="many">%d additives</item>
-        <item quantity="other" comment="Do not change the placeholder">%d добавок</item>
+        <item comment="Do not change the placeholder" quantity="other">%d добавок</item>
     </plurals>
     <string name="product_not_complete">Этот продукт еще не завершен. \nМожете вы добавить некоторые детали?</string>
     <string name="addProductOffline">Кажется, Вы не в сети. Добавить продукт %s в автономном режиме?</string>
     <string name="product_not_found">Продукта %1$s, который Вы отсканировали, еще нет в базе Open Food Facts. Вы можете его добавить?</string>
     <string name="scan_sound">Звук сканировния</string>
     <string name="trouble_scanning">Не можете отсканировать?</string>
-    <string name="barcode_hint">Не можете отсканировать? Введите штрих-код</string>
+    <string name="barcode_hint">Проблемы со сканированием? Введите штрихкод</string>
     <string name="switch_camera">Переключить камеру</string>
+    <string name="toggle_flash">Toggle flash</string>
     <string name="autofocus">Автофокус</string>
     <string name="initial_loading">Начальная загрузка</string>
     <string name="OFFlogo">Логотип Open Food Facts</string>
@@ -549,7 +551,7 @@
     <string name="no_internet_connection">Отсутствует подключение к Интернету, изображения будут загружены, когда сеть будет доступна</string>
     <string name="no_internet_unable_to_extract_ingredients">Нет подключение к Интернету. Не удалось извлечь ингредиенты</string>
     <string name="overview">Резюме</string>
-    <string name="ingredients">Состав</string>
+    <string name="ingredients">Ингредиенты</string>
     <string name="nutrition_facts">Пищевая ценность</string>
     <string name="your_version">Ваши</string>
     <string name="ingredients_picture">Изображение ингредиентов</string>
@@ -653,10 +655,10 @@
     <string name="additives">Добавки</string>
     <!--used for product_lists implementation-->
     <string name="dialog_add_product_to_list_title">Добавить в ваши списки</string>
-    <string name="dialog_create_new_list_title">Создать новый список</string>
     <string name="dialog_add_product_to_list_new">Добавить в новый список</string>
-    <string name="dialog_create_new_list_hint">Список Имен</string>
-    <string name="default_list_title_stored">У меня есть товары</string>
+    <string name="dialog_create_new_list_title">Создание нового списка</string>
+    <string name="dialog_create_new_list_hint">Название списка</string>
+    <string name="default_list_title_stored">Eaten products</string>
     <string name="default_list_title_to_buy">Продукты для покупки</string>
     <string name="txt_exporting_your_listed_products">Экспорт ваших продуктов…</string>
     <string name="txt_your_listed_products_exported">Ваши продукты были экспортированы</string>
@@ -709,7 +711,7 @@
     <!-- Used for product ingredients analysis tags -->
     <string name="close_button">Закрыть</string>
     <string name="tip_message">СОВЕТ: %1$s </string>
-    <string name="ingredient_analysis_tip">Нажмите на иконки ниже, чтобы узнать больше о продукте и выбрать интересующую вас информацию.</string>
+    <string name="ingredient_analysis_tip">Нажмите на значки ниже, чтобы узнать больше о продукте и выбрать интересующую вас информацию.</string>
     <string name="got_it">Понятно!</string>
     <string name="onboarding_hint_msg">Подсказка: %s </string>
     <string name="image_edit_tip">Нажмите на изображение, чтобы увеличить его, изменить, обрезать, повернуть и т.д…</string>
@@ -751,7 +753,7 @@
     <string name="content_unselect_photo">Нажмите здесь, чтобы отменить выбор текущей фотографии</string>
     <string name="title_exit">Выход</string>
     <string name="content_exit">Нажмите здесь, чтобы вернуться к продукту</string>
-    <string name="icon_label">Значок ярлыков</string>
+    <string name="icon_label">Значок этикеток</string>
     <string name="icon_categories">Значок категорий</string>
     <string name="icon_emb">Traceability code icon</string>
     <string name="product_front_image">Изображение передней части товара</string>
@@ -778,4 +780,5 @@
     <string name="msg_welcome_ecoscore">Синтез воздействия Ваших продуктов питания на окружающую среду.</string>
     <string name="title_welcome_matomo">Отправлять анонимную статистику</string>
     <string name="msg_welcome_matomo">Помогите волонтерам Open Food Facts улучшить приложение. Вы решаете, будете ли вы отправлять анонимную статистику.\n\nЕсли вы передумаете, эту опцию можно включить или отключить в любое время в настройках.</string>
+    <string name="hint_category_list">Search for a food category</string>
 </resources>

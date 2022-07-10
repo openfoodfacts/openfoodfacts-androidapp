@@ -487,6 +487,7 @@
     <string name="notify_channel_description">Notifikation for at vise eksporterede fils placering</string>
     <string name="products_to_be_completed">Produkter, som skal færdiggøres</string>
     <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Produkt tilføjetd. %1$s kl. %2$s CET af %3$s</string>
+    <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Seneste redigering af produktside d. %1$s kl. %2$s CEST by %3$s</string>
     <!-- TODO: Add the placeholder in the string - important for several languages -->
     <string name="other_editors">Produktside også redigeret af </string>
     <string name="product_states">Product States</string>
@@ -499,8 +500,8 @@
     <string name="productNameNull">Ukendt navn</string>
     <string name="productAdditivesUnknown"></string>
     <plurals name="productAdditives">
-        <item quantity="one" comment="Do not change the placeholder">%d tilsætningsstof</item>
-        <item quantity="other" comment="Do not change the placeholder">%d tilsætningsstoffer</item>
+        <item comment="Do not change the placeholder" quantity="one">%d tilsætningsstof</item>
+        <item comment="Do not change the placeholder" quantity="other">%d tilsætningsstoffer</item>
     </plurals>
     <string name="product_not_complete">Dette produkt er endnu ikke færdiggjort.\nKan du tilføje yderligere detaljer?</string>
     <string name="addProductOffline">Du ser ud til at være offline. Tilføj produktet %s vha. offline-tilstanden?</string>
@@ -509,6 +510,7 @@
     <string name="trouble_scanning">Skanningsproblemer?</string>
     <string name="barcode_hint">Skanningsproblemer? Angiv stregkoden</string>
     <string name="switch_camera">Skift kamera</string>
+    <string name="toggle_flash">Slå blitz til/fra</string>
     <string name="autofocus">Autofokus</string>
     <string name="initial_loading">Indledende indlæsning</string>
     <string name="OFFlogo">Open Food Facts logo</string>
@@ -640,11 +642,11 @@
     <string name="addtive_search">Søg efter en tilsætningsstof</string>
     <string name="additives">Tilsætningsstoffer</string>
     <!--used for product_lists implementation-->
-    <string name="dialog_add_product_to_list_title">Føj til dine lister</string>
-    <string name="dialog_create_new_list_title">Opret en ny liste</string>
-    <string name="dialog_add_product_to_list_new">Føj til en ny lliste</string>
-    <string name="dialog_create_new_list_hint">Listens navn</string>
-    <string name="default_list_title_stored">Produkter, jeg har</string>
+    <string name="dialog_add_product_to_list_title">Føj til lister</string>
+    <string name="dialog_add_product_to_list_new">Føj til ny liste</string>
+    <string name="dialog_create_new_list_title">Opret ny liste</string>
+    <string name="dialog_create_new_list_hint">Listenavn</string>
+    <string name="default_list_title_stored">Eaten products</string>
     <string name="default_list_title_to_buy">Produkter at købe</string>
     <string name="txt_exporting_your_listed_products">Eksporterer dine produkter…</string>
     <string name="txt_your_listed_products_exported">Din produkter er nu eksporteret</string>
@@ -766,4 +768,5 @@
     <string name="msg_welcome_ecoscore">En syntese af din mads miljøpåvirkning.</string>
     <string name="title_welcome_matomo">Indsend anonyme analysedata</string>
     <string name="msg_welcome_matomo">Hjælp OFF-frivillige med at forbedre appen. Du kan tillade indsendelse af anonyme analysdata\n\nDette kan når som helst aktiveres/deaktiveres via indstillingerne.</string>
+    <string name="hint_category_list">Søg efter en fødevarekategori</string>
 </resources>

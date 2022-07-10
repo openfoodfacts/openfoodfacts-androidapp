@@ -14,31 +14,31 @@
     <!-- Old onboarding slides -->
     <string name="slide_1_title">Đóng góp cho sự minh bạch của thực phẩm</string>
     <string name="slide_1_desc">Scan sản phẩm, chụp chúng, tạo dựng sự minh bạch cho sản phẩm</string>
-    <string name="slide_2_title">Get the facts</string>
-    <string name="slide_2_desc">Extensive information about the product you\'ve scanned, deciphered for you</string>
+    <string name="slide_2_title">Có thêm thông tin</string>
+    <string name="slide_2_desc">Thông tin phong phú về các sản phẩm bạn đã quét, giải mã cho bạn</string>
     <string name="slide_3_title">Lấy điểm Nutri-Score</string>
     <string name="slide_3_desc">Một cái nhìn tổng quan về đặc tính dinh dưỡng của sản phẩm mà bạn yêu thích</string>
-    <string name="slide_4_title">Works offline</string>
-    <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet connection right now</string>
+    <string name="slide_4_title">Làm việc ngoại tuyến</string>
+    <string name="slide_4_desc">Bạn có thể thêm sản phẩm mới, ngay cả khi bạn không có kết nối Internet ngay bây giờ</string>
     <!-- New onboarding-->
-    <string name="title_welcome_intro">Join the food revolution</string>
-    <string name="msg_welcome_intro">Scan food, Take photos, Help transform the food system</string>
+    <string name="title_welcome_intro">Tham gia cuộc cách mạng thực phẩm</string>
+    <string name="msg_welcome_intro">Quét thực phẩm, Chụp ảnh, Giúp chuyển đổi hệ thống thực phẩm</string>
     <string name="title_welcome_nutriscore">Lấy điểm Nutri-Score</string>
-    <string name="msg_welcome_nutriscore">A simple synthesis of the nutritional quality of your food</string>
-    <string name="title_welcome_nova">Avoid ultra-processed foods</string>
-    <string name="msg_welcome_nova">Reduce the amount of ultra-processed foods in your diet.</string>
-    <string name="title_welcome_ecoscore">Eco-Score</string>
+    <string name="msg_welcome_nutriscore">Một tổng hợp đơn giản về chất lượng dinh dưỡng trong thức ăn của bạn</string>
+    <string name="title_welcome_nova">Tránh sử dụng thực phẩm chế biến nhanh</string>
+    <string name="msg_welcome_nova">Giảm lượng thực phẩm chế biến nhanh trong chế độ ăn uống của bạn.</string>
+    <string name="title_welcome_ecoscore">Điểm sinh thái</string>
     <!-- Scan card -->
-    <string name="product_does_not_exist_please_add_it">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
+    <string name="product_does_not_exist_please_add_it">Sản phẩm bạn quét không tồn tại trong Open Food Facts. Vui lòng thêm sản phẩm.</string>
     <string name="txtDialogsContentPowerMode">Sản phẩm bạn scan đã có trên Open Food Facts.</string>
-    <string name="msg_share">Look at this product on Open Food Facts :</string>
+    <string name="msg_share">Tìm thông tin về sản phẩm này trên Open Food Facts :</string>
     <string name="not_support_books">Sách hiện không được hỗ trợ bởi Sự kiện Open Food Facts</string>
-    <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
-    <string name="Donation">Click here to donate to Open Food Facts</string>
+    <string name="txt_broaden_search">- mở rộng tìm kiếm của bạn \n- quét và thêm nó vào Open Food Facts</string>
+    <string name="Donation">Nhấp vào đây để ủng hộ Open Food Facts</string>
     <string name="text_offline_info_dialog">Scan sản phẩm ngay cả khi offline để thêm vào Open Food Fact sau. Sản phẩm đã scan sẽ xuất hiện ở đây và bạn có thể gửi chúng bằng nút ở bên dưới.</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
     <!-- OFF tagline in different languages -->
-    <string name="tagline">the free food products database</string>
-    <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
+    <string name="tagline">cơ sở dữ liệu về sản phẩm đồ ăn miễn phí.</string>
+    <string name="product_not_found">Sản phẩm %1$s bạn vừa quét không có trong Open Food Facts. Bạn có thể thêm nó vào được không?</string>
     <string name="currently_on_version">Gần đây trên Open Food Facts</string>
 </resources>

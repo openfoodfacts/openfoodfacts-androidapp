@@ -483,6 +483,7 @@
     <string name="notify_channel_description">crwdns178914:0crwdne178914:0</string>
     <string name="products_to_be_completed">crwdns178916:0crwdne178916:0</string>
     <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">crwdns178920:0%1$scrwdnd178920:0%2$scrwdnd178920:0%3$scrwdne178920:0</string>
+    <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">crwdns181774:0%1$scrwdnd181774:0%2$scrwdnd181774:0%3$scrwdne181774:0</string>
     <!-- TODO: Add the placeholder in the string - important for several languages -->
     <string name="other_editors">crwdns178924:0crwdne178924:0</string>
     <string name="product_states">crwdns178926:0crwdne178926:0</string>
@@ -495,8 +496,8 @@
     <string name="productNameNull">crwdns178940:0crwdne178940:0</string>
     <string name="productAdditivesUnknown"></string>
     <plurals name="productAdditives">
-        <item quantity="one" comment="Do not change the placeholder">crwdns178944:1%dcrwdne178944:1</item>
-        <item quantity="other" comment="Do not change the placeholder">crwdns178944:5%dcrwdne178944:5</item>
+        <item comment="Do not change the placeholder" quantity="one">crwdns178944:1%dcrwdne178944:1</item>
+        <item comment="Do not change the placeholder" quantity="other">crwdns178944:5%dcrwdne178944:5</item>
     </plurals>
     <string name="product_not_complete">crwdns178946:0crwdne178946:0</string>
     <string name="addProductOffline">crwdns178948:0%scrwdne178948:0</string>
@@ -505,6 +506,7 @@
     <string name="trouble_scanning">crwdns178954:0crwdne178954:0</string>
     <string name="barcode_hint">crwdns178956:0crwdne178956:0</string>
     <string name="switch_camera">crwdns178958:0crwdne178958:0</string>
+    <string name="toggle_flash">crwdns192382:0crwdne192382:0</string>
     <string name="autofocus">crwdns178960:0crwdne178960:0</string>
     <string name="initial_loading">crwdns178962:0crwdne178962:0</string>
     <string name="OFFlogo">crwdns178966:0crwdne178966:0</string>
@@ -636,12 +638,12 @@
     <string name="addtive_search">crwdns179242:0crwdne179242:0</string>
     <string name="additives">crwdns179244:0crwdne179244:0</string>
     <!--used for product_lists implementation-->
-    <string name="dialog_add_product_to_list_title">crwdns179246:0crwdne179246:0</string>
-    <string name="dialog_create_new_list_title">crwdns179248:0crwdne179248:0</string>
-    <string name="dialog_add_product_to_list_new">crwdns179250:0crwdne179250:0</string>
-    <string name="dialog_create_new_list_hint">crwdns179252:0crwdne179252:0</string>
-    <string name="default_list_title_stored">crwdns179254:0crwdne179254:0</string>
-    <string name="default_list_title_to_buy">crwdns179256:0crwdne179256:0</string>
+    <string name="dialog_add_product_to_list_title">crwdns192620:0crwdne192620:0</string>
+    <string name="dialog_add_product_to_list_new">crwdns192622:0crwdne192622:0</string>
+    <string name="dialog_create_new_list_title">crwdns192624:0crwdne192624:0</string>
+    <string name="dialog_create_new_list_hint">crwdns192626:0crwdne192626:0</string>
+    <string name="default_list_title_stored">crwdns192876:0crwdne192876:0</string>
+    <string name="default_list_title_to_buy">crwdns192630:0crwdne192630:0</string>
     <string name="txt_exporting_your_listed_products">crwdns179258:0crwdne179258:0</string>
     <string name="txt_your_listed_products_exported">crwdns179260:0crwdne179260:0</string>
     <string name="txt_discard">crwdns179262:0crwdne179262:0</string>
@@ -761,4 +763,5 @@
     <string name="msg_welcome_ecoscore">crwdns187478:0crwdne187478:0</string>
     <string name="title_welcome_matomo">crwdns187480:0crwdne187480:0</string>
     <string name="msg_welcome_matomo">crwdns187482:0crwdne187482:0</string>
+    <string name="hint_category_list">crwdns192380:0crwdne192380:0</string>
 </resources>

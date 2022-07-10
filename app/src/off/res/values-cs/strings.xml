@@ -15,30 +15,30 @@
     <string name="slide_1_title">Přispějte k transparentnosti potravin</string>
     <string name="slide_1_desc">Naskenujte zboží, vyfoťte ho, zlepšete transparentnost potravin</string>
     <string name="slide_2_title">Získejte fakta</string>
-    <string name="slide_2_desc">Extensive information about the product you\'ve scanned, deciphered for you</string>
+    <string name="slide_2_desc">Rozsáhlé informace o produktu, který jste naskenovali, pro vás dešifrovali</string>
     <string name="slide_3_title">Zjistěte Nutri-Score</string>
-    <string name="slide_3_desc">A synthetic view of the nutritional properties of your favorite food products</string>
+    <string name="slide_3_desc">Syntetický pohled na nutriční vlastnosti vašich oblíbených potravinářských produktů</string>
     <string name="slide_4_title">Pracuje offline</string>
-    <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet connection right now</string>
+    <string name="slide_4_desc">Můžete přidávat nové produkty, i když právě nemáte připojení k internetu</string>
     <!-- New onboarding-->
-    <string name="title_welcome_intro">Join the food revolution</string>
-    <string name="msg_welcome_intro">Scan food, Take photos, Help transform the food system</string>
+    <string name="title_welcome_intro">Připojte se k potravinové revoluci</string>
+    <string name="msg_welcome_intro">Skenujte jídlo, foťte, pomozte transformovat potravinový systém</string>
     <string name="title_welcome_nutriscore">Zjistěte Nutri-Score</string>
-    <string name="msg_welcome_nutriscore">A simple synthesis of the nutritional quality of your food</string>
-    <string name="title_welcome_nova">Avoid ultra-processed foods</string>
-    <string name="msg_welcome_nova">Reduce the amount of ultra-processed foods in your diet.</string>
-    <string name="title_welcome_ecoscore">Eco-Score</string>
+    <string name="msg_welcome_nutriscore">Jednoduchá syntéza nutriční kvality vašeho jídla</string>
+    <string name="title_welcome_nova">Vyhněte se ultrazpracovaným potravinám</string>
+    <string name="msg_welcome_nova">Snižte množství ultrazpracovaných potravin ve vaší stravě.</string>
+    <string name="title_welcome_ecoscore">Eco-score</string>
     <!-- Scan card -->
-    <string name="product_does_not_exist_please_add_it">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
+    <string name="product_does_not_exist_please_add_it">Produkt, který jste naskenovali, v databázi Open Food Facts neexistuje. Přidejte jej prosím.</string>
     <string name="txtDialogsContentPowerMode">Výrobek, který jste naskenovali, už je v databázi Open Food Facts.</string>
     <string name="msg_share">Podívejte se na tento produkt v Open Food Facts :</string>
     <string name="not_support_books">Knihy zatím nejsou databází Open Food Facts podporovány</string>
-    <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
+    <string name="txt_broaden_search">- rozšíření vyhledávání \n- naskenujte a přidejte jej do Open Food Facts</string>
     <string name="Donation">Kliknutím zde můžete podpořit Open Food Facts</string>
     <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Informace o vašich alergiích nebudou nikdy odeslány na server Open Food Facts. Dávejte si také pozor, že produktová data nemusí být přesná a detekce nemusí být 100% přesná, proto si to prosím překontrolujte sami!</string>
     <!-- OFF tagline in different languages -->
     <string name="tagline">svobodná databáze potravin</string>
-    <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
+    <string name="product_not_found">Produkt %1$s, který jste naskenovali, zatím v Open Food Facts neexistuje. Můžete ho přidat?</string>
     <string name="currently_on_version">Aktuálně v Open Food Facts</string>
 </resources>

@@ -1,11 +1,11 @@
 {
   "changelog": [
     {
-      "date": "10/02/2021",
+      "date": "2021/10/02",
       "code": 518,
       "name": "3.5.0",
       "items": [
-        "Machine-Learning enhanced barcode scanner. You can now enable a new way to scan from the options. You can switch the barcode scanner engine at any time from the settings.",
+        "기계 학습으로 바코드 스캐너를 강화했습니다. 옵션에서 새로운 스캔 방법을 켤 수 있습니다. 설정에서 언제든 바코드 스캐너 엔진을 전환하세요.",
         "Open Food Facts 봉사자들이 앱을 개선하도록 도와주세요. 익명의 분석 및 충돌 보고서를 보낼 수 있으며, 설정에서 이를 언제든지 켜거나 끌 수 있습니다."
       ]
     }

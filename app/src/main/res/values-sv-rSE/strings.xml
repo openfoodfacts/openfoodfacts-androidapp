@@ -38,7 +38,7 @@
     <string name="action_about">Om</string>
     <string name="action_discover">Upptäck</string>
     <string name="contribute">Hur man bidrar</string>
-    <string name="action_find">Sök</string>
+    <string name="action_find">Hitta</string>
     <string name="product_incomplete_message">Denna produkt är inte komplett. På grund av detta kunde vi inte göra allergenkontrollen.</string>
     <string name="product_allergen_prompt">Den här produkten innehåller:</string>
     <string name="no_offline_data">Du är klar</string>
@@ -123,7 +123,7 @@
         <item>Nervonsyra (24:1 n-9)</item>
         <item>Nukleotider</item>
         <item>Oljesyra (18:1 n-9)</item>
-        <item>Omega-3-fettsyror</item>
+        <item>Omega-3 fettsyror</item>
         <item>Omega 6 fettsyror</item>
         <item>Omega 9 fettsyror</item>
         <item>Palmitinsyra (16: 0)</item>
@@ -487,6 +487,7 @@
     <string name="notify_channel_description">Meddelande för att visa den exporterade filens plats</string>
     <string name="products_to_be_completed">Produkter att slutföra</string>
     <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Product added on %1$s at %2$s CET by %3$s</string>
+    <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Last edit of product page on %1$s at %2$s CEST by %3$s </string>
     <!-- TODO: Add the placeholder in the string - important for several languages -->
     <string name="other_editors">Produktsidan har också redigerats av </string>
     <string name="product_states">Product States</string>
@@ -499,16 +500,17 @@
     <string name="productNameNull">Namn okänt</string>
     <string name="productAdditivesUnknown"></string>
     <plurals name="productAdditives">
-        <item quantity="one" comment="Do not change the placeholder">%d additive</item>
-        <item quantity="other" comment="Do not change the placeholder">%d additives</item>
+        <item comment="Do not change the placeholder" quantity="one">%d additive</item>
+        <item comment="Do not change the placeholder" quantity="other">%d additives</item>
     </plurals>
     <string name="product_not_complete">Denna produkt är ofärdig. \nKan du lägga till några fler detaljer?</string>
     <string name="addProductOffline">You seem offline. Add the product %s using the offline mode ?</string>
     <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
     <string name="scan_sound">Skanningsljud</string>
     <string name="trouble_scanning">Problem med skanning?</string>
-    <string name="barcode_hint">Problem med skanning? Ange streckkod</string>
+    <string name="barcode_hint">Problem att Scanna? Ange Streck-kod</string>
     <string name="switch_camera">Byt kamera</string>
+    <string name="toggle_flash">Toggle flash</string>
     <string name="autofocus">Autofokus</string>
     <string name="initial_loading">Inledande laddning</string>
     <string name="OFFlogo">Open Food Facts logotyp</string>
@@ -554,7 +556,7 @@
     <string name="nutrition_facts_not_specified">Näringsfakta anges inte på produkten.</string>
     <string name="nutrition_facts_picture">Näringsfakta foto</string>
     <string name="front_short_picture">Främre</string>
-    <string name="other_picture">Annan bild</string>
+    <string name="other_picture">Annat Foto</string>
     <string name="for_100g_100ml">För 100g / 100ml</string>
     <string name="per_serving">Per portion</string>
     <string name="serving_size">Portionsstorlek</string>
@@ -640,11 +642,11 @@
     <string name="addtive_search">Sök efter en tillsats</string>
     <string name="additives">Tillsatser</string>
     <!--used for product_lists implementation-->
-    <string name="dialog_add_product_to_list_title">Lägg till i dina listor</string>
-    <string name="dialog_create_new_list_title">Skapa en ny lista</string>
-    <string name="dialog_add_product_to_list_new">Lägg till en ny lista</string>
-    <string name="dialog_create_new_list_hint">Lista Namn</string>
-    <string name="default_list_title_stored">Products I have</string>
+    <string name="dialog_add_product_to_list_title">Add to your lists</string>
+    <string name="dialog_add_product_to_list_new">Add to a new list</string>
+    <string name="dialog_create_new_list_title">Create a new list</string>
+    <string name="dialog_create_new_list_hint">List Name</string>
+    <string name="default_list_title_stored">Eaten products</string>
     <string name="default_list_title_to_buy">Produkter att köpa</string>
     <string name="txt_exporting_your_listed_products">Exportera dina produkter…</string>
     <string name="txt_your_listed_products_exported">Dina produkter har exporterats</string>
@@ -766,4 +768,5 @@
     <string name="msg_welcome_ecoscore">A synthesis of the environmental impact of your food.</string>
     <string name="title_welcome_matomo">Send anonymous analytics</string>
     <string name="msg_welcome_matomo">Help the Open Food Facts volunteers to improve the app. You decide if you send anonymous analytics.\n\nIf you change your mind this option can be enabled and disabled at any time from the settings.</string>
+    <string name="hint_category_list">Search for a food category</string>
 </resources>

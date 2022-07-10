@@ -11,40 +11,40 @@
     <!-- For fr, Replace by https://world-fr.openproductsfacts.org/contributeur/ -->
     <string name="website_contributor">https://world.openfoodfacts.org/contributor/</string>
     <string name="terms_url">https://world.openproductsfacts.org/terms-of-use</string>
-    <string name="txtHomeOnline">Open Products Facts is an open database of more than %1$s products (plus the ones you will contribute).</string>
+    <string name="txtHomeOnline">Open Food Facts là một cơ sở dữ liệu mới với hơn %1$s sản phẩm ( cộng thêm các sản phẩm mà bạn sẽ đóng góp).</string>
     <string name="txtHome">Open Products Facts is an open database of food products with ingredients, allergens, nutrition facts and all the tidbits of information we can find on product labels.</string>
-    <string name="slide_1_title">Contribute to product transparency</string>
+    <string name="slide_1_title">Đóng góp vào sự minh bạch của sản phẩm</string>
     <string name="slide_1_desc">Scan products, take them in picture, make food transparency happen</string>
-    <string name="slide_2_title">Get the facts</string>
-    <string name="slide_2_desc">Extensive information about the products you\'ve scanned, deciphered for you</string>
-    <string name="slide_3_title">Keep track of the product you use</string>
-    <string name="slide_3_desc">All the products you scanned, in one handy list you can export</string>
-    <string name="slide_4_title">Works offline</string>
-    <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet connection right now</string>
-    <string name="product_does_not_exist_please_add_it">The product you scanned does not exist yet in Open Products Facts. Please add it.</string>
-    <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Products Facts.</string>
-    <string name="msg_share">Look at this product on Open Products Facts :</string>
-    <string name="not_support_books">Books are not currently supported by Open Products Facts</string>
-    <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Products Facts</string>
-    <string name="Donation">Click here to donate to Open Products Facts</string>
-    <string name="translate_help_title">Help translate Open Products Facts</string>
-    <string name="translate_help_summary">Bring the Open Products Facts database to your language - no technical knowledge required</string>
-    <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Products Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Products Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+    <string name="slide_2_title">Có thêm thông tin</string>
+    <string name="slide_2_desc">Thông tin phong phú về các sản phẩm bạn đã quét, giải mã cho bạn</string>
+    <string name="slide_3_title">Theo dõi sản phẩm bạn sử dụng</string>
+    <string name="slide_3_desc">Tất cả các sản phẩm bạn quét, được nằm gọn trong một danh sách hữu ích mà bạn có thể xuất ra</string>
+    <string name="slide_4_title">Làm việc ngoại tuyến</string>
+    <string name="slide_4_desc">Bạn có thể thêm sản phẩm mới, ngay cả khi bạn không có kết nối Internet ngay bây giờ</string>
+    <string name="product_does_not_exist_please_add_it">Sản phẩm bạn đã quét chưa có trong Open Products Facts. Hãy thêm sản phẩm.</string>
+    <string name="txtDialogsContentPowerMode">Sản phẩm bạn quét đã có trong Open Products Facts.</string>
+    <string name="msg_share">Xem sản phẩm này trên Open Products Facts :</string>
+    <string name="not_support_books">Sách hiện không được hỗ trợ trên Open Products Facts</string>
+    <string name="txt_broaden_search">- mở rộng tìm kiếm của bạn \n- quét và thêm nó vào Open Products Facts</string>
+    <string name="Donation">Nhấp vào đây để ủng hộ cho Open Products Facts</string>
+    <string name="translate_help_title">Đóng góp bản dịch ngôn ngữ cho Open Products Facts</string>
+    <string name="translate_help_summary">Mang cơ sở dữ liệu của Open Products Facts đến với ngôn ngữ của bạn - không yêu cầu hiểu biết kĩ thuật</string>
+    <string name="text_offline_info_dialog">Quét sản phẩm ngay cả khi bạn đang ngoại tuyến để sau đó có thể thêm vào Open Products Facts sau. Các sản phẩm được quét sẽ xuất hiện tại đây và bạn sẽ có thể gửi chúng đi bằng cách dùng nút bên dưới.</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Thông tin dị ứng của bạn sẽ không bao giờ được gửi tới hệ thống máy chủ của Open Products Facts. Đồng thời, hãy cẩn thận bởi dữ liệu sản phẩm có thể không chính xác, và việc xác định có thể không đúng 100%, vì vậy vui lòng tự mình kiểm tra lại! </string>
     <!-- OPF tagline in different languages -->
-    <string name="version_string">Open Products Facts Android App</string>
+    <string name="version_string">Mở ứng dụng Open Products Facts trên Android</string>
     <string name="tagline">the free product database</string>
-    <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Products Facts. Can you add it?</string>
-    <string name="currently_on_version">Currently on Open Products Facts</string>
-    <string name="category_game_btn">Help categorize products</string>
-    <string name="add_nutrient_prompt_text">Add more details to help complete the product</string>
-    <string name="add_category_prompt_text">Add a category to help complete the product</string>
-    <string name="add_nutrient_category_prompt_text">Add a category and more details to help complete the product</string>
-    <string name="default_list_title_stored">Products I have</string>
-    <string name="default_list_title_to_buy">Products to buy</string>
-    <string name="intent_filter_share_label">Add to Open Products Facts</string>
-    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
-        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
-    <string name="OFFlogo">Open Products Facts logo</string>
-    <string name="brand_hint">Examples: Nike, Apple, etc…</string>
+    <string name="product_not_found">Sản phẩm %1$s bạn vừa quét không có trong Open Products Facts. Bạn có thể thêm nó vào được không?</string>
+    <string name="currently_on_version">Gần đây trên Open Products Facts</string>
+    <string name="category_game_btn">Giúp phân loại sản phẩm</string>
+    <string name="add_nutrient_prompt_text">Bổ sung thêm các thông tin chi tiết giúp hoàn thiện sản phẩm</string>
+    <string name="add_category_prompt_text">Thêm danh mục để giúp hoàn thiện sản phẩm</string>
+    <string name="add_nutrient_category_prompt_text">Thêm danh mục và các chi tiết khác để giúp hoàn thiện sản phẩm</string>
+    <string name="default_list_title_stored">Sản phẩm tôi có</string>
+    <string name="default_list_title_to_buy">Sản phẩm cần mua</string>
+    <string name="intent_filter_share_label">Thêm vào Open Products Facts</string>
+    <string name="txt_info_eaten_products">Bạn sẽ có thể thêm sản phẩm vào danh sách này bằng cách quét sản phẩm, kéo thẻ sản phẩm lên và nhấn vào \"Sản phẩm cần mua\".
+        Bạn cũng sẽ có thể thêm các sản phẩm vào danh sách này bằng cách tìm kiếm chúng và nhấp vào nút + ở trên cùng bên phải của trang sản phẩm.</string>
+    <string name="OFFlogo">Logo của Open Products Facts</string>
+    <string name="brand_hint">Ví dụ: Nike, Apple, v. v…</string>
 </resources>

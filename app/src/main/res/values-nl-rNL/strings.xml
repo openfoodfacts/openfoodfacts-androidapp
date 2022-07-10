@@ -487,6 +487,7 @@
     <string name="notify_channel_description">Melding om de locatie van het geëxporteerde bestand te tonen</string>
     <string name="products_to_be_completed">Onvoltooide producten</string>
     <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Product toegevoegd op %1$s om %2$s CET door %3$s</string>
+    <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Laatste bewerking van productpagina op %1$s om %2$s CET door %3$s</string>
     <!-- TODO: Add the placeholder in the string - important for several languages -->
     <string name="other_editors">Productpagina ook bewerkt door </string>
     <string name="product_states">Productdata volledigheid</string>
@@ -499,8 +500,8 @@
     <string name="productNameNull">Naam onbekend</string>
     <string name="productAdditivesUnknown"></string>
     <plurals name="productAdditives">
-        <item quantity="one" comment="Do not change the placeholder">%d additieven</item>
-        <item quantity="other" comment="Do not change the placeholder">%d additieven</item>
+        <item comment="Do not change the placeholder" quantity="one">%d additieven</item>
+        <item comment="Do not change the placeholder" quantity="other">%d additieven</item>
     </plurals>
     <string name="product_not_complete">Dit product is nog niet compleet. \nWil je details toevoegen?</string>
     <string name="addProductOffline">Je lijkt offline te zijn. Het product %s toevoegen met behulp van de offlinemodus?</string>
@@ -509,6 +510,7 @@
     <string name="trouble_scanning">Problemen met scannen?</string>
     <string name="barcode_hint">Problemen met scannen? Voer de barcode in</string>
     <string name="switch_camera">Wissel camera</string>
+    <string name="toggle_flash">Flitslicht aan/uit</string>
     <string name="autofocus">Autofocus</string>
     <string name="initial_loading">Bezig met laden</string>
     <string name="OFFlogo">Open Food Facts-logo</string>
@@ -542,7 +544,7 @@
     <string name="your_version">Jouw</string>
     <string name="ingredients_picture">Foto van de ingrediëntenlijst</string>
     <string name="packaging">Recyclen</string>
-    <string name="take_ingredients_picture_to_extract">(Please take a photo of the ingredients to automatically extract them)</string>
+    <string name="take_ingredients_picture_to_extract">(Maak een foto van de ingrediënten om ze automatisch te herkennen)</string>
     <string name="ingredients_list">Ingrediëntenlijst</string>
     <string name="ingredients_hint" tools:ignore="StringFormatInvalid">Behoud de volgorde, geef het percentage indien vermeld, gescheiden met komma\'s of \'-\', gebruik () voor de ingrediënten van een ingrediënt, vermeld allergenen tussen \'_\' zoals bijvoorbeeld _melk_</string>
     <string name="extract_ingredients">Herken de ingrediënten</string>
@@ -640,11 +642,11 @@
     <string name="addtive_search">Zoeken naar een additief</string>
     <string name="additives">Additieven</string>
     <!--used for product_lists implementation-->
-    <string name="dialog_add_product_to_list_title">Voeg toe aan jouw lijsten</string>
-    <string name="dialog_create_new_list_title">Maak een nieuwe lijst</string>
+    <string name="dialog_add_product_to_list_title">Voeg toe aan uw lijsten</string>
     <string name="dialog_add_product_to_list_new">Voeg toe aan een nieuwe lijst</string>
+    <string name="dialog_create_new_list_title">Een nieuwe lijst maken</string>
     <string name="dialog_create_new_list_hint">Lijstnaam</string>
-    <string name="default_list_title_stored">Mijn Producten</string>
+    <string name="default_list_title_stored">Gegeten producten</string>
     <string name="default_list_title_to_buy">Producten om te kopen</string>
     <string name="txt_exporting_your_listed_products">Bezig je producten te exporteren…</string>
     <string name="txt_your_listed_products_exported">Je producten zijn geëxporteerd</string>
@@ -766,4 +768,5 @@
     <string name="msg_welcome_ecoscore">Een milieu-impactsamenvatting van je levensmiddelen.</string>
     <string name="title_welcome_matomo">Stuur anonieme analyses</string>
     <string name="msg_welcome_matomo">Help de vrijwilligers van Open Food Facts om de app te verbeteren. Je bepaalt zelf of je anonieme analyses verstuurt.\n\nAls je van gedachten verandert, kan deze optie op elk moment onder Instellingen worden in- of uitgeschakeld.</string>
+    <string name="hint_category_list">Zoek een categorie</string>
 </resources>

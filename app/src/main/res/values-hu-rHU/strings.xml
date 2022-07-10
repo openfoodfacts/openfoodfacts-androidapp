@@ -487,6 +487,7 @@
     <string name="notify_channel_description">Értesítés az exportált fájl helyének megjelenítéséhez</string>
     <string name="products_to_be_completed">Kiegészítendő termékek</string>
     <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">A terméket hozzáadta %1$s ekkor: %2$s, %3$s (CET)</string>
+    <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Termékoldalt legutóbb szerkesztette %1$s ekkor: %2$s, %3$s (CEST) </string>
     <!-- TODO: Add the placeholder in the string - important for several languages -->
     <string name="other_editors">A termékoldalt szerkesztette még </string>
     <string name="product_states">Product States</string>
@@ -499,8 +500,8 @@
     <string name="productNameNull">Ismeretlen név</string>
     <string name="productAdditivesUnknown"></string>
     <plurals name="productAdditives">
-        <item quantity="one" comment="Do not change the placeholder">%d adalékanyag</item>
-        <item quantity="other" comment="Do not change the placeholder">%d adalékanyag</item>
+        <item comment="Do not change the placeholder" quantity="one">%d adalékanyag</item>
+        <item comment="Do not change the placeholder" quantity="other">%d adalékanyag</item>
     </plurals>
     <string name="product_not_complete">Ez a termékoldal még nem teljes. \nHozzá tudna adni néhány adatot?</string>
     <string name="addProductOffline">Úgy tűnik, hogy kapcsolat nélküli módban van. Hozzáadja a(z) %s terméket offline módban?</string>
@@ -509,6 +510,7 @@
     <string name="trouble_scanning">Gondja van a beolvasással?</string>
     <string name="barcode_hint">Gondja van a beolvasással? Írja be a vonalkódot</string>
     <string name="switch_camera">Kamera váltása</string>
+    <string name="toggle_flash">Toggle flash</string>
     <string name="autofocus">Autofókusz</string>
     <string name="initial_loading">Kezdeti betöltés</string>
     <string name="OFFlogo">Open Food Facts embléma</string>
@@ -641,11 +643,11 @@
     <string name="addtive_search">Adalékanyag keresése</string>
     <string name="additives">Adalékanyagok</string>
     <!--used for product_lists implementation-->
-    <string name="dialog_add_product_to_list_title">Adja hozzá a listáihoz</string>
-    <string name="dialog_create_new_list_title">Hozzon létre egy új listát</string>
-    <string name="dialog_add_product_to_list_new">Adja hozzá az új listájához</string>
-    <string name="dialog_create_new_list_hint">Lista neve</string>
-    <string name="default_list_title_stored">Products I have</string>
+    <string name="dialog_add_product_to_list_title">Add to your lists</string>
+    <string name="dialog_add_product_to_list_new">Add to a new list</string>
+    <string name="dialog_create_new_list_title">Create a new list</string>
+    <string name="dialog_create_new_list_hint">List Name</string>
+    <string name="default_list_title_stored">Eaten products</string>
     <string name="default_list_title_to_buy">Megvásárolandó termékek</string>
     <string name="txt_exporting_your_listed_products">Termékei exportálása…</string>
     <string name="txt_your_listed_products_exported">A termékei exportálásra kerültek</string>
@@ -767,4 +769,5 @@
     <string name="msg_welcome_ecoscore">A synthesis of the environmental impact of your food.</string>
     <string name="title_welcome_matomo">Send anonymous analytics</string>
     <string name="msg_welcome_matomo">Help the Open Food Facts volunteers to improve the app. You decide if you send anonymous analytics.\n\nIf you change your mind this option can be enabled and disabled at any time from the settings.</string>
+    <string name="hint_category_list">Search for a food category</string>
 </resources>

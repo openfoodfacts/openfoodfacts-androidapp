@@ -16,7 +16,7 @@
   -->
 <resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
-        <item quantity="one">Vous avez %d produit hors-ligne en attente d\'être ajouté à Open Food Facts</item>
+        <item quantity="one">Vous avez 1 produit hors-ligne en attente d\'être ajouté à Open Food Facts</item>
         <item quantity="other">Vous avez %d produits hors-ligne en attente d\'être ajoutés à Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
@@ -24,15 +24,15 @@
         <item quantity="other">Il y a %d secondes</item>
     </plurals>
     <plurals name="minutes">
-        <item quantity="one">Il y a %d minute</item>
+        <item quantity="one">Il y a 1 minute</item>
         <item quantity="other">Il y a %d minutes</item>
     </plurals>
     <plurals name="hours">
-        <item quantity="one">Il y a %d heure</item>
+        <item quantity="one">Il y a 1 heure</item>
         <item quantity="other">Il y a %d heures</item>
     </plurals>
     <plurals name="days">
-        <item quantity="one">Il y a %d jour</item>
+        <item quantity="one">Il y a 1 jour</item>
         <item quantity="other">Il y a %d jours</item>
     </plurals>
     <string name="action_about">À propos</string>
@@ -189,7 +189,7 @@
     <string name="errorWeb">Nous n\'avons pas pu accéder à internet. Avez-vous des problèmes de connexion ?</string>
     <string name="txtInfoLoginOk">Vous vous êtes connecté avec succès à votre compte Open Food Facts.</string>
     <string name="txtInfoLoginNo">Une erreur s\'est produite lors de la tentative de connexion à votre compte Open Food Facts.</string>
-    <string name="product_does_not_exist_please_add_it">Le produit que vous avez scanné n\'existe pas encore dans Open Food Facts. Voulez-vous l\'ajouter?</string>
+    <string name="product_does_not_exist_please_add_it">Le produit que vous avez scanné n\'existe pas encore dans Open Food Facts. Voulez-vous l\'ajouter ?</string>
     <string name="txtYes">Oui</string>
     <string name="txtNo">Non</string>
     <string name="hintBrand">Marque</string>
@@ -221,7 +221,7 @@
     <string name="cancel_button">Annuler</string>
     <string name="login_button">Nom d\'utilisateur</string>
     <string name="create_account_button">Créer un Compte</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Les informations relatives à vos allergies ne seront jamais envoyées aux serveurs d\'Open Food Facts. Par ailleurs, soyez vigilant sur le fait que ces données ne sont pas fiables à 100 % at que la détection peut ne pas être précise à 100 %. Veuillez donc vérifier vous-même !</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Les informations relatives à vos allergies ne seront jamais envoyées aux serveurs d\'Open Food Facts. Par ailleurs, soyez vigilant sur le fait que ces données ne sont pas fiables à 100 % et que la détection peut ne pas être précise à 100 %. Veuillez donc vérifier vous-même !</string>
     <string name="title_info_dialog">Comment cela fonctionne-t-il ?</string>
     <string name="text_offline_info_dialog">Vous pouvez scanner des produits lorsque vous êtes hors-ligne pour les ajouter plus tard à Open Pet Food Facts. Tous les produits que vous scannez apparaîtront ici et vous serez en mesure de les envoyer en utilisant le bouton ci-dessous.</string>
     <string name="permission_camera">L\'autorisation d\'utiliser l\'appareil photo est nécessaire pour scanner des codes-barres et prendre des photos.</string>
@@ -483,6 +483,7 @@
     <string name="notify_channel_description">Notification pour afficher l\'emplacement du fichier exporté</string>
     <string name="products_to_be_completed">Produits à compléter</string>
     <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Produit ajouté le %1$s à %2$s CET par %3$s</string>
+    <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Dernière modification de la page du produit le %1$s à %2$s CEST par %3$s</string>
     <!-- TODO: Add the placeholder in the string - important for several languages -->
     <string name="other_editors">Fiche produit également modifiée par </string>
     <string name="product_states">États du Produit</string>
@@ -495,16 +496,17 @@
     <string name="productNameNull">Nom inconnu</string>
     <string name="productAdditivesUnknown"></string>
     <plurals name="productAdditives">
-        <item quantity="one" comment="Do not change the placeholder">%d additif</item>
-        <item quantity="other" comment="Do not change the placeholder">%d additifs</item>
+        <item comment="Do not change the placeholder" quantity="one">%d additif</item>
+        <item comment="Do not change the placeholder" quantity="other">%d additifs</item>
     </plurals>
     <string name="product_not_complete">Ce produit n\'est pas encore complet.\nPouvez-vous ajouter des détails?</string>
     <string name="addProductOffline">Vous semblez déconnecté. Ajouter le produit %s en utilisant le mode hors ligne?</string>
     <string name="product_not_found">Le produit %1$s que vous scannez n\'existe pas encore dans Open Food Facts. Pouvez-vous l\'ajouter ?</string>
     <string name="scan_sound">Son de scan</string>
-    <string name="trouble_scanning">Problèmes de scan?</string>
+    <string name="trouble_scanning">Problèmes de scan ?</string>
     <string name="barcode_hint">Problème de scan ? Saisissez le code-barres</string>
     <string name="switch_camera">Changer d\'appareil photo</string>
+    <string name="toggle_flash">Activer/désactiver le flash</string>
     <string name="autofocus">Autofocus</string>
     <string name="initial_loading">Chargement initial</string>
     <string name="OFFlogo">Logo Open Food Facts</string>
@@ -525,7 +527,7 @@
     <string name="add_at_least_one_picture">Veuillez ajouter au moins une photo de ce produit avant de continuer</string>
     <string name="image_uploaded_successfully">Image envoyée avec succès</string>
     <string name="error_adding_product_photos">Une erreur s\'est produite lors de la tentative d\'ajout des photos du produit</string>
-    <string name="save_product">Voulez-vous enregistrer le produit?</string>
+    <string name="save_product">Voulez-vous enregistrer le produit ?</string>
     <string name="error_adding_product">Une erreur s\'est produite lors de l\'ajout du produit</string>
     <string name="photos">Photos</string>
     <string name="please_wait">Veuillez patienter</string>
@@ -637,10 +639,10 @@
     <string name="additives">Additifs</string>
     <!--used for product_lists implementation-->
     <string name="dialog_add_product_to_list_title">Ajouter à vos listes</string>
-    <string name="dialog_create_new_list_title">Créer une nouvelle liste</string>
     <string name="dialog_add_product_to_list_new">Ajouter à une nouvelle liste</string>
+    <string name="dialog_create_new_list_title">Créer une nouvelle liste</string>
     <string name="dialog_create_new_list_hint">Nom de la liste</string>
-    <string name="default_list_title_stored">Produits que j\'ai</string>
+    <string name="default_list_title_stored">Produits consommés</string>
     <string name="default_list_title_to_buy">Produits à acheter</string>
     <string name="txt_exporting_your_listed_products">Exportation de vos produits…</string>
     <string name="txt_your_listed_products_exported">Vos produits ont été exportés</string>
@@ -762,5 +764,5 @@
     <string name="msg_welcome_ecoscore">Une synthèse de l\'impact environnemental de votre alimentation.</string>
     <string name="title_welcome_matomo">Partager anonymement les statistiques</string>
     <string name="msg_welcome_matomo">Aidez les bénévoles d\'Open Food Facts à améliorer l\'application. Vous décidez si vous envoyez des analyses anonymes.\n\nSi vous changez d\'avis, cette option peut être activée et désactivée à tout moment à partir des paramètres.</string>
-    <string name="hint_category_list">Recherche une catégorie</string>
+    <string name="hint_category_list">Rechercher une catégorie</string>
 </resources>

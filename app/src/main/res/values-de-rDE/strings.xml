@@ -39,7 +39,7 @@
     <string name="action_discover">Entdecken</string>
     <string name="contribute">Wie Sie mithelfen können</string>
     <string name="action_find">Suchen</string>
-    <string name="product_incomplete_message">Unvollständige Produktinformationen. Deshalb konnten wir die Allergenprüfung nicht durchführen.</string>
+    <string name="product_incomplete_message">Die Zutatenliste dieses Produkts ist nicht vollständig. Daher wird der Allergenalarm nicht angezeigt.</string>
     <string name="product_allergen_prompt">Dieses Produkt enthält:</string>
     <string name="no_offline_data">Alles erledigt</string>
     <!-- Image Upload -->
@@ -47,7 +47,7 @@
     <string-array name="nav_drawer_items_product">
         <item>Zusammenfassung</item>
         <item>Zutaten</item>
-        <item>Ernährung</item>
+        <item>Nährwertangaben</item>
         <item>Nährwerttabelle</item>
         <item>Umweltauswirkungen</item>
     </string-array>
@@ -255,7 +255,7 @@
     <!-- Nutrition info tab -->
     <string name="display_fact" comment="Do not modify the placeholder">Nährwerttabelle für %1$s dieses Produktes</string>
     <string name="check_facts">Prüfen</string>
-    <string name="nutrition">Ernährung</string>
+    <string name="nutrition">Nährwertangaben</string>
     <string name="calculated_nutrition">Berechnete Nährwerte</string>
     <string name="please_enter_weight">Bitte geben Sie das Produktgewicht ein</string>
     <string name="enter_weight">Produktgewicht eingeben</string>
@@ -483,6 +483,7 @@
     <string name="notify_channel_description">Benachrichtigung, um den Speicherort der exportierten Dateien anzuzeigen</string>
     <string name="products_to_be_completed">Noch abzuschließende Produkte</string>
     <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Produkt hinzugefügt am %1$s um %2$s MEZ durch %3$s</string>
+    <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Letzte Änderung der Produktseite am %1$s um %2$s MESZ durch %3$s </string>
     <!-- TODO: Add the placeholder in the string - important for several languages -->
     <string name="other_editors">Produktseite auch bearbeitet von </string>
     <string name="product_states">Produktdaten</string>
@@ -495,8 +496,8 @@
     <string name="productNameNull">Name unbekannt</string>
     <string name="productAdditivesUnknown"></string>
     <plurals name="productAdditives">
-        <item quantity="one" comment="Do not change the placeholder">%d Zusatzstoff</item>
-        <item quantity="other" comment="Do not change the placeholder">%d Zusatzstoffe</item>
+        <item comment="Do not change the placeholder" quantity="one">%d Zusatzstoff</item>
+        <item comment="Do not change the placeholder" quantity="other">%d Zusatzstoffe</item>
     </plurals>
     <string name="product_not_complete">Dieses Produkt ist noch nicht vollständig.\nKönnten Sie ein paar Details hinzufügen?</string>
     <string name="addProductOffline">Sie scheinen offline zu sein. Möchten Sie das Produkt „%s“ im Offline-Modus hinzufügen?</string>
@@ -505,6 +506,7 @@
     <string name="trouble_scanning">Probleme beim Einlesen?</string>
     <string name="barcode_hint">Probleme beim Einlesen? Strichcode eingeben</string>
     <string name="switch_camera">Kamera wechseln</string>
+    <string name="toggle_flash">Fotoblitz ein/aus</string>
     <string name="autofocus">Autofokus</string>
     <string name="initial_loading">Erstes Laden</string>
     <string name="OFFlogo">Logo von Open Food Facts</string>
@@ -637,9 +639,9 @@
     <string name="additives">Zusatzstoffe</string>
     <!--used for product_lists implementation-->
     <string name="dialog_add_product_to_list_title">Zu Ihren Listen hinzufügen</string>
-    <string name="dialog_create_new_list_title">Neue Liste erstellen</string>
     <string name="dialog_add_product_to_list_new">Zu einer neuen Liste hinzufügen</string>
-    <string name="dialog_create_new_list_hint">Listenname</string>
+    <string name="dialog_create_new_list_title">Neue Liste erstellen</string>
+    <string name="dialog_create_new_list_hint">Name der Liste</string>
     <string name="default_list_title_stored">Verzehrte Produkte</string>
     <string name="default_list_title_to_buy">Zu kaufende Produkte</string>
     <string name="txt_exporting_your_listed_products">Ihre Produkte werden exportiert …</string>
@@ -762,4 +764,5 @@ Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchs
     <string name="msg_welcome_ecoscore">Eine Übersicht über die Umweltauswirkungen Ihrer Lebensmittel.</string>
     <string name="title_welcome_matomo">Anonymisierte Analysedaten senden</string>
     <string name="msg_welcome_matomo">Helfen Sie den Freiwilligen von Open Food Facts, die App zu verbessern. Sie entscheiden, ob Sie anonymisierte Analysedaten senden möchten.\n\nWenn Sie Ihre Meinung ändern, kann diese Option jederzeit in den Einstellungen geändert werden.</string>
+    <string name="hint_category_list">Nach einer Nahrungsmittelkategorie suchen</string>
 </resources>

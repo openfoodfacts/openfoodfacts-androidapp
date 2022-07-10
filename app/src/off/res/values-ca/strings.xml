@@ -21,12 +21,12 @@
     <string name="slide_4_title">Treballeu fora de línia</string>
     <string name="slide_4_desc">Podeu afegir nous productes, fins i tot si ara mateix no teniu una connexió a Internet</string>
     <!-- New onboarding-->
-    <string name="title_welcome_intro">Join the food revolution</string>
-    <string name="msg_welcome_intro">Scan food, Take photos, Help transform the food system</string>
+    <string name="title_welcome_intro">Uneix-te a la revolució alimentària</string>
+    <string name="msg_welcome_intro">Escaneja menjar, fes fotos, ajuda a transformar el sistema alimentari</string>
     <string name="title_welcome_nutriscore">Obteniu el Nutri-Score</string>
-    <string name="msg_welcome_nutriscore">A simple synthesis of the nutritional quality of your food</string>
-    <string name="title_welcome_nova">Avoid ultra-processed foods</string>
-    <string name="msg_welcome_nova">Reduce the amount of ultra-processed foods in your diet.</string>
+    <string name="msg_welcome_nutriscore">Una síntesi senzilla de la qualitat nutricional dels teus aliments</string>
+    <string name="title_welcome_nova">Eviteu els aliments ultraprocessats</string>
+    <string name="msg_welcome_nova">Reduïu la quantitat d\'aliments ultraprocessats a la teva dieta.</string>
     <string name="title_welcome_ecoscore">Eco-Score</string>
     <!-- Scan card -->
     <string name="product_does_not_exist_please_add_it">El producte que heu escanejat encara no existeix a Open Products Facts. Afegiu-lo.</string>

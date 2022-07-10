@@ -484,6 +484,7 @@
     <string name="notify_channel_description">Notifica per mostrare la posizione del file esportato</string>
     <string name="products_to_be_completed">Prodotti da completare</string>
     <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Prodotto aggiunto su %1$s alle %2$s CET da %3$s</string>
+    <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Ultima modifica della pagina del prodotto il %1$s alle %2$s CEST da %3$s </string>
     <!-- TODO: Add the placeholder in the string - important for several languages -->
     <string name="other_editors">Pagina del prodotto modificata anche da </string>
     <string name="product_states">Stati del prodotto</string>
@@ -496,8 +497,8 @@
     <string name="productNameNull">Nome sconosciuto</string>
     <string name="productAdditivesUnknown"></string>
     <plurals name="productAdditives">
-        <item quantity="one" comment="Do not change the placeholder">%d additivo</item>
-        <item quantity="other" comment="Do not change the placeholder">%d additivi</item>
+        <item comment="Do not change the placeholder" quantity="one">%d additivo</item>
+        <item comment="Do not change the placeholder" quantity="other">%d additivi</item>
     </plurals>
     <string name="product_not_complete">Questo prodotto non è ancora completo. \nPuoi aggiungere alcuni dettagli?</string>
     <string name="addProductOffline">Sembri offline. Aggiungi il prodotto %s utilizzando la modalità offline?</string>
@@ -506,6 +507,7 @@
     <string name="trouble_scanning">Problemi di scansione?</string>
     <string name="barcode_hint">Problemi di scansione? Inserisci il codice a barre</string>
     <string name="switch_camera">Cambia fotocamera</string>
+    <string name="toggle_flash">Attiva/Disattiva flash</string>
     <string name="autofocus">Autofocus</string>
     <string name="initial_loading">Caricamento iniziale</string>
     <string name="OFFlogo">Logo di Open Food Facts</string>
@@ -638,10 +640,10 @@
     <string name="additives">Additivi</string>
     <!--used for product_lists implementation-->
     <string name="dialog_add_product_to_list_title">Aggiungi alle tue liste</string>
-    <string name="dialog_create_new_list_title">Crea una nuova lista</string>
     <string name="dialog_add_product_to_list_new">Aggiungi a una nuova lista</string>
-    <string name="dialog_create_new_list_hint">Nome della lista</string>
-    <string name="default_list_title_stored">Prodotti che ho</string>
+    <string name="dialog_create_new_list_title">Crea una nuova lista</string>
+    <string name="dialog_create_new_list_hint">Nome della Lista</string>
+    <string name="default_list_title_stored">Prodotti mangiati</string>
     <string name="default_list_title_to_buy">Prodotti da acquistare</string>
     <string name="txt_exporting_your_listed_products">Esportazione dei tuoi prodotti…</string>
     <string name="txt_your_listed_products_exported">I tuoi prodotti sono stati esportati</string>
@@ -763,4 +765,5 @@
     <string name="msg_welcome_ecoscore">Una sintesi dell\'impatto ambientale del tuo cibo.</string>
     <string name="title_welcome_matomo">Invia analitiche anonime</string>
     <string name="msg_welcome_matomo">Aiuta i volontari di Open Food Facts per migliorare l\'app. Decidi se inviare analitiche anonime.\n\nSe cambi idea, quest\'opzione è abilitabile e disabilitabile in ogni momento dalle impostazioni.</string>
+    <string name="hint_category_list">Cerca una categoria alimentare</string>
 </resources>

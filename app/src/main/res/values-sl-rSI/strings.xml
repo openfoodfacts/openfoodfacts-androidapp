@@ -16,7 +16,7 @@
   -->
 <resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
-        <item quantity="one">You have %d offline product waiting to be contributed to Open Food Facts</item>
+        <item quantity="one">You have 1 offline product waiting to be contributed to Open Food Facts</item>
         <item quantity="two">You have %d offline products waiting to be contributed to Open Food Facts</item>
         <item quantity="few">You have %d offline products waiting to be contributed to Open Food Facts</item>
         <item quantity="other">You have %d offline products waiting to be contributed to Open Food Facts</item>
@@ -456,7 +456,7 @@
     <string name="country_string">Country</string>
     <string name="store_subtitle">Trgovina</string>
     <string name="packaging_subtitle">Pakiranje</string>
-    <string name="state_subtitle">State</string>
+    <string name="state_subtitle">Stanje</string>
     <string name="packaging_string">Pakiranje</string>
     <string name="label_string">Oznaka</string>
     <string name="category_string">Kategorijo</string>
@@ -497,6 +497,7 @@
     <string name="notify_channel_description">Obvestilo, da prikažete lokacijo izvožene datoteke</string>
     <string name="products_to_be_completed">Izdelki, ki jih je potrebno dokončati</string>
     <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Product added on %1$s at %2$s CET by %3$s</string>
+    <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Zadnja sprememba strani izdelka %1$s na %2$s CEST z %3$s </string>
     <!-- TODO: Add the placeholder in the string - important for several languages -->
     <string name="other_editors">Stran izdelka, je urejal tudi </string>
     <string name="product_states">Product States</string>
@@ -509,10 +510,10 @@
     <string name="productNameNull">Neznano ime</string>
     <string name="productAdditivesUnknown"></string>
     <plurals name="productAdditives">
-        <item quantity="one" comment="Do not change the placeholder">%d additive</item>
+        <item comment="Do not change the placeholder" quantity="one">%d additive</item>
         <item quantity="two">%d additives</item>
         <item quantity="few">%d additives</item>
-        <item quantity="other" comment="Do not change the placeholder">%d additives</item>
+        <item comment="Do not change the placeholder" quantity="other">%d additives</item>
     </plurals>
     <string name="product_not_complete">Ta izdelek še ni dokončan. \nLahko dodate nekaj podrobnosti?</string>
     <string name="addProductOffline">You seem offline. Add the product %s using the offline mode ?</string>
@@ -521,6 +522,7 @@
     <string name="trouble_scanning">Težave pri skeniranju?</string>
     <string name="barcode_hint">Težave pri skeniranju? Vnesite črtno kodo</string>
     <string name="switch_camera">Preobrni kamero</string>
+    <string name="toggle_flash">Toggle flash</string>
     <string name="autofocus">Samodejno ostrenje</string>
     <string name="initial_loading">Začetno nalaganje</string>
     <string name="OFFlogo">Open Food Facts logo</string>
@@ -553,7 +555,7 @@
     <string name="nutrition_facts">Dejstva o hranilni vrednosti</string>
     <string name="your_version">Vaše</string>
     <string name="ingredients_picture">Slika sestavin</string>
-    <string name="packaging">Recycling</string>
+    <string name="packaging">Recikliranje</string>
     <string name="take_ingredients_picture_to_extract">(Please take a photo of the ingredients to automatically extract them)</string>
     <string name="ingredients_list">Seznam sestavin</string>
     <string name="ingredients_hint" tools:ignore="StringFormatInvalid">Naj bo urejeno, navedite %, če je naveden, ločite z vejico ali uporabite -, uporabite () za sestavine od sestavin, obkrožite alergene z _</string>
@@ -652,11 +654,11 @@
     <string name="addtive_search">Poiščite dodatek</string>
     <string name="additives">Aditivi</string>
     <!--used for product_lists implementation-->
-    <string name="dialog_add_product_to_list_title">Dodaj v vaš seznam</string>
-    <string name="dialog_create_new_list_title">Ustvari nov seznam</string>
-    <string name="dialog_add_product_to_list_new">Dodaj na nov seznam</string>
-    <string name="dialog_create_new_list_hint">Ime seznama</string>
-    <string name="default_list_title_stored">Products I have</string>
+    <string name="dialog_add_product_to_list_title">Add to your lists</string>
+    <string name="dialog_add_product_to_list_new">Add to a new list</string>
+    <string name="dialog_create_new_list_title">Create a new list</string>
+    <string name="dialog_create_new_list_hint">List Name</string>
+    <string name="default_list_title_stored">Eaten products</string>
     <string name="default_list_title_to_buy">Izdelki za nakup</string>
     <string name="txt_exporting_your_listed_products">Izvoz vaših izdelkov…</string>
     <string name="txt_your_listed_products_exported">Vaši izdelki so bili izvoženi</string>
@@ -778,4 +780,5 @@
     <string name="msg_welcome_ecoscore">Sinteza vpliva hrane na okolje.</string>
     <string name="title_welcome_matomo">Pošljite anonimno analitiko</string>
     <string name="msg_welcome_matomo">Pomagajte prostovoljcem Open Food Facts pri izboljšanju aplikacije. Odločite se, ali pošljete anonimno analizo.\n\nČe si premislite, lahko to možnost kadar koli omogočite ali onemogočite v nastavitvah.</string>
+    <string name="hint_category_list">Search for a food category</string>
 </resources>

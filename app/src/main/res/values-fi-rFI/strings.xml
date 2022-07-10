@@ -487,6 +487,7 @@
     <string name="notify_channel_description">Ilmoitus viedyn tiedoston sijainnin näyttämiseksi</string>
     <string name="products_to_be_completed">Täydennettävät tuotteet</string>
     <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Tuotteen lisäsi %1$s, %2$s kello %3$s CET</string>
+    <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Viimeisimmän tuotesivun muokkauksen %1$s kello %2$s CEST teki %3$s </string>
     <!-- TODO: Add the placeholder in the string - important for several languages -->
     <string name="other_editors">Tuotesivua on muokannut myös </string>
     <string name="product_states">Product States</string>
@@ -499,8 +500,8 @@
     <string name="productNameNull">Tuntematon nimi</string>
     <string name="productAdditivesUnknown"></string>
     <plurals name="productAdditives">
-        <item quantity="one" comment="Do not change the placeholder">%d lisäaine</item>
-        <item quantity="other" comment="Do not change the placeholder">%d lisäainetta</item>
+        <item comment="Do not change the placeholder" quantity="one">%d lisäaine</item>
+        <item comment="Do not change the placeholder" quantity="other">%d lisäainetta</item>
     </plurals>
     <string name="product_not_complete">Tämä tuote ei ole vielä valmis. \nVoitko lisätä joitain yksityiskohtia?</string>
     <string name="addProductOffline">Vaikutat olevan offline-tilassa. Lisää tuote %s offline-tilassa?</string>
@@ -509,6 +510,7 @@
     <string name="trouble_scanning">Vaikeuksia lukemisessa?</string>
     <string name="barcode_hint">Vaikeuksia lukemisessa? Syötä viivakoodi</string>
     <string name="switch_camera">Vaihda kameraa</string>
+    <string name="toggle_flash">Toggle flash</string>
     <string name="autofocus">Automaattitarkennus</string>
     <string name="initial_loading">Alustava lataus</string>
     <string name="OFFlogo">Open Food Facts -logo</string>
@@ -640,11 +642,11 @@
     <string name="addtive_search">Etsi lisäaine</string>
     <string name="additives">Lisäaineet</string>
     <!--used for product_lists implementation-->
-    <string name="dialog_add_product_to_list_title">Lisää luetteloihisi</string>
-    <string name="dialog_create_new_list_title">Luo uusi luettelo</string>
-    <string name="dialog_add_product_to_list_new">Lisää uuteen luetteloon</string>
-    <string name="dialog_create_new_list_hint">Luettelon nimi</string>
-    <string name="default_list_title_stored">Omistamani tuotteet</string>
+    <string name="dialog_add_product_to_list_title">Add to your lists</string>
+    <string name="dialog_add_product_to_list_new">Add to a new list</string>
+    <string name="dialog_create_new_list_title">Create a new list</string>
+    <string name="dialog_create_new_list_hint">List Name</string>
+    <string name="default_list_title_stored">Eaten products</string>
     <string name="default_list_title_to_buy">Ostettavat tuotteet</string>
     <string name="txt_exporting_your_listed_products">Viedään tuotteitasi…</string>
     <string name="txt_your_listed_products_exported">Tuotteesi on viety</string>
@@ -766,4 +768,5 @@
     <string name="msg_welcome_ecoscore">A synthesis of the environmental impact of your food.</string>
     <string name="title_welcome_matomo">Send anonymous analytics</string>
     <string name="msg_welcome_matomo">Help the Open Food Facts volunteers to improve the app. You decide if you send anonymous analytics.\n\nIf you change your mind this option can be enabled and disabled at any time from the settings.</string>
+    <string name="hint_category_list">Search for a food category</string>
 </resources>

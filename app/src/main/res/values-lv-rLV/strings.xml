@@ -16,8 +16,8 @@
   -->
 <resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
-        <item quantity="zero">Jums ir %d bezsaistes produkts, kas gaida pievienošanu Open Food Facts</item>
-        <item quantity="one">Jums ir %d bezsaistes produkts, kas gaida pievienošanu Open Food Facts</item>
+        <item quantity="zero">Jums ir 1 bezsaistes produkts, kas gaida pievienošanu Open Food Facts</item>
+        <item quantity="one">Jums ir 1 bezsaistes produkts, kas gaida pievienošanu Open Food Facts</item>
         <item quantity="other">Jums ir %d bezsaistes produktu, kas gaida pievienošanu Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
@@ -492,6 +492,7 @@
     <string name="notify_channel_description">Paziņojums, lai parādītu eksportēto failu atrašanās vietu</string>
     <string name="products_to_be_completed">Produkta nosaukums jāpabeidz</string>
     <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Produkts pievienots %1$s plkst. %2$s CET pēc %3$s</string>
+    <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Pēdējais produkta lapas labojums: %1$s plkst. %2$s CEST līdz %3$s </string>
     <!-- TODO: Add the placeholder in the string - important for several languages -->
     <string name="other_editors">Produkta lapa ir arī rediģējis </string>
     <string name="product_states">Product States</string>
@@ -505,8 +506,8 @@
     <string name="productAdditivesUnknown"></string>
     <plurals name="productAdditives">
         <item quantity="zero">%d piedeva</item>
-        <item quantity="one" comment="Do not change the placeholder">%d piedeva</item>
-        <item quantity="other" comment="Do not change the placeholder">%d piedevas</item>
+        <item comment="Do not change the placeholder" quantity="one">%d piedeva</item>
+        <item comment="Do not change the placeholder" quantity="other">%d piedevas</item>
     </plurals>
     <string name="product_not_complete">Šis produkts vēl nav pabeigts. \nVai varat pievienot sīkāku informāciju?</string>
     <string name="addProductOffline">Šķiet, ka esat bezsaistē. Vai pievienot produktu %s izmantojot bezsaistes režīmu?</string>
@@ -515,6 +516,7 @@
     <string name="trouble_scanning">Vai ir problēmas ar skenēšanu?</string>
     <string name="barcode_hint">Vai ir problēmas ar skenēšanu? Ievadiet svītrkodu</string>
     <string name="switch_camera">Pārslēdziet kameru</string>
+    <string name="toggle_flash">Toggle flash</string>
     <string name="autofocus">Autofokuss</string>
     <string name="initial_loading">Sākotnējā ielāde</string>
     <string name="OFFlogo">Open Food Facts logotips</string>
@@ -646,11 +648,11 @@
     <string name="addtive_search">Meklējiet piedevu</string>
     <string name="additives">Piedevas</string>
     <!--used for product_lists implementation-->
-    <string name="dialog_add_product_to_list_title">Pievienojiet saviem sarakstiem</string>
-    <string name="dialog_create_new_list_title">Izveidojiet jaunu sarakstu</string>
-    <string name="dialog_add_product_to_list_new">Pievienot jaunam sarakstam</string>
-    <string name="dialog_create_new_list_hint">Saraksta nosaukums</string>
-    <string name="default_list_title_stored">Products I have</string>
+    <string name="dialog_add_product_to_list_title">Add to your lists</string>
+    <string name="dialog_add_product_to_list_new">Add to a new list</string>
+    <string name="dialog_create_new_list_title">Create a new list</string>
+    <string name="dialog_create_new_list_hint">List Name</string>
+    <string name="default_list_title_stored">Eaten products</string>
     <string name="default_list_title_to_buy">Produkti, kurus iegādāties</string>
     <string name="txt_exporting_your_listed_products">Produktu eksportēšana…</string>
     <string name="txt_your_listed_products_exported">Jūsu produkti ir eksportēti</string>
@@ -772,4 +774,5 @@
     <string name="msg_welcome_ecoscore">A synthesis of the environmental impact of your food.</string>
     <string name="title_welcome_matomo">Send anonymous analytics</string>
     <string name="msg_welcome_matomo">Help the Open Food Facts volunteers to improve the app. You decide if you send anonymous analytics.\n\nIf you change your mind this option can be enabled and disabled at any time from the settings.</string>
+    <string name="hint_category_list">Search for a food category</string>
 </resources>

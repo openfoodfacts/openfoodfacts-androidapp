@@ -487,6 +487,7 @@
     <string name="notify_channel_description">Dışa aktarılan dosyanın konumunu gösteren bildirim</string>
     <string name="products_to_be_completed">Tamamlanacak ürünler</string>
     <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Ürün %1$s %2$s CET\'te %3$s tarafından eklendi</string>
+    <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Ürün sayfası en son %1$s %2$s CEST\'te %3$s tarafından düzenlendi </string>
     <!-- TODO: Add the placeholder in the string - important for several languages -->
     <string name="other_editors">Ürün sayfası ayrıca … tarafından düzenlendi</string>
     <string name="product_states">Ürün Durumları</string>
@@ -499,8 +500,8 @@
     <string name="productNameNull">İsim bilinmiyor</string>
     <string name="productAdditivesUnknown"></string>
     <plurals name="productAdditives">
-        <item quantity="one" comment="Do not change the placeholder">%d katkı maddesi</item>
-        <item quantity="other" comment="Do not change the placeholder">%d katkı maddesi</item>
+        <item comment="Do not change the placeholder" quantity="one">%d katkı maddesi</item>
+        <item comment="Do not change the placeholder" quantity="other">%d katkı maddesi</item>
     </plurals>
     <string name="product_not_complete">Bu ürün henüz tamamlanmadı. \nBiraz detay ekleyebilir misiniz?</string>
     <string name="addProductOffline">Çevrimdışı görünüyorsun. %s ürününü çevrimdışı modda eklemek ister misiniz?</string>
@@ -509,6 +510,7 @@
     <string name="trouble_scanning">Tarama sorun mu var?</string>
     <string name="barcode_hint">Tarama sorun mu var? Barkod Girin</string>
     <string name="switch_camera">Kamerayı değiştir</string>
+    <string name="toggle_flash">Toggle flash</string>
     <string name="autofocus">Otomatik odaklama</string>
     <string name="initial_loading">Açılış yükleniyor</string>
     <string name="OFFlogo">Open Food Facts logosu</string>
@@ -640,11 +642,11 @@
     <string name="addtive_search">Katkı maddesi ara</string>
     <string name="additives">Katkı maddeleri</string>
     <!--used for product_lists implementation-->
-    <string name="dialog_add_product_to_list_title">Listelerinize ekleyin</string>
-    <string name="dialog_create_new_list_title">Yeni liste oluştur</string>
-    <string name="dialog_add_product_to_list_new">Yeni bir listeye ekle</string>
-    <string name="dialog_create_new_list_hint">Liste Adı</string>
-    <string name="default_list_title_stored">Sahip olduğum ürünler</string>
+    <string name="dialog_add_product_to_list_title">Add to your lists</string>
+    <string name="dialog_add_product_to_list_new">Add to a new list</string>
+    <string name="dialog_create_new_list_title">Create a new list</string>
+    <string name="dialog_create_new_list_hint">List Name</string>
+    <string name="default_list_title_stored">Eaten products</string>
     <string name="default_list_title_to_buy">Satın alınacak ürünler</string>
     <string name="txt_exporting_your_listed_products">Ürünleriniz Dışa Aktarılıyor…</string>
     <string name="txt_your_listed_products_exported">Ürünleriniz dışa aktarıldı</string>
@@ -737,7 +739,7 @@ Aynı zamanda bu listeye ürünleri arayarak ve ürün sayfasının sağ üstün
     <string name="content_edit_photo">Fotoğrafı düzenleme, kırpma ve döndürme</string>
     <string name="title_unselect_photo">Fotoğrafın Seçimini Kaldır</string>
     <string name="content_unselect_photo">Fotoğraf seçimini geri almak için buraya basınız</string>
-    <string name="title_exit">Çıkış</string>
+    <string name="title_exit">Çık</string>
     <string name="content_exit">Ürüne geri dönmek için buraya basınız</string>
     <string name="icon_label">Etiket simgeleri</string>
     <string name="icon_categories">Katagori simgeleri</string>
@@ -766,4 +768,5 @@ Aynı zamanda bu listeye ürünleri arayarak ve ürün sayfasının sağ üstün
     <string name="msg_welcome_ecoscore">A synthesis of the environmental impact of your food.</string>
     <string name="title_welcome_matomo">Send anonymous analytics</string>
     <string name="msg_welcome_matomo">Help the Open Food Facts volunteers to improve the app. You decide if you send anonymous analytics.\n\nIf you change your mind this option can be enabled and disabled at any time from the settings.</string>
+    <string name="hint_category_list">Search for a food category</string>
 </resources>

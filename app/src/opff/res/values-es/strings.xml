@@ -21,7 +21,7 @@
     <string name="slide_3_desc">Toda la comida que escanees, en una práctica lista que podrás exportar</string>
     <string name="slide_4_title">Funciona sin conexión</string>
     <string name="slide_4_desc">Puedes agregar nuevos productos, incluso si no tienes una conexión de Internet al momento</string>
-    <string name="product_does_not_exist_please_add_it">The product you scanned does not exist yet in Open Pet Food Facts. Please add it.</string>
+    <string name="product_does_not_exist_please_add_it">El producto que escaneaste no existe aún en Open Pet Food Facts. Por favor, añádelo.</string>
     <string name="txtDialogsContentPowerMode">El producto que has escaneado ya existe en Open Pet Food Facts.</string>
     <string name="msg_share">Mira este producto en Open Pet Food Facts:</string>
     <string name="not_support_books">Open Pet Food Facts no ofrece soporte para libros actualmente</string>

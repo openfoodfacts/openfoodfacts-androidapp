@@ -14,12 +14,12 @@
     <!-- Old onboarding slides -->
     <string name="slide_1_title">Допринеси за прозрачността при храните</string>
     <string name="slide_1_desc">Сканирай продукти, направи им снимка и допринеси за прозрачността при храните</string>
-    <string name="slide_2_title">Get the facts</string>
-    <string name="slide_2_desc">Extensive information about the product you\'ve scanned, deciphered for you</string>
+    <string name="slide_2_title">Вземи фактите</string>
+    <string name="slide_2_desc">Обширна информация за продукта, които си сканирал, дешифрирана за теб</string>
     <string name="slide_3_title">Получи Nutri-Score</string>
     <string name="slide_3_desc">Хранителните стойности на твоите предпочитани храни представени от синтетичен аспект</string>
     <string name="slide_4_title">Работа извън линия</string>
-    <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet connection right now</string>
+    <string name="slide_4_desc">Можеш да добавяш нови продукти, дори ако нямаш интернет връзка в момента</string>
     <!-- New onboarding-->
     <string name="title_welcome_intro">Присъедини се към хранителната революция</string>
     <string name="msg_welcome_intro">Сканирай храните, прави снимки, помагай за да променим хранителната система</string>

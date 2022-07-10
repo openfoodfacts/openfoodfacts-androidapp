@@ -12,21 +12,21 @@
     <string name="website_contributor">https://world.openfoodfacts.org/contributor/</string>
     <string name="txtHome">Open Food Facts is an open database of food products with ingredients, allergens, nutrition facts and all the tidbits of information we can find on product labels.</string>
     <!-- Old onboarding slides -->
-    <string name="slide_1_title">Contribute to Food transparency</string>
-    <string name="slide_1_desc">Scan products, take them in picture, make food transparency happen</string>
-    <string name="slide_2_title">Get the facts</string>
-    <string name="slide_2_desc">Extensive information about the product you\'ve scanned, deciphered for you</string>
-    <string name="slide_3_title">Get the Nutri-Score</string>
-    <string name="slide_3_desc">A synthetic view of the nutritional properties of your favorite food products</string>
-    <string name="slide_4_title">Works offline</string>
+    <string name="slide_1_title">Сприяти харчовій прозорості</string>
+    <string name="slide_1_desc">Скануйте продукти, робіть їх фото, сприяйте харчовій прозорості</string>
+    <string name="slide_2_title">Дізнатися факти</string>
+    <string name="slide_2_desc">Детальна інформація про продукт, який Ви відсканували, розшифрована для Вас</string>
+    <string name="slide_3_title">Отримати Nutri-Score</string>
+    <string name="slide_3_desc">Синтетичний погляд на поживні властивості ваших улюблених харчових продуктів</string>
+    <string name="slide_4_title">Працює офлайн</string>
     <string name="slide_4_desc">Ви маєте змогу дододати нову продукцію, навіть за відсутності Інтернету на даний час</string>
     <!-- New onboarding-->
-    <string name="title_welcome_intro">Join the food revolution</string>
+    <string name="title_welcome_intro">Приєднуйтесь до харчової революції</string>
     <string name="msg_welcome_intro">Скануйте продукти харчування, робіть фотографії, допомагайте перетворювати продовольчу систему</string>
-    <string name="title_welcome_nutriscore">Get the Nutri-Score</string>
-    <string name="msg_welcome_nutriscore">A simple synthesis of the nutritional quality of your food</string>
-    <string name="title_welcome_nova">Avoid ultra-processed foods</string>
-    <string name="msg_welcome_nova">Reduce the amount of ultra-processed foods in your diet.</string>
+    <string name="title_welcome_nutriscore">Отримати Nutri-Score</string>
+    <string name="msg_welcome_nutriscore">Простий синтез поживної якості вашої їжі</string>
+    <string name="title_welcome_nova">Уникайте ультраоброблених продуктів</string>
+    <string name="msg_welcome_nova">Зменшіть кількість ультраоброблених продуктів у своєму раціоні.</string>
     <string name="title_welcome_ecoscore">Eco-Score (показник впливу на довкілля)</string>
     <!-- Scan card -->
     <string name="product_does_not_exist_please_add_it">Відсканований продукт не існує в базі Open Food Facts. Будь ласка, додайте його.</string>
@@ -39,6 +39,6 @@
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
     <!-- OFF tagline in different languages -->
     <string name="tagline">вільна база даних продуктів харчування</string>
-    <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
+    <string name="product_not_found">Відсканований продукт %1$s ще не міститься на Open Food Facts. Будь ласка, додайте його.</string>
     <string name="currently_on_version">В цей момент на Open Food Facts</string>
 </resources>

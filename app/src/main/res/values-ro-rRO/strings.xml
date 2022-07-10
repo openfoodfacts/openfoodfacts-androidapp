@@ -492,6 +492,7 @@
     <string name="notify_channel_description">Notificare pentru a arăta locația fișierului exportat</string>
     <string name="products_to_be_completed">Produse ce trebuie să fie finalizate</string>
     <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Produs adăugat pe %1$s la %2$s CET de %3$s</string>
+    <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Ultima editare a paginii produsului %1$s la %2$s CEST de %3$s</string>
     <!-- TODO: Add the placeholder in the string - important for several languages -->
     <string name="other_editors">Pagina produsului totodată editată și de </string>
     <string name="product_states">Stări produse</string>
@@ -504,9 +505,9 @@
     <string name="productNameNull">Nume necunoscut</string>
     <string name="productAdditivesUnknown"></string>
     <plurals name="productAdditives">
-        <item quantity="one" comment="Do not change the placeholder">%d aditiv</item>
+        <item comment="Do not change the placeholder" quantity="one">%d aditiv</item>
         <item quantity="few">%d aditivi</item>
-        <item quantity="other" comment="Do not change the placeholder">%d aditivi</item>
+        <item comment="Do not change the placeholder" quantity="other">%d aditivi</item>
     </plurals>
     <string name="product_not_complete">Acest produs încă nu este complet.\nÎi poți adăuga tu câteva detalii?</string>
     <string name="addProductOffline">Pari a fi deconectat. Adaugi produsul %s folosind modul offline?</string>
@@ -515,6 +516,7 @@
     <string name="trouble_scanning">Probleme cu scanarea?</string>
     <string name="barcode_hint">Probleme cu scanarea? Introduce manual codul de bare</string>
     <string name="switch_camera">Schimbă camera foto</string>
+    <string name="toggle_flash">Comutați blițul</string>
     <string name="autofocus">Autofocalizare</string>
     <string name="initial_loading">Încărcare inițială</string>
     <string name="OFFlogo">Logo Open Food Facts</string>
@@ -647,10 +649,10 @@
     <string name="additives">Aditivi</string>
     <!--used for product_lists implementation-->
     <string name="dialog_add_product_to_list_title">Adaugă la listele tale</string>
-    <string name="dialog_create_new_list_title">Creați o nouă listă</string>
-    <string name="dialog_add_product_to_list_new">Adaugă la o nouă listă</string>
+    <string name="dialog_add_product_to_list_new">Adăugați la o listă nouă</string>
+    <string name="dialog_create_new_list_title">Creați o listă nouă</string>
     <string name="dialog_create_new_list_hint">Numele listei</string>
-    <string name="default_list_title_stored">Products I have</string>
+    <string name="default_list_title_stored">Produse consumate</string>
     <string name="default_list_title_to_buy">Produse de cumpărat</string>
     <string name="txt_exporting_your_listed_products">Se exportă produsele dvs…</string>
     <string name="txt_your_listed_products_exported">Produsele dumneavoastră au fost exportate</string>
@@ -680,7 +682,7 @@
     <string name="error_nutrient_entry">Valoarea ar trebui să fie numerică. Exemplu: &quot;1,5&quot;, &quot;2,0&quot;</string>
     <string name="error_nutrient_serving_data">Valoarea mărimii porției trebuie să fie o valoare pozitivă</string>
     <string name="error_in_nutrient_data">Unele valori nutriționale nu sunt valide. Vă rugăm să remediați câmpurile de deasupra cu marcajul de eroare</string>
-    <string name="go_to_full_product_page">Mergi la produs</string>
+    <string name="go_to_full_product_page">Treci la Produs</string>
     <string name="no_additive_data_available_for_this_product">Nu sunt disponibile date despre aditivi pentru acest produs</string>
     <string name="no_nutrient_information_available_for_this_product">Nu sunt disponibile informaţii referitoare la nutrienţi pentru acest produs</string>
     <string name="error_duplicate_listname">Aveți deja o listă cu acest nume</string>
@@ -772,4 +774,5 @@
     <string name="msg_welcome_ecoscore">O sinteză a impactului alimentelor asupra mediului.</string>
     <string name="title_welcome_matomo">Trimiteți analize anonime</string>
     <string name="msg_welcome_matomo">Ajutați voluntarii Open Food Facts să îmbunătățească aplicația. Tu decizi dacă trimiți analize anonime.\n\nDacă vă răzgândiți, această opțiune poate fi activată și dezactivată în orice moment din setări.</string>
+    <string name="hint_category_list">Căutați o categorie de alimente</string>
 </resources>

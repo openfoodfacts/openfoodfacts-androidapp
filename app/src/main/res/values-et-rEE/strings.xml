@@ -231,7 +231,7 @@
     <string name="permission_denied">Please activate permission in the settings</string>
     <string name="info_download_data_connection">You need to download some data to get this functionality working. Please activate your internet connection.</string>
     <!-- Strings related to login -->
-    <string name="error_invalid_password">The password needs to be at least 6 characters long.</string>
+    <string name="error_invalid_password">Salasõna peab olema vähemalt 6 tähemärki pikk.</string>
     <string name="user">kasutaja</string>
     <string name="error_field_required">Väli on kohustuslik.</string>
     <!-- Strings related to feedback dialog -->
@@ -487,6 +487,7 @@
     <string name="notify_channel_description">Notification to show exported file\'s location</string>
     <string name="products_to_be_completed">Tooted, mida täiendada</string>
     <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Product added on %1$s at %2$s CET by %3$s</string>
+    <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Last edit of product page on %1$s at %2$s CEST by %3$s </string>
     <!-- TODO: Add the placeholder in the string - important for several languages -->
     <string name="other_editors">Product page also edited by </string>
     <string name="product_states">Product States</string>
@@ -499,8 +500,8 @@
     <string name="productNameNull">Nimi teadmata</string>
     <string name="productAdditivesUnknown"></string>
     <plurals name="productAdditives">
-        <item quantity="one" comment="Do not change the placeholder">%d additive</item>
-        <item quantity="other" comment="Do not change the placeholder">%d lisandit</item>
+        <item comment="Do not change the placeholder" quantity="one">%d additive</item>
+        <item comment="Do not change the placeholder" quantity="other">%d lisandit</item>
     </plurals>
     <string name="product_not_complete">See toode pole veel valmis. \nKas saad lisada mõned üksikasjad?</string>
     <string name="addProductOffline">You seem offline. Add the product %s using the offline mode ?</string>
@@ -509,6 +510,7 @@
     <string name="trouble_scanning">Trouble Scanning?</string>
     <string name="barcode_hint">Trouble Scanning? Enter Barcode</string>
     <string name="switch_camera">Switch camera</string>
+    <string name="toggle_flash">Toggle flash</string>
     <string name="autofocus">Autofookus</string>
     <string name="initial_loading">Esialgne laadimine</string>
     <string name="OFFlogo">Open Food Facts logo</string>
@@ -640,9 +642,9 @@
     <string name="addtive_search">Search for a additive</string>
     <string name="additives">Lisandid</string>
     <!--used for product_lists implementation-->
-    <string name="dialog_add_product_to_list_title">Lisa oma loenditesse</string>
-    <string name="dialog_create_new_list_title">Create a new list</string>
+    <string name="dialog_add_product_to_list_title">Add to your lists</string>
     <string name="dialog_add_product_to_list_new">Add to a new list</string>
+    <string name="dialog_create_new_list_title">Create a new list</string>
     <string name="dialog_create_new_list_hint">List Name</string>
     <string name="default_list_title_stored">Eaten products</string>
     <string name="default_list_title_to_buy">Products to buy</string>
@@ -766,4 +768,5 @@
     <string name="msg_welcome_ecoscore">A synthesis of the environmental impact of your food.</string>
     <string name="title_welcome_matomo">Send anonymous analytics</string>
     <string name="msg_welcome_matomo">Help the Open Food Facts volunteers to improve the app. You decide if you send anonymous analytics.\n\nIf you change your mind this option can be enabled and disabled at any time from the settings.</string>
+    <string name="hint_category_list">Search for a food category</string>
 </resources>

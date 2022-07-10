@@ -16,7 +16,7 @@
   -->
 <resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
-        <item quantity="one">Você tem %d produto offline aguardando ser contribuído para o Open Food Facts</item>
+        <item quantity="one">Você tem um produto offline aguardando ser contribuído para o Open Food Facts</item>
         <item quantity="other">Você tem %d produtos offline aguardando serem contribuídos para o Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
@@ -487,6 +487,7 @@
     <string name="notify_channel_description">Notificação para mostrar a localização do arquivo exportado</string>
     <string name="products_to_be_completed">Produtos a completar</string>
     <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Produto adicionado em %1$s às %2$s CET por %3$s</string>
+    <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Última edição da página do produto em %1$s às %2$s CEST por %3$s </string>
     <!-- TODO: Add the placeholder in the string - important for several languages -->
     <string name="other_editors">Página do produto editada também por </string>
     <string name="product_states">Product States</string>
@@ -499,8 +500,8 @@
     <string name="productNameNull">Nome desconhecido</string>
     <string name="productAdditivesUnknown"></string>
     <plurals name="productAdditives">
-        <item quantity="one" comment="Do not change the placeholder">%d aditivo</item>
-        <item quantity="other" comment="Do not change the placeholder">%d aditivos</item>
+        <item comment="Do not change the placeholder" quantity="one">%d aditivo</item>
+        <item comment="Do not change the placeholder" quantity="other">%d aditivos</item>
     </plurals>
     <string name="product_not_complete">Este produto ainda não está completo. \nPode adicionar alguns detalhes?</string>
     <string name="addProductOffline">Você parece offline. Adicionar o produto %s usando o modo offline?</string>
@@ -509,6 +510,7 @@
     <string name="trouble_scanning">Problemas digitalizando?</string>
     <string name="barcode_hint">Problemas digitalizando? Digite o código de barras</string>
     <string name="switch_camera">Mudar de câmara</string>
+    <string name="toggle_flash">Toggle flash</string>
     <string name="autofocus">Auto-foco</string>
     <string name="initial_loading">Carregamento inicial</string>
     <string name="OFFlogo">Logotipo da Open Food Facts</string>
@@ -641,10 +643,10 @@
     <string name="additives">Aditivos</string>
     <!--used for product_lists implementation-->
     <string name="dialog_add_product_to_list_title">Adicionar às suas listas</string>
-    <string name="dialog_create_new_list_title">Criar uma nova lista</string>
     <string name="dialog_add_product_to_list_new">Adicionar a uma nova lista</string>
+    <string name="dialog_create_new_list_title">Criar uma nova lista</string>
     <string name="dialog_create_new_list_hint">Nome da Lista</string>
-    <string name="default_list_title_stored">Produtos que eu tenho</string>
+    <string name="default_list_title_stored">Eaten products</string>
     <string name="default_list_title_to_buy">Produtos para comprar</string>
     <string name="txt_exporting_your_listed_products">Exportando seus produtos…</string>
     <string name="txt_your_listed_products_exported">Seus produtos foram exportados</string>
@@ -766,4 +768,5 @@
     <string name="msg_welcome_ecoscore">A synthesis of the environmental impact of your food.</string>
     <string name="title_welcome_matomo">Compartilhar dados anônimos</string>
     <string name="msg_welcome_matomo">Ajude os voluntários do Open Food Facts a melhorar o aplicativo. Você decide se deseja enviar análises anônimas.\n\nSe mudar de ideia, esta opção pode ser ativada e desativada a qualquer momento nas configurações.</string>
+    <string name="hint_category_list">Pesquisar uma categoria de alimentos</string>
 </resources>

@@ -19,16 +19,16 @@
         <item quantity="other"> %d のオフライン製品が Open Food Facts に送信されるのを待っています</item>
     </plurals>
     <plurals name="seconds">
-        <item quantity="other">%d seconds ago</item>
+        <item quantity="other">%d 秒前</item>
     </plurals>
     <plurals name="minutes">
-        <item quantity="other">%d minutes ago</item>
+        <item quantity="other">%d分前</item>
     </plurals>
     <plurals name="hours">
-        <item quantity="other">%d hours ago</item>
+        <item quantity="other">%d時間前</item>
     </plurals>
     <plurals name="days">
-        <item quantity="other">%d days ago</item>
+        <item quantity="other">%d日前</item>
     </plurals>
     <string name="action_about">アプリについて</string>
     <string name="action_discover">見つける</string>
@@ -155,15 +155,15 @@
     <string name="alert_dialog_warning_msg_user">ユーザー/パスワードを変更しました。情報を更新してください</string>
     <string name="toast_retrieving">読み込んでいます…</string>
     <string name="txtBarcode">バーコード:</string>
-    <string name="txtCategories">Categories:</string>
-    <string name="txtLabels">Labels, certifications, awards: </string>
-    <string name="txtEMB">Traceability codes: </string>
-    <string name="txtIngredients">Ingredients list: </string>
+    <string name="txtCategories">カテゴリー:</string>
+    <string name="txtLabels">ラベル、認証、賞： </string>
+    <string name="txtEMB">トレーサビリティコード </string>
+    <string name="txtIngredients">原材料一覧表 </string>
     <string name="Donate">寄付</string>
-    <string name="Donation">Click here to donate to Open Food Facts</string>
-    <string name="txtSubstances">Substances or products causing allergies or intolerances: </string>
-    <string name="txtAdditives">Additives: </string>
-    <string name="txtTraces">Traces: </string>
+    <string name="Donation">Open Beauty Facts に寄付するにはここをクリック</string>
+    <string name="txtSubstances">アレルギーまたは不耐性を引き起こす物質または製品： </string>
+    <string name="txtAdditives">添加物: </string>
+    <string name="txtTraces">トレース： </string>
     <string name="txtServingSize">分量 :</string>
     <string name="txtNutrientLevel100g">100g 当たりの栄養成分:</string>
     <string name="txtNutrientLevel100ml">100ml 当たりの栄養成分:</string>
@@ -177,14 +177,14 @@
     <string name="txtSugars">砂糖</string>
     <string name="hintBarcode">バーコード</string>
     <string name="txtNutriScoreInfo">栄養成分の詳細</string>
-    <string name="txtloginHelper">If you have an Open Food Facts account, you can login here with it</string>
+    <string name="txtloginHelper">Open Food Factsアカウントをお持ちの場合は、ここからログインできます</string>
     <string name="hintLogin">ユーザー名</string>
     <string name="hintPass">パスワード</string>
     <string name="errorLogin">ログインまたはパスワードエラー</string>
     <string name="errorWeb">インターネットにアクセスできませんでした。接続に問題がありませんか?</string>
-    <string name="txtInfoLoginOk">You successfully logged into your Open Food Facts account.</string>
-    <string name="txtInfoLoginNo">An error happened while trying to log into your Open Food Facts account.</string>
-    <string name="product_does_not_exist_please_add_it">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
+    <string name="txtInfoLoginOk">正常にOpen Food Factsアカウントにログインしました。</string>
+    <string name="txtInfoLoginNo">OpenFoodFactsアカウントにログインしようとしたときにエラーが発生しました。</string>
+    <string name="product_does_not_exist_please_add_it">スキャンした製品は、OpenBeautyFactsにはまだ存在していません。追加してください。</string>
     <string name="txtYes">はい</string>
     <string name="txtNo">いいえ</string>
     <string name="hintBrand">ブランド（会社名）</string>
@@ -192,10 +192,10 @@
     <string name="txtPictureNeededDialogNo">破棄</string>
     <string name="toastSending">アップロードしています…</string>
     <string name="txtLoading">読み込んでいます…</string>
-    <string name="productSavedToast">Product saved, thanks!</string>
+    <string name="productSavedToast">製品が保存されました。ありがとうございます！</string>
     <string name="txtBarcodeRequire">バーコードが必要です</string>
     <string name="txtBarcodeNotValid">バーコードが正しくありません</string>
-    <string name="msg_share">Look at this product on Open Food Facts :</string>
+    <string name="msg_share">Open Food Facts でこの製品を見る :</string>
     <string name="create_account">サインアップ</string>
     <string name="home_drawer">ホーム</string>
     <string name="install">インストール</string>
@@ -211,7 +211,7 @@
     <string name="alert_drawer">アレルゲン警告</string>
     <string name="your_lists">あなたのリスト</string>
     <string name="title_dialog_alert">警告を追加</string>
-    <string name="select_camera">Select a Camera</string>
+    <string name="select_camera">カメラを選択する</string>
     <string name="ok_button">OK</string>
     <string name="cancel_button">取消</string>
     <string name="login_button">ユーザー名</string>
@@ -353,7 +353,7 @@
     <string name="take_picture">写真を撮る</string>
     <string name="choose_picture_from_gallery">ギャラリーから</string>
     <string name="take_picture_ingredients">原材料の写真を撮ります</string>
-    <string name="take_picture_recycling">Take a photo of the recycling instructions</string>
+    <string name="take_picture_recycling">リサイクル手順の写真を撮る</string>
     <string name="take_picture_front">正面の写真を撮る</string>
     <string name="take_picture_nutrition_table">栄養成分表の写真を撮ります</string>
     <string name="take_more_pictures">もっと写真を撮ります</string>
@@ -438,7 +438,7 @@
     <string name="additive_string">添加物</string>
     <string name="allergen_string">アレルゲン</string>
     <string name="search_string">検索</string>
-    <string name="country_string">Country</string>
+    <string name="country_string">国</string>
     <string name="store_subtitle">店舗</string>
     <string name="packaging_subtitle">パッケージング</string>
     <string name="state_subtitle">状態</string>
@@ -482,6 +482,7 @@
     <string name="notify_channel_description">エクスポートされたファイルの場所を示す通知</string>
     <string name="products_to_be_completed">完了が必要な製品</string>
     <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">生成物は、上に追加 %1$s で %2$s によってCET %3$s</string>
+    <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">製品ページの最終編集 %1$s %2$s 中央ヨーロッパ標準時、編集者 </string>
     <!-- TODO: Add the placeholder in the string - important for several languages -->
     <string name="other_editors">製品ページの共同編集者 </string>
     <string name="product_states">Product States</string>
@@ -494,7 +495,7 @@
     <string name="productNameNull">名前不明</string>
     <string name="productAdditivesUnknown"></string>
     <plurals name="productAdditives">
-        <item quantity="other" comment="Do not change the placeholder">%d additives</item>
+        <item comment="Do not change the placeholder" quantity="other">%d additives</item>
     </plurals>
     <string name="product_not_complete">この製品はまだ完全ではありません。\n詳細を追加できますか?</string>
     <string name="addProductOffline">オフラインのようです。オフラインモードを使用して製品 %s を追加しますか ?</string>
@@ -503,6 +504,7 @@
     <string name="trouble_scanning">スキャンに問題がありますか？</string>
     <string name="barcode_hint">スキャンに問題がありますか？バーコードを入力してください</string>
     <string name="switch_camera">カメラを切り替え</string>
+    <string name="toggle_flash">Toggle flash</string>
     <string name="autofocus">オートフォーカス</string>
     <string name="initial_loading">ロードしています…</string>
     <string name="OFFlogo">Open Food Facts ロゴ</string>
@@ -635,10 +637,10 @@
     <string name="additives">添加物</string>
     <!--used for product_lists implementation-->
     <string name="dialog_add_product_to_list_title">Add to your lists</string>
-    <string name="dialog_create_new_list_title">Create a new list</string>
     <string name="dialog_add_product_to_list_new">Add to a new list</string>
+    <string name="dialog_create_new_list_title">Create a new list</string>
     <string name="dialog_create_new_list_hint">List Name</string>
-    <string name="default_list_title_stored">Products I have</string>
+    <string name="default_list_title_stored">Eaten products</string>
     <string name="default_list_title_to_buy">Products to buy</string>
     <string name="txt_exporting_your_listed_products">Exporting Your Products…</string>
     <string name="txt_your_listed_products_exported">Your products have been exported</string>
@@ -760,4 +762,5 @@
     <string name="msg_welcome_ecoscore">A synthesis of the environmental impact of your food.</string>
     <string name="title_welcome_matomo">Send anonymous analytics</string>
     <string name="msg_welcome_matomo">Help the Open Food Facts volunteers to improve the app. You decide if you send anonymous analytics.\n\nIf you change your mind this option can be enabled and disabled at any time from the settings.</string>
+    <string name="hint_category_list">Search for a food category</string>
 </resources>

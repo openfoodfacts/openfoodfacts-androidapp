@@ -11,40 +11,40 @@
     <!-- For fr, Replace by https://world-fr.openproductsfacts.org/contributeur/ -->
     <string name="website_contributor">https://world.openfoodfacts.org/contributor/</string>
     <string name="terms_url">https://world.openproductsfacts.org/terms-of-use</string>
-    <string name="txtHomeOnline">Open Products Facts is an open database of more than %1$s products (plus the ones you will contribute).</string>
+    <string name="txtHomeOnline">Open Products Facts - це відкрита база даних з більш ніж%1$s продуктів (а також ті, що ви внесете).</string>
     <string name="txtHome">Open Products Facts is an open database of food products with ingredients, allergens, nutrition facts and all the tidbits of information we can find on product labels.</string>
-    <string name="slide_1_title">Contribute to product transparency</string>
+    <string name="slide_1_title">Сприяти прозорості продуктів</string>
     <string name="slide_1_desc">Scan products, take them in picture, make food transparency happen</string>
-    <string name="slide_2_title">Get the facts</string>
-    <string name="slide_2_desc">Extensive information about the products you\'ve scanned, deciphered for you</string>
-    <string name="slide_3_title">Keep track of the product you use</string>
-    <string name="slide_3_desc">All the products you scanned, in one handy list you can export</string>
-    <string name="slide_4_title">Works offline</string>
+    <string name="slide_2_title">Дізнатися факти</string>
+    <string name="slide_2_desc">Для вас розшифрована більш детальна інформація про продукти, які ви сканували</string>
+    <string name="slide_3_title">Відстежуйте продукт, який Ви використовуєте</string>
+    <string name="slide_3_desc">Усі продукти, що ви просканували, знаходяться у зручному переліку, який ви можете експортувати</string>
+    <string name="slide_4_title">Працює офлайн</string>
     <string name="slide_4_desc">Ви маєте змогу дододати нову продукцію, навіть за відсутності Інтернету на даний час</string>
     <string name="product_does_not_exist_please_add_it">Відсканований продукт не існує в базі Open Products Facts. Будь ласка, додайте його.</string>
-    <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Products Facts.</string>
-    <string name="msg_share">Look at this product on Open Products Facts :</string>
-    <string name="not_support_books">Books are not currently supported by Open Products Facts</string>
-    <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Products Facts</string>
-    <string name="Donation">Click here to donate to Open Products Facts</string>
-    <string name="translate_help_title">Help translate Open Products Facts</string>
-    <string name="translate_help_summary">Bring the Open Products Facts database to your language - no technical knowledge required</string>
-    <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Products Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Products Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+    <string name="txtDialogsContentPowerMode">Продукт, який ви просканували, вже існує на Open Products Facts.</string>
+    <string name="msg_share">Подивитися на цей продукт на Open Products Facts:</string>
+    <string name="not_support_books">Наразі книжки не підтримуються Open Products Facts</string>
+    <string name="txt_broaden_search">-розширте ваш пошук \n, проскануйте та додайте до Open Products Facts</string>
+    <string name="Donation">Натисніть тут для того, щоб зробити пожертвування на Open Products Facts</string>
+    <string name="translate_help_title">Допоможіть із перекладом Open Products Facts</string>
+    <string name="translate_help_summary">Перекладіть базу даних Open Products Facts рідною мовою - технічні знання не потрібні</string>
+    <string name="text_offline_info_dialog">Скануйте продукти навіть коли ви не онлайн для того, щоб пізніше додати їх на Open Products Facts. Проскановані продукти з\'являться тут, і ви отримаєте можливість відправити їх, натиснувши кнопку нижче.</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Інформація щодо вашої алергії ніколи не буде відправлена на сервер Open Products Facts. Також, будьте уважні, дані продукту можуть бути недійсними, так само як і виявлення, тож, будь ласка, самостійно перевірте ще раз! </string>
     <!-- OPF tagline in different languages -->
-    <string name="version_string">Open Products Facts Android App</string>
+    <string name="version_string">Додаток Open Products Facts для Android</string>
     <string name="tagline">the free product database</string>
-    <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Products Facts. Can you add it?</string>
-    <string name="currently_on_version">Currently on Open Products Facts</string>
-    <string name="category_game_btn">Help categorize products</string>
-    <string name="add_nutrient_prompt_text">Add more details to help complete the product</string>
-    <string name="add_category_prompt_text">Add a category to help complete the product</string>
-    <string name="add_nutrient_category_prompt_text">Add a category and more details to help complete the product</string>
-    <string name="default_list_title_stored">Products I have</string>
+    <string name="product_not_found">Продукту, що ви просканували, ще немає в наявності на Open Products Facts. Чи можете ви додати його?</string>
+    <string name="currently_on_version">Наразі на Open Products Facts</string>
+    <string name="category_game_btn">Допоможіть категоризувати продукти</string>
+    <string name="add_nutrient_prompt_text">Додайте більше деталей, щоб доповнити інформацію про продукт</string>
+    <string name="add_category_prompt_text">Додайте категорію, щоб доповнити інформацію про продукт</string>
+    <string name="add_nutrient_category_prompt_text">Додайте категорію та більше деталей, щоб доповнити інформацію про продукт</string>
+    <string name="default_list_title_stored">Мої продукти</string>
     <string name="default_list_title_to_buy">Товари для покупки</string>
-    <string name="intent_filter_share_label">Add to Open Products Facts</string>
+    <string name="intent_filter_share_label">Додати на Open Products Facts</string>
     <string name="txt_info_eaten_products">Ви зможете додати товар в цей список, відсканувавши продукцію, перетягнувши картку товару вгору і клікнувши \"Товари для покупки\".
         Ви також маєте змогу додавати товари в цей список, виконавши їх пошук і натиснувши кнопку \"+\" в правому верхньому куті сторінки товару.</string>
-    <string name="OFFlogo">Open Products Facts logo</string>
-    <string name="brand_hint">Examples: Nike, Apple, etc…</string>
+    <string name="OFFlogo">Логотип Open Products Facts</string>
+    <string name="brand_hint">Наприклад: Nike, Apple, etc…</string>
 </resources>

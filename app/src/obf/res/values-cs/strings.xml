@@ -7,28 +7,28 @@
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/decouvrir -->
     <string name="website_discover">https://world-cs.openbeautyfacts.org/discover</string>
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/produit/ -->
-    <string name="website_product">https://world.openbeautyfacts.org/product/</string>
+    <string name="website_product">https://world-cs.openbeautyfacts.org/produkty/</string>
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/contributeur/ -->
-    <string name="website_contributor">https://world.openbeautyfacts.org/contributor/</string>
+    <string name="website_contributor">https://world-cs.openbeautyfacts.org/prispevatel/</string>
     <string name="terms_url">https://world-cs.openbeautyfacts.org/terms-of-use</string>
-    <string name="txtHomeOnline">Open Beauty Facts is an open database of more than %1$s cosmetic products (plus the ones you will contribute).</string>
-    <string name="txtHome">Open Beauty Facts is a open and collaborative database of cosmetic products.</string>
-    <string name="slide_1_title">Contribute to Cosmetic transparency</string>
-    <string name="slide_1_desc">Scan products, take them in picture, make cosmetic transparency happen</string>
+    <string name="txtHomeOnline">Open Beauty Facts je otevřená databáze více než %1$s kosmetických produktů (plus těch, kterými přispějete).</string>
+    <string name="txtHome">Open Beauty Facts je otevřená a spolupracující databáze kosmetických produktů.</string>
+    <string name="slide_1_title">Přispěte k transparenci kosmetiky</string>
+    <string name="slide_1_desc">Nasnímejte zboží, vyfoťte ho, zajistěte transparentnost kosmetiky</string>
     <string name="slide_2_title">Získejte fakta</string>
-    <string name="slide_2_desc">Extensive information about the product you\'ve scanned, deciphered for you</string>
-    <string name="slide_3_title">Keep track of the product you use</string>
-    <string name="slide_3_desc">All the cosmetic you use, in one handy list you can export</string>
+    <string name="slide_2_desc">Rozsáhlé informace o produktu, který jste naskenovali, pro vás dešifrovali</string>
+    <string name="slide_3_title">Sledujte produkt, který používáte</string>
+    <string name="slide_3_desc">Veškerá kosmetika, kterou používáte, v jednom praktickém seznamu, který můžete exportovat</string>
     <string name="slide_4_title">Pracuje offline</string>
-    <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet connection right now</string>
-    <string name="product_does_not_exist_please_add_it">The product you scanned does not exist yet in Open Beauty Facts. Please add it.</string>
+    <string name="slide_4_desc">Můžete přidávat nové produkty, i když právě nemáte připojení k internetu</string>
+    <string name="product_does_not_exist_please_add_it">Produkt, který jste naskenovali, zatím v Open Beauty Facts neexistuje. Prosím přidejte ho.</string>
     <string name="msg_share">Podívejte se na tento produkt v Open Beauty Facts :</string>
-    <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Beauty Facts</string>
+    <string name="txt_broaden_search">- rozšíření vyhledávání \n- naskenujte a přidejte jej do Open Beauty Facts</string>
     <string name="Donation">Kliknutím můžete přispět na Open Beauty Facts</string>
     <string name="translate_help_title">Pomozte přeložit Open Beauty Facts</string>
-    <string name="translate_help_summary">Bring the Open Beauty Facts database to your language - no technical knowledge required</string>
-    <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Beauty Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Beauty Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+    <string name="translate_help_summary">Přeneste databázi Open Beauty Facts do svého jazyka – nejsou potřeba žádné technické znalosti</string>
+    <string name="text_offline_info_dialog">Naskenujte produkty, i když jste offline, abyste je později přidali do Open Beauty Facts. Zde se objeví naskenované produkty a budete je moci odeslat pomocí tlačítka níže.</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Informace o vašich alergiích nebudou nikdy odeslány na server Open Beauty Facts. Dávejte si také pozor, že produktová data nemusí být přesná a detekce nemusí být 100% přesná, proto si to prosím překontrolujte sami! </string>
     <!-- Open Beauty Facts tagline in different languages -->
     <string name="version_string">Android aplikace Open Beauty Facts</string>
     <string name="tagline">the free cosmetics database</string>
@@ -43,8 +43,8 @@
     <string name="default_list_title_to_buy">Nákupní seznam</string>
     <string name="intent_filter_share_label">Přidat do Open Beauty Facts</string>
     <string name="brand_hint">Příklady: Nivea, L\'Oréal, atd…</string>
-    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
-        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
+    <string name="txt_info_eaten_products">Do tohoto seznamu budete moci přidat produkt naskenováním produktů, přetažením karty produktu nahoru a klepnutím na „Produkty k nákupu“.
+        Do tohoto seznamu budete také moci přidat produkty tak, že je vyhledáte a kliknete na tlačítko + v pravém horním rohu stránky produktu.</string>
     <string name="OFFlogo">Logo Open Beauty Facts</string>
     <string name="txtDialogsContentPowerMode">Výrobek, který jste naskenovali, už je v databázi Open Food Facts.</string>
 </resources>

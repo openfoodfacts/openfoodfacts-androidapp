@@ -16,10 +16,10 @@
   -->
 <resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
-        <item quantity="one">You have %d offline product waiting to be contributed to Open Food Facts</item>
-        <item quantity="few"> You have %d offline products waiting to be contributed to Open Food Facts</item>
-        <item quantity="many"> You have %d offline products waiting to be contributed to Open Food Facts</item>
-        <item quantity="other"> You have %d offline products waiting to be contributed to Open Food Facts</item>
+        <item quantity="one">Turite 1 neprisijungus naudojamą produktą, kuris laukia, kol bus pateiktas „Open Food Facts“</item>
+        <item quantity="few">Turite %d neprisijungus naudojamą produktą, kuris laukia, kol bus pateiktas „Open Food Facts“</item>
+        <item quantity="many">Turite %d neprisijungus naudojamą produktą, kuris laukia, kol bus pateiktas „Open Food Facts“</item>
+        <item quantity="other">Turite %d neprisijungus naudojamų produktų, kurie laukia, kol būsite įtraukti į „Open Food Facts“</item>
     </plurals>
     <plurals name="seconds">
         <item quantity="one">Prieš %d sekundę</item>
@@ -29,9 +29,9 @@
     </plurals>
     <plurals name="minutes">
         <item quantity="one">prieš %d minutę</item>
-        <item quantity="few">%d minutes ago</item>
-        <item quantity="many">%d minutes ago</item>
-        <item quantity="other">%d minutes ago</item>
+        <item quantity="few">prieš %d minutes(čių)</item>
+        <item quantity="many">prieš %d minutes(čių)</item>
+        <item quantity="other">prieš %d minutes(čių)</item>
     </plurals>
     <plurals name="hours">
         <item quantity="one">prieš %d valandą</item>
@@ -41,8 +41,8 @@
     </plurals>
     <plurals name="days">
         <item quantity="one">Prieš %d dieną</item>
-        <item quantity="few">%d days ago</item>
-        <item quantity="many">%d days ago</item>
+        <item quantity="few">prieš %d dienų</item>
+        <item quantity="many">prieš %d dienų</item>
         <item quantity="other">prieš %d dienų</item>
     </plurals>
     <string name="action_about">About</string>
@@ -166,19 +166,19 @@
     </string-array>
     <!-- Content Description -->
     <string name="search_button">Paieška</string>
-    <string name="alert_dialog_warning_title">Warning</string>
+    <string name="alert_dialog_warning_title">Įspėjimas</string>
     <string name="alert_dialog_warning_msg_user">Vartotojas / slaptažodis pasikeitė, atnaujinkite informaciją</string>
     <string name="toast_retrieving">Įkeliama…</string>
     <string name="txtBarcode">Brūkšninis kodas:</string>
-    <string name="txtCategories">Categories:</string>
-    <string name="txtLabels">Labels, certifications, awards: </string>
-    <string name="txtEMB">Traceability codes: </string>
-    <string name="txtIngredients">Ingredients list: </string>
+    <string name="txtCategories">Kategorijos:</string>
+    <string name="txtLabels">Etiketės, sertifikatai, apdovanojimai: </string>
+    <string name="txtEMB">Atsekamumo kodai: </string>
+    <string name="txtIngredients">Ingredientų sąrašas: </string>
     <string name="Donate">Paaukokite</string>
     <string name="Donation">Spustelėkite čia, jei norite paaukoti Open Food Facts</string>
-    <string name="txtSubstances">Substances or products causing allergies or intolerances: </string>
-    <string name="txtAdditives">Additives: </string>
-    <string name="txtTraces">Traces: </string>
+    <string name="txtSubstances">Medžiagos arba produktai, sukeliantys alergiją ar netoleravimą: </string>
+    <string name="txtAdditives">Priedai: </string>
+    <string name="txtTraces">Pėdsakai: </string>
     <string name="txtServingSize">Porcijos dydis:</string>
     <string name="txtNutrientLevel100g">Maistingumas 100 g:</string>
     <string name="txtNutrientLevel100ml">Maistingumas 100ml :</string>
@@ -188,8 +188,8 @@
     <string name="txtSave">Išsaugoti</string>
     <string name="txtSignIn">Prisijungti</string>
     <string name="txtSalt">Salt</string>
-    <string name="txtFat">Fat</string>
-    <string name="txtSugars">Sugars</string>
+    <string name="txtFat">Riebalai</string>
+    <string name="txtSugars">Cukrus</string>
     <string name="hintBarcode">Barkodas</string>
     <string name="txtNutriScoreInfo">Sužinokite daugiau apie maistinių medžiagų kiekį</string>
     <string name="txtloginHelper">Jei turite Open Food Facts paskyrą, galite čia prisijungti</string>
@@ -197,9 +197,9 @@
     <string name="hintPass">Slaptažodis</string>
     <string name="errorLogin">Prisijungimo vardo ar slaptažodžio klaida</string>
     <string name="errorWeb">Mums nepavyko prisijungti prie interneto. Ar turite ryšio problemų?</string>
-    <string name="txtInfoLoginOk">You successfully logged into your Open Food Facts account.</string>
-    <string name="txtInfoLoginNo">An error happened while trying to log into your Open Food Facts account.</string>
-    <string name="product_does_not_exist_please_add_it">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
+    <string name="txtInfoLoginOk">Sėkmingai prisijungėte prie „Open Food Facts“ paskyros.</string>
+    <string name="txtInfoLoginNo">Bandant prisijungti prie „Open Food Facts“ paskyros įvyko klaida.</string>
+    <string name="product_does_not_exist_please_add_it">Produktas, kurį nuskaitėte, dar neegzistuoja Open Food Facts. Prašome pridėti.</string>
     <string name="txtYes">Taip</string>
     <string name="txtNo">Ne</string>
     <string name="hintBrand">Brand</string>
@@ -226,12 +226,12 @@
     <string name="alert_drawer">Allergen alert</string>
     <string name="your_lists">Jūsų sąrašai</string>
     <string name="title_dialog_alert">Pridėti įspėjimą</string>
-    <string name="select_camera">Select a Camera</string>
+    <string name="select_camera">Pasirinkite fotoaparatą</string>
     <string name="ok_button">Gerai</string>
     <string name="cancel_button">Cancel</string>
     <string name="login_button">Login</string>
     <string name="create_account_button">Sukurti paskyrą</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Informacija apie alergijas niekada nebus siunčiama į „Open Food Facts“ serverį. Be to, būkite atsargūs, kad produkto duomenys gali būti netikslūs ir aptikimas gali būti netikslūs 100 %, todėl dar kartą patikrinkite patys!</string>
     <string name="title_info_dialog">Kaip tai veikia?</string>
     <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
     <string name="permission_camera">Norint nuskaityti brūkšninius kodus ir fotografuoti, reikalingas kameros leidimas.</string>
@@ -269,20 +269,20 @@
     <string name="calculated_nutrition">Apskaičiuotas maistingumas</string>
     <string name="please_enter_weight">Prašome įvesti produkto svorį</string>
     <string name="enter_weight">Įveskite produkto svorį</string>
-    <string name="calculate_nutrition_facts">Calculate nutrition facts for a specific quantity</string>
+    <string name="calculate_nutrition_facts">Apskaičiuokite konkretaus kiekio mitybos faktus</string>
     <string name="nutrition_carbohydrate">Carbohydrate</string>
     <string name="nutrition_cholesterol">Cholesterol</string>
     <string name="nutrition_energy_kcal">Energija kalorijomis (kcal)</string>
     <string name="nutrition_energy_kj">Energija džauliais (kJ)</string>
     <string name="nutrition_energy_short_name">Energy</string>
-    <string name="nutrition_fat">Fat</string>
-    <string name="nutrition_fiber">Dietary fiber</string>
+    <string name="nutrition_fat">Riebalai</string>
+    <string name="nutrition_fiber">Maistinė lasteliena</string>
     <string name="nutrition_header">Nutrition facts</string>
-    <string name="nutrition_proteins">Proteins</string>
+    <string name="nutrition_proteins">Baltymai</string>
     <string name="nutrition_salt">Salt</string>
     <string name="nutrition_satured_fat">Saturated fat</string>
     <string name="nutrition_sodium">Sodium</string>
-    <string name="nutrition_sugars">Sugars</string>
+    <string name="nutrition_sugars">Cukrus</string>
     <string name="nutrition_trans_fat">Trans fat</string>
     <string name="nutriment_serving_size">Vienai porcijai: </string>
     <string name="action_manage_account">Valdyti paskyrą</string>
@@ -381,11 +381,11 @@
     <string name="nova_grp3_msg">Group 3 - Processed foods</string>
     <string name="nova_grp4_msg">Group 4 - Ultra-processed food and drink products</string>
     <!-- String related to App Shortcuts -->
-    <string name="disabled_message">The shortcut is not available.</string>
-    <string name="scan_shortcut_short_label">Skanuoti</string>
+    <string name="disabled_message">Spartusis klavišas nepasiekiamas.</string>
+    <string name="scan_shortcut_short_label">Skenuoti</string>
     <string name="scan_shortcut_long_label">Nuskaityti produktą</string>
     <string name="barcode_shortcut_short_label">Paieška</string>
-    <string name="barcode_shortcut_long_label">Search by barcode</string>
+    <string name="barcode_shortcut_long_label">Ieškoti pagal brūkšninį kodą</string>
     <string name="history_shortcut_short_label">History</string>
     <string name="history_shortcut_long_label">History</string>
     <string name="contributions_shortcut_short_label">Prisidėjo</string>
@@ -429,19 +429,19 @@
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
     <string name="url_nutrient_values">https://world-lt.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">Bendra</string>
-    <string name="preference_header_privacy">Privacy</string>
-    <string name="preference_crash_title">Crash reporting</string>
-    <string name="preference_crash_summary">When enabled, crash reports will be sent to the Open Food Facts server automatically, so that we can fix bugs and improve the app.</string>
-    <string name="preference_analytics_title">Send anonymous data</string>
-    <string name="preference_analytics_summary">When enabled, some anonymous information regarding app usage will be sent to the Open Food Facts servers, so that we can understand how and how much features are used in order to improve them.</string>
-    <string name="preference_analytics_bottom_sheet_title">Send anonymous data</string>
-    <string name="preference_analytics_bottom_sheet_description">Help improve Open Food Facts by letting us know how you use it. Data collected is anonymous. This option can be disabled at any time in the settings section.</string>
-    <string name="preference_analytics_bottom_sheet_grant_button">Grant</string>
-    <string name="preference_analytics_bottom_sheet_decline_button">Decline</string>
+    <string name="preference_header_privacy">Privatumas</string>
+    <string name="preference_crash_title">Pranešimas apie strigtis</string>
+    <string name="preference_crash_summary">Kai įjungta, strigčių ataskaitos bus automatiškai siunčiamos į „Open Food Facts“ serverį, kad galėtume ištaisyti klaidas ir patobulinti programą.</string>
+    <string name="preference_analytics_title">Siųsti anoniminius duomenis</string>
+    <string name="preference_analytics_summary">Kai įjungta, tam tikra anoniminė informacija apie programos naudojimą bus siunčiama į „Open Food Facts“ serverius, kad galėtume suprasti, kaip ir kiek funkcijų naudojama siekiant jas tobulinti.</string>
+    <string name="preference_analytics_bottom_sheet_title">Siųsti anoniminius duomenis</string>
+    <string name="preference_analytics_bottom_sheet_description">Padėkite tobulinti „Open Food Facts“ pranešdami, kaip jį naudojate. Surinkti duomenys yra anonimiški. Šią parinktį galima bet kada išjungti nustatymų skiltyje.</string>
+    <string name="preference_analytics_bottom_sheet_grant_button">Suteikti</string>
+    <string name="preference_analytics_bottom_sheet_decline_button">Atmesti</string>
     <string name="scan_first_string">Jūsų peržiūrėta produkto istorija bus pateikta čia.\nŠi istorija skirta tik jūsų akims ir yra saugoma lokaliai.</string>
     <string name="log_in">Login</string>
-    <string name="login_true">You are already logged in.</string>
-    <string name="confirm_logout">Confirm Open Food Facts logout</string>
+    <string name="login_true">Jūs jau esate prisijungęs.</string>
+    <string name="confirm_logout">Patvirtinkite „Open Food Facts“ atsijungimą</string>
     <string name="logout_dialog_content">Are you sure to log out ?</string>
     <string name="dialog_cancel">Cancel</string>
     <string name="dialog_create">Kurti</string>
@@ -454,11 +454,11 @@
     <string name="allergen_string">Allergen</string>
     <string name="search_string">Paieška</string>
     <string name="country_string">Country</string>
-    <string name="store_subtitle">Store</string>
+    <string name="store_subtitle">Parduotuvė</string>
     <string name="packaging_subtitle">Pakuotė</string>
-    <string name="state_subtitle">Valstija</string>
+    <string name="state_subtitle">Būsena</string>
     <string name="packaging_string">Pakuotė</string>
-    <string name="label_string">Label</string>
+    <string name="label_string">Etiketė</string>
     <string name="category_string">Category</string>
     <string name="connection">Prisijungta</string>
     <string name="contributor_string">Pagalbininkas</string>
@@ -497,6 +497,7 @@
     <string name="notify_channel_description">Pranešimas, rodantis eksportuoto failo vietą</string>
     <string name="products_to_be_completed">Produktai, kurie turi būti baigti</string>
     <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Produktas pridėtas %1$s %2$s CET iki %3$s</string>
+    <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Paskutinis produkto puslapio redagavimas %1$s, %2$s CEST, %3$s </string>
     <!-- TODO: Add the placeholder in the string - important for several languages -->
     <string name="other_editors">Produkto puslapį taip pat redagavo </string>
     <string name="product_states">Produkto Būsenos</string>
@@ -509,10 +510,10 @@
     <string name="productNameNull">Vardas nežinomas</string>
     <string name="productAdditivesUnknown"></string>
     <plurals name="productAdditives">
-        <item quantity="one" comment="Do not change the placeholder">%d priedas</item>
-        <item quantity="few">%d additives</item>
-        <item quantity="many">%d additives</item>
-        <item quantity="other" comment="Do not change the placeholder">%d priedų</item>
+        <item comment="Do not change the placeholder" quantity="one">%d priedas</item>
+        <item quantity="few">%d priedų</item>
+        <item quantity="many">%d priedų</item>
+        <item comment="Do not change the placeholder" quantity="other">%d priedų</item>
     </plurals>
     <string name="product_not_complete">Šis produktas dar nėra pabaigtas. \nAr galite pridėti šiek tiek informacijos?</string>
     <string name="addProductOffline">Esi neprisijungęs. Pridėti produktą %s naudojant neprisijungusį režimą?</string>
@@ -521,6 +522,7 @@
     <string name="trouble_scanning">Sunku nuskaityti?</string>
     <string name="barcode_hint">Sunku nuskaityti? Įveskite brūkšninį kodą</string>
     <string name="switch_camera">Perjungti kamerą</string>
+    <string name="toggle_flash">Toggle flash</string>
     <string name="autofocus">Automatinis fokusavimas</string>
     <string name="initial_loading">Pradinis pakrovimas</string>
     <string name="OFFlogo">Open Food Facts logo</string>
@@ -553,8 +555,8 @@
     <string name="nutrition_facts">Nutrition Facts</string>
     <string name="your_version">Jūsų</string>
     <string name="ingredients_picture">Ingredientų nuotrauka</string>
-    <string name="packaging">Recycling</string>
-    <string name="take_ingredients_picture_to_extract">(Please take a photo of the ingredients to automatically extract them)</string>
+    <string name="packaging">Perdirbimas</string>
+    <string name="take_ingredients_picture_to_extract">(Prašome nufotografuoti ingredientus, kad juos automatiškai nuskaitytume)</string>
     <string name="ingredients_list">Ingredientų sąrašas</string>
     <string name="ingredients_hint" tools:ignore="StringFormatInvalid">Laikykitės eiliškumo, nurodykite %, kur parašyta, atskirkite kableliu arba naudokite -, naudokite () ingredientų sudedamosioms dalims, apsupkite alergenus su _</string>
     <string name="extract_ingredients">Nuskaityti ingredientus</string>
@@ -653,10 +655,10 @@
     <string name="additives">Additives</string>
     <!--used for product_lists implementation-->
     <string name="dialog_add_product_to_list_title">Pridėti prie savo sąrašų</string>
-    <string name="dialog_create_new_list_title">Sukurkite naują sąrašą</string>
-    <string name="dialog_add_product_to_list_new">Pridėti prie naujo sąrašo</string>
+    <string name="dialog_add_product_to_list_new">Pridėti naują sąrašą / sukurti naują sąrašą</string>
+    <string name="dialog_create_new_list_title">Sukurti naują sąrašą</string>
     <string name="dialog_create_new_list_hint">Sąrašo pavadinimas</string>
-    <string name="default_list_title_stored">Products I have</string>
+    <string name="default_list_title_stored">Eaten products</string>
     <string name="default_list_title_to_buy">Produktai, kuriuos reikia nusipirkti</string>
     <string name="txt_exporting_your_listed_products">Eksportuojami produktai…</string>
     <string name="txt_your_listed_products_exported">Jūsų produktai buvo eksportuoti</string>
@@ -695,7 +697,7 @@
     <string name="add_an_allergen">Pridėti alergeną</string>
     <string name="add_a_list">Pridėti sąrašą</string>
     <string name="edit_image">Redaguoti nuotrauką</string>
-    <string name="cant_edit_image_not_yet_uploaded">The new photo is not yet uploaded. Please wait before editing it</string>
+    <string name="cant_edit_image_not_yet_uploaded">Nauja nuotrauka dar neįkelta. Palaukite prieš ją redaguojant</string>
     <string name="unselect_image">Atžymėti nuotrauką</string>
     <string name="choose_default_language">Pasirinkite produkto kalbą</string>
     <string name="barcode">Barkodas</string>
@@ -719,20 +721,20 @@
     <string name="unknown_status_no_translation">Negalėjome įvertinti produkto būklės dėl neatpažintų ingredientų.</string>
     <string name="help_translate_ingredients">Help translate the ingredients in your language</string>
     <string name="unknown_status_missing_ingredients">Negalėjome įvertinti produkto būklės dėl trūkstamų ingredientų.</string>
-    <string name="unknown_status_ambiguous_ingredients">We couldn\'t assess the status of the product because of ambiguous ingredients : <![CDATA[<b>%1$s</b>]]></string>
-    <string name="help_extract_ingredients">Help extract the ingredients to get the %1$s status</string>
+    <string name="unknown_status_ambiguous_ingredients">Negalėjome įvertinti produkto būsenos dėl neaiškių sudedamųjų dalių: <![CDATA[<b>%1$s</b>]]></string>
+    <string name="help_extract_ingredients">Padėkite išgauti ingredientus, kad gautumėte %1$s būseną</string>
     <string name="add_photo_to_extract_ingredients">Pridėkite nuotrauką, kad pradėtumėte išgauti ingredientus</string>
     <string name="product_already_exists_in_comparison">Produktas jau yra palyginimo sąraše</string>
     <string name="compare_brands">Prekės ženklai:</string>
     <string name="compare_additives">Priedai:</string>
     <string name="compare_salt">Salt</string>
-    <string name="compare_sugars">Sugars</string>
+    <string name="compare_sugars">Cukrus</string>
     <string name="compare_saturated_fat">Saturated fat</string>
-    <string name="compare_fat">Fat</string>
+    <string name="compare_fat">Riebalai</string>
     <string name="compare_quantity">Kiekis:</string>
     <string name="load_ingredient_detection_data">Įkelti ingredientų aptikimo duomenis</string>
     <string name="load_ingredient_detection_data_summary">Ingredientų aptikimo duomenų nerasta. Pabandykite juos įkelti iš serverio</string>
-    <string name="white_check_image_descr">A white check</string>
+    <string name="white_check_image_descr">Baltas čekis</string>
     <string name="hint_packaging">Pavyzdžiai: plastikas, popierius, stiklas</string>
     <string name="hint_trace_code">Pavyzdžiai: EMB 23456, FR 23.345.34 CE</string>
     <string name="risk_alcohol_consumption">Besaikis alkoholio vartojimas kenkia sveikatai, jį reikia vartoti saikingai</string>
@@ -753,9 +755,9 @@
     <string name="content_exit">Paspauskite čia, jei norite grįžti prie produkto</string>
     <string name="icon_label">Etikečių ikona</string>
     <string name="icon_categories">Kategorijų ikona</string>
-    <string name="icon_emb">Traceability code icon</string>
+    <string name="icon_emb">Atsekamumo kodo piktograma</string>
     <string name="product_front_image">Priekinis prekės vaizdas</string>
-    <string name="brand_hint">Examples: Coca-Cola, Nestle, etc…</string>
+    <string name="brand_hint">Pavyzdžiai: Coca-Cola, Nestle ir kt…</string>
     <string name="sign_in_or_register">Prisijunkite arba prisiregistruokite</string>
     <string name="hunger_game_call_to_action" comment="Do not change the placeholder">Padėkite klasifikuoti daugiau %1$s</string>
     <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s products (plus the ones you will contribute) in the world.</string>
@@ -768,14 +770,15 @@
     <string name="changelog_translation_help" comment="Do not change the placeholder">Norite pamatyti šį keitimo žurnalą %s?\nPrisijunkite prie vertimo komandos!</string>
     <string name="whats_new">Kas naujo su „Open Food Facts“?</string>
     <!-- New onboarding slides -->
-    <string name="title_welcome_intro">Join the food revolution</string>
-    <string name="msg_welcome_intro">Scan food, Take photos, Help transform the food system</string>
+    <string name="title_welcome_intro">Prisijunkite prie maisto revoliucijos</string>
+    <string name="msg_welcome_intro">Nuskaitykite maistą, fotografuokite, padėkite pakeisti maisto sistemą</string>
     <string name="title_welcome_nutriscore" comment="Do not translate Nutri-Score">Gaukite Nutri-Score</string>
-    <string name="msg_welcome_nutriscore">A simple synthesis of the nutritional quality of your food</string>
-    <string name="title_welcome_nova">Avoid ultra-processed foods</string>
-    <string name="msg_welcome_nova">Reduce the amount of ultra-processed foods in your diet.</string>
+    <string name="msg_welcome_nutriscore">Paprasta jūsų maisto maistinės kokybės sintezė</string>
+    <string name="title_welcome_nova">Venkite itin perdirbto maisto</string>
+    <string name="msg_welcome_nova">Sumažinkite itin perdirbtų maisto produktų kiekį savo racione.</string>
     <string name="title_welcome_ecoscore" comment="Do not translate Eco-Score">Eco-Score</string>
-    <string name="msg_welcome_ecoscore">A synthesis of the environmental impact of your food.</string>
-    <string name="title_welcome_matomo">Send anonymous analytics</string>
-    <string name="msg_welcome_matomo">Help the Open Food Facts volunteers to improve the app. You decide if you send anonymous analytics.\n\nIf you change your mind this option can be enabled and disabled at any time from the settings.</string>
+    <string name="msg_welcome_ecoscore">Jūsų maisto poveikio aplinkai sintezė.</string>
+    <string name="title_welcome_matomo">Siųsti anoniminę analizę</string>
+    <string name="msg_welcome_matomo">Padėkite „Open Food Facts“ savanoriams tobulinti programą. Jūs nusprendžiate, ar siųsti anoniminę analizę.\n\nJei apsigalvosite, šią parinktį galite bet kada įjungti ir išjungti nustatymuose.</string>
+    <string name="hint_category_list">Search for a food category</string>
 </resources>

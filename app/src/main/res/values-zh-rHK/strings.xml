@@ -482,6 +482,7 @@
     <string name="notify_channel_description">Notification to show exported file\'s location</string>
     <string name="products_to_be_completed">Products to be completed</string>
     <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Product added on %1$s at %2$s CET by %3$s</string>
+    <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Last edit of product page on %1$s at %2$s CEST by %3$s </string>
     <!-- TODO: Add the placeholder in the string - important for several languages -->
     <string name="other_editors">Product page also edited by </string>
     <string name="product_states">Product States</string>
@@ -494,7 +495,7 @@
     <string name="productNameNull">名稱不明</string>
     <string name="productAdditivesUnknown"></string>
     <plurals name="productAdditives">
-        <item quantity="other" comment="Do not change the placeholder">%d additives</item>
+        <item comment="Do not change the placeholder" quantity="other">%d additives</item>
     </plurals>
     <string name="product_not_complete">This product is not yet complete. \nCan you add some details?</string>
     <string name="addProductOffline">You seem offline. Add the product %s using the offline mode ?</string>
@@ -503,6 +504,7 @@
     <string name="trouble_scanning">不能掃描？</string>
     <string name="barcode_hint">不能掃描？輸入條碼</string>
     <string name="switch_camera">切換相機</string>
+    <string name="toggle_flash">Toggle flash</string>
     <string name="autofocus">自動對焦</string>
     <string name="initial_loading">初步載入</string>
     <string name="OFFlogo">Open Food Facts標誌</string>
@@ -634,11 +636,11 @@
     <string name="addtive_search">搜尋添加劑</string>
     <string name="additives">添加劑</string>
     <!--used for product_lists implementation-->
-    <string name="dialog_add_product_to_list_title">加入您的列表</string>
-    <string name="dialog_create_new_list_title">新增清單</string>
-    <string name="dialog_add_product_to_list_new">加入新列表</string>
-    <string name="dialog_create_new_list_hint">清單名稱</string>
-    <string name="default_list_title_stored">Products I have</string>
+    <string name="dialog_add_product_to_list_title">Add to your lists</string>
+    <string name="dialog_add_product_to_list_new">Add to a new list</string>
+    <string name="dialog_create_new_list_title">Create a new list</string>
+    <string name="dialog_create_new_list_hint">List Name</string>
+    <string name="default_list_title_stored">Eaten products</string>
     <string name="default_list_title_to_buy">要購買的產品</string>
     <string name="txt_exporting_your_listed_products">匯出產品……</string>
     <string name="txt_your_listed_products_exported">已匯出您的產品</string>
@@ -760,4 +762,5 @@
     <string name="msg_welcome_ecoscore">A synthesis of the environmental impact of your food.</string>
     <string name="title_welcome_matomo">Send anonymous analytics</string>
     <string name="msg_welcome_matomo">Help the Open Food Facts volunteers to improve the app. You decide if you send anonymous analytics.\n\nIf you change your mind this option can be enabled and disabled at any time from the settings.</string>
+    <string name="hint_category_list">Search for a food category</string>
 </resources>

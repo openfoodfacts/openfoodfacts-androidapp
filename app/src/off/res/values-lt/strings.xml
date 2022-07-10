@@ -21,22 +21,22 @@
     <string name="slide_4_title">Works offline</string>
     <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet connection right now</string>
     <!-- New onboarding-->
-    <string name="title_welcome_intro">Join the food revolution</string>
-    <string name="msg_welcome_intro">Scan food, Take photos, Help transform the food system</string>
+    <string name="title_welcome_intro">Prisijunkite prie maisto revoliucijos</string>
+    <string name="msg_welcome_intro">Nuskaitykite maistą, fotografuokite, padėkite pakeisti maisto sistemą</string>
     <string name="title_welcome_nutriscore">Gaukite Nutri-Score</string>
-    <string name="msg_welcome_nutriscore">A simple synthesis of the nutritional quality of your food</string>
-    <string name="title_welcome_nova">Avoid ultra-processed foods</string>
-    <string name="msg_welcome_nova">Reduce the amount of ultra-processed foods in your diet.</string>
+    <string name="msg_welcome_nutriscore">Paprasta jūsų maisto maistinės kokybės sintezė</string>
+    <string name="title_welcome_nova">Venkite itin perdirbto maisto</string>
+    <string name="msg_welcome_nova">Sumažinkite itin perdirbtų maisto produktų kiekį savo racione.</string>
     <string name="title_welcome_ecoscore">Eco-Score</string>
     <!-- Scan card -->
-    <string name="product_does_not_exist_please_add_it">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
+    <string name="product_does_not_exist_please_add_it">Produktas, kurį nuskaitėte, dar neegzistuoja Open Food Facts. Prašome pridėti.</string>
     <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Food Facts.</string>
     <string name="msg_share">Pažvelkite į šį produktą Open Food Facts:</string>
     <string name="not_support_books">Books are not currently supported by Open Food Facts</string>
     <string name="txt_broaden_search">- išplėskite paiešką \n- nuskaitykite ir pridėkite ją prie Open Food Facts</string>
     <string name="Donation">Spustelėkite čia, jei norite paaukoti Open Food Facts</string>
     <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Informacija apie alergijas niekada nebus siunčiama į „Open Food Facts“ serverį. Be to, būkite atsargūs, kad produkto duomenys gali būti netikslūs ir aptikimas gali būti netikslūs 100 %, todėl dar kartą patikrinkite patys!</string>
     <!-- OFF tagline in different languages -->
     <string name="tagline">nemokama maisto produktų duomenų bazė</string>
     <string name="product_not_found">%1$s nuskaityto produkto dar nėra Open Food Facts. Ar galite jį pridėti?</string>

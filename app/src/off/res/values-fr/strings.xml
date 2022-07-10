@@ -29,14 +29,14 @@
     <string name="msg_welcome_nova">Réduisez la quantité d\'aliments ultra-transformés dans votre alimentation.</string>
     <string name="title_welcome_ecoscore">Éco-Score</string>
     <!-- Scan card -->
-    <string name="product_does_not_exist_please_add_it">Le produit que vous avez scanné n\'existe pas encore dans Open Food Facts. Voulez-vous l\'ajouter?</string>
+    <string name="product_does_not_exist_please_add_it">Le produit que vous avez scanné n\'existe pas encore dans Open Food Facts. Voulez-vous l\'ajouter ?</string>
     <string name="txtDialogsContentPowerMode">Le produit que vous avez scanné existe déjà dans Open Food Facts.</string>
     <string name="msg_share">Regarde ce produit sur Open Food Facts:</string>
     <string name="not_support_books">Les livres ne sont actuellement pas pris en charge par Open Food Facts</string>
     <string name="txt_broaden_search">- élargir votre recherche\n-le scanner et l\'ajouter à Open Food Facts</string>
     <string name="Donation">Cliquez ici pour faire un don à Open Food Facts</string>
     <string name="text_offline_info_dialog">Vous pouvez scanner des produits lorsque vous êtes hors-ligne pour les ajouter plus tard à Open Food Facts. Tous les produits que vous scannez apparaîtront ici et vous serez en mesure de les envoyer en utilisant le bouton ci-dessous.</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Les informations relatives à vos allergies ne seront jamais envoyées aux serveurs d\'Open Food Facts. Par ailleurs, soyez vigilant sur le fait que ces données ne sont pas fiables à 100 % at que la détection peut ne pas être précise à 100 %. Veuillez donc vérifier vous-même !</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Les informations relatives à vos allergies ne seront jamais envoyées aux serveurs d\'Open Food Facts. Par ailleurs, soyez vigilant sur le fait que ces données ne sont pas fiables à 100 % et que la détection peut ne pas être précise à 100 %. Veuillez donc vérifier vous-même !</string>
     <!-- OFF tagline in different languages -->
     <string name="tagline">l\'information alimentaire ouverte</string>
     <string name="product_not_found">Le produit %1$s que vous scannez n\'existe pas encore dans Open Food Facts. Pouvez-vous l\'ajouter ?</string>

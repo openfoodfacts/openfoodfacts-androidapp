@@ -41,8 +41,8 @@
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
         <item>Ringkasan</item>
-        <item>Kandungan bahan</item>
-        <item>kandungan nutrisi</item>
+        <item>Komposisi</item>
+        <item>Kandungan nutrisi</item>
         <item>Tabel Nutrisi</item>
         <item>Lingkungan</item>
     </string-array>
@@ -83,7 +83,7 @@
         <item>Asam dekanoat (10:0)</item>
         <item>Asam heksanoat (6:0)</item>
         <item>Asam kaprilat (8:0)</item>
-        <item>Kasein</item>
+        <item>kasen</item>
         <item>Asam cerotic (26:0)</item>
         <item>Klorida</item>
         <item>Kolesterol</item>
@@ -250,7 +250,7 @@
     <!-- Nutrition info tab -->
     <string name="display_fact" comment="Do not modify the placeholder">Tabel informasi nilai gizi untuk %1$s produk ini</string>
     <string name="check_facts">Periksa</string>
-    <string name="nutrition">kandungan nutrisi</string>
+    <string name="nutrition">Kandungan nutrisi</string>
     <string name="calculated_nutrition">Nutrisi Terhitung</string>
     <string name="please_enter_weight">Silahkan ketik ukuran berat produk</string>
     <string name="enter_weight">Ketik ukuran berat produk</string>
@@ -266,7 +266,7 @@
     <string name="nutrition_proteins">Protein:</string>
     <string name="nutrition_salt">Garam</string>
     <string name="nutrition_satured_fat">Lemak jenuh</string>
-    <string name="nutrition_sodium">Sodium</string>
+    <string name="nutrition_sodium">Natrium</string>
     <string name="nutrition_sugars">Gula</string>
     <string name="nutrition_trans_fat">Lemak trans</string>
     <string name="nutriment_serving_size">Per sajian : </string>
@@ -295,7 +295,7 @@
     <string name="something_went_wrong">Maaf, sesuatu tidak beres…</string>
     <string name="txt_try_again">Coba lagi</string>
     <string name="nutrition_lactose">Laktosa</string>
-    <string name="nutrition_casein">Kasein</string>
+    <string name="nutrition_casein">kasen</string>
     <string name="nutrition_maltodextrins">Maltodekstrin</string>
     <string name="nutrition_serum_proteins">Protein Serum</string>
     <string name="nutrition_nucleotides">Nukleotida</string>
@@ -389,7 +389,7 @@
     <string name="prompt_point_at_a_barcode">Arahkan kamera Anda pada kode batang</string>
     <string name="prompt_move_camera_closer">Bergerak lebih dekat untuk mendeteksi</string>
     <string name="please_check_your_connection">Mohon periksa koneksi Anda.</string>
-    <string name="advanced_search_title">Pencarian Lanjutan &amp; Grafik</string>
+    <string name="advanced_search_title">Pencarian lanjutan &amp; grafik</string>
     <string name="compare_products">Bandingkan produk - produk</string>
     <string name="connectivity_check">Harap periksa koneksi internet Anda</string>
     <string name="dismiss">Abaikan</string>
@@ -478,6 +478,7 @@
     <string name="notify_channel_description">Pemberitahuan untuk menampilkan lokasi berkas yang diekspor</string>
     <string name="products_to_be_completed">Produk - produk yang perlu dilengkapi</string>
     <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Produk ditambahkan pada hari %1$s jam %2$s CET sebesar %3$s</string>
+    <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Penyuntingan terakhir halaman produk pada hari %1$s jam %2$s CEST oleh %3$s </string>
     <!-- TODO: Add the placeholder in the string - important for several languages -->
     <string name="other_editors">Halaman produk juga disunting oleh </string>
     <string name="product_states">Status produk</string>
@@ -490,7 +491,7 @@
     <string name="productNameNull">Nama tidak diketahui</string>
     <string name="productAdditivesUnknown"></string>
     <plurals name="productAdditives">
-        <item quantity="other" comment="Do not change the placeholder">%d zat aditif</item>
+        <item comment="Do not change the placeholder" quantity="other">%d zat aditif</item>
     </plurals>
     <string name="product_not_complete">Produk ini belum lengkap. \nBisakah Anda menambahkan beberapa detail?</string>
     <string name="addProductOffline">Tampaknya Anda luring. Tambahkan produk %s menggunakan mode luring?</string>
@@ -499,6 +500,7 @@
     <string name="trouble_scanning">Pemindaian bermasalah?</string>
     <string name="barcode_hint">Pemindaian bermasalah? Masukkan kode batang</string>
     <string name="switch_camera">Ganti kamera</string>
+    <string name="toggle_flash">Toggle flash</string>
     <string name="autofocus">Fokus otomatis</string>
     <string name="initial_loading">Pemuatan awal</string>
     <string name="OFFlogo">Logo Open Food Facts</string>
@@ -527,7 +529,7 @@
     <string name="no_internet_connection">Tampaknya Anda tidak memiliki koneksi internet, gambar akan diunggah saat jaringan tersedia</string>
     <string name="no_internet_unable_to_extract_ingredients">Tidak ada koneksi internet. Tidak dapat mengekstrak kandungan bahan</string>
     <string name="overview">Ringkasan</string>
-    <string name="ingredients">Kandungan bahan</string>
+    <string name="ingredients">Komposisi</string>
     <string name="nutrition_facts">Informasi nilai gizi</string>
     <string name="your_version">Milik Anda</string>
     <string name="ingredients_picture">Gambar Kandungan Bahan</string>
@@ -630,11 +632,11 @@
     <string name="addtive_search">Cari zat aditif</string>
     <string name="additives">Zat - zat aditif</string>
     <!--used for product_lists implementation-->
-    <string name="dialog_add_product_to_list_title">Tambahkan ke daftar Anda</string>
-    <string name="dialog_create_new_list_title">Buat daftar baru</string>
-    <string name="dialog_add_product_to_list_new">Tambahkan ke daftar baru</string>
-    <string name="dialog_create_new_list_hint">Nama Daftar</string>
-    <string name="default_list_title_stored">Produk - produk yang dimakan</string>
+    <string name="dialog_add_product_to_list_title">Add to your lists</string>
+    <string name="dialog_add_product_to_list_new">Add to a new list</string>
+    <string name="dialog_create_new_list_title">Create a new list</string>
+    <string name="dialog_create_new_list_hint">List Name</string>
+    <string name="default_list_title_stored">Eaten products</string>
     <string name="default_list_title_to_buy">Produk - produk untuk dibeli</string>
     <string name="txt_exporting_your_listed_products">Mengekspor Produk - Produk Anda…</string>
     <string name="txt_your_listed_products_exported">Produk - produk Anda telah diekspor</string>
@@ -755,4 +757,5 @@
     <string name="msg_welcome_ecoscore">Sintesis dampak lingkungan dari makanan Anda.</string>
     <string name="title_welcome_matomo">Kirim analitik anonim</string>
     <string name="msg_welcome_matomo">Bantu para relawan Open Food Facts untuk meningkatkan aplikasi. Anda memiliki pilihan untuk mengirim analitik anonim.\n\nJika Anda berubah pikiran, opsi ini dapat diaktifkan dan dinonaktifkan kapan saja dari bagian pengaturan.</string>
+    <string name="hint_category_list">Pencarian untuk kategori makanan</string>
 </resources>

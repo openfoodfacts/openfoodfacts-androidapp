@@ -47,7 +47,7 @@
     <string-array name="nav_drawer_items_product">
         <item>Resumen</item>
         <item>Ingredientes</item>
-        <item>Nutrición</item>
+        <item>Información nutricional</item>
         <item>Tabla Nutricional</item>
         <item>Medio ambiente</item>
     </string-array>
@@ -156,7 +156,7 @@
     </string-array>
     <!-- Content Description -->
     <string name="search_button">Buscar</string>
-    <string name="alert_dialog_warning_title">Aviso</string>
+    <string name="alert_dialog_warning_title">Atención</string>
     <string name="alert_dialog_warning_msg_user">El usuario/contraseña ha cambiado. Por favor, actualiza la información</string>
     <string name="toast_retrieving">Cargando…</string>
     <string name="txtBarcode">Código de barras:</string>
@@ -216,7 +216,7 @@
     <string name="alert_drawer">Alerta de alérgenos</string>
     <string name="your_lists">Tus listas</string>
     <string name="title_dialog_alert">Añadir alerta</string>
-    <string name="select_camera">Seleccione una cámara</string>
+    <string name="select_camera">Elige una cámara</string>
     <string name="ok_button">Aceptar</string>
     <string name="cancel_button">Cancelar</string>
     <string name="login_button">Usuario</string>
@@ -255,7 +255,7 @@
     <!-- Nutrition info tab -->
     <string name="display_fact" comment="Do not modify the placeholder">Tabla de información nutricional para %1$s de este producto</string>
     <string name="check_facts">Revisar</string>
-    <string name="nutrition">Nutrición</string>
+    <string name="nutrition">Información nutricional</string>
     <string name="calculated_nutrition">Nutrientes calculados</string>
     <string name="please_enter_weight">Por favor, introduce el peso del producto</string>
     <string name="enter_weight">Introduce el peso del producto</string>
@@ -420,8 +420,8 @@
     <string name="url_nutrient_values">https://world-es.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">General</string>
     <string name="preference_header_privacy">Privacy Policy</string>
-    <string name="preference_crash_title">Reporta un error o falla</string>
-    <string name="preference_crash_summary">Cuando está habilitado, los reportes de errores o fallas serán enviados automáticamente al servidor de Open Food Facts, para ser corregidos y mejorar la aplicación.</string>
+    <string name="preference_crash_title">Informar de fallos</string>
+    <string name="preference_crash_summary">Al activarlo, los informes de fallos se enviarán al servidor de Open Food Facts automáticamente, para que podamos corregir errores y mejorar la aplicación.</string>
     <string name="preference_analytics_title">Enviar comentarios anónimos</string>
     <string name="preference_analytics_summary">Cuando lo desees, puedes contarnos tu experiencia como usuario de la aplicación, dicha información será enviada de forma completamente anónima a los servidores de Open Food Facts, para que podamos entender cómo y cuántas funciones se utilizan para mejorarlas.</string>
     <string name="preference_analytics_bottom_sheet_title">Enviar comentarios anónimos</string>
@@ -445,9 +445,9 @@
     <string name="search_string">Buscar</string>
     <string name="country_string">País</string>
     <string name="store_subtitle">Tienda</string>
-    <string name="packaging_subtitle">Envases</string>
+    <string name="packaging_subtitle">Envase</string>
     <string name="state_subtitle">Estado</string>
-    <string name="packaging_string">Envases</string>
+    <string name="packaging_string">Envase</string>
     <string name="label_string">Etiqueta</string>
     <string name="category_string">Categoría</string>
     <string name="connection">Conectado</string>
@@ -487,6 +487,7 @@
     <string name="notify_channel_description">Notificación para mostrar la ubicación del archivo exportado</string>
     <string name="products_to_be_completed">Productos por completar</string>
     <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Producto agregado desde %1$s a %2$s CET por %3$s</string>
+    <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Última edición de la página del producto en %1$s a %2$s CEST por %3$s</string>
     <!-- TODO: Add the placeholder in the string - important for several languages -->
     <string name="other_editors">Página de producto también editada por </string>
     <string name="product_states">Estados del producto</string>
@@ -499,8 +500,8 @@
     <string name="productNameNull">Nombre desconocido</string>
     <string name="productAdditivesUnknown"></string>
     <plurals name="productAdditives">
-        <item quantity="one" comment="Do not change the placeholder">%d aditivos</item>
-        <item quantity="other" comment="Do not change the placeholder">%d aditivos</item>
+        <item comment="Do not change the placeholder" quantity="one">%d aditivos</item>
+        <item comment="Do not change the placeholder" quantity="other">%d aditivos</item>
     </plurals>
     <string name="product_not_complete">Este producto aún no está completo. \n¿Puedes añadir algunos detalles?</string>
     <string name="addProductOffline">Pareces estar desconectado. ¿Agregar el producto %s usando el modo sin conexión?</string>
@@ -509,6 +510,7 @@
     <string name="trouble_scanning">¿Problemas con el escáner?</string>
     <string name="barcode_hint">¿Problemas con el escáner? Introduce el código de barras</string>
     <string name="switch_camera">Cambiar la cámara</string>
+    <string name="toggle_flash">Alternar flash</string>
     <string name="autofocus">Enfoque automático</string>
     <string name="initial_loading">Carga inicial</string>
     <string name="OFFlogo">Logotipo de Open Food Facts</string>
@@ -518,7 +520,7 @@
     <string name="unable_to_extract_ingredients">No se pueden extraer los ingredientes de la imagen</string>
     <string name="error_adding_nutrition_facts">Algo salió mal al tratar de agregar la información nutricional del producto</string>
     <string name="error_in_carbohydrate_value">Los carbohidratos no pueden ser menos que la suma de azúcar y almidón</string>
-    <string name="choose_nutrient">Elija un nutriente</string>
+    <string name="choose_nutrient">Elige un nutriente</string>
     <string name="error_adding_product_details">Algo salió mal al tratar de agregar los detalles del producto</string>
     <string name="hint_product_URL">Enlace de la página oficial del producto</string>
     <string name="extract_url">Extraer URL del código QR</string>
@@ -559,7 +561,7 @@
     <string name="per_serving">Por porción</string>
     <string name="serving_size">Tamaño de la porción</string>
     <string name="alcohol_unit" formatted="false">% vol / °</string>
-    <string name="add_a_nutrient">Añade un nutriente</string>
+    <string name="add_a_nutrient">Añadir un nutriente</string>
     <string name="add_this_product">Añadir este producto</string>
     <string name="product_picture">Imagen del producto</string>
     <string name="one_photo_compulsory">(solo es obligatoria una foto para poder añadir un nuevo producto)</string>
@@ -611,7 +613,7 @@
     <string name="some_people">Algunas personas\n(sobre el 5%)</string>
     <string name="safety_and_exposure_assessment">Valoración de seguridad y exposición</string>
     <string name="risk_of_exposure">Riesgo de exposición</string>
-    <string name="efsa_warning_high_risk">La Autoridad Europea para la Seguridad Alimentaria (EFSA) ha determinado que algunos grupos de la población tienen un riesgo alto de consumir demasiado %1$s.</string>
+    <string name="efsa_warning_high_risk">La Autoridad Europea para la Seguridad Alimentaria (EFSA) ha concluido que algunos grupos de población pueden estar en riesgo alto al ingerir grandes cantidades de %1$s.</string>
     <string name="legend_noael">por encima de la dosis con efecto adverso observado (NOAEL)</string>
     <string name="legend_adi">por encima de la ingesta diaria admisible (IDA)</string>
     <string name="max_energy_val_msg">Este valor es superior a 2000 kcal por 100g. ¿Puedes corregirlo?</string>
@@ -641,10 +643,10 @@
     <string name="additives">Aditivos</string>
     <!--used for product_lists implementation-->
     <string name="dialog_add_product_to_list_title">Añadir a tus listas</string>
-    <string name="dialog_create_new_list_title">Crear nueva lista</string>
     <string name="dialog_add_product_to_list_new">Añadir a una nueva lista</string>
+    <string name="dialog_create_new_list_title">Crear una nueva lista</string>
     <string name="dialog_create_new_list_hint">Nombre de la lista</string>
-    <string name="default_list_title_stored">Productos Ingeridos</string>
+    <string name="default_list_title_stored">Productos comidos</string>
     <string name="default_list_title_to_buy">Productos para comprar</string>
     <string name="txt_exporting_your_listed_products">Exportando tus productos…</string>
     <string name="txt_your_listed_products_exported">Tus productos han sido exportados</string>
@@ -766,4 +768,5 @@
     <string name="msg_welcome_ecoscore">Una síntesis del impacto medioambiental de tus alimentos.</string>
     <string name="title_welcome_matomo">Enviar análisis anónimos</string>
     <string name="msg_welcome_matomo">Ayuda a los voluntarios de Open Food Facts a mejorar la aplicación. Tú decides si envías análisis anónimos.\n\nSi cambias de opinión, esta opción se puede activar y desactivar en cualquier momento desde los ajustes.</string>
+    <string name="hint_category_list">Buscar una categoría de comida</string>
 </resources>

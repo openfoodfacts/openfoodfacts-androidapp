@@ -16,7 +16,7 @@
   -->
 <resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
-        <item quantity="one">You have 1 offline product waiting to be contributed to Open Food Facts</item>
+        <item quantity="one">Tens 1 producte fora de línia esperant per ser aportat a Open Food Facts</item>
         <item quantity="other">Teniu %d productes fora de línia esperant la vostra aportació a Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
@@ -162,7 +162,7 @@
     <string name="txtBarcode">Codi de barres:</string>
     <string name="txtCategories">Categories:</string>
     <string name="txtLabels">Etiquetes, certificats, premis: </string>
-    <string name="txtEMB">Traceability codes: </string>
+    <string name="txtEMB">Codis de traçabilitat: </string>
     <string name="txtIngredients">Llista d\'ingredients: </string>
     <string name="Donate">Feu un donatiu</string>
     <string name="Donation">Cliqueu aquí per a fer un donatiu a Open Food Facts</string>
@@ -259,7 +259,7 @@
     <string name="calculated_nutrition">Nutrició calculada</string>
     <string name="please_enter_weight">Introduïu el pes del producte</string>
     <string name="enter_weight">Entreu el pes del producte</string>
-    <string name="calculate_nutrition_facts">Calculate nutrition facts for a specific quantity</string>
+    <string name="calculate_nutrition_facts">Calcula els valors nutricionals per a una quantitat específica</string>
     <string name="nutrition_carbohydrate">Carbohidrat</string>
     <string name="nutrition_cholesterol">Colesterol</string>
     <string name="nutrition_energy_kcal">Energia en calories (kcal)</string>
@@ -387,16 +387,16 @@
     <string name="device_offline_dialog_title">Xarxa no disponible</string>
     <string name="scan_first_product">Escanegeu el primer producte</string>
     <string name="changes_saved">Els canvis s\'han desat correctament</string>
-    <string name="proceed">Proceed</string>
+    <string name="proceed">Continua</string>
     <string name="preference_choose_language_dialog_title">Trieu la llengua</string>
-    <string name="preference_choose_scanner_dialog_title"><b>New: Enhanced “MLKit” scanner</b></string>
-    <string name="preference_choose_scanner_dialog_body">We have included a new option to more reliably scan barcodes. While this scanner works on your device, using machine learning,
-            please be aware that it is a proprietary component provided by Google, governed by this privacy policy, and that some limited telemetry might be sent back to Google’s servers
-            to improve their software. As noted in the MLKit terms, this won’t include any information about the products you scan and the telemetry is anonymized. Choosing MLKit scanner
-            implies that you accept those terms\n<b>Note: You can switch back at any time between the 2 scanners in the Settings.</b>
+    <string name="preference_choose_scanner_dialog_title"><b>Nou: escàner \"MLKit\" millorat</b></string>
+    <string name="preference_choose_scanner_dialog_body">Hem inclòs una nova opció per escanejar codis de barres de manera més fiable. Tot i que aquest escàner funciona al vostre dispositiu utilitzant l\'aprenentatge automàtic,
+            tingueu en compte que es tracta d\'un component proporcionat per Google, que es regeix per aquesta política de privadesa, i que podria enviar una part de telemetria limitada als seus servidors 
+            per millorar el seu programari. Tal com s\'indica als termes de MLKit, això no inclourà cap informació sobre els productes que escanegeu i la telemetria és anònima. Escollir l\'escàner MLKit
+            implica que accepteu aquests termes\n<b>Nota: podeu tornar enrere en qualsevol moment entre els 2 escàners a la configuració.</b>
     </string>
-    <string name="prompt_point_at_a_barcode">Point your camera at a barcode</string>
-    <string name="prompt_move_camera_closer">Move closer to detect</string>
+    <string name="prompt_point_at_a_barcode">Apunteu la càmera cap al codi de barres</string>
+    <string name="prompt_move_camera_closer">Apropeu-vos per cercar</string>
     <string name="please_check_your_connection">Si us plau, comproveu la connexió a internet.</string>
     <string name="advanced_search_title">Cerca avançada &amp; Gràfics</string>
     <string name="compare_products">Compare products</string>
@@ -426,8 +426,8 @@
     <string name="preference_analytics_summary">Quan estigui activat, s\'enviarà informació anònima sobre l\'ús de l\'aplicació als servidors Open Food Facts, de manera que puguem entendre com i quantes funcions s\'utilitzen per millorar-les.</string>
     <string name="preference_analytics_bottom_sheet_title">Enviament de dades anònimes</string>
     <string name="preference_analytics_bottom_sheet_description">Ajudeu a millorar Open Food Facts informant-nos de com l’utilitzeu. Les dades recollides són anònimes. Aquesta opció es pot desactivar en qualsevol moment a la secció de configuració.</string>
-    <string name="preference_analytics_bottom_sheet_grant_button">Grant</string>
-    <string name="preference_analytics_bottom_sheet_decline_button">Decline</string>
+    <string name="preference_analytics_bottom_sheet_grant_button">Permet</string>
+    <string name="preference_analytics_bottom_sheet_decline_button">Rebutja</string>
     <string name="scan_first_string">L\'historial del producte vist es mostrarà aquí. \nAquest historial només és per a vosaltres i s\'emmagatzema localment.</string>
     <string name="log_in">Nom d\'usuari</string>
     <string name="login_true">Ja heu iniciat la sessió!</string>
@@ -487,11 +487,12 @@
     <string name="notify_channel_description">Notificació per mostrar la ubicació de l\'arxiu exportat</string>
     <string name="products_to_be_completed">Productes que s\'han de completar</string>
     <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Producte afegit el %1$s a les %2$s CET per %3$s</string>
+    <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">Darrera edició de la pàgina del producte el %1$s a %2$s CEST per %3$s </string>
     <!-- TODO: Add the placeholder in the string - important for several languages -->
     <string name="other_editors">La pàgina del producte també ha estat editada per </string>
-    <string name="product_states">Product States</string>
-    <string name="incomplete_states">Incomplete States</string>
-    <string name="complete_states">Complete States</string>
+    <string name="product_states">Detalls del producte</string>
+    <string name="incomplete_states">Dades Incompletes</string>
+    <string name="complete_states">Dades Completes</string>
     <string name="contribution_tab">Aportacions</string>
     <string name="synthesis_tab">Síntesi</string>
     <string name="txtDialogsTitle">Informació</string>
@@ -499,8 +500,8 @@
     <string name="productNameNull">Nom desconegut</string>
     <string name="productAdditivesUnknown"></string>
     <plurals name="productAdditives">
-        <item quantity="one" comment="Do not change the placeholder">%d additiu</item>
-        <item quantity="other" comment="Do not change the placeholder">%d additius</item>
+        <item comment="Do not change the placeholder" quantity="one">%d additiu</item>
+        <item comment="Do not change the placeholder" quantity="other">%d additius</item>
     </plurals>
     <string name="product_not_complete">Aquest producte encara no està complet. \nPodeu afegir-hi algun detall?</string>
     <string name="addProductOffline">Sembla que esteu desconnectat. Voleu afegir el producte %s amb el mode fora de línia?</string>
@@ -509,6 +510,7 @@
     <string name="trouble_scanning">Teniu problemes escanejant?</string>
     <string name="barcode_hint">Teniu problemes escanejant? Escriviu el codi de barres</string>
     <string name="switch_camera">Canvia la càmera</string>
+    <string name="toggle_flash">Activa/desactiva el flaix</string>
     <string name="autofocus">Autoenfocament</string>
     <string name="initial_loading">Càrrega inicial</string>
     <string name="OFFlogo">Logotip d\'Open Food Facts</string>
@@ -528,7 +530,7 @@
     <string name="scan_QR_code">Escaneja el codi QR del lloc web del producte</string>
     <string name="add_at_least_one_picture">Afegiu com a mínim una imatge d\'aquest producte abans de continuar</string>
     <string name="image_uploaded_successfully">La imatge s\'ha pujat correctament</string>
-    <string name="error_adding_product_photos">Alguna cosa ha sortit malament mentre s\'intentaven afegir imatges del producte</string>
+    <string name="error_adding_product_photos">S\'ha produït un error en intentar afegir fotos del producte</string>
     <string name="save_product">Voleu desar aquest producte?</string>
     <string name="error_adding_product">Alguna cosa ha anat malament mentre s\'afegia el producte</string>
     <string name="photos">Fotos</string>
@@ -542,7 +544,7 @@
     <string name="your_version">Les vostres</string>
     <string name="ingredients_picture">Imatge dels ingredients</string>
     <string name="packaging">Reciclatge</string>
-    <string name="take_ingredients_picture_to_extract">(Please take a photo of the ingredients to automatically extract them)</string>
+    <string name="take_ingredients_picture_to_extract">(feu una fotografia dels ingredients per extreure\'ls automàticament)</string>
     <string name="ingredients_list">Llista d\'ingredients</string>
     <string name="ingredients_hint" tools:ignore="StringFormatInvalid">Manteniu l\'ordre, indiqueu el % quan s\'especifica, separat per una coma o -, utilitzeu () pels ingredients d\'un ingredient, els al·lèrgens envoltats amb _</string>
     <string name="extract_ingredients">Extreu els ingredients</string>
@@ -626,13 +628,13 @@
     <string name="couldnot_compute_ecoscore_prompt_text" comment="Do not translate Eco-Score">No hem pogut calcular una puntuació ecològica per a aquest producte. Pot ser que la categoria no sigui prou específica o que no tinguem dades de suport per a aquesta categoria. Si creieu que es tracta d’un error, podeu enviar-nos un correu fent clic a continuació.</string>
     <string name="add_labels_origins_prompt_text" comment="Do not translate Eco-Score">L’Eco-Score té en compte les etiquetes ambientals i els orígens dels ingredients. Si us plau, feu-los fotos o editeu el producte perquè es puguin tenir en compte</string>
     <string name="add_labels_prompt_text" comment="Do not translate Eco-Score">L’Eco-Score té en compte les etiquetes mediambientals. Si us plau, feu-los fotos o editeu el producte perquè es puguin tenir en compte</string>
-    <string name="add_origins_prompt_text" comment="Do not translate Eco-Score">The Eco-Score takes into account the origins of the ingredients. Please take them into photo (ingredient list and/or any geographic claim) or edit the product so that they can be taken into account</string>
+    <string name="add_origins_prompt_text" comment="Do not translate Eco-Score">L\'Eco-Score té en compte l\'origen dels ingredients. Si us plau, fotografieu-los (llista d\'ingredients i/o qualsevol dada geogràfica) o editeu el producte perquè es puguin tenir en compte</string>
     <string name="category_game_btn">Help categorize products</string>
     <string name="version_string">Aplicació per a Android Open Food Facts</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
     <string name="set_img_nutrients">Set as nutrition image</string>
     <string name="set_img_front">Set as front image</string>
-    <string name="set_img_recycling">Set Image as Recycling</string>
+    <string name="set_img_recycling">Estableix la imatge com a Reciclatge</string>
     <string name="report_img">Reporteu imatge</string>
     <string name="detected_ingredients">Ingredients detectats</string>
     <string name="txtConnectionError">No hem pogut descarregar certes dades. Potser ha estat per una errada de connexió.</string>
@@ -640,11 +642,11 @@
     <string name="addtive_search">Cerqueu un additiu</string>
     <string name="additives">Additius</string>
     <!--used for product_lists implementation-->
-    <string name="dialog_add_product_to_list_title">Afegeix a les vostres llistes</string>
-    <string name="dialog_create_new_list_title">Crea una llista nova</string>
+    <string name="dialog_add_product_to_list_title">Afegiu a la vostra llista</string>
     <string name="dialog_add_product_to_list_new">Afegeix a una llista nova</string>
+    <string name="dialog_create_new_list_title">Crea una llista nova</string>
     <string name="dialog_create_new_list_hint">Nom de la llista</string>
-    <string name="default_list_title_stored">Productes que tinc</string>
+    <string name="default_list_title_stored">Productes consumits</string>
     <string name="default_list_title_to_buy">Productes per comprar</string>
     <string name="txt_exporting_your_listed_products">Exportant Els Vostres Productes…</string>
     <string name="txt_your_listed_products_exported">Els vostres productes s\'han exportat</string>
@@ -656,7 +658,7 @@
     <string name="toast_import_csv_error">Error en importar el fitxer CSV</string>
     <string name="toast_import_csv">CSV importat correctament!</string>
     <string name="txt_no_nutrition_data">Aquest producte no conté informació nutricional a l’envàs. Si això ha canviat, podeu editar el producte.</string>
-    <string name="swipe_delete_tip">Podeu suprimir una llista arrossegant-la cap a l\'esquerra.</string>
+    <string name="swipe_delete_tip">Pots eliminar una llista lliscant-la cap a l\'esquerra.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Afegiu productes</string>
@@ -683,7 +685,7 @@
     <string name="add_an_allergen">Afegiu un al·lergen</string>
     <string name="add_a_list">Afegiu una llista</string>
     <string name="edit_image">Editar foto</string>
-    <string name="cant_edit_image_not_yet_uploaded">The new photo is not yet uploaded. Please wait before editing it</string>
+    <string name="cant_edit_image_not_yet_uploaded">La nova imatge encara no s\'ha penjat. Espereu abans d’editar-la</string>
     <string name="unselect_image">Desmarqueu la foto</string>
     <string name="choose_default_language">Seleccioneu l\'idioma del producte</string>
     <string name="barcode">Codi de barres</string>
@@ -741,29 +743,30 @@
     <string name="content_exit">Premeu aquí per tornar al producte</string>
     <string name="icon_label">Icona d\'etiquetes</string>
     <string name="icon_categories">Icona de categories</string>
-    <string name="icon_emb">Traceability code icon</string>
+    <string name="icon_emb">Icona del codi de traçabilitat</string>
     <string name="product_front_image">Imatge frontal del producte</string>
     <string name="brand_hint">Exemples: Coca-Cola, Nestlé, etc.…</string>
     <string name="sign_in_or_register">Inicieu la sessió o registreu-vos</string>
     <string name="hunger_game_call_to_action" comment="Do not change the placeholder">Ajudeu a classificar millor %1$s</string>
     <string name="txtHomeOnline">Open Food Facts és una base de dades oberta de més de %1$s productes (més els que aportareu).</string>
     <!-- Application theme settings -->
-    <string name="follow_system">Follow system</string>
+    <string name="follow_system">Sistema de seguiment</string>
     <string name="day">Dia</string>
     <string name="night">Nit</string>
-    <string name="report_email_chooser_title">Send a report email</string>
+    <string name="report_email_chooser_title">Envia un informe per correu electrònic</string>
     <!-- Changelog String -->
     <string name="changelog_translation_help" comment="Do not change the placeholder">Voleu veure aquest registre de canvis a %s?\nUniu-vos a l\'equip de traducció!</string>
     <string name="whats_new">Què hi ha de nou en Open Food Facts?</string>
     <!-- New onboarding slides -->
-    <string name="title_welcome_intro">Join the food revolution</string>
-    <string name="msg_welcome_intro">Scan food, Take photos, Help transform the food system</string>
+    <string name="title_welcome_intro">Uneix-te a la revolució alimentària</string>
+    <string name="msg_welcome_intro">Escaneja menjar, fes fotos, ajuda a transformar el sistema alimentari</string>
     <string name="title_welcome_nutriscore" comment="Do not translate Nutri-Score">Obteniu el Nutri-Score</string>
-    <string name="msg_welcome_nutriscore">A simple synthesis of the nutritional quality of your food</string>
-    <string name="title_welcome_nova">Avoid ultra-processed foods</string>
-    <string name="msg_welcome_nova">Reduce the amount of ultra-processed foods in your diet.</string>
+    <string name="msg_welcome_nutriscore">Una síntesi senzilla de la qualitat nutricional dels teus aliments</string>
+    <string name="title_welcome_nova">Eviteu els aliments ultraprocessats</string>
+    <string name="msg_welcome_nova">Reduïu la quantitat d\'aliments ultraprocessats a la teva dieta.</string>
     <string name="title_welcome_ecoscore" comment="Do not translate Eco-Score">Eco-Score</string>
-    <string name="msg_welcome_ecoscore">A synthesis of the environmental impact of your food.</string>
-    <string name="title_welcome_matomo">Send anonymous analytics</string>
-    <string name="msg_welcome_matomo">Help the Open Food Facts volunteers to improve the app. You decide if you send anonymous analytics.\n\nIf you change your mind this option can be enabled and disabled at any time from the settings.</string>
+    <string name="msg_welcome_ecoscore">Una síntesi de l’impacte ambiental dels vostres aliments.</string>
+    <string name="title_welcome_matomo">Enviament de dades anònimes</string>
+    <string name="msg_welcome_matomo">Ajudeu als voluntaris d\'Open Food Facts a millorar l\'aplicació. Decidiu si envieu analítiques anònimes.\n\nSi canvieu d\'opinió, aquesta opció es pot activar i desactivar en qualsevol moment des de la configuració.</string>
+    <string name="hint_category_list">Cerqueu una categoria alimentària</string>
 </resources>

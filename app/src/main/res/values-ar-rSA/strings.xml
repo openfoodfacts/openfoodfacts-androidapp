@@ -229,7 +229,7 @@
     <string name="search_drawer">بحث</string>
     <string name="search_by_barcode_drawer">البحث عن طريق الرمز الشريطي</string>
     <string name="category_drawer">الفئات</string>
-    <string name="search_by_category">Category</string>
+    <string name="search_by_category">فئة</string>
     <string name="scan_search">امسح</string>
     <string name="user_drawer">المستخدم</string>
     <string name="txt_anonymous">مجهول</string>
@@ -463,7 +463,7 @@
     <string name="Browse_Products">استعراض المنتجات</string>
     <string name="brand_string">العلامة التجارية</string>
     <string name="additive_string">المواد المضافة</string>
-    <string name="allergen_string">Allergen</string>
+    <string name="allergen_string">نعم</string>
     <string name="search_string">بحث</string>
     <string name="country_string">Country</string>
     <string name="store_subtitle">المتجر</string>
@@ -471,7 +471,7 @@
     <string name="state_subtitle">الولاية</string>
     <string name="packaging_string">التعبئة والتغليف</string>
     <string name="label_string">al3alama</string>
-    <string name="category_string">Category</string>
+    <string name="category_string">فئة</string>
     <string name="connection">متصل</string>
     <string name="contributor_string">Contributor</string>
     <string name="app_disabled_text">التطبيق معطل</string>
@@ -509,6 +509,7 @@
     <string name="notify_channel_description">إشعار لإظهار موقع الملف المستخرج</string>
     <string name="products_to_be_completed">مُنتجات مراد إكمالها</string>
     <string name="creator_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">تمت إضافة المنتج بتاريخ %1$s فى %2$s من قبل%3$s</string>
+    <string name="last_editor_history" comment="Do not modify the placeholders, and make sure all of them are present in the translation.">التعديل الأخير من صفحة المنتج على %1$s في %2$s CEST بواسطة %3$s</string>
     <!-- TODO: Add the placeholder in the string - important for several languages -->
     <string name="other_editors">تم تعديل المنتج أيضاً بواسطة </string>
     <string name="product_states">Product States</string>
@@ -522,11 +523,11 @@
     <string name="productAdditivesUnknown"></string>
     <plurals name="productAdditives">
         <item quantity="zero">مواد الإضافية </item>
-        <item quantity="one" comment="Do not change the placeholder">%d المواد المضافة</item>
+        <item comment="Do not change the placeholder" quantity="one">%d المواد المضافة</item>
         <item quantity="two">%d مادة مضافة</item>
         <item quantity="few">%d additives</item>
         <item quantity="many">%d additives</item>
-        <item quantity="other" comment="Do not change the placeholder">%d additives</item>
+        <item comment="Do not change the placeholder" quantity="other">%d additives</item>
     </plurals>
     <string name="product_not_complete">هذا المنتج لم يكتمل بعد. \n هل يمكنك إضافة بعض التفاصيل؟</string>
     <string name="addProductOffline">يبدو أنك غير متصل. أضف المنتج %s باستخدام الوضع الغير متصل بالشبكة؟</string>
@@ -535,6 +536,7 @@
     <string name="trouble_scanning">عطل في المسح؟</string>
     <string name="barcode_hint">عطل في المسح؟ أدخل الباركود</string>
     <string name="switch_camera">تبديل الكاميرا</string>
+    <string name="toggle_flash">Toggle flash</string>
     <string name="autofocus">ضبط تلقائي للصورة</string>
     <string name="initial_loading">التمهيد للتحميل</string>
     <string name="OFFlogo">شعار الحقائق الغذائية المفتوحة</string>
@@ -666,11 +668,11 @@
     <string name="addtive_search">البحث عن مادة مضافة</string>
     <string name="additives">إضافات</string>
     <!--used for product_lists implementation-->
-    <string name="dialog_add_product_to_list_title">أضف إلى قائمتك</string>
-    <string name="dialog_create_new_list_title">قم بإنشاء قائمة جديدة</string>
-    <string name="dialog_add_product_to_list_new">قم بإنشاء قائمة جديدة</string>
-    <string name="dialog_create_new_list_hint">اسم القائمة</string>
-    <string name="default_list_title_stored">المنتجات التي أملكها</string>
+    <string name="dialog_add_product_to_list_title">Add to your lists</string>
+    <string name="dialog_add_product_to_list_new">Add to a new list</string>
+    <string name="dialog_create_new_list_title">Create a new list</string>
+    <string name="dialog_create_new_list_hint">List Name</string>
+    <string name="default_list_title_stored">Eaten products</string>
     <string name="default_list_title_to_buy">منتجات للشراء</string>
     <string name="txt_exporting_your_listed_products">تصدير منتجاتك…</string>
     <string name="txt_your_listed_products_exported">تم تصدير المنتجات الخاصة بك</string>
@@ -792,4 +794,5 @@
     <string name="msg_welcome_ecoscore">تركيبة من الأثر البيئي لطعامك.</string>
     <string name="title_welcome_matomo">إرسال تحليلات مجهولة</string>
     <string name="msg_welcome_matomo">ساعد متطوعين Open Food Facts لتطوير التطبيق. لديك قرار في إرسال تحليلات مجهولة. إذا غيرت رأيك، هذا الخيار يمكن تمكينه وتعطيله في أي وقت من الإعدادات.</string>
+    <string name="hint_category_list">Search for a food category</string>
 </resources>
