@@ -8,6 +8,9 @@ jobs:
   add-to-project:
     name: Add issue to project
     runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      repository-projects: write
     if: github.event.pull_request.head.repo.full_name == github.repository
     steps:
       - uses: actions/add-to-project@main
