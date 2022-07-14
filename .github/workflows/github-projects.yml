@@ -2,11 +2,8 @@ name: Add bugs to the Native Android GitHub Project
 
 on:
   issues:
-    types:
-      - opened
-  pull_request:
-    types:
-      - opened
+    types: [opened, transferred]
+
 jobs:
   add-to-project:
     name: Add issue to project
