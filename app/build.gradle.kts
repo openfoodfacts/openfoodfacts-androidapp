@@ -292,7 +292,7 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-jackson:2.6.4")
     implementation("com.squareup.retrofit2:adapter-rxjava2:2.6.4")
     implementation("com.squareup.retrofit2:converter-scalars:2.1.0")
-    implementation("com.squareup.okhttp3:logging-interceptor:3.12.13")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.10.0")
 
     // Logging
     implementation("com.squareup.logcat:logcat:0.1")
