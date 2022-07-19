@@ -8,10 +8,10 @@
         <package name="javax.swing" withSubpackages="false" static="false" />
       </value>
     </option>
-    <option name="RIGHT_MARGIN" value="160" />
+    <option name="RIGHT_MARGIN" value="120" />
     <option name="FORMATTER_TAGS_ENABLED" value="true" />
     <option name="WRAP_COMMENTS" value="true" />
-    <option name="SOFT_MARGINS" value="160" />
+    <option name="SOFT_MARGINS" value="80,120" />
     <JavaCodeStyleSettings>
       <option name="PACKAGES_TO_USE_IMPORT_ON_DEMAND">
         <value>
