@@ -355,7 +355,7 @@ dependencies {
     implementation("com.github.matomo-org:matomo-sdk-android:4.1.4")
 
     // ShowCaseView dependency
-    implementation("com.github.mreram:showcaseview:1.0.5")
+    implementation("com.github.mreram:showcaseview:1.4.0")
 
     // Unit Testing
     testImplementation("androidx.arch.core:core-testing:2.1.0")
