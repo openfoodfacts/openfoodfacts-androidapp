@@ -359,9 +359,9 @@ android {
     }
 
     lint {
-        isAbortOnError = false
+        abortOnError = false
 
-        disable(
+        disable += setOf(
             "MissingTranslation",
             "ImpliedQuantity",
             // Invalid Resource Folder is for values-b+sr… folders

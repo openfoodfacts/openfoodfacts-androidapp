@@ -28,9 +28,9 @@ abstract class CameraView<T : FrameLayout>(
             return
         }
 
-        viewStub.isVisible = true
         viewStub.layoutResource = resId
         view = viewStub.inflate() as T
+        viewStub.isVisible = true
     }
 
     @CallSuper
