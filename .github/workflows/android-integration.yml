@@ -23,7 +23,7 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
-          distribution: ${{ env.JAVA_VERSION }}
+          distribution: ${{ env.JAVA_DISTR }}
           java-version: ${{ env.JAVA_VERSION }}
 
       - name: Compile screenshots android tests
@@ -45,7 +45,7 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
-          distribution: ${{ env.JAVA_VERSION }}
+          distribution: ${{ env.JAVA_DISTR }}
           java-version: ${{ env.JAVA_VERSION }}
 
       - name: Run detekt
@@ -72,7 +72,7 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
-          distribution: ${{ env.JAVA_VERSION }}
+          distribution: ${{ env.JAVA_DISTR }}
           java-version: ${{ env.JAVA_VERSION }}
 
       - name: Run unit tests
@@ -96,7 +96,7 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
-          distribution: ${{ env.JAVA_VERSION }}
+          distribution: ${{ env.JAVA_DISTR }}
           java-version: ${{ env.JAVA_VERSION }}
 
       - name: Workaround for Android Gradle Plugin issue
@@ -150,7 +150,7 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
-          distribution: ${{ env.JAVA_VERSION }}
+          distribution: ${{ env.JAVA_DISTR }}
           java-version: ${{ env.JAVA_VERSION }}
 
       - name: Workaround for Android Gradle Plugin issue
@@ -186,7 +186,7 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
-          distribution: ${{ env.JAVA_VERSION }}
+          distribution: ${{ env.JAVA_DISTR }}
           java-version: ${{ env.JAVA_VERSION }}
 
       - name: Generate documentation
