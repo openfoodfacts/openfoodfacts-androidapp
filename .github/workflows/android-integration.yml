@@ -6,21 +6,25 @@ on:
   pull_request:
     branches: [ develop ]
 
+env:
+  JAVA_VERSION: "11"
+  JAVA_DISTR: 'adopt'
+
 jobs:
 
   compile_screenshots:
-    name: Compile Screenshot Tests
+    name: "⚙️ Compile Screenshot Tests"
     runs-on: ubuntu-20.04
 
     steps:
       - name: Checkout sources
         uses: actions/checkout@v3
 
-      - name: Set up JDK 11
+      - name: Set up JDK
         uses: actions/setup-java@v3
         with:
-          distribution: "adopt"
-          java-version: "11"
+          distribution: ${{ env.JAVA_VERSION }}
+          java-version: ${{ env.JAVA_VERSION }}
 
       - name: Compile screenshots android tests
         uses: gradle/gradle-build-action@v2.2.2
@@ -30,19 +34,46 @@ jobs:
             -PtestBuildType=screenshots
 
 
+  static_analysis:
+    name: "🔍 Static analysis (Detekt)"
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v3
+
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: ${{ env.JAVA_VERSION }}
+          java-version: ${{ env.JAVA_VERSION }}
+
+      - name: Run detekt
+        uses: gradle/gradle-build-action@v2.2.2
+        with:
+          arguments: detekt
+
+      - name: Upload SARIF
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          # Path to SARIF file relative to the root of the repository
+          sarif_file: ${{ github.workspace }}/build/reports/detekt/detekt.sarif
+          checkout_path: ${{ github.workspace }}
+
+
   test:
-    name: Unit Tests
+    name: "🤖 Unit Tests"
     runs-on: ubuntu-20.04
 
     steps:
       - name: Checkout sources
         uses: actions/checkout@v3
 
-      - name: Set up JDK 11
+      - name: Set up JDK
         uses: actions/setup-java@v3
         with:
-          distribution: "adopt"
-          java-version: "11"
+          distribution: ${{ env.JAVA_VERSION }}
+          java-version: ${{ env.JAVA_VERSION }}
 
       - name: Run unit tests
         uses: gradle/gradle-build-action@v2.2.2
@@ -55,18 +86,18 @@ jobs:
 
 
   assemble_apk:
-    name: Assemble APKs
+    name: "📦 Assemble APKs"
     runs-on: ubuntu-20.04
 
     steps:
       - name: Checkout sources
         uses: actions/checkout@v3
 
-      - name: Set up JDK 11
+      - name: Set up JDK
         uses: actions/setup-java@v3
         with:
-          distribution: "adopt"
-          java-version: "11"
+          distribution: ${{ env.JAVA_VERSION }}
+          java-version: ${{ env.JAVA_VERSION }}
 
       - name: Workaround for Android Gradle Plugin issue
         run: 'echo "ndk.dir=${ANDROID_HOME}/ndk-bundle" > local.properties'
@@ -108,22 +139,19 @@ jobs:
             ./app/build/outputs/apk/opffPlaystore/debug/app-opf-playstore-debug.apk
             ./app/build/outputs/apk/opffFdroid/debug/app-opff-fdroid-debug.apk
 
-
-
-
   lint_off:
-    name: Lint OFF
+    name: "🔍 Android Lint"
     runs-on: ubuntu-20.04
 
     steps:
       - name: Checkout sources
         uses: actions/checkout@v3
 
-      - name: Set up JDK 11
+      - name: Set up JDK
         uses: actions/setup-java@v3
         with:
-          distribution: 'adopt'
-          java-version: '11'
+          distribution: ${{ env.JAVA_VERSION }}
+          java-version: ${{ env.JAVA_VERSION }}
 
       - name: Workaround for Android Gradle Plugin issue
         run: "echo \"ndk.dir=${ANDROID_HOME}/ndk-bundle\" > local.properties"
@@ -134,7 +162,7 @@ jobs:
       - name: Lint sources
         uses: gradle/gradle-build-action@v2.2.2
         with:
-          arguments: lintOffPlayStoreDebug --stacktrace
+          arguments: lint --stacktrace
 
       - name: Generate GitHub annotations
         uses: yutailang0119/action-android-lint@v3
@@ -142,10 +170,11 @@ jobs:
           report-path: ./app/build/reports/lint-results-offPlaystoreDebug.xml
 
   build_deploy_pages:
-    name: Deploy dokka to GitHub Pages
+    name: "🚀 Deploy Documentation to GitHub Pages"
     runs-on: ubuntu-20.04
-    if: github.event_name == 'push' && github.ref == 'refs/heads/develop'
 
+    # Only on successful push event
+    if: github.event_name == 'push' && github.ref == 'refs/heads/develop'
     needs:
       - assemble_apk
       - test
@@ -154,11 +183,11 @@ jobs:
       - name: Checkout sources
         uses: actions/checkout@v3
 
-      - name: Set up JDK 11
+      - name: Set up JDK
         uses: actions/setup-java@v3
         with:
-          distribution: 'adopt'
-          java-version: '11'
+          distribution: ${{ env.JAVA_VERSION }}
+          java-version: ${{ env.JAVA_VERSION }}
 
       - name: Generate documentation
         uses: gradle/gradle-build-action@v2.2.2
