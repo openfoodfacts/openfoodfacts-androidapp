@@ -323,7 +323,7 @@ dependencies {
     implementation("com.squareup.picasso:picasso:2.8")
 
     // Image from gallery or camera
-    implementation("com.github.jkwiecien:EasyImage:1.4.0")
+    implementation("com.github.jkwiecien:EasyImage:3.2.0")
 
     // Barcode and QR Scanner
     // TODO: cannot upgrade, requires API 24 or higher
