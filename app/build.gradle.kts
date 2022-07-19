@@ -33,177 +33,6 @@ fun obtainTestBuildType(): String {
     return project.properties.getOrDefault("testBuildType", result) as String
 }
 
-dependencies {
-    // Kotlin
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:${rootProject.extra["kotlinVersion"]}")
-
-    // Kotlin coroutines
-    val coroutinesVersion = "1.6.4"
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-rx2:$coroutinesVersion")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion")
-
-    // Android KTX
-    implementation("androidx.fragment:fragment-ktx:1.4.1")
-    implementation("androidx.activity:activity-ktx:1.4.0")
-    implementation("androidx.preference:preference-ktx:1.2.0")
-    implementation("androidx.core:core-ktx:1.8.0")
-
-    val lifecycleVer = "2.4.1"
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVer")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVer")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVer")
-
-    // AndroidX
-    implementation("androidx.appcompat:appcompat:1.4.2")
-    implementation("androidx.browser:browser:1.4.0")
-    implementation("androidx.concurrent:concurrent-futures:1.1.0")
-    implementation("androidx.recyclerview:recyclerview:1.2.1")
-    implementation("androidx.cardview:cardview:1.0.0")
-    implementation("androidx.annotation:annotation:1.4.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation("androidx.multidex:multidex:2.0.1")
-    implementation("androidx.viewpager2:viewpager2:1.0.0")
-    implementation("androidx.startup:startup-runtime:1.1.1")
-    implementation("androidx.work:work-runtime-ktx:2.7.1")
-    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
-
-    // ML Kit barcode Scanner
-    implementation("com.google.mlkit:barcode-scanning:17.0.0")
-
-    // Hilt
-    implementation("com.google.dagger:hilt-android:${rootProject.extra["hiltVersion"]}")
-    kapt("com.google.dagger:hilt-compiler:${rootProject.extra["hiltVersion"]}")
-
-    // Hilt for Android Testing
-    androidTestImplementation("com.google.dagger:hilt-android-testing:${rootProject.extra["hiltVersion"]}")
-    androidTestImplementation("com.google.dagger:dagger:${rootProject.extra["hiltVersion"]}")
-    kaptAndroidTest("com.google.dagger:hilt-android-compiler:${rootProject.extra["hiltVersion"]}")
-    kaptAndroidTest("com.google.dagger:dagger-compiler:${rootProject.extra["hiltVersion"]}")
-
-    // WorkManager with Hilt
-    implementation("androidx.hilt:hilt-work:1.0.0")
-    kapt("androidx.hilt:hilt-compiler:1.0.0")
-
-    // Reactive Streams
-    implementation("io.reactivex.rxjava2:rxkotlin:2.4.0")
-    implementation("io.reactivex.rxjava2:rxjava:2.2.21")
-    implementation("io.reactivex.rxjava2:rxandroid:2.1.1")
-    implementation("com.jakewharton.rxrelay2:rxrelay:2.1.1")
-
-    // Networking
-    implementation("com.squareup.retrofit2:retrofit:2.6.4")
-    implementation("com.squareup.retrofit2:converter-jackson:2.6.4")
-    implementation("com.squareup.retrofit2:adapter-rxjava2:2.6.4")
-    implementation("com.squareup.retrofit2:converter-scalars:2.1.0")
-    implementation("com.squareup.okhttp3:logging-interceptor:3.12.13")
-
-    // Logging
-    implementation("com.squareup.logcat:logcat:0.1")
-
-    // Apache commons
-    implementation("org.apache.commons:commons-text:1.9")
-    implementation("org.apache.commons:commons-csv:1.9.0")
-    implementation("commons-validator:commons-validator:1.7")
-
-    // Serialization/Deserialization
-    implementation("com.fasterxml.jackson.core:jackson-core:${rootProject.extra["jacksonVersion"]}")
-    implementation("com.fasterxml.jackson.core:jackson-databind:${rootProject.extra["jacksonVersion"]}")
-    implementation("com.fasterxml.jackson.core:jackson-annotations:${rootProject.extra["jacksonVersion"]}")
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:${rootProject.extra["jacksonVersion"]}")
-
-    // Database
-    implementation("org.greenrobot:greendao:${rootProject.extra["greendaoVersion"]}")
-
-    // Event bus and index
-    val eventBusVersion = "3.3.1"
-    implementation("org.greenrobot:eventbus:$eventBusVersion")
-    kapt("org.greenrobot:eventbus-annotation-processor:$eventBusVersion")
-
-    // Material design
-    implementation("com.google.android.material:material:1.6.1")
-
-    // Image Loading
-    implementation("com.squareup.picasso:picasso:2.8")
-
-    // Image from gallery or camera
-    implementation("com.github.jkwiecien:EasyImage:1.4.0")
-
-    // Barcode and QR Scanner
-    // TODO: cannot upgrade, requires API 24 or higher
-    implementation("com.google.zxing:core:3.5.0")
-
-    implementation("com.journeyapps:zxing-android-embedded:3.6.0") { isTransitive = false }
-
-    // UI Component : ImageView with Zooming
-    implementation("com.github.chrisbanes:PhotoView:2.3.0")
-
-    // UI Component : Material Drawer
-    // https://github.com/mikepenz/MaterialDrawer/commit/3b2cb1db4c3b6afe639b0f3c21c03c1de68648a3
-    // TODO: We need minSdk 16 to update
-    implementation("com.mikepenz:materialdrawer:7.0.0") { isTransitive = true }
-
-    // DO NOT UPDATE : RecyclerViewCacheUtil removed, needs rework
-    implementation("com.mikepenz:fastadapter-commons:3.3.1@aar")
-
-    // UI Component : Font Icons
-    implementation("com.mikepenz:iconics-core:4.0.2@aar")
-    implementation("com.mikepenz:google-material-typeface:3.0.1.6.original-kotlin@aar")
-    implementation("com.github.CanHub:Android-Image-Cropper:3.1.3")
-
-    // UI Component : Chips Input
-    implementation("com.github.hootsuite:nachos:1.2.0")
-
-    // Crash analytics
-    implementation("io.sentry:sentry-android:6.2.1")
-    implementation("com.github.matomo-org:matomo-sdk-android:4.1.4")
-
-    // ShowCaseView dependency
-    implementation("com.github.mreram:showcaseview:1.0.5")
-
-    // Unit Testing
-    testImplementation("androidx.arch.core:core-testing:2.1.0")
-    testImplementation("junit:junit:4.13.2")
-    testImplementation("org.robolectric:robolectric:4.8.1")
-    testImplementation("org.mockito:mockito-core:4.6.1")
-    testImplementation("org.mockito.kotlin:mockito-kotlin:4.0.0")
-    testImplementation("org.mockito:mockito-junit-jupiter:4.6.1")
-    testImplementation("com.google.truth:truth:1.1.3")
-    testImplementation("com.google.truth.extensions:truth-java8-extension:1.1.3")
-    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:${coroutinesVersion}")
-
-    val junit5Bom = "5.8.2"
-    testImplementation(platform("org.junit:junit-bom:$junit5Bom"))
-    testImplementation("org.junit.jupiter:junit-jupiter")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
-    testRuntimeOnly("org.junit.vintage:junit-vintage-engine")
-
-    // Instrumented tests
-    androidTestUtil("androidx.test:orchestrator:1.4.1")
-
-
-    androidTestImplementation("androidx.test:runner:1.4.0") { exclude("junit") }
-    androidTestImplementation("androidx.test:rules:1.4.0")
-
-    androidTestImplementation("androidx.test.ext:junit:1.1.3") { exclude("junit") }
-
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
-    androidTestImplementation("androidx.test.espresso:espresso-intents:3.4.0")
-    androidTestImplementation("androidx.test.espresso:espresso-web:3.4.0")
-    androidTestImplementation("androidx.test.espresso:espresso-contrib:3.4.0") {
-        exclude(group = "com.android.support", module = "appcompat-v7")
-        exclude(group = "com.android.support", module = "support-v4")
-        exclude(group = "com.android.support", module = "design")
-        exclude(module = "recyclerview-v7")
-    }
-    androidTestImplementation("com.jraska:falcon:2.2.0")
-    androidTestImplementation("tools.fastlane:screengrab:2.1.1")
-    androidTestImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:${coroutinesVersion}")
-
-
-    resourcePlaceholders { files = listOf("xml/shortcuts.xml") }
-}
-
 android {
     compileSdk = 31
 
@@ -398,6 +227,177 @@ android {
         unitTests.isReturnDefaultValues = true
         execution = "ANDROIDX_TEST_ORCHESTRATOR"
     }
+}
+
+dependencies {
+    // Kotlin
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:${rootProject.extra["kotlinVersion"]}")
+
+    // Kotlin coroutines
+    val coroutinesVersion = "1.6.4"
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-rx2:$coroutinesVersion")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion")
+
+    // Android KTX
+    implementation("androidx.fragment:fragment-ktx:1.4.1")
+    implementation("androidx.activity:activity-ktx:1.4.0")
+    implementation("androidx.preference:preference-ktx:1.2.0")
+    implementation("androidx.core:core-ktx:1.8.0")
+
+    val lifecycleVer = "2.4.1"
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVer")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVer")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVer")
+
+    // AndroidX
+    implementation("androidx.appcompat:appcompat:1.4.2")
+    implementation("androidx.browser:browser:1.4.0")
+    implementation("androidx.concurrent:concurrent-futures:1.1.0")
+    implementation("androidx.recyclerview:recyclerview:1.2.1")
+    implementation("androidx.cardview:cardview:1.0.0")
+    implementation("androidx.annotation:annotation:1.4.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation("androidx.multidex:multidex:2.0.1")
+    implementation("androidx.viewpager2:viewpager2:1.0.0")
+    implementation("androidx.startup:startup-runtime:1.1.1")
+    implementation("androidx.work:work-runtime-ktx:2.7.1")
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
+
+    // ML Kit barcode Scanner
+    "playstoreImplementation"("com.google.mlkit:barcode-scanning:17.0.0")
+
+    // Hilt
+    implementation("com.google.dagger:hilt-android:${rootProject.extra["hiltVersion"]}")
+    kapt("com.google.dagger:hilt-compiler:${rootProject.extra["hiltVersion"]}")
+
+    // Hilt for Android Testing
+    androidTestImplementation("com.google.dagger:hilt-android-testing:${rootProject.extra["hiltVersion"]}")
+    androidTestImplementation("com.google.dagger:dagger:${rootProject.extra["hiltVersion"]}")
+    kaptAndroidTest("com.google.dagger:hilt-android-compiler:${rootProject.extra["hiltVersion"]}")
+    kaptAndroidTest("com.google.dagger:dagger-compiler:${rootProject.extra["hiltVersion"]}")
+
+    // WorkManager with Hilt
+    implementation("androidx.hilt:hilt-work:1.0.0")
+    kapt("androidx.hilt:hilt-compiler:1.0.0")
+
+    // Reactive Streams
+    implementation("io.reactivex.rxjava2:rxkotlin:2.4.0")
+    implementation("io.reactivex.rxjava2:rxjava:2.2.21")
+    implementation("io.reactivex.rxjava2:rxandroid:2.1.1")
+    implementation("com.jakewharton.rxrelay2:rxrelay:2.1.1")
+
+    // Networking
+    implementation("com.squareup.retrofit2:retrofit:2.6.4")
+    implementation("com.squareup.retrofit2:converter-jackson:2.6.4")
+    implementation("com.squareup.retrofit2:adapter-rxjava2:2.6.4")
+    implementation("com.squareup.retrofit2:converter-scalars:2.1.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:3.12.13")
+
+    // Logging
+    implementation("com.squareup.logcat:logcat:0.1")
+
+    // Apache commons
+    implementation("org.apache.commons:commons-text:1.9")
+    implementation("org.apache.commons:commons-csv:1.9.0")
+    implementation("commons-validator:commons-validator:1.7")
+
+    // Serialization/Deserialization
+    implementation("com.fasterxml.jackson.core:jackson-core:${rootProject.extra["jacksonVersion"]}")
+    implementation("com.fasterxml.jackson.core:jackson-databind:${rootProject.extra["jacksonVersion"]}")
+    implementation("com.fasterxml.jackson.core:jackson-annotations:${rootProject.extra["jacksonVersion"]}")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:${rootProject.extra["jacksonVersion"]}")
+
+    // Database
+    implementation("org.greenrobot:greendao:${rootProject.extra["greendaoVersion"]}")
+
+    // Event bus and index
+    val eventBusVersion = "3.3.1"
+    implementation("org.greenrobot:eventbus:$eventBusVersion")
+    kapt("org.greenrobot:eventbus-annotation-processor:$eventBusVersion")
+
+    // Material design
+    implementation("com.google.android.material:material:1.6.1")
+
+    // Image Loading
+    implementation("com.squareup.picasso:picasso:2.8")
+
+    // Image from gallery or camera
+    implementation("com.github.jkwiecien:EasyImage:1.4.0")
+
+    // Barcode and QR Scanner
+    // TODO: cannot upgrade, requires API 24 or higher
+    implementation("com.google.zxing:core:3.5.0")
+
+    implementation("com.journeyapps:zxing-android-embedded:3.6.0") { isTransitive = false }
+
+    // UI Component : ImageView with Zooming
+    implementation("com.github.chrisbanes:PhotoView:2.3.0")
+
+    // UI Component : Material Drawer
+    // https://github.com/mikepenz/MaterialDrawer/commit/3b2cb1db4c3b6afe639b0f3c21c03c1de68648a3
+    // TODO: We need minSdk 16 to update
+    implementation("com.mikepenz:materialdrawer:7.0.0") { isTransitive = true }
+
+    // DO NOT UPDATE : RecyclerViewCacheUtil removed, needs rework
+    implementation("com.mikepenz:fastadapter-commons:3.3.1@aar")
+
+    // UI Component : Font Icons
+    implementation("com.mikepenz:iconics-core:4.0.2@aar")
+    implementation("com.mikepenz:google-material-typeface:3.0.1.6.original-kotlin@aar")
+    implementation("com.github.CanHub:Android-Image-Cropper:3.1.3")
+
+    // UI Component : Chips Input
+    implementation("com.github.hootsuite:nachos:1.2.0")
+
+    // Crash analytics
+    implementation("io.sentry:sentry-android:6.2.1")
+    implementation("com.github.matomo-org:matomo-sdk-android:4.1.4")
+
+    // ShowCaseView dependency
+    implementation("com.github.mreram:showcaseview:1.0.5")
+
+    // Unit Testing
+    testImplementation("androidx.arch.core:core-testing:2.1.0")
+    testImplementation("junit:junit:4.13.2")
+    testImplementation("org.robolectric:robolectric:4.8.1")
+    testImplementation("org.mockito:mockito-core:4.6.1")
+    testImplementation("org.mockito.kotlin:mockito-kotlin:4.0.0")
+    testImplementation("org.mockito:mockito-junit-jupiter:4.6.1")
+    testImplementation("com.google.truth:truth:1.1.3")
+    testImplementation("com.google.truth.extensions:truth-java8-extension:1.1.3")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:${coroutinesVersion}")
+
+    val junit5Bom = "5.8.2"
+    testImplementation(platform("org.junit:junit-bom:$junit5Bom"))
+    testImplementation("org.junit.jupiter:junit-jupiter")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
+    testRuntimeOnly("org.junit.vintage:junit-vintage-engine")
+
+    // Instrumented tests
+    androidTestUtil("androidx.test:orchestrator:1.4.1")
+
+
+    androidTestImplementation("androidx.test:runner:1.4.0") { exclude("junit") }
+    androidTestImplementation("androidx.test:rules:1.4.0")
+
+    androidTestImplementation("androidx.test.ext:junit:1.1.3") { exclude("junit") }
+
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
+    androidTestImplementation("androidx.test.espresso:espresso-intents:3.4.0")
+    androidTestImplementation("androidx.test.espresso:espresso-web:3.4.0")
+    androidTestImplementation("androidx.test.espresso:espresso-contrib:3.4.0") {
+        exclude(group = "com.android.support", module = "appcompat-v7")
+        exclude(group = "com.android.support", module = "support-v4")
+        exclude(group = "com.android.support", module = "design")
+        exclude(module = "recyclerview-v7")
+    }
+    androidTestImplementation("com.jraska:falcon:2.2.0")
+    androidTestImplementation("tools.fastlane:screengrab:2.1.1")
+    androidTestImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:${coroutinesVersion}")
+
+
+    resourcePlaceholders { files = listOf("xml/shortcuts.xml") }
 }
 
 kapt {
