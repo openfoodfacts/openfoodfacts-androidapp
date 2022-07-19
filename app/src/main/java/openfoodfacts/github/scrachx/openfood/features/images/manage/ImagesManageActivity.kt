@@ -543,6 +543,7 @@ class ImagesManageActivity : BaseActivity() {
     }
 
 
+    @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         val isResultOk = resultCode == RESULT_OK

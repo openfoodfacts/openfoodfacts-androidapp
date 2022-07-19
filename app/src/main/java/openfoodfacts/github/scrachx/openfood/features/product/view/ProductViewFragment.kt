@@ -75,6 +75,7 @@ class ProductViewFragment : Fragment(), IProductView, OnRefreshListener {
         binding.navigationBottomInclude.bottomNavigation.installBottomNavigation(requireActivity())
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == LOGIN_ACTIVITY_REQUEST_CODE && resultCode == Activity.RESULT_OK) {

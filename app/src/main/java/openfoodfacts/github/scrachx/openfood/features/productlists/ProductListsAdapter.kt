@@ -10,8 +10,9 @@ import openfoodfacts.github.scrachx.openfood.models.entities.ProductLists
 
 class ProductListsAdapter(
     internal val context: Context,
-    val lists: MutableList<ProductLists>
 ) : RecyclerView.Adapter<ProductListsViewHolder>() {
+    val lists = mutableListOf<ProductLists>()
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductListsViewHolder {
         val binding = YourProductListsItemBinding.inflate(LayoutInflater.from(context), parent, false)
         return ProductListsViewHolder(binding)

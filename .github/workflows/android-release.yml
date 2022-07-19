@@ -21,7 +21,7 @@ jobs:
           java-version: '11'
 
       - name: Unit tests
-        uses: gradle/gradle-build-action@v2.1.6
+        uses: gradle/gradle-build-action@v2.2.2
         with:
           arguments: testOffPlaystoreDebugUnitTest --stacktrace
 
@@ -39,7 +39,7 @@ jobs:
           java-version: '11'
 
       - name: Unit tests
-        uses: gradle/gradle-build-action@v2.1.6
+        uses: gradle/gradle-build-action@v2.2.2
         with:
           arguments: testObfPlaystoreDebugUnitTest --stacktrace
 
@@ -57,7 +57,7 @@ jobs:
           java-version: '11'
 
       - name: Unit tests
-        uses: gradle/gradle-build-action@v2.1.6
+        uses: gradle/gradle-build-action@v2.2.2
         with:
           arguments: testOpfPlaystoreDebugUnitTest --stacktrace
 
@@ -75,7 +75,7 @@ jobs:
           java-version: '11'
 
       - name: Unit tests
-        uses: gradle/gradle-build-action@v2.1.6
+        uses: gradle/gradle-build-action@v2.2.2
         with:
           arguments: testOpffPlaystoreDebugUnitTest --stacktrace
 
@@ -121,15 +121,15 @@ jobs:
       - name: Install Dependencies
         run: gem install bundler && bundle install
 
-      - name: Run Fastlane release lane for Open Food Facts
-        run: bundle exec fastlane release
-        env:
-          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
-          CI_RELEASE: true
-          SIGN_STORE_PATH: ../fastlane/envfiles/keystore.jks
-          SIGN_STORE_PASSWORD: ${{ secrets.SIGN_STORE_PASSWORD }}
-          SIGN_KEY_ALIAS: ${{ secrets.SIGN_KEY_ALIAS }}
-          SIGN_KEY_PASSWORD: ${{ secrets.SIGN_KEY_PASSWORD }}
+      #- name: Run Fastlane release lane for Open Food Facts
+      #  run: bundle exec fastlane release
+      #  env:
+      #    SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+      #    CI_RELEASE: true
+      #    SIGN_STORE_PATH: ../fastlane/envfiles/keystore.jks
+      #    SIGN_STORE_PASSWORD: ${{ secrets.SIGN_STORE_PASSWORD }}
+      #    SIGN_KEY_ALIAS: ${{ secrets.SIGN_KEY_ALIAS }}
+      #    SIGN_KEY_PASSWORD: ${{ secrets.SIGN_KEY_PASSWORD }}
 
       - name: Run Fastlane release lane for Open Products Facts
         run: bundle exec fastlane release_opf
