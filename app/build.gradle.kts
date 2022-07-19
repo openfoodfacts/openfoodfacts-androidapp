@@ -345,7 +345,7 @@ dependencies {
     // UI Component : Font Icons
     implementation("com.mikepenz:iconics-core:4.0.2@aar")
     implementation("com.mikepenz:google-material-typeface:3.0.1.6.original-kotlin@aar")
-    implementation("com.github.CanHub:Android-Image-Cropper:3.1.3")
+    implementation("com.github.CanHub:Android-Image-Cropper:4.3.0")
 
     // UI Component : Chips Input
     implementation("com.github.hootsuite:nachos:1.2.0")
