@@ -45,7 +45,6 @@ class OFFApplication : MultiDexApplication(), Configuration.Provider {
         .build()
 
 
-    @Suppress("DEPRECATION")
     override fun onCreate() {
         super.onCreate()
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
