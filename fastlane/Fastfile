@@ -2,7 +2,7 @@ require_relative 'utils'
 fastlane_require "spaceship"
 
 desc 'Create a release and upload to internal channel of playstore'
-lane :release do
+lane :release_off do
     PACKAGE_NAME = CredentialsManager::AppfileConfig.try_fetch_value(:package_name)
     gradle_file = "./app/build.gradle.kts"
 
