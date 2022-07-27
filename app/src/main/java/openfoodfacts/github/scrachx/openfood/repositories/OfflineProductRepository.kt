@@ -1,18 +1,22 @@
 package openfoodfacts.github.scrachx.openfood.repositories
 
+import android.content.Context
 import android.util.Log
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import logcat.LogPriority
+import logcat.logcat
 import okhttp3.RequestBody
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
 import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
-import openfoodfacts.github.scrachx.openfood.models.ProductImageField.*
 import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct
 import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProductDao
 import openfoodfacts.github.scrachx.openfood.models.eventbus.ProductNeedsRefreshEvent
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
+import openfoodfacts.github.scrachx.openfood.utils.InstallationService
 import openfoodfacts.github.scrachx.openfood.utils.list
 import openfoodfacts.github.scrachx.openfood.utils.unique
 import org.greenrobot.eventbus.EventBus
@@ -22,9 +26,10 @@ import javax.inject.Singleton
 
 @Singleton
 class OfflineProductRepository @Inject constructor(
+    @ApplicationContext private val context: Context,
     private val daoSession: DaoSession,
+    private val installationService: InstallationService,
     private val api: ProductsAPI,
-    private val client: ProductRepository
 ) {
     /**
      * @return true if there is still products to upload, false otherwise
@@ -42,9 +47,9 @@ class OfflineProductRepository @Inject constructor(
                 uploadProductIfNeededSync(product)
             ).apply {
                 if (includeImages) {
-                    this += uploadImageIfNeededSync(product, FRONT)
-                    this += uploadImageIfNeededSync(product, INGREDIENTS)
-                    this += uploadImageIfNeededSync(product, NUTRITION)
+                    this += uploadImageIfNeededSync(product, ProductImageField.FRONT)
+                    this += uploadImageIfNeededSync(product, ProductImageField.INGREDIENTS)
+                    this += uploadImageIfNeededSync(product, ProductImageField.NUTRITION)
                 }
             }.all { it }
 
@@ -84,20 +89,23 @@ class OfflineProductRepository @Inject constructor(
             remove(ApiFields.Keys.IMAGE_NUTRITION_UPLOADED)
         }.filter { !it.value.isNullOrEmpty() || ApiFields.Keys.PRODUCT_FIELDS_WITH_EMPTY_VALUE.contains(it.key) }
 
-        Log.d(LOG_TAG, "Uploading data for product ${product.barcode}: $productDetails")
+        logcat(LogPriority.DEBUG) { "Uploading data for product ${product.barcode}: $productDetails" }
         try {
-            val productState = api.saveProduct(product.barcode, productDetails, client.getCommentToUpload())
+            val comment = ProductRepository.getCommentToUpload(context, installationService, null)
+            val productState = api.saveProduct(product.barcode, productDetails, comment)
 
             if (productState.status == 1L) {
                 product.isDataUploaded = true
                 daoSession.offlineSavedProductDao.insertOrReplace(product)
-                Log.i(LOG_TAG, "Product ${product.barcode} uploaded.")
+                logcat(LogPriority.INFO) { "Product ${product.barcode} uploaded." }
 
                 // Refresh product if open
                 EventBus.getDefault().post(ProductNeedsRefreshEvent(product.barcode))
                 return true
             } else {
-                Log.i(LOG_TAG, "Could not upload product ${product.barcode}. Error code: ${productState.status}")
+                logcat(LogPriority.WARN) {
+                    "Could not upload product ${product.barcode}. Error code: ${productState.status}"
+                }
             }
         } catch (e: Exception) {
             Log.e(LOG_TAG, e.message, e)
@@ -107,19 +115,19 @@ class OfflineProductRepository @Inject constructor(
 
     private suspend fun uploadImageIfNeededSync(
         product: OfflineSavedProduct,
-        imageField: ProductImageField
+        imageField: ProductImageField,
     ) = withContext(Dispatchers.IO) {
 
-        val imageType = imageField.imageType()
+        val imageType = imageField.apiKey
         val imageFilePath = product.productDetails["image_$imageType"]
 
-        if (imageFilePath == null || !isImageUploadNeede(product.productDetails, imageType)) {
+        if (imageFilePath == null || !needsImageUpload(product.productDetails, imageField)) {
             // no need or nothing to upload
             Log.d(LOG_TAG, "No need to upload image_$imageType for product ${product.barcode}")
             return@withContext true
         }
 
-        Log.d(LOG_TAG, "Uploading image_$imageType for product ${product.barcode}")
+        logcat(LogPriority.DEBUG) { "Uploading image_$imageType for product ${product.barcode}" }
 
         val imgMap = createRequestBodyMap(product.barcode, product.productDetails, imageField)
         val image = ProductImage.createImageRequest(File(imageFilePath))
@@ -173,15 +181,8 @@ class OfflineProductRepository @Inject constructor(
     }
 
 
-    private fun ProductImageField.imageType() = when (this) {
-        FRONT -> "front"
-        INGREDIENTS -> "ingredients"
-        NUTRITION -> "nutrition"
-        else -> "other"
-    }
-
-    private fun isImageUploadNeede(productDetails: Map<String, String>, imageType: String): Boolean {
-        val imageUploaded = productDetails["image_${imageType}_uploaded"].toBoolean()
+    private fun needsImageUpload(productDetails: Map<String, String>, imageType: ProductImageField): Boolean {
+        val imageUploaded = productDetails["image_${imageType.apiKey}_uploaded"].toBoolean()
         val imageFilePath = productDetails["image_$imageType"]
         return !imageUploaded && !imageFilePath.isNullOrEmpty()
     }
@@ -189,7 +190,7 @@ class OfflineProductRepository @Inject constructor(
     private fun createRequestBodyMap(
         code: String,
         productDetails: Map<String, String>,
-        frontImg: ProductImageField
+        frontImg: ProductImageField,
     ): MutableMap<String, RequestBody> {
         val barcode = RequestBody.create(ProductRepository.MIME_TEXT, code)
 

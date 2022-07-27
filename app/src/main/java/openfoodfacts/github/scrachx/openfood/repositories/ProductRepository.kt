@@ -42,13 +42,13 @@ class ProductRepository @Inject constructor(
     private val rawApi: ProductsAPI,
     private val sentryAnalytics: SentryAnalytics,
     private val localeManager: LocaleManager,
-    private val installationService: InstallationService
+    private val installationService: InstallationService,
 ) {
 
     suspend fun getProductStateFull(
         barcode: String,
         fields: String = getAllFields(localeManager.getLanguage()),
-        userAgent: String = Utils.HEADER_USER_AGENT_SEARCH
+        userAgent: String = Utils.HEADER_USER_AGENT_SEARCH,
     ): ProductState {
         sentryAnalytics.setBarcode(barcode)
         return withContext(IO) {
@@ -58,7 +58,7 @@ class ProductRepository @Inject constructor(
 
     suspend fun getProductsByBarcode(
         codes: List<String>,
-        customHeader: String = Utils.HEADER_USER_AGENT_SEARCH
+        customHeader: String = Utils.HEADER_USER_AGENT_SEARCH,
     ) = rawApi.getProductsByBarcode(
         codes.joinToString(","),
         getAllFields(localeManager.getLanguage()),
@@ -410,6 +410,36 @@ class ProductRepository @Inject constructor(
 
                 return@withContext
             }
+
+        /**
+         * Returns an upload comment based on the actual user
+         * and the app version and flavor.
+         *
+         * @param username the username.
+         * Can be null if the user is not logged in
+         */
+        fun getCommentToUpload(
+            context: Context,
+            installationService: InstallationService,
+            username: String?,
+        ): String = buildString {
+            append("Official ")
+            append(
+                when (BuildConfig.FLAVOR) {
+                    OBF -> "Open Beauty Facts"
+                    OPFF -> "Open Pet Food Facts"
+                    OPF -> "Open Products Facts"
+                    OFF -> "Open Food Facts"
+                    else -> "Open Food Facts (unknown flavor)"
+                }
+            )
+            append(" Android app ")
+            append(context.getVersionName())
+            if (username.isNullOrEmpty()) {
+                val id = installationService.id
+                append(" (Added by $id)")
+            }
+        }
     }
 
     /**
@@ -422,7 +452,7 @@ class ProductRepository @Inject constructor(
         val userPassword = context.getLoginPassword()
 
         if (userName?.isNotBlank() == true && userPassword?.isNotBlank() == true) {
-            imgMap[Keys.USER_COMMENT] = getCommentToUpload(userName)
+            imgMap[Keys.USER_COMMENT] = getCommentToUpload(context, installationService, userName)
             imgMap[Keys.USER_ID] = userName
             imgMap[Keys.USER_PASS] = userPassword
         }
@@ -430,34 +460,16 @@ class ProductRepository @Inject constructor(
         return imgMap
     }
 
-    /**
-     * Uploads comment by users
-     *
-     * @param login the username
-     */
-    fun getCommentToUpload(login: String? = null) = buildString {
-        append(
-            when (BuildConfig.FLAVOR) {
-                OBF -> StringBuilder("Official Open Beauty Facts Android app")
-                OPFF -> StringBuilder("Official Open Pet Food Facts Android app")
-                OPF -> StringBuilder("Official Open Products Facts Android app")
-                OFF -> StringBuilder("Official Open Food Facts Android app")
-                else -> StringBuilder("Official Open Food Facts Android app")
-            }
-        )
-        append(" ")
-        append(context.getVersionName())
-        if (login.isNullOrEmpty()) {
-            append(" (Added by ").append(installationService.id).append(")")
-        }
-    }
-
-    val localeProductNameField get() = "product_name_${localeManager.getLanguage()}"
+    val localeProductNameField
+        get() = "product_name_${localeManager.getLanguage()}"
 
     private val fieldsToFetchFacets
         get() = (Keys.PRODUCT_SEARCH_FIELDS + localeProductNameField).joinToString(",")
 
-    suspend fun getEMBCodeSuggestions(term: String) = rawApi.getSuggestions("emb_codes", term)
-    suspend fun getPeriodAfterOpeningSuggestions(term: String) = rawApi.getSuggestions("periods_after_opening", term)
+    suspend fun getEMBCodeSuggestions(term: String) =
+        rawApi.getSuggestions("emb_codes", term)
+
+    suspend fun getPeriodAfterOpeningSuggestions(term: String) =
+        rawApi.getSuggestions("periods_after_opening", term)
 }
 

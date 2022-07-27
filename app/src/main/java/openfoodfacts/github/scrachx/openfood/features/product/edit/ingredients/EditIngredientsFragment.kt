@@ -23,6 +23,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.annotation.UiThread
 import androidx.core.net.toFile
 import androidx.core.view.isVisible
 import androidx.core.widget.doAfterTextChanged
@@ -508,6 +509,7 @@ class EditIngredientsFragment : ProductEditFragment() {
         }
     }
 
+    @UiThread
     fun showOCRProgress() {
         // Disable extract button and ingredients text field
         binding.btnExtractIngredients.isEnabled = false
@@ -520,6 +522,7 @@ class EditIngredientsFragment : ProductEditFragment() {
         binding.ocrProgress.visibility = View.VISIBLE
     }
 
+    @UiThread
     fun hideOCRProgress() {
         // Re-enable extract button and ingredients text field
         binding.btnExtractIngredients.isEnabled = true
