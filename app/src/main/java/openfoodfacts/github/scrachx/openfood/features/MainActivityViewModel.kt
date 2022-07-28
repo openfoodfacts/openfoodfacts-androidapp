@@ -3,6 +3,7 @@ package openfoodfacts.github.scrachx.openfood.features
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
 import openfoodfacts.github.scrachx.openfood.repositories.HistoryRepository
@@ -19,6 +20,8 @@ class MainActivityViewModel @Inject constructor(
         viewModelScope.launch { productRepository.postImg(image) }
     }
 
-    fun syncOldHistory() = viewModelScope.launch { historyRepository.syncOldHistory() }
+    fun syncOldHistory(): Job {
+        return viewModelScope.launch { historyRepository.syncOldHistory() }
+    }
 
 }
