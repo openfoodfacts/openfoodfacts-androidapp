@@ -15,6 +15,7 @@ import openfoodfacts.github.scrachx.openfood.AppFlavors.OBF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OPF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OPFF
+import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.analytics.SentryAnalytics
 import openfoodfacts.github.scrachx.openfood.images.*
@@ -387,15 +388,7 @@ class ProductRepository @Inject constructor(
             username: String?,
         ): String = buildString {
             append("Official ")
-            append(
-                when (BuildConfig.FLAVOR) {
-                    OBF -> "Open Beauty Facts"
-                    OPFF -> "Open Pet Food Facts"
-                    OPF -> "Open Products Facts"
-                    OFF -> "Open Food Facts"
-                    else -> "Open Food Facts (unknown flavor)"
-                }
-            )
+            append(BuildConfig.APP_NAME)
             append(" Android app ")
             append(context.getVersionName())
             if (username.isNullOrEmpty()) {

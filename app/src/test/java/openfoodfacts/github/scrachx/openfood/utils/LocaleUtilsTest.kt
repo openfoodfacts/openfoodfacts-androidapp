@@ -5,6 +5,8 @@ import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.content.res.Resources
 import com.google.common.truth.Truth.assertThat
+import io.mockk.every
+import io.mockk.mockk
 import openfoodfacts.github.scrachx.openfood.models.LanguageData
 import org.junit.jupiter.api.Test
 import org.mockito.kotlin.doReturn
@@ -26,14 +28,15 @@ class LocaleUtilsTest {
     @Test
     fun getLocale_FromContext() {
         val locale = LocaleUtils.parseLocale("en-US")
-        val configuration = mock<Configuration> { }.apply { this.locale = locale }
-        val resources = mock<Resources> {
-            on { this.configuration } doReturn configuration
+        val configuration = Configuration().apply { this.locale = locale }
+        val resources = mockk<Resources> {
+            every { this@mockk.configuration } returns configuration
         }
-        val context = mock<Context> {
-            on { this.resources } doReturn resources
+        val context = mockk<Context> {
+            every { this@mockk.resources } returns resources
+            every { getString(any()) } returns ""
         }
-        val sharedPreferences = mock<SharedPreferences> {}
+        val sharedPreferences = mockk<SharedPreferences>(relaxed = true)
         val localeManager = LocaleManager(context, sharedPreferences)
 
         assertThat(localeManager.getLocaleFromContext(context)).isEqualTo(locale)

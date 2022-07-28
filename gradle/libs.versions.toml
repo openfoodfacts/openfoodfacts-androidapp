@@ -20,6 +20,7 @@ eventbus = "3.3.1"
 junit5 = "5.8.2"
 androidx-hilt = "1.0.0"
 org-mockito = "4.6.1"
+mockk = "1.12.5"
 com-squareup-retrofit2 = "2.6.4"
 androidx-test-espresso = "3.4.0"
 
@@ -135,6 +136,8 @@ robolectric = "org.robolectric:robolectric:4.8.1"
 mockito-core = { module = "org.mockito:mockito-core", version.ref = "org-mockito" }
 mockito-kotlin = "org.mockito.kotlin:mockito-kotlin:4.0.0"
 mockito-junit-jupiter = { module = "org.mockito:mockito-junit-jupiter", version.ref = "org-mockito" }
+mockk-core = { module = "io.mockk:mockk", version.ref = "mockk" }
+mockk-agent = { module = "io.mockk:mockk-agent-jvm", version.ref = "mockk" }
 json-unit-fluent = "net.javacrumbs.json-unit:json-unit-fluent:2.35.0"
 truth = "com.google.truth:truth:1.1.3"
 truth-java8 = "com.google.truth.extensions:truth-java8-extension:1.1.3"
@@ -228,6 +231,8 @@ testing = [
     "mockito-core",
     "mockito-junit-jupiter",
     "mockito-kotlin",
+    "mockk-core",
+    "mockk-agent",
     "robolectric",
     "test-kotlin-coroutines",
     "truth",
