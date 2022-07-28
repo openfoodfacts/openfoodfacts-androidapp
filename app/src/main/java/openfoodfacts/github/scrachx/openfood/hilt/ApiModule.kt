@@ -32,7 +32,7 @@ object ApiModule {
 
     @Provides
     @Singleton
-    fun robotoffApi(@RobotoffRetrofit retrofit: Retrofit): RobotoffAPI = retrofit.create()
+    fun provideRobotoffApi(@RobotoffRetrofit retrofit: Retrofit): RobotoffAPI = retrofit.create()
 }
 
 internal inline fun <reified T : Any> Retrofit.create(): T = create(T::class.java)
