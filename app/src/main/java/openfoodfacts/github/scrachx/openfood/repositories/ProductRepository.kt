@@ -267,51 +267,6 @@ class ProductRepository @Inject constructor(
         rawApi.getProductsByOrigin(origin, page, fieldsToFetchFacets)
     }
 
-    suspend fun syncOldHistory() = withContext(IO) {
-        val fields = listOf(
-            Keys.IMAGE_SMALL_URL,
-            Keys.PRODUCT_NAME,
-            Keys.BRANDS,
-            Keys.QUANTITY,
-            IMAGE_URL,
-            Keys.NUTRITION_GRADE_FR,
-            Keys.BARCODE
-        ).joinToString(",")
-
-        daoSession.historyProductDao.loadAll().forEach { historyProduct ->
-            val state = rawApi.getProductByBarcode(
-                historyProduct.barcode,
-                fields,
-                localeManager.getLanguage(),
-                getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)
-            )
-
-            // Products not found should be skipped
-            if (state.status == 0L && state.statusVerbose?.contains("not found") != true) {
-                throw IOException("Could not sync history. Error with product ${state.code} ")
-            } else if (state.status > 0L) {
-                val product = state.product!!
-                val hp = HistoryProduct(
-                    product.productName,
-                    product.brands,
-                    product.getImageSmallUrl(localeManager.getLanguage()),
-                    product.code,
-                    product.quantity,
-                    product.nutritionGradeFr,
-                    product.ecoscore,
-                    product.novaGroups
-                )
-                Log.d("syncOldHistory", hp.toString())
-                hp.lastSeen = historyProduct.lastSeen
-                daoSession.historyProductDao.insertOrReplace(hp)
-            }
-        }
-
-
-        context.getAppPreferences().edit {
-            putBoolean("is_old_history_data_synced", true)
-        }
-    }
 
     fun getInfoAddedIncompleteProductsSingle(contributor: String, page: Int) = rxSingle(IO) {
         rawApi.getInfoAddedIncompleteProducts(contributor, page)
