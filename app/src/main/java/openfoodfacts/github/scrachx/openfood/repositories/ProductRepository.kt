@@ -214,6 +214,14 @@ class ProductRepository @Inject constructor(
         rawApi.getProductByBrands(brand, page, fieldsToFetchFacets)
     }
 
+    /**
+     * Try to upload image. If the upload fails enqueue the image for later
+     * uploading.
+     *
+     * @param image the product image.
+     * @param setAsDefault if true, set the image as the product default
+     *                     (front) image.
+     */
     suspend fun postImg(image: ProductImage, setAsDefault: Boolean = false) = withContext(IO) {
         try {
             val body = rawApi.saveImage(getUploadableMap(image))
@@ -254,7 +262,7 @@ class ProductRepository @Inject constructor(
     }
 
     /**
-     * Unselect the image from the product code.
+     * Unselect the image.
      *
      * @param code code of the product
      */
