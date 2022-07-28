@@ -10,6 +10,7 @@ import io.reactivex.schedulers.Schedulers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
 import okhttp3.Credentials
+import okhttp3.Headers
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import openfoodfacts.github.scrachx.openfood.BuildConfig
@@ -24,6 +25,8 @@ import org.junit.jupiter.api.Test
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.jackson.JacksonConverterFactory
+import retrofit2.create
+import retrofit2.http.Header
 import java.time.Duration
 
 class ProductsAPITest {
@@ -185,7 +188,6 @@ class ProductsAPITest {
 
     companion object {
         const val LC = "en"
-        private const val DEV_API = "https://world.openfoodfacts.dev"
 
         /**
          * We need to use auth because we use world.openfoodfacts.dev
@@ -206,33 +208,33 @@ class ProductsAPITest {
                         origReq.newBuilder()
                             .header("Authorization", Credentials.basic("off", "off"))
                             .header("Accept", "application/json")
-                            .method(origReq.method(), origReq.body()).build()
+                            .method(origReq.method(), origReq.body())
+                            .build()
                     )
                 }
                 .build()
 
-            prodClient = Retrofit.Builder()
+            prodClient = defaultBuilder()
                 .baseUrl(BuildConfig.HOST)
-                .client(httpClientWithAuth)
-                .addConverterFactory(JacksonConverterFactory.create(jacksonObjectMapper()))
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
                 .build()
-                .create(ProductsAPI::class.java)
+                .create()
 
-            devClientWithAuth = Retrofit.Builder()
-                .baseUrl(DEV_API)
-                .addConverterFactory(JacksonConverterFactory.create())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            devClientWithAuth = defaultBuilder()
+                .baseUrl(BuildConfig.TESTING_HOST)
                 .client(httpClientWithAuth)
                 .build()
-                .create(ProductsAPI::class.java)
+                .create()
         }
+
+        private fun defaultBuilder() = Retrofit.Builder()
+            .addConverterFactory(JacksonConverterFactory.create(jacksonObjectMapper()))
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
 
     }
 
     class SearchSubject private constructor(
         failureMetadata: FailureMetadata,
-        private val actual: Search
+        private val actual: Search,
     ) : Subject(failureMetadata, actual) {
 
         fun hasFoundProducts() {

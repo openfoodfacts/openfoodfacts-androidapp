@@ -13,24 +13,26 @@ import openfoodfacts.github.scrachx.openfood.network.services.RobotoffAPI
 import openfoodfacts.github.scrachx.openfood.network.services.WikidataAPI
 import retrofit2.Retrofit
 import javax.inject.Singleton
+import kotlin.reflect.KClass
 
 @Module
 @InstallIn(SingletonComponent::class)
 object ApiModule {
+    @Provides
+    @Singleton
+    fun provideProductsAPI(@MainRetrofit retrofit: Retrofit): ProductsAPI = retrofit.create()
 
     @Provides
     @Singleton
-    fun provideProductsAPI(@MainRetrofit retrofit: Retrofit): ProductsAPI = retrofit.create(ProductsAPI::class.java)
+    fun provideWikiDataAPI(@WikiRetrofit retrofit: Retrofit): WikidataAPI = retrofit.create()
 
     @Provides
     @Singleton
-    fun provideWikiDataAPI(@WikiRetrofit retrofit: Retrofit): WikidataAPI = retrofit.create(WikidataAPI::class.java)
+    fun provideAnalysisDataApi(@MainRetrofit retrofit: Retrofit): AnalysisDataAPI = retrofit.create()
 
     @Provides
     @Singleton
-    fun provideAnalysisDataApi(@MainRetrofit retrofit: Retrofit): AnalysisDataAPI = retrofit.create(AnalysisDataAPI::class.java)
-
-    @Provides
-    @Singleton
-    fun robotoffApi(@RobotoffRetrofit retrofit: Retrofit): RobotoffAPI = retrofit.create(RobotoffAPI::class.java)
+    fun robotoffApi(@RobotoffRetrofit retrofit: Retrofit): RobotoffAPI = retrofit.create()
 }
+
+internal inline fun <reified T : Any> Retrofit.create(): T = create(T::class.java)
