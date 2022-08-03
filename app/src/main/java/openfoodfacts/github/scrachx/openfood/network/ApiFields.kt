@@ -21,8 +21,11 @@ import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import org.jetbrains.annotations.Contract
 
 /**
- * This class lists all fields, field prefixes and suffixes and default values used by the api.
- * We discourage the use of string literals through the code and we recommend creating a field here so that it can be updated on API change.
+ * This class lists all fields, field prefixes and suffixes and default values
+ * used by the api.
+ *
+ * We discourage the use of string literals through the code and we recommend
+ * creating a field here so that it can be updated on API change.
  */
 object ApiFields {
     object StateTags {
