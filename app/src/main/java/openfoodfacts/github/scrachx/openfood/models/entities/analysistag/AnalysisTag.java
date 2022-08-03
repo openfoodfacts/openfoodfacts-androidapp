@@ -12,9 +12,10 @@ import org.greenrobot.greendao.annotation.ToMany;
 import java.util.List;
 
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
+import openfoodfacts.github.scrachx.openfood.models.entities.TaxonomyEntity;
 
 @Entity
-public class AnalysisTag {
+public class AnalysisTag implements TaxonomyEntity {
     @Id(autoincrement = true)
     private Long id;
     @Index

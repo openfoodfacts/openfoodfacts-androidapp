@@ -53,7 +53,7 @@ class TaxonomiesRepositoryTest {
     fun testGetAllergens() = runBlockingTest {
         val appPrefs = instance.getAppPreferences()
 
-        val isDownloadActivated = appPrefs.getBoolean(Taxonomy.Allergens.getDownloadActivatePreferencesId(), false)
+        val isDownloadActivated = appPrefs.getBoolean(Taxonomy.Allergens.downloadActivatePreferencesId, false)
         val allergens = taxonomiesRepository.reloadAllergensFromServer()
         assertNotNull(allergens)
         if (!isDownloadActivated) {

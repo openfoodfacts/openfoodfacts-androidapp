@@ -9,11 +9,10 @@ import openfoodfacts.github.scrachx.openfood.utils.DeserializerHelper.extractMap
 import java.io.IOException
 import java.util.*
 
-/*
- * Created by Lobster on 03.03.18.
- */
 /**
  * Custom deserializer for LabelsWrapper
+ * @author Lobster
+ * @since 03/03/2018
  */
 class LabelsWrapperDeserializer : StdDeserializer<LabelsWrapper>(LabelsWrapper::class.java) {
     @Throws(IOException::class)

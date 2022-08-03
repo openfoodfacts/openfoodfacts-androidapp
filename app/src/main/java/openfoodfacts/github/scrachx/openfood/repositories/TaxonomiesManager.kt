@@ -1,7 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.repositories
 
 import android.content.Context
-import android.util.Log
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Dispatchers.IO
@@ -10,6 +9,7 @@ import logcat.LogPriority
 import logcat.asLog
 import logcat.logcat
 import openfoodfacts.github.scrachx.openfood.BuildConfig
+import openfoodfacts.github.scrachx.openfood.models.entities.TaxonomyEntity
 import openfoodfacts.github.scrachx.openfood.utils.Utils
 import openfoodfacts.github.scrachx.openfood.utils.getAppPreferences
 import openfoodfacts.github.scrachx.openfood.utils.isEmpty
@@ -33,7 +33,7 @@ class TaxonomiesManager @Inject constructor(
      * @return The timestamp of the last changes date of the taxonomy.json on the server
      * or [TAXONOMY_NO_INTERNET] if there is no connection to the server.
      */
-    private suspend fun <T> getLastModifiedDateFromServer(taxonomy: Taxonomy<T>) = withContext(IO) {
+    private suspend fun <T : TaxonomyEntity> getLastModifiedDateFromServer(taxonomy: Taxonomy<T>) = withContext(IO) {
         var lastModifiedDate: Long
         val taxoUrl = URL(BuildConfig.OFWEBSITE + taxonomy.jsonUrl)
         try {
@@ -60,7 +60,7 @@ class TaxonomiesManager @Inject constructor(
      *
      * @param dao used to check if there is data saved in the local database.
      */
-    suspend fun <T> getTaxonomyData(
+    suspend fun <T : TaxonomyEntity> getTaxonomyData(
         taxonomy: Taxonomy<T>,
         checkUpdate: Boolean,
         dao: AbstractDao<T, *>,
@@ -69,7 +69,7 @@ class TaxonomiesManager @Inject constructor(
         val appPrefs = context.getAppPreferences()
 
         // First check if this taxonomy is to be loaded for this flavor, else return empty list
-        val isTaxonomyActivated = appPrefs.getBoolean(taxonomy.getDownloadActivatePreferencesId(), false)
+        val isTaxonomyActivated = appPrefs.getBoolean(taxonomy.downloadActivatePreferencesId, false)
         if (!isTaxonomyActivated) return@withContext emptyList()
 
         // If the database scheme changed, this settings should be true
@@ -81,26 +81,29 @@ class TaxonomiesManager @Inject constructor(
             download(taxonomy, taxonomiesRepository)
         } else if (checkUpdate) {
             // Get local last downloaded time
-            val localDownloadTime = appPrefs.getLong(taxonomy.getLastDownloadTimeStampPreferenceId(), 0L)
+            val localDownloadTime = appPrefs.getLong(taxonomy.lastDownloadTimeStampPreferenceId, 0L)
 
             // We need to check for update. Test if file on server is more recent than last download.
             checkAndDownloadIfNewer(taxonomy, localDownloadTime, taxonomiesRepository)
         } else emptyList()
     }
 
-    private suspend fun <T> download(
+    private suspend fun <T : TaxonomyEntity> download(
         taxonomy: Taxonomy<T>,
         taxonomiesRepository: TaxonomiesRepository,
-    ) = withContext(IO) {
+    ): List<T> = withContext(IO) {
         val lastMod = getLastModifiedDateFromServer(taxonomy)
 
         if (lastMod != TAXONOMY_NO_INTERNET) {
-            taxonomy.load(taxonomiesRepository, lastMod)
-                .also { logDownload(taxonomy) }
-        } else emptyList()
+            val list = taxonomy.download(taxonomiesRepository, lastMod)
+            logDownload(taxonomy)
+            return@withContext list
+        } else {
+            emptyList()
+        }
     }
 
-    private suspend fun <T> checkAndDownloadIfNewer(
+    private suspend fun <T : TaxonomyEntity> checkAndDownloadIfNewer(
         taxonomy: Taxonomy<T>,
         localDownloadTime: Long,
         taxonomiesRepository: TaxonomiesRepository,
@@ -108,7 +111,7 @@ class TaxonomiesManager @Inject constructor(
         val lastModRemote = getLastModifiedDateFromServer(taxonomy)
 
         if (lastModRemote == 0L || lastModRemote > localDownloadTime)
-            taxonomy.load(taxonomiesRepository, lastModRemote).also { logDownload(taxonomy) }
+            taxonomy.download(taxonomiesRepository, lastModRemote).also { logDownload(taxonomy) }
         else emptyList()
     }
 

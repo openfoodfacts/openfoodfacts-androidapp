@@ -13,6 +13,7 @@ import org.greenrobot.greendao.annotation.Unique;
 import java.util.List;
 
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
+import openfoodfacts.github.scrachx.openfood.models.entities.TaxonomyEntity;
 
 /**
  * Created by Lobster on 03.03.18.
@@ -20,7 +21,7 @@ import openfoodfacts.github.scrachx.openfood.models.DaoSession;
 @Entity(indexes = {
     @Index(value = "tag", unique = true)
 })
-public class Label {
+public class Label implements TaxonomyEntity {
 
     @Id(autoincrement = true)
     private Long id;

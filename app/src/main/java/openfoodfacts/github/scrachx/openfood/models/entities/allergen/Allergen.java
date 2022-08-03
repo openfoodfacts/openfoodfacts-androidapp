@@ -13,11 +13,12 @@ import org.greenrobot.greendao.annotation.Unique;
 import java.util.List;
 
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
+import openfoodfacts.github.scrachx.openfood.models.entities.TaxonomyEntity;
 
 @Entity(indexes = {
     @Index(value = "tag", unique = true)
 })
-public class Allergen {
+public class Allergen implements TaxonomyEntity {
     @Id(autoincrement = true)
     private Long id;
     @Unique

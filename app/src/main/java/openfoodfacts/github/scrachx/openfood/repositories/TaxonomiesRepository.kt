@@ -22,8 +22,11 @@ import com.squareup.picasso.Picasso
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.withContext
+import logcat.LogPriority
+import logcat.logcat
 import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import openfoodfacts.github.scrachx.openfood.models.InvalidBarcode
+import openfoodfacts.github.scrachx.openfood.models.entities.TaxonomyEntity
 import openfoodfacts.github.scrachx.openfood.models.entities.additive.Additive
 import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveName
 import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveNameDao
@@ -66,11 +69,11 @@ import javax.inject.Singleton
  */
 @Singleton
 class TaxonomiesRepository @Inject constructor(
-        @ApplicationContext private val context: Context,
-        private val daoSession: DaoSession,
-        private val analysisDataApi: AnalysisDataAPI,
-        private val taxonomiesManager: TaxonomiesManager,
-        private val picasso: Picasso
+    @ApplicationContext private val context: Context,
+    private val daoSession: DaoSession,
+    private val analysisDataApi: AnalysisDataAPI,
+    private val taxonomiesManager: TaxonomiesManager,
+    private val picasso: Picasso,
 ) {
 
     /**
@@ -79,17 +82,17 @@ class TaxonomiesRepository @Inject constructor(
      * @return The list of Labels.
      */
     suspend fun reloadLabelsFromServer() = taxonomiesManager.getTaxonomyData(
-            Taxonomy.Labels,
-            true,
-            daoSession.labelDao,
-            this
+        Taxonomy.Labels,
+        true,
+        daoSession.labelDao,
+        this
     )
 
     suspend fun downloadLabels(lastModifiedDate: Long) =
-            analysisDataApi.getLabels().map().also {
-                saveLabels(it)
-                updateLastDownloadDateInSettings(Taxonomy.Labels, lastModifiedDate)
-            }
+        analysisDataApi.getLabels().map().also {
+            saveLabels(it)
+            updateLastDownloadDateInSettings(Taxonomy.Labels, lastModifiedDate)
+        }
 
     /**
      * Load tags from the server or local database
@@ -97,31 +100,31 @@ class TaxonomiesRepository @Inject constructor(
      * @return The list of Tags.
      */
     suspend fun reloadTagsFromServer() = taxonomiesManager.getTaxonomyData(
-            Taxonomy.Tags,
-            true,
-            daoSession.tagDao,
-            this
+        Taxonomy.Tags,
+        true,
+        daoSession.tagDao,
+        this
     )
 
     suspend fun downloadTags(lastModifiedDate: Long) =
-            analysisDataApi.getTags().tags.also {
-                saveTags(it)
-                updateLastDownloadDateInSettings(Taxonomy.Tags, lastModifiedDate)
-            }
+        analysisDataApi.getTags().tags.also {
+            saveTags(it)
+            updateLastDownloadDateInSettings(Taxonomy.Tags, lastModifiedDate)
+        }
 
     suspend fun reloadInvalidBarcodesFromServer() = taxonomiesManager.getTaxonomyData(
-            Taxonomy.InvalidBarcodes,
-            true,
-            daoSession.invalidBarcodeDao,
-            this
+        Taxonomy.InvalidBarcodes,
+        true,
+        daoSession.invalidBarcodeDao,
+        this
     )
 
     suspend fun downloadInvalidBarcodes(lastModifiedDate: Long) =
-            analysisDataApi.getInvalidBarcodes().map { InvalidBarcode(it) }
-                    .also {
-                        saveInvalidBarcodes(it)
-                        updateLastDownloadDateInSettings(Taxonomy.InvalidBarcodes, lastModifiedDate)
-                    }
+        analysisDataApi.getInvalidBarcodes().map { InvalidBarcode(it) }
+            .also {
+                saveInvalidBarcodes(it)
+                updateLastDownloadDateInSettings(Taxonomy.InvalidBarcodes, lastModifiedDate)
+            }
 
     /**
      * Load allergens from the server or local database
@@ -132,18 +135,18 @@ class TaxonomiesRepository @Inject constructor(
     suspend fun reloadAllergensFromServer() = getAllergens(true)
 
     suspend fun getAllergens(checkUpdate: Boolean = false) = taxonomiesManager.getTaxonomyData(
-            Taxonomy.Allergens,
-            checkUpdate,
-            daoSession.allergenDao,
-            this
+        Taxonomy.Allergens,
+        checkUpdate,
+        daoSession.allergenDao,
+        this
     )
 
     suspend fun downloadAllergens(lastModifiedDate: Long) =
-            analysisDataApi.getAllergens().map()
-                    .also {
-                        saveAllergens(it)
-                        updateLastDownloadDateInSettings(Taxonomy.Allergens, lastModifiedDate)
-                    }
+        analysisDataApi.getAllergens().map()
+            .also {
+                saveAllergens(it)
+                updateLastDownloadDateInSettings(Taxonomy.Allergens, lastModifiedDate)
+            }
 
     /**
      * Load countries from the server or local database
@@ -151,18 +154,18 @@ class TaxonomiesRepository @Inject constructor(
      * @return The list of countries.
      */
     suspend fun reloadCountriesFromServer() = taxonomiesManager.getTaxonomyData(
-            Taxonomy.Countries,
-            true,
-            daoSession.countryDao,
-            this
+        Taxonomy.Countries,
+        true,
+        daoSession.countryDao,
+        this
     )
 
     suspend fun downloadCountries(lastModifiedDate: Long) =
-            analysisDataApi.getCountries().map()
-                    .also {
-                        saveCountries(it)
-                        updateLastDownloadDateInSettings(Taxonomy.Countries, lastModifiedDate)
-                    }
+        analysisDataApi.getCountries().map()
+            .also {
+                saveCountries(it)
+                updateLastDownloadDateInSettings(Taxonomy.Countries, lastModifiedDate)
+            }
 
     /**
      * Load categories from the server or local database
@@ -170,25 +173,25 @@ class TaxonomiesRepository @Inject constructor(
      * @return The list of categories.
      */
     suspend fun reloadCategoriesFromServer() = taxonomiesManager.getTaxonomyData(
-            Taxonomy.Categories,
-            true,
-            daoSession.categoryDao,
-            this
+        Taxonomy.Categories,
+        true,
+        daoSession.categoryDao,
+        this
     )
 
     suspend fun fetchCategories() = taxonomiesManager.getTaxonomyData(
-            Taxonomy.Categories,
-            false,
-            daoSession.categoryDao,
-            this
+        Taxonomy.Categories,
+        false,
+        daoSession.categoryDao,
+        this
     )
 
     suspend fun downloadCategories(lastModifiedDate: Long) =
-            analysisDataApi.getCategories().map()
-                    .also {
-                        saveCategories(it)
-                        updateLastDownloadDateInSettings(Taxonomy.Categories, lastModifiedDate)
-                    }
+        analysisDataApi.getCategories().map()
+            .also {
+                saveCategories(it)
+                updateLastDownloadDateInSettings(Taxonomy.Categories, lastModifiedDate)
+            }
 
     /**
      * Load allergens which user selected earlier (i.e user's allergens)
@@ -197,8 +200,8 @@ class TaxonomiesRepository @Inject constructor(
      */
     suspend fun getEnabledAllergens(): List<Allergen> = withContext(IO) {
         daoSession.allergenDao.queryBuilder()
-                .where(AllergenDao.Properties.Enabled.eq("true"))
-                .list()
+            .where(AllergenDao.Properties.Enabled.eq("true"))
+            .list()
     }
 
     /**
@@ -207,18 +210,18 @@ class TaxonomiesRepository @Inject constructor(
      * @return The list of additives.
      */
     suspend fun reloadAdditivesFromServer() = taxonomiesManager.getTaxonomyData(
-            Taxonomy.Additives,
-            true,
-            daoSession.additiveDao,
-            this
+        Taxonomy.Additives,
+        true,
+        daoSession.additiveDao,
+        this
     )
 
     suspend fun downloadAdditives(lastModifiedDate: Long) =
-            analysisDataApi.getAdditives().map()
-                    .also {
-                        saveAdditives(it)
-                        updateLastDownloadDateInSettings(Taxonomy.Additives, lastModifiedDate)
-                    }
+        analysisDataApi.getAdditives().map()
+            .also {
+                saveAdditives(it)
+                updateLastDownloadDateInSettings(Taxonomy.Additives, lastModifiedDate)
+            }
 
     /**
      * TODO to be improved by loading only in the user language ?
@@ -231,18 +234,18 @@ class TaxonomiesRepository @Inject constructor(
      * @return The ingredients in the product.
      */
     suspend fun reloadIngredientsFromServer() = taxonomiesManager.getTaxonomyData(
-            Taxonomy.Ingredients,
-            true,
-            daoSession.ingredientDao,
-            this
+        Taxonomy.Ingredients,
+        true,
+        daoSession.ingredientDao,
+        this
     )
 
     suspend fun downloadIngredients(lastModifiedDate: Long) =
-            analysisDataApi.getIngredients().map()
-                    .also {
-                        saveIngredients(it)
-                        updateLastDownloadDateInSettings(Taxonomy.Ingredients, lastModifiedDate)
-                    }
+        analysisDataApi.getIngredients().map()
+            .also {
+                saveIngredients(it)
+                updateLastDownloadDateInSettings(Taxonomy.Ingredients, lastModifiedDate)
+            }
 
     /**
      * Load states from the server or local database
@@ -250,18 +253,18 @@ class TaxonomiesRepository @Inject constructor(
      * @return The list of states.
      */
     suspend fun reloadStatesFromServer() = taxonomiesManager.getTaxonomyData(
-            Taxonomy.ProductStates,
-            true,
-            daoSession.statesDao,
-            this
+        Taxonomy.ProductStates,
+        true,
+        daoSession.statesDao,
+        this
     )
 
     suspend fun downloadStates(lastModifiedDate: Long) =
-            analysisDataApi.getStates().map()
-                    .also {
-                        saveState(it)
-                        updateLastDownloadDateInSettings(Taxonomy.ProductStates, lastModifiedDate)
-                    }
+        analysisDataApi.getStates().map()
+            .also {
+                saveState(it)
+                updateLastDownloadDateInSettings(Taxonomy.ProductStates, lastModifiedDate)
+            }
 
     /**
      * Load stores from the server or local database
@@ -269,45 +272,33 @@ class TaxonomiesRepository @Inject constructor(
      * @return The list of stores.
      */
     suspend fun reloadStoresFromServer(): List<Store> = taxonomiesManager.getTaxonomyData(
-            Taxonomy.Stores,
-            true,
-            daoSession.storeDao,
-            this
+        Taxonomy.Stores,
+        true,
+        daoSession.storeDao,
+        this
     )
 
     suspend fun downloadStores(lastModifiedDate: Long) =
-            analysisDataApi.getStores().map()
-                    .also {
-                        saveStores(it)
-                        updateLastDownloadDateInSettings(Taxonomy.Stores, lastModifiedDate)
-                    }
+        analysisDataApi.getStores().map()
+            .also {
+                saveStores(it)
+                updateLastDownloadDateInSettings(Taxonomy.Stores, lastModifiedDate)
+            }
 
     suspend fun reloadBrandsFromServer(): List<Brand> = taxonomiesManager.getTaxonomyData(
-            Taxonomy.Brands,
-            true,
-            daoSession.brandDao,
-            this
+        Taxonomy.Brands,
+        true,
+        daoSession.brandDao,
+        this
     )
 
     suspend fun downloadBrands(lastModifiedDate: Long) =
-            analysisDataApi.getBrands().map()
-                    .also {
-                        saveBrands(it)
-                        updateLastDownloadDateInSettings(Taxonomy.Brands, lastModifiedDate)
-                    }
+        analysisDataApi.getBrands().map()
+            .also {
+                saveBrands(it)
+                updateLastDownloadDateInSettings(Taxonomy.Brands, lastModifiedDate)
+            }
 
-    /**
-     * This function set lastDownloadtaxonomy setting
-     *
-     * @param taxonomy Name of the taxonomy (allergens, additives, categories, countries, ingredients, labels, tags)
-     * @param lastDownload Date of last update on Long format
-     */
-    private fun <T> updateLastDownloadDateInSettings(taxonomy: Taxonomy<T>, lastDownload: Long) {
-        context.getAppPreferences().edit {
-            putLong(taxonomy.getLastDownloadTimeStampPreferenceId(), lastDownload)
-        }
-        Log.i(LOG_TAG, "Set lastDownload of $taxonomy to $lastDownload")
-    }
 
     /**
      * Labels saving to local database
@@ -350,26 +341,26 @@ class TaxonomiesRepository @Inject constructor(
     }
 
     /**
-     * Allergens saving to local database
+     * Save a list of allergens to the local DB.
+     *
+     * Allergen and AllergenName has One-To-Many relationship,
+     * therefore we need to save them separately.
      *
      * @param allergens The list of allergens to be saved.
-     *
-     *
-     * Allergen and AllergenName has One-To-Many relationship, therefore we need to save them separately.
      */
     fun saveAllergens(allergens: List<Allergen>) {
         daoSession.database.beginTransaction()
         try {
 
             for (allergen in allergens) {
-                // If the allergen is already in the database, ensure the "enabled" field is used,
-                // instead of replaced
-                val dbAllergen = daoSession.allergenDao.unique {
+                val oldAllergen = daoSession.allergenDao.unique {
                     where(AllergenDao.Properties.Tag.eq(allergen.tag))
                 }
 
-                if (dbAllergen != null) {
-                    allergen.enabled = dbAllergen.enabled
+                // If the allergen is already in the database
+                // keep the "enabled" field
+                if (oldAllergen != null) {
+                    allergen.enabled = oldAllergen.enabled
                 }
 
                 daoSession.allergenDao.insertOrReplace(allergen)
@@ -386,10 +377,10 @@ class TaxonomiesRepository @Inject constructor(
     /**
      * Additives saving to local database
      *
+     * Additive and AdditiveName has One-To-Many relationship,
+     * therefore we need to save them separately.
+     *
      * @param additives The list of additives to be saved.
-     *
-     *
-     * Additive and AdditiveName has One-To-Many relationship, therefore we need to save them separately.
      */
     private fun saveAdditives(additives: List<Additive>) {
         daoSession.database.beginTransaction()
@@ -463,7 +454,7 @@ class TaxonomiesRepository @Inject constructor(
         daoSession.ingredientNameDao.deleteAll()
         daoSession.ingredientsRelationDao.deleteAll()
         this.daoSession.database.execSQL(
-                """update sqlite_sequence set seq=0 where name in 
+            """update sqlite_sequence set seq=0 where name in 
             |('${this.daoSession.ingredientDao.tablename}', 
             |'${this.daoSession.ingredientNameDao.tablename}', 
             |'${this.daoSession.ingredientsRelationDao.tablename}')""".trimMargin()
@@ -591,13 +582,13 @@ class TaxonomiesRepository @Inject constructor(
      * @return The translated label
      */
     suspend fun getLabel(
-            labelTag: String?,
-            languageCode: String = ApiFields.Defaults.DEFAULT_LANGUAGE
+        labelTag: String?,
+        languageCode: String = ApiFields.Defaults.DEFAULT_LANGUAGE,
     ) = withContext(IO) {
         daoSession.labelNameDao.unique {
             where(
-                    LabelNameDao.Properties.LabelTag.eq(labelTag),
-                    LabelNameDao.Properties.LanguageCode.eq(languageCode)
+                LabelNameDao.Properties.LabelTag.eq(labelTag),
+                LabelNameDao.Properties.LanguageCode.eq(languageCode)
             )
         } ?: LabelName()
     }
@@ -610,26 +601,26 @@ class TaxonomiesRepository @Inject constructor(
      * @return The translated additive name
      */
     suspend fun getAdditive(
-            additiveTag: String?,
-            languageCode: String = ApiFields.Defaults.DEFAULT_LANGUAGE
+        additiveTag: String?,
+        languageCode: String = ApiFields.Defaults.DEFAULT_LANGUAGE,
     ) = withContext(IO) {
         daoSession.additiveNameDao.unique {
             where(
-                    AdditiveNameDao.Properties.AdditiveTag.eq(additiveTag),
-                    AdditiveNameDao.Properties.LanguageCode.eq(languageCode)
+                AdditiveNameDao.Properties.AdditiveTag.eq(additiveTag),
+                AdditiveNameDao.Properties.LanguageCode.eq(languageCode)
             )
         } ?: AdditiveName()
     }
 
     suspend fun getCountries() = taxonomiesManager.getTaxonomyData(
-            Taxonomy.Countries,
-            false,
-            daoSession.countryDao,
-            this
+        Taxonomy.Countries,
+        false,
+        daoSession.countryDao,
+        this
     )
 
     suspend fun getCountry(cc2: String): Country? =
-            getCountries().firstOrNull { it.cc2.equals(cc2, ignoreCase = true) }
+        getCountries().firstOrNull { it.cc2.equals(cc2, ignoreCase = true) }
 
     /**
      * Loads translated category from the local database by unique tag of category and language code
@@ -639,13 +630,13 @@ class TaxonomiesRepository @Inject constructor(
      * @return The translated category name
      */
     suspend fun getCategory(
-            categoryTag: String,
-            languageCode: String = ApiFields.Defaults.DEFAULT_LANGUAGE
+        categoryTag: String,
+        languageCode: String = ApiFields.Defaults.DEFAULT_LANGUAGE,
     ) = withContext(IO) {
         daoSession.categoryNameDao.unique {
             where(
-                    CategoryNameDao.Properties.CategoryTag.eq(categoryTag),
-                    CategoryNameDao.Properties.LanguageCode.eq(languageCode)
+                CategoryNameDao.Properties.CategoryTag.eq(categoryTag),
+                CategoryNameDao.Properties.LanguageCode.eq(languageCode)
             )
         } ?: CategoryName().apply {
             this.name = categoryTag
@@ -682,8 +673,8 @@ class TaxonomiesRepository @Inject constructor(
         }.mapNotNull {
             daoSession.allergenNameDao.unique {
                 where(
-                        AllergenNameDao.Properties.AllergenTag.eq(it.tag),
-                        AllergenNameDao.Properties.LanguageCode.eq(lc)
+                    AllergenNameDao.Properties.AllergenTag.eq(it.tag),
+                    AllergenNameDao.Properties.LanguageCode.eq(lc)
                 )
             }
         }
@@ -709,13 +700,13 @@ class TaxonomiesRepository @Inject constructor(
      * @return The translated allergen name
      */
     suspend fun getAllergenName(
-            allergenTag: String?,
-            languageCode: String = ApiFields.Defaults.DEFAULT_LANGUAGE
+        allergenTag: String?,
+        languageCode: String = ApiFields.Defaults.DEFAULT_LANGUAGE,
     ) = withContext(IO) {
         daoSession.allergenNameDao.unique {
             where(
-                    AllergenNameDao.Properties.AllergenTag.eq(allergenTag),
-                    AllergenNameDao.Properties.LanguageCode.eq(languageCode)
+                AllergenNameDao.Properties.AllergenTag.eq(allergenTag),
+                AllergenNameDao.Properties.LanguageCode.eq(languageCode)
             )
         } ?: AllergenName().apply {
             this.name = allergenTag
@@ -735,13 +726,13 @@ class TaxonomiesRepository @Inject constructor(
         return withContext(IO) {
             daoSession.statesNameDao.unique {
                 where(
-                        StatesNameDao.Properties.StatesTag.eq(statesTag),
-                        StatesNameDao.Properties.LanguageCode.eq(languageCode)
+                    StatesNameDao.Properties.StatesTag.eq(statesTag),
+                    StatesNameDao.Properties.LanguageCode.eq(languageCode)
                 )
             } ?: StatesName(
-                    statesTag,
-                    statesTag.split(":").component1(),
-                    statesTag.split(":").component2()
+                statesTag,
+                statesTag.split(":").component1(),
+                statesTag.split(":").component2()
             )
         }
     }
@@ -753,19 +744,19 @@ class TaxonomiesRepository @Inject constructor(
      * @return The analysis tags in the product.
      */
     suspend fun reloadAnalysisTags() =
-            taxonomiesManager.getTaxonomyData(
-                    Taxonomy.AnalysisTags,
-                    true,
-                    daoSession.analysisTagDao,
-                    this
-            )
+        taxonomiesManager.getTaxonomyData(
+            Taxonomy.AnalysisTags,
+            true,
+            daoSession.analysisTagDao,
+            this
+        )
 
     suspend fun downloadAnalysisTags(lastModifiedDate: Long) =
-            analysisDataApi.getAnalysisTags().map()
-                    .also {
-                        saveAnalysisTags(it)
-                        updateLastDownloadDateInSettings(Taxonomy.AnalysisTags, lastModifiedDate)
-                    }
+        analysisDataApi.getAnalysisTags().map()
+            .also {
+                saveAnalysisTags(it)
+                updateLastDownloadDateInSettings(Taxonomy.AnalysisTags, lastModifiedDate)
+            }
 
     /**
      * AnalysisTags saving to local database
@@ -793,18 +784,18 @@ class TaxonomiesRepository @Inject constructor(
     }
 
     suspend fun reloadAnalysisTagConfigs() = taxonomiesManager.getTaxonomyData(
-            Taxonomy.AnalysisTagConfigs,
-            true,
-            daoSession.analysisTagConfigDao,
-            this
+        Taxonomy.AnalysisTagConfigs,
+        true,
+        daoSession.analysisTagConfigDao,
+        this
     )
 
-    suspend fun downloadAnalysisTagConfigs(lastModifiedDate: Long): List<AnalysisTagConfig> =
-            analysisDataApi.getAnalysisTagConfigs().map()
-                    .also {
-                        saveAnalysisTagConfigs(it)
-                        updateLastDownloadDateInSettings(Taxonomy.AnalysisTagConfigs, lastModifiedDate)
-                    }
+    suspend fun downloadAnalysisTagConfigs(lastModifiedDate: Long): List<AnalysisTagConfig> {
+        val configs = analysisDataApi.getAnalysisTagConfigs().map()
+        saveAnalysisTagConfigs(configs)
+        updateLastDownloadDateInSettings(Taxonomy.AnalysisTagConfigs, lastModifiedDate)
+        return configs
+    }
 
     private fun saveAnalysisTagConfigs(analysisTagConfigs: List<AnalysisTagConfig>) {
         daoSession.database.beginTransaction()
@@ -824,15 +815,15 @@ class TaxonomiesRepository @Inject constructor(
     private fun updateAnalysisTagConfig(analysisTagConfig: AnalysisTagConfig, languageCode: String) {
         var analysisTagName = daoSession.analysisTagNameDao.unique {
             where(
-                    AnalysisTagNameDao.Properties.AnalysisTag.eq(analysisTagConfig.analysisTag),
-                    AnalysisTagNameDao.Properties.LanguageCode.eq(languageCode)
+                AnalysisTagNameDao.Properties.AnalysisTag.eq(analysisTagConfig.analysisTag),
+                AnalysisTagNameDao.Properties.LanguageCode.eq(languageCode)
             )
         }
         if (analysisTagName == null) {
             analysisTagName = daoSession.analysisTagNameDao.unique {
                 where(
-                        AnalysisTagNameDao.Properties.AnalysisTag.eq(analysisTagConfig.analysisTag),
-                        AnalysisTagNameDao.Properties.LanguageCode.eq(ApiFields.Defaults.DEFAULT_LANGUAGE)
+                    AnalysisTagNameDao.Properties.AnalysisTag.eq(analysisTagConfig.analysisTag),
+                    AnalysisTagNameDao.Properties.LanguageCode.eq(ApiFields.Defaults.DEFAULT_LANGUAGE)
                 )
             }
         }
@@ -840,19 +831,20 @@ class TaxonomiesRepository @Inject constructor(
         val type = "en:${analysisTagConfig.type}"
         var analysisTagTypeName = daoSession.analysisTagNameDao.unique {
             where(
-                    AnalysisTagNameDao.Properties.AnalysisTag.eq(type),
-                    AnalysisTagNameDao.Properties.LanguageCode.eq(languageCode)
+                AnalysisTagNameDao.Properties.AnalysisTag.eq(type),
+                AnalysisTagNameDao.Properties.LanguageCode.eq(languageCode)
             )
         }
         if (analysisTagTypeName == null) {
             analysisTagTypeName = daoSession.analysisTagNameDao.unique {
                 where(
-                        AnalysisTagNameDao.Properties.AnalysisTag.eq(type),
-                        AnalysisTagNameDao.Properties.LanguageCode.eq(ApiFields.Defaults.DEFAULT_LANGUAGE)
+                    AnalysisTagNameDao.Properties.AnalysisTag.eq(type),
+                    AnalysisTagNameDao.Properties.LanguageCode.eq(ApiFields.Defaults.DEFAULT_LANGUAGE)
                 )
             }
         }
-        analysisTagConfig.typeName = if (analysisTagTypeName != null) analysisTagTypeName.name else analysisTagConfig.type
+        analysisTagConfig.typeName =
+            if (analysisTagTypeName != null) analysisTagTypeName.name else analysisTagConfig.type
     }
 
     /**
@@ -869,6 +861,22 @@ class TaxonomiesRepository @Inject constructor(
         daoSession.analysisTagConfigDao.list {
             where(StringCondition("""${AnalysisTagConfigDao.Properties.AnalysisTag.columnName} LIKE "%unknown%""""))
         }.onEach { updateAnalysisTagConfig(it, languageCode) }
+    }
+
+
+    /**
+     * This function set lastDownloadtaxonomy setting
+     *
+     * @param taxonomy Name of the taxonomy (allergens, additives, categories, countries, ingredients, labels, tags)
+     * @param lastDownload Date of last update on Long format
+     */
+    private fun <T : TaxonomyEntity> updateLastDownloadDateInSettings(
+        taxonomy: Taxonomy<T>, lastDownload: Long,
+    ) {
+        context.getAppPreferences().edit {
+            putLong(taxonomy.lastDownloadTimeStampPreferenceId, lastDownload)
+        }
+        logcat(LogPriority.INFO) { "Set lastDownload of $taxonomy to $lastDownload" }
     }
 
 

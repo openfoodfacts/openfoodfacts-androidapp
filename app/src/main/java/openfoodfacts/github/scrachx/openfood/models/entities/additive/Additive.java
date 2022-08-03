@@ -14,41 +14,33 @@ import org.greenrobot.greendao.annotation.Unique;
 import java.util.List;
 
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
+import openfoodfacts.github.scrachx.openfood.models.entities.TaxonomyEntity;
 
 @Entity(indexes = {
-        @Index(value = "tag", unique = true)
+    @Index(value = "tag", unique = true)
 })
-public class Additive {
-
+public class Additive implements TaxonomyEntity {
     @Id(autoincrement = true)
     private Long id;
-
     @Unique
     private String tag;
-
     private String overexposureRisk;
-
     private String exposureMeanGreaterThanAdi;
     private String exposureMeanGreaterThanNoael;
     private String exposure95ThGreaterThanAdi;
     private String exposure95ThGreaterThanNoael;
-
     @Unique
     private String wikiDataId;
-
     private Boolean isWikiDataIdPresent;
-
     @ToMany(joinProperties = {
-            @JoinProperty(name = "tag", referencedName = "additiveTag")
+        @JoinProperty(name = "tag", referencedName = "additiveTag")
     })
     private List<AdditiveName> names;
-
     /**
      * Used to resolve relations
      */
     @Generated(hash = 2040040024)
     private transient DaoSession daoSession;
-
     /**
      * Used for active entity operations.
      */
@@ -57,8 +49,8 @@ public class Additive {
 
     @Generated(hash = 575160496)
     public Additive(Long id, String tag, String overexposureRisk, String exposureMeanGreaterThanAdi,
-            String exposureMeanGreaterThanNoael, String exposure95ThGreaterThanAdi,
-            String exposure95ThGreaterThanNoael, String wikiDataId, Boolean isWikiDataIdPresent) {
+                    String exposureMeanGreaterThanNoael, String exposure95ThGreaterThanAdi,
+                    String exposure95ThGreaterThanNoael, String wikiDataId, Boolean isWikiDataIdPresent) {
         this.id = id;
         this.tag = tag;
         this.overexposureRisk = overexposureRisk;
@@ -71,7 +63,7 @@ public class Additive {
     }
 
     @Keep
-    public Additive( String tag, List<AdditiveName> names, String overexposureRisk, String wikiDataId) {
+    public Additive(String tag, List<AdditiveName> names, String overexposureRisk, String wikiDataId) {
         this.names = names;
         this.tag = tag;
         this.overexposureRisk = overexposureRisk;
@@ -80,7 +72,7 @@ public class Additive {
     }
 
     @Keep
-    public Additive( String tag, List<AdditiveName> names, String overexposureRisk ) {
+    public Additive(String tag, List<AdditiveName> names, String overexposureRisk) {
         this.tag = tag;
         this.names = names;
         this.overexposureRisk = overexposureRisk;
@@ -106,13 +98,11 @@ public class Additive {
         this.tag = tag;
     }
 
-    public String getOverexposureRisk()
-    {
+    public String getOverexposureRisk() {
         return overexposureRisk;
     }
 
-    public void setOverexposureRisk( String overexposureRisk )
-    {
+    public void setOverexposureRisk(String overexposureRisk) {
         this.overexposureRisk = overexposureRisk;
     }
 
@@ -191,7 +181,7 @@ public class Additive {
     }
 
     public Boolean getIsWikiDataIdPresent() {
-        return BooleanUtils.toBooleanDefaultIfNull(this.isWikiDataIdPresent,false);
+        return BooleanUtils.toBooleanDefaultIfNull(this.isWikiDataIdPresent, false);
     }
 
     public void setIsWikiDataIdPresent(Boolean isWikiDataIdPresent) {
@@ -230,15 +220,16 @@ public class Additive {
         this.exposure95ThGreaterThanNoael = exposure95ThGreaterThanNoael;
     }
 
-    public void setExposureEvalMap( String exposure95ThGreaterThanAdi, String exposure95ThGreaterThanNoael, String exposureMeanGreaterThanAdi, String exposureMeanGreaterThanNoael )
-    {
+    public void setExposureEvalMap(String exposure95ThGreaterThanAdi, String exposure95ThGreaterThanNoael, String exposureMeanGreaterThanAdi, String exposureMeanGreaterThanNoael) {
         this.exposure95ThGreaterThanAdi = exposure95ThGreaterThanAdi;
         this.exposure95ThGreaterThanNoael = exposure95ThGreaterThanNoael;
         this.exposureMeanGreaterThanAdi = exposureMeanGreaterThanAdi;
         this.exposureMeanGreaterThanNoael = exposureMeanGreaterThanNoael;
     }
 
-    /** called by internal mechanisms, do not call yourself. */
+    /**
+     * called by internal mechanisms, do not call yourself.
+     */
     @Generated(hash = 1169248577)
     public void __setDaoSession(DaoSession daoSession) {
         this.daoSession = daoSession;

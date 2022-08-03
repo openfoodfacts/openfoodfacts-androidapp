@@ -30,6 +30,7 @@ import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OPFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.jobs.LoadTaxonomiesWorker
+import openfoodfacts.github.scrachx.openfood.models.entities.TaxonomyEntity
 import openfoodfacts.github.scrachx.openfood.repositories.Taxonomy
 import openfoodfacts.github.scrachx.openfood.repositories.Taxonomy.*
 import kotlin.time.Duration.Companion.seconds
@@ -41,12 +42,12 @@ import kotlin.time.ExperimentalTime
 class SplashController internal constructor(
     private val settings: SharedPreferences,
     private val view: SplashActivity,
-    private val activity: SplashActivity
+    private val activity: SplashActivity,
 ) {
 
-    private fun <T> Taxonomy<T>.activateDownload(vararg flavors: String) {
+    private fun <T : TaxonomyEntity> Taxonomy<T>.activateDownload(vararg flavors: String) {
         if (flavors.isEmpty() || isFlavors(*flavors)) {
-            settings.edit { putBoolean(getDownloadActivatePreferencesId(), true) }
+            settings.edit { putBoolean(downloadActivatePreferencesId, true) }
         }
     }
 

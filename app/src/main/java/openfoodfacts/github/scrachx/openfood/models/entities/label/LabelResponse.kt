@@ -6,9 +6,9 @@ import openfoodfacts.github.scrachx.openfood.models.entities.EntityResponse
  * Created by Lobster on 03.03.18.
  */
 class LabelResponse(
-        private var code: String,
-        private var names: Map<String, String>,
-        private val wikiDataCode: String? = null
+    private var code: String,
+    private var names: Map<String, String>,
+    private val wikiDataCode: String? = null,
 ) : EntityResponse<Label> {
     override fun map(): Label {
         val label: Label
