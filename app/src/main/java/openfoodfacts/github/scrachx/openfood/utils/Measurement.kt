@@ -3,7 +3,7 @@ package openfoodfacts.github.scrachx.openfood.utils
 import openfoodfacts.github.scrachx.openfood.models.MeasurementUnit
 import openfoodfacts.github.scrachx.openfood.models.MeasurementUnit.*
 import openfoodfacts.github.scrachx.openfood.models.Modifier
-import openfoodfacts.github.scrachx.openfood.models.takeUnlessDefault
+import openfoodfacts.github.scrachx.openfood.models.Modifier.Companion.DEFAULT
 
 
 data class Measurement(
@@ -82,7 +82,7 @@ fun Measurement.convertTo(unit: MeasurementUnit): Measurement {
 
 fun Measurement.toDisplayString(modifier: Modifier? = null): String = buildString {
     modifier
-        ?.takeUnlessDefault()
+        ?.takeUnless { modifier == DEFAULT }
         ?.let {
             append(it.sym)
             append(" ")

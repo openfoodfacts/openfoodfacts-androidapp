@@ -22,6 +22,7 @@ class WikidataRepository @Inject constructor(
      */
     suspend fun getEntityData(entityId: String): JsonNode {
         require(entityId[0] == 'Q') { "Entity ID should start with 'Q'. Got: $entityId" }
-        return wikidataAPI.getEntity(entityId)["entities"][entityId] ?: throw IllegalStateException("Could not load entity $entityId from WikiData.")
+        return wikidataAPI.getEntity(entityId)["entities"][entityId]
+            ?: throw IllegalStateException("Could not load entity $entityId from WikiData.")
     }
 }

@@ -77,7 +77,7 @@ class ProductNutriments : Serializable {
         ?.let { MeasurementUnit.findBySymbol(it) } ?: DEFAULT_UNIT
 
     private fun getModifier(nutriment: Nutriment) = getAdditionalProperty(nutriment, Suffix.MODIFIER)
-        ?.let { Modifier.findBySymbol(it) } ?: DEFAULT_MODIFIER
+        ?.let { Modifier.findBySymbol(it) } ?: Modifier.DEFAULT
 
 
     private fun getAdditionalProperty(nutrient: Nutriment, suffix: String = "") =
@@ -105,7 +105,7 @@ class ProductNutriments : Serializable {
         val perServingInG: Measurement?,
 
         unit: MeasurementUnit,
-        val modifier: Modifier
+        val modifier: Modifier,
     ) {
         val unit = unit.getRealUnit()
 

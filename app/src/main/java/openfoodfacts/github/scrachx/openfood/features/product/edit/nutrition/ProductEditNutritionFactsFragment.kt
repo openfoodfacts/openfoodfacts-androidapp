@@ -249,7 +249,9 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
 
             // Get the value
             val nutriment = Nutriment.findbyKey(nutrimentShortName) ?: error("Cannot find nutrient $nutrimentShortName")
-            val value = (if (isDataPer100g) nutriments[nutriment]?.per100gInUnit else nutriments[nutriment]?.perServingInUnit) ?: continue
+            val value =
+                (if (isDataPer100g) nutriments[nutriment]?.per100gInUnit else nutriments[nutriment]?.perServingInUnit)
+                    ?: continue
 
             editView.setText(getRoundNumber(value))
             editView.unitSpinner?.setSelection(getUnitIndexUnitFromShortName(nutriments, nutriment) ?: 0)
@@ -283,7 +285,8 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
      */
     fun loadNutritionImage() {
         photoFile = null
-        val newImageNutritionUrl = product?.getImageNutritionUrl(requireAddProductActivity().getProductLanguageForEdition())
+        val newImageNutritionUrl =
+            product?.getImageNutritionUrl(requireAddProductActivity().getProductLanguageForEdition())
         if (newImageNutritionUrl.isNullOrEmpty()) return
 
         binding.imageProgress.visibility = View.VISIBLE
@@ -335,7 +338,9 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
             loadNutritionImage(path)
         }
 
-        if (productDetails[ApiFields.Keys.NO_NUTRITION_DATA]?.trim()?.lowercase() == ApiFields.Defaults.NO_NUTRITION_DATA_ON) {
+        if (productDetails[ApiFields.Keys.NO_NUTRITION_DATA]?.trim()
+                ?.lowercase() == ApiFields.Defaults.NO_NUTRITION_DATA_ON
+        ) {
             binding.checkboxNoNutritionData.isChecked = true
             binding.nutritionFactsLayout.visibility = View.GONE
         }
@@ -356,7 +361,8 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
                 view.setText(value)
 
                 val unit = productDetails[nutrientCompleteName + ApiFields.Suffix.UNIT] ?: return@let
-                view.unitSpinner?.setSelection(getUnitIndex(Nutriment.findbyKey(nutrientShortName)!!, MeasurementUnit.findBySymbol(unit)!!))
+                view.unitSpinner?.setSelection(getUnitIndex(Nutriment.findbyKey(nutrientShortName)!!,
+                    MeasurementUnit.findBySymbol(unit)!!))
             }
         }
         // Set the values of all the other nutrients if defined and create new row in the tableLayout.
@@ -433,7 +439,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         NUTRIENTS_UNITS.indexOfFirst { it == unit }.coerceAtLeast(0)
 
     private fun getModifierIndex(modifier: Modifier?) =
-        MODIFIERS.indexOf(modifier).coerceAtLeast(0)
+        Modifier.values().indexOf(modifier).coerceAtLeast(0)
 
     private fun getServingUnitIndex(unit: MeasurementUnit) =
         SERVING_UNITS.indexOfFirst { it == unit }.coerceAtLeast(0)
@@ -478,7 +484,10 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         checkServingSize()
     ).firstOrNull { it != ValueState.NOT_TESTED } ?: this.checkAsGram(value)
 
-    private fun CustomValidatingEditTextView.requireToValidate(condition: Boolean, @StringRes errorMsg: Int): ValueState {
+    private fun CustomValidatingEditTextView.requireToValidate(
+        condition: Boolean,
+        @StringRes errorMsg: Int,
+    ): ValueState {
         return if (condition) ValueState.VALID
         else {
             showError(context.getString(errorMsg))
@@ -695,7 +704,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         var mod = ""
         if (editTextView.modSpinner != null) {
             val selectedMod = Modifier.findBySymbol(editTextView.modSpinner!!.selectedItem.toString())
-            if (selectedMod != null && DEFAULT_MODIFIER != selectedMod) {
+            if (selectedMod != null && Modifier.DEFAULT != selectedMod) {
                 mod = selectedMod.sym
             }
         }
@@ -731,7 +740,8 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         }
 
     private fun displayAddNutrientDialog() {
-        val nutrientsDefUnits = resources.getStringArray(R.array.nutrients_array).zip(PARAMS_OTHER_NUTRIENTS_DEFAULT_UNITS.keys)
+        val nutrientsDefUnits =
+            resources.getStringArray(R.array.nutrients_array).zip(PARAMS_OTHER_NUTRIENTS_DEFAULT_UNITS.keys)
         val filteredNutrients = resources.getStringArray(R.array.nutrients_array)
             .filterIndexed { index, _ -> index !in usedNutrientsIndexes }
             .sortedWith(Collator.getInstance(Locale.getDefault()))
@@ -834,7 +844,8 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
                 modSpinner.setSelection(modSelectedIndex)
             }
         } catch (err: Exception) {
-            sentryAnalytics.record(IllegalStateException("Can't find weight units for nutriment: $nutrientShortName", err))
+            sentryAnalytics.record(IllegalStateException("Can't find weight units for nutriment: $nutrientShortName",
+                err))
             closeScreenWithAlert()
         }
 
@@ -872,7 +883,8 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         val sugarInG = convertToGrams(sugarValue, binding.sugars.unitSpinner!!.selectedItemPosition)!!
         val newStarchInG = convertToGrams(getStarchValue(), getStarchUnitSelectedIndex())!!
 
-        return requireToValidate(sugarInG.value + newStarchInG.value <= carbsInG.value, R.string.error_in_carbohydrate_value)
+        return requireToValidate(sugarInG.value + newStarchInG.value <= carbsInG.value,
+            R.string.error_in_carbohydrate_value)
     }
 
     /**
@@ -955,9 +967,10 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
             val resultUri = it.toURI()
             imagePath = resultUri.path
             photoFile = it
-            val image = ProductImage(productCode!!, ProductImageField.NUTRITION, it, localeManager.getLanguage()).apply {
-                filePath = resultUri.path
-            }
+            val image =
+                ProductImage(productCode!!, ProductImageField.NUTRITION, it, localeManager.getLanguage()).apply {
+                    filePath = resultUri.path
+                }
             (activity as? ProductEditActivity)?.savePhoto(image, 2)
             hideImageProgress(false, "")
         }
@@ -978,7 +991,8 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         }
     }
 
-    internal inner class ValidTextWatcher(private val editTextView: CustomValidatingEditTextView) : TextWatcher, OnItemSelectedListener {
+    internal inner class ValidTextWatcher(private val editTextView: CustomValidatingEditTextView) : TextWatcher,
+        OnItemSelectedListener {
         override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) = Unit // Nothing to do
 
         override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) = Unit // Nothing to do
