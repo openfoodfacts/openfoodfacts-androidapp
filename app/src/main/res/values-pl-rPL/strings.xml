@@ -648,7 +648,6 @@
     <string name="report_img">Zgłoś zdjęcie</string>
     <string name="detected_ingredients">Wykryte składniki</string>
     <string name="txtConnectionError">Nie pobrano niektórych danych. Może to być spowodowane błędem połączenia.</string>
-    <string name="set_image_name">Pomyślnie ustawiono obraz jako</string>
     <string name="addtive_search">Wyszukaj dodatek</string>
     <string name="additives">Dodatki</string>
     <!--used for product_lists implementation-->

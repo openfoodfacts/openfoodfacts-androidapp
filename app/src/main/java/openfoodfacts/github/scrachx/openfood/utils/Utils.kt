@@ -47,7 +47,10 @@ import androidx.core.net.toUri
 import androidx.core.text.buildSpannedString
 import androidx.core.text.inSpans
 import androidx.core.view.children
-import androidx.work.*
+import androidx.work.Constraints
+import androidx.work.ExistingWorkPolicy
+import androidx.work.NetworkType
+import androidx.work.WorkManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.squareup.picasso.Callback
 import com.squareup.picasso.RequestCreator
@@ -55,13 +58,12 @@ import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.features.scan.ContinuousScanActivity
 import openfoodfacts.github.scrachx.openfood.jobs.ImagesUploaderWorker
-import openfoodfacts.github.scrachx.openfood.network.ApiFields
-import org.apache.commons.validator.routines.checkdigit.EAN13CheckDigit
 import java.io.*
 import java.text.DecimalFormat
 import java.text.DecimalFormatSymbols
 import java.util.*
-import java.util.concurrent.TimeUnit
+import kotlin.time.Duration.Companion.minutes
+import kotlin.time.toJavaDuration
 import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivity.Companion.start as startSearch
 
 private const val LOG_TAG_COMPRESS = "COMPRESS_IMAGE"
@@ -73,6 +75,8 @@ object Utils {
     const val HEADER_USER_AGENT_SEARCH = "Search"
     const val NO_DRAWABLE_RESOURCE = 0
     const val FORCE_REFRESH_TAXONOMIES = "force_refresh_taxonomies"
+
+    private val UPLOAD_JOB_PERIODICITY = 30.minutes
 
 
     @JvmStatic
@@ -98,11 +102,18 @@ object Utils {
     fun scheduleProductUploadJob(context: Context) {
         if (isUploadJobInitialised) return
 
-        val periodicity = TimeUnit.MINUTES.toSeconds(30).toInt()
-        val uploadWorkRequest = OneTimeWorkRequest.Builder(ImagesUploaderWorker::class.java)
-            .setConstraints(Constraints.Builder().setRequiredNetworkType(NetworkType.UNMETERED).build())
-            .setInitialDelay(periodicity.toLong(), TimeUnit.SECONDS).build()
-        WorkManager.getInstance(context).enqueueUniqueWork(UPLOAD_JOB_TAG, ExistingWorkPolicy.KEEP, uploadWorkRequest)
+        val uploadWorkRequest = OneTimeWorkRequest<ImagesUploaderWorker> {
+            setConstraints(Constraints(fun Constraints.Builder.() {
+                setRequiredNetworkType(NetworkType.UNMETERED)
+            }))
+            setInitialDelay(UPLOAD_JOB_PERIODICITY.toJavaDuration())
+        }
+
+        WorkManager.getInstance(context).enqueueUniqueWork(
+            UPLOAD_JOB_TAG,
+            ExistingWorkPolicy.KEEP,
+            uploadWorkRequest
+        )
 
         isUploadJobInitialised = true
     }
@@ -172,7 +183,7 @@ fun isAllGranted(grantResults: IntArray) =
 fun buildSignInDialog(
     context: Context,
     onPositive: (DialogInterface, Int) -> Unit = { d, _ -> d.dismiss() },
-    onNegative: (DialogInterface, Int) -> Unit = { d, _ -> d.dismiss() }
+    onNegative: (DialogInterface, Int) -> Unit = { d, _ -> d.dismiss() },
 ): MaterialAlertDialogBuilder = MaterialAlertDialogBuilder(context)
     .setTitle(R.string.sign_in_to_edit)
     .setPositiveButton(R.string.txtSignIn) { d, i -> onPositive(d, i) }
@@ -236,36 +247,24 @@ fun <T : View?> ViewGroup.getViewsByType(typeClass: Class<T>): List<T> {
     return result
 }
 
-/**
- * @param barcode
- * @return true if valid according to [EAN13CheckDigit.EAN13_CHECK_DIGIT]
- * and if the barcode doesn't start with 977/978/979 (Book barcode)
- */
-fun isBarcodeValid(barcode: String?): Boolean {
-    // DEBUG ONLY: the barcode '1' is used for test:
-    if (barcode == ApiFields.Defaults.DEBUG_BARCODE) return true
-
-    if (
-        barcode == null || barcode.length <= 3
-        || !EAN13CheckDigit.EAN13_CHECK_DIGIT.isValid(barcode)
-    ) return false
-
-    // It must not start with these prefixes
-    return barcode.take(3) !in listOf("977", "978", "979")
+inline fun <reified T : View?> ViewGroup.getViewsByType(): List<T> {
+    return getViewsByType(T::class.java)
 }
+
 
 /**
  * Check if the device has a camera installed.
  *
  * @return true if installed, false otherwise.
  */
-fun isHardwareCameraInstalled(context: Context) = context.packageManager.hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY)
+fun isHardwareCameraInstalled(context: Context) =
+    context.packageManager.hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY)
 
 
 fun getSearchLinkText(
     text: String,
     type: SearchType,
-    activityToStart: Activity
+    activityToStart: Activity,
 ): CharSequence {
     val clickable = object : ClickableSpan() {
         override fun onClick(view: View) = startSearch(activityToStart, type, text)

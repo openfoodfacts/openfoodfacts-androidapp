@@ -16,7 +16,7 @@ import openfoodfacts.github.scrachx.openfood.utils.getAsInt
  * @return NO_VALUE if can't parse the size
  */
 fun Map<String, Map<String, *>>.getDimension(key: String): Int {
-    val value = (this[IMAGE_EDIT_SIZE] ?: error(""))[key] ?: return NO_VALUE
+    val value = (this[IMAGE_EDIT_SIZE.toString()] ?: error(""))[key] ?: return NO_VALUE
     return if (value is Number) {
         value.toInt()
     } else value.toString().toInt()
@@ -33,9 +33,9 @@ fun ImageTransformation.applyToMap(imgMap: MutableMap<String, String>) {
 }
 
 fun getInitialServerTransformation(
-        product: Product,
-        productImageField: ProductImageField?,
-        language: String?
+    product: Product,
+    productImageField: ProductImageField?,
+    language: String?,
 ): ImageTransformation {
     val imageKey = getImageStringKey(productImageField!!, language!!)
     val imageDetails = product.getImageDetails(imageKey) ?: return ImageTransformation()
@@ -45,7 +45,7 @@ fun getInitialServerTransformation(
 
     return ImageTransformation().apply {
         imageId = initImageId
-        imageUrl = getImageUrl(product.code, initImageId, IMAGE_EDIT_SIZE_FILE)
+        imageUrl = getImageUrl(product.code, initImageId, IMAGE_EDIT_SIZE)
         rotationInDegree = getImageRotation(imageDetails)
 
         getImageCropRect(imageDetails)?.let { cropRectangle = it.toRect() }
@@ -67,11 +67,11 @@ private fun getImageCropRect(imgDetails: Map<String, *>): RectF? {
 }
 
 private fun applyRotationOnCropRectangle(
-        product: Product,
-        productImageField: ProductImageField,
-        language: String,
-        res: ImageTransformation,
-        invert: Boolean
+    product: Product,
+    productImageField: ProductImageField,
+    language: String,
+    res: ImageTransformation,
+    invert: Boolean,
 ) {
     // if a crop and a rotation is done, we should rotate the cropped rectangle
     val imageKey = getImageStringKey(productImageField, language)
@@ -118,9 +118,9 @@ private fun applyRotationOnCropRectangle(
  * @return the image transformation containing the initial url and the transformation (rotation/crop) for screen
  */
 fun getScreenTransformation(
-        product: Product,
-        productImageField: ProductImageField,
-        language: String
+    product: Product,
+    productImageField: ProductImageField,
+    language: String,
 ): ImageTransformation {
     val res = getInitialServerTransformation(product, productImageField, language)
     if (res.isEmpty()) return res
@@ -141,10 +141,10 @@ fun getScreenTransformation(
  * @return the image transformation containing the initial url and the transformation (rotation/crop) for screen
  */
 fun toServerTransformation(
-        screenTransformation: ImageTransformation,
-        product: Product,
-        productImageField: ProductImageField,
-        language: String
+    screenTransformation: ImageTransformation,
+    product: Product,
+    productImageField: ProductImageField,
+    language: String,
 ): ImageTransformation {
     val res = getInitialServerTransformation(product, productImageField, language)
     if (res.isEmpty()) {

@@ -654,7 +654,6 @@
     <string name="report_img">Prijavi sliko</string>
     <string name="detected_ingredients">Prepoznane sestavine</string>
     <string name="txtConnectionError">Ne moremo prenesti določenih podatkov. To je lahko posledica napake v povezavi.</string>
-    <string name="set_image_name">Slika je bila uspešno nastavljena kot</string>
     <string name="pref_fast_addition_title">Način za hitro dodajanje</string>
     <string name="pref_fast_addition_summary">Omogoča hitro dodajanje izdelkov z manj atributi</string>
     <string name="pref_crop_new_images_title">Obreži nove slike</string>

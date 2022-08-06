@@ -16,6 +16,8 @@ import openfoodfacts.github.scrachx.openfood.category.network.CategoryNetworkSer
 import openfoodfacts.github.scrachx.openfood.models.DaoMaster
 import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import openfoodfacts.github.scrachx.openfood.utils.OFFDatabaseHelper
+import openfoodfacts.github.scrachx.openfood.utils.Picasso
+import openfoodfacts.github.scrachx.openfood.utils.buildUpon
 import retrofit2.Retrofit
 import java.io.File
 import javax.inject.Singleton
@@ -34,19 +36,19 @@ class AppModule {
 
     @Provides
     fun provideCategoryNetworkService(retrofit: Retrofit): CategoryNetworkService =
-            retrofit.create(CategoryNetworkService::class.java)
+        retrofit.create()
 
     @Provides
     @Singleton
     fun providePicasso(@ApplicationContext context: Context, httpClient: OkHttpClient): Picasso {
         val cacheSize: Long = 50 * 1024 * 1024
         val cacheDir = File(context.cacheDir, "http-cache")
-        val httpClientWithCache = httpClient.newBuilder()
-                .cache(Cache(cacheDir, cacheSize))
-                .build()
-        return Picasso.Builder(context)
-                .downloader(OkHttp3Downloader(httpClientWithCache))
-                .build()
+        val httpClientWithCache = httpClient.buildUpon {
+            cache(Cache(cacheDir, cacheSize))
+        }
+        return Picasso(context) {
+            downloader(OkHttp3Downloader(httpClientWithCache))
+        }
     }
 
     @Provides

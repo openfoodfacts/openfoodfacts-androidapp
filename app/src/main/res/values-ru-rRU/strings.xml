@@ -648,7 +648,6 @@
     <string name="report_img">Сообщить об изображении</string>
     <string name="detected_ingredients">Обнаруженные ингредиенты</string>
     <string name="txtConnectionError">Не удалось загрузить некоторые данные. Это может быть вызвано ошибкой соединения.</string>
-    <string name="set_image_name">Изображение установлено как</string>
     <string name="addtive_search">Поиск добавки</string>
     <string name="additives">Добавки</string>
     <!--used for product_lists implementation-->

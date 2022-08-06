@@ -642,7 +642,6 @@
     <string name="report_img">Reporteu imatge</string>
     <string name="detected_ingredients">Ingredients detectats</string>
     <string name="txtConnectionError">No hem pogut descarregar certes dades. Potser ha estat per una errada de connexió.</string>
-    <string name="set_image_name">Imatge configurada correctament com</string>
     <string name="pref_fast_addition_title">Mode d\'addició ràpida</string>
     <string name="pref_fast_addition_summary">Permet l\'addició ràpida de productes amb el mínim d\'atributs</string>
     <string name="pref_crop_new_images_title">Retalla les imatges noves</string>

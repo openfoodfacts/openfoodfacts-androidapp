@@ -643,7 +643,6 @@
     <string name="report_img">Signaler l\'image</string>
     <string name="detected_ingredients">Ingrédients détectés</string>
     <string name="txtConnectionError">Nous n\'avons pas pu télécharger les traductions nécessaires au bon fonctionnement de l\'appli. Cela peut être dû à une erreur de connexion.</string>
-    <string name="set_image_name">Image sélectionnée en tant que</string>
     <string name="pref_fast_addition_title">Mode d\'ajout rapide</string>
     <string name="pref_fast_addition_summary">Active l\'ajout rapide de produits avec moins d\'attributs</string>
     <string name="pref_crop_new_images_title">Recadrer de nouvelles images</string>

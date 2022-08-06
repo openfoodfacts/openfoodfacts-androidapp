@@ -2,22 +2,23 @@ package openfoodfacts.github.scrachx.openfood.jobs
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.util.Log
 import androidx.hilt.work.HiltWorker
 import androidx.work.*
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
+import logcat.LogPriority
+import logcat.logcat
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.repositories.OfflineProductRepository
-import openfoodfacts.github.scrachx.openfood.utils.buildConstraints
+import openfoodfacts.github.scrachx.openfood.utils.Constraints
+import openfoodfacts.github.scrachx.openfood.utils.OneTimeWorkRequest
 import openfoodfacts.github.scrachx.openfood.utils.buildData
-import openfoodfacts.github.scrachx.openfood.utils.buildOneTimeWorkRequest
 import javax.inject.Inject
 
 @HiltWorker
 class ProductUploaderWorker @AssistedInject constructor(
     @Assisted context: Context,
-    @Assisted workerParams: WorkerParameters
+    @Assisted workerParams: WorkerParameters,
 ) : CoroutineWorker(context, workerParams) {
 
     @Inject
@@ -25,15 +26,15 @@ class ProductUploaderWorker @AssistedInject constructor(
 
     override suspend fun doWork(): Result {
         val includeImages = inputData.getBoolean(KEY_INCLUDE_IMAGES, false)
-        Log.d(WORK_TAG, "[START] (includeImages=$includeImages)")
+        logcat(WORK_TAG, LogPriority.DEBUG) { "[START] (includeImages=$includeImages)" }
 
         val shouldRetry = offlineProductRepository.uploadAll(includeImages)
 
         return if (shouldRetry) {
-            Log.d(WORK_TAG, "[RETRY]")
+            logcat(WORK_TAG, LogPriority.DEBUG) { "[RETRY]" }
             Result.retry()
         } else {
-            Log.d(WORK_TAG, "[SUCCESS]")
+            logcat(WORK_TAG, LogPriority.DEBUG) { "[SUCCESS]" }
             Result.success()
         }
     }
@@ -44,17 +45,20 @@ class ProductUploaderWorker @AssistedInject constructor(
 
         fun scheduleProductUpload(context: Context, pref: SharedPreferences) {
 
-            val constData = buildConstraints {
-                setRequiredNetworkType(NetworkType.CONNECTED)
-            }
-            val uploadDataWorkRequest = buildUploadRequest(constData, false)
+            val uploadDataWorkRequest = buildUploadRequest(
+                Constraints {
+                    setRequiredNetworkType(NetworkType.CONNECTED)
+                },
+                false,
+            )
 
-            val constPics = buildConstraints {
-                val uploadIfMobile = pref.getBoolean(context.getString(R.string.pref_enable_mobile_data_key), true)
-
-                setRequiredNetworkType(if (uploadIfMobile) NetworkType.CONNECTED else NetworkType.UNMETERED)
-            }
-            val uploadPicturesWorkRequest = buildUploadRequest(constPics, true)
+            val uploadIfMobile = pref.getBoolean(context.getString(R.string.pref_enable_mobile_data_key), true)
+            val uploadPicturesWorkRequest = buildUploadRequest(
+                Constraints {
+                    setRequiredNetworkType(if (uploadIfMobile) NetworkType.CONNECTED else NetworkType.UNMETERED)
+                },
+                true,
+            )
 
             WorkManager.getInstance(context)
                 .beginUniqueWork(WORK_TAG, ExistingWorkPolicy.REPLACE, uploadDataWorkRequest)
@@ -62,11 +66,12 @@ class ProductUploaderWorker @AssistedInject constructor(
                 .enqueue()
         }
 
-        private fun buildUploadRequest(constPics: Constraints, includeImages: Boolean) = buildOneTimeWorkRequest<ProductUploaderWorker> {
-            setInputData(buildData { putBoolean(KEY_INCLUDE_IMAGES, includeImages) })
-            setConstraints(constPics)
+        private fun buildUploadRequest(constPics: Constraints, includeImages: Boolean): OneTimeWorkRequest {
+            return OneTimeWorkRequest<ProductUploaderWorker> {
+                setInputData(buildData { putBoolean(KEY_INCLUDE_IMAGES, includeImages) })
+                setConstraints(constPics)
+            }
         }
-
     }
 }
 

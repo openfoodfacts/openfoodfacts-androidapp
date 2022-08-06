@@ -636,7 +636,6 @@
     <string name="report_img">Rapportera bild</string>
     <string name="detected_ingredients">Upptäckta ingredienser</string>
     <string name="txtConnectionError">Vi kunde inte ladda ner viss data. Detta kan bero på ett anslutningsfel.</string>
-    <string name="set_image_name">Framgångsrikt angivit bilden som</string>
     <string name="addtive_search">Sök efter en tillsats</string>
     <string name="additives">Tillsatser</string>
     <!--used for product_lists implementation-->

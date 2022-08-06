@@ -642,7 +642,6 @@
     <string name="report_img">Rapporter billede</string>
     <string name="detected_ingredients">Detekterede ingredienser</string>
     <string name="txtConnectionError">Visse data kunne ikke downloades. Dette kan skyldes en forbindelsesfejl.</string>
-    <string name="set_image_name">Foto angivet som</string>
     <string name="pref_fast_addition_title">Hurtig tilføjelse-funktion</string>
     <string name="pref_fast_addition_summary">Gør det muligt hurtigt at tilføje produkter med færre attributter</string>
     <string name="pref_crop_new_images_title">Beskær nye fotos</string>

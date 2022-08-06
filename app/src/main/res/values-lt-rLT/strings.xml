@@ -648,7 +648,6 @@
     <string name="report_img">Pranešti dėl vaizdo</string>
     <string name="detected_ingredients">Aptikti ingredientai</string>
     <string name="txtConnectionError">Nepavyko atsisiųsti tam tikrų duomenų. Taip gali nutikti dėl ryšio klaidos.</string>
-    <string name="set_image_name">Sėkmingai nustatykite vaizdą kaip</string>
     <string name="addtive_search">Ieškoti priedo</string>
     <string name="additives">Additives</string>
     <!--used for product_lists implementation-->

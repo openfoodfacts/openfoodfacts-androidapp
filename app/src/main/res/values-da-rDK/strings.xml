@@ -636,7 +636,6 @@
     <string name="report_img">Rapporter billede</string>
     <string name="detected_ingredients">Detekterede ingredienser</string>
     <string name="txtConnectionError">Visse data kunne ikke downloades. Dette kan skyldes en forbindelsesfejl.</string>
-    <string name="set_image_name">Foto angivet som</string>
     <string name="addtive_search">Søg efter en tilsætningsstof</string>
     <string name="additives">Tilsætningsstoffer</string>
     <!--used for product_lists implementation-->

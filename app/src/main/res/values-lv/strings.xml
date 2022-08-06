@@ -648,7 +648,6 @@
     <string name="report_img">Ziņot par attēlu</string>
     <string name="detected_ingredients">Konstatētās sastāvdaļas</string>
     <string name="txtConnectionError">Mēs nevarējām lejupielādēt noteiktus datus. Tas var būt saistīts ar savienojuma kļūdu.</string>
-    <string name="set_image_name">Veiksmīgi iestatiet attēlu kā</string>
     <string name="pref_fast_addition_title">Ātra pievienošanas režīms</string>
     <string name="pref_fast_addition_summary">Ļauj ātri pievienot produktus ar mazāk atribūtiem</string>
     <string name="pref_crop_new_images_title">Apgrieziet jaunus attēlus</string>

@@ -642,7 +642,6 @@
     <string name="report_img">crwdns128556:0crwdne128556:0</string>
     <string name="detected_ingredients">crwdns128558:0crwdne128558:0</string>
     <string name="txtConnectionError">crwdns128560:0crwdne128560:0</string>
-    <string name="set_image_name">crwdns128562:0crwdne128562:0</string>
     <string name="pref_fast_addition_title">crwdns128564:0crwdne128564:0</string>
     <string name="pref_fast_addition_summary">crwdns128566:0crwdne128566:0</string>
     <string name="pref_crop_new_images_title">crwdns128568:0crwdne128568:0</string>

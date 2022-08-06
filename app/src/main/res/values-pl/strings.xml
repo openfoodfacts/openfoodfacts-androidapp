@@ -654,7 +654,6 @@
     <string name="report_img">Zgłoś zdjęcie</string>
     <string name="detected_ingredients">Wykryte składniki</string>
     <string name="txtConnectionError">Nie pobrano niektórych danych. Może to być spowodowane błędem połączenia.</string>
-    <string name="set_image_name">Pomyślnie ustawiono obraz jako</string>
     <string name="pref_fast_addition_title">Tryb szybkiego dodawania</string>
     <string name="pref_fast_addition_summary">Umożliwia szybkie dodawanie produktów z mniejszą liczby atrybutów</string>
     <string name="pref_crop_new_images_title">Przytnij nowe zdjęcia</string>

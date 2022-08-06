@@ -626,7 +626,6 @@
     <string name="report_img">Laporkan Gambar</string>
     <string name="detected_ingredients">Kandungan Bahan Terdeteksi</string>
     <string name="txtConnectionError">Kami tidak dapat mengunduh data tertentu. Ini mungkin karena kesalahan koneksi.</string>
-    <string name="set_image_name">Berhasil menetapkan gambar sebagai</string>
     <string name="addtive_search">Cari zat aditif</string>
     <string name="additives">Zat - zat aditif</string>
     <!--used for product_lists implementation-->

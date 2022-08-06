@@ -638,7 +638,6 @@
     <string name="report_img">Докладвай снимка</string>
     <string name="detected_ingredients">Открити съставки</string>
     <string name="txtConnectionError">Не можахме да изтеглим определени данни. Това може да се дължи на грешка при връзката.</string>
-    <string name="set_image_name">Successfully set the image as</string>
     <string name="addtive_search">Търсене на добавка</string>
     <string name="additives">Добавки</string>
     <!--used for product_lists implementation-->

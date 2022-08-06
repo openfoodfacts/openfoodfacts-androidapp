@@ -648,7 +648,6 @@
     <string name="report_img">דיווח על תמונה</string>
     <string name="detected_ingredients">הרכיבים שזוהו</string>
     <string name="txtConnectionError">לא הצלחנו להוריד נתונים מסוימים. יכול להיות שמדובר בשגיאת חיבור.</string>
-    <string name="set_image_name">התמונה הוגדרה בהצלחה בתור</string>
     <string name="pref_fast_addition_title">מצב הוספה מהירה</string>
     <string name="pref_fast_addition_summary">מאפשר הוספה מהירה של מוצרים עם פחות תכונות</string>
     <string name="pref_crop_new_images_title">חיתוך תמונות חדשות</string>

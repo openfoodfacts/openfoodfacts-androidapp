@@ -662,7 +662,6 @@
     <string name="report_img">إبلاغ عن الصورة</string>
     <string name="detected_ingredients">المكونات المكتشفة</string>
     <string name="txtConnectionError">لم نتمكن من تنزيل بعض البيانات. قد يكون هذا بسبب خطأ في الاتصال.</string>
-    <string name="set_image_name">تعيين الصورة بنجاح</string>
     <string name="addtive_search">البحث عن مادة مضافة</string>
     <string name="additives">إضافات</string>
     <!--used for product_lists implementation-->

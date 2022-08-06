@@ -632,7 +632,6 @@
     <string name="report_img">crwdns179234:0crwdne179234:0</string>
     <string name="detected_ingredients">crwdns179236:0crwdne179236:0</string>
     <string name="txtConnectionError">crwdns179238:0crwdne179238:0</string>
-    <string name="set_image_name">crwdns179240:0crwdne179240:0</string>
     <string name="addtive_search">crwdns179242:0crwdne179242:0</string>
     <string name="additives">crwdns179244:0crwdne179244:0</string>
     <!--used for product_lists implementation-->

@@ -42,6 +42,7 @@ import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInsta
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.selectNavigationItem
 import openfoodfacts.github.scrachx.openfood.listeners.EndlessRecyclerViewScrollListener
 import openfoodfacts.github.scrachx.openfood.listeners.RecyclerItemClickListener
+import openfoodfacts.github.scrachx.openfood.models.Barcode
 import openfoodfacts.github.scrachx.openfood.models.Search
 import openfoodfacts.github.scrachx.openfood.models.SearchInfo
 import openfoodfacts.github.scrachx.openfood.models.SearchProduct
@@ -327,7 +328,7 @@ class ProductSearchActivity : BaseActivity() {
                 .startSearch(R.string.txt_no_matching_packaging_products)
 
             SEARCH -> {
-                if (isBarcodeValid(searchQuery)) {
+                if (Barcode(searchQuery).isValid()) {
                     productViewActivityStarter.openProduct(
                         searchQuery,
                         this@ProductSearchActivity,

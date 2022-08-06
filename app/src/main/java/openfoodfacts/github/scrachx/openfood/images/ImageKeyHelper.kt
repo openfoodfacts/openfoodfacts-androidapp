@@ -27,10 +27,10 @@ fun getLanguageCodeFromUrl(field: ProductImageField?, url: String?): String? {
 }
 
 fun createImageBundle(
-        imageType: ProductImageField?,
-        product: Product?,
-        language: String?,
-        imageUrl: String
+    imageType: ProductImageField?,
+    product: Product?,
+    language: String?,
+    imageUrl: String,
 ) = Bundle().apply {
     putString(IMAGE_URL, imageUrl)
     if (product != null) {
@@ -49,7 +49,7 @@ fun getResourceIdForEditAction(field: ProductImageField) = when (field) {
     else -> R.string.edit_other_image
 }
 
-fun getImageUrl(barcode: String, imageName: String, size: String): String {
+fun getImageUrl(barcode: String, imageName: String, size: Int): String {
     val baseUrlString = BuildConfig.STATICURL + "/images/products/"
     var barcodePattern = barcode
     if (barcodePattern.length > 8) {
@@ -61,7 +61,7 @@ fun getImageUrl(barcode: String, imageName: String, size: String): String {
         }
 
     }
-    return "$baseUrlString$barcodePattern/$imageName$size.jpg"
+    return "$baseUrlString$barcodePattern/$imageName.$size.jpg"
 }
 
 const val IMAGE_URL = "imageurl"
@@ -72,5 +72,5 @@ const val PRODUCT = "product"
 const val LANGUAGE = "language"
 const val IMAGE_STRING_ID = "id"
 const val IMG_ID = "imgid"
-const val IMAGE_EDIT_SIZE = "400"
+const val IMAGE_EDIT_SIZE = 400
 const val IMAGE_EDIT_SIZE_FILE = ".$IMAGE_EDIT_SIZE"

@@ -642,7 +642,6 @@
     <string name="report_img">Raportează imaginea</string>
     <string name="detected_ingredients">Ingrediente detectate</string>
     <string name="txtConnectionError">Nu am putut descărca anumite date. Acest lucru se poate datora unei erori de conexiune.</string>
-    <string name="set_image_name">Setați cu succes imaginea ca</string>
     <string name="addtive_search">Căutați un aditiv</string>
     <string name="additives">Aditivi</string>
     <!--used for product_lists implementation-->

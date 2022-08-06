@@ -10,7 +10,8 @@ import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity
-import openfoodfacts.github.scrachx.openfood.images.extractImagesNameSortedByUploadTimeDesc
+import openfoodfacts.github.scrachx.openfood.images.ImageNamesParser
+import openfoodfacts.github.scrachx.openfood.images.sortedByTimestampDescending
 import openfoodfacts.github.scrachx.openfood.models.ProductState
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
 import javax.inject.Inject
@@ -18,7 +19,7 @@ import javax.inject.Inject
 @HiltViewModel
 class ProductPhotosViewModel @Inject constructor(
     private val productsAPI: ProductsAPI,
-    savedStateHandle: SavedStateHandle
+    savedStateHandle: SavedStateHandle,
 ) : ViewModel() {
 
     private val productState = savedStateHandle.getLiveData<ProductState>(ProductEditActivity.KEY_STATE).asFlow()
@@ -27,7 +28,12 @@ class ProductPhotosViewModel @Inject constructor(
         .map { it.product }
         .filterNotNull()
         .map { product ->
-            productsAPI.getProductImages(product.code)
-                .extractImagesNameSortedByUploadTimeDesc()
-        }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyList())
+            ImageNamesParser.extractImageNames(productsAPI.getProductImages(product.code))
+                .sortedByTimestampDescending()
+                .map { it.key }
+        }.stateIn(
+            viewModelScope,
+            SharingStarted.WhileSubscribed(),
+            emptyList()
+        )
 }

@@ -57,6 +57,14 @@ class ProductRepository @Inject constructor(
         }
     }
 
+    suspend fun getProductStateFull(
+        barcode: Barcode,
+        fields: String = getAllFields(localeManager.getLanguage()),
+        userAgent: String = Utils.HEADER_USER_AGENT_SCAN,
+    ): ProductState {
+        return getProductStateFull(barcode.raw, fields, userAgent)
+    }
+
     suspend fun getProductsByBarcode(
         codes: List<String>,
         customHeader: String = Utils.HEADER_USER_AGENT_SEARCH,

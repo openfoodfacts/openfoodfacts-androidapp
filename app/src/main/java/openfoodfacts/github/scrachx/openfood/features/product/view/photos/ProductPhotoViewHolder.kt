@@ -1,35 +1,34 @@
 package openfoodfacts.github.scrachx.openfood.features.product.view.photos
 
-import android.util.Log
-import android.view.View
-import android.widget.Button
-import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
-import openfoodfacts.github.scrachx.openfood.R
-import openfoodfacts.github.scrachx.openfood.images.IMAGE_EDIT_SIZE_FILE
+import logcat.LogPriority
+import logcat.logcat
+import openfoodfacts.github.scrachx.openfood.databinding.ImagesItemBinding
+import openfoodfacts.github.scrachx.openfood.images.IMAGE_EDIT_SIZE
 import openfoodfacts.github.scrachx.openfood.images.getImageUrl
 
-class ProductPhotoViewHolder(itemView: View, private val picasso: Picasso) : RecyclerView.ViewHolder(itemView) {
-    private val editBtn: Button = itemView.findViewById(R.id.buttonOptions)
-    private val imageView: ImageView = itemView.findViewById(R.id.img)
+class ProductPhotoViewHolder(
+    private val binding: ImagesItemBinding,
+    private val picasso: Picasso,
+) : RecyclerView.ViewHolder(binding.root) {
 
     fun setImage(barcode: String, imageName: String) {
-        val finalUrlString = getImageUrl(barcode, imageName, IMAGE_EDIT_SIZE_FILE)
-        Log.d(LOG_TAG, "Loading image $finalUrlString...")
-        picasso.load(finalUrlString)
-            .resize(400, 400)
+        val imageUrl = getImageUrl(barcode, imageName, IMAGE_EDIT_SIZE)
+        logcat(LogPriority.DEBUG) { "Loading image $imageUrl..." }
+        picasso.load(imageUrl)
+            .resize(IMAGE_SIZE, IMAGE_SIZE)
             .centerInside()
-            .into(imageView)
+            .into(binding.imageView)
     }
 
-    fun setOnImageClickListener(listener: (Int) -> Unit) =
-        imageView.setOnClickListener { listener(bindingAdapterPosition) }
+    fun setOnClickListener(listener: (Int) -> Unit) =
+        binding.imageView.setOnClickListener { listener(bindingAdapterPosition) }
 
     fun setOnEditClickListener(listener: (Int) -> Unit) =
-        editBtn.setOnClickListener { listener(bindingAdapterPosition) }
+        binding.editBtn.setOnClickListener { listener(bindingAdapterPosition) }
 
     companion object {
-        private val LOG_TAG = ProductPhotoViewHolder::class.simpleName!!
+        private const val IMAGE_SIZE = 400
     }
 }

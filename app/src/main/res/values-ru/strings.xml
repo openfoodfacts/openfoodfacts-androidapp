@@ -654,7 +654,6 @@
     <string name="report_img">Сообщить об изображении</string>
     <string name="detected_ingredients">Обнаруженные ингредиенты</string>
     <string name="txtConnectionError">Не удалось загрузить некоторые данные. Это может быть вызвано ошибкой соединения.</string>
-    <string name="set_image_name">Изображение установлено как</string>
     <string name="pref_fast_addition_title">Режим быстрого добавления</string>
     <string name="pref_fast_addition_summary">Позволяет быстро добавлять продукты с меньшим количеством атрибутов</string>
     <string name="pref_crop_new_images_title">Обрезать новые изображения</string>

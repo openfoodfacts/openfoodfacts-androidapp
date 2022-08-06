@@ -633,7 +633,6 @@
     <string name="report_img">Segnala immagine</string>
     <string name="detected_ingredients">Ingredienti rilevati</string>
     <string name="txtConnectionError">Non è stato possibile scaricare determinati dati. Ciò potrebbe essere dovuto a un errore di connessione.</string>
-    <string name="set_image_name">Imposta correttamente l\'immagine come</string>
     <string name="addtive_search">Cerca un additivo</string>
     <string name="additives">Additivi</string>
     <!--used for product_lists implementation-->

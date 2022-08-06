@@ -648,7 +648,6 @@
     <string name="report_img">Nahlásit obrázek</string>
     <string name="detected_ingredients">Zjištěné složení</string>
     <string name="txtConnectionError">Některá data se nepodařilo stáhnout. To může být způsobeno chybou připojení.</string>
-    <string name="set_image_name">Snímek byl úspěšně nastaven jako</string>
     <string name="addtive_search">Search for a additive</string>
     <string name="additives">Aditiva</string>
     <!--used for product_lists implementation-->

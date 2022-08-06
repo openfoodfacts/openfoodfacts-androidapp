@@ -630,7 +630,6 @@
     <string name="report_img">レポート画像</string>
     <string name="detected_ingredients">検出された原材料</string>
     <string name="txtConnectionError">We could not download certain data. This may be due to a connection error.</string>
-    <string name="set_image_name">画像に設定しました</string>
     <string name="addtive_search">Search for a additive</string>
     <string name="additives">添加物</string>
     <!--used for product_lists implementation-->

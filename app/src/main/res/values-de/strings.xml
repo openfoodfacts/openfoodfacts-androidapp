@@ -642,7 +642,6 @@
     <string name="report_img">Bild melden</string>
     <string name="detected_ingredients">Erkannte Zutaten</string>
     <string name="txtConnectionError">Wir konnten bestimmte Daten nicht herunterladen. Dies kann auf einen Verbindungsfehler zurückzuführen sein.</string>
-    <string name="set_image_name">Foto erfolgreich festgelegt als</string>
     <string name="pref_fast_addition_title">Schneller Hinzufügemodus</string>
     <string name="pref_fast_addition_summary">Ermöglicht das schnelle Hinzufügen von Produkten mit wenigen Attributen</string>
     <string name="pref_crop_new_images_title">Neue Fotos zuschneiden</string>

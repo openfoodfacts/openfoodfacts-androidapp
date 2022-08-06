@@ -632,7 +632,6 @@
     <string name="report_img">Bild melden</string>
     <string name="detected_ingredients">Erkannte Zutaten</string>
     <string name="txtConnectionError">Wir konnten bestimmte Daten nicht herunterladen. Dies kann auf einen Verbindungsfehler zurückzuführen sein.</string>
-    <string name="set_image_name">Foto erfolgreich festgelegt als</string>
     <string name="addtive_search">Nach Zusatzstoff suchen</string>
     <string name="additives">Zusatzstoffe</string>
     <!--used for product_lists implementation-->

@@ -65,10 +65,10 @@ object FullScreenActivityOpener {
 
     fun openZoom(
         activity: Activity,
-        mUrlImage: String,
-        mImageFront: View?
-    ) = startActivity(activity, mImageFront, Intent(activity, ImageZoomActivity::class.java).apply {
-        putExtra(IMAGE_URL, mUrlImage)
+        imageUrl: String,
+        imageView: View?
+    ) = startActivity(activity, imageView, Intent(activity, ImageZoomActivity::class.java).apply {
+        putExtra(IMAGE_URL, imageUrl)
     })
 
     @CheckResult

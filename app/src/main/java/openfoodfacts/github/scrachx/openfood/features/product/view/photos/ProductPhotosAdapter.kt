@@ -12,7 +12,7 @@ import android.view.ViewGroup
 import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.coroutineScope
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import com.fasterxml.jackson.databind.node.ObjectNode
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -21,7 +21,11 @@ import com.squareup.picasso.Picasso
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import logcat.LogPriority
+import logcat.asLog
+import logcat.logcat
 import openfoodfacts.github.scrachx.openfood.R
+import openfoodfacts.github.scrachx.openfood.databinding.ImagesItemBinding
 import openfoodfacts.github.scrachx.openfood.features.login.LoginActivity
 import openfoodfacts.github.scrachx.openfood.images.*
 import openfoodfacts.github.scrachx.openfood.models.Product
@@ -37,41 +41,45 @@ class ProductPhotosAdapter(
     private val context: Context,
     private val lifecycleOwner: LifecycleOwner,
     private val picasso: Picasso,
-    private val client: ProductRepository,
+    private val productRepository: ProductRepository,
     private val product: Product,
-    private val images: List<String>,
+    private val imageNames: List<String>,
     private val snackView: View? = null,
-    private val onImageClick: (Int) -> Unit
+    private val onImageTap: (Int) -> Unit,
 ) : RecyclerView.Adapter<ProductPhotoViewHolder>() {
     private val isLoggedIn = context.isUserSet()
 
+    override fun getItemCount() = imageNames.count()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductPhotoViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.images_item, parent, false)
+        val inflater = LayoutInflater.from(parent.context)
+        val itemView = ImagesItemBinding.inflate(inflater, parent, false)
         return ProductPhotoViewHolder(itemView, picasso)
     }
 
 
-    override fun onBindViewHolder(holder: ProductPhotoViewHolder, position: Int) = holder.run {
-        setImage(product.code, this@ProductPhotosAdapter.images[position])
-        setOnImageClickListener(onImageClick)
-        setOnEditClickListener {
-            if (!isLoggedIn) {
-                // FIXME: After login the user needs to refresh the fragment to edit images
-                MaterialAlertDialogBuilder(context).apply {
-                    setMessage(R.string.sign_in_to_edit)
-                    setPositiveButton(R.string.txtSignIn) { d, _ ->
-                        context.startActivity(Intent(context, LoginActivity::class.java))
-                        d.dismiss()
-                    }
-                }.show()
+    override fun onBindViewHolder(holder: ProductPhotoViewHolder, position: Int) {
+        holder.run {
+            setImage(product.code, imageNames[position])
+            setOnClickListener(onImageTap)
+            setOnEditClickListener {
+                if (!isLoggedIn) {
+                    // FIXME: After login the user needs to refresh the fragment to edit images
+                    MaterialAlertDialogBuilder(context).apply {
+                        setMessage(R.string.sign_in_to_edit)
+                        setPositiveButton(R.string.txtSignIn) { d, _ ->
+                            context.startActivity(Intent(context, LoginActivity::class.java))
+                            d.dismiss()
+                        }
+                    }.show()
 
-            } else {
-                PopupMenu(context, holder.itemView).also {
-                    it.inflate(R.menu.menu_image_edit)
-                    it.setOnMenuItemClickListener(PopupItemClickListener(position))
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) it.setForceShowIcon(true)
-                }.show()
+                } else {
+                    PopupMenu(context, holder.itemView).also {
+                        it.inflate(R.menu.menu_image_edit)
+                        it.setOnMenuItemClickListener(PopupItemClickListener(position))
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) it.setForceShowIcon(true)
+                    }.show()
+                }
             }
         }
     }
@@ -82,36 +90,43 @@ class ProductPhotosAdapter(
         val imageName = try {
             response["imagefield"].asText()
         } catch (e: JSONException) {
-            Log.e(LOG_TAG, "displaySetImageName", e)
+            logcat(LogPriority.ERROR) { "Error while setting image from response $response: ${e.asLog()}" }
             Toast.makeText(context, "Error while setting image from response $response", Toast.LENGTH_LONG).show()
             null
         } catch (e: NullPointerException) {
-            Log.e(LOG_TAG, "displaySetImageName", e)
+            logcat(LogPriority.ERROR) { "Error while setting image from response $response: ${e.asLog()}" }
             Toast.makeText(context, "Error while setting image from response $response", Toast.LENGTH_LONG).show()
             null
         } ?: return
 
-        val txt = "${context.getString(R.string.set_image_name)} $imageName"
-        if (snackView == null) Toast.makeText(context, txt, Toast.LENGTH_LONG).show()
-        else Snackbar.make(snackView, txt, Snackbar.LENGTH_LONG).show()
+        notify(context.getString(R.string.set_image_name, imageName))
+    }
+
+    private fun notify(txt: String) {
+        if (snackView == null) {
+            Toast.makeText(context, txt, Toast.LENGTH_LONG).show()
+        } else {
+            Snackbar.make(snackView, txt, Snackbar.LENGTH_LONG).show()
+        }
     }
 
 
     private inner class PopupItemClickListener(private val position: Int) : PopupMenu.OnMenuItemClickListener {
         override fun onMenuItemClick(item: MenuItem): Boolean {
             val imgMap = mutableMapOf(
-                IMG_ID to images[position],
+                IMG_ID to imageNames[position],
                 PRODUCT_BARCODE to product.code
             )
             imgMap[IMAGE_STRING_ID] = when (item.itemId) {
                 R.id.report_image -> {
-                    context.startActivity(Intent.createChooser(Intent(Intent.ACTION_SEND).apply {
+                    val intent = Intent.createChooser(Intent(Intent.ACTION_SEND).apply {
                         data = Uri.parse("mailto:")
                         type = "text/plain"
                         putExtra(Intent.EXTRA_EMAIL, "Open Food Facts <contact@openfoodfacts.org>")
                         putExtra(Intent.EXTRA_SUBJECT, "Photo report for product ${product.code}")
                         putExtra(Intent.EXTRA_TEXT, "I've spotted a problematic photo for product ${product.code}")
-                    }, context.getString(R.string.report_email_chooser_title)))
+                    }, context.getString(R.string.report_email_chooser_title))
+                    context.startActivity(intent)
                     return true
                 }
 
@@ -122,12 +137,11 @@ class ProductPhotosAdapter(
                 else -> product.getImageStringKey(ProductImageField.OTHER)
             }
 
-            if (snackView == null) Toast.makeText(context, context.getString(R.string.changes_saved), Toast.LENGTH_SHORT).show()
-            else Snackbar.make(snackView, R.string.changes_saved, Snackbar.LENGTH_SHORT).show()
+            notify(context.getString(R.string.changes_saved))
 
             // Edit photo async
-            lifecycleOwner.lifecycle.coroutineScope.launch(Dispatchers.IO) {
-                val response = client.editImage(product.code, imgMap)
+            lifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
+                val response = productRepository.editImage(product.code, imgMap)
                 withContext(Dispatchers.Main) { displaySetImageName(response) }
             }
 
@@ -135,9 +149,5 @@ class ProductPhotosAdapter(
         }
     }
 
-    companion object {
-        private val LOG_TAG = this::class.simpleName!!
-    }
 
-    override fun getItemCount() = images.count()
 }

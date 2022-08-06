@@ -365,7 +365,7 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem {
 
                 setOnPreferenceClickListener { pref ->
                     pref.onPreferenceClickListener = null
-                    val request = buildOneTimeWorkRequest<LoadTaxonomiesWorker>()
+                    val request = OneTimeWorkRequest<LoadTaxonomiesWorker>()
 
                     // The service will load server resources only if newer than already downloaded...
                     WorkManager.getInstance(requireContext()).let {

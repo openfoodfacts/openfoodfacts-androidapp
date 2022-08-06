@@ -7,7 +7,7 @@ import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
 
 internal class QuickViewCallback(
-    private val activity: ContinuousScanActivity
+    private val activity: ContinuousScanActivity,
 ) : BottomSheetBehavior.BottomSheetCallback() {
     private var previousSlideOffset = 0f
 
@@ -24,7 +24,8 @@ internal class QuickViewCallback(
             BottomSheetBehavior.STATE_COLLAPSED -> stopScanner()
             BottomSheetBehavior.STATE_EXPANDED -> {
                 stopScanner()
-                activity.matomoAnalytics.trackEvent(AnalyticsEvent.ScannedBarcodeResultExpanded(activity.lastBarcode))
+                val event = AnalyticsEvent.ScannedBarcodeResultExpanded(activity.lastBarcode?.raw)
+                activity.matomoAnalytics.trackEvent(event)
             }
             else -> stopScanner()
         }

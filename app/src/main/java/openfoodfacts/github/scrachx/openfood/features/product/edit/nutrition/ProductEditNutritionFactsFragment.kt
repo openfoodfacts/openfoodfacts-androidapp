@@ -175,7 +175,10 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         }
         binding.alcohol.imeOptions = EditorInfo.IME_ACTION_DONE
         binding.energyKcal.requestFocus()
-        allEditViews = (view as ViewGroup).getViewsByType(CustomValidatingEditTextView::class.java).toHashSet()
+        allEditViews = (view as ViewGroup)
+            .getViewsByType<CustomValidatingEditTextView>()
+            .toHashSet()
+
         allEditViews.forEach {
             it.addValidListener()
             it.checkValue()
