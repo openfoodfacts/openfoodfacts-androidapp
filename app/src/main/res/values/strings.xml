@@ -300,7 +300,7 @@
     <string name="error_invalid_password">The password needs to be at least 6 characters long.</string>
     <string name="user">user</string>
     <string name="error_field_required">This field is required.</string>
-    <string name="user_login_url">%s\cgi/user.pl</string>
+    <string name="user_login_url" translatable="false">%s\cgi/user.pl</string>
     <string name="reset_password_url">%s\cgi/reset_password.pl</string>
 
     <!-- Strings related to feedback dialog -->
