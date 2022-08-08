@@ -39,7 +39,7 @@ class ProductRepositoryTest {
                 mockInstallationService,
                 "USERNAME"
             )
-        ).isEqualTo("Official " + BuildConfig.APP_NAME + " Android app TEST_VERSION_NAME")
+        ).isEqualTo("Official ${BuildConfig.APP_NAME} Android app TEST_VERSION_NAME")
     }
 
     @Test
@@ -50,6 +50,6 @@ class ProductRepositoryTest {
                 mockInstallationService,
                 null
             )
-        ).isEqualTo("Official " + BuildConfig.APP_NAME + " Android app TEST_VERSION_NAME (Added by FAKE_ID)")
+        ).isEqualTo("Official ${BuildConfig.APP_NAME} Android app TEST_VERSION_NAME (Added by FAKE_ID)")
     }
 }

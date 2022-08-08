@@ -49,7 +49,10 @@ fun getResourceIdForEditAction(field: ProductImageField) = when (field) {
     else -> R.string.edit_other_image
 }
 
-fun getImageUrl(barcode: String, imageName: String, size: Int): String {
+fun getImageUrl(barcode: String, imageName: String, size: Int) =
+    getImageUrl(barcode, imageName, size.toString())
+
+fun getImageUrl(barcode: String, imageName: String, size: String): String {
     val baseUrlString = BuildConfig.STATICURL + "/images/products/"
     var barcodePattern = barcode
     if (barcodePattern.length > 8) {

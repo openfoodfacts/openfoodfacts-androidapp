@@ -112,9 +112,15 @@ dependencies {
     implementation(libs.fastadapter.commons) { artifact { type = "aar" } }
 
     // UI Component : Font Icons
-    // This Font/Icon grouping resists 'bundling' due to (AAR) type specification not being directly supported by Version Catalogs.
-    implementation(libs.iconics.core) { artifact { type = "aar" } }
-    implementation(libs.google.material.typeface) { isTransitive = false; artifact { type = "aar" } }
+    // This Font/Icon grouping resists 'bundling' due to (AAR) type
+    // specification not being directly supported by Version Catalogs.
+    implementation(libs.iconics.core) {
+        artifact { type = "aar" }
+    }
+    implementation(libs.google.material.typeface) {
+        isTransitive = false
+        artifact { type = "aar" }
+    }
     implementation(libs.android.image.cropper)
 
     // UI Component : Chips Input

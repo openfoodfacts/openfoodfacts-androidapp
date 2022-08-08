@@ -8,6 +8,7 @@ import com.google.common.truth.Truth.assertThat
 import io.mockk.every
 import io.mockk.mockk
 import openfoodfacts.github.scrachx.openfood.models.LanguageData
+import openfoodfacts.github.scrachx.openfood.utils.LocaleUtils.parseLocale
 import org.junit.jupiter.api.Test
 import org.mockito.kotlin.doReturn
 import org.mockito.kotlin.mock
@@ -20,14 +21,14 @@ class LocaleUtilsTest {
 
     @Test
     fun getLocale() {
-        assertThat(LocaleUtils.parseLocale("fr")).isEqualTo(Locale.FRENCH)
-        assertThat(LocaleUtils.parseLocale("en-US")).isEqualTo(Locale.US)
-        assertThat(LocaleUtils.parseLocale("en")).isEqualTo(Locale.ENGLISH)
+        assertThat(parseLocale("fr")).isEqualTo(Locale.FRENCH)
+        assertThat(parseLocale("en-US")).isEqualTo(Locale.US)
+        assertThat(parseLocale("en")).isEqualTo(Locale.ENGLISH)
     }
 
     @Test
     fun getLocale_FromContext() {
-        val locale = LocaleUtils.parseLocale("en-US")
+        val locale = parseLocale("en-US")
         val configuration = Configuration().apply { this.locale = locale }
         val resources = mockk<Resources> {
             every { this@mockk.configuration } returns configuration
