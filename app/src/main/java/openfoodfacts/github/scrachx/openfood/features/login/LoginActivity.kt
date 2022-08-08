@@ -18,6 +18,7 @@ package openfoodfacts.github.scrachx.openfood.features.login
 import android.content.Context
 import android.content.Intent
 import android.content.pm.ActivityInfo
+import android.net.Uri
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
@@ -66,8 +67,8 @@ class LoginActivity : BaseActivity() {
     lateinit var matomoAnalytics: MatomoAnalytics
 
     private val customTabActivityHelper: CustomTabActivityHelper by lazy { CustomTabActivityHelper() }
-    private val userLoginUri by lazy { "${getString(R.string.website)}cgi/user.pl".toUri() }
-    private val resetPasswordUri by lazy { "${getString(R.string.website)}cgi/reset_password.pl".toUri() }
+    private val userLoginUri by lazy { resources.getString(R.string.user_login_url,getString(R.string.website)).toUri() }
+    private val resetPasswordUri by lazy { resources.getString(R.string.reset_password_url,getString(R.string.website)).toUri() }
 
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
         android.R.id.home -> {
