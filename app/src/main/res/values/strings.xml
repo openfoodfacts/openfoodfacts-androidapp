@@ -875,6 +875,11 @@
     <string name="hunger_game_call_to_action" comment="Do not change the placeholder">Help classify more %1$s</string>
     <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s food products (plus the ones you will contribute).</string>
 
+<!--    Image editing labels-->
+    <string name="label_crop">Crop</string>
+    <string name="label_photo_from_others">Photo from others</string>
+    <string name="label_unselect">Unselect</string>
+
     <!-- Application theme settings -->
     <string name="follow_system">Follow system</string>
     <string name="day">Day</string>
