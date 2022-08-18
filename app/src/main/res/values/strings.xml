@@ -569,6 +569,7 @@
 
     <!-- strings related to share images -->
     <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
+    <string name="type_the_barcode_here_label" translatable="false">Type the barcode here</string>
     <string name="no_barcode">We have not detected any barcode</string>
     <string name="enter_barcode">Please type the barcode below</string>
     <string name="format_error">Wrong Barcode/QR format</string>
@@ -875,7 +876,7 @@
     <string name="hunger_game_call_to_action" comment="Do not change the placeholder">Help classify more %1$s</string>
     <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s food products (plus the ones you will contribute).</string>
 
-<!--    Image editing labels-->
+    <!--    Image editing labels-->
     <string name="label_crop">Crop</string>
     <string name="label_photo_from_others">Photo from others</string>
     <string name="label_unselect">Unselect</string>

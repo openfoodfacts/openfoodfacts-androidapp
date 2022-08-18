@@ -35,6 +35,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.EditText
 import android.widget.SearchView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
@@ -209,7 +210,8 @@ class MainActivity : BaseActivity(), NavigationDrawerListener, NavigationDrawerH
 
                 override fun onProfileImageLongClick(view: View, profile: IProfile<*>, current: Boolean) = false
             })
-            withOnAccountHeaderSelectionViewClickListener(object : AccountHeader.OnAccountHeaderSelectionViewClickListener {
+            withOnAccountHeaderSelectionViewClickListener(object :
+                AccountHeader.OnAccountHeaderSelectionViewClickListener {
                 override fun onClick(view: View, profile: IProfile<*>): Boolean {
                     if (!isUserSet()) startActivity(Intent(this@MainActivity, LoginActivity::class.java))
                     return false
@@ -267,7 +269,8 @@ class MainActivity : BaseActivity(), NavigationDrawerListener, NavigationDrawerH
             }
         }
         if (!isApplicationInstalled(this@MainActivity, BuildConfig.OFOTHERLINKAPP)) {
-            drawerResult.updateName(ITEM_OBF.toLong(), StringHolder("${getString(R.string.install)} ${getString(R.string.open_other_flavor_drawer)}"))
+            drawerResult.updateName(ITEM_OBF.toLong(),
+                StringHolder("${getString(R.string.install)} ${getString(R.string.open_other_flavor_drawer)}"))
         } else {
             drawerResult.updateName(ITEM_OBF.toLong(), StringHolder(getString(R.string.open_other_flavor_drawer)))
         }
@@ -467,8 +470,14 @@ class MainActivity : BaseActivity(), NavigationDrawerListener, NavigationDrawerH
                     ITEM_LOGIN -> loginThenUpdate.launch(Unit)
                     ITEM_ALERT -> newFragment = AllergensAlertFragment.newInstance()
                     ITEM_PREFERENCES -> newFragment = PreferencesFragment.newInstance()
-                    ITEM_ABOUT -> CustomTabActivityHelper.openCustomTab(this@MainActivity, customTabsIntent, discoverUri, WebViewFallback())
-                    ITEM_CONTRIBUTE -> CustomTabActivityHelper.openCustomTab(this@MainActivity, customTabsIntent, contributeUri, WebViewFallback())
+                    ITEM_ABOUT -> CustomTabActivityHelper.openCustomTab(this@MainActivity,
+                        customTabsIntent,
+                        discoverUri,
+                        WebViewFallback())
+                    ITEM_CONTRIBUTE -> CustomTabActivityHelper.openCustomTab(this@MainActivity,
+                        customTabsIntent,
+                        contributeUri,
+                        WebViewFallback())
                     ITEM_INCOMPLETE_PRODUCTS -> startSearch(
                         this@MainActivity,
                         SearchType.INCOMPLETE_PRODUCT,
@@ -494,7 +503,8 @@ class MainActivity : BaseActivity(), NavigationDrawerListener, NavigationDrawerH
                             }
                         } else {
                             try {
-                                startActivity(Intent(Intent.ACTION_VIEW, "market://details?id=${BuildConfig.OFOTHERLINKAPP}".toUri()))
+                                startActivity(Intent(Intent.ACTION_VIEW,
+                                    "market://details?id=${BuildConfig.OFOTHERLINKAPP}".toUri()))
                             } catch (anfe: ActivityNotFoundException) {
                                 startActivity(
                                     Intent(
@@ -601,7 +611,8 @@ class MainActivity : BaseActivity(), NavigationDrawerListener, NavigationDrawerH
     private fun getProfileSettingDrawerItem(): IProfile<ProfileSettingDrawerItem> {
         val userLogin = getLoginUsername()
         val userSession = getUserSession()
-        userSettingsURI = "${getString(R.string.website)}cgi/user.pl?type=edit&userid=$userLogin&user_id=$userLogin&user_session=$userSession".toUri()
+        userSettingsURI =
+            "${getString(R.string.website)}cgi/user.pl?type=edit&userid=$userLogin&user_id=$userLogin&user_session=$userSession".toUri()
         customTabActivityHelper.mayLaunchUrl(userSettingsURI, null, null)
 
         return profileSettingItem {
@@ -934,8 +945,11 @@ class MainActivity : BaseActivity(), NavigationDrawerListener, NavigationDrawerH
         }
 
         val barcodeEditText = dialogView.findViewById<EditText>(R.id.barcode)
+        val barcodeLabelTextView = dialogView.findViewById<TextView>(R.id.barcode_label)
+
         if (hasEditText) {
             barcodeEditText.visibility = View.VISIBLE
+            barcodeLabelTextView.visibility = View.VISIBLE
             alertDialogBuilder.setTitle(getString(R.string.no_barcode))
             alertDialogBuilder.setMessage(getString(R.string.enter_barcode))
         } else {
