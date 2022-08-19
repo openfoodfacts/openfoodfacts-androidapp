@@ -569,7 +569,7 @@
 
     <!-- strings related to share images -->
     <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
-    <string name="type_the_barcode_here_label" translatable="false">Type the barcode here</string>
+    <string name="type_the_barcode_here_label">Type the barcode here</string>
     <string name="no_barcode">We have not detected any barcode</string>
     <string name="enter_barcode">Please type the barcode below</string>
     <string name="format_error">Wrong Barcode/QR format</string>
