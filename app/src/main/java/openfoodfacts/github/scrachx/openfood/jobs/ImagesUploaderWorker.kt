@@ -16,15 +16,19 @@ import javax.inject.Inject
 @HiltWorker
 class ImagesUploaderWorker @AssistedInject constructor(
     @Assisted appContext: Context,
-    @Assisted workerParams: WorkerParameters
+    @Assisted workerParams: WorkerParameters,
 ) : CoroutineWorker(appContext, workerParams) {
     @Inject
-    lateinit var client: ProductRepository
+    lateinit var productRepository: ProductRepository
 
-    override suspend fun doWork() = try {
-        client.uploadOfflineImages()
-        Result.success()
-    } catch (err: Throwable) {
-        Result.failure()
+    override suspend fun doWork(): Result {
+        return productRepository
+            .runCatching { uploadOfflineProductsImages() }
+            .toWorkResult()
     }
+
+    private fun <T> kotlin.Result<T>.toWorkResult() = fold(
+        onSuccess = { Result.success() },
+        onFailure = { Result.failure() },
+    )
 }
