@@ -5,7 +5,10 @@ import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
-import openfoodfacts.github.scrachx.openfood.models.ProductImageField.*
+import openfoodfacts.github.scrachx.openfood.models.ProductImageField.FRONT
+import openfoodfacts.github.scrachx.openfood.models.ProductImageField.INGREDIENTS
+import openfoodfacts.github.scrachx.openfood.models.ProductImageField.NUTRITION
+import openfoodfacts.github.scrachx.openfood.models.ProductImageField.PACKAGING
 import org.jetbrains.annotations.Contract
 
 @Contract(pure = true)
@@ -76,4 +79,3 @@ const val LANGUAGE = "language"
 const val IMAGE_STRING_ID = "id"
 const val IMG_ID = "imgid"
 const val IMAGE_EDIT_SIZE = 400
-const val IMAGE_EDIT_SIZE_FILE = ".$IMAGE_EDIT_SIZE"
