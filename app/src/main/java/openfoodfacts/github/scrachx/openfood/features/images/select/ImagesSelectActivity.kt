@@ -32,7 +32,10 @@ import dagger.hilt.android.AndroidEntryPoint
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductImagesListBinding
 import openfoodfacts.github.scrachx.openfood.features.adapters.ProductImagesSelectionAdapter
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
-import openfoodfacts.github.scrachx.openfood.images.*
+import openfoodfacts.github.scrachx.openfood.images.IMAGE_FILE
+import openfoodfacts.github.scrachx.openfood.images.IMG_ID
+import openfoodfacts.github.scrachx.openfood.images.ImageNameParser
+import openfoodfacts.github.scrachx.openfood.images.PRODUCT_BARCODE
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
 import openfoodfacts.github.scrachx.openfood.utils.*
 import pl.aprilapps.easyphotopicker.EasyImage
@@ -79,9 +82,8 @@ class ImagesSelectActivity : BaseActivity() {
     private fun loadProductImages(code: String) {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         lifecycleScope.launchWhenCreated {
-            val imageNames = ImageNamesParser.extractImageNames(productsApi.getProductImages(code))
-                .sortedByTimestampDescending()
-                .map { it.key }
+            val imageNames = ImageNameParser.extractImageNames(productsApi.getProductImages(code))
+                .map { it.value }
 
             // Check if user is logged in
             adapter = ProductImagesSelectionAdapter(picasso, imageNames, code) {

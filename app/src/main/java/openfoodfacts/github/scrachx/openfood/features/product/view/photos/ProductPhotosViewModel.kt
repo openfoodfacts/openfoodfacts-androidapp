@@ -10,8 +10,7 @@ import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity
-import openfoodfacts.github.scrachx.openfood.images.ImageNamesParser
-import openfoodfacts.github.scrachx.openfood.images.sortedByTimestampDescending
+import openfoodfacts.github.scrachx.openfood.images.ImageNameParser
 import openfoodfacts.github.scrachx.openfood.models.ProductState
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
 import javax.inject.Inject
@@ -28,9 +27,8 @@ class ProductPhotosViewModel @Inject constructor(
         .map { it.product }
         .filterNotNull()
         .map { product ->
-            ImageNamesParser.extractImageNames(productsAPI.getProductImages(product.code))
-                .sortedByTimestampDescending()
-                .map { it.key }
+            ImageNameParser.extractImageNames(productsAPI.getProductImages(product.code))
+                .map { it.value }
         }.stateIn(
             viewModelScope,
             SharingStarted.WhileSubscribed(),
