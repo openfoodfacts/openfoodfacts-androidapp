@@ -10,23 +10,19 @@ import org.junit.jupiter.api.Test
 class ModifierTest {
     @Test
     fun `test findBySymbol`() {
-        assertThat(Modifier.findBySymbol(">")).isEqualTo(Modifier.GREATER_THAN)
-        assertThat(Modifier.findBySymbol("<")).isEqualTo(Modifier.LESS_THAN)
-        assertThat(Modifier.findBySymbol("=")).isEqualTo(Modifier.EQUALS_TO)
-        assertThat(Modifier.findBySymbol("?")).isNull()
+        for (mod in Modifier.values()) {
+            assertThat(Modifier.findBySymbol(mod.sym)).isEqualTo(mod)
+        }
     }
 
 
     @Test
     fun `modifier should match index`() {
         val mockSpinner = mockk<Spinner>()
-        every { mockSpinner.selectedItemPosition } returns 0
-        assertThat(mockSpinner.modifier).isEqualTo(Modifier.EQUALS_TO)
 
-        every { mockSpinner.selectedItemPosition } returns 1
-        assertThat(mockSpinner.modifier).isEqualTo(Modifier.LESS_THAN)
-
-        every { mockSpinner.selectedItemPosition } returns 2
-        assertThat(mockSpinner.modifier).isEqualTo(Modifier.GREATER_THAN)
+        for (mod in Modifier.values()) {
+            every { mockSpinner.selectedItem } returns (mod.sym as Any)
+            assertThat(mockSpinner.modifier).isEqualTo(mod)
+        }
     }
 }

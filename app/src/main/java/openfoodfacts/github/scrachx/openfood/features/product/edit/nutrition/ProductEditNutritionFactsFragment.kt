@@ -25,8 +25,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
-import android.widget.*
+import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
+import android.widget.ArrayAdapter
+import android.widget.EditText
+import android.widget.Spinner
+import android.widget.TableRow
+import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.core.net.toFile
 import androidx.core.view.isVisible
@@ -51,15 +56,52 @@ import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditAc
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditFragment
 import openfoodfacts.github.scrachx.openfood.features.shared.views.CustomValidatingEditTextView
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
-import openfoodfacts.github.scrachx.openfood.models.*
-import openfoodfacts.github.scrachx.openfood.models.MeasurementUnit.*
-import openfoodfacts.github.scrachx.openfood.models.Nutriment.*
+import openfoodfacts.github.scrachx.openfood.models.MeasurementUnit
+import openfoodfacts.github.scrachx.openfood.models.MeasurementUnit.UNIT_DV
+import openfoodfacts.github.scrachx.openfood.models.MeasurementUnit.UNIT_GRAM
+import openfoodfacts.github.scrachx.openfood.models.MeasurementUnit.UNIT_IU
+import openfoodfacts.github.scrachx.openfood.models.MeasurementUnit.UNIT_LITER
+import openfoodfacts.github.scrachx.openfood.models.MeasurementUnit.UNIT_MICROGRAM
+import openfoodfacts.github.scrachx.openfood.models.MeasurementUnit.UNIT_MILLIGRAM
+import openfoodfacts.github.scrachx.openfood.models.MeasurementUnit.UNIT_MILLILITRE
+import openfoodfacts.github.scrachx.openfood.models.Modifier
+import openfoodfacts.github.scrachx.openfood.models.Nutriment
+import openfoodfacts.github.scrachx.openfood.models.Nutriment.PH
+import openfoodfacts.github.scrachx.openfood.models.Nutriment.STARCH
+import openfoodfacts.github.scrachx.openfood.models.Nutriment.VITAMIN_A
+import openfoodfacts.github.scrachx.openfood.models.Nutriment.VITAMIN_D
+import openfoodfacts.github.scrachx.openfood.models.Nutriment.VITAMIN_E
+import openfoodfacts.github.scrachx.openfood.models.Product
+import openfoodfacts.github.scrachx.openfood.models.ProductImageField
+import openfoodfacts.github.scrachx.openfood.models.ProductNutriments
 import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.Defaults.NUTRITION_DATA_PER_100G
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.Defaults.NUTRITION_DATA_PER_SERVING
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
-import openfoodfacts.github.scrachx.openfood.utils.*
+import openfoodfacts.github.scrachx.openfood.utils.FileDownloader
+import openfoodfacts.github.scrachx.openfood.utils.LOCALE_FILE_SCHEME
+import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
+import openfoodfacts.github.scrachx.openfood.utils.Measurement
+import openfoodfacts.github.scrachx.openfood.utils.PhotoReceiverHandler
+import openfoodfacts.github.scrachx.openfood.utils.ValueState
+import openfoodfacts.github.scrachx.openfood.utils.dpsToPixel
+import openfoodfacts.github.scrachx.openfood.utils.getContent
+import openfoodfacts.github.scrachx.openfood.utils.getFloatValue
+import openfoodfacts.github.scrachx.openfood.utils.getFloatValueOr
+import openfoodfacts.github.scrachx.openfood.utils.getRoundNumber
+import openfoodfacts.github.scrachx.openfood.utils.getViewsByType
+import openfoodfacts.github.scrachx.openfood.utils.grams
+import openfoodfacts.github.scrachx.openfood.utils.hasUnit
+import openfoodfacts.github.scrachx.openfood.utils.isBlank
+import openfoodfacts.github.scrachx.openfood.utils.isNotEmpty
+import openfoodfacts.github.scrachx.openfood.utils.isValueDifferent
+import openfoodfacts.github.scrachx.openfood.utils.measure
+import openfoodfacts.github.scrachx.openfood.utils.modifier
+import openfoodfacts.github.scrachx.openfood.utils.parseServing
+import openfoodfacts.github.scrachx.openfood.utils.saltToSodium
+import openfoodfacts.github.scrachx.openfood.utils.sodiumToSalt
+import openfoodfacts.github.scrachx.openfood.utils.toPx
 import java.io.File
 import java.text.Collator
 import java.util.*
@@ -910,7 +952,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
 
         val maxPhValue = 14f
         // Coerce the value
-        if (value > maxPhValue || value == maxPhValue && this.isModifierEqualsToGreaterThan()) {
+        if (value > maxPhValue || value == maxPhValue && this.modSpinner!!.modifier == Modifier.GREATER_THAN) {
             setText(maxPhValue.toString())
             modSpinner?.setSelection(0)
         }
