@@ -5,8 +5,8 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
-import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
-import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
+import openfoodfacts.github.scrachx.openfood.AppFlavor
+import openfoodfacts.github.scrachx.openfood.AppFlavor.Companion.isFlavors
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.HistoryListItemBinding
 import openfoodfacts.github.scrachx.openfood.models.HistoryProduct
@@ -94,7 +94,7 @@ class ScanHistoryAdapter(
                 }
                 binding.lastScan.text = product.lastSeen.durationToNowFormatted(context)
 
-                if (isFlavors(OFF)) {
+                if (isFlavors(AppFlavor.OFF)) {
                     binding.nutriscore.setImageResource(product.getNutriScoreResource())
                     binding.ecoscore.setImageResource(product.getEcoscoreResource())
                     binding.novaGroup.setImageResource(product.getNovaGroupResource())

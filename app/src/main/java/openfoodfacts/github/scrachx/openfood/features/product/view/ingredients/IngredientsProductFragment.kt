@@ -40,11 +40,8 @@ import androidx.viewpager2.widget.ViewPager2
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import openfoodfacts.github.scrachx.openfood.AppFlavors
-import openfoodfacts.github.scrachx.openfood.AppFlavors.OBF
-import openfoodfacts.github.scrachx.openfood.AppFlavors.OPF
-import openfoodfacts.github.scrachx.openfood.AppFlavors.OPFF
-import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
+import openfoodfacts.github.scrachx.openfood.AppFlavor
+import openfoodfacts.github.scrachx.openfood.AppFlavor.Companion.isFlavors
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabsHelper
@@ -69,8 +66,25 @@ import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenNa
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.repositories.TaxonomiesRepository
 import openfoodfacts.github.scrachx.openfood.repositories.WikidataRepository
-import openfoodfacts.github.scrachx.openfood.utils.*
-import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.*
+import openfoodfacts.github.scrachx.openfood.utils.LOCALE_FILE_SCHEME
+import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
+import openfoodfacts.github.scrachx.openfood.utils.PhotoReceiverHandler
+import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState
+import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.Data
+import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.Empty
+import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.Loading
+import openfoodfacts.github.scrachx.openfood.utils.SearchType
+import openfoodfacts.github.scrachx.openfood.utils.buildSignInDialog
+import openfoodfacts.github.scrachx.openfood.utils.getLoginPreferences
+import openfoodfacts.github.scrachx.openfood.utils.getNovaGroupExplanation
+import openfoodfacts.github.scrachx.openfood.utils.getNovaGroupResource
+import openfoodfacts.github.scrachx.openfood.utils.getSearchLinkText
+import openfoodfacts.github.scrachx.openfood.utils.getSendProduct
+import openfoodfacts.github.scrachx.openfood.utils.isBatteryLevelLow
+import openfoodfacts.github.scrachx.openfood.utils.isUserSet
+import openfoodfacts.github.scrachx.openfood.utils.requireProductState
+import openfoodfacts.github.scrachx.openfood.utils.showBottomSheet
+import openfoodfacts.github.scrachx.openfood.utils.unique
 import java.io.File
 import javax.inject.Inject
 import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivity.Companion.start as startSearch
@@ -157,7 +171,10 @@ class IngredientsProductFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.extractIngredientsPrompt.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_box_blue_18dp, 0, 0, 0)
+        binding.extractIngredientsPrompt.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_box_blue_18dp,
+            0,
+            0,
+            0)
         binding.changeIngImg.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_a_photo_blue_18dp, 0, 0, 0)
 
         binding.changeIngImg.setOnClickListener { changeIngImage() }
@@ -250,7 +267,8 @@ class IngredientsProductFragment : BaseFragment() {
 
 
         if (!product.getImageIngredientsUrl(langCode).isNullOrBlank()) {
-            binding.ingredientImagetipBox.setTipMessage(getString(R.string.onboarding_hint_msg, getString(R.string.image_edit_tip)))
+            binding.ingredientImagetipBox.setTipMessage(getString(R.string.onboarding_hint_msg,
+                getString(R.string.image_edit_tip)))
             binding.ingredientImagetipBox.loadToolTip()
             binding.addPhotoLabel.visibility = View.GONE
             binding.changeIngImg.visibility = View.VISIBLE
@@ -268,7 +286,8 @@ class IngredientsProductFragment : BaseFragment() {
         if (mSendProduct != null && !mSendProduct!!.imgUploadIngredients.isNullOrBlank()) {
             binding.addPhotoLabel.visibility = View.GONE
             ingredientsImgUrl = mSendProduct!!.imgUploadIngredients
-            picasso.load(LOCALE_FILE_SCHEME + ingredientsImgUrl).config(Bitmap.Config.RGB_565).into(binding.imageViewIngredients)
+            picasso.load(LOCALE_FILE_SCHEME + ingredientsImgUrl).config(Bitmap.Config.RGB_565)
+                .into(binding.imageViewIngredients)
         }
         val allergens = getAllergens()
         if (!product.getIngredientsText(langCode).isNullOrEmpty()) {
@@ -322,7 +341,7 @@ class IngredientsProductFragment : BaseFragment() {
             binding.cvTextTraceProduct.visibility = View.GONE
         }
         val novaGroups = product.novaGroups
-        if (novaGroups != null && !isFlavors(OBF)) {
+        if (novaGroups != null && !isFlavors(AppFlavor.OBF)) {
             binding.novaLayout.visibility = View.VISIBLE
             binding.novaExplanation.text = getNovaGroupExplanation(novaGroups, requireContext()) ?: ""
             binding.novaGroup.setImageResource(product.getNovaGroupResource())
@@ -423,7 +442,7 @@ class IngredientsProductFragment : BaseFragment() {
         sendUpdatedIngredientsImage = true
         if (activity == null) return
         val viewPager = requireActivity().findViewById<ViewPager2>(R.id.pager)
-        if (isFlavors(AppFlavors.OFF)) {
+        if (isFlavors(AppFlavor.OFF)) {
             if (!requireContext().isUserSet()) {
                 showSignInDialog()
             } else {
@@ -432,9 +451,9 @@ class IngredientsProductFragment : BaseFragment() {
             }
         }
         when {
-            isFlavors(OPFF) -> viewPager.currentItem = 4
-            isFlavors(OBF) -> viewPager.currentItem = 1
-            isFlavors(OPF) -> viewPager.currentItem = 0
+            isFlavors(AppFlavor.OPFF) -> viewPager.currentItem = 4
+            isFlavors(AppFlavor.OBF) -> viewPager.currentItem = 1
+            isFlavors(AppFlavor.OPF) -> viewPager.currentItem = 0
         }
     }
 

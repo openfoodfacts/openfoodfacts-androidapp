@@ -19,10 +19,10 @@ import android.util.Log
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.withContext
-import openfoodfacts.github.scrachx.openfood.AppFlavors.OBF
-import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
-import openfoodfacts.github.scrachx.openfood.AppFlavors.OPFF
-import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
+import openfoodfacts.github.scrachx.openfood.AppFlavor.Companion.isFlavors
+import openfoodfacts.github.scrachx.openfood.AppFlavor.OBF
+import openfoodfacts.github.scrachx.openfood.AppFlavor.OFF
+import openfoodfacts.github.scrachx.openfood.AppFlavor.OPFF
 import openfoodfacts.github.scrachx.openfood.models.AnnotationAnswer
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.repositories.RobotoffRepository
@@ -34,7 +34,7 @@ class SummaryProductPresenter(
     private val product: Product,
     private val view: ISummaryProductPresenter.View,
     private val taxonomiesRepository: TaxonomiesRepository,
-    private val robotoff: RobotoffRepository
+    private val robotoff: RobotoffRepository,
 ) : ISummaryProductPresenter.Actions {
 
     override suspend fun loadAdditives() {

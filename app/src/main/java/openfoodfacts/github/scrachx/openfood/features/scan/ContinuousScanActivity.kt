@@ -46,9 +46,14 @@ import com.mikepenz.iconics.IconicsSize
 import com.mikepenz.iconics.typeface.library.googlematerial.GoogleMaterial
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.*
-import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
-import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.isActive
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import openfoodfacts.github.scrachx.openfood.AppFlavor
+import openfoodfacts.github.scrachx.openfood.AppFlavor.Companion.isFlavors
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsView
@@ -66,7 +71,11 @@ import openfoodfacts.github.scrachx.openfood.features.product.view.summary.Summa
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.selectNavigationItem
-import openfoodfacts.github.scrachx.openfood.models.*
+import openfoodfacts.github.scrachx.openfood.models.Barcode
+import openfoodfacts.github.scrachx.openfood.models.CameraState
+import openfoodfacts.github.scrachx.openfood.models.DaoSession
+import openfoodfacts.github.scrachx.openfood.models.InvalidBarcodeDao
+import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct
 import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProductDao
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenHelper
@@ -74,8 +83,20 @@ import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenNa
 import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.AnalysisTagConfig
 import openfoodfacts.github.scrachx.openfood.models.eventbus.ProductNeedsRefreshEvent
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.StateTags
-import openfoodfacts.github.scrachx.openfood.repositories.*
-import openfoodfacts.github.scrachx.openfood.utils.*
+import openfoodfacts.github.scrachx.openfood.repositories.OfflineProductRepository
+import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
+import openfoodfacts.github.scrachx.openfood.repositories.RobotoffRepository
+import openfoodfacts.github.scrachx.openfood.repositories.ScannerPreferencesRepository
+import openfoodfacts.github.scrachx.openfood.repositories.TaxonomiesRepository
+import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
+import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState
+import openfoodfacts.github.scrachx.openfood.utils.Utils
+import openfoodfacts.github.scrachx.openfood.utils.getEcoscoreResource
+import openfoodfacts.github.scrachx.openfood.utils.getNovaGroupResource
+import openfoodfacts.github.scrachx.openfood.utils.getNutriScoreResource
+import openfoodfacts.github.scrachx.openfood.utils.hideKeyboard
+import openfoodfacts.github.scrachx.openfood.utils.isProductIncomplete
+import openfoodfacts.github.scrachx.openfood.utils.unique
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import java.io.IOException
@@ -286,14 +307,14 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
         }
     }
 
-    private fun quickViewCheckNutriScore(product: Product) = if (isFlavors(OFF)) {
+    private fun quickViewCheckNutriScore(product: Product) = if (isFlavors(AppFlavor.OFF)) {
         binding.quickViewNutriScore.visibility = View.VISIBLE
         binding.quickViewNutriScore.setImageResource(product.getNutriScoreResource())
     } else {
         binding.quickViewNutriScore.visibility = View.GONE
     }
 
-    private fun quickViewCheckNova(product: Product) = if (isFlavors(OFF)) {
+    private fun quickViewCheckNova(product: Product) = if (isFlavors(AppFlavor.OFF)) {
         binding.quickViewNovaGroup.visibility = View.VISIBLE
         binding.quickViewAdditives.visibility = View.VISIBLE
         binding.quickViewNovaGroup.setImageResource(product.getNovaGroupResource())
@@ -301,7 +322,7 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
         binding.quickViewNovaGroup.visibility = View.GONE
     }
 
-    private fun quickViewCheckEcoScore(product: Product) = if (isFlavors(OFF)) {
+    private fun quickViewCheckEcoScore(product: Product) = if (isFlavors(AppFlavor.OFF)) {
         binding.quickViewEcoscoreIcon.setImageResource(product.getEcoscoreResource())
         binding.quickViewEcoscoreIcon.visibility = View.VISIBLE
     } else {

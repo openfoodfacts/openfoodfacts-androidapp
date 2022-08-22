@@ -52,7 +52,11 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.zxing.*
+import com.google.zxing.BinaryBitmap
+import com.google.zxing.DecodeHintType
+import com.google.zxing.FormatException
+import com.google.zxing.MultiFormatReader
+import com.google.zxing.RGBLuminanceSource
 import com.google.zxing.common.HybridBinarizer
 import com.mikepenz.iconics.typeface.library.googlematerial.GoogleMaterial
 import com.mikepenz.materialdrawer.AccountHeader
@@ -67,9 +71,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import openfoodfacts.github.scrachx.openfood.AppFlavors
-import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
-import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
+import openfoodfacts.github.scrachx.openfood.AppFlavor
+import openfoodfacts.github.scrachx.openfood.AppFlavor.Companion.isFlavors
 import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
@@ -101,7 +104,8 @@ import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInsta
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.selectNavigationItem
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
-import openfoodfacts.github.scrachx.openfood.utils.*
+import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
+import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_ABOUT
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_ADDITIVES
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_ADVANCED_SEARCH
@@ -123,7 +127,29 @@ import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Comp
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_USER
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_YOUR_LISTS
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType
+import openfoodfacts.github.scrachx.openfood.utils.OnKeyboardVisibilityChanged
+import openfoodfacts.github.scrachx.openfood.utils.PreferencesService
+import openfoodfacts.github.scrachx.openfood.utils.SearchSuggestionProvider
+import openfoodfacts.github.scrachx.openfood.utils.SearchType
 import openfoodfacts.github.scrachx.openfood.utils.Utils.scheduleProductUploadJob
+import openfoodfacts.github.scrachx.openfood.utils.buildAccountHeader
+import openfoodfacts.github.scrachx.openfood.utils.buildDrawer
+import openfoodfacts.github.scrachx.openfood.utils.dividerItem
+import openfoodfacts.github.scrachx.openfood.utils.getAppPreferences
+import openfoodfacts.github.scrachx.openfood.utils.getLoginPreferences
+import openfoodfacts.github.scrachx.openfood.utils.getLoginUsername
+import openfoodfacts.github.scrachx.openfood.utils.getUserSession
+import openfoodfacts.github.scrachx.openfood.utils.hideKeyboard
+import openfoodfacts.github.scrachx.openfood.utils.isApplicationInstalled
+import openfoodfacts.github.scrachx.openfood.utils.isHardwareCameraInstalled
+import openfoodfacts.github.scrachx.openfood.utils.isNetworkConnected
+import openfoodfacts.github.scrachx.openfood.utils.isUserSet
+import openfoodfacts.github.scrachx.openfood.utils.listenToKeyboardVisibilityChanges
+import openfoodfacts.github.scrachx.openfood.utils.primaryItem
+import openfoodfacts.github.scrachx.openfood.utils.profileItem
+import openfoodfacts.github.scrachx.openfood.utils.profileSettingItem
+import openfoodfacts.github.scrachx.openfood.utils.sectionItem
+import openfoodfacts.github.scrachx.openfood.utils.stopListeningToKeyboardVisibilityChanges
 import java.io.FileNotFoundException
 import java.io.IOException
 import javax.inject.Inject
@@ -254,15 +280,15 @@ class MainActivity : BaseActivity(), NavigationDrawerListener, NavigationDrawerH
             if (isUserSet()) getLogoutDrawerItem() else getLoginDrawerItem()
         )
         when {
-            isFlavors(AppFlavors.OBF) -> {
+            isFlavors(AppFlavor.OBF) -> {
                 drawerResult.removeItem(ITEM_ALERT.toLong())
                 drawerResult.removeItem(ITEM_ADDITIVES.toLong())
                 drawerResult.updateName(ITEM_OBF.toLong(), StringHolder(getString(R.string.open_other_flavor_drawer)))
             }
-            isFlavors(AppFlavors.OPFF) -> {
+            isFlavors(AppFlavor.OPFF) -> {
                 drawerResult.removeItem(ITEM_ALERT.toLong())
             }
-            isFlavors(AppFlavors.OPF) -> {
+            isFlavors(AppFlavor.OPF) -> {
                 drawerResult.removeItem(ITEM_ALERT.toLong())
                 drawerResult.removeItem(ITEM_ADDITIVES.toLong())
                 drawerResult.removeItem(ITEM_ADVANCED_SEARCH.toLong())
@@ -327,7 +353,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener, NavigationDrawerH
 
         handleIntent(intent)
 
-        if (isFlavors(OFF)) {
+        if (isFlavors(AppFlavor.OFF)) {
             ChangelogDialog.newInstance(BuildConfig.DEBUG).presentAutomatically(this)
         }
     }
@@ -733,7 +759,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener, NavigationDrawerH
     override fun onStart() {
         super.onStart()
         customTabActivityHelper.bindCustomTabsService(this)
-        if (isFlavors(OFF)
+        if (isFlavors(AppFlavor.OFF)
             && isUserSet()
             && !prefManager.isFirstTimeLaunch
             && !prefManager.userAskedToRate

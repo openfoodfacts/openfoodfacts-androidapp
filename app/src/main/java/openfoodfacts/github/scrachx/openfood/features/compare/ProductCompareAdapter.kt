@@ -33,17 +33,27 @@ import androidx.lifecycle.coroutineScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
-import openfoodfacts.github.scrachx.openfood.AppFlavors
-import openfoodfacts.github.scrachx.openfood.AppFlavors.OPF
-import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
+import openfoodfacts.github.scrachx.openfood.AppFlavor.Companion.isFlavors
+import openfoodfacts.github.scrachx.openfood.AppFlavor.OFF
+import openfoodfacts.github.scrachx.openfood.AppFlavor.OPF
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.ProductComparisonListItemBinding
 import openfoodfacts.github.scrachx.openfood.features.FullScreenActivityOpener
 import openfoodfacts.github.scrachx.openfood.features.shared.adapters.NutrientLevelListAdapter
-import openfoodfacts.github.scrachx.openfood.models.*
+import openfoodfacts.github.scrachx.openfood.models.NutrientLevelItem
+import openfoodfacts.github.scrachx.openfood.models.Nutriment
+import openfoodfacts.github.scrachx.openfood.models.Product
+import openfoodfacts.github.scrachx.openfood.models.ProductImageField
+import openfoodfacts.github.scrachx.openfood.models.buildLevelItem
 import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveName
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
-import openfoodfacts.github.scrachx.openfood.utils.*
+import openfoodfacts.github.scrachx.openfood.utils.MY_PERMISSIONS_REQUEST_CAMERA
+import openfoodfacts.github.scrachx.openfood.utils.getEcoscoreResource
+import openfoodfacts.github.scrachx.openfood.utils.getNovaGroupResource
+import openfoodfacts.github.scrachx.openfood.utils.getNutriScoreResource
+import openfoodfacts.github.scrachx.openfood.utils.isHardwareCameraInstalled
+import openfoodfacts.github.scrachx.openfood.utils.isLowBatteryMode
+import openfoodfacts.github.scrachx.openfood.utils.toPx
 import pl.aprilapps.easyphotopicker.EasyImage
 import java.io.File
 
@@ -53,9 +63,9 @@ class ProductCompareAdapter(
     private val lifecycleOwner: LifecycleOwner,
     private val client: ProductRepository,
     private val picasso: Picasso,
-    private val language: String
+    private val language: String,
 
-) : RecyclerView.Adapter<ProductCompareAdapter.ViewHolder>() {
+    ) : RecyclerView.Adapter<ProductCompareAdapter.ViewHolder>() {
     var imageReturnedListener: ((Product, File) -> Unit)? = null
     var fullProductClickListener: ((Product) -> Unit)? = null
 
@@ -123,7 +133,9 @@ class ProductCompareAdapter(
                 // take a picture
                 when {
                     checkSelfPermission(activity, permission.CAMERA) != PERMISSION_GRANTED -> {
-                        ActivityCompat.requestPermissions(activity, arrayOf(permission.CAMERA), MY_PERMISSIONS_REQUEST_CAMERA)
+                        ActivityCompat.requestPermissions(activity,
+                            arrayOf(permission.CAMERA),
+                            MY_PERMISSIONS_REQUEST_CAMERA)
                     }
                     else -> {
                         imageReturnedPosition = holder.bindingAdapterPosition
@@ -176,7 +188,7 @@ class ProductCompareAdapter(
         }
 
         // Open Food Facts specific
-        if (isFlavors(AppFlavors.OFF)) {
+        if (isFlavors(OFF)) {
             // NutriScore
             holder.binding.productComparisonImageGrade.setImageResource(product.getNutriScoreResource())
 
@@ -198,7 +210,8 @@ class ProductCompareAdapter(
         }
 
         // Additives
-        if (product.additivesTags.isNotEmpty()) loadAdditives(compareProduct.additiveNames, holder.binding.productComparisonAdditiveText)
+        if (product.additivesTags.isNotEmpty()) loadAdditives(compareProduct.additiveNames,
+            holder.binding.productComparisonAdditiveText)
 
         // Full product button
         holder.binding.fullProductButton.setOnClickListener { fullProductClickListener?.invoke(product) }
@@ -265,7 +278,7 @@ class ProductCompareAdapter(
 
 
     class ViewHolder(
-        val binding: ProductComparisonListItemBinding
+        val binding: ProductComparisonListItemBinding,
     ) : RecyclerView.ViewHolder(binding.root) {
         init {
             binding.fullProductButton.setCompoundDrawablesWithIntrinsicBounds(

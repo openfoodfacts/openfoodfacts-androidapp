@@ -28,8 +28,8 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import logcat.LogPriority
 import logcat.logcat
-import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
-import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
+import openfoodfacts.github.scrachx.openfood.AppFlavor
+import openfoodfacts.github.scrachx.openfood.AppFlavor.Companion.isFlavors
 import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
@@ -40,7 +40,11 @@ import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.selectNavigationItem
 import openfoodfacts.github.scrachx.openfood.models.entities.ProductLists
-import openfoodfacts.github.scrachx.openfood.utils.SortType.*
+import openfoodfacts.github.scrachx.openfood.utils.SortType.BARCODE
+import openfoodfacts.github.scrachx.openfood.utils.SortType.BRAND
+import openfoodfacts.github.scrachx.openfood.utils.SortType.GRADE
+import openfoodfacts.github.scrachx.openfood.utils.SortType.TIME
+import openfoodfacts.github.scrachx.openfood.utils.SortType.TITLE
 import openfoodfacts.github.scrachx.openfood.utils.SwipeController
 import openfoodfacts.github.scrachx.openfood.utils.getCsvFolderName
 import openfoodfacts.github.scrachx.openfood.utils.isHardwareCameraInstalled
@@ -172,7 +176,7 @@ class ProductListActivity : BaseActivity() {
             true
         }
         R.id.action_sort_listed_products -> {
-            val sortTypes = if (isFlavors(OFF)) {
+            val sortTypes = if (isFlavors(AppFlavor.OFF)) {
                 arrayOf(
                     getString(R.string.by_title),
                     getString(R.string.by_brand),
@@ -194,7 +198,7 @@ class ProductListActivity : BaseActivity() {
                     val sortType = when (position) {
                         0 -> TITLE
                         1 -> BRAND
-                        2 -> if (isFlavors(OFF)) GRADE else TIME
+                        2 -> if (isFlavors(AppFlavor.OFF)) GRADE else TIME
                         3 -> BARCODE
                         else -> TIME
                     }

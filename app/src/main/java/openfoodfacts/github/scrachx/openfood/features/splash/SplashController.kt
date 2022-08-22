@@ -25,14 +25,23 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import openfoodfacts.github.scrachx.openfood.AppFlavors.OBF
-import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
-import openfoodfacts.github.scrachx.openfood.AppFlavors.OPFF
-import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
+import openfoodfacts.github.scrachx.openfood.AppFlavor
+import openfoodfacts.github.scrachx.openfood.AppFlavor.Companion.isFlavors
 import openfoodfacts.github.scrachx.openfood.jobs.LoadTaxonomiesWorker
 import openfoodfacts.github.scrachx.openfood.models.entities.TaxonomyEntity
 import openfoodfacts.github.scrachx.openfood.repositories.Taxonomy
-import openfoodfacts.github.scrachx.openfood.repositories.Taxonomy.*
+import openfoodfacts.github.scrachx.openfood.repositories.Taxonomy.Additives
+import openfoodfacts.github.scrachx.openfood.repositories.Taxonomy.Allergens
+import openfoodfacts.github.scrachx.openfood.repositories.Taxonomy.AnalysisTagConfigs
+import openfoodfacts.github.scrachx.openfood.repositories.Taxonomy.AnalysisTags
+import openfoodfacts.github.scrachx.openfood.repositories.Taxonomy.Brands
+import openfoodfacts.github.scrachx.openfood.repositories.Taxonomy.Categories
+import openfoodfacts.github.scrachx.openfood.repositories.Taxonomy.Countries
+import openfoodfacts.github.scrachx.openfood.repositories.Taxonomy.InvalidBarcodes
+import openfoodfacts.github.scrachx.openfood.repositories.Taxonomy.Labels
+import openfoodfacts.github.scrachx.openfood.repositories.Taxonomy.ProductStates
+import openfoodfacts.github.scrachx.openfood.repositories.Taxonomy.Stores
+import openfoodfacts.github.scrachx.openfood.repositories.Taxonomy.Tags
 import kotlin.time.Duration.Companion.seconds
 import kotlin.time.ExperimentalTime
 
@@ -45,8 +54,10 @@ class SplashController internal constructor(
     private val activity: SplashActivity,
 ) {
 
-    private fun <T : TaxonomyEntity> Taxonomy<T>.activateDownload(vararg flavors: String) {
-        if (flavors.isEmpty() || isFlavors(*flavors)) {
+    private fun <T : TaxonomyEntity> Taxonomy<T>.activateDownload(
+        vararg flavors: AppFlavor = AppFlavor.values(),
+    ) {
+        if (isFlavors(*flavors)) {
             settings.edit { putBoolean(downloadActivatePreferencesId, true) }
         }
     }
@@ -56,15 +67,15 @@ class SplashController internal constructor(
         Categories.activateDownload()
         Tags.activateDownload()
         InvalidBarcodes.activateDownload()
-        Additives.activateDownload(OFF, OBF)
-        Countries.activateDownload(OFF, OBF)
-        Labels.activateDownload(OFF, OBF)
-        Allergens.activateDownload(OFF, OBF, OPFF)
-        AnalysisTags.activateDownload(OFF, OBF, OPFF)
-        AnalysisTagConfigs.activateDownload(OFF, OBF, OPFF)
-        ProductStates.activateDownload(OFF, OBF, OPFF)
-        Stores.activateDownload(OFF, OBF, OPFF)
-        Brands.activateDownload(OFF, OBF)
+        Additives.activateDownload(AppFlavor.OFF, AppFlavor.OBF)
+        Countries.activateDownload(AppFlavor.OFF, AppFlavor.OBF)
+        Labels.activateDownload(AppFlavor.OFF, AppFlavor.OBF)
+        Allergens.activateDownload(AppFlavor.OFF, AppFlavor.OBF, AppFlavor.OPFF)
+        AnalysisTags.activateDownload(AppFlavor.OFF, AppFlavor.OBF, AppFlavor.OPFF)
+        AnalysisTagConfigs.activateDownload(AppFlavor.OFF, AppFlavor.OBF, AppFlavor.OPFF)
+        ProductStates.activateDownload(AppFlavor.OFF, AppFlavor.OBF, AppFlavor.OPFF)
+        Stores.activateDownload(AppFlavor.OFF, AppFlavor.OBF, AppFlavor.OPFF)
+        Brands.activateDownload(AppFlavor.OFF, AppFlavor.OBF)
 
         //first run ever off this application, whatever the version
         val firstRun = settings.getBoolean("firstRun", true)

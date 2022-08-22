@@ -39,11 +39,8 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import okhttp3.MediaType
 import okhttp3.RequestBody
-import openfoodfacts.github.scrachx.openfood.AppFlavors.OBF
-import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
-import openfoodfacts.github.scrachx.openfood.AppFlavors.OPF
-import openfoodfacts.github.scrachx.openfood.AppFlavors.OPFF
-import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
+import openfoodfacts.github.scrachx.openfood.AppFlavor
+import openfoodfacts.github.scrachx.openfood.AppFlavor.Companion.isFlavors
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
 import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
@@ -68,7 +65,12 @@ import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository.Companion.MIME_TEXT
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository.Companion.PNG_EXT
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository.Companion.addToHistory
-import openfoodfacts.github.scrachx.openfood.utils.*
+import openfoodfacts.github.scrachx.openfood.utils.InstallationService
+import openfoodfacts.github.scrachx.openfood.utils.clearCameraCache
+import openfoodfacts.github.scrachx.openfood.utils.getLoginPassword
+import openfoodfacts.github.scrachx.openfood.utils.getLoginUsername
+import openfoodfacts.github.scrachx.openfood.utils.getProductState
+import openfoodfacts.github.scrachx.openfood.utils.hideKeyboard
 import java.io.IOException
 import javax.inject.Inject
 
@@ -257,11 +259,11 @@ class ProductEditActivity : BaseActivity() {
 
         // If on off or opff, add Nutrition Facts fragment
         when {
-            isFlavors(OFF, OPFF) -> {
+            isFlavors(AppFlavor.OFF, AppFlavor.OPFF) -> {
                 nutritionFactsFragment.arguments = fragmentsBundle
                 adapterResult += nutritionFactsFragment to getString(R.string.nutrition_facts)
             }
-            isFlavors(OBF, OPF) -> {
+            isFlavors(AppFlavor.OBF, AppFlavor.OPF) -> {
                 binding.textNutritionFactsIndicator.setText(R.string.photos)
                 addProductPhotosFragment.arguments = fragmentsBundle
                 adapterResult += addProductPhotosFragment to getString(R.string.photos)
@@ -297,7 +299,7 @@ class ProductEditActivity : BaseActivity() {
         val updatedValues = editOverviewFragment.getUpdatedFieldsMap().toMutableMap()
         updatedValues += ingredientsFragment.getUpdatedFieldsMap()
 
-        if (isFlavors(OFF, OPFF))
+        if (isFlavors(AppFlavor.OFF, AppFlavor.OPFF))
             updatedValues += nutritionFactsFragment.getUpdatedFieldsMap()
 
         return updatedValues
@@ -356,7 +358,7 @@ class ProductEditActivity : BaseActivity() {
         if (editingMode) {
             // edit mode, therefore do not check whether front image is empty
             // or not, however do check the nutrition facts values.
-            if (isFlavors(OFF, OPFF) && nutritionFactsFragment.anyInvalid()) {
+            if (isFlavors(AppFlavor.OFF, AppFlavor.OPFF) && nutritionFactsFragment.anyInvalid()) {
                 // If there are any invalid field and there is nutrition data,
                 // scroll to the nutrition fragment
                 binding.viewpager.setCurrentItem(2, true)
@@ -367,7 +369,7 @@ class ProductEditActivity : BaseActivity() {
             if (editOverviewFragment.anyInvalid()) {
                 binding.viewpager.setCurrentItem(0, true)
                 return
-            } else if (isFlavors(OFF, OPFF) && nutritionFactsFragment.anyInvalid()) {
+            } else if (isFlavors(AppFlavor.OFF, AppFlavor.OPFF) && nutritionFactsFragment.anyInvalid()) {
                 binding.viewpager.setCurrentItem(2, true)
                 return
             }
