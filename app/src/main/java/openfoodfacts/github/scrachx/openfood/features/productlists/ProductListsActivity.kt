@@ -94,7 +94,7 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
 
         binding.fabAdd.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_plus_blue_24, 0, 0, 0)
 
-        adapter = ProductListsAdapter(this)
+        adapter = ProductListsAdapter()
 
         binding.productListsRecyclerView.layoutManager = LinearLayoutManager(this)
         binding.productListsRecyclerView.adapter = adapter
@@ -288,7 +288,7 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
                     if (daoList == null) {
                         //create new list
                         val productList = ProductLists(listName, 0)
-                        adapter.lists.add(productList)
+                        adapter.add(productList)
                         productListsDao.insert(productList)
                         daoList = productListsDao.queryBuilder()
                             .where(ProductListsDao.Properties.ListName.eq(listName)).unique()

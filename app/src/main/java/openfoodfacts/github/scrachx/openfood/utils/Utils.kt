@@ -58,7 +58,11 @@ import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.features.scan.ContinuousScanActivity
 import openfoodfacts.github.scrachx.openfood.jobs.ImagesUploaderWorker
-import java.io.*
+import java.io.File
+import java.io.FileInputStream
+import java.io.FileNotFoundException
+import java.io.FileOutputStream
+import java.io.IOException
 import java.text.DecimalFormat
 import java.text.DecimalFormatSymbols
 import java.util.*
@@ -275,12 +279,14 @@ fun getSearchLinkText(
 }
 
 
-internal fun RequestCreator.into(target: ImageView, onSuccess: () -> Unit) {
-    return into(target, object : Callback {
-        override fun onSuccess() = onSuccess()
-        override fun onError(e: Exception) = throw e
-    })
-}
+internal fun RequestCreator.into(
+    target: ImageView,
+    onSuccess: () -> Unit = {},
+    onError: (Exception) -> Unit = { throw it },
+) = into(target, object : Callback {
+    override fun onSuccess() = onSuccess()
+    override fun onError(e: Exception) = onError(e)
+})
 
 
 fun @receiver:ColorInt Int.darken(ratio: Float) = ColorUtils.blendARGB(this, Color.BLACK, ratio)

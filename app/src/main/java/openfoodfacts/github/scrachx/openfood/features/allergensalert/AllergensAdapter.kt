@@ -21,18 +21,16 @@ import androidx.recyclerview.widget.RecyclerView
 import openfoodfacts.github.scrachx.openfood.databinding.ItemAllergensBinding
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenName
 import openfoodfacts.github.scrachx.openfood.utils.AutoUpdatableAdapter
-import kotlin.properties.Delegates
 
 class AllergensAdapter(
     val onDeleteButtonClick: (allergen: AllergenName) -> Unit,
 ) : RecyclerView.Adapter<AllergensAdapter.ViewHolder>(), AutoUpdatableAdapter {
 
-    var allergens: List<AllergenName> by Delegates.observable(emptyList()) { _, oldList, newList ->
-        autoNotify(oldList, newList) { o, n -> o.allergenTag == n.allergenTag }
-    }
+    var allergens: List<AllergenName> by autoNotifying { o, n -> o.allergenTag == n.allergenTag }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val contactView = ItemAllergensBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val inflater = LayoutInflater.from(parent.context)
+        val contactView = ItemAllergensBinding.inflate(inflater, parent, false)
         return ViewHolder(contactView)
     }
 

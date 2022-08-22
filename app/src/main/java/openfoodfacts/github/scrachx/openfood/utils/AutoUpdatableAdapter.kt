@@ -2,6 +2,8 @@ package openfoodfacts.github.scrachx.openfood.utils
 
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import kotlin.properties.Delegates
+import kotlin.properties.ReadWriteProperty
 
 interface AutoUpdatableAdapter {
 
@@ -26,5 +28,14 @@ interface AutoUpdatableAdapter {
         })
 
         diff.dispatchUpdatesTo(this)
+    }
+
+    fun <T> RecyclerView.Adapter<*>.autoNotifying(
+        initialValue: List<T> = emptyList(),
+        compare: (T, T) -> Boolean,
+    ): ReadWriteProperty<RecyclerView.Adapter<*>, List<T>> {
+        return Delegates.observable(initialValue) { _, oldList, newList ->
+            autoNotify(oldList, newList, compare)
+        }
     }
 }
