@@ -18,7 +18,6 @@ package openfoodfacts.github.scrachx.openfood.features.splash
 import android.content.SharedPreferences
 import androidx.core.content.edit
 import androidx.lifecycle.lifecycleScope
-import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkInfo
 import androidx.work.WorkManager
 import kotlinx.coroutines.Dispatchers
@@ -42,6 +41,7 @@ import openfoodfacts.github.scrachx.openfood.repositories.Taxonomy.Labels
 import openfoodfacts.github.scrachx.openfood.repositories.Taxonomy.ProductStates
 import openfoodfacts.github.scrachx.openfood.repositories.Taxonomy.Stores
 import openfoodfacts.github.scrachx.openfood.repositories.Taxonomy.Tags
+import openfoodfacts.github.scrachx.openfood.utils.OneTimeWorkRequest
 import kotlin.time.Duration.Companion.seconds
 import kotlin.time.ExperimentalTime
 
@@ -83,17 +83,24 @@ class SplashController internal constructor(
 
         // The service will load server resources only if newer than already downloaded...
         withContext(Dispatchers.Main) {
-            val request = OneTimeWorkRequest.from(LoadTaxonomiesWorker::class.java)
-            WorkManager.getInstance(activity).let {
-                it.enqueue(request)
-                it.getWorkInfoByIdLiveData(request.id).observe(activity) { workInfo: WorkInfo? ->
-                    if (workInfo != null && workInfo.state == WorkInfo.State.RUNNING) {
-                        activity.lifecycleScope.launch { view.showLoading() }
-                    } else if (workInfo != null) {
-                        activity.lifecycleScope.launch { view.hideLoading(workInfo.state == WorkInfo.State.FAILED) }
+            val workRequest = OneTimeWorkRequest<LoadTaxonomiesWorker>()
+            val manager = WorkManager.getInstance(activity)
+
+            manager.enqueue(workRequest)
+            manager.getWorkInfoByIdLiveData(workRequest.id).observe(activity) { workInfo: WorkInfo? ->
+                if (workInfo == null) {
+                    return@observe
+                }
+                if (workInfo.state == WorkInfo.State.RUNNING) {
+                    activity.lifecycleScope.launch { view.showLoading() }
+                } else {
+                    activity.lifecycleScope.launch {
+                        val isError = workInfo.state == WorkInfo.State.FAILED
+                        view.hideLoading(isError)
                     }
                 }
             }
+
         }
 
         // The 6000 delay is to show one loop of the multilingual logo. I asked for it ~ Pierre
