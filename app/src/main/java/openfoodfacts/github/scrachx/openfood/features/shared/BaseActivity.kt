@@ -15,6 +15,7 @@
  */
 package openfoodfacts.github.scrachx.openfood.features.shared
 
+import android.Manifest
 import android.content.Context
 import android.content.Intent
 import android.content.pm.ActivityInfo
@@ -24,15 +25,20 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.CallSuper
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.app.ActivityCompat
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.EntryPoints
+import logcat.logcat
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.features.scan.ContinuousScanActivity
 import openfoodfacts.github.scrachx.openfood.hilt.AppEntryPoint
+import openfoodfacts.github.scrachx.openfood.utils.Intent
 import openfoodfacts.github.scrachx.openfood.utils.MY_PERMISSIONS_REQUEST_CAMERA
+import openfoodfacts.github.scrachx.openfood.utils.isHardwareCameraInstalled
 
 abstract class BaseActivity : AppCompatActivity() {
 
-    protected val requestCameraThenOpenScan = registerForActivityResult(
+    val requestCameraThenOpenScan = registerForActivityResult(
         ActivityResultContracts.RequestPermission()
     ) { if (it) startScanActivity() }
 
@@ -60,11 +66,35 @@ abstract class BaseActivity : AppCompatActivity() {
         }
     }
 
+    fun openScanActivity() {
+        if (!isHardwareCameraInstalled()) {
+            logcat { "Device does not have a camera installed" }
+        }
+
+        val perm = Manifest.permission.CAMERA
+        when {
+            checkSelfPermission(perm) == PackageManager.PERMISSION_GRANTED -> {
+                startScanActivity()
+            }
+            ActivityCompat.shouldShowRequestPermissionRationale(this, perm) -> {
+                MaterialAlertDialogBuilder(this)
+                    .setTitle(R.string.action_about)
+                    .setMessage(R.string.permission_camera)
+                    .setPositiveButton(android.R.string.ok) { _, _ ->
+                        requestCameraThenOpenScan.launch(Manifest.permission.CAMERA)
+                    }
+                    .show()
+            }
+            else -> {
+                requestCameraThenOpenScan.launch(Manifest.permission.CAMERA)
+            }
+        }
+    }
 
     protected open fun startScanActivity() {
-        Intent(this, ContinuousScanActivity::class.java)
-            .apply { addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP) }
-            .let { startActivity(it) }
+        startActivity(Intent<ContinuousScanActivity>(this) {
+            addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        })
     }
 }
 

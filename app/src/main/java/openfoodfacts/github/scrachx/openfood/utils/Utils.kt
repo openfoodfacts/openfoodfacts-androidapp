@@ -15,11 +15,9 @@
  */
 package openfoodfacts.github.scrachx.openfood.utils
 
-import android.Manifest
 import android.app.Activity
 import android.content.Context
 import android.content.DialogInterface
-import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.graphics.Bitmap
@@ -39,9 +37,6 @@ import android.widget.ImageView
 import androidx.annotation.ColorInt
 import androidx.annotation.DrawableRes
 import androidx.appcompat.content.res.AppCompatResources
-import androidx.core.app.ActivityCompat.requestPermissions
-import androidx.core.app.ActivityCompat.shouldShowRequestPermissionRationale
-import androidx.core.content.ContextCompat.checkSelfPermission
 import androidx.core.graphics.ColorUtils
 import androidx.core.net.toUri
 import androidx.core.text.buildSpannedString
@@ -56,7 +51,6 @@ import com.squareup.picasso.Callback
 import com.squareup.picasso.RequestCreator
 import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.R
-import openfoodfacts.github.scrachx.openfood.features.scan.ContinuousScanActivity
 import openfoodfacts.github.scrachx.openfood.jobs.ImagesUploaderWorker
 import java.io.File
 import java.io.FileInputStream
@@ -145,38 +139,6 @@ object Utils {
     fun getOutputPicUri(context: Context): Uri =
         File(makeOrGetPictureDirectory(context), "${System.currentTimeMillis()}.jpg").toUri()
 
-    /**
-     * Function to open ContinuousScanActivity to facilitate scanning
-     *
-     * @param activity
-     */
-    fun scan(activity: Activity) {
-        when {
-            checkSelfPermission(activity, Manifest.permission.CAMERA) == PERMISSION_GRANTED -> {
-                activity.startActivity(Intent(activity, ContinuousScanActivity::class.java))
-            }
-            shouldShowRequestPermissionRationale(activity, Manifest.permission.CAMERA) -> {
-                MaterialAlertDialogBuilder(activity)
-                    .setTitle(R.string.action_about)
-                    .setMessage(R.string.permission_camera)
-                    .setPositiveButton(android.R.string.ok) { d, _ ->
-                        requestPermissions(
-                            activity,
-                            arrayOf(Manifest.permission.CAMERA),
-                            MY_PERMISSIONS_REQUEST_CAMERA
-                        )
-                        d.dismiss()
-                    }
-                    .setNegativeButton(android.R.string.cancel) { d, _ -> d.dismiss() }
-                    .show()
-            }
-            else -> {
-                requestPermissions(activity, arrayOf(Manifest.permission.CAMERA), MY_PERMISSIONS_REQUEST_CAMERA)
-            }
-        }
-
-    }
-
     @JvmStatic
     fun firstNotEmpty(vararg args: String?) = args.firstOrNull { it != null && it.isNotEmpty() }
 }
@@ -232,7 +194,11 @@ private fun decodeFile(f: File): Bitmap? {
 }
 
 private const val REQUIRED_SIZE = 1200
+
+@Deprecated("Use activity results")
 const val MY_PERMISSIONS_REQUEST_CAMERA = 1
+
+@Deprecated("Use activity results")
 const val MY_PERMISSIONS_REQUEST_STORAGE = 2
 
 
