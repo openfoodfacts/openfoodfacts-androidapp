@@ -3,7 +3,13 @@ package openfoodfacts.github.scrachx.openfood.jobs
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.hilt.work.HiltWorker
-import androidx.work.*
+import androidx.work.Constraints
+import androidx.work.CoroutineWorker
+import androidx.work.ExistingWorkPolicy
+import androidx.work.NetworkType
+import androidx.work.OneTimeWorkRequest
+import androidx.work.WorkManager
+import androidx.work.WorkerParameters
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 import logcat.LogPriority
@@ -43,21 +49,21 @@ class ProductUploaderWorker @AssistedInject constructor(
         private const val WORK_TAG = "OFFLINE_WORKER_TAG"
         const val KEY_INCLUDE_IMAGES = "includeImages"
 
-        fun scheduleProductUpload(context: Context, pref: SharedPreferences) {
+        fun scheduleProductUpload(context: Context, preferences: SharedPreferences) {
 
             val uploadDataWorkRequest = buildUploadRequest(
+                false,
                 Constraints {
                     setRequiredNetworkType(NetworkType.CONNECTED)
                 },
-                false,
             )
 
-            val uploadIfMobile = pref.getBoolean(context.getString(R.string.pref_enable_mobile_data_key), true)
+            val uploadIfMobile = preferences.getBoolean(context.getString(R.string.pref_enable_mobile_data_key), true)
             val uploadPicturesWorkRequest = buildUploadRequest(
+                true,
                 Constraints {
                     setRequiredNetworkType(if (uploadIfMobile) NetworkType.CONNECTED else NetworkType.UNMETERED)
                 },
-                true,
             )
 
             WorkManager.getInstance(context)
@@ -66,7 +72,10 @@ class ProductUploaderWorker @AssistedInject constructor(
                 .enqueue()
         }
 
-        private fun buildUploadRequest(constPics: Constraints, includeImages: Boolean): OneTimeWorkRequest {
+        private fun buildUploadRequest(
+            includeImages: Boolean,
+            constPics: Constraints,
+        ): OneTimeWorkRequest {
             return OneTimeWorkRequest<ProductUploaderWorker> {
                 setInputData(buildData { putBoolean(KEY_INCLUDE_IMAGES, includeImages) })
                 setConstraints(constPics)

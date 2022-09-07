@@ -7,6 +7,7 @@ import androidx.work.WorkerParameters
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
+import openfoodfacts.github.scrachx.openfood.utils.toWorkResult
 import javax.inject.Inject
 
 /**
@@ -27,8 +28,5 @@ class ImagesUploaderWorker @AssistedInject constructor(
             .toWorkResult()
     }
 
-    private fun <T> kotlin.Result<T>.toWorkResult() = fold(
-        onSuccess = { Result.success() },
-        onFailure = { Result.failure() },
-    )
+
 }

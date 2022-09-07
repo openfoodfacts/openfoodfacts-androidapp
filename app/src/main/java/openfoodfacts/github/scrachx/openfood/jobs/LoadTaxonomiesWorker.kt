@@ -16,16 +16,19 @@
 package openfoodfacts.github.scrachx.openfood.jobs
 
 import android.content.Context
-import android.util.Log
 import androidx.core.content.edit
 import androidx.hilt.work.HiltWorker
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
+import logcat.LogPriority
+import logcat.asLog
+import logcat.logcat
 import openfoodfacts.github.scrachx.openfood.repositories.TaxonomiesRepository
 import openfoodfacts.github.scrachx.openfood.utils.Utils
 import openfoodfacts.github.scrachx.openfood.utils.getAppPreferences
+import openfoodfacts.github.scrachx.openfood.utils.toWorkResult
 
 /**
  * @param appContext The application [Context]
@@ -35,36 +38,35 @@ import openfoodfacts.github.scrachx.openfood.utils.getAppPreferences
 class LoadTaxonomiesWorker @AssistedInject constructor(
     @Assisted private val appContext: Context,
     @Assisted workerParams: WorkerParameters,
-    private val repo: TaxonomiesRepository
+    private val taxonomiesRepository: TaxonomiesRepository,
 ) : CoroutineWorker(appContext, workerParams) {
 
     override suspend fun doWork(): Result {
         val settings = appContext.getAppPreferences()
 
-        return try {
-            repo.reloadLabelsFromServer()
-            repo.reloadTagsFromServer()
-            repo.reloadInvalidBarcodesFromServer()
-            repo.reloadAllergensFromServer()
-            repo.reloadIngredientsFromServer()
-            repo.reloadAnalysisTagConfigs()
-            repo.reloadAnalysisTags()
-            repo.reloadCountriesFromServer()
-            repo.reloadAdditivesFromServer()
-            repo.reloadCategoriesFromServer()
-            repo.reloadStatesFromServer()
-            repo.reloadStoresFromServer()
-            repo.reloadBrandsFromServer()
-
-            settings.edit { putBoolean(Utils.FORCE_REFRESH_TAXONOMIES, false) }
-            Result.success()
-        } catch (err: Throwable) {
-            Log.e(LOG_TAG, "Cannot download taxonomies from server.", err)
-            Result.failure()
-        }
+        return runCatching { reloadAll() }
+            .onSuccess {
+                settings.edit { putBoolean(Utils.FORCE_REFRESH_TAXONOMIES, false) }
+            }
+            .onFailure {
+                logcat(LogPriority.ERROR) { "Cannot download taxonomies from server: ${it.asLog()}" }
+            }
+            .toWorkResult()
     }
 
-    companion object {
-        private val LOG_TAG = LoadTaxonomiesWorker::class.simpleName
+    private suspend fun reloadAll() {
+        taxonomiesRepository.reloadLabelsFromServer()
+        taxonomiesRepository.reloadTagsFromServer()
+        taxonomiesRepository.reloadInvalidBarcodesFromServer()
+        taxonomiesRepository.reloadAllergensFromServer()
+        taxonomiesRepository.reloadIngredientsFromServer()
+        taxonomiesRepository.reloadAnalysisTagConfigs()
+        taxonomiesRepository.reloadAnalysisTags()
+        taxonomiesRepository.reloadCountriesFromServer()
+        taxonomiesRepository.reloadAdditivesFromServer()
+        taxonomiesRepository.reloadCategoriesFromServer()
+        taxonomiesRepository.reloadStatesFromServer()
+        taxonomiesRepository.reloadStoresFromServer()
+        taxonomiesRepository.reloadBrandsFromServer()
     }
 }
