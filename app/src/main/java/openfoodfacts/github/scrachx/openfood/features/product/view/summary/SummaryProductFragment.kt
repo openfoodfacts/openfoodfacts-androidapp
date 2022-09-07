@@ -23,7 +23,6 @@ import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.text.method.LinkMovementMethod
-import android.text.style.ClickableSpan
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -103,6 +102,7 @@ import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.repositories.RobotoffRepository
 import openfoodfacts.github.scrachx.openfood.repositories.TaxonomiesRepository
 import openfoodfacts.github.scrachx.openfood.repositories.WikidataRepository
+import openfoodfacts.github.scrachx.openfood.utils.ClickableSpan
 import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
 import openfoodfacts.github.scrachx.openfood.utils.PhotoReceiverHandler
 import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState
@@ -810,20 +810,19 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         mTagDao.queryBuilder().where(TagDao.Properties.Id.eq(embTag)).unique()?.name ?: embTag
 
     private fun getLabelTag(label: LabelName): CharSequence {
-        val clickableSpan = object : ClickableSpan() {
-            override fun onClick(view: View) {
-                if (label.isWikiDataIdPresent) {
-                    lifecycleScope.launch {
-                        val result = wikidataClient.getEntityData(label.wikiDataId)
-                        val activity = activity
-                        if (activity?.isFinishing == false) {
-                            showBottomSheet(result, label, activity.supportFragmentManager)
-                        }
+        val clickableSpan = ClickableSpan {
+            if (label.isWikiDataIdPresent) {
+                lifecycleScope.launch {
+                    val result = wikidataClient.getEntityData(label.wikiDataId)
+                    val activity = activity
+                    if (activity?.isFinishing == false) {
+                        showBottomSheet(result, label, activity.supportFragmentManager)
                     }
-                } else {
-                    ProductSearchActivity.start(requireContext(), SearchType.LABEL, label.labelTag, label.name)
                 }
+            } else {
+                ProductSearchActivity.start(requireContext(), SearchType.LABEL, label.labelTag, label.name)
             }
+
         }
         return buildSpannedString {
             inSpans(clickableSpan) { append(label.name) }

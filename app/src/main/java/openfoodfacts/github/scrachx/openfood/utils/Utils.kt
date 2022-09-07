@@ -31,7 +31,6 @@ import android.net.NetworkCapabilities
 import android.net.Uri
 import android.os.Build
 import android.os.Environment
-import android.text.style.ClickableSpan
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
@@ -270,11 +269,9 @@ fun getSearchLinkText(
     type: SearchType,
     activityToStart: Activity,
 ): CharSequence {
-    val clickable = object : ClickableSpan() {
-        override fun onClick(view: View) = startSearch(activityToStart, type, text)
-    }
+    val span = ClickableSpan { startSearch(activityToStart, type, text) }
     return buildSpannedString {
-        inSpans(clickable) { append(text) }
+        inSpans(span) { append(text) }
     }
 }
 

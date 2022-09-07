@@ -66,6 +66,7 @@ import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenNa
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.repositories.TaxonomiesRepository
 import openfoodfacts.github.scrachx.openfood.repositories.WikidataRepository
+import openfoodfacts.github.scrachx.openfood.utils.ClickableSpan
 import openfoodfacts.github.scrachx.openfood.utils.LOCALE_FILE_SCHEME
 import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
 import openfoodfacts.github.scrachx.openfood.utils.PhotoReceiverHandler
@@ -369,21 +370,19 @@ class IngredientsProductFragment : BaseFragment() {
 
 
     private fun getAllergensTag(allergen: AllergenName): CharSequence {
-        val clickableSpan: ClickableSpan = object : ClickableSpan() {
-            override fun onClick(view: View) {
-                if (allergen.isWikiDataIdPresent) {
-                    lifecycleScope.launch {
-                        val result = wikidataClient.getEntityData(
-                            allergen.wikiDataId
-                        )
-                        val activity = activity
-                        if (activity?.isFinishing == false) {
-                            showBottomSheet(result, allergen, activity.supportFragmentManager)
-                        }
+        val clickableSpan = ClickableSpan {
+            if (allergen.isWikiDataIdPresent) {
+                lifecycleScope.launch {
+                    val result = wikidataClient.getEntityData(
+                        allergen.wikiDataId
+                    )
+                    val activity = activity
+                    if (activity?.isFinishing == false) {
+                        showBottomSheet(result, allergen, activity.supportFragmentManager)
                     }
-                } else {
-                    startSearch(requireContext(), SearchType.ALLERGEN, allergen.allergenTag, allergen.name)
                 }
+            } else {
+                startSearch(requireContext(), SearchType.ALLERGEN, allergen.allergenTag, allergen.name)
             }
         }
         return buildSpannedString {
