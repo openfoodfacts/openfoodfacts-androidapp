@@ -1,15 +1,11 @@
 package openfoodfacts.github.scrachx.openfood.features.compare
 
-import android.Manifest
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.os.Bundle
 import androidx.activity.result.launch
 import androidx.activity.viewModels
-import androidx.core.app.ActivityCompat.shouldShowRequestPermissionRationale
-import androidx.core.content.ContextCompat.checkSelfPermission
 import androidx.core.view.isVisible
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
@@ -34,7 +30,6 @@ import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.Intent
 import openfoodfacts.github.scrachx.openfood.utils.PhotoReceiverHandler
-import openfoodfacts.github.scrachx.openfood.utils.isHardwareCameraInstalled
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -160,28 +155,6 @@ class ProductCompareActivity : BaseActivity() {
         binding.productComparisonRv.layoutManager = LinearLayoutManager(this@ProductCompareActivity, HORIZONTAL, false)
         binding.productComparisonRv.adapter = productComparisonAdapter
 
-    }
-
-    private fun openScanActivity() {
-        if (!isHardwareCameraInstalled()) return
-
-        when {
-            checkSelfPermission(this, Manifest.permission.CAMERA) == PERMISSION_GRANTED -> {
-                startScanActivity()
-            }
-            shouldShowRequestPermissionRationale(this@ProductCompareActivity, Manifest.permission.CAMERA) -> {
-                MaterialAlertDialogBuilder(this@ProductCompareActivity)
-                    .setTitle(R.string.action_about)
-                    .setMessage(R.string.permission_camera)
-                    .setPositiveButton(android.R.string.ok) { _, _ ->
-                        requestCameraThenOpenScan.launch(Manifest.permission.CAMERA)
-                    }
-                    .show()
-            }
-            else -> {
-                requestCameraThenOpenScan.launch(Manifest.permission.CAMERA)
-            }
-        }
     }
 
     private fun showProductAlreadyAddedDialog() {
