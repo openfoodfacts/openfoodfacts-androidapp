@@ -1,10 +1,8 @@
 package openfoodfacts.github.scrachx.openfood.features.additives
 
 import android.text.method.LinkMovementMethod
-import android.text.style.ClickableSpan
 import android.text.style.DynamicDrawableSpan
 import android.text.style.ImageSpan
-import android.view.View
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.text.bold
@@ -20,6 +18,7 @@ import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivi
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
 import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveName
 import openfoodfacts.github.scrachx.openfood.repositories.WikidataRepository
+import openfoodfacts.github.scrachx.openfood.utils.ClickableSpan
 import openfoodfacts.github.scrachx.openfood.utils.SearchType
 import openfoodfacts.github.scrachx.openfood.utils.showBottomSheet
 
@@ -39,7 +38,7 @@ object AdditiveFragmentHelper {
         additives: List<AdditiveName>,
         additivesView: TextView,
         apiClientForWikiData: WikidataRepository,
-        fragment: BaseFragment
+        fragment: BaseFragment,
     ) = additivesView.run {
         movementMethod = LinkMovementMethod.getInstance()
         isClickable = true
@@ -63,19 +62,17 @@ object AdditiveFragmentHelper {
     private fun getAdditiveTag(
         additive: AdditiveName,
         wikidataClient: WikidataRepository,
-        fragment: BaseFragment
+        fragment: BaseFragment,
     ): CharSequence {
         val activity = fragment.requireActivity()
-        val clickableSpan = object : ClickableSpan() {
-            override fun onClick(view: View) {
-                if (additive.isWikiDataIdPresent) {
-                    fragment.lifecycleScope.launch {
-                        val result = wikidataClient.getEntityData(additive.wikiDataId)
-                        getOnWikiResponse(activity, additive)(result)
-                    }
-                } else {
-                    onWikiNoResponse(additive, activity)
+        val clickableSpan = ClickableSpan {
+            if (additive.isWikiDataIdPresent) {
+                fragment.lifecycleScope.launch {
+                    val result = wikidataClient.getEntityData(additive.wikiDataId)
+                    getOnWikiResponse(activity, additive)(result)
                 }
+            } else {
+                onWikiNoResponse(additive, activity)
             }
         }
 

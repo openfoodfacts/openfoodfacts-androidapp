@@ -23,7 +23,6 @@ import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import android.text.method.LinkMovementMethod
-import android.text.style.ClickableSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
@@ -91,6 +90,7 @@ import openfoodfacts.github.scrachx.openfood.models.buildLevelItem
 import openfoodfacts.github.scrachx.openfood.models.entities.SendProduct
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.StateTags
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
+import openfoodfacts.github.scrachx.openfood.utils.ClickableSpan
 import openfoodfacts.github.scrachx.openfood.utils.LOCALE_FILE_SCHEME
 import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
 import openfoodfacts.github.scrachx.openfood.utils.MY_PERMISSIONS_REQUEST_CAMERA
@@ -227,20 +227,18 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
         binding.textNutriScoreInfo.isClickable = true
         binding.textNutriScoreInfo.movementMethod = LinkMovementMethod.getInstance()
 
-        val clickableSpan = object : ClickableSpan() {
-            override fun onClick(view: View) {
-                val customTabsIntent = CustomTabsIntent.Builder().build()
-                customTabsIntent.intent.putExtra(
-                    "android.intent.extra.REFERRER",
-                    "android-app://${requireActivity().packageName}".toUri()
-                )
-                CustomTabActivityHelper.openCustomTab(
-                    requireActivity(),
-                    customTabsIntent,
-                    getString(R.string.url_nutrient_values).toUri(),
-                    WebViewFallback()
-                )
-            }
+        val clickableSpan = ClickableSpan {
+            val customTabsIntent = CustomTabsIntent.Builder().build()
+            customTabsIntent.intent.putExtra(
+                "android.intent.extra.REFERRER",
+                "android-app://${requireActivity().packageName}".toUri()
+            )
+            CustomTabActivityHelper.openCustomTab(
+                requireActivity(),
+                customTabsIntent,
+                getString(R.string.url_nutrient_values).toUri(),
+                WebViewFallback()
+            )
         }
 
         binding.textNutriScoreInfo.text = buildSpannedString {
