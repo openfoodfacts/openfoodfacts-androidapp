@@ -6,16 +6,16 @@ import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
 import com.google.common.truth.Truth.assertThat
 import io.mockk.coEvery
+import io.mockk.impl.annotations.MockK
 import io.mockk.junit5.MockKExtension
-import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.runTest
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductState
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
+import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.CoroutinesSetMainExtension
 import openfoodfacts.github.scrachx.openfood.utils.InstantTaskExecutorExtension
 import org.intellij.lang.annotations.Language
@@ -30,9 +30,14 @@ import org.junit.jupiter.api.extension.ExtendWith
     CoroutinesSetMainExtension::class,
     InstantTaskExecutorExtension::class,
 )
+@OptIn(ExperimentalCoroutinesApi::class)
 internal class ProductPhotosViewModelTest {
 
-    private val mockProductsApi = mockk<ProductsAPI>()
+    @MockK
+    private lateinit var mockProductsApi: ProductsAPI
+
+    @MockK
+    private lateinit var mockProductRepository: ProductRepository
 
     private val stubProduct = Product().also {
         it.code = "code"
@@ -44,20 +49,24 @@ internal class ProductPhotosViewModelTest {
 
     private val savedStateHandle = SavedStateHandle(mapOf(ProductEditActivity.KEY_STATE to stubProductState))
 
-    private val testSubject = ProductPhotosViewModel(
-        productsAPI = mockProductsApi,
-        savedStateHandle = savedStateHandle
-    )
+    private lateinit var testSubject: ProductPhotosViewModel
+
+    @BeforeEach
+    fun beforeEach() {
+        testSubject = ProductPhotosViewModel(
+            productsAPI = mockProductsApi,
+            productRepository = mockProductRepository,
+            savedStateHandle = savedStateHandle,
+        )
+    }
 
     @Nested
     @DisplayName("Given product api returns product images")
     inner class GivenProductApi {
         @BeforeEach
         fun beforeEach() {
-            runBlocking {
-                val objectNode = jacksonObjectMapper().readValue<ObjectNode>(PRODUCTS_API_PAYLOAD)
-                coEvery { mockProductsApi.getProductImages(any()) } returns objectNode
-            }
+            val objectNode = jacksonObjectMapper().readValue<ObjectNode>(PRODUCTS_API_PAYLOAD)
+            coEvery { mockProductsApi.getProductImages(any()) } returns objectNode
         }
 
         @Nested
@@ -65,12 +74,9 @@ internal class ProductPhotosViewModelTest {
         inner class ImageNamesCalled {
             private lateinit var result: List<String>
 
-            @OptIn(ExperimentalCoroutinesApi::class)
             @BeforeEach
-            fun beforeEach() {
-                runTest {
-                    result = testSubject.imageNames.first()
-                }
+            fun beforeEach() = runTest {
+                result = testSubject.imageNames.first()
             }
 
             @Test
@@ -81,8 +87,8 @@ internal class ProductPhotosViewModelTest {
             @Test
             fun `it should return image names sorted by uploaded time`() {
                 val expected =
-                    listOf(24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 9, 8, 11, 10, 7, 6, 5, 4, 3, 2, 1).map(
-                        Int::toString)
+                    listOf(24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 9, 8, 11, 10, 7, 6, 5, 4, 3, 2, 1)
+                        .map(Int::toString)
 
                 assertThat(result).isEqualTo(expected)
             }
