@@ -90,7 +90,6 @@ import openfoodfacts.github.scrachx.openfood.repositories.ScannerPreferencesRepo
 import openfoodfacts.github.scrachx.openfood.repositories.TaxonomiesRepository
 import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
 import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState
-import openfoodfacts.github.scrachx.openfood.utils.Utils
 import openfoodfacts.github.scrachx.openfood.utils.getEcoscoreResource
 import openfoodfacts.github.scrachx.openfood.utils.getNovaGroupResource
 import openfoodfacts.github.scrachx.openfood.utils.getNutriScoreResource
@@ -210,7 +209,7 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
             binding.quickViewProgressText.text = getString(R.string.loading_product, barcode)
 
             val productState = try {
-                client.getProductStateFull(barcode, userAgent = Utils.HEADER_USER_AGENT_SCAN)
+                client.getProductStateFull(barcode)
             } catch (err: Exception) {
                 if (!isActive) return@launch
                 // A network error happened

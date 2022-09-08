@@ -28,6 +28,12 @@ import org.jetbrains.annotations.Contract
  * creating a field here so that it can be updated on API change.
  */
 object ApiFields {
+
+    object UserAgents {
+        const val SEARCH = "Search"
+        const val SCAN = "Scan"
+    }
+
     object StateTags {
         const val CATEGORIES_TO_BE_COMPLETED = "en:categories-to-be-completed"
         const val NUTRITION_FACTS_TO_BE_COMPLETED = "en:nutrition-facts-to-be-completed"

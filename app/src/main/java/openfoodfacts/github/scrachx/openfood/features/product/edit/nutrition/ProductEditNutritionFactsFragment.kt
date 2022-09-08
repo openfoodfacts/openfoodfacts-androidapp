@@ -219,6 +219,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         binding.energyKcal.requestFocus()
         allEditViews = (view as ViewGroup)
             .getViewsByType<CustomValidatingEditTextView>()
+            .filterNotNull()
             .toHashSet()
 
         allEditViews.forEach {
@@ -283,25 +284,28 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         binding.energyKcal.setText(nutriments.getEnergyKcalValue(isDataPerServing)?.let(::getRoundNumber))
 
         // Fill default nutriments fields
-        for (editView in (view as ViewGroup).getViewsByType(CustomValidatingEditTextView::class.java)) {
-            var nutrimentShortName = editView.entryName
+        (view as ViewGroup).getViewsByType<CustomValidatingEditTextView>()
+            .filterNotNull()
+            .forEach { editView ->
+                var nutrimentShortName = editView.entryName
 
-            // Workaround for saturated-fat
-            if (nutrimentShortName == "saturated_fat") nutrimentShortName = "saturated-fat"
+                // Workaround for saturated-fat
+                if (nutrimentShortName == "saturated_fat") nutrimentShortName = "saturated-fat"
 
-            // Skip serving size and energy view, we already filled them
-            if (editView === binding.servingSize || editView === binding.energyKcal || editView === binding.energyKj) continue
+                // Skip serving size and energy view, we already filled them
+                if (editView === binding.servingSize || editView === binding.energyKcal || editView === binding.energyKj) return@forEach
 
-            // Get the value
-            val nutriment = Nutriment.findbyKey(nutrimentShortName) ?: error("Cannot find nutrient $nutrimentShortName")
-            val value =
-                (if (isDataPer100g) nutriments[nutriment]?.per100gInUnit else nutriments[nutriment]?.perServingInUnit)
-                    ?: continue
+                // Get the value
+                val nutriment =
+                    Nutriment.findbyKey(nutrimentShortName) ?: error("Cannot find nutrient $nutrimentShortName")
+                val value =
+                    (if (isDataPer100g) nutriments[nutriment]?.per100gInUnit else nutriments[nutriment]?.perServingInUnit)
+                        ?: return@forEach
 
-            editView.setText(getRoundNumber(value))
-            editView.unitSpinner?.setSelection(getUnitIndexUnitFromShortName(nutriments, nutriment) ?: 0)
-            editView.modSpinner?.setSelection(getModifierIndexFromShortName(nutriments, nutriment))
-        }
+                editView.setText(getRoundNumber(value))
+                editView.unitSpinner?.setSelection(getUnitIndexUnitFromShortName(nutriments, nutriment) ?: 0)
+                editView.modSpinner?.setSelection(getModifierIndexFromShortName(nutriments, nutriment))
+            }
 
         // Set the values of all the other nutrients if defined and create new row in the tableLayout.
         for ((i, nutrient) in PARAMS_OTHER_NUTRIENTS.withIndex()) {
@@ -396,20 +400,22 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         // Splits the serving size into value and unit. Example: "15g" into "15" and "g"
         productDetails[ApiFields.Keys.SERVING_SIZE]?.let(::updateServingSize)
 
-        for (view in (binding.root as ViewGroup).getViewsByType(CustomValidatingEditTextView::class.java)) {
-            val nutrientShortName = view.entryName
-            if (nutrientShortName == binding.servingSize.entryName) continue
+        (binding.root as ViewGroup).getViewsByType<CustomValidatingEditTextView>()
+            .filterNotNull()
+            .forEach { view ->
+                val nutrientShortName = view.entryName
+                if (nutrientShortName == binding.servingSize.entryName) return@forEach
 
-            val nutrientCompleteName = getCompleteEntryName(view)
+                val nutrientCompleteName = getCompleteEntryName(view)
 
-            productDetails[nutrientCompleteName]?.let { value ->
-                view.setText(value)
+                productDetails[nutrientCompleteName]?.let { value ->
+                    view.setText(value)
 
-                val unit = productDetails[nutrientCompleteName + ApiFields.Suffix.UNIT] ?: return@let
-                view.unitSpinner?.setSelection(getUnitIndex(Nutriment.findbyKey(nutrientShortName)!!,
-                    MeasurementUnit.findBySymbol(unit)!!))
+                    val unit = productDetails[nutrientCompleteName + ApiFields.Suffix.UNIT] ?: return@let
+                    view.unitSpinner?.setSelection(getUnitIndex(Nutriment.findbyKey(nutrientShortName)!!,
+                        MeasurementUnit.findBySymbol(unit)!!))
+                }
             }
-        }
         // Set the values of all the other nutrients if defined and create new row in the tableLayout.
         for ((i, completeNutrientName) in PARAMS_OTHER_NUTRIENTS.withIndex()) {
             if (productDetails[completeNutrientName] == null) continue

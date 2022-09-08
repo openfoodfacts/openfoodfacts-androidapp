@@ -22,10 +22,12 @@ import org.junit.runner.RunWith
 class TakeScreenshotShowProductsTest : AbstractScreenshotTest() {
 
     @Rule
-    var activityHistoryRule = ScreenshotActivityTestRule(ScanHistoryActivity::class.java, context = context, localeManager = localeManager)
+    var activityHistoryRule =
+        ScreenshotActivityTestRule(ScanHistoryActivity::class.java, context = context, localeManager = localeManager)
 
     @Rule
-    var activityShowProductRule = ScreenshotActivityTestRule(ProductViewActivity::class.java, context = context, localeManager = localeManager)
+    var activityShowProductRule =
+        ScreenshotActivityTestRule(ProductViewActivity::class.java, context = context, localeManager = localeManager)
 
     @Test
     fun testTakeScreenshot() {
@@ -35,7 +37,7 @@ class TakeScreenshotShowProductsTest : AbstractScreenshotTest() {
 
     private val createProductIntent: (ScreenshotParameter) -> List<Intent?> = { parameter ->
         parameter.productCodes.map { productCode ->
-            Intent(context, ProductViewActivity::class.java).apply {
+            Intent<ProductViewActivity>(context) {
                 putExtra(KEY_STATE, ProductState().apply {
                     product = Product().apply { code = productCode }
                 })

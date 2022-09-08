@@ -40,6 +40,7 @@ import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.selectNavigationItem
 import openfoodfacts.github.scrachx.openfood.models.entities.ProductLists
+import openfoodfacts.github.scrachx.openfood.utils.Intent
 import openfoodfacts.github.scrachx.openfood.utils.SortType.BARCODE
 import openfoodfacts.github.scrachx.openfood.utils.SortType.BRAND
 import openfoodfacts.github.scrachx.openfood.utils.SortType.GRADE
@@ -301,7 +302,7 @@ class ProductListActivity : BaseActivity() {
     companion object {
 
         fun start(context: Context, listID: Long, listName: String) {
-            context.startActivity(Intent(context, ProductListActivity::class.java).apply {
+            context.startActivity(Intent<ProductListActivity>(context).apply {
                 putExtra(KEY_LIST_ID, listID)
                 putExtra(KEY_LIST_NAME, listName)
             })

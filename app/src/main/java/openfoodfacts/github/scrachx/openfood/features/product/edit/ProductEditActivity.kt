@@ -66,6 +66,7 @@ import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository.Comp
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository.Companion.PNG_EXT
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository.Companion.addToHistory
 import openfoodfacts.github.scrachx.openfood.utils.InstallationService
+import openfoodfacts.github.scrachx.openfood.utils.Intent
 import openfoodfacts.github.scrachx.openfood.utils.clearCameraCache
 import openfoodfacts.github.scrachx.openfood.utils.getLoginPassword
 import openfoodfacts.github.scrachx.openfood.utils.getLoginUsername
@@ -622,7 +623,7 @@ class ProductEditActivity : BaseActivity() {
 
     class PerformOCRContract : ActivityResultContract<Product?, Boolean>() {
         override fun createIntent(context: Context, product: Product?) =
-            Intent(context, ProductEditActivity::class.java).apply {
+            Intent<ProductEditActivity>(context) {
                 putExtra(KEY_EDIT_PRODUCT, product)
                 putExtra(KEY_PERFORM_OCR, true)
             }
@@ -631,9 +632,9 @@ class ProductEditActivity : BaseActivity() {
     }
 
     class SendUpdatedImgContract : ActivityResultContract<Product, Boolean>() {
-        override fun createIntent(context: Context, product: Product) =
-            Intent(context, ProductEditActivity::class.java).apply {
-                putExtra(KEY_EDIT_PRODUCT, product)
+        override fun createIntent(context: Context, input: Product) =
+            Intent<ProductEditActivity>(context) {
+                putExtra(KEY_EDIT_PRODUCT, input)
                 putExtra(KEY_SEND_UPDATED, true)
             }
 
@@ -642,7 +643,7 @@ class ProductEditActivity : BaseActivity() {
 
     open class EditProductContract : ActivityResultContract<Product, Boolean>() {
         override fun createIntent(context: Context, input: Product) =
-            Intent(context, ProductEditActivity::class.java).apply {
+            Intent<ProductEditActivity>(context) {
                 putExtra(KEY_EDIT_PRODUCT, input)
             }
 
@@ -681,7 +682,7 @@ class ProductEditActivity : BaseActivity() {
             showCategoryPrompt: Boolean = false,
             showNutritionPrompt: Boolean = false,
         ) {
-            Intent(context, ProductEditActivity::class.java).apply {
+            Intent<ProductEditActivity>(context).apply {
                 putExtra(KEY_EDIT_PRODUCT, product)
 
                 if (sendUpdated) putExtra(KEY_SEND_UPDATED, true)
@@ -701,7 +702,7 @@ class ProductEditActivity : BaseActivity() {
             showCategoryPrompt: Boolean = false,
             showNutritionPrompt: Boolean = false,
         ) {
-            Intent(context, ProductEditActivity::class.java).apply {
+            Intent<ProductEditActivity>(context).apply {
                 putExtra(KEY_EDIT_OFFLINE_PRODUCT, offlineProduct)
 
                 if (sendUpdated) putExtra(KEY_SEND_UPDATED, true)

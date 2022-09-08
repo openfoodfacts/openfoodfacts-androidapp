@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
@@ -27,10 +26,14 @@ import logcat.logcat
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.ImagesItemBinding
 import openfoodfacts.github.scrachx.openfood.features.login.LoginActivity
-import openfoodfacts.github.scrachx.openfood.images.*
+import openfoodfacts.github.scrachx.openfood.images.IMAGE_STRING_ID
+import openfoodfacts.github.scrachx.openfood.images.IMG_ID
+import openfoodfacts.github.scrachx.openfood.images.PRODUCT_BARCODE
+import openfoodfacts.github.scrachx.openfood.images.getImageStringKey
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
+import openfoodfacts.github.scrachx.openfood.utils.Intent
 import openfoodfacts.github.scrachx.openfood.utils.isUserSet
 import org.json.JSONException
 
@@ -68,7 +71,7 @@ class ProductPhotosAdapter(
                     MaterialAlertDialogBuilder(context).apply {
                         setMessage(R.string.sign_in_to_edit)
                         setPositiveButton(R.string.txtSignIn) { d, _ ->
-                            context.startActivity(Intent(context, LoginActivity::class.java))
+                            context.startActivity(Intent<LoginActivity>(context))
                             d.dismiss()
                         }
                     }.show()

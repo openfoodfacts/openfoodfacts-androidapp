@@ -44,6 +44,7 @@ import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityLoginBinding
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
+import openfoodfacts.github.scrachx.openfood.utils.Intent
 import openfoodfacts.github.scrachx.openfood.utils.getLoginPreferences
 import openfoodfacts.github.scrachx.openfood.utils.hideKeyboard
 import javax.inject.Inject
@@ -217,9 +218,12 @@ class LoginActivity : BaseActivity() {
     }
 
     companion object {
-        class LoginContract : ActivityResultContract<Unit?, Boolean>() {
-            override fun createIntent(context: Context, input: Unit?) = Intent(context, LoginActivity::class.java)
-            override fun parseResult(resultCode: Int, intent: Intent?) = resultCode == RESULT_OK
+        class LoginContract : ActivityResultContract<Unit, Boolean>() {
+            override fun createIntent(context: Context, input: Unit) =
+                Intent<LoginActivity>(context)
+
+            override fun parseResult(resultCode: Int, intent: Intent?) =
+                resultCode == RESULT_OK
         }
 
         internal fun isHtmlNotValid(html: String?) = (html == null

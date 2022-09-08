@@ -58,6 +58,7 @@ import openfoodfacts.github.scrachx.openfood.models.entities.ListedProduct
 import openfoodfacts.github.scrachx.openfood.models.entities.ListedProductDao
 import openfoodfacts.github.scrachx.openfood.models.entities.ProductLists
 import openfoodfacts.github.scrachx.openfood.models.entities.ProductListsDao
+import openfoodfacts.github.scrachx.openfood.utils.Intent
 import openfoodfacts.github.scrachx.openfood.utils.SwipeController
 import openfoodfacts.github.scrachx.openfood.utils.buildDelete
 import openfoodfacts.github.scrachx.openfood.utils.isEmpty
@@ -324,12 +325,12 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
 
         @JvmStatic
         fun start(context: Context, productToAdd: Product) = context.startActivity(
-            Intent(context, ProductListsActivity::class.java).apply {
+            Intent<ProductListsActivity>(context) {
                 putExtra(KEY_PRODUCT, productToAdd)
             })
 
         @JvmStatic
-        fun start(context: Context) = context.startActivity(Intent(context, ProductListsActivity::class.java))
+        fun start(context: Context) = context.startActivity(Intent<ProductListsActivity>(context))
 
         fun ProductListsDao.defaultIfEmpty(context: Context): ProductListsDao = also {
             if (it.isEmpty()) {

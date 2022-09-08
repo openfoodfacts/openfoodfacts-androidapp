@@ -4,7 +4,6 @@ import android.Manifest
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -48,8 +47,28 @@ import openfoodfacts.github.scrachx.openfood.models.SearchInfo
 import openfoodfacts.github.scrachx.openfood.models.SearchProduct
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.repositories.TaxonomiesRepository
-import openfoodfacts.github.scrachx.openfood.utils.*
-import openfoodfacts.github.scrachx.openfood.utils.SearchType.*
+import openfoodfacts.github.scrachx.openfood.utils.Intent
+import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
+import openfoodfacts.github.scrachx.openfood.utils.SearchType
+import openfoodfacts.github.scrachx.openfood.utils.SearchType.ADDITIVE
+import openfoodfacts.github.scrachx.openfood.utils.SearchType.ALLERGEN
+import openfoodfacts.github.scrachx.openfood.utils.SearchType.BRAND
+import openfoodfacts.github.scrachx.openfood.utils.SearchType.CATEGORY
+import openfoodfacts.github.scrachx.openfood.utils.SearchType.CONTRIBUTOR
+import openfoodfacts.github.scrachx.openfood.utils.SearchType.COUNTRY
+import openfoodfacts.github.scrachx.openfood.utils.SearchType.EMB
+import openfoodfacts.github.scrachx.openfood.utils.SearchType.INCOMPLETE_PRODUCT
+import openfoodfacts.github.scrachx.openfood.utils.SearchType.LABEL
+import openfoodfacts.github.scrachx.openfood.utils.SearchType.MANUFACTURING_PLACE
+import openfoodfacts.github.scrachx.openfood.utils.SearchType.ORIGIN
+import openfoodfacts.github.scrachx.openfood.utils.SearchType.PACKAGING
+import openfoodfacts.github.scrachx.openfood.utils.SearchType.SEARCH
+import openfoodfacts.github.scrachx.openfood.utils.SearchType.STATE
+import openfoodfacts.github.scrachx.openfood.utils.SearchType.STORE
+import openfoodfacts.github.scrachx.openfood.utils.SearchType.TRACE
+import openfoodfacts.github.scrachx.openfood.utils.isBatteryLevelLow
+import openfoodfacts.github.scrachx.openfood.utils.isDisableImageLoad
+import openfoodfacts.github.scrachx.openfood.utils.isGranted
 import java.text.NumberFormat
 import java.util.*
 import javax.inject.Inject
@@ -289,7 +308,7 @@ class ProductSearchActivity : BaseActivity() {
      */
     private fun addProduct() {
         when {
-            checkSelfPermission(this, Manifest.permission.CAMERA) == PERMISSION_GRANTED -> startScanActivity()
+            checkSelfPermission(this, Manifest.permission.CAMERA).isGranted() -> startScanActivity()
             shouldShowRequestPermissionRationale(this, Manifest.permission.CAMERA) -> {
                 MaterialAlertDialogBuilder(this)
                     .setTitle(R.string.action_about)
@@ -515,12 +534,14 @@ class ProductSearchActivity : BaseActivity() {
             binding.productsRecyclerView.layoutManager = mLayoutManager
             adapter = ProductSearchAdapter(mProducts, lowBatteryMode, this, picasso, client, localeManager)
             binding.productsRecyclerView.adapter = adapter
-            val dividerItemDecoration = DividerItemDecoration(binding.productsRecyclerView.context, DividerItemDecoration.VERTICAL)
+            val dividerItemDecoration =
+                DividerItemDecoration(binding.productsRecyclerView.context, DividerItemDecoration.VERTICAL)
             binding.productsRecyclerView.addItemDecoration(dividerItemDecoration)
 
             // Retain an instance so that you can call `resetState()` for fresh searches
             // Adds the scroll listener to RecyclerView
-            binding.productsRecyclerView.addOnScrollListener(object : EndlessRecyclerViewScrollListener(mLayoutManager) {
+            binding.productsRecyclerView.addOnScrollListener(object :
+                EndlessRecyclerViewScrollListener(mLayoutManager) {
                 override fun onLoadMore(page: Int, totalItemsCount: Int, view: RecyclerView) {
                     if (mProducts.size < mCountProducts) {
                         pageAddress = page
@@ -577,7 +598,7 @@ class ProductSearchActivity : BaseActivity() {
          * @see [start]
          */
         private fun start(context: Context, searchInfo: SearchInfo) {
-            context.startActivity(Intent(context, ProductSearchActivity::class.java).apply {
+            context.startActivity(Intent<ProductSearchActivity>(context).apply {
                 putExtra(SEARCH_INFO, searchInfo)
             })
         }

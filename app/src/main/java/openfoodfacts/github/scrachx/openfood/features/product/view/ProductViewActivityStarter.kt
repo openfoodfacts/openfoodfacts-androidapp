@@ -15,7 +15,10 @@ import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
 import openfoodfacts.github.scrachx.openfood.repositories.NetworkConnectivityRepository
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
-import openfoodfacts.github.scrachx.openfood.utils.*
+import openfoodfacts.github.scrachx.openfood.utils.CoroutineDispatchers
+import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
+import openfoodfacts.github.scrachx.openfood.utils.getUserAgent
+import openfoodfacts.github.scrachx.openfood.utils.hideKeyboard
 import java.io.IOException
 import javax.inject.Inject
 
@@ -66,7 +69,7 @@ class ProductViewActivityStarter @Inject constructor(
                     barcode,
                     ApiFields.getAllFields(localeManager.getLanguage()),
                     localeManager.getLanguage(),
-                    getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)
+                    getUserAgent(ApiFields.UserAgents.SEARCH)
                 )
             }
         }

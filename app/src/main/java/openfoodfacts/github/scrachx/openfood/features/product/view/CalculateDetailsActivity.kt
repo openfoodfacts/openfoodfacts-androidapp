@@ -1,7 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.features.product.view
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -12,7 +11,18 @@ import openfoodfacts.github.scrachx.openfood.databinding.CalculateDetailsBinding
 import openfoodfacts.github.scrachx.openfood.features.adapters.CalculatedNutrimentsGridAdapter
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_PRODUCT
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
-import openfoodfacts.github.scrachx.openfood.models.*
+import openfoodfacts.github.scrachx.openfood.models.CARBO_MAP
+import openfoodfacts.github.scrachx.openfood.models.FAT_MAP
+import openfoodfacts.github.scrachx.openfood.models.MINERALS_MAP
+import openfoodfacts.github.scrachx.openfood.models.MeasurementUnit
+import openfoodfacts.github.scrachx.openfood.models.Nutriment
+import openfoodfacts.github.scrachx.openfood.models.NutrimentListItem
+import openfoodfacts.github.scrachx.openfood.models.PROT_MAP
+import openfoodfacts.github.scrachx.openfood.models.Product
+import openfoodfacts.github.scrachx.openfood.models.ProductNutriments
+import openfoodfacts.github.scrachx.openfood.models.VITAMINS_MAP
+import openfoodfacts.github.scrachx.openfood.models.bold
+import openfoodfacts.github.scrachx.openfood.utils.Intent
 import openfoodfacts.github.scrachx.openfood.utils.Measurement
 import openfoodfacts.github.scrachx.openfood.utils.grams
 import openfoodfacts.github.scrachx.openfood.utils.isPerServingInLiter
@@ -154,7 +164,10 @@ class CalculateDetailsActivity : BaseActivity() {
         binding.nutriments.adapter = CalculatedNutrimentsGridAdapter(nutrimentListItems)
     }
 
-    private fun getNutrimentItems(nutriments: ProductNutriments, nutrimentMap: Map<Nutriment, Int>): List<NutrimentListItem> {
+    private fun getNutrimentItems(
+        nutriments: ProductNutriments,
+        nutrimentMap: Map<Nutriment, Int>,
+    ): List<NutrimentListItem> {
         val portion = measure(weight, unitOfMeasurement)
 
         return nutrimentMap.mapNotNull { (name, stringRes) ->
@@ -196,7 +209,7 @@ class CalculateDetailsActivity : BaseActivity() {
         private const val KEY_WEIGHT = "weight"
 
         fun start(context: Context, product: Product, spinnerValue: String, weight: Float) {
-            context.startActivity(Intent(context, CalculateDetailsActivity::class.java).apply {
+            context.startActivity(Intent<CalculateDetailsActivity>(context) {
                 putExtra(KEY_PRODUCT, product)
                 putExtra(KEY_SPINNER_VALUE, spinnerValue)
                 putExtra(KEY_WEIGHT, weight)

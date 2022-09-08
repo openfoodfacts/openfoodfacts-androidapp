@@ -37,7 +37,11 @@ import openfoodfacts.github.scrachx.openfood.images.IMG_ID
 import openfoodfacts.github.scrachx.openfood.images.ImageNameParser
 import openfoodfacts.github.scrachx.openfood.images.PRODUCT_BARCODE
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
-import openfoodfacts.github.scrachx.openfood.utils.*
+import openfoodfacts.github.scrachx.openfood.utils.Intent
+import openfoodfacts.github.scrachx.openfood.utils.MY_PERMISSIONS_REQUEST_STORAGE
+import openfoodfacts.github.scrachx.openfood.utils.PhotoReceiverHandler
+import openfoodfacts.github.scrachx.openfood.utils.allGranted
+import openfoodfacts.github.scrachx.openfood.utils.isUserSet
 import pl.aprilapps.easyphotopicker.EasyImage
 import java.io.File
 import javax.inject.Inject
@@ -165,7 +169,7 @@ class ImagesSelectActivity : BaseActivity() {
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == MY_PERMISSIONS_REQUEST_STORAGE && isAllGranted(grantResults)) {
+        if (requestCode == MY_PERMISSIONS_REQUEST_STORAGE && grantResults.allGranted()) {
             chooseImage()
         }
     }
@@ -176,24 +180,26 @@ class ImagesSelectActivity : BaseActivity() {
 
         @JvmStatic
         fun start(context: Context, toolbarTitle: String, productCode: String) =
-            context.startActivity(Intent(context, this::class.java).apply {
-                putExtra(TOOLBAR_TITLE, toolbarTitle)
-                putExtra(PRODUCT_BARCODE, productCode)
-            })
+            context.startActivity(createIntent(context, toolbarTitle, productCode))
 
         class SelectImageContract(
             private val toolbarTitle: String,
         ) : ActivityResultContract<String, Pair<String?, File?>>() {
-            override fun createIntent(context: Context, input: String) = Intent<ImagesSelectActivity>(context) {
-                putExtra(TOOLBAR_TITLE, toolbarTitle)
-                putExtra(PRODUCT_BARCODE, input)
-            }
-
+            override fun createIntent(context: Context, input: String) =
+                createIntent(context, toolbarTitle, input)
 
             override fun parseResult(resultCode: Int, intent: Intent?) =
                 if (resultCode != RESULT_OK) null to null
                 else intent?.getStringExtra(IMG_ID) to intent?.getSerializableExtra(IMAGE_FILE) as File?
+        }
 
+        internal fun createIntent(
+            context: Context,
+            toolbarTitle: String,
+            barcode: String,
+        ) = Intent<ImagesSelectActivity>(context) {
+            putExtra(TOOLBAR_TITLE, toolbarTitle)
+            putExtra(PRODUCT_BARCODE, barcode)
         }
     }
 }

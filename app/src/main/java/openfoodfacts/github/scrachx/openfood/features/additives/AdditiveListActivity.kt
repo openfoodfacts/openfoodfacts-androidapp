@@ -2,7 +2,6 @@ package openfoodfacts.github.scrachx.openfood.features.additives
 
 import android.app.SearchManager
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.widget.SearchView
@@ -18,6 +17,7 @@ import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInsta
 import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveName
 import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveNameDao
+import openfoodfacts.github.scrachx.openfood.utils.Intent
 import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
 import openfoodfacts.github.scrachx.openfood.utils.SearchType
 import org.greenrobot.greendao.async.AsyncOperation
@@ -26,6 +26,7 @@ import java.util.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
+// TODO: Use a ViewModel
 class AdditiveListActivity : BaseActivity() {
     private var _binding: ActivityAdditivesExplorerBinding? = null
     private val binding get() = _binding!!
@@ -54,13 +55,15 @@ class AdditiveListActivity : BaseActivity() {
         val additiveNameDao = daoSession.additiveNameDao
         val languageCode = localeManager.getLanguage()
         asyncSessionAdditives.queryList(additiveNameDao.queryBuilder()
-                .where(AdditiveNameDao.Properties.LanguageCode.eq(languageCode))
-                .where(AdditiveNameDao.Properties.Name.like("E%")).build())
+            .where(AdditiveNameDao.Properties.LanguageCode.eq(languageCode))
+            .where(AdditiveNameDao.Properties.Name.like("E%")).build())
         asyncSessionAdditives.listenerMainThread = AsyncOperationListener { operation: AsyncOperation ->
             additives = operation.result as MutableList<AdditiveName>
             additives.sortWith { additive1: AdditiveName, additive2: AdditiveName ->
-                val s1 = additive1.name.lowercase(Locale.ROOT).replace('x', '0').split(Regex("(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)")).toTypedArray()[1]
-                val s2 = additive2.name.lowercase(Locale.ROOT).replace('x', '0').split(Regex("(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)")).toTypedArray()[1]
+                val s1 = additive1.name.lowercase(Locale.ROOT).replace('x', '0')
+                    .split(Regex("(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)")).toTypedArray()[1]
+                val s2 = additive2.name.lowercase(Locale.ROOT).replace('x', '0')
+                    .split(Regex("(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)")).toTypedArray()[1]
                 Integer.valueOf(s1).compareTo(Integer.valueOf(s2))
             }
             if (isFinishing) {
@@ -68,7 +71,8 @@ class AdditiveListActivity : BaseActivity() {
             }
             binding.additiveRecyclerView.layoutManager = LinearLayoutManager(this@AdditiveListActivity)
             binding.additiveRecyclerView.adapter = AdditivesAdapter(additives) { _, name -> onClick(name) }
-            binding.additiveRecyclerView.addItemDecoration(DividerItemDecoration(this@AdditiveListActivity, DividerItemDecoration.VERTICAL))
+            binding.additiveRecyclerView.addItemDecoration(DividerItemDecoration(this@AdditiveListActivity,
+                DividerItemDecoration.VERTICAL))
         }
         binding.navigationBottomInclude.bottomNavigation.selectNavigationItem(0)
         binding.navigationBottomInclude.bottomNavigation.installBottomNavigation(this)
@@ -91,7 +95,8 @@ class AdditiveListActivity : BaseActivity() {
                     val suggestedAdditives = mutableListOf<AdditiveName>()
                     for (additive in additives) {
                         if (additive.name.lowercase(Locale.getDefault()).split(" - ").size > 1) {
-                            val additiveContent = additive.name.lowercase(Locale.getDefault()).split(" - ").toTypedArray()
+                            val additiveContent =
+                                additive.name.lowercase(Locale.getDefault()).split(" - ").toTypedArray()
                             val trimmedQuery = query.trim { it <= ' ' }.lowercase(Locale.getDefault())
                             if (additiveContent[0].trim { it <= ' ' }.contains(trimmedQuery)
                                 || additiveContent[1].trim { it <= ' ' }.contains(trimmedQuery)
@@ -101,7 +106,8 @@ class AdditiveListActivity : BaseActivity() {
                             }
                         }
                     }
-                    binding.additiveRecyclerView.adapter = AdditivesAdapter(suggestedAdditives) { _, name -> onClick(name) }
+                    binding.additiveRecyclerView.adapter =
+                        AdditivesAdapter(suggestedAdditives) { _, name -> onClick(name) }
                     binding.additiveRecyclerView.adapter!!.notifyDataSetChanged()
                     return false
                 }
@@ -112,6 +118,6 @@ class AdditiveListActivity : BaseActivity() {
 
     companion object {
         @JvmStatic
-        fun start(context: Context) = context.startActivity(Intent(context, AdditiveListActivity::class.java))
+        fun start(context: Context) = context.startActivity(Intent<AdditiveListActivity>(context))
     }
 }

@@ -22,7 +22,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.ActivityInfo
-import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.graphics.BitmapFactory
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
@@ -99,11 +98,13 @@ import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.features.shared.NavigationDrawerHost
 import openfoodfacts.github.scrachx.openfood.features.shared.OnNavigationDrawerStatusChangedListener
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
-import openfoodfacts.github.scrachx.openfood.jobs.ProductUploaderWorker.Companion.scheduleProductUpload
+import openfoodfacts.github.scrachx.openfood.jobs.ImagesUploaderWorker
+import openfoodfacts.github.scrachx.openfood.jobs.ProductUploaderWorker
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.selectNavigationItem
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
+import openfoodfacts.github.scrachx.openfood.utils.Intent
 import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_ABOUT
@@ -131,7 +132,6 @@ import openfoodfacts.github.scrachx.openfood.utils.OnKeyboardVisibilityChanged
 import openfoodfacts.github.scrachx.openfood.utils.PreferencesService
 import openfoodfacts.github.scrachx.openfood.utils.SearchSuggestionProvider
 import openfoodfacts.github.scrachx.openfood.utils.SearchType
-import openfoodfacts.github.scrachx.openfood.utils.Utils.scheduleProductUploadJob
 import openfoodfacts.github.scrachx.openfood.utils.buildAccountHeader
 import openfoodfacts.github.scrachx.openfood.utils.buildDrawer
 import openfoodfacts.github.scrachx.openfood.utils.dividerItem
@@ -141,6 +141,7 @@ import openfoodfacts.github.scrachx.openfood.utils.getLoginUsername
 import openfoodfacts.github.scrachx.openfood.utils.getUserSession
 import openfoodfacts.github.scrachx.openfood.utils.hideKeyboard
 import openfoodfacts.github.scrachx.openfood.utils.isApplicationInstalled
+import openfoodfacts.github.scrachx.openfood.utils.isGranted
 import openfoodfacts.github.scrachx.openfood.utils.isHardwareCameraInstalled
 import openfoodfacts.github.scrachx.openfood.utils.isNetworkConnected
 import openfoodfacts.github.scrachx.openfood.utils.isUserSet
@@ -336,9 +337,9 @@ class MainActivity : BaseActivity(), NavigationDrawerListener, NavigationDrawerH
             BARCODE_SHORTCUT -> swapToSearchByCode()
         }
 
-        //Scheduling background image upload job
-        scheduleProductUploadJob(this)
-        scheduleProductUpload(this, sharedPreferences)
+        // Scheduling background image upload job
+        ImagesUploaderWorker.scheduleProductUploadJob(this)
+        ProductUploaderWorker.scheduleProductUpload(this, sharedPreferences)
 
         // Adds nutriscore and quantity values in old history for schema 5 update
 
@@ -582,7 +583,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener, NavigationDrawerH
 
     private fun checkThenStartScanActivity() {
         when {
-            checkSelfPermission(this, Manifest.permission.CAMERA) == PERMISSION_GRANTED -> {
+            checkSelfPermission(this, Manifest.permission.CAMERA).isGranted() -> {
                 startScanActivity()
             }
             shouldShowRequestPermissionRationale(this, Manifest.permission.CAMERA) -> {
@@ -1033,6 +1034,6 @@ class MainActivity : BaseActivity(), NavigationDrawerListener, NavigationDrawerH
         const val PRODUCT_SEARCH_KEY = "product_search"
         private val LOG_TAG = MainActivity::class.simpleName!!
 
-        fun start(context: Context) = context.startActivity(Intent(context, MainActivity::class.java))
+        fun start(context: Context) = context.startActivity(Intent<MainActivity>(context))
     }
 }

@@ -18,7 +18,6 @@ import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.repositories.TaxonomiesRepository
 import openfoodfacts.github.scrachx.openfood.utils.CoroutineDispatchers
 import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
-import openfoodfacts.github.scrachx.openfood.utils.Utils
 import javax.inject.Inject
 
 @HiltViewModel
@@ -97,7 +96,7 @@ class ProductCompareViewModel @Inject constructor(
         _loadingVisibleFlow.emit(true)
         withContext(dispatchers.IO) {
             try {
-                val product = productRepository.getProductStateFull(barcode, userAgent = Utils.HEADER_USER_AGENT_SCAN).product
+                val product = productRepository.getProductStateFull(barcode).product
                 if (product == null) {
                     emitSideEffect(SideEffect.ProductNotFound)
                 } else {

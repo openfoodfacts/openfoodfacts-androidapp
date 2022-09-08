@@ -26,6 +26,8 @@ inline fun ConnectionSpec(
         .build()
 }
 
-inline fun HttpLoggingInterceptor(builderAction: HttpLoggingInterceptor.() -> Unit): HttpLoggingInterceptor {
+inline fun HttpLoggingInterceptor(
+    builderAction: HttpLoggingInterceptor.() -> Unit,
+): HttpLoggingInterceptor {
     return HttpLoggingInterceptor().apply(builderAction)
 }

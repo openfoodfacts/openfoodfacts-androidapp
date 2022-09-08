@@ -34,7 +34,6 @@ import openfoodfacts.github.scrachx.openfood.network.ApiFields.getAllFields
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
 import openfoodfacts.github.scrachx.openfood.utils.InstallationService
 import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
-import openfoodfacts.github.scrachx.openfood.utils.Utils
 import openfoodfacts.github.scrachx.openfood.utils.getLoginPassword
 import openfoodfacts.github.scrachx.openfood.utils.getLoginUsername
 import openfoodfacts.github.scrachx.openfood.utils.getUserAgent
@@ -62,7 +61,7 @@ class ProductRepository @Inject constructor(
     suspend fun getProductStateFull(
         barcode: String,
         fields: String = getAllFields(localeManager.getLanguage()),
-        userAgent: String = Utils.HEADER_USER_AGENT_SEARCH,
+        userAgent: String = ApiFields.UserAgents.SEARCH,
     ): ProductState {
         sentryAnalytics.setBarcode(barcode)
         return withContext(IO) {
@@ -73,14 +72,14 @@ class ProductRepository @Inject constructor(
     suspend fun getProductStateFull(
         barcode: Barcode,
         fields: String = getAllFields(localeManager.getLanguage()),
-        userAgent: String = Utils.HEADER_USER_AGENT_SCAN,
+        userAgent: String = ApiFields.UserAgents.SCAN,
     ): ProductState {
         return getProductStateFull(barcode.raw, fields, userAgent)
     }
 
     suspend fun getProductsByBarcode(
         codes: List<String>,
-        customHeader: String = Utils.HEADER_USER_AGENT_SEARCH,
+        customHeader: String = ApiFields.UserAgents.SEARCH,
     ) = rawApi.getProductsByBarcode(
         codes.joinToString(","),
         getAllFields(localeManager.getLanguage()),
@@ -102,7 +101,7 @@ class ProductRepository @Inject constructor(
             barcode,
             fields,
             localeManager.getLanguage(),
-            getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)
+            getUserAgent(ApiFields.UserAgents.SEARCH)
         )
     }
 
@@ -418,6 +417,7 @@ class ProductRepository @Inject constructor(
                 append(" (Added by $id)")
             }
         }
+
     }
 
     /**
