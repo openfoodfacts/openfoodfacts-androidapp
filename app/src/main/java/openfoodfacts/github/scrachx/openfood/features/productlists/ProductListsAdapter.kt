@@ -8,7 +8,7 @@ import openfoodfacts.github.scrachx.openfood.models.entities.ProductLists
 import openfoodfacts.github.scrachx.openfood.utils.AutoUpdatableAdapter
 
 class ProductListsAdapter : RecyclerView.Adapter<ProductListsAdapter.ViewHolder>(), AutoUpdatableAdapter {
-    var lists: List<ProductLists> by autoNotifying { l1, l2 -> l1.id == l2.id }
+    var lists: List<ProductLists> by autoNotifying(comparator = compareBy { it.id })
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)

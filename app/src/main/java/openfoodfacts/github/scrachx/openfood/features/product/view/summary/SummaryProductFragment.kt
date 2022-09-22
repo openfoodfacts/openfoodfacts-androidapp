@@ -598,7 +598,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
                 }
                 is ProductInfoState.Empty -> binding.textAdditiveProduct.visibility = View.GONE
                 is ProductInfoState.Data -> {
-                    showAdditives(state.data, binding.textAdditiveProduct, wikidataClient, this)
+                    showAdditives(binding.textAdditiveProduct, state.data, wikidataClient, this)
                 }
             }
         }
