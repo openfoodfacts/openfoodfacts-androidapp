@@ -10,5 +10,5 @@ import retrofit2.http.Path
  */
 interface WikidataAPI {
     @GET("{id}.json")
-    suspend fun getEntity(@Path("id") entityId: String): ObjectNode
+    suspend fun getEntity(@Path("id") entityId: String): ObjectNode?
 }

@@ -26,7 +26,7 @@ class AllergensAdapter(
     val onDeleteButtonClick: (allergen: AllergenName) -> Unit,
 ) : RecyclerView.Adapter<AllergensAdapter.ViewHolder>(), AutoUpdatableAdapter {
 
-    var allergens: List<AllergenName> by autoNotifying { o, n -> o.allergenTag == n.allergenTag }
+    var allergens: List<AllergenName> by autoNotifying(comparator = compareBy { it.allergenTag })
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)

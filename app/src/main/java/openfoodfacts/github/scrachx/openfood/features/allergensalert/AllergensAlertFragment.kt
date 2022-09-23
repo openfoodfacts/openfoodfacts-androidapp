@@ -17,7 +17,11 @@ package openfoodfacts.github.scrachx.openfood.features.allergensalert
 
 import android.os.Bundle
 import android.util.Log
-import android.view.*
+import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
@@ -66,7 +70,8 @@ class AllergensAlertFragment : NavigationBaseFragment() {
         binding.allergensRecycle.adapter = adapter
         binding.allergensRecycle.layoutManager = LinearLayoutManager(requireContext(), VERTICAL, false)
         binding.allergensRecycle.setHasFixedSize(true)
-        binding.allergensRecycle.addItemDecoration(DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL))
+        binding.allergensRecycle.addItemDecoration(DividerItemDecoration(requireContext(),
+            DividerItemDecoration.VERTICAL))
 
         lifecycleScope.launch {
             viewModel.viewStateFlow

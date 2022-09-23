@@ -27,7 +27,7 @@ class ScanHistoryAdapter(
     private val onItemClicked: (HistoryProduct) -> Unit,
 ) : RecyclerView.Adapter<ScanHistoryAdapter.Companion.ViewHolder>(), AutoUpdatableAdapter {
 
-    var products: List<HistoryProduct> by autoNotifying { o, n -> o.barcode == n.barcode }
+    var products: List<HistoryProduct> by autoNotifying(comparator = compareBy { it.barcode })
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
