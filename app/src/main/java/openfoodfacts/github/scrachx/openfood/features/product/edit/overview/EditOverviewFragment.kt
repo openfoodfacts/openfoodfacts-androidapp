@@ -930,6 +930,7 @@ class EditOverviewFragment : ProductEditFragment() {
                 .resize(requireContext().dpsToPixel(50), requireContext().dpsToPixel(50))
                 .centerInside()
                 .into(binding.imgFront)
+            Toast.makeText(activity,R.string.front_image_uploaded_successfully,Toast.LENGTH_LONG).show()
         }
     }
 

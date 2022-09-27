@@ -336,6 +336,7 @@
     <Button
         android:id="@+id/btn_next"
         style="@style/ButtonFlat"
+        android:layout_height="40dp"
         android:layout_width="match_parent"
         android:text="@string/next"
         app:layout_constraintEnd_toEndOf="parent"
