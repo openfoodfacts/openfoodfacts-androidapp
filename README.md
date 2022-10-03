@@ -1,7 +1,9 @@
 <img height='175' src="https://static.openfoodfacts.org/images/svg/openfoodfacts-logo-en.svg" align="left" hspace="1" vspace="1">
 
 # Open Food Facts - Android app
-(Note: this codebase also benefits Open Beauty Facts, Open Pet Food Facts and Open Products Facts)
+(The new Open Food Facts app is located at https://github.com/openfoodfacts/smooth-app<br>
+Note: this codebase currently benefits Open Beauty Facts, Open Pet Food Facts and Open Products Facts)<br>
+
 Open Food Facts is collaborative food products database made by everyone, for everyone. Open Food Facts contributors gathers information and data on food products from around the world, using mobile apps.
 
 [![Project Status](https://opensource.box.com/badges/active.svg)](https://opensource.box.com/badges)
