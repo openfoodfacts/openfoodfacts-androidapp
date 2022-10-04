@@ -279,7 +279,7 @@ class ProductRepository @Inject constructor(
         if (node[Keys.STATUS].asText() != "status ok") throw IOException(node["error"].asText())
     }
 
-    suspend fun editImage(code: String, imgMap: MutableMap<String, String>) = withContext(IO) {
+    suspend fun editImage(code: String, imgMap: Map<String, String>) = withContext(IO) {
         rawApi.editImages(code, imgMap + getUserInfo())
     }
 

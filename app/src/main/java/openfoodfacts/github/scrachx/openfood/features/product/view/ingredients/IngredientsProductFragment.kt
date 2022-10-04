@@ -75,7 +75,6 @@ import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.Data
 import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.Empty
 import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.Loading
 import openfoodfacts.github.scrachx.openfood.utils.SearchType
-import openfoodfacts.github.scrachx.openfood.utils.getLoginPreferences
 import openfoodfacts.github.scrachx.openfood.utils.getNovaGroupExplanation
 import openfoodfacts.github.scrachx.openfood.utils.getNovaGroupResource
 import openfoodfacts.github.scrachx.openfood.utils.getSendProduct
@@ -115,8 +114,6 @@ class IngredientsProductFragment : BaseFragment() {
     lateinit var localeManager: LocaleManager
 
     private val viewModel: ProductIngredientsViewModel by viewModels()
-
-    private val loginPref by lazy { requireActivity().getLoginPreferences() }
 
     private val performOCRLauncher = registerForActivityResult(PerformOCRContract())
     { result ->
@@ -429,7 +426,7 @@ class IngredientsProductFragment : BaseFragment() {
             }
             is Empty -> binding.cvTextAdditiveProduct.visibility = View.GONE
             is Data -> {
-                showAdditives(state.data, binding.textAdditiveProduct, wikidataClient, this)
+                showAdditives(binding.textAdditiveProduct, state.data, wikidataClient, this)
             }
         }
     }

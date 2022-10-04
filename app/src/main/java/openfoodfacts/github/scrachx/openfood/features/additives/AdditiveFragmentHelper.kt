@@ -9,13 +9,12 @@ import androidx.core.text.bold
 import androidx.core.text.buildSpannedString
 import androidx.core.text.color
 import androidx.core.text.inSpans
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.lifecycleScope
-import com.fasterxml.jackson.databind.JsonNode
 import kotlinx.coroutines.launch
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivity
-import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
 import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveName
 import openfoodfacts.github.scrachx.openfood.repositories.WikidataRepository
 import openfoodfacts.github.scrachx.openfood.utils.ClickableSpan
@@ -29,25 +28,27 @@ object AdditiveFragmentHelper {
     /**
      * Show names of all additives on the TextView
      *
-     * @param additives list of additive names
-     * @param additivesView TextView which displays additive names
-     * @param apiClientForWikiData object of WikidataApiClient
+     * @param additiveNames list of additive names
+     * @param textView TextView which displays additive names
+     * @param wikidataRepository object of WikidataApiClient
      */
     @JvmStatic
     fun showAdditives(
-        additives: List<AdditiveName>,
-        additivesView: TextView,
-        apiClientForWikiData: WikidataRepository,
-        fragment: BaseFragment,
-    ) = additivesView.run {
-        movementMethod = LinkMovementMethod.getInstance()
-        isClickable = true
-        text = buildSpannedString {
-            bold { append(fragment.getString(R.string.txtAdditives)) }
+        textView: TextView,
+        additiveNames: List<AdditiveName>,
+        wikidataRepository: WikidataRepository,
+        fragment: Fragment,
+    ) {
+        textView.run {
+            movementMethod = LinkMovementMethod.getInstance()
+            isClickable = true
+            text = buildSpannedString {
+                bold { append(fragment.getString(R.string.txtAdditives)) }
 
-            additives.forEach {
-                append("\n")
-                append(getAdditiveTag(it, apiClientForWikiData, fragment))
+                additiveNames.forEach {
+                    append("\n")
+                    append(getAdditiveTag(it, wikidataRepository, fragment))
+                }
             }
         }
     }
@@ -62,15 +63,12 @@ object AdditiveFragmentHelper {
     private fun getAdditiveTag(
         additive: AdditiveName,
         wikidataClient: WikidataRepository,
-        fragment: BaseFragment,
+        fragment: Fragment,
     ): CharSequence {
         val activity = fragment.requireActivity()
         val clickableSpan = ClickableSpan {
             if (additive.isWikiDataIdPresent) {
-                fragment.lifecycleScope.launch {
-                    val result = wikidataClient.getEntityData(additive.wikiDataId)
-                    getOnWikiResponse(activity, additive)(result)
-                }
+                showAdditive(fragment, wikidataClient, additive, activity)
             } else {
                 onWikiNoResponse(additive, activity)
             }
@@ -83,11 +81,13 @@ object AdditiveFragmentHelper {
             if (additive.hasOverexposureData()) {
                 val isHighRisk = additive.overexposureRisk.equals("high", true)
 
-                val riskIcon = if (isHighRisk)
+                val riskIcon = if (isHighRisk) {
                     ContextCompat.getDrawable(activity, R.drawable.ic_additive_high_risk)!!
-                else
+                } else {
                     ContextCompat.getDrawable(activity, R.drawable.ic_additive_moderate_risk)!!
-                riskIcon.setBounds(0, 0, riskIcon.intrinsicWidth, riskIcon.intrinsicHeight)
+                }.apply {
+                    setBounds(0, 0, intrinsicWidth, intrinsicHeight)
+                }
 
                 val riskWarningStr =
                     if (isHighRisk) fragment.getString(R.string.overexposure_high)
@@ -105,17 +105,32 @@ object AdditiveFragmentHelper {
         }
     }
 
-    private fun onWikiNoResponse(additive: AdditiveName, activity: FragmentActivity) {
-        if (additive.hasOverexposureData() && !activity.isFinishing) {
-            showBottomSheet(null, additive, activity.supportFragmentManager)
-        } else {
-            ProductSearchActivity.start(activity, SearchType.ADDITIVE, additive.additiveTag, additive.name)
+    private fun showAdditive(
+        fragment: Fragment,
+        wikidataRepository: WikidataRepository,
+        additiveName: AdditiveName,
+        activity: FragmentActivity,
+    ) {
+        // TODO: We should not use launch like this
+        fragment.lifecycleScope.launch {
+            val result = wikidataRepository.getEntityData(additiveName.wikiDataId)
+            if (!activity.isFinishing) {
+                activity.supportFragmentManager.showBottomSheet(result, additiveName)
+            }
         }
     }
 
-    private fun getOnWikiResponse(activity: FragmentActivity, additive: AdditiveName) = { result: JsonNode ->
-        if (!activity.isFinishing) {
-            showBottomSheet(result, additive, activity.supportFragmentManager)
+    private fun onWikiNoResponse(additive: AdditiveName, activity: FragmentActivity) {
+        if (additive.hasOverexposureData() && !activity.isFinishing) {
+            activity.supportFragmentManager.showBottomSheet(null, additive)
+        } else {
+            ProductSearchActivity.start(
+                context = activity,
+                type = SearchType.ADDITIVE,
+                searchQuery = additive.additiveTag,
+                searchTitle = additive.name
+            )
         }
     }
+
 }
