@@ -18,11 +18,11 @@ package openfoodfacts.github.scrachx.openfood.features.shared
 import android.Manifest
 import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
 import android.view.View
+import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.CallSuper
 import androidx.core.content.ContextCompat
@@ -35,6 +35,8 @@ import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.listeners.OnRefreshListener
 import openfoodfacts.github.scrachx.openfood.listeners.OnRefreshViewListener
 import openfoodfacts.github.scrachx.openfood.models.ProductState
+import openfoodfacts.github.scrachx.openfood.utils.ProductFragmentUtils
+import openfoodfacts.github.scrachx.openfood.utils.isGranted
 import pl.aprilapps.easyphotopicker.EasyImage
 import java.io.File
 
@@ -117,7 +119,18 @@ abstract class BaseFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener, 
     protected fun cropRotateImage(image: File, title: String?) = cropRotateImage(image.toUri(), title)
 
     private fun canTakePhotos() =
-        ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA) == PERMISSION_GRANTED
+        ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA).isGranted()
+
+    protected fun showLoginDialog(loginContract: ActivityResultLauncher<Unit>) {
+        ProductFragmentUtils.buildSignInDialog(
+            requireActivity(),
+            onPositive = { dialog, _ ->
+                dialog.dismiss()
+                loginContract.launch(Unit)
+            },
+            onNegative = { d, _ -> d.dismiss() }
+        ).show()
+    }
 
     companion object {
         /**

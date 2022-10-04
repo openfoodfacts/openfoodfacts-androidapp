@@ -17,6 +17,7 @@ import openfoodfacts.github.scrachx.openfood.images.createImageBundle
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
+import openfoodfacts.github.scrachx.openfood.utils.Intent
 import openfoodfacts.github.scrachx.openfood.utils.isAbsoluteUrl
 import org.jetbrains.annotations.Contract
 
@@ -84,7 +85,7 @@ object FullScreenActivityOpener {
         if (!product.isLanguageSupported(language) && product.lang.isNotBlank()) {
             productLanguage = product.lang
         }
-        return Intent(context, ImagesManageActivity::class.java).apply {
+        return Intent<ImagesManageActivity>(context).apply {
             putExtras(createImageBundle(imageType, product, productLanguage, mUrlImage))
         }
     }

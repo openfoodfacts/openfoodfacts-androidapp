@@ -26,6 +26,7 @@ import openfoodfacts.github.scrachx.openfood.utils.SearchType
 import java.util.*
 
 @AndroidEntryPoint
+// TODO: Use a ViewModel
 class AdditiveListActivity : BaseActivity() {
 
     private val viewModel: AdditiveListViewModel by viewModels()
@@ -43,7 +44,6 @@ class AdditiveListActivity : BaseActivity() {
 
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setTitle(R.string.additives)
-
         binding.navigationBottomInclude.bottomNavigation.selectNavigationItem(0)
         binding.navigationBottomInclude.bottomNavigation.installBottomNavigation(this)
 

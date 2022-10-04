@@ -36,6 +36,7 @@ import openfoodfacts.github.scrachx.openfood.features.productlist.CreateCSVContr
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.selectNavigationItem
+import openfoodfacts.github.scrachx.openfood.utils.Intent
 import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
 import openfoodfacts.github.scrachx.openfood.utils.SortType.BARCODE
 import openfoodfacts.github.scrachx.openfood.utils.SortType.BRAND
@@ -326,7 +327,7 @@ class ScanHistoryActivity : BaseActivity() {
     }
 
     companion object {
-        fun start(context: Context) = context.startActivity(Intent(context, ScanHistoryActivity::class.java))
+        fun start(context: Context) = context.startActivity(Intent<ScanHistoryActivity>(context))
         val LOG_TAG = ScanHistoryActivity::class.simpleName
     }
 

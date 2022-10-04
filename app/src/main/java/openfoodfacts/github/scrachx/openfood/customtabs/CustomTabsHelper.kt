@@ -22,9 +22,9 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.browser.customtabs.CustomTabsSession
+import androidx.core.graphics.drawable.toBitmap
 import androidx.core.net.toUri
 import openfoodfacts.github.scrachx.openfood.R
-import openfoodfacts.github.scrachx.openfood.utils.getBitmapFromDrawable
 
 /**
  * Helper class for Custom Tabs.
@@ -46,20 +46,22 @@ object CustomTabsHelper {
      * @param session optional custom tabs session - could be null
      * @return CustomTabsIntent
      */
-    fun getCustomTabsIntent(context: Context, session: CustomTabsSession?) =
-            // TODO use mayLaunchUrl to improve performance like in MainActivity or LoginActivity
-            CustomTabsIntent.Builder(session)
-                    .setShowTitle(true)
-                    .setColorScheme(getMode())
-                    .setCloseButtonIcon(context.getBitmapFromDrawable(R.drawable.ic_arrow_back_black)!!)
-                    .build()
+    fun getCustomTabsIntent(context: Context, session: CustomTabsSession?): CustomTabsIntent {
+        // TODO use mayLaunchUrl to improve performance like in MainActivity or LoginActivity
+        return CustomTabsIntent.Builder(session)
+            .setShowTitle(true)
+            .setColorScheme(getMode())
+            .setCloseButtonIcon(context.getDrawable(R.drawable.ic_arrow_back_black)!!.toBitmap())
+            .build()
+    }
 
-    private fun getMode() =
-            when (AppCompatDelegate.getDefaultNightMode()) {
-                AppCompatDelegate.MODE_NIGHT_NO -> CustomTabsIntent.COLOR_SCHEME_LIGHT
-                AppCompatDelegate.MODE_NIGHT_YES -> CustomTabsIntent.COLOR_SCHEME_DARK
-                else -> CustomTabsIntent.COLOR_SCHEME_SYSTEM
-            }
+    private fun getMode(): Int {
+        return when (AppCompatDelegate.getDefaultNightMode()) {
+            AppCompatDelegate.MODE_NIGHT_NO -> CustomTabsIntent.COLOR_SCHEME_LIGHT
+            AppCompatDelegate.MODE_NIGHT_YES -> CustomTabsIntent.COLOR_SCHEME_DARK
+            else -> CustomTabsIntent.COLOR_SCHEME_SYSTEM
+        }
+    }
 
     /**
      * Goes through all apps that handle VIEW intents and have a warm up service. Picks

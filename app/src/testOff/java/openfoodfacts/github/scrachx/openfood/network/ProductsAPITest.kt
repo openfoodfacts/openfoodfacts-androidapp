@@ -10,7 +10,6 @@ import io.reactivex.schedulers.Schedulers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
 import okhttp3.Credentials
-import okhttp3.Headers
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import openfoodfacts.github.scrachx.openfood.BuildConfig
@@ -18,7 +17,6 @@ import openfoodfacts.github.scrachx.openfood.models.Search
 import openfoodfacts.github.scrachx.openfood.models.entities.SendProduct
 import openfoodfacts.github.scrachx.openfood.network.ProductsAPITest.SearchSubject.Companion.assertThat
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
-import openfoodfacts.github.scrachx.openfood.utils.Utils
 import openfoodfacts.github.scrachx.openfood.utils.getUserAgent
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
@@ -26,7 +24,6 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.jackson.JacksonConverterFactory
 import retrofit2.create
-import retrofit2.http.Header
 import java.time.Duration
 
 class ProductsAPITest {
@@ -137,7 +134,7 @@ class ProductsAPITest {
             barcode,
             "code",
             LC,
-            getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)
+            getUserAgent(ApiFields.UserAgents.SEARCH)
         )
         assertThat(state.status).isEqualTo(0)
         assertThat(state.statusVerbose).isEqualTo("product not found")
@@ -174,7 +171,7 @@ class ProductsAPITest {
             product.barcode,
             fields,
             LC,
-            getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)
+            getUserAgent(ApiFields.UserAgents.SEARCH)
         )
 
         assertThat(response.product).isNotNull()

@@ -57,7 +57,7 @@ import openfoodfacts.github.scrachx.openfood.listeners.OnRefreshListener
 import openfoodfacts.github.scrachx.openfood.models.ProductState
 import openfoodfacts.github.scrachx.openfood.models.eventbus.ProductNeedsRefreshEvent
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
-import openfoodfacts.github.scrachx.openfood.utils.Utils
+import openfoodfacts.github.scrachx.openfood.utils.Intent
 import openfoodfacts.github.scrachx.openfood.utils.requireProductState
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
@@ -121,7 +121,7 @@ class ProductViewActivity : BaseActivity(), IProductView, OnRefreshListener {
      * @param barcode from the URL.
      */
     private suspend fun fetchProduct(barcode: String) = try {
-        client.getProductStateFull(barcode = barcode, userAgent = Utils.HEADER_USER_AGENT_SCAN)
+        client.getProductStateFull(barcode)
     } catch (err: Exception) {
         Log.w(this::class.simpleName, "Failed to load product $barcode.", err)
         finish()
@@ -224,7 +224,7 @@ class ProductViewActivity : BaseActivity(), IProductView, OnRefreshListener {
         private const val LOGIN_ACTIVITY_REQUEST_CODE = 1
 
         fun start(context: Context, productState: ProductState) {
-            context.startActivity(Intent(context, ProductViewActivity::class.java).apply {
+            context.startActivity(Intent<ProductViewActivity>(context).apply {
                 putExtra(KEY_STATE, productState)
             })
         }

@@ -105,14 +105,13 @@ import openfoodfacts.github.scrachx.openfood.repositories.WikidataRepository
 import openfoodfacts.github.scrachx.openfood.utils.ClickableSpan
 import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
 import openfoodfacts.github.scrachx.openfood.utils.PhotoReceiverHandler
+import openfoodfacts.github.scrachx.openfood.utils.ProductFragmentUtils
 import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState
 import openfoodfacts.github.scrachx.openfood.utils.SearchType
-import openfoodfacts.github.scrachx.openfood.utils.buildSignInDialog
 import openfoodfacts.github.scrachx.openfood.utils.getEcoscoreResource
 import openfoodfacts.github.scrachx.openfood.utils.getNovaGroupResource
 import openfoodfacts.github.scrachx.openfood.utils.getNutriScoreResource
 import openfoodfacts.github.scrachx.openfood.utils.getProductBrandsQuantityDetails
-import openfoodfacts.github.scrachx.openfood.utils.getSearchLinkText
 import openfoodfacts.github.scrachx.openfood.utils.isBatteryLevelLow
 import openfoodfacts.github.scrachx.openfood.utils.isDisableImageLoad
 import openfoodfacts.github.scrachx.openfood.utils.isHardwareCameraInstalled
@@ -376,7 +375,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
             pBrands.split(",").withIndex().forEach { (i, brand) ->
                 if (i > 0) binding.textBrandProduct.append(", ")
                 binding.textBrandProduct.append(
-                    getSearchLinkText(
+                    ProductFragmentUtils.getSearchLinkText(
                         brand.trim { it <= ' ' },
                         SearchType.BRAND,
                         requireActivity()
@@ -399,7 +398,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
                     .removeSurrounding("[", "]")
                     .split(", ")
                     .map { tag ->
-                        getSearchLinkText(
+                        ProductFragmentUtils.getSearchLinkText(
                             getEmbCode(tag).trim { it <= ' ' },
                             SearchType.EMB,
                             requireActivity()
@@ -833,36 +832,24 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     private val loginThenEditLauncher = registerForActivityResult(LoginContract())
     { logged -> if (logged) editProduct() }
 
-    private val loginThenEditNutrition = registerForActivityResult(LoginContract())
-    { logged -> if (logged) editProductNutriscore() }
-
     private fun onEditProductButtonClick() {
         if (requireActivity().isUserSet()) {
             editProduct()
         } else {
-            buildSignInDialog(requireActivity(),
-                onPositive = { d, _ ->
-                    d.dismiss()
-                    loginThenEditLauncher.launch(null)
-                },
-                onNegative = { d, _ -> d.dismiss() }
-            ).show()
+            showLoginDialog(loginThenEditLauncher)
         }
     }
 
+    private val loginThenEditNutrition = registerForActivityResult(LoginContract())
+    { logged -> if (logged) editProductNutriscore() }
+
     private fun onAddNutriScorePromptClick() {
         if (!isFlavors(OFF)) return
+
         if (requireActivity().isUserSet()) {
             editProductNutriscore()
         } else {
-            buildSignInDialog(
-                requireActivity(),
-                onPositive = { d, _ ->
-                    d.dismiss()
-                    loginThenEditNutrition.launch(null)
-                },
-                onNegative = { d, _ -> d.dismiss() }
-            ).show()
+            showLoginDialog(loginThenEditNutrition)
         }
     }
 
@@ -991,8 +978,8 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
 
         val shouldRefresh = ImagesManageActivity.isImageModified(requestCode, resultCode)
 
-        if (shouldRefresh && activity is ProductViewActivity) {
-            (activity as ProductViewActivity).onRefresh()
+        if (shouldRefresh) {
+            (activity as? ProductViewActivity)?.onRefresh()
         }
     }
 

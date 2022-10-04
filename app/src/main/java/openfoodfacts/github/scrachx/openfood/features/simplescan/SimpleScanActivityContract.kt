@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import androidx.activity.result.contract.ActivityResultContract
+import openfoodfacts.github.scrachx.openfood.utils.Intent
 
 /**
  * Returns a string containing the product barcode.
@@ -15,7 +16,7 @@ class SimpleScanActivityContract : ActivityResultContract<Unit, String?>() {
     }
 
     override fun createIntent(context: Context, input: Unit): Intent {
-        return Intent(context, SimpleScanActivity::class.java)
+        return Intent<SimpleScanActivity>(context)
     }
 
     override fun parseResult(resultCode: Int, intent: Intent?): String? {

@@ -69,15 +69,14 @@ import openfoodfacts.github.scrachx.openfood.utils.ClickableSpan
 import openfoodfacts.github.scrachx.openfood.utils.LOCALE_FILE_SCHEME
 import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
 import openfoodfacts.github.scrachx.openfood.utils.PhotoReceiverHandler
+import openfoodfacts.github.scrachx.openfood.utils.ProductFragmentUtils
 import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState
 import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.Data
 import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.Empty
 import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.Loading
 import openfoodfacts.github.scrachx.openfood.utils.SearchType
-import openfoodfacts.github.scrachx.openfood.utils.buildSignInDialog
 import openfoodfacts.github.scrachx.openfood.utils.getNovaGroupExplanation
 import openfoodfacts.github.scrachx.openfood.utils.getNovaGroupResource
-import openfoodfacts.github.scrachx.openfood.utils.getSearchLinkText
 import openfoodfacts.github.scrachx.openfood.utils.getSendProduct
 import openfoodfacts.github.scrachx.openfood.utils.isBatteryLevelLow
 import openfoodfacts.github.scrachx.openfood.utils.isUserSet
@@ -322,7 +321,7 @@ class IngredientsProductFragment : BaseFragment() {
 
                 val traces = product.traces.split(",")
                 traces.map {
-                    getSearchLinkText(
+                    ProductFragmentUtils.getSearchLinkText(
                         getTracesName(language, it),
                         SearchType.TRACE,
                         requireActivity()
@@ -439,7 +438,7 @@ class IngredientsProductFragment : BaseFragment() {
         val viewPager = requireActivity().findViewById<ViewPager2>(R.id.pager)
         if (isFlavors(AppFlavor.OFF)) {
             if (!requireContext().isUserSet()) {
-                showSignInDialog()
+                showLoginDialog(loginLauncher)
             } else {
                 productState = requireProductState()
                 updateImagesLauncher.launch(productState.product!!)
@@ -490,21 +489,11 @@ class IngredientsProductFragment : BaseFragment() {
         if (!isAdded) return
 
         if (requireContext().isUserSet()) {
-            showSignInDialog()
+            showLoginDialog(loginLauncher)
         } else {
             productState = requireProductState()
             performOCRLauncher.launch(productState.product)
         }
-    }
-
-    private fun showSignInDialog() {
-        buildSignInDialog(requireContext(),
-            onPositive = { dialog, _ ->
-                loginLauncher.launch(Unit)
-                dialog.dismiss()
-            },
-            onNegative = { d, _ -> d.dismiss() }
-        ).show()
     }
 
 
