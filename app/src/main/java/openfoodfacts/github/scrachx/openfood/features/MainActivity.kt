@@ -51,12 +51,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.android.play.core.review.ReviewManagerFactory
-import com.google.zxing.BinaryBitmap
-import com.google.zxing.DecodeHintType
-import com.google.zxing.FormatException
-import com.google.zxing.MultiFormatReader
-import com.google.zxing.RGBLuminanceSource
+import com.google.zxing.*
 import com.google.zxing.common.HybridBinarizer
 import com.mikepenz.iconics.typeface.library.googlematerial.GoogleMaterial
 import com.mikepenz.materialdrawer.AccountHeader
@@ -74,6 +69,7 @@ import kotlinx.coroutines.withContext
 import openfoodfacts.github.scrachx.openfood.AppFlavor
 import openfoodfacts.github.scrachx.openfood.AppFlavor.Companion.isFlavors
 import openfoodfacts.github.scrachx.openfood.BuildConfig
+import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
 import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper
@@ -92,6 +88,7 @@ import openfoodfacts.github.scrachx.openfood.features.login.LoginActivity.Compan
 import openfoodfacts.github.scrachx.openfood.features.preferences.PreferencesFragment
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity
 import openfoodfacts.github.scrachx.openfood.features.productlists.ProductListsActivity
+import openfoodfacts.github.scrachx.openfood.features.scan.MainActivityHelper
 import openfoodfacts.github.scrachx.openfood.features.scanhistory.ScanHistoryActivity
 import openfoodfacts.github.scrachx.openfood.features.searchbycode.SearchByCodeFragment
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
@@ -104,9 +101,7 @@ import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInsta
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.selectNavigationItem
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
-import openfoodfacts.github.scrachx.openfood.utils.Intent
-import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
-import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener
+import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_ABOUT
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_ADDITIVES
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_ADVANCED_SEARCH
@@ -128,29 +123,6 @@ import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Comp
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_USER
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_YOUR_LISTS
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType
-import openfoodfacts.github.scrachx.openfood.utils.OnKeyboardVisibilityChanged
-import openfoodfacts.github.scrachx.openfood.utils.PreferencesService
-import openfoodfacts.github.scrachx.openfood.utils.SearchSuggestionProvider
-import openfoodfacts.github.scrachx.openfood.utils.SearchType
-import openfoodfacts.github.scrachx.openfood.utils.buildAccountHeader
-import openfoodfacts.github.scrachx.openfood.utils.buildDrawer
-import openfoodfacts.github.scrachx.openfood.utils.dividerItem
-import openfoodfacts.github.scrachx.openfood.utils.getAppPreferences
-import openfoodfacts.github.scrachx.openfood.utils.getLoginPreferences
-import openfoodfacts.github.scrachx.openfood.utils.getLoginUsername
-import openfoodfacts.github.scrachx.openfood.utils.getUserSession
-import openfoodfacts.github.scrachx.openfood.utils.hideKeyboard
-import openfoodfacts.github.scrachx.openfood.utils.isApplicationInstalled
-import openfoodfacts.github.scrachx.openfood.utils.isGranted
-import openfoodfacts.github.scrachx.openfood.utils.isHardwareCameraInstalled
-import openfoodfacts.github.scrachx.openfood.utils.isNetworkConnected
-import openfoodfacts.github.scrachx.openfood.utils.isUserSet
-import openfoodfacts.github.scrachx.openfood.utils.listenToKeyboardVisibilityChanges
-import openfoodfacts.github.scrachx.openfood.utils.primaryItem
-import openfoodfacts.github.scrachx.openfood.utils.profileItem
-import openfoodfacts.github.scrachx.openfood.utils.profileSettingItem
-import openfoodfacts.github.scrachx.openfood.utils.sectionItem
-import openfoodfacts.github.scrachx.openfood.utils.stopListeningToKeyboardVisibilityChanges
 import java.io.FileNotFoundException
 import java.io.IOException
 import javax.inject.Inject
@@ -297,8 +269,10 @@ class MainActivity : BaseActivity(), NavigationDrawerListener, NavigationDrawerH
             }
         }
         if (!isApplicationInstalled(this@MainActivity, BuildConfig.OFOTHERLINKAPP)) {
-            drawerResult.updateName(ITEM_OBF.toLong(),
-                StringHolder("${getString(R.string.install)} ${getString(R.string.open_other_flavor_drawer)}"))
+            drawerResult.updateName(
+                ITEM_OBF.toLong(),
+                StringHolder("${getString(R.string.install)} ${getString(R.string.open_other_flavor_drawer)}")
+            )
         } else {
             drawerResult.updateName(ITEM_OBF.toLong(), StringHolder(getString(R.string.open_other_flavor_drawer)))
         }
@@ -498,14 +472,18 @@ class MainActivity : BaseActivity(), NavigationDrawerListener, NavigationDrawerH
                     ITEM_LOGIN -> loginThenUpdate.launch(Unit)
                     ITEM_ALERT -> newFragment = AllergensAlertFragment.newInstance()
                     ITEM_PREFERENCES -> newFragment = PreferencesFragment.newInstance()
-                    ITEM_ABOUT -> CustomTabActivityHelper.openCustomTab(this@MainActivity,
+                    ITEM_ABOUT -> CustomTabActivityHelper.openCustomTab(
+                        this@MainActivity,
                         customTabsIntent,
                         discoverUri,
-                        WebViewFallback())
-                    ITEM_CONTRIBUTE -> CustomTabActivityHelper.openCustomTab(this@MainActivity,
+                        WebViewFallback()
+                    )
+                    ITEM_CONTRIBUTE -> CustomTabActivityHelper.openCustomTab(
+                        this@MainActivity,
                         customTabsIntent,
                         contributeUri,
-                        WebViewFallback())
+                        WebViewFallback()
+                    )
                     ITEM_INCOMPLETE_PRODUCTS -> startSearch(
                         this@MainActivity,
                         SearchType.INCOMPLETE_PRODUCT,
@@ -531,8 +509,12 @@ class MainActivity : BaseActivity(), NavigationDrawerListener, NavigationDrawerH
                             }
                         } else {
                             try {
-                                startActivity(Intent(Intent.ACTION_VIEW,
-                                    "market://details?id=${BuildConfig.OFOTHERLINKAPP}".toUri()))
+                                startActivity(
+                                    Intent(
+                                        Intent.ACTION_VIEW,
+                                        "market://details?id=${BuildConfig.OFOTHERLINKAPP}".toUri()
+                                    )
+                                )
                             } catch (anfe: ActivityNotFoundException) {
                                 startActivity(
                                     Intent(
@@ -773,63 +755,13 @@ class MainActivity : BaseActivity(), NavigationDrawerListener, NavigationDrawerH
                 showFeedbackDialog()
         }
     }
-    /**
-     * show dialog to ask the user to rate the app/give feedback
-     */
+
+    @Inject
+    lateinit var mainActivityHelper: MainActivityHelper
+
+    /** show dialog to ask the user to rate the app/give feedback */
     private fun showFeedbackDialog() {
-        //dialog for rating the app on play store
-        val manager = ReviewManagerFactory.create(this)
-        val request = manager.requestReviewFlow()
-
-        request.addOnCompleteListener { task ->
-            if (task.isSuccessful) {
-                //have the ReviewInfo object
-                val reviewInfo = task.result
-                val flow = manager.launchReviewFlow(this, reviewInfo)
-                flow.addOnCompleteListener { _ ->
-                    val rateDialog = MaterialAlertDialogBuilder(this)
-                        .setTitle(R.string.app_name)
-                        .setMessage(R.string.user_ask_rate_app)
-                        .setPositiveButton(R.string.rate_app) { dialog, _ ->
-                            //open app page in play store
-                            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$packageName")))
-                            dialog.dismiss()
-                        }
-                        .setNegativeButton(R.string.no_thx) { dialog, _ -> dialog.dismiss() }
-
-                    //dialog for giving feedback
-                    val feedbackDialog = MaterialAlertDialogBuilder(this)
-                        .setTitle(R.string.app_name)
-                        .setMessage(R.string.user_ask_show_feedback_form)
-                        .setPositiveButton(android.R.string.ok) { dialog, _ ->
-                            //show feedback form
-                            CustomTabActivityHelper.openCustomTab(
-                                this@MainActivity,
-                                customTabsIntent,
-                                getString(R.string.feedback_form_url).toUri(),
-                                WebViewFallback(),
-                            )
-                            dialog.dismiss()
-                        }
-                        .setNegativeButton(R.string.txtNo) { dialog, _ -> dialog.dismiss() }
-
-                    MaterialAlertDialogBuilder(this)
-                        .setTitle(R.string.app_name)
-                        .setMessage(R.string.user_enjoying_app)
-                        .setPositiveButton(R.string.txtYes) { dialog, _ ->
-                            prefManager.userAskedToRate = true
-                            rateDialog.show()
-                            dialog.dismiss()
-                        }
-                        .setNegativeButton(R.string.txtNo) { dialog, _ ->
-                            prefManager.userAskedToRate = true
-                            feedbackDialog.show()
-                            dialog.dismiss()
-                        }
-                        .show()
-                }
-            }
-        }
+        mainActivityHelper.showReviewDialog(this, customTabsIntent)
     }
 
     override fun onStop() {
