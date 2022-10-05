@@ -281,7 +281,11 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
                 Toast.makeText(requireContext(), err.message, Toast.LENGTH_SHORT).show()
             }
             binding.uploadingImageProgress.visibility = View.GONE
-            binding.uploadingImageProgressText.setText(R.string.image_uploaded_successfully)
+            binding.uploadingImageProgressText.text = if (sendOther) {
+                getString(R.string.additional_image_uploaded_successfully)
+            } else {
+                getString(R.string.front_image_uploaded_successfully)
+            }
         }
     }
 

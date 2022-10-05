@@ -150,7 +150,7 @@ class ProductEditPhotosFragment : ProductEditFragment() {
         if (errorInUploading) {
             binding.imageProgressText.visibility = View.GONE
         } else {
-            binding.imageProgressText.setText(R.string.image_uploaded_successfully)
+            binding.imageProgressText.setText(R.string.additional_image_uploaded_successfully)
         }
     }
 

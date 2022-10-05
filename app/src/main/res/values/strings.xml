@@ -634,6 +634,9 @@
     <string name="scan_QR_code">Scan QR Code for product website</string>
     <string name="add_at_least_one_picture">Please add at least one picture of this product before proceeding</string>
     <string name="image_uploaded_successfully">Image uploaded successfully</string>
+    <string name="additional_image_uploaded_successfully">Additional image uploaded successfully</string>
+    <string name="front_image_uploaded_successfully">Front image uploaded successfully</string>
+    <string name="ingredients_image_uploaded_successfully">Ingredients image uploaded successfully</string>
     <string name="error_adding_product_photos">Something went wrong while trying to add product photos</string>
     <string name="save_product">Do you want to save the product?</string>
     <string name="error_adding_product">Something went wrong when adding the product</string>

@@ -484,6 +484,8 @@ class EditIngredientsFragment : ProductEditFragment() {
                 .resize(dps50ToPixels, dps50ToPixels)
                 .centerInside()
                 .into(binding.btnAddImageIngredients)
+
+            Toast.makeText(activity,R.string.ingredients_image_uploaded_successfully,Toast.LENGTH_LONG).show()
         }
     }
 
