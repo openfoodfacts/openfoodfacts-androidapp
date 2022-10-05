@@ -12,12 +12,12 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.Cache
 import okhttp3.OkHttpClient
-import openfoodfacts.github.scrachx.openfood.AppFlavors
-import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.category.network.CategoryNetworkService
 import openfoodfacts.github.scrachx.openfood.models.DaoMaster
 import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import openfoodfacts.github.scrachx.openfood.utils.OFFDatabaseHelper
+import openfoodfacts.github.scrachx.openfood.utils.Picasso
+import openfoodfacts.github.scrachx.openfood.utils.buildUpon
 import retrofit2.Retrofit
 import java.io.File
 import javax.inject.Singleton
@@ -31,31 +31,24 @@ class AppModule {
     fun provideDaoSession(@ApplicationContext context: Context): DaoSession {
         // Use only during development: DaoMaster.DevOpenHelper (Drops all table on Upgrade!)
         // Use only during production: OFFDatabaseHelper (see on Upgrade!)
-        val dbName = when (BuildConfig.FLAVOR) {
-            AppFlavors.OPFF -> "open_pet_food_facts"
-            AppFlavors.OBF -> "open_beauty_facts"
-            AppFlavors.OPF -> "open_products_facts"
-            AppFlavors.OFF -> "open_food_facts"
-            else -> "open_food_facts"
-        }
-        return DaoMaster(OFFDatabaseHelper(context, dbName).writableDb).newSession()
+        return DaoMaster(OFFDatabaseHelper(context).writableDb).newSession()
     }
 
     @Provides
     fun provideCategoryNetworkService(retrofit: Retrofit): CategoryNetworkService =
-            retrofit.create(CategoryNetworkService::class.java)
+        retrofit.create()
 
     @Provides
     @Singleton
     fun providePicasso(@ApplicationContext context: Context, httpClient: OkHttpClient): Picasso {
         val cacheSize: Long = 50 * 1024 * 1024
         val cacheDir = File(context.cacheDir, "http-cache")
-        val httpClientWithCache = httpClient.newBuilder()
-                .cache(Cache(cacheDir, cacheSize))
-                .build()
-        return Picasso.Builder(context)
-                .downloader(OkHttp3Downloader(httpClientWithCache))
-                .build()
+        val httpClientWithCache = httpClient.buildUpon {
+            cache(Cache(cacheDir, cacheSize))
+        }
+        return Picasso(context) {
+            downloader(OkHttp3Downloader(httpClientWithCache))
+        }
     }
 
     @Provides

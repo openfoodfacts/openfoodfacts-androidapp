@@ -23,7 +23,6 @@ import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.text.method.LinkMovementMethod
-import android.text.style.ClickableSpan
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -51,10 +50,9 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
-import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
-import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
+import openfoodfacts.github.scrachx.openfood.AppFlavor.Companion.isFlavors
+import openfoodfacts.github.scrachx.openfood.AppFlavor.OFF
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
 import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
@@ -63,9 +61,9 @@ import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabsHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentSummaryProductBinding
 import openfoodfacts.github.scrachx.openfood.features.FullScreenActivityOpener
-import openfoodfacts.github.scrachx.openfood.features.images.manage.ImagesManageActivity
 import openfoodfacts.github.scrachx.openfood.features.additives.AdditiveFragmentHelper.showAdditives
 import openfoodfacts.github.scrachx.openfood.features.compare.ProductCompareActivity.Companion.start
+import openfoodfacts.github.scrachx.openfood.features.images.manage.ImagesManageActivity
 import openfoodfacts.github.scrachx.openfood.features.login.LoginActivity.Companion.LoginContract
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_STATE
@@ -74,15 +72,25 @@ import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewAc
 import openfoodfacts.github.scrachx.openfood.features.product.view.ingredients_analysis.IngredientsWithTagDialogFragment
 import openfoodfacts.github.scrachx.openfood.features.productlist.ProductListActivity
 import openfoodfacts.github.scrachx.openfood.features.productlists.ProductListsActivity
-import openfoodfacts.github.scrachx.openfood.features.productlists.ProductListsActivity.Companion.getProductListsDaoWithDefaultList
+import openfoodfacts.github.scrachx.openfood.features.productlists.ProductListsActivity.Companion.defaultIfEmpty
 import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivity
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
 import openfoodfacts.github.scrachx.openfood.features.shared.adapters.NutrientLevelListAdapter
 import openfoodfacts.github.scrachx.openfood.features.shared.views.showQuestionDialog
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
-import openfoodfacts.github.scrachx.openfood.models.*
+import openfoodfacts.github.scrachx.openfood.models.AnnotationAnswer
+import openfoodfacts.github.scrachx.openfood.models.AnnotationResponse
+import openfoodfacts.github.scrachx.openfood.models.DaoSession
+import openfoodfacts.github.scrachx.openfood.models.NutrientLevelItem
+import openfoodfacts.github.scrachx.openfood.models.Nutriment
+import openfoodfacts.github.scrachx.openfood.models.Product
+import openfoodfacts.github.scrachx.openfood.models.ProductImageField
+import openfoodfacts.github.scrachx.openfood.models.ProductState
+import openfoodfacts.github.scrachx.openfood.models.Question
+import openfoodfacts.github.scrachx.openfood.models.buildLevelItem
 import openfoodfacts.github.scrachx.openfood.models.entities.ListedProduct
 import openfoodfacts.github.scrachx.openfood.models.entities.ListedProductDao
+import openfoodfacts.github.scrachx.openfood.models.entities.ProductLists
 import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveName
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenHelper
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenName
@@ -92,9 +100,26 @@ import openfoodfacts.github.scrachx.openfood.models.entities.label.LabelName
 import openfoodfacts.github.scrachx.openfood.models.entities.tag.TagDao
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.repositories.RobotoffRepository
-import openfoodfacts.github.scrachx.openfood.repositories.WikidataRepository
 import openfoodfacts.github.scrachx.openfood.repositories.TaxonomiesRepository
-import openfoodfacts.github.scrachx.openfood.utils.*
+import openfoodfacts.github.scrachx.openfood.repositories.WikidataRepository
+import openfoodfacts.github.scrachx.openfood.utils.ClickableSpan
+import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
+import openfoodfacts.github.scrachx.openfood.utils.PhotoReceiverHandler
+import openfoodfacts.github.scrachx.openfood.utils.ProductFragmentUtils
+import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState
+import openfoodfacts.github.scrachx.openfood.utils.SearchType
+import openfoodfacts.github.scrachx.openfood.utils.getEcoscoreResource
+import openfoodfacts.github.scrachx.openfood.utils.getNovaGroupResource
+import openfoodfacts.github.scrachx.openfood.utils.getNutriScoreResource
+import openfoodfacts.github.scrachx.openfood.utils.getProductBrandsQuantityDetails
+import openfoodfacts.github.scrachx.openfood.utils.isBatteryLevelLow
+import openfoodfacts.github.scrachx.openfood.utils.isDisableImageLoad
+import openfoodfacts.github.scrachx.openfood.utils.isHardwareCameraInstalled
+import openfoodfacts.github.scrachx.openfood.utils.isPerServingInLiter
+import openfoodfacts.github.scrachx.openfood.utils.isUserSet
+import openfoodfacts.github.scrachx.openfood.utils.list
+import openfoodfacts.github.scrachx.openfood.utils.requireProductState
+import openfoodfacts.github.scrachx.openfood.utils.showBottomSheet
 import java.io.File
 import javax.inject.Inject
 import kotlin.random.Random
@@ -218,7 +243,11 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         productState = requireProductState()
         refreshView(productState)
 
-        presenter = SummaryProductPresenter(localeManager.getLanguage(), product, this, taxonomiesRepository, robotoffRepository)
+        presenter = SummaryProductPresenter(localeManager.getLanguage(),
+            product,
+            this,
+            taxonomiesRepository,
+            robotoffRepository)
     }
 
 
@@ -346,7 +375,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
             pBrands.split(",").withIndex().forEach { (i, brand) ->
                 if (i > 0) binding.textBrandProduct.append(", ")
                 binding.textBrandProduct.append(
-                    getSearchLinkText(
+                    ProductFragmentUtils.getSearchLinkText(
                         brand.trim { it <= ' ' },
                         SearchType.BRAND,
                         requireActivity()
@@ -369,7 +398,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
                     .removeSurrounding("[", "]")
                     .split(", ")
                     .map { tag ->
-                        getSearchLinkText(
+                        ProductFragmentUtils.getSearchLinkText(
                             getEmbCode(tag).trim { it <= ' ' },
                             SearchType.EMB,
                             requireActivity()
@@ -392,78 +421,43 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
 
         if (isFlavors(OFF)) {
             binding.scoresLayout.visibility = View.VISIBLE
-            val levelItems = mutableListOf<NutrientLevelItem>()
-            val nutriments = product.nutriments
-            val nutrientLevels = product.nutrientLevels
-            var fat: NutrimentLevel? = null
-            var saturatedFat: NutrimentLevel? = null
-            var sugars: NutrimentLevel? = null
-            var salt: NutrimentLevel? = null
-            if (nutrientLevels != null) {
-                fat = nutrientLevels.fat
-                saturatedFat = nutrientLevels.saturatedFat
-                sugars = nutrientLevels.sugars
-                salt = nutrientLevels.salt
-            }
 
             val servingInL = product.isPerServingInLiter()
             binding.textNutrientTxt.setText(if (servingInL != true) R.string.txtNutrientLevel100g else R.string.txtNutrientLevel100ml)
-            if (fat != null || salt != null || saturatedFat != null || sugars != null) {
+
+            val nutrientLevels = product.nutrientLevels
+            val fat = nutrientLevels?.fat
+            val saturatedFat = nutrientLevels?.saturatedFat
+            val sugars = nutrientLevels?.sugars
+            val salt = nutrientLevels?.salt
+
+            val levelItems = mutableListOf<NutrientLevelItem>()
+            if (fat == null && salt == null && saturatedFat == null && sugars == null) {
+                binding.cvNutritionLights.visibility = View.GONE
+            } else {
                 // prefetch the URL
                 nutritionScoreUri = Uri.parse(getString(R.string.nutriscore_uri))
                 customTabActivityHelper.mayLaunchUrl(nutritionScoreUri, null, null)
+
+                val nutriments = product.nutriments
+                levelItems += listOfNotNull(
+                    nutriments.buildLevelItem(requireContext(), Nutriment.FAT, fat),
+                    nutriments.buildLevelItem(requireContext(), Nutriment.SATURATED_FAT, saturatedFat),
+                    nutriments.buildLevelItem(requireContext(), Nutriment.SUGARS, sugars),
+                    nutriments.buildLevelItem(requireContext(), Nutriment.SALT, salt),
+                )
+
                 binding.cvNutritionLights.visibility = View.VISIBLE
-                val fatNutriment = nutriments[Nutriment.FAT]
-                if (fat != null && fatNutriment != null) {
-                    levelItems += NutrientLevelItem(
-                        getString(R.string.txtFat),
-                        fatNutriment.getPer100gDisplayString(),
-                        fat.getLocalize(requireContext()),
-                        fat.getImgRes(),
-                    )
-                }
-                val saturatedFatNutriment = nutriments[Nutriment.SATURATED_FAT]
-                if (saturatedFat != null && saturatedFatNutriment != null) {
-                    val saturatedFatLocalize = saturatedFat.getLocalize(requireContext())
-                    levelItems += NutrientLevelItem(
-                        getString(R.string.txtSaturatedFat),
-                        saturatedFatNutriment.getPer100gDisplayString(),
-                        saturatedFatLocalize,
-                        saturatedFat.getImgRes()
-                    )
-                }
-                val sugarsNutriment = nutriments[Nutriment.SUGARS]
-                if (sugars != null && sugarsNutriment != null) {
-                    levelItems += NutrientLevelItem(
-                        getString(R.string.txtSugars),
-                        sugarsNutriment.getPer100gDisplayString(),
-                        sugars.getLocalize(requireContext()),
-                        sugars.getImgRes(),
-                    )
-                }
-                val saltNutriment = nutriments[Nutriment.SALT]
-                if (salt != null && saltNutriment != null) {
-                    val saltLocalize = salt.getLocalize(requireContext())
-                    levelItems += NutrientLevelItem(
-                        getString(R.string.txtSalt),
-                        saltNutriment.getPer100gDisplayString(),
-                        saltLocalize,
-                        salt.getImgRes(),
-                    )
-                }
-            } else {
-                binding.cvNutritionLights.visibility = View.GONE
             }
 
-            binding.listNutrientLevels.layoutManager = LinearLayoutManager(requireContext())
-            binding.listNutrientLevels.adapter = NutrientLevelListAdapter(requireContext(), levelItems)
+            binding.listNutrientLevels.apply {
+                layoutManager = LinearLayoutManager(requireContext())
+                adapter = NutrientLevelListAdapter(requireContext(), levelItems)
+            }
 
             refreshNutriScore()
-
             refreshNovaIcon()
-
             refreshCO2OrEcoscoreIcon()
-
             refreshScoresLayout()
         } else {
             binding.scoresLayout.visibility = View.GONE
@@ -503,7 +497,8 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         binding.novaGroup.setImageResource(product.getNovaGroupResource())
         binding.novaGroup.setOnClickListener {
             val uri = Uri.parse(getString(R.string.url_nova_groups))
-            val customTabsIntent = CustomTabsHelper.getCustomTabsIntent(requireContext(), customTabActivityHelper.session)
+            val customTabsIntent =
+                CustomTabsHelper.getCustomTabsIntent(requireContext(), customTabActivityHelper.session)
             CustomTabActivityHelper.openCustomTab(requireActivity(), customTabsIntent, uri, WebViewFallback())
         }
     }
@@ -512,7 +507,8 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         binding.ecoscoreIcon.setImageResource(product.getEcoscoreResource())
         binding.ecoscoreIcon.setOnClickListener {
             val uri = getString(R.string.ecoscore_url).toUri()
-            val customTabsIntent = CustomTabsHelper.getCustomTabsIntent(requireContext(), customTabActivityHelper.session)
+            val customTabsIntent =
+                CustomTabsHelper.getCustomTabsIntent(requireContext(), customTabActivityHelper.session)
             CustomTabActivityHelper.openCustomTab(requireActivity(), customTabsIntent, uri, WebViewFallback())
         }
     }
@@ -528,7 +524,8 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
             }
 
             if (lists.isNotEmpty()) {
-                binding.actionAddToListButtonLayout.background = ResourcesCompat.getDrawable(resources, R.color.grey_300, null)
+                binding.actionAddToListButtonLayout.background =
+                    ResourcesCompat.getDrawable(resources, R.color.grey_300, null)
                 binding.actionButtonsLayout.updatePadding(bottom = 0, top = 0)
                 binding.listChips.visibility = View.VISIBLE
             }
@@ -562,7 +559,9 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         val statesTags = product.statesTags
         showCategoryPrompt = "en:categories-to-be-completed" in statesTags && !hasCategoryInsightQuestion
         showNutrientPrompt = "en:nutrition-facts-to-be-completed" in statesTags && product.noNutritionData != "on"
-        showEcoScorePrompt = "en:categories-completed" in statesTags && (product.ecoscore.isNullOrEmpty() || product.ecoscore.equals("unknown", true))
+        showEcoScorePrompt =
+            "en:categories-completed" in statesTags && (product.ecoscore.isNullOrEmpty() || product.ecoscore.equals("unknown",
+                true))
 
         Log.d(LOG_TAG, "Show category prompt: $showCategoryPrompt")
         Log.d(LOG_TAG, "Show nutrient prompt: $showNutrientPrompt")
@@ -598,7 +597,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
                 }
                 is ProductInfoState.Empty -> binding.textAdditiveProduct.visibility = View.GONE
                 is ProductInfoState.Data -> {
-                    showAdditives(state.data, binding.textAdditiveProduct, wikidataClient, this)
+                    showAdditives(binding.textAdditiveProduct, state.data, wikidataClient, this)
                 }
             }
         }
@@ -810,20 +809,19 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         mTagDao.queryBuilder().where(TagDao.Properties.Id.eq(embTag)).unique()?.name ?: embTag
 
     private fun getLabelTag(label: LabelName): CharSequence {
-        val clickableSpan = object : ClickableSpan() {
-            override fun onClick(view: View) {
-                if (label.isWikiDataIdPresent) {
-                    lifecycleScope.launch {
-                        val result = wikidataClient.getEntityData(label.wikiDataId)
-                        val activity = activity
-                        if (activity?.isFinishing == false) {
-                            showBottomSheet(result, label, activity.supportFragmentManager)
-                        }
+        val clickableSpan = ClickableSpan {
+            if (label.isWikiDataIdPresent) {
+                lifecycleScope.launch {
+                    val result = wikidataClient.getEntityData(label.wikiDataId)
+                    val activity = activity
+                    if (activity?.isFinishing == false) {
+                        showBottomSheet(result, label, activity.supportFragmentManager)
                     }
-                } else {
-                    ProductSearchActivity.start(requireContext(), SearchType.LABEL, label.labelTag, label.name)
                 }
+            } else {
+                ProductSearchActivity.start(requireContext(), SearchType.LABEL, label.labelTag, label.name)
             }
+
         }
         return buildSpannedString {
             inSpans(clickableSpan) { append(label.name) }
@@ -834,36 +832,24 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     private val loginThenEditLauncher = registerForActivityResult(LoginContract())
     { logged -> if (logged) editProduct() }
 
-    private val loginThenEditNutrition = registerForActivityResult(LoginContract())
-    { logged -> if (logged) editProductNutriscore() }
-
     private fun onEditProductButtonClick() {
         if (requireActivity().isUserSet()) {
             editProduct()
         } else {
-            buildSignInDialog(requireActivity(),
-                onPositive = { d, _ ->
-                    d.dismiss()
-                    loginThenEditLauncher.launch(null)
-                },
-                onNegative = { d, _ -> d.dismiss() }
-            ).show()
+            showLoginDialog(loginThenEditLauncher)
         }
     }
 
+    private val loginThenEditNutrition = registerForActivityResult(LoginContract())
+    { logged -> if (logged) editProductNutriscore() }
+
     private fun onAddNutriScorePromptClick() {
         if (!isFlavors(OFF)) return
+
         if (requireActivity().isUserSet()) {
             editProductNutriscore()
         } else {
-            buildSignInDialog(
-                requireActivity(),
-                onPositive = { d, _ ->
-                    d.dismiss()
-                    loginThenEditNutrition.launch(null)
-                },
-                onNegative = { d, _ -> d.dismiss() }
-            ).show()
+            showLoginDialog(loginThenEditNutrition)
         }
     }
 
@@ -896,12 +882,11 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     private fun onBookmarkProductButtonClick() {
         val context = requireContext()
 
-        // TODO: 19/06/2021 remove runBlocking
-        val productLists = runBlocking { daoSession.getProductListsDaoWithDefaultList(context).loadAll() }
+        val productLists = daoSession.productListsDao.defaultIfEmpty(context).loadAll()
 
         val dialog = MaterialAlertDialogBuilder(context)
-            .setTitle(R.string.add_to_product_lists)
-            .setView(R.layout.dialog_add_to_list)
+            .setTitle(R.string.dialog_add_product_to_list_title)
+            .setView(R.layout.dialog_add_product_to_list)
             .show()
 
         // Set recycler view
@@ -920,7 +905,8 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
                 it.productDetails = product.getProductBrandsQuantityDetails()
                 it.imageUrl = product.getImageSmallUrl(localeManager.getLanguage())
             }
-            daoSession.listedProductDao.insertOrReplace(product)
+            addListedProductToDatabase(product, list)
+            matomoAnalytics.trackEvent(AnalyticsEvent.ShoppingListProductAdded(product.barcode))
             dialog.dismiss()
             onRefresh()
         }
@@ -928,12 +914,20 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         // Add listener to text view
         val addToNewList = dialog.findViewById<TextView>(R.id.tvAddToNewList)!!
         addToNewList.setOnClickListener {
-            context.startActivity(Intent(context, ProductListsActivity::class.java).apply {
-                putExtra("product", product)
-            })
+            ProductListsActivity.start(context, productToAdd = product)
         }
     }
 
+    private fun addListedProductToDatabase(
+        product: ListedProduct,
+        list: ProductLists,
+    ) {
+        daoSession.listedProductDao.insertOrReplace(product)
+        daoSession.productListsDao.update(list.apply {
+            products.add(product)
+            numOfProducts++
+        })
+    }
 
     private fun takeMorePicture() {
         sendOther = true
@@ -965,6 +959,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         doChooseOrTakePhotos()
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -983,8 +978,8 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
 
         val shouldRefresh = ImagesManageActivity.isImageModified(requestCode, resultCode)
 
-        if (shouldRefresh && activity is ProductViewActivity) {
-            (activity as ProductViewActivity).onRefresh()
+        if (shouldRefresh) {
+            (activity as? ProductViewActivity)?.onRefresh()
         }
     }
 

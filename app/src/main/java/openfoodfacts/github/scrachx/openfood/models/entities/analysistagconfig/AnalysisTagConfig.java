@@ -7,10 +7,11 @@ import org.greenrobot.greendao.annotation.Index;
 import org.greenrobot.greendao.annotation.Keep;
 import org.greenrobot.greendao.annotation.Transient;
 
+import openfoodfacts.github.scrachx.openfood.models.entities.TaxonomyEntity;
 import openfoodfacts.github.scrachx.openfood.models.entities.analysistag.AnalysisTagName;
 
 @Entity
-public class AnalysisTagConfig {
+public class AnalysisTagConfig implements TaxonomyEntity {
     @Id(autoincrement = true)
     private Long id;
     @Index

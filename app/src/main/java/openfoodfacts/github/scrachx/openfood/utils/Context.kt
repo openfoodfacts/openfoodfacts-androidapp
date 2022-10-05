@@ -4,7 +4,10 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.content.pm.PackageManager
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import android.os.BatteryManager
+import android.os.Build
 import android.util.Log
 import androidx.preference.PreferenceManager.getDefaultSharedPreferences
 import java.io.File
@@ -78,4 +81,23 @@ fun Context.getCameraCacheLocation(): File {
         else throw IOException("Couldn't create directory '${picDir.absolutePath}'.")
     }
     return picDir
+}
+
+/**
+ * Check if the user is connected to a network. This can be any network.
+ *
+ * @return `true` if connected or connecting;
+ *
+ * `false` otherwise.
+ *
+ */
+@Suppress("DEPRECATION")
+fun Context.isNetworkConnected(): Boolean {
+    val cm = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        val capability = cm.getNetworkCapabilities(cm.activeNetwork)
+        capability?.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET) ?: false
+    } else {
+        cm.activeNetworkInfo?.isConnectedOrConnecting ?: false
+    }
 }

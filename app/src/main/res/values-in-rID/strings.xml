@@ -626,16 +626,15 @@
     <string name="report_img">Laporkan Gambar</string>
     <string name="detected_ingredients">Kandungan Bahan Terdeteksi</string>
     <string name="txtConnectionError">Kami tidak dapat mengunduh data tertentu. Ini mungkin karena kesalahan koneksi.</string>
-    <string name="set_image_name">Berhasil menetapkan gambar sebagai</string>
     <string name="addtive_search">Cari zat aditif</string>
     <string name="additives">Zat - zat aditif</string>
     <!--used for product_lists implementation-->
-    <string name="add_to_product_lists">Tambahkan ke daftar Anda</string>
-    <string name="txt_create_new_list">Buat daftar baru</string>
-    <string name="txt_add_to_new_list">Tambahkan ke daftar baru</string>
-    <string name="create_new_list_list_name">Nama Daftar</string>
-    <string name="txt_eaten_products">Produk - produk yang dimakan</string>
-    <string name="txt_products_to_buy">Produk - produk untuk dibeli</string>
+    <string name="dialog_add_product_to_list_title">Tambahkan ke daftar Anda</string>
+    <string name="dialog_create_new_list_title">Buat daftar baru</string>
+    <string name="dialog_add_product_to_list_new">Tambahkan ke daftar baru</string>
+    <string name="dialog_create_new_list_hint">Nama Daftar</string>
+    <string name="default_list_title_stored">Produk - produk yang dimakan</string>
+    <string name="default_list_title_to_buy">Produk - produk untuk dibeli</string>
     <string name="txt_exporting_your_listed_products">Mengekspor Produk - Produk Anda…</string>
     <string name="txt_your_listed_products_exported">Produk - produk Anda telah diekspor</string>
     <string name="txt_discard">Buang</string>

@@ -7,8 +7,10 @@ import org.greenrobot.greendao.annotation.Index;
 
 import java.io.Serializable;
 
+import openfoodfacts.github.scrachx.openfood.models.entities.TaxonomyEntity;
+
 @Entity(indexes = {@Index(value = "barcode", unique = true)})
-public class InvalidBarcode implements Serializable {
+public class InvalidBarcode implements Serializable, TaxonomyEntity {
     private static final long serialVersionUID = 1L;
     @Id
     private String barcode;

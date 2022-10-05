@@ -636,16 +636,15 @@
     <string name="report_img">Αναφορά εικόνας</string>
     <string name="detected_ingredients">Detected Ingredients</string>
     <string name="txtConnectionError">Δεν ήταν δυνατή η λήψη ορισμένων δεδομένων. Mπορεί να οφείλεται σε σφάλμα σύνδεσης.</string>
-    <string name="set_image_name">Successfully set the image as</string>
     <string name="addtive_search">Search for a additive</string>
     <string name="additives">Προσθετα</string>
     <!--used for product_lists implementation-->
-    <string name="add_to_product_lists">Προσθήκη στην λίστα</string>
-    <string name="txt_create_new_list">Δημιουργία νέας λίστας</string>
-    <string name="txt_add_to_new_list">Προσθήκη σε νέα λίστα</string>
-    <string name="create_new_list_list_name">List Name</string>
-    <string name="txt_eaten_products">Products I have</string>
-    <string name="txt_products_to_buy">Προϊόντα προς αγορά</string>
+    <string name="dialog_add_product_to_list_title">Προσθήκη στην λίστα</string>
+    <string name="dialog_create_new_list_title">Δημιουργία νέας λίστας</string>
+    <string name="dialog_add_product_to_list_new">Προσθήκη σε νέα λίστα</string>
+    <string name="dialog_create_new_list_hint">List Name</string>
+    <string name="default_list_title_stored">Products I have</string>
+    <string name="default_list_title_to_buy">Προϊόντα προς αγορά</string>
     <string name="txt_exporting_your_listed_products">Εξαγωγή των προϊόντων σας…</string>
     <string name="txt_your_listed_products_exported">Τα προϊόντα σας έχουν εξαχθεί</string>
     <string name="txt_discard">Ακύρωση</string>

@@ -18,11 +18,11 @@ package openfoodfacts.github.scrachx.openfood.features.shared
 import android.Manifest
 import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
 import android.view.View
+import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.CallSuper
 import androidx.core.content.ContextCompat
@@ -35,6 +35,8 @@ import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.listeners.OnRefreshListener
 import openfoodfacts.github.scrachx.openfood.listeners.OnRefreshViewListener
 import openfoodfacts.github.scrachx.openfood.models.ProductState
+import openfoodfacts.github.scrachx.openfood.utils.ProductFragmentUtils
+import openfoodfacts.github.scrachx.openfood.utils.isGranted
 import pl.aprilapps.easyphotopicker.EasyImage
 import java.io.File
 
@@ -52,10 +54,10 @@ abstract class BaseFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener, 
                 .setMessage(R.string.permission_denied)
                 .setNegativeButton(R.string.txtNo) { d, _ -> d.dismiss() }
                 .setPositiveButton(R.string.txtYes) { _, _ ->
-                    startActivity(Intent().apply {
-                        action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
-                        data = Uri.fromParts("package", requireActivity().packageName, null)
-                    })
+                    startActivity(Intent(
+                        Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+                        Uri.fromParts("package", requireActivity().packageName, null),
+                    ))
                 }
                 .show()
         }
@@ -93,15 +95,16 @@ abstract class BaseFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener, 
     protected fun doChooseOrTakePhotos() {
         if (canTakePhotos()) {
             EasyImage.openCamera(this, 0)
-            return
+        } else {
+            cameraPermissionRequestLauncher.launch(Manifest.permission.CAMERA)
         }
-        // Ask for permissions
-        cameraPermissionRequestLauncher.launch(Manifest.permission.CAMERA)
     }
 
     protected open fun doOnPhotosPermissionGranted() = Unit
 
     protected fun cropRotateImage(uri: Uri, title: String?) {
+        val context = requireContext()
+
         CropImage.activity(uri)
             .setCropMenuCropButtonIcon(R.drawable.ic_check_white_24dp)
             .setMinCropResultSize(MIN_CROP_RESULT_WIDTH_ACCEPTED_BY_OFF, MIN_CROP_RESULT_HEIGHT_ACCEPTED_BY_OFF)
@@ -110,13 +113,24 @@ abstract class BaseFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener, 
             .setAllowRotation(true)
             .setAllowCounterRotation(true)
             .apply { if (title != null) setActivityTitle(title) }
-            .start(requireContext(), this)
+            .start(context, this)
     }
 
     protected fun cropRotateImage(image: File, title: String?) = cropRotateImage(image.toUri(), title)
 
     private fun canTakePhotos() =
-        ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA) == PERMISSION_GRANTED
+        ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA).isGranted()
+
+    protected fun showLoginDialog(loginContract: ActivityResultLauncher<Unit>) {
+        ProductFragmentUtils.buildSignInDialog(
+            requireActivity(),
+            onPositive = { dialog, _ ->
+                dialog.dismiss()
+                loginContract.launch(Unit)
+            },
+            onNegative = { d, _ -> d.dismiss() }
+        ).show()
+    }
 
     companion object {
         /**

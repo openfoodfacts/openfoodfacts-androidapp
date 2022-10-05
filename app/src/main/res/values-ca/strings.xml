@@ -642,7 +642,6 @@
     <string name="report_img">Reporteu imatge</string>
     <string name="detected_ingredients">Ingredients detectats</string>
     <string name="txtConnectionError">No hem pogut descarregar certes dades. Potser ha estat per una errada de connexió.</string>
-    <string name="set_image_name">Imatge configurada correctament com</string>
     <string name="pref_fast_addition_title">Mode d\'addició ràpida</string>
     <string name="pref_fast_addition_summary">Permet l\'addició ràpida de productes amb el mínim d\'atributs</string>
     <string name="pref_crop_new_images_title">Retalla les imatges noves</string>
@@ -650,12 +649,12 @@
     <string name="addtive_search">Cerqueu un additiu</string>
     <string name="additives">Additius</string>
     <!--used for product_lists implementation-->
-    <string name="add_to_product_lists">Afegeix a les vostres llistes</string>
-    <string name="txt_create_new_list">Crea una llista nova</string>
-    <string name="txt_add_to_new_list">Afegeix a una llista nova</string>
-    <string name="create_new_list_list_name">Nom de la llista</string>
-    <string name="txt_eaten_products">Productes consumits</string>
-    <string name="txt_products_to_buy">Productes per comprar</string>
+    <string name="dialog_add_product_to_list_title">Afegeix a les vostres llistes</string>
+    <string name="dialog_create_new_list_title">Crea una llista nova</string>
+    <string name="dialog_add_product_to_list_new">Afegeix a una llista nova</string>
+    <string name="dialog_create_new_list_hint">Nom de la llista</string>
+    <string name="default_list_title_stored">Productes consumits</string>
+    <string name="default_list_title_to_buy">Productes per comprar</string>
     <string name="txt_exporting_your_listed_products">Exportant Els Vostres Productes…</string>
     <string name="txt_your_listed_products_exported">Els vostres productes s\'han exportat</string>
     <string name="txt_discard">Descarta</string>

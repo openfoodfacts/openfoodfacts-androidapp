@@ -642,7 +642,6 @@
     <string name="report_img">Rapporter billede</string>
     <string name="detected_ingredients">Detekterede ingredienser</string>
     <string name="txtConnectionError">Visse data kunne ikke downloades. Dette kan skyldes en forbindelsesfejl.</string>
-    <string name="set_image_name">Foto angivet som</string>
     <string name="pref_fast_addition_title">Hurtig tilføjelse-funktion</string>
     <string name="pref_fast_addition_summary">Gør det muligt hurtigt at tilføje produkter med færre attributter</string>
     <string name="pref_crop_new_images_title">Beskær nye fotos</string>
@@ -650,12 +649,12 @@
     <string name="addtive_search">Søg efter en tilsætningsstof</string>
     <string name="additives">Tilsætningsstoffer</string>
     <!--used for product_lists implementation-->
-    <string name="add_to_product_lists">Føj til dine lister</string>
-    <string name="txt_create_new_list">Opret en ny liste</string>
-    <string name="txt_add_to_new_list">Føj til en ny lliste</string>
-    <string name="create_new_list_list_name">Listens navn</string>
-    <string name="txt_eaten_products">Spiste produkter</string>
-    <string name="txt_products_to_buy">Produkter at købe</string>
+    <string name="dialog_add_product_to_list_title">Føj til dine lister</string>
+    <string name="dialog_create_new_list_title">Opret en ny liste</string>
+    <string name="dialog_add_product_to_list_new">Føj til en ny lliste</string>
+    <string name="dialog_create_new_list_hint">Listens navn</string>
+    <string name="default_list_title_stored">Spiste produkter</string>
+    <string name="default_list_title_to_buy">Produkter at købe</string>
     <string name="txt_exporting_your_listed_products">Eksporterer dine produkter…</string>
     <string name="txt_your_listed_products_exported">Din produkter er nu eksporteret</string>
     <string name="txt_discard">Kassér</string>

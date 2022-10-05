@@ -49,16 +49,40 @@ import openfoodfacts.github.scrachx.openfood.features.adapters.LanguageDataAdapt
 import openfoodfacts.github.scrachx.openfood.features.images.select.ImagesSelectActivity
 import openfoodfacts.github.scrachx.openfood.features.login.LoginActivity
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
-import openfoodfacts.github.scrachx.openfood.images.*
+import openfoodfacts.github.scrachx.openfood.images.IMAGE_STRING_ID
+import openfoodfacts.github.scrachx.openfood.images.IMAGE_TYPE
+import openfoodfacts.github.scrachx.openfood.images.IMAGE_URL
+import openfoodfacts.github.scrachx.openfood.images.IMG_ID
+import openfoodfacts.github.scrachx.openfood.images.ImageSize
+import openfoodfacts.github.scrachx.openfood.images.ImageTransformation
+import openfoodfacts.github.scrachx.openfood.images.LANGUAGE
+import openfoodfacts.github.scrachx.openfood.images.PRODUCT
+import openfoodfacts.github.scrachx.openfood.images.PRODUCT_BARCODE
+import openfoodfacts.github.scrachx.openfood.images.ProductImage
+import openfoodfacts.github.scrachx.openfood.images.getImageStringKey
+import openfoodfacts.github.scrachx.openfood.images.getInitialServerTransformation
+import openfoodfacts.github.scrachx.openfood.images.getLanguageCodeFromUrl
+import openfoodfacts.github.scrachx.openfood.images.getResourceId
+import openfoodfacts.github.scrachx.openfood.images.getResourceIdForEditAction
+import openfoodfacts.github.scrachx.openfood.images.getScreenTransformation
+import openfoodfacts.github.scrachx.openfood.images.toServerTransformation
 import openfoodfacts.github.scrachx.openfood.models.LanguageData
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.models.findByCode
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
-import openfoodfacts.github.scrachx.openfood.utils.*
+import openfoodfacts.github.scrachx.openfood.utils.FileDownloader
+import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
+import openfoodfacts.github.scrachx.openfood.utils.LocaleUtils
+import openfoodfacts.github.scrachx.openfood.utils.PhotoReceiverHandler
+import openfoodfacts.github.scrachx.openfood.utils.SupportedLanguages
+import openfoodfacts.github.scrachx.openfood.utils.SwipeDetector
 import openfoodfacts.github.scrachx.openfood.utils.SwipeDetector.OnSwipeEventListener
 import openfoodfacts.github.scrachx.openfood.utils.SwipeDetector.SwipeTypeEnum
+import openfoodfacts.github.scrachx.openfood.utils.getAppPreferences
+import openfoodfacts.github.scrachx.openfood.utils.isAbsoluteUrl
+import openfoodfacts.github.scrachx.openfood.utils.isUserSet
 import org.apache.commons.lang3.StringUtils
 import pl.aprilapps.easyphotopicker.EasyImage
 import smartdevelop.ir.eram.showcaseviewlib.GuideView
@@ -114,14 +138,17 @@ class ImagesManageActivity : BaseActivity() {
         }
 
         binding.comboImageType.onItemSelectedListener = object : OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View, position: Int, id: Long) =
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) =
                 onImageTypeChanged()
 
             override fun onNothingSelected(parent: AdapterView<*>?) = Unit // Do nothing
         }
         settings.let {
             if (it.getBoolean(getString(R.string.check_first_time), true)) {
-                startShowCase(getString(R.string.title_image_type), getString(R.string.content_image_type), R.id.comboImageType, 1)
+                startShowCase(getString(R.string.title_image_type),
+                    getString(R.string.content_image_type),
+                    R.id.comboImageType,
+                    1)
             }
         }
 
@@ -172,12 +199,30 @@ class ImagesManageActivity : BaseActivity() {
             .setDismissType(GuideView.DismissType.outside)
             .setGuideListener {
                 when (type) {
-                    1 -> startShowCase(getString(R.string.title_choose_language), getString(R.string.content_choose_language), R.id.comboLanguages, 2)
-                    2 -> startShowCase(getString(R.string.title_add_photo), getString(R.string.content_add_photo), R.id.btnAddImage, 3)
-                    3 -> startShowCase(getString(R.string.title_choose_photo), getString(R.string.content_choose_photo), R.id.btnChooseImage, 4)
-                    4 -> startShowCase(getString(R.string.title_edit_photo), getString(R.string.content_edit_photo), R.id.btnEditImage, 5)
-                    5 -> startShowCase(getString(R.string.title_unselect_photo), getString(R.string.content_unselect_photo), R.id.btnUnselectImage, 6)
-                    6 -> startShowCase(getString(R.string.title_exit), getString(R.string.content_exit), R.id.btn_done, 7)
+                    1 -> startShowCase(getString(R.string.title_choose_language),
+                        getString(R.string.content_choose_language),
+                        R.id.comboLanguages,
+                        2)
+                    2 -> startShowCase(getString(R.string.title_add_photo),
+                        getString(R.string.content_add_photo),
+                        R.id.btnAddImage,
+                        3)
+                    3 -> startShowCase(getString(R.string.title_choose_photo),
+                        getString(R.string.content_choose_photo),
+                        R.id.btnChooseImage,
+                        4)
+                    4 -> startShowCase(getString(R.string.title_edit_photo),
+                        getString(R.string.content_edit_photo),
+                        R.id.btnEditImage,
+                        5)
+                    5 -> startShowCase(getString(R.string.title_unselect_photo),
+                        getString(R.string.content_unselect_photo),
+                        R.id.btnUnselectImage,
+                        6)
+                    6 -> startShowCase(getString(R.string.title_exit),
+                        getString(R.string.content_exit),
+                        R.id.btn_done,
+                        7)
                     7 -> settings.edit { putBoolean(getString(R.string.check_first_time), false) }
                 }
             }
@@ -260,7 +305,8 @@ class ImagesManageActivity : BaseActivity() {
 
     private fun updateToolbarTitle(product: Product?) {
         product?.let {
-            binding.toolbar.title = "${it.getProductName(localeManager.getLanguage()).orEmpty()} / ${binding.comboImageType.selectedItem}"
+            binding.toolbar.title =
+                "${it.getProductName(localeManager.getLanguage()).orEmpty()} / ${binding.comboImageType.selectedItem}"
         }
     }
 
@@ -299,7 +345,9 @@ class ImagesManageActivity : BaseActivity() {
                     override fun onError(ex: Exception) {
                         if (_binding == null) return
                         binding.imageViewFullScreen.visibility = View.VISIBLE
-                        Toast.makeText(this@ImagesManageActivity, resources.getString(R.string.txtConnectionError), Toast.LENGTH_LONG).show()
+                        Toast.makeText(this@ImagesManageActivity,
+                            resources.getString(R.string.txtConnectionError),
+                            Toast.LENGTH_LONG).show()
                         stopRefresh()
                     }
                 })
@@ -450,7 +498,8 @@ class ImagesManageActivity : BaseActivity() {
     }
 
     private fun updateSelectDefaultLanguageAction() {
-        val isDefault = getProduct()?.lang != null && getCurrentLanguage() == LocaleUtils.parseLocale(getProduct()!!.lang).language
+        val isDefault =
+            getProduct()?.lang != null && getCurrentLanguage() == LocaleUtils.parseLocale(getProduct()!!.lang).language
         binding.btnChooseDefaultLanguage.visibility = if (isDefault) View.INVISIBLE else View.VISIBLE
     }
 
@@ -465,8 +514,11 @@ class ImagesManageActivity : BaseActivity() {
         val transformation = getScreenTransformation(product, productImageField, language)
 
         // The first time, the images properties are not loaded...
-        if (transformation.isEmpty()) {
-            updateProductImagesInfo { editPhoto(productImageField, getScreenTransformation(product, productImageField, language)) }
+        if (transformation.isUrlEmpty()) {
+            updateProductImagesInfo {
+                editPhoto(productImageField,
+                    getScreenTransformation(product, productImageField, language))
+            }
         }
         editPhoto(productImageField, transformation)
     }
@@ -543,6 +595,7 @@ class ImagesManageActivity : BaseActivity() {
     }
 
 
+    @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         val isResultOk = resultCode == RESULT_OK
@@ -582,14 +635,17 @@ class ImagesManageActivity : BaseActivity() {
             startRefresh(StringUtils.EMPTY)
             val result = CropImage.getActivityResult(dataFromCropActivity)!!
             val product = requireProduct()
-            val currentServerTransformation = getInitialServerTransformation(product, getSelectedType(), getCurrentLanguage())
+            val currentServerTransformation =
+                getInitialServerTransformation(product, getSelectedType(), getCurrentLanguage())
             val newServerTransformation =
-                toServerTransformation(ImageTransformation(result.rotation, result.cropRect), product, getSelectedType(), getCurrentLanguage())
+                toServerTransformation(ImageTransformation(result.rotation, result.cropRect),
+                    product,
+                    getSelectedType(),
+                    getCurrentLanguage())
             val isModified = currentServerTransformation != newServerTransformation
             if (isModified) {
                 startRefresh(getString(R.string.toastSending))
-                val imgMap = mutableMapOf(IMG_ID to newServerTransformation.imageId!!)
-                newServerTransformation.applyToMap(imgMap)
+                val imgMap = newServerTransformation.toMap() + mapOf(IMG_ID to newServerTransformation.imageId!!)
                 postEditImage(imgMap)
             } else {
                 stopRefresh()

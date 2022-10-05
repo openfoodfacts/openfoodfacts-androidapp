@@ -648,16 +648,15 @@
     <string name="report_img">Report Image</string>
     <string name="detected_ingredients">Виявлені інгредієнти</string>
     <string name="txtConnectionError">Не вдалося завантажити певні дані. Це може бути пов\'язано з помилкою підключення.</string>
-    <string name="set_image_name">Зображення встановлено як</string>
     <string name="addtive_search">Search for a additive</string>
     <string name="additives">Добавки</string>
     <!--used for product_lists implementation-->
-    <string name="add_to_product_lists">Додайте до своїх списків</string>
-    <string name="txt_create_new_list">Створити новий список</string>
-    <string name="txt_add_to_new_list">Додати до нового списку</string>
-    <string name="create_new_list_list_name">Назва списку</string>
-    <string name="txt_eaten_products">Products I have</string>
-    <string name="txt_products_to_buy">Товари для покупки</string>
+    <string name="dialog_add_product_to_list_title">Додайте до своїх списків</string>
+    <string name="dialog_create_new_list_title">Створити новий список</string>
+    <string name="dialog_add_product_to_list_new">Додати до нового списку</string>
+    <string name="dialog_create_new_list_hint">Назва списку</string>
+    <string name="default_list_title_stored">Products I have</string>
+    <string name="default_list_title_to_buy">Товари для покупки</string>
     <string name="txt_exporting_your_listed_products">Експорт вашої продукції…</string>
     <string name="txt_your_listed_products_exported">Your products have been exported</string>
     <string name="txt_discard">Скасувати</string>

@@ -15,13 +15,17 @@
  */
 package openfoodfacts.github.scrachx.openfood
 
-object AppFlavors {
-    const val OFF = "off"
-    const val OPFF = "opff"
-    const val OPF = "opf"
-    const val OBF = "obf"
 
-    @JvmStatic
-    fun isFlavors(vararg flavors: String) = BuildConfig.FLAVOR_versionCode in flavors
+enum class AppFlavor(val versionCode: String) {
+    OFF("off"),
+    OPFF("opff"),
+    OPF("opf"),
+    OBF("obf");
 
+    companion object {
+        @Suppress("NOTHING_TO_INLINE")
+        inline fun isFlavors(vararg flavors: AppFlavor) = currentFlavor in flavors
+
+        val currentFlavor = values().first { BuildConfig.FLAVOR_versionCode in it.versionCode }
+    }
 }

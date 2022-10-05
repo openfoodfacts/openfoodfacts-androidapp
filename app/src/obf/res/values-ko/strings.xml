@@ -39,8 +39,8 @@
     <string name="add_category_prompt_text">아직 완성되지 않은 제품의 카테고리 추가하기</string>
     <string name="add_nutrient_category_prompt_text">아직 완성되지 않은 제품의 정보와 카테고리를 추가하기</string>
     <string name="required_to_compute_nutriscore"></string>
-    <string name="txt_eaten_products">내가 가진 제품</string>
-    <string name="txt_products_to_buy">구매할 제품</string>
+    <string name="default_list_title_stored">내가 가진 제품</string>
+    <string name="default_list_title_to_buy">구매할 제품</string>
     <string name="intent_filter_share_label">Open Beauty Facts에 추가하기</string>
     <string name="brand_hint">Examples: Nivea, L\'Oréal, etc…</string>
     <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".

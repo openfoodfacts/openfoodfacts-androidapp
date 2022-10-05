@@ -8,8 +8,9 @@ import androidx.annotation.RequiresApi
 
 @RequiresApi(Build.VERSION_CODES.KITKAT)
 class CreateCSVContract : ActivityResultContracts.CreateDocument() {
-    override fun createIntent(context: Context, input: String) = super.createIntent(context, input).apply {
-        addCategory(Intent.CATEGORY_OPENABLE)
-        type = "application/csv"
-    }
+    override fun createIntent(context: Context, input: String) =
+        super.createIntent(context, input)
+            .setType("application/csv")
+            .addCategory(Intent.CATEGORY_OPENABLE)
+
 }

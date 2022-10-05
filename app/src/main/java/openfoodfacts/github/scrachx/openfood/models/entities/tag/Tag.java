@@ -8,6 +8,8 @@ import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Index;
 
+import openfoodfacts.github.scrachx.openfood.models.entities.TaxonomyEntity;
+
 // Model class for Packager code 'tags' --> "https://world.openfoodfacts.org/packager-codes.json"
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -18,7 +20,7 @@ import org.greenrobot.greendao.annotation.Index;
     "id"
 })
 @Entity(indexes = {@Index(value = "id", unique = true)})
-public class Tag {
+public class Tag implements TaxonomyEntity {
     @JsonProperty("name")
     private String name;
     @JsonProperty("products")

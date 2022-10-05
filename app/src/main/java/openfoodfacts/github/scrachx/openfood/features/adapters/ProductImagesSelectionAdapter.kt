@@ -1,65 +1,67 @@
 package openfoodfacts.github.scrachx.openfood.features.adapters
 
-import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import openfoodfacts.github.scrachx.openfood.R
-import openfoodfacts.github.scrachx.openfood.images.IMAGE_EDIT_SIZE_FILE
+import openfoodfacts.github.scrachx.openfood.databinding.ImageSelectableItemBinding
+import openfoodfacts.github.scrachx.openfood.images.IMAGE_EDIT_SIZE
 import openfoodfacts.github.scrachx.openfood.images.getImageUrl
 
 /**
  * Created by prajwalm on 10/09/18.
  */
 class ProductImagesSelectionAdapter(
-        private val context: Context,
-        private val picasso: Picasso,
-        private val images: List<String>,
-        private val barcode: String,
-        private val onImageClick: ((Int) -> Unit)?
-) : RecyclerView.Adapter<ProductImagesSelectionAdapter.CustomViewHolder>() {
-    var selectedPosition = -1
-    fun isSelectionDone() = selectedPosition >= 0
+    private val picasso: Picasso,
+    private val images: List<String>,
+    private val barcode: String,
+    private val onImageClick: ((Int) -> Unit)?,
+) : RecyclerView.Adapter<ProductImagesSelectionAdapter.ProductImageSelectionAdapter>() {
 
-    fun getSelectedImageName() = if (isSelectionDone()) images[selectedPosition] else null
+    var selectedPosition = -1
+
+    fun isSelectionDone() = selectedPosition >= 0
+    fun getSelectedImageName() = if (!isSelectionDone()) null else images[selectedPosition]
 
     fun getImageUrl(position: Int): String {
         val imageName = images[position]
-        return getImageUrl(barcode, imageName, IMAGE_EDIT_SIZE_FILE)
+        return getImageUrl(barcode, imageName, IMAGE_EDIT_SIZE)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
-        return CustomViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.image_selectable_item, parent, false))
+    override fun getItemCount() = images.count()
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductImageSelectionAdapter {
+        val binding = ImageSelectableItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ProductImageSelectionAdapter(binding)
     }
 
-    override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
-        holder.itemView.setBackgroundColor(
-                if (position == selectedPosition) ContextCompat.getColor(context, R.color.blue)
-                else 0
-        )
-        val finalUrlString = getImageUrl(position)
-        picasso.load(finalUrlString)
-                .resize(400, 400)
-                .centerInside()
-                .into(holder.productImage)
+    override fun onBindViewHolder(holder: ProductImageSelectionAdapter, position: Int) {
+        val binding = holder.binding
+
+        val blue = ContextCompat.getColor(binding.root.context, R.color.blue)
+        binding.root.setBackgroundColor(if (position == selectedPosition) blue else 0)
+
+        val imageUrl = getImageUrl(position)
+        picasso.load(imageUrl)
+            .resize(400, 400)
+            .centerInside()
+            .into(binding.imageView)
     }
 
-    override fun getItemCount() = images.size
 
-    inner class CustomViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
-        val productImage: ImageView = itemView.findViewById(R.id.img)
+    inner class ProductImageSelectionAdapter(
+        val binding: ImageSelectableItemBinding,
+    ) : RecyclerView.ViewHolder(binding.root) {
 
-        override fun onClick(v: View) {
+        fun onClick() {
             if (selectedPosition >= 0) {
                 notifyItemChanged(selectedPosition)
             }
 
             // If the user reclick on the same image -> deselect
-            selectedPosition = if (adapterPosition != selectedPosition) adapterPosition else -1
+            selectedPosition = bindingAdapterPosition.takeUnless { it == selectedPosition } ?: -1
 
             if (selectedPosition >= 0) {
                 notifyItemChanged(selectedPosition)
@@ -68,7 +70,7 @@ class ProductImagesSelectionAdapter(
         }
 
         init {
-            itemView.setOnClickListener(this)
+            itemView.setOnClickListener { onClick() }
         }
     }
 }

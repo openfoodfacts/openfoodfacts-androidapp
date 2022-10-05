@@ -7,7 +7,7 @@
     android:padding="10dp">
 
     <ImageView
-        android:id="@+id/img"
+        android:id="@+id/image_view"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:adjustViewBounds="true"
@@ -16,7 +16,7 @@
         tools:srcCompat="@drawable/ic_product_silhouette" />
 
     <Button
-        android:id="@+id/buttonOptions"
+        android:id="@+id/edit_btn"
         style="@style/ButtonRounded"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

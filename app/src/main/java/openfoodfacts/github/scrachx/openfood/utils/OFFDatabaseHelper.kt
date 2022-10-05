@@ -1,10 +1,15 @@
 package openfoodfacts.github.scrachx.openfood.utils
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.database.sqlite.SQLiteDatabase.CursorFactory
+import android.net.Uri
 import android.util.Log
+import androidx.core.app.ShareCompat
+import androidx.core.content.FileProvider
 import androidx.core.content.edit
+import openfoodfacts.github.scrachx.openfood.AppFlavor
 import openfoodfacts.github.scrachx.openfood.models.DaoMaster
 import openfoodfacts.github.scrachx.openfood.models.DaoMaster.OpenHelper
 import openfoodfacts.github.scrachx.openfood.models.InvalidBarcodeDao
@@ -36,13 +41,23 @@ import openfoodfacts.github.scrachx.openfood.models.entities.store.StoreDao
 import openfoodfacts.github.scrachx.openfood.models.entities.store.StoreNameDao
 import openfoodfacts.github.scrachx.openfood.models.entities.tag.TagDao
 import org.greenrobot.greendao.database.Database
+import java.io.BufferedInputStream
+import java.io.BufferedOutputStream
+import java.io.File
+import java.io.FileInputStream
+import java.io.FileOutputStream
+
 
 class OFFDatabaseHelper @JvmOverloads constructor(
-        context: Context,
-        name: String,
-        factory: CursorFactory? = null
-) : OpenHelper(context, name, factory) {
+    context: Context,
+    factory: CursorFactory? = null,
+) : OpenHelper(context, DB_NAME, factory) {
+
     private val settings: SharedPreferences by lazy { context.getAppPreferences() }
+
+    init {
+        removeExportedDatabase(context)
+    }
 
     override fun onCreate(db: Database) {
         Log.i(LOG_TAG, "Creating tables for schema version ${DaoMaster.SCHEMA_VERSION}")
@@ -95,12 +110,13 @@ class OFFDatabaseHelper @JvmOverloads constructor(
             }
             7 -> {
                 val newColumns = listOf("wiki_data_id", "is_wiki_data_id_present")
-                val updatedTables = listOf("additive_name", "additive", "category_name", "category", "label_name", "label")
+                val updatedTables =
+                    listOf("additive_name", "additive", "category_name", "category", "label_name", "label")
                 updatedTables.forEach { table ->
                     newColumns.filterNot { isFieldExist(db, table, it) }
-                            .forEach { column ->
-                                db.execSQL("ALTER TABLE $table ADD COLUMN '$column' TEXT NOT NULL DEFAULT '';")
-                            }
+                        .forEach { column ->
+                            db.execSQL("ALTER TABLE $table ADD COLUMN '$column' TEXT NOT NULL DEFAULT '';")
+                        }
                 }
             }
             8 -> {
@@ -108,19 +124,21 @@ class OFFDatabaseHelper @JvmOverloads constructor(
             }
             9 -> {
                 listOf("additive_name", "additive").forEach { table ->
-                    listOf("overexposure_risk", "exposure_mean_greater_than_adi", "exposure_mean_greater_than_noael",
-                            "exposure95_th_greater_than_adi", "exposure95_th_greater_than_noael")
-                            .filterNot { isFieldExist(db, table, it) }
-                            .forEach { db.execSQL("ALTER TABLE $table ADD COLUMN '$it' TEXT;") }
+                    listOf(
+                        "overexposure_risk", "exposure_mean_greater_than_adi", "exposure_mean_greater_than_noael",
+                        "exposure95_th_greater_than_adi", "exposure95_th_greater_than_noael"
+                    )
+                        .filterNot { isFieldExist(db, table, it) }
+                        .forEach { db.execSQL("ALTER TABLE $table ADD COLUMN '$it' TEXT;") }
                 }
             }
             10 -> {
                 listOf("allergen_name", "allergen").forEach { table ->
                     listOf("WIKI_DATA_ID", "IS_WIKI_DATA_ID_PRESENT")
-                            .filterNot { isFieldExist(db, table, it) }
-                            .forEach { column ->
-                                db.execSQL("ALTER TABLE $table ADD COLUMN '$column' TEXT NOT NULL DEFAULT '';")
-                            }
+                        .filterNot { isFieldExist(db, table, it) }
+                        .forEach { column ->
+                            db.execSQL("ALTER TABLE $table ADD COLUMN '$column' TEXT NOT NULL DEFAULT '';")
+                        }
                 }
             }
             11 -> {
@@ -172,5 +190,58 @@ class OFFDatabaseHelper @JvmOverloads constructor(
 
     companion object {
         private const val LOG_TAG = "greenDAO"
+
+        private const val DB_NAME_OPEN_PET_FOOD_FACTS = "open_pet_food_facts"
+        private const val DB_NAME_OPEN_BEAUTY_FACTS = "open_beauty_facts"
+        private const val DB_NAME_OPEN_PRODUCTS_FACTS = "open_products_facts"
+        private const val DB_NAME_OPEN_FOOD_FACTS = "open_food_facts"
+
+        private fun dbOutputPath(context: Context) = File(context.filesDir, DB_NAME)
+
+        val DB_NAME = when (AppFlavor.currentFlavor) {
+            AppFlavor.OPFF -> DB_NAME_OPEN_PET_FOOD_FACTS
+            AppFlavor.OBF -> DB_NAME_OPEN_BEAUTY_FACTS
+            AppFlavor.OPF -> DB_NAME_OPEN_PRODUCTS_FACTS
+            AppFlavor.OFF -> DB_NAME_OPEN_FOOD_FACTS
+        }
+
+        fun exportDB(context: Context) {
+            val databasePath = context.getDatabasePath(DB_NAME)
+            val outputPath = dbOutputPath(context)
+            copyFile(databasePath, outputPath)
+
+            val uri: Uri = FileProvider.getUriForFile(context, GenericFileProvider.AUTHORITY, outputPath)
+
+            val intent = ShareCompat.IntentBuilder(context)
+                .setStream(uri) // uri from FileProvider
+                .setType("application/vnd.sqlite3")
+                .intent
+                .setAction(Intent.ACTION_SEND) // Change if needed
+                .setDataAndType(uri, "application/vnd.sqlite3")
+                .addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+
+            context.startActivity(intent)
+        }
+
+        fun removeExportedDatabase(context: Context) {
+            dbOutputPath(context).deleteOnExit()
+        }
+
+        private fun copyFile(source: File, destination: File) {
+            BufferedInputStream(
+                FileInputStream(source)
+            ).use { `in` ->
+                BufferedOutputStream(
+                    FileOutputStream(destination)
+                ).use { out ->
+                    val buffer = ByteArray(1024)
+                    var lengthRead: Int
+                    while (`in`.read(buffer).also { lengthRead = it } > 0) {
+                        out.write(buffer, 0, lengthRead)
+                        out.flush()
+                    }
+                }
+            }
+        }
     }
 }

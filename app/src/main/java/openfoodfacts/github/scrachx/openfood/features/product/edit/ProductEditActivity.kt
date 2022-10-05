@@ -37,12 +37,10 @@ import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import okhttp3.MediaType
 import okhttp3.RequestBody
-import openfoodfacts.github.scrachx.openfood.AppFlavors.OBF
-import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
-import openfoodfacts.github.scrachx.openfood.AppFlavors.OPF
-import openfoodfacts.github.scrachx.openfood.AppFlavors.OPFF
-import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
+import openfoodfacts.github.scrachx.openfood.AppFlavor
+import openfoodfacts.github.scrachx.openfood.AppFlavor.Companion.isFlavors
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
 import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
@@ -64,10 +62,14 @@ import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
 import openfoodfacts.github.scrachx.openfood.repositories.OfflineProductRepository
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
+import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository.Companion.MIME_TEXT
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository.Companion.PNG_EXT
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository.Companion.addToHistory
+import openfoodfacts.github.scrachx.openfood.utils.InstallationService
+import openfoodfacts.github.scrachx.openfood.utils.Intent
 import openfoodfacts.github.scrachx.openfood.utils.clearCameraCache
-import openfoodfacts.github.scrachx.openfood.utils.getLoginPreferences
+import openfoodfacts.github.scrachx.openfood.utils.getLoginPassword
+import openfoodfacts.github.scrachx.openfood.utils.getLoginUsername
 import openfoodfacts.github.scrachx.openfood.utils.getProductState
 import openfoodfacts.github.scrachx.openfood.utils.hideKeyboard
 import java.io.IOException
@@ -81,6 +83,9 @@ class ProductEditActivity : BaseActivity() {
 
     @Inject
     lateinit var client: ProductRepository
+
+    @Inject
+    lateinit var installationService: InstallationService
 
     @Inject
     lateinit var offlineRepository: OfflineProductRepository
@@ -222,8 +227,10 @@ class ProductEditActivity : BaseActivity() {
 
             // get the status of images from productDetailsMap, whether uploaded or not
             imageFrontUploaded = offlineSavedProduct.productDetails[ApiFields.Keys.IMAGE_FRONT_UPLOADED].toBoolean()
-            imageIngredientsUploaded = offlineSavedProduct.productDetails[ApiFields.Keys.IMAGE_INGREDIENTS_UPLOADED].toBoolean()
-            imageNutritionFactsUploaded = offlineSavedProduct.productDetails[ApiFields.Keys.IMAGE_NUTRITION_UPLOADED].toBoolean()
+            imageIngredientsUploaded =
+                offlineSavedProduct.productDetails[ApiFields.Keys.IMAGE_INGREDIENTS_UPLOADED].toBoolean()
+            imageNutritionFactsUploaded =
+                offlineSavedProduct.productDetails[ApiFields.Keys.IMAGE_NUTRITION_UPLOADED].toBoolean()
         }
         if (productState == null && offlineSavedProduct == null && mEditProduct == null) {
             Toast.makeText(this, R.string.error_adding_product, Toast.LENGTH_SHORT).show()
@@ -253,11 +260,11 @@ class ProductEditActivity : BaseActivity() {
 
         // If on off or opff, add Nutrition Facts fragment
         when {
-            isFlavors(OFF, OPFF) -> {
+            isFlavors(AppFlavor.OFF, AppFlavor.OPFF) -> {
                 nutritionFactsFragment.arguments = fragmentsBundle
                 adapterResult += nutritionFactsFragment to getString(R.string.nutrition_facts)
             }
-            isFlavors(OBF, OPF) -> {
+            isFlavors(AppFlavor.OBF, AppFlavor.OPF) -> {
                 binding.textNutritionFactsIndicator.setText(R.string.photos)
                 addProductPhotosFragment.arguments = fragmentsBundle
                 adapterResult += addProductPhotosFragment to getString(R.string.photos)
@@ -270,17 +277,17 @@ class ProductEditActivity : BaseActivity() {
 
     private fun getLoginPasswordInfo(): Map<String, RequestBody> {
         val map = hashMapOf<String, RequestBody>()
-        val settings = getLoginPreferences()
 
-        val login = settings.getString("user", "") ?: ""
-        val password = settings.getString("pass", "") ?: ""
+        val login = getLoginUsername() ?: ""
+        val password = getLoginPassword() ?: ""
 
         if (login.isNotEmpty() && password.isNotEmpty()) {
-            map[ApiFields.Keys.USER_ID] = createTextPlain(login)
-            map[ApiFields.Keys.USER_PASS] = createTextPlain(password)
+            map[ApiFields.Keys.USER_ID] = login.toRequestBody()
+            map[ApiFields.Keys.USER_PASS] = password.toRequestBody()
         }
 
-        map[ApiFields.Keys.USER_COMMENT] = createTextPlain(client.getCommentToUpload(login))
+        val comment = ProductRepository.getCommentToUpload(this, installationService, login)
+        map[ApiFields.Keys.USER_COMMENT] = comment.toRequestBody()
         return map
     }
 
@@ -293,7 +300,7 @@ class ProductEditActivity : BaseActivity() {
         val updatedValues = editOverviewFragment.getUpdatedFieldsMap().toMutableMap()
         updatedValues += ingredientsFragment.getUpdatedFieldsMap()
 
-        if (isFlavors(OFF, OPFF))
+        if (isFlavors(AppFlavor.OFF, AppFlavor.OPFF))
             updatedValues += nutritionFactsFragment.getUpdatedFieldsMap()
 
         return updatedValues
@@ -350,9 +357,11 @@ class ProductEditActivity : BaseActivity() {
 
     private fun checkFieldsThenSave() {
         if (editingMode) {
-            // edit mode, therefore do not check whether front image is empty or not however do check the nutrition facts values.
-            if (isFlavors(OFF, OPFF) && nutritionFactsFragment.anyInvalid()) {
-                // If there are any invalid field and there is nutrition data, scroll to the nutrition fragment
+            // edit mode, therefore do not check whether front image is empty
+            // or not, however do check the nutrition facts values.
+            if (isFlavors(AppFlavor.OFF, AppFlavor.OPFF) && nutritionFactsFragment.anyInvalid()) {
+                // If there are any invalid field and there is nutrition data,
+                // scroll to the nutrition fragment
                 binding.viewpager.setCurrentItem(2, true)
                 return
             }
@@ -361,7 +370,7 @@ class ProductEditActivity : BaseActivity() {
             if (editOverviewFragment.anyInvalid()) {
                 binding.viewpager.setCurrentItem(0, true)
                 return
-            } else if (isFlavors(OFF, OPFF) && nutritionFactsFragment.anyInvalid()) {
+            } else if (isFlavors(AppFlavor.OFF, AppFlavor.OPFF) && nutritionFactsFragment.anyInvalid()) {
                 binding.viewpager.setCurrentItem(2, true)
                 return
             }
@@ -371,12 +380,10 @@ class ProductEditActivity : BaseActivity() {
     }
 
     private fun getLoginInfoMap(): Map<String, String?> {
-        val settings = getLoginPreferences()
+        val login = getLoginUsername()
+        val password = getLoginPassword()
 
-        val login = settings.getString("user", "")!!
-        val password = settings.getString("pass", "")!!
-
-        return if (login.isEmpty() || password.isEmpty()) emptyMap()
+        return if (login.isNullOrEmpty() || password.isNullOrEmpty()) emptyMap()
         else mapOf(
             ApiFields.Keys.USER_ID to login,
             ApiFields.Keys.USER_PASS to password
@@ -394,7 +401,7 @@ class ProductEditActivity : BaseActivity() {
         var ocr = false
         val imgMap = hashMapOf<String, RequestBody?>(
             ApiFields.Keys.BARCODE to image.barcodeBody,
-            "imagefield" to createTextPlain("${image.imageField}_$lang")
+            "imagefield" to "${image.imageField}_$lang".toRequestBody()
         )
         if (image.imgFront != null) {
             imagesFilePath[0] = image.filePath
@@ -428,7 +435,7 @@ class ProductEditActivity : BaseActivity() {
         imgMap: Map<String, RequestBody?>,
         image: ProductImage,
         fragmentIndex: Int,
-        performOCR: Boolean
+        performOCR: Boolean,
     ) = withContext(IO) {
 
         showImageProgress(fragmentIndex)
@@ -482,6 +489,9 @@ class ProductEditActivity : BaseActivity() {
                 }
                 ProductImageField.NUTRITION -> {
                     imageNutritionFactsUploaded = true
+                }
+                else -> {
+                    // Do nothing
                 }
             }
 
@@ -538,29 +548,27 @@ class ProductEditActivity : BaseActivity() {
 
 
     suspend fun performOCR(code: String, imageField: String) {
-        withContext(Main) {
-            ingredientsFragment.showOCRProgress()
+        withContext(Main) { ingredientsFragment.showOCRProgress() }
+
+        val result = kotlin.runCatching {
+            withContext(IO) { productsApi.performOCR(code, imageField) }
+        }.onFailure {
+            withContext(Main) { ingredientsFragment.hideOCRProgress() }
+            if (it is IOException) {
+                val view = findViewById<View>(R.id.coordinator_layout)
+                Snackbar.make(view, R.string.no_internet_unable_to_extract_ingredients, LENGTH_INDEFINITE)
+                    .setAction(R.string.txt_try_again) {
+                        lifecycleScope.launch { performOCR(code, imageField) }
+                    }
+                    .show()
+            } else {
+                Log.e(this::class.simpleName, it.message, it)
+                Toast.makeText(this@ProductEditActivity, it.message, Toast.LENGTH_SHORT).show()
+            }
         }
 
-        val node = withContext(IO) {
-            try {
-                productsApi.performOCR(code, imageField)
-            } catch (err: Exception) {
-                withContext(Main) { ingredientsFragment.hideOCRProgress() }
-                if (err is IOException) {
-                    val view = findViewById<View>(R.id.coordinator_layout)
-                    Snackbar.make(view, R.string.no_internet_unable_to_extract_ingredients, LENGTH_INDEFINITE)
-                        .setAction(R.string.txt_try_again) {
-                            lifecycleScope.launch { performOCR(code, imageField) }
-                        }
-                        .show()
-                } else {
-                    Log.e(this::class.simpleName, err.message, err)
-                    Toast.makeText(this@ProductEditActivity, err.message, Toast.LENGTH_SHORT).show()
-                }
-                null
-            }
-        } ?: return
+        val node = result.getOrNull() ?: return
+
 
         withContext(Main) {
             ingredientsFragment.hideOCRProgress()
@@ -578,7 +586,7 @@ class ProductEditActivity : BaseActivity() {
     private suspend fun hideImageProgress(
         position: Int,
         msg: String,
-        error: Boolean = false
+        error: Boolean = false,
     ) = withContext(Main) {
         when (position) {
             0 -> editOverviewFragment.hideImageProgress(error, msg)
@@ -615,7 +623,7 @@ class ProductEditActivity : BaseActivity() {
 
     class PerformOCRContract : ActivityResultContract<Product?, Boolean>() {
         override fun createIntent(context: Context, product: Product?) =
-            Intent(context, ProductEditActivity::class.java).apply {
+            Intent<ProductEditActivity>(context) {
                 putExtra(KEY_EDIT_PRODUCT, product)
                 putExtra(KEY_PERFORM_OCR, true)
             }
@@ -624,9 +632,9 @@ class ProductEditActivity : BaseActivity() {
     }
 
     class SendUpdatedImgContract : ActivityResultContract<Product, Boolean>() {
-        override fun createIntent(context: Context, product: Product) =
-            Intent(context, ProductEditActivity::class.java).apply {
-                putExtra(KEY_EDIT_PRODUCT, product)
+        override fun createIntent(context: Context, input: Product) =
+            Intent<ProductEditActivity>(context) {
+                putExtra(KEY_EDIT_PRODUCT, input)
                 putExtra(KEY_SEND_UPDATED, true)
             }
 
@@ -635,7 +643,7 @@ class ProductEditActivity : BaseActivity() {
 
     open class EditProductContract : ActivityResultContract<Product, Boolean>() {
         override fun createIntent(context: Context, input: Product) =
-            Intent(context, ProductEditActivity::class.java).apply {
+            Intent<ProductEditActivity>(context) {
                 putExtra(KEY_EDIT_PRODUCT, input)
             }
 
@@ -672,9 +680,9 @@ class ProductEditActivity : BaseActivity() {
             sendUpdated: Boolean = false,
             performOcr: Boolean = false,
             showCategoryPrompt: Boolean = false,
-            showNutritionPrompt: Boolean = false
+            showNutritionPrompt: Boolean = false,
         ) {
-            Intent(context, ProductEditActivity::class.java).apply {
+            Intent<ProductEditActivity>(context).apply {
                 putExtra(KEY_EDIT_PRODUCT, product)
 
                 if (sendUpdated) putExtra(KEY_SEND_UPDATED, true)
@@ -692,9 +700,9 @@ class ProductEditActivity : BaseActivity() {
             sendUpdated: Boolean = false,
             performOcr: Boolean = false,
             showCategoryPrompt: Boolean = false,
-            showNutritionPrompt: Boolean = false
+            showNutritionPrompt: Boolean = false,
         ) {
-            Intent(context, ProductEditActivity::class.java).apply {
+            Intent<ProductEditActivity>(context).apply {
                 putExtra(KEY_EDIT_OFFLINE_PRODUCT, offlineProduct)
 
                 if (sendUpdated) putExtra(KEY_SEND_UPDATED, true)
@@ -706,7 +714,7 @@ class ProductEditActivity : BaseActivity() {
             }
         }
 
-        private fun createTextPlain(code: String) =
-            RequestBody.create(ProductRepository.MIME_TEXT, code)
+        private fun String.toRequestBody(mediaType: MediaType = MIME_TEXT) =
+            RequestBody.create(mediaType, this)
     }
 }

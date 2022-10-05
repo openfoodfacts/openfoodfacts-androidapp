@@ -648,16 +648,15 @@
     <string name="report_img">Nahlásit obrázek</string>
     <string name="detected_ingredients">Zjištěné složení</string>
     <string name="txtConnectionError">Některá data se nepodařilo stáhnout. To může být způsobeno chybou připojení.</string>
-    <string name="set_image_name">Snímek byl úspěšně nastaven jako</string>
     <string name="addtive_search">Search for a additive</string>
     <string name="additives">Aditiva</string>
     <!--used for product_lists implementation-->
-    <string name="add_to_product_lists">Přidat na seznam</string>
-    <string name="txt_create_new_list">Vytvořit nový seznam</string>
-    <string name="txt_add_to_new_list">Přidat na nový</string>
-    <string name="create_new_list_list_name">Název seznamu</string>
-    <string name="txt_eaten_products">Snězeno</string>
-    <string name="txt_products_to_buy">Nákupní seznam</string>
+    <string name="dialog_add_product_to_list_title">Přidat na seznam</string>
+    <string name="dialog_create_new_list_title">Vytvořit nový seznam</string>
+    <string name="dialog_add_product_to_list_new">Přidat na nový</string>
+    <string name="dialog_create_new_list_hint">Název seznamu</string>
+    <string name="default_list_title_stored">Snězeno</string>
+    <string name="default_list_title_to_buy">Nákupní seznam</string>
     <string name="txt_exporting_your_listed_products">Exporting Your Products…</string>
     <string name="txt_your_listed_products_exported">Your products have been exported</string>
     <string name="txt_discard">Zahodit</string>

@@ -642,7 +642,6 @@
     <string name="report_img">Bild melden</string>
     <string name="detected_ingredients">Erkannte Zutaten</string>
     <string name="txtConnectionError">Wir konnten bestimmte Daten nicht herunterladen. Dies kann auf einen Verbindungsfehler zurückzuführen sein.</string>
-    <string name="set_image_name">Foto erfolgreich festgelegt als</string>
     <string name="pref_fast_addition_title">Schneller Hinzufügemodus</string>
     <string name="pref_fast_addition_summary">Ermöglicht das schnelle Hinzufügen von Produkten mit wenigen Attributen</string>
     <string name="pref_crop_new_images_title">Neue Fotos zuschneiden</string>
@@ -650,12 +649,12 @@
     <string name="addtive_search">Nach Zusatzstoff suchen</string>
     <string name="additives">Zusatzstoffe</string>
     <!--used for product_lists implementation-->
-    <string name="add_to_product_lists">Zu Ihren Listen hinzufügen</string>
-    <string name="txt_create_new_list">Neue Liste erstellen</string>
-    <string name="txt_add_to_new_list">Zu einer neuen Liste hinzufügen</string>
-    <string name="create_new_list_list_name">Listenname</string>
-    <string name="txt_eaten_products">Verzehrte Produkte</string>
-    <string name="txt_products_to_buy">Zu erwerbende Produkte</string>
+    <string name="dialog_add_product_to_list_title">Zu Ihren Listen hinzufügen</string>
+    <string name="dialog_create_new_list_title">Neue Liste erstellen</string>
+    <string name="dialog_add_product_to_list_new">Zu einer neuen Liste hinzufügen</string>
+    <string name="dialog_create_new_list_hint">Listenname</string>
+    <string name="default_list_title_stored">Verzehrte Produkte</string>
+    <string name="default_list_title_to_buy">Zu erwerbende Produkte</string>
     <string name="txt_exporting_your_listed_products">Ihre Produkte werden exportiert …</string>
     <string name="txt_your_listed_products_exported">Ihre Produkte wurden exportiert</string>
     <string name="txt_discard">Verwerfen</string>

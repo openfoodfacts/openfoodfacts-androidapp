@@ -34,7 +34,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/padding_short"
-        android:text="@string/txt_add_to_new_list"
+        android:text="@string/dialog_add_product_to_list_new"
         android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
         android:textSize="@dimen/font_large"
         app:drawableLeftCompat="@drawable/ic_plus_dark_24"

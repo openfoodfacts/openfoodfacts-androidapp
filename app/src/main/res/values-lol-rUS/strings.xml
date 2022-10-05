@@ -632,16 +632,15 @@
     <string name="report_img">crwdns179234:0crwdne179234:0</string>
     <string name="detected_ingredients">crwdns179236:0crwdne179236:0</string>
     <string name="txtConnectionError">crwdns179238:0crwdne179238:0</string>
-    <string name="set_image_name">crwdns179240:0crwdne179240:0</string>
     <string name="addtive_search">crwdns179242:0crwdne179242:0</string>
     <string name="additives">crwdns179244:0crwdne179244:0</string>
     <!--used for product_lists implementation-->
-    <string name="add_to_product_lists">crwdns179246:0crwdne179246:0</string>
-    <string name="txt_create_new_list">crwdns179248:0crwdne179248:0</string>
-    <string name="txt_add_to_new_list">crwdns179250:0crwdne179250:0</string>
-    <string name="create_new_list_list_name">crwdns179252:0crwdne179252:0</string>
-    <string name="txt_eaten_products">crwdns179254:0crwdne179254:0</string>
-    <string name="txt_products_to_buy">crwdns179256:0crwdne179256:0</string>
+    <string name="dialog_add_product_to_list_title">crwdns179246:0crwdne179246:0</string>
+    <string name="dialog_create_new_list_title">crwdns179248:0crwdne179248:0</string>
+    <string name="dialog_add_product_to_list_new">crwdns179250:0crwdne179250:0</string>
+    <string name="dialog_create_new_list_hint">crwdns179252:0crwdne179252:0</string>
+    <string name="default_list_title_stored">crwdns179254:0crwdne179254:0</string>
+    <string name="default_list_title_to_buy">crwdns179256:0crwdne179256:0</string>
     <string name="txt_exporting_your_listed_products">crwdns179258:0crwdne179258:0</string>
     <string name="txt_your_listed_products_exported">crwdns179260:0crwdne179260:0</string>
     <string name="txt_discard">crwdns179262:0crwdne179262:0</string>

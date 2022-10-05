@@ -2,9 +2,12 @@ package openfoodfacts.github.scrachx.openfood.images
 
 import android.graphics.Matrix
 import android.graphics.RectF
-import android.util.Log
+import androidx.annotation.CheckResult
 import androidx.core.graphics.toRect
 import androidx.core.graphics.toRectF
+import logcat.LogPriority
+import logcat.asLog
+import logcat.logcat
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.utils.getAsFloat
@@ -16,39 +19,32 @@ import openfoodfacts.github.scrachx.openfood.utils.getAsInt
  * @return NO_VALUE if can't parse the size
  */
 fun Map<String, Map<String, *>>.getDimension(key: String): Int {
-    val value = (this[IMAGE_EDIT_SIZE] ?: error(""))[key] ?: return NO_VALUE
+    val value = (this[IMAGE_EDIT_SIZE.toString()] ?: error(""))[key] ?: return NO_VALUE
     return if (value is Number) {
         value.toInt()
     } else value.toString().toInt()
 }
 
-fun ImageTransformation.applyToMap(imgMap: MutableMap<String, String>) {
-    imgMap[ANGLE] = rotationInDegree.toString()
-    cropRectangle?.let {
-        imgMap[LEFT] = it.left.toString()
-        imgMap[RIGHT] = it.right.toString()
-        imgMap[TOP] = it.top.toString()
-        imgMap[BOTTOM] = it.bottom.toString()
-    }
-}
-
 fun getInitialServerTransformation(
-        product: Product,
-        productImageField: ProductImageField?,
-        language: String?
+    product: Product,
+    productImageField: ProductImageField,
+    language: String,
 ): ImageTransformation {
-    val imageKey = getImageStringKey(productImageField!!, language!!)
-    val imageDetails = product.getImageDetails(imageKey) ?: return ImageTransformation()
+    val imageKey = getImageStringKey(productImageField, language)
+    val imageDetails = product.getImageDetails(imageKey)
+        ?: return ImageTransformation()
 
-    val initImageId = imageDetails[IMG_ID] as String?
-    if (initImageId.isNullOrBlank()) return ImageTransformation()
+    val initImageId = (imageDetails[IMG_ID] as? String).takeUnless { it.isNullOrBlank() }
 
-    return ImageTransformation().apply {
-        imageId = initImageId
-        imageUrl = getImageUrl(product.code, initImageId, IMAGE_EDIT_SIZE_FILE)
-        rotationInDegree = getImageRotation(imageDetails)
-
-        getImageCropRect(imageDetails)?.let { cropRectangle = it.toRect() }
+    return if (initImageId == null) {
+        ImageTransformation()
+    } else {
+        ImageTransformation(
+            imageId = initImageId,
+            imageUrl = getImageUrl(product.code, initImageId, IMAGE_EDIT_SIZE),
+            rotationInDegree = getImageRotation(imageDetails),
+            cropRectangle = getImageCropRect(imageDetails)?.toRect()
+        )
     }
 }
 
@@ -66,22 +62,24 @@ private fun getImageCropRect(imgDetails: Map<String, *>): RectF? {
     else RectF(x1, y1, x2, y2)
 }
 
+@CheckResult
 private fun applyRotationOnCropRectangle(
-        product: Product,
-        productImageField: ProductImageField,
-        language: String,
-        res: ImageTransformation,
-        invert: Boolean
-) {
+    res: ImageTransformation,
+    product: Product,
+    productImageField: ProductImageField,
+    language: String,
+    invert: Boolean,
+): ImageTransformation {
     // if a crop and a rotation is done, we should rotate the cropped rectangle
     val imageKey = getImageStringKey(productImageField, language)
     val imageDetails = product.getImageDetails(imageKey)!!
     val initImageId = imageDetails[IMG_ID] as String
-    val imageDetailsInitImage = product.getImageDetails(initImageId) ?: return
-    val sizesMap = imageDetailsInitImage["sizes"] as Map<String, Map<String, *>>?
+    val imageDetailsInitImage = product.getImageDetails(initImageId) ?: return res
+    val sizesMap = imageDetailsInitImage["sizes"] as? Map<String, Map<String, *>>
+    requireNotNull(sizesMap)
     try {
         val initCrop = res.cropRectangle?.toRectF()
-        val height = sizesMap!!.getDimension("h")
+        val height = sizesMap.getDimension("h")
         val width = sizesMap.getDimension("w")
         if (height != NO_VALUE && width != NO_VALUE) {
             val rotationToApply = res.rotationInDegree
@@ -104,11 +102,13 @@ private fun applyRotationOnCropRectangle(
             //we translate the crop rectangle to the origin
             m.setTranslate(-wholeImage.left, -wholeImage.top)
             m.mapRect(initCrop)
-            res.cropRectangle = initCrop?.toRect()
+
+            return res.copy(cropRectangle = initCrop?.toRect())
         }
     } catch (e: Exception) {
-        Log.e(LOG_TAG, "Can't process image for product ${product.code}", e)
+        logcat(LOG_TAG, LogPriority.ERROR) { "Can't process image for product ${product.code}: ${e.asLog()}" }
     }
+    return res
 }
 
 /**
@@ -117,19 +117,23 @@ private fun applyRotationOnCropRectangle(
  * @param language the language
  * @return the image transformation containing the initial url and the transformation (rotation/crop) for screen
  */
+@CheckResult
 fun getScreenTransformation(
-        product: Product,
-        productImageField: ProductImageField,
-        language: String
+    product: Product,
+    productImageField: ProductImageField,
+    language: String,
 ): ImageTransformation {
-    val res = getInitialServerTransformation(product, productImageField, language)
-    if (res.isEmpty()) return res
+    var res = getInitialServerTransformation(product, productImageField, language)
+    if (res.isUrlEmpty()) return res
 
-    // if we want to perform a rotation + a crop, we have to rotate the crop area.
-    // Open Food Facts applies the crop on the rotated image and the Android library applies the crop before the rotation... so we should
-    // transform the crop from Open Food Facts to the Android library version.
+    // If we want to perform a rotation + a crop, we have to rotate
+    // the crop area.
+    //
+    // The server applies the crop on the rotated image and the Android
+    // library applies the crop before the rotation... so we should transform
+    // the crop from Open Food Facts to the Android library version.
     if (res.cropRectangle != null && res.rotationInDegree != 0) {
-        applyRotationOnCropRectangle(product, productImageField, language, res, true)
+        res = applyRotationOnCropRectangle(res, product, productImageField, language, true)
     }
     return res
 }
@@ -141,19 +145,21 @@ fun getScreenTransformation(
  * @return the image transformation containing the initial url and the transformation (rotation/crop) for screen
  */
 fun toServerTransformation(
-        screenTransformation: ImageTransformation,
-        product: Product,
-        productImageField: ProductImageField,
-        language: String
+    screenTransformation: ImageTransformation,
+    product: Product,
+    productImageField: ProductImageField,
+    language: String,
 ): ImageTransformation {
-    val res = getInitialServerTransformation(product, productImageField, language)
-    if (res.isEmpty()) {
+    var res = getInitialServerTransformation(product, productImageField, language)
+    if (res.isUrlEmpty()) {
         return res
     }
-    res.rotationInDegree = screenTransformation.rotationInDegree
-    res.cropRectangle = screenTransformation.cropRectangle
+    res = res.copy(
+        rotationInDegree = screenTransformation.rotationInDegree,
+        cropRectangle = screenTransformation.cropRectangle
+    )
     if (res.cropRectangle != null && res.rotationInDegree != 0) {
-        applyRotationOnCropRectangle(product, productImageField, language, res, false)
+        res = applyRotationOnCropRectangle(res, product, productImageField, language, false)
     }
     return res
 }
@@ -165,4 +171,4 @@ const val TOP = "y1"
 const val BOTTOM = "y2"
 const val ANGLE = "angle"
 
-private val LOG_TAG = ImageTransformation::class.simpleName
+private val LOG_TAG = ImageTransformation::class.simpleName!!

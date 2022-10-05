@@ -636,16 +636,15 @@
     <string name="report_img">Rapportera bild</string>
     <string name="detected_ingredients">Upptäckta ingredienser</string>
     <string name="txtConnectionError">Vi kunde inte ladda ner viss data. Detta kan bero på ett anslutningsfel.</string>
-    <string name="set_image_name">Framgångsrikt angivit bilden som</string>
     <string name="addtive_search">Sök efter en tillsats</string>
     <string name="additives">Tillsatser</string>
     <!--used for product_lists implementation-->
-    <string name="add_to_product_lists">Lägg till i dina listor</string>
-    <string name="txt_create_new_list">Skapa en ny lista</string>
-    <string name="txt_add_to_new_list">Lägg till en ny lista</string>
-    <string name="create_new_list_list_name">Lista Namn</string>
-    <string name="txt_eaten_products">Products I have</string>
-    <string name="txt_products_to_buy">Produkter att köpa</string>
+    <string name="dialog_add_product_to_list_title">Lägg till i dina listor</string>
+    <string name="dialog_create_new_list_title">Skapa en ny lista</string>
+    <string name="dialog_add_product_to_list_new">Lägg till en ny lista</string>
+    <string name="dialog_create_new_list_hint">Lista Namn</string>
+    <string name="default_list_title_stored">Products I have</string>
+    <string name="default_list_title_to_buy">Produkter att köpa</string>
     <string name="txt_exporting_your_listed_products">Exportera dina produkter…</string>
     <string name="txt_your_listed_products_exported">Dina produkter har exporterats</string>
     <string name="txt_discard">Kasta</string>

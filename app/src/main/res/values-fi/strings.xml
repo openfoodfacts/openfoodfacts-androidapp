@@ -642,7 +642,6 @@
     <string name="report_img">Ilmoita kuvasta</string>
     <string name="detected_ingredients">Havaitut ainesosat</string>
     <string name="txtConnectionError">Tiettyjä tietoja ei voitu ladata. Tämä voi johtua yhteysvirheestä.</string>
-    <string name="set_image_name">Kuva asetettu rooliin</string>
     <string name="pref_fast_addition_title">Pikalisäystila</string>
     <string name="pref_fast_addition_summary">Mahdollistaa tuotteiden nopean lisäämisen vähemmillä määritteillä</string>
     <string name="pref_crop_new_images_title">Rajaa uusia kuvia</string>
@@ -650,12 +649,12 @@
     <string name="addtive_search">Etsi lisäaine</string>
     <string name="additives">Lisäaineet</string>
     <!--used for product_lists implementation-->
-    <string name="add_to_product_lists">Lisää luetteloihisi</string>
-    <string name="txt_create_new_list">Luo uusi luettelo</string>
-    <string name="txt_add_to_new_list">Lisää uuteen luetteloon</string>
-    <string name="create_new_list_list_name">Luettelon nimi</string>
-    <string name="txt_eaten_products">Syödyt tuotteet</string>
-    <string name="txt_products_to_buy">Ostettavat tuotteet</string>
+    <string name="dialog_add_product_to_list_title">Lisää luetteloihisi</string>
+    <string name="dialog_create_new_list_title">Luo uusi luettelo</string>
+    <string name="dialog_add_product_to_list_new">Lisää uuteen luetteloon</string>
+    <string name="dialog_create_new_list_hint">Luettelon nimi</string>
+    <string name="default_list_title_stored">Syödyt tuotteet</string>
+    <string name="default_list_title_to_buy">Ostettavat tuotteet</string>
     <string name="txt_exporting_your_listed_products">Viedään tuotteitasi…</string>
     <string name="txt_your_listed_products_exported">Tuotteesi on viety</string>
     <string name="txt_discard">Hävitä</string>

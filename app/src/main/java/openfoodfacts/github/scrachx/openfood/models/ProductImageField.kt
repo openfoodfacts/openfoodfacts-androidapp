@@ -6,9 +6,13 @@ import java.util.Locale.ROOT
 /**
  * Kind of Product Image
  */
-enum class ProductImageField {
+enum class ProductImageField(val apiKey: String) {
     // DO NOT CHANGE ENUM NAMES
-    FRONT, INGREDIENTS, NUTRITION, PACKAGING, OTHER;
+    FRONT("front"),
+    INGREDIENTS("ingredients"),
+    NUTRITION("nutrition"),
+    PACKAGING("packaging"),
+    OTHER("other");
 
 
     @JsonValue

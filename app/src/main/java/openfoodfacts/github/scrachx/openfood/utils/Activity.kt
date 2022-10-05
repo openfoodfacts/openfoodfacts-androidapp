@@ -15,6 +15,12 @@ fun Activity.hideKeyboard() {
         .hideSoftInputFromWindow(view.windowToken, 0)
 }
 
+fun Activity.showKeyboard() {
+    val view = currentFocus ?: return
+    (getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager)
+        .showSoftInput(view, 0)
+}
+
 fun Activity.getProductState() = intent.getSerializableExtra(ProductEditActivity.KEY_STATE) as ProductState?
 fun Activity.requireProductState() = this.getProductState()
     ?: error("Activity ${this::class.simpleName} started without '${ProductEditActivity.KEY_STATE}' serializable in intent.")

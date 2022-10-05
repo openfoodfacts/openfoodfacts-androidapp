@@ -638,16 +638,15 @@
     <string name="report_img">Докладвай снимка</string>
     <string name="detected_ingredients">Открити съставки</string>
     <string name="txtConnectionError">Не можахме да изтеглим определени данни. Това може да се дължи на грешка при връзката.</string>
-    <string name="set_image_name">Successfully set the image as</string>
     <string name="addtive_search">Търсене на добавка</string>
     <string name="additives">Добавки</string>
     <!--used for product_lists implementation-->
-    <string name="add_to_product_lists">Добави към списъците ми</string>
-    <string name="txt_create_new_list">Създай нов списък</string>
-    <string name="txt_add_to_new_list">Добави към нов списък</string>
-    <string name="create_new_list_list_name">Име на списъка</string>
-    <string name="txt_eaten_products">Продукти които имам</string>
-    <string name="txt_products_to_buy">Списък за пазаруване</string>
+    <string name="dialog_add_product_to_list_title">Добави към списъците ми</string>
+    <string name="dialog_create_new_list_title">Създай нов списък</string>
+    <string name="dialog_add_product_to_list_new">Добави към нов списък</string>
+    <string name="dialog_create_new_list_hint">Име на списъка</string>
+    <string name="default_list_title_stored">Продукти които имам</string>
+    <string name="default_list_title_to_buy">Списък за пазаруване</string>
     <string name="txt_exporting_your_listed_products">Exporting Your Products…</string>
     <string name="txt_your_listed_products_exported">Your products have been exported</string>
     <string name="txt_discard">Отказ</string>

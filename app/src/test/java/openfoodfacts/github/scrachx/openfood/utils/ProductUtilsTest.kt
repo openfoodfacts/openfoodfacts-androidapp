@@ -1,38 +1,45 @@
 package openfoodfacts.github.scrachx.openfood.utils
 
 import com.google.common.truth.Truth.assertThat
+import io.mockk.every
+import io.mockk.mockk
+import openfoodfacts.github.scrachx.openfood.BuildConfig
+import openfoodfacts.github.scrachx.openfood.models.Barcode
 import openfoodfacts.github.scrachx.openfood.models.Product
 import org.junit.jupiter.api.Test
-import org.mockito.Mockito.mock
-import org.mockito.kotlin.doReturn
-import org.mockito.kotlin.whenever
 
 class ProductUtilsTest {
     @Test
     fun isPerServingInLiter() {
-        val mockProd = mock(Product::class.java)
+        val mockProd = mockk<Product>()
 
-        whenever(mockProd.servingSize) doReturn "3l"
+        every { mockProd.servingSize } returns "3l"
         assertThat(mockProd.isPerServingInLiter()).isTrue()
 
-        whenever(mockProd.servingSize) doReturn "3oz"
+        every { mockProd.servingSize } returns "3oz"
         assertThat(mockProd.isPerServingInLiter()).isFalse()
     }
 
     @Test
     fun isBarcodeValid() {
         // Debug value
-        assertThat(isBarcodeValid("1")).isTrue()
+        if (BuildConfig.DEBUG) {
+            assertThat(Barcode("1").isValid()).isTrue()
+        }
 
         // Incorrect values
-        assertThat(isBarcodeValid("2")).isFalse()
-        assertThat(isBarcodeValid("123456789")).isFalse()
-        assertThat(isBarcodeValid("test")).isFalse()
-        assertThat(isBarcodeValid("")).isFalse()
-        assertThat(isBarcodeValid(null)).isFalse()
+        INVALID_BARCODES.forEach {
+            assertThat(Barcode(it).isValid()).isFalse()
+        }
 
         // Correct values
-        listOf(
+        VALID_BARCODES.forEach {
+            assertThat(Barcode(it).isValid()).isTrue()
+        }
+    }
+
+    companion object {
+        private val VALID_BARCODES = listOf(
             "0145342032309",
             "0175175578583",
             "0322155577405",
@@ -133,10 +140,13 @@ class ProductUtilsTest {
             "9510371184373",
             "9528722036004",
             "9634827116517"
-        ).forEach { assertThat(isBarcodeValid(it)).isTrue() }
-
-        listOf(
-            "9781484506578"
-        ).forEach { assertThat(isBarcodeValid(it)).isFalse()}
+        )
+        private val INVALID_BARCODES = listOf(
+            "9781484506578",
+            "2",
+            "123456789",
+            "test",
+            ""
+        )
     }
 }

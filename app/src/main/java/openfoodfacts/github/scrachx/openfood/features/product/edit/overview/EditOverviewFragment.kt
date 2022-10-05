@@ -40,10 +40,8 @@ import com.hootsuite.nachos.validator.ChipifyingNachoValidator
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
-import openfoodfacts.github.scrachx.openfood.AppFlavors.OBF
-import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
-import openfoodfacts.github.scrachx.openfood.AppFlavors.OPF
-import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
+import openfoodfacts.github.scrachx.openfood.AppFlavor
+import openfoodfacts.github.scrachx.openfood.AppFlavor.Companion.isFlavors
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsView
 import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
@@ -69,7 +67,18 @@ import openfoodfacts.github.scrachx.openfood.models.entities.tag.TagDao
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.Keys.lcProductNameKey
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
-import openfoodfacts.github.scrachx.openfood.utils.*
+import openfoodfacts.github.scrachx.openfood.utils.FileDownloader
+import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
+import openfoodfacts.github.scrachx.openfood.utils.LocaleUtils
+import openfoodfacts.github.scrachx.openfood.utils.PhotoReceiverHandler
+import openfoodfacts.github.scrachx.openfood.utils.areChipsDifferent
+import openfoodfacts.github.scrachx.openfood.utils.dpsToPixel
+import openfoodfacts.github.scrachx.openfood.utils.getContent
+import openfoodfacts.github.scrachx.openfood.utils.into
+import openfoodfacts.github.scrachx.openfood.utils.isContentDifferent
+import openfoodfacts.github.scrachx.openfood.utils.isFastAdditionMode
+import openfoodfacts.github.scrachx.openfood.utils.isNotEmpty
+import openfoodfacts.github.scrachx.openfood.utils.unique
 import org.apache.commons.lang3.StringUtils
 import org.jetbrains.annotations.Contract
 import java.io.File
@@ -162,8 +171,14 @@ class EditOverviewFragment : ProductEditFragment() {
 
 
         binding.language.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_arrow_drop_down, 0)
-        binding.sectionManufacturingDetails.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_down_grey_24dp, 0)
-        binding.sectionPurchasingDetails.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_down_grey_24dp, 0)
+        binding.sectionManufacturingDetails.setCompoundDrawablesWithIntrinsicBounds(0,
+            0,
+            R.drawable.ic_keyboard_arrow_down_grey_24dp,
+            0)
+        binding.sectionPurchasingDetails.setCompoundDrawablesWithIntrinsicBounds(0,
+            0,
+            R.drawable.ic_keyboard_arrow_down_grey_24dp,
+            0)
 
         if (product != null) {
             barcode = product!!.code
@@ -190,7 +205,7 @@ class EditOverviewFragment : ProductEditFragment() {
             append(barcode)
         }
 
-        if (isFlavors(OBF, OPF)) {
+        if (isFlavors(AppFlavor.OBF, AppFlavor.OPF)) {
             binding.btnOtherPictures.visibility = View.GONE
         }
         if (args.getBoolean(KEY_PERFORM_OCR)) {
@@ -529,7 +544,7 @@ class EditOverviewFragment : ProductEditFragment() {
             )
         }
 
-        if (isFlavors(OBF)) {
+        if (isFlavors(AppFlavor.OBF)) {
             binding.periodOfTimeAfterOpeningTil.visibility = View.VISIBLE
             val customAdapter = PeriodAfterOpeningAutoCompleteAdapter(
                 requireContext(),
@@ -573,7 +588,9 @@ class EditOverviewFragment : ProductEditFragment() {
                 val productState = try {
                     client.getProductStateFull(product!!.code, fields)
                 } catch (err: Exception) {
-                    Log.e(EditOverviewFragment::class.simpleName, "Error retrieving product state from server api.", err)
+                    Log.e(EditOverviewFragment::class.simpleName,
+                        "Error retrieving product state from server api.",
+                        err)
                     binding.name.setText(StringUtils.EMPTY)
                     binding.name.isActivated = true
                     return@launchWhenResumed
@@ -674,7 +691,7 @@ class EditOverviewFragment : ProductEditFragment() {
         targetMap[ApiFields.Keys.CATEGORIES] = getNachoValues(binding.categories)
         targetMap[ApiFields.Keys.LABELS] = getNachoValues(binding.label)
 
-        if (isFlavors(OBF)) {
+        if (isFlavors(AppFlavor.OBF)) {
             targetMap[ApiFields.Keys.PERIODS_AFTER_OPENING] = binding.periodOfTimeAfterOpening.text.toString()
         }
 
@@ -706,7 +723,9 @@ class EditOverviewFragment : ProductEditFragment() {
         appLang.let { if (it.isNotEmpty()) targetMap[ApiFields.Keys.LC] = it }
 
         val lc = getLCOrDefault(languageCode)
-        if (binding.name.isNotEmpty() && binding.name.isContentDifferent(if (product != null) product!!.getProductName(lc) else null)) {
+        if (binding.name.isNotEmpty() && binding.name.isContentDifferent(if (product != null) product!!.getProductName(
+                lc) else null)
+        ) {
             targetMap[lcProductNameKey(lc)] = binding.name.text.toString()
         }
         if (binding.quantity.isNotEmpty() && binding.quantity.isContentDifferent(if (product != null) product!!.quantity else null)) {
@@ -778,10 +797,16 @@ class EditOverviewFragment : ProductEditFragment() {
         if (binding.manufacturingPlaceTil.visibility != View.VISIBLE) {
             changeVisibilityManufacturingSectionTo(View.VISIBLE)
             binding.originOfIngredients.requestFocus()
-            binding.sectionManufacturingDetails.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_up_grey_24dp, 0)
+            binding.sectionManufacturingDetails.setCompoundDrawablesWithIntrinsicBounds(0,
+                0,
+                R.drawable.ic_keyboard_arrow_up_grey_24dp,
+                0)
         } else {
             changeVisibilityManufacturingSectionTo(View.GONE)
-            binding.sectionManufacturingDetails.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_down_grey_24dp, 0)
+            binding.sectionManufacturingDetails.setCompoundDrawablesWithIntrinsicBounds(0,
+                0,
+                R.drawable.ic_keyboard_arrow_down_grey_24dp,
+                0)
         }
     }
 
@@ -793,7 +818,7 @@ class EditOverviewFragment : ProductEditFragment() {
         binding.linkTil.visibility = visibility
         binding.linearLayout.visibility = visibility
         binding.traceHint.visibility = visibility
-        if (isFlavors(OFF))
+        if (isFlavors(AppFlavor.OFF))
             binding.originWarning.visibility = visibility
     }
 
@@ -801,10 +826,16 @@ class EditOverviewFragment : ProductEditFragment() {
         if (binding.storesTil.visibility != View.VISIBLE) {
             changePurchasingSectionVisibilityTo(View.VISIBLE)
             binding.countryWherePurchased.requestFocus()
-            binding.sectionPurchasingDetails.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_up_grey_24dp, 0)
+            binding.sectionPurchasingDetails.setCompoundDrawablesWithIntrinsicBounds(0,
+                0,
+                R.drawable.ic_keyboard_arrow_up_grey_24dp,
+                0)
         } else {
             changePurchasingSectionVisibilityTo(View.GONE)
-            binding.sectionPurchasingDetails.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_down_grey_24dp, 0)
+            binding.sectionPurchasingDetails.setCompoundDrawablesWithIntrinsicBounds(0,
+                0,
+                R.drawable.ic_keyboard_arrow_down_grey_24dp,
+                0)
         }
     }
 
@@ -844,6 +875,7 @@ class EditOverviewFragment : ProductEditFragment() {
         }
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         // Scanned QR code returned

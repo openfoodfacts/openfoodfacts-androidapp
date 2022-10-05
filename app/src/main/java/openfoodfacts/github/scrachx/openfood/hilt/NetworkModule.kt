@@ -12,6 +12,8 @@ import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.hilt.qualifiers.MainRetrofit
 import openfoodfacts.github.scrachx.openfood.hilt.qualifiers.RobotoffRetrofit
 import openfoodfacts.github.scrachx.openfood.hilt.qualifiers.WikiRetrofit
+import openfoodfacts.github.scrachx.openfood.utils.*
+import openfoodfacts.github.scrachx.openfood.utils.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.jackson.JacksonConverterFactory
@@ -30,62 +32,64 @@ object NetworkModule {
     fun provideHttpClient(): OkHttpClient {
         // Our servers don't support TLS 1.3 therefore we need to create custom connectionSpec
         // with the correct ciphers to support network requests successfully on Android 7
-        val connectionSpecModernTLS = ConnectionSpec.Builder(ConnectionSpec.MODERN_TLS)
-            .tlsVersions(TlsVersion.TLS_1_2)
-            .cipherSuites(
+        val connectionSpecModernTLS = ConnectionSpec(ConnectionSpec.MODERN_TLS) {
+            tlsVersions(TlsVersion.TLS_1_2)
+            cipherSuites(
                 CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,
                 CipherSuite.TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,
                 CipherSuite.TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,
                 CipherSuite.TLS_DHE_RSA_WITH_AES_256_GCM_SHA384,
                 CipherSuite.TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
             )
-            .build()
-        return OkHttpClient.Builder().apply {
+        }
+
+        return OkHttpClient {
             connectTimeout(CONNECTION_TIMEOUT, TimeUnit.SECONDS)
             readTimeout(READ_WRITE_TIMEOUT, TimeUnit.SECONDS)
             writeTimeout(READ_WRITE_TIMEOUT, TimeUnit.SECONDS)
             connectionSpecs(listOf(connectionSpecModernTLS, ConnectionSpec.COMPATIBLE_TLS))
 
             if (BuildConfig.DEBUG) {
-                addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+                addInterceptor(HttpLoggingInterceptor { level = HttpLoggingInterceptor.Level.BODY })
                 authenticator { _, response ->
-                    response.request()
-                        .newBuilder()
-                        .header("Authorization", Credentials.basic("off", "off"))
-                        .build()
+                    response.request().buildUpon {
+                        header("Authorization", Credentials.basic("off", "off"))
+                    }
                 }
             } else {
-                addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BASIC))
+                addInterceptor(HttpLoggingInterceptor { level = HttpLoggingInterceptor.Level.BASIC })
             }
-        }.build()
+        }
     }
 
     @MainRetrofit
     @Provides
     @Singleton
-    fun provideMainRetrofit(httpClient: OkHttpClient): Retrofit =
-        httpClient.createDefaultRetrofit()
-            .baseUrl(BuildConfig.HOST)
-            .build()
+    fun provideMainRetrofit(httpClient: OkHttpClient): Retrofit {
+        return defaultRetrofitBuilder(httpClient) { baseUrl(BuildConfig.HOST) }
+    }
 
     @WikiRetrofit
     @Provides
     @Singleton
-    fun provideWikiRetrofit(httpClient: OkHttpClient): Retrofit =
-        httpClient.createDefaultRetrofit()
-            .baseUrl(BuildConfig.WIKIDATA)
-            .build()
+    fun provideWikiRetrofit(httpClient: OkHttpClient): Retrofit {
+        return defaultRetrofitBuilder(httpClient) { baseUrl(BuildConfig.WIKIDATA) }
+    }
 
     @RobotoffRetrofit
     @Provides
     @Singleton
-    fun provideRobotoffRetrofit(httpClient: OkHttpClient): Retrofit =
-        httpClient.createDefaultRetrofit()
-            .baseUrl("https://robotoff.openfoodfacts.org")
-            .build()
+    fun provideRobotoffRetrofit(httpClient: OkHttpClient): Retrofit {
+        return defaultRetrofitBuilder(httpClient) { baseUrl("https://robotoff.openfoodfacts.org") }
+    }
 
-    private fun OkHttpClient.createDefaultRetrofit() = Retrofit.Builder()
-        .client(this)
-        .addConverterFactory(JacksonConverterFactory.create(jacksonObjectMapper()))
-        .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
+    private inline fun defaultRetrofitBuilder(
+        client: OkHttpClient,
+        crossinline builderAction: Retrofit.Builder.() -> Unit,
+    ) = Retrofit {
+        client(client)
+        addConverterFactory(JacksonConverterFactory.create(jacksonObjectMapper()))
+        addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
+        builderAction()
+    }
 }

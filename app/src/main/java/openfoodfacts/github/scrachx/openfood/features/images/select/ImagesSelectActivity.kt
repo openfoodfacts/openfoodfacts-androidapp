@@ -15,16 +15,16 @@
  */
 package openfoodfacts.github.scrachx.openfood.features.images.select
 
-import android.Manifest.permission
+import android.Manifest.permission.READ_EXTERNAL_STORAGE
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.content.pm.PackageManager
+import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.os.Bundle
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContract
 import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.checkSelfPermission
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.squareup.picasso.Picasso
@@ -34,10 +34,14 @@ import openfoodfacts.github.scrachx.openfood.features.adapters.ProductImagesSele
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.images.IMAGE_FILE
 import openfoodfacts.github.scrachx.openfood.images.IMG_ID
+import openfoodfacts.github.scrachx.openfood.images.ImageNameParser
 import openfoodfacts.github.scrachx.openfood.images.PRODUCT_BARCODE
-import openfoodfacts.github.scrachx.openfood.images.extractImagesNameSortedByUploadTimeDesc
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
-import openfoodfacts.github.scrachx.openfood.utils.*
+import openfoodfacts.github.scrachx.openfood.utils.Intent
+import openfoodfacts.github.scrachx.openfood.utils.MY_PERMISSIONS_REQUEST_STORAGE
+import openfoodfacts.github.scrachx.openfood.utils.PhotoReceiverHandler
+import openfoodfacts.github.scrachx.openfood.utils.allGranted
+import openfoodfacts.github.scrachx.openfood.utils.isUserSet
 import pl.aprilapps.easyphotopicker.EasyImage
 import java.io.File
 import javax.inject.Inject
@@ -80,12 +84,13 @@ class ImagesSelectActivity : BaseActivity() {
     }
 
     private fun loadProductImages(code: String) {
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         lifecycleScope.launchWhenCreated {
-            val imageNames = productsApi.getProductImages(code).extractImagesNameSortedByUploadTimeDesc()
-            supportActionBar?.setDisplayHomeAsUpEnabled(true)
+            val imageNames = ImageNameParser.extractImageNames(productsApi.getProductImages(code))
+                .map { it.value }
 
             // Check if user is logged in
-            adapter = ProductImagesSelectionAdapter(this@ImagesSelectActivity, picasso, imageNames, code) {
+            adapter = ProductImagesSelectionAdapter(picasso, imageNames, code) {
                 setSelectedImage(it)
             }
 
@@ -96,8 +101,11 @@ class ImagesSelectActivity : BaseActivity() {
 
     private fun setSelectedImage(selectedPosition: Int) {
         if (selectedPosition >= 0) {
-            val finalUrlString = adapter.getImageUrl(selectedPosition)
-            picasso.load(finalUrlString).resize(400, 400).centerInside().into(binding.expandedImage)
+            val imageUrl = adapter.getImageUrl(selectedPosition)
+            picasso.load(imageUrl)
+                .resize(400, 400)
+                .centerInside()
+                .into(binding.expandedImage)
             binding.zoomContainer.visibility = View.VISIBLE
             binding.imagesRecycler.visibility = View.INVISIBLE
         }
@@ -117,10 +125,17 @@ class ImagesSelectActivity : BaseActivity() {
     }
 
     private fun chooseImage() {
-        if (ContextCompat.checkSelfPermission(this, permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, arrayOf(permission.READ_EXTERNAL_STORAGE), MY_PERMISSIONS_REQUEST_STORAGE)
-        } else {
-            EasyImage.openGallery(this, -1, false)
+        when {
+            checkSelfPermission(this, READ_EXTERNAL_STORAGE) != PERMISSION_GRANTED -> {
+                ActivityCompat.requestPermissions(
+                    this,
+                    arrayOf(READ_EXTERNAL_STORAGE),
+                    MY_PERMISSIONS_REQUEST_STORAGE
+                )
+            }
+            else -> {
+                EasyImage.openGallery(this, -1, false)
+            }
         }
     }
 
@@ -141,6 +156,7 @@ class ImagesSelectActivity : BaseActivity() {
         return true
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data) { newPhotoFile ->
@@ -153,7 +169,7 @@ class ImagesSelectActivity : BaseActivity() {
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == MY_PERMISSIONS_REQUEST_STORAGE && isAllGranted(grantResults)) {
+        if (requestCode == MY_PERMISSIONS_REQUEST_STORAGE && grantResults.allGranted()) {
             chooseImage()
         }
     }
@@ -163,24 +179,27 @@ class ImagesSelectActivity : BaseActivity() {
         const val TOOLBAR_TITLE = "TOOLBAR_TITLE"
 
         @JvmStatic
-        fun start(context: Context, toolbarTitle: String, productCode: String) = context.startActivity(Intent(context, this::class.java).apply {
-            putExtra(TOOLBAR_TITLE, toolbarTitle)
-            putExtra(PRODUCT_BARCODE, productCode)
-        })
+        fun start(context: Context, toolbarTitle: String, productCode: String) =
+            context.startActivity(createIntent(context, toolbarTitle, productCode))
 
         class SelectImageContract(
-            private val toolbarTitle: String
+            private val toolbarTitle: String,
         ) : ActivityResultContract<String, Pair<String?, File?>>() {
-            override fun createIntent(context: Context, input: String) = Intent<ImagesSelectActivity>(context) {
-                putExtra(TOOLBAR_TITLE, toolbarTitle)
-                putExtra(PRODUCT_BARCODE, input)
-            }
-
+            override fun createIntent(context: Context, input: String) =
+                createIntent(context, toolbarTitle, input)
 
             override fun parseResult(resultCode: Int, intent: Intent?) =
                 if (resultCode != RESULT_OK) null to null
                 else intent?.getStringExtra(IMG_ID) to intent?.getSerializableExtra(IMAGE_FILE) as File?
+        }
 
+        internal fun createIntent(
+            context: Context,
+            toolbarTitle: String,
+            barcode: String,
+        ) = Intent<ImagesSelectActivity>(context) {
+            putExtra(TOOLBAR_TITLE, toolbarTitle)
+            putExtra(PRODUCT_BARCODE, barcode)
         }
     }
 }

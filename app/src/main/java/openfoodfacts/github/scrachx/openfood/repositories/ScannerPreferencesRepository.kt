@@ -19,39 +19,24 @@ class ScannerPreferencesRepository @Inject constructor(
     private val cameraPrefs by lazy { context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE) }
     private val appPrefs by lazy { context.getAppPreferences() }
 
-    fun saveAutoFocusPref(value: Boolean) {
-        cameraPrefs.edit { putBoolean(SETTING_FOCUS, value) }
-    }
+    var autoFocusPref
+        get() = cameraPrefs.getBoolean(SETTING_FOCUS, true)
+        set(value) = cameraPrefs.edit { putBoolean(SETTING_FOCUS, value) }
 
-    fun getAutoFocusPref() = cameraPrefs.getBoolean(SETTING_FOCUS, true)
+    var flashPref
+        get() = cameraPrefs.getBoolean(SETTING_FLASH, false)
+        set(value) = cameraPrefs.edit { putBoolean(SETTING_FLASH, value) }
 
-    fun saveFlashPref(value: Boolean) {
-        cameraPrefs.edit {
-            putBoolean(SETTING_FLASH, value)
-        }
-    }
+    var cameraPref
+        get() = CameraState.fromInt(cameraPrefs.getInt(SETTING_STATE, CameraState.Back.value))
+        set(value) = cameraPrefs.edit { putInt(SETTING_STATE, value.value) }
 
-    fun getFlashPref() = cameraPrefs.getBoolean(SETTING_FLASH, false)
+    var ringPref
+        get() = cameraPrefs.getBoolean(SETTING_RING, false)
+        set(value) = cameraPrefs.edit { putBoolean(SETTING_RING, value) }
 
-    fun saveCameraPref(camera: CameraState) {
-        cameraPrefs.edit {
-            putInt(SETTING_STATE, camera.value)
-        }
-    }
-
-    fun getCameraPref() = CameraState.fromInt(cameraPrefs.getInt(SETTING_STATE, CameraState.Back.value))
-
-    fun saveRingPref(value: Boolean) {
-        cameraPrefs.edit {
-            putBoolean(SETTING_RING, value)
-        }
-    }
-
-    fun getRingPref() = cameraPrefs.getBoolean(SETTING_RING, false)
-
-    fun isMlScannerEnabled(): Boolean {
-        return BuildConfig.USE_MLKIT && appPrefs.getBoolean(context.getString(R.string.pref_scanner_mlkit_key), false)
-    }
+    val mlScannerEnabled: Boolean
+        get() = BuildConfig.USE_MLKIT && appPrefs.getBoolean(context.getString(R.string.pref_scanner_mlkit_key), false)
 
     companion object {
         private const val PREFS_NAME = "camera"
@@ -70,5 +55,7 @@ class ScannerPreferencesRepository @Inject constructor(
             BarcodeFormat.CODE_128,
             BarcodeFormat.ITF
         )
+
+
     }
 }

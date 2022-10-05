@@ -26,8 +26,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
-import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
-import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
+import openfoodfacts.github.scrachx.openfood.AppFlavor
+import openfoodfacts.github.scrachx.openfood.AppFlavor.Companion.isFlavors
 import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityHistoryScanBinding
@@ -36,8 +36,19 @@ import openfoodfacts.github.scrachx.openfood.features.productlist.CreateCSVContr
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.selectNavigationItem
-import openfoodfacts.github.scrachx.openfood.utils.*
-import openfoodfacts.github.scrachx.openfood.utils.SortType.*
+import openfoodfacts.github.scrachx.openfood.utils.Intent
+import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
+import openfoodfacts.github.scrachx.openfood.utils.SortType.BARCODE
+import openfoodfacts.github.scrachx.openfood.utils.SortType.BRAND
+import openfoodfacts.github.scrachx.openfood.utils.SortType.GRADE
+import openfoodfacts.github.scrachx.openfood.utils.SortType.TIME
+import openfoodfacts.github.scrachx.openfood.utils.SortType.TITLE
+import openfoodfacts.github.scrachx.openfood.utils.SwipeController
+import openfoodfacts.github.scrachx.openfood.utils.getCsvFolderName
+import openfoodfacts.github.scrachx.openfood.utils.isBatteryLevelLow
+import openfoodfacts.github.scrachx.openfood.utils.isDisableImageLoad
+import openfoodfacts.github.scrachx.openfood.utils.isHardwareCameraInstalled
+import openfoodfacts.github.scrachx.openfood.utils.writeHistoryToFile
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
@@ -69,30 +80,32 @@ class ScanHistoryActivity : BaseActivity() {
         }
     }
 
-    private val storagePermLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
-        if (isGranted) {
-            exportAsCSV()
-        } else {
-            MaterialAlertDialogBuilder(this)
-                .setTitle(R.string.permission_title)
-                .setMessage(R.string.permission_denied)
-                .setNegativeButton(R.string.txtNo) { dialog, _ -> dialog.dismiss() }
-                .setPositiveButton(R.string.txtYes) { dialog, _ ->
-                    startActivity(Intent().apply {
-                        action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
-                        data = Uri.fromParts("package", this@ScanHistoryActivity.packageName, null)
-                    })
-                    dialog.dismiss()
-                }
-                .show()
+    private val storagePermLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
+            if (isGranted) {
+                exportAsCSV()
+            } else {
+                MaterialAlertDialogBuilder(this)
+                    .setTitle(R.string.permission_title)
+                    .setMessage(R.string.permission_denied)
+                    .setNegativeButton(R.string.txtNo) { dialog, _ -> dialog.dismiss() }
+                    .setPositiveButton(R.string.txtYes) { dialog, _ ->
+                        startActivity(Intent().apply {
+                            action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
+                            data = Uri.fromParts("package", this@ScanHistoryActivity.packageName, null)
+                        })
+                        dialog.dismiss()
+                    }
+                    .show()
+            }
         }
-    }
 
-    private val cameraPermLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
-        if (isGranted) {
-            startScanActivity()
+    private val cameraPermLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
+            if (isGranted) {
+                startScanActivity()
+            }
         }
-    }
 
     @RequiresApi(Build.VERSION_CODES.KITKAT)
     val fileWriterLauncher = registerForActivityResult(CreateCSVContract()) { uri ->
@@ -183,8 +196,12 @@ class ScanHistoryActivity : BaseActivity() {
             true
         }
         R.id.action_export_all_history -> {
-            if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+            if (ContextCompat.checkSelfPermission(this,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
+            ) {
+                if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                ) {
                     MaterialAlertDialogBuilder(this)
                         .setTitle(R.string.action_about)
                         .setMessage(R.string.permision_write_external_storage)
@@ -274,7 +291,7 @@ class ScanHistoryActivity : BaseActivity() {
     }
 
     private fun showListSortingDialog() {
-        val sortTypes = if (isFlavors(OFF)) arrayOf(
+        val sortTypes = if (isFlavors(AppFlavor.OFF)) arrayOf(
             TITLE,
             BRAND,
             GRADE,
@@ -298,7 +315,7 @@ class ScanHistoryActivity : BaseActivity() {
                 val newType = when (which) {
                     0 -> TITLE
                     1 -> BRAND
-                    2 -> if (isFlavors(OFF)) GRADE else TIME
+                    2 -> if (isFlavors(AppFlavor.OFF)) GRADE else TIME
                     3 -> BARCODE
                     else -> TIME
                 }
@@ -310,7 +327,7 @@ class ScanHistoryActivity : BaseActivity() {
     }
 
     companion object {
-        fun start(context: Context) = context.startActivity(Intent(context, ScanHistoryActivity::class.java))
+        fun start(context: Context) = context.startActivity(Intent<ScanHistoryActivity>(context))
         val LOG_TAG = ScanHistoryActivity::class.simpleName
     }
 

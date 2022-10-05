@@ -28,11 +28,13 @@ import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewAc
 import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewActivity.ShowIngredientsAction.SEND_UPDATED
 import openfoodfacts.github.scrachx.openfood.features.product.view.ingredients.IngredientsProductFragment
 import openfoodfacts.github.scrachx.openfood.features.product.view.summary.SummaryProductFragment
+import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.selectNavigationItem
 import openfoodfacts.github.scrachx.openfood.listeners.OnRefreshListener
 import openfoodfacts.github.scrachx.openfood.models.ProductState
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
+import openfoodfacts.github.scrachx.openfood.utils.Intent
 import openfoodfacts.github.scrachx.openfood.utils.requireProductState
 import javax.inject.Inject
 
@@ -60,6 +62,10 @@ class ProductViewFragment : Fragment(), IProductView, OnRefreshListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val activity = requireActivity()
+        check(activity is BaseActivity) { "Cannot initialize from an activity that does not inherit BaseActivity" }
+
         productState = requireProductState()
 
         binding.toolbar.visibility = View.GONE
@@ -72,14 +78,16 @@ class ProductViewFragment : Fragment(), IProductView, OnRefreshListener {
         }.attach()
 
         binding.navigationBottomInclude.bottomNavigation.selectNavigationItem(0)
-        binding.navigationBottomInclude.bottomNavigation.installBottomNavigation(requireActivity())
+        binding.navigationBottomInclude.bottomNavigation.installBottomNavigation(activity)
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == LOGIN_ACTIVITY_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
-            val intent = Intent(activity, ProductEditActivity::class.java)
-            intent.putExtra(ProductEditActivity.KEY_EDIT_PRODUCT, productState.product)
+            val intent = Intent<ProductEditActivity>(requireContext()) {
+                putExtra(ProductEditActivity.KEY_EDIT_PRODUCT, productState.product)
+            }
             startActivity(intent)
         }
     }

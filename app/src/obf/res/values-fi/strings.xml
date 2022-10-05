@@ -39,8 +39,8 @@
     <string name="add_category_prompt_text">Lisää luokka auttaaksesi täydentämään tuotteen</string>
     <string name="add_nutrient_category_prompt_text">Lisää luokka ja yksityiskohtia auttaaksesi täydentämään tuotteen</string>
     <string name="required_to_compute_nutriscore"></string>
-    <string name="txt_eaten_products">Omistamani tuotteet</string>
-    <string name="txt_products_to_buy">Ostettavat tuotteet</string>
+    <string name="default_list_title_stored">Omistamani tuotteet</string>
+    <string name="default_list_title_to_buy">Ostettavat tuotteet</string>
     <string name="intent_filter_share_label">Lisää Open Beauty Factsiin</string>
     <string name="brand_hint">Esimerkkejä: Nivea, L\'Oréal jne…</string>
     <string name="txt_info_eaten_products">Voit lisätä tuotteita tähän luetteloon liu\'uttamalla luetun tuotteen tuotekortin ylöspäin, ja napauttamalla \"Ostettavat tuotteet\".

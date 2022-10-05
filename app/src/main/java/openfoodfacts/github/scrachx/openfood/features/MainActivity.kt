@@ -22,7 +22,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.ActivityInfo
-import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.graphics.BitmapFactory
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
@@ -35,6 +34,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.EditText
 import android.widget.SearchView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
@@ -52,7 +52,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.play.core.review.ReviewManagerFactory
-import com.google.zxing.*
+import com.google.zxing.BinaryBitmap
+import com.google.zxing.DecodeHintType
+import com.google.zxing.FormatException
+import com.google.zxing.MultiFormatReader
+import com.google.zxing.RGBLuminanceSource
 import com.google.zxing.common.HybridBinarizer
 import com.mikepenz.iconics.typeface.library.googlematerial.GoogleMaterial
 import com.mikepenz.materialdrawer.AccountHeader
@@ -67,9 +71,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import openfoodfacts.github.scrachx.openfood.AppFlavors
-import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
-import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
+import openfoodfacts.github.scrachx.openfood.AppFlavor
+import openfoodfacts.github.scrachx.openfood.AppFlavor.Companion.isFlavors
 import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
 import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
@@ -92,13 +95,18 @@ import openfoodfacts.github.scrachx.openfood.features.productlists.ProductListsA
 import openfoodfacts.github.scrachx.openfood.features.scanhistory.ScanHistoryActivity
 import openfoodfacts.github.scrachx.openfood.features.searchbycode.SearchByCodeFragment
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
+import openfoodfacts.github.scrachx.openfood.features.shared.NavigationDrawerHost
+import openfoodfacts.github.scrachx.openfood.features.shared.OnNavigationDrawerStatusChangedListener
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
-import openfoodfacts.github.scrachx.openfood.jobs.ProductUploaderWorker.Companion.scheduleProductUpload
+import openfoodfacts.github.scrachx.openfood.jobs.ImagesUploaderWorker
+import openfoodfacts.github.scrachx.openfood.jobs.ProductUploaderWorker
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.selectNavigationItem
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
-import openfoodfacts.github.scrachx.openfood.utils.*
+import openfoodfacts.github.scrachx.openfood.utils.Intent
+import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
+import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_ABOUT
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_ADDITIVES
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_ADVANCED_SEARCH
@@ -120,7 +128,29 @@ import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Comp
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_USER
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_YOUR_LISTS
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType
-import openfoodfacts.github.scrachx.openfood.utils.Utils.scheduleProductUploadJob
+import openfoodfacts.github.scrachx.openfood.utils.OnKeyboardVisibilityChanged
+import openfoodfacts.github.scrachx.openfood.utils.PreferencesService
+import openfoodfacts.github.scrachx.openfood.utils.SearchSuggestionProvider
+import openfoodfacts.github.scrachx.openfood.utils.SearchType
+import openfoodfacts.github.scrachx.openfood.utils.buildAccountHeader
+import openfoodfacts.github.scrachx.openfood.utils.buildDrawer
+import openfoodfacts.github.scrachx.openfood.utils.dividerItem
+import openfoodfacts.github.scrachx.openfood.utils.getAppPreferences
+import openfoodfacts.github.scrachx.openfood.utils.getLoginPreferences
+import openfoodfacts.github.scrachx.openfood.utils.getLoginUsername
+import openfoodfacts.github.scrachx.openfood.utils.getUserSession
+import openfoodfacts.github.scrachx.openfood.utils.hideKeyboard
+import openfoodfacts.github.scrachx.openfood.utils.isApplicationInstalled
+import openfoodfacts.github.scrachx.openfood.utils.isGranted
+import openfoodfacts.github.scrachx.openfood.utils.isHardwareCameraInstalled
+import openfoodfacts.github.scrachx.openfood.utils.isNetworkConnected
+import openfoodfacts.github.scrachx.openfood.utils.isUserSet
+import openfoodfacts.github.scrachx.openfood.utils.listenToKeyboardVisibilityChanges
+import openfoodfacts.github.scrachx.openfood.utils.primaryItem
+import openfoodfacts.github.scrachx.openfood.utils.profileItem
+import openfoodfacts.github.scrachx.openfood.utils.profileSettingItem
+import openfoodfacts.github.scrachx.openfood.utils.sectionItem
+import openfoodfacts.github.scrachx.openfood.utils.stopListeningToKeyboardVisibilityChanges
 import java.io.FileNotFoundException
 import java.io.IOException
 import javax.inject.Inject
@@ -128,7 +158,7 @@ import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivi
 
 
 @AndroidEntryPoint
-class MainActivity : BaseActivity(), NavigationDrawerListener {
+class MainActivity : BaseActivity(), NavigationDrawerListener, NavigationDrawerHost {
     private var _binding: ActivityMainBinding? = null
     private val binding get() = _binding!!
 
@@ -148,7 +178,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
 
     private val contributeUri: Uri by lazy { Uri.parse(getString(R.string.website_contribute)) }
     private val discoverUri: Uri by lazy { Uri.parse(getString(R.string.website_discover)) }
-    private fun getUserContributeUri(): Uri = Uri.parse(getString(R.string.website_contributor) + getUserLogin())
+    private fun getUserContributeUri(): Uri = Uri.parse(getString(R.string.website_contributor) + getLoginUsername())
 
     /**
      * Used to re-create the fragment after activity recreation
@@ -163,7 +193,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
     private var userSettingsURI: Uri? = null
 
     private var historySyncJob: Job? = null
-
+    private val drawerStatusChangedListeners = mutableSetOf<OnNavigationDrawerStatusChangedListener>()
 
     private val loginThenUpdate = registerForActivityResult(LoginContract())
     { isLoggedIn -> if (isLoggedIn) updateConnectedState() }
@@ -208,7 +238,8 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
 
                 override fun onProfileImageLongClick(view: View, profile: IProfile<*>, current: Boolean) = false
             })
-            withOnAccountHeaderSelectionViewClickListener(object : AccountHeader.OnAccountHeaderSelectionViewClickListener {
+            withOnAccountHeaderSelectionViewClickListener(object :
+                AccountHeader.OnAccountHeaderSelectionViewClickListener {
                 override fun onClick(view: View, profile: IProfile<*>): Boolean {
                     if (!isUserSet()) startActivity(Intent(this@MainActivity, LoginActivity::class.java))
                     return false
@@ -251,22 +282,23 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
             if (isUserSet()) getLogoutDrawerItem() else getLoginDrawerItem()
         )
         when {
-            isFlavors(AppFlavors.OBF) -> {
+            isFlavors(AppFlavor.OBF) -> {
                 drawerResult.removeItem(ITEM_ALERT.toLong())
                 drawerResult.removeItem(ITEM_ADDITIVES.toLong())
                 drawerResult.updateName(ITEM_OBF.toLong(), StringHolder(getString(R.string.open_other_flavor_drawer)))
             }
-            isFlavors(AppFlavors.OPFF) -> {
+            isFlavors(AppFlavor.OPFF) -> {
                 drawerResult.removeItem(ITEM_ALERT.toLong())
             }
-            isFlavors(AppFlavors.OPF) -> {
+            isFlavors(AppFlavor.OPF) -> {
                 drawerResult.removeItem(ITEM_ALERT.toLong())
                 drawerResult.removeItem(ITEM_ADDITIVES.toLong())
                 drawerResult.removeItem(ITEM_ADVANCED_SEARCH.toLong())
             }
         }
         if (!isApplicationInstalled(this@MainActivity, BuildConfig.OFOTHERLINKAPP)) {
-            drawerResult.updateName(ITEM_OBF.toLong(), StringHolder("${getString(R.string.install)} ${getString(R.string.open_other_flavor_drawer)}"))
+            drawerResult.updateName(ITEM_OBF.toLong(),
+                StringHolder("${getString(R.string.install)} ${getString(R.string.open_other_flavor_drawer)}"))
         } else {
             drawerResult.updateName(ITEM_OBF.toLong(), StringHolder(getString(R.string.open_other_flavor_drawer)))
         }
@@ -306,9 +338,9 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
             BARCODE_SHORTCUT -> swapToSearchByCode()
         }
 
-        //Scheduling background image upload job
-        scheduleProductUploadJob(this)
-        scheduleProductUpload(this, sharedPreferences)
+        // Scheduling background image upload job
+        ImagesUploaderWorker.scheduleProductUploadJob(this)
+        ProductUploaderWorker.scheduleProductUpload(this, sharedPreferences)
 
         // Adds nutriscore and quantity values in old history for schema 5 update
 
@@ -323,7 +355,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
 
         handleIntent(intent)
 
-        if (isFlavors(OFF)) {
+        if (isFlavors(AppFlavor.OFF)) {
             ChangelogDialog.newInstance(BuildConfig.DEBUG).presentAutomatically(this)
         }
     }
@@ -336,8 +368,16 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
 
         withOnDrawerListener(object : Drawer.OnDrawerListener {
             override fun onDrawerSlide(drawerView: View, slideOffset: Float) = hideKeyboard()
-            override fun onDrawerOpened(drawerView: View) = hideKeyboard()
-            override fun onDrawerClosed(drawerView: View) = Unit
+            override fun onDrawerOpened(drawerView: View) {
+                hideKeyboard()
+                // Signal event to listeners
+                drawerStatusChangedListeners.forEach { it.onDrawerOpened() }
+            }
+
+            override fun onDrawerClosed(drawerView: View) {
+                // Signal event to listeners
+                drawerStatusChangedListeners.forEach { it.onDrawerClosed() }
+            }
         })
 
         addDrawerItems(
@@ -458,8 +498,14 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
                     ITEM_LOGIN -> loginThenUpdate.launch(Unit)
                     ITEM_ALERT -> newFragment = AllergensAlertFragment.newInstance()
                     ITEM_PREFERENCES -> newFragment = PreferencesFragment.newInstance()
-                    ITEM_ABOUT -> CustomTabActivityHelper.openCustomTab(this@MainActivity, customTabsIntent, discoverUri, WebViewFallback())
-                    ITEM_CONTRIBUTE -> CustomTabActivityHelper.openCustomTab(this@MainActivity, customTabsIntent, contributeUri, WebViewFallback())
+                    ITEM_ABOUT -> CustomTabActivityHelper.openCustomTab(this@MainActivity,
+                        customTabsIntent,
+                        discoverUri,
+                        WebViewFallback())
+                    ITEM_CONTRIBUTE -> CustomTabActivityHelper.openCustomTab(this@MainActivity,
+                        customTabsIntent,
+                        contributeUri,
+                        WebViewFallback())
                     ITEM_INCOMPLETE_PRODUCTS -> startSearch(
                         this@MainActivity,
                         SearchType.INCOMPLETE_PRODUCT,
@@ -485,7 +531,8 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
                             }
                         } else {
                             try {
-                                startActivity(Intent(Intent.ACTION_VIEW, "market://details?id=${BuildConfig.OFOTHERLINKAPP}".toUri()))
+                                startActivity(Intent(Intent.ACTION_VIEW,
+                                    "market://details?id=${BuildConfig.OFOTHERLINKAPP}".toUri()))
                             } catch (anfe: ActivityNotFoundException) {
                                 startActivity(
                                     Intent(
@@ -537,7 +584,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
 
     private fun checkThenStartScanActivity() {
         when {
-            checkSelfPermission(this, Manifest.permission.CAMERA) == PERMISSION_GRANTED -> {
+            checkSelfPermission(this, Manifest.permission.CAMERA).isGranted() -> {
                 startScanActivity()
             }
             shouldShowRequestPermissionRationale(this, Manifest.permission.CAMERA) -> {
@@ -587,12 +634,13 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
     }
 
     private fun openMyContributionsInSearchActivity() =
-        startSearch(this, SearchType.CONTRIBUTOR, getUserLogin()!!)
+        startSearch(this, SearchType.CONTRIBUTOR, getLoginUsername()!!)
 
     private fun getProfileSettingDrawerItem(): IProfile<ProfileSettingDrawerItem> {
-        val userLogin = getUserLogin()
+        val userLogin = getLoginUsername()
         val userSession = getUserSession()
-        userSettingsURI = "${getString(R.string.website)}cgi/user.pl?type=edit&userid=$userLogin&user_id=$userLogin&user_session=$userSession".toUri()
+        userSettingsURI =
+            "${getString(R.string.website)}cgi/user.pl?type=edit&userid=$userLogin&user_id=$userLogin&user_session=$userSession".toUri()
         customTabActivityHelper.mayLaunchUrl(userSettingsURI, null, null)
 
         return profileSettingItem {
@@ -647,7 +695,6 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         super.onCreateOptionsMenu(menu)
         menuInflater.inflate(R.menu.menu_main, menu)
-
 
 
         // Associate searchable configuration with the SearchView
@@ -706,7 +753,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
     }
 
     private fun getUserProfile(): ProfileDrawerItem = profileItem {
-        withName(getLoginPreferences().getString("user", resources.getString(R.string.txt_anonymous)))
+        withName(getLoginUsername(resources.getString(R.string.txt_anonymous)))
         withIcon(R.drawable.img_home)
         withIdentifier(ITEM_USER.toLong())
     }
@@ -714,7 +761,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
     override fun onStart() {
         super.onStart()
         customTabActivityHelper.bindCustomTabsService(this)
-        if (isFlavors(OFF)
+        if (isFlavors(AppFlavor.OFF)
             && isUserSet()
             && !prefManager.isFirstTimeLaunch
             && !prefManager.userAskedToRate
@@ -793,6 +840,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
     override fun onDestroy() {
         customTabActivityHelper.connectionCallback = null
         stopListeningToKeyboardVisibilityChanges()
+        drawerStatusChangedListeners.clear()
         _binding = null
         super.onDestroy()
     }
@@ -935,8 +983,11 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
         }
 
         val barcodeEditText = dialogView.findViewById<EditText>(R.id.barcode)
+        val barcodeLabelTextView = dialogView.findViewById<TextView>(R.id.barcode_label)
+
         if (hasEditText) {
             barcodeEditText.visibility = View.VISIBLE
+            barcodeLabelTextView.visibility = View.VISIBLE
             alertDialogBuilder.setTitle(getString(R.string.no_barcode))
             alertDialogBuilder.setMessage(getString(R.string.enter_barcode))
         } else {
@@ -976,7 +1027,14 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
             setNegativeButton(R.string.txtNo) { d, _ -> d.cancel() }
             show()
         }
+    }
 
+    override fun addOnDrawerStatusChangedListener(listener: OnNavigationDrawerStatusChangedListener) {
+        drawerStatusChangedListeners.add(listener)
+    }
+
+    override fun removeOnDrawerStatusChangedListener(listener: OnNavigationDrawerStatusChangedListener) {
+        drawerStatusChangedListeners.remove(listener)
     }
 
     companion object {
@@ -987,6 +1045,6 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
         const val PRODUCT_SEARCH_KEY = "product_search"
         private val LOG_TAG = MainActivity::class.simpleName!!
 
-        fun start(context: Context) = context.startActivity(Intent(context, MainActivity::class.java))
+        fun start(context: Context) = context.startActivity(Intent<MainActivity>(context))
     }
 }

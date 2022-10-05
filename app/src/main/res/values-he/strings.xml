@@ -648,7 +648,6 @@
     <string name="report_img">דיווח על תמונה</string>
     <string name="detected_ingredients">הרכיבים שזוהו</string>
     <string name="txtConnectionError">לא הצלחנו להוריד נתונים מסוימים. יכול להיות שמדובר בשגיאת חיבור.</string>
-    <string name="set_image_name">התמונה הוגדרה בהצלחה בתור</string>
     <string name="pref_fast_addition_title">מצב הוספה מהירה</string>
     <string name="pref_fast_addition_summary">מאפשר הוספה מהירה של מוצרים עם פחות תכונות</string>
     <string name="pref_crop_new_images_title">חיתוך תמונות חדשות</string>
@@ -656,12 +655,12 @@
     <string name="addtive_search">חיפוש תוסף</string>
     <string name="additives">תוספים</string>
     <!--used for product_lists implementation-->
-    <string name="add_to_product_lists">הוספה לרשימות שלך</string>
-    <string name="txt_create_new_list">יצירת רשימה חדשה</string>
-    <string name="txt_add_to_new_list">הוספה לרשימה חדשה</string>
-    <string name="create_new_list_list_name">שם רשימה</string>
-    <string name="txt_eaten_products">מוצרים נאכלים</string>
-    <string name="txt_products_to_buy">מוצרים לרכישה</string>
+    <string name="dialog_add_product_to_list_title">הוספה לרשימות שלך</string>
+    <string name="dialog_create_new_list_title">יצירת רשימה חדשה</string>
+    <string name="dialog_add_product_to_list_new">הוספה לרשימה חדשה</string>
+    <string name="dialog_create_new_list_hint">שם רשימה</string>
+    <string name="default_list_title_stored">מוצרים נאכלים</string>
+    <string name="default_list_title_to_buy">מוצרים לרכישה</string>
     <string name="txt_exporting_your_listed_products">המוצרים שלך מיוצאים…</string>
     <string name="txt_your_listed_products_exported">המוצרים שלך יוצאו</string>
     <string name="txt_discard">התעלמות</string>

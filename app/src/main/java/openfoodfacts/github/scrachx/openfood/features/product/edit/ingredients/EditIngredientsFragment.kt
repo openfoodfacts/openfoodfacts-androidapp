@@ -23,6 +23,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.annotation.UiThread
 import androidx.core.net.toFile
 import androidx.core.view.isVisible
 import androidx.core.widget.doAfterTextChanged
@@ -406,8 +407,9 @@ class EditIngredientsFragment : ProductEditFragment() {
      * adds only those fields to the query map which are not empty and have changed.
      */
     override fun getUpdatedFieldsMap(): Map<String, String?> {
+        // TODO: hacky fix, better use a shared view model for saving product details
+        if (activity !is ProductEditActivity || _binding == null) return emptyMap()
         val targetMap = mutableMapOf<String, String?>()
-        if (activity !is ProductEditActivity) return targetMap
 
         binding.traces.chipifyAllUnterminatedTokens()
 
@@ -427,6 +429,7 @@ class EditIngredientsFragment : ProductEditFragment() {
         return targetMap
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data) {
@@ -506,6 +509,7 @@ class EditIngredientsFragment : ProductEditFragment() {
         }
     }
 
+    @UiThread
     fun showOCRProgress() {
         // Disable extract button and ingredients text field
         binding.btnExtractIngredients.isEnabled = false
@@ -518,6 +522,7 @@ class EditIngredientsFragment : ProductEditFragment() {
         binding.ocrProgress.visibility = View.VISIBLE
     }
 
+    @UiThread
     fun hideOCRProgress() {
         // Re-enable extract button and ingredients text field
         binding.btnExtractIngredients.isEnabled = true

@@ -654,7 +654,6 @@
     <string name="report_img">Prijavi sliko</string>
     <string name="detected_ingredients">Prepoznane sestavine</string>
     <string name="txtConnectionError">Ne moremo prenesti določenih podatkov. To je lahko posledica napake v povezavi.</string>
-    <string name="set_image_name">Slika je bila uspešno nastavljena kot</string>
     <string name="pref_fast_addition_title">Način za hitro dodajanje</string>
     <string name="pref_fast_addition_summary">Omogoča hitro dodajanje izdelkov z manj atributi</string>
     <string name="pref_crop_new_images_title">Obreži nove slike</string>
@@ -662,12 +661,12 @@
     <string name="addtive_search">Poiščite dodatek</string>
     <string name="additives">Aditivi</string>
     <!--used for product_lists implementation-->
-    <string name="add_to_product_lists">Dodaj v vaš seznam</string>
-    <string name="txt_create_new_list">Ustvari nov seznam</string>
-    <string name="txt_add_to_new_list">Dodaj na nov seznam</string>
-    <string name="create_new_list_list_name">Ime seznama</string>
-    <string name="txt_eaten_products">Pojedeni izdelki</string>
-    <string name="txt_products_to_buy">Izdelki za nakup</string>
+    <string name="dialog_add_product_to_list_title">Dodaj v vaš seznam</string>
+    <string name="dialog_create_new_list_title">Ustvari nov seznam</string>
+    <string name="dialog_add_product_to_list_new">Dodaj na nov seznam</string>
+    <string name="dialog_create_new_list_hint">Ime seznama</string>
+    <string name="default_list_title_stored">Pojedeni izdelki</string>
+    <string name="default_list_title_to_buy">Izdelki za nakup</string>
     <string name="txt_exporting_your_listed_products">Izvoz vaših izdelkov…</string>
     <string name="txt_your_listed_products_exported">Vaši izdelki so bili izvoženi</string>
     <string name="txt_discard">Zavrzi</string>

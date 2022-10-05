@@ -30,11 +30,11 @@ import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import openfoodfacts.github.scrachx.openfood.AppFlavors.OBF
-import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
-import openfoodfacts.github.scrachx.openfood.AppFlavors.OPF
-import openfoodfacts.github.scrachx.openfood.AppFlavors.OPFF
-import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
+import openfoodfacts.github.scrachx.openfood.AppFlavor.Companion.isFlavors
+import openfoodfacts.github.scrachx.openfood.AppFlavor.OBF
+import openfoodfacts.github.scrachx.openfood.AppFlavor.OFF
+import openfoodfacts.github.scrachx.openfood.AppFlavor.OPF
+import openfoodfacts.github.scrachx.openfood.AppFlavor.OPFF
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductBinding
 import openfoodfacts.github.scrachx.openfood.features.product.ProductFragmentPagerAdapter
@@ -57,7 +57,7 @@ import openfoodfacts.github.scrachx.openfood.listeners.OnRefreshListener
 import openfoodfacts.github.scrachx.openfood.models.ProductState
 import openfoodfacts.github.scrachx.openfood.models.eventbus.ProductNeedsRefreshEvent
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
-import openfoodfacts.github.scrachx.openfood.utils.Utils
+import openfoodfacts.github.scrachx.openfood.utils.Intent
 import openfoodfacts.github.scrachx.openfood.utils.requireProductState
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
@@ -121,7 +121,7 @@ class ProductViewActivity : BaseActivity(), IProductView, OnRefreshListener {
      * @param barcode from the URL.
      */
     private suspend fun fetchProduct(barcode: String) = try {
-        client.getProductStateFull(barcode = barcode, userAgent = Utils.HEADER_USER_AGENT_SCAN)
+        client.getProductStateFull(barcode)
     } catch (err: Exception) {
         Log.w(this::class.simpleName, "Failed to load product $barcode.", err)
         finish()
@@ -129,6 +129,7 @@ class ProductViewActivity : BaseActivity(), IProductView, OnRefreshListener {
     }
 
 
+    @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -223,7 +224,7 @@ class ProductViewActivity : BaseActivity(), IProductView, OnRefreshListener {
         private const val LOGIN_ACTIVITY_REQUEST_CODE = 1
 
         fun start(context: Context, productState: ProductState) {
-            context.startActivity(Intent(context, ProductViewActivity::class.java).apply {
+            context.startActivity(Intent<ProductViewActivity>(context).apply {
                 putExtra(KEY_STATE, productState)
             })
         }
@@ -234,7 +235,7 @@ class ProductViewActivity : BaseActivity(), IProductView, OnRefreshListener {
         fun setupViewPager(
             viewPager: ViewPager2,
             productState: ProductState,
-            activity: FragmentActivity
+            activity: FragmentActivity,
         ): ProductFragmentPagerAdapter {
             val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity)
             val adapter = ProductFragmentPagerAdapter(activity)
@@ -257,7 +258,7 @@ class ProductViewActivity : BaseActivity(), IProductView, OnRefreshListener {
                 adapter += EnvironmentProductFragment.newInstance(productState) to titles[4]
             }
 
-            if (isFlavors(OPF) || isFlavors(OFF, OPFF, OBF) && isPhotoMode(sharedPreferences, activity)) {
+            if (isFlavors(OPF) || (isFlavors(OFF, OPFF, OBF) && isPhotoMode(sharedPreferences, activity))) {
                 adapter += ProductPhotosFragment.newInstance(productState) to newTitles[0]
             }
 
@@ -269,7 +270,9 @@ class ProductViewActivity : BaseActivity(), IProductView, OnRefreshListener {
                 adapter += IngredientsAnalysisProductFragment.newInstance(productState) to newTitles[1]
             }
 
-            if (sharedPreferences.getBoolean(activity.getString(R.string.pref_contribution_tab_key), false)) {
+            val contributionTabEnabled =
+                sharedPreferences.getBoolean(activity.getString(R.string.pref_contribution_tab_key), false)
+            if (contributionTabEnabled) {
                 adapter += ContributorsFragment.newInstance(productState) to activity.getString(R.string.contribution_tab)
             }
 

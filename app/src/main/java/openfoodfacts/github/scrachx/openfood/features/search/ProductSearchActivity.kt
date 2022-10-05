@@ -4,7 +4,6 @@ import android.Manifest
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -36,21 +35,40 @@ import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductBrowsingListBinding
 import openfoodfacts.github.scrachx.openfood.features.adapters.ProductSearchAdapter
-import openfoodfacts.github.scrachx.openfood.features.product.view.OnProductViewActivityStarterResultListener
 import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewActivityStarter
-import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewActivityStarterErrorType
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.selectNavigationItem
 import openfoodfacts.github.scrachx.openfood.listeners.EndlessRecyclerViewScrollListener
 import openfoodfacts.github.scrachx.openfood.listeners.RecyclerItemClickListener
+import openfoodfacts.github.scrachx.openfood.models.Barcode
 import openfoodfacts.github.scrachx.openfood.models.Search
 import openfoodfacts.github.scrachx.openfood.models.SearchInfo
 import openfoodfacts.github.scrachx.openfood.models.SearchProduct
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.repositories.TaxonomiesRepository
-import openfoodfacts.github.scrachx.openfood.utils.*
-import openfoodfacts.github.scrachx.openfood.utils.SearchType.*
+import openfoodfacts.github.scrachx.openfood.utils.Intent
+import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
+import openfoodfacts.github.scrachx.openfood.utils.SearchType
+import openfoodfacts.github.scrachx.openfood.utils.SearchType.ADDITIVE
+import openfoodfacts.github.scrachx.openfood.utils.SearchType.ALLERGEN
+import openfoodfacts.github.scrachx.openfood.utils.SearchType.BRAND
+import openfoodfacts.github.scrachx.openfood.utils.SearchType.CATEGORY
+import openfoodfacts.github.scrachx.openfood.utils.SearchType.CONTRIBUTOR
+import openfoodfacts.github.scrachx.openfood.utils.SearchType.COUNTRY
+import openfoodfacts.github.scrachx.openfood.utils.SearchType.EMB
+import openfoodfacts.github.scrachx.openfood.utils.SearchType.INCOMPLETE_PRODUCT
+import openfoodfacts.github.scrachx.openfood.utils.SearchType.LABEL
+import openfoodfacts.github.scrachx.openfood.utils.SearchType.MANUFACTURING_PLACE
+import openfoodfacts.github.scrachx.openfood.utils.SearchType.ORIGIN
+import openfoodfacts.github.scrachx.openfood.utils.SearchType.PACKAGING
+import openfoodfacts.github.scrachx.openfood.utils.SearchType.SEARCH
+import openfoodfacts.github.scrachx.openfood.utils.SearchType.STATE
+import openfoodfacts.github.scrachx.openfood.utils.SearchType.STORE
+import openfoodfacts.github.scrachx.openfood.utils.SearchType.TRACE
+import openfoodfacts.github.scrachx.openfood.utils.isBatteryLevelLow
+import openfoodfacts.github.scrachx.openfood.utils.isDisableImageLoad
+import openfoodfacts.github.scrachx.openfood.utils.isGranted
 import java.text.NumberFormat
 import java.util.*
 import javax.inject.Inject
@@ -290,7 +308,7 @@ class ProductSearchActivity : BaseActivity() {
      */
     private fun addProduct() {
         when {
-            checkSelfPermission(this, Manifest.permission.CAMERA) == PERMISSION_GRANTED -> startScanActivity()
+            checkSelfPermission(this, Manifest.permission.CAMERA).isGranted() -> startScanActivity()
             shouldShowRequestPermissionRationale(this, Manifest.permission.CAMERA) -> {
                 MaterialAlertDialogBuilder(this)
                     .setTitle(R.string.action_about)
@@ -329,15 +347,12 @@ class ProductSearchActivity : BaseActivity() {
                 .startSearch(R.string.txt_no_matching_packaging_products)
 
             SEARCH -> {
-                if (isBarcodeValid(searchQuery)) {
-                    productViewActivityStarter.openProduct(searchQuery, this@ProductSearchActivity, object: OnProductViewActivityStarterResultListener {
-                        override fun onProductOpened() {
-                            finish()
-                        }
-
-                        override fun onProductError(type: ProductViewActivityStarterErrorType) {}
-
-                    })
+                if (Barcode(searchQuery).isValid()) {
+                    productViewActivityStarter.openProduct(
+                        searchQuery,
+                        this@ProductSearchActivity,
+                        productOpenedListener = { finish() }
+                    )
                 } else {
                     client.searchProductsByName(searchQuery, pageAddress)
                         .startSearch(R.string.txt_no_matching_products, R.string.txt_broaden_search)
@@ -456,6 +471,7 @@ class ProductSearchActivity : BaseActivity() {
      * @param extendedMessage additional message to display, -1 if no message is displayed
      */
     private fun showEmptyResponse(@StringRes message: Int, @StringRes extendedMessage: Int) {
+        binding.swipeRefresh.isEnabled = false
         binding.swipeRefresh.isRefreshing = false
 
         binding.productsRecyclerView.visibility = View.INVISIBLE
@@ -483,7 +499,7 @@ class ProductSearchActivity : BaseActivity() {
         isResponseSuccessful: Boolean,
         response: Search?,
         @StringRes emptyMessage: Int,
-        @StringRes extendedMessage: Int = -1
+        @StringRes extendedMessage: Int = -1,
     ) {
         if (response == null || !isResponseSuccessful) {
             showOfflineCloud()
@@ -518,12 +534,14 @@ class ProductSearchActivity : BaseActivity() {
             binding.productsRecyclerView.layoutManager = mLayoutManager
             adapter = ProductSearchAdapter(mProducts, lowBatteryMode, this, picasso, client, localeManager)
             binding.productsRecyclerView.adapter = adapter
-            val dividerItemDecoration = DividerItemDecoration(binding.productsRecyclerView.context, DividerItemDecoration.VERTICAL)
+            val dividerItemDecoration =
+                DividerItemDecoration(binding.productsRecyclerView.context, DividerItemDecoration.VERTICAL)
             binding.productsRecyclerView.addItemDecoration(dividerItemDecoration)
 
             // Retain an instance so that you can call `resetState()` for fresh searches
             // Adds the scroll listener to RecyclerView
-            binding.productsRecyclerView.addOnScrollListener(object : EndlessRecyclerViewScrollListener(mLayoutManager) {
+            binding.productsRecyclerView.addOnScrollListener(object :
+                EndlessRecyclerViewScrollListener(mLayoutManager) {
                 override fun onLoadMore(page: Int, totalItemsCount: Int, view: RecyclerView) {
                     if (mProducts.size < mCountProducts) {
                         pageAddress = page
@@ -580,7 +598,7 @@ class ProductSearchActivity : BaseActivity() {
          * @see [start]
          */
         private fun start(context: Context, searchInfo: SearchInfo) {
-            context.startActivity(Intent(context, ProductSearchActivity::class.java).apply {
+            context.startActivity(Intent<ProductSearchActivity>(context).apply {
                 putExtra(SEARCH_INFO, searchInfo)
             })
         }

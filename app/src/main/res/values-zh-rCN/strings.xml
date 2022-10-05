@@ -631,16 +631,15 @@
     <string name="report_img">举报图片</string>
     <string name="detected_ingredients">检测到的成分</string>
     <string name="txtConnectionError">我们无法下载某些数据。这可能是由于连接错误。</string>
-    <string name="set_image_name">已成功设置图像为</string>
     <string name="addtive_search">搜索添加剂</string>
     <string name="additives">添加</string>
     <!--used for product_lists implementation-->
-    <string name="add_to_product_lists">添加到您的列表</string>
-    <string name="txt_create_new_list">新建一个列表</string>
-    <string name="txt_add_to_new_list">添加到新列表</string>
-    <string name="create_new_list_list_name">列表名</string>
-    <string name="txt_eaten_products">我的产品</string>
-    <string name="txt_products_to_buy">购买产品</string>
+    <string name="dialog_add_product_to_list_title">添加到您的列表</string>
+    <string name="dialog_create_new_list_title">新建一个列表</string>
+    <string name="dialog_add_product_to_list_new">添加到新列表</string>
+    <string name="dialog_create_new_list_hint">列表名</string>
+    <string name="default_list_title_stored">我的产品</string>
+    <string name="default_list_title_to_buy">购买产品</string>
     <string name="txt_exporting_your_listed_products">正在导出您的产品……</string>
     <string name="txt_your_listed_products_exported">您的产品已被导出</string>
     <string name="txt_discard">舍弃</string>
