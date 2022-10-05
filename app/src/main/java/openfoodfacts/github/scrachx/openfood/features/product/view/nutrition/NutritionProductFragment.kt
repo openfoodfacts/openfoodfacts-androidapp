@@ -458,7 +458,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
      */
     private fun checkPrompts() {
         // Category
-        if (StateTags.CATEGORIES_TO_BE_COMPLETED in product.statesTags) {
+        if (StateTags.CATEGORIES_TO_BE_COMPLETED.tag in product.statesTags) {
             showCategoryPrompt = true
         }
 
@@ -466,7 +466,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
         if (product.isNoNutrition()) {
             showNutritionPrompt = false
             showNutritionData = false
-        } else if (StateTags.NUTRITION_FACTS_TO_BE_COMPLETED in product.statesTags) {
+        } else if (StateTags.NUTRITION_FACTS_TO_BE_COMPLETED.tag in product.statesTags) {
             showNutritionPrompt = true
         }
     }

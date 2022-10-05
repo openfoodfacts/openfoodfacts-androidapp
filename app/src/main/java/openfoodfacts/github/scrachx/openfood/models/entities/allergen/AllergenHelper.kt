@@ -11,7 +11,7 @@ object AllergenHelper {
     fun computeUserAllergen(product: Product, userAllergens: List<AllergenName>): Data {
         if (userAllergens.isEmpty()) return createEmpty()
 
-        if (ApiFields.StateTags.INGREDIENTS_COMPLETED !in product.statesTags)
+        if (ApiFields.StateTags.INGREDIENTS_COMPLETED.tag !in product.statesTags)
             return Data(true, emptyList())
 
         val productAllergens = (product.allergensHierarchy + product.tracesTags).toSet()

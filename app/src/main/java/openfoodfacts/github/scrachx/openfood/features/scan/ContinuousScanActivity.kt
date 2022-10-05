@@ -281,7 +281,7 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
                     addTags.isNotEmpty() -> resources.getQuantityString(R.plurals.productAdditives,
                         addTags.size,
                         addTags.size)
-                    StateTags.INGREDIENTS_COMPLETED in product.statesTags -> getString(R.string.productAdditivesNone)
+                    StateTags.INGREDIENTS_COMPLETED.tag in product.statesTags -> getString(R.string.productAdditivesNone)
                     else -> getString(R.string.productAdditivesUnknown)
                 }
 

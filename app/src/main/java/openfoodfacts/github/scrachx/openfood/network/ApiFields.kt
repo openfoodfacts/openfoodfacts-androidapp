@@ -34,22 +34,23 @@ object ApiFields {
         const val SCAN = "Scan"
     }
 
-    object StateTags {
-        const val CATEGORIES_TO_BE_COMPLETED = "en:categories-to-be-completed"
-        const val NUTRITION_FACTS_TO_BE_COMPLETED = "en:nutrition-facts-to-be-completed"
-        const val LABELS_TO_BE_COMPLETED = "en:labels-to-be-completed"
-        const val ORIGINS_TO_BE_COMPLETED = "en:origins-to-be-completed"
+    enum class StateTags(val tag: String) {
+        CATEGORIES_TO_BE_COMPLETED("en:categories-to-be-completed"),
+        NUTRITION_FACTS_TO_BE_COMPLETED("en:nutrition-facts-to-be-completed"),
+        LABELS_TO_BE_COMPLETED("en:labels-to-be-completed"),
+        ORIGINS_TO_BE_COMPLETED("en:origins-to-be-completed"),
+        INGREDIENTS_COMPLETED("en:ingredients-completed");
 
-        const val INGREDIENTS_COMPLETED = "en:ingredients-completed"
-
-        val INCOMPLETE_TAGS = listOf(
-            "to-be-completed",
-            "to-be-uploaded",
-            "to-be-checked",
-            "to-be-validated",
-            "to-be-selected",
-            "not-selected"
-        )
+        companion object {
+            val INCOMPLETE_TAGS = listOf(
+                "to-be-completed",
+                "to-be-uploaded",
+                "to-be-checked",
+                "to-be-validated",
+                "to-be-selected",
+                "not-selected"
+            )
+        }
     }
 
     object Prefix {

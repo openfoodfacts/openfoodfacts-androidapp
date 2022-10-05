@@ -32,7 +32,13 @@ import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.models.ProductState
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
-import openfoodfacts.github.scrachx.openfood.utils.*
+import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
+import openfoodfacts.github.scrachx.openfood.utils.PhotoReceiverHandler
+import openfoodfacts.github.scrachx.openfood.utils.getRoundNumber
+import openfoodfacts.github.scrachx.openfood.utils.isBatteryLevelLow
+import openfoodfacts.github.scrachx.openfood.utils.isDisableImageLoad
+import openfoodfacts.github.scrachx.openfood.utils.isUserSet
+import openfoodfacts.github.scrachx.openfood.utils.requireProductState
 import java.io.File
 import javax.inject.Inject
 
@@ -218,8 +224,8 @@ class EnvironmentProductFragment : BaseFragment() {
     //checks the product states_tags to determine which prompt to be shown
     private fun refreshTagsPrompt() {
         val statesTags = product.statesTags
-        showLabelsPrompt = ApiFields.StateTags.LABELS_TO_BE_COMPLETED in statesTags
-        showOriginsPrompt = ApiFields.StateTags.ORIGINS_TO_BE_COMPLETED in statesTags
+        showLabelsPrompt = ApiFields.StateTags.LABELS_TO_BE_COMPLETED.tag in statesTags
+        showOriginsPrompt = ApiFields.StateTags.ORIGINS_TO_BE_COMPLETED.tag in statesTags
 
         binding.addLabelOriginPrompt.visibility = View.VISIBLE
         when {
