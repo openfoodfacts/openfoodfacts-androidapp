@@ -164,6 +164,8 @@ dependencies {
 
 
     resourcePlaceholders { files = listOf("xml/shortcuts.xml") }
+
+
 }
 
 android {
@@ -302,6 +304,12 @@ android {
             dimension = "platform"
 
             buildConfigField("boolean", "USE_MLKIT", "true")
+
+            dependencies {
+                // Google Play Core Dependencies - In-app review system
+                implementation("com.google.android.play:core:1.10.3")
+                implementation("com.google.android.play:core-ktx:1.8.1")
+            }
         }
 
         create("fdroid") {
