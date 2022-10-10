@@ -15,7 +15,7 @@ import logcat.LogPriority.WARN
 import logcat.asLog
 import logcat.logcat
 import openfoodfacts.github.scrachx.openfood.features.login.LoginActivity
-import openfoodfacts.github.scrachx.openfood.models.TagLine
+import openfoodfacts.github.scrachx.openfood.models.tagline.TagLine
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
 import openfoodfacts.github.scrachx.openfood.utils.CoroutineDispatchers
 import openfoodfacts.github.scrachx.openfood.utils.LocaleManager

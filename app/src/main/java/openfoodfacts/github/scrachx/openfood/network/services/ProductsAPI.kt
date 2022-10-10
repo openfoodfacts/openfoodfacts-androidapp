@@ -22,7 +22,7 @@ import okhttp3.ResponseBody
 import openfoodfacts.github.scrachx.openfood.BuildConfig.FLAVOR_versionCode
 import openfoodfacts.github.scrachx.openfood.models.ProductState
 import openfoodfacts.github.scrachx.openfood.models.Search
-import openfoodfacts.github.scrachx.openfood.models.TagLineLanguage
+import openfoodfacts.github.scrachx.openfood.models.tagline.TagLineLanguage
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import retrofit2.Call
 import retrofit2.Response
