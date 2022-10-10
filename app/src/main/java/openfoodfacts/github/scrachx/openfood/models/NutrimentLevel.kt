@@ -1,11 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.models
 
-import android.content.Context
-import androidx.annotation.DrawableRes
-import androidx.annotation.StringRes
 import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonValue
-import openfoodfacts.github.scrachx.openfood.R
 import java.util.*
 
 /**
@@ -17,29 +13,11 @@ enum class NutrimentLevel {
     @JsonValue
     override fun toString() = name.lowercase(Locale.ROOT)
 
-    @StringRes
-    fun getDescRes() = when (this) {
-        LOW -> R.string.txtNutritionLevelLow
-        MODERATE -> R.string.txtNutritionLevelModerate
-        HIGH -> R.string.txtNutritionLevelHigh
-    }
-
-    @DrawableRes
-    fun getImgRes() = when (this) {
-        MODERATE -> R.drawable.moderate
-        LOW -> R.drawable.low
-        HIGH -> R.drawable.high
-    }
-
     companion object {
         @JsonCreator
-        fun fromJson(level: String) = if (level.isNotBlank()) valueOf(level.uppercase(Locale.getDefault())) else null
+        fun fromJson(level: String): NutrimentLevel? {
+            if (level.isBlank()) return null
+            return valueOf(level.uppercase())
+        }
     }
 }
-
-/**
- * get the localize text of a nutriment level
- * @param context to fetch localised strings
- * @return The localised word for the nutrition amount.
- */
-fun NutrimentLevel.getLocalize(context: Context) = context.getString(getDescRes())

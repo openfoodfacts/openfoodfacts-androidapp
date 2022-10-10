@@ -157,7 +157,7 @@ fun ProductNutriments.buildLevelItem(
     val productNutriment = this[nutriment] ?: return null
 
     val per100gDisplayString = productNutriment.getPer100gDisplayString() ?: return null
-    val localizedNutrimentLevel = nutrimentLevel?.getLocalize(context) ?: return null
+    val localizedNutrimentLevel = nutrimentLevel?.getDesc(context) ?: return null
     val category = context.getString(R.string.compare_fat)
 
     return NutrientLevelItem(category, per100gDisplayString, localizedNutrimentLevel, nutrimentLevel.getImgRes())
