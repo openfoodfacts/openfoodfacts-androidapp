@@ -3,11 +3,13 @@
 Open Food Facts - Android app
 =============================
 
-_The new Open Food Facts app is located at https://github.com/openfoodfacts/smooth-app_
+_The new Open Food Facts app is located [HERE](https://github.com/openfoodfacts/smooth-app)_
 
-**Note: this codebase is currently only deployed for Open Beauty Facts, Open Pet Food Facts and Open Products Facts apps.**
+**Note: This codebase is currently only deployed for Open Beauty Facts, Open Pet Food Facts and Open Products Facts apps.**
 
-Open Food Facts is collaborative food products database made by everyone, for everyone. Open Food Facts contributors gathers information and data on food products from around the world, using mobile apps.
+```Open Food Facts is collaborative food products database made by everyone, for everyone. Open Food Facts contributors gathers information and data on food products from around the world, using mobile apps.```
+
+<br>
 
 [![Project Status](https://opensource.box.com/badges/active.svg)](https://opensource.box.com/badges)
 [![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=openfoodfacts_openfoodfacts-androidapp&metric=alert_status)](https://sonarcloud.io/dashboard/index/openfoodfacts_openfoodfacts-androidapp)
@@ -17,11 +19,11 @@ Open Food Facts is collaborative food products database made by everyone, for ev
 [![Open Source Helpers](https://www.codetriage.com/openfoodfacts/openfoodfacts-androidapp/badges/users.svg)](https://www.codetriage.com/openfoodfacts/openfoodfacts-androidapp)
 <br>
 
-[Join the Play Store Beta](https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner) (rather stable) - [Join the Play Store internal build](https://play.google.com/apps/internaltest/4699092342921529278) (bleeding edge). You might need communicating your email for whitelisting to teolemon on slack (or pierre at openfoodfacts org)
+- [Join the Play Store Beta](https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner) (rather stable) - [Join the Play Store internal build](https://play.google.com/apps/internaltest/4699092342921529278) (bleeding edge). You might need communicating your email for whitelisting to teolemon on slack (or pierre at openfoodfacts org).
 
-[Open Beauty Facts](https://play.google.com/store/apps/details?id=org.openbeautyfacts.scanner), [Open Pet Food Facts](https://play.google.com/store/apps/details?id=org.openpetfoodfacts.scanner) and [Open Products Facts](https://play.google.com/store/apps/details?id=org.openproductsfacts.scanner) are also built from this codebase
+- [Open Beauty Facts](https://play.google.com/store/apps/details?id=org.openbeautyfacts.scanner), [Open Pet Food Facts](https://play.google.com/store/apps/details?id=org.openpetfoodfacts.scanner) and [Open Products Facts](https://play.google.com/store/apps/details?id=org.openproductsfacts.scanner) are also built from this codebase.
 
-## What is Open Food Facts?
+<details><summary><h2> What is Open Food Facts? </h2></summary>
 
 ### A food products database
 
@@ -36,6 +38,8 @@ Open Food Facts is a non-profit association of volunteers.
 
 Data about food is of public interest and has to be open. The complete database is published as open data and can be reused by anyone.
 
+</details>
+
 ## User flows
 [Visual documentation of the App on Figma](https://www.figma.com/file/BQ7CSyFvl7D9ljcXT0ay0u/Navigation-within-the-app)
 
@@ -47,7 +51,7 @@ The documentation is generated automatically from the source code and your impro
 Here are issues and feature requests you can work on:
 - [ ] [3.6.6 milestone](https://github.com/openfoodfacts/openfoodfacts-androidapp/milestone/36)
 
-### What can I work on ?
+<details><summary><h2> What can I work on ? </h2></summary>
 
 Open Food Facts on Android has 0,5M users and 1,6M products. *Each contribution you make will have a large impact on food transparency worldwide.* Finding the right issue or feature will help you have even more more impact. Feel free to ask for feedback on the #android channel before you start work, and to document what you intend to code.
 
@@ -65,30 +69,33 @@ If you don't have time to contribute code, you're very welcome to
 You can help translate Open Food Facts and the app at (no technical knowledge required, takes a minute to signup): <br>
 https://translate.openfoodfacts.org
 
+</details>
+
 ## Installation
 
 | Choose the right flavor | Install steps|
 | ------------- | ------------- |
-|<img src="https://user-images.githubusercontent.com/1689815/39445509-8064b2f8-4cbb-11e8-908d-86bcd61cb4f5.png" height="300"> | * Download the latest [Android Studio](https://developer.android.com/studio) stable build. <br>* If you are running the app for the first time, Android Studio will ask you to install the Gradle dependencies. <br>* If you are a new contributor to open-source, we recommend you read our [Setup Guidelines](https://github.com/openfoodfacts/openfoodfacts-androidapp/blob/master/SETUP_GUIDELINES.md) <br>* In Android Studio, make sure to select `OFF` as the default flavor for Open Food Facts (`OBF` is Open Beauty Facts, `OPF` - Open Products Facts, `OPFF` - Open Pet Food Facts) <br>* You should be able to install Open Food Facts on your phone using an USB cable, or run it in an emulator. <br>* The package name on the Play Store is org.openfoodfacts.scanner. For historic reasons, it's openfoodfacts.github.scrachx.openfood in the code and on F-Droid.|
+|<img src="https://user-images.githubusercontent.com/1689815/39445509-8064b2f8-4cbb-11e8-908d-86bcd61cb4f5.png" height="300"> | * Download the latest [Android Studio](https://developer.android.com/studio) stable build. <br>* If you are running the app for the first time, Android Studio will ask you to install the Gradle dependencies. <br>* If you are a new contributor to open-source, we recommend you read our [Setup Guidelines](https://github.com/openfoodfacts/openfoodfacts-androidapp/blob/master/SETUP_GUIDELINES.md) <br>* In Android Studio, make sure to select `OFF` as the default flavor for Open Food Facts (`OBF` is Open Beauty Facts, `OPF` - Open Products Facts, `OPFF` - Open Pet Food Facts) <br>* You should be able to install Open Food Facts on your phone using an USB cable, or run it in an emulator. <br>* <b>The package name on the Play Store is org.openfoodfacts.scanner.</b> For historic reasons, it's openfoodfacts.github.scrachx.openfood in the code and on F-Droid.|
 
 ## Running a Fastlane lane
 The project uses Fastlane to automate release and screenshots generation.
-* First time you checkout, run `bundle install` at the root of the project
-* Then launch lanes using `bundle exec fastlane release` (for example the release lane)
-* We're moving Fastlane related things to https://github.com/openfoodfacts/fastlane-descriptions
+* First time you checkout, run `bundle install` at the root of the project.
+* Then launch lanes using `bundle exec fastlane release` (for example the release lane).
+* We're moving Fastlane related things to https://github.com/openfoodfacts/fastlane-descriptions.
 
 ### Who do I talk to?
 
 * Any member of the Android team or contact@openfoodfacts.org
 * Join our #android and #android-alerts discussion room on Slack (Get an invite: <https://slack.openfoodfacts.org/>)
 
-### Will you join us ?
+### Contributing 
 
 If you're new to open-source, we recommend to checkout our [Contributing Guidelines](https://github.com/openfoodfacts/openfoodfacts-androidapp/blob/master/CONTRIBUTING.md). Feel free to fork the project and send a pull request.
 
-## Libraries we use
+<details><summary><h2> Libraries Used </h2></summary>
 We use the following libraries, and we're not closed to changes where relevant :-)
-If you spot any libraries we added or we don't use anymore, feel free to update this list using a Pull Request.
+
+<b> If you spot any libraries we added or we don't use anymore, feel free to update this list using a Pull Request. </b>
 
 - [Dagger 2](https://github.com/google/dagger) - A fast dependency injector for Android and Java
 - [Retrofit](https://square.github.io/retrofit/) - Retrofit turns your REST API into a Java interface
@@ -105,18 +112,9 @@ If you spot any libraries we added or we don't use anymore, feel free to update 
 
 Big thanks to their contributors!
 
-## Contributors
+</details>
 
-The project was initially started by [Scot Scriven](https://github.com/itchix), other contributors include:
-- [Aurélien Leboulanger](https://github.com/herau)
-- [Pierre Slamich](https://github.com/teolemon)
-- [Friedger Müffke](https://github.com/friedger)
-- [Qian Jin](https://github.com/jinqian)
-- [Fred Deniger](https://github.com/deniger)
-- [VaiTon](https://github.com/VaiTon)
-- [Full list of the Open Food Facts Android developers](https://github.com/openfoodfacts/openfoodfacts-androidapp/graphs/contributors)
-
-## Copyright and License
+<details> <summary><h2>Copyright and License</h2></summary>
 
     Copyright 2016-2022 Open Food Facts
 
@@ -131,3 +129,14 @@ The project was initially started by [Scot Scriven](https://github.com/itchix), 
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
     See the License for the specific language governing permissions and 
     limitations under the License.
+</details>
+
+<br><br>
+
+## The project was started by [Scot Scriven](https://github.com/itchix) 😄
+
+## Contributors
+
+<a href="https://github.com/openfoodfacts/openfoodfacts-androidapp/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=openfoodfacts/openfoodfacts-androidapp" />
+</a>
