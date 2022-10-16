@@ -7,7 +7,7 @@ _The new Open Food Facts app is located [HERE](https://github.com/openfoodfacts/
 
 **Note: This codebase is currently only deployed for Open Beauty Facts, Open Pet Food Facts and Open Products Facts apps.**
 
-```Open Food Facts is collaborative food products database made by everyone, for everyone. Open Food Facts contributors gathers information and data on food products from around the world, using mobile apps.```
+Open Food Facts is collaborative food products database made by everyone, for everyone. Open Food Facts contributors gathers information and data on food products from around the world, using mobile apps.
 
 <br>
 
