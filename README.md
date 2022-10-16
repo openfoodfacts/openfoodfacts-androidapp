@@ -142,4 +142,8 @@ The project was initially started by [Scot Scriven](https://github.com/itchix), 
 - [Qian Jin](https://github.com/jinqian)
 - [Fred Deniger](https://github.com/deniger)
 - [VaiTon](https://github.com/VaiTon)
-- [Full list of the Open Food Facts Android developers](https://github.com/openfoodfacts/openfoodfacts-androidapp/graphs/contributors)
+
+<br><br>
+<a href="https://github.com/openfoodfacts/openfoodfacts-androidapp/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=openfoodfacts/openfoodfacts-androidapp" />
+</a>
