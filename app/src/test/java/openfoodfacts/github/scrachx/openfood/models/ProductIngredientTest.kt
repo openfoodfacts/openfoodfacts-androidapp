@@ -7,26 +7,6 @@ import org.junit.jupiter.api.Test
  * Tests for [ProductIngredient]
  */
 class ProductIngredientTest {
-    @Test
-    fun `toString returns correct format`() {
-        val text = "Mayonnaise"
-        val id = "mayo_id"
-        val rank = 400L
-        val percent = "20%"
-        val additionalPropertyName = "Saltiness"
-        val additionalPropertyValue = "100"
-        val additionalProperties = hashMapOf<String, Any>(additionalPropertyName to additionalPropertyValue)
-
-        val productIngredient = ProductIngredient(text, id, rank, percent)
-            .apply { setAdditionalProperty(additionalPropertyName, additionalPropertyValue) }
-
-        val expectedString = "ProductIngredient[text=$text," +
-                "id=$id," +
-                "rank=$rank," +
-                "percent=$percent," +
-                "additionalProperties=$additionalProperties]"
-        assertThat(productIngredient.toString()).isEqualTo(expectedString)
-    }
 
     @Test
     fun `Fills up additional property`() {
