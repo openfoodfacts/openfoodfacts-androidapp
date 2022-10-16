@@ -133,10 +133,13 @@ Big thanks to their contributors!
 
 <br><br>
 
-## The project was started by [Scot Scriven](https://github.com/itchix) 😄
-
 ## Contributors
 
-<a href="https://github.com/openfoodfacts/openfoodfacts-androidapp/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=openfoodfacts/openfoodfacts-androidapp" />
-</a>
+The project was initially started by [Scot Scriven](https://github.com/itchix), other contributors include:
+- [Aurélien Leboulanger](https://github.com/herau)
+- [Pierre Slamich](https://github.com/teolemon)
+- [Friedger Müffke](https://github.com/friedger)
+- [Qian Jin](https://github.com/jinqian)
+- [Fred Deniger](https://github.com/deniger)
+- [VaiTon](https://github.com/VaiTon)
+- [Full list of the Open Food Facts Android developers](https://github.com/openfoodfacts/openfoodfacts-androidapp/graphs/contributors)
