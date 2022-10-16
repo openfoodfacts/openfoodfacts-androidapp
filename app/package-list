@@ -2044,6 +2044,15 @@ $dokka.location:openfoodfacts.github.scrachx.openfood.models.eventbus////Pointin
 $dokka.location:openfoodfacts.github.scrachx.openfood.models.eventbus/ProductNeedsRefreshEvent///PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.models.eventbus/-product-needs-refresh-event/index.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.models.eventbus/ProductNeedsRefreshEvent/ProductNeedsRefreshEvent/#kotlin.String/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.models.eventbus/-product-needs-refresh-event/-product-needs-refresh-event.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.models.eventbus/ProductNeedsRefreshEvent/barcode/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.models.eventbus/-product-needs-refresh-event/barcode.html
+$dokka.location:openfoodfacts.github.scrachx.openfood.models.tagline////PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.models.tagline/index.html
+$dokka.location:openfoodfacts.github.scrachx.openfood.models.tagline/TagLine///PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.models.tagline/-tag-line/index.html
+$dokka.location:openfoodfacts.github.scrachx.openfood.models.tagline/TagLine/TagLine/#kotlin.String?#kotlin.String?/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.models.tagline/-tag-line/-tag-line.html
+$dokka.location:openfoodfacts.github.scrachx.openfood.models.tagline/TagLine/message/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.models.tagline/-tag-line/message.html
+$dokka.location:openfoodfacts.github.scrachx.openfood.models.tagline/TagLine/url/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.models.tagline/-tag-line/url.html
+$dokka.location:openfoodfacts.github.scrachx.openfood.models.tagline/TagLineLanguage///PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.models.tagline/-tag-line-language/index.html
+$dokka.location:openfoodfacts.github.scrachx.openfood.models.tagline/TagLineLanguage/TagLineLanguage/#kotlin.String#openfoodfacts.github.scrachx.openfood.models.tagline.TagLine/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.models.tagline/-tag-line-language/-tag-line-language.html
+$dokka.location:openfoodfacts.github.scrachx.openfood.models.tagline/TagLineLanguage/language/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.models.tagline/-tag-line-language/language.html
+$dokka.location:openfoodfacts.github.scrachx.openfood.models.tagline/TagLineLanguage/tagLine/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.models.tagline/-tag-line-language/tag-line.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.models////PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.models/index.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.models//CARBO_MAP/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.models/-c-a-r-b-o_-m-a-p.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.models//DEFAULT_UNIT/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.models/-d-e-f-a-u-l-t_-u-n-i-t.html
@@ -2055,7 +2064,6 @@ $dokka.location:openfoodfacts.github.scrachx.openfood.models//VITAMINS_MAP/#/Poi
 $dokka.location:openfoodfacts.github.scrachx.openfood.models//bold/openfoodfacts.github.scrachx.openfood.models.NutrimentListItem#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.models/bold.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.models//buildLevelItem/openfoodfacts.github.scrachx.openfood.models.ProductNutriments#android.content.Context#openfoodfacts.github.scrachx.openfood.models.Nutriment#openfoodfacts.github.scrachx.openfood.models.NutrimentLevel?/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.models/build-level-item.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.models//findByCode/kotlin.collections.List[openfoodfacts.github.scrachx.openfood.models.LanguageData]#kotlin.String/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.models/find-by-code.html
-$dokka.location:openfoodfacts.github.scrachx.openfood.models//getLocalize/openfoodfacts.github.scrachx.openfood.models.NutrimentLevel#android.content.Context/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.models/get-localize.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.models/AnnotationAnswer.Value.AMBIGUITY///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}app/openfoodfacts.github.scrachx.openfood.models/-annotation-answer/-value/-a-m-b-i-g-u-i-t-y/index.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.models/AnnotationAnswer.Value.NEGATIVE///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}app/openfoodfacts.github.scrachx.openfood.models/-annotation-answer/-value/-n-e-g-a-t-i-v-e/index.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.models/AnnotationAnswer.Value.POSITIVE///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}app/openfoodfacts.github.scrachx.openfood.models/-annotation-answer/-value/-p-o-s-i-t-i-v-e/index.html
@@ -2270,8 +2278,6 @@ $dokka.location:openfoodfacts.github.scrachx.openfood.models/NutrimentLevel.HIGH
 $dokka.location:openfoodfacts.github.scrachx.openfood.models/NutrimentLevel.LOW///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}app/openfoodfacts.github.scrachx.openfood.models/-nutriment-level/-l-o-w/index.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.models/NutrimentLevel.MODERATE///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}app/openfoodfacts.github.scrachx.openfood.models/-nutriment-level/-m-o-d-e-r-a-t-e/index.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.models/NutrimentLevel///PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.models/-nutriment-level/index.html
-$dokka.location:openfoodfacts.github.scrachx.openfood.models/NutrimentLevel/getDescRes/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.models/-nutriment-level/get-desc-res.html
-$dokka.location:openfoodfacts.github.scrachx.openfood.models/NutrimentLevel/getImgRes/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.models/-nutriment-level/get-img-res.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.models/NutrimentLevel/toString/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.models/-nutriment-level/to-string.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.models/NutrimentListItem///PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.models/-nutriment-list-item/index.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.models/NutrimentListItem/NutrimentListItem/#kotlin.Boolean/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.models/-nutriment-list-item/-nutriment-list-item.html
@@ -2373,7 +2379,6 @@ $dokka.location:openfoodfacts.github.scrachx.openfood.models/ProductIngredient/p
 $dokka.location:openfoodfacts.github.scrachx.openfood.models/ProductIngredient/rank/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.models/-product-ingredient/rank.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.models/ProductIngredient/setAdditionalProperty/#kotlin.String#kotlin.Any/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.models/-product-ingredient/set-additional-property.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.models/ProductIngredient/text/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.models/-product-ingredient/text.html
-$dokka.location:openfoodfacts.github.scrachx.openfood.models/ProductIngredient/toString/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.models/-product-ingredient/to-string.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.models/ProductNutriments.Companion///PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.models/-product-nutriments/-companion/index.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.models/ProductNutriments.ProductNutriment///PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.models/-product-nutriments/-product-nutriment/index.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.models/ProductNutriments.ProductNutriment/getForPortion/#openfoodfacts.github.scrachx.openfood.utils.Measurement/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.models/-product-nutriments/-product-nutriment/get-for-portion.html
@@ -2467,14 +2472,6 @@ $dokka.location:openfoodfacts.github.scrachx.openfood.models/SearchProduct/nutri
 $dokka.location:openfoodfacts.github.scrachx.openfood.models/SearchProduct/productName/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.models/-search-product/product-name.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.models/SearchProduct/quantity/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.models/-search-product/quantity.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.models/SearchProduct/setAdditionalProperty/#kotlin.String#kotlin.Any?/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.models/-search-product/set-additional-property.html
-$dokka.location:openfoodfacts.github.scrachx.openfood.models/TagLine///PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.models/-tag-line/index.html
-$dokka.location:openfoodfacts.github.scrachx.openfood.models/TagLine/TagLine/#kotlin.String?#kotlin.String?/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.models/-tag-line/-tag-line.html
-$dokka.location:openfoodfacts.github.scrachx.openfood.models/TagLine/message/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.models/-tag-line/message.html
-$dokka.location:openfoodfacts.github.scrachx.openfood.models/TagLine/url/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.models/-tag-line/url.html
-$dokka.location:openfoodfacts.github.scrachx.openfood.models/TagLineLanguage///PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.models/-tag-line-language/index.html
-$dokka.location:openfoodfacts.github.scrachx.openfood.models/TagLineLanguage/TagLineLanguage/#kotlin.String#openfoodfacts.github.scrachx.openfood.models.TagLine/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.models/-tag-line-language/-tag-line-language.html
-$dokka.location:openfoodfacts.github.scrachx.openfood.models/TagLineLanguage/language/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.models/-tag-line-language/language.html
-$dokka.location:openfoodfacts.github.scrachx.openfood.models/TagLineLanguage/tagLine/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.models/-tag-line-language/tag-line.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.network.services////PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.network.services/index.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.network.services/AnalysisDataAPI.Companion///PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.network.services/-analysis-data-a-p-i/-companion/index.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.network.services/AnalysisDataAPI.Companion/ADDITIVES_CLASSES_JSON/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.network.services/-analysis-data-a-p-i/-companion/-a-d-d-i-t-i-v-e-s_-c-l-a-s-s-e-s_-j-s-o-n.html
@@ -2956,6 +2953,8 @@ $dokka.location:openfoodfacts.github.scrachx.openfood.utils//getAsInt/#kotlin.co
 $dokka.location:openfoodfacts.github.scrachx.openfood.utils//getCameraCacheLocation/android.content.Context#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.utils/get-camera-cache-location.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.utils//getContent/android.widget.EditText?#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.utils/get-content.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.utils//getCsvFolderName/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.utils/get-csv-folder-name.html
+$dokka.location:openfoodfacts.github.scrachx.openfood.utils//getDesc/openfoodfacts.github.scrachx.openfood.models.NutrimentLevel#android.content.Context/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.utils/get-desc.html
+$dokka.location:openfoodfacts.github.scrachx.openfood.utils//getDescRes/openfoodfacts.github.scrachx.openfood.models.NutrimentLevel#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.utils/get-desc-res.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.utils//getDoubleValue/#kotlin.String?/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.utils/get-double-value.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.utils//getDoubleValue/android.widget.TextView#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.utils/get-double-value.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.utils//getEcoscoreResource/openfoodfacts.github.scrachx.openfood.models.HistoryProduct?#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.utils/get-ecoscore-resource.html
@@ -2964,6 +2963,7 @@ $dokka.location:openfoodfacts.github.scrachx.openfood.utils//getFloatValue/#kotl
 $dokka.location:openfoodfacts.github.scrachx.openfood.utils//getFloatValue/android.widget.TextView#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.utils/get-float-value.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.utils//getFloatValueOr/android.widget.TextView#kotlin.Float/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.utils/get-float-value-or.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.utils//getImageGradeDrawable/openfoodfacts.github.scrachx.openfood.models.Product?#android.content.Context#kotlin.Boolean/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.utils/get-image-grade-drawable.html
+$dokka.location:openfoodfacts.github.scrachx.openfood.utils//getImgRes/openfoodfacts.github.scrachx.openfood.models.NutrimentLevel#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.utils/get-img-res.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.utils//getLoginPassword/android.content.Context#kotlin.String?/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.utils/get-login-password.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.utils//getLoginPreferences/android.content.Context#kotlin.Int/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.utils/get-login-preferences.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.utils//getLoginUsername/android.content.Context#kotlin.String?/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.utils/get-login-username.html
@@ -3456,6 +3456,7 @@ openfoodfacts.github.scrachx.openfood.models.entities.states
 openfoodfacts.github.scrachx.openfood.models.entities.store
 openfoodfacts.github.scrachx.openfood.models.entities.tag
 openfoodfacts.github.scrachx.openfood.models.eventbus
+openfoodfacts.github.scrachx.openfood.models.tagline
 openfoodfacts.github.scrachx.openfood.network
 openfoodfacts.github.scrachx.openfood.network.services
 openfoodfacts.github.scrachx.openfood.repositories
