@@ -8,6 +8,8 @@ sealed class AnalyticsEvent(val category: String, val action: String, val name: 
 
     object ProductSearchStart : AnalyticsEvent("search", "started", null, null)
 
+    data class BarcodeDecoder(val success: Boolean = false, val duration: Float = 0f) : AnalyticsEvent("scanner", "scanning", success.toString(), duration)
+
     data class ScannedBarcode(val barcode: String) : AnalyticsEvent("scanner", "scanned", barcode, null)
 
     data class ScannedBarcodeResultExpanded(val barcode: String?) :

@@ -101,8 +101,8 @@ import openfoodfacts.github.scrachx.openfood.utils.getRoundNumber
 import openfoodfacts.github.scrachx.openfood.utils.getServingInL
 import openfoodfacts.github.scrachx.openfood.utils.getServingInOz
 import openfoodfacts.github.scrachx.openfood.utils.hideKeyboard
-import openfoodfacts.github.scrachx.openfood.utils.isBatteryLevelLow
-import openfoodfacts.github.scrachx.openfood.utils.isDisableImageLoad
+import openfoodfacts.github.scrachx.openfood.utils.isPowerSaveMode
+import openfoodfacts.github.scrachx.openfood.utils.isImageLoadingDisabled
 import openfoodfacts.github.scrachx.openfood.utils.isPerServingInLiter
 import openfoodfacts.github.scrachx.openfood.utils.isUserSet
 import openfoodfacts.github.scrachx.openfood.utils.requireProductState
@@ -143,7 +143,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
      * Boolean to determine if image should be loaded or not
      */
     private val isLowBatteryMode by lazy {
-        requireContext().isDisableImageLoad() && requireContext().isBatteryLevelLow()
+        requireContext().isImageLoadingDisabled() && requireContext().isPowerSaveMode()
     }
 
     private var nutrientsImageUrl: String? = null

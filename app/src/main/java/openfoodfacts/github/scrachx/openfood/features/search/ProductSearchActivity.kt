@@ -66,8 +66,8 @@ import openfoodfacts.github.scrachx.openfood.utils.SearchType.SEARCH
 import openfoodfacts.github.scrachx.openfood.utils.SearchType.STATE
 import openfoodfacts.github.scrachx.openfood.utils.SearchType.STORE
 import openfoodfacts.github.scrachx.openfood.utils.SearchType.TRACE
-import openfoodfacts.github.scrachx.openfood.utils.isBatteryLevelLow
-import openfoodfacts.github.scrachx.openfood.utils.isDisableImageLoad
+import openfoodfacts.github.scrachx.openfood.utils.isPowerSaveMode
+import openfoodfacts.github.scrachx.openfood.utils.isImageLoadingDisabled
 import openfoodfacts.github.scrachx.openfood.utils.isGranted
 import java.text.NumberFormat
 import java.util.*
@@ -103,7 +103,7 @@ class ProductSearchActivity : BaseActivity() {
     private lateinit var adapter: ProductSearchAdapter
 
     private var contributionType = 0
-    private val lowBatteryMode by lazy { isDisableImageLoad() && isBatteryLevelLow() }
+    private val lowBatteryMode by lazy { isImageLoadingDisabled() && isPowerSaveMode() }
 
     /**
      * boolean to determine if image should be loaded or not

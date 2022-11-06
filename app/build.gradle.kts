@@ -372,6 +372,7 @@ android {
         unitTests.isReturnDefaultValues = true
         execution = "ANDROIDX_TEST_ORCHESTRATOR"
     }
+    namespace = "openfoodfacts.github.scrachx.openfood"
 }
 
 kapt {
