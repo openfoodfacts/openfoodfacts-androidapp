@@ -67,7 +67,6 @@ import openfoodfacts.github.scrachx.openfood.features.product.view.summary.Abstr
 import openfoodfacts.github.scrachx.openfood.features.product.view.summary.IngredientAnalysisTagsAdapter
 import openfoodfacts.github.scrachx.openfood.features.product.view.summary.SummaryProductPresenter
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
-import openfoodfacts.github.scrachx.openfood.features.simplescan.SimpleScanViewModel
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.selectNavigationItem
 import openfoodfacts.github.scrachx.openfood.models.Barcode
@@ -575,13 +574,19 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
         cameraView.stopCameraPreview()
         super.onPause()
 
-        trackingEvent?.let {
-            matomoAnalytics.trackEvent(
-                AnalyticsEvent.BarcodeDecoder(
-                    success = isBarcodeValid(lastBarcode),
-                    duration = it.computeDurationInSeconds(),
-                )
+        trackScannerAccuracy()
+    }
+
+    private fun trackScannerAccuracy() {
+        val trackingEvent = this.trackingEvent
+        val lastBarcode = this.lastBarcode
+
+        if (trackingEvent != null && lastBarcode != null) {
+            val event = AnalyticsEvent.BarcodeDecoder(
+                success = lastBarcode.isValid(),
+                duration = trackingEvent.computeDurationInSeconds(),
             )
+            matomoAnalytics.trackEvent(event)
         }
     }
 
