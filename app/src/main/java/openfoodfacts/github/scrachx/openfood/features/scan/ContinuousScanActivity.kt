@@ -55,9 +55,7 @@ import kotlinx.coroutines.withContext
 import openfoodfacts.github.scrachx.openfood.AppFlavor
 import openfoodfacts.github.scrachx.openfood.AppFlavor.Companion.isFlavors
 import openfoodfacts.github.scrachx.openfood.R
-import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
-import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsView
-import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
+import openfoodfacts.github.scrachx.openfood.analytics.*
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityContinuousScanBinding
 import openfoodfacts.github.scrachx.openfood.features.images.manage.ImagesManageActivity
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity
@@ -126,6 +124,7 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
 
     @Inject
     lateinit var matomoAnalytics: MatomoAnalytics
+    private var trackingEvent: AnalyticsTrackingEvent? = null
 
     @Inject
     lateinit var sharedPreferences: SharedPreferences
@@ -557,6 +556,7 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
             cameraView.onResume()
         }
         matomoAnalytics.trackView(AnalyticsView.Scanner)
+        trackingEvent = startTrackEvent(AnalyticsEvent.BarcodeDecoder())
     }
 
     override fun onPostResume() {
@@ -573,6 +573,21 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
     override fun onPause() {
         cameraView.stopCameraPreview()
         super.onPause()
+
+        trackScannerAccuracy()
+    }
+
+    private fun trackScannerAccuracy() {
+        val trackingEvent = this.trackingEvent
+        val lastBarcode = this.lastBarcode
+
+        if (trackingEvent != null && lastBarcode != null) {
+            val event = AnalyticsEvent.BarcodeDecoder(
+                success = lastBarcode.isValid(),
+                duration = trackingEvent.computeDurationInSeconds(),
+            )
+            matomoAnalytics.trackEvent(event)
+        }
     }
 
     override fun onStop() {
