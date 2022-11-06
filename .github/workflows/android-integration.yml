@@ -12,29 +12,6 @@ env:
 
 jobs:
 
-  compile_screenshots:
-    name: "⚙️ Compile Screenshot Tests"
-    runs-on: ubuntu-20.04
-    continue-on-error: true
-
-    steps:
-      - name: Checkout sources
-        uses: actions/checkout@v3
-
-      - name: Set up JDK
-        uses: actions/setup-java@v3
-        with:
-          distribution: ${{ env.JAVA_DISTR }}
-          java-version: ${{ env.JAVA_VERSION }}
-
-      - name: Compile screenshots android tests
-        uses: gradle/gradle-build-action@v2.3.3
-        with:
-          arguments: >
-            compileOffPlaystoreScreenshotsAndroidTestSources 
-            -PtestBuildType=screenshots
-
-
   static_analysis:
     name: "🔍 Static analysis (Detekt)"
     runs-on: ubuntu-latest
