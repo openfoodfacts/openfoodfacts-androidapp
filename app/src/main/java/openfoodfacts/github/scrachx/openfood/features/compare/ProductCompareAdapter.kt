@@ -52,7 +52,7 @@ import openfoodfacts.github.scrachx.openfood.utils.getEcoscoreResource
 import openfoodfacts.github.scrachx.openfood.utils.getNovaGroupResource
 import openfoodfacts.github.scrachx.openfood.utils.getNutriScoreResource
 import openfoodfacts.github.scrachx.openfood.utils.isHardwareCameraInstalled
-import openfoodfacts.github.scrachx.openfood.utils.isLowBatteryMode
+import openfoodfacts.github.scrachx.openfood.utils.shouldLoadImages
 import openfoodfacts.github.scrachx.openfood.utils.toPx
 import pl.aprilapps.easyphotopicker.EasyImage
 import java.io.File
@@ -152,7 +152,7 @@ class ProductCompareAdapter(
         }
         if (!imageUrl.isNullOrBlank()) {
             holder.binding.productComparisonLabel.visibility = View.INVISIBLE
-            if (!activity.isLowBatteryMode()) {
+            if (activity.shouldLoadImages()) {
                 picasso.load(imageUrl).into(holder.binding.productComparisonImage)
             } else {
                 holder.binding.productComparisonImage.visibility = View.GONE

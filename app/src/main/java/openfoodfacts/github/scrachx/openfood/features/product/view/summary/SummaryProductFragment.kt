@@ -112,8 +112,8 @@ import openfoodfacts.github.scrachx.openfood.utils.getEcoscoreResource
 import openfoodfacts.github.scrachx.openfood.utils.getNovaGroupResource
 import openfoodfacts.github.scrachx.openfood.utils.getNutriScoreResource
 import openfoodfacts.github.scrachx.openfood.utils.getProductBrandsQuantityDetails
-import openfoodfacts.github.scrachx.openfood.utils.isBatteryLevelLow
-import openfoodfacts.github.scrachx.openfood.utils.isDisableImageLoad
+import openfoodfacts.github.scrachx.openfood.utils.isPowerSaveMode
+import openfoodfacts.github.scrachx.openfood.utils.isImageLoadingDisabled
 import openfoodfacts.github.scrachx.openfood.utils.isHardwareCameraInstalled
 import openfoodfacts.github.scrachx.openfood.utils.isPerServingInLiter
 import openfoodfacts.github.scrachx.openfood.utils.isUserSet
@@ -173,7 +173,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     private var annotation: AnnotationAnswer? = null
 
     //boolean to determine if image should be loaded or not
-    private val isLowBatteryMode by lazy { requireContext().isDisableImageLoad() && requireContext().isBatteryLevelLow() }
+    private val isLowBatteryMode by lazy { requireContext().isImageLoadingDisabled() && requireContext().isPowerSaveMode() }
     private var mUrlImage: String? = null
 
     private var nutritionScoreUri: Uri? = null

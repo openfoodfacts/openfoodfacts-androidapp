@@ -45,8 +45,8 @@ import openfoodfacts.github.scrachx.openfood.utils.SortType.TIME
 import openfoodfacts.github.scrachx.openfood.utils.SortType.TITLE
 import openfoodfacts.github.scrachx.openfood.utils.SwipeController
 import openfoodfacts.github.scrachx.openfood.utils.getCsvFolderName
-import openfoodfacts.github.scrachx.openfood.utils.isBatteryLevelLow
-import openfoodfacts.github.scrachx.openfood.utils.isDisableImageLoad
+import openfoodfacts.github.scrachx.openfood.utils.isPowerSaveMode
+import openfoodfacts.github.scrachx.openfood.utils.isImageLoadingDisabled
 import openfoodfacts.github.scrachx.openfood.utils.isHardwareCameraInstalled
 import openfoodfacts.github.scrachx.openfood.utils.writeHistoryToFile
 import java.io.File
@@ -75,7 +75,7 @@ class ScanHistoryActivity : BaseActivity() {
     private var menuButtonsEnabled = false
 
     private val adapter by lazy {
-        ScanHistoryAdapter(isLowBatteryMode = isDisableImageLoad() && isBatteryLevelLow(), picasso) {
+        ScanHistoryAdapter(isLowBatteryMode = isImageLoadingDisabled() && isPowerSaveMode(), picasso) {
             productViewActivityStarter.openProduct(it.barcode, this)
         }
     }
