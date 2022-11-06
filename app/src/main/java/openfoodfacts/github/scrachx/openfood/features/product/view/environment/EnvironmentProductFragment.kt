@@ -35,8 +35,8 @@ import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
 import openfoodfacts.github.scrachx.openfood.utils.PhotoReceiverHandler
 import openfoodfacts.github.scrachx.openfood.utils.getRoundNumber
-import openfoodfacts.github.scrachx.openfood.utils.isBatteryLevelLow
-import openfoodfacts.github.scrachx.openfood.utils.isDisableImageLoad
+import openfoodfacts.github.scrachx.openfood.utils.isPowerSaveMode
+import openfoodfacts.github.scrachx.openfood.utils.isImageLoadingDisabled
 import openfoodfacts.github.scrachx.openfood.utils.isUserSet
 import openfoodfacts.github.scrachx.openfood.utils.requireProductState
 import java.io.File
@@ -90,7 +90,7 @@ class EnvironmentProductFragment : BaseFragment() {
         binding.imageViewPackaging.setOnClickListener { openFullScreenImage() }
 
         // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
-        if (requireContext().isDisableImageLoad() && requireContext().isBatteryLevelLow()) {
+        if (requireContext().isImageLoadingDisabled() && requireContext().isPowerSaveMode()) {
             isLowBatteryMode = true
         }
 

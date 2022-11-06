@@ -6,23 +6,22 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.YourListedProductsItemBinding
-import openfoodfacts.github.scrachx.openfood.features.productlist.ProductListAdapter.ProductViewHolder
 import openfoodfacts.github.scrachx.openfood.models.entities.ListedProduct
-import openfoodfacts.github.scrachx.openfood.utils.isLowBatteryMode
+import openfoodfacts.github.scrachx.openfood.utils.into
+import openfoodfacts.github.scrachx.openfood.utils.shouldLoadImages
 
 class ProductListAdapter(
     private val context: Context,
-    private val picasso: Picasso
-) : RecyclerView.Adapter<ProductViewHolder>() {
+    private val picasso: Picasso,
+) : RecyclerView.Adapter<ProductListAdapter.ProductViewHolder>() {
 
     var products = mutableListOf<ListedProduct>()
     var onItemClickListener: (ListedProduct) -> Unit = { }
 
-    private val isLowBatteryMode by lazy { context.isLowBatteryMode() }
+    private val shouldLoadImages by lazy { context.shouldLoadImages() }
 
     override fun getItemCount() = products.size
 
@@ -42,29 +41,27 @@ class ProductListAdapter(
         binding.imageProgressbarYourListedProduct.visibility = View.VISIBLE
 
 
-        if (isLowBatteryMode || product.imageUrl.isNullOrEmpty()) {
-            binding.imgProductYourListedProduct.background = ResourcesCompat.getDrawable(
-                context.resources,
-                R.drawable.placeholder_thumb,
-                context.theme
-            )
-            binding.imageProgressbarYourListedProduct.visibility = View.INVISIBLE
-        } else {
+        if (shouldLoadImages && !product.imageUrl.isNullOrEmpty()) {
             picasso
                 .load(product.imageUrl)
                 .placeholder(R.drawable.placeholder_thumb)
                 .error(R.drawable.ic_no_red_24dp)
                 .fit()
                 .centerCrop()
-                .into(binding.imgProductYourListedProduct, object : Callback {
-                    override fun onSuccess() {
+                .into(binding.imgProductYourListedProduct,
+                    onSuccess = {
+                        binding.imageProgressbarYourListedProduct.visibility = View.GONE
+                    }, onError = {
                         binding.imageProgressbarYourListedProduct.visibility = View.GONE
                     }
-
-                    override fun onError(ex: Exception) {
-                        binding.imageProgressbarYourListedProduct.visibility = View.GONE
-                    }
-                })
+                )
+        } else {
+            binding.imgProductYourListedProduct.background = ResourcesCompat.getDrawable(
+                context.resources,
+                R.drawable.placeholder_thumb,
+                context.theme
+            )
+            binding.imageProgressbarYourListedProduct.visibility = View.INVISIBLE
         }
 
         // Set on click listener
