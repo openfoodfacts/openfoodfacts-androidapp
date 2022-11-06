@@ -78,7 +78,7 @@ import openfoodfacts.github.scrachx.openfood.utils.SearchType
 import openfoodfacts.github.scrachx.openfood.utils.getNovaGroupExplanation
 import openfoodfacts.github.scrachx.openfood.utils.getNovaGroupResource
 import openfoodfacts.github.scrachx.openfood.utils.getSendProduct
-import openfoodfacts.github.scrachx.openfood.utils.isBatteryLevelLow
+import openfoodfacts.github.scrachx.openfood.utils.isPowerSaveMode
 import openfoodfacts.github.scrachx.openfood.utils.isUserSet
 import openfoodfacts.github.scrachx.openfood.utils.requireProductState
 import openfoodfacts.github.scrachx.openfood.utils.showBottomSheet
@@ -270,7 +270,7 @@ class IngredientsProductFragment : BaseFragment() {
             binding.changeIngImg.visibility = View.VISIBLE
 
             // Load Image if isLowBatteryMode is false
-            if (!requireContext().isBatteryLevelLow()) {
+            if (!requireContext().isPowerSaveMode()) {
                 picasso.load(product.getImageIngredientsUrl(langCode)).into(binding.imageViewIngredients)
             } else {
                 binding.imageViewIngredients.visibility = View.GONE
