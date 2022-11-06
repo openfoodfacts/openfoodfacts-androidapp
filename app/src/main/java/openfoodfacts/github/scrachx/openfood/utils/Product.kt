@@ -5,15 +5,12 @@ import android.graphics.drawable.Drawable
 import androidx.annotation.DrawableRes
 import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat
 import openfoodfacts.github.scrachx.openfood.R
-import openfoodfacts.github.scrachx.openfood.models.*
-import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct
-import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
+import openfoodfacts.github.scrachx.openfood.models.HistoryProduct
+import openfoodfacts.github.scrachx.openfood.models.MeasurementUnit
+import openfoodfacts.github.scrachx.openfood.models.Product
+import openfoodfacts.github.scrachx.openfood.models.SearchProduct
 import openfoodfacts.github.scrachx.openfood.utils.Utils.NO_DRAWABLE_RESOURCE
 import java.util.*
-
-suspend fun OfflineSavedProduct.toState(client: ProductRepository): ProductState = client.getProductStateFull(barcode)
-
-suspend fun OfflineSavedProduct.toOnlineProduct(client: ProductRepository) = toState(client).product
 
 fun Product.isPerServingInLiter() = servingSize?.contains(MeasurementUnit.UNIT_LITER.sym, true)
 
@@ -26,8 +23,6 @@ fun SearchProduct.getProductBrandsQuantityDetails() = StringBuilder().apply {
         append(quantity)
     }
 }.toString()
-
-suspend fun SearchProduct.toProduct(client: ProductRepository): Product? = client.getProductStateFull(this.code).product
 
 @DrawableRes
 private fun getResourceFromEcoscore(ecoscore: String?) = when (ecoscore?.lowercase(Locale.ROOT)) {
@@ -60,16 +55,12 @@ private fun getResourceFromNutriScore(
 }
 
 @DrawableRes
-fun SearchProduct?.getNutriScoreResource(vertical: Boolean = false) = getResourceFromNutriScore(this?.nutritionGradeFr, vertical)
+fun SearchProduct?.getNutriScoreResource(vertical: Boolean = false) =
+    getResourceFromNutriScore(this?.nutritionGradeFr, vertical)
 
 @DrawableRes
-fun HistoryProduct.getNutriScoreResource(vertical: Boolean = false) = getResourceFromNutriScore(nutritionGrade, vertical)
-
-fun Product?.getImageGradeDrawable(context: Context, vertical: Boolean = false): Drawable? {
-    val gradeID = this.getNutriScoreResource(vertical)
-    return if (gradeID == NO_DRAWABLE_RESOURCE) null
-    else VectorDrawableCompat.create(context.resources, gradeID, context.theme)
-}
+fun HistoryProduct.getNutriScoreResource(vertical: Boolean = false) =
+    getResourceFromNutriScore(nutritionGrade, vertical)
 
 @DrawableRes
 private fun getResourceFromNova(novaGroup: String?) = when (novaGroup) {
