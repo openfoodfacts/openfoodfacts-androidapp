@@ -85,7 +85,6 @@ import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
 import openfoodfacts.github.scrachx.openfood.utils.Measurement
 import openfoodfacts.github.scrachx.openfood.utils.PhotoReceiverHandler
 import openfoodfacts.github.scrachx.openfood.utils.ValueState
-import openfoodfacts.github.scrachx.openfood.utils.dpsToPixel
 import openfoodfacts.github.scrachx.openfood.utils.getContent
 import openfoodfacts.github.scrachx.openfood.utils.getFloatValue
 import openfoodfacts.github.scrachx.openfood.utils.getFloatValueOr
@@ -1036,7 +1035,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         binding.btnEditImageNutritionFacts.visibility = View.VISIBLE
         if (!errorInUploading) {
             picasso.load(photoFile!!)
-                .resize(requireContext().dpsToPixel(50), requireContext().dpsToPixel(50))
+                .resize(50.toPx(requireContext()), 50.toPx(requireContext()))
                 .centerInside()
                 .into(binding.btnAddImageNutritionFacts)
         }

@@ -41,8 +41,6 @@ fun Context.isDisableImageLoad(defValue: Boolean = false) = getDefaultSharedPref
 fun Context.isFastAdditionMode(defValue: Boolean = false) = getDefaultSharedPreferences(this)
     .getBoolean("fastAdditionMode", defValue)
 
-fun Context.dpsToPixel(dps: Int) = dps.toPx(this)
-
 /**
  * @return Returns the version name of the app
  */

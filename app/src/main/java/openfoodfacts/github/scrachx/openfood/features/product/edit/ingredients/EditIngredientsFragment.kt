@@ -534,5 +534,5 @@ class EditIngredientsFragment : ProductEditFragment() {
         binding.ocrProgress.visibility = View.GONE
     }
 
-    private val dps50ToPixels by lazy { requireContext().dpsToPixel(50) }
+    private val dps50ToPixels by lazy { 50.toPx(requireContext()) }
 }
