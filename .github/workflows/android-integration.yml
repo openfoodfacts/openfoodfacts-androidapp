@@ -15,6 +15,7 @@ jobs:
   compile_screenshots:
     name: "⚙️ Compile Screenshot Tests"
     runs-on: ubuntu-20.04
+    continue-on-error: true
 
     steps:
       - name: Checkout sources
