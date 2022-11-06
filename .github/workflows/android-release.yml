@@ -7,7 +7,7 @@ on:
 
 
 env:
-  JAVA_VERSION: "11"
+  JAVA_VERSION: "17"
   JAVA_DISTR: "adopt"
   RUBY_VERSION: "2.3.1"
 
