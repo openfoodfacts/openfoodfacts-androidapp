@@ -72,12 +72,12 @@ import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
 import openfoodfacts.github.scrachx.openfood.utils.LocaleUtils
 import openfoodfacts.github.scrachx.openfood.utils.PhotoReceiverHandler
 import openfoodfacts.github.scrachx.openfood.utils.areChipsDifferent
-import openfoodfacts.github.scrachx.openfood.utils.dpsToPixel
 import openfoodfacts.github.scrachx.openfood.utils.getContent
 import openfoodfacts.github.scrachx.openfood.utils.into
 import openfoodfacts.github.scrachx.openfood.utils.isContentDifferent
 import openfoodfacts.github.scrachx.openfood.utils.isFastAdditionMode
 import openfoodfacts.github.scrachx.openfood.utils.isNotEmpty
+import openfoodfacts.github.scrachx.openfood.utils.toPx
 import openfoodfacts.github.scrachx.openfood.utils.unique
 import org.apache.commons.lang3.StringUtils
 import org.jetbrains.annotations.Contract
@@ -363,7 +363,7 @@ class EditOverviewFragment : ProductEditFragment() {
             binding.btnEditImgFront.visibility = View.INVISIBLE
             picasso
                 .load(imageFrontUrl)
-                .resize(requireContext().dpsToPixel(50), requireContext().dpsToPixel(50))
+                .resize(50.toPx(requireContext()), 50.toPx(requireContext()))
                 .centerInside()
                 .into(binding.imgFront, object : Callback {
                     override fun onSuccess() = frontImageLoaded()
@@ -428,7 +428,7 @@ class EditOverviewFragment : ProductEditFragment() {
 
             picasso
                 .load(frontImageUrl)
-                .resize(requireContext().dpsToPixel(50), requireContext().dpsToPixel(50))
+                .resize(50.toPx(requireContext()), 50.toPx(requireContext()))
                 .centerInside()
                 .into(binding.imgFront) { frontImageLoaded() }
         }
@@ -927,7 +927,7 @@ class EditOverviewFragment : ProductEditFragment() {
         binding.btnEditImgFront.visibility = View.VISIBLE
         if (!errorInUploading) {
             picasso.load(photoFile!!)
-                .resize(requireContext().dpsToPixel(50), requireContext().dpsToPixel(50))
+                .resize(50.toPx(requireContext()), 50.toPx(requireContext()))
                 .centerInside()
                 .into(binding.imgFront)
 

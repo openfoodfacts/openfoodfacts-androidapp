@@ -39,8 +39,6 @@ fun Context.isFastAdditionMode(defValue: Boolean = false): Boolean {
     return preferences.getBoolean(key, defValue)
 }
 
-fun Context.dpsToPixel(dps: Int) = dps.toPx(this)
-
 /**
  * @return Returns the version name of the app
  */
