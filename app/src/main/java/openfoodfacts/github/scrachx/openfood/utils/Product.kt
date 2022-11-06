@@ -1,9 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.utils
 
-import android.content.Context
-import android.graphics.drawable.Drawable
 import androidx.annotation.DrawableRes
-import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.models.HistoryProduct
 import openfoodfacts.github.scrachx.openfood.models.MeasurementUnit
@@ -16,7 +13,8 @@ fun Product.isPerServingInLiter() = servingSize?.contains(MeasurementUnit.UNIT_L
 
 fun SearchProduct.getProductBrandsQuantityDetails() = StringBuilder().apply {
     brands?.takeIf { it.isNotEmpty() }?.let { brandStr ->
-        append(brandStr.split(",").first().trim { it <= ' ' }.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.ROOT) else it.toString() })
+        append(brandStr.split(",").first().trim { it <= ' ' }
+            .replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.ROOT) else it.toString() })
     }
     if (!quantity.isNullOrEmpty()) {
         append(" - ")
@@ -80,16 +78,15 @@ fun SearchProduct?.getNovaGroupResource() = getResourceFromNova(this?.novaGroups
 @DrawableRes
 fun HistoryProduct?.getNovaGroupResource() = getResourceFromNova(this?.novaGroup)
 
-internal fun Product.isProductIncomplete() = this.let {
-    it.imageFrontUrl == null
-            || it.imageFrontUrl == ""
-            || it.quantity == null
-            || it.quantity == ""
-            || it.productName == null
-            || it.productName == ""
-            || it.brands == null
-            || it.brands == ""
-            || it.ingredientsText == null
-            || it.ingredientsText == ""
+internal fun Product.isProductIncomplete(): Boolean {
+    val conditions = listOf(
+        imageFrontUrl.isNullOrEmpty(),
+        quantity.isNullOrEmpty(),
+        productName.isNullOrEmpty(),
+        brands.isNullOrEmpty(),
+        ingredientsText.isNullOrEmpty(),
+    )
+
+    return conditions.any { it }
 }
 
