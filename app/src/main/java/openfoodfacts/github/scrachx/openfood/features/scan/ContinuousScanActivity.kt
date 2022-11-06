@@ -55,9 +55,7 @@ import kotlinx.coroutines.withContext
 import openfoodfacts.github.scrachx.openfood.AppFlavor
 import openfoodfacts.github.scrachx.openfood.AppFlavor.Companion.isFlavors
 import openfoodfacts.github.scrachx.openfood.R
-import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
-import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsView
-import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
+import openfoodfacts.github.scrachx.openfood.analytics.*
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityContinuousScanBinding
 import openfoodfacts.github.scrachx.openfood.features.images.manage.ImagesManageActivity
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity
@@ -69,6 +67,7 @@ import openfoodfacts.github.scrachx.openfood.features.product.view.summary.Abstr
 import openfoodfacts.github.scrachx.openfood.features.product.view.summary.IngredientAnalysisTagsAdapter
 import openfoodfacts.github.scrachx.openfood.features.product.view.summary.SummaryProductPresenter
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
+import openfoodfacts.github.scrachx.openfood.features.simplescan.SimpleScanViewModel
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.selectNavigationItem
 import openfoodfacts.github.scrachx.openfood.models.Barcode
@@ -126,6 +125,7 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
 
     @Inject
     lateinit var matomoAnalytics: MatomoAnalytics
+    private var trackingEvent: AnalyticsTrackingEvent? = null
 
     @Inject
     lateinit var sharedPreferences: SharedPreferences
@@ -557,6 +557,7 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
             cameraView.onResume()
         }
         matomoAnalytics.trackView(AnalyticsView.Scanner)
+        trackingEvent = startTrackEvent(AnalyticsEvent.BarcodeDecoder())
     }
 
     override fun onPostResume() {
@@ -573,6 +574,15 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
     override fun onPause() {
         cameraView.stopCameraPreview()
         super.onPause()
+
+        trackingEvent?.let {
+            matomoAnalytics.trackEvent(
+                AnalyticsEvent.BarcodeDecoder(
+                    success = isBarcodeValid(lastBarcode),
+                    duration = it.computeDurationInSeconds(),
+                )
+            )
+        }
     }
 
     override fun onStop() {

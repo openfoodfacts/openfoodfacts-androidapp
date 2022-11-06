@@ -36,7 +36,6 @@ class SimpleScanViewModelTest {
         whenever(prefsRepository.mlScannerEnabled).doReturn(false)
         whenever(prefsRepository.cameraPref).doReturn(CameraState.Back)
 
-
         viewModel = SimpleScanViewModel(prefsRepository, dispatchers)
     }
 
