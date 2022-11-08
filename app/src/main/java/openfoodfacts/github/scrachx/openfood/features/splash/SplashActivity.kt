@@ -2,8 +2,11 @@ package openfoodfacts.github.scrachx.openfood.features.splash
 
 import android.annotation.SuppressLint
 import android.content.pm.ActivityInfo
+import android.os.Build
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.core.splashscreen.SplashScreen
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.BaseTransientBottomBar
@@ -32,7 +35,12 @@ class SplashActivity : BaseActivity() {
     @SuppressLint("SourceLockedOrientationActivity")
     @ExperimentalTime
     public override fun onCreate(savedInstanceState: Bundle?) {
+        val splashScreen: SplashScreen? = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            installSplashScreen()
+        } else null
+        splashScreen?.setKeepOnScreenCondition { true }
         super.onCreate(savedInstanceState)
+
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
 

@@ -132,6 +132,9 @@ dependencies {
     // ShowCaseView dependency
     implementation(libs.showcaseview)
 
+    // SplashScreen on API 31 and higher
+    implementation("androidx.core:core-splashscreen:1.0.0")
+
     // Unit Testing
     testImplementation(libs.bundles.testing)
 
