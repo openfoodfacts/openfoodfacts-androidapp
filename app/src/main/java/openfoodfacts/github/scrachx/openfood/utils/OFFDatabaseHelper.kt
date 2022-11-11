@@ -9,8 +9,7 @@ import android.util.Log
 import androidx.core.app.ShareCompat
 import androidx.core.content.FileProvider
 import androidx.core.content.edit
-import openfoodfacts.github.scrachx.openfood.AppFlavors
-import openfoodfacts.github.scrachx.openfood.BuildConfig
+import openfoodfacts.github.scrachx.openfood.AppFlavor
 import openfoodfacts.github.scrachx.openfood.models.DaoMaster
 import openfoodfacts.github.scrachx.openfood.models.DaoMaster.OpenHelper
 import openfoodfacts.github.scrachx.openfood.models.InvalidBarcodeDao
@@ -42,12 +41,16 @@ import openfoodfacts.github.scrachx.openfood.models.entities.store.StoreDao
 import openfoodfacts.github.scrachx.openfood.models.entities.store.StoreNameDao
 import openfoodfacts.github.scrachx.openfood.models.entities.tag.TagDao
 import org.greenrobot.greendao.database.Database
-import java.io.*
+import java.io.BufferedInputStream
+import java.io.BufferedOutputStream
+import java.io.File
+import java.io.FileInputStream
+import java.io.FileOutputStream
 
 
 class OFFDatabaseHelper @JvmOverloads constructor(
     context: Context,
-    factory: CursorFactory? = null
+    factory: CursorFactory? = null,
 ) : OpenHelper(context, DB_NAME, factory) {
 
     private val settings: SharedPreferences by lazy { context.getAppPreferences() }
@@ -107,7 +110,8 @@ class OFFDatabaseHelper @JvmOverloads constructor(
             }
             7 -> {
                 val newColumns = listOf("wiki_data_id", "is_wiki_data_id_present")
-                val updatedTables = listOf("additive_name", "additive", "category_name", "category", "label_name", "label")
+                val updatedTables =
+                    listOf("additive_name", "additive", "category_name", "category", "label_name", "label")
                 updatedTables.forEach { table ->
                     newColumns.filterNot { isFieldExist(db, table, it) }
                         .forEach { column ->
@@ -194,12 +198,11 @@ class OFFDatabaseHelper @JvmOverloads constructor(
 
         private fun dbOutputPath(context: Context) = File(context.filesDir, DB_NAME)
 
-        val DB_NAME = when (BuildConfig.FLAVOR) {
-            AppFlavors.OPFF -> DB_NAME_OPEN_PET_FOOD_FACTS
-            AppFlavors.OBF -> DB_NAME_OPEN_BEAUTY_FACTS
-            AppFlavors.OPF -> DB_NAME_OPEN_PRODUCTS_FACTS
-            AppFlavors.OFF -> DB_NAME_OPEN_FOOD_FACTS
-            else -> DB_NAME_OPEN_FOOD_FACTS
+        val DB_NAME = when (AppFlavor.currentFlavor) {
+            AppFlavor.OPFF -> DB_NAME_OPEN_PET_FOOD_FACTS
+            AppFlavor.OBF -> DB_NAME_OPEN_BEAUTY_FACTS
+            AppFlavor.OPF -> DB_NAME_OPEN_PRODUCTS_FACTS
+            AppFlavor.OFF -> DB_NAME_OPEN_FOOD_FACTS
         }
 
         fun exportDB(context: Context) {

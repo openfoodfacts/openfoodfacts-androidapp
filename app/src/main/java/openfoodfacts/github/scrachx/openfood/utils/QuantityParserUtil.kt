@@ -3,17 +3,12 @@ package openfoodfacts.github.scrachx.openfood.utils
 import android.util.Log
 import android.widget.Spinner
 import android.widget.TextView
-import openfoodfacts.github.scrachx.openfood.features.shared.views.CustomValidatingEditTextView
-import openfoodfacts.github.scrachx.openfood.models.MODIFIERS
 import openfoodfacts.github.scrachx.openfood.models.Modifier
 
-fun CustomValidatingEditTextView.isModifierEqualsToGreaterThan() = modSpinner!!.modifier == Modifier.GREATER_THAN
-
-val Spinner.modifier get() = MODIFIERS[selectedItemPosition]
+val Spinner.modifier: Modifier?
+    get() = (selectedItem as? String)?.let { Modifier.findBySymbol(it) }
 
 fun TextView.isBlank() = text.toString().isBlank()
-
-fun TextView.isNotBlank() = !isBlank()
 
 /**
  * @return the float value or null if not correct

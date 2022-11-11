@@ -1,11 +1,11 @@
 package openfoodfacts.github.scrachx.openfood.listeners
 
-import android.app.Activity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import openfoodfacts.github.scrachx.openfood.R
+import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 
 object CommonBottomListenerInstaller {
-    // We use LinkedHashSet to retain insertion order
+    /** We use [LinkedHashSet] to retain insertion order */
     private val NAV_ITEMS = linkedSetOf(
         R.id.scan_bottom_nav,
         R.id.compare_products,
@@ -15,13 +15,16 @@ object CommonBottomListenerInstaller {
     )
 
 
-    fun BottomNavigationView.selectNavigationItem(itemId: Int) = if (itemId in NAV_ITEMS) {
-        menu.findItem(itemId).isChecked = true
-    } else {
-        menu.getItem(0).isCheckable = false
+    fun BottomNavigationView.selectNavigationItem(itemId: Int) {
+        if (itemId in NAV_ITEMS) {
+            menu.findItem(itemId).isChecked = true
+        } else {
+            menu.getItem(0).isCheckable = false
+        }
     }
 
-    fun BottomNavigationView.installBottomNavigation(activity: Activity) =
+    fun BottomNavigationView.installBottomNavigation(activity: BaseActivity) {
         setOnItemSelectedListener(CommonBottomListener(activity))
+    }
 
 }

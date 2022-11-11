@@ -12,11 +12,12 @@ import java.util.List;
 import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.DaoException;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
+import openfoodfacts.github.scrachx.openfood.models.entities.TaxonomyEntity;
 
 @Entity(indexes = {
     @Index(value = "tag", unique = true)
 })
-public class Store {
+public class Store implements TaxonomyEntity {
 
     @Id(autoincrement = true)
     private Long id;

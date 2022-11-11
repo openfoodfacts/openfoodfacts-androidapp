@@ -22,7 +22,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.ActivityInfo
-import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.graphics.BitmapFactory
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
@@ -35,6 +34,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.EditText
 import android.widget.SearchView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
@@ -66,9 +66,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import openfoodfacts.github.scrachx.openfood.AppFlavors
-import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
-import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
+import openfoodfacts.github.scrachx.openfood.AppFlavor
+import openfoodfacts.github.scrachx.openfood.AppFlavor.Companion.isFlavors
 import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
@@ -89,13 +88,15 @@ import openfoodfacts.github.scrachx.openfood.features.login.LoginActivity.Compan
 import openfoodfacts.github.scrachx.openfood.features.preferences.PreferencesFragment
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity
 import openfoodfacts.github.scrachx.openfood.features.productlists.ProductListsActivity
+import openfoodfacts.github.scrachx.openfood.features.scan.MainActivityHelper
 import openfoodfacts.github.scrachx.openfood.features.scanhistory.ScanHistoryActivity
 import openfoodfacts.github.scrachx.openfood.features.searchbycode.SearchByCodeFragment
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.features.shared.NavigationDrawerHost
 import openfoodfacts.github.scrachx.openfood.features.shared.OnNavigationDrawerStatusChangedListener
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
-import openfoodfacts.github.scrachx.openfood.jobs.ProductUploaderWorker.Companion.scheduleProductUpload
+import openfoodfacts.github.scrachx.openfood.jobs.ImagesUploaderWorker
+import openfoodfacts.github.scrachx.openfood.jobs.ProductUploaderWorker
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.selectNavigationItem
 import openfoodfacts.github.scrachx.openfood.models.Product
@@ -122,11 +123,11 @@ import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Comp
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_USER
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_YOUR_LISTS
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType
-import openfoodfacts.github.scrachx.openfood.utils.Utils.scheduleProductUploadJob
 import java.io.FileNotFoundException
 import java.io.IOException
 import javax.inject.Inject
 import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivity.Companion.start as startSearch
+
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity(), NavigationDrawerListener, NavigationDrawerHost {
@@ -209,7 +210,8 @@ class MainActivity : BaseActivity(), NavigationDrawerListener, NavigationDrawerH
 
                 override fun onProfileImageLongClick(view: View, profile: IProfile<*>, current: Boolean) = false
             })
-            withOnAccountHeaderSelectionViewClickListener(object : AccountHeader.OnAccountHeaderSelectionViewClickListener {
+            withOnAccountHeaderSelectionViewClickListener(object :
+                AccountHeader.OnAccountHeaderSelectionViewClickListener {
                 override fun onClick(view: View, profile: IProfile<*>): Boolean {
                     if (!isUserSet()) startActivity(Intent(this@MainActivity, LoginActivity::class.java))
                     return false
@@ -252,22 +254,25 @@ class MainActivity : BaseActivity(), NavigationDrawerListener, NavigationDrawerH
             if (isUserSet()) getLogoutDrawerItem() else getLoginDrawerItem()
         )
         when {
-            isFlavors(AppFlavors.OBF) -> {
+            isFlavors(AppFlavor.OBF) -> {
                 drawerResult.removeItem(ITEM_ALERT.toLong())
                 drawerResult.removeItem(ITEM_ADDITIVES.toLong())
                 drawerResult.updateName(ITEM_OBF.toLong(), StringHolder(getString(R.string.open_other_flavor_drawer)))
             }
-            isFlavors(AppFlavors.OPFF) -> {
+            isFlavors(AppFlavor.OPFF) -> {
                 drawerResult.removeItem(ITEM_ALERT.toLong())
             }
-            isFlavors(AppFlavors.OPF) -> {
+            isFlavors(AppFlavor.OPF) -> {
                 drawerResult.removeItem(ITEM_ALERT.toLong())
                 drawerResult.removeItem(ITEM_ADDITIVES.toLong())
                 drawerResult.removeItem(ITEM_ADVANCED_SEARCH.toLong())
             }
         }
         if (!isApplicationInstalled(this@MainActivity, BuildConfig.OFOTHERLINKAPP)) {
-            drawerResult.updateName(ITEM_OBF.toLong(), StringHolder("${getString(R.string.install)} ${getString(R.string.open_other_flavor_drawer)}"))
+            drawerResult.updateName(
+                ITEM_OBF.toLong(),
+                StringHolder("${getString(R.string.install)} ${getString(R.string.open_other_flavor_drawer)}")
+            )
         } else {
             drawerResult.updateName(ITEM_OBF.toLong(), StringHolder(getString(R.string.open_other_flavor_drawer)))
         }
@@ -307,9 +312,9 @@ class MainActivity : BaseActivity(), NavigationDrawerListener, NavigationDrawerH
             BARCODE_SHORTCUT -> swapToSearchByCode()
         }
 
-        //Scheduling background image upload job
-        scheduleProductUploadJob(this)
-        scheduleProductUpload(this, sharedPreferences)
+        // Scheduling background image upload job
+        ImagesUploaderWorker.scheduleProductUploadJob(this)
+        ProductUploaderWorker.scheduleProductUpload(this, sharedPreferences)
 
         // Adds nutriscore and quantity values in old history for schema 5 update
 
@@ -324,7 +329,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener, NavigationDrawerH
 
         handleIntent(intent)
 
-        if (isFlavors(OFF)) {
+        if (isFlavors(AppFlavor.OFF)) {
             ChangelogDialog.newInstance(BuildConfig.DEBUG).presentAutomatically(this)
         }
     }
@@ -467,8 +472,18 @@ class MainActivity : BaseActivity(), NavigationDrawerListener, NavigationDrawerH
                     ITEM_LOGIN -> loginThenUpdate.launch(Unit)
                     ITEM_ALERT -> newFragment = AllergensAlertFragment.newInstance()
                     ITEM_PREFERENCES -> newFragment = PreferencesFragment.newInstance()
-                    ITEM_ABOUT -> CustomTabActivityHelper.openCustomTab(this@MainActivity, customTabsIntent, discoverUri, WebViewFallback())
-                    ITEM_CONTRIBUTE -> CustomTabActivityHelper.openCustomTab(this@MainActivity, customTabsIntent, contributeUri, WebViewFallback())
+                    ITEM_ABOUT -> CustomTabActivityHelper.openCustomTab(
+                        this@MainActivity,
+                        customTabsIntent,
+                        discoverUri,
+                        WebViewFallback()
+                    )
+                    ITEM_CONTRIBUTE -> CustomTabActivityHelper.openCustomTab(
+                        this@MainActivity,
+                        customTabsIntent,
+                        contributeUri,
+                        WebViewFallback()
+                    )
                     ITEM_INCOMPLETE_PRODUCTS -> startSearch(
                         this@MainActivity,
                         SearchType.INCOMPLETE_PRODUCT,
@@ -494,7 +509,12 @@ class MainActivity : BaseActivity(), NavigationDrawerListener, NavigationDrawerH
                             }
                         } else {
                             try {
-                                startActivity(Intent(Intent.ACTION_VIEW, "market://details?id=${BuildConfig.OFOTHERLINKAPP}".toUri()))
+                                startActivity(
+                                    Intent(
+                                        Intent.ACTION_VIEW,
+                                        "market://details?id=${BuildConfig.OFOTHERLINKAPP}".toUri()
+                                    )
+                                )
                             } catch (anfe: ActivityNotFoundException) {
                                 startActivity(
                                     Intent(
@@ -546,7 +566,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener, NavigationDrawerH
 
     private fun checkThenStartScanActivity() {
         when {
-            checkSelfPermission(this, Manifest.permission.CAMERA) == PERMISSION_GRANTED -> {
+            checkSelfPermission(this, Manifest.permission.CAMERA).isGranted() -> {
                 startScanActivity()
             }
             shouldShowRequestPermissionRationale(this, Manifest.permission.CAMERA) -> {
@@ -601,7 +621,8 @@ class MainActivity : BaseActivity(), NavigationDrawerListener, NavigationDrawerH
     private fun getProfileSettingDrawerItem(): IProfile<ProfileSettingDrawerItem> {
         val userLogin = getLoginUsername()
         val userSession = getUserSession()
-        userSettingsURI = "${getString(R.string.website)}cgi/user.pl?type=edit&userid=$userLogin&user_id=$userLogin&user_session=$userSession".toUri()
+        userSettingsURI =
+            "${getString(R.string.website)}cgi/user.pl?type=edit&userid=$userLogin&user_id=$userLogin&user_session=$userSession".toUri()
         customTabActivityHelper.mayLaunchUrl(userSettingsURI, null, null)
 
         return profileSettingItem {
@@ -722,65 +743,25 @@ class MainActivity : BaseActivity(), NavigationDrawerListener, NavigationDrawerH
     override fun onStart() {
         super.onStart()
         customTabActivityHelper.bindCustomTabsService(this)
-        if (isFlavors(OFF)
+        if (isFlavors(AppFlavor.OFF)
             && isUserSet()
             && !prefManager.isFirstTimeLaunch
             && !prefManager.userAskedToRate
         ) {
             val firstTimeLaunchTime = prefManager.firstTimeLaunchTime
 
-            // Check if it has been a week since first launch
+//             Check if it has been a week since first launch
             if (firstTimeLaunchTime + System.currentTimeMillis() >= 7 * 24 * 60 * 60 * 1000)
                 showFeedbackDialog()
         }
     }
 
-    /**
-     * show dialog to ask the user to rate the app/give feedback
-     */
+    @Inject
+    lateinit var mainActivityHelper: MainActivityHelper
+
+    /** show dialog to ask the user to rate the app/give feedback */
     private fun showFeedbackDialog() {
-        //dialog for rating the app on play store
-        val rateDialog = MaterialAlertDialogBuilder(this)
-            .setTitle(R.string.app_name)
-            .setMessage(R.string.user_ask_rate_app)
-            .setPositiveButton(R.string.rate_app) { dialog, _ ->
-                //open app page in play store
-                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$packageName")))
-                dialog.dismiss()
-            }
-            .setNegativeButton(R.string.no_thx) { dialog, _ -> dialog.dismiss() }
-
-        //dialog for giving feedback
-        val feedbackDialog = MaterialAlertDialogBuilder(this)
-            .setTitle(R.string.app_name)
-            .setMessage(R.string.user_ask_show_feedback_form)
-            .setPositiveButton(android.R.string.ok) { dialog, _ ->
-                //show feedback form
-                CustomTabActivityHelper.openCustomTab(
-                    this@MainActivity,
-                    customTabsIntent,
-                    getString(R.string.feedback_form_url).toUri(),
-                    WebViewFallback(),
-                )
-                dialog.dismiss()
-            }
-            .setNegativeButton(R.string.txtNo) { dialog, _ -> dialog.dismiss() }
-
-
-        MaterialAlertDialogBuilder(this)
-            .setTitle(R.string.app_name)
-            .setMessage(R.string.user_enjoying_app)
-            .setPositiveButton(R.string.txtYes) { dialog, _ ->
-                prefManager.userAskedToRate = true
-                rateDialog.show()
-                dialog.dismiss()
-            }
-            .setNegativeButton(R.string.txtNo) { dialog, _ ->
-                prefManager.userAskedToRate = true
-                feedbackDialog.show()
-                dialog.dismiss()
-            }
-            .show()
+        mainActivityHelper.showReviewDialog(this, customTabsIntent)
     }
 
     override fun onStop() {
@@ -934,8 +915,11 @@ class MainActivity : BaseActivity(), NavigationDrawerListener, NavigationDrawerH
         }
 
         val barcodeEditText = dialogView.findViewById<EditText>(R.id.barcode)
+        val barcodeLabelTextView = dialogView.findViewById<TextView>(R.id.barcode_label)
+
         if (hasEditText) {
             barcodeEditText.visibility = View.VISIBLE
+            barcodeLabelTextView.visibility = View.VISIBLE
             alertDialogBuilder.setTitle(getString(R.string.no_barcode))
             alertDialogBuilder.setMessage(getString(R.string.enter_barcode))
         } else {
@@ -993,6 +977,6 @@ class MainActivity : BaseActivity(), NavigationDrawerListener, NavigationDrawerH
         const val PRODUCT_SEARCH_KEY = "product_search"
         private val LOG_TAG = MainActivity::class.simpleName!!
 
-        fun start(context: Context) = context.startActivity(Intent(context, MainActivity::class.java))
+        fun start(context: Context) = context.startActivity(Intent<MainActivity>(context))
     }
 }

@@ -643,7 +643,6 @@
     <string name="report_img">Kép jelentése</string>
     <string name="detected_ingredients">Összetevők felismerése</string>
     <string name="txtConnectionError">Bizonyos adatokat nem tudtunk letölteni. Ennek oka lehet a csatlakozási hiba.</string>
-    <string name="set_image_name">A kép sikeresen beállítva mint</string>
     <string name="pref_fast_addition_title">Gyors hozzáadás mód</string>
     <string name="pref_fast_addition_summary">Lehetővé teszi a kevesebb attribútumú termékek gyors hozzáadását</string>
     <string name="pref_crop_new_images_title">Új képek kivágása</string>

@@ -23,7 +23,6 @@ import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.text.method.LinkMovementMethod
-import android.text.style.ClickableSpan
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -52,8 +51,8 @@ import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
-import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
+import openfoodfacts.github.scrachx.openfood.AppFlavor.Companion.isFlavors
+import openfoodfacts.github.scrachx.openfood.AppFlavor.OFF
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
 import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
@@ -79,7 +78,16 @@ import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
 import openfoodfacts.github.scrachx.openfood.features.shared.adapters.NutrientLevelListAdapter
 import openfoodfacts.github.scrachx.openfood.features.shared.views.showQuestionDialog
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
-import openfoodfacts.github.scrachx.openfood.models.*
+import openfoodfacts.github.scrachx.openfood.models.AnnotationAnswer
+import openfoodfacts.github.scrachx.openfood.models.AnnotationResponse
+import openfoodfacts.github.scrachx.openfood.models.DaoSession
+import openfoodfacts.github.scrachx.openfood.models.NutrientLevelItem
+import openfoodfacts.github.scrachx.openfood.models.Nutriment
+import openfoodfacts.github.scrachx.openfood.models.Product
+import openfoodfacts.github.scrachx.openfood.models.ProductImageField
+import openfoodfacts.github.scrachx.openfood.models.ProductState
+import openfoodfacts.github.scrachx.openfood.models.Question
+import openfoodfacts.github.scrachx.openfood.models.buildLevelItem
 import openfoodfacts.github.scrachx.openfood.models.entities.ListedProduct
 import openfoodfacts.github.scrachx.openfood.models.entities.ListedProductDao
 import openfoodfacts.github.scrachx.openfood.models.entities.ProductLists
@@ -94,7 +102,24 @@ import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.repositories.RobotoffRepository
 import openfoodfacts.github.scrachx.openfood.repositories.TaxonomiesRepository
 import openfoodfacts.github.scrachx.openfood.repositories.WikidataRepository
-import openfoodfacts.github.scrachx.openfood.utils.*
+import openfoodfacts.github.scrachx.openfood.utils.ClickableSpan
+import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
+import openfoodfacts.github.scrachx.openfood.utils.PhotoReceiverHandler
+import openfoodfacts.github.scrachx.openfood.utils.ProductFragmentUtils
+import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState
+import openfoodfacts.github.scrachx.openfood.utils.SearchType
+import openfoodfacts.github.scrachx.openfood.utils.getEcoscoreResource
+import openfoodfacts.github.scrachx.openfood.utils.getNovaGroupResource
+import openfoodfacts.github.scrachx.openfood.utils.getNutriScoreResource
+import openfoodfacts.github.scrachx.openfood.utils.getProductBrandsQuantityDetails
+import openfoodfacts.github.scrachx.openfood.utils.isPowerSaveMode
+import openfoodfacts.github.scrachx.openfood.utils.isImageLoadingDisabled
+import openfoodfacts.github.scrachx.openfood.utils.isHardwareCameraInstalled
+import openfoodfacts.github.scrachx.openfood.utils.isPerServingInLiter
+import openfoodfacts.github.scrachx.openfood.utils.isUserSet
+import openfoodfacts.github.scrachx.openfood.utils.list
+import openfoodfacts.github.scrachx.openfood.utils.requireProductState
+import openfoodfacts.github.scrachx.openfood.utils.showBottomSheet
 import java.io.File
 import javax.inject.Inject
 import kotlin.random.Random
@@ -148,7 +173,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     private var annotation: AnnotationAnswer? = null
 
     //boolean to determine if image should be loaded or not
-    private val isLowBatteryMode by lazy { requireContext().isDisableImageLoad() && requireContext().isBatteryLevelLow() }
+    private val isLowBatteryMode by lazy { requireContext().isImageLoadingDisabled() && requireContext().isPowerSaveMode() }
     private var mUrlImage: String? = null
 
     private var nutritionScoreUri: Uri? = null
@@ -218,7 +243,11 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         productState = requireProductState()
         refreshView(productState)
 
-        presenter = SummaryProductPresenter(localeManager.getLanguage(), product, this, taxonomiesRepository, robotoffRepository)
+        presenter = SummaryProductPresenter(localeManager.getLanguage(),
+            product,
+            this,
+            taxonomiesRepository,
+            robotoffRepository)
     }
 
 
@@ -252,7 +281,11 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
                 Toast.makeText(requireContext(), err.message, Toast.LENGTH_SHORT).show()
             }
             binding.uploadingImageProgress.visibility = View.GONE
-            binding.uploadingImageProgressText.setText(R.string.image_uploaded_successfully)
+            binding.uploadingImageProgressText.text = if (sendOther) {
+                getString(R.string.additional_image_uploaded_successfully)
+            } else {
+                getString(R.string.front_image_uploaded_successfully)
+            }
         }
     }
 
@@ -346,7 +379,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
             pBrands.split(",").withIndex().forEach { (i, brand) ->
                 if (i > 0) binding.textBrandProduct.append(", ")
                 binding.textBrandProduct.append(
-                    getSearchLinkText(
+                    ProductFragmentUtils.getSearchLinkText(
                         brand.trim { it <= ' ' },
                         SearchType.BRAND,
                         requireActivity()
@@ -369,7 +402,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
                     .removeSurrounding("[", "]")
                     .split(", ")
                     .map { tag ->
-                        getSearchLinkText(
+                        ProductFragmentUtils.getSearchLinkText(
                             getEmbCode(tag).trim { it <= ' ' },
                             SearchType.EMB,
                             requireActivity()
@@ -468,7 +501,8 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         binding.novaGroup.setImageResource(product.getNovaGroupResource())
         binding.novaGroup.setOnClickListener {
             val uri = Uri.parse(getString(R.string.url_nova_groups))
-            val customTabsIntent = CustomTabsHelper.getCustomTabsIntent(requireContext(), customTabActivityHelper.session)
+            val customTabsIntent =
+                CustomTabsHelper.getCustomTabsIntent(requireContext(), customTabActivityHelper.session)
             CustomTabActivityHelper.openCustomTab(requireActivity(), customTabsIntent, uri, WebViewFallback())
         }
     }
@@ -477,7 +511,8 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         binding.ecoscoreIcon.setImageResource(product.getEcoscoreResource())
         binding.ecoscoreIcon.setOnClickListener {
             val uri = getString(R.string.ecoscore_url).toUri()
-            val customTabsIntent = CustomTabsHelper.getCustomTabsIntent(requireContext(), customTabActivityHelper.session)
+            val customTabsIntent =
+                CustomTabsHelper.getCustomTabsIntent(requireContext(), customTabActivityHelper.session)
             CustomTabActivityHelper.openCustomTab(requireActivity(), customTabsIntent, uri, WebViewFallback())
         }
     }
@@ -493,7 +528,8 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
             }
 
             if (lists.isNotEmpty()) {
-                binding.actionAddToListButtonLayout.background = ResourcesCompat.getDrawable(resources, R.color.grey_300, null)
+                binding.actionAddToListButtonLayout.background =
+                    ResourcesCompat.getDrawable(resources, R.color.grey_300, null)
                 binding.actionButtonsLayout.updatePadding(bottom = 0, top = 0)
                 binding.listChips.visibility = View.VISIBLE
             }
@@ -527,7 +563,9 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         val statesTags = product.statesTags
         showCategoryPrompt = "en:categories-to-be-completed" in statesTags && !hasCategoryInsightQuestion
         showNutrientPrompt = "en:nutrition-facts-to-be-completed" in statesTags && product.noNutritionData != "on"
-        showEcoScorePrompt = "en:categories-completed" in statesTags && (product.ecoscore.isNullOrEmpty() || product.ecoscore.equals("unknown", true))
+        showEcoScorePrompt =
+            "en:categories-completed" in statesTags && (product.ecoscore.isNullOrEmpty() || product.ecoscore.equals("unknown",
+                true))
 
         Log.d(LOG_TAG, "Show category prompt: $showCategoryPrompt")
         Log.d(LOG_TAG, "Show nutrient prompt: $showNutrientPrompt")
@@ -563,7 +601,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
                 }
                 is ProductInfoState.Empty -> binding.textAdditiveProduct.visibility = View.GONE
                 is ProductInfoState.Data -> {
-                    showAdditives(state.data, binding.textAdditiveProduct, wikidataClient, this)
+                    showAdditives(binding.textAdditiveProduct, state.data, wikidataClient, this)
                 }
             }
         }
@@ -775,20 +813,19 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         mTagDao.queryBuilder().where(TagDao.Properties.Id.eq(embTag)).unique()?.name ?: embTag
 
     private fun getLabelTag(label: LabelName): CharSequence {
-        val clickableSpan = object : ClickableSpan() {
-            override fun onClick(view: View) {
-                if (label.isWikiDataIdPresent) {
-                    lifecycleScope.launch {
-                        val result = wikidataClient.getEntityData(label.wikiDataId)
-                        val activity = activity
-                        if (activity?.isFinishing == false) {
-                            showBottomSheet(result, label, activity.supportFragmentManager)
-                        }
+        val clickableSpan = ClickableSpan {
+            if (label.isWikiDataIdPresent) {
+                lifecycleScope.launch {
+                    val result = wikidataClient.getEntityData(label.wikiDataId)
+                    val activity = activity
+                    if (activity?.isFinishing == false) {
+                        showBottomSheet(result, label, activity.supportFragmentManager)
                     }
-                } else {
-                    ProductSearchActivity.start(requireContext(), SearchType.LABEL, label.labelTag, label.name)
                 }
+            } else {
+                ProductSearchActivity.start(requireContext(), SearchType.LABEL, label.labelTag, label.name)
             }
+
         }
         return buildSpannedString {
             inSpans(clickableSpan) { append(label.name) }
@@ -799,36 +836,24 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     private val loginThenEditLauncher = registerForActivityResult(LoginContract())
     { logged -> if (logged) editProduct() }
 
-    private val loginThenEditNutrition = registerForActivityResult(LoginContract())
-    { logged -> if (logged) editProductNutriscore() }
-
     private fun onEditProductButtonClick() {
         if (requireActivity().isUserSet()) {
             editProduct()
         } else {
-            buildSignInDialog(requireActivity(),
-                onPositive = { d, _ ->
-                    d.dismiss()
-                    loginThenEditLauncher.launch(null)
-                },
-                onNegative = { d, _ -> d.dismiss() }
-            ).show()
+            showLoginDialog(loginThenEditLauncher)
         }
     }
 
+    private val loginThenEditNutrition = registerForActivityResult(LoginContract())
+    { logged -> if (logged) editProductNutriscore() }
+
     private fun onAddNutriScorePromptClick() {
         if (!isFlavors(OFF)) return
+
         if (requireActivity().isUserSet()) {
             editProductNutriscore()
         } else {
-            buildSignInDialog(
-                requireActivity(),
-                onPositive = { d, _ ->
-                    d.dismiss()
-                    loginThenEditNutrition.launch(null)
-                },
-                onNegative = { d, _ -> d.dismiss() }
-            ).show()
+            showLoginDialog(loginThenEditNutrition)
         }
     }
 
@@ -899,7 +924,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
 
     private fun addListedProductToDatabase(
         product: ListedProduct,
-        list: ProductLists
+        list: ProductLists,
     ) {
         daoSession.listedProductDao.insertOrReplace(product)
         daoSession.productListsDao.update(list.apply {
@@ -957,8 +982,8 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
 
         val shouldRefresh = ImagesManageActivity.isImageModified(requestCode, resultCode)
 
-        if (shouldRefresh && activity is ProductViewActivity) {
-            (activity as ProductViewActivity).onRefresh()
+        if (shouldRefresh) {
+            (activity as? ProductViewActivity)?.onRefresh()
         }
     }
 

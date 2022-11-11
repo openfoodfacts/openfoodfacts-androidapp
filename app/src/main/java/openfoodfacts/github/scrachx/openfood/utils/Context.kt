@@ -1,44 +1,43 @@
 package openfoodfacts.github.scrachx.openfood.utils
 
 import android.content.Context
-import android.content.Intent
-import android.content.IntentFilter
 import android.content.pm.PackageManager
-import android.os.BatteryManager
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.os.Build
+import android.os.PowerManager
 import android.util.Log
+import androidx.core.content.getSystemService
 import androidx.preference.PreferenceManager.getDefaultSharedPreferences
+import openfoodfacts.github.scrachx.openfood.R
 import java.io.File
 import java.io.IOException
-import kotlin.math.ceil
+
 
 private const val LOG_TAG = "ContextExt"
 
 /**
- * Function which returns true if the battery level is low
- *
- * @return true if battery is low or false if battery in not low
+ * @return true if the device supports the [PowerManager] API and is
+ * set to power save mode. False otherwise.
  */
-fun Context.isBatteryLevelLow(percent: Int = 15): Boolean {
-    val filter = IntentFilter(Intent.ACTION_BATTERY_CHANGED)
-    val batteryStatus = registerReceiver(null, filter) ?: throw IllegalStateException("cannot get battery level")
-
-    val level = batteryStatus.getIntExtra(BatteryManager.EXTRA_LEVEL, -1)
-    val scale = batteryStatus.getIntExtra(BatteryManager.EXTRA_SCALE, -1)
-
-    val batteryPct = level.toFloat() / scale * 100
-    Log.i("BATTERYSTATUS", batteryPct.toString())
-    return ceil(batteryPct) <= percent
+fun Context.isPowerSaveMode(): Boolean {
+    val powerManager = getSystemService<PowerManager>() ?: return false
+    return powerManager.isPowerSaveMode
 }
 
-fun Context.isLowBatteryMode() = isDisableImageLoad() && isBatteryLevelLow()
+fun Context.shouldLoadImages() = !isImageLoadingDisabled() && !isPowerSaveMode()
 
-fun Context.isDisableImageLoad(defValue: Boolean = false) = getDefaultSharedPreferences(this)
-    .getBoolean("disableImageLoad", defValue)
+fun Context.isImageLoadingDisabled(): Boolean {
+    val preferences = getDefaultSharedPreferences(this)
+    val key = getString(R.string.pref_low_battery_key)
+    return preferences.getBoolean(key, false)
+}
 
-fun Context.isFastAdditionMode(defValue: Boolean = false) = getDefaultSharedPreferences(this)
-    .getBoolean("fastAdditionMode", defValue)
-
-fun Context.dpsToPixel(dps: Int) = dps.toPx(this)
+fun Context.isFastAdditionMode(defValue: Boolean = false): Boolean {
+    val preferences = getDefaultSharedPreferences(this)
+    val key = getString(R.string.pref_fast_addition_key)
+    return preferences.getBoolean(key, defValue)
+}
 
 /**
  * @return Returns the version name of the app
@@ -78,4 +77,23 @@ fun Context.getCameraCacheLocation(): File {
         else throw IOException("Couldn't create directory '${picDir.absolutePath}'.")
     }
     return picDir
+}
+
+/**
+ * Check if the user is connected to a network. This can be any network.
+ *
+ * @return `true` if connected or connecting;
+ *
+ * `false` otherwise.
+ *
+ */
+@Suppress("DEPRECATION")
+fun Context.isNetworkConnected(): Boolean {
+    val cm = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        val capability = cm.getNetworkCapabilities(cm.activeNetwork)
+        capability?.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET) ?: false
+    } else {
+        cm.activeNetworkInfo?.isConnectedOrConnecting ?: false
+    }
 }

@@ -13,8 +13,12 @@ import dagger.hilt.android.AndroidEntryPoint
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentFindProductBinding
 import openfoodfacts.github.scrachx.openfood.features.shared.NavigationWithDrawerBaseFragment
-import openfoodfacts.github.scrachx.openfood.utils.*
+import openfoodfacts.github.scrachx.openfood.models.Barcode
+import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType
+import openfoodfacts.github.scrachx.openfood.utils.hideKeyboard
+import openfoodfacts.github.scrachx.openfood.utils.isEmpty
+import openfoodfacts.github.scrachx.openfood.utils.showKeyboard
 
 /**
  * @see R.layout.fragment_find_product
@@ -78,7 +82,7 @@ class SearchByCodeFragment : NavigationWithDrawerBaseFragment() {
             code.isEmpty() -> {
                 binding.editTextBarcode.error = resources.getString(R.string.txtBarcodeRequire)
             }
-            !isBarcodeValid(code) -> {
+            !Barcode(code).isValid() -> {
                 binding.editTextBarcode.error = resources.getString(R.string.txtBarcodeNotValid)
             }
             else -> {

@@ -642,7 +642,6 @@
     <string name="report_img">Informar sobre la imagen</string>
     <string name="detected_ingredients">Ingredientes detectados</string>
     <string name="txtConnectionError">No pudimos descargar todos los datos. Esto puede deberse a un error de conexión.</string>
-    <string name="set_image_name">Establecer correctamente la imagen como</string>
     <string name="pref_fast_addition_title">Modo de adición rápida</string>
     <string name="pref_fast_addition_summary">Permite la adición rápida de productos con menos atributos</string>
     <string name="pref_crop_new_images_title">Recortar nuevas imágenes</string>

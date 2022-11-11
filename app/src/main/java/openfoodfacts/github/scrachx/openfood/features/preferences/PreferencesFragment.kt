@@ -32,7 +32,12 @@ import androidx.core.content.edit
 import androidx.core.content.pm.PackageInfoCompat
 import androidx.core.net.toUri
 import androidx.lifecycle.lifecycleScope
-import androidx.preference.*
+import androidx.preference.CheckBoxPreference
+import androidx.preference.ListPreference
+import androidx.preference.Preference
+import androidx.preference.PreferenceCategory
+import androidx.preference.PreferenceFragmentCompat
+import androidx.preference.SwitchPreference
 import androidx.work.WorkInfo
 import androidx.work.WorkManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -41,11 +46,8 @@ import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import openfoodfacts.github.scrachx.openfood.AppFlavors.OBF
-import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
-import openfoodfacts.github.scrachx.openfood.AppFlavors.OPF
-import openfoodfacts.github.scrachx.openfood.AppFlavors.OPFF
-import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
+import openfoodfacts.github.scrachx.openfood.AppFlavor
+import openfoodfacts.github.scrachx.openfood.AppFlavor.Companion.isFlavors
 import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
@@ -59,8 +61,19 @@ import openfoodfacts.github.scrachx.openfood.models.entities.analysistag.Analysi
 import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.AnalysisTagConfig
 import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.AnalysisTagConfigDao
 import openfoodfacts.github.scrachx.openfood.models.entities.country.CountryNameDao
-import openfoodfacts.github.scrachx.openfood.utils.*
+import openfoodfacts.github.scrachx.openfood.utils.INavigationItem
+import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
+import openfoodfacts.github.scrachx.openfood.utils.LocaleUtils
+import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType
+import openfoodfacts.github.scrachx.openfood.utils.OFFDatabaseHelper
+import openfoodfacts.github.scrachx.openfood.utils.OneTimeWorkRequest
+import openfoodfacts.github.scrachx.openfood.utils.SearchSuggestionProvider
+import openfoodfacts.github.scrachx.openfood.utils.SupportedLanguages
+import openfoodfacts.github.scrachx.openfood.utils.getAppPreferences
+import openfoodfacts.github.scrachx.openfood.utils.list
+import openfoodfacts.github.scrachx.openfood.utils.requirePreference
+import openfoodfacts.github.scrachx.openfood.utils.unique
 import org.greenrobot.greendao.query.WhereCondition.StringCondition
 import java.util.*
 import javax.inject.Inject
@@ -123,7 +136,8 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem {
                             SearchSuggestionProvider.MODE
                         ).clearHistory()
 
-                        Toast.makeText(requireContext(), getString(R.string.pref_delete_history), Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(), getString(R.string.pref_delete_history), Toast.LENGTH_SHORT)
+                            .show()
                     }
                     .setNegativeButton(R.string.dialog_cancel) { d, _ -> d.dismiss() }
                     .show()
@@ -151,7 +165,8 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem {
                             d.dismiss()
                             isChecked = true
                             settings.edit { putBoolean(getString(R.string.pref_scanner_mlkit_key), true) }
-                            Toast.makeText(requireActivity(), getString(R.string.changes_saved), Toast.LENGTH_SHORT).show()
+                            Toast.makeText(requireActivity(), getString(R.string.changes_saved), Toast.LENGTH_SHORT)
+                                .show()
                         }
                         .setNegativeButton(android.R.string.cancel) { d, _ ->
                             d.dismiss()
@@ -280,7 +295,7 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem {
         }
 
         // Disable photo mode for OpenProductFacts
-        if (isFlavors(OPF)) {
+        if (isFlavors(AppFlavor.OPF)) {
             requirePreference<Preference>(getString(R.string.pref_show_product_photos_key)).isVisible = false
         }
 
@@ -299,7 +314,7 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem {
         }
 
 
-        if (isFlavors(OFF, OBF, OPFF)) {
+        if (isFlavors(AppFlavor.OFF, AppFlavor.OBF, AppFlavor.OPFF)) {
             setupAnalysisTagConfigs()
         } else {
             preferenceScreen.removePreference(preferenceScreen.requirePreference(getString(R.string.pref_key_display)))
@@ -365,25 +380,26 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem {
 
                 setOnPreferenceClickListener { pref ->
                     pref.onPreferenceClickListener = null
-                    val request = buildOneTimeWorkRequest<LoadTaxonomiesWorker>()
+                    val request = OneTimeWorkRequest<LoadTaxonomiesWorker>()
 
                     // The service will load server resources only if newer than already downloaded...
                     WorkManager.getInstance(requireContext()).let {
                         it.enqueue(request)
-                        it.getWorkInfoByIdLiveData(request.id).observe(this@PreferencesFragment) { workInfo: WorkInfo? ->
-                            when (workInfo?.state) {
-                                WorkInfo.State.RUNNING -> {
-                                    pref.setTitle(R.string.please_wait)
-                                    pref.setIcon(R.drawable.ic_cloud_download_black_24dp)
-                                    pref.summary = null
-                                    pref.widgetLayoutResource = R.layout.loading
+                        it.getWorkInfoByIdLiveData(request.id)
+                            .observe(this@PreferencesFragment) { workInfo: WorkInfo? ->
+                                when (workInfo?.state) {
+                                    WorkInfo.State.RUNNING -> {
+                                        pref.setTitle(R.string.please_wait)
+                                        pref.setIcon(R.drawable.ic_cloud_download_black_24dp)
+                                        pref.summary = null
+                                        pref.widgetLayoutResource = R.layout.loading
+                                    }
+                                    WorkInfo.State.SUCCEEDED -> {
+                                        setupAnalysisTagConfigs()
+                                    }
+                                    else -> Unit  // Nothing
                                 }
-                                WorkInfo.State.SUCCEEDED -> {
-                                    setupAnalysisTagConfigs()
-                                }
-                                else -> Unit  // Nothing
                             }
-                        }
                     }
                     true
                 }

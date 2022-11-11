@@ -642,7 +642,6 @@
     <string name="report_img">Rapporteer afbeelding</string>
     <string name="detected_ingredients">Gedetecteerde ingrediënten</string>
     <string name="txtConnectionError">We kunnen bepaalde gegevens niet downloaden. Dit kan te wijten zijn aan een verbindingsfout.</string>
-    <string name="set_image_name">Afbeelding succesvol ingesteld als</string>
     <string name="pref_fast_addition_title">Snelle toevoegmodus</string>
     <string name="pref_fast_addition_summary">Maakt snelle toevoeging van producten met minder kenmerken mogelijk</string>
     <string name="pref_crop_new_images_title">Nieuwe afbeeldingen bijsnijden</string>

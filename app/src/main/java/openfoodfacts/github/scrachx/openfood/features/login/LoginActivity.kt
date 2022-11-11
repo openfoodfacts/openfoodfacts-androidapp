@@ -34,8 +34,8 @@ import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
-import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
+import openfoodfacts.github.scrachx.openfood.AppFlavor
+import openfoodfacts.github.scrachx.openfood.AppFlavor.Companion.isFlavors
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.analytics.MatomoAnalytics
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper
@@ -44,6 +44,7 @@ import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityLoginBinding
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
+import openfoodfacts.github.scrachx.openfood.utils.Intent
 import openfoodfacts.github.scrachx.openfood.utils.getLoginPreferences
 import openfoodfacts.github.scrachx.openfood.utils.hideKeyboard
 import javax.inject.Inject
@@ -66,8 +67,12 @@ class LoginActivity : BaseActivity() {
     lateinit var matomoAnalytics: MatomoAnalytics
 
     private val customTabActivityHelper: CustomTabActivityHelper by lazy { CustomTabActivityHelper() }
-    private val userLoginUri by lazy { "${getString(R.string.website)}cgi/user.pl".toUri() }
-    private val resetPasswordUri by lazy { "${getString(R.string.website)}cgi/reset_password.pl".toUri() }
+    private val userLoginUri by lazy {
+        resources.getString(R.string.user_login_url, getString(R.string.website)).toUri()
+    }
+    private val resetPasswordUri by lazy {
+        resources.getString(R.string.reset_password_url, getString(R.string.website)).toUri()
+    }
 
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
         android.R.id.home -> {
@@ -115,7 +120,7 @@ class LoginActivity : BaseActivity() {
         setContentView(binding.root)
 
         // check flavour and show helper text for user account
-        if (!isFlavors(OFF)) {
+        if (!isFlavors(AppFlavor.OFF)) {
             binding.txtLoginHelper.visibility = View.VISIBLE
         }
 
@@ -213,9 +218,12 @@ class LoginActivity : BaseActivity() {
     }
 
     companion object {
-        class LoginContract : ActivityResultContract<Unit?, Boolean>() {
-            override fun createIntent(context: Context, input: Unit?) = Intent(context, LoginActivity::class.java)
-            override fun parseResult(resultCode: Int, intent: Intent?) = resultCode == RESULT_OK
+        class LoginContract : ActivityResultContract<Unit, Boolean>() {
+            override fun createIntent(context: Context, input: Unit) =
+                Intent<LoginActivity>(context)
+
+            override fun parseResult(resultCode: Int, intent: Intent?) =
+                resultCode == RESULT_OK
         }
 
         internal fun isHtmlNotValid(html: String?) = (html == null

@@ -642,7 +642,6 @@
     <string name="report_img">Resmi Şikayet Et</string>
     <string name="detected_ingredients">Tespit Edilen Malzemeler</string>
     <string name="txtConnectionError">Bazı verileri indiremedik. Bu bir bağlantı hatasından dolayı olabilir.</string>
-    <string name="set_image_name">Resim başarılı bir şekilde ayarlandı</string>
     <string name="pref_fast_addition_title">Hızlı Ekleme Modu</string>
     <string name="pref_fast_addition_summary">Daha az niteliğe sahip ürünlerin hızlı bir şekilde eklenmesini sağlar</string>
     <string name="pref_crop_new_images_title">Yeni resimleri kırp</string>

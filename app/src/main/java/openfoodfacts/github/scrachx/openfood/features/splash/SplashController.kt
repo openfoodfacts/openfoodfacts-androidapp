@@ -18,20 +18,30 @@ package openfoodfacts.github.scrachx.openfood.features.splash
 import android.content.SharedPreferences
 import androidx.core.content.edit
 import androidx.lifecycle.lifecycleScope
-import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkInfo
 import androidx.work.WorkManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import openfoodfacts.github.scrachx.openfood.AppFlavors.OBF
-import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
-import openfoodfacts.github.scrachx.openfood.AppFlavors.OPFF
-import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
+import openfoodfacts.github.scrachx.openfood.AppFlavor
+import openfoodfacts.github.scrachx.openfood.AppFlavor.Companion.isFlavors
 import openfoodfacts.github.scrachx.openfood.jobs.LoadTaxonomiesWorker
+import openfoodfacts.github.scrachx.openfood.models.entities.TaxonomyEntity
 import openfoodfacts.github.scrachx.openfood.repositories.Taxonomy
-import openfoodfacts.github.scrachx.openfood.repositories.Taxonomy.*
+import openfoodfacts.github.scrachx.openfood.repositories.Taxonomy.Additives
+import openfoodfacts.github.scrachx.openfood.repositories.Taxonomy.Allergens
+import openfoodfacts.github.scrachx.openfood.repositories.Taxonomy.AnalysisTagConfigs
+import openfoodfacts.github.scrachx.openfood.repositories.Taxonomy.AnalysisTags
+import openfoodfacts.github.scrachx.openfood.repositories.Taxonomy.Brands
+import openfoodfacts.github.scrachx.openfood.repositories.Taxonomy.Categories
+import openfoodfacts.github.scrachx.openfood.repositories.Taxonomy.Countries
+import openfoodfacts.github.scrachx.openfood.repositories.Taxonomy.InvalidBarcodes
+import openfoodfacts.github.scrachx.openfood.repositories.Taxonomy.Labels
+import openfoodfacts.github.scrachx.openfood.repositories.Taxonomy.ProductStates
+import openfoodfacts.github.scrachx.openfood.repositories.Taxonomy.Stores
+import openfoodfacts.github.scrachx.openfood.repositories.Taxonomy.Tags
+import openfoodfacts.github.scrachx.openfood.utils.OneTimeWorkRequest
 import kotlin.time.Duration.Companion.seconds
 import kotlin.time.ExperimentalTime
 
@@ -41,12 +51,14 @@ import kotlin.time.ExperimentalTime
 class SplashController internal constructor(
     private val settings: SharedPreferences,
     private val view: SplashActivity,
-    private val activity: SplashActivity
+    private val activity: SplashActivity,
 ) {
 
-    private fun <T> Taxonomy<T>.activateDownload(vararg flavors: String) {
-        if (flavors.isEmpty() || isFlavors(*flavors)) {
-            settings.edit { putBoolean(getDownloadActivatePreferencesId(), true) }
+    private fun <T : TaxonomyEntity> Taxonomy<T>.activateDownload(
+        vararg flavors: AppFlavor = AppFlavor.values(),
+    ) {
+        if (isFlavors(*flavors)) {
+            settings.edit { putBoolean(downloadActivatePreferencesId, true) }
         }
     }
 
@@ -55,15 +67,15 @@ class SplashController internal constructor(
         Categories.activateDownload()
         Tags.activateDownload()
         InvalidBarcodes.activateDownload()
-        Additives.activateDownload(OFF, OBF)
-        Countries.activateDownload(OFF, OBF)
-        Labels.activateDownload(OFF, OBF)
-        Allergens.activateDownload(OFF, OBF, OPFF)
-        AnalysisTags.activateDownload(OFF, OBF, OPFF)
-        AnalysisTagConfigs.activateDownload(OFF, OBF, OPFF)
-        ProductStates.activateDownload(OFF, OBF, OPFF)
-        Stores.activateDownload(OFF, OBF, OPFF)
-        Brands.activateDownload(OFF, OBF)
+        Additives.activateDownload(AppFlavor.OFF, AppFlavor.OBF)
+        Countries.activateDownload(AppFlavor.OFF, AppFlavor.OBF)
+        Labels.activateDownload(AppFlavor.OFF, AppFlavor.OBF)
+        Allergens.activateDownload(AppFlavor.OFF, AppFlavor.OBF, AppFlavor.OPFF)
+        AnalysisTags.activateDownload(AppFlavor.OFF, AppFlavor.OBF, AppFlavor.OPFF)
+        AnalysisTagConfigs.activateDownload(AppFlavor.OFF, AppFlavor.OBF, AppFlavor.OPFF)
+        ProductStates.activateDownload(AppFlavor.OFF, AppFlavor.OBF, AppFlavor.OPFF)
+        Stores.activateDownload(AppFlavor.OFF, AppFlavor.OBF, AppFlavor.OPFF)
+        Brands.activateDownload(AppFlavor.OFF, AppFlavor.OBF)
 
         //first run ever off this application, whatever the version
         val firstRun = settings.getBoolean("firstRun", true)
@@ -71,17 +83,24 @@ class SplashController internal constructor(
 
         // The service will load server resources only if newer than already downloaded...
         withContext(Dispatchers.Main) {
-            val request = OneTimeWorkRequest.from(LoadTaxonomiesWorker::class.java)
-            WorkManager.getInstance(activity).let {
-                it.enqueue(request)
-                it.getWorkInfoByIdLiveData(request.id).observe(activity) { workInfo: WorkInfo? ->
-                    if (workInfo != null && workInfo.state == WorkInfo.State.RUNNING) {
-                        activity.lifecycleScope.launch { view.showLoading() }
-                    } else if (workInfo != null) {
-                        activity.lifecycleScope.launch { view.hideLoading(workInfo.state == WorkInfo.State.FAILED) }
+            val workRequest = OneTimeWorkRequest<LoadTaxonomiesWorker>()
+            val manager = WorkManager.getInstance(activity)
+
+            manager.enqueue(workRequest)
+            manager.getWorkInfoByIdLiveData(workRequest.id).observe(activity) { workInfo: WorkInfo? ->
+                if (workInfo == null) {
+                    return@observe
+                }
+                if (workInfo.state == WorkInfo.State.RUNNING) {
+                    activity.lifecycleScope.launch { view.showLoading() }
+                } else {
+                    activity.lifecycleScope.launch {
+                        val isError = workInfo.state == WorkInfo.State.FAILED
+                        view.hideLoading(isError)
                     }
                 }
             }
+
         }
 
         // The 6000 delay is to show one loop of the multilingual logo. I asked for it ~ Pierre

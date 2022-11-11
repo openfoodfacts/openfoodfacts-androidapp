@@ -58,6 +58,7 @@ import openfoodfacts.github.scrachx.openfood.models.entities.ListedProduct
 import openfoodfacts.github.scrachx.openfood.models.entities.ListedProductDao
 import openfoodfacts.github.scrachx.openfood.models.entities.ProductLists
 import openfoodfacts.github.scrachx.openfood.models.entities.ProductListsDao
+import openfoodfacts.github.scrachx.openfood.utils.Intent
 import openfoodfacts.github.scrachx.openfood.utils.SwipeController
 import openfoodfacts.github.scrachx.openfood.utils.buildDelete
 import openfoodfacts.github.scrachx.openfood.utils.isEmpty
@@ -94,7 +95,7 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
 
         binding.fabAdd.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_plus_blue_24, 0, 0, 0)
 
-        adapter = ProductListsAdapter(this)
+        adapter = ProductListsAdapter()
 
         binding.productListsRecyclerView.layoutManager = LinearLayoutManager(this)
         binding.productListsRecyclerView.adapter = adapter
@@ -288,7 +289,7 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
                     if (daoList == null) {
                         //create new list
                         val productList = ProductLists(listName, 0)
-                        adapter.lists.add(productList)
+                        adapter.add(productList)
                         productListsDao.insert(productList)
                         daoList = productListsDao.queryBuilder()
                             .where(ProductListsDao.Properties.ListName.eq(listName)).unique()
@@ -324,12 +325,12 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
 
         @JvmStatic
         fun start(context: Context, productToAdd: Product) = context.startActivity(
-            Intent(context, ProductListsActivity::class.java).apply {
+            Intent<ProductListsActivity>(context) {
                 putExtra(KEY_PRODUCT, productToAdd)
             })
 
         @JvmStatic
-        fun start(context: Context) = context.startActivity(Intent(context, ProductListsActivity::class.java))
+        fun start(context: Context) = context.startActivity(Intent<ProductListsActivity>(context))
 
         fun ProductListsDao.defaultIfEmpty(context: Context): ProductListsDao = also {
             if (it.isEmpty()) {

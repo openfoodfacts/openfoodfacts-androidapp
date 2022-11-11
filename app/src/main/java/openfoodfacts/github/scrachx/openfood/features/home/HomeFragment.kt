@@ -33,7 +33,7 @@ import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentHomeBinding
 import openfoodfacts.github.scrachx.openfood.features.login.LoginActivity.Companion.LoginContract
 import openfoodfacts.github.scrachx.openfood.features.shared.NavigationBaseFragment
-import openfoodfacts.github.scrachx.openfood.models.TagLine
+import openfoodfacts.github.scrachx.openfood.models.tagline.TagLine
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType
 import java.text.NumberFormat

@@ -13,6 +13,17 @@
         android:layout_marginBottom="@dimen/spacing_small"
         android:scrollbars="horizontal" />
 
+    <TextView
+        android:id="@+id/barcode_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/floating_hint_margin"
+        android:text="@string/type_the_barcode_here_label"
+        android:textColor="@color/red"
+        android:textSize="@dimen/font_normal"
+        android:textStyle="bold"
+        android:visibility="gone" />
+
     <EditText
         android:id="@+id/barcode"
         android:layout_width="fill_parent"

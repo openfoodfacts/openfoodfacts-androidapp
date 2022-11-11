@@ -654,7 +654,6 @@
     <string name="report_img">Nahlásit obrázek</string>
     <string name="detected_ingredients">Zjištěné složení</string>
     <string name="txtConnectionError">Některá data se nepodařilo stáhnout. To může být způsobeno chybou připojení.</string>
-    <string name="set_image_name">Snímek byl úspěšně nastaven jako</string>
     <string name="pref_fast_addition_title">Režim rychlého přidávání</string>
     <string name="pref_fast_addition_summary">Enables fast addition of products with fewer attributes</string>
     <string name="pref_crop_new_images_title">Oříznout nové obrázky</string>

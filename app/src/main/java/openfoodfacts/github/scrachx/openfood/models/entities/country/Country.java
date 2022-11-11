@@ -13,12 +13,13 @@ import org.greenrobot.greendao.annotation.Unique;
 import java.util.List;
 
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
+import openfoodfacts.github.scrachx.openfood.models.entities.TaxonomyEntity;
 
 /**
  * Created by Lobster on 04.03.18.
  */
 @Entity(indexes = {@Index(value = "tag", unique = true)})
-public class Country {
+public class Country implements TaxonomyEntity {
     @Id(autoincrement = true)
     private Long id;
     @Unique

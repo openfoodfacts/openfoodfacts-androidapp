@@ -2,6 +2,7 @@ package openfoodfacts.github.scrachx.openfood.models
 
 import androidx.core.text.bold
 import androidx.core.text.buildSpannedString
+import openfoodfacts.github.scrachx.openfood.models.Modifier.Companion.DEFAULT
 import openfoodfacts.github.scrachx.openfood.utils.getRoundNumber
 
 /**
@@ -19,16 +20,29 @@ data class NutrimentListItem(
     val servingValueStr: CharSequence?,
     val unitStr: CharSequence?,
     val modifierStr: CharSequence?,
-    val displayVolumeHeader: Boolean = false
+    val displayVolumeHeader: Boolean = false,
 ) {
 
-    constructor(volumeHeader: Boolean) : this(null, null, null, null, null, volumeHeader)
+    constructor(volumeHeader: Boolean) : this(
+        null,
+        null,
+        null,
+        null,
+        null,
+        volumeHeader
+    )
 
-    constructor(title: CharSequence) : this(title, null, null, null, null)
+    constructor(title: CharSequence) : this(
+        title,
+        null,
+        null,
+        null,
+        null
+    )
 
     constructor(
         title: CharSequence,
-        nutriment: ProductNutriments.ProductNutriment
+        nutriment: ProductNutriments.ProductNutriment,
     ) : this(
         title,
         nutriment.per100gInUnit?.value,
@@ -43,13 +57,13 @@ data class NutrimentListItem(
         servingValue: Float?,
         unit: MeasurementUnit,
         modifier: Modifier,
-        displayVolumeHeader: Boolean = false
+        displayVolumeHeader: Boolean = false,
     ) : this(
         title,
         value?.let { getRoundNumber(it) },
         servingValue?.let { getRoundNumber(it) },
         unit.sym,
-        modifier.takeUnlessDefault()?.sym ?: "",
+        modifier.takeUnless { it == DEFAULT }?.sym ?: "",
         displayVolumeHeader
     )
 }

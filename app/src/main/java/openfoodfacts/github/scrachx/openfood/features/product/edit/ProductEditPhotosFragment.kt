@@ -42,7 +42,7 @@ import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct
 import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
 import openfoodfacts.github.scrachx.openfood.utils.MY_PERMISSIONS_REQUEST_CAMERA
 import openfoodfacts.github.scrachx.openfood.utils.PhotoReceiverHandler
-import openfoodfacts.github.scrachx.openfood.utils.dpsToPixel
+import openfoodfacts.github.scrachx.openfood.utils.toPx
 import pl.aprilapps.easyphotopicker.EasyImage
 import java.io.File
 import javax.inject.Inject
@@ -150,7 +150,7 @@ class ProductEditPhotosFragment : ProductEditFragment() {
         if (errorInUploading) {
             binding.imageProgressText.visibility = View.GONE
         } else {
-            binding.imageProgressText.setText(R.string.image_uploaded_successfully)
+            binding.imageProgressText.setText(R.string.additional_image_uploaded_successfully)
         }
     }
 
@@ -159,8 +159,8 @@ class ProductEditPhotosFragment : ProductEditFragment() {
      */
     private fun addImageRow() {
         val row = TableRow(activity)
-        val lp = TableRow.LayoutParams(MATCH_PARENT, requireContext().dpsToPixel(100)).apply {
-            topMargin = requireContext().dpsToPixel(10)
+        val lp = TableRow.LayoutParams(MATCH_PARENT, 100.toPx(requireContext())).apply {
+            topMargin = 10.toPx(requireContext())
         }
         val imageView = ImageView(activity).apply {
             adjustViewBounds = true
@@ -168,7 +168,7 @@ class ProductEditPhotosFragment : ProductEditFragment() {
             layoutParams = lp
         }
         picasso.load(photoFile!!)
-            .resize(requireContext().dpsToPixel(100), requireContext().dpsToPixel(100))
+            .resize(100.toPx(requireContext()), 100.toPx(requireContext()))
             .centerInside()
             .into(imageView)
         row.addView(imageView)

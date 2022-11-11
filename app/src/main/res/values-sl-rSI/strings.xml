@@ -648,7 +648,6 @@
     <string name="report_img">Prijavi sliko</string>
     <string name="detected_ingredients">Prepoznane sestavine</string>
     <string name="txtConnectionError">Ne moremo prenesti določenih podatkov. To je lahko posledica napake v povezavi.</string>
-    <string name="set_image_name">Slika je bila uspešno nastavljena kot</string>
     <string name="addtive_search">Poiščite dodatek</string>
     <string name="additives">Aditivi</string>
     <!--used for product_lists implementation-->

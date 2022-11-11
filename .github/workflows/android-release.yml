@@ -7,7 +7,7 @@ on:
 
 
 env:
-  JAVA_VERSION: "11"
+  JAVA_VERSION: "17"
   JAVA_DISTR: "adopt"
   RUBY_VERSION: "2.3.1"
 
@@ -28,7 +28,7 @@ jobs:
           java-version: ${{ env.JAVA_VERSION }}
 
       - name: Run unit tests
-        uses: gradle/gradle-build-action@v2.2.2
+        uses: gradle/gradle-build-action@v2.3.3
         with:
           arguments: >
             testObfPlaystoreDebugUnitTest

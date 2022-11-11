@@ -636,7 +636,6 @@
     <string name="report_img">Ilmoita kuvasta</string>
     <string name="detected_ingredients">Havaitut ainesosat</string>
     <string name="txtConnectionError">Tiettyjä tietoja ei voitu ladata. Tämä voi johtua yhteysvirheestä.</string>
-    <string name="set_image_name">Kuva asetettu rooliin</string>
     <string name="addtive_search">Etsi lisäaine</string>
     <string name="additives">Lisäaineet</string>
     <!--used for product_lists implementation-->

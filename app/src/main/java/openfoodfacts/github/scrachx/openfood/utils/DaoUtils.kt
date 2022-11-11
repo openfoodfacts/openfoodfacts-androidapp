@@ -2,6 +2,9 @@ package openfoodfacts.github.scrachx.openfood.utils
 
 import android.util.Log
 import androidx.annotation.CheckResult
+import logcat.LogPriority
+import logcat.logcat
+import openfoodfacts.github.scrachx.openfood.models.entities.TaxonomyEntity
 import openfoodfacts.github.scrachx.openfood.repositories.Taxonomy
 import org.greenrobot.greendao.AbstractDao
 import org.greenrobot.greendao.query.DeleteQuery
@@ -17,11 +20,10 @@ import org.jetbrains.annotations.Contract
 fun AbstractDao<*, *>.isEmpty() = count() == 0L
 
 @Contract(pure = true)
-fun <T> logDownload(taxonomy: Taxonomy<T>) {
-    Log.i(
-        "${Taxonomy::class.simpleName}",
+fun <T : TaxonomyEntity> logDownload(taxonomy: Taxonomy<T>) {
+    logcat(taxonomy::class.simpleName!!, LogPriority.INFO) {
         "Refreshed taxonomy '${taxonomy::class.simpleName}' from server"
-    )
+    }
 }
 
 inline fun <T, R> AbstractDao<T, R>.build(builderAction: QueryBuilder<T>.() -> Unit): QueryBuilder<T> {

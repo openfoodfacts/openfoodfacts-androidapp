@@ -636,7 +636,6 @@
     <string name="report_img">Reporteu imatge</string>
     <string name="detected_ingredients">Ingredients detectats</string>
     <string name="txtConnectionError">No hem pogut descarregar certes dades. Potser ha estat per una errada de connexió.</string>
-    <string name="set_image_name">Imatge configurada correctament com</string>
     <string name="addtive_search">Cerqueu un additiu</string>
     <string name="additives">Additius</string>
     <!--used for product_lists implementation-->

@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.text.Spanned
 import android.text.format.DateFormat
 import android.text.method.LinkMovementMethod
-import android.text.style.ClickableSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,6 +21,7 @@ import openfoodfacts.github.scrachx.openfood.models.ProductState
 import openfoodfacts.github.scrachx.openfood.models.entities.states.StatesName
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.repositories.TaxonomiesRepository
+import openfoodfacts.github.scrachx.openfood.utils.ClickableSpan
 import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
 import openfoodfacts.github.scrachx.openfood.utils.SearchType
 import openfoodfacts.github.scrachx.openfood.utils.requireProductState
@@ -67,8 +67,14 @@ class ContributorsFragment : BaseFragment() {
         binding.incompleteStates.setOnClickListener { toggleIncompleteStatesVisibility() }
         binding.completeStates.setOnClickListener { toggleCompleteStatesVisibility() }
 
-        binding.incompleteStates.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_down_grey_24dp, 0)
-        binding.completeStates.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_down_grey_24dp, 0)
+        binding.incompleteStates.setCompoundDrawablesWithIntrinsicBounds(0,
+            0,
+            R.drawable.ic_keyboard_arrow_down_grey_24dp,
+            0)
+        binding.completeStates.setCompoundDrawablesWithIntrinsicBounds(0,
+            0,
+            R.drawable.ic_keyboard_arrow_down_grey_24dp,
+            0)
 
         refreshView(this.requireProductState())
     }
@@ -81,7 +87,8 @@ class ContributorsFragment : BaseFragment() {
         if (!product.creator.isNullOrBlank()) {
             val createdDate = formatDateTime(product.createdDateTime!!)
             binding.creatorTxt.movementMethod = LinkMovementMethod.getInstance()
-            binding.creatorTxt.text = getString(R.string.creator_history, createdDate.first, createdDate.second, product.creator)
+            binding.creatorTxt.text =
+                getString(R.string.creator_history, createdDate.first, createdDate.second, product.creator)
         } else {
             binding.creatorTxt.visibility = View.INVISIBLE
         }
@@ -89,7 +96,8 @@ class ContributorsFragment : BaseFragment() {
         if (!product.lastModifiedBy.isNullOrBlank()) {
             val lastEditDate = formatDateTime(product.lastModifiedTime!!)
             binding.lastEditorTxt.movementMethod = LinkMovementMethod.getInstance()
-            binding.lastEditorTxt.text = getString(R.string.last_editor_history, lastEditDate.first, lastEditDate.second, product.lastModifiedBy)
+            binding.lastEditorTxt.text =
+                getString(R.string.last_editor_history, lastEditDate.first, lastEditDate.second, product.lastModifiedBy)
         } else {
             binding.lastEditorTxt.visibility = View.INVISIBLE
         }
@@ -131,8 +139,8 @@ class ContributorsFragment : BaseFragment() {
     }
 
     private fun getContributorsTag(contributor: String): CharSequence {
-        val clickableSpan = object : ClickableSpan() {
-            override fun onClick(view: View) = start(requireContext(), SearchType.CONTRIBUTOR, contributor)
+        val clickableSpan = ClickableSpan {
+            start(requireContext(), SearchType.CONTRIBUTOR, contributor)
         }
         return buildSpannedString {
             append(contributor)
@@ -142,8 +150,8 @@ class ContributorsFragment : BaseFragment() {
     }
 
     private fun getStatesTag(stateName: String, stateTag: String): CharSequence {
-        val clickableSpan = object : ClickableSpan() {
-            override fun onClick(view: View) = start(requireContext(), SearchType.STATE, stateTag)
+        val clickableSpan = ClickableSpan {
+            start(requireContext(), SearchType.STATE, stateTag)
         }
         return buildSpannedString {
             append(stateName)
@@ -163,7 +171,8 @@ class ContributorsFragment : BaseFragment() {
 
             states.forEach { state ->
                 if (isIncompleteState(state.statesTag)) {
-                    binding.incompleteStatesTxt.append(getStatesTag(state.name, state.statesTag.split(":").component2()))
+                    binding.incompleteStatesTxt.append(getStatesTag(state.name,
+                        state.statesTag.split(":").component2()))
                     binding.incompleteStatesTxt.append("\n")
                 } else {
                     binding.completeStatesTxt.append(getStatesTag(state.name, state.statesTag.split(":").component2()))
@@ -178,20 +187,32 @@ class ContributorsFragment : BaseFragment() {
     private fun toggleIncompleteStatesVisibility() {
         if (binding.incompleteStatesTxt.visibility == View.VISIBLE) {
             binding.incompleteStatesTxt.visibility = View.GONE
-            binding.incompleteStates.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_down_grey_24dp, 0)
+            binding.incompleteStates.setCompoundDrawablesWithIntrinsicBounds(0,
+                0,
+                R.drawable.ic_keyboard_arrow_down_grey_24dp,
+                0)
         } else {
             binding.incompleteStatesTxt.visibility = View.VISIBLE
-            binding.incompleteStates.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_up_grey_24dp, 0)
+            binding.incompleteStates.setCompoundDrawablesWithIntrinsicBounds(0,
+                0,
+                R.drawable.ic_keyboard_arrow_up_grey_24dp,
+                0)
         }
     }
 
     private fun toggleCompleteStatesVisibility() {
         if (binding.completeStatesTxt.visibility == View.VISIBLE) {
             binding.completeStatesTxt.visibility = View.GONE
-            binding.completeStates.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_down_grey_24dp, 0)
+            binding.completeStates.setCompoundDrawablesWithIntrinsicBounds(0,
+                0,
+                R.drawable.ic_keyboard_arrow_down_grey_24dp,
+                0)
         } else {
             binding.completeStatesTxt.visibility = View.VISIBLE
-            binding.completeStates.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_up_grey_24dp, 0)
+            binding.completeStates.setCompoundDrawablesWithIntrinsicBounds(0,
+                0,
+                R.drawable.ic_keyboard_arrow_up_grey_24dp,
+                0)
         }
     }
 

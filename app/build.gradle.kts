@@ -112,9 +112,15 @@ dependencies {
     implementation(libs.fastadapter.commons) { artifact { type = "aar" } }
 
     // UI Component : Font Icons
-    // This Font/Icon grouping resists 'bundling' due to (AAR) type specification not being directly supported by Version Catalogs.
-    implementation(libs.iconics.core) { artifact { type = "aar" } }
-    implementation(libs.google.material.typeface) { isTransitive = false; artifact { type = "aar" } }
+    // This Font/Icon grouping resists 'bundling' due to (AAR) type
+    // specification not being directly supported by Version Catalogs.
+    implementation(libs.iconics.core) {
+        artifact { type = "aar" }
+    }
+    implementation(libs.google.material.typeface) {
+        isTransitive = false
+        artifact { type = "aar" }
+    }
     implementation(libs.android.image.cropper)
 
     // UI Component : Chips Input
@@ -126,10 +132,13 @@ dependencies {
     // ShowCaseView dependency
     implementation(libs.showcaseview)
 
+    // SplashScreen on API 31 and higher
+    implementation("androidx.core:core-splashscreen:1.0.0")
+
     // Unit Testing
     testImplementation(libs.bundles.testing)
 
-    testImplementation(platform("org.junit:junit-bom:5.8.2"))
+    testImplementation(platform("org.junit:junit-bom:5.9.1"))
     testImplementation(libs.junit.jupiter)
     testRuntimeOnly(libs.junit.jupiter.engine)
     testRuntimeOnly(libs.junit.vintage.engine)
@@ -158,10 +167,12 @@ dependencies {
 
 
     resourcePlaceholders { files = listOf("xml/shortcuts.xml") }
+
+
 }
 
 android {
-    compileSdk = 31
+    compileSdk = 33
 
     testBuildType = obtainTestBuildType()
 
@@ -175,7 +186,7 @@ android {
         applicationId = "openfoodfacts.github.scrachx.openfood"
 
         minSdk = 21
-        targetSdk = 31
+        targetSdk = 33
 
         versionCode = 582
         versionName = "3.8.1"
@@ -185,6 +196,10 @@ android {
         ndk.abiFilters += listOf("armeabi-v7a", "arm64-v8a", "x86", "x86_64")
 
         multiDexEnabled = true
+
+        buildConfigField("String", "WIKIDATA", "\"https://www.wikidata.org/wiki/Special:EntityData/\"")
+        buildConfigField("String", "MATOMO_URL", "\"https://analytics.openfoodfacts.org/matomo.php\"")
+        buildConfigField("String", "TESTING_HOST", "\"https://world.openfoodfacts.net\"")
     }
 
     signingConfigs {
@@ -222,12 +237,6 @@ android {
         debug {
             applicationIdSuffix = ".debug"
             isDebuggable = true
-
-
-            // Uncomment to use dev server
-//            buildConfigField("String", "HOST", "\"https://ssl-api.openfoodfacts.net\"")
-//            buildConfigField("String", "OFWEBSITE", "\"https://www.openfoodfacts.net/\"")
-//            buildConfigField("String", "STATICURL", "\"https://static.openfoodfacts.net\"")
         }
 
         create("screenshots") {
@@ -237,7 +246,12 @@ android {
     }
 
     productFlavors {
+
+        ///////////////////////
+        // FLAVORS
+
         create("off") {
+            dimension = "versionCode"
             applicationId = "openfoodfacts.github.scrachx.openfood"
             if ("true" == System.getenv("CI_RELEASE")) { // CI=true is exported by github action
                 applicationId = "org.openfoodfacts.scanner"
@@ -247,56 +261,60 @@ android {
             buildConfigField("String", "HOST", "\"https://ssl-api.openfoodfacts.org\"")
             buildConfigField("String", "OFOTHERLINKAPP", "\"org.openbeautyfacts.scanner\"")
             buildConfigField("String", "OFWEBSITE", "\"https://world.openfoodfacts.org/\"")
-            buildConfigField("String", "WIKIDATA", "\"https://www.wikidata.org/wiki/Special:EntityData/\"")
             buildConfigField("String", "STATICURL", "\"https://static.openfoodfacts.org\"")
-            buildConfigField("String", "MATOMO_URL", "\"https://analytics.openfoodfacts.org/matomo.php\"")
-            dimension = "versionCode"
         }
         create("obf") {
+            dimension = "versionCode"
             applicationId = "openfoodfacts.github.scrachx.openbeauty"
             if ("true" == System.getenv("CI_RELEASE")) { // CI=true is exported by github action
                 applicationId = "org.openbeautyfacts.scanner"
             }
+
             resValue("string", "app_name", "OpenBeautyFacts")
             buildConfigField("String", "APP_NAME", "\"Open Beauty Facts\"")
             buildConfigField("String", "HOST", "\"https://ssl-api.openbeautyfacts.org\"")
             buildConfigField("String", "OFOTHERLINKAPP", "\"org.openfoodfacts.scanner\"")
             buildConfigField("String", "OFWEBSITE", "\"https://world.openbeautyfacts.org/\"")
-            buildConfigField("String", "WIKIDATA", "\"https://www.wikidata.org/wiki/Special:EntityData/\"")
             buildConfigField("String", "STATICURL", "\"https://static.openbeautyfacts.org\"")
             buildConfigField("String", "MATOMO_URL", "\"https://analytics.openfoodfacts.org/matomo.php\"")
-            dimension = "versionCode"
         }
         create("opff") {
+            dimension = "versionCode"
             applicationId = "org.openpetfoodfacts.scanner"
+
             resValue("string", "app_name", "OpenPetFoodFacts")
             buildConfigField("String", "APP_NAME", "\"Open Pet Food Facts\"")
             buildConfigField("String", "HOST", "\"https://ssl-api.openpetfoodfacts.org\"")
             buildConfigField("String", "OFOTHERLINKAPP", "\"org.openfoodfacts.scanner\"")
             buildConfigField("String", "OFWEBSITE", "\"https://world.openpetfoodfacts.org/\"")
-            buildConfigField("String", "WIKIDATA", "\"https://www.wikidata.org/wiki/Special:EntityData/\"")
             buildConfigField("String", "STATICURL", "\"https://static.openpetfoodfacts.org\"")
-            buildConfigField("String", "MATOMO_URL", "\"https://analytics.openfoodfacts.org/matomo.php\"")
-            dimension = "versionCode"
         }
         create("opf") {
+            dimension = "versionCode"
             applicationId = "org.openproductsfacts.scanner"
+
             resValue("string", "app_name", "OpenProductsFacts")
             buildConfigField("String", "APP_NAME", "\"Open Products Facts\"")
             buildConfigField("String", "HOST", "\"https://ssl-api.openproductsfacts.org\"")
             buildConfigField("String", "OFOTHERLINKAPP", "\"org.openfoodfacts.scanner\"")
             buildConfigField("String", "OFWEBSITE", "\"https://world.openproductsfacts.org/\"")
-            buildConfigField("String", "WIKIDATA", "\"https://www.wikidata.org/wiki/Special:EntityData/\"")
             buildConfigField("String", "STATICURL", "\"https://static.openproductsfacts.org\"")
-            buildConfigField("String", "MATOMO_URL", "\"https://analytics.openfoodfacts.org/matomo.php\"")
-            dimension = "versionCode"
+            buildConfigField("String", "WIKIDATA", "\"https://www.wikidata.org/wiki/Special:EntityData/\"")
         }
 
+        ///////////////////////
+        // PLATFORMS
 
         create("playstore") {
             dimension = "platform"
 
             buildConfigField("boolean", "USE_MLKIT", "true")
+
+            dependencies {
+                // Google Play Core Dependencies - In-app review system
+                implementation("com.google.android.play:core:1.10.3")
+                implementation("com.google.android.play:core-ktx:1.8.1")
+            }
         }
 
         create("fdroid") {
@@ -356,6 +374,7 @@ android {
         unitTests.isReturnDefaultValues = true
         execution = "ANDROIDX_TEST_ORCHESTRATOR"
     }
+    namespace = "openfoodfacts.github.scrachx.openfood"
 }
 
 kapt {

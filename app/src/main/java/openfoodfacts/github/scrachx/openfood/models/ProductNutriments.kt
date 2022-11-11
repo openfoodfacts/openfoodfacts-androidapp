@@ -77,7 +77,7 @@ class ProductNutriments : Serializable {
         ?.let { MeasurementUnit.findBySymbol(it) } ?: DEFAULT_UNIT
 
     private fun getModifier(nutriment: Nutriment) = getAdditionalProperty(nutriment, Suffix.MODIFIER)
-        ?.let { Modifier.findBySymbol(it) } ?: DEFAULT_MODIFIER
+        ?.let { Modifier.findBySymbol(it) } ?: Modifier.DEFAULT
 
 
     private fun getAdditionalProperty(nutrient: Nutriment, suffix: String = "") =
@@ -105,7 +105,7 @@ class ProductNutriments : Serializable {
         val perServingInG: Measurement?,
 
         unit: MeasurementUnit,
-        val modifier: Modifier
+        val modifier: Modifier,
     ) {
         val unit = unit.getRealUnit()
 
@@ -157,7 +157,7 @@ fun ProductNutriments.buildLevelItem(
     val productNutriment = this[nutriment] ?: return null
 
     val per100gDisplayString = productNutriment.getPer100gDisplayString() ?: return null
-    val localizedNutrimentLevel = nutrimentLevel?.getLocalize(context) ?: return null
+    val localizedNutrimentLevel = nutrimentLevel?.getDesc(context) ?: return null
     val category = context.getString(R.string.compare_fat)
 
     return NutrientLevelItem(category, per100gDisplayString, localizedNutrimentLevel, nutrimentLevel.getImgRes())

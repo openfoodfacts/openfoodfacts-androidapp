@@ -10,11 +10,16 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
-import openfoodfacts.github.scrachx.openfood.AppFlavors
+import openfoodfacts.github.scrachx.openfood.AppFlavor.Companion.isFlavors
+import openfoodfacts.github.scrachx.openfood.AppFlavor.OFF
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.models.SearchProduct
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
-import openfoodfacts.github.scrachx.openfood.utils.*
+import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
+import openfoodfacts.github.scrachx.openfood.utils.getEcoscoreResource
+import openfoodfacts.github.scrachx.openfood.utils.getNovaGroupResource
+import openfoodfacts.github.scrachx.openfood.utils.getNutriScoreResource
+import openfoodfacts.github.scrachx.openfood.utils.getProductBrandsQuantityDetails
 
 class ProductSearchAdapter(
     val products: MutableList<SearchProduct?>,
@@ -22,13 +27,15 @@ class ProductSearchAdapter(
     private val context: Context,
     private val picasso: Picasso,
     private val productRepository: ProductRepository,
-    private val localeManager: LocaleManager
+    private val localeManager: LocaleManager,
 ) : RecyclerView.Adapter<ProductSearchAdapter.ProductsListViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductsListViewHolder {
-        val layoutResourceId = if (viewType == VIEW_ITEM) R.layout.products_list_item else R.layout.progressbar_endless_list
+        val layoutResourceId =
+            if (viewType == VIEW_ITEM) R.layout.products_list_item else R.layout.progressbar_endless_list
         val view = LayoutInflater.from(parent.context).inflate(layoutResourceId, parent, false)
-        return if (viewType == VIEW_ITEM) ProductsListViewHolder.ProductViewHolder(view) else ProductsListViewHolder.ProgressViewHolder(view)
+        return if (viewType == VIEW_ITEM) ProductsListViewHolder.ProductViewHolder(view) else ProductsListViewHolder.ProgressViewHolder(
+            view)
     }
 
     override fun getItemViewType(position: Int) = if (products[position] == null) VIEW_LOAD else VIEW_ITEM
@@ -48,20 +55,20 @@ class ProductSearchAdapter(
         // Load Image if isLowBatteryMode is false
         if (!isLowBatteryMode) {
             picasso
-                    .load(imageSmallUrl)
-                    .placeholder(R.drawable.placeholder_thumb)
-                    .error(R.drawable.error_image)
-                    .fit()
-                    .centerCrop()
-                    .into(holder.productFrontImg, object : Callback {
-                        override fun onSuccess() {
-                            holder.imageProgress.visibility = View.GONE
-                        }
+                .load(imageSmallUrl)
+                .placeholder(R.drawable.placeholder_thumb)
+                .error(R.drawable.error_image)
+                .fit()
+                .centerCrop()
+                .into(holder.productFrontImg, object : Callback {
+                    override fun onSuccess() {
+                        holder.imageProgress.visibility = View.GONE
+                    }
 
-                        override fun onError(ex: Exception) {
-                            holder.imageProgress.visibility = View.GONE
-                        }
-                    })
+                    override fun onError(ex: Exception) {
+                        holder.imageProgress.visibility = View.GONE
+                    }
+                })
         } else {
             picasso.load(R.drawable.placeholder_thumb).into(holder.productFrontImg)
             holder.imageProgress.visibility = View.INVISIBLE
@@ -78,7 +85,7 @@ class ProductSearchAdapter(
         // Set product description
         holder.productDetails.text = product.getProductBrandsQuantityDetails()
 
-        if (AppFlavors.isFlavors(AppFlavors.OFF)) {
+        if (isFlavors(OFF)) {
             // Set nutriscore icon
             val nutriRes = product.getNutriScoreResource()
             holder.productNutriscore.setImageResource(nutriRes)

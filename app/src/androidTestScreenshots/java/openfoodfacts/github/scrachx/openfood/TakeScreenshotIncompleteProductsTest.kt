@@ -20,17 +20,17 @@ class TakeScreenshotIncompleteProductsTest : AbstractScreenshotTest() {
 
     @Rule
     var incompleteRule = ScreenshotActivityTestRule(
-            ProductSearchActivity::class.java,
-            "incompleteProducts",
-            context,
-            localeManager
+        ProductSearchActivity::class.java,
+        "incompleteProducts",
+        context,
+        localeManager
     )
 
     @Test
     fun testTakeScreenshot() = startForAllLocales(createSearchIntent, listOf(incompleteRule), context)
 
     private val createSearchIntent: (ScreenshotParameter) -> List<Intent?> = {
-        listOf(Intent(context, ProductSearchActivity::class.java).apply {
+        listOf(Intent<ProductSearchActivity>(context) {
             putExtra(ProductSearchActivity.SEARCH_INFO, SearchInfo.emptySearchInfo())
         })
     }

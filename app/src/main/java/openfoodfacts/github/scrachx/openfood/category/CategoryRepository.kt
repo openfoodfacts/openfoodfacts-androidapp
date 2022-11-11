@@ -10,12 +10,12 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 /**
- * This class receives list of all categories using CategoryNetworkService
+ * This class receives list of all categories using [CategoryNetworkService]
  */
 @Singleton
 class CategoryRepository @Inject constructor(
     private val networkService: CategoryNetworkService,
-    private val mapper: CategoryMapper
+    private val mapper: CategoryMapper,
 ) {
     private val memoryCache = AtomicReference<List<Category>?>()
 
@@ -31,9 +31,4 @@ class CategoryRepository @Inject constructor(
                 .also { memoryCache.set(it) }
         }
     }
-
-    companion object {
-        val LOG_TAG = CategoryRepository::class.simpleName
-    }
-
 }

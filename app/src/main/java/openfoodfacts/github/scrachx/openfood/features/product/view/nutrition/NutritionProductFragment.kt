@@ -23,10 +23,11 @@ import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import android.text.method.LinkMovementMethod
-import android.text.style.ClickableSpan
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.*
+import android.view.View.GONE
+import android.view.View.NO_ID
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
@@ -52,9 +53,8 @@ import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import openfoodfacts.github.scrachx.openfood.AppFlavors.OBF
-import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
-import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
+import openfoodfacts.github.scrachx.openfood.AppFlavor
+import openfoodfacts.github.scrachx.openfood.AppFlavor.Companion.isFlavors
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabsHelper
@@ -71,13 +71,41 @@ import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewAc
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
 import openfoodfacts.github.scrachx.openfood.features.shared.adapters.NutrientLevelListAdapter
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
-import openfoodfacts.github.scrachx.openfood.models.*
+import openfoodfacts.github.scrachx.openfood.models.CARBO_MAP
+import openfoodfacts.github.scrachx.openfood.models.FAT_MAP
+import openfoodfacts.github.scrachx.openfood.models.MINERALS_MAP
 import openfoodfacts.github.scrachx.openfood.models.MeasurementUnit.ENERGY_KCAL
 import openfoodfacts.github.scrachx.openfood.models.MeasurementUnit.ENERGY_KJ
+import openfoodfacts.github.scrachx.openfood.models.NutrientLevelItem
+import openfoodfacts.github.scrachx.openfood.models.Nutriment
+import openfoodfacts.github.scrachx.openfood.models.NutrimentListItem
+import openfoodfacts.github.scrachx.openfood.models.PROT_MAP
+import openfoodfacts.github.scrachx.openfood.models.Product
+import openfoodfacts.github.scrachx.openfood.models.ProductImageField
+import openfoodfacts.github.scrachx.openfood.models.ProductNutriments
+import openfoodfacts.github.scrachx.openfood.models.ProductState
+import openfoodfacts.github.scrachx.openfood.models.VITAMINS_MAP
+import openfoodfacts.github.scrachx.openfood.models.bold
+import openfoodfacts.github.scrachx.openfood.models.buildLevelItem
 import openfoodfacts.github.scrachx.openfood.models.entities.SendProduct
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.StateTags
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
-import openfoodfacts.github.scrachx.openfood.utils.*
+import openfoodfacts.github.scrachx.openfood.utils.ClickableSpan
+import openfoodfacts.github.scrachx.openfood.utils.LOCALE_FILE_SCHEME
+import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
+import openfoodfacts.github.scrachx.openfood.utils.MY_PERMISSIONS_REQUEST_CAMERA
+import openfoodfacts.github.scrachx.openfood.utils.Measurement
+import openfoodfacts.github.scrachx.openfood.utils.PhotoReceiverHandler
+import openfoodfacts.github.scrachx.openfood.utils.getNutriScoreResource
+import openfoodfacts.github.scrachx.openfood.utils.getRoundNumber
+import openfoodfacts.github.scrachx.openfood.utils.getServingInL
+import openfoodfacts.github.scrachx.openfood.utils.getServingInOz
+import openfoodfacts.github.scrachx.openfood.utils.hideKeyboard
+import openfoodfacts.github.scrachx.openfood.utils.isPowerSaveMode
+import openfoodfacts.github.scrachx.openfood.utils.isImageLoadingDisabled
+import openfoodfacts.github.scrachx.openfood.utils.isPerServingInLiter
+import openfoodfacts.github.scrachx.openfood.utils.isUserSet
+import openfoodfacts.github.scrachx.openfood.utils.requireProductState
 import pl.aprilapps.easyphotopicker.EasyImage
 import java.io.File
 import javax.inject.Inject
@@ -115,7 +143,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
      * Boolean to determine if image should be loaded or not
      */
     private val isLowBatteryMode by lazy {
-        requireContext().isDisableImageLoad() && requireContext().isBatteryLevelLow()
+        requireContext().isImageLoadingDisabled() && requireContext().isPowerSaveMode()
     }
 
     private var nutrientsImageUrl: String? = null
@@ -199,20 +227,18 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
         binding.textNutriScoreInfo.isClickable = true
         binding.textNutriScoreInfo.movementMethod = LinkMovementMethod.getInstance()
 
-        val clickableSpan = object : ClickableSpan() {
-            override fun onClick(view: View) {
-                val customTabsIntent = CustomTabsIntent.Builder().build()
-                customTabsIntent.intent.putExtra(
-                    "android.intent.extra.REFERRER",
-                    "android-app://${requireActivity().packageName}".toUri()
-                )
-                CustomTabActivityHelper.openCustomTab(
-                    requireActivity(),
-                    customTabsIntent,
-                    getString(R.string.url_nutrient_values).toUri(),
-                    WebViewFallback()
-                )
-            }
+        val clickableSpan = ClickableSpan {
+            val customTabsIntent = CustomTabsIntent.Builder().build()
+            customTabsIntent.intent.putExtra(
+                "android.intent.extra.REFERRER",
+                "android-app://${requireActivity().packageName}".toUri()
+            )
+            CustomTabActivityHelper.openCustomTab(
+                requireActivity(),
+                customTabsIntent,
+                getString(R.string.url_nutrient_values).toUri(),
+                WebViewFallback()
+            )
         }
 
         binding.textNutriScoreInfo.text = buildSpannedString {
@@ -432,7 +458,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
      */
     private fun checkPrompts() {
         // Category
-        if (StateTags.CATEGORIES_TO_BE_COMPLETED in product.statesTags) {
+        if (StateTags.CATEGORIES_TO_BE_COMPLETED.tag in product.statesTags) {
             showCategoryPrompt = true
         }
 
@@ -440,7 +466,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
         if (product.isNoNutrition()) {
             showNutritionPrompt = false
             showNutritionData = false
-        } else if (StateTags.NUTRITION_FACTS_TO_BE_COMPLETED in product.statesTags) {
+        } else if (StateTags.NUTRITION_FACTS_TO_BE_COMPLETED.tag in product.statesTags) {
             showNutritionPrompt = true
         }
     }
@@ -458,7 +484,10 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
         }
     }
 
-    private fun getNutrimentItems(productNutriments: ProductNutriments, nutrimentMap: Map<Nutriment, Int>): List<NutrimentListItem> {
+    private fun getNutrimentItems(
+        productNutriments: ProductNutriments,
+        nutrimentMap: Map<Nutriment, Int>,
+    ): List<NutrimentListItem> {
         return nutrimentMap.mapNotNull { (nutriment, stringRes) ->
             val productNutriment = productNutriments[nutriment] ?: return@mapNotNull null
             NutrimentListItem(getString(stringRes), productNutriment)
@@ -467,8 +496,12 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
 
     private fun openNutriScoreLink() {
         if (product.nutritionGradeFr == null) return
-        val customTabsIntent = CustomTabsHelper.getCustomTabsIntent(requireActivity(), customTabActivityHelper!!.session)
-        CustomTabActivityHelper.openCustomTab(requireActivity(), customTabsIntent, nutritionScoreUri!!, WebViewFallback())
+        val customTabsIntent =
+            CustomTabsHelper.getCustomTabsIntent(requireActivity(), customTabActivityHelper!!.session)
+        CustomTabActivityHelper.openCustomTab(requireActivity(),
+            customTabsIntent,
+            nutritionScoreUri!!,
+            WebViewFallback())
     }
 
     private fun openFullScreen() {
@@ -517,7 +550,11 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
                             ?.toString()
                             ?.toFloatOrNull()
                         if (weight == null) {
-                            Snackbar.make(binding.root, resources.getString(R.string.please_enter_weight), LENGTH_SHORT).show()
+                            Snackbar.make(
+                                binding.root,
+                                resources.getString(R.string.please_enter_weight),
+                                LENGTH_SHORT
+                            ).show()
                         } else {
                             CalculateDetailsActivity.start(
                                 requireActivity(),
@@ -581,7 +618,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
     { logged -> if (logged) startEditProduct() }
 
     private fun onNutriScoreButtonClick() {
-        if (!isFlavors(OFF, OBF)) return
+        if (!isFlavors(AppFlavor.OFF, AppFlavor.OBF)) return
 
         if (requireActivity().isUserSet()) startEditProduct()
         else loginThenEditLauncher.launch(null)

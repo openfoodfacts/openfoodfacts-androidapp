@@ -21,26 +21,36 @@ import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import org.jetbrains.annotations.Contract
 
 /**
- * This class lists all fields, field prefixes and suffixes and default values used by the api.
- * We discourage the use of string literals through the code and we recommend creating a field here so that it can be updated on API change.
+ * This class lists all fields, field prefixes and suffixes and default values
+ * used by the api.
+ *
+ * We discourage the use of string literals through the code and we recommend
+ * creating a field here so that it can be updated on API change.
  */
 object ApiFields {
-    object StateTags {
-        const val CATEGORIES_TO_BE_COMPLETED = "en:categories-to-be-completed"
-        const val NUTRITION_FACTS_TO_BE_COMPLETED = "en:nutrition-facts-to-be-completed"
-        const val LABELS_TO_BE_COMPLETED = "en:labels-to-be-completed"
-        const val ORIGINS_TO_BE_COMPLETED = "en:origins-to-be-completed"
 
-        const val INGREDIENTS_COMPLETED = "en:ingredients-completed"
+    object UserAgents {
+        const val SEARCH = "Search"
+        const val SCAN = "Scan"
+    }
 
-        val INCOMPLETE_TAGS = listOf(
-            "to-be-completed",
-            "to-be-uploaded",
-            "to-be-checked",
-            "to-be-validated",
-            "to-be-selected",
-            "not-selected"
-        )
+    enum class StateTags(val tag: String) {
+        CATEGORIES_TO_BE_COMPLETED("en:categories-to-be-completed"),
+        NUTRITION_FACTS_TO_BE_COMPLETED("en:nutrition-facts-to-be-completed"),
+        LABELS_TO_BE_COMPLETED("en:labels-to-be-completed"),
+        ORIGINS_TO_BE_COMPLETED("en:origins-to-be-completed"),
+        INGREDIENTS_COMPLETED("en:ingredients-completed");
+
+        companion object {
+            val INCOMPLETE_TAGS = listOf(
+                "to-be-completed",
+                "to-be-uploaded",
+                "to-be-checked",
+                "to-be-validated",
+                "to-be-selected",
+                "not-selected"
+            )
+        }
     }
 
     object Prefix {

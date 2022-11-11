@@ -648,7 +648,6 @@
     <string name="report_img">Nahlásiť obrázok</string>
     <string name="detected_ingredients">Zistené zložky</string>
     <string name="txtConnectionError">We could not download certain data. This may be due to a connection error.</string>
-    <string name="set_image_name">Obrázok bol úspešne nastavený ako</string>
     <string name="addtive_search">Vyhľadať prísadu</string>
     <string name="additives">Additives</string>
     <!--used for product_lists implementation-->

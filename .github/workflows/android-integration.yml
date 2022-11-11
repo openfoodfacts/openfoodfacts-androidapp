@@ -7,32 +7,10 @@ on:
     branches: [ develop ]
 
 env:
-  JAVA_VERSION: "11"
+  JAVA_VERSION: "17"
   JAVA_DISTR: 'adopt'
 
 jobs:
-
-  compile_screenshots:
-    name: "⚙️ Compile Screenshot Tests"
-    runs-on: ubuntu-20.04
-
-    steps:
-      - name: Checkout sources
-        uses: actions/checkout@v3
-
-      - name: Set up JDK
-        uses: actions/setup-java@v3
-        with:
-          distribution: ${{ env.JAVA_DISTR }}
-          java-version: ${{ env.JAVA_VERSION }}
-
-      - name: Compile screenshots android tests
-        uses: gradle/gradle-build-action@v2.2.2
-        with:
-          arguments: >
-            compileOffPlaystoreScreenshotsAndroidTestSources 
-            -PtestBuildType=screenshots
-
 
   static_analysis:
     name: "🔍 Static analysis (Detekt)"
@@ -49,7 +27,7 @@ jobs:
           java-version: ${{ env.JAVA_VERSION }}
 
       - name: Run detekt
-        uses: gradle/gradle-build-action@v2.2.2
+        uses: gradle/gradle-build-action@v2.3.3
         with:
           arguments: detekt
 
@@ -76,7 +54,7 @@ jobs:
           java-version: ${{ env.JAVA_VERSION }}
 
       - name: Run unit tests
-        uses: gradle/gradle-build-action@v2.2.2
+        uses: gradle/gradle-build-action@v2.3.3
         with:
           arguments: >
             testObfPlaystoreDebugUnitTest
@@ -103,7 +81,7 @@ jobs:
         run: 'echo "ndk.dir=${ANDROID_HOME}/ndk-bundle" > local.properties'
 
       - name: Assemble debug APKs
-        uses: gradle/gradle-build-action@v2.2.2
+        uses: gradle/gradle-build-action@v2.3.3
         with:
           arguments: assembleDebug
 
@@ -160,7 +138,7 @@ jobs:
         run: "echo \"org.gradle.jvmargs=-Xmx4096m\" >> gradle.properties"
 
       - name: Lint sources
-        uses: gradle/gradle-build-action@v2.2.2
+        uses: gradle/gradle-build-action@v2.3.3
         with:
           arguments: lint --stacktrace
 
@@ -190,12 +168,12 @@ jobs:
           java-version: ${{ env.JAVA_VERSION }}
 
       - name: Generate documentation
-        uses: gradle/gradle-build-action@v2.2.2
+        uses: gradle/gradle-build-action@v2.3.3
         with:
           arguments: dokkaHtml
 
       - name: Deploy documentation to Github Pages
-        uses: JamesIves/github-pages-deploy-action@v4.4.0
+        uses: JamesIves/github-pages-deploy-action@v4.4.1
         with:
           branch: gh-pages
           folder: app/build/dokka/html/

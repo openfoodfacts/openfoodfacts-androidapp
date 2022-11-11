@@ -4,7 +4,9 @@ import android.graphics.Typeface
 import android.text.Spanned
 import android.text.SpannedString
 import android.text.method.LinkMovementMethod
-import android.text.style.*
+import android.text.style.DynamicDrawableSpan
+import android.text.style.ImageSpan
+import android.text.style.StyleSpan
 import android.view.View
 import android.widget.TextView
 import androidx.core.content.ContextCompat
@@ -19,6 +21,7 @@ import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivi
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
 import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoryName
 import openfoodfacts.github.scrachx.openfood.repositories.WikidataRepository
+import openfoodfacts.github.scrachx.openfood.utils.ClickableSpan
 import openfoodfacts.github.scrachx.openfood.utils.SearchType
 import openfoodfacts.github.scrachx.openfood.utils.showBottomSheet
 
@@ -57,33 +60,31 @@ object CategoryProductHelper {
     private fun getCategoriesTag(
         category: CategoryName,
         fragment: BaseFragment,
-        apiClient: WikidataRepository
+        apiClient: WikidataRepository,
     ): SpannedString {
-        val clickableSpan = object : ClickableSpan() {
-            override fun onClick(view: View) {
-                if (category.isWikiDataIdPresent == true) {
-                    fragment.lifecycleScope.launch {
-                        val result = category.wikiDataId?.let { apiClient.getEntityData(it) }
-                        if (result != null) {
-                            val activity = fragment.activity
-                            if (activity != null && !activity.isFinishing) {
-                                showBottomSheet(result, category, activity.supportFragmentManager)
-                            }
-                        } else ProductSearchActivity.start(
-                            fragment.requireContext(),
-                            SearchType.CATEGORY,
-                            category.categoryTag!!,
-                            category.name!!
-                        )
-                    }
-                } else {
-                    ProductSearchActivity.start(
+        val clickableSpan = ClickableSpan {
+            if (category.isWikiDataIdPresent == true) {
+                fragment.lifecycleScope.launch {
+                    val result = category.wikiDataId?.let { apiClient.getEntityData(it) }
+                    if (result != null) {
+                        val activity = fragment.activity
+                        if (activity != null && !activity.isFinishing) {
+                            showBottomSheet(result, category, activity.supportFragmentManager)
+                        }
+                    } else ProductSearchActivity.start(
                         fragment.requireContext(),
                         SearchType.CATEGORY,
                         category.categoryTag!!,
                         category.name!!
                     )
                 }
+            } else {
+                ProductSearchActivity.start(
+                    fragment.requireContext(),
+                    SearchType.CATEGORY,
+                    category.categoryTag!!,
+                    category.name!!
+                )
             }
         }
 

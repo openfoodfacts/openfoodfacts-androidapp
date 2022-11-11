@@ -642,7 +642,6 @@
     <string name="report_img">Ilmoita kuvasta</string>
     <string name="detected_ingredients">Havaitut ainesosat</string>
     <string name="txtConnectionError">Tiettyjä tietoja ei voitu ladata. Tämä voi johtua yhteysvirheestä.</string>
-    <string name="set_image_name">Kuva asetettu rooliin</string>
     <string name="pref_fast_addition_title">Pikalisäystila</string>
     <string name="pref_fast_addition_summary">Mahdollistaa tuotteiden nopean lisäämisen vähemmillä määritteillä</string>
     <string name="pref_crop_new_images_title">Rajaa uusia kuvia</string>

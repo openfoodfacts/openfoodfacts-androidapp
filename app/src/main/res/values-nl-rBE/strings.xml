@@ -636,7 +636,6 @@
     <string name="report_img">Rapporteer afbeelding</string>
     <string name="detected_ingredients">Gedetecteerde ingrediënten</string>
     <string name="txtConnectionError">We konden bepaalde gegevens niet downloaden. Dit kan te wijten zijn aan een verbindingsfout.</string>
-    <string name="set_image_name">Afbeelding succesvol ingesteld als</string>
     <string name="addtive_search">Zoek een additief</string>
     <string name="additives">Additieven</string>
     <!--used for product_lists implementation-->

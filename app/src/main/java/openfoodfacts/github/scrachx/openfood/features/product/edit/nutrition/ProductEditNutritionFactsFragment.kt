@@ -25,8 +25,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
-import android.widget.*
+import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
+import android.widget.ArrayAdapter
+import android.widget.EditText
+import android.widget.Spinner
+import android.widget.TableRow
+import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.core.net.toFile
 import androidx.core.view.isVisible
@@ -51,15 +56,51 @@ import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditAc
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditFragment
 import openfoodfacts.github.scrachx.openfood.features.shared.views.CustomValidatingEditTextView
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
-import openfoodfacts.github.scrachx.openfood.models.*
-import openfoodfacts.github.scrachx.openfood.models.MeasurementUnit.*
-import openfoodfacts.github.scrachx.openfood.models.Nutriment.*
+import openfoodfacts.github.scrachx.openfood.models.MeasurementUnit
+import openfoodfacts.github.scrachx.openfood.models.MeasurementUnit.UNIT_DV
+import openfoodfacts.github.scrachx.openfood.models.MeasurementUnit.UNIT_GRAM
+import openfoodfacts.github.scrachx.openfood.models.MeasurementUnit.UNIT_IU
+import openfoodfacts.github.scrachx.openfood.models.MeasurementUnit.UNIT_LITER
+import openfoodfacts.github.scrachx.openfood.models.MeasurementUnit.UNIT_MICROGRAM
+import openfoodfacts.github.scrachx.openfood.models.MeasurementUnit.UNIT_MILLIGRAM
+import openfoodfacts.github.scrachx.openfood.models.MeasurementUnit.UNIT_MILLILITRE
+import openfoodfacts.github.scrachx.openfood.models.Modifier
+import openfoodfacts.github.scrachx.openfood.models.Nutriment
+import openfoodfacts.github.scrachx.openfood.models.Nutriment.PH
+import openfoodfacts.github.scrachx.openfood.models.Nutriment.STARCH
+import openfoodfacts.github.scrachx.openfood.models.Nutriment.VITAMIN_A
+import openfoodfacts.github.scrachx.openfood.models.Nutriment.VITAMIN_D
+import openfoodfacts.github.scrachx.openfood.models.Nutriment.VITAMIN_E
+import openfoodfacts.github.scrachx.openfood.models.Product
+import openfoodfacts.github.scrachx.openfood.models.ProductImageField
+import openfoodfacts.github.scrachx.openfood.models.ProductNutriments
 import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.Defaults.NUTRITION_DATA_PER_100G
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.Defaults.NUTRITION_DATA_PER_SERVING
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
-import openfoodfacts.github.scrachx.openfood.utils.*
+import openfoodfacts.github.scrachx.openfood.utils.FileDownloader
+import openfoodfacts.github.scrachx.openfood.utils.LOCALE_FILE_SCHEME
+import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
+import openfoodfacts.github.scrachx.openfood.utils.Measurement
+import openfoodfacts.github.scrachx.openfood.utils.PhotoReceiverHandler
+import openfoodfacts.github.scrachx.openfood.utils.ValueState
+import openfoodfacts.github.scrachx.openfood.utils.getContent
+import openfoodfacts.github.scrachx.openfood.utils.getFloatValue
+import openfoodfacts.github.scrachx.openfood.utils.getFloatValueOr
+import openfoodfacts.github.scrachx.openfood.utils.getRoundNumber
+import openfoodfacts.github.scrachx.openfood.utils.getViewsByType
+import openfoodfacts.github.scrachx.openfood.utils.grams
+import openfoodfacts.github.scrachx.openfood.utils.hasUnit
+import openfoodfacts.github.scrachx.openfood.utils.isBlank
+import openfoodfacts.github.scrachx.openfood.utils.isNotEmpty
+import openfoodfacts.github.scrachx.openfood.utils.isValueDifferent
+import openfoodfacts.github.scrachx.openfood.utils.measure
+import openfoodfacts.github.scrachx.openfood.utils.modifier
+import openfoodfacts.github.scrachx.openfood.utils.parseServing
+import openfoodfacts.github.scrachx.openfood.utils.saltToSodium
+import openfoodfacts.github.scrachx.openfood.utils.sodiumToSalt
+import openfoodfacts.github.scrachx.openfood.utils.toPx
 import java.io.File
 import java.text.Collator
 import java.util.*
@@ -175,7 +216,11 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         }
         binding.alcohol.imeOptions = EditorInfo.IME_ACTION_DONE
         binding.energyKcal.requestFocus()
-        allEditViews = (view as ViewGroup).getViewsByType(CustomValidatingEditTextView::class.java).toHashSet()
+        allEditViews = (view as ViewGroup)
+            .getViewsByType<CustomValidatingEditTextView>()
+            .filterNotNull()
+            .toHashSet()
+
         allEditViews.forEach {
             it.addValidListener()
             it.checkValue()
@@ -238,23 +283,28 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         binding.energyKcal.setText(nutriments.getEnergyKcalValue(isDataPerServing)?.let(::getRoundNumber))
 
         // Fill default nutriments fields
-        for (editView in (view as ViewGroup).getViewsByType(CustomValidatingEditTextView::class.java)) {
-            var nutrimentShortName = editView.entryName
+        (view as ViewGroup).getViewsByType<CustomValidatingEditTextView>()
+            .filterNotNull()
+            .forEach { editView ->
+                var nutrimentShortName = editView.entryName
 
-            // Workaround for saturated-fat
-            if (nutrimentShortName == "saturated_fat") nutrimentShortName = "saturated-fat"
+                // Workaround for saturated-fat
+                if (nutrimentShortName == "saturated_fat") nutrimentShortName = "saturated-fat"
 
-            // Skip serving size and energy view, we already filled them
-            if (editView === binding.servingSize || editView === binding.energyKcal || editView === binding.energyKj) continue
+                // Skip serving size and energy view, we already filled them
+                if (editView === binding.servingSize || editView === binding.energyKcal || editView === binding.energyKj) return@forEach
 
-            // Get the value
-            val nutriment = Nutriment.findbyKey(nutrimentShortName) ?: error("Cannot find nutrient $nutrimentShortName")
-            val value = (if (isDataPer100g) nutriments[nutriment]?.per100gInUnit else nutriments[nutriment]?.perServingInUnit) ?: continue
+                // Get the value
+                val nutriment =
+                    Nutriment.findbyKey(nutrimentShortName) ?: error("Cannot find nutrient $nutrimentShortName")
+                val value =
+                    (if (isDataPer100g) nutriments[nutriment]?.per100gInUnit else nutriments[nutriment]?.perServingInUnit)
+                        ?: return@forEach
 
-            editView.setText(getRoundNumber(value))
-            editView.unitSpinner?.setSelection(getUnitIndexUnitFromShortName(nutriments, nutriment) ?: 0)
-            editView.modSpinner?.setSelection(getModifierIndexFromShortName(nutriments, nutriment))
-        }
+                editView.setText(getRoundNumber(value))
+                editView.unitSpinner?.setSelection(getUnitIndexUnitFromShortName(nutriments, nutriment) ?: 0)
+                editView.modSpinner?.setSelection(getModifierIndexFromShortName(nutriments, nutriment))
+            }
 
         // Set the values of all the other nutrients if defined and create new row in the tableLayout.
         for ((i, nutrient) in PARAMS_OTHER_NUTRIENTS.withIndex()) {
@@ -283,7 +333,8 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
      */
     fun loadNutritionImage() {
         photoFile = null
-        val newImageNutritionUrl = product?.getImageNutritionUrl(requireAddProductActivity().getProductLanguageForEdition())
+        val newImageNutritionUrl =
+            product?.getImageNutritionUrl(requireAddProductActivity().getProductLanguageForEdition())
         if (newImageNutritionUrl.isNullOrEmpty()) return
 
         binding.imageProgress.visibility = View.VISIBLE
@@ -335,7 +386,9 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
             loadNutritionImage(path)
         }
 
-        if (productDetails[ApiFields.Keys.NO_NUTRITION_DATA]?.trim()?.lowercase() == ApiFields.Defaults.NO_NUTRITION_DATA_ON) {
+        if (productDetails[ApiFields.Keys.NO_NUTRITION_DATA]?.trim()
+                ?.lowercase() == ApiFields.Defaults.NO_NUTRITION_DATA_ON
+        ) {
             binding.checkboxNoNutritionData.isChecked = true
             binding.nutritionFactsLayout.visibility = View.GONE
         }
@@ -346,19 +399,22 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         // Splits the serving size into value and unit. Example: "15g" into "15" and "g"
         productDetails[ApiFields.Keys.SERVING_SIZE]?.let(::updateServingSize)
 
-        for (view in (binding.root as ViewGroup).getViewsByType(CustomValidatingEditTextView::class.java)) {
-            val nutrientShortName = view.entryName
-            if (nutrientShortName == binding.servingSize.entryName) continue
+        (binding.root as ViewGroup).getViewsByType<CustomValidatingEditTextView>()
+            .filterNotNull()
+            .forEach { view ->
+                val nutrientShortName = view.entryName
+                if (nutrientShortName == binding.servingSize.entryName) return@forEach
 
-            val nutrientCompleteName = getCompleteEntryName(view)
+                val nutrientCompleteName = getCompleteEntryName(view)
 
-            productDetails[nutrientCompleteName]?.let { value ->
-                view.setText(value)
+                productDetails[nutrientCompleteName]?.let { value ->
+                    view.setText(value)
 
-                val unit = productDetails[nutrientCompleteName + ApiFields.Suffix.UNIT] ?: return@let
-                view.unitSpinner?.setSelection(getUnitIndex(Nutriment.findbyKey(nutrientShortName)!!, MeasurementUnit.findBySymbol(unit)!!))
+                    val unit = productDetails[nutrientCompleteName + ApiFields.Suffix.UNIT] ?: return@let
+                    view.unitSpinner?.setSelection(getUnitIndex(Nutriment.findbyKey(nutrientShortName)!!,
+                        MeasurementUnit.findBySymbol(unit)!!))
+                }
             }
-        }
         // Set the values of all the other nutrients if defined and create new row in the tableLayout.
         for ((i, completeNutrientName) in PARAMS_OTHER_NUTRIENTS.withIndex()) {
             if (productDetails[completeNutrientName] == null) continue
@@ -433,7 +489,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         NUTRIENTS_UNITS.indexOfFirst { it == unit }.coerceAtLeast(0)
 
     private fun getModifierIndex(modifier: Modifier?) =
-        MODIFIERS.indexOf(modifier).coerceAtLeast(0)
+        Modifier.values().indexOf(modifier).coerceAtLeast(0)
 
     private fun getServingUnitIndex(unit: MeasurementUnit) =
         SERVING_UNITS.indexOfFirst { it == unit }.coerceAtLeast(0)
@@ -478,7 +534,10 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         checkServingSize()
     ).firstOrNull { it != ValueState.NOT_TESTED } ?: this.checkAsGram(value)
 
-    private fun CustomValidatingEditTextView.requireToValidate(condition: Boolean, @StringRes errorMsg: Int): ValueState {
+    private fun CustomValidatingEditTextView.requireToValidate(
+        condition: Boolean,
+        @StringRes errorMsg: Int,
+    ): ValueState {
         return if (condition) ValueState.VALID
         else {
             showError(context.getString(errorMsg))
@@ -695,7 +754,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         var mod = ""
         if (editTextView.modSpinner != null) {
             val selectedMod = Modifier.findBySymbol(editTextView.modSpinner!!.selectedItem.toString())
-            if (selectedMod != null && DEFAULT_MODIFIER != selectedMod) {
+            if (selectedMod != null && Modifier.DEFAULT != selectedMod) {
                 mod = selectedMod.sym
             }
         }
@@ -731,7 +790,8 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         }
 
     private fun displayAddNutrientDialog() {
-        val nutrientsDefUnits = resources.getStringArray(R.array.nutrients_array).zip(PARAMS_OTHER_NUTRIENTS_DEFAULT_UNITS.keys)
+        val nutrientsDefUnits =
+            resources.getStringArray(R.array.nutrients_array).zip(PARAMS_OTHER_NUTRIENTS_DEFAULT_UNITS.keys)
         val filteredNutrients = resources.getStringArray(R.array.nutrients_array)
             .filterIndexed { index, _ -> index !in usedNutrientsIndexes }
             .sortedWith(Collator.getInstance(Locale.getDefault()))
@@ -834,7 +894,8 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
                 modSpinner.setSelection(modSelectedIndex)
             }
         } catch (err: Exception) {
-            sentryAnalytics.record(IllegalStateException("Can't find weight units for nutriment: $nutrientShortName", err))
+            sentryAnalytics.record(IllegalStateException("Can't find weight units for nutriment: $nutrientShortName",
+                err))
             closeScreenWithAlert()
         }
 
@@ -872,7 +933,8 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         val sugarInG = convertToGrams(sugarValue, binding.sugars.unitSpinner!!.selectedItemPosition)!!
         val newStarchInG = convertToGrams(getStarchValue(), getStarchUnitSelectedIndex())!!
 
-        return requireToValidate(sugarInG.value + newStarchInG.value <= carbsInG.value, R.string.error_in_carbohydrate_value)
+        return requireToValidate(sugarInG.value + newStarchInG.value <= carbsInG.value,
+            R.string.error_in_carbohydrate_value)
     }
 
     /**
@@ -895,7 +957,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
 
         val maxPhValue = 14f
         // Coerce the value
-        if (value > maxPhValue || value == maxPhValue && this.isModifierEqualsToGreaterThan()) {
+        if (value > maxPhValue || value == maxPhValue && this.modSpinner!!.modifier == Modifier.GREATER_THAN) {
             setText(maxPhValue.toString())
             modSpinner?.setSelection(0)
         }
@@ -955,9 +1017,10 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
             val resultUri = it.toURI()
             imagePath = resultUri.path
             photoFile = it
-            val image = ProductImage(productCode!!, ProductImageField.NUTRITION, it, localeManager.getLanguage()).apply {
-                filePath = resultUri.path
-            }
+            val image =
+                ProductImage(productCode!!, ProductImageField.NUTRITION, it, localeManager.getLanguage()).apply {
+                    filePath = resultUri.path
+                }
             (activity as? ProductEditActivity)?.savePhoto(image, 2)
             hideImageProgress(false, "")
         }
@@ -972,13 +1035,14 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         binding.btnEditImageNutritionFacts.visibility = View.VISIBLE
         if (!errorInUploading) {
             picasso.load(photoFile!!)
-                .resize(requireContext().dpsToPixel(50), requireContext().dpsToPixel(50))
+                .resize(50.toPx(requireContext()), 50.toPx(requireContext()))
                 .centerInside()
                 .into(binding.btnAddImageNutritionFacts)
         }
     }
 
-    internal inner class ValidTextWatcher(private val editTextView: CustomValidatingEditTextView) : TextWatcher, OnItemSelectedListener {
+    internal inner class ValidTextWatcher(private val editTextView: CustomValidatingEditTextView) : TextWatcher,
+        OnItemSelectedListener {
         override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) = Unit // Nothing to do
 
         override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) = Unit // Nothing to do

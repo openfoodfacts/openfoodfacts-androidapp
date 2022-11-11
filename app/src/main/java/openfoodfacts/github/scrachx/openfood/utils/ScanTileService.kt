@@ -22,10 +22,11 @@ class ScanTileService : TileService() {
 
     override fun onClick() {
         super.onClick()
-        val intent = Intent(this, MainActivity::class.java)
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-        intent.action = "SCAN"
+        val intent = Intent<MainActivity>(this) {
+            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            action = "SCAN"
+        }
         startActivityAndCollapse(intent)
     }
 }

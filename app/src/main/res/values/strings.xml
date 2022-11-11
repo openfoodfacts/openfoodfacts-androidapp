@@ -300,7 +300,8 @@
     <string name="error_invalid_password">The password needs to be at least 6 characters long.</string>
     <string name="user">user</string>
     <string name="error_field_required">This field is required.</string>
-
+    <string name="user_login_url" translatable="false">%s\cgi/user.pl</string>
+    <string name="reset_password_url" translatable="false">%s\cgi/reset_password.pl</string>
 
     <!-- Strings related to feedback dialog -->
     <string name="user_enjoying_app">Are you enjoying your experience with Open Food Facts?</string>
@@ -568,6 +569,7 @@
 
     <!-- strings related to share images -->
     <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
+    <string name="type_the_barcode_here_label">Type the barcode here</string>
     <string name="no_barcode">We have not detected any barcode</string>
     <string name="enter_barcode">Please type the barcode below</string>
     <string name="format_error">Wrong Barcode/QR format</string>
@@ -632,6 +634,9 @@
     <string name="scan_QR_code">Scan QR Code for product website</string>
     <string name="add_at_least_one_picture">Please add at least one picture of this product before proceeding</string>
     <string name="image_uploaded_successfully">Image uploaded successfully</string>
+    <string name="additional_image_uploaded_successfully">Additional image uploaded successfully</string>
+    <string name="front_image_uploaded_successfully">Front image uploaded successfully</string>
+    <string name="ingredients_image_uploaded_successfully">Ingredients image uploaded successfully</string>
     <string name="error_adding_product_photos">Something went wrong while trying to add product photos</string>
     <string name="save_product">Do you want to save the product?</string>
     <string name="error_adding_product">Something went wrong when adding the product</string>
@@ -741,7 +746,7 @@
     <string name="report_img">Report Image</string>
     <string name="detected_ingredients">Detected Ingredients</string>
     <string name="txtConnectionError">We could not download certain data. This may be due to a connection error.</string>
-    <string name="set_image_name">Successfully set the image as</string>
+    <string name="set_image_name">Successfully set the image as %s</string>
 
 
     <string name="addtive_search">Search for a additive</string>
@@ -873,6 +878,11 @@
     <string name="sign_in_or_register">Sign in or register</string>
     <string name="hunger_game_call_to_action" comment="Do not change the placeholder">Help classify more %1$s</string>
     <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s food products (plus the ones you will contribute).</string>
+
+    <!--    Image editing labels-->
+    <string name="label_crop">Crop</string>
+    <string name="label_photo_from_others">Photo from others</string>
+    <string name="label_unselect">Unselect</string>
 
     <!-- Application theme settings -->
     <string name="follow_system">Follow system</string>

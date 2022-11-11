@@ -642,7 +642,6 @@
     <string name="report_img">Report Image</string>
     <string name="detected_ingredients">Detected Ingredients</string>
     <string name="txtConnectionError">We could not download certain data. This may be due to a connection error.</string>
-    <string name="set_image_name">Successfully set the image as</string>
     <string name="pref_fast_addition_title">Fast Addition Mode</string>
     <string name="pref_fast_addition_summary">Enables fast addition of products with fewer attributes</string>
     <string name="pref_crop_new_images_title">Crop new images</string>

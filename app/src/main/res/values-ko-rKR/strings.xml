@@ -630,7 +630,6 @@
     <string name="report_img">이미지 보내기</string>
     <string name="detected_ingredients">검출된 성분</string>
     <string name="txtConnectionError">특정 데이터를 다운로드할 수 없습니다. 연결 오류 때문일 수 있습니다.</string>
-    <string name="set_image_name">이미지를 성공적으로 설정</string>
     <string name="addtive_search">첨가물 검색</string>
     <string name="additives">식품 첨가물</string>
     <!--used for product_lists implementation-->

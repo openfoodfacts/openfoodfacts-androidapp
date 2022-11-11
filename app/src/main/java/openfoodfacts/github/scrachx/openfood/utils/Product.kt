@@ -1,33 +1,26 @@
 package openfoodfacts.github.scrachx.openfood.utils
 
-import android.content.Context
-import android.graphics.drawable.Drawable
 import androidx.annotation.DrawableRes
-import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat
 import openfoodfacts.github.scrachx.openfood.R
-import openfoodfacts.github.scrachx.openfood.models.*
-import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct
-import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
+import openfoodfacts.github.scrachx.openfood.models.HistoryProduct
+import openfoodfacts.github.scrachx.openfood.models.MeasurementUnit
+import openfoodfacts.github.scrachx.openfood.models.Product
+import openfoodfacts.github.scrachx.openfood.models.SearchProduct
 import openfoodfacts.github.scrachx.openfood.utils.Utils.NO_DRAWABLE_RESOURCE
 import java.util.*
-
-suspend fun OfflineSavedProduct.toState(client: ProductRepository): ProductState = client.getProductStateFull(barcode)
-
-suspend fun OfflineSavedProduct.toOnlineProduct(client: ProductRepository) = toState(client).product
 
 fun Product.isPerServingInLiter() = servingSize?.contains(MeasurementUnit.UNIT_LITER.sym, true)
 
 fun SearchProduct.getProductBrandsQuantityDetails() = StringBuilder().apply {
     brands?.takeIf { it.isNotEmpty() }?.let { brandStr ->
-        append(brandStr.split(",").first().trim { it <= ' ' }.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.ROOT) else it.toString() })
+        append(brandStr.split(",").first().trim { it <= ' ' }
+            .replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.ROOT) else it.toString() })
     }
     if (!quantity.isNullOrEmpty()) {
         append(" - ")
         append(quantity)
     }
 }.toString()
-
-suspend fun SearchProduct.toProduct(client: ProductRepository): Product? = client.getProductStateFull(this.code).product
 
 @DrawableRes
 private fun getResourceFromEcoscore(ecoscore: String?) = when (ecoscore?.lowercase(Locale.ROOT)) {
@@ -60,16 +53,12 @@ private fun getResourceFromNutriScore(
 }
 
 @DrawableRes
-fun SearchProduct?.getNutriScoreResource(vertical: Boolean = false) = getResourceFromNutriScore(this?.nutritionGradeFr, vertical)
+fun SearchProduct?.getNutriScoreResource(vertical: Boolean = false) =
+    getResourceFromNutriScore(this?.nutritionGradeFr, vertical)
 
 @DrawableRes
-fun HistoryProduct.getNutriScoreResource(vertical: Boolean = false) = getResourceFromNutriScore(nutritionGrade, vertical)
-
-fun Product?.getImageGradeDrawable(context: Context, vertical: Boolean = false): Drawable? {
-    val gradeID = this.getNutriScoreResource(vertical)
-    return if (gradeID == NO_DRAWABLE_RESOURCE) null
-    else VectorDrawableCompat.create(context.resources, gradeID, context.theme)
-}
+fun HistoryProduct.getNutriScoreResource(vertical: Boolean = false) =
+    getResourceFromNutriScore(nutritionGrade, vertical)
 
 @DrawableRes
 private fun getResourceFromNova(novaGroup: String?) = when (novaGroup) {
@@ -89,16 +78,15 @@ fun SearchProduct?.getNovaGroupResource() = getResourceFromNova(this?.novaGroups
 @DrawableRes
 fun HistoryProduct?.getNovaGroupResource() = getResourceFromNova(this?.novaGroup)
 
-internal fun Product.isProductIncomplete() = this.let {
-    it.imageFrontUrl == null
-            || it.imageFrontUrl == ""
-            || it.quantity == null
-            || it.quantity == ""
-            || it.productName == null
-            || it.productName == ""
-            || it.brands == null
-            || it.brands == ""
-            || it.ingredientsText == null
-            || it.ingredientsText == ""
+internal fun Product.isProductIncomplete(): Boolean {
+    val conditions = listOf(
+        imageFrontUrl.isNullOrEmpty(),
+        quantity.isNullOrEmpty(),
+        productName.isNullOrEmpty(),
+        brands.isNullOrEmpty(),
+        ingredientsText.isNullOrEmpty(),
+    )
+
+    return conditions.any { it }
 }
 

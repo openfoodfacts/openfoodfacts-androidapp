@@ -642,7 +642,6 @@
     <string name="report_img">Segnala immagine</string>
     <string name="detected_ingredients">Ingredienti rilevati</string>
     <string name="txtConnectionError">Non è stato possibile scaricare determinati dati. Ciò potrebbe essere dovuto a un errore di connessione.</string>
-    <string name="set_image_name">Imposta correttamente l\'immagine come</string>
     <string name="pref_fast_addition_title">Modalità di aggiunta rapida</string>
     <string name="pref_fast_addition_summary">Consente l\'aggiunta rapida di prodotti con meno attributi</string>
     <string name="pref_crop_new_images_title">Ritaglia nuove immagini</string>

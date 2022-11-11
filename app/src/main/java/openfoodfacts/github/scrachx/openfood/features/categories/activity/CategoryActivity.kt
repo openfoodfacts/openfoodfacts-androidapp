@@ -1,7 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.features.categories.activity
 
 import android.content.Context
-import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.net.Uri
 import android.os.Bundle
@@ -14,6 +13,7 @@ import openfoodfacts.github.scrachx.openfood.features.categories.fragment.Catego
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.selectNavigationItem
+import openfoodfacts.github.scrachx.openfood.utils.Intent
 
 @AndroidEntryPoint
 class CategoryActivity : BaseActivity() {
@@ -52,6 +52,6 @@ class CategoryActivity : BaseActivity() {
             .launchUrl(this, Uri.parse(getString(R.string.hunger_game_url)))
 
     companion object {
-        fun start(context: Context) = context.startActivity(Intent(context, CategoryActivity::class.java))
+        fun start(context: Context) = context.startActivity(Intent<CategoryActivity>(context))
     }
 }

@@ -648,7 +648,6 @@
     <string name="report_img">Report Image</string>
     <string name="detected_ingredients">Виявлені інгредієнти</string>
     <string name="txtConnectionError">Не вдалося завантажити певні дані. Це може бути пов\'язано з помилкою підключення.</string>
-    <string name="set_image_name">Зображення встановлено як</string>
     <string name="addtive_search">Search for a additive</string>
     <string name="additives">Добавки</string>
     <!--used for product_lists implementation-->

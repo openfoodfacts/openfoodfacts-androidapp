@@ -636,7 +636,6 @@
     <string name="report_img">Denunciar imagem</string>
     <string name="detected_ingredients">Ingredientes Detectados</string>
     <string name="txtConnectionError">Não foi possível descarregar certos dados. Isso pode ser devido a um erro de conexão.</string>
-    <string name="set_image_name">Imagem definida com sucesso como</string>
     <string name="addtive_search">Procure por um aditivo</string>
     <string name="additives">Aditivos</string>
     <!--used for product_lists implementation-->

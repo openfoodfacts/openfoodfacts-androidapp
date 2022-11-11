@@ -16,7 +16,6 @@
 package openfoodfacts.github.scrachx.openfood.features.welcome
 
 import android.content.Context
-import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.ActivityInfo
 import android.graphics.Color
@@ -40,6 +39,7 @@ import openfoodfacts.github.scrachx.openfood.analytics.SentryAnalytics
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityWelcomeBinding
 import openfoodfacts.github.scrachx.openfood.features.MainActivity
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
+import openfoodfacts.github.scrachx.openfood.utils.Intent
 import openfoodfacts.github.scrachx.openfood.utils.PreferencesService
 import openfoodfacts.github.scrachx.openfood.utils.darken
 import openfoodfacts.github.scrachx.openfood.utils.lighten
@@ -187,6 +187,6 @@ class WelcomeActivity : BaseActivity() {
     }
 
     companion object {
-        fun start(context: Context) = context.startActivity(Intent(context, WelcomeActivity::class.java))
+        fun start(context: Context) = context.startActivity(Intent<WelcomeActivity>(context))
     }
 }

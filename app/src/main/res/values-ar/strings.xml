@@ -668,7 +668,6 @@
     <string name="report_img">إبلاغ عن الصورة</string>
     <string name="detected_ingredients">المكونات المكتشفة</string>
     <string name="txtConnectionError">لم نتمكن من تنزيل بعض البيانات. قد يكون هذا بسبب خطأ في الاتصال.</string>
-    <string name="set_image_name">تعيين الصورة بنجاح</string>
     <string name="pref_fast_addition_title">وضع الإضافة السريعة</string>
     <string name="pref_fast_addition_summary">تفعيل الإضافة السريعة للمنتجات مع صفات أقل</string>
     <string name="pref_crop_new_images_title">قص الصور الجديدة</string>

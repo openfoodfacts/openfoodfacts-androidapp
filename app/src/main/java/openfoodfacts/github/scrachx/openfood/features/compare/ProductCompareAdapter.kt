@@ -33,28 +33,40 @@ import androidx.lifecycle.coroutineScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
-import openfoodfacts.github.scrachx.openfood.AppFlavors
-import openfoodfacts.github.scrachx.openfood.AppFlavors.OPF
-import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
+import openfoodfacts.github.scrachx.openfood.AppFlavor.Companion.isFlavors
+import openfoodfacts.github.scrachx.openfood.AppFlavor.OFF
+import openfoodfacts.github.scrachx.openfood.AppFlavor.OPF
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.ProductComparisonListItemBinding
 import openfoodfacts.github.scrachx.openfood.features.FullScreenActivityOpener
 import openfoodfacts.github.scrachx.openfood.features.shared.adapters.NutrientLevelListAdapter
-import openfoodfacts.github.scrachx.openfood.models.*
+import openfoodfacts.github.scrachx.openfood.models.NutrientLevelItem
+import openfoodfacts.github.scrachx.openfood.models.Nutriment
+import openfoodfacts.github.scrachx.openfood.models.Product
+import openfoodfacts.github.scrachx.openfood.models.ProductImageField
+import openfoodfacts.github.scrachx.openfood.models.buildLevelItem
 import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveName
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
-import openfoodfacts.github.scrachx.openfood.utils.*
+import openfoodfacts.github.scrachx.openfood.utils.MY_PERMISSIONS_REQUEST_CAMERA
+import openfoodfacts.github.scrachx.openfood.utils.getEcoscoreResource
+import openfoodfacts.github.scrachx.openfood.utils.getNovaGroupResource
+import openfoodfacts.github.scrachx.openfood.utils.getNutriScoreResource
+import openfoodfacts.github.scrachx.openfood.utils.isHardwareCameraInstalled
+import openfoodfacts.github.scrachx.openfood.utils.shouldLoadImages
+import openfoodfacts.github.scrachx.openfood.utils.toPx
 import pl.aprilapps.easyphotopicker.EasyImage
 import java.io.File
 
 class ProductCompareAdapter(
-    private val compareProducts: List<ProductCompareViewModel.CompareProduct>,
+    private val products: List<ProductCompareViewModel.CompareProduct>,
+    @Deprecated("Activity leak")
     internal val activity: Activity,
+    @Deprecated("Lifecycle leak")
     private val lifecycleOwner: LifecycleOwner,
-    private val client: ProductRepository,
+    @Deprecated("Adapter should not interact with repositories")
+    private val productRepository: ProductRepository,
     private val picasso: Picasso,
-    private val language: String
-
+    private val language: String,
 ) : RecyclerView.Adapter<ProductCompareAdapter.ViewHolder>() {
     var imageReturnedListener: ((Product, File) -> Unit)? = null
     var fullProductClickListener: ((Product) -> Unit)? = null
@@ -76,7 +88,7 @@ class ProductCompareAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        if (compareProducts.isEmpty()) {
+        if (products.isEmpty()) {
             holder.binding.productComparisonListItemLayout.visibility = View.GONE
             return
         }
@@ -88,7 +100,7 @@ class ProductCompareAdapter(
             }
         }
 
-        val compareProduct = compareProducts[position]
+        val compareProduct = products[position]
         val product = compareProduct.product
 
         // Set the visibility of UI components
@@ -111,7 +123,7 @@ class ProductCompareAdapter(
                 lifecycleOwner.lifecycle.coroutineScope.launchWhenCreated {
                     FullScreenActivityOpener.openForUrl(
                         activity,
-                        client,
+                        productRepository,
                         product,
                         ProductImageField.FRONT,
                         imageUrl,
@@ -123,7 +135,9 @@ class ProductCompareAdapter(
                 // take a picture
                 when {
                     checkSelfPermission(activity, permission.CAMERA) != PERMISSION_GRANTED -> {
-                        ActivityCompat.requestPermissions(activity, arrayOf(permission.CAMERA), MY_PERMISSIONS_REQUEST_CAMERA)
+                        ActivityCompat.requestPermissions(activity,
+                            arrayOf(permission.CAMERA),
+                            MY_PERMISSIONS_REQUEST_CAMERA)
                     }
                     else -> {
                         imageReturnedPosition = holder.bindingAdapterPosition
@@ -138,7 +152,7 @@ class ProductCompareAdapter(
         }
         if (!imageUrl.isNullOrBlank()) {
             holder.binding.productComparisonLabel.visibility = View.INVISIBLE
-            if (!activity.isLowBatteryMode()) {
+            if (activity.shouldLoadImages()) {
                 picasso.load(imageUrl).into(holder.binding.productComparisonImage)
             } else {
                 holder.binding.productComparisonImage.visibility = View.GONE
@@ -176,7 +190,7 @@ class ProductCompareAdapter(
         }
 
         // Open Food Facts specific
-        if (isFlavors(AppFlavors.OFF)) {
+        if (isFlavors(OFF)) {
             // NutriScore
             holder.binding.productComparisonImageGrade.setImageResource(product.getNutriScoreResource())
 
@@ -198,21 +212,26 @@ class ProductCompareAdapter(
         }
 
         // Additives
-        if (product.additivesTags.isNotEmpty()) loadAdditives(compareProduct.additiveNames, holder.binding.productComparisonAdditiveText)
+        showAdditives(
+            holder.binding.productComparisonAdditiveText,
+            compareProduct.additiveNames
+        )
 
         // Full product button
-        holder.binding.fullProductButton.setOnClickListener { fullProductClickListener?.invoke(product) }
+        holder.binding.fullProductButton.setOnClickListener {
+            fullProductClickListener?.invoke(product)
+        }
     }
 
-    override fun getItemCount() = compareProducts.count()
+    override fun getItemCount() = products.count()
 
-    private fun loadAdditives(additiveNames: List<AdditiveName>, view: TextView) {
-        if (additiveNames.isEmpty()) return
+    private fun showAdditives(view: TextView, names: List<AdditiveName>) {
+        if (names.isEmpty()) return
 
         view.text = buildSpannedString {
             bold { append(activity.getString(R.string.compare_additives)) }
             append("\n")
-            append(additiveNames.joinToString("\n") { it.name })
+            append(names.joinToString("\n") { it.name })
         }
 
         updateCardsHeight()
@@ -235,7 +254,7 @@ class ProductCompareAdapter(
         val pos = imageReturnedPosition
         checkNotNull(pos) { "Position null." }
 
-        imageReturnedListener?.invoke(compareProducts[pos].product, file)
+        imageReturnedListener?.invoke(products[pos].product, file)
         imageReturnedPosition = null
         notifyItemChanged(pos)
     }
@@ -265,7 +284,7 @@ class ProductCompareAdapter(
 
 
     class ViewHolder(
-        val binding: ProductComparisonListItemBinding
+        val binding: ProductComparisonListItemBinding,
     ) : RecyclerView.ViewHolder(binding.root) {
         init {
             binding.fullProductButton.setCompoundDrawablesWithIntrinsicBounds(

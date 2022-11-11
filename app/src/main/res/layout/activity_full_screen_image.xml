@@ -54,7 +54,7 @@
         android:id="@+id/imageViewFullScreen"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="@dimen/spacing_tiny"
+        android:layout_marginTop="@dimen/spacing_small"
         android:layout_marginBottom="@dimen/spacing_tiny"
         android:adjustViewBounds="true"
         android:gravity="center"
@@ -90,63 +90,64 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/progressBar" />
 
-    <ImageView
+    <TextView
         android:id="@+id/btnAddImage"
         style="@style/ButtonBorder.Black"
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/button_height_short"
-        android:layout_marginStart="@dimen/spacing_small"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginBottom="16dp"
-        android:hint="@string/take_picture"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:drawablePadding="@dimen/padding_too_short"
+        android:text="@string/take_picture"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_add_a_photo_light_18dp"
-        tools:ignore="ContentDescription" />
+        android:textSize="@dimen/font_normal"
+        app:drawableLeftCompat="@drawable/ic_add_a_photo_light_18dp"
+        app:layout_constraintBottom_toTopOf="@id/btnChooseImage"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/btnUnselectImage" />
 
-    <ImageView
+    <TextView
         android:id="@+id/btnChooseImage"
         style="@style/ButtonBorder.Black"
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/button_height_short"
-        android:layout_marginStart="@dimen/spacing_small"
-        android:layout_marginLeft="@dimen/spacing_small"
-        android:layout_marginBottom="16dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:drawablePadding="@dimen/padding_too_short"
+        android:text="@string/label_photo_from_others"
         android:textColor="@color/white"
+        android:textSize="@dimen/font_small"
+        app:drawableLeftCompat="@drawable/ic_baseline_image_search"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/btnAddImage"
-        app:srcCompat="@drawable/ic_baseline_image_search"
-        tools:ignore="ContentDescription" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/btnEditImage" />
 
-    <ImageView
-        android:id="@+id/btnEditImage"
-        style="@style/ButtonBorder.Black"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/button_height_short"
-        android:layout_marginStart="@dimen/spacing_small"
-        android:layout_marginLeft="@dimen/spacing_small"
-        android:layout_marginBottom="16dp"
-        android:text="@string/edit_image"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/btnChooseImage"
-        app:srcCompat="@drawable/ic_crop_rotate_24dp"
-        tools:ignore="ContentDescription" />
-
-    <ImageView
+    <TextView
         android:id="@+id/btnUnselectImage"
         style="@style/ButtonBorder.Black"
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/button_height_short"
-        android:layout_marginStart="@dimen/spacing_small"
-        android:layout_marginLeft="@dimen/spacing_small"
-        android:layout_marginBottom="16dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:drawablePadding="@dimen/padding_too_short"
+        android:text="@string/label_unselect"
         android:textColor="@color/white"
+        android:textSize="@dimen/font_normal"
+        app:drawableLeftCompat="@drawable/ic_remove_circle_white"
+        app:layout_constraintBottom_toTopOf="@id/btnEditImage"
+        app:layout_constraintLeft_toRightOf="@id/btnAddImage"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:id="@+id/btnEditImage"
+        style="@style/ButtonBorder.Black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:drawablePadding="@dimen/padding_too_short"
+        android:text="@string/label_crop"
+        android:textColor="@color/white"
+        app:drawableLeftCompat="@drawable/ic_crop_rotate_24dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/btnEditImage"
-        app:srcCompat="@drawable/ic_remove_circle_white"
-        tools:ignore="ContentDescription" />
+        app:layout_constraintLeft_toRightOf="@id/btnChooseImage"
+        app:layout_constraintRight_toRightOf="parent" />
 
     <ImageView
         android:id="@+id/btn_done"
@@ -154,13 +155,11 @@
         android:layout_width="wrap_content"
         android:layout_height="@dimen/button_height_short"
         android:layout_marginEnd="@dimen/spacing_small"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_check_white_24dp"
         tools:ignore="ContentDescription" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

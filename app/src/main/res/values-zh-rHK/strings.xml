@@ -630,7 +630,6 @@
     <string name="report_img">舉報圖片</string>
     <string name="detected_ingredients">偵測到的成分</string>
     <string name="txtConnectionError">We could not download certain data. This may be due to a connection error.</string>
-    <string name="set_image_name">Successfully set the image as</string>
     <string name="addtive_search">搜尋添加劑</string>
     <string name="additives">添加劑</string>
     <!--used for product_lists implementation-->

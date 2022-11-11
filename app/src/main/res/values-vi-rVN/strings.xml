@@ -630,7 +630,6 @@
     <string name="report_img">Report Image</string>
     <string name="detected_ingredients">Detected Ingredients</string>
     <string name="txtConnectionError">We could not download certain data. This may be due to a connection error.</string>
-    <string name="set_image_name">Successfully set the image as</string>
     <string name="addtive_search">Search for a additive</string>
     <string name="additives">Chất phụ gia</string>
     <!--used for product_lists implementation-->
