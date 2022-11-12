@@ -253,7 +253,7 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             chooseFileContract.launch(arrayOf("text/csv"))
         } else {
-            Toast.makeText(this, "Feature disabled for your android version.", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, getString(R.string.toast_import_csv_disabled), Toast.LENGTH_LONG).show()
         }
     }
 

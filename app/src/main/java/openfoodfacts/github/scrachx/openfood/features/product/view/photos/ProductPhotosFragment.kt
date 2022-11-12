@@ -215,11 +215,15 @@ class ProductPhotosFragment : BaseFragment() {
             response["imagefield"].asText()
         } catch (e: JSONException) {
             logcat(LogPriority.ERROR) { "Error while setting image from response $response: ${e.asLog()}" }
-            Toast.makeText(context, "Error while setting image from response $response", Toast.LENGTH_LONG).show()
+            Toast.makeText(context,
+                context.getString(R.string.set_image_name_error, response.toString()),
+                Toast.LENGTH_LONG).show()
             null
         } catch (e: NullPointerException) {
             logcat(LogPriority.ERROR) { "Error while setting image from response $response: ${e.asLog()}" }
-            Toast.makeText(context, "Error while setting image from response $response", Toast.LENGTH_LONG).show()
+            Toast.makeText(context,
+                context.getString(R.string.set_image_name_error, response.toString()),
+                Toast.LENGTH_LONG).show()
             null
         } ?: return
 
