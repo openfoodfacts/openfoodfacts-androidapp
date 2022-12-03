@@ -14,7 +14,6 @@ Open Food Facts is collaborative food products database made by everyone, for ev
 [![Project Status](https://opensource.box.com/badges/active.svg)](https://opensource.box.com/badges)
 [![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=openfoodfacts_openfoodfacts-androidapp&metric=alert_status)](https://sonarcloud.io/dashboard/index/openfoodfacts_openfoodfacts-androidapp)
 [![Crowdin](https://d322cqt584bo4o.cloudfront.net/openfoodfacts/localized.svg)](https://crowdin.com/project/openfoodfacts)
-![Android Master & PR](https://github.com/openfoodfacts/openfoodfacts-androidapp/workflows/Android%20Master%20&%20PR/badge.svg)
 ![Build](https://github.com/openfoodfacts/openfoodfacts-androidapp/workflows/Android%20Integration/badge.svg)
 [![Open Source Helpers](https://www.codetriage.com/openfoodfacts/openfoodfacts-androidapp/badges/users.svg)](https://www.codetriage.com/openfoodfacts/openfoodfacts-androidapp)
 <br>
