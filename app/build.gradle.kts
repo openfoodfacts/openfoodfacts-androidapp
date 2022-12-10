@@ -189,7 +189,7 @@ android {
         targetSdk = 33
 
         versionCode = 582
-        versionName = "3.8.1"
+        versionName = "3.9.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
