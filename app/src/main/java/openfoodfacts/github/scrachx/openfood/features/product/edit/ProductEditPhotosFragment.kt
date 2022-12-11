@@ -117,8 +117,12 @@ class ProductEditPhotosFragment : ProductEditFragment() {
     }
 
     private fun addOtherImage() {
-        if (ContextCompat.checkSelfPermission(requireActivity(), permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(requireActivity(), arrayOf(permission.CAMERA), MY_PERMISSIONS_REQUEST_CAMERA)
+        if (ContextCompat.checkSelfPermission(requireActivity(),
+                permission.CAMERA) != PackageManager.PERMISSION_GRANTED
+        ) {
+            ActivityCompat.requestPermissions(requireActivity(),
+                arrayOf(permission.CAMERA),
+                MY_PERMISSIONS_REQUEST_CAMERA)
         } else {
             EasyImage.openCamera(this, 0)
         }
@@ -130,10 +134,7 @@ class ProductEditPhotosFragment : ProductEditFragment() {
         photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data) { newPhotoFile ->
             photoFile = newPhotoFile
             val image = ProductImage(code!!, ProductImageField.OTHER, newPhotoFile, localeManager.getLanguage())
-            image.filePath = photoFile!!.toURI().path
-            if (activity is ProductEditActivity) {
-                (activity as ProductEditActivity).savePhoto(image, 4)
-            }
+            (activity as? ProductEditActivity)?.savePhoto(image, 4)
         }
     }
 

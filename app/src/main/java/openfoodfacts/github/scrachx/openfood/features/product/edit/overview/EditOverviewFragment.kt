@@ -902,7 +902,6 @@ class EditOverviewFragment : ProductEditFragment() {
                 image = ProductImage(barcode!!, ProductImageField.OTHER, newPhotoFile, appLang)
                 position = 3
             }
-            image.filePath = newPhotoFile.toURI().path
             (activity as? ProductEditActivity)?.savePhoto(image, position)
 
             hideImageProgress(false, StringUtils.EMPTY)
@@ -931,7 +930,7 @@ class EditOverviewFragment : ProductEditFragment() {
                 .centerInside()
                 .into(binding.imgFront)
 
-            Toast.makeText(activity,R.string.front_image_uploaded_successfully,Toast.LENGTH_LONG).show()
+            Toast.makeText(activity, R.string.front_image_uploaded_successfully, Toast.LENGTH_LONG).show()
         }
     }
 

@@ -503,11 +503,11 @@ class IngredientsProductFragment : BaseFragment() {
 
     private fun onPhotoReturned(newPhotoFile: File) {
         val image = ProductImage(
-            productState.code!!,
-            ProductImageField.INGREDIENTS,
-            newPhotoFile,
-            localeManager.getLanguage()
-        ).apply { filePath = newPhotoFile.absolutePath }
+            code = productState.code!!,
+            field = ProductImageField.INGREDIENTS,
+            imageFile = newPhotoFile,
+            language = localeManager.getLanguage()
+        )
 
         lifecycleScope.launch { client.postImg(image) }
 

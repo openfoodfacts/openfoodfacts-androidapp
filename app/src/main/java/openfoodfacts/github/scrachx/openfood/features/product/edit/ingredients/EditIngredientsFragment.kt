@@ -45,6 +45,7 @@ import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditAc
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_SEND_UPDATED
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditFragment
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
+import openfoodfacts.github.scrachx.openfood.models.Barcode
 import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
@@ -223,7 +224,8 @@ class EditIngredientsFragment : ProductEditFragment() {
     fun loadIngredientsImage() {
         if (getAddProductActivity() == null) return
 
-        val newImageIngredientsUrl = product!!.getImageIngredientsUrl(getAddProductActivity()!!.getProductLanguageForEdition())
+        val newImageIngredientsUrl =
+            product!!.getImageIngredientsUrl(getAddProductActivity()!!.getProductLanguageForEdition())
         photoFile = null
         if (newImageIngredientsUrl != null && newImageIngredientsUrl.isNotEmpty()) {
             binding.imageProgress.visibility = View.VISIBLE
@@ -361,25 +363,30 @@ class EditIngredientsFragment : ProductEditFragment() {
     }
 
     private fun extractIngredients() {
-        (activity as? ProductEditActivity)?.let { activity ->
+        val activity = activity as? ProductEditActivity ?: return
+        val imagePath = imagePath ?: return
+        val barcode = Barcode(code!!)
 
-            imagePath?.let { imagePath ->
-                if (!isEditingFromArgs || newImageSelected) {
-                    photoFile = File(imagePath)
-                    val image = ProductImage(code!!, ProductImageField.INGREDIENTS, photoFile!!, localeManager.getLanguage())
-                    image.filePath = imagePath
-                    activity.savePhoto(image, 1)
-                } else {
-                    activity.lifecycleScope.launch {
-                        activity.performOCR(
-                            code!!,
-                            "ingredients_" + activity.getProductLanguageForEdition()
-                        )
-                    }
-                }
+        if (!isEditingFromArgs || newImageSelected) {
+            photoFile = File(imagePath)
+            val image = ProductImage(
+                barcode,
+                ProductImageField.INGREDIENTS,
+                localeManager.getLanguage(),
+                photoFile!!.readBytes(),
+                imagePath
+            )
+            activity.savePhoto(image, 1)
+        } else {
+            activity.lifecycleScope.launch {
+                activity.performOCR(
+                    barcode,
+                    "ingredients_" + activity.getProductLanguageForEdition()
+                )
             }
-
         }
+
+
     }
 
     private fun skipIngredients() {
@@ -437,14 +444,15 @@ class EditIngredientsFragment : ProductEditFragment() {
             imagePath = uri.path
             newImageSelected = true
             photoFile = it
+            val imageBytes = it.readBytes()
+
             val image = ProductImage(
-                code!!,
-                ProductImageField.INGREDIENTS,
-                it,
-                localeManager.getLanguage()
-            ).apply {
+                barcode = Barcode(code!!),
+                field = ProductImageField.INGREDIENTS,
+                language = localeManager.getLanguage(),
+                bytes = imageBytes,
                 filePath = uri.path
-            }
+            )
 
             (activity as? ProductEditActivity)?.savePhoto(image, 1)
 
@@ -485,7 +493,7 @@ class EditIngredientsFragment : ProductEditFragment() {
                 .centerInside()
                 .into(binding.btnAddImageIngredients)
 
-            Toast.makeText(activity,R.string.ingredients_image_uploaded_successfully,Toast.LENGTH_LONG).show()
+            Toast.makeText(activity, R.string.ingredients_image_uploaded_successfully, Toast.LENGTH_LONG).show()
         }
     }
 

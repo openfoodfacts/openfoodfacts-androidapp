@@ -51,7 +51,11 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.zxing.*
+import com.google.zxing.BinaryBitmap
+import com.google.zxing.DecodeHintType
+import com.google.zxing.FormatException
+import com.google.zxing.MultiFormatReader
+import com.google.zxing.RGBLuminanceSource
 import com.google.zxing.common.HybridBinarizer
 import com.mikepenz.iconics.typeface.library.googlematerial.GoogleMaterial
 import com.mikepenz.materialdrawer.AccountHeader
@@ -99,9 +103,12 @@ import openfoodfacts.github.scrachx.openfood.jobs.ImagesUploaderWorker
 import openfoodfacts.github.scrachx.openfood.jobs.ProductUploaderWorker
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.selectNavigationItem
+import openfoodfacts.github.scrachx.openfood.models.Barcode
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
-import openfoodfacts.github.scrachx.openfood.utils.*
+import openfoodfacts.github.scrachx.openfood.utils.Intent
+import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
+import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_ABOUT
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_ADDITIVES
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_ADVANCED_SEARCH
@@ -123,6 +130,29 @@ import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Comp
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_USER
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_YOUR_LISTS
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType
+import openfoodfacts.github.scrachx.openfood.utils.OnKeyboardVisibilityChanged
+import openfoodfacts.github.scrachx.openfood.utils.PreferencesService
+import openfoodfacts.github.scrachx.openfood.utils.SearchSuggestionProvider
+import openfoodfacts.github.scrachx.openfood.utils.SearchType
+import openfoodfacts.github.scrachx.openfood.utils.buildAccountHeader
+import openfoodfacts.github.scrachx.openfood.utils.buildDrawer
+import openfoodfacts.github.scrachx.openfood.utils.dividerItem
+import openfoodfacts.github.scrachx.openfood.utils.getAppPreferences
+import openfoodfacts.github.scrachx.openfood.utils.getLoginPreferences
+import openfoodfacts.github.scrachx.openfood.utils.getLoginUsername
+import openfoodfacts.github.scrachx.openfood.utils.getUserSession
+import openfoodfacts.github.scrachx.openfood.utils.hideKeyboard
+import openfoodfacts.github.scrachx.openfood.utils.isApplicationInstalled
+import openfoodfacts.github.scrachx.openfood.utils.isGranted
+import openfoodfacts.github.scrachx.openfood.utils.isHardwareCameraInstalled
+import openfoodfacts.github.scrachx.openfood.utils.isNetworkConnected
+import openfoodfacts.github.scrachx.openfood.utils.isUserSet
+import openfoodfacts.github.scrachx.openfood.utils.listenToKeyboardVisibilityChanges
+import openfoodfacts.github.scrachx.openfood.utils.primaryItem
+import openfoodfacts.github.scrachx.openfood.utils.profileItem
+import openfoodfacts.github.scrachx.openfood.utils.profileSettingItem
+import openfoodfacts.github.scrachx.openfood.utils.sectionItem
+import openfoodfacts.github.scrachx.openfood.utils.stopListeningToKeyboardVisibilityChanges
 import java.io.FileNotFoundException
 import java.io.IOException
 import javax.inject.Inject
@@ -933,21 +963,21 @@ class MainActivity : BaseActivity(), NavigationDrawerListener, NavigationDrawerH
 
             setPositiveButton(R.string.txtYes) { dialog, _ ->
                 for (imgUri in uris) {
-                    val tempBarcode = if (hasEditText) barcodeEditText.text.toString() else barcode
+                    val tempBarcode = Barcode(if (hasEditText) barcodeEditText.text.toString() else barcode)
 
                     if (tempBarcode.isEmpty()) {
                         Toast.makeText(this@MainActivity, getString(R.string.sorry_msg), Toast.LENGTH_LONG).show()
                     } else {
                         dialog.dismiss()
                         if (!this@MainActivity.isNetworkConnected()) {
-                            ProductEditActivity.start(this@MainActivity, Product().apply { code = tempBarcode })
+                            ProductEditActivity.start(this@MainActivity, Product().apply { code = tempBarcode.raw })
                         } else {
                             contentResolver.openInputStream(imgUri)!!.use {
                                 val image = ProductImage(
                                     tempBarcode,
                                     ProductImageField.OTHER,
-                                    it.readBytes(),
-                                    localeManager.getLanguage()
+                                    localeManager.getLanguage(),
+                                    it.readBytes()
                                 )
                                 // Post image
                                 viewModel.postImage(image)

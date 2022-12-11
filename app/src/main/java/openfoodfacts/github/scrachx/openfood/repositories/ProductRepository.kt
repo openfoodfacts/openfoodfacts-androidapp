@@ -39,6 +39,7 @@ import openfoodfacts.github.scrachx.openfood.utils.getLoginUsername
 import openfoodfacts.github.scrachx.openfood.utils.getUserAgent
 import openfoodfacts.github.scrachx.openfood.utils.getVersionName
 import openfoodfacts.github.scrachx.openfood.utils.list
+import openfoodfacts.github.scrachx.openfood.utils.toRequestBody
 import openfoodfacts.github.scrachx.openfood.utils.unique
 import java.io.File
 import java.io.IOException
@@ -142,27 +143,32 @@ class ProductRepository @Inject constructor(
     private fun getUploadableMap(image: ProductImage): Map<String, RequestBody?> {
         val lang = image.language
 
-        val imgMap = hashMapOf(PRODUCT_BARCODE to image.barcodeBody, "imagefield" to image.fieldBody)
-        if (image.imgFront != null) {
-            imgMap["""imgupload_front"; filename="front_$lang$PNG_EXT"""] = image.imgFront!!
+        val imgMap = mutableMapOf(
+            PRODUCT_BARCODE to image.getBarcodeBody(),
+            "imagefield" to image.getFieldBody()
+        )
+
+        val field = when (image.field) {
+            ProductImageField.FRONT -> {
+                """imgupload_front"; filename="front_$lang$PNG_EXT"""
+            }
+            ProductImageField.INGREDIENTS -> {
+                """imgupload_ingredients"; filename="ingredients_$lang$PNG_EXT"""
+            }
+            ProductImageField.NUTRITION -> {
+                """imgupload_nutrition"; filename="nutrition_$lang$PNG_EXT"""
+            }
+            ProductImageField.PACKAGING -> {
+                """imgupload_packaging"; filename="packaging_$lang$PNG_EXT"""
+            }
+            ProductImageField.OTHER -> {
+                """imgupload_other"; filename="other_$lang$PNG_EXT"""
+            }
         }
-        if (image.imgIngredients != null) {
-            imgMap["""imgupload_ingredients"; filename="ingredients_$lang$PNG_EXT"""] = image.imgIngredients!!
-        }
-        if (image.imgNutrition != null) {
-            imgMap["""imgupload_nutrition"; filename="nutrition_$lang$PNG_EXT"""] = image.imgNutrition!!
-        }
-        if (image.imgPackaging != null) {
-            imgMap["""imgupload_packaging"; filename="packaging_$lang$PNG_EXT"""] = image.imgPackaging!!
-        }
-        if (image.imgOther != null) {
-            imgMap["""imgupload_other"; filename="other_$lang$PNG_EXT"""] = image.imgOther!!
-        }
+        imgMap[field] = RequestBody.create(MediaType.parse("image/*"), image.bytes)
 
         // Attribute the upload to the connected user
-        getUserInfo().forEach { (key, value) ->
-            imgMap[key] = RequestBody.create(MIME_TEXT, value)
-        }
+        imgMap += getUserInfo().mapValues { it.value.toRequestBody() }
         return imgMap
     }
 
@@ -264,23 +270,31 @@ class ProductRepository @Inject constructor(
         }.onFailure {
             daoSession.toUploadProductDao.insertOrReplace(
                 ToUploadProduct(
-                    image.barcode,
+                    image.barcode.raw,
                     image.filePath,
-                    image.imageField.toString()
+                    image.field.toString()
                 )
             )
         }
     }
 
-    private suspend fun setDefaultImageFromServerResponse(body: JsonNode, image: ProductImage) {
+    private suspend fun setDefaultImageFromServerResponse(
+        body: JsonNode,
+        image: ProductImage,
+    ): Result<Unit> {
         val queryMap = getUserInfo() + listOf(
             IMG_ID to body["image"][IMG_ID].asText(),
             "id" to body["imagefield"].asText()
         )
 
-        val node = rawApi.editImage(image.barcode, queryMap)
+        val rawBarcode = image.barcode.raw
+        val node = rawApi.editImage(rawBarcode, queryMap)
 
-        if (node[Keys.STATUS].asText() != "status ok") throw IOException(node["error"].asText())
+        return if (node[Keys.STATUS].asText() == "status ok") {
+            Result.success(Unit)
+        } else {
+            Result.failure(IOException(node["error"].asText()))
+        }
     }
 
     suspend fun editImage(code: String, imgMap: Map<String, String>) = withContext(IO) {
@@ -350,7 +364,7 @@ class ProductRepository @Inject constructor(
     }
 
     companion object {
-        val MIME_TEXT: MediaType = MediaType.get("text/plain")
+
         const val PNG_EXT = ".png"
 
         suspend fun HistoryProductDao.addToHistory(prod: OfflineSavedProduct): Unit = withContext(IO) {

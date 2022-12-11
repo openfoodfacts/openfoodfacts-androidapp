@@ -136,11 +136,12 @@ class ProductCompareActivity : BaseActivity() {
             imageReturnedListener = { product, file ->
 
                 val image = ProductImage(
-                    product.code,
+                    product.barcode,
                     ProductImageField.FRONT,
-                    file,
-                    viewModel.getCurrentLanguage()
-                ).apply { filePath = file.absolutePath }
+                    viewModel.getCurrentLanguage(),
+                    file.readBytes(),
+                    file.absolutePath
+                )
 
                 lifecycleScope.launch { client.postImg(image) }
                 product.imageUrl = file.absolutePath

@@ -701,14 +701,12 @@ class ImagesManageActivity : BaseActivity() {
     private fun onPhotoReturned(newPhotoFile: File) {
         startRefresh(getString(R.string.uploading_image))
         val image = ProductImage(
-            requireProduct().code,
+            requireProduct().barcode,
             getSelectedType(),
-            newPhotoFile,
-            getCurrentLanguage()
-        ).apply {
-            filePath = newPhotoFile.absolutePath
-        }
-
+            getCurrentLanguage(),
+            newPhotoFile.readBytes(),
+            newPhotoFile.absolutePath
+        )
         // Send image
         lifecycleScope.launchWhenCreated {
             try {

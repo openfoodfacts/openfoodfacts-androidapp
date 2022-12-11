@@ -37,7 +37,9 @@ import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import okhttp3.MediaType
+import logcat.LogPriority
+import logcat.asLog
+import logcat.logcat
 import okhttp3.RequestBody
 import openfoodfacts.github.scrachx.openfood.AppFlavor
 import openfoodfacts.github.scrachx.openfood.AppFlavor.Companion.isFlavors
@@ -53,6 +55,7 @@ import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.images.IMG_ID
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
 import openfoodfacts.github.scrachx.openfood.jobs.ProductUploaderWorker.Companion.scheduleProductUpload
+import openfoodfacts.github.scrachx.openfood.models.Barcode
 import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
@@ -62,16 +65,17 @@ import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
 import openfoodfacts.github.scrachx.openfood.repositories.OfflineProductRepository
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
-import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository.Companion.MIME_TEXT
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository.Companion.PNG_EXT
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository.Companion.addToHistory
 import openfoodfacts.github.scrachx.openfood.utils.InstallationService
 import openfoodfacts.github.scrachx.openfood.utils.Intent
+import openfoodfacts.github.scrachx.openfood.utils.MediaTypes
 import openfoodfacts.github.scrachx.openfood.utils.clearCameraCache
 import openfoodfacts.github.scrachx.openfood.utils.getLoginPassword
 import openfoodfacts.github.scrachx.openfood.utils.getLoginUsername
 import openfoodfacts.github.scrachx.openfood.utils.getProductState
 import openfoodfacts.github.scrachx.openfood.utils.hideKeyboard
+import openfoodfacts.github.scrachx.openfood.utils.toRequestBody
 import java.io.IOException
 import javax.inject.Inject
 
@@ -400,29 +404,16 @@ class ProductEditActivity : BaseActivity() {
         val lang = getProductLanguageForEdition()
         var ocr = false
         val imgMap = hashMapOf<String, RequestBody?>(
-            ApiFields.Keys.BARCODE to image.barcodeBody,
-            "imagefield" to "${image.imageField}_$lang".toRequestBody()
+            ApiFields.Keys.BARCODE to image.getBarcodeBody(),
+            "imagefield" to "${image.field}_$lang".toRequestBody()
         )
-        if (image.imgFront != null) {
-            imagesFilePath[0] = image.filePath
-            imgMap["""imgupload_front"; filename="front_$lang$PNG_EXT"""] = image.imgFront
-        }
-        if (image.imgIngredients != null) {
-            imgMap["""imgupload_ingredients"; filename="ingredients_$lang$PNG_EXT"""] = image.imgIngredients
-            ocr = true
-            imagesFilePath[1] = image.filePath
-        }
-        if (image.imgNutrition != null) {
-            imgMap["""imgupload_nutrition"; filename="nutrition_$lang$PNG_EXT"""] = image.imgNutrition
-            imagesFilePath[2] = image.filePath
-        }
-        if (image.imgPackaging != null) {
-            imgMap["""imgupload_packaging"; filename="packaging_$lang$PNG_EXT"""] = image.imgPackaging
-            imagesFilePath[3] = image.filePath
-        }
-        if (image.imgOther != null) {
-            imgMap["""imgupload_other"; filename="other_$lang$PNG_EXT"""] = image.imgOther
-        }
+        imgMap[when (image.field) {
+            ProductImageField.FRONT -> """imgupload_front"; filename="front_$lang$PNG_EXT"""
+            ProductImageField.INGREDIENTS -> """imgupload_ingredients"; filename="ingredients_$lang$PNG_EXT"""
+            ProductImageField.NUTRITION -> """imgupload_nutrition"; filename="nutrition_$lang$PNG_EXT"""
+            ProductImageField.PACKAGING -> """imgupload_packaging"; filename="packaging_$lang$PNG_EXT"""
+            ProductImageField.OTHER -> """imgupload_other"; filename="other_$lang$PNG_EXT"""
+        }] = image.bytes.toRequestBody(MediaTypes.MIME_IMAGE)
 
         // Attribute the upload to the connected user
         imgMap += getLoginPasswordInfo()
@@ -448,13 +439,13 @@ class ProductEditActivity : BaseActivity() {
 
                 hideImageProgress(fragmentIndex, getString(R.string.no_internet_connection))
 
-                Log.e(LOGGER_TAG, err.message!!)
-                if (image.imageField === ProductImageField.OTHER) {
+                logcat(LogPriority.ERROR, LOGGER_TAG) { err.asLog() }
+                if (image.field === ProductImageField.OTHER) {
                     daoSession.toUploadProductDao.insertOrReplace(
                         ToUploadProduct(
-                            image.barcode,
+                            image.barcode.raw,
                             image.filePath,
-                            image.imageField.toString()
+                            image.field.toString()
                         )
                     )
                 }
@@ -475,12 +466,17 @@ class ProductEditActivity : BaseActivity() {
             val alreadySent = error == "This picture has already been sent."
             if (alreadySent && performOCR) {
                 hideImageProgress(fragmentIndex, getString(R.string.image_uploaded_successfully))
-                withContext(Main) { performOCR(image.barcode, "ingredients_${getProductLanguageForEdition()}") }
+                withContext(Main) {
+                    performOCR(
+                        barcode = image.barcode,
+                        imageField = "ingredients_${getProductLanguageForEdition()}"
+                    )
+                }
             } else {
                 hideImageProgress(fragmentIndex, error, true)
             }
         } else {
-            when (image.imageField) {
+            when (image.field) {
                 ProductImageField.FRONT -> {
                     imageFrontUploaded = true
                 }
@@ -514,7 +510,7 @@ class ProductEditActivity : BaseActivity() {
 
         val jsonNode = withContext(IO) {
             try {
-                productsApi.editImage(image.barcode, queryMap)
+                productsApi.editImage(image.barcode.raw, queryMap)
             } catch (err: Exception) {
                 if (err is IOException) {
                     if (performOCR) {
@@ -529,7 +525,7 @@ class ProductEditActivity : BaseActivity() {
                     }
                 } else {
                     withContext(Main) {
-                        Log.w(this::class.simpleName, err.message!!)
+                        logcat(LogPriority.WARN) { err.asLog() }
                         Toast.makeText(this@ProductEditActivity, err.message, Toast.LENGTH_SHORT).show()
                     }
                 }
@@ -547,18 +543,18 @@ class ProductEditActivity : BaseActivity() {
     }
 
 
-    suspend fun performOCR(code: String, imageField: String) {
+    suspend fun performOCR(barcode: Barcode, imageField: String) {
         withContext(Main) { ingredientsFragment.showOCRProgress() }
 
         val result = kotlin.runCatching {
-            withContext(IO) { productsApi.performOCR(code, imageField) }
+            withContext(IO) { productsApi.performOCR(barcode.raw, imageField) }
         }.onFailure {
             withContext(Main) { ingredientsFragment.hideOCRProgress() }
             if (it is IOException) {
                 val view = findViewById<View>(R.id.coordinator_layout)
                 Snackbar.make(view, R.string.no_internet_unable_to_extract_ingredients, LENGTH_INDEFINITE)
                     .setAction(R.string.txt_try_again) {
-                        lifecycleScope.launch { performOCR(code, imageField) }
+                        lifecycleScope.launch { performOCR(barcode, imageField) }
                     }
                     .show()
             } else {
@@ -714,7 +710,6 @@ class ProductEditActivity : BaseActivity() {
             }
         }
 
-        private fun String.toRequestBody(mediaType: MediaType = MIME_TEXT) =
-            RequestBody.create(mediaType, this)
+
     }
 }
