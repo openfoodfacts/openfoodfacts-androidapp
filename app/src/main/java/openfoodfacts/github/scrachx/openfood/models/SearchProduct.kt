@@ -10,14 +10,17 @@ import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.utils.ProductStringConverter
 import java.io.Serializable
 import java.util.*
-import kotlin.collections.HashMap
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 open class SearchProduct : Serializable {
     /**
      * @return The code
      */
+    @Deprecated("Use barcode")
     lateinit var code: String
+
+    val barcode: Barcode
+        get() = Barcode(code)
 
     /**
      * Get the default product name.
@@ -114,6 +117,6 @@ open class SearchProduct : Serializable {
     }
 
     fun getImageSmallUrl(languageCode: String?) =
-            getSelectedImage(languageCode, ProductImageField.FRONT, ImageSize.SMALL)
-                    ?.ifBlank { null } ?: imageSmallUrl
+        getSelectedImage(languageCode, ProductImageField.FRONT, ImageSize.SMALL)
+            ?.ifBlank { null } ?: imageSmallUrl
 }

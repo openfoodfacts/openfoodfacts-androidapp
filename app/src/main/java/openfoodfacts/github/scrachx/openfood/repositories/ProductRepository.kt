@@ -92,33 +92,37 @@ class ProductRepository @Inject constructor(
      *
      * @param barcode product barcode
      */
-    suspend fun getProductImages(barcode: String): ProductState = withContext(IO) {
-        val fields = Keys.PRODUCT_IMAGES_FIELDS.toMutableSet().also {
-            it += Keys.lcProductNameKey(localeManager.getLanguage())
-        }.joinToString(",")
+    suspend fun getProductImages(barcode: Barcode): ProductState = withContext(IO) {
+        val fields = Keys.PRODUCT_IMAGES_FIELDS.toMutableSet()
+        fields += Keys.lcProductNameKey(localeManager.getLanguage())
 
         rawApi.getProductByBarcode(
-            barcode,
-            fields,
-            localeManager.getLanguage(),
-            getUserAgent(ApiFields.UserAgents.SEARCH)
+            barcode = barcode.raw,
+            fields = fields.joinToString(","),
+            locale = localeManager.getLanguage(),
+            header = getUserAgent(ApiFields.UserAgents.SEARCH)
         )
     }
 
     /**
      * @return a list of product ingredients (can be empty)
      */
-    suspend fun getIngredients(product: Product) = withContext(IO) {
-        // TODO: This or the field inside Product.kt?
-        val productState = rawApi.getIngredientsByBarcode(product.code)
-
-        productState["product"][Keys.INGREDIENTS]?.map {
-            ProductIngredient(
-                it["id"].asText(),
-                it["text"].asText(),
-                it["rank"]?.asLong(-1)!!
-            )
-        } ?: emptyList()
+    // TODO: This or the field inside Product.kt?
+    // The field inside Product.kt can be deleted if we delete every
+    // reference to it. It's messy down there
+    suspend fun getIngredients(product: Product): Result<List<ProductIngredient>> {
+        return withContext(IO) {
+            kotlin.runCatching {
+                val productState = rawApi.getIngredientsByBarcode(product.code)
+                productState["product"][Keys.INGREDIENTS]?.map {
+                    ProductIngredient(
+                        it["id"].asText(),
+                        it["text"].asText(),
+                        it["rank"]?.asLong(-1)!!
+                    )
+                } ?: emptyList()
+            }
+        }
     }
 
 
@@ -383,7 +387,7 @@ class ProductRepository @Inject constructor(
                     product.productName,
                     product.brands,
                     product.getImageSmallUrl(language),
-                    product.code,
+                    product.barcode.raw,
                     product.quantity,
                     product.nutritionGradeFr,
                     product.ecoscore,

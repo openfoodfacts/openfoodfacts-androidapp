@@ -77,12 +77,12 @@ class SearchByCodeFragment : NavigationWithDrawerBaseFragment() {
     private fun checkBarcodeThenSearch() {
         requireActivity().hideKeyboard()
 
-        val code = binding.editTextBarcode.text.toString()
+        val code = Barcode(binding.editTextBarcode.text.toString())
         when {
             code.isEmpty() -> {
                 binding.editTextBarcode.error = resources.getString(R.string.txtBarcodeRequire)
             }
-            !Barcode(code).isValid() -> {
+            !code.isValid() -> {
                 binding.editTextBarcode.error = resources.getString(R.string.txtBarcodeNotValid)
             }
             else -> {

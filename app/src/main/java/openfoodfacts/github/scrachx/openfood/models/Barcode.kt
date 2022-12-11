@@ -8,11 +8,14 @@ import org.apache.commons.validator.routines.checkdigit.EAN13CheckDigit
 @JvmInline
 value class Barcode(val raw: String) {
     /**
-     * @return true if valid according to [EAN13CheckDigit.EAN13_CHECK_DIGIT]
-     * and if the barcode doesn't start with 977/978/979 (Book barcode)
+     * @return true if not empty, valid according
+     * to [EAN13CheckDigit.EAN13_CHECK_DIGIT] and if the barcode
+     * doesn't start with 977/978/979 (Book barcode)
      */
     fun isValid(): Boolean {
         return when {
+            isEmpty() -> false
+
             // DEBUG ONLY: the barcode '1' is used for test:
             BuildConfig.DEBUG && raw == ApiFields.Defaults.DEBUG_BARCODE -> true
 
