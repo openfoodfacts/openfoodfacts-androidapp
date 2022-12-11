@@ -66,9 +66,9 @@ import openfoodfacts.github.scrachx.openfood.utils.SearchType.SEARCH
 import openfoodfacts.github.scrachx.openfood.utils.SearchType.STATE
 import openfoodfacts.github.scrachx.openfood.utils.SearchType.STORE
 import openfoodfacts.github.scrachx.openfood.utils.SearchType.TRACE
-import openfoodfacts.github.scrachx.openfood.utils.isPowerSaveMode
-import openfoodfacts.github.scrachx.openfood.utils.isImageLoadingDisabled
 import openfoodfacts.github.scrachx.openfood.utils.isGranted
+import openfoodfacts.github.scrachx.openfood.utils.isImageLoadingDisabled
+import openfoodfacts.github.scrachx.openfood.utils.isPowerSaveMode
 import java.text.NumberFormat
 import java.util.*
 import javax.inject.Inject
@@ -347,10 +347,11 @@ class ProductSearchActivity : BaseActivity() {
                 .startSearch(R.string.txt_no_matching_packaging_products)
 
             SEARCH -> {
-                if (Barcode(searchQuery).isValid()) {
+                val barcode = Barcode(searchQuery)
+                if (barcode.isValid()) {
                     productViewActivityStarter.openProduct(
-                        searchQuery,
-                        this@ProductSearchActivity,
+                        barcode = barcode,
+                        activity = this@ProductSearchActivity,
                         productOpenedListener = { finish() }
                     )
                 } else {
@@ -519,46 +520,63 @@ class ProductSearchActivity : BaseActivity() {
         }
     }
 
-    private fun setUpRecyclerView(mProducts: MutableList<SearchProduct?>) {
+    private fun setUpRecyclerView(products: MutableList<SearchProduct?>) {
+        // Hide refreshing
         binding.swipeRefresh.isRefreshing = false
 
+        // Hide progress bar
         binding.progressBar.visibility = View.INVISIBLE
         binding.offlineCloudLinearLayout.visibility = View.INVISIBLE
 
+        // Show the recycler view
         binding.textCountProduct.visibility = View.VISIBLE
         binding.productsRecyclerView.visibility = View.VISIBLE
 
+        // If this is the first time, set up the recycler view
         if (!setupDone) {
-            binding.productsRecyclerView.setHasFixedSize(true)
-            val mLayoutManager = LinearLayoutManager(this@ProductSearchActivity, LinearLayoutManager.VERTICAL, false)
-            binding.productsRecyclerView.layoutManager = mLayoutManager
-            adapter = ProductSearchAdapter(mProducts, lowBatteryMode, this, picasso, client, localeManager)
-            binding.productsRecyclerView.adapter = adapter
+            val layoutManager = LinearLayoutManager(
+                this@ProductSearchActivity,
+                LinearLayoutManager.VERTICAL,
+                false
+            )
+            adapter = ProductSearchAdapter(
+                products,
+                lowBatteryMode,
+                this,
+                picasso,
+                client,
+                localeManager
+            )
             val dividerItemDecoration =
                 DividerItemDecoration(binding.productsRecyclerView.context, DividerItemDecoration.VERTICAL)
-            binding.productsRecyclerView.addItemDecoration(dividerItemDecoration)
 
-            // Retain an instance so that you can call `resetState()` for fresh searches
-            // Adds the scroll listener to RecyclerView
-            binding.productsRecyclerView.addOnScrollListener(object :
-                EndlessRecyclerViewScrollListener(mLayoutManager) {
-                override fun onLoadMore(page: Int, totalItemsCount: Int, view: RecyclerView) {
-                    if (mProducts.size < mCountProducts) {
-                        pageAddress = page
-                        loadDataFromAPI()
+            binding.productsRecyclerView.run RecyclerView@{
+                this@RecyclerView.setHasFixedSize(true)
+                this@RecyclerView.layoutManager = layoutManager
+                this@RecyclerView.adapter = adapter
+                this@RecyclerView.addItemDecoration(dividerItemDecoration)
+
+                // Retain an instance so that you can call `resetState()` for fresh searches
+                // Adds the scroll listener to RecyclerView
+                addOnScrollListener(object : EndlessRecyclerViewScrollListener(layoutManager) {
+                    override fun onLoadMore(page: Int, totalItemsCount: Int, view: RecyclerView) {
+                        if (products.size < mCountProducts) {
+                            pageAddress = page
+                            loadDataFromAPI()
+                        }
                     }
-                }
-            })
+                })
 
-            binding.productsRecyclerView.addOnItemTouchListener(RecyclerItemClickListener(this) { _, position ->
-                adapter.getProduct(position)?.let {
-                    productViewActivityStarter.openProduct(it.code, this)
-                }
-                return@RecyclerItemClickListener
-            })
-
+                addOnItemTouchListener(
+                    RecyclerItemClickListener(this@ProductSearchActivity) { _, position ->
+                        this@ProductSearchActivity.adapter.getProduct(position)?.let {
+                            productViewActivityStarter.openProduct(it.barcode, this@ProductSearchActivity)
+                        }
+                    }
+                )
+            }
             binding.swipeRefresh.setOnRefreshListener {
-                mProducts.clear()
+                products.clear()
                 adapter.notifyDataSetChanged()
                 binding.textCountProduct.text = resources.getString(R.string.number_of_results)
                 pageAddress = 1

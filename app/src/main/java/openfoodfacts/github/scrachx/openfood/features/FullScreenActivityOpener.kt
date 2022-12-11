@@ -33,7 +33,7 @@ object FullScreenActivityOpener {
         imageType: ProductImageField,
         mUrlImage: String,
         mImageFront: View,
-        language: String
+        language: String,
     ) = openForUrl(fragment.requireActivity(), client, product, imageType, mUrlImage, mImageFront, language)
 
     suspend fun openForUrl(
@@ -43,7 +43,7 @@ object FullScreenActivityOpener {
         imageType: ProductImageField,
         mUrlImage: String,
         mImageFront: View,
-        language: String
+        language: String,
     ) {
         // A new file added just now
         if (isAbsoluteUrl(mUrlImage)) {
@@ -67,7 +67,7 @@ object FullScreenActivityOpener {
     fun openZoom(
         activity: Activity,
         imageUrl: String,
-        imageView: View?
+        imageView: View?,
     ) = startActivity(activity, imageView, Intent(activity, ImageZoomActivity::class.java).apply {
         putExtra(IMAGE_URL, imageUrl)
     })
@@ -79,7 +79,7 @@ object FullScreenActivityOpener {
         product: Product,
         imageType: ProductImageField,
         mUrlImage: String,
-        language: String
+        language: String,
     ): Intent {
         var productLanguage = language
         if (!product.isLanguageSupported(language) && product.lang.isNotBlank()) {
@@ -96,9 +96,9 @@ object FullScreenActivityOpener {
         product: Product,
         imageType: ProductImageField,
         mImageFront: View,
-        language: String
+        language: String,
     ) {
-        client.getProductImages(product.code).product?.let { newProduct ->
+        client.getProductImages(product.barcode).product?.let { newProduct ->
             val imageUrl = newProduct.getSelectedImage(language, imageType, ImageSize.DISPLAY)
             if (!imageUrl.isNullOrBlank()) {
                 openForUrl(activity, client, newProduct, imageType, imageUrl, mImageFront, language)

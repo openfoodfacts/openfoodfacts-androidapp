@@ -21,8 +21,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentIngredientsAnalysisProductBinding
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_STATE
@@ -48,16 +52,22 @@ class IngredientsAnalysisProductFragment : BaseFragment() {
 
         refreshView(requireProductState())
 
-        viewModel.ingredients.observe(viewLifecycleOwner) {
-            if (it == null) {
-                Toast.makeText(activity, requireActivity().getString(R.string.errorWeb), Toast.LENGTH_LONG).show()
-                return@observe
+        viewModel.ingredients
+            .flowWithLifecycle(lifecycle)
+            .onEach {
+                if (it == null) {
+                    Toast.makeText(
+                        activity,
+                        requireActivity().getString(R.string.errorWeb),
+                        Toast.LENGTH_LONG
+                    ).show()
+                } else {
+                    val adapter = IngredientAnalysisRecyclerAdapter(it, requireActivity())
+                    binding.ingredientAnalysisRecyclerView.layoutManager = LinearLayoutManager(requireActivity())
+                    binding.ingredientAnalysisRecyclerView.adapter = adapter
+                }
             }
-
-            val adapter = IngredientAnalysisRecyclerAdapter(it, requireActivity())
-            binding.ingredientAnalysisRecyclerView.layoutManager = LinearLayoutManager(requireActivity())
-            binding.ingredientAnalysisRecyclerView.adapter = adapter
-        }
+            .launchIn(lifecycleScope)
     }
 
     override fun onDestroyView() {
@@ -67,7 +77,7 @@ class IngredientsAnalysisProductFragment : BaseFragment() {
 
     override fun refreshView(productState: ProductState) {
         super.refreshView(productState)
-        viewModel.product.postValue(productState.product!!)
+        viewModel.updateProduct(productState.product!!)
     }
 
     companion object {

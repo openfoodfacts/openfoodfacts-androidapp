@@ -28,6 +28,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat.checkSelfPermission
 import androidx.core.text.bold
 import androidx.core.text.buildSpannedString
+import androidx.core.widget.NestedScrollView
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.coroutineScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -67,11 +68,11 @@ class ProductCompareAdapter(
     private val productRepository: ProductRepository,
     private val picasso: Picasso,
     private val language: String,
+    private val addProductButton: Button,
 ) : RecyclerView.Adapter<ProductCompareAdapter.ViewHolder>() {
     var imageReturnedListener: ((Product, File) -> Unit)? = null
     var fullProductClickListener: ((Product) -> Unit)? = null
 
-    private val addProductButton = activity.findViewById<Button>(R.id.product_comparison_button)
     private val viewHolders = mutableListOf<ViewHolder>()
     private var imageReturnedPosition: Int? = null
 
@@ -88,17 +89,14 @@ class ProductCompareAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val layout = holder.binding.productComparisonListItemLayout
         if (products.isEmpty()) {
-            holder.binding.productComparisonListItemLayout.visibility = View.GONE
+            layout.visibility = View.GONE
             return
         }
 
         // Support synchronous scrolling
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            holder.binding.productComparisonListItemLayout.setOnScrollChangeListener { _, scrollX, scrollY, _, _ ->
-                viewHolders.forEach { it.binding.productComparisonListItemLayout.scrollTo(scrollX, scrollY) }
-            }
-        }
+        setupSyncScrolling(layout)
 
         val compareProduct = products[position]
         val product = compareProduct.product
@@ -114,7 +112,7 @@ class ProductCompareAdapter(
         }
 
         // Modify the text on the button for adding products
-        addProductButton?.setText(R.string.add_another_product)
+        addProductButton.setText(R.string.add_another_product)
 
         // Image
         val imageUrl = product.getImageUrl(language)
@@ -220,6 +218,17 @@ class ProductCompareAdapter(
         // Full product button
         holder.binding.fullProductButton.setOnClickListener {
             fullProductClickListener?.invoke(product)
+        }
+    }
+
+    private fun setupSyncScrolling(layout: NestedScrollView) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) return
+
+        layout.setOnScrollChangeListener { _, scrollX, scrollY, _, _ ->
+            viewHolders.forEach {
+                val otherLayout = it.binding.productComparisonListItemLayout
+                otherLayout.scrollTo(scrollX, scrollY)
+            }
         }
     }
 

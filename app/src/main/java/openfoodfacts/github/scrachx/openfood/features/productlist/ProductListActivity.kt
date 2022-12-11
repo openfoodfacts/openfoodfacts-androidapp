@@ -39,6 +39,7 @@ import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewAc
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.selectNavigationItem
+import openfoodfacts.github.scrachx.openfood.models.Barcode
 import openfoodfacts.github.scrachx.openfood.models.entities.ProductLists
 import openfoodfacts.github.scrachx.openfood.utils.Intent
 import openfoodfacts.github.scrachx.openfood.utils.SortType.BARCODE
@@ -91,7 +92,12 @@ class ProductListActivity : BaseActivity() {
         adapter = ProductListAdapter(this, picasso).apply {
             onItemClickListener = {
                 // TODO: Find a better way to do this
-                lifecycleScope.launch { productViewActivityStarter.openProduct(it.barcode, this@ProductListActivity) }
+                lifecycleScope.launch {
+                    productViewActivityStarter.openProduct(
+                        Barcode(it.barcode),
+                        this@ProductListActivity
+                    )
+                }
             }
         }
         binding.rvYourListedProducts.adapter = adapter

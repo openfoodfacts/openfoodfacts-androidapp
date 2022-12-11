@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewActivityStarter
+import openfoodfacts.github.scrachx.openfood.models.Barcode
 import javax.inject.Inject
 
 @HiltViewModel
@@ -14,7 +15,7 @@ class SearchByCodeViewModel @Inject constructor(
 ) : ViewModel() {
 
     // Todo: remove activity leak
-    fun openProduct(barcode: String, activity: FragmentActivity) {
+    fun openProduct(barcode: Barcode, activity: FragmentActivity) {
         viewModelScope.launch {
             productViewActivityStarter.openProduct(barcode, activity)
         }
