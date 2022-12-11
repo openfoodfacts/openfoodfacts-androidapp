@@ -3,9 +3,7 @@ package openfoodfacts.github.scrachx.openfood.repositories
 import android.content.Context
 import com.fasterxml.jackson.databind.JsonNode
 import dagger.hilt.android.qualifiers.ApplicationContext
-import io.reactivex.Single
 import kotlinx.coroutines.Dispatchers.IO
-import kotlinx.coroutines.rx2.rxSingle
 import kotlinx.coroutines.withContext
 import okhttp3.MediaType
 import okhttp3.RequestBody
@@ -127,12 +125,12 @@ class ProductRepository @Inject constructor(
     }
 
 
-    fun searchProductsByName(name: String, page: Int) = rxSingle(IO) {
-        rawApi.searchProductByName(name, fieldsToFetchFacets, page)
+    suspend fun searchProductsByName(name: String, page: Int): Search {
+        return rawApi.searchProductByName(name, fieldsToFetchFacets, page)
     }
 
-    fun getProductsByCountry(country: String, page: Int) = rxSingle(IO) {
-        rawApi.getProductsByCountry(country, page, fieldsToFetchFacets)
+    suspend fun getProductsByCountry(country: String, page: Int): Search {
+        return rawApi.getProductsByCountry(country, page, fieldsToFetchFacets)
     }
 
     /**
@@ -172,12 +170,12 @@ class ProductRepository @Inject constructor(
         return imgMap
     }
 
-    fun getProductsByCategory(category: String, page: Int) = rxSingle {
-        rawApi.getProductByCategory(category, page, fieldsToFetchFacets)
+    suspend fun getProductsByCategory(category: String, page: Int): Search {
+        return rawApi.getProductByCategory(category, page, fieldsToFetchFacets)
     }
 
-    fun getProductsByLabel(label: String, page: Int) = rxSingle {
-        rawApi.getProductsByLabel(label, page, fieldsToFetchFacets)
+    suspend fun getProductsByLabel(label: String, page: Int): Search {
+        return rawApi.getProductsByLabel(label, page, fieldsToFetchFacets)
     }
 
     /**
@@ -187,8 +185,8 @@ class ProductRepository @Inject constructor(
         daoSession.historyProductDao.addToHistory(product, localeManager.getLanguage())
     }
 
-    fun getProductsByContributor(contributor: String, page: Int) = rxSingle(IO) {
-        rawApi.getProductsByContributor(contributor, page, fieldsToFetchFacets)
+    suspend fun getProductsByContributor(contributor: String, page: Int): Search {
+        return rawApi.getProductsByContributor(contributor, page, fieldsToFetchFacets)
     }
 
     /**
@@ -228,12 +226,12 @@ class ProductRepository @Inject constructor(
         }
     }
 
-    fun getProductsByPackaging(packaging: String, page: Int): Single<Search> = rxSingle {
-        rawApi.getProductsByPackaging(packaging, page, fieldsToFetchFacets)
+    suspend fun getProductsByPackaging(packaging: String, page: Int): Search {
+        return rawApi.getProductsByPackaging(packaging, page, fieldsToFetchFacets)
     }
 
-    fun getProductsByStore(store: String, page: Int): Single<Search> = rxSingle(IO) {
-        rawApi.getProductByStores(store, page, fieldsToFetchFacets)
+    suspend fun getProductsByStore(store: String, page: Int): Search {
+        return rawApi.getProductByStores(store, page, fieldsToFetchFacets)
     }
 
     /**
@@ -242,8 +240,8 @@ class ProductRepository @Inject constructor(
      * @param brand search query for product
      * @param page page numbers
      */
-    fun getProductsByBrand(brand: String, page: Int) = rxSingle(IO) {
-        rawApi.getProductByBrands(brand, page, fieldsToFetchFacets)
+    suspend fun getProductsByBrand(brand: String, page: Int): Search {
+        return rawApi.getProductByBrands(brand, page, fieldsToFetchFacets)
     }
 
     /**
@@ -254,7 +252,10 @@ class ProductRepository @Inject constructor(
      * @param setAsDefault if true, set the image as the product default
      *                     (front) image.
      */
-    suspend fun postImg(image: ProductImage, setAsDefault: Boolean = false): Result<Unit> = withContext(IO) {
+    suspend fun postImg(
+        image: ProductImage,
+        setAsDefault: Boolean = false,
+    ): Result<Unit> = withContext(IO) {
         runCatching {
             val body = rawApi.saveImage(getUploadableMap(image))
             check(body.isObject) { "Body is not an object" }
@@ -311,17 +312,17 @@ class ProductRepository @Inject constructor(
         rawApi.unSelectImage(code, imgMap)
     }
 
-    fun getProductsByOrigin(origin: String, page: Int) = rxSingle(IO) {
-        rawApi.getProductsByOrigin(origin, page, fieldsToFetchFacets)
+    suspend fun getProductsByOrigin(origin: String, page: Int): Search {
+        return rawApi.getProductsByOrigin(origin, page, fieldsToFetchFacets)
     }
 
 
-    fun getInfoAddedIncompleteProductsSingle(contributor: String, page: Int) = rxSingle(IO) {
-        rawApi.getInfoAddedIncompleteProducts(contributor, page)
+    suspend fun getInfoAddedIncompleteProductsSingle(contributor: String, page: Int): Search {
+        return rawApi.getInfoAddedIncompleteProducts(contributor, page)
     }
 
-    fun getProductsByManufacturingPlace(manufacturingPlace: String, page: Int) = rxSingle(IO) {
-        rawApi.getProductsByManufacturingPlace(manufacturingPlace, page, fieldsToFetchFacets)
+    suspend fun getProductsByManufacturingPlace(manufacturingPlace: String, page: Int): Search {
+        return rawApi.getProductsByManufacturingPlace(manufacturingPlace, page, fieldsToFetchFacets)
     }
 
     /**
@@ -330,37 +331,37 @@ class ProductRepository @Inject constructor(
      * @param additive search query for products
      * @param page number of pages
      */
-    fun getProductsByAdditive(additive: String, page: Int) = rxSingle(IO) {
-        rawApi.getProductsByAdditive(additive, page, fieldsToFetchFacets)
+    suspend fun getProductsByAdditive(additive: String, page: Int): Search {
+        return rawApi.getProductsByAdditive(additive, page, fieldsToFetchFacets)
     }
 
-    fun getProductsByAllergen(allergen: String, page: Int) = rxSingle(IO) {
-        rawApi.getProductsByAllergen(allergen, page, fieldsToFetchFacets)
+    suspend fun getProductsByAllergen(allergen: String, page: Int): Search {
+        return rawApi.getProductsByAllergen(allergen, page, fieldsToFetchFacets)
     }
 
-    fun getToBeCompletedProductsByContributor(contributor: String, page: Int) = rxSingle(IO) {
-        rawApi.getToBeCompletedProductsByContributor(contributor, page)
+    suspend fun getToBeCompletedProductsByContributor(contributor: String, page: Int): Search {
+        return rawApi.getToBeCompletedProductsByContributor(contributor, page)
     }
 
-    fun getPicturesContributedProducts(contributor: String, page: Int) = rxSingle(IO) {
-        rawApi.getPicturesContributedProducts(contributor, page)
+    suspend fun getPicturesContributedProducts(contributor: String, page: Int): Search {
+        return rawApi.getPicturesContributedProducts(contributor, page)
     }
 
-    fun getPicturesContributedIncompleteProducts(contributor: String?, page: Int) = rxSingle(IO) {
-        rawApi.getPicturesContributedIncompleteProducts(contributor, page)
+    suspend fun getPicturesContributedIncompleteProducts(contributor: String?, page: Int): Search {
+        return rawApi.getPicturesContributedIncompleteProducts(contributor, page)
     }
 
-    fun getInfoAddedProducts(contributor: String?, page: Int) = rxSingle(IO) {
-        rawApi.getInfoAddedProducts(contributor, page)
+    suspend fun getInfoAddedProducts(contributor: String?, page: Int): Search {
+        return rawApi.getInfoAddedProducts(contributor, page)
     }
 
 
-    fun getIncompleteProducts(page: Int) = rxSingle(IO) {
-        rawApi.getIncompleteProducts(page, fieldsToFetchFacets)
+    suspend fun getIncompleteProducts(page: Int): Search {
+        return rawApi.getIncompleteProducts(page, fieldsToFetchFacets)
     }
 
-    fun getProductsByStates(state: String?, page: Int) = rxSingle(IO) {
-        rawApi.getProductsByState(state, page, fieldsToFetchFacets)
+    suspend fun getProductsByStates(state: String?, page: Int): Search {
+        return rawApi.getProductsByState(state, page, fieldsToFetchFacets)
     }
 
     companion object {

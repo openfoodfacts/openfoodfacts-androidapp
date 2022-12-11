@@ -20,15 +20,9 @@ import androidx.hilt.work.HiltWorkerFactory
 import androidx.multidex.MultiDexApplication
 import androidx.work.Configuration
 import dagger.hilt.android.HiltAndroidApp
-import io.reactivex.exceptions.UndeliverableException
-import io.reactivex.plugins.RxJavaPlugins
-import logcat.LogPriority
-import logcat.asLog
-import logcat.logcat
 import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.greendao.query.QueryBuilder
-import java.io.IOException
 import javax.inject.Inject
 
 @HiltAndroidApp
@@ -54,24 +48,6 @@ class OFFApplication : MultiDexApplication(), Configuration.Provider {
         // DEBUG
         QueryBuilder.LOG_VALUES = DEBUG
         QueryBuilder.LOG_SQL = DEBUG
-        RxJavaPlugins.setErrorHandler {
-            when (it) {
-                is UndeliverableException ->
-                    logcat(LogPriority.WARN) { "Undeliverable exception received, not sure what to do: ${it.cause}" }
-                is IOException -> {
-                    // fine, irrelevant network problem or API that throws on cancellation
-                    logcat(LogPriority.WARN) { "IO Exception: " + it.asLog() }
-                }
-                is InterruptedException -> {
-                    // fine, some blocking code was interrupted by a dispose call
-                }
-                is NullPointerException, is IllegalArgumentException, is IllegalStateException -> {
-                    // that's likely a bug in the application
-                    Thread.currentThread().uncaughtExceptionHandler!!
-                        .uncaughtException(Thread.currentThread(), it)
-                }
-            }
-        }
     }
 
     companion object {
