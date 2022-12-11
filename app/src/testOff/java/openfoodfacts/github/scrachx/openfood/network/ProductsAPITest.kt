@@ -6,7 +6,6 @@ import com.google.common.truth.Subject
 import com.google.common.truth.Subject.Factory
 import com.google.common.truth.Truth.assertAbout
 import com.google.common.truth.Truth.assertThat
-import io.reactivex.schedulers.Schedulers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
 import okhttp3.Credentials
@@ -21,7 +20,6 @@ import openfoodfacts.github.scrachx.openfood.utils.getUserAgent
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.jackson.JacksonConverterFactory
 import retrofit2.create
 import java.time.Duration
@@ -225,7 +223,6 @@ class ProductsAPITest {
 
         private fun defaultBuilder() = Retrofit.Builder()
             .addConverterFactory(JacksonConverterFactory.create(jacksonObjectMapper()))
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
 
     }
 

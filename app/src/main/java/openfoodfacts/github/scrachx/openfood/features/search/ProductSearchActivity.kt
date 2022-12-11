@@ -22,12 +22,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
-import io.reactivex.Single
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.rx2.await
 import kotlinx.coroutines.withContext
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
@@ -325,26 +323,48 @@ class ProductSearchActivity : BaseActivity() {
     fun loadDataFromAPI() {
         val searchQuery = mSearchInfo.searchQuery
         when (mSearchInfo.searchType) {
-            BRAND -> client.getProductsByBrand(searchQuery, pageAddress)
-                .startSearch(R.string.txt_no_matching_brand_products)
+            BRAND -> {
+                startSearch(R.string.txt_no_matching_brand_products, -1) {
+                    client.getProductsByBrand(searchQuery, pageAddress)
+                }
+            }
 
-            COUNTRY -> client.getProductsByCountry(searchQuery, pageAddress)
-                .startSearch(R.string.txt_no_matching_country_products)
+            COUNTRY -> {
+                startSearch(R.string.txt_no_matching_country_products, -1) {
+                    client.getProductsByCountry(searchQuery, pageAddress)
+                }
+            }
 
-            ORIGIN -> client.getProductsByOrigin(searchQuery, pageAddress)
-                .startSearch(R.string.txt_no_matching_country_products)
+            ORIGIN -> {
+                startSearch(R.string.txt_no_matching_country_products, -1) {
+                    client.getProductsByOrigin(searchQuery, pageAddress)
+                }
+            }
 
-            MANUFACTURING_PLACE -> client.getProductsByManufacturingPlace(searchQuery, pageAddress)
-                .startSearch(R.string.txt_no_matching_country_products)
+            MANUFACTURING_PLACE -> {
+                startSearch(R.string.txt_no_matching_country_products, -1) {
+                    client.getProductsByManufacturingPlace(searchQuery, pageAddress)
+                }
+            }
 
-            ADDITIVE -> client.getProductsByAdditive(searchQuery, pageAddress)
-                .startSearch(R.string.txt_no_matching_additive_products)
+            ADDITIVE -> {
+                startSearch(R.string.txt_no_matching_additive_products, -1) {
+                    client.getProductsByAdditive(searchQuery,
+                        pageAddress)
+                }
+            }
 
-            STORE -> client.getProductsByStore(searchQuery, pageAddress)
-                .startSearch(R.string.txt_no_matching_store_products)
+            STORE -> {
+                startSearch(R.string.txt_no_matching_store_products, -1) {
+                    client.getProductsByStore(searchQuery, pageAddress)
+                }
+            }
 
-            PACKAGING -> client.getProductsByPackaging(searchQuery, pageAddress)
-                .startSearch(R.string.txt_no_matching_packaging_products)
+            PACKAGING -> {
+                startSearch(R.string.txt_no_matching_packaging_products, -1) {
+                    client.getProductsByPackaging(searchQuery, pageAddress)
+                }
+            }
 
             SEARCH -> {
                 val barcode = Barcode(searchQuery)
@@ -355,38 +375,55 @@ class ProductSearchActivity : BaseActivity() {
                         productOpenedListener = { finish() }
                     )
                 } else {
-                    client.searchProductsByName(searchQuery, pageAddress)
-                        .startSearch(R.string.txt_no_matching_products, R.string.txt_broaden_search)
+                    startSearch(R.string.txt_no_matching_products, R.string.txt_broaden_search) {
+                        client.searchProductsByName(searchQuery, pageAddress)
+                    }
                 }
             }
-            LABEL -> client.getProductsByLabel(searchQuery, pageAddress)
-                .startSearch(R.string.txt_no_matching_label_products)
+            LABEL -> {
+                startSearch(R.string.txt_no_matching_label_products, -1) {
+                    client.getProductsByLabel(searchQuery, pageAddress)
+                }
+            }
 
-            CATEGORY -> client.getProductsByCategory(searchQuery, pageAddress)
-                .startSearch(R.string.txt_no_matching__category_products)
+            CATEGORY -> {
+                startSearch(R.string.txt_no_matching__category_products, -1) {
+                    client.getProductsByCategory(searchQuery, pageAddress)
+                }
+            }
 
-            ALLERGEN -> client.getProductsByAllergen(searchQuery, pageAddress)
-                .startSearch(R.string.txt_no_matching_allergen_products)
+            ALLERGEN -> {
+                startSearch(R.string.txt_no_matching_allergen_products, -1) {
+                    client.getProductsByAllergen(searchQuery, pageAddress)
+                }
+            }
 
             CONTRIBUTOR -> loadDataForContributor(searchQuery)
 
-            STATE -> client.getProductsByStates(searchQuery, pageAddress)
-                .startSearch(R.string.txt_no_matching_allergen_products)
+            STATE -> {
+                startSearch(R.string.txt_no_matching_allergen_products, -1) {
+                    client.getProductsByStates(searchQuery, pageAddress)
+                }
+            }
 
             // Get Products to be completed data and input it to loadData function
-            INCOMPLETE_PRODUCT -> client.getIncompleteProducts(pageAddress)
-                .startSearch(R.string.txt_no_matching_incomplete_products)
+            INCOMPLETE_PRODUCT -> {
+                startSearch(R.string.txt_no_matching_incomplete_products, -1)
+                { client.getIncompleteProducts(pageAddress) }
+            }
 
             else -> Log.e("Products Browsing", "No match case found for ${mSearchInfo.searchType}")
         }
     }
 
-
-    private fun Single<Search>.startSearch(@StringRes noMatchMsg: Int, @StringRes extendedMsg: Int = -1) {
+    private fun startSearch(
+        @StringRes noResultsText: Int, @StringRes broadenSearchText: Int,
+        searchFun: suspend () -> Search,
+    ) {
         lifecycleScope.launch(Main) {
             var throwable: Throwable? = null
             val search = try {
-                withContext(IO) { this@startSearch.await() }
+                withContext(IO) { searchFun() }
             } catch (err: Exception) {
                 throwable = err
                 null
@@ -394,30 +431,46 @@ class ProductSearchActivity : BaseActivity() {
 
             // Ensure the Fragment is still visible = job not cancelled
             if (isActive) {
-                displaySearch(throwable == null, search, noMatchMsg, extendedMsg)
+                displaySearch(throwable == null, search, noResultsText, broadenSearchText)
             }
         }
     }
 
     private fun loadDataForContributor(searchQuery: String) {
         when (contributionType) {
-            1 -> client.getToBeCompletedProductsByContributor(searchQuery, pageAddress)
-                .startSearch(R.string.txt_no_matching_contributor_products)
+            1 -> {
+                startSearch(R.string.txt_no_matching_contributor_products, -1)
+                { client.getToBeCompletedProductsByContributor(searchQuery, pageAddress) }
+            }
 
-            2 -> client.getPicturesContributedProducts(searchQuery, pageAddress)
-                .startSearch(R.string.txt_no_matching_contributor_products)
+            2 -> {
+                startSearch(R.string.txt_no_matching_contributor_products, -1) {
+                    client.getPicturesContributedProducts(searchQuery,
+                        pageAddress)
+                }
+            }
 
-            3 -> client.getPicturesContributedIncompleteProducts(searchQuery, pageAddress)
-                .startSearch(R.string.txt_no_matching_contributor_products)
+            3 -> {
+                startSearch(R.string.txt_no_matching_contributor_products,
+                    -1) { client.getPicturesContributedIncompleteProducts(searchQuery, pageAddress) }
+            }
 
-            4 -> client.getInfoAddedProducts(searchQuery, pageAddress)
-                .startSearch(R.string.txt_no_matching_contributor_products)
+            4 -> {
+                startSearch(R.string.txt_no_matching_contributor_products,
+                    -1) { client.getInfoAddedProducts(searchQuery, pageAddress) }
+            }
 
-            5 -> client.getInfoAddedIncompleteProductsSingle(searchQuery, pageAddress)
-                .startSearch(R.string.txt_no_matching_contributor_products)
+            5 -> {
+                startSearch(R.string.txt_no_matching_contributor_products, -1) {
+                    client.getInfoAddedIncompleteProductsSingle(searchQuery, pageAddress)
+                }
+            }
 
-            else -> client.getProductsByContributor(searchQuery, pageAddress)
-                .startSearch(R.string.txt_no_matching_contributor_products)
+            else -> {
+                startSearch(R.string.txt_no_matching_contributor_products, -1) {
+                    client.getProductsByContributor(searchQuery, pageAddress)
+                }
+            }
         }
     }
 
