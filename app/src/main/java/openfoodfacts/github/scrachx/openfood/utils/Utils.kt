@@ -20,8 +20,6 @@ package openfoodfacts.github.scrachx.openfood.utils
 import android.content.Context
 import android.content.pm.PackageManager
 import android.content.pm.PackageManager.PERMISSION_GRANTED
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.net.Uri
 import android.os.Environment
@@ -35,43 +33,17 @@ import androidx.core.net.toUri
 import androidx.core.view.children
 import com.squareup.picasso.Callback
 import com.squareup.picasso.RequestCreator
-import logcat.LogPriority
-import logcat.asLog
-import logcat.logcat
 import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.R
 import java.io.File
-import java.io.FileInputStream
-import java.io.FileNotFoundException
-import java.io.FileOutputStream
-import java.io.IOException
 import java.text.DecimalFormat
 import java.text.DecimalFormatSymbols
 import java.util.*
 
-private const val LOG_TAG_COMPRESS = "COMPRESS_IMAGE"
 
 object Utils {
     const val NO_DRAWABLE_RESOURCE = 0
     const val FORCE_REFRESH_TAXONOMIES = "force_refresh_taxonomies"
-
-    @JvmStatic
-    fun compressImage(fileUrl: String): String? {
-        val decodedBitmap = decodeFile(File(fileUrl))
-        if (decodedBitmap == null) {
-            Log.e(LOG_TAG_COMPRESS, "$fileUrl not found")
-            return null
-        }
-        val smallFileFront = File(fileUrl.replace(".png", "_small.png"))
-        try {
-            FileOutputStream(smallFileFront).use {
-                decodedBitmap.compress(Bitmap.CompressFormat.PNG, 100, it)
-            }
-        } catch (e: IOException) {
-            Log.e(LOG_TAG_COMPRESS, e.message, e)
-        }
-        return smallFileFront.toString()
-    }
 
 
     fun makeOrGetPictureDirectory(context: Context): File {
@@ -113,37 +85,6 @@ internal inline fun IntArray.allGranted() = isNotEmpty() && all(Int::isGranted)
 fun getUserAgent(type: String) = "${getUserAgent()} $type"
 fun getUserAgent() = "${BuildConfig.APP_NAME} Official Android App ${BuildConfig.VERSION_NAME}"
 
-/**
- * Decodes image and scales it to reduce memory consumption
- */
-private fun decodeFile(f: File): Bitmap? {
-    try {
-        // Decode image size
-        val o = BitmapFactory.Options()
-        o.inJustDecodeBounds = true
-        BitmapFactory.decodeStream(FileInputStream(f), null, o)
-
-        // The new size we want to scale to
-        // Find the correct scale value. It should be the power of 2.
-        var scale = 1
-        while (o.outWidth / scale / 2 >= REQUIRED_SIZE &&
-            o.outHeight / scale / 2 >= REQUIRED_SIZE
-        ) {
-            scale *= 2
-        }
-
-        // Decode with inSampleSize
-        val o2 = BitmapFactory.Options().apply {
-            inSampleSize = scale
-        }
-        return BitmapFactory.decodeStream(FileInputStream(f), null, o2)
-    } catch (e: FileNotFoundException) {
-        logcat(LOG_TAG, LogPriority.ERROR) { "Error while decoding file $f: " + e.asLog() }
-    }
-    return null
-}
-
-private const val REQUIRED_SIZE = 1200
 
 @Deprecated("Use activity results")
 const val MY_PERMISSIONS_REQUEST_CAMERA = 1
