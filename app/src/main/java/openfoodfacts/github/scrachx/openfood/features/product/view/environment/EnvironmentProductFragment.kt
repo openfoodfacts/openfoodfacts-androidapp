@@ -35,8 +35,8 @@ import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
 import openfoodfacts.github.scrachx.openfood.utils.PhotoReceiverHandler
 import openfoodfacts.github.scrachx.openfood.utils.getRoundNumber
-import openfoodfacts.github.scrachx.openfood.utils.isPowerSaveMode
 import openfoodfacts.github.scrachx.openfood.utils.isImageLoadingDisabled
+import openfoodfacts.github.scrachx.openfood.utils.isPowerSaveMode
 import openfoodfacts.github.scrachx.openfood.utils.isUserSet
 import openfoodfacts.github.scrachx.openfood.utils.requireProductState
 import java.io.File
@@ -99,7 +99,8 @@ class EnvironmentProductFragment : BaseFragment() {
 
         val imagePackagingUrl = product.getImagePackagingUrl(langCode)
         if (!imagePackagingUrl.isNullOrBlank()) {
-            binding.packagingImagetipBox.setTipMessage(getString(R.string.onboarding_hint_msg, getString(R.string.image_edit_tip)))
+            binding.packagingImagetipBox.setTipMessage(getString(R.string.onboarding_hint_msg,
+                getString(R.string.image_edit_tip)))
             binding.packagingImagetipBox.loadToolTip()
             binding.addPhotoLabel.visibility = View.GONE
 
@@ -206,8 +207,12 @@ class EnvironmentProductFragment : BaseFragment() {
 
     private fun loadPackagingPhoto(photoFile: File) {
         // Create a new instance of ProductImage so we can load to server
-        val image = ProductImage(productState.product!!.code, ProductImageField.PACKAGING, photoFile, localeManager.getLanguage())
-        image.filePath = photoFile.absolutePath
+        val image = ProductImage(
+            code = productState.product!!.code,
+            field = ProductImageField.PACKAGING,
+            imageFile = photoFile,
+            language = localeManager.getLanguage()
+        )
 
         // Load to server
         lifecycleScope.launch { productRepo.postImg(image) }

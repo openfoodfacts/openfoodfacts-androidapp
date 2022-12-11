@@ -1013,14 +1013,16 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
     @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data) {
-            val resultUri = it.toURI()
+        photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data) { imageFile ->
+            val resultUri = imageFile.toURI()
             imagePath = resultUri.path
-            photoFile = it
-            val image =
-                ProductImage(productCode!!, ProductImageField.NUTRITION, it, localeManager.getLanguage()).apply {
-                    filePath = resultUri.path
-                }
+            photoFile = imageFile
+            val image = ProductImage(
+                code = productCode!!,
+                field = ProductImageField.NUTRITION,
+                imageFile = imageFile,
+                language = localeManager.getLanguage(),
+            )
             (activity as? ProductEditActivity)?.savePhoto(image, 2)
             hideImageProgress(false, "")
         }

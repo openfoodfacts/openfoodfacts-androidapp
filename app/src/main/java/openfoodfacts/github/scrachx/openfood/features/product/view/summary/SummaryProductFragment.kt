@@ -973,7 +973,6 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
             val photoFile = if (sendOther) newPhotoFile else File(resultUri.path)
             val field = if (sendOther) ProductImageField.OTHER else ProductImageField.FRONT
             val image = ProductImage(product.code, field, photoFile, localeManager.getLanguage())
-            image.filePath = photoFile.absolutePath
             uploadImage(image)
             if (!sendOther) {
                 loadPhoto(photoFile)
