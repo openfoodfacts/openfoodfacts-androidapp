@@ -87,13 +87,13 @@ fun Context.getCameraCacheLocation(): File {
  * `false` otherwise.
  *
  */
-@Suppress("DEPRECATION")
-fun Context.isNetworkConnected(): Boolean {
-    val cm = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+fun Context.isNetworkAvailable(): Boolean {
+    val manager = getSystemService<ConnectivityManager>() ?: return false
     return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-        val capability = cm.getNetworkCapabilities(cm.activeNetwork)
+        val capability = manager.getNetworkCapabilities(manager.activeNetwork)
         capability?.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET) ?: false
     } else {
-        cm.activeNetworkInfo?.isConnectedOrConnecting ?: false
+        @Suppress("DEPRECATION")
+        manager.activeNetworkInfo?.isConnectedOrConnecting ?: false
     }
 }

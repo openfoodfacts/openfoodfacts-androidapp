@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.widget.SearchView
 import androidx.activity.viewModels
+import androidx.core.content.getSystemService
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -76,7 +77,7 @@ class AdditiveListActivity : BaseActivity() {
         val additives = viewModel.additives.value
 
         searchView.queryHint = getString(R.string.addtive_search)
-        val searchManager = this.getSystemService(SEARCH_SERVICE) as SearchManager
+        val searchManager = this.getSystemService<SearchManager>()!!
 
         if (searchManager.getSearchableInfo(this.componentName) != null) {
             searchView.setSearchableInfo(searchManager.getSearchableInfo(this.componentName))

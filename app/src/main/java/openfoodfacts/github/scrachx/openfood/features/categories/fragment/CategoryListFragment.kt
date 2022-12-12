@@ -1,17 +1,21 @@
 package openfoodfacts.github.scrachx.openfood.features.categories.fragment
 
 import android.app.SearchManager
-import android.content.Context
 import android.os.Bundle
 import android.provider.SearchRecentSuggestions
-import android.view.*
+import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.SearchView
+import androidx.core.content.getSystemService
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import openfoodfacts.github.scrachx.openfood.R
-import androidx.core.view.isVisible
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentCategoryListBinding
 import openfoodfacts.github.scrachx.openfood.features.categories.adapter.CategoryListRecyclerAdapter
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
@@ -80,7 +84,7 @@ class CategoryListFragment : BaseFragment() {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_main, menu)
-        val searchManager = requireActivity().getSystemService(Context.SEARCH_SERVICE) as SearchManager
+        val searchManager = requireActivity().getSystemService<SearchManager>()!!
         val searchMenuItem = menu.findItem(R.id.action_search)
         val searchView = searchMenuItem.actionView as SearchView
 

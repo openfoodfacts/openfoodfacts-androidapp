@@ -1,9 +1,9 @@
 package openfoodfacts.github.scrachx.openfood.utils
 
 import android.app.Activity
-import android.content.Context
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import androidx.core.content.getSystemService
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity
@@ -11,14 +11,14 @@ import openfoodfacts.github.scrachx.openfood.models.ProductState
 
 fun Activity.hideKeyboard() {
     val view = currentFocus ?: return
-    (getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager)
-        .hideSoftInputFromWindow(view.windowToken, 0)
+    val service = getSystemService<InputMethodManager>()
+    service?.hideSoftInputFromWindow(view.windowToken, 0)
 }
 
 fun Activity.showKeyboard() {
     val view = currentFocus ?: return
-    (getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager)
-        .showSoftInput(view, 0)
+    val service = getSystemService<InputMethodManager>()
+    service?.showSoftInput(view, 0)
 }
 
 fun Activity.getProductState() = intent.getSerializableExtra(ProductEditActivity.KEY_STATE) as ProductState?

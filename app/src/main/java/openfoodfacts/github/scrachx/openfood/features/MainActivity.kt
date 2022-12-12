@@ -43,6 +43,7 @@ import androidx.core.app.ActivityCompat.shouldShowRequestPermissionRationale
 import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.checkSelfPermission
 import androidx.core.content.edit
+import androidx.core.content.getSystemService
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -145,7 +146,7 @@ import openfoodfacts.github.scrachx.openfood.utils.hideKeyboard
 import openfoodfacts.github.scrachx.openfood.utils.isApplicationInstalled
 import openfoodfacts.github.scrachx.openfood.utils.isGranted
 import openfoodfacts.github.scrachx.openfood.utils.isHardwareCameraInstalled
-import openfoodfacts.github.scrachx.openfood.utils.isNetworkConnected
+import openfoodfacts.github.scrachx.openfood.utils.isNetworkAvailable
 import openfoodfacts.github.scrachx.openfood.utils.isUserSet
 import openfoodfacts.github.scrachx.openfood.utils.listenToKeyboardVisibilityChanges
 import openfoodfacts.github.scrachx.openfood.utils.primaryItem
@@ -349,7 +350,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener, NavigationDrawerH
         // Adds nutriscore and quantity values in old history for schema 5 update
 
         val isOldHistoryDataSynced = getAppPreferences().getBoolean("is_old_history_data_synced", false)
-        if (!isOldHistoryDataSynced && isNetworkConnected()) {
+        if (!isOldHistoryDataSynced && isNetworkAvailable()) {
             historySyncJob?.cancel()
             historySyncJob = viewModel.syncOldHistory()
         }
@@ -710,7 +711,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener, NavigationDrawerH
 
 
         // Associate searchable configuration with the SearchView
-        val searchManager = getSystemService(SEARCH_SERVICE) as SearchManager
+        val searchManager = getSystemService<SearchManager>() ?: error("SearchManager not found")
         searchMenuItem = menu.findItem(R.id.action_search).also { menuItem ->
             val searchView = menuItem.actionView as SearchView
             val bottomNavigation = binding.bottomNavigationInclude.bottomNavigation
@@ -969,7 +970,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener, NavigationDrawerH
                         Toast.makeText(this@MainActivity, getString(R.string.sorry_msg), Toast.LENGTH_LONG).show()
                     } else {
                         dialog.dismiss()
-                        if (!this@MainActivity.isNetworkConnected()) {
+                        if (!this@MainActivity.isNetworkAvailable()) {
                             ProductEditActivity.start(this@MainActivity, Product().apply { code = tempBarcode.raw })
                         } else {
                             contentResolver.openInputStream(imgUri)!!.use {

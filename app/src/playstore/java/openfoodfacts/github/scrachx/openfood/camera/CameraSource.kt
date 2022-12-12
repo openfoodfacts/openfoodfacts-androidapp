@@ -11,6 +11,7 @@ import android.util.Log
 import android.view.Surface
 import android.view.SurfaceHolder
 import android.view.WindowManager
+import androidx.core.content.getSystemService
 import com.google.android.gms.common.images.Size
 import openfoodfacts.github.scrachx.openfood.utils.CameraUtils.ASPECT_RATIO_TOLERANCE
 import openfoodfacts.github.scrachx.openfood.utils.CameraUtils.generateValidPreviewSizeList
@@ -283,7 +284,7 @@ class CameraSource(private val graphicOverlay: GraphicOverlay) {
      * @param parameters the camera parameters for which to set the rotation.
      */
     private fun setRotation(camera: Camera, parameters: Parameters) {
-        val windowManager = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
+        val windowManager = context.getSystemService<WindowManager>()!!
         val degrees = when (val deviceRotation = windowManager.defaultDisplay.rotation) {
             Surface.ROTATION_0 -> 0
             Surface.ROTATION_90 -> 90
