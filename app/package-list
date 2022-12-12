@@ -3008,7 +3008,7 @@ $dokka.location:openfoodfacts.github.scrachx.openfood.utils//isHardwareCameraIns
 $dokka.location:openfoodfacts.github.scrachx.openfood.utils//isHardwareCameraInstalled/android.content.Context#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.utils/is-hardware-camera-installed.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.utils//isImageLoadingDisabled/android.content.Context#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.utils/is-image-loading-disabled.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.utils//isLocaleFile/#kotlin.String?/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.utils/is-locale-file.html
-$dokka.location:openfoodfacts.github.scrachx.openfood.utils//isNetworkConnected/android.content.Context#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.utils/is-network-connected.html
+$dokka.location:openfoodfacts.github.scrachx.openfood.utils//isNetworkAvailable/android.content.Context#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.utils/is-network-available.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.utils//isNotEmpty/android.widget.EditText?#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.utils/is-not-empty.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.utils//isPerServingInLiter/openfoodfacts.github.scrachx.openfood.models.Product#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.utils/is-per-serving-in-liter.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.utils//isPowerSaveMode/android.content.Context#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.utils/is-power-save-mode.html
