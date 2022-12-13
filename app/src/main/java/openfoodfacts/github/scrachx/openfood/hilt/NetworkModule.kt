@@ -5,7 +5,6 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import io.reactivex.schedulers.Schedulers
 import okhttp3.*
 import okhttp3.logging.HttpLoggingInterceptor
 import openfoodfacts.github.scrachx.openfood.BuildConfig
@@ -15,7 +14,6 @@ import openfoodfacts.github.scrachx.openfood.hilt.qualifiers.WikiRetrofit
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.jackson.JacksonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
@@ -89,7 +87,6 @@ object NetworkModule {
     ) = Retrofit {
         client(client)
         addConverterFactory(JacksonConverterFactory.create(jacksonObjectMapper()))
-        addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
         builderAction()
     }
 }

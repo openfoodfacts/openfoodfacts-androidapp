@@ -14,7 +14,6 @@ import openfoodfacts.github.scrachx.openfood.utils.ProductStringConverter
 import org.apache.commons.lang3.builder.ToStringBuilder
 import org.apache.commons.lang3.builder.ToStringStyle
 import java.util.*
-import kotlin.collections.ArrayList
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -284,13 +283,13 @@ class Product : SearchProduct() {
 
 
     fun hasProductNameIn(languageCode: String?) =
-            additionalProperties[lcProductNameKey(languageCode!!)] != null
+        additionalProperties[lcProductNameKey(languageCode!!)] != null
 
     fun getGenericName(languageCode: String) =
-            getFieldForLanguage("generic_name", languageCode) ?: genericName
+        getFieldForLanguage("generic_name", languageCode) ?: genericName
 
     fun getIngredientsText(languageCode: String) =
-            getFieldForLanguage(ApiFields.Keys.INGREDIENTS_TEXT, languageCode) ?: ingredientsText
+        getFieldForLanguage(ApiFields.Keys.INGREDIENTS_TEXT, languageCode) ?: ingredientsText
 
     fun getImageIngredientsUrl(languageCode: String?): String? {
         val result = getSelectedImage(languageCode, ProductImageField.INGREDIENTS, ImageSize.DISPLAY)
@@ -308,20 +307,21 @@ class Product : SearchProduct() {
     }
 
     private fun getFieldForLanguage(field: String, languageCode: String) =
-            additionalProperties["${field}_$languageCode"] // First try the passed language
-                    ?.toString()
-                    ?.ifBlank { null }
-                    ?.replace("\\'", "'")
-                    ?.replace("&quot", "'")
-                    ?: additionalProperties["${field}_${ApiFields.Defaults.DEFAULT_LANGUAGE}"] // Then try english
-                            ?.toString()
-                            ?.ifBlank { null }
-                            ?.replace("\\'", "'")
-                            ?.replace("&quot", "'")
+        additionalProperties["${field}_$languageCode"] // First try the passed language
+            ?.toString()
+            ?.ifBlank { null }
+            ?.replace("\\'", "'")
+            ?.replace("&quot", "'")
+            ?: additionalProperties["${field}_${ApiFields.Defaults.DEFAULT_LANGUAGE}"] // Then try english
+                ?.toString()
+                ?.ifBlank { null }
+                ?.replace("\\'", "'")
+                ?.replace("&quot", "'")
 
 
     fun getAvailableLanguageForImage(type: ProductImageField, size: ImageSize): List<String> {
-        val images = additionalProperties[ApiFields.Keys.SELECTED_IMAGES] as Map<String, Map<String, Map<String, String>>>?
+        val images =
+            additionalProperties[ApiFields.Keys.SELECTED_IMAGES] as Map<String, Map<String, Map<String, String>>>?
         if (images != null) {
             val imagesType = images[type.name.lowercase(Locale.ROOT)]
             if (imagesType != null) {
@@ -333,7 +333,7 @@ class Product : SearchProduct() {
     }
 
     fun getImageDetails(imageKey: String) =
-            (additionalProperties[ApiFields.Keys.IMAGES] as Map<String, Map<String, *>>?)?.get(imageKey)
+        (additionalProperties[ApiFields.Keys.IMAGES] as Map<String, Map<String, *>>?)?.get(imageKey)
 
 
     fun isLanguageSupported(languageCode: String?): Boolean {
@@ -356,7 +356,7 @@ class Product : SearchProduct() {
      * If null returns default product name.
      */
     fun getProductName(languageCode: String) =
-            getFieldForLanguage(ApiFields.Keys.PRODUCT_NAME, languageCode) ?: productName
+        getFieldForLanguage(ApiFields.Keys.PRODUCT_NAME, languageCode) ?: productName
 
     fun getImageUrl(languageCode: String?): String? {
         val url = getSelectedImage(languageCode, ProductImageField.FRONT, ImageSize.DISPLAY)
@@ -375,10 +375,10 @@ class Product : SearchProduct() {
     }
 
     override fun toString() = ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
-            .append("code", code)
-            .append("productName", productName)
-            .append("additional_properties", additionalProperties)
-            .toString()
+        .append("code", code)
+        .append("productName", productName)
+        .append("additional_properties", additionalProperties)
+        .toString()
 
     companion object {
         private const val serialVersionUID = 1L

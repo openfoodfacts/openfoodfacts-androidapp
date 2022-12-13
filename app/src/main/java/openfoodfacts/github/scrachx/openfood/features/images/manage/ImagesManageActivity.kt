@@ -66,6 +66,7 @@ import openfoodfacts.github.scrachx.openfood.images.getResourceId
 import openfoodfacts.github.scrachx.openfood.images.getResourceIdForEditAction
 import openfoodfacts.github.scrachx.openfood.images.getScreenTransformation
 import openfoodfacts.github.scrachx.openfood.images.toServerTransformation
+import openfoodfacts.github.scrachx.openfood.models.Barcode
 import openfoodfacts.github.scrachx.openfood.models.LanguageData
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
@@ -364,7 +365,8 @@ class ImagesManageActivity : BaseActivity() {
             startRefresh(getString(R.string.loading_product, "${it.getProductName(localeManager.getLanguage())}..."))
 
             lifecycleScope.launch {
-                val newState = client.getProductImages(it.code)
+                val barcode = Barcode(it.code)
+                val newState = client.getProductImages(barcode)
                 val newProduct = newState.product
                 var imageReloaded = false
 
@@ -397,12 +399,13 @@ class ImagesManageActivity : BaseActivity() {
      * Could be improved by loading only the field "images".
      */
     private fun updateProductImagesInfo(toDoAfter: () -> Unit = {}) {
-        getProduct()?.let { product ->
-            lifecycleScope.launchWhenCreated {
-                val newState = client.getProductImages(product.code)
-                newState.product?.let { intent.putExtra(PRODUCT, it) }
-                toDoAfter()
-            }
+        val product = getProduct() ?: return
+
+        val barcode = Barcode(product.code)
+        lifecycleScope.launchWhenCreated {
+            val newState = client.getProductImages(barcode)
+            newState.product?.let { intent.putExtra(PRODUCT, it) }
+            toDoAfter()
         }
     }
 
@@ -698,14 +701,12 @@ class ImagesManageActivity : BaseActivity() {
     private fun onPhotoReturned(newPhotoFile: File) {
         startRefresh(getString(R.string.uploading_image))
         val image = ProductImage(
-            requireProduct().code,
+            requireProduct().barcode,
             getSelectedType(),
-            newPhotoFile,
-            getCurrentLanguage()
-        ).apply {
-            filePath = newPhotoFile.absolutePath
-        }
-
+            getCurrentLanguage(),
+            newPhotoFile.readBytes(),
+            newPhotoFile.absolutePath
+        )
         // Send image
         lifecycleScope.launchWhenCreated {
             try {

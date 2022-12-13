@@ -1,6 +1,6 @@
 [versions]
 # https://kotlinlang.org/docs/releases.html#release-details
-kotlin = "1.7.20"
+kotlin = "1.7.21"
 # https://github.com/Kotlin/kotlinx.coroutines
 kotlin-coroutines = "1.6.2"
 # https://github.com/FasterXML/jackson
@@ -13,7 +13,7 @@ dagger = "2.39.1"
 # https://developer.android.com/studio/releases/gradle-plugin
 android-gradle = "7.3.1"
 # https://developer.android.com/jetpack/androidx/releases/lifecycle
-android-lifecycle = "2.4.1"
+android-lifecycle = "2.5.1"
 # https://github.com/greenrobot/EventBus
 eventbus = "3.3.1"
 # https://junit.org/junit5/
@@ -37,7 +37,6 @@ plugin-gradle-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", v
 
 # Coroutines
 kotlin-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlin-coroutines" }
-kotlin-coroutines-rx2 = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-rx2", version.ref = "kotlin-coroutines" }
 kotlin-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlin-coroutines" }
 test-kotlin-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlin-coroutines" }
 # Android KTX
@@ -70,15 +69,9 @@ hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hil
 # WorkManager with Hilt
 androidx-hilt-work = { module = "androidx.hilt:hilt-work", version.ref = "androidx-hilt" }
 androidx-hilt-compiler = { module = "androidx.hilt:hilt-compiler", version.ref = "androidx-hilt" }
-# Reactive Streams
-rx-kotlin = "io.reactivex.rxjava2:rxkotlin:2.4.0"
-rx-java = "io.reactivex.rxjava2:rxjava:2.2.21"
-rx-android = "io.reactivex.rxjava2:rxandroid:2.1.1"
-rx-relay = "com.jakewharton.rxrelay2:rxrelay:2.1.1"
 # Networking
 networking-retrofit-core = { module = "com.squareup.retrofit2:retrofit", version.ref = "com-squareup-retrofit2" }
 networking-retrofit-converter-jackson = { module = "com.squareup.retrofit2:converter-jackson", version.ref = "com-squareup-retrofit2" }
-networking-retrofit-adapter-rxjava2 = { module = "com.squareup.retrofit2:adapter-rxjava2", version.ref = "com-squareup-retrofit2" }
 networking-retrofit-converter-scalars = { module = "com.squareup.retrofit2:converter-scalars", version.ref = "com-squareup-retrofit2" }
 networking-okhttp3-logging-interceptor = "com.squareup.okhttp3:logging-interceptor:3.12.13"
 # Logging
@@ -169,7 +162,6 @@ screengrab = "tools.fastlane:screengrab:2.1.1"
 kotlin-coroutines = [
     "kotlin-coroutines-android",
     "kotlin-coroutines-core",
-    "kotlin-coroutines-rx2",
 ]
 android-ktx = [
     "android-ktx-activity",
@@ -196,15 +188,8 @@ androidx = [
     "androidx-viewpager2",
     "androidx-work-runtime",
 ]
-rx = [
-    "rx-android",
-    "rx-java",
-    "rx-kotlin",
-    "rx-relay",
-]
 networking = [
     "networking-okhttp3-logging-interceptor",
-    "networking-retrofit-adapter-rxjava2",
     "networking-retrofit-converter-jackson",
     "networking-retrofit-converter-scalars",
     "networking-retrofit-core",

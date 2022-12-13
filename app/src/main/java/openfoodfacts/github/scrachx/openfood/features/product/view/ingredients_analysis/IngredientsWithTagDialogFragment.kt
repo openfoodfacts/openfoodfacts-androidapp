@@ -69,9 +69,12 @@ class IngredientsWithTagDialogFragment : DialogFragment() {
         picasso
             .load(iconUrl)
             .into(binding.icon)
-        binding.iconFrame.background = ResourcesCompat.getDrawable(requireActivity().resources, R.drawable.rounded_button, requireActivity().theme)?.apply {
-            colorFilter = BlendModeColorFilterCompat.createBlendModeColorFilterCompat(Color.parseColor(color), BlendModeCompat.SRC_IN)
-        }
+        binding.iconFrame.background =
+            ResourcesCompat.getDrawable(requireActivity().resources, R.drawable.rounded_button, requireActivity().theme)
+                ?.apply {
+                    colorFilter = BlendModeColorFilterCompat.createBlendModeColorFilterCompat(Color.parseColor(color),
+                        BlendModeCompat.SRC_IN)
+                }
         binding.title.text = name
         binding.cb.let {
             it.text = getString(R.string.display_analysis_tag_status, typeName.lowercase(Locale.getDefault()))
@@ -81,33 +84,41 @@ class IngredientsWithTagDialogFragment : DialogFragment() {
             }
         }
         var messageToBeShown =
-            HtmlCompat.fromHtml(getString(R.string.ingredients_in_this_product_are, name!!.lowercase(Locale.getDefault())), HtmlCompat.FROM_HTML_MODE_LEGACY)
+            HtmlCompat.fromHtml(getString(R.string.ingredients_in_this_product_are,
+                name!!.lowercase(Locale.getDefault())), HtmlCompat.FROM_HTML_MODE_LEGACY)
         val showHelpTranslate = tag != null && tag.contains("unknown")
 
         if (arguments.getBoolean(PHOTOS_TO_BE_VALIDATED_KEY, false)) {
-            messageToBeShown = HtmlCompat.fromHtml(getString(R.string.unknown_status_missing_ingredients), HtmlCompat.FROM_HTML_MODE_LEGACY)
+            messageToBeShown = HtmlCompat.fromHtml(getString(R.string.unknown_status_missing_ingredients),
+                HtmlCompat.FROM_HTML_MODE_LEGACY)
             binding.image.setImageResource(R.drawable.ic_add_a_photo_dark_48dp)
             binding.image.setOnClickListener { goToAddPhoto() }
-            binding.helpNeeded.text = HtmlCompat.fromHtml(getString(R.string.add_photo_to_extract_ingredients), HtmlCompat.FROM_HTML_MODE_LEGACY)
+            binding.helpNeeded.text = HtmlCompat.fromHtml(getString(R.string.add_photo_to_extract_ingredients),
+                HtmlCompat.FROM_HTML_MODE_LEGACY)
             binding.helpNeeded.setOnClickListener { goToAddPhoto() }
         } else if (tag != null && ambiguousIngredient != null) {
             messageToBeShown =
-                HtmlCompat.fromHtml(getString(R.string.unknown_status_ambiguous_ingredients, ambiguousIngredient), HtmlCompat.FROM_HTML_MODE_LEGACY)
+                HtmlCompat.fromHtml(getString(R.string.unknown_status_ambiguous_ingredients, ambiguousIngredient),
+                    HtmlCompat.FROM_HTML_MODE_LEGACY)
             binding.helpNeeded.visibility = View.GONE
         } else if (showHelpTranslate && arguments.getBoolean(MISSING_INGREDIENTS_KEY, false)) {
             picasso.load(ingredientsImageUrl).into(binding.image)
 
             binding.image.setOnClickListener { goToExtract() }
-            messageToBeShown = HtmlCompat.fromHtml(getString(R.string.unknown_status_missing_ingredients), HtmlCompat.FROM_HTML_MODE_LEGACY)
+            messageToBeShown = HtmlCompat.fromHtml(getString(R.string.unknown_status_missing_ingredients),
+                HtmlCompat.FROM_HTML_MODE_LEGACY)
 
             binding.helpNeeded.text =
-                HtmlCompat.fromHtml(getString(R.string.help_extract_ingredients, typeName.lowercase(Locale.getDefault())), HtmlCompat.FROM_HTML_MODE_LEGACY)
+                HtmlCompat.fromHtml(getString(R.string.help_extract_ingredients,
+                    typeName.lowercase(Locale.getDefault())), HtmlCompat.FROM_HTML_MODE_LEGACY)
             binding.helpNeeded.setOnClickListener { goToExtract() }
             binding.helpNeeded.visibility = View.VISIBLE
 
         } else if (showHelpTranslate) {
-            messageToBeShown = HtmlCompat.fromHtml(getString(R.string.unknown_status_no_translation), HtmlCompat.FROM_HTML_MODE_LEGACY)
-            binding.helpNeeded.text = HtmlCompat.fromHtml(getString(R.string.help_translate_ingredients), HtmlCompat.FROM_HTML_MODE_LEGACY)
+            messageToBeShown =
+                HtmlCompat.fromHtml(getString(R.string.unknown_status_no_translation), HtmlCompat.FROM_HTML_MODE_LEGACY)
+            binding.helpNeeded.text =
+                HtmlCompat.fromHtml(getString(R.string.help_translate_ingredients), HtmlCompat.FROM_HTML_MODE_LEGACY)
             binding.helpNeeded.setOnClickListener {
                 val customTabsIntent = CustomTabsIntent.Builder().build()
                 CustomTabActivityHelper.openCustomTab(
@@ -125,7 +136,10 @@ class IngredientsWithTagDialogFragment : DialogFragment() {
             binding.image.visibility = View.GONE
             if (!TextUtils.isEmpty(ingredients)) {
                 messageToBeShown = HtmlCompat.fromHtml(
-                    "${getString(R.string.ingredients_in_this_product, name.lowercase(Locale.getDefault()))}$ingredients",
+                    "${
+                        getString(R.string.ingredients_in_this_product,
+                            name.lowercase(Locale.getDefault()))
+                    }$ingredients",
                     HtmlCompat.FROM_HTML_MODE_LEGACY
                 )
             }
@@ -197,7 +211,8 @@ class IngredientsWithTagDialogFragment : DialogFragment() {
                 } else {
                     val showIngredients = config.name.showIngredients
                     if (showIngredients != null) {
-                        putSerializable(INGREDIENTS_KEY, getMatchingIngredientsText(product, showIngredients.split(":").toTypedArray()))
+                        putSerializable(INGREDIENTS_KEY,
+                            getMatchingIngredientsText(product, showIngredients.split(":").toTypedArray()))
                     }
                     val ambiguousIngredient = product.ingredients
                         .filter { it.containsKey(config.type) && it.containsValue("maybe") }
@@ -210,11 +225,17 @@ class IngredientsWithTagDialogFragment : DialogFragment() {
             }
         }
 
-        private fun getMatchingIngredientsText(product: Product, ingredients: Array<String>): String? {
+        private fun getMatchingIngredientsText(
+            product: Product,
+            ingredients: Array<String>,
+        ): String? {
+
             val matchingIngredients = product.ingredients
                 .filter { ingredients[1] == it[ingredients[0]] }
                 .mapNotNull { it["text"] as String? }
                 .map { it.lowercase(Locale.getDefault()).replace("_", "") }
+
+
             return if (matchingIngredients.isEmpty()) null
             else StringBuilder().apply {
                 append(" <b>")

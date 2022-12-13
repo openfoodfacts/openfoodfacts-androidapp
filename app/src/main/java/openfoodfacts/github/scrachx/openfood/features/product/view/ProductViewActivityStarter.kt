@@ -10,6 +10,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity
+import openfoodfacts.github.scrachx.openfood.models.Barcode
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
@@ -38,7 +39,7 @@ class ProductViewActivityStarter @Inject constructor(
      * @param activity
      */
     fun openProduct(
-        barcode: String,
+        barcode: Barcode,
         activity: FragmentActivity,
         productOpenedListener: (() -> Unit)? = null,
         productErrorListener: ((ErrorType) -> Unit)? = null,
@@ -62,11 +63,11 @@ class ProductViewActivityStarter @Inject constructor(
         }
     }
 
-    private suspend fun tryToStartActivity(activity: Activity, barcode: String): ErrorType? {
+    private suspend fun tryToStartActivity(activity: Activity, barcode: Barcode): ErrorType? {
         val result = withContext(dispatchers.IO) {
             runCatching {
                 productsApi.getProductByBarcode(
-                    barcode,
+                    barcode.raw,
                     ApiFields.getAllFields(localeManager.getLanguage()),
                     localeManager.getLanguage(),
                     getUserAgent(ApiFields.UserAgents.SEARCH)
@@ -102,7 +103,7 @@ class ProductViewActivityStarter @Inject constructor(
         }
     }
 
-    private fun showNotFoundDialog(activity: Activity, barcode: String, withBackPressure: Boolean) {
+    private fun showNotFoundDialog(activity: Activity, barcode: Barcode, withBackPressure: Boolean) {
         MaterialAlertDialogBuilder(activity)
             .setTitle(R.string.txtDialogsTitle)
             .setMessage(R.string.product_does_not_exist_please_add_it)
@@ -110,7 +111,7 @@ class ProductViewActivityStarter @Inject constructor(
                 d.dismiss()
 
                 val product = Product().apply {
-                    code = barcode
+                    code = barcode.raw
                     lang = localeManager.getLanguage()
                 }
                 val intent = Intent(activity, ProductEditActivity::class.java).apply {

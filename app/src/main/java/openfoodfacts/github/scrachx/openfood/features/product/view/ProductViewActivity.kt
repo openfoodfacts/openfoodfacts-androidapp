@@ -161,7 +161,7 @@ class ProductViewActivity : BaseActivity(), IProductView, OnRefreshListener {
     }
 
     override fun onRefresh() {
-        productViewActivityStarter.openProduct(productState!!.product!!.code, this)
+        productViewActivityStarter.openProduct(productState!!.product!!.barcode, this)
     }
 
     override fun onNewIntent(intent: Intent) {

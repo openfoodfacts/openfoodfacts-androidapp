@@ -19,10 +19,10 @@ import openfoodfacts.github.scrachx.openfood.utils.into
 import java.util.*
 
 /**
- * @param isLowBatteryMode determine if image should be loaded or not
+ * @param shouldLoadImages determine if image should be loaded or not
  */
 class ScanHistoryAdapter(
-    private val isLowBatteryMode: Boolean,
+    private val shouldLoadImages: Boolean,
     private val picasso: Picasso,
     private val onItemClicked: (HistoryProduct) -> Unit,
 ) : RecyclerView.Adapter<ScanHistoryAdapter.Companion.ViewHolder>(), AutoUpdatableAdapter {
@@ -32,7 +32,7 @@ class ScanHistoryAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val view = HistoryListItemBinding.inflate(inflater, parent, false)
-        return ViewHolder(view, isLowBatteryMode, picasso)
+        return ViewHolder(view, shouldLoadImages, picasso)
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
@@ -63,7 +63,7 @@ class ScanHistoryAdapter(
 
         class ViewHolder(
             private val binding: HistoryListItemBinding,
-            private val isLowBatteryMode: Boolean,
+            private val shouldLoadImages: Boolean,
             private val picasso: Picasso,
         ) : RecyclerView.ViewHolder(binding.root) {
 
@@ -75,7 +75,7 @@ class ScanHistoryAdapter(
                 binding.productDetails.text = getProductBrandsQuantityDetails(product)
 
                 // Load Image if isBatteryLoad is false
-                if (!isLowBatteryMode && product.url != null) {
+                if (shouldLoadImages && product.url != null) {
                     binding.imgProgress.isVisible = true
                     picasso
                         .load(product.url)

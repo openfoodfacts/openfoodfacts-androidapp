@@ -20,7 +20,7 @@ import java.io.Serializable;
 
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
 import openfoodfacts.github.scrachx.openfood.network.ApiFields;
-import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import openfoodfacts.github.scrachx.openfood.utils.ImageCompressor;
 
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @Entity(indexes = {@Index(value = "barcode", unique = true)})
@@ -193,16 +193,16 @@ public class SendProduct implements Serializable {
     public void compress(@NonNull ProductImageField field) {
         switch (field) {
             case NUTRITION:
-                this.imgUploadNutrition = Utils.compressImage(this.imgUploadNutrition);
+                this.imgUploadNutrition = ImageCompressor.compress(this.imgUploadNutrition);
                 break;
             case INGREDIENTS:
-                this.imgUploadIngredients = Utils.compressImage(this.imgUploadIngredients);
+                this.imgUploadIngredients = ImageCompressor.compress(this.imgUploadIngredients);
                 break;
             case PACKAGING:
-                this.imgUploadPackaging = Utils.compressImage(this.imgUploadPackaging);
+                this.imgUploadPackaging = ImageCompressor.compress(this.imgUploadPackaging);
                 break;
             case FRONT:
-                this.imgUploadFront = Utils.compressImage(this.imgUploadFront);
+                this.imgUploadFront = ImageCompressor.compress(this.imgUploadFront);
                 break;
             default:
                 //nothing to do

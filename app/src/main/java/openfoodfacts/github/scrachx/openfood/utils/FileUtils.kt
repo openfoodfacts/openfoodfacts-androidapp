@@ -15,6 +15,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.annotation.CheckResult
 import androidx.core.app.NotificationCompat
+import androidx.core.content.getSystemService
 import openfoodfacts.github.scrachx.openfood.AppFlavor
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.features.productlist.ProductListActivity
@@ -111,7 +112,8 @@ const val LOCALE_FILE_SCHEME = "file://"
 
 // TODO: Use constants and refactor
 fun createNotificationManager(context: Context): NotificationManager {
-    val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+    val notificationManager = context.getSystemService<NotificationManager>()
+        ?: error("Notification manager must not be null.")
 
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
         val importance = NotificationManager.IMPORTANCE_DEFAULT

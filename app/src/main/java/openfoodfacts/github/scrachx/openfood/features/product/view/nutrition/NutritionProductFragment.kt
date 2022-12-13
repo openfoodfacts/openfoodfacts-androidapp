@@ -101,9 +101,9 @@ import openfoodfacts.github.scrachx.openfood.utils.getRoundNumber
 import openfoodfacts.github.scrachx.openfood.utils.getServingInL
 import openfoodfacts.github.scrachx.openfood.utils.getServingInOz
 import openfoodfacts.github.scrachx.openfood.utils.hideKeyboard
-import openfoodfacts.github.scrachx.openfood.utils.isPowerSaveMode
 import openfoodfacts.github.scrachx.openfood.utils.isImageLoadingDisabled
 import openfoodfacts.github.scrachx.openfood.utils.isPerServingInLiter
+import openfoodfacts.github.scrachx.openfood.utils.isPowerSaveMode
 import openfoodfacts.github.scrachx.openfood.utils.isUserSet
 import openfoodfacts.github.scrachx.openfood.utils.requireProductState
 import pl.aprilapps.easyphotopicker.EasyImage
@@ -577,9 +577,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
             ProductImageField.NUTRITION,
             photoFile,
             localeManager.getLanguage()
-        ).apply {
-            filePath = photoFile.absolutePath
-        }
+        )
 
         // Load to server
         lifecycleScope.launch { client.postImg(image) }

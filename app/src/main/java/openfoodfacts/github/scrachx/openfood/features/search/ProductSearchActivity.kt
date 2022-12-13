@@ -22,12 +22,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
-import io.reactivex.Single
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.rx2.await
 import kotlinx.coroutines.withContext
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.analytics.AnalyticsEvent
@@ -66,9 +64,9 @@ import openfoodfacts.github.scrachx.openfood.utils.SearchType.SEARCH
 import openfoodfacts.github.scrachx.openfood.utils.SearchType.STATE
 import openfoodfacts.github.scrachx.openfood.utils.SearchType.STORE
 import openfoodfacts.github.scrachx.openfood.utils.SearchType.TRACE
-import openfoodfacts.github.scrachx.openfood.utils.isPowerSaveMode
-import openfoodfacts.github.scrachx.openfood.utils.isImageLoadingDisabled
 import openfoodfacts.github.scrachx.openfood.utils.isGranted
+import openfoodfacts.github.scrachx.openfood.utils.isImageLoadingDisabled
+import openfoodfacts.github.scrachx.openfood.utils.isPowerSaveMode
 import java.text.NumberFormat
 import java.util.*
 import javax.inject.Inject
@@ -325,67 +323,107 @@ class ProductSearchActivity : BaseActivity() {
     fun loadDataFromAPI() {
         val searchQuery = mSearchInfo.searchQuery
         when (mSearchInfo.searchType) {
-            BRAND -> client.getProductsByBrand(searchQuery, pageAddress)
-                .startSearch(R.string.txt_no_matching_brand_products)
+            BRAND -> {
+                startSearch(R.string.txt_no_matching_brand_products, -1) {
+                    client.getProductsByBrand(searchQuery, pageAddress)
+                }
+            }
 
-            COUNTRY -> client.getProductsByCountry(searchQuery, pageAddress)
-                .startSearch(R.string.txt_no_matching_country_products)
+            COUNTRY -> {
+                startSearch(R.string.txt_no_matching_country_products, -1) {
+                    client.getProductsByCountry(searchQuery, pageAddress)
+                }
+            }
 
-            ORIGIN -> client.getProductsByOrigin(searchQuery, pageAddress)
-                .startSearch(R.string.txt_no_matching_country_products)
+            ORIGIN -> {
+                startSearch(R.string.txt_no_matching_country_products, -1) {
+                    client.getProductsByOrigin(searchQuery, pageAddress)
+                }
+            }
 
-            MANUFACTURING_PLACE -> client.getProductsByManufacturingPlace(searchQuery, pageAddress)
-                .startSearch(R.string.txt_no_matching_country_products)
+            MANUFACTURING_PLACE -> {
+                startSearch(R.string.txt_no_matching_country_products, -1) {
+                    client.getProductsByManufacturingPlace(searchQuery, pageAddress)
+                }
+            }
 
-            ADDITIVE -> client.getProductsByAdditive(searchQuery, pageAddress)
-                .startSearch(R.string.txt_no_matching_additive_products)
+            ADDITIVE -> {
+                startSearch(R.string.txt_no_matching_additive_products, -1) {
+                    client.getProductsByAdditive(searchQuery,
+                        pageAddress)
+                }
+            }
 
-            STORE -> client.getProductsByStore(searchQuery, pageAddress)
-                .startSearch(R.string.txt_no_matching_store_products)
+            STORE -> {
+                startSearch(R.string.txt_no_matching_store_products, -1) {
+                    client.getProductsByStore(searchQuery, pageAddress)
+                }
+            }
 
-            PACKAGING -> client.getProductsByPackaging(searchQuery, pageAddress)
-                .startSearch(R.string.txt_no_matching_packaging_products)
+            PACKAGING -> {
+                startSearch(R.string.txt_no_matching_packaging_products, -1) {
+                    client.getProductsByPackaging(searchQuery, pageAddress)
+                }
+            }
 
             SEARCH -> {
-                if (Barcode(searchQuery).isValid()) {
+                val barcode = Barcode(searchQuery)
+                if (barcode.isValid()) {
                     productViewActivityStarter.openProduct(
-                        searchQuery,
-                        this@ProductSearchActivity,
+                        barcode = barcode,
+                        activity = this@ProductSearchActivity,
                         productOpenedListener = { finish() }
                     )
                 } else {
-                    client.searchProductsByName(searchQuery, pageAddress)
-                        .startSearch(R.string.txt_no_matching_products, R.string.txt_broaden_search)
+                    startSearch(R.string.txt_no_matching_products, R.string.txt_broaden_search) {
+                        client.searchProductsByName(searchQuery, pageAddress)
+                    }
                 }
             }
-            LABEL -> client.getProductsByLabel(searchQuery, pageAddress)
-                .startSearch(R.string.txt_no_matching_label_products)
+            LABEL -> {
+                startSearch(R.string.txt_no_matching_label_products, -1) {
+                    client.getProductsByLabel(searchQuery, pageAddress)
+                }
+            }
 
-            CATEGORY -> client.getProductsByCategory(searchQuery, pageAddress)
-                .startSearch(R.string.txt_no_matching__category_products)
+            CATEGORY -> {
+                startSearch(R.string.txt_no_matching__category_products, -1) {
+                    client.getProductsByCategory(searchQuery, pageAddress)
+                }
+            }
 
-            ALLERGEN -> client.getProductsByAllergen(searchQuery, pageAddress)
-                .startSearch(R.string.txt_no_matching_allergen_products)
+            ALLERGEN -> {
+                startSearch(R.string.txt_no_matching_allergen_products, -1) {
+                    client.getProductsByAllergen(searchQuery, pageAddress)
+                }
+            }
 
             CONTRIBUTOR -> loadDataForContributor(searchQuery)
 
-            STATE -> client.getProductsByStates(searchQuery, pageAddress)
-                .startSearch(R.string.txt_no_matching_allergen_products)
+            STATE -> {
+                startSearch(R.string.txt_no_matching_allergen_products, -1) {
+                    client.getProductsByStates(searchQuery, pageAddress)
+                }
+            }
 
             // Get Products to be completed data and input it to loadData function
-            INCOMPLETE_PRODUCT -> client.getIncompleteProducts(pageAddress)
-                .startSearch(R.string.txt_no_matching_incomplete_products)
+            INCOMPLETE_PRODUCT -> {
+                startSearch(R.string.txt_no_matching_incomplete_products, -1)
+                { client.getIncompleteProducts(pageAddress) }
+            }
 
             else -> Log.e("Products Browsing", "No match case found for ${mSearchInfo.searchType}")
         }
     }
 
-
-    private fun Single<Search>.startSearch(@StringRes noMatchMsg: Int, @StringRes extendedMsg: Int = -1) {
+    private fun startSearch(
+        @StringRes noResultsText: Int, @StringRes broadenSearchText: Int,
+        searchFun: suspend () -> Search,
+    ) {
         lifecycleScope.launch(Main) {
             var throwable: Throwable? = null
             val search = try {
-                withContext(IO) { this@startSearch.await() }
+                withContext(IO) { searchFun() }
             } catch (err: Exception) {
                 throwable = err
                 null
@@ -393,30 +431,46 @@ class ProductSearchActivity : BaseActivity() {
 
             // Ensure the Fragment is still visible = job not cancelled
             if (isActive) {
-                displaySearch(throwable == null, search, noMatchMsg, extendedMsg)
+                displaySearch(throwable == null, search, noResultsText, broadenSearchText)
             }
         }
     }
 
     private fun loadDataForContributor(searchQuery: String) {
         when (contributionType) {
-            1 -> client.getToBeCompletedProductsByContributor(searchQuery, pageAddress)
-                .startSearch(R.string.txt_no_matching_contributor_products)
+            1 -> {
+                startSearch(R.string.txt_no_matching_contributor_products, -1)
+                { client.getToBeCompletedProductsByContributor(searchQuery, pageAddress) }
+            }
 
-            2 -> client.getPicturesContributedProducts(searchQuery, pageAddress)
-                .startSearch(R.string.txt_no_matching_contributor_products)
+            2 -> {
+                startSearch(R.string.txt_no_matching_contributor_products, -1) {
+                    client.getPicturesContributedProducts(searchQuery,
+                        pageAddress)
+                }
+            }
 
-            3 -> client.getPicturesContributedIncompleteProducts(searchQuery, pageAddress)
-                .startSearch(R.string.txt_no_matching_contributor_products)
+            3 -> {
+                startSearch(R.string.txt_no_matching_contributor_products,
+                    -1) { client.getPicturesContributedIncompleteProducts(searchQuery, pageAddress) }
+            }
 
-            4 -> client.getInfoAddedProducts(searchQuery, pageAddress)
-                .startSearch(R.string.txt_no_matching_contributor_products)
+            4 -> {
+                startSearch(R.string.txt_no_matching_contributor_products,
+                    -1) { client.getInfoAddedProducts(searchQuery, pageAddress) }
+            }
 
-            5 -> client.getInfoAddedIncompleteProductsSingle(searchQuery, pageAddress)
-                .startSearch(R.string.txt_no_matching_contributor_products)
+            5 -> {
+                startSearch(R.string.txt_no_matching_contributor_products, -1) {
+                    client.getInfoAddedIncompleteProductsSingle(searchQuery, pageAddress)
+                }
+            }
 
-            else -> client.getProductsByContributor(searchQuery, pageAddress)
-                .startSearch(R.string.txt_no_matching_contributor_products)
+            else -> {
+                startSearch(R.string.txt_no_matching_contributor_products, -1) {
+                    client.getProductsByContributor(searchQuery, pageAddress)
+                }
+            }
         }
     }
 
@@ -519,46 +573,63 @@ class ProductSearchActivity : BaseActivity() {
         }
     }
 
-    private fun setUpRecyclerView(mProducts: MutableList<SearchProduct?>) {
+    private fun setUpRecyclerView(products: MutableList<SearchProduct?>) {
+        // Hide refreshing
         binding.swipeRefresh.isRefreshing = false
 
+        // Hide progress bar
         binding.progressBar.visibility = View.INVISIBLE
         binding.offlineCloudLinearLayout.visibility = View.INVISIBLE
 
+        // Show the recycler view
         binding.textCountProduct.visibility = View.VISIBLE
         binding.productsRecyclerView.visibility = View.VISIBLE
 
+        // If this is the first time, set up the recycler view
         if (!setupDone) {
-            binding.productsRecyclerView.setHasFixedSize(true)
-            val mLayoutManager = LinearLayoutManager(this@ProductSearchActivity, LinearLayoutManager.VERTICAL, false)
-            binding.productsRecyclerView.layoutManager = mLayoutManager
-            adapter = ProductSearchAdapter(mProducts, lowBatteryMode, this, picasso, client, localeManager)
-            binding.productsRecyclerView.adapter = adapter
+            val layoutManager = LinearLayoutManager(
+                this@ProductSearchActivity,
+                LinearLayoutManager.VERTICAL,
+                false
+            )
+            adapter = ProductSearchAdapter(
+                products,
+                lowBatteryMode,
+                this,
+                picasso,
+                client,
+                localeManager
+            )
             val dividerItemDecoration =
                 DividerItemDecoration(binding.productsRecyclerView.context, DividerItemDecoration.VERTICAL)
-            binding.productsRecyclerView.addItemDecoration(dividerItemDecoration)
 
-            // Retain an instance so that you can call `resetState()` for fresh searches
-            // Adds the scroll listener to RecyclerView
-            binding.productsRecyclerView.addOnScrollListener(object :
-                EndlessRecyclerViewScrollListener(mLayoutManager) {
-                override fun onLoadMore(page: Int, totalItemsCount: Int, view: RecyclerView) {
-                    if (mProducts.size < mCountProducts) {
-                        pageAddress = page
-                        loadDataFromAPI()
+            binding.productsRecyclerView.run RecyclerView@{
+                this@RecyclerView.setHasFixedSize(true)
+                this@RecyclerView.layoutManager = layoutManager
+                this@RecyclerView.adapter = adapter
+                this@RecyclerView.addItemDecoration(dividerItemDecoration)
+
+                // Retain an instance so that you can call `resetState()` for fresh searches
+                // Adds the scroll listener to RecyclerView
+                addOnScrollListener(object : EndlessRecyclerViewScrollListener(layoutManager) {
+                    override fun onLoadMore(page: Int, totalItemsCount: Int, view: RecyclerView) {
+                        if (products.size < mCountProducts) {
+                            pageAddress = page
+                            loadDataFromAPI()
+                        }
                     }
-                }
-            })
+                })
 
-            binding.productsRecyclerView.addOnItemTouchListener(RecyclerItemClickListener(this) { _, position ->
-                adapter.getProduct(position)?.let {
-                    productViewActivityStarter.openProduct(it.code, this)
-                }
-                return@RecyclerItemClickListener
-            })
-
+                addOnItemTouchListener(
+                    RecyclerItemClickListener(this@ProductSearchActivity) { _, position ->
+                        this@ProductSearchActivity.adapter.getProduct(position)?.let {
+                            productViewActivityStarter.openProduct(it.barcode, this@ProductSearchActivity)
+                        }
+                    }
+                )
+            }
             binding.swipeRefresh.setOnRefreshListener {
-                mProducts.clear()
+                products.clear()
                 adapter.notifyDataSetChanged()
                 binding.textCountProduct.text = resources.getString(R.string.number_of_results)
                 pageAddress = 1

@@ -3,9 +3,7 @@ package openfoodfacts.github.scrachx.openfood.repositories
 import android.content.Context
 import com.fasterxml.jackson.databind.JsonNode
 import dagger.hilt.android.qualifiers.ApplicationContext
-import io.reactivex.Single
 import kotlinx.coroutines.Dispatchers.IO
-import kotlinx.coroutines.rx2.rxSingle
 import kotlinx.coroutines.withContext
 import okhttp3.MediaType
 import okhttp3.RequestBody
@@ -39,6 +37,7 @@ import openfoodfacts.github.scrachx.openfood.utils.getLoginUsername
 import openfoodfacts.github.scrachx.openfood.utils.getUserAgent
 import openfoodfacts.github.scrachx.openfood.utils.getVersionName
 import openfoodfacts.github.scrachx.openfood.utils.list
+import openfoodfacts.github.scrachx.openfood.utils.toRequestBody
 import openfoodfacts.github.scrachx.openfood.utils.unique
 import java.io.File
 import java.io.IOException
@@ -92,42 +91,46 @@ class ProductRepository @Inject constructor(
      *
      * @param barcode product barcode
      */
-    suspend fun getProductImages(barcode: String): ProductState = withContext(IO) {
-        val fields = Keys.PRODUCT_IMAGES_FIELDS.toMutableSet().also {
-            it += Keys.lcProductNameKey(localeManager.getLanguage())
-        }.joinToString(",")
+    suspend fun getProductImages(barcode: Barcode): ProductState = withContext(IO) {
+        val fields = Keys.PRODUCT_IMAGES_FIELDS.toMutableSet()
+        fields += Keys.lcProductNameKey(localeManager.getLanguage())
 
         rawApi.getProductByBarcode(
-            barcode,
-            fields,
-            localeManager.getLanguage(),
-            getUserAgent(ApiFields.UserAgents.SEARCH)
+            barcode = barcode.raw,
+            fields = fields.joinToString(","),
+            locale = localeManager.getLanguage(),
+            header = getUserAgent(ApiFields.UserAgents.SEARCH)
         )
     }
 
     /**
      * @return a list of product ingredients (can be empty)
      */
-    suspend fun getIngredients(product: Product) = withContext(IO) {
-        // TODO: This or the field inside Product.kt?
-        val productState = rawApi.getIngredientsByBarcode(product.code)
-
-        productState["product"][Keys.INGREDIENTS]?.map {
-            ProductIngredient(
-                it["id"].asText(),
-                it["text"].asText(),
-                it["rank"]?.asLong(-1)!!
-            )
-        } ?: emptyList()
+    // TODO: This or the field inside Product.kt?
+    // The field inside Product.kt can be deleted if we delete every
+    // reference to it. It's messy down there
+    suspend fun getIngredients(product: Product): Result<List<ProductIngredient>> {
+        return withContext(IO) {
+            kotlin.runCatching {
+                val productState = rawApi.getIngredientsByBarcode(product.code)
+                productState["product"][Keys.INGREDIENTS]?.map {
+                    ProductIngredient(
+                        it["id"].asText(),
+                        it["text"].asText(),
+                        it["rank"]?.asLong(-1)!!
+                    )
+                } ?: emptyList()
+            }
+        }
     }
 
 
-    fun searchProductsByName(name: String, page: Int) = rxSingle(IO) {
-        rawApi.searchProductByName(name, fieldsToFetchFacets, page)
+    suspend fun searchProductsByName(name: String, page: Int): Search {
+        return rawApi.searchProductByName(name, fieldsToFetchFacets, page)
     }
 
-    fun getProductsByCountry(country: String, page: Int) = rxSingle(IO) {
-        rawApi.getProductsByCountry(country, page, fieldsToFetchFacets)
+    suspend fun getProductsByCountry(country: String, page: Int): Search {
+        return rawApi.getProductsByCountry(country, page, fieldsToFetchFacets)
     }
 
     /**
@@ -138,36 +141,41 @@ class ProductRepository @Inject constructor(
     private fun getUploadableMap(image: ProductImage): Map<String, RequestBody?> {
         val lang = image.language
 
-        val imgMap = hashMapOf(PRODUCT_BARCODE to image.barcodeBody, "imagefield" to image.fieldBody)
-        if (image.imgFront != null) {
-            imgMap["""imgupload_front"; filename="front_$lang$PNG_EXT"""] = image.imgFront!!
+        val imgMap = mutableMapOf(
+            PRODUCT_BARCODE to image.getBarcodeBody(),
+            "imagefield" to image.getFieldBody()
+        )
+
+        val field = when (image.field) {
+            ProductImageField.FRONT -> {
+                """imgupload_front"; filename="front_$lang$PNG_EXT"""
+            }
+            ProductImageField.INGREDIENTS -> {
+                """imgupload_ingredients"; filename="ingredients_$lang$PNG_EXT"""
+            }
+            ProductImageField.NUTRITION -> {
+                """imgupload_nutrition"; filename="nutrition_$lang$PNG_EXT"""
+            }
+            ProductImageField.PACKAGING -> {
+                """imgupload_packaging"; filename="packaging_$lang$PNG_EXT"""
+            }
+            ProductImageField.OTHER -> {
+                """imgupload_other"; filename="other_$lang$PNG_EXT"""
+            }
         }
-        if (image.imgIngredients != null) {
-            imgMap["""imgupload_ingredients"; filename="ingredients_$lang$PNG_EXT"""] = image.imgIngredients!!
-        }
-        if (image.imgNutrition != null) {
-            imgMap["""imgupload_nutrition"; filename="nutrition_$lang$PNG_EXT"""] = image.imgNutrition!!
-        }
-        if (image.imgPackaging != null) {
-            imgMap["""imgupload_packaging"; filename="packaging_$lang$PNG_EXT"""] = image.imgPackaging!!
-        }
-        if (image.imgOther != null) {
-            imgMap["""imgupload_other"; filename="other_$lang$PNG_EXT"""] = image.imgOther!!
-        }
+        imgMap[field] = RequestBody.create(MediaType.parse("image/*"), image.bytes)
 
         // Attribute the upload to the connected user
-        getUserInfo().forEach { (key, value) ->
-            imgMap[key] = RequestBody.create(MIME_TEXT, value)
-        }
+        imgMap += getUserInfo().mapValues { it.value.toRequestBody() }
         return imgMap
     }
 
-    fun getProductsByCategory(category: String, page: Int) = rxSingle {
-        rawApi.getProductByCategory(category, page, fieldsToFetchFacets)
+    suspend fun getProductsByCategory(category: String, page: Int): Search {
+        return rawApi.getProductByCategory(category, page, fieldsToFetchFacets)
     }
 
-    fun getProductsByLabel(label: String, page: Int) = rxSingle {
-        rawApi.getProductsByLabel(label, page, fieldsToFetchFacets)
+    suspend fun getProductsByLabel(label: String, page: Int): Search {
+        return rawApi.getProductsByLabel(label, page, fieldsToFetchFacets)
     }
 
     /**
@@ -177,8 +185,8 @@ class ProductRepository @Inject constructor(
         daoSession.historyProductDao.addToHistory(product, localeManager.getLanguage())
     }
 
-    fun getProductsByContributor(contributor: String, page: Int) = rxSingle(IO) {
-        rawApi.getProductsByContributor(contributor, page, fieldsToFetchFacets)
+    suspend fun getProductsByContributor(contributor: String, page: Int): Search {
+        return rawApi.getProductsByContributor(contributor, page, fieldsToFetchFacets)
     }
 
     /**
@@ -218,12 +226,12 @@ class ProductRepository @Inject constructor(
         }
     }
 
-    fun getProductsByPackaging(packaging: String, page: Int): Single<Search> = rxSingle {
-        rawApi.getProductsByPackaging(packaging, page, fieldsToFetchFacets)
+    suspend fun getProductsByPackaging(packaging: String, page: Int): Search {
+        return rawApi.getProductsByPackaging(packaging, page, fieldsToFetchFacets)
     }
 
-    fun getProductsByStore(store: String, page: Int): Single<Search> = rxSingle(IO) {
-        rawApi.getProductByStores(store, page, fieldsToFetchFacets)
+    suspend fun getProductsByStore(store: String, page: Int): Search {
+        return rawApi.getProductByStores(store, page, fieldsToFetchFacets)
     }
 
     /**
@@ -232,8 +240,8 @@ class ProductRepository @Inject constructor(
      * @param brand search query for product
      * @param page page numbers
      */
-    fun getProductsByBrand(brand: String, page: Int) = rxSingle(IO) {
-        rawApi.getProductByBrands(brand, page, fieldsToFetchFacets)
+    suspend fun getProductsByBrand(brand: String, page: Int): Search {
+        return rawApi.getProductByBrands(brand, page, fieldsToFetchFacets)
     }
 
     /**
@@ -244,7 +252,10 @@ class ProductRepository @Inject constructor(
      * @param setAsDefault if true, set the image as the product default
      *                     (front) image.
      */
-    suspend fun postImg(image: ProductImage, setAsDefault: Boolean = false): Result<Unit> = withContext(IO) {
+    suspend fun postImg(
+        image: ProductImage,
+        setAsDefault: Boolean = false,
+    ): Result<Unit> = withContext(IO) {
         runCatching {
             val body = rawApi.saveImage(getUploadableMap(image))
             check(body.isObject) { "Body is not an object" }
@@ -260,23 +271,31 @@ class ProductRepository @Inject constructor(
         }.onFailure {
             daoSession.toUploadProductDao.insertOrReplace(
                 ToUploadProduct(
-                    image.barcode,
+                    image.barcode.raw,
                     image.filePath,
-                    image.imageField.toString()
+                    image.field.toString()
                 )
             )
         }
     }
 
-    private suspend fun setDefaultImageFromServerResponse(body: JsonNode, image: ProductImage) {
+    private suspend fun setDefaultImageFromServerResponse(
+        body: JsonNode,
+        image: ProductImage,
+    ): Result<Unit> {
         val queryMap = getUserInfo() + listOf(
             IMG_ID to body["image"][IMG_ID].asText(),
             "id" to body["imagefield"].asText()
         )
 
-        val node = rawApi.editImage(image.barcode, queryMap)
+        val rawBarcode = image.barcode.raw
+        val node = rawApi.editImage(rawBarcode, queryMap)
 
-        if (node[Keys.STATUS].asText() != "status ok") throw IOException(node["error"].asText())
+        return if (node[Keys.STATUS].asText() == "status ok") {
+            Result.success(Unit)
+        } else {
+            Result.failure(IOException(node["error"].asText()))
+        }
     }
 
     suspend fun editImage(code: String, imgMap: Map<String, String>) = withContext(IO) {
@@ -293,17 +312,17 @@ class ProductRepository @Inject constructor(
         rawApi.unSelectImage(code, imgMap)
     }
 
-    fun getProductsByOrigin(origin: String, page: Int) = rxSingle(IO) {
-        rawApi.getProductsByOrigin(origin, page, fieldsToFetchFacets)
+    suspend fun getProductsByOrigin(origin: String, page: Int): Search {
+        return rawApi.getProductsByOrigin(origin, page, fieldsToFetchFacets)
     }
 
 
-    fun getInfoAddedIncompleteProductsSingle(contributor: String, page: Int) = rxSingle(IO) {
-        rawApi.getInfoAddedIncompleteProducts(contributor, page)
+    suspend fun getInfoAddedIncompleteProductsSingle(contributor: String, page: Int): Search {
+        return rawApi.getInfoAddedIncompleteProducts(contributor, page)
     }
 
-    fun getProductsByManufacturingPlace(manufacturingPlace: String, page: Int) = rxSingle(IO) {
-        rawApi.getProductsByManufacturingPlace(manufacturingPlace, page, fieldsToFetchFacets)
+    suspend fun getProductsByManufacturingPlace(manufacturingPlace: String, page: Int): Search {
+        return rawApi.getProductsByManufacturingPlace(manufacturingPlace, page, fieldsToFetchFacets)
     }
 
     /**
@@ -312,41 +331,41 @@ class ProductRepository @Inject constructor(
      * @param additive search query for products
      * @param page number of pages
      */
-    fun getProductsByAdditive(additive: String, page: Int) = rxSingle(IO) {
-        rawApi.getProductsByAdditive(additive, page, fieldsToFetchFacets)
+    suspend fun getProductsByAdditive(additive: String, page: Int): Search {
+        return rawApi.getProductsByAdditive(additive, page, fieldsToFetchFacets)
     }
 
-    fun getProductsByAllergen(allergen: String, page: Int) = rxSingle(IO) {
-        rawApi.getProductsByAllergen(allergen, page, fieldsToFetchFacets)
+    suspend fun getProductsByAllergen(allergen: String, page: Int): Search {
+        return rawApi.getProductsByAllergen(allergen, page, fieldsToFetchFacets)
     }
 
-    fun getToBeCompletedProductsByContributor(contributor: String, page: Int) = rxSingle(IO) {
-        rawApi.getToBeCompletedProductsByContributor(contributor, page)
+    suspend fun getToBeCompletedProductsByContributor(contributor: String, page: Int): Search {
+        return rawApi.getToBeCompletedProductsByContributor(contributor, page)
     }
 
-    fun getPicturesContributedProducts(contributor: String, page: Int) = rxSingle(IO) {
-        rawApi.getPicturesContributedProducts(contributor, page)
+    suspend fun getPicturesContributedProducts(contributor: String, page: Int): Search {
+        return rawApi.getPicturesContributedProducts(contributor, page)
     }
 
-    fun getPicturesContributedIncompleteProducts(contributor: String?, page: Int) = rxSingle(IO) {
-        rawApi.getPicturesContributedIncompleteProducts(contributor, page)
+    suspend fun getPicturesContributedIncompleteProducts(contributor: String?, page: Int): Search {
+        return rawApi.getPicturesContributedIncompleteProducts(contributor, page)
     }
 
-    fun getInfoAddedProducts(contributor: String?, page: Int) = rxSingle(IO) {
-        rawApi.getInfoAddedProducts(contributor, page)
+    suspend fun getInfoAddedProducts(contributor: String?, page: Int): Search {
+        return rawApi.getInfoAddedProducts(contributor, page)
     }
 
 
-    fun getIncompleteProducts(page: Int) = rxSingle(IO) {
-        rawApi.getIncompleteProducts(page, fieldsToFetchFacets)
+    suspend fun getIncompleteProducts(page: Int): Search {
+        return rawApi.getIncompleteProducts(page, fieldsToFetchFacets)
     }
 
-    fun getProductsByStates(state: String?, page: Int) = rxSingle(IO) {
-        rawApi.getProductsByState(state, page, fieldsToFetchFacets)
+    suspend fun getProductsByStates(state: String?, page: Int): Search {
+        return rawApi.getProductsByState(state, page, fieldsToFetchFacets)
     }
 
     companion object {
-        val MIME_TEXT: MediaType = MediaType.get("text/plain")
+
         const val PNG_EXT = ".png"
 
         suspend fun HistoryProductDao.addToHistory(prod: OfflineSavedProduct): Unit = withContext(IO) {
@@ -383,7 +402,7 @@ class ProductRepository @Inject constructor(
                     product.productName,
                     product.brands,
                     product.getImageSmallUrl(language),
-                    product.code,
+                    product.barcode.raw,
                     product.quantity,
                     product.nutritionGradeFr,
                     product.ecoscore,

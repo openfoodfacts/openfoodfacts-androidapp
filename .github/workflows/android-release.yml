@@ -36,50 +36,6 @@ jobs:
             testOpfPlaystoreDebugUnitTest
             testOpffPlaystoreDebugUnitTest
 
-  deploy-off:
-    name: "🚀 Deploy OFF to Google Play"
-    runs-on: ubuntu-20.04
-
-    needs:
-      - test
-
-    steps:
-      - name: Checkout sources
-        uses: actions/checkout@v3
-
-      - name: Set up JDK
-        uses: actions/setup-java@v3
-        with:
-          distribution: ${{ env.JAVA_DISTR }}
-          java-version: ${{ env.JAVA_VERSION }}
-
-      - name: Set up Ruby and bundle install
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: ${{ env.RUBY_VERSION }}
-          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-
-      - name: Install sentry-cli
-        run: curl -sL https://sentry.io/get-cli/ | bash
-
-      - name: Decrypt api json file
-        run: cd ./fastlane/envfiles && ./decrypt_secrets.sh
-        env:
-          API_JSON_FILE_DECRYPTKEY: ${{ secrets.API_JSON_FILE_DECRYPTKEY }}
-          STORE_JKS_DECRYPTKEY: ${{ secrets.STORE_JKS_DECRYPTKEY }}
-          OBF_STORE_JKS_DECRYPTKEY: ${{ secrets.OBF_STORE_JKS_DECRYPTKEY }}
-
-      - name: Run fastlane release lane
-        run: bundle exec fastlane release_off
-        env:
-          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
-          CI_RELEASE: true
-          SIGN_STORE_PATH: ../fastlane/envfiles/keystore.jks
-          SIGN_STORE_PASSWORD: ${{ secrets.SIGN_STORE_PASSWORD }}
-          SIGN_KEY_ALIAS: ${{ secrets.SIGN_KEY_ALIAS }}
-          SIGN_KEY_PASSWORD: ${{ secrets.SIGN_KEY_PASSWORD }}
-          PACKAGE_NAME: "org.openfoodfacts.app"
-
   deploy-opf:
     name: "🚀 Deploy OPF to Google Play"
     runs-on: ubuntu-20.04
@@ -214,3 +170,47 @@ jobs:
           SIGN_KEY_ALIAS: ${{ secrets.OBF_SIGN_KEY_ALIAS }}
           SIGN_KEY_PASSWORD: ${{ secrets.OBF_SIGN_KEY_PASSWORD }}
           PACKAGE_NAME: "org.openbeautyfacts.scanner"
+
+  deploy-off:
+    name: "🚀 Deploy OFF to Google Play"
+    runs-on: ubuntu-20.04
+
+    needs:
+      - test
+
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v3
+
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: ${{ env.JAVA_DISTR }}
+          java-version: ${{ env.JAVA_VERSION }}
+
+      - name: Set up Ruby and bundle install
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ env.RUBY_VERSION }}
+          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+
+      - name: Install sentry-cli
+        run: curl -sL https://sentry.io/get-cli/ | bash
+
+      - name: Decrypt api json file
+        run: cd ./fastlane/envfiles && ./decrypt_secrets.sh
+        env:
+          API_JSON_FILE_DECRYPTKEY: ${{ secrets.API_JSON_FILE_DECRYPTKEY }}
+          STORE_JKS_DECRYPTKEY: ${{ secrets.STORE_JKS_DECRYPTKEY }}
+          OBF_STORE_JKS_DECRYPTKEY: ${{ secrets.OBF_STORE_JKS_DECRYPTKEY }}
+
+      - name: Run fastlane release lane
+        run: bundle exec fastlane release_off
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          CI_RELEASE: true
+          SIGN_STORE_PATH: ../fastlane/envfiles/keystore.jks
+          SIGN_STORE_PASSWORD: ${{ secrets.SIGN_STORE_PASSWORD }}
+          SIGN_KEY_ALIAS: ${{ secrets.SIGN_KEY_ALIAS }}
+          SIGN_KEY_PASSWORD: ${{ secrets.SIGN_KEY_PASSWORD }}
+          PACKAGE_NAME: "org.openfoodfacts.app"

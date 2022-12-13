@@ -63,9 +63,6 @@ dependencies {
     implementation(libs.androidx.hilt.work)
     kapt(libs.androidx.hilt.compiler)
 
-    // Reactive Streams
-    implementation(libs.bundles.rx)
-
     // Networking
     implementation(libs.bundles.networking)
 

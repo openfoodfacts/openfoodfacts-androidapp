@@ -8,8 +8,8 @@ import kotlinx.coroutines.withContext
 import logcat.LogPriority
 import logcat.asLog
 import logcat.logcat
+import okhttp3.MediaType
 import okhttp3.RequestBody
-import openfoodfacts.github.scrachx.openfood.images.ProductImage
 import openfoodfacts.github.scrachx.openfood.models.Barcode
 import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
@@ -19,6 +19,7 @@ import openfoodfacts.github.scrachx.openfood.models.eventbus.ProductNeedsRefresh
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
 import openfoodfacts.github.scrachx.openfood.utils.InstallationService
+import openfoodfacts.github.scrachx.openfood.utils.MediaTypes
 import openfoodfacts.github.scrachx.openfood.utils.list
 import openfoodfacts.github.scrachx.openfood.utils.unique
 import org.greenrobot.eventbus.EventBus
@@ -145,7 +146,7 @@ class OfflineProductRepository @Inject constructor(
         logcat(LogPriority.DEBUG) { "Uploading image_$imageType for product ${product.barcode}" }
 
         val imgMap = createRequestBodyMap(product.barcode, product.productDetails, imageField)
-        val image = ProductImage.createImageRequest(File(imageFilePath))
+        val image = RequestBody.create(MediaType.parse("image/*"), File(imageFilePath))
 
         imgMap["""imgupload_$imageType"; filename="${imageType}_${product.language}.png""""] = image
 
@@ -207,10 +208,10 @@ class OfflineProductRepository @Inject constructor(
         productDetails: Map<String, String>,
         frontImg: ProductImageField,
     ): MutableMap<String, RequestBody> {
-        val barcode = RequestBody.create(ProductRepository.MIME_TEXT, code)
+        val barcode = RequestBody.create(MediaTypes.MIME_TEXT, code)
 
         val imageField = RequestBody.create(
-            ProductRepository.MIME_TEXT,
+            MediaTypes.MIME_TEXT,
             "${frontImg}_${productDetails["lang"]}"
         )
 

@@ -125,29 +125,33 @@ class ProductCompareActivity : BaseActivity() {
     private fun createAdapter(products: List<ProductCompareViewModel.CompareProduct>) {
         // Create adapter
         val productComparisonAdapter = ProductCompareAdapter(
-            products,
-            this,
-            this,
-            client,
-            picasso,
-            viewModel.getCurrentLanguage()
+            products = products,
+            activity = this,
+            lifecycleOwner = this,
+            productRepository = client,
+            picasso = picasso,
+            language = viewModel.getCurrentLanguage(),
+            addProductButton = binding.productComparisonButton
         ).apply {
             imageReturnedListener = { product, file ->
 
                 val image = ProductImage(
-                    product.code,
+                    product.barcode,
                     ProductImageField.FRONT,
-                    file,
-                    viewModel.getCurrentLanguage()
-                ).apply { filePath = file.absolutePath }
+                    viewModel.getCurrentLanguage(),
+                    file.readBytes(),
+                    file.absolutePath
+                )
 
                 lifecycleScope.launch { client.postImg(image) }
                 product.imageUrl = file.absolutePath
             }
 
-            fullProductClickListener = {
-                val barcode = it.code
-                productViewActivityStarter.openProduct(barcode, this@ProductCompareActivity)
+            fullProductClickListener = { product ->
+                productViewActivityStarter.openProduct(
+                    barcode = product.barcode,
+                    activity = this@ProductCompareActivity
+                )
             }
         }
 

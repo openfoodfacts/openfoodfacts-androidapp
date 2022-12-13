@@ -1,46 +1,75 @@
 package openfoodfacts.github.scrachx.openfood.images
 
-import okhttp3.MediaType
+import android.content.Context
+import android.net.Uri
 import okhttp3.RequestBody
+import openfoodfacts.github.scrachx.openfood.models.Barcode
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
-import openfoodfacts.github.scrachx.openfood.models.ProductImageField.*
-import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
+import openfoodfacts.github.scrachx.openfood.utils.MediaTypes.MIME_TEXT
 import java.io.File
 
-class ProductImage(
-        val barcode: String,
-        val imageField: ProductImageField,
-        imageBytes: ByteArray,
-        val language: String?
+
+data class ProductImage(
+    val barcode: Barcode,
+    val field: ProductImageField,
+    val language: String?,
+    val bytes: ByteArray,
+    val filePath: String? = null,
 ) {
 
-    constructor(code: String, field: ProductImageField, image: File, language: String?) :
-            this(code, field, image.readBytes(), language)
+    @Deprecated("Use the constructor with the filePath parameter instead")
+    constructor(
+        code: String,
+        field: ProductImageField,
+        imageFile: File,
+        language: String?,
+    ) : this(
+        barcode = Barcode(code),
+        field = field,
+        language = language,
+        bytes = imageFile.readBytes(),
+        filePath = imageFile.absolutePath,
+    )
 
-    val barcodeBody: RequestBody = RequestBody.create(ProductRepository.MIME_TEXT, barcode)
-    val fieldBody: RequestBody = RequestBody.create(ProductRepository.MIME_TEXT, "${imageField}_$language")
+    constructor(
+        code: String,
+        field: ProductImageField,
+        imageUri: Uri,
+        language: String?,
+        context: Context,
+    ) : this(
+        barcode = Barcode(code),
+        field = field,
+        language = language,
+        filePath = imageUri.path,
+        bytes = context.contentResolver
+            .openInputStream(imageUri)!!.use { it.readBytes() },
+    )
 
-    var imgFront: RequestBody? = null
-    var imgIngredients: RequestBody? = null
-    var imgNutrition: RequestBody? = null
-    var imgPackaging: RequestBody? = null
-    var imgOther: RequestBody? = null
+    fun getBarcodeBody(): RequestBody = RequestBody.create(MIME_TEXT, barcode.raw)
+    fun getFieldBody(): RequestBody = RequestBody.create(MIME_TEXT, "${field}_$language")
 
-    var filePath: String? = null
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
 
-    init {
-        when (imageField) {
-            FRONT -> imgFront = createImageRequest(imageBytes)
-            INGREDIENTS -> imgIngredients = createImageRequest(imageBytes)
-            NUTRITION -> imgNutrition = createImageRequest(imageBytes)
-            PACKAGING -> imgPackaging = createImageRequest(imageBytes)
-            OTHER -> imgOther = createImageRequest(imageBytes)
-        }
+        other as ProductImage
+
+        if (barcode != other.barcode) return false
+        if (field != other.field) return false
+        if (!bytes.contentEquals(other.bytes)) return false
+        if (language != other.language) return false
+        if (filePath != other.filePath) return false
+
+        return true
     }
 
-    companion object {
-        fun createImageRequest(image: File): RequestBody = RequestBody.create(MediaType.parse("image/*"), image)
-        fun createImageRequest(bytes: ByteArray): RequestBody = RequestBody.create(MediaType.parse("image/*"), bytes)
+    override fun hashCode(): Int {
+        var result = barcode.hashCode()
+        result = 31 * result + field.hashCode()
+        result = 31 * result + bytes.contentHashCode()
+        result = 31 * result + (language?.hashCode() ?: 0)
+        result = 31 * result + (filePath?.hashCode() ?: 0)
+        return result
     }
-
 }

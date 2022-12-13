@@ -36,6 +36,7 @@ import openfoodfacts.github.scrachx.openfood.features.productlist.CreateCSVContr
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.selectNavigationItem
+import openfoodfacts.github.scrachx.openfood.models.Barcode
 import openfoodfacts.github.scrachx.openfood.utils.Intent
 import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
 import openfoodfacts.github.scrachx.openfood.utils.SortType.BARCODE
@@ -45,9 +46,8 @@ import openfoodfacts.github.scrachx.openfood.utils.SortType.TIME
 import openfoodfacts.github.scrachx.openfood.utils.SortType.TITLE
 import openfoodfacts.github.scrachx.openfood.utils.SwipeController
 import openfoodfacts.github.scrachx.openfood.utils.getCsvFolderName
-import openfoodfacts.github.scrachx.openfood.utils.isPowerSaveMode
-import openfoodfacts.github.scrachx.openfood.utils.isImageLoadingDisabled
 import openfoodfacts.github.scrachx.openfood.utils.isHardwareCameraInstalled
+import openfoodfacts.github.scrachx.openfood.utils.shouldLoadImages
 import openfoodfacts.github.scrachx.openfood.utils.writeHistoryToFile
 import java.io.File
 import java.text.SimpleDateFormat
@@ -75,8 +75,8 @@ class ScanHistoryActivity : BaseActivity() {
     private var menuButtonsEnabled = false
 
     private val adapter by lazy {
-        ScanHistoryAdapter(isLowBatteryMode = isImageLoadingDisabled() && isPowerSaveMode(), picasso) {
-            productViewActivityStarter.openProduct(it.barcode, this)
+        ScanHistoryAdapter(shouldLoadImages(), picasso) {
+            productViewActivityStarter.openProduct(Barcode(it.barcode), this)
         }
     }
 

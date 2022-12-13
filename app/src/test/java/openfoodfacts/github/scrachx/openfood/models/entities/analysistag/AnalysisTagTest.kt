@@ -22,8 +22,18 @@ import org.mockito.kotlin.whenever
 @ExtendWith(MockitoExtension::class)
 class AnalysisTagTest {
     private lateinit var testAnalysisTag: AnalysisTag
-    private val tagEnglish = AnalysisTagName(UNIQUE_ALLERGEN_ID_2, LANGUAGE_CODE_ENGLISH, PEANUTS_EN, "show")
-    private val tagGerman = AnalysisTagName(UNIQUE_ALLERGEN_ID_1, LANGUAGE_CODE_GERMAN, PEANUTS_DE, "show")
+    private val tagEnglish = AnalysisTagName(
+        /* allergenTag = */ UNIQUE_ALLERGEN_ID_2,
+        /* languageCode = */ LANGUAGE_CODE_ENGLISH,
+        /* name = */ PEANUTS_EN,
+        /* showIngredients = */ "show"
+    )
+    private val tagGerman = AnalysisTagName(
+        /* allergenTag = */ UNIQUE_ALLERGEN_ID_1,
+        /* languageCode = */ LANGUAGE_CODE_GERMAN,
+        /* name = */ PEANUTS_DE,
+        /* showIngredients = */ "show"
+    )
     private lateinit var tagNames: MutableList<AnalysisTagName>
 
     @Mock
