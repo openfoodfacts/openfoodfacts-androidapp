@@ -39,7 +39,7 @@ jobs:
   deploy-opf:
     name: "🚀 Deploy OPF to Google Play"
     runs-on: ubuntu-20.04
-    if: false
+    #if: false
 
     needs:
       - test
@@ -84,7 +84,7 @@ jobs:
   deploy-opff:
     name: "🚀 Deploy OPFF to Google Play"
     runs-on: ubuntu-20.04
-    if: false
+    #if: false
 
     needs:
       - test
@@ -129,7 +129,7 @@ jobs:
   deploy-obf:
     name: "🚀 Deploy OBF to Google Play"
     runs-on: ubuntu-20.04
-    if: false
+    #if: false
 
     needs:
       - test
