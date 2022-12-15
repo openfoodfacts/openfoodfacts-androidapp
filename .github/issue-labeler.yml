@@ -131,9 +131,6 @@ robotoff:
 refactoring:
     - '(Refactoring)'
 
-scan:
-    - '(scan)'
-
 sentry:
     - '(sentry)'
 
