@@ -18,16 +18,19 @@ class ProductState : Serializable {
     /**
      * The status
      */
+    @JsonProperty("status")
     var status: Long = 0
 
     /**
      * The product
      */
+    @JsonProperty("product")
     var product: Product? = null
 
     /**
      * The code
      */
+    @JsonProperty("code")
     var code: String? = null
 
     @JsonIgnore

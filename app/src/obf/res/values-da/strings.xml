@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/ -->
-    <string name="website">https://world-da.openbeautyfacts.org/</string>
+    <string name="website">https://world.openbeautyfacts.org/</string>
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/contribuer -->
-    <string name="website_contribute">https://world-da.openbeautyfacts.org/contribute</string>
+    <string name="website_contribute">https://world.openbeautyfacts.org/contribute</string>
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/decouvrir -->
-    <string name="website_discover">https://world-da.openbeautyfacts.org/discover</string>
+    <string name="website_discover">https://world.openbeautyfacts.org/discover</string>
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/produit/ -->
-    <string name="website_product">https://world-da.openbeautyfacts.org/product/</string>
+    <string name="website_product">https://world.openbeautyfacts.org/product/</string>
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/contributeur/ -->
-    <string name="website_contributor">https://world-da.openbeautyfacts.org/contributor/</string>
-    <string name="terms_url">https://world-da.openbeautyfacts.org/terms-of-use</string>
+    <string name="website_contributor">https://world.openbeautyfacts.org/contributor/</string>
+    <string name="terms_url">https://world.openbeautyfacts.org/terms-of-use</string>
     <string name="txtHomeOnline">Open Beauty Facts er en åben database med flere end %1$s kosmetikprodukter (plus dem, du vil bidrage med).</string>
-    <string name="txtHome">Open Beauty Facts er en åben, kollaborativ database over kosmetikprodukter.</string>
+    <string name="txtHome">Open Beauty Facts er en åben database over fødevareprodukter indeholdende oplysninger om ingredienser, allergener og alle de øvrige informationer, som fremgår af produktetiketterne.</string>
     <string name="slide_1_title">Bidrag til gennemsigtighed i kosmetikbranchen</string>
     <string name="slide_1_desc">Skan produkter, tilføj deres billeder, få kosmetikgennemsigtighed frem i lyset</string>
     <string name="slide_2_title">Få fat i fakta</string>
@@ -21,7 +21,7 @@
     <string name="slide_3_desc">Al den kosmetik du benytter i én praktisk liste du kan eksportere</string>
     <string name="slide_4_title">Fungerer offline</string>
     <string name="slide_4_desc">Du kan tilføje nye produkter, selv hvis du ikke har en tilgængelig Internetforbindelse</string>
-    <string name="product_does_not_exist_please_add_it">Det skannede produkt findes endnu ikke i Open Beauty Facts. Tilføj det gerne.</string>
+    <string name="txtDialogsContent">Det skannede produkt findes ikke i Open Beauty Facts endnu. Tilføj det venligst.</string>
     <string name="msg_share">Kig på dette produkt på Open Beauty Facts:</string>
     <string name="txt_broaden_search">- udvider din søgning\n- skan og føj den til Open Beauty Facts</string>
     <string name="Donation">Trykk her for at donere til Open Beauty Facts</string>
@@ -29,22 +29,22 @@
     <string name="translate_help_summary">Få Open Beauty Facts-databasen på dit sprog - ingen teknisk viden kræves</string>
     <string name="text_offline_info_dialog">Indskan produkter selv mens du er offline, så du kan føje dem til Open Beauty Facts senere. De skannede produkter vil fremgå her, og du vil kunne indsende dem vha. knappen nedenfor.</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Dine allergioplysninger vil aldrig blive sendt til Open Beauty Facts-serveren. Vær også opmærksom på, at produktdata såvel som detektering muligvis ikke altid er 100% aorrekte, så dobbelttjek venligst selv! </string>
-    <!-- Open Beauty Facts tagline in different languages -->
+    <!-- OBF tagline in different languages -->
     <string name="version_string">Open Beauty Facts Android-app</string>
-    <string name="tagline">the free cosmetics database</string>
+    <string name="tagline">den gratis kosmetikdatabase</string>
     <string name="product_not_found">Produktet %1$s, du har skannet, findes endnu ikke i Open Beauty Facts. Vil du tilføje det?</string>
     <string name="currently_on_version">I øjeblikket i Open Beauty Facts</string>
     <string name="category_game_btn">Hjælp med at kategorisere produkter</string>
+    <!-- TODO add true support instead of overriding strings -->
     <string name="add_nutrient_prompt_text">Tilføj flere detaljer som hjælp til produktfærdiggørelsen</string>
     <string name="add_category_prompt_text">Tilføj en kategori som hjælp til produktfærdiggørelsen</string>
     <string name="add_nutrient_category_prompt_text">Tilføj en kategori og flere detaljer som hjælp til produktfærdiggørelsen</string>
     <string name="required_to_compute_nutriscore"></string>
-    <string name="default_list_title_stored">Produkter, jeg har</string>
-    <string name="default_list_title_to_buy">Produkter at købe</string>
+    <string name="txt_eaten_products">Produkter, jeg har</string>
+    <string name="txt_products_to_buy">Produkter at købe</string>
     <string name="intent_filter_share_label">Føj til Open Beauty Facts</string>
     <string name="brand_hint">Eks.: Nivea, L\'Oréal etc.…</string>
     <string name="txt_info_eaten_products">Du vil kunne føje produkter til denne liste ved at skanne produkter, trække produktkortet op og trykke på \"Produkter, som skal købes\".
         Du vl også kunne føje produkter til denne liste ved at søge efter dem og trykke på knappen + øverst til højre på produktsiden.</string>
     <string name="OFFlogo">Open Beauty Facts-logo</string>
-    <string name="txtDialogsContentPowerMode">Produktet, du har skannet, findes allerede i Open Food Facts.</string>
 </resources>

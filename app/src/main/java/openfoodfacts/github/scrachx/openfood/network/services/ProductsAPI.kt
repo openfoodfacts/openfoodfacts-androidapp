@@ -46,10 +46,10 @@ interface ProductsAPI {
 
     @GET("$API_P/product/{barcode}.json")
     suspend fun getProductByBarcode(
-        @Path("barcode") barcode: String,
-        @Query("fields") fields: String,
-        @Query("lc") locale: String,
-        @Header("User-Agent") header: String
+        @Path("barcode") barcode: String?,
+        @Query("fields") fields: String?,
+        @Query("lc") locale: String?,
+        @Header("User-Agent") header: String?
     ): ProductState
 
     /**
@@ -57,9 +57,9 @@ interface ProductsAPI {
      */
     @GET("$API_P/search")
     suspend fun getProductsByBarcode(
-        @Query("code") barcodes: String,
-        @Query("fields") fields: String,
-        @Header("User-Agent") header: String
+        @Query("code") barcodes: String?,
+        @Query("fields") fields: String?,
+        @Header("User-Agent") header: String?
     ): Search
 
     @FormUrlEncoded
@@ -72,9 +72,9 @@ interface ProductsAPI {
 
     @GET("cgi/search.pl?search_simple=1&json=1&action=process")
     suspend fun searchProductByName(
-        @Query(ApiFields.Keys.SEARCH_TERMS) name: String,
-        @Query("fields") fields: String,
-        @Query("page") page: Int
+        @Query(ApiFields.Keys.SEARCH_TERMS) name: String?,
+        @Query("fields") fields: String?,
+        @Query("page") page: Int?
     ): Search
 
     @FormUrlEncoded
@@ -102,22 +102,22 @@ interface ProductsAPI {
 
     @GET("/cgi/ingredients.pl?process_image=1&ocr_engine=google_cloud_vision")
     suspend fun performOCR(
-        @Query(ApiFields.Keys.BARCODE) code: String,
-        @Query("id") imgId: String
+        @Query(ApiFields.Keys.BARCODE) code: String?,
+        @Query("id") imgId: String?
     ): JsonNode
 
     @GET("cgi/suggest.pl")
     suspend fun getSuggestions(
-        @Query("tagtype") tagType: String,
-        @Query("term") term: String
+        @Query("tagtype") tagType: String?,
+        @Query("term") term: String?
     ): ArrayList<String>
 
 
     @GET("brand/{brand}/{page}.json")
     suspend fun getProductByBrands(
-        @Path("brand") brand: String,
-        @Path("page") page: Int,
-        @Query("fields") fields: String
+        @Path("brand") brand: String?,
+        @Path("page") page: Int?,
+        @Query("fields") fields: String?
     ): Search
 
     /**
@@ -136,64 +136,64 @@ interface ProductsAPI {
     @GET("allergen/{allergen}/{page}.json")
     suspend fun getProductsByAllergen(
         @Path("allergen") allergen: String,
-        @Path("page") page: Int,
-        @Query("fields") fields: String
+        @Path("page") page: Int?,
+        @Query("fields") fields: String?
     ): Search
 
     @GET("country/{country}/{page}.json")
     suspend fun getProductsByCountry(
         @Path("country") country: String,
-        @Path("page") page: Int,
-        @Query("fields") fields: String
+        @Path("page") page: Int?,
+        @Query("fields") fields: String?
     ): Search
 
     @GET("origin/{origin}/{page}.json")
     suspend fun getProductsByOrigin(
         @Path("origin") origin: String,
-        @Path("page") page: Int,
-        @Query("fields") fields: String
+        @Path("page") page: Int?,
+        @Query("fields") fields: String?
     ): Search
 
     @GET("manufacturing-place/{manufacturing-place}/{page}.json")
     suspend fun getProductsByManufacturingPlace(
         @Path("manufacturing-place") manufacturingPlace: String,
-        @Path("page") page: Int,
-        @Query("fields") fields: String
+        @Path("page") page: Int?,
+        @Query("fields") fields: String?
     ): Search
 
     @GET("store/{store}/{page}.json")
     suspend fun getProductByStores(
         @Path("store") store: String,
-        @Path("page") page: Int,
-        @Query("fields") fields: String
+        @Path("page") page: Int?,
+        @Query("fields") fields: String?
     ): Search
 
     @GET("packaging/{packaging}/{page}.json")
     suspend fun getProductsByPackaging(
         @Path("packaging") packaging: String,
-        @Path("page") page: Int,
-        @Query("fields") fields: String
+        @Path("page") page: Int?,
+        @Query("fields") fields: String?
     ): Search
 
     @GET("label/{label}/{page}.json")
     suspend fun getProductsByLabel(
         @Path("label") label: String,
-        @Path("page") page: Int,
-        @Query("fields") fields: String
+        @Path("page") page: Int?,
+        @Query("fields") fields: String?
     ): Search
 
     @GET("category/{category}/{page}.json")
     suspend fun getProductByCategory(
         @Path("category") category: String,
-        @Path("page") page: Int,
-        @Query("fields") fields: String
+        @Path("page") page: Int?,
+        @Query("fields") fields: String?
     ): Search
 
     @GET("contributor/{contributor}/{page}.json?nocache=1")
     suspend fun getProductsByContributor(
         @Path("contributor") contributor: String,
-        @Path("page") page: Int,
-        @Query("fields") fields: String
+        @Path("page") page: Int?,
+        @Query("fields") fields: String?
     ): Search
 
     @GET("language/{language}.json")
@@ -208,7 +208,7 @@ interface ProductsAPI {
     @GET("state/{state}.json")
     suspend fun getProductsByState(
         @Path("state") state: String,
-        @Query("fields") fields: String
+        @Query("fields") fields: String?
     ): Search
 
     @GET("packaging/{packaging}.json")
@@ -247,13 +247,13 @@ interface ProductsAPI {
     @GET("contributor/{contributor}/state/to-be-completed/{page}.json?nocache=1")
     suspend fun getToBeCompletedProductsByContributor(
         @Path("contributor") contributor: String,
-        @Path("page") page: Int
+        @Path("page") page: Int?
     ): Search
 
     @GET("/photographer/{contributor}/{page}.json?nocache=1")
     suspend fun getPicturesContributedProducts(
         @Path("contributor") contributor: String,
-        @Path("page") page: Int
+        @Path("page") page: Int?
     ): Search
 
     @GET("photographer/{Photographer}.json?nocache=1")
@@ -262,7 +262,7 @@ interface ProductsAPI {
     @GET("photographer/{contributor}/state/to-be-completed/{page}.json?nocache=1")
     suspend fun getPicturesContributedIncompleteProducts(
         @Path("contributor") contributor: String?,
-        @Path("page") page: Int
+        @Path("page") page: Int?
     ): Search
 
     @GET("informer/{informer}.json?nocache=1")
@@ -271,13 +271,13 @@ interface ProductsAPI {
     @GET("informer/{contributor}/{page}.json?nocache=1")
     suspend fun getInfoAddedProducts(
         @Path("contributor") contributor: String?,
-        @Path("page") page: Int
+        @Path("page") page: Int?
     ): Search
 
     @GET("informer/{contributor}/state/to-be-completed/{page}.json?nocache=1")
     suspend fun getInfoAddedIncompleteProducts(
         @Path("contributor") contributor: String,
-        @Path("page") page: Int
+        @Path("page") page: Int?
     ): Search
 
     @GET("last-edit-date/{LastEditDate}.json")
@@ -291,7 +291,7 @@ interface ProductsAPI {
 
     @GET("additive/{Additive}.json")
     suspend fun getProductsByAdditive(
-        @Path("Additive") additive: String?,
+        @Path("Additive") additive: String,
         @Query("fields") fields: String?
     ): Search
 
@@ -300,8 +300,8 @@ interface ProductsAPI {
 
     @GET("state/{State}/{page}.json")
     suspend fun getProductsByState(
-        @Path("State") state: String?,
-        @Path("page") page: Int,
+        @Path("State") state: String,
+        @Path("page") page: Int?,
         @Query("fields") fields: String?
     ): Search
 
@@ -321,7 +321,7 @@ interface ProductsAPI {
     @GET("state/to-be-completed/{page}.json?nocache=1")
     suspend fun getIncompleteProducts(
         @Path("page") page: Int,
-        @Query("fields") fields: String
+        @Query("fields") fields: String?
     ): Search
 
     /**

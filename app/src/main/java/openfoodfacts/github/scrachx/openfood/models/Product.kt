@@ -14,6 +14,7 @@ import openfoodfacts.github.scrachx.openfood.utils.ProductStringConverter
 import org.apache.commons.lang3.builder.ToStringBuilder
 import org.apache.commons.lang3.builder.ToStringStyle
 import java.util.*
+import kotlin.collections.ArrayList
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -22,7 +23,7 @@ class Product : SearchProduct() {
      * @return The additivesTags
      */
     @JsonProperty(ApiFields.Keys.ADDITIVES_TAGS)
-    val additivesTags = arrayListOf<String>()
+    val additivesTags: ArrayList<String> = arrayListOf<String>()
 
     /**
      * @return The allergens
@@ -33,23 +34,23 @@ class Product : SearchProduct() {
      * @return The allergensHierarchy
      */
     @JsonProperty(ApiFields.Keys.ALLERGENS_HIERARCHY)
-    val allergensHierarchy = arrayListOf<String>()
+    val allergensHierarchy: ArrayList<String> = arrayListOf<String>()
 
     @JsonProperty(ApiFields.Keys.ALLERGENS_TAGS)
-    val allergensTags = arrayListOf<String>()
+    val allergensTags: ArrayList<String> = arrayListOf<String>()
 
     /**
      * @return The aminoAcidTags
      */
     @JsonProperty(ApiFields.Keys.AMINO_ACIDS_TAGS)
-    var aminoAcidTags = arrayListOf<String>()
+    var aminoAcidTags: ArrayList<String> = arrayListOf<String>()
 
 
     /**
      * @return The brandsTags
      */
     @JsonProperty(ApiFields.Keys.BRANDS_TAGS)
-    val brandsTags = arrayListOf<String>()
+    val brandsTags: ArrayList<String> = arrayListOf<String>()
 
     /**
      * @return The categoriesTags
@@ -88,13 +89,13 @@ class Product : SearchProduct() {
     private val customerService: String? = null
 
     @JsonProperty(ApiFields.Keys.EDITORS_TAGS)
-    val editors = ArrayList<String>()
+    val editors: ArrayList<String> = ArrayList<String>()
 
     /**
      * @return The Emb_codes
      */
     @JsonProperty(ApiFields.Keys.EMB_CODES_TAGS)
-    val embTags = ArrayList<Any>()
+    val embTags: ArrayList<Any> = ArrayList<Any>()
 
     @JsonProperty(ApiFields.Keys.ENVIRONMENT_IMPACT_LEVEL_TAGS)
     val environmentImpactLevelTags: List<String>? = null
@@ -183,7 +184,7 @@ class Product : SearchProduct() {
      * @return The mineralsTags
      */
     @JsonProperty(ApiFields.Keys.MINERALS_TAGS)
-    var mineralTags = arrayListOf<String>()
+    var mineralTags: ArrayList<String> = arrayListOf<String>()
 
     @JsonProperty(ApiFields.Keys.NO_NUTRITION_DATA)
     val noNutritionData: String? = null
@@ -220,7 +221,7 @@ class Product : SearchProduct() {
      * @return The otherNutritionTags
      */
     @JsonProperty(ApiFields.Keys.OTHER_NUTRITIONAL_SUBSTANCES_TAGS)
-    var otherNutritionTags = arrayListOf<String>()
+    var otherNutritionTags: ArrayList<String> = arrayListOf<String>()
 
     val packaging: String? = null
         get() = field?.replace(",", ", ")
@@ -251,7 +252,7 @@ class Product : SearchProduct() {
      * @return The statesTags
      */
     @JsonProperty(ApiFields.Keys.STATES_TAGS)
-    val statesTags = arrayListOf<String>()
+    val statesTags: ArrayList<String> = arrayListOf<String>()
 
     val stores: String? = null
         get() = field?.replace(",", ", ")
@@ -276,7 +277,7 @@ class Product : SearchProduct() {
      * @return The vitaminTags
      */
     @JsonProperty(ApiFields.Keys.VITAMINS_TAGS)
-    var vitaminTags = arrayListOf<String>()
+    var vitaminTags: ArrayList<String>? = arrayListOf<String>()
 
     @JsonProperty(ApiFields.Keys.WARNING)
     val warning: String? = null
@@ -374,6 +375,7 @@ class Product : SearchProduct() {
         return jacksonObjectMapper().convertValue(attributeGroups)
     }
 
+    @Suppress("DEPRECATION")
     override fun toString() = ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
         .append("code", code)
         .append("productName", productName)

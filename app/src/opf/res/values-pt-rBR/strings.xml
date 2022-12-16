@@ -11,7 +11,7 @@
     <!-- For fr, Replace by https://world-fr.openproductsfacts.org/contributeur/ -->
     <string name="website_contributor">https://world-pt.openfoodfacts.org/colaborador/</string>
     <string name="terms_url">https://world.openproductsfacts.org/terms-of-use</string>
-    <string name="txtHomeOnline">Open Products Facts é um banco de dados aberto de mais de %1$s produtos (mais aqueles com os quais você contribuirá).</string>
+    <string name="txtHomeOnline">O Open Products Facts é uma base de dados aberta com mais de %1$s produtos (mais aqueles que vai contribuir).</string>
     <string name="txtHome">O Open Products Facts é um banco de dados aberto de todos os produtos do mundo.</string>
     <string name="slide_1_title">Contribua para a transparência dos produtos</string>
     <string name="slide_1_desc">Digitalize produtos, fotografe-os, faça a transparência alimentar acontecer</string>
@@ -21,7 +21,7 @@
     <string name="slide_3_desc">Todos os produtos que você escaneou, em uma lista prática que você pode exportar</string>
     <string name="slide_4_title">Funciona offline</string>
     <string name="slide_4_desc">Você pode adicionar novos produtos, mesmo se você não estiver atualmente conectado à Internet</string>
-    <string name="product_does_not_exist_please_add_it">The product you scanned does not exist yet in Open Products Facts. Please add it.</string>
+    <string name="txtDialogsContent">O produto escaneado ainda não existe no Open Products Facts. Por favor adicione-o.</string>
     <string name="txtDialogsContentPowerMode">O produto escaneado já existe no Open Products Facts.</string>
     <string name="msg_share">Ver este produto no Open Products Facts:</string>
     <string name="not_support_books">Livros não são atualmente permitidos no Open Products Facts</string>
@@ -30,18 +30,19 @@
     <string name="translate_help_title">Ajudar a traduzir Open Products Facts</string>
     <string name="translate_help_summary">Traga a base de dados Open Products Facts ao seu idioma - nenhum conhecimento técnico necessário</string>
     <string name="text_offline_info_dialog">Digitalize os produtos mesmo que esteja desligado da Internet, e poderá enviá-los para o Open Products Facts mais tarde. Os produtos digitalizados irão aparecer aqui e poderá enviá-los utilizando o botão abaixo.</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">A informação das suas alergias nunca será enviada ao servidor do Open Products Facts. Também, tenha cuidado com que os dados do produto podem não ser precisos e a detecção pode não ter 100% aquadros, então por favor verifique você mesmo! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Products Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
     <!-- OPF tagline in different languages -->
     <string name="version_string">Abrir o applicativo Products Facts para android</string>
     <string name="tagline">the free product database</string>
-    <string name="product_not_found">O produto %1$s que digitalizou ainda não existe no Open Products Facts. Você pode adicioná-lo?</string>
+    <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Products Facts. Can you add it?</string>
     <string name="currently_on_version">Atualmente no Open Products Facts</string>
     <string name="category_game_btn">Ajude a categorizar produtos</string>
+    <!-- TODO add true support instead of overriding strings -->
     <string name="add_nutrient_prompt_text">Adicione mais detalhes para ajudar a completar o produto</string>
     <string name="add_category_prompt_text">Adicione uma categoria para ajudar a completar o produto</string>
     <string name="add_nutrient_category_prompt_text">Adicione uma categoria e mais detalhes para ajudar a completar o produto</string>
-    <string name="default_list_title_stored">Produtos que eu tenho</string>
-    <string name="default_list_title_to_buy">Produtos para comprar</string>
+    <string name="txt_eaten_products">Produtos que eu tenho</string>
+    <string name="txt_products_to_buy">Produtos para comprar</string>
     <string name="intent_filter_share_label">Adicionar ao Open Products Facts</string>
     <string name="txt_info_eaten_products">Você poderá adicionar produtos a essa lista escaneando produtos, arrastando o cartão do produto para cima e tocando em \"Produtos para comprar\".
          Você também poderá adicionar produtos a essa lista pesquisando-os e clicando no botão + no canto superior direito da página do produto.</string>
