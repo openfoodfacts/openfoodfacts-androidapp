@@ -1,8 +1,9 @@
 name: Update copyright year(s) in license file
 
-on:
-  pull_request_target:
-    types: [opened, reopened]
+on: 
+  push:
+    # only trigger on branches, not on tags
+    branches: '**'
 
 #on:
 #  schedule:
