@@ -331,8 +331,14 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
         offlineSavedProduct: OfflineSavedProduct?,
         barcode: Barcode,
         @StringRes errorMsg: Int,
-    ) = if (offlineSavedProduct != null) showOfflineSavedDetails(offlineSavedProduct)
-    else showProductNotFound(getString(errorMsg, barcode))
+    ) {
+        if (offlineSavedProduct != null) {
+            showOfflineSavedDetails(offlineSavedProduct)
+        } else {
+            val rawBarcode = barcode.raw
+            showProductNotFound(getString(errorMsg, rawBarcode))
+        }
+    }
 
     private fun setupSummary(product: Product) {
         binding.callToActionImageProgress.visibility = View.VISIBLE
