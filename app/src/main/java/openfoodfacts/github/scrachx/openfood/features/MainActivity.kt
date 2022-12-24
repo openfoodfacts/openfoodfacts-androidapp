@@ -967,21 +967,37 @@ class MainActivity : BaseActivity(), NavigationDrawerListener, NavigationDrawerH
                     val tempBarcode = Barcode(if (hasEditText) barcodeEditText.text.toString() else barcode)
 
                     if (tempBarcode.isEmpty()) {
-                        Toast.makeText(this@MainActivity, getString(R.string.sorry_msg), Toast.LENGTH_LONG).show()
+                        Toast.makeText(
+                            this@MainActivity,
+                            getString(R.string.sorry_msg),
+                            Toast.LENGTH_LONG
+                        ).show()
                     } else {
                         dialog.dismiss()
                         if (!this@MainActivity.isNetworkAvailable()) {
-                            ProductEditActivity.start(this@MainActivity, Product().apply { code = tempBarcode.raw })
+                            ProductEditActivity.start(
+                                this@MainActivity,
+                                Product().apply { code = tempBarcode.raw }
+                            )
                         } else {
-                            contentResolver.openInputStream(imgUri)!!.use {
-                                val image = ProductImage(
-                                    tempBarcode,
-                                    ProductImageField.OTHER,
-                                    localeManager.getLanguage(),
-                                    it.readBytes()
-                                )
-                                // Post image
-                                viewModel.postImage(image)
+                            val inputStream = contentResolver.openInputStream(imgUri)
+                            if (inputStream == null) {
+                                Toast.makeText(
+                                    this@MainActivity,
+                                    "Could not resolve file from Uri $imgUri",
+                                    Toast.LENGTH_LONG,
+                                ).show()
+                            } else {
+                                inputStream.use {
+                                    val image = ProductImage(
+                                        tempBarcode,
+                                        ProductImageField.OTHER,
+                                        localeManager.getLanguage(),
+                                        it.readBytes()
+                                    )
+                                    // Post image
+                                    viewModel.postImage(image)
+                                }
                             }
                         }
                     }
