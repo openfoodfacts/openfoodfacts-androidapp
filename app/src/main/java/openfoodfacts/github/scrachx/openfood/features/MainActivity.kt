@@ -71,6 +71,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import logcat.LogPriority
+import logcat.logcat
 import openfoodfacts.github.scrachx.openfood.AppFlavor
 import openfoodfacts.github.scrachx.openfood.AppFlavor.Companion.isFlavors
 import openfoodfacts.github.scrachx.openfood.BuildConfig
@@ -267,7 +269,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener, NavigationDrawerH
             try {
                 withHeaderBackground(R.drawable.header)
             } catch (e: OutOfMemoryError) {
-                Log.w(LOG_TAG, "Device has too low memory, loading color drawer header...", e)
+                logcat(LogPriority.WARN) { "Device has too low memory, loading color drawer header..." }
                 withHeaderBackground(ColorDrawable(ContextCompat.getColor(this@MainActivity, R.color.primary_dark)))
             }
         }
@@ -967,21 +969,37 @@ class MainActivity : BaseActivity(), NavigationDrawerListener, NavigationDrawerH
                     val tempBarcode = Barcode(if (hasEditText) barcodeEditText.text.toString() else barcode)
 
                     if (tempBarcode.isEmpty()) {
-                        Toast.makeText(this@MainActivity, getString(R.string.sorry_msg), Toast.LENGTH_LONG).show()
+                        Toast.makeText(
+                            this@MainActivity,
+                            getString(R.string.sorry_msg),
+                            Toast.LENGTH_LONG
+                        ).show()
                     } else {
                         dialog.dismiss()
                         if (!this@MainActivity.isNetworkAvailable()) {
-                            ProductEditActivity.start(this@MainActivity, Product().apply { code = tempBarcode.raw })
+                            ProductEditActivity.start(
+                                this@MainActivity,
+                                Product().apply { code = tempBarcode.raw }
+                            )
                         } else {
-                            contentResolver.openInputStream(imgUri)!!.use {
-                                val image = ProductImage(
-                                    tempBarcode,
-                                    ProductImageField.OTHER,
-                                    localeManager.getLanguage(),
-                                    it.readBytes()
-                                )
-                                // Post image
-                                viewModel.postImage(image)
+                            val inputStream = contentResolver.openInputStream(imgUri)
+                            if (inputStream == null) {
+                                Toast.makeText(
+                                    this@MainActivity,
+                                    "Could not resolve file from Uri $imgUri",
+                                    Toast.LENGTH_LONG,
+                                ).show()
+                            } else {
+                                inputStream.use {
+                                    val image = ProductImage(
+                                        tempBarcode,
+                                        ProductImageField.OTHER,
+                                        localeManager.getLanguage(),
+                                        it.readBytes()
+                                    )
+                                    // Post image
+                                    viewModel.postImage(image)
+                                }
                             }
                         }
                     }
@@ -1006,7 +1024,6 @@ class MainActivity : BaseActivity(), NavigationDrawerListener, NavigationDrawerH
         private const val SCAN_SHORTCUT = "SCAN"
         private const val BARCODE_SHORTCUT = "BARCODE"
         const val PRODUCT_SEARCH_KEY = "product_search"
-        private val LOG_TAG = MainActivity::class.simpleName!!
 
         fun start(context: Context) = context.startActivity(Intent<MainActivity>(context))
     }
