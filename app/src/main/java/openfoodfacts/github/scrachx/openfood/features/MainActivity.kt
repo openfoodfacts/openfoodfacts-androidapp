@@ -71,6 +71,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import logcat.LogPriority
+import logcat.logcat
 import openfoodfacts.github.scrachx.openfood.AppFlavor
 import openfoodfacts.github.scrachx.openfood.AppFlavor.Companion.isFlavors
 import openfoodfacts.github.scrachx.openfood.BuildConfig
@@ -267,7 +269,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener, NavigationDrawerH
             try {
                 withHeaderBackground(R.drawable.header)
             } catch (e: OutOfMemoryError) {
-                Log.w(LOG_TAG, "Device has too low memory, loading color drawer header...", e)
+                logcat(LogPriority.WARN) { "Device has too low memory, loading color drawer header..." }
                 withHeaderBackground(ColorDrawable(ContextCompat.getColor(this@MainActivity, R.color.primary_dark)))
             }
         }
@@ -1022,7 +1024,6 @@ class MainActivity : BaseActivity(), NavigationDrawerListener, NavigationDrawerH
         private const val SCAN_SHORTCUT = "SCAN"
         private const val BARCODE_SHORTCUT = "BARCODE"
         const val PRODUCT_SEARCH_KEY = "product_search"
-        private val LOG_TAG = MainActivity::class.simpleName!!
 
         fun start(context: Context) = context.startActivity(Intent<MainActivity>(context))
     }
