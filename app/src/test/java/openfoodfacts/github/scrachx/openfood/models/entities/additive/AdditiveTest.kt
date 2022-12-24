@@ -1,93 +1,98 @@
 package openfoodfacts.github.scrachx.openfood.models.entities.additive
 
 import com.google.common.truth.Truth.assertThat
+import io.mockk.Runs
+import io.mockk.every
+import io.mockk.impl.annotations.MockK
+import io.mockk.junit5.MockKExtension
+import io.mockk.just
+import io.mockk.verify
 import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import org.greenrobot.greendao.DaoException
 import org.junit.Assert.assertThrows
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.api.extension.ExtendWith
-import org.mockito.ArgumentMatchers
-import org.mockito.Mock
-import org.mockito.Mockito.verify
-import org.mockito.junit.jupiter.MockitoExtension
-import org.mockito.junit.jupiter.MockitoSettings
-import org.mockito.kotlin.doReturn
-import org.mockito.kotlin.whenever
-import org.mockito.quality.Strictness
 
 /**
  * Tests for [Additive]
  */
-@ExtendWith(MockitoExtension::class)
-@MockitoSettings(strictness = Strictness.LENIENT)
+@ExtendWith(MockKExtension::class)
 class AdditiveTest {
-    @Mock
-    private val mockDaoSession: DaoSession? = null
+    @MockK
+    private lateinit var mockDaoSession: DaoSession
 
-    @Mock
+    @MockK
     private lateinit var mockAdditiveDao: AdditiveDao
 
-    @Mock
+    @MockK
     private lateinit var mockAdditiveNameDao: AdditiveNameDao
-    private lateinit var mAdditive: Additive
+    private lateinit var additive: Additive
 
     @BeforeEach
-    fun setup() {
-        whenever(mockDaoSession!!.additiveNameDao) doReturn mockAdditiveNameDao
-        whenever(mockDaoSession.additiveDao) doReturn mockAdditiveDao
-        whenever(mockAdditiveNameDao._queryAdditive_Names(ArgumentMatchers.any())) doReturn listOf(ADDITIVE_NAME_1, ADDITIVE_NAME_2)
-        mAdditive = Additive()
+    fun beforeEach() {
+        every { mockDaoSession.additiveNameDao } returns mockAdditiveNameDao
+        every { mockDaoSession.additiveDao } returns mockAdditiveDao
+
+        additive = Additive()
     }
 
     @Test
-    fun getNamesWithNullNamesAndNullDaoSession_throwsDaoException() {
-        assertThrows(DaoException::class.java) { mAdditive.names }
+    fun `get names with null dao throws DaoException`() {
+        assertThrows<DaoException> { additive.names }
     }
 
     @Test
-    fun getNamesWithNullNamesAndNonNullDaoSession_setsNamesFromAdditiveNamesDao() {
-        mAdditive.__setDaoSession(mockDaoSession)
-        val names = mAdditive.names
+    fun `get names with null names and non null dao sets names from AdditiveNamesDao`() {
+        every { mockAdditiveNameDao._queryAdditive_Names(any()) }
+            .returns(listOf(ADDITIVE_NAME_1, ADDITIVE_NAME_2))
+
+        additive.__setDaoSession(mockDaoSession)
+
+        val names = additive.names
         assertThat(names).hasSize(2)
         assertThat(names[0]!!.name).isEqualTo(ADDITIVE_NAME_NAME_1)
         assertThat(names[1]!!.name).isEqualTo(ADDITIVE_NAME_NAME_2)
     }
 
     @Test
-    fun deleteWithNullDao_throwsDaoException() {
-        assertThrows(DaoException::class.java) { mAdditive.delete() }
+    fun `delete with null dao throws DaoException`() {
+        assertThrows<DaoException> { additive.delete() }
     }
 
     @Test
-    fun deleteWithNonNullDao_callsDeleteOnDao() {
-        mAdditive.__setDaoSession(mockDaoSession)
-        mAdditive.delete()
-        verify(mockAdditiveDao).delete(mAdditive)
+    fun `delete with non null dao calls delete on dao`() {
+        every { mockAdditiveDao.delete(any()) } just Runs
+        additive.__setDaoSession(mockDaoSession)
+        additive.delete()
+        verify { mockAdditiveDao.delete(additive) }
     }
 
     @Test
-    fun refreshWithNullDao_throwsDaoException() {
-        assertThrows(DaoException::class.java) { mAdditive.refresh() }
+    fun `refresh with null dao throws DaoException`() {
+        assertThrows(DaoException::class.java) { additive.refresh() }
     }
 
     @Test
-    fun refreshWithNonNullDao_callsRefreshOnDao() {
-        mAdditive.__setDaoSession(mockDaoSession)
-        mAdditive.refresh()
-        verify(mockAdditiveDao).refresh(mAdditive)
+    fun `refresh with non null dao calls refresh on dao`() {
+        every { mockAdditiveDao.refresh(any()) } just Runs
+        additive.__setDaoSession(mockDaoSession)
+        additive.refresh()
+        verify { mockAdditiveDao.refresh(additive) }
     }
 
     @Test
-    fun updateWithNullDao_throwsDaoException() {
-        assertThrows(DaoException::class.java) { mAdditive.update() }
+    fun `update with null dao throws DaoException`() {
+        assertThrows<DaoException> { additive.update() }
     }
 
     @Test
-    fun updateWithNonNullDao_callsUpdateOnDao() {
-        mAdditive.__setDaoSession(mockDaoSession)
-        mAdditive.update()
-        verify(mockAdditiveDao).update(mAdditive)
+    fun `update with non null dao calls update on dao`() {
+        every { mockAdditiveDao.update(any()) } just Runs
+        additive.__setDaoSession(mockDaoSession)
+        additive.update()
+        verify { mockAdditiveDao.update(additive) }
     }
 
     companion object {

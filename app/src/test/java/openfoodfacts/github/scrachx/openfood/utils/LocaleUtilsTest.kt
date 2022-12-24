@@ -10,8 +10,6 @@ import io.mockk.mockk
 import openfoodfacts.github.scrachx.openfood.models.LanguageData
 import openfoodfacts.github.scrachx.openfood.utils.LocaleUtils.parseLocale
 import org.junit.jupiter.api.Test
-import org.mockito.kotlin.doReturn
-import org.mockito.kotlin.mock
 import java.util.*
 
 /**
