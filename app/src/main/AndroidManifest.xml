@@ -316,7 +316,7 @@
             android:theme="@style/OFFTheme"
             android:windowSoftInputMode="adjustResize|stateHidden" />
 
-        <activity android:name=".features.product.view.CalculateDetailsActivity" />
+        <activity android:name=".features.product.view.calculatedetails.CalculateDetailsActivity" />
 
         <activity
             android:name=".features.productlists.ProductListsActivity"
