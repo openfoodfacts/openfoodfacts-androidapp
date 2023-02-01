@@ -1,5 +1,19 @@
 # Changelog
 
+## [3.10.0](https://github.com/openfoodfacts/openfoodfacts-androidapp/compare/v3.9.0...v3.10.0) (2023-02-01)
+
+
+### Features
+
+* new icons ([ba85327](https://github.com/openfoodfacts/openfoodfacts-androidapp/commit/ba85327c495699d1a3485939b9c88ab72afda778))
+
+
+### Bug Fixes
+
+* check for null before using an input stream ([54691ae](https://github.com/openfoodfacts/openfoodfacts-androidapp/commit/54691aecef05638e9785004ffad89c3c8e8c966c))
+* labeler action not working ([1089c17](https://github.com/openfoodfacts/openfoodfacts-androidapp/commit/1089c1750412882743d7ebe04612f821b1a3baee))
+* show barcode value instead of class when displaying the product not found ([66bedd3](https://github.com/openfoodfacts/openfoodfacts-androidapp/commit/66bedd386e5d822a3d2de250c9928e60cbb25c64)), closes [#4889](https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/4889)
+
 ## [3.9.0](https://github.com/openfoodfacts/openfoodfacts-androidapp/compare/v3.8.1...v3.9.0) (2022-12-10)
 
 
