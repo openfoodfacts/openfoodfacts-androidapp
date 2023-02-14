@@ -1,4 +1,4 @@
-<img height='175' src="https://static.openfoodfacts.org/images/svg/openfoodfacts-logo-en.svg" align="left" hspace="1" vspace="1">
+<img height='175' src="https://user-images.githubusercontent.com/91405690/218626521-38073079-8443-457d-a4f0-a13409722770.png" align="left" hspace="1" vspace="1">
 
 Open Food Facts - Android app
 =============================
