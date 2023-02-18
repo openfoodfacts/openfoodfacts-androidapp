@@ -20,6 +20,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
 import openfoodfacts.github.scrachx.openfood.BuildConfig.FLAVOR_versionCode
+import openfoodfacts.github.scrachx.openfood.models.ProductIngredient
 import openfoodfacts.github.scrachx.openfood.models.ProductState
 import openfoodfacts.github.scrachx.openfood.models.Search
 import openfoodfacts.github.scrachx.openfood.models.tagline.TagLineLanguage
@@ -49,7 +50,7 @@ interface ProductsAPI {
         @Path("barcode") barcode: String,
         @Query("fields") fields: String,
         @Query("lc") locale: String,
-        @Header("User-Agent") header: String
+        @Header("User-Agent") header: String,
     ): ProductState
 
     /**
@@ -59,7 +60,7 @@ interface ProductsAPI {
     suspend fun getProductsByBarcode(
         @Query("code") barcodes: String,
         @Query("fields") fields: String,
-        @Header("User-Agent") header: String
+        @Header("User-Agent") header: String,
     ): Search
 
     @FormUrlEncoded
@@ -67,14 +68,14 @@ interface ProductsAPI {
     suspend fun saveProduct(
         @Field(ApiFields.Keys.BARCODE) code: String?,
         @FieldMap parameters: Map<String?, @JvmSuppressWildcards String?>?,
-        @Field(ApiFields.Keys.USER_COMMENT) comment: String?
+        @Field(ApiFields.Keys.USER_COMMENT) comment: String?,
     ): ProductState
 
     @GET("cgi/search.pl?search_simple=1&json=1&action=process")
     suspend fun searchProductByName(
         @Query(ApiFields.Keys.SEARCH_TERMS) name: String,
         @Query("fields") fields: String,
-        @Query("page") page: Int
+        @Query("page") page: Int,
     ): Search
 
     @FormUrlEncoded
@@ -82,34 +83,34 @@ interface ProductsAPI {
     suspend fun signIn(
         @Field(ApiFields.Keys.USER_ID) login: String?,
         @Field(ApiFields.Keys.USER_PASS) password: String?,
-        @Field(".submit") submit: String?
+        @Field(".submit") submit: String?,
     ): Response<ResponseBody>
 
     @GET("$API_P/product/{barcode}.json?fields=ingredients")
-    suspend fun getIngredientsByBarcode(@Path("barcode") barcode: String?): JsonNode
+    suspend fun getIngredientsByBarcode(@Path("barcode") barcode: String?): ProductState
 
     @Multipart
     @POST("/cgi/product_image_upload.pl")
     suspend fun saveImage(
-        @PartMap fields: Map<String, @JvmSuppressWildcards RequestBody?>
+        @PartMap fields: Map<String, @JvmSuppressWildcards RequestBody?>,
     ): JsonNode
 
     @GET("/cgi/product_image_crop.pl")
     suspend fun editImage(
         @Query(ApiFields.Keys.BARCODE) code: String,
-        @QueryMap fields: Map<String, @JvmSuppressWildcards String?>
+        @QueryMap fields: Map<String, @JvmSuppressWildcards String?>,
     ): JsonNode
 
     @GET("/cgi/ingredients.pl?process_image=1&ocr_engine=google_cloud_vision")
     suspend fun performOCR(
         @Query(ApiFields.Keys.BARCODE) code: String,
-        @Query("id") imgId: String
+        @Query("id") imgId: String,
     ): JsonNode
 
     @GET("cgi/suggest.pl")
     suspend fun getSuggestions(
         @Query("tagtype") tagType: String,
-        @Query("term") term: String
+        @Query("term") term: String,
     ): ArrayList<String>
 
 
@@ -117,7 +118,7 @@ interface ProductsAPI {
     suspend fun getProductByBrands(
         @Path("brand") brand: String,
         @Path("page") page: Int,
-        @Query("fields") fields: String
+        @Query("fields") fields: String,
     ): Search
 
     /**
@@ -130,70 +131,70 @@ interface ProductsAPI {
     suspend fun getProductsByAdditive(
         @Path("additive") additive: String,
         @Path("page") page: Int,
-        @Query("fields") fields: String
+        @Query("fields") fields: String,
     ): Search
 
     @GET("allergen/{allergen}/{page}.json")
     suspend fun getProductsByAllergen(
         @Path("allergen") allergen: String,
         @Path("page") page: Int,
-        @Query("fields") fields: String
+        @Query("fields") fields: String,
     ): Search
 
     @GET("country/{country}/{page}.json")
     suspend fun getProductsByCountry(
         @Path("country") country: String,
         @Path("page") page: Int,
-        @Query("fields") fields: String
+        @Query("fields") fields: String,
     ): Search
 
     @GET("origin/{origin}/{page}.json")
     suspend fun getProductsByOrigin(
         @Path("origin") origin: String,
         @Path("page") page: Int,
-        @Query("fields") fields: String
+        @Query("fields") fields: String,
     ): Search
 
     @GET("manufacturing-place/{manufacturing-place}/{page}.json")
     suspend fun getProductsByManufacturingPlace(
         @Path("manufacturing-place") manufacturingPlace: String,
         @Path("page") page: Int,
-        @Query("fields") fields: String
+        @Query("fields") fields: String,
     ): Search
 
     @GET("store/{store}/{page}.json")
     suspend fun getProductByStores(
         @Path("store") store: String,
         @Path("page") page: Int,
-        @Query("fields") fields: String
+        @Query("fields") fields: String,
     ): Search
 
     @GET("packaging/{packaging}/{page}.json")
     suspend fun getProductsByPackaging(
         @Path("packaging") packaging: String,
         @Path("page") page: Int,
-        @Query("fields") fields: String
+        @Query("fields") fields: String,
     ): Search
 
     @GET("label/{label}/{page}.json")
     suspend fun getProductsByLabel(
         @Path("label") label: String,
         @Path("page") page: Int,
-        @Query("fields") fields: String
+        @Query("fields") fields: String,
     ): Search
 
     @GET("category/{category}/{page}.json")
     suspend fun getProductByCategory(
         @Path("category") category: String,
         @Path("page") page: Int,
-        @Query("fields") fields: String
+        @Query("fields") fields: String,
     ): Search
 
     @GET("contributor/{contributor}/{page}.json?nocache=1")
     suspend fun getProductsByContributor(
         @Path("contributor") contributor: String,
         @Path("page") page: Int,
-        @Query("fields") fields: String
+        @Query("fields") fields: String,
     ): Search
 
     @GET("language/{language}.json")
@@ -208,7 +209,7 @@ interface ProductsAPI {
     @GET("state/{state}.json")
     suspend fun getProductsByState(
         @Path("state") state: String,
-        @Query("fields") fields: String
+        @Query("fields") fields: String,
     ): Search
 
     @GET("packaging/{packaging}.json")
@@ -247,13 +248,13 @@ interface ProductsAPI {
     @GET("contributor/{contributor}/state/to-be-completed/{page}.json?nocache=1")
     suspend fun getToBeCompletedProductsByContributor(
         @Path("contributor") contributor: String,
-        @Path("page") page: Int
+        @Path("page") page: Int,
     ): Search
 
     @GET("/photographer/{contributor}/{page}.json?nocache=1")
     suspend fun getPicturesContributedProducts(
         @Path("contributor") contributor: String,
-        @Path("page") page: Int
+        @Path("page") page: Int,
     ): Search
 
     @GET("photographer/{Photographer}.json?nocache=1")
@@ -262,7 +263,7 @@ interface ProductsAPI {
     @GET("photographer/{contributor}/state/to-be-completed/{page}.json?nocache=1")
     suspend fun getPicturesContributedIncompleteProducts(
         @Path("contributor") contributor: String?,
-        @Path("page") page: Int
+        @Path("page") page: Int,
     ): Search
 
     @GET("informer/{informer}.json?nocache=1")
@@ -271,13 +272,13 @@ interface ProductsAPI {
     @GET("informer/{contributor}/{page}.json?nocache=1")
     suspend fun getInfoAddedProducts(
         @Path("contributor") contributor: String?,
-        @Path("page") page: Int
+        @Path("page") page: Int,
     ): Search
 
     @GET("informer/{contributor}/state/to-be-completed/{page}.json?nocache=1")
     suspend fun getInfoAddedIncompleteProducts(
         @Path("contributor") contributor: String,
-        @Path("page") page: Int
+        @Path("page") page: Int,
     ): Search
 
     @GET("last-edit-date/{LastEditDate}.json")
@@ -292,7 +293,7 @@ interface ProductsAPI {
     @GET("additive/{Additive}.json")
     suspend fun getProductsByAdditive(
         @Path("Additive") additive: String?,
-        @Query("fields") fields: String?
+        @Query("fields") fields: String?,
     ): Search
 
     @GET("code/{Code}.json")
@@ -302,7 +303,7 @@ interface ProductsAPI {
     suspend fun getProductsByState(
         @Path("State") state: String?,
         @Path("page") page: Int,
-        @Query("fields") fields: String?
+        @Query("fields") fields: String?,
     ): Search
 
     /*
@@ -321,7 +322,7 @@ interface ProductsAPI {
     @GET("state/to-be-completed/{page}.json?nocache=1")
     suspend fun getIncompleteProducts(
         @Path("page") page: Int,
-        @Query("fields") fields: String
+        @Query("fields") fields: String,
     ): Search
 
     /**
@@ -351,7 +352,7 @@ interface ProductsAPI {
     @GET("/cgi/product_image_crop.pl")
     suspend fun editImages(
         @Query(ApiFields.Keys.BARCODE) code: String,
-        @QueryMap fields: Map<String, @JvmSuppressWildcards String?>?
+        @QueryMap fields: Map<String, @JvmSuppressWildcards String?>?,
     ): ObjectNode
 
     /**
@@ -361,7 +362,7 @@ interface ProductsAPI {
     @GET("/cgi/product_image_unselect.pl")
     suspend fun unSelectImage(
         @Query(ApiFields.Keys.BARCODE) code: String,
-        @QueryMap fields: Map<String, @JvmSuppressWildcards String?>?
+        @QueryMap fields: Map<String, @JvmSuppressWildcards String?>?,
     ): String
 
     @GET

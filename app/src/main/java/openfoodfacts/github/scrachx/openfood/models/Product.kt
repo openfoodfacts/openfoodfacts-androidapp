@@ -116,7 +116,7 @@ class Product : SearchProduct() {
     val imageFrontUrl: String? = null
 
     @JsonProperty(ApiFields.Keys.INGREDIENTS)
-    val ingredients = arrayListOf<Map<String, Any>>()
+    val ingredients = arrayListOf<ProductIngredient>()
 
     @JsonProperty(ApiFields.Keys.INGREDIENTS_ANALYSIS_TAGS)
     val ingredientsAnalysisTags = arrayListOf<String>()
