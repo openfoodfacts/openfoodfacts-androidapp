@@ -606,7 +606,7 @@ class ProductSearchActivity : BaseActivity() {
             binding.productsRecyclerView.run RecyclerView@{
                 this@RecyclerView.setHasFixedSize(true)
                 this@RecyclerView.layoutManager = layoutManager
-                this@RecyclerView.adapter = adapter
+                this@RecyclerView.adapter = this@ProductSearchActivity.adapter
                 this@RecyclerView.addItemDecoration(dividerItemDecoration)
 
                 // Retain an instance so that you can call `resetState()` for fresh searches

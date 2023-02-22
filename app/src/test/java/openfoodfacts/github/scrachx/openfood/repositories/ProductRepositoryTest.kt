@@ -33,23 +33,23 @@ class ProductRepositoryTest {
     @Test
     fun `comment to upload with username`() {
         // Logged in test
-        assertThat(
-            ProductRepository.getCommentToUpload(
-                mockContext,
-                mockInstallationService,
-                "USERNAME"
-            )
-        ).isEqualTo("Official ${BuildConfig.APP_NAME} Android app TEST_VERSION_NAME")
+        val actual = ProductRepository.getCommentToUpload(
+            mockContext,
+            mockInstallationService,
+            "USERNAME"
+        )
+        val expected = "Official ${BuildConfig.APP_NAME} Android app TEST_VERSION_NAME"
+        assertThat(actual).isEqualTo(expected)
     }
 
     @Test
     fun `comment to upload without username`() {
-        assertThat(
-            ProductRepository.getCommentToUpload(
-                mockContext,
-                mockInstallationService,
-                null
-            )
-        ).isEqualTo("Official ${BuildConfig.APP_NAME} Android app TEST_VERSION_NAME (Added by FAKE_ID)")
+        val actual = ProductRepository.getCommentToUpload(
+            mockContext,
+            mockInstallationService,
+            null
+        )
+        val expected = "Official ${BuildConfig.APP_NAME} Android app TEST_VERSION_NAME (Added by FAKE_ID)"
+        assertThat(actual).isEqualTo(expected)
     }
 }

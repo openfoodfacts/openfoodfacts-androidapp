@@ -9,16 +9,20 @@ import java.io.Serializable
 
 /**
  * Represents an ingredient of the product
- *
- * @param rank The rank, set -1 if no rank returned
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder("text", "id", "rank", "percent")
 data class ProductIngredient(
-    @JsonProperty("text") val text: String,
+    @JsonProperty("text") val text: String? = null,
     @JsonProperty("id") val id: String,
-    @JsonProperty("rank") val rank: Long = 0,
+    @JsonProperty("rank") val rank: Long = -1,
     @JsonProperty("percent") val percent: String? = null,
+    @JsonProperty("percent_estimate") val percentEstimate: Float? = null,
+    @JsonProperty("percent_min") val percentMin: Float? = null,
+    @JsonProperty("percent_max") val percentMax: Float? = null,
+    @JsonProperty("vegan") val vegan: String? = null,
+    @JsonProperty("vegetarian") val vegetarian: String? = null,
+    @JsonProperty("has_sub_ingredients") val hasSubIngredients: String? = null,
 ) : Serializable {
 
 
