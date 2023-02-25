@@ -66,7 +66,7 @@ import openfoodfacts.github.scrachx.openfood.features.images.manage.ImagesManage
 import openfoodfacts.github.scrachx.openfood.features.login.LoginActivity
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_STATE
-import openfoodfacts.github.scrachx.openfood.features.product.view.CalculateDetailsActivity
+import openfoodfacts.github.scrachx.openfood.features.product.view.calculatedetails.CalculateDetailsActivity
 import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewActivity
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
 import openfoodfacts.github.scrachx.openfood.features.shared.adapters.NutrientLevelListAdapter

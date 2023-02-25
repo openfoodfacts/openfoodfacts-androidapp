@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.features.product.view
+package openfoodfacts.github.scrachx.openfood.features.product.view.calculatedetails
 
 import android.content.Context
 import android.os.Bundle

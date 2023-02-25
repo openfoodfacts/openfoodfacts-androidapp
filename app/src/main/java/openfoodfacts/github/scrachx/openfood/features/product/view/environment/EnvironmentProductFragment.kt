@@ -12,6 +12,7 @@ import androidx.core.text.HtmlCompat
 import androidx.core.text.HtmlCompat.FROM_HTML_MODE_COMPACT
 import androidx.core.text.bold
 import androidx.core.text.buildSpannedString
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.squareup.picasso.MemoryPolicy
 import com.squareup.picasso.Picasso
@@ -25,7 +26,6 @@ import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditAc
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_STATE
 import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewActivity
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
-import openfoodfacts.github.scrachx.openfood.images.ProductImage
 import openfoodfacts.github.scrachx.openfood.models.Nutriment
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
@@ -61,6 +61,8 @@ class EnvironmentProductFragment : BaseFragment() {
     private var _binding: FragmentEnvironmentProductBinding? = null
     private val binding get() = _binding!!
 
+    private val viewModel: EnvironmentProductViewModel by viewModels()
+
     private lateinit var product: Product
 
     /**
@@ -72,10 +74,10 @@ class EnvironmentProductFragment : BaseFragment() {
     @Inject
     lateinit var photoReceiverHandler: PhotoReceiverHandler
 
-    /**boolean to determine if labels prompt should be shown*/
+    /** True if labels prompt should be shown */
     private var showLabelsPrompt = false
 
-    /**boolean to determine if origins prompt should be shown*/
+    /** True if origins prompt should be shown */
     private var showOriginsPrompt = false
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -185,37 +187,32 @@ class EnvironmentProductFragment : BaseFragment() {
         val imageUrl = mUrlImage
         val product = productState.product
         if (imageUrl != null && product != null) {
-            lifecycleScope.launch {
-                FullScreenActivityOpener.openForUrl(
-                    this@EnvironmentProductFragment,
-                    productRepo,
-                    product,
-                    ProductImageField.PACKAGING,
-                    imageUrl,
-                    binding.imageViewPackaging,
-                    localeManager.getLanguage(),
-                )
-            }
+            openExistingImage(product, imageUrl)
         } else {
-            newPackagingImage()
+            doChooseOrTakePhotos()
         }
     }
 
-    private fun newPackagingImage() = doChooseOrTakePhotos()
+    private fun openExistingImage(product: Product, imageUrl: String) {
+        lifecycleScope.launch {
+            FullScreenActivityOpener.openForUrl(
+                this@EnvironmentProductFragment,
+                productRepo,
+                product,
+                ProductImageField.PACKAGING,
+                imageUrl,
+                binding.imageViewPackaging,
+                localeManager.getLanguage(),
+            )
+        }
+    }
 
     override fun doOnPhotosPermissionGranted() = doChooseOrTakePhotos()
 
     private fun loadPackagingPhoto(photoFile: File) {
-        // Create a new instance of ProductImage so we can load to server
-        val image = ProductImage(
-            code = productState.product!!.code,
-            field = ProductImageField.PACKAGING,
-            imageFile = photoFile,
-            language = localeManager.getLanguage()
-        )
 
-        // Load to server
-        lifecycleScope.launch { productRepo.postImg(image) }
+        // Upload the photo in background
+        viewModel.uploadImage(photoFile, productState.product!!.barcode)
 
         // Load into view
         binding.addPhotoLabel.visibility = View.GONE

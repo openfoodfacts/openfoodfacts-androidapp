@@ -57,6 +57,10 @@ class ProductRepository @Inject constructor(
     private val installationService: InstallationService,
 ) {
 
+    @Deprecated(
+        "Use getProductStateFull(Barcode, String, String) instead",
+        ReplaceWith("getProductStateFull(barcode, fields, userAgent)")
+    )
     suspend fun getProductStateFull(
         barcode: String,
         fields: String = getAllFields(localeManager.getLanguage()),
@@ -106,22 +110,15 @@ class ProductRepository @Inject constructor(
     /**
      * @return a list of product ingredients (can be empty)
      */
-    // TODO: This or the field inside Product.kt?
-    // The field inside Product.kt can be deleted if we delete every
-    // reference to it. It's messy down there
-    suspend fun getIngredients(product: Product): Result<List<ProductIngredient>> {
-        return withContext(IO) {
-            kotlin.runCatching {
-                val productState = rawApi.getIngredientsByBarcode(product.code)
-                productState["product"][Keys.INGREDIENTS]?.map {
-                    ProductIngredient(
-                        it["id"].asText(),
-                        it["text"].asText(),
-                        it["rank"]?.asLong(-1)!!
-                    )
-                } ?: emptyList()
-            }
-        }
+    suspend fun getIngredients(product: Product): List<ProductIngredient>? {
+        val newState = rawApi.getProductByBarcode(
+            barcode = product.barcode.raw,
+            fields = Keys.INGREDIENTS,
+            locale = localeManager.getLanguage(),
+            header = getUserAgent(ApiFields.UserAgents.SEARCH)
+        )
+
+        return newState.product?.ingredients
     }
 
 

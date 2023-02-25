@@ -15,8 +15,8 @@ import openfoodfacts.github.scrachx.openfood.features.product.view.ingredients_a
 import openfoodfacts.github.scrachx.openfood.models.ProductIngredient
 
 class IngredientAnalysisRecyclerAdapter(
-        private val productIngredients: List<ProductIngredient>,
-        private val activity: Activity
+    private val productIngredients: List<ProductIngredient>,
+    private val activity: Activity,
 ) : RecyclerView.Adapter<IngredientAnalysisViewHolder>(), CustomTabActivityHelper.ConnectionCallback {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): IngredientAnalysisViewHolder {
@@ -26,13 +26,18 @@ class IngredientAnalysisRecyclerAdapter(
 
     override fun onBindViewHolder(holder: IngredientAnalysisViewHolder, position: Int) {
         val id = productIngredients[position].id.replace("\"", "")
-        val name = productIngredients[position].text.replace("\"", "") //removes quotations
-        holder.tvIngredientName.text = name
+        val name = productIngredients[position].text?.replace("\"", "") //removes quotations
+        holder.tvIngredientName.text = name ?: id
         holder.tvIngredientName.setOnClickListener {
             val customTabsIntent = CustomTabsIntent.Builder().build().apply {
                 intent.putExtra("android.intent.extra.REFERRER", Uri.parse("android-app://" + activity.packageName))
             }
-            CustomTabActivityHelper.openCustomTab(activity, customTabsIntent, Uri.parse("${activity.getString(R.string.website)}ingredient/$id"), WebViewFallback())
+            CustomTabActivityHelper.openCustomTab(
+                activity,
+                customTabsIntent,
+                Uri.parse("${activity.getString(R.string.website)}ingredient/$id"),
+                WebViewFallback()
+            )
         }
     }
 
