@@ -19,7 +19,7 @@ eventbus = "3.3.1"
 # https://junit.org/junit5/
 junit5 = "5.8.2"
 androidx-hilt = "1.0.0"
-org-mockito = "4.6.1"
+org-mockito = "5.2.0"
 mockk = "1.12.5"
 com-squareup-retrofit2 = "2.6.4"
 androidx-test-espresso = "3.4.0"
