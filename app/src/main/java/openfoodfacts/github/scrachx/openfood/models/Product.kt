@@ -22,7 +22,7 @@ class Product : SearchProduct() {
      * @return The additivesTags
      */
     @JsonProperty(ApiFields.Keys.ADDITIVES_TAGS)
-    val additivesTags = arrayListOf<String>()
+    val additivesTags: MutableList<String> = mutableListOf()
 
     /**
      * @return The allergens
