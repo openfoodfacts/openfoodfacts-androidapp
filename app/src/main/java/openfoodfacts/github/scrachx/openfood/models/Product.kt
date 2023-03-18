@@ -335,12 +335,12 @@ class Product : SearchProduct() {
     fun getImageDetails(imageKey: String) =
         (additionalProperties[ApiFields.Keys.IMAGES] as Map<String, Map<String, *>>?)?.get(imageKey)
 
+    @JsonProperty(ApiFields.Keys.LANGUAGES_CODES)
+    private val languagesCodes: Map<String, Map<*, *>> = mutableMapOf()
 
-    fun isLanguageSupported(languageCode: String?): Boolean {
-        val languagesCodes = additionalProperties["languages_codes"] as Map<String, Map<*, *>>?
-        return languageCode != null
-                && languagesCodes != null
-                && languagesCodes.containsKey(languageCode.lowercase(Locale.ROOT))
+    fun isLanguageSupported(languageCode: String): Boolean {
+        val lowercaseLanguageCode = languageCode.lowercase(Locale.ROOT)
+        return languagesCodes.containsKey(lowercaseLanguageCode)
     }
 
     fun getImageFrontUrl(languageCode: String?): String? {
@@ -366,7 +366,7 @@ class Product : SearchProduct() {
     fun getNutritionGradeTag(): String? {
         if (!additionalProperties.containsKey(ApiFields.Keys.NUTRITION_GRADE)) return null
         val nutritionGradeTags = additionalProperties[ApiFields.Keys.NUTRITION_GRADE] as List<String>?
-        return if (nutritionGradeTags != null && nutritionGradeTags.isNotEmpty()) nutritionGradeTags[0] else null
+        return if (!nutritionGradeTags.isNullOrEmpty()) nutritionGradeTags[0] else null
     }
 
     fun getAttributeGroups(language: String): List<AttributeGroup> {
