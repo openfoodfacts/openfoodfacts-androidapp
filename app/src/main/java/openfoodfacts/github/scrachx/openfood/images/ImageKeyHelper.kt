@@ -63,11 +63,11 @@ fun getImageUrl(barcode: Barcode, imageName: String, size: String): String {
         else buildString {
             append(rawBarcode.substring(0, 3))
             append("/")
-            append(rawBarcode.substring(3, 7))
+            append(rawBarcode.substring(3, 6))
             append("/")
-            append(rawBarcode.substring(7, 11))
+            append(rawBarcode.substring(6, 9))
             append("/")
-            append(rawBarcode.substring(11))
+            append(rawBarcode.substring(9))
         }
 
     return "$BASE_IMAGES_URL/$barcodePattern/$imageName.$size.jpg"
