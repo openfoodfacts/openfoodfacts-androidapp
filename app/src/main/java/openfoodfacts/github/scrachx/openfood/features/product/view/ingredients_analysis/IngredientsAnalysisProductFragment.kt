@@ -20,6 +20,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
@@ -32,6 +33,7 @@ import openfoodfacts.github.scrachx.openfood.databinding.FragmentIngredientsAnal
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_STATE
 import openfoodfacts.github.scrachx.openfood.features.product.view.ingredients_analysis.adapter.IngredientAnalysisRecyclerAdapter
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
+import openfoodfacts.github.scrachx.openfood.models.ProductIngredient
 import openfoodfacts.github.scrachx.openfood.models.ProductState
 import openfoodfacts.github.scrachx.openfood.utils.requireProductState
 
@@ -54,20 +56,24 @@ class IngredientsAnalysisProductFragment : BaseFragment() {
 
         viewModel.ingredients
             .flowWithLifecycle(lifecycle)
-            .onEach {
-                if (it == null) {
-                    Toast.makeText(
-                        activity,
-                        requireActivity().getString(R.string.errorWeb),
-                        Toast.LENGTH_LONG
-                    ).show()
-                } else {
-                    val adapter = IngredientAnalysisRecyclerAdapter(it, requireActivity())
-                    binding.ingredientAnalysisRecyclerView.layoutManager = LinearLayoutManager(requireActivity())
-                    binding.ingredientAnalysisRecyclerView.adapter = adapter
-                }
-            }
+            .onEach(::displayIngredientList)
             .launchIn(lifecycleScope)
+    }
+
+    private fun displayIngredientList(result: Result<List<ProductIngredient>>) {
+        when (val ingredientList = result.getOrNull()) {
+            null -> Toast.makeText(
+                activity,
+                requireActivity().getString(R.string.errorWeb),
+                Toast.LENGTH_LONG
+            ).show()
+
+            else -> {
+                val adapter = IngredientAnalysisRecyclerAdapter(ingredientList, requireActivity())
+                binding.ingredientAnalysisRecyclerView.layoutManager = LinearLayoutManager(requireActivity())
+                binding.ingredientAnalysisRecyclerView.adapter = adapter
+            }
+        }
     }
 
     override fun onDestroyView() {
@@ -82,7 +88,9 @@ class IngredientsAnalysisProductFragment : BaseFragment() {
 
     companion object {
         fun newInstance(productState: ProductState) = IngredientsAnalysisProductFragment().apply {
-            arguments = Bundle().apply { putSerializable(KEY_STATE, productState) }
+            arguments = bundleOf(
+                KEY_STATE to productState
+            )
         }
     }
 }
