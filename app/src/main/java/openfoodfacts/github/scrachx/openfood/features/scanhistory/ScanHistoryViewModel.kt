@@ -11,6 +11,7 @@ import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import openfoodfacts.github.scrachx.openfood.models.HistoryProduct
 import openfoodfacts.github.scrachx.openfood.models.HistoryProductDao
+import openfoodfacts.github.scrachx.openfood.models.getSmallFrontImageUrl
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.*
 import javax.inject.Inject
@@ -64,7 +65,7 @@ class ScanHistoryViewModel @Inject constructor(
 
                                 product.productName?.let { historyProduct.title = it }
                                 product.brands?.let { historyProduct.brands = it }
-                                product.getImageSmallUrl(localeManager.getLanguage())?.let { historyProduct.url = it }
+                                product.getSmallFrontImageUrl(localeManager.getLanguage())?.let { historyProduct.url = it }
                                 product.quantity?.let { historyProduct.quantity = it }
                                 product.nutritionGradeFr?.let { historyProduct.nutritionGrade = it }
                                 product.ecoscore?.let { historyProduct.ecoscore = it }

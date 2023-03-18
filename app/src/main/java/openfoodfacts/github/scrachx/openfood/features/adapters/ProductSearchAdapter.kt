@@ -14,6 +14,7 @@ import openfoodfacts.github.scrachx.openfood.AppFlavor.Companion.isFlavors
 import openfoodfacts.github.scrachx.openfood.AppFlavor.OFF
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.models.SearchProduct
+import openfoodfacts.github.scrachx.openfood.models.getSmallFrontImageUrl
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
 import openfoodfacts.github.scrachx.openfood.utils.getEcoscoreResource
@@ -47,7 +48,7 @@ class ProductSearchAdapter(
         val product = products[position]!!
 
         holder.imageProgress.visibility = View.VISIBLE
-        val imageSmallUrl = product.getImageSmallUrl(localeManager.getLanguage())
+        val imageSmallUrl = product.getSmallFrontImageUrl(localeManager.getLanguage())
         if (imageSmallUrl == null) {
             holder.imageProgress.visibility = View.GONE
         }

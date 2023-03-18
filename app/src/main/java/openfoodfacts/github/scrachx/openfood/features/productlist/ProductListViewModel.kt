@@ -12,6 +12,7 @@ import openfoodfacts.github.scrachx.openfood.models.HistoryProductDao
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.entities.ListedProduct
 import openfoodfacts.github.scrachx.openfood.models.entities.ProductLists
+import openfoodfacts.github.scrachx.openfood.models.getSmallFrontImageUrl
 import openfoodfacts.github.scrachx.openfood.utils.*
 import java.util.*
 import javax.inject.Inject
@@ -123,7 +124,7 @@ class ProductListViewModel @Inject constructor(
         val product = savedStateHandle.get<Product?>(ProductListActivity.KEY_PRODUCT_TO_ADD) ?: return
 
         val locale = localeManager.getLanguage()
-        if (product.productName != null && product.getImageSmallUrl(locale) != null) {
+        if (product.productName != null && product.getSmallFrontImageUrl(locale) != null) {
 
             val listedProduct = ListedProduct().also {
                 it.listId = listId
@@ -131,7 +132,7 @@ class ProductListViewModel @Inject constructor(
                 it.barcode = product.code
                 it.productName = product.productName
                 it.productDetails = product.getProductBrandsQuantityDetails()
-                it.imageUrl = product.getImageSmallUrl(locale)
+                it.imageUrl = product.getSmallFrontImageUrl(locale)
             }
 
             daoSession.listedProductDao.insertOrReplace(listedProduct)

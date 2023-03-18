@@ -291,18 +291,9 @@ class Product : SearchProduct() {
     fun getIngredientsText(languageCode: String) =
         getFieldForLanguage(ApiFields.Keys.INGREDIENTS_TEXT, languageCode) ?: ingredientsText
 
-    fun getImageIngredientsUrl(languageCode: String?): String? {
-        val result = getSelectedImage(languageCode, ProductImageField.INGREDIENTS, ImageSize.DISPLAY)
-        return if (!result.isNullOrBlank()) result else imageIngredientsUrl
-    }
-
-    fun getImagePackagingUrl(languageCode: String?): String? {
-        val result = getSelectedImage(languageCode, ProductImageField.PACKAGING, ImageSize.DISPLAY)
-        return if (!result.isNullOrBlank()) result else imagePackagingUrl
-    }
 
     fun getImageNutritionUrl(languageCode: String?): String? {
-        val result = getSelectedImage(languageCode, ProductImageField.NUTRITION, ImageSize.DISPLAY)
+        val result = getSelectedImageUrl(languageCode, ProductImageField.NUTRITION, ImageSize.DISPLAY)
         return if (!result.isNullOrBlank()) result else imageNutritionUrl
     }
 
@@ -344,7 +335,7 @@ class Product : SearchProduct() {
     }
 
     fun getImageFrontUrl(languageCode: String?): String? {
-        val image = getSelectedImage(languageCode, ProductImageField.FRONT, ImageSize.DISPLAY)
+        val image = getSelectedImageUrl(languageCode, ProductImageField.FRONT, ImageSize.DISPLAY)
         return if (image.isNullOrBlank()) image else imageFrontUrl
     }
 
@@ -358,10 +349,6 @@ class Product : SearchProduct() {
     fun getProductName(languageCode: String) =
         getFieldForLanguage(ApiFields.Keys.PRODUCT_NAME, languageCode) ?: productName
 
-    fun getImageUrl(languageCode: String?): String? {
-        val url = getSelectedImage(languageCode, ProductImageField.FRONT, ImageSize.DISPLAY)
-        return if (!url.isNullOrBlank()) url else imageUrl
-    }
 
     fun getNutritionGradeTag(): String? {
         if (!additionalProperties.containsKey(ApiFields.Keys.NUTRITION_GRADE)) return null

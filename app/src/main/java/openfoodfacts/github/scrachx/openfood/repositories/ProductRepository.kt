@@ -26,6 +26,7 @@ import openfoodfacts.github.scrachx.openfood.models.Search
 import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct
 import openfoodfacts.github.scrachx.openfood.models.entities.ToUploadProduct
 import openfoodfacts.github.scrachx.openfood.models.entities.ToUploadProductDao
+import openfoodfacts.github.scrachx.openfood.models.getSmallFrontImageUrl
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.Keys
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.getAllFields
@@ -406,7 +407,7 @@ class ProductRepository @Inject constructor(
                 val hp = HistoryProduct(
                     product.productName,
                     product.brands,
-                    product.getImageSmallUrl(language),
+                    product.getSmallFrontImageUrl(language),
                     product.barcode.raw,
                     product.quantity,
                     product.nutritionGradeFr,

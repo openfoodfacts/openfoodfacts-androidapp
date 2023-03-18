@@ -11,6 +11,7 @@ import logcat.logcat
 import openfoodfacts.github.scrachx.openfood.images.IMAGE_URL
 import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import openfoodfacts.github.scrachx.openfood.models.HistoryProduct
+import openfoodfacts.github.scrachx.openfood.models.getSmallFrontImageUrl
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.utils.CoroutineDispatchers
 import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
@@ -92,7 +93,7 @@ class HistoryRepository @Inject constructor(
         val hp = HistoryProduct(
             product.productName,
             product.brands,
-            product.getImageSmallUrl(localeManager.getLanguage()),
+            product.getSmallFrontImageUrl(localeManager.getLanguage()),
             product.code,
             product.quantity,
             product.nutritionGradeFr,
