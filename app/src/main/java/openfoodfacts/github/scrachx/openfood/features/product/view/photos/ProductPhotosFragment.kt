@@ -207,7 +207,7 @@ class ProductPhotosFragment : BaseFragment() {
         )
     }
 
-    fun displaySetImageName(response: ObjectNode) {
+    private fun displaySetImageName(response: ObjectNode) {
         val context = requireContext()
 
         // TODO: 06/06/2021 i18n

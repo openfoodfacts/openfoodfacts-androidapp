@@ -8,6 +8,7 @@ import logcat.logcat
 import openfoodfacts.github.scrachx.openfood.databinding.ImagesItemBinding
 import openfoodfacts.github.scrachx.openfood.images.IMAGE_EDIT_SIZE
 import openfoodfacts.github.scrachx.openfood.images.getImageUrl
+import openfoodfacts.github.scrachx.openfood.models.Barcode
 import javax.inject.Inject
 
 class ProductPhotoViewHolder(
@@ -17,7 +18,7 @@ class ProductPhotoViewHolder(
     @Inject
     lateinit var picasso: Picasso
 
-    fun setImage(barcode: String, imageName: String) {
+    fun setImage(barcode: Barcode, imageName: String) {
         val imageUrl = getImageUrl(barcode, imageName, IMAGE_EDIT_SIZE)
         logcat(LogPriority.DEBUG) { "Loading image $imageUrl..." }
         picasso.load(imageUrl)
