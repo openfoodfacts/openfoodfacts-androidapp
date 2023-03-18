@@ -2089,9 +2089,10 @@ $dokka.location:openfoodfacts.github.scrachx.openfood.models/AnnotationAnswer/in
 $dokka.location:openfoodfacts.github.scrachx.openfood.models/AnnotationAnswer/value/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.models/-annotation-answer/value.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.models/AnnotationResponse.Companion///PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.models/-annotation-response/-companion/index.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.models/AnnotationResponse///PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.models/-annotation-response/index.html
-$dokka.location:openfoodfacts.github.scrachx.openfood.models/AnnotationResponse/AnnotationResponse/#kotlin.String?#kotlin.String?/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.models/-annotation-response/-annotation-response.html
+$dokka.location:openfoodfacts.github.scrachx.openfood.models/AnnotationResponse/AnnotationResponse/#kotlin.String?#kotlin.String?#kotlin.String?/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.models/-annotation-response/-annotation-response.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.models/AnnotationResponse/description/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.models/-annotation-response/description.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.models/AnnotationResponse/status/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.models/-annotation-response/status.html
+$dokka.location:openfoodfacts.github.scrachx.openfood.models/AnnotationResponse/statusCode/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.models/-annotation-response/status-code.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.models/Barcode///PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.models/-barcode/index.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.models/Barcode/Barcode/#kotlin.String/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.models/-barcode/-barcode.html
 $dokka.location:openfoodfacts.github.scrachx.openfood.models/Barcode/isEmpty/#/PointingToDeclaration/app/openfoodfacts.github.scrachx.openfood.models/-barcode/is-empty.html
