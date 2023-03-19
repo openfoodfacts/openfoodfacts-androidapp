@@ -34,18 +34,16 @@ fun getInitialServerTransformation(
     val imageDetails = product.getImageDetails(imageKey)
         ?: return ImageTransformation()
 
-    val initImageId = (imageDetails[IMG_ID] as? String).takeUnless { it.isNullOrBlank() }
+    val initImageId = (imageDetails[IMG_ID] as? String)
+        .takeUnless { it.isNullOrBlank() }
+        ?: return ImageTransformation() // If the server doesn't return a transformation, we create an empty one
 
-    return if (initImageId == null) {
-        ImageTransformation()
-    } else {
-        ImageTransformation(
-            imageId = initImageId,
-            imageUrl = getImageUrl(product.code, initImageId, IMAGE_EDIT_SIZE),
-            rotationInDegree = getImageRotation(imageDetails),
-            cropRectangle = getImageCropRect(imageDetails)?.toRect()
-        )
-    }
+    return ImageTransformation(
+        imageId = initImageId,
+        imageUrl = getImageUrl(product.barcode, initImageId, IMAGE_EDIT_SIZE),
+        rotationInDegree = getImageRotation(imageDetails),
+        cropRectangle = getImageCropRect(imageDetails)?.toRect()
+    )
 }
 
 /**

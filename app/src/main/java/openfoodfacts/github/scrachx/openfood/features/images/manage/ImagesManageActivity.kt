@@ -71,6 +71,7 @@ import openfoodfacts.github.scrachx.openfood.models.LanguageData
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.models.findByCode
+import openfoodfacts.github.scrachx.openfood.models.getSelectedImageUrl
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.FileDownloader
@@ -410,7 +411,7 @@ class ImagesManageActivity : BaseActivity() {
     }
 
     private fun getImageUrlToDisplay(product: Product) =
-        product.getSelectedImage(getCurrentLanguage(), getSelectedType(), ImageSize.DISPLAY)
+        product.getSelectedImageUrl(getCurrentLanguage(), getSelectedType(), ImageSize.DISPLAY)
 
     private fun getCurrentImageUrl() = intent.getStringExtra(IMAGE_URL)
 

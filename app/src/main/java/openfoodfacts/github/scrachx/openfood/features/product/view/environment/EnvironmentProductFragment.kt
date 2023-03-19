@@ -30,6 +30,7 @@ import openfoodfacts.github.scrachx.openfood.models.Nutriment
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.models.ProductState
+import openfoodfacts.github.scrachx.openfood.models.getPackagingImageUrl
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
@@ -99,7 +100,7 @@ class EnvironmentProductFragment : BaseFragment() {
         product = productState.product!!
         val nutriments = product.nutriments
 
-        val imagePackagingUrl = product.getImagePackagingUrl(langCode)
+        val imagePackagingUrl = product.getPackagingImageUrl(langCode)
         if (!imagePackagingUrl.isNullOrBlank()) {
             binding.packagingImagetipBox.setTipMessage(getString(R.string.onboarding_hint_msg,
                 getString(R.string.image_edit_tip)))

@@ -98,6 +98,8 @@ import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.A
 import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoryName
 import openfoodfacts.github.scrachx.openfood.models.entities.label.LabelName
 import openfoodfacts.github.scrachx.openfood.models.entities.tag.TagDao
+import openfoodfacts.github.scrachx.openfood.models.getFrontImageUrl
+import openfoodfacts.github.scrachx.openfood.models.getSmallFrontImageUrl
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.repositories.RobotoffRepository
 import openfoodfacts.github.scrachx.openfood.repositories.TaxonomiesRepository
@@ -349,7 +351,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         }
 
         val langCode = localeManager.getLanguage()
-        val imageUrl = product.getImageUrl(langCode)
+        val imageUrl = product.getFrontImageUrl(langCode)
         if (!imageUrl.isNullOrBlank()) {
             binding.addPhotoLabel.visibility = View.GONE
 
@@ -907,7 +909,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
                 it.listName = list.listName
                 it.productName = product.productName
                 it.productDetails = product.getProductBrandsQuantityDetails()
-                it.imageUrl = product.getImageSmallUrl(localeManager.getLanguage())
+                it.imageUrl = product.getSmallFrontImageUrl(localeManager.getLanguage())
             }
             addListedProductToDatabase(product, list)
             matomoAnalytics.trackEvent(AnalyticsEvent.ShoppingListProductAdded(product.barcode))

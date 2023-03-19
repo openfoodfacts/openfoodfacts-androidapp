@@ -16,6 +16,7 @@ import openfoodfacts.github.scrachx.openfood.images.ImageSize
 import openfoodfacts.github.scrachx.openfood.images.createImageBundle
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
+import openfoodfacts.github.scrachx.openfood.models.getSelectedImageUrl
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.Intent
 import openfoodfacts.github.scrachx.openfood.utils.isAbsoluteUrl
@@ -99,7 +100,7 @@ object FullScreenActivityOpener {
         language: String,
     ) {
         client.getProductImages(product.barcode).product?.let { newProduct ->
-            val imageUrl = newProduct.getSelectedImage(language, imageType, ImageSize.DISPLAY)
+            val imageUrl = newProduct.getSelectedImageUrl(language, imageType, ImageSize.DISPLAY)
             if (!imageUrl.isNullOrBlank()) {
                 openForUrl(activity, client, newProduct, imageType, imageUrl, mImageFront, language)
             } else {

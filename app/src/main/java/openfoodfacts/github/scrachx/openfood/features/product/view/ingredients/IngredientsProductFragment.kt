@@ -62,6 +62,7 @@ import openfoodfacts.github.scrachx.openfood.models.entities.SendProduct
 import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveName
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenName
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenNameDao
+import openfoodfacts.github.scrachx.openfood.models.getIngredientsImageUrl
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.repositories.TaxonomiesRepository
 import openfoodfacts.github.scrachx.openfood.repositories.WikidataRepository
@@ -262,7 +263,7 @@ class IngredientsProductFragment : BaseFragment() {
         }
 
 
-        if (!product.getImageIngredientsUrl(langCode).isNullOrBlank()) {
+        if (!product.getIngredientsImageUrl(langCode).isNullOrBlank()) {
             binding.ingredientImagetipBox.setTipMessage(getString(R.string.onboarding_hint_msg,
                 getString(R.string.image_edit_tip)))
             binding.ingredientImagetipBox.loadToolTip()
@@ -271,11 +272,11 @@ class IngredientsProductFragment : BaseFragment() {
 
             // Load Image if isLowBatteryMode is false
             if (!requireContext().isPowerSaveMode()) {
-                picasso.load(product.getImageIngredientsUrl(langCode)).into(binding.imageViewIngredients)
+                picasso.load(product.getIngredientsImageUrl(langCode)).into(binding.imageViewIngredients)
             } else {
                 binding.imageViewIngredients.visibility = View.GONE
             }
-            ingredientsImgUrl = product.getImageIngredientsUrl(langCode)
+            ingredientsImgUrl = product.getIngredientsImageUrl(langCode)
         }
 
         //useful when this fragment is used in offline saving
@@ -299,7 +300,7 @@ class IngredientsProductFragment : BaseFragment() {
             }
         } else {
             binding.cvTextIngredientProduct.visibility = View.GONE
-            if (!product.getImageIngredientsUrl(langCode).isNullOrBlank()) {
+            if (!product.getIngredientsImageUrl(langCode).isNullOrBlank()) {
                 binding.extractIngredientsPrompt.visibility = View.VISIBLE
             }
         }

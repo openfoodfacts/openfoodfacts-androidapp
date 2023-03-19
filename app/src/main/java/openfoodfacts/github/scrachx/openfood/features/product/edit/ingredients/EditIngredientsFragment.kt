@@ -51,6 +51,7 @@ import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenNameDao
+import openfoodfacts.github.scrachx.openfood.models.getIngredientsImageUrl
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.Keys.lcIngredientsKey
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
@@ -225,7 +226,7 @@ class EditIngredientsFragment : ProductEditFragment() {
         if (getAddProductActivity() == null) return
 
         val newImageIngredientsUrl =
-            product!!.getImageIngredientsUrl(getAddProductActivity()!!.getProductLanguageForEdition())
+            product!!.getIngredientsImageUrl(getAddProductActivity()!!.getProductLanguageForEdition())
         photoFile = null
         if (newImageIngredientsUrl != null && newImageIngredientsUrl.isNotEmpty()) {
             binding.imageProgress.visibility = View.VISIBLE

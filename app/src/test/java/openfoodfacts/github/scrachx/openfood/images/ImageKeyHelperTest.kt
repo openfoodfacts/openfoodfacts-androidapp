@@ -5,6 +5,7 @@ import io.mockk.every
 import io.mockk.impl.annotations.MockK
 import io.mockk.junit5.MockKExtension
 import openfoodfacts.github.scrachx.openfood.BuildConfig
+import openfoodfacts.github.scrachx.openfood.models.Barcode
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import org.junit.jupiter.api.Test
@@ -34,7 +35,7 @@ class ImageKeyHelperTest {
 
     @Test
     fun imageUrl_BarcodeShorter() {
-        val barcode = "303371"
+        val barcode = Barcode("303371")
         val imageName = "123"
         val size = "987"
         val expected = BuildConfig.STATICURL + "/images/products/303371/123.987.jpg"
@@ -43,7 +44,7 @@ class ImageKeyHelperTest {
 
     @Test
     fun imageUrl_BarcodeLonger() {
-        val barcode = "3033710001279"
+        val barcode = Barcode("3033710001279")
         val imageName = "123"
         val size = "987"
         val expected = BuildConfig.STATICURL + "/images/products/303/371/000/1279/123.987.jpg"
