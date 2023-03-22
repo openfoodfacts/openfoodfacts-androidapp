@@ -9,6 +9,7 @@ import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.ImageSelectableItemBinding
 import openfoodfacts.github.scrachx.openfood.images.IMAGE_EDIT_SIZE
 import openfoodfacts.github.scrachx.openfood.images.getImageUrl
+import openfoodfacts.github.scrachx.openfood.models.Barcode
 
 /**
  * Created by prajwalm on 10/09/18.
@@ -16,7 +17,7 @@ import openfoodfacts.github.scrachx.openfood.images.getImageUrl
 class ProductImagesSelectionAdapter(
     private val picasso: Picasso,
     private val images: List<String>,
-    private val barcode: String,
+    private val barcode: Barcode,
     private val onImageClick: ((Int) -> Unit)?,
 ) : RecyclerView.Adapter<ProductImagesSelectionAdapter.ProductImageSelectionAdapter>() {
 
@@ -54,8 +55,11 @@ class ProductImagesSelectionAdapter(
     inner class ProductImageSelectionAdapter(
         val binding: ImageSelectableItemBinding,
     ) : RecyclerView.ViewHolder(binding.root) {
+        init {
+            itemView.setOnClickListener { onClick() }
+        }
 
-        fun onClick() {
+        private fun onClick() {
             if (selectedPosition >= 0) {
                 notifyItemChanged(selectedPosition)
             }
@@ -67,10 +71,6 @@ class ProductImagesSelectionAdapter(
                 notifyItemChanged(selectedPosition)
             }
             onImageClick?.invoke(selectedPosition)
-        }
-
-        init {
-            itemView.setOnClickListener { onClick() }
         }
     }
 }

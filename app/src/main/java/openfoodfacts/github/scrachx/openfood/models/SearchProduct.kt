@@ -62,7 +62,7 @@ open class SearchProduct : Serializable {
      * @return The imageSmallUrl
      */
     @JsonProperty(ApiFields.Keys.IMAGE_SMALL_URL)
-    protected val imageSmallUrl: String? = null
+    val imageSmallUrl: String? = null
 
     /**
      * A string containing the brands, comma separated
@@ -93,30 +93,41 @@ open class SearchProduct : Serializable {
         additionalProperties[name] = value
     }
 
-    fun getSelectedImage(languageCode: String?, type: ProductImageField, size: ImageSize): String? {
-        var images = additionalProperties[ApiFields.Keys.SELECTED_IMAGES] as Map<String?, Map<*, *>>?
-        if (images != null) {
-            images = images[type.toString()] as Map<String?, Map<*, *>>?
-            if (images != null) {
-                val imagesByLocale = images[size.name.lowercase(Locale.ROOT)] as Map<String?, String>?
-                if (imagesByLocale != null) {
-                    val url = imagesByLocale[languageCode]
-                    if (!url.isNullOrBlank()) {
-                        return url
-                    }
-                }
+    @JsonProperty(ApiFields.Keys.SELECTED_IMAGES)
+    val selectedImages: Map<String, Map<String, Map<String, String>>>? = null
+}
+
+fun SearchProduct.getPackagingImageUrl(languageCode: String?): String? =
+    getSelectedImageUrl(languageCode, ProductImageField.PACKAGING, ImageSize.DISPLAY)
+        ?.ifBlank { imagePackagingUrl }
+
+fun SearchProduct.getIngredientsImageUrl(languageCode: String?): String? =
+    getSelectedImageUrl(languageCode, ProductImageField.INGREDIENTS, ImageSize.DISPLAY)
+        ?.ifBlank { imageIngredientsUrl }
+
+fun SearchProduct.getSmallFrontImageUrl(languageCode: String?) =
+    getSelectedImageUrl(languageCode, ProductImageField.FRONT, ImageSize.SMALL)
+        ?.ifBlank { imageSmallUrl }
+
+fun SearchProduct.getFrontImageUrl(languageCode: String?): String? =
+    getSelectedImageUrl(languageCode, ProductImageField.FRONT, ImageSize.DISPLAY)
+        ?.ifBlank { imageUrl }
+
+fun SearchProduct.getSelectedImageUrl(languageCode: String?, type: ProductImageField, size: ImageSize): String? {
+    val sizeLowercase = size.name.lowercase(Locale.ROOT)
+
+    val url = selectedImages?.get(type.toString())
+        ?.get(sizeLowercase)
+        ?.get(languageCode)
+        ?.ifBlank {
+            when (type) {
+                ProductImageField.FRONT -> imageUrl
+                ProductImageField.INGREDIENTS -> imageIngredientsUrl
+                ProductImageField.NUTRITION -> imageNutritionUrl
+                ProductImageField.PACKAGING -> imagePackagingUrl
+                ProductImageField.OTHER -> null
             }
         }
-        return when (type) {
-            ProductImageField.FRONT -> imageUrl
-            ProductImageField.INGREDIENTS -> imageIngredientsUrl
-            ProductImageField.NUTRITION -> imageNutritionUrl
-            ProductImageField.PACKAGING -> imagePackagingUrl
-            ProductImageField.OTHER -> null
-        }
-    }
 
-    fun getImageSmallUrl(languageCode: String?) =
-        getSelectedImage(languageCode, ProductImageField.FRONT, ImageSize.SMALL)
-            ?.ifBlank { null } ?: imageSmallUrl
+    return url
 }

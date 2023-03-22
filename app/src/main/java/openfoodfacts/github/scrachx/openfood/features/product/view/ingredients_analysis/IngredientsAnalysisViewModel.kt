@@ -23,6 +23,7 @@ class IngredientsAnalysisViewModel @Inject constructor(
         this@IngredientsAnalysisViewModel.product.emit(product)
     }
 
-    val ingredients: Flow<List<ProductIngredient>?> = product.map(productRepository::getIngredients)
+    val ingredients: Flow<Result<List<ProductIngredient>>> = product
+        .map(productRepository::getIngredients)
 
 }

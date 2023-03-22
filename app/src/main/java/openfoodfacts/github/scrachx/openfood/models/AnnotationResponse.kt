@@ -19,8 +19,9 @@ import com.fasterxml.jackson.annotation.JsonProperty
 import java.io.Serializable
 
 data class AnnotationResponse(
-        @JsonProperty("status") val status: String? = null,
-        @JsonProperty("description") val description: String? = null
+    @JsonProperty("status") val status: String? = null,
+    @JsonProperty("description") val description: String? = null,
+    @JsonProperty("status_code") val statusCode: String? = null,
 ) : Serializable {
 
     companion object {

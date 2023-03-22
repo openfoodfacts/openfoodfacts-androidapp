@@ -47,6 +47,7 @@ import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.models.buildLevelItem
 import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveName
+import openfoodfacts.github.scrachx.openfood.models.getFrontImageUrl
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.MY_PERMISSIONS_REQUEST_CAMERA
 import openfoodfacts.github.scrachx.openfood.utils.getEcoscoreResource
@@ -115,7 +116,7 @@ class ProductCompareAdapter(
         addProductButton.setText(R.string.add_another_product)
 
         // Image
-        val imageUrl = product.getImageUrl(language)
+        val imageUrl = product.getFrontImageUrl(language)
         holder.binding.productComparisonImage.setOnClickListener {
             if (imageUrl != null) {
                 lifecycleOwner.lifecycle.coroutineScope.launchWhenCreated {

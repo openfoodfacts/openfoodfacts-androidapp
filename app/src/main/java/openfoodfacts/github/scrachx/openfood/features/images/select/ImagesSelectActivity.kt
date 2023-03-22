@@ -29,6 +29,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductImagesListBinding
 import openfoodfacts.github.scrachx.openfood.features.adapters.ProductImagesSelectionAdapter
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
@@ -36,6 +38,7 @@ import openfoodfacts.github.scrachx.openfood.images.IMAGE_FILE
 import openfoodfacts.github.scrachx.openfood.images.IMG_ID
 import openfoodfacts.github.scrachx.openfood.images.ImageNameParser
 import openfoodfacts.github.scrachx.openfood.images.PRODUCT_BARCODE
+import openfoodfacts.github.scrachx.openfood.models.Barcode
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
 import openfoodfacts.github.scrachx.openfood.utils.Intent
 import openfoodfacts.github.scrachx.openfood.utils.MY_PERMISSIONS_REQUEST_STORAGE
@@ -79,15 +82,25 @@ class ImagesSelectActivity : BaseActivity() {
         binding.btnChooseImage.setOnClickListener { chooseImage() }
 
         // Get intent data
-        val code = intent.getStringExtra(PRODUCT_BARCODE) ?: error("Cannot start activity without product barcode.")
+        val code = intent.getStringExtra(PRODUCT_BARCODE)
+            ?.let(::Barcode)
+            ?: error("Cannot start activity without product barcode.")
         loadProductImages(code)
     }
 
-    private fun loadProductImages(code: String) {
+    private fun loadProductImages(code: Barcode) {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         lifecycleScope.launchWhenCreated {
-            val imageNames = ImageNameParser.extractImageNames(productsApi.getProductImages(code))
-                .map { it.value }
+            // Get product images from API
+            // TODO: Move this to a repository
+            val productImages = productsApi.getProductImages(code.raw)
+
+            // Extract image names in another context
+            val imageNames = withContext(Dispatchers.Default) {
+                ImageNameParser
+                    .extractImageNames(productImages)
+                    .map { it.value }
+            }
 
             // Check if user is logged in
             adapter = ProductImagesSelectionAdapter(picasso, imageNames, code) {
@@ -133,6 +146,7 @@ class ImagesSelectActivity : BaseActivity() {
                     MY_PERMISSIONS_REQUEST_STORAGE
                 )
             }
+
             else -> {
                 EasyImage.openGallery(this, -1, false)
             }

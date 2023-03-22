@@ -26,6 +26,7 @@ import openfoodfacts.github.scrachx.openfood.models.Search
 import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct
 import openfoodfacts.github.scrachx.openfood.models.entities.ToUploadProduct
 import openfoodfacts.github.scrachx.openfood.models.entities.ToUploadProductDao
+import openfoodfacts.github.scrachx.openfood.models.getSmallFrontImageUrl
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.Keys
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.getAllFields
@@ -110,15 +111,19 @@ class ProductRepository @Inject constructor(
     /**
      * @return a list of product ingredients (can be empty)
      */
-    suspend fun getIngredients(product: Product): List<ProductIngredient>? {
-        val newState = rawApi.getProductByBarcode(
+    suspend fun getIngredients(product: Product): Result<List<ProductIngredient>> {
+        val fetchedState = rawApi.getProductByBarcode(
             barcode = product.barcode.raw,
             fields = Keys.INGREDIENTS,
             locale = localeManager.getLanguage(),
             header = getUserAgent(ApiFields.UserAgents.SEARCH)
         )
+        val fetchedProduct = fetchedState.product
+        if (fetchedState.status != 1L || fetchedProduct == null) {
+            return Result.failure(IOException("Error while fetching ingredients"))
+        }
 
-        return newState.product?.ingredients
+        return Result.success(fetchedProduct.ingredients)
     }
 
 
@@ -147,15 +152,19 @@ class ProductRepository @Inject constructor(
             ProductImageField.FRONT -> {
                 """imgupload_front"; filename="front_$lang$PNG_EXT"""
             }
+
             ProductImageField.INGREDIENTS -> {
                 """imgupload_ingredients"; filename="ingredients_$lang$PNG_EXT"""
             }
+
             ProductImageField.NUTRITION -> {
                 """imgupload_nutrition"; filename="nutrition_$lang$PNG_EXT"""
             }
+
             ProductImageField.PACKAGING -> {
                 """imgupload_packaging"; filename="packaging_$lang$PNG_EXT"""
             }
+
             ProductImageField.OTHER -> {
                 """imgupload_other"; filename="other_$lang$PNG_EXT"""
             }
@@ -398,7 +407,7 @@ class ProductRepository @Inject constructor(
                 val hp = HistoryProduct(
                     product.productName,
                     product.brands,
-                    product.getImageSmallUrl(language),
+                    product.getSmallFrontImageUrl(language),
                     product.barcode.raw,
                     product.quantity,
                     product.nutritionGradeFr,
