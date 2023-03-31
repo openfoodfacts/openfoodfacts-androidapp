@@ -11,7 +11,7 @@ greendao = "3.3.0"
 hilt = "2.45"
 dagger = "2.45"
 # https://developer.android.com/studio/releases/gradle-plugin
-android-gradle = "7.3.1"
+android-gradle = "7.4.2"
 # https://developer.android.com/jetpack/androidx/releases/lifecycle
 android-lifecycle = "2.6.1"
 # https://github.com/greenrobot/EventBus
