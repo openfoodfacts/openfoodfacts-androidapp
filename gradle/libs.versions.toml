@@ -20,7 +20,7 @@ eventbus = "3.3.1"
 junit5 = "5.8.2"
 androidx-hilt = "1.0.0"
 org-mockito = "4.6.1"
-mockk = "1.12.5"
+mockk = "1.13.4"
 com-squareup-retrofit2 = "2.6.4"
 androidx-test-espresso = "3.4.0"
 
