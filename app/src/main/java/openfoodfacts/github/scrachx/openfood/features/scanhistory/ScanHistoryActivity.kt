@@ -15,7 +15,6 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
-import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NavUtils
 import androidx.core.content.ContextCompat
@@ -107,8 +106,7 @@ class ScanHistoryActivity : BaseActivity() {
             }
         }
 
-    @RequiresApi(Build.VERSION_CODES.KITKAT)
-    val fileWriterLauncher = registerForActivityResult(CreateCSVContract()) { uri ->
+    private val fileWriterLauncher = registerForActivityResult(CreateCSVContract()) { uri ->
         uri?.let {
             writeHistoryToFile(this, adapter.products, it)
         }
