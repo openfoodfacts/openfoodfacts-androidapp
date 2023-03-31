@@ -6,9 +6,7 @@ import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
-import android.os.Environment
 import android.provider.Settings
 import android.view.Menu
 import android.view.MenuItem
@@ -18,13 +16,16 @@ import androidx.activity.viewModels
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NavUtils
 import androidx.core.content.ContextCompat
-import androidx.core.net.toUri
 import androidx.core.view.isVisible
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import openfoodfacts.github.scrachx.openfood.AppFlavor
 import openfoodfacts.github.scrachx.openfood.AppFlavor.Companion.isFlavors
 import openfoodfacts.github.scrachx.openfood.BuildConfig
@@ -36,6 +37,7 @@ import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.listeners.CommonBottomListenerInstaller.selectNavigationItem
 import openfoodfacts.github.scrachx.openfood.models.Barcode
+import openfoodfacts.github.scrachx.openfood.models.HistoryProduct
 import openfoodfacts.github.scrachx.openfood.utils.Intent
 import openfoodfacts.github.scrachx.openfood.utils.LocaleManager
 import openfoodfacts.github.scrachx.openfood.utils.SortType.BARCODE
@@ -44,13 +46,12 @@ import openfoodfacts.github.scrachx.openfood.utils.SortType.GRADE
 import openfoodfacts.github.scrachx.openfood.utils.SortType.TIME
 import openfoodfacts.github.scrachx.openfood.utils.SortType.TITLE
 import openfoodfacts.github.scrachx.openfood.utils.SwipeController
-import openfoodfacts.github.scrachx.openfood.utils.getCsvFolderName
 import openfoodfacts.github.scrachx.openfood.utils.isHardwareCameraInstalled
 import openfoodfacts.github.scrachx.openfood.utils.shouldLoadImages
 import openfoodfacts.github.scrachx.openfood.utils.writeHistoryToFile
-import java.io.File
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Date
+import java.util.Locale
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -73,10 +74,11 @@ class ScanHistoryActivity : BaseActivity() {
      */
     private var menuButtonsEnabled = false
 
-    private val adapter by lazy {
-        ScanHistoryAdapter(shouldLoadImages(), picasso) {
-            productViewActivityStarter.openProduct(Barcode(it.barcode), this)
-        }
+    private val adapter by lazy { ScanHistoryAdapter(shouldLoadImages(), picasso, ::onProductClick) }
+
+    private fun onProductClick(product: HistoryProduct) {
+        val barcode = Barcode(product.barcode)
+        productViewActivityStarter.openProduct(barcode, this)
     }
 
     private val storagePermLauncher =
@@ -136,40 +138,48 @@ class ScanHistoryActivity : BaseActivity() {
         binding.srRefreshHistoryScanList.setOnRefreshListener { refreshViewModel() }
         binding.navigationBottom.bottomNavigation.installBottomNavigation(this)
 
-        viewModel.productsState.observe(this) { state ->
-            when (state) {
-                is ScanHistoryViewModel.FetchProductsState.Data -> {
-                    binding.srRefreshHistoryScanList.isRefreshing = false
-                    binding.historyProgressbar.isVisible = false
-
-                    adapter.products = state.items
-
-                    if (state.items.isEmpty()) {
-                        setMenuEnabled(false)
-                        binding.scanFirstProductContainer.isVisible = true
-                    } else {
-                        binding.scanFirstProductContainer.isVisible = false
-                        setMenuEnabled(true)
-                    }
-
-                    adapter.notifyItemRangeChanged(0, state.items.count())
+        viewModel.productsState
+            .flowWithLifecycle(lifecycle)
+            .onEach { state ->
+                when (state) {
+                    is ScanHistoryViewModel.FetchProductsState.Data -> showData(state)
+                    ScanHistoryViewModel.FetchProductsState.Error -> showError()
+                    ScanHistoryViewModel.FetchProductsState.Loading -> showLoading()
                 }
-                ScanHistoryViewModel.FetchProductsState.Error -> {
-                    setMenuEnabled(false)
-                    binding.srRefreshHistoryScanList.isRefreshing = false
-                    binding.historyProgressbar.isVisible = false
-                    binding.scanFirstProductContainer.isVisible = true
-                }
-                ScanHistoryViewModel.FetchProductsState.Loading -> {
-                    setMenuEnabled(false)
-                    if (binding.srRefreshHistoryScanList.isRefreshing.not()) {
-                        binding.historyProgressbar.isVisible = true
-                    }
-                }
-            }
-        }
+            }.launchIn(lifecycleScope)
 
         refreshViewModel()
+    }
+
+    private fun showData(state: ScanHistoryViewModel.FetchProductsState.Data) {
+        binding.srRefreshHistoryScanList.isRefreshing = false
+        binding.historyProgressbar.isVisible = false
+
+        adapter.products = state.items
+
+        if (state.items.isEmpty()) {
+            setMenuEnabled(false)
+            binding.scanFirstProductContainer.isVisible = true
+        } else {
+            binding.scanFirstProductContainer.isVisible = false
+            setMenuEnabled(true)
+        }
+
+        adapter.notifyItemRangeChanged(0, state.items.count())
+    }
+
+    private fun showError() {
+        setMenuEnabled(false)
+        binding.srRefreshHistoryScanList.isRefreshing = false
+        binding.historyProgressbar.isVisible = false
+        binding.scanFirstProductContainer.isVisible = true
+    }
+
+    private fun showLoading() {
+        setMenuEnabled(false)
+        if (!binding.srRefreshHistoryScanList.isRefreshing) {
+            binding.historyProgressbar.isVisible = true
+        }
     }
 
     private fun refreshViewModel() = viewModel.refreshItems()
@@ -189,16 +199,22 @@ class ScanHistoryActivity : BaseActivity() {
             NavUtils.navigateUpFromSameTask(this)
             true
         }
+
         R.id.action_remove_all_history -> {
             showDeleteConfirmationDialog()
             true
         }
+
         R.id.action_export_all_history -> {
-            if (ContextCompat.checkSelfPermission(this,
-                    Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
+            if (ContextCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE
+                ) != PackageManager.PERMISSION_GRANTED
             ) {
-                if (ActivityCompat.shouldShowRequestPermissionRationale(this,
-                        Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                if (ActivityCompat.shouldShowRequestPermissionRationale(
+                        this,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE
+                    )
                 ) {
                     MaterialAlertDialogBuilder(this)
                         .setTitle(R.string.action_about)
@@ -216,10 +232,12 @@ class ScanHistoryActivity : BaseActivity() {
             }
             true
         }
+
         R.id.sort_history -> {
             showListSortingDialog()
             true
         }
+
         else -> super.onOptionsItemSelected(item)
     }
 
@@ -242,14 +260,7 @@ class ScanHistoryActivity : BaseActivity() {
         val date = SimpleDateFormat("yyyy-MM-dd", localeManager.getLocale()).format(Date())
         val fileName = "$flavor-history_$date.csv"
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            fileWriterLauncher.launch(fileName)
-        } else {
-            val baseDir = File(Environment.getExternalStorageDirectory(), getCsvFolderName())
-            if (!baseDir.exists()) baseDir.mkdirs()
-            val file = File(baseDir, fileName)
-            writeHistoryToFile(this, adapter.products, file.toUri())
-        }
+        fileWriterLauncher.launch(fileName)
     }
 
     private fun startScan() {
@@ -260,6 +271,7 @@ class ScanHistoryActivity : BaseActivity() {
             ContextCompat.checkSelfPermission(baseContext, perm) == PackageManager.PERMISSION_GRANTED -> {
                 startScanActivity()
             }
+
             ActivityCompat.shouldShowRequestPermissionRationale(this, perm) -> {
                 MaterialAlertDialogBuilder(this)
                     .setTitle(R.string.action_about)
@@ -270,6 +282,7 @@ class ScanHistoryActivity : BaseActivity() {
                     }
                     .show()
             }
+
             else -> {
                 cameraPermLauncher.launch(perm)
             }
@@ -288,8 +301,8 @@ class ScanHistoryActivity : BaseActivity() {
             .show()
     }
 
-    private fun showListSortingDialog() {
-        val sortTypes = if (isFlavors(AppFlavor.OFF)) arrayOf(
+    private val sortTypes by lazy {
+        if (isFlavors(AppFlavor.OFF)) arrayOf(
             TITLE,
             BRAND,
             GRADE,
@@ -301,23 +314,18 @@ class ScanHistoryActivity : BaseActivity() {
             TIME,
             BARCODE,
         )
+    }
 
-        val selectedItemPosition = sortTypes.indexOf(viewModel.sortType.value)
+    private fun showListSortingDialog() {
+        val selectedItemIdx = sortTypes.indexOf(viewModel.sortType.value)
 
         MaterialAlertDialogBuilder(this)
             .setTitle(R.string.sort_by)
             .setSingleChoiceItems(
                 sortTypes.map { getString(it.stringRes) }.toTypedArray(),
-                if (selectedItemPosition < 0) 0 else selectedItemPosition
-            ) { dialog, which ->
-                val newType = when (which) {
-                    0 -> TITLE
-                    1 -> BRAND
-                    2 -> if (isFlavors(AppFlavor.OFF)) GRADE else TIME
-                    3 -> BARCODE
-                    else -> TIME
-                }
-
+                if (selectedItemIdx < 0) 0 else selectedItemIdx
+            ) { dialog, idx ->
+                val newType = sortTypes[idx]
                 viewModel.updateSortType(newType)
                 dialog.dismiss()
             }
@@ -326,7 +334,5 @@ class ScanHistoryActivity : BaseActivity() {
 
     companion object {
         fun start(context: Context) = context.startActivity(Intent<ScanHistoryActivity>(context))
-        val LOG_TAG = ScanHistoryActivity::class.simpleName
     }
-
 }
