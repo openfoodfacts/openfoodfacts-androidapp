@@ -327,7 +327,7 @@ class Product : SearchProduct() {
         (additionalProperties[ApiFields.Keys.IMAGES] as Map<String, Map<String, *>>?)?.get(imageKey)
 
     @JsonProperty(ApiFields.Keys.LANGUAGES_CODES)
-    private val languagesCodes: Map<String, Map<*, *>> = mutableMapOf()
+    private val languagesCodes: Map<String, Int> = mutableMapOf()
 
     fun isLanguageSupported(languageCode: String): Boolean {
         val lowercaseLanguageCode = languageCode.lowercase(Locale.ROOT)
