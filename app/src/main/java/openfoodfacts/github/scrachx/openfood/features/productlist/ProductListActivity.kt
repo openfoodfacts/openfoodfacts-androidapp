@@ -300,6 +300,7 @@ class ProductListActivity : BaseActivity() {
     }
 
 
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         setResult(RESULT_OK, Intent().apply { putExtra("update", true) })
         super.onBackPressed()

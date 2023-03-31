@@ -736,6 +736,7 @@ class ContinuousScanActivity : BaseActivity(), IProductView {
     }
 
     // The back button will close the bottom sheet if visible
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         if (quickViewBehavior.state != BottomSheetBehavior.STATE_HIDDEN) {
             collapseBottomSheet()

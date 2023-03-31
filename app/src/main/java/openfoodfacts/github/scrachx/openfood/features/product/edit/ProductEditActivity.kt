@@ -145,6 +145,7 @@ class ProductEditActivity : BaseActivity() {
         binding.nutritionFactsIndicator.updateTimeLine(nutritionFactsStage)
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         // If the user changed something, alert before exiting
         if (getUpdatedFieldsMap().isNotEmpty()) showExitConfirmDialog()

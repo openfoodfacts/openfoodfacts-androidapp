@@ -98,7 +98,7 @@ class SimpleScanActivity : AppCompatActivity() {
         trackingEvent?.let {
             matomoAnalytics.trackEvent(
                 AnalyticsEvent.BarcodeDecoder(
-                    success = viewModel.sideEffectsFlow.replayCache.lastOrNull() is SimpleScanViewModel.SideEffect.BarcodeDetected,
+                    success = viewModel.sideEffectsFlow.replayCache.lastOrNull() is BarcodeDetected,
                     duration = it.computeDurationInSeconds(),
                 )
             )
@@ -112,6 +112,7 @@ class SimpleScanActivity : AppCompatActivity() {
         hideSystemUI()
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         super.onBackPressed()
         setResult(RESULT_CANCELED)
