@@ -1,6 +1,6 @@
 [versions]
 # https://kotlinlang.org/docs/releases.html#release-details
-kotlin = "1.7.21"
+kotlin = "1.8.20"
 # https://github.com/Kotlin/kotlinx.coroutines
 kotlin-coroutines = "1.6.2"
 # https://github.com/FasterXML/jackson
@@ -8,8 +8,8 @@ jackson = "2.12.3"
 # https://greenrobot.org/greendao/
 greendao = "3.3.0"
 # https://github.com/googlecodelabs/android-hilt
-hilt = "2.42"
-dagger = "2.39.1"
+hilt = "2.45"
+dagger = "2.45"
 # https://developer.android.com/studio/releases/gradle-plugin
 android-gradle = "7.3.1"
 # https://developer.android.com/jetpack/androidx/releases/lifecycle
