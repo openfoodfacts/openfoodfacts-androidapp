@@ -1,5 +1,18 @@
 # Changelog
 
+## [3.10.1](https://github.com/openfoodfacts/openfoodfacts-androidapp/compare/v3.10.0...v3.10.1) (2023-03-31)
+
+
+### Bug Fixes
+
+* add status_code prop in AnnotationResponse ([17af32c](https://github.com/openfoodfacts/openfoodfacts-androidapp/commit/17af32c27845695558582133ec802bfecf8e6f55)), closes [#4896](https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/4896)
+* getImageUrl ([2626919](https://github.com/openfoodfacts/openfoodfacts-androidapp/commit/2626919eaec75d61c0586b84617f222fb0387e02))
+* Product search recycler view data ([#4918](https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/4918)) ([0c0dca1](https://github.com/openfoodfacts/openfoodfacts-androidapp/commit/0c0dca1f6614d8a128c5cf77edcfc8f7fc697a42)), closes [#4913](https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/4913)
+* ProductCompareViewModelTest ([4879d20](https://github.com/openfoodfacts/openfoodfacts-androidapp/commit/4879d20322ae002456bc51c45e3c3f4399e89a2d)), closes [#4923](https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/4923)
+* removed useless RequiresApi annotation as minSdk is 21 ([7ccfabf](https://github.com/openfoodfacts/openfoodfacts-androidapp/commit/7ccfabf60af0e96e1edd77679a05ca27bc201285))
+* use setDataAndType instead of data and type in Intent creations ([bfe78a9](https://github.com/openfoodfacts/openfoodfacts-androidapp/commit/bfe78a916c3209a4b9ab30a3d3e63bcff2327c24))
+* wrong mapping causing json deserialization issue ([770d9c2](https://github.com/openfoodfacts/openfoodfacts-androidapp/commit/770d9c2a8c8aded8729b29914ce8055cb56fe2d4))
+
 ## [3.10.0](https://github.com/openfoodfacts/openfoodfacts-androidapp/compare/v3.9.0...v3.10.0) (2023-02-01)
 
 
