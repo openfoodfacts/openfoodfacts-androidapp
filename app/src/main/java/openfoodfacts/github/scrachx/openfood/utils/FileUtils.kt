@@ -16,10 +16,11 @@ import android.widget.Toast
 import androidx.annotation.CheckResult
 import androidx.core.app.NotificationCompat
 import androidx.core.content.getSystemService
+import logcat.asLog
+import logcat.logcat
 import openfoodfacts.github.scrachx.openfood.AppFlavor
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.features.productlist.ProductListActivity
-import openfoodfacts.github.scrachx.openfood.features.scanhistory.ScanHistoryActivity
 import openfoodfacts.github.scrachx.openfood.models.HistoryProduct
 import openfoodfacts.github.scrachx.openfood.models.entities.ProductLists
 import org.apache.commons.csv.CSVFormat
@@ -27,6 +28,9 @@ import org.apache.commons.csv.CSVPrinter
 import org.jetbrains.annotations.Contract
 import java.io.IOException
 
+
+private const val LOG_TAG = "FileUtils"
+const val LOCALE_FILE_SCHEME = "file://"
 
 fun isLocaleFile(url: String?) = url?.startsWith(LOCALE_FILE_SCHEME) ?: false
 
@@ -39,7 +43,6 @@ fun getCsvFolderName() = when (AppFlavor.currentFlavor) {
     AppFlavor.OPF -> "Open Products Facts"
     AppFlavor.OBF -> "Open Beauty Facts"
     AppFlavor.OFF -> "Open Food Facts"
-    else -> "Open Food Facts"
 }
 
 fun writeListToFile(context: Context, productList: ProductLists, csvUri: Uri) {
@@ -90,12 +93,11 @@ fun writeHistoryToFile(context: Context, productList: List<HistoryProduct>, csvU
         Toast.makeText(context, R.string.txt_history_exported, Toast.LENGTH_LONG).show()
         success = true
     } catch (e: IOException) {
-        Log.e(ScanHistoryActivity.LOG_TAG, "Can't export to $csvUri.", e)
+        logcat(LOG_TAG) { "Can't export to $csvUri: " + e.asLog() }
     }
     val downloadIntent = Intent(ACTION_VIEW).apply {
         flags = FLAG_ACTIVITY_CLEAR_TOP or FLAG_ACTIVITY_NEW_TASK or FLAG_GRANT_READ_URI_PERMISSION
-        data = csvUri
-        type = "text/csv"
+        setDataAndType(csvUri, "text/csv")
     }
     val notificationManager = createNotificationManager(context)
     if (success) {
@@ -108,7 +110,6 @@ fun writeHistoryToFile(context: Context, productList: List<HistoryProduct>, csvU
     }
 }
 
-const val LOCALE_FILE_SCHEME = "file://"
 
 // TODO: Use constants and refactor
 fun createNotificationManager(context: Context): NotificationManager {

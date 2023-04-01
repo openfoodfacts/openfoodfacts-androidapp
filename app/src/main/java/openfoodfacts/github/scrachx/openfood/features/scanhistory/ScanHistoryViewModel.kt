@@ -5,6 +5,11 @@ import android.content.Context
 import androidx.lifecycle.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import openfoodfacts.github.scrachx.openfood.R
@@ -23,35 +28,34 @@ class ScanHistoryViewModel @Inject constructor(
     daoSession: DaoSession,
     private val productRepository: ProductRepository,
     private val localeManager: LocaleManager,
-    private val dispatchers: CoroutineDispatchers
+    private val dispatchers: CoroutineDispatchers,
 ) : ViewModel() {
 
     private val historyProductDao: HistoryProductDao = daoSession.historyProductDao
 
-    private val unorderedProductState = MutableLiveData<FetchProductsState>(FetchProductsState.Loading)
-    val productsState = unorderedProductState.switchMap { state ->
-        liveData(dispatchers.IO) {
-            when (state) {
-                is FetchProductsState.Loading, is FetchProductsState.Error -> emit(state)
-                is FetchProductsState.Data -> {
-                    try {
-                        state.items
-                            .customSort(_sortType.value)
-                            .let { emit(FetchProductsState.Data(it)) }
-                    } catch (err: Exception) {
-                        emit(FetchProductsState.Error)
-                    }
+    private val unorderedProductState = MutableStateFlow<FetchProductsState>(FetchProductsState.Loading)
+
+    val productsState = unorderedProductState.map { state ->
+        when (state) {
+            is FetchProductsState.Loading, is FetchProductsState.Error -> return@map state
+            is FetchProductsState.Data -> {
+                try {
+                    state.items
+                        .customSort(_sortType.value)
+                        .let { return@map FetchProductsState.Data(it) }
+                } catch (err: Exception) {
+                    return@map FetchProductsState.Error
                 }
             }
         }
-    }
+    }.stateIn(viewModelScope, SharingStarted.Lazily, FetchProductsState.Loading)
 
-    private val _sortType = MutableLiveData(SortType.TIME)
-    val sortType = _sortType as LiveData<SortType>
+    private val _sortType = MutableStateFlow(SortType.TIME)
+    val sortType = _sortType.asStateFlow()
 
     fun refreshItems() {
         viewModelScope.launch {
-            unorderedProductState.postValue(FetchProductsState.Loading)
+            unorderedProductState.emit(FetchProductsState.Loading)
 
             withContext(dispatchers.IO) {
                 val barcodes = historyProductDao.list().map { it.barcode }
@@ -60,12 +64,13 @@ class ScanHistoryViewModel @Inject constructor(
                         productRepository.getProductsByBarcode(barcodes)
                             .forEach { product ->
                                 val historyProduct = historyProductDao.unique {
-                                    where(HistoryProductDao.Properties.Barcode.eq(product.code))
+                                    where(HistoryProductDao.Properties.Barcode.eq(product.barcode.raw))
                                 } ?: HistoryProduct()
 
                                 product.productName?.let { historyProduct.title = it }
                                 product.brands?.let { historyProduct.brands = it }
-                                product.getSmallFrontImageUrl(localeManager.getLanguage())?.let { historyProduct.url = it }
+                                product.getSmallFrontImageUrl(localeManager.getLanguage())
+                                    ?.let { historyProduct.url = it }
                                 product.quantity?.let { historyProduct.quantity = it }
                                 product.nutritionGradeFr?.let { historyProduct.nutritionGrade = it }
                                 product.ecoscore?.let { historyProduct.ecoscore = it }
@@ -74,12 +79,12 @@ class ScanHistoryViewModel @Inject constructor(
                                 historyProductDao.update(historyProduct)
                             }
                     } catch (err: Exception) {
-                        unorderedProductState.postValue(FetchProductsState.Error)
+                        unorderedProductState.emit(FetchProductsState.Error)
                     }
                 }
 
                 val updatedProducts = historyProductDao.list()
-                unorderedProductState.postValue(FetchProductsState.Data(updatedProducts))
+                unorderedProductState.emit(FetchProductsState.Data(updatedProducts))
             }
         }
     }
@@ -87,15 +92,15 @@ class ScanHistoryViewModel @Inject constructor(
     fun clearHistory() {
         viewModelScope.launch {
             withContext(dispatchers.IO) {
-                unorderedProductState.postValue(FetchProductsState.Loading)
+                unorderedProductState.emit(FetchProductsState.Loading)
 
                 try {
                     historyProductDao.deleteAll()
                 } catch (err: Exception) {
-                    unorderedProductState.postValue(FetchProductsState.Error)
+                    unorderedProductState.emit(FetchProductsState.Error)
                 }
 
-                unorderedProductState.postValue(FetchProductsState.Data(emptyList()))
+                unorderedProductState.emit(FetchProductsState.Data(emptyList()))
             }
         }
     }
@@ -107,20 +112,22 @@ class ScanHistoryViewModel @Inject constructor(
                 try {
                     historyProductDao.delete(product)
                 } catch (err: Exception) {
-                    unorderedProductState.postValue(FetchProductsState.Error)
+                    unorderedProductState.emit(FetchProductsState.Error)
                 }
 
                 val products = historyProductDao.list()
-                unorderedProductState.postValue(FetchProductsState.Data(products))
+                unorderedProductState.emit(FetchProductsState.Data(products))
             }
         }
     }
 
     fun updateSortType(type: SortType) {
-        _sortType.postValue(type)
+        viewModelScope.launch {
+            _sortType.emit(type)
 
-        // refresh
-        unorderedProductState.postValue(productsState.value)
+            // refresh
+            unorderedProductState.emit(productsState.value)
+        }
     }
 
     /**
@@ -138,6 +145,7 @@ class ScanHistoryViewModel @Inject constructor(
             if (item2.brands.isNullOrEmpty()) item2.brands = context.getString(R.string.no_brand)
             item1.brands!!.compareTo(item2.brands!!, true)
         }
+
         SortType.BARCODE -> sortedBy { it.barcode }
         SortType.GRADE -> sortedBy { it.nutritionGrade }
         SortType.TIME -> sortedByDescending { it.lastSeen }

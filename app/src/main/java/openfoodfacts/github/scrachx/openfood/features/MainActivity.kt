@@ -687,6 +687,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener, NavigationDrawerH
         super.onSaveInstanceState(newState)
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         //handle the back press :D close the drawer first and if the drawer is closed close the
         // activity
