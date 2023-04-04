@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import openfoodfacts.github.scrachx.openfood.databinding.ImagesItemBinding
 import openfoodfacts.github.scrachx.openfood.models.Product
 
@@ -15,6 +16,7 @@ class ProductPhotosAdapter(
     private val imageNames: List<String>,
     private val onImageTap: (Int) -> Unit,
     private val onLoginNeeded: (View, Int) -> Unit,
+    private val picasso: Picasso
 ) : RecyclerView.Adapter<ProductPhotoViewHolder>() {
 
     override fun getItemCount() = imageNames.count()
@@ -22,7 +24,7 @@ class ProductPhotosAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductPhotoViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val itemView = ImagesItemBinding.inflate(inflater, parent, false)
-        return ProductPhotoViewHolder(itemView)
+        return ProductPhotoViewHolder(itemView, picasso)
     }
 
     override fun onBindViewHolder(holder: ProductPhotoViewHolder, position: Int) {

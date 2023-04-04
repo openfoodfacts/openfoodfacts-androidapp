@@ -106,7 +106,8 @@ class ProductPhotosFragment : BaseFragment() {
                 } else {
                     showEditPopup(view, imageNames, position, product)
                 }
-            }
+            },
+            picasso
         )
 
         binding.progress.hide()
