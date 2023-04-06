@@ -47,14 +47,8 @@ class ContributorsFragment : BaseFragment() {
     lateinit var localeManager: LocaleManager
 
     private lateinit var productState: ProductState
-
-    private val dateFormat = DateFormat.getDateFormat(requireContext()).apply {
-        timeZone = TimeZone.getTimeZone("CET")
-    }
-    private val timeFormatter = DateFormat.getTimeFormat(requireContext()).apply {
-        timeZone = TimeZone.getTimeZone("CET")
-    }
-
+    private lateinit var dateFormat: java.text.DateFormat
+    private lateinit var timeFormatter: java.text.DateFormat
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentContributorsBinding.inflate(inflater)
@@ -63,6 +57,13 @@ class ContributorsFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        dateFormat = DateFormat.getDateFormat(requireContext()).apply {
+            timeZone = TimeZone.getTimeZone("CET")
+        }
+        timeFormatter = DateFormat.getTimeFormat(requireContext()).apply {
+            timeZone = TimeZone.getTimeZone("CET")
+        }
 
         binding.incompleteStates.setOnClickListener { toggleIncompleteStatesVisibility() }
         binding.completeStates.setOnClickListener { toggleCompleteStatesVisibility() }

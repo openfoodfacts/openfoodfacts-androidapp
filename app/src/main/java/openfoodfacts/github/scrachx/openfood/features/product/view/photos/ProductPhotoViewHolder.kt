@@ -13,10 +13,8 @@ import javax.inject.Inject
 
 class ProductPhotoViewHolder(
     private val binding: ImagesItemBinding,
+    private val picasso: Picasso
 ) : RecyclerView.ViewHolder(binding.root) {
-
-    @Inject
-    lateinit var picasso: Picasso
 
     fun setImage(barcode: Barcode, imageName: String) {
         val imageUrl = getImageUrl(barcode, imageName, IMAGE_EDIT_SIZE)
