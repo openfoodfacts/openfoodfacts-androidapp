@@ -1,6 +1,6 @@
 [versions]
 # https://kotlinlang.org/docs/releases.html#release-details
-kotlin = "1.8.20"
+kotlin = "1.8.21"
 # https://github.com/Kotlin/kotlinx.coroutines
 kotlin-coroutines = "1.6.4"
 # https://github.com/FasterXML/jackson
