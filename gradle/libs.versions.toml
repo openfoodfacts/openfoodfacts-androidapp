@@ -119,7 +119,7 @@ android-image-cropper = "com.github.CanHub:Android-Image-Cropper:3.1.3"
 # UI Component : Chips Input
 nachos = "com.github.hootsuite:nachos:1.2.0"
 # Crash analytics
-sentry-android = "io.sentry:sentry-android:6.18.0"
+sentry-android = "io.sentry:sentry-android:6.18.1"
 matomo = "com.github.matomo-org:matomo-sdk-android:4.1.4"
 # ShowCaseView dependency
 showcaseview = "com.github.mreram:showcaseview:1.0.5"
