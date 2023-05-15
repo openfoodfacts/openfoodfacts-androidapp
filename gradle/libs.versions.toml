@@ -8,7 +8,7 @@ jackson = "2.12.3"
 # https://greenrobot.org/greendao/
 greendao = "3.3.0"
 # https://github.com/googlecodelabs/android-hilt
-hilt = "2.45"
+hilt = "2.46.1"
 dagger = "2.45"
 # https://developer.android.com/studio/releases/gradle-plugin
 android-gradle = "7.4.2"
