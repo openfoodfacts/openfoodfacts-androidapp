@@ -418,11 +418,13 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem {
 
         key = config.type
         title = getString(R.string.display_analysis_tag_status, config.typeName.lowercase(Locale.getDefault()))
-        when (config.typeName.lowercase(Locale.getDefault())) {
-            "palm oil" -> icon = ContextCompat.getDrawable(requireContext(), R.drawable.ic_preference_drop)
-            "vegan" -> icon = ContextCompat.getDrawable(requireContext(), R.drawable.ic_preference_vegan)
-            "vegetarian" -> icon = ContextCompat.getDrawable(requireContext(), R.drawable.ic_preference_vegetarian)
+        val drawable = when (config.typeName.lowercase(Locale.getDefault())) {
+            "palm oil" -> R.drawable.ic_preference_drop
+            "vegan" -> R.drawable.ic_preference_vegan
+            "vegetarian" -> R.drawable.ic_preference_vegetarian
+            else -> null
         }
+        icon = ContextCompat.getDrawable(requireContext(), drawable!!)
         summary = null
         summaryOn = null
         summaryOff = null

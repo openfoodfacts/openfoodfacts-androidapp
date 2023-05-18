@@ -4,7 +4,6 @@
 
     <PreferenceCategory
         android:summary=""
-        android:icon="@drawable/ic_preference_general"
         android:title="@string/preference_header_general">
 
         <ListPreference
@@ -85,9 +84,7 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory
-        android:title="@string/pref_header_network"
-        android:icon="@drawable/ic_preference_network">
+    <PreferenceCategory android:title="@string/pref_header_network">
 
         <SwitchPreference
             android:defaultValue="true"
@@ -120,12 +117,10 @@
     <PreferenceCategory
         android:key="@string/pref_key_display"
         android:title="@string/pref_header_display"
-        android:icon="@drawable/ic_preference_display"
         app:isPreferenceVisible="false" />
 
     <PreferenceCategory
         android:summary=""
-        android:icon="@drawable/ic_preference_contributing"
         android:title="@string/pref_header_contributing">
 
         <Preference
@@ -180,7 +175,6 @@
 
     <PreferenceCategory
         android:summary=""
-        android:icon="@drawable/ic_preference_privacy"
         android:title="@string/preference_header_privacy">
 
         <SwitchPreference
@@ -204,7 +198,6 @@
     <PreferenceCategory
         android:layout_height="wrap_content"
         android:summary=""
-        android:icon="@drawable/ic_preference_about"
         android:title="@string/pref_header_about">
 
         <Preference
