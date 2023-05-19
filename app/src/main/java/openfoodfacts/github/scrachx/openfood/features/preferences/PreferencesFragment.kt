@@ -424,7 +424,9 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem {
             "vegetarian" -> R.drawable.ic_preference_vegetarian
             else -> null
         }
-        icon = ContextCompat.getDrawable(requireContext(), drawable!!)
+        drawable?.let {
+            icon = ContextCompat.getDrawable(requireContext(), it)
+        }
         summary = null
         summaryOn = null
         summaryOff = null
