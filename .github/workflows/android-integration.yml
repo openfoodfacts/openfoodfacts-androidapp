@@ -27,7 +27,7 @@ jobs:
           java-version: ${{ env.JAVA_VERSION }}
 
       - name: Run detekt
-        uses: gradle/gradle-build-action@v2.6.0
+        uses: gradle/gradle-build-action@v2.6.1
         with:
           arguments: detekt
 
@@ -54,7 +54,7 @@ jobs:
           java-version: ${{ env.JAVA_VERSION }}
 
       - name: Run unit tests
-        uses: gradle/gradle-build-action@v2.6.0
+        uses: gradle/gradle-build-action@v2.6.1
         with:
           arguments: >
             testObfPlaystoreDebugUnitTest
@@ -81,7 +81,7 @@ jobs:
         run: 'echo "ndk.dir=${ANDROID_HOME}/ndk-bundle" > local.properties'
 
       - name: Assemble debug APKs
-        uses: gradle/gradle-build-action@v2.6.0
+        uses: gradle/gradle-build-action@v2.6.1
         with:
           arguments: assembleDebug
 
@@ -138,7 +138,7 @@ jobs:
         run: "echo \"org.gradle.jvmargs=-Xmx4096m\" >> gradle.properties"
 
       - name: Lint sources
-        uses: gradle/gradle-build-action@v2.6.0
+        uses: gradle/gradle-build-action@v2.6.1
         with:
           arguments: lint --stacktrace
 
@@ -168,7 +168,7 @@ jobs:
           java-version: ${{ env.JAVA_VERSION }}
 
       - name: Generate documentation
-        uses: gradle/gradle-build-action@v2.6.0
+        uses: gradle/gradle-build-action@v2.6.1
         with:
           arguments: dokkaHtml
 
