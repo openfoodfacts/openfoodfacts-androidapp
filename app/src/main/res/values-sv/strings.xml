@@ -699,7 +699,7 @@
     <string name="search_history_pref_summary">Remove all the searches that you performed on this device</string>
     <string name="search_history_pref_dialog_content">Delete local search history?</string>
     <string name="settings_country_dialog_title">Välj ditt land</string>
-    <string name="settings_country_summary">Change your selected country</string>
+    <string name="settings_country_summary">Ändra ditt valda land</string>
     <string name="settings_country_title">Land</string>
     <string name="txt_no_nutrition_data">Denna produkt har ingen näringsinformation på förpackningen. Om detta har ändrats kan du redigera produkten.</string>
     <string name="image_prompt_language">Take a photo of the ingredients in</string>
