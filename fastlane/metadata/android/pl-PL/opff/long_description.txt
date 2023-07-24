@@ -6,19 +6,19 @@ To discover the Open Pet Food Facts project, please visit https://world.openpetf
 
 ***Przyczyń się do przejrzystości Pet Food***
 
-- Open Pet Food Facts is a pet food products database made by everyone, for everyone.
-- You can use it to make better pet food choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Pet Food Facts is a non-profit project developed by thousands of volunteers from around the world. Jest dużo ciekawych projectków do których możesz dołączyć. 
-- You can start contributing today by adding a product from your pet's cupboard. 
+- Open Pet Food Facts to baza danych produktów dla zwierząt domowych tworzona przez wszystkich dla każdego.
+- Możesz go wykorzystać do dokonywania lepszych wyborów dotyczących karmy dla zwierząt domowych, a ponieważ są to otwarte dane, każdy może je ponownie wykorzystać w dowolnym celu.
+- Open Pet Food Facts to projekt nienastawiony na zysk opracowany przez tysiące wolontariuszy z całego świata. Jest dużo ciekawych projektków do których możesz dołączyć. 
+- Możesz zacząć pomagać już dziś, dodając produkt z szafki Twojego zwierzaka. 
 
 
 ***Poznaj fakty***
 
 You will also be able to find (according to the indications present on the products):
-- list of ingredients (including ash content)
-- nutritional info, nutrition traffic lights…
+- lista składników (w tym zawartość popiołu)
+- informacje o wartości odżywczej, sygnalizatory ruchu żywieniowego…
 - brands, allergens, labels (organic, vegan...)
-- It works with dog food (dry dog food & wet dog food), cat food, rabbit food, snake food, fish food, bird food, horse food or any food for your favorite animal.
+- Działa z karmą dla psów (sucha i mokra karma dla psów), karma dla kotów, karma dla królików, karma dla węży, karma dla ryb, karma dla ptaków, karma dla koni lub dowolna karma dla Twojego ulubionego zwierzęcia.
 
 ***Działa dobrze w każdej sytuacji***
 - Możesz dodać nowe produkty, nawet nie mając teraz połączenia.
@@ -26,7 +26,7 @@ You will also be able to find (according to the indications present on the produ
 -Nie potrzebujesz aparatu, aby wyszukać produkt. Możesz również wpisać kod kreskowy, jeśli nie masz aparatu lub masz z nim problem.
 
 ***Twoje jedzenie, twoje dane***
-- Twoje dane należą do Ciebie i nigdy nie będą przesyłane online
+- Your personal data is yours, and is never sent online
 Możesz korzystać anonimowo z aplikacji
 Możesz eksportować historię skanowania
 
