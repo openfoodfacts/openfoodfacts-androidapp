@@ -1,2 +1,2 @@
-1. חדש: מהיום ניתן לראות את מצב המוצר בהקשר טבעונות, צמחונות ושמן דקלים, על בסיס רשימת המרכיבים. ניתוחים נוספים יתווספו בהמשך. ניתן לשלוח לנו הודעות בדוא״ל כדי לספר לנו מה מעניין אותך לראות :-) 
-2. ניקיון כללי עם תיקונים למספר נושאים עליהם דיווחת לכתובת contact@openfoodfacts.org
+1. NEW: you can now see the vegan, vegetarian and palm oil status of products, based on their ingredient list. More analysis will be added over time. Send us a mail to tell us what you'd like to see :-) 
+2. Housecleaning with fixes for several issues that you reported to contact@openfoodfacts.org
