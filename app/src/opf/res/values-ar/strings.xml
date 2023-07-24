@@ -11,7 +11,7 @@
     <!-- For fr, Replace by https://world-fr.openproductsfacts.org/contributeur/ -->
     <string name="website_contributor">https://world-ar.openfoodfacts.org/contributor/</string>
     <string name="terms_url">https://world.openproductsfacts.org/terms-of-use</string>
-    <string name="txtHomeOnline">Open Products Facts is an open database of more than %1$s products (plus the ones you will contribute).</string>
+    <string name="txtHomeOnline">Open Products Facts is an open database of more than %1$s products (plus the ones you will contribute) in the world.</string>
     <string name="txtHome">Open Beauty Facts هي قاعدة بيانات مفتوحه لجميع المنتجات بالعالم.</string>
     <string name="slide_1_title">المساهمة في شفافية المنتج</string>
     <string name="slide_1_desc">امسح المنتجات، التقط صور لهم، اجعل شفافية منتجك تحدث</string>
@@ -21,31 +21,31 @@
     <string name="slide_3_desc">جميع المنتجات التي قمت بمسحها ضوئيًا ، في قائمة واحدة يدوية يمكنك الحصول عليها</string>
     <string name="slide_4_title">يعمل بدون اتصال</string>
     <string name="slide_4_desc">يمكنك إضافة منتجات جديدة ، حتى إذا لم يكن لديك اتصال بالإنترنت في الوقت الحالي</string>
-    <string name="txtDialogsContent">المنتج الذي قمت بمسحه ضوئياً غير موجود حتى الآن في Open Open Facts. يرجى إضافته.</string>
+    <string name="txtDialogsContent">المنتج الذي مسحته غير موجود حتى الآن في Open Products Facts. يرجى إضافته.</string>
     <string name="txtDialogsContentPowerMode">المنتج الذي قمت بمسحه ضوئياً موجود بالفعل في Open Open Facts.</string>
     <string name="msg_share">انظر إلى هذا المنتج على Open Products Facts :</string>
     <string name="not_support_books">الكتب غير مدعومة حالياً بواسطة Open Products Facts</string>
-    <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Products Facts</string>
+    <string name="txt_broaden_search">- توسيع نطاق البحث \n- مسح ضوئي وإضافته إلى Open Products Facts</string>
     <string name="Donation">انقر هنا للتبرع لـ Open Products Facts</string>
     <string name="translate_help_title">ساعد في ترجمة Open Products Facts</string>
     <string name="translate_help_summary">ترجم قاعدة بيانات Open Products Facts إلى لغتك - لا يتطلب خبره تقنيه</string>
     <string name="text_offline_info_dialog">قم بمسح المنتجات ضوئياً حتى في حالة عدم الاتصال بالإنترنت لإضافتها إلى Open Products Facts لاحقاً. ستظهر المنتجات الممسوحة ضوئيًا هنا وستتمكن من إرسالها باستخدام الزر أدناه.</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">لن يتم إرسال معلوماتك الشخصية إلى خادم Open Products Facts. أيضاً كن حذراً بأن بيانات المنتج قد تكون غير دقيقة، و الكشف قد لا يكون دقيقاً بنسبة 100٪ ، لذا نرجو منك إعادة التحقق منها بنفسك! </string>
     <!-- OPF tagline in different languages -->
-    <string name="version_string">Open Products Facts Android App</string>
+    <string name="version_string">افتح تطبيق Open Products Facts على Android</string>
     <string name="tagline">the free product database</string>
-    <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Products Facts. Can you add it?</string>
-    <string name="currently_on_version">Currently on Open Products Facts</string>
-    <string name="category_game_btn">المساعدة في تصنيف المنتجات</string>
+    <string name="product_not_found">المنتج %1$s الذي مسحته غير موجود حتى الآن في Open Products Facts. هل يمكنك إضافته؟</string>
+    <string name="currently_on_version">حاليًا في Open Products Facts</string>
+    <string name="category_game_btn">مساعدة في تصنيف المنتجات</string>
     <!-- TODO add true support instead of overriding strings -->
-    <string name="add_nutrient_prompt_text">Add more details to help complete the product</string>
-    <string name="add_category_prompt_text">Add a category to help complete the product</string>
-    <string name="add_nutrient_category_prompt_text">Add a category and more details to help complete the product</string>
+    <string name="add_nutrient_prompt_text">أضف المزيد من التفاصيل للمساعدة في استكمال المنتج</string>
+    <string name="add_category_prompt_text">أضف المزيد من التفاصيل للمساعدة في استكمال المنتج</string>
+    <string name="add_nutrient_category_prompt_text">أضف فئة ومزيد من التفاصيل للمساعدة في إكمال المنتج</string>
     <string name="txt_eaten_products">المنتجات التي أملكها</string>
     <string name="txt_products_to_buy">منتجات للشراء</string>
-    <string name="intent_filter_share_label">Add to Open Products Facts</string>
-    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
-        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
-    <string name="OFFlogo">Open Products Facts logo</string>
-    <string name="brand_hint">Examples: Nike, Apple, etc…</string>
+    <string name="intent_filter_share_label">أضف إلى حقائق المنتجات المفتوحة</string>
+    <string name="txt_info_eaten_products">ستتمكن من إضافة منتج إلى هذه القائمة عن طريق مسح المنتجات وسحب بطاقة المنتج لأعلى والنقر على \"المنتجات المراد شراؤها\".
+        ستتمكن أيضًا من إضافة منتجات إلى هذه القائمة من خلال البحث عنها والنقر فوق الزر + في أعلى يمين صفحة المنتج.</string>
+    <string name="OFFlogo">فتح شعار الحقائق للمنتجات</string>
+    <string name="brand_hint">أمثلة: Nike ، Apple ، إلخ…</string>
 </resources>
