@@ -2,18 +2,18 @@
 ==================
 New native version of Open Food Facts. All the Open Food Facts volunteers been working hard on it, based on your suggestions and feedback :)
 ==================
-* Open Food Facts is now a more global movement than ever. 500k products freed, 10K registered contributors, 182 countries. Vil du bli med?
+* Open Food Facts is now a more global movement than ever. 500k products freed, 10K registered contributors, 182 countries. Will you join us ?
 ==================
 Hva er nytt?
 ==================
-1. Du får 360-gradersbildet: ernæring, ingredienser og alle matfakta, pent og tydelig presentert.
-2. Få "NutriScore" for alle produktene i verden. Sammenlign produkter enkelt. Enklere enn å dekryptere ernæringstabeller.
-3. Få ekstra informasjon fra Wikipedia. Klikk på en matkategori, et tilsetningsstoff… for å lære mer og se lignende produkter.
-4. Du kan få varsler om allergener (dobbeltsjekk alltid selve etiketten!)
-5. Du får nå en skannehistorikk du kan eksportere, og som aldri forlater telefonen
-6. Du kan riste telefonen når som helst, mens du er i appen, for å starte skanningen
-7. Du kan nå legge til nye produkter også når du er frakoblet
+1. You get the 360 picture: nutrition, ingredients, and all food facts, neatly and clearly presented.
+2. Get the "NutriScore" nutrition grade for all products in the world. Easily compare products. Easier than deciphering nutrition tables.
+3. Get extra information from Wikipedia. Click on a food category, an additive… to learn more and see similar products.
+4. You can set allergens alerts (always double check the actual label yourself though!)
+5. You now get a scan history you can export and that never leaves your phone
+6. You can shake your phone at any time in the app to start scanning
+7. You can now add new products even when you're offline
 8. You can now help complete your favorite foods directly from the app: take photos, fill info, make food transparency happen
-9. Alt er også mye raskere. Produkter lastes raskt, selv med dårlig nettforbindelse.
-10. Vi er fortsatt ikke interessert i dine personlige data. Du trenger ikke registrere deg for å skanne og bidra.
-Ekstra! Til tross for alle de nye tingene, er appen like lett som før. Plassen som er igjen på telefonen din er hellig.
+9. Everything is also much faster. Products load blazingly fast, even with a bad mobile connection.
+10. We're still not interested in your personal data. You don't have to sign-up to scan and contribute.
+Extra! Despite all the new stuff, the app is as light as before. The space left on your phone is sacred.
