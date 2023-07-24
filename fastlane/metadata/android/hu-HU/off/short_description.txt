@@ -1,1 +1,1 @@
-Ellenőrizze az élelmiszereket a címkéjük tartalmának visszafejtésével: összetevők, adalékanyagok és tápértékadatok
+Scan food products to decrypt labels: ingredients, additives and nutrition facts
