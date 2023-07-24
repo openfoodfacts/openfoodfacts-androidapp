@@ -16,25 +16,25 @@ Om het vrijwillige Open Food Facts project te ontdekken, bezoek https://world.op
 - De koolstofimpact van je voedsel
 - Krijg een gevoel hoeveel je van je dagelijkse koolstofquota gebruikt voor voedsel
 - Op basis van de voetafdrukken die door ADEME voor Frankrijk zijn berekend.
-- Doe mee en help ons de Carbon Impact naar jouw land te brengen!
-- Om een Carbon Impact weer te geven, moet een product een volledige ingrediëntenlijst hebben met het percentage vlees of vis en een portiegrootte
+- Doe mee en help ons de CO₂-impact naar jouw land te brengen!
+- Om een CO₂-impact weer te geven, moet een product een volledige ingrediëntenlijst hebben met het percentage vlees of vis en een portiegrootte
 
 
-▶ Draag bij aan de inzichtelijkheid van de voedselketen
+▶ Draag bij aan een transparante voedselketen
 - Open Food Facts is een database met levensmiddelen gemaakt door iedereen, voor iedereen.
 - Je kunt het gebruiken om betere voedselkeuzes te maken, en omdat het open data is, kan iedereen het voor elk doel hergebruiken.
-- Open Food Facts is een non-profitproject ontwikkeld door duizenden vrijwilligers uit de hele wereld. We hebben veel spannende projecten waar je op veel verschillende manieren aan kunt bijdragen.
+- Open Food Facts is een non-profit project ontwikkeld door duizenden vrijwilligers uit de hele wereld. We hebben veel spannende projecten waar je op veel verschillende manieren aan kunt bijdragen.
 - Je kunt vandaag beginnen met een bijdrage te leveren door een product uit je koelkast toe te voegen.
 
-Maak lijsten
+▶ Create lists
 Maak lijsten Maak lijsten Maak boodschappenlijstjes, houd bij wat je hebt gegeten en deel je lijsten eenvoudig en exporteer ze.
 
 ▶ Ken de feiten
-Open Food Facts helpt je om de kleine lettertjes op etiketten te begrijpen. Zo kan je vinden:
+Open Food Facts helpt je om de kleine lettertjes op etiketten te begrijpen. Je kan vinden:
 - de koolstofvoetafdruk (CO2-emissies) en verpakking (evenals recyclinginstructies),
 - Nutri-Score (voedingswaarde), voedingsstoffen, vetgehalte, verzadigde vetzuren, koolhydraten, suikers, vezels, eiwitten en zout,
-- merken, allergenen, logo's (bio, glutenvrij, veganistisch, vegetarisch, halal, kosjer ...), traceerbaarheidsinformatie (verpakkingscodes, oorsprong van ingrediënten),
-- en op wijnen en bieren vindt u het alcoholpercentage.
+- merken, allergenen, labels (biologisch, veganistisch...)
+- Op wijnen en bieren vind je het alcoholpercentage.
 
 
 Gebaseerd op wetenschap, helpen wij de wetenschap!
@@ -47,21 +47,21 @@ Gebaseerd op wetenschap, helpen wij de wetenschap!
 
 
 ▶ Offline scannen: scannen in ELKE situatie! (binnenkort beschikbaar)
-Scan met de snelheid van het licht (zelfs als u in een vliegtuig, onderzeeër of supermarkt bent)
+Scan met de snelheid van het licht (zelfs als je in een vliegtuig, onderzeeër of supermarkt bent)
 
 - De hele planeet, in je zak!
 - Je kan nieuwe producten toevoegen, zelfs als je even geen internetverbinding hebt.
 - De app laadt alleen de strikt noodzakelijke gegevens om het batterijverbruik te verkleinen.
 
-▶ Jouw voedsel, jouw gegevens
+▶ Jouw voedsel, jouw data
 - Jouw gegevens zijn van jou en worden nooit online verzonden
 - Je kunt de app anoniem gebruiken
 - Je kunt jouw scangeschiedenis exporteren
 
-Stel allergeenwaarschuwingen in
+▶ Allergenenwaarschuwingen voor producten instellen
 - Voor een melk, gluten, eieren, sojabonen, noten, vis, selderij, mosterd, zwaveldioxide en sulfieten, pinda's, sesamzaad, schaaldieren, weekdieren of lupine-allergie
 - Versnel het boodschappen doen door een eerste screening van je voedsel uit te voeren.
-- Wees voorzichtig: de gegevens kunnen niet 100% accuraat zijn en de detectie is wellicht niet 100% accuraat. Dus controleer altijd zelf de verpakking.
+- Wees voorzichtig: de gegevens kunnen niet 100% accuraat zijn en de detectie is wellicht niet 100% accuraat. Dubbelcheck dus altijd zelf de verpakking.
 
 
 ▶ Zeg hallo en/of word lid!
