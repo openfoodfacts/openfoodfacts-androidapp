@@ -54,7 +54,7 @@ Scan at the speed of light (even if you’re on a plane, submarine or supermarke
 - The app loads only the strict necessary to reduce data and battery consumption.
 
 ▶ Your food, your data
-- Your data is yours, and is never sent online
+Waqas
 - You can use the app anonymously
 - You can export your scan history
 
