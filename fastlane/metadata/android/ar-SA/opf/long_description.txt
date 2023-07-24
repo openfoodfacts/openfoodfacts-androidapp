@@ -1,4 +1,4 @@
-Open Beauty Facts هو قاعدة بيانات لمنتجات مستحضرات التجميل مع المكونات، والمواد المسببة للحساسية، والمؤشرات وجميع المعلومات التي يمكن أن نجدها على ملصقات المنتج.
+Open Beauty Facts هي قاعدة بيانات مفتوحه لجميع المنتجات بالعالم.
 
 *** Contribute to Product Transparency ***
 
@@ -22,7 +22,7 @@ Open Beauty Facts هو قاعدة بيانات لمنتجات مستحضرات �
 - You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
 
 *** Your products, your data ***
-- بياناتك الشخصية تخصك وحدك ، ولا يتم إرسالها أبدًا عبر الإنترنت
+- Your personal data is yours, and is never sent online
 - You can use the app anonymously
 - You can export your scan history
 
