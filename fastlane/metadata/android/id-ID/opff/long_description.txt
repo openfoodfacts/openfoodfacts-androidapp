@@ -1,36 +1,34 @@
-Pindai produk makanan hewan peliharaan atau kode batangnya untuk mendapatkan data tentang bahan-bahan, bahan tambahan dan fakta nutrisi.
+Pindai produk - produk makanan hewan peliharaan atau kode batangnya untuk mendapatkan data tentang kandungan bahan, zat aditif dan informasi nilai gizinya.
 
-Kamu bisa melihat lebih dari 600 produk makanan hewan peliharaan yang sudah ada dengan gratis, juga untuk menambahkan foto dan data untuk produk yang hilang.
+The app allows to view the over 600 pet food products already contained in the free and open database Open Pet Food Facts, and also to add pictures and data for missing products.
 
-Untuk menemukan proyek Open Pet Food Facts, kunjungi https://world.openpetfoodfacts.org
+Untuk menemukan proyek Open Pet Food Facts, silahkan kunjungi https://world.openpetfoodfacts.org
 
-***Berkontribusi untuk Transparansi Makanan Hewan***
+***Contribute to Pet Food Transparency***
 
-- Open Beauty Facts adalah basis data produk makanan hewan peliharaan yang dibuat oleh semua orang untuk semua orang.
-- Dapat digunakan untuk membuat pilihan makanan hewan peliharaan yang lebih baik dan dapat digunakan oleh siapa saja untuk tujuan apa saja karena merupakan data terbuka.
-- Open Pet Food Facts adalah proyek nirlaba yang dikembangkan oleh ribuan sukarelawan dari seluruh dunia. Ada banyak proyek menyenangkan yang bisa diikuti dengan berbagai cara. 
-- Untuk memulai kontribusi, tambahkan sebuah produk di lemari hewan peliharaan anda. 
-
-
-*** Dapatkan faktanya ***
-
-Anda juga akan dapat menemukan (menurut indikasi yang ada pada produk):
-- Komposisi (termasuk kandungan abu)
-- info nutrisi
-- merek, alergen, label (organik, vegan)
-- Bekerja untuk makanan anjing (kering dan basah), makanan kucing, kelinci, ular, ikan, burung, kuda dan peliharaan favorit anda lainnya.
-
-*** Bekerja dengan baik di segala kondisi ***
-- Bisa menambahkan produk, bahkan tanpa koneksi internet.
-- Aplikasi hanya membuat hal yang diperlukan untuk mengurangi konsumsi data dan baterai
-- Tidak memerlukan kamera untuk mencari produk. Jika bermasalah dengan kamera, mengetik angka kode batang bisa dilakukan.
-
-*** Makanan hewan peliharaanmu, datamu ***
-- Datamu adalah milikmu, tidak akan diunggah
-- Bisa menggunakan aplikasi secara anonim
-- Bisa mengekspor riwayat pemindaian
+- Open Pet Food Facts adalah sebuah basis data produk - produk makanan hewan peliharaan yang dibuat oleh semua orang, untuk semua orang.
+- Anda dapat menggunakannya untuk membuat pilihan makanan hewan peliharaan yang lebih baik, dan karena ia adalah data terbuka, siapapun dapat menggunakannya kembali untuk tujuan apapun.
+- Open Pet Food Facts adalah sebuah proyek nirlaba yang dikembangkan oleh ribuan relawan dari seluruh dunia. Kami memiliki banyak proyek menyenangkan yang padanya Anda dapat berkontribusi dengan berbagai cara. 
+- Anda dapat mulai berkontribusi hari ini dengan menambahkan produk dari lemari hewan peliharaan Anda. 
 
 
-Pasang Open Food Facts untuk info makanan manusia.
-Pasang Open Beauty Facts untuk info kosmetik.
-Pasang Open Product Facts untuk info produk lainnya.
+*** Get the Facts ***
+
+You will also be able to find (according to the indications present on the products):
+- daftar kandungan bahan (termasuk kadar abu)
+- info nutrisi, lampu lalu lintas nutrisi…
+- brands, allergens, labels (organic, vegan...)
+- Ini termasuk makanan anjing (makanan anjing kering dan basah), makanan kucing, makanan kelinci, makanan ular, makanan ikan, makanan burung, makanan kuda atau makanan apapun untuk hewan favorit Anda.
+
+*** Bekerja dengan baik dalam kondisi apapun ***
+- Anda dapat menambahkan produk - produk baru, bahkan jika Anda tidak memiliki koneksi Internet saat ini.
+- The app loads only the strict necessary to reduce data and battery consumption
+- Anda tidak perlu kamera untuk mencari produk. Anda juga dapat mengetik kode batang jika Anda tidak memiliki kamera atau kamera Anda bermasalah.
+
+*** Makanan hewan peliharaan Anda, data Anda ***
+- Data pribadi Anda adalah milik Anda, dan tidak pernah dikirim secara daring
+- Anda bisa menggunakan aplikasi secara anonim
+- Anda dapat mengekspor riwayat pemindaian Anda
+
+
+Untuk makanan manusia, Anda dapat menginstal Open Food Facts, untuk kosmetik, Open Beauty Facts, dan untuk semua produk lainnya, Open Products Facts.
