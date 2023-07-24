@@ -5,17 +5,17 @@ O puteți folosi pentru a face alegeri mai bune în ceea ce privește produsele 
 Open Food Facts este un proiect non-profit dezvoltat de mii de voluntari din întreaga lume. Avem multe proiecte interesante la care poți contribui în multe feluri diferite. 
 - Poți începe să contribui astăzi adăugând un produs din dulapul tău cosmetic. 
 
-*** Get the Facts ***
+*** Obține informațiile ***
 
-- Cosmetics additives, F.I.L. codes, CI-numbers, INCI (International Nomenclature of Cosmetic Ingredients), ingredient list, allergens, packaging codes... 
-- Open Beauty Facts helps you to make sense of the fine print on products labels.
-- You don't need to be a chemist and learn latin anymore to decypher an ingredient list :-)
+- Aditivi cosmetici, F.I.L. coduri, numere CI, INCI (Nomenclatura Internațională a Ingredientelor Cosmetice), lista de ingrediente, alergeni, coduri de ambalare... 
+- Open Beauty Facts vă ajută să înțelegeți literele mici de pe etichetele produselor.
+- Nu trebuie să fii chimist și să înveți latină pentru a descifra o listă de ingrediente :-)
 - Puteți scana: aftershave, loțiuni de corp, creme, deodorant, creion de ochi, fond de ten, parfum, ruj, machiaj, mască, parfum, șampon, săpun, gel de duș, lac de unghii și multe altele…
 - Credem că poate fi util pentru persoanele cu afecțiuni ale pielii precum acnee, psoriazis, eczemă… să facă alegeri cosmetice mai bune.
 
 *** Funcționează bine în orice condiție ***
 - Puteți adăuga produse noi, chiar dacă nu aveți o conexiune la Internet acum.
-- The app loads only the strict necessary to reduce data and battery consumption
+- Aplicația încarcă doar strictul necesar pentru a reduce consumul de date și baterie
 - Nu aveți nevoie de o cameră pentru a căuta un produs. De asemenea, puteți introduce codul de bare dacă nu aveți o cameră sau aveți o problemă cu aceasta.
 
 *** Produsele cosmetice, datele tale ***
