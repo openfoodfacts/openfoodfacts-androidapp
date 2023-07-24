@@ -1,31 +1,31 @@
-*** Prispevajte h kozmetični preglednosti ***
+***Contribute to Cosmetic Transparency***
 
-- Open Beauty Facts je zbirka kozmetičnih izdelkov, ki so jo izdelali vsi, za vse.
-- Lahko jo uporabite za boljše kozmetične odločitve, in ker je to odprta zbirka, jo lahko kdorkoli ponovno uporabi za kakršenkoli namen.
-- Open Beauty Facts je neprofitni projekt, ki ga je razvilo na tisoče prostovoljcev z vsega sveta. Imamo veliko zanimivih projektov, pri katerih lahko sodelujete na več različnih načinov. 
-- Sodelujete lahko že danes, tako da dodate izdelek iz vaše kozmetične omare. 
+- Open Beauty Facts is a cosmetic products database made by everyone, for everyone.
+- You can use it to make better cosmetic choices, and as it is open data, anyone can re-use it for any purpose.
+- Open Beauty Facts is a non-profit project developed by thousands of volunteers from around the world. Imamo veliko zanimivih projektov, pri katerih lahko sodelujete na več različnih načinov. 
+- You can start contributing today by adding a product from your cosmetic cupboard. 
 
-*** Pridobite dejstva***
+*** Get the Facts ***
 
-- Aditivi v kozmetiki, F.I.L. kode, številke CI, INCI (mednarodna nomenklatura kozmetičnih sestavin), seznam sestavin, alergeni, oznake embalaže... 
-- Open Beauty Facts vam pomagajo razumeti smisel drobnega tiska na nalepkah izdelkov.
-- Da bi razkrili seznam sestavin, vam ni potrebno biti kemik ali se učiti latinščino, :-)
-- Skenirajte: vodice po britju, losjone za telo, kreme, deodorante, črtala, pudre, dišave, šminke, ličila, maske, parfume, šampone, mila, gele za prhanje, lake za nohte in še veliko več…
-- Menimo, da je lahko koristno za ljudi s kožnimi boleznimi, kot so akne, luskavica, ekcemi… da bi lahko izbrali boljše kozmetične izdelke.
+- Cosmetics additives, F.I.L. codes, CI-numbers, INCI (International Nomenclature of Cosmetic Ingredients), ingredient list, allergens, packaging codes... 
+- Open Beauty Facts helps you to make sense of the fine print on products labels.
+- You don't need to be a chemist and learn latin anymore to decypher an ingredient list :-)
+- You can scan: aftershaves, body lotions, creams, deodorant, eyeliner, foundation, fragrance, lipstick, makeup, mask, perfume, shampoo, soap, shower gel, nail polish and much more…
+- We think it can be useful for people with skin conditions like acne, psoriasis, eczema… to make better cosmetic choices.
 
-*** Dobro deluje v vseh pogojih ***
+*** Works well in any condition ***
 - lahko dodate nove izdelke, tudi če trenutno nimate internetne povezave.
-- Aplikacija naloži le nujno potrebne inf. za zmanjšanje porabe podatkov in baterije
-- Za iskanje izdelka ne potrebujete fotoaparata. Črtno kodo lahko tudi vtipkate, če nimate fotoaparata ali imate težave z njim.
+- The app loads only the strict necessary to reduce data and battery consumption
+- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
 
-*** Vaša kozmetika, vaši podatki ***
-- Vaši podatki so vaši in se nikoli ne pošljejo na splet
+*** Your cosmetics, your data ***
+- Your data is yours, and is never sent online
 - Aplikacijo lahko uporabljate anonimno
 - Zgodovino optičnega branja lahko izvozite
 
-Opomba: Open Beauty Facts spletno mesto in aplikacija temeljita na Open Food Facts, pri čemer se upoštevajo posebnosti kozmetike.
+Note: Open Beauty Facts is being built, the site and the application are based on Open Food Facts and changes will be made to take into account the specificities of cosmetics.
 
-Informacije o Open Beauty Facts so na voljo tudi na spletnem mestu https://world.openbeautyfacts.org
+Open Beauty Facts is also available on the web at https://world.openbeautyfacts.org
 Vprašanja, povratne informacije: contact@openfoodfacts.org
 
-Za človeško hrano lahko namestite Open Food Facts, za hrano za hišne ljubljenčke, Open Pet Food Facts in za vse ostale izdelke, Open Products Facts.
+For human food, you can install Open Food Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.
