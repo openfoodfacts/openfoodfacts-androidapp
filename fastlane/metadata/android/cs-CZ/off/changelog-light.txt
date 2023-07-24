@@ -1,4 +1,4 @@
-VERSION 3
+VERZE 3
 ====
 1. It's easier to contribute new products, and get the Nutri-Score
 2. Create (and export) your product lists (shopping, eating…)
@@ -14,21 +14,21 @@ v2 ! All OFF volunteers have worked hard, based on your suggestions. We're a mor
 3. Upozornění na alergeny
 4. Klepnutím na přísady prozkoumejte s Wikipedií.
 5. Fotografujte, buďte součástí transparentnosti jídla
-6. Much faster, even on 2G. You can even contribute with no connection
-7. No sign-up required
-8. As light as before :)
+6. Mnohem rychleji, dokonce i na 2G. Přispívat můžete i bez připojení
+7. Není nutná žádná registrace
+8. Lehká jako předtím :)
 
-v2.8 ! After the massive V2, all OFF volunteers kept working hard, based on your suggestions. We now clock at 570k products freed from 182 countries by 10K+ contributors, incl. you 🙂
-1. We rebuilt the whole product addition experience (and it even works offline). (thanks Huzaifa)
-2. You can now get nutrition facts for the portion you're eating (Rutvik)
-3. We now compute NOVA groups in addition to the Nutriscore (Huzaifa)
-4. Housecleaning (by Rutvik & Salfai)
-5. 🌎 Korean & Indonesian
+v2.8 ! Po masivní V2 všichni OFF dobrovolníci pokračovali v tvrdé práci na základě vašich návrhů. Nyní jsme na 570 000 produktech získaných ze 182 zemí více než 10 000 přispěvateli, vč. vás 🙂
+1. Přestavěli jsme celý zážitek z přidávání produktu (a dokonce funguje offline). (díky Huzaifa)
+2. Nyní můžete získat nutriční údaje pro porci, kterou jíte (Rutvik)
+3. Nyní kromě Nutriscore (Huzaifa) počítáme skupiny NOVA
+4. Úklid domácnosti (od Rutvik & Salfai)
+5. 🌎 korejština a indonéština
 
-2.8.8 ! Thought we would stop at product addition ? All OFF volunteers kept working hard. 590k products, 182 countries, 10K+ contributors, incl. you 🙂
-1. You can now edit any product with your OFF account. Click on ✏️ on a product page to edit.
-2. 🌍 Slovak, Hebrew, Spanish, Arabic, Dutch, Hungarian and Vietnamese (translate.openfoodfacts.org to help)
-3. Open Food Facts is a fully volunteer-run effort: You can donate time (world.openfoodfacts.org/contribute) or money (donate.openfoodfacts.org)
+2.8.8 ! Mysleli jste, že se zastavíme u přidání produktu? Všichni OFF dobrovolníci dál tvrdě pracovali. 590 tisíc produktů, 182 zemí, více než 10 tisíc přispěvatelů, vč. vás 🙂
+1. Nyní můžete upravovat jakýkoli produkt pomocí účtu OFF. Pro úpravu klikněte na ✏️ na stránce produktu.
+2. 🌍 slovenština, hebrejština, španělština, arabština, nizozemština, maďarština a vietnamština (pomocí translate.openfoodfacts.org)
+3. Open Food Facts je plně dobrovolnické úsilí: Můžete darovat čas (world.openfoodfacts.org/contribute) nebo peníze (donate.openfoodfacts.org)
 
 
 
