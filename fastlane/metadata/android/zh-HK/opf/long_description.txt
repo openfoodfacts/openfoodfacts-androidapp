@@ -1,4 +1,4 @@
-Open Food Facts 是一個食品的開發資料庫，它提供食品的營養成份、原料、配料、過敏原、…等資訊。這些資訊的來源全來自於產品本身的外包裝，
+Open Products Facts 是一個食品的開發資料庫，它提供食品的營養成份、原料、配料、過敏原、…等資訊。這些資訊的來源全來自於產品本身的外包裝，
 
 *** Contribute to Product Transparency ***
 
@@ -7,7 +7,7 @@ Open Food Facts 是一個食品的開發資料庫，它提供食品的營養成�
 - Open Products Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways. 
 - You can start contributing today by adding your first product. 
 
-*** 掌握資訊 ***
+*** Get the Facts ***
 - Open Products Facts helps you to make sense of the fine print on products labels.
 
 *** Collect AAAALL the things ***
@@ -22,7 +22,7 @@ Open Food Facts 是一個食品的開發資料庫，它提供食品的營養成�
 - You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
 
 *** Your products, your data ***
-- 您的個人數據是您的，永遠不會上載網上
+- Your personal data is yours, and is never sent online
 - 您可以匿名使用應用程式
 - 您可以匯出掃描紀錄
 
