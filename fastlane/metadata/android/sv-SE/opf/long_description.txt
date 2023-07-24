@@ -1,4 +1,4 @@
-Open Food Facts is an open database of food products with ingredients, allergens, nutrition facts and all the tidbits of information we can find on product labels.
+Open Products Facts is an open database of food products with ingredients, allergens, nutrition facts and all the tidbits of information we can find on product labels.
 
 *** Contribute to Product Transparency ***
 
@@ -7,7 +7,7 @@ Open Food Facts is an open database of food products with ingredients, allergens
 - Open Products Facts is a non-profit project developed by thousands of volunteers from around the world. Vi har massor av spännande projekt som du kan bidra till på många olika sätt. 
 - You can start contributing today by adding your first product. 
 
-*** Få Fakta ***
+*** Get the Facts ***
 - Open Products Facts helps you to make sense of the fine print on products labels.
 
 *** Collect AAAALL the things ***
@@ -19,7 +19,7 @@ Open Food Facts is an open database of food products with ingredients, allergens
 *** Works well in any condition ***
 - You can add new products, even if you don't have an Internet connection right now.
 - The app loads only the strict necessary to reduce data and battery consumption
-- Du behöver inte en kamera för att leta upp en produkt. You can also type the barcode if you lack a camera or have an issue with it.
+- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
 
 *** Your products, your data ***
 - Your personal data is yours, and is never sent online
@@ -41,11 +41,11 @@ So we set up to create not 1, but other 77000 separate new databases !
 
 Open Products Facts will be an extremely ambitious project. Här är några av dem: 
 
-Open Crayons Facts - The largest open database of coloring crayons
+Open Crayons Facts - Den största öppna databasen med färgkritor
 
-Open Miniature Food Facts - The largest open database of miniature food products
+Open Miniature Food Facts - Den största öppna databasen med miniatyrmatprodukter
 
-Öppna ??? Facts - The largest open database of ???
+Open ??? Facts - The largest open database of ???
 
 Tomorrow, we will select the 3 most sucessful databases, and we will start collecting all the matching products in the world.
 
