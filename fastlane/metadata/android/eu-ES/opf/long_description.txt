@@ -1,4 +1,4 @@
-Open Food Facts is an open database of food products with ingredients, allergens, nutrition facts and all the tidbits of information we can find on product labels.
+Open Products Facts is an open database of food products with ingredients, allergens, nutrition facts and all the tidbits of information we can find on product labels.
 
 *** Contribute to Product Transparency ***
 
@@ -14,7 +14,7 @@ Open Food Facts is an open database of food products with ingredients, allergens
 - You can add all the items from your collections
 - Open Crayons Facts - The largest open database of coloring crayons
 - Open Miniature Food Facts - The largest open database of miniature food products
-- Ireki ??? Facts - Create your own open database :-)
+- Open ??? Facts - Create your own open database :-)
 
 *** Works well in any condition ***
 - You can add new products, even if you don't have an Internet connection right now.
@@ -45,7 +45,7 @@ Open Crayons Facts - The largest open database of coloring crayons
 
 Open Miniature Food Facts - The largest open database of miniature food products
 
-Ireki ??? Facts - The largest open database of ???
+Open ??? Facts - The largest open database of ???
 
 Tomorrow, we will select the 3 most sucessful databases, and we will start collecting all the matching products in the world.
 
