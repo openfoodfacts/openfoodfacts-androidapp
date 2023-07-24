@@ -1,31 +1,31 @@
-***Edistä kosmetiikan läpinäkyvyyttä***
+***Contribute to Cosmetic Transparency***
 
-- Open Beauty Facts on kaikkien tuottama kosmetiikkatietokanta kaikille.
-- Voit käyttää sitä parempien kosmetiikkavalintojen tekemiseen, ja koska se on avointa tietoa, kuka tahansa voi uudelleen käyttää sitä mihin tahansa tarkoitukseen.
-- Open Beauty Facts on voittoa tavoittelematon hanke, jonka ovat kehittäneet tuhannet vapaaehtoiset ympäri maailmaa. Meillä on paljon jännittäviä projekteja, joihin voit osallistua monin eri tavoin. 
-- Voit aloittaa osallistumisen tänään lisäämällä tuotteen kosmetiikkakaapistasi. 
+- Open Beauty Facts is a cosmetic products database made by everyone, for everyone.
+- You can use it to make better cosmetic choices, and as it is open data, anyone can re-use it for any purpose.
+- Open Beauty Facts is a non-profit project developed by thousands of volunteers from around the world. Meillä on paljon jännittäviä hankkeita, joihin voit osallistua monin eri tavoin. 
+- You can start contributing today by adding a product from your cosmetic cupboard. 
 
-*** Tiedä tosiseikat ***
+*** Get the Facts ***
 
-- Kosmeettiset lisäaineet, F.I.L. koodit, CI-numerot, INCI (International Nomenclature of Cosmetic Ingredients), ainesosaluettelo, allergeenit, pakkauskoodit... 
-- Open Beauty Facts auttaa sinua ymmärtämään pikkupräntit tuotteiden etiketeissä.
-- Sinun ei enää tarvitse olla kemisti ja opetella latinaa ainesosaluettelon tulkitsemiseksi :-)
-- Voit lukea: partavedet, ihovoiteet, voiteet, deodorantit, rajauskynät, meikkivoiteet, hajusteet, huulipunat, meikit, naamiot, parfyymit, shampoot, saippuat, suihkugeelit, kynsilakat ja paljon muuta…
-- Meistä se voi olla hyödyllinen parempien kosmetiikkavalintojen tekemiseen ihmisille, joilla on iho-ongelmia, kuten akne, psoriasis, ihottuma…
+- Cosmetics additives, F.I.L. codes, CI-numbers, INCI (International Nomenclature of Cosmetic Ingredients), ingredient list, allergens, packaging codes... 
+- Open Beauty Facts helps you to make sense of the fine print on products labels.
+- You don't need to be a chemist and learn latin anymore to decypher an ingredient list :-)
+- You can scan: aftershaves, body lotions, creams, deodorant, eyeliner, foundation, fragrance, lipstick, makeup, mask, perfume, shampoo, soap, shower gel, nail polish and much more…
+- We think it can be useful for people with skin conditions like acne, psoriasis, eczema… to make better cosmetic choices.
 
-*** Toimii hyvin kaikissa olosuhteissa ***
-- Voit lisätä uusia tuotteita, vaikka sinulla ei olisi Internet-yhteyttä tällä hetkellä.
-- Sovellus lataa vain kaikista välttämättömimmän, tiedonsiirron ja akun kulutuksen vähentämiseksi
-- Et tarvitse kameraa hakeaksesi tuotetta. Voit myös kirjoittaa viivakoodin, jos sinulla ei ole kameraa, tai sinulla on ongelmia sen kanssa.
+*** Works well in any condition ***
+- Voit lisätä uusia tuotteita, vaikka sinulla ei olisi Internet-yhteyttä juuri nyt.
+- The app loads only the strict necessary to reduce data and battery consumption
+- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
 
-*** Sinun kosmetiikkasi, sinun tietosi ***
-- Tietosi ovat sinun, eikä niitä koskaan lähetetä verkkoon
+*** Your cosmetics, your data ***
+- Your data is yours, and is never sent online
 - Voit käyttää sovellusta nimettömästi
 - Voit viedä lukuhistoriasi
 
-Huom: Open Beauty Factsia kehitetään, verkkosivusto ja sovellus perustuu Open Food Factsiin, ja muutoksia tehdään kosmetiikan erityispiirteiden huomioon ottamiseksi.
+Note: Open Beauty Facts is being built, the site and the application are based on Open Food Facts and changes will be made to take into account the specificities of cosmetics.
 
-Open Beauty Facts on myös verkossa osoitteessa https://world.openbeautyfacts.org
+Open Beauty Facts is also available on the web at https://world.openbeautyfacts.org
 Kysymykset, palaute: contact@openfoodfacts.org
 
-Ihmisten elintarvikkeille voit asentaa Open Food Factsin, lemmikkien elintarvikkeille Open Pet Food Factsin, ja kaikille muille tuotteille Open Products Factsin.
+For human food, you can install Open Food Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.
