@@ -8,27 +8,27 @@ VERSION 3
 
 
 ======
-v2 ! Dukkan masu ba da agaji na KASHE sun yi aiki tuƙuru, gwargwadon shawarwarinku. Muna motsi a duniya fiye da kowane lokaci. 500k kayayyakin da aka 'yanta, kasashe 182, masu bayar da gudummawar 10K +, incl. ku :-)
-1. NutriScore na duk samfuran da ke cikin duniya
-1. Tarihin da za a fitar, don idanunku ne kawai
-3. Allergen din sanarwa
-4. Matsa ƙarin abubuwa don bincika tare da Wikipedia.
-5. Dauki hotuna, dan zama ɗaya daga ma'anar abinci
-6. Mafi sauri sosai, har ma akan 2G. Kuna iya ba da gudummawa ba tare da haɗin gwiwa ba
-7. Babu buƙatar rajista
-8. Haske kamar yadda ya gabata :)
+v2 ! All OFF volunteers have worked hard, based on your suggestions. We're a more global movement than ever. 500k products freed, 182 countries, 10K+ contributors, incl. you :-)
+1. The NutriScore for all products in the world
+1. Exportable history, for your eyes only
+3. Allergen alerts
+4. Tap additives to explore with Wikipedia.
+5. Take photos, be part of food transparency
+6. Much faster, even on 2G. You can even contribute with no connection
+7. No sign-up required
+8. As light as before :)
 
-v2.8 ! Bayan babban V2, duk masu ba da agajin kashe sun ci gaba da aiki tuƙuru, gwargwadon shawarwarinku. Yanzu muna agogo a samfuran 570k waɗanda aka 'yanta su daga 182 ƙasashe ta hanyar 10K + masu ba da gudummawa, incl. ku 🙂
-1. Mun sake gina duk kwarewar ƙarin samfurin (kuma har ila yau yana aiki a layi akashe). (godiya Huzaifa)
-1. A yanzu zaku iya samun abinci mai gina jiki game da abincin da kuke ci (Rutvik)
-3. Yanzu muna lissafin kungiyoyin NOVA da hadi da Nutriscore (Huzaifa)
-4. Goge-goge na gida (by Rutvik & Salfai)
-5. 🌎 Yaren Koriya & Indonesiyan
+v2.8 ! After the massive V2, all OFF volunteers kept working hard, based on your suggestions. We now clock at 570k products freed from 182 countries by 10K+ contributors, incl. you 🙂
+1. We rebuilt the whole product addition experience (and it even works offline). (thanks Huzaifa)
+1. You can now get nutrition facts for the portion you're eating (Rutvik)
+3. We now compute NOVA groups in addition to the Nutriscore (Huzaifa)
+4. Housecleaning (by Rutvik & Salfai)
+5. 🌎 Korean & Indonesian
 
-2.8.8 ! Tsammani zamu dakatar da ƙari akan samfurin? Dukkan ma’aikatan agaji na kashe-kashe sun ci gaba da aiki tuƙuru. Samfuran 590k, kasashe 182, masu bada gudummawa 10K +, incl. ku 🙂
-1. A yanzu zaku iya shirya kowane kaya tare da asusun ku. Danna kan ✏️ a shafin shafi don gyara.
-1. 🌍 Slovak, Ibrananci, Spanish, Larabci, Dutch, Hungarian da Vietnamese (fassara.openfoodfacts.org don taimakawa)
-3. Bude kayan Abinci shine cikakken aikin bayar da gudummawa: Kuna iya ba da gudummawa ta lokaci (world.openfoodfacts.org/contribute) ko kuɗi (donate.openfoodfacts.org)
+2.8.8 ! Thought we would stop at product addition ? All OFF volunteers kept working hard. 590k products, 182 countries, 10K+ contributors, incl. you 🙂
+1. You can now edit any product with your OFF account. Click on ✏️ on a product page to edit.
+1. 🌍 Slovak, Hebrew, Spanish, Arabic, Dutch, Hungarian and Vietnamese (translate.openfoodfacts.org to help)
+3. Open Food Facts is a fully volunteer-run effort: You can donate time (world.openfoodfacts.org/contribute) or money (donate.openfoodfacts.org)
 
 
 
