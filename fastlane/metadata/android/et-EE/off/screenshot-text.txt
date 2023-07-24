@@ -5,7 +5,7 @@ https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=en
 V2 screenshots
 =====================
 
-Scan products
+Skanni tooteid
 
 Get the Nutriscore
 
@@ -17,7 +17,7 @@ Set allergen alerts
 
 Nutrition, simplified
 
-Allergen alert
+Allergeeniteavitus
 
 Get alternatives for your favorite foods
 
@@ -31,7 +31,7 @@ Wikipedia for Pet Food
 
 Wikipedia of Products
 
-Ingredients
+Koostisosad
 
 Powerful
 
@@ -47,7 +47,7 @@ Choose the products that are good for you and for the 🌍 planet !
 
 ✔ A global supermarket in your pocket
 
-Nutritional quality
+Toitainete kvaliteet
 
 Ultra-processed foods
 
