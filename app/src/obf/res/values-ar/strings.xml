@@ -14,14 +14,14 @@
     <string name="txtHomeOnline">Open Beauty Facts is an open database of more than %1$s cosmetic products (plus the ones you will contribute).</string>
     <string name="txtHome">Open Beauty Facts هو قاعدة بيانات لمنتجات مستحضرات التجميل مع المكونات، والمواد المسببة للحساسية، والمؤشرات وجميع المعلومات التي يمكن أن نجدها على ملصقات المنتج.</string>
     <string name="slide_1_title">ساهم في شفافية مستحضرات التجميل</string>
-    <string name="slide_1_desc">Scan products, take them in picture, make cosmetic transparency happen</string>
+    <string name="slide_1_desc">مسح المنتجات، إلتقطها في صورة، وجعل الشفافية التجميلية تحدث</string>
     <string name="slide_2_title">احصل على الحقائق</string>
     <string name="slide_2_desc">معلومات شاملة حول المنتج الذي تم مسحه ضوئياً وفك شفرته لك</string>
     <string name="slide_3_title">تتبع المنتج الذي تستخدمه</string>
     <string name="slide_3_desc">كل مستحضرات التجميل التي تستخدمها ، في قائمة واحدة يدوية يمكنك إخراجها</string>
     <string name="slide_4_title">يعمل بدون اتصال</string>
     <string name="slide_4_desc">يمكنك إضافة منتجات جديدة ، حتى إذا لم يكن لديك اتصال بالإنترنت في الوقت الحالي</string>
-    <string name="txtDialogsContent">المنتج الذي تم مسحه غير موجود حتى الآن في \"حقائق الجمال المفتوحة\". الرجاء إضافته.</string>
+    <string name="txtDialogsContent">المنتج الذي مسحته غير موجود حتى الآن في Open Beauty Facts. يرجى إضافته.</string>
     <string name="msg_share">انظر لهذا المنتج على \"حقائق الجمال المفتوحة\":</string>
     <string name="txt_broaden_search">- لتوسيع بحثك \n- قم بمسحه ضوئياً وإضافته إلى Open Beauty Facts</string>
     <string name="Donation">انقر هنا للتبرع الى \"حقائق الجمال المفتوحة\"</string>
@@ -30,21 +30,21 @@
     <string name="text_offline_info_dialog">يمكنك فحص المنتجات حتى عندما تكون في وضع عدم الاتصال لإضافتها إلى حقائق الجمال المفتوحة لاحقًا. ستظهر المنتجات الممسوحة ضوئيًا هنا وستتمكن من إرسالها باستخدام الزر أدناه.</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">لن يتم إرسال معلومات الحساسية الخاصة بك إلى حقائق الطعام المفتوح. أيضاً، احذر من أن فى بعض الاحيان بيانات المنتج قد لا تكون دقيقة، وقد لا يكون الكشف دقيقاً ٪١٠٠، لذا يرجى التحقق مرة أخرى بنفسك! </string>
     <!-- OBF tagline in different languages -->
-    <string name="version_string">Open Beauty Facts Android App</string>
-    <string name="tagline">قاعدة بيانات مستحضرات التجميل المجانية</string>
+    <string name="version_string">افتح تطبيق Beauty Facts على Android</string>
+    <string name="tagline">the free cosmetics database</string>
     <string name="product_not_found">المنتج %1$s الذي تم مسحه غير موجود حتى الآن في \"حقائق الجمال المفتوحة\". الرجاء إضافته إن امكن.</string>
-    <string name="currently_on_version">حاليا على Open Food Facts</string>
+    <string name="currently_on_version">حاليا على Open Beauty Facts</string>
     <string name="category_game_btn">مساعدة في تصنيف المنتجات</string>
     <!-- TODO add true support instead of overriding strings -->
-    <string name="add_nutrient_prompt_text">Add more details to help complete the product</string>
-    <string name="add_category_prompt_text">Add a category to help complete the product</string>
-    <string name="add_nutrient_category_prompt_text">Add a category and more details to help complete the product</string>
+    <string name="add_nutrient_prompt_text">أضف المزيد من التفاصيل للمساعدة في استكمال المنتج</string>
+    <string name="add_category_prompt_text">أضف المزيد من التفاصيل للمساعدة في استكمال المنتج</string>
+    <string name="add_nutrient_category_prompt_text">أضف فئة ومزيد من التفاصيل للمساعدة في إكمال المنتج</string>
     <string name="required_to_compute_nutriscore"></string>
     <string name="txt_eaten_products">المنتجات التي أملكها</string>
     <string name="txt_products_to_buy">منتجات للشراء</string>
-    <string name="intent_filter_share_label">Add to Open Beauty Facts</string>
-    <string name="brand_hint">Examples: Nivea, L\'Oréal, etc…</string>
-    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
-        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
-    <string name="OFFlogo">Open Beauty Facts logo</string>
+    <string name="intent_filter_share_label">افتح حقائق الجمال</string>
+    <string name="brand_hint">أمثلة: Nivea ، L\'Oréal ، إلخ…</string>
+    <string name="txt_info_eaten_products">ستتمكن من إضافة منتج إلى هذه القائمة عن طريق مسح المنتجات وسحب بطاقة المنتج لأعلى والنقر على \"المنتجات المراد شراؤها\".
+        ستتمكن أيضًا من إضافة منتجات إلى هذه القائمة من خلال البحث عنها والنقر فوق الزر + في أعلى يمين صفحة المنتج.</string>
+    <string name="OFFlogo">افتح شعار حقائق الجمال</string>
 </resources>
