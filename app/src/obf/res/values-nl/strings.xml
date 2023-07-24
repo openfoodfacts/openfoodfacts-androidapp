@@ -7,14 +7,14 @@
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/decouvrir -->
     <string name="website_discover">https://world.openbeautyfacts.org/discover&amp;hl=nl</string>
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/produit/ -->
-    <string name="website_product">https://world.openbeautyfacts.org/product/</string>
+    <string name="website_product">https://world-nl.openbeautyfacts.org/product/</string>
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/contributeur/ -->
-    <string name="website_contributor">https://world.openbeautyfacts.org/contributor/</string>
+    <string name="website_contributor">https://world-nl.openbeautyfacts.org/bijdrager/</string>
     <string name="terms_url">https://world.openbeautyfacts.org/terms-of-use</string>
-    <string name="txtHomeOnline">Open Beauty Facts is an open database of more than %1$s cosmetic products (plus the ones you will contribute).</string>
+    <string name="txtHomeOnline">Open Beauty Facts is een open database met meer dan %1$s cosmetische producten (plus degene die je gaat bijdragen).</string>
     <string name="txtHome">Open Beauty Facts is a database of cosmetic products with ingredients, allergens, indicia and all the tidbits of information we can find on product labels.</string>
     <string name="slide_1_title">Draag bij aan transparantie in de cosmetica-industrie</string>
-    <string name="slide_1_desc">Scan producten, neem foto\'s en help de cosmetica-industrie transparanter maken</string>
+    <string name="slide_1_desc">Scan producten, neem foto\'s en help de cosmetica-industrie transparanter te maken</string>
     <string name="slide_2_title">Ken de feiten</string>
     <string name="slide_2_desc">Uitgebreide informatie over het gescande product, ontcijferd voor jou</string>
     <string name="slide_3_title">Blijf op de hoogte van het product dat je gebruikt</string>
@@ -30,21 +30,21 @@
     <string name="text_offline_info_dialog">Scan producten ook als je offline bent, om ze later aan Open Beauty Facts toe te voegen. De gescande producten verschijnen hier en je kan ze verzenden via de onderstaande knop.</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Uw allergie-informatie zal nooit naar de Open Beauty Facts worden verzonden. Wees er attent op dat productgegevens, en detectie, niet altijd accuraat zijn, dus controleer de gegevens alsjeblieft zelf! </string>
     <!-- OBF tagline in different languages -->
-    <string name="version_string">Open Beauty Facts Android App</string>
-    <string name="tagline">de open database voor cosmetica</string>
-    <string name="product_not_found">Het gescande product %1$s bestaat nog niet in Open Beauty Facts. Voeg deze toe?</string>
+    <string name="version_string">Open Beauty Facts Android-app</string>
+    <string name="tagline">the free cosmetics database</string>
+    <string name="product_not_found">Het gescande product %1$s bestaat nog niet in Open Beauty Facts. Kan je het toevoegen?</string>
     <string name="currently_on_version">Momenteel op Open Beauty Facts</string>
     <string name="category_game_btn">Help producten te categoriseren</string>
     <!-- TODO add true support instead of overriding strings -->
-    <string name="add_nutrient_prompt_text">Add more details to help complete the product</string>
-    <string name="add_category_prompt_text">Add a category to help complete the product</string>
-    <string name="add_nutrient_category_prompt_text">Add a category and more details to help complete the product</string>
+    <string name="add_nutrient_prompt_text">Voeg meer details toe om het product te helpen voltooien</string>
+    <string name="add_category_prompt_text">Voeg een categorie toe om het product te helpen voltooien</string>
+    <string name="add_nutrient_category_prompt_text">Voeg een categorie en meer details toe om het product te helpen voltooien</string>
     <string name="required_to_compute_nutriscore"></string>
-    <string name="txt_eaten_products">Products I have</string>
+    <string name="txt_eaten_products">Mijn Producten</string>
     <string name="txt_products_to_buy">Producten om te kopen</string>
-    <string name="intent_filter_share_label">Add to Open Beauty Facts</string>
-    <string name="brand_hint">Examples: Nivea, L\'Oréal, etc…</string>
-    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
-        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
-    <string name="OFFlogo">Open Beauty Facts logo</string>
+    <string name="intent_filter_share_label">Voeg toe aan Open Beauty Facts</string>
+    <string name="brand_hint">Voorbeelden: Nivea, L\'Oréal, etc…</string>
+    <string name="txt_info_eaten_products">U kan producten aan deze lijst toevoegen door producten te scannen, de productkaart omhoog te slepen en op \"Te kopen producten\" te tikken.
+        U kan ook producten aan deze lijst toevoegen door ze te zoeken en op de knop + rechtsboven op de productpagina te klikken.</string>
+    <string name="OFFlogo">Open Beauty Facts-logo</string>
 </resources>
