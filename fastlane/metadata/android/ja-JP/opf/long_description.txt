@@ -1,4 +1,4 @@
-Open Food Facts は、食品の原材料、アレルゲン、栄養成分表、および製品ラベルで見ることができるすべての情報のオープンデータベースです。
+Open Products Facts は、食品の原材料、アレルゲン、栄養成分表、および製品ラベルで見ることができるすべての情報のオープンデータベースです。
 
 *** Contribute to Product Transparency ***
 
