@@ -1,4 +1,4 @@
-Open Food Facts ay isang datos ng mga produktong pampaganda na may sangkap, allergens, nutrition facts at lahat nga mga impormasyon na makikita sa mga tanda ng produkto.
+Open Products Facts ay isang datos ng mga produktong pampaganda na may sangkap, allergens, nutrition facts at lahat nga mga impormasyon na makikita sa mga tanda ng produkto.
 
 *** Contribute to Product Transparency ***
 
