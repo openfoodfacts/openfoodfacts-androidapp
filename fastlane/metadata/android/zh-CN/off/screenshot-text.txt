@@ -1,72 +1,72 @@
-Those are the taglines shown above the screenshots in the playstore. Keep them short and attractive.
+这些是谷歌商店屏幕截图上方显示的标语。 保持简短和有吸引力。
 https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=zh-cn
 
 =====================
-V2 screenshots
+V2 屏幕截图
 =====================
 
-Scan products
+扫描产品
 
 获取营养评分
 
-Your full scan history, fully private & exportable
+使用 Wikipedia 继续
 
-Go further with Wikipedia
+进一步了解维基百科
 
-Set allergen alerts
+设置过敏原警告
 
-Nutrition, simplified
+营养，简化
 
 过敏原警告
 
-Get alternatives for your favorite foods
+为你喜欢的食物寻找替代品
 
-Become an actor of food transparency
+成为食品透明度的参与者
 
-Wikipedia for Food
+食品维基百科
 
-Wikipedia for Cosmetics
+化妆品维基百科
 
-Wikipedia for Pet Food
+宠物食物维基百科
 
-Wikipedia of Products
+产品的维基百科
 
 成分
 
-Powerful
+有强效的
 
 营养成分
 
 =====================
-V3 screenshots
+V3屏幕截图
 =====================
 
-Choose the products that are good for you and for the 🌍 planet !
+选择对您和🌍星球有益的产品！
 
-✔ Ultra-fast barcode scan
+✔ 超快速条码扫描
 
-✔ A global supermarket in your pocket
+口袋里的全球超市
 
-Nutritional quality
+营养质量
 
-Ultra-processed foods
+第4组 超加工食品
 
-Carbon impact
+碳影响
 
-Compare easily before you buy
+购买前轻松比较
 
-Create shopping lists, intake lists…
+创建购物清单，输入列表…
 
-Find and compare over 750 000 products.
+查找并比较超过750 000个产品。
 
 
 
-Unlimited and fully-private scan history
+没有限制且完全私密的扫描历史记录
 
-Swipe for even more details
+滑动以获取更多详细信息
 
-Set Allergen Alerts
+设置过敏原警告
 
-Join our global movement for food transparency
+加入我们的全球食品透明度运动
 
-world.openfoodfacts.org/contribute
+world.openfoodfacts.org/contribution
