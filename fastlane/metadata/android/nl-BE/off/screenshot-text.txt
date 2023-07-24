@@ -7,17 +7,17 @@ V2 schermafbeeldingen
 
 Scan producten
 
-Krijg de Nutriscore
+Krijg de Nutri-Score
 
 Je hele scangeschiedenis, totaal privé en exporteerbaar
 
 Ga verder met Wikipedia
 
+Allergeenwaarschuwingen
+
+Voedingswaarde, vereenvoudigd
+
 Stel allergeenwaarschuwingen in
-
-Voeding, vereenvoudigd
-
-Allergenen alert
 
 Krijg alternatieven voor je favoriete voedingsmiddelen
 
@@ -47,11 +47,11 @@ Kies de producten die goed zijn voor u en voor de 🌍 planeet!
 
 ✔ Een wereldwijde supermarkt in uw zak
 
-Krachtig Voedingswaarden
+Voedingskwaliteit
 
 Ultra-verwerkte voedingsmiddelen
 
-Carbon impact
+Koolstofimpact
 
 Vergelijk eenvoudig voor je koopt
 
@@ -63,10 +63,10 @@ Zoek en vergelijk meer dan 750 000 producten.
 
 Onbeperkte en volledige privé scan-geschiedenis
 
-Veeg voor nog meer details
+Swipe voor nog meer details
 
-Allergenen alert
+Stel allergeenwaarschuwingen in
 
-Sluit je aan bij onze wereldwijde beweging voor inzichtelijkheid van voedsel
+Sluit je aan bij onze wereldwijde beweging voor voedseltransparantie
 
 world.openfoodfacts.org/contribute&hl=nl
