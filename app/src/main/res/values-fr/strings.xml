@@ -16,7 +16,7 @@
   -->
 <resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
-        <item quantity="one"> Vous avez 1 produit hors ligne en attente d\'être ajouté à Open Food Facts</item>
+        <item quantity="one">Vous avez 1 produit hors-ligne en attente d\'être ajouté à Open Food Facts</item>
         <item quantity="other">Vous avez %d produits hors-ligne en attente d\'être ajoutés à Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
@@ -131,7 +131,7 @@
         <item>pH</item>
         <item>Phosphore</item>
         <item>Glycol (Polyols)</item>
-        <item>Graisse polyinsaturée</item>
+        <item>Graisses poly-insaturées</item>
         <item>Potassium</item>
         <item>Sélénium</item>
         <item>Protéines sériques</item>
@@ -157,7 +157,7 @@
     <!-- Text units -->
     <!-- Content Description -->
     <string name="search_button">Rechercher</string>
-    <string name="alert_dialog_warning_title">Attention</string>
+    <string name="alert_dialog_warning_title">Avertissement</string>
     <string name="alert_dialog_warning_msg_user">L\'utilisateur ou le mot de passe a changé, veuillez changer ces informations</string>
     <string name="toast_retrieving">Chargement…</string>
     <string name="txtBarcode">Code-barres :</string>
@@ -189,11 +189,11 @@
     <string name="hintLogin">Nom d\'utilisateur</string>
     <string name="hintPass">Mot de passe</string>
     <string name="errorLogin">Identifiant ou mot de passe incorrect</string>
-    <string name="errorWeb">Erreur de connexion internet</string>
+    <string name="errorWeb">Nous n\'avons pas pu accéder à internet. Avez-vous des problèmes de connexion ?</string>
     <string name="uploadLater">L\'image sera téléchargée lorsque le réseau sera disponible</string>
     <string name="txtInfoLoginOk">Utilisateur connecté</string>
     <string name="txtInfoLoginNo">Utilisateur anonyme</string>
-    <string name="txtDialogsContent">Le produit que vous recherchez n\'existe pas dans notre base de données. Voulez-vous l\'ajouter?</string>
+    <string name="txtDialogsContent">Le produit que vous avez scanné n\'existe pas encore dans Open Food Facts. Voulez-vous l\'ajouter ?</string>
     <string name="txtYes">Oui</string>
     <string name="txtNo">Non</string>
     <string name="hintBrand">Marque</string>
@@ -207,17 +207,17 @@
     <string name="txtBarcodeRequire">Code-barres requis</string>
     <string name="txtOk">OK</string>
     <string name="txtBarcodeNotValid">Code-barres non valide</string>
-    <string name="msg_share">Regardez ce produit sur Open Food Facts :</string>
+    <string name="msg_share">Regarde ce produit sur Open Food Facts:</string>
     <string name="create_account">S\'inscrire</string>
     <string name="home_drawer">Accueil</string>
     <string name="install">Installer</string>
     <string name="open_beauty_drawer">Open Beauty Facts</string>
-    <string name="open_food_drawer">Open Food Facts</string>
+    <string name="open_food_drawer">Open Products Facts</string>
     <string name="search_drawer">Rechercher</string>
     <string name="search_by_barcode_drawer">Rechercher par code-barres</string>
     <string name="category_drawer">Catégories</string>
     <string name="search_by_category">Catégorie</string>
-    <string name="scan_search">Scanner</string>
+    <string name="scan_search">Scanner le code-barres</string>
     <string name="user_drawer">Utilisateur</string>
     <string name="offline_edit_drawer">Édition hors-ligne</string>
     <string name="txt_anonymous">Anonyme</string>
@@ -229,11 +229,11 @@
     <string name="select_camera">Choisir une caméra</string>
     <string name="ok_button">OK</string>
     <string name="cancel_button">Annuler</string>
-    <string name="login_button">Connexion</string>
+    <string name="login_button">Nom d\'utilisateur</string>
     <string name="create_account_button">Créer un Compte</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Les informations relatives à vos allergies ne seront jamais envoyées aux serveurs d\'Open Food Facts. Par ailleurs, soyez vigilant sur le fait que ces données ne sont pas fiables à 100% at que la détection peut ne pas être précise à 100%. Veuillez à vérifier également par vous-même ! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Les informations relatives à vos allergies ne seront jamais envoyées aux serveurs d\'Open Food Facts. Par ailleurs, soyez vigilant sur le fait que ces données ne sont pas fiables à 100 % et que la détection peut ne pas être précise à 100 %. Veuillez donc vérifier vous-même !</string>
     <string name="title_info_dialog">Comment cela fonctionne-t-il ?</string>
-    <string name="text_offline_info_dialog">Vous pouvez scanner des produits lorsque vous êtes hors-ligne pour les ajouter plus tard à Open Food Facts. Tous les produits que vous scannez apparaîtront ici et vous serez en mesure de les envoyer en utilisant le bouton ci-dessous.</string>
+    <string name="text_offline_info_dialog">Vous pouvez scanner des produits lorsque vous êtes hors-ligne pour les ajouter plus tard à Open Pet Food Facts. Tous les produits que vous scannez apparaîtront ici et vous serez en mesure de les envoyer en utilisant le bouton ci-dessous.</string>
     <string name="permission_camera">L\'autorisation d\'utiliser l\'appareil photo est nécessaire pour scanner des codes-barres et prendre des photos.</string>
     <string name="no_camera_dialog_title">Appareil photo introuvable</string>
     <string name="no_camera_dialog_content">Votre appareil n\'a pas d\'appareil photo. Vous ne pourrez pas scanner de code-barres.</string>
@@ -285,7 +285,7 @@
     <string name="nutrition_energy_short_name">Énergie</string>
     <string name="nutrition_fat">Matières grasses</string>
     <string name="nutrition_fiber">Fibres alimentaires</string>
-    <string name="nutrition_header">Composition nutritionnelle</string>
+    <string name="nutrition_header">Tableau nutritionnel</string>
     <string name="nutrition_proteins">Protéines</string>
     <string name="nutrition_salt">Sel</string>
     <string name="nutrition_satured_fat">Graisses saturées</string>
@@ -390,7 +390,7 @@
     <string name="nova_grp3_msg">Groupe 3 - Aliments transformés</string>
     <string name="nova_grp4_msg">Groupe 4 - Produits alimentaires et boissons ultra-transformés</string>
     <!-- String related to App Shortcuts -->
-    <string name="disabled_message">Raccourci non disponible</string>
+    <string name="disabled_message">Le raccourci n\'est pas disponible.</string>
     <string name="scan_shortcut_short_label">Scanner</string>
     <string name="scan_shortcut_long_label">Scanner un produit</string>
     <string name="barcode_shortcut_short_label">Rechercher</string>
@@ -438,7 +438,7 @@
     <string name="TermsOfUse">Conditions et confidentialité</string>
     <string name="donation_url">https://donner.openfoodfacts.org</string>
     <!--Just replace "world" by "fr", "de"… translate the "terms-of-use" with the hyphens -->
-    <string name="terms_url">https://world-fr.openfoodfacts.org/conditions-d-utilisation</string>
+    <string name="terms_url">https://fr.openfoodfacts.org/conditions-d-utilisation</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
     <string name="faq_url">https://world-fr.openfoodfacts.org/faq</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
@@ -454,7 +454,7 @@
     <string name="preference_header_network">Réseau</string>
     <string name="preference_header_contributing">Contribuer</string>
     <string name="scan_first_string">L\'historique des produits que vous avez consultés sera répertorié ici.\nCet historique est réservé à vos yeux et est stocké localement.</string>
-    <string name="log_in">Connexion</string>
+    <string name="log_in">Nom d\'utilisateur</string>
     <string name="login_true">Vous êtes déjà connecté(e).</string>
     <string name="confirm_logout">Confirmer la déconnexion</string>
     <string name="logout_dialog_content">Etes-vous sûr(e) de vouloir vous déconnecter?</string>
@@ -475,7 +475,7 @@
     <string name="store_subtitle">Magasin</string>
     <string name="packaging_subtitle">Conditionnement</string>
     <string name="packaging_string">Conditionnement</string>
-    <string name="label_string">Label</string>
+    <string name="label_string">Labels</string>
     <string name="category_string">Catégorie</string>
     <string name="connection">Connecté</string>
     <string name="contributor_string">Contributeur</string>
@@ -502,7 +502,7 @@
     <string name="no_barcode">Nous n\'avons détecté aucun code-barres</string>
     <string name="enter_barcode">Veuillez saisir le code-barres ci-dessous</string>
     <string name="format_error">Mauvais format de code-barres ou code QR</string>
-    <string name="code_detected">Nous n\'avons détecté aucun code-barres</string>
+    <string name="code_detected">Nous avons détecté le code-barres</string>
     <string name="do_you_want_to">Voulez-vous ajouter des photos à ce code-barres ?</string>
     <string name="bottomNav_history">Historique</string>
     <string name="products_added">Les produits que vous avez ajoutés ou modifiés</string>
@@ -518,8 +518,8 @@
     <string name="notify_channel_description">Notification pour afficher l\'emplacement du fichier exporté</string>
     <string name="products_to_be_completed">Produits à compléter</string>
     <string name="offline_notification_title">Contributions hors ligne à envoyer</string>
-    <string name="creator_history">Produit ajouté le %1$s à %2$s CET par</string>
-    <string name="last_editor_history">Dernière modification de la page du produit le %1$s à %2$s CEST par </string>
+    <string name="creator_history">Produit ajouté le %1$s à %2$s CET par %3$s</string>
+    <string name="last_editor_history">Dernière modification de la page du produit le %1$s à %2$s CEST par %3$s</string>
     <string name="other_editors">Fiche produit également modifiée par </string>
     <string name="contribution_tab">Contributions</string>
     <string name="contribution_tab_summary">Afficher l\'onglet des contributions des utilisateurs sur les produits</string>
@@ -539,7 +539,7 @@
     <string name="addProductOffline">Vous semblez déconnecté. Ajouter le produit %s en utilisant le mode hors ligne?</string>
     <string name="product_not_found">Le produit %1$s que vous scannez n\'existe pas encore dans Open Food Facts. Pouvez-vous l\'ajouter ?</string>
     <string name="scan_sound">Son de scan</string>
-    <string name="trouble_scanning">Problèmes de scan?</string>
+    <string name="trouble_scanning">Problèmes de scan ?</string>
     <string name="barcode_hint">Problème de scan ? Saisissez le code-barres</string>
     <string name="switch_camera">Changer d\'appareil photo</string>
     <string name="autofocus">Autofocus</string>
@@ -570,7 +570,7 @@
     <string name="currently_on">Actuellement sur %s : </string>
     <string name="quantity_overwrite">Remplacement de la quantité</string>
     <string name="link_overwrite">Remplacement du lien</string>
-    <string name="save_product">Voulez-vous enregistrer le produit?</string>
+    <string name="save_product">Voulez-vous enregistrer le produit ?</string>
     <string name="error_adding_product">Une erreur s\'est produite lors de l\'ajout du produit</string>
     <string name="photos">Photos</string>
     <string name="please_wait">Veuillez patienter</string>
@@ -578,9 +578,9 @@
     <string name="no_internet_connection">Vous semblez n\'avoir aucune connexion Internet, les images seront envoyées lorsque le réseau sera disponible</string>
     <string name="no_internet_unable_to_extract_ingredients">Pas de connexion Internet. Impossible d\'extraire les ingrédients</string>
     <string name="percent">%1$d%%</string>
-    <string name="overview">Vue d\'ensemble</string>
+    <string name="overview">Résumé</string>
     <string name="ingredients">Ingrédients</string>
-    <string name="nutrition_facts">Composition nutritionnelle</string>
+    <string name="nutrition_facts">Informations nutritionnelles</string>
     <string name="your_version">Vous</string>
     <string name="ingredients_picture">Photo de la liste des ingrédients</string>
     <string name="take_ingredients_picture_to_extract">(Veuillez prendre une photo des ingrédients pour les extraire automatiquement)</string>
@@ -612,7 +612,7 @@
     <string name="manufacturing_details">Détails de fabrication</string>
     <string name="origin_of_ingredients">Origine des ingrédients</string>
     <string name="manufacturing_place">Lieu de fabrication</string>
-    <string name="emb_code">Code EMB</string>
+    <string name="emb_code">Code de traçabilité</string>
     <string name="purchasing_details">Détails d\'achat</string>
     <string name="country_where_purchased">Pays d\'achat</string>
     <string name="stores">Magasins</string>
@@ -635,7 +635,7 @@
     <string name="contribution_by">Contribution par</string>
     <string name="title_activity_product">Titre</string>
     <string name="description_activity_product">description</string>
-    <string name="intent_filter_share_label">Ajouter à Open Food Facts</string>
+    <string name="intent_filter_share_label">Ajouter sur Open Food Facts</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="overexposure_high">Risque élevé de sur-exposition</string>
     <string name="overexposure_moderate">Risque modéré de sur-exposition</string>
@@ -664,9 +664,9 @@
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">Extraire les ingrédients</string>
     <string name="add_nutrient_prompt_text">Ajouter les informations nutritionnelles pour calculer le Nutri-Score</string>
-    <string name="add_category_prompt_text">Ajouter la catégorie pour calculer le Nutri-Score</string>
-    <string name="add_nutrient_category_prompt_text">Ajouter les informations nutritionnelles et la catégorie pour calculer le Nutri-Score</string>
-    <string name="category_game_btn">Aidez à classer les produits pour calculer le Nutri-Score</string>
+    <string name="add_category_prompt_text">Ajoutez une catégorie pour aider à compléter le produit</string>
+    <string name="add_nutrient_category_prompt_text">Ajoutez une catégorie et des informations nutritionnelles pour aider à compléter le produit</string>
+    <string name="category_game_btn">Aidez à classer les produits</string>
     <string name="version_string">Application Android Open Food Facts</string>
     <string name="version">Version</string>
     <string name="set_ingredient_img">Définir comme image d\'ingrédient</string>
@@ -692,8 +692,8 @@
     <string name="txt_exporting_your_listed_products">Exportation de vos produits…</string>
     <string name="txt_your_listed_products_exported">Vos produits ont été exportés</string>
     <string name="txt_discard">Annuler</string>
-    <string name="txt_info_eaten_products">\"Vous pourrez ajouter un produit à cette liste en scannant les produits, en faisant glisser la carte du produit vers le haut et en appuyant sur \"je vais manger ça\".
-        Vous pourrez également ajouter des produits à cette liste en les recherchant et en cliquant sur le bouton + en haut à droite de la page du produit.\"</string>
+    <string name="txt_info_eaten_products">Vous pourrez ajouter des produits à cette liste en les scannant, en faisant glisser la fiche produit vers le haut et en appuyant sur \"Produits à acheter\".
+        Vous pourrez également ajouter des produits à cette liste en les recherchant et en cliquant sur le bouton + en haut à droite de la page du produit.</string>
     <string name="txt_info_your_listed_products">Vous pourrez ajouter des produits à cette liste en les recherchant et en cliquant sur le bouton + en haut à droite de la page du produit.</string>
     <string name="search_history_pref_title">Supprimer l\'historique de recherche</string>
     <string name="search_history_pref_summary">Supprimer toutes les recherches que vous avez effectuées sur cet appareil</string>
@@ -730,7 +730,7 @@
     <string name="add_a_list">Ajouter une liste</string>
     <string name="edit_image">Modifier l\'image</string>
     <string name="cant_edit_image_not_yet_uploaded">La nouvelle image n\'est pas encore téléchargée. Merci de patienter un instant avant de l\'éditer</string>
-    <string name="unselect_image">Déselectionner l\'image</string>
+    <string name="unselect_image">Désélectionner l\'image</string>
     <string name="choose_default_language">Sélectionnez la langue du produit</string>
     <string name="barcode">Code-barres</string>
     <string name="productAdditivesNone">Sans additifs</string>
@@ -756,7 +756,7 @@
     <string name="display_analysis_tag_status">Afficher le statut %1$s</string>
     <string name="preference_header_display">Afficher</string>
     <string name="unknown_status_no_translation">Nous n\'avons pas pu évaluer l\'état du produit en raison d\'ingrédients inconnus.</string>
-    <string name="help_translate_ingredients">Aidez à traduire les ingrédients dans votre langue</string>
+    <string name="help_translate_ingredients">Aidez à traduire les ingrédients en Français</string>
     <string name="unknown_status_missing_ingredients">Nous n\'avons pas pu évaluer l\'état du produit en raison d\'ingrédients manquants.</string>
     <string name="unknown_status_ambiguous_ingredients">Nous n\'avons pas pu évaluer le statut du produit en raison d\'ingrédients ambigus: <![CDATA[<b>%1$s</b>]]></string>
     <string name="help_extract_ingredients">Aidez à extraire les ingrédients pour obtenir le statut de %1$s.</string>
@@ -791,10 +791,10 @@
     <string name="content_exit">Cliquez ici pour revenir au produit</string>
     <string name="icon_label">Icône d\'étiquette</string>
     <string name="icon_categories">Icône des catégories</string>
-    <string name="icon_emb">Icône traçabilité</string>
+    <string name="icon_emb">Icône de code de traçabilité</string>
     <string name="product_front_image">Image frontale du produit</string>
-    <string name="brand_hint">Exemples : Coca-Cola, Nestlé, etc.</string>
+    <string name="brand_hint">Exemples: Coca-Cola, Nestle…</string>
     <string name="sign_in_or_register">Se connecter ou s\'inscrire</string>
     <string name="hunger_game_call_to_action">Aider à classer plus de: %1$s</string>
-    <string name="txtHomeOnline">Open Food Facts est une base de données ouverte de plus de %1$s produits alimentaires (plus ceux que vous contribuerez).</string>
+    <string name="txtHomeOnline">Open Food Facts est une base de données de plus de %1$s produits (plus ceux que vous contribuerez) dans le monde.</string>
 </resources>
