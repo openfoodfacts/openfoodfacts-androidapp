@@ -16,7 +16,7 @@ Para explorar o projeto Open Food Facts realizado por voluntários, visite https
 - O impacto de carbono de sua comida
 - Tenha uma noção de quanto da sua cota diária de carbono você está usando para alimentos
 - Com base nas pegadas calculadas para a França pela ADEME.
-- Junte-se a nós e nos ajude a trazer o impacto do carbono para o seu país!
+- Junte-se a nós e ajude nos a trazer o impacto do carbono para o seu país!
 Para expor o impacto do carbono um produto deve ter uma lista completa com a porcentagem e uma quantidade de carne ou peixe
 
 
@@ -29,11 +29,11 @@ Para expor o impacto do carbono um produto deve ter uma lista completa com a por
 ▶ Crie listas
 Crie listas de compras, acompanhe o que você tem ingerido, compartilhe e exporte facilmente suas listas.
 
-▶ Obtenha os Factos
-- Open Food Facts te ajuda a entender os rótulos das embalagens dos produtos. Você será capaz de encontrar:
+▶ Obtenha os fatos
+- Open Food Facts te ajuda a entender os rótulos das embalagens dos produtos. Você também poderá encontrar (de acordo com as indicações presentes nos produtos):
 Pegadas de carbono (emissões de CO2) e embalagens (assim como instruções para reciclagem),
-- Nutriscore (pontos nutricionais), nutrição, gordura/teor de gordura, ácidos graxos saturados, carboidratos, açúcares, fibra, proteína e sal e sódio.
-- marcas, alérgenos, rótulos (bio, sem glúten, vegano, vegetariano, halal, kosher...), informações de rastreabilidade (código de embalagem, origem de ingredientes)
+- Nutriscore (pontos nutricionais), nutrição, gordura/teor de gordura, ácidos graxos saturados, carboidratos, açúcares, fibra, proteína, sal e sódio.
+- marcas, alérgenos, rótulos (bio, sem glúten, vegano, vegetariano, halal, kosher ...), informação de rastreabilidade (códigos de embalagem, origem de ingredientes)
 - Em vinhos e cervejas, você encontrará teor alcoólico.
 
 
@@ -51,7 +51,7 @@ Digitalize à velocidade da luz (mesmo se você estiver num avião, submarino ou
 
 - O planeta inteiro, no seu bolso!
 - Você pode adicionar novos produtos, mesmo se você não estiver conectado à Internet.
-- O aplicativo carrega apenas o estrito necessário para reduzir o consumo de dados e bateria.
+- O aplicativo carrega apenas o estritamente necessário para reduzir o consumo de dados e bateria.
 
 ▶ Sua comida, seus dados
 - Seus dados são seus e nunca é enviado online
