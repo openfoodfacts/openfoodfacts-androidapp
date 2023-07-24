@@ -5,7 +5,7 @@ https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=en
 V2 screenshots
 =====================
 
-Scan products
+ഉൽപ്പന്നങ്ങൾ സ്കാൻ ചെയ്യുക
 
 Get the Nutriscore
 
