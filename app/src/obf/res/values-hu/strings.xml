@@ -21,7 +21,7 @@
     <string name="slide_3_desc">Az összes kozmetikai szer amit ön használ, egy könnyen kezelhető listán amit exportálni is tud</string>
     <string name="slide_4_title">Kapcsolat nélküli módban is működik</string>
     <string name="slide_4_desc">Hozzáadhat új termékeket még akkor is, ha jelenleg nincs internet kapcsolata</string>
-    <string name="txtDialogsContent">A beolvasott termék nem található az Open Beauty Facts adatbázisában. Kérjük, adja hozzá.</string>
+    <string name="txtDialogsContent">The product you scanned does not exist yet in Open Beauty Facts. Please add it.</string>
     <string name="msg_share">Nézze meg a terméket az Open Beauty Facts adatbázisában:</string>
     <string name="txt_broaden_search">- szélesítse a keresést \n- olvassa be és adja hozzá az Open Beauty Facts-hez</string>
     <string name="Donation">Kattintson ide az Open Beauty Facts-nek szánt adományozáshoz</string>
@@ -31,7 +31,7 @@
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Az Ön allergén információi soha nem lesznek elküldve az Open Beauty Facts szerverének. Legyen óvatos, a termék adatai nem feltétlenül pontosak és az érzékelés talán nem 100% as pontosságú, ezért kérjük, alaposan ellenőrizzen! </string>
     <!-- OBF tagline in different languages -->
     <string name="version_string">Open Beauty Facts Android App</string>
-    <string name="tagline">a szabad kozmetikai adatbázis</string>
+    <string name="tagline">the free cosmetics database</string>
     <string name="product_not_found">A beolvasott %1$s termék nem található az Open Beauty Facts adatbázisában. Hozzá tudná adni?</string>
     <string name="currently_on_version">Jelenleg az Open Beauty Facts-en</string>
     <string name="category_game_btn">Segítsen kategorizálni a termékeket</string>
