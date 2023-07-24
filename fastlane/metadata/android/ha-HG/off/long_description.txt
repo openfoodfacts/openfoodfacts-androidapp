@@ -1,4 +1,4 @@
-A bincika samfuran abinci ko lambar lambar su don samun bayanai akan sinadaran, abubuwan ƙarawa da gaskiyar abubuwan abinci.
+Scan food products or their barcode to obtain data on ingredients, additives and nutrition facts.
 
 ▶ Find & Compare more than 800.000 products
 
@@ -21,25 +21,25 @@ To discover the volunteer-run Open Food Facts project, visit https://world.openf
 
 
 ▶ Contribute to Food Transparency
--budedden Abinci wani nau'in abune wanda aka tarashi a ma'aji don kowa, saboda kowa.
--zaka iya amfani dashi wajen inganta zaben abinci, saboda budedden ma'aji ne, kowa zai iya amfani dashi domin kowani bukata.
--Budedden Abinci abu ne wanda yake bana kudi ba wanda dubunan mutane suka shirya shi kyauta a duniya baki daya. Munada da yawan abubuwan burgewa wanda zaka iya bada gudumuwa ga kowa ta hanyoyi da yawa.
+- Open Food Facts is a food products database made by everyone, for everyone.
+- You can use it to make better food choices, and as it is open data, anyone can re-use it for any purpose.
+- Open Food Facts is a non-profit project developed by thousands of volunteers from around the world. Muna da ayyuka masu ban sha'awa da yawa waɗanda zaku iya ba da gudummawarsu ta hanyoyi daban-daban.
 - You can start contributing today by adding a product from your fridge.
 
 ▶ Create lists
 Create shopping lists, track what you've eaten and easily share and export your lists.
 
 ▶ Get the Facts
--Budedden Abinci yana taimako ne wajen gano kyauwun abu. You will be able to find:
--kabon takun kafa (CO2 turiri) da kuma rafe shi (da kuma sake amfani dashi),
--Nutriscore (abun sinadarin), abun gina jiki, abunda ke kunshe da maiko / maiko, sunadarin sa jiki, sinadarin kabuhaidiret, sikari, tsimi, abun karin jini da kuma gishiri.
--nau'uka, alegens, adadi (tarihi, rashin gulutan, me cin nama, me cin ganyayyaki, halali, koshar...), abun da ake iya ganowa na labarai ( kud din da aka sa mai, asalin kayan hade-haden)
--Daga tsimi da kuma giya, zaka samu sinadaren jiya.
+- Open Food Facts helps you to make sense of the fine print on products labels. You will be able to find:
+- carbon footprint (CO2 emissions) and packaging (as well as recycling instructions),
+- Nutriscore (nutritional score), nutrients, fat / fat content, saturated fatty acids, carbohydrates, sugars, fiber, protein and salt and sodium.
+- brands, allergens, labels (bio, gluten free, vegan, vegetarian, halal, kosher ...), traceability information (packaging codes, origins of ingredients)
+- On wines and beers, you will find the alcohol content.
 
 
 ▶ Based on Science, helping back Science!
 
-- We don't make up things. We rely on peer-reviewed science.
+- We don't make up things. Mun dogara da ilimin kimiya na mutane.
 - The Nutri-Score has been created by the independent French team led by Professor Hercberg.
 - The NOVA groups on food processing have been designed by the international team of Professor Monteiro.
 - You can get a synthesis of EFSA exposure levels on food additives.
@@ -54,14 +54,14 @@ Scan at the speed of light (even if you’re on a plane, submarine or supermarke
 - The app loads only the strict necessary to reduce data and battery consumption.
 
 ▶ Your food, your data
-- Bayananka naka ne, kuma ba a taɓa aika shi ta yanar gizo ba
+- Your data is yours, and is never sent online
 - Kuna iya amfani da app ba tare da sani ba
 - Kuna iya fitarwa da tarihin bincikenku
 
 ▶ Set up allergen alerts on products
 - Milk, Gluten, Eggs, Soybeans, Nuts, Fish, Celery, Mustard, Sulphur dioxide and sulphites, Peanuts, Sesame seeds, Crustaceans, Molluscs or Lupin allergy ?
 - Speed up your shopping by doing an initial screening of your food with Open Food Facts.
-- Be careful that the information may not be 100% accurate, and detection may not be 100% accurate. So always double check by yourself, with the packaging.
+- Be careful that the information may not be 100% accurate, and detection may not be 100% accurate. Don haka koyaushe ku rinka bincike da kanku, tare da marufin.
 
 
 ▶ Say hello and/or join us!
@@ -70,8 +70,7 @@ Scan at the speed of light (even if you’re on a plane, submarine or supermarke
 Open Food Facts is also available on the web at https://world.openfoodfacts.org
 
 
-Tambayoyi, amsoshi : 
-contact@openfoodfacts.org
+Tambayoyi, amsawa: kakira@openfoodfacts.org
 
 
-Domin kayan kwalliya, zaka iya sa Open Beauty Facts, domin abincin dabbobi, Open Pet Facts, da kuma sauran abubuwa, Open Product Facts.
+For cosmetics, you can install Open Beauty Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.
