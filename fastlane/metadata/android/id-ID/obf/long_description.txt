@@ -1,33 +1,31 @@
-***Kontribusi untuk Transparansi Industri Kosmetik***
+***Berkontribusi pada Transparansi Kosmetik***
 
-- Open Beauty Facts adalah basis data produk kosmetik dibuat oleh semua orang untuk semua orang.
-- Dapat digunakan untuk membuat pilihan kosmetik yang lebih baik dan dapat digunakan oleh siapa saja untuk tujuan apa saja karena merupakan data terbuka.
-- Open Beauty Facts adalah proyek nirlaba yang dikembangkan oleh ribuan sukarelawan dari seluruh dunia. Ada banyak proyek menyenangkan yang bisa diikuti dengan berbagai cara. 
-- Untuk memulai kontribusi, tambahkan sebuah produk di lemari kosmetik anda. 
+- Open Beauty Facts adalah basis data produk - produk kosmetik yang dibuat oleh semua orang, untuk semua orang.
+- Anda dapat menggunakannya untuk membuat pilihan kosmetik yang lebih baik, dan karena ia adalah data terbuka, siapapun dapat menggunakannya kembali untuk tujuan apapun.
+- Open Beauty Facts adalah sebuah proyek nirlaba yang dikembangkan oleh ribuan relawan dari seluruh dunia. Kami memiliki banyak proyek menyenangkan yang padanya Anda dapat berkontribusi dengan berbagai cara. 
+- Anda dapat mulai berkontribusi hari ini dengan menambahkan produk dari lemari kosmetik Anda. 
 
-*** Dapatkan faktanya ***
+*** Get the Facts ***
 
-- Bahan tambahan kosmetik F.I.L. kode, angka, INCI (International Nomenclature of Cosmetics Ingredients/Tata Nama Kosmetik Internasional), komposisi bahan, alergen, kode kemasan... 
-- Open Beauty Facts membantu anda untuk memahami label kemasan produk.
-- Tidak harus menjadi analis kimia dan mempelajari bahasa latin lagi untuk memahami komposisi kosmetik :-)
-- Yang dapat dipindai: Aftershave, lotion tubuh, krim, deodoran, eyeliner, foundation, wewangian, lipstick, masker, parfum, sampo, sabun, gel mandi, cat kuku, dan banyak lagi…
--Akan sangat berguna untuk membuat pilihan kosmetik yang lebih baik bagi orang dengan kondisi kulit seperti jerawat, psoriasis, dan eksim.
+- Cosmetics additives, F.I.L. codes, CI-numbers, INCI (International Nomenclature of Cosmetic Ingredients), ingredient list, allergens, packaging codes... 
+- Open Beauty Facts helps you to make sense of the fine print on products labels.
+- You don't need to be a chemist and learn latin anymore to decypher an ingredient list :-)
+- Anda dapat memindai: aftershave, body lotion, krim, deodoran, celak, foundation, wewangian, lipstik, tata rias wajah, masker, parfum, sampo, sabun, gel mandi, cat kuku dan banyak lagi…
+- Kami pikir ini dapat berguna untuk orang - orang dengan kondisi kulit seperti jerawat, psoriasis, eksim… untuk membuat pilihan kosmetik yang lebih baik.
 
-*** Bekerja dengan baik di segala kondisi ***
-- Bisa menambahkan produk, bahkan tanpa koneksi internet.
-- Aplikasi hanya membuat hal yang diperlukan untuk mengurangi konsumsi data dan baterai
-- Tidak memerlukan kamera untuk mencari produk. Jika bermasalah dengan kamera, mengetik angka kode batang bisa dilakukan.
+*** Bekerja dengan baik dalam kondisi apapun ***
+- Anda dapat menambahkan produk - produk baru, bahkan jika Anda tidak memiliki koneksi Internet saat ini.
+- The app loads only the strict necessary to reduce data and battery consumption
+- Anda tidak perlu kamera untuk mencari produk. Anda juga dapat mengetik kode batang jika Anda tidak memiliki kamera atau kamera Anda bermasalah.
 
-*** Kosmetikmu, Datamu ***
-- Datamu adalah milikmu, tidak akan diunggah
-- Bisa menggunakan aplikasi secara anonim
-- Bisa mengekspor riwayat pemindaian
+*** Kosmetik Anda, data Anda ***
+- Data Anda adalah milik Anda, dan tidak pernah dikirim secara online
+- Anda bisa menggunakan aplikasi secara anonim
+- Anda dapat mengekspor riwayat pemindaian Anda
 
-Catatan: Open Beauty Facts sedang dibangun, situs dan aplikasi didasarkan pada Open Food Facts dan perubahan akan dibuat untuk mempertimbangkan kekhususan kosmetik.
+Catatan: Open Beauty Facts sedang dibangun, situs dan aplikasinya didasarkan pada Open Food Facts dan perubahan akan dibuat dengan pertimbangan kekhususan kosmetik.
 
-Open Beauty Facts juga tersedia di situs web https://world.openbeautyfacts.org
+Open Beauty Facts juga tersedia di web di https://world.openbeautyfacts.org
 Pertanyaan, umpan balik: contact@openfoodfacts.org
 
-Pasang Open Food Facts untuk info makanan manusia.
-Pasang Open Pet Food Facts untuk info makanan hewan.
-Pasang Open Product Facst untuk info produk lainnya.
+Untuk makanan manusia, Anda dapat menginstal Open Food Facts, untuk makanan hewan peliharaan, Open Pet Food Facts, dan untuk semua produk lainnya, Open Products Facts.
