@@ -15,18 +15,18 @@
     <string name="slide_1_desc">Skenējiet produktus, uzņemiet attēlus, veiciet pārredzamību</string>
     <string name="slide_2_title">Iegūstiet faktus</string>
     <string name="slide_2_desc">Plaša informācija par skenēto produktu brīvi pieejama jums</string>
-    <string name="slide_3_title">Iegūstiet Nutriscore</string>
+    <string name="slide_3_title">Iegūstiet Nutri-Score</string>
     <string name="slide_3_desc">Kritisks skatījums uz jūsu iecienītāko pārtikas produktu uzturvērtību</string>
     <string name="slide_4_title">Darbojas bezsaistē</string>
     <string name="slide_4_desc">Jūs varat pievienot jaunus produktus, pat ja jums pašlaik nav interneta savienojuma</string>
-    <string name="txtDialogsContent">Skenētais produkts vēl nav pieejams Open Food Facts sarakstā. Lūdzu, pievienojiet to.</string>
+    <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
     <string name="txtDialogsContentPowerMode">Jūsu skenētais produkts jau pastāvOpen Food Facts.</string>
     <string name="msg_share">Apskatiet šo produktu, izmantojot Open Food Facts:</string>
     <string name="not_support_books">Open Food Facts pašlaik neatbalsta grāmatas</string>
     <string name="txt_broaden_search">- paplašināt meklēšanu \ n- skenēt un pievienot to Open Food Facts</string>
     <string name="Donation">Noklikšķiniet šeit, lai ziedotu Open Food Facts</string>
-    <string name="translate_help_title">Palīdziet tulkot \"open Food Facts\"</string>
-    <string name="translate_help_summary">Iegūstiet Open Food Facts savā valodāaaaaaa a- tehniskās zināšanas nav nepieciešamas</string>
+    <string name="translate_help_title">Help translate Open Food Facts</string>
+    <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
     <string name="text_offline_info_dialog">Skenējiet produktus arī bezsaistes režīmā, lai pievienotu tos Open Food Facts vēlāk. Skenētie produkti parādīsies šeit un Jums būs iespējas to nosūtīt, izmantojot pogu zemāk.</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
     <!-- OFF tagline in different languages -->
