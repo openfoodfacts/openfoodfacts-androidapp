@@ -11,7 +11,7 @@
     <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contributeur/ -->
     <string name="website_contributor">https://world-tr.openpetfoodfacts.org/contributor/</string>
     <string name="terms_url">https://world-tr.openpetfoodfacts.org/terms-of-use</string>
-    <string name="txtHomeOnline">Open Pet Food Facts is a database of more than %1$s pet food products (plus the ones you will contribute) Woof. Woof.</string>
+    <string name="txtHomeOnline">Open Pet Food Facts %1$s\'den fazla evcil hayvan besin ürününün (artı sizin ekleyeceklerinizin) açık erişimli bir veritabanıdır. Hav. Hav.</string>
     <string name="txtHome">Open Pet Food Facts içerikleriyle, besin değerleriyle… bir evcil hayvan besinleri veritabanıdır. Hav. Hav.</string>
     <string name="slide_1_title">Evcil Hayvan Besinlerinde şeffaflığa katkıda bulunun</string>
     <string name="slide_1_desc">Ürünleri tarayın, fotoğraflarını çekin, evcil hayvan besinleri şeffaflığının gerçekleşmesini sağlayın</string>
@@ -21,7 +21,7 @@
     <string name="slide_3_desc">Taradığınız tüm evcil hayvan besinleri, dışa aktarabileceğiniz kullanışlı bir listede</string>
     <string name="slide_4_title">Çevrimdışı çalışır</string>
     <string name="slide_4_desc">Şu anda internet bağlantınız olmasa dahi yeni ürünler ekleyebilirsiniz</string>
-    <string name="txtDialogsContent">Aradığınız ürün henüz Open Pet Food Facts\'te mevcut değil. Lütfen ekleyin.</string>
+    <string name="txtDialogsContent">Taradığınız ürün henüz Open Pet Food Facts\'te mevcut değil. Lütfen ekleyin.</string>
     <string name="txtDialogsContentPowerMode">Aradığınız ürün Open Pet Food Facts\'te zaten mevcut.</string>
     <string name="msg_share">Bu ürüne Open Food Facts\'te bak :</string>
     <string name="not_support_books">Kitaplar şu anda Open Food Facts tarafından desteklenmemektedir</string>
@@ -32,20 +32,20 @@
     <string name="text_offline_info_dialog">Ürünleri Open Pet Food Facts\'e daha sonra ekleyebilmek için çevrimdışı olduğunuzda dahi tarayın. Taranan ürünler burada görünecek ve aşağıdaki butonu kullanarak gönderebileceksiniz.</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
     <!-- OPFF tagline in different languages -->
-    <string name="version_string">Open Pet Food Facts Android App</string>
+    <string name="version_string">Open Pet Food Facts Android Uygulaması</string>
     <string name="tagline">free pet food products database</string>
-    <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Pet Food Facts. Can you add it?</string>
+    <string name="product_not_found">Taradığın %1$s ürünü henüz Open Pet Food Facts\'de bulunmamaktadır. Onu sen ekleyebilir misin?</string>
     <string name="currently_on_version">Open Pet Food Facts\'te mevcut olan</string>
     <string name="category_game_btn">Ürünleri kategorize etmeye yardım edin</string>
     <!-- TODO add true support instead of overriding strings -->
     <string name="add_nutrient_prompt_text">Besin ögesi seviyelerini hesaplamak için besin değerlerini ekleyin</string>
     <string name="add_category_prompt_text">Ürünü tamamlamaya yardım etmek için bir kategori ekleyin</string>
     <string name="add_nutrient_category_prompt_text">Ürünü tamamlamaya yardım etmek için bir kategori ve besin değerlerini ekleyin</string>
-    <string name="txt_eaten_products">Products I have</string>
+    <string name="txt_eaten_products">Sahip olduğum ürünler</string>
     <string name="txt_products_to_buy">Satın alınacak ürünler</string>
-    <string name="intent_filter_share_label">Add to Open Pet Food Facts</string>
-    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
-        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
-    <string name="OFFlogo">Open Pet Food Facts logo</string>
-    <string name="brand_hint">Examples: Purina, Whiskas, etc…</string>
+    <string name="intent_filter_share_label">Open Pet Food Facts\'e ekle</string>
+    <string name="txt_info_eaten_products">Bu listeye ürün eklemeniz ürünleri tarayarak, ürün kartını yukarıya sürükleyip \"Satın alınacak ürünler\"e tıklayarak mümkün olacaktır.
+Aynı zamanda bu listeye ürünleri arayarak ve ürün sayfasının sağ üstündeki + butonuna tıklayarak ürünleri ekleyebilirsiniz.</string>
+    <string name="OFFlogo">Open Pet Food Facts amblemi</string>
+    <string name="brand_hint">Örnekler: Purina, Whiskas vb.</string>
 </resources>
