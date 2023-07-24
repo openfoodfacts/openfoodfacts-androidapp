@@ -1,19 +1,19 @@
 
 ==================
-Nieuwe versie van Open Food Facts. Alle Open Food Facts-vrijwilligers hebben er hard aan gewerkt, op basis van jullie suggesties en feedback :)
+Nieuwe oorspronkelijke versie van Open Food Facts. Alle Open Food Facts-vrijwilligers hebben er hard aan gewerkt, op basis van jouw suggesties en feedback :)
 ==================
-* Open Food Facts is nu een meer wereldwijde beweging dan ooit. 500k producten beschikbaar, 10K geregistreerde bijdragers, 182 landen. Doe je met ons mee?
+* Open Food Facts is nu meer dan ooit een globale beweging. 500k producten bevrijd, 10K geregistreerde bijdragers, 182 landen. Doe je met ons mee?
 ==================
 Wat is er nieuw?
 ==================
-1. Je krijgt een totaalbeeld: voeding, ingrediënten en alle voedselfeiten, netjes en duidelijk gepresenteerd.
-2. Krijg de "NutriScore" voedingswaarde voor alle producten in de wereld. Vergelijk eenvoudig producten. Gemakkelijker dan het ontcijferen van voedingswaardentabellen.
+1. Je krijgt het totaalbeeld: voeding, ingrediënten en alle voedselfeiten, netjes en duidelijk gepresenteerd.
+2. Krijg de Nutri-Score waarde voor alle producten in de wereld. Vergelijk eenvoudig producten. Makkelijker dan het ontcijferen van voedingstabellen.
 3. Krijg extra informatie van Wikipedia. Klik op een voedselcategorie, een additief… om meer te leren en vergelijkbare producten te zien.
-4. Je kunt allergeen-waarschuwingen instellen (controleer wel altijd het echte etiket!)
-5. Je krijgt nu een scangeschiedenis die je kunt exporteren. Deze geschiedenis kan niet door anderen bekeken worden.
-6. U kunt uw telefoon schudden op elk gewenst moment in de app om te beginnen met het scannen
+4. Je kunt allergeen-waarschuwingen instellen (controleer altijd zelf het echte etiket!)
+5. Je krijgt nu een scangeschiedenis die je kan exporteren en die op je telefoon blijft
+6. Schudt je telefoon in de app om te beginnen met scannen
 7. Je kunt nu nieuwe producten toevoegen, zelfs als je offline bent
-8. Je kunt nu helpen om je favoriete voedselproducten direct in de app te voltooien: foto's nemen, info invullen, en ons voedsel transparant te maken
+8. Je kunt nu helpen je favoriete producten rechtstreeks vanuit de app te voltooien: maak foto's, vul info in, maak voedsel inzichtelijk
 9. Alles is ook veel sneller. Producten laden razendsnel, zelfs met een slechte mobiele verbinding.
 10. We zijn nog steeds niet geïnteresseerd in je persoonlijke gegevens. Je hoeft je niet aan te melden om te scannen en bij te dragen.
-Extra! Ondanks alle nieuwe functies is de app net zo klein als voorheen. De ruimte op je telefoon staat centraal.
+Extra! Ondanks alle nieuwe functies is de app net zo licht als voorheen. De ruimte op je telefoon is heilig.
