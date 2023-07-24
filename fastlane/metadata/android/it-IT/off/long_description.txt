@@ -7,14 +7,14 @@ L'app consente di vedere gli 800.000 prodotti (compresi i 175.000 negli Stati Un
 
 Per scoprire il progetto volontario Open Food Facts, visita https://world.openfoodfacts.org
 
-▶ Scegli i prodotti che ti fanno bene
--Il grado del punteggio nutrizionale, da "A" a "E" >> Qualità nutrizionale
-- Il gruppo NOVA, da "1" a "4" >> Trova il cibo Ultra-processato
+▶ Scegli i prodotti che fanno al caso tuo
+- Il punteggio Nutri-Score, da "A" a "E" >> Qualità nutrizionale
+- Il gruppo NOVA, da "1" a "4" >> Trova il cibo ultra-trasformato
 - Puoi facilmente confrontare tutti i prodotti che vuoi, fianco a fianco semplicemente scansionandoli. 
 
 ▶ E buono per il pianeta!
-- L'impatto sul carbonio del tuo cibo
-- Fatti un'idea di quanta parte della tua quota di carbonio giornaliera usi per il cibo
+- L'impronta di carbonio del tuo cibo
+- Ottieni un'idea di che parte della tua quota giornaliera di carbonio stai utilizzando per il cibo
 - Basato sulle impronte calcolate per la Francia da ADEME.
 - Unisciti a noi e aiutaci a portare l'impatto del carbonio nel tuo paese!
 - Per visualizzare l'impatto di carbonio, un prodotto deve avere una lista completa degli ingredienti con la % di carne o pesce e una quantità
@@ -24,26 +24,26 @@ Per scoprire il progetto volontario Open Food Facts, visita https://world.openfo
 - Open Food Facts è un database di prodotti alimentari realizzato da tutti, per tutti.
 - Puoi usarlo per fare scelte alimentari migliori e, poiché si tratta di dati liberi, chiunque può riutilizzarlo per qualsiasi scopo.
 - Open Food Facts è un progetto senza scopo di lucro sviluppato da migliaia di volontari provenienti da tutto il mondo. Abbiamo molti progetti interessanti a cui puoi contribuire in molti modi diversi.
-- Puoi iniziare a contribuire oggi aggiungendo un prodotto dal tuo frigo.
+- Puoi iniziare a contribuire oggi aggiungendo un prodotto dal tuo frigorifero.
 
 ▶ Creare liste
 Crea liste della spesa, registra ciò che hai mangiato e condividi ed esporta facilmente le tue liste.
 
 ▶ Ottieni i fatti
-- Open Food Facts ti aiuta a dare un senso alle piccole scritte sulle etichette dei prodotti. Sarai in grado di trovare:
+- Open Food Facts ti aiuta a dare un senso alle piccole scritte sulle etichette dei prodotti. Sarai anche in grado di trovare (secondo le indicazioni presenti sui prodotti):
 - l'impronta di carbonio (emissioni di CO2) e l'imballaggio (comprese le istruzioni per il riciclo),
 - il Nutriscore (punteggio nutrizionale), i nutrienti, il contenuto in grassi, gli acidi grassi saturi, i carboidrati, gli zuccheri, le fibre, le proteine, il sale e il sodio.
-- i marchi, gli allergeni, le etichette (bio, senza glutine, vegano, vegetariano, halal, kosher ...), informazioni sulla tracciabilità (codici di imballaggio, origine degli ingredienti)
-- Su vini e birre troverai la gradazione alcolica.
+- le marche, gli allergeni, le etichette (bio, senza glutine, vegano, vegetariano, halal, kosher ...), informazioni sulla tracciabilità (codici di imballaggio, origine degli ingredienti)
+- Sui vini e sulle birre troverai il contenuto alcolico.
 
 
-▶ Basato sulla scienza, aiutando la scienza!
+▶ Basato sulla scienza, aiuta a sostenere la scienza!
 
 - Non inventiamo le cose. Facciamo affidamento sulla scienza peer-reviewed.
-- Il punteggio nutritivo è stato creato dalla squadra francese indipendente guidata dal professor Hercberg.
-- I gruppi NOVA sulla trasformazione degli alimenti sono stati progettati dal team internazionale del Professor Monteiro.
+- Il Nutri-Score è stato creato dal team francese indipendente guidato dal professor Hercberg.
+- I gruppi NOVA sulla lavorazione degli alimenti sono stati progettati dal team internazionale del professor Monteiro.
 - È possibile ottenere una sintesi dei livelli di esposizione dell'EFSA sugli additivi alimentari.
-- La comunità di Open Food Facts sta collaborando con gruppi di ricerca di tutto il pianeta per migliorare la ricerca nutrizionale a beneficio di tutti.
+- La comunità di Open Food Facts collabora con i team di ricerca di tutto il pianeta per migliorare la ricerca nutrizionale a vantaggio di tutti.
 
 
 ▶ Scansione offline: scansione in QUALSIASI condizione! (in arrivo)
@@ -58,9 +58,9 @@ Scansione alla velocità della luce (anche se sei su un aereo, sottomarino o sup
 - Puoi usare l'app in modo anonimo
 - Puoi esportare la cronologia di scansione
 
-▶ Imposta avvisi sugli allergeni nei prodotti
-- Latte, glutine, uova, soia, noci, pesce, sedano, senape, anidride solforosa e solfiti, arachidi, semi di sesamo, crostacei, molluschi o allergia al lupino?
-- Accelera i tuoi acquisti facendo una prima scansione del tuo cibo con Open Food Facts.
+▶ Imposta avvisi sugli allergeni sui prodotti
+- Sei allergico al latte, glutine, uova, soia, noci, pesce, sedano, senape, anidride solforosa e solfiti, arachidi, semi di sesamo, crostacei, molluschi o lupini?
+- Accelera i tuoi acquisti effettuando uno screening iniziale del tuo cibo con Open Food Facts.
 - Fai attenzione che le informazioni ed il rilevamento potrebbero non essere accurati al 100%. Quindi controlla sempre da solo, con la confezione.
 
 
