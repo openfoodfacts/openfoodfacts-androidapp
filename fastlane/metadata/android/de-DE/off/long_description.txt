@@ -29,11 +29,11 @@ Um das von Freiwilligen unterstützte Projekt „Open Food Facts” zu entdecken
 ▶ Listen erstellen
 Erstellen Sie Einkaufslisten, verfolgen Sie, was Sie gegessen haben, und teilen und exportieren Sie einfach Ihre Listen.
 
-▶ Rufen Sie die Fakten auf
+▶ Fakten abrufen
 • Open Food Facts hilft Ihnen, das Kleingedruckte auf Produktetiketten zu verstehen. Sie können finden:
 • CO₂-Fußabdruck (CO2-Emissionen) und Verpackung (sowie Verwertungshinweise),
 • Nutri-Score (Nährwertbewertung), Nährstoffe, Fett/Fettgehalt, gesättigte Fettsäuren, Kohlenhydrate, Zucker, Ballaststoffe, Eiweiß und Salz und Natrium.
-• Marken, Allergene, Etiketten (Bio, Glutenfrei, Vegan, Vegetarisch, Halal, Koscher …), Rückverfolgbarkeitsinformationen (Verpackungscodes, Herkunft der Zutaten)
+• Marken, Allergene, Kennzeichnungen (Bio, glutenfrei, vegan, vegetarisch, halal, koscher ...), Informationen zur Rückverfolgbarkeit (Verpackungscodes, Herkunft der Zutaten)
 • Auf Weinen und Bieren finden Sie den Alkoholgehalt.
 
 
