@@ -10,42 +10,42 @@
     <string name="website_product">https://world-cs.openfoodfacts.org/product/</string>
     <!-- For fr, Replace by https://world-fr.openproductsfacts.org/contributeur/ -->
     <string name="website_contributor">https://world-cs.openfoodfacts.org/contributor/</string>
-    <string name="terms_url">https://world.openproductsfacts.org/terms-of-use</string>
-    <string name="txtHomeOnline">Open Products Facts is an open database of more than %1$s products (plus the ones you will contribute).</string>
-    <string name="txtHome">Open Food Facts je otevřená databáze potravinářských produktů s přísadami, alergeny, nutričními fakty a všemi informacemi, které můžeme nalézt na etiketách produktů.</string>
-    <string name="slide_1_title">Contribute to product transparency</string>
+    <string name="terms_url">https://world-cs.openproductsfacts.org/podminky-uziti</string>
+    <string name="txtHomeOnline">Open Products Facts je otevřená databáze více než %1$s produktů (plus těch, kterými přispějete).</string>
+    <string name="txtHome">Open Products Facts je otevřená databáze potravinářských produktů s přísadami, alergeny, nutričními fakty a všemi informacemi, které můžeme nalézt na etiketách produktů.</string>
+    <string name="slide_1_title">Přispějte k transparentnosti produktu</string>
     <string name="slide_1_desc">Nasnímejte zboží, vyfoťte ho, zajistěte transparentnost</string>
-    <string name="slide_2_title">Get the facts</string>
-    <string name="slide_2_desc">Extensive information about the products you\'ve scanned, deciphered for you</string>
-    <string name="slide_3_title">Keep track of the product you use</string>
-    <string name="slide_3_desc">All the products you scanned, in one handy list you can export</string>
+    <string name="slide_2_title">Získejte fakta</string>
+    <string name="slide_2_desc">Rozsáhlé informace o produktech, které jste naskenovali, pro vás dešifrovali</string>
+    <string name="slide_3_title">Sledujte produkt, který používáte</string>
+    <string name="slide_3_desc">Všechny produkty, které jste naskenovali, v jednom praktickém seznamu můžete exportovat</string>
     <string name="slide_4_title">Pracuje offline</string>
-    <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet connection right now</string>
-    <string name="txtDialogsContent">The product you scanned does not exist yet in Open Products Facts. Please add it.</string>
-    <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Products Facts.</string>
-    <string name="msg_share">Look at this product on Open Products Facts :</string>
-    <string name="not_support_books">Books are not currently supported by Open Products Facts</string>
-    <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Products Facts</string>
-    <string name="Donation">Click here to donate to Open Products Facts</string>
-    <string name="translate_help_title">Help translate Open Products Facts</string>
-    <string name="translate_help_summary">Bring the Open Products Facts database to your language - no technical knowledge required</string>
-    <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Products Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Products Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+    <string name="slide_4_desc">Můžete přidávat nové produkty, i když právě nemáte připojení k internetu</string>
+    <string name="txtDialogsContent">Produkt, který jste naskenovali, ještě neexistuje v databázi Open Products Facts. Přidejte jej.</string>
+    <string name="txtDialogsContentPowerMode">Produkt, který jste naskenovali, již existuje v Open Products Facts.</string>
+    <string name="msg_share">Podívejte se na tento produkt na Open Products Facts :</string>
+    <string name="not_support_books">Knihy nejsou aktuálně podporovány Open Products Facts</string>
+    <string name="txt_broaden_search">- rozšíření hledání \n- skenujte a přidejte do Open Products Facts</string>
+    <string name="Donation">Klikněte sem a přispějte do Open Products Facts</string>
+    <string name="translate_help_title">Pomozte přeložit Open Products Facts</string>
+    <string name="translate_help_summary">Přineste databázi Open Products Facts do vašeho jazyka - nejsou nutné žádné technické znalosti</string>
+    <string name="text_offline_info_dialog">Naskenujte produkty, i když jste offline, abyste je mohli přidat do Open Products Facts později. Naskenované produkty se zobrazí zde a budete je moci odeslat pomocí tlačítka níže.</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Vaše informace o alergiích nebudou nikdy odeslány na server Open Products Facts Také buďte opatrní v tom, že údaje o produktech nemusí být přesné, a detekce nemusí být 100% přesná, proto prosím zkontrolujte sami! </string>
     <!-- OPF tagline in different languages -->
-    <string name="version_string">Open Products Facts Android App</string>
+    <string name="version_string">Android aplikace Open Products Facts</string>
     <string name="tagline">the free product database</string>
-    <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Products Facts. Can you add it?</string>
-    <string name="currently_on_version">Currently on Open Products Facts</string>
+    <string name="product_not_found">Produkt %1$s, který jste naskenovali, ještě neexistuje v databázi Open Products Facts. Můžete ho přidat?</string>
+    <string name="currently_on_version">V současné době na Open Products Facts</string>
     <string name="category_game_btn">Pomozte roztřídit produkty</string>
     <!-- TODO add true support instead of overriding strings -->
-    <string name="add_nutrient_prompt_text">Add more details to help complete the product</string>
-    <string name="add_category_prompt_text">Add a category to help complete the product</string>
-    <string name="add_nutrient_category_prompt_text">Add a category and more details to help complete the product</string>
-    <string name="txt_eaten_products">Products I have</string>
+    <string name="add_nutrient_prompt_text">Přidejte další podrobnosti pro dokončení produktu</string>
+    <string name="add_category_prompt_text">Přidejte kategorii, která pomůže produkt dokončit</string>
+    <string name="add_nutrient_category_prompt_text">Přidejte kategorii a další podrobnosti pro dokončení produktu</string>
+    <string name="txt_eaten_products">Produkty, které mám</string>
     <string name="txt_products_to_buy">Nákupní seznam</string>
-    <string name="intent_filter_share_label">Add to Open Products Facts</string>
-    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
-        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
-    <string name="OFFlogo">Open Products Facts logo</string>
-    <string name="brand_hint">Examples: Nike, Apple, etc…</string>
+    <string name="intent_filter_share_label">Přidat do Open Products Facts</string>
+    <string name="txt_info_eaten_products">Do tohoto seznamu budete moci přidat produkt naskenováním produktů, přetažením karty produktu nahoru a klepnutím na „Produkty k nákupu“.
+        Do tohoto seznamu budete také moci přidat produkty tak, že je vyhledáte a kliknete na tlačítko + v pravém horním rohu stránky produktu.</string>
+    <string name="OFFlogo">Logo Open Products Facts</string>
+    <string name="brand_hint">Příklady: Nike, Apple, atd…</string>
 </resources>
