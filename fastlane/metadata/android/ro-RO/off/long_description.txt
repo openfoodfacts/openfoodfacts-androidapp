@@ -1,16 +1,16 @@
-Scan food products or their barcode to obtain data on ingredients, additives and nutrition facts.
+Scanați produsele alimentare sau codurile de bare ale acestora pentru a obține date despre ingrediente, aditivi și valori nutriționale.
 
-▶ Find & Compare more than 800.000 products
+▶ Găsiți și comparați peste 800.000 de produse
 
-The app allows to view the 800.000 products (including 175.000 in the US) already contained in the free and open database Open Food Facts, and also to add pictures and data for new products.
+Aplicația permite vizualizarea celor 800.000 de produse (inclusiv 175.000 în SUA) conținute deja în baza de date gratuită și deschisă Open Food Facts și, de asemenea, adăugarea de imagini și date pentru produse noi.
 
 
-To discover the volunteer-run Open Food Facts project, visit https://world.openfoodfacts.org
+Pentru a descoperi proiectul Open Food Facts, condus de voluntari, vizitați https://world.openfoodfacts.org
 
 ▶ Alegeți produsele care sunt bune pentru dvs
 - Nota Nutri-Score, de la "A" la "E" » Calitate nutrițională
 - Grupul NOVA, de la "1" la "4" » Găsiți alimentele ultra-procesate
-- You can easily compare as many products as you want, side by side by simply scanning them. 
+- Puteți compara cu ușurință câte produse doriți, unul lângă altul, prin simpla scanare. 
 
 ▶ Și bine pentru planetă!
 - Impactul carbonului al alimentelor tale
@@ -26,8 +26,8 @@ To discover the volunteer-run Open Food Facts project, visit https://world.openf
 - Open Food Facts este un proiect non-profit dezvoltat de mii de voluntari din întreaga lume. Avem multe proiecte interesante la care poți contribui în multe feluri diferite.
 - Puteți începe să contribuiți astăzi prin adăugarea unui produs din frigider.
 
-▶ Create lists
-Create shopping lists, track what you've eaten and easily share and export your lists.
+▶ Creați liste
+Creați liste de cumpărături, urmăriți ceea ce ați mâncat și partajați și exportați cu ușurință listele.
 
 ▶ Ia informațiile
 - Open Food Facts vă ajută să înțelegeți literele mici de pe etichetele produselor. Veți putea găsi:
@@ -46,7 +46,7 @@ Create shopping lists, track what you've eaten and easily share and export your 
 - Comunitatea Open Food Facts colaborează cu echipe de cercetare din întreaga planetă pentru a îmbunătăți cercetarea nutrițională care aduce beneficii tuturor.
 
 
-▶ Scanare offline: scanați în ORICE stare! (coming soon)
+▶ Scanare offline: scanați în ORICE stare! (în curând)
 Scanați cu viteza luminii (chiar dacă vă aflați într-un avion, submarin sau supermarket)
 
 - Întreaga planetă, în buzunarul tău!
@@ -67,10 +67,10 @@ Scanați cu viteza luminii (chiar dacă vă aflați într-un avion, submarin sau
 ▶ Salutați și/sau alăturați-vă nouă!
 
 
-Open Food Facts is also available on the web at https://world.openfoodfacts.org
+Open Food Facts este disponibil și pe web la https://world.openfoodfacts.org
 
 
 Întrebări, feedback: contact@openfoodfacts.org
 
 
-For cosmetics, you can install Open Beauty Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.
+Pentru produse cosmetice, puteți instala Open Beauty Facts, pentru hrana pentru animale de companie, Open Pet Food Facts și pentru toate celelalte produse, Open Products Facts.
