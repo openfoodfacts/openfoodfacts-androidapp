@@ -1,34 +1,34 @@
-Scan pet food products or their barcode to obtain data on ingredients, additives and nutrition facts.
+Сканирайте хранителните продукти за домашни любимци или техния баркод, за да получите данни за съставките, добавките и хранителните данни.
 
 The app allows to view the over 600 pet food products already contained in the free and open database Open Pet Food Facts, and also to add pictures and data for missing products.
 
-To discover the Open Pet Food Facts project, please visit https://world.openpetfoodfacts.org
+За да откриете проекта Open Pet Food Facts, моля, посетете https://world.openpetfoodfacts.org
 
 ***Contribute to Pet Food Transparency***
 
-- Open Pet Food Facts is a pet food products database made by everyone, for everyone.
-- You can use it to make better pet food choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Pet Food Facts is a non-profit project developed by thousands of volunteers from around the world. Имаме много вълнуващи проекти, на които можете да допринесете по много различни начини. 
-- You can start contributing today by adding a product from your pet's cupboard. 
+- Open Pet Food Facts е база данни за храни за домашни любимци, създадена от всеки, за всеки.
+- Можеш да го използваш, за да правиш по-добър избор на храна за домашни любимци и тъй като е с отворени данни, всеки може да го използва повторно за всякакви цели.
+- Open Pet Food Facts е проект с нестопанска цел, разработен от хиляди доброволци от цял свят. Имаме много вълнуващи проекти, на които можеш да допринесеш по много различни начини. 
+- Можете да започнете да допринасяте днес, като добавите продукт от шкафа на вашия домашен любимец. 
 
 
-*** Запознайте се с фактите ***
+*** Get the Facts ***
 
 You will also be able to find (according to the indications present on the products):
-- list of ingredients (including ash content)
-- nutritional info, nutrition traffic lights…
+- списък на съставките (включително съдържанието на пепел)
+- хранителна информация, светофар за храната…
 - brands, allergens, labels (organic, vegan...)
-- It works with dog food (dry dog food & wet dog food), cat food, rabbit food, snake food, fish food, bird food, horse food or any food for your favorite animal.
+- Работи с кучешка храна (суха храна за кучета и мокра храна за кучета), храна за котки, храна за зайци, храна за змии, храна за риби, храна за птици, храна за коне или всякаква храна за любимото ви животно.
 
-*** Works well in any condition ***
-- You can add new products, even if you don't have an Internet connection right now.
+*** Работи добре във всички условия ***
+- Можете да добавяте нови продукти, дори ако в момента нямате интернет връзка.
 - The app loads only the strict necessary to reduce data and battery consumption
-- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
+- Нямате нужда от камера, за да търсите продукт. Можете също да въведете баркода, ако ви липсва камера или имате проблем с нея.
 
-*** Your pet food, your data ***
-- Your personal data is yours, and is never sent online
-- You can use the app anonymously
-- You can export your scan history
+*** Твоята храна за домашни любимци, твоите данни ***
+- Личните ти данни са твои и никога не се изпращат онлайн
+- Можете да използвате приложението анонимно
+- Можете да изнасяте вашата история на сканиране
 
 
-For human food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for all other products, Open Products Facts.
+За храна за хора можете да инсталирате Open Food Facts, за козметика, Open Beauty Facts, а за всички останали продукти, Open Products Facts.
