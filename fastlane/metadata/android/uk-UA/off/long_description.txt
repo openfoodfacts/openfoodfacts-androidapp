@@ -1,4 +1,4 @@
-Скануйте харчові продукти або їх штрих-код, щоб отримати дані про інгредієнти, добавки та факти харчування.
+Scan food products or their barcode to obtain data on ingredients, additives and nutrition facts.
 
 ▶ Find & Compare more than 800.000 products
 
@@ -7,70 +7,72 @@ The app allows to view the 800.000 products (including 175.000 in the US) alread
 
 To discover the volunteer-run Open Food Facts project, visit https://world.openfoodfacts.org
 
-▶ Choose the products that are good for you
-- The Nutri-Score grade, from "A" to "E" >> Nutritional quality
-- The NOVA group, from "1" to "4" >> Find the Ultra-Processed food
-Ви можете легко порівнювати скільки завгодно продуктів просто скануючи їх. 
+Оберіть корисні для вас вироби
+Оцінка Nutri-Score від «А» до «І» >> Харчова якість
+Група NOVA від «1» до «4» >> Ультраоброблені продукти
+- You can easily compare as many products as you want, side by side by simply scanning them. 
 
-▶ And good for the planet!
-- The carbon impact of your food
-- Get a sense of how much of your daily carbon quota you're using for food
-- Based on the footprints computed for France by ADEME.
-- Join us and help us to bring the Carbon Impact to your country!
-- To display a Carbon Impact, a product must have a complete ingredient list with % of meat or fish and a quantity
+Та що є корисними для планети!
+- Вуглеводний вплив на вашу їжу
+- Дізнайтеся про те, як багато вуглеводу ви споживаєте кожного дня
+- На основі даних, вирахуваних ADEME для Франції
+- Приєднуйтесь та допоможіть нам поширити вуглеводний вплив у вашій країні!
+- Для того, щоб показати вплив вуглеводу, продукт має мати заповнений список інгредієнтів із відсотком та кількістю м’яса або риби.
 
 
-▶ Contribute to Food Transparency
-- Open Food Facts - це база даних про харчові продукти, створена всіма для кожного.
-- Ви можете використовувати його для кращого вибору продуктів харчування, а оскільки це відкриті дані, кожен може повторно використовувати його з будь-якою метою.
-- Open Food Facts - це некомерційний проект, розроблений тисячами волонтерів з усього світу. У нас є безліч захоплюючих проектів, до яких можна долучитись різними способами.
-- You can start contributing today by adding a product from your fridge.
+Внесок у Food Transparency
+- Open Food Facts – це база даних харчових продуктів, що створена усіма та для усіх
+- Ви можете використовувати її для обрання кращих харчових продуктів, і оскільки ці дані є у вільному доступі, кожен може скористатися ними повторно задля будь-якої мети.
+- Open Food Facts – це некомерційний проєкт, який був розроблений тисячами добровольців з усього світу. У нас є безліч захоплюючих проектів, до яких можна долучитись різними способами.
+- Ви можете наразі розпочати свій внесок, додаючи продукти зі свого холодильника. 
 
-▶Створити списки
-Створюйте списки покупок, відстежуйте, що ви з'їли, і легко обмінюйтеся списками та експортуйте їх.
+▶ Create lists
+Create shopping lists, track what you've eaten and easily share and export your lists.
 
-▶ Get the Facts
-- Open Food Facts допомагають вам зрозуміти тонкий шрифт на етикетках продуктів. You will be able to find:
-- вуглецевий слід (викиди СО2) та упаковка (а також інструкції щодо переробки),
-- Nutriscore (харчова оцінка), nutrients, вміст жиру / жиру, насичені жирні кислоти, вуглеводи, цукри, клітковина, білок та сіль та натрій.
-- торгові марки, алергени, етикетки (біо, безглютенові, веганські, вегетаріанські, халяльні, кошерні ...), інформація про відстеження (коди упаковки, походження інгредієнтів)
-- На винах і пиві ви знайдете вміст алкоголю.
+Отримай факти
+- Open Food Facts допомагає вам зрозуміти дрібний шрифт на етикетках. Тут Ви зможете знайти:
+- кількість вуглецю (викиди CO2) та пакування (а також інструкції з перероблення),
+- Nutriscore (показник харчування), поживні речовини, жири/вміст жирів, насичені жирні кислоти, вуглеводи, харчові волокна, білок, сіль та натрій.
+бренди, алергени, етикетки (біологічні, безглютенні, веганські, дозволені (кошерні)), інформація про відстеження (коди упаковок, походження інградієнтів)
+- На етикетках вина та пива можна побачити вміст алкоголю.
 
 
 ▶ Based on Science, helping back Science!
 
-- We don't make up things. We rely on peer-reviewed science.
-- The Nutri-Score has been created by the independent French team led by Professor Hercberg.
-- The NOVA groups on food processing have been designed by the international team of Professor Monteiro.
-- You can get a synthesis of EFSA exposure levels on food additives.
-- The Open Food Facts community is collaborating with research teams across the planet to improve nutrition research that benefits all.
+- Ми не створюємо. Ми покладаємось на рецензовану науку.
+- The Nutri-Score була створена незалежною французькою командою під керівництвом професора Гербера.
+- Групи NOVA,  що пов’язані з обробкою їжі, були розроблені міжнародною командою професора Монтеро.
+- Ви можете отримати синтез  рівнів впливу EFSA на харчові добавки.
+- Спільнота Open Food Facts співпрацює із дослідницькими командами усієї планети для вдосконалення харчових досліджень, що принесуть користь усім.
 
 
-▶ Offline Scan: Scan in ANY condition! (coming soon)
-Scan at the speed of light (even if you’re on a plane, submarine or supermarket)
+Сканування в офлайн-режимі за будь-якою умовою! (coming soon)
+Скануйте зі швидкістю світла (навіть якщо ви у літаку, підводному човні або супермаркеті)
 
-- The whole planet, in your pocket !
+- Уся планета у вашій кишені!
+
+
 - Ви можете додавати нові продукти, навіть якщо зараз у вас немає підключення до Інтернету.
-- The app loads only the strict necessary to reduce data and battery consumption.
+Додаток завантажує лише потрібне, з метою зекономити вільну пам'ять ти заряд батареї.
 
-▶ Your food, your data
-- Ваші дані є вашими, і ніколи не надсилаються в Інтернеті
+Ваша їжа, ваші дані
+- Ваші дані належать вам, і ніколи не розсилаються по мережі
 - Ви можете використовувати додаток анонімно
 - Ви можете експортувати історію сканування
 
-▶ Set up allergen alerts on products
-- Milk, Gluten, Eggs, Soybeans, Nuts, Fish, Celery, Mustard, Sulphur dioxide and sulphites, Peanuts, Sesame seeds, Crustaceans, Molluscs or Lupin allergy ?
-- Speed up your shopping by doing an initial screening of your food with Open Food Facts.
-- Be careful that the information may not be 100% accurate, and detection may not be 100% accurate. So always double check by yourself, with the packaging.
+Налаштуйте сповіщення про алергени на продуктах
+- Чи є алергія на молоко, глютен, яйця, соєві боби, горіхи, риба, селера, гірчиця, діоксид сірки та сульфати, арахіс, насіння кунжуту, ракоподібні, молюски або люпин?
+- Прискорте свій шопінг, роблячи первинний скринінг ваших продуктів з Open Food Facts.
+- Будьте обережні, інформація може не бути вірогідною на всі сто відсотків, так само як і виявлення. Тому завжди перевіряйте двічі, звіряючись з упаковкою.
 
 
-▶ Say hello and/or join us!
+Привітайтесь та/або приєднуйтесь до нас!
 
 
-Open Food Facts також доступні в Інтернеті за адресою https://world.openfoodfacts.org
+Open Food Facts is also available on the web at https://world.openfoodfacts.org
 
 
 Питання, відгуки: contact@openfoodfacts.org
 
 
-Для косметики ви можете встановити Open Beauty Facts, для корму для домашніх тварин, Open Pet Food Facts, а також для всіх інших продуктів Open Products Facts.
+For cosmetics, you can install Open Beauty Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.
