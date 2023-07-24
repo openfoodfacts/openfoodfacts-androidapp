@@ -1,4 +1,4 @@
-सामग्री, योजक और पोषण तथ्यों पर डेटा प्राप्त करने के लिए खाद्य उत्पादों या उनके बारकोड को स्कैन करें।
+Scan food products or their barcode to obtain data on ingredients, additives and nutrition facts.
 
 ▶ Find & Compare more than 800.000 products
 
@@ -21,9 +21,9 @@ To discover the volunteer-run Open Food Facts project, visit https://world.openf
 
 
 ▶ Contribute to Food Transparency
-- ओपन फूड फैक्ट्स हर किसी के लिए, सभी के लिए एक खाद्य उत्पाद डेटाबेस है।
-- आप इसे बेहतर भोजन विकल्प बनाने के लिए उपयोग कर सकते हैं, और जैसा कि यह खुला डेटा है, कोई भी किसी भी उद्देश्य के लिए इसका फिर से उपयोग कर सकता है।
-- ओपन फूड फैक्ट्स दुनिया भर के हजारों स्वयंसेवकों द्वारा विकसित एक गैर-लाभकारी परियोजना है। हमारे पास कई रोमांचक परियोजनाएं हैं जो आप कई अलग-अलग तरीकों से योगदान कर सकते हैं।
+- Open Food Facts is a food products database made by everyone, for everyone.
+- You can use it to make better food choices, and as it is open data, anyone can re-use it for any purpose.
+- Open Food Facts is a non-profit project developed by thousands of volunteers from around the world. हमारे पास कई रोमांचक परियोजनाएं हैं जो आप कई अलग-अलग तरीकों से योगदान कर सकते हैं।
 - You can start contributing today by adding a product from your fridge.
 
 ▶ Create lists
