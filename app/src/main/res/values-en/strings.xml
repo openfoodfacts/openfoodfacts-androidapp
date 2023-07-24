@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <!--
   ~ Copyright 2016-2020 Open Food Facts
   ~
@@ -13,14 +14,11 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-
 <resources xmlns:tools="http://schemas.android.com/tools">
-
     <plurals name="offline_notification_count">
         <item quantity="one">You have 1 offline product waiting to be contributed to Open Food Facts</item>
         <item quantity="other">You have %d offline products waiting to be contributed to Open Food Facts</item>
     </plurals>
-
     <plurals name="seconds">
         <item quantity="one">%d second ago</item>
         <item quantity="other">%d seconds ago</item>
@@ -45,15 +43,7 @@
     <string name="product_allergen_prompt">This product contains:</string>
     <string name="no_offline_data">You\'re all done</string>
     <string name="first_offline">Products added offline will appear here</string>
-
     <!-- Image Upload -->
-    <string-array name="upload_image" translatable="false">
-        <item>640 X 480</item>
-        <item>1024 X 768</item>
-        <item>1152 X 864</item>
-        <item>1600 X 1200</item>
-    </string-array>
-
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
         <item>Summary</item>
@@ -62,54 +52,17 @@
         <item>Nutrition Table</item>
         <item>Environment</item>
     </string-array>
-
     <!-- New Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_new_items_product">
         <item>Product Photos</item>
         <item>Ingredient Analysis</item>
     </string-array>
-
     <!-- Text units -->
-
     <!-- weight units -->
-    <string-array name="weights_array" translatable="false">
-        <item>g</item>
-        <item>mg</item>
-        <item>kg</item>
-        <item>l</item>
-        <item>cl</item>
-    </string-array>
-
-    <string name="kcal" translatable="false">kcal</string>
-    <string name="kj" translatable="false">kJ</string>
-
     <!-- nutrition energy units -->
-    <string-array name="energy_units" translatable="false">
-        <item>@string/kcal</item>
-        <item>@string/kj</item>
-    </string-array>
-
     <!-- volume units -->
-    <string-array name="volume_units" translatable="false">
-        <item>l</item>
-        <item>oz</item>
-    </string-array>
-
     <!-- nutrition weight units -->
-    <string-array name="nutrition_weight_units" translatable="false">
-        <item>g</item>
-        <item>mg</item>
-        <item>µg</item>
-    </string-array>
     <!-- nutrition weight units -->
-    <string-array name="nutrition_serving_weight_units" translatable="false">
-        <item>g</item>
-        <item>mg</item>
-        <item>µg</item>
-        <item>l</item>
-        <item>ml</item>
-    </string-array>
-
     <!-- all weight units -->
     <string-array name="weight_all_units">
         <item>g</item>
@@ -118,14 +71,7 @@
         <item>% DV</item>
         <item>IU</item>
     </string-array>
-
     <!-- nutrition comparison units -->
-    <string-array name="nutrition_comparison_units" translatable="false">
-        <item>=</item>
-        <item>&lt;</item>
-        <item>&gt;</item>
-    </string-array>
-
     <!-- nutrients list
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
@@ -165,7 +111,7 @@
         <item>Lignoceric acid (24:0)</item>
         <item>Linoleic acid / LA (18:2 n-6)</item>
         <item>Magnesium</item>
-        <item>Maltodextrins</item>
+        <item>能量</item>
         <item>Maltose</item>
         <item>Manganese</item>
         <item>Mead acid (20:3 n-9)</item>
@@ -204,108 +150,12 @@
         <item>Vitamin B9 (Folic acid)</item>
         <item>Vitamin C (Ascorbic acid)</item>
         <item>Vitamin D</item>
-        <item>Vitamin E</item>
+        <item>Hello</item>
         <item>Vitamin K</item>
         <item>Zinc</item>
     </string-array>
-
     <!-- Text units -->
-    <string-array name="languages_array" translatable="false">
-        <item>aa</item>
-        <item>ach</item>
-        <item>af</item>
-        <item>ak</item>
-        <item>am</item>
-        <item>ar</item>
-        <item>as</item>
-        <item>ast</item>
-        <item>az</item>
-        <item>b+sr+Cyrl</item>
-        <item>b+sr+Latn</item>
-        <item>be</item>
-        <item>bn</item>
-        <item>bg</item>
-        <item>ca</item>
-        <item>cs</item>
-        <item>da</item>
-        <item>de</item>
-        <item>el</item>
-        <item>en</item>
-        <item>eo</item>
-        <item>es</item>
-        <item>et</item>
-        <item>eu</item>
-        <item>fa</item>
-        <item>fi</item>
-        <item>fil</item>
-        <item>fr</item>
-        <item>ga</item>
-        <item>gl</item>
-        <item>gu</item>
-        <item>he</item>
-        <item>hi</item>
-        <item>hu</item>
-        <item>hr</item>
-        <item>hy</item>
-        <item>id</item>
-        <item>it</item>
-        <item>is</item>
-        <item>ja</item>
-        <item>kab</item>
-        <item>kk</item>
-        <item>km</item>
-        <item>ko</item>
-        <item>ku</item>
-        <item>lo</item>
-        <item>lt</item>
-        <item>lv</item>
-        <item>mg</item>
-        <item>ml</item>
-        <item>mn</item>
-        <item>ms</item>
-        <item>mt</item>
-        <item>my</item>
-        <item>ne</item>
-        <item>no</item>
-        <item>nb</item>
-        <item>nl-BE</item>
-        <item>nl</item>
-        <item>pl</item>
-        <item>pt-BR</item>
-        <item>pt</item>
-        <item>ro</item>
-        <item>ru</item>
-        <item>si</item>
-        <item>sl</item>
-        <item>sk</item>
-        <item>sv</item>
-        <item>ta</item>
-        <item>te</item>
-        <item>tg</item>
-        <item>th</item>
-        <item>ti</item>
-        <item>tl</item>
-        <item>tr</item>
-        <item>ug</item>
-        <item>uk</item>
-        <item>uz</item>
-        <item>vi</item>
-        <item>wa</item>
-        <item>wo</item>
-        <item>xh</item>
-        <item>yi</item>
-        <item>yo</item>
-        <item>zh-CN</item>
-        <item>zh-HK</item>
-        <item>zh-TW</item>
-        <item>zh</item>
-        <item>zu</item>
-    </string-array>
-
-    <string name="help_translate_ingredients_link" translatable="false">https://world-%1$s.openfoodfacts.org/ingredients?translate=1</string>
-
     <!-- Content Description -->
-
     <string name="search_button">Search</string>
     <string name="alert_dialog_warning_title">Warning</string>
     <string name="alert_dialog_warning_msg_user">User/password has changed, please update information</string>
@@ -318,7 +168,7 @@
     <string name="Donate">Donate</string>
     <string name="Donation">Click here to donate to Open Food Facts</string>
     <string name="txtSubstances">Substances or products causing allergies or intolerances :</string>
-    <string name="txtAdditives">Additives :</string>
+    <string name="txtAdditives">Additives:</string>
     <string name="txtTraces">Traces :</string>
     <string name="txtMayBeFromPalmOilProduct">Ingredients that may be from palm oil :</string>
     <string name="txtPalmOilProduct">Ingredients from palm oil :</string>
@@ -333,7 +183,7 @@
     <string name="txtToastSaved">User saved</string>
     <string name="txtSalt">Salt</string>
     <string name="txtFat">Fat</string>
-    <string name="txtSugars">Sugars</string>
+    <string name="txtSugars">Sugar</string>
     <string name="hintBarcode">Barcode</string>
     <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
     <string name="hintLogin">Login</string>
@@ -352,12 +202,12 @@
     <string name="toastSending">Uploading…</string>
     <string name="txtLoading">Loading…</string>
     <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
-    <string name="txtDialogsContentInfoSave">The product is saved locally, you can edit it in the "Offline Edit" menu</string>
+    <string name="txtDialogsContentInfoSave">The product is saved locally, you can edit it in the \"Offline Edit\" menu</string>
     <string name="productSavedToast">Product saved, thanks!</string>
     <string name="txtBarcodeRequire">Barcode required</string>
     <string name="txtOk">OK</string>
     <string name="txtBarcodeNotValid">Barcode not valid</string>
-    <string name="msg_share">Look at this product on Open Food Facts :</string>
+    <string name="msg_share">Look at this product on Open Food Facts:</string>
     <string name="create_account">Sign up</string>
     <string name="home_drawer">Home</string>
     <string name="install">Install</string>
@@ -372,11 +222,10 @@
     <string name="offline_edit_drawer">Offline edit</string>
     <string name="txt_anonymous">Anonymous</string>
     <string name="delete_txt">Delete</string>
-    <string name="sign_in_drawer">Sign-in</string>
+    <string name="sign_in_drawer">Sign in</string>
     <string name="alert_drawer">Allergen alert</string>
     <string name="your_lists">Your lists</string>
     <string name="title_dialog_alert">Add alert</string>
-
     <string name="select_camera">Select a Camera</string>
     <string name="ok_button">OK</string>
     <string name="cancel_button">Cancel</string>
@@ -391,7 +240,6 @@
     <string name="permission_title">Permission information</string>
     <string name="permission_denied">Please activate permission in the settings</string>
     <string name="info_download_data_connection">You need to download some data to get this functionality working. Please activate your internet connection.</string>
-
     <!-- Strings related to login -->
     <string name="error_invalid_password">The password needs to be at least 6 characters long.</string>
     <string name="user">user</string>
@@ -401,9 +249,8 @@
     <string name="prefs_scan_startup_summary">This option if selected will start scan when app is opened.</string>
     <string name="prefs_power_mode">Power mode scan</string>
     <string name="prefs_power_mode_summary">Quickly scan products in a supermarket to see which ones are not in the database.</string>
-    <string name="prefs_language">Language</string>
+    <string name="prefs_language">Languages</string>
     <string name="prefs_language_summary">Change language</string>
-
     <!-- Strings related to feedback dialog -->
     <string name="user_enjoying_app">Are you enjoying your experience with Open Food Facts?</string>
     <string name="user_ask_show_feedback_form">We\'re sorry to hear that! Could you tell us what happened?</string>
@@ -411,7 +258,6 @@
     <string name="rate_app">Rate app</string>
     <string name="no_thx">No thanks</string>
     <string name="feedback_form_url">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
-
     <!-- Scan history -->
     <string name="scan_history_drawer">History</string>
     <string name="clear_history">Clear history</string>
@@ -423,7 +269,6 @@
     <string name="permision_write_external_storage">Write external storage permission is needed to export history.</string>
     <string name="no_brand">No Brand</string>
     <string name="no_title">No Title</string>
-
     <!-- Nutrition info tab -->
     <string name="display_fact">Nutrition facts table for %1$s of this product</string>
     <string name="check_facts">Check</string>
@@ -434,28 +279,26 @@
     <string name="calculate_nutrition_facts">Compute nutrition facts for a specific quantity</string>
     <string name="nutrition_carbohydrate">Carbohydrate</string>
     <string name="nutrition_cholesterol">Cholesterol</string>
-    <string name="nutrition_energy">Energy</string>
+    <string name="nutrition_energy">Calories</string>
     <string name="nutrition_energy_kcal">Energy in calories (kcal)</string>
     <string name="nutrition_energy_kj">Energy in joules (kJ)</string>
-
-    <string name="nutrition_energy_short_name">Energy</string>
+    <string name="nutrition_energy_short_name">Calories</string>
     <string name="nutrition_fat">Fat</string>
-    <string name="nutrition_fiber">Dietary fiber</string>
+    <string name="nutrition_fiber">Fiber</string>
     <string name="nutrition_header">Nutrition facts</string>
     <string name="nutrition_proteins">Proteins</string>
     <string name="nutrition_salt">Salt</string>
     <string name="nutrition_satured_fat">Saturated fat</string>
     <string name="nutrition_sodium">Sodium</string>
-    <string name="nutrition_sugars">Sugars</string>
+    <string name="nutrition_sugars">Sugar</string>
     <string name="nutrition_trans_fat">Trans fat</string>
-    <string name="nutriment_serving_size">Per portion : </string>
+    <string name="nutriment_serving_size">Per portion: </string>
     <string name="action_manage_account">Manage account</string>
     <string name="action_contributes">Your contributions</string>
     <string name="choose_energy_unit">Choose your preferred energy units for the nutrition table</string>
     <string name="energy_pref_title">Preferred energy unit</string>
     <string name="choose_volume_unit">Choose your preferred volume units for the nutrition table</string>
     <string name="volume_pref_title">Preferred volume unit</string>
-
     <string name="logout_drawer">Logout</string>
     <string name="contribution_without_account">You can sign-in or create an Open Food Facts account to keep your contributions</string>
     <string name="textCarbonFootprint">Carbon footprint / CO2 emissions: </string>
@@ -479,10 +322,10 @@
     <string name="txt_try_again">Try again</string>
     <string name="nutrition_lactose">Lactose</string>
     <string name="nutrition_casein">Casein</string>
-    <string name="nutrition_maltodextrins">Maltodextrins</string>
+    <string name="nutrition_maltodextrins">能量</string>
     <string name="nutrition_serum_proteins">Serum Proteins</string>
     <string name="nutrition_nucleotides">Nucleotides</string>
-    <string name="for_100g">For 100 g</string>
+    <string name="for_100g">Per 100 g</string>
     <string name="for_100ml">For 100 ml</string>
     <string name="serving">Per serving</string>
     <string name="nutrition_monounsaturatedFat">Monounsaturated fat</string>
@@ -495,20 +338,20 @@
     <string name="nutrition_fructose">Fructose</string>
     <string name="nutrition_maltose">Maltose</string>
     <string name="nutrition_alcohol">Alcohol</string>
-    <string name="nutrition_vitamins">Vitamins</string>
+    <string name="nutrition_vitamins">Vitamins and Minerals</string>
     <string name="vitamin_a">Vitamin A</string>
     <string name="vitamin_d">Vitamin D</string>
-    <string name="vitamin_e">Vitamin E</string>
+    <string name="vitamin_e">Hello</string>
     <string name="vitamin_k">Vitamin K</string>
     <string name="vitamin_c">Vitamin C</string>
     <string name="vitamin_b1">Vitamin B1</string>
     <string name="vitamin_b2">Vitamin B2</string>
-    <string name="vitamin_pp">Vitamin PP</string>
+    <string name="vitamin_pp">Vitamin PP / B3</string>
     <string name="vitamin_b6">Vitamin B6</string>
     <string name="vitamin_b9">Vitamin B9</string>
     <string name="vitamin_b12">Vitamin B12</string>
     <string name="biotin">Biotin</string>
-    <string name="pantothenic_acid">Pantothenic acid</string>
+    <string name="pantothenic_acid">Vitamin B5</string>
     <string name="nutrition_minerals">Minerals</string>
     <string name="silica">Silica</string>
     <string name="bicarbonate">Bicarbonate</string>
@@ -530,9 +373,9 @@
     <string name="taurine">Taurine</string>
     <string name="ph">pH</string>
     <string name="fruits_vegetables_nuts">Fruits, vegetables, nuts</string>
-    <string name="collagen_meat_protein_ratio">Collagen meat protein ratio</string>
+    <string name="collagen_meat_protein_ratio">Collagen/Meat Protein Ratio</string>
     <string name="cocoa">Cocoa</string>
-    <string name="chlorophyl">Chlorophyl</string>
+    <string name="chlorophyl">Chlorophyll</string>
     <string name="take_picture">Take a photo</string>
     <string name="choose_picture_from_gallery">From gallery</string>
     <string name="take_picture_ingredients">Take a photo of the ingredient list</string>
@@ -546,7 +389,6 @@
     <string name="nova_grp2_msg">Group 2 - Processed culinary ingredients</string>
     <string name="nova_grp3_msg">Group 3 - Processed foods</string>
     <string name="nova_grp4_msg">Group 4 - Ultra-processed food and drink products</string>
-
     <!-- String related to App Shortcuts -->
     <string name="disabled_message">The shortcut is not available.</string>
     <string name="scan_shortcut_short_label">Scan</string>
@@ -558,40 +400,31 @@
     <string name="contributions_shortcut_short_label">Contributions</string>
     <string name="contributions_shortcut_long_label">My contributions</string>
     <string name="forgot_password">Forgot Password</string>
-
     <string name="next">NEXT</string>
     <string name="skip">SKIP</string>
     <string name="start">GOT IT</string>
     <string name="contact">Contact</string>
     <string name="contact_summary">Contact the team</string>
-    <string name="off_mail" translatable="false">mailto:contact@openfoodfacts.org</string>
     <string name="email_not_found">No email applications found</string>
-
     <string name="airplane_mode_active_dialog_title">Airplane mode enabled</string>
     <string name="airplane_mode_active_dialog_message">Airplane mode is enabled, please disable this to continue.</string>
     <string name="airplane_mode_active_dialog_negative">Dismiss</string>
     <string name="airplane_mode_active_dialog_positive">Settings</string>
-
     <string name="device_offline_dialog_title">Network unavailable</string>
     <string name="device_offline_dialog_message">A network connection is needed to do this, would you like to change this in settings?</string>
     <string name="device_offline_dialog_negative">Dismiss</string>
     <string name="device_offline_dialog_positive">Settings</string>
-
     <string name="scan_first_product">Scan your first product</string>
-
     <string name="preference_delete_search_history">Successfully deleted history</string>
     <string name="preference_enable_mobile_data_title">Upload on mobile data</string>
     <string name="preference_enable_mobile_data_summary_on">Upload new products using mobile data &amp; WiFi</string>
     <string name="preference_enable_mobile_data_summary_off">Upload new products using WiFi only</string>
-
     <string name="device_on_mobile_data_warning_title">Information</string>
     <string name="device_on_mobile_data_warning_message">You have disabled upload on mobile data , please connect to WiFi or change this in preferences</string>
     <string name="device_on_mobile_data_warning_positive">Preferences</string>
     <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
     <string name="changes_saved">Changes saved successfully</string>
     <string name="preference_choose_language_dialog_title">Choose language</string>
-
-
     <string name="FAQ">FAQ</string>
     <string name="FrequentlyAskedQuestions">Frequently Asked Questions</string>
     <string name="translate_help_title">Help translate Open Food Facts</string>
@@ -601,11 +434,8 @@
     <string name="compare_products">Compare products</string>
     <string name="connectivity_check">Please check your internet connection</string>
     <string name="dismiss">Dismiss</string>
-
     <string name="Terms">Terms</string>
     <string name="TermsOfUse">Terms and Privacy</string>
-
-    <string name="translate_url" translatable="false">https://translate.openfoodfacts.org/</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <!--Just replace "world" by "fr", "de"… translate the "terms-of-use" with the hyphens -->
     <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
@@ -614,7 +444,6 @@
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
     <string name="hunger_game_url">https://world.openfoodfacts.org/hunger-game</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate the end of the url -->
-    <string name="advanced_search_url" translatable="false">https://world.openfoodfacts.org/cgi/search.pl</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
@@ -623,22 +452,17 @@
     <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">General</string>
     <string name="preference_header_network">Network</string>
-    <string name="preference_header_about" translatable="false">@string/action_about</string>
     <string name="preference_header_contributing">Contributing</string>
-
     <string name="scan_first_string">Your viewed product history will be listed here.\nThis history is for your eyes only and is stored locally.</string>
     <string name="log_in">Login</string>
     <string name="login_true">You are already logged in.</string>
-
     <string name="confirm_logout">Confirm Open Food Facts logout</string>
     <string name="logout_dialog_content">Are you sure to log out of your Open Food Facts contributor account ?</string>
     <string name="dialog_cancel">Cancel</string>
     <string name="dialog_create">Create</string>
-
     <string name="choose_resolution">Choose resolution</string>
     <string name="pref_resolution_summary">Pick a resolution for image upload</string>
     <string name="image_upload_resolution">Image upload resolution</string>
-
     <string name="wikidata_information">Going further</string>
     <string name="wikidata_unavailable">There is no Wikipedia page in your language yet.</string>
     <string name="Wikipedia">View on Wikipedia</string>
@@ -655,24 +479,17 @@
     <string name="category_string">Category</string>
     <string name="connection">Connected</string>
     <string name="contributor_string">Contributor</string>
-
     <string name="Rate_Us">Show Your Support</string>
     <string name="Rate_Us_title">Rate our App</string>
-
     <string name="app_disabled_text">Application is disabled</string>
-
     <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
     <string name="vitamin_tags_text">Vitamins:</string>
     <string name="amino_acid_tags_text">Amino Acids:</string>
     <string name="mineral_tags_text">Minerals:</string>
     <string name="other_tags_text">Other Substances:</string>
-
     <!--shared element transition key-->
-    <string name="product_transition" translatable="false">productTransition</string>
-
     <string name="disable_image_loading">Disable photo loading when battery is low</string>
     <string name="DisableLoadTitle">Disable photo loading</string>
-
     <string name="by_title">Title</string>
     <string name="by_brand">Brand</string>
     <string name="by_barcode">Barcode</string>
@@ -680,7 +497,6 @@
     <string name="sort">Sort</string>
     <string name="by_nutrition_grade">Nutrition Grade</string>
     <string name="sort_by">Sort by</string>
-
     <!-- strings related to share images -->
     <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
     <string name="no_barcode">We have not detected any barcode</string>
@@ -713,7 +529,7 @@
     <string name="preference_show_all_product_photos_summary">Show all product photos submitted in a separate tab</string>
     <string name="offline_product_addition_title">Add a new product</string>
     <string name="productNameNull">Name unknown</string>
-    <string name="productAdditivesUnknown"> </string>
+    <string name="productAdditivesUnknown"></string>
     <string name="productAdditivesTemplate">%1$d additives</string>
     <plurals name="productAdditives">
         <item quantity="one">%d additive</item>
@@ -727,7 +543,7 @@
     <string name="barcode_hint">Trouble Scanning? Enter Barcode</string>
     <string name="switch_camera">Switch camera</string>
     <string name="autofocus">Autofocus</string>
-    <string name="initial_loading">Initial loading</string>
+    <string name="initial_loading">Kwasy tłuszczowe nasycone</string>
     <string name="preferences">Preferences</string>
     <string name="OFFlogo">Open Food Facts logo</string>
     <string name="loading_product">Loading product %s</string>
@@ -760,7 +576,7 @@
     <string name="please_wait">Please wait</string>
     <string name="product_uploaded_successfully">Product uploaded successfully</string>
     <string name="no_internet_connection">You appear to have no internet connection, images will be uploaded when network is available</string>
-    <string name="no_internet_unable_to_extract_ingredients">No internet connection. Unable to extract ingredients</string>
+    <string name="no_internet_unable_to_extract_ingredients">No Internet connection. Unable to to extract ingredients</string>
     <string name="percent">%1$d%%</string>
     <string name="overview">Overview</string>
     <string name="ingredients">Ingredients</string>
@@ -816,11 +632,10 @@
     <string name="edit_product_title">Edit a product</string>
     <string name="nutrient_already_added">%s is already present in the nutrition facts</string>
     <string name="save_edits">Save edits</string>
-    <string name="contribution_by">Contribution by</string>
+    <string name="contribution_by">模糊条码: 本产品具有公司内产品的限制流通编号条码。这意味着不同的生产商和商店可以对不同的产品使用相同的条形码。</string>
     <string name="title_activity_product">Title</string>
     <string name="description_activity_product">description</string>
     <string name="intent_filter_share_label">Add to Open Food Facts</string>
-
     <!-- Used for additive exposure evaluation table -->
     <string name="overexposure_high">High risk of over exposure</string>
     <string name="overexposure_moderate">Moderate risk of over exposure</string>
@@ -834,7 +649,7 @@
     <string name="adolescents_age">10 to 17</string>
     <string name="adults">Adults</string>
     <string name="adults_age">18 to 64</string>
-    <string name="elderly">Elderly</string>
+    <string name="elderly">Hello</string>
     <string name="elderly_age">65+</string>
     <string name="most_people">Most people\n(over 50%)</string>
     <string name="some_people">Some people\n(over 5%)</string>
@@ -867,7 +682,6 @@
     <string name="crop_new_image">Enables crop action on new images</string>
     <string name="addtive_search">Search for a additive</string>
     <string name="additives">Additives</string>
-
     <!--used for product_lists implementation-->
     <string name="add_to_product_lists">Add to your lists</string>
     <string name="txt_create_new_list">Create a new list</string>
@@ -878,7 +692,7 @@
     <string name="txt_exporting_your_listed_products">Exporting Your Products…</string>
     <string name="txt_your_listed_products_exported">Your products have been exported</string>
     <string name="txt_discard">Discard</string>
-    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on "I'm eating this".
+    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"I\'m eating this\".
         You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
     <string name="txt_info_your_listed_products">You\'ll be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
     <string name="search_history_pref_title">Delete local search history</string>
@@ -890,7 +704,7 @@
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
     <string name="image_prompt_language">Take a photo of the ingredients in</string>
     <!-- Used for diets AddOn -->
-    <string name="empty" />
+    <string name="empty"></string>
     <string name="add_product">Add products</string>
     <string name="add_another_product">Add another product</string>
     <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
@@ -944,25 +758,22 @@
     <string name="unknown_status_no_translation">We couldn\'t assess the status of the product due to unrecognized ingredients.</string>
     <string name="help_translate_ingredients">Help translate the ingredients in your language</string>
     <string name="unknown_status_missing_ingredients">We couldn\'t assess the status of the product due to missing ingredients.</string>
-    <string name="unknown_status_ambiguous_ingredients">We couldn\'t assess the status of the product because of ambiguous ingredients : <![CDATA[<b>%1$s</b>]]> </string>
+    <string name="unknown_status_ambiguous_ingredients">We couldn\'t assess the status of the product because of ambiguous ingredients : <![CDATA[<b>%1$s</b>]]></string>
     <string name="help_extract_ingredients">Help extract the ingredients to get the %1$s status</string>
     <string name="add_photo_to_extract_ingredients">Add a photo to begin extracting ingredients</string>
     <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
     <string name="compare_brands">Brands :</string>
-    <string name="compare_additives">Additives :</string>
+    <string name="compare_additives">Additives:</string>
     <string name="compare_salt">Salt</string>
-    <string name="compare_sugars">Sugars</string>
+    <string name="compare_sugars">Sugar</string>
     <string name="compare_saturated_fat">Saturated fat</string>
     <string name="compare_fat">Fat</string>
     <string name="compare_quantity">Quantity :</string>
-
     <string name="load_ingredient_detection_data">Load ingredient detection data</string>
     <string name="load_ingredient_detection_data_summary">No ingredient detection data has been found, try to load it from server</string>
     <string name="white_check_image_descr">A white check</string>
     <string name="hint_packaging">Examples: plastic, paper, glass</string>
     <string name="risk_alcohol_consumption">Excessive consumption of alcohol is harmful to health, to be consumed in moderation</string>
-    <string name="check_first_time">check_first_time</string>
-
     <!--ShowcaseView Strings-->
     <string name="title_image_type">Select Image Type</string>
     <string name="content_image_type">Choose the photo to work on</string>
@@ -985,4 +796,5 @@
     <string name="brand_hint">Examples: Coca-Cola, Nestle, etc…</string>
     <string name="sign_in_or_register">Sign in or register</string>
     <string name="hunger_game_call_to_action">Help classify more %1$s</string>
+    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s food products (plus the ones you will contribute).</string>
 </resources>
