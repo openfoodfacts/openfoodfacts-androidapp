@@ -1,7 +1,7 @@
-All 25k OFF volunteers kept working hard: 1,4M products, 182 countries 🙂
-1. OFF goes big in the US: 237k products with Nutri-Score !
-2. Dark mode: lighter on your eyes, lighter on your battery
-3. Help compute Nutri-Score & Eco-Score: slide up for blue questions & get credited for your answers.
-4. Massive improvements to the vegan, vegetarian & palm oil detection.
-5. Instant product edition even with bad or no network
-6. Products To Be Completed page (right menu) is now real time.
+Toți cei 25.000 de voluntari Open Food Facts au continuat să muncească din greu: 1,4 milioane de produse, 182 de țări 🙂
+1. OFF este mare în SUA: 237.000 de produse cu Nutri-Score!
+2. Modul întunecat: mai ușor pentru ochi, mai ușor pentru baterie
+3. Ajutați la calcularea scorului nutrițional și a scorului ecologic: glisați în sus pentru întrebări sfioase și primiți puncte pentru răspunsuri.
+4. Îmbunătățiri semnificative în detectarea produselor vegane, vegetariene și care conțin ulei de palmier.
+5. Răspunsuri Instanțe pentru produse cu o conexiune slabă sau chiar fără conexiune la internet
+6. Pagina de completat produse (meniul din dreapta) este valabilă în timp real.
