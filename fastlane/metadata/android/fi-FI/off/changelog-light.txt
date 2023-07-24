@@ -1,34 +1,34 @@
-VERSIO 3
+VERSION 3
 ====
-1. On helpompaa lisätä uusia tuotteita ja saada Nutri-Score
-2. Luo (ja vie) tuoteluettelosi (ostokset, syöminen…)
-3. Vertaa tuotteita rinnakkain skannaamalla ne yksi toisensa jälkeen.
-4. Täysin uusittu tuotesivu, liu'uta kortti ylös löytääksesi sen
-5. Open Food Facts toimii täysin vapaaehtoisvoimin: Voit lahjoittaa aikaa (world.openfoodfacts.org/contribute) tai rahaa (donate.openfoodfacts.org)
+1. It's easier to contribute new products, and get the Nutri-Score
+2. Create (and export) your product lists (shopping, eating…)
+3. Compare products side by side by scanning them one after the other.
+4. Completely redesigned product page, slide the card up to discover it
+5. Open Food Facts is fully volunteer-run: you can contribute time (world.openfoodfacts.org/contribute) or money (donate.openfoodfacts.org)
 
 
 ======
-v2! Kaikki OFF-vapaaehtoiset ovat tehneet paljon töitä, teidän ehdotuksiin perustuen. Olemme globaalimpi liike kuin koskaan ennen. 500 000:ta tuotetta vapautettu, 182 maata, 10 000+ osallistujaa, mkl. sinä :-)
-1. NutriScore kaikille maailman tuotteille
-2. Vietävä historia, vain sinun nähtävissä
-3. Allergeenivaroitukset
-4. Napauta lisäaineita tutkiaksesi niitä Wikipediassa.
-5. Ota kuvia, ole osa elintarvikkeiden läpinäkyvyyttä
-6. Paljon nopeampi, jopa 2G-yhteydellä. Voit jopa osallistua ilman yhteyttä
-7. Tilin luomista ei vaadita
-8. Yhtä kevyt kuin ennenkin :)
+v2 ! All OFF volunteers have worked hard, based on your suggestions. We're a more global movement than ever. 500k products freed, 182 countries, 10K+ contributors, incl. you :-)
+1. The NutriScore for all products in the world
+2. Exportable history, for your eyes only
+3. Allergen alerts
+4. Tap additives to explore with Wikipedia.
+5. Take photos, be part of food transparency
+6. Much faster, even on 2G. You can even contribute with no connection
+7. No sign-up required
+8. As light as before :)
 
-v2.8! Valtavan V2:n jälkeen, kaikki OFF-vapaaehtoiset jatkoivat kovasti työskentelyä, teidän ehdotuksiinne perustuen. Meillä on nyt 570 000:ta vapautettua tuotetta 182:sta maasta ja 10 000:lta osallistujalta, mkl. sinä 🙂
-1. Rakensimme uusiksi koko tuotteiden lisäämiskokemuksen (ja se jopa toimii yhteydettömässä tilassa). (kiitos, Huzaifa)
-2. Voit nyt saada ravintosisällön annokselle, jota syöt (Rutvik)
-3. Laskemme nyt NOVA-ryhmät Nutriscoren lisäksi (Huzaifa)
-4. Siivousta (tekijät: Rutvik ja Salfai)
-5. 🌎 Korea ja Indonesia
+v2.8 ! After the massive V2, all OFF volunteers kept working hard, based on your suggestions. We now clock at 570k products freed from 182 countries by 10K+ contributors, incl. you 🙂
+1. We rebuilt the whole product addition experience (and it even works offline). (thanks Huzaifa)
+2. You can now get nutrition facts for the portion you're eating (Rutvik)
+3. We now compute NOVA groups in addition to the Nutriscore (Huzaifa)
+4. Housecleaning (by Rutvik & Salfai)
+5. 🌎 Korean & Indonesian
 
-2.8.8! Luulitko, että lopetimme tuotteiden lisäämiseen? Kaikki OFF-vapaaehtoiset jatkoivat kovasti työskentelyä. 590 000:ta tuotetta, 182 maata, 10 000:ta osallistujaa, mkl. sinä 🙂
-1. Voit nyt muokata mitä tahansa tuotetta OFF-tililläsi. Napsauta ✏️-merkkiä tuotesivulla muokataksesi.
-2. 🌍 Slovakia, Heprea, Espanja, Arabia, Hollanti, Unkari ja Vietnam (translate.openfoodfacts.org auttaaksesi)
-3. Open Food Facts on täysin vapaaehtoisvoimin toimiva pyrkimys: Voit lahjoittaa aikaa (world.openfoodfacts.org/contribute) tai rahaa (donate.openfoodfacts.org)
+2.8.8 ! Thought we would stop at product addition ? All OFF volunteers kept working hard. 590k products, 182 countries, 10K+ contributors, incl. you 🙂
+1. You can now edit any product with your OFF account. Click on ✏️ on a product page to edit.
+2. 🌍 Slovak, Hebrew, Spanish, Arabic, Dutch, Hungarian and Vietnamese (translate.openfoodfacts.org to help)
+3. Open Food Facts is a fully volunteer-run effort: You can donate time (world.openfoodfacts.org/contribute) or money (donate.openfoodfacts.org)
 
 
 
