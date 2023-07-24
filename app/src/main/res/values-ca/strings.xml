@@ -241,7 +241,7 @@
     <string name="permission_denied">Si us plau, activeu el permís a la configuració</string>
     <string name="info_download_data_connection">Necessiteu descarregar algunes dades per fer funcionar aquesta funcionalitat. Si us plau, activeu la connexió a internet.</string>
     <!-- Strings related to login -->
-    <string name="error_invalid_password">La contrasenya ha de tenir un mínim de 6 caràcters.</string>
+    <string name="error_invalid_password">The password needs to be at least 6 characters long.</string>
     <string name="user">usuari</string>
     <string name="error_field_required">Aquest camp és obligatori.</string>
     <string name="action_preferences">Preferències</string>
@@ -249,12 +249,12 @@
     <string name="prefs_scan_startup_summary">Si aquesta opció està seleccionada, l\'escaneig començarà quan l\'aplicació s\'obri.</string>
     <string name="prefs_power_mode">Escaneig en mode potència</string>
     <string name="prefs_power_mode_summary">Escanegeu ràpidament els productes d\'un comerç per veure quins no es troben a la base de dades.</string>
-    <string name="prefs_language">Idioma</string>
+    <string name="prefs_language">Language</string>
     <string name="prefs_language_summary">Canvi de llengua</string>
     <!-- Strings related to feedback dialog -->
     <string name="user_enjoying_app">Esteu gaudint d\'una bona experiència amb Open Food Facts?</string>
     <string name="user_ask_show_feedback_form">Ens sap greu escoltar això! Ens podeu dir què us ha passat?</string>
-    <string name="user_ask_rate_app">Perfecte! Feu que d\'altres coneguin la vostra opinió d\'aquesta aplicació!</string>
+    <string name="user_ask_rate_app">Great! Let others know what you think of this app!</string>
     <string name="rate_app">Valoreu l\'aplicació</string>
     <string name="no_thx">No, gràcies</string>
     <string name="feedback_form_url">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
@@ -279,10 +279,10 @@
     <string name="calculate_nutrition_facts">Calcula les Dades Nutricionals</string>
     <string name="nutrition_carbohydrate">Carbohidrat</string>
     <string name="nutrition_cholesterol">Colesterol</string>
-    <string name="nutrition_energy">Energia</string>
+    <string name="nutrition_energy">Energy</string>
     <string name="nutrition_energy_kcal">Energia en calories (kcal)</string>
     <string name="nutrition_energy_kj">Energia en joules (kJ)</string>
-    <string name="nutrition_energy_short_name">Energia</string>
+    <string name="nutrition_energy_short_name">Energy</string>
     <string name="nutrition_fat">Greixos</string>
     <string name="nutrition_fiber">Fibra dietètica</string>
     <string name="nutrition_header">Informació nutricional</string>
@@ -294,7 +294,7 @@
     <string name="nutrition_trans_fat">Greix trans</string>
     <string name="nutriment_serving_size">Per porció :</string>
     <string name="action_manage_account">Gestiona el compte</string>
-    <string name="action_contributes">Les vostres aportacions</string>
+    <string name="action_contributes">Your contributions</string>
     <string name="choose_energy_unit">Tria les unitats d\'energia que vols fer servir per a la taula d\'informació nutricional</string>
     <string name="energy_pref_title">Unitat d\'energia preferida</string>
     <string name="choose_volume_unit">Tria les unitats de volum que vols fer servir per a la taula d\'informació nutricional</string>
@@ -303,7 +303,7 @@
     <string name="contribution_without_account">Podeu iniciar la sessió o crear un compte per mantenir les vostres aportacions</string>
     <string name="textCarbonFootprint">Empremta de carboni / emissions de CO₂: </string>
     <string name="action_search">Cerca</string>
-    <string name="search_hint">Cercar un producte</string>
+    <string name="search_hint">Search a product</string>
     <string name="number_of_results">Nombre de resultats: </string>
     <string name="number_of_products">Nombre de productes: </string>
     <string name="txt_no_matching__category_products">Oh no! No tenim cap producte d\'aquesta categoria, podeu afegir-ne un?</string>
@@ -471,7 +471,7 @@
     <string name="additive_string">Additiu</string>
     <string name="allergen_string">Al·lergen</string>
     <string name="search_string">Cerca</string>
-    <string name="country_string">Països on es va vendre</string>
+    <string name="country_string">Countries where sold</string>
     <string name="store_subtitle">Botiga</string>
     <string name="packaging_subtitle">Empaquetament</string>
     <string name="packaging_string">Empaquetament</string>
@@ -496,7 +496,7 @@
     <string name="by_time">Vist darrerament</string>
     <string name="sort">Ordena</string>
     <string name="by_nutrition_grade">Grau nutricional</string>
-    <string name="sort_by">Ordena per</string>
+    <string name="sort_by">Sort by</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">Les imatges sense codi de barres encara no es poden afegir amb l\'aplicació. Proveu la versió web per a mòbils.</string>
     <string name="no_barcode">No hem detectat cap codi de barres</string>
@@ -505,8 +505,8 @@
     <string name="code_detected">Hem detectat el codi de barres</string>
     <string name="do_you_want_to">Voleu afegir fotos a aquest codi de barres?</string>
     <string name="bottomNav_history">Historial</string>
-    <string name="products_added">Productes que ha afegit o editat</string>
-    <string name="products_incomplete">Productes que ha afegit que han de ser completats</string>
+    <string name="products_added">Products you added or edited</string>
+    <string name="products_incomplete">Products you added that need to be completed</string>
     <string name="product_pictures_contributed">Productes pels quals vau fer fotos</string>
     <string name="picture_contributed_incomplete">Cal completar els productes pels quals vau fer fotos</string>
     <string name="product_info_added">Productes pels quals vau afegir informació</string>
@@ -587,12 +587,12 @@
     <string name="ingredients_list">Llista d\'ingredients</string>
     <string name="ingredients_hint">Manteniu l\'ordre, indiqueu el % quan s\'especifica, separat per una coma o -, utilitzeu () pels ingredients d\'un ingredient, els al·lèrgens envoltats amb _</string>
     <string name="extract_ingredients">Extreu els ingredients</string>
-    <string name="extracting_ingredients">Extraent ingredients</string>
+    <string name="extracting_ingredients">Extracting ingredients</string>
     <string name="looksGood">Pinta bé</string>
     <string name="skip_ingredients">Massa dolent \n Saltar Ingredients</string>
-    <string name="traces">Rastres</string>
+    <string name="traces">Traces</string>
     <string name="traces_hint">Indiqueu els ingredients de les mencions com \"Pot contenir restes de\", \"Fabricat en una fàbrica que també s\'utilitza\", etc. \ nExemples: llet, gluten, fruits secs</string>
-    <string name="nutrition_facts_not_specified">Les dades nutricionals no s\'especifiquen en el producte.</string>
+    <string name="nutrition_facts_not_specified">Nutrition facts are not specified on the product.</string>
     <string name="nutrition_facts_picture">Imatge de la Informació Nutricional</string>
     <string name="front_short_picture">Davant</string>
     <string name="other_picture">Una altra imatge</string>
@@ -605,10 +605,10 @@
     <string name="product_picture">Foto del producte</string>
     <string name="one_photo_compulsory">(una foto és obligatòria per afegir un nou producte)</string>
     <string name="product_details">Detalls del producte</string>
-    <string name="product_name">Nom del producte</string>
+    <string name="product_name">Product name</string>
     <string name="quantity">Quantitat</string>
     <string name="labels">Etiquetes</string>
-    <string name="period_of_time_after_opening">Període de temps després d\'obrir</string>
+    <string name="period_of_time_after_opening">Period of time after opening</string>
     <string name="manufacturing_details">Detalls de fabricació</string>
     <string name="origin_of_ingredients">Origen dels ingredients</string>
     <string name="manufacturing_place">Lloc de fabricació</string>
@@ -629,7 +629,7 @@
     <string name="sign_in_to_edit">Inicieu la sessió per editar un producte.</string>
     <string name="sign_in_to_answer">Inicieu la sessió o registreu-vos per respondre a una informació.</string>
     <string name="hint_quantity">Exemples: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
-    <string name="edit_product_title">Edita un producte</string>
+    <string name="edit_product_title">Edit a product</string>
     <string name="nutrient_already_added">%s ja està present en les dades nutricionals</string>
     <string name="save_edits">Desa l\'edició</string>
     <string name="contribution_by">Aportació de</string>
@@ -637,20 +637,20 @@
     <string name="description_activity_product">descripció</string>
     <string name="intent_filter_share_label">Afegir a Open Food Facts</string>
     <!-- Used for additive exposure evaluation table -->
-    <string name="overexposure_high">Risc alt per exposició excessiva</string>
-    <string name="overexposure_moderate">Risc moderat per exposició excessiva</string>
-    <string name="infants">Nadons</string>
+    <string name="overexposure_high">High risk of over exposure</string>
+    <string name="overexposure_moderate">Moderate risk of over exposure</string>
+    <string name="infants">Infants</string>
     <string name="infants_age">&lt; 1</string>
-    <string name="toddlers">Infants</string>
-    <string name="toddlers_age">d\'1 a 2</string>
-    <string name="children">Mainada</string>
-    <string name="children_age">de 3 a 9</string>
+    <string name="toddlers">Toddlers</string>
+    <string name="toddlers_age">1 to 2</string>
+    <string name="children">Children</string>
+    <string name="children_age">3 to 9</string>
     <string name="adolescents">Adolescents</string>
-    <string name="adolescents_age">de 10 a 17</string>
+    <string name="adolescents_age">10 to 17</string>
     <string name="adults">Adults</string>
-    <string name="adults_age">de 18 a 64</string>
-    <string name="elderly">Gent gran</string>
-    <string name="elderly_age">més de 65</string>
+    <string name="adults_age">18 to 64</string>
+    <string name="elderly">Elderly</string>
+    <string name="elderly_age">65+</string>
     <string name="most_people">La majoria de la gent\n(més del 50%)</string>
     <string name="some_people">Algunes persones\n(més del 5%)</string>
     <string name="safety_and_exposure_assessment">Seguretat i avaluació de l\'exposició</string>
@@ -681,7 +681,7 @@
     <string name="crop_new_image_title">Retalla les imatges noves</string>
     <string name="crop_new_image">Habilita el retall de les imatges noves</string>
     <string name="addtive_search">Cerqueu un additiu</string>
-    <string name="additives">Additius</string>
+    <string name="additives">Additives</string>
     <!--used for product_lists implementation-->
     <string name="add_to_product_lists">Afegiu a la vostra llista</string>
     <string name="txt_create_new_list">Crea una llista nova</string>
@@ -708,7 +708,7 @@
     <string name="add_product">Afegiu productes</string>
     <string name="add_another_product">Afegiu un altre producte</string>
     <string name="add_nutrition_facts_for_nutriscore">Afegiu informació nutricional per calcular el Nutri-Score</string>
-    <string name="product_summary_action_compare_button_label">Comparar</string>
+    <string name="product_summary_action_compare_button_label">Compare</string>
     <string name="product_summary_action_add_to_list_button_label">Afegeix a la llista</string>
     <string name="product_summary_action_edit_button_label">Edita</string>
     <string name="product_summary_action_share_button_label">Comparteix</string>
@@ -730,7 +730,7 @@
     <string name="add_a_list">Afegiu una llista</string>
     <string name="edit_image">Edit Image</string>
     <string name="cant_edit_image_not_yet_uploaded">The new image is not yet uploaded. Please, wait before editing it</string>
-    <string name="unselect_image">Desseleccioneu la imatge</string>
+    <string name="unselect_image">Unselect Image</string>
     <string name="choose_default_language">Seleccioneu l\'idioma del producte</string>
     <string name="barcode">Codi de barres</string>
     <string name="productAdditivesNone">Sense additius</string>
