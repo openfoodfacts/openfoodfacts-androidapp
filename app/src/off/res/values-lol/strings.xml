@@ -1,36 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/ -->
-    <string name="website">crwdns150874:0crwdne150874:0</string>
+    <string name="website">crwdns224115:0crwdne224115:0</string>
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contribuer -->
-    <string name="website_contribute">crwdns150876:0crwdne150876:0</string>
+    <string name="website_contribute">crwdns224117:0crwdne224117:0</string>
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/decouvrir -->
-    <string name="website_discover">crwdns150878:0crwdne150878:0</string>
+    <string name="website_discover">crwdns224119:0crwdne224119:0</string>
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/produit/ -->
-    <string name="website_product">crwdns150880:0crwdne150880:0</string>
+    <string name="website_product">crwdns224121:0crwdne224121:0</string>
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
-    <string name="website_contributor">crwdns150884:0crwdne150884:0</string>
-    <string name="txtHome">crwdns150886:0crwdne150886:0</string>
-    <string name="slide_1_title">crwdns150888:0crwdne150888:0</string>
-    <string name="slide_1_desc">crwdns150890:0crwdne150890:0</string>
-    <string name="slide_2_title">crwdns150892:0crwdne150892:0</string>
-    <string name="slide_2_desc">crwdns150894:0crwdne150894:0</string>
-    <string name="slide_3_title">crwdns150896:0crwdne150896:0</string>
-    <string name="slide_3_desc">crwdns150898:0crwdne150898:0</string>
-    <string name="slide_4_title">crwdns150900:0crwdne150900:0</string>
-    <string name="slide_4_desc">crwdns150902:0crwdne150902:0</string>
-    <string name="txtDialogsContent">crwdns150904:0crwdne150904:0</string>
-    <string name="txtDialogsContentPowerMode">crwdns150906:0crwdne150906:0</string>
-    <string name="msg_share">crwdns150908:0crwdne150908:0</string>
-    <string name="not_support_books">crwdns150910:0crwdne150910:0</string>
-    <string name="txt_broaden_search">crwdns150912:0crwdne150912:0</string>
-    <string name="Donation">crwdns150914:0crwdne150914:0</string>
-    <string name="translate_help_title">crwdns150916:0crwdne150916:0</string>
-    <string name="translate_help_summary">crwdns150918:0crwdne150918:0</string>
-    <string name="text_offline_info_dialog">crwdns150920:0crwdne150920:0</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">crwdns150922:0crwdne150922:0</string>
+    <string name="website_contributor">crwdns224125:0crwdne224125:0</string>
+    <string name="txtHome">crwdns224127:0crwdne224127:0</string>
+    <string name="slide_1_title">crwdns224129:0crwdne224129:0</string>
+    <string name="slide_1_desc">crwdns224131:0crwdne224131:0</string>
+    <string name="slide_2_title">crwdns224133:0crwdne224133:0</string>
+    <string name="slide_2_desc">crwdns224135:0crwdne224135:0</string>
+    <string name="slide_3_title">crwdns224137:0crwdne224137:0</string>
+    <string name="slide_3_desc">crwdns224139:0crwdne224139:0</string>
+    <string name="slide_4_title">crwdns224141:0crwdne224141:0</string>
+    <string name="slide_4_desc">crwdns224143:0crwdne224143:0</string>
+    <string name="txtDialogsContent">crwdns224145:0crwdne224145:0</string>
+    <string name="txtDialogsContentPowerMode">crwdns224147:0crwdne224147:0</string>
+    <string name="msg_share">crwdns224149:0crwdne224149:0</string>
+    <string name="not_support_books">crwdns224151:0crwdne224151:0</string>
+    <string name="txt_broaden_search">crwdns224153:0crwdne224153:0</string>
+    <string name="Donation">crwdns224155:0crwdne224155:0</string>
+    <string name="translate_help_title">crwdns224157:0crwdne224157:0</string>
+    <string name="translate_help_summary">crwdns224159:0crwdne224159:0</string>
+    <string name="text_offline_info_dialog">crwdns224161:0crwdne224161:0</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">crwdns224163:0crwdne224163:0</string>
     <!-- OFF tagline in different languages -->
-    <string name="tagline">crwdns150934:0crwdne150934:0</string>
-    <string name="product_not_found">crwdns150938:0%1$scrwdne150938:0</string>
-    <string name="currently_on_version">crwdns150940:0crwdne150940:0</string>
+    <string name="tagline">crwdns224175:0crwdne224175:0</string>
+    <string name="product_not_found">crwdns224179:0%1$scrwdne224179:0</string>
+    <string name="currently_on_version">crwdns224181:0crwdne224181:0</string>
 </resources>
