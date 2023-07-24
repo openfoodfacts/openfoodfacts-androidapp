@@ -1,8 +1,8 @@
-Scansiona prodotti alimentari per animali o i loro codici a barre per ottenere dati su ingredienti, additivi e valori nutrizionali.
+Scansiona i prodotti alimentari per animali domestici o i loro codici a barra per ottenere dati su ingredienti, additivi e valori nutrizionali.
 
 L'app consente di vedere gli oltre 600 alimenti per animali già contenuti nel database libero e aperto di Open Pet Food Facts e di aggiungere foto e dati per i prodotti mancanti.
 
-Per scoprire il progetto Open Pet Food Facts, visitare https://it.openpetfoodfacts.org
+Per scoprire il progetto di Open Pet Food Facts, sei pregato di visitare https://world.openpetfoodfacts.org
 
 ***Contribuire alla trasparenza del cibo per animali***
 
@@ -26,7 +26,7 @@ Sarai anche in grado di trovare (secondo le indicazioni presenti sui prodotti):
 - Non hai bisogno di una fotocamera per cercare un prodotto. Puoi anche digitare il codice a barre se non hai una fotocamera o non funziona.
 
 *** Il tuo cibo per animali, i tuoi dati ***
-- I tuoi dati personali sono tuoi e non vengono mai inviati online
+- I tuoi dati personali sono tuoi e non sono mai inviati online
 - Puoi usare l'app in modo anonimo
 - Puoi esportare la cronologia di scansione
 
