@@ -10,27 +10,27 @@
     <string name="website_product">https://world.openfoodfacts.org/product/</string>
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
     <string name="website_contributor">https://world.openfoodfacts.org/contributor/</string>
-    <string name="txtHome">Open Food Facts is an open database of food products with ingredients, allergens, nutrition facts and all the tidbits of information we can find on product labels.</string>
-    <string name="slide_1_title">식품 투명도에 기여하기</string>
-    <string name="slide_1_desc">제품을 잘 살펴 사진을 찍어 음식을 투명 하게 한다 </string>
+    <string name="txtHome">Open Food Facts는 식품에 대한 개방형 데이터베이스입니다.</string>
+    <string name="slide_1_title">식품 투명성에 기여하기</string>
+    <string name="slide_1_desc">상품을 스캔하고, 사진을 찍어서 식품 투명성을 확보합니다</string>
     <string name="slide_2_title">정보를 얻으세요</string>
     <string name="slide_2_desc">스캔하고 해독된 제품에 대한 상세 정보</string>
     <string name="slide_3_title">뉴트리 스코 (Nutri-score) 얻기</string>
     <string name="slide_3_desc">좋아하는 식품의 영양 특성에 대한 종합적 견해</string>
     <string name="slide_4_title">오프라인으로 작업</string>
     <string name="slide_4_desc">인터넷에 연결되어 있지 않아도 새 제품을 추가 할 수 있습니다.</string>
-    <string name="txtDialogsContent">스캔한 상품이 Open Food Facts에 존재 하지 않습니다. 품목을 추가하여 주십시오.</string>
+    <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
     <string name="txtDialogsContentPowerMode">스캔 한 제품은 이미 Open Food Facts에 있습니다.</string>
-    <string name="msg_share">오픈 푸드 팩트에서 이 상품을 검색해보세요.</string>
+    <string name="msg_share">Open Food Facts에서 이 제품을 검색해보세요 : </string>
     <string name="not_support_books">책은 현재 Open Food Facts에서 지원되지 않습니다.</string>
     <string name="txt_broaden_search">- 검색 범위를 넓힌후 \n 제품을 Open Food Facts에 추가하십시오</string>
     <string name="Donation">Open Food Facts에 기부하려면 여기를 클릭하십시오.</string>
     <string name="translate_help_title">Open Food Facts 번역 도움말</string>
     <string name="translate_help_summary">Open Food Facts 데이터베이스를 귀하의 언어로 가져 오십시오 - 기술적인 지식이 필요하지 않습니다.</string>
     <string name="text_offline_info_dialog">오프라인 상태에서도 제품을 스캔하여 나중에 Open Food Facts에 추가하십시오. 스캔한 제품이 여기에 나타나면 아래 버튼을 사용하여 추가할 수 있습니다.</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">귀하의 알레르기 정보는 Open Food Facts 서버로 전송되지 않습니다. 또한 제품 데이터가 정확하지 않을 수 있으며 감지가 100 % 정확하지 않을 수 있으므로 조심하여 직접 확인하십시오! </string>
     <!-- OFF tagline in different languages -->
-    <string name="tagline">무료 식제품 데이터베이스</string>
+    <string name="tagline">자유 식품 데이터베이스</string>
     <string name="product_not_found">스캔한 상품 %1$s가 Open Food Facts에 존재하지 않습니다. 추가하시겠습니까?</string>
     <string name="currently_on_version">현재 오픈 음식 정보</string>
 </resources>
