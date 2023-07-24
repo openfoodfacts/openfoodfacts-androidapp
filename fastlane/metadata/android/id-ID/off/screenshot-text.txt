@@ -1,72 +1,72 @@
-Those are the taglines shown above the screenshots in the playstore. Keep them short and attractive.
+Itu adalah tagline yang ditampilkan di atas tangkapan layar di playstore. Buat mereka singkat dan menarik.
 https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=id
 
-=====================
-V2 screenshots
-=====================
+=======================
+Tangkapan layar V2
+=======================
 
-Scan products
+Pindai produk
 
-Get the Nutriscore
+Dapatkan Nutriscore
 
-Your full scan history, fully private & exportable
+Riwayat pemindaian lengkap Anda, sepenuhnya pribadi & dapat diekspor
 
-Go further with Wikipedia
+Melangkah lebih jauh dengan Wikipedia
 
-Set allergen alerts
+Setel peringatan alergen
 
-Nutrition, simplified
+Nutrisi, disederhanakan
 
-Peringatan bahan alergi
+Peringatan alergen
 
-Get alternatives for your favorite foods
+Dapatkan alternatif untuk makanan favorit Anda
 
-Become an actor of food transparency
+Menjadi aktor transparansi pangan
 
-Wikipedia for Food
+Wikipedia untuk Makanan
 
-Wikipedia for Cosmetics
+Wikipedia untuk Kosmetik
 
-Wikipedia for Pet Food
+Wikipedia untuk Makanan Hewan
 
-Wikipedia of Products
+Wikipedia Produk
 
-Bahan
+bahan
 
-Powerful
+Kuat
 
-tabel nutrisi
+Informasi nilai gizi
 
-=====================
-V3 screenshots
-=====================
+=======================
+Tangkapan layar V3
+=======================
 
-Choose the products that are good for you and for the 🌍 planet !
+Pilih produk yang baik untuk Anda dan untuk planet !
 
-✔ Ultra-fast barcode scan
+Pemindaian kode batang sangat cepat
 
-✔ A global supermarket in your pocket
+Supermarket global di saku Anda
 
-Nutritional quality
+Kualitas nutrisi
 
-Ultra-processed foods
+Makanan olahan ultra
 
-Carbon impact
+Dampak karbon
 
-Compare easily before you buy
+Bandingkan dengan mudah sebelum Anda membeli
 
-Create shopping lists, intake lists…
+Buat daftar belanja, daftar asupan…
 
-Find and compare over 750 000 products.
+Temukan dan bandingkan lebih dari 750.000 produk.
 
 
 
-Unlimited and fully-private scan history
+Riwayat pemindaian tidak terbatas dan sepenuhnya pribadi
 
-Swipe for even more details
+Geser untuk lebih jelasnya
 
-Set Allergen Alerts
+Setel Peringatan Alergen
 
-Join our global movement for food transparency
+Bergabunglah dengan gerakan global kami untuk transparansi pangan
 
 world.openfoodfacts.org/contribute
