@@ -5,7 +5,7 @@ https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=en
 V2 screenshots
 =====================
 
-Scan products
+Skeniraj artikal
 
 Get the Nutriscore
 
@@ -17,7 +17,7 @@ Set allergen alerts
 
 Nutrition, simplified
 
-Alergen alarm
+Allergen alert
 
 Get alternatives for your favorite foods
 
