@@ -1,32 +1,31 @@
-*** Ka ba da gudummawa wajen tabbatar da kwaskwarima ***
+***Contribute to Cosmetic Transparency***
 
-- Bugun Labaran Lissafi Kwarewar kayan kwalliyar kayan kwaskwarima wanda kowa yayi, domin kowa.
-- Kuna iya amfani da shi don yin zaɓin mafi kyawun kayan kwalliya, kuma kamar yadda yake buɗe bayanan, kowa na iya sake amfani dashi don kowane dalili.
-- Bugun Kayan Fata na Kyauta wani shiri ne wanda ba riba ba wanda dubunnan masu ba da agaji na duniya suka kirkira. Munada da yawan abubuwan burgewa wanda zaka iya bada gudumuwa ga kowa ta hanyoyi da yawa. 
-- Kuna iya fara ba da gudummawa a yau ta ƙara samfurin daga akwatin kyan kwalliyar ku. 
+- Open Beauty Facts is a cosmetic products database made by everyone, for everyone.
+- You can use it to make better cosmetic choices, and as it is open data, anyone can re-use it for any purpose.
+- Open Beauty Facts is a non-profit project developed by thousands of volunteers from around the world. Muna da ayyuka masu ban sha'awa da yawa waɗanda zaku iya ba da gudummawarsu ta hanyoyi daban-daban. 
+- You can start contributing today by adding a product from your cosmetic cupboard. 
 
-***Samu dalilai***
+*** Get the Facts ***
 
-- Kayan shafawa, Fil. lambobi, CI-lambobi, INCI (Nasashen Duniya na Kayan kwaskwarima), jerin abubuwan samarwa, abubuwan ƙira, lambobin shiryawa... 
-- Bude kyawawan Labaran Shakewa yana taimaka maka wajen sanya kyakkyawan ma'anar buga takardu akan abubuwan samfuri.
-Ba kwa buƙatar zama chemist ba ko kuma ku koyi latin babu kuma don fitar da jerin abubuwan da ake amfani da su :-)
-- Kuna iya bincika: aftershaves, lotions na jiki, creams, deodorant, eyeliner, tushe, kamshi, lipstick, makeup, mask, turare, shamfu, sabulu, sabulun wanka, karin, da abun gyaran farce, da sauransu…
-- Muna tsammanin zai iya zama da amfani ga mutanen da ke da yanayin fata kamar ƙaiƙayi, psoriasis, eczema… don yin zaɓin mafi kyawun kayan kwalliya.
+- Cosmetics additives, F.I.L. codes, CI-numbers, INCI (International Nomenclature of Cosmetic Ingredients), ingredient list, allergens, packaging codes... 
+- Open Beauty Facts helps you to make sense of the fine print on products labels.
+- You don't need to be a chemist and learn latin anymore to decypher an ingredient list :-)
+- You can scan: aftershaves, body lotions, creams, deodorant, eyeliner, foundation, fragrance, lipstick, makeup, mask, perfume, shampoo, soap, shower gel, nail polish and much more…
+- We think it can be useful for people with skin conditions like acne, psoriasis, eczema… to make better cosmetic choices.
 
-*** Yana aiki da kyau a kowane yanayi ***
+*** Works well in any condition ***
 - Kuna iya ƙara sabbin samfura, koda kuwa ba ku da haɗin Intanet a yanzu.
-- shiga app din na da tsananin dole don rage bayanai dakuma amfani da batir
-- Ba kwa buƙatar kamara don duba samfur. Hakanan zaka iya buga lambar birni idan bakada kyamarar koda da matsala tare da ita.
+- The app loads only the strict necessary to reduce data and battery consumption
+- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
 
-*** Kayan kwalliyar ku, bayanan ku ***
-- Bayananka naka ne, kuma ba a taɓa aika shi ta yanar gizo ba
+*** Your cosmetics, your data ***
+- Your data is yours, and is never sent online
 - Kuna iya amfani da app ba tare da sani ba
 - Kuna iya fitarwa da tarihin bincikenku
 
-Lura: Ana gina Fina-Finan Kyau Masu Kyau, shafin da aikace-aikacen sun dogara ne akan Abincin Abinci na Open kuma za a yi canje-canje don yin la’akari da ƙayyadaddun kayan kwalliya.
+Note: Open Beauty Facts is being built, the site and the application are based on Open Food Facts and changes will be made to take into account the specificities of cosmetics.
 
-Bude Shafin Farko kuma ana samunsu ta yanar gizo akan https://world.openbeautyfacts.org
-Tambayoyi, amsoshi : 
-contact@openfoodfacts.org
+Open Beauty Facts is also available on the web at https://world.openbeautyfacts.org
+Tambayoyi, amsawa: kakira@openfoodfacts.org
 
-Don abincin ɗan adam, zaku iya shigar da Buɗaɗan Abinci na Abinci, don abincin abinci, Abin buɗe Bayanin Abinci na Pet, da na sauran samfurori, Bude samfuran Fasa.
+For human food, you can install Open Food Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.
