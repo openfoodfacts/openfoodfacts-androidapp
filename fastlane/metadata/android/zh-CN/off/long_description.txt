@@ -7,61 +7,61 @@ The app allows to view the 800.000 products (including 175.000 in the US) alread
 
 To discover the volunteer-run Open Food Facts project, visit https://world.openfoodfacts.org
 
-▶ Choose the products that are good for you
-- The Nutri-Score grade, from "A" to "E" >> Nutritional quality
-- The NOVA group, from "1" to "4" >> Find the Ultra-Processed food
+▶选择适合您的产品
+-Nutri-Score等级，从“ A”到“ E” >>营养品质
+-NOVA组，从“ 1”到“ 4” >>查找超加工食品
 - You can easily compare as many products as you want, side by side by simply scanning them. 
 
-▶ And good for the planet!
-- The carbon impact of your food
-- Get a sense of how much of your daily carbon quota you're using for food
-- Based on the footprints computed for France by ADEME.
-- Join us and help us to bring the Carbon Impact to your country!
-- To display a Carbon Impact, a product must have a complete ingredient list with % of meat or fish and a quantity
+▶对地球有好处！
+-食物对碳的影响
+-了解您每天用于食物的碳配额量
+-基于ADEME为法国计算的足迹。
+-加入我们，帮助我们将碳影响带到您的国家！
+-要显示碳影响，产品必须具有完整的成分清单，其中包含肉或鱼的百分比以及数量
 
 
-▶ Contribute to Food Transparency
+▶促进食品透明化
 - Open Food Facts 是一个大家共同建立，为了每一个人的食品数据库。
 - 您可以使用它来做出更好的食物选择，并且由于它是公开数据，任何人都可以将其复用于任何目的。
-- Open Food Facts 是一个由全球数以千计的志愿者者开发的非盈利性项目。 我们也有很多激动人心的项目，让你有可以通过多种方式参与其中 我们也有很多激动人心的项目，让你有可以通过多种方式参与其中
-- You can start contributing today by adding a product from your fridge.
+Open Food Facts是一项由世界各地上千名的志愿者一起开发的非营利项目。 我们有许多激动人心的项目，您可以通过多种不同的渠道来作出贡献。
+-您可以立即从冰箱中添加产品开始捐款。
 
 ▶ Create lists
 Create shopping lists, track what you've eaten and easily share and export your lists.
 
 ▶ Get the Facts
-- Open Food Facts 可帮助您了解产品标签上的各个细节。 You will be able to find: You will be able to find:
+- Open Food Facts 可帮助您了解产品标签上的各个细节。 您将能够找到： 您将能够找到： 您也可以找到（根据产品上的指示）:
 - 碳足迹（二氧化碳排放量）和包装信息（以及回收说明），
 -  Nutriscore（营养评分）、营养素、脂肪/脂肪含量、饱和脂肪酸、碳水化合物、糖分、纤维、蛋白质、以及盐和钠。
-- 品牌、过敏原、标签（简介、无麸质、纯素食、素食、清真、犹太...），可追溯性信息（包装规范、原料来源）
+- brands, allergens, labels (bio, gluten free, vegan, vegetarian, halal, kosher ...), traceability information (packaging codes, origins of ingredients)
 - 对于葡萄酒和啤酒产品，您能找到酒精含量信息。
 
 
-▶ Based on Science, helping back Science!
+▶基于科学，为科学提供帮助！
 
-- We don't make up things. We rely on peer-reviewed science.
+- We don't make up things. 我们依靠同行审查的科学。
 - The Nutri-Score has been created by the independent French team led by Professor Hercberg.
 - The NOVA groups on food processing have been designed by the international team of Professor Monteiro.
 - You can get a synthesis of EFSA exposure levels on food additives.
 - The Open Food Facts community is collaborating with research teams across the planet to improve nutrition research that benefits all.
 
 
-▶ Offline Scan: Scan in ANY condition! (coming soon)
+▶离线扫描：在任何条件下扫描！ (coming soon)
 Scan at the speed of light (even if you’re on a plane, submarine or supermarket)
 
 - The whole planet, in your pocket !
 - 即使没有连接互联网，你也可以添加新的产品。
 - The app loads only the strict necessary to reduce data and battery consumption.
 
-▶ Your food, your data
+▶您的食物，您的数据
 - 你的数据只属于你，并永远不会被上传。
 - 您可以匿名使用该应用
 - 您可以导出历史记录
 
-▶ Set up allergen alerts on products
+▶在产品上设置过敏原警报
 - Milk, Gluten, Eggs, Soybeans, Nuts, Fish, Celery, Mustard, Sulphur dioxide and sulphites, Peanuts, Sesame seeds, Crustaceans, Molluscs or Lupin allergy ?
 - Speed up your shopping by doing an initial screening of your food with Open Food Facts.
-- Be careful that the information may not be 100% accurate, and detection may not be 100% accurate. So always double check by yourself, with the packaging.
+- Be careful that the information may not be 100% accurate, and detection may not be 100% accurate. 因此，请务必自行仔细检查包装。
 
 
 ▶ Say hello and/or join us!
