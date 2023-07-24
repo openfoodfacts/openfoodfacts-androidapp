@@ -11,26 +11,26 @@
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
     <string name="website_contributor">https://world.openfoodfacts.org/contributor/</string>
     <string name="txtHome">Open Food Facts is an open database of food products with ingredients, allergens, nutrition facts and all the tidbits of information we can find on product labels.</string>
-    <string name="slide_1_title">Contribute to Food transparency</string>
-    <string name="slide_1_desc">Scan products, take them in picture, make food transparency happen</string>
-    <string name="slide_2_title">Get the facts</string>
-    <string name="slide_2_desc">Extensive information about the product you\'ve scanned, deciphered for you</string>
-    <string name="slide_3_title">Get the Nutriscore</string>
-    <string name="slide_3_desc">A synthetic view of the nutritional properties of your favorite food products</string>
-    <string name="slide_4_title">Works offline</string>
-    <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet connection right now</string>
-    <string name="txtDialogsContent">Товар, який ви скануєте, ще не існує у нашій базі. Будь ласка, додайте його.</string>
+    <string name="slide_1_title">Сприяти харчовій прозорості</string>
+    <string name="slide_1_desc">Скануйте продукти, робіть їх фото, сприяйте харчовій прозорості</string>
+    <string name="slide_2_title">Дізнатися факти</string>
+    <string name="slide_2_desc">Детальна інформація про продукт, який Ви відсканували, розшифрована для Вас</string>
+    <string name="slide_3_title">Отримати Nutri-Score</string>
+    <string name="slide_3_desc">Синтетичний погляд на поживні властивості ваших улюблених харчових продуктів</string>
+    <string name="slide_4_title">Працює офлайн</string>
+    <string name="slide_4_desc">Ви маєте змогу дододати нову продукцію, навіть за відсутності Інтернету на даний час</string>
+    <string name="txtDialogsContent">Відсканований продукт не існує в базі Open Food Facts. Будь ласка, додайте його.</string>
     <string name="txtDialogsContentPowerMode">Товар, який ви скануєте, вже існує у нашій базі.</string>
-    <string name="msg_share">Подивіться на цей товар на \"Open Food Facts\":</string>
+    <string name="msg_share">Перегляньте цей продукт в додатку Open Food Facts :</string>
     <string name="not_support_books">Книги наразі не підтримуються додатоком Open Food Facts</string>
-    <string name="txt_broaden_search">- розширити пошук\n- просканувати та додати товар</string>
-    <string name="Donation">Натисніть тут, щоб підтримати Open Food Facts</string>
+    <string name="txt_broaden_search">- розширення вашого пошуку \n- відскануйте і долучіть його до Open Food Facts</string>
+    <string name="Donation">Клікніть тут, щоб здійснити пожертвування для мобільного додатку Open Food Facts</string>
     <string name="translate_help_title">Допоможіть перекласти Open Food Facts</string>
     <string name="translate_help_summary">Перекладіть базу даних Open Food Facts на свою мову - технічних знань не потрібно</string>
-    <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
+    <string name="text_offline_info_dialog">Скануйте продукти, навіть коли ви перебуваєте в автономному режимі, щоб додати їх згодом до Open Food Facts. Відскановані продукти зображуються тут, і Ви зможете надіслати їх, використовуючи кнопку нижче.</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
     <!-- OFF tagline in different languages -->
-    <string name="tagline">the free food products database</string>
-    <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
-    <string name="currently_on_version">Currently on Open Food Facts</string>
+    <string name="tagline">вільна база даних продуктів харчування</string>
+    <string name="product_not_found">Відсканований продукт %1$s ще не міститься на Open Food Facts. Будь ласка, додайте його.</string>
+    <string name="currently_on_version">В цей момент на Open Food Facts</string>
 </resources>
