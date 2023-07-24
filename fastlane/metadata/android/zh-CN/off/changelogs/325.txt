@@ -1,2 +1,2 @@
-1. 一， 新：您现在可以根据成分列表查看产品的素食，素食和棕榈油状态。 将随着时间的推移，更多的分析即将推出。 给我们发送邮件，告诉我们您想看的内容:-) More analysis will be added over time. Send us a mail to tell us what you'd like to see :-) 
-2. Housecleaning with fixes for several issues that you reported to contact@openfoodfacts.org
+1. 一， 新：您现在可以根据成分列表查看产品的素食，素食和棕榈油状态。 将随着时间的推移，更多的分析即将推出。 给我们发送邮件，告诉我们您想看的内容:-) 随着时间的推移，将添加更多分析。 给我们发送邮件，告诉我们您想看的内容:-) More analysis will be added over time. Send us a mail to tell us what you'd like to see :-) 
+2. 二， 对您报告到contact@openfoodfacts.org的几个问题进行修复的房屋清洁
