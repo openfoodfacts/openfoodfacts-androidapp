@@ -5,7 +5,7 @@
 - Open Beauty Facts is a non-profit project developed by thousands of volunteers from around the world. Vi har massor av spännande projekt som du kan bidra till på många olika sätt. 
 - You can start contributing today by adding a product from your cosmetic cupboard. 
 
-*** Få Fakta ***
+*** Get the Facts ***
 
 - Cosmetics additives, F.I.L. codes, CI-numbers, INCI (International Nomenclature of Cosmetic Ingredients), ingredient list, allergens, packaging codes... 
 - Open Beauty Facts helps you to make sense of the fine print on products labels.
@@ -16,9 +16,9 @@
 *** Works well in any condition ***
 - You can add new products, even if you don't have an Internet connection right now.
 - The app loads only the strict necessary to reduce data and battery consumption
-- Du behöver inte en kamera för att leta upp en produkt. You can also type the barcode if you lack a camera or have an issue with it.
+- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
 
-*** Your cosmetics, your data ***
+*** Din kosmetika, dina data ***
 - Your data is yours, and is never sent online
 - Du kan använda appen anonymt
 - Du kan exportera din skanningshistorik
