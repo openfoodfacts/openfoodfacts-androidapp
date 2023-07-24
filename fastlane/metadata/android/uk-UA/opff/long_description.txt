@@ -1,34 +1,34 @@
-Scan pet food products or their barcode to obtain data on ingredients, additives and nutrition facts.
+Проскануй продукти харчування для домашніх улюбленців або їхні штрих-коди щоб отримати дані про інградієнти, добавки та відомості про харчування.
 
 The app allows to view the over 600 pet food products already contained in the free and open database Open Pet Food Facts, and also to add pictures and data for missing products.
 
-To discover the Open Pet Food Facts project, please visit https://world.openpetfoodfacts.org
+Щоб дізнатись більше про проєкт Відкритих Фактів про Продукти для домашніх улюбленців, будь ласка, відвідайте https://world.openpetfoodfacts.org
 
 ***Contribute to Pet Food Transparency***
 
-- Open Pet Food Facts is a pet food products database made by everyone, for everyone.
-- You can use it to make better pet food choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Pet Food Facts is a non-profit project developed by thousands of volunteers from around the world. У нас є безліч захоплюючих проектів, до яких можна долучитись різними способами. 
-- You can start contributing today by adding a product from your pet's cupboard. 
+Відкрита база даних продуктів для домашніх улюбленців - це база даних продуктів харчування, зроблена всіма для всіх.
+Ти можеш використати її щоб зробити кращий вибір їжі до домашніх улюбленців, і так як це відкриті дані, то кожен може використати їх повторно у будь-яких цілях.
+Відкриті Факти про Продукти для домашніх улюбленців - це некомерційний проект створений тисячами волонтерів з цілого світу. У нас є безліч захоплюючих проектів, до яких можна долучитись різними способами. 
+Ти можеш почати робити свій внесок вже сьогодні, додаючи продукти з полички твого домашнього улюбленця. 
 
 
-*** Отримати факти ***
+*** Get the Facts ***
 
 You will also be able to find (according to the indications present on the products):
-- list of ingredients (including ash content)
-- nutritional info, nutrition traffic lights…
+Список інгредієнтів (включаючи мінеральні речовини)
+інформація про харчування, клас світлових сигналів…
 - brands, allergens, labels (organic, vegan...)
-- It works with dog food (dry dog food & wet dog food), cat food, rabbit food, snake food, fish food, bird food, horse food or any food for your favorite animal.
+це працює з їжею для собак (суха їжа для собак чи мокра), їжа для котів, кролів, змій, риб, птахів, коней чи інша їжа для твоєї улюбленої тварини.
 
-*** Works well in any condition ***
+Працює добре за будь-яких умов
 - Ви можете додавати нові продукти, навіть якщо зараз у вас немає підключення до Інтернету.
 - The app loads only the strict necessary to reduce data and battery consumption
-- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
+Тобі не потрібна камера для пошуку товару. Ти також можеш ввести код товару, якщо не маєш камери або проблеми з нею.
 
-*** Your pet food, your data ***
-- Your personal data is yours, and is never sent online
+Їжа твого домашнього улюбленця, твої дані
+Твої особисті дані є твоїми, і вони не розповсюджуються у мережі
 - Ви можете використовувати додаток анонімно
 - Ви можете експортувати історію сканування
 
 
-For human food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for all other products, Open Products Facts.
+Для людської їжі ти можеш встановити Відкриті Факти про Їжу, для косметики - Відкриті факти про косметику, та для всіх інших продуктів Відкриті Факти про Продукти.
