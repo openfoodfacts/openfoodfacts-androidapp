@@ -1,4 +1,4 @@
-Open Food Facts is an open database of food products with ingredients, allergens, nutrition facts and all the tidbits of information we can find on product labels.
+Open Products Facts is an open database of food products with ingredients, allergens, nutrition facts and all the tidbits of information we can find on product labels.
 
 *** Contribute to Product Transparency ***
 
@@ -7,7 +7,7 @@ Open Food Facts is an open database of food products with ingredients, allergens
 - Open Products Facts is a non-profit project developed by thousands of volunteers from around the world. Imamo veliko zanimivih projektov, pri katerih lahko sodelujete na več različnih načinov. 
 - You can start contributing today by adding your first product. 
 
-*** Pridobite dejstva***
+*** Get the Facts ***
 - Open Products Facts helps you to make sense of the fine print on products labels.
 
 *** Collect AAAALL the things ***
@@ -16,13 +16,13 @@ Open Food Facts is an open database of food products with ingredients, allergens
 - Open Miniature Food Facts - The largest open database of miniature food products
 - Open ??? Facts - Create your own open database :-)
 
-*** Dobro deluje v vseh pogojih ***
+*** Works well in any condition ***
 - lahko dodate nove izdelke, tudi če trenutno nimate internetne povezave.
-- Aplikacija naloži le nujno potrebne inf. za zmanjšanje porabe podatkov in baterije
-- Za iskanje izdelka ne potrebujete fotoaparata. Črtno kodo lahko tudi vtipkate, če nimate fotoaparata ali imate težave z njim.
+- The app loads only the strict necessary to reduce data and battery consumption
+- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
 
 *** Your products, your data ***
-- Vaši podatki so vaši in se nikoli ne pošljejo na splet
+- Your personal data is yours, and is never sent online
 - Aplikacijo lahko uporabljate anonimno
 - Zgodovino optičnega branja lahko izvozite
 
