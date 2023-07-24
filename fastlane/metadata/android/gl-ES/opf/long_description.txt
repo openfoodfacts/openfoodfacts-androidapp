@@ -1,10 +1,10 @@
-Open Food Facts é unha base de datos aberta de produtos alimentarios cos seus ingredientes, alérxenos, información nutricional e todos os datos que podemos ver nas etiquetas dos produtos.
+Open Products Facts é unha base de datos aberta de produtos alimentarios cos seus ingredientes, alérxenos, información nutricional e todos os datos que podemos ver nas etiquetas dos produtos.
 
 *** Contribute to Product Transparency ***
 
 - Open Products Facts is a products database made by everyone, for everyone.
 - You can use it to make better choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Products Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways. 
+- Open Products Facts is a non-profit project developed by thousands of volunteers from around the world. Temos moitos proxectos emocionantes aos que podes contribuír de moitas maneiras diferentes. 
 - You can start contributing today by adding your first product. 
 
 *** Get the Facts ***
@@ -29,7 +29,7 @@ Open Food Facts é unha base de datos aberta de produtos alimentarios cos seus i
 For food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for pet food, Open Pet Food Facts.
 
 Open Products Facts is also available on the web at https://world.openproductsfacts.org
-Questions, feedback : contact@openfoodfacts.org
+Preguntas, comentarios: contact@openfoodfacts.org
 
 *** Original April's Fool Listing ***
 
