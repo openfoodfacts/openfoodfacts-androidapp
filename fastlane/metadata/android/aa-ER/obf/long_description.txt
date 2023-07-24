@@ -19,7 +19,7 @@
 - You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
 
 *** Your cosmetics, your data ***
-- Your data is yours, and is never sent online
+Waqas
 - You can use the app anonymously
 - You can export your scan history
 
