@@ -16,8 +16,8 @@
   -->
 <resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
-        <item quantity="one">You have 1 offline product waiting to be contributed to Open Food Facts</item>
-        <item quantity="other">You have %d offline products waiting to be contributed to Open Food Facts</item>
+        <item quantity="one">شما 1 محصول آفلاین دارید که منتظر کمک به Open Food Facts است</item>
+        <item quantity="other">شما %d آفلاین دارید که منتظر مشارکت در Open Food Facts هستند</item>
     </plurals>
     <plurals name="seconds">
         <item quantity="one">%d second ago</item>
@@ -42,7 +42,7 @@
     <string name="product_incomplete_message">این محصول کامل نیست در نتیجه ما نمیتوانیم بررسی آلرژن انجام دهیم.</string>
     <string name="product_allergen_prompt">This product contains:</string>
     <string name="no_offline_data">You\'re all done</string>
-    <string name="first_offline">محصولات اضافه شده آفلاین در اینجا ظاهر می شود</string>
+    <string name="first_offline">Products added offline will appear here</string>
     <!-- Image Upload -->
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
@@ -160,18 +160,18 @@
     <string name="alert_dialog_warning_title">اخطار</string>
     <string name="alert_dialog_warning_msg_user">نام کاربری / رمز عبور تغییر کرده است، لطفا اطلاعات را به روز رسانی کنید</string>
     <string name="toast_retrieving">درحال بارگذاری…</string>
-    <string name="txtBarcode">بارکد :</string>
-    <string name="txtCategories">دسته ها:</string>
-    <string name="txtLabels">برچسب ها، گواهی ها، جوایز:</string>
+    <string name="txtBarcode">Barcode :</string>
+    <string name="txtCategories">Categories :</string>
+    <string name="txtLabels">Labels, certifications, awards :</string>
     <string name="txtEMB">Traceability codes:</string>
-    <string name="txtIngredients">لیست مواد تشکیل دهنده:</string>
+    <string name="txtIngredients">Ingredients list :</string>
     <string name="Donate">Donate</string>
     <string name="Donation">Click here to donate to Open Food Facts</string>
-    <string name="txtSubstances">مواد و یا محصولات که باعث آلرژی یا عدم تحمل می شوند:</string>
+    <string name="txtSubstances">Substances or products causing allergies or intolerances :</string>
     <string name="txtAdditives">مواد افزودنی:</string>
-    <string name="txtTraces">آثار:</string>
-    <string name="txtMayBeFromPalmOilProduct">مواد تشکیل دهنده ای که شامل روغن پالم باشند:</string>
-    <string name="txtPalmOilProduct">مواد اولیه ای که از روغن پالم هستند:</string>
+    <string name="txtTraces">Traces :</string>
+    <string name="txtMayBeFromPalmOilProduct">Ingredients that may be from palm oil :</string>
+    <string name="txtPalmOilProduct">Ingredients from palm oil :</string>
     <string name="txtServingSize">اندازه وعده:</string>
     <string name="txtNutrientLevel100g">سطح مواد مغذي در 100 گرم:</string>
     <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
@@ -180,20 +180,20 @@
     <string name="txtNutritionLevelHigh">در مقدار بالا</string>
     <string name="txtSave">ذخيره</string>
     <string name="txtSignIn">ورود به سیستم</string>
-    <string name="txtToastSaved">کاربر ذخیره شد</string>
+    <string name="txtToastSaved">User saved</string>
     <string name="txtSalt">نمک</string>
     <string name="txtFat">چربی</string>
     <string name="txtSugars">قندها</string>
     <string name="hintBarcode">بارکد</string>
     <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
-    <string name="hintLogin">Username</string>
+    <string name="hintLogin">Login</string>
     <string name="hintPass">گذرواژه</string>
     <string name="errorLogin">خطا در ورود به سیستم یا رمز عبور</string>
     <string name="errorWeb">ما قادر به دسترسی به اینترنت نیستیم. دسترسی به اینترنت دارید؟</string>
     <string name="uploadLater">Image will be uploaded when network is available</string>
-    <string name="txtInfoLoginOk">کاربر ذخیره شد</string>
-    <string name="txtInfoLoginNo">کاربر ذخیره نشد</string>
-    <string name="txtDialogsContent">محصولی که اسکن کرده اید هنوز در پایگاه داده ما وجود ندارد. لطفاً آن را اضافه کنید.</string>
+    <string name="txtInfoLoginOk">User saved</string>
+    <string name="txtInfoLoginNo">User not saved</string>
+    <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
     <string name="txtYes">بلی</string>
     <string name="txtNo">خير</string>
     <string name="hintBrand">نام تجاری</string>
@@ -202,24 +202,24 @@
     <string name="toastSending">درحال بارگذاری…</string>
     <string name="txtLoading">درحال بارگذاری…</string>
     <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
-    <string name="txtDialogsContentInfoSave">محصول به صورت محلی ذخیره می شود، شما می توانید آن را در منوی \"ویرایش آفلاین\" ویرایش کنید</string>
+    <string name="txtDialogsContentInfoSave">The product is saved locally, you can edit it in the \"Offline Edit\" menu</string>
     <string name="productSavedToast">Product saved, thanks!</string>
     <string name="txtBarcodeRequire">بارکد مورد نیاز است</string>
     <string name="txtOk">تأیید</string>
     <string name="txtBarcodeNotValid">بارکد معتبر نیست</string>
-    <string name="msg_share">نگاهی به این محصول در Open Food Facts:</string>
+    <string name="msg_share">Look at this product on Open Food Facts :</string>
     <string name="create_account">ثبت نام</string>
     <string name="home_drawer">صفحه اصلی</string>
     <string name="install">Install</string>
     <string name="open_beauty_drawer">Open Beauty Facts</string>
-    <string name="open_food_drawer">Open Food Facts</string>
+    <string name="open_food_drawer">Open Products Facts</string>
     <string name="search_drawer">جستجو</string>
     <string name="search_by_barcode_drawer">بارکد را وارد کنید</string>
-    <string name="category_drawer">Categories</string>
+    <string name="category_drawer">دسته‌‎بندی‎ها</string>
     <string name="search_by_category">Category</string>
     <string name="scan_search">اسکن بارکد</string>
     <string name="user_drawer">کاربر</string>
-    <string name="offline_edit_drawer">ویرایش آفلاین</string>
+    <string name="offline_edit_drawer">Offline edit</string>
     <string name="txt_anonymous">ناشناس</string>
     <string name="delete_txt">پاک کردن</string>
     <string name="sign_in_drawer">ورود به سیستم</string>
@@ -229,11 +229,11 @@
     <string name="select_camera">Select a Camera</string>
     <string name="ok_button">تأیید</string>
     <string name="cancel_button">Cancel</string>
-    <string name="login_button">Username</string>
+    <string name="login_button">Login</string>
     <string name="create_account_button">Create Account</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
     <string name="title_info_dialog">How does it work?</string>
-    <string name="text_offline_info_dialog">میتوانید محصولات را به صورت آفلاین اسکن کنید. اطلاعات ذخیره میشوند سپس میتوانید آن ها را با دکمه زیر بفرستید.</string>
+    <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
     <string name="permission_camera">دسترسی دوربین برای عکس گرفتن و اسکن کردن بارکد نیاز است.</string>
     <string name="no_camera_dialog_title">Camera not found</string>
     <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
@@ -244,13 +244,13 @@
     <string name="error_invalid_password">The password needs to be at least 6 characters long.</string>
     <string name="user">user</string>
     <string name="error_field_required">این جای خالی اجباری است.</string>
-    <string name="action_preferences">تنظیمات</string>
-    <string name="prefs_scan_startup">اسکن در هنگام راه اندازی</string>
-    <string name="prefs_scan_startup_summary">در صورت انتخاب این گزینه برنامه در حالت اسکنر باز میشود.</string>
-    <string name="prefs_power_mode">اسکن سریع</string>
-    <string name="prefs_power_mode_summary">به سرعت محصولات یک فروشگاه را اسکن کنید تا ببینید کدام یک در پایگاه داده نیستند.</string>
+    <string name="action_preferences">Preferences</string>
+    <string name="prefs_scan_startup">Scan on startup</string>
+    <string name="prefs_scan_startup_summary">This option if selected will start scan when app is opened.</string>
+    <string name="prefs_power_mode">Power mode scan</string>
+    <string name="prefs_power_mode_summary">Quickly scan products in a supermarket to see which ones are not in the database.</string>
     <string name="prefs_language">زبان</string>
-    <string name="prefs_language_summary">تغییر زبان</string>
+    <string name="prefs_language_summary">Change language</string>
     <!-- Strings related to feedback dialog -->
     <string name="user_enjoying_app">Are you enjoying your experience with Open Food Facts?</string>
     <string name="user_ask_show_feedback_form">We\'re sorry to hear that! Could you tell us what happened?</string>
@@ -276,7 +276,7 @@
     <string name="calculated_nutrition">Calculated Nutrition</string>
     <string name="please_enter_weight">Please type the product weight</string>
     <string name="enter_weight">Type the product weight</string>
-    <string name="calculate_nutrition_facts">Calculate Nutrition Facts</string>
+    <string name="calculate_nutrition_facts">Compute nutrition facts for a specific quantity</string>
     <string name="nutrition_carbohydrate">کربوهیدرات</string>
     <string name="nutrition_cholesterol">کلسترول</string>
     <string name="nutrition_energy">انرژی</string>
@@ -390,11 +390,11 @@
     <string name="nova_grp3_msg">Group 3 - Processed foods</string>
     <string name="nova_grp4_msg">Group 4 - Ultra-processed food and drink products</string>
     <!-- String related to App Shortcuts -->
-    <string name="disabled_message">Shortcut Not Available</string>
+    <string name="disabled_message">The shortcut is not available.</string>
     <string name="scan_shortcut_short_label">Scan</string>
     <string name="scan_shortcut_long_label">Scan Product</string>
     <string name="barcode_shortcut_short_label">جستجو</string>
-    <string name="barcode_shortcut_long_label">Search By Barcode</string>
+    <string name="barcode_shortcut_long_label">Search by barcode</string>
     <string name="history_shortcut_short_label">تاریخچه</string>
     <string name="history_shortcut_long_label">تاریخچه</string>
     <string name="contributions_shortcut_short_label">Contributions</string>
@@ -414,21 +414,21 @@
     <string name="device_offline_dialog_message">A network connection is needed to do this, would you like to change this in settings?</string>
     <string name="device_offline_dialog_negative">Dismiss</string>
     <string name="device_offline_dialog_positive">تنظیمات</string>
-    <string name="scan_first_product">Scan First Product</string>
+    <string name="scan_first_product">Scan your first product</string>
     <string name="preference_delete_search_history">Successfully deleted history</string>
     <string name="preference_enable_mobile_data_title">Upload on mobile data</string>
     <string name="preference_enable_mobile_data_summary_on">Upload new products using mobile data &amp; WiFi</string>
     <string name="preference_enable_mobile_data_summary_off">Upload new products using WiFi only</string>
     <string name="device_on_mobile_data_warning_title">اطلاعات</string>
     <string name="device_on_mobile_data_warning_message">You have disabled upload on mobile data , please connect to WiFi or change this in preferences</string>
-    <string name="device_on_mobile_data_warning_positive">تنظیمات</string>
+    <string name="device_on_mobile_data_warning_positive">Preferences</string>
     <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
     <string name="changes_saved">Changes saved successfully</string>
     <string name="preference_choose_language_dialog_title">Choose language</string>
     <string name="FAQ">FAQ</string>
     <string name="FrequentlyAskedQuestions">Frequently Asked Questions</string>
     <string name="translate_help_title">Help translate Open Food Facts</string>
-    <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
+    <string name="translate_help_summary">Bring Open Food Facts to your language - no technical knowledge required</string>
     <string name="please_check_your_connection">Please check your connection.</string>
     <string name="advanced_search_title">Advanced Search &amp; Charts</string>
     <string name="compare_products">Compare products</string>
@@ -455,12 +455,12 @@
     <string name="preference_header_contributing">Contributing</string>
     <string name="scan_first_string">Your viewed product history will be listed here.\nThis history is for your eyes only and is stored locally.</string>
     <string name="log_in">Login</string>
-    <string name="login_true">Already logged in!</string>
-    <string name="confirm_logout">Confirm Logout</string>
+    <string name="login_true">You are already logged in.</string>
+    <string name="confirm_logout">Confirm Open Food Facts logout</string>
     <string name="logout_dialog_content">Are you sure to log out ?</string>
     <string name="dialog_cancel">Cancel</string>
     <string name="dialog_create">Create</string>
-    <string name="choose_resolution">Choose Resolution</string>
+    <string name="choose_resolution">Choose resolution</string>
     <string name="pref_resolution_summary">Pick a resolution for image upload</string>
     <string name="image_upload_resolution">Image upload resolution</string>
     <string name="wikidata_information">Going further</string>
@@ -488,8 +488,8 @@
     <string name="mineral_tags_text">مواد معدنی:</string>
     <string name="other_tags_text">Other Substances:</string>
     <!--shared element transition key-->
-    <string name="disable_image_loading">Disable image loading when battery is low</string>
-    <string name="DisableLoadTitle">Disable image loading</string>
+    <string name="disable_image_loading">Disable photo loading when battery is low</string>
+    <string name="DisableLoadTitle">Disable photo loading</string>
     <string name="by_title">Title</string>
     <string name="by_brand">نام تجاری</string>
     <string name="by_barcode">بارکد</string>
@@ -544,7 +544,7 @@
     <string name="switch_camera">Switch camera</string>
     <string name="autofocus">Autofocus</string>
     <string name="initial_loading">Initial loading</string>
-    <string name="preferences">تنظیمات</string>
+    <string name="preferences">Preferences</string>
     <string name="OFFlogo">Open Food Facts logo</string>
     <string name="loading_product">Loading product %s</string>
     <string name="image_not_defined_for_language">No image for selected language. You can add a new one</string>
@@ -619,9 +619,9 @@
     <string name="additional_pictures">Additional Pictures</string>
     <string name="hint_product_pictures">(Add more pictures of the product. eg: recycling instructions, labels etc.)</string>
     <string name="uploading_image">Sending the photo</string>
-    <string name="uploading_nutrition_image">Uploading nutrition facts image</string>
-    <string name="uploading_ingredients_image">Uploading ingredients image</string>
-    <string name="uploading_front_image">Uploading front image</string>
+    <string name="uploading_nutrition_image">Sending the nutrition facts photo</string>
+    <string name="uploading_ingredients_image">Sending the ingredients photo</string>
+    <string name="uploading_front_image">Sending the front photo</string>
     <string name="edit_front_image">Edit the front photo</string>
     <string name="edit_nutrition_image">Edit the nutrition photo</string>
     <string name="edit_ingredients_image">Edit the ingredients photo</string>
@@ -664,9 +664,9 @@
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">Extract ingredients</string>
     <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
-    <string name="add_category_prompt_text">Add a category to compute the Nutri-Score</string>
-    <string name="add_nutrient_category_prompt_text">Add nutrition facts and a category to compute the Nutri-Score</string>
-    <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
+    <string name="add_category_prompt_text">Add a category to help complete the product</string>
+    <string name="add_nutrient_category_prompt_text">Add a category and nutrition facts to help complete the product</string>
+    <string name="category_game_btn">Help categorize products</string>
     <string name="version_string">Open Food Facts Android App</string>
     <string name="version">Version</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
@@ -692,8 +692,8 @@
     <string name="txt_exporting_your_listed_products">Exporting Your Products…</string>
     <string name="txt_your_listed_products_exported">Your products have been exported</string>
     <string name="txt_discard">Discard</string>
-    <string name="txt_info_eaten_products">\"You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"I\'m eating this\".
-        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.\"</string>
+    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
+        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
     <string name="txt_info_your_listed_products">You\'ll be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
     <string name="search_history_pref_title">Delete local search history</string>
     <string name="search_history_pref_summary">Remove all the searches that you performed on this device</string>
@@ -796,5 +796,5 @@
     <string name="brand_hint">Examples: Coca-Cola, Nestle, etc…</string>
     <string name="sign_in_or_register">Sign in or register</string>
     <string name="hunger_game_call_to_action">Help classify more %1$s</string>
-    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s food products (plus the ones you will contribute).</string>
+    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s products (plus the ones you will contribute).</string>
 </resources>
