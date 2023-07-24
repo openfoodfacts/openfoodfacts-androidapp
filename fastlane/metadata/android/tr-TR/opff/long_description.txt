@@ -12,7 +12,7 @@ To discover the Open Pet Food Facts project, please visit https://world.openpetf
 - You can start contributing today by adding a product from your pet's cupboard. 
 
 
-***Gerçekleri Öğrenin***
+*** Get the Facts ***
 
 You will also be able to find (according to the indications present on the products):
 - list of ingredients (including ash content)
@@ -25,8 +25,8 @@ You will also be able to find (according to the indications present on the produ
 - Uygulama veri ve pil kullanımını azaltmak için sadece gerekli olanları yükler
 - Bir ürünü aramak için kameraya ihtiyacınız yok. Kameranız yoksa veya bununla ilgili bir sorununuz varsa da barkodu yazabilirsiniz.
 
-*** Your pet food, your data ***
-- Kişisel verileriniz size aittir ve asla çevrimiçi gönderilmez
+*** Evcil hayvan mamanız, verileriniz ***
+- Your personal data is yours, and is never sent online
 - Uygulamayı anonim olarak kullanabilirsiniz
 - Tarama geçmişinizi dışa aktarabilirsiniz
 
