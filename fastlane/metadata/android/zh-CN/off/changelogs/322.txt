@@ -1,6 +1,6 @@
 All OFF volunteers kept working hard. 800k products, 182 countries, 25K+ contributors, incl. you 🙂
-一， 在法国准备食材的碳足印
-二， 创建（并导出）您的产品列表（购物，饮食...）
-三， Compare the products side by side by scanning them one after the other.
-四， Completely redesigned product page, slide the card up to discover it
-五， Open Food Facts完全由志愿者运营的：您可以付出您的时间帮助（world.openfoodfacts.org/contribute）或捐助此网站（donate.openfoodfacts.org）
+1. 一， 在法国准备食材的碳足印
+2. 二， 创建（并导出）您的产品列表（购物，饮食...）
+3. 三， Compare the products side by side by scanning them one after the other.
+4. Completely redesigned product page, slide the card up to discover it
+5. Open Food Facts is fully volunteer-run: you can contribute time (world.openfoodfacts.org/contribute) or money (donate.openfoodfacts.org)
