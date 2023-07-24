@@ -7,7 +7,7 @@ The app allows to view the 800.000 products (including 175.000 in the US) alread
 
 To discover the volunteer-run Open Food Facts project, visit https://world.openfoodfacts.org
 
-▶ Choose the products that are good for you
+▶あなたにぴったりの製品を選んでください
 - The Nutri-Score grade, from "A" to "E" >> Nutritional quality
 - The NOVA group, from "1" to "4" >> Find the Ultra-Processed food
 - You can easily compare as many products as you want, side by side by simply scanning them. 
@@ -24,7 +24,7 @@ To discover the volunteer-run Open Food Facts project, visit https://world.openf
 - Open Food Facts is a food products database made by everyone, for everyone.
 - You can use it to make better food choices, and as it is open data, anyone can re-use it for any purpose.
 - Open Food Facts は、世界中の何千人ものボランティアによって開発された非営利プロジェクトです。 We have lots of exciting projects you can contribute to in many different ways. We have lots of exciting projects you can contribute to in many different ways.
-- You can start contributing today by adding a product from your fridge.
+-冷蔵庫から製品を追加することで、今日から貢献を始めることができます。
 
 ▶ Create lists
 Create shopping lists, track what you've eaten and easily share and export your lists.
@@ -60,8 +60,8 @@ Scan at the speed of light (even if you’re on a plane, submarine or supermarke
 
 ▶ Set up allergen alerts on products
 -牛乳、グルテン、卵、大豆、ナッツ、魚、セロリ、マスタード、二酸化硫黄と亜硫酸塩、ピーナッツ、ゴマ、甲殻類、軟体動物またはルピナスアレルギー？
-- Speed up your shopping by doing an initial screening of your food with Open Food Facts.
-- Be careful that the information may not be 100% accurate, and detection may not be 100% accurate. So always double check by yourself, with the packaging.
+-Open Food Factsを使用して食品の初期スクリーニングを行うことにより、ショッピングをスピードアップします。
+-情報が100％正確でなく、検出が100％正確でない可能性があることに注意してください。 そのため、パッケージを使用して、常に自分で再確認してください。 そのため、パッケージを使用して、常に自分で再確認してください。
 
 
 ▶ Say hello and/or join us!
