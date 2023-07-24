@@ -1,35 +1,35 @@
-Open Food Facts is an open database of food products with ingredients, allergens, nutrition facts and all the tidbits of information we can find on product labels.
+Open Products Facts is an open database of food products with ingredients, allergens, nutrition facts and all the tidbits of information we can find on product labels.
 
-*** Contribute to Product Transparency ***
+*** Đóng góp vào sự minh bạch của sản phẩm ***
 
-- Open Products Facts is a products database made by everyone, for everyone.
-- You can use it to make better choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Products Facts is a non-profit project developed by thousands of volunteers from around the world. Chúng tôi có rất nhiều dự án thú vị mà bạn có thể đóng góp theo nhiều cách khác nhau. 
-- You can start contributing today by adding your first product. 
+- Open Products Facts là một cơ sở dữ liệu sản phẩm được tạo ra bởi mọi người, dành cho tất cả mọi người.
+- Bạn có thể sử dụng nó để đưa ra những lựa chọn tốt hơn và vì nó là dữ liệu mở nên bất kỳ ai cũng có thể sử dụng lại nó cho bất kỳ mục đích nào.
+- Open Products Facts là một dự án phi lợi nhuận được phát triển bởi hàng nghìn tình nguyện viên từ khắp nơi trên thế giới. Chúng tôi có rất nhiều dự án thú vị mà bạn có thể đóng góp theo nhiều cách khác nhau. 
+- Bạn có thể bắt đầu đóng góp ngay hôm nay bằng cách thêm sản phẩm đầu tiên của mình. 
 
-*** Sự thật là ***
+*** Get the Facts ***
 - Open Products Facts helps you to make sense of the fine print on products labels.
 
 *** Collect AAAALL the things ***
 - You can add all the items from your collections
-- Open Crayons Facts - The largest open database of coloring crayons
+- Open Crayons Facts - Cơ sở dữ liệu mở lớn nhất về bút chì màu
 - Open Miniature Food Facts - The largest open database of miniature food products
 - Open ??? Facts - Create your own open database :-)
 
 *** Hoạt động tốt trong mọi điều kiện ***
-- You can add new products, even if you don't have an Internet connection right now.
-- Ứng dụng chỉ nạp các thông tin cần thiết để giảm mức tiêu thụ dữ liệu và pin
-- Bạn không cần camera để tra cứu sản phẩm. Bạn cũng có thể nhập mã vạch nếu không có máy ảnh.
+- Bạn có thể thêm sản phẩm mới, ngay cả khi bạn không có kết nối Internet ngay bây giờ.
+- The app loads only the strict necessary to reduce data and battery consumption
+- Bạn không cần máy ảnh để tra cứu sản phẩm. Bạn cũng có thể nhập mã vạch nếu thiếu máy ảnh hoặc gặp sự cố với nó.
 
-*** Your products, your data ***
-- Đảm bảo dữ sự an toàn của dữ liệu cá nhân của bạn
-- You can use the app anonymously
-- You can export your scan history
+*** Sản phẩm của bạn, dữ liệu của bạn ***
+- Dữ liệu cá nhân của bạn là của bạn và không bao giờ được công khai trực tuyến
+- Bạn có thể sử dụng ứng dụng một cách ẩn danh
+- Bạn có thể xuất lịch sử quét của mình
 
-For food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for pet food, Open Pet Food Facts.
+Đối với thực phẩm, bạn có thể cài đặt Open Food Facts, cho mỹ phẩm, Open Beauty Facts, và cho thức ăn vật nuôi, Open Pet Food Facts.
 
-Open Products Facts is also available on the web at https://world.openproductsfacts.org
-Câu hỏi và phản hồi: contact@openfoodfacts.org
+Open Products Facts cũng có sẵn trên web tại https://world.openproductsfacts.org
+Câu hỏi, phản hồi: contact@openfoodfacts.org
 
 *** Original April's Fool Listing ***
 
@@ -39,11 +39,11 @@ Collecting the world's food, cosmetic and pet food was so passé. With the insan
 
 So we set up to create not 1, but other 77000 separate new databases ! 
 
-Open Products Facts will be an extremely ambitious project. Here are a few of them: 
+Open Products Facts will be an extremely ambitious project. Dưới đây là một vài trong số đó: 
 
-Open Crayons Facts - The largest open database of coloring crayons
+Open Crayons Facts - Cơ sở dữ liệu mở lớn nhất về bút chì màu
 
-Open Miniature Food Facts - The largest open database of miniature food products
+Open Miniature Food Facts - Cơ sở dữ liệu mở lớn nhất về các sản phẩm thực phẩm thu nhỏ
 
 Open ??? Facts - The largest open database of ???
 
