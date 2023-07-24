@@ -23,7 +23,7 @@ To discover the volunteer-run Open Food Facts project, visit https://world.openf
 ▶ Contribute to Food Transparency
 - Open Food Facts is a food products database made by everyone, for everyone.
 - You can use it to make better food choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Food Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways.
+- Open Food Facts is a non-profit project developed by thousands of volunteers from around the world. Sinezinhlelo eziningi ezithakazelisayo ongazifaka ngezindlela eziningi ezahlukene.
 - You can start contributing today by adding a product from your fridge.
 
 ▶ Create lists
@@ -54,7 +54,7 @@ Scan at the speed of light (even if you’re on a plane, submarine or supermarke
 - The app loads only the strict necessary to reduce data and battery consumption.
 
 ▶ Your food, your data
-- Idatha yakho ingeyakho, futhi ayithunyelwanga ku-intanethi
+- Your data is yours, and is never sent online
 - Ungasebenzisa uhlelo lokusebenza ngokungaziwa
 - Ungathumela umlando wakho wokuskena
 
@@ -70,7 +70,7 @@ Scan at the speed of light (even if you’re on a plane, submarine or supermarke
 Open Food Facts is also available on the web at https://world.openfoodfacts.org
 
 
-Questions, feedback : contact@openfoodfacts.org
+Imibuzo, impendulo: contact@openfoodfacts.org
 
 
 For cosmetics, you can install Open Beauty Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.
