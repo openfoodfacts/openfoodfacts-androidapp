@@ -5,7 +5,7 @@ https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=ja
 V2 screenshots
 =====================
 
-Scan products
+製品をスキャンする
 
 栄養スコアを入手します
 
