@@ -1,9 +1,9 @@
 To jsou štítky zobrazené nad snímky obrazovky v playstore. Uchovávejte je krátké a atraktivní.
 https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=cs
 
-=====================
-V2 screenshots
-=====================
+=======================
+Snímky obrazovky V2
+=======================
 
 Snímání zboží
 
@@ -17,7 +17,7 @@ Nastavte si upozornění na alergeny
 
 Výživa jednoduše
 
-Hlídání alergenů
+Upozornění na alergen
 
 Získejte alternativy pro vaše oblíbené potraviny
 
@@ -37,36 +37,36 @@ Mocný
 
 Nutriční hodnoty
 
-=====================
-V3 screenshots
-=====================
+=======================
+V3 snímky obrazovky
+=======================
 
-Choose the products that are good for you and for the 🌍 planet !
+Vyberte si produkty, které jsou dobré pro vás a pro 🌍 planetu !
 
 ✔ Rychlé skenování čárových kódů
 
-✔ A global supermarket in your pocket
+✔ Globální supermarket v kapse
 
-Nutritional quality
+Výživová hodnota
 
-Ultra-processed foods
+Ultra zpracované potraviny
 
-Carbon impact
+Uhlíková stopa
 
-Compare easily before you buy
+Před nákupem snadno porovnejte
 
-Create shopping lists, intake lists…
+Vytvořte nákupní seznamy, seznamy příjmu…
 
-Find and compare over 750 000 products.
+Najděte a porovnejte více než 750 000 produktů.
 
 
 
-Unlimited and fully-private scan history
+Neomezená a úplně soukromá historie skenování
 
-Swipe for even more details
+Další podrobnosti zobrazíte přejetím prstem
 
-Set Allergen Alerts
+Nastavte si upozornění na alergeny
 
-Join our global movement for food transparency
+Připojte se k našemu globálnímu hnutí za transparentnost potravin
 
-world.openfoodfacts.org/contribute
+world-cs.openfoodfacts.org/contribute
