@@ -590,7 +590,7 @@
     <string name="extracting_ingredients">Extracting ingredients</string>
     <string name="looksGood">Looks Good</string>
     <string name="skip_ingredients">Too Bad \n Skip Ingredients</string>
-    <string name="traces">Kan inneholde</string>
+    <string name="traces">Spor</string>
     <string name="traces_hint">Indicate ingredients from mentions like \'May contain traces of\', \'Made in a factory that also uses\', etc. \nExamples: Milk, Gluten, Nuts</string>
     <string name="nutrition_facts_not_specified">Ernæringsinnhold er ikke spesifisert på produktet.</string>
     <string name="nutrition_facts_picture">Nutrition Facts photo</string>
