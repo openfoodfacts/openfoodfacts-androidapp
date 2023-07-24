@@ -1,1 +1,1 @@
-Escanegeu productes alimentaris per a desxifrar les etiquetes: ingredients, additius i dades nutricionals
+Scan food products to decrypt labels: ingredients, additives and nutrition facts
