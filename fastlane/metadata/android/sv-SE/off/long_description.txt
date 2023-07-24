@@ -26,7 +26,7 @@ To discover the volunteer-run Open Food Facts project, visit https://world.openf
 – Open Food Facts är ett ideellt projekt utvecklat av tusentals volontärer från hela världen. Vi har massor av spännande projekt som du kan bidra till på många olika sätt.
 – Du kan börja bidra redan idag genom att lägga till en produkt från ditt kylskåp.
 
-▶ Create lists
+▶ Skapa listor
 Create shopping lists, track what you've eaten and easily share and export your lists.
 
 ▶ Get the Facts
