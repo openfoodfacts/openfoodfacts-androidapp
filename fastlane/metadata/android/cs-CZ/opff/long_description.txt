@@ -1,10 +1,10 @@
 Naskenujte produkty krmiva pro domácí zvířata nebo jejich čárový kód a získejte údaje o složkách, přísadách a výživových údajích.
 
-The app allows to view the over 600 pet food products already contained in the free and open database Open Pet Food Facts, and also to add pictures and data for missing products.
+Aplikace umožňuje zobrazit více než 600 výrobků v krmivu pro zvířata v zájmovém chovu, které jsou již obsaženy v svobodné a otevřené databázi Open Pet Food Facts, a také přidávat obrázky a údaje pro chybějící produkty.
 
 Chcete-li prozkoumat projekt Open Pet Food Facts, navštivte prosím https://world.openpetfoodfacts.org
 
-***Contribute to Pet Food Transparency***
+***Přispějte k transparentnosti krmiva pro domácí mazlíčky***
 
 - Open Pet Food Facts je databáze krmiv pro domácí zvířata vytvořená každým a pro každého.
 - Můžete je použít k lepšímu výběru krmiva pro domácí mazlíčky, a protože se jedná o otevřená data, může je kdokoli znovu použít pro jakýkoli účel.
@@ -12,17 +12,17 @@ Chcete-li prozkoumat projekt Open Pet Food Facts, navštivte prosím https://wor
 - Už dnes můžete začít přispívat přidáním produktu ze skříně vašeho mazlíčka. 
 
 
-*** Get the Facts ***
+*** Získejte fakta ***
 
-You will also be able to find (according to the indications present on the products):
+Budete také moci najít (podle údajů uvedených na produktech):
 - seznam ingrediencí (včetně obsahu popela)
 - nutriční informace, nutriční semafory…
-- brands, allergens, labels (organic, vegan...)
+- značky, alergeny, etikety (bio, vegan...)
 - Funguje s krmivem pro psy (suché krmivo pro psy a mokré krmivo pro psy), krmivo pro kočky, krmivo pro králíky, krmivo pro hady, krmivo pro ryby, krmivo pro ptáky, krmivo pro koně nebo jakékoli krmivo pro vaše oblíbené zvíře.
 
 *** Funguje dobře za všech podmínek ***
 - Můžete přidávat nové produkty, i když právě nemáte připojení k internetu.
-- The app loads only the strict necessary to reduce data and battery consumption
+- Aplikace načte pouze to nejnutnější, aby se snížila spotřeba dat a baterie
 - K vyhledání produktu nepotřebujete fotoaparát. Můžete také zadat čárový kód, pokud nemáte fotoaparát nebo s ním máte problém.
 
 *** Vaše krmivo pro domácí mazlíčky, vaše data ***
