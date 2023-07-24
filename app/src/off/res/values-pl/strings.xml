@@ -19,18 +19,18 @@
     <string name="slide_3_desc">Wirtualny podgląd właściwości odżywczych twoich ulubionych produktów</string>
     <string name="slide_4_title">Działa offline</string>
     <string name="slide_4_desc">Możesz dodać nowe produkty, nawet nie mając teraz połączenia</string>
-    <string name="txtDialogsContent">Zeskanowany produkt nie figuruje jeszcze w Open Food Facts. Dodaj go.</string>
+    <string name="txtDialogsContent">Zeskanowanego produktu nie ma jeszcze w bazie Open Food Facts. Proszę dodaj go.</string>
     <string name="txtDialogsContentPowerMode">Zeskanowany produkt już widnieje w Open Food Facts.</string>
-    <string name="msg_share">Zobacz produkt w Open Food Facts :</string>
+    <string name="msg_share">Zobacz produkt na Open Food Facts:</string>
     <string name="not_support_books">Open Food Facts obecnie nie obsługuje książek</string>
-    <string name="txt_broaden_search">rozszerzenie zakresu wyszukiwania \n - zeskanuj i dodaj do Open Food Facts</string>
-    <string name="Donation">Kliknij tu, by przekazać darowiznę na rzecz Open Food Facts</string>
+    <string name="txt_broaden_search">poszerz zakres wyszukiwania \in- zeskanuj i dodaj do Open Food Facts</string>
+    <string name="Donation">Naciśnij, by przekazać darowiznę</string>
     <string name="translate_help_title">Wspomóż tłumaczenie Open Food Facts</string>
     <string name="translate_help_summary">Otwórz bazę danych Open Food Facts na swój język - wiedza techniczna nie jest wymagana</string>
     <string name="text_offline_info_dialog">Skanuj nawet w trybie offline by dodać produkty później. Zeskanowane produkty pojawią się tutaj i wyślesz je poniższym przyciskiem.</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Twoje informacje o alergiach nigdy nie zostaną wysłane na serwer Open Food Facts. Należy także uważać, że dane produktów mogą nie być dokładne, a wykrywanie może nie być 100% a, więc dokładnie sprawdź sam!</string>
     <!-- OFF tagline in different languages -->
     <string name="tagline">ogólnodostępna baza danych o produktach żywnościowych</string>
-    <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
+    <string name="product_not_found">Zeskanowany produkt %1$s nie istnieje jeszcze w Open Beauty Facts. Czy możesz go dodać?</string>
     <string name="currently_on_version">Aktualna wersja w Open Food Facts</string>
 </resources>
