@@ -21,14 +21,14 @@
     <string name="slide_3_desc">Visi kosmētikas izmantojat vienu parocīgiem sarakstu var eksportēt</string>
     <string name="slide_4_title">Darbojas bezsaistē</string>
     <string name="slide_4_desc">Jūs varat pievienot jaunus produktus, pat ja jums pašlaik nav interneta savienojuma</string>
-    <string name="txtDialogsContent">Skenētais produkts vēl nav pieejams Open Food Facts sarakstā. Lūdzu, pievienojiet to.</string>
-    <string name="txtDialogsContentPowerMode">Jūsu skenētais produkts jau pastāvOpen Food Facts.</string>
+    <string name="txtDialogsContent">The product you scanned does not exist yet in Open Pet Food Facts. Please add it.</string>
+    <string name="txtDialogsContentPowerMode">Jūsu skenētais produkts jau pastāvOpen Pet Food Facts.</string>
     <string name="msg_share">Apskatiet šo produktu, izmantojot Open Food Facts:</string>
     <string name="not_support_books">Open Food Facts pašlaik neatbalsta grāmatas</string>
     <string name="txt_broaden_search">- paplašināt meklēšanu \ n- skenēt un pievienot to Open Food Facts</string>
     <string name="Donation">Noklikšķiniet šeit, lai ziedotu Open Food Facts</string>
-    <string name="translate_help_title">Palīdziet tulkot \"open Food Facts\"</string>
-    <string name="translate_help_summary">Iegūstiet Open Food Facts savā valodāaaaaaa a- tehniskās zināšanas nav nepieciešamas</string>
+    <string name="translate_help_title">Help translate Open Food Facts</string>
+    <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
     <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Pet Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
     <!-- OPFF tagline in different languages -->
@@ -42,7 +42,7 @@
     <string name="add_category_prompt_text">Add a category to help complete the product</string>
     <string name="add_nutrient_category_prompt_text">Add a category and nutrition facts to help complete the product</string>
     <string name="txt_eaten_products">Products I have</string>
-    <string name="txt_products_to_buy">Products to buy</string>
+    <string name="txt_products_to_buy">Produkti, kurus iegādāties</string>
     <string name="intent_filter_share_label">Add to Open Pet Food Facts</string>
     <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
         You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
