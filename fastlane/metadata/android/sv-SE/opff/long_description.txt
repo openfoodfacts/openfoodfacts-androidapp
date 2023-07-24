@@ -12,7 +12,7 @@ To discover the Open Pet Food Facts project, please visit https://world.openpetf
 - You can start contributing today by adding a product from your pet's cupboard. 
 
 
-*** Få Fakta ***
+*** Get the Facts ***
 
 You will also be able to find (according to the indications present on the products):
 - list of ingredients (including ash content)
@@ -23,7 +23,7 @@ You will also be able to find (according to the indications present on the produ
 *** Works well in any condition ***
 - You can add new products, even if you don't have an Internet connection right now.
 - The app loads only the strict necessary to reduce data and battery consumption
-- Du behöver inte en kamera för att leta upp en produkt. You can also type the barcode if you lack a camera or have an issue with it.
+- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
 
 *** Your pet food, your data ***
 - Your personal data is yours, and is never sent online
