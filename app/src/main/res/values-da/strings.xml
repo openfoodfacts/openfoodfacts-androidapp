@@ -294,7 +294,7 @@
     <string name="nutrition_trans_fat">Transfedt</string>
     <string name="nutriment_serving_size">Pr. portion : </string>
     <string name="action_manage_account">Administrer konto</string>
-    <string name="action_contributes">Your contributions</string>
+    <string name="action_contributes">Dine bidrag</string>
     <string name="choose_energy_unit">Vælg din foretrukne energienhed til ernæringstabellen</string>
     <string name="energy_pref_title">Foretrukken energienhed</string>
     <string name="choose_volume_unit">Vælg din foretrukne enhed for mængde til ernæringstabellen</string>
@@ -303,7 +303,7 @@
     <string name="contribution_without_account">Du kan logge ind eller oprette en konto for at gemme bidrag</string>
     <string name="textCarbonFootprint">CO2-regnskab / emissioner: </string>
     <string name="action_search">Søg</string>
-    <string name="search_hint">Search a product</string>
+    <string name="search_hint">Søg efter produkt</string>
     <string name="number_of_results">Resultatantal: </string>
     <string name="number_of_products">Produktantal: </string>
     <string name="txt_no_matching__category_products">Åh nej, vi har ikke noget produkt i denne kategori, kan du tilføje et?</string>
@@ -471,7 +471,7 @@
     <string name="additive_string">Tilsætningsstof</string>
     <string name="allergen_string">Allergen</string>
     <string name="search_string">Søg</string>
-    <string name="country_string">Countries where sold</string>
+    <string name="country_string">Lande, hvorfra der sælges</string>
     <string name="store_subtitle">Butik</string>
     <string name="packaging_subtitle">Emballage</string>
     <string name="packaging_string">Emballage</string>
@@ -496,7 +496,7 @@
     <string name="by_time">Nyligt viste</string>
     <string name="sort">Sortér</string>
     <string name="by_nutrition_grade">Ernæringskvalitet</string>
-    <string name="sort_by">Sort by</string>
+    <string name="sort_by">Sortér efter</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">Billeder uden stregkode kan endnu ikke tilføjes med app\'en. Prøv venligst mobil-webversionen.</string>
     <string name="no_barcode">Iogen stregkode fundet</string>
@@ -505,8 +505,8 @@
     <string name="code_detected">Stregkoden er aflæst</string>
     <string name="do_you_want_to">Vil du føje billeder til denne stregkode?</string>
     <string name="bottomNav_history">Historik</string>
-    <string name="products_added">Products you added or edited</string>
-    <string name="products_incomplete">Products you added that need to be completed</string>
+    <string name="products_added">Produkter, du har tilføjet eller redigeret</string>
+    <string name="products_incomplete">Produkter tilføjet af dig, som mangler udfyldelse</string>
     <string name="product_pictures_contributed">Produkter, du tog fotos til</string>
     <string name="picture_contributed_incomplete">Produkter, du tog fotos til, som mangler færdiggørelse</string>
     <string name="product_info_added">Produkter, du har tilføjet oplysninger til</string>
@@ -587,12 +587,12 @@
     <string name="ingredients_list">Ingrediensoversigt</string>
     <string name="ingredients_hint">Behold rækkefølgen, angiv %, når det angives, adskilt med komma eller brug -, brug () til ingredienser i en ingrediens, omgiv allergener med _</string>
     <string name="extract_ingredients">Udtræk ingredienser</string>
-    <string name="extracting_ingredients">Extracting ingredients</string>
+    <string name="extracting_ingredients">Uddrager ingredienser</string>
     <string name="looksGood">Ser godt ud</string>
     <string name="skip_ingredients">Ærgerligt\nOverspring ingredienser</string>
-    <string name="traces">Traces</string>
+    <string name="traces">Spor</string>
     <string name="traces_hint">Angiv ingredienser ud fra beskrivelser som \"Kan indeholde spor af\", \"Fremstillet på fabrik, der også benytter\" mv.\nEksempel: Mælk, Gluten, Nødder</string>
-    <string name="nutrition_facts_not_specified">Nutrition facts are not specified on the product.</string>
+    <string name="nutrition_facts_not_specified">Ernæringsindhold er ikke specificeret på produktet.</string>
     <string name="nutrition_facts_picture">Næringsindholdsfoto</string>
     <string name="front_short_picture">Forside</string>
     <string name="other_picture">Andet foto</string>
@@ -605,10 +605,10 @@
     <string name="product_picture">Produktfoto</string>
     <string name="one_photo_compulsory">(kun ét foto kræves for at tilføje et nyt produkt)</string>
     <string name="product_details">Produktoplysninger</string>
-    <string name="product_name">Product name</string>
+    <string name="product_name">Produktnavn</string>
     <string name="quantity">Kvantitet</string>
     <string name="labels">Etiketter</string>
-    <string name="period_of_time_after_opening">Period of time after opening</string>
+    <string name="period_of_time_after_opening">Tidsperiode efter åbning</string>
     <string name="manufacturing_details">Produktionsoplysninger</string>
     <string name="origin_of_ingredients">Oprindelse af ingredienser</string>
     <string name="manufacturing_place">Produktionssted</string>
@@ -629,7 +629,7 @@
     <string name="sign_in_to_edit">Log ind for at redigere et produkt.</string>
     <string name="sign_in_to_answer">Log ind eller opret en konto for at besvare en indsigt.</string>
     <string name="hint_quantity">Eksempler: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pund</string>
-    <string name="edit_product_title">Edit a product</string>
+    <string name="edit_product_title">Rediger et produkt</string>
     <string name="nutrient_already_added">%s er allerede til stede i næringsfakta</string>
     <string name="save_edits">Gem ændringer</string>
     <string name="contribution_by">Bidrag fra</string>
@@ -637,19 +637,19 @@
     <string name="description_activity_product">beskrivelse</string>
     <string name="intent_filter_share_label">Føj til Open Prodcts Facts</string>
     <!-- Used for additive exposure evaluation table -->
-    <string name="overexposure_high">High risk of over exposure</string>
-    <string name="overexposure_moderate">Moderate risk of over exposure</string>
-    <string name="infants">Infants</string>
+    <string name="overexposure_high">Høj risiko for overeksponering</string>
+    <string name="overexposure_moderate">Moderat risiko for overeksponering</string>
+    <string name="infants">Spædbørn</string>
     <string name="infants_age">&lt; 1</string>
-    <string name="toddlers">Toddlers</string>
+    <string name="toddlers">Småbørn</string>
     <string name="toddlers_age">1 to 2</string>
-    <string name="children">Children</string>
-    <string name="children_age">3 to 9</string>
-    <string name="adolescents">Adolescents</string>
-    <string name="adolescents_age">10 to 17</string>
-    <string name="adults">Adults</string>
-    <string name="adults_age">18 to 64</string>
-    <string name="elderly">Elderly</string>
+    <string name="children">Børn</string>
+    <string name="children_age">3 til 9</string>
+    <string name="adolescents">Unge</string>
+    <string name="adolescents_age">10 til 17</string>
+    <string name="adults">Voksne</string>
+    <string name="adults_age">18 til 64</string>
+    <string name="elderly">Ældre</string>
     <string name="elderly_age">65+</string>
     <string name="most_people">De fleste personer\n(flere end 50%)</string>
     <string name="some_people">Nogle personer\n(flere end 5%)</string>
@@ -681,7 +681,7 @@
     <string name="crop_new_image_title">Beskær nye fotos</string>
     <string name="crop_new_image">Muliggør beskæring af nye fotos</string>
     <string name="addtive_search">Søg efter en tilsætningsstof</string>
-    <string name="additives">Additives</string>
+    <string name="additives">Tilsætningsstoffer</string>
     <!--used for product_lists implementation-->
     <string name="add_to_product_lists">Føj til lister</string>
     <string name="txt_create_new_list">Opret ny liste</string>
@@ -708,7 +708,7 @@
     <string name="add_product">Tilføj produkter</string>
     <string name="add_another_product">Tilføj et produkt mere</string>
     <string name="add_nutrition_facts_for_nutriscore">Tilføj ernæringsfakta for at beregne Nutri-Score</string>
-    <string name="product_summary_action_compare_button_label">Compare</string>
+    <string name="product_summary_action_compare_button_label">Sammenlign</string>
     <string name="product_summary_action_add_to_list_button_label">Føj til liste</string>
     <string name="product_summary_action_edit_button_label">Redigér</string>
     <string name="product_summary_action_share_button_label">Del</string>
@@ -730,7 +730,7 @@
     <string name="add_a_list">Tilføj en liste</string>
     <string name="edit_image">Rediger billede</string>
     <string name="cant_edit_image_not_yet_uploaded">Det nye foto er endnu ikke uploadet. Vent med at redigerer det</string>
-    <string name="unselect_image">Unselect Image</string>
+    <string name="unselect_image">Afmarér foto</string>
     <string name="choose_default_language">Vælg produktsprog</string>
     <string name="barcode">Stregkode</string>
     <string name="productAdditivesNone">Ingen tilsætningsstoffer</string>
