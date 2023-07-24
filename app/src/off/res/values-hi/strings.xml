@@ -15,20 +15,20 @@
     <string name="slide_1_desc">उत्पादों को स्कैन करें, उनके चित्र लें, खाद्य पारदर्शिता करें</string>
     <string name="slide_2_title">तथ्य प्राप्त करें</string>
     <string name="slide_2_desc">आपके द्वारा स्कैन किए गए उत्पाद के बारे में विस्तृत जानकारी, आपके लिए गूढ़वाचन</string>
-    <string name="slide_3_title">नुट्री स्कोर प्राप्त करें</string>
+    <string name="slide_3_title">Get the Nutri-Score</string>
     <string name="slide_3_desc">आपके पसंदीदा खाद्य उत्पादों के पोषण गुणों का एक सिंथेटिक दृश्य</string>
     <string name="slide_4_title">ऑफ़लाइन काम करता है</string>
     <string name="slide_4_desc">आप नए उत्पादों को ऐड कर सकते हैं, भले ही आपके पास अभी कोई इंटरनेट कनेक्शन न हो</string>
-    <string name="txtDialogsContent">जिस उत्पाद को आप स्कैन कर चुके हैं वह अभी तक ओपन फूड फैक्ट्स में उपलब्ध नहीं है। कृपया इस उत्पाद के बारे में जानकारी प्राप्त करने में मदद करें।</string>
+    <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
     <string name="txtDialogsContentPowerMode">जिस उत्पाद को आप स्कैन कर चुके हैं वह ओपन फूड फैक्ट्स में उपलब्ध है।</string>
-    <string name="msg_share">Open Food Facts  पर इस उत्पाद को देखो:</string>
+    <string name="msg_share">Look at this product on Open Food Facts :</string>
     <string name="not_support_books">ओपन फ़ूड फैक्ट्स पर पुस्तकें उपलब्ध नहीं है</string>
-    <string name="txt_broaden_search">- अपनी खोज को विस्तृत करना \n- स्कैन करें और इसे ओपन फ़ूड फैक्ट्स में ऐड करें</string>
-    <string name="Donation">ओपन फ़ूड फैक्ट्स को दान करने के लिए यहाँ क्लिक करें</string>
-    <string name="translate_help_title">ओपन फ़ूड फैक्ट्स का अनुवाद करने में मदद करें</string>
-    <string name="translate_help_summary">ओपन फ़ूड फैक्ट्स डेटाबेस को अपनी भाषा में लाएं - कोई तकनीकी की आवश्यकता नहीं है</string>
+    <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
+    <string name="Donation">Click here to donate to Open Food Facts</string>
+    <string name="translate_help_title">Help translate Open Food Facts</string>
+    <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
     <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
     <!-- OFF tagline in different languages -->
     <string name="tagline">the free food products database</string>
     <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
