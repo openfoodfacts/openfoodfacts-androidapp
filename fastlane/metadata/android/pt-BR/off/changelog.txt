@@ -8,7 +8,7 @@ O que há de novo?
 ==================
 1. Você obtêm a imagem em 360 graus: nutrição, ingredientes, e todos os fatos sobre comida, apresentados com nitidez e clareza.
 2. Obtenha o grau nutricinal "NutriScore" para todos os produtos do mundo. Compare facilmente os produtos. Mais fácil do que decifrar tabelas de nutrição.
-3. Obtenha informações a mais na Wikipedia. Clique na categoria de alimentos, um aditivo... para saber mais e ver mais produtos similares.
+3. Obtenha informações a mais na Wikipedia. Clique na categoria de alimentos, um aditivo...
 4. Você pode definir alertas alérgenos( sempre verifique duas vezes o rótulo real mesmo assim!)
 5. Você agora tem um histórico de escaneamento que pode exportar e que nunca sai do seu celular
 6. Você pode agitar seu telefone a qualquer hora no aplicativo para começar a escanear
