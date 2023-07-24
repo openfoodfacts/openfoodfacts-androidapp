@@ -1,19 +1,19 @@
-Piedalīties Kosmētikas datubāzes izveidē
+***Contribute to Cosmetic Transparency***
 
-Open Beauty Facts ir kosmētikas datu bāze veidota no visiem un priekš visiem.
-šo datu bāzi var izmantot lai apskatītu kosmētikas produktus un tādēl, ka datu bāze ir atvērta, ikviens var izmantot to jebkādām vajadzībām.
-Open Beauty Facts ir bezpeļņas projekts izveidots, pateicoties tūkstošiem brīvprātīgajiem no visas pasaules. Mums ir daudz interesantu projektu, kuros tu vari piedalīties dažādos veidos. 
-Dalību projektā iespējams uzsākt jau šodien, pievienojot produktus no savas kosmētikas lādītes. 
+- Open Beauty Facts is a cosmetic products database made by everyone, for everyone.
+- You can use it to make better cosmetic choices, and as it is open data, anyone can re-use it for any purpose.
+- Open Beauty Facts is a non-profit project developed by thousands of volunteers from around the world. Mums ir daudz interesantu projektu, kuros tu vari piedalīties dažādos veidos. 
+- You can start contributing today by adding a product from your cosmetic cupboard. 
 
-*** Iegūt faktus ***
+*** Get the Facts ***
 
-- kosmētikas piedevas, F.I.L kodi. c-I numuri, INCI (Internacionālā kosmētikas sastāvdaļu nomenklatūra), sastāvdaļu saraksts, alergēni, iepakojumu kodi... 
-- Open Beauty Facts palīdz jums saprast, ks izdrukāts uz produktu etiķetēm.
-- Jums nevajag būt ķīmiķim un iemācīties latīņu valodu, lai saprastu sastāvdaļu sarakstu :-)
-- Varat skenēt: Pēcskūšanāš losionus, ķermeņa losionus, krēmus, dezodorantus, acu lainerus, lūpu krāsas, sejas maskas, smaržas, šampūnus, ziepes, dušas želeju, nagu lakas un vēl daudz ko citu…
-- Mūsuprāt šī datubāze var būt ļoti noderīga cilvēķiem ar ādas slimībām kā pūtītes, psoreāze, ekzēma... lai veiktu labāku kosmētikas izvēli.
+- Cosmetics additives, F.I.L. codes, CI-numbers, INCI (International Nomenclature of Cosmetic Ingredients), ingredient list, allergens, packaging codes... 
+- Open Beauty Facts helps you to make sense of the fine print on products labels.
+- You don't need to be a chemist and learn latin anymore to decypher an ingredient list :-)
+- You can scan: aftershaves, body lotions, creams, deodorant, eyeliner, foundation, fragrance, lipstick, makeup, mask, perfume, shampoo, soap, shower gel, nail polish and much more…
+- We think it can be useful for people with skin conditions like acne, psoriasis, eczema… to make better cosmetic choices.
 
-*** darbojas labi jebkurā stāvoklī ***
+*** Works well in any condition ***
 - Jūs varat pievienot jaunus produktus, pat ja jums pašlaik nav interneta savienojuma.
 - The app loads only the strict necessary to reduce data and battery consumption
 - You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
