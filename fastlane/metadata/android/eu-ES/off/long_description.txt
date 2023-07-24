@@ -49,7 +49,7 @@ Create shopping lists, track what you've eaten and easily share and export your 
 ▶ Offline Scan: Scan in ANY condition! (coming soon)
 Scan at the speed of light (even if you’re on a plane, submarine or supermarket)
 
-- The whole planet, in your pocket !
+- Planeta osoa, zure poltsikoan!
 - You can add new products, even if you don't have an Internet connection right now.
 - The app loads only the strict necessary to reduce data and battery consumption.
 
@@ -64,7 +64,7 @@ Scan at the speed of light (even if you’re on a plane, submarine or supermarke
 - Be careful that the information may not be 100% accurate, and detection may not be 100% accurate. So always double check by yourself, with the packaging.
 
 
-▶ Say hello and/or join us!
+▶ Agurtu edota egin bat gurekin!
 
 
 Open Food Facts is also available on the web at https://world.openfoodfacts.org
