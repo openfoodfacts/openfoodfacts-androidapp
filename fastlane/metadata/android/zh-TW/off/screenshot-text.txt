@@ -5,7 +5,7 @@ https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=en
 V2 screenshots
 =====================
 
-Scan products
+掃瞄產品
 
 Get the Nutriscore
 
@@ -49,7 +49,7 @@ Choose the products that are good for you and for the 🌍 planet !
 
 Nutritional quality
 
-Ultra-processed foods
+Group 4. Ultra-processed foods
 
 Carbon impact
 
