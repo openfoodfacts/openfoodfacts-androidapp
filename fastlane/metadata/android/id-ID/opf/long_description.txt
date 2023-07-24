@@ -1,56 +1,54 @@
-Open Product Facts adalah basis data terbuka untuk semua produk di seluruh dunia.
+Open Product Facts adalah sebuah basis data terbuka dari semua produk di seluruh dunia.
 
-*** Berkontribusi untuk Transparansi Produk ***
+*** Berkontribusi pada Transparansi Produk ***
 
-- Open Product Facts adalah basis data produk yang dibuat oleh semua orang untuk semua orang.
-- Dapat digunakan untuk membuat pilihan kosmetik yang lebih baik dan dapat digunakan oleh siapa saja untuk tujuan apa saja karena merupakan data terbuka.
-- Open Beauty Facts adalah proyek nirlaba yang dikembangkan oleh ribuan sukarelawan dari seluruh dunia. Ada banyak proyek menyenangkan yang bisa diikuti dengan berbagai cara. 
+- Open Products Facts adalah sebuah basis data produk - produk yang dibuat oleh semua orang, untuk semua orang.
+- Anda dapat menggunakannya untuk membuat pilihan yang lebih baik, dan karena ia adalah data terbuka, siapapun dapat menggunakannya kembali untuk tujuan apapun.
+- Open Product Facts adalah sebuah proyek nirlaba yang dikembangkan oleh ribuan relawan dari seluruh dunia. Kami memiliki banyak proyek menyenangkan yang padanya Anda dapat berkontribusi dengan berbagai cara. 
 - Anda dapat mulai berkontribusi hari ini dengan menambahkan produk pertama Anda. 
 
-*** Dapatkan faktanya ***
-- Open Beauty Facts membantu anda untuk memahami label kemasan produk.
+*** Get the Facts ***
+- Open Products Facts helps you to make sense of the fine print on products labels.
 
-*** Kumpulkan Semuaaa hal ***
-- Anda dapat menambahkan semua barang dari koleksi Anda
-- Open Crayons Facts - basis data terbuka terbesar untuk krayon
-- Open Miniature Food Facts - data basis terbuka terbesar produk makanan miniatur
-- Open ??? Facts - Buat sendiri basis data milikmu :-)
+*** Collect AAAALL the things ***
+- You can add all the items from your collections
+- Open Crayons Facts - Basis data krayon untuk mewarnai yang terbuka dan terbesar
+- Open Miniature Food Facts - The largest open database of miniature food products
+- Open ??? Facts - Create your own open database :-)
 
-*** Bekerja dengan baik di segala kondisi ***
-- Bisa menambahkan produk, bahkan tanpa koneksi internet.
-- Aplikasi hanya membuat hal yang diperlukan untuk mengurangi konsumsi data dan baterai
-- Tidak memerlukan kamera untuk mencari produk. Jika bermasalah dengan kamera, mengetik angka kode batang bisa dilakukan.
+*** Bekerja dengan baik dalam kondisi apapun ***
+- Anda dapat menambahkan produk - produk baru, bahkan jika Anda tidak memiliki koneksi Internet saat ini.
+- The app loads only the strict necessary to reduce data and battery consumption
+- Anda tidak perlu kamera untuk mencari produk. Anda juga dapat mengetik kode batang jika Anda tidak memiliki kamera atau kamera Anda bermasalah.
 
-*** Produkmu, Datamu ***
-- Datamu adalah milikmu, tidak akan diunggah
-- Bisa menggunakan aplikasi secara anonim
-- Bisa mengekspor riwayat pemindaian
+*** Produk Anda, data Anda ***
+- Data pribadi Anda adalah milik Anda, dan tidak pernah dikirim secara daring
+- Anda bisa menggunakan aplikasi secara anonim
+- Anda dapat mengekspor riwayat pemindaian Anda
 
-Open Food Facts untuk makanan.
-Open Beauty Facts untuk kosmetik.
-Open Pet Food Facts untuk makanan hewan.
+Untuk makanan, Anda dapat menginstal Open Food Facts, untuk kosmetik, Open Beauty Facts, dan untuk makanan hewan peliharaan, Open Pet Food Facts.
 
-Open Product Facts juga tersedia di situs web di https://world.openproductsfacts.org
+Open Product Facts juga tersedia di web di https://world.openproductsfacts.org
 Pertanyaan, umpan balik: contact@openfoodfacts.org
 
-*** Daftar April's Fool Asli ***
+*** Original April's Fool Listing ***
 
-Kemarin pagi, tim Open Food Facts bangun dengan ilham yang menakjubkan. 
+Yesterday morning, the Open Food Facts team woke up to a stunning revelation. 
 
-Mengumpulkan makanan, kosmetik, dan makanan hewan peliharaan di seluruh dunia sangat ketinggalan jaman. Dengan kemajuan gila yang dibuat selama beberapa tahun terakhir, misi mengumpulkan makanan dan kosmetik di seluruh dunia semakin dekat, kan?
+Collecting the world's food, cosmetic and pet food was so passé. With the insane progress made over the past year, we must surely be close to completing our mission to collect all the food and cosmetic products in the world, right ?
 
-Jadi bukan hanya 1, tapi 77000 data basis terpisah lainnya telah dibuat! 
+So we set up to create not 1, but other 77000 separate new databases ! 
 
-Open Product Facts akan menjadi proyek yang sangat ambisius. Beberapa diantaranya: 
+Open Products Facts will be an extremely ambitious project. Beberapa diantaranya: 
 
-Open Crayons Facts - basis data terbuka terbesar untuk krayon
+Open Crayons Facts - Basis data terbuka yang terbesar untuk krayon warna
 
-Open Miniature Food Facts - data basis terbuka terbesar produk makanan miniatur
+Open Miniature Food Facts - Basis data terbuka yang terbesar untuk produk - produk makanan miniatur
 
-Open ??? Facts - basis data terbuka untuk ???
+Open ??? Facts - The largest open database of ???
 
-Besok, kami akan memilih 3 basis data paling sukses dan mulai mengumpulkan semua produk yang sesuai dari seluruh dunia.
+Tomorrow, we will select the 3 most sucessful databases, and we will start collecting all the matching products in the world.
 
-Mungkinkah akan menjadi basis data tong sampah, télécartes, atau ponsel? 
+Will it be trash cans, télécartes, or mobile phones database ? 
 
-Jadi jika Anda suka t-shirt, buku memasak, kertas origami atau bola salju, mulailah memindai menggunakan aplikasi Android Open Products Facts di Google Play
+So if you like t-shirts, cooking books, origami paper or snow globes, start scanning using the Open Products Facts Android app on Google Play
