@@ -1,10 +1,10 @@
-Open Food Facts is an open database of food products with ingredients, allergens, nutrition facts and all the tidbits of information we can find on product labels.
+Open Products Facts is an open database of food products with ingredients, allergens, nutrition facts and all the tidbits of information we can find on product labels.
 
 *** Contribute to Product Transparency ***
 
 - Open Products Facts is a products database made by everyone, for everyone.
 - You can use it to make better choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Products Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways. 
+- Open Products Facts is a non-profit project developed by thousands of volunteers from around the world. Sinezinhlelo eziningi ezithakazelisayo ongazifaka ngezindlela eziningi ezahlukene. 
 - You can start contributing today by adding your first product. 
 
 *** Get the Facts ***
@@ -16,10 +16,10 @@ Open Food Facts is an open database of food products with ingredients, allergens
 - Open Miniature Food Facts - The largest open database of miniature food products
 - Open ??? Facts - Create your own open database :-)
 
-*** Isebenza kahle nganoma yisiphi isimo ***
+*** Works well in any condition ***
 - Ungangeza imikhiqizo emisha, noma ngabe awunawo uxhumano lwe-inthanethi okwamanje.
-- Uhlelo lokusebenza luthwala kuphela okudingekayo okunciphisa ukunciphisa idatha kanye nokusetshenziswa kwebhethri
-- Awudingi ikhamera ukuze ubuke umkhiqizo. Ungaphinda uthayiphe ibhakhodi uma ungenayo ikhamera noma unenkinga nayo.
+- The app loads only the strict necessary to reduce data and battery consumption
+- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
 
 *** Your products, your data ***
 - Your personal data is yours, and is never sent online
@@ -29,7 +29,7 @@ Open Food Facts is an open database of food products with ingredients, allergens
 For food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for pet food, Open Pet Food Facts.
 
 Open Products Facts is also available on the web at https://world.openproductsfacts.org
-Questions, feedback : contact@openfoodfacts.org
+Imibuzo, impendulo: contact@openfoodfacts.org
 
 *** Original April's Fool Listing ***
 
@@ -51,4 +51,4 @@ Tomorrow, we will select the 3 most sucessful databases, and we will start colle
 
 Will it be trash cans, télécartes, or mobile phones database ? 
 
-Ngakho uma uthanda ama-t-shirts, ukupheka izincwadi, iphepha le-origami noma i-snow globe, qala ukukhipha ukuskena usebenzisa uhlelo lokusebenza lwe-Open Products Facts Android ku-Google Play
+So if you like t-shirts, cooking books, origami paper or snow globes, start scanning using the Open Products Facts Android app on Google Play
