@@ -1,19 +1,19 @@
 Das sind die Beschriftungen, die über den Screenshots im Playstore angezeigt werden. Halten Sie sie kurz und attraktiv.
 https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=de
 
-════════════════
-V2 Bildschirmfotos
-════════════════
+=====================
+V2 Screenshots
+=====================
 
-Produkte erfassen
+Produkte einlesen
 
-„Nutri-Score” (franz. Nahrungsmittelampel) abrufen
+Erhalte den Nutriscore
 
-Ihr vollständiger Verlauf eingelesener Produkte, vollständig privat und exportierbar
+Ihr vollständiger Scan-Verlauf, vollständig privat & exportierbar
 
 Weiter geht's mit Wikipedia
 
-Allergenwarnungen festlegen
+Allergen-Warnungen setzen
 
 Ernährung, vereinfacht
 
@@ -21,7 +21,7 @@ Allergen-Warnung
 
 Alternativen finden für Ihre Lieblingsspeisen
 
-Werden Sie ein Vertreter der Lebensmitteltransparenz
+Werden Sie ein Akteur der Lebensmitteltransparenz
 
 Wikipedia für Lebensmittel
 
@@ -31,21 +31,21 @@ Wikipedia für Tiernahrung
 
 Wikipedia für Produkte
 
-Inhaltsstoffe
+Zutaten
 
 Leistungsfähig
 
 Nährwertangaben
 
-════════════════
-V3 Bildschirmfotos
-════════════════
+=====================
+V3 Screenshots
+=====================
 
 Wählen Sie die Produkte, die gut für Sie und für den 🌍 Planeten sind!
 
-✔ Ultraschnelles Einlesen von Strichcodes
+✔ Ultraschneller Barcode-Scan
 
-✔ Ein weltumspannender Supermarkt in der Tasche
+✔ Ein globaler Supermarkt in Ihrer Tasche
 
 Nahrungsqualität
 
@@ -53,20 +53,20 @@ Sehr hoch verarbeitete Lebensmittel
 
 CO₂-Einfluss
 
-Vergleichen Sie leicht, bevor Sie kaufen
+Vergleichen Sie einfach vor dem Kauf
 
-Erstellen Sie Einkaufslisten, Eingangslisten …
+Einkaufslisten, Aufnahmelisten… erstellen
 
-Mehr als 750.000 Produkte finden & vergleichen.
+Finden und vergleichen Sie über 750 000 Produkte.
 
 
 
-Unbegrenzter und vollständig privater Verlauf der erfassten Produkte
+Unbegrenzter und vollständig privater Scanverlauf
 
-Wischen, um weitere Details anzuzeigen
+Wischen Sie für noch mehr Details
 
-Allergen-Warnung
+Allergenwarnungen festlegen
 
-Schließen Sie sich unserer globalen Bewegung für Transparenz bei Lebensmitteln an
+Schließen Sie sich unserer globalen Bewegung für Lebensmitteltransparenz an
 
 world.openfoodfacts.org/contribute
