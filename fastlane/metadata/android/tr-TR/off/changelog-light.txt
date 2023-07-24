@@ -2,30 +2,30 @@ VERSİYON 3
 ====
 1. Yeni ürünlere katkıda bulunmak, ve Nutri-Score'u hesaplamak daha kolay
 2. Ürün listelerinizi (alışveriş, yemek...) oluşturun (ve dışa aktarın)
-3. Ürünleri, arka arkaya tarayarak yan yana karşılaştırın.
+3. Ürünleri, arka arkaya tarayarak yan yana karşılaştırın. ürüne ulaştık.
 4. Tamamen yeniden tasarlanan ürün sayfası, keşfetmek için kartı yukarı kaydırın
 5. Open Food Facts tamamen gönüllü bir çabadır: Zaman (world-tr.openfoodfacts.org/contribute) veya para (donate.openfoodfacts.org) bağışında bulunabilirsiniz
 
 
 ======
-v2! Tüm OFF gönüllüleri önerilerinize dayanarak çok sıkı çalıştılar. Biz her zamankinden daha küresel bir hareketiz. 500 bin özgür ürün, 182 ülke, 10 binin üzerinde katılımcı, sen de dahil :-) sen de dahil :-)
+v2! Tüm OFF gönüllüleri önerilerinize dayanarak çok sıkı çalıştılar. Biz her zamankinden daha küresel bir hareketiz. 500 bin özgür ürün, 182 ülke, 10 binin üzerinde katılımcı, sen de dahil :-) sen de dahil :-) you :-)
 1. Dünyadaki tüm ürünler için NutriScore
 2. Sadece sizin görebileceğiniz, dışa aktarılabilir geçmiş bilgisi
 3. Alerjen uyarıları
 4. Wikipedia ile keşfetmek için katkı maddelerinin üzerine tıklayın.
 5. Fotoğraf çekin, gıda şeffaflığının bir parçası olun
-6. 6. 2G'de bile çok daha hızlı. Bağlantı olmadan katkıda bile bulunabilirsiniz
+6. 6. 6. 2G'de bile çok daha hızlı. Bağlantı olmadan katkıda bile bulunabilirsiniz
 7. Kaydolmak gerekmiyor
 8. Daha önce olduğu gibi hafif :)
 
-v2.8! Büyük V2’den sonra, tüm OFF gönüllüleri önerilerinize dayanarak sıkı çalışmaya devam ettiler. Şu anda 182 ülkeden 10 binin üzerinde katılımcı, sen de dahil 🙂, tarafından özgürleştirilen 570 bin ürüne ulaştık. ürüne ulaştık.
+v2.8! Büyük V2’den sonra, tüm OFF gönüllüleri önerilerinize dayanarak sıkı çalışmaya devam ettiler. Şu anda 182 ülkeden 10 binin üzerinde katılımcı, sen de dahil 🙂, tarafından özgürleştirilen 570 bin ürüne ulaştık. you 🙂
 1. Tüm ürün ekleme deneyimini yeniden inşa ettik (çevrimdışı bile çalışıyor). (teşekkürler Huzaifa)
 2. Artık yediğiniz porsiyon için besin değerlerini öğrenebilirsiniz (Rutvik)
 3. Nutriscore'a ek olarak NOVA gruplarını da hesaplıyoruz (Huzaifa)
 4. Genel temizlik (Rutvik & Salfai tarafından)
 5. 🌎 Korece & Endonezyaca
 
-2.8.8! Ürün eklemede duracağımızı mı düşündün? Tüm OFF gönüllüleri sıkı çalışmaya devam etti. 590 bin ürün, 182 ülke, 10 binin üzerinde katılımcı, ürüne ulaştık. ürüne ulaştık.
+2.8.8! Ürün eklemede duracağımızı mı düşündün? Tüm OFF gönüllüleri sıkı çalışmaya devam etti. 590 bin ürün, 182 ülke, 10 binin üzerinde katılımcı, ürüne ulaştık. you 🙂
 1. Artık OFF hesabınızla herhangi bir ürünü düzenleyebilirsiniz. Düzenlemek için ürün sayfasında ✏️ simgesine tıklayın.
 2. 🌍 Slovakça, İbranice, İspanyolca, Arapça, Hollandaca, Macarca ve Vietnamca (yardım etmek için translate.openfoodfacts.org)
 3. Open Food Facts tamamen gönüllü bir çabadır: Zaman (world-tr.openfoodfacts.org/contribute) veya para (donate.openfoodfacts.org) bağışında bulunabilirsiniz
