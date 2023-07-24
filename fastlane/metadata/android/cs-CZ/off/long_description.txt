@@ -1,16 +1,16 @@
-Scan food products or their barcode to obtain data on ingredients, additives and nutrition facts.
+Naskenujte potravinářské výrobky nebo jejich čárový kód pro získání údajů o složení, přísadách a výživových údajích.
 
-▶ Find & Compare more than 800.000 products
+▶ Najděte a porovnejte více než 800 000 produktů
 
-The app allows to view the 800.000 products (including 175.000 in the US) already contained in the free and open database Open Food Facts, and also to add pictures and data for new products.
+Aplikace umožňuje zobrazit 800 000 produktů (včetně 175 000 v USA), které jsou již obsaženy v bezplatné a otevřené databázi Open Food Facts, a také přidávat obrázky a data pro nové produkty.
 
 
-To discover the volunteer-run Open Food Facts project, visit https://world.openfoodfacts.org
+Chcete-li objevit projekt Open Food Facts vedený dobrovolníky, navštivte https://world.openfoodfacts.org
 
 ▶ Vyberte si produkty, které jsou pro vás dobré
 - Stupeň Nutri-Score, od "A" do "E" >> Nutriční kvalita
 - Skupina NOVA, od "1" do "4" >> Najděte ultra zpracované potraviny
-- You can easily compare as many products as you want, side by side by simply scanning them. 
+- Můžete snadno porovnávat tolik produktů, kolik chcete, vedle sebe pouhým skenováním. 
 
 ▶ A dobré pro planetu!
 - Uhlíková stopa vašeho jídla
