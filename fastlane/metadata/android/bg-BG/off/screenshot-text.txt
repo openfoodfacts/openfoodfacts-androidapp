@@ -1,72 +1,72 @@
-Those are the taglines shown above the screenshots in the playstore. Keep them short and attractive.
+Това са лозунгите, показани над екранните снимки в Playstore. Дръж ги кратки и привлекателни.
 https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=bg
 
 =====================
-V2 screenshots
+Екранни снимки V2
 =====================
 
-Scan products
+Сканирай продукти
 
-Get the Nutriscore
+Получи Nutri-Score
 
-Your full scan history, fully private & exportable
+Твоята пълна история на сканиране, напълно частна и която можеш да експортираш
 
-Go further with Wikipedia
+Отиди по-нататък с Wikipedia
 
-Set allergen alerts
+Задай сигнали за алергени
 
-Nutrition, simplified
+Храненето, опростено
 
 Предупреждение за алергени
 
-Get alternatives for your favorite foods
+Намери алтернативи на любимите си храни
 
-Become an actor of food transparency
+Стани участник в прозрачността на храните
 
-Wikipedia for Food
+Уикипедия за храните
 
-Wikipedia for Cosmetics
+Уикипедия за козметиката
 
-Wikipedia for Pet Food
+Уикипедия за храната за домашни любимци
 
-Wikipedia of Products
+Уикипедия на продуктите
 
 Съставки
 
-Powerful
+Мощно
 
-Хранителна информация
+Хранителни стойности
 
 =====================
-V3 screenshots
+Екранни снимки V3
 =====================
 
-Choose the products that are good for you and for the 🌍 planet !
+Избери продуктите, които са добри за теб и за 🌍 планетата!
 
-✔ Ultra-fast barcode scan
+✔ Ултра-бързо сканирай баркод
 
-✔ A global supermarket in your pocket
+✔ Глобален супермаркет в джоба ти
 
-Nutritional quality
+Хранително качество
 
-Ultra-processed foods
+Свръхпреработени храни
 
-Carbon impact
+Въглероден отпечатък
 
-Compare easily before you buy
+Сравни лесно преди да купиш
 
-Create shopping lists, intake lists…
+Създай списъци за пазаруване…
 
-Find and compare over 750 000 products.
+Намери и сравни над 750 000 продукта.
 
 
 
-Unlimited and fully-private scan history
+Неограничена и напълно лична история на сканиране
 
-Swipe for even more details
+Плъзни за повече подробности
 
-Set Allergen Alerts
+Задай сигнали за алергени
 
-Join our global movement for food transparency
+Присъедини се към нашето глобално движение за прозрачност на храните
 
 world.openfoodfacts.org/contribute
