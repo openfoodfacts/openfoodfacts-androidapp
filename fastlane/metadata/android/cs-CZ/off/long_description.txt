@@ -26,8 +26,8 @@ Chcete-li objevit projekt Open Food Facts vedený dobrovolníky, navštivte http
 - Open Food Facts je neziskový projekt vyvinutý tisíci dobrovolníků z celého světa. Máme spoustu zajímavých projektů, můžete přispět mnoha různými způsoby.
 - Dnes můžete začít přispívat přidáním produktu z vaší lednice.
 
-▶ Create lists
-Create shopping lists, track what you've eaten and easily share and export your lists.
+▶ Vytvářejte seznamy
+Vytvářejte nákupní seznamy, sledujte, co jste jedli, a snadno je sdílejte a exportujte.
 
 ▶ Získejte fakta
 - Open Food Facts vám pomůže pochopit drobný tisk na etiketách produktů. Budete moci najít:
@@ -46,7 +46,7 @@ Create shopping lists, track what you've eaten and easily share and export your 
 - Komunita Open Food Facts spolupracuje s výzkumnými týmy po celé planetě na zlepšení výzkumu výživy, který je přínosný pro všechny.
 
 
-▶ Offline skenování: Skenujte za JAKÝCHKOLI podmínek! (coming soon)
+▶ Offline skenování: Skenujte za JAKÝCHKOLI podmínek! (již brzy)
 Skenujte rychlostí světla (i když jste v letadle, ponorce nebo supermarketu)
 
 - Celá planeta ve vaší kapse!
@@ -67,10 +67,10 @@ Skenujte rychlostí světla (i když jste v letadle, ponorce nebo supermarketu)
 ▶ Řekněte ahoj a/nebo se k nám připojte!
 
 
-Open Food Facts is also available on the web at https://world.openfoodfacts.org
+Open Food Facts je k dispozici také na webu https://world.openfoodfacts.org
 
 
 Otázky, zpětná vazba: contact@openfoodfacts.org
 
 
-For cosmetics, you can install Open Beauty Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.
+Pro kosmetiku můžete nainstalovat Open Beauty Facts, pro krmivo pro zvířata v zájmovém chovu, Open Pet Food Facts, a pro všechny ostatní produkty, Open Products Facts.
