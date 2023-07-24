@@ -1,34 +1,34 @@
-Scan pet food products or their barcode to obtain data on ingredients, additives and nutrition facts.
+Scanați produsele alimentare pentru animale de companie sau codurile de bare ale acestora pentru a obține date despre ingrediente, aditivi și valori nutriționale.
 
 The app allows to view the over 600 pet food products already contained in the free and open database Open Pet Food Facts, and also to add pictures and data for missing products.
 
-To discover the Open Pet Food Facts project, please visit https://world.openpetfoodfacts.org
+Pentru a descoperi proiectul Open Pet Food Facts, vă rugăm să vizitați https://world.openpetfoodfacts.org
 
-***Contribuie la transparența produselor alimentare veterinare***
+***Contribute to Pet Food Transparency***
 
-- Open Pet Food Facts is a pet food products database made by everyone, for everyone.
-- You can use it to make better pet food choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Pet Food Facts is a non-profit project developed by thousands of volunteers from around the world. Avem o mulțime de proiecte interesante la care puteți contribui în multiple moduri. 
-- You can start contributing today by adding a product from your pet's cupboard. 
+- Open Pet Food Facts este o bază de date de produse alimentare pentru animale de companie creată de toată lumea, pentru toată lumea.
+- Îl puteți folosi pentru a face alegeri mai bune pentru hrana pentru animale de companie și, deoarece este date deschise, oricine o poate reutiliza în orice scop.
+- Open Pet Food Facts este un proiect non-profit dezvoltat de mii de voluntari din întreaga lume. Avem multe proiecte interesante la care poți contribui în multe feluri diferite. 
+- Puteți începe să contribuiți astăzi prin adăugarea unui produs din dulapul animalului dvs. de companie. 
 
 
-*** Obține informațiile ***
+*** Get the Facts ***
 
 You will also be able to find (according to the indications present on the products):
-- list of ingredients (including ash content)
-- nutritional info, nutrition traffic lights…
+- lista ingredientelor (inclusiv conţinutul de cenuşă)
+- informaţii nutriţionale, semafoare nutriţionale…
 - brands, allergens, labels (organic, vegan...)
-- It works with dog food (dry dog food & wet dog food), cat food, rabbit food, snake food, fish food, bird food, horse food or any food for your favorite animal.
+- Funcționează cu mâncare pentru câini (hrană uscată pentru câini și mâncare umedă pentru câini), mâncare pentru pisici, mâncare pentru iepuri, mâncare pentru șerpi, mâncare pentru pești, mâncare pentru păsări, mâncare pentru cai sau orice hrană pentru animalul tău preferat.
 
-*** Works well in any condition ***
-- You can add new products, even if you don't have an Internet connection right now.
+*** Funcționează bine în orice condiție ***
+- Puteți adăuga produse noi, chiar dacă nu aveți o conexiune la Internet acum.
 - The app loads only the strict necessary to reduce data and battery consumption
-- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
+- Nu aveți nevoie de o cameră pentru a căuta un produs. De asemenea, puteți introduce codul de bare dacă nu aveți o cameră sau aveți o problemă cu aceasta.
 
-*** Alimentele animalului de companie, datele dvs. ***
-- Your personal data is yours, and is never sent online
-- You can use the app anonymously
-- You can export your scan history
+*** Hrana pentru animale de companie, datele tale ***
+- Datele dumneavoastră personale sunt ale dumneavoastră și nu sunt niciodată trimise online
+- Puteți utiliza aplicația în mod anonim
+- Puteți exporta istoricul scanărilor
 
 
-For human food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for all other products, Open Products Facts.
+Pentru hrana umană, puteți instala Open Food Facts, pentru cosmetice, Open Beauty Facts și pentru toate celelalte produse, Open Products Facts.
