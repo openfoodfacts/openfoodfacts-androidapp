@@ -3,34 +3,34 @@
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/ -->
     <string name="website">https://world.openfoodfacts.org/</string>
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contribuer -->
-    <string name="website_contribute">https://world.openfoodfacts.org/contribute</string>
+    <string name="website_contribute">https://world-nl.openfoodfacts.org/bijdragen</string>
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/decouvrir -->
-    <string name="website_discover">https://world.openfoodfacts.org/discover</string>
+    <string name="website_discover">https://world-nl.openfoodfacts.org/ontdekken</string>
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/produit/ -->
-    <string name="website_product">https://world.openfoodfacts.org/product/</string>
+    <string name="website_product">https://world-nl.openfoodfacts.org/product/</string>
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
-    <string name="website_contributor">https://world.openfoodfacts.org/contributor/</string>
-    <string name="txtHome">Open Food Facts is een open database van voedingsproducten met ingrediënten, allergenen, voedingsinformatie en alle informatie die we kunnen vinden op de etiketten van de producten.</string>
+    <string name="website_contributor">https://world-nl.openfoodfacts.org/bijdrager/</string>
+    <string name="txtHome">Open Food Facts is een open database met voedingsproducten.</string>
     <string name="slide_1_title">Draag bij aan transparantie in de voedselketen</string>
     <string name="slide_1_desc">Scan producten, neem foto\'s, creëer transparantie in de voedselketen</string>
     <string name="slide_2_title">Ken de feiten</string>
     <string name="slide_2_desc">Uitgebreide informatie over het gescande product, ontcijferd voor jou</string>
-    <string name="slide_3_title">Krijg de Nutriscore</string>
+    <string name="slide_3_title">Krijg de Nutri-Score</string>
     <string name="slide_3_desc">Een synthetische weergave van de voedingseigenschappen van uw favoriete levensmiddelen</string>
     <string name="slide_4_title">Werkt offline</string>
     <string name="slide_4_desc">Je kan nieuwe producten toevoegen, zelfs als je nu geen internetverbinding hebt</string>
-    <string name="txtDialogsContent">Het gescande product bestaat nog niet in Open Food Facts. Voeg deze toe.</string>
+    <string name="txtDialogsContent">Het door u gescande product bestaat nog niet in Open Food Facts. Voeg het toe.</string>
     <string name="txtDialogsContentPowerMode">Het gescannede product bestaat al in Open Food Facts</string>
-    <string name="msg_share">Bekijk dit product op Open Food Facts</string>
+    <string name="msg_share">Bekijk dit product op Open Food Facts:</string>
     <string name="not_support_books">Boeken worden momenteel niet ondersteund door Open Food Facts</string>
-    <string name="txt_broaden_search">-zoekopdracht uitbreiden \n-scan een product en voeg het toe aan Open Food Facts</string>
+    <string name="txt_broaden_search">- zoekopdracht uitbreiden \n-scan een product en voeg het toe aan Open Food Facts</string>
     <string name="Donation">Klik hier om te doneren aan Open Food Facts</string>
     <string name="translate_help_title">Help met het vertalen van Open Food Facts</string>
     <string name="translate_help_summary">Breng de Open Food Fact database naar jouw taal - geen technische kennis vereist</string>
     <string name="text_offline_info_dialog">Scan de producten ook als u offline bent, om ze later aan Open Food Facts toe te voegen. De gescande producten verschijnen hier en u kunt ze verzenden via de onderstaande knop.</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Informatie over je allergieën wordt nooit naar de Open Food Facts-server verzonden. Let ook op dat productgegevens mogelijk niet accuraat zijn en detectie mogelijk niet 100% accuraat is, dus controleer dit aub zelf! </string>
     <!-- OFF tagline in different languages -->
-    <string name="tagline">de gratis database met levensmiddelen</string>
-    <string name="product_not_found">Product %1$s door jou gescand, bestaat nog niet. Wil je het toevoegen?</string>
+    <string name="tagline">de gratis database van voedingsmiddelen</string>
+    <string name="product_not_found">Het door jou gescande product %1$s, bestaat nog niet. Wil je het toevoegen?</string>
     <string name="currently_on_version">Momenteel op Open Food Facts</string>
 </resources>
