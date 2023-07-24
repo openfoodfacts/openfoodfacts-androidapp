@@ -21,20 +21,20 @@ Gönüllüler tarafından yürütülen Open Food Facts projesini keşfetmek içi
 
 
 ▶ Gıda Şeffaflığına Katkıda Bulunun
--Open Food Facts, herkes tarafından herkes için oluşturulan bir gıda ürünleri veritabanıdır.
--Daha iyi gıda tercihleri yapmak için kullanılabileceği gibi, açık bir kaynak olduğu için herhangi biri istediği bir amaç için yeniden kullanabilir.
--Open Food Facts dünyanın dört bir yanından, binlerce gönüllü tarafından geliştirilen ve kar amacı gütmeyen bir projedir. -Birçok farklı şekilde katkı sağlayabileceğiniz çok sayıda heyecan verici projelerimiz bulunmakta.
+- Open Food Facts, herkes tarafından herkes için oluşturulan bir gıda ürünleri veritabanıdır.
+- Daha iyi gıda tercihleri yapmak için kullanılabileceği gibi, açık bir kaynak olduğu için herhangi biri istediği bir amaç için yeniden kullanabilir.
+- Open Food Facts dünyanın dört bir yanından binlerce gönüllü tarafından geliştirilen ve kar amacı gütmeyen bir projedir. -Birçok farklı şekilde katkı sağlayabileceğiniz çok sayıda heyecan verici projelerimiz bulunmakta.
 - Bugün buzdolabınızdan bir ürün ekleyerek katkıda bulunmaya başlayabilirsiniz.
 
 ▶ Listeler oluştur
 Alışveriş listeleri oluşturun, ne yediğinizi takip edin ve listelerinizi kolayca paylaşın ve dışa aktarın.
 
-▶ Gerçekleri Öğrenin
--Open Food Facts size, ürün etiketlerindeki satır aralarını daha iyi anlayabilmenizde yardımcı olur. Neler bulacaksınız:
--karbon ayakizi (CO2 salınımı) ve paketleme (geri dönüşüm talimatları vb.),
--Nutriscore (besleyicilik değeri), besinler, yağ/yağ içeriği, doymuş yağ asitleri, karbonhidratlar, şekerler, lif, protein ve tuz ve sodyum.
-- markalar, alerjenler, etiketler (biyo, glutensiz, vegan, vejetaryen, helal, koşer...), izlenebilirlik bilgileri (ambalaj kodları, malzemelerin kaynağı)
--Şaraplarda ve biralarda alkol içeriğini bulacaksınız.
+▶ Get the Facts
+- Open Food Facts, ürün etiketlerindeki ince ayrıntıları anlamanıza yardımcı olur. You will also be able to find (according to the indications present on the products):
+- karbon ayak izi (CO2 emisyonu) ve paketleme (ve geri dönüşüm talimatları),
+- Nutriscore (beslenme puanı), besin ögeleri, yağ / yağ içeriği, doymuş yağ asitleri, karbonhidratlar, şekerler, lif, protein ve tuz ve sodyum.
+- brands, allergens, labels (bio, gluten free, vegan, vegetarian, halal, kosher ...), traceability information (packaging codes, origins of ingredients)
+- Şaraplarda ve biralarda alkol miktarını bulacaksınız.
 
 
 ▶ Bilime dayanarak, karşılığında Bilime yardımcı olarak!
@@ -51,7 +51,7 @@ Işık hızında tarayın (uçakta, denizaltıda veya süpermarkette olsanız bi
 
 - Bütün gezegen, cebinizde!
 - Şu an İnternet bağlantınız olmasa bile yeni ürünler ekleyebilirsiniz.
-- Uygulama veri ve pil kullanımını azaltmak için sadece gerekli olanları yükler.
+- The app loads only the strict necessary to reduce data and battery consumption.
 
 ▶ Sizin yiyecekleriniz, sizin verileriniz
 - Verileriniz sizindir ve asla çevrimiçi gönderilmez
@@ -73,4 +73,4 @@ Open Food Facts aynı zamanda https://world-tr.openfoodfacts.org internet adresi
 Sorular, geri bildirim : contact@openfoodfacts.org
 
 
-Kozmetik için Open Beauty Facts, evcil hayvan gıdaları için Open Pet Food Facts yüklenebilir. Geri kalan her şey için, Open Products Facts.
+Kozmetik için Open Beauty Facts, evcil hayvan gıdaları için Open Pet Food Facts yüklenebilir.
