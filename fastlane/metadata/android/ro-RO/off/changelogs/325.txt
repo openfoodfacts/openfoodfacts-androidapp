@@ -1,2 +1,2 @@
-1. NEW: you can now see the vegan, vegetarian and palm oil status of products, based on their ingredient list. More analysis will be added over time. Send us a mail to tell us what you'd like to see :-) 
-2. Housecleaning with fixes for several issues that you reported to contact@openfoodfacts.org
+1. NOU: puteți vedea acum statutul vegan, vegetarian și ulei de palmier al produselor, pe baza listei de ingrediente. Mai multe analize vor fi adăugate în timp. Trimite-ne un e-mail pentru a ne spune ce ai vrea să vezi :-) 
+2. Curățenie cu remedieri pentru mai multe probleme pe care le-ați raportat la contact@openfoodfacts.org
