@@ -4,19 +4,19 @@ VERSIE 3
 2. Maak (en exporteer) uw productlijsten (winkelen, eten…)
 3. Vergelijk producten door ze na elkaar te scannen.
 4. Volledig opnieuw ontworpen productpagina, schuif de kaart naar boven om deze te ontdekken
-5. Open Food Facts is een volledig vrijwillig: je kan je tijd doneren (world.openfoodfacts.org/contribute) of geld (donate.openfoodfacts.org)
+5. Open Food Facts wordt volledig door vrijwilligers gerund: u kunt tijd (world.openfoodfacts.org/contribute) of geld (donate.openfoodfacts.org) bijdragen
 
 
 ======
-v2! Alle vrijwilligers van OFF hebben hard gewerkt, op basis van jouw suggesties. We zijn meer dan ooit een mondiale beweging. 500k-producten bevrijd, 182 landen, 10K + bijdragers, incl. jou :-)
+v2 ! Alle vrijwilligers van OFF hebben hard gewerkt, op basis van jouw suggesties. We zijn meer dan ooit een wereldwijde beweging. 500.000 producten vrijgegeven, 182 landen, 10.000+ bijdragers, incl. jou :-)
 1. Nutri-Score voor alle producten in de wereld
-2. Geschiedenis export, alleen jou bestemd
-3. Allergen alerts
+2. Exporteerbare geschiedenis, alleen voor jouw ogen
+3. Allergeenwaarschuwingen
 4. Tik op additieven om met Wikipedia meer te weten te komen.
 5. Neem foto's en help voedsel inzichtelijk te maken
 6. Veel sneller, zelfs op 2G. Je kan zelfs bijdragen zonder verbinding
 7. Geen aanmelding vereist
-8. As light as before :)
+8. Zo licht als voorheen :)
 
 v2.8! Na de enorme verandering van V2 bleven alle OFF-vrijwilligers hard werken, op basis van jouw suggesties. We hebben nu 570k producten uit 182 landen bevrijd door 10K+ bijdragers, incl. jij 🙂
 1. We hebben de producttoevoeging opnieuw opgebouwd (en hij werkt zelfs offline). (bedankt Huzaifa)
@@ -25,10 +25,10 @@ v2.8! Na de enorme verandering van V2 bleven alle OFF-vrijwilligers hard werken,
 4. Huishouding (door Rutvik & Salfai)
 5. 🌎 Koreaans en Indonesisch
 
-2.8.8! Denk je dat we zouden stoppen bijproductentoevoeging? Alle OFF vrijwilligers bleven hard werken. 590k-producten, 182 landen, 10K + bijdragers, incl. jij 🙂
+2.8.8! Dacht je dat we zouden stoppen bij productentoevoeging? Alle OFF vrijwilligers bleven hard werken. 590k-producten, 182 landen, 10K + bijdragers, incl. jij 🙂
 1. Je kan nu elk product met je OFF-account bewerken. Klik op ✏️ op een productpagina om te bewerken.
 2. 🌍 Slowaaks, Hebreeuws, Spaans, Arabisch, Nederlands, Hongaars en Vietnamees (translate.openfoodfacts.org om te helpen)
-3. Open Food Facts is een volledig vrijwillig: je kan je tijd doneren (world.openfoodfacts.org/contribute) of geld (donate.openfoodfacts.org)
+3. Open Food Facts wordt volledig door vrijwilligers gerund: u kunt tijd (world.openfoodfacts.org/contribute) of geld (donate.openfoodfacts.org) doneren
 
 
 
