@@ -28,7 +28,7 @@
     <string name="txt_broaden_search">- extinderea căutării tale \n- scanează-l și adaugă-l în Open Food Facts</string>
     <string name="Donation">Apăsă aici pentru a face o donație către Open Food Facts</string>
     <string name="translate_help_title">Ajută la traducerea informațiilor din Open Food Facts</string>
-    <string name="translate_help_summary">Aduceți baza de date Open Food Facts în limba dvs. - nu aveți nevoie de cunoștințe tehnice</string>
+    <string name="translate_help_summary">Construiți baza de date Open Food Facts în limba dvs. - nu aveți nevoie de cunoștințe tehnice</string>
     <string name="text_offline_info_dialog">Scanați produsele când sunteți offline pentru a le adăuga in Open Pet Food Facts mai târziu. Toate produsele scanate vor apărea aici, și le veți putea trimite folosind butonul de mai jos.</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Informațiile despre alergiile dumneavostră nu vor fi trimise către serverele Open Food Facts. De asemenea, luați în considerare faptul că datele produselor si detectarea datelor pot fi imprecise, de aceea vă rugam sa le re-verificați dumneavoastră înșivă! </string>
     <!-- OPFF tagline in different languages -->
