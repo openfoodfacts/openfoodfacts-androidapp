@@ -1,51 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- For fr, Replace by https://world-fr.openproductsfacts.org/ -->
-    <string name="website">https://world-pl.openfoodfacts.org/</string>
+    <string name="website">https://world-pl.openproductsfacts.org/</string>
     <!-- For fr, Replace by https://world-fr.openproductsfacts.org/contribuer -->
-    <string name="website_contribute">https://world-pl.openfoodfacts.org/contribute</string>
+    <string name="website_contribute">https://world-pl.openproductsfacts.org/contribute</string>
     <!-- For fr, Replace by https://world-fr.openproductsdfacts.org/decouvrir -->
-    <string name="website_discover">https://world-pl.openfoodfacts.org/discover</string>
+    <string name="website_discover">https://world-pl.openproductsfacts.org/discover</string>
     <!-- For fr, Replace by https://world-fr.openproductsfacts.org/produit/ -->
-    <string name="website_product">https://world-pl.openfoodfacts.org/product/</string>
+    <string name="website_product">https://world-pl.openproductsfacts.org/product/</string>
     <!-- For fr, Replace by https://world-fr.openproductsfacts.org/contributeur/ -->
-    <string name="website_contributor">https://world-pl.openfoodfacts.org/contributor/</string>
+    <string name="website_contributor">https://world-pl.openproductsfacts.org/contributor/</string>
     <string name="terms_url">https://world-pl.openproductsfacts.org/terms-of-use</string>
-    <string name="txtHomeOnline">Open Products Facts is an open database of more than %1$s products (plus the ones you will contribute).</string>
-    <string name="txtHome">Open Food Facts jest otwartą bazą danych o produktach spożywczych, ze składnikami, alergenami, wartościami odżywczymi i wszystkimi informacjami które możemy znaleźć na etykietach produktów.</string>
-    <string name="slide_1_title">Przyczyń się do jasności</string>
-    <string name="slide_1_desc">Skanuj produkty, fotografuj je, niech się dzieje transparentność jedzenia</string>
+    <string name="txtHomeOnline">Open Products Facts to otwarta baza danych więcej niż %1$s produktów (plus te, które pomogą Ci w działaniu).</string>
+    <string name="txtHome">Open Products Facts to otwarta baza danych wszystkich produktów na świecie.</string>
+    <string name="slide_1_title">Przyczyń się do przejrzystości produktu</string>
+    <string name="slide_1_desc">Skanuj produkty, rób je na zdjęciach, spraw, by produkty były przejrzyste</string>
     <string name="slide_2_title">Poznaj fakty</string>
-    <string name="slide_2_desc">Rozszyfrowana wyczerpująca informacja o zeskanowanych produktach</string>
+    <string name="slide_2_desc">Obszerne informacje o zeskanowanych i odszyfrowanych dla Ciebie produktach</string>
     <string name="slide_3_title">Śledź używany produkt</string>
-    <string name="slide_3_desc">Wszystkie zeskanowane produkty na poręcznej liście do eksportu</string>
+    <string name="slide_3_desc">Wszystkie zeskanowane produkty na jednej poręcznej liście, którą możesz wyeksportować</string>
     <string name="slide_4_title">Działa offline</string>
     <string name="slide_4_desc">Możesz dodać nowe produkty, nawet nie mając teraz połączenia</string>
-    <string name="txtDialogsContent">Zeskanowany produkt jeszcze nie figuruje w Open Food Facts. Dodaj go.</string>
-    <string name="txtDialogsContentPowerMode">Zeskanowany produkt istnieje już w Open Food Facts.</string>
+    <string name="txtDialogsContent">The product you scanned does not exist yet in Open Products Facts. Please add it.</string>
+    <string name="txtDialogsContentPowerMode">Zeskanowany produkt istnieje już w Open Products Facts.</string>
     <string name="msg_share">Zobacz produkt na Open Food Facts:</string>
-    <string name="not_support_books">Obecnie Open Food Facts nie obsługuje książek</string>
-    <string name="txt_broaden_search">poszerz zakres wyszukiwania \in- zeskanuj i dodaj do Open Food Facts</string>
+    <string name="not_support_books">Obecnie Open Products Facts nie obsługuje książek</string>
+    <string name="txt_broaden_search">poszerz zakres wyszukiwania \in- zeskanuj i dodaj do Open Products Facts</string>
     <string name="Donation">Naciśnij, by przekazać darowiznę</string>
-    <string name="translate_help_title">Pomóż w tłumaczeniu Open Food Facts</string>
-    <string name="translate_help_summary">Wnieś swój język do bazy Open Food Facts - nie wymagamy wiedzy technicznej</string>
+    <string name="translate_help_title">Pomóż w tłumaczeniu Open Products Facts</string>
+    <string name="translate_help_summary">Wnieś swój język do bazy Open Products Facts - nie wymagamy wiedzy technicznej</string>
     <string name="text_offline_info_dialog">Możesz skanować produkty w trybie offline, aby później dodać je do Open Products Facts. Zeskanowane produkty pojawią się tutaj i będziesz mógł je wysłać za pomocą przycisku poniżej.</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Products Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Twoje informacje o alergiach nigdy nie zostaną wysłane na serwer Open Products Facts. Należy także uważać, że dane produktów mogą nie być dokładne, a wykrywanie może nie być 100% a, więc dokładnie sprawdź sam! </string>
     <!-- OPF tagline in different languages -->
-    <string name="version_string">Open Products Facts Android App</string>
+    <string name="version_string">Otwórz aplikację Beauty Facts na Androida</string>
     <string name="tagline">the free product database</string>
-    <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Products Facts. Can you add it?</string>
+    <string name="product_not_found">Zeskanowany produkt %1$s nie istnieje jeszcze w Open Beauty Facts. Czy możesz go dodać?</string>
     <string name="currently_on_version">Aktualnie na Otwartych faktach o Produktach</string>
     <string name="category_game_btn">Pomóż kategoryzować produkty</string>
     <!-- TODO add true support instead of overriding strings -->
     <string name="add_nutrient_prompt_text">Dodaj więcej szczegółów, aby pomóc w dokończeniu produktu</string>
     <string name="add_category_prompt_text">Dodaj kategorię, aby pomóc w dokończeniu produktu</string>
     <string name="add_nutrient_category_prompt_text">Dodaj kategorię i więcej szczegółów, aby pomóc w dokończeniu produktu</string>
-    <string name="txt_eaten_products">Products I have</string>
+    <string name="txt_eaten_products">Produkty które posiadam</string>
     <string name="txt_products_to_buy">Produkty do kupienia</string>
-    <string name="intent_filter_share_label">Add to Open Products Facts</string>
-    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
-        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
-    <string name="OFFlogo">Open Products Facts logo</string>
-    <string name="brand_hint">Examples: Nike, Apple, etc…</string>
+    <string name="intent_filter_share_label">Dodaj do Open Beauty Facts</string>
+    <string name="txt_info_eaten_products">Będziesz mógł dodać produkt do tej listy skanując produkty, przeciągając kartę produktu i klikając \"Produkty do zakupu\".
+        Możesz również dodać produkty do tej listy, przeszukując je i klikając przycisk + w prawym górnym rogu strony produktu.</string>
+    <string name="OFFlogo">Otwórz logo Beauty Facts</string>
+    <string name="brand_hint">Przykłady: Nike, Apple itp…</string>
 </resources>
