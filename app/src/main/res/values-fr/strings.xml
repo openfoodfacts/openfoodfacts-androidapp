@@ -241,7 +241,7 @@
     <string name="permission_denied">Veuillez activer la permission dans les paramètres</string>
     <string name="info_download_data_connection">Vous devez télécharger des données pour que cette fonctionnalité marche. Veuillez activer votre connexion Internet.</string>
     <!-- Strings related to login -->
-    <string name="error_invalid_password">Le mot de passe doit comporter au moins 6 caractères.</string>
+    <string name="error_invalid_password">The password needs to be at least 6 characters long.</string>
     <string name="user">utilisateur</string>
     <string name="error_field_required">Ce champ est obligatoire.</string>
     <string name="action_preferences">Préférences</string>
@@ -249,19 +249,19 @@
     <string name="prefs_scan_startup_summary">Si sélectionnée, cette option lancera le scan dès l\'ouverture de l\'application.</string>
     <string name="prefs_power_mode">Mode de scan avancé</string>
     <string name="prefs_power_mode_summary">Scanner rapidement des produits dans un supermarché pour voir ceux qui ne sont pas dans la base de données.</string>
-    <string name="prefs_language">Langue</string>
+    <string name="prefs_language">Language</string>
     <string name="prefs_language_summary">Changer la langue</string>
     <!-- Strings related to feedback dialog -->
     <string name="user_enjoying_app">Appréciez-vous votre expérience avec Open Food Facts ?</string>
     <string name="user_ask_show_feedback_form">Oh non ! Pourriez-vous nous dire ce qu\'il s\'est passé ?</string>
-    <string name="user_ask_rate_app">Super ! Faites savoir aux autres ce que vous pensez de cette application !</string>
+    <string name="user_ask_rate_app">Great! Let others know what you think of this app!</string>
     <string name="rate_app">Noter l\'app</string>
     <string name="no_thx">Non merci</string>
     <string name="feedback_form_url">https://docs.google.com/forms/d/e/1FAIpQLScQSJync82iXBCmA7EpuZ_iGNiGjVW2ASSq1lworpR09X8sIQ/viewform</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">Historique</string>
     <string name="clear_history">Effacer l\'historique</string>
-    <string name="title_clear_history_dialog">Effacer</string>
+    <string name="title_clear_history_dialog">Clear</string>
     <string name="text_clear_history_dialog">Voulez-vous effacer tout votre historique de scan ?</string>
     <string name="export_csv_history">Exporter en CSV</string>
     <string name="txt_exporting_history">Export de l\'historique…</string>
@@ -279,10 +279,10 @@
     <string name="calculate_nutrition_facts">Calcul des valeurs nutritives</string>
     <string name="nutrition_carbohydrate">Glucides</string>
     <string name="nutrition_cholesterol">Cholestérol</string>
-    <string name="nutrition_energy">Énergie</string>
+    <string name="nutrition_energy">Energy</string>
     <string name="nutrition_energy_kcal">Énergie en kilocalories (kcal)</string>
     <string name="nutrition_energy_kj">Énergie en kilojoules (kJ)</string>
-    <string name="nutrition_energy_short_name">Énergie</string>
+    <string name="nutrition_energy_short_name">Energy</string>
     <string name="nutrition_fat">Matières grasses</string>
     <string name="nutrition_fiber">Fibres alimentaires</string>
     <string name="nutrition_header">Tableau nutritionnel</string>
@@ -294,7 +294,7 @@
     <string name="nutrition_trans_fat">Graisses transaturées</string>
     <string name="nutriment_serving_size">Par portion :</string>
     <string name="action_manage_account">Gérer votre compte</string>
-    <string name="action_contributes">Vos contributions</string>
+    <string name="action_contributes">Your contributions</string>
     <string name="choose_energy_unit">Choisissez vos unités d\'énergie préférées pour le tableau nutritionnel</string>
     <string name="energy_pref_title">Unité d\'énergie préférée</string>
     <string name="choose_volume_unit">Choisissez vos unités de volume préférées pour le tableau nutritionnel</string>
@@ -303,7 +303,7 @@
     <string name="contribution_without_account">Vous pouvez vous connecter ou créer un compte pour conserver vos contributions</string>
     <string name="textCarbonFootprint">Empreinte carbone / émissions de CO2 : </string>
     <string name="action_search">Rechercher</string>
-    <string name="search_hint">Chercher un produit</string>
+    <string name="search_hint">Search a product</string>
     <string name="number_of_results">Nombre de résultats : </string>
     <string name="number_of_products">Nombre de produits : </string>
     <string name="txt_no_matching__category_products">Oh non, nous n\'avons aucun produit dans cette catégorie, pouvez-vous en ajouter un ?</string>
@@ -471,7 +471,7 @@
     <string name="additive_string">Additif</string>
     <string name="allergen_string">Allergène</string>
     <string name="search_string">Rechercher</string>
-    <string name="country_string">Pays de vente</string>
+    <string name="country_string">Countries where sold</string>
     <string name="store_subtitle">Magasin</string>
     <string name="packaging_subtitle">Conditionnement</string>
     <string name="packaging_string">Conditionnement</string>
@@ -496,7 +496,7 @@
     <string name="by_time">Dernières consultations</string>
     <string name="sort">Trier</string>
     <string name="by_nutrition_grade">Note nutritionnelle</string>
-    <string name="sort_by">Trier par</string>
+    <string name="sort_by">Sort by</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">Les photos sans code-barres ne peuvent pas encore être ajoutées avec l\'application. Il est possible d\'en ajouter un avec la version web mobile.</string>
     <string name="no_barcode">Nous n\'avons détecté aucun code-barres</string>
@@ -505,8 +505,8 @@
     <string name="code_detected">Nous avons détecté le code-barres</string>
     <string name="do_you_want_to">Voulez-vous ajouter des photos à ce code-barres ?</string>
     <string name="bottomNav_history">Historique</string>
-    <string name="products_added">Les produits que vous avez ajoutés ou modifiés</string>
-    <string name="products_incomplete">Les produits que vous avez ajoutés qui sont à compléter</string>
+    <string name="products_added">Products you added or edited</string>
+    <string name="products_incomplete">Products you added that need to be completed</string>
     <string name="product_pictures_contributed">Produits pour lesquels vous avez pris des photos</string>
     <string name="picture_contributed_incomplete">Produits pour lesquels vous avez pris des photos qui doivent être complétés</string>
     <string name="product_info_added">Produits pour lesquels vous avez ajouté des informations</string>
@@ -586,13 +586,13 @@
     <string name="take_ingredients_picture_to_extract">(Veuillez prendre une photo des ingrédients pour les extraire automatiquement)</string>
     <string name="ingredients_list">Liste des ingrédients</string>
     <string name="ingredients_hint">Conserver l\'ordre, indiquer le % lorsqu\'il est précisé, séparer par une virgule ou - , utiliser les ( ) pour les ingrédients d\'un ingrédient, indiquer les allergènes entre _</string>
-    <string name="extract_ingredients">Extraire les ingrédients</string>
-    <string name="extracting_ingredients">Extraction des ingrédients en cours</string>
+    <string name="extract_ingredients">Extract ingredients</string>
+    <string name="extracting_ingredients">Extracting ingredients</string>
     <string name="looksGood">Ça a l\'air bon</string>
     <string name="skip_ingredients">Trop mauvais \n Ignorer les ingrédients</string>
-    <string name="traces">Traces éventuelles</string>
+    <string name="traces">Traces</string>
     <string name="traces_hint">Indiquer les ingrédients de mentions comme «Peut contenir des traces de», «Fabriqué dans une usine qui utilise aussi», etc. \nExemples : Lait, gluten, noix</string>
-    <string name="nutrition_facts_not_specified">Les informations nutritionnelles ne sont pas mentionnées sur le produit.</string>
+    <string name="nutrition_facts_not_specified">Nutrition facts are not specified on the product.</string>
     <string name="nutrition_facts_picture">Photo des informations nutritionnelles</string>
     <string name="front_short_picture">De face</string>
     <string name="other_picture">Autre photo</string>
@@ -605,17 +605,17 @@
     <string name="product_picture">Photo du produit</string>
     <string name="one_photo_compulsory">(Une seule photo est obligatoire pour envoyer un nouveau produit)</string>
     <string name="product_details">Détails du produit</string>
-    <string name="product_name">Nom du produit</string>
+    <string name="product_name">Product name</string>
     <string name="quantity">Quantité</string>
     <string name="labels">Labels</string>
-    <string name="period_of_time_after_opening">Durée de conservation après ouverture</string>
+    <string name="period_of_time_after_opening">Period of time after opening</string>
     <string name="manufacturing_details">Détails de fabrication</string>
     <string name="origin_of_ingredients">Origine des ingrédients</string>
     <string name="manufacturing_place">Lieu de fabrication</string>
     <string name="emb_code">Code de traçabilité</string>
     <string name="purchasing_details">Détails d\'achat</string>
     <string name="country_where_purchased">Pays d\'achat</string>
-    <string name="stores">Magasins</string>
+    <string name="stores">Stores</string>
     <string name="additional_pictures">Photos supplémentaires</string>
     <string name="hint_product_pictures">(Ajouter plus de photos du produit, par exemple : instructions de recyclage, étiquettes, etc.)</string>
     <string name="uploading_image">Envoi de la photo</string>
@@ -629,7 +629,7 @@
     <string name="sign_in_to_edit">Veuillez vous connecter pour modifier un produit.</string>
     <string name="sign_in_to_answer">Veuillez vous connecter ou vous inscrire pour répondre à un aperçu.</string>
     <string name="hint_quantity">Exemples : 2 l, 250 g, 1 kg, 25 cl, 6 onces liquides, 1 livre</string>
-    <string name="edit_product_title">Modifier un produit</string>
+    <string name="edit_product_title">Edit a product</string>
     <string name="nutrient_already_added">%s est déjà présent dans les informations nutritionnelles</string>
     <string name="save_edits">Enregistrer les modifications</string>
     <string name="contribution_by">Contribution par</string>
@@ -637,19 +637,19 @@
     <string name="description_activity_product">description</string>
     <string name="intent_filter_share_label">Ajouter sur Open Food Facts</string>
     <!-- Used for additive exposure evaluation table -->
-    <string name="overexposure_high">Risque élevé de sur-exposition</string>
-    <string name="overexposure_moderate">Risque modéré de sur-exposition</string>
-    <string name="infants">Nourrissons</string>
+    <string name="overexposure_high">High risk of over exposure</string>
+    <string name="overexposure_moderate">Moderate risk of over exposure</string>
+    <string name="infants">Infants</string>
     <string name="infants_age">&lt; 1</string>
-    <string name="toddlers">Jeunes enfants</string>
-    <string name="toddlers_age">1 à 2</string>
-    <string name="children">Enfants</string>
-    <string name="children_age">3 à 9</string>
+    <string name="toddlers">Toddlers</string>
+    <string name="toddlers_age">1 to 2</string>
+    <string name="children">Children</string>
+    <string name="children_age">3 to 9</string>
     <string name="adolescents">Adolescents</string>
-    <string name="adolescents_age">10 à 17</string>
-    <string name="adults">Adultes</string>
-    <string name="adults_age">18 à 64</string>
-    <string name="elderly">Personnes âgées</string>
+    <string name="adolescents_age">10 to 17</string>
+    <string name="adults">Adults</string>
+    <string name="adults_age">18 to 64</string>
+    <string name="elderly">Elderly</string>
     <string name="elderly_age">65+</string>
     <string name="most_people">La plupart des gens\n(plus de 50%)</string>
     <string name="some_people">Certaines personnes\n(plus de 5%)</string>
@@ -662,7 +662,7 @@
     <string name="max_nutrient_val_msg">La valeur entrée est plus que donnée par portion</string>
     <string name="update_image">Envoyer une image mise à jour</string>
     <!-- Used for additive exposure evaluation table -->
-    <string name="extract_ingredients_prompt">Extraire les ingrédients</string>
+    <string name="extract_ingredients_prompt">Extract ingredients</string>
     <string name="add_nutrient_prompt_text">Ajouter les informations nutritionnelles pour calculer le Nutri-Score</string>
     <string name="add_category_prompt_text">Ajoutez une catégorie pour aider à compléter le produit</string>
     <string name="add_nutrient_category_prompt_text">Ajoutez une catégorie et des informations nutritionnelles pour aider à compléter le produit</string>
@@ -681,10 +681,10 @@
     <string name="crop_new_image_title">Recadrer de nouvelles images</string>
     <string name="crop_new_image">Active l\'action de recadrage sur les nouvelles images</string>
     <string name="addtive_search">Rechercher un additif</string>
-    <string name="additives">Additifs</string>
+    <string name="additives">Additives</string>
     <!--used for product_lists implementation-->
     <string name="add_to_product_lists">Ajouter à vos listes</string>
-    <string name="txt_create_new_list">Créer une nouvelle liste</string>
+    <string name="txt_create_new_list">Create a new list</string>
     <string name="txt_add_to_new_list">Ajouter à une nouvelle liste</string>
     <string name="create_new_list_list_name">Nom de la liste</string>
     <string name="txt_eaten_products">Produits consommés</string>
@@ -708,10 +708,10 @@
     <string name="add_product">Ajouter des produits</string>
     <string name="add_another_product">Ajouter un autre produit</string>
     <string name="add_nutrition_facts_for_nutriscore">Ajouter les informations nutritionnelles pour calculer le Nutri-Score</string>
-    <string name="product_summary_action_compare_button_label">Comparer</string>
-    <string name="product_summary_action_add_to_list_button_label">Ajouter à une liste</string>
+    <string name="product_summary_action_compare_button_label">Compare</string>
+    <string name="product_summary_action_add_to_list_button_label">Add to list</string>
     <string name="product_summary_action_edit_button_label">Modifier</string>
-    <string name="product_summary_action_share_button_label">Partager</string>
+    <string name="product_summary_action_share_button_label">Share</string>
     <string name="product_question_prompt">Appuyez ici pour répondre</string>
     <string name="product_question_positive_response">Oui</string>
     <string name="product_question_negative_response">Non</string>
@@ -730,7 +730,7 @@
     <string name="add_a_list">Ajouter une liste</string>
     <string name="edit_image">Modifier l\'image</string>
     <string name="cant_edit_image_not_yet_uploaded">La nouvelle image n\'est pas encore téléchargée. Merci de patienter un instant avant de l\'éditer</string>
-    <string name="unselect_image">Désélectionner l\'image</string>
+    <string name="unselect_image">Unselect Image</string>
     <string name="choose_default_language">Sélectionnez la langue du produit</string>
     <string name="barcode">Code-barres</string>
     <string name="productAdditivesNone">Sans additifs</string>
@@ -783,7 +783,7 @@
     <string name="content_add_photo">Cliquez ici pour prendre une nouvelle photo</string>
     <string name="title_choose_photo">Choisissez une photo</string>
     <string name="content_choose_photo">Choisissez parmi les photos existantes</string>
-    <string name="title_edit_photo">Modifier la photo</string>
+    <string name="title_edit_photo">Edit Photo</string>
     <string name="content_edit_photo">Modifier, recadrer et faire pivoter la photo</string>
     <string name="title_unselect_photo">Désélectionner une photo</string>
     <string name="content_unselect_photo">Cliquez ici pour désélectionner la photo actuelle</string>
