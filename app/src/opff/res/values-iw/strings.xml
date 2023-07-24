@@ -10,8 +10,8 @@
     <string name="website_product">https://world-he.openpetfoodfacts.org/product/</string>
     <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contributeur/ -->
     <string name="website_contributor">https://world-he.openpetfoodfacts.org/contributor/</string>
-    <string name="terms_url">https://world.openpetfoodfacts.org/terms-of-use</string>
-    <string name="txtHomeOnline">Open Pet Food Facts is a database of more than %1$s pet food products (plus the ones you will contribute) Woof. Woof.</string>
+    <string name="terms_url">https://il.openpetfoodfacts.org/terms-of-use</string>
+    <string name="txtHomeOnline">מסד הנתונים הפתוח Open Pet Food Facts מכיל למעלה מ־%1$s מוצרי מזון לחיות מחמד (בלי אלו שעוד יתווספו על ידיך).</string>
     <string name="txtHome">Open Pet Food Facts הוא מסד נתונים של מוצרי מזון לחיות מחמד המכיל רכיבים, עובדות תזונתיות… הב. הב.</string>
     <string name="slide_1_title">תרומה לשקיפות המזון לחיות מחמד</string>
     <string name="slide_1_desc">ניתן לסרוק מוצרים, לצלם אותם ולהפוך את השקיפות בתחום המזון לחיות מחמד למציאות</string>
@@ -21,7 +21,7 @@
     <string name="slide_3_desc">כל מוצרי המזון לחיות מחמד שסרקת ברשימה שימושית אחת שניתן לייצא</string>
     <string name="slide_4_title">תמיכה במצב בלתי מקוון</string>
     <string name="slide_4_desc">ניתן להוסיף מוצרים חדשים, אפילו אם אין לך חיבור לאינטרנט כרגע</string>
-    <string name="txtDialogsContent">המוצר שסרקת לא קיים עדיין ב־Open Pet Food Facts. נא לסרוק אותו.</string>
+    <string name="txtDialogsContent">המוצר שסרקת לא קיים עדיין ב־Open Pet Food Facts. נא להוסיף אותו.</string>
     <string name="txtDialogsContentPowerMode">המוצר שסרקת כבר נמצא ב־Open Pet Food Facts.</string>
     <string name="msg_share">להלן מוצר מתוך Open Food Facts :</string>
     <string name="not_support_books">אין כרגע תמיכה בספרים ב־Open Food Facts</string>
@@ -33,7 +33,7 @@
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">נתוני האלרגיות שלך לא יישלחו לשרת של Open Food Facts server. כמו כן, מוטב להיזהר כי נתונים של מוצרים עשויים להיות חלקיים והזיהוי עשוי להיות בלתי מדויק, לכן, מוטב לנקוט במשנה זהירות ולבדוק בדרך נוספת באופן עצמאי! </string>
     <!-- OPFF tagline in different languages -->
     <string name="version_string">יישומון ה־Android של Open Pet Food Facts</string>
-    <string name="tagline">מסד הנתונים החופשי למוצרי מזון לחיות מחמד</string>
+    <string name="tagline">free pet food products database</string>
     <string name="product_not_found">המוצר %1$s שסרקת לא קיים עדיין ב־Open Pet Food Facts. נוכל לבקש ממך להוסיף אותו?</string>
     <string name="currently_on_version">כרגע ב־Open Pet Food Facts</string>
     <string name="category_game_btn">סיוע בסיווג מוצרים</string>
