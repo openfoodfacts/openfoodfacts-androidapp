@@ -1,8 +1,8 @@
-Esos son los eslóganes que se muestran encima de las capturas de pantalla en la playstore. Mantenlos cortos y atractivos.
+Esos son los eslóganes que se muestran encima de las capturas de pantalla en el playstore. Mantenlos breves y atractivos.
 https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=es
 
 =====================
-Capturas de pantalla versión 2
+Capturas de pantalla modelo 2
 =====================
 
 Escanea productos
@@ -13,7 +13,7 @@ Tu historial de escaneo completo, totalmente privado y exportable
 
 Ve más allá con Wikipedia
 
-Establece alertas de alérgenos
+Configurar alertas de Allergen
 
 Nutrición, simplificada
 
@@ -41,7 +41,7 @@ Información nutricional
 Capturas de pantalla versión 3
 =====================
 
-¡Elija los productos que son buenos para usted y para el planeta 🌍!
+¡Elige productos que sean buenos para ti y para el planeta 🌍!
 
 Escaner código de barras ultrarrápido
 
@@ -65,8 +65,8 @@ Historial de escaneo ilimitado y completamente privado
 
 Desliza para más detalles
 
-Configurar alertas de Allergen
+Alerta de alérgenos
 
 Únete a nuestro movimiento global para la transparencia alimentaria
 
-https://es.openfoodfacts.org/contribuir
+world.openfoodfacts.org/contribute
