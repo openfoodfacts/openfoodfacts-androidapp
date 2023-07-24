@@ -11,8 +11,8 @@
     <!-- For fr, Replace by https://world-fr.openproductsfacts.org/contributeur/ -->
     <string name="website_contributor">https://world-zh.openproductsfacts.org/contributor/</string>
     <string name="terms_url">https://world.openproductsfacts.org/terms-of-use</string>
-    <string name="txtHomeOnline">Open Products Facts is an open database of more than %1$s products (plus the ones you will contribute).</string>
-    <string name="txtHome">打开“Open Food Facts”是一个化妆品数据库，我们可以在产品标签上找到该商品的成分，过敏原等所有信息。</string>
+    <string name="txtHomeOnline">Open Products Facts 是一个包含 %1$s 个产品（以及您将贡献的产品）的开放数据库。</string>
+    <string name="txtHome">打开“Open Products Facts”是一个化妆品数据库，我们可以在产品标签上找到该商品的成分，过敏原等所有信息。</string>
     <string name="slide_1_title">贡献给产品透明化</string>
     <string name="slide_1_desc">扫描产品，给它们拍照，让产品透明化成为可能</string>
     <string name="slide_2_title">获取信息</string>
@@ -32,20 +32,20 @@
     <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Products Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Products Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
     <!-- OPF tagline in different languages -->
-    <string name="version_string">Open Products Facts Android App</string>
+    <string name="version_string">Open Products Facts Android 应用程序</string>
     <string name="tagline">the free product database</string>
     <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Products Facts. Can you add it?</string>
     <string name="currently_on_version">Currently on Open Products Facts</string>
-    <string name="category_game_btn">Help categorize products</string>
+    <string name="category_game_btn">帮助分类产品</string>
     <!-- TODO add true support instead of overriding strings -->
-    <string name="add_nutrient_prompt_text">Add more details to help complete the product</string>
-    <string name="add_category_prompt_text">Add a category to help complete the product</string>
-    <string name="add_nutrient_category_prompt_text">Add a category and more details to help complete the product</string>
-    <string name="txt_eaten_products">Products I have</string>
-    <string name="txt_products_to_buy">Products to buy</string>
+    <string name="add_nutrient_prompt_text">添加更多详细信息以帮助完成产品</string>
+    <string name="add_category_prompt_text">添加类别以帮助完成产品</string>
+    <string name="add_nutrient_category_prompt_text">添加类别以及更多详细信息以完成产品</string>
+    <string name="txt_eaten_products">我的产品</string>
+    <string name="txt_products_to_buy">购买产品</string>
     <string name="intent_filter_share_label">Add to Open Products Facts</string>
-    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
-        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
-    <string name="OFFlogo">Open Products Facts logo</string>
-    <string name="brand_hint">Examples: Nike, Apple, etc…</string>
+    <string name="txt_info_eaten_products">您可以通过扫描产品，向上拖动产品卡并点击“要购买的产品”，将产品添加到此列表中。
+        您还可以通过搜索产品并单击产品页面右上角的+按钮，将产品添加到此列表中。</string>
+    <string name="OFFlogo">Open Products Facts 徽标</string>
+    <string name="brand_hint">示例：耐克、苹果等…</string>
 </resources>
