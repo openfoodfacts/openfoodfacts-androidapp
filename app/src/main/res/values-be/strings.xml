@@ -251,7 +251,7 @@
     <string name="permission_denied">Please activate permission in the settings</string>
     <string name="info_download_data_connection">You need to download some data to get this functionality working. Please activate internet connection.</string>
     <!-- Strings related to login -->
-    <string name="error_invalid_password">Пароль павінен змяшчаць не менш за 6 сімвалаў.</string>
+    <string name="error_invalid_password">The password needs to be at least 6 characters long.</string>
     <string name="user">user</string>
     <string name="error_field_required">This field is required.</string>
     <string name="action_preferences">Preferences</string>
@@ -641,7 +641,7 @@
     <string name="sign_in_to_edit">Please sign in to edit a product.</string>
     <string name="sign_in_to_answer">Please sign in or register to answer an insight.</string>
     <string name="hint_quantity">Examples: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
-    <string name="edit_product_title">Рэдагаваць прадукт</string>
+    <string name="edit_product_title">Edit a product</string>
     <string name="nutrient_already_added">%s is already present in the nutrition facts</string>
     <string name="save_edits">Save edits</string>
     <string name="contribution_by">Contribution by</string>
