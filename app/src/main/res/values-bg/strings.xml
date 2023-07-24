@@ -241,7 +241,7 @@
     <string name="permission_denied">Моля, активирай разрешението в настройките</string>
     <string name="info_download_data_connection">Трябва да изтеглиш някои данни, за да получиш тази функционалност. Моля активирай интернет връзката.</string>
     <!-- Strings related to login -->
-    <string name="error_invalid_password">Паролата трябва да бъде дълга най-малко 6 символа.</string>
+    <string name="error_invalid_password">The password needs to be at least 6 characters long.</string>
     <string name="user">потребител</string>
     <string name="error_field_required">Това поле е задължително.</string>
     <string name="action_preferences">Предпочитания</string>
@@ -249,12 +249,12 @@
     <string name="prefs_scan_startup_summary">Тази опция, ако е избрана, ще стартира сканиране при отваряне на приложението.</string>
     <string name="prefs_power_mode">Мощен режим на сканиране</string>
     <string name="prefs_power_mode_summary">Бързо сканирайте продукти в супермаркета, за да видите кои не са в базата данни.</string>
-    <string name="prefs_language">Език</string>
+    <string name="prefs_language">Language</string>
     <string name="prefs_language_summary">Промяна на езика</string>
     <!-- Strings related to feedback dialog -->
     <string name="user_enjoying_app">Харесваш ли преживяването си с Open Food Facts?</string>
     <string name="user_ask_show_feedback_form">Съжаляваме да чуем това! Би ли ни казал какво се случи?</string>
-    <string name="user_ask_rate_app">Страхотно! Кажи на другите какво мислиш за това приложениие!</string>
+    <string name="user_ask_rate_app">Great! Let others know what you think of this app!</string>
     <string name="rate_app">Оцени приложението</string>
     <string name="no_thx">Не, благодаря</string>
     <string name="feedback_form_url">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
@@ -279,10 +279,10 @@
     <string name="calculate_nutrition_facts">Calculate Nutrition Facts</string>
     <string name="nutrition_carbohydrate">Въглехидрати</string>
     <string name="nutrition_cholesterol">Холестерол</string>
-    <string name="nutrition_energy">Енергия</string>
+    <string name="nutrition_energy">Energy</string>
     <string name="nutrition_energy_kcal">Енергия в калории (kcal)</string>
     <string name="nutrition_energy_kj">Енергия в джаули (kJ)</string>
-    <string name="nutrition_energy_short_name">Енергия</string>
+    <string name="nutrition_energy_short_name">Energy</string>
     <string name="nutrition_fat">Мазнини</string>
     <string name="nutrition_fiber">Влакнини</string>
     <string name="nutrition_header">Хранителни стойности</string>
@@ -294,7 +294,7 @@
     <string name="nutrition_trans_fat">Транс-мазнини</string>
     <string name="nutriment_serving_size">За порция : </string>
     <string name="action_manage_account">Управление на профил</string>
-    <string name="action_contributes">Твоите приноси</string>
+    <string name="action_contributes">Your contributions</string>
     <string name="choose_energy_unit">Choose your preferred energy units for the nutrition table</string>
     <string name="energy_pref_title">Предпочитана енергийна единица</string>
     <string name="choose_volume_unit">Choose your preferred volume units for the nutrition table</string>
@@ -303,7 +303,7 @@
     <string name="contribution_without_account">Можеш да влезеш или да създадеш профил, за да запазиш приносите си</string>
     <string name="textCarbonFootprint">Въглероден отпечатък / емисии на СО2: </string>
     <string name="action_search">Търсене</string>
-    <string name="search_hint">Търсене на продукт</string>
+    <string name="search_hint">Search a product</string>
     <string name="number_of_results">Брой резултати: </string>
     <string name="number_of_products">Брой продукти: </string>
     <string name="txt_no_matching__category_products">Нямаме продукти в тази категория, искаш ли да добавиш нов?</string>
@@ -471,7 +471,7 @@
     <string name="additive_string">Добавка</string>
     <string name="allergen_string">Алерген</string>
     <string name="search_string">Търсене</string>
-    <string name="country_string">Страни в които се продава</string>
+    <string name="country_string">Countries where sold</string>
     <string name="store_subtitle">Магазин</string>
     <string name="packaging_subtitle">Опаковка</string>
     <string name="packaging_string">Опаковка</string>
@@ -496,7 +496,7 @@
     <string name="by_time">Наскоро разглеждано</string>
     <string name="sort">Сортирай</string>
     <string name="by_nutrition_grade">Хранителен клас</string>
-    <string name="sort_by">Сортирай по</string>
+    <string name="sort_by">Sort by</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">Снимките без баркод все още не могат да се добавят с приложението. Моля, опитай с мобилната уеб версия.</string>
     <string name="no_barcode">Не открихме никакъв баркод</string>
@@ -505,8 +505,8 @@
     <string name="code_detected">Открихме баркода</string>
     <string name="do_you_want_to">Искаш ли да добавиш снимки към този баркод?</string>
     <string name="bottomNav_history">История</string>
-    <string name="products_added">Продукти, които си добавил или редактирал</string>
-    <string name="products_incomplete">Продукти, които си добавил и трябва да бъдат завършени</string>
+    <string name="products_added">Products you added or edited</string>
+    <string name="products_incomplete">Products you added that need to be completed</string>
     <string name="product_pictures_contributed">Продукти, за които си направил снимки</string>
     <string name="picture_contributed_incomplete">Продуктите, за които си направил снимки и трябва да бъдат завършени</string>
     <string name="product_info_added">Продуктите, за които си добавил информация</string>
@@ -587,14 +587,14 @@
     <string name="ingredients_list">Списък на съставките</string>
     <string name="ingredients_hint">Спазвай реда, посочи % (процент), когато е посочено, отдели със, (запетая) или използвай - (тире), използвай () (скоби) за подсъставките на дадена съставка, огради алергените с _ (долна черта)</string>
     <string name="extract_ingredients">Извлечи съставките</string>
-    <string name="extracting_ingredients">Извличане на съставките</string>
+    <string name="extracting_ingredients">Extracting ingredients</string>
     <string name="looksGood">Изглежда добре</string>
     <string name="skip_ingredients">\"Не изглежда добре \n
 Пропускане на съставките\"</string>
-    <string name="traces">Следи</string>
+    <string name="traces">Traces</string>
     <string name="traces_hint">\"Посочи съставките от коментари като \"Може да съдържа следи от\", \"Произведени в завод, който също използва\" и т. н. 
 Примери: Суроватка, глутен, ядки\"</string>
-    <string name="nutrition_facts_not_specified">Хранителните стойности не са посочени върху продукта.</string>
+    <string name="nutrition_facts_not_specified">Nutrition facts are not specified on the product.</string>
     <string name="nutrition_facts_picture">Снимка на хранителните стойности</string>
     <string name="front_short_picture">Отпред</string>
     <string name="other_picture">Друга снимка</string>
@@ -607,10 +607,10 @@
     <string name="product_picture">Снимка на продукта</string>
     <string name="one_photo_compulsory">(Една снимка е задължителна за добавяне на нов продукт)</string>
     <string name="product_details">Детайли за продукта</string>
-    <string name="product_name">Име на продукта</string>
+    <string name="product_name">Product name</string>
     <string name="quantity">Количество</string>
     <string name="labels">Етикети</string>
-    <string name="period_of_time_after_opening">Период от време след отваряне</string>
+    <string name="period_of_time_after_opening">Period of time after opening</string>
     <string name="manufacturing_details">Детайли за производство</string>
     <string name="origin_of_ingredients">Произход на съставките</string>
     <string name="manufacturing_place">Място на производство</string>
@@ -631,7 +631,7 @@
     <string name="sign_in_to_edit">Моля, влез, за да редактираш продукт.</string>
     <string name="sign_in_to_answer">Моля, влез или се регистрирай, за да отговориш на информация.</string>
     <string name="hint_quantity">Примери: 2 l, 250 g, 1 kg, 25 cl</string>
-    <string name="edit_product_title">Редактирай продукт</string>
+    <string name="edit_product_title">Edit a product</string>
     <string name="nutrient_already_added">%s is already present in the nutrition facts</string>
     <string name="save_edits">Запази редакциите</string>
     <string name="contribution_by">Принос от</string>
@@ -639,19 +639,19 @@
     <string name="description_activity_product">описание</string>
     <string name="intent_filter_share_label">Добави в Open Food Facts</string>
     <!-- Used for additive exposure evaluation table -->
-    <string name="overexposure_high">Висок риск от прекомерно излагане</string>
-    <string name="overexposure_moderate">Умерен риск от прекомерно излагане</string>
-    <string name="infants">Деца</string>
+    <string name="overexposure_high">High risk of over exposure</string>
+    <string name="overexposure_moderate">Moderate risk of over exposure</string>
+    <string name="infants">Infants</string>
     <string name="infants_age">&lt; 1</string>
-    <string name="toddlers">Малки деца</string>
-    <string name="toddlers_age">1 до 2</string>
-    <string name="children">Деца</string>
-    <string name="children_age">3 до 9</string>
-    <string name="adolescents">Юноши</string>
-    <string name="adolescents_age">10 до 17</string>
-    <string name="adults">Възрастни</string>
-    <string name="adults_age">18 до 64</string>
-    <string name="elderly">Възрастен</string>
+    <string name="toddlers">Toddlers</string>
+    <string name="toddlers_age">1 to 2</string>
+    <string name="children">Children</string>
+    <string name="children_age">3 to 9</string>
+    <string name="adolescents">Adolescents</string>
+    <string name="adolescents_age">10 to 17</string>
+    <string name="adults">Adults</string>
+    <string name="adults_age">18 to 64</string>
+    <string name="elderly">Elderly</string>
     <string name="elderly_age">65+</string>
     <string name="most_people">Повечето хора\n(над 50%)</string>
     <string name="some_people">Някои хора\n(над 5%)</string>
@@ -683,7 +683,7 @@
     <string name="crop_new_image_title">Crop new images</string>
     <string name="crop_new_image">Enables crop action on new images</string>
     <string name="addtive_search">Търсене на добавка</string>
-    <string name="additives">Добавки</string>
+    <string name="additives">Additives</string>
     <!--used for product_lists implementation-->
     <string name="add_to_product_lists">Добави към списъците ми</string>
     <string name="txt_create_new_list">Създай нов списък</string>
@@ -710,10 +710,10 @@
     <string name="add_product">Добави продукти</string>
     <string name="add_another_product">Добави друг продукт</string>
     <string name="add_nutrition_facts_for_nutriscore">Добави хранителни стойности, за да изчислиш Nutri-Score</string>
-    <string name="product_summary_action_compare_button_label">Сравни</string>
+    <string name="product_summary_action_compare_button_label">Compare</string>
     <string name="product_summary_action_add_to_list_button_label">Добави към списък</string>
     <string name="product_summary_action_edit_button_label">Редактирай</string>
-    <string name="product_summary_action_share_button_label">Сподели</string>
+    <string name="product_summary_action_share_button_label">Share</string>
     <string name="product_question_prompt">Докосни тук, за да отговориш</string>
     <string name="product_question_positive_response">Да</string>
     <string name="product_question_negative_response">Не</string>
@@ -732,7 +732,7 @@
     <string name="add_a_list">Добавяне на списък</string>
     <string name="edit_image">Edit Image</string>
     <string name="cant_edit_image_not_yet_uploaded">The new image is not yet uploaded. Please, wait before editing it</string>
-    <string name="unselect_image">Премахнете избора на изображение</string>
+    <string name="unselect_image">Unselect Image</string>
     <string name="choose_default_language">Избери език на продукта</string>
     <string name="barcode">Баркод</string>
     <string name="productAdditivesNone">Без добавки</string>
