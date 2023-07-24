@@ -1,34 +1,34 @@
-„Open Food Facts” ist eine offene Datenbank von Lebensmitteln mit Inhaltsstoffen, Allergenen, Nährwertangaben und all den Kleinigkeiten, die wir auf den Produktetiketten finden können.
+„Open Products Facts” ist eine offene Datenbank von Lebensmitteln mit Inhaltsstoffen, Allergenen, Nährwertangaben und all den Kleinigkeiten, die wir auf den Produktetiketten finden können.
 
-★★★ Beitrag zur Transparenz von Produkten ★★★
+*** Tragen Sie zur Transparenz der Produkte bei ***
 
-• Open Products Facts ist eine Produktdatenbank, die von jedermann für alle erstellt wurde.
-• Sie können sie verwenden, um bessere Lebensmittelauswahlen zu treffen und da es sich um offene Daten handelt, kann jeder sie für jeden Zweck weiterverwenden.
-• Open Products Facts ist ein gemeinnütziges Projekt, das von Tausenden von Freiwilligen aus der ganzen Welt entwickelt wurde. Wir haben viele spannende Projekte, zu denen Sie auf vielfältige Weise beitragen können. 
-• Sie können noch heute beginnen, indem Sie Ihr erstes Produkt hinzufügen. 
+• Open Products Facts ist eine offene Produktdatenbank die von allen für alle erstellt wird.
+• Sie können diese verwenden, um eine bessere Tierfutterauswahlen zu treffen, und da es sich um offene Daten handelt, kann jeder sie für jeden Zweck weiterverwenden.
+• Open Product Facts ist ein gemeinnütziges Projekt, das von Tausenden von Freiwilligen aus der ganzen Welt entwickelt wurde. Wir haben viele spannende Projekte, zu denen Sie auf vielfältige Weise beitragen können. 
+• Sie können noch heute einen Beitrag leisten, indem Sie Ihr erstes Produkt hinzufügen. 
 
 ★★★ Fakten abrufen ★★★
 • Open Products Facts hilft Ihnen, das Kleingedruckte auf Produktetiketten zu verstehen.
 
 ★★★ Sammeln Sie ALLE diese Dinge ★★★
 • Sie können alle Elemente aus Ihren Sammlungen hinzufügen
-• Open Crayons Facts - Die größte offene Datenbank von Farbstiften
+Open Crayons Facts - Die größte offene Datenbank von Farbstiften
 • Open Miniature Food Facts - Die größte offene Datenbank für Miniaturnahrungsmittel
-• Open … • Open … Facts - Erstellen Sie Ihre eigene offene Datenbank 🙂
+• Öffnen? • Open … • Open … Facts - Erstellen Sie Ihre eigene offene Datenbank 🙂
 
 ★★★ Funktioniert gut in jedem Umfeld ★★★
 • Sie können neue Produkte hinzufügen, auch wenn gerade keine Internetverbindung besteht.
 • Die App lädt nur das absolut Notwendige, um den Daten- und Batterieverbrauch zu reduzieren
-• Sie benötigen keine Kamera, um ein Produkt nachzuschlagen Sie können den Strichcode auch manuell eingeben, wenn Ihnen eine Kamera fehlt oder Sie ein Problem damit haben.
+• Sie benötigen keine Kamera, um ein Produkt nachzuschlagen Sie können den Strichcode auch manuell eingeben, wenn Ihnen eine Kamera fehlt oder Sie ein Problem damit haben. Sie können auch den Barcode eingeben, wenn Sie keine Kamera haben oder ein Problem damit haben.
 
 ★★★ Ihre Produkte — Ihre Daten ★★★
 • Ihre persönlichen Daten gehören Ihnen und werden niemals online gesendet
 • Sie können die Anwendung auch anonym verwenden
 • Sie können Ihren Erfassungsverlauf exportieren
 
-Für Lebensmittel können Sie „Open Food Facts”, für Kosmetika „Open Beauty Facts” und für Tiernahrung „Open Pet Food Facts” installieren.
+Für Lebensmittel können Sie „Open Food Facts”, für Kosmetik „Open Beauty Facts” und für Tierfutter „Open Pet Food Facts” installieren.
 
-Open Products Facts ist auch im Internet verfügbar unter https://world.openproductsfacts.org
+Open Products Facts ist auch im Web unter https://world.openproductsfacts.org verfügbar
 Fragen und Rückmeldungen: contact@openfoodfacts.org
 
 ★★★ Original Aprilscherz-Liste ★★★
@@ -45,7 +45,7 @@ Open Crayons Facts - Die größte offene Datenbank von Farbstiften
 
 Open Miniature Food Facts - Die größte offene Datenbank für Miniaturnahrungsmittel
 
-Open … Open … Facts - Die größte offene Datenbank für … …
+Öffnen? Open … Open … Facts - Die größte offene Datenbank für … …
 
 Morgen werden wir die 3 erfolgreichsten Datenbanken auswählen und damit beginnen, alle passenden Produkte der Welt zu sammeln.
 
