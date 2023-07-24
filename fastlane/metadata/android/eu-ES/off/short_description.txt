@@ -1,1 +1,1 @@
-Eskaneatu elikagaien produktuak etiketak deszifratzeko: osagaiak, gehigarriak eta elikadurari buruzko datuak
+Scan food products to decrypt labels: ingredients, additives and nutrition facts
