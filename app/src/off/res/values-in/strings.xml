@@ -10,27 +10,27 @@
     <string name="website_product">https://world.openfoodfacts.org/product/</string>
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
     <string name="website_contributor">https://world.openfoodfacts.org/contributor/</string>
-    <string name="txtHome">hal hal manakan buka adalah  sistem data  terbuka dari produk makanan dengan bahan-bahan, alergen, fakta nutrisi dan semua tidbits informasi bisa dilihat pada label produk</string>
-    <string name="slide_1_title">Berkontribusi pada transparansi Pangan</string>
-    <string name="slide_1_desc">Pindai produk, ambil gambarnya, buat transparansi pangan</string>
+    <string name="txtHome">Open Food Facts adalah sebuah basis data terbuka dari produk - produk makanan.</string>
+    <string name="slide_1_title">Berkontribusi pada transparansi Makanan</string>
+    <string name="slide_1_desc">Pindai produk, ambil gambarnya, wujudkan transparansi makanan</string>
     <string name="slide_2_title">Dapatkan faktanya</string>
-    <string name="slide_2_desc">Extensive information about the product you\'ve scanned, deciphered for you</string>
-    <string name="slide_3_title">Get the Nutriscore</string>
-    <string name="slide_3_desc">A synthetic view of the nutritional properties of your favorite food products</string>
-    <string name="slide_4_title">Works offline</string>
-    <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet connection right now</string>
-    <string name="txtDialogsContent">Produk yang anda scan belum ada pada daftar Open Food Facts. Silahkan tambahkan</string>
-    <string name="txtDialogsContentPowerMode">Produk yang Anda pindai sudah ada dalam daftar Open Food Facts.</string>
-    <string name="msg_share">Lihat produk ini pada Open Food Facts:</string>
-    <string name="not_support_books">Buku tidak didukung Open Food Facts saat ini</string>
-    <string name="txt_broaden_search">- memperluas pencarian anda \n- pindai dan tambahkan ke Open Food Facts</string>
-    <string name="Donation">Klik di sini untuk menyumbang pada Open Food Facts</string>
-    <string name="translate_help_title">Bantu terjemahkan Open Food Facts</string>
-    <string name="translate_help_summary">Bawa database Open Food Facts ke bahasa anda - tidak memerlukan pengetahuan teknis</string>
-    <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
+    <string name="slide_2_desc">Informasi lengkap tentang produk yang telah Anda pindai, ditafsirkan untuk Anda</string>
+    <string name="slide_3_title">Dapatkan Nutri-Score</string>
+    <string name="slide_3_desc">Tampilan sintetis properti nutrisi produk makanan favorit Anda</string>
+    <string name="slide_4_title">Bekerja secara luring</string>
+    <string name="slide_4_desc">Anda dapat menambahkan produk - produk baru, bahkan jika Anda tidak memiliki koneksi Internet saat ini</string>
+    <string name="txtDialogsContent">Produk yang Anda pindai belum ada di Open Food Facts. Tolong tambahkan.</string>
+    <string name="txtDialogsContentPowerMode">Produk yang Anda pindai sudah ada dalam Open Food Facts.</string>
+    <string name="msg_share">Lihat produk ini di Open Food Facts :</string>
+    <string name="not_support_books">Buku - buku yang tidak didukung Open Food Facts saat ini</string>
+    <string name="txt_broaden_search">- memperluas pencarian Anda \n- pindai dan tambahkan ke Open Food Facts</string>
+    <string name="Donation">Klik di sini untuk berdonasi ke Open Food Facts</string>
+    <string name="translate_help_title">Help translate Open Food Facts</string>
+    <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
+    <string name="text_offline_info_dialog">Pindai produk - produk bahkan ketika Anda sedang luring untuk menambahkannya nanti ke Open Food Facts. Produk - produk yang dipindai akan muncul di sini dan Anda akan dapat mengirimkannya menggunakan tombol di bawah.</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Informasi tentang alergi Anda tidak akan pernah dikirim ke peladen Open Food Facts. Juga, berhati - hatilah bahwa data produk mungkin tidak akurat, dan pendeteksian mungkin tidak 100% akurat, jadi harap memeriksanya sendiri!</string>
     <!-- OFF tagline in different languages -->
-    <string name="tagline">the free food products database</string>
-    <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
-    <string name="currently_on_version">Currently on Open Food Facts</string>
+    <string name="tagline">basis data produk - produk makanan gratis</string>
+    <string name="product_not_found">Produk %1$s yang Anda pindai belum terdaftar di Open Food Facts. Bisakah Anda menambahkannya?</string>
+    <string name="currently_on_version">Saat ini di Open Food Facts</string>
 </resources>
