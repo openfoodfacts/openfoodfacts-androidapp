@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/ -->
-    <string name="website">https://world.openpetfoodfacts.org/</string>
+    <string name="website">https://world-kr.openpetfoodfacts.org/</string>
     <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contribuer -->
-    <string name="website_contribute">https://world.openpetfoodfacts.org/contribute</string>
+    <string name="website_contribute">https://world-kr.openpetfoodfacts.org/contribute</string>
     <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/decouvrir -->
-    <string name="website_discover">https://world.openpetfoodfacts.org/discover</string>
+    <string name="website_discover">https://world-kr.openpetfoodfacts.org/discover</string>
     <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/produit/ -->
-    <string name="website_product">https://world.openpetfoodfacts.org/product/</string>
+    <string name="website_product">https://world-kr.openpetfoodfacts.org/product/</string>
     <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contributeur/ -->
-    <string name="website_contributor">https://world.openpetfoodfacts.org/contributor/</string>
-    <string name="terms_url">https://world.openpetfoodfacts.org/terms-of-use</string>
-    <string name="txtHomeOnline">Open Pet Food Facts is a database of more than %1$s pet food products (plus the ones you will contribute) Woof. Woof.</string>
+    <string name="website_contributor">https://world-kr.openpetfoodfacts.org/contributor/</string>
+    <string name="terms_url">https://world-kr.openpetfoodfacts.org/terms-of-use</string>
+    <string name="txtHomeOnline">Open Pet Food Facts는 %1$s개 이상의 애완동물 사료(및 기여할 제품)를 포함한 공개 데이터베이스입니다. 컹. 컹.</string>
     <string name="txtHome">Open Pet Food Facts는 재료, 영양 정보가 포함된 애완동물 사료 제품에 대한 데이터베이스입니다… 컹.컹.</string>
     <string name="slide_1_title">애완동물 사료 투명도에 기여하기</string>
     <string name="slide_1_desc">제품을 잘 살펴 사진을 찍어 애완동물 사료를 투명 하게 한다 </string>
@@ -21,9 +21,9 @@
     <string name="slide_3_desc">당신이 스캔하는 모든 사료를 편리하도록 하나의 목록에 내보낼 수 있습니다</string>
     <string name="slide_4_title">오프라인으로 작업</string>
     <string name="slide_4_desc">인터넷에 연결되어 있지 않아도 새 제품을 추가 할 수 있습니다.</string>
-    <string name="txtDialogsContent">스캔한 상품이 Open Pet Food Facts에 존재하지 않습니다. 품목을 추가하여 주십시오.</string>
+    <string name="txtDialogsContent">스캔한 상품이 Open Pet Food Facts에 존재하지 않습니다. 상품을 추가해주세요.</string>
     <string name="txtDialogsContentPowerMode">스캔한 제품은 이미 Open Pet Food Facts에 있습니다.</string>
-    <string name="msg_share">Open Food Facts에서 이 제품을 검색해보세요.</string>
+    <string name="msg_share">Open Food Facts에서 이 제품을 검색해보세요 : </string>
     <string name="not_support_books">책은 현재 Open Food Facts에서 지원되지 않습니다.</string>
     <string name="txt_broaden_search">- 검색 범위를 넓힌후 \n 제품을 Open Food Facts에 추가하십시오</string>
     <string name="Donation">Open Food Facts에 기부하려면 여기를 클릭하십시오.</string>
@@ -32,8 +32,8 @@
     <string name="text_offline_info_dialog">오프라인 상태에서도 제품을 스캔하여 나중에 Open Pet Food Facts에 추가하십시오. 스캔한 제품이 여기에 나타나면 아래 버튼을 사용하여 추가할 수 있습니다.</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">알레르기 정보는 Open Pet Products Facts 서버로 전송되지 않습니다. 또한 제품 데이터가 정확하지 않을 수 있으며 감지가 100 % 정확하지 않을 수 있으므로 조심하여 직접 확인하십시오! </string>
     <!-- OPFF tagline in different languages -->
-    <string name="version_string">Open Pet Food Facts Android App</string>
-    <string name="tagline">무료 사료 데이터베이스</string>
+    <string name="version_string">Open Pet Food Facts Android 앱</string>
+    <string name="tagline">free pet food products database</string>
     <string name="product_not_found">스캔한 상품 %1$s가 Open Pet Food Facts에 존재하지 않습니다. 추가하시겠습니까?</string>
     <string name="currently_on_version">요즘 Open Pet Products Facts</string>
     <string name="category_game_btn">제품 분류 도움말</string>
@@ -43,9 +43,9 @@
     <string name="add_nutrient_category_prompt_text">아직 완성되지 않은 제품의 영양 정보와 카테고리를 추가하기</string>
     <string name="txt_eaten_products">내가 가진 제품</string>
     <string name="txt_products_to_buy">구매할 제품</string>
-    <string name="intent_filter_share_label">Add to Open Pet Food Facts</string>
+    <string name="intent_filter_share_label">Open Pet Food Facts에 추가</string>
     <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
         You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
-    <string name="OFFlogo">Open Pet Food Facts logo</string>
-    <string name="brand_hint">Examples: Purina, Whiskas, etc…</string>
+    <string name="OFFlogo">Open Pet Food Facts 로고</string>
+    <string name="brand_hint">예시: 퓨리나, 위스카스 등</string>
 </resources>
