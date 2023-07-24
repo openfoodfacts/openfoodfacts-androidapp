@@ -7,18 +7,18 @@ Open Products Food este o baza deschisa de date, pentru toate produsele din lume
 - Open Products Facts este un proiect non-profit dezvoltat de mii de voluntari din întreaga lume. Avem multe proiecte interesante la care poți contribui în multe feluri diferite. 
 - Puteți începe să contribuiți astăzi prin adăugarea primului dvs. produs. 
 
-*** Get the Facts ***
-- Open Products Facts helps you to make sense of the fine print on products labels.
+*** Obține informațiile ***
+- Open Products Facts vă ajută să înțelegeți literele mici de pe etichetele produselor.
 
-*** Collect AAAALL the things ***
-- You can add all the items from your collections
+*** Strânge TOAAAAATE lucrurile ***
+- Puteți adăuga toate articolele din colecțiile dvs
 - Open Crayons Facts - Cea mai mare bază de date deschisă de creioane colorate
-- Open Miniature Food Facts - The largest open database of miniature food products
-- Open ??? Facts - Create your own open database :-)
+- Open Miniature Food Facts - Cea mai mare bază de date deschisă de produse alimentare miniaturale
+- Deschideți ??? Fapte - Creează-ți propria bază de date deschisă :-)
 
 *** Funcționează bine în orice condiție ***
 - Puteți adăuga produse noi, chiar dacă nu aveți o conexiune la Internet acum.
-- The app loads only the strict necessary to reduce data and battery consumption
+- Aplicația încarcă doar strictul necesar pentru a reduce consumul de date și baterie
 - Nu aveți nevoie de o cameră pentru a căuta un produs. De asemenea, puteți introduce codul de bare dacă nu aveți o cameră sau aveți o problemă cu aceasta.
 
 *** Produsele tale, datele tale ***
@@ -31,24 +31,24 @@ Pentru alimente, puteți instala Open Food Facts, pentru cosmetice, Open Beauty 
 Open Products Facts este disponibil și pe web la https://world.openproductsfacts.org
 Întrebări, feedback: contact@openfoodfacts.org
 
-*** Original April's Fool Listing ***
+*** Lista originală de April's Fool ***
 
-Yesterday morning, the Open Food Facts team woke up to a stunning revelation. 
+Ieri dimineață, echipa Open Food Facts s-a trezit cu o revelație uluitoare. 
 
-Collecting the world's food, cosmetic and pet food was so passé. With the insane progress made over the past year, we must surely be close to completing our mission to collect all the food and cosmetic products in the world, right ?
+Colectarea alimentelor din lume, a produselor cosmetice și a hranei pentru animale de companie a fost atât de depășită. Cu progresul nebunesc făcut în ultimul an, trebuie să fim cu siguranță aproape de a ne îndeplini misiunea de a colecta toate produsele alimentare și cosmetice din lume, nu?
 
-So we set up to create not 1, but other 77000 separate new databases ! 
+Așa că ne-am configurat să creăm nu 1, ci alte 77000 de baze de date noi separate! 
 
-Open Products Facts will be an extremely ambitious project. Iată câteva dintre ele: 
+Open Products Facts va fi un proiect extrem de ambițios. Iată câteva dintre ele: 
 
 Open Crayons Facts - Cea mai mare bază de date deschisă de creioane colorate
 
 Open Miniature Food Facts - Cea mai mare bază de date deschisă de produse alimentare miniaturale
 
-Open ??? Facts - The largest open database of ???
+- Deschideți ??? Fapte - Cea mai mare bază de date deschisă a ???
 
-Tomorrow, we will select the 3 most sucessful databases, and we will start collecting all the matching products in the world.
+Mâine, vom selecta cele mai reușite 3 baze de date și vom începe să colectăm toate produsele care se potrivesc din lume.
 
-Will it be trash cans, télécartes, or mobile phones database ? 
+Va fi baza de date a cutiilor de gunoi, a cartelelor sau a telefoanelor mobile? 
 
-So if you like t-shirts, cooking books, origami paper or snow globes, start scanning using the Open Products Facts Android app on Google Play
+Deci, dacă vă plac tricourile, cărțile de gătit, hârtia origami sau globurile de zăpadă, începeți să scanați folosind aplicația pentru Android Open Products Facts de pe Google Play
