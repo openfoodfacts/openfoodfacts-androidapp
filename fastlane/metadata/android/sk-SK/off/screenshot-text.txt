@@ -1,72 +1,72 @@
-Those are the taglines shown above the screenshots in the playstore. Keep them short and attractive.
+Toto sú slogany zobrazené nad snímkami obrazovky v obchode Google Play. Udržujte ich krátke a atraktívne.
 https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=en
 
 =====================
-V2 screenshots
+Snímky obrazovky z V2
 =====================
 
-Scan products
+Nasnímajte výrobky
 
-Get the Nutriscore
+Získajte Nutriscore
 
-Your full scan history, fully private & exportable
+Vaša úplná história skenovania, plne súkromná a exportovateľná
 
-Go further with Wikipedia
+Choďte ďalej s Wikipédiou
 
-Set allergen alerts
+Nastavte si upozornenia na alergény
 
-Nutrition, simplified
+Výživa, zjednodušená
 
-Allergen alert
+Upozornenie na alergény
 
-Get alternatives for your favorite foods
+Získajte alternatívy pre svoje obľúbené jedlá
 
-Become an actor of food transparency
+Staňte sa aktérom potravinovej transparentnosti
 
-Wikipedia for Food
+Wikipédia pre jedlo
 
-Wikipedia for Cosmetics
+Wikipédia pre kozmetiku
 
-Wikipedia for Pet Food
+Wikipédia pre krmivo pre domáce zvieratá
 
-Wikipedia of Products
+Wikipédia produktov
 
 Ingrediencie
 
-Powerful
+Výkonný
 
 Nutrition facts
 
 =====================
-V3 screenshots
+Snímky obrazovky z V3
 =====================
 
-Choose the products that are good for you and for the 🌍 planet !
+Vyberte si produkty, ktoré sú dobré pre vás aj pre 🌍 planétu!
 
-✔ Ultra-fast barcode scan
+✔ Ultra rýchle skenovanie čiarových kódov
 
-✔ A global supermarket in your pocket
+✔ Globálny supermarket vo vašom vrecku
 
-Nutritional quality
+Nutričná kvalita
 
-Ultra-processed foods
+Ultra spracované potraviny
 
-Carbon impact
+Vplyv uhlíka
 
-Compare easily before you buy
+Jednoducho porovnajte ešte pred nákupom
 
-Create shopping lists, intake lists…
+Vytvorte nákupné zoznamy, zoznamy príjmu…
 
-Find and compare over 750 000 products.
+Nájdite a porovnajte viac ako 750 000 produktov.
 
 
 
-Unlimited and fully-private scan history
+Neobmedzená a plne súkromná história skenovania
 
-Swipe for even more details
+Potiahnutím zobrazíte ešte viac podrobností
 
-Set Allergen Alerts
+Nastavte upozornenia na alergény
 
-Join our global movement for food transparency
+Pripojte sa k nášmu globálnemu hnutiu za potravinovú transparentnosť
 
 world.openfoodfacts.org/contribute
