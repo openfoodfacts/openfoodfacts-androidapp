@@ -1,8 +1,8 @@
-Tierfutter erfassen oder deren Strichcode einlesen, um Daten über Inhaltsstoffe, Zusatzstoffe und Nährwertangaben zu erhalten.
+Lesen Sie Tierfutterprodukte oder deren Strichcode ein, um Daten über Inhaltsstoffe, Zusatzstoffe und Nährwertangaben zu erhalten.
 
 Die App erlaubt es, die über 600 bereits in der kostenlosen und offenen Datenbank „Open Pet Food Facts” enthaltenen Tiernahrungsprodukte einzusehen und auch Bilder und Daten für fehlende Produkte hinzuzufügen.
 
-Um das Projekt „Open Pet Food Facts” zu entdecken, besuchen Sie bitte https://world.openpetfoodfacts.org
+Um mehr über das Projekt Open Pet Food Facts zu erfahren, besuchen Sie bitte https://world.openpetfoodfacts.org
 
 ★★★ Beitrag zur Transparenz von Tiernahrungsprodukten ★★★
 
@@ -23,7 +23,7 @@ Was Sie ebenfalls finden können (entsprechend den Angaben auf den Produkten):
 ★★★ Funktioniert gut in jedem Umfeld ★★★
 • Sie können neue Produkte hinzufügen, auch wenn gerade keine Internetverbindung besteht.
 • Die App lädt nur das absolut Notwendige, um den Daten- und Batterieverbrauch zu reduzieren
-• Sie benötigen keine Kamera, um ein Produkt nachzuschlagen Sie können den Strichcode auch manuell eingeben, wenn Ihnen eine Kamera fehlt oder Sie ein Problem damit haben.
+• Sie benötigen keine Kamera, um ein Produkt nachzuschlagen Sie können den Strichcode auch manuell eingeben, wenn Ihnen eine Kamera fehlt oder Sie ein Problem damit haben. Sie können auch den Barcode eingeben, wenn Sie keine Kamera haben oder ein Problem damit haben.
 
 ★★★ Ihr Tierfutter — Ihre Daten ★★★
 • Ihre persönlichen Daten gehören Ihnen und werden niemals online gesendet
