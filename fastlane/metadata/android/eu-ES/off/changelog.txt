@@ -9,7 +9,7 @@ What's new ?
 1. You get the 360 picture: nutrition, ingredients, and all food facts, neatly and clearly presented.
 2. Get the "NutriScore" nutrition grade for all products in the world. Easily compare products. Easier than deciphering nutrition tables.
 3. Get extra information from Wikipedia. Click on a food category, an additive… to learn more and see similar products.
-4. Alergenoen alertak ezarri ditzakezu (egiazta ezazu beti zeuk benetako etiketa!)
+4. You can set allergens alerts (always double check the actual label yourself though!)
 5. You now get a scan history you can export and that never leaves your phone
 6. You can shake your phone at any time in the app to start scanning
 7. You can now add new products even when you're offline
