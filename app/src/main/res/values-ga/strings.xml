@@ -201,7 +201,7 @@
     <string name="txtSugars">Siúcraí</string>
     <string name="hintBarcode">Barcode</string>
     <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
-    <string name="hintLogin">Logáil isteach</string>
+    <string name="hintLogin">Login</string>
     <string name="hintPass">Pasfhocal</string>
     <string name="errorLogin">Login or password error</string>
     <string name="errorWeb">We were not able to access the internet. Do you have connectivity issues?</string>
@@ -227,7 +227,7 @@
     <string name="home_drawer">Baile</string>
     <string name="install">Install</string>
     <string name="open_beauty_drawer">Open Beauty Facts</string>
-    <string name="open_food_drawer">Open Food Facts</string>
+    <string name="open_food_drawer">Open Products Facts</string>
     <string name="search_drawer">Cuardaigh</string>
     <string name="search_by_barcode_drawer">Type barcode</string>
     <string name="category_drawer">Catagóirí</string>
@@ -244,11 +244,11 @@
     <string name="select_camera">Select a Camera</string>
     <string name="ok_button">OK</string>
     <string name="cancel_button">Cealaigh</string>
-    <string name="login_button">Logáil isteach</string>
+    <string name="login_button">Login</string>
     <string name="create_account_button">Create Account</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
     <string name="title_info_dialog">How does it work?</string>
-    <string name="text_offline_info_dialog">You can scan products when you\'re offline to add them to Open Food Facts later. All the products you scan will appear here, and you\'ll be able to send them using the button below.</string>
+    <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
     <string name="permission_camera">Camera permission is needed to scan barcodes and take pictures.</string>
     <string name="no_camera_dialog_title">Camera not found</string>
     <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
@@ -287,7 +287,7 @@
     <!-- Nutrition info tab -->
     <string name="display_fact">Tábla fíricí cothaithe do %1$s den táirge seo</string>
     <string name="check_facts">Check</string>
-    <string name="nutrition">Cothú</string>
+    <string name="nutrition">Nutrition</string>
     <string name="calculated_nutrition">Calculated Nutrition</string>
     <string name="please_enter_weight">Please type the product weight</string>
     <string name="enter_weight">Type the product weight</string>
@@ -393,7 +393,7 @@
     <string name="chlorophyl">Chlorophyl</string>
     <string name="take_picture">Tóg grianghraf</string>
     <string name="choose_picture_from_gallery">Ó ghailearaí</string>
-    <string name="take_picture_ingredients">Take a picture of the ingredients</string>
+    <string name="take_picture_ingredients">Take a photo of the ingredients</string>
     <string name="take_picture_front">Take a photo of the front</string>
     <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
     <string name="take_more_pictures">Take more pictures</string>
@@ -429,7 +429,7 @@
     <string name="device_offline_dialog_message">A network connection is needed to do this, would you like to change this in settings?</string>
     <string name="device_offline_dialog_negative">Dismiss</string>
     <string name="device_offline_dialog_positive">Socruithe</string>
-    <string name="scan_first_product">Scan First Product</string>
+    <string name="scan_first_product">Scan your first product</string>
     <string name="preference_delete_search_history">Successfully deleted history</string>
     <string name="preference_enable_mobile_data_title">Upload on mobile data</string>
     <string name="preference_enable_mobile_data_summary_on">Upload new products using mobile data &amp; WiFi</string>
@@ -440,7 +440,7 @@
     <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
     <string name="changes_saved">Changes saved successfully</string>
     <string name="preference_choose_language_dialog_title">Choose language</string>
-    <string name="FAQ">CC</string>
+    <string name="FAQ">FAQ</string>
     <string name="FrequentlyAskedQuestions">Ceisteanna Coitianta</string>
     <string name="translate_help_title">Help translate Open Food Facts</string>
     <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
@@ -453,7 +453,7 @@
     <string name="TermsOfUse">Terms and Privacy</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <!--Just replace "world" by "fr", "de"… translate the "terms-of-use" with the hyphens -->
-    <string name="terms_url">https://world-ga.openfoodfacts.org/terms-of-use</string>
+    <string name="terms_url">https://ie-ga.openfoodfacts.org/terms-of-use</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
     <string name="faq_url">https://world.openfoodfacts.org/faq</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
@@ -469,7 +469,7 @@
     <string name="preference_header_network">Líonra</string>
     <string name="preference_header_contributing">Contributing</string>
     <string name="scan_first_string">Your viewed product history will be listed here.\nThis history is for your eyes only and is stored locally.</string>
-    <string name="log_in">Logáil isteach</string>
+    <string name="log_in">Login</string>
     <string name="login_true">Already logged in!</string>
     <string name="confirm_logout">Confirm Logout</string>
     <string name="logout_dialog_content">Are you sure to log out ?</string>
@@ -484,14 +484,14 @@
     <string name="Browse_Products">Browse Products</string>
     <string name="brand_string">Brand</string>
     <string name="additive_string">Additive</string>
-    <string name="allergen_string">Ailléirgin</string>
+    <string name="allergen_string">Allergen</string>
     <string name="search_string">Cuardaigh</string>
     <string name="country_string">Country</string>
     <string name="store_subtitle">Siopa</string>
     <string name="packaging_subtitle">Packaging</string>
     <string name="packaging_string">Packaging</string>
     <string name="label_string">Label</string>
-    <string name="category_string">Catagóir</string>
+    <string name="category_string">Category</string>
     <string name="connection">Connected</string>
     <string name="contributor_string">Contributor</string>
     <string name="Rate_Us">Show Your Support</string>
@@ -682,9 +682,9 @@
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">Extract ingredients</string>
     <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
-    <string name="add_category_prompt_text">Add a category to compute the Nutri-Score</string>
-    <string name="add_nutrient_category_prompt_text">Add nutrition facts and a category to compute the Nutri-Score</string>
-    <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
+    <string name="add_category_prompt_text">Add a category to help complete the product</string>
+    <string name="add_nutrient_category_prompt_text">Add a category and nutrition facts to help complete the product</string>
+    <string name="category_game_btn">Help categorize products</string>
     <string name="version_string">Open Food Facts Android App</string>
     <string name="version">Leagan</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
@@ -710,15 +710,15 @@
     <string name="txt_exporting_your_listed_products">Exporting Your Products…</string>
     <string name="txt_your_listed_products_exported">Your products have been exported</string>
     <string name="txt_discard">Discard</string>
-    <string name="txt_info_eaten_products">\"You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"I\'m eating this\".
-        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.\"</string>
+    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
+        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
     <string name="txt_info_your_listed_products">You\'ll be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
     <string name="search_history_pref_title">Delete local search history</string>
     <string name="search_history_pref_summary">Remove all the searches that you performed on this device</string>
     <string name="search_history_pref_dialog_content">Delete local search history?</string>
     <string name="settings_country_dialog_title">Select your country</string>
     <string name="settings_country_summary">Change your selected country</string>
-    <string name="settings_country_title">Tír</string>
+    <string name="settings_country_title">Country</string>
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
     <string name="image_prompt_language">Take a photo of the ingredients in</string>
     <!-- Used for diets AddOn -->
@@ -809,10 +809,10 @@
     <string name="content_exit">Press here to return to the product</string>
     <string name="icon_label">Labels icon</string>
     <string name="icon_categories">Categories icon</string>
-    <string name="icon_emb">EMB code icon</string>
+    <string name="icon_emb">Traceability code icon</string>
     <string name="product_front_image">Product front image</string>
     <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
     <string name="sign_in_or_register">Sign in or register</string>
     <string name="hunger_game_call_to_action">Help classify more %1$s</string>
-    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s food products (plus the ones you will contribute).</string>
+    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s products (plus the ones you will contribute) in the world.</string>
 </resources>
