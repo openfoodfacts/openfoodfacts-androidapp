@@ -160,18 +160,18 @@
     <string name="alert_dialog_warning_title">Waarschuwing</string>
     <string name="alert_dialog_warning_msg_user">Gebruiker/wachtwoord is aangepast, informatie updaten alstublieft</string>
     <string name="toast_retrieving">Bezig met laden…</string>
-    <string name="txtBarcode">Streepjescode</string>
-    <string name="txtCategories">Categoriëen</string>
+    <string name="txtBarcode">Streepjescode:</string>
+    <string name="txtCategories">Categorieën:</string>
     <string name="txtLabels">Etiketten, certificeringen, onderscheidingen:</string>
     <string name="txtEMB">Traceerbaarheidscodes:</string>
-    <string name="txtIngredients">Ingrediënten</string>
+    <string name="txtIngredients">Ingrediëntenlijst:</string>
     <string name="Donate">Doneer</string>
     <string name="Donation">Klik hier om te doneren aan Open Food Facts</string>
-    <string name="txtSubstances">Ingrediënten of producten die allergieën of intoleranties veroorzaken</string>
+    <string name="txtSubstances">Ingrediënten of producten die allergieën of intoleranties veroorzaken:</string>
     <string name="txtAdditives">Additieven :</string>
-    <string name="txtTraces">Sporen</string>
-    <string name="txtMayBeFromPalmOilProduct">Ingrediënten bevatten mogelijk palmolie</string>
-    <string name="txtPalmOilProduct">Ingrediënten bevatten palmolie</string>
+    <string name="txtTraces">Sporen:</string>
+    <string name="txtMayBeFromPalmOilProduct">Ingrediënten die mogelijk palmolie bevatten:</string>
+    <string name="txtPalmOilProduct">Ingrediënten uit palmolie:</string>
     <string name="txtServingSize">Per portie</string>
     <string name="txtNutrientLevel100g">Voedingsstoffen per 100g</string>
     <string name="txtNutrientLevel100ml">Voedingswaarden per 100ml :</string>
@@ -201,8 +201,8 @@
     <string name="txtPictureNeededDialogNo">Negeren</string>
     <string name="toastSending">Uploaden…</string>
     <string name="txtLoading">Bezig met laden…</string>
-    <string name="txtDialogsContentDelete">Weet u zeker dat u deze concept wilt verwijderen?</string>
-    <string name="txtDialogsContentInfoSave">Het product is lokaal opgeslagen, u kunt het bewerken in het Offline Edit-menu</string>
+    <string name="txtDialogsContentDelete">Weet u zeker dat u dit concept wilt verwijderen?</string>
+    <string name="txtDialogsContentInfoSave">Het product wordt lokaal opgeslagen, u kunt het bewerken in het menu \"Offline bewerken\"</string>
     <string name="productSavedToast">Product opgeslagen, bedankt!</string>
     <string name="txtBarcodeRequire">Streepjescode verplicht</string>
     <string name="txtOk">Ok</string>
@@ -568,7 +568,7 @@
     <string name="product_name_overwrite">Productnaam overschrijven</string>
     <string name="yours">Jouw: </string>
     <string name="currently_on">Momenteel op %s: </string>
-    <string name="quantity_overwrite">Grootte overschrijven</string>
+    <string name="quantity_overwrite">Hoeveelheid overschrijven</string>
     <string name="link_overwrite">Link overschrijven</string>
     <string name="save_product">Wilt u het product opslaan?</string>
     <string name="error_adding_product">Er is iets fout gegaan bij het toevoegen van het product</string>
@@ -621,7 +621,7 @@
     <string name="uploading_image">De foto verzenden</string>
     <string name="uploading_nutrition_image">Foto van de voedingswaarden aan het uploaden</string>
     <string name="uploading_ingredients_image">Foto van de ingrediënten aan het uploaden</string>
-    <string name="uploading_front_image">Foto van voorkant aan het uploaden</string>
+    <string name="uploading_front_image">Foto van de voorkant aan het uploaden</string>
     <string name="edit_front_image">Bewerk de foto van de voorkant</string>
     <string name="edit_nutrition_image">Bewerk de foto met voedingswaarden</string>
     <string name="edit_ingredients_image">Bewerk de foto met ingrediënten</string>
@@ -702,7 +702,7 @@
     <string name="settings_country_summary">Jouw geselecteerde land wijzigen</string>
     <string name="settings_country_title">Land</string>
     <string name="txt_no_nutrition_data">Dit product biedt geen voedingsinformatie op de verpakking. Als dit veranderd is, kunt je het product bewerken.</string>
-    <string name="image_prompt_language">Maak een foto van de ingrediëntenlijst</string>
+    <string name="image_prompt_language">Maak een foto van de ingrediënten in</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Voeg producten toe</string>
@@ -738,7 +738,7 @@
     <string name="import_csv_to_list">Importeer een CSV-bestand van de Open Food Facts-lijst</string>
     <string name="toast_import_csv_error">Fout bij het importeren van CSV-bestand</string>
     <string name="toast_import_csv">CSV succesvol geïmporteerd!</string>
-    <string name="open_csv">Open CSV</string>
+    <string name="open_csv">CSV openen</string>
     <!-- Used for diets AddOn -->
     <string name="history_network_error">Het product kan niet worden geladen. Probeer het opnieuw wanneer je weer online bent.</string>
     <string name="cant_modify_if_refreshing">Wacht tot het uploaden is voltooid</string>
