@@ -1,4 +1,4 @@
-Escanee produtos alimentarios ou o seu código de barras para obter datos sobre ingredientes, aditivos e información nutricional.
+Scan food products or their barcode to obtain data on ingredients, additives and nutrition facts.
 
 ▶ Find & Compare more than 800.000 products
 
@@ -21,20 +21,20 @@ To discover the volunteer-run Open Food Facts project, visit https://world.openf
 
 
 ▶ Contribute to Food Transparency
-- Open Food Facts é unha base de datos de produtos alimentarios feita por todos, para todos.
-- Pode utilizala para facer mellores eleccións de alimentos, e como son datos públicos, calquera pode reutilizalos para calquer propósito.
-- Open Food Facts é un proxecto sen ánimo de lucro desenvolto por miles voluntarias de todo o mundo. We have lots of exciting projects you can contribute to in many different ways.
+- Open Food Facts is a food products database made by everyone, for everyone.
+- You can use it to make better food choices, and as it is open data, anyone can re-use it for any purpose.
+- Open Food Facts is a non-profit project developed by thousands of volunteers from around the world. Temos moitos proxectos emocionantes aos que podes contribuír de moitas maneiras diferentes.
 - You can start contributing today by adding a product from your fridge.
 
 ▶ Create lists
 Create shopping lists, track what you've eaten and easily share and export your lists.
 
 ▶ Get the Facts
-- Open Food Facts axúdalle a comprender o que significa a letra pequena nas etiquetas dos produtos. You will be able to find:
-- pegada de carbono (emisións CO2) e empaquetado (así como instrucións para reciclar),
-- Nutriscore (marcador nutricional), nutrientes, graxa / contrido en graxa, ácidos graxos saturados, carbohidratos, azucres, fibra, proteína e sal e sodio.
-- marcas, alérxenos, etiquetas (bio, sen glute, vegano, vexetariano, halal, kosher ...), información sobre trazabilidade (códigos de empaquetado, orixe dos ingredientes)
-- En viños e cervexas, atopará o contido en alcol.
+- Open Food Facts helps you to make sense of the fine print on products labels. You will be able to find:
+- carbon footprint (CO2 emissions) and packaging (as well as recycling instructions),
+- Nutriscore (nutritional score), nutrients, fat / fat content, saturated fatty acids, carbohydrates, sugars, fiber, protein and salt and sodium.
+- brands, allergens, labels (bio, gluten free, vegan, vegetarian, halal, kosher ...), traceability information (packaging codes, origins of ingredients)
+- On wines and beers, you will find the alcohol content.
 
 
 ▶ Based on Science, helping back Science!
@@ -67,10 +67,10 @@ Scan at the speed of light (even if you’re on a plane, submarine or supermarke
 ▶ Say hello and/or join us!
 
 
-Open Food Facts tamén está dispoñible na web en https://world.openfoodfacts.org
+Open Food Facts is also available on the web at https://world.openfoodfacts.org
 
 
-Questions, feedback : contact@openfoodfacts.org
+Preguntas, comentarios: contact@openfoodfacts.org
 
 
-Para cosméticos, pode instalar Open Beauty Facts, para comida de mascotas, Open Pet Food Facts, e para todos os outros produtos, Open Products Facts.
+For cosmetics, you can install Open Beauty Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.
