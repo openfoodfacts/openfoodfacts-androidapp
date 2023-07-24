@@ -8,7 +8,7 @@ Quoi de neuf ?
 ==================
 1. Vous obtenez une vision à 360 degrés : nutrition, ingrédients et tout ce qui se rapporte à la nourriture, présenté nettement et clairement.
 2. Obtenez la note nutritionnelle "NutriScore" pour tous les produits du monde. Comparez facilement les produits. Plus simple que de déchiffrer des tables nutritionnelles.
-3. Récupérez des informations bonus sur Wikipédia. Cliquez sur une catégorie d'aliments, un additif... pour en apprendre plus et voir des produits similaires.
+3. Récupérez des informations bonus sur Wikipédia. Cliquez sur une catégorie d'aliments, un additif...
 4. Vous pouvez définir des alertes allergènes (vérifiez toujours l'étiquette vous-même!)
 5. Vous obtenez maintenant un historique de scans que vous pouvez exporter et qui ne quitte jamais votre téléphone
 6. Vous pouvez secouer votre téléphone à tout moment dans l'application pour commencer le scan
