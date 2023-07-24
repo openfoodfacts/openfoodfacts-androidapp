@@ -8,7 +8,7 @@ VERSIÓN 3
 
 
 ======
-v2! TODOS los voluntarios han trabajado duro, en base a tus sugerencias. Somos un movimiento más global que nunca. 500k productos liberados, 182 países, 10K+ contribuyentes, incluido usted :-) usted :-)
+v2! TODOS los voluntarios han trabajado duro, en base a tus sugerencias. Somos un movimiento más global que nunca. 500k productos liberados, 182 países, 10K+ contribuyentes, incluido usted :-) usted :-) you :-)
 1. NutriScore para todos los productos en el mundo
 2. Historia exportable, solo para tus ojos
 3. Alerta de alérgenos
@@ -18,14 +18,14 @@ v2! TODOS los voluntarios han trabajado duro, en base a tus sugerencias. Somos u
 7. No requiere registro
 8. Tan ligero como antes :)
 
-v2.8! Después del masivo V2, todos los voluntarios de OFF siguieron trabajando duro, en base a tus sugerencias. Ahora hay 570k productos liberados de 182 países por más de 10K contribuyentes, incluido tu 🙂 tu 🙂
+v2.8! Después del masivo V2, todos los voluntarios de OFF siguieron trabajando duro, en base a tus sugerencias. Ahora hay 570k productos liberados de 182 países por más de 10K contribuyentes, incluido tu 🙂 tu 🙂 you 🙂
 1. Reconstruimos toda la experiencia de añadir productos (e incluso funciona sin conexión). (gracias Huzaifa)
 2. Ahora puedes obtener información nutricional de la porción que estás comiendo (Rutvik)
 3. Ahora calculamos los grupos NOVA además del Nutriscore (Huzaifa)
 4. Limpieza y mantenimiento del código (por Rutvik y Salfai)
 5. 🌎 Coreano e indonesio
 
-v 2.8.8! ¿Pensaron que nos detendríamos en la adición del producto? Todos los voluntarios OFF siguieron trabajando duro. 590 mil productos liberados, 182 países, más de 10 mil contribuyentes, incluido tu 🙂 tu 🙂
+v 2.8.8! ¿Pensaron que nos detendríamos en la adición del producto? Todos los voluntarios OFF siguieron trabajando duro. 590 mil productos liberados, 182 países, más de 10 mil contribuyentes, incluido tu 🙂 tu 🙂 you 🙂
 1. Ahora puedes editar cualquier producto con tu cuenta OFF. Haz clic en ✏️ en una página de producto para editarla.
 2. 🌍 Eslovaco, hebreo, español, árabe, holandés, húngaro y vietnamita (translate.openfoodfacts.org para ayudar)
 3. Open Food Facts es un esfuerzo totalmente realizado por voluntarios: puede donar tiempo (world.openfoodfacts.org/contribute) o dinero (donate.openfoodfacts.org)
