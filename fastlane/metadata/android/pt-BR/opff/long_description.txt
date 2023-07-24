@@ -2,7 +2,7 @@ Digitalize produtos alimentares para animais para obter dados sobre ingredientes
 
 O aplicativo permite ver mais de 600 alimentos para animais que já estão inseridos no banco de dados aberto e gratuito, Open Pet Food Facts, além de adicionar imagens e dados para produtos não catalogados.
 
-Para conhecer o projeto Open Pet Food Facts, visite https://world.openpetfoodfacts.org
+Para conhecer o projeto Open Pet Food Facts, visite https://br.openpetfoodfacts.org
 
 ***Contribua para Transparência de Alimentos para Animais***
 
