@@ -1,2 +1,2 @@
-1. NEW: you can now see the vegan, vegetarian and palm oil status of products, based on their ingredient list. More analysis will be added over time. Send us a mail to tell us what you'd like to see :-) 
+1. NOVINKA: nyní můžete vidět stav veganského, vegetariánského a palmového oleje u produktů na základě jejich seznamu složek. Další analýzy budou časem přidány. Napište nám, co byste rádi viděli :-) 
 2. Housecleaning with fixes for several issues that you reported to contact@openfoodfacts.org
