@@ -1,34 +1,34 @@
-A bincika kayayyakin abincin dabbobi ko lambar lambar su don samun bayanai akan sinadaran, abubuwan ƙarawa da abubuwan abinci masu gina jiki.
+Scan pet food products or their barcode to obtain data on ingredients, additives and nutrition facts.
 
-Wannan app tabada damar duba fiye da 600 Pet abinci kayayyakin riga kunshe ne a cikin free da kuma bude database Open Pet Bayanan abinci, da kuma don ƙara hotuna da bayanai don bata kayayyakin.
+The app allows to view the over 600 pet food products already contained in the free and open database Open Pet Food Facts, and also to add pictures and data for missing products.
 
-Don gano kaddamar da taimako dan buɗe bangare na Abinci, ziyarci https://world.openpetfoodfacts.org
+To discover the Open Pet Food Facts project, please visit https://world.openpetfoodfacts.org
 
-*** Ka ba da gudummawa wajen tabbatar da kwaskwarima ***
+***Contribute to Pet Food Transparency***
 
-- Bude Abubuwan Abinci shine tsarin samar da abinci wanda kowa yake yi, don kowa.
-- Kuna iya amfani da shi don yin zaɓin abinci mafi kyau, kuma kamar yadda yake buɗe bayanan, kowa na iya sake amfani dashi don kowane dalili.
-- Batun Bayanan Abinci wani shiri ne na riba wanda dubunnan masu ba da agaji suka kirkira daga sassan duniya. Munada da yawan abubuwan burgewa wanda zaka iya bada gudumuwa ga kowa ta hanyoyi da yawa. 
-- Kuna iya fara bada gudummawa a yau ta ƙara samfuri daga kabad naku. 
+- Open Pet Food Facts is a pet food products database made by everyone, for everyone.
+- You can use it to make better pet food choices, and as it is open data, anyone can re-use it for any purpose.
+- Open Pet Food Facts is a non-profit project developed by thousands of volunteers from around the world. Muna da ayyuka masu ban sha'awa da yawa waɗanda zaku iya ba da gudummawarsu ta hanyoyi daban-daban. 
+- You can start contributing today by adding a product from your pet's cupboard. 
 
 
-***Samu dalilai***
+*** Get the Facts ***
 
-Hakanan zaka iya samun (bisa ga alamun da aka gabatar akan samfuran):
-- jerin kayan masarufi (gami da abubuwan ash)
-- bayanin abinci mai gina jiki, hasken zirga-zirgar abinci mai kyau…
-- brands, allergens, tasirin (Organic, vegan...)
-- Yana aiki tare da abincin kare (busheshen abincin kare & rigar kare abincin), abincin kulya, abincin zomo, abincin maciji, abincin kifi, abincin tsuntsu, abincin doki ko kowane abinci don dabbar da kuka fi so.
+You will also be able to find (according to the indications present on the products):
+- list of ingredients (including ash content)
+- nutritional info, nutrition traffic lights…
+- brands, allergens, labels (organic, vegan...)
+- It works with dog food (dry dog food & wet dog food), cat food, rabbit food, snake food, fish food, bird food, horse food or any food for your favorite animal.
 
-*** Yana aiki da kyau a kowane yanayi ***
+*** Works well in any condition ***
 - Kuna iya ƙara sabbin samfura, koda kuwa ba ku da haɗin Intanet a yanzu.
-- shiga app din na da tsananin dole don rage bayanai dakuma amfani da batir
-- Ba kwa buƙatar kamara don duba samfur. Hakanan zaka iya buga lambar birni idan bakada kyamarar koda da matsala tare da ita.
+- The app loads only the strict necessary to reduce data and battery consumption
+- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
 
-*** Abincin abincinku, bayananku ***
-- Bayananka naka ne, kuma ba a taɓa aika shi ta yanar gizo ba
+*** Your pet food, your data ***
+- Your personal data is yours, and is never sent online
 - Kuna iya amfani da app ba tare da sani ba
 - Kuna iya fitarwa da tarihin bincikenku
 
 
-Don abincin ɗan adam, zaku iya shigar da Faɗin Abinci Mai Kyau, don kayan kwalliya, Buɗe kayayyakin kyau, da sauran samfurori duka, bude samfuran Kayayyaki.
+For human food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for all other products, Open Products Facts.
