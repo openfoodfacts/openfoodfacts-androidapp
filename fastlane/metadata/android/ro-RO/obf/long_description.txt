@@ -1,31 +1,31 @@
-***Contribute to Cosmetic Transparency***
+***Contribuie la transparența cosmetică***
 
-- Open Beauty Facts is a cosmetic products database made by everyone, for everyone.
-- You can use it to make better cosmetic choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Beauty Facts is a non-profit project developed by thousands of volunteers from around the world. Avem o mulțime de proiecte interesante la care puteți contribui în multiple moduri. 
-- You can start contributing today by adding a product from your cosmetic cupboard. 
+- Open Beauty Facts este o bază de date de produse cosmetice realizată de toată lumea, pentru toată lumea.
+O puteți folosi pentru a face alegeri mai bune în ceea ce privește produsele cosmetice și, deoarece sunt date deschise, oricine o poate reutiliza în orice scop.
+Open Food Facts este un proiect non-profit dezvoltat de mii de voluntari din întreaga lume. Avem multe proiecte interesante la care poți contribui în multe feluri diferite. 
+- Poți începe să contribui astăzi adăugând un produs din dulapul tău cosmetic. 
 
-*** Obține informațiile ***
+*** Get the Facts ***
 
 - Cosmetics additives, F.I.L. codes, CI-numbers, INCI (International Nomenclature of Cosmetic Ingredients), ingredient list, allergens, packaging codes... 
 - Open Beauty Facts helps you to make sense of the fine print on products labels.
 - You don't need to be a chemist and learn latin anymore to decypher an ingredient list :-)
-- You can scan: aftershaves, body lotions, creams, deodorant, eyeliner, foundation, fragrance, lipstick, makeup, mask, perfume, shampoo, soap, shower gel, nail polish and much more…
-- We think it can be useful for people with skin conditions like acne, psoriasis, eczema… to make better cosmetic choices.
+- Puteți scana: aftershave, loțiuni de corp, creme, deodorant, creion de ochi, fond de ten, parfum, ruj, machiaj, mască, parfum, șampon, săpun, gel de duș, lac de unghii și multe altele…
+- Credem că poate fi util pentru persoanele cu afecțiuni ale pielii precum acnee, psoriazis, eczemă… să facă alegeri cosmetice mai bune.
 
-*** Works well in any condition ***
-- You can add new products, even if you don't have an Internet connection right now.
+*** Funcționează bine în orice condiție ***
+- Puteți adăuga produse noi, chiar dacă nu aveți o conexiune la Internet acum.
 - The app loads only the strict necessary to reduce data and battery consumption
-- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
+- Nu aveți nevoie de o cameră pentru a căuta un produs. De asemenea, puteți introduce codul de bare dacă nu aveți o cameră sau aveți o problemă cu aceasta.
 
-*** Your cosmetics, your data ***
-- Your data is yours, and is never sent online
-- You can use the app anonymously
-- You can export your scan history
+*** Produsele cosmetice, datele tale ***
+- Datele tale sunt ale tale și nu sunt trimise online
+- Puteți utiliza aplicația în mod anonim
+- Puteți exporta istoricul scanărilor
 
-Note: Open Beauty Facts is being built, the site and the application are based on Open Food Facts and changes will be made to take into account the specificities of cosmetics.
+Notă: Open Beauty Facts este în curs de construcție, site-ul și aplicația se bazează pe Open Food Facts și se vor efectua modificări pentru a se ține seama de specificul produselor cosmetice.
 
-Open Beauty Facts is also available on the web at https://world.openbeautyfacts.org
+Open Beauty Facts este de asemenea disponibil pe web la https://world.openbeautyfacts.org
 Întrebări, feedback: contact@openfoodfacts.org
 
-For human food, you can install Open Food Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.
+Pentru hrana umană, puteți instala Open Food Facts, pentru hrana animalelor de companie, Open Pet Food Facts, și pentru toate celelalte produse, Open Products Facts.
