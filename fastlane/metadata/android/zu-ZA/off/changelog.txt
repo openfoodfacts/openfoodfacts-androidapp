@@ -1,19 +1,19 @@
 
 ==================
-Inguqulo entsha yomdabu ye-Open Food Facts. Wonke amavolontiya e-Open Food Facts ayelokhu esebenza kanzima kuwo, ngokusekelwe kuziphakamiso zakho kanye nempendulo :)
+New native version of Open Food Facts. All the Open Food Facts volunteers been working hard on it, based on your suggestions and feedback :)
 ==================
-* I-Open Food Facts manje sekunyakaza okuningi kwezwe kunanini ngaphambili. Imikhiqizo engu-500k ikhululiwe, abanikeli ababhalisiwe abangu-10K, amazwe angu-182. Uzojoyina nathi?
+* Open Food Facts is now a more global movement than ever. 500k products freed, 10K registered contributors, 182 countries. Will you join us ?
 ==================
 Yini entsha ?
 ==================
-1. Uthola isithombe se-360: ukudla okunomsoco, izithako, nawo wonke amaqiniso okudla, okuvezwa kahle nangokucacile.
-2. Thola ibanga le- "NutriScore" lokudla komkhiqizo kuwo wonke imikhiqizo emhlabeni. Qhathanisa imikhiqizo kalula. Kulula kunalokho ukulungisa amathebula okudla.
-3. Thola ulwazi oluthe xaxa kusuka ku-Wikipedia. Chofoza kwisigaba sokudla, isithasiselo... ukuze ufunde kabanzi futhi ubone imikhiqizo efanayo.
-4. Ungasetha izixwayiso ze-allergenens (njalo kabili hlola ilebuli yangempela wena!)
-5. Manje uthole umlando wokuskena ongawuthumela futhi ongashiyi ifoni yakho
-6. Ungashukumisa ifoni yakho nganoma yisiphi isikhathi kuhlelo lokusebenza ukuqala ukuskena
-7. Manje usungeza imikhiqizo emisha ngisho noma ungaxhunyiwe ku-intanethi
-8. Manje usungasiza ukuqedela ukudla okuthandayo ngokuqondile kusuka kuhlelo lokusebenza: thatha izithombe, ugcwalise ulwazi, wenze ukukhanya kokudla kwenzeke
-9. Konke kuhamba ngokushesha kakhulu. Imikhiqizo ilayisha ngokusheshisa, ngisho nokuxhumeka okungalungile kweselula.
-10. Asisenandaba nedatha yakho yomuntu siqu. Awudingi ukungena ngemvume ukuskena nokufaka isandla.
-Okungeziwe! Naphezu kwazo zonke izinto ezintsha, uhlelo lokusebenza lunjengokukhanya njengokungaphambili. Isikhala esisele efonini yakho singcwele.
+1. You get the 360 picture: nutrition, ingredients, and all food facts, neatly and clearly presented.
+2. Get the "NutriScore" nutrition grade for all products in the world. Easily compare products. Easier than deciphering nutrition tables.
+3. Get extra information from Wikipedia. Click on a food category, an additive… to learn more and see similar products.
+4. You can set allergens alerts (always double check the actual label yourself though!)
+5. You now get a scan history you can export and that never leaves your phone
+6. You can shake your phone at any time in the app to start scanning
+7. You can now add new products even when you're offline
+8. You can now help complete your favorite foods directly from the app: take photos, fill info, make food transparency happen
+9. Everything is also much faster. Products load blazingly fast, even with a bad mobile connection.
+10. We're still not interested in your personal data. You don't have to sign-up to scan and contribute.
+Extra! Despite all the new stuff, the app is as light as before. The space left on your phone is sacred.
