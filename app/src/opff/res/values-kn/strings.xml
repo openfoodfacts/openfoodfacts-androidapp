@@ -21,14 +21,14 @@
     <string name="slide_3_desc">ನೀವು ಸ್ಕ್ಯಾನ್ ಮಾಡಿರುವ ಎಲ್ಲಾ ಉತ್ಪನ್ನಗಳು, ಒಂದು ಕೈಯಲ್ಲಿ ನೀವು ರಫ್ತು ಮಾಡಬಹುದು</string>
     <string name="slide_4_title">ಆಫ್ಲೈನ್ನಲ್ಲಿ ಕಾರ್ಯನಿರ್ವಹಿಸುತ್ತದೆ</string>
     <string name="slide_4_desc">ನೀವು ಇದೀಗ ಇಂಟರ್ನೆಟ್ ಸಂಪರ್ಕವನ್ನು ಹೊಂದಿಲ್ಲದಿದ್ದರೂ ಸಹ ನೀವು ಹೊಸ ಉತ್ಪನ್ನಗಳನ್ನು ಸೇರಿಸಬಹುದು</string>
-    <string name="txtDialogsContent">ನೀವು ಸ್ಕ್ಯಾನ್ ಮಾಡಲಾದ ಉತ್ಪನ್ನ ಇನ್ನೂ ಓಪನ್ ಫುಡ್ ಫ್ಯಾಕ್ಟ್ಸ್ನಲ್ಲಿ ಅಸ್ತಿತ್ವದಲ್ಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಅದನ್ನು ಸೇರಿಸಿ.</string>
+    <string name="txtDialogsContent">The product you scanned does not exist yet in Open Pet Food Facts. Please add it.</string>
     <string name="txtDialogsContentPowerMode">ನೀವು ಸ್ಕ್ಯಾನ್ ಮಾಡಿದ ಉತ್ಪನ್ನವು ಈಗಾಗಲೇ ಓಪನ್ ಫುಡ್ ಫ್ಯಾಕ್ಟ್ಸ್ನಲ್ಲಿ ಅಸ್ತಿತ್ವದಲ್ಲಿದೆ.</string>
-    <string name="msg_share">ಓಪನ್ ಫುಡ್ ಫ್ಯಾಕ್ಟ್ಸ್ನಲ್ಲಿ ಈ ಉತ್ಪನ್ನವನ್ನು ನೋಡಿ:</string>
+    <string name="msg_share">ಓಪನ್ ಉತ್ಪನ್ನಗಳು ಫ್ಯಾಕ್ಟ್ಸ್ನಲ್ಲಿ ಈ ಉತ್ಪನ್ನವನ್ನು ನೋಡಿ:</string>
     <string name="not_support_books">ಪುಸ್ತಕಗಳನ್ನು ಪ್ರಸ್ತುತ ಓಪನ್ ಫುಡ್ ಫ್ಯಾಕ್ಟ್ಸ್ ಬೆಂಬಲಿಸುವುದಿಲ್ಲ</string>
-    <string name="txt_broaden_search">- ನಿಮ್ಮ ಹುಡುಕಾಟವನ್ನು ವಿಸ್ತರಿಸುವುದು ಸ್ಕ್ಯಾನ್ ಮಾಡಿ ಮತ್ತು ಆಹಾರದ ಫ್ಯಾಕ್ಟ್ಸ್ ತೆರೆಯಿರಿ</string>
-    <string name="Donation">ಆಹಾರ ಸಂಗತಿಗಳನ್ನು ತೆರೆಯಲು ದಾನ ಮಾಡಲು ಇಲ್ಲಿ ಕ್ಲಿಕ್ ಮಾಡಿ</string>
-    <string name="translate_help_title">ಆಹಾರದ ಸತ್ಯಗಳನ್ನು ತೆರೆಯಲು ಅನುವಾದಿಸಲು ಸಹಾಯ ಮಾಡಿ</string>
-    <string name="translate_help_summary">ಓಪನ್ ಫುಡ್ ಫ್ಯಾಕ್ಟ್ಸ್ ಡೇಟಾಬೇಸ್ ಅನ್ನು ನಿಮ್ಮ ಭಾಷೆಗೆ ತರಲು - ಯಾವುದೇ ತಾಂತ್ರಿಕ ಜ್ಞಾನ ಅಗತ್ಯವಿಲ್ಲ</string>
+    <string name="txt_broaden_search">- ನಿಮ್ಮ ಹುಡುಕಾಟವನ್ನು ವಿಸ್ತರಿಸುವುದು \ n- ಸ್ಕ್ಯಾನ್ ಮಾಡಿ ಮತ್ತು ಉತ್ಪನ್ನ ಫ್ಯಾಕ್ಟ್ಸ್ ಅನ್ನು ತೆರೆಯಿರಿ</string>
+    <string name="Donation">ಉತ್ಪನ್ನಗಳ ಫ್ಯಾಕ್ಟ್ಸ್ ತೆರೆಯಲು ದಾನ ಮಾಡಲು ಇಲ್ಲಿ ಕ್ಲಿಕ್ ಮಾಡಿ</string>
+    <string name="translate_help_title">Help translate Open Food Facts</string>
+    <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
     <string name="text_offline_info_dialog">ನೀವು ಆಫ್ಲೈನ್ನಲ್ಲಿರುವಾಗಲೂ ಉತ್ಪನ್ನಗಳನ್ನು ಸ್ಕ್ಯಾನ್ ಮಾಡಿ ನಂತರ ಅವುಗಳನ್ನು ನಂತರದ ಆಹಾರ ಸಂಗತಿಗಳನ್ನು ತೆರೆಯಿರಿ. ಸ್ಕ್ಯಾನ್ ಮಾಡಲಾದ ಉತ್ಪನ್ನಗಳು ಇಲ್ಲಿ ಕಾಣಿಸುತ್ತವೆ ಮತ್ತು ಕೆಳಗಿನ ಬಟನ್ ಬಳಸಿ ಅವುಗಳನ್ನು ಕಳುಹಿಸಲು ನಿಮಗೆ ಸಾಧ್ಯವಾಗುತ್ತದೆ.</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
     <!-- OPFF tagline in different languages -->
