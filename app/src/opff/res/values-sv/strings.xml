@@ -17,15 +17,15 @@
     <string name="slide_1_desc">Scan products, take them in picture, make pet food transparency happen</string>
     <string name="slide_2_title">Få fakta</string>
     <string name="slide_2_desc">Extensive information about the product you\'ve scanned, deciphered for you</string>
-    <string name="slide_3_title">Keep track of the product you use</string>
+    <string name="slide_3_title">Håll koll på produkten du använder</string>
     <string name="slide_3_desc">All the petfood you scan, in one handy list you can export</string>
     <string name="slide_4_title">Fungerar offline</string>
     <string name="slide_4_desc">Du kan lägga till nya produkter även om du inte har en internetanslutning just nu</string>
     <string name="txtDialogsContent">The product you scanned does not exist yet in Open Pet Food Facts. Please add it.</string>
     <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Pet Food Facts.</string>
-    <string name="msg_share">Titta på denna produkt på Open Food Facts:</string>
+    <string name="msg_share">Titta på denna produkt på Open Food Facts :</string>
     <string name="not_support_books">Böcker stöds inte för tillfället av Open Food Facts</string>
-    <string name="txt_broaden_search">- att bredda din sökning \n- att skanna och lägga till den i Open Food Facts</string>
+    <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
     <string name="Donation">Klicka här för att donera till Open Food Facts</string>
     <string name="translate_help_title">Hjälp översätta Open Food Facts</string>
     <string name="translate_help_summary">Ta Open Food Facts-databasen till ditt språk - ingen teknisk kunskap krävs</string>
@@ -41,11 +41,11 @@
     <string name="add_nutrient_prompt_text">Lägg till näringsfakta för att beräkna näringsnivåer</string>
     <string name="add_category_prompt_text">Lägg till en kategori för att komplettera produkten</string>
     <string name="add_nutrient_category_prompt_text">Lägg till en kategori och näringsfakta för att komplettera produkten</string>
-    <string name="txt_eaten_products">Products I have</string>
+    <string name="txt_eaten_products">Produkter jag har</string>
     <string name="txt_products_to_buy">Produkter att köpa</string>
-    <string name="intent_filter_share_label">Add to Open Pet Food Facts</string>
+    <string name="intent_filter_share_label">Lägg till i Open Pet Food Facts</string>
     <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
         You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
-    <string name="OFFlogo">Open Pet Food Facts logo</string>
+    <string name="OFFlogo">Open Pet Food Facts-logotyp</string>
     <string name="brand_hint">Exempel: Purina, Whiskas, etc…</string>
 </resources>
