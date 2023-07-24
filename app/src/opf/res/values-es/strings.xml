@@ -11,17 +11,17 @@
     <!-- For fr, Replace by https://world-fr.openproductsfacts.org/contributeur/ -->
     <string name="website_contributor">https://world-es.openproductsfacts.org/contributor/</string>
     <string name="terms_url">https://world-es.openproductsfacts.org/terms-of-use</string>
-    <string name="txtHomeOnline">Open Products Facts is an open database of more than %1$s products (plus the ones you will contribute).</string>
+    <string name="txtHomeOnline">Open Products Facts es una base de datos abierta de más de %1$s productos (más los que tú contribuyas).</string>
     <string name="txtHome">Open Products Facts es una base de datos abierta de todos los productos en el mundo.</string>
     <string name="slide_1_title">Contribuir a la transparencia del producto</string>
     <string name="slide_1_desc">Escanee productos, tómelos en una imagen, haga que la transparencia de los productos suceda</string>
-    <string name="slide_2_title">Obtener los datos</string>
+    <string name="slide_2_title">Conoce lo que te interesa</string>
     <string name="slide_2_desc">Amplia información sobre los productos que has escaneado, descifrada para ti</string>
-    <string name="slide_3_title">Guarda registro del producto o vídeo que uses o te guste</string>
+    <string name="slide_3_title">Registra los productos o vídeos que uses o te gusten</string>
     <string name="slide_3_desc">Todos los productos que has ojeado, los puedes exportar de manera práctica</string>
     <string name="slide_4_title">Funciona sin conexión</string>
-    <string name="slide_4_desc">Puede agregar nuevos productos, incluso si no tiene una conexión de Internet al momento</string>
-    <string name="txtDialogsContent">El producto que escaneó aún no existe en Open Products Facts. Por favor agrégalo.</string>
+    <string name="slide_4_desc">Puedes agregar nuevos productos, incluso si no tienes una conexión de Internet al momento</string>
+    <string name="txtDialogsContent">El producto que escaneaste aún no existe en Open Products Facts. Por favor, añádelo.</string>
     <string name="txtDialogsContentPowerMode">El producto que escaneó ya existe en Open Products Facts.</string>
     <string name="msg_share">Échale un vistazo a este producto en Open Products Facts :</string>
     <string name="not_support_books">los libros no son compatibles actualmente con open products facts</string>
@@ -33,7 +33,7 @@
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">La información de tus alergias no se enviará al servidor de open products Facts. así que debes ser cuidadoso ya que la información del producto no puede ser fidedigna, y la detección puede que no sea 100% arecisa, ¡así que chequea más de una vez por ti mismo! </string>
     <!-- OPF tagline in different languages -->
     <string name="version_string">Aplicación de Android Open Products Facts</string>
-    <string name="tagline">la base de datos de productos gratis</string>
+    <string name="tagline">the free product database</string>
     <string name="product_not_found">El producto %1$s que has escaneado aún no esta en el inventario de Open Products Facts, ¿puedes añadirlo?</string>
     <string name="currently_on_version">Actualmente en Open Products Facts</string>
     <string name="category_game_btn">Ayuda a categorizar productos</string>
@@ -46,6 +46,6 @@
     <string name="intent_filter_share_label">Añadir a Open Products Facts</string>
     <string name="txt_info_eaten_products">Podrás añadir productos a esta lista escaneando productos, arrastrando la tarjeta del producto y pulsando \"Productos a comprar\".
         También podrás añadir productos a esta lista buscando y haciendo clic en el botón + en la parte superior derecha de la página del producto.</string>
-    <string name="OFFlogo">Logotipo de Open Food Facts</string>
+    <string name="OFFlogo">Logotipo de Open Products Facts</string>
     <string name="brand_hint">Ejemplos: Nike, Apple, etc…</string>
 </resources>
