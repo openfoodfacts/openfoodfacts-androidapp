@@ -13,7 +13,7 @@ Seu histórico de escaneio completo, totalmente privado e exportável
 
 Vá a fundo com Wikipedia
 
-Colocar alertas de alérgeno
+Alerta de alergénos
 
 Nutrição, simplificado
 
@@ -43,7 +43,7 @@ V3 capturas de ecrã
 
 Escolha os produtos que são bons para você e para o 🌍 planeta!
 
-✔ Ultra-fast barcode scan
+✔ Digitalização de código de barras ultra-rápida
 
 ✔ Um supermercado global no seu bolso
 
@@ -65,7 +65,7 @@ Histórico de digitalizações ilimitado e totalmente privado
 
 Deslize para mais detalhes
 
-Alerta de alergénos
+Colocar alertas de alérgeno
 
 Junte-se ao nosso movimento global para a transparência alimentar
 
