@@ -61,7 +61,7 @@ Create shopping lists, track what you've eaten and easily share and export your 
 ▶ 設置產品過敏原警告
 - 對牛奶、麩質、雞蛋、大豆、堅果、魚、芹菜、芥末、二氧化硫和亞硫酸鹽、花生、芝麻籽、海鮮、軟體動物或羽扇豆過敏？
 - Speed up your shopping by doing an initial screening of your food with Open Food Facts.
-- 請注意，過敏資料和偵測未必完全準確。 因此，請仔細檢查食品包裝上的過敏原資料。
+- Be careful that the information may not be 100% accurate, and detection may not be 100% accurate. 因此，請仔細檢查食品包裝上的過敏原資料。
 
 
 ▶ Say hello and/or join us!
