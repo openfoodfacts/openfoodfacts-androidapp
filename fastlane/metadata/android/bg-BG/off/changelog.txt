@@ -4,7 +4,7 @@ New native version of Open Food Facts. All the Open Food Facts volunteers been w
 ==================
 * Open Food Facts is now a more global movement than ever. 500k products freed, 10K registered contributors, 182 countries. Will you join us ?
 ==================
-What's new ?
+Какво ново?
 ==================
 1. You get the 360 picture: nutrition, ingredients, and all food facts, neatly and clearly presented.
 2. Get the "NutriScore" nutrition grade for all products in the world. Easily compare products. Easier than deciphering nutrition tables.
