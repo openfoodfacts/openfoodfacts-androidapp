@@ -21,30 +21,30 @@
     <string name="slide_3_desc">您可以方便导出使用的所有化妆品的清单</string>
     <string name="slide_4_title">离线工作</string>
     <string name="slide_4_desc">即使您目前没有互联网连接，也可以添加新的产品。</string>
-    <string name="txtDialogsContent">您扫描的产品尚不在 Open Beauty Facts 中，请添加。</string>
+    <string name="txtDialogsContent">The product you scanned does not exist yet in Open Beauty Facts. Please add it.</string>
     <string name="msg_share">在Open Beauty Facts上查看此产品：</string>
     <string name="txt_broaden_search">- 扩大您的搜索 \n- 扫描并将其添加到 Open Beauty Facts</string>
     <string name="Donation">点击此处捐赠给 Open Beauty Facts</string>
     <string name="translate_help_title">帮助翻译 Open Beauty Facts</string>
     <string name="translate_help_summary">将 Open Beauty Facts 数据库翻译成您的语言 - 没有技术性知识的要求</string>
-    <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Beauty Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Beauty Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+    <string name="text_offline_info_dialog">即使您处于离线状态，也要扫描产品，以便稍后将其添加到Open Beauty Facts中。扫描的产品将显示在此处，您可以使用下面的按钮发送它们。</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">您的过敏信息将永远不会发送到Open Beauty Facts的服务器。此外，请注意产品数据可能不准确，且检测不为100% a准确，请自行仔细检查！ </string>
     <!-- OBF tagline in different languages -->
-    <string name="version_string">Open Beauty Facts Android App</string>
+    <string name="version_string">Open Beauty Facts Android应用程序</string>
     <string name="tagline">the free cosmetics database</string>
-    <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Beauty Facts. Can you add it?</string>
-    <string name="currently_on_version">Currently on Open Beauty Facts</string>
-    <string name="category_game_btn">Help categorize products</string>
+    <string name="product_not_found">您扫描的产品 %1$s 尚不存在于 Open Beauty Facts中。您要添加它吗？</string>
+    <string name="currently_on_version">Open Beauty Facts的当前状况</string>
+    <string name="category_game_btn">帮助分类产品</string>
     <!-- TODO add true support instead of overriding strings -->
-    <string name="add_nutrient_prompt_text">Add more details to help complete the product</string>
-    <string name="add_category_prompt_text">Add a category to help complete the product</string>
-    <string name="add_nutrient_category_prompt_text">Add a category and more details to help complete the product</string>
+    <string name="add_nutrient_prompt_text">添加更多详细信息以帮助完成产品</string>
+    <string name="add_category_prompt_text">添加类别以帮助完成产品</string>
+    <string name="add_nutrient_category_prompt_text">添加类别以及更多详细信息以完成产品</string>
     <string name="required_to_compute_nutriscore"></string>
-    <string name="txt_eaten_products">Products I have</string>
-    <string name="txt_products_to_buy">Products to buy</string>
-    <string name="intent_filter_share_label">Add to Open Beauty Facts</string>
-    <string name="brand_hint">Examples: Nivea, L\'Oréal, etc…</string>
-    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
-        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
-    <string name="OFFlogo">Open Beauty Facts logo</string>
+    <string name="txt_eaten_products">我的产品</string>
+    <string name="txt_products_to_buy">购买产品</string>
+    <string name="intent_filter_share_label">添加到 Open Beauty Facts</string>
+    <string name="brand_hint">例如：妮维雅，欧莱雅等…</string>
+    <string name="txt_info_eaten_products">您可以通过扫描产品，向上拖动产品卡并点击“要购买的产品”，将产品添加到此列表中。
+        您还可以通过搜索产品并单击产品页面右上角的+按钮，将产品添加到此列表中。</string>
+    <string name="OFFlogo">打开 Open Beauty Facts 标志</string>
 </resources>
