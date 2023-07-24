@@ -2,10 +2,10 @@
 
 - Open Beauty Facts is a cosmetic products database made by everyone, for everyone.
 - You can use it to make better cosmetic choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Beauty Facts is a non-profit project developed by thousands of volunteers from around the world. เรามีโครงการที่น่าตื่นเต้นมากมายที่คุณสามารถมีส่วนร่วมได้หลายวิธี 
+- Open Beauty Facts is a non-profit project developed by thousands of volunteers from around the world. - Open Food Facts เป็นโครงการที่ไม่หวังผลกำไรที่พัฒนาโดยอาสาสมัครหลายพันคนจากทั่วโลก เรามีโครงการที่น่าตื่นเต้นมากมายที่คุณสามารถมีส่วนร่วมได้หลายวิธี เรามีโครงการที่น่าตื่นเต้นมากมายที่คุณสามารถมีส่วนร่วมได้หลายวิธี 
 - You can start contributing today by adding a product from your cosmetic cupboard. 
 
-*** รับข้อมูล ***
+*** Get the Facts ***
 
 - Cosmetics additives, F.I.L. codes, CI-numbers, INCI (International Nomenclature of Cosmetic Ingredients), ingredient list, allergens, packaging codes... 
 - Open Beauty Facts helps you to make sense of the fine print on products labels.
