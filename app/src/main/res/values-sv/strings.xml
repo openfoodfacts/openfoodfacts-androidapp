@@ -16,7 +16,7 @@
   -->
 <resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
-        <item quantity="one">You have 1 offline product waiting to be contributed to Open Food Facts</item>
+        <item quantity="one">Du har 1 offline produkter som väntar på att bidra till till Open Food Facts</item>
         <item quantity="other">You have %d offline products waiting to be contributed to Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
@@ -38,7 +38,7 @@
     <string name="action_about">Om</string>
     <string name="action_discover">Upptäck</string>
     <string name="contribute">Hur man bidrar</string>
-    <string name="action_find">Sök</string>
+    <string name="action_find">Hitta</string>
     <string name="product_incomplete_message">Denna produkt är inte komplett. På grund av detta kunde vi inte göra allergenkontrollen.</string>
     <string name="product_allergen_prompt">Den här produkten innehåller:</string>
     <string name="no_offline_data">Du är klar</string>
@@ -76,65 +76,65 @@
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
     <string-array name="nutrients_array">
-        <item>Alpha-linolenic acid / ALA (18:3 n-3)</item>
-        <item>Arachidic acid (20:0)</item>
-        <item>Arachidonic acid / AA / ARA (20:4 n-6)</item>
-        <item>Behenic acid (22:0)</item>
+        <item>Alfa-linolensyra / ALA (18: 3 n-3)</item>
+        <item>Arakidsyra (20:0)</item>
+        <item>Arakidonsyra / AA / ARA (20:4 n-6)</item>
+        <item>Behensyra (22:0)</item>
         <item>Bikarbonat</item>
         <item>Biotin</item>
-        <item>Butyric acid (4:0)</item>
+        <item>Smörsyra (4:0)</item>
         <item>Koffein</item>
         <item>Kalcium</item>
-        <item>Capric acid (10:0)</item>
-        <item>Caproic acid (6:0)</item>
-        <item>Caprylic acid (8:0)</item>
+        <item>Kaprinsyra (10:0)</item>
+        <item>Kapronsyra (6:0)</item>
+        <item>Kaprylsyra (8:0)</item>
         <item>Kasein</item>
-        <item>Cerotic acid (26:0)</item>
+        <item>Cerotinsyra (26:0)</item>
         <item>Klorid</item>
         <item>Kolesterol</item>
         <item>Krom</item>
         <item>Koppar</item>
-        <item>Dihomo-gamma-linolenic acid / DGLA (20:3 n-6)</item>
-        <item>Docosahexaenoic acid / DHA (22:6 n-3)</item>
-        <item>Eicosapentaenoic acid / EPA (20:5 n-3)</item>
-        <item>Elaidic acid (18:1 n-9)</item>
-        <item>Erucic acid (22:1 n-9)</item>
+        <item>Dihomo-gamma-linolensyra / DGLA (20:3 n-6)</item>
+        <item>Docosahexaensyra / DHA (22:6 n-3)</item>
+        <item>Eikosapentaensyra / EPA (20:5 n-3)</item>
+        <item>Elaidsyra (18:1 n-9)</item>
+        <item>Erucinsyra (22:1 n-9)</item>
         <item>Fluorid</item>
         <item>Fruktos</item>
-        <item>Gamma-linolenic acid / GLA (18:3 n-6)</item>
+        <item>Gamma-linolensyra / GLA (18:3 n-6)</item>
         <item>Glukos</item>
-        <item>Gondoic acid (20:1 n-9)</item>
+        <item>Gondoesyra (20:1 n-9)</item>
         <item>Jod</item>
         <item>Järn</item>
         <item>Laktos</item>
-        <item>Lauric acid (12:0)</item>
-        <item>Lignoceric acid (24:0)</item>
-        <item>Linoleic acid / LA (18:2 n-6)</item>
+        <item>Laurinsyra (12:0)</item>
+        <item>Lignocerinsyra (24:0)</item>
+        <item>Linolsyra / LA (18:2 n-6)</item>
         <item>Magnesium</item>
         <item>Maltodextriner</item>
         <item>Maltos</item>
         <item>Mangan</item>
-        <item>Mead acid (20:3 n-9)</item>
-        <item>Melissic acid (30:0)</item>
+        <item>Mjölsyra (20:3 n-9)</item>
+        <item>Melissinsyra (30:0)</item>
         <item>Molybden</item>
         <item>Enkelomättat fett</item>
-        <item>Montanic acid (28:0)</item>
-        <item>Myristic acid (14:0)</item>
-        <item>Nervonic acid (24:1 n-9)</item>
+        <item>Montansyra (28:0)</item>
+        <item>Myristinsyra (14:0)</item>
+        <item>Nervonsyra (24:1 n-9)</item>
         <item>Nukleotider</item>
-        <item>Oleic acid (18:1 n-9)</item>
-        <item>Omega 3 fatty acids</item>
+        <item>Oljesyra (18:1 n-9)</item>
+        <item>Omega-3 fettsyror</item>
         <item>Omega 6 fettsyror</item>
         <item>Omega 9 fettsyror</item>
         <item>Palmitinsyra (16: 0)</item>
-        <item>Pantothenic acid / Pantothenate (Vitamin B5)</item>
+        <item>Pantotensyra / Pantotenat (vitamin B5)</item>
         <item>pH</item>
         <item>Fosfor</item>
-        <item>Sugar alcohols (Polyols)</item>
+        <item>Sockeralkoholer (polyoler)</item>
         <item>Fleromättat fett</item>
         <item>Kalium</item>
         <item>Selen</item>
-        <item>Serum proteins</item>
+        <item>Serumproteiner</item>
         <item>Kiseldioxid</item>
         <item>Stärkelse</item>
         <item>Stearinsyra (18: 0)</item>
@@ -160,7 +160,7 @@
     <string name="alert_dialog_warning_title">Varning</string>
     <string name="alert_dialog_warning_msg_user">Användarnamn/lösenord har ändrats, var vänlig uppdatera informationen</string>
     <string name="toast_retrieving">Laddar…</string>
-    <string name="txtBarcode">Streckkod :</string>
+    <string name="txtBarcode">Streckkod:</string>
     <string name="txtCategories">Kategorier:</string>
     <string name="txtLabels">Etiketter, certifieringar, utmärkelser :</string>
     <string name="txtEMB">Traceability codes:</string>
@@ -174,7 +174,7 @@
     <string name="txtPalmOilProduct">Ingredienser från palmolja :</string>
     <string name="txtServingSize">Portionsstorlek :</string>
     <string name="txtNutrientLevel100g">Näringsnivåer per 100g :</string>
-    <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
+    <string name="txtNutrientLevel100ml">Näringsvärde per 100 ml:</string>
     <string name="txtNutritionLevelLow">i låg kvantitet</string>
     <string name="txtNutritionLevelModerate">i måttlig mängd</string>
     <string name="txtNutritionLevelHigh">i hög kvantitet</string>
@@ -185,7 +185,7 @@
     <string name="txtFat">Fett</string>
     <string name="txtSugars">Socker</string>
     <string name="hintBarcode">Streckkod</string>
-    <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
+    <string name="txtNutriScoreInfo">Lär dig mer om näringsvärden</string>
     <string name="hintLogin">Användarnamn</string>
     <string name="hintPass">Lösenord</string>
     <string name="errorLogin">Fel användarnamn eller lösenord</string>
@@ -193,7 +193,7 @@
     <string name="uploadLater">Bilden kommer att laddas upp när ett nätverk finns tillgängligt</string>
     <string name="txtInfoLoginOk">Användare sparad</string>
     <string name="txtInfoLoginNo">Användare inte sparad</string>
-    <string name="txtDialogsContent">Den skannade produkten finns inte i Open Food Facts. Vänligen lägg till den.</string>
+    <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
     <string name="txtYes">Ja</string>
     <string name="txtNo">Nej</string>
     <string name="hintBrand">Varumärke</string>
@@ -203,16 +203,16 @@
     <string name="txtLoading">Laddar…</string>
     <string name="txtDialogsContentDelete">Är du säker på att du vill ta bort det här utkastet?</string>
     <string name="txtDialogsContentInfoSave">Produkten är sparad lokalt. Du kan redigera den i menyn ”Redigera offline”</string>
-    <string name="productSavedToast">Product saved, thanks!</string>
+    <string name="productSavedToast">Produkten sparad, tack!</string>
     <string name="txtBarcodeRequire">Streckkod krävs</string>
     <string name="txtOk">OK</string>
     <string name="txtBarcodeNotValid">Streckkoden är inte giltig</string>
-    <string name="msg_share">Titta på denna produkt på Open Food Facts:</string>
+    <string name="msg_share">Titta på denna produkt på Open Food Facts :</string>
     <string name="create_account">Registrera</string>
     <string name="home_drawer">Hem</string>
     <string name="install">Installera</string>
     <string name="open_beauty_drawer">Open Beauty Facts</string>
-    <string name="open_food_drawer">Open Food Facts</string>
+    <string name="open_food_drawer">Öppna Produktfakta</string>
     <string name="search_drawer">Sök</string>
     <string name="search_by_barcode_drawer">Sök med streckkod</string>
     <string name="category_drawer">Kategorier</string>
@@ -226,17 +226,17 @@
     <string name="alert_drawer">Allergenvarning</string>
     <string name="your_lists">Dina listor</string>
     <string name="title_dialog_alert">Lägg till varning</string>
-    <string name="select_camera">Välj en kamera</string>
+    <string name="select_camera">Select a Camera</string>
     <string name="ok_button">OK</string>
     <string name="cancel_button">Annulera</string>
     <string name="login_button">Användarnamn</string>
     <string name="create_account_button">Skapa Konto</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
     <string name="title_info_dialog">Hur funkar det?</string>
-    <string name="text_offline_info_dialog">Du kan skanna produkter när du är offline för att lägga till dem i Open Food Facts senare. Alla produkter du skannar kommer att visas här, och du kan skicka dem med knappen nedan.</string>
+    <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
     <string name="permission_camera">Appen behöver tillstånd att använda kameran för att skanna streckkoder och ta bilder.</string>
     <string name="no_camera_dialog_title">Kameran hittades inte</string>
-    <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
+    <string name="no_camera_dialog_content">Enheten har ingen kamera. Du kommer inte att kunna skanna någon streckkod.</string>
     <string name="permission_title">Behörighetsinformation</string>
     <string name="permission_denied">Vänligen lägg till behörighet i inställningarna</string>
     <string name="info_download_data_connection">Du måste ladda ner lite data för att få denna funktion att fungera. Vänligen anslut till internet.</string>
@@ -252,17 +252,17 @@
     <string name="prefs_language">Spåk</string>
     <string name="prefs_language_summary">Byt språk</string>
     <!-- Strings related to feedback dialog -->
-    <string name="user_enjoying_app">Are you enjoying your experience with Open Food Facts?</string>
-    <string name="user_ask_show_feedback_form">We\'re sorry to hear that! Could you tell us what happened?</string>
-    <string name="user_ask_rate_app">Great! Let others know what you think of this app!</string>
-    <string name="rate_app">Rate app</string>
+    <string name="user_enjoying_app">Tycker du om Open Food Facts?</string>
+    <string name="user_ask_show_feedback_form">Vi är ledsna att höra det! Kan du berätta mer?</string>
+    <string name="user_ask_rate_app">Bra! Låt andra veta vad du tycker om den här appen!</string>
+    <string name="rate_app">Betygsätt app</string>
     <string name="no_thx">Nej tack</string>
     <string name="feedback_form_url">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">Historik</string>
     <string name="clear_history">Rensa historik</string>
     <string name="title_clear_history_dialog">Rensa</string>
-    <string name="text_clear_history_dialog">Do you want to clear all your scan history?</string>
+    <string name="text_clear_history_dialog">Vill du rensa all din skanningshistorik?</string>
     <string name="export_csv_history">Exportera CSV</string>
     <string name="txt_exporting_history">Exporterar historik…</string>
     <string name="txt_history_exported">Historik exporterad</string>
@@ -273,9 +273,9 @@
     <string name="display_fact">Nutrition facts table for %1$s of this product</string>
     <string name="check_facts">Kontrollera</string>
     <string name="nutrition">Näring</string>
-    <string name="calculated_nutrition">Calculated Nutrition</string>
-    <string name="please_enter_weight">Please type the product weight</string>
-    <string name="enter_weight">Type the product weight</string>
+    <string name="calculated_nutrition">Beräknad näring</string>
+    <string name="please_enter_weight">Vänligen skriv in produktens vikt</string>
+    <string name="enter_weight">Skriv produktens vikt</string>
     <string name="calculate_nutrition_facts">Calculate Nutrition Facts</string>
     <string name="nutrition_carbohydrate">Kolhydrat</string>
     <string name="nutrition_cholesterol">Kolesterol</string>
@@ -303,21 +303,21 @@
     <string name="contribution_without_account">Du kan logga in eller skapa ett konto för att behålla dina bidrag</string>
     <string name="textCarbonFootprint">Koldioxidutsläpp: </string>
     <string name="action_search">Sök</string>
-    <string name="search_hint">Sök en produkt</string>
+    <string name="search_hint">Sök efter en produkt</string>
     <string name="number_of_results">Antal resultat: </string>
     <string name="number_of_products">Antal produkter: </string>
-    <string name="txt_no_matching__category_products">Oh no, we don’t have any product in this category, can you add one?</string>
-    <string name="txt_no_matching_allergen_products">Oh no, we don’t have any products with this allergen, can you add one?</string>
-    <string name="txt_no_matching_label_products">Oh no, we don’t have any products with this label, can you add one?</string>
-    <string name="txt_no_matching_additive_products">Oh no, we don’t have any products with this additive, can you add one?</string>
-    <string name="txt_no_matching_country_products">Oh no, we don’t have any products from this country, can you add one?</string>
-    <string name="txt_no_matching_store_products">Oh no, we don’t have any products from this store, can you add one?</string>
-    <string name="txt_no_matching_packaging_products">Oh no, we don’t have any products with this packaging, can you add one?</string>
-    <string name="txt_no_matching_brand_products">Oh no, we don’t have any products with this brand, can you add one?</string>
-    <string name="txt_no_matching_incomplete_products">We don’t have any incomplete products! Add a new product?</string>
-    <string name="txt_no_matching_contributor_products">Oh no, we don’t have any products from this contributor, can you add one?</string>
+    <string name="txt_no_matching__category_products">Åh nej, vi har ingen produkt i den här kategorin, kan du lägga till en?</string>
+    <string name="txt_no_matching_allergen_products">Åh nej, vi har inga produkter med denna allergen, kan du lägga till en?</string>
+    <string name="txt_no_matching_label_products">Åh nej, vi har ingen produkt med denna etikett, kan du lägga till en?</string>
+    <string name="txt_no_matching_additive_products">Åh nej, vi har ingen produkt med denna tillsats, kan du lägga till en?</string>
+    <string name="txt_no_matching_country_products">Åh nej, vi har ingen produkt med detta land, kan du lägga till en?</string>
+    <string name="txt_no_matching_store_products">Åh nej, vi har inga produkter från den här butiken, kan du lägga till en?</string>
+    <string name="txt_no_matching_packaging_products">Å nej, vi har inga produkter med denna förpackningstyp, kan du lägga till en?</string>
+    <string name="txt_no_matching_brand_products">Åh nej, vi har inga produkter med detta märke, kan du lägga till en?</string>
+    <string name="txt_no_matching_incomplete_products">Vi har inga ofullständiga produkter! Lägg till en ny produkt?</string>
+    <string name="txt_no_matching_contributor_products">Å nej, vi har inga produkter från den här bidragsgivaren, kan du lägga till en?</string>
     <string name="txt_no_matching_products">Vi har inte hittat några matchande produkter.\nDu kan pröva:</string>
-    <string name="txt_broaden_search">- att bredda din sökning \n- att skanna och lägga till den i Open Food Facts</string>
+    <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
     <string name="something_went_wrong">Förlåt, något gick fel…</string>
     <string name="txt_try_again">Försök igen</string>
     <string name="nutrition_lactose">Laktos</string>
@@ -384,11 +384,11 @@
     <string name="take_more_pictures">Ta fler bilder</string>
     <string name="txtSaturatedFat">Mättat fett</string>
     <string name="nutriscore_info_msg">Läs mer om Nutri-Score</string>
-    <string name="nova_info_msg">Learn more about NOVA groups</string>
-    <string name="nova_grp1_msg">Group 1 - Unprocessed or minimally processed foods</string>
-    <string name="nova_grp2_msg">Group 2 - Processed culinary ingredients</string>
-    <string name="nova_grp3_msg">Group 3 - Processed foods</string>
-    <string name="nova_grp4_msg">Group 4 - Ultra-processed food and drink products</string>
+    <string name="nova_info_msg">Läs mer om NOVA-grupper</string>
+    <string name="nova_grp1_msg">Grupp 1 - Obearbetade eller minimalt bearbetade livsmedel</string>
+    <string name="nova_grp2_msg">Grupp 2 - Bearbetade kulinariska ingredienser</string>
+    <string name="nova_grp3_msg">Grupp 3 - Bearbetade livsmedel</string>
+    <string name="nova_grp4_msg">Grupp 4 - Ultrabehandlade mat- och dryckesprodukter</string>
     <!-- String related to App Shortcuts -->
     <string name="disabled_message">Genvägen är inte tillgänglig</string>
     <string name="scan_shortcut_short_label">Skanna</string>
@@ -398,7 +398,7 @@
     <string name="history_shortcut_short_label">Historik</string>
     <string name="history_shortcut_long_label">Historik</string>
     <string name="contributions_shortcut_short_label">Bidrag</string>
-    <string name="contributions_shortcut_long_label">My contributions</string>
+    <string name="contributions_shortcut_long_label">Mina bidrag</string>
     <string name="forgot_password">Glömt lösenord</string>
     <string name="next">NÄSTA</string>
     <string name="skip">HOPPA ÖVER</string>
@@ -435,7 +435,7 @@
     <string name="connectivity_check">Vänligen kontrollera din internetanslutning</string>
     <string name="dismiss">Avfärda</string>
     <string name="Terms">Villkor</string>
-    <string name="TermsOfUse">Terms and Privacy</string>
+    <string name="TermsOfUse">Villkor och sekretess</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <!--Just replace "world" by "fr", "de"… translate the "terms-of-use" with the hyphens -->
     <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
@@ -464,7 +464,7 @@
     <string name="pref_resolution_summary">Välj en upplösning för bilduppladdning</string>
     <string name="image_upload_resolution">Upplösning för bilduppladdning</string>
     <string name="wikidata_information">Går längre</string>
-    <string name="wikidata_unavailable">There is no Wikipedia page in your language yet.</string>
+    <string name="wikidata_unavailable">Det finns ingen Wikipedia-sida på ditt språk än.</string>
     <string name="Wikipedia">Visa på Wikipedia</string>
     <string name="Browse_Products">Bläddra produkter</string>
     <string name="brand_string">Varumärke</string>
@@ -530,7 +530,7 @@
     <string name="offline_product_addition_title">Lägg till en ny produkt</string>
     <string name="productNameNull">Namn okänt</string>
     <string name="productAdditivesUnknown"></string>
-    <string name="productAdditivesTemplate">%1$d additives</string>
+    <string name="productAdditivesTemplate">%1$d tillsatser</string>
     <plurals name="productAdditives">
         <item quantity="one">%d additive</item>
         <item quantity="other">%d additives</item>
@@ -540,28 +540,28 @@
     <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
     <string name="scan_sound">Skanningsljud</string>
     <string name="trouble_scanning">Problem med skanning?</string>
-    <string name="barcode_hint">Problem med skanning? Ange streckkod</string>
+    <string name="barcode_hint">Problem att Scanna? Ange Streck-kod</string>
     <string name="switch_camera">Byt kamera</string>
     <string name="autofocus">Autofokus</string>
     <string name="initial_loading">Inledande laddning</string>
     <string name="preferences">Inställningar</string>
     <string name="OFFlogo">Open Food Facts logotyp</string>
-    <string name="loading_product">Loading product %s</string>
+    <string name="loading_product">Laddar produkt %s</string>
     <string name="image_not_defined_for_language">Ingen bild för valt språk. Du kan lägga till en ny</string>
-    <string name="error_adding_ingredients">Something went wrong while trying to add product ingredients</string>
-    <string name="unable_to_extract_ingredients">Unable to extract ingredients from image</string>
-    <string name="error_adding_nutrition_facts">Something went wrong while trying to add product nutrition facts</string>
-    <string name="error_in_carbohydrate_value">Carbohydrates can\'t be less than the sum of sugar and starch</string>
+    <string name="error_adding_ingredients">Något gick fel när vi försökte lägga till produktingredienser</string>
+    <string name="unable_to_extract_ingredients">Det gick inte att utläsa ingredienser från bilden</string>
+    <string name="error_adding_nutrition_facts">Något gick fel när du försökte lägga till fakta om produktnäring</string>
+    <string name="error_in_carbohydrate_value">Kolhydrater kan inte vara mindre än summan av socker och stärkelse</string>
     <string name="choose_nutrient">Välj ett näringsämne</string>
-    <string name="error_adding_product_details">Something went wrong while trying to add product details</string>
-    <string name="hint_product_URL">Link of the official page of the product</string>
+    <string name="error_adding_product_details">Något gick fel när vi försökte lägga till produktinformation</string>
+    <string name="hint_product_URL">Länk till produktens officiella sida</string>
     <string name="product_language">Produktspråk: </string>
     <string name="hint_emb_codes">Exempel: EMB 53062, FR 62.448.034 CE, 84R20, 33 RECOLTANT 522, FSSL 10013011001409</string>
     <string name="official_website">Officiell hemsida</string>
-    <string name="scan_QR_code">Scan QR Code for product website</string>
-    <string name="add_at_least_one_picture">Please add at least one picture of this product before proceeding</string>
+    <string name="scan_QR_code">Skanna QR-kod för produktwebbplatsen</string>
+    <string name="add_at_least_one_picture">Lägg till minst en bild av den här produkten innan du fortsätter</string>
     <string name="image_uploaded_successfully">Bilden har laddats upp</string>
-    <string name="error_adding_product_photos">Something went wrong while trying to add product photos</string>
+    <string name="error_adding_product_photos">Något gick fel när vi försökte lägga till produktfoton</string>
     <string name="ingredients_overwrite">Ingredients overwrite</string>
     <string name="choose_mine">Välj min</string>
     <string name="keep_previous_version">Behåll föregående version</string>
@@ -571,40 +571,40 @@
     <string name="quantity_overwrite">Quantity overwrite</string>
     <string name="link_overwrite">Link overwrite</string>
     <string name="save_product">Vill du spara produkten?</string>
-    <string name="error_adding_product">Something went wrong when adding the product</string>
+    <string name="error_adding_product">Något gick fel när du lade till produkten</string>
     <string name="photos">Foton</string>
     <string name="please_wait">Vänta</string>
-    <string name="product_uploaded_successfully">Product uploaded successfully</string>
-    <string name="no_internet_connection">You appear to have no internet connection, images will be uploaded when network is available</string>
-    <string name="no_internet_unable_to_extract_ingredients">No internet connection. Unable to extract ingredients</string>
+    <string name="product_uploaded_successfully">Produkten har laddats upp</string>
+    <string name="no_internet_connection">Du verkar inte ha någon internetanslutning, bilder kommer att laddas upp när nätverket är tillgängligt</string>
+    <string name="no_internet_unable_to_extract_ingredients">Ingen internetanslutning. Kan inte extrahera ingredienser</string>
     <string name="percent">%1$d%%</string>
     <string name="overview">Sammanfattning</string>
     <string name="ingredients">Ingredienser</string>
     <string name="nutrition_facts">Näringsfakta</string>
     <string name="your_version">Din</string>
-    <string name="ingredients_picture">Ingredients Picture</string>
+    <string name="ingredients_picture">Bild på ingrediensinformation</string>
     <string name="take_ingredients_picture_to_extract">(Please take a picture of the ingredients to automatically extract them)</string>
     <string name="ingredients_list">Ingredienslista</string>
-    <string name="ingredients_hint">Keep the order, indicate the % when specified, separate with a comma or use -, use () for ingredients of an ingredient, surround allergens with _</string>
+    <string name="ingredients_hint">Behåll ordningen, ange % när det anges, separera med ett kommatecken eller använd -, använd () för ingredienser i en ingrediens, omge allergener med _</string>
     <string name="extract_ingredients">Extrahera ingredienser</string>
     <string name="extracting_ingredients">Utvinner ingredienser</string>
     <string name="looksGood">Ser bra ut</string>
-    <string name="skip_ingredients">Too Bad \n Skip Ingredients</string>
+    <string name="skip_ingredients">Synd \n Hoppa över ingredienserna</string>
     <string name="traces">Spår</string>
-    <string name="traces_hint">Indicate ingredients from mentions like \'May contain traces of\', \'Made in a factory that also uses\', etc. \nExamples: Milk, Gluten, Nuts</string>
+    <string name="traces_hint">Ange ingredienser från texter som \"Kan innehålla spår av\", \"Tillverkad i en fabrik som också använder\", etc. \nExempel: Mjölk, Gluten, Nötter</string>
     <string name="nutrition_facts_not_specified">Näringsfakta anges inte på produkten.</string>
-    <string name="nutrition_facts_picture">Nutrition Facts photo</string>
+    <string name="nutrition_facts_picture">Näringsfakta foto</string>
     <string name="front_short_picture">Främre</string>
-    <string name="other_picture">Annan bild</string>
+    <string name="other_picture">Annat Foto</string>
     <string name="for_100g_100ml">För 100g / 100ml</string>
     <string name="per_serving">Per portion</string>
     <string name="serving_size">Portionsstorlek</string>
     <string name="alcohol_unit" formatted="false">% vol / °</string>
     <string name="add_a_nutrient">Lägg till ett näringsämne</string>
-    <string name="add_this_product">Add this product</string>
+    <string name="add_this_product">Lägg till den här produkten</string>
     <string name="product_picture">Produktbild</string>
-    <string name="one_photo_compulsory">(one photo is compulsory to add a new product)</string>
-    <string name="product_details">Product Details</string>
+    <string name="one_photo_compulsory">(ett foto är obligatoriskt för att lägga till en ny produkt)</string>
+    <string name="product_details">Produktdetaljer</string>
     <string name="product_name">Produktnamn</string>
     <string name="quantity">Kvantitet</string>
     <string name="labels">Etiketter</string>
@@ -612,33 +612,33 @@
     <string name="manufacturing_details">Tillverkningsdetaljer</string>
     <string name="origin_of_ingredients">Ingredients ursprung</string>
     <string name="manufacturing_place">Tillverkningsplats</string>
-    <string name="emb_code">Traceability Code</string>
+    <string name="emb_code">Spårbarhetskod</string>
     <string name="purchasing_details">Inköpsdetaljer</string>
     <string name="country_where_purchased">Country where purchased</string>
     <string name="stores">Butiker</string>
     <string name="additional_pictures">Ytterligare bilder</string>
-    <string name="hint_product_pictures">(Add more pictures of the product. eg: recycling instructions, labels etc.)</string>
+    <string name="hint_product_pictures">(Lägg till fler bilder på produkten. T.ex. återvinningsanvisningar, etiketter etc.)</string>
     <string name="uploading_image">Ladda upp foto</string>
     <string name="uploading_nutrition_image">Uploading nutrition facts image</string>
     <string name="uploading_ingredients_image">Uploading ingredients image</string>
     <string name="uploading_front_image">Uploading front image</string>
-    <string name="edit_front_image">Edit the front photo</string>
-    <string name="edit_nutrition_image">Edit the nutrition photo</string>
-    <string name="edit_ingredients_image">Edit the ingredients photo</string>
+    <string name="edit_front_image">Redigera bilden av framsidan</string>
+    <string name="edit_nutrition_image">Redigera fotot på näringsinformationen</string>
+    <string name="edit_ingredients_image">Redigera fotot på ingredienslistan</string>
     <string name="edit_other_image">Redigera fotot</string>
     <string name="sign_in_to_edit">Logga in för att redigera en produkt.</string>
-    <string name="sign_in_to_answer">Please sign in or register to answer an insight.</string>
-    <string name="hint_quantity">Examples: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
+    <string name="sign_in_to_answer">Logga in eller registrera dig för att svara på insikter.</string>
+    <string name="hint_quantity">Exempel: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pund</string>
     <string name="edit_product_title">Redigera en produkt</string>
     <string name="nutrient_already_added">%s is already present in the nutrition facts</string>
     <string name="save_edits">Spara ändringar</string>
     <string name="contribution_by">Bidrag från</string>
     <string name="title_activity_product">Titel</string>
     <string name="description_activity_product">beskrivning</string>
-    <string name="intent_filter_share_label">Add to Open Food Facts</string>
+    <string name="intent_filter_share_label">Lägg till i Open Food Facts</string>
     <!-- Used for additive exposure evaluation table -->
-    <string name="overexposure_high">High risk of over exposure</string>
-    <string name="overexposure_moderate">Moderate risk of over exposure</string>
+    <string name="overexposure_high">Hög risk för överexponering</string>
+    <string name="overexposure_moderate">Måttlig risk för överexponering</string>
     <string name="infants">Spädbarn</string>
     <string name="infants_age">&lt; 1</string>
     <string name="toddlers">Småbarn</string>
@@ -653,20 +653,20 @@
     <string name="elderly_age">65+</string>
     <string name="most_people">De flesta\n(över 50%)</string>
     <string name="some_people">Vissa människor\n(över 5%)</string>
-    <string name="safety_and_exposure_assessment">Safety and exposure assessment</string>
-    <string name="risk_of_exposure">Risk of exposure</string>
+    <string name="safety_and_exposure_assessment">Bedömning av säkerhet och exponering</string>
+    <string name="risk_of_exposure">Risk för exponering</string>
     <string name="efsa_warning_high_risk">The European Food Safety Authority (EFSA) has determined that some population groups have a high risk of consuming too much %1$s.</string>
-    <string name="legend_noael">above dose with observed adverse effect (NOAEL)</string>
-    <string name="legend_adi">above Acceptable Daily Intake (ADI)</string>
-    <string name="max_energy_val_msg">This value is above 2000 kcal per 100g. Can you correct it ?</string>
-    <string name="max_nutrient_val_msg">Value entered is more than given per serving size</string>
-    <string name="update_image">Send an Updated Image</string>
+    <string name="legend_noael">över dosen med observerad negativ effekt (NOAEL)</string>
+    <string name="legend_adi">över Acceptabelt Dagligt Intag (ADI)</string>
+    <string name="max_energy_val_msg">Detta värde är över 2000 kcal per 100 g. Kan du korrigera det?</string>
+    <string name="max_nutrient_val_msg">Det angivna värdet är mer än angivet per portion</string>
+    <string name="update_image">Skicka en uppdaterad bild</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">Extrahera ingredienser</string>
     <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
-    <string name="add_category_prompt_text">Add a category to compute the Nutri-Score</string>
-    <string name="add_nutrient_category_prompt_text">Add nutrition facts and a category to compute the Nutri-Score</string>
-    <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
+    <string name="add_category_prompt_text">Lägg till en kategori för att komplettera produkten</string>
+    <string name="add_nutrient_category_prompt_text">Lägg till en kategori och näringsfakta för att komplettera produkten</string>
+    <string name="category_game_btn">Hjälp kategorisera produkter</string>
     <string name="version_string">Open Food Facts Android App</string>
     <string name="version">Version</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
@@ -674,34 +674,34 @@
     <string name="set_img_front">Set as front image</string>
     <string name="report_img">Rapportera bild</string>
     <string name="detected_ingredients">Upptäckta ingredienser</string>
-    <string name="txtConnectionError">We could not download certain data. This may be due to a connection error.</string>
-    <string name="set_image_name">Successfully set the image as</string>
+    <string name="txtConnectionError">Vi kunde inte ladda ner viss data. Detta kan bero på ett anslutningsfel.</string>
+    <string name="set_image_name">Framgångsrikt angivit bilden som</string>
     <string name="fast_addition_mode_title">Fast Addition Mode</string>
     <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
     <string name="crop_new_image_title">Beskär nya bilder</string>
     <string name="crop_new_image">Enables crop action on new images</string>
-    <string name="addtive_search">Search for a additive</string>
+    <string name="addtive_search">Sök efter en tillsats</string>
     <string name="additives">Tillsatser</string>
     <!--used for product_lists implementation-->
-    <string name="add_to_product_lists">Lägg till i dina listor</string>
-    <string name="txt_create_new_list">Skapa en ny lista</string>
-    <string name="txt_add_to_new_list">Lägg till en ny lista</string>
-    <string name="create_new_list_list_name">Lista Namn</string>
-    <string name="txt_eaten_products">Ätit produkter</string>
+    <string name="add_to_product_lists">Add to your lists</string>
+    <string name="txt_create_new_list">Create a new list</string>
+    <string name="txt_add_to_new_list">Add to a new list</string>
+    <string name="create_new_list_list_name">List Name</string>
+    <string name="txt_eaten_products">Eaten products</string>
     <string name="txt_products_to_buy">Produkter att köpa</string>
     <string name="txt_exporting_your_listed_products">Exportera dina produkter…</string>
     <string name="txt_your_listed_products_exported">Dina produkter har exporterats</string>
     <string name="txt_discard">Kasta</string>
-    <string name="txt_info_eaten_products">\"You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"I\'m eating this\".
-        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.\"</string>
-    <string name="txt_info_your_listed_products">You\'ll be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
+    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
+        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
+    <string name="txt_info_your_listed_products">Du kan lägga till produkter i listan genom att söka i dem och klicka på + -knappen längst upp till höger på produktsidan.</string>
     <string name="search_history_pref_title">Delete local search history</string>
     <string name="search_history_pref_summary">Remove all the searches that you performed on this device</string>
     <string name="search_history_pref_dialog_content">Delete local search history?</string>
     <string name="settings_country_dialog_title">Välj ditt land</string>
     <string name="settings_country_summary">Change your selected country</string>
     <string name="settings_country_title">Land</string>
-    <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
+    <string name="txt_no_nutrition_data">Denna produkt har ingen näringsinformation på förpackningen. Om detta har ändrats kan du redigera produkten.</string>
     <string name="image_prompt_language">Take a photo of the ingredients in</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
@@ -709,23 +709,23 @@
     <string name="add_another_product">Lägg till en annan produkt</string>
     <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
     <string name="product_summary_action_compare_button_label">Jämföra</string>
-    <string name="product_summary_action_add_to_list_button_label">Add to list</string>
+    <string name="product_summary_action_add_to_list_button_label">Lägg till i lista</string>
     <string name="product_summary_action_edit_button_label">Redigera</string>
     <string name="product_summary_action_share_button_label">Dela</string>
-    <string name="product_question_prompt">Tap here to answer</string>
+    <string name="product_question_prompt">Klicka här för att svara</string>
     <string name="product_question_positive_response">Ja</string>
     <string name="product_question_negative_response">Nej</string>
     <string name="product_question_ambiguous_response">Inte säker</string>
-    <string name="product_question_submit_message">Thank you for your contribution!</string>
-    <string name="error_nutrient_entry">The value should be numeric. Example: &quot;1.5&quot;, &quot;2,0&quot;</string>
-    <string name="error_nutrient_serving_data">The serving size value must be a positive value</string>
-    <string name="error_in_nutrient_data">Some nutrient values are not valid. Please, fix above fields with error marker</string>
+    <string name="product_question_submit_message">Tack för ditt bidrag!</string>
+    <string name="error_nutrient_entry">Värdet ska vara numeriskt. Exempel: &quot;1,5&quot;, &quot;2,0&quot;</string>
+    <string name="error_nutrient_serving_data">Serveringsstorleksvärdet måste vara ett positivt värde</string>
+    <string name="error_in_nutrient_data">Vissa näringsvärden är inte giltiga. Vänligen fixa ovanstående fält med felmeddelanden</string>
     <string name="go_to_full_product_page">Gå till produkt</string>
-    <string name="no_additive_data_available_for_this_product">No additive data available for this product</string>
-    <string name="no_nutrient_information_available_for_this_product">No nutrient information available for this product</string>
-    <string name="error_duplicate_listname">You already have a list with this name</string>
-    <string name="required_to_compute_nutriscore">(Required to calculate the Nutri-Score)</string>
-    <string name="scan_tooltip">You can slide up the card for more details</string>
+    <string name="no_additive_data_available_for_this_product">Inga tillsatsdata tillgängliga för denna produkt</string>
+    <string name="no_nutrient_information_available_for_this_product">Ingen näringsinformation tillgänglig för denna produkt</string>
+    <string name="error_duplicate_listname">Du har redan en lista med det namnet</string>
+    <string name="required_to_compute_nutriscore">(Krävs för att beräkna Nutri-Score)</string>
+    <string name="scan_tooltip">Du kan dra upp kortet för mer information</string>
     <string name="add_an_allergen">Lägg till ett allergen</string>
     <string name="add_a_list">Lägg till en lista</string>
     <string name="edit_image">Redigera bild</string>
@@ -735,19 +735,19 @@
     <string name="barcode">Streckkod</string>
     <string name="productAdditivesNone">Inga tillsatser</string>
     <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
-    <string name="import_csv_to_list">Import an Open Food Facts list CSV file</string>
-    <string name="toast_import_csv_error">Error in importing CSV file</string>
-    <string name="toast_import_csv">CSV imported successfully!</string>
+    <string name="import_csv_to_list">Importera en CSV-fil med Open Food Facts-lista</string>
+    <string name="toast_import_csv_error">Fel vid import av CSV-fil</string>
+    <string name="toast_import_csv">CSV importerades framgångsrikt!</string>
     <string name="open_csv">Open CSV</string>
     <!-- Used for diets AddOn -->
     <string name="history_network_error">The product couldn\'t be loaded. Please try again when you are back online.</string>
-    <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
-    <string name="closeZoom">Click to close zoom</string>
+    <string name="cant_modify_if_refreshing">Vänta tills uppladdningen är klar</string>
+    <string name="closeZoom">Klicka för att stänga zoom</string>
     <string name="imageFullscreen">Zoom</string>
     <!-- Used for product ingredients analysis tags -->
     <string name="close_button">Stäng</string>
     <string name="tip_message">TIP: %1$s </string>
-    <string name="ingredient_analysis_tip">Click on the icons below to learn more about the product and to select what information you are interested in.</string>
+    <string name="ingredient_analysis_tip">Klicka på ikonerna nedan för att lära dig mer om produkten och välja vilken information du är intresserad av.</string>
     <string name="got_it">Jag förstår!</string>
     <string name="onboarding_hint_msg">Hint: %s </string>
     <string name="ingredient_image_edit_tip">Tap on the image to zoom it, change it, crop it, rotate it and more…</string>
@@ -755,46 +755,46 @@
     <string name="ingredients_in_this_product">Ingredients in this product that are %1$s:</string>
     <string name="display_analysis_tag_status">Display %1$s status</string>
     <string name="preference_header_display">Display</string>
-    <string name="unknown_status_no_translation">We couldn\'t assess the status of the product due to unrecognized ingredients.</string>
+    <string name="unknown_status_no_translation">Vi kunde inte bedöma produktens status på grund av okända ingredienser.</string>
     <string name="help_translate_ingredients">Hjälp till att översätta ingredienserna på ditt språk</string>
-    <string name="unknown_status_missing_ingredients">We couldn\'t assess the status of the product due to missing ingredients.</string>
+    <string name="unknown_status_missing_ingredients">Vi kunde inte bedöma produktens status på grund av saknade ingredienser.</string>
     <string name="unknown_status_ambiguous_ingredients">We couldn\'t assess the status of the product because of ambiguous ingredients : <![CDATA[<b>%1$s</b>]]></string>
     <string name="help_extract_ingredients">Help extract the ingredients to get the %1$s status</string>
-    <string name="add_photo_to_extract_ingredients">Add a photo to begin extracting ingredients</string>
-    <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
+    <string name="add_photo_to_extract_ingredients">Lägg till ett foto för att börja utläsa ingredienser</string>
+    <string name="product_already_exists_in_comparison">Produkten finns redan i jämförelselistan</string>
     <string name="compare_brands">Varumärken :</string>
     <string name="compare_additives">Tillsatser :</string>
     <string name="compare_salt">Salt</string>
     <string name="compare_sugars">Socker</string>
     <string name="compare_saturated_fat">Mättat fett</string>
     <string name="compare_fat">Fett</string>
-    <string name="compare_quantity">Quantity :</string>
+    <string name="compare_quantity">Kvantitet :</string>
     <string name="load_ingredient_detection_data">Ladda ingrediensdetekteringsdata</string>
     <string name="load_ingredient_detection_data_summary">Inga detektionsdata av ingrediens har hittats, försök ladda den från servern</string>
-    <string name="white_check_image_descr">A white check</string>
+    <string name="white_check_image_descr">En vit bock</string>
     <string name="hint_packaging">Exempel: plast, papper, glas</string>
-    <string name="risk_alcohol_consumption">Excessive consumption of alcohol is harmful to health, to be consumed in moderation</string>
+    <string name="risk_alcohol_consumption">Överdriven konsumtion av alkohol är skadlig för hälsan, ska konsumeras med måtta</string>
     <!--ShowcaseView Strings-->
-    <string name="title_image_type">Select Image Type</string>
-    <string name="content_image_type">Choose the photo to work on</string>
-    <string name="title_choose_language">Select Language</string>
-    <string name="content_choose_language">Select the language of the photo</string>
+    <string name="title_image_type">Välj bildtyp</string>
+    <string name="content_image_type">Välj det foto du vill arbeta med</string>
+    <string name="title_choose_language">Välj språk</string>
+    <string name="content_choose_language">Välj språket för fotot</string>
     <string name="title_add_photo">Lägg till foto</string>
-    <string name="content_add_photo">Press here to take a new photo</string>
+    <string name="content_add_photo">Tryck här för att ta ett nytt foto</string>
     <string name="title_choose_photo">Välj foto</string>
     <string name="content_choose_photo">Välj bland befintliga foton</string>
     <string name="title_edit_photo">Redigera foto</string>
-    <string name="content_edit_photo">Edit, crop and rotate the photo</string>
-    <string name="title_unselect_photo">Unselect Photo</string>
-    <string name="content_unselect_photo">Press here to unselect current photo</string>
+    <string name="content_edit_photo">Redigera, beskära och rotera fotot</string>
+    <string name="title_unselect_photo">Avmarkera foto</string>
+    <string name="content_unselect_photo">Tryck här för att avmarkera aktuell bild</string>
     <string name="title_exit">Avsluta</string>
-    <string name="content_exit">Press here to return to the product</string>
-    <string name="icon_label">Labels icon</string>
-    <string name="icon_categories">Categories icon</string>
+    <string name="content_exit">Tryck här för att återgå till produkten</string>
+    <string name="icon_label">Etikett-ikon</string>
+    <string name="icon_categories">Kategori-ikon</string>
     <string name="icon_emb">Traceability code icon</string>
-    <string name="product_front_image">Product front image</string>
+    <string name="product_front_image">Produktens framsidebild</string>
     <string name="brand_hint">Exempel: Coca-Cola, Nestle, etc…</string>
-    <string name="sign_in_or_register">Sign in or register</string>
+    <string name="sign_in_or_register">Logga in eller registrera dig</string>
     <string name="hunger_game_call_to_action">Help classify more %1$s</string>
-    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s food products (plus the ones you will contribute).</string>
+    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s products (plus the ones you will contribute).</string>
 </resources>
