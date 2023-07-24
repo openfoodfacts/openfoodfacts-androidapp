@@ -10,27 +10,27 @@
     <string name="website_product">https://world-cs.openfoodfacts.org/product/</string>
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
     <string name="website_contributor">https://world-cs.openfoodfacts.org/contributor/</string>
-    <string name="txtHome">Open Food Facts je otevřená databáze potravinářských produktů s přísadami, alergeny, nutričními fakty a všemi informacemi, které můžeme nalézt na etiketách produktů.</string>
-    <string name="slide_1_title">Přispěte k transparenci potravin</string>
-    <string name="slide_1_desc">Nasnímejte zboží, vyfoťte ho, zajistěte transparentnost potravin</string>
-    <string name="slide_2_title">Get the facts</string>
-    <string name="slide_2_desc">Extensive information about the product you\'ve scanned, deciphered for you</string>
-    <string name="slide_3_title">Získejte Nutriční skóre</string>
-    <string name="slide_3_desc">A synthetic view of the nutritional properties of your favorite food products</string>
+    <string name="txtHome">Open Food Facts je otevřená databáze potravin.</string>
+    <string name="slide_1_title">Přispějte k transparentnosti potravin</string>
+    <string name="slide_1_desc">Naskenujte zboží, vyfoťte ho, zlepšete transparentnost potravin</string>
+    <string name="slide_2_title">Získejte fakta</string>
+    <string name="slide_2_desc">Rozsáhlé informace o produktu, který jste naskenovali, pro vás dešifrovali</string>
+    <string name="slide_3_title">Zjistěte Nutri-Score</string>
+    <string name="slide_3_desc">Syntetický pohled na nutriční vlastnosti vašich oblíbených potravinářských produktů</string>
     <string name="slide_4_title">Pracuje offline</string>
-    <string name="slide_4_desc">Můžete přidat nové produkty, i když současně nemáte připojení k internetu</string>
-    <string name="txtDialogsContent">Produkt, který jste naskenovali, ještě neexistuje v databázi Open Food Facts. Přidejte jej prosím.</string>
-    <string name="txtDialogsContentPowerMode">Produkt, který jste naskenovali, již existuje v databázi Open Food Facts.</string>
+    <string name="slide_4_desc">Můžete přidávat nové produkty, i když právě nemáte připojení k internetu</string>
+    <string name="txtDialogsContent">Produkt, který jste naskenovali, v databázi Open Food Facts neexistuje. Přidejte jej prosím.</string>
+    <string name="txtDialogsContentPowerMode">Výrobek, který jste naskenovali, už je v databázi Open Food Facts.</string>
     <string name="msg_share">Podívejte se na tento produkt v Open Food Facts :</string>
-    <string name="not_support_books">Knihy nejsou aktuálně podporovány Open Food Facts</string>
-    <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
-    <string name="Donation">Kliknutím sem podpoříte Open Food Facts</string>
+    <string name="not_support_books">Knihy zatím nejsou databází Open Food Facts podporovány</string>
+    <string name="txt_broaden_search">- rozšíření vyhledávání \n- naskenujte a přidejte jej do Open Food Facts</string>
+    <string name="Donation">Kliknutím zde můžete podpořit Open Food Facts</string>
     <string name="translate_help_title">Pomozte přeložit Open Food Facts</string>
     <string name="translate_help_summary">Přineste databázi Open Food Facts do vašeho jazyka - nejsou na to třeba žádné technické znalosti</string>
-    <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Informace o vašich alergiích nebudou nikdy odeslány na server Open Food Facts. Také mějte na paměti že informace o produktech nemusejí být přesné, a detekce nemusí být 100 % ařesná, vše prosím sami dvakrát zkontrolujte!</string>
+    <string name="text_offline_info_dialog">Naskenujte produkty, i když jste offline, abyste je později přidali do Open Food Facts. Zde se objeví naskenované produkty a budete je moci odeslat pomocí tlačítka níže.</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Informace o vašich alergiích nebudou nikdy odeslány na server Open Food Facts. Dávejte si také pozor, že produktová data nemusí být přesná a detekce nemusí být 100% přesná, proto si to prosím překontrolujte sami!</string>
     <!-- OFF tagline in different languages -->
     <string name="tagline">svobodná databáze potravin</string>
-    <string name="product_not_found">Výrobek %1$s, který jste naskenovali, ještě není v databázi Open Food Facts. Můžete ho prosím přidat?</string>
-    <string name="currently_on_version">Současně na Open Food Facts</string>
+    <string name="product_not_found">Produkt %1$s, který jste naskenovali, zatím v Open Food Facts neexistuje. Můžete ho přidat?</string>
+    <string name="currently_on_version">Aktuálně v Open Food Facts</string>
 </resources>
