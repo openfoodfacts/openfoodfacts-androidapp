@@ -11,41 +11,41 @@
     <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contributeur/ -->
     <string name="website_contributor">https://world-ar.openpetfoodfacts.org/contributor/</string>
     <string name="terms_url">https://world.openpetfoodfacts.org/terms-of-use</string>
-    <string name="txtHomeOnline">Open Pet Food Facts is a database of more than %1$s pet food products (plus the ones you will contribute) Woof. Woof.</string>
-    <string name="txtHome">Open Pet Food Facts is a database of pet food products with ingredients, nutrition facts… Woof. Woof.</string>
-    <string name="slide_1_title">Contribute to Pet Food transparency</string>
-    <string name="slide_1_desc">Scan products, take them in picture, make pet food transparency happen</string>
+    <string name="txtHomeOnline">Open Pet Food Facts هي قاعدة بيانات تضم أكثر من %1$s من منتجات أغذية الحيوانات الأليفة (بالإضافة إلى المنتجات التي ستساهم بها). اللحمة.</string>
+    <string name="txtHome">Open Pet Food Facts هي قاعدة بيانات لمنتجات أغذية الحيوانات الأليفة التي تحتوي على مكونات وحقائق غذائية… لحمة. اللحمة.</string>
+    <string name="slide_1_title">المساهمة في شفافية طعام الحيوانات الأليفة</string>
+    <string name="slide_1_desc">قم بمسح المنتجات ضوئيًا والتقاطها في صورة وجعل شفافية طعام الحيوانات الأليفة تحدث</string>
     <string name="slide_2_title">احصل على الحقائق</string>
-    <string name="slide_2_desc">معلومات شاملة حول المنتج الذي تم مسحه ضوئيًا وفك شفرته لك</string>
+    <string name="slide_2_desc">معلومات شاملة حول المنتج الذي تم مسحه ضوئياً وفك شفرته لك</string>
     <string name="slide_3_title">تتبع المنتج الذي تستخدمه</string>
-    <string name="slide_3_desc">All the petfood you scan, in one handy list you can export</string>
+    <string name="slide_3_desc">جميع أغذية الحيوانات الأليفة التي تمسحها ضوئيًا ، في قائمة واحدة سهلة الاستخدام يمكنك تصديرها</string>
     <string name="slide_4_title">يعمل بدون اتصال</string>
     <string name="slide_4_desc">يمكنك إضافة منتجات جديدة ، حتى إذا لم يكن لديك اتصال بالإنترنت في الوقت الحالي</string>
-    <string name="txtDialogsContent">The product you scanned does not exist yet in Open Pet Food Facts. Please add it.</string>
-    <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Pet Food Facts.</string>
-    <string name="msg_share">انظر لهذا المنتج على Open Food Facts:</string>
+    <string name="txtDialogsContent">المنتج الذي مسحته غير موجود حتى الآن في Open Pet Food Facts. يرجى إضافته.</string>
+    <string name="txtDialogsContentPowerMode">المنتج الذي مسحته موجودًا بالفعل في Open Pet Food Facts.</string>
+    <string name="msg_share">انظر إلى هذا المنتج على Open Food Facts :</string>
     <string name="not_support_books">الكتب ليست مدعومة في الوقت الحالي من قبل \"حقائق الغذاء المفتوحة\"</string>
-    <string name="txt_broaden_search">-توسيع نطاق \n-البحث الخاص بك امسح و إضفه إلى Open Food Facts</string>
+    <string name="txt_broaden_search">- توسيع نطاق البحث \n- مسح ضوئي وإضافته إلى Open Food Facts</string>
     <string name="Donation">انقر هنا للتبرع لـ Open Food Facts</string>
     <string name="translate_help_title">المساعدة في ترجمة Open Food Facts</string>
     <string name="translate_help_summary">قم تحويل قاعدة بيانات Open Food Facts إلى لغتك - دون الحاجة إلى معرفة فنية</string>
-    <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Pet Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
+    <string name="text_offline_info_dialog">مسح المنتجات حتى عندما تكون غير متصل بالإنترنت لإضافتها إلى Open Pet Food Facts في وقت لاحق. المنتجات التي تم مسحها سوف تظهر هنا وسوف تتمكن من إرسالها باستخدام الزر أدناه.</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">لن يتم إرسال معلومات الحساسية الخاصة بك إلى Open Food Facts. أيضاً، احذر من أن بيانات المنتج قد لا تكون دقيقة، وقد لا يكون الكشف دقيقاً 100%، لذا يرجى التحقق مرة أخرى بنفسك! </string>
     <!-- OPFF tagline in different languages -->
-    <string name="version_string">Open Pet Food Facts Android App</string>
+    <string name="version_string">افتح تطبيق Beauty Facts على Android</string>
     <string name="tagline">free pet food products database</string>
-    <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Pet Food Facts. Can you add it?</string>
-    <string name="currently_on_version">Currently on Open Pet Food Facts</string>
+    <string name="product_not_found">المنتج %1$s الذي مسحته غير موجود حتى الآن في Open Products Facts. هل يمكنك إضافته؟</string>
+    <string name="currently_on_version">حاليًا في Open Pet Food Facts</string>
     <string name="category_game_btn">مساعدة في تصنيف المنتجات</string>
     <!-- TODO add true support instead of overriding strings -->
-    <string name="add_nutrient_prompt_text">Add nutrition facts to compute nutrient levels</string>
-    <string name="add_category_prompt_text">Add a category to help complete the product</string>
-    <string name="add_nutrient_category_prompt_text">Add a category and nutrition facts to help complete the product</string>
+    <string name="add_nutrient_prompt_text">أضف حقائق غذائية لحساب مستويات المغذيات</string>
+    <string name="add_category_prompt_text">أضف المزيد من التفاصيل للمساعدة في استكمال المنتج</string>
+    <string name="add_nutrient_category_prompt_text">أضف فئة ومزيد الحقائق التغذية للمساعدة في إكمال المنتج</string>
     <string name="txt_eaten_products">المنتجات التي أملكها</string>
     <string name="txt_products_to_buy">منتجات للشراء</string>
-    <string name="intent_filter_share_label">Add to Open Pet Food Facts</string>
-    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
-        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
-    <string name="OFFlogo">Open Pet Food Facts logo</string>
-    <string name="brand_hint">Examples: Purina, Whiskas, etc…</string>
+    <string name="intent_filter_share_label">أضف إلى الفتح حقائق أغذية الحيوانات الأليفة</string>
+    <string name="txt_info_eaten_products">ستتمكن من إضافة منتج إلى هذه القائمة عن طريق مسح المنتجات وسحب بطاقة المنتج لأعلى والنقر على \"المنتجات المراد شراؤها\".
+        ستتمكن أيضًا من إضافة منتجات إلى هذه القائمة من خلال البحث عنها والنقر فوق الزر + في أعلى يمين صفحة المنتج.</string>
+    <string name="OFFlogo">افتح شعار حقائق أغذية الحيوانات الأليفة</string>
+    <string name="brand_hint">أمثلة: Purina و Whiskas وما إلى ذلك…</string>
 </resources>
