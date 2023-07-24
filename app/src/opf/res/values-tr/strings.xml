@@ -11,8 +11,8 @@
     <!-- For fr, Replace by https://world-fr.openproductsfacts.org/contributeur/ -->
     <string name="website_contributor">https://world-tr.openproductsfacts.org/contributor/</string>
     <string name="terms_url">https://world-tr.openproductsfacts.org/terms-of-use</string>
-    <string name="txtHomeOnline">Open Products Facts is an open database of more than %1$s products (plus the ones you will contribute).</string>
-    <string name="txtHome">Open Product Facts dünya üzerindeki tüm ürünleri içeren açık bir veritabanıdır.</string>
+    <string name="txtHomeOnline">Open Products Facts, %1$s fazla ürünün (artı sizin katkıda bulunacağınız ürünlerin) açık bir veritabanıdır.</string>
+    <string name="txtHome">Open Products Facts dünya üzerindeki tüm ürünleri içeren açık bir veritabanıdır.</string>
     <string name="slide_1_title">Ürün şeffaflığına katkıda bulunun</string>
     <string name="slide_1_desc">Ürünleri tarayın, fotoğraflarını çekin, ürün şeffaflığının gerçekleşmesini sağlayın</string>
     <string name="slide_2_title">Gerçekleri öğrenin</string>
@@ -27,25 +27,25 @@
     <string name="not_support_books">Kitaplar şu anda Open Products Facts tarafından desteklenmemektedir</string>
     <string name="txt_broaden_search">- aramanız genişletiliyor \n- tara ve Open Products Facts\'e ekle</string>
     <string name="Donation">Open Products Facts\'e bağışta bulunmak için buraya tıklayınız</string>
-    <string name="translate_help_title">Open Product Facts\'i tercüme etmeye yardım edin</string>
-    <string name="translate_help_summary">Open Product Facts veritabanını kendi dilinize kazandırın - teknik bilgi gerektirmez</string>
-    <string name="text_offline_info_dialog">Ürünleri Open Product Facts\'e daha sonra ekleyebilmek için çevrimdışı olduğunuzda dahi tarayın. Taranan ürünler burada görünecek ve aşağıdaki butonu kullanarak gönderebileceksiniz.</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Products Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+    <string name="translate_help_title">Open Products Facts\'i tercüme etmeye yardım edin</string>
+    <string name="translate_help_summary">Open Products Facts veritabanını kendi dilinize kazandırın - teknik bilgi gerektirmez</string>
+    <string name="text_offline_info_dialog">Ürünleri Open Products Facts\'e daha sonra ekleyebilmek için çevrimdışı olduğunuzda dahi tarayın. Taranan ürünler burada görünecek ve aşağıdaki butonu kullanarak gönderebileceksiniz.</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Alerji Bilgileriniz asla Open Products Facts sunucusuna gönderilmeyecektir. Aynı zamanda ürün verilerinin kesin olmayabileceği ve algılamanın %100 hassas olmayabileceği konusunda dikkatli olun, bu yüzden lüften kendiniz iki kere kontrol edin!</string>
     <!-- OPF tagline in different languages -->
-    <string name="version_string">Open Products Facts Android App</string>
+    <string name="version_string">Open Products Facts Android Uygulaması</string>
     <string name="tagline">the free product database</string>
-    <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Products Facts. Can you add it?</string>
-    <string name="currently_on_version">Open Product Facts\'te mevcut olan</string>
+    <string name="product_not_found">Taradığın ürün henüz Open Beauty Facts\'de bulunmamaktadır. Onu sen ekleyebilir misin?</string>
+    <string name="currently_on_version">Open Products Facts\'te mevcut olan</string>
     <string name="category_game_btn">Ürünleri kategorize etmeye yardım edin</string>
     <!-- TODO add true support instead of overriding strings -->
     <string name="add_nutrient_prompt_text">Ürünü tamamlamaya yardım etmek için daha fazla ayrıntı ekleyin</string>
     <string name="add_category_prompt_text">Ürünü tamamlamaya yardım etmek için bir kategori ekleyin</string>
     <string name="add_nutrient_category_prompt_text">Ürünü tamamlamaya yardım etmek için bir kategori ve daha fazla ayrıntı ekleyin</string>
-    <string name="txt_eaten_products">Products I have</string>
+    <string name="txt_eaten_products">Sahip olduğum ürünler</string>
     <string name="txt_products_to_buy">Satın alınacak ürünler</string>
-    <string name="intent_filter_share_label">Add to Open Products Facts</string>
-    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
-        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
-    <string name="OFFlogo">Open Products Facts logo</string>
-    <string name="brand_hint">Examples: Nike, Apple, etc…</string>
+    <string name="intent_filter_share_label">Open Products Facts\'e ekle</string>
+    <string name="txt_info_eaten_products">Bu listeye ürün eklemeniz ürünleri tarayarak, ürün kartını yukarıya sürükleyip \"Satın alınacak ürünler\"e tıklayarak mümkün olacaktır.
+Aynı zamanda bu listeye ürünleri arayarak ve ürün sayfasının sağ üstündeki + butonuna tıklayarak ürünleri ekleyebilirsiniz.</string>
+    <string name="OFFlogo">Open Beauty Facts amblemi</string>
+    <string name="brand_hint">Örnekler: Nike, Apple vb.</string>
 </resources>
