@@ -16,33 +16,33 @@
   -->
 <resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
-        <item quantity="one">1 оффлайн продукт ожидает отправки в Open Food Facts</item>
-        <item quantity="few">You have %d offline products waiting to be contributed to Open Food Facts</item>
-        <item quantity="many">You have %d offline products waiting to be contributed to Open Food Facts</item>
-        <item quantity="other">%d оффлайн продуктов ожидают отправки в Open Food Facts</item>
+        <item quantity="one">У вас есть 1 вклад о продукте, ожидающий отправки в Open Food Facts</item>
+        <item quantity="few">У вас есть %d вклада о продуктах, ожидающих отправки в Open Food Facts</item>
+        <item quantity="many">У вас есть %d вкладов о продуктах, ожидающих отправки в Open Food Facts</item>
+        <item quantity="other">У вас есть %d вкладов о продуктах, ожидающих отправки в Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
-        <item quantity="one">%d секунд назад</item>
-        <item quantity="few">%d seconds ago</item>
-        <item quantity="many">%d seconds ago</item>
-        <item quantity="other">%d seconds ago</item>
+        <item quantity="one">%d секунду назад</item>
+        <item quantity="few">%d секунды назад</item>
+        <item quantity="many">%d секунд назад</item>
+        <item quantity="other">%d секунд назад</item>
     </plurals>
     <plurals name="minutes">
-        <item quantity="one">%d минут назад</item>
-        <item quantity="few">%d minutes ago</item>
-        <item quantity="many">%d minutes ago</item>
-        <item quantity="other">%d minutes ago</item>
+        <item quantity="one">%d минуту назад</item>
+        <item quantity="few">%d минуты назад</item>
+        <item quantity="many">%d минут назад</item>
+        <item quantity="other">%d минут назад</item>
     </plurals>
     <plurals name="hours">
-        <item quantity="one">%d hour ago</item>
-        <item quantity="few">%d hours ago</item>
-        <item quantity="many">%d hours ago</item>
+        <item quantity="one">%d час назад</item>
+        <item quantity="few">%d часа назад</item>
+        <item quantity="many">%d часов назад</item>
         <item quantity="other">%d часов назад</item>
     </plurals>
     <plurals name="days">
-        <item quantity="one">%d day ago</item>
-        <item quantity="few">%d days ago</item>
-        <item quantity="many">%d days ago</item>
+        <item quantity="one">%d день назад</item>
+        <item quantity="few">%d дня назад</item>
+        <item quantity="many">%d дней назад</item>
         <item quantity="other">%d дней назад</item>
     </plurals>
     <string name="action_about">О приложении</string>
@@ -203,7 +203,7 @@
     <string name="uploadLater">Изображение будет загружено, когда сеть будет доступна</string>
     <string name="txtInfoLoginOk">Пользователь сохранён</string>
     <string name="txtInfoLoginNo">Пользователь не сохранён</string>
-    <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
+    <string name="txtDialogsContent">Отсканированный вами продукт пока не существует в Open Food Facts. Пожалуйста, добавьте его.</string>
     <string name="txtYes">Да</string>
     <string name="txtNo">Нет</string>
     <string name="hintBrand">Марка</string>
@@ -236,12 +236,12 @@
     <string name="alert_drawer">Предупреждение об аллергенах</string>
     <string name="your_lists">Ваши списки</string>
     <string name="title_dialog_alert">Добавить предупреждение</string>
-    <string name="select_camera">Select a Camera</string>
+    <string name="select_camera">Выберите камеру</string>
     <string name="ok_button">OK</string>
     <string name="cancel_button">Отмена</string>
     <string name="login_button">Имя пользователя</string>
     <string name="create_account_button">Создать учетную запись</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Информация о ваших аллергенах не будет отправлена на сервер Open Food Facts. Будьте осторожны, данные о продукте могут быть не точны и обнаружение может быть не 100% точным, поэтому, пожалуйста, перепроверяйте данные лично!</string>
     <string name="title_info_dialog">Как это работает?</string>
     <string name="text_offline_info_dialog">Сканируйте продукты, когда вы не подключены к сети, чтобы добавить их в Open Food Facts позже. Все продукты, которые вы отсканируете, будут отображаться здесь, и вы сможете отправить их, используя кнопку ниже.</string>
     <string name="permission_camera">Для сканирования штрихкодов и фотографирования требуется разрешение на доступ к камере.</string>
@@ -430,7 +430,7 @@
     <string name="preference_enable_mobile_data_summary_on">Загрузка новых продуктов с использованием мобильных данных &amp; WiFi</string>
     <string name="preference_enable_mobile_data_summary_off">Загружать новые продукты только с помощью Wi-Fi</string>
     <string name="device_on_mobile_data_warning_title">Информация</string>
-    <string name="device_on_mobile_data_warning_message">You have disabled upload on mobile data , please connect to WiFi or change this in preferences</string>
+    <string name="device_on_mobile_data_warning_message">Вы отключили отправку данных по мобильной сети, пожалуйста, подключитесь к WiFi или измените настройки</string>
     <string name="device_on_mobile_data_warning_positive">Настройки</string>
     <string name="device_on_mobile_data_warning_negative">Загрузить в любом случае</string>
     <string name="changes_saved">Изменения успешно сохранены</string>
@@ -540,11 +540,11 @@
     <string name="offline_product_addition_title">Добавить новый продукт</string>
     <string name="productNameNull">Название неизвестно</string>
     <string name="productAdditivesUnknown"></string>
-    <string name="productAdditivesTemplate">%1$d additives</string>
+    <string name="productAdditivesTemplate">%1$d добавок</string>
     <plurals name="productAdditives">
-        <item quantity="one">%d additive</item>
-        <item quantity="few">%d additives</item>
-        <item quantity="many">%d additives</item>
+        <item quantity="one">%d добавка</item>
+        <item quantity="few">%d добавки</item>
+        <item quantity="many">%d добавок</item>
         <item quantity="other">%d добавок</item>
     </plurals>
     <string name="product_not_complete">Этот продукт еще не завершен. \nМожете вы добавить некоторые детали?</string>
@@ -642,7 +642,7 @@
     <string name="sign_in_to_answer">Пожалуйста, войдите или зарегистрируйтесь, чтобы ответить на вопрос.</string>
     <string name="hint_quantity">Например: 2 л, 250 г, 1 кг, 250 мл, 1 фунт</string>
     <string name="edit_product_title">Редактировать продукт</string>
-    <string name="nutrient_already_added">%s is already present in the nutrition facts</string>
+    <string name="nutrient_already_added">%s уже указан в информации о пищевой ценности</string>
     <string name="save_edits">Сохранить изменения</string>
     <string name="contribution_by">Вклад от</string>
     <string name="title_activity_product">Название</string>
@@ -699,7 +699,7 @@
     <string name="txt_create_new_list">Создание нового списка</string>
     <string name="txt_add_to_new_list">Добавить в новый список</string>
     <string name="create_new_list_list_name">Название списка</string>
-    <string name="txt_eaten_products">Eaten products</string>
+    <string name="txt_eaten_products">Съеденные продукты</string>
     <string name="txt_products_to_buy">Продукты для покупки</string>
     <string name="txt_exporting_your_listed_products">Экспорт ваших продуктов…</string>
     <string name="txt_your_listed_products_exported">Ваши продукты были экспортированы</string>
@@ -709,7 +709,7 @@
     <string name="txt_info_your_listed_products">Вы сможете добавлять товары в этот список, выполнив их поиск и кликнув кнопку \"+\" в правом верхнем углу страницы товара.</string>
     <string name="search_history_pref_title">Очистить историю поиска</string>
     <string name="search_history_pref_summary">Удалить все поиски, которые вы выполняли на этом устройстве</string>
-    <string name="search_history_pref_dialog_content">Delete local search history?</string>
+    <string name="search_history_pref_dialog_content">Удалить локальную историю поиска?</string>
     <string name="settings_country_dialog_title">Выберите свою страну</string>
     <string name="settings_country_summary">Изменить выбранную страну</string>
     <string name="settings_country_title">Страна</string>
