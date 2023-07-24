@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/ -->
-    <string name="website">https://world.openbeautyfacts.org/</string>
+    <string name="website">https://world-lt.openbeautyfacts.org/</string>
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/contribuer -->
-    <string name="website_contribute">https://world.openbeautyfacts.org/contribute</string>
+    <string name="website_contribute">https://world-lt.openbeautyfacts.org/contribute</string>
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/decouvrir -->
-    <string name="website_discover">https://world.openbeautyfacts.org/discover</string>
+    <string name="website_discover">https://world-lt.openbeautyfacts.org/discover</string>
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/produit/ -->
     <string name="website_product">https://world.openbeautyfacts.org/product/</string>
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/contributeur/ -->
     <string name="website_contributor">https://world.openbeautyfacts.org/contributor/</string>
     <string name="terms_url">https://world.openbeautyfacts.org/terms-of-use</string>
-    <string name="txtHomeOnline">Open Beauty Facts is an open database of more than %1$s cosmetic products (plus the ones you will contribute).</string>
+    <string name="txtHomeOnline">Open Beauty Facts yra atvira duomenų bazė apie daugiau nei %1$s kosmetikos produktų (įskaitant ir tuos, kuriuos pridėsi).</string>
     <string name="txtHome">Open Beauty Facts is a database of cosmetic products with ingredients, allergens, indicia and all the tidbits of information we can find on product labels.</string>
     <string name="slide_1_title">Contribute to Cosmetic transparency</string>
     <string name="slide_1_desc">Scan products, take them in picture, make cosmetic transparency happen</string>
@@ -41,7 +41,7 @@
     <string name="add_nutrient_category_prompt_text">Add a category and more details to help complete the product</string>
     <string name="required_to_compute_nutriscore"></string>
     <string name="txt_eaten_products">Products I have</string>
-    <string name="txt_products_to_buy">Products to buy</string>
+    <string name="txt_products_to_buy">Produktai, kuriuos reikia nusipirkti</string>
     <string name="intent_filter_share_label">Add to Open Beauty Facts</string>
     <string name="brand_hint">Examples: Nivea, L\'Oréal, etc…</string>
     <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
