@@ -6,9 +6,9 @@ Para descobrir o projeto Open Pet Food Facts, visite https://world.openpetfoodfa
 
 ***Contribuir para a transparência dos alimentos para animais ***
 
-- Open Pet Food Facts é um banco de dados de produtos alimentares para animais feito por todos, para todos.
+- O Open Pet Food Facts é uma base de dados de produtos alimentares para animais feito por todos, para todos.
 - Pode usá-lo para fazer melhores escolhas alimentares para animais e como são dados abertos, qualquer um pode reutilizá-lo para qualquer finalidade.
-- Open Pet Food Facts é um projeto sem fins lucrativos desenvolvido por milhares de voluntários em todo o mundo. Temos muitos projetos interessantes para os quais você pode contribuir de diversas maneiras. 
+- O Open Pet Food Facts é um projeto sem fins lucrativos desenvolvido por milhares de voluntários em todo o mundo. Temos muitos projetos interessantes para os quais pode contribuir de diversas maneiras. 
 - Pode começar a contribuir hoje, adicionando um produto do seu armário de alimentos para animais. 
 
 
@@ -16,19 +16,19 @@ Para descobrir o projeto Open Pet Food Facts, visite https://world.openpetfoodfa
 
 Poderá encontrar também (de acordo com as indicações presentes nos produtos):
 - lista de ingredientes (incluindo o teor de cinzas)
-- informação nutricional, luzes de tráfego de nutrição…
+- informação nutricional, semáforos de nutrição…
 - marcas, alérgenos, rótulos (orgânicos, veganos...)
-- Funciona com comida de cão (comida de cão seco e molhado), comida de gato, comida de coelho, comida de cobra, comida de peixe, comida de pássaro, comida de cavalo ou qualquer comida para seu animal favorito.
+- Funciona com comida de cão (comida de cão seca e húmida), comida de gato, comida de coelho, comida de cobra, comida de peixe, comida de pássaro, comida de cavalo ou qualquer comida para seu animal favorito.
 
 *** Funciona bem em qualquer condição ***
 - Poderá adicionar novos produtos, mesmo sem ligação à Internet no momento.
 - A aplicação carrega apenas o rigor necessário para reduzir o consumo de dados e bateria
-- Não precisa de câmera para procurar um produto. Também pode digitar o código de barras se não tiver uma câmera ou tiver algum problema com ela.
+- Não precisa da câmara para procurar um produto. Também pode digitar o código de barras se não tiver uma câmara ou tiver algum problema com ela.
 
-*** Sua comida para animais, seus dados ***
-- os seus dados são seus e nunca são enviados on-line
-- Pode usar o aplicativo anonimamente
+*** A sua comida para animais, os seus dados ***
+- Os seus dados são seus e nunca são enviados on-line
+- Pode usar a aplicação de forma anónima
 - Pode exportar seu histórico de digitalizações
 
 
-Para alimentação humana, você pode instalar o Open Food Facts, para cosméticos, Open Beauty Facts e para todos os outros produtos, Open Products Facts.
+Para alimentação humana, pode instalar o Open Food Facts, para cosméticos, o Open Beauty Facts e para todos os outros produtos, o Open Products Facts.
