@@ -1,11 +1,11 @@
 
-==================
+=================
 Nieuwe oorspronkelijke versie van Open Food Facts. Alle Open Food Facts-vrijwilligers hebben er hard aan gewerkt, op basis van jouw suggesties en feedback :)
-==================
+=================
 * Open Food Facts is nu meer dan ooit een globale beweging. 500k producten bevrijd, 10K geregistreerde bijdragers, 182 landen. Doe je met ons mee?
-==================
+=================
 Wat is er nieuw?
-==================
+=================
 1. Je krijgt het totaalbeeld: voeding, ingrediënten en alle voedselfeiten, netjes en duidelijk gepresenteerd.
 2. Krijg de Nutri-Score waarde voor alle producten in de wereld. Vergelijk eenvoudig producten. Makkelijker dan het ontcijferen van voedingstabellen.
 3. Krijg extra informatie van Wikipedia. Klik op een voedselcategorie, een additief… om meer te leren en vergelijkbare producten te zien.
