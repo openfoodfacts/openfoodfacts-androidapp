@@ -11,7 +11,7 @@
     <!-- For fr, Replace by https://world-fr.openproductsfacts.org/contributeur/ -->
     <string name="website_contributor">https://world-fi.openfoodfacts.org/contributor/</string>
     <string name="terms_url">https://world-fi.openproductsfacts.org/terms-of-use</string>
-    <string name="txtHomeOnline">Open Products Facts is an open database of more than %1$s products (plus the ones you will contribute).</string>
+    <string name="txtHomeOnline">Open Products Food Facts on tietokanta, joka sisältää yli %1$s tuotetta (plus ne jotka lisäät).</string>
     <string name="txtHome">Open Products Facts on avoin tietokanta kaikille maailman tuotteille.</string>
     <string name="slide_1_title">Lisää tuotteiden läpinäkyvyyttä</string>
     <string name="slide_1_desc">Lue tuotteita, ota ne mukaan kuvaan, mahdollista tuotteiden läpinäkyvyys</string>
@@ -21,7 +21,7 @@
     <string name="slide_3_desc">Kaikki lukemasi tuotteet, yhtenä näppäränä luettelona jonka voit viedä</string>
     <string name="slide_4_title">Toimii offline-tilassa</string>
     <string name="slide_4_desc">Voit lisätä uusia tuotteita, vaikka sinulla ei olisi Internet-yhteyttä tällä hetkellä</string>
-    <string name="txtDialogsContent">Luettua tuotetta ei vielä ole Open Products Factsissa. Lisääthän sen.</string>
+    <string name="txtDialogsContent">The product you scanned does not exist yet in Open Products Facts. Please add it.</string>
     <string name="txtDialogsContentPowerMode">Lukemasi tuote on jo olemassa Open Products Factsissa.</string>
     <string name="msg_share">Katso tätä tuotetta Open Products Factsissa:</string>
     <string name="not_support_books">Open Products Facts ei tue kirjoja tällä hetkellä</string>
@@ -33,7 +33,7 @@
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Allergiatietojasi ei koskaan lähetetä Open Products Facts -palvelimelle. Huomaa myös, että tuotetiedot eivät välttämättä ole tarkkoja tai täydellisiä, ja allergiatarkistus ei ehkä ole 100%:n tarkka, joten tarkista itse! </string>
     <!-- OPF tagline in different languages -->
     <string name="version_string">Open Products Facts Android-sovellus</string>
-    <string name="tagline">vapaa tuotetietokanta</string>
+    <string name="tagline">the free product database</string>
     <string name="product_not_found">Luettua tuotetta %1$s ei vielä ole Open Products Factsissa. Voitko lisätä sen?</string>
     <string name="currently_on_version">Tällä hetkellä Open Products Factsissa</string>
     <string name="category_game_btn">Auta luokittelemaan tuotteita</string>
