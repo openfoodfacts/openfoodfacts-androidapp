@@ -12,7 +12,7 @@
     <string name="website_contributor">https://world.openbeautyfacts.org/contributor/</string>
     <string name="terms_url">https://world.openbeautyfacts.org/terms-of-use</string>
     <string name="txtHomeOnline">Open Beauty Facts is an open database of more than %1$s cosmetic products (plus the ones you will contribute).</string>
-    <string name="txtHome">ಓಪನ್ ಬ್ಯೂಟಿ ಫ್ಯಾಕ್ಟ್ಸ್ ಎನ್ನುವುದು ಪದಾರ್ಥಗಳು, ಅಲರ್ಜಿನ್ಗಳು, ಸೂಚಕಗಳು ಮತ್ತು ಉತ್ಪನ್ನದ ಲೇಬಲ್ಗಳಲ್ಲಿ ನಾವು ಪಡೆಯಬಹುದಾದ ಮಾಹಿತಿಯ ಎಲ್ಲಾ ಸುಳಿವುಗಳೊಂದಿಗೆ ಕಾಸ್ಮೆಟಿಕ್ ಉತ್ಪನ್ನಗಳ ಡೇಟಾಬೇಸ್ ಆಗಿದೆ.</string>
+    <string name="txtHome">Open Beauty Facts is a database of cosmetic products.</string>
     <string name="slide_1_title">ಕಾಸ್ಮೆಟಿಕ್ ಪಾರದರ್ಶಕತೆಗೆ ಕೊಡುಗೆ ನೀಡಿ</string>
     <string name="slide_1_desc">ಸ್ಕ್ಯಾನ್ ಉತ್ಪನ್ನಗಳು, ಅವುಗಳನ್ನು ಚಿತ್ರದಲ್ಲಿ ತೆಗೆದುಕೊಳ್ಳಿ, ಕಾಸ್ಮೆಟಿಕ್ ಪಾರದರ್ಶಕತೆ ಸಂಭವಿಸಿ</string>
     <string name="slide_2_title">ಸತ್ಯಗಳನ್ನು ಪಡೆಯಿರಿ</string>
@@ -21,7 +21,7 @@
     <string name="slide_3_desc">ನೀವು ಬಳಸುವ ಸೌಂದರ್ಯವರ್ಧಕವು, ಒಂದು ಕೈಯಲ್ಲಿ ನೀವು ರಫ್ತು ಮಾಡಬಹುದು</string>
     <string name="slide_4_title">ಆಫ್ಲೈನ್ನಲ್ಲಿ ಕಾರ್ಯನಿರ್ವಹಿಸುತ್ತದೆ</string>
     <string name="slide_4_desc">ನೀವು ಇದೀಗ ಇಂಟರ್ನೆಟ್ ಸಂಪರ್ಕವನ್ನು ಹೊಂದಿಲ್ಲದಿದ್ದರೂ ಸಹ ನೀವು ಹೊಸ ಉತ್ಪನ್ನಗಳನ್ನು ಸೇರಿಸಬಹುದು</string>
-    <string name="txtDialogsContent">ನೀವು ಸ್ಕ್ಯಾನ್ ಮಾಡಲಾದ ಉತ್ಪನ್ನ ಇನ್ನೂ ಓಪನ್ ಫುಡ್ ಫ್ಯಾಕ್ಟ್ಸ್ನಲ್ಲಿ ಅಸ್ತಿತ್ವದಲ್ಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಅದನ್ನು ಸೇರಿಸಿ.</string>
+    <string name="txtDialogsContent">The product you scanned does not exist yet in Open Beauty Facts. Please add it.</string>
     <string name="msg_share">ಓಪನ್ ಫುಡ್ ಫ್ಯಾಕ್ಟ್ಸ್ನಲ್ಲಿ ಈ ಉತ್ಪನ್ನವನ್ನು ನೋಡಿ:</string>
     <string name="txt_broaden_search">- ನಿಮ್ಮ ಹುಡುಕಾಟವನ್ನು ವಿಸ್ತರಿಸುವುದು ಸ್ಕ್ಯಾನ್ ಮಾಡಿ ಮತ್ತು ಆಹಾರದ ಫ್ಯಾಕ್ಟ್ಸ್ ತೆರೆಯಿರಿ</string>
     <string name="Donation">ಬ್ಯೂಟಿ ಫ್ಯಾಕ್ಟ್ಸ್ ತೆರೆಯಲು ದಾನ ಮಾಡಲು ಇಲ್ಲಿ ಕ್ಲಿಕ್ ಮಾಡಿ</string>
