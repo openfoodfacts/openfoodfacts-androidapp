@@ -1,19 +1,19 @@
 
 ==================
-Versi baru Open Food Facts. Semua relawan Open Food Facts sedang bekerja keras mengembangkannya berdasarkan saran dan masukan dari anda. :-)
+New native version of Open Food Facts. All the Open Food Facts volunteers been working hard on it, based on your suggestions and feedback :)
 ==================
-* Open Food Facts menjadi gerakan yang lebih global dari sebelumnya. 500K produk, 10K kontributor, 182 negara. Mau bergabung dengan kami?
+* Open Food Facts is now a more global movement than ever. 500k products freed, 10K registered contributors, 182 countries. Will you join us ?
 ==================
 Apa yang baru?
 ==================
-1. Gambaran jelas tentang nutrisi, komposisi, dan semua fakta makanan.
-2. Dapatkan nilai gizi "NutriScore" untuk semua produk di dunia. Mudah membandingkan produk. Lebih mudah daripada mengartikan tabel nutrisi.
-3. Dapatkan informasi tambahan dari wikipedia. Untuk mempelajari lebih lanjut dan melihat produk serupa lainnya klik pada kategori makanan, aditif.
-4. Tambahkan peringatan alergen (selalu periksa kembali labelnya sendiri!)
-5. Riwayat pemidaian dapat diekspor dan tidak pernah meninggalkan ponsel anda
-6. Goyang ponsel kapan saja untuk memulai pemindaian
-7. Tambahkan produk bahkan tanpa koneksi internet
-8. Ambil foto, isi informasi, dan buat transparansi makanan kesukaan anda terjadi
-9. Semuanya jauh lebih cepat. Produk dimuat lebih cepat, bahkan dengan koneksi internet yang buruk.
-10. Kami tidak tertarik dengan data pribadi anda. Tidak perlu daftar untuk memindai dan berkontribusi.
-Lebihnya! Meskipun banyak yang baru, aplikasi masih sama ringannya dengan sebelumnya. Ruang yang tersisa di ponsel anda adalah suci.
+1. You get the 360 picture: nutrition, ingredients, and all food facts, neatly and clearly presented.
+2. Get the "NutriScore" nutrition grade for all products in the world. Easily compare products. Easier than deciphering nutrition tables.
+3. Get extra information from Wikipedia. Click on a food category, an additive… to learn more and see similar products.
+4. You can set allergens alerts (always double check the actual label yourself though!)
+5. You now get a scan history you can export and that never leaves your phone
+6. You can shake your phone at any time in the app to start scanning
+7. You can now add new products even when you're offline
+8. You can now help complete your favorite foods directly from the app: take photos, fill info, make food transparency happen
+9. Everything is also much faster. Products load blazingly fast, even with a bad mobile connection.
+10. We're still not interested in your personal data. You don't have to sign-up to scan and contribute.
+Extra! Despite all the new stuff, the app is as light as before. The space left on your phone is sacred.
