@@ -1,8 +1,8 @@
-***Contribua para a Transparência nos Cosméticos***
+***Contribua para a transparência nos cosméticos***
 
-- Open Beauty Facts é um banco de dados de produtos cosméticos feito por todos, para todos.
-- Pode usá-lo para fazer melhores escolhas cosméticas e como são dados abertos, qualquer um pode reutilizá-lo para qualquer finalidade.
-- Open Beauty Facts é um projeto sem fins lucrativos desenvolvido por milhares de voluntários em todo o mundo. Temos muitos projetos interessantes para os quais você pode contribuir de diversas maneiras. 
+- O Open Beauty Facts é uma base de dados de produtos cosméticos feita por todos, para todos.
+- Pode usá-la para fazer melhores escolhas de cosméticos e como são dados abertos, qualquer um pode reutilizá-la para qualquer finalidade.
+- O Open Beauty Facts é um projeto sem fins lucrativos desenvolvido por milhares de voluntários em todo o mundo. Temos muitos projetos interessantes para os quais pode contribuir de diversas maneiras. 
 - Pode começar a contribuir hoje, adicionando um produto do seu armário de cosméticos. 
 
 *** Conheça os fatos ***
@@ -10,22 +10,22 @@
 - Aditivos cosméticos, F.I.L. códigos, números CI, INCI (Nomenclatura Internacional de Ingredientes Cosméticos), lista de ingredientes, alérgenos, códigos de embalagem... 
 - Open Beauty Facts ajuda a entender as letras miúdas dos rótulos dos produtos.
 - Você não precisa mais ser químico e aprender latim para decifrar uma lista de ingredientes :-)
-- Você pode digitalizar: loção pós-barba, loção corporal, cremes, desodorante, delineador, base, fragrância, batom, maquiagem, máscara, perfume, xampu, sabonete, gel de banho, esmalte e muito mais…
+- Pode digitalizar: loção pós-barba, loção corporal, cremes, desodorizante, delineador, base, fragrância, batom, maquilhagem, máscara, perfume, champô, sabonete, gel de banho, verniz das unhas e muito mais…
 - Achamos que pode ser útil para pessoas com condições de pele como acne, psoríase, eczema… para fazer melhores escolhas cosméticas.
 
 *** Funciona bem em qualquer condição ***
 - Poderá adicionar novos produtos, mesmo sem ligação à Internet no momento.
 - A aplicação carrega apenas o rigor necessário para reduzir o consumo de dados e bateria
-- Não precisa de câmera para procurar um produto. Também pode digitar o código de barras se não tiver uma câmera ou tiver algum problema com ela.
+- Não precisa da câmara para procurar um produto. Também pode digitar o código de barras se não tiver uma câmara ou tiver algum problema com ela.
 
-*** Seus cosméticos, seus dados ***
-- Seus dados são seus e nunca são enviados on-line
-- Pode usar o aplicativo anonimamente
+*** Os seus cosméticos, os seus dados ***
+- Os seus dados são seus e nunca são enviados para a Internet
+- Pode usar a aplicação de forma anónima
 - Pode exportar seu histórico de digitalizações
 
-Nota: O Open Beauty Facts está sendo construído, o site e o aplicativo são baseados em Open Food Facts e serão feitas alterações para levar em conta as especificidades dos cosméticos.
+Nota: o Open Beauty Facts está a ser construído, o site e a aplicação são baseados no Open Food Facts e serão feitas alterações para levar em conta as especificidades dos cosméticos.
 
-O Open Beauty Facts também está disponível na web em https://pt.openbeautyfacts.org
+O Open Beauty Facts também está disponível na Internet em https://pt.openbeautyfacts.org
 Perguntas, feedback: contact@openfoodfacts.org
 
-Para comida humana, você pode instalar o Open Food Facts, para animais de estimação, o Open Pet Food Facts, e para todos os outros produtos, o Open Products Facts.
+Para comida humana, pode instalar o Open Food Facts, para animais de estimação, o Open Pet Food Facts e para todos os outros produtos, o Open Products Facts.
