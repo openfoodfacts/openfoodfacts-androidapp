@@ -1,8 +1,8 @@
-Skenéjiet dzīvnieku barības produktus vai to svītrkodu, lai iegūtu datus par sastāvdaļām, piedevām un uztura faktiem.
+Scan pet food products or their barcode to obtain data on ingredients, additives and nutrition facts.
 
 The app allows to view the over 600 pet food products already contained in the free and open database Open Pet Food Facts, and also to add pictures and data for missing products.
 
-Lai aplúkotu projektu par dzīvnieku barības faktiem, lūdzu, apmeklējiet vietni https://world.openpetfoodfacts.org
+To discover the Open Pet Food Facts project, please visit https://world.openpetfoodfacts.org
 
 ***Contribute to Pet Food Transparency***
 
@@ -12,15 +12,15 @@ Lai aplúkotu projektu par dzīvnieku barības faktiem, lūdzu, apmeklējiet vie
 - You can start contributing today by adding a product from your pet's cupboard. 
 
 
-*** Iegūt faktus ***
+*** Get the Facts ***
 
-Jūs arī varēsit atrast (atbilstoši norādījumiem uz produktiem):
+You will also be able to find (according to the indications present on the products):
 - list of ingredients (including ash content)
-- uztura informācija, uztura gaismas...
-- zīmoli, alergēni, etiķetes (organiskie, vegāni...)
+- nutritional info, nutrition traffic lights…
+- brands, allergens, labels (organic, vegan...)
 - It works with dog food (dry dog food & wet dog food), cat food, rabbit food, snake food, fish food, bird food, horse food or any food for your favorite animal.
 
-*** darbojas labi jebkurā stāvoklī ***
+*** Works well in any condition ***
 - Jūs varat pievienot jaunus produktus, pat ja jums pašlaik nav interneta savienojuma.
 - The app loads only the strict necessary to reduce data and battery consumption
 - You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
