@@ -1,13 +1,13 @@
-Open Product Facts dünya üzerindeki tüm ürünleri içeren açık bir veritabanıdır.
+Open Products Facts dünya üzerindeki tüm ürünleri içeren açık bir veritabanıdır.
 
 *** Ürün Şeffaflığına Katkıda Bulunun ***
 
--Open Products Facts, herkes tarafından herkes için oluşturulan bir ürün veritabanıdır.
-- Daha iyi tercihler yapmak için kullanılabileceği gibi, açık bir kaynak olduğu için herhangi biri istediği bir amaç için yeniden kullanabilir.
-- Open Products Facts dünyanın dört bir yanından binlerce gönüllü tarafından geliştirilen ve kar amacı gütmeyen bir projedir. -Birçok farklı şekilde katkı sağlayabileceğiniz çok sayıda heyecan verici projelerimiz bulunmakta. 
-- İlk ürününüzü ekleyerek bugün katkıda bulunmaya başlayabilirsiniz. 
+- Open Products Facts is a products database made by everyone, for everyone.
+- You can use it to make better choices, and as it is open data, anyone can re-use it for any purpose.
+- Open Products Facts is a non-profit project developed by thousands of volunteers from around the world. -Birçok farklı şekilde katkı sağlayabileceğiniz çok sayıda heyecan verici projelerimiz bulunmakta. 
+- You can start contributing today by adding your first product. 
 
-***Gerçekleri Öğrenin***
+*** Get the Facts ***
 - Open Products Facts, ürün etiketlerindeki ince ayrıntıları anlamanıza yardımcı olur.
 
 *** HEEEERR şeyi toplayın ***
@@ -22,13 +22,13 @@ Open Product Facts dünya üzerindeki tüm ürünleri içeren açık bir veritab
 - Bir ürünü aramak için kameraya ihtiyacınız yok. Kameranız yoksa veya bununla ilgili bir sorununuz varsa da barkodu yazabilirsiniz.
 
 *** Sizin ürünleriniz, sizin verileriniz ***
-- Kişisel verileriniz size aittir ve asla çevrimiçi gönderilmez
+- Your personal data is yours, and is never sent online
 - Uygulamayı anonim olarak kullanabilirsiniz
 - Tarama geçmişinizi dışa aktarabilirsiniz
 
-Yiyecekler için Open Food Facts'i, kozmetik ürünleri için Open Beauty Facts'i, ve evcil hayvan besinleri için Open Pet Food Facts'i yükleyebilirsin.
+For food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for pet food, Open Pet Food Facts.
 
-Open Products Facts aynı zamanda https://world-tr.openproductsfacts.org internet adresinde mevcuttur
+Open Products Facts is also available on the web at https://world.openproductsfacts.org
 Sorular, geri bildirim : contact@openfoodfacts.org
 
 *** Orijinal 1 Nisan Listesi ***
