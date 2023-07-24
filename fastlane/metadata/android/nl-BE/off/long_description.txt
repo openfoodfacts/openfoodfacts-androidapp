@@ -5,12 +5,12 @@ Scan barcodes van levensmiddelen om gegevens te krijgen over ingrediënten, addi
 De app maakt het mogelijk om de 800.000 producten (inclusief 175.000 uit de VS) in de gratis en open database Open Food Facts te bekijken, en om foto's en gegevens toe te voegen voor nieuwe producten.
 
 
-Om het vrijwillige Open Food Facts project te ontdekken, bezoek https://world.openfoodfacts.org
+Ga naar https://world.openfoodfacts.org om het door vrijwilligers gerunde Open Food Facts-project te ontdekken
 
 ▶ Kies de producten die goed voor je zijn
 - Nutri-Score, van "A" tot "E", voor de voedingskwaliteit
 - NOVA-groep, van "1" tot "4", voor het vinden van ultra-verwerkt voedsel
-- Je kan gemakkelijk naast elkaar producten vergelijken, door ze simpelweg te scannen. 
+- U kunt eenvoudig zoveel producten naast elkaar vergelijken als u wilt door ze simpelweg te scannen. 
 
 ▶ En goed voor de planeet!
 - De koolstofimpact van je voedsel
@@ -26,8 +26,8 @@ Om het vrijwillige Open Food Facts project te ontdekken, bezoek https://world.op
 - Open Food Facts is een non-profitproject ontwikkeld door duizenden vrijwilligers uit de hele wereld. We hebben veel spannende projecten waar je op veel verschillende manieren aan kunt bijdragen.
 - Je kunt vandaag beginnen met een bijdrage te leveren door een product uit je koelkast toe te voegen.
 
-▶ Create lists
-Maak lijsten Maak lijsten Maak boodschappenlijstjes, houd bij wat je hebt gegeten en deel je lijsten eenvoudig en exporteer ze.
+▶ Maak lijsten
+Maak boodschappenlijstjes, houd bij wat je hebt gegeten en deel en exporteer eenvoudig je lijstjes.
 
 ▶ Ken de feiten
 Open Food Facts helpt je om de kleine lettertjes op etiketten te begrijpen. Je zal ook kunnen vinden (volgens de aanwijzingen op de producten):
@@ -67,10 +67,10 @@ Scan met de snelheid van het licht (zelfs als u in een vliegtuig, onderzeeër of
 ▶ Zeg hallo en/of word lid!
 
 
-Open Food Facts is ook beschikbaar op het web op https://world.openfoodfacts.org
+Open Products Facts is ook beschikbaar op het internet op https://world.openproductsfacts.org
 
 
 Vragen, feedback: contact@openfoodfacts.org
 
 
-Voor cosmetica kan je Open Beauty Facts installeren, voor dierenvoeding, Open Pet Food Facts en voor alle andere producten, Open Products Facts.
+Voor cosmetica kunt u Open Beauty Facts installeren, voor huisdiervoeding Open Pet Food Facts en voor alle andere producten Open Products Facts.
