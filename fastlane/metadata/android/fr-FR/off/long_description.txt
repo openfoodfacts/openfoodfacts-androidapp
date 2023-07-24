@@ -30,10 +30,10 @@ Pour découvrir le projet Open Food Facts mené par des volontaires, rendez-vous
 Créez des listes de courses, suivez ce que vous avez mangé, partagez et exportez facilement vos listes.
 
 ▶ Obtenez les faits
-- Open Food Facts vous aide à comprendre les petits caractères sur les étiquettes des produits. Vous pourrez trouver :
+- Open Food Facts vous aide à comprendre les petits caractères sur les étiquettes des produits. Vous pourrez également trouver :
 - l'empreinte carbone (émissions de CO2) et l'emballage (ainsi que les instructions de recyclage),
 - le Nutriscore (score nutritionnel), les nutriments, la teneur en graisses / graisses, acides gras saturés, glucides, sucres, fibres, protéines et sel et sodium.
-- marques, allergènes, labels (bio, sans gluten, végétalien, végétarien, halal, casher ...), informations de traçabilité (codes Emb, origine des ingrédients)
+- marques, allergènes, étiquettes (bio, sans gluten, végétalien, végétarien, halal, kasher, ...), information sur la traçabilité (code des emballages, les origines des ingrédients)
 - Sur les vins et les bières, vous trouverez la teneur en alcool.
 
 
@@ -47,10 +47,10 @@ Créez des listes de courses, suivez ce que vous avez mangé, partagez et export
 
 
 ▶ Scan hors ligne: Scannez dans n'importe quelle condition! (arrive bientôt)
-Scannez à la vitesse de la lumière (même si vous êtes dans un avion, sous-marin ou supermarché)
+Scannez à la vitesse de la lumière (même si vous êtes dans un avion, un sous-marin ou un supermarché)
 
 - La planète entière, à votre portée !
-- Vous pouvez ajouter de nouveaux produits, même si vous ne disposez pas d'une connexion Internet sur le moment.
+- Vous pouvez ajouter de nouveaux produits, même si vous ne disposez pas d'une connexion Internet pour le moment.
 - L'application ne charge que le strict nécessaire pour réduire la consommation de données et de batterie.
 
 ▶ Votre nourriture, vos données
