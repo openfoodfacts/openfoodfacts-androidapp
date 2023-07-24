@@ -1,8 +1,8 @@
-Scan pet food products or their barcode to obtain data on ingredients, additives and nutrition facts.
+Escaneja els productes alimentaris per a mascotes o el seu codi de barres per obtenir dades sobre ingredients, additius i dades nutricionals.
 
 The app allows to view the over 600 pet food products already contained in the free and open database Open Pet Food Facts, and also to add pictures and data for missing products.
 
-To discover the Open Pet Food Facts project, please visit https://world.openpetfoodfacts.org
+Per descobrir el projecte Open Pet Food Facts, visiteu https://world.openpetfoodfacts.org
 
 ***Contribute to Pet Food Transparency***
 
@@ -12,7 +12,7 @@ To discover the Open Pet Food Facts project, please visit https://world.openpetf
 - You can start contributing today by adding a product from your pet's cupboard. 
 
 
-*** Obteniu les Dades ***
+*** Get the Facts ***
 
 You will also be able to find (according to the indications present on the products):
 - list of ingredients (including ash content)
@@ -20,10 +20,10 @@ You will also be able to find (according to the indications present on the produ
 - brands, allergens, labels (organic, vegan...)
 - It works with dog food (dry dog food & wet dog food), cat food, rabbit food, snake food, fish food, bird food, horse food or any food for your favorite animal.
 
-*** Funciona bé en qualsevol condició ***
+*** Works well in any condition ***
 - Podeu afegir nous productes, fins i tot si ara mateix no teniu una connexió a Internet.
-- L'aplicació només carrega l'estrictament necessari per a reduir les dades i el consum de la bateria
-- No necessiteu una càmera per buscar un producte. També podeu escriure el codi de barres si no teniu cap càmera o no us funciona.
+- The app loads only the strict necessary to reduce data and battery consumption
+- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
 
 *** Your pet food, your data ***
 - Your personal data is yours, and is never sent online
