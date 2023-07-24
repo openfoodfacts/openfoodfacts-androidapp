@@ -5,7 +5,7 @@
     <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contribuer -->
     <string name="website_contribute">https://world.openpetfoodfacts.org/contribute</string>
     <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/decouvrir -->
-    <string name="website_discover">https://world.openpetfoodfacts.org/discover</string>
+    <string name="website_discover">https://ee.openpetfoodfacts.org/discover</string>
     <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/produit/ -->
     <string name="website_product">https://world.openpetfoodfacts.org/product/</string>
     <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contributeur/ -->
@@ -23,7 +23,7 @@
     <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet connection right now</string>
     <string name="txtDialogsContent">The product you scanned does not exist yet in Open Pet Food Facts. Please add it.</string>
     <string name="txtDialogsContentPowerMode">The product you scanned does already exist in Open Pet Food Facts.</string>
-    <string name="msg_share">Look at this product on Open Food Facts :</string>
+    <string name="msg_share">Otsi seda toodet Open Food Facts\'is:</string>
     <string name="not_support_books">Books are not currently supported by Open Food Facts</string>
     <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
     <string name="Donation">Click here to donate to Open Food Facts</string>
