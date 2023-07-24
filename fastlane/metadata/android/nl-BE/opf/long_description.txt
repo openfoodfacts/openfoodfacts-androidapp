@@ -1,11 +1,11 @@
-Open Food Facts is een open database van voedingsproducten met ingrediënten, allergenen, voedingsinformatie en alle informatie die we kunnen vinden op de etiketten van de producten.
+Open Products Facts is een open database van alle producten ter wereld.
 
 *** Draag bij aan producttransparantie ***
 
-- Open Products Facts is een productendatabase die door iedereen is gemaakt, voor iedereen.
+- Open Products Facts is een productendatabase gemaakt door iedereen, voor iedereen.
 - Je kunt het gebruiken om betere keuzes te maken, en omdat het open data is, kan iedereen het voor elk doel hergebruiken.
-- Open Products Facts is een non-profit-project ontwikkeld door duizenden vrijwilligers wereldwijd. We hebben veel spannende projecten waar je op veel verschillende manieren aan kunt bijdragen. 
-- Je kunt vandaag beginnen met een bijdrage te leveren door je eerste product toe te voegen. 
+- Open Products Facts is een non-profit project ontwikkeld door duizenden vrijwilligers van over de hele wereld. We hebben veel spannende projecten waar je op veel verschillende manieren aan kunt bijdragen. 
+- U kunt vandaag beginnen met bijdragen door uw eerste product toe te voegen. 
 
 *** Ken de feiten ***
 Open Products Facts helpt je om de kleine lettertjes op etiketten te begrijpen.
@@ -26,9 +26,9 @@ Open Products Facts helpt je om de kleine lettertjes op etiketten te begrijpen.
 - Je kunt de app anoniem gebruiken
 - Je kunt jouw scangeschiedenis exporteren
 
-Voor levensmiddelen kan je Open Food Facts installeren, voor cosmetica Open Beauty Facts en voor alle andere producten Open Products Facts.
+Voor voeding kunt u Open Food Facts installeren, voor cosmetica Open Beauty Facts en voor dierenvoeding Open Pet Food Facts.
 
-Open Products Facts is ook beschikbaar op internet op https://world.openproductsfacts.org
+Open Beauty Facts is ook beschikbaar op internet op https://world.openbeautyfacts.org
 Vragen, feedback: contact@openfoodfacts.org
 
 *** Originele April's Fool Lijst ***
