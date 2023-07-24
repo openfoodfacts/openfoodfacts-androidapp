@@ -11,7 +11,7 @@
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/contributeur/ -->
     <string name="website_contributor">https://world-ru.openbeautyfacts.org/contributor/</string>
     <string name="terms_url">https://world-ru.openbeautyfacts.org/terms-of-use</string>
-    <string name="txtHomeOnline">Open Beauty Facts is an open database of more than %1$s cosmetic products (plus the ones you will contribute).</string>
+    <string name="txtHomeOnline">Open Beauty Facts — это открытая база данных, содержащая более %1$s  косметических продуктов (плюс те, которые вы добавите).</string>
     <string name="txtHome">Open Beauty Facts - это база данных косметических продуктов с ингредиентами, аллергенами, признаками и всей информацией, которую мы можем найти на этикетках продуктов.</string>
     <string name="slide_1_title">Способствовать косметической прозрачности</string>
     <string name="slide_1_desc">Сканируйте продукты, фотографируйте их, способствуйте косметической прозрачности</string>
@@ -30,7 +30,7 @@
     <string name="text_offline_info_dialog">Сканируйте продукты, когда вы не подключены к сети, чтобы добавить их в Open Beauty Facts позже. Все продукты, которые вы отсканируете, будут отображаться здесь, и вы сможете отправить их, используя кнопку ниже.</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Beauty Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
     <!-- OBF tagline in different languages -->
-    <string name="version_string">Open Beauty Facts Android App</string>
+    <string name="version_string">Приложение Open Beauty Facts для Android</string>
     <string name="tagline">the free cosmetics database</string>
     <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Beauty Facts. Can you add it?</string>
     <string name="currently_on_version">В настоящее время на Open Beauty Facts</string>
@@ -42,9 +42,9 @@
     <string name="required_to_compute_nutriscore"></string>
     <string name="txt_eaten_products">У меня есть товары</string>
     <string name="txt_products_to_buy">Продукты для покупки</string>
-    <string name="intent_filter_share_label">Add to Open Beauty Facts</string>
-    <string name="brand_hint">Examples: Nivea, L\'Oréal, etc…</string>
+    <string name="intent_filter_share_label">Добавить в Open Beauty Facts</string>
+    <string name="brand_hint">Примеры: Nivea, L\'Oréal, и т.д…</string>
     <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
         You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
-    <string name="OFFlogo">Open Beauty Facts logo</string>
+    <string name="OFFlogo">Логотип Open Beauty Facts</string>
 </resources>
