@@ -117,7 +117,7 @@
         <item>Mead acid (20:3 n-9)</item>
         <item>Melissic acid (30:0)</item>
         <item>Molibdeno</item>
-        <item>Mono unsaturated fat</item>
+        <item>Monounsaturated fat</item>
         <item>Montanic acid (28:0)</item>
         <item>Myristic acid (14:0)</item>
         <item>Nervonic acid (24:1 n-9)</item>
@@ -131,7 +131,7 @@
         <item>pH</item>
         <item>Fosforo</item>
         <item>Sugar alcohols (Polyols)</item>
-        <item>Poly unsaturated fat</item>
+        <item>Polyunsaturated fat</item>
         <item>Kalio</item>
         <item>Seleno</item>
         <item>Serum proteins</item>
@@ -160,18 +160,18 @@
     <string name="alert_dialog_warning_title">Averto</string>
     <string name="alert_dialog_warning_msg_user">Uzanto / pasvorto ŝanĝiĝis, bonvolu ĝisdatigi informojn</string>
     <string name="toast_retrieving">Ŝarĝante…</string>
-    <string name="txtBarcode">Strekokodo :</string>
-    <string name="txtCategories">Kategorioj :</string>
+    <string name="txtBarcode">Barcode :</string>
+    <string name="txtCategories">Categories :</string>
     <string name="txtLabels">Labels, certifications, awards :</string>
     <string name="txtEMB">Traceability codes:</string>
-    <string name="txtIngredients">Listo da ingrediencoj :</string>
+    <string name="txtIngredients">Ingredients list :</string>
     <string name="Donate">Donaci</string>
-    <string name="Donation">Klaku ĉi-tien por donaci al Open Food Facts</string>
-    <string name="txtSubstances">Substancoj aŭ produktoj kaŭzantaj alergiojn aŭ netolerojn :</string>
+    <string name="Donation">Click here to donate to Open Food Facts</string>
+    <string name="txtSubstances">Substances or products causing allergies or intolerances :</string>
     <string name="txtAdditives">Aldonaĵoj :</string>
-    <string name="txtTraces">Spuroj:</string>
-    <string name="txtMayBeFromPalmOilProduct">Ingrediencoj, kiuj eble enhavas palmoleon :</string>
-    <string name="txtPalmOilProduct">Ingrediencoj, kiuj enhavas palmoleon :</string>
+    <string name="txtTraces">Traces :</string>
+    <string name="txtMayBeFromPalmOilProduct">Ingredients that may be from palm oil :</string>
+    <string name="txtPalmOilProduct">Ingredients from palm oil :</string>
     <string name="txtServingSize">Serving size :</string>
     <string name="txtNutrientLevel100g">Nutraĵa nivelo por 100 g :</string>
     <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
@@ -212,7 +212,7 @@
     <string name="home_drawer">Ĉefpaĝo</string>
     <string name="install">Install</string>
     <string name="open_beauty_drawer">Open Beauty Facts</string>
-    <string name="open_food_drawer">Open Food Facts</string>
+    <string name="open_food_drawer">Open Products Facts</string>
     <string name="search_drawer">Search</string>
     <string name="search_by_barcode_drawer">Type barcode</string>
     <string name="category_drawer">Kategorioj</string>
@@ -233,7 +233,7 @@
     <string name="create_account_button">Create Account</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
     <string name="title_info_dialog">How does it work?</string>
-    <string name="text_offline_info_dialog">You can scan products when you\'re offline to add them to Open Food Facts later. All the products you scan will appear here, and you\'ll be able to send them using the button below.</string>
+    <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
     <string name="permission_camera">Camera permission is needed to scan barcodes and take pictures.</string>
     <string name="no_camera_dialog_title">Camera not found</string>
     <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
@@ -242,7 +242,7 @@
     <string name="info_download_data_connection">You need to download some data to get this functionality working. Please activate internet connection.</string>
     <!-- Strings related to login -->
     <string name="error_invalid_password">The password needs to be at least 6 characters long.</string>
-    <string name="user">user</string>
+    <string name="user">uzanto</string>
     <string name="error_field_required">This field is required.</string>
     <string name="action_preferences">Preferences</string>
     <string name="prefs_scan_startup">Scan on startup</string>
@@ -250,7 +250,7 @@
     <string name="prefs_power_mode">Power mode scan</string>
     <string name="prefs_power_mode_summary">Quickly scan products in a supermarket to see which ones are not in the database.</string>
     <string name="prefs_language">Lingvo</string>
-    <string name="prefs_language_summary">Ŝanĝi lingvon</string>
+    <string name="prefs_language_summary">Change language</string>
     <!-- Strings related to feedback dialog -->
     <string name="user_enjoying_app">Are you enjoying your experience with Open Food Facts?</string>
     <string name="user_ask_show_feedback_form">We\'re sorry to hear that! Could you tell us what happened?</string>
@@ -276,7 +276,7 @@
     <string name="calculated_nutrition">Calculated Nutrition</string>
     <string name="please_enter_weight">Please type the product weight</string>
     <string name="enter_weight">Type the product weight</string>
-    <string name="calculate_nutrition_facts">Calculate Nutrition Facts</string>
+    <string name="calculate_nutrition_facts">Compute nutrition facts for a specific quantity</string>
     <string name="nutrition_carbohydrate">Karbonhidrato</string>
     <string name="nutrition_cholesterol">Kolesterolo</string>
     <string name="nutrition_energy">Energio</string>
@@ -328,8 +328,8 @@
     <string name="for_100g">Po 100 g</string>
     <string name="for_100ml">For 100 ml</string>
     <string name="serving">Per serving</string>
-    <string name="nutrition_monounsaturatedFat">Mono unsaturated fat</string>
-    <string name="nutrition_polyunsaturatedFat">Poly unsaturated fat</string>
+    <string name="nutrition_monounsaturatedFat">Monounsaturated fat</string>
+    <string name="nutrition_polyunsaturatedFat">Polyunsaturated fat</string>
     <string name="nutrition_omega3">Omego-3</string>
     <string name="nutrition_omega6">Omego-6</string>
     <string name="nutrition_omega9">Omego-9</string>
@@ -378,7 +378,7 @@
     <string name="chlorophyl">Klorofilo</string>
     <string name="take_picture">Take a photo</string>
     <string name="choose_picture_from_gallery">From gallery</string>
-    <string name="take_picture_ingredients">Take a picture of the ingredients</string>
+    <string name="take_picture_ingredients">Take a photo of the ingredients</string>
     <string name="take_picture_front">Take a photo of the front</string>
     <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
     <string name="take_more_pictures">Take more pictures</string>
@@ -414,7 +414,7 @@
     <string name="device_offline_dialog_message">A network connection is needed to do this, would you like to change this in settings?</string>
     <string name="device_offline_dialog_negative">Dismiss</string>
     <string name="device_offline_dialog_positive">Agordoj</string>
-    <string name="scan_first_product">Scan First Product</string>
+    <string name="scan_first_product">Scan your first product</string>
     <string name="preference_delete_search_history">Successfully deleted history</string>
     <string name="preference_enable_mobile_data_title">Upload on mobile data</string>
     <string name="preference_enable_mobile_data_summary_on">Upload new products using mobile data &amp; WiFi</string>
@@ -428,7 +428,7 @@
     <string name="FAQ">FAQ</string>
     <string name="FrequentlyAskedQuestions">Frequently Asked Questions</string>
     <string name="translate_help_title">Help translate Open Food Facts</string>
-    <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
+    <string name="translate_help_summary">Bring Open Food Facts to your language - no technical knowledge required</string>
     <string name="please_check_your_connection">Please check your connection.</string>
     <string name="advanced_search_title">Advanced Search &amp; Charts</string>
     <string name="compare_products">Compare products</string>
@@ -460,7 +460,7 @@
     <string name="logout_dialog_content">Are you sure to log out ?</string>
     <string name="dialog_cancel">Cancel</string>
     <string name="dialog_create">Create</string>
-    <string name="choose_resolution">Choose Resolution</string>
+    <string name="choose_resolution">Choose resolution</string>
     <string name="pref_resolution_summary">Pick a resolution for image upload</string>
     <string name="image_upload_resolution">Image upload resolution</string>
     <string name="wikidata_information">Going further</string>
@@ -488,8 +488,8 @@
     <string name="mineral_tags_text">Mineraloj:</string>
     <string name="other_tags_text">Other Substances:</string>
     <!--shared element transition key-->
-    <string name="disable_image_loading">Disable image loading when battery is low</string>
-    <string name="DisableLoadTitle">Disable image loading</string>
+    <string name="disable_image_loading">Disable photo loading when battery is low</string>
+    <string name="DisableLoadTitle">Disable photo loading</string>
     <string name="by_title">Title</string>
     <string name="by_brand">Varomarko</string>
     <string name="by_barcode">Strekokodo</string>
@@ -581,7 +581,7 @@
     <string name="overview">Resumo</string>
     <string name="ingredients">Ingrediencoj</string>
     <string name="nutrition_facts">Nutrition Facts</string>
-    <string name="your_version">Yours</string>
+    <string name="your_version">Via</string>
     <string name="ingredients_picture">Ingredients Picture</string>
     <string name="take_ingredients_picture_to_extract">(Please take a picture of the ingredients to automatically extract them)</string>
     <string name="ingredients_list">Ingredients List</string>
@@ -614,14 +614,14 @@
     <string name="manufacturing_place">Manufacturing place</string>
     <string name="emb_code">Traceability Code</string>
     <string name="purchasing_details">Purchasing Details</string>
-    <string name="country_where_purchased">Country where purchased</string>
+    <string name="country_where_purchased">Country of purchase</string>
     <string name="stores">Vendejoj</string>
     <string name="additional_pictures">Additional Pictures</string>
     <string name="hint_product_pictures">(Add more pictures of the product. eg: recycling instructions, labels etc.)</string>
     <string name="uploading_image">Sending the photo</string>
-    <string name="uploading_nutrition_image">Uploading nutrition facts image</string>
-    <string name="uploading_ingredients_image">Uploading ingredients image</string>
-    <string name="uploading_front_image">Uploading front image</string>
+    <string name="uploading_nutrition_image">Sending the nutrition facts photo</string>
+    <string name="uploading_ingredients_image">Sending the ingredients photo</string>
+    <string name="uploading_front_image">Sending the front photo</string>
     <string name="edit_front_image">Edit the front photo</string>
     <string name="edit_nutrition_image">Edit the nutrition photo</string>
     <string name="edit_ingredients_image">Edit the ingredients photo</string>
@@ -667,11 +667,11 @@
     <string name="add_category_prompt_text">Add a category to compute the Nutri-Score</string>
     <string name="add_nutrient_category_prompt_text">Add nutrition facts and a category to compute the Nutri-Score</string>
     <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
-    <string name="version_string">Open Food Facts Android App</string>
+    <string name="version_string">Open Food Facts Android app</string>
     <string name="version">Version</string>
-    <string name="set_ingredient_img">Set as ingredients image</string>
-    <string name="set_img_nutrients">Set as nutrition image</string>
-    <string name="set_img_front">Set as front image</string>
+    <string name="set_ingredient_img">Set image as Ingredient</string>
+    <string name="set_img_nutrients">Set Image as Nutrition</string>
+    <string name="set_img_front">Set Image as Front</string>
     <string name="report_img">Report Image</string>
     <string name="detected_ingredients">Detected Ingredients</string>
     <string name="txtConnectionError">We could not download certain data. This may be due to a connection error.</string>
@@ -692,15 +692,15 @@
     <string name="txt_exporting_your_listed_products">Exporting Your Products…</string>
     <string name="txt_your_listed_products_exported">Your products have been exported</string>
     <string name="txt_discard">Discard</string>
-    <string name="txt_info_eaten_products">\"You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"I\'m eating this\".
-        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.\"</string>
+    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"I\'m eating this\".
+        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
     <string name="txt_info_your_listed_products">You\'ll be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
     <string name="search_history_pref_title">Delete local search history</string>
     <string name="search_history_pref_summary">Remove all the searches that you performed on this device</string>
     <string name="search_history_pref_dialog_content">Delete local search history?</string>
     <string name="settings_country_dialog_title">Select your country</string>
     <string name="settings_country_summary">Change your selected country</string>
-    <string name="settings_country_title">Lando</string>
+    <string name="settings_country_title">Country</string>
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
     <string name="image_prompt_language">Take a photo of the ingredients in</string>
     <!-- Used for diets AddOn -->
