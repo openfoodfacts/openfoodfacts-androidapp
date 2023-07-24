@@ -1,55 +1,54 @@
 Bude kayan Kasuwanci shine tsarin bude duk kayayyakin duniya.
 
-*** Bada gudummuwa wajen bayanan samfura ***
+*** Contribute to Product Transparency ***
 
-- Bude Abubuwa na kayan masarufi ne wanda kowa yayi shi, domin kowa da kowa.
-- Kuna iya amfani da shi don yin zaɓi mafi kyau, kuma kamar yadda yake buɗe bayanan, kowa na iya sake amfani dashi don kowane dalili.
-- Batun Kayayyakin Samfuran Kayan Komputa wani shiri ne wanda mai riba ba wanda dubunnan masu ba da agaji na duniya suka kirkira. Munada da yawan abubuwan burgewa wanda zaka iya bada gudumuwa ga kowa ta hanyoyi da yawa. 
-- Kuna iya fara ba da gudummawa a yau ta ƙara samfuranku na farko. 
+- Open Products Facts is a products database made by everyone, for everyone.
+- You can use it to make better choices, and as it is open data, anyone can re-use it for any purpose.
+- Open Products Facts is a non-profit project developed by thousands of volunteers from around the world. Muna da ayyuka masu ban sha'awa da yawa waɗanda zaku iya ba da gudummawarsu ta hanyoyi daban-daban. 
+- You can start contributing today by adding your first product. 
 
-***Samu dalilai***
-- Bude samfuran kayayyaki na taimaka maka ka fahimci ma'anar buga takardu na kyau.
+*** Get the Facts ***
+- Open Products Facts helps you to make sense of the fine print on products labels.
 
-*** karba AAAALL gabadayan abubuwan ***
-- Kuna iya ƙara duk abubuwan dakuka tara
-- Bude abubuwan da ake kira Crayons - Manyan bayanai bude wuraren zane-zanen launi
-- Bude Labarin Abincin Abinci - Mafi girman bayanan bude kayan samfuran na abinci
-- Bude ??? Kayayyaki - Kirkirar bayanan bude shafinku :-)
+*** Collect AAAALL the things ***
+- You can add all the items from your collections
+- Open Crayons Facts - The largest open database of coloring crayons
+- Open Miniature Food Facts - The largest open database of miniature food products
+- Open ??? Facts - Create your own open database :-)
 
-*** Yana aiki da kyau a kowane yanayi ***
+*** Works well in any condition ***
 - Kuna iya ƙara sabbin samfura, koda kuwa ba ku da haɗin Intanet a yanzu.
-- shiga app din na da tsananin dole don rage bayanai dakuma amfani da batir
-- Ba kwa buƙatar kamara don duba samfur. Hakanan zaka iya buga lambar birni idan bakada kyamarar koda da matsala tare da ita.
+- The app loads only the strict necessary to reduce data and battery consumption
+- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
 
-*** Samfuran kayanka, bayanan ka ***
-- Bayananka naka ne, kuma ba a taɓa aika shi ta yanar gizo ba
+*** Your products, your data ***
+- Your personal data is yours, and is never sent online
 - Kuna iya amfani da app ba tare da sani ba
 - Kuna iya fitarwa da tarihin bincikenku
 
-Don abinci, zaku iya shigar da Faɗin Abinci Mai Kyau, don kayan kwalliya, Batun Kayan Kwarewa, da kuma abincin dabbobi, Bude Abincin Abinci.
+For food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for pet food, Open Pet Food Facts.
 
-Bude samfuran Fayil kuma ana samunsu ta yanar gizo akan https://world.openproductsfacts.org
-Tambayoyi, amsoshi : 
-contact@openfoodfacts.org
+Open Products Facts is also available on the web at https://world.openproductsfacts.org
+Tambayoyi, amsawa: kakira@openfoodfacts.org
 
-*** Lissafin wawaye na Afrilu ***
+*** Original April's Fool Listing ***
 
-Jiya da safe, Kunungiyar Abinci game da Abinci na Farko ta farka zuwa wahayi mai ban mamaki. 
+Yesterday morning, the Open Food Facts team woke up to a stunning revelation. 
 
-Tattara abincin duniya, da kayan kwalliya da abincin dabbobi kenan. Tare da mahaukaci cigaba da aka samu a cikin shekarar da ta gabata, lallai ne mu zama kusa da kammala aikinmu na tattara dukkanin abinci da kayan kwalliya a duniya, daidai ne?
+Collecting the world's food, cosmetic and pet food was so passé. With the insane progress made over the past year, we must surely be close to completing our mission to collect all the food and cosmetic products in the world, right ?
 
-Don haka mun kafa don ƙirƙirar ba 1, amma sauran 77000 raba sabon bayanan bayanai! 
+So we set up to create not 1, but other 77000 separate new databases ! 
 
-Bude samfura Gaskiya zai zama babban aiki mai himma. Here are a few of them: 
+Open Products Facts will be an extremely ambitious project. Ga kadan daga cikinsu: 
 
-Open Crayons Facts - The largest open database of coloring crayons
+Bude abubuwan da ake kira Crayons - Manyan manyan bayanan bude wuraren zane-zane masu launi
 
-Open Miniature Food Facts - The largest open database of miniature food products
+Bude Mallakar Abinci game da Abinci - Mafi girman bayanan buɗe bayanan samfuran kayayyakin abinci na
 
-Bude ??? Gaskiya - Babban bude bayanan na ???
+Open ??? Facts - The largest open database of ???
 
-Gobe, zamu zabi bayanai 3 masu matukar dacewa, kuma zamu fara tattara dukkan kayayyakin da suka dace a duniya.
+Tomorrow, we will select the 3 most sucessful databases, and we will start collecting all the matching products in the world.
 
-Shin zai zama tukunyar shara, télécartes, ko bayanan wayoyin hannu? 
+Will it be trash cans, télécartes, or mobile phones database ? 
 
-Don haka idan kuna son t-shirts, littattafan dafa abinci, takarda na origami ko dunƙulewar dusar ƙanƙara, fara bincika amfani da Open Products Facts Android app akan Google Play
+So if you like t-shirts, cooking books, origami paper or snow globes, start scanning using the Open Products Facts Android app on Google Play
