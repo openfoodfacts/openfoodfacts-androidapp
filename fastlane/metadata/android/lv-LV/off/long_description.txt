@@ -1,4 +1,4 @@
-Skenējiet pārtikas produktus vai to svītrkodu, lai iegūtu datus par sastāvdaļām, piedevām un uzturvērtības faktiem.
+Scan food products or their barcode to obtain data on ingredients, additives and nutrition facts.
 
 ▶ Find & Compare more than 800.000 products
 
@@ -21,20 +21,20 @@ To discover the volunteer-run Open Food Facts project, visit https://world.openf
 
 
 ▶ Contribute to Food Transparency
-- Atvērtie pārtikas fakti ir pārtikas produktu datubāze, ko izveido visi, ikvienam.
-- Jūs varat to izmantot, lai labāku ēdienu izvēli, un tā kā tie ir atvērti dati, ikviens to var atkārtoti izmantot jebkuram nolūkam.
-- Atvērtie pārtikas fakti ir bezpeļņas projekts, ko izstrādājuši tūkstošiem brīvprātīgo no visas pasaules. Mums ir daudz interesantu projektu, kuros tu vari piedalīties dažādos veidos.
+- Open Food Facts is a food products database made by everyone, for everyone.
+- You can use it to make better food choices, and as it is open data, anyone can re-use it for any purpose.
+- Open Food Facts is a non-profit project developed by thousands of volunteers from around the world. Mums ir daudz interesantu projektu, kuros tu vari piedalīties dažādos veidos.
 - You can start contributing today by adding a product from your fridge.
 
 ▶ Create lists
 Create shopping lists, track what you've eaten and easily share and export your lists.
 
 ▶ Get the Facts
-- Atvērtie pārtikas fakti palīdz jums izprast smalko druku uz produktu etiķetēm. You will be able to find:
-- oglekļa sastavs (CO2 izmeši) un iepakojums (kā arī pārstrādes instrukcijas),
-- Nutriscore (uztura rādītājs), barības vielas, tauku / tauku saturs, piesātinātās taukskābes, ogļhidrāti, cukuri, šķiedrvielas, olbaltumvielas un sāls un nātrijs.
-- zīmoli, alergēni, etiķetes (bio, bez lipekļa, vegāns, veģetārietis, halal, košers ...), izsekojamības informācija (iepakojuma kodi, sastāvdaļu izcelsme)
-- Uz vīniem un alus atradīsit spirta saturu.
+- Open Food Facts helps you to make sense of the fine print on products labels. You will be able to find:
+- carbon footprint (CO2 emissions) and packaging (as well as recycling instructions),
+- Nutriscore (nutritional score), nutrients, fat / fat content, saturated fatty acids, carbohydrates, sugars, fiber, protein and salt and sodium.
+- brands, allergens, labels (bio, gluten free, vegan, vegetarian, halal, kosher ...), traceability information (packaging codes, origins of ingredients)
+- On wines and beers, you will find the alcohol content.
 
 
 ▶ Based on Science, helping back Science!
@@ -67,10 +67,10 @@ Scan at the speed of light (even if you’re on a plane, submarine or supermarke
 ▶ Say hello and/or join us!
 
 
-Atvērtie pārtikas fakti ir pieejami arī tīmeklī vietnē https://world.openfoodfacts.org
+Open Food Facts is also available on the web at https://world.openfoodfacts.org
 
 
 Jautājumi, atsauksmes: contact@openfoodfacts.org
 
 
-Kosmētikai varat instalēt atvērtos skaistumkopšanas faktus, mājdzīvnieku barībai, atklātos mājdzīvnieku barības faktus un visiem pārējiem produktiem - atklātos produktus.
+For cosmetics, you can install Open Beauty Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.
