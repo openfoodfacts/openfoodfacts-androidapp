@@ -13,7 +13,7 @@ La cronologia completa della scansione, totalmente privata ed esportabile
 
 Vai oltre con Wikipedia
 
-Imposta allerte allergeni
+Imposta avvisi allergeni
 
 Nutrizione, semplificata
 
@@ -35,7 +35,7 @@ Ingredienti
 
 Potente
 
-Informazioni nutrizionali
+Valori nutrizionali
 
 =====================
 Screenshot V3
@@ -65,7 +65,7 @@ Cronologia di scansione illimitata e completamente privata
 
 Scorri per ulteriori dettagli
 
-Imposta avvisi allergeni
+Allarme allergeni
 
 Unisciti al nostro movimento globale per la trasparenza alimentare
 
