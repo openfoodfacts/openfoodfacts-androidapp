@@ -1,4 +1,4 @@
-Open Food Facts ir atvērta datu bāze ar edienu produktiem un to sastāvdaļām, alergēniem, uztura faktiem un informāciju par produktiem, ko varam atrast produktu marķējmos.
+Open Products Facts ir atvērta datu bāze ar edienu produktiem un to sastāvdaļām, alergēniem, uztura faktiem un informāciju par produktiem, ko varam atrast produktu marķējmos.
 
 *** Contribute to Product Transparency ***
 
@@ -7,16 +7,16 @@ Open Food Facts ir atvērta datu bāze ar edienu produktiem un to sastāvdaļām
 - Open Products Facts is a non-profit project developed by thousands of volunteers from around the world. Mums ir daudz interesantu projektu, kuros tu vari piedalīties dažādos veidos. 
 - You can start contributing today by adding your first product. 
 
-*** Iegūt faktus ***
+*** Get the Facts ***
 - Open Products Facts helps you to make sense of the fine print on products labels.
 
 *** Collect AAAALL the things ***
 - You can add all the items from your collections
-- Open Crayons Facts - lielākā atvērtā kritinu datu bāze
-- Open Miniature Food Fact - lielākā atvērtā miniatūru pārtikas produktu datu bāze
+- Open Crayons Facts - The largest open database of coloring crayons
+- Open Miniature Food Facts - The largest open database of miniature food products
 - Open ??? Facts - Create your own open database :-)
 
-*** darbojas labi jebkurā stāvoklī ***
+*** Works well in any condition ***
 - Jūs varat pievienot jaunus produktus, pat ja jums pašlaik nav interneta savienojuma.
 - The app loads only the strict necessary to reduce data and battery consumption
 - You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
@@ -26,29 +26,29 @@ Open Food Facts ir atvērta datu bāze ar edienu produktiem un to sastāvdaļām
 - You can use the app anonymously
 - You can export your scan history
 
-Pārtikas jomā jūs varat instalēt Open Food Facts, kosmētikai, Open Beauty Facts un dzīvnieku barībai Pet Food Facts.
+For food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for pet food, Open Pet Food Facts.
 
 Open Products Facts is also available on the web at https://world.openproductsfacts.org
 Jautājumi, atsauksmes: contact@openfoodfacts.org
 
 *** Original April's Fool Listing ***
 
-Vakar no rīta Open Food Facts komanda pamodās ar pārsteidzošu atklāsmi. 
+Yesterday morning, the Open Food Facts team woke up to a stunning revelation. 
 
-Collecting the world's food, cosmetic and pet food was so passé. Ar pagājušā gada progresu mums noteikti ir jābūt tuvu tam, lai pabeigtu mūsu misiju, lai savāktu visus pārtikas un kosmētikas produktus pasaulē, vai ne?
+Collecting the world's food, cosmetic and pet food was so passé. With the insane progress made over the past year, we must surely be close to completing our mission to collect all the food and cosmetic products in the world, right ?
 
-Tāpēc mēs izveidojām ne 1, bet gan 77000 atsevišķas jaunas datubāzes! 
+So we set up to create not 1, but other 77000 separate new databases ! 
 
-Atvērto produktu fakti būs ļoti vērienīgs projekts. Tālāk ir minēti daži no tiem: 
+Open Products Facts will be an extremely ambitious project. Tālāk ir minēti daži no tiem: 
 
 Open Crayons Facts - lielākā atvērtā kritinu datu bāze
 
 Open Miniature Food Fact - lielākā atvērtā miniatūru pārtikas produktu datu bāze
 
-Open ??? Fakti - lielākā atvērtā datubāze no???
+Open ??? Facts - The largest open database of ???
 
-Rīt mēs izvēlēsimies 3 visveiksmīgākās datubāzes, un mēs sāksim apkopot visus atbilstošos produktus pasaulē.
+Tomorrow, we will select the 3 most sucessful databases, and we will start collecting all the matching products in the world.
 
-Vai tas būs atkritumu kastes, telekartes vai mobilo telefonu datu bāze? 
+Will it be trash cans, télécartes, or mobile phones database ? 
 
-Tātad, ja jums patīk t-krekli, ēdienu gatavošanas grāmatas, origami papīrs vai sniega bumbas, sāciet skenēšanu un pievienot produktus, izmantojot Google Play Open Food Facts Android app
+So if you like t-shirts, cooking books, origami paper or snow globes, start scanning using the Open Products Facts Android app on Google Play
