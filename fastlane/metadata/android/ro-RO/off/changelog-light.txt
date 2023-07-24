@@ -1,34 +1,34 @@
-VERSION 3
+VERSIUNEA 3
 ====
-1. It's easier to contribute new products, and get the Nutri-Score
-2. Create (and export) your product lists (shopping, eating…)
-3. Compare products side by side by scanning them one after the other.
-4. Completely redesigned product page, slide the card up to discover it
-5. Open Food Facts is fully volunteer-run: you can contribute time (world.openfoodfacts.org/contribute) or money (donate.openfoodfacts.org)
+1. Este mai ușor să contribui cu produse noi și să obții Nutri-Score
+2. Creați (și exportați) listele dvs. de produse (cumpărături, mâncare…)
+3. Comparați produsele unul lângă altul, scanându-le unul după altul.
+4. Pagina de produs complet reproiectată, glisați cardul în sus pentru a o descoperi
+5. Open Food Facts este condus în totalitate de voluntari: puteți contribui cu timp (world.openfoodfacts.org/contribute) sau bani (donate.openfoodfacts.org)
 
 
 ======
-v2 ! All OFF volunteers have worked hard, based on your suggestions. We're a more global movement than ever. 500k products freed, 182 countries, 10K+ contributors, incl. you :-)
-1. The NutriScore for all products in the world
-2. Exportable history, for your eyes only
-3. Allergen alerts
-4. Tap additives to explore with Wikipedia.
-5. Take photos, be part of food transparency
-6. Much faster, even on 2G. You can even contribute with no connection
-7. No sign-up required
-8. As light as before :)
+v2 ! Toți voluntarii OFF au muncit din greu, pe baza sugestiilor dvs. Suntem o mișcare mai globală ca niciodată. 500.000 de produse eliberate, 182 de țări, peste 10.000 colaboratori, inclusiv. tu :-)
+1. NutriScore pentru toate produsele din lume
+2. Istoric exportabil, numai pentru ochii tăi
+3. Alerte de alergeni
+4. Atingeți aditivi pentru a explora cu Wikipedia.
+5. Faceți fotografii, faceți parte din transparența alimentelor
+6. Mult mai rapid, chiar și pe 2G. Puteți contribui chiar și fără conexiune
+7. Nu este necesară înregistrarea
+8. La fel de ușoară ca înainte :)
 
-v2.8 ! After the massive V2, all OFF volunteers kept working hard, based on your suggestions. We now clock at 570k products freed from 182 countries by 10K+ contributors, incl. you 🙂
-1. We rebuilt the whole product addition experience (and it even works offline). (thanks Huzaifa)
-2. You can now get nutrition facts for the portion you're eating (Rutvik)
-3. We now compute NOVA groups in addition to the Nutriscore (Huzaifa)
-4. Housecleaning (by Rutvik & Salfai)
-5. 🌎 Korean & Indonesian
+v2.8 ! După V2 masiv, toți voluntarii OFF au continuat să lucreze din greu, pe baza sugestiilor tale. Acum observăm 570.000 de produse eliberate din 182 de țări de peste 10.000 de colaboratori, inclusiv. tu 🙂
+1. Am reconstruit întreaga experiență de adăugare a produsului (și chiar funcționează offline). (mulțumesc Huzaifa)
+2. Acum puteți obține informații nutriționale pentru porția pe care o mâncați (Rutvik)
+3. Acum calculăm grupuri NOVA în plus față de Nutriscore (Huzaifa)
+4. Curățenie (de Rutvik & Salfai)
+5. 🌎 coreeană și indoneziană
 
-2.8.8 ! Thought we would stop at product addition ? All OFF volunteers kept working hard. 590k products, 182 countries, 10K+ contributors, incl. you 🙂
-1. You can now edit any product with your OFF account. Click on ✏️ on a product page to edit.
-2. 🌍 Slovak, Hebrew, Spanish, Arabic, Dutch, Hungarian and Vietnamese (translate.openfoodfacts.org to help)
-3. Open Food Facts is a fully volunteer-run effort: You can donate time (world.openfoodfacts.org/contribute) or money (donate.openfoodfacts.org)
+2.8.8 ! Gândiți-vă că ne vom opri la adăugarea de produse? Toți voluntarii OFF au continuat să muncească din greu. 590.000 de produse, 182 de țări, peste 10.000 colaboratori, inclusiv. tu 🙂
+1. Acum puteți edita orice produs cu contul OFF. Faceți clic pe ✏️ pe pagina unui produs pentru a edita.
+2. 🌍 Slovacă, ebraică, spaniolă, arabă, olandeză, maghiară și vietnameză (translate.openfoodfacts.org pentru a vă ajuta)
+3. Open Food Facts este un efort condus în totalitate de voluntari: puteți dona timp (world.openfoodfacts.org/contribute) sau bani (donate.openfoodfacts.org)
 
 
 
