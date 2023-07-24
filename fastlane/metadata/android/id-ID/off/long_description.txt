@@ -1,4 +1,4 @@
-Pindai produk makanan atau kode batangnya untuk mendapatkan data tentang bahan, aditif, dan fakta nutrisi.
+Scan food products or their barcode to obtain data on ingredients, additives and nutrition facts.
 
 ▶ Find & Compare more than 800.000 products
 
@@ -17,29 +17,29 @@ To discover the volunteer-run Open Food Facts project, visit https://world.openf
 - Get a sense of how much of your daily carbon quota you're using for food
 - Based on the footprints computed for France by ADEME.
 - Join us and help us to bring the Carbon Impact to your country!
-- To display a Carbon Impact, a product must have a complete ingredient list with % of meat or fish and a quantity
+Harga
 
 
 ▶ Contribute to Food Transparency
-Open food facts adalah basis data produk makanan yang dibuat oleh semua orang, untuk siapapun.
-Anda bisa menggunakannya untuk membuat pilihan makanan yang lebih baik, dan karena itu merupakan data terbuka, siapapun bisa menggunakannya kembali untuk kepentingan apapun.
-Open Food Facts adalah sebuah proyek nirlaba yang dikembangkan oleh ribuan relawan dari seluruh dunia. Ada banyak proyek menyenangkan yang bisa diikuti dengan berbagai cara.
+- Open Food Facts is a food products database made by everyone, for everyone.
+- You can use it to make better food choices, and as it is open data, anyone can re-use it for any purpose.
+- Open Food Facts is a non-profit project developed by thousands of volunteers from around the world. Kami memiliki banyak proyek menyenangkan yang padanya Anda dapat berkontribusi dengan berbagai cara.
 - You can start contributing today by adding a product from your fridge.
 
 ▶ Create lists
 Create shopping lists, track what you've eaten and easily share and export your lists.
 
-▶ Get the Facts
-Open Food Facts membantu anda untuk memahami cetakan pada label produk. You will be able to find:
-Jejak karbon (emisi CO2) dan kemasan (serta instruksi daur ulang),
-Nutriscore (skor nutirisi), nutrisi, lemak / kandungan lemak, asam lemak jenuh, karbohidrat, gula, serat, protein dan garam dan sodium.
-Merek, alergen, label (bio, bebas gluten, vegan, vegetarian, halal, kosher ...), informasi yang dapat ditelusuri (kode kemasan, asal bahan)
-Pada minuman anggur dan bir, anda akan menemukan kandungan alkoholnya.
+▶ Dapatkan Faktanya
+- Open Food Facts helps you to make sense of the fine print on products labels. Anda akan dapat menemukan:
+- carbon footprint (CO2 emissions) and packaging (as well as recycling instructions),
+- Nutriscore (nutritional score), nutrients, fat / fat content, saturated fatty acids, carbohydrates, sugars, fiber, protein and salt and sodium.
+- merek, alergen, label (bio, bebas gluten, vegan, vegetarian, halal, kosher ...), informasi keterlacakan (kode kemasan, asal usul bahan)
+- On wines and beers, you will find the alcohol content.
 
 
 ▶ Based on Science, helping back Science!
 
-- We don't make up things. We rely on peer-reviewed science.
+- We don't make up things. Kami mengandalkan sains yang diulas rekan ilmuwan lainnya.
 - The Nutri-Score has been created by the independent French team led by Professor Hercberg.
 - The NOVA groups on food processing have been designed by the international team of Professor Monteiro.
 - You can get a synthesis of EFSA exposure levels on food additives.
@@ -50,27 +50,27 @@ Pada minuman anggur dan bir, anda akan menemukan kandungan alkoholnya.
 Scan at the speed of light (even if you’re on a plane, submarine or supermarket)
 
 - The whole planet, in your pocket !
-- Bisa menambahkan produk, bahkan tanpa koneksi internet.
-- The app loads only the strict necessary to reduce data and battery consumption.
+- Anda dapat menambahkan produk - produk baru, bahkan jika Anda tidak memiliki koneksi Internet saat ini.
+- Aplikasi hanya memuat data yang diperlukan untuk mengurangi konsumsi data dan baterai.
 
 ▶ Your food, your data
-- Datamu adalah milikmu, tidak akan diunggah
-- Bisa menggunakan aplikasi secara anonim
-- Bisa mengekspor riwayat pemindaian
+- Data Anda adalah milik Anda, dan tidak pernah dikirim secara online
+- Anda bisa menggunakan aplikasi secara anonim
+- Anda dapat mengekspor riwayat pemindaian Anda
 
 ▶ Set up allergen alerts on products
 - Milk, Gluten, Eggs, Soybeans, Nuts, Fish, Celery, Mustard, Sulphur dioxide and sulphites, Peanuts, Sesame seeds, Crustaceans, Molluscs or Lupin allergy ?
 - Speed up your shopping by doing an initial screening of your food with Open Food Facts.
-- Be careful that the information may not be 100% accurate, and detection may not be 100% accurate. So always double check by yourself, with the packaging.
+- Be careful that the information may not be 100% accurate, and detection may not be 100% accurate. Jadi selalu periksa sendiri kemasannya.
 
 
 ▶ Say hello and/or join us!
 
 
-Open Food Facts juga tersedia pada web di https://world.openfoodfacts.org
+Open Food Facts is also available on the web at https://world.openfoodfacts.org
 
 
 Pertanyaan, umpan balik: contact@openfoodfacts.org
 
 
-Untuk kosmetik, anda dapat menginstal Open Beauty Facts, untuk makanan hewan peliharaan, Open Pet Food Facts, dan untuk produk lainnya, Open Products Facts.
+For cosmetics, you can install Open Beauty Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.
