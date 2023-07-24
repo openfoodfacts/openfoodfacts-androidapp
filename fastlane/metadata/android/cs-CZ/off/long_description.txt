@@ -1,4 +1,4 @@
-Naskenujte potraviny, nebo jejich čárové kódy, abyste získali informaci o jejich složení, přídatných látkách a výživové hodnotě.
+Scan food products or their barcode to obtain data on ingredients, additives and nutrition facts.
 
 ▶ Find & Compare more than 800.000 products
 
@@ -7,70 +7,70 @@ The app allows to view the 800.000 products (including 175.000 in the US) alread
 
 To discover the volunteer-run Open Food Facts project, visit https://world.openfoodfacts.org
 
-▶ Choose the products that are good for you
-- The Nutri-Score grade, from "A" to "E" >> Nutritional quality
-- The NOVA group, from "1" to "4" >> Find the Ultra-Processed food
+▶ Vyberte si produkty, které jsou pro vás dobré
+- Stupeň Nutri-Score, od "A" do "E" >> Nutriční kvalita
+- Skupina NOVA, od "1" do "4" >> Najděte ultra zpracované potraviny
 - You can easily compare as many products as you want, side by side by simply scanning them. 
 
-▶ And good for the planet!
-- The carbon impact of your food
-- Get a sense of how much of your daily carbon quota you're using for food
-- Based on the footprints computed for France by ADEME.
-- Join us and help us to bring the Carbon Impact to your country!
-- To display a Carbon Impact, a product must have a complete ingredient list with % of meat or fish and a quantity
+▶ A dobré pro planetu!
+- Uhlíková stopa vašeho jídla
+- Získejte představu o tom, kolik z vaší denní kvóty uhlíku používáte na jídlo
+- Na základě stop vypočítaných pro Francii společností ADEME.
+- Připojte se k nám a pomozte nám přinést Carbon Impact do vaší země!
+- Pro zobrazení uhlíkového dopadu musí mít produkt úplný seznam složek s % masa nebo ryb a množstvím
 
 
-▶ Contribute to Food Transparency
-- Open Food Facts is a food products database made by everyone, for everyone.
-- You can use it to make better food choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Food Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways.
-- You can start contributing today by adding a product from your fridge.
+▶ Přispějte k transparentnosti potravin
+- Open Food Facts je databáze potravinářských výrobků vytvořená každým a pro každého.
+- Můžete je použít k lepšímu výběru potravin, a protože se jedná o otevřená data, může je kdokoli znovu použít pro jakýkoli účel.
+- Open Food Facts je neziskový projekt vyvinutý tisíci dobrovolníků z celého světa. Máme spoustu zajímavých projektů, můžete přispět mnoha různými způsoby.
+- Dnes můžete začít přispívat přidáním produktu z vaší lednice.
 
 ▶ Create lists
 Create shopping lists, track what you've eaten and easily share and export your lists.
 
-▶ Get the Facts
-- Open Food Facts helps you to make sense of the fine print on products labels. You will be able to find:
-- carbon footprint (CO2 emissions) and packaging (as well as recycling instructions),
-- Nutriscore (nutritional score), nutrients, fat / fat content, saturated fatty acids, carbohydrates, sugars, fiber, protein and salt and sodium.
-- brands, allergens, labels (bio, gluten free, vegan, vegetarian, halal, kosher ...), traceability information (packaging codes, origins of ingredients)
-- On wines and beers, you will find the alcohol content.
+▶ Získejte fakta
+- Open Food Facts vám pomůže pochopit drobný tisk na etiketách produktů. Budete moci najít:
+- uhlíková stopa (emise CO2) a obaly (stejně jako pokyny k recyklaci),
+- Nutriscore (nutriční skóre), živiny, obsah tuku / tuku, nasycené mastné kyseliny, sacharidy, cukry, vláknina, bílkoviny a sůl a sodík.
+- značky, alergeny, etikety (bio, bezlepkové, veganské, vegetariánské, halal, košer ...), informace o sledovatelnosti (kódy obalů, původ surovin)
+- U vín a piv najdete obsah alkoholu.
 
 
-▶ Based on Science, helping back Science!
+▶ Založeno na vědě, pomáháme vědě!
 
-- We don't make up things. We rely on peer-reviewed science.
-- The Nutri-Score has been created by the independent French team led by Professor Hercberg.
-- The NOVA groups on food processing have been designed by the international team of Professor Monteiro.
-- You can get a synthesis of EFSA exposure levels on food additives.
-- The Open Food Facts community is collaborating with research teams across the planet to improve nutrition research that benefits all.
+- My si věci nevymýšlíme. Spoléháme na odborně přezkoumanou vědu.
+- Nutri-Score vytvořil nezávislý francouzský tým pod vedením profesora Hercberga.
+- Skupiny NOVA pro zpracování potravin byly navrženy mezinárodním týmem profesora Monteira.
+- Můžete získat syntézu úrovní expozice EFSA u potravinářských přídatných látek.
+- Komunita Open Food Facts spolupracuje s výzkumnými týmy po celé planetě na zlepšení výzkumu výživy, který je přínosný pro všechny.
 
 
-▶ Offline Scan: Scan in ANY condition! (coming soon)
-Scan at the speed of light (even if you’re on a plane, submarine or supermarket)
+▶ Offline skenování: Skenujte za JAKÝCHKOLI podmínek! (coming soon)
+Skenujte rychlostí světla (i když jste v letadle, ponorce nebo supermarketu)
 
-- The whole planet, in your pocket !
-- You can add new products, even if you don't have an Internet connection right now.
-- The app loads only the strict necessary to reduce data and battery consumption.
+- Celá planeta ve vaší kapse!
+- Můžete přidávat nové produkty, i když právě nemáte připojení k internetu.
+- Aplikace načte pouze to nejnutnější, aby se snížila spotřeba dat a baterie.
 
-▶ Your food, your data
-- Your data is yours, and is never sent online
+▶ Vaše jídlo, vaše data
+- Vaše data jsou Vaše a nikdy nejsou odesílána online
 - Aplikaci můžete používat anonymně
 - Můžete exportovat vlastní historii skenování
 
-▶ Set up allergen alerts on products
-- Milk, Gluten, Eggs, Soybeans, Nuts, Fish, Celery, Mustard, Sulphur dioxide and sulphites, Peanuts, Sesame seeds, Crustaceans, Molluscs or Lupin allergy ?
-- Speed up your shopping by doing an initial screening of your food with Open Food Facts.
-- Be careful that the information may not be 100% accurate, and detection may not be 100% accurate. So always double check by yourself, with the packaging.
+▶ Nastavte u produktů upozornění na alergeny
+- Mléko, lepek, vejce, sójové boby, ořechy, ryby, celer, hořčice, oxid siřičitý a siřičitany, arašídy, sezamová semínka, korýši, měkkýši nebo alergie na lupinu?
+- Urychlete své nakupování tím, že provedete úvodní kontrolu vašich potravin pomocí Open Food Facts.
+- Buďte opatrní, že informace nemusí být 100% přesné a detekce nemusí být 100% přesná. Vždy se proto dvakrát podívejte sami na obal.
 
 
-▶ Say hello and/or join us!
+▶ Řekněte ahoj a/nebo se k nám připojte!
 
 
 Open Food Facts is also available on the web at https://world.openfoodfacts.org
 
 
-Questions, feedback : contact@openfoodfacts.org
+Otázky, zpětná vazba: contact@openfoodfacts.org
 
 
 For cosmetics, you can install Open Beauty Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.
