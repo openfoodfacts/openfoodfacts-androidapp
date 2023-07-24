@@ -1,8 +1,8 @@
-قم بالمسح الضوئي لمنتجات أغذية الحيوانات الأليفة أو الباركود الخاص بهم للحصول على بيانات عن المكونات والمواد المضافة وحقائق التغذية.
+Scan pet food products or their barcode to obtain data on ingredients, additives and nutrition facts.
 
 يسمح التطبيق بعرض أكثر من ٦٠٠ من منتجات أغذية الحيوانات الأليفة الموجودة بالفعل في قاعدة البيانات المجانية والمفتوحة Open Pet Food Facts ، وكذلك لإضافة صور وبيانات للمنتجات المفقودة.
 
-لاكتشاف مشروع Open Pet Food Facts ، يرجى زيارة https://world.openpetfoodfacts.org
+To discover the Open Pet Food Facts project, please visit https://world.openpetfoodfacts.org
 
 ***Contribute to Pet Food Transparency***
 
@@ -26,7 +26,7 @@
 - You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
 
 *** طعام حيوانك الأليف، بياناتك ***
-- بياناتك الشخصية تخصك وحدك ، ولا يتم إرسالها أبدًا عبر الإنترنت
+- Your personal data is yours, and is never sent online
 - You can use the app anonymously
 - You can export your scan history
 
