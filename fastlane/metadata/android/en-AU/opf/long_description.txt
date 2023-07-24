@@ -1,4 +1,4 @@
-Open Food Facts is an open database of food products with ingredients, allergens, nutrition facts and all the tidbits of information we can find on product labels.
+Open Products Facts is an open database of food products with ingredients, allergens, nutrition facts and all the tidbits of information we can find on product labels.
 
 *** Contribute to Product Transparency ***
 
@@ -10,7 +10,7 @@ Open Food Facts is an open database of food products with ingredients, allergens
 *** Get the Facts ***
 - Open Products Facts helps you to make sense of the fine print on products labels.
 
-*** Collect Everything!!!! ***
+*** Collect AAAALL the things ***
 - You can add all the items from your collections
 - Open Crayons Facts - The largest open database of coloring crayons
 - Open Miniature Food Facts - The largest open database of miniature food products
@@ -22,7 +22,7 @@ Open Food Facts is an open database of food products with ingredients, allergens
 - You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
 
 *** Your products, your data ***
-- Your personal data is yours, and is never put online
+- Your personal data is yours, and is never sent online
 - You can use the app anonymously
 - You can export your scan history
 
@@ -37,7 +37,7 @@ Yesterday morning, the Open Food Facts team woke up to a stunning revelation.
 
 Collecting the world's food, cosmetic and pet food was so passé. With the insane progress made over the past year, we must surely be close to completing our mission to collect all the food and cosmetic products in the world, right ?
 
-So we made not 1, but other 77000 new databases! 
+So we set up to create not 1, but other 77000 separate new databases ! 
 
 Open Products Facts will be an extremely ambitious project. Here are a few of examples: 
 
@@ -49,6 +49,6 @@ Open ??? Facts - The largest open database of ???
 
 Tomorrow, we will select the 3 most sucessful databases, and we will start collecting all the matching products in the world.
 
-Could it be trash cans, Phone Cards or mobile phone databases; who knows? 
+Will it be trash cans, télécartes, or mobile phones database ? 
 
 So if you like t-shirts, cooking books, origami paper or snow globes, start scanning using the Open Products Facts Android app on Google Play
