@@ -1,1 +1,1 @@
-Відскануйте харчові продукти, щоб розшифрувати етикетки: інгредієнти, добавки та факти харчування
+Scan food products to decrypt labels: ingredients, additives and nutrition facts
