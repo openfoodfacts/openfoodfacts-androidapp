@@ -1,4 +1,4 @@
-Imbas produk makanan atau kod barnya untuk perolehi data tentang fakta ramuan, aditif dan nutrisi.
+Scan food products or their barcode to obtain data on ingredients, additives and nutrition facts.
 
 ▶ Find & Compare more than 800.000 products
 
@@ -7,70 +7,70 @@ The app allows to view the 800.000 products (including 175.000 in the US) alread
 
 To discover the volunteer-run Open Food Facts project, visit https://world.openfoodfacts.org
 
-▶ Choose the products that are good for you
-- The Nutri-Score grade, from "A" to "E" >> Nutritional quality
-- The NOVA group, from "1" to "4" >> Find the Ultra-Processed food
+▶ Pilihlah produk yang baik untuk anda
+- Gred Nutri-Score, daripada "A" hingga "E" >> Kualiti pemakanan
+- Kumpulan NOVA, dari "1" hingga "4" >> Cari makanan yang diUltra-Diproses
 - You can easily compare as many products as you want, side by side by simply scanning them. 
 
-▶ And good for the planet!
-- The carbon impact of your food
-- Get a sense of how much of your daily carbon quota you're using for food
-- Based on the footprints computed for France by ADEME.
-- Join us and help us to bring the Carbon Impact to your country!
-- To display a Carbon Impact, a product must have a complete ingredient list with % of meat or fish and a quantity
+▶ Dan baik untuk planet ini!
+- Kesan karbon makanan anda
+- Dapatkan gambaran tentang berapa banyak kuota karbon harian anda yang anda gunakan untuk makanan
+- Berdasarkan jejak yang dikira untuk Perancis oleh ADEME.
+- Sertailah kami dan bantulah kami untuk membawa Kesan Karbon ke negara anda!
+- Untuk memaparkan Kesan Karbon, sesuatu produk mestilah mempunyai senarai ramuan lengkap dengan % daging atau ikan dan kuantiti
 
 
-▶ Contribute to Food Transparency
-- Fakta Makanan Terbuka adalah pangkalan data yang dibuat oleh semua orang, untuk semua orang.
-- Anda boleh gunakannya untuk membuat pilihan makanan yang lebih baik, dan oleh sebab ia adalah data terbuka, sesiapa pun boleh ulang guna untuk sebarang tujuan.
-- Fakta Makanan Terbuka adalah projek bukan berasaskan keuntungan yang dibangunkan oleh ribuan sukarelawan dari seluruh dunia. Kami ada banyak projek menarik boleh anda sumbangkan dalam pelbagai cara.
-- You can start contributing today by adding a product from your fridge.
+▶ Menyumbang kepada Ketelusan Makanan
+- Fakta Makanan Terbuka ialah pangkalan data produk makanan yang dibuat oleh semua orang, untuk semua orang.
+- Anda boleh menggunakannya untuk membuat pilihan makanan yang lebih baik, dan kerana ia adalah data terbuka, sesiapa sahaja boleh menggunakannya semula untuk sebarang tujuan.
+- Fakta Makanan Terbuka adalah projek bukan untung yang dibangunkan oleh beribu-ribu sukarelawan dari seluruh dunia. Kami ada banyak projek menarik boleh anda sumbangkan dalam pelbagai cara.
+- Anda boleh mula menyumbang hari ini dengan menambah produk dari peti sejuk anda.
 
 ▶ Create lists
 Create shopping lists, track what you've eaten and easily share and export your lists.
 
 ▶ Get the Facts
-- Fakta Makanan Terbuka membantu anda membuat pertimbangan munasabah maklumat tertera pada label produk. You will be able to find:
+- Fakta Makanan Terbuka membantu anda memahami cetakan halus pada label produk. You will be able to find:
 - jejak karbon (pelepasan CO2) dan pembungkusan (serta arahan kitar semula),
-- Nutriscore (skor pemakanan), nutrien, lemak / kandungan lemak, asid lemak tepu, karbohidrat, gula, serat, protein dan garam dan natrium.
-- jenama, alergen, label (bio, bebas gluten, vegan, vegetarian, halal, kosher ...), maklumat kebolehkesanan (kod pembungkusan, packaging codes, asal-usul ramuan)
-- Pada wain dan bir, anda boleh dapati kandungan alkohol.
+- Nutriscore (skor pemakanan), nutrien, kandungan lemak/lemak, asid lemak tepu, karbohidrat, gula, serat, protein dan garam serta natrium.
+- brands, allergens, labels (bio, gluten free, vegan, vegetarian, halal, kosher ...), traceability information (packaging codes, origins of ingredients)
+- Pada wain dan bir, anda akan mendapati kandungan alkohol.
 
 
-▶ Based on Science, helping back Science!
+▶ Berdasarkan Sains, membantu kembali Sains!
 
-- We don't make up things. We rely on peer-reviewed science.
-- The Nutri-Score has been created by the independent French team led by Professor Hercberg.
-- The NOVA groups on food processing have been designed by the international team of Professor Monteiro.
-- You can get a synthesis of EFSA exposure levels on food additives.
-- The Open Food Facts community is collaborating with research teams across the planet to improve nutrition research that benefits all.
+- Kami tidak mengada-adakan sesuatu. We rely on peer-reviewed science.
+- Nutri-Score telah diwujudkan oleh pasukan bebas Perancis yang diketuai oleh Profesor Hercberg.
+- Kumpulan NOVA mengenai pemprosesan makanan telah direka bentuk oleh pasukan antarabangsa Profesor Monteiro.
+- Anda boleh mendapatkan sintesis tahap pendedahan EFSA pada bahan tambahan makanan.
+- Komuniti Fakta Makanan Terbuka sedang bekerjasama dengan pasukan penyelidik di seluruh planet untuk menambah baik penyelidikan pemakanan yang memberi manfaat kepada semua.
 
 
-▶ Offline Scan: Scan in ANY condition! (coming soon)
-Scan at the speed of light (even if you’re on a plane, submarine or supermarket)
+▶ Imbasan Luar Talian: Imbas dalam SEBARANG keadaan! (coming soon)
+Imbas pada kelajuan cahaya (walaupun jika anda berada di dalam kapal terbang, kapal selam atau pasar raya)
 
-- The whole planet, in your pocket !
+- Seluruh planet, dalam poket anda!
 - You can add new products, even if you don't have an Internet connection right now.
 - The app loads only the strict necessary to reduce data and battery consumption.
 
-▶ Your food, your data
+▶ Makanan anda, data anda
 - Your data is yours, and is never sent online
 - You can use the app anonymously
 - You can export your scan history
 
-▶ Set up allergen alerts on products
-- Milk, Gluten, Eggs, Soybeans, Nuts, Fish, Celery, Mustard, Sulphur dioxide and sulphites, Peanuts, Sesame seeds, Crustaceans, Molluscs or Lupin allergy ?
-- Speed up your shopping by doing an initial screening of your food with Open Food Facts.
-- Be careful that the information may not be 100% accurate, and detection may not be 100% accurate. So always double check by yourself, with the packaging.
+▶ Tetapkan amaran alergen pada produk
+- Susu, Gluten, Telur, Kacang Soya, Kacang, Ikan, Saderi, Biji Sawi, Sulfur dioksida dan sulfit, Kacang Tanah, Bijan, Krustasea, Moluska atau alahan Lupin ?
+- Percepatkan pembelian anda dengan melakukan saringan awal makanan anda dengan Fakta Makanan Terbuka.
+- Berhati-hati bahawa maklumat mungkin tidak 100% tepat, dan pengesanan mungkin tidak 100% tepat. So always double check by yourself, with the packaging.
 
 
-▶ Say hello and/or join us!
+▶ Tanya khabar dan/atau sertai kami!
 
 
-Fakta Makanan Terbuka juga boleh didapati pada web di https://world.openfoodfacts.org
+Open Food Facts is also available on the web at https://world.openfoodfacts.org
 
 
 Pertanyaan, maklum balas: contact@openfoodfacts.org
 
 
-Untuk kosmetik, anda boleh pasang Fakta Kecantikan Terbuka, untuk makanan haiwan peliharaan, Fakta Makanan Haiwan Peliharaan Terbuka, dan untuk semua produk lain, Fakta Produk Terbuka.
+For cosmetics, you can install Open Beauty Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.
