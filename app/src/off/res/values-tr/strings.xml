@@ -19,7 +19,7 @@
     <string name="slide_3_desc">Favori gıda ürünlerinizin besin özelliklerinin sentetik bir görünümü</string>
     <string name="slide_4_title">Çevrimdışı çalışır</string>
     <string name="slide_4_desc">Şu anda internet bağlantınız olmasa dahi yeni ürünler ekleyebilirsiniz</string>
-    <string name="txtDialogsContent">Aradığınız ürün Open Food Facts\'te mevcut değil. Lütfen ekleyin.</string>
+    <string name="txtDialogsContent">Taradığınız ürün henüz Open Food Facts\'te mevcut değil. Lütfen ekleyin.</string>
     <string name="txtDialogsContentPowerMode">Aradığınız ürün Open Food Facts\'te zaten mevcut.</string>
     <string name="msg_share">Bu ürüne Open Food Facts\'te bak :</string>
     <string name="not_support_books">Kitaplar şu anda Open Food Facts tarafından desteklenmemektedir</string>
@@ -28,9 +28,9 @@
     <string name="translate_help_title">Open Food Facts\'i tercüme etmeye yardımcı olun</string>
     <string name="translate_help_summary">Open Food Facts veritabanını kendi dilinize kazandırın - teknik bilgi gerektirmez</string>
     <string name="text_offline_info_dialog">Ürünleri Open Food Facts\'e daha sonra ekleyebilmek için çevrimdışı olduğunuzda dahi tarayın. Taranan ürünler burada görünecek ve aşağıdaki butonu kullanarak gönderebileceksiniz.</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Alerji bilgileriniz kesinlikle Open Food Facts sunucusuna gönderilmeyecektir. Ayrıca, ürün bilgileri ve ürün tespitinde hatalar olabileceği için kendiniz tekrar kontrol ediniz!</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Alerji Bilgileriniz asla Open Food Facts sunucusuna gönderilmeyecektir. Aynı zamanda ürün verilerinin kesin olmayabileceği ve algılamanın %100 hassas olmayabileceği konusunda dikkatli olun, bu yüzden lüften kendiniz iki kere kontrol edin!</string>
     <!-- OFF tagline in different languages -->
     <string name="tagline">ücretsiz gıda ürünleri veritabanı</string>
-    <string name="product_not_found">Taradığınız %1$s ürünü henüz Open Food Facts\'te mevcut değil. Ekleyebilir misiniz?</string>
+    <string name="product_not_found">Taradığın ürün henüz Open Beauty Facts\'de bulunmamaktadır. Onu sen ekleyebilir misin?</string>
     <string name="currently_on_version">Open Food Facts\'te mevcut olan</string>
 </resources>
