@@ -19,7 +19,7 @@
     <string name="slide_3_desc">Синтетический взгляд на пищевые свойства ваших любимых продуктов питания</string>
     <string name="slide_4_title">Работать автономно</string>
     <string name="slide_4_desc">Вы можете добавлять новые продукты, даже если у вас нет подключения к Интернету прямо сейчас</string>
-    <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
+    <string name="txtDialogsContent">Отсканированный вами продукт пока не существует в Open Food Facts. Пожалуйста, добавьте его.</string>
     <string name="txtDialogsContentPowerMode">Просканированный продукт уже внесён в Open Food Facts.</string>
     <string name="msg_share">Посмотрите на этот продукт на Open Food Facts:</string>
     <string name="not_support_books">В настоящее время книги не поддерживаются в Open Food Facts</string>
@@ -28,7 +28,7 @@
     <string name="translate_help_title">Помогите перевести Open Food Facts</string>
     <string name="translate_help_summary">Перевести базу данных Open Food Facts на ваш родной язык - никаких технических знаний не требуется</string>
     <string name="text_offline_info_dialog">Сканируйте продукты, когда вы не подключены к сети, чтобы добавить их в Open Food Facts позже. Все продукты, которые вы отсканируете, будут отображаться здесь, и вы сможете отправить их, используя кнопку ниже.</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Информация о ваших аллергенах не будет отправлена на сервер Open Food Facts. Будьте осторожны, данные о продукте могут быть не точны и обнаружение может быть не 100% точным, поэтому, пожалуйста, перепроверяйте данные лично!</string>
     <!-- OFF tagline in different languages -->
     <string name="tagline">бесплатная база данных продуктов</string>
     <string name="product_not_found">Продукта %1$s, который Вы отсканировали, еще нет в базе Open Food Facts. Вы можете его добавить?</string>
