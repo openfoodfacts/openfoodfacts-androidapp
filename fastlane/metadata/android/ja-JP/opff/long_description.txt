@@ -1,8 +1,8 @@
-Scan pet food products or their barcode to obtain data on ingredients, additives and nutrition facts.
+原材料、添加物、栄養成分に関するデータを取得するため、食品またはそのバーコードをスキャンしてください。
 
 The app allows to view the over 600 pet food products already contained in the free and open database Open Pet Food Facts, and also to add pictures and data for missing products.
 
-To discover the Open Pet Food Facts project, please visit https://world.openpetfoodfacts.org
+Open Food Facts をより知るためには、https://world.openpetfoodfacts.orgをご覧ください
 
 ***Contribute to Pet Food Transparency***
 
@@ -18,7 +18,7 @@ You will also be able to find (according to the indications present on the produ
 - list of ingredients (including ash content)
 - nutritional info, nutrition traffic lights…
 - brands, allergens, labels (organic, vegan...)
--ドッグフード（ドライドッグフードとウェットドッグフード）、キャットフード、ウサギフード、スネークフード、フィッシュフード、バードフード、ホースフード、またはお気に入りの動物用のあらゆるフードで機能します。
+- It works with dog food (dry dog food & wet dog food), cat food, rabbit food, snake food, fish food, bird food, horse food or any food for your favorite animal.
 
 *** Works well in any condition ***
 - 今インターネットに接続していなくても、新製品を追加できます.
