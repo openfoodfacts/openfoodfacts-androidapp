@@ -1,31 +1,31 @@
-***Contribute to Cosmetic Transparency***
+***Допринеси за козметичната прозрачност***
 
-- Open Beauty Facts is a cosmetic products database made by everyone, for everyone.
-- You can use it to make better cosmetic choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Beauty Facts is a non-profit project developed by thousands of volunteers from around the world. Имаме много вълнуващи проекти, на които можете да допринесете по много различни начини. 
-- You can start contributing today by adding a product from your cosmetic cupboard. 
+- Open Beauty Facts е база данни за козметични продукти, създадена от всеки, за всеки.
+- Можете да го използвате, за да правите по-добри козметични избори и тъй като е с отворени данни, всеки може да го използва повторно за всякакви цели.
+- Open Beauty Facts е проект с нестопанска цел, разработен от хиляди доброволци от цял свят. Имаме много вълнуващи проекти, на които можеш да допринесеш по много различни начини. 
+- Можете да започнете да допринасяте днес, като добавите продукт от вашия козметичен шкаф. 
 
-*** Запознайте се с фактите ***
+*** Get the Facts ***
 
 - Cosmetics additives, F.I.L. codes, CI-numbers, INCI (International Nomenclature of Cosmetic Ingredients), ingredient list, allergens, packaging codes... 
 - Open Beauty Facts helps you to make sense of the fine print on products labels.
 - You don't need to be a chemist and learn latin anymore to decypher an ingredient list :-)
-- You can scan: aftershaves, body lotions, creams, deodorant, eyeliner, foundation, fragrance, lipstick, makeup, mask, perfume, shampoo, soap, shower gel, nail polish and much more…
-- We think it can be useful for people with skin conditions like acne, psoriasis, eczema… to make better cosmetic choices.
+- Можете да сканирате: лосиони за след бръснене, лосиони за тяло, кремове, дезодоранти, очна линия, фон дьо тен, аромат, червило, грим, маска, парфюм, шампоан, сапун, душ гел, лак за нокти и много други…
+- Смятаме, че може да бъде полезно за хора с кожни заболявания като акне, псориазис, екзема…, за да направят по-добър избор на козметика.
 
-*** Works well in any condition ***
-- You can add new products, even if you don't have an Internet connection right now.
+*** Работи добре във всички условия ***
+- Можете да добавяте нови продукти, дори ако в момента нямате интернет връзка.
 - The app loads only the strict necessary to reduce data and battery consumption
-- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
+- Нямате нужда от камера, за да търсите продукт. Можете също да въведете баркода, ако ви липсва камера или имате проблем с нея.
 
-*** Your cosmetics, your data ***
-- Your data is yours, and is never sent online
-- You can use the app anonymously
-- You can export your scan history
+*** Вашата козметика, вашите данни ***
+- Вашите данни са ваши и никога не се изпращат онлайн
+- Можете да използвате приложението анонимно
+- Можете да изнасяте вашата история на сканиране
 
-Note: Open Beauty Facts is being built, the site and the application are based on Open Food Facts and changes will be made to take into account the specificities of cosmetics.
+Бележка: Open Beauty Facts се изгражда, сайтът и приложението са базирани на Open Food Facts и ще бъдат направени промени, за да се вземат предвид спецификите на козметиката.
 
-Open Beauty Facts is also available on the web at https://world.openbeautyfacts.org
+Open Beauty Facts е достъпен и в мрежата на https://world.openbeautyfacts.org
 Въпроси, коментари и обратна връзка : contact@openfoodfacts.org
 
-For human food, you can install Open Food Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.
+За човешката храна можеш да инсталираш Open Food Facts, за храна за домашни любимци, Open Pet Food Facts, а за всички други продукти Open Products Facts.
