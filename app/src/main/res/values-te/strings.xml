@@ -42,7 +42,7 @@
     <string name="product_incomplete_message">ఈ ఉత్పత్తి పూర్తి కాలేదు. ఫలితంగా, మేము అలెర్జీ చెక్ చేయలేము.</string>
     <string name="product_allergen_prompt">This product contains:</string>
     <string name="no_offline_data">మీరు పూర్తి చేసారు</string>
-    <string name="first_offline">ఆఫ్లైన్ జోడించిన ఉత్పత్తులు ఇక్కడ కనిపిస్తాయి</string>
+    <string name="first_offline">Products added offline will appear here</string>
     <!-- Image Upload -->
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
@@ -65,8 +65,8 @@
     <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
-        <item>గ్రా</item>
-        <item>మిగ్రా</item>
+        <item>g</item>
+        <item>mg</item>
         <item>µg</item>
         <item>% DV</item>
         <item>IU</item>
@@ -117,7 +117,7 @@
         <item>Mead acid (20:3 n-9)</item>
         <item>Melissic acid (30:0)</item>
         <item>Molybdenum</item>
-        <item>Mono unsaturated fat</item>
+        <item>Monounsaturated fat</item>
         <item>Montanic acid (28:0)</item>
         <item>Myristic acid (14:0)</item>
         <item>Nervonic acid (24:1 n-9)</item>
@@ -131,7 +131,7 @@
         <item>pH</item>
         <item>Phosphorus</item>
         <item>Sugar alcohols (Polyols)</item>
-        <item>Poly unsaturated fat</item>
+        <item>Polyunsaturated fat</item>
         <item>Potassium</item>
         <item>Selenium</item>
         <item>Serum proteins</item>
@@ -159,19 +159,19 @@
     <string name="search_button">Search</string>
     <string name="alert_dialog_warning_title">Warning</string>
     <string name="alert_dialog_warning_msg_user">వాడుకరి / పాస్వర్డ్ మార్చబడింది, దయచేసి సమాచారం అప్డేట్ చేయండి</string>
-    <string name="toast_retrieving">Loading...</string>
-    <string name="txtBarcode">బార్కోడ్:</string>
-    <string name="txtCategories">వర్గాలు :</string>
-    <string name="txtLabels">లేబుళ్ళు, ధృవపత్రాలు, అవార్డులు:</string>
+    <string name="toast_retrieving">Loading…</string>
+    <string name="txtBarcode">Barcode :</string>
+    <string name="txtCategories">Categories :</string>
+    <string name="txtLabels">Labels, certifications, awards :</string>
     <string name="txtEMB">Traceability codes:</string>
-    <string name="txtIngredients">కావలసినవి జాబితా:</string>
+    <string name="txtIngredients">Ingredients list :</string>
     <string name="Donate">దానం</string>
-    <string name="Donation">ఆహార వాస్తవాలను తెరిచేందుకు విరాళంగా ఇక్కడ క్లిక్ చేయండి</string>
-    <string name="txtSubstances">అలర్జీలు లేదా సంక్లిష్టతలను కలిగించే పదార్థాలు లేదా ఉత్పత్తులు:</string>
+    <string name="Donation">Click here to donate to Open Food Facts</string>
+    <string name="txtSubstances">Substances or products causing allergies or intolerances :</string>
     <string name="txtAdditives">సంకలనాలు:</string>
-    <string name="txtTraces">జాడలు:</string>
-    <string name="txtMayBeFromPalmOilProduct">పామాయిల్ నుంచి లభించే కావలసినవి:</string>
-    <string name="txtPalmOilProduct">పామాయిల్ నుండి కావలసినవి:</string>
+    <string name="txtTraces">Traces :</string>
+    <string name="txtMayBeFromPalmOilProduct">Ingredients that may be from palm oil :</string>
+    <string name="txtPalmOilProduct">Ingredients from palm oil :</string>
     <string name="txtServingSize">అందిస్తోంది పరిమాణం:</string>
     <string name="txtNutrientLevel100g">100g కోసం పోషక స్థాయిలు:</string>
     <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
@@ -180,7 +180,7 @@
     <string name="txtNutritionLevelHigh">in high quantity</string>
     <string name="txtSave">Save</string>
     <string name="txtSignIn">సైన్ ఇన్ చేయండి</string>
-    <string name="txtToastSaved">వినియోగదారు సేవ్ చేయబడింది</string>
+    <string name="txtToastSaved">User saved</string>
     <string name="txtSalt">Salt</string>
     <string name="txtFat">ఫ్యాట్</string>
     <string name="txtSugars">Sugars</string>
@@ -190,24 +190,24 @@
     <string name="hintPass">Password</string>
     <string name="errorLogin">లాగిన్ లేదా పాస్ వర్డ్ లోపం</string>
     <string name="errorWeb">మేము ఇంటర్నెట్ను ప్రాప్యత చేయలేకపోయాము. మీకు కనెక్టివిటీ సమస్యలు ఉన్నాయా?</string>
-    <string name="uploadLater">నెట్వర్క్ అందుబాటులో ఉన్నప్పుడు చిత్రం అప్లోడ్ చేయబడుతుంది</string>
-    <string name="txtInfoLoginOk">వినియోగదారు సేవ్ చేయబడింది</string>
-    <string name="txtInfoLoginNo">వినియోగదారు సేవ్ చేయలేదు</string>
-    <string name="txtDialogsContent">ఓపెన్ ఫుడ్ ఫ్యాక్ట్స్లో స్కాన్ చేసిన ఉత్పత్తి ఇంకా లేదు. దయచేసి దానిని జోడించండి.</string>
+    <string name="uploadLater">Image will be uploaded when network is available</string>
+    <string name="txtInfoLoginOk">User saved</string>
+    <string name="txtInfoLoginNo">User not saved</string>
+    <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
     <string name="txtYes">అవును</string>
     <string name="txtNo">నో</string>
     <string name="hintBrand">బ్రాండ్</string>
     <string name="txtSendAll">అన్నింటినీ అప్లోడ్ చేయండి</string>
     <string name="txtPictureNeededDialogNo">విస్మరించు</string>
-    <string name="toastSending">Uploading...</string>
-    <string name="txtLoading">Loading...</string>
+    <string name="toastSending">Uploading…</string>
+    <string name="txtLoading">Loading…</string>
     <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
     <string name="txtDialogsContentInfoSave">The product is saved locally, you can edit it in the \"Offline Edit\" menu</string>
     <string name="productSavedToast">Product saved, thanks!</string>
     <string name="txtBarcodeRequire">Barcode required</string>
     <string name="txtOk">సరే</string>
     <string name="txtBarcodeNotValid">బార్ కోడ్ చెల్లదు</string>
-    <string name="msg_share">ఓపెన్ ఫుడ్ ఫ్యాక్ట్స్లో ఈ ఉత్పత్తిని చూడండి:</string>
+    <string name="msg_share">Look at this product on Open Food Facts :</string>
     <string name="create_account">సైన్ అప్ చేయండి</string>
     <string name="home_drawer">ముంగిలి</string>
     <string name="install">Install</string>
@@ -219,21 +219,21 @@
     <string name="search_by_category">విభాగాలు</string>
     <string name="scan_search">బార్కోడ్ను స్కాన్ చేయండి</string>
     <string name="user_drawer">User</string>
-    <string name="offline_edit_drawer">ఆఫ్లైన్ సవరణ</string>
+    <string name="offline_edit_drawer">Offline edit</string>
     <string name="txt_anonymous">అనామక</string>
     <string name="delete_txt">తొలగించు</string>
     <string name="sign_in_drawer">Sign-in</string>
     <string name="alert_drawer">Allergen alert</string>
     <string name="your_lists">Your lists</string>
     <string name="title_dialog_alert">హెచ్చరికను జోడించండి</string>
-    <string name="select_camera">కెమెరాను ఎంచుకోండి</string>
+    <string name="select_camera">Select a Camera</string>
     <string name="ok_button">సరే</string>
     <string name="cancel_button">రద్దుచేయి</string>
     <string name="login_button">Login</string>
     <string name="create_account_button">ఖాతాను సృష్టించండి</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
     <string name="title_info_dialog">ఇది ఎలా పని చేస్తుంది?</string>
-    <string name="text_offline_info_dialog">మీరు తరువాత ఆఫ్లైన్ ఫుడ్ ఫాక్స్ను తెరిచేందుకు వాటిని జోడించేటప్పుడు ఉత్పత్తులను స్కాన్ చేయవచ్చు. మీరు స్కాన్ చేసిన అన్ని ఉత్పత్తులు ఇక్కడ కనిపిస్తాయి, మరియు మీరు క్రింద ఉన్న బటన్ను ఉపయోగించి వాటిని పంపవచ్చు.</string>
+    <string name="text_offline_info_dialog">You can scan products when you\'re offline to add them to Open Food Facts later. All the products you scan will appear here, and you\'ll be able to send them using the button below.</string>
     <string name="permission_camera">బార్కోడ్లను స్కాన్ చేసి చిత్రాలను తీయడానికి కెమెరా అనుమతి అవసరం.</string>
     <string name="no_camera_dialog_title">Camera not found</string>
     <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
@@ -244,13 +244,13 @@
     <string name="error_invalid_password">పాస్వర్డ్ కనీసం 6 అక్షరాల పొడవు ఉండాలి.</string>
     <string name="user">యూజర్</string>
     <string name="error_field_required">ఈ ఖాళీని తప్పనిసరిగా పూరించవలెను.</string>
-    <string name="action_preferences">ప్రాధాన్యతలు</string>
-    <string name="prefs_scan_startup">ప్రారంభంలో స్కాన్ చేయండి</string>
-    <string name="prefs_scan_startup_summary">ఎంపిక ఉంటే ఈ ఎంపికను ప్రారంభించినప్పుడు స్కాన్ ప్రారంభమవుతుంది.</string>
-    <string name="prefs_power_mode">పవర్ మోడ్ స్కాన్</string>
-    <string name="prefs_power_mode_summary">డేటాబేస్లో లేని వాటిని చూడడానికి సూపర్మార్కెట్లో ఉత్పత్తులను శీఘ్రంగా స్కాన్ చేయండి.</string>
+    <string name="action_preferences">Preferences</string>
+    <string name="prefs_scan_startup">Scan on startup</string>
+    <string name="prefs_scan_startup_summary">This option if selected will start scan when app is opened.</string>
+    <string name="prefs_power_mode">Power mode scan</string>
+    <string name="prefs_power_mode_summary">Quickly scan products in a supermarket to see which ones are not in the database.</string>
     <string name="prefs_language">Language</string>
-    <string name="prefs_language_summary">భాషను మార్చండి</string>
+    <string name="prefs_language_summary">Change language</string>
     <!-- Strings related to feedback dialog -->
     <string name="user_enjoying_app">Are you enjoying your experience with Open Food Facts?</string>
     <string name="user_ask_show_feedback_form">We\'re sorry to hear that! Could you tell us what happened?</string>
@@ -264,7 +264,7 @@
     <string name="title_clear_history_dialog">తొలగింపు పూర్తయింది</string>
     <string name="text_clear_history_dialog">Do you want to clear all your scan history?</string>
     <string name="export_csv_history">ఎగుమతి CSV</string>
-    <string name="txt_exporting_history">Exporting history...</string>
+    <string name="txt_exporting_history">Exporting history…</string>
     <string name="txt_history_exported">చరిత్ర ఎగుమతి చేయబడింది</string>
     <string name="permision_write_external_storage">చరిత్ర ఎగుమతి చేయడానికి బాహ్య నిల్వ అనుమతిని వ్రాయండి.</string>
     <string name="no_brand">బ్రాండ్ లేదు</string>
@@ -276,7 +276,7 @@
     <string name="calculated_nutrition">గణించిన న్యూట్రిషన్</string>
     <string name="please_enter_weight">Please type the product weight</string>
     <string name="enter_weight">Type the product weight</string>
-    <string name="calculate_nutrition_facts">Calculate Nutrition Facts</string>
+    <string name="calculate_nutrition_facts">Compute nutrition facts for a specific quantity</string>
     <string name="nutrition_carbohydrate">Carbohydrate</string>
     <string name="nutrition_cholesterol">Cholesterol</string>
     <string name="nutrition_energy">Energy</string>
@@ -328,8 +328,8 @@
     <string name="for_100g">For 100 g</string>
     <string name="for_100ml">For 100 ml</string>
     <string name="serving">Per serving</string>
-    <string name="nutrition_monounsaturatedFat">Mono unsaturated fat</string>
-    <string name="nutrition_polyunsaturatedFat">Poly unsaturated fat</string>
+    <string name="nutrition_monounsaturatedFat">Monounsaturated fat</string>
+    <string name="nutrition_polyunsaturatedFat">Polyunsaturated fat</string>
     <string name="nutrition_omega3">Omega 3</string>
     <string name="nutrition_omega6">Omega 6</string>
     <string name="nutrition_omega9">Omega 9</string>
@@ -378,10 +378,10 @@
     <string name="chlorophyl">Chlorophyl</string>
     <string name="take_picture">Take a photo</string>
     <string name="choose_picture_from_gallery">From gallery</string>
-    <string name="take_picture_ingredients">Take a picture of the ingredients</string>
-    <string name="take_picture_front">Take a picture of the front</string>
-    <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
-    <string name="take_more_pictures">Take more pictures</string>
+    <string name="take_picture_ingredients">Take a photo of the ingredient list</string>
+    <string name="take_picture_front">Take a photo of the front</string>
+    <string name="take_picture_nutrition_table">Take a photo of the nutrition table</string>
+    <string name="take_more_pictures">Take more photos</string>
     <string name="txtSaturatedFat">Saturated fat</string>
     <string name="nutriscore_info_msg">Learn more about the Nutri-Score</string>
     <string name="nova_info_msg">Learn more about NOVA groups</string>
@@ -390,11 +390,11 @@
     <string name="nova_grp3_msg">Group 3 - Processed foods</string>
     <string name="nova_grp4_msg">Group 4 - Ultra-processed food and drink products</string>
     <!-- String related to App Shortcuts -->
-    <string name="disabled_message">Shortcut Not Available</string>
+    <string name="disabled_message">The shortcut is not available.</string>
     <string name="scan_shortcut_short_label">Scan</string>
     <string name="scan_shortcut_long_label">Scan Product</string>
     <string name="barcode_shortcut_short_label">Search</string>
-    <string name="barcode_shortcut_long_label">Search By Barcode</string>
+    <string name="barcode_shortcut_long_label">Search by barcode</string>
     <string name="history_shortcut_short_label">చరిత్ర</string>
     <string name="history_shortcut_long_label">చరిత్ర</string>
     <string name="contributions_shortcut_short_label">Contributions</string>
@@ -411,30 +411,30 @@
     <string name="airplane_mode_active_dialog_negative">Dismiss</string>
     <string name="airplane_mode_active_dialog_positive">అమరికలు</string>
     <string name="device_offline_dialog_title">Network unavailable</string>
-    <string name="device_offline_dialog_message">దీన్ని చేయడానికి నెట్వర్క్ కనెక్షన్ అవసరమవుతుంది, మీరు దీన్ని సెట్టింగ్ల్లో మార్చాలనుకుంటున్నారా?</string>
+    <string name="device_offline_dialog_message">A network connection is needed to do this, would you like to change this in settings?</string>
     <string name="device_offline_dialog_negative">Dismiss</string>
     <string name="device_offline_dialog_positive">అమరికలు</string>
     <string name="scan_first_product">మొదటి ఉత్పత్తి స్కాన్</string>
     <string name="preference_delete_search_history">Successfully deleted history</string>
-    <string name="preference_enable_mobile_data_title">మొబైల్ డేటాలో అప్లోడ్ చేయండి</string>
-    <string name="preference_enable_mobile_data_summary_on">మొబైల్ డేటాను &amp; WiFi ఉపయోగించి క్రొత్త ఉత్పత్తులను అప్లోడ్ చేయండి</string>
-    <string name="preference_enable_mobile_data_summary_off">WiFi ని ఉపయోగించి క్రొత్త ఉత్పత్తులను మాత్రమే అప్లోడ్ చేయండి</string>
+    <string name="preference_enable_mobile_data_title">Upload on mobile data</string>
+    <string name="preference_enable_mobile_data_summary_on">Upload new products using mobile data &amp; WiFi</string>
+    <string name="preference_enable_mobile_data_summary_off">Upload new products using WiFi only</string>
     <string name="device_on_mobile_data_warning_title">Information</string>
     <string name="device_on_mobile_data_warning_message">You have disabled upload on mobile data , please connect to WiFi or change this in preferences</string>
-    <string name="device_on_mobile_data_warning_positive">ప్రాధాన్యతలు</string>
-    <string name="device_on_mobile_data_warning_negative">అయినా అప్లోడ్ చేయండి</string>
+    <string name="device_on_mobile_data_warning_positive">Preferences</string>
+    <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
     <string name="changes_saved">Changes saved successfully</string>
     <string name="preference_choose_language_dialog_title">భాషని ఎంచుకోండి</string>
-    <string name="FAQ">తరచూగా అడగబడిన ప్రశ్నలు</string>
+    <string name="FAQ">FAQ</string>
     <string name="FrequentlyAskedQuestions">Frequently Asked Questions</string>
-    <string name="translate_help_title">ఓపెన్ ఫుడ్ ఫాక్ట్స్ అనువాదం సహాయం</string>
-    <string name="translate_help_summary">మీ భాషకు ఓపెన్ ఫుడ్ ఫ్యాక్ట్స్ డేటాబేస్ను తీసుకురండి - సాంకేతిక పరిజ్ఞానం అవసరం లేదు</string>
+    <string name="translate_help_title">Help translate Open Food Facts</string>
+    <string name="translate_help_summary">Bring Open Food Facts to your language - no technical knowledge required</string>
     <string name="please_check_your_connection">దయచేసి మీ కనెక్షన్ను తనిఖీ చేయండి.</string>
     <string name="advanced_search_title">ఆధునిక శోధన &amp; చార్ట్స్</string>
     <string name="compare_products">Compare products</string>
     <string name="connectivity_check">దయచేసి మీ ఇంటర్నెట్ కనెక్షన్ను తనిఖీ చేయండి</string>
     <string name="dismiss">Dismiss</string>
-    <string name="Terms">నిబంధనలు</string>
+    <string name="Terms">Terms</string>
     <string name="TermsOfUse">Terms and Privacy</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <!--Just replace "world" by "fr", "de"… translate the "terms-of-use" with the hyphens -->
@@ -447,22 +447,22 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
-    <string name="url_nova_groups">https://world.openfoodfacts.org/nova</string>
+    <string name="url_nova_groups">https://world-en.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
     <string name="url_nutrient_values">https://world-te.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">సాధారణం</string>
-    <string name="preference_header_network">నెట్‌వర్క్</string>
-    <string name="preference_header_contributing">తోడ్పడింది</string>
+    <string name="preference_header_network">Network</string>
+    <string name="preference_header_contributing">Contributing</string>
     <string name="scan_first_string">మీ చూచుటకు ఉత్పత్తి చరిత్ర ఇక్కడ ఇవ్వబడుతుంది.\nఈ చరిత్ర మీ కళ్ళు మాత్రమే మరియు స్థానికంగా నిల్వ చేయబడుతుంది.</string>
     <string name="log_in">Login</string>
-    <string name="login_true">ఇప్పటికే లాగిన్ అయ్యింది!</string>
+    <string name="login_true">ఇప్పటికే లాగిన్ అయ్యింది.</string>
     <string name="confirm_logout">లాగ్ అవుట్ను నిర్ధారించండి</string>
     <string name="logout_dialog_content">మీరు ఖచ్చితంగా లాగ్ అవుట్ అవ్వాలా?</string>
     <string name="dialog_cancel">రద్దుచేయి</string>
     <string name="dialog_create">Create</string>
-    <string name="choose_resolution">రిజల్యూషన్ ఎంచుకోండి</string>
-    <string name="pref_resolution_summary">చిత్రం అప్లోడ్ కోసం ఒక తీర్మానాన్ని ఎంచుకోండి</string>
-    <string name="image_upload_resolution">చిత్రం అప్లోడ్ రిజల్యూషన్</string>
+    <string name="choose_resolution">Choose resolution</string>
+    <string name="pref_resolution_summary">Pick a resolution for image upload</string>
+    <string name="image_upload_resolution">Image upload resolution</string>
     <string name="wikidata_information">Going further</string>
     <string name="wikidata_unavailable">ఇంకా వికీపీడియా పేజీ మీ భాషలో లేదు.</string>
     <string name="Wikipedia">వికీపీడియాలో చూడండి</string>
@@ -479,8 +479,8 @@
     <string name="category_string">విభాగాలు</string>
     <string name="connection">కనెక్ట్</string>
     <string name="contributor_string">కంట్రిబ్యూటర్</string>
-    <string name="Rate_Us">మీ మద్దతును చూపించు</string>
-    <string name="Rate_Us_title">మా అనువర్తనాన్ని రేట్ చేయండి</string>
+    <string name="Rate_Us">Show Your Support</string>
+    <string name="Rate_Us_title">Rate our App</string>
     <string name="app_disabled_text">అనువర్తనం నిలిపివేయబడింది</string>
     <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
     <string name="vitamin_tags_text">విటమిన్లు:</string>
@@ -488,14 +488,14 @@
     <string name="mineral_tags_text">ఖనిజాలు:</string>
     <string name="other_tags_text">ఇతర పదార్ధాలు:</string>
     <!--shared element transition key-->
-    <string name="disable_image_loading">బ్యాటరీ తక్కువగా ఉన్నప్పుడు చిత్రం లోడింగ్ని నిలిపివేయండి</string>
-    <string name="DisableLoadTitle">చిత్రం లోడింగ్ని ఆపివేయి</string>
+    <string name="disable_image_loading">Disable photo loading when battery is low</string>
+    <string name="DisableLoadTitle">Disable photo loading</string>
     <string name="by_title">శీర్షిక</string>
     <string name="by_brand">బ్రాండ్</string>
     <string name="by_barcode">Barcode</string>
     <string name="by_time">ఇటీవల వీక్షించినవి</string>
     <string name="sort">క్రమీకరించు</string>
-    <string name="by_nutrition_grade">న్యూట్రిషన్ గ్రేడ్</string>
+    <string name="by_nutrition_grade">Nutrition Grade</string>
     <string name="sort_by">Sort by</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">బార్కోడ్ లేకుండా చిత్రాలు ఇంకా అనువర్తనంతో జోడించబడవు. దయచేసి మొబైల్ వెబ్ సంస్కరణను ప్రయత్నించండి.</string>
@@ -517,16 +517,16 @@
     <string name="notification_channel_name">ఎగుమతి నోటిఫికేషన్లు</string>
     <string name="notify_channel_description">ఎగుమతి చేసిన ఫైల్ యొక్క స్థానాన్ని చూపించడానికి నోటిఫికేషన్</string>
     <string name="products_to_be_completed">ఉత్పత్తులు పూర్తవుతాయి</string>
-    <string name="offline_notification_title">మీరు పంపవలసిన ఆఫ్లైన్ కంట్రిబ్యూషన్లు</string>
+    <string name="offline_notification_title">Offline contributions you need to send</string>
     <string name="creator_history">Product added on %1$s at %2$s CET by %3$s</string>
     <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by %3$s </string>
     <string name="other_editors">Product page also edited by </string>
     <string name="contribution_tab">Contributions</string>
-    <string name="contribution_tab_summary">ఉత్పత్తులతో వినియోగదారు కంట్రిబ్యూషన్ ట్యాబ్ను చూపించు</string>
-    <string name="contribution_tab_title">సహకార టాబ్ చూపించు</string>
+    <string name="contribution_tab_summary">Show user contributions tab with products</string>
+    <string name="contribution_tab_title">Show contribution tab</string>
     <string name="txtDialogsTitle">Information</string>
-    <string name="preference_show_all_product_photos_title">అన్ని ఉత్పత్తి ఫోటోలను చూపించు</string>
-    <string name="preference_show_all_product_photos_summary">ప్రత్యేక ట్యాబ్లో సమర్పించిన అన్ని ఉత్పత్తి ఫోటోలను చూపించు</string>
+    <string name="preference_show_all_product_photos_title">Show all product photos</string>
+    <string name="preference_show_all_product_photos_summary">Show all product photos submitted in a separate tab</string>
     <string name="offline_product_addition_title">క్రొత్త ఉత్పత్తిని జోడించండి</string>
     <string name="productNameNull">పేరు తెలియదు</string>
     <string name="productAdditivesUnknown"></string>
@@ -544,7 +544,7 @@
     <string name="switch_camera">కెమెరా మారండి</string>
     <string name="autofocus">Autofocus</string>
     <string name="initial_loading">Initial loading</string>
-    <string name="preferences">ప్రాధాన్యతలు</string>
+    <string name="preferences">Preferences</string>
     <string name="OFFlogo">ఓపెన్ ఫుడ్ ఫ్యాక్ట్స్ లోగో</string>
     <string name="loading_product">Loading product %s</string>
     <string name="image_not_defined_for_language">No image for selected language. You can add a new one</string>
@@ -619,9 +619,9 @@
     <string name="additional_pictures">అదనపు చిత్రాలు</string>
     <string name="hint_product_pictures">(ఉత్పత్తి యొక్క మరిన్ని చిత్రాలు జోడించండి ఉదా: రీసైక్లింగ్ సూచనలను, లేబుల్స్ మొదలైనవి)</string>
     <string name="uploading_image">Sending the photo</string>
-    <string name="uploading_nutrition_image">పోషక పోషణ వాస్తవాల చిత్రం అప్లోడ్</string>
-    <string name="uploading_ingredients_image">ప్రతిమలను చిత్రం అప్లోడ్</string>
-    <string name="uploading_front_image">ముందు చిత్రం అప్లోడ్</string>
+    <string name="uploading_nutrition_image">Sending the nutrition facts photo</string>
+    <string name="uploading_ingredients_image">Sending the ingredients photo</string>
+    <string name="uploading_front_image">Sending the front photo</string>
     <string name="edit_front_image">Edit the front photo</string>
     <string name="edit_nutrition_image">Edit the nutrition photo</string>
     <string name="edit_ingredients_image">Edit the ingredients photo</string>
@@ -657,21 +657,21 @@
     <string name="risk_of_exposure">ఎక్స్పోజర్ ప్రమాదం</string>
     <string name="efsa_warning_high_risk">The European Food Safety Authority (EFSA) has determined that some population groups have a high risk of consuming too much %1$s.</string>
     <string name="legend_noael">గమనించిన ప్రతికూల ప్రభావంతో NO మోడల్ పైన (NOAEL)</string>
-    <string name="legend_adi">acceptable డైలీ తీసుకోవడం పైన (ADI)</string>
+    <string name="legend_adi">above Acceptable Daily Intake (ADI)</string>
     <string name="max_energy_val_msg">This value is above 2000 kcal per 100g. Can you correct it ?</string>
     <string name="max_nutrient_val_msg">అందించిన విలువ కంటే ఇవ్వబడిన విలువ ఎక్కువ</string>
     <string name="update_image">అప్డేట్ ఇమేజ్ పంపండి</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">Extract ingredients</string>
-    <string name="add_nutrient_prompt_text">Nutri- స్కోరును లెక్కించడానికి పోషకాహార వాస్తవాలను జోడించండి</string>
+    <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
     <string name="add_category_prompt_text">Add a category to compute the Nutri-Score</string>
     <string name="add_nutrient_category_prompt_text">Add nutrition facts and a category to compute the Nutri-Score</string>
     <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
-    <string name="version_string">Open Food Facts Android App</string>
-    <string name="version">వెర్షన్</string>
-    <string name="set_ingredient_img">Set as ingredients image</string>
-    <string name="set_img_nutrients">Set as nutrition image</string>
-    <string name="set_img_front">Set as front image</string>
+    <string name="version_string">Open Food Facts Android app</string>
+    <string name="version">Version</string>
+    <string name="set_ingredient_img">Set image as Ingredient</string>
+    <string name="set_img_nutrients">Set Image as Nutrition</string>
+    <string name="set_img_front">Set Image as Front</string>
     <string name="report_img">చిత్రం రిపోర్ట్ చెయ్యండి</string>
     <string name="detected_ingredients">గుర్తించిన కావలసినవి</string>
     <string name="txtConnectionError">We could not download certain data. This may be due to a connection error.</string>
@@ -692,8 +692,8 @@
     <string name="txt_exporting_your_listed_products">Exporting Your Products…</string>
     <string name="txt_your_listed_products_exported">Your products have been exported</string>
     <string name="txt_discard">విస్మరించు</string>
-    <string name="txt_info_eaten_products">\"You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"I\'m eating this\".
-        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.\"</string>
+    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"I\'m eating this\".
+        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
     <string name="txt_info_your_listed_products">You\'ll be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
     <string name="search_history_pref_title">Delete local search history</string>
     <string name="search_history_pref_summary">Remove all the searches that you performed on this device</string>
@@ -707,7 +707,7 @@
     <string name="empty"></string>
     <string name="add_product">Add products</string>
     <string name="add_another_product">Add another product</string>
-    <string name="add_nutrition_facts_for_nutriscore">Nutri- స్కోరును లెక్కించడానికి పోషకాహార వాస్తవాలను జోడించండి</string>
+    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
     <string name="product_summary_action_compare_button_label">Compare</string>
     <string name="product_summary_action_add_to_list_button_label">Add to list</string>
     <string name="product_summary_action_edit_button_label">మార్చు</string>
