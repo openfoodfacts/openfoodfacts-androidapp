@@ -532,15 +532,15 @@
     <string name="last_editor_history">Poslední úprava stránky produktu dne %1$s v %2$s CEST do %3$s </string>
     <string name="other_editors">Stránka produktu také editoval(a) </string>
     <string name="contribution_tab">Příspěvky</string>
-    <string name="contribution_tab_summary">Show user contributions tab with products</string>
-    <string name="contribution_tab_title">Show contribution tab</string>
+    <string name="contribution_tab_summary">Zobrazit záložku uživatelských příspěvků s produkty</string>
+    <string name="contribution_tab_title">Zobrazit záložku příspěvků</string>
     <string name="txtDialogsTitle">Informace</string>
     <string name="preference_show_all_product_photos_title">Zobrazit všechny fotografie produktu</string>
-    <string name="preference_show_all_product_photos_summary">Show all product photos submitted in a separate tab</string>
+    <string name="preference_show_all_product_photos_summary">Zobrazit všechny odeslané fotky produktů na samostatné kartě</string>
     <string name="offline_product_addition_title">Přidat nový výrobek</string>
     <string name="productNameNull">Neznámé jméno</string>
     <string name="productAdditivesUnknown"></string>
-    <string name="productAdditivesTemplate">%1$d additives</string>
+    <string name="productAdditivesTemplate">%1$d přísady</string>
     <plurals name="productAdditives">
         <item quantity="one">%d přísada</item>
         <item quantity="few">%d přísady</item>
@@ -568,7 +568,7 @@
     <string name="error_adding_product_details">Nepovedlo se přidat podrobnosti o výrobku</string>
     <string name="hint_product_URL">Odkaz na oficiální stránky výrobku</string>
     <string name="product_language">Jazyk výrobku: </string>
-    <string name="hint_emb_codes">Examples: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522, FSSL 10013011001409</string>
+    <string name="hint_emb_codes">Příklady: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522, FSSL 10013011001409</string>
     <string name="official_website">Oficiální web</string>
     <string name="scan_QR_code">Naskenujte QR kód pro webové stránky produktu</string>
     <string name="add_at_least_one_picture">Před pokračováním přidejte alespoň jeden obrázek tohoto výrobku</string>
@@ -689,9 +689,9 @@
     <string name="txtConnectionError">Některá data se nepodařilo stáhnout. To může být způsobeno chybou připojení.</string>
     <string name="set_image_name">Snímek byl úspěšně nastaven jako</string>
     <string name="fast_addition_mode_title">Režim rychlého přidávání</string>
-    <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
+    <string name="fast_addition_mode">Umožňuje rychlé přidání produktů s menším počtem atributů</string>
     <string name="crop_new_image_title">Oříznout nové obrázky</string>
-    <string name="crop_new_image">Enables crop action on new images</string>
+    <string name="crop_new_image">Umožňuje oříznutí nových obrázků</string>
     <string name="addtive_search">Hledejte přísadu</string>
     <string name="additives">Aditiva</string>
     <!--used for product_lists implementation-->
@@ -714,7 +714,7 @@
     <string name="settings_country_summary">Vyberte zemi</string>
     <string name="settings_country_title">Země</string>
     <string name="txt_no_nutrition_data">Tento produkt nemá na obalu žádné nutriční údaje. Pokud se toto změnilo, můžete produkt upravit.</string>
-    <string name="image_prompt_language">Take a photo of the ingredients in</string>
+    <string name="image_prompt_language">Vyfoťte ingredience v</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Přidejte produkty</string>
@@ -741,7 +741,7 @@
     <string name="add_an_allergen">Přidat alergen</string>
     <string name="add_a_list">Přidat seznam</string>
     <string name="edit_image">Upravit snímek</string>
-    <string name="cant_edit_image_not_yet_uploaded">The new image is not yet uploaded. Please, wait before editing it</string>
+    <string name="cant_edit_image_not_yet_uploaded">Nový obrázek ještě není nahrán. Před úpravou prosím počkejte</string>
     <string name="unselect_image">Zrušit výběr obrázku</string>
     <string name="choose_default_language">Vyberte jazyk produktu</string>
     <string name="barcode">Čárový kód</string>
@@ -750,9 +750,9 @@
     <string name="import_csv_to_list">Importujte soubor CSV se seznamem z Open Food Facts</string>
     <string name="toast_import_csv_error">Chyba při importu CSV souboru</string>
     <string name="toast_import_csv">CSV byl úspěšně importován!</string>
-    <string name="open_csv">Open CSV</string>
+    <string name="open_csv">Otevřít CSV</string>
     <!-- Used for diets AddOn -->
-    <string name="history_network_error">The product couldn\'t be loaded. Please try again when you are back online.</string>
+    <string name="history_network_error">Produkt nelze načíst. Zkuste to prosím znovu, až budete opět online.</string>
     <string name="cant_modify_if_refreshing">Počkejte prosím na dokončení nahrávání</string>
     <string name="closeZoom">Kliknutím zavřete přiblížení</string>
     <string name="imageFullscreen">Přiblížit</string>
@@ -766,7 +766,7 @@
     <string name="ingredients_in_this_product_are">Složení tohoto produktu je %1$s.</string>
     <string name="ingredients_in_this_product">Ingredience v tomto produktu, které jsou %1$s:</string>
     <string name="display_analysis_tag_status">Zobrazit stav %1$s</string>
-    <string name="preference_header_display">Display</string>
+    <string name="preference_header_display">Zobrazit</string>
     <string name="unknown_status_no_translation">Nemohli jsme posoudit stav produktu z důvodu neznámých ingrediencí.</string>
     <string name="help_translate_ingredients">Pomozte přeložit ingredience do vašeho jazyka</string>
     <string name="unknown_status_missing_ingredients">Stav produktu jsme nemohli posoudit kvůli chybějícím ingrediencím.</string>
