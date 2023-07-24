@@ -19,16 +19,16 @@
     <string name="slide_3_desc">Synteettinen näkymä lempielintarvikkeidesi ravinto-ominaisuuksista</string>
     <string name="slide_4_title">Toimii offline-tilassa</string>
     <string name="slide_4_desc">Voit lisätä uusia tuotteita, vaikka sinulla ei olisi Internet-yhteyttä tällä hetkellä</string>
-    <string name="txtDialogsContent">Lukemaasi tuotetta ei vielä ole Open Food Factsissa. Lisääthän sen.</string>
+    <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
     <string name="txtDialogsContentPowerMode">Lukemasi tuote on jo olemassa Open Food Factsissa.</string>
     <string name="msg_share">Katso tätä tuotetta Open Food Factsissa:</string>
     <string name="not_support_books">Open Food Facts ei tue kirjoja tällä hetkellä</string>
-    <string name="txt_broaden_search">- laajenna hakuasi \n- lue, ja lisää se Open Food Factsiin</string>
+    <string name="txt_broaden_search">- laajenna hakuasi \n- lue ja lisää se Open Food Factsiin</string>
     <string name="Donation">Napsauta tästä lahjoittaaksesi Open Food Factsille</string>
     <string name="translate_help_title">Auta kääntämään Open Food Factsia</string>
     <string name="translate_help_summary">Tuo Open Food Facts -tietokanta kielellesi - teknistä tietoa ei vaadita</string>
     <string name="text_offline_info_dialog">Voit lukea tuotteita offline-tilassa lisätäksesi niitä myöhemmin Open Food Factsiin. Kaikki lukemasi tuotteet näkyvät täällä, ja voit lähettää ne alla olevan painikkeen avulla.</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Allergiatietojasi ei koskaan lähetetä Open Food Facts -palvelimelle. Huomaa myös, että tuotetiedot eivät välttämättä ole tarkkoja tai täydellisiä, ja allergiatarkistus ei ehkä ole 100% arkka, joten tarkista itse!</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Allergiatietojasi ei koskaan lähetetä Open Food Facts -palvelimelle. Huomaa myös, että tuotetiedot eivät välttämättä ole tarkkoja tai täydellisiä, ja allergiatarkistus ei ehkä ole 100%:n tarkka, joten tarkista itse! </string>
     <!-- OFF tagline in different languages -->
     <string name="tagline">vapaa elintarviketietokanta</string>
     <string name="product_not_found">Luettua tuotetta %1$s ei vielä ole Open Food Factsissa. Voitko lisätä sen?</string>
