@@ -1,8 +1,8 @@
-Escanee los productos alimenticios para mascotas o sus códigos de barras para obtener información sobre los ingredientes, los aditivos y la información nutricional.
+Escanea los productos alimenticios o sus códigos de barras para obtener datos de los ingredientes, aditivos y datos nutricionales.
 
 La aplicación permite visualizar más de 600 productos alimenticios para mascotas que se encuentran en la base de datos de libre acceso "Open Pet Food Facts", y también permite añadir imágenes e información de los productos no presentes en la misma.
 
-Para saber más sobre el proyecto Open Pet Food Facts, por favor, visite https://world.openpetfoodfacts.org
+Para concer más sobre el proyecto Open Pet Food Facts, por favor visita https://world.openpetfoodfacts.org
 
 ***Contribuye a la transparencia sobre productos alimenticios para mascotas***
 
@@ -26,7 +26,7 @@ También podrá encontrar (de acuerdo con las indicaciones presentes en los prod
 - No necesita una cámara para buscar un producto. También puede escribir el código de barras si le falta una cámara o si esta tiene algún problema.
 
 *** Tu comida de mascota, tus datos ***
-- Tus datos son tuyos y nunca se envían en línea
+- Eres dueño de tu información personal. Esta nunca se envía en línea
 - Puedes usar la aplicación de forma anónima
 - Puedes exportar tu historial de escaneo
 
