@@ -1,10 +1,10 @@
-打开“Open Food Facts”是一个化妆品数据库，我们可以在产品标签上找到该商品的成分，过敏原等所有信息。
+打开“Open Products Facts”是一个化妆品数据库，我们可以在产品标签上找到该商品的成分，过敏原等所有信息。
 
-*** Contribute to Product Transparency ***
+*** 促进产品透明度 ***
 
-- Open Products Facts is a products database made by everyone, for everyone.
-- You can use it to make better choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Products Facts is a non-profit project developed by thousands of volunteers from around the world. 我们也有很多激动人心的项目，让你有可以通过多种方式参与其中 
+- Open Products Facts 是每个人为每个人制作的产品数据库。
+- 您可以使用它来做出更好的选择，并且由于它是开放数据，任何人都可以将其用于任何目的。
+- Open Products Facts is a non-profit project developed by thousands of volunteers from around the world. 我们有许多激动人心的项目，您可以通过多种不同的渠道来作出贡献。 
 - You can start contributing today by adding your first product. 
 
 ***获取信息***
@@ -12,21 +12,21 @@
 
 *** Collect AAAALL the things ***
 - You can add all the items from your collections
-- Open Crayons Facts - The largest open database of coloring crayons
+Open Crayons Facts - The largest open database of coloring crayons
 - Open Miniature Food Facts - The largest open database of miniature food products
 - Open ??? Facts - Create your own open database :-)
 
 在任何情况下都有效
 - 即使没有连接互联网，你也可以添加新的产品。
 - 应用程序仅加载严格必要以减少数据及电量消耗
-- 您无需相机来查找产品。 如果您没有相机或相机出了问题，也可以输入条形码。 *** Your products, your data *** You can also type the barcode if you lack a camera or have an issue with it.
+-您不需要照相机即可查找产品。 如果缺少相机或出现问题，也可以键入条形码。 You can also type the barcode if you lack a camera or have an issue with it. You can also type the barcode if you lack a camera or have an issue with it.
 
 *** Your products, your data ***
-- 您的个人数据只属于您，永远不会被上传。
+- Your personal data is yours, and is never sent online
 - 您可以匿名使用该应用
 - 您可以导出历史记录
 
-For food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for pet food, Open Pet Food Facts.
+对于食品，您可以安装 Open Food Facts，对于化妆品，Open Beauty Facts，对于宠物食品，Open Pet Food Facts。
 
 Open Products Facts is also available on the web at https://world.openproductsfacts.org
 提问，反馈： contact@openfoodfacts.org
@@ -39,11 +39,11 @@ Collecting the world's food, cosmetic and pet food was so passé. With the insan
 
 So we set up to create not 1, but other 77000 separate new databases ! 
 
-Open Products Facts will be an extremely ambitious project. Here are a few of them: 
+Open Products Facts will be an extremely ambitious project. 以下列举一二： 
 
-Open Crayons Facts - The largest open database of coloring crayons
+Open Crayons Facts - 最大的食用色素裱花笔开放式数据库
 
-Open Miniature Food Facts - The largest open database of miniature food products
+Open Miniature Food Facts - 最大的迷你食品开放式数据库
 
 Open ??? Facts - The largest open database of ???
 
