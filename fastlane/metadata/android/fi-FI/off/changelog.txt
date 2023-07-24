@@ -1,19 +1,19 @@
 
 ==================
-Uusi natiiviversio Open Food Factsista. Kaikki Open Food Factsin vapaaehtoiset ovat tehneet paljon työtä sen eteen, teidän ehdotuksiin ja palautteisiin perustuen :)
+New native version of Open Food Facts. All the Open Food Facts volunteers been working hard on it, based on your suggestions and feedback :)
 ==================
-* Open Food Facts on nyt globaalimpi liike kuin koskaan enemmin. 500 000:ta tuotetta vapautettu, 10 000:ta rekisteröitynyttä osallistujaa, 182 maata. Liitytkö mukaan?
+* Open Food Facts is now a more global movement than ever. 500k products freed, 10K registered contributors, 182 countries. Will you join us ?
 ==================
 Mitä uutta?
 ==================
-1. Saat 360:n asteen kuvan: ravinto, ainesosat, ja kaikki elintarvikefaktat, näppärästi ja selkeästi esitettynä.
-2. Saa "NutriScore"-ravintoarvosana kaikille maailman tuotteille. Vertaile helposti tuotteita. Helpompaa kuin ravintotaulukoiden tulkinta.
-3. Saa ylimääräistä tietoa Wikipediasta. Napsauta elintarvikeluokkaa, lisäainetta… oppiaksesi lisää, ja nähdäksesi samankaltaisia tuotteita.
-4. Voit asettaa allergeenivaroituksia (varmista aina kuitenkin itse etiketistä!)
-5. Saat nyt lukuhistorian, jonka voit viedä, ja joka ei koskaan poistu puhelimestasi
-6. Voit koska vain heiluttaa puhelintasi sovelluksessa aloittaaksesi lukemisen
-7. Voit nyt lisätä uusia tuotteita vaikka olisit yhteydettömässä tilassa
-8. Voit nyt auttaa lempituotteidesi täydentämistä suoraan sovelluksesta: ota kuvia, täytä tietoja, mahdollista elintarvikkeiden läpinäkyvyys
-9. Kaikki on myös paljon nopeampaa. Tuotteet latautuvat salamannopeasti, jopa huonoilla mobiiliyhteyksillä.
-10. Emme ole vieläkään kiinnostuneita henkilökohtaisista tiedoistasi. Sinun ei tarvitse luoda tiliä lukeaksesi ja osallistuaksesi.
-Ekstra! Kaikista uusista asioista huolimatta, sovellus on edelleen yhtä kevyt. Tallennustilan määrä puhelimessasi on pyhää.
+1. You get the 360 picture: nutrition, ingredients, and all food facts, neatly and clearly presented.
+2. Get the "NutriScore" nutrition grade for all products in the world. Easily compare products. Easier than deciphering nutrition tables.
+3. Get extra information from Wikipedia. Click on a food category, an additive… to learn more and see similar products.
+4. You can set allergens alerts (always double check the actual label yourself though!)
+5. You now get a scan history you can export and that never leaves your phone
+6. You can shake your phone at any time in the app to start scanning
+7. You can now add new products even when you're offline
+8. You can now help complete your favorite foods directly from the app: take photos, fill info, make food transparency happen
+9. Everything is also much faster. Products load blazingly fast, even with a bad mobile connection.
+10. We're still not interested in your personal data. You don't have to sign-up to scan and contribute.
+Extra! Despite all the new stuff, the app is as light as before. The space left on your phone is sacred.
