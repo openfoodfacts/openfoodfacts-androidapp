@@ -19,16 +19,16 @@
         <item quantity="other"> %d のオフライン製品が Open Food Facts に送信されるのを待っています</item>
     </plurals>
     <plurals name="seconds">
-        <item quantity="other">%d seconds ago</item>
+        <item quantity="other">%d 秒前</item>
     </plurals>
     <plurals name="minutes">
-        <item quantity="other">%d minutes ago</item>
+        <item quantity="other">%d分前</item>
     </plurals>
     <plurals name="hours">
-        <item quantity="other">%d hours ago</item>
+        <item quantity="other">%d時間前</item>
     </plurals>
     <plurals name="days">
-        <item quantity="other">%d days ago</item>
+        <item quantity="other">%d日前</item>
     </plurals>
     <string name="action_about">アプリについて</string>
     <string name="action_discover">見つける</string>
@@ -161,7 +161,7 @@
     <string name="txtEMB">Traceability codes:</string>
     <string name="txtIngredients">原材料一覧 :</string>
     <string name="Donate">寄付</string>
-    <string name="Donation">Open Food Factsに寄付するにはここをクリックしてください</string>
+    <string name="Donation">Open Beauty Facts に寄付するにはここをクリック</string>
     <string name="txtSubstances">アレルギーまたは不耐性の原因となる物質または製品 :</string>
     <string name="txtAdditives">添加物 :</string>
     <string name="txtTraces">追跡 :</string>
@@ -181,14 +181,14 @@
     <string name="txtSugars">砂糖</string>
     <string name="hintBarcode">バーコード</string>
     <string name="txtNutriScoreInfo">栄養成分の詳細</string>
-    <string name="hintLogin">ログイン</string>
+    <string name="hintLogin">ユーザー名</string>
     <string name="hintPass">パスワード</string>
     <string name="errorLogin">ログインまたはパスワードエラー</string>
     <string name="errorWeb">インターネットにアクセスできませんでした。接続に問題がありませんか?</string>
     <string name="uploadLater">ネットワークが利用可能になると画像がアップロードされます</string>
     <string name="txtInfoLoginOk">ユーザーを保存しました</string>
     <string name="txtInfoLoginNo">ユーザーを保存できませんでした</string>
-    <string name="txtDialogsContent">スキャンした製品はまだ Open Food Facts に存在しません。追加してください。</string>
+    <string name="txtDialogsContent">スキャンした製品は、OpenBeautyFactsにはまだ存在していません。追加してください。</string>
     <string name="txtYes">はい</string>
     <string name="txtNo">いいえ</string>
     <string name="hintBrand">ブランド（会社名）</string>
@@ -198,16 +198,16 @@
     <string name="txtLoading">読み込んでいます…</string>
     <string name="txtDialogsContentDelete">このドラフトを削除してもよろしいですか?</string>
     <string name="txtDialogsContentInfoSave">この製品はローカルに保存されます。オフライン編集 メニューで編集することができます</string>
-    <string name="productSavedToast">Product saved, thanks!</string>
+    <string name="productSavedToast">製品が保存されました。ありがとうございます！</string>
     <string name="txtBarcodeRequire">バーコードが必要です</string>
     <string name="txtOk">OK</string>
     <string name="txtBarcodeNotValid">バーコードが正しくありません</string>
-    <string name="msg_share">Open Food Facts でこの製品を参照してください:</string>
+    <string name="msg_share">Open Food Facts でこの製品を見る :</string>
     <string name="create_account">サインアップ</string>
     <string name="home_drawer">ホーム</string>
     <string name="install">インストール</string>
     <string name="open_beauty_drawer">Open Beauty Facts</string>
-    <string name="open_food_drawer">Open Food Facts</string>
+    <string name="open_food_drawer">Open Products Facts</string>
     <string name="search_drawer">検索</string>
     <string name="search_by_barcode_drawer">バーコードで検索</string>
     <string name="category_drawer">カテゴリー</string>
@@ -221,14 +221,14 @@
     <string name="alert_drawer">アレルゲン警告</string>
     <string name="your_lists">あなたのリスト</string>
     <string name="title_dialog_alert">警告を追加</string>
-    <string name="select_camera">カメラを選択</string>
+    <string name="select_camera">カメラを選択する</string>
     <string name="ok_button">OK</string>
     <string name="cancel_button">取消</string>
-    <string name="login_button">ログイン</string>
+    <string name="login_button">ユーザー名</string>
     <string name="create_account_button">アカウントを作成する</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">あなたのアレルギー情報は、Open Food Factsサーバーに送信されることはありません。また、製品データが正確でない可能性、検出が100％正確でない可能性があるので、ご自分でもう一度ご確認ください! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
     <string name="title_info_dialog">どのような仕組みですか?</string>
-    <string name="text_offline_info_dialog">オフライン時に製品をスキャンして、後で Open Food Facts に追加するすることができます。スキャンする製品がすべてここに表示されます。下のボタンを使用してそれらを送信することができます。</string>
+    <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
     <string name="permission_camera">バーコードのスキャンと写真の撮影には、カメラのアクセス許可が必要です。</string>
     <string name="no_camera_dialog_title">Camera not found</string>
     <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
@@ -312,7 +312,7 @@
     <string name="txt_no_matching_incomplete_products">未完了の製品はありません! 新しい製品を追加しますか?</string>
     <string name="txt_no_matching_contributor_products">この貢献者からの製品はありません。追加できますか?</string>
     <string name="txt_no_matching_products">一致する商品が見つかりませんでした。\nお試しください :</string>
-    <string name="txt_broaden_search">- 検索範囲を広げる\n- スキャンしてOpen Food Factsに追加する</string>
+    <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
     <string name="something_went_wrong">申し訳ありません。何か問題が生じたようです…</string>
     <string name="txt_try_again">もう一度やり直してください</string>
     <string name="nutrition_lactose">乳糖</string>
@@ -449,7 +449,7 @@
     <string name="preference_header_network">ネットワーク</string>
     <string name="preference_header_contributing">貢献</string>
     <string name="scan_first_string">表示した製品の履歴がここに一覧表示されます。\nこの履歴はあなたにだけ表示され、ローカルに格納されます。</string>
-    <string name="log_in">ログイン</string>
+    <string name="log_in">ユーザー名</string>
     <string name="login_true">既にログインしています!</string>
     <string name="confirm_logout">ログアウトの確認</string>
     <string name="logout_dialog_content">ログアウトしてもよろしいですか?</string>
@@ -501,7 +501,7 @@
     <string name="do_you_want_to">このバーコードに写真を追加しますか?</string>
     <string name="bottomNav_history">履歴</string>
     <string name="products_added">あなたが追加または編集した製品</string>
-    <string name="products_incomplete">あなたが追加して、完成させる必要がある製品</string>
+    <string name="products_incomplete">あなたが追加して、完了が必要な製品</string>
     <string name="product_pictures_contributed">あなたが写真を撮った製品</string>
     <string name="picture_contributed_incomplete">あなたが写真を撮って、完成させる必要がある製品</string>
     <string name="product_info_added">あなたが情報を追加した製品</string>
@@ -513,7 +513,7 @@
     <string name="notify_channel_description">エクスポートされたファイルの場所を示す通知</string>
     <string name="products_to_be_completed">完了が必要な製品</string>
     <string name="offline_notification_title">オフラインの貢献を送信する必要があります</string>
-    <string name="creator_history">%1$s %2$s 中央ヨーロッパ標準時に製品を追加しました</string>
+    <string name="creator_history">生成物は、上に追加 %1$s で %2$s によってCET %3$s</string>
     <string name="last_editor_history">製品ページの最終編集 %1$s %2$s 中央ヨーロッパ標準時、編集者 </string>
     <string name="other_editors">製品ページの共同編集者 </string>
     <string name="contribution_tab">貢献</string>
@@ -531,7 +531,7 @@
     </plurals>
     <string name="product_not_complete">この製品はまだ完全ではありません。\n詳細を追加できますか?</string>
     <string name="addProductOffline">オフラインのようです。オフラインモードを使用して製品 %s を追加しますか ?</string>
-    <string name="product_not_found">スキャンした製品 %1$s はまだ Open Food Facts に存在しません。追加しますか?</string>
+    <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
     <string name="scan_sound">スキャン音</string>
     <string name="trouble_scanning">スキャンに問題がありますか？</string>
     <string name="barcode_hint">スキャンに問題がありますか？バーコードを入力してください</string>
@@ -572,7 +572,7 @@
     <string name="no_internet_connection">インターネットに接続していないようです、ネットワークが利用可能なときに画像がアップロードされます</string>
     <string name="no_internet_unable_to_extract_ingredients">インターネットに接続できません。原材料を抽出できません</string>
     <string name="percent">%1$d%%</string>
-    <string name="overview">概要</string>
+    <string name="overview">サマリー</string>
     <string name="ingredients">原材料</string>
     <string name="nutrition_facts">栄養成分表</string>
     <string name="your_version">あなたのもの</string>
@@ -629,7 +629,7 @@
     <string name="contribution_by">Contribution by</string>
     <string name="title_activity_product">タイトル</string>
     <string name="description_activity_product">説明</string>
-    <string name="intent_filter_share_label">Open Food Facts に寄付する</string>
+    <string name="intent_filter_share_label">Add to Open Food Facts</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="overexposure_high">過剰暴露のリスクが高</string>
     <string name="overexposure_moderate">過剰暴露のリスクが中</string>
@@ -657,11 +657,11 @@
     <string name="update_image">更新された画像を送信</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">原材料を抽出</string>
-    <string name="add_nutrient_prompt_text">栄養成分を追加してニュートリスコアを計算する</string>
-    <string name="add_category_prompt_text">カテゴリーを追加してニュートリスコアを計算する</string>
-    <string name="add_nutrient_category_prompt_text">栄養成分とカテゴリーを追加してニュートリスコアを計算する</string>
-    <string name="category_game_btn">ニュートリスコアを計算するため、製品を分類するのを手伝う</string>
-    <string name="version_string">Open Food Facts Android アプリ</string>
+    <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
+    <string name="add_category_prompt_text">Add a category to help complete the product</string>
+    <string name="add_nutrient_category_prompt_text">Add nutrition facts and a category to compute the Nutri-Score</string>
+    <string name="category_game_btn">商品の分類にご協力ください</string>
+    <string name="version_string">Open Food Facts Android App</string>
     <string name="version">バージョン</string>
     <string name="set_ingredient_img">原材料画像として設定</string>
     <string name="set_img_nutrients">栄養成分画像として設定</string>
@@ -686,8 +686,8 @@
     <string name="txt_exporting_your_listed_products">Exporting Your Products…</string>
     <string name="txt_your_listed_products_exported">Your products have been exported</string>
     <string name="txt_discard">破棄</string>
-    <string name="txt_info_eaten_products">\"You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"I\'m eating this\".
-        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.\"</string>
+    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
+        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
     <string name="txt_info_your_listed_products">You\'ll be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
     <string name="search_history_pref_title">Delete local search history</string>
     <string name="search_history_pref_summary">Remove all the searches that you performed on this device</string>
@@ -701,7 +701,7 @@
     <string name="empty"></string>
     <string name="add_product">Add products</string>
     <string name="add_another_product">Add another product</string>
-    <string name="add_nutrition_facts_for_nutriscore">栄養成分を追加してニュートリスコア(栄養スコア) を計算する</string>
+    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
     <string name="product_summary_action_compare_button_label">Compare</string>
     <string name="product_summary_action_add_to_list_button_label">Add to list</string>
     <string name="product_summary_action_edit_button_label">編集</string>
@@ -724,7 +724,7 @@
     <string name="add_a_list">Add a list</string>
     <string name="edit_image">Edit Image</string>
     <string name="cant_edit_image_not_yet_uploaded">The new image is not yet uploaded. Please, wait before editing it</string>
-    <string name="unselect_image">Unselect Image</string>
+    <string name="unselect_image">画像の選択を解除</string>
     <string name="choose_default_language">Select product language</string>
     <string name="barcode">バーコード</string>
     <string name="productAdditivesNone">No additives</string>
@@ -790,5 +790,5 @@
     <string name="brand_hint">Examples: Coca-Cola, Nestle, etc…</string>
     <string name="sign_in_or_register">Sign in or register</string>
     <string name="hunger_game_call_to_action">Help classify more %1$s</string>
-    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s food products (plus the ones you will contribute).</string>
+    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s products (plus the ones you will contribute) in the world.</string>
 </resources>
