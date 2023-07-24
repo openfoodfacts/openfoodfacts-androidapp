@@ -11,7 +11,7 @@
     <!-- For fr, Replace by https://world-fr.openproductsfacts.org/contributeur/ -->
     <string name="website_contributor">https://world.openfoodfacts.org/contributor/</string>
     <string name="terms_url">https://world.openproductsfacts.org/terms-of-use</string>
-    <string name="txtHomeOnline">Open Products Facts is an open database of more than %1$s products (plus the ones you will contribute).</string>
+    <string name="txtHomeOnline">Open Products Facts는 %1$s개 이상의 제품(및 기여할 제품)을 포함한 공개 데이터베이스입니다.</string>
     <string name="txtHome">Open Products Facts는 전 세계 모든 제품의 공개 데이터베이스입니다.</string>
     <string name="slide_1_title">제품 투명도에 기여하기</string>
     <string name="slide_1_desc">제품을 잘 살펴 사진을 찍어 제품을 투명하게 한다 </string>
@@ -21,7 +21,7 @@
     <string name="slide_3_desc">당신이 스캔하는 모든 제품을 편리하도록 하나의 목록에 내보낼 수 있습니다</string>
     <string name="slide_4_title">오프라인으로 작업</string>
     <string name="slide_4_desc">인터넷에 연결되어 있지 않아도 새 제품을 추가 할 수 있습니다.</string>
-    <string name="txtDialogsContent">스캔한 제품이 Open Products Facts에 아직 존재하지 않습니다. 제품을 추가하십시오.</string>
+    <string name="txtDialogsContent">The product you scanned does not exist yet in Open Products Facts. Please add it.</string>
     <string name="txtDialogsContentPowerMode">스캔한 제품은 이미 Open Products Facts에 있습니다.</string>
     <string name="msg_share">Open Products Facts에서 이 제품을 검색해보세요 : </string>
     <string name="not_support_books">책은 현재 Open Products Facts에서 지원되지 않습니다.</string>
@@ -33,7 +33,7 @@
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">귀하의 알레르기 정보는 Open Products Facts 서버로 전송되지 않습니다. 또한 제품 데이터가 정확하지 않을 수 있으며 감지가 100 % 정확하지 않을 수 있으므로 조심하여 직접 확인하십시오! </string>
     <!-- OPF tagline in different languages -->
     <string name="version_string">Open Products Facts Android App</string>
-    <string name="tagline">무료 제품 데이터베이스</string>
+    <string name="tagline">the free product database</string>
     <string name="product_not_found">스캔한 상품 %1$s가 Open Products Facts에 존재하지 않습니다. 추가하시겠습니까?</string>
     <string name="currently_on_version">요즘 Open Products Facts</string>
     <string name="category_game_btn">제품 분류 도움말</string>
