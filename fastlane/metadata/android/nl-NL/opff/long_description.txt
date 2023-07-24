@@ -26,7 +26,7 @@ Je zal ook kunnen vinden (volgens de aanwijzingen op de producten):
 - Je hebt geen camera nodig om een product op te zoeken. Je kan ook de streepjescode intypen als je geen camera hebt of er een probleem mee hebt.
 
 *** Jouw dierenvoeding, jouw gegevens ***
-- Je persoonlijke gegevens zijn van jou en worden nooit online verzonden
+- Je gegevens zijn van jou en worden nooit online verzonden
 - Je kunt de app anoniem gebruiken
 - Je kunt jouw scangeschiedenis exporteren
 
