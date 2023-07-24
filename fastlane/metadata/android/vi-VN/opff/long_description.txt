@@ -1,34 +1,34 @@
-Quét thực phẩm hoặc mã vạch của sản phẩm thức ăn cho thú cưng để lấy dữ liệu về các thành phần dinh dưỡng và các chất phụ gia.
+Quét các sản phẩm thức ăn cho vật nuôi hoặc mã vạch của chúng để lấy dữ liệu về thành phần, chất phụ gia và thông tin dinh dưỡng.
 
-Ứng dụng này cho phép xem hơn 600 loại sản phẩm thức ăn cho thú cưng đã có trong cơ sở dữ liệu mở và miễn phí Open Pet Food Facts, kèm theo các hình ảnh và dữ liệu cho các sản phẩm bị thiếu.
+The app allows to view the over 600 pet food products already contained in the free and open database Open Pet Food Facts, and also to add pictures and data for missing products.
 
 Để khám phá dự án Open Pet Food Facts, vui lòng truy cập https://world.openpetfoodfacts.org
 
-***Đóng góp cho sự minh bạch trong các sản phẩm thức ăn dành cho thú nuôi***
+***Contribute to Pet Food Transparency***
 
-- Open Pet Food Facts là cơ sở dữ liệu sản phẩm thức ăn cho thú cưng được tạo ra bởi cộng đồng, dành cho mọi người.
-- Bạn có thể sử dụng OPFF để đưa ra những lựa chọn tốt hơn khi lựa chọn thức ăn cho thú cưng của mình, và bởi đây là một kho dữ liệu mở, nên bất cứ ai cũng có thể tái sử dụng cho bất cứ mục đích nào.
-- Open Pet Food Facts là một dự án phi lợi nhuận được phát triển bởi hàng ngàn tình nguyện viên từ khắp nơi trên thế giới. Chúng tôi có rất nhiều dự án thú vị mà bạn có thể đóng góp theo nhiều cách khác nhau. 
-- Bạn có thể bắt đầu đóng góp bằng cách thêm dữ liệu về một sản phẩm từ tủ thức ăn dành cho thú cưng nhà mình. 
+- Open Pet Food Facts là một cơ sở dữ liệu về các sản phẩm thức ăn cho thú cưng được tạo ra bởi tất cả mọi người, dành cho tất cả mọi người.
+- Bạn có thể sử dụng nó để lựa chọn thức ăn cho vật nuôi tốt hơn và vì nó là dữ liệu mở nên bất kỳ ai cũng có thể sử dụng lại nó cho bất kỳ mục đích nào.
+- Open Pet Food Facts là một dự án phi lợi nhuận được phát triển bởi hàng nghìn tình nguyện viên từ khắp nơi trên thế giới. Chúng tôi có rất nhiều dự án thú vị mà bạn có thể đóng góp theo nhiều cách khác nhau. 
+- Bạn có thể bắt đầu đóng góp ngay hôm nay bằng cách thêm một sản phẩm từ tủ của thú cưng. 
 
 
-*** Sự thật là ***
+*** Get the Facts ***
 
-Bạn có thể tìm thấy (dựa trên các chỉ dẫn có trên bao bì sản phẩm):
-- danh sách các thành phần cấu tạo (bao gồm cả hàm lượng tro)
-- thông tin dinh dưỡng, thông tin phân bổ các thành phần dinh dưỡng...
-- thương hiệu, chất có thể gây dị ứng, nhãn ( hữu cơ, thuần chay...)
-- Chỉ dẫn trên dành cho các loại thức ăn cho chó ( loại khô & ướt), thức ăn cho mèo, thức ăn cho thỏ, rắn, cá, chim, ngựa và bất cứ loại thú cưng nào.
+You will also be able to find (according to the indications present on the products):
+- danh sách các thành phần (bao gồm cả hàm lượng tro)
+- thông tin dinh dưỡng, đèn giao thông dinh dưỡng…
+- brands, allergens, labels (organic, vegan...)
+- Có đầy đủ thông tin về thức ăn cho chó (thức ăn khô cho chó và thức ăn ướt cho chó), thức ăn cho mèo, thức ăn cho thỏ, thức ăn cho rắn, thức ăn cho cá, thức ăn cho chim, thức ăn cho ngựa hoặc bất kỳ thức ăn nào cho động vật yêu thích của bạn.
 
 *** Hoạt động tốt trong mọi điều kiện ***
-- You can add new products, even if you don't have an Internet connection right now.
-- Ứng dụng chỉ nạp các thông tin cần thiết để giảm mức tiêu thụ dữ liệu và pin
-- Bạn không cần camera để tra cứu sản phẩm. Bạn cũng có thể nhập mã vạch nếu không có máy ảnh.
+- Bạn có thể thêm sản phẩm mới, ngay cả khi bạn không có kết nối Internet ngay bây giờ.
+- The app loads only the strict necessary to reduce data and battery consumption
+- Bạn không cần máy ảnh để tra cứu sản phẩm. Bạn cũng có thể nhập mã vạch nếu thiếu máy ảnh hoặc gặp sự cố với nó.
 
-*** Thức ăn thú cưng của bạn, dữ liệu của bạn ***
-- Đảm bảo dữ sự an toàn của dữ liệu cá nhân của bạn
-- You can use the app anonymously
-- You can export your scan history
+*** Thức ăn vật nuôi của bạn, dữ liệu của bạn ***
+- Dữ liệu cá nhân của bạn là của bạn và không bao giờ được công khai trực tuyến
+- Bạn có thể sử dụng ứng dụng một cách ẩn danh
+- Bạn có thể xuất lịch sử quét của mình
 
 
-Đối với thực phẩm cho con người, bạn có thể cài đặt Open Food Facts, với mỹ phẩm, Open Beauty Facts và với tất cả các sản phẩm khác, Open Products Facts.
+Đối với thực phẩm dành cho người, bạn có thể cài đặt Open Food Facts, đối với mỹ phẩm, Open Beaty Facts và đối với tất cả các sản phẩm khác, Open Product Facts.
