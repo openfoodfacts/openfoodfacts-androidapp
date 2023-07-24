@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- For fr, Replace by https://world-fr.openproductsfacts.org/ -->
-    <string name="website">https://world-pt.openfoodfacts.org/</string>
+    <string name="website">https://br.openfoodfacts.org/</string>
     <!-- For fr, Replace by https://world-fr.openproductsfacts.org/contribuer -->
-    <string name="website_contribute">https://world-pt.openfoodfacts.org/contribuir</string>
+    <string name="website_contribute">https://br.openfoodfacts.org/contribuir</string>
     <!-- For fr, Replace by https://world-fr.openproductsdfacts.org/decouvrir -->
-    <string name="website_discover">https://world-pt.openfoodfacts.org/descobrir</string>
+    <string name="website_discover">https://br.openfoodfacts.org/descobrir</string>
     <!-- For fr, Replace by https://world-fr.openproductsfacts.org/produit/ -->
-    <string name="website_product">https://world-pt.openfoodfacts.org/produto/</string>
+    <string name="website_product">https://br.openfoodfacts.org/produto/</string>
     <!-- For fr, Replace by https://world-fr.openproductsfacts.org/contributeur/ -->
-    <string name="website_contributor">https://world-pt.openfoodfacts.org/colaborador/</string>
-    <string name="terms_url">https://world.openproductsfacts.org/terms-of-use</string>
-    <string name="txtHomeOnline">O Open Products Facts é uma base de dados aberta com mais de %1$s produtos (mais aqueles que vai contribuir).</string>
+    <string name="website_contributor">https://br.openfoodfacts.org/colaborador/</string>
+    <string name="terms_url">https://br.openproductsfacts.org/termos-de-uso</string>
+    <string name="txtHomeOnline">Open Products Facts é um banco de dados aberto de mais de %1$s produtos (mais aqueles com os quais você contribuirá).</string>
     <string name="txtHome">O Open Products Facts é um banco de dados aberto de todos os produtos do mundo.</string>
     <string name="slide_1_title">Contribua para a transparência dos produtos</string>
     <string name="slide_1_desc">Digitalize produtos, fotografe-os, faça a transparência alimentar acontecer</string>
@@ -30,11 +30,11 @@
     <string name="translate_help_title">Ajudar a traduzir Open Products Facts</string>
     <string name="translate_help_summary">Traga a base de dados Open Products Facts ao seu idioma - nenhum conhecimento técnico necessário</string>
     <string name="text_offline_info_dialog">Digitalize os produtos mesmo que esteja desligado da Internet, e poderá enviá-los para o Open Products Facts mais tarde. Os produtos digitalizados irão aparecer aqui e poderá enviá-los utilizando o botão abaixo.</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Products Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">A informação das suas alergias nunca será enviada ao servidor do Open Products Facts. Também, tenha cuidado com que os dados do produto podem não ser precisos e a detecção pode não ter 100% aquadros, então por favor verifique você mesmo! </string>
     <!-- OPF tagline in different languages -->
     <string name="version_string">Abrir o applicativo Products Facts para android</string>
     <string name="tagline">the free product database</string>
-    <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Products Facts. Can you add it?</string>
+    <string name="product_not_found">O produto %1$s que digitalizou ainda não existe no Open Products Facts. Você pode adicioná-lo?</string>
     <string name="currently_on_version">Atualmente no Open Products Facts</string>
     <string name="category_game_btn">Ajude a categorizar produtos</string>
     <!-- TODO add true support instead of overriding strings -->
