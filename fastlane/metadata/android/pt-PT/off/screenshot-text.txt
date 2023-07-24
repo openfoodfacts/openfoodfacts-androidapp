@@ -5,43 +5,43 @@ https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=pt
 V2 capturas de ecrã
 =====================
 
-Digitalizar produto
+Digitalize produtos
 
-Obtenha o Nutriscore
+Obtenha o Nutri-Score
 
 Seu histórico completo de digitalizações, totalmente privado e exportável
 
-Mais na Wikipedia
+Mais na Wikipédia
 
-Definir alertas de alérgenos
+Alerta de alergénio
 
 Nutrição simplificada
 
 Alerta de alergénio
 
-Obtenha alternativas para seus alimentos favoritos
+Obtenha alternativas para os seus alimentos favoritos
 
 Torne-se um ator da transparência alimentar
 
-Wikipedia para comida
+Wikipédia para comida
 
-Wikipedia para Cosméticos
+Wikipédia para cosméticos
 
-Wikipedia para comida para animais
+Wikipédia para comida de animais
 
-Wikipedia de produtos
+Wikipédia de produtos
 
 Ingredientes
 
 Poderoso
 
-Informação nutricional
+Dados nutricionais
 
 =====================
 V3 capturas de ecrã
 =====================
 
-Escolha os produtos que são bons para você e para o 🌍 planeta!
+Escolha os produtos que são bons para si e para o 🌍 planeta!
 
 ✔ Digitalização de código de barras ultra-rápida
 
@@ -55,7 +55,7 @@ Impacto de carbono
 
 Compare facilmente antes de comprar
 
-Crie listas de compras, listas de admissão…
+Crie listas de compras, listas de ingestão…
 
 Encontre e compare mais de 750 000 produtos.
 
@@ -65,8 +65,8 @@ Histórico de digitalizações ilimitado e totalmente privado
 
 Deslize para obter ainda mais detalhes
 
-Alerta de alergénio
+Configure alertas de alérgenos
 
 Junte-se ao nosso movimento global para a transparência alimentar
 
-pt.openfoodfacts.org/contribute
+pt.openfoodfacts.org/contribuir
