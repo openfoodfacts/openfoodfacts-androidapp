@@ -1,72 +1,72 @@
-Those are the taglines shown above the screenshots in the playstore. Keep them short and attractive.
+Đây là những khẩu hiệu hiển thị trên ảnh chụp màn hình trong PlayStore. Hãy giữ cho các câu văn ngắn gọn và hấp dẫn.
 https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=vi
 
 =====================
-V2 screenshots
+Ảnh chụp màn hình V2
 =====================
 
-Scan products
+Quét sản phẩm
 
 Lấy điểm Nutriscore
 
-Your full scan history, fully private & exportable
+Toàn bộ lịch sử quét của bạn, hoàn toàn riêng tư và có thể xuất được
 
-Go further with Wikipedia
+Tìm hiểu nhiều hơn với Wikipedia
 
-Set allergen alerts
+Đặt cảnh báo chất gây dị ứng
 
-Nutrition, simplified
+Dinh dưỡng, được đơn giản hóa
 
-Allergen alert
+Cảnh báo dị ứng
 
-Get alternatives for your favorite foods
+Nhận các gọi ý khác nhau cho những món ăn bạn ưa thích
 
 Become an actor of food transparency
 
-Wikipedia for Food
+Wikipedia thực phẩm
 
-Wikipedia for Cosmetics
+Wikipedia Mỹ phẩm
 
-Wikipedia for Pet Food
+Wikipedia Thức ăn thú nuôi
 
-Wikipedia of Products
+Wikipedia Hàng hóa
 
 Thành phần
 
-Powerful
+Mạnh mẽ
 
 Giá trị dinh dưỡng
 
 =====================
-V3 screenshots
+Ảnh chụp màn hình V3
 =====================
 
-Choose the products that are good for you and for the 🌍 planet !
+Chọn những sản phẩm tốt cho bạn và cho hành tinh 🌍!
 
-✔ Ultra-fast barcode scan
+✔ Quét mã vạch cực nhanh
 
-✔ A global supermarket in your pocket
+✔ Một siêu thị toàn cầu trong túi của bạn
 
-Nutritional quality
+Chất lượng dinh dưỡng
 
-Ultra-processed foods
+Thức ăn siêu chế biến
 
-Carbon impact
+Tác động cac-bon
 
-Compare easily before you buy
+So sánh dễ dàng trước khi mua
 
-Create shopping lists, intake lists…
+Tạo danh sách mua sắm, danh sách nhập hàng…
 
-Find and compare over 750 000 products.
+Tìm và so sánh hơn 750 000 sản phẩm.
 
 
 
-Unlimited and fully-private scan history
+Lịch sử quét không giới hạn và hoàn toàn riêng tư
 
-Swipe for even more details
+Vuốt để biết thêm chi tiết
 
-Set Allergen Alerts
+Đặt cảnh báo chất gây dị ứng
 
-Join our global movement for food transparency
+Tham gia phong trào toàn cầu của chúng tôi về tính minh bạch thông tin thực phẩm
 
 world.openfoodfacts.org/contribute
