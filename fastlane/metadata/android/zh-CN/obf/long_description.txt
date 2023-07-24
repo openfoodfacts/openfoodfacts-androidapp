@@ -1,8 +1,8 @@
-致力于化妆品透明化
+***致力于化妆品信息透明化***
 
-Open Beauty Facts 是为每个人准备的，采集于大众的化妆产品信息
-你可以通过它作出更好的化妆产品的选择，同时因为它是开放数据，任何人都可以使用它。
-Open Beauty Facts 是一个非盈利项目，由来自于全世界上千志愿者发行。 我们也有很多激动人心的项目，让你有可以通过多种方式参与其中 我们也有很多激动人心的项目，让你有可以通过多种方式参与其中 
+- Open Beauty Facts 是为每个人准备的，采集于大众的化妆产品信息数据库。
+- 你可以通过它作出更好的化妆产品的选择，同时因为它是开放数据，任何人都可以使用它。
+Open Beauty Facts 是一个非盈利项目，由来自于全世界上千志愿者发行。 我们有许多激动人心的项目，您可以通过许多不同的方式为之贡献。 我们有许多激动人心的项目，您可以通过多种不同的渠道来作出贡献。 
 现在你可以开始这个项目通过添加你的化妆产品 
 
 ***获取信息***
@@ -16,7 +16,7 @@ Open Beauty Facts 是一个非盈利项目，由来自于全世界上千志愿�
 在任何情况下都有效
 - 即使没有连接互联网，你也可以添加新的产品。
 - 应用程序仅加载严格必要以减少数据及电量消耗
-- 您无需相机来查找产品。 如果您没有相机或相机出了问题，也可以输入条形码。 You can also type the barcode if you lack a camera or have an issue with it.
+-您不需要照相机即可查找产品。 如果缺少相机或出现问题，也可以键入条形码。 You can also type the barcode if you lack a camera or have an issue with it. You can also type the barcode if you lack a camera or have an issue with it.
 
 你的化妆品，你的数据
 - 你的数据只属于你，并永远不会被上传。
