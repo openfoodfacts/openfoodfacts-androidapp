@@ -5,7 +5,7 @@
 - Open Beauty Facts is a non-profit project developed by thousands of volunteers from around the world. Tenim molts projectes interessants en els que hi podeu contribuir de moltes maneres diferents. 
 - You can start contributing today by adding a product from your cosmetic cupboard. 
 
-*** Obteniu les Dades ***
+*** Get the Facts ***
 
 - Cosmetics additives, F.I.L. codes, CI-numbers, INCI (International Nomenclature of Cosmetic Ingredients), ingredient list, allergens, packaging codes... 
 - Open Beauty Facts helps you to make sense of the fine print on products labels.
@@ -13,13 +13,13 @@
 - You can scan: aftershaves, body lotions, creams, deodorant, eyeliner, foundation, fragrance, lipstick, makeup, mask, perfume, shampoo, soap, shower gel, nail polish and much more…
 - We think it can be useful for people with skin conditions like acne, psoriasis, eczema… to make better cosmetic choices.
 
-*** Funciona bé en qualsevol condició ***
+*** Works well in any condition ***
 - Podeu afegir nous productes, fins i tot si ara mateix no teniu una connexió a Internet.
-- L'aplicació només carrega l'estrictament necessari per a reduir les dades i el consum de la bateria
-- No necessiteu una càmera per buscar un producte. També podeu escriure el codi de barres si no teniu cap càmera o no us funciona.
+- The app loads only the strict necessary to reduce data and battery consumption
+- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
 
 *** Your cosmetics, your data ***
-- Les vostres dades són vostres i mai no s'envien a Internet
+- Your data is yours, and is never sent online
 - Podeu utilitzar l'aplicació de forma anònima
 - Podeu exportar el vostre historial d'escaneig
 
