@@ -1,7 +1,7 @@
-All 25k OFF volunteers kept working hard: 1,4M products, 182 countries 🙂
-1. OFF goes big in the US: 237k products with Nutri-Score !
-2. Dark mode: lighter on your eyes, lighter on your battery
+Alle 25 000 O.F.F. frivillige forsatte å jobbe hardt: 1,4 millioner produkter, 182 land 🙂
+1. O.F.F. gjør det stort i USA: 237 000 produkter med Nutri-Score!
+2. Mørk modues: roligere på øyne og mindre batterikrevende.
 3. Help compute Nutri-Score & Eco-Score: slide up for blue questions & get credited for your answers.
-4. Massive improvements to the vegan, vegetarian & palm oil detection.
+4. Store forbedringer for vegansk, vegetarisk og palmeoljeindentifikasjon.
 5. Instant product edition even with bad or no network
 6. Products To Be Completed page (right menu) is now real time.
