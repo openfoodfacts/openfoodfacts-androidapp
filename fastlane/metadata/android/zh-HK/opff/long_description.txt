@@ -1,10 +1,10 @@
-掃描寵物食品或包裝上的條碼瞭解食物成分、添加劑及營養成分。
+Scan pet food products or their barcode to obtain data on ingredients, additives and nutrition facts.
 
 The app allows to view the over 600 pet food products already contained in the free and open database Open Pet Food Facts, and also to add pictures and data for missing products.
 
 To discover the Open Pet Food Facts project, please visit https://world.openpetfoodfacts.org
 
-***讓寵物食品資訊更透明***
+***Contribute to Pet Food Transparency***
 
 - Open Pet Food Facts is a pet food products database made by everyone, for everyone.
 - You can use it to make better pet food choices, and as it is open data, anyone can re-use it for any purpose.
@@ -12,12 +12,12 @@ To discover the Open Pet Food Facts project, please visit https://world.openpetf
 - You can start contributing today by adding a product from your pet's cupboard. 
 
 
-*** 掌握資訊 ***
+*** Get the Facts ***
 
 You will also be able to find (according to the indications present on the products):
 - list of ingredients (including ash content)
 - nutritional info, nutrition traffic lights…
-- 品牌、過敏原、標籤（有機、純素食等）
+- brands, allergens, labels (organic, vegan...)
 - It works with dog food (dry dog food & wet dog food), cat food, rabbit food, snake food, fish food, bird food, horse food or any food for your favorite animal.
 
 *** 可隨時隨地使用 ***
@@ -26,7 +26,7 @@ You will also be able to find (according to the indications present on the produ
 - You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
 
 *** 您的寵物食品，您的數據 ***
-- 您的個人數據是您的，永遠不會上載網上
+- Your personal data is yours, and is never sent online
 - 您可以匿名使用應用程式
 - 您可以匯出掃描紀錄
 
