@@ -2,7 +2,7 @@
 
 Open Beauty Facts to baza produktów kosmetycznych tworzona przez każdego dla wszystkich.
 - Możesz wykorzystać ją, aby dokonać lepszych wyborów kosmetycznych, a ponieważ jest to baza zawierająca otwarte dane, każdy może spożytkować je w dowolnym celu.
-Open Food Facts to projekt non-profit tworzony przez tysiące wolontariuszy z całego świata. Jest dużo ciekawych projectków do których możesz dołączyć. 
+Open Food Facts to projekt non-profit tworzony przez tysiące wolontariuszy z całego świata. Jest dużo ciekawych projektków do których możesz dołączyć. 
 - Możesz zaangażować się już dzisiaj, dodając produkt z twojej półki z kosmetykami. 
 
 ***Poznaj fakty***
@@ -11,7 +11,7 @@ Dodatki do kosmetyków, F.I.L. kody, numery CI, INCI (Międzynarodowe Nazewnictw
 Open Beauty Facts pomagają zrozumieć drobny tekst na etykietach.
 Nie trzeba już być chemikiem i znać łacinę aby odszyfrować skład :-)
 Możesz skanować: wody po goleniu, balsamy do ciała, dezodoranty, eyelinery, podkłady, perfumy, szminki, produkty do makijażu, maseczki, szampony, mydła, żele pod prysznic, lakiery do paznokci i wiele innych…
-Uważamy, że może być przydatna dla osób z chorobami skóry m. in. trądzik, łuszczyca, egzema... pomagając przy wyborze lepszych kosmetyków.
+Uważamy, że może być przydatna dla osób z chorobami skóry m.
 
 ***Działa dobrze w każdej sytuacji***
 - Możesz dodać nowe produkty, nawet nie mając teraz połączenia.
@@ -23,7 +23,7 @@ Twoje dany nigdy nie są wysyłane online
 Możesz korzystać anonimowo z aplikacji
 Możesz eksportować historię skanowania
 
-Uwaga: Open Beauty Facts jest w trakcie tworzenia. Jej strona internetowa jak i aplikacja opierają się obecnie na danych danych Open Food Facts, tam też zmiany są zapisywane.
+Jej strona internetowa jak i aplikacja opierają się obecnie na danych danych Open Food Facts, tam też zmiany są zapisywane.
 
 Open Beauty Facts jest również dostępny w sieci: https://world.openbeautyfacts.org
 Pytania, opinie: contact@openfoodfacts.org
