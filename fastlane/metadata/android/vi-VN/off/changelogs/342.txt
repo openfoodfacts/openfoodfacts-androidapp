@@ -1,7 +1,7 @@
-All 25k OFF volunteers kept working hard: 1,4M products, 182 countries 🙂
-1. OFF goes big in the US: 237k products with Nutri-Score !
-2. Dark mode: lighter on your eyes, lighter on your battery
-3. Help compute Nutri-Score & Eco-Score: slide up for blue questions & get credited for your answers.
-4. Massive improvements to the vegan, vegetarian & palm oil detection.
-5. Instant product edition even with bad or no network
-6. Products To Be Completed page (right menu) is now real time.
+Tất cả 25 nghìn tình nguyện viên đã luôn làm việc chăm chỉ: 1,4 triệu sản phẩm, 182 quốc gia 🙂
+1. OFF lớn mạnh ở Mỹ: 237k sản phẩm có Điểm Dinh Dưỡng!
+2. Chế độ tối: dịu nhẹ hơn cho mắt của bạn, tiết kiệm hơn cho pin của bạn
+3. Giúp tính Điểm dinh dưỡng & Điểm sinh thái: tăng cấp cho các câu hỏi màu xanh lam và được ghi nhận cho các câu trả lời của bạn.
+4. Cải tiến lớn đối trong việc xác định những đồ chay, thuần chay và dầu cọ.
+5. Chỉnh sửa sản phẩm tức thì ngay cả khi kết nối mạng kém hoặc không có
+6. Trang Sản phẩm đang được hoàn thiện (menu bên phải) hiển thị theo thời gian thực.
