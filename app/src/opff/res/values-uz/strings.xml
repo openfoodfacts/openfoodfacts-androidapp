@@ -21,7 +21,7 @@
     <string name="slide_3_desc">Siz koʻrib chiqqan barcha uy hayvonlari ozuqalarini juda qulay boʻlgan bitta roʻyxatda birlashtirish</string>
     <string name="slide_4_title">Works offline</string>
     <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet connection right now</string>
-    <string name="txtDialogsContent">Siz koʻrsatgan mahsulot hali Open Pet Food Facts da mavjud emas. Iltimos, uni qoʻshing.</string>
+    <string name="txtDialogsContent">The product you scanned does not exist yet in Open Pet Food Facts. Please add it.</string>
     <string name="txtDialogsContentPowerMode">Siz koʻrsatgan mahsulot allaqachon Open Pet Food Facts da mavjud.</string>
     <string name="msg_share">Look at this product on Open Food Facts :</string>
     <string name="not_support_books">Books are not currently supported by Open Food Facts</string>
