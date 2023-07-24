@@ -1,9 +1,9 @@
-Acestea sunt marcajele afișate mai sus de capturile de ecran din playstore. Păstrați-le scurte și atractive.
+Acestea sunt sloganele afișate deasupra capturilor de ecran din Playstore. Păstrați-le scurte și atractive.
 https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=ro
 
-=====================
-V2 screenshots
-=====================
+======================
+Capturi de ecran V2
+======================
 
 Scanați produsul
 
@@ -37,36 +37,36 @@ Puternic
 
 Valori nutriționale
 
-=====================
-V3 screenshots
-=====================
+======================
+Capturi de ecran V3
+======================
 
-Choose the products that are good for you and for the 🌍 planet !
+Alege produsele care sunt bune pentru tine și pentru 🌍 planetă!
 
-✔ Ultra-fast barcode scan
+✔ Scanare ultra-rapidă a codurilor de bare
 
-✔ A global supermarket in your pocket
+✔ Un supermarket global în buzunar
 
-Nutritional quality
+Calitatea nutrițională
 
-Ultra-processed foods
+Alimente ultraprocesate
 
-Carbon impact
+Impactul carbonului
 
-Compare easily before you buy
+Comparați ușor înainte de a cumpăra
 
-Create shopping lists, intake lists…
+Creați liste de cumpărături, liste de aport…
 
-Find and compare over 750 000 products.
+Găsiți și comparați peste 750 000 de produse.
 
 
 
-Unlimited and fully-private scan history
+Istoricul scanărilor nelimitat și complet privat
 
-Swipe for even more details
+Glisați pentru și mai multe detalii
 
-Set Allergen Alerts
+Setați alerte de alergeni
 
-Join our global movement for food transparency
+Alăturați-vă mișcării noastre globale pentru transparența alimentară
 
 world.openfoodfacts.org/contribute
