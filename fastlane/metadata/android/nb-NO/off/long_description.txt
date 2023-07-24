@@ -1,4 +1,4 @@
-Skann matprodukter eller strekkoden deres for å skaffe informasjon om ingredienser, tilsetningsstoffer og næringsfakta.
+Scan food products or their barcode to obtain data on ingredients, additives and nutrition facts.
 
 ▶ Find & Compare more than 800.000 products
 
@@ -21,20 +21,20 @@ To discover the volunteer-run Open Food Facts project, visit https://world.openf
 
 
 ▶ Contribute to Food Transparency
-- Open Food Facts er en matproduktdatabase laget av alle, for alle.
-- Du kan bruke den til å ta bedre matvalg, og ettersom det er åpne data, kan hvem som helst bruke dataene på nytt til ethvert formål.
-- Open Food Facts er et ideelt prosjekt utviklet av tusenvis av frivillige fra hele verden. Vi har mange spennende prosjekter du kan bidra til på mange forskjellige måter.
+- Open Food Facts is a food products database made by everyone, for everyone.
+- You can use it to make better food choices, and as it is open data, anyone can re-use it for any purpose.
+- Open Food Facts is a non-profit project developed by thousands of volunteers from around the world. Vi har mange spennende prosjekter du kan bidra til på mange forskjellige måter.
 - You can start contributing today by adding a product from your fridge.
 
 ▶ Create lists
 Create shopping lists, track what you've eaten and easily share and export your lists.
 
 ▶ Get the Facts
-- Open Food Facts hjelper deg å forstå det som står i liten skrift på produktetikettene. You will be able to find:
-- karbonavtrykk (CO2-utslipp) og emballasje (samt instruksjoner om gjenvinning),
+- Open Food Facts helps you to make sense of the fine print on products labels. You will be able to find:
+- carbon footprint (CO2 emissions) and packaging (as well as recycling instructions),
 - Nutriscore (nutritional score), nutrients, fat / fat content, saturated fatty acids, carbohydrates, sugars, fiber, protein and salt and sodium.
-- varemerker, allergener, etiketter (bio, glutenfri, vegansk, vegetarisk, halal, kosher ...), sporbarhetsinformasjon (emballasjekoder, ingrediensenes opprinnelse)
-- Du finner alkoholinnholdet på vin og øl.
+- brands, allergens, labels (bio, gluten free, vegan, vegetarian, halal, kosher ...), traceability information (packaging codes, origins of ingredients)
+- On wines and beers, you will find the alcohol content.
 
 
 ▶ Based on Science, helping back Science!
@@ -67,7 +67,7 @@ Scan at the speed of light (even if you’re on a plane, submarine or supermarke
 ▶ Say hello and/or join us!
 
 
-Open Food Facts er også tilgjengelig på nettet på https://world.openfoodfacts.org
+Open Food Facts is also available on the web at https://world.openfoodfacts.org
 
 
 Spørsmål, tilbakemelding: contact@openfoodfacts.org
