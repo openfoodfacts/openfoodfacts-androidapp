@@ -30,7 +30,7 @@ To discover the volunteer-run Open Food Facts project, visit https://world.openf
 Create shopping lists, track what you've eaten and easily share and export your lists.
 
 ▶ Get the Facts
-- Open Food Facts helps you to make sense of the fine print on products labels. You will be able to find:
+- Open Food Facts helps you to make sense of the fine print on products labels. You will also be able to find (according to the indications present on the products):
 - carbon footprint (CO2 emissions) and packaging (as well as recycling instructions),
 - Nutriscore (nutritional score), nutrients, fat / fat content, saturated fatty acids, carbohydrates, sugars, fiber, protein and salt and sodium.
 - brands, allergens, labels (bio, gluten free, vegan, vegetarian, halal, kosher ...), traceability information (packaging codes, origins of ingredients)
