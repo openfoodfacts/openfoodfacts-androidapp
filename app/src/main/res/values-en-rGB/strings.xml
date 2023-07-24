@@ -38,7 +38,7 @@
     <string name="action_about">About</string>
     <string name="action_discover">Discover</string>
     <string name="contribute">How to contribute</string>
-    <string name="action_find">Find</string>
+    <string name="action_find">Search</string>
     <string name="product_incomplete_message">This product is not complete. As a result, we couldn\'t do the allergen check.</string>
     <string name="product_allergen_prompt">This product contains:</string>
     <string name="no_offline_data">You\'re all done</string>
@@ -46,10 +46,10 @@
     <!-- Image Upload -->
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
-        <item>Summary</item>
+        <item>Overview</item>
         <item>Ingredients</item>
         <item>Nutrition</item>
-        <item>Nutrition Table</item>
+        <item>Nutrition Facts</item>
         <item>Environment</item>
     </string-array>
     <!-- New Nav Drawer Product Menu Items -->
@@ -65,8 +65,8 @@
     <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
+        <item>g</item>
         <item>mg</item>
-        <item>kg</item>
         <item>µg</item>
         <item>% DV</item>
         <item>IU</item>
@@ -93,7 +93,7 @@
         <item>Chloride</item>
         <item>Cholesterol</item>
         <item>Chromium</item>
-        <item>Copper</item>
+        <item>饱和脂肪</item>
         <item>Dihomo-gamma-linolenic acid / DGLA (20:3 n-6)</item>
         <item>Docosahexaenoic acid / DHA (22:6 n-3)</item>
         <item>Eicosapentaenoic acid / EPA (20:5 n-3)</item>
@@ -159,7 +159,7 @@
     <string name="search_button">Search</string>
     <string name="alert_dialog_warning_title">Warning</string>
     <string name="alert_dialog_warning_msg_user">User/password has changed, please update information</string>
-    <string name="toast_retrieving">Loading...</string>
+    <string name="toast_retrieving">Loading…</string>
     <string name="txtBarcode">Barcode :</string>
     <string name="txtCategories">Categories :</string>
     <string name="txtLabels">Labels, certifications, awards :</string>
@@ -168,12 +168,12 @@
     <string name="Donate">Donate</string>
     <string name="Donation">Click here to donate to Open Food Facts</string>
     <string name="txtSubstances">Substances or products causing allergies or intolerances :</string>
-    <string name="txtAdditives">Additives :</string>
+    <string name="txtAdditives">Additives:</string>
     <string name="txtTraces">Traces :</string>
     <string name="txtMayBeFromPalmOilProduct">Ingredients that may be from palm oil :</string>
     <string name="txtPalmOilProduct">Ingredients from palm oil :</string>
-    <string name="txtServingSize">Serving size :</string>
-    <string name="txtNutrientLevel100g">Nutrient levels for 100g :</string>
+    <string name="txtServingSize">Serving size:</string>
+    <string name="txtNutrientLevel100g">Nutrient levels for 100g:</string>
     <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
     <string name="txtNutritionLevelLow">in low quantity</string>
     <string name="txtNutritionLevelModerate">in moderate quantity</string>
@@ -188,7 +188,7 @@
     <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
     <string name="hintLogin">Login</string>
     <string name="hintPass">Password</string>
-    <string name="errorLogin">Username or password incorrect</string>
+    <string name="errorLogin">Login or password error</string>
     <string name="errorWeb">We were not able to access the Internet. Are you having connectivity issues?</string>
     <string name="uploadLater">Image will be uploaded when network is available</string>
     <string name="txtInfoLoginOk">User saved</string>
@@ -199,22 +199,22 @@
     <string name="hintBrand">Brand</string>
     <string name="txtSendAll">Upload all</string>
     <string name="txtPictureNeededDialogNo">Discard</string>
-    <string name="toastSending">Uploading...</string>
-    <string name="txtLoading">Loading...</string>
+    <string name="toastSending">Uploading…</string>
+    <string name="txtLoading">Loading…</string>
     <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
-    <string name="txtDialogsContentInfoSave">The product is saved locally, you can edit it in the Offline Edit menu</string>
+    <string name="txtDialogsContentInfoSave">The product is saved locally, you can edit it in the \"Offline Edit\" menu</string>
     <string name="productSavedToast">Product saved, thanks!</string>
     <string name="txtBarcodeRequire">Barcode required</string>
     <string name="txtOk">OK</string>
-    <string name="txtBarcodeNotValid">Barcode Invalid</string>
+    <string name="txtBarcodeNotValid">Barcode not valid</string>
     <string name="msg_share">Look at this product on Open Food Facts:</string>
     <string name="create_account">Sign up</string>
     <string name="home_drawer">Home</string>
     <string name="install">Install</string>
     <string name="open_beauty_drawer">Open Beauty Facts</string>
-    <string name="open_food_drawer">Open Food Facts</string>
+    <string name="open_food_drawer">Open Products Facts</string>
     <string name="search_drawer">Search</string>
-    <string name="search_by_barcode_drawer">Search by barcode</string>
+    <string name="search_by_barcode_drawer">Type barcode</string>
     <string name="category_drawer">Categories</string>
     <string name="search_by_category">Category</string>
     <string name="scan_search">Scan</string>
@@ -246,7 +246,7 @@
     <string name="error_field_required">This field is required.</string>
     <string name="action_preferences">Preferences</string>
     <string name="prefs_scan_startup">Scan on startup</string>
-    <string name="prefs_scan_startup_summary">This option, if selected, will start scan when app is opened.</string>
+    <string name="prefs_scan_startup_summary">This option if selected will start scan when app is opened.</string>
     <string name="prefs_power_mode">Power mode scan</string>
     <string name="prefs_power_mode_summary">Quickly scan products in a supermarket to see which ones are not in the database.</string>
     <string name="prefs_language">Languages</string>
@@ -264,7 +264,7 @@
     <string name="title_clear_history_dialog">Clear</string>
     <string name="text_clear_history_dialog">Do you want to clear all your scan history?</string>
     <string name="export_csv_history">Export CSV</string>
-    <string name="txt_exporting_history">Exporting history...</string>
+    <string name="txt_exporting_history">Exporting history…</string>
     <string name="txt_history_exported">History exported</string>
     <string name="permision_write_external_storage">Write external storage permission is needed to export history.</string>
     <string name="no_brand">No Brand</string>
@@ -276,7 +276,7 @@
     <string name="calculated_nutrition">Calculated Nutrition</string>
     <string name="please_enter_weight">Please type the product weight</string>
     <string name="enter_weight">Type the product weight</string>
-    <string name="calculate_nutrition_facts">Calculate Nutrition Facts</string>
+    <string name="calculate_nutrition_facts">Compute nutrition facts for a specific quantity</string>
     <string name="nutrition_carbohydrate">Carbohydrates</string>
     <string name="nutrition_cholesterol">Cholesterol</string>
     <string name="nutrition_energy">Calories</string>
@@ -362,7 +362,7 @@
     <string name="iron">Iron</string>
     <string name="magnesium">Magnesium</string>
     <string name="zinc">Zinc</string>
-    <string name="copper">Copper</string>
+    <string name="copper">饱和脂肪</string>
     <string name="manganese">Manganese</string>
     <string name="fluoride">Fluoride</string>
     <string name="selenium">Selenium</string>
@@ -378,7 +378,7 @@
     <string name="chlorophyl">Chlorophyll</string>
     <string name="take_picture">Take a photo</string>
     <string name="choose_picture_from_gallery">From gallery</string>
-    <string name="take_picture_ingredients">Take a picture of the ingredients</string>
+    <string name="take_picture_ingredients">Take a photo of the ingredients</string>
     <string name="take_picture_front">Take a photo of the front</string>
     <string name="take_picture_nutrition_table">Take a picture of the nutrition facts</string>
     <string name="take_more_pictures">Take more pictures</string>
@@ -390,11 +390,11 @@
     <string name="nova_grp3_msg">Group 3 - Processed foods</string>
     <string name="nova_grp4_msg">Group 4 - Ultra-processed food and drink products</string>
     <!-- String related to App Shortcuts -->
-    <string name="disabled_message">Shortcut Not Available</string>
+    <string name="disabled_message">The shortcut is not available.</string>
     <string name="scan_shortcut_short_label">Scan</string>
     <string name="scan_shortcut_long_label">Scan Product</string>
     <string name="barcode_shortcut_short_label">Search</string>
-    <string name="barcode_shortcut_long_label">Search By Barcode</string>
+    <string name="barcode_shortcut_long_label">Search by barcode</string>
     <string name="history_shortcut_short_label">History</string>
     <string name="history_shortcut_long_label">History</string>
     <string name="contributions_shortcut_short_label">Contributions</string>
@@ -428,7 +428,7 @@
     <string name="FAQ">FAQ</string>
     <string name="FrequentlyAskedQuestions">Frequently Asked Questions</string>
     <string name="translate_help_title">Help translate Open Food Facts</string>
-    <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
+    <string name="translate_help_summary">Bring Open Food Facts to your language - no technical knowledge required</string>
     <string name="please_check_your_connection">Please check your connection.</string>
     <string name="advanced_search_title">Advanced Search &amp; Charts</string>
     <string name="compare_products">Compare products</string>
@@ -455,12 +455,12 @@
     <string name="preference_header_contributing">Contributing</string>
     <string name="scan_first_string">Your viewed product history will be listed here.\nThis history is for your eyes only and is stored locally.</string>
     <string name="log_in">Login</string>
-    <string name="login_true">Already logged in!</string>
+    <string name="login_true">You are already logged in.</string>
     <string name="confirm_logout">Confirm Logout</string>
     <string name="logout_dialog_content">Are you sure to log out ?</string>
     <string name="dialog_cancel">Cancel</string>
     <string name="dialog_create">Create</string>
-    <string name="choose_resolution">Choose Resolution</string>
+    <string name="choose_resolution">Choose resolution</string>
     <string name="pref_resolution_summary">Pick a resolution for image upload</string>
     <string name="image_upload_resolution">Image upload resolution</string>
     <string name="wikidata_information">Going further</string>
@@ -488,8 +488,8 @@
     <string name="mineral_tags_text">Minerals:</string>
     <string name="other_tags_text">Other Substances:</string>
     <!--shared element transition key-->
-    <string name="disable_image_loading">Disable image loading when battery is low</string>
-    <string name="DisableLoadTitle">Disable image loading</string>
+    <string name="disable_image_loading">Disable photo loading when battery is low</string>
+    <string name="DisableLoadTitle">Disable photo loading</string>
     <string name="by_title">Title</string>
     <string name="by_brand">Brand</string>
     <string name="by_barcode">Barcode</string>
@@ -509,7 +509,7 @@
     <string name="products_incomplete">Products you added that need to be completed</string>
     <string name="product_pictures_contributed">Products you took pictures for</string>
     <string name="picture_contributed_incomplete">Products you took pictures for that need to be completed</string>
-    <string name="product_info_added">Products you added information for</string>
+    <string name="product_info_added">Hi</string>
     <string name="product_info_tocomplete">Products you added information for that need to be completed</string>
     <string name="show_by">Show</string>
     <string name="notify_title">Export complete</string>
@@ -541,9 +541,9 @@
     <string name="scan_sound">Scan sound</string>
     <string name="trouble_scanning">Trouble Scanning?</string>
     <string name="barcode_hint">Trouble Scanning? Enter Barcode</string>
-    <string name="switch_camera">Switch camera</string>
+    <string name="switch_camera">Okay</string>
     <string name="autofocus">Autofocus</string>
-    <string name="initial_loading">Initial loading</string>
+    <string name="initial_loading">Kwasy tłuszczowe nasycone</string>
     <string name="preferences">Preferences</string>
     <string name="OFFlogo">Open Food Facts logo</string>
     <string name="loading_product">Loading product %s</string>
@@ -576,7 +576,7 @@
     <string name="please_wait">Please wait</string>
     <string name="product_uploaded_successfully">Product uploaded successfully</string>
     <string name="no_internet_connection">You appear to have no internet connection, images will be uploaded when network is available</string>
-    <string name="no_internet_unable_to_extract_ingredients">No internet connection. Unable to extract ingredients</string>
+    <string name="no_internet_unable_to_extract_ingredients">No Internet connection. Unable to to extract ingredients</string>
     <string name="percent">%1$d%%</string>
     <string name="overview">Overview</string>
     <string name="ingredients">Ingredients</string>
@@ -619,9 +619,9 @@
     <string name="additional_pictures">Additional Pictures</string>
     <string name="hint_product_pictures">(Add more pictures of the product. eg: recycling instructions, labels etc.)</string>
     <string name="uploading_image">Sending the photo</string>
-    <string name="uploading_nutrition_image">Uploading nutrition facts image</string>
-    <string name="uploading_ingredients_image">Uploading ingredients image</string>
-    <string name="uploading_front_image">Uploading front image</string>
+    <string name="uploading_nutrition_image">Sending the nutrition facts photo</string>
+    <string name="uploading_ingredients_image">Sending the ingredients photo</string>
+    <string name="uploading_front_image">Sending the front photo</string>
     <string name="edit_front_image">Edit the front photo</string>
     <string name="edit_nutrition_image">Edit the nutrition photo</string>
     <string name="edit_ingredients_image">Edit the ingredients photo</string>
@@ -632,7 +632,7 @@
     <string name="edit_product_title">Edit a product</string>
     <string name="nutrient_already_added">%s is already present in the nutrition facts</string>
     <string name="save_edits">Save edits</string>
-    <string name="contribution_by">Contribution by</string>
+    <string name="contribution_by">模糊条码: 本产品具有公司内产品的限制流通编号条码。这意味着不同的生产商和商店可以对不同的产品使用相同的条形码。</string>
     <string name="title_activity_product">Title</string>
     <string name="description_activity_product">description</string>
     <string name="intent_filter_share_label">Add to Open Food Facts</string>
@@ -664,9 +664,9 @@
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">Extract ingredients</string>
     <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
-    <string name="add_category_prompt_text">Add a category to compute the Nutri-Score</string>
-    <string name="add_nutrient_category_prompt_text">Add nutrition facts and a category to compute the Nutri-Score</string>
-    <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
+    <string name="add_category_prompt_text">Add a category to help complete the product</string>
+    <string name="add_nutrient_category_prompt_text">Add a category and nutrition facts to help complete the product</string>
+    <string name="category_game_btn">Help categorize products</string>
     <string name="version_string">Open Food Facts Android App</string>
     <string name="version">Version</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
@@ -692,8 +692,8 @@
     <string name="txt_exporting_your_listed_products">Exporting Your Products…</string>
     <string name="txt_your_listed_products_exported">Your products have been exported</string>
     <string name="txt_discard">Discard</string>
-    <string name="txt_info_eaten_products">\"You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"I\'m eating this\".
-        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.\"</string>
+    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
+        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
     <string name="txt_info_your_listed_products">You\'ll be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
     <string name="search_history_pref_title">Delete local search history</string>
     <string name="search_history_pref_summary">Remove all the searches that you performed on this device</string>
@@ -763,7 +763,7 @@
     <string name="add_photo_to_extract_ingredients">Add a photo to begin extracting ingredients</string>
     <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
     <string name="compare_brands">Brands :</string>
-    <string name="compare_additives">Additives :</string>
+    <string name="compare_additives">Additives:</string>
     <string name="compare_salt">Salt</string>
     <string name="compare_sugars">Sugar</string>
     <string name="compare_saturated_fat">Saturated fat</string>
