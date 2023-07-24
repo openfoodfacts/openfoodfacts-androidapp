@@ -7,13 +7,13 @@ Captures d'écran V2
 
 Scannez des produits
 
-Obtenez le Nutriscore
+Obtenez le Nutri-Score
 
 L'historique de vos scans, entièrement privé et exportable
 
 Allez plus loin avec Wikipédia
 
-Mettez des alertes allergènes
+Définir des alertes d'allergènes
 
 La nutrition, simplifiée
 
@@ -35,7 +35,7 @@ Ingrédients
 
 Puissant
 
-Informations nutritionnelles
+Tableau nutritionnel
 
 ======================
 Captures d'écran V3
@@ -49,7 +49,7 @@ Choisissez les produits qui sont bons pour vous et pour la planète!
 
 Qualité nutritionnelle
 
-Aliments ultra-transformés
+Informations nutritionnelles
 
 Impact carbone
 
@@ -65,7 +65,7 @@ Historique de scan illimité et entièrement privé
 
 Faites glisser pour voir plus de détails
 
-Définir des alertes d'allergènes
+Alerte allergènes
 
 Rejoignez notre mouvement mondial pour la transparence alimentaire
 
