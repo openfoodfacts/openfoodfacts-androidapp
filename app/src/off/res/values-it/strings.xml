@@ -15,22 +15,22 @@
     <string name="slide_1_desc">Scansiona i prodotti, fotografali, rendi la trasparenza alimentare una realtà</string>
     <string name="slide_2_title">Prendi i fatti</string>
     <string name="slide_2_desc">Informazioni dettagliate sul prodotto che hai scansionato, decifrate per te</string>
-    <string name="slide_3_title">Ottieni il Nutriscore</string>
+    <string name="slide_3_title">Ottieni il Nutri-Score</string>
     <string name="slide_3_desc">Una visione sintetica delle proprietà nutrizionali dei tuoi prodotti alimentari preferiti</string>
     <string name="slide_4_title">Utilizzabile offline</string>
     <string name="slide_4_desc">Puoi aggiungere nuovi prodotti, anche senza una connessione internet disponibile sul momento</string>
-    <string name="txtDialogsContent">Il prodotto scansionato non esiste ancora in Open Food Facts. Aggiungerlo per favore.</string>
+    <string name="txtDialogsContent">Il prodotto che hai scansionato non esiste ancora in Open Food Facts. Sei pregato di aggiungerlo.</string>
     <string name="txtDialogsContentPowerMode">Il prodotto scannerizzato esiste già in Open Food Facts</string>
-    <string name="msg_share">Guarda questo prodotto su Open Food Facts</string>
+    <string name="msg_share">Guarda questo prodotto su Open Food Facts:</string>
     <string name="not_support_books">I libri non sono attualmente supportati da Open Food Facts</string>
-    <string name="txt_broaden_search">- ampliare la tua ricerca \n- scan e aggiungerla a Open Food Facts</string>
-    <string name="Donation">Fai clic qui per donare a Open Food Facts</string>
+    <string name="txt_broaden_search">- amplia la tua ricerca \n- scan e aggiungila su Open Food Facts</string>
+    <string name="Donation">Clicca qui per donare a Open Food Facts</string>
     <string name="translate_help_title">Aiuta a tradurre Open Food Facts</string>
     <string name="translate_help_summary">Porta il database di Open Food Facts nella tua lingua - non è richiesta alcuna conoscenza tecnica</string>
     <string name="text_offline_info_dialog">Scansione i prodotti anche quando sei offline così che possano essere aggiunti a Open Food Facts successivamente. I prodotti scansionati appariranno qui e potrai inviarli utilizzando il pulsante sottostante.</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Le tue informazioni sulle allergie non saranno mai inviate al server di Open Food Facts. Inoltre, fai attenzione che i dati del prodotto potrebbero non essere precisi e il rilevamento potrebbe non essere accurato al 100%, quindi ti preghiamo di ricontrollare da solo! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Le informazioni sulle tue allergie non saranno mai inviate al server di Oper Products Facts. Inoltre, fai attenzione perché le informazioni sui prodotti potrebbero non essere accurate al 100%, quindi ricorda sempre di controllare! </string>
     <!-- OFF tagline in different languages -->
-    <string name="tagline">il database di prodotti alimentari gratuito</string>
+    <string name="tagline">il database gratuito dei prodotti alimentari</string>
     <string name="product_not_found">Il prodotto %1$s scansionato non esiste ancora in Open Food Facts. Puoi aggiungerlo?</string>
     <string name="currently_on_version">Attualmente su Open Food Facts</string>
 </resources>
