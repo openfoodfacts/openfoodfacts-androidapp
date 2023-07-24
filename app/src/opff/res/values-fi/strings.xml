@@ -11,7 +11,7 @@
     <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contributeur/ -->
     <string name="website_contributor">https://world-fi.openpetfoodfacts.org/contributor/</string>
     <string name="terms_url">https://world-fi.openpetfoodfacts.org/terms-of-use</string>
-    <string name="txtHomeOnline">Open Pet Food Facts is a database of more than %1$s pet food products (plus the ones you will contribute) Woof. Woof.</string>
+    <string name="txtHomeOnline">Open Pet Food Facts on tietokanta, joka sisältää yli %1$s lemmikkien elintarviketta (plus ne jotka lisäät) Vuh. Vuh.</string>
     <string name="txtHome">Open Pet Food Facts on tietokanta lemmikkien elintarvikkeille, joka sisältää ainesosat, ravintosisällöt… Vuh. Vuh.</string>
     <string name="slide_1_title">Lisää lemmikkien elintarvikkeiden läpinäkyvyyttä</string>
     <string name="slide_1_desc">Lue tuotteita, ota ne mukaan kuvaan, mahdollista lemmikkien elintarvikkeiden läpinäkyvyys</string>
@@ -21,11 +21,11 @@
     <string name="slide_3_desc">Kaikki lukemasi lemmikkien elintarvikkeet, yhtenä näppäränä luettelona jonka voit viedä</string>
     <string name="slide_4_title">Toimii offline-tilassa</string>
     <string name="slide_4_desc">Voit lisätä uusia tuotteita, vaikka sinulla ei olisi Internet-yhteyttä tällä hetkellä</string>
-    <string name="txtDialogsContent">Lukemaasi tuotetta ei vielä ole Open Pet Food Factsissa. Lisääthän sen.</string>
+    <string name="txtDialogsContent">The product you scanned does not exist yet in Open Pet Food Facts. Please add it.</string>
     <string name="txtDialogsContentPowerMode">Lukemasi tuote on jo olemassa Open Pet Food Factsissa.</string>
     <string name="msg_share">Katso tätä tuotetta Open Food Factsissa:</string>
     <string name="not_support_books">Open Food Facts ei tue kirjoja tällä hetkellä</string>
-    <string name="txt_broaden_search">- laajenna hakuasi \n- lue, ja lisää se Open Food Factsiin</string>
+    <string name="txt_broaden_search">- laajenna hakuasi \n- lue ja lisää se Open Food Factsiin</string>
     <string name="Donation">Napsauta tästä lahjoittaaksesi Open Food Factsille</string>
     <string name="translate_help_title">Auta kääntämään Open Food Factsia</string>
     <string name="translate_help_summary">Tuo Open Food Facts -tietokanta kielellesi - teknistä tietoa ei vaadita</string>
@@ -33,7 +33,7 @@
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Allergiatietojasi ei koskaan lähetetä Open Food Facts -palvelimelle. Huomaa myös, että tuotetiedot eivät välttämättä ole tarkkoja tai täydellisiä, ja allergiatarkistus ei ehkä ole 100%:n tarkka, joten tarkista itse! </string>
     <!-- OPFF tagline in different languages -->
     <string name="version_string">Avaa Open Pet Food Facts -Android-sovellus</string>
-    <string name="tagline">vapaa tietokanta lemmikkien elintarvikkeille</string>
+    <string name="tagline">free pet food products database</string>
     <string name="product_not_found">Luettua tuotetta %1$s ei vielä ole Open Pet Food Factsissa. Voitko lisätä sen?</string>
     <string name="currently_on_version">Tällä hetkellä Open Pet Food Factsissa</string>
     <string name="category_game_btn">Auta luokittelemaan tuotteita</string>
@@ -45,7 +45,7 @@
     <string name="txt_products_to_buy">Ostettavat tuotteet</string>
     <string name="intent_filter_share_label">Lisää Open Pet Food Factsiin</string>
     <string name="txt_info_eaten_products">Voit lisätä tuotteita tähän luetteloon liu\'uttamalla luetun tuotteen tuotekortin ylöspäin, ja napauttamalla \"Ostettavat tuotteet\".
-        Voit lisätä tuotteita tähän luetteloon etsimällä niitä, ja napsauttamalla + -painiketta tuotesivun oikeassa yläkulmassa.</string>
-    <string name="OFFlogo">Avaa Open Food Facts -logo</string>
+        Voit lisätä tuotteita tähän luetteloon myös etsimällä niitä, ja napsauttamalla + -painiketta tuotesivun oikeassa yläkulmassa.</string>
+    <string name="OFFlogo">Avaa Open Pet Food Facts -logo</string>
     <string name="brand_hint">Esim,: Purina, Whiskas jne…</string>
 </resources>
