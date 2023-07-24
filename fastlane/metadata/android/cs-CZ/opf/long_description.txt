@@ -7,18 +7,18 @@ Open Products Facts je otevřená databáze potravinářských produktů s pří
 - Open Products Facts je neziskový projekt vyvinutý tisíci dobrovolníky z celého světa. Máme spoustu zajímavých projektů, můžete přispět mnoha různými způsoby. 
 - Dnes můžete začít přispívat přidáním svého prvního produktu. 
 
-*** Get the Facts ***
-- Open Products Facts helps you to make sense of the fine print on products labels.
+*** Získejte fakta ***
+- Open Products Facts vám pomůže pochopit drobný tisk na etiketách produktů.
 
-*** Collect AAAALL the things ***
-- You can add all the items from your collections
+*** Sbírejte VŠEEECHNY věci ***
+- Můžete přidat všechny položky ze svých sbírek
 - Open Crayons Facts - Největší otevřená databáze barevných pastelek
-- Open Miniature Food Facts - The largest open database of miniature food products
-- Open ??? Facts - Create your own open database :-)
+- Open Miniature Food Facts - Největší otevřená databáze miniaturních potravinářských produktů
+- OTEVŘENÁ ??? Fakta - Vytvořte si vlastní otevřenou databázi :-)
 
 *** Funguje dobře za všech podmínek ***
 - Můžete přidávat nové produkty, i když právě nemáte připojení k internetu.
-- The app loads only the strict necessary to reduce data and battery consumption
+- Aplikace načte pouze to nejnutnější, aby se snížila spotřeba dat a baterie
 - K vyhledání produktu nepotřebujete fotoaparát. Můžete také zadat čárový kód, pokud nemáte fotoaparát nebo s ním máte problém.
 
 *** Vaše produkty, vaše data ***
@@ -31,11 +31,11 @@ Pro jídlo si můžete nainstalovat Open Food Facts, pro kosmetiku Open Beauty F
 Open Products Facts je k dispozici také na webu https://world.openproductsfacts.org
 Otázky, zpětná vazba: contact@openfoodfacts.org
 
-*** Original April's Fool Listing ***
+*** Původní výpis aprílových žertů***
 
-Yesterday morning, the Open Food Facts team woke up to a stunning revelation. 
+Včera ráno se tým Open Food Facts probudil k ohromujícímu odhalení. 
 
-Collecting the world's food, cosmetic and pet food was so passé. With the insane progress made over the past year, we must surely be close to completing our mission to collect all the food and cosmetic products in the world, right ?
+Sbírání světového jídla, kosmetiky a krmiva pro domácí mazlíčky bylo tak pasé. S šíleným pokrokem, kterého jsme za poslední rok dosáhli, musíme být jistě blízko dokončení naší mise shromáždit všechny potraviny a kosmetické produkty na světě, že?
 
 So we set up to create not 1, but other 77000 separate new databases ! 
 
