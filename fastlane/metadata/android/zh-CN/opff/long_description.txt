@@ -8,7 +8,7 @@
 
 - Open Pet Food Facts 是一个由大家共同建立，同时服务于大家的宠物食品数据库。
 你可以用它来做更好的宠物食品，由于它是开放数据，任何人都可以重复使用。
-- Open Pet Food Facts是一个由来自全世界数以千计的志愿者开发的非盈利项目。 我们也有很多激动人心的项目，让你有可以通过多种方式参与其中 
+- Open Pet Food Facts是一个由来自全世界数以千计的志愿者开发的非盈利项目。 我们也有很多激动人心的项目，让你有可以通过多种方式参与其中 我们有许多激动人心的项目，您可以通过多种不同的渠道来作出贡献。 
 从今天起你可以通过购买我们的宠物产品为这个项目出份力。 
 
 
@@ -23,10 +23,10 @@
 在任何情况下都有效
 - 即使没有连接互联网，你也可以添加新的产品。
 - 应用程序仅加载严格必要以减少数据及电量消耗
--您不需要照相机即可查找产品。 如果缺少相机或出现问题，也可以键入条形码。
+-您不需要照相机即可查找产品。 如果缺少相机或出现问题，也可以键入条形码。 You can also type the barcode if you lack a camera or have an issue with it. You can also type the barcode if you lack a camera or have an issue with it.
 
 ***您的宠物食物，您的数据***
-- 您的个人数据只属于您，永远不会被上传。
+- Your personal data is yours, and is never sent online
 - 您可以匿名使用该应用
 - 您可以导出历史记录
 
