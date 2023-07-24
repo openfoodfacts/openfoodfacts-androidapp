@@ -5,17 +5,17 @@
 - Open Beauty Facts je neziskový projekt vyvinutý tisíci dobrovolníků z celého světa. Máme spoustu zajímavých projektů, můžete přispět mnoha různými způsoby. 
 - Už dnes můžete začít přispívat přidáním produktu z vaší kosmetické skříňky. 
 
-*** Get the Facts ***
+*** Získejte fakta ***
 
-- Cosmetics additives, F.I.L. codes, CI-numbers, INCI (International Nomenclature of Cosmetic Ingredients), ingredient list, allergens, packaging codes... 
-- Open Beauty Facts helps you to make sense of the fine print on products labels.
-- You don't need to be a chemist and learn latin anymore to decypher an ingredient list :-)
+- Přísady do kosmetiky, F.I.L. kódy, čísla CI, INCI (Mezinárodní klasifikace kosmetických přísad), seznam složek, alergeny, kódy balení... 
+- Open Beauty Facts vám pomůže pochopit drobný tisk na etiketách produktů.
+- Už nemusíte být chemikem a učit se latinsky, abyste rozluštili seznam přísad :-)
 - Můžete skenovat: vody po holení, tělová mléka, krémy, deodorant, oční linky, make-up, vůně, rtěnku, make-up, maska, parfém, šampon, mýdlo, sprchový gel, lak na nehty a mnoho dalšího…
 - Myslíme si, že to může být užitečné pro lidi s kožními onemocněními, jako je akné, lupénka, ekzém…, k lepšímu výběru kosmetiky.
 
 *** Funguje dobře za všech podmínek ***
 - Můžete přidávat nové produkty, i když právě nemáte připojení k internetu.
-- The app loads only the strict necessary to reduce data and battery consumption
+- Aplikace načte pouze to nejnutnější, aby se snížila spotřeba dat a baterie
 - K vyhledání produktu nepotřebujete fotoaparát. Můžete také zadat čárový kód, pokud nemáte fotoaparát nebo s ním máte problém.
 
 *** Vaše kosmetika, vaše data ***
