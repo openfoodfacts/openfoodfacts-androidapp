@@ -1,19 +1,19 @@
 
 ==================
-New native version of Open Food Facts. All the Open Food Facts volunteers been working hard on it, based on your suggestions and feedback :)
+Noua versiune nativă a Open Food Facts. Toți voluntarii Open Food Facts au lucrat din greu la asta, pe baza sugestiilor și feedback-ului dumneavoastră :)
 ==================
-* Open Food Facts is now a more global movement than ever. 500k products freed, 10K registered contributors, 182 countries. Will you join us ?
+* Open Food Facts este acum o mișcare mai globală ca niciodată. 500.000 de produse eliberate, 10.000 colaboratori înregistrați, 182 de țări. Ni te vei alătura?
 ==================
 Ce este nou?
 ==================
-1. You get the 360 picture: nutrition, ingredients, and all food facts, neatly and clearly presented.
-2. Get the "NutriScore" nutrition grade for all products in the world. Easily compare products. Easier than deciphering nutrition tables.
-3. Get extra information from Wikipedia. Click on a food category, an additive… to learn more and see similar products.
-4. You can set allergens alerts (always double check the actual label yourself though!)
-5. You now get a scan history you can export and that never leaves your phone
-6. You can shake your phone at any time in the app to start scanning
-7. You can now add new products even when you're offline
-8. You can now help complete your favorite foods directly from the app: take photos, fill info, make food transparency happen
-9. Everything is also much faster. Products load blazingly fast, even with a bad mobile connection.
-10. We're still not interested in your personal data. You don't have to sign-up to scan and contribute.
-Extra! Despite all the new stuff, the app is as light as before. The space left on your phone is sacred.
+1. Obțineți imaginea 360: nutriție, ingrediente și toate informațiile despre alimente, prezentate clar și ordonat.
+2. Obțineți gradul de nutriție „NutriScore” pentru toate produsele din lume. Comparați cu ușurință produsele. Mai ușor decât descifrarea tabelelor nutriționale.
+3. Obțineți informații suplimentare de pe Wikipedia. Faceți clic pe o categorie de alimente, un aditiv… pentru a afla mai multe și a vedea produse similare.
+4. Puteți seta alerte de alergeni (totuși, verificați întotdeauna eticheta reală!)
+5. Acum obțineți un istoric de scanare pe care îl puteți exporta și care nu vă părăsește niciodată telefonul
+6. Poți agita telefonul oricând în aplicație pentru a începe scanarea
+7. Acum puteți adăuga produse noi chiar și atunci când sunteți offline
+8. Acum puteți ajuta la completarea alimentelor preferate direct din aplicație: faceți fotografii, completați informații, faceți transparența alimentelor
+9. Totul este, de asemenea, mult mai rapid. Produsele se încarcă uluitor de rapid, chiar și cu o conexiune mobilă proastă.
+10. Încă nu suntem interesați de datele dumneavoastră personale. Nu trebuie să vă înscrieți pentru a scana și a contribui.
+Suplimentar! În ciuda tuturor lucrurilor noi, aplicația este la fel de simplă ca înainte. Spațiul rămas pe telefon este sacru.
