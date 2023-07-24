@@ -11,8 +11,8 @@
     <!-- For fr, Replace by https://world-fr.openproductsfacts.org/contributeur/ -->
     <string name="website_contributor">https://jp.openfoodfacts.org/contributor/</string>
     <string name="terms_url">https://world.openproductsfacts.org/terms-of-use</string>
-    <string name="txtHomeOnline">Open Products Facts is an open database of more than %1$s products (plus the ones you will contribute).</string>
-    <string name="txtHome">Open Food Facts は、食品の原材料、アレルゲン、栄養成分表、および製品ラベルで見ることができるすべての情報のオープンデータベースです。</string>
+    <string name="txtHomeOnline">Open Products Facts is an open database of more than %1$s products (plus the ones you will contribute) in the world.</string>
+    <string name="txtHome">Open Products Facts は、食品の原材料、アレルゲン、栄養成分表、および製品ラベルで見ることができるすべての情報のオープンデータベースです。</string>
     <string name="slide_1_title">Contribute to product transparency</string>
     <string name="slide_1_desc">製品をスキャンし、写真に写して、食品の透明性を実現します</string>
     <string name="slide_2_title">事実を入手します</string>
@@ -38,14 +38,14 @@
     <string name="currently_on_version">Currently on Open Products Facts</string>
     <string name="category_game_btn">商品の分類にご協力ください</string>
     <!-- TODO add true support instead of overriding strings -->
-    <string name="add_nutrient_prompt_text">Add more details to help complete the product</string>
-    <string name="add_category_prompt_text">Add a category to help complete the product</string>
-    <string name="add_nutrient_category_prompt_text">Add a category and more details to help complete the product</string>
-    <string name="txt_eaten_products">Products I have</string>
+    <string name="add_nutrient_prompt_text">製品の完成に役立つ詳細を追加します</string>
+    <string name="add_category_prompt_text">製品を完成させるためにカテゴリを追加する</string>
+    <string name="add_nutrient_category_prompt_text">製品を完成させるのに役立つカテゴリと詳細を追加します</string>
+    <string name="txt_eaten_products">私が持っている製品</string>
     <string name="txt_products_to_buy">Products to buy</string>
     <string name="intent_filter_share_label">Add to Open Products Facts</string>
-    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
-        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
+    <string name="txt_info_eaten_products">製品をスキャンし、商品カードをドラッグして「購入する商品」をタップすることで、このリストに商品を追加することができます。
+        また、商品ページの右上にある+ボタンをクリックすると、商品リストに商品を追加することができます。</string>
     <string name="OFFlogo">Open Products Facts logo</string>
     <string name="brand_hint">Examples: Nike, Apple, etc…</string>
 </resources>
