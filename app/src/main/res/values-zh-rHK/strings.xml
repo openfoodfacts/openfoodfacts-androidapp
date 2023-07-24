@@ -37,7 +37,7 @@
     <string name="product_incomplete_message">產品資訊不足，無法進行過敏原檢查。</string>
     <string name="product_allergen_prompt">此產品有：</string>
     <string name="no_offline_data">大功告成</string>
-    <string name="first_offline">離線時加入的產品將顯示在此</string>
+    <string name="first_offline">Products added offline will appear here</string>
     <!-- Image Upload -->
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
@@ -60,8 +60,8 @@
     <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
+        <item>g</item>
         <item>mg</item>
-        <item>kg</item>
         <item>µg</item>
         <item>% DV</item>
         <item>國際單位</item>
@@ -155,18 +155,18 @@
     <string name="alert_dialog_warning_title">警告</string>
     <string name="alert_dialog_warning_msg_user">使用者/密碼已變更，請更新資料</string>
     <string name="toast_retrieving">載入中……</string>
-    <string name="txtBarcode">條碼：</string>
-    <string name="txtCategories">分類：</string>
-    <string name="txtLabels">標籤、認證、獎項：</string>
+    <string name="txtBarcode">Barcode :</string>
+    <string name="txtCategories">Categories :</string>
+    <string name="txtLabels">Labels, certifications, awards :</string>
     <string name="txtEMB">Traceability codes:</string>
-    <string name="txtIngredients">成分：</string>
+    <string name="txtIngredients">Ingredients list :</string>
     <string name="Donate">捐款</string>
-    <string name="Donation">捐助Open Food Facts</string>
-    <string name="txtSubstances">致敏或不適的物質和產品：</string>
+    <string name="Donation">Click here to donate to Open Products Facts</string>
+    <string name="txtSubstances">Substances or products causing allergies or intolerances :</string>
     <string name="txtAdditives">添加劑：</string>
-    <string name="txtTraces">含少量：</string>
-    <string name="txtMayBeFromPalmOilProduct">可能來自棕櫚油的成分：</string>
-    <string name="txtPalmOilProduct">來自棕櫚油的成分：</string>
+    <string name="txtTraces">Traces :</string>
+    <string name="txtMayBeFromPalmOilProduct">Ingredients that may be from palm oil :</string>
+    <string name="txtPalmOilProduct">Ingredients from palm oil :</string>
     <string name="txtServingSize">分量：</string>
     <string name="txtNutrientLevel100g">每100克的營養等級：</string>
     <string name="txtNutrientLevel100ml">100毫升的營養素：</string>
@@ -175,7 +175,7 @@
     <string name="txtNutritionLevelHigh">大量</string>
     <string name="txtSave">儲存</string>
     <string name="txtSignIn">登入</string>
-    <string name="txtToastSaved">使用者已儲存</string>
+    <string name="txtToastSaved">User saved</string>
     <string name="txtSalt">鹽</string>
     <string name="txtFat">脂肪</string>
     <string name="txtSugars">糖</string>
@@ -185,10 +185,10 @@
     <string name="hintPass">密碼</string>
     <string name="errorLogin">使用者名稱或密碼錯誤</string>
     <string name="errorWeb">我們無法連接網絡，您的連線是否出了問題？</string>
-    <string name="uploadLater">圖片會在連接網絡後上載</string>
-    <string name="txtInfoLoginOk">使用者已儲存</string>
-    <string name="txtInfoLoginNo">使用者未被儲存</string>
-    <string name="txtDialogsContent">Open Food Facts尚未收錄您掃描的產品，請把它錄入資料庫。</string>
+    <string name="uploadLater">Image will be uploaded when network is available</string>
+    <string name="txtInfoLoginOk">User saved</string>
+    <string name="txtInfoLoginNo">User not saved</string>
+    <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
     <string name="txtYes">是</string>
     <string name="txtNo">否</string>
     <string name="hintBrand">品牌</string>
@@ -196,39 +196,39 @@
     <string name="txtPictureNeededDialogNo">放棄</string>
     <string name="toastSending">上載中……</string>
     <string name="txtLoading">載入中……</string>
-    <string name="txtDialogsContentDelete">您要刪除此草稿嗎？</string>
-    <string name="txtDialogsContentInfoSave">該產品是儲存在本地裝置，您可以在「離線編輯」選單中編輯</string>
+    <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
+    <string name="txtDialogsContentInfoSave">The product is saved locally, you can edit it in the \"Offline Edit\" menu</string>
     <string name="productSavedToast">Product saved, thanks!</string>
     <string name="txtBarcodeRequire">需要條碼</string>
     <string name="txtOk">確定</string>
     <string name="txtBarcodeNotValid">條碼無效</string>
-    <string name="msg_share">在Open Food Facts上查看此產品：</string>
+    <string name="msg_share">Look at this product on Open Products Facts :</string>
     <string name="create_account">註冊</string>
     <string name="home_drawer">首頁</string>
     <string name="install">安裝</string>
     <string name="open_beauty_drawer">Open Beauty Facts</string>
-    <string name="open_food_drawer">Open Food Facts</string>
+    <string name="open_food_drawer">Open Products Facts</string>
     <string name="search_drawer">搜尋</string>
     <string name="search_by_barcode_drawer">輸入條碼</string>
     <string name="category_drawer">分類</string>
     <string name="search_by_category">分類</string>
     <string name="scan_search">掃描條碼</string>
     <string name="user_drawer">用戶</string>
-    <string name="offline_edit_drawer">離線編輯</string>
+    <string name="offline_edit_drawer">Offline edit</string>
     <string name="txt_anonymous">匿名</string>
     <string name="delete_txt">刪除</string>
     <string name="sign_in_drawer">登入</string>
     <string name="alert_drawer">過敏原警報</string>
     <string name="your_lists">您的清單</string>
     <string name="title_dialog_alert">新增警告</string>
-    <string name="select_camera">選擇相機</string>
+    <string name="select_camera">Select a Camera</string>
     <string name="ok_button">確定</string>
-    <string name="cancel_button">Cancel</string>
+    <string name="cancel_button">取消</string>
     <string name="login_button">用戶名</string>
     <string name="create_account_button">註冊</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
     <string name="title_info_dialog">這是如何運作？</string>
-    <string name="text_offline_info_dialog">就算上不了網，您也可以掃描產品，之後才將它加入Open Food Facts。您掃描過的所有產品都會在此出現，按一下下面的按鈕將會傳送產品至資料庫。</string>
+    <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
     <string name="permission_camera">請授權相機掃描條碼和拍攝相片。</string>
     <string name="no_camera_dialog_title">Camera not found</string>
     <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
@@ -239,13 +239,13 @@
     <string name="error_invalid_password">密碼至少要有六個字元。</string>
     <string name="user">使用者</string>
     <string name="error_field_required">此欄不可留空。</string>
-    <string name="action_preferences">設定</string>
-    <string name="prefs_scan_startup">在啟動時掃描</string>
-    <string name="prefs_scan_startup_summary">若啟用此選項，應用程式啟動時會立刻掃描。</string>
-    <string name="prefs_power_mode">強力掃描模式</string>
-    <string name="prefs_power_mode_summary">在超市快速掃描產品，來看哪一項不在資料庫中。</string>
+    <string name="action_preferences">Preferences</string>
+    <string name="prefs_scan_startup">Scan on startup</string>
+    <string name="prefs_scan_startup_summary">This option if selected will start scan when app is opened.</string>
+    <string name="prefs_power_mode">Power mode scan</string>
+    <string name="prefs_power_mode_summary">Quickly scan products in a supermarket to see which ones are not in the database.</string>
     <string name="prefs_language">語言</string>
-    <string name="prefs_language_summary">更改語言</string>
+    <string name="prefs_language_summary">Change language</string>
     <!-- Strings related to feedback dialog -->
     <string name="user_enjoying_app">Are you enjoying your experience with Open Food Facts?</string>
     <string name="user_ask_show_feedback_form">We\'re sorry to hear that! Could you tell us what happened?</string>
@@ -271,7 +271,7 @@
     <string name="calculated_nutrition">計算出的營養</string>
     <string name="please_enter_weight">請輸入產品重量</string>
     <string name="enter_weight">輸入產品重量</string>
-    <string name="calculate_nutrition_facts">為指定含量算出營養成分</string>
+    <string name="calculate_nutrition_facts">Compute nutrition facts for a specific quantity</string>
     <string name="nutrition_carbohydrate">碳水化合物</string>
     <string name="nutrition_cholesterol">膽固醇</string>
     <string name="nutrition_energy">能量</string>
@@ -279,9 +279,9 @@
     <string name="nutrition_energy_kj">Energy in joules (kJ)</string>
     <string name="nutrition_energy_short_name">能量</string>
     <string name="nutrition_fat">脂肪</string>
-    <string name="nutrition_fiber">膳食纖維</string>
-    <string name="nutrition_header">營養成分</string>
-    <string name="nutrition_proteins">蛋白質</string>
+    <string name="nutrition_fiber">膳食纤维</string>
+    <string name="nutrition_header">營養素表</string>
+    <string name="nutrition_proteins">蛋白质</string>
     <string name="nutrition_salt">鹽</string>
     <string name="nutrition_satured_fat">飽和脂肪</string>
     <string name="nutrition_sodium">鈉</string>
@@ -290,10 +290,10 @@
     <string name="nutriment_serving_size">每份： </string>
     <string name="action_manage_account">管理帳號</string>
     <string name="action_contributes">您的貢獻</string>
-    <string name="choose_energy_unit">選擇營養標籤上使用的能量單位</string>
-    <string name="energy_pref_title">能量單位</string>
-    <string name="choose_volume_unit">選擇營養標籤上使用的容量單位</string>
-    <string name="volume_pref_title">容量單位</string>
+    <string name="choose_energy_unit">Choose your preferred energy units for the nutrition table</string>
+    <string name="energy_pref_title">Preferred energy unit</string>
+    <string name="choose_volume_unit">Choose your preferred volume units for the nutrition table</string>
+    <string name="volume_pref_title">Preferred volume unit</string>
     <string name="logout_drawer">登出</string>
     <string name="contribution_without_account">您可以登入或註冊帳號來記錄您的貢獻</string>
     <string name="textCarbonFootprint">碳足跡或二氧化碳排放量︰</string>
@@ -312,7 +312,7 @@
     <string name="txt_no_matching_incomplete_products">我們沒有任何欠缺資料的產品！您要加入新產品嗎？</string>
     <string name="txt_no_matching_contributor_products">糟糕，我們沒有此編輯者沒有加入任何產品，你可以加入產品嗎？</string>
     <string name="txt_no_matching_products">我們找不到相關產品。\n您可以嘗試：</string>
-    <string name="txt_broaden_search">- 擴大搜尋範圍\n- 掃描並將產品加入Open Food Facts</string>
+    <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Products Facts</string>
     <string name="something_went_wrong">抱歉，發生錯誤了……</string>
     <string name="txt_try_again">再試一次</string>
     <string name="nutrition_lactose">乳糖</string>
@@ -381,9 +381,9 @@
     <string name="nutriscore_info_msg">瞭解Nutri-Score</string>
     <string name="nova_info_msg">Learn more about NOVA groups</string>
     <string name="nova_grp1_msg">第一類：未加工或經少量加工的食品</string>
-    <string name="nova_grp2_msg">第二類：加工的烹飪用食品</string>
+    <string name="nova_grp2_msg">第二類：經加工的食材</string>
     <string name="nova_grp3_msg">第三類：加工食品</string>
-    <string name="nova_grp4_msg">Group 4 - Ultra-processed food and drink products</string>
+    <string name="nova_grp4_msg">弟四類：超加工食品和飲料產品</string>
     <!-- String related to App Shortcuts -->
     <string name="disabled_message">無法使用捷徑</string>
     <string name="scan_shortcut_short_label">掃描</string>
@@ -397,43 +397,43 @@
     <string name="forgot_password">忘記密碼</string>
     <string name="next">下一頁</string>
     <string name="skip">跳過</string>
-    <string name="start">知道了</string>
+    <string name="start">GOT IT</string>
     <string name="contact">聯絡方式</string>
-    <string name="contact_summary">聯絡團隊</string>
+    <string name="contact_summary">Contact the team</string>
     <string name="email_not_found">找不到電郵應用程式</string>
-    <string name="airplane_mode_active_dialog_title">已啟用飛行模式</string>
-    <string name="airplane_mode_active_dialog_message">飛行模式已啟用，請禁用此功能。</string>
+    <string name="airplane_mode_active_dialog_title">Airplane mode enabled</string>
+    <string name="airplane_mode_active_dialog_message">Airplane mode is enabled, please disable this to continue.</string>
     <string name="airplane_mode_active_dialog_negative">關閉</string>
     <string name="airplane_mode_active_dialog_positive">設定</string>
     <string name="device_offline_dialog_title">不能連接網路</string>
-    <string name="device_offline_dialog_message">此動作須要連接網絡，你想在設定中更改設置嗎？</string>
+    <string name="device_offline_dialog_message">A network connection is needed to do this, would you like to change this in settings?</string>
     <string name="device_offline_dialog_negative">關閉</string>
     <string name="device_offline_dialog_positive">設定</string>
     <string name="scan_first_product">掃描您的第一個產品</string>
-    <string name="preference_delete_search_history">已刪除紀錄</string>
-    <string name="preference_enable_mobile_data_title">可使用流動數據上載</string>
-    <string name="preference_enable_mobile_data_summary_on">使用流動數據和WiFi上載產品</string>
-    <string name="preference_enable_mobile_data_summary_off">只使用WiFi上載產品</string>
+    <string name="preference_delete_search_history">Successfully deleted history</string>
+    <string name="preference_enable_mobile_data_title">Upload on mobile data</string>
+    <string name="preference_enable_mobile_data_summary_on">Upload new products using mobile data &amp; WiFi</string>
+    <string name="preference_enable_mobile_data_summary_off">Upload new products using WiFi only</string>
     <string name="device_on_mobile_data_warning_title">資訊</string>
     <string name="device_on_mobile_data_warning_message">You have disabled upload on mobile data , please connect to WiFi or change this in preferences</string>
-    <string name="device_on_mobile_data_warning_positive">設定</string>
-    <string name="device_on_mobile_data_warning_negative">仍要上傳</string>
+    <string name="device_on_mobile_data_warning_positive">Preferences</string>
+    <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
     <string name="changes_saved">更改已儲存</string>
     <string name="preference_choose_language_dialog_title">選擇語言</string>
-    <string name="FAQ">常見問題</string>
+    <string name="FAQ">FAQ</string>
     <string name="FrequentlyAskedQuestions">常見問答</string>
-    <string name="translate_help_title">翻譯Open Food Facts</string>
-    <string name="translate_help_summary">您不須懂得編程，也可以將Open Food Facts翻釋成其他語言</string>
+    <string name="translate_help_title">Help translate Open Food Facts</string>
+    <string name="translate_help_summary">Bring Open Food Facts to your language - no technical knowledge required</string>
     <string name="please_check_your_connection">請檢查您的網路連線。</string>
     <string name="advanced_search_title">進階搜尋及圖表</string>
     <string name="compare_products">Compare products</string>
     <string name="connectivity_check">請檢查您的網絡連線</string>
     <string name="dismiss">關閉</string>
-    <string name="Terms">條款</string>
+    <string name="Terms">Terms</string>
     <string name="TermsOfUse">Terms and Privacy</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <!--Just replace "world" by "fr", "de"… translate the "terms-of-use" with the hyphens -->
-    <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
+    <string name="terms_url">https://world.openproductsfacts.org/terms-of-use</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
     <string name="faq_url">https://world.openfoodfacts.org/faq</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
@@ -446,27 +446,27 @@
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
     <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">一般</string>
-    <string name="preference_header_network">網絡</string>
-    <string name="preference_header_contributing">貢獻</string>
+    <string name="preference_header_network">Network</string>
+    <string name="preference_header_contributing">Contributing</string>
     <string name="scan_first_string">這裏列出您之前查看的產品。\n此記錄儲存在手機上，只有你才可以查看。</string>
     <string name="log_in">用戶名</string>
     <string name="login_true">您已經登入了！</string>
     <string name="confirm_logout">確認登出Open Food Facts</string>
     <string name="logout_dialog_content">確定登出Open Food Facts嗎？</string>
-    <string name="dialog_cancel">Cancel</string>
+    <string name="dialog_cancel">取消</string>
     <string name="dialog_create">新增</string>
-    <string name="choose_resolution">選擇解像度</string>
-    <string name="pref_resolution_summary">為上載的圖片選擇解像度</string>
-    <string name="image_upload_resolution">圖片上載解像度</string>
+    <string name="choose_resolution">Choose resolution</string>
+    <string name="pref_resolution_summary">Pick a resolution for image upload</string>
+    <string name="image_upload_resolution">Image upload resolution</string>
     <string name="wikidata_information">暸解更多</string>
     <string name="wikidata_unavailable">There is no Wikipedia page in your language yet.</string>
     <string name="Wikipedia">在維基百科上查看</string>
     <string name="Browse_Products">瀏覽產品</string>
     <string name="brand_string">品牌</string>
     <string name="additive_string">添加劑</string>
-    <string name="allergen_string">Allergen</string>
+    <string name="allergen_string">過敏原</string>
     <string name="search_string">搜尋</string>
-    <string name="country_string">出售國家</string>
+    <string name="country_string">可出售的国家</string>
     <string name="store_subtitle">商店</string>
     <string name="packaging_subtitle">包装</string>
     <string name="packaging_string">包装</string>
@@ -474,8 +474,8 @@
     <string name="category_string">分類</string>
     <string name="connection">已連線</string>
     <string name="contributor_string">貢獻者</string>
-    <string name="Rate_Us">表態支持</string>
-    <string name="Rate_Us_title">幫我們的應用程式評分</string>
+    <string name="Rate_Us">Show Your Support</string>
+    <string name="Rate_Us_title">Rate our App</string>
     <string name="app_disabled_text">應用程式已關閉</string>
     <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
     <string name="vitamin_tags_text">維他命：</string>
@@ -483,14 +483,14 @@
     <string name="mineral_tags_text">礦物質：</string>
     <string name="other_tags_text">其他物質：</string>
     <!--shared element transition key-->
-    <string name="disable_image_loading">電池快用完時不載入圖片</string>
-    <string name="DisableLoadTitle">不載入圖片</string>
+    <string name="disable_image_loading">Disable photo loading when battery is low</string>
+    <string name="DisableLoadTitle">Disable photo loading</string>
     <string name="by_title">標題</string>
     <string name="by_brand">品牌</string>
     <string name="by_barcode">條碼</string>
     <string name="by_time">最近查看日期</string>
     <string name="sort">排序</string>
-    <string name="by_nutrition_grade">按營養等級</string>
+    <string name="by_nutrition_grade">Nutrition Grade</string>
     <string name="sort_by">排序依</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
@@ -520,7 +520,7 @@
     <string name="contribution_tab_summary">Show user contributions tab with products</string>
     <string name="contribution_tab_title">Show contribution tab</string>
     <string name="txtDialogsTitle">資訊</string>
-    <string name="preference_show_all_product_photos_title">顯示所有產品相片</string>
+    <string name="preference_show_all_product_photos_title">Show all product photos</string>
     <string name="preference_show_all_product_photos_summary">Show all product photos submitted in a separate tab</string>
     <string name="offline_product_addition_title">新增產品</string>
     <string name="productNameNull">名稱不明</string>
@@ -531,14 +531,14 @@
     </plurals>
     <string name="product_not_complete">This product is not yet complete. \nCan you add some details?</string>
     <string name="addProductOffline">You seem offline. Add the product %s using the offline mode ?</string>
-    <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
+    <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Products Facts. Can you add it?</string>
     <string name="scan_sound">掃描聲效</string>
     <string name="trouble_scanning">不能掃描？</string>
     <string name="barcode_hint">不能掃描？輸入條碼</string>
     <string name="switch_camera">切換相機</string>
     <string name="autofocus">自動對焦</string>
     <string name="initial_loading">初步載入</string>
-    <string name="preferences">設定</string>
+    <string name="preferences">Preferences</string>
     <string name="OFFlogo">Open Food Facts標誌</string>
     <string name="loading_product">Loading product %s</string>
     <string name="image_not_defined_for_language">No image for selected language. You can add a new one</string>
@@ -550,17 +550,17 @@
     <string name="error_adding_product_details">加入產品資料時出錯</string>
     <string name="hint_product_URL">產品的官方網頁</string>
     <string name="product_language">產品語言： </string>
-    <string name="hint_emb_codes">例如：EMB 53062、FR 62.448.034 CE、84 R 20、33 RECOLTANT 522、FSSL 10013011001409</string>
+    <string name="hint_emb_codes">Examples: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522, FSSL 10013011001409</string>
     <string name="official_website">官方網站</string>
     <string name="scan_QR_code">Scan QR Code for product website</string>
     <string name="add_at_least_one_picture">請先加入至少一張產品圖片</string>
     <string name="image_uploaded_successfully">圖片已上載</string>
     <string name="error_adding_product_photos">加入產品圖片時出錯</string>
-    <string name="ingredients_overwrite">蓋過成分</string>
-    <string name="choose_mine">選擇我的圖片</string>
-    <string name="keep_previous_version">保存先前版本</string>
-    <string name="product_name_overwrite">蓋過產品名稱</string>
-    <string name="yours">您的：</string>
+    <string name="ingredients_overwrite">Ingredients overwrite</string>
+    <string name="choose_mine">Choose mine</string>
+    <string name="keep_previous_version">Keep previous version</string>
+    <string name="product_name_overwrite">Product name overwrite</string>
+    <string name="yours">Yours: </string>
     <string name="currently_on">Currently on %s: </string>
     <string name="quantity_overwrite">Quantity overwrite</string>
     <string name="link_overwrite">Link overwrite</string>
@@ -584,7 +584,7 @@
     <string name="extracting_ingredients">摘錄配料</string>
     <string name="looksGood">確認</string>
     <string name="skip_ingredients">太劣質\n跳過摘錄成分</string>
-    <string name="traces">痕迹</string>
+    <string name="traces">含少量</string>
     <string name="traces_hint">Indicate ingredients from mentions like \'May contain traces of\', \'Made in a factory that also uses\', etc. \nExamples: Milk, Gluten, Nuts</string>
     <string name="nutrition_facts_not_specified">產品未具體標明營養成分</string>
     <string name="nutrition_facts_picture">Nutrition Facts photo</string>
@@ -592,19 +592,19 @@
     <string name="other_picture">其他圖片</string>
     <string name="for_100g_100ml">每100克/100毫升</string>
     <string name="per_serving">每份</string>
-    <string name="serving_size">分量</string>
+    <string name="serving_size">份量</string>
     <string name="alcohol_unit" formatted="false">% vol / °</string>
-    <string name="add_a_nutrient">新增營養</string>
+    <string name="add_a_nutrient">新增營養素</string>
     <string name="add_this_product">加入此產品</string>
     <string name="product_picture">產品圖片</string>
     <string name="one_photo_compulsory">（新產品必須載有一張照片）</string>
     <string name="product_details">產品詳情</string>
     <string name="product_name">品名</string>
-    <string name="quantity">数量</string>
+    <string name="quantity">分量</string>
     <string name="labels">標籤</string>
     <string name="period_of_time_after_opening">開封後保存期限</string>
     <string name="manufacturing_details">製造資料</string>
-    <string name="origin_of_ingredients">成分来源</string>
+    <string name="origin_of_ingredients">成分來源</string>
     <string name="manufacturing_place">出產地</string>
     <string name="emb_code">Traceability Code</string>
     <string name="purchasing_details">購買資料</string>
@@ -613,9 +613,9 @@
     <string name="additional_pictures">額外圖片</string>
     <string name="hint_product_pictures">（加入更多產品照片，如回收指示、標籤等）</string>
     <string name="uploading_image">正在傳送照片</string>
-    <string name="uploading_nutrition_image">Uploading nutrition facts image</string>
-    <string name="uploading_ingredients_image">Uploading ingredients image</string>
-    <string name="uploading_front_image">Uploading front image</string>
+    <string name="uploading_nutrition_image">Sending the nutrition facts photo</string>
+    <string name="uploading_ingredients_image">Sending the ingredients photo</string>
+    <string name="uploading_front_image">Sending the front photo</string>
     <string name="edit_front_image">編輯正面相片</string>
     <string name="edit_nutrition_image">編輯營養標籤相片</string>
     <string name="edit_ingredients_image">編輯成分表相片</string>
@@ -629,7 +629,7 @@
     <string name="contribution_by">Contribution by</string>
     <string name="title_activity_product">標題</string>
     <string name="description_activity_product">描述</string>
-    <string name="intent_filter_share_label">加入Open Food Facts</string>
+    <string name="intent_filter_share_label">Add to Open Products Facts</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="overexposure_high">極容易過量攝取</string>
     <string name="overexposure_moderate">較容易過量攝取</string>
@@ -657,12 +657,12 @@
     <string name="update_image">發送新圖片</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">摘錄成分</string>
-    <string name="add_nutrient_prompt_text">加入營養標籤後才能算出Nutri-Score</string>
-    <string name="add_category_prompt_text">分類後才能算出Nutri-Score</string>
-    <string name="add_nutrient_category_prompt_text">加入營養標籤及分類後才能算出Nutri-Score</string>
-    <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
-    <string name="version_string">Open Food Facts Android App</string>
-    <string name="version">版本</string>
+    <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
+    <string name="add_category_prompt_text">Add a category to help complete the product</string>
+    <string name="add_nutrient_category_prompt_text">Add a category and nutrition facts to help complete the product</string>
+    <string name="category_game_btn">協助分類產品</string>
+    <string name="version_string">Open Products Facts Android App</string>
+    <string name="version">Version</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
     <string name="set_img_nutrients">Set as nutrition image</string>
     <string name="set_img_front">Set as front image</string>
@@ -670,38 +670,38 @@
     <string name="detected_ingredients">偵測到的成分</string>
     <string name="txtConnectionError">We could not download certain data. This may be due to a connection error.</string>
     <string name="set_image_name">Successfully set the image as</string>
-    <string name="fast_addition_mode_title">快速加入模式</string>
+    <string name="fast_addition_mode_title">Fast Addition Mode</string>
     <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
-    <string name="crop_new_image_title">裁剪新圖片</string>
+    <string name="crop_new_image_title">Crop new images</string>
     <string name="crop_new_image">Enables crop action on new images</string>
     <string name="addtive_search">搜尋添加劑</string>
     <string name="additives">添加劑</string>
     <!--used for product_lists implementation-->
-    <string name="add_to_product_lists">加入您的列表</string>
-    <string name="txt_create_new_list">新增清單</string>
-    <string name="txt_add_to_new_list">加入新列表</string>
-    <string name="create_new_list_list_name">清單名稱</string>
-    <string name="txt_eaten_products">曾食用的產品</string>
+    <string name="add_to_product_lists">Add to your lists</string>
+    <string name="txt_create_new_list">Create a new list</string>
+    <string name="txt_add_to_new_list">Add to a new list</string>
+    <string name="create_new_list_list_name">List Name</string>
+    <string name="txt_eaten_products">Eaten products</string>
     <string name="txt_products_to_buy">要購買的產品</string>
     <string name="txt_exporting_your_listed_products">匯出產品……</string>
     <string name="txt_your_listed_products_exported">已匯出您的產品</string>
     <string name="txt_discard">放棄</string>
-    <string name="txt_info_eaten_products">\"You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"I\'m eating this\".
-        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.\"</string>
+    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
+        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
     <string name="txt_info_your_listed_products">You\'ll be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
-    <string name="search_history_pref_title">刪除本地搜尋記錄</string>
-    <string name="search_history_pref_summary">刪除此裝置上搜尋記錄</string>
+    <string name="search_history_pref_title">Delete local search history</string>
+    <string name="search_history_pref_summary">Remove all the searches that you performed on this device</string>
     <string name="search_history_pref_dialog_content">Delete local search history?</string>
-    <string name="settings_country_dialog_title">選擇國家</string>
-    <string name="settings_country_summary">更改您選擇的國家</string>
-    <string name="settings_country_title">國家</string>
+    <string name="settings_country_dialog_title">Select your country</string>
+    <string name="settings_country_summary">Change your selected country</string>
+    <string name="settings_country_title">Country</string>
     <string name="txt_no_nutrition_data">此產品的包裝上沒有任何營養素表，如果該產品已經加入營養素表，請編輯產品加入營養資訊。</string>
     <string name="image_prompt_language">Take a photo of the ingredients in</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Add products</string>
     <string name="add_another_product">加入另一個產品</string>
-    <string name="add_nutrition_facts_for_nutriscore">加入營養標籤後才能算出Nutri-Score</string>
+    <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
     <string name="product_summary_action_compare_button_label">比較</string>
     <string name="product_summary_action_add_to_list_button_label">加入列表</string>
     <string name="product_summary_action_edit_button_label">編輯</string>
@@ -722,19 +722,19 @@
     <string name="scan_tooltip">You can slide up the card for more details</string>
     <string name="add_an_allergen">加入過敏原</string>
     <string name="add_a_list">新增列表</string>
-    <string name="edit_image">編輯圖片</string>
-    <string name="cant_edit_image_not_yet_uploaded">新圖片尚未完成上載，請稍後</string>
-    <string name="unselect_image">取消選取圖片</string>
+    <string name="edit_image">Edit Image</string>
+    <string name="cant_edit_image_not_yet_uploaded">The new image is not yet uploaded. Please, wait before editing it</string>
+    <string name="unselect_image">Unselect Image</string>
     <string name="choose_default_language">選擇產品語言</string>
     <string name="barcode">條碼</string>
     <string name="productAdditivesNone">沒有添加劑</string>
-    <string name="error_uploading_photo">上傳新照片時出錯</string>
+    <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
     <string name="import_csv_to_list">Import an Open Food Facts list CSV file</string>
     <string name="toast_import_csv_error">匯入CSV檔案時出錯</string>
     <string name="toast_import_csv">已匯入CSV！</string>
-    <string name="open_csv">開啟CSV</string>
+    <string name="open_csv">Open CSV</string>
     <!-- Used for diets AddOn -->
-    <string name="history_network_error">無法載入產品，請在能夠上網後再試。</string>
+    <string name="history_network_error">The product couldn\'t be loaded. Please try again when you are back online.</string>
     <string name="cant_modify_if_refreshing">請等待上載完成</string>
     <string name="closeZoom">Click to close zoom</string>
     <string name="imageFullscreen">Zoom</string>
@@ -748,7 +748,7 @@
     <string name="ingredients_in_this_product_are">Ingredients in this product are %1$s.</string>
     <string name="ingredients_in_this_product">Ingredients in this product that are %1$s:</string>
     <string name="display_analysis_tag_status">Display %1$s status</string>
-    <string name="preference_header_display">顯示</string>
+    <string name="preference_header_display">Display</string>
     <string name="unknown_status_no_translation">We couldn\'t assess the status of the product due to unrecognized ingredients.</string>
     <string name="help_translate_ingredients">把食品成分翻譯至您的語言</string>
     <string name="unknown_status_missing_ingredients">We couldn\'t assess the status of the product due to missing ingredients.</string>
@@ -790,5 +790,5 @@
     <string name="brand_hint">Examples: Coca-Cola, Nestle, etc…</string>
     <string name="sign_in_or_register">Sign in or register</string>
     <string name="hunger_game_call_to_action">Help classify more %1$s</string>
-    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s food products (plus the ones you will contribute).</string>
+    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s products (plus the ones you will contribute).</string>
 </resources>
