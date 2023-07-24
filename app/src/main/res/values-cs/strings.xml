@@ -16,37 +16,37 @@
   -->
 <resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
-        <item quantity="one">Zadali jste 1 výrobek offline, který čeká na přidání do Open Food Facts</item>
-        <item quantity="few"> Máte %d offline produkty, které čekají na přidání do Open Food Facts</item>
-        <item quantity="many"> You have %d offline products waiting to be contributed to Open Food Facts</item>
+        <item quantity="one">Zadali jste 1 offline produkt, který čeká na přidání do Open Food Facts</item>
+        <item quantity="few">Máte %d offline produkty, které čekají na přidání do Open Food Facts</item>
+        <item quantity="many">Máte %d offline produktů, které čekají na přidání do Open Food Facts</item>
         <item quantity="other"> Máte %d offline produktů, které čekají na přidání do Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
-        <item quantity="one">Před 1 vteřinou</item>
+        <item quantity="one">před %d sekundami</item>
         <item quantity="few">Před %d vteřinami</item>
         <item quantity="many">Před %d vteřinami</item>
         <item quantity="other">Před %d vteřinami</item>
     </plurals>
     <plurals name="minutes">
-        <item quantity="one">před minutou</item>
+        <item quantity="one">před %d minutami</item>
         <item quantity="few">Před %d minutami</item>
         <item quantity="many">Před %d minutami</item>
         <item quantity="other">Před %d minutami</item>
     </plurals>
     <plurals name="hours">
-        <item quantity="one">před hodinou</item>
+        <item quantity="one">před %d hodinami</item>
         <item quantity="few">Před %d hodinami</item>
         <item quantity="many">Před %d hodinami</item>
         <item quantity="other">Před %d hodinami</item>
     </plurals>
     <plurals name="days">
-        <item quantity="one">Včera</item>
+        <item quantity="one">před %d dny</item>
         <item quantity="few">Před %d dny</item>
         <item quantity="many">Před %d dny</item>
         <item quantity="other">Před %d dny</item>
     </plurals>
     <string name="action_about">O aplikaci</string>
-    <string name="action_discover">Více informací</string>
+    <string name="action_discover">Zjistit víc</string>
     <string name="contribute">Jak přispět</string>
     <string name="action_find">Vyhledat</string>
     <string name="product_incomplete_message">Tento výrobek není kompletní. V důsledku toho jsme nemohli provést kontrolu alergenů.</string>
@@ -58,9 +58,9 @@
     <string-array name="nav_drawer_items_product">
         <item>Přehled</item>
         <item>Složení</item>
+        <item>Nutriční hodnoty</item>
         <item>Výživové údaje</item>
-        <item>Výživové údaje</item>
-        <item>Prostředí</item>
+        <item>Životní prostředí</item>
     </string-array>
     <!-- New Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_new_items_product">
@@ -75,9 +75,9 @@
     <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
+        <item>g</item>
         <item>mg</item>
-        <item>kg</item>
-        <item>μg</item>
+        <item>µg</item>
         <item>% DDD</item>
         <item>IU</item>
     </string-array>
@@ -91,7 +91,7 @@
         <item>Kyselina arachidonová / AA / ARA (20:4 n-6)</item>
         <item>Kyselina behenová (22:0)</item>
         <item>Jedlá soda</item>
-        <item>Biotin</item>
+        <item>Biotin / Vitamín B7</item>
         <item>Kyselina máselná (4:0)</item>
         <item>Kofein</item>
         <item>Vápník</item>
@@ -104,7 +104,7 @@
         <item>Cholesterol</item>
         <item>Chrom</item>
         <item>Měď</item>
-        <item>Dihomo-gamma-linolenic acid / DGLA (20:3 n-6)</item>
+        <item>Kyselina dihomo-gama-linolenová / DGLA (20:3 n-6)</item>
         <item>Kyselina dokosahexaenová / DHA (22:6 ω3)</item>
         <item>Kyselina eikosapentaenová / EPA (20:5 ω3)</item>
         <item>Elaidová kyselina (18:1 ω9)</item>
@@ -113,7 +113,7 @@
         <item>Fruktóza</item>
         <item>Kyselina gama-linolenová / GLA (18: 3 ω6)</item>
         <item>Glukóza</item>
-        <item>Gondoic acid (20:1 n-9)</item>
+        <item>Kyselina gondoová (20:1 n-9)</item>
         <item>Jód</item>
         <item>Železo</item>
         <item>Laktóza</item>
@@ -124,11 +124,11 @@
         <item>Maltodextriny</item>
         <item>Sladový cukr</item>
         <item>Mangan</item>
-        <item>Mead acid (20:3 n-9)</item>
+        <item>Kyselina medovinová (20:3 n-9)</item>
         <item>Kyselina melissová (30: 0)</item>
         <item>Molybden</item>
         <item>Mononenasycený tuk</item>
-        <item>Montanic acid (28:0)</item>
+        <item>Kyselina montanová (28:0)</item>
         <item>Kyselina myristová (14:0)</item>
         <item>Kyselina nervonová (24: 1 ω9)</item>
         <item>Nukleotidy</item>
@@ -156,7 +156,7 @@
         <item>Vitamín B12 (Cobalamin)</item>
         <item>Vitamín B2 (Riboflavin)</item>
         <item>Vitamín B3 / vitamín PP (Niacin)</item>
-        <item>Vitamin B6 (Pyridoxin)</item>
+        <item>Vitamín B6 (Pyridoxin)</item>
         <item>Vitamín B9 (kyselina listová)</item>
         <item>Vitamin C (kyselina askorbová)</item>
         <item>Vitamín D</item>
@@ -176,7 +176,7 @@
     <string name="txtEMB">Kód EMB:</string>
     <string name="txtIngredients">Složení:</string>
     <string name="Donate">Podpořit</string>
-    <string name="Donation">Kliknutím sem podpoříte Open Food Facts</string>
+    <string name="Donation">Kliknutím zde můžete podpořit Open Food Facts</string>
     <string name="txtSubstances">Látky nebo produkty vyvolávající alergie nebo nesnášenlivost:</string>
     <string name="txtAdditives">Aditiva:</string>
     <string name="txtTraces">Stopy :</string>
@@ -195,18 +195,18 @@
     <string name="txtFat">Tuky</string>
     <string name="txtSugars">Cukry</string>
     <string name="hintBarcode">Čárový kód</string>
-    <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
-    <string name="hintLogin">Přihlašovací jméno</string>
+    <string name="txtNutriScoreInfo">Zjistěte více o obsahu živin</string>
+    <string name="hintLogin">Uživatelské jméno</string>
     <string name="hintPass">Heslo</string>
     <string name="errorLogin">Přihlašovací jméno nebo heslo je chybné</string>
     <string name="errorWeb">Nelze se připojit k internetu. Zkontrolujte, prosím, připojení k síti.</string>
     <string name="uploadLater">Obrázek se nahraje, až bude síť k dispozici</string>
     <string name="txtInfoLoginOk">Uživatel byl uložen</string>
     <string name="txtInfoLoginNo">Uživatel nebyl uložen</string>
-    <string name="txtDialogsContent">Produkt, který jste naskenovali, ještě neexistuje v databázi Open Food Facts. Přidejte jej prosím.</string>
+    <string name="txtDialogsContent">Produkt, který jste naskenovali, v databázi Open Food Facts neexistuje. Přidejte jej prosím.</string>
     <string name="txtYes">Ano</string>
     <string name="txtNo">Ne</string>
-    <string name="hintBrand">Výrobce</string>
+    <string name="hintBrand">Značka</string>
     <string name="txtSendAll">Nahrát vše</string>
     <string name="txtPictureNeededDialogNo">Zahodit</string>
     <string name="toastSending">Nahrávám…</string>
@@ -222,10 +222,10 @@
     <string name="home_drawer">Úvod</string>
     <string name="install">Nainstalovat</string>
     <string name="open_beauty_drawer">Open Beauty Facts</string>
-    <string name="open_food_drawer">Open Food Facts</string>
+    <string name="open_food_drawer">Open Products Facts</string>
     <string name="search_drawer">Vyhledat</string>
     <string name="search_by_barcode_drawer">Zadat čárový kód</string>
-    <string name="category_drawer">Kategorie výrobků</string>
+    <string name="category_drawer">Kategorie</string>
     <string name="search_by_category">Kategorie</string>
     <string name="scan_search">Skenovat čárový kód</string>
     <string name="user_drawer">Uživatel</string>
@@ -236,20 +236,20 @@
     <string name="alert_drawer">Upozornění na alergen</string>
     <string name="your_lists">Seznamy</string>
     <string name="title_dialog_alert">Přidat upozornění</string>
-    <string name="select_camera">Vyberte kameru</string>
+    <string name="select_camera">Vybrat fotoaparát</string>
     <string name="ok_button">OK</string>
     <string name="cancel_button">Zrušit</string>
-    <string name="login_button">Přihlašovací jméno</string>
+    <string name="login_button">Uživatelské jméno</string>
     <string name="create_account_button">Vytvořit účet</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Informace o vašich alergiích nebudou nikdy odeslány na server Open Food Facts. Také mějte na paměti že informace o produktech nemusejí být přesné, a detekce nemusí být 100 % ařesná, vše prosím sami dvakrát zkontrolujte!</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Informace o vašich alergiích nebudou nikdy odeslány na server Open Food Facts. Dávejte si také pozor, že produktová data nemusí být přesná a detekce nemusí být 100% přesná, proto si to prosím překontrolujte sami!</string>
     <string name="title_info_dialog">Jak to funguje?</string>
-    <string name="text_offline_info_dialog">Pokud jste offline, můžete produkty dále skenovat a do Open Food Facts se přidají později. Všechny naskenované produkty, se zobrazí zde a budete je moci odeslat pomocí tlačítka níže.</string>
+    <string name="text_offline_info_dialog">Produkty můžete skenovat, když jste offline, a přidat je do Open Food Facts později. Zde se zobrazí všechny produkty, které naskenujete, a budete je moci odeslat pomocí tlačítka níže.</string>
     <string name="permission_camera">Přístup k fotoaparátu je zapotřebí ke snímání čárových kódů a pořizování snímků.</string>
     <string name="no_camera_dialog_title">Fotoaparát nebyl nalezen</string>
     <string name="no_camera_dialog_content">Vaše zařízení nemá fotoaparát. Nebudete možné skenovat čárové kódy.</string>
     <string name="permission_title">Informace o oprávněních</string>
     <string name="permission_denied">Prosím aktivujte oprávnění v nastavení</string>
-    <string name="info_download_data_connection">Pro tuto funkcionalitu je třeba stáhnout dodatečná data. Zapněte, prosím, připojení k internetu.</string>
+    <string name="info_download_data_connection">Aby tato funkce fungovala, musíte si stáhnout nějaká data. Aktivujte si připojení k internetu.</string>
     <!-- Strings related to login -->
     <string name="error_invalid_password">Heslo musí mít délku alespoň 6 znaků.</string>
     <string name="user">uživatel</string>
@@ -270,19 +270,19 @@
     <string name="feedback_form_url">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">Historie</string>
-    <string name="clear_history">Smazat historii</string>
+    <string name="clear_history">Vymazat historii</string>
     <string name="title_clear_history_dialog">Vymazat</string>
     <string name="text_clear_history_dialog">Opravdu chcete vymazat celou historii skenování?</string>
-    <string name="export_csv_history">Exportovat ve formátu CSV</string>
+    <string name="export_csv_history">Exportovat CSV</string>
     <string name="txt_exporting_history">Exportuji historii…</string>
-    <string name="txt_history_exported">Historie byla exportována</string>
+    <string name="txt_history_exported">Historie exportována</string>
     <string name="permision_write_external_storage">Pro export historie je zapotřebí práva zapisovat do externího úložiště.</string>
     <string name="no_brand">Chybí výrobce</string>
     <string name="no_title">Bez názvu</string>
     <!-- Nutrition info tab -->
     <string name="display_fact">Výživové údaje na %1$s výrobku</string>
     <string name="check_facts">Zkontrolovat</string>
-    <string name="nutrition">Výživové údaje</string>
+    <string name="nutrition">Nutriční hodnoty</string>
     <string name="calculated_nutrition">Vypočítané výživové údaje</string>
     <string name="please_enter_weight">Zadejte hmotnost produktu, prosím</string>
     <string name="enter_weight">Zadejte hmotnost produktu</string>
@@ -295,7 +295,7 @@
     <string name="nutrition_energy_short_name">Energie</string>
     <string name="nutrition_fat">Tuky</string>
     <string name="nutrition_fiber">Vláknina</string>
-    <string name="nutrition_header">Výživové údaje</string>
+    <string name="nutrition_header">Nutriční hodnoty</string>
     <string name="nutrition_proteins">Bílkoviny</string>
     <string name="nutrition_salt">Sůl</string>
     <string name="nutrition_satured_fat">Nasycené tuky</string>
@@ -304,7 +304,7 @@
     <string name="nutrition_trans_fat">Trans-tuky</string>
     <string name="nutriment_serving_size">Na jednu porci : </string>
     <string name="action_manage_account">Spravovat účet</string>
-    <string name="action_contributes">Vaše příspěvky</string>
+    <string name="action_contributes">Příspěvky</string>
     <string name="choose_energy_unit">Vyberte výchozí jednotku energie pro výživovou tabulku</string>
     <string name="energy_pref_title">Výběr energetické jednotky</string>
     <string name="choose_volume_unit">Vyberte výchozí jednotku objemu pro výživovou tabulku</string>
@@ -327,7 +327,7 @@
     <string name="txt_no_matching_incomplete_products">Nemáme žádné nedokončené výrobky! Chcete přidat nový produkt?</string>
     <string name="txt_no_matching_contributor_products">Ach jo, od tohoto přispěvatele nemáme žádné výrobky. Můžete nějaký přidat?</string>
     <string name="txt_no_matching_products">Nenašli jsme žádný odpovídající výrobek. \n Můžete zkusit:</string>
-    <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
+    <string name="txt_broaden_search">- rozšíření vyhledávání \n- naskenujte a přidejte jej do Open Food Facts</string>
     <string name="something_went_wrong">Omlouváme se, něco se pokazilo…</string>
     <string name="txt_try_again">Zkusit znovu</string>
     <string name="nutrition_lactose">Laktóza</string>
@@ -360,7 +360,7 @@
     <string name="vitamin_b6">Vitamín B6</string>
     <string name="vitamin_b9">Vitamín B9</string>
     <string name="vitamin_b12">Vitamín B12</string>
-    <string name="biotin">Biotin</string>
+    <string name="biotin">Biotin / Vitamín B7</string>
     <string name="pantothenic_acid">Kyselina pantothenová</string>
     <string name="nutrition_minerals">Minerály</string>
     <string name="silica">Oxid křemičitý</string>
@@ -395,10 +395,10 @@
     <string name="txtSaturatedFat">Nasycené tuky</string>
     <string name="nutriscore_info_msg">Další informace o Nutri-Score</string>
     <string name="nova_info_msg">Další informace o stupnici Nova</string>
-    <string name="nova_grp1_msg">Třída 1 - Čerstvé nebo minimálně zpracované potraviny</string>
-    <string name="nova_grp2_msg">Třída 2 - Běžně zpracované kuchyňské přísady</string>
-    <string name="nova_grp3_msg">Třída 3 - Běžně zpracované potraviny</string>
-    <string name="nova_grp4_msg">Třída 4 - Průmyslově vysoce zpracované potraviny a nápoje</string>
+    <string name="nova_grp1_msg">Skupina 1 - Čerstvé nebo minimálně zpracované potraviny</string>
+    <string name="nova_grp2_msg">Skupina 2 - Běžně zpracované kuchyňské přísady</string>
+    <string name="nova_grp3_msg">Skupina 3 - Běžně zpracované potraviny</string>
+    <string name="nova_grp4_msg">Skupina 4 - Průmyslově vysoce zpracované potraviny a nápoje</string>
     <!-- String related to App Shortcuts -->
     <string name="disabled_message">Zástupce není k dispozici</string>
     <string name="scan_shortcut_short_label">Skenovat</string>
@@ -424,7 +424,7 @@
     <string name="device_offline_dialog_message">K této akci je potřeba připojení k síti. Chcete provést změny v nastavení?</string>
     <string name="device_offline_dialog_negative">Zamítnout</string>
     <string name="device_offline_dialog_positive">Nastavení</string>
-    <string name="scan_first_product">Naskenujte svůj první výrobek</string>
+    <string name="scan_first_product">Naskenujte svůj první produkt</string>
     <string name="preference_delete_search_history">Historie byla úspěšně smazána</string>
     <string name="preference_enable_mobile_data_title">Nahrávání přes mobilní data</string>
     <string name="preference_enable_mobile_data_summary_on">Nové výrobku nahráváte přes mobilní data a WiFi</string>
@@ -435,13 +435,13 @@
     <string name="device_on_mobile_data_warning_negative">Přesto nahrát</string>
     <string name="changes_saved">Změny byly úspěšně uloženy</string>
     <string name="preference_choose_language_dialog_title">Vyberte jazyk</string>
-    <string name="FAQ">FAQ - často kladené dotazy</string>
+    <string name="FAQ">Často kladené otázky</string>
     <string name="FrequentlyAskedQuestions">Často Kladené Otázky</string>
     <string name="translate_help_title">Pomozte přeložit Open Food Facts</string>
     <string name="translate_help_summary">Přineste databázi Open Food Facts do vašeho jazyka - nejsou na to třeba žádné technické znalosti</string>
     <string name="please_check_your_connection">Zkontrolujte připojení k Internetu.</string>
     <string name="advanced_search_title">Rozšířené vyhledávání &amp; Grafy</string>
-    <string name="compare_products">Porovnat výrobky</string>
+    <string name="compare_products">Porovnejte produkty</string>
     <string name="connectivity_check">Zkontrolujte připojení k internetu</string>
     <string name="dismiss">Zamítnout</string>
     <string name="Terms">Podmínky</string>
@@ -450,24 +450,24 @@
     <!--Just replace "world" by "fr", "de"… translate the "terms-of-use" with the hyphens -->
     <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
-    <string name="faq_url">https://world.openfoodfacts.org/faq</string>
+    <string name="faq_url">https://world-cs.openfoodfacts.org/faq</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
     <string name="hunger_game_url">https://world-cs.openfoodfacts.org/hunger-game</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate the end of the url -->
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world-cs.openfoodfacts.org/nutriscore</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
-    <string name="url_nova_groups">https://world-en.openfoodfacts.org/nova</string>
+    <string name="url_nova_groups">https://world-cs.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
+    <string name="url_nutrient_values">https://cs.openfoodfacts.org/nutricni-semafor</string>
     <string name="preference_header_general">Hlavní nastavení</string>
     <string name="preference_header_network">Síť</string>
     <string name="preference_header_contributing">Přispívání</string>
     <string name="scan_first_string">Historie prohlédnutých výrobků se zobrazí tady.\nTato historie je důvěrná, data zůstávají pouze ve vašem zařízení.</string>
-    <string name="log_in">Přihlašovací jméno</string>
+    <string name="log_in">Uživatelské jméno</string>
     <string name="login_true">Již přihlášeno!</string>
     <string name="confirm_logout">Potvrdit odhlášení</string>
-    <string name="logout_dialog_content">Opravdu se chcete odhlásit?</string>
+    <string name="logout_dialog_content">Opravdu se chcete odhlásit z vašeho účtu přispěvatele Open Food Facts ?</string>
     <string name="dialog_cancel">Zrušit</string>
     <string name="dialog_create">Vytvořit</string>
     <string name="choose_resolution">Zvolte rozlišení</string>
@@ -477,11 +477,11 @@
     <string name="wikidata_unavailable">Stránka ve Wikipedii zatím není ve vašem jazyce.</string>
     <string name="Wikipedia">Zobrazit na Wikipedii</string>
     <string name="Browse_Products">Procházet výrobky</string>
-    <string name="brand_string">Výrobce</string>
+    <string name="brand_string">Značka</string>
     <string name="additive_string">Přísada</string>
     <string name="allergen_string">Alergen</string>
     <string name="search_string">Vyhledat</string>
-    <string name="country_string">Země, kde je v prodeji</string>
+    <string name="country_string">Země prodeje</string>
     <string name="store_subtitle">Prodejna</string>
     <string name="packaging_subtitle">Obal</string>
     <string name="packaging_string">Obal</string>
@@ -501,14 +501,14 @@
     <string name="disable_image_loading">Zakázat načítání obrázků, když je nízký stav baterie</string>
     <string name="DisableLoadTitle">Zakázat načítání obrázku</string>
     <string name="by_title">Název</string>
-    <string name="by_brand">Výrobce</string>
+    <string name="by_brand">Značka</string>
     <string name="by_barcode">Čárový kód</string>
     <string name="by_time">Nedávno zobrazené</string>
     <string name="sort">Řazení</string>
     <string name="by_nutrition_grade">Výživová hodnota</string>
     <string name="sort_by">Seřadit podle</string>
     <!-- strings related to share images -->
-    <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
+    <string name="sorry_msg">Obrázky bez čárového kódu zatím nelze přidat do aplikace. Zkuste prosím mobilní webovou verzi.</string>
     <string name="no_barcode">Nezjistili jsme žádný čárový kód</string>
     <string name="enter_barcode">Zadejte prosím čárový kód níže</string>
     <string name="format_error">Špatný formát čárového kódu/QR</string>
@@ -516,20 +516,20 @@
     <string name="do_you_want_to">Chcete přidat fotografie k tomuto čárovému kódu?</string>
     <string name="bottomNav_history">Historie</string>
     <string name="products_added">Produkty, které jste přidali nebo upravili</string>
-    <string name="products_incomplete">Výrobky, které jste přidali, a je třeba je dokončit</string>
+    <string name="products_incomplete">Produkty, které jste přidali, a je třeba je dokončit</string>
     <string name="product_pictures_contributed">Výrobky které jste vyfotili</string>
-    <string name="picture_contributed_incomplete">Products you took pictures for that need to be completed</string>
+    <string name="picture_contributed_incomplete">Výrobky, které jste vyfotili a je třeba je dokončit</string>
     <string name="product_info_added">Produkty, pro které jste přidali informace</string>
-    <string name="product_info_tocomplete">Products you added information for that need to be completed</string>
+    <string name="product_info_tocomplete">Výrobky, ke kterým jste přidali informace a je třeba je dokončit</string>
     <string name="show_by">Zobrazit</string>
     <string name="notify_title">Export dokončen</string>
     <string name="notify_content">Kliknutím zobrazíte exportované výrobky</string>
     <string name="notification_channel_name">Exportovat oznámení</string>
     <string name="notify_channel_description">Oznámení pro zobrazení umístění exportovaného souboru</string>
-    <string name="products_to_be_completed">Výrobky k dokončení</string>
+    <string name="products_to_be_completed">Nedokončené</string>
     <string name="offline_notification_title">Offline příspěvky, které je potřeba poslat</string>
-    <string name="creator_history">Product added on %1$s at %2$s CET by %3$s</string>
-    <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by %3$s </string>
+    <string name="creator_history">Produkt přidán dne %1$s v %2$s CET do %3$s</string>
+    <string name="last_editor_history">Poslední úprava stránky produktu dne %1$s v %2$s CEST do %3$s </string>
     <string name="other_editors">Stránka produktu také editoval(a) </string>
     <string name="contribution_tab">Příspěvky</string>
     <string name="contribution_tab_summary">Show user contributions tab with products</string>
@@ -542,16 +542,16 @@
     <string name="productAdditivesUnknown"></string>
     <string name="productAdditivesTemplate">%1$d additives</string>
     <plurals name="productAdditives">
-        <item quantity="one">%d additive</item>
-        <item quantity="few">%d additives</item>
-        <item quantity="many">%d additives</item>
-        <item quantity="other">%d additives</item>
+        <item quantity="one">%d přísada</item>
+        <item quantity="few">%d přísady</item>
+        <item quantity="many">%d přísad</item>
+        <item quantity="other">%d přísad</item>
     </plurals>
     <string name="product_not_complete">Tento produkt ještě není kompletní. \nMůžete přidat nějaké podrobnosti?</string>
     <string name="addProductOffline">Vypadá to, že jste offline. Chcete přidat výrobek %s v offline režimu?</string>
-    <string name="product_not_found">Tento výrobek %1$s ještě není v databázi Open Food Facts. Chcete ho přidat?</string>
-    <string name="scan_sound">Zvuk</string>
-    <string name="trouble_scanning">Nejde naskenovat?</string>
+    <string name="product_not_found">Produkt %1$s, který jste naskenovali, zatím v Open Food Facts neexistuje. Můžete ho přidat?</string>
+    <string name="scan_sound">Zvuk při skenování</string>
+    <string name="trouble_scanning">Potíže se skenováním?</string>
     <string name="barcode_hint">Potíže se skenováním? Zadejte čárový kód</string>
     <string name="switch_camera">Přepnout fotoaparát</string>
     <string name="autofocus">Aut. zaostř.</string>
@@ -559,7 +559,7 @@
     <string name="preferences">Předvolby</string>
     <string name="OFFlogo">Open Food Facts</string>
     <string name="loading_product">Načítám výrobek %s</string>
-    <string name="image_not_defined_for_language">Pro vybraný jazyk nemáme žádné snímky. Můžete je přidat</string>
+    <string name="image_not_defined_for_language">Žádný obrázek pro vybraný jazyk. Můžete přidat nový</string>
     <string name="error_adding_ingredients">Při pokusu o přidání složení, se něco pokazilo</string>
     <string name="unable_to_extract_ingredients">Ze snímku se nepodařilo rozpoznat složení</string>
     <string name="error_adding_nutrition_facts">Nepovedlo se přidat výživové údaje</string>
@@ -590,9 +590,9 @@
     <string name="no_internet_connection">Zdá se, že nemáte připojení k internetu. Obrázky budou nahrány, až bude síť k dispozici</string>
     <string name="no_internet_unable_to_extract_ingredients">Bez připojení k internetu nelze rozpoznat složení</string>
     <string name="percent">%1$d%%</string>
-    <string name="overview">Přehled</string>
+    <string name="overview">Shrnutí</string>
     <string name="ingredients">Složení</string>
-    <string name="nutrition_facts">Výživové údaje</string>
+    <string name="nutrition_facts">Nutriční hodnoty</string>
     <string name="your_version">Vaše</string>
     <string name="ingredients_picture">Snímek složení</string>
     <string name="take_ingredients_picture_to_extract">(Vyfotografujte prosím složení výrobku, aby mohlo být aut. rozpoznáno.)</string>
@@ -603,177 +603,177 @@
     <string name="looksGood">Uložit</string>
     <string name="skip_ingredients">Přeskočit složení</string>
     <string name="traces">Stopy</string>
-    <string name="traces_hint">Indicate ingredients from mentions like \'May contain traces of\', \'Made in a factory that also uses\', etc. \nExamples: Milk, Gluten, Nuts</string>
-    <string name="nutrition_facts_not_specified">Výživové údaje nejsou na výrobku uvedeny.</string>
+    <string name="traces_hint">Uveďte přísady ze zmínky jako „Může obsahovat stopy“, „Vyrobeno v továrně, která také používá“ atd. \nPříklady: mléko, lepek, ořechy</string>
+    <string name="nutrition_facts_not_specified">Výživové hodnoty nejsou na výrobku specifikovány.</string>
     <string name="nutrition_facts_picture">Snímek tabulky výživových údajů</string>
     <string name="front_short_picture">Zepředu</string>
     <string name="other_picture">Jiný obrázek</string>
     <string name="for_100g_100ml">Na 100 g / 100 ml</string>
     <string name="per_serving">V jedné porci</string>
     <string name="serving_size">Velikost porce</string>
-    <string name="alcohol_unit" formatted="false">[%i]bj.</string>
+    <string name="alcohol_unit" formatted="false">% obj./°</string>
     <string name="add_a_nutrient">Přidejte živinu</string>
     <string name="add_this_product">Přidat výrobek</string>
     <string name="product_picture">Snímek výrobku</string>
     <string name="one_photo_compulsory">(K odeslání nového produktu je povinné odeslání jedné fotografie)</string>
     <string name="product_details">Podrobnosti o výrobku</string>
-    <string name="product_name">Název výrobku</string>
+    <string name="product_name">Jméno výrobku</string>
     <string name="quantity">Množství</string>
     <string name="labels">Štítky</string>
     <string name="period_of_time_after_opening">Doba od otevření</string>
     <string name="manufacturing_details">Výrobní informace</string>
     <string name="origin_of_ingredients">Původ přísad</string>
     <string name="manufacturing_place">Země původu</string>
-    <string name="emb_code">Kód EMB</string>
+    <string name="emb_code">Kód sledovatelnosti</string>
     <string name="purchasing_details">Podrobnosti o nákupu</string>
     <string name="country_where_purchased">Země nákupu</string>
-    <string name="stores">Prodejna</string>
+    <string name="stores">Prodejny</string>
     <string name="additional_pictures">Další obrázky</string>
     <string name="hint_product_pictures">(Přidejte další obrázky výrobku, jako pokyny pro recyklaci, štítky apod.)</string>
     <string name="uploading_image">Odeslání fotografie</string>
     <string name="uploading_nutrition_image">Uploading nutrition facts image</string>
     <string name="uploading_ingredients_image">Uploading ingredients image</string>
     <string name="uploading_front_image">Uploading front image</string>
-    <string name="edit_front_image">Edit the front photo</string>
-    <string name="edit_nutrition_image">Edit the nutrition photo</string>
-    <string name="edit_ingredients_image">Edit the ingredients photo</string>
+    <string name="edit_front_image">Upravit hlavní fotografii</string>
+    <string name="edit_nutrition_image">Upravit fotku výživových údajů</string>
+    <string name="edit_ingredients_image">Upravit fotografii složení</string>
     <string name="edit_other_image">Upravit fotku</string>
     <string name="sign_in_to_edit">Pro úpravu produktu se musíte přihlásit.</string>
-    <string name="sign_in_to_answer">Please sign in or register to answer an insight.</string>
+    <string name="sign_in_to_answer">Chcete-li odpovědět na statistiku, přihlaste se nebo se zaregistrujte.</string>
     <string name="hint_quantity">Například: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 libra</string>
-    <string name="edit_product_title">Upravit výrobek</string>
+    <string name="edit_product_title">Upravit produkt</string>
     <string name="nutrient_already_added">%s je již ve výživových faktech</string>
     <string name="save_edits">Uložit úpravy</string>
-    <string name="contribution_by">Contribution by</string>
+    <string name="contribution_by">Přidáno od</string>
     <string name="title_activity_product">Název</string>
     <string name="description_activity_product">popis</string>
-    <string name="intent_filter_share_label">Přidat do Open Food Facts</string>
+    <string name="intent_filter_share_label">Přidat do Open Pet Food Facts</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="overexposure_high">Vysoké riziko nepřiměřeného příjmu</string>
     <string name="overexposure_moderate">Střední riziko nepřiměřeného příjmu</string>
     <string name="infants">Kojenci</string>
     <string name="infants_age">&lt; 1</string>
     <string name="toddlers">Batolata</string>
-    <string name="toddlers_age">1 – 2</string>
+    <string name="toddlers_age">1 až 2</string>
     <string name="children">Děti</string>
-    <string name="children_age">3 – 9</string>
+    <string name="children_age">3 až 9</string>
     <string name="adolescents">Dospívající</string>
-    <string name="adolescents_age">10 – 17</string>
-    <string name="adults">Dospělí</string>
-    <string name="adults_age">18 – 64</string>
+    <string name="adolescents_age">10 až 17</string>
+    <string name="adults">Dospělý</string>
+    <string name="adults_age">18 až 64</string>
     <string name="elderly">Senioři</string>
     <string name="elderly_age">65+</string>
     <string name="most_people">Většina populace\n(nad 50 %)</string>
     <string name="some_people">Část populce\n(více než 5 %)</string>
-    <string name="safety_and_exposure_assessment">Safety and exposure assessment</string>
-    <string name="risk_of_exposure">Risk of exposure</string>
+    <string name="safety_and_exposure_assessment">Posouzení bezpečnosti a nepřiměřeného přijmu</string>
+    <string name="risk_of_exposure">Riziko expozice</string>
     <string name="efsa_warning_high_risk">Evropský úřad pro bezpečnost potravin (EFSA) zjistil, že část populace je ve vysokém riziku nadměrné konzumace %1$s.</string>
     <string name="legend_noael">více než dávka, při které ještě nebyl pozorován škodlivý účinek (NOAEL)</string>
     <string name="legend_adi">větší dávka, než akceptovatelný denní příjem (ADI)</string>
     <string name="max_energy_val_msg">Hodnota je vyšší než 2000 kcal na 100 g. Můžete ji opravit?</string>
-    <string name="max_nutrient_val_msg">Value entered is more than given per serving size</string>
-    <string name="update_image">Přidat aktuální snímek</string>
+    <string name="max_nutrient_val_msg">Zadaná hodnota je vyšší než daná na velikost porce</string>
+    <string name="update_image">Odeslat aktualizovaný obrázek</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">Aut. rozpoznat složení</string>
-    <string name="add_nutrient_prompt_text">Doplnit výživové údaje pro výpočet Nutri-Score</string>
-    <string name="add_category_prompt_text">Doplnit kategorii pro výpočet Nutri-Score</string>
-    <string name="add_nutrient_category_prompt_text">Doplnit výživové údaje a kategorii pro výpočet Nutri-Score</string>
-    <string name="category_game_btn">Roztřiďte výrobky, aby došlo k výpočtu Nutri-Score</string>
-    <string name="version_string">Open Food Facts Android App</string>
+    <string name="add_nutrient_prompt_text">Přidejte nutriční údaje a vypočítejte Nutri-Score</string>
+    <string name="add_category_prompt_text">Přidejte kategorii pro výpočet Nutri-Score</string>
+    <string name="add_nutrient_category_prompt_text">Přidejte nutriční fakta a kategorii pro výpočet Nutri-Score</string>
+    <string name="category_game_btn">Pomozte kategorizovat produkty pro výpočet Nutri-Score</string>
+    <string name="version_string">Open Food Facts Android aplikace</string>
     <string name="version">Verze</string>
-    <string name="set_ingredient_img">Set as ingredients image</string>
-    <string name="set_img_nutrients">Set as nutrition image</string>
-    <string name="set_img_front">Set as front image</string>
+    <string name="set_ingredient_img">Nastavit obrázek jako přísadu</string>
+    <string name="set_img_nutrients">Nastavte obrázek jako Výživa</string>
+    <string name="set_img_front">Vy už tu hrrzz firmy ztutdzffzgcuudhuuufdudttzttzzzzttzrdrd uvvjvkvjibjb inkognito uff zneužití off co uvvjvkvjibjb</string>
     <string name="report_img">Nahlásit obrázek</string>
-    <string name="detected_ingredients">Detected Ingredients</string>
+    <string name="detected_ingredients">Zjištěné složení</string>
     <string name="txtConnectionError">Některá data se nepodařilo stáhnout. To může být způsobeno chybou připojení.</string>
     <string name="set_image_name">Snímek byl úspěšně nastaven jako</string>
     <string name="fast_addition_mode_title">Režim rychlého přidávání</string>
     <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
     <string name="crop_new_image_title">Oříznout nové obrázky</string>
     <string name="crop_new_image">Enables crop action on new images</string>
-    <string name="addtive_search">Search for a additive</string>
+    <string name="addtive_search">Hledejte přísadu</string>
     <string name="additives">Aditiva</string>
     <!--used for product_lists implementation-->
-    <string name="add_to_product_lists">Přidat na seznam</string>
+    <string name="add_to_product_lists">Přidat do vašich seznamů</string>
     <string name="txt_create_new_list">Vytvořit nový seznam</string>
-    <string name="txt_add_to_new_list">Přidat na nový</string>
+    <string name="txt_add_to_new_list">Přidat do nového seznamu</string>
     <string name="create_new_list_list_name">Název seznamu</string>
     <string name="txt_eaten_products">Snězeno</string>
     <string name="txt_products_to_buy">Nákupní seznam</string>
-    <string name="txt_exporting_your_listed_products">Exporting Your Products…</string>
-    <string name="txt_your_listed_products_exported">Your products have been exported</string>
+    <string name="txt_exporting_your_listed_products">Export vašich produktů…</string>
+    <string name="txt_your_listed_products_exported">Vaše produkty byly exportovány</string>
     <string name="txt_discard">Zahodit</string>
-    <string name="txt_info_eaten_products">\"You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"I\'m eating this\".
-        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.\"</string>
-    <string name="txt_info_your_listed_products">You\'ll be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
+    <string name="txt_info_eaten_products">Do tohoto seznamu budete moci přidat produkt naskenováním produktů, přetažením karty produktu nahoru a klepnutím na „Jím to“.
+        Do tohoto seznamu budete také moci přidat produkty tak, že je vyhledáte a kliknete na tlačítko + v pravém horním rohu stránky produktu.</string>
+    <string name="txt_info_your_listed_products">Do tohoto seznamu budete moci přidat produkty tak, že je vyhledáte a kliknete na tlačítko + v pravém horním rohu stránky produktu.</string>
     <string name="search_history_pref_title">Smazat historii vyhledávání</string>
     <string name="search_history_pref_summary">Tímto odstraníte všechna vyhledávání, která jste provedli na tomto zařízení</string>
     <string name="search_history_pref_dialog_content">Smazat historii vyhledávání?</string>
     <string name="settings_country_dialog_title">Vyberte svou zemi</string>
     <string name="settings_country_summary">Vyberte zemi</string>
     <string name="settings_country_title">Země</string>
-    <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
+    <string name="txt_no_nutrition_data">Tento produkt nemá na obalu žádné nutriční údaje. Pokud se toto změnilo, můžete produkt upravit.</string>
     <string name="image_prompt_language">Take a photo of the ingredients in</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
-    <string name="add_product">Přidat výrobky</string>
-    <string name="add_another_product">Add another product</string>
-    <string name="add_nutrition_facts_for_nutriscore">Doplnit výživové údaje pro výpočet Nutri-Score</string>
+    <string name="add_product">Přidejte produkty</string>
+    <string name="add_another_product">Přidat další produkt</string>
+    <string name="add_nutrition_facts_for_nutriscore">Přidejte nutriční údaje a vypočítejte Nutri-Score</string>
     <string name="product_summary_action_compare_button_label">Porovnat</string>
     <string name="product_summary_action_add_to_list_button_label">Přidat na seznam</string>
     <string name="product_summary_action_edit_button_label">Upravit</string>
     <string name="product_summary_action_share_button_label">Sdílet</string>
-    <string name="product_question_prompt">Tap here to answer</string>
+    <string name="product_question_prompt">Klepnutím sem odpovíte</string>
     <string name="product_question_positive_response">Ano</string>
     <string name="product_question_negative_response">Ne</string>
-    <string name="product_question_ambiguous_response">Not sure</string>
-    <string name="product_question_submit_message">Thank you for your contribution!</string>
-    <string name="error_nutrient_entry">The value should be numeric. Example: &quot;1.5&quot;, &quot;2,0&quot;</string>
-    <string name="error_nutrient_serving_data">The serving size value must be a positive value</string>
-    <string name="error_in_nutrient_data">Some nutrient values are not valid. Please, fix above fields with error marker</string>
+    <string name="product_question_ambiguous_response">Ještě nevim</string>
+    <string name="product_question_submit_message">Děkujeme za váš příspěvek!</string>
+    <string name="error_nutrient_entry">Hodnota by měla být číselná. Příklad: &quot;1.5&quot;, &quot;2,0&quot;</string>
+    <string name="error_nutrient_serving_data">Hodnota velikosti porce musí být kladná hodnota</string>
+    <string name="error_in_nutrient_data">Některé hodnoty živin nejsou platné. Opravte prosím výše uvedená pole se značkou chyby</string>
     <string name="go_to_full_product_page">Přejít na výrobek</string>
-    <string name="no_additive_data_available_for_this_product">No additive data available for this product</string>
-    <string name="no_nutrient_information_available_for_this_product">No nutrient information available for this product</string>
-    <string name="error_duplicate_listname">You already have a list with this name</string>
+    <string name="no_additive_data_available_for_this_product">Pro tento produkt nejsou k dispozici žádné údaje o přísadách</string>
+    <string name="no_nutrient_information_available_for_this_product">Pro tento produkt nejsou k dispozici žádné informace o živinách</string>
+    <string name="error_duplicate_listname">Seznam s tímto názvem již máte</string>
     <string name="required_to_compute_nutriscore">(Nezbytné pro výpočet Nutri-Score)</string>
-    <string name="scan_tooltip">You can slide up the card for more details</string>
-    <string name="add_an_allergen">Add an allergen</string>
-    <string name="add_a_list">Nový seznam</string>
+    <string name="scan_tooltip">Pro další podrobnosti můžete kartu vysunout</string>
+    <string name="add_an_allergen">Přidat alergen</string>
+    <string name="add_a_list">Přidat seznam</string>
     <string name="edit_image">Upravit snímek</string>
     <string name="cant_edit_image_not_yet_uploaded">The new image is not yet uploaded. Please, wait before editing it</string>
-    <string name="unselect_image">Unselect Image</string>
-    <string name="choose_default_language">Select product language</string>
+    <string name="unselect_image">Zrušit výběr obrázku</string>
+    <string name="choose_default_language">Vyberte jazyk produktu</string>
     <string name="barcode">Čárový kód</string>
-    <string name="productAdditivesNone">No additives</string>
+    <string name="productAdditivesNone">Žádné přísady</string>
     <string name="error_uploading_photo">Při nahrávání nové fotografie došlo k chybě</string>
-    <string name="import_csv_to_list">Import an Open Food Facts list CSV file</string>
-    <string name="toast_import_csv_error">Error in importing CSV file</string>
-    <string name="toast_import_csv">CSV imported successfully!</string>
+    <string name="import_csv_to_list">Importujte soubor CSV se seznamem z Open Food Facts</string>
+    <string name="toast_import_csv_error">Chyba při importu CSV souboru</string>
+    <string name="toast_import_csv">CSV byl úspěšně importován!</string>
     <string name="open_csv">Open CSV</string>
     <!-- Used for diets AddOn -->
     <string name="history_network_error">The product couldn\'t be loaded. Please try again when you are back online.</string>
-    <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
-    <string name="closeZoom">Click to close zoom</string>
-    <string name="imageFullscreen">Zoom</string>
+    <string name="cant_modify_if_refreshing">Počkejte prosím na dokončení nahrávání</string>
+    <string name="closeZoom">Kliknutím zavřete přiblížení</string>
+    <string name="imageFullscreen">Přiblížit</string>
     <!-- Used for product ingredients analysis tags -->
     <string name="close_button">Zavřít</string>
     <string name="tip_message">TIP: %1$s </string>
-    <string name="ingredient_analysis_tip">Click on the icons below to learn more about the product and to select what information you are interested in.</string>
-    <string name="got_it">Got it!</string>
-    <string name="onboarding_hint_msg">Hint: %s </string>
-    <string name="ingredient_image_edit_tip">Tap on the image to zoom it, change it, crop it, rotate it and more…</string>
-    <string name="ingredients_in_this_product_are">Ingredients in this product are %1$s.</string>
-    <string name="ingredients_in_this_product">Ingredients in this product that are %1$s:</string>
-    <string name="display_analysis_tag_status">Zobrazovat stav %1$s</string>
+    <string name="ingredient_analysis_tip">Kliknutím na ikony níže se dozvíte více o produktu a vyberete si, o jaké informace máte zájem.</string>
+    <string name="got_it">Rozumím!</string>
+    <string name="onboarding_hint_msg">Tip: %s </string>
+    <string name="ingredient_image_edit_tip">Klepnutím na obrázek jej přiblížíte, změníte, oříznete, otočíte a další…</string>
+    <string name="ingredients_in_this_product_are">Složení tohoto produktu je %1$s.</string>
+    <string name="ingredients_in_this_product">Ingredience v tomto produktu, které jsou %1$s:</string>
+    <string name="display_analysis_tag_status">Zobrazit stav %1$s</string>
     <string name="preference_header_display">Display</string>
-    <string name="unknown_status_no_translation">We couldn\'t assess the status of the product due to unrecognized ingredients.</string>
-    <string name="help_translate_ingredients">Help translate the ingredients in your language</string>
-    <string name="unknown_status_missing_ingredients">We couldn\'t assess the status of the product due to missing ingredients.</string>
-    <string name="unknown_status_ambiguous_ingredients">We couldn\'t assess the status of the product because of ambiguous ingredients : <![CDATA[<b>%1$s</b>]]></string>
-    <string name="help_extract_ingredients">Help extract the ingredients to get the %1$s status.</string>
-    <string name="add_photo_to_extract_ingredients">Add a photo to begin extracting ingredients</string>
-    <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
+    <string name="unknown_status_no_translation">Nemohli jsme posoudit stav produktu z důvodu neznámých ingrediencí.</string>
+    <string name="help_translate_ingredients">Pomozte přeložit ingredience do vašeho jazyka</string>
+    <string name="unknown_status_missing_ingredients">Stav produktu jsme nemohli posoudit kvůli chybějícím ingrediencím.</string>
+    <string name="unknown_status_ambiguous_ingredients">Nemohli jsme posoudit stav produktu z důvodu nejednoznačných ingrediencí: <![CDATA[<b>%1$s</b>]]></string>
+    <string name="help_extract_ingredients">Pomozte extrahovat přísady, abyste získali stav %1$s</string>
+    <string name="add_photo_to_extract_ingredients">Přidejte fotografii a začněte extrahovat přísady</string>
+    <string name="product_already_exists_in_comparison">Produkt již existuje ve srovnávacím seznamu</string>
     <string name="compare_brands">Výrobce:</string>
     <string name="compare_additives">Aditiva:</string>
     <string name="compare_salt">Sůl</string>
@@ -781,32 +781,32 @@
     <string name="compare_saturated_fat">Nasycené tuky</string>
     <string name="compare_fat">Tuky</string>
     <string name="compare_quantity">Množství:</string>
-    <string name="load_ingredient_detection_data">Load ingredient detection data</string>
-    <string name="load_ingredient_detection_data_summary">No ingredient detection data has been found, try to load it from server</string>
-    <string name="white_check_image_descr">A white check</string>
+    <string name="load_ingredient_detection_data">Načtěte data detekce přísad</string>
+    <string name="load_ingredient_detection_data_summary">Nebyla nalezena žádná data o detekci přísad, zkuste je načíst ze serveru</string>
+    <string name="white_check_image_descr">Bianko šek</string>
     <string name="hint_packaging">Například: plast, papír, sklo</string>
     <string name="risk_alcohol_consumption">Nadměrná konzumace alkoholu škodí vašemu zdraví, konzumujte v omezeném množství</string>
     <!--ShowcaseView Strings-->
-    <string name="title_image_type">Select Image Type</string>
-    <string name="content_image_type">Choose the photo to work on</string>
-    <string name="title_choose_language">Select Language</string>
-    <string name="content_choose_language">Select the language of the photo</string>
+    <string name="title_image_type">Vybrat typ obrázku</string>
+    <string name="content_image_type">Vyberte fotku, na které chcete pracovat</string>
+    <string name="title_choose_language">Zvolte jazyk</string>
+    <string name="content_choose_language">Vyberte jazyk fotky</string>
     <string name="title_add_photo">Přidat obrázek</string>
-    <string name="content_add_photo">Press here to take a new photo</string>
+    <string name="content_add_photo">Stisknutím zde pořídíte novou fotografii</string>
     <string name="title_choose_photo">Vybrat obrázek</string>
     <string name="content_choose_photo">Použít existující fotografii</string>
     <string name="title_edit_photo">Upravit obrázek</string>
     <string name="content_edit_photo">Upravit, oříznout a otočit fotografii</string>
-    <string name="title_unselect_photo">Unselect Photo</string>
-    <string name="content_unselect_photo">Press here to unselect current photo</string>
+    <string name="title_unselect_photo">Zrušit výběr fotky</string>
+    <string name="content_unselect_photo">Stisknutím zde zrušíte výběr aktuální fotografie</string>
     <string name="title_exit">Ukončit</string>
-    <string name="content_exit">Press here to return to the product</string>
-    <string name="icon_label">Labels icon</string>
-    <string name="icon_categories">Categories icon</string>
-    <string name="icon_emb">EMB code icon</string>
+    <string name="content_exit">Stisknutím se vrátíte k produktu</string>
+    <string name="icon_label">Ikona štítků</string>
+    <string name="icon_categories">Ikona kategorií</string>
+    <string name="icon_emb">Ikona kódu sledovatelnosti</string>
     <string name="product_front_image">Přední strana výrobku</string>
     <string name="brand_hint">Například: Kofola, Opavia…</string>
-    <string name="sign_in_or_register">Sign in or register</string>
-    <string name="hunger_game_call_to_action">Help classify more %1$s</string>
-    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s food products (plus the ones you will contribute).</string>
+    <string name="sign_in_or_register">Přihlaste se nebo se zaregistrujte</string>
+    <string name="hunger_game_call_to_action">Pomozte klasifikovat více %1$s</string>
+    <string name="txtHomeOnline">Open Food Facts je otevřená databáze více než %1$s potravinářských produktů (plus těch, kterými přispějete).</string>
 </resources>
