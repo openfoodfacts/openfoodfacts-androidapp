@@ -10,9 +10,9 @@
     <string name="website_product">https://world-de.openfoodfacts.org/produkt/</string>
     <!-- For fr, Replace by https://world-fr.openproductsfacts.org/contributeur/ -->
     <string name="website_contributor">https://world-de.openfoodfacts.org/mitwirkender/</string>
-    <string name="terms_url">https://world.openproductsfacts.org/terms-of-use</string>
+    <string name="terms_url">https://world.openbeautyfacts.org/bedingungen</string>
     <string name="txtHomeOnline">Open Products Facts ist eine offene Datenbank mit mehr als %1$s Produkten (und denjenigen, die Sie beitragen werden).</string>
-    <string name="txtHome">„Open Food Facts” ist eine offene Datenbank von Lebensmitteln mit Inhaltsstoffen, Allergenen, Nährwertangaben und all den Kleinigkeiten, die wir auf den Produktetiketten finden können.</string>
+    <string name="txtHome">„Open Products Facts” ist eine offene Datenbank von Lebensmitteln mit Inhaltsstoffen, Allergenen, Nährwertangaben und all den Kleinigkeiten, die wir auf den Produktetiketten finden können.</string>
     <string name="slide_1_title">Beitrag zur Transparenz von Produkten leisten</string>
     <string name="slide_1_desc">Produkte erfassen und Fotos hinzufügen ermöglichen das Verständnis über Lebensmittelprodukte</string>
     <string name="slide_2_title">Holen Sie sich die Fakten</string>
@@ -33,7 +33,7 @@
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Ihre Allergie-Informationen werden niemals an die Open Products Facts Server gesendet. Beachten Sie bitte auch, dass die Produktdaten nicht immer zu 100% aorrekt sind. Überprüfen Sie die Allergieüberprüfungen deshalb bitte! </string>
     <!-- OPF tagline in different languages -->
     <string name="version_string">Android-App „Open Products Facts” öffnen</string>
-    <string name="tagline">die freie Produktdatenbank</string>
+    <string name="tagline">the free product database</string>
     <string name="product_not_found">Das eingelesene Produkt „%1$s” existiert noch nicht in Open Product Facts. Könnten Sie es bitte hinzufügen?</string>
     <string name="currently_on_version">Aktuell auf Open Products Facts</string>
     <string name="category_game_btn">Helfen, Produkte zu kategorisieren</string>
@@ -42,7 +42,7 @@
     <string name="add_category_prompt_text">Fügen Sie eine Kategorie hinzu, um das Produkt zu vervollständigen.</string>
     <string name="add_nutrient_category_prompt_text">Fügen Sie eine Kategorie und weitere Details hinzu, um das Produkt zu vervollständigen.</string>
     <string name="txt_eaten_products">Produkte, die ich besitze</string>
-    <string name="txt_products_to_buy">Zu erwerbende Produkte</string>
+    <string name="txt_products_to_buy">Zu kaufende Produkte</string>
     <string name="intent_filter_share_label">Zu Open Products Facts hinzufügen</string>
     <string name="txt_info_eaten_products">Sie können ein Produkt zu dieser Liste hinzufügen, indem Sie Produkte erfassen, die Produktkarte nach oben ziehen und auf „Zu erwerbende Produkte” tippen.
 Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchsuchen und auf die Schaltfläche ➕ oben rechts auf der Produktseite klicken.</string>
