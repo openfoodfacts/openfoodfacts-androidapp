@@ -1,34 +1,34 @@
-Lue lemmikkien elintarvikkeita, tai niiden viivakoodeja, saadaksesi tietoa ainesosista, lisäaineista ja ravintosisällöistä.
+Scan pet food products or their barcode to obtain data on ingredients, additives and nutrition facts.
 
-Sovelluksella voi katsoa yli 600:a lemmikkien elintarviketta, jotka ovat jo vapaassa ja avoimessa Open Pet Food Facts -tietokannassa, ja myös lisätä kuvia ja tietoja puuttuville tuotteille.
+The app allows to view the over 600 pet food products already contained in the free and open database Open Pet Food Facts, and also to add pictures and data for missing products.
 
-Tutustuaksesi Open Pet Food Facts -hankkeeseen, vieraile osoitteessa https://world.openpetfoodfacts.org
+To discover the Open Pet Food Facts project, please visit https://world.openpetfoodfacts.org
 
-***Lisää lemmikkien elintarvikkeiden läpinäkyvyyttä***
+***Contribute to Pet Food Transparency***
 
-- Open Pet Food Facts on kaikkien tekemä tietokanta lemmikkien elintarvikkeille, kaikille.
-- Voit käyttää sitä tehdäksesi parempia valintoja lemmikkien elintarvikkeissa, ja koska se on avointa dataa, kuka tahansa voi uudelleen käyttää sitä mihin tahansa tarkoitukseen.
-- Open Pet Food Facts on voittoa tavoittelematon hanke, jota kehittävät tuhannet vapaaehtoiset ympäri maailman. Meillä on paljon jännittäviä projekteja, joihin voit osallistua monin eri tavoin. 
-- Voit aloittaa osallistumisen tänään lisäämällä tuotteen lemmikkisi ruokakaapista. 
+- Open Pet Food Facts is a pet food products database made by everyone, for everyone.
+- You can use it to make better pet food choices, and as it is open data, anyone can re-use it for any purpose.
+- Open Pet Food Facts is a non-profit project developed by thousands of volunteers from around the world. Meillä on paljon jännittäviä hankkeita, joihin voit osallistua monin eri tavoin. 
+- You can start contributing today by adding a product from your pet's cupboard. 
 
 
-*** Tiedä tosiseikat ***
+*** Get the Facts ***
 
-Voit myös löytää (tuotteiden pakkausmerkintöjen mukaan):
-- ainesosaluettelon (mukaan lukien tuhkapitoisuuden)
-- ravinnollisen tiedot, ravinnolliset liikennevalot…
-- tuotemerkit, allergeenit, merkit (luomu, vegaani...)
-- Se toimii koiranruoalla (koiran kuivaruoka & koiran märkäruoka), kissanruoalla, kaninruoalla, käärmeenruoalla, kalanruoalla, linnunruoalla, hevosenruoalla, tai millä tahansa lempieläimesi ruoalla.
+You will also be able to find (according to the indications present on the products):
+- list of ingredients (including ash content)
+- nutritional info, nutrition traffic lights…
+- brands, allergens, labels (organic, vegan...)
+- It works with dog food (dry dog food & wet dog food), cat food, rabbit food, snake food, fish food, bird food, horse food or any food for your favorite animal.
 
-*** Toimii hyvin kaikissa olosuhteissa ***
-- Voit lisätä uusia tuotteita, vaikka sinulla ei olisi Internet-yhteyttä tällä hetkellä.
-- Sovellus lataa vain kaikista välttämättömimmän, tiedonsiirron ja akun kulutuksen vähentämiseksi
-- Et tarvitse kameraa hakeaksesi tuotetta. Voit myös kirjoittaa viivakoodin, jos sinulla ei ole kameraa, tai sinulla on ongelmia sen kanssa.
+*** Works well in any condition ***
+- Voit lisätä uusia tuotteita, vaikka sinulla ei olisi Internet-yhteyttä juuri nyt.
+- The app loads only the strict necessary to reduce data and battery consumption
+- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
 
-*** Sinun lemmikkisi elintarvikkeet, sinun tietosi ***
-- Henkilökohtaiset tietosi ovat sinun, ja niitä ei koskaan lähetetä verkkoon
+*** Your pet food, your data ***
+- Your personal data is yours, and is never sent online
 - Voit käyttää sovellusta nimettömästi
 - Voit viedä lukuhistoriasi
 
 
-Ihmisten elintarvikkeille voit asentaa Open Food Factsin, kosmetiikalle Open Beauty Factsin, ja kaikille muille tuotteille Open Products Factsin.
+For human food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for all other products, Open Products Facts.
