@@ -2,7 +2,7 @@
 ==================
 New native version of Open Food Facts. All the Open Food Facts volunteers been working hard on it, based on your suggestions and feedback :)
 ==================
-* Open Food Facts is now a more global movement than ever. 來自182個國家的一萬多個編輯者加入了超過50萬個產品。 您願意加入我們嗎？
+* Open Food Facts is now a more global movement than ever. 500k products freed, 10K registered contributors, 182 countries. Will you join us ?
 ==================
 新鮮事
 ==================
@@ -12,8 +12,8 @@ New native version of Open Food Facts. All the Open Food Facts volunteers been w
 四、 You can set allergens alerts (always double check the actual label yourself though!)
 五、 You now get a scan history you can export and that never leaves your phone
 六、 You can shake your phone at any time in the app to start scanning
-七、 You can now add new products even when you're offline
-八、 You can now help complete your favorite foods directly from the app: take photos, fill info, make food transparency happen
-九、 Everything is also much faster. Products load blazingly fast, even with a bad mobile connection.
-十、 我們對您的個人資料依然不感興趣。 您不用註冊都可以掃描和貢獻食品資料。
-額外功能！ Despite all the new stuff, the app is as light as before. 手機的剩餘空間是寶貴的。
+7. You can now add new products even when you're offline
+8. You can now help complete your favorite foods directly from the app: take photos, fill info, make food transparency happen
+9. Everything is also much faster. Products load blazingly fast, even with a bad mobile connection.
+10. We're still not interested in your personal data. You don't have to sign-up to scan and contribute.
+Extra! Despite all the new stuff, the app is as light as before. The space left on your phone is sacred.
