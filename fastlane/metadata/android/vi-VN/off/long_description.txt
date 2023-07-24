@@ -1,4 +1,4 @@
-Quét thực phẩm hoặc mã vạch của chúng để lấy dữ liệu về thành phần, chất phụ gia và dinh dưỡng.
+Scan food products or their barcode to obtain data on ingredients, additives and nutrition facts.
 
 ▶ Find & Compare more than 800.000 products
 
@@ -7,70 +7,70 @@ The app allows to view the 800.000 products (including 175.000 in the US) alread
 
 To discover the volunteer-run Open Food Facts project, visit https://world.openfoodfacts.org
 
-▶ Choose the products that are good for you
-- The Nutri-Score grade, from "A" to "E" >> Nutritional quality
-- The NOVA group, from "1" to "4" >> Find the Ultra-Processed food
+▶ Chọn những sản phẩm tốt cho bạn
+- Điểm dinh dưỡng, từ "A" đến "E" >> Chất lượng dinh dưỡng
+- Nhóm NOVA, từ "1" đến "4" >> Tìm thực phẩm siêu chế biến
 - You can easily compare as many products as you want, side by side by simply scanning them. 
 
-▶ And good for the planet!
-- The carbon impact of your food
-- Get a sense of how much of your daily carbon quota you're using for food
-- Based on the footprints computed for France by ADEME.
-- Join us and help us to bring the Carbon Impact to your country!
-- To display a Carbon Impact, a product must have a complete ingredient list with % of meat or fish and a quantity
+▶ Và tốt cho hành tinh!
+- Tác động carbon của những thực phẩm bạn dùng
+- Nhận biết lượng carbon hàng ngày mà bạn đang sử dụng cho thức ăn của mình
+- Dựa trên dấu chân do ADEME thực hiện tính toán cho Pháp.
+- Tham gia cùng chúng tôi và giúp chúng tôi mang Tác động Các-bon đến với đất nước của bạn!
+- Để hiển thị Tác động Carbon, một sản phẩm phải có danh sách thành phần đầy đủ với % lượng thịt hoặc cá và số lượng cụ thể
 
 
-▶ Contribute to Food Transparency
-- Open Food Facts là một cơ sở dữ liệu về thực phẩm được thực hiện bởi mọi người và phục vụ cho tất cả.
-Là một dữ liệu mở, bạn dùng nó để lựa chọn thực phẩm và cũng có thể cho nhiều mục địch khác.
-- Open Facts Facts là một dự án phi lợi nhuận được phát triển bởi hàng ngàn tình nguyện viên từ khắp nơi trên thế giới. Chúng tôi có rất nhiều dự án thú vị mà bạn có thể đóng góp theo nhiều cách khác nhau.
-- You can start contributing today by adding a product from your fridge.
+▶ Góp phần minh bạch thông tin về thực phẩm
+- Open Food Facts là một cơ sở dữ liệu về các sản phẩm thực phẩm được tạo ra bởi tất cả mọi người, cho tất cả mọi người.
+- Bạn có thể sử dụng nó để lựa chọn thực phẩm tốt hơn, và vì đây là dữ liệu mở nên bất kỳ ai cũng có thể sử dụng lại cho bất kỳ mục đích nào.
+- Open Food Facts là một dự án phi lợi nhuận được phát triển bởi hàng nghìn tình nguyện viên từ khắp nơi trên thế giới. Chúng tôi có rất nhiều dự án thú vị mà bạn có thể đóng góp theo nhiều cách khác nhau.
+- Bạn có thể bắt đầu đóng góp ngay hôm nay bằng cách thêm một sản phẩm đang có trong tủ lạnh của mình.
 
 ▶ Create lists
 Create shopping lists, track what you've eaten and easily share and export your lists.
 
-▶ Get the Facts
-- Open Food Facts giúp bạn hiểu những thứ hào nhoáng được in trên bao bì. You will be able to find:
-Hàm lượng carbon (phơi nhiễm CO2) và việc đóng gói (cũng như hướng dẫn tái chế),
-- Chỉ số dinh dưỡng, chất bổ, chất béo, a-xít béo bão hòa, Cacbohydrat, đường, chất sơ, protein, muối và natri.
-- thương hiệu, chất gây dị ứng. nhãn (tiểu sử, không gluten, người ăn chay trường, người ăn chay, thực phẩm của Hồi giáo, thực phẩm của người Do Thái...) khả năng truy xuất nguồn gốc (mã đóng gói, nguyên liệu gốc)
-- Với rượu và bia, bạn sẽ có chỉ số cồn.
+▶ Tìm hiểu thêm thông tin
+- Open Food Facts giúp bạn hiểu được những câu chữ được in mỹ miều trên nhãn sản phẩm. Bạn sẽ có thể tìm thấy:
+- dấu chân carbon (khí thải CO2) và bao bì (cũng như hướng dẫn tái chế),
+- Nutriscore (điểm dinh dưỡng), chất dinh dưỡng, hàm lượng chất béo / chất béo, axit béo bão hòa, carbohydrate, đường, chất xơ, protein và muối và natri.
+- nhãn hiệu, chất gây dị ứng, nhãn (sinh học, không chứa gluten, thuần chay, chay, halal, kosher ...), thông tin truy xuất nguồn gốc (mã bao bì, nguồn gốc của thành phần)
+- Trên các loại rượu và bia, bạn sẽ tìm thấy nồng độ cồn.
 
 
-▶ Based on Science, helping back Science!
+▶ Dựa trên Khoa học, và hỗ trợ lại cho Khoa học!
 
-- We don't make up things. We rely on peer-reviewed science.
-- The Nutri-Score has been created by the independent French team led by Professor Hercberg.
-- The NOVA groups on food processing have been designed by the international team of Professor Monteiro.
-- You can get a synthesis of EFSA exposure levels on food additives.
-- The Open Food Facts community is collaborating with research teams across the planet to improve nutrition research that benefits all.
-
-
-▶ Offline Scan: Scan in ANY condition! (coming soon)
-Scan at the speed of light (even if you’re on a plane, submarine or supermarket)
-
-- The whole planet, in your pocket !
-- You can add new products, even if you don't have an Internet connection right now.
-- The app loads only the strict necessary to reduce data and battery consumption.
-
-▶ Your food, your data
-- Your data is yours, and is never sent online
-- You can use the app anonymously
-- You can export your scan history
-
-▶ Set up allergen alerts on products
-- Milk, Gluten, Eggs, Soybeans, Nuts, Fish, Celery, Mustard, Sulphur dioxide and sulphites, Peanuts, Sesame seeds, Crustaceans, Molluscs or Lupin allergy ?
-- Speed up your shopping by doing an initial screening of your food with Open Food Facts.
-- Be careful that the information may not be 100% accurate, and detection may not be 100% accurate. So always double check by yourself, with the packaging.
+- Chúng tôi không mang thông tin bịa đặt. Chúng tôi dựa trên khoa học được bình duyệt.
+- Nutri-Score đã được tạo ra bởi nhóm nghiên cứu độc lập đến từ Pháp do Giáo sư Hercberg đứng đầu.
+- Các nhóm NOVA về chế biến thực phẩm được thiết kế bởi nhóm nghiên cứu quốc tế đứng đầu là Giáo sư Monteiro.
+- Bạn có thể nhận phần tổng hợp mức độ phơi nhiễm EFSA trên phụ gia thực phẩm.
+- Cộng đồng Open Food Facts đang cộng tác với các nhóm nghiên cứu trên khắp hành tinh để cải thiện nghiên cứu dinh dưỡng mang lại lợi ích cho tất cả mọi người.
 
 
-▶ Say hello and/or join us!
+▶ Quét ngoại tuyến: Quét trong BẤT KỲ điều kiện nào! (coming soon)
+Quét ở tốc độ ánh sáng (ngay cả khi bạn đang ở trên máy bay, tàu ngầm hoặc siêu thị)
+
+- Toàn bộ hành tinh, trong túi của bạn!
+- Bạn có thể thêm sản phẩm mới, ngay cả khi bạn không có kết nối Internet ngay bây giờ.
+- Ứng dụng chỉ tải những thứ thực sự cần thiết để giảm tiêu thụ dữ liệu và pin.
+
+▶ Thức ăn của bạn, dữ liệu của bạn
+- Dữ liệu của bạn là của bạn và không bao giờ được công khai trực tuyến
+- Bạn có thể sử dụng ứng dụng một cách ẩn danh
+- Bạn có thể xuất lịch sử quét của mình
+
+▶ Thiết lập cảnh báo chất gây dị ứng có trong sản phẩm
+- Sữa, Gluten, Trứng, Đậu nành, Quả hạch, Cá, Cần tây, Mù tạt, Sulfur dioxide và sulphites, Đậu phộng, Hạt mè, Loài giáp xác, Nhuyễn thể hoặc Lupin dị ứng?
+- Tăng tốc độ mua sắm của bạn bằng cách thực hiện kiểm tra thực phẩm sơ bộ với Open Food Facts.
+- Hãy cẩn thận rằng thông tin có thể không chính xác 100% và việc phát hiện có thể không chính xác 100%. Vì vậy, hãy luôn tự mình kiểm tra kỹ lưỡng, cùng với thông tin bao bì.
 
 
-Open Food Facts có trên web tại địa chỉ https://world-vi.openfoodfacts.org
+▶ Gửi lời chào và / hoặc tham gia với chúng tôi!
 
 
-Câu hỏi và phản hồi: contact@openfoodfacts.org
+Open Food Facts is also available on the web at https://world.openfoodfacts.org
 
 
-Với mỹ phẩm, hãy cài đặt Open Beauty Facts, với thực phẩm cho thú cưng và với mọi hàng hóa khác, hãy dùng Open Beauty Facts.
+Câu hỏi, phản hồi: contact@openfoodfacts.org
+
+
+For cosmetics, you can install Open Beauty Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.
