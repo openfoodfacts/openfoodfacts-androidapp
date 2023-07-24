@@ -5,7 +5,7 @@ https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=lt
 V2 screenshots
 =====================
 
-Scan products
+Skenuoti produktus
 
 Get the Nutriscore
 
@@ -31,7 +31,7 @@ Wikipedia for Pet Food
 
 Wikipedia of Products
 
-Ingredients
+Sudėtis
 
 Powerful
 
