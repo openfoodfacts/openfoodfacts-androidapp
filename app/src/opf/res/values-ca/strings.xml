@@ -12,7 +12,7 @@
     <string name="website_contributor">https://world-ca.openfoodfacts.org/contributor/</string>
     <string name="terms_url">https://es-ca.openproductsfacts.org/terms-of-use</string>
     <string name="txtHomeOnline">Open Products Facts és una base de dades oberta de més de %1$s productes (més els que aportareu).</string>
-    <string name="txtHome">Open Food Facts és una base de dades oberta de productes amb ingredients, al·lèrgens, dades nutricionals i totes les peces d\'informació que es poden trobar a les etiquetes dels productes.</string>
+    <string name="txtHome">Open Products Facts és una base de dades oberta de productes amb ingredients, al·lèrgens, dades nutricionals i totes les peces d\'informació que es poden trobar a les etiquetes dels productes.</string>
     <string name="slide_1_title">Contribuïu a la transparència dels productes</string>
     <string name="slide_1_desc">Scan products, take them in picture, make food transparency happen</string>
     <string name="slide_2_title">Obteniu les Dades</string>
@@ -36,16 +36,16 @@
     <string name="tagline">the free product database</string>
     <string name="product_not_found">El producte %1$s que heu escanejat encara no existeix a Open Product Facts. Podeu afegir-lo?</string>
     <string name="currently_on_version">Actualment a Open Products Facts</string>
-    <string name="category_game_btn">Help categorize products</string>
+    <string name="category_game_btn">Ajudau a classificar els productes</string>
     <!-- TODO add true support instead of overriding strings -->
-    <string name="add_nutrient_prompt_text">Add more details to help complete the product</string>
-    <string name="add_category_prompt_text">Add a category to help complete the product</string>
-    <string name="add_nutrient_category_prompt_text">Add a category and more details to help complete the product</string>
+    <string name="add_nutrient_prompt_text">Afegiu més detalls per ajudar a completar el producte</string>
+    <string name="add_category_prompt_text">Afegeix una categoria per ajudar a completar el producte</string>
+    <string name="add_nutrient_category_prompt_text">Afegiu una categoria i més detalls per completar el producte</string>
     <string name="txt_eaten_products">Productes que tinc</string>
     <string name="txt_products_to_buy">Productes per comprar</string>
-    <string name="intent_filter_share_label">Add to Open Products Facts</string>
-    <string name="txt_info_eaten_products">Podreu afegir producte a aquesta llista escanejant productes, arrossegant la targeta de producte cap amunt i tocant a \"Productes per comprar\".
-        També podreu afegir productes a aquesta llista buscant-los i fent clic al botó + a la part superior dreta de la pàgina del producte.</string>
+    <string name="intent_filter_share_label">Afegeix a Open Products Facts</string>
+    <string name="txt_info_eaten_products">Podreu afegir un producte a aquesta llista escanejant-lo, arrossegant la targeta del producte cap amunt i tocant \"Productes per comprar\".
+        També podreu afegir productes a aquesta llista cercant-los i fent clic al botó + a la part superior dreta de la pàgina del producte.</string>
     <string name="OFFlogo">Logo d\'Open Product Facts</string>
     <string name="brand_hint">Exemples: Nike, Apple, etc…</string>
 </resources>
