@@ -14,23 +14,23 @@
     <string name="slide_1_title">ساهم في شفافية المواد الغذائية</string>
     <string name="slide_1_desc">قم بمسح المنتجات ضوئيًا ، التقط صورها ، هنا تبداء شفافية الغذاء</string>
     <string name="slide_2_title">احصل على الحقائق</string>
-    <string name="slide_2_desc">معلومات شاملة حول المنتج الذي تم مسحه ضوئيًا وفك شفرته لك</string>
+    <string name="slide_2_desc">معلومات شاملة حول المنتج الذي تم مسحه ضوئياً وفك شفرته لك</string>
     <string name="slide_3_title">الحصول على Nutriscore (مجموع نقاط التغذية)</string>
     <string name="slide_3_desc">وجهة نظر تركيبية للخصائص الغذائية للمنتجات الغذائية المفضلة لديك</string>
     <string name="slide_4_title">يعمل بدون اتصال</string>
     <string name="slide_4_desc">يمكنك إضافة منتجات جديدة ، حتى إذا لم يكن لديك اتصال بالإنترنت في الوقت الحالي</string>
-    <string name="txtDialogsContent">المنتج الذي تم مسحه غير موجود حتى الآن في Open Food Facts. الرجاء إضافته.</string>
+    <string name="txtDialogsContent">المنتج الذي قمت بمسحه ضوئياً غير موجود حتى الآن في Open Open Facts. يرجى إضافته.</string>
     <string name="txtDialogsContentPowerMode">المنتج الذي تم مسحه موجود بالفعل في Open Food Facts.</string>
-    <string name="msg_share">انظر لهذا المنتج على Open Food Facts:</string>
+    <string name="msg_share">انظر إلى هذا المنتج على Open Food Facts :</string>
     <string name="not_support_books">الكتب ليست مدعومة في الوقت الحالي من قبل \"حقائق الغذاء المفتوحة\"</string>
-    <string name="txt_broaden_search">-توسيع نطاق \n-البحث الخاص بك امسح و إضفه إلى Open Food Facts</string>
+    <string name="txt_broaden_search">- توسيع نطاق البحث \n- مسح ضوئي وإضافته إلى Open Food Facts</string>
     <string name="Donation">انقر هنا للتبرع لـ Open Food Facts</string>
     <string name="translate_help_title">المساعدة في ترجمة Open Food Facts</string>
     <string name="translate_help_summary">قم تحويل قاعدة بيانات Open Food Facts إلى لغتك - دون الحاجة إلى معرفة فنية</string>
     <string name="text_offline_info_dialog">قم بمسح المنتجات حتى عندما تكون في وضع عدم الاتصال لإضافتها إلى Open Food Facts لاحقًا. ستظهر المنتجات الممسوحة ضوئيًا هنا وستتمكن من إرسالها باستخدام الزر أدناه.</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">لن يتم إرسال معلومات الحساسية الخاصة بك إلى Open Food Facts. أيضاً، احذر من أن بيانات المنتج قد لا تكون دقيقة، وقد لا يكون الكشف دقيقاً 100%، لذا يرجى التحقق مرة أخرى بنفسك! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">لن يتم إرسال معلوماتك الشخصية إلى خادم Open Food Facts. أيضاً كن حذراً بأن بيانات المنتج قد تكون غير دقيقة، و الكشف قد لا يكون دقيقاً بنسبة 100٪ ، لذا نرجو منك إعادة التحقق منها بنفسك! </string>
     <!-- OFF tagline in different languages -->
     <string name="tagline">قاعدة بيانات المنتجات الغذائية المجانية</string>
-    <string name="product_not_found">المنتج %1$s الذي تم مسحه غير موجود حتى الآن في الحقائق الغذائية المفتوحة. هل يمكنك إضافته؟</string>
+    <string name="product_not_found">المنتج %1$s الذي مسحته غير موجود حتى الآن في Open Food Facts. هل يمكنك إضافته؟</string>
     <string name="currently_on_version">حاليا على Open Food Facts</string>
 </resources>
