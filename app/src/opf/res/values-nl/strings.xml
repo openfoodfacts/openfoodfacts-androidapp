@@ -11,14 +11,14 @@
     <!-- For fr, Replace by https://world-fr.openproductsfacts.org/contributeur/ -->
     <string name="website_contributor">https://world.openfoodfacts.org/contributor/</string>
     <string name="terms_url">https://world.openproductsfacts.org/terms-of-use&amp;hl=nl</string>
-    <string name="txtHomeOnline">Open Products Facts is an open database of more than %1$s products (plus the ones you will contribute).</string>
-    <string name="txtHome">Open Food Facts is een open database van voedingsproducten met ingrediënten, allergenen, voedingsinformatie en alle informatie die we kunnen vinden op de etiketten van de producten.</string>
+    <string name="txtHomeOnline">Open Products Facts is een open database van meer dan %1$s producten (plus de producten die je gaat bijdragen).</string>
+    <string name="txtHome">Open Products Facts is een open database van alle producten ter wereld.</string>
     <string name="slide_1_title">Draag bij aan de inzichtelijkheid van de productketen</string>
-    <string name="slide_1_desc">Scan products, take them in picture, make food transparency happen</string>
+    <string name="slide_1_desc">Scan producten, neem foto\'s, maak producttransparantie</string>
     <string name="slide_2_title">Ken de feiten</string>
     <string name="slide_2_desc">Uitgebreide informatie overt gescande producten, ontcijferd voor jou</string>
     <string name="slide_3_title">Blijf op de hoogte van het product dat je gebruikt</string>
-    <string name="slide_3_desc">Alle producten die je gebruikt, in een handige exporteerbare lijst</string>
+    <string name="slide_3_desc">Alle producten die je gebruikt, in een handige, exporteerbare lijst</string>
     <string name="slide_4_title">Werkt offline</string>
     <string name="slide_4_desc">Je kan nieuwe producten toevoegen, zelfs als je nu geen internetverbinding hebt</string>
     <string name="txtDialogsContent">Het gescande product bestaat nog niet in Open Products Facts. Voeg deze toe.</string>
@@ -29,23 +29,23 @@
     <string name="Donation">Klik hier om te doneren aan Open Products Facts</string>
     <string name="translate_help_title">Help met het vertalen van Open Products Facts</string>
     <string name="translate_help_summary">Maak de Open Products Facts database in jouw taal beschikbaar - geen technische kennis vereist</string>
-    <string name="text_offline_info_dialog">Scan producten ook als je offline bent, om ze later aan Open Products Facts toe te voegen. De gescande producten verschijnen hier en je kan ze verzenden via de onderstaande knop.</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Products Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+    <string name="text_offline_info_dialog">Scan producten zelfs als je offline bent om ze later aan Open Products Facts toe te voegen. De gescande producten verschijnen hier en u kunt ze verzenden met de knop hieronder.</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Informatie over je allergieën wordt nooit naar de Open Products Facts-server verzonden. Let ook op dat productgegevens mogelijk niet accuraat zijn en detectie mogelijk niet 100% accuraat is. Dubbelcheck dus zelf! </string>
     <!-- OPF tagline in different languages -->
-    <string name="version_string">Open Products Facts Android App</string>
-    <string name="tagline">de open producten-database</string>
-    <string name="product_not_found">Het door jou gescande product %1$s, bestaat nog niet. Wil je het toevoegen?</string>
+    <string name="version_string">Open Products Facts Android-app</string>
+    <string name="tagline">de gratis productdatabase</string>
+    <string name="product_not_found">Het product %1$s dat u hebt gescand, bestaat nog niet in Open Products Facts. Kun je het toevoegen?</string>
     <string name="currently_on_version">Momenteel op Open Products Facts</string>
     <string name="category_game_btn">Help producten te categoriseren</string>
     <!-- TODO add true support instead of overriding strings -->
-    <string name="add_nutrient_prompt_text">Add more details to help complete the product</string>
-    <string name="add_category_prompt_text">Add a category to help complete the product</string>
-    <string name="add_nutrient_category_prompt_text">Add a category and more details to help complete the product</string>
-    <string name="txt_eaten_products">Products I have</string>
+    <string name="add_nutrient_prompt_text">Voeg meer details toe om het product te helpen voltooien</string>
+    <string name="add_category_prompt_text">Voeg een categorie toe om het product te helpen voltooien</string>
+    <string name="add_nutrient_category_prompt_text">Voeg een categorie en meer details toe om het product te helpen voltooien</string>
+    <string name="txt_eaten_products">Mijn Producten</string>
     <string name="txt_products_to_buy">Producten om te kopen</string>
-    <string name="intent_filter_share_label">Add to Open Products Facts</string>
-    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
-        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
-    <string name="OFFlogo">Open Products Facts logo</string>
-    <string name="brand_hint">Examples: Nike, Apple, etc…</string>
+    <string name="intent_filter_share_label">Voeg toe aan Open Products Facts</string>
+    <string name="txt_info_eaten_products">U kan producten aan deze lijst toevoegen door producten te scannen, de productkaart omhoog te slepen en op \"Te kopen producten\" te tikken.
+        U kan ook producten aan deze lijst toevoegen door ze te zoeken en op de knop + rechtsboven op de productpagina te klikken.</string>
+    <string name="OFFlogo">Open Products Facts-logo</string>
+    <string name="brand_hint">Voorbeelden: Nike, Apple, enz…</string>
 </resources>
