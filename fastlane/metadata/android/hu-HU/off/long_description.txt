@@ -1,4 +1,4 @@
-Olvassa be az élelmiszereket vagy a vonalkódjukat, hogy megszerezze az adatokat azok összetevőiről, adalékanyagairól és tápértékadatairól.
+Scan food products or their barcode to obtain data on ingredients, additives and nutrition facts.
 
 ▶ Find & Compare more than 800.000 products
 
@@ -7,7 +7,7 @@ The app allows to view the 800.000 products (including 175.000 in the US) alread
 
 To discover the volunteer-run Open Food Facts project, visit https://world.openfoodfacts.org
 
-▶ Válassza ki a megfelelő termékeket
+▶ Choose the products that are good for you
 - The Nutri-Score grade, from "A" to "E" >> Nutritional quality
 - The NOVA group, from "1" to "4" >> Find the Ultra-Processed food
 - You can easily compare as many products as you want, side by side by simply scanning them. 
@@ -21,20 +21,20 @@ To discover the volunteer-run Open Food Facts project, visit https://world.openf
 
 
 ▶ Contribute to Food Transparency
-- Az Open Food Facts egy élelmiszeripari adatbázis, bárki szerkesztheti, mindenki használhatja.
-- Használhatja azt, hogy jobb élelmiszer-választásokat tegyen, és mivel nyílt adatok, bárki újra felhasználhatja bármilyen célra.
-- Az Open Beauty Facts egy nonprofit projekt, amelyet több ezer önkéntes fejlesztett ki a világ minden tájáról. Rengeteg izgalmas projektünk van, amelyekkel sokféleképpen járulhat hozzá.
+- Open Food Facts is a food products database made by everyone, for everyone.
+- You can use it to make better food choices, and as it is open data, anyone can re-use it for any purpose.
+- Open Food Facts is a non-profit project developed by thousands of volunteers from around the world. Rengeteg izgalmas projektünk van, amelyekkel sokféleképpen járulhat hozzá.
 - You can start contributing today by adding a product from your fridge.
 
 ▶ Create lists
 Create shopping lists, track what you've eaten and easily share and export your lists.
 
 ▶ Get the Facts
-- Az Open Food Facts segít önnek a termékek cimkéin található apróbetűs rész értelmezésében. You will be able to find:
-- Ökológiai lábnyom (szén-dioxid-kibocsátás) és csomagolás (valamint újrahasznosítási utasítások),
-- Nutriscore (táplálkozási pontszám), tápanyagok, zsír / zsírtartalom, telített zsírsavak, szénhidrátok, cukrok, rost, fehérje, só és nátrium.
-- márkanevek, allergének, címkék (bio, gluténmentes, vegán, vegetáriánus, halal, kóser ...), nyomon követhetőségi információk (csomagolási kódok, összetevők eredete)
-- A borok és sörök esetén az alkoholtartalom megtalálható.
+- Open Food Facts helps you to make sense of the fine print on products labels. You will be able to find:
+- carbon footprint (CO2 emissions) and packaging (as well as recycling instructions),
+- Nutriscore (nutritional score), nutrients, fat / fat content, saturated fatty acids, carbohydrates, sugars, fiber, protein and salt and sodium.
+- brands, allergens, labels (bio, gluten free, vegan, vegetarian, halal, kosher ...), traceability information (packaging codes, origins of ingredients)
+- On wines and beers, you will find the alcohol content.
 
 
 ▶ Based on Science, helping back Science!
@@ -46,7 +46,7 @@ Create shopping lists, track what you've eaten and easily share and export your 
 - The Open Food Facts community is collaborating with research teams across the planet to improve nutrition research that benefits all.
 
 
-▶ Offline Vizsgálat: Szkennelés bármilyen állapotban! (coming soon)
+▶ Offline Scan: Scan in ANY condition! (coming soon)
 Scan at the speed of light (even if you’re on a plane, submarine or supermarket)
 
 - The whole planet, in your pocket !
@@ -54,7 +54,7 @@ Scan at the speed of light (even if you’re on a plane, submarine or supermarke
 - The app loads only the strict necessary to reduce data and battery consumption.
 
 ▶ Your food, your data
-- Az ön adatainak tulajdonosa ön és soha nem lesznek elküldve online
+- Your data is yours, and is never sent online
 - Az alkalmazást névtelenül használhatja
 - Exportálni tudja a beolvasási előzményeket
 
@@ -67,10 +67,10 @@ Scan at the speed of light (even if you’re on a plane, submarine or supermarke
 ▶ Say hello and/or join us!
 
 
-Az Open Food Facts elérhető az interneten is a következő címen: https://world.openfoodfacts.org
+Open Food Facts is also available on the web at https://world.openfoodfacts.org
 
 
 Kérdések, visszajelzés: contact@openfoodfacts.org
 
 
-Kozmetikai termékekhez telepítheti az Open Beauty Facts-ot, állateledelekhez az Open Pet Food Facts-ot és a többi termékhez az Open Products Facts-ot.
+For cosmetics, you can install Open Beauty Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.
