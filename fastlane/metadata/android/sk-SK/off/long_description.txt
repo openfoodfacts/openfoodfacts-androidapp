@@ -1,4 +1,4 @@
-Naskenujte potravinové výrobky alebo ich čiarový kód a získajte údaje o zložkách, prísadách a o výživovej hodnote.
+Scan food products or their barcode to obtain data on ingredients, additives and nutrition facts.
 
 ▶ Find & Compare more than 800.000 products
 
@@ -7,7 +7,7 @@ The app allows to view the 800.000 products (including 175.000 in the US) alread
 
 To discover the volunteer-run Open Food Facts project, visit https://world.openfoodfacts.org
 
-▶ Choose the products that are good for you
+Slovak
 - The Nutri-Score grade, from "A" to "E" >> Nutritional quality
 - The NOVA group, from "1" to "4" >> Find the Ultra-Processed food
 - You can easily compare as many products as you want, side by side by simply scanning them. 
