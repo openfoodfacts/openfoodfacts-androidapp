@@ -1,54 +1,54 @@
-Open Food Facts הוא מסד נתונים של מוצרי מזון עם רכיבים, מעוררי רגישות, עובדות תזונתיות וכל שביב מידע שניתן למצוא על תווית המוצר.
+Open Products Facts הוא מסד נתונים של מוצרי מזון עם רכיבים, מעוררי רגישות, עובדות תזונתיות וכל שביב מידע שניתן למצוא על תווית המוצר.
 
-*** תרומה לשקיפות המזון ***
+*** תרומה לשקיפות המוצרים ***
 
 - Open Products Facts הוא מסד נתוני מוצרים שנוצר על ידי כולם, למען כולם.
-- ניתן להשתמש במסד הנתונים כדי לקחת החלטות טובות יותר וכיוון שמדובר בנתונים פתוחים, כל אחד יכול לגזור את מסד הנתונים לכל מטרה שהיא.
-- Open Products Facts הוא מיזם ללא כוונת רווח שפותח על ידי אלפי מתנדבים מכל רחבי העולם. יש לנו מגוון מיזמים מרתקים להם ניתן לתרום במגוון דרכים. 
-- ניתן להתחיל לתרום עוד היום על ידי הוספת המוצר הראשון שלך. 
+- ניתן להשתמש בו כדי לבחור טוב יותר וכיוון שהנתונים שלו פתוחים, כולם יכולים לגזור ממנו לכל מטרה.
+- Open Products Facts הוא מיזם ללא מטרות רווח אותו מפתחים אלפי מתנדבים מכל רחבי העולם. יש לנו המון מיזמים מלהיבים שניתן לתרום להם במגוון דרכים שונות. 
+- ניתן להתחיל לתרום כבר היום על ידי הוספת המוצר הראשון שלך. 
 
-*** קבלת העובדות ***
-- עם Open Products Facts סוף סוף אפשר להבין את כל הקשקושים שכתובים על תוויות המוצרים.
+*** Get the Facts ***
+- Open Products Facts helps you to make sense of the fine print on products labels.
 
-*** לאסוף את כללללללל הדברים ***
-- ניתן להוסיף את כל הפריטים מהאוספים שלך
-- Open Crayons Facts - מסד הנתונים הגדול ביותר לעפרונות צביעה
-- Open Miniature Food Facts - מסד הנתונים הגדול ביותר למוצרי מזון מזעריים
-- Open ??? Facts - יצירת מסד נתונים משלך :-)
+*** Collect AAAALL the things ***
+- You can add all the items from your collections
+Open Crayons Facts - מס הנתונים הפתוח הגדול ביותר לעפרונות צבעוניים
+- Open Miniature Food Facts - The largest open database of miniature food products
+- Open ??? Facts - Create your own open database :-)
 
-*** פעילות עם כמה שפחות הפרעות ***
+*** עובד מצוין בכל מצב ***
 - ניתן להוסיף מוצרים חדשים, אפילו אם אין לך חיבור לאינטרנט כרגע.
-- היישומון טוען רק את מה שנדרש כדי לצמצם בתקשורת נתונים ובצריכת סוללה
-- אין צורך במצלמה כדי לחפש מוצר. ניתן גם להקליד את הברקוד אם אין לך מצלמה או שהיא אינה תקינה.
+- The app loads only the strict necessary to reduce data and battery consumption
+- אין צורך במצלמה כדי לחפש מוצר. ניתן גם להקליד את הברקוד אם אין לך מצלמה או אם נתקלת בתקלה כלשהי.
 
 *** המוצרים שלך, הנתונים שלך ***
-- הנתונים האישיים שלך הם שלך והם לא יישלחו לשום מקום
-- ניתן להשתמש ביישומון בעילום שם
-- ניתן לייצא את היסטוריית הסריקות שלך
+- הנתונים האישיים שלך הם שלך והם אף פעם לא נשלחים לאינטרנט
+- ניתן להשתמש ביישומון בצורה אלמונית
+- יש לך אפשרות לייצא את היסטוריית הסריקה שלך
 
-בשביל מזון, ניתן להתקין את Open Food Facts, לקוסמטיקה יש את Open Beauty Facts ולמזון לחיות מחמד יש את Open Pet Food Facts.
+למזון, ניתן להתקין את Open Food Facts, למוצרי טיפוח, Open Beauty Facts, ולמזון של חיות מחמד, Open Pet Food Facts.
 
-Open Products Facts זמין גם כאתר לדפדפן בכתובת https://world.openproductsfacts.org
-שאלות, משוב : contact@openfoodfacts.org
+מיזם Open Products Facts זמין גם דרך אתר האינטרנט https://world.openproductsfacts.org
+שאלות, משוב: contact@openfoodfacts.org
 
-*** הרשומה המקורית מאחד באפריל ***
+*** Original April's Fool Listing ***
 
-אתמול בבוקר, התעוררו חברי צוות Open Food Facts להתגלות עוצרת נשימה. 
+Yesterday morning, the Open Food Facts team woke up to a stunning revelation. 
 
-איסוף נתוני המזון, הקוסמטיקה והמזון לחיות מחמד זה כל כך שנה שעברה. בזכות ההתקדמות המטורפת שהשגנו במהלך השנה החולפת, אנחנו ודאי מתקרבים להשלמת המטרה שלנו לאסוף את נתוני כל מוצרי המזון והקוסמטיקה בכל רחבי העולם, לא כך?
+Collecting the world's food, cosmetic and pet food was so passé. With the insane progress made over the past year, we must surely be close to completing our mission to collect all the food and cosmetic products in the world, right ?
 
-אז התכוננו ליצירת לא 1 אלא 77,000 מסדי נתונים חדשים שונים! 
+So we set up to create not 1, but other 77000 separate new databases ! 
 
-Open Products Facts מתעתד להיות מיזם שאפתני במיוחד. להלן כמה מהם: 
+Open Products Facts will be an extremely ambitious project. להלן מגוון מימושים נוספים: 
 
 Open Crayons Facts - מסד הנתונים הגדול ביותר לעפרונות צביעה
 
 Open Miniature Food Facts - מסד הנתונים הגדול ביותר למוצרי מזון מזעריים
 
-Open ??? Facts - מסד הנתונים הגדול ביותר לתיעוד ???
+Open ??? Facts - The largest open database of ???
 
-מחר, אנו נבחר את 3 מסדי הנתונים המצליחים ביותר ונתחיל לאסוף את כל המוצרים התואמים מכל רחבי העולם.
+Tomorrow, we will select the 3 most sucessful databases, and we will start collecting all the matching products in the world.
 
-האם יהיה זה מסד נתונים של פחי זבל, כרטיסי חיוג או טלפונים סלולריים? 
+Will it be trash cans, télécartes, or mobile phones database ? 
 
-אז אם מעניין אותך חולצות טריקו, ספרי בישול, נייר אוריגמי או כדורי שלב, ניתן להתחיל לסרוק באמצעות יישומון ה־Android של Open Products Facts ב־Google Play
+So if you like t-shirts, cooking books, origami paper or snow globes, start scanning using the Open Products Facts Android app on Google Play
