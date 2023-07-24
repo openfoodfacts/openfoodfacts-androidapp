@@ -1,7 +1,7 @@
-All 25k OFF volunteers kept working hard: 1,4M products, 182 countries 🙂
-1. OFF goes big in the US: 237k products with Nutri-Score !
-2. Dark mode: lighter on your eyes, lighter on your battery
-3. Help compute Nutri-Score & Eco-Score: slide up for blue questions & get credited for your answers.
-4. Massive improvements to the vegan, vegetarian & palm oil detection.
-5. Instant product edition even with bad or no network
-6. Products To Be Completed page (right menu) is now real time.
+Alle 25k OFF-vrijwilligers bleven hard werken: 1,4 miljoen producten, 182 landen 🙂
+1. OFF gaat groot in de VS: 237k producten met de Nutri-Score!
+2. Donkere modus: beter voor uw ogen, beter voor uw batterij
+3. Help bij het berekenen van de Nutri-Score & Eco-Score: schuif omhoog voor blauwe vragen en word gecrediteerd voor uw antwoorden.
+4. Enorme verbeteringen bij de detectie van veganistische, vegetarische en palmolie producten.
+5. Directe productbewerking, zelfs bij slechte of geen netwerkverbinding
+6. De pagina 'Te Voltooien Producten' (rechtermenu) is nu realtime.
