@@ -4,7 +4,7 @@ De app maakt het mogelijk om meer dan 600 huisdiervoedingsproducten in de gratis
 
 Om het Open Pet Food Facts project te ontdekken, bezoek https://world.openpetfoodfacts.org
 
-***Draag bij aan de inzichtelijkheid van dierenvoeding***
+***Draag bij aan de transparantie van diervoeding***
 
 - Open Pet Food Facts is een database met huisdiervoedingsproducten gemaakt door iedereen, voor iedereen.
 - Je kunt de database gebruiken om betere keuzes voor huisdiervoeding te maken, en omdat het open data is, kan iedereen het voor elk doel hergebruiken.
@@ -22,7 +22,7 @@ Je zal ook kunnen vinden (volgens de aanwijzingen op de producten):
 
 *** Werkt in alle omstandigheden goed ***
 - Je kan nieuwe producten toevoegen, zelfs als je even geen internetverbinding hebt.
-- De app laadt alleen de strikt noodzakelijke gegevens om het batterijverbruik te verkleinen
+- De app laadt alleen het strikt noodzakelijke om gegevens- en batterijverbruik te verminderen
 - Je hebt geen camera nodig om een product op te zoeken. Je kan ook de streepjescode intypen als je geen camera hebt of er een probleem mee hebt.
 
 *** Jouw dierenvoeding, jouw gegevens ***
