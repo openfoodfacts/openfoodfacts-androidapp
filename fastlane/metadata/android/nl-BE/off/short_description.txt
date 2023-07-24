@@ -1,1 +1,1 @@
-Scan voedselproducten om etiketten te decoderen: ingrediënten, additieven en voedingsfeiten
+Scan voedingsproducten om etiketten te decoderen: ingrediënten, additieven en voedingswaarden
