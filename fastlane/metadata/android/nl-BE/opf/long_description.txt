@@ -18,7 +18,7 @@ Open Products Facts helpt je om de kleine lettertjes op etiketten te begrijpen.
 
 *** Werkt in alle omstandigheden goed ***
 - Je kan nieuwe producten toevoegen, zelfs als je even geen internetverbinding hebt.
-- De app laadt alleen de strikt noodzakelijke gegevens om het batterijverbruik te verkleinen
+- De app laadt alleen het strikt noodzakelijke om gegevens- en batterijverbruik te verminderen
 - Je hebt geen camera nodig om een product op te zoeken. Je kan ook de streepjescode intypen als je geen camera hebt of er een probleem mee hebt.
 
 *** Jouw producten, jouw gegevens ***
@@ -35,7 +35,7 @@ Vragen, feedback: contact@openfoodfacts.org
 
 Gisterochtend werd het Open Food Facts team wakker met een verbluffende openbaring. 
 
-Het verzamelen van alle wereldwijde voedsel, cosmetica en dierenvoeding was zo passé. Met de krankzinnige vooruitgang van het afgelopen jaar moeten we zeker in staat zijn om onze missie om alle levensmiddelen en cosmetische producten in de wereld te verzamelen te voltooien, right ?
+Het verzamelen van 's werelds voedsel, cosmetica en dierenvoeding was zo passé. Met de krankzinnige vooruitgang die het afgelopen jaar is geboekt, moeten we zeker bijna klaar zijn met het voltooien van onze missie om alle voedsel- en cosmeticaproducten ter wereld te verzamelen, toch?
 
 We hebben dus besloten om niet 1, maar 77000 andere afzonderlijke nieuwe databases te maken! 
 
@@ -49,6 +49,6 @@ Open ??? Facts - De grootste open database van ???
 
 Morgen zullen we de 3 meest succesvolle databases selecteren en zullen we wereldwijd beginnen met het verzamelen van alle bijpassende producten.
 
-Zal het een vuilnisbakken, pinkaarten of mobiele telefoons database zijn? 
+Zal het een vuilnisbakken, belkaarten of mobiele telefoons database zijn? 
 
-Dus als je houdt van t-shirts, kookboeken, origamipapier of sneeuwglobes, begin met scannen met de Open Product Facts Android app in Google Play
+Dus als je van t-shirts, kookboeken, origamipapier of sneeuwbollen houdt, begin dan met scannen met de Android-app Open Products Facts op Google Play
