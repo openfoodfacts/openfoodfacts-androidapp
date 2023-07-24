@@ -1,34 +1,34 @@
-Scan pet food products or their barcode to obtain data on ingredients, additives and nutrition facts.
+Naskenujte produkty krmiva pro domácí zvířata nebo jejich čárový kód a získejte údaje o složkách, přísadách a výživových údajích.
 
 The app allows to view the over 600 pet food products already contained in the free and open database Open Pet Food Facts, and also to add pictures and data for missing products.
 
-To discover the Open Pet Food Facts project, please visit https://world.openpetfoodfacts.org
+Chcete-li prozkoumat projekt Open Pet Food Facts, navštivte prosím https://world.openpetfoodfacts.org
 
 ***Contribute to Pet Food Transparency***
 
-- Open Pet Food Facts is a pet food products database made by everyone, for everyone.
-- You can use it to make better pet food choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Pet Food Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways. 
-- You can start contributing today by adding a product from your pet's cupboard. 
+- Open Pet Food Facts je databáze krmiv pro domácí zvířata vytvořená každým a pro každého.
+- Můžete je použít k lepšímu výběru krmiva pro domácí mazlíčky, a protože se jedná o otevřená data, může je kdokoli znovu použít pro jakýkoli účel.
+- Open Pet Food Facts je neziskový projekt vyvinutý tisíci dobrovolníky z celého světa. Máme spoustu zajímavých projektů, můžete přispět mnoha různými způsoby. 
+- Už dnes můžete začít přispívat přidáním produktu ze skříně vašeho mazlíčka. 
 
 
 *** Get the Facts ***
 
 You will also be able to find (according to the indications present on the products):
-- list of ingredients (including ash content)
-- nutritional info, nutrition traffic lights…
+- seznam ingrediencí (včetně obsahu popela)
+- nutriční informace, nutriční semafory…
 - brands, allergens, labels (organic, vegan...)
-- It works with dog food (dry dog food & wet dog food), cat food, rabbit food, snake food, fish food, bird food, horse food or any food for your favorite animal.
+- Funguje s krmivem pro psy (suché krmivo pro psy a mokré krmivo pro psy), krmivo pro kočky, krmivo pro králíky, krmivo pro hady, krmivo pro ryby, krmivo pro ptáky, krmivo pro koně nebo jakékoli krmivo pro vaše oblíbené zvíře.
 
-*** Works well in any condition ***
-- You can add new products, even if you don't have an Internet connection right now.
+*** Funguje dobře za všech podmínek ***
+- Můžete přidávat nové produkty, i když právě nemáte připojení k internetu.
 - The app loads only the strict necessary to reduce data and battery consumption
-- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
+- K vyhledání produktu nepotřebujete fotoaparát. Můžete také zadat čárový kód, pokud nemáte fotoaparát nebo s ním máte problém.
 
-*** Your pet food, your data ***
-- Your personal data is yours, and is never sent online
+*** Vaše krmivo pro domácí mazlíčky, vaše data ***
+- Vaše osobní údaje jsou vaše a nikdy se neodesílají online
 - Aplikaci můžete používat anonymně
 - Můžete exportovat vlastní historii skenování
 
 
-For human food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for all other products, Open Products Facts.
+Pro lidské jídlo můžete nainstalovat Open Food Facts, pro kosmetiku Open Beauty Facts a pro všechny ostatní produkty Open Products Facts.
