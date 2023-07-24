@@ -1,35 +1,35 @@
-Open Food Facts je otevřená databáze potravinářských produktů s přísadami, alergeny, nutričními fakty a všemi informacemi, které můžeme nalézt na etiketách produktů.
+Open Products Facts je otevřená databáze potravinářských produktů s přísadami, alergeny, nutričními fakty a všemi informacemi, které můžeme nalézt na etiketách produktů.
 
-*** Contribute to Product Transparency ***
+*** Přispějte k transparentnosti produktů ***
 
-- Open Products Facts is a products database made by everyone, for everyone.
-- You can use it to make better choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Products Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways. 
-- You can start contributing today by adding your first product. 
+- Open Products Facts je databáze produktů vytvořená každým, pro každého.
+- Můžete je použít k lepším rozhodnutím, a protože se jedná o otevřená data, může je kdokoli znovu použít pro jakýkoli účel.
+- Open Products Facts je neziskový projekt vyvinutý tisíci dobrovolníky z celého světa. Máme spoustu zajímavých projektů, můžete přispět mnoha různými způsoby. 
+- Dnes můžete začít přispívat přidáním svého prvního produktu. 
 
 *** Get the Facts ***
 - Open Products Facts helps you to make sense of the fine print on products labels.
 
 *** Collect AAAALL the things ***
 - You can add all the items from your collections
-- Open Crayons Facts - The largest open database of coloring crayons
+- Open Crayons Facts - Největší otevřená databáze barevných pastelek
 - Open Miniature Food Facts - The largest open database of miniature food products
 - Open ??? Facts - Create your own open database :-)
 
-*** Works well in any condition ***
-- You can add new products, even if you don't have an Internet connection right now.
+*** Funguje dobře za všech podmínek ***
+- Můžete přidávat nové produkty, i když právě nemáte připojení k internetu.
 - The app loads only the strict necessary to reduce data and battery consumption
-- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
+- K vyhledání produktu nepotřebujete fotoaparát. Můžete také zadat čárový kód, pokud nemáte fotoaparát nebo s ním máte problém.
 
-*** Your products, your data ***
-- Your personal data is yours, and is never sent online
+*** Vaše produkty, vaše data ***
+- Vaše osobní údaje jsou vaše a nikdy se neodesílají online
 - Aplikaci můžete používat anonymně
 - Můžete exportovat vlastní historii skenování
 
-For food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for pet food, Open Pet Food Facts.
+Pro jídlo si můžete nainstalovat Open Food Facts, pro kosmetiku Open Beauty Facts a pro krmivo pro domácí mazlíčky Open Pet Food Facts.
 
-Open Products Facts is also available on the web at https://world.openproductsfacts.org
-Questions, feedback : contact@openfoodfacts.org
+Open Products Facts je k dispozici také na webu https://world.openproductsfacts.org
+Otázky, zpětná vazba: contact@openfoodfacts.org
 
 *** Original April's Fool Listing ***
 
@@ -39,11 +39,11 @@ Collecting the world's food, cosmetic and pet food was so passé. With the insan
 
 So we set up to create not 1, but other 77000 separate new databases ! 
 
-Open Products Facts will be an extremely ambitious project. Here are a few of them: 
+Open Products Facts will be an extremely ambitious project. Zde je několik z nich: 
 
-Open Crayons Facts - The largest open database of coloring crayons
+Open Crayons Facts - Největší otevřená databáze barevných pastelek
 
-Open Miniature Food Facts - The largest open database of miniature food products
+Open Miniature Food Facts - největší otevřená databáze miniaturních potravin
 
 Open ??? Facts - The largest open database of ???
 
