@@ -21,7 +21,7 @@
     <string name="slide_3_desc">Tots els cosmètics que utilitzeu, en una llista útil que podeu exportar</string>
     <string name="slide_4_title">Treballeu fora de línia</string>
     <string name="slide_4_desc">Podeu afegir nous productes, fins i tot si ara mateix no teniu una connexió a Internet</string>
-    <string name="txtDialogsContent">El producte que heu escanejat encara no existeix a Open Beauty Facts. Afegiu-lo.</string>
+    <string name="txtDialogsContent">El producte que heu escanejat encara no existeix a Open Products Facts. Afegiu-lo.</string>
     <string name="msg_share">Mireu aquest producte a Open Beauty Facts:</string>
     <string name="txt_broaden_search">- amplieu la cerca \n- escanegeu-ho i afegiu-ho a Open Beauty Facts</string>
     <string name="Donation">Feu clic aquí per a fer un donatiu a Open Beauty Facts</string>
@@ -34,17 +34,17 @@
     <string name="tagline">the free cosmetics database</string>
     <string name="product_not_found">El producte %1$s que heu escanejat encara no existeix a Open Beauty Facts. Podeu afegir-lo?</string>
     <string name="currently_on_version">Actualment a Open Beauty Facts</string>
-    <string name="category_game_btn">Help categorize products</string>
+    <string name="category_game_btn">Ajudau a classificar els productes</string>
     <!-- TODO add true support instead of overriding strings -->
-    <string name="add_nutrient_prompt_text">Add more details to help complete the product</string>
-    <string name="add_category_prompt_text">Add a category to help complete the product</string>
-    <string name="add_nutrient_category_prompt_text">Add a category and more details to help complete the product</string>
+    <string name="add_nutrient_prompt_text">Afegiu més detalls per ajudar a completar el producte</string>
+    <string name="add_category_prompt_text">Afegeix una categoria per ajudar a completar el producte</string>
+    <string name="add_nutrient_category_prompt_text">Afegiu una categoria i més detalls per completar el producte</string>
     <string name="required_to_compute_nutriscore"></string>
     <string name="txt_eaten_products">Productes que tinc</string>
     <string name="txt_products_to_buy">Productes per comprar</string>
-    <string name="intent_filter_share_label">Add to Open Beauty Facts</string>
-    <string name="brand_hint">Examples: Nivea, L\'Oréal, etc…</string>
-    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
-        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
-    <string name="OFFlogo">Open Beauty Facts logo</string>
+    <string name="intent_filter_share_label">Afegeix a Open Beauty Facts</string>
+    <string name="brand_hint">Exemples: Nivea, L\'Oréal, etc…</string>
+    <string name="txt_info_eaten_products">Podreu afegir un producte a aquesta llista escanejant-lo, arrossegant la targeta del producte cap amunt i tocant \"Productes per comprar\".
+        També podreu afegir productes a aquesta llista cercant-los i fent clic al botó + a la part superior dreta de la pàgina del producte.</string>
+    <string name="OFFlogo">Obre el logotip de Beauty Facts</string>
 </resources>
