@@ -15,7 +15,7 @@ Go further with Wikipedia
 
 設置過敏原警告
 
-輕易瞭解營養成分
+營養成分
 
 過敏原警報
 
@@ -35,7 +35,7 @@ Become an actor of food transparency
 
 強大
 
-營養成分
+營養素表
 
 =====================
 V3 screenshots
@@ -49,7 +49,7 @@ Choose the products that are good for you and for the 🌍 planet !
 
 Nutritional quality
 
-Ultra-processed foods
+超加工食品
 
 Carbon impact
 
