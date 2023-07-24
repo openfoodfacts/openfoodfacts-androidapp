@@ -8,13 +8,10 @@
     <string name="website_discover">https://world.openbeautyfacts.org/discover</string>
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/produit/ -->
     <string name="website_product">https://world.openbeautyfacts.org/product/</string>
-    <string name="deeplink_product" translatable="false">*.openbeautyfacts.org</string>
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/contributeur/ -->
     <string name="website_contributor">https://world.openbeautyfacts.org/contributor/</string>
     <string name="terms_url">https://world.openbeautyfacts.org/terms-of-use</string>
-    <string name="faq_url" translatable="false">https://world.openbeautyfacts.org/faq</string>
-    <string name="advanced_search_url" translatable="false">https://world.openbeautyfacts.org/cgi/search.pl</string>
-    <string name="txtHomeOnline">Open Beauty Facts is an open database of more than %1$d cosmetic products (plus the ones you will contribute).</string>
+    <string name="txtHomeOnline">Open Beauty Facts is an open database of more than %1$s cosmetic products (plus the ones you will contribute).</string>
     <string name="txtHome">Open Beauty Facts is a database of cosmetic products.</string>
     <string name="slide_1_title">Contribute to Cosmetic transparency</string>
     <string name="slide_1_desc">Scan products, take them in picture, make cosmetic transparency happen</string>
@@ -32,22 +29,12 @@
     <string name="translate_help_summary">Bring the Open Beauty Facts database to your language - no technical knowledge required</string>
     <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Beauty Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Beauty Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
-    <string name="help_translate_ingredients_link" translatable="false">https://world-%1$s.openbeautyfacts.org/ingredients?translate=1</string>
     <!-- OBF tagline in different languages -->
-    <string-array name="taglines_array" translatable="false">
-        <item>the free cosmetics database</item>
-        <item>l\'information cosmétique ouverte</item>
-        <item>化 妆 品 开 放 数 据</item>
-        <item>フリーの化粧品データベース</item>
-        <item>कॉस्मेटिक्स का डेटाबेस</item>
-    </string-array>
     <string name="version_string">Open Beauty Facts Android App</string>
     <string name="tagline">the free cosmetics database</string>
-    <string name="app_name_long" translatable="false">Open Beauty Facts</string>
     <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Beauty Facts. Can you add it?</string>
     <string name="currently_on_version">Currently on Open Beauty Facts</string>
     <string name="category_game_btn">Help categorize products</string>
-    <string name="open_other_flavor_drawer" translatable="false">Open Food Facts</string>
     <!-- TODO add true support instead of overriding strings -->
     <string name="add_nutrient_prompt_text">Add more details to help complete the product</string>
     <string name="add_category_prompt_text">Add a category to help complete the product</string>
@@ -57,7 +44,7 @@
     <string name="txt_products_to_buy">Products to buy</string>
     <string name="intent_filter_share_label">Add to Open Beauty Facts</string>
     <string name="brand_hint">Examples: Nivea, L\'Oréal, etc…</string>
-    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on "Products to buy".
+    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
         You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
     <string name="OFFlogo">Open Beauty Facts logo</string>
 </resources>
