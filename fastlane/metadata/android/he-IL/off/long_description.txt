@@ -1,16 +1,16 @@
-Scan food products or their barcode to obtain data on ingredients, additives and nutrition facts.
+סריקת ברקודים של מוצרי מזון כדי לקבל מידע על רכיבים, תוספים ועובדות תזונתיות.
 
-▶ Find & Compare more than 800.000 products
+◀ איתור והשוואה של למעלה מ־800,000 מוצרים
 
-The app allows to view the 800.000 products (including 175.000 in the US) already contained in the free and open database Open Food Facts, and also to add pictures and data for new products.
+היישומון מאפשר לצפות ב־800,000 מוצרים (כולל 175,000 בארה״ב) שכבר מהווים חלק ממסד הנתונים החופשי והפתוח Open Food Facts, וגם להוסיף תמונות ונתונים על מוצרים חדשים.
 
 
-To discover the volunteer-run Open Food Facts project, visit https://world.openfoodfacts.org
+כדי להיחשף למיזם Open Food Facts שמופעל על ידי מתנדבים ניתן לבקר ב־https://world.openfoodfacts.org
 
 ◀ לבחור את המוצרים שעושים טוב לך
 - ציון ה־Nutri-Score, מ־„A” עד „E” >> איכות תזונתית
 - קבוצת ה־NOVA, מ־„1” עד „4” >> זיהוי מזון מעובד במיוחד
-- You can easily compare as many products as you want, side by side by simply scanning them. 
+- ניתן להשוות כמה מוצרים שבא לך, זה לצד זה פשוט על ידי סריקתם. 
 
 ◀ ולכדור הארץ!
 - ההשפעה הפחמנית של המזון שלך
@@ -26,8 +26,8 @@ To discover the volunteer-run Open Food Facts project, visit https://world.openf
 - Open Food Facts הוא מיזם ללא מטרות רווח אותו מפתחים אלפי מתנדבים מכל רחבי העולם. יש לנו המון מיזמים מלהיבים שניתן לתרום להם במגוון דרכים שונות.
 - ניתן להתחיל לתרום כבר היום על ידי הוספת מוצרים מהמקרר שלך.
 
-▶ Create lists
-Create shopping lists, track what you've eaten and easily share and export your lists.
+◀ יצירת רשימות
+ליצור רשימות קניות, לעקוב אחר מה שאכלת ולשתף ולייצר את הרשימות שלך בקלות.
 
 ◀ להכיר את העובדות
 - מיזם Open Food Facts מסייע לך להבין את האותיות הקטנות שעל תוויות מוצרי המזון. ניתן למצוא:
@@ -46,7 +46,7 @@ Create shopping lists, track what you've eaten and easily share and export your 
 - קהילת Open Food Facts משתפת פעולה עם קבוצות מחקר בכל רחבי העולם כדי לשפר את המחקר התזונתי למען כולם.
 
 
-◀ סריקה בלתי מקוונת: להמשיך לסרוק בכל מצב! (coming soon)
+◀ סריקה בלתי מקוונת: להמשיך לסרוק בכל מצב! (בקרוב)
 סריקה במהירות האור (אפילו במטוס, בצוללת או בסופר)
 
 - כל העולם, אצלך בכיס!
@@ -67,10 +67,10 @@ Create shopping lists, track what you've eaten and easily share and export your 
 ◀ נשמח להכיר אותך ו/או לצרף אותך אלינו!
 
 
-Open Food Facts is also available on the web at https://world.openfoodfacts.org
+מיזם Open Food Facts זמין גם דרך אתר האינטרנט https://il.openfoodfacts.org
 
 
 שאלות, משוב: contact@openfoodfacts.org
 
 
-For cosmetics, you can install Open Beauty Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.
+למוצרי טיפוח, ניתן להתקין את Open Beauty Facts, למזון לחיות מחמד את Open Pet Food Facts ולכל שאר המוצרים את Open Products Facts.
