@@ -12,7 +12,7 @@ The app allows to view the over 600 pet food products already contained in the f
 - ניתן להתחיל לתרום כבר היום על ידי הוספת מוצרים מהארון של חיית המחמד שלך. 
 
 
-*** Get the Facts ***
+*** להכיר את העובדות ***
 
 You will also be able to find (according to the indications present on the products):
 - רשימת רכיבים (כולל תכולת אפר)
