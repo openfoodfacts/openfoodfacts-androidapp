@@ -1,16 +1,16 @@
-Scan food products or their barcode to obtain data on ingredients, additives and nutrition facts.
+Skan fødevareprodukter/-stregkoder for at få data om ingredienser, tilsætningsstoffer og ernæringsfakta.
 
-▶ Find & Compare more than 800.000 products
+▶ Find og sammenlign flere end 800.000 produkter
 
-The app allows to view the 800.000 products (including 175.000 in the US) already contained in the free and open database Open Food Facts, and also to add pictures and data for new products.
+Via appen er det muligt at se de flere end 800.000 produkter (herunder 175.000 i USA), som allerede findes i den gratis og åbne Open Food Facts-database samt at tilføje fotos og data for nye produkter.
 
 
-To discover the volunteer-run Open Food Facts project, visit https://world.openfoodfacts.org
+For at finde det frivilligt drevne Open Food Facts-projekt, besøg https://world.openfoodfacts.org
 
 ▶ Vælg de produkter, som er gode for dig
 - Nutri-Score-karakter, fra "A" til "E" >> Ernæringsmæssig kvalitet
 - NOVA-gruppe, fra "1" til "4" >> Find den ultraforarbejdede fødevare
-- You can easily compare as many products as you want, side by side by simply scanning them. 
+- Så mange produkter, som ønsket, kan nemt sammenlignes side om side ved blot at skanne dem. 
 
 ▶ Og god for planeten!
 - CO2-påvirkningen af din mad
@@ -26,8 +26,8 @@ To discover the volunteer-run Open Food Facts project, visit https://world.openf
 ➜ Open Food Facts er et nonprofit-projekt udviklet af tusindvis af frivillige fra hele verden. Vi har mange spændende projekter, du kan bidrage til på mange forskellige måder.
 - Du kan begynde at bidrage i dag ved at tilføje et produkt fra dit køleskab.
 
-▶ Create lists
-Create shopping lists, track what you've eaten and easily share and export your lists.
+▶ Opret lister
+Opret indkøbslister, hold øje med, hvad man har spist, og del og eksportér nemt listerne.
 
 ▶ Få faktaene
 - Open Food Facts hjælper med at dechifrere det med småt på produktetiketter. Man vil kunne finde:
@@ -46,7 +46,7 @@ Create shopping lists, track what you've eaten and easily share and export your 
 - Open Food Facts-fællesskabet samarbejder med forskerteams kloden over for at forbedre ernæringsforskning til gavn for alle.
 
 
-▶ Offlineskanning: Skan under ALLE forhold! (coming soon)
+▶ Offlineskanning: Skan under ALLE forhold! (kommer snart)
 Skan med lysets hastighed (selv hvis man er i et supermarked, fly eller på en ubåd)
 
 - Hele planeten, i din lommen!
@@ -67,10 +67,10 @@ Skan med lysets hastighed (selv hvis man er i et supermarked, fly eller på en u
 ▶ Sig hej og/eller tilmeld dig!
 
 
-Open Food Facts is also available on the web at https://world.openfoodfacts.org
+Open Products Facts er også tilgængelig på nettet via https://world.openfoodfacts.org
 
 
 Spørgsmål, feedback: contact@openfoodfacts.org
 
 
-For cosmetics, you can install Open Beauty Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.
+For kosmetik kan Open Beauty Facts installeres, for kæledyrsfoder Open Pet Food Facts og for alle øvrige produkter Open Products Facts.
