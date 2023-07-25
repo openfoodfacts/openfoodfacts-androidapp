@@ -7,18 +7,18 @@ Open Products Facts er en åben database over alle verdena produkter.
 - Open Products Facts er et nonprofit-projekt udviklet af tusindvis af frivillige verden over. Vi har mange spændende projekter, du kan bidrage til på mange forskellige måder. 
 - Man kan begynde at bidrage i dag ved at tilføje sit første produkt. 
 
-*** Get the Facts ***
-- Open Products Facts helps you to make sense of the fine print on products labels.
+*** Få Fakta ***
+- Open Products Facts hjælper med at dechifrere det med småt på produktetiketter.
 
-*** Collect AAAALL the things ***
-- You can add all the items from your collections
+*** Indsaml ALLE tingene ***
+- Man kan tilføje alle varerne fra sine indsamlinger
 Open Crayon Facts - Den største, åbne database over farvekridt
-- Open Miniature Food Facts - The largest open database of miniature food products
-- Open ??? Facts - Create your own open database :-)
+Open Miniature Food Facts — den største database over miniaturefødevareprodukter
+- Åben??? Facts - Create your own open database :-)
 
 *** Fungerer godt under alle forhold ***
 - Du kan tilføje nye produkter, selv hvis du ikke har en tilgængelig Internetforbindelse.
-- The app loads only the strict necessary to reduce data and battery consumption
+- Appen indlæser kun det strengt nødvendige for at reducere data- og strømforbrug
 - Du behøver ikke et kamera for at slå et produkt op. I stedet for brug af kamera, kan stregkoden blot angives.
 
 *** Dine produkter, dine data ***
