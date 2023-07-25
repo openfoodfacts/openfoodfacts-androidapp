@@ -1,1 +1,1 @@
-Scan food products to decrypt labels: ingredients, additives and nutrition facts
+Skan fødevareprodukter for at dechifrere etiketter: Ingredienser, tilsætningsstoffer og ernæringsfakta
