@@ -1,10 +1,10 @@
 Skan kæledyrsfoderprodukter/stregkoder for at få data om ingredienser, tilsætningsstoffer og ernæringsfakta.
 
-The app allows to view the over 600 pet food products already contained in the free and open database Open Pet Food Facts, and also to add pictures and data for missing products.
+Appen muliggør at se de flere end 600 kæledyrsfoderprodukter, som allerede findes den gratis Open Pet Food Facts-databasen samt at tilføje fotos og data for manglende produkter.
 
 For at finde Open Pet Food Facts-projektet, besøg https://world.openfoodfacts.org
 
-***Contribute to Pet Food Transparency***
+***Bidrag til dyrefodergennemsigtighed***
 
 - Open Pet Food Facts er en dyrefoderproduktdatabase kreeret af alle, for alle.
 - Du kan bruge den til at træffe bedre dyrefodervalg, og da det er åbne data, kan alle genbruge dem til ethvert formål.
@@ -12,17 +12,17 @@ For at finde Open Pet Food Facts-projektet, besøg https://world.openfoodfacts.o
 - Du kan begynde at bidrage i dag ved at tilføje et af dine dyrefoderprodukter. 
 
 
-*** Get the Facts ***
+*** Få Fakta ***
 
-You will also be able to find (according to the indications present on the products):
+Man vil også kunne finde (iht. angivelserne på produkterne):
 - ingrediensliste (inkl. askeindhold)
 - ernæringsoplysninger, ernæringsfarvekoder…
-- brands, allergens, labels (organic, vegan...)
+- brands, allergener, etiketter (organisk, vegansk…)
 - Det fungerer med hundemad (tørkost og vådfoder), katte-, kanin-, slange-, fiske-, fugle- og hestefoder eller en hvilken som helst fodertype til dit yndlingsdyr.
 
 *** Fungerer godt under alle forhold ***
 - Du kan tilføje nye produkter, selv hvis du ikke har en tilgængelig Internetforbindelse.
-- The app loads only the strict necessary to reduce data and battery consumption
+- Appen indlæser kun det strengt nødvendige for at reducere data- og strømforbrug
 - Du behøver ikke et kamera for at slå et produkt op. I stedet for brug af kamera, kan stregkoden blot angives.
 
 *** Dit dyrefoder, dine data ***
