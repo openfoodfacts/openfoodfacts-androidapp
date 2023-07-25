@@ -14,7 +14,7 @@ Open Products Facts er en åben database over alle verdena produkter.
 - Man kan tilføje alle varerne fra sine indsamlinger
 Open Crayon Facts - Den største, åbne database over farvekridt
 Open Miniature Food Facts — den største database over miniaturefødevareprodukter
-- Åben??? Facts - Create your own open database :-)
+- Åben??? Fakta — Opret din egen åbne database :-)
 
 *** Fungerer godt under alle forhold ***
 - Du kan tilføje nye produkter, selv hvis du ikke har en tilgængelig Internetforbindelse.
@@ -31,24 +31,24 @@ For fødevarer kan Open Food Facts installeres, for kosmetik Open Beauty Facts o
 Open Products Facts er også tilgængelig på nettet via https://world.openproductsfacts.org
 Spørgsmål, feedback: contact@openfoodfacts.org
 
-*** Original April's Fool Listing ***
+*** Original Aprilsnar Liste ***
 
-Yesterday morning, the Open Food Facts team woke up to a stunning revelation. 
+I går morges vågnede Open Food Facts-teamet til en fantastisk åbenbaring. 
 
-Collecting the world's food, cosmetic and pet food was so passé. With the insane progress made over the past year, we must surely be close to completing our mission to collect all the food and cosmetic products in the world, right ?
+Indsamling af verdens fødevarer, kosmetik og kæledyrsmad var så passé. Med de vanvittige fremskridt i det forløbne år, må vi da være tæt på at afslutte vores mission om at indsamle alle fødevarer og kosmetiske produkter i verden, ikke?
 
-So we set up to create not 1, but other 77000 separate new databases ! 
+Så vi besluttede at oprette ikke 1, men yderligere 77.000 nye, separate databaser! 
 
-Open Products Facts will be an extremely ambitious project. Her er et par af dem: 
+Open Products Facts vil blive et meget ambitiøst projekt. Her er et par af dem: 
 
 Open Crayon Facts - Den største åbne database over farvekridt
 
 Open Miniature Food Facts - Den største åbne database over miniaturefødevarer
 
-Open ??? Facts - The largest open database of ???
+- Åben??? Facts - Den største åbne database for…???
 
-Tomorrow, we will select the 3 most sucessful databases, and we will start collecting all the matching products in the world.
+I morgen udvælges de 3 mest succesrige databaser, og der påbegyndes indsamling af alle de matchende produkter i verden.
 
-Will it be trash cans, télécartes, or mobile phones database ? 
+Vil det være en skraldespande-, SIM-kort eller mobiltelefondatabase? 
 
-So if you like t-shirts, cooking books, origami paper or snow globes, start scanning using the Open Products Facts Android app on Google Play
+Så, kan man lide t-shirts, kogebøger, origamipapir eller snebolde, så begynd at skanne med Open Products Facts' Android-app fra Google Play
