@@ -1,6 +1,6 @@
 VERZE 3
 ====
-1. It's easier to contribute new products, and get the Nutri-Score
+1. Je snazší přispívat novými produkty a získat Nutri-Score
 2. Create (and export) your product lists (shopping, eating…)
 3. Compare products side by side by scanning them one after the other.
 4. Completely redesigned product page, slide the card up to discover it
