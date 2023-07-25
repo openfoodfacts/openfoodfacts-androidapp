@@ -37,18 +37,18 @@ Včera ráno se tým Open Food Facts probudil k ohromujícímu odhalení.
 
 Sbírání světového jídla, kosmetiky a krmiva pro domácí mazlíčky bylo tak pasé. S šíleným pokrokem, kterého jsme za poslední rok dosáhli, musíme být jistě blízko dokončení naší mise shromáždit všechny potraviny a kosmetické produkty na světě, že?
 
-So we set up to create not 1, but other 77000 separate new databases ! 
+Takže jsme vytvořili ne 1, ale dalších 77000 samostatných nových databází ! 
 
-Open Products Facts will be an extremely ambitious project. Zde je několik z nich: 
+Open Products Facts bude mimořádně ambiciózní projekt. Zde je několik z nich: 
 
 Open Crayons Facts - Největší otevřená databáze barevných pastelek
 
 Open Miniature Food Facts - největší otevřená databáze miniaturních potravin
 
-Open ??? Facts - The largest open database of ???
+OTEVŘENÉ ??? Fakta - Největší otevřená databáze ???
 
-Tomorrow, we will select the 3 most sucessful databases, and we will start collecting all the matching products in the world.
+Zítra vybereme 3 nejúspěšnější databáze a začneme sbírat všechny odpovídající produkty na světě.
 
-Will it be trash cans, télécartes, or mobile phones database ? 
+Budou to odpadkové koše, telefonní karty nebo databáze mobilních telefonů? 
 
-So if you like t-shirts, cooking books, origami paper or snow globes, start scanning using the Open Products Facts Android app on Google Play
+Pokud tedy máte rádi trička, kuchařské knihy, origami papír nebo sněhové koule, začněte skenovat pomocí aplikace Open Products Facts pro Android na Google Play
