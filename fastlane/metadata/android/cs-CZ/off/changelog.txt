@@ -1,19 +1,19 @@
 
 ===================
-New native version of Open Food Facts. All the Open Food Facts volunteers been working hard on it, based on your suggestions and feedback :)
+Nová nativní verze Open Food Facts. Všichni dobrovolníci Open Food Facts na tom tvrdě pracovali na základě vašich návrhů a zpětné vazby :)
 ===================
-* Open Food Facts is now a more global movement than ever. 500k products freed, 10K registered contributors, 182 countries. Připojíte se k nám?
+* Open Food Facts je nyní globálnější než kdykoliv předtím. Uvolněno 500 tisíc produktů, 10 tisíc registrovaných přispěvatelů, 182 zemí. Připojíte se k nám?
 ===================
 Co je nového?
 ===================
 1. Získáte 360° obraz: výživa, přísady a všechna fakta o jídle, úhledně a jasně prezentovány.
-2. Get the "NutriScore" nutrition grade for all products in the world. Snadné srovnání produktů. Easier than deciphering nutrition tables.
-3. Get extra information from Wikipedia. Click on a food category, an additive… to learn more and see similar products.
-4. You can set allergens alerts (always double check the actual label yourself though!)
-5. You now get a scan history you can export and that never leaves your phone
-6. You can shake your phone at any time in the app to start scanning
-7. You can now add new products even when you're offline
-8. You can now help complete your favorite foods directly from the app: take photos, fill info, make food transparency happen
+2. Získejte nutriční hodnocení "NutriScore" pro všechny produkty na světě. Snadné srovnání produktů. Jednodušší než luštění výživových tabulek.
+3. Získejte další informace z Wikipedie. Kliknutím na kategorii potravin, aditivum… se dozvíte více a zobrazíte podobné produkty.
+4. Můžete nastavit upozornění na alergeny (vždy si však sami dvakrát zkontrolujte skutečný štítek!)
+5. Nyní získáte historii skenování, kterou můžete exportovat a která nikdy neopustí váš telefon
+6. Můžete kdykoli zatřást telefonem při spuštěné aplikaci a zahájit skenování
+7. Nyní můžete přidávat nové produkty, i když jste offline
+8. Nyní můžete pomoci dokončit svá oblíbené potraviny přímo z aplikace: fotit, doplňovat informace, zajistit transparentnost potravin
 9. Vše je také mnohem rychlejší. Products load blazingly fast, even with a bad mobile connection.
 10. We're still not interested in your personal data. You don't have to sign-up to scan and contribute.
 A navíc! Despite all the new stuff, the app is as light as before. The space left on your phone is sacred.
