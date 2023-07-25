@@ -212,7 +212,7 @@
     <string name="home_drawer">Accueil</string>
     <string name="install">Installer</string>
     <string name="open_beauty_drawer">Open Beauty Facts</string>
-    <string name="open_food_drawer">Open Products Facts</string>
+    <string name="open_food_drawer">Open Food Facts</string>
     <string name="search_drawer">Rechercher</string>
     <string name="search_by_barcode_drawer">Rechercher par code-barres</string>
     <string name="category_drawer">Catégories</string>
