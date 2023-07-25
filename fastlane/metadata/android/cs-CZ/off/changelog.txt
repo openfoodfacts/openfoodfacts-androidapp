@@ -14,6 +14,6 @@ Co je nového?
 6. Můžete kdykoli zatřást telefonem při spuštěné aplikaci a zahájit skenování
 7. Nyní můžete přidávat nové produkty, i když jste offline
 8. Nyní můžete pomoci dokončit svá oblíbené potraviny přímo z aplikace: fotit, doplňovat informace, zajistit transparentnost potravin
-9. Vše je také mnohem rychlejší. Products load blazingly fast, even with a bad mobile connection.
-10. We're still not interested in your personal data. You don't have to sign-up to scan and contribute.
-A navíc! Despite all the new stuff, the app is as light as before. The space left on your phone is sacred.
+9. Vše je také mnohem rychlejší. Produkty se načítají neuvěřitelně rychle, a to i při špatném mobilním připojení.
+10. Vaše osobní údaje nás stále nezajímají. Chcete-li skenovat a přispívat, nemusíte se registrovat.
+A navíc! Navzdory všem novým věcem je aplikace stejně lehká jako předtím. Místo, které zbyde na vašem telefonu, je posvátné.
