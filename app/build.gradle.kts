@@ -1,18 +1,3 @@
-/*
- * Copyright 2016-2020 Open Food Facts
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * https://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 plugins {
     id("com.android.application")
     alias(libs.plugins.resourceplaceholders) apply true
@@ -130,7 +115,7 @@ dependencies {
     implementation(libs.showcaseview)
 
     // SplashScreen on API 31 and higher
-    implementation("androidx.core:core-splashscreen:1.0.0")
+    implementation("androidx.core:core-splashscreen:1.0.1")
 
     // Unit Testing
     testImplementation(libs.bundles.testing)
@@ -142,7 +127,6 @@ dependencies {
 
     // Instrumented tests
     androidTestUtil(libs.orchestrator)
-
 
     androidTestImplementation(libs.androidx.test.runner) { exclude("junit") }
     androidTestImplementation(libs.androidx.test.rules)
@@ -162,9 +146,12 @@ dependencies {
     androidTestImplementation(libs.screengrab)
     androidTestImplementation(libs.test.kotlin.coroutines)
 
+    // Jetpack Compose dependencies
+    implementation("androidx.compose.ui:ui:1.4.3")
+    implementation("androidx.compose.material:material:1.4.3")
+    implementation("androidx.compose.ui:ui-tooling:1.4.3")
 
     resourcePlaceholders { files = listOf("xml/shortcuts.xml") }
-
 
 }
 
@@ -175,6 +162,11 @@ android {
 
     buildFeatures {
         viewBinding = true
+        compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.4.8"
     }
 
     flavorDimensions += listOf("versionCode", "platform")
