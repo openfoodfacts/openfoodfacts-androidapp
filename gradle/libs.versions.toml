@@ -24,10 +24,12 @@ mockk = "1.13.5"
 com-squareup-retrofit2 = "2.6.4"
 androidx-test-espresso = "3.4.0"
 truth = "1.1.3"
+ui = "1.4.3"
 
 [libraries]
 # Gradle Plugins
 # https://greenrobot.org/greendao/
+androidx-ui = { module = "androidx.compose.ui:ui", version.ref = "ui" }
 plugin-gradle-greendao = { module = "org.greenrobot:greendao-gradle-plugin", version.ref = "greendao" }
 # https://developer.android.com/studio/releases/gradle-plugin
 plugin-gradle-android = { module = "com.android.tools.build:gradle", version.ref = "android-gradle" }
@@ -40,15 +42,18 @@ plugin-gradle-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", v
 kotlin-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlin-coroutines" }
 kotlin-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlin-coroutines" }
 test-kotlin-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlin-coroutines" }
+
 # Android KTX
 android-ktx-fragment = "androidx.fragment:fragment-ktx:1.5.6"
 android-ktx-activity = "androidx.activity:activity-ktx:1.7.0"
 android-ktx-preference = "androidx.preference:preference-ktx:1.2.0"
 android-ktx-core = "androidx.core:core-ktx:1.8.0"
+
 # Lifecycle
 android-lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "android-lifecycle" }
 android-lifecycle-livedata = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "android-lifecycle" }
 android-lifecycle-runtime = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "android-lifecycle" }
+
 # AndroidX
 androidx-appcompat = "androidx.appcompat:appcompat:1.6.1"
 androidx-browser = "androidx.browser:browser:1.4.0"
@@ -62,32 +67,41 @@ androidx-viewpager2 = "androidx.viewpager2:viewpager2:1.0.0"
 androidx-startup-runtime = "androidx.startup:startup-runtime:1.1.1"
 androidx-work-runtime = "androidx.work:work-runtime-ktx:2.7.1"
 androidx-swiperefreshlayout = "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+
 # ML Kit
 barcode-scanning = "com.google.mlkit:barcode-scanning:17.0.0"
+
 # Hilt
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
 hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hilt" }
+
 # WorkManager with Hilt
 androidx-hilt-work = { module = "androidx.hilt:hilt-work", version.ref = "androidx-hilt" }
 androidx-hilt-compiler = { module = "androidx.hilt:hilt-compiler", version.ref = "androidx-hilt" }
+
 # Networking
 networking-retrofit-core = { module = "com.squareup.retrofit2:retrofit", version.ref = "com-squareup-retrofit2" }
 networking-retrofit-converter-jackson = { module = "com.squareup.retrofit2:converter-jackson", version.ref = "com-squareup-retrofit2" }
 networking-retrofit-converter-scalars = { module = "com.squareup.retrofit2:converter-scalars", version.ref = "com-squareup-retrofit2" }
 networking-okhttp3-logging-interceptor = "com.squareup.okhttp3:logging-interceptor:3.12.13"
+
 # Logging
 logcat = "com.squareup.logcat:logcat:0.1"
+
 # Apache Commons
 apache-text = "org.apache.commons:commons-text:1.9"
 apache-csv = "org.apache.commons:commons-csv:1.9.0"
 apache-validator = "commons-validator:commons-validator:1.7"
+
 # Serialization/Deserialization
 jackson-core = { module = "com.fasterxml.jackson.core:jackson-core", version.ref = "jackson" }
 jackson-databind = { module = "com.fasterxml.jackson.core:jackson-databind", version.ref = "jackson" }
 jackson-annotations = { module = "com.fasterxml.jackson.core:jackson-annotations", version.ref = "jackson" }
 jackson-kotlin = { module = "com.fasterxml.jackson.module:jackson-module-kotlin", version.ref = "jackson" }
+
 # Database
 greendao = { module = "org.greenrobot:greendao", version.ref = "greendao" }
+
 # Event bus and index
 eventbus-runtime = { module = "org.greenrobot:eventbus", version.ref = "eventbus" }
 eventbus-compiler = { module = "org.greenrobot:eventbus-annotation-processor", version.ref = "eventbus" }
@@ -107,22 +121,28 @@ zxing-android-embedded = "com.journeyapps:zxing-android-embedded:3.6.0"
 
 # UI Component : ImageView with Zooming
 photoview = "com.github.chrisbanes:PhotoView:2.3.0"
+
 # UI Component : Material Drawer
 # https://github.com/mikepenz/MaterialDrawer/commit/3b2cb1db4c3b6afe639b0f3c21c03c1de68648a3
 materialdrawer = "com.mikepenz:materialdrawer:7.0.0"
 # DO NOT UPDATE : RecyclerViewCacheUtil removed, needs rework
 fastadapter-commons = "com.mikepenz:fastadapter-commons:3.3.1"
+
 # UI Component : Font Icons
 iconics-core = "com.mikepenz:iconics-core:4.0.2"
 google-material-typeface = "com.mikepenz:google-material-typeface:3.0.1.6.original-kotlin"
 android-image-cropper = "com.github.CanHub:Android-Image-Cropper:3.1.3"
+
 # UI Component : Chips Input
 nachos = "com.github.hootsuite:nachos:1.2.0"
+
 # Crash analytics
 sentry-android = "io.sentry:sentry-android:6.27.0"
 matomo = "com.github.matomo-org:matomo-sdk-android:4.1.4"
+
 # ShowCaseView dependency
 showcaseview = "com.github.mreram:showcaseview:1.0.5"
+
 # Unit Testing
 androidx-arch-core-testing = "androidx.arch.core:core-testing:2.1.0"
 junit = "junit:junit:4.13.2"
@@ -134,11 +154,13 @@ mockk-core = { module = "io.mockk:mockk", version.ref = "mockk" }
 mockk-agent = { module = "io.mockk:mockk-agent-jvm", version.ref = "mockk" }
 truth = { module = "com.google.truth:truth", version.ref = "truth" }
 truth-java8 = { module = "com.google.truth.extensions:truth-java8-extension", version.ref = "truth" }
+
 # JUnit 5
 junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit5" }
 junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit5" }
 junit-vintage-engine = { module = "org.junit.vintage:junit-vintage-engine", version.ref = "junit5" }
 orchestrator = "androidx.test:orchestrator:1.4.1"
+
 # Hilt Testing
 hilt-android-testing = { module = "com.google.dagger:hilt-android-testing", version.ref = "hilt" }
 hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt" }
@@ -150,6 +172,7 @@ dagger-compiler = { module = "com.google.dagger:dagger-compiler", version.ref = 
 androidx-test-runner = "androidx.test:runner:1.4.0"
 androidx-test-rules = "androidx.test:rules:1.4.0"
 androidx-test-ext = "androidx.test.ext:junit:1.1.3"
+
 # Espresso
 androidx-test-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "androidx-test-espresso" }
 androidx-test-espresso-intents = { module = "androidx.test.espresso:espresso-intents", version.ref = "androidx-test-espresso" }

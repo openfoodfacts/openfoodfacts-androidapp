@@ -147,9 +147,7 @@ dependencies {
     androidTestImplementation(libs.test.kotlin.coroutines)
 
     // Jetpack Compose dependencies
-    implementation("androidx.compose.ui:ui:1.4.3")
-    implementation("androidx.compose.material:material:1.4.3")
-    implementation("androidx.compose.ui:ui-tooling:1.4.3")
+    implementation(libs.androidx.ui)
 
     resourcePlaceholders { files = listOf("xml/shortcuts.xml") }
 
