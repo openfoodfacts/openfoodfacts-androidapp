@@ -130,7 +130,7 @@ dependencies {
     implementation(libs.showcaseview)
 
     // SplashScreen on API 31 and higher
-    implementation("androidx.core:core-splashscreen:1.0.0")
+    implementation("androidx.core:core-splashscreen:1.0.1")
 
     // Unit Testing
     testImplementation(libs.bundles.testing)
@@ -142,7 +142,6 @@ dependencies {
 
     // Instrumented tests
     androidTestUtil(libs.orchestrator)
-
 
     androidTestImplementation(libs.androidx.test.runner) { exclude("junit") }
     androidTestImplementation(libs.androidx.test.rules)
@@ -162,9 +161,10 @@ dependencies {
     androidTestImplementation(libs.screengrab)
     androidTestImplementation(libs.test.kotlin.coroutines)
 
+    // Jetpack Compose dependencies
+    implementation(libs.androidx.ui)
 
     resourcePlaceholders { files = listOf("xml/shortcuts.xml") }
-
 
 }
 
@@ -175,6 +175,11 @@ android {
 
     buildFeatures {
         viewBinding = true
+        compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.4.8"
     }
 
     flavorDimensions += listOf("versionCode", "platform")
