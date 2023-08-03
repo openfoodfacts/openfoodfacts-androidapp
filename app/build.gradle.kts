@@ -22,6 +22,7 @@ plugins {
     id("kotlin-kapt")
     id("dagger.hilt.android.plugin")
     alias(libs.plugins.dokka)
+
 }
 
 fun obtainTestBuildType(): String {

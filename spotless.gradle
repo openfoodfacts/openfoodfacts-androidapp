@@ -1,0 +1,61 @@
+apply plugin: 'com.diffplug.spotless'
+
+ext {
+    ci = System.getenv("CI") == "true"
+    ktlintVersion = "0.30.0"
+    spotlessVersion = "3.13.0"
+}
+spotless {
+    if (ci) {
+        ratchetFrom null
+    } else {
+        // optional: limit format enforcement to just the files changed by this feature branch
+        ratchetFrom 'origin/develop'
+    }
+
+
+    format 'misc', {
+        // define the files to apply `misc` to
+        target '**/*.gradle', '**/*.md', '**/.gitignore'
+
+        // define the steps to apply to those files
+        indentWithSpaces()
+        trimTrailingWhitespace()
+        endWithNewline()
+    }
+
+    kotlin {
+        target '**/*.kt'
+
+        def map = [
+                "ktlint_standard_package-name": "disabled",
+                "ktlint_standard_no-wildcard-imports" :"disabled",
+                "ktlint_standard_no-semi" : "disabled",
+                "ktlint_standard_trailing-comma-on-declaration-site" : "disabled",
+                "ktlint_standard_trailing-comma-on-call-site" : "disabled"
+        ]
+        ktlint("0.48.2")
+                .setUseExperimental(false)
+                .userData(["android" : "true"])
+                .editorConfigOverride(map)
+        trimTrailingWhitespace()
+        indentWithSpaces()
+        endWithNewline()
+    }
+
+    java {
+        target 'src/*/java/**/*.java'
+        googleJavaFormat().aosp()
+        removeUnusedImports()
+        trimTrailingWhitespace()
+        indentWithSpaces()
+        endWithNewline()
+    }
+
+    format 'xml', {
+        target 'src/**/*/xml' // target only xml files in src folders
+        indentWithSpaces()
+        trimTrailingWhitespace()
+        endWithNewline()
+    }
+}

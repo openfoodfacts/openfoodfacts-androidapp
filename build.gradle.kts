@@ -24,6 +24,7 @@ buildscript {
         classpath(libs.plugin.gradle.greendao)
         classpath(libs.plugin.gradle.hilt)
         classpath(libs.plugin.gradle.kotlin)
+        classpath(libs.plugin.gradle.spotless)
     }
 }
 
@@ -33,6 +34,7 @@ plugins {
     alias(libs.plugins.detekt)
     alias(libs.plugins.versions)
     alias(libs.plugins.updates)
+    alias(libs.plugins.format)
 }
 
 allprojects {

@@ -24,6 +24,7 @@ mockk = "1.13.5"
 com-squareup-retrofit2 = "2.6.4"
 androidx-test-espresso = "3.4.0"
 truth = "1.1.3"
+spotless = "3.13.0"
 
 [libraries]
 # Gradle Plugins
@@ -35,6 +36,9 @@ plugin-gradle-android = { module = "com.android.tools.build:gradle", version.ref
 plugin-gradle-hilt = { module = "com.google.dagger:hilt-android-gradle-plugin", version.ref = "hilt" }
 # https://kotlinlang.org/docs/gradle.html
 plugin-gradle-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+
+plugin-gradle-spotless = {module = "com.diffplug.spotless:spotless-plugin-gradle", version.ref = "spotless"}
+
 
 # Coroutines
 kotlin-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlin-coroutines" }
@@ -230,3 +234,5 @@ sonarqube = "org.sonarqube:4.2.0.3129"
 detekt = "io.gitlab.arturbosch.detekt:1.20.0"
 versions = "com.github.ben-manes.versions:0.41.0"
 updates = "nl.littlerobots.version-catalog-update:0.5.1"
+format = "com.diffplug.gradle.spotless: 3.13.0"
+
