@@ -36,7 +36,7 @@
     <string name="txt_broaden_search">• Ihre Suche zu erweitern \n• Das Produkt zu erfassen und zu Open Food Facts hinzuzufügen</string>
     <string name="Donation">Hier klicken, um für Open Food Facts zu spenden</string>
     <string name="text_offline_info_dialog">Sie können Produkte auch dann erfassen, wenn Sie offline sind, um sie später zu Open Food Facts hinzuzufügen. Die eingelesenen Produkte werden hier angezeigt und Sie können sie mit der folgenden Schaltfläche versenden.</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Ihre Allergie-Informationen werden niemals an die Open Food Facts Server gesendet. Beachten Sie bitte auch, dass die Produktdaten nicht immer zu 100% aorrekt sind. Überprüfen Sie die Allergieüberprüfungen deshalb bitte! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Ihre Allergie-Informationen werden niemals an die Open Food Facts Server gesendet. Beachten Sie bitte auch, dass die Produktdaten nicht immer zu 100% korrekt sind. Überprüfen Sie die Allergieüberprüfungen deshalb bitte! </string>
     <!-- OFF tagline in different languages -->
     <string name="tagline">die freie Lebensmitteldatenbank</string>
     <string name="product_not_found">Das eingelesene Produkt „%1$s“ existiert noch nicht in Open Product Facts. Könnten Sie es bitte hinzufügen?</string>
