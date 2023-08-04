@@ -28,15 +28,15 @@ class ProductListsAdapter : RecyclerView.Adapter<ProductListsAdapter.ViewHolder>
     override fun getItemCount() = lists.size
 
     fun add(productList: ProductLists) {
-        lists = lists + productList
+        lists += productList
     }
 
     fun remove(data: ProductLists) {
-        lists = lists - data
+        lists -= data
     }
 
-    fun replaceWith(newList: MutableList<ProductLists>) {
-        lists = newList
+    fun replaceWith(newProductList: MutableList<ProductLists>) {
+        lists = newProductList
     }
 
     class ViewHolder(binding: YourProductListsItemBinding) : RecyclerView.ViewHolder(binding.root) {
