@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.10.2](https://github.com/openfoodfacts/openfoodfacts-androidapp/compare/v3.10.1...v3.10.2) (2023-04-06)
+
+
+### Bug Fixes
+
+* Launch (fragment-ktx), Product Photos, Contributions bug fixes. ([#4961](https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/4961)) ([2ab9bbe](https://github.com/openfoodfacts/openfoodfacts-androidapp/commit/2ab9bbeb86bded6174cd8a401cb60e8d8a243167))
+
 ## [3.10.1](https://github.com/openfoodfacts/openfoodfacts-androidapp/compare/v3.10.0...v3.10.1) (2023-03-31)
 
 
