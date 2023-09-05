@@ -20,9 +20,9 @@ Open Food Facts is collaborative food products database made by everyone, for ev
 [![Open Source Helpers](https://www.codetriage.com/openfoodfacts/openfoodfacts-androidapp/badges/users.svg)](https://www.codetriage.com/openfoodfacts/openfoodfacts-androidapp)
 <br>
 
-- [Join the Play Store Beta](https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner) (rather stable) - [Join the Play Store internal build](https://play.google.com/apps/internaltest/4699092342921529278) (bleeding edge). You might need communicating your email for whitelisting to teolemon on slack (or pierre at openfoodfacts org).
+- [Open Beauty Facts](https://play.google.com/store/apps/details?id=org.openbeautyfacts.scanner), [Open Pet Food Facts](https://play.google.com/store/apps/details?id=org.openpetfoodfacts.scanner) and [Open Products Facts](https://play.google.com/store/apps/details?id=org.openproductsfacts.scanner) are also built from this codebase and are available on the Play Store and F-Droid.
 
-- [Open Beauty Facts](https://play.google.com/store/apps/details?id=org.openbeautyfacts.scanner), [Open Pet Food Facts](https://play.google.com/store/apps/details?id=org.openpetfoodfacts.scanner) and [Open Products Facts](https://play.google.com/store/apps/details?id=org.openproductsfacts.scanner) are also built from this codebase.
+- They will most likely adopt the new Flutter codebase as well, possibly as part of making the main app able to scan products from all projects.
 
 <details><summary><h2> What is Open Food Facts? </h2></summary>
 
@@ -33,7 +33,7 @@ Open Food Facts is a database of food products with ingredients, allergens, nutr
 ### Made by everyone
 
 Open Food Facts is a non-profit association of volunteers.
-25000+ contributors like you have added 1,7M+ products from 150 countries using our Android or iPhone apps to scan barcodes and upload pictures of products and their labels.
+25000+ contributors like you have added 3M+ products from 150 countries using our Android or iPhone apps to scan barcodes and upload pictures of products and their labels.
 
 ### For everyone
 
@@ -53,8 +53,6 @@ Here are issues and feature requests you can work on:
 - [ ] [3.6.6 milestone](https://github.com/openfoodfacts/openfoodfacts-androidapp/milestone/36)
 
 <details><summary><h2> What can I work on ? </h2></summary>
-
-Open Food Facts on Android has 0,5M users and 1,6M products. *Each contribution you make will have a large impact on food transparency worldwide.* Finding the right issue or feature will help you have even more more impact. Feel free to ask for feedback on the #android channel before you start work, and to document what you intend to code.
 
 - [Here are issues and feature requests you can work on](https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/4169)
 - [P1 issues](https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/p1)
