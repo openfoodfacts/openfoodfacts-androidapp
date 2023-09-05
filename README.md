@@ -1,6 +1,6 @@
 <img height='175' src="https://static.openfoodfacts.org/images/svg/openfoodfacts-logo-en.svg" align="left" hspace="1" vspace="1">
 
-Open Food Facts - Android app
+Open Food Facts - Legacy Android app
 =============================
 
 Open Food Facts is collaborative food products database made by everyone, for everyone. Open Food Facts contributors gathers information and data on food products from around the world, using mobile apps.
