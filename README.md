@@ -1,4 +1,4 @@
-<img height='175' src="https://i.ibb.co/fY23Yjq/EXE-LOGO-OFF-RVB-Plan-de-travail-1-copie-12.png" align="left" hspace="1" vspace="1">
+<img height='175' src="app/src/off/openfoodfacts-logo-en.svg" align="left" hspace="1" vspace="1">
 
 Open Food Facts - Android app
 =============================
