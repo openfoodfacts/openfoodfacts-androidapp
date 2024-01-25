@@ -1,6 +1,6 @@
 <img height='175' src="https://static.openfoodfacts.org/images/svg/openfoodfacts-logo-en.svg" align="left" hspace="1" vspace="1">
 
-Open Food Facts - Legacy Android app
+Open Food Facts - Legacy Android app (still used for Open Beauty, Pet Food and Products Facts)
 =============================
 
 Open Food Facts is collaborative food products database made by everyone, for everyone. Open Food Facts contributors gathers information and data on food products from around the world, using mobile apps.
@@ -20,9 +20,7 @@ Open Food Facts is collaborative food products database made by everyone, for ev
 [![Open Source Helpers](https://www.codetriage.com/openfoodfacts/openfoodfacts-androidapp/badges/users.svg)](https://www.codetriage.com/openfoodfacts/openfoodfacts-androidapp)
 <br>
 
-- [Open Beauty Facts](https://play.google.com/store/apps/details?id=org.openbeautyfacts.scanner), [Open Pet Food Facts](https://play.google.com/store/apps/details?id=org.openpetfoodfacts.scanner) and [Open Products Facts](https://play.google.com/store/apps/details?id=org.openproductsfacts.scanner) are also built from this codebase and are available on the Play Store and F-Droid.
-
-- They will most likely adopt the new Flutter codebase as well, possibly as part of making the main app able to scan products from all projects.
+- [Open Beauty Facts](https://play.google.com/store/apps/details?id=org.openbeautyfacts.scanner), [Open Pet Food Facts](https://play.google.com/store/apps/details?id=org.openpetfoodfacts.scanner) and [Open Products Facts](https://play.google.com/store/apps/details?id=org.openproductsfacts.scanner) are also built from this codebase.
 
 <details><summary><h2> What is Open Food Facts? </h2></summary>
 
@@ -53,6 +51,8 @@ Here are issues and feature requests you can work on:
 - [ ] [3.6.6 milestone](https://github.com/openfoodfacts/openfoodfacts-androidapp/milestone/36)
 
 <details><summary><h2> What can I work on ? </h2></summary>
+
+Open Food Facts on Android has 0,5M users and 1,6M products. *Each contribution you make will have a large impact on food transparency worldwide.* Finding the right issue or feature will help you have even more more impact. Feel free to ask for feedback on the #android channel before you start work, and to document what you intend to code.
 
 - [Here are issues and feature requests you can work on](https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/4169)
 - [P1 issues](https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/p1)
