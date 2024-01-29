@@ -328,6 +328,7 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem {
         }
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         menu.findItem(R.id.action_search).isVisible = false
     }
