@@ -33,6 +33,10 @@ fun obtainTestBuildType(): String {
     return project.properties.getOrDefault("testBuildType", result) as String
 }
 
+kotlin {
+    jvmToolchain(17)
+}
+
 dependencies {
 
     // Kotlin coroutines
@@ -326,8 +330,8 @@ android {
 
     compileOptions {
         // Sets Java compatibility to Java 8
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 
     kotlinOptions {
