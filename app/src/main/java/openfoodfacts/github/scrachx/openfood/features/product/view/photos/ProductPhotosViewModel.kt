@@ -36,6 +36,7 @@ class ProductPhotosViewModel @Inject constructor(
         .filterNotNull()
         .map { product ->
             ImageNameParser.extractImageNames(productsAPI.getProductImages(product.code))
+                .sortedByDescending { it.timestamp }  // Ensure explicit sorting
                 .map { it.value }
         }.stateIn(
             viewModelScope,
