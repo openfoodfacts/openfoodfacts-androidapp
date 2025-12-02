@@ -66,7 +66,7 @@ public class AnalysisTagConfig implements TaxonomyEntity {
     }
 
     public String getIconUrl() {
-        return "https://static.openfoodfacts.org/images/icons/" + icon + ".white.96x96.png";
+        return "https://images.openfoodfacts.org/images/icons/" + icon + ".white.96x96.png";
     }
 
     public void setIcon(String icon) {
