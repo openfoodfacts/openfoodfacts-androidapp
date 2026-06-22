@@ -15,7 +15,7 @@ jobs:
          lc: [it, fr, de, id, nl, da, es, pt, pt_PT, ar, ca, he]
     steps:
     - name: Checkout
-      uses: actions/checkout@v6
+      uses: actions/checkout@v7
     - name: Matrix
       uses: crowdin/github-action@v2.16.3
       with:
