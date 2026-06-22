@@ -10,7 +10,7 @@ jobs:
 
     steps:
     - name: Checkout sources
-      uses: actions/checkout@v6
+      uses: actions/checkout@v7
 
     - name: Sync translations with Crowdin
       uses: crowdin/github-action@v2.16.3
