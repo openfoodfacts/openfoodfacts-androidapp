@@ -2,7 +2,7 @@ name: Add bugs to the Native Android GitHub Project
 
 on:
   issues:
-    types: [opened, transferred]
+    types: [opened, transferred, labeled]
 
 jobs:
   add-to-project:
@@ -17,3 +17,13 @@ jobs:
           project-url: https://github.com/orgs/openfoodfacts/projects/22
           github-token: ${{ secrets.ADD_TO_PROJECT_PAT || github.token }}
           label-operator: AND
+  add-to-project-design:
+    name: Add issue to the openfoodfacts-design project
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/add-to-project@main
+        with:
+          project-url: https://github.com/orgs/openfoodfacts/projects/11
+          github-token: ${{ secrets.ADD_TO_PROJECT_PAT }}
+          labeled: mockups available, needs mockup
+          label-operator: OR
