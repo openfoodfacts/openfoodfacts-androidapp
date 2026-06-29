@@ -10,10 +10,10 @@ jobs:
 
     steps:
     - name: Checkout sources
-      uses: actions/checkout@v4
+      uses: actions/checkout@v7
 
     - name: Sync translations with Crowdin
-      uses: crowdin/github-action@v2.0.0
+      uses: crowdin/github-action@v2.16.3
       with:
          # default is false
         # Use this option to upload translations for a single specified language

@@ -19,23 +19,25 @@ jobs:
 
     steps:
       - name: Checkout sources
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Set up JDK
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           distribution: ${{ env.JAVA_DISTR }}
           java-version: ${{ env.JAVA_VERSION }}
 
       - name: Run unit tests
-        uses: gradle/gradle-build-action@v2.12.0
-        with:
-          arguments: >
-            testObfPlaystoreDebugUnitTest
-            testOffPlaystoreDebugUnitTest
-            testOpfPlaystoreDebugUnitTest
-            testOpffPlaystoreDebugUnitTest
-
+        uses: gradle/actions/setup-gradle@v6.2.0
+      - name: Run the tests for OBF
+        run: ./gradlew testObfPlaystoreDebugUnitTest
+      - name: Run the tests for OFF
+        run: ./gradlew testOffPlaystoreDebugUnitTest
+      - name: Run the tests OPF
+        run: ./gradlew testOpfPlaystoreDebugUnitTest
+      - name: Run the tests for OPFF
+        run: ./gradlew testOpffPlaystoreDebugUnitTest
+        
   deploy-opf:
     name: "🚀 Deploy OPF to Google Play"
     runs-on: ubuntu-20.04
@@ -46,10 +48,10 @@ jobs:
 
     steps:
       - name: Checkout sources
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Set up JDK
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           distribution: ${{ env.JAVA_DISTR }}
           java-version: ${{ env.JAVA_VERSION }}
@@ -91,10 +93,10 @@ jobs:
 
     steps:
       - name: Checkout sources
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Set up JDK
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           distribution: ${{ env.JAVA_DISTR }}
           java-version: ${{ env.JAVA_VERSION }}
@@ -136,10 +138,10 @@ jobs:
 
     steps:
       - name: Checkout sources
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Set up JDK
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           distribution: ${{ env.JAVA_DISTR }}
           java-version: ${{ env.JAVA_VERSION }}
@@ -180,10 +182,10 @@ jobs:
 
     steps:
       - name: Checkout sources
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Set up JDK
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           distribution: ${{ env.JAVA_DISTR }}
           java-version: ${{ env.JAVA_VERSION }}
