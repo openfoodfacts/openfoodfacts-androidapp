@@ -7,7 +7,7 @@ jobs:
   ktlint:
     runs-on: ubuntu-latest
     steps:
-       - name: "checkout"
-         uses: "actions/checkout@v7"
-       - name: "ktlint"
-         uses: "vroy/gha-kotlin-linter@v4"
+       - name: checkout
+         uses: actions/checkout@v7
+       - name: ktlint
+         uses: vroy/gha-kotlin-linter@v4
