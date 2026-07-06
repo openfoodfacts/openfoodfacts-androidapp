@@ -45,7 +45,7 @@ allprojects {
 }
 
 detekt {
-    source = files("./app/src/")
+    source.setFrom(files("./app/src/"))
     ignoreFailures = true
 }
 
