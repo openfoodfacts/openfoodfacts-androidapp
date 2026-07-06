@@ -23,7 +23,7 @@ org-mockito = "5.10.0"
 mockk = "1.14.4"
 com-squareup-retrofit2 = "2.6.4"
 androidx-test-espresso = "3.6.1"
-truth = "1.4.2"
+truth = "1.4.5"
 ui = "1.4.3"
 core-splashscreen = "1.0.1"
 
