@@ -30,10 +30,11 @@ jobs:
           distribution: ${{ env.JAVA_DISTR }}
           java-version: ${{ env.JAVA_VERSION }}
 
-      - name: Run detekt
+      - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v6
-        with:
-          arguments: detekt
+
+      - name: Run detekt
+        run: ./gradlew detekt
 
       - name: Upload SARIF
         uses: github/codeql-action/upload-sarif@v4
@@ -57,13 +58,15 @@ jobs:
           distribution: ${{ env.JAVA_DISTR }}
           java-version: ${{ env.JAVA_VERSION }}
 
-      - name: Run unit tests
+      - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v6
-        with:
-          arguments: >
-            testObfPlaystoreDebugUnitTest
-            testOffPlaystoreDebugUnitTest
-            testOpfPlaystoreDebugUnitTest
+
+      - name: Run unit tests
+        run: |
+          ./gradlew \
+            testObfPlaystoreDebugUnitTest \
+            testOffPlaystoreDebugUnitTest \
+            testOpfPlaystoreDebugUnitTest \
             testOpffPlaystoreDebugUnitTest
 
 
@@ -84,10 +87,11 @@ jobs:
       - name: Workaround for Android Gradle Plugin issue
         run: 'echo "ndk.dir=${ANDROID_HOME}/ndk-bundle" > local.properties'
 
-      - name: Assemble debug APKs
+      - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v6
-        with:
-          arguments: assembleDebug
+
+      - name: Assemble debug APKs
+        run: ./gradlew assembleDebug
 
       - name: Upload OBF APKs
         uses: actions/upload-artifact@v7
@@ -141,10 +145,11 @@ jobs:
       - name: Increase gradle daemon memory
         run: "echo \"org.gradle.jvmargs=-Xmx4096m\" >> gradle.properties"
 
-      - name: Lint sources
+      - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v6
-        with:
-          arguments: lint --stacktrace
+
+      - name: Lint sources
+        run: ./gradlew lint --stacktrace
 
       - name: Generate GitHub annotations
         uses: yutailang0119/action-android-lint@v5
@@ -171,10 +176,11 @@ jobs:
           distribution: ${{ env.JAVA_DISTR }}
           java-version: ${{ env.JAVA_VERSION }}
 
-      - name: Generate documentation
+      - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v6
-        with:
-          arguments: dokkaHtml
+
+      - name: Generate documentation
+        run: ./gradlew dokkaHtml
 
       - name: Deploy documentation to Github Pages
         uses: JamesIves/github-pages-deploy-action@v4.8.0
