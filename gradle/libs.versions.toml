@@ -91,8 +91,8 @@ networking-okhttp3-logging-interceptor = "com.squareup.okhttp3:logging-intercept
 logcat = "com.squareup.logcat:logcat:0.4"
 
 # Apache Commons
-apache-text = "org.apache.commons:commons-text:1.14.0"
-apache-csv = "org.apache.commons:commons-csv:1.14.0.0"
+apache-text = "org.apache.commons:commons-text:1.15.0"
+apache-csv = "org.apache.commons:commons-csv:1.15.0.0"
 apache-validator = "commons-validator:commons-validator:1.10.1"
 
 # Serialization/Deserialization
