@@ -167,9 +167,10 @@ dependencies {
 
     // Jetpack Compose dependencies
     implementation(libs.androidx.ui)
+}
 
-    resourcePlaceholders { files = listOf("xml/shortcuts.xml") }
-
+resourcePlaceholders {
+    files.set(listOf("xml/shortcuts.xml"))
 }
 
 android {
