@@ -17,7 +17,6 @@ plugins {
     id("com.android.application")
     alias(libs.plugins.resourceplaceholders) apply true
     id("org.greenrobot.greendao")
-    id("kotlin-android")
     id("kotlin-parcelize")
     id("kotlin-kapt")
     id("dagger.hilt.android.plugin")
