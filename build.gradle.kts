@@ -29,6 +29,7 @@ buildscript {
 
 plugins {
     alias(libs.plugins.resourceplaceholders) apply false // Android Extension in `app` breaks without this
+    alias(libs.plugins.ksp) apply false
     alias(libs.plugins.sonarqube)
     alias(libs.plugins.detekt)
     alias(libs.plugins.versions)

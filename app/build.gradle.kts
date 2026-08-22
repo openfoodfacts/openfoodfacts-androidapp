@@ -18,7 +18,7 @@ plugins {
     alias(libs.plugins.resourceplaceholders) apply true
     id("org.greenrobot.greendao")
     id("kotlin-parcelize")
-    id("kotlin-kapt")
+    alias(libs.plugins.ksp)
     id("dagger.hilt.android.plugin")
     alias(libs.plugins.dokka)
 }
@@ -54,17 +54,17 @@ dependencies {
 
     // Hilt
     implementation(libs.hilt.android)
-    kapt(libs.hilt.compiler)
+    ksp(libs.hilt.compiler)
 
     // Hilt for Android Testing
     androidTestImplementation(libs.hilt.android.testing)
     androidTestImplementation(libs.dagger)
-    kaptAndroidTest(libs.hilt.android.compiler)
-    kaptAndroidTest(libs.dagger.compiler)
+    kspAndroidTest(libs.hilt.android.compiler)
+    kspAndroidTest(libs.dagger.compiler)
 
     // WorkManager with Hilt
     implementation(libs.androidx.hilt.work)
-    kapt(libs.androidx.hilt.compiler)
+    ksp(libs.androidx.hilt.compiler)
 
     // Networking
     implementation(libs.bundles.networking)
@@ -83,7 +83,7 @@ dependencies {
 
     // Event bus and index
     implementation(libs.eventbus.runtime)
-    kapt(libs.eventbus.compiler)
+    ksp(libs.eventbus.compiler)
 
     // Material design
     implementation(libs.material)
@@ -380,11 +380,8 @@ android {
     namespace = "openfoodfacts.github.scrachx.openfood"
 }
 
-kapt {
-    correctErrorTypes = true
-    arguments {
-        arg("eventBusIndex", "openfoodfacts.github.scrachx.openfood.app.OFFEventsIndex")
-    }
+ksp {
+    arg("eventBusIndex", "openfoodfacts.github.scrachx.openfood.app.OFFEventsIndex")
 }
 
 greendao { schemaVersion(22) }
