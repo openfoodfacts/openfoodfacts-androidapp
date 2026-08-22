@@ -16,6 +16,7 @@
 plugins {
     id("com.android.application")
     alias(libs.plugins.resourceplaceholders) apply true
+    alias(libs.plugins.compose.compiler)
     id("org.greenrobot.greendao")
     id("kotlin-parcelize")
     alias(libs.plugins.ksp)

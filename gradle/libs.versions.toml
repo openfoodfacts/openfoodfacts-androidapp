@@ -256,3 +256,4 @@ detekt = "io.gitlab.arturbosch.detekt:1.23.8"
 versions = "com.github.ben-manes.versions:0.41.0"
 updates = "nl.littlerobots.version-catalog-update:0.5.1"
 ksp = "com.google.devtools.ksp:2.3.4"
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
