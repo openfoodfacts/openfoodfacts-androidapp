@@ -249,7 +249,7 @@ testing = [
 ]
 
 [plugins]
-resourceplaceholders = "de.timfreiheit.resourceplaceholders:0.2"
+resourceplaceholders = "pt.jcosta.resourceplaceholders:0.11.2"
 dokka = "org.jetbrains.dokka:2.2.0"
 sonarqube = "org.sonarqube:7.4.0.8496"
 detekt = "io.gitlab.arturbosch.detekt:1.23.8"
