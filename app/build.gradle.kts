@@ -355,7 +355,7 @@ android {
         )
     }
 
-    packagingOptions {
+    packaging {
         resources.excludes += listOf(
             "META-INF/DEPENDENCIES.txt",
             "META-INF/LICENSE.txt",
