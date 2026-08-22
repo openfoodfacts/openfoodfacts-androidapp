@@ -177,6 +177,7 @@ android {
     testBuildType = obtainTestBuildType()
 
     buildFeatures {
+        buildConfig = true
         viewBinding = true
         compose = true
     }
