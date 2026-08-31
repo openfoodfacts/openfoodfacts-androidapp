@@ -1,5 +1,22 @@
 # Changelog
 
+## [3.11.0](https://github.com/openfoodfacts/openfoodfacts-androidapp/compare/v3.10.2...v3.11.0) (2026-08-31)
+
+
+### Features
+
+* Add version code in user agent ([#4658](https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/4658)) ([8b23c1a](https://github.com/openfoodfacts/openfoodfacts-androidapp/commit/8b23c1a239b5b0d8af415ed5b2c3626a16216af6))
+
+
+### Bug Fixes
+
+* fix Detekt CI failure by updating Gradle action invocation in Android Integration workflow ([#5519](https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/5519)) ([1b189b2](https://github.com/openfoodfacts/openfoodfacts-androidapp/commit/1b189b261a8d18f92d2e2702abbf5fa9203ac573))
+* Fix formatting in ktlint.yml workflow ([c2682c4](https://github.com/openfoodfacts/openfoodfacts-androidapp/commit/c2682c4b9471f0d418d43bdfcb073b2b1eae62f6))
+* Fix ProductsAPITest ([#5267](https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/5267)) ([fb837b7](https://github.com/openfoodfacts/openfoodfacts-androidapp/commit/fb837b7b8bf4d1bf91a47ba2d5c24b6958ed1a4c))
+* Fixed typo in german translation ([#5028](https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/5028)) ([b14445d](https://github.com/openfoodfacts/openfoodfacts-androidapp/commit/b14445d9b0ce4c5e5fa4461c9cfdf4c048b27b05))
+* imageNames sorting to preserve descending timestamp order ([#5461](https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/5461)) ([9717d74](https://github.com/openfoodfacts/openfoodfacts-androidapp/commit/9717d74d3cb7bd40ef332431e82fad2543c3dd3b))
+* replace static.openfoodfacts.org with images.openfoodfacts.org ([#5462](https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/5462)) ([a576d2f](https://github.com/openfoodfacts/openfoodfacts-androidapp/commit/a576d2fabfe93d131ef626582d51d5d7c2f7395a)), closes [#5296](https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/5296)
+
 ## [3.10.2](https://github.com/openfoodfacts/openfoodfacts-androidapp/compare/v3.10.1...v3.10.2) (2023-04-06)
 
 
