@@ -17,7 +17,7 @@ android-lifecycle = "2.11.0"
 # https://github.com/greenrobot/EventBus
 eventbus = "3.3.1"
 # https://junit.org/junit5/
-junit5 = "5.9.3"
+junit5 = "6.1.2"
 androidx-hilt = "1.4.0"
 org-mockito = "5.23.0"
 mockk = "1.14.11"
