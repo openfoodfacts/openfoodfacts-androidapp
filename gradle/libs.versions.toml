@@ -25,7 +25,7 @@ com-squareup-retrofit2 = "3.0.0"
 androidx-test-espresso = "3.6.1"
 truth = "1.4.5"
 ui = "1.11.4"
-core-splashscreen = "1.0.1"
+core-splashscreen = "1.2.0"
 
 [libraries]
 # Gradle Plugins
