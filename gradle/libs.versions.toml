@@ -146,7 +146,7 @@ matomo = "com.github.matomo-org:matomo-sdk-android:4.1.4"
 showcaseview = "com.github.mreram:showcaseview:1.0.5"
 
 # Unit Testing
-androidx-arch-core-testing = "androidx.arch.core:core-testing:2.1.0"
+androidx-arch-core-testing = "androidx.arch.core:core-testing:2.2.0"
 junit = "junit:junit:4.13.2"
 robolectric = "org.robolectric:robolectric:4.15.1"
 mockito-core = { module = "org.mockito:mockito-core", version.ref = "org-mockito" }
