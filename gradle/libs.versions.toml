@@ -251,7 +251,7 @@ testing = [
 [plugins]
 resourceplaceholders = "de.timfreiheit.resourceplaceholders:0.2"
 dokka = "org.jetbrains.dokka:2.2.0"
-sonarqube = "org.sonarqube:5.0.0.4638"
+sonarqube = "org.sonarqube:6.2.0.5505"
 detekt = "io.gitlab.arturbosch.detekt:1.23.8"
-versions = "com.github.ben-manes.versions:0.41.0"
-updates = "nl.littlerobots.version-catalog-update:0.5.1"
+versions = "com.github.ben-manes.versions:0.51.0"
+updates = "nl.littlerobots.version-catalog-update:1.1.0"
