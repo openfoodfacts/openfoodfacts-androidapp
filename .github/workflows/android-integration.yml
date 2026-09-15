@@ -12,7 +12,7 @@ concurrency:
 
 env:
   JAVA_VERSION: "17"
-  JAVA_DISTR: 'adopt'
+  JAVA_DISTR: 'temurin'
 
 jobs:
 
@@ -46,7 +46,7 @@ jobs:
 
   test:
     name: "🤖 Unit Tests"
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout sources
@@ -72,7 +72,7 @@ jobs:
 
   assemble_apk:
     name: "📦 Assemble APKs"
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout sources
@@ -127,7 +127,7 @@ jobs:
 
   lint_off:
     name: "🔍 Android Lint"
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout sources
@@ -158,7 +158,7 @@ jobs:
 
   build_deploy_pages:
     name: "🚀 Deploy Documentation to GitHub Pages"
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     # Only on successful push event
     if: github.event_name == 'push' && github.ref == 'refs/heads/develop'

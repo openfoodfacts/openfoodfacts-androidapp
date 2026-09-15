@@ -1,30 +1,30 @@
 [versions]
 # https://kotlinlang.org/docs/releases.html#release-details
-kotlin = "2.4.0"
+kotlin = "1.9.22"
 # https://github.com/Kotlin/kotlinx.coroutines
 kotlin-coroutines = "1.7.3"
 # https://github.com/FasterXML/jackson
-jackson = "2.22.0"
+jackson = "2.15.3"
 # https://greenrobot.org/greendao/
 greendao = "3.3.0"
 # https://github.com/googlecodelabs/android-hilt
-hilt = "2.60"
-dagger = "2.50"
+hilt = "2.48.1"
+dagger = "2.48.1"
 # https://developer.android.com/studio/releases/gradle-plugin
 android-gradle = "7.4.2"
 # https://developer.android.com/jetpack/androidx/releases/lifecycle
-android-lifecycle = "2.11.0"
+android-lifecycle = "2.6.1"
 # https://github.com/greenrobot/EventBus
 eventbus = "3.3.1"
 # https://junit.org/junit5/
 junit5 = "5.9.3"
-androidx-hilt = "1.4.0"
-org-mockito = "5.23.0"
-mockk = "1.14.11"
-com-squareup-retrofit2 = "3.0.0"
-androidx-test-espresso = "3.6.1"
-truth = "1.4.5"
-ui = "1.11.4"
+androidx-hilt = "1.1.0"
+org-mockito = "5.10.0"
+mockk = "1.13.8"
+com-squareup-retrofit2 = "2.9.0"
+androidx-test-espresso = "3.5.1"
+truth = "1.1.5"
+ui = "1.5.4"
 core-splashscreen = "1.0.1"
 
 [libraries]
@@ -48,7 +48,7 @@ test-kotlin-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-te
 android-ktx-fragment = "androidx.fragment:fragment-ktx:1.5.6"
 android-ktx-activity = "androidx.activity:activity-ktx:1.7.0"
 android-ktx-preference = "androidx.preference:preference-ktx:1.2.1"
-android-ktx-core = "androidx.core:core-ktx:1.19.0"
+android-ktx-core = "androidx.core:core-ktx:1.12.0"
 
 # Lifecycle
 android-lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "android-lifecycle" }
@@ -57,8 +57,8 @@ android-lifecycle-runtime = { module = "androidx.lifecycle:lifecycle-runtime-ktx
 
 # AndroidX
 androidx-appcompat = "androidx.appcompat:appcompat:1.6.1"
-androidx-browser = "androidx.browser:browser:1.10.0"
-androidx-concurrent = "androidx.concurrent:concurrent-futures:1.3.0"
+androidx-browser = "androidx.browser:browser:1.7.0"
+androidx-concurrent = "androidx.concurrent:concurrent-futures:1.1.0"
 androidx-recyclerview = "androidx.recyclerview:recyclerview:1.2.1"
 androidx-cardview = "androidx.cardview:cardview:1.0.0"
 androidx-annotation = "androidx.annotation:annotation:1.4.0"
@@ -91,9 +91,9 @@ networking-okhttp3-logging-interceptor = "com.squareup.okhttp3:logging-intercept
 logcat = "com.squareup.logcat:logcat:0.4"
 
 # Apache Commons
-apache-text = "org.apache.commons:commons-text:1.15.0"
-apache-csv = "org.apache.commons:commons-csv:1.15.0.0"
-apache-validator = "commons-validator:commons-validator:1.10.1"
+apache-text = "org.apache.commons:commons-text:1.11.0"
+apache-csv = "org.apache.commons:commons-csv:1.10.0"
+apache-validator = "commons-validator:commons-validator:1.8.0"
 
 # Serialization/Deserialization
 jackson-core = { module = "com.fasterxml.jackson.core:jackson-core", version.ref = "jackson" }
@@ -148,9 +148,9 @@ showcaseview = "com.github.mreram:showcaseview:1.0.5"
 # Unit Testing
 androidx-arch-core-testing = "androidx.arch.core:core-testing:2.1.0"
 junit = "junit:junit:4.13.2"
-robolectric = "org.robolectric:robolectric:4.15.1"
+robolectric = "org.robolectric:robolectric:4.11.1"
 mockito-core = { module = "org.mockito:mockito-core", version.ref = "org-mockito" }
-mockito-kotlin = "org.mockito.kotlin:mockito-kotlin:6.3.0"
+mockito-kotlin = "org.mockito.kotlin:mockito-kotlin:5.2.1"
 mockito-junit-jupiter = { module = "org.mockito:mockito-junit-jupiter", version.ref = "org-mockito" }
 mockk-core = { module = "io.mockk:mockk", version.ref = "mockk" }
 mockk-agent = { module = "io.mockk:mockk-agent-jvm", version.ref = "mockk" }
@@ -161,7 +161,7 @@ truth-java8 = { module = "com.google.truth.extensions:truth-java8-extension", ve
 junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit5" }
 junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit5" }
 junit-vintage-engine = { module = "org.junit.vintage:junit-vintage-engine", version.ref = "junit5" }
-orchestrator = "androidx.test:orchestrator:1.6.1"
+orchestrator = "androidx.test:orchestrator:1.4.2"
 
 # Hilt Testing
 hilt-android-testing = { module = "com.google.dagger:hilt-android-testing", version.ref = "hilt" }
@@ -171,8 +171,8 @@ dagger = { module = "com.google.dagger:dagger", version.ref = "dagger" }
 dagger-compiler = { module = "com.google.dagger:dagger-compiler", version.ref = "dagger" }
 
 # AndroidX Test
-androidx-test-runner = "androidx.test:runner:1.7.0"
-androidx-test-rules = "androidx.test:rules:1.7.0"
+androidx-test-runner = "androidx.test:runner:1.5.2"
+androidx-test-rules = "androidx.test:rules:1.5.0"
 androidx-test-ext = "androidx.test.ext:junit:1.1.5"
 
 # Espresso
@@ -250,8 +250,8 @@ testing = [
 
 [plugins]
 resourceplaceholders = "de.timfreiheit.resourceplaceholders:0.2"
-dokka = "org.jetbrains.dokka:2.2.0"
-sonarqube = "org.sonarqube:5.0.0.4638"
-detekt = "io.gitlab.arturbosch.detekt:1.23.8"
+dokka = "org.jetbrains.dokka:1.9.20"
+sonarqube = "org.sonarqube:4.4.1.3373"
+detekt = "io.gitlab.arturbosch.detekt:1.23.5"
 versions = "com.github.ben-manes.versions:0.41.0"
 updates = "nl.littlerobots.version-catalog-update:0.5.1"
