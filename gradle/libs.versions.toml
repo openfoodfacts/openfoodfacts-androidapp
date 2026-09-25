@@ -71,7 +71,7 @@ androidx-swiperefreshlayout = "androidx.swiperefreshlayout:swiperefreshlayout:1.
 androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "core-splashscreen" }
 
 # ML Kit
-barcode-scanning = "com.google.mlkit:barcode-scanning:17.0.0"
+barcode-scanning = "com.google.mlkit:barcode-scanning:17.3.0"
 
 # Hilt
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
