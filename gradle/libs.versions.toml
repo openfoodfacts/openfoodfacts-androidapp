@@ -140,7 +140,7 @@ nachos = "com.github.hootsuite:nachos:1.2.0"
 
 # Crash analytics
 sentry-android = "io.sentry:sentry-android:8.46.0"
-matomo = "com.github.matomo-org:matomo-sdk-android:4.1.4"
+matomo = "com.github.matomo-org:matomo-sdk-android:4.4"
 
 # ShowCaseView dependency
 showcaseview = "com.github.mreram:showcaseview:1.0.5"
