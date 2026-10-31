@@ -7,11 +7,17 @@ Open Food Facts is collaborative food products database made by everyone, for ev
 
 <br>
 
-> ### ⚠️ WARNING
+> ### 📢 IMPORTANT NOTICE
 > 
-> The new Open Food Facts app is located [HERE](https://github.com/openfoodfacts/smooth-app)
+> This repository is **archived** and no longer actively maintained.
 > 
-> **Note: This codebase is currently only deployed for Open Beauty Facts, Open Pet Food Facts and Open Products Facts apps on F-Droid. For the time being, we have unpublished Open Beauty Facts, Open Pet Food Facts and Open Products Facts from the Google PlayStore so this code base has limited remaining impact (f-droid mostly)**
+> The **new Open Food Facts app** is available here:
+> 👉 [https://github.com/openfoodfacts/smooth-app](https://github.com/openfoodfacts/smooth-app)
+> 
+> The new app consolidates **Open Food Facts, Open Beauty Facts, Open Pet Food Facts, and Open Products Facts** into a single application.
+> Please use the new app going forward, as it covers all features and is actively developed.
+> 
+> Note: The old codebase was only deployed for Open Beauty Facts, Open Pet Food Facts, and Open Products Facts apps on **F-Droid**. These apps have already been unpublished from the **Google Play Store**.
 
 [![Project Status](https://opensource.box.com/badges/active.svg)](https://opensource.box.com/badges)
 [![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=openfoodfacts_openfoodfacts-androidapp&metric=alert_status)](https://sonarcloud.io/dashboard/index/openfoodfacts_openfoodfacts-androidapp)
