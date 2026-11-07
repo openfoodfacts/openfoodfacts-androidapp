@@ -334,8 +334,12 @@ class ProductEditActivity : BaseActivity() {
         if (imageNutritionFactsUploaded) {
             productDetails[ApiFields.Keys.IMAGE_NUTRITION_UPLOADED] = true.toString()
         }
-        val barcode = productDetails[ApiFields.Keys.BARCODE]!!
-
+       
+        val barcode = productDetails[ApiFields.Keys.BARCODE] ?: run {
+        Toast.makeText(this, "Barcode missing!", Toast.LENGTH_SHORT).show()
+        finish()
+        return
+        }
 
         // Save product to local database
         val toSaveOffline = OfflineSavedProduct(barcode, productDetails)
