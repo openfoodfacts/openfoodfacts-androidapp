@@ -106,14 +106,11 @@ class ContributorsFragment : BaseFragment() {
         if (product.editors.isNotEmpty()) {
             binding.otherEditorsTxt.movementMethod = LinkMovementMethod.getInstance()
             binding.otherEditorsTxt.text = buildSpannedString {
-                append(getString(R.string.other_editors))
-                append(" ")
-                product.editors.map { getContributorsTag(it).subSequence(0, it.length) }
-                    .forEachIndexed { i, el ->
-                        if (i > 0) append(", ")
-                        append(el)
-                    }
-                append(getContributorsTag(product.editors.last()))
+                val editorsText = product.editors.joinToString(", ") {
+    getContributorsTag(it).subSequence(0, it.length).toString()
+}
+
+append(getString(R.string.other_editors, editorsText))
             }
         } else {
             binding.otherEditorsTxt.visibility = View.INVISIBLE
